@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-UnsuccessfulInstanceCreditSpecificationItemError::UnsuccessfulInstanceCreditSpecificationItemError() : 
-    m_code(UnsuccessfulInstanceCreditSpecificationErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-UnsuccessfulInstanceCreditSpecificationItemError::UnsuccessfulInstanceCreditSpecificationItemError(const XmlNode& xmlNode) : 
-    m_code(UnsuccessfulInstanceCreditSpecificationErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+UnsuccessfulInstanceCreditSpecificationItemError::UnsuccessfulInstanceCreditSpecificationItemError(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ UnsuccessfulInstanceCreditSpecificationItemError& UnsuccessfulInstanceCreditSpec
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = UnsuccessfulInstanceCreditSpecificationErrorCodeMapper::GetUnsuccessfulInstanceCreditSpecificationErrorCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = UnsuccessfulInstanceCreditSpecificationErrorCodeMapper::GetUnsuccessfulInstanceCreditSpecificationErrorCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void UnsuccessfulInstanceCreditSpecificationItemError::OutputToStream(Aws::OStre
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << UnsuccessfulInstanceCreditSpecificationErrorCodeMapper::GetNameForUnsuccessfulInstanceCreditSpecificationErrorCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(UnsuccessfulInstanceCreditSpecificationErrorCodeMapper::GetNameForUnsuccessfulInstanceCreditSpecificationErrorCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void UnsuccessfulInstanceCreditSpecificationItemError::OutputToStream(Aws::OStre
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << UnsuccessfulInstanceCreditSpecificationErrorCodeMapper::GetNameForUnsuccessfulInstanceCreditSpecificationErrorCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(UnsuccessfulInstanceCreditSpecificationErrorCodeMapper::GetNameForUnsuccessfulInstanceCreditSpecificationErrorCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

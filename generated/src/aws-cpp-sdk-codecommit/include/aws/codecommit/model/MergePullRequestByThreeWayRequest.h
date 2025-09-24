@@ -24,7 +24,7 @@ namespace Model
   class MergePullRequestByThreeWayRequest : public CodeCommitRequest
   {
   public:
-    AWS_CODECOMMIT_API MergePullRequestByThreeWayRequest();
+    AWS_CODECOMMIT_API MergePullRequestByThreeWayRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,153 +37,46 @@ namespace Model
     AWS_CODECOMMIT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The system-generated ID of the pull request. To get this ID, use
      * <a>ListPullRequests</a>.</p>
      */
-    inline const Aws::String& GetPullRequestId() const{ return m_pullRequestId; }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
+    inline const Aws::String& GetPullRequestId() const { return m_pullRequestId; }
     inline bool PullRequestIdHasBeenSet() const { return m_pullRequestIdHasBeenSet; }
+    template<typename PullRequestIdT = Aws::String>
+    void SetPullRequestId(PullRequestIdT&& value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId = std::forward<PullRequestIdT>(value); }
+    template<typename PullRequestIdT = Aws::String>
+    MergePullRequestByThreeWayRequest& WithPullRequestId(PullRequestIdT&& value) { SetPullRequestId(std::forward<PullRequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline void SetPullRequestId(const Aws::String& value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId = value; }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline void SetPullRequestId(Aws::String&& value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId = std::move(value); }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline void SetPullRequestId(const char* value) { m_pullRequestIdHasBeenSet = true; m_pullRequestId.assign(value); }
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithPullRequestId(const Aws::String& value) { SetPullRequestId(value); return *this;}
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithPullRequestId(Aws::String&& value) { SetPullRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated ID of the pull request. To get this ID, use
-     * <a>ListPullRequests</a>.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithPullRequestId(const char* value) { SetPullRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the repository where the pull request was created.</p>
      */
-    inline const Aws::String& GetRepositoryName() const{ return m_repositoryName; }
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
+    inline const Aws::String& GetRepositoryName() const { return m_repositoryName; }
     inline bool RepositoryNameHasBeenSet() const { return m_repositoryNameHasBeenSet; }
+    template<typename RepositoryNameT = Aws::String>
+    void SetRepositoryName(RepositoryNameT&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::forward<RepositoryNameT>(value); }
+    template<typename RepositoryNameT = Aws::String>
+    MergePullRequestByThreeWayRequest& WithRepositoryName(RepositoryNameT&& value) { SetRepositoryName(std::forward<RepositoryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline void SetRepositoryName(const Aws::String& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline void SetRepositoryName(const char* value) { m_repositoryNameHasBeenSet = true; m_repositoryName.assign(value); }
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithRepositoryName(const Aws::String& value) { SetRepositoryName(value); return *this;}
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the repository where the pull request was created.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithRepositoryName(const char* value) { SetRepositoryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The full commit ID of the original or updated commit in the pull request
      * source branch. Pass this value if you want an exception thrown if the current
      * commit ID of the tip of the source branch does not match this commit ID.</p>
      */
-    inline const Aws::String& GetSourceCommitId() const{ return m_sourceCommitId; }
-
-    /**
-     * <p>The full commit ID of the original or updated commit in the pull request
-     * source branch. Pass this value if you want an exception thrown if the current
-     * commit ID of the tip of the source branch does not match this commit ID.</p>
-     */
+    inline const Aws::String& GetSourceCommitId() const { return m_sourceCommitId; }
     inline bool SourceCommitIdHasBeenSet() const { return m_sourceCommitIdHasBeenSet; }
+    template<typename SourceCommitIdT = Aws::String>
+    void SetSourceCommitId(SourceCommitIdT&& value) { m_sourceCommitIdHasBeenSet = true; m_sourceCommitId = std::forward<SourceCommitIdT>(value); }
+    template<typename SourceCommitIdT = Aws::String>
+    MergePullRequestByThreeWayRequest& WithSourceCommitId(SourceCommitIdT&& value) { SetSourceCommitId(std::forward<SourceCommitIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The full commit ID of the original or updated commit in the pull request
-     * source branch. Pass this value if you want an exception thrown if the current
-     * commit ID of the tip of the source branch does not match this commit ID.</p>
-     */
-    inline void SetSourceCommitId(const Aws::String& value) { m_sourceCommitIdHasBeenSet = true; m_sourceCommitId = value; }
-
-    /**
-     * <p>The full commit ID of the original or updated commit in the pull request
-     * source branch. Pass this value if you want an exception thrown if the current
-     * commit ID of the tip of the source branch does not match this commit ID.</p>
-     */
-    inline void SetSourceCommitId(Aws::String&& value) { m_sourceCommitIdHasBeenSet = true; m_sourceCommitId = std::move(value); }
-
-    /**
-     * <p>The full commit ID of the original or updated commit in the pull request
-     * source branch. Pass this value if you want an exception thrown if the current
-     * commit ID of the tip of the source branch does not match this commit ID.</p>
-     */
-    inline void SetSourceCommitId(const char* value) { m_sourceCommitIdHasBeenSet = true; m_sourceCommitId.assign(value); }
-
-    /**
-     * <p>The full commit ID of the original or updated commit in the pull request
-     * source branch. Pass this value if you want an exception thrown if the current
-     * commit ID of the tip of the source branch does not match this commit ID.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithSourceCommitId(const Aws::String& value) { SetSourceCommitId(value); return *this;}
-
-    /**
-     * <p>The full commit ID of the original or updated commit in the pull request
-     * source branch. Pass this value if you want an exception thrown if the current
-     * commit ID of the tip of the source branch does not match this commit ID.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithSourceCommitId(Aws::String&& value) { SetSourceCommitId(std::move(value)); return *this;}
-
-    /**
-     * <p>The full commit ID of the original or updated commit in the pull request
-     * source branch. Pass this value if you want an exception thrown if the current
-     * commit ID of the tip of the source branch does not match this commit ID.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithSourceCommitId(const char* value) { SetSourceCommitId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The level of conflict detail to use. If unspecified, the default FILE_LEVEL
      * is used, which returns a not-mergeable result if the same file has differences
@@ -191,307 +84,87 @@ namespace Model
      * mergeable if the same file in both branches has differences on the same
      * line.</p>
      */
-    inline const ConflictDetailLevelTypeEnum& GetConflictDetailLevel() const{ return m_conflictDetailLevel; }
-
-    /**
-     * <p>The level of conflict detail to use. If unspecified, the default FILE_LEVEL
-     * is used, which returns a not-mergeable result if the same file has differences
-     * in both branches. If LINE_LEVEL is specified, a conflict is considered not
-     * mergeable if the same file in both branches has differences on the same
-     * line.</p>
-     */
+    inline ConflictDetailLevelTypeEnum GetConflictDetailLevel() const { return m_conflictDetailLevel; }
     inline bool ConflictDetailLevelHasBeenSet() const { return m_conflictDetailLevelHasBeenSet; }
+    inline void SetConflictDetailLevel(ConflictDetailLevelTypeEnum value) { m_conflictDetailLevelHasBeenSet = true; m_conflictDetailLevel = value; }
+    inline MergePullRequestByThreeWayRequest& WithConflictDetailLevel(ConflictDetailLevelTypeEnum value) { SetConflictDetailLevel(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The level of conflict detail to use. If unspecified, the default FILE_LEVEL
-     * is used, which returns a not-mergeable result if the same file has differences
-     * in both branches. If LINE_LEVEL is specified, a conflict is considered not
-     * mergeable if the same file in both branches has differences on the same
-     * line.</p>
-     */
-    inline void SetConflictDetailLevel(const ConflictDetailLevelTypeEnum& value) { m_conflictDetailLevelHasBeenSet = true; m_conflictDetailLevel = value; }
-
-    /**
-     * <p>The level of conflict detail to use. If unspecified, the default FILE_LEVEL
-     * is used, which returns a not-mergeable result if the same file has differences
-     * in both branches. If LINE_LEVEL is specified, a conflict is considered not
-     * mergeable if the same file in both branches has differences on the same
-     * line.</p>
-     */
-    inline void SetConflictDetailLevel(ConflictDetailLevelTypeEnum&& value) { m_conflictDetailLevelHasBeenSet = true; m_conflictDetailLevel = std::move(value); }
-
-    /**
-     * <p>The level of conflict detail to use. If unspecified, the default FILE_LEVEL
-     * is used, which returns a not-mergeable result if the same file has differences
-     * in both branches. If LINE_LEVEL is specified, a conflict is considered not
-     * mergeable if the same file in both branches has differences on the same
-     * line.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithConflictDetailLevel(const ConflictDetailLevelTypeEnum& value) { SetConflictDetailLevel(value); return *this;}
-
-    /**
-     * <p>The level of conflict detail to use. If unspecified, the default FILE_LEVEL
-     * is used, which returns a not-mergeable result if the same file has differences
-     * in both branches. If LINE_LEVEL is specified, a conflict is considered not
-     * mergeable if the same file in both branches has differences on the same
-     * line.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithConflictDetailLevel(ConflictDetailLevelTypeEnum&& value) { SetConflictDetailLevel(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies which branch to use when resolving conflicts, or whether to attempt
      * automatically merging two versions of a file. The default is NONE, which
      * requires any conflicts to be resolved manually before the merge operation is
      * successful.</p>
      */
-    inline const ConflictResolutionStrategyTypeEnum& GetConflictResolutionStrategy() const{ return m_conflictResolutionStrategy; }
-
-    /**
-     * <p>Specifies which branch to use when resolving conflicts, or whether to attempt
-     * automatically merging two versions of a file. The default is NONE, which
-     * requires any conflicts to be resolved manually before the merge operation is
-     * successful.</p>
-     */
+    inline ConflictResolutionStrategyTypeEnum GetConflictResolutionStrategy() const { return m_conflictResolutionStrategy; }
     inline bool ConflictResolutionStrategyHasBeenSet() const { return m_conflictResolutionStrategyHasBeenSet; }
+    inline void SetConflictResolutionStrategy(ConflictResolutionStrategyTypeEnum value) { m_conflictResolutionStrategyHasBeenSet = true; m_conflictResolutionStrategy = value; }
+    inline MergePullRequestByThreeWayRequest& WithConflictResolutionStrategy(ConflictResolutionStrategyTypeEnum value) { SetConflictResolutionStrategy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies which branch to use when resolving conflicts, or whether to attempt
-     * automatically merging two versions of a file. The default is NONE, which
-     * requires any conflicts to be resolved manually before the merge operation is
-     * successful.</p>
-     */
-    inline void SetConflictResolutionStrategy(const ConflictResolutionStrategyTypeEnum& value) { m_conflictResolutionStrategyHasBeenSet = true; m_conflictResolutionStrategy = value; }
-
-    /**
-     * <p>Specifies which branch to use when resolving conflicts, or whether to attempt
-     * automatically merging two versions of a file. The default is NONE, which
-     * requires any conflicts to be resolved manually before the merge operation is
-     * successful.</p>
-     */
-    inline void SetConflictResolutionStrategy(ConflictResolutionStrategyTypeEnum&& value) { m_conflictResolutionStrategyHasBeenSet = true; m_conflictResolutionStrategy = std::move(value); }
-
-    /**
-     * <p>Specifies which branch to use when resolving conflicts, or whether to attempt
-     * automatically merging two versions of a file. The default is NONE, which
-     * requires any conflicts to be resolved manually before the merge operation is
-     * successful.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithConflictResolutionStrategy(const ConflictResolutionStrategyTypeEnum& value) { SetConflictResolutionStrategy(value); return *this;}
-
-    /**
-     * <p>Specifies which branch to use when resolving conflicts, or whether to attempt
-     * automatically merging two versions of a file. The default is NONE, which
-     * requires any conflicts to be resolved manually before the merge operation is
-     * successful.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithConflictResolutionStrategy(ConflictResolutionStrategyTypeEnum&& value) { SetConflictResolutionStrategy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The commit message to include in the commit information for the merge.</p>
      */
-    inline const Aws::String& GetCommitMessage() const{ return m_commitMessage; }
-
-    /**
-     * <p>The commit message to include in the commit information for the merge.</p>
-     */
+    inline const Aws::String& GetCommitMessage() const { return m_commitMessage; }
     inline bool CommitMessageHasBeenSet() const { return m_commitMessageHasBeenSet; }
+    template<typename CommitMessageT = Aws::String>
+    void SetCommitMessage(CommitMessageT&& value) { m_commitMessageHasBeenSet = true; m_commitMessage = std::forward<CommitMessageT>(value); }
+    template<typename CommitMessageT = Aws::String>
+    MergePullRequestByThreeWayRequest& WithCommitMessage(CommitMessageT&& value) { SetCommitMessage(std::forward<CommitMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The commit message to include in the commit information for the merge.</p>
-     */
-    inline void SetCommitMessage(const Aws::String& value) { m_commitMessageHasBeenSet = true; m_commitMessage = value; }
-
-    /**
-     * <p>The commit message to include in the commit information for the merge.</p>
-     */
-    inline void SetCommitMessage(Aws::String&& value) { m_commitMessageHasBeenSet = true; m_commitMessage = std::move(value); }
-
-    /**
-     * <p>The commit message to include in the commit information for the merge.</p>
-     */
-    inline void SetCommitMessage(const char* value) { m_commitMessageHasBeenSet = true; m_commitMessage.assign(value); }
-
-    /**
-     * <p>The commit message to include in the commit information for the merge.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithCommitMessage(const Aws::String& value) { SetCommitMessage(value); return *this;}
-
-    /**
-     * <p>The commit message to include in the commit information for the merge.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithCommitMessage(Aws::String&& value) { SetCommitMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The commit message to include in the commit information for the merge.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithCommitMessage(const char* value) { SetCommitMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the author who created the commit. This information is used as
      * both the author and committer for the commit.</p>
      */
-    inline const Aws::String& GetAuthorName() const{ return m_authorName; }
-
-    /**
-     * <p>The name of the author who created the commit. This information is used as
-     * both the author and committer for the commit.</p>
-     */
+    inline const Aws::String& GetAuthorName() const { return m_authorName; }
     inline bool AuthorNameHasBeenSet() const { return m_authorNameHasBeenSet; }
+    template<typename AuthorNameT = Aws::String>
+    void SetAuthorName(AuthorNameT&& value) { m_authorNameHasBeenSet = true; m_authorName = std::forward<AuthorNameT>(value); }
+    template<typename AuthorNameT = Aws::String>
+    MergePullRequestByThreeWayRequest& WithAuthorName(AuthorNameT&& value) { SetAuthorName(std::forward<AuthorNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the author who created the commit. This information is used as
-     * both the author and committer for the commit.</p>
-     */
-    inline void SetAuthorName(const Aws::String& value) { m_authorNameHasBeenSet = true; m_authorName = value; }
-
-    /**
-     * <p>The name of the author who created the commit. This information is used as
-     * both the author and committer for the commit.</p>
-     */
-    inline void SetAuthorName(Aws::String&& value) { m_authorNameHasBeenSet = true; m_authorName = std::move(value); }
-
-    /**
-     * <p>The name of the author who created the commit. This information is used as
-     * both the author and committer for the commit.</p>
-     */
-    inline void SetAuthorName(const char* value) { m_authorNameHasBeenSet = true; m_authorName.assign(value); }
-
-    /**
-     * <p>The name of the author who created the commit. This information is used as
-     * both the author and committer for the commit.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithAuthorName(const Aws::String& value) { SetAuthorName(value); return *this;}
-
-    /**
-     * <p>The name of the author who created the commit. This information is used as
-     * both the author and committer for the commit.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithAuthorName(Aws::String&& value) { SetAuthorName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the author who created the commit. This information is used as
-     * both the author and committer for the commit.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithAuthorName(const char* value) { SetAuthorName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The email address of the person merging the branches. This information is
      * used in the commit information for the merge.</p>
      */
-    inline const Aws::String& GetEmail() const{ return m_email; }
-
-    /**
-     * <p>The email address of the person merging the branches. This information is
-     * used in the commit information for the merge.</p>
-     */
+    inline const Aws::String& GetEmail() const { return m_email; }
     inline bool EmailHasBeenSet() const { return m_emailHasBeenSet; }
+    template<typename EmailT = Aws::String>
+    void SetEmail(EmailT&& value) { m_emailHasBeenSet = true; m_email = std::forward<EmailT>(value); }
+    template<typename EmailT = Aws::String>
+    MergePullRequestByThreeWayRequest& WithEmail(EmailT&& value) { SetEmail(std::forward<EmailT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The email address of the person merging the branches. This information is
-     * used in the commit information for the merge.</p>
-     */
-    inline void SetEmail(const Aws::String& value) { m_emailHasBeenSet = true; m_email = value; }
-
-    /**
-     * <p>The email address of the person merging the branches. This information is
-     * used in the commit information for the merge.</p>
-     */
-    inline void SetEmail(Aws::String&& value) { m_emailHasBeenSet = true; m_email = std::move(value); }
-
-    /**
-     * <p>The email address of the person merging the branches. This information is
-     * used in the commit information for the merge.</p>
-     */
-    inline void SetEmail(const char* value) { m_emailHasBeenSet = true; m_email.assign(value); }
-
-    /**
-     * <p>The email address of the person merging the branches. This information is
-     * used in the commit information for the merge.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithEmail(const Aws::String& value) { SetEmail(value); return *this;}
-
-    /**
-     * <p>The email address of the person merging the branches. This information is
-     * used in the commit information for the merge.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithEmail(Aws::String&& value) { SetEmail(std::move(value)); return *this;}
-
-    /**
-     * <p>The email address of the person merging the branches. This information is
-     * used in the commit information for the merge.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithEmail(const char* value) { SetEmail(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If the commit contains deletions, whether to keep a folder or folder
      * structure if the changes leave the folders empty. If true, a .gitkeep file is
      * created for empty folders. The default is false.</p>
      */
-    inline bool GetKeepEmptyFolders() const{ return m_keepEmptyFolders; }
-
-    /**
-     * <p>If the commit contains deletions, whether to keep a folder or folder
-     * structure if the changes leave the folders empty. If true, a .gitkeep file is
-     * created for empty folders. The default is false.</p>
-     */
+    inline bool GetKeepEmptyFolders() const { return m_keepEmptyFolders; }
     inline bool KeepEmptyFoldersHasBeenSet() const { return m_keepEmptyFoldersHasBeenSet; }
-
-    /**
-     * <p>If the commit contains deletions, whether to keep a folder or folder
-     * structure if the changes leave the folders empty. If true, a .gitkeep file is
-     * created for empty folders. The default is false.</p>
-     */
     inline void SetKeepEmptyFolders(bool value) { m_keepEmptyFoldersHasBeenSet = true; m_keepEmptyFolders = value; }
-
-    /**
-     * <p>If the commit contains deletions, whether to keep a folder or folder
-     * structure if the changes leave the folders empty. If true, a .gitkeep file is
-     * created for empty folders. The default is false.</p>
-     */
     inline MergePullRequestByThreeWayRequest& WithKeepEmptyFolders(bool value) { SetKeepEmptyFolders(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>If AUTOMERGE is the conflict resolution strategy, a list of inputs to use
      * when resolving conflicts during a merge.</p>
      */
-    inline const ConflictResolution& GetConflictResolution() const{ return m_conflictResolution; }
-
-    /**
-     * <p>If AUTOMERGE is the conflict resolution strategy, a list of inputs to use
-     * when resolving conflicts during a merge.</p>
-     */
+    inline const ConflictResolution& GetConflictResolution() const { return m_conflictResolution; }
     inline bool ConflictResolutionHasBeenSet() const { return m_conflictResolutionHasBeenSet; }
-
-    /**
-     * <p>If AUTOMERGE is the conflict resolution strategy, a list of inputs to use
-     * when resolving conflicts during a merge.</p>
-     */
-    inline void SetConflictResolution(const ConflictResolution& value) { m_conflictResolutionHasBeenSet = true; m_conflictResolution = value; }
-
-    /**
-     * <p>If AUTOMERGE is the conflict resolution strategy, a list of inputs to use
-     * when resolving conflicts during a merge.</p>
-     */
-    inline void SetConflictResolution(ConflictResolution&& value) { m_conflictResolutionHasBeenSet = true; m_conflictResolution = std::move(value); }
-
-    /**
-     * <p>If AUTOMERGE is the conflict resolution strategy, a list of inputs to use
-     * when resolving conflicts during a merge.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithConflictResolution(const ConflictResolution& value) { SetConflictResolution(value); return *this;}
-
-    /**
-     * <p>If AUTOMERGE is the conflict resolution strategy, a list of inputs to use
-     * when resolving conflicts during a merge.</p>
-     */
-    inline MergePullRequestByThreeWayRequest& WithConflictResolution(ConflictResolution&& value) { SetConflictResolution(std::move(value)); return *this;}
-
+    template<typename ConflictResolutionT = ConflictResolution>
+    void SetConflictResolution(ConflictResolutionT&& value) { m_conflictResolutionHasBeenSet = true; m_conflictResolution = std::forward<ConflictResolutionT>(value); }
+    template<typename ConflictResolutionT = ConflictResolution>
+    MergePullRequestByThreeWayRequest& WithConflictResolution(ConflictResolutionT&& value) { SetConflictResolution(std::forward<ConflictResolutionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pullRequestId;
@@ -503,10 +176,10 @@ namespace Model
     Aws::String m_sourceCommitId;
     bool m_sourceCommitIdHasBeenSet = false;
 
-    ConflictDetailLevelTypeEnum m_conflictDetailLevel;
+    ConflictDetailLevelTypeEnum m_conflictDetailLevel{ConflictDetailLevelTypeEnum::NOT_SET};
     bool m_conflictDetailLevelHasBeenSet = false;
 
-    ConflictResolutionStrategyTypeEnum m_conflictResolutionStrategy;
+    ConflictResolutionStrategyTypeEnum m_conflictResolutionStrategy{ConflictResolutionStrategyTypeEnum::NOT_SET};
     bool m_conflictResolutionStrategyHasBeenSet = false;
 
     Aws::String m_commitMessage;
@@ -518,7 +191,7 @@ namespace Model
     Aws::String m_email;
     bool m_emailHasBeenSet = false;
 
-    bool m_keepEmptyFolders;
+    bool m_keepEmptyFolders{false};
     bool m_keepEmptyFoldersHasBeenSet = false;
 
     ConflictResolution m_conflictResolution;

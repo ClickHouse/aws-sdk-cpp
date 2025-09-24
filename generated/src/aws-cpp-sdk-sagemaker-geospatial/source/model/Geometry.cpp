@@ -18,15 +18,7 @@ namespace SageMakerGeospatial
 namespace Model
 {
 
-Geometry::Geometry() : 
-    m_coordinatesHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-Geometry::Geometry(JsonView jsonValue) : 
-    m_coordinatesHasBeenSet(false),
-    m_typeHasBeenSet(false)
+Geometry::Geometry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,14 +48,11 @@ Geometry& Geometry::operator =(JsonView jsonValue)
     }
     m_coordinatesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

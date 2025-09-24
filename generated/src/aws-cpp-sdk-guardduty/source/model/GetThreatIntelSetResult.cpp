@@ -17,15 +17,7 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetThreatIntelSetResult::GetThreatIntelSetResult() : 
-    m_format(ThreatIntelSetFormat::NOT_SET),
-    m_status(ThreatIntelSetStatus::NOT_SET)
-{
-}
-
-GetThreatIntelSetResult::GetThreatIntelSetResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
-    m_format(ThreatIntelSetFormat::NOT_SET),
-    m_status(ThreatIntelSetStatus::NOT_SET)
+GetThreatIntelSetResult::GetThreatIntelSetResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
 }
@@ -36,27 +28,23 @@ GetThreatIntelSetResult& GetThreatIntelSetResult::operator =(const Aws::AmazonWe
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
+    m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("format"))
   {
     m_format = ThreatIntelSetFormatMapper::GetThreatIntelSetFormatForName(jsonValue.GetString("format"));
-
+    m_formatHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("location"))
   {
     m_location = jsonValue.GetString("location");
-
+    m_locationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = ThreatIntelSetStatusMapper::GetThreatIntelSetStatusForName(jsonValue.GetString("status"));
-
+    m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -64,14 +52,20 @@ GetThreatIntelSetResult& GetThreatIntelSetResult::operator =(const Aws::AmazonWe
     {
       m_tags[tagsItem.first] = tagsItem.second.AsString();
     }
+    m_tagsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("expectedBucketOwner"))
+  {
+    m_expectedBucketOwner = jsonValue.GetString("expectedBucketOwner");
+    m_expectedBucketOwnerHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

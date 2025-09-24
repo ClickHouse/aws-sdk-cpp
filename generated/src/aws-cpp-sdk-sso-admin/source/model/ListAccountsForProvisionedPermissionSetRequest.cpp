@@ -12,17 +12,6 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListAccountsForProvisionedPermissionSetRequest::ListAccountsForProvisionedPermissionSetRequest() : 
-    m_instanceArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false),
-    m_provisioningStatus(ProvisioningStatus::NOT_SET),
-    m_provisioningStatusHasBeenSet(false)
-{
-}
-
 Aws::String ListAccountsForProvisionedPermissionSetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -30,18 +19,6 @@ Aws::String ListAccountsForProvisionedPermissionSetRequest::SerializePayload() c
   if(m_instanceArnHasBeenSet)
   {
    payload.WithString("InstanceArn", m_instanceArn);
-
-  }
-
-  if(m_maxResultsHasBeenSet)
-  {
-   payload.WithInteger("MaxResults", m_maxResults);
-
-  }
-
-  if(m_nextTokenHasBeenSet)
-  {
-   payload.WithString("NextToken", m_nextToken);
 
   }
 
@@ -54,6 +31,18 @@ Aws::String ListAccountsForProvisionedPermissionSetRequest::SerializePayload() c
   if(m_provisioningStatusHasBeenSet)
   {
    payload.WithString("ProvisioningStatus", ProvisioningStatusMapper::GetNameForProvisioningStatus(m_provisioningStatus));
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+   payload.WithInteger("MaxResults", m_maxResults);
+
+  }
+
+  if(m_nextTokenHasBeenSet)
+  {
+   payload.WithString("NextToken", m_nextToken);
+
   }
 
   return payload.View().WriteReadable();

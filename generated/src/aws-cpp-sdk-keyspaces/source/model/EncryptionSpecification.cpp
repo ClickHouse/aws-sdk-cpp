@@ -18,17 +18,7 @@ namespace Keyspaces
 namespace Model
 {
 
-EncryptionSpecification::EncryptionSpecification() : 
-    m_type(EncryptionType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_kmsKeyIdentifierHasBeenSet(false)
-{
-}
-
-EncryptionSpecification::EncryptionSpecification(JsonView jsonValue) : 
-    m_type(EncryptionType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_kmsKeyIdentifierHasBeenSet(false)
+EncryptionSpecification::EncryptionSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ EncryptionSpecification& EncryptionSpecification::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("type"))
   {
     m_type = EncryptionTypeMapper::GetEncryptionTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("kmsKeyIdentifier"))
   {
     m_kmsKeyIdentifier = jsonValue.GetString("kmsKeyIdentifier");
-
     m_kmsKeyIdentifierHasBeenSet = true;
   }
-
   return *this;
 }
 

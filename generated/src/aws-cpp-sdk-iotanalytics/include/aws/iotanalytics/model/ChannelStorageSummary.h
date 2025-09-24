@@ -32,73 +32,35 @@ namespace Model
   class ChannelStorageSummary
   {
   public:
-    AWS_IOTANALYTICS_API ChannelStorageSummary();
+    AWS_IOTANALYTICS_API ChannelStorageSummary() = default;
     AWS_IOTANALYTICS_API ChannelStorageSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API ChannelStorageSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Used to store channel data in an S3 bucket managed by IoT Analytics.</p>
      */
-    inline const ServiceManagedChannelS3StorageSummary& GetServiceManagedS3() const{ return m_serviceManagedS3; }
-
-    /**
-     * <p>Used to store channel data in an S3 bucket managed by IoT Analytics.</p>
-     */
+    inline const ServiceManagedChannelS3StorageSummary& GetServiceManagedS3() const { return m_serviceManagedS3; }
     inline bool ServiceManagedS3HasBeenSet() const { return m_serviceManagedS3HasBeenSet; }
+    template<typename ServiceManagedS3T = ServiceManagedChannelS3StorageSummary>
+    void SetServiceManagedS3(ServiceManagedS3T&& value) { m_serviceManagedS3HasBeenSet = true; m_serviceManagedS3 = std::forward<ServiceManagedS3T>(value); }
+    template<typename ServiceManagedS3T = ServiceManagedChannelS3StorageSummary>
+    ChannelStorageSummary& WithServiceManagedS3(ServiceManagedS3T&& value) { SetServiceManagedS3(std::forward<ServiceManagedS3T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Used to store channel data in an S3 bucket managed by IoT Analytics.</p>
-     */
-    inline void SetServiceManagedS3(const ServiceManagedChannelS3StorageSummary& value) { m_serviceManagedS3HasBeenSet = true; m_serviceManagedS3 = value; }
-
-    /**
-     * <p>Used to store channel data in an S3 bucket managed by IoT Analytics.</p>
-     */
-    inline void SetServiceManagedS3(ServiceManagedChannelS3StorageSummary&& value) { m_serviceManagedS3HasBeenSet = true; m_serviceManagedS3 = std::move(value); }
-
-    /**
-     * <p>Used to store channel data in an S3 bucket managed by IoT Analytics.</p>
-     */
-    inline ChannelStorageSummary& WithServiceManagedS3(const ServiceManagedChannelS3StorageSummary& value) { SetServiceManagedS3(value); return *this;}
-
-    /**
-     * <p>Used to store channel data in an S3 bucket managed by IoT Analytics.</p>
-     */
-    inline ChannelStorageSummary& WithServiceManagedS3(ServiceManagedChannelS3StorageSummary&& value) { SetServiceManagedS3(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Used to store channel data in an S3 bucket that you manage.</p>
      */
-    inline const CustomerManagedChannelS3StorageSummary& GetCustomerManagedS3() const{ return m_customerManagedS3; }
-
-    /**
-     * <p>Used to store channel data in an S3 bucket that you manage.</p>
-     */
+    inline const CustomerManagedChannelS3StorageSummary& GetCustomerManagedS3() const { return m_customerManagedS3; }
     inline bool CustomerManagedS3HasBeenSet() const { return m_customerManagedS3HasBeenSet; }
-
-    /**
-     * <p>Used to store channel data in an S3 bucket that you manage.</p>
-     */
-    inline void SetCustomerManagedS3(const CustomerManagedChannelS3StorageSummary& value) { m_customerManagedS3HasBeenSet = true; m_customerManagedS3 = value; }
-
-    /**
-     * <p>Used to store channel data in an S3 bucket that you manage.</p>
-     */
-    inline void SetCustomerManagedS3(CustomerManagedChannelS3StorageSummary&& value) { m_customerManagedS3HasBeenSet = true; m_customerManagedS3 = std::move(value); }
-
-    /**
-     * <p>Used to store channel data in an S3 bucket that you manage.</p>
-     */
-    inline ChannelStorageSummary& WithCustomerManagedS3(const CustomerManagedChannelS3StorageSummary& value) { SetCustomerManagedS3(value); return *this;}
-
-    /**
-     * <p>Used to store channel data in an S3 bucket that you manage.</p>
-     */
-    inline ChannelStorageSummary& WithCustomerManagedS3(CustomerManagedChannelS3StorageSummary&& value) { SetCustomerManagedS3(std::move(value)); return *this;}
-
+    template<typename CustomerManagedS3T = CustomerManagedChannelS3StorageSummary>
+    void SetCustomerManagedS3(CustomerManagedS3T&& value) { m_customerManagedS3HasBeenSet = true; m_customerManagedS3 = std::forward<CustomerManagedS3T>(value); }
+    template<typename CustomerManagedS3T = CustomerManagedChannelS3StorageSummary>
+    ChannelStorageSummary& WithCustomerManagedS3(CustomerManagedS3T&& value) { SetCustomerManagedS3(std::forward<CustomerManagedS3T>(value)); return *this;}
+    ///@}
   private:
 
     ServiceManagedChannelS3StorageSummary m_serviceManagedS3;

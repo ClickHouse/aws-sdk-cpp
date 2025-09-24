@@ -28,140 +28,51 @@ namespace Model
 
   /**
    * <p>Settings that are available for use in the rules in the <a>RuleGroup</a>
-   * where this is defined. </p><p><h3>See Also:</h3>   <a
+   * where this is defined. See <a>CreateRuleGroup</a> or <a>UpdateRuleGroup</a> for
+   * usage.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/network-firewall-2020-11-12/RuleVariables">AWS
    * API Reference</a></p>
    */
   class RuleVariables
   {
   public:
-    AWS_NETWORKFIREWALL_API RuleVariables();
+    AWS_NETWORKFIREWALL_API RuleVariables() = default;
     AWS_NETWORKFIREWALL_API RuleVariables(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API RuleVariables& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
      */
-    inline const Aws::Map<Aws::String, IPSet>& GetIPSets() const{ return m_iPSets; }
-
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
+    inline const Aws::Map<Aws::String, IPSet>& GetIPSets() const { return m_iPSets; }
     inline bool IPSetsHasBeenSet() const { return m_iPSetsHasBeenSet; }
+    template<typename IPSetsT = Aws::Map<Aws::String, IPSet>>
+    void SetIPSets(IPSetsT&& value) { m_iPSetsHasBeenSet = true; m_iPSets = std::forward<IPSetsT>(value); }
+    template<typename IPSetsT = Aws::Map<Aws::String, IPSet>>
+    RuleVariables& WithIPSets(IPSetsT&& value) { SetIPSets(std::forward<IPSetsT>(value)); return *this;}
+    template<typename IPSetsKeyT = Aws::String, typename IPSetsValueT = IPSet>
+    RuleVariables& AddIPSets(IPSetsKeyT&& key, IPSetsValueT&& value) {
+      m_iPSetsHasBeenSet = true; m_iPSets.emplace(std::forward<IPSetsKeyT>(key), std::forward<IPSetsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
-    inline void SetIPSets(const Aws::Map<Aws::String, IPSet>& value) { m_iPSetsHasBeenSet = true; m_iPSets = value; }
-
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
-    inline void SetIPSets(Aws::Map<Aws::String, IPSet>&& value) { m_iPSetsHasBeenSet = true; m_iPSets = std::move(value); }
-
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
-    inline RuleVariables& WithIPSets(const Aws::Map<Aws::String, IPSet>& value) { SetIPSets(value); return *this;}
-
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
-    inline RuleVariables& WithIPSets(Aws::Map<Aws::String, IPSet>&& value) { SetIPSets(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
-    inline RuleVariables& AddIPSets(const Aws::String& key, const IPSet& value) { m_iPSetsHasBeenSet = true; m_iPSets.emplace(key, value); return *this; }
-
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
-    inline RuleVariables& AddIPSets(Aws::String&& key, const IPSet& value) { m_iPSetsHasBeenSet = true; m_iPSets.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
-    inline RuleVariables& AddIPSets(const Aws::String& key, IPSet&& value) { m_iPSetsHasBeenSet = true; m_iPSets.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
-    inline RuleVariables& AddIPSets(Aws::String&& key, IPSet&& value) { m_iPSetsHasBeenSet = true; m_iPSets.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
-    inline RuleVariables& AddIPSets(const char* key, IPSet&& value) { m_iPSetsHasBeenSet = true; m_iPSets.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of IP addresses and address ranges, in CIDR notation. </p>
-     */
-    inline RuleVariables& AddIPSets(const char* key, const IPSet& value) { m_iPSetsHasBeenSet = true; m_iPSets.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of port ranges. </p>
      */
-    inline const Aws::Map<Aws::String, PortSet>& GetPortSets() const{ return m_portSets; }
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
+    inline const Aws::Map<Aws::String, PortSet>& GetPortSets() const { return m_portSets; }
     inline bool PortSetsHasBeenSet() const { return m_portSetsHasBeenSet; }
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
-    inline void SetPortSets(const Aws::Map<Aws::String, PortSet>& value) { m_portSetsHasBeenSet = true; m_portSets = value; }
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
-    inline void SetPortSets(Aws::Map<Aws::String, PortSet>&& value) { m_portSetsHasBeenSet = true; m_portSets = std::move(value); }
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
-    inline RuleVariables& WithPortSets(const Aws::Map<Aws::String, PortSet>& value) { SetPortSets(value); return *this;}
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
-    inline RuleVariables& WithPortSets(Aws::Map<Aws::String, PortSet>&& value) { SetPortSets(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
-    inline RuleVariables& AddPortSets(const Aws::String& key, const PortSet& value) { m_portSetsHasBeenSet = true; m_portSets.emplace(key, value); return *this; }
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
-    inline RuleVariables& AddPortSets(Aws::String&& key, const PortSet& value) { m_portSetsHasBeenSet = true; m_portSets.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
-    inline RuleVariables& AddPortSets(const Aws::String& key, PortSet&& value) { m_portSetsHasBeenSet = true; m_portSets.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
-    inline RuleVariables& AddPortSets(Aws::String&& key, PortSet&& value) { m_portSetsHasBeenSet = true; m_portSets.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
-    inline RuleVariables& AddPortSets(const char* key, PortSet&& value) { m_portSetsHasBeenSet = true; m_portSets.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of port ranges. </p>
-     */
-    inline RuleVariables& AddPortSets(const char* key, const PortSet& value) { m_portSetsHasBeenSet = true; m_portSets.emplace(key, value); return *this; }
-
+    template<typename PortSetsT = Aws::Map<Aws::String, PortSet>>
+    void SetPortSets(PortSetsT&& value) { m_portSetsHasBeenSet = true; m_portSets = std::forward<PortSetsT>(value); }
+    template<typename PortSetsT = Aws::Map<Aws::String, PortSet>>
+    RuleVariables& WithPortSets(PortSetsT&& value) { SetPortSets(std::forward<PortSetsT>(value)); return *this;}
+    template<typename PortSetsKeyT = Aws::String, typename PortSetsValueT = PortSet>
+    RuleVariables& AddPortSets(PortSetsKeyT&& key, PortSetsValueT&& value) {
+      m_portSetsHasBeenSet = true; m_portSets.emplace(std::forward<PortSetsKeyT>(key), std::forward<PortSetsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::Map<Aws::String, IPSet> m_iPSets;

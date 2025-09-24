@@ -20,33 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NetworkAclEntry::NetworkAclEntry() : 
-    m_cidrBlockHasBeenSet(false),
-    m_egress(false),
-    m_egressHasBeenSet(false),
-    m_icmpTypeCodeHasBeenSet(false),
-    m_ipv6CidrBlockHasBeenSet(false),
-    m_portRangeHasBeenSet(false),
-    m_protocolHasBeenSet(false),
-    m_ruleAction(RuleAction::NOT_SET),
-    m_ruleActionHasBeenSet(false),
-    m_ruleNumber(0),
-    m_ruleNumberHasBeenSet(false)
-{
-}
-
-NetworkAclEntry::NetworkAclEntry(const XmlNode& xmlNode) : 
-    m_cidrBlockHasBeenSet(false),
-    m_egress(false),
-    m_egressHasBeenSet(false),
-    m_icmpTypeCodeHasBeenSet(false),
-    m_ipv6CidrBlockHasBeenSet(false),
-    m_portRangeHasBeenSet(false),
-    m_protocolHasBeenSet(false),
-    m_ruleAction(RuleAction::NOT_SET),
-    m_ruleActionHasBeenSet(false),
-    m_ruleNumber(0),
-    m_ruleNumberHasBeenSet(false)
+NetworkAclEntry::NetworkAclEntry(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -96,7 +70,7 @@ NetworkAclEntry& NetworkAclEntry::operator =(const XmlNode& xmlNode)
     XmlNode ruleActionNode = resultNode.FirstChild("ruleAction");
     if(!ruleActionNode.IsNull())
     {
-      m_ruleAction = RuleActionMapper::GetRuleActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ruleActionNode.GetText()).c_str()).c_str());
+      m_ruleAction = RuleActionMapper::GetRuleActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(ruleActionNode.GetText()).c_str()));
       m_ruleActionHasBeenSet = true;
     }
     XmlNode ruleNumberNode = resultNode.FirstChild("ruleNumber");
@@ -148,7 +122,7 @@ void NetworkAclEntry::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_ruleActionHasBeenSet)
   {
-      oStream << location << index << locationValue << ".RuleAction=" << RuleActionMapper::GetNameForRuleAction(m_ruleAction) << "&";
+      oStream << location << index << locationValue << ".RuleAction=" << StringUtils::URLEncode(RuleActionMapper::GetNameForRuleAction(m_ruleAction)) << "&";
   }
 
   if(m_ruleNumberHasBeenSet)
@@ -190,7 +164,7 @@ void NetworkAclEntry::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_ruleActionHasBeenSet)
   {
-      oStream << location << ".RuleAction=" << RuleActionMapper::GetNameForRuleAction(m_ruleAction) << "&";
+      oStream << location << ".RuleAction=" << StringUtils::URLEncode(RuleActionMapper::GetNameForRuleAction(m_ruleAction)) << "&";
   }
   if(m_ruleNumberHasBeenSet)
   {

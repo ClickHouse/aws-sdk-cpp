@@ -36,90 +36,39 @@ namespace Model
   class InboxPlacementTrackingOption
   {
   public:
-    AWS_PINPOINTEMAIL_API InboxPlacementTrackingOption();
+    AWS_PINPOINTEMAIL_API InboxPlacementTrackingOption() = default;
     AWS_PINPOINTEMAIL_API InboxPlacementTrackingOption(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTEMAIL_API InboxPlacementTrackingOption& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINTEMAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether inbox placement data is being tracked for the domain.</p>
      */
-    inline bool GetGlobal() const{ return m_global; }
-
-    /**
-     * <p>Specifies whether inbox placement data is being tracked for the domain.</p>
-     */
+    inline bool GetGlobal() const { return m_global; }
     inline bool GlobalHasBeenSet() const { return m_globalHasBeenSet; }
-
-    /**
-     * <p>Specifies whether inbox placement data is being tracked for the domain.</p>
-     */
     inline void SetGlobal(bool value) { m_globalHasBeenSet = true; m_global = value; }
-
-    /**
-     * <p>Specifies whether inbox placement data is being tracked for the domain.</p>
-     */
     inline InboxPlacementTrackingOption& WithGlobal(bool value) { SetGlobal(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An array of strings, one for each major email provider that the inbox
      * placement data applies to.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTrackedIsps() const{ return m_trackedIsps; }
-
-    /**
-     * <p>An array of strings, one for each major email provider that the inbox
-     * placement data applies to.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTrackedIsps() const { return m_trackedIsps; }
     inline bool TrackedIspsHasBeenSet() const { return m_trackedIspsHasBeenSet; }
-
-    /**
-     * <p>An array of strings, one for each major email provider that the inbox
-     * placement data applies to.</p>
-     */
-    inline void SetTrackedIsps(const Aws::Vector<Aws::String>& value) { m_trackedIspsHasBeenSet = true; m_trackedIsps = value; }
-
-    /**
-     * <p>An array of strings, one for each major email provider that the inbox
-     * placement data applies to.</p>
-     */
-    inline void SetTrackedIsps(Aws::Vector<Aws::String>&& value) { m_trackedIspsHasBeenSet = true; m_trackedIsps = std::move(value); }
-
-    /**
-     * <p>An array of strings, one for each major email provider that the inbox
-     * placement data applies to.</p>
-     */
-    inline InboxPlacementTrackingOption& WithTrackedIsps(const Aws::Vector<Aws::String>& value) { SetTrackedIsps(value); return *this;}
-
-    /**
-     * <p>An array of strings, one for each major email provider that the inbox
-     * placement data applies to.</p>
-     */
-    inline InboxPlacementTrackingOption& WithTrackedIsps(Aws::Vector<Aws::String>&& value) { SetTrackedIsps(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of strings, one for each major email provider that the inbox
-     * placement data applies to.</p>
-     */
-    inline InboxPlacementTrackingOption& AddTrackedIsps(const Aws::String& value) { m_trackedIspsHasBeenSet = true; m_trackedIsps.push_back(value); return *this; }
-
-    /**
-     * <p>An array of strings, one for each major email provider that the inbox
-     * placement data applies to.</p>
-     */
-    inline InboxPlacementTrackingOption& AddTrackedIsps(Aws::String&& value) { m_trackedIspsHasBeenSet = true; m_trackedIsps.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of strings, one for each major email provider that the inbox
-     * placement data applies to.</p>
-     */
-    inline InboxPlacementTrackingOption& AddTrackedIsps(const char* value) { m_trackedIspsHasBeenSet = true; m_trackedIsps.push_back(value); return *this; }
-
+    template<typename TrackedIspsT = Aws::Vector<Aws::String>>
+    void SetTrackedIsps(TrackedIspsT&& value) { m_trackedIspsHasBeenSet = true; m_trackedIsps = std::forward<TrackedIspsT>(value); }
+    template<typename TrackedIspsT = Aws::Vector<Aws::String>>
+    InboxPlacementTrackingOption& WithTrackedIsps(TrackedIspsT&& value) { SetTrackedIsps(std::forward<TrackedIspsT>(value)); return *this;}
+    template<typename TrackedIspsT = Aws::String>
+    InboxPlacementTrackingOption& AddTrackedIsps(TrackedIspsT&& value) { m_trackedIspsHasBeenSet = true; m_trackedIsps.emplace_back(std::forward<TrackedIspsT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_global;
+    bool m_global{false};
     bool m_globalHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_trackedIsps;

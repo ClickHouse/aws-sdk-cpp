@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-StaleIpPermission::StaleIpPermission() : 
-    m_fromPort(0),
-    m_fromPortHasBeenSet(false),
-    m_ipProtocolHasBeenSet(false),
-    m_ipRangesHasBeenSet(false),
-    m_prefixListIdsHasBeenSet(false),
-    m_toPort(0),
-    m_toPortHasBeenSet(false),
-    m_userIdGroupPairsHasBeenSet(false)
-{
-}
-
-StaleIpPermission::StaleIpPermission(const XmlNode& xmlNode) : 
-    m_fromPort(0),
-    m_fromPortHasBeenSet(false),
-    m_ipProtocolHasBeenSet(false),
-    m_ipRangesHasBeenSet(false),
-    m_prefixListIdsHasBeenSet(false),
-    m_toPort(0),
-    m_toPortHasBeenSet(false),
-    m_userIdGroupPairsHasBeenSet(false)
+StaleIpPermission::StaleIpPermission(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -67,6 +47,7 @@ StaleIpPermission& StaleIpPermission::operator =(const XmlNode& xmlNode)
     if(!ipRangesNode.IsNull())
     {
       XmlNode ipRangesMember = ipRangesNode.FirstChild("item");
+      m_ipRangesHasBeenSet = !ipRangesMember.IsNull();
       while(!ipRangesMember.IsNull())
       {
         m_ipRanges.push_back(ipRangesMember.GetText());
@@ -79,6 +60,7 @@ StaleIpPermission& StaleIpPermission::operator =(const XmlNode& xmlNode)
     if(!prefixListIdsNode.IsNull())
     {
       XmlNode prefixListIdsMember = prefixListIdsNode.FirstChild("item");
+      m_prefixListIdsHasBeenSet = !prefixListIdsMember.IsNull();
       while(!prefixListIdsMember.IsNull())
       {
         m_prefixListIds.push_back(prefixListIdsMember.GetText());
@@ -97,6 +79,7 @@ StaleIpPermission& StaleIpPermission::operator =(const XmlNode& xmlNode)
     if(!userIdGroupPairsNode.IsNull())
     {
       XmlNode userIdGroupPairsMember = userIdGroupPairsNode.FirstChild("item");
+      m_userIdGroupPairsHasBeenSet = !userIdGroupPairsMember.IsNull();
       while(!userIdGroupPairsMember.IsNull())
       {
         m_userIdGroupPairs.push_back(userIdGroupPairsMember);
@@ -194,7 +177,7 @@ void StaleIpPermission::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_userIdGroupPairs)
       {
         Aws::StringStream userIdGroupPairsSs;
-        userIdGroupPairsSs << location <<  ".Groups." << userIdGroupPairsIdx++;
+        userIdGroupPairsSs << location << ".Groups." << userIdGroupPairsIdx++;
         item.OutputToStream(oStream, userIdGroupPairsSs.str().c_str());
       }
   }

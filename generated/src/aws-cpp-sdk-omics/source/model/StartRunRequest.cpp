@@ -12,30 +12,6 @@ using namespace Aws::Omics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartRunRequest::StartRunRequest() : 
-    m_workflowIdHasBeenSet(false),
-    m_workflowType(WorkflowType::NOT_SET),
-    m_workflowTypeHasBeenSet(false),
-    m_runIdHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_runGroupIdHasBeenSet(false),
-    m_priority(0),
-    m_priorityHasBeenSet(false),
-    m_parametersHasBeenSet(false),
-    m_storageCapacity(0),
-    m_storageCapacityHasBeenSet(false),
-    m_outputUriHasBeenSet(false),
-    m_logLevel(RunLogLevel::NOT_SET),
-    m_logLevelHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_requestId(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_requestIdHasBeenSet(true),
-    m_retentionMode(RunRetentionMode::NOT_SET),
-    m_retentionModeHasBeenSet(false)
-{
-}
-
 Aws::String StartRunRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -67,6 +43,17 @@ Aws::String StartRunRequest::SerializePayload() const
   {
    payload.WithString("name", m_name);
 
+  }
+
+  if(m_cacheIdHasBeenSet)
+  {
+   payload.WithString("cacheId", m_cacheId);
+
+  }
+
+  if(m_cacheBehaviorHasBeenSet)
+  {
+   payload.WithString("cacheBehavior", CacheBehaviorMapper::GetNameForCacheBehavior(m_cacheBehavior));
   }
 
   if(m_runGroupIdHasBeenSet)
@@ -126,6 +113,23 @@ Aws::String StartRunRequest::SerializePayload() const
   if(m_retentionModeHasBeenSet)
   {
    payload.WithString("retentionMode", RunRetentionModeMapper::GetNameForRunRetentionMode(m_retentionMode));
+  }
+
+  if(m_storageTypeHasBeenSet)
+  {
+   payload.WithString("storageType", StorageTypeMapper::GetNameForStorageType(m_storageType));
+  }
+
+  if(m_workflowOwnerIdHasBeenSet)
+  {
+   payload.WithString("workflowOwnerId", m_workflowOwnerId);
+
+  }
+
+  if(m_workflowVersionNameHasBeenSet)
+  {
+   payload.WithString("workflowVersionName", m_workflowVersionName);
+
   }
 
   return payload.View().WriteReadable();

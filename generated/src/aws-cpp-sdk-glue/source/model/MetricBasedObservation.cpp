@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-MetricBasedObservation::MetricBasedObservation() : 
-    m_metricNameHasBeenSet(false),
-    m_metricValuesHasBeenSet(false),
-    m_newRulesHasBeenSet(false)
-{
-}
-
-MetricBasedObservation::MetricBasedObservation(JsonView jsonValue) : 
-    m_metricNameHasBeenSet(false),
-    m_metricValuesHasBeenSet(false),
-    m_newRulesHasBeenSet(false)
+MetricBasedObservation::MetricBasedObservation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ MetricBasedObservation& MetricBasedObservation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MetricName"))
   {
     m_metricName = jsonValue.GetString("MetricName");
-
     m_metricNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("StatisticId"))
+  {
+    m_statisticId = jsonValue.GetString("StatisticId");
+    m_statisticIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("MetricValues"))
   {
     m_metricValues = jsonValue.GetObject("MetricValues");
-
     m_metricValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NewRules"))
   {
     Aws::Utils::Array<JsonView> newRulesJsonList = jsonValue.GetArray("NewRules");
@@ -58,7 +49,6 @@ MetricBasedObservation& MetricBasedObservation::operator =(JsonView jsonValue)
     }
     m_newRulesHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -69,6 +59,12 @@ JsonValue MetricBasedObservation::Jsonize() const
   if(m_metricNameHasBeenSet)
   {
    payload.WithString("MetricName", m_metricName);
+
+  }
+
+  if(m_statisticIdHasBeenSet)
+  {
+   payload.WithString("StatisticId", m_statisticId);
 
   }
 

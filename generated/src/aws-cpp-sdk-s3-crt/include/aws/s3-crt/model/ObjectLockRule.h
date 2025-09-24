@@ -30,13 +30,14 @@ namespace Model
   class ObjectLockRule
   {
   public:
-    AWS_S3CRT_API ObjectLockRule();
+    AWS_S3CRT_API ObjectLockRule() = default;
     AWS_S3CRT_API ObjectLockRule(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API ObjectLockRule& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The default Object Lock retention mode and period that you want to apply to
      * new objects placed in the specified bucket. Bucket settings require both a mode
@@ -44,53 +45,13 @@ namespace Model
      * but you must select one. You cannot specify <code>Days</code> and
      * <code>Years</code> at the same time.</p>
      */
-    inline const DefaultRetention& GetDefaultRetention() const{ return m_defaultRetention; }
-
-    /**
-     * <p>The default Object Lock retention mode and period that you want to apply to
-     * new objects placed in the specified bucket. Bucket settings require both a mode
-     * and a period. The period can be either <code>Days</code> or <code>Years</code>
-     * but you must select one. You cannot specify <code>Days</code> and
-     * <code>Years</code> at the same time.</p>
-     */
+    inline const DefaultRetention& GetDefaultRetention() const { return m_defaultRetention; }
     inline bool DefaultRetentionHasBeenSet() const { return m_defaultRetentionHasBeenSet; }
-
-    /**
-     * <p>The default Object Lock retention mode and period that you want to apply to
-     * new objects placed in the specified bucket. Bucket settings require both a mode
-     * and a period. The period can be either <code>Days</code> or <code>Years</code>
-     * but you must select one. You cannot specify <code>Days</code> and
-     * <code>Years</code> at the same time.</p>
-     */
-    inline void SetDefaultRetention(const DefaultRetention& value) { m_defaultRetentionHasBeenSet = true; m_defaultRetention = value; }
-
-    /**
-     * <p>The default Object Lock retention mode and period that you want to apply to
-     * new objects placed in the specified bucket. Bucket settings require both a mode
-     * and a period. The period can be either <code>Days</code> or <code>Years</code>
-     * but you must select one. You cannot specify <code>Days</code> and
-     * <code>Years</code> at the same time.</p>
-     */
-    inline void SetDefaultRetention(DefaultRetention&& value) { m_defaultRetentionHasBeenSet = true; m_defaultRetention = std::move(value); }
-
-    /**
-     * <p>The default Object Lock retention mode and period that you want to apply to
-     * new objects placed in the specified bucket. Bucket settings require both a mode
-     * and a period. The period can be either <code>Days</code> or <code>Years</code>
-     * but you must select one. You cannot specify <code>Days</code> and
-     * <code>Years</code> at the same time.</p>
-     */
-    inline ObjectLockRule& WithDefaultRetention(const DefaultRetention& value) { SetDefaultRetention(value); return *this;}
-
-    /**
-     * <p>The default Object Lock retention mode and period that you want to apply to
-     * new objects placed in the specified bucket. Bucket settings require both a mode
-     * and a period. The period can be either <code>Days</code> or <code>Years</code>
-     * but you must select one. You cannot specify <code>Days</code> and
-     * <code>Years</code> at the same time.</p>
-     */
-    inline ObjectLockRule& WithDefaultRetention(DefaultRetention&& value) { SetDefaultRetention(std::move(value)); return *this;}
-
+    template<typename DefaultRetentionT = DefaultRetention>
+    void SetDefaultRetention(DefaultRetentionT&& value) { m_defaultRetentionHasBeenSet = true; m_defaultRetention = std::forward<DefaultRetentionT>(value); }
+    template<typename DefaultRetentionT = DefaultRetention>
+    ObjectLockRule& WithDefaultRetention(DefaultRetentionT&& value) { SetDefaultRetention(std::forward<DefaultRetentionT>(value)); return *this;}
+    ///@}
   private:
 
     DefaultRetention m_defaultRetention;

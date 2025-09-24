@@ -33,61 +33,26 @@ namespace Model
   class DatasetEntityRecognizerDocuments
   {
   public:
-    AWS_COMPREHEND_API DatasetEntityRecognizerDocuments();
+    AWS_COMPREHEND_API DatasetEntityRecognizerDocuments() = default;
     AWS_COMPREHEND_API DatasetEntityRecognizerDocuments(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API DatasetEntityRecognizerDocuments& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies the Amazon S3 location where the documents for the dataset are
      * located. </p>
      */
-    inline const Aws::String& GetS3Uri() const{ return m_s3Uri; }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the documents for the dataset are
-     * located. </p>
-     */
+    inline const Aws::String& GetS3Uri() const { return m_s3Uri; }
     inline bool S3UriHasBeenSet() const { return m_s3UriHasBeenSet; }
+    template<typename S3UriT = Aws::String>
+    void SetS3Uri(S3UriT&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::forward<S3UriT>(value); }
+    template<typename S3UriT = Aws::String>
+    DatasetEntityRecognizerDocuments& WithS3Uri(S3UriT&& value) { SetS3Uri(std::forward<S3UriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies the Amazon S3 location where the documents for the dataset are
-     * located. </p>
-     */
-    inline void SetS3Uri(const Aws::String& value) { m_s3UriHasBeenSet = true; m_s3Uri = value; }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the documents for the dataset are
-     * located. </p>
-     */
-    inline void SetS3Uri(Aws::String&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::move(value); }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the documents for the dataset are
-     * located. </p>
-     */
-    inline void SetS3Uri(const char* value) { m_s3UriHasBeenSet = true; m_s3Uri.assign(value); }
-
-    /**
-     * <p> Specifies the Amazon S3 location where the documents for the dataset are
-     * located. </p>
-     */
-    inline DatasetEntityRecognizerDocuments& WithS3Uri(const Aws::String& value) { SetS3Uri(value); return *this;}
-
-    /**
-     * <p> Specifies the Amazon S3 location where the documents for the dataset are
-     * located. </p>
-     */
-    inline DatasetEntityRecognizerDocuments& WithS3Uri(Aws::String&& value) { SetS3Uri(std::move(value)); return *this;}
-
-    /**
-     * <p> Specifies the Amazon S3 location where the documents for the dataset are
-     * located. </p>
-     */
-    inline DatasetEntityRecognizerDocuments& WithS3Uri(const char* value) { SetS3Uri(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies how the text in an input file should be processed. This is
      * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
@@ -96,64 +61,17 @@ namespace Model
      * Each line in a file is considered a separate document. Use this option when you
      * are processing many short documents, such as text messages.</p>
      */
-    inline const InputFormat& GetInputFormat() const{ return m_inputFormat; }
-
-    /**
-     * <p> Specifies how the text in an input file should be processed. This is
-     * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
-     * considered a separate document. Use this option when you are processing large
-     * documents, such as newspaper articles or scientific papers. ONE_DOC_PER_LINE -
-     * Each line in a file is considered a separate document. Use this option when you
-     * are processing many short documents, such as text messages.</p>
-     */
+    inline InputFormat GetInputFormat() const { return m_inputFormat; }
     inline bool InputFormatHasBeenSet() const { return m_inputFormatHasBeenSet; }
-
-    /**
-     * <p> Specifies how the text in an input file should be processed. This is
-     * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
-     * considered a separate document. Use this option when you are processing large
-     * documents, such as newspaper articles or scientific papers. ONE_DOC_PER_LINE -
-     * Each line in a file is considered a separate document. Use this option when you
-     * are processing many short documents, such as text messages.</p>
-     */
-    inline void SetInputFormat(const InputFormat& value) { m_inputFormatHasBeenSet = true; m_inputFormat = value; }
-
-    /**
-     * <p> Specifies how the text in an input file should be processed. This is
-     * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
-     * considered a separate document. Use this option when you are processing large
-     * documents, such as newspaper articles or scientific papers. ONE_DOC_PER_LINE -
-     * Each line in a file is considered a separate document. Use this option when you
-     * are processing many short documents, such as text messages.</p>
-     */
-    inline void SetInputFormat(InputFormat&& value) { m_inputFormatHasBeenSet = true; m_inputFormat = std::move(value); }
-
-    /**
-     * <p> Specifies how the text in an input file should be processed. This is
-     * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
-     * considered a separate document. Use this option when you are processing large
-     * documents, such as newspaper articles or scientific papers. ONE_DOC_PER_LINE -
-     * Each line in a file is considered a separate document. Use this option when you
-     * are processing many short documents, such as text messages.</p>
-     */
-    inline DatasetEntityRecognizerDocuments& WithInputFormat(const InputFormat& value) { SetInputFormat(value); return *this;}
-
-    /**
-     * <p> Specifies how the text in an input file should be processed. This is
-     * optional, and the default is ONE_DOC_PER_LINE. ONE_DOC_PER_FILE - Each file is
-     * considered a separate document. Use this option when you are processing large
-     * documents, such as newspaper articles or scientific papers. ONE_DOC_PER_LINE -
-     * Each line in a file is considered a separate document. Use this option when you
-     * are processing many short documents, such as text messages.</p>
-     */
-    inline DatasetEntityRecognizerDocuments& WithInputFormat(InputFormat&& value) { SetInputFormat(std::move(value)); return *this;}
-
+    inline void SetInputFormat(InputFormat value) { m_inputFormatHasBeenSet = true; m_inputFormat = value; }
+    inline DatasetEntityRecognizerDocuments& WithInputFormat(InputFormat value) { SetInputFormat(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_s3Uri;
     bool m_s3UriHasBeenSet = false;
 
-    InputFormat m_inputFormat;
+    InputFormat m_inputFormat{InputFormat::NOT_SET};
     bool m_inputFormatHasBeenSet = false;
   };
 

@@ -33,91 +33,39 @@ namespace Model
   class SigningConfigurationOverrides
   {
   public:
-    AWS_SIGNER_API SigningConfigurationOverrides();
+    AWS_SIGNER_API SigningConfigurationOverrides() = default;
     AWS_SIGNER_API SigningConfigurationOverrides(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIGNER_API SigningConfigurationOverrides& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIGNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A specified override of the default encryption algorithm that is used in a
      * code-signing job.</p>
      */
-    inline const EncryptionAlgorithm& GetEncryptionAlgorithm() const{ return m_encryptionAlgorithm; }
-
-    /**
-     * <p>A specified override of the default encryption algorithm that is used in a
-     * code-signing job.</p>
-     */
+    inline EncryptionAlgorithm GetEncryptionAlgorithm() const { return m_encryptionAlgorithm; }
     inline bool EncryptionAlgorithmHasBeenSet() const { return m_encryptionAlgorithmHasBeenSet; }
+    inline void SetEncryptionAlgorithm(EncryptionAlgorithm value) { m_encryptionAlgorithmHasBeenSet = true; m_encryptionAlgorithm = value; }
+    inline SigningConfigurationOverrides& WithEncryptionAlgorithm(EncryptionAlgorithm value) { SetEncryptionAlgorithm(value); return *this;}
+    ///@}
 
-    /**
-     * <p>A specified override of the default encryption algorithm that is used in a
-     * code-signing job.</p>
-     */
-    inline void SetEncryptionAlgorithm(const EncryptionAlgorithm& value) { m_encryptionAlgorithmHasBeenSet = true; m_encryptionAlgorithm = value; }
-
-    /**
-     * <p>A specified override of the default encryption algorithm that is used in a
-     * code-signing job.</p>
-     */
-    inline void SetEncryptionAlgorithm(EncryptionAlgorithm&& value) { m_encryptionAlgorithmHasBeenSet = true; m_encryptionAlgorithm = std::move(value); }
-
-    /**
-     * <p>A specified override of the default encryption algorithm that is used in a
-     * code-signing job.</p>
-     */
-    inline SigningConfigurationOverrides& WithEncryptionAlgorithm(const EncryptionAlgorithm& value) { SetEncryptionAlgorithm(value); return *this;}
-
-    /**
-     * <p>A specified override of the default encryption algorithm that is used in a
-     * code-signing job.</p>
-     */
-    inline SigningConfigurationOverrides& WithEncryptionAlgorithm(EncryptionAlgorithm&& value) { SetEncryptionAlgorithm(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A specified override of the default hash algorithm that is used in a
      * code-signing job.</p>
      */
-    inline const HashAlgorithm& GetHashAlgorithm() const{ return m_hashAlgorithm; }
-
-    /**
-     * <p>A specified override of the default hash algorithm that is used in a
-     * code-signing job.</p>
-     */
+    inline HashAlgorithm GetHashAlgorithm() const { return m_hashAlgorithm; }
     inline bool HashAlgorithmHasBeenSet() const { return m_hashAlgorithmHasBeenSet; }
-
-    /**
-     * <p>A specified override of the default hash algorithm that is used in a
-     * code-signing job.</p>
-     */
-    inline void SetHashAlgorithm(const HashAlgorithm& value) { m_hashAlgorithmHasBeenSet = true; m_hashAlgorithm = value; }
-
-    /**
-     * <p>A specified override of the default hash algorithm that is used in a
-     * code-signing job.</p>
-     */
-    inline void SetHashAlgorithm(HashAlgorithm&& value) { m_hashAlgorithmHasBeenSet = true; m_hashAlgorithm = std::move(value); }
-
-    /**
-     * <p>A specified override of the default hash algorithm that is used in a
-     * code-signing job.</p>
-     */
-    inline SigningConfigurationOverrides& WithHashAlgorithm(const HashAlgorithm& value) { SetHashAlgorithm(value); return *this;}
-
-    /**
-     * <p>A specified override of the default hash algorithm that is used in a
-     * code-signing job.</p>
-     */
-    inline SigningConfigurationOverrides& WithHashAlgorithm(HashAlgorithm&& value) { SetHashAlgorithm(std::move(value)); return *this;}
-
+    inline void SetHashAlgorithm(HashAlgorithm value) { m_hashAlgorithmHasBeenSet = true; m_hashAlgorithm = value; }
+    inline SigningConfigurationOverrides& WithHashAlgorithm(HashAlgorithm value) { SetHashAlgorithm(value); return *this;}
+    ///@}
   private:
 
-    EncryptionAlgorithm m_encryptionAlgorithm;
+    EncryptionAlgorithm m_encryptionAlgorithm{EncryptionAlgorithm::NOT_SET};
     bool m_encryptionAlgorithmHasBeenSet = false;
 
-    HashAlgorithm m_hashAlgorithm;
+    HashAlgorithm m_hashAlgorithm{HashAlgorithm::NOT_SET};
     bool m_hashAlgorithmHasBeenSet = false;
   };
 

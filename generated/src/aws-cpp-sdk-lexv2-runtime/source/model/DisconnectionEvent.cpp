@@ -18,17 +18,7 @@ namespace LexRuntimeV2
 namespace Model
 {
 
-DisconnectionEvent::DisconnectionEvent() : 
-    m_eventIdHasBeenSet(false),
-    m_clientTimestampMillis(0),
-    m_clientTimestampMillisHasBeenSet(false)
-{
-}
-
-DisconnectionEvent::DisconnectionEvent(JsonView jsonValue) : 
-    m_eventIdHasBeenSet(false),
-    m_clientTimestampMillis(0),
-    m_clientTimestampMillisHasBeenSet(false)
+DisconnectionEvent::DisconnectionEvent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DisconnectionEvent& DisconnectionEvent::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("eventId"))
   {
     m_eventId = jsonValue.GetString("eventId");
-
     m_eventIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("clientTimestampMillis"))
   {
     m_clientTimestampMillis = jsonValue.GetInt64("clientTimestampMillis");
-
     m_clientTimestampMillisHasBeenSet = true;
   }
-
   return *this;
 }
 

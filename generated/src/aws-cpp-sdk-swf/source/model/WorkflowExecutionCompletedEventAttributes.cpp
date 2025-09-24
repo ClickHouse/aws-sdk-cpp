@@ -18,17 +18,7 @@ namespace SWF
 namespace Model
 {
 
-WorkflowExecutionCompletedEventAttributes::WorkflowExecutionCompletedEventAttributes() : 
-    m_resultHasBeenSet(false),
-    m_decisionTaskCompletedEventId(0),
-    m_decisionTaskCompletedEventIdHasBeenSet(false)
-{
-}
-
-WorkflowExecutionCompletedEventAttributes::WorkflowExecutionCompletedEventAttributes(JsonView jsonValue) : 
-    m_resultHasBeenSet(false),
-    m_decisionTaskCompletedEventId(0),
-    m_decisionTaskCompletedEventIdHasBeenSet(false)
+WorkflowExecutionCompletedEventAttributes::WorkflowExecutionCompletedEventAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ WorkflowExecutionCompletedEventAttributes& WorkflowExecutionCompletedEventAttrib
   if(jsonValue.ValueExists("result"))
   {
     m_result = jsonValue.GetString("result");
-
     m_resultHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("decisionTaskCompletedEventId"))
   {
     m_decisionTaskCompletedEventId = jsonValue.GetInt64("decisionTaskCompletedEventId");
-
     m_decisionTaskCompletedEventIdHasBeenSet = true;
   }
-
   return *this;
 }
 

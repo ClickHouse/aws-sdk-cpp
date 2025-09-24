@@ -18,21 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-RecommendationJobStoppingConditions::RecommendationJobStoppingConditions() : 
-    m_maxInvocations(0),
-    m_maxInvocationsHasBeenSet(false),
-    m_modelLatencyThresholdsHasBeenSet(false),
-    m_flatInvocations(FlatInvocations::NOT_SET),
-    m_flatInvocationsHasBeenSet(false)
-{
-}
-
-RecommendationJobStoppingConditions::RecommendationJobStoppingConditions(JsonView jsonValue) : 
-    m_maxInvocations(0),
-    m_maxInvocationsHasBeenSet(false),
-    m_modelLatencyThresholdsHasBeenSet(false),
-    m_flatInvocations(FlatInvocations::NOT_SET),
-    m_flatInvocationsHasBeenSet(false)
+RecommendationJobStoppingConditions::RecommendationJobStoppingConditions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ RecommendationJobStoppingConditions& RecommendationJobStoppingConditions::operat
   if(jsonValue.ValueExists("MaxInvocations"))
   {
     m_maxInvocations = jsonValue.GetInteger("MaxInvocations");
-
     m_maxInvocationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModelLatencyThresholds"))
   {
     Aws::Utils::Array<JsonView> modelLatencyThresholdsJsonList = jsonValue.GetArray("ModelLatencyThresholds");
@@ -55,14 +39,11 @@ RecommendationJobStoppingConditions& RecommendationJobStoppingConditions::operat
     }
     m_modelLatencyThresholdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FlatInvocations"))
   {
     m_flatInvocations = FlatInvocationsMapper::GetFlatInvocationsForName(jsonValue.GetString("FlatInvocations"));
-
     m_flatInvocationsHasBeenSet = true;
   }
-
   return *this;
 }
 

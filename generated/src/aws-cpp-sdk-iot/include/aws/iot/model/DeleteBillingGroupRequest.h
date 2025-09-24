@@ -25,7 +25,7 @@ namespace Model
   class DeleteBillingGroupRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API DeleteBillingGroupRequest();
+    AWS_IOT_API DeleteBillingGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,85 +38,36 @@ namespace Model
     AWS_IOT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The name of the billing group.</p>
      */
-    inline const Aws::String& GetBillingGroupName() const{ return m_billingGroupName; }
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
+    inline const Aws::String& GetBillingGroupName() const { return m_billingGroupName; }
     inline bool BillingGroupNameHasBeenSet() const { return m_billingGroupNameHasBeenSet; }
+    template<typename BillingGroupNameT = Aws::String>
+    void SetBillingGroupName(BillingGroupNameT&& value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName = std::forward<BillingGroupNameT>(value); }
+    template<typename BillingGroupNameT = Aws::String>
+    DeleteBillingGroupRequest& WithBillingGroupName(BillingGroupNameT&& value) { SetBillingGroupName(std::forward<BillingGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline void SetBillingGroupName(const Aws::String& value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName = value; }
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline void SetBillingGroupName(Aws::String&& value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline void SetBillingGroupName(const char* value) { m_billingGroupNameHasBeenSet = true; m_billingGroupName.assign(value); }
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline DeleteBillingGroupRequest& WithBillingGroupName(const Aws::String& value) { SetBillingGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline DeleteBillingGroupRequest& WithBillingGroupName(Aws::String&& value) { SetBillingGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the billing group.</p>
-     */
-    inline DeleteBillingGroupRequest& WithBillingGroupName(const char* value) { SetBillingGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The expected version of the billing group. If the version of the billing
      * group does not match the expected version specified in the request, the
      * <code>DeleteBillingGroup</code> request is rejected with a
      * <code>VersionConflictException</code>.</p>
      */
-    inline long long GetExpectedVersion() const{ return m_expectedVersion; }
-
-    /**
-     * <p>The expected version of the billing group. If the version of the billing
-     * group does not match the expected version specified in the request, the
-     * <code>DeleteBillingGroup</code> request is rejected with a
-     * <code>VersionConflictException</code>.</p>
-     */
+    inline long long GetExpectedVersion() const { return m_expectedVersion; }
     inline bool ExpectedVersionHasBeenSet() const { return m_expectedVersionHasBeenSet; }
-
-    /**
-     * <p>The expected version of the billing group. If the version of the billing
-     * group does not match the expected version specified in the request, the
-     * <code>DeleteBillingGroup</code> request is rejected with a
-     * <code>VersionConflictException</code>.</p>
-     */
     inline void SetExpectedVersion(long long value) { m_expectedVersionHasBeenSet = true; m_expectedVersion = value; }
-
-    /**
-     * <p>The expected version of the billing group. If the version of the billing
-     * group does not match the expected version specified in the request, the
-     * <code>DeleteBillingGroup</code> request is rejected with a
-     * <code>VersionConflictException</code>.</p>
-     */
     inline DeleteBillingGroupRequest& WithExpectedVersion(long long value) { SetExpectedVersion(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_billingGroupName;
     bool m_billingGroupNameHasBeenSet = false;
 
-    long long m_expectedVersion;
+    long long m_expectedVersion{0};
     bool m_expectedVersionHasBeenSet = false;
   };
 

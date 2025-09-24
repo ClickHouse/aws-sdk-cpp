@@ -28,101 +28,51 @@ namespace Model
   class UpdateFlowOutputResult
   {
   public:
-    AWS_MEDIACONNECT_API UpdateFlowOutputResult();
+    AWS_MEDIACONNECT_API UpdateFlowOutputResult() = default;
     AWS_MEDIACONNECT_API UpdateFlowOutputResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MEDIACONNECT_API UpdateFlowOutputResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * The ARN of the flow that is associated with the updated output.
+     * <p> The ARN of the flow that is associated with the updated output.</p>
      */
-    inline const Aws::String& GetFlowArn() const{ return m_flowArn; }
+    inline const Aws::String& GetFlowArn() const { return m_flowArn; }
+    template<typename FlowArnT = Aws::String>
+    void SetFlowArn(FlowArnT&& value) { m_flowArnHasBeenSet = true; m_flowArn = std::forward<FlowArnT>(value); }
+    template<typename FlowArnT = Aws::String>
+    UpdateFlowOutputResult& WithFlowArn(FlowArnT&& value) { SetFlowArn(std::forward<FlowArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The ARN of the flow that is associated with the updated output.
+     * <p> The new settings of the output that you updated.</p>
      */
-    inline void SetFlowArn(const Aws::String& value) { m_flowArn = value; }
+    inline const Output& GetOutput() const { return m_output; }
+    template<typename OutputT = Output>
+    void SetOutput(OutputT&& value) { m_outputHasBeenSet = true; m_output = std::forward<OutputT>(value); }
+    template<typename OutputT = Output>
+    UpdateFlowOutputResult& WithOutput(OutputT&& value) { SetOutput(std::forward<OutputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ARN of the flow that is associated with the updated output.
-     */
-    inline void SetFlowArn(Aws::String&& value) { m_flowArn = std::move(value); }
-
-    /**
-     * The ARN of the flow that is associated with the updated output.
-     */
-    inline void SetFlowArn(const char* value) { m_flowArn.assign(value); }
-
-    /**
-     * The ARN of the flow that is associated with the updated output.
-     */
-    inline UpdateFlowOutputResult& WithFlowArn(const Aws::String& value) { SetFlowArn(value); return *this;}
-
-    /**
-     * The ARN of the flow that is associated with the updated output.
-     */
-    inline UpdateFlowOutputResult& WithFlowArn(Aws::String&& value) { SetFlowArn(std::move(value)); return *this;}
-
-    /**
-     * The ARN of the flow that is associated with the updated output.
-     */
-    inline UpdateFlowOutputResult& WithFlowArn(const char* value) { SetFlowArn(value); return *this;}
-
-
-    /**
-     * The new settings of the output that you updated.
-     */
-    inline const Output& GetOutput() const{ return m_output; }
-
-    /**
-     * The new settings of the output that you updated.
-     */
-    inline void SetOutput(const Output& value) { m_output = value; }
-
-    /**
-     * The new settings of the output that you updated.
-     */
-    inline void SetOutput(Output&& value) { m_output = std::move(value); }
-
-    /**
-     * The new settings of the output that you updated.
-     */
-    inline UpdateFlowOutputResult& WithOutput(const Output& value) { SetOutput(value); return *this;}
-
-    /**
-     * The new settings of the output that you updated.
-     */
-    inline UpdateFlowOutputResult& WithOutput(Output&& value) { SetOutput(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateFlowOutputResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateFlowOutputResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateFlowOutputResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateFlowOutputResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_flowArn;
+    bool m_flowArnHasBeenSet = false;
 
     Output m_output;
+    bool m_outputHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

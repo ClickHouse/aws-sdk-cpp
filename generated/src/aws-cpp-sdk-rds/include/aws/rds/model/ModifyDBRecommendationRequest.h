@@ -23,7 +23,7 @@ namespace Model
   class ModifyDBRecommendationRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API ModifyDBRecommendationRequest();
+    AWS_RDS_API ModifyDBRecommendationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,185 +38,57 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The identifier of the recommendation to update.</p>
      */
-    inline const Aws::String& GetRecommendationId() const{ return m_recommendationId; }
-
-    /**
-     * <p>The identifier of the recommendation to update.</p>
-     */
+    inline const Aws::String& GetRecommendationId() const { return m_recommendationId; }
     inline bool RecommendationIdHasBeenSet() const { return m_recommendationIdHasBeenSet; }
+    template<typename RecommendationIdT = Aws::String>
+    void SetRecommendationId(RecommendationIdT&& value) { m_recommendationIdHasBeenSet = true; m_recommendationId = std::forward<RecommendationIdT>(value); }
+    template<typename RecommendationIdT = Aws::String>
+    ModifyDBRecommendationRequest& WithRecommendationId(RecommendationIdT&& value) { SetRecommendationId(std::forward<RecommendationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the recommendation to update.</p>
-     */
-    inline void SetRecommendationId(const Aws::String& value) { m_recommendationIdHasBeenSet = true; m_recommendationId = value; }
-
-    /**
-     * <p>The identifier of the recommendation to update.</p>
-     */
-    inline void SetRecommendationId(Aws::String&& value) { m_recommendationIdHasBeenSet = true; m_recommendationId = std::move(value); }
-
-    /**
-     * <p>The identifier of the recommendation to update.</p>
-     */
-    inline void SetRecommendationId(const char* value) { m_recommendationIdHasBeenSet = true; m_recommendationId.assign(value); }
-
-    /**
-     * <p>The identifier of the recommendation to update.</p>
-     */
-    inline ModifyDBRecommendationRequest& WithRecommendationId(const Aws::String& value) { SetRecommendationId(value); return *this;}
-
-    /**
-     * <p>The identifier of the recommendation to update.</p>
-     */
-    inline ModifyDBRecommendationRequest& WithRecommendationId(Aws::String&& value) { SetRecommendationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the recommendation to update.</p>
-     */
-    inline ModifyDBRecommendationRequest& WithRecommendationId(const char* value) { SetRecommendationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The language of the modified recommendation.</p>
      */
-    inline const Aws::String& GetLocale() const{ return m_locale; }
-
-    /**
-     * <p>The language of the modified recommendation.</p>
-     */
+    inline const Aws::String& GetLocale() const { return m_locale; }
     inline bool LocaleHasBeenSet() const { return m_localeHasBeenSet; }
+    template<typename LocaleT = Aws::String>
+    void SetLocale(LocaleT&& value) { m_localeHasBeenSet = true; m_locale = std::forward<LocaleT>(value); }
+    template<typename LocaleT = Aws::String>
+    ModifyDBRecommendationRequest& WithLocale(LocaleT&& value) { SetLocale(std::forward<LocaleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The language of the modified recommendation.</p>
-     */
-    inline void SetLocale(const Aws::String& value) { m_localeHasBeenSet = true; m_locale = value; }
-
-    /**
-     * <p>The language of the modified recommendation.</p>
-     */
-    inline void SetLocale(Aws::String&& value) { m_localeHasBeenSet = true; m_locale = std::move(value); }
-
-    /**
-     * <p>The language of the modified recommendation.</p>
-     */
-    inline void SetLocale(const char* value) { m_localeHasBeenSet = true; m_locale.assign(value); }
-
-    /**
-     * <p>The language of the modified recommendation.</p>
-     */
-    inline ModifyDBRecommendationRequest& WithLocale(const Aws::String& value) { SetLocale(value); return *this;}
-
-    /**
-     * <p>The language of the modified recommendation.</p>
-     */
-    inline ModifyDBRecommendationRequest& WithLocale(Aws::String&& value) { SetLocale(std::move(value)); return *this;}
-
-    /**
-     * <p>The language of the modified recommendation.</p>
-     */
-    inline ModifyDBRecommendationRequest& WithLocale(const char* value) { SetLocale(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The recommendation status to update.</p> <p>Valid values:</p> <ul> <li>
      * <p>active</p> </li> <li> <p>dismissed</p> </li> </ul>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The recommendation status to update.</p> <p>Valid values:</p> <ul> <li>
-     * <p>active</p> </li> <li> <p>dismissed</p> </li> </ul>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    ModifyDBRecommendationRequest& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The recommendation status to update.</p> <p>Valid values:</p> <ul> <li>
-     * <p>active</p> </li> <li> <p>dismissed</p> </li> </ul>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The recommendation status to update.</p> <p>Valid values:</p> <ul> <li>
-     * <p>active</p> </li> <li> <p>dismissed</p> </li> </ul>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The recommendation status to update.</p> <p>Valid values:</p> <ul> <li>
-     * <p>active</p> </li> <li> <p>dismissed</p> </li> </ul>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The recommendation status to update.</p> <p>Valid values:</p> <ul> <li>
-     * <p>active</p> </li> <li> <p>dismissed</p> </li> </ul>
-     */
-    inline ModifyDBRecommendationRequest& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The recommendation status to update.</p> <p>Valid values:</p> <ul> <li>
-     * <p>active</p> </li> <li> <p>dismissed</p> </li> </ul>
-     */
-    inline ModifyDBRecommendationRequest& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The recommendation status to update.</p> <p>Valid values:</p> <ul> <li>
-     * <p>active</p> </li> <li> <p>dismissed</p> </li> </ul>
-     */
-    inline ModifyDBRecommendationRequest& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of recommended action status to update. You can update multiple
      * recommended actions at one time.</p>
      */
-    inline const Aws::Vector<RecommendedActionUpdate>& GetRecommendedActionUpdates() const{ return m_recommendedActionUpdates; }
-
-    /**
-     * <p>The list of recommended action status to update. You can update multiple
-     * recommended actions at one time.</p>
-     */
+    inline const Aws::Vector<RecommendedActionUpdate>& GetRecommendedActionUpdates() const { return m_recommendedActionUpdates; }
     inline bool RecommendedActionUpdatesHasBeenSet() const { return m_recommendedActionUpdatesHasBeenSet; }
-
-    /**
-     * <p>The list of recommended action status to update. You can update multiple
-     * recommended actions at one time.</p>
-     */
-    inline void SetRecommendedActionUpdates(const Aws::Vector<RecommendedActionUpdate>& value) { m_recommendedActionUpdatesHasBeenSet = true; m_recommendedActionUpdates = value; }
-
-    /**
-     * <p>The list of recommended action status to update. You can update multiple
-     * recommended actions at one time.</p>
-     */
-    inline void SetRecommendedActionUpdates(Aws::Vector<RecommendedActionUpdate>&& value) { m_recommendedActionUpdatesHasBeenSet = true; m_recommendedActionUpdates = std::move(value); }
-
-    /**
-     * <p>The list of recommended action status to update. You can update multiple
-     * recommended actions at one time.</p>
-     */
-    inline ModifyDBRecommendationRequest& WithRecommendedActionUpdates(const Aws::Vector<RecommendedActionUpdate>& value) { SetRecommendedActionUpdates(value); return *this;}
-
-    /**
-     * <p>The list of recommended action status to update. You can update multiple
-     * recommended actions at one time.</p>
-     */
-    inline ModifyDBRecommendationRequest& WithRecommendedActionUpdates(Aws::Vector<RecommendedActionUpdate>&& value) { SetRecommendedActionUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of recommended action status to update. You can update multiple
-     * recommended actions at one time.</p>
-     */
-    inline ModifyDBRecommendationRequest& AddRecommendedActionUpdates(const RecommendedActionUpdate& value) { m_recommendedActionUpdatesHasBeenSet = true; m_recommendedActionUpdates.push_back(value); return *this; }
-
-    /**
-     * <p>The list of recommended action status to update. You can update multiple
-     * recommended actions at one time.</p>
-     */
-    inline ModifyDBRecommendationRequest& AddRecommendedActionUpdates(RecommendedActionUpdate&& value) { m_recommendedActionUpdatesHasBeenSet = true; m_recommendedActionUpdates.push_back(std::move(value)); return *this; }
-
+    template<typename RecommendedActionUpdatesT = Aws::Vector<RecommendedActionUpdate>>
+    void SetRecommendedActionUpdates(RecommendedActionUpdatesT&& value) { m_recommendedActionUpdatesHasBeenSet = true; m_recommendedActionUpdates = std::forward<RecommendedActionUpdatesT>(value); }
+    template<typename RecommendedActionUpdatesT = Aws::Vector<RecommendedActionUpdate>>
+    ModifyDBRecommendationRequest& WithRecommendedActionUpdates(RecommendedActionUpdatesT&& value) { SetRecommendedActionUpdates(std::forward<RecommendedActionUpdatesT>(value)); return *this;}
+    template<typename RecommendedActionUpdatesT = RecommendedActionUpdate>
+    ModifyDBRecommendationRequest& AddRecommendedActionUpdates(RecommendedActionUpdatesT&& value) { m_recommendedActionUpdatesHasBeenSet = true; m_recommendedActionUpdates.emplace_back(std::forward<RecommendedActionUpdatesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_recommendationId;

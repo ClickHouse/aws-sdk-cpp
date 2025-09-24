@@ -18,13 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ModelDeployResult::ModelDeployResult() : 
-    m_endpointNameHasBeenSet(false)
-{
-}
-
-ModelDeployResult::ModelDeployResult(JsonView jsonValue) : 
-    m_endpointNameHasBeenSet(false)
+ModelDeployResult::ModelDeployResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ ModelDeployResult& ModelDeployResult::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EndpointName"))
   {
     m_endpointName = jsonValue.GetString("EndpointName");
-
     m_endpointNameHasBeenSet = true;
   }
-
   return *this;
 }
 

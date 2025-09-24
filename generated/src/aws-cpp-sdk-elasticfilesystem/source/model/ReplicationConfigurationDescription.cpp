@@ -19,25 +19,7 @@ namespace EFS
 namespace Model
 {
 
-ReplicationConfigurationDescription::ReplicationConfigurationDescription() : 
-    m_sourceFileSystemIdHasBeenSet(false),
-    m_sourceFileSystemRegionHasBeenSet(false),
-    m_sourceFileSystemArnHasBeenSet(false),
-    m_originalSourceFileSystemArnHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
-{
-}
-
-ReplicationConfigurationDescription::ReplicationConfigurationDescription(JsonView jsonValue) : 
-    m_sourceFileSystemIdHasBeenSet(false),
-    m_sourceFileSystemRegionHasBeenSet(false),
-    m_sourceFileSystemArnHasBeenSet(false),
-    m_originalSourceFileSystemArnHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
+ReplicationConfigurationDescription::ReplicationConfigurationDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -47,38 +29,28 @@ ReplicationConfigurationDescription& ReplicationConfigurationDescription::operat
   if(jsonValue.ValueExists("SourceFileSystemId"))
   {
     m_sourceFileSystemId = jsonValue.GetString("SourceFileSystemId");
-
     m_sourceFileSystemIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceFileSystemRegion"))
   {
     m_sourceFileSystemRegion = jsonValue.GetString("SourceFileSystemRegion");
-
     m_sourceFileSystemRegionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceFileSystemArn"))
   {
     m_sourceFileSystemArn = jsonValue.GetString("SourceFileSystemArn");
-
     m_sourceFileSystemArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OriginalSourceFileSystemArn"))
   {
     m_originalSourceFileSystemArn = jsonValue.GetString("OriginalSourceFileSystemArn");
-
     m_originalSourceFileSystemArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationTime"))
   {
     m_creationTime = jsonValue.GetDouble("CreationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Destinations"))
   {
     Aws::Utils::Array<JsonView> destinationsJsonList = jsonValue.GetArray("Destinations");
@@ -88,7 +60,11 @@ ReplicationConfigurationDescription& ReplicationConfigurationDescription::operat
     }
     m_destinationsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SourceFileSystemOwnerId"))
+  {
+    m_sourceFileSystemOwnerId = jsonValue.GetString("SourceFileSystemOwnerId");
+    m_sourceFileSystemOwnerIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -133,6 +109,12 @@ JsonValue ReplicationConfigurationDescription::Jsonize() const
      destinationsJsonList[destinationsIndex].AsObject(m_destinations[destinationsIndex].Jsonize());
    }
    payload.WithArray("Destinations", std::move(destinationsJsonList));
+
+  }
+
+  if(m_sourceFileSystemOwnerIdHasBeenSet)
+  {
+   payload.WithString("SourceFileSystemOwnerId", m_sourceFileSystemOwnerId);
 
   }
 

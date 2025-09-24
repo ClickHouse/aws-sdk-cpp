@@ -32,79 +32,39 @@ namespace Model
   class AwsRedshiftClusterEndpoint
   {
   public:
-    AWS_SECURITYHUB_API AwsRedshiftClusterEndpoint();
+    AWS_SECURITYHUB_API AwsRedshiftClusterEndpoint() = default;
     AWS_SECURITYHUB_API AwsRedshiftClusterEndpoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsRedshiftClusterEndpoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The DNS address of the cluster.</p>
      */
-    inline const Aws::String& GetAddress() const{ return m_address; }
-
-    /**
-     * <p>The DNS address of the cluster.</p>
-     */
+    inline const Aws::String& GetAddress() const { return m_address; }
     inline bool AddressHasBeenSet() const { return m_addressHasBeenSet; }
+    template<typename AddressT = Aws::String>
+    void SetAddress(AddressT&& value) { m_addressHasBeenSet = true; m_address = std::forward<AddressT>(value); }
+    template<typename AddressT = Aws::String>
+    AwsRedshiftClusterEndpoint& WithAddress(AddressT&& value) { SetAddress(std::forward<AddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DNS address of the cluster.</p>
-     */
-    inline void SetAddress(const Aws::String& value) { m_addressHasBeenSet = true; m_address = value; }
-
-    /**
-     * <p>The DNS address of the cluster.</p>
-     */
-    inline void SetAddress(Aws::String&& value) { m_addressHasBeenSet = true; m_address = std::move(value); }
-
-    /**
-     * <p>The DNS address of the cluster.</p>
-     */
-    inline void SetAddress(const char* value) { m_addressHasBeenSet = true; m_address.assign(value); }
-
-    /**
-     * <p>The DNS address of the cluster.</p>
-     */
-    inline AwsRedshiftClusterEndpoint& WithAddress(const Aws::String& value) { SetAddress(value); return *this;}
-
-    /**
-     * <p>The DNS address of the cluster.</p>
-     */
-    inline AwsRedshiftClusterEndpoint& WithAddress(Aws::String&& value) { SetAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The DNS address of the cluster.</p>
-     */
-    inline AwsRedshiftClusterEndpoint& WithAddress(const char* value) { SetAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The port that the database engine listens on.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The port that the database engine listens on.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The port that the database engine listens on.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The port that the database engine listens on.</p>
-     */
     inline AwsRedshiftClusterEndpoint& WithPort(int value) { SetPort(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_address;
     bool m_addressHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
   };
 

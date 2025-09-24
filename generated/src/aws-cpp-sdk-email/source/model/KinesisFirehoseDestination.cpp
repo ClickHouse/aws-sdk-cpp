@@ -20,15 +20,7 @@ namespace SES
 namespace Model
 {
 
-KinesisFirehoseDestination::KinesisFirehoseDestination() : 
-    m_iAMRoleARNHasBeenSet(false),
-    m_deliveryStreamARNHasBeenSet(false)
-{
-}
-
-KinesisFirehoseDestination::KinesisFirehoseDestination(const XmlNode& xmlNode) : 
-    m_iAMRoleARNHasBeenSet(false),
-    m_deliveryStreamARNHasBeenSet(false)
+KinesisFirehoseDestination::KinesisFirehoseDestination(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

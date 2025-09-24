@@ -30,35 +30,24 @@ namespace Model
   class ColdStorageOptions
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API ColdStorageOptions();
+    AWS_ELASTICSEARCHSERVICE_API ColdStorageOptions() = default;
     AWS_ELASTICSEARCHSERVICE_API ColdStorageOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API ColdStorageOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Enable cold storage option. Accepted values true or false</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Enable cold storage option. Accepted values true or false</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Enable cold storage option. Accepted values true or false</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Enable cold storage option. Accepted values true or false</p>
-     */
     inline ColdStorageOptions& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

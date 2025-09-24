@@ -18,81 +18,88 @@ namespace QConnect
 namespace Model
 {
 
-QuickResponseSearchResultData::QuickResponseSearchResultData() : 
-    m_attributesInterpolatedHasBeenSet(false),
-    m_attributesNotInterpolatedHasBeenSet(false),
-    m_channelsHasBeenSet(false),
-    m_contentTypeHasBeenSet(false),
-    m_contentsHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_groupingConfigurationHasBeenSet(false),
-    m_isActive(false),
-    m_isActiveHasBeenSet(false),
-    m_knowledgeBaseArnHasBeenSet(false),
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_languageHasBeenSet(false),
-    m_lastModifiedByHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_quickResponseArnHasBeenSet(false),
-    m_quickResponseIdHasBeenSet(false),
-    m_shortcutKeyHasBeenSet(false),
-    m_status(QuickResponseStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-QuickResponseSearchResultData::QuickResponseSearchResultData(JsonView jsonValue) : 
-    m_attributesInterpolatedHasBeenSet(false),
-    m_attributesNotInterpolatedHasBeenSet(false),
-    m_channelsHasBeenSet(false),
-    m_contentTypeHasBeenSet(false),
-    m_contentsHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_groupingConfigurationHasBeenSet(false),
-    m_isActive(false),
-    m_isActiveHasBeenSet(false),
-    m_knowledgeBaseArnHasBeenSet(false),
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_languageHasBeenSet(false),
-    m_lastModifiedByHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_quickResponseArnHasBeenSet(false),
-    m_quickResponseIdHasBeenSet(false),
-    m_shortcutKeyHasBeenSet(false),
-    m_status(QuickResponseStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+QuickResponseSearchResultData::QuickResponseSearchResultData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 QuickResponseSearchResultData& QuickResponseSearchResultData::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("attributesInterpolated"))
+  if(jsonValue.ValueExists("quickResponseArn"))
   {
-    Aws::Utils::Array<JsonView> attributesInterpolatedJsonList = jsonValue.GetArray("attributesInterpolated");
-    for(unsigned attributesInterpolatedIndex = 0; attributesInterpolatedIndex < attributesInterpolatedJsonList.GetLength(); ++attributesInterpolatedIndex)
-    {
-      m_attributesInterpolated.push_back(attributesInterpolatedJsonList[attributesInterpolatedIndex].AsString());
-    }
-    m_attributesInterpolatedHasBeenSet = true;
+    m_quickResponseArn = jsonValue.GetString("quickResponseArn");
+    m_quickResponseArnHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("attributesNotInterpolated"))
+  if(jsonValue.ValueExists("quickResponseId"))
   {
-    Aws::Utils::Array<JsonView> attributesNotInterpolatedJsonList = jsonValue.GetArray("attributesNotInterpolated");
-    for(unsigned attributesNotInterpolatedIndex = 0; attributesNotInterpolatedIndex < attributesNotInterpolatedJsonList.GetLength(); ++attributesNotInterpolatedIndex)
-    {
-      m_attributesNotInterpolated.push_back(attributesNotInterpolatedJsonList[attributesNotInterpolatedIndex].AsString());
-    }
-    m_attributesNotInterpolatedHasBeenSet = true;
+    m_quickResponseId = jsonValue.GetString("quickResponseId");
+    m_quickResponseIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("knowledgeBaseArn"))
+  {
+    m_knowledgeBaseArn = jsonValue.GetString("knowledgeBaseArn");
+    m_knowledgeBaseArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("knowledgeBaseId"))
+  {
+    m_knowledgeBaseId = jsonValue.GetString("knowledgeBaseId");
+    m_knowledgeBaseIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("name"))
+  {
+    m_name = jsonValue.GetString("name");
+    m_nameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("contentType"))
+  {
+    m_contentType = jsonValue.GetString("contentType");
+    m_contentTypeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("status"))
+  {
+    m_status = QuickResponseStatusMapper::GetQuickResponseStatusForName(jsonValue.GetString("status"));
+    m_statusHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("contents"))
+  {
+    m_contents = jsonValue.GetObject("contents");
+    m_contentsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("createdTime"))
+  {
+    m_createdTime = jsonValue.GetDouble("createdTime");
+    m_createdTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("lastModifiedTime"))
+  {
+    m_lastModifiedTime = jsonValue.GetDouble("lastModifiedTime");
+    m_lastModifiedTimeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("isActive"))
+  {
+    m_isActive = jsonValue.GetBool("isActive");
+    m_isActiveHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("description"))
+  {
+    m_description = jsonValue.GetString("description");
+    m_descriptionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("groupingConfiguration"))
+  {
+    m_groupingConfiguration = jsonValue.GetObject("groupingConfiguration");
+    m_groupingConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("shortcutKey"))
+  {
+    m_shortcutKey = jsonValue.GetString("shortcutKey");
+    m_shortcutKeyHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("lastModifiedBy"))
+  {
+    m_lastModifiedBy = jsonValue.GetString("lastModifiedBy");
+    m_lastModifiedByHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("channels"))
   {
     Aws::Utils::Array<JsonView> channelsJsonList = jsonValue.GetArray("channels");
@@ -102,119 +109,29 @@ QuickResponseSearchResultData& QuickResponseSearchResultData::operator =(JsonVie
     }
     m_channelsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("contentType"))
-  {
-    m_contentType = jsonValue.GetString("contentType");
-
-    m_contentTypeHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("contents"))
-  {
-    m_contents = jsonValue.GetObject("contents");
-
-    m_contentsHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("createdTime"))
-  {
-    m_createdTime = jsonValue.GetDouble("createdTime");
-
-    m_createdTimeHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("description"))
-  {
-    m_description = jsonValue.GetString("description");
-
-    m_descriptionHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("groupingConfiguration"))
-  {
-    m_groupingConfiguration = jsonValue.GetObject("groupingConfiguration");
-
-    m_groupingConfigurationHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("isActive"))
-  {
-    m_isActive = jsonValue.GetBool("isActive");
-
-    m_isActiveHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("knowledgeBaseArn"))
-  {
-    m_knowledgeBaseArn = jsonValue.GetString("knowledgeBaseArn");
-
-    m_knowledgeBaseArnHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("knowledgeBaseId"))
-  {
-    m_knowledgeBaseId = jsonValue.GetString("knowledgeBaseId");
-
-    m_knowledgeBaseIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("language"))
   {
     m_language = jsonValue.GetString("language");
-
     m_languageHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("lastModifiedBy"))
+  if(jsonValue.ValueExists("attributesNotInterpolated"))
   {
-    m_lastModifiedBy = jsonValue.GetString("lastModifiedBy");
-
-    m_lastModifiedByHasBeenSet = true;
+    Aws::Utils::Array<JsonView> attributesNotInterpolatedJsonList = jsonValue.GetArray("attributesNotInterpolated");
+    for(unsigned attributesNotInterpolatedIndex = 0; attributesNotInterpolatedIndex < attributesNotInterpolatedJsonList.GetLength(); ++attributesNotInterpolatedIndex)
+    {
+      m_attributesNotInterpolated.push_back(attributesNotInterpolatedJsonList[attributesNotInterpolatedIndex].AsString());
+    }
+    m_attributesNotInterpolatedHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("lastModifiedTime"))
+  if(jsonValue.ValueExists("attributesInterpolated"))
   {
-    m_lastModifiedTime = jsonValue.GetDouble("lastModifiedTime");
-
-    m_lastModifiedTimeHasBeenSet = true;
+    Aws::Utils::Array<JsonView> attributesInterpolatedJsonList = jsonValue.GetArray("attributesInterpolated");
+    for(unsigned attributesInterpolatedIndex = 0; attributesInterpolatedIndex < attributesInterpolatedJsonList.GetLength(); ++attributesInterpolatedIndex)
+    {
+      m_attributesInterpolated.push_back(attributesInterpolatedJsonList[attributesInterpolatedIndex].AsString());
+    }
+    m_attributesInterpolatedHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("name"))
-  {
-    m_name = jsonValue.GetString("name");
-
-    m_nameHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("quickResponseArn"))
-  {
-    m_quickResponseArn = jsonValue.GetString("quickResponseArn");
-
-    m_quickResponseArnHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("quickResponseId"))
-  {
-    m_quickResponseId = jsonValue.GetString("quickResponseId");
-
-    m_quickResponseIdHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("shortcutKey"))
-  {
-    m_shortcutKey = jsonValue.GetString("shortcutKey");
-
-    m_shortcutKeyHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("status"))
-  {
-    m_status = QuickResponseStatusMapper::GetQuickResponseStatusForName(jsonValue.GetString("status"));
-
-    m_statusHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -224,7 +141,6 @@ QuickResponseSearchResultData& QuickResponseSearchResultData::operator =(JsonVie
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -232,71 +148,15 @@ JsonValue QuickResponseSearchResultData::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_attributesInterpolatedHasBeenSet)
+  if(m_quickResponseArnHasBeenSet)
   {
-   Aws::Utils::Array<JsonValue> attributesInterpolatedJsonList(m_attributesInterpolated.size());
-   for(unsigned attributesInterpolatedIndex = 0; attributesInterpolatedIndex < attributesInterpolatedJsonList.GetLength(); ++attributesInterpolatedIndex)
-   {
-     attributesInterpolatedJsonList[attributesInterpolatedIndex].AsString(m_attributesInterpolated[attributesInterpolatedIndex]);
-   }
-   payload.WithArray("attributesInterpolated", std::move(attributesInterpolatedJsonList));
+   payload.WithString("quickResponseArn", m_quickResponseArn);
 
   }
 
-  if(m_attributesNotInterpolatedHasBeenSet)
+  if(m_quickResponseIdHasBeenSet)
   {
-   Aws::Utils::Array<JsonValue> attributesNotInterpolatedJsonList(m_attributesNotInterpolated.size());
-   for(unsigned attributesNotInterpolatedIndex = 0; attributesNotInterpolatedIndex < attributesNotInterpolatedJsonList.GetLength(); ++attributesNotInterpolatedIndex)
-   {
-     attributesNotInterpolatedJsonList[attributesNotInterpolatedIndex].AsString(m_attributesNotInterpolated[attributesNotInterpolatedIndex]);
-   }
-   payload.WithArray("attributesNotInterpolated", std::move(attributesNotInterpolatedJsonList));
-
-  }
-
-  if(m_channelsHasBeenSet)
-  {
-   Aws::Utils::Array<JsonValue> channelsJsonList(m_channels.size());
-   for(unsigned channelsIndex = 0; channelsIndex < channelsJsonList.GetLength(); ++channelsIndex)
-   {
-     channelsJsonList[channelsIndex].AsString(m_channels[channelsIndex]);
-   }
-   payload.WithArray("channels", std::move(channelsJsonList));
-
-  }
-
-  if(m_contentTypeHasBeenSet)
-  {
-   payload.WithString("contentType", m_contentType);
-
-  }
-
-  if(m_contentsHasBeenSet)
-  {
-   payload.WithObject("contents", m_contents.Jsonize());
-
-  }
-
-  if(m_createdTimeHasBeenSet)
-  {
-   payload.WithDouble("createdTime", m_createdTime.SecondsWithMSPrecision());
-  }
-
-  if(m_descriptionHasBeenSet)
-  {
-   payload.WithString("description", m_description);
-
-  }
-
-  if(m_groupingConfigurationHasBeenSet)
-  {
-   payload.WithObject("groupingConfiguration", m_groupingConfiguration.Jsonize());
-
-  }
-
-  if(m_isActiveHasBeenSet)
-  {
-   payload.WithBool("isActive", m_isActive);
+   payload.WithString("quickResponseId", m_quickResponseId);
 
   }
 
@@ -312,16 +172,32 @@ JsonValue QuickResponseSearchResultData::Jsonize() const
 
   }
 
-  if(m_languageHasBeenSet)
+  if(m_nameHasBeenSet)
   {
-   payload.WithString("language", m_language);
+   payload.WithString("name", m_name);
 
   }
 
-  if(m_lastModifiedByHasBeenSet)
+  if(m_contentTypeHasBeenSet)
   {
-   payload.WithString("lastModifiedBy", m_lastModifiedBy);
+   payload.WithString("contentType", m_contentType);
 
+  }
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("status", QuickResponseStatusMapper::GetNameForQuickResponseStatus(m_status));
+  }
+
+  if(m_contentsHasBeenSet)
+  {
+   payload.WithObject("contents", m_contents.Jsonize());
+
+  }
+
+  if(m_createdTimeHasBeenSet)
+  {
+   payload.WithDouble("createdTime", m_createdTime.SecondsWithMSPrecision());
   }
 
   if(m_lastModifiedTimeHasBeenSet)
@@ -329,21 +205,21 @@ JsonValue QuickResponseSearchResultData::Jsonize() const
    payload.WithDouble("lastModifiedTime", m_lastModifiedTime.SecondsWithMSPrecision());
   }
 
-  if(m_nameHasBeenSet)
+  if(m_isActiveHasBeenSet)
   {
-   payload.WithString("name", m_name);
+   payload.WithBool("isActive", m_isActive);
 
   }
 
-  if(m_quickResponseArnHasBeenSet)
+  if(m_descriptionHasBeenSet)
   {
-   payload.WithString("quickResponseArn", m_quickResponseArn);
+   payload.WithString("description", m_description);
 
   }
 
-  if(m_quickResponseIdHasBeenSet)
+  if(m_groupingConfigurationHasBeenSet)
   {
-   payload.WithString("quickResponseId", m_quickResponseId);
+   payload.WithObject("groupingConfiguration", m_groupingConfiguration.Jsonize());
 
   }
 
@@ -353,9 +229,49 @@ JsonValue QuickResponseSearchResultData::Jsonize() const
 
   }
 
-  if(m_statusHasBeenSet)
+  if(m_lastModifiedByHasBeenSet)
   {
-   payload.WithString("status", QuickResponseStatusMapper::GetNameForQuickResponseStatus(m_status));
+   payload.WithString("lastModifiedBy", m_lastModifiedBy);
+
+  }
+
+  if(m_channelsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> channelsJsonList(m_channels.size());
+   for(unsigned channelsIndex = 0; channelsIndex < channelsJsonList.GetLength(); ++channelsIndex)
+   {
+     channelsJsonList[channelsIndex].AsString(m_channels[channelsIndex]);
+   }
+   payload.WithArray("channels", std::move(channelsJsonList));
+
+  }
+
+  if(m_languageHasBeenSet)
+  {
+   payload.WithString("language", m_language);
+
+  }
+
+  if(m_attributesNotInterpolatedHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> attributesNotInterpolatedJsonList(m_attributesNotInterpolated.size());
+   for(unsigned attributesNotInterpolatedIndex = 0; attributesNotInterpolatedIndex < attributesNotInterpolatedJsonList.GetLength(); ++attributesNotInterpolatedIndex)
+   {
+     attributesNotInterpolatedJsonList[attributesNotInterpolatedIndex].AsString(m_attributesNotInterpolated[attributesNotInterpolatedIndex]);
+   }
+   payload.WithArray("attributesNotInterpolated", std::move(attributesNotInterpolatedJsonList));
+
+  }
+
+  if(m_attributesInterpolatedHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> attributesInterpolatedJsonList(m_attributesInterpolated.size());
+   for(unsigned attributesInterpolatedIndex = 0; attributesInterpolatedIndex < attributesInterpolatedJsonList.GetLength(); ++attributesInterpolatedIndex)
+   {
+     attributesInterpolatedJsonList[attributesInterpolatedIndex].AsString(m_attributesInterpolated[attributesInterpolatedIndex]);
+   }
+   payload.WithArray("attributesInterpolated", std::move(attributesInterpolatedJsonList));
+
   }
 
   if(m_tagsHasBeenSet)

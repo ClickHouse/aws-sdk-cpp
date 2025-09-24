@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SheetLayoutElementMaximizationOption::SheetLayoutElementMaximizationOption() : 
-    m_availabilityStatus(DashboardBehavior::NOT_SET),
-    m_availabilityStatusHasBeenSet(false)
-{
-}
-
-SheetLayoutElementMaximizationOption::SheetLayoutElementMaximizationOption(JsonView jsonValue) : 
-    m_availabilityStatus(DashboardBehavior::NOT_SET),
-    m_availabilityStatusHasBeenSet(false)
+SheetLayoutElementMaximizationOption::SheetLayoutElementMaximizationOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SheetLayoutElementMaximizationOption& SheetLayoutElementMaximizationOption::oper
   if(jsonValue.ValueExists("AvailabilityStatus"))
   {
     m_availabilityStatus = DashboardBehaviorMapper::GetDashboardBehaviorForName(jsonValue.GetString("AvailabilityStatus"));
-
     m_availabilityStatusHasBeenSet = true;
   }
-
   return *this;
 }
 

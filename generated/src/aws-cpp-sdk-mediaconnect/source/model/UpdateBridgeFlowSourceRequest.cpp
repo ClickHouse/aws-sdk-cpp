@@ -18,15 +18,7 @@ namespace MediaConnect
 namespace Model
 {
 
-UpdateBridgeFlowSourceRequest::UpdateBridgeFlowSourceRequest() : 
-    m_flowArnHasBeenSet(false),
-    m_flowVpcInterfaceAttachmentHasBeenSet(false)
-{
-}
-
-UpdateBridgeFlowSourceRequest::UpdateBridgeFlowSourceRequest(JsonView jsonValue) : 
-    m_flowArnHasBeenSet(false),
-    m_flowVpcInterfaceAttachmentHasBeenSet(false)
+UpdateBridgeFlowSourceRequest::UpdateBridgeFlowSourceRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ UpdateBridgeFlowSourceRequest& UpdateBridgeFlowSourceRequest::operator =(JsonVie
   if(jsonValue.ValueExists("flowArn"))
   {
     m_flowArn = jsonValue.GetString("flowArn");
-
     m_flowArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("flowVpcInterfaceAttachment"))
   {
     m_flowVpcInterfaceAttachment = jsonValue.GetObject("flowVpcInterfaceAttachment");
-
     m_flowVpcInterfaceAttachmentHasBeenSet = true;
   }
-
   return *this;
 }
 

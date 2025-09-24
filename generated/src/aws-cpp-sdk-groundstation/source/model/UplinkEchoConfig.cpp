@@ -18,17 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-UplinkEchoConfig::UplinkEchoConfig() : 
-    m_antennaUplinkConfigArnHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-UplinkEchoConfig::UplinkEchoConfig(JsonView jsonValue) : 
-    m_antennaUplinkConfigArnHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+UplinkEchoConfig::UplinkEchoConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ UplinkEchoConfig& UplinkEchoConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("antennaUplinkConfigArn"))
   {
     m_antennaUplinkConfigArn = jsonValue.GetString("antennaUplinkConfigArn");
-
     m_antennaUplinkConfigArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("enabled"))
   {
     m_enabled = jsonValue.GetBool("enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

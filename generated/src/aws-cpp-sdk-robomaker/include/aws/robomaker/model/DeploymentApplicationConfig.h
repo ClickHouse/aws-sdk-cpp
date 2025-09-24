@@ -33,124 +33,47 @@ namespace Model
   class DeploymentApplicationConfig
   {
   public:
-    AWS_ROBOMAKER_API DeploymentApplicationConfig();
+    AWS_ROBOMAKER_API DeploymentApplicationConfig() = default;
     AWS_ROBOMAKER_API DeploymentApplicationConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROBOMAKER_API DeploymentApplicationConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROBOMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the robot application.</p>
      */
-    inline const Aws::String& GetApplication() const{ return m_application; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the robot application.</p>
-     */
+    inline const Aws::String& GetApplication() const { return m_application; }
     inline bool ApplicationHasBeenSet() const { return m_applicationHasBeenSet; }
+    template<typename ApplicationT = Aws::String>
+    void SetApplication(ApplicationT&& value) { m_applicationHasBeenSet = true; m_application = std::forward<ApplicationT>(value); }
+    template<typename ApplicationT = Aws::String>
+    DeploymentApplicationConfig& WithApplication(ApplicationT&& value) { SetApplication(std::forward<ApplicationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the robot application.</p>
-     */
-    inline void SetApplication(const Aws::String& value) { m_applicationHasBeenSet = true; m_application = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the robot application.</p>
-     */
-    inline void SetApplication(Aws::String&& value) { m_applicationHasBeenSet = true; m_application = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the robot application.</p>
-     */
-    inline void SetApplication(const char* value) { m_applicationHasBeenSet = true; m_application.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the robot application.</p>
-     */
-    inline DeploymentApplicationConfig& WithApplication(const Aws::String& value) { SetApplication(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the robot application.</p>
-     */
-    inline DeploymentApplicationConfig& WithApplication(Aws::String&& value) { SetApplication(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the robot application.</p>
-     */
-    inline DeploymentApplicationConfig& WithApplication(const char* value) { SetApplication(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the application.</p>
      */
-    inline const Aws::String& GetApplicationVersion() const{ return m_applicationVersion; }
-
-    /**
-     * <p>The version of the application.</p>
-     */
+    inline const Aws::String& GetApplicationVersion() const { return m_applicationVersion; }
     inline bool ApplicationVersionHasBeenSet() const { return m_applicationVersionHasBeenSet; }
+    template<typename ApplicationVersionT = Aws::String>
+    void SetApplicationVersion(ApplicationVersionT&& value) { m_applicationVersionHasBeenSet = true; m_applicationVersion = std::forward<ApplicationVersionT>(value); }
+    template<typename ApplicationVersionT = Aws::String>
+    DeploymentApplicationConfig& WithApplicationVersion(ApplicationVersionT&& value) { SetApplicationVersion(std::forward<ApplicationVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the application.</p>
-     */
-    inline void SetApplicationVersion(const Aws::String& value) { m_applicationVersionHasBeenSet = true; m_applicationVersion = value; }
-
-    /**
-     * <p>The version of the application.</p>
-     */
-    inline void SetApplicationVersion(Aws::String&& value) { m_applicationVersionHasBeenSet = true; m_applicationVersion = std::move(value); }
-
-    /**
-     * <p>The version of the application.</p>
-     */
-    inline void SetApplicationVersion(const char* value) { m_applicationVersionHasBeenSet = true; m_applicationVersion.assign(value); }
-
-    /**
-     * <p>The version of the application.</p>
-     */
-    inline DeploymentApplicationConfig& WithApplicationVersion(const Aws::String& value) { SetApplicationVersion(value); return *this;}
-
-    /**
-     * <p>The version of the application.</p>
-     */
-    inline DeploymentApplicationConfig& WithApplicationVersion(Aws::String&& value) { SetApplicationVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the application.</p>
-     */
-    inline DeploymentApplicationConfig& WithApplicationVersion(const char* value) { SetApplicationVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The launch configuration.</p>
      */
-    inline const DeploymentLaunchConfig& GetLaunchConfig() const{ return m_launchConfig; }
-
-    /**
-     * <p>The launch configuration.</p>
-     */
+    inline const DeploymentLaunchConfig& GetLaunchConfig() const { return m_launchConfig; }
     inline bool LaunchConfigHasBeenSet() const { return m_launchConfigHasBeenSet; }
-
-    /**
-     * <p>The launch configuration.</p>
-     */
-    inline void SetLaunchConfig(const DeploymentLaunchConfig& value) { m_launchConfigHasBeenSet = true; m_launchConfig = value; }
-
-    /**
-     * <p>The launch configuration.</p>
-     */
-    inline void SetLaunchConfig(DeploymentLaunchConfig&& value) { m_launchConfigHasBeenSet = true; m_launchConfig = std::move(value); }
-
-    /**
-     * <p>The launch configuration.</p>
-     */
-    inline DeploymentApplicationConfig& WithLaunchConfig(const DeploymentLaunchConfig& value) { SetLaunchConfig(value); return *this;}
-
-    /**
-     * <p>The launch configuration.</p>
-     */
-    inline DeploymentApplicationConfig& WithLaunchConfig(DeploymentLaunchConfig&& value) { SetLaunchConfig(std::move(value)); return *this;}
-
+    template<typename LaunchConfigT = DeploymentLaunchConfig>
+    void SetLaunchConfig(LaunchConfigT&& value) { m_launchConfigHasBeenSet = true; m_launchConfig = std::forward<LaunchConfigT>(value); }
+    template<typename LaunchConfigT = DeploymentLaunchConfig>
+    DeploymentApplicationConfig& WithLaunchConfig(LaunchConfigT&& value) { SetLaunchConfig(std::forward<LaunchConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_application;

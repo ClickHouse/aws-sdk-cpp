@@ -18,17 +18,7 @@ namespace Detective
 namespace Model
 {
 
-NewAsoDetail::NewAsoDetail() : 
-    m_asoHasBeenSet(false),
-    m_isNewForEntireAccount(false),
-    m_isNewForEntireAccountHasBeenSet(false)
-{
-}
-
-NewAsoDetail::NewAsoDetail(JsonView jsonValue) : 
-    m_asoHasBeenSet(false),
-    m_isNewForEntireAccount(false),
-    m_isNewForEntireAccountHasBeenSet(false)
+NewAsoDetail::NewAsoDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ NewAsoDetail& NewAsoDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Aso"))
   {
     m_aso = jsonValue.GetString("Aso");
-
     m_asoHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IsNewForEntireAccount"))
   {
     m_isNewForEntireAccount = jsonValue.GetBool("IsNewForEntireAccount");
-
     m_isNewForEntireAccountHasBeenSet = true;
   }
-
   return *this;
 }
 

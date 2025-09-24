@@ -33,93 +33,35 @@ namespace Model
   class ShortFormatText
   {
   public:
-    AWS_QUICKSIGHT_API ShortFormatText();
+    AWS_QUICKSIGHT_API ShortFormatText() = default;
     AWS_QUICKSIGHT_API ShortFormatText(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ShortFormatText& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Plain text format.</p>
      */
-    inline const Aws::String& GetPlainText() const{ return m_plainText; }
-
-    /**
-     * <p>Plain text format.</p>
-     */
+    inline const Aws::String& GetPlainText() const { return m_plainText; }
     inline bool PlainTextHasBeenSet() const { return m_plainTextHasBeenSet; }
+    template<typename PlainTextT = Aws::String>
+    void SetPlainText(PlainTextT&& value) { m_plainTextHasBeenSet = true; m_plainText = std::forward<PlainTextT>(value); }
+    template<typename PlainTextT = Aws::String>
+    ShortFormatText& WithPlainText(PlainTextT&& value) { SetPlainText(std::forward<PlainTextT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Plain text format.</p>
-     */
-    inline void SetPlainText(const Aws::String& value) { m_plainTextHasBeenSet = true; m_plainText = value; }
-
-    /**
-     * <p>Plain text format.</p>
-     */
-    inline void SetPlainText(Aws::String&& value) { m_plainTextHasBeenSet = true; m_plainText = std::move(value); }
-
-    /**
-     * <p>Plain text format.</p>
-     */
-    inline void SetPlainText(const char* value) { m_plainTextHasBeenSet = true; m_plainText.assign(value); }
-
-    /**
-     * <p>Plain text format.</p>
-     */
-    inline ShortFormatText& WithPlainText(const Aws::String& value) { SetPlainText(value); return *this;}
-
-    /**
-     * <p>Plain text format.</p>
-     */
-    inline ShortFormatText& WithPlainText(Aws::String&& value) { SetPlainText(std::move(value)); return *this;}
-
-    /**
-     * <p>Plain text format.</p>
-     */
-    inline ShortFormatText& WithPlainText(const char* value) { SetPlainText(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Rich text. Examples of rich text include bold, underline, and italics.</p>
      */
-    inline const Aws::String& GetRichText() const{ return m_richText; }
-
-    /**
-     * <p>Rich text. Examples of rich text include bold, underline, and italics.</p>
-     */
+    inline const Aws::String& GetRichText() const { return m_richText; }
     inline bool RichTextHasBeenSet() const { return m_richTextHasBeenSet; }
-
-    /**
-     * <p>Rich text. Examples of rich text include bold, underline, and italics.</p>
-     */
-    inline void SetRichText(const Aws::String& value) { m_richTextHasBeenSet = true; m_richText = value; }
-
-    /**
-     * <p>Rich text. Examples of rich text include bold, underline, and italics.</p>
-     */
-    inline void SetRichText(Aws::String&& value) { m_richTextHasBeenSet = true; m_richText = std::move(value); }
-
-    /**
-     * <p>Rich text. Examples of rich text include bold, underline, and italics.</p>
-     */
-    inline void SetRichText(const char* value) { m_richTextHasBeenSet = true; m_richText.assign(value); }
-
-    /**
-     * <p>Rich text. Examples of rich text include bold, underline, and italics.</p>
-     */
-    inline ShortFormatText& WithRichText(const Aws::String& value) { SetRichText(value); return *this;}
-
-    /**
-     * <p>Rich text. Examples of rich text include bold, underline, and italics.</p>
-     */
-    inline ShortFormatText& WithRichText(Aws::String&& value) { SetRichText(std::move(value)); return *this;}
-
-    /**
-     * <p>Rich text. Examples of rich text include bold, underline, and italics.</p>
-     */
-    inline ShortFormatText& WithRichText(const char* value) { SetRichText(value); return *this;}
-
+    template<typename RichTextT = Aws::String>
+    void SetRichText(RichTextT&& value) { m_richTextHasBeenSet = true; m_richText = std::forward<RichTextT>(value); }
+    template<typename RichTextT = Aws::String>
+    ShortFormatText& WithRichText(RichTextT&& value) { SetRichText(std::forward<RichTextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_plainText;

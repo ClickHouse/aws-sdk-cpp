@@ -15,18 +15,6 @@ using namespace Aws::Utils::Stream;
 using namespace Aws::Utils;
 using namespace Aws;
 
-InvokeEndpointWithResponseStreamRequest::InvokeEndpointWithResponseStreamRequest() : 
-    m_endpointNameHasBeenSet(false),
-    m_acceptHasBeenSet(false),
-    m_customAttributesHasBeenSet(false),
-    m_targetVariantHasBeenSet(false),
-    m_targetContainerHostnameHasBeenSet(false),
-    m_inferenceIdHasBeenSet(false),
-    m_inferenceComponentNameHasBeenSet(false),
-    m_handler(), m_decoder(Aws::Utils::Event::EventStreamDecoder(&m_handler))
-{
-}
-
 
 
 Aws::Http::HeaderValueCollection InvokeEndpointWithResponseStreamRequest::GetRequestSpecificHeaders() const
@@ -72,6 +60,13 @@ Aws::Http::HeaderValueCollection InvokeEndpointWithResponseStreamRequest::GetReq
   {
     ss << m_inferenceComponentName;
     headers.emplace("x-amzn-sagemaker-inference-component",  ss.str());
+    ss.str("");
+  }
+
+  if(m_sessionIdHasBeenSet)
+  {
+    ss << m_sessionId;
+    headers.emplace("x-amzn-sagemaker-session-id",  ss.str());
     ss.str("");
   }
 

@@ -18,13 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-ConversationLevelTestResults::ConversationLevelTestResults() : 
-    m_itemsHasBeenSet(false)
-{
-}
-
-ConversationLevelTestResults::ConversationLevelTestResults(JsonView jsonValue) : 
-    m_itemsHasBeenSet(false)
+ConversationLevelTestResults::ConversationLevelTestResults(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ConversationLevelTestResults& ConversationLevelTestResults::operator =(JsonView 
     }
     m_itemsHasBeenSet = true;
   }
-
   return *this;
 }
 

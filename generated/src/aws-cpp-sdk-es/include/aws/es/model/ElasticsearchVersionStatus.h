@@ -33,97 +33,37 @@ namespace Model
   class ElasticsearchVersionStatus
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API ElasticsearchVersionStatus();
+    AWS_ELASTICSEARCHSERVICE_API ElasticsearchVersionStatus() = default;
     AWS_ELASTICSEARCHSERVICE_API ElasticsearchVersionStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API ElasticsearchVersionStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies the Elasticsearch version for the specified Elasticsearch
      * domain.</p>
      */
-    inline const Aws::String& GetOptions() const{ return m_options; }
-
-    /**
-     * <p> Specifies the Elasticsearch version for the specified Elasticsearch
-     * domain.</p>
-     */
+    inline const Aws::String& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = Aws::String>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = Aws::String>
+    ElasticsearchVersionStatus& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies the Elasticsearch version for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline void SetOptions(const Aws::String& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p> Specifies the Elasticsearch version for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline void SetOptions(Aws::String&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p> Specifies the Elasticsearch version for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline void SetOptions(const char* value) { m_optionsHasBeenSet = true; m_options.assign(value); }
-
-    /**
-     * <p> Specifies the Elasticsearch version for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchVersionStatus& WithOptions(const Aws::String& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p> Specifies the Elasticsearch version for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchVersionStatus& WithOptions(Aws::String&& value) { SetOptions(std::move(value)); return *this;}
-
-    /**
-     * <p> Specifies the Elasticsearch version for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline ElasticsearchVersionStatus& WithOptions(const char* value) { SetOptions(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies the status of the Elasticsearch version options for the specified
      * Elasticsearch domain.</p>
      */
-    inline const OptionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> Specifies the status of the Elasticsearch version options for the specified
-     * Elasticsearch domain.</p>
-     */
+    inline const OptionStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p> Specifies the status of the Elasticsearch version options for the specified
-     * Elasticsearch domain.</p>
-     */
-    inline void SetStatus(const OptionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> Specifies the status of the Elasticsearch version options for the specified
-     * Elasticsearch domain.</p>
-     */
-    inline void SetStatus(OptionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> Specifies the status of the Elasticsearch version options for the specified
-     * Elasticsearch domain.</p>
-     */
-    inline ElasticsearchVersionStatus& WithStatus(const OptionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> Specifies the status of the Elasticsearch version options for the specified
-     * Elasticsearch domain.</p>
-     */
-    inline ElasticsearchVersionStatus& WithStatus(OptionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    template<typename StatusT = OptionStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = OptionStatus>
+    ElasticsearchVersionStatus& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_options;

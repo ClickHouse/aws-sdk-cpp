@@ -22,7 +22,7 @@ namespace Model
   class StartBgpFailoverTestRequest : public DirectConnectRequest
   {
   public:
-    AWS_DIRECTCONNECT_API StartBgpFailoverTestRequest();
+    AWS_DIRECTCONNECT_API StartBgpFailoverTestRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,121 +35,43 @@ namespace Model
     AWS_DIRECTCONNECT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the virtual interface you want to test.</p>
      */
-    inline const Aws::String& GetVirtualInterfaceId() const{ return m_virtualInterfaceId; }
-
-    /**
-     * <p>The ID of the virtual interface you want to test.</p>
-     */
+    inline const Aws::String& GetVirtualInterfaceId() const { return m_virtualInterfaceId; }
     inline bool VirtualInterfaceIdHasBeenSet() const { return m_virtualInterfaceIdHasBeenSet; }
+    template<typename VirtualInterfaceIdT = Aws::String>
+    void SetVirtualInterfaceId(VirtualInterfaceIdT&& value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId = std::forward<VirtualInterfaceIdT>(value); }
+    template<typename VirtualInterfaceIdT = Aws::String>
+    StartBgpFailoverTestRequest& WithVirtualInterfaceId(VirtualInterfaceIdT&& value) { SetVirtualInterfaceId(std::forward<VirtualInterfaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the virtual interface you want to test.</p>
-     */
-    inline void SetVirtualInterfaceId(const Aws::String& value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId = value; }
-
-    /**
-     * <p>The ID of the virtual interface you want to test.</p>
-     */
-    inline void SetVirtualInterfaceId(Aws::String&& value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the virtual interface you want to test.</p>
-     */
-    inline void SetVirtualInterfaceId(const char* value) { m_virtualInterfaceIdHasBeenSet = true; m_virtualInterfaceId.assign(value); }
-
-    /**
-     * <p>The ID of the virtual interface you want to test.</p>
-     */
-    inline StartBgpFailoverTestRequest& WithVirtualInterfaceId(const Aws::String& value) { SetVirtualInterfaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the virtual interface you want to test.</p>
-     */
-    inline StartBgpFailoverTestRequest& WithVirtualInterfaceId(Aws::String&& value) { SetVirtualInterfaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the virtual interface you want to test.</p>
-     */
-    inline StartBgpFailoverTestRequest& WithVirtualInterfaceId(const char* value) { SetVirtualInterfaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The BGP peers to place in the DOWN state.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetBgpPeers() const{ return m_bgpPeers; }
-
-    /**
-     * <p>The BGP peers to place in the DOWN state.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetBgpPeers() const { return m_bgpPeers; }
     inline bool BgpPeersHasBeenSet() const { return m_bgpPeersHasBeenSet; }
+    template<typename BgpPeersT = Aws::Vector<Aws::String>>
+    void SetBgpPeers(BgpPeersT&& value) { m_bgpPeersHasBeenSet = true; m_bgpPeers = std::forward<BgpPeersT>(value); }
+    template<typename BgpPeersT = Aws::Vector<Aws::String>>
+    StartBgpFailoverTestRequest& WithBgpPeers(BgpPeersT&& value) { SetBgpPeers(std::forward<BgpPeersT>(value)); return *this;}
+    template<typename BgpPeersT = Aws::String>
+    StartBgpFailoverTestRequest& AddBgpPeers(BgpPeersT&& value) { m_bgpPeersHasBeenSet = true; m_bgpPeers.emplace_back(std::forward<BgpPeersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The BGP peers to place in the DOWN state.</p>
-     */
-    inline void SetBgpPeers(const Aws::Vector<Aws::String>& value) { m_bgpPeersHasBeenSet = true; m_bgpPeers = value; }
-
-    /**
-     * <p>The BGP peers to place in the DOWN state.</p>
-     */
-    inline void SetBgpPeers(Aws::Vector<Aws::String>&& value) { m_bgpPeersHasBeenSet = true; m_bgpPeers = std::move(value); }
-
-    /**
-     * <p>The BGP peers to place in the DOWN state.</p>
-     */
-    inline StartBgpFailoverTestRequest& WithBgpPeers(const Aws::Vector<Aws::String>& value) { SetBgpPeers(value); return *this;}
-
-    /**
-     * <p>The BGP peers to place in the DOWN state.</p>
-     */
-    inline StartBgpFailoverTestRequest& WithBgpPeers(Aws::Vector<Aws::String>&& value) { SetBgpPeers(std::move(value)); return *this;}
-
-    /**
-     * <p>The BGP peers to place in the DOWN state.</p>
-     */
-    inline StartBgpFailoverTestRequest& AddBgpPeers(const Aws::String& value) { m_bgpPeersHasBeenSet = true; m_bgpPeers.push_back(value); return *this; }
-
-    /**
-     * <p>The BGP peers to place in the DOWN state.</p>
-     */
-    inline StartBgpFailoverTestRequest& AddBgpPeers(Aws::String&& value) { m_bgpPeersHasBeenSet = true; m_bgpPeers.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The BGP peers to place in the DOWN state.</p>
-     */
-    inline StartBgpFailoverTestRequest& AddBgpPeers(const char* value) { m_bgpPeersHasBeenSet = true; m_bgpPeers.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The time in minutes that the virtual interface failover test will last.</p>
      * <p>Maximum value: 4,320 minutes (72 hours).</p> <p>Default: 180 minutes (3
      * hours).</p>
      */
-    inline int GetTestDurationInMinutes() const{ return m_testDurationInMinutes; }
-
-    /**
-     * <p>The time in minutes that the virtual interface failover test will last.</p>
-     * <p>Maximum value: 4,320 minutes (72 hours).</p> <p>Default: 180 minutes (3
-     * hours).</p>
-     */
+    inline int GetTestDurationInMinutes() const { return m_testDurationInMinutes; }
     inline bool TestDurationInMinutesHasBeenSet() const { return m_testDurationInMinutesHasBeenSet; }
-
-    /**
-     * <p>The time in minutes that the virtual interface failover test will last.</p>
-     * <p>Maximum value: 4,320 minutes (72 hours).</p> <p>Default: 180 minutes (3
-     * hours).</p>
-     */
     inline void SetTestDurationInMinutes(int value) { m_testDurationInMinutesHasBeenSet = true; m_testDurationInMinutes = value; }
-
-    /**
-     * <p>The time in minutes that the virtual interface failover test will last.</p>
-     * <p>Maximum value: 4,320 minutes (72 hours).</p> <p>Default: 180 minutes (3
-     * hours).</p>
-     */
     inline StartBgpFailoverTestRequest& WithTestDurationInMinutes(int value) { SetTestDurationInMinutes(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_virtualInterfaceId;
@@ -158,7 +80,7 @@ namespace Model
     Aws::Vector<Aws::String> m_bgpPeers;
     bool m_bgpPeersHasBeenSet = false;
 
-    int m_testDurationInMinutes;
+    int m_testDurationInMinutes{0};
     bool m_testDurationInMinutesHasBeenSet = false;
   };
 

@@ -27,7 +27,11 @@ namespace Model
     opted_out_number,
     registration,
     registration_attachment,
-    verified_destination_number
+    verified_destination_number,
+    protect_configuration,
+    message_template,
+    policy,
+    message
   };
 
 namespace ResourceTypeMapper

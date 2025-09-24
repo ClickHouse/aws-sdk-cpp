@@ -39,227 +39,76 @@ namespace Model
   class DescribeClassificationJobResult
   {
   public:
-    AWS_MACIE2_API DescribeClassificationJobResult();
+    AWS_MACIE2_API DescribeClassificationJobResult() = default;
     AWS_MACIE2_API DescribeClassificationJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MACIE2_API DescribeClassificationJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>An array of unique identifiers, one for each allow list that the job uses
-     * when it analyzes data.</p>
+     * <p>An array of unique identifiers, one for each allow list that the job is
+     * configured to use when it analyzes data.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAllowListIds() const{ return m_allowListIds; }
+    inline const Aws::Vector<Aws::String>& GetAllowListIds() const { return m_allowListIds; }
+    template<typename AllowListIdsT = Aws::Vector<Aws::String>>
+    void SetAllowListIds(AllowListIdsT&& value) { m_allowListIdsHasBeenSet = true; m_allowListIds = std::forward<AllowListIdsT>(value); }
+    template<typename AllowListIdsT = Aws::Vector<Aws::String>>
+    DescribeClassificationJobResult& WithAllowListIds(AllowListIdsT&& value) { SetAllowListIds(std::forward<AllowListIdsT>(value)); return *this;}
+    template<typename AllowListIdsT = Aws::String>
+    DescribeClassificationJobResult& AddAllowListIds(AllowListIdsT&& value) { m_allowListIdsHasBeenSet = true; m_allowListIds.emplace_back(std::forward<AllowListIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of unique identifiers, one for each allow list that the job uses
-     * when it analyzes data.</p>
-     */
-    inline void SetAllowListIds(const Aws::Vector<Aws::String>& value) { m_allowListIds = value; }
-
-    /**
-     * <p>An array of unique identifiers, one for each allow list that the job uses
-     * when it analyzes data.</p>
-     */
-    inline void SetAllowListIds(Aws::Vector<Aws::String>&& value) { m_allowListIds = std::move(value); }
-
-    /**
-     * <p>An array of unique identifiers, one for each allow list that the job uses
-     * when it analyzes data.</p>
-     */
-    inline DescribeClassificationJobResult& WithAllowListIds(const Aws::Vector<Aws::String>& value) { SetAllowListIds(value); return *this;}
-
-    /**
-     * <p>An array of unique identifiers, one for each allow list that the job uses
-     * when it analyzes data.</p>
-     */
-    inline DescribeClassificationJobResult& WithAllowListIds(Aws::Vector<Aws::String>&& value) { SetAllowListIds(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of unique identifiers, one for each allow list that the job uses
-     * when it analyzes data.</p>
-     */
-    inline DescribeClassificationJobResult& AddAllowListIds(const Aws::String& value) { m_allowListIds.push_back(value); return *this; }
-
-    /**
-     * <p>An array of unique identifiers, one for each allow list that the job uses
-     * when it analyzes data.</p>
-     */
-    inline DescribeClassificationJobResult& AddAllowListIds(Aws::String&& value) { m_allowListIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of unique identifiers, one for each allow list that the job uses
-     * when it analyzes data.</p>
-     */
-    inline DescribeClassificationJobResult& AddAllowListIds(const char* value) { m_allowListIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The token that was provided to ensure the idempotency of the request to
      * create the job.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    DescribeClassificationJobResult& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token that was provided to ensure the idempotency of the request to
-     * create the job.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientToken = value; }
-
-    /**
-     * <p>The token that was provided to ensure the idempotency of the request to
-     * create the job.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientToken = std::move(value); }
-
-    /**
-     * <p>The token that was provided to ensure the idempotency of the request to
-     * create the job.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientToken.assign(value); }
-
-    /**
-     * <p>The token that was provided to ensure the idempotency of the request to
-     * create the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>The token that was provided to ensure the idempotency of the request to
-     * create the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token that was provided to ensure the idempotency of the request to
-     * create the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time, in UTC and extended ISO 8601 format, when the job was
      * created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    DescribeClassificationJobResult& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the job was
-     * created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAt = value; }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the job was
-     * created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAt = std::move(value); }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the job was
-     * created.</p>
-     */
-    inline DescribeClassificationJobResult& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the job was
-     * created.</p>
-     */
-    inline DescribeClassificationJobResult& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of unique identifiers, one for each custom data identifier that the
-     * job uses when it analyzes data. This value is null if the job uses only managed
-     * data identifiers to analyze data.</p>
+     * job is configured to use when it analyzes data. This value is null if the job is
+     * configured to use only managed data identifiers to analyze data.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetCustomDataIdentifierIds() const{ return m_customDataIdentifierIds; }
+    inline const Aws::Vector<Aws::String>& GetCustomDataIdentifierIds() const { return m_customDataIdentifierIds; }
+    template<typename CustomDataIdentifierIdsT = Aws::Vector<Aws::String>>
+    void SetCustomDataIdentifierIds(CustomDataIdentifierIdsT&& value) { m_customDataIdentifierIdsHasBeenSet = true; m_customDataIdentifierIds = std::forward<CustomDataIdentifierIdsT>(value); }
+    template<typename CustomDataIdentifierIdsT = Aws::Vector<Aws::String>>
+    DescribeClassificationJobResult& WithCustomDataIdentifierIds(CustomDataIdentifierIdsT&& value) { SetCustomDataIdentifierIds(std::forward<CustomDataIdentifierIdsT>(value)); return *this;}
+    template<typename CustomDataIdentifierIdsT = Aws::String>
+    DescribeClassificationJobResult& AddCustomDataIdentifierIds(CustomDataIdentifierIdsT&& value) { m_customDataIdentifierIdsHasBeenSet = true; m_customDataIdentifierIds.emplace_back(std::forward<CustomDataIdentifierIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of unique identifiers, one for each custom data identifier that the
-     * job uses when it analyzes data. This value is null if the job uses only managed
-     * data identifiers to analyze data.</p>
-     */
-    inline void SetCustomDataIdentifierIds(const Aws::Vector<Aws::String>& value) { m_customDataIdentifierIds = value; }
-
-    /**
-     * <p>An array of unique identifiers, one for each custom data identifier that the
-     * job uses when it analyzes data. This value is null if the job uses only managed
-     * data identifiers to analyze data.</p>
-     */
-    inline void SetCustomDataIdentifierIds(Aws::Vector<Aws::String>&& value) { m_customDataIdentifierIds = std::move(value); }
-
-    /**
-     * <p>An array of unique identifiers, one for each custom data identifier that the
-     * job uses when it analyzes data. This value is null if the job uses only managed
-     * data identifiers to analyze data.</p>
-     */
-    inline DescribeClassificationJobResult& WithCustomDataIdentifierIds(const Aws::Vector<Aws::String>& value) { SetCustomDataIdentifierIds(value); return *this;}
-
-    /**
-     * <p>An array of unique identifiers, one for each custom data identifier that the
-     * job uses when it analyzes data. This value is null if the job uses only managed
-     * data identifiers to analyze data.</p>
-     */
-    inline DescribeClassificationJobResult& WithCustomDataIdentifierIds(Aws::Vector<Aws::String>&& value) { SetCustomDataIdentifierIds(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of unique identifiers, one for each custom data identifier that the
-     * job uses when it analyzes data. This value is null if the job uses only managed
-     * data identifiers to analyze data.</p>
-     */
-    inline DescribeClassificationJobResult& AddCustomDataIdentifierIds(const Aws::String& value) { m_customDataIdentifierIds.push_back(value); return *this; }
-
-    /**
-     * <p>An array of unique identifiers, one for each custom data identifier that the
-     * job uses when it analyzes data. This value is null if the job uses only managed
-     * data identifiers to analyze data.</p>
-     */
-    inline DescribeClassificationJobResult& AddCustomDataIdentifierIds(Aws::String&& value) { m_customDataIdentifierIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of unique identifiers, one for each custom data identifier that the
-     * job uses when it analyzes data. This value is null if the job uses only managed
-     * data identifiers to analyze data.</p>
-     */
-    inline DescribeClassificationJobResult& AddCustomDataIdentifierIds(const char* value) { m_customDataIdentifierIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The custom description of the job.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    DescribeClassificationJobResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom description of the job.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The custom description of the job.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The custom description of the job.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The custom description of the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The custom description of the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom description of the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>For a recurring job, specifies whether you configured the job to analyze all
      * existing, eligible objects immediately after the job was created (true). If you
@@ -267,99 +116,34 @@ namespace Model
      * after the job was created and before the job's first scheduled run, this value
      * is false. This value is also false for a one-time job.</p>
      */
-    inline bool GetInitialRun() const{ return m_initialRun; }
-
-    /**
-     * <p>For a recurring job, specifies whether you configured the job to analyze all
-     * existing, eligible objects immediately after the job was created (true). If you
-     * configured the job to analyze only those objects that were created or changed
-     * after the job was created and before the job's first scheduled run, this value
-     * is false. This value is also false for a one-time job.</p>
-     */
-    inline void SetInitialRun(bool value) { m_initialRun = value; }
-
-    /**
-     * <p>For a recurring job, specifies whether you configured the job to analyze all
-     * existing, eligible objects immediately after the job was created (true). If you
-     * configured the job to analyze only those objects that were created or changed
-     * after the job was created and before the job's first scheduled run, this value
-     * is false. This value is also false for a one-time job.</p>
-     */
+    inline bool GetInitialRun() const { return m_initialRun; }
+    inline void SetInitialRun(bool value) { m_initialRunHasBeenSet = true; m_initialRun = value; }
     inline DescribeClassificationJobResult& WithInitialRun(bool value) { SetInitialRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the job.</p>
      */
-    inline const Aws::String& GetJobArn() const{ return m_jobArn; }
+    inline const Aws::String& GetJobArn() const { return m_jobArn; }
+    template<typename JobArnT = Aws::String>
+    void SetJobArn(JobArnT&& value) { m_jobArnHasBeenSet = true; m_jobArn = std::forward<JobArnT>(value); }
+    template<typename JobArnT = Aws::String>
+    DescribeClassificationJobResult& WithJobArn(JobArnT&& value) { SetJobArn(std::forward<JobArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the job.</p>
-     */
-    inline void SetJobArn(const Aws::String& value) { m_jobArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the job.</p>
-     */
-    inline void SetJobArn(Aws::String&& value) { m_jobArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the job.</p>
-     */
-    inline void SetJobArn(const char* value) { m_jobArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithJobArn(const Aws::String& value) { SetJobArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithJobArn(Aws::String&& value) { SetJobArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithJobArn(const char* value) { SetJobArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the job.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
+    inline const Aws::String& GetJobId() const { return m_jobId; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    DescribeClassificationJobResult& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobId = value; }
-
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the job. Possible values are:</p> <ul><li><p>CANCELLED
      * - You cancelled the job or, if it's a one-time job, you paused the job and
@@ -378,202 +162,50 @@ namespace Model
      * the expiration date, refer to the UserPausedDetails.jobExpiresAt
      * property.</p></li></ul>
      */
-    inline const JobStatus& GetJobStatus() const{ return m_jobStatus; }
+    inline JobStatus GetJobStatus() const { return m_jobStatus; }
+    inline void SetJobStatus(JobStatus value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
+    inline DescribeClassificationJobResult& WithJobStatus(JobStatus value) { SetJobStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the job. Possible values are:</p> <ul><li><p>CANCELLED
-     * - You cancelled the job or, if it's a one-time job, you paused the job and
-     * didn't resume it within 30 days.</p></li> <li><p>COMPLETE - For a one-time job,
-     * Amazon Macie finished processing the data specified for the job. This value
-     * doesn't apply to recurring jobs.</p></li> <li><p>IDLE - For a recurring job, the
-     * previous scheduled run is complete and the next scheduled run is pending. This
-     * value doesn't apply to one-time jobs.</p></li> <li><p>PAUSED - Macie started
-     * running the job but additional processing would exceed the monthly sensitive
-     * data discovery quota for your account or one or more member accounts that the
-     * job analyzes data for.</p></li> <li><p>RUNNING - For a one-time job, the job is
-     * in progress. For a recurring job, a scheduled run is in progress.</p></li>
-     * <li><p>USER_PAUSED - You paused the job. If you paused the job while it had a
-     * status of RUNNING and you don't resume it within 30 days of pausing it, the job
-     * or job run will expire and be cancelled, depending on the job's type. To check
-     * the expiration date, refer to the UserPausedDetails.jobExpiresAt
-     * property.</p></li></ul>
-     */
-    inline void SetJobStatus(const JobStatus& value) { m_jobStatus = value; }
-
-    /**
-     * <p>The current status of the job. Possible values are:</p> <ul><li><p>CANCELLED
-     * - You cancelled the job or, if it's a one-time job, you paused the job and
-     * didn't resume it within 30 days.</p></li> <li><p>COMPLETE - For a one-time job,
-     * Amazon Macie finished processing the data specified for the job. This value
-     * doesn't apply to recurring jobs.</p></li> <li><p>IDLE - For a recurring job, the
-     * previous scheduled run is complete and the next scheduled run is pending. This
-     * value doesn't apply to one-time jobs.</p></li> <li><p>PAUSED - Macie started
-     * running the job but additional processing would exceed the monthly sensitive
-     * data discovery quota for your account or one or more member accounts that the
-     * job analyzes data for.</p></li> <li><p>RUNNING - For a one-time job, the job is
-     * in progress. For a recurring job, a scheduled run is in progress.</p></li>
-     * <li><p>USER_PAUSED - You paused the job. If you paused the job while it had a
-     * status of RUNNING and you don't resume it within 30 days of pausing it, the job
-     * or job run will expire and be cancelled, depending on the job's type. To check
-     * the expiration date, refer to the UserPausedDetails.jobExpiresAt
-     * property.</p></li></ul>
-     */
-    inline void SetJobStatus(JobStatus&& value) { m_jobStatus = std::move(value); }
-
-    /**
-     * <p>The current status of the job. Possible values are:</p> <ul><li><p>CANCELLED
-     * - You cancelled the job or, if it's a one-time job, you paused the job and
-     * didn't resume it within 30 days.</p></li> <li><p>COMPLETE - For a one-time job,
-     * Amazon Macie finished processing the data specified for the job. This value
-     * doesn't apply to recurring jobs.</p></li> <li><p>IDLE - For a recurring job, the
-     * previous scheduled run is complete and the next scheduled run is pending. This
-     * value doesn't apply to one-time jobs.</p></li> <li><p>PAUSED - Macie started
-     * running the job but additional processing would exceed the monthly sensitive
-     * data discovery quota for your account or one or more member accounts that the
-     * job analyzes data for.</p></li> <li><p>RUNNING - For a one-time job, the job is
-     * in progress. For a recurring job, a scheduled run is in progress.</p></li>
-     * <li><p>USER_PAUSED - You paused the job. If you paused the job while it had a
-     * status of RUNNING and you don't resume it within 30 days of pausing it, the job
-     * or job run will expire and be cancelled, depending on the job's type. To check
-     * the expiration date, refer to the UserPausedDetails.jobExpiresAt
-     * property.</p></li></ul>
-     */
-    inline DescribeClassificationJobResult& WithJobStatus(const JobStatus& value) { SetJobStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the job. Possible values are:</p> <ul><li><p>CANCELLED
-     * - You cancelled the job or, if it's a one-time job, you paused the job and
-     * didn't resume it within 30 days.</p></li> <li><p>COMPLETE - For a one-time job,
-     * Amazon Macie finished processing the data specified for the job. This value
-     * doesn't apply to recurring jobs.</p></li> <li><p>IDLE - For a recurring job, the
-     * previous scheduled run is complete and the next scheduled run is pending. This
-     * value doesn't apply to one-time jobs.</p></li> <li><p>PAUSED - Macie started
-     * running the job but additional processing would exceed the monthly sensitive
-     * data discovery quota for your account or one or more member accounts that the
-     * job analyzes data for.</p></li> <li><p>RUNNING - For a one-time job, the job is
-     * in progress. For a recurring job, a scheduled run is in progress.</p></li>
-     * <li><p>USER_PAUSED - You paused the job. If you paused the job while it had a
-     * status of RUNNING and you don't resume it within 30 days of pausing it, the job
-     * or job run will expire and be cancelled, depending on the job's type. To check
-     * the expiration date, refer to the UserPausedDetails.jobExpiresAt
-     * property.</p></li></ul>
-     */
-    inline DescribeClassificationJobResult& WithJobStatus(JobStatus&& value) { SetJobStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The schedule for running the job. Possible values are:</p>
      * <ul><li><p>ONE_TIME - The job runs only once.</p></li> <li><p>SCHEDULED - The
      * job runs on a daily, weekly, or monthly basis. The scheduleFrequency property
      * indicates the recurrence pattern for the job.</p></li></ul>
      */
-    inline const JobType& GetJobType() const{ return m_jobType; }
+    inline JobType GetJobType() const { return m_jobType; }
+    inline void SetJobType(JobType value) { m_jobTypeHasBeenSet = true; m_jobType = value; }
+    inline DescribeClassificationJobResult& WithJobType(JobType value) { SetJobType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The schedule for running the job. Possible values are:</p>
-     * <ul><li><p>ONE_TIME - The job runs only once.</p></li> <li><p>SCHEDULED - The
-     * job runs on a daily, weekly, or monthly basis. The scheduleFrequency property
-     * indicates the recurrence pattern for the job.</p></li></ul>
-     */
-    inline void SetJobType(const JobType& value) { m_jobType = value; }
-
-    /**
-     * <p>The schedule for running the job. Possible values are:</p>
-     * <ul><li><p>ONE_TIME - The job runs only once.</p></li> <li><p>SCHEDULED - The
-     * job runs on a daily, weekly, or monthly basis. The scheduleFrequency property
-     * indicates the recurrence pattern for the job.</p></li></ul>
-     */
-    inline void SetJobType(JobType&& value) { m_jobType = std::move(value); }
-
-    /**
-     * <p>The schedule for running the job. Possible values are:</p>
-     * <ul><li><p>ONE_TIME - The job runs only once.</p></li> <li><p>SCHEDULED - The
-     * job runs on a daily, weekly, or monthly basis. The scheduleFrequency property
-     * indicates the recurrence pattern for the job.</p></li></ul>
-     */
-    inline DescribeClassificationJobResult& WithJobType(const JobType& value) { SetJobType(value); return *this;}
-
-    /**
-     * <p>The schedule for running the job. Possible values are:</p>
-     * <ul><li><p>ONE_TIME - The job runs only once.</p></li> <li><p>SCHEDULED - The
-     * job runs on a daily, weekly, or monthly basis. The scheduleFrequency property
-     * indicates the recurrence pattern for the job.</p></li></ul>
-     */
-    inline DescribeClassificationJobResult& WithJobType(JobType&& value) { SetJobType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether any account- or bucket-level access errors occurred when
      * the job ran. For a recurring job, this value indicates the error status of the
      * job's most recent run.</p>
      */
-    inline const LastRunErrorStatus& GetLastRunErrorStatus() const{ return m_lastRunErrorStatus; }
+    inline const LastRunErrorStatus& GetLastRunErrorStatus() const { return m_lastRunErrorStatus; }
+    template<typename LastRunErrorStatusT = LastRunErrorStatus>
+    void SetLastRunErrorStatus(LastRunErrorStatusT&& value) { m_lastRunErrorStatusHasBeenSet = true; m_lastRunErrorStatus = std::forward<LastRunErrorStatusT>(value); }
+    template<typename LastRunErrorStatusT = LastRunErrorStatus>
+    DescribeClassificationJobResult& WithLastRunErrorStatus(LastRunErrorStatusT&& value) { SetLastRunErrorStatus(std::forward<LastRunErrorStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies whether any account- or bucket-level access errors occurred when
-     * the job ran. For a recurring job, this value indicates the error status of the
-     * job's most recent run.</p>
-     */
-    inline void SetLastRunErrorStatus(const LastRunErrorStatus& value) { m_lastRunErrorStatus = value; }
-
-    /**
-     * <p>Specifies whether any account- or bucket-level access errors occurred when
-     * the job ran. For a recurring job, this value indicates the error status of the
-     * job's most recent run.</p>
-     */
-    inline void SetLastRunErrorStatus(LastRunErrorStatus&& value) { m_lastRunErrorStatus = std::move(value); }
-
-    /**
-     * <p>Specifies whether any account- or bucket-level access errors occurred when
-     * the job ran. For a recurring job, this value indicates the error status of the
-     * job's most recent run.</p>
-     */
-    inline DescribeClassificationJobResult& WithLastRunErrorStatus(const LastRunErrorStatus& value) { SetLastRunErrorStatus(value); return *this;}
-
-    /**
-     * <p>Specifies whether any account- or bucket-level access errors occurred when
-     * the job ran. For a recurring job, this value indicates the error status of the
-     * job's most recent run.</p>
-     */
-    inline DescribeClassificationJobResult& WithLastRunErrorStatus(LastRunErrorStatus&& value) { SetLastRunErrorStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time, in UTC and extended ISO 8601 format, when the job started.
      * If the job is a recurring job, this value indicates when the most recent run
      * started or, if the job hasn't run yet, when the job was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastRunTime() const{ return m_lastRunTime; }
+    inline const Aws::Utils::DateTime& GetLastRunTime() const { return m_lastRunTime; }
+    template<typename LastRunTimeT = Aws::Utils::DateTime>
+    void SetLastRunTime(LastRunTimeT&& value) { m_lastRunTimeHasBeenSet = true; m_lastRunTime = std::forward<LastRunTimeT>(value); }
+    template<typename LastRunTimeT = Aws::Utils::DateTime>
+    DescribeClassificationJobResult& WithLastRunTime(LastRunTimeT&& value) { SetLastRunTime(std::forward<LastRunTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the job started.
-     * If the job is a recurring job, this value indicates when the most recent run
-     * started or, if the job hasn't run yet, when the job was created.</p>
-     */
-    inline void SetLastRunTime(const Aws::Utils::DateTime& value) { m_lastRunTime = value; }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the job started.
-     * If the job is a recurring job, this value indicates when the most recent run
-     * started or, if the job hasn't run yet, when the job was created.</p>
-     */
-    inline void SetLastRunTime(Aws::Utils::DateTime&& value) { m_lastRunTime = std::move(value); }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the job started.
-     * If the job is a recurring job, this value indicates when the most recent run
-     * started or, if the job hasn't run yet, when the job was created.</p>
-     */
-    inline DescribeClassificationJobResult& WithLastRunTime(const Aws::Utils::DateTime& value) { SetLastRunTime(value); return *this;}
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the job started.
-     * If the job is a recurring job, this value indicates when the most recent run
-     * started or, if the job hasn't run yet, when the job was created.</p>
-     */
-    inline DescribeClassificationJobResult& WithLastRunTime(Aws::Utils::DateTime&& value) { SetLastRunTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of unique identifiers, one for each managed data identifier that the
      * job is explicitly configured to include (use) or exclude (not use) when it
@@ -582,79 +214,16 @@ namespace Model
      * value is null if the job's managed data identifier selection type is ALL, NONE,
      * or RECOMMENDED.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetManagedDataIdentifierIds() const{ return m_managedDataIdentifierIds; }
+    inline const Aws::Vector<Aws::String>& GetManagedDataIdentifierIds() const { return m_managedDataIdentifierIds; }
+    template<typename ManagedDataIdentifierIdsT = Aws::Vector<Aws::String>>
+    void SetManagedDataIdentifierIds(ManagedDataIdentifierIdsT&& value) { m_managedDataIdentifierIdsHasBeenSet = true; m_managedDataIdentifierIds = std::forward<ManagedDataIdentifierIdsT>(value); }
+    template<typename ManagedDataIdentifierIdsT = Aws::Vector<Aws::String>>
+    DescribeClassificationJobResult& WithManagedDataIdentifierIds(ManagedDataIdentifierIdsT&& value) { SetManagedDataIdentifierIds(std::forward<ManagedDataIdentifierIdsT>(value)); return *this;}
+    template<typename ManagedDataIdentifierIdsT = Aws::String>
+    DescribeClassificationJobResult& AddManagedDataIdentifierIds(ManagedDataIdentifierIdsT&& value) { m_managedDataIdentifierIdsHasBeenSet = true; m_managedDataIdentifierIds.emplace_back(std::forward<ManagedDataIdentifierIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of unique identifiers, one for each managed data identifier that the
-     * job is explicitly configured to include (use) or exclude (not use) when it
-     * analyzes data. Inclusion or exclusion depends on the managed data identifier
-     * selection type specified for the job (managedDataIdentifierSelector).</p><p>This
-     * value is null if the job's managed data identifier selection type is ALL, NONE,
-     * or RECOMMENDED.</p>
-     */
-    inline void SetManagedDataIdentifierIds(const Aws::Vector<Aws::String>& value) { m_managedDataIdentifierIds = value; }
-
-    /**
-     * <p>An array of unique identifiers, one for each managed data identifier that the
-     * job is explicitly configured to include (use) or exclude (not use) when it
-     * analyzes data. Inclusion or exclusion depends on the managed data identifier
-     * selection type specified for the job (managedDataIdentifierSelector).</p><p>This
-     * value is null if the job's managed data identifier selection type is ALL, NONE,
-     * or RECOMMENDED.</p>
-     */
-    inline void SetManagedDataIdentifierIds(Aws::Vector<Aws::String>&& value) { m_managedDataIdentifierIds = std::move(value); }
-
-    /**
-     * <p>An array of unique identifiers, one for each managed data identifier that the
-     * job is explicitly configured to include (use) or exclude (not use) when it
-     * analyzes data. Inclusion or exclusion depends on the managed data identifier
-     * selection type specified for the job (managedDataIdentifierSelector).</p><p>This
-     * value is null if the job's managed data identifier selection type is ALL, NONE,
-     * or RECOMMENDED.</p>
-     */
-    inline DescribeClassificationJobResult& WithManagedDataIdentifierIds(const Aws::Vector<Aws::String>& value) { SetManagedDataIdentifierIds(value); return *this;}
-
-    /**
-     * <p>An array of unique identifiers, one for each managed data identifier that the
-     * job is explicitly configured to include (use) or exclude (not use) when it
-     * analyzes data. Inclusion or exclusion depends on the managed data identifier
-     * selection type specified for the job (managedDataIdentifierSelector).</p><p>This
-     * value is null if the job's managed data identifier selection type is ALL, NONE,
-     * or RECOMMENDED.</p>
-     */
-    inline DescribeClassificationJobResult& WithManagedDataIdentifierIds(Aws::Vector<Aws::String>&& value) { SetManagedDataIdentifierIds(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of unique identifiers, one for each managed data identifier that the
-     * job is explicitly configured to include (use) or exclude (not use) when it
-     * analyzes data. Inclusion or exclusion depends on the managed data identifier
-     * selection type specified for the job (managedDataIdentifierSelector).</p><p>This
-     * value is null if the job's managed data identifier selection type is ALL, NONE,
-     * or RECOMMENDED.</p>
-     */
-    inline DescribeClassificationJobResult& AddManagedDataIdentifierIds(const Aws::String& value) { m_managedDataIdentifierIds.push_back(value); return *this; }
-
-    /**
-     * <p>An array of unique identifiers, one for each managed data identifier that the
-     * job is explicitly configured to include (use) or exclude (not use) when it
-     * analyzes data. Inclusion or exclusion depends on the managed data identifier
-     * selection type specified for the job (managedDataIdentifierSelector).</p><p>This
-     * value is null if the job's managed data identifier selection type is ALL, NONE,
-     * or RECOMMENDED.</p>
-     */
-    inline DescribeClassificationJobResult& AddManagedDataIdentifierIds(Aws::String&& value) { m_managedDataIdentifierIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of unique identifiers, one for each managed data identifier that the
-     * job is explicitly configured to include (use) or exclude (not use) when it
-     * analyzes data. Inclusion or exclusion depends on the managed data identifier
-     * selection type specified for the job (managedDataIdentifierSelector).</p><p>This
-     * value is null if the job's managed data identifier selection type is ALL, NONE,
-     * or RECOMMENDED.</p>
-     */
-    inline DescribeClassificationJobResult& AddManagedDataIdentifierIds(const char* value) { m_managedDataIdentifierIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The selection type that determines which managed data identifiers the job
      * uses when it analyzes data. Possible values are:</p> <ul><li><p>ALL - Use all
@@ -669,441 +238,181 @@ namespace Model
      * the job is a recurring job and this value is ALL or EXCLUDE, each job run
      * automatically uses new managed data identifiers that are released. If this value
      * is null or RECOMMENDED for a recurring job, each job run uses all the managed
-     * data identifiers that are in the recommended set when the run starts.</p> <p>For
-     * information about individual managed data identifiers or to determine which ones
-     * are in the recommended set, see <a
+     * data identifiers that are in the recommended set when the run starts.</p> <p>To
+     * learn about individual managed data identifiers or determine which ones are in
+     * the recommended set, see <a
      * href="https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html">Using
-     * managed data identifiers</a> and <a
+     * managed data identifiers</a> or <a
      * href="https://docs.aws.amazon.com/macie/latest/user/discovery-jobs-mdis-recommended.html">Recommended
      * managed data identifiers</a> in the <i>Amazon Macie User Guide</i>.</p>
      */
-    inline const ManagedDataIdentifierSelector& GetManagedDataIdentifierSelector() const{ return m_managedDataIdentifierSelector; }
+    inline ManagedDataIdentifierSelector GetManagedDataIdentifierSelector() const { return m_managedDataIdentifierSelector; }
+    inline void SetManagedDataIdentifierSelector(ManagedDataIdentifierSelector value) { m_managedDataIdentifierSelectorHasBeenSet = true; m_managedDataIdentifierSelector = value; }
+    inline DescribeClassificationJobResult& WithManagedDataIdentifierSelector(ManagedDataIdentifierSelector value) { SetManagedDataIdentifierSelector(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The selection type that determines which managed data identifiers the job
-     * uses when it analyzes data. Possible values are:</p> <ul><li><p>ALL - Use all
-     * managed data identifiers.</p></li> <li><p>EXCLUDE - Use all managed data
-     * identifiers except the ones specified by the managedDataIdentifierIds
-     * property.</p></li> <li><p>INCLUDE - Use only the managed data identifiers
-     * specified by the managedDataIdentifierIds property.</p></li> <li><p>NONE - Don't
-     * use any managed data identifiers. Use only custom data identifiers
-     * (customDataIdentifierIds).</p></li> <li><p>RECOMMENDED (default) - Use the
-     * recommended set of managed data identifiers.</p></li></ul> <p>If this value is
-     * null, the job uses the recommended set of managed data identifiers.</p> <p>If
-     * the job is a recurring job and this value is ALL or EXCLUDE, each job run
-     * automatically uses new managed data identifiers that are released. If this value
-     * is null or RECOMMENDED for a recurring job, each job run uses all the managed
-     * data identifiers that are in the recommended set when the run starts.</p> <p>For
-     * information about individual managed data identifiers or to determine which ones
-     * are in the recommended set, see <a
-     * href="https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html">Using
-     * managed data identifiers</a> and <a
-     * href="https://docs.aws.amazon.com/macie/latest/user/discovery-jobs-mdis-recommended.html">Recommended
-     * managed data identifiers</a> in the <i>Amazon Macie User Guide</i>.</p>
-     */
-    inline void SetManagedDataIdentifierSelector(const ManagedDataIdentifierSelector& value) { m_managedDataIdentifierSelector = value; }
-
-    /**
-     * <p>The selection type that determines which managed data identifiers the job
-     * uses when it analyzes data. Possible values are:</p> <ul><li><p>ALL - Use all
-     * managed data identifiers.</p></li> <li><p>EXCLUDE - Use all managed data
-     * identifiers except the ones specified by the managedDataIdentifierIds
-     * property.</p></li> <li><p>INCLUDE - Use only the managed data identifiers
-     * specified by the managedDataIdentifierIds property.</p></li> <li><p>NONE - Don't
-     * use any managed data identifiers. Use only custom data identifiers
-     * (customDataIdentifierIds).</p></li> <li><p>RECOMMENDED (default) - Use the
-     * recommended set of managed data identifiers.</p></li></ul> <p>If this value is
-     * null, the job uses the recommended set of managed data identifiers.</p> <p>If
-     * the job is a recurring job and this value is ALL or EXCLUDE, each job run
-     * automatically uses new managed data identifiers that are released. If this value
-     * is null or RECOMMENDED for a recurring job, each job run uses all the managed
-     * data identifiers that are in the recommended set when the run starts.</p> <p>For
-     * information about individual managed data identifiers or to determine which ones
-     * are in the recommended set, see <a
-     * href="https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html">Using
-     * managed data identifiers</a> and <a
-     * href="https://docs.aws.amazon.com/macie/latest/user/discovery-jobs-mdis-recommended.html">Recommended
-     * managed data identifiers</a> in the <i>Amazon Macie User Guide</i>.</p>
-     */
-    inline void SetManagedDataIdentifierSelector(ManagedDataIdentifierSelector&& value) { m_managedDataIdentifierSelector = std::move(value); }
-
-    /**
-     * <p>The selection type that determines which managed data identifiers the job
-     * uses when it analyzes data. Possible values are:</p> <ul><li><p>ALL - Use all
-     * managed data identifiers.</p></li> <li><p>EXCLUDE - Use all managed data
-     * identifiers except the ones specified by the managedDataIdentifierIds
-     * property.</p></li> <li><p>INCLUDE - Use only the managed data identifiers
-     * specified by the managedDataIdentifierIds property.</p></li> <li><p>NONE - Don't
-     * use any managed data identifiers. Use only custom data identifiers
-     * (customDataIdentifierIds).</p></li> <li><p>RECOMMENDED (default) - Use the
-     * recommended set of managed data identifiers.</p></li></ul> <p>If this value is
-     * null, the job uses the recommended set of managed data identifiers.</p> <p>If
-     * the job is a recurring job and this value is ALL or EXCLUDE, each job run
-     * automatically uses new managed data identifiers that are released. If this value
-     * is null or RECOMMENDED for a recurring job, each job run uses all the managed
-     * data identifiers that are in the recommended set when the run starts.</p> <p>For
-     * information about individual managed data identifiers or to determine which ones
-     * are in the recommended set, see <a
-     * href="https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html">Using
-     * managed data identifiers</a> and <a
-     * href="https://docs.aws.amazon.com/macie/latest/user/discovery-jobs-mdis-recommended.html">Recommended
-     * managed data identifiers</a> in the <i>Amazon Macie User Guide</i>.</p>
-     */
-    inline DescribeClassificationJobResult& WithManagedDataIdentifierSelector(const ManagedDataIdentifierSelector& value) { SetManagedDataIdentifierSelector(value); return *this;}
-
-    /**
-     * <p>The selection type that determines which managed data identifiers the job
-     * uses when it analyzes data. Possible values are:</p> <ul><li><p>ALL - Use all
-     * managed data identifiers.</p></li> <li><p>EXCLUDE - Use all managed data
-     * identifiers except the ones specified by the managedDataIdentifierIds
-     * property.</p></li> <li><p>INCLUDE - Use only the managed data identifiers
-     * specified by the managedDataIdentifierIds property.</p></li> <li><p>NONE - Don't
-     * use any managed data identifiers. Use only custom data identifiers
-     * (customDataIdentifierIds).</p></li> <li><p>RECOMMENDED (default) - Use the
-     * recommended set of managed data identifiers.</p></li></ul> <p>If this value is
-     * null, the job uses the recommended set of managed data identifiers.</p> <p>If
-     * the job is a recurring job and this value is ALL or EXCLUDE, each job run
-     * automatically uses new managed data identifiers that are released. If this value
-     * is null or RECOMMENDED for a recurring job, each job run uses all the managed
-     * data identifiers that are in the recommended set when the run starts.</p> <p>For
-     * information about individual managed data identifiers or to determine which ones
-     * are in the recommended set, see <a
-     * href="https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html">Using
-     * managed data identifiers</a> and <a
-     * href="https://docs.aws.amazon.com/macie/latest/user/discovery-jobs-mdis-recommended.html">Recommended
-     * managed data identifiers</a> in the <i>Amazon Macie User Guide</i>.</p>
-     */
-    inline DescribeClassificationJobResult& WithManagedDataIdentifierSelector(ManagedDataIdentifierSelector&& value) { SetManagedDataIdentifierSelector(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The custom name of the job.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DescribeClassificationJobResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom name of the job.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The custom name of the job.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The custom name of the job.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The custom name of the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The custom name of the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom name of the job.</p>
-     */
-    inline DescribeClassificationJobResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The S3 buckets that contain the objects to analyze, and the scope of that
      * analysis.</p>
      */
-    inline const S3JobDefinition& GetS3JobDefinition() const{ return m_s3JobDefinition; }
+    inline const S3JobDefinition& GetS3JobDefinition() const { return m_s3JobDefinition; }
+    template<typename S3JobDefinitionT = S3JobDefinition>
+    void SetS3JobDefinition(S3JobDefinitionT&& value) { m_s3JobDefinitionHasBeenSet = true; m_s3JobDefinition = std::forward<S3JobDefinitionT>(value); }
+    template<typename S3JobDefinitionT = S3JobDefinition>
+    DescribeClassificationJobResult& WithS3JobDefinition(S3JobDefinitionT&& value) { SetS3JobDefinition(std::forward<S3JobDefinitionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The S3 buckets that contain the objects to analyze, and the scope of that
-     * analysis.</p>
-     */
-    inline void SetS3JobDefinition(const S3JobDefinition& value) { m_s3JobDefinition = value; }
-
-    /**
-     * <p>The S3 buckets that contain the objects to analyze, and the scope of that
-     * analysis.</p>
-     */
-    inline void SetS3JobDefinition(S3JobDefinition&& value) { m_s3JobDefinition = std::move(value); }
-
-    /**
-     * <p>The S3 buckets that contain the objects to analyze, and the scope of that
-     * analysis.</p>
-     */
-    inline DescribeClassificationJobResult& WithS3JobDefinition(const S3JobDefinition& value) { SetS3JobDefinition(value); return *this;}
-
-    /**
-     * <p>The S3 buckets that contain the objects to analyze, and the scope of that
-     * analysis.</p>
-     */
-    inline DescribeClassificationJobResult& WithS3JobDefinition(S3JobDefinition&& value) { SetS3JobDefinition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sampling depth, as a percentage, that determines the percentage of
      * eligible objects that the job analyzes.</p>
      */
-    inline int GetSamplingPercentage() const{ return m_samplingPercentage; }
-
-    /**
-     * <p>The sampling depth, as a percentage, that determines the percentage of
-     * eligible objects that the job analyzes.</p>
-     */
-    inline void SetSamplingPercentage(int value) { m_samplingPercentage = value; }
-
-    /**
-     * <p>The sampling depth, as a percentage, that determines the percentage of
-     * eligible objects that the job analyzes.</p>
-     */
+    inline int GetSamplingPercentage() const { return m_samplingPercentage; }
+    inline void SetSamplingPercentage(int value) { m_samplingPercentageHasBeenSet = true; m_samplingPercentage = value; }
     inline DescribeClassificationJobResult& WithSamplingPercentage(int value) { SetSamplingPercentage(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The recurrence pattern for running the job. This value is null if the job is
      * configured to run only once.</p>
      */
-    inline const JobScheduleFrequency& GetScheduleFrequency() const{ return m_scheduleFrequency; }
+    inline const JobScheduleFrequency& GetScheduleFrequency() const { return m_scheduleFrequency; }
+    template<typename ScheduleFrequencyT = JobScheduleFrequency>
+    void SetScheduleFrequency(ScheduleFrequencyT&& value) { m_scheduleFrequencyHasBeenSet = true; m_scheduleFrequency = std::forward<ScheduleFrequencyT>(value); }
+    template<typename ScheduleFrequencyT = JobScheduleFrequency>
+    DescribeClassificationJobResult& WithScheduleFrequency(ScheduleFrequencyT&& value) { SetScheduleFrequency(std::forward<ScheduleFrequencyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The recurrence pattern for running the job. This value is null if the job is
-     * configured to run only once.</p>
-     */
-    inline void SetScheduleFrequency(const JobScheduleFrequency& value) { m_scheduleFrequency = value; }
-
-    /**
-     * <p>The recurrence pattern for running the job. This value is null if the job is
-     * configured to run only once.</p>
-     */
-    inline void SetScheduleFrequency(JobScheduleFrequency&& value) { m_scheduleFrequency = std::move(value); }
-
-    /**
-     * <p>The recurrence pattern for running the job. This value is null if the job is
-     * configured to run only once.</p>
-     */
-    inline DescribeClassificationJobResult& WithScheduleFrequency(const JobScheduleFrequency& value) { SetScheduleFrequency(value); return *this;}
-
-    /**
-     * <p>The recurrence pattern for running the job. This value is null if the job is
-     * configured to run only once.</p>
-     */
-    inline DescribeClassificationJobResult& WithScheduleFrequency(JobScheduleFrequency&& value) { SetScheduleFrequency(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of times that the job has run and processing statistics for the
      * job's current run.</p>
      */
-    inline const Statistics& GetStatistics() const{ return m_statistics; }
+    inline const Statistics& GetStatistics() const { return m_statistics; }
+    template<typename StatisticsT = Statistics>
+    void SetStatistics(StatisticsT&& value) { m_statisticsHasBeenSet = true; m_statistics = std::forward<StatisticsT>(value); }
+    template<typename StatisticsT = Statistics>
+    DescribeClassificationJobResult& WithStatistics(StatisticsT&& value) { SetStatistics(std::forward<StatisticsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The number of times that the job has run and processing statistics for the
-     * job's current run.</p>
-     */
-    inline void SetStatistics(const Statistics& value) { m_statistics = value; }
-
-    /**
-     * <p>The number of times that the job has run and processing statistics for the
-     * job's current run.</p>
-     */
-    inline void SetStatistics(Statistics&& value) { m_statistics = std::move(value); }
-
-    /**
-     * <p>The number of times that the job has run and processing statistics for the
-     * job's current run.</p>
-     */
-    inline DescribeClassificationJobResult& WithStatistics(const Statistics& value) { SetStatistics(value); return *this;}
-
-    /**
-     * <p>The number of times that the job has run and processing statistics for the
-     * job's current run.</p>
-     */
-    inline DescribeClassificationJobResult& WithStatistics(Statistics&& value) { SetStatistics(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
+     * associated with the job.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    DescribeClassificationJobResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    DescribeClassificationJobResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline DescribeClassificationJobResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline DescribeClassificationJobResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline DescribeClassificationJobResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline DescribeClassificationJobResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline DescribeClassificationJobResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline DescribeClassificationJobResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline DescribeClassificationJobResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline DescribeClassificationJobResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of key-value pairs that specifies which tags (keys and values) are
-     * associated with the classification job.</p>
-     */
-    inline DescribeClassificationJobResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>If the current status of the job is USER_PAUSED, specifies when the job was
      * paused and when the job or job run will expire and be cancelled if it isn't
      * resumed. This value is present only if the value for jobStatus is
      * USER_PAUSED.</p>
      */
-    inline const UserPausedDetails& GetUserPausedDetails() const{ return m_userPausedDetails; }
+    inline const UserPausedDetails& GetUserPausedDetails() const { return m_userPausedDetails; }
+    template<typename UserPausedDetailsT = UserPausedDetails>
+    void SetUserPausedDetails(UserPausedDetailsT&& value) { m_userPausedDetailsHasBeenSet = true; m_userPausedDetails = std::forward<UserPausedDetailsT>(value); }
+    template<typename UserPausedDetailsT = UserPausedDetails>
+    DescribeClassificationJobResult& WithUserPausedDetails(UserPausedDetailsT&& value) { SetUserPausedDetails(std::forward<UserPausedDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the current status of the job is USER_PAUSED, specifies when the job was
-     * paused and when the job or job run will expire and be cancelled if it isn't
-     * resumed. This value is present only if the value for jobStatus is
-     * USER_PAUSED.</p>
-     */
-    inline void SetUserPausedDetails(const UserPausedDetails& value) { m_userPausedDetails = value; }
-
-    /**
-     * <p>If the current status of the job is USER_PAUSED, specifies when the job was
-     * paused and when the job or job run will expire and be cancelled if it isn't
-     * resumed. This value is present only if the value for jobStatus is
-     * USER_PAUSED.</p>
-     */
-    inline void SetUserPausedDetails(UserPausedDetails&& value) { m_userPausedDetails = std::move(value); }
-
-    /**
-     * <p>If the current status of the job is USER_PAUSED, specifies when the job was
-     * paused and when the job or job run will expire and be cancelled if it isn't
-     * resumed. This value is present only if the value for jobStatus is
-     * USER_PAUSED.</p>
-     */
-    inline DescribeClassificationJobResult& WithUserPausedDetails(const UserPausedDetails& value) { SetUserPausedDetails(value); return *this;}
-
-    /**
-     * <p>If the current status of the job is USER_PAUSED, specifies when the job was
-     * paused and when the job or job run will expire and be cancelled if it isn't
-     * resumed. This value is present only if the value for jobStatus is
-     * USER_PAUSED.</p>
-     */
-    inline DescribeClassificationJobResult& WithUserPausedDetails(UserPausedDetails&& value) { SetUserPausedDetails(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeClassificationJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeClassificationJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeClassificationJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeClassificationJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_allowListIds;
+    bool m_allowListIdsHasBeenSet = false;
 
-    Aws::String m_clientToken;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_customDataIdentifierIds;
+    bool m_customDataIdentifierIdsHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
-    bool m_initialRun;
+    bool m_initialRun{false};
+    bool m_initialRunHasBeenSet = false;
 
     Aws::String m_jobArn;
+    bool m_jobArnHasBeenSet = false;
 
     Aws::String m_jobId;
+    bool m_jobIdHasBeenSet = false;
 
-    JobStatus m_jobStatus;
+    JobStatus m_jobStatus{JobStatus::NOT_SET};
+    bool m_jobStatusHasBeenSet = false;
 
-    JobType m_jobType;
+    JobType m_jobType{JobType::NOT_SET};
+    bool m_jobTypeHasBeenSet = false;
 
     LastRunErrorStatus m_lastRunErrorStatus;
+    bool m_lastRunErrorStatusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastRunTime;
+    Aws::Utils::DateTime m_lastRunTime{};
+    bool m_lastRunTimeHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_managedDataIdentifierIds;
+    bool m_managedDataIdentifierIdsHasBeenSet = false;
 
-    ManagedDataIdentifierSelector m_managedDataIdentifierSelector;
+    ManagedDataIdentifierSelector m_managedDataIdentifierSelector{ManagedDataIdentifierSelector::NOT_SET};
+    bool m_managedDataIdentifierSelectorHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     S3JobDefinition m_s3JobDefinition;
+    bool m_s3JobDefinitionHasBeenSet = false;
 
-    int m_samplingPercentage;
+    int m_samplingPercentage{0};
+    bool m_samplingPercentageHasBeenSet = false;
 
     JobScheduleFrequency m_scheduleFrequency;
+    bool m_scheduleFrequencyHasBeenSet = false;
 
     Statistics m_statistics;
+    bool m_statisticsHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     UserPausedDetails m_userPausedDetails;
+    bool m_userPausedDetailsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

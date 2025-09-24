@@ -20,15 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-StorageLensDataExportEncryption::StorageLensDataExportEncryption() : 
-    m_sSES3HasBeenSet(false),
-    m_sSEKMSHasBeenSet(false)
-{
-}
-
-StorageLensDataExportEncryption::StorageLensDataExportEncryption(const XmlNode& xmlNode) : 
-    m_sSES3HasBeenSet(false),
-    m_sSEKMSHasBeenSet(false)
+StorageLensDataExportEncryption::StorageLensDataExportEncryption(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

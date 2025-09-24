@@ -18,19 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-RecommendationJobResourceLimit::RecommendationJobResourceLimit() : 
-    m_maxNumberOfTests(0),
-    m_maxNumberOfTestsHasBeenSet(false),
-    m_maxParallelOfTests(0),
-    m_maxParallelOfTestsHasBeenSet(false)
-{
-}
-
-RecommendationJobResourceLimit::RecommendationJobResourceLimit(JsonView jsonValue) : 
-    m_maxNumberOfTests(0),
-    m_maxNumberOfTestsHasBeenSet(false),
-    m_maxParallelOfTests(0),
-    m_maxParallelOfTestsHasBeenSet(false)
+RecommendationJobResourceLimit::RecommendationJobResourceLimit(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ RecommendationJobResourceLimit& RecommendationJobResourceLimit::operator =(JsonV
   if(jsonValue.ValueExists("MaxNumberOfTests"))
   {
     m_maxNumberOfTests = jsonValue.GetInteger("MaxNumberOfTests");
-
     m_maxNumberOfTestsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MaxParallelOfTests"))
   {
     m_maxParallelOfTests = jsonValue.GetInteger("MaxParallelOfTests");
-
     m_maxParallelOfTestsHasBeenSet = true;
   }
-
   return *this;
 }
 

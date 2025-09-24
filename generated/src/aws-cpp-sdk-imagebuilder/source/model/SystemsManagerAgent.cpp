@@ -18,15 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-SystemsManagerAgent::SystemsManagerAgent() : 
-    m_uninstallAfterBuild(false),
-    m_uninstallAfterBuildHasBeenSet(false)
-{
-}
-
-SystemsManagerAgent::SystemsManagerAgent(JsonView jsonValue) : 
-    m_uninstallAfterBuild(false),
-    m_uninstallAfterBuildHasBeenSet(false)
+SystemsManagerAgent::SystemsManagerAgent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SystemsManagerAgent& SystemsManagerAgent::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("uninstallAfterBuild"))
   {
     m_uninstallAfterBuild = jsonValue.GetBool("uninstallAfterBuild");
-
     m_uninstallAfterBuildHasBeenSet = true;
   }
-
   return *this;
 }
 

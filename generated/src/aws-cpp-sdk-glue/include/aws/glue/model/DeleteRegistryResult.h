@@ -28,144 +28,64 @@ namespace Model
   class DeleteRegistryResult
   {
   public:
-    AWS_GLUE_API DeleteRegistryResult();
+    AWS_GLUE_API DeleteRegistryResult() = default;
     AWS_GLUE_API DeleteRegistryResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GLUE_API DeleteRegistryResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The name of the registry being deleted.</p>
      */
-    inline const Aws::String& GetRegistryName() const{ return m_registryName; }
+    inline const Aws::String& GetRegistryName() const { return m_registryName; }
+    template<typename RegistryNameT = Aws::String>
+    void SetRegistryName(RegistryNameT&& value) { m_registryNameHasBeenSet = true; m_registryName = std::forward<RegistryNameT>(value); }
+    template<typename RegistryNameT = Aws::String>
+    DeleteRegistryResult& WithRegistryName(RegistryNameT&& value) { SetRegistryName(std::forward<RegistryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the registry being deleted.</p>
-     */
-    inline void SetRegistryName(const Aws::String& value) { m_registryName = value; }
-
-    /**
-     * <p>The name of the registry being deleted.</p>
-     */
-    inline void SetRegistryName(Aws::String&& value) { m_registryName = std::move(value); }
-
-    /**
-     * <p>The name of the registry being deleted.</p>
-     */
-    inline void SetRegistryName(const char* value) { m_registryName.assign(value); }
-
-    /**
-     * <p>The name of the registry being deleted.</p>
-     */
-    inline DeleteRegistryResult& WithRegistryName(const Aws::String& value) { SetRegistryName(value); return *this;}
-
-    /**
-     * <p>The name of the registry being deleted.</p>
-     */
-    inline DeleteRegistryResult& WithRegistryName(Aws::String&& value) { SetRegistryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the registry being deleted.</p>
-     */
-    inline DeleteRegistryResult& WithRegistryName(const char* value) { SetRegistryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the registry being deleted.</p>
      */
-    inline const Aws::String& GetRegistryArn() const{ return m_registryArn; }
+    inline const Aws::String& GetRegistryArn() const { return m_registryArn; }
+    template<typename RegistryArnT = Aws::String>
+    void SetRegistryArn(RegistryArnT&& value) { m_registryArnHasBeenSet = true; m_registryArn = std::forward<RegistryArnT>(value); }
+    template<typename RegistryArnT = Aws::String>
+    DeleteRegistryResult& WithRegistryArn(RegistryArnT&& value) { SetRegistryArn(std::forward<RegistryArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the registry being deleted.</p>
-     */
-    inline void SetRegistryArn(const Aws::String& value) { m_registryArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the registry being deleted.</p>
-     */
-    inline void SetRegistryArn(Aws::String&& value) { m_registryArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the registry being deleted.</p>
-     */
-    inline void SetRegistryArn(const char* value) { m_registryArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the registry being deleted.</p>
-     */
-    inline DeleteRegistryResult& WithRegistryArn(const Aws::String& value) { SetRegistryArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the registry being deleted.</p>
-     */
-    inline DeleteRegistryResult& WithRegistryArn(Aws::String&& value) { SetRegistryArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the registry being deleted.</p>
-     */
-    inline DeleteRegistryResult& WithRegistryArn(const char* value) { SetRegistryArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the registry. A successful operation will return the
      * <code>Deleting</code> status.</p>
      */
-    inline const RegistryStatus& GetStatus() const{ return m_status; }
+    inline RegistryStatus GetStatus() const { return m_status; }
+    inline void SetStatus(RegistryStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DeleteRegistryResult& WithStatus(RegistryStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the registry. A successful operation will return the
-     * <code>Deleting</code> status.</p>
-     */
-    inline void SetStatus(const RegistryStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of the registry. A successful operation will return the
-     * <code>Deleting</code> status.</p>
-     */
-    inline void SetStatus(RegistryStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the registry. A successful operation will return the
-     * <code>Deleting</code> status.</p>
-     */
-    inline DeleteRegistryResult& WithStatus(const RegistryStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the registry. A successful operation will return the
-     * <code>Deleting</code> status.</p>
-     */
-    inline DeleteRegistryResult& WithStatus(RegistryStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteRegistryResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteRegistryResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteRegistryResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteRegistryResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_registryName;
+    bool m_registryNameHasBeenSet = false;
 
     Aws::String m_registryArn;
+    bool m_registryArnHasBeenSet = false;
 
-    RegistryStatus m_status;
+    RegistryStatus m_status{RegistryStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

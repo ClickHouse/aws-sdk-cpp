@@ -18,15 +18,7 @@ namespace IoTFleetWise
 namespace Model
 {
 
-TimeBasedCollectionScheme::TimeBasedCollectionScheme() : 
-    m_periodMs(0),
-    m_periodMsHasBeenSet(false)
-{
-}
-
-TimeBasedCollectionScheme::TimeBasedCollectionScheme(JsonView jsonValue) : 
-    m_periodMs(0),
-    m_periodMsHasBeenSet(false)
+TimeBasedCollectionScheme::TimeBasedCollectionScheme(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TimeBasedCollectionScheme& TimeBasedCollectionScheme::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("periodMs"))
   {
     m_periodMs = jsonValue.GetInt64("periodMs");
-
     m_periodMsHasBeenSet = true;
   }
-
   return *this;
 }
 

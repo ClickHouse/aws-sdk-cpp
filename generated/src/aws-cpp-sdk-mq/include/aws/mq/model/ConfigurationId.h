@@ -31,79 +31,39 @@ namespace Model
   class ConfigurationId
   {
   public:
-    AWS_MQ_API ConfigurationId();
+    AWS_MQ_API ConfigurationId() = default;
     AWS_MQ_API ConfigurationId(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API ConfigurationId& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MQ_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Required. The unique ID that Amazon MQ generates for the configuration.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>Required. The unique ID that Amazon MQ generates for the configuration.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ConfigurationId& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Required. The unique ID that Amazon MQ generates for the configuration.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>Required. The unique ID that Amazon MQ generates for the configuration.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>Required. The unique ID that Amazon MQ generates for the configuration.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>Required. The unique ID that Amazon MQ generates for the configuration.</p>
-     */
-    inline ConfigurationId& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>Required. The unique ID that Amazon MQ generates for the configuration.</p>
-     */
-    inline ConfigurationId& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>Required. The unique ID that Amazon MQ generates for the configuration.</p>
-     */
-    inline ConfigurationId& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The revision number of the configuration.</p>
      */
-    inline int GetRevision() const{ return m_revision; }
-
-    /**
-     * <p>The revision number of the configuration.</p>
-     */
+    inline int GetRevision() const { return m_revision; }
     inline bool RevisionHasBeenSet() const { return m_revisionHasBeenSet; }
-
-    /**
-     * <p>The revision number of the configuration.</p>
-     */
     inline void SetRevision(int value) { m_revisionHasBeenSet = true; m_revision = value; }
-
-    /**
-     * <p>The revision number of the configuration.</p>
-     */
     inline ConfigurationId& WithRevision(int value) { SetRevision(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    int m_revision;
+    int m_revision{0};
     bool m_revisionHasBeenSet = false;
   };
 

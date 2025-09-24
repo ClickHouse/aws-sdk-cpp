@@ -24,15 +24,16 @@ namespace Model
 {
 
   /**
-   * <p>A specification for an Elastic Graphics accelerator.</p><p><h3>See Also:</h3>
-   * <a
+   *  <p>Amazon Elastic Graphics reached end of life on January 8, 2024.</p>
+   *  <p>A specification for an Elastic Graphics accelerator.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/ElasticGpuSpecification">AWS
    * API Reference</a></p>
    */
   class ElasticGpuSpecification
   {
   public:
-    AWS_EC2_API ElasticGpuSpecification();
+    AWS_EC2_API ElasticGpuSpecification() = default;
     AWS_EC2_API ElasticGpuSpecification(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ElasticGpuSpecification& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,78 +41,17 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
-     * <p>The type of Elastic Graphics accelerator. For more information about the
-     * values to specify for <code>Type</code>, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html#elastic-graphics-basics">Elastic
-     * Graphics Basics</a>, specifically the Elastic Graphics accelerator column, in
-     * the <i>Amazon Elastic Compute Cloud User Guide for Windows Instances</i>.</p>
+     * <p>The type of Elastic Graphics accelerator.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of Elastic Graphics accelerator. For more information about the
-     * values to specify for <code>Type</code>, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html#elastic-graphics-basics">Elastic
-     * Graphics Basics</a>, specifically the Elastic Graphics accelerator column, in
-     * the <i>Amazon Elastic Compute Cloud User Guide for Windows Instances</i>.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of Elastic Graphics accelerator. For more information about the
-     * values to specify for <code>Type</code>, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html#elastic-graphics-basics">Elastic
-     * Graphics Basics</a>, specifically the Elastic Graphics accelerator column, in
-     * the <i>Amazon Elastic Compute Cloud User Guide for Windows Instances</i>.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of Elastic Graphics accelerator. For more information about the
-     * values to specify for <code>Type</code>, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html#elastic-graphics-basics">Elastic
-     * Graphics Basics</a>, specifically the Elastic Graphics accelerator column, in
-     * the <i>Amazon Elastic Compute Cloud User Guide for Windows Instances</i>.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of Elastic Graphics accelerator. For more information about the
-     * values to specify for <code>Type</code>, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html#elastic-graphics-basics">Elastic
-     * Graphics Basics</a>, specifically the Elastic Graphics accelerator column, in
-     * the <i>Amazon Elastic Compute Cloud User Guide for Windows Instances</i>.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of Elastic Graphics accelerator. For more information about the
-     * values to specify for <code>Type</code>, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html#elastic-graphics-basics">Elastic
-     * Graphics Basics</a>, specifically the Elastic Graphics accelerator column, in
-     * the <i>Amazon Elastic Compute Cloud User Guide for Windows Instances</i>.</p>
-     */
-    inline ElasticGpuSpecification& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of Elastic Graphics accelerator. For more information about the
-     * values to specify for <code>Type</code>, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html#elastic-graphics-basics">Elastic
-     * Graphics Basics</a>, specifically the Elastic Graphics accelerator column, in
-     * the <i>Amazon Elastic Compute Cloud User Guide for Windows Instances</i>.</p>
-     */
-    inline ElasticGpuSpecification& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of Elastic Graphics accelerator. For more information about the
-     * values to specify for <code>Type</code>, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html#elastic-graphics-basics">Elastic
-     * Graphics Basics</a>, specifically the Elastic Graphics accelerator column, in
-     * the <i>Amazon Elastic Compute Cloud User Guide for Windows Instances</i>.</p>
-     */
-    inline ElasticGpuSpecification& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    ElasticGpuSpecification& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_type;

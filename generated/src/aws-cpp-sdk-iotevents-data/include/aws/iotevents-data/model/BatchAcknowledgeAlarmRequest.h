@@ -22,7 +22,7 @@ namespace Model
   class BatchAcknowledgeAlarmRequest : public IoTEventsDataRequest
   {
   public:
-    AWS_IOTEVENTSDATA_API BatchAcknowledgeAlarmRequest();
+    AWS_IOTEVENTSDATA_API BatchAcknowledgeAlarmRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,54 +33,20 @@ namespace Model
     AWS_IOTEVENTSDATA_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The list of acknowledge action requests. You can specify up to 10 requests
      * per operation.</p>
      */
-    inline const Aws::Vector<AcknowledgeAlarmActionRequest>& GetAcknowledgeActionRequests() const{ return m_acknowledgeActionRequests; }
-
-    /**
-     * <p>The list of acknowledge action requests. You can specify up to 10 requests
-     * per operation.</p>
-     */
+    inline const Aws::Vector<AcknowledgeAlarmActionRequest>& GetAcknowledgeActionRequests() const { return m_acknowledgeActionRequests; }
     inline bool AcknowledgeActionRequestsHasBeenSet() const { return m_acknowledgeActionRequestsHasBeenSet; }
-
-    /**
-     * <p>The list of acknowledge action requests. You can specify up to 10 requests
-     * per operation.</p>
-     */
-    inline void SetAcknowledgeActionRequests(const Aws::Vector<AcknowledgeAlarmActionRequest>& value) { m_acknowledgeActionRequestsHasBeenSet = true; m_acknowledgeActionRequests = value; }
-
-    /**
-     * <p>The list of acknowledge action requests. You can specify up to 10 requests
-     * per operation.</p>
-     */
-    inline void SetAcknowledgeActionRequests(Aws::Vector<AcknowledgeAlarmActionRequest>&& value) { m_acknowledgeActionRequestsHasBeenSet = true; m_acknowledgeActionRequests = std::move(value); }
-
-    /**
-     * <p>The list of acknowledge action requests. You can specify up to 10 requests
-     * per operation.</p>
-     */
-    inline BatchAcknowledgeAlarmRequest& WithAcknowledgeActionRequests(const Aws::Vector<AcknowledgeAlarmActionRequest>& value) { SetAcknowledgeActionRequests(value); return *this;}
-
-    /**
-     * <p>The list of acknowledge action requests. You can specify up to 10 requests
-     * per operation.</p>
-     */
-    inline BatchAcknowledgeAlarmRequest& WithAcknowledgeActionRequests(Aws::Vector<AcknowledgeAlarmActionRequest>&& value) { SetAcknowledgeActionRequests(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of acknowledge action requests. You can specify up to 10 requests
-     * per operation.</p>
-     */
-    inline BatchAcknowledgeAlarmRequest& AddAcknowledgeActionRequests(const AcknowledgeAlarmActionRequest& value) { m_acknowledgeActionRequestsHasBeenSet = true; m_acknowledgeActionRequests.push_back(value); return *this; }
-
-    /**
-     * <p>The list of acknowledge action requests. You can specify up to 10 requests
-     * per operation.</p>
-     */
-    inline BatchAcknowledgeAlarmRequest& AddAcknowledgeActionRequests(AcknowledgeAlarmActionRequest&& value) { m_acknowledgeActionRequestsHasBeenSet = true; m_acknowledgeActionRequests.push_back(std::move(value)); return *this; }
-
+    template<typename AcknowledgeActionRequestsT = Aws::Vector<AcknowledgeAlarmActionRequest>>
+    void SetAcknowledgeActionRequests(AcknowledgeActionRequestsT&& value) { m_acknowledgeActionRequestsHasBeenSet = true; m_acknowledgeActionRequests = std::forward<AcknowledgeActionRequestsT>(value); }
+    template<typename AcknowledgeActionRequestsT = Aws::Vector<AcknowledgeAlarmActionRequest>>
+    BatchAcknowledgeAlarmRequest& WithAcknowledgeActionRequests(AcknowledgeActionRequestsT&& value) { SetAcknowledgeActionRequests(std::forward<AcknowledgeActionRequestsT>(value)); return *this;}
+    template<typename AcknowledgeActionRequestsT = AcknowledgeAlarmActionRequest>
+    BatchAcknowledgeAlarmRequest& AddAcknowledgeActionRequests(AcknowledgeActionRequestsT&& value) { m_acknowledgeActionRequestsHasBeenSet = true; m_acknowledgeActionRequests.emplace_back(std::forward<AcknowledgeActionRequestsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AcknowledgeAlarmActionRequest> m_acknowledgeActionRequests;

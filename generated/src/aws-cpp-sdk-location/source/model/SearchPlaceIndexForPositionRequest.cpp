@@ -15,31 +15,9 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-SearchPlaceIndexForPositionRequest::SearchPlaceIndexForPositionRequest() : 
-    m_indexNameHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_languageHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_positionHasBeenSet(false)
-{
-}
-
 Aws::String SearchPlaceIndexForPositionRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_languageHasBeenSet)
-  {
-   payload.WithString("Language", m_language);
-
-  }
-
-  if(m_maxResultsHasBeenSet)
-  {
-   payload.WithInteger("MaxResults", m_maxResults);
-
-  }
 
   if(m_positionHasBeenSet)
   {
@@ -49,6 +27,18 @@ Aws::String SearchPlaceIndexForPositionRequest::SerializePayload() const
      positionJsonList[positionIndex].AsDouble(m_position[positionIndex]);
    }
    payload.WithArray("Position", std::move(positionJsonList));
+
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+   payload.WithInteger("MaxResults", m_maxResults);
+
+  }
+
+  if(m_languageHasBeenSet)
+  {
+   payload.WithString("Language", m_language);
 
   }
 

@@ -15,19 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListAppsRequest::ListAppsRequest() : 
-    m_appArnHasBeenSet(false),
-    m_fromLastAssessmentTimeHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_reverseOrder(false),
-    m_reverseOrderHasBeenSet(false),
-    m_toLastAssessmentTimeHasBeenSet(false)
-{
-}
-
 Aws::String ListAppsRequest::SerializePayload() const
 {
   return {};
@@ -40,6 +27,13 @@ void ListAppsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_appArn;
       uri.AddQueryStringParameter("appArn", ss.str());
+      ss.str("");
+    }
+
+    if(m_awsApplicationArnHasBeenSet)
+    {
+      ss << m_awsApplicationArn;
+      uri.AddQueryStringParameter("awsApplicationArn", ss.str());
       ss.str("");
     }
 

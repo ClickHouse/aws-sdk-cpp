@@ -10,14 +10,6 @@
 using namespace Aws::ElasticLoadBalancing::Model;
 using namespace Aws::Utils;
 
-SetLoadBalancerPoliciesOfListenerRequest::SetLoadBalancerPoliciesOfListenerRequest() : 
-    m_loadBalancerNameHasBeenSet(false),
-    m_loadBalancerPort(0),
-    m_loadBalancerPortHasBeenSet(false),
-    m_policyNamesHasBeenSet(false)
-{
-}
-
 Aws::String SetLoadBalancerPoliciesOfListenerRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,12 +26,19 @@ Aws::String SetLoadBalancerPoliciesOfListenerRequest::SerializePayload() const
 
   if(m_policyNamesHasBeenSet)
   {
-    unsigned policyNamesCount = 1;
-    for(auto& item : m_policyNames)
+    if (m_policyNames.empty())
     {
-      ss << "PolicyNames.member." << policyNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      policyNamesCount++;
+      ss << "PolicyNames=&";
+    }
+    else
+    {
+      unsigned policyNamesCount = 1;
+      for(auto& item : m_policyNames)
+      {
+        ss << "PolicyNames.member." << policyNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        policyNamesCount++;
+      }
     }
   }
 

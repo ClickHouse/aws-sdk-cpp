@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplateBlockDeviceMappingRequest::LaunchTemplateBlockDeviceMappingRequest() : 
-    m_deviceNameHasBeenSet(false),
-    m_virtualNameHasBeenSet(false),
-    m_ebsHasBeenSet(false),
-    m_noDeviceHasBeenSet(false)
-{
-}
-
-LaunchTemplateBlockDeviceMappingRequest::LaunchTemplateBlockDeviceMappingRequest(const XmlNode& xmlNode) : 
-    m_deviceNameHasBeenSet(false),
-    m_virtualNameHasBeenSet(false),
-    m_ebsHasBeenSet(false),
-    m_noDeviceHasBeenSet(false)
+LaunchTemplateBlockDeviceMappingRequest::LaunchTemplateBlockDeviceMappingRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

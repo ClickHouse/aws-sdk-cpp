@@ -18,15 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-SSOIdentity::SSOIdentity() : 
-    m_identityStoreIdHasBeenSet(false),
-    m_userIdHasBeenSet(false)
-{
-}
-
-SSOIdentity::SSOIdentity(JsonView jsonValue) : 
-    m_identityStoreIdHasBeenSet(false),
-    m_userIdHasBeenSet(false)
+SSOIdentity::SSOIdentity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SSOIdentity& SSOIdentity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("identityStoreId"))
   {
     m_identityStoreId = jsonValue.GetString("identityStoreId");
-
     m_identityStoreIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("userId"))
   {
     m_userId = jsonValue.GetString("userId");
-
     m_userIdHasBeenSet = true;
   }
-
   return *this;
 }
 

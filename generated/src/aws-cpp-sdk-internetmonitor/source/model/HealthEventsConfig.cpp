@@ -18,23 +18,7 @@ namespace InternetMonitor
 namespace Model
 {
 
-HealthEventsConfig::HealthEventsConfig() : 
-    m_availabilityScoreThreshold(0.0),
-    m_availabilityScoreThresholdHasBeenSet(false),
-    m_performanceScoreThreshold(0.0),
-    m_performanceScoreThresholdHasBeenSet(false),
-    m_availabilityLocalHealthEventsConfigHasBeenSet(false),
-    m_performanceLocalHealthEventsConfigHasBeenSet(false)
-{
-}
-
-HealthEventsConfig::HealthEventsConfig(JsonView jsonValue) : 
-    m_availabilityScoreThreshold(0.0),
-    m_availabilityScoreThresholdHasBeenSet(false),
-    m_performanceScoreThreshold(0.0),
-    m_performanceScoreThresholdHasBeenSet(false),
-    m_availabilityLocalHealthEventsConfigHasBeenSet(false),
-    m_performanceLocalHealthEventsConfigHasBeenSet(false)
+HealthEventsConfig::HealthEventsConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,31 +28,23 @@ HealthEventsConfig& HealthEventsConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AvailabilityScoreThreshold"))
   {
     m_availabilityScoreThreshold = jsonValue.GetDouble("AvailabilityScoreThreshold");
-
     m_availabilityScoreThresholdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PerformanceScoreThreshold"))
   {
     m_performanceScoreThreshold = jsonValue.GetDouble("PerformanceScoreThreshold");
-
     m_performanceScoreThresholdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AvailabilityLocalHealthEventsConfig"))
   {
     m_availabilityLocalHealthEventsConfig = jsonValue.GetObject("AvailabilityLocalHealthEventsConfig");
-
     m_availabilityLocalHealthEventsConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PerformanceLocalHealthEventsConfig"))
   {
     m_performanceLocalHealthEventsConfig = jsonValue.GetObject("PerformanceLocalHealthEventsConfig");
-
     m_performanceLocalHealthEventsConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

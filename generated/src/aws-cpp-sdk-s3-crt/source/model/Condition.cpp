@@ -20,15 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-Condition::Condition() : 
-    m_httpErrorCodeReturnedEqualsHasBeenSet(false),
-    m_keyPrefixEqualsHasBeenSet(false)
-{
-}
-
-Condition::Condition(const XmlNode& xmlNode) : 
-    m_httpErrorCodeReturnedEqualsHasBeenSet(false),
-    m_keyPrefixEqualsHasBeenSet(false)
+Condition::Condition(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

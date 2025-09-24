@@ -20,23 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-TypeConfigurationIdentifier::TypeConfigurationIdentifier() : 
-    m_typeArnHasBeenSet(false),
-    m_typeConfigurationAliasHasBeenSet(false),
-    m_typeConfigurationArnHasBeenSet(false),
-    m_type(ThirdPartyType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_typeNameHasBeenSet(false)
-{
-}
-
-TypeConfigurationIdentifier::TypeConfigurationIdentifier(const XmlNode& xmlNode) : 
-    m_typeArnHasBeenSet(false),
-    m_typeConfigurationAliasHasBeenSet(false),
-    m_typeConfigurationArnHasBeenSet(false),
-    m_type(ThirdPartyType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_typeNameHasBeenSet(false)
+TypeConfigurationIdentifier::TypeConfigurationIdentifier(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -68,7 +52,7 @@ TypeConfigurationIdentifier& TypeConfigurationIdentifier::operator =(const XmlNo
     XmlNode typeNode = resultNode.FirstChild("Type");
     if(!typeNode.IsNull())
     {
-      m_type = ThirdPartyTypeMapper::GetThirdPartyTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = ThirdPartyTypeMapper::GetThirdPartyTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode typeNameNode = resultNode.FirstChild("TypeName");
@@ -101,7 +85,7 @@ void TypeConfigurationIdentifier::OutputToStream(Aws::OStream& oStream, const ch
 
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << ThirdPartyTypeMapper::GetNameForThirdPartyType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(ThirdPartyTypeMapper::GetNameForThirdPartyType(m_type)) << "&";
   }
 
   if(m_typeNameHasBeenSet)
@@ -127,7 +111,7 @@ void TypeConfigurationIdentifier::OutputToStream(Aws::OStream& oStream, const ch
   }
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << ThirdPartyTypeMapper::GetNameForThirdPartyType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(ThirdPartyTypeMapper::GetNameForThirdPartyType(m_type)) << "&";
   }
   if(m_typeNameHasBeenSet)
   {

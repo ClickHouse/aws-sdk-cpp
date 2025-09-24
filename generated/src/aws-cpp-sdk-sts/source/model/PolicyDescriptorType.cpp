@@ -20,13 +20,7 @@ namespace STS
 namespace Model
 {
 
-PolicyDescriptorType::PolicyDescriptorType() : 
-    m_arnHasBeenSet(false)
-{
-}
-
-PolicyDescriptorType::PolicyDescriptorType(const XmlNode& xmlNode) : 
-    m_arnHasBeenSet(false)
+PolicyDescriptorType::PolicyDescriptorType(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

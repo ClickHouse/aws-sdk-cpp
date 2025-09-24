@@ -33,119 +33,55 @@ namespace Model
   class ServiceHealth
   {
   public:
-    AWS_DEVOPSGURU_API ServiceHealth();
+    AWS_DEVOPSGURU_API ServiceHealth() = default;
     AWS_DEVOPSGURU_API ServiceHealth(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API ServiceHealth& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVOPSGURU_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Amazon Web Services service.</p>
      */
-    inline const ServiceName& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The name of the Amazon Web Services service.</p>
-     */
+    inline ServiceName GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
+    inline void SetServiceName(ServiceName value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
+    inline ServiceHealth& WithServiceName(ServiceName value) { SetServiceName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon Web Services service.</p>
-     */
-    inline void SetServiceName(const ServiceName& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The name of the Amazon Web Services service.</p>
-     */
-    inline void SetServiceName(ServiceName&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon Web Services service.</p>
-     */
-    inline ServiceHealth& WithServiceName(const ServiceName& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Web Services service.</p>
-     */
-    inline ServiceHealth& WithServiceName(ServiceName&& value) { SetServiceName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Represents the health of an Amazon Web Services service. This is a
      * <code>ServiceInsightHealth</code> that contains the number of open proactive and
      * reactive insights for this service.</p>
      */
-    inline const ServiceInsightHealth& GetInsight() const{ return m_insight; }
-
-    /**
-     * <p>Represents the health of an Amazon Web Services service. This is a
-     * <code>ServiceInsightHealth</code> that contains the number of open proactive and
-     * reactive insights for this service.</p>
-     */
+    inline const ServiceInsightHealth& GetInsight() const { return m_insight; }
     inline bool InsightHasBeenSet() const { return m_insightHasBeenSet; }
+    template<typename InsightT = ServiceInsightHealth>
+    void SetInsight(InsightT&& value) { m_insightHasBeenSet = true; m_insight = std::forward<InsightT>(value); }
+    template<typename InsightT = ServiceInsightHealth>
+    ServiceHealth& WithInsight(InsightT&& value) { SetInsight(std::forward<InsightT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents the health of an Amazon Web Services service. This is a
-     * <code>ServiceInsightHealth</code> that contains the number of open proactive and
-     * reactive insights for this service.</p>
-     */
-    inline void SetInsight(const ServiceInsightHealth& value) { m_insightHasBeenSet = true; m_insight = value; }
-
-    /**
-     * <p>Represents the health of an Amazon Web Services service. This is a
-     * <code>ServiceInsightHealth</code> that contains the number of open proactive and
-     * reactive insights for this service.</p>
-     */
-    inline void SetInsight(ServiceInsightHealth&& value) { m_insightHasBeenSet = true; m_insight = std::move(value); }
-
-    /**
-     * <p>Represents the health of an Amazon Web Services service. This is a
-     * <code>ServiceInsightHealth</code> that contains the number of open proactive and
-     * reactive insights for this service.</p>
-     */
-    inline ServiceHealth& WithInsight(const ServiceInsightHealth& value) { SetInsight(value); return *this;}
-
-    /**
-     * <p>Represents the health of an Amazon Web Services service. This is a
-     * <code>ServiceInsightHealth</code> that contains the number of open proactive and
-     * reactive insights for this service.</p>
-     */
-    inline ServiceHealth& WithInsight(ServiceInsightHealth&& value) { SetInsight(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Number of resources that DevOps Guru is monitoring in an analyzed Amazon Web
      * Services service. </p>
      */
-    inline long long GetAnalyzedResourceCount() const{ return m_analyzedResourceCount; }
-
-    /**
-     * <p> Number of resources that DevOps Guru is monitoring in an analyzed Amazon Web
-     * Services service. </p>
-     */
+    inline long long GetAnalyzedResourceCount() const { return m_analyzedResourceCount; }
     inline bool AnalyzedResourceCountHasBeenSet() const { return m_analyzedResourceCountHasBeenSet; }
-
-    /**
-     * <p> Number of resources that DevOps Guru is monitoring in an analyzed Amazon Web
-     * Services service. </p>
-     */
     inline void SetAnalyzedResourceCount(long long value) { m_analyzedResourceCountHasBeenSet = true; m_analyzedResourceCount = value; }
-
-    /**
-     * <p> Number of resources that DevOps Guru is monitoring in an analyzed Amazon Web
-     * Services service. </p>
-     */
     inline ServiceHealth& WithAnalyzedResourceCount(long long value) { SetAnalyzedResourceCount(value); return *this;}
-
+    ///@}
   private:
 
-    ServiceName m_serviceName;
+    ServiceName m_serviceName{ServiceName::NOT_SET};
     bool m_serviceNameHasBeenSet = false;
 
     ServiceInsightHealth m_insight;
     bool m_insightHasBeenSet = false;
 
-    long long m_analyzedResourceCount;
+    long long m_analyzedResourceCount{0};
     bool m_analyzedResourceCountHasBeenSet = false;
   };
 

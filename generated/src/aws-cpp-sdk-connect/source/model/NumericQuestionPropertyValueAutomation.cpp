@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-NumericQuestionPropertyValueAutomation::NumericQuestionPropertyValueAutomation() : 
-    m_label(NumericQuestionPropertyAutomationLabel::NOT_SET),
-    m_labelHasBeenSet(false)
-{
-}
-
-NumericQuestionPropertyValueAutomation::NumericQuestionPropertyValueAutomation(JsonView jsonValue) : 
-    m_label(NumericQuestionPropertyAutomationLabel::NOT_SET),
-    m_labelHasBeenSet(false)
+NumericQuestionPropertyValueAutomation::NumericQuestionPropertyValueAutomation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ NumericQuestionPropertyValueAutomation& NumericQuestionPropertyValueAutomation::
   if(jsonValue.ValueExists("Label"))
   {
     m_label = NumericQuestionPropertyAutomationLabelMapper::GetNumericQuestionPropertyAutomationLabelForName(jsonValue.GetString("Label"));
-
     m_labelHasBeenSet = true;
   }
-
   return *this;
 }
 

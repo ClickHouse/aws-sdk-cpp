@@ -34,60 +34,26 @@ namespace Model
   class RunCommandParameters
   {
   public:
-    AWS_EVENTBRIDGE_API RunCommandParameters();
+    AWS_EVENTBRIDGE_API RunCommandParameters() = default;
     AWS_EVENTBRIDGE_API RunCommandParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_EVENTBRIDGE_API RunCommandParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EVENTBRIDGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Currently, we support including only one RunCommandTarget block, which
      * specifies either an array of InstanceIds or a tag.</p>
      */
-    inline const Aws::Vector<RunCommandTarget>& GetRunCommandTargets() const{ return m_runCommandTargets; }
-
-    /**
-     * <p>Currently, we support including only one RunCommandTarget block, which
-     * specifies either an array of InstanceIds or a tag.</p>
-     */
+    inline const Aws::Vector<RunCommandTarget>& GetRunCommandTargets() const { return m_runCommandTargets; }
     inline bool RunCommandTargetsHasBeenSet() const { return m_runCommandTargetsHasBeenSet; }
-
-    /**
-     * <p>Currently, we support including only one RunCommandTarget block, which
-     * specifies either an array of InstanceIds or a tag.</p>
-     */
-    inline void SetRunCommandTargets(const Aws::Vector<RunCommandTarget>& value) { m_runCommandTargetsHasBeenSet = true; m_runCommandTargets = value; }
-
-    /**
-     * <p>Currently, we support including only one RunCommandTarget block, which
-     * specifies either an array of InstanceIds or a tag.</p>
-     */
-    inline void SetRunCommandTargets(Aws::Vector<RunCommandTarget>&& value) { m_runCommandTargetsHasBeenSet = true; m_runCommandTargets = std::move(value); }
-
-    /**
-     * <p>Currently, we support including only one RunCommandTarget block, which
-     * specifies either an array of InstanceIds or a tag.</p>
-     */
-    inline RunCommandParameters& WithRunCommandTargets(const Aws::Vector<RunCommandTarget>& value) { SetRunCommandTargets(value); return *this;}
-
-    /**
-     * <p>Currently, we support including only one RunCommandTarget block, which
-     * specifies either an array of InstanceIds or a tag.</p>
-     */
-    inline RunCommandParameters& WithRunCommandTargets(Aws::Vector<RunCommandTarget>&& value) { SetRunCommandTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>Currently, we support including only one RunCommandTarget block, which
-     * specifies either an array of InstanceIds or a tag.</p>
-     */
-    inline RunCommandParameters& AddRunCommandTargets(const RunCommandTarget& value) { m_runCommandTargetsHasBeenSet = true; m_runCommandTargets.push_back(value); return *this; }
-
-    /**
-     * <p>Currently, we support including only one RunCommandTarget block, which
-     * specifies either an array of InstanceIds or a tag.</p>
-     */
-    inline RunCommandParameters& AddRunCommandTargets(RunCommandTarget&& value) { m_runCommandTargetsHasBeenSet = true; m_runCommandTargets.push_back(std::move(value)); return *this; }
-
+    template<typename RunCommandTargetsT = Aws::Vector<RunCommandTarget>>
+    void SetRunCommandTargets(RunCommandTargetsT&& value) { m_runCommandTargetsHasBeenSet = true; m_runCommandTargets = std::forward<RunCommandTargetsT>(value); }
+    template<typename RunCommandTargetsT = Aws::Vector<RunCommandTarget>>
+    RunCommandParameters& WithRunCommandTargets(RunCommandTargetsT&& value) { SetRunCommandTargets(std::forward<RunCommandTargetsT>(value)); return *this;}
+    template<typename RunCommandTargetsT = RunCommandTarget>
+    RunCommandParameters& AddRunCommandTargets(RunCommandTargetsT&& value) { m_runCommandTargetsHasBeenSet = true; m_runCommandTargets.emplace_back(std::forward<RunCommandTargetsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<RunCommandTarget> m_runCommandTargets;

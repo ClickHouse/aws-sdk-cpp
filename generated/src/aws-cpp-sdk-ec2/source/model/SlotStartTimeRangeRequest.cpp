@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SlotStartTimeRangeRequest::SlotStartTimeRangeRequest() : 
-    m_earliestTimeHasBeenSet(false),
-    m_latestTimeHasBeenSet(false)
-{
-}
-
-SlotStartTimeRangeRequest::SlotStartTimeRangeRequest(const XmlNode& xmlNode) : 
-    m_earliestTimeHasBeenSet(false),
-    m_latestTimeHasBeenSet(false)
+SlotStartTimeRangeRequest::SlotStartTimeRangeRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

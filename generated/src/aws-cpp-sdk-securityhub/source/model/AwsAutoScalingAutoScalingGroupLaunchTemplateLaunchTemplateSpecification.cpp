@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification::AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification() : 
-    m_launchTemplateIdHasBeenSet(false),
-    m_launchTemplateNameHasBeenSet(false),
-    m_versionHasBeenSet(false)
-{
-}
-
-AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification::AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification(JsonView jsonValue) : 
-    m_launchTemplateIdHasBeenSet(false),
-    m_launchTemplateNameHasBeenSet(false),
-    m_versionHasBeenSet(false)
+AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification::AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification& AwsAuto
   if(jsonValue.ValueExists("LaunchTemplateId"))
   {
     m_launchTemplateId = jsonValue.GetString("LaunchTemplateId");
-
     m_launchTemplateIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LaunchTemplateName"))
   {
     m_launchTemplateName = jsonValue.GetString("LaunchTemplateName");
-
     m_launchTemplateNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Version"))
   {
     m_version = jsonValue.GetString("Version");
-
     m_versionHasBeenSet = true;
   }
-
   return *this;
 }
 

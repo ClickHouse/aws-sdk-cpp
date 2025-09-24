@@ -34,48 +34,24 @@ namespace Model
   class InputProcessingConfigurationDescription
   {
   public:
-    AWS_KINESISANALYTICS_API InputProcessingConfigurationDescription();
+    AWS_KINESISANALYTICS_API InputProcessingConfigurationDescription() = default;
     AWS_KINESISANALYTICS_API InputProcessingConfigurationDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API InputProcessingConfigurationDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Provides configuration information about the associated <a
      * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html">InputLambdaProcessorDescription</a>.</p>
      */
-    inline const InputLambdaProcessorDescription& GetInputLambdaProcessorDescription() const{ return m_inputLambdaProcessorDescription; }
-
-    /**
-     * <p>Provides configuration information about the associated <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html">InputLambdaProcessorDescription</a>.</p>
-     */
+    inline const InputLambdaProcessorDescription& GetInputLambdaProcessorDescription() const { return m_inputLambdaProcessorDescription; }
     inline bool InputLambdaProcessorDescriptionHasBeenSet() const { return m_inputLambdaProcessorDescriptionHasBeenSet; }
-
-    /**
-     * <p>Provides configuration information about the associated <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html">InputLambdaProcessorDescription</a>.</p>
-     */
-    inline void SetInputLambdaProcessorDescription(const InputLambdaProcessorDescription& value) { m_inputLambdaProcessorDescriptionHasBeenSet = true; m_inputLambdaProcessorDescription = value; }
-
-    /**
-     * <p>Provides configuration information about the associated <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html">InputLambdaProcessorDescription</a>.</p>
-     */
-    inline void SetInputLambdaProcessorDescription(InputLambdaProcessorDescription&& value) { m_inputLambdaProcessorDescriptionHasBeenSet = true; m_inputLambdaProcessorDescription = std::move(value); }
-
-    /**
-     * <p>Provides configuration information about the associated <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html">InputLambdaProcessorDescription</a>.</p>
-     */
-    inline InputProcessingConfigurationDescription& WithInputLambdaProcessorDescription(const InputLambdaProcessorDescription& value) { SetInputLambdaProcessorDescription(value); return *this;}
-
-    /**
-     * <p>Provides configuration information about the associated <a
-     * href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html">InputLambdaProcessorDescription</a>.</p>
-     */
-    inline InputProcessingConfigurationDescription& WithInputLambdaProcessorDescription(InputLambdaProcessorDescription&& value) { SetInputLambdaProcessorDescription(std::move(value)); return *this;}
-
+    template<typename InputLambdaProcessorDescriptionT = InputLambdaProcessorDescription>
+    void SetInputLambdaProcessorDescription(InputLambdaProcessorDescriptionT&& value) { m_inputLambdaProcessorDescriptionHasBeenSet = true; m_inputLambdaProcessorDescription = std::forward<InputLambdaProcessorDescriptionT>(value); }
+    template<typename InputLambdaProcessorDescriptionT = InputLambdaProcessorDescription>
+    InputProcessingConfigurationDescription& WithInputLambdaProcessorDescription(InputLambdaProcessorDescriptionT&& value) { SetInputLambdaProcessorDescription(std::forward<InputLambdaProcessorDescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     InputLambdaProcessorDescription m_inputLambdaProcessorDescription;

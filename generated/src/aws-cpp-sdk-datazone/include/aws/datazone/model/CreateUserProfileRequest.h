@@ -23,7 +23,7 @@ namespace Model
   class CreateUserProfileRequest : public DataZoneRequest
   {
   public:
-    AWS_DATAZONE_API CreateUserProfileRequest();
+    AWS_DATAZONE_API CreateUserProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,179 +34,57 @@ namespace Model
     AWS_DATAZONE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A unique, case-sensitive identifier that is provided to ensure the
      * idempotency of the request.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that is provided to ensure the
-     * idempotency of the request.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateUserProfileRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique, case-sensitive identifier that is provided to ensure the
-     * idempotency of the request.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that is provided to ensure the
-     * idempotency of the request.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique, case-sensitive identifier that is provided to ensure the
-     * idempotency of the request.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique, case-sensitive identifier that is provided to ensure the
-     * idempotency of the request.</p>
-     */
-    inline CreateUserProfileRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive identifier that is provided to ensure the
-     * idempotency of the request.</p>
-     */
-    inline CreateUserProfileRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive identifier that is provided to ensure the
-     * idempotency of the request.</p>
-     */
-    inline CreateUserProfileRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the Amazon DataZone domain in which a user profile is
      * created.</p>
      */
-    inline const Aws::String& GetDomainIdentifier() const{ return m_domainIdentifier; }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a user profile is
-     * created.</p>
-     */
+    inline const Aws::String& GetDomainIdentifier() const { return m_domainIdentifier; }
     inline bool DomainIdentifierHasBeenSet() const { return m_domainIdentifierHasBeenSet; }
+    template<typename DomainIdentifierT = Aws::String>
+    void SetDomainIdentifier(DomainIdentifierT&& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = std::forward<DomainIdentifierT>(value); }
+    template<typename DomainIdentifierT = Aws::String>
+    CreateUserProfileRequest& WithDomainIdentifier(DomainIdentifierT&& value) { SetDomainIdentifier(std::forward<DomainIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a user profile is
-     * created.</p>
-     */
-    inline void SetDomainIdentifier(const Aws::String& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = value; }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a user profile is
-     * created.</p>
-     */
-    inline void SetDomainIdentifier(Aws::String&& value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a user profile is
-     * created.</p>
-     */
-    inline void SetDomainIdentifier(const char* value) { m_domainIdentifierHasBeenSet = true; m_domainIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a user profile is
-     * created.</p>
-     */
-    inline CreateUserProfileRequest& WithDomainIdentifier(const Aws::String& value) { SetDomainIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a user profile is
-     * created.</p>
-     */
-    inline CreateUserProfileRequest& WithDomainIdentifier(Aws::String&& value) { SetDomainIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon DataZone domain in which a user profile is
-     * created.</p>
-     */
-    inline CreateUserProfileRequest& WithDomainIdentifier(const char* value) { SetDomainIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the user for which the user profile is created.</p>
      */
-    inline const Aws::String& GetUserIdentifier() const{ return m_userIdentifier; }
-
-    /**
-     * <p>The identifier of the user for which the user profile is created.</p>
-     */
+    inline const Aws::String& GetUserIdentifier() const { return m_userIdentifier; }
     inline bool UserIdentifierHasBeenSet() const { return m_userIdentifierHasBeenSet; }
+    template<typename UserIdentifierT = Aws::String>
+    void SetUserIdentifier(UserIdentifierT&& value) { m_userIdentifierHasBeenSet = true; m_userIdentifier = std::forward<UserIdentifierT>(value); }
+    template<typename UserIdentifierT = Aws::String>
+    CreateUserProfileRequest& WithUserIdentifier(UserIdentifierT&& value) { SetUserIdentifier(std::forward<UserIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the user for which the user profile is created.</p>
-     */
-    inline void SetUserIdentifier(const Aws::String& value) { m_userIdentifierHasBeenSet = true; m_userIdentifier = value; }
-
-    /**
-     * <p>The identifier of the user for which the user profile is created.</p>
-     */
-    inline void SetUserIdentifier(Aws::String&& value) { m_userIdentifierHasBeenSet = true; m_userIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the user for which the user profile is created.</p>
-     */
-    inline void SetUserIdentifier(const char* value) { m_userIdentifierHasBeenSet = true; m_userIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of the user for which the user profile is created.</p>
-     */
-    inline CreateUserProfileRequest& WithUserIdentifier(const Aws::String& value) { SetUserIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the user for which the user profile is created.</p>
-     */
-    inline CreateUserProfileRequest& WithUserIdentifier(Aws::String&& value) { SetUserIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the user for which the user profile is created.</p>
-     */
-    inline CreateUserProfileRequest& WithUserIdentifier(const char* value) { SetUserIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The user type of the user for which the user profile is created.</p>
      */
-    inline const UserType& GetUserType() const{ return m_userType; }
-
-    /**
-     * <p>The user type of the user for which the user profile is created.</p>
-     */
+    inline UserType GetUserType() const { return m_userType; }
     inline bool UserTypeHasBeenSet() const { return m_userTypeHasBeenSet; }
-
-    /**
-     * <p>The user type of the user for which the user profile is created.</p>
-     */
-    inline void SetUserType(const UserType& value) { m_userTypeHasBeenSet = true; m_userType = value; }
-
-    /**
-     * <p>The user type of the user for which the user profile is created.</p>
-     */
-    inline void SetUserType(UserType&& value) { m_userTypeHasBeenSet = true; m_userType = std::move(value); }
-
-    /**
-     * <p>The user type of the user for which the user profile is created.</p>
-     */
-    inline CreateUserProfileRequest& WithUserType(const UserType& value) { SetUserType(value); return *this;}
-
-    /**
-     * <p>The user type of the user for which the user profile is created.</p>
-     */
-    inline CreateUserProfileRequest& WithUserType(UserType&& value) { SetUserType(std::move(value)); return *this;}
-
+    inline void SetUserType(UserType value) { m_userTypeHasBeenSet = true; m_userType = value; }
+    inline CreateUserProfileRequest& WithUserType(UserType value) { SetUserType(value); return *this;}
+    ///@}
   private:
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_domainIdentifier;
     bool m_domainIdentifierHasBeenSet = false;
@@ -214,7 +92,7 @@ namespace Model
     Aws::String m_userIdentifier;
     bool m_userIdentifierHasBeenSet = false;
 
-    UserType m_userType;
+    UserType m_userType{UserType::NOT_SET};
     bool m_userTypeHasBeenSet = false;
   };
 

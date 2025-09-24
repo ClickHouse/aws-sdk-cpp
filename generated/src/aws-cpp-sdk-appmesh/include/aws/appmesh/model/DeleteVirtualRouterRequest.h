@@ -28,7 +28,7 @@ namespace Model
   class DeleteVirtualRouterRequest : public AppMeshRequest
   {
   public:
-    AWS_APPMESH_API DeleteVirtualRouterRequest();
+    AWS_APPMESH_API DeleteVirtualRouterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,47 +41,19 @@ namespace Model
     AWS_APPMESH_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The name of the service mesh to delete the virtual router in.</p>
      */
-    inline const Aws::String& GetMeshName() const{ return m_meshName; }
-
-    /**
-     * <p>The name of the service mesh to delete the virtual router in.</p>
-     */
+    inline const Aws::String& GetMeshName() const { return m_meshName; }
     inline bool MeshNameHasBeenSet() const { return m_meshNameHasBeenSet; }
+    template<typename MeshNameT = Aws::String>
+    void SetMeshName(MeshNameT&& value) { m_meshNameHasBeenSet = true; m_meshName = std::forward<MeshNameT>(value); }
+    template<typename MeshNameT = Aws::String>
+    DeleteVirtualRouterRequest& WithMeshName(MeshNameT&& value) { SetMeshName(std::forward<MeshNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service mesh to delete the virtual router in.</p>
-     */
-    inline void SetMeshName(const Aws::String& value) { m_meshNameHasBeenSet = true; m_meshName = value; }
-
-    /**
-     * <p>The name of the service mesh to delete the virtual router in.</p>
-     */
-    inline void SetMeshName(Aws::String&& value) { m_meshNameHasBeenSet = true; m_meshName = std::move(value); }
-
-    /**
-     * <p>The name of the service mesh to delete the virtual router in.</p>
-     */
-    inline void SetMeshName(const char* value) { m_meshNameHasBeenSet = true; m_meshName.assign(value); }
-
-    /**
-     * <p>The name of the service mesh to delete the virtual router in.</p>
-     */
-    inline DeleteVirtualRouterRequest& WithMeshName(const Aws::String& value) { SetMeshName(value); return *this;}
-
-    /**
-     * <p>The name of the service mesh to delete the virtual router in.</p>
-     */
-    inline DeleteVirtualRouterRequest& WithMeshName(Aws::String&& value) { SetMeshName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service mesh to delete the virtual router in.</p>
-     */
-    inline DeleteVirtualRouterRequest& WithMeshName(const char* value) { SetMeshName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
      * account ID is not your own, then it's the ID of the account that shared the mesh
@@ -89,112 +61,25 @@ namespace Model
      * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
      * with shared meshes</a>.</p>
      */
-    inline const Aws::String& GetMeshOwner() const{ return m_meshOwner; }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
+    inline const Aws::String& GetMeshOwner() const { return m_meshOwner; }
     inline bool MeshOwnerHasBeenSet() const { return m_meshOwnerHasBeenSet; }
+    template<typename MeshOwnerT = Aws::String>
+    void SetMeshOwner(MeshOwnerT&& value) { m_meshOwnerHasBeenSet = true; m_meshOwner = std::forward<MeshOwnerT>(value); }
+    template<typename MeshOwnerT = Aws::String>
+    DeleteVirtualRouterRequest& WithMeshOwner(MeshOwnerT&& value) { SetMeshOwner(std::forward<MeshOwnerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline void SetMeshOwner(const Aws::String& value) { m_meshOwnerHasBeenSet = true; m_meshOwner = value; }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline void SetMeshOwner(Aws::String&& value) { m_meshOwnerHasBeenSet = true; m_meshOwner = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline void SetMeshOwner(const char* value) { m_meshOwnerHasBeenSet = true; m_meshOwner.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline DeleteVirtualRouterRequest& WithMeshOwner(const Aws::String& value) { SetMeshOwner(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline DeleteVirtualRouterRequest& WithMeshOwner(Aws::String&& value) { SetMeshOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services IAM account ID of the service mesh owner. If the
-     * account ID is not your own, then it's the ID of the account that shared the mesh
-     * with your account. For more information about mesh sharing, see <a
-     * href="https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html">Working
-     * with shared meshes</a>.</p>
-     */
-    inline DeleteVirtualRouterRequest& WithMeshOwner(const char* value) { SetMeshOwner(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the virtual router to delete.</p>
      */
-    inline const Aws::String& GetVirtualRouterName() const{ return m_virtualRouterName; }
-
-    /**
-     * <p>The name of the virtual router to delete.</p>
-     */
+    inline const Aws::String& GetVirtualRouterName() const { return m_virtualRouterName; }
     inline bool VirtualRouterNameHasBeenSet() const { return m_virtualRouterNameHasBeenSet; }
-
-    /**
-     * <p>The name of the virtual router to delete.</p>
-     */
-    inline void SetVirtualRouterName(const Aws::String& value) { m_virtualRouterNameHasBeenSet = true; m_virtualRouterName = value; }
-
-    /**
-     * <p>The name of the virtual router to delete.</p>
-     */
-    inline void SetVirtualRouterName(Aws::String&& value) { m_virtualRouterNameHasBeenSet = true; m_virtualRouterName = std::move(value); }
-
-    /**
-     * <p>The name of the virtual router to delete.</p>
-     */
-    inline void SetVirtualRouterName(const char* value) { m_virtualRouterNameHasBeenSet = true; m_virtualRouterName.assign(value); }
-
-    /**
-     * <p>The name of the virtual router to delete.</p>
-     */
-    inline DeleteVirtualRouterRequest& WithVirtualRouterName(const Aws::String& value) { SetVirtualRouterName(value); return *this;}
-
-    /**
-     * <p>The name of the virtual router to delete.</p>
-     */
-    inline DeleteVirtualRouterRequest& WithVirtualRouterName(Aws::String&& value) { SetVirtualRouterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the virtual router to delete.</p>
-     */
-    inline DeleteVirtualRouterRequest& WithVirtualRouterName(const char* value) { SetVirtualRouterName(value); return *this;}
-
+    template<typename VirtualRouterNameT = Aws::String>
+    void SetVirtualRouterName(VirtualRouterNameT&& value) { m_virtualRouterNameHasBeenSet = true; m_virtualRouterName = std::forward<VirtualRouterNameT>(value); }
+    template<typename VirtualRouterNameT = Aws::String>
+    DeleteVirtualRouterRequest& WithVirtualRouterName(VirtualRouterNameT&& value) { SetVirtualRouterName(std::forward<VirtualRouterNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_meshName;

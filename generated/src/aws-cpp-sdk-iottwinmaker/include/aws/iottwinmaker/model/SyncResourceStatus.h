@@ -32,76 +32,36 @@ namespace Model
   class SyncResourceStatus
   {
   public:
-    AWS_IOTTWINMAKER_API SyncResourceStatus();
+    AWS_IOTTWINMAKER_API SyncResourceStatus() = default;
     AWS_IOTTWINMAKER_API SyncResourceStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API SyncResourceStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The sync resource status state.</p>
      */
-    inline const SyncResourceState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The sync resource status state.</p>
-     */
+    inline SyncResourceState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(SyncResourceState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline SyncResourceStatus& WithState(SyncResourceState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The sync resource status state.</p>
-     */
-    inline void SetState(const SyncResourceState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The sync resource status state.</p>
-     */
-    inline void SetState(SyncResourceState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The sync resource status state.</p>
-     */
-    inline SyncResourceStatus& WithState(const SyncResourceState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The sync resource status state.</p>
-     */
-    inline SyncResourceStatus& WithState(SyncResourceState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status error.</p>
      */
-    inline const ErrorDetails& GetError() const{ return m_error; }
-
-    /**
-     * <p>The status error.</p>
-     */
+    inline const ErrorDetails& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
-
-    /**
-     * <p>The status error.</p>
-     */
-    inline void SetError(const ErrorDetails& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>The status error.</p>
-     */
-    inline void SetError(ErrorDetails&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>The status error.</p>
-     */
-    inline SyncResourceStatus& WithError(const ErrorDetails& value) { SetError(value); return *this;}
-
-    /**
-     * <p>The status error.</p>
-     */
-    inline SyncResourceStatus& WithError(ErrorDetails&& value) { SetError(std::move(value)); return *this;}
-
+    template<typename ErrorT = ErrorDetails>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = ErrorDetails>
+    SyncResourceStatus& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
   private:
 
-    SyncResourceState m_state;
+    SyncResourceState m_state{SyncResourceState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     ErrorDetails m_error;

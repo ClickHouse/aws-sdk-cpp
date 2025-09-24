@@ -28,54 +28,24 @@ namespace Model
   class StartEntitiesDetectionJobResult
   {
   public:
-    AWS_COMPREHEND_API StartEntitiesDetectionJobResult();
+    AWS_COMPREHEND_API StartEntitiesDetectionJobResult() = default;
     AWS_COMPREHEND_API StartEntitiesDetectionJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COMPREHEND_API StartEntitiesDetectionJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The identifier generated for the job. To get the status of job, use this
      * identifier with the operation.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
+    inline const Aws::String& GetJobId() const { return m_jobId; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    StartEntitiesDetectionJobResult& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier generated for the job. To get the status of job, use this
-     * identifier with the operation.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobId = value; }
-
-    /**
-     * <p>The identifier generated for the job. To get the status of job, use this
-     * identifier with the operation.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobId = std::move(value); }
-
-    /**
-     * <p>The identifier generated for the job. To get the status of job, use this
-     * identifier with the operation.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobId.assign(value); }
-
-    /**
-     * <p>The identifier generated for the job. To get the status of job, use this
-     * identifier with the operation.</p>
-     */
-    inline StartEntitiesDetectionJobResult& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The identifier generated for the job. To get the status of job, use this
-     * identifier with the operation.</p>
-     */
-    inline StartEntitiesDetectionJobResult& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier generated for the job. To get the status of job, use this
-     * identifier with the operation.</p>
-     */
-    inline StartEntitiesDetectionJobResult& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the entities detection job. It is a unique,
      * fully qualified identifier for the job. It includes the Amazon Web Services
@@ -86,81 +56,14 @@ namespace Model
      * <code>arn:aws:comprehend:us-west-2:111122223333:entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
      * </p>
      */
-    inline const Aws::String& GetJobArn() const{ return m_jobArn; }
+    inline const Aws::String& GetJobArn() const { return m_jobArn; }
+    template<typename JobArnT = Aws::String>
+    void SetJobArn(JobArnT&& value) { m_jobArnHasBeenSet = true; m_jobArn = std::forward<JobArnT>(value); }
+    template<typename JobArnT = Aws::String>
+    StartEntitiesDetectionJobResult& WithJobArn(JobArnT&& value) { SetJobArn(std::forward<JobArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entities detection job. It is a unique,
-     * fully qualified identifier for the job. It includes the Amazon Web Services
-     * account, Amazon Web Services Region, and the job ID. The format of the ARN is as
-     * follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline void SetJobArn(const Aws::String& value) { m_jobArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entities detection job. It is a unique,
-     * fully qualified identifier for the job. It includes the Amazon Web Services
-     * account, Amazon Web Services Region, and the job ID. The format of the ARN is as
-     * follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline void SetJobArn(Aws::String&& value) { m_jobArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entities detection job. It is a unique,
-     * fully qualified identifier for the job. It includes the Amazon Web Services
-     * account, Amazon Web Services Region, and the job ID. The format of the ARN is as
-     * follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline void SetJobArn(const char* value) { m_jobArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entities detection job. It is a unique,
-     * fully qualified identifier for the job. It includes the Amazon Web Services
-     * account, Amazon Web Services Region, and the job ID. The format of the ARN is as
-     * follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline StartEntitiesDetectionJobResult& WithJobArn(const Aws::String& value) { SetJobArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entities detection job. It is a unique,
-     * fully qualified identifier for the job. It includes the Amazon Web Services
-     * account, Amazon Web Services Region, and the job ID. The format of the ARN is as
-     * follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline StartEntitiesDetectionJobResult& WithJobArn(Aws::String&& value) { SetJobArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the entities detection job. It is a unique,
-     * fully qualified identifier for the job. It includes the Amazon Web Services
-     * account, Amazon Web Services Region, and the job ID. The format of the ARN is as
-     * follows:</p> <p>
-     * <code>arn:&lt;partition&gt;:comprehend:&lt;region&gt;:&lt;account-id&gt;:entities-detection-job/&lt;job-id&gt;</code>
-     * </p> <p>The following is an example job ARN:</p> <p>
-     * <code>arn:aws:comprehend:us-west-2:111122223333:entities-detection-job/1234abcd12ab34cd56ef1234567890ab</code>
-     * </p>
-     */
-    inline StartEntitiesDetectionJobResult& WithJobArn(const char* value) { SetJobArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the job. </p> <ul> <li> <p>SUBMITTED - The job has been
      * received and is queued for processing.</p> </li> <li> <p>IN_PROGRESS - Amazon
@@ -171,125 +74,46 @@ namespace Model
      * and is processing the request.</p> </li> <li> <p>STOPPED - The job was
      * successfully stopped without completing.</p> </li> </ul>
      */
-    inline const JobStatus& GetJobStatus() const{ return m_jobStatus; }
+    inline JobStatus GetJobStatus() const { return m_jobStatus; }
+    inline void SetJobStatus(JobStatus value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
+    inline StartEntitiesDetectionJobResult& WithJobStatus(JobStatus value) { SetJobStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the job. </p> <ul> <li> <p>SUBMITTED - The job has been
-     * received and is queued for processing.</p> </li> <li> <p>IN_PROGRESS - Amazon
-     * Comprehend is processing the job.</p> </li> <li> <p>COMPLETED - The job was
-     * successfully completed and the output is available.</p> </li> <li> <p>FAILED -
-     * The job did not complete. To get details, use the operation.</p> </li> <li>
-     * <p>STOP_REQUESTED - Amazon Comprehend has received a stop request for the job
-     * and is processing the request.</p> </li> <li> <p>STOPPED - The job was
-     * successfully stopped without completing.</p> </li> </ul>
-     */
-    inline void SetJobStatus(const JobStatus& value) { m_jobStatus = value; }
-
-    /**
-     * <p>The status of the job. </p> <ul> <li> <p>SUBMITTED - The job has been
-     * received and is queued for processing.</p> </li> <li> <p>IN_PROGRESS - Amazon
-     * Comprehend is processing the job.</p> </li> <li> <p>COMPLETED - The job was
-     * successfully completed and the output is available.</p> </li> <li> <p>FAILED -
-     * The job did not complete. To get details, use the operation.</p> </li> <li>
-     * <p>STOP_REQUESTED - Amazon Comprehend has received a stop request for the job
-     * and is processing the request.</p> </li> <li> <p>STOPPED - The job was
-     * successfully stopped without completing.</p> </li> </ul>
-     */
-    inline void SetJobStatus(JobStatus&& value) { m_jobStatus = std::move(value); }
-
-    /**
-     * <p>The status of the job. </p> <ul> <li> <p>SUBMITTED - The job has been
-     * received and is queued for processing.</p> </li> <li> <p>IN_PROGRESS - Amazon
-     * Comprehend is processing the job.</p> </li> <li> <p>COMPLETED - The job was
-     * successfully completed and the output is available.</p> </li> <li> <p>FAILED -
-     * The job did not complete. To get details, use the operation.</p> </li> <li>
-     * <p>STOP_REQUESTED - Amazon Comprehend has received a stop request for the job
-     * and is processing the request.</p> </li> <li> <p>STOPPED - The job was
-     * successfully stopped without completing.</p> </li> </ul>
-     */
-    inline StartEntitiesDetectionJobResult& WithJobStatus(const JobStatus& value) { SetJobStatus(value); return *this;}
-
-    /**
-     * <p>The status of the job. </p> <ul> <li> <p>SUBMITTED - The job has been
-     * received and is queued for processing.</p> </li> <li> <p>IN_PROGRESS - Amazon
-     * Comprehend is processing the job.</p> </li> <li> <p>COMPLETED - The job was
-     * successfully completed and the output is available.</p> </li> <li> <p>FAILED -
-     * The job did not complete. To get details, use the operation.</p> </li> <li>
-     * <p>STOP_REQUESTED - Amazon Comprehend has received a stop request for the job
-     * and is processing the request.</p> </li> <li> <p>STOPPED - The job was
-     * successfully stopped without completing.</p> </li> </ul>
-     */
-    inline StartEntitiesDetectionJobResult& WithJobStatus(JobStatus&& value) { SetJobStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the custom entity recognition model.</p>
      */
-    inline const Aws::String& GetEntityRecognizerArn() const{ return m_entityRecognizerArn; }
+    inline const Aws::String& GetEntityRecognizerArn() const { return m_entityRecognizerArn; }
+    template<typename EntityRecognizerArnT = Aws::String>
+    void SetEntityRecognizerArn(EntityRecognizerArnT&& value) { m_entityRecognizerArnHasBeenSet = true; m_entityRecognizerArn = std::forward<EntityRecognizerArnT>(value); }
+    template<typename EntityRecognizerArnT = Aws::String>
+    StartEntitiesDetectionJobResult& WithEntityRecognizerArn(EntityRecognizerArnT&& value) { SetEntityRecognizerArn(std::forward<EntityRecognizerArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the custom entity recognition model.</p>
-     */
-    inline void SetEntityRecognizerArn(const Aws::String& value) { m_entityRecognizerArn = value; }
-
-    /**
-     * <p>The ARN of the custom entity recognition model.</p>
-     */
-    inline void SetEntityRecognizerArn(Aws::String&& value) { m_entityRecognizerArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the custom entity recognition model.</p>
-     */
-    inline void SetEntityRecognizerArn(const char* value) { m_entityRecognizerArn.assign(value); }
-
-    /**
-     * <p>The ARN of the custom entity recognition model.</p>
-     */
-    inline StartEntitiesDetectionJobResult& WithEntityRecognizerArn(const Aws::String& value) { SetEntityRecognizerArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the custom entity recognition model.</p>
-     */
-    inline StartEntitiesDetectionJobResult& WithEntityRecognizerArn(Aws::String&& value) { SetEntityRecognizerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the custom entity recognition model.</p>
-     */
-    inline StartEntitiesDetectionJobResult& WithEntityRecognizerArn(const char* value) { SetEntityRecognizerArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartEntitiesDetectionJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartEntitiesDetectionJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartEntitiesDetectionJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartEntitiesDetectionJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobId;
+    bool m_jobIdHasBeenSet = false;
 
     Aws::String m_jobArn;
+    bool m_jobArnHasBeenSet = false;
 
-    JobStatus m_jobStatus;
+    JobStatus m_jobStatus{JobStatus::NOT_SET};
+    bool m_jobStatusHasBeenSet = false;
 
     Aws::String m_entityRecognizerArn;
+    bool m_entityRecognizerArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

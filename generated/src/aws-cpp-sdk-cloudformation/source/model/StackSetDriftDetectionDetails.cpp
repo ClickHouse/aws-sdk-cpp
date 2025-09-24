@@ -20,41 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackSetDriftDetectionDetails::StackSetDriftDetectionDetails() : 
-    m_driftStatus(StackSetDriftStatus::NOT_SET),
-    m_driftStatusHasBeenSet(false),
-    m_driftDetectionStatus(StackSetDriftDetectionStatus::NOT_SET),
-    m_driftDetectionStatusHasBeenSet(false),
-    m_lastDriftCheckTimestampHasBeenSet(false),
-    m_totalStackInstancesCount(0),
-    m_totalStackInstancesCountHasBeenSet(false),
-    m_driftedStackInstancesCount(0),
-    m_driftedStackInstancesCountHasBeenSet(false),
-    m_inSyncStackInstancesCount(0),
-    m_inSyncStackInstancesCountHasBeenSet(false),
-    m_inProgressStackInstancesCount(0),
-    m_inProgressStackInstancesCountHasBeenSet(false),
-    m_failedStackInstancesCount(0),
-    m_failedStackInstancesCountHasBeenSet(false)
-{
-}
-
-StackSetDriftDetectionDetails::StackSetDriftDetectionDetails(const XmlNode& xmlNode) : 
-    m_driftStatus(StackSetDriftStatus::NOT_SET),
-    m_driftStatusHasBeenSet(false),
-    m_driftDetectionStatus(StackSetDriftDetectionStatus::NOT_SET),
-    m_driftDetectionStatusHasBeenSet(false),
-    m_lastDriftCheckTimestampHasBeenSet(false),
-    m_totalStackInstancesCount(0),
-    m_totalStackInstancesCountHasBeenSet(false),
-    m_driftedStackInstancesCount(0),
-    m_driftedStackInstancesCountHasBeenSet(false),
-    m_inSyncStackInstancesCount(0),
-    m_inSyncStackInstancesCountHasBeenSet(false),
-    m_inProgressStackInstancesCount(0),
-    m_inProgressStackInstancesCountHasBeenSet(false),
-    m_failedStackInstancesCount(0),
-    m_failedStackInstancesCountHasBeenSet(false)
+StackSetDriftDetectionDetails::StackSetDriftDetectionDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -68,13 +34,13 @@ StackSetDriftDetectionDetails& StackSetDriftDetectionDetails::operator =(const X
     XmlNode driftStatusNode = resultNode.FirstChild("DriftStatus");
     if(!driftStatusNode.IsNull())
     {
-      m_driftStatus = StackSetDriftStatusMapper::GetStackSetDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(driftStatusNode.GetText()).c_str()).c_str());
+      m_driftStatus = StackSetDriftStatusMapper::GetStackSetDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(driftStatusNode.GetText()).c_str()));
       m_driftStatusHasBeenSet = true;
     }
     XmlNode driftDetectionStatusNode = resultNode.FirstChild("DriftDetectionStatus");
     if(!driftDetectionStatusNode.IsNull())
     {
-      m_driftDetectionStatus = StackSetDriftDetectionStatusMapper::GetStackSetDriftDetectionStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(driftDetectionStatusNode.GetText()).c_str()).c_str());
+      m_driftDetectionStatus = StackSetDriftDetectionStatusMapper::GetStackSetDriftDetectionStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(driftDetectionStatusNode.GetText()).c_str()));
       m_driftDetectionStatusHasBeenSet = true;
     }
     XmlNode lastDriftCheckTimestampNode = resultNode.FirstChild("LastDriftCheckTimestamp");
@@ -122,12 +88,12 @@ void StackSetDriftDetectionDetails::OutputToStream(Aws::OStream& oStream, const 
 {
   if(m_driftStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DriftStatus=" << StackSetDriftStatusMapper::GetNameForStackSetDriftStatus(m_driftStatus) << "&";
+      oStream << location << index << locationValue << ".DriftStatus=" << StringUtils::URLEncode(StackSetDriftStatusMapper::GetNameForStackSetDriftStatus(m_driftStatus)) << "&";
   }
 
   if(m_driftDetectionStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DriftDetectionStatus=" << StackSetDriftDetectionStatusMapper::GetNameForStackSetDriftDetectionStatus(m_driftDetectionStatus) << "&";
+      oStream << location << index << locationValue << ".DriftDetectionStatus=" << StringUtils::URLEncode(StackSetDriftDetectionStatusMapper::GetNameForStackSetDriftDetectionStatus(m_driftDetectionStatus)) << "&";
   }
 
   if(m_lastDriftCheckTimestampHasBeenSet)
@@ -166,11 +132,11 @@ void StackSetDriftDetectionDetails::OutputToStream(Aws::OStream& oStream, const 
 {
   if(m_driftStatusHasBeenSet)
   {
-      oStream << location << ".DriftStatus=" << StackSetDriftStatusMapper::GetNameForStackSetDriftStatus(m_driftStatus) << "&";
+      oStream << location << ".DriftStatus=" << StringUtils::URLEncode(StackSetDriftStatusMapper::GetNameForStackSetDriftStatus(m_driftStatus)) << "&";
   }
   if(m_driftDetectionStatusHasBeenSet)
   {
-      oStream << location << ".DriftDetectionStatus=" << StackSetDriftDetectionStatusMapper::GetNameForStackSetDriftDetectionStatus(m_driftDetectionStatus) << "&";
+      oStream << location << ".DriftDetectionStatus=" << StringUtils::URLEncode(StackSetDriftDetectionStatusMapper::GetNameForStackSetDriftDetectionStatus(m_driftDetectionStatus)) << "&";
   }
   if(m_lastDriftCheckTimestampHasBeenSet)
   {

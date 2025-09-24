@@ -10,23 +10,25 @@
 using namespace Aws::ElasticLoadBalancing::Model;
 using namespace Aws::Utils;
 
-DescribeTagsRequest::DescribeTagsRequest() : 
-    m_loadBalancerNamesHasBeenSet(false)
-{
-}
-
 Aws::String DescribeTagsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeTags&";
   if(m_loadBalancerNamesHasBeenSet)
   {
-    unsigned loadBalancerNamesCount = 1;
-    for(auto& item : m_loadBalancerNames)
+    if (m_loadBalancerNames.empty())
     {
-      ss << "LoadBalancerNames.member." << loadBalancerNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      loadBalancerNamesCount++;
+      ss << "LoadBalancerNames=&";
+    }
+    else
+    {
+      unsigned loadBalancerNamesCount = 1;
+      for(auto& item : m_loadBalancerNames)
+      {
+        ss << "LoadBalancerNames.member." << loadBalancerNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        loadBalancerNamesCount++;
+      }
     }
   }
 

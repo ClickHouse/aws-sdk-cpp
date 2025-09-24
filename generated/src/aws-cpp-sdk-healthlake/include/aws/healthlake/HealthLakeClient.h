@@ -16,16 +16,17 @@ namespace Aws
 namespace HealthLake
 {
   /**
-   * <p>AWS HealthLake is a HIPAA eligibile service that allows customers to store,
-   * transform, query, and analyze their FHIR-formatted data in a consistent fashion
-   * in the cloud.</p>
+   * <p>This is the <i>AWS HealthLake API Reference</i>. For an introduction to the
+   * service, see <a
+   * href="https://docs.aws.amazon.com/healthlake/latest/devguide/what-is.html">What
+   * is AWS HealthLake?</a> in the <i>AWS HealthLake Developer Guide</i>.</p>
    */
   class AWS_HEALTHLAKE_API HealthLakeClient : public Aws::Client::AWSJsonClient, public Aws::Client::ClientWithAsyncTemplateMethods<HealthLakeClient>
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef HealthLakeClientConfiguration ClientConfigurationType;
       typedef HealthLakeEndpointProvider EndpointProviderType;
@@ -35,14 +36,14 @@ namespace HealthLake
         * is not specified, it will be initialized to default values.
         */
         HealthLakeClient(const Aws::HealthLake::HealthLakeClientConfiguration& clientConfiguration = Aws::HealthLake::HealthLakeClientConfiguration(),
-                         std::shared_ptr<HealthLakeEndpointProviderBase> endpointProvider = Aws::MakeShared<HealthLakeEndpointProvider>(ALLOCATION_TAG));
+                         std::shared_ptr<HealthLakeEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         HealthLakeClient(const Aws::Auth::AWSCredentials& credentials,
-                         std::shared_ptr<HealthLakeEndpointProviderBase> endpointProvider = Aws::MakeShared<HealthLakeEndpointProvider>(ALLOCATION_TAG),
+                         std::shared_ptr<HealthLakeEndpointProviderBase> endpointProvider = nullptr,
                          const Aws::HealthLake::HealthLakeClientConfiguration& clientConfiguration = Aws::HealthLake::HealthLakeClientConfiguration());
 
        /**
@@ -50,7 +51,7 @@ namespace HealthLake
         * the default http client factory will be used
         */
         HealthLakeClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                         std::shared_ptr<HealthLakeEndpointProviderBase> endpointProvider = Aws::MakeShared<HealthLakeEndpointProvider>(ALLOCATION_TAG),
+                         std::shared_ptr<HealthLakeEndpointProviderBase> endpointProvider = nullptr,
                          const Aws::HealthLake::HealthLakeClientConfiguration& clientConfiguration = Aws::HealthLake::HealthLakeClientConfiguration());
 
 
@@ -79,8 +80,7 @@ namespace HealthLake
         virtual ~HealthLakeClient();
 
         /**
-         * <p>Creates a data store that can ingest and export FHIR formatted
-         * data.</p><p><h3>See Also:</h3>   <a
+         * <p>Create a FHIR-enabled data store.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/CreateFHIRDatastore">AWS
          * API Reference</a></p>
          */
@@ -105,7 +105,7 @@ namespace HealthLake
         }
 
         /**
-         * <p>Deletes a data store. </p><p><h3>See Also:</h3>   <a
+         * <p>Delete a FHIR-enabled data store.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/DeleteFHIRDatastore">AWS
          * API Reference</a></p>
          */
@@ -130,10 +130,7 @@ namespace HealthLake
         }
 
         /**
-         * <p>Gets the properties associated with the FHIR data store, including the data
-         * store ID, data store ARN, data store name, data store status, when the data
-         * store was created, data store type version, and the data store's
-         * endpoint.</p><p><h3>See Also:</h3>   <a
+         * <p>Get properties for a FHIR-enabled data store.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/DescribeFHIRDatastore">AWS
          * API Reference</a></p>
          */
@@ -158,8 +155,7 @@ namespace HealthLake
         }
 
         /**
-         * <p>Displays the properties of a FHIR export job, including the ID, ARN, name,
-         * and the status of the job.</p><p><h3>See Also:</h3>   <a
+         * <p>Get FHIR export job properties.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/DescribeFHIRExportJob">AWS
          * API Reference</a></p>
          */
@@ -184,8 +180,8 @@ namespace HealthLake
         }
 
         /**
-         * <p>Displays the properties of a FHIR import job, including the ID, ARN, name,
-         * and the status of the job. </p><p><h3>See Also:</h3>   <a
+         * <p>Get the import job properties to learn more about the job or job
+         * progress.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/DescribeFHIRImportJob">AWS
          * API Reference</a></p>
          */
@@ -210,18 +206,18 @@ namespace HealthLake
         }
 
         /**
-         * <p>Lists all FHIR data stores that are in the user’s account, regardless of data
+         * <p>List all FHIR-enabled data stores in a user’s account, regardless of data
          * store status.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/ListFHIRDatastores">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListFHIRDatastoresOutcome ListFHIRDatastores(const Model::ListFHIRDatastoresRequest& request) const;
+        virtual Model::ListFHIRDatastoresOutcome ListFHIRDatastores(const Model::ListFHIRDatastoresRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListFHIRDatastores that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListFHIRDatastoresRequestT = Model::ListFHIRDatastoresRequest>
-        Model::ListFHIRDatastoresOutcomeCallable ListFHIRDatastoresCallable(const ListFHIRDatastoresRequestT& request) const
+        Model::ListFHIRDatastoresOutcomeCallable ListFHIRDatastoresCallable(const ListFHIRDatastoresRequestT& request = {}) const
         {
             return SubmitCallable(&HealthLakeClient::ListFHIRDatastores, request);
         }
@@ -230,14 +226,14 @@ namespace HealthLake
          * An Async wrapper for ListFHIRDatastores that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListFHIRDatastoresRequestT = Model::ListFHIRDatastoresRequest>
-        void ListFHIRDatastoresAsync(const ListFHIRDatastoresRequestT& request, const ListFHIRDatastoresResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListFHIRDatastoresAsync(const ListFHIRDatastoresResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListFHIRDatastoresRequestT& request = {}) const
         {
             return SubmitAsync(&HealthLakeClient::ListFHIRDatastores, request, handler, context);
         }
 
         /**
-         * <p> Lists all FHIR export jobs associated with an account and their statuses.
-         * </p><p><h3>See Also:</h3>   <a
+         * <p>Lists all FHIR export jobs associated with an account and their
+         * statuses.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/ListFHIRExportJobs">AWS
          * API Reference</a></p>
          */
@@ -262,8 +258,8 @@ namespace HealthLake
         }
 
         /**
-         * <p> Lists all FHIR import jobs associated with an account and their statuses.
-         * </p><p><h3>See Also:</h3>   <a
+         * <p>List all FHIR import jobs associated with an account and their
+         * statuses.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/ListFHIRImportJobs">AWS
          * API Reference</a></p>
          */
@@ -288,8 +284,8 @@ namespace HealthLake
         }
 
         /**
-         * <p> Returns a list of all existing tags associated with a data store.
-         * </p><p><h3>See Also:</h3>   <a
+         * <p>Returns a list of all existing tags associated with a data
+         * store.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/ListTagsForResource">AWS
          * API Reference</a></p>
          */
@@ -314,7 +310,7 @@ namespace HealthLake
         }
 
         /**
-         * <p>Begins a FHIR export job.</p><p><h3>See Also:</h3>   <a
+         * <p>Start a FHIR export job.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/StartFHIRExportJob">AWS
          * API Reference</a></p>
          */
@@ -339,7 +335,10 @@ namespace HealthLake
         }
 
         /**
-         * <p>Begins a FHIR Import job.</p><p><h3>See Also:</h3>   <a
+         * <p>Start importing bulk FHIR data into an ACTIVE data store. The import job
+         * imports FHIR data found in the <code>InputDataConfig</code> object and stores
+         * processing results in the <code>JobOutputDataConfig</code> object.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/StartFHIRImportJob">AWS
          * API Reference</a></p>
          */
@@ -364,7 +363,7 @@ namespace HealthLake
         }
 
         /**
-         * <p> Adds a user specified key and value tag to a data store. </p><p><h3>See
+         * <p>Add a user-specifed key and value tag to a data store.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/TagResource">AWS
          * API Reference</a></p>
@@ -390,7 +389,8 @@ namespace HealthLake
         }
 
         /**
-         * <p> Removes tags from a data store. </p><p><h3>See Also:</h3>   <a
+         * <p>Remove a user-specifed key and value tag from a data store.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/healthlake-2017-07-01/UntagResource">AWS
          * API Reference</a></p>
          */
@@ -422,7 +422,6 @@ namespace HealthLake
       void init(const HealthLakeClientConfiguration& clientConfiguration);
 
       HealthLakeClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<HealthLakeEndpointProviderBase> m_endpointProvider;
   };
 

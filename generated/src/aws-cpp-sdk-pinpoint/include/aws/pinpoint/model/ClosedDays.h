@@ -34,216 +34,81 @@ namespace Model
   class ClosedDays
   {
   public:
-    AWS_PINPOINT_API ClosedDays();
+    AWS_PINPOINT_API ClosedDays() = default;
     AWS_PINPOINT_API ClosedDays(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API ClosedDays& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Rules for the Email channel.</p>
      */
-    inline const Aws::Vector<ClosedDaysRule>& GetEMAIL() const{ return m_eMAIL; }
-
-    /**
-     * <p>Rules for the Email channel.</p>
-     */
+    inline const Aws::Vector<ClosedDaysRule>& GetEMAIL() const { return m_eMAIL; }
     inline bool EMAILHasBeenSet() const { return m_eMAILHasBeenSet; }
+    template<typename EMAILT = Aws::Vector<ClosedDaysRule>>
+    void SetEMAIL(EMAILT&& value) { m_eMAILHasBeenSet = true; m_eMAIL = std::forward<EMAILT>(value); }
+    template<typename EMAILT = Aws::Vector<ClosedDaysRule>>
+    ClosedDays& WithEMAIL(EMAILT&& value) { SetEMAIL(std::forward<EMAILT>(value)); return *this;}
+    template<typename EMAILT = ClosedDaysRule>
+    ClosedDays& AddEMAIL(EMAILT&& value) { m_eMAILHasBeenSet = true; m_eMAIL.emplace_back(std::forward<EMAILT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Rules for the Email channel.</p>
-     */
-    inline void SetEMAIL(const Aws::Vector<ClosedDaysRule>& value) { m_eMAILHasBeenSet = true; m_eMAIL = value; }
-
-    /**
-     * <p>Rules for the Email channel.</p>
-     */
-    inline void SetEMAIL(Aws::Vector<ClosedDaysRule>&& value) { m_eMAILHasBeenSet = true; m_eMAIL = std::move(value); }
-
-    /**
-     * <p>Rules for the Email channel.</p>
-     */
-    inline ClosedDays& WithEMAIL(const Aws::Vector<ClosedDaysRule>& value) { SetEMAIL(value); return *this;}
-
-    /**
-     * <p>Rules for the Email channel.</p>
-     */
-    inline ClosedDays& WithEMAIL(Aws::Vector<ClosedDaysRule>&& value) { SetEMAIL(std::move(value)); return *this;}
-
-    /**
-     * <p>Rules for the Email channel.</p>
-     */
-    inline ClosedDays& AddEMAIL(const ClosedDaysRule& value) { m_eMAILHasBeenSet = true; m_eMAIL.push_back(value); return *this; }
-
-    /**
-     * <p>Rules for the Email channel.</p>
-     */
-    inline ClosedDays& AddEMAIL(ClosedDaysRule&& value) { m_eMAILHasBeenSet = true; m_eMAIL.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Rules for the SMS channel.</p>
      */
-    inline const Aws::Vector<ClosedDaysRule>& GetSMS() const{ return m_sMS; }
-
-    /**
-     * <p>Rules for the SMS channel.</p>
-     */
+    inline const Aws::Vector<ClosedDaysRule>& GetSMS() const { return m_sMS; }
     inline bool SMSHasBeenSet() const { return m_sMSHasBeenSet; }
+    template<typename SMST = Aws::Vector<ClosedDaysRule>>
+    void SetSMS(SMST&& value) { m_sMSHasBeenSet = true; m_sMS = std::forward<SMST>(value); }
+    template<typename SMST = Aws::Vector<ClosedDaysRule>>
+    ClosedDays& WithSMS(SMST&& value) { SetSMS(std::forward<SMST>(value)); return *this;}
+    template<typename SMST = ClosedDaysRule>
+    ClosedDays& AddSMS(SMST&& value) { m_sMSHasBeenSet = true; m_sMS.emplace_back(std::forward<SMST>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Rules for the SMS channel.</p>
-     */
-    inline void SetSMS(const Aws::Vector<ClosedDaysRule>& value) { m_sMSHasBeenSet = true; m_sMS = value; }
-
-    /**
-     * <p>Rules for the SMS channel.</p>
-     */
-    inline void SetSMS(Aws::Vector<ClosedDaysRule>&& value) { m_sMSHasBeenSet = true; m_sMS = std::move(value); }
-
-    /**
-     * <p>Rules for the SMS channel.</p>
-     */
-    inline ClosedDays& WithSMS(const Aws::Vector<ClosedDaysRule>& value) { SetSMS(value); return *this;}
-
-    /**
-     * <p>Rules for the SMS channel.</p>
-     */
-    inline ClosedDays& WithSMS(Aws::Vector<ClosedDaysRule>&& value) { SetSMS(std::move(value)); return *this;}
-
-    /**
-     * <p>Rules for the SMS channel.</p>
-     */
-    inline ClosedDays& AddSMS(const ClosedDaysRule& value) { m_sMSHasBeenSet = true; m_sMS.push_back(value); return *this; }
-
-    /**
-     * <p>Rules for the SMS channel.</p>
-     */
-    inline ClosedDays& AddSMS(ClosedDaysRule&& value) { m_sMSHasBeenSet = true; m_sMS.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Rules for the Push channel.</p>
      */
-    inline const Aws::Vector<ClosedDaysRule>& GetPUSH() const{ return m_pUSH; }
-
-    /**
-     * <p>Rules for the Push channel.</p>
-     */
+    inline const Aws::Vector<ClosedDaysRule>& GetPUSH() const { return m_pUSH; }
     inline bool PUSHHasBeenSet() const { return m_pUSHHasBeenSet; }
+    template<typename PUSHT = Aws::Vector<ClosedDaysRule>>
+    void SetPUSH(PUSHT&& value) { m_pUSHHasBeenSet = true; m_pUSH = std::forward<PUSHT>(value); }
+    template<typename PUSHT = Aws::Vector<ClosedDaysRule>>
+    ClosedDays& WithPUSH(PUSHT&& value) { SetPUSH(std::forward<PUSHT>(value)); return *this;}
+    template<typename PUSHT = ClosedDaysRule>
+    ClosedDays& AddPUSH(PUSHT&& value) { m_pUSHHasBeenSet = true; m_pUSH.emplace_back(std::forward<PUSHT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Rules for the Push channel.</p>
-     */
-    inline void SetPUSH(const Aws::Vector<ClosedDaysRule>& value) { m_pUSHHasBeenSet = true; m_pUSH = value; }
-
-    /**
-     * <p>Rules for the Push channel.</p>
-     */
-    inline void SetPUSH(Aws::Vector<ClosedDaysRule>&& value) { m_pUSHHasBeenSet = true; m_pUSH = std::move(value); }
-
-    /**
-     * <p>Rules for the Push channel.</p>
-     */
-    inline ClosedDays& WithPUSH(const Aws::Vector<ClosedDaysRule>& value) { SetPUSH(value); return *this;}
-
-    /**
-     * <p>Rules for the Push channel.</p>
-     */
-    inline ClosedDays& WithPUSH(Aws::Vector<ClosedDaysRule>&& value) { SetPUSH(std::move(value)); return *this;}
-
-    /**
-     * <p>Rules for the Push channel.</p>
-     */
-    inline ClosedDays& AddPUSH(const ClosedDaysRule& value) { m_pUSHHasBeenSet = true; m_pUSH.push_back(value); return *this; }
-
-    /**
-     * <p>Rules for the Push channel.</p>
-     */
-    inline ClosedDays& AddPUSH(ClosedDaysRule&& value) { m_pUSHHasBeenSet = true; m_pUSH.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Rules for the Voice channel.</p>
      */
-    inline const Aws::Vector<ClosedDaysRule>& GetVOICE() const{ return m_vOICE; }
-
-    /**
-     * <p>Rules for the Voice channel.</p>
-     */
+    inline const Aws::Vector<ClosedDaysRule>& GetVOICE() const { return m_vOICE; }
     inline bool VOICEHasBeenSet() const { return m_vOICEHasBeenSet; }
+    template<typename VOICET = Aws::Vector<ClosedDaysRule>>
+    void SetVOICE(VOICET&& value) { m_vOICEHasBeenSet = true; m_vOICE = std::forward<VOICET>(value); }
+    template<typename VOICET = Aws::Vector<ClosedDaysRule>>
+    ClosedDays& WithVOICE(VOICET&& value) { SetVOICE(std::forward<VOICET>(value)); return *this;}
+    template<typename VOICET = ClosedDaysRule>
+    ClosedDays& AddVOICE(VOICET&& value) { m_vOICEHasBeenSet = true; m_vOICE.emplace_back(std::forward<VOICET>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Rules for the Voice channel.</p>
-     */
-    inline void SetVOICE(const Aws::Vector<ClosedDaysRule>& value) { m_vOICEHasBeenSet = true; m_vOICE = value; }
-
-    /**
-     * <p>Rules for the Voice channel.</p>
-     */
-    inline void SetVOICE(Aws::Vector<ClosedDaysRule>&& value) { m_vOICEHasBeenSet = true; m_vOICE = std::move(value); }
-
-    /**
-     * <p>Rules for the Voice channel.</p>
-     */
-    inline ClosedDays& WithVOICE(const Aws::Vector<ClosedDaysRule>& value) { SetVOICE(value); return *this;}
-
-    /**
-     * <p>Rules for the Voice channel.</p>
-     */
-    inline ClosedDays& WithVOICE(Aws::Vector<ClosedDaysRule>&& value) { SetVOICE(std::move(value)); return *this;}
-
-    /**
-     * <p>Rules for the Voice channel.</p>
-     */
-    inline ClosedDays& AddVOICE(const ClosedDaysRule& value) { m_vOICEHasBeenSet = true; m_vOICE.push_back(value); return *this; }
-
-    /**
-     * <p>Rules for the Voice channel.</p>
-     */
-    inline ClosedDays& AddVOICE(ClosedDaysRule&& value) { m_vOICEHasBeenSet = true; m_vOICE.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Rules for the Custom channel.</p>
      */
-    inline const Aws::Vector<ClosedDaysRule>& GetCUSTOM() const{ return m_cUSTOM; }
-
-    /**
-     * <p>Rules for the Custom channel.</p>
-     */
+    inline const Aws::Vector<ClosedDaysRule>& GetCUSTOM() const { return m_cUSTOM; }
     inline bool CUSTOMHasBeenSet() const { return m_cUSTOMHasBeenSet; }
-
-    /**
-     * <p>Rules for the Custom channel.</p>
-     */
-    inline void SetCUSTOM(const Aws::Vector<ClosedDaysRule>& value) { m_cUSTOMHasBeenSet = true; m_cUSTOM = value; }
-
-    /**
-     * <p>Rules for the Custom channel.</p>
-     */
-    inline void SetCUSTOM(Aws::Vector<ClosedDaysRule>&& value) { m_cUSTOMHasBeenSet = true; m_cUSTOM = std::move(value); }
-
-    /**
-     * <p>Rules for the Custom channel.</p>
-     */
-    inline ClosedDays& WithCUSTOM(const Aws::Vector<ClosedDaysRule>& value) { SetCUSTOM(value); return *this;}
-
-    /**
-     * <p>Rules for the Custom channel.</p>
-     */
-    inline ClosedDays& WithCUSTOM(Aws::Vector<ClosedDaysRule>&& value) { SetCUSTOM(std::move(value)); return *this;}
-
-    /**
-     * <p>Rules for the Custom channel.</p>
-     */
-    inline ClosedDays& AddCUSTOM(const ClosedDaysRule& value) { m_cUSTOMHasBeenSet = true; m_cUSTOM.push_back(value); return *this; }
-
-    /**
-     * <p>Rules for the Custom channel.</p>
-     */
-    inline ClosedDays& AddCUSTOM(ClosedDaysRule&& value) { m_cUSTOMHasBeenSet = true; m_cUSTOM.push_back(std::move(value)); return *this; }
-
+    template<typename CUSTOMT = Aws::Vector<ClosedDaysRule>>
+    void SetCUSTOM(CUSTOMT&& value) { m_cUSTOMHasBeenSet = true; m_cUSTOM = std::forward<CUSTOMT>(value); }
+    template<typename CUSTOMT = Aws::Vector<ClosedDaysRule>>
+    ClosedDays& WithCUSTOM(CUSTOMT&& value) { SetCUSTOM(std::forward<CUSTOMT>(value)); return *this;}
+    template<typename CUSTOMT = ClosedDaysRule>
+    ClosedDays& AddCUSTOM(CUSTOMT&& value) { m_cUSTOMHasBeenSet = true; m_cUSTOM.emplace_back(std::forward<CUSTOMT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<ClosedDaysRule> m_eMAIL;

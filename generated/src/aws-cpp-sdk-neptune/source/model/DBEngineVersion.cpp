@@ -20,43 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-DBEngineVersion::DBEngineVersion() : 
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_dBParameterGroupFamilyHasBeenSet(false),
-    m_dBEngineDescriptionHasBeenSet(false),
-    m_dBEngineVersionDescriptionHasBeenSet(false),
-    m_defaultCharacterSetHasBeenSet(false),
-    m_supportedCharacterSetsHasBeenSet(false),
-    m_validUpgradeTargetHasBeenSet(false),
-    m_supportedTimezonesHasBeenSet(false),
-    m_exportableLogTypesHasBeenSet(false),
-    m_supportsLogExportsToCloudwatchLogs(false),
-    m_supportsLogExportsToCloudwatchLogsHasBeenSet(false),
-    m_supportsReadReplica(false),
-    m_supportsReadReplicaHasBeenSet(false),
-    m_supportsGlobalDatabases(false),
-    m_supportsGlobalDatabasesHasBeenSet(false)
-{
-}
-
-DBEngineVersion::DBEngineVersion(const XmlNode& xmlNode) : 
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_dBParameterGroupFamilyHasBeenSet(false),
-    m_dBEngineDescriptionHasBeenSet(false),
-    m_dBEngineVersionDescriptionHasBeenSet(false),
-    m_defaultCharacterSetHasBeenSet(false),
-    m_supportedCharacterSetsHasBeenSet(false),
-    m_validUpgradeTargetHasBeenSet(false),
-    m_supportedTimezonesHasBeenSet(false),
-    m_exportableLogTypesHasBeenSet(false),
-    m_supportsLogExportsToCloudwatchLogs(false),
-    m_supportsLogExportsToCloudwatchLogsHasBeenSet(false),
-    m_supportsReadReplica(false),
-    m_supportsReadReplicaHasBeenSet(false),
-    m_supportsGlobalDatabases(false),
-    m_supportsGlobalDatabasesHasBeenSet(false)
+DBEngineVersion::DBEngineVersion(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -107,6 +71,7 @@ DBEngineVersion& DBEngineVersion::operator =(const XmlNode& xmlNode)
     if(!supportedCharacterSetsNode.IsNull())
     {
       XmlNode supportedCharacterSetsMember = supportedCharacterSetsNode.FirstChild("CharacterSet");
+      m_supportedCharacterSetsHasBeenSet = !supportedCharacterSetsMember.IsNull();
       while(!supportedCharacterSetsMember.IsNull())
       {
         m_supportedCharacterSets.push_back(supportedCharacterSetsMember);
@@ -119,6 +84,7 @@ DBEngineVersion& DBEngineVersion::operator =(const XmlNode& xmlNode)
     if(!validUpgradeTargetNode.IsNull())
     {
       XmlNode validUpgradeTargetMember = validUpgradeTargetNode.FirstChild("UpgradeTarget");
+      m_validUpgradeTargetHasBeenSet = !validUpgradeTargetMember.IsNull();
       while(!validUpgradeTargetMember.IsNull())
       {
         m_validUpgradeTarget.push_back(validUpgradeTargetMember);
@@ -131,6 +97,7 @@ DBEngineVersion& DBEngineVersion::operator =(const XmlNode& xmlNode)
     if(!supportedTimezonesNode.IsNull())
     {
       XmlNode supportedTimezonesMember = supportedTimezonesNode.FirstChild("Timezone");
+      m_supportedTimezonesHasBeenSet = !supportedTimezonesMember.IsNull();
       while(!supportedTimezonesMember.IsNull())
       {
         m_supportedTimezones.push_back(supportedTimezonesMember);
@@ -143,6 +110,7 @@ DBEngineVersion& DBEngineVersion::operator =(const XmlNode& xmlNode)
     if(!exportableLogTypesNode.IsNull())
     {
       XmlNode exportableLogTypesMember = exportableLogTypesNode.FirstChild("member");
+      m_exportableLogTypesHasBeenSet = !exportableLogTypesMember.IsNull();
       while(!exportableLogTypesMember.IsNull())
       {
         m_exportableLogTypes.push_back(exportableLogTypesMember.GetText());
@@ -214,7 +182,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_supportedCharacterSets)
       {
         Aws::StringStream supportedCharacterSetsSs;
-        supportedCharacterSetsSs << location << index << locationValue << ".CharacterSet." << supportedCharacterSetsIdx++;
+        supportedCharacterSetsSs << location << index << locationValue << ".SupportedCharacterSets.CharacterSet." << supportedCharacterSetsIdx++;
         item.OutputToStream(oStream, supportedCharacterSetsSs.str().c_str());
       }
   }
@@ -225,7 +193,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_validUpgradeTarget)
       {
         Aws::StringStream validUpgradeTargetSs;
-        validUpgradeTargetSs << location << index << locationValue << ".UpgradeTarget." << validUpgradeTargetIdx++;
+        validUpgradeTargetSs << location << index << locationValue << ".ValidUpgradeTarget.UpgradeTarget." << validUpgradeTargetIdx++;
         item.OutputToStream(oStream, validUpgradeTargetSs.str().c_str());
       }
   }
@@ -236,7 +204,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_supportedTimezones)
       {
         Aws::StringStream supportedTimezonesSs;
-        supportedTimezonesSs << location << index << locationValue << ".Timezone." << supportedTimezonesIdx++;
+        supportedTimezonesSs << location << index << locationValue << ".SupportedTimezones.Timezone." << supportedTimezonesIdx++;
         item.OutputToStream(oStream, supportedTimezonesSs.str().c_str());
       }
   }
@@ -301,7 +269,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_supportedCharacterSets)
       {
         Aws::StringStream supportedCharacterSetsSs;
-        supportedCharacterSetsSs << location <<  ".CharacterSet." << supportedCharacterSetsIdx++;
+        supportedCharacterSetsSs << location << ".SupportedCharacterSets.CharacterSet." << supportedCharacterSetsIdx++;
         item.OutputToStream(oStream, supportedCharacterSetsSs.str().c_str());
       }
   }
@@ -311,7 +279,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_validUpgradeTarget)
       {
         Aws::StringStream validUpgradeTargetSs;
-        validUpgradeTargetSs << location <<  ".UpgradeTarget." << validUpgradeTargetIdx++;
+        validUpgradeTargetSs << location << ".ValidUpgradeTarget.UpgradeTarget." << validUpgradeTargetIdx++;
         item.OutputToStream(oStream, validUpgradeTargetSs.str().c_str());
       }
   }
@@ -321,7 +289,7 @@ void DBEngineVersion::OutputToStream(Aws::OStream& oStream, const char* location
       for(auto& item : m_supportedTimezones)
       {
         Aws::StringStream supportedTimezonesSs;
-        supportedTimezonesSs << location <<  ".Timezone." << supportedTimezonesIdx++;
+        supportedTimezonesSs << location << ".SupportedTimezones.Timezone." << supportedTimezonesIdx++;
         item.OutputToStream(oStream, supportedTimezonesSs.str().c_str());
       }
   }

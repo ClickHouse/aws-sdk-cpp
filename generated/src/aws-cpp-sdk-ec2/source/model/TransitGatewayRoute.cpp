@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayRoute::TransitGatewayRoute() : 
-    m_destinationCidrBlockHasBeenSet(false),
-    m_prefixListIdHasBeenSet(false),
-    m_transitGatewayRouteTableAnnouncementIdHasBeenSet(false),
-    m_transitGatewayAttachmentsHasBeenSet(false),
-    m_type(TransitGatewayRouteType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_state(TransitGatewayRouteState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-TransitGatewayRoute::TransitGatewayRoute(const XmlNode& xmlNode) : 
-    m_destinationCidrBlockHasBeenSet(false),
-    m_prefixListIdHasBeenSet(false),
-    m_transitGatewayRouteTableAnnouncementIdHasBeenSet(false),
-    m_transitGatewayAttachmentsHasBeenSet(false),
-    m_type(TransitGatewayRouteType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_state(TransitGatewayRouteState::NOT_SET),
-    m_stateHasBeenSet(false)
+TransitGatewayRoute::TransitGatewayRoute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -73,6 +53,7 @@ TransitGatewayRoute& TransitGatewayRoute::operator =(const XmlNode& xmlNode)
     if(!transitGatewayAttachmentsNode.IsNull())
     {
       XmlNode transitGatewayAttachmentsMember = transitGatewayAttachmentsNode.FirstChild("item");
+      m_transitGatewayAttachmentsHasBeenSet = !transitGatewayAttachmentsMember.IsNull();
       while(!transitGatewayAttachmentsMember.IsNull())
       {
         m_transitGatewayAttachments.push_back(transitGatewayAttachmentsMember);
@@ -84,13 +65,13 @@ TransitGatewayRoute& TransitGatewayRoute::operator =(const XmlNode& xmlNode)
     XmlNode typeNode = resultNode.FirstChild("type");
     if(!typeNode.IsNull())
     {
-      m_type = TransitGatewayRouteTypeMapper::GetTransitGatewayRouteTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = TransitGatewayRouteTypeMapper::GetTransitGatewayRouteTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayRouteStateMapper::GetTransitGatewayRouteStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayRouteStateMapper::GetTransitGatewayRouteStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
   }
@@ -128,12 +109,12 @@ void TransitGatewayRoute::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << TransitGatewayRouteTypeMapper::GetNameForTransitGatewayRouteType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(TransitGatewayRouteTypeMapper::GetNameForTransitGatewayRouteType(m_type)) << "&";
   }
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayRouteStateMapper::GetNameForTransitGatewayRouteState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayRouteStateMapper::GetNameForTransitGatewayRouteState(m_state)) << "&";
   }
 
 }
@@ -158,17 +139,17 @@ void TransitGatewayRoute::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_transitGatewayAttachments)
       {
         Aws::StringStream transitGatewayAttachmentsSs;
-        transitGatewayAttachmentsSs << location <<  ".TransitGatewayAttachments." << transitGatewayAttachmentsIdx++;
+        transitGatewayAttachmentsSs << location << ".TransitGatewayAttachments." << transitGatewayAttachmentsIdx++;
         item.OutputToStream(oStream, transitGatewayAttachmentsSs.str().c_str());
       }
   }
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << TransitGatewayRouteTypeMapper::GetNameForTransitGatewayRouteType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(TransitGatewayRouteTypeMapper::GetNameForTransitGatewayRouteType(m_type)) << "&";
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayRouteStateMapper::GetNameForTransitGatewayRouteState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayRouteStateMapper::GetNameForTransitGatewayRouteState(m_state)) << "&";
   }
 }
 

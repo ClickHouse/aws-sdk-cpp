@@ -20,15 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-RollbackTrigger::RollbackTrigger() : 
-    m_arnHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-RollbackTrigger::RollbackTrigger(const XmlNode& xmlNode) : 
-    m_arnHasBeenSet(false),
-    m_typeHasBeenSet(false)
+RollbackTrigger::RollbackTrigger(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

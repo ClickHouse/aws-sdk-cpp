@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CloudWatchLogOptionsSpecification::CloudWatchLogOptionsSpecification() : 
-    m_logEnabled(false),
-    m_logEnabledHasBeenSet(false),
-    m_logGroupArnHasBeenSet(false),
-    m_logOutputFormatHasBeenSet(false)
-{
-}
-
-CloudWatchLogOptionsSpecification::CloudWatchLogOptionsSpecification(const XmlNode& xmlNode) : 
-    m_logEnabled(false),
-    m_logEnabledHasBeenSet(false),
-    m_logGroupArnHasBeenSet(false),
-    m_logOutputFormatHasBeenSet(false)
+CloudWatchLogOptionsSpecification::CloudWatchLogOptionsSpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

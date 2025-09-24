@@ -34,139 +34,57 @@ namespace Model
   class DescribeReplicationTaskAssessmentRunsResult
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API DescribeReplicationTaskAssessmentRunsResult();
+    AWS_DATABASEMIGRATIONSERVICE_API DescribeReplicationTaskAssessmentRunsResult() = default;
     AWS_DATABASEMIGRATIONSERVICE_API DescribeReplicationTaskAssessmentRunsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATABASEMIGRATIONSERVICE_API DescribeReplicationTaskAssessmentRunsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A pagination token returned for you to pass to a subsequent request. If you
      * pass this token as the <code>Marker</code> value in a subsequent request, the
      * response includes only records beyond the marker, up to the value specified in
      * the request by <code>MaxRecords</code>.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeReplicationTaskAssessmentRunsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A pagination token returned for you to pass to a subsequent request. If you
-     * pass this token as the <code>Marker</code> value in a subsequent request, the
-     * response includes only records beyond the marker, up to the value specified in
-     * the request by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>A pagination token returned for you to pass to a subsequent request. If you
-     * pass this token as the <code>Marker</code> value in a subsequent request, the
-     * response includes only records beyond the marker, up to the value specified in
-     * the request by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>A pagination token returned for you to pass to a subsequent request. If you
-     * pass this token as the <code>Marker</code> value in a subsequent request, the
-     * response includes only records beyond the marker, up to the value specified in
-     * the request by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>A pagination token returned for you to pass to a subsequent request. If you
-     * pass this token as the <code>Marker</code> value in a subsequent request, the
-     * response includes only records beyond the marker, up to the value specified in
-     * the request by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeReplicationTaskAssessmentRunsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>A pagination token returned for you to pass to a subsequent request. If you
-     * pass this token as the <code>Marker</code> value in a subsequent request, the
-     * response includes only records beyond the marker, up to the value specified in
-     * the request by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeReplicationTaskAssessmentRunsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>A pagination token returned for you to pass to a subsequent request. If you
-     * pass this token as the <code>Marker</code> value in a subsequent request, the
-     * response includes only records beyond the marker, up to the value specified in
-     * the request by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeReplicationTaskAssessmentRunsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>One or more premigration assessment runs as specified by
      * <code>Filters</code>.</p>
      */
-    inline const Aws::Vector<ReplicationTaskAssessmentRun>& GetReplicationTaskAssessmentRuns() const{ return m_replicationTaskAssessmentRuns; }
+    inline const Aws::Vector<ReplicationTaskAssessmentRun>& GetReplicationTaskAssessmentRuns() const { return m_replicationTaskAssessmentRuns; }
+    template<typename ReplicationTaskAssessmentRunsT = Aws::Vector<ReplicationTaskAssessmentRun>>
+    void SetReplicationTaskAssessmentRuns(ReplicationTaskAssessmentRunsT&& value) { m_replicationTaskAssessmentRunsHasBeenSet = true; m_replicationTaskAssessmentRuns = std::forward<ReplicationTaskAssessmentRunsT>(value); }
+    template<typename ReplicationTaskAssessmentRunsT = Aws::Vector<ReplicationTaskAssessmentRun>>
+    DescribeReplicationTaskAssessmentRunsResult& WithReplicationTaskAssessmentRuns(ReplicationTaskAssessmentRunsT&& value) { SetReplicationTaskAssessmentRuns(std::forward<ReplicationTaskAssessmentRunsT>(value)); return *this;}
+    template<typename ReplicationTaskAssessmentRunsT = ReplicationTaskAssessmentRun>
+    DescribeReplicationTaskAssessmentRunsResult& AddReplicationTaskAssessmentRuns(ReplicationTaskAssessmentRunsT&& value) { m_replicationTaskAssessmentRunsHasBeenSet = true; m_replicationTaskAssessmentRuns.emplace_back(std::forward<ReplicationTaskAssessmentRunsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>One or more premigration assessment runs as specified by
-     * <code>Filters</code>.</p>
-     */
-    inline void SetReplicationTaskAssessmentRuns(const Aws::Vector<ReplicationTaskAssessmentRun>& value) { m_replicationTaskAssessmentRuns = value; }
-
-    /**
-     * <p>One or more premigration assessment runs as specified by
-     * <code>Filters</code>.</p>
-     */
-    inline void SetReplicationTaskAssessmentRuns(Aws::Vector<ReplicationTaskAssessmentRun>&& value) { m_replicationTaskAssessmentRuns = std::move(value); }
-
-    /**
-     * <p>One or more premigration assessment runs as specified by
-     * <code>Filters</code>.</p>
-     */
-    inline DescribeReplicationTaskAssessmentRunsResult& WithReplicationTaskAssessmentRuns(const Aws::Vector<ReplicationTaskAssessmentRun>& value) { SetReplicationTaskAssessmentRuns(value); return *this;}
-
-    /**
-     * <p>One or more premigration assessment runs as specified by
-     * <code>Filters</code>.</p>
-     */
-    inline DescribeReplicationTaskAssessmentRunsResult& WithReplicationTaskAssessmentRuns(Aws::Vector<ReplicationTaskAssessmentRun>&& value) { SetReplicationTaskAssessmentRuns(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more premigration assessment runs as specified by
-     * <code>Filters</code>.</p>
-     */
-    inline DescribeReplicationTaskAssessmentRunsResult& AddReplicationTaskAssessmentRuns(const ReplicationTaskAssessmentRun& value) { m_replicationTaskAssessmentRuns.push_back(value); return *this; }
-
-    /**
-     * <p>One or more premigration assessment runs as specified by
-     * <code>Filters</code>.</p>
-     */
-    inline DescribeReplicationTaskAssessmentRunsResult& AddReplicationTaskAssessmentRuns(ReplicationTaskAssessmentRun&& value) { m_replicationTaskAssessmentRuns.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeReplicationTaskAssessmentRunsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeReplicationTaskAssessmentRunsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeReplicationTaskAssessmentRunsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeReplicationTaskAssessmentRunsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::Vector<ReplicationTaskAssessmentRun> m_replicationTaskAssessmentRuns;
+    bool m_replicationTaskAssessmentRunsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

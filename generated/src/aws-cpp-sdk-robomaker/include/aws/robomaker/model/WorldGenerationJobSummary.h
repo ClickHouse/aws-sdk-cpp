@@ -34,131 +34,50 @@ namespace Model
   class WorldGenerationJobSummary
   {
   public:
-    AWS_ROBOMAKER_API WorldGenerationJobSummary();
+    AWS_ROBOMAKER_API WorldGenerationJobSummary() = default;
     AWS_ROBOMAKER_API WorldGenerationJobSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROBOMAKER_API WorldGenerationJobSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROBOMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the world generator job.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the world generator job.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    WorldGenerationJobSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the world generator job.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the world generator job.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the world generator job.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the world generator job.</p>
-     */
-    inline WorldGenerationJobSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the world generator job.</p>
-     */
-    inline WorldGenerationJobSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the world generator job.</p>
-     */
-    inline WorldGenerationJobSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (arn) of the world template.</p>
      */
-    inline const Aws::String& GetTemplate() const{ return m_template; }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template.</p>
-     */
+    inline const Aws::String& GetTemplate() const { return m_template; }
     inline bool TemplateHasBeenSet() const { return m_templateHasBeenSet; }
+    template<typename TemplateT = Aws::String>
+    void SetTemplate(TemplateT&& value) { m_templateHasBeenSet = true; m_template = std::forward<TemplateT>(value); }
+    template<typename TemplateT = Aws::String>
+    WorldGenerationJobSummary& WithTemplate(TemplateT&& value) { SetTemplate(std::forward<TemplateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template.</p>
-     */
-    inline void SetTemplate(const Aws::String& value) { m_templateHasBeenSet = true; m_template = value; }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template.</p>
-     */
-    inline void SetTemplate(Aws::String&& value) { m_templateHasBeenSet = true; m_template = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template.</p>
-     */
-    inline void SetTemplate(const char* value) { m_templateHasBeenSet = true; m_template.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template.</p>
-     */
-    inline WorldGenerationJobSummary& WithTemplate(const Aws::String& value) { SetTemplate(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template.</p>
-     */
-    inline WorldGenerationJobSummary& WithTemplate(Aws::String&& value) { SetTemplate(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the world template.</p>
-     */
-    inline WorldGenerationJobSummary& WithTemplate(const char* value) { SetTemplate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time, in milliseconds since the epoch, when the world generator job was
      * created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The time, in milliseconds since the epoch, when the world generator job was
-     * created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    WorldGenerationJobSummary& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time, in milliseconds since the epoch, when the world generator job was
-     * created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The time, in milliseconds since the epoch, when the world generator job was
-     * created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The time, in milliseconds since the epoch, when the world generator job was
-     * created.</p>
-     */
-    inline WorldGenerationJobSummary& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The time, in milliseconds since the epoch, when the world generator job was
-     * created.</p>
-     */
-    inline WorldGenerationJobSummary& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the world generator job:</p> <dl> <dt>Pending</dt> <dd> <p>The
      * world generator job request is pending.</p> </dd> <dt>Running</dt> <dd> <p>The
@@ -170,146 +89,43 @@ namespace Model
      * <dt>Canceling</dt> <dd> <p>The world generator job is being cancelled.</p> </dd>
      * </dl>
      */
-    inline const WorldGenerationJobStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the world generator job:</p> <dl> <dt>Pending</dt> <dd> <p>The
-     * world generator job request is pending.</p> </dd> <dt>Running</dt> <dd> <p>The
-     * world generator job is running. </p> </dd> <dt>Completed</dt> <dd> <p>The world
-     * generator job completed. </p> </dd> <dt>Failed</dt> <dd> <p>The world generator
-     * job failed. See <code>failureCode</code> for more information. </p> </dd>
-     * <dt>PartialFailed</dt> <dd> <p>Some worlds did not generate.</p> </dd>
-     * <dt>Canceled</dt> <dd> <p>The world generator job was cancelled.</p> </dd>
-     * <dt>Canceling</dt> <dd> <p>The world generator job is being cancelled.</p> </dd>
-     * </dl>
-     */
+    inline WorldGenerationJobStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(WorldGenerationJobStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline WorldGenerationJobSummary& WithStatus(WorldGenerationJobStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the world generator job:</p> <dl> <dt>Pending</dt> <dd> <p>The
-     * world generator job request is pending.</p> </dd> <dt>Running</dt> <dd> <p>The
-     * world generator job is running. </p> </dd> <dt>Completed</dt> <dd> <p>The world
-     * generator job completed. </p> </dd> <dt>Failed</dt> <dd> <p>The world generator
-     * job failed. See <code>failureCode</code> for more information. </p> </dd>
-     * <dt>PartialFailed</dt> <dd> <p>Some worlds did not generate.</p> </dd>
-     * <dt>Canceled</dt> <dd> <p>The world generator job was cancelled.</p> </dd>
-     * <dt>Canceling</dt> <dd> <p>The world generator job is being cancelled.</p> </dd>
-     * </dl>
-     */
-    inline void SetStatus(const WorldGenerationJobStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the world generator job:</p> <dl> <dt>Pending</dt> <dd> <p>The
-     * world generator job request is pending.</p> </dd> <dt>Running</dt> <dd> <p>The
-     * world generator job is running. </p> </dd> <dt>Completed</dt> <dd> <p>The world
-     * generator job completed. </p> </dd> <dt>Failed</dt> <dd> <p>The world generator
-     * job failed. See <code>failureCode</code> for more information. </p> </dd>
-     * <dt>PartialFailed</dt> <dd> <p>Some worlds did not generate.</p> </dd>
-     * <dt>Canceled</dt> <dd> <p>The world generator job was cancelled.</p> </dd>
-     * <dt>Canceling</dt> <dd> <p>The world generator job is being cancelled.</p> </dd>
-     * </dl>
-     */
-    inline void SetStatus(WorldGenerationJobStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the world generator job:</p> <dl> <dt>Pending</dt> <dd> <p>The
-     * world generator job request is pending.</p> </dd> <dt>Running</dt> <dd> <p>The
-     * world generator job is running. </p> </dd> <dt>Completed</dt> <dd> <p>The world
-     * generator job completed. </p> </dd> <dt>Failed</dt> <dd> <p>The world generator
-     * job failed. See <code>failureCode</code> for more information. </p> </dd>
-     * <dt>PartialFailed</dt> <dd> <p>Some worlds did not generate.</p> </dd>
-     * <dt>Canceled</dt> <dd> <p>The world generator job was cancelled.</p> </dd>
-     * <dt>Canceling</dt> <dd> <p>The world generator job is being cancelled.</p> </dd>
-     * </dl>
-     */
-    inline WorldGenerationJobSummary& WithStatus(const WorldGenerationJobStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the world generator job:</p> <dl> <dt>Pending</dt> <dd> <p>The
-     * world generator job request is pending.</p> </dd> <dt>Running</dt> <dd> <p>The
-     * world generator job is running. </p> </dd> <dt>Completed</dt> <dd> <p>The world
-     * generator job completed. </p> </dd> <dt>Failed</dt> <dd> <p>The world generator
-     * job failed. See <code>failureCode</code> for more information. </p> </dd>
-     * <dt>PartialFailed</dt> <dd> <p>Some worlds did not generate.</p> </dd>
-     * <dt>Canceled</dt> <dd> <p>The world generator job was cancelled.</p> </dd>
-     * <dt>Canceling</dt> <dd> <p>The world generator job is being cancelled.</p> </dd>
-     * </dl>
-     */
-    inline WorldGenerationJobSummary& WithStatus(WorldGenerationJobStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the world count.</p>
      */
-    inline const WorldCount& GetWorldCount() const{ return m_worldCount; }
-
-    /**
-     * <p>Information about the world count.</p>
-     */
+    inline const WorldCount& GetWorldCount() const { return m_worldCount; }
     inline bool WorldCountHasBeenSet() const { return m_worldCountHasBeenSet; }
+    template<typename WorldCountT = WorldCount>
+    void SetWorldCount(WorldCountT&& value) { m_worldCountHasBeenSet = true; m_worldCount = std::forward<WorldCountT>(value); }
+    template<typename WorldCountT = WorldCount>
+    WorldGenerationJobSummary& WithWorldCount(WorldCountT&& value) { SetWorldCount(std::forward<WorldCountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the world count.</p>
-     */
-    inline void SetWorldCount(const WorldCount& value) { m_worldCountHasBeenSet = true; m_worldCount = value; }
-
-    /**
-     * <p>Information about the world count.</p>
-     */
-    inline void SetWorldCount(WorldCount&& value) { m_worldCountHasBeenSet = true; m_worldCount = std::move(value); }
-
-    /**
-     * <p>Information about the world count.</p>
-     */
-    inline WorldGenerationJobSummary& WithWorldCount(const WorldCount& value) { SetWorldCount(value); return *this;}
-
-    /**
-     * <p>Information about the world count.</p>
-     */
-    inline WorldGenerationJobSummary& WithWorldCount(WorldCount&& value) { SetWorldCount(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of worlds that were generated.</p>
      */
-    inline int GetSucceededWorldCount() const{ return m_succeededWorldCount; }
-
-    /**
-     * <p>The number of worlds that were generated.</p>
-     */
+    inline int GetSucceededWorldCount() const { return m_succeededWorldCount; }
     inline bool SucceededWorldCountHasBeenSet() const { return m_succeededWorldCountHasBeenSet; }
-
-    /**
-     * <p>The number of worlds that were generated.</p>
-     */
     inline void SetSucceededWorldCount(int value) { m_succeededWorldCountHasBeenSet = true; m_succeededWorldCount = value; }
-
-    /**
-     * <p>The number of worlds that were generated.</p>
-     */
     inline WorldGenerationJobSummary& WithSucceededWorldCount(int value) { SetSucceededWorldCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of worlds that failed.</p>
      */
-    inline int GetFailedWorldCount() const{ return m_failedWorldCount; }
-
-    /**
-     * <p>The number of worlds that failed.</p>
-     */
+    inline int GetFailedWorldCount() const { return m_failedWorldCount; }
     inline bool FailedWorldCountHasBeenSet() const { return m_failedWorldCountHasBeenSet; }
-
-    /**
-     * <p>The number of worlds that failed.</p>
-     */
     inline void SetFailedWorldCount(int value) { m_failedWorldCountHasBeenSet = true; m_failedWorldCount = value; }
-
-    /**
-     * <p>The number of worlds that failed.</p>
-     */
     inline WorldGenerationJobSummary& WithFailedWorldCount(int value) { SetFailedWorldCount(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -318,19 +134,19 @@ namespace Model
     Aws::String m_template;
     bool m_templateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    WorldGenerationJobStatus m_status;
+    WorldGenerationJobStatus m_status{WorldGenerationJobStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     WorldCount m_worldCount;
     bool m_worldCountHasBeenSet = false;
 
-    int m_succeededWorldCount;
+    int m_succeededWorldCount{0};
     bool m_succeededWorldCountHasBeenSet = false;
 
-    int m_failedWorldCount;
+    int m_failedWorldCount{0};
     bool m_failedWorldCountHasBeenSet = false;
   };
 

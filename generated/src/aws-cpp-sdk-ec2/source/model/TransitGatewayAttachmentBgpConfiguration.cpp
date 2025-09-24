@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayAttachmentBgpConfiguration::TransitGatewayAttachmentBgpConfiguration() : 
-    m_transitGatewayAsn(0),
-    m_transitGatewayAsnHasBeenSet(false),
-    m_peerAsn(0),
-    m_peerAsnHasBeenSet(false),
-    m_transitGatewayAddressHasBeenSet(false),
-    m_peerAddressHasBeenSet(false),
-    m_bgpStatus(BgpStatus::NOT_SET),
-    m_bgpStatusHasBeenSet(false)
-{
-}
-
-TransitGatewayAttachmentBgpConfiguration::TransitGatewayAttachmentBgpConfiguration(const XmlNode& xmlNode) : 
-    m_transitGatewayAsn(0),
-    m_transitGatewayAsnHasBeenSet(false),
-    m_peerAsn(0),
-    m_peerAsnHasBeenSet(false),
-    m_transitGatewayAddressHasBeenSet(false),
-    m_peerAddressHasBeenSet(false),
-    m_bgpStatus(BgpStatus::NOT_SET),
-    m_bgpStatusHasBeenSet(false)
+TransitGatewayAttachmentBgpConfiguration::TransitGatewayAttachmentBgpConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -78,7 +58,7 @@ TransitGatewayAttachmentBgpConfiguration& TransitGatewayAttachmentBgpConfigurati
     XmlNode bgpStatusNode = resultNode.FirstChild("bgpStatus");
     if(!bgpStatusNode.IsNull())
     {
-      m_bgpStatus = BgpStatusMapper::GetBgpStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(bgpStatusNode.GetText()).c_str()).c_str());
+      m_bgpStatus = BgpStatusMapper::GetBgpStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(bgpStatusNode.GetText()).c_str()));
       m_bgpStatusHasBeenSet = true;
     }
   }
@@ -110,7 +90,7 @@ void TransitGatewayAttachmentBgpConfiguration::OutputToStream(Aws::OStream& oStr
 
   if(m_bgpStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".BgpStatus=" << BgpStatusMapper::GetNameForBgpStatus(m_bgpStatus) << "&";
+      oStream << location << index << locationValue << ".BgpStatus=" << StringUtils::URLEncode(BgpStatusMapper::GetNameForBgpStatus(m_bgpStatus)) << "&";
   }
 
 }
@@ -135,7 +115,7 @@ void TransitGatewayAttachmentBgpConfiguration::OutputToStream(Aws::OStream& oStr
   }
   if(m_bgpStatusHasBeenSet)
   {
-      oStream << location << ".BgpStatus=" << BgpStatusMapper::GetNameForBgpStatus(m_bgpStatus) << "&";
+      oStream << location << ".BgpStatus=" << StringUtils::URLEncode(BgpStatusMapper::GetNameForBgpStatus(m_bgpStatus)) << "&";
   }
 }
 

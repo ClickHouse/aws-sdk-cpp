@@ -32,93 +32,48 @@ namespace Model
   class FederatedDatabase
   {
   public:
-    AWS_GLUE_API FederatedDatabase();
+    AWS_GLUE_API FederatedDatabase() = default;
     AWS_GLUE_API FederatedDatabase(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API FederatedDatabase& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the federated database.</p>
      */
-    inline const Aws::String& GetIdentifier() const{ return m_identifier; }
-
-    /**
-     * <p>A unique identifier for the federated database.</p>
-     */
+    inline const Aws::String& GetIdentifier() const { return m_identifier; }
     inline bool IdentifierHasBeenSet() const { return m_identifierHasBeenSet; }
+    template<typename IdentifierT = Aws::String>
+    void SetIdentifier(IdentifierT&& value) { m_identifierHasBeenSet = true; m_identifier = std::forward<IdentifierT>(value); }
+    template<typename IdentifierT = Aws::String>
+    FederatedDatabase& WithIdentifier(IdentifierT&& value) { SetIdentifier(std::forward<IdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the federated database.</p>
-     */
-    inline void SetIdentifier(const Aws::String& value) { m_identifierHasBeenSet = true; m_identifier = value; }
-
-    /**
-     * <p>A unique identifier for the federated database.</p>
-     */
-    inline void SetIdentifier(Aws::String&& value) { m_identifierHasBeenSet = true; m_identifier = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the federated database.</p>
-     */
-    inline void SetIdentifier(const char* value) { m_identifierHasBeenSet = true; m_identifier.assign(value); }
-
-    /**
-     * <p>A unique identifier for the federated database.</p>
-     */
-    inline FederatedDatabase& WithIdentifier(const Aws::String& value) { SetIdentifier(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the federated database.</p>
-     */
-    inline FederatedDatabase& WithIdentifier(Aws::String&& value) { SetIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the federated database.</p>
-     */
-    inline FederatedDatabase& WithIdentifier(const char* value) { SetIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the connection to the external metastore.</p>
      */
-    inline const Aws::String& GetConnectionName() const{ return m_connectionName; }
-
-    /**
-     * <p>The name of the connection to the external metastore.</p>
-     */
+    inline const Aws::String& GetConnectionName() const { return m_connectionName; }
     inline bool ConnectionNameHasBeenSet() const { return m_connectionNameHasBeenSet; }
+    template<typename ConnectionNameT = Aws::String>
+    void SetConnectionName(ConnectionNameT&& value) { m_connectionNameHasBeenSet = true; m_connectionName = std::forward<ConnectionNameT>(value); }
+    template<typename ConnectionNameT = Aws::String>
+    FederatedDatabase& WithConnectionName(ConnectionNameT&& value) { SetConnectionName(std::forward<ConnectionNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the connection to the external metastore.</p>
+     * <p>The type of connection used to access the federated database, such as JDBC,
+     * ODBC, or other supported connection protocols.</p>
      */
-    inline void SetConnectionName(const Aws::String& value) { m_connectionNameHasBeenSet = true; m_connectionName = value; }
-
-    /**
-     * <p>The name of the connection to the external metastore.</p>
-     */
-    inline void SetConnectionName(Aws::String&& value) { m_connectionNameHasBeenSet = true; m_connectionName = std::move(value); }
-
-    /**
-     * <p>The name of the connection to the external metastore.</p>
-     */
-    inline void SetConnectionName(const char* value) { m_connectionNameHasBeenSet = true; m_connectionName.assign(value); }
-
-    /**
-     * <p>The name of the connection to the external metastore.</p>
-     */
-    inline FederatedDatabase& WithConnectionName(const Aws::String& value) { SetConnectionName(value); return *this;}
-
-    /**
-     * <p>The name of the connection to the external metastore.</p>
-     */
-    inline FederatedDatabase& WithConnectionName(Aws::String&& value) { SetConnectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the connection to the external metastore.</p>
-     */
-    inline FederatedDatabase& WithConnectionName(const char* value) { SetConnectionName(value); return *this;}
-
+    inline const Aws::String& GetConnectionType() const { return m_connectionType; }
+    inline bool ConnectionTypeHasBeenSet() const { return m_connectionTypeHasBeenSet; }
+    template<typename ConnectionTypeT = Aws::String>
+    void SetConnectionType(ConnectionTypeT&& value) { m_connectionTypeHasBeenSet = true; m_connectionType = std::forward<ConnectionTypeT>(value); }
+    template<typename ConnectionTypeT = Aws::String>
+    FederatedDatabase& WithConnectionType(ConnectionTypeT&& value) { SetConnectionType(std::forward<ConnectionTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identifier;
@@ -126,6 +81,9 @@ namespace Model
 
     Aws::String m_connectionName;
     bool m_connectionNameHasBeenSet = false;
+
+    Aws::String m_connectionType;
+    bool m_connectionTypeHasBeenSet = false;
   };
 
 } // namespace Model

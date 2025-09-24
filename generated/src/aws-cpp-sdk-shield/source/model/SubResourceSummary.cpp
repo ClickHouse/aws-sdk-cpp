@@ -18,21 +18,7 @@ namespace Shield
 namespace Model
 {
 
-SubResourceSummary::SubResourceSummary() : 
-    m_type(SubResourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_attackVectorsHasBeenSet(false),
-    m_countersHasBeenSet(false)
-{
-}
-
-SubResourceSummary::SubResourceSummary(JsonView jsonValue) : 
-    m_type(SubResourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_attackVectorsHasBeenSet(false),
-    m_countersHasBeenSet(false)
+SubResourceSummary::SubResourceSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ SubResourceSummary& SubResourceSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = SubResourceTypeMapper::GetSubResourceTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AttackVectors"))
   {
     Aws::Utils::Array<JsonView> attackVectorsJsonList = jsonValue.GetArray("AttackVectors");
@@ -62,7 +44,6 @@ SubResourceSummary& SubResourceSummary::operator =(JsonView jsonValue)
     }
     m_attackVectorsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Counters"))
   {
     Aws::Utils::Array<JsonView> countersJsonList = jsonValue.GetArray("Counters");
@@ -72,7 +53,6 @@ SubResourceSummary& SubResourceSummary::operator =(JsonView jsonValue)
     }
     m_countersHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace MainframeModernization
 namespace Model
 {
 
-BatchJobDefinition::BatchJobDefinition() : 
-    m_fileBatchJobDefinitionHasBeenSet(false),
-    m_scriptBatchJobDefinitionHasBeenSet(false)
-{
-}
-
-BatchJobDefinition::BatchJobDefinition(JsonView jsonValue) : 
-    m_fileBatchJobDefinitionHasBeenSet(false),
-    m_scriptBatchJobDefinitionHasBeenSet(false)
+BatchJobDefinition::BatchJobDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ BatchJobDefinition& BatchJobDefinition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("fileBatchJobDefinition"))
   {
     m_fileBatchJobDefinition = jsonValue.GetObject("fileBatchJobDefinition");
-
     m_fileBatchJobDefinitionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("scriptBatchJobDefinition"))
   {
     m_scriptBatchJobDefinition = jsonValue.GetObject("scriptBatchJobDefinition");
-
     m_scriptBatchJobDefinitionHasBeenSet = true;
   }
-
   return *this;
 }
 

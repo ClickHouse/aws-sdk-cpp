@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-LabelingJobDataSource::LabelingJobDataSource() : 
-    m_s3DataSourceHasBeenSet(false),
-    m_snsDataSourceHasBeenSet(false)
-{
-}
-
-LabelingJobDataSource::LabelingJobDataSource(JsonView jsonValue) : 
-    m_s3DataSourceHasBeenSet(false),
-    m_snsDataSourceHasBeenSet(false)
+LabelingJobDataSource::LabelingJobDataSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LabelingJobDataSource& LabelingJobDataSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3DataSource"))
   {
     m_s3DataSource = jsonValue.GetObject("S3DataSource");
-
     m_s3DataSourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SnsDataSource"))
   {
     m_snsDataSource = jsonValue.GetObject("SnsDataSource");
-
     m_snsDataSourceHasBeenSet = true;
   }
-
   return *this;
 }
 

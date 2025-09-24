@@ -33,118 +33,39 @@ namespace Model
   class StatisticOverride
   {
   public:
-    AWS_GLUEDATABREW_API StatisticOverride();
+    AWS_GLUEDATABREW_API StatisticOverride() = default;
     AWS_GLUEDATABREW_API StatisticOverride(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API StatisticOverride& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUEDATABREW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of an evaluation</p>
      */
-    inline const Aws::String& GetStatistic() const{ return m_statistic; }
-
-    /**
-     * <p>The name of an evaluation</p>
-     */
+    inline const Aws::String& GetStatistic() const { return m_statistic; }
     inline bool StatisticHasBeenSet() const { return m_statisticHasBeenSet; }
+    template<typename StatisticT = Aws::String>
+    void SetStatistic(StatisticT&& value) { m_statisticHasBeenSet = true; m_statistic = std::forward<StatisticT>(value); }
+    template<typename StatisticT = Aws::String>
+    StatisticOverride& WithStatistic(StatisticT&& value) { SetStatistic(std::forward<StatisticT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an evaluation</p>
-     */
-    inline void SetStatistic(const Aws::String& value) { m_statisticHasBeenSet = true; m_statistic = value; }
-
-    /**
-     * <p>The name of an evaluation</p>
-     */
-    inline void SetStatistic(Aws::String&& value) { m_statisticHasBeenSet = true; m_statistic = std::move(value); }
-
-    /**
-     * <p>The name of an evaluation</p>
-     */
-    inline void SetStatistic(const char* value) { m_statisticHasBeenSet = true; m_statistic.assign(value); }
-
-    /**
-     * <p>The name of an evaluation</p>
-     */
-    inline StatisticOverride& WithStatistic(const Aws::String& value) { SetStatistic(value); return *this;}
-
-    /**
-     * <p>The name of an evaluation</p>
-     */
-    inline StatisticOverride& WithStatistic(Aws::String&& value) { SetStatistic(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an evaluation</p>
-     */
-    inline StatisticOverride& WithStatistic(const char* value) { SetStatistic(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A map that includes overrides of an evaluation’s parameters.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline StatisticOverride& WithParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline StatisticOverride& WithParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline StatisticOverride& AddParameters(const Aws::String& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline StatisticOverride& AddParameters(Aws::String&& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline StatisticOverride& AddParameters(const Aws::String& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline StatisticOverride& AddParameters(Aws::String&& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline StatisticOverride& AddParameters(const char* key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline StatisticOverride& AddParameters(Aws::String&& key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that includes overrides of an evaluation’s parameters.</p>
-     */
-    inline StatisticOverride& AddParameters(const char* key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    StatisticOverride& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = Aws::String>
+    StatisticOverride& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_statistic;

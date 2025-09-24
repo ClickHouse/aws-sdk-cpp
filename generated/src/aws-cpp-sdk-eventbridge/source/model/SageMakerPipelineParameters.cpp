@@ -18,13 +18,7 @@ namespace EventBridge
 namespace Model
 {
 
-SageMakerPipelineParameters::SageMakerPipelineParameters() : 
-    m_pipelineParameterListHasBeenSet(false)
-{
-}
-
-SageMakerPipelineParameters::SageMakerPipelineParameters(JsonView jsonValue) : 
-    m_pipelineParameterListHasBeenSet(false)
+SageMakerPipelineParameters::SageMakerPipelineParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ SageMakerPipelineParameters& SageMakerPipelineParameters::operator =(JsonView js
     }
     m_pipelineParameterListHasBeenSet = true;
   }
-
   return *this;
 }
 

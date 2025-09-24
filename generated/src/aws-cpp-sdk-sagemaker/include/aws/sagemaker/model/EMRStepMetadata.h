@@ -32,183 +32,60 @@ namespace Model
   class EMRStepMetadata
   {
   public:
-    AWS_SAGEMAKER_API EMRStepMetadata();
+    AWS_SAGEMAKER_API EMRStepMetadata() = default;
     AWS_SAGEMAKER_API EMRStepMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API EMRStepMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the EMR cluster.</p>
      */
-    inline const Aws::String& GetClusterId() const{ return m_clusterId; }
-
-    /**
-     * <p>The identifier of the EMR cluster.</p>
-     */
+    inline const Aws::String& GetClusterId() const { return m_clusterId; }
     inline bool ClusterIdHasBeenSet() const { return m_clusterIdHasBeenSet; }
+    template<typename ClusterIdT = Aws::String>
+    void SetClusterId(ClusterIdT&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::forward<ClusterIdT>(value); }
+    template<typename ClusterIdT = Aws::String>
+    EMRStepMetadata& WithClusterId(ClusterIdT&& value) { SetClusterId(std::forward<ClusterIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the EMR cluster.</p>
-     */
-    inline void SetClusterId(const Aws::String& value) { m_clusterIdHasBeenSet = true; m_clusterId = value; }
-
-    /**
-     * <p>The identifier of the EMR cluster.</p>
-     */
-    inline void SetClusterId(Aws::String&& value) { m_clusterIdHasBeenSet = true; m_clusterId = std::move(value); }
-
-    /**
-     * <p>The identifier of the EMR cluster.</p>
-     */
-    inline void SetClusterId(const char* value) { m_clusterIdHasBeenSet = true; m_clusterId.assign(value); }
-
-    /**
-     * <p>The identifier of the EMR cluster.</p>
-     */
-    inline EMRStepMetadata& WithClusterId(const Aws::String& value) { SetClusterId(value); return *this;}
-
-    /**
-     * <p>The identifier of the EMR cluster.</p>
-     */
-    inline EMRStepMetadata& WithClusterId(Aws::String&& value) { SetClusterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the EMR cluster.</p>
-     */
-    inline EMRStepMetadata& WithClusterId(const char* value) { SetClusterId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the EMR cluster step.</p>
      */
-    inline const Aws::String& GetStepId() const{ return m_stepId; }
-
-    /**
-     * <p>The identifier of the EMR cluster step.</p>
-     */
+    inline const Aws::String& GetStepId() const { return m_stepId; }
     inline bool StepIdHasBeenSet() const { return m_stepIdHasBeenSet; }
+    template<typename StepIdT = Aws::String>
+    void SetStepId(StepIdT&& value) { m_stepIdHasBeenSet = true; m_stepId = std::forward<StepIdT>(value); }
+    template<typename StepIdT = Aws::String>
+    EMRStepMetadata& WithStepId(StepIdT&& value) { SetStepId(std::forward<StepIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the EMR cluster step.</p>
-     */
-    inline void SetStepId(const Aws::String& value) { m_stepIdHasBeenSet = true; m_stepId = value; }
-
-    /**
-     * <p>The identifier of the EMR cluster step.</p>
-     */
-    inline void SetStepId(Aws::String&& value) { m_stepIdHasBeenSet = true; m_stepId = std::move(value); }
-
-    /**
-     * <p>The identifier of the EMR cluster step.</p>
-     */
-    inline void SetStepId(const char* value) { m_stepIdHasBeenSet = true; m_stepId.assign(value); }
-
-    /**
-     * <p>The identifier of the EMR cluster step.</p>
-     */
-    inline EMRStepMetadata& WithStepId(const Aws::String& value) { SetStepId(value); return *this;}
-
-    /**
-     * <p>The identifier of the EMR cluster step.</p>
-     */
-    inline EMRStepMetadata& WithStepId(Aws::String&& value) { SetStepId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the EMR cluster step.</p>
-     */
-    inline EMRStepMetadata& WithStepId(const char* value) { SetStepId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the EMR cluster step.</p>
      */
-    inline const Aws::String& GetStepName() const{ return m_stepName; }
-
-    /**
-     * <p>The name of the EMR cluster step.</p>
-     */
+    inline const Aws::String& GetStepName() const { return m_stepName; }
     inline bool StepNameHasBeenSet() const { return m_stepNameHasBeenSet; }
+    template<typename StepNameT = Aws::String>
+    void SetStepName(StepNameT&& value) { m_stepNameHasBeenSet = true; m_stepName = std::forward<StepNameT>(value); }
+    template<typename StepNameT = Aws::String>
+    EMRStepMetadata& WithStepName(StepNameT&& value) { SetStepName(std::forward<StepNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the EMR cluster step.</p>
-     */
-    inline void SetStepName(const Aws::String& value) { m_stepNameHasBeenSet = true; m_stepName = value; }
-
-    /**
-     * <p>The name of the EMR cluster step.</p>
-     */
-    inline void SetStepName(Aws::String&& value) { m_stepNameHasBeenSet = true; m_stepName = std::move(value); }
-
-    /**
-     * <p>The name of the EMR cluster step.</p>
-     */
-    inline void SetStepName(const char* value) { m_stepNameHasBeenSet = true; m_stepName.assign(value); }
-
-    /**
-     * <p>The name of the EMR cluster step.</p>
-     */
-    inline EMRStepMetadata& WithStepName(const Aws::String& value) { SetStepName(value); return *this;}
-
-    /**
-     * <p>The name of the EMR cluster step.</p>
-     */
-    inline EMRStepMetadata& WithStepName(Aws::String&& value) { SetStepName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the EMR cluster step.</p>
-     */
-    inline EMRStepMetadata& WithStepName(const char* value) { SetStepName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The path to the log file where the cluster step's failure root cause is
      * recorded.</p>
      */
-    inline const Aws::String& GetLogFilePath() const{ return m_logFilePath; }
-
-    /**
-     * <p>The path to the log file where the cluster step's failure root cause is
-     * recorded.</p>
-     */
+    inline const Aws::String& GetLogFilePath() const { return m_logFilePath; }
     inline bool LogFilePathHasBeenSet() const { return m_logFilePathHasBeenSet; }
-
-    /**
-     * <p>The path to the log file where the cluster step's failure root cause is
-     * recorded.</p>
-     */
-    inline void SetLogFilePath(const Aws::String& value) { m_logFilePathHasBeenSet = true; m_logFilePath = value; }
-
-    /**
-     * <p>The path to the log file where the cluster step's failure root cause is
-     * recorded.</p>
-     */
-    inline void SetLogFilePath(Aws::String&& value) { m_logFilePathHasBeenSet = true; m_logFilePath = std::move(value); }
-
-    /**
-     * <p>The path to the log file where the cluster step's failure root cause is
-     * recorded.</p>
-     */
-    inline void SetLogFilePath(const char* value) { m_logFilePathHasBeenSet = true; m_logFilePath.assign(value); }
-
-    /**
-     * <p>The path to the log file where the cluster step's failure root cause is
-     * recorded.</p>
-     */
-    inline EMRStepMetadata& WithLogFilePath(const Aws::String& value) { SetLogFilePath(value); return *this;}
-
-    /**
-     * <p>The path to the log file where the cluster step's failure root cause is
-     * recorded.</p>
-     */
-    inline EMRStepMetadata& WithLogFilePath(Aws::String&& value) { SetLogFilePath(std::move(value)); return *this;}
-
-    /**
-     * <p>The path to the log file where the cluster step's failure root cause is
-     * recorded.</p>
-     */
-    inline EMRStepMetadata& WithLogFilePath(const char* value) { SetLogFilePath(value); return *this;}
-
+    template<typename LogFilePathT = Aws::String>
+    void SetLogFilePath(LogFilePathT&& value) { m_logFilePathHasBeenSet = true; m_logFilePath = std::forward<LogFilePathT>(value); }
+    template<typename LogFilePathT = Aws::String>
+    EMRStepMetadata& WithLogFilePath(LogFilePathT&& value) { SetLogFilePath(std::forward<LogFilePathT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterId;

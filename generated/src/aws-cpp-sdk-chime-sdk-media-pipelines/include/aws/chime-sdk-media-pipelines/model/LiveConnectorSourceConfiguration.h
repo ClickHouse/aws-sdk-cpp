@@ -33,76 +33,36 @@ namespace Model
   class LiveConnectorSourceConfiguration
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API LiveConnectorSourceConfiguration();
+    AWS_CHIMESDKMEDIAPIPELINES_API LiveConnectorSourceConfiguration() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API LiveConnectorSourceConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API LiveConnectorSourceConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The source configuration's media source type.</p>
      */
-    inline const LiveConnectorSourceType& GetSourceType() const{ return m_sourceType; }
-
-    /**
-     * <p>The source configuration's media source type.</p>
-     */
+    inline LiveConnectorSourceType GetSourceType() const { return m_sourceType; }
     inline bool SourceTypeHasBeenSet() const { return m_sourceTypeHasBeenSet; }
+    inline void SetSourceType(LiveConnectorSourceType value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
+    inline LiveConnectorSourceConfiguration& WithSourceType(LiveConnectorSourceType value) { SetSourceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The source configuration's media source type.</p>
-     */
-    inline void SetSourceType(const LiveConnectorSourceType& value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
-
-    /**
-     * <p>The source configuration's media source type.</p>
-     */
-    inline void SetSourceType(LiveConnectorSourceType&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::move(value); }
-
-    /**
-     * <p>The source configuration's media source type.</p>
-     */
-    inline LiveConnectorSourceConfiguration& WithSourceType(const LiveConnectorSourceType& value) { SetSourceType(value); return *this;}
-
-    /**
-     * <p>The source configuration's media source type.</p>
-     */
-    inline LiveConnectorSourceConfiguration& WithSourceType(LiveConnectorSourceType&& value) { SetSourceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration settings of the connector pipeline.</p>
      */
-    inline const ChimeSdkMeetingLiveConnectorConfiguration& GetChimeSdkMeetingLiveConnectorConfiguration() const{ return m_chimeSdkMeetingLiveConnectorConfiguration; }
-
-    /**
-     * <p>The configuration settings of the connector pipeline.</p>
-     */
+    inline const ChimeSdkMeetingLiveConnectorConfiguration& GetChimeSdkMeetingLiveConnectorConfiguration() const { return m_chimeSdkMeetingLiveConnectorConfiguration; }
     inline bool ChimeSdkMeetingLiveConnectorConfigurationHasBeenSet() const { return m_chimeSdkMeetingLiveConnectorConfigurationHasBeenSet; }
-
-    /**
-     * <p>The configuration settings of the connector pipeline.</p>
-     */
-    inline void SetChimeSdkMeetingLiveConnectorConfiguration(const ChimeSdkMeetingLiveConnectorConfiguration& value) { m_chimeSdkMeetingLiveConnectorConfigurationHasBeenSet = true; m_chimeSdkMeetingLiveConnectorConfiguration = value; }
-
-    /**
-     * <p>The configuration settings of the connector pipeline.</p>
-     */
-    inline void SetChimeSdkMeetingLiveConnectorConfiguration(ChimeSdkMeetingLiveConnectorConfiguration&& value) { m_chimeSdkMeetingLiveConnectorConfigurationHasBeenSet = true; m_chimeSdkMeetingLiveConnectorConfiguration = std::move(value); }
-
-    /**
-     * <p>The configuration settings of the connector pipeline.</p>
-     */
-    inline LiveConnectorSourceConfiguration& WithChimeSdkMeetingLiveConnectorConfiguration(const ChimeSdkMeetingLiveConnectorConfiguration& value) { SetChimeSdkMeetingLiveConnectorConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration settings of the connector pipeline.</p>
-     */
-    inline LiveConnectorSourceConfiguration& WithChimeSdkMeetingLiveConnectorConfiguration(ChimeSdkMeetingLiveConnectorConfiguration&& value) { SetChimeSdkMeetingLiveConnectorConfiguration(std::move(value)); return *this;}
-
+    template<typename ChimeSdkMeetingLiveConnectorConfigurationT = ChimeSdkMeetingLiveConnectorConfiguration>
+    void SetChimeSdkMeetingLiveConnectorConfiguration(ChimeSdkMeetingLiveConnectorConfigurationT&& value) { m_chimeSdkMeetingLiveConnectorConfigurationHasBeenSet = true; m_chimeSdkMeetingLiveConnectorConfiguration = std::forward<ChimeSdkMeetingLiveConnectorConfigurationT>(value); }
+    template<typename ChimeSdkMeetingLiveConnectorConfigurationT = ChimeSdkMeetingLiveConnectorConfiguration>
+    LiveConnectorSourceConfiguration& WithChimeSdkMeetingLiveConnectorConfiguration(ChimeSdkMeetingLiveConnectorConfigurationT&& value) { SetChimeSdkMeetingLiveConnectorConfiguration(std::forward<ChimeSdkMeetingLiveConnectorConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
-    LiveConnectorSourceType m_sourceType;
+    LiveConnectorSourceType m_sourceType{LiveConnectorSourceType::NOT_SET};
     bool m_sourceTypeHasBeenSet = false;
 
     ChimeSdkMeetingLiveConnectorConfiguration m_chimeSdkMeetingLiveConnectorConfiguration;

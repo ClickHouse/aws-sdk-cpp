@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-BooleanFilter::BooleanFilter() : 
-    m_value(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-BooleanFilter::BooleanFilter(JsonView jsonValue) : 
-    m_value(false),
-    m_valueHasBeenSet(false)
+BooleanFilter::BooleanFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ BooleanFilter& BooleanFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetBool("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

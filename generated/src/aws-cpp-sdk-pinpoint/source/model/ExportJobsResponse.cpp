@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-ExportJobsResponse::ExportJobsResponse() : 
-    m_itemHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
-ExportJobsResponse::ExportJobsResponse(JsonView jsonValue) : 
-    m_itemHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
+ExportJobsResponse::ExportJobsResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ExportJobsResponse& ExportJobsResponse::operator =(JsonView jsonValue)
     }
     m_itemHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NextToken"))
   {
     m_nextToken = jsonValue.GetString("NextToken");
-
     m_nextTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

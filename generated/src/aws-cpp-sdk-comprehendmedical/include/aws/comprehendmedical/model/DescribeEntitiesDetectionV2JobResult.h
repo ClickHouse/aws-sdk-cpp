@@ -28,63 +28,37 @@ namespace Model
   class DescribeEntitiesDetectionV2JobResult
   {
   public:
-    AWS_COMPREHENDMEDICAL_API DescribeEntitiesDetectionV2JobResult();
+    AWS_COMPREHENDMEDICAL_API DescribeEntitiesDetectionV2JobResult() = default;
     AWS_COMPREHENDMEDICAL_API DescribeEntitiesDetectionV2JobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COMPREHENDMEDICAL_API DescribeEntitiesDetectionV2JobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An object that contains the properties associated with a detection job.</p>
      */
-    inline const ComprehendMedicalAsyncJobProperties& GetComprehendMedicalAsyncJobProperties() const{ return m_comprehendMedicalAsyncJobProperties; }
+    inline const ComprehendMedicalAsyncJobProperties& GetComprehendMedicalAsyncJobProperties() const { return m_comprehendMedicalAsyncJobProperties; }
+    template<typename ComprehendMedicalAsyncJobPropertiesT = ComprehendMedicalAsyncJobProperties>
+    void SetComprehendMedicalAsyncJobProperties(ComprehendMedicalAsyncJobPropertiesT&& value) { m_comprehendMedicalAsyncJobPropertiesHasBeenSet = true; m_comprehendMedicalAsyncJobProperties = std::forward<ComprehendMedicalAsyncJobPropertiesT>(value); }
+    template<typename ComprehendMedicalAsyncJobPropertiesT = ComprehendMedicalAsyncJobProperties>
+    DescribeEntitiesDetectionV2JobResult& WithComprehendMedicalAsyncJobProperties(ComprehendMedicalAsyncJobPropertiesT&& value) { SetComprehendMedicalAsyncJobProperties(std::forward<ComprehendMedicalAsyncJobPropertiesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains the properties associated with a detection job.</p>
-     */
-    inline void SetComprehendMedicalAsyncJobProperties(const ComprehendMedicalAsyncJobProperties& value) { m_comprehendMedicalAsyncJobProperties = value; }
-
-    /**
-     * <p>An object that contains the properties associated with a detection job.</p>
-     */
-    inline void SetComprehendMedicalAsyncJobProperties(ComprehendMedicalAsyncJobProperties&& value) { m_comprehendMedicalAsyncJobProperties = std::move(value); }
-
-    /**
-     * <p>An object that contains the properties associated with a detection job.</p>
-     */
-    inline DescribeEntitiesDetectionV2JobResult& WithComprehendMedicalAsyncJobProperties(const ComprehendMedicalAsyncJobProperties& value) { SetComprehendMedicalAsyncJobProperties(value); return *this;}
-
-    /**
-     * <p>An object that contains the properties associated with a detection job.</p>
-     */
-    inline DescribeEntitiesDetectionV2JobResult& WithComprehendMedicalAsyncJobProperties(ComprehendMedicalAsyncJobProperties&& value) { SetComprehendMedicalAsyncJobProperties(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeEntitiesDetectionV2JobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeEntitiesDetectionV2JobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeEntitiesDetectionV2JobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeEntitiesDetectionV2JobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ComprehendMedicalAsyncJobProperties m_comprehendMedicalAsyncJobProperties;
+    bool m_comprehendMedicalAsyncJobPropertiesHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

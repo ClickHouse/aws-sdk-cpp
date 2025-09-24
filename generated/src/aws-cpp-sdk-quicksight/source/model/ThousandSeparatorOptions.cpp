@@ -18,19 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ThousandSeparatorOptions::ThousandSeparatorOptions() : 
-    m_symbol(NumericSeparatorSymbol::NOT_SET),
-    m_symbolHasBeenSet(false),
-    m_visibility(Visibility::NOT_SET),
-    m_visibilityHasBeenSet(false)
-{
-}
-
-ThousandSeparatorOptions::ThousandSeparatorOptions(JsonView jsonValue) : 
-    m_symbol(NumericSeparatorSymbol::NOT_SET),
-    m_symbolHasBeenSet(false),
-    m_visibility(Visibility::NOT_SET),
-    m_visibilityHasBeenSet(false)
+ThousandSeparatorOptions::ThousandSeparatorOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,18 @@ ThousandSeparatorOptions& ThousandSeparatorOptions::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Symbol"))
   {
     m_symbol = NumericSeparatorSymbolMapper::GetNumericSeparatorSymbolForName(jsonValue.GetString("Symbol"));
-
     m_symbolHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Visibility"))
   {
     m_visibility = VisibilityMapper::GetVisibilityForName(jsonValue.GetString("Visibility"));
-
     m_visibilityHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("GroupingStyle"))
+  {
+    m_groupingStyle = DigitGroupingStyleMapper::GetDigitGroupingStyleForName(jsonValue.GetString("GroupingStyle"));
+    m_groupingStyleHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -66,6 +55,11 @@ JsonValue ThousandSeparatorOptions::Jsonize() const
   if(m_visibilityHasBeenSet)
   {
    payload.WithString("Visibility", VisibilityMapper::GetNameForVisibility(m_visibility));
+  }
+
+  if(m_groupingStyleHasBeenSet)
+  {
+   payload.WithString("GroupingStyle", DigitGroupingStyleMapper::GetNameForDigitGroupingStyle(m_groupingStyle));
   }
 
   return payload;

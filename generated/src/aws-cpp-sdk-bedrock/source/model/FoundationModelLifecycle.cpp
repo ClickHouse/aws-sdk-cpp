@@ -18,15 +18,7 @@ namespace Bedrock
 namespace Model
 {
 
-FoundationModelLifecycle::FoundationModelLifecycle() : 
-    m_status(FoundationModelLifecycleStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-FoundationModelLifecycle::FoundationModelLifecycle(JsonView jsonValue) : 
-    m_status(FoundationModelLifecycleStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+FoundationModelLifecycle::FoundationModelLifecycle(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ FoundationModelLifecycle& FoundationModelLifecycle::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("status"))
   {
     m_status = FoundationModelLifecycleStatusMapper::GetFoundationModelLifecycleStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

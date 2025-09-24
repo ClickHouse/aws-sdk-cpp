@@ -28,139 +28,63 @@ namespace Model
   class CreateShareResult
   {
   public:
-    AWS_OMICS_API CreateShareResult();
+    AWS_OMICS_API CreateShareResult() = default;
     AWS_OMICS_API CreateShareResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API CreateShareResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p> An ID generated for the share. </p>
+     * <p>The ID that HealthOmics generates for the share.</p>
      */
-    inline const Aws::String& GetShareId() const{ return m_shareId; }
+    inline const Aws::String& GetShareId() const { return m_shareId; }
+    template<typename ShareIdT = Aws::String>
+    void SetShareId(ShareIdT&& value) { m_shareIdHasBeenSet = true; m_shareId = std::forward<ShareIdT>(value); }
+    template<typename ShareIdT = Aws::String>
+    CreateShareResult& WithShareId(ShareIdT&& value) { SetShareId(std::forward<ShareIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> An ID generated for the share. </p>
+     * <p>The status of the share.</p>
      */
-    inline void SetShareId(const Aws::String& value) { m_shareId = value; }
+    inline ShareStatus GetStatus() const { return m_status; }
+    inline void SetStatus(ShareStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline CreateShareResult& WithStatus(ShareStatus value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p> An ID generated for the share. </p>
+     * <p>The name of the share.</p>
      */
-    inline void SetShareId(Aws::String&& value) { m_shareId = std::move(value); }
+    inline const Aws::String& GetShareName() const { return m_shareName; }
+    template<typename ShareNameT = Aws::String>
+    void SetShareName(ShareNameT&& value) { m_shareNameHasBeenSet = true; m_shareName = std::forward<ShareNameT>(value); }
+    template<typename ShareNameT = Aws::String>
+    CreateShareResult& WithShareName(ShareNameT&& value) { SetShareName(std::forward<ShareNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> An ID generated for the share. </p>
-     */
-    inline void SetShareId(const char* value) { m_shareId.assign(value); }
-
-    /**
-     * <p> An ID generated for the share. </p>
-     */
-    inline CreateShareResult& WithShareId(const Aws::String& value) { SetShareId(value); return *this;}
-
-    /**
-     * <p> An ID generated for the share. </p>
-     */
-    inline CreateShareResult& WithShareId(Aws::String&& value) { SetShareId(std::move(value)); return *this;}
-
-    /**
-     * <p> An ID generated for the share. </p>
-     */
-    inline CreateShareResult& WithShareId(const char* value) { SetShareId(value); return *this;}
-
-
-    /**
-     * <p> The status of a share. </p>
-     */
-    inline const ShareStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> The status of a share. </p>
-     */
-    inline void SetStatus(const ShareStatus& value) { m_status = value; }
-
-    /**
-     * <p> The status of a share. </p>
-     */
-    inline void SetStatus(ShareStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p> The status of a share. </p>
-     */
-    inline CreateShareResult& WithStatus(const ShareStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> The status of a share. </p>
-     */
-    inline CreateShareResult& WithStatus(ShareStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p> A name given to the share. </p>
-     */
-    inline const Aws::String& GetShareName() const{ return m_shareName; }
-
-    /**
-     * <p> A name given to the share. </p>
-     */
-    inline void SetShareName(const Aws::String& value) { m_shareName = value; }
-
-    /**
-     * <p> A name given to the share. </p>
-     */
-    inline void SetShareName(Aws::String&& value) { m_shareName = std::move(value); }
-
-    /**
-     * <p> A name given to the share. </p>
-     */
-    inline void SetShareName(const char* value) { m_shareName.assign(value); }
-
-    /**
-     * <p> A name given to the share. </p>
-     */
-    inline CreateShareResult& WithShareName(const Aws::String& value) { SetShareName(value); return *this;}
-
-    /**
-     * <p> A name given to the share. </p>
-     */
-    inline CreateShareResult& WithShareName(Aws::String&& value) { SetShareName(std::move(value)); return *this;}
-
-    /**
-     * <p> A name given to the share. </p>
-     */
-    inline CreateShareResult& WithShareName(const char* value) { SetShareName(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateShareResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateShareResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateShareResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateShareResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_shareId;
+    bool m_shareIdHasBeenSet = false;
 
-    ShareStatus m_status;
+    ShareStatus m_status{ShareStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_shareName;
+    bool m_shareNameHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

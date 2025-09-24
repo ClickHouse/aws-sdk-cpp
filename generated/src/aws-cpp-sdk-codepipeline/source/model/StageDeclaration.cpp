@@ -18,17 +18,7 @@ namespace CodePipeline
 namespace Model
 {
 
-StageDeclaration::StageDeclaration() : 
-    m_nameHasBeenSet(false),
-    m_blockersHasBeenSet(false),
-    m_actionsHasBeenSet(false)
-{
-}
-
-StageDeclaration::StageDeclaration(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_blockersHasBeenSet(false),
-    m_actionsHasBeenSet(false)
+StageDeclaration::StageDeclaration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ StageDeclaration& StageDeclaration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("blockers"))
   {
     Aws::Utils::Array<JsonView> blockersJsonList = jsonValue.GetArray("blockers");
@@ -51,7 +39,6 @@ StageDeclaration& StageDeclaration::operator =(JsonView jsonValue)
     }
     m_blockersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("actions"))
   {
     Aws::Utils::Array<JsonView> actionsJsonList = jsonValue.GetArray("actions");
@@ -61,7 +48,21 @@ StageDeclaration& StageDeclaration::operator =(JsonView jsonValue)
     }
     m_actionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("onFailure"))
+  {
+    m_onFailure = jsonValue.GetObject("onFailure");
+    m_onFailureHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("onSuccess"))
+  {
+    m_onSuccess = jsonValue.GetObject("onSuccess");
+    m_onSuccessHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("beforeEntry"))
+  {
+    m_beforeEntry = jsonValue.GetObject("beforeEntry");
+    m_beforeEntryHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -94,6 +95,24 @@ JsonValue StageDeclaration::Jsonize() const
      actionsJsonList[actionsIndex].AsObject(m_actions[actionsIndex].Jsonize());
    }
    payload.WithArray("actions", std::move(actionsJsonList));
+
+  }
+
+  if(m_onFailureHasBeenSet)
+  {
+   payload.WithObject("onFailure", m_onFailure.Jsonize());
+
+  }
+
+  if(m_onSuccessHasBeenSet)
+  {
+   payload.WithObject("onSuccess", m_onSuccess.Jsonize());
+
+  }
+
+  if(m_beforeEntryHasBeenSet)
+  {
+   payload.WithObject("beforeEntry", m_beforeEntry.Jsonize());
 
   }
 

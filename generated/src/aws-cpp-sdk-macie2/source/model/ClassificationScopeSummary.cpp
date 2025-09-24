@@ -18,15 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-ClassificationScopeSummary::ClassificationScopeSummary() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-ClassificationScopeSummary::ClassificationScopeSummary(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false)
+ClassificationScopeSummary::ClassificationScopeSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ClassificationScopeSummary& ClassificationScopeSummary::operator =(JsonView json
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

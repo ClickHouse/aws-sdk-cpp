@@ -18,23 +18,7 @@ namespace Comprehend
 namespace Model
 {
 
-EntityRecognizerEvaluationMetrics::EntityRecognizerEvaluationMetrics() : 
-    m_precision(0.0),
-    m_precisionHasBeenSet(false),
-    m_recall(0.0),
-    m_recallHasBeenSet(false),
-    m_f1Score(0.0),
-    m_f1ScoreHasBeenSet(false)
-{
-}
-
-EntityRecognizerEvaluationMetrics::EntityRecognizerEvaluationMetrics(JsonView jsonValue) : 
-    m_precision(0.0),
-    m_precisionHasBeenSet(false),
-    m_recall(0.0),
-    m_recallHasBeenSet(false),
-    m_f1Score(0.0),
-    m_f1ScoreHasBeenSet(false)
+EntityRecognizerEvaluationMetrics::EntityRecognizerEvaluationMetrics(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,24 +28,18 @@ EntityRecognizerEvaluationMetrics& EntityRecognizerEvaluationMetrics::operator =
   if(jsonValue.ValueExists("Precision"))
   {
     m_precision = jsonValue.GetDouble("Precision");
-
     m_precisionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Recall"))
   {
     m_recall = jsonValue.GetDouble("Recall");
-
     m_recallHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("F1Score"))
   {
     m_f1Score = jsonValue.GetDouble("F1Score");
-
     m_f1ScoreHasBeenSet = true;
   }
-
   return *this;
 }
 

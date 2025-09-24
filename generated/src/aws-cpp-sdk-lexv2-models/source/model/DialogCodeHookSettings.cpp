@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-DialogCodeHookSettings::DialogCodeHookSettings() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-DialogCodeHookSettings::DialogCodeHookSettings(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+DialogCodeHookSettings::DialogCodeHookSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DialogCodeHookSettings& DialogCodeHookSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("enabled"))
   {
     m_enabled = jsonValue.GetBool("enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

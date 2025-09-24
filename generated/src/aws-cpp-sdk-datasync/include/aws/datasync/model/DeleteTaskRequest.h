@@ -24,7 +24,7 @@ namespace Model
   class DeleteTaskRequest : public DataSyncRequest
   {
   public:
-    AWS_DATASYNC_API DeleteTaskRequest();
+    AWS_DATASYNC_API DeleteTaskRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,54 +37,18 @@ namespace Model
     AWS_DATASYNC_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies the Amazon Resource Name (ARN) of the task that you want to
      * delete.</p>
      */
-    inline const Aws::String& GetTaskArn() const{ return m_taskArn; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the task that you want to
-     * delete.</p>
-     */
+    inline const Aws::String& GetTaskArn() const { return m_taskArn; }
     inline bool TaskArnHasBeenSet() const { return m_taskArnHasBeenSet; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the task that you want to
-     * delete.</p>
-     */
-    inline void SetTaskArn(const Aws::String& value) { m_taskArnHasBeenSet = true; m_taskArn = value; }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the task that you want to
-     * delete.</p>
-     */
-    inline void SetTaskArn(Aws::String&& value) { m_taskArnHasBeenSet = true; m_taskArn = std::move(value); }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the task that you want to
-     * delete.</p>
-     */
-    inline void SetTaskArn(const char* value) { m_taskArnHasBeenSet = true; m_taskArn.assign(value); }
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the task that you want to
-     * delete.</p>
-     */
-    inline DeleteTaskRequest& WithTaskArn(const Aws::String& value) { SetTaskArn(value); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the task that you want to
-     * delete.</p>
-     */
-    inline DeleteTaskRequest& WithTaskArn(Aws::String&& value) { SetTaskArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Resource Name (ARN) of the task that you want to
-     * delete.</p>
-     */
-    inline DeleteTaskRequest& WithTaskArn(const char* value) { SetTaskArn(value); return *this;}
-
+    template<typename TaskArnT = Aws::String>
+    void SetTaskArn(TaskArnT&& value) { m_taskArnHasBeenSet = true; m_taskArn = std::forward<TaskArnT>(value); }
+    template<typename TaskArnT = Aws::String>
+    DeleteTaskRequest& WithTaskArn(TaskArnT&& value) { SetTaskArn(std::forward<TaskArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskArn;

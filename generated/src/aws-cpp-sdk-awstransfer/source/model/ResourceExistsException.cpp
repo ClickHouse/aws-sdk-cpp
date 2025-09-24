@@ -18,17 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-ResourceExistsException::ResourceExistsException() : 
-    m_messageHasBeenSet(false),
-    m_resourceHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
-{
-}
-
-ResourceExistsException::ResourceExistsException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_resourceHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false)
+ResourceExistsException::ResourceExistsException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ResourceExistsException& ResourceExistsException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Resource"))
   {
     m_resource = jsonValue.GetString("Resource");
-
     m_resourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceType"))
   {
     m_resourceType = jsonValue.GetString("ResourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

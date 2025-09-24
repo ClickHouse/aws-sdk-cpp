@@ -12,14 +12,6 @@ using namespace Aws::ApiGatewayV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDomainNameRequest::CreateDomainNameRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_domainNameConfigurationsHasBeenSet(false),
-    m_mutualTlsAuthenticationHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateDomainNameRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -45,6 +37,11 @@ Aws::String CreateDomainNameRequest::SerializePayload() const
   {
    payload.WithObject("mutualTlsAuthentication", m_mutualTlsAuthentication.Jsonize());
 
+  }
+
+  if(m_routingModeHasBeenSet)
+  {
+   payload.WithString("routingMode", RoutingModeMapper::GetNameForRoutingMode(m_routingMode));
   }
 
   if(m_tagsHasBeenSet)

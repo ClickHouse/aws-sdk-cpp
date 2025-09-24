@@ -12,19 +12,6 @@ using namespace Aws::GameLift::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartGameSessionPlacementRequest::StartGameSessionPlacementRequest() : 
-    m_placementIdHasBeenSet(false),
-    m_gameSessionQueueNameHasBeenSet(false),
-    m_gamePropertiesHasBeenSet(false),
-    m_maximumPlayerSessionCount(0),
-    m_maximumPlayerSessionCountHasBeenSet(false),
-    m_gameSessionNameHasBeenSet(false),
-    m_playerLatenciesHasBeenSet(false),
-    m_desiredPlayerSessionsHasBeenSet(false),
-    m_gameSessionDataHasBeenSet(false)
-{
-}
-
 Aws::String StartGameSessionPlacementRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -89,6 +76,12 @@ Aws::String StartGameSessionPlacementRequest::SerializePayload() const
   if(m_gameSessionDataHasBeenSet)
   {
    payload.WithString("GameSessionData", m_gameSessionData);
+
+  }
+
+  if(m_priorityConfigurationOverrideHasBeenSet)
+  {
+   payload.WithObject("PriorityConfigurationOverride", m_priorityConfigurationOverride.Jsonize());
 
   }
 

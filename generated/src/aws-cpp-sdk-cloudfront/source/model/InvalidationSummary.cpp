@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-InvalidationSummary::InvalidationSummary() : 
-    m_idHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-InvalidationSummary::InvalidationSummary(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_statusHasBeenSet(false)
+InvalidationSummary::InvalidationSummary(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

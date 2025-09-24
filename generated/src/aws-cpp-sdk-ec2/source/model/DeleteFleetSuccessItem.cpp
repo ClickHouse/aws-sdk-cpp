@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DeleteFleetSuccessItem::DeleteFleetSuccessItem() : 
-    m_currentFleetState(FleetStateCode::NOT_SET),
-    m_currentFleetStateHasBeenSet(false),
-    m_previousFleetState(FleetStateCode::NOT_SET),
-    m_previousFleetStateHasBeenSet(false),
-    m_fleetIdHasBeenSet(false)
-{
-}
-
-DeleteFleetSuccessItem::DeleteFleetSuccessItem(const XmlNode& xmlNode) : 
-    m_currentFleetState(FleetStateCode::NOT_SET),
-    m_currentFleetStateHasBeenSet(false),
-    m_previousFleetState(FleetStateCode::NOT_SET),
-    m_previousFleetStateHasBeenSet(false),
-    m_fleetIdHasBeenSet(false)
+DeleteFleetSuccessItem::DeleteFleetSuccessItem(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -48,13 +34,13 @@ DeleteFleetSuccessItem& DeleteFleetSuccessItem::operator =(const XmlNode& xmlNod
     XmlNode currentFleetStateNode = resultNode.FirstChild("currentFleetState");
     if(!currentFleetStateNode.IsNull())
     {
-      m_currentFleetState = FleetStateCodeMapper::GetFleetStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(currentFleetStateNode.GetText()).c_str()).c_str());
+      m_currentFleetState = FleetStateCodeMapper::GetFleetStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(currentFleetStateNode.GetText()).c_str()));
       m_currentFleetStateHasBeenSet = true;
     }
     XmlNode previousFleetStateNode = resultNode.FirstChild("previousFleetState");
     if(!previousFleetStateNode.IsNull())
     {
-      m_previousFleetState = FleetStateCodeMapper::GetFleetStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(previousFleetStateNode.GetText()).c_str()).c_str());
+      m_previousFleetState = FleetStateCodeMapper::GetFleetStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(previousFleetStateNode.GetText()).c_str()));
       m_previousFleetStateHasBeenSet = true;
     }
     XmlNode fleetIdNode = resultNode.FirstChild("fleetId");
@@ -72,12 +58,12 @@ void DeleteFleetSuccessItem::OutputToStream(Aws::OStream& oStream, const char* l
 {
   if(m_currentFleetStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".CurrentFleetState=" << FleetStateCodeMapper::GetNameForFleetStateCode(m_currentFleetState) << "&";
+      oStream << location << index << locationValue << ".CurrentFleetState=" << StringUtils::URLEncode(FleetStateCodeMapper::GetNameForFleetStateCode(m_currentFleetState)) << "&";
   }
 
   if(m_previousFleetStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".PreviousFleetState=" << FleetStateCodeMapper::GetNameForFleetStateCode(m_previousFleetState) << "&";
+      oStream << location << index << locationValue << ".PreviousFleetState=" << StringUtils::URLEncode(FleetStateCodeMapper::GetNameForFleetStateCode(m_previousFleetState)) << "&";
   }
 
   if(m_fleetIdHasBeenSet)
@@ -91,11 +77,11 @@ void DeleteFleetSuccessItem::OutputToStream(Aws::OStream& oStream, const char* l
 {
   if(m_currentFleetStateHasBeenSet)
   {
-      oStream << location << ".CurrentFleetState=" << FleetStateCodeMapper::GetNameForFleetStateCode(m_currentFleetState) << "&";
+      oStream << location << ".CurrentFleetState=" << StringUtils::URLEncode(FleetStateCodeMapper::GetNameForFleetStateCode(m_currentFleetState)) << "&";
   }
   if(m_previousFleetStateHasBeenSet)
   {
-      oStream << location << ".PreviousFleetState=" << FleetStateCodeMapper::GetNameForFleetStateCode(m_previousFleetState) << "&";
+      oStream << location << ".PreviousFleetState=" << StringUtils::URLEncode(FleetStateCodeMapper::GetNameForFleetStateCode(m_previousFleetState)) << "&";
   }
   if(m_fleetIdHasBeenSet)
   {

@@ -21,7 +21,7 @@ namespace Model
   class DeleteChannelFlowRequest : public ChimeSDKMessagingRequest
   {
   public:
-    AWS_CHIMESDKMESSAGING_API DeleteChannelFlowRequest();
+    AWS_CHIMESDKMESSAGING_API DeleteChannelFlowRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_CHIMESDKMESSAGING_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the channel flow.</p>
      */
-    inline const Aws::String& GetChannelFlowArn() const{ return m_channelFlowArn; }
-
-    /**
-     * <p>The ARN of the channel flow.</p>
-     */
+    inline const Aws::String& GetChannelFlowArn() const { return m_channelFlowArn; }
     inline bool ChannelFlowArnHasBeenSet() const { return m_channelFlowArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the channel flow.</p>
-     */
-    inline void SetChannelFlowArn(const Aws::String& value) { m_channelFlowArnHasBeenSet = true; m_channelFlowArn = value; }
-
-    /**
-     * <p>The ARN of the channel flow.</p>
-     */
-    inline void SetChannelFlowArn(Aws::String&& value) { m_channelFlowArnHasBeenSet = true; m_channelFlowArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the channel flow.</p>
-     */
-    inline void SetChannelFlowArn(const char* value) { m_channelFlowArnHasBeenSet = true; m_channelFlowArn.assign(value); }
-
-    /**
-     * <p>The ARN of the channel flow.</p>
-     */
-    inline DeleteChannelFlowRequest& WithChannelFlowArn(const Aws::String& value) { SetChannelFlowArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the channel flow.</p>
-     */
-    inline DeleteChannelFlowRequest& WithChannelFlowArn(Aws::String&& value) { SetChannelFlowArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the channel flow.</p>
-     */
-    inline DeleteChannelFlowRequest& WithChannelFlowArn(const char* value) { SetChannelFlowArn(value); return *this;}
-
+    template<typename ChannelFlowArnT = Aws::String>
+    void SetChannelFlowArn(ChannelFlowArnT&& value) { m_channelFlowArnHasBeenSet = true; m_channelFlowArn = std::forward<ChannelFlowArnT>(value); }
+    template<typename ChannelFlowArnT = Aws::String>
+    DeleteChannelFlowRequest& WithChannelFlowArn(ChannelFlowArnT&& value) { SetChannelFlowArn(std::forward<ChannelFlowArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelFlowArn;

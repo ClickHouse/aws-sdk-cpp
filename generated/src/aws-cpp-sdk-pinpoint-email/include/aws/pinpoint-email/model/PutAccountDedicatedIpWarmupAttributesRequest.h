@@ -23,7 +23,7 @@ namespace Model
   class PutAccountDedicatedIpWarmupAttributesRequest : public PinpointEmailRequest
   {
   public:
-    AWS_PINPOINTEMAIL_API PutAccountDedicatedIpWarmupAttributesRequest();
+    AWS_PINPOINTEMAIL_API PutAccountDedicatedIpWarmupAttributesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,41 +34,21 @@ namespace Model
     AWS_PINPOINTEMAIL_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Enables or disables the automatic warm-up feature for dedicated IP addresses
      * that are associated with your Amazon Pinpoint account in the current AWS Region.
      * Set to <code>true</code> to enable the automatic warm-up feature, or set to
      * <code>false</code> to disable it.</p>
      */
-    inline bool GetAutoWarmupEnabled() const{ return m_autoWarmupEnabled; }
-
-    /**
-     * <p>Enables or disables the automatic warm-up feature for dedicated IP addresses
-     * that are associated with your Amazon Pinpoint account in the current AWS Region.
-     * Set to <code>true</code> to enable the automatic warm-up feature, or set to
-     * <code>false</code> to disable it.</p>
-     */
+    inline bool GetAutoWarmupEnabled() const { return m_autoWarmupEnabled; }
     inline bool AutoWarmupEnabledHasBeenSet() const { return m_autoWarmupEnabledHasBeenSet; }
-
-    /**
-     * <p>Enables or disables the automatic warm-up feature for dedicated IP addresses
-     * that are associated with your Amazon Pinpoint account in the current AWS Region.
-     * Set to <code>true</code> to enable the automatic warm-up feature, or set to
-     * <code>false</code> to disable it.</p>
-     */
     inline void SetAutoWarmupEnabled(bool value) { m_autoWarmupEnabledHasBeenSet = true; m_autoWarmupEnabled = value; }
-
-    /**
-     * <p>Enables or disables the automatic warm-up feature for dedicated IP addresses
-     * that are associated with your Amazon Pinpoint account in the current AWS Region.
-     * Set to <code>true</code> to enable the automatic warm-up feature, or set to
-     * <code>false</code> to disable it.</p>
-     */
     inline PutAccountDedicatedIpWarmupAttributesRequest& WithAutoWarmupEnabled(bool value) { SetAutoWarmupEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_autoWarmupEnabled;
+    bool m_autoWarmupEnabled{false};
     bool m_autoWarmupEnabledHasBeenSet = false;
   };
 

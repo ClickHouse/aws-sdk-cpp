@@ -21,7 +21,7 @@ namespace Model
   class DescribeSourceLocationRequest : public MediaTailorRequest
   {
   public:
-    AWS_MEDIATAILOR_API DescribeSourceLocationRequest();
+    AWS_MEDIATAILOR_API DescribeSourceLocationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_MEDIATAILOR_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the source location.</p>
      */
-    inline const Aws::String& GetSourceLocationName() const{ return m_sourceLocationName; }
-
-    /**
-     * <p>The name of the source location.</p>
-     */
+    inline const Aws::String& GetSourceLocationName() const { return m_sourceLocationName; }
     inline bool SourceLocationNameHasBeenSet() const { return m_sourceLocationNameHasBeenSet; }
-
-    /**
-     * <p>The name of the source location.</p>
-     */
-    inline void SetSourceLocationName(const Aws::String& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = value; }
-
-    /**
-     * <p>The name of the source location.</p>
-     */
-    inline void SetSourceLocationName(Aws::String&& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = std::move(value); }
-
-    /**
-     * <p>The name of the source location.</p>
-     */
-    inline void SetSourceLocationName(const char* value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName.assign(value); }
-
-    /**
-     * <p>The name of the source location.</p>
-     */
-    inline DescribeSourceLocationRequest& WithSourceLocationName(const Aws::String& value) { SetSourceLocationName(value); return *this;}
-
-    /**
-     * <p>The name of the source location.</p>
-     */
-    inline DescribeSourceLocationRequest& WithSourceLocationName(Aws::String&& value) { SetSourceLocationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the source location.</p>
-     */
-    inline DescribeSourceLocationRequest& WithSourceLocationName(const char* value) { SetSourceLocationName(value); return *this;}
-
+    template<typename SourceLocationNameT = Aws::String>
+    void SetSourceLocationName(SourceLocationNameT&& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = std::forward<SourceLocationNameT>(value); }
+    template<typename SourceLocationNameT = Aws::String>
+    DescribeSourceLocationRequest& WithSourceLocationName(SourceLocationNameT&& value) { SetSourceLocationName(std::forward<SourceLocationNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceLocationName;

@@ -32,7 +32,7 @@ namespace Model
   class Parameter
   {
   public:
-    AWS_DOCDB_API Parameter();
+    AWS_DOCDB_API Parameter() = default;
     AWS_DOCDB_API Parameter(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_DOCDB_API Parameter& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,393 +40,123 @@ namespace Model
     AWS_DOCDB_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Specifies the name of the parameter.</p>
      */
-    inline const Aws::String& GetParameterName() const{ return m_parameterName; }
-
-    /**
-     * <p>Specifies the name of the parameter.</p>
-     */
+    inline const Aws::String& GetParameterName() const { return m_parameterName; }
     inline bool ParameterNameHasBeenSet() const { return m_parameterNameHasBeenSet; }
+    template<typename ParameterNameT = Aws::String>
+    void SetParameterName(ParameterNameT&& value) { m_parameterNameHasBeenSet = true; m_parameterName = std::forward<ParameterNameT>(value); }
+    template<typename ParameterNameT = Aws::String>
+    Parameter& WithParameterName(ParameterNameT&& value) { SetParameterName(std::forward<ParameterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the name of the parameter.</p>
-     */
-    inline void SetParameterName(const Aws::String& value) { m_parameterNameHasBeenSet = true; m_parameterName = value; }
-
-    /**
-     * <p>Specifies the name of the parameter.</p>
-     */
-    inline void SetParameterName(Aws::String&& value) { m_parameterNameHasBeenSet = true; m_parameterName = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the parameter.</p>
-     */
-    inline void SetParameterName(const char* value) { m_parameterNameHasBeenSet = true; m_parameterName.assign(value); }
-
-    /**
-     * <p>Specifies the name of the parameter.</p>
-     */
-    inline Parameter& WithParameterName(const Aws::String& value) { SetParameterName(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the parameter.</p>
-     */
-    inline Parameter& WithParameterName(Aws::String&& value) { SetParameterName(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the parameter.</p>
-     */
-    inline Parameter& WithParameterName(const char* value) { SetParameterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the value of the parameter.</p>
      */
-    inline const Aws::String& GetParameterValue() const{ return m_parameterValue; }
-
-    /**
-     * <p>Specifies the value of the parameter.</p>
-     */
+    inline const Aws::String& GetParameterValue() const { return m_parameterValue; }
     inline bool ParameterValueHasBeenSet() const { return m_parameterValueHasBeenSet; }
+    template<typename ParameterValueT = Aws::String>
+    void SetParameterValue(ParameterValueT&& value) { m_parameterValueHasBeenSet = true; m_parameterValue = std::forward<ParameterValueT>(value); }
+    template<typename ParameterValueT = Aws::String>
+    Parameter& WithParameterValue(ParameterValueT&& value) { SetParameterValue(std::forward<ParameterValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the value of the parameter.</p>
-     */
-    inline void SetParameterValue(const Aws::String& value) { m_parameterValueHasBeenSet = true; m_parameterValue = value; }
-
-    /**
-     * <p>Specifies the value of the parameter.</p>
-     */
-    inline void SetParameterValue(Aws::String&& value) { m_parameterValueHasBeenSet = true; m_parameterValue = std::move(value); }
-
-    /**
-     * <p>Specifies the value of the parameter.</p>
-     */
-    inline void SetParameterValue(const char* value) { m_parameterValueHasBeenSet = true; m_parameterValue.assign(value); }
-
-    /**
-     * <p>Specifies the value of the parameter.</p>
-     */
-    inline Parameter& WithParameterValue(const Aws::String& value) { SetParameterValue(value); return *this;}
-
-    /**
-     * <p>Specifies the value of the parameter.</p>
-     */
-    inline Parameter& WithParameterValue(Aws::String&& value) { SetParameterValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the value of the parameter.</p>
-     */
-    inline Parameter& WithParameterValue(const char* value) { SetParameterValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides a description of the parameter.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Provides a description of the parameter.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Parameter& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides a description of the parameter.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Provides a description of the parameter.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Provides a description of the parameter.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Provides a description of the parameter.</p>
-     */
-    inline Parameter& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Provides a description of the parameter.</p>
-     */
-    inline Parameter& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides a description of the parameter.</p>
-     */
-    inline Parameter& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the source of the parameter value.</p>
      */
-    inline const Aws::String& GetSource() const{ return m_source; }
-
-    /**
-     * <p>Indicates the source of the parameter value.</p>
-     */
+    inline const Aws::String& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
+    template<typename SourceT = Aws::String>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = Aws::String>
+    Parameter& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the source of the parameter value.</p>
-     */
-    inline void SetSource(const Aws::String& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>Indicates the source of the parameter value.</p>
-     */
-    inline void SetSource(Aws::String&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>Indicates the source of the parameter value.</p>
-     */
-    inline void SetSource(const char* value) { m_sourceHasBeenSet = true; m_source.assign(value); }
-
-    /**
-     * <p>Indicates the source of the parameter value.</p>
-     */
-    inline Parameter& WithSource(const Aws::String& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>Indicates the source of the parameter value.</p>
-     */
-    inline Parameter& WithSource(Aws::String&& value) { SetSource(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates the source of the parameter value.</p>
-     */
-    inline Parameter& WithSource(const char* value) { SetSource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the engine-specific parameters type.</p>
      */
-    inline const Aws::String& GetApplyType() const{ return m_applyType; }
-
-    /**
-     * <p>Specifies the engine-specific parameters type.</p>
-     */
+    inline const Aws::String& GetApplyType() const { return m_applyType; }
     inline bool ApplyTypeHasBeenSet() const { return m_applyTypeHasBeenSet; }
+    template<typename ApplyTypeT = Aws::String>
+    void SetApplyType(ApplyTypeT&& value) { m_applyTypeHasBeenSet = true; m_applyType = std::forward<ApplyTypeT>(value); }
+    template<typename ApplyTypeT = Aws::String>
+    Parameter& WithApplyType(ApplyTypeT&& value) { SetApplyType(std::forward<ApplyTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the engine-specific parameters type.</p>
-     */
-    inline void SetApplyType(const Aws::String& value) { m_applyTypeHasBeenSet = true; m_applyType = value; }
-
-    /**
-     * <p>Specifies the engine-specific parameters type.</p>
-     */
-    inline void SetApplyType(Aws::String&& value) { m_applyTypeHasBeenSet = true; m_applyType = std::move(value); }
-
-    /**
-     * <p>Specifies the engine-specific parameters type.</p>
-     */
-    inline void SetApplyType(const char* value) { m_applyTypeHasBeenSet = true; m_applyType.assign(value); }
-
-    /**
-     * <p>Specifies the engine-specific parameters type.</p>
-     */
-    inline Parameter& WithApplyType(const Aws::String& value) { SetApplyType(value); return *this;}
-
-    /**
-     * <p>Specifies the engine-specific parameters type.</p>
-     */
-    inline Parameter& WithApplyType(Aws::String&& value) { SetApplyType(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the engine-specific parameters type.</p>
-     */
-    inline Parameter& WithApplyType(const char* value) { SetApplyType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the valid data type for the parameter.</p>
      */
-    inline const Aws::String& GetDataType() const{ return m_dataType; }
-
-    /**
-     * <p>Specifies the valid data type for the parameter.</p>
-     */
+    inline const Aws::String& GetDataType() const { return m_dataType; }
     inline bool DataTypeHasBeenSet() const { return m_dataTypeHasBeenSet; }
+    template<typename DataTypeT = Aws::String>
+    void SetDataType(DataTypeT&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::forward<DataTypeT>(value); }
+    template<typename DataTypeT = Aws::String>
+    Parameter& WithDataType(DataTypeT&& value) { SetDataType(std::forward<DataTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the valid data type for the parameter.</p>
-     */
-    inline void SetDataType(const Aws::String& value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
-
-    /**
-     * <p>Specifies the valid data type for the parameter.</p>
-     */
-    inline void SetDataType(Aws::String&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::move(value); }
-
-    /**
-     * <p>Specifies the valid data type for the parameter.</p>
-     */
-    inline void SetDataType(const char* value) { m_dataTypeHasBeenSet = true; m_dataType.assign(value); }
-
-    /**
-     * <p>Specifies the valid data type for the parameter.</p>
-     */
-    inline Parameter& WithDataType(const Aws::String& value) { SetDataType(value); return *this;}
-
-    /**
-     * <p>Specifies the valid data type for the parameter.</p>
-     */
-    inline Parameter& WithDataType(Aws::String&& value) { SetDataType(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the valid data type for the parameter.</p>
-     */
-    inline Parameter& WithDataType(const char* value) { SetDataType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the valid range of values for the parameter.</p>
      */
-    inline const Aws::String& GetAllowedValues() const{ return m_allowedValues; }
-
-    /**
-     * <p>Specifies the valid range of values for the parameter.</p>
-     */
+    inline const Aws::String& GetAllowedValues() const { return m_allowedValues; }
     inline bool AllowedValuesHasBeenSet() const { return m_allowedValuesHasBeenSet; }
+    template<typename AllowedValuesT = Aws::String>
+    void SetAllowedValues(AllowedValuesT&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = std::forward<AllowedValuesT>(value); }
+    template<typename AllowedValuesT = Aws::String>
+    Parameter& WithAllowedValues(AllowedValuesT&& value) { SetAllowedValues(std::forward<AllowedValuesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the valid range of values for the parameter.</p>
-     */
-    inline void SetAllowedValues(const Aws::String& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = value; }
-
-    /**
-     * <p>Specifies the valid range of values for the parameter.</p>
-     */
-    inline void SetAllowedValues(Aws::String&& value) { m_allowedValuesHasBeenSet = true; m_allowedValues = std::move(value); }
-
-    /**
-     * <p>Specifies the valid range of values for the parameter.</p>
-     */
-    inline void SetAllowedValues(const char* value) { m_allowedValuesHasBeenSet = true; m_allowedValues.assign(value); }
-
-    /**
-     * <p>Specifies the valid range of values for the parameter.</p>
-     */
-    inline Parameter& WithAllowedValues(const Aws::String& value) { SetAllowedValues(value); return *this;}
-
-    /**
-     * <p>Specifies the valid range of values for the parameter.</p>
-     */
-    inline Parameter& WithAllowedValues(Aws::String&& value) { SetAllowedValues(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the valid range of values for the parameter.</p>
-     */
-    inline Parameter& WithAllowedValues(const char* value) { SetAllowedValues(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Indicates whether (<code>true</code>) or not (<code>false</code>) the
      * parameter can be modified. Some parameters have security or operational
      * implications that prevent them from being changed. </p>
      */
-    inline bool GetIsModifiable() const{ return m_isModifiable; }
-
-    /**
-     * <p> Indicates whether (<code>true</code>) or not (<code>false</code>) the
-     * parameter can be modified. Some parameters have security or operational
-     * implications that prevent them from being changed. </p>
-     */
+    inline bool GetIsModifiable() const { return m_isModifiable; }
     inline bool IsModifiableHasBeenSet() const { return m_isModifiableHasBeenSet; }
-
-    /**
-     * <p> Indicates whether (<code>true</code>) or not (<code>false</code>) the
-     * parameter can be modified. Some parameters have security or operational
-     * implications that prevent them from being changed. </p>
-     */
     inline void SetIsModifiable(bool value) { m_isModifiableHasBeenSet = true; m_isModifiable = value; }
-
-    /**
-     * <p> Indicates whether (<code>true</code>) or not (<code>false</code>) the
-     * parameter can be modified. Some parameters have security or operational
-     * implications that prevent them from being changed. </p>
-     */
     inline Parameter& WithIsModifiable(bool value) { SetIsModifiable(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The earliest engine version to which the parameter can apply.</p>
      */
-    inline const Aws::String& GetMinimumEngineVersion() const{ return m_minimumEngineVersion; }
-
-    /**
-     * <p>The earliest engine version to which the parameter can apply.</p>
-     */
+    inline const Aws::String& GetMinimumEngineVersion() const { return m_minimumEngineVersion; }
     inline bool MinimumEngineVersionHasBeenSet() const { return m_minimumEngineVersionHasBeenSet; }
+    template<typename MinimumEngineVersionT = Aws::String>
+    void SetMinimumEngineVersion(MinimumEngineVersionT&& value) { m_minimumEngineVersionHasBeenSet = true; m_minimumEngineVersion = std::forward<MinimumEngineVersionT>(value); }
+    template<typename MinimumEngineVersionT = Aws::String>
+    Parameter& WithMinimumEngineVersion(MinimumEngineVersionT&& value) { SetMinimumEngineVersion(std::forward<MinimumEngineVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The earliest engine version to which the parameter can apply.</p>
-     */
-    inline void SetMinimumEngineVersion(const Aws::String& value) { m_minimumEngineVersionHasBeenSet = true; m_minimumEngineVersion = value; }
-
-    /**
-     * <p>The earliest engine version to which the parameter can apply.</p>
-     */
-    inline void SetMinimumEngineVersion(Aws::String&& value) { m_minimumEngineVersionHasBeenSet = true; m_minimumEngineVersion = std::move(value); }
-
-    /**
-     * <p>The earliest engine version to which the parameter can apply.</p>
-     */
-    inline void SetMinimumEngineVersion(const char* value) { m_minimumEngineVersionHasBeenSet = true; m_minimumEngineVersion.assign(value); }
-
-    /**
-     * <p>The earliest engine version to which the parameter can apply.</p>
-     */
-    inline Parameter& WithMinimumEngineVersion(const Aws::String& value) { SetMinimumEngineVersion(value); return *this;}
-
-    /**
-     * <p>The earliest engine version to which the parameter can apply.</p>
-     */
-    inline Parameter& WithMinimumEngineVersion(Aws::String&& value) { SetMinimumEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The earliest engine version to which the parameter can apply.</p>
-     */
-    inline Parameter& WithMinimumEngineVersion(const char* value) { SetMinimumEngineVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates when to apply parameter updates.</p>
      */
-    inline const ApplyMethod& GetApplyMethod() const{ return m_applyMethod; }
-
-    /**
-     * <p>Indicates when to apply parameter updates.</p>
-     */
+    inline ApplyMethod GetApplyMethod() const { return m_applyMethod; }
     inline bool ApplyMethodHasBeenSet() const { return m_applyMethodHasBeenSet; }
-
-    /**
-     * <p>Indicates when to apply parameter updates.</p>
-     */
-    inline void SetApplyMethod(const ApplyMethod& value) { m_applyMethodHasBeenSet = true; m_applyMethod = value; }
-
-    /**
-     * <p>Indicates when to apply parameter updates.</p>
-     */
-    inline void SetApplyMethod(ApplyMethod&& value) { m_applyMethodHasBeenSet = true; m_applyMethod = std::move(value); }
-
-    /**
-     * <p>Indicates when to apply parameter updates.</p>
-     */
-    inline Parameter& WithApplyMethod(const ApplyMethod& value) { SetApplyMethod(value); return *this;}
-
-    /**
-     * <p>Indicates when to apply parameter updates.</p>
-     */
-    inline Parameter& WithApplyMethod(ApplyMethod&& value) { SetApplyMethod(std::move(value)); return *this;}
-
+    inline void SetApplyMethod(ApplyMethod value) { m_applyMethodHasBeenSet = true; m_applyMethod = value; }
+    inline Parameter& WithApplyMethod(ApplyMethod value) { SetApplyMethod(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_parameterName;
@@ -450,13 +180,13 @@ namespace Model
     Aws::String m_allowedValues;
     bool m_allowedValuesHasBeenSet = false;
 
-    bool m_isModifiable;
+    bool m_isModifiable{false};
     bool m_isModifiableHasBeenSet = false;
 
     Aws::String m_minimumEngineVersion;
     bool m_minimumEngineVersionHasBeenSet = false;
 
-    ApplyMethod m_applyMethod;
+    ApplyMethod m_applyMethod{ApplyMethod::NOT_SET};
     bool m_applyMethodHasBeenSet = false;
   };
 

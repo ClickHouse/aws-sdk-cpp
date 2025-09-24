@@ -29,7 +29,7 @@ namespace Model
   class ListJobsByStatusRequest : public ElasticTranscoderRequest
   {
   public:
-    AWS_ELASTICTRANSCODER_API ListJobsByStatusRequest();
+    AWS_ELASTICTRANSCODER_API ListJobsByStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,184 +42,48 @@ namespace Model
     AWS_ELASTICTRANSCODER_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>To get information about all of the jobs associated with the current AWS
      * account that have a given status, specify the following status:
      * <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
      * <code>Canceled</code>, or <code>Error</code>.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>To get information about all of the jobs associated with the current AWS
-     * account that have a given status, specify the following status:
-     * <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
-     * <code>Canceled</code>, or <code>Error</code>.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    ListJobsByStatusRequest& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>To get information about all of the jobs associated with the current AWS
-     * account that have a given status, specify the following status:
-     * <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
-     * <code>Canceled</code>, or <code>Error</code>.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>To get information about all of the jobs associated with the current AWS
-     * account that have a given status, specify the following status:
-     * <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
-     * <code>Canceled</code>, or <code>Error</code>.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>To get information about all of the jobs associated with the current AWS
-     * account that have a given status, specify the following status:
-     * <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
-     * <code>Canceled</code>, or <code>Error</code>.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>To get information about all of the jobs associated with the current AWS
-     * account that have a given status, specify the following status:
-     * <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
-     * <code>Canceled</code>, or <code>Error</code>.</p>
-     */
-    inline ListJobsByStatusRequest& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>To get information about all of the jobs associated with the current AWS
-     * account that have a given status, specify the following status:
-     * <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
-     * <code>Canceled</code>, or <code>Error</code>.</p>
-     */
-    inline ListJobsByStatusRequest& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>To get information about all of the jobs associated with the current AWS
-     * account that have a given status, specify the following status:
-     * <code>Submitted</code>, <code>Progressing</code>, <code>Complete</code>,
-     * <code>Canceled</code>, or <code>Error</code>.</p>
-     */
-    inline ListJobsByStatusRequest& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p> To list jobs in chronological order by the date and time that they were
      * submitted, enter <code>true</code>. To list jobs in reverse chronological order,
      * enter <code>false</code>. </p>
      */
-    inline const Aws::String& GetAscending() const{ return m_ascending; }
-
-    /**
-     * <p> To list jobs in chronological order by the date and time that they were
-     * submitted, enter <code>true</code>. To list jobs in reverse chronological order,
-     * enter <code>false</code>. </p>
-     */
+    inline const Aws::String& GetAscending() const { return m_ascending; }
     inline bool AscendingHasBeenSet() const { return m_ascendingHasBeenSet; }
+    template<typename AscendingT = Aws::String>
+    void SetAscending(AscendingT&& value) { m_ascendingHasBeenSet = true; m_ascending = std::forward<AscendingT>(value); }
+    template<typename AscendingT = Aws::String>
+    ListJobsByStatusRequest& WithAscending(AscendingT&& value) { SetAscending(std::forward<AscendingT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> To list jobs in chronological order by the date and time that they were
-     * submitted, enter <code>true</code>. To list jobs in reverse chronological order,
-     * enter <code>false</code>. </p>
-     */
-    inline void SetAscending(const Aws::String& value) { m_ascendingHasBeenSet = true; m_ascending = value; }
-
-    /**
-     * <p> To list jobs in chronological order by the date and time that they were
-     * submitted, enter <code>true</code>. To list jobs in reverse chronological order,
-     * enter <code>false</code>. </p>
-     */
-    inline void SetAscending(Aws::String&& value) { m_ascendingHasBeenSet = true; m_ascending = std::move(value); }
-
-    /**
-     * <p> To list jobs in chronological order by the date and time that they were
-     * submitted, enter <code>true</code>. To list jobs in reverse chronological order,
-     * enter <code>false</code>. </p>
-     */
-    inline void SetAscending(const char* value) { m_ascendingHasBeenSet = true; m_ascending.assign(value); }
-
-    /**
-     * <p> To list jobs in chronological order by the date and time that they were
-     * submitted, enter <code>true</code>. To list jobs in reverse chronological order,
-     * enter <code>false</code>. </p>
-     */
-    inline ListJobsByStatusRequest& WithAscending(const Aws::String& value) { SetAscending(value); return *this;}
-
-    /**
-     * <p> To list jobs in chronological order by the date and time that they were
-     * submitted, enter <code>true</code>. To list jobs in reverse chronological order,
-     * enter <code>false</code>. </p>
-     */
-    inline ListJobsByStatusRequest& WithAscending(Aws::String&& value) { SetAscending(std::move(value)); return *this;}
-
-    /**
-     * <p> To list jobs in chronological order by the date and time that they were
-     * submitted, enter <code>true</code>. To list jobs in reverse chronological order,
-     * enter <code>false</code>. </p>
-     */
-    inline ListJobsByStatusRequest& WithAscending(const char* value) { SetAscending(value); return *this;}
-
-
+    ///@{
     /**
      * <p> When Elastic Transcoder returns more than one page of results, use
      * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
      * successive page of results. </p>
      */
-    inline const Aws::String& GetPageToken() const{ return m_pageToken; }
-
-    /**
-     * <p> When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
+    inline const Aws::String& GetPageToken() const { return m_pageToken; }
     inline bool PageTokenHasBeenSet() const { return m_pageTokenHasBeenSet; }
-
-    /**
-     * <p> When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline void SetPageToken(const Aws::String& value) { m_pageTokenHasBeenSet = true; m_pageToken = value; }
-
-    /**
-     * <p> When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline void SetPageToken(Aws::String&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::move(value); }
-
-    /**
-     * <p> When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline void SetPageToken(const char* value) { m_pageTokenHasBeenSet = true; m_pageToken.assign(value); }
-
-    /**
-     * <p> When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline ListJobsByStatusRequest& WithPageToken(const Aws::String& value) { SetPageToken(value); return *this;}
-
-    /**
-     * <p> When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline ListJobsByStatusRequest& WithPageToken(Aws::String&& value) { SetPageToken(std::move(value)); return *this;}
-
-    /**
-     * <p> When Elastic Transcoder returns more than one page of results, use
-     * <code>pageToken</code> in subsequent <code>GET</code> requests to get each
-     * successive page of results. </p>
-     */
-    inline ListJobsByStatusRequest& WithPageToken(const char* value) { SetPageToken(value); return *this;}
-
+    template<typename PageTokenT = Aws::String>
+    void SetPageToken(PageTokenT&& value) { m_pageTokenHasBeenSet = true; m_pageToken = std::forward<PageTokenT>(value); }
+    template<typename PageTokenT = Aws::String>
+    ListJobsByStatusRequest& WithPageToken(PageTokenT&& value) { SetPageToken(std::forward<PageTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_status;

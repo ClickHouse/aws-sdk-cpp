@@ -18,17 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-TagCriterionForJob::TagCriterionForJob() : 
-    m_comparator(JobComparator::NOT_SET),
-    m_comparatorHasBeenSet(false),
-    m_tagValuesHasBeenSet(false)
-{
-}
-
-TagCriterionForJob::TagCriterionForJob(JsonView jsonValue) : 
-    m_comparator(JobComparator::NOT_SET),
-    m_comparatorHasBeenSet(false),
-    m_tagValuesHasBeenSet(false)
+TagCriterionForJob::TagCriterionForJob(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ TagCriterionForJob& TagCriterionForJob::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("comparator"))
   {
     m_comparator = JobComparatorMapper::GetJobComparatorForName(jsonValue.GetString("comparator"));
-
     m_comparatorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tagValues"))
   {
     Aws::Utils::Array<JsonView> tagValuesJsonList = jsonValue.GetArray("tagValues");
@@ -51,7 +39,6 @@ TagCriterionForJob& TagCriterionForJob::operator =(JsonView jsonValue)
     }
     m_tagValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

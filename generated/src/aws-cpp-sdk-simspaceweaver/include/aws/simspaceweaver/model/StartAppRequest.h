@@ -23,7 +23,7 @@ namespace Model
   class StartAppRequest : public SimSpaceWeaverRequest
   {
   public:
-    AWS_SIMSPACEWEAVER_API StartAppRequest();
+    AWS_SIMSPACEWEAVER_API StartAppRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,257 +34,82 @@ namespace Model
     AWS_SIMSPACEWEAVER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A value that you provide to ensure that repeated calls to this API operation
      * using the same parameters complete only once. A <code>ClientToken</code> is also
      * known as an <i>idempotency token</i>. A <code>ClientToken</code> expires after
      * 24 hours.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A value that you provide to ensure that repeated calls to this API operation
-     * using the same parameters complete only once. A <code>ClientToken</code> is also
-     * known as an <i>idempotency token</i>. A <code>ClientToken</code> expires after
-     * 24 hours.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    StartAppRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A value that you provide to ensure that repeated calls to this API operation
-     * using the same parameters complete only once. A <code>ClientToken</code> is also
-     * known as an <i>idempotency token</i>. A <code>ClientToken</code> expires after
-     * 24 hours.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A value that you provide to ensure that repeated calls to this API operation
-     * using the same parameters complete only once. A <code>ClientToken</code> is also
-     * known as an <i>idempotency token</i>. A <code>ClientToken</code> expires after
-     * 24 hours.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A value that you provide to ensure that repeated calls to this API operation
-     * using the same parameters complete only once. A <code>ClientToken</code> is also
-     * known as an <i>idempotency token</i>. A <code>ClientToken</code> expires after
-     * 24 hours.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A value that you provide to ensure that repeated calls to this API operation
-     * using the same parameters complete only once. A <code>ClientToken</code> is also
-     * known as an <i>idempotency token</i>. A <code>ClientToken</code> expires after
-     * 24 hours.</p>
-     */
-    inline StartAppRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A value that you provide to ensure that repeated calls to this API operation
-     * using the same parameters complete only once. A <code>ClientToken</code> is also
-     * known as an <i>idempotency token</i>. A <code>ClientToken</code> expires after
-     * 24 hours.</p>
-     */
-    inline StartAppRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A value that you provide to ensure that repeated calls to this API operation
-     * using the same parameters complete only once. A <code>ClientToken</code> is also
-     * known as an <i>idempotency token</i>. A <code>ClientToken</code> expires after
-     * 24 hours.</p>
-     */
-    inline StartAppRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the app.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the app.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    StartAppRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the app.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the app.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the app.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the app.</p>
-     */
-    inline StartAppRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the app.</p>
-     */
-    inline StartAppRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the app.</p>
-     */
-    inline StartAppRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the domain of the app.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The name of the domain of the app.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    StartAppRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain of the app.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The name of the domain of the app.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The name of the domain of the app.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The name of the domain of the app.</p>
-     */
-    inline StartAppRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The name of the domain of the app.</p>
-     */
-    inline StartAppRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain of the app.</p>
-     */
-    inline StartAppRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
+    ///@{
     
-    inline const LaunchOverrides& GetLaunchOverrides() const{ return m_launchOverrides; }
-
-    
+    inline const LaunchOverrides& GetLaunchOverrides() const { return m_launchOverrides; }
     inline bool LaunchOverridesHasBeenSet() const { return m_launchOverridesHasBeenSet; }
+    template<typename LaunchOverridesT = LaunchOverrides>
+    void SetLaunchOverrides(LaunchOverridesT&& value) { m_launchOverridesHasBeenSet = true; m_launchOverrides = std::forward<LaunchOverridesT>(value); }
+    template<typename LaunchOverridesT = LaunchOverrides>
+    StartAppRequest& WithLaunchOverrides(LaunchOverridesT&& value) { SetLaunchOverrides(std::forward<LaunchOverridesT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetLaunchOverrides(const LaunchOverrides& value) { m_launchOverridesHasBeenSet = true; m_launchOverrides = value; }
-
-    
-    inline void SetLaunchOverrides(LaunchOverrides&& value) { m_launchOverridesHasBeenSet = true; m_launchOverrides = std::move(value); }
-
-    
-    inline StartAppRequest& WithLaunchOverrides(const LaunchOverrides& value) { SetLaunchOverrides(value); return *this;}
-
-    
-    inline StartAppRequest& WithLaunchOverrides(LaunchOverrides&& value) { SetLaunchOverrides(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the app.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the app.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    StartAppRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline StartAppRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline StartAppRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline StartAppRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the simulation of the app.</p>
      */
-    inline const Aws::String& GetSimulation() const{ return m_simulation; }
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
+    inline const Aws::String& GetSimulation() const { return m_simulation; }
     inline bool SimulationHasBeenSet() const { return m_simulationHasBeenSet; }
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline void SetSimulation(const Aws::String& value) { m_simulationHasBeenSet = true; m_simulation = value; }
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline void SetSimulation(Aws::String&& value) { m_simulationHasBeenSet = true; m_simulation = std::move(value); }
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline void SetSimulation(const char* value) { m_simulationHasBeenSet = true; m_simulation.assign(value); }
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline StartAppRequest& WithSimulation(const Aws::String& value) { SetSimulation(value); return *this;}
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline StartAppRequest& WithSimulation(Aws::String&& value) { SetSimulation(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the simulation of the app.</p>
-     */
-    inline StartAppRequest& WithSimulation(const char* value) { SetSimulation(value); return *this;}
-
+    template<typename SimulationT = Aws::String>
+    void SetSimulation(SimulationT&& value) { m_simulationHasBeenSet = true; m_simulation = std::forward<SimulationT>(value); }
+    template<typename SimulationT = Aws::String>
+    StartAppRequest& WithSimulation(SimulationT&& value) { SetSimulation(std::forward<SimulationT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;

@@ -18,17 +18,7 @@ namespace SESV2
 namespace Model
 {
 
-TopicFilter::TopicFilter() : 
-    m_topicNameHasBeenSet(false),
-    m_useDefaultIfPreferenceUnavailable(false),
-    m_useDefaultIfPreferenceUnavailableHasBeenSet(false)
-{
-}
-
-TopicFilter::TopicFilter(JsonView jsonValue) : 
-    m_topicNameHasBeenSet(false),
-    m_useDefaultIfPreferenceUnavailable(false),
-    m_useDefaultIfPreferenceUnavailableHasBeenSet(false)
+TopicFilter::TopicFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ TopicFilter& TopicFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TopicName"))
   {
     m_topicName = jsonValue.GetString("TopicName");
-
     m_topicNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UseDefaultIfPreferenceUnavailable"))
   {
     m_useDefaultIfPreferenceUnavailable = jsonValue.GetBool("UseDefaultIfPreferenceUnavailable");
-
     m_useDefaultIfPreferenceUnavailableHasBeenSet = true;
   }
-
   return *this;
 }
 

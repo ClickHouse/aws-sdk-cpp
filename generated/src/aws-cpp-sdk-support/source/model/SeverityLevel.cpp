@@ -18,15 +18,7 @@ namespace Support
 namespace Model
 {
 
-SeverityLevel::SeverityLevel() : 
-    m_codeHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-SeverityLevel::SeverityLevel(JsonView jsonValue) : 
-    m_codeHasBeenSet(false),
-    m_nameHasBeenSet(false)
+SeverityLevel::SeverityLevel(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SeverityLevel& SeverityLevel::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("code"))
   {
     m_code = jsonValue.GetString("code");
-
     m_codeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

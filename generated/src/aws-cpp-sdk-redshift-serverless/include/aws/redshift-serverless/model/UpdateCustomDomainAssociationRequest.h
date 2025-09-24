@@ -21,7 +21,7 @@ namespace Model
   class UpdateCustomDomainAssociationRequest : public RedshiftServerlessRequest
   {
   public:
-    AWS_REDSHIFTSERVERLESS_API UpdateCustomDomainAssociationRequest();
+    AWS_REDSHIFTSERVERLESS_API UpdateCustomDomainAssociationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,136 +34,42 @@ namespace Model
     AWS_REDSHIFTSERVERLESS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The custom domain name’s certificate Amazon resource name (ARN). This is
      * optional.</p>
      */
-    inline const Aws::String& GetCustomDomainCertificateArn() const{ return m_customDomainCertificateArn; }
-
-    /**
-     * <p>The custom domain name’s certificate Amazon resource name (ARN). This is
-     * optional.</p>
-     */
+    inline const Aws::String& GetCustomDomainCertificateArn() const { return m_customDomainCertificateArn; }
     inline bool CustomDomainCertificateArnHasBeenSet() const { return m_customDomainCertificateArnHasBeenSet; }
+    template<typename CustomDomainCertificateArnT = Aws::String>
+    void SetCustomDomainCertificateArn(CustomDomainCertificateArnT&& value) { m_customDomainCertificateArnHasBeenSet = true; m_customDomainCertificateArn = std::forward<CustomDomainCertificateArnT>(value); }
+    template<typename CustomDomainCertificateArnT = Aws::String>
+    UpdateCustomDomainAssociationRequest& WithCustomDomainCertificateArn(CustomDomainCertificateArnT&& value) { SetCustomDomainCertificateArn(std::forward<CustomDomainCertificateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom domain name’s certificate Amazon resource name (ARN). This is
-     * optional.</p>
-     */
-    inline void SetCustomDomainCertificateArn(const Aws::String& value) { m_customDomainCertificateArnHasBeenSet = true; m_customDomainCertificateArn = value; }
-
-    /**
-     * <p>The custom domain name’s certificate Amazon resource name (ARN). This is
-     * optional.</p>
-     */
-    inline void SetCustomDomainCertificateArn(Aws::String&& value) { m_customDomainCertificateArnHasBeenSet = true; m_customDomainCertificateArn = std::move(value); }
-
-    /**
-     * <p>The custom domain name’s certificate Amazon resource name (ARN). This is
-     * optional.</p>
-     */
-    inline void SetCustomDomainCertificateArn(const char* value) { m_customDomainCertificateArnHasBeenSet = true; m_customDomainCertificateArn.assign(value); }
-
-    /**
-     * <p>The custom domain name’s certificate Amazon resource name (ARN). This is
-     * optional.</p>
-     */
-    inline UpdateCustomDomainAssociationRequest& WithCustomDomainCertificateArn(const Aws::String& value) { SetCustomDomainCertificateArn(value); return *this;}
-
-    /**
-     * <p>The custom domain name’s certificate Amazon resource name (ARN). This is
-     * optional.</p>
-     */
-    inline UpdateCustomDomainAssociationRequest& WithCustomDomainCertificateArn(Aws::String&& value) { SetCustomDomainCertificateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom domain name’s certificate Amazon resource name (ARN). This is
-     * optional.</p>
-     */
-    inline UpdateCustomDomainAssociationRequest& WithCustomDomainCertificateArn(const char* value) { SetCustomDomainCertificateArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The custom domain name associated with the workgroup.</p>
      */
-    inline const Aws::String& GetCustomDomainName() const{ return m_customDomainName; }
-
-    /**
-     * <p>The custom domain name associated with the workgroup.</p>
-     */
+    inline const Aws::String& GetCustomDomainName() const { return m_customDomainName; }
     inline bool CustomDomainNameHasBeenSet() const { return m_customDomainNameHasBeenSet; }
+    template<typename CustomDomainNameT = Aws::String>
+    void SetCustomDomainName(CustomDomainNameT&& value) { m_customDomainNameHasBeenSet = true; m_customDomainName = std::forward<CustomDomainNameT>(value); }
+    template<typename CustomDomainNameT = Aws::String>
+    UpdateCustomDomainAssociationRequest& WithCustomDomainName(CustomDomainNameT&& value) { SetCustomDomainName(std::forward<CustomDomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom domain name associated with the workgroup.</p>
-     */
-    inline void SetCustomDomainName(const Aws::String& value) { m_customDomainNameHasBeenSet = true; m_customDomainName = value; }
-
-    /**
-     * <p>The custom domain name associated with the workgroup.</p>
-     */
-    inline void SetCustomDomainName(Aws::String&& value) { m_customDomainNameHasBeenSet = true; m_customDomainName = std::move(value); }
-
-    /**
-     * <p>The custom domain name associated with the workgroup.</p>
-     */
-    inline void SetCustomDomainName(const char* value) { m_customDomainNameHasBeenSet = true; m_customDomainName.assign(value); }
-
-    /**
-     * <p>The custom domain name associated with the workgroup.</p>
-     */
-    inline UpdateCustomDomainAssociationRequest& WithCustomDomainName(const Aws::String& value) { SetCustomDomainName(value); return *this;}
-
-    /**
-     * <p>The custom domain name associated with the workgroup.</p>
-     */
-    inline UpdateCustomDomainAssociationRequest& WithCustomDomainName(Aws::String&& value) { SetCustomDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom domain name associated with the workgroup.</p>
-     */
-    inline UpdateCustomDomainAssociationRequest& WithCustomDomainName(const char* value) { SetCustomDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the workgroup associated with the database.</p>
      */
-    inline const Aws::String& GetWorkgroupName() const{ return m_workgroupName; }
-
-    /**
-     * <p>The name of the workgroup associated with the database.</p>
-     */
+    inline const Aws::String& GetWorkgroupName() const { return m_workgroupName; }
     inline bool WorkgroupNameHasBeenSet() const { return m_workgroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the workgroup associated with the database.</p>
-     */
-    inline void SetWorkgroupName(const Aws::String& value) { m_workgroupNameHasBeenSet = true; m_workgroupName = value; }
-
-    /**
-     * <p>The name of the workgroup associated with the database.</p>
-     */
-    inline void SetWorkgroupName(Aws::String&& value) { m_workgroupNameHasBeenSet = true; m_workgroupName = std::move(value); }
-
-    /**
-     * <p>The name of the workgroup associated with the database.</p>
-     */
-    inline void SetWorkgroupName(const char* value) { m_workgroupNameHasBeenSet = true; m_workgroupName.assign(value); }
-
-    /**
-     * <p>The name of the workgroup associated with the database.</p>
-     */
-    inline UpdateCustomDomainAssociationRequest& WithWorkgroupName(const Aws::String& value) { SetWorkgroupName(value); return *this;}
-
-    /**
-     * <p>The name of the workgroup associated with the database.</p>
-     */
-    inline UpdateCustomDomainAssociationRequest& WithWorkgroupName(Aws::String&& value) { SetWorkgroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the workgroup associated with the database.</p>
-     */
-    inline UpdateCustomDomainAssociationRequest& WithWorkgroupName(const char* value) { SetWorkgroupName(value); return *this;}
-
+    template<typename WorkgroupNameT = Aws::String>
+    void SetWorkgroupName(WorkgroupNameT&& value) { m_workgroupNameHasBeenSet = true; m_workgroupName = std::forward<WorkgroupNameT>(value); }
+    template<typename WorkgroupNameT = Aws::String>
+    UpdateCustomDomainAssociationRequest& WithWorkgroupName(WorkgroupNameT&& value) { SetWorkgroupName(std::forward<WorkgroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_customDomainCertificateArn;

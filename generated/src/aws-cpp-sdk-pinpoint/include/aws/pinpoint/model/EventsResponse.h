@@ -34,12 +34,13 @@ namespace Model
   class EventsResponse
   {
   public:
-    AWS_PINPOINT_API EventsResponse();
+    AWS_PINPOINT_API EventsResponse() = default;
     AWS_PINPOINT_API EventsResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API EventsResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A map that contains a multipart response for each endpoint. For each item in
      * this object, the endpoint ID is the key and the item response is the value. If
@@ -47,107 +48,17 @@ namespace Model
      * request was processed successfully; or 400, the payload wasn't valid or required
      * fields were missing.</p>
      */
-    inline const Aws::Map<Aws::String, ItemResponse>& GetResults() const{ return m_results; }
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
+    inline const Aws::Map<Aws::String, ItemResponse>& GetResults() const { return m_results; }
     inline bool ResultsHasBeenSet() const { return m_resultsHasBeenSet; }
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
-    inline void SetResults(const Aws::Map<Aws::String, ItemResponse>& value) { m_resultsHasBeenSet = true; m_results = value; }
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
-    inline void SetResults(Aws::Map<Aws::String, ItemResponse>&& value) { m_resultsHasBeenSet = true; m_results = std::move(value); }
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
-    inline EventsResponse& WithResults(const Aws::Map<Aws::String, ItemResponse>& value) { SetResults(value); return *this;}
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
-    inline EventsResponse& WithResults(Aws::Map<Aws::String, ItemResponse>&& value) { SetResults(std::move(value)); return *this;}
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
-    inline EventsResponse& AddResults(const Aws::String& key, const ItemResponse& value) { m_resultsHasBeenSet = true; m_results.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
-    inline EventsResponse& AddResults(Aws::String&& key, const ItemResponse& value) { m_resultsHasBeenSet = true; m_results.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
-    inline EventsResponse& AddResults(const Aws::String& key, ItemResponse&& value) { m_resultsHasBeenSet = true; m_results.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
-    inline EventsResponse& AddResults(Aws::String&& key, ItemResponse&& value) { m_resultsHasBeenSet = true; m_results.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
-    inline EventsResponse& AddResults(const char* key, ItemResponse&& value) { m_resultsHasBeenSet = true; m_results.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map that contains a multipart response for each endpoint. For each item in
-     * this object, the endpoint ID is the key and the item response is the value. If
-     * no item response exists, the value can also be one of the following: 202, the
-     * request was processed successfully; or 400, the payload wasn't valid or required
-     * fields were missing.</p>
-     */
-    inline EventsResponse& AddResults(const char* key, const ItemResponse& value) { m_resultsHasBeenSet = true; m_results.emplace(key, value); return *this; }
-
+    template<typename ResultsT = Aws::Map<Aws::String, ItemResponse>>
+    void SetResults(ResultsT&& value) { m_resultsHasBeenSet = true; m_results = std::forward<ResultsT>(value); }
+    template<typename ResultsT = Aws::Map<Aws::String, ItemResponse>>
+    EventsResponse& WithResults(ResultsT&& value) { SetResults(std::forward<ResultsT>(value)); return *this;}
+    template<typename ResultsKeyT = Aws::String, typename ResultsValueT = ItemResponse>
+    EventsResponse& AddResults(ResultsKeyT&& key, ResultsValueT&& value) {
+      m_resultsHasBeenSet = true; m_results.emplace(std::forward<ResultsKeyT>(key), std::forward<ResultsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::Map<Aws::String, ItemResponse> m_results;

@@ -21,7 +21,7 @@ namespace Model
   class GetRecoveryGroupRequest : public Route53RecoveryReadinessRequest
   {
   public:
-    AWS_ROUTE53RECOVERYREADINESS_API GetRecoveryGroupRequest();
+    AWS_ROUTE53RECOVERYREADINESS_API GetRecoveryGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_ROUTE53RECOVERYREADINESS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of a recovery group.</p>
      */
-    inline const Aws::String& GetRecoveryGroupName() const{ return m_recoveryGroupName; }
-
-    /**
-     * <p>The name of a recovery group.</p>
-     */
+    inline const Aws::String& GetRecoveryGroupName() const { return m_recoveryGroupName; }
     inline bool RecoveryGroupNameHasBeenSet() const { return m_recoveryGroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of a recovery group.</p>
-     */
-    inline void SetRecoveryGroupName(const Aws::String& value) { m_recoveryGroupNameHasBeenSet = true; m_recoveryGroupName = value; }
-
-    /**
-     * <p>The name of a recovery group.</p>
-     */
-    inline void SetRecoveryGroupName(Aws::String&& value) { m_recoveryGroupNameHasBeenSet = true; m_recoveryGroupName = std::move(value); }
-
-    /**
-     * <p>The name of a recovery group.</p>
-     */
-    inline void SetRecoveryGroupName(const char* value) { m_recoveryGroupNameHasBeenSet = true; m_recoveryGroupName.assign(value); }
-
-    /**
-     * <p>The name of a recovery group.</p>
-     */
-    inline GetRecoveryGroupRequest& WithRecoveryGroupName(const Aws::String& value) { SetRecoveryGroupName(value); return *this;}
-
-    /**
-     * <p>The name of a recovery group.</p>
-     */
-    inline GetRecoveryGroupRequest& WithRecoveryGroupName(Aws::String&& value) { SetRecoveryGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a recovery group.</p>
-     */
-    inline GetRecoveryGroupRequest& WithRecoveryGroupName(const char* value) { SetRecoveryGroupName(value); return *this;}
-
+    template<typename RecoveryGroupNameT = Aws::String>
+    void SetRecoveryGroupName(RecoveryGroupNameT&& value) { m_recoveryGroupNameHasBeenSet = true; m_recoveryGroupName = std::forward<RecoveryGroupNameT>(value); }
+    template<typename RecoveryGroupNameT = Aws::String>
+    GetRecoveryGroupRequest& WithRecoveryGroupName(RecoveryGroupNameT&& value) { SetRecoveryGroupName(std::forward<RecoveryGroupNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_recoveryGroupName;

@@ -32,395 +32,115 @@ namespace Model
   class APNSVoipSandboxChannelRequest
   {
   public:
-    AWS_PINPOINT_API APNSVoipSandboxChannelRequest();
+    AWS_PINPOINT_API APNSVoipSandboxChannelRequest() = default;
     AWS_PINPOINT_API APNSVoipSandboxChannelRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API APNSVoipSandboxChannelRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The bundle identifier that's assigned to your iOS app. This identifier is
      * used for APNs tokens.</p>
      */
-    inline const Aws::String& GetBundleId() const{ return m_bundleId; }
-
-    /**
-     * <p>The bundle identifier that's assigned to your iOS app. This identifier is
-     * used for APNs tokens.</p>
-     */
+    inline const Aws::String& GetBundleId() const { return m_bundleId; }
     inline bool BundleIdHasBeenSet() const { return m_bundleIdHasBeenSet; }
+    template<typename BundleIdT = Aws::String>
+    void SetBundleId(BundleIdT&& value) { m_bundleIdHasBeenSet = true; m_bundleId = std::forward<BundleIdT>(value); }
+    template<typename BundleIdT = Aws::String>
+    APNSVoipSandboxChannelRequest& WithBundleId(BundleIdT&& value) { SetBundleId(std::forward<BundleIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The bundle identifier that's assigned to your iOS app. This identifier is
-     * used for APNs tokens.</p>
-     */
-    inline void SetBundleId(const Aws::String& value) { m_bundleIdHasBeenSet = true; m_bundleId = value; }
-
-    /**
-     * <p>The bundle identifier that's assigned to your iOS app. This identifier is
-     * used for APNs tokens.</p>
-     */
-    inline void SetBundleId(Aws::String&& value) { m_bundleIdHasBeenSet = true; m_bundleId = std::move(value); }
-
-    /**
-     * <p>The bundle identifier that's assigned to your iOS app. This identifier is
-     * used for APNs tokens.</p>
-     */
-    inline void SetBundleId(const char* value) { m_bundleIdHasBeenSet = true; m_bundleId.assign(value); }
-
-    /**
-     * <p>The bundle identifier that's assigned to your iOS app. This identifier is
-     * used for APNs tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithBundleId(const Aws::String& value) { SetBundleId(value); return *this;}
-
-    /**
-     * <p>The bundle identifier that's assigned to your iOS app. This identifier is
-     * used for APNs tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithBundleId(Aws::String&& value) { SetBundleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The bundle identifier that's assigned to your iOS app. This identifier is
-     * used for APNs tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithBundleId(const char* value) { SetBundleId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The APNs client certificate that you received from Apple, if you want Amazon
      * Pinpoint to communicate with the APNs sandbox environment by using an APNs
      * certificate.</p>
      */
-    inline const Aws::String& GetCertificate() const{ return m_certificate; }
-
-    /**
-     * <p>The APNs client certificate that you received from Apple, if you want Amazon
-     * Pinpoint to communicate with the APNs sandbox environment by using an APNs
-     * certificate.</p>
-     */
+    inline const Aws::String& GetCertificate() const { return m_certificate; }
     inline bool CertificateHasBeenSet() const { return m_certificateHasBeenSet; }
+    template<typename CertificateT = Aws::String>
+    void SetCertificate(CertificateT&& value) { m_certificateHasBeenSet = true; m_certificate = std::forward<CertificateT>(value); }
+    template<typename CertificateT = Aws::String>
+    APNSVoipSandboxChannelRequest& WithCertificate(CertificateT&& value) { SetCertificate(std::forward<CertificateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The APNs client certificate that you received from Apple, if you want Amazon
-     * Pinpoint to communicate with the APNs sandbox environment by using an APNs
-     * certificate.</p>
-     */
-    inline void SetCertificate(const Aws::String& value) { m_certificateHasBeenSet = true; m_certificate = value; }
-
-    /**
-     * <p>The APNs client certificate that you received from Apple, if you want Amazon
-     * Pinpoint to communicate with the APNs sandbox environment by using an APNs
-     * certificate.</p>
-     */
-    inline void SetCertificate(Aws::String&& value) { m_certificateHasBeenSet = true; m_certificate = std::move(value); }
-
-    /**
-     * <p>The APNs client certificate that you received from Apple, if you want Amazon
-     * Pinpoint to communicate with the APNs sandbox environment by using an APNs
-     * certificate.</p>
-     */
-    inline void SetCertificate(const char* value) { m_certificateHasBeenSet = true; m_certificate.assign(value); }
-
-    /**
-     * <p>The APNs client certificate that you received from Apple, if you want Amazon
-     * Pinpoint to communicate with the APNs sandbox environment by using an APNs
-     * certificate.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithCertificate(const Aws::String& value) { SetCertificate(value); return *this;}
-
-    /**
-     * <p>The APNs client certificate that you received from Apple, if you want Amazon
-     * Pinpoint to communicate with the APNs sandbox environment by using an APNs
-     * certificate.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithCertificate(Aws::String&& value) { SetCertificate(std::move(value)); return *this;}
-
-    /**
-     * <p>The APNs client certificate that you received from Apple, if you want Amazon
-     * Pinpoint to communicate with the APNs sandbox environment by using an APNs
-     * certificate.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithCertificate(const char* value) { SetCertificate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The default authentication method that you want Amazon Pinpoint to use when
      * authenticating with the APNs sandbox environment for this channel, key or
      * certificate.</p>
      */
-    inline const Aws::String& GetDefaultAuthenticationMethod() const{ return m_defaultAuthenticationMethod; }
-
-    /**
-     * <p>The default authentication method that you want Amazon Pinpoint to use when
-     * authenticating with the APNs sandbox environment for this channel, key or
-     * certificate.</p>
-     */
+    inline const Aws::String& GetDefaultAuthenticationMethod() const { return m_defaultAuthenticationMethod; }
     inline bool DefaultAuthenticationMethodHasBeenSet() const { return m_defaultAuthenticationMethodHasBeenSet; }
+    template<typename DefaultAuthenticationMethodT = Aws::String>
+    void SetDefaultAuthenticationMethod(DefaultAuthenticationMethodT&& value) { m_defaultAuthenticationMethodHasBeenSet = true; m_defaultAuthenticationMethod = std::forward<DefaultAuthenticationMethodT>(value); }
+    template<typename DefaultAuthenticationMethodT = Aws::String>
+    APNSVoipSandboxChannelRequest& WithDefaultAuthenticationMethod(DefaultAuthenticationMethodT&& value) { SetDefaultAuthenticationMethod(std::forward<DefaultAuthenticationMethodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The default authentication method that you want Amazon Pinpoint to use when
-     * authenticating with the APNs sandbox environment for this channel, key or
-     * certificate.</p>
-     */
-    inline void SetDefaultAuthenticationMethod(const Aws::String& value) { m_defaultAuthenticationMethodHasBeenSet = true; m_defaultAuthenticationMethod = value; }
-
-    /**
-     * <p>The default authentication method that you want Amazon Pinpoint to use when
-     * authenticating with the APNs sandbox environment for this channel, key or
-     * certificate.</p>
-     */
-    inline void SetDefaultAuthenticationMethod(Aws::String&& value) { m_defaultAuthenticationMethodHasBeenSet = true; m_defaultAuthenticationMethod = std::move(value); }
-
-    /**
-     * <p>The default authentication method that you want Amazon Pinpoint to use when
-     * authenticating with the APNs sandbox environment for this channel, key or
-     * certificate.</p>
-     */
-    inline void SetDefaultAuthenticationMethod(const char* value) { m_defaultAuthenticationMethodHasBeenSet = true; m_defaultAuthenticationMethod.assign(value); }
-
-    /**
-     * <p>The default authentication method that you want Amazon Pinpoint to use when
-     * authenticating with the APNs sandbox environment for this channel, key or
-     * certificate.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithDefaultAuthenticationMethod(const Aws::String& value) { SetDefaultAuthenticationMethod(value); return *this;}
-
-    /**
-     * <p>The default authentication method that you want Amazon Pinpoint to use when
-     * authenticating with the APNs sandbox environment for this channel, key or
-     * certificate.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithDefaultAuthenticationMethod(Aws::String&& value) { SetDefaultAuthenticationMethod(std::move(value)); return *this;}
-
-    /**
-     * <p>The default authentication method that you want Amazon Pinpoint to use when
-     * authenticating with the APNs sandbox environment for this channel, key or
-     * certificate.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithDefaultAuthenticationMethod(const char* value) { SetDefaultAuthenticationMethod(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the APNs VoIP sandbox channel is enabled for the
      * application.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies whether the APNs VoIP sandbox channel is enabled for the
-     * application.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the APNs VoIP sandbox channel is enabled for the
-     * application.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies whether the APNs VoIP sandbox channel is enabled for the
-     * application.</p>
-     */
     inline APNSVoipSandboxChannelRequest& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The private key for the APNs client certificate that you want Amazon Pinpoint
      * to use to communicate with the APNs sandbox environment.</p>
      */
-    inline const Aws::String& GetPrivateKey() const{ return m_privateKey; }
-
-    /**
-     * <p>The private key for the APNs client certificate that you want Amazon Pinpoint
-     * to use to communicate with the APNs sandbox environment.</p>
-     */
+    inline const Aws::String& GetPrivateKey() const { return m_privateKey; }
     inline bool PrivateKeyHasBeenSet() const { return m_privateKeyHasBeenSet; }
+    template<typename PrivateKeyT = Aws::String>
+    void SetPrivateKey(PrivateKeyT&& value) { m_privateKeyHasBeenSet = true; m_privateKey = std::forward<PrivateKeyT>(value); }
+    template<typename PrivateKeyT = Aws::String>
+    APNSVoipSandboxChannelRequest& WithPrivateKey(PrivateKeyT&& value) { SetPrivateKey(std::forward<PrivateKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The private key for the APNs client certificate that you want Amazon Pinpoint
-     * to use to communicate with the APNs sandbox environment.</p>
-     */
-    inline void SetPrivateKey(const Aws::String& value) { m_privateKeyHasBeenSet = true; m_privateKey = value; }
-
-    /**
-     * <p>The private key for the APNs client certificate that you want Amazon Pinpoint
-     * to use to communicate with the APNs sandbox environment.</p>
-     */
-    inline void SetPrivateKey(Aws::String&& value) { m_privateKeyHasBeenSet = true; m_privateKey = std::move(value); }
-
-    /**
-     * <p>The private key for the APNs client certificate that you want Amazon Pinpoint
-     * to use to communicate with the APNs sandbox environment.</p>
-     */
-    inline void SetPrivateKey(const char* value) { m_privateKeyHasBeenSet = true; m_privateKey.assign(value); }
-
-    /**
-     * <p>The private key for the APNs client certificate that you want Amazon Pinpoint
-     * to use to communicate with the APNs sandbox environment.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithPrivateKey(const Aws::String& value) { SetPrivateKey(value); return *this;}
-
-    /**
-     * <p>The private key for the APNs client certificate that you want Amazon Pinpoint
-     * to use to communicate with the APNs sandbox environment.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithPrivateKey(Aws::String&& value) { SetPrivateKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The private key for the APNs client certificate that you want Amazon Pinpoint
-     * to use to communicate with the APNs sandbox environment.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithPrivateKey(const char* value) { SetPrivateKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier that's assigned to your Apple developer account team. This
      * identifier is used for APNs tokens.</p>
      */
-    inline const Aws::String& GetTeamId() const{ return m_teamId; }
-
-    /**
-     * <p>The identifier that's assigned to your Apple developer account team. This
-     * identifier is used for APNs tokens.</p>
-     */
+    inline const Aws::String& GetTeamId() const { return m_teamId; }
     inline bool TeamIdHasBeenSet() const { return m_teamIdHasBeenSet; }
+    template<typename TeamIdT = Aws::String>
+    void SetTeamId(TeamIdT&& value) { m_teamIdHasBeenSet = true; m_teamId = std::forward<TeamIdT>(value); }
+    template<typename TeamIdT = Aws::String>
+    APNSVoipSandboxChannelRequest& WithTeamId(TeamIdT&& value) { SetTeamId(std::forward<TeamIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier that's assigned to your Apple developer account team. This
-     * identifier is used for APNs tokens.</p>
-     */
-    inline void SetTeamId(const Aws::String& value) { m_teamIdHasBeenSet = true; m_teamId = value; }
-
-    /**
-     * <p>The identifier that's assigned to your Apple developer account team. This
-     * identifier is used for APNs tokens.</p>
-     */
-    inline void SetTeamId(Aws::String&& value) { m_teamIdHasBeenSet = true; m_teamId = std::move(value); }
-
-    /**
-     * <p>The identifier that's assigned to your Apple developer account team. This
-     * identifier is used for APNs tokens.</p>
-     */
-    inline void SetTeamId(const char* value) { m_teamIdHasBeenSet = true; m_teamId.assign(value); }
-
-    /**
-     * <p>The identifier that's assigned to your Apple developer account team. This
-     * identifier is used for APNs tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithTeamId(const Aws::String& value) { SetTeamId(value); return *this;}
-
-    /**
-     * <p>The identifier that's assigned to your Apple developer account team. This
-     * identifier is used for APNs tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithTeamId(Aws::String&& value) { SetTeamId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier that's assigned to your Apple developer account team. This
-     * identifier is used for APNs tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithTeamId(const char* value) { SetTeamId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The authentication key to use for APNs tokens.</p>
      */
-    inline const Aws::String& GetTokenKey() const{ return m_tokenKey; }
-
-    /**
-     * <p>The authentication key to use for APNs tokens.</p>
-     */
+    inline const Aws::String& GetTokenKey() const { return m_tokenKey; }
     inline bool TokenKeyHasBeenSet() const { return m_tokenKeyHasBeenSet; }
+    template<typename TokenKeyT = Aws::String>
+    void SetTokenKey(TokenKeyT&& value) { m_tokenKeyHasBeenSet = true; m_tokenKey = std::forward<TokenKeyT>(value); }
+    template<typename TokenKeyT = Aws::String>
+    APNSVoipSandboxChannelRequest& WithTokenKey(TokenKeyT&& value) { SetTokenKey(std::forward<TokenKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The authentication key to use for APNs tokens.</p>
-     */
-    inline void SetTokenKey(const Aws::String& value) { m_tokenKeyHasBeenSet = true; m_tokenKey = value; }
-
-    /**
-     * <p>The authentication key to use for APNs tokens.</p>
-     */
-    inline void SetTokenKey(Aws::String&& value) { m_tokenKeyHasBeenSet = true; m_tokenKey = std::move(value); }
-
-    /**
-     * <p>The authentication key to use for APNs tokens.</p>
-     */
-    inline void SetTokenKey(const char* value) { m_tokenKeyHasBeenSet = true; m_tokenKey.assign(value); }
-
-    /**
-     * <p>The authentication key to use for APNs tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithTokenKey(const Aws::String& value) { SetTokenKey(value); return *this;}
-
-    /**
-     * <p>The authentication key to use for APNs tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithTokenKey(Aws::String&& value) { SetTokenKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The authentication key to use for APNs tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithTokenKey(const char* value) { SetTokenKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The key identifier that's assigned to your APNs signing key, if you want
      * Amazon Pinpoint to communicate with the APNs sandbox environment by using APNs
      * tokens.</p>
      */
-    inline const Aws::String& GetTokenKeyId() const{ return m_tokenKeyId; }
-
-    /**
-     * <p>The key identifier that's assigned to your APNs signing key, if you want
-     * Amazon Pinpoint to communicate with the APNs sandbox environment by using APNs
-     * tokens.</p>
-     */
+    inline const Aws::String& GetTokenKeyId() const { return m_tokenKeyId; }
     inline bool TokenKeyIdHasBeenSet() const { return m_tokenKeyIdHasBeenSet; }
-
-    /**
-     * <p>The key identifier that's assigned to your APNs signing key, if you want
-     * Amazon Pinpoint to communicate with the APNs sandbox environment by using APNs
-     * tokens.</p>
-     */
-    inline void SetTokenKeyId(const Aws::String& value) { m_tokenKeyIdHasBeenSet = true; m_tokenKeyId = value; }
-
-    /**
-     * <p>The key identifier that's assigned to your APNs signing key, if you want
-     * Amazon Pinpoint to communicate with the APNs sandbox environment by using APNs
-     * tokens.</p>
-     */
-    inline void SetTokenKeyId(Aws::String&& value) { m_tokenKeyIdHasBeenSet = true; m_tokenKeyId = std::move(value); }
-
-    /**
-     * <p>The key identifier that's assigned to your APNs signing key, if you want
-     * Amazon Pinpoint to communicate with the APNs sandbox environment by using APNs
-     * tokens.</p>
-     */
-    inline void SetTokenKeyId(const char* value) { m_tokenKeyIdHasBeenSet = true; m_tokenKeyId.assign(value); }
-
-    /**
-     * <p>The key identifier that's assigned to your APNs signing key, if you want
-     * Amazon Pinpoint to communicate with the APNs sandbox environment by using APNs
-     * tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithTokenKeyId(const Aws::String& value) { SetTokenKeyId(value); return *this;}
-
-    /**
-     * <p>The key identifier that's assigned to your APNs signing key, if you want
-     * Amazon Pinpoint to communicate with the APNs sandbox environment by using APNs
-     * tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithTokenKeyId(Aws::String&& value) { SetTokenKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The key identifier that's assigned to your APNs signing key, if you want
-     * Amazon Pinpoint to communicate with the APNs sandbox environment by using APNs
-     * tokens.</p>
-     */
-    inline APNSVoipSandboxChannelRequest& WithTokenKeyId(const char* value) { SetTokenKeyId(value); return *this;}
-
+    template<typename TokenKeyIdT = Aws::String>
+    void SetTokenKeyId(TokenKeyIdT&& value) { m_tokenKeyIdHasBeenSet = true; m_tokenKeyId = std::forward<TokenKeyIdT>(value); }
+    template<typename TokenKeyIdT = Aws::String>
+    APNSVoipSandboxChannelRequest& WithTokenKeyId(TokenKeyIdT&& value) { SetTokenKeyId(std::forward<TokenKeyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bundleId;
@@ -432,7 +152,7 @@ namespace Model
     Aws::String m_defaultAuthenticationMethod;
     bool m_defaultAuthenticationMethodHasBeenSet = false;
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     Aws::String m_privateKey;

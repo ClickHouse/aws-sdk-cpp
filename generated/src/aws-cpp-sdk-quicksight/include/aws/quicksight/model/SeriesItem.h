@@ -34,73 +34,35 @@ namespace Model
   class SeriesItem
   {
   public:
-    AWS_QUICKSIGHT_API SeriesItem();
+    AWS_QUICKSIGHT_API SeriesItem() = default;
     AWS_QUICKSIGHT_API SeriesItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API SeriesItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field series item configuration of a line chart.</p>
      */
-    inline const FieldSeriesItem& GetFieldSeriesItem() const{ return m_fieldSeriesItem; }
-
-    /**
-     * <p>The field series item configuration of a line chart.</p>
-     */
+    inline const FieldSeriesItem& GetFieldSeriesItem() const { return m_fieldSeriesItem; }
     inline bool FieldSeriesItemHasBeenSet() const { return m_fieldSeriesItemHasBeenSet; }
+    template<typename FieldSeriesItemT = FieldSeriesItem>
+    void SetFieldSeriesItem(FieldSeriesItemT&& value) { m_fieldSeriesItemHasBeenSet = true; m_fieldSeriesItem = std::forward<FieldSeriesItemT>(value); }
+    template<typename FieldSeriesItemT = FieldSeriesItem>
+    SeriesItem& WithFieldSeriesItem(FieldSeriesItemT&& value) { SetFieldSeriesItem(std::forward<FieldSeriesItemT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field series item configuration of a line chart.</p>
-     */
-    inline void SetFieldSeriesItem(const FieldSeriesItem& value) { m_fieldSeriesItemHasBeenSet = true; m_fieldSeriesItem = value; }
-
-    /**
-     * <p>The field series item configuration of a line chart.</p>
-     */
-    inline void SetFieldSeriesItem(FieldSeriesItem&& value) { m_fieldSeriesItemHasBeenSet = true; m_fieldSeriesItem = std::move(value); }
-
-    /**
-     * <p>The field series item configuration of a line chart.</p>
-     */
-    inline SeriesItem& WithFieldSeriesItem(const FieldSeriesItem& value) { SetFieldSeriesItem(value); return *this;}
-
-    /**
-     * <p>The field series item configuration of a line chart.</p>
-     */
-    inline SeriesItem& WithFieldSeriesItem(FieldSeriesItem&& value) { SetFieldSeriesItem(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data field series item configuration of a line chart.</p>
      */
-    inline const DataFieldSeriesItem& GetDataFieldSeriesItem() const{ return m_dataFieldSeriesItem; }
-
-    /**
-     * <p>The data field series item configuration of a line chart.</p>
-     */
+    inline const DataFieldSeriesItem& GetDataFieldSeriesItem() const { return m_dataFieldSeriesItem; }
     inline bool DataFieldSeriesItemHasBeenSet() const { return m_dataFieldSeriesItemHasBeenSet; }
-
-    /**
-     * <p>The data field series item configuration of a line chart.</p>
-     */
-    inline void SetDataFieldSeriesItem(const DataFieldSeriesItem& value) { m_dataFieldSeriesItemHasBeenSet = true; m_dataFieldSeriesItem = value; }
-
-    /**
-     * <p>The data field series item configuration of a line chart.</p>
-     */
-    inline void SetDataFieldSeriesItem(DataFieldSeriesItem&& value) { m_dataFieldSeriesItemHasBeenSet = true; m_dataFieldSeriesItem = std::move(value); }
-
-    /**
-     * <p>The data field series item configuration of a line chart.</p>
-     */
-    inline SeriesItem& WithDataFieldSeriesItem(const DataFieldSeriesItem& value) { SetDataFieldSeriesItem(value); return *this;}
-
-    /**
-     * <p>The data field series item configuration of a line chart.</p>
-     */
-    inline SeriesItem& WithDataFieldSeriesItem(DataFieldSeriesItem&& value) { SetDataFieldSeriesItem(std::move(value)); return *this;}
-
+    template<typename DataFieldSeriesItemT = DataFieldSeriesItem>
+    void SetDataFieldSeriesItem(DataFieldSeriesItemT&& value) { m_dataFieldSeriesItemHasBeenSet = true; m_dataFieldSeriesItem = std::forward<DataFieldSeriesItemT>(value); }
+    template<typename DataFieldSeriesItemT = DataFieldSeriesItem>
+    SeriesItem& WithDataFieldSeriesItem(DataFieldSeriesItemT&& value) { SetDataFieldSeriesItem(std::forward<DataFieldSeriesItemT>(value)); return *this;}
+    ///@}
   private:
 
     FieldSeriesItem m_fieldSeriesItem;

@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CreateVolumePermissionModifications::CreateVolumePermissionModifications() : 
-    m_addHasBeenSet(false),
-    m_removeHasBeenSet(false)
-{
-}
-
-CreateVolumePermissionModifications::CreateVolumePermissionModifications(const XmlNode& xmlNode) : 
-    m_addHasBeenSet(false),
-    m_removeHasBeenSet(false)
+CreateVolumePermissionModifications::CreateVolumePermissionModifications(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -43,6 +35,7 @@ CreateVolumePermissionModifications& CreateVolumePermissionModifications::operat
     if(!addNode.IsNull())
     {
       XmlNode addMember = addNode.FirstChild("item");
+      m_addHasBeenSet = !addMember.IsNull();
       while(!addMember.IsNull())
       {
         m_add.push_back(addMember);
@@ -55,6 +48,7 @@ CreateVolumePermissionModifications& CreateVolumePermissionModifications::operat
     if(!removeNode.IsNull())
     {
       XmlNode removeMember = removeNode.FirstChild("item");
+      m_removeHasBeenSet = !removeMember.IsNull();
       while(!removeMember.IsNull())
       {
         m_remove.push_back(removeMember);
@@ -102,7 +96,7 @@ void CreateVolumePermissionModifications::OutputToStream(Aws::OStream& oStream, 
       for(auto& item : m_add)
       {
         Aws::StringStream addSs;
-        addSs << location <<  ".Item." << addIdx++;
+        addSs << location << ".Add." << addIdx++;
         item.OutputToStream(oStream, addSs.str().c_str());
       }
   }
@@ -112,7 +106,7 @@ void CreateVolumePermissionModifications::OutputToStream(Aws::OStream& oStream, 
       for(auto& item : m_remove)
       {
         Aws::StringStream removeSs;
-        removeSs << location <<  ".Item." << removeIdx++;
+        removeSs << location << ".Remove." << removeIdx++;
         item.OutputToStream(oStream, removeSs.str().c_str());
       }
   }

@@ -35,141 +35,49 @@ namespace Model
   class DialogState
   {
   public:
-    AWS_LEXMODELSV2_API DialogState();
+    AWS_LEXMODELSV2_API DialogState() = default;
     AWS_LEXMODELSV2_API DialogState(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API DialogState& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const DialogAction& GetDialogAction() const{ return m_dialogAction; }
-
-    
+    inline const DialogAction& GetDialogAction() const { return m_dialogAction; }
     inline bool DialogActionHasBeenSet() const { return m_dialogActionHasBeenSet; }
+    template<typename DialogActionT = DialogAction>
+    void SetDialogAction(DialogActionT&& value) { m_dialogActionHasBeenSet = true; m_dialogAction = std::forward<DialogActionT>(value); }
+    template<typename DialogActionT = DialogAction>
+    DialogState& WithDialogAction(DialogActionT&& value) { SetDialogAction(std::forward<DialogActionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetDialogAction(const DialogAction& value) { m_dialogActionHasBeenSet = true; m_dialogAction = value; }
-
-    
-    inline void SetDialogAction(DialogAction&& value) { m_dialogActionHasBeenSet = true; m_dialogAction = std::move(value); }
-
-    
-    inline DialogState& WithDialogAction(const DialogAction& value) { SetDialogAction(value); return *this;}
-
-    
-    inline DialogState& WithDialogAction(DialogAction&& value) { SetDialogAction(std::move(value)); return *this;}
-
-
-    
-    inline const IntentOverride& GetIntent() const{ return m_intent; }
-
-    
+    inline const IntentOverride& GetIntent() const { return m_intent; }
     inline bool IntentHasBeenSet() const { return m_intentHasBeenSet; }
+    template<typename IntentT = IntentOverride>
+    void SetIntent(IntentT&& value) { m_intentHasBeenSet = true; m_intent = std::forward<IntentT>(value); }
+    template<typename IntentT = IntentOverride>
+    DialogState& WithIntent(IntentT&& value) { SetIntent(std::forward<IntentT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetIntent(const IntentOverride& value) { m_intentHasBeenSet = true; m_intent = value; }
-
-    
-    inline void SetIntent(IntentOverride&& value) { m_intentHasBeenSet = true; m_intent = std::move(value); }
-
-    
-    inline DialogState& WithIntent(const IntentOverride& value) { SetIntent(value); return *this;}
-
-    
-    inline DialogState& WithIntent(IntentOverride&& value) { SetIntent(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Map of key/value pairs representing session-specific context information. It
      * contains application information passed between Amazon Lex and a client
      * application.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetSessionAttributes() const{ return m_sessionAttributes; }
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetSessionAttributes() const { return m_sessionAttributes; }
     inline bool SessionAttributesHasBeenSet() const { return m_sessionAttributesHasBeenSet; }
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline void SetSessionAttributes(const Aws::Map<Aws::String, Aws::String>& value) { m_sessionAttributesHasBeenSet = true; m_sessionAttributes = value; }
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline void SetSessionAttributes(Aws::Map<Aws::String, Aws::String>&& value) { m_sessionAttributesHasBeenSet = true; m_sessionAttributes = std::move(value); }
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline DialogState& WithSessionAttributes(const Aws::Map<Aws::String, Aws::String>& value) { SetSessionAttributes(value); return *this;}
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline DialogState& WithSessionAttributes(Aws::Map<Aws::String, Aws::String>&& value) { SetSessionAttributes(std::move(value)); return *this;}
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline DialogState& AddSessionAttributes(const Aws::String& key, const Aws::String& value) { m_sessionAttributesHasBeenSet = true; m_sessionAttributes.emplace(key, value); return *this; }
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline DialogState& AddSessionAttributes(Aws::String&& key, const Aws::String& value) { m_sessionAttributesHasBeenSet = true; m_sessionAttributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline DialogState& AddSessionAttributes(const Aws::String& key, Aws::String&& value) { m_sessionAttributesHasBeenSet = true; m_sessionAttributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline DialogState& AddSessionAttributes(Aws::String&& key, Aws::String&& value) { m_sessionAttributesHasBeenSet = true; m_sessionAttributes.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline DialogState& AddSessionAttributes(const char* key, Aws::String&& value) { m_sessionAttributesHasBeenSet = true; m_sessionAttributes.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline DialogState& AddSessionAttributes(Aws::String&& key, const char* value) { m_sessionAttributesHasBeenSet = true; m_sessionAttributes.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Map of key/value pairs representing session-specific context information. It
-     * contains application information passed between Amazon Lex and a client
-     * application.</p>
-     */
-    inline DialogState& AddSessionAttributes(const char* key, const char* value) { m_sessionAttributesHasBeenSet = true; m_sessionAttributes.emplace(key, value); return *this; }
-
+    template<typename SessionAttributesT = Aws::Map<Aws::String, Aws::String>>
+    void SetSessionAttributes(SessionAttributesT&& value) { m_sessionAttributesHasBeenSet = true; m_sessionAttributes = std::forward<SessionAttributesT>(value); }
+    template<typename SessionAttributesT = Aws::Map<Aws::String, Aws::String>>
+    DialogState& WithSessionAttributes(SessionAttributesT&& value) { SetSessionAttributes(std::forward<SessionAttributesT>(value)); return *this;}
+    template<typename SessionAttributesKeyT = Aws::String, typename SessionAttributesValueT = Aws::String>
+    DialogState& AddSessionAttributes(SessionAttributesKeyT&& key, SessionAttributesValueT&& value) {
+      m_sessionAttributesHasBeenSet = true; m_sessionAttributes.emplace(std::forward<SessionAttributesKeyT>(key), std::forward<SessionAttributesValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     DialogAction m_dialogAction;

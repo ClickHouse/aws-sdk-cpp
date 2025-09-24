@@ -18,15 +18,7 @@ namespace WorkMail
 namespace Model
 {
 
-Domain::Domain() : 
-    m_domainNameHasBeenSet(false),
-    m_hostedZoneIdHasBeenSet(false)
-{
-}
-
-Domain::Domain(JsonView jsonValue) : 
-    m_domainNameHasBeenSet(false),
-    m_hostedZoneIdHasBeenSet(false)
+Domain::Domain(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Domain& Domain::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DomainName"))
   {
     m_domainName = jsonValue.GetString("DomainName");
-
     m_domainNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HostedZoneId"))
   {
     m_hostedZoneId = jsonValue.GetString("HostedZoneId");
-
     m_hostedZoneIdHasBeenSet = true;
   }
-
   return *this;
 }
 

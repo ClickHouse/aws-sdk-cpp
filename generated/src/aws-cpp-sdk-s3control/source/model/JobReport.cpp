@@ -20,27 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-JobReport::JobReport() : 
-    m_bucketHasBeenSet(false),
-    m_format(JobReportFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_prefixHasBeenSet(false),
-    m_reportScope(JobReportScope::NOT_SET),
-    m_reportScopeHasBeenSet(false)
-{
-}
-
-JobReport::JobReport(const XmlNode& xmlNode) : 
-    m_bucketHasBeenSet(false),
-    m_format(JobReportFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_prefixHasBeenSet(false),
-    m_reportScope(JobReportScope::NOT_SET),
-    m_reportScopeHasBeenSet(false)
+JobReport::JobReport(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -60,7 +40,7 @@ JobReport& JobReport::operator =(const XmlNode& xmlNode)
     XmlNode formatNode = resultNode.FirstChild("Format");
     if(!formatNode.IsNull())
     {
-      m_format = JobReportFormatMapper::GetJobReportFormatForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(formatNode.GetText()).c_str()).c_str());
+      m_format = JobReportFormatMapper::GetJobReportFormatForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(formatNode.GetText()).c_str()));
       m_formatHasBeenSet = true;
     }
     XmlNode enabledNode = resultNode.FirstChild("Enabled");
@@ -78,8 +58,14 @@ JobReport& JobReport::operator =(const XmlNode& xmlNode)
     XmlNode reportScopeNode = resultNode.FirstChild("ReportScope");
     if(!reportScopeNode.IsNull())
     {
-      m_reportScope = JobReportScopeMapper::GetJobReportScopeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(reportScopeNode.GetText()).c_str()).c_str());
+      m_reportScope = JobReportScopeMapper::GetJobReportScopeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(reportScopeNode.GetText()).c_str()));
       m_reportScopeHasBeenSet = true;
+    }
+    XmlNode expectedBucketOwnerNode = resultNode.FirstChild("ExpectedBucketOwner");
+    if(!expectedBucketOwnerNode.IsNull())
+    {
+      m_expectedBucketOwner = Aws::Utils::Xml::DecodeEscapedXmlText(expectedBucketOwnerNode.GetText());
+      m_expectedBucketOwnerHasBeenSet = true;
     }
   }
 
@@ -119,6 +105,12 @@ void JobReport::AddToNode(XmlNode& parentNode) const
   {
    XmlNode reportScopeNode = parentNode.CreateChildElement("ReportScope");
    reportScopeNode.SetText(JobReportScopeMapper::GetNameForJobReportScope(m_reportScope));
+  }
+
+  if(m_expectedBucketOwnerHasBeenSet)
+  {
+   XmlNode expectedBucketOwnerNode = parentNode.CreateChildElement("ExpectedBucketOwner");
+   expectedBucketOwnerNode.SetText(m_expectedBucketOwner);
   }
 
 }

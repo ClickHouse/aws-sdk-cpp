@@ -21,7 +21,7 @@ namespace Model
   class DeleteGeofenceCollectionRequest : public LocationServiceRequest
   {
   public:
-    AWS_LOCATIONSERVICE_API DeleteGeofenceCollectionRequest();
+    AWS_LOCATIONSERVICE_API DeleteGeofenceCollectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_LOCATIONSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the geofence collection to be deleted.</p>
      */
-    inline const Aws::String& GetCollectionName() const{ return m_collectionName; }
-
-    /**
-     * <p>The name of the geofence collection to be deleted.</p>
-     */
+    inline const Aws::String& GetCollectionName() const { return m_collectionName; }
     inline bool CollectionNameHasBeenSet() const { return m_collectionNameHasBeenSet; }
-
-    /**
-     * <p>The name of the geofence collection to be deleted.</p>
-     */
-    inline void SetCollectionName(const Aws::String& value) { m_collectionNameHasBeenSet = true; m_collectionName = value; }
-
-    /**
-     * <p>The name of the geofence collection to be deleted.</p>
-     */
-    inline void SetCollectionName(Aws::String&& value) { m_collectionNameHasBeenSet = true; m_collectionName = std::move(value); }
-
-    /**
-     * <p>The name of the geofence collection to be deleted.</p>
-     */
-    inline void SetCollectionName(const char* value) { m_collectionNameHasBeenSet = true; m_collectionName.assign(value); }
-
-    /**
-     * <p>The name of the geofence collection to be deleted.</p>
-     */
-    inline DeleteGeofenceCollectionRequest& WithCollectionName(const Aws::String& value) { SetCollectionName(value); return *this;}
-
-    /**
-     * <p>The name of the geofence collection to be deleted.</p>
-     */
-    inline DeleteGeofenceCollectionRequest& WithCollectionName(Aws::String&& value) { SetCollectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the geofence collection to be deleted.</p>
-     */
-    inline DeleteGeofenceCollectionRequest& WithCollectionName(const char* value) { SetCollectionName(value); return *this;}
-
+    template<typename CollectionNameT = Aws::String>
+    void SetCollectionName(CollectionNameT&& value) { m_collectionNameHasBeenSet = true; m_collectionName = std::forward<CollectionNameT>(value); }
+    template<typename CollectionNameT = Aws::String>
+    DeleteGeofenceCollectionRequest& WithCollectionName(CollectionNameT&& value) { SetCollectionName(std::forward<CollectionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_collectionName;

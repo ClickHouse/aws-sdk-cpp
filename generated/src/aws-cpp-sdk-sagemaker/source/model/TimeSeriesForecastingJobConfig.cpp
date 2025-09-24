@@ -18,29 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TimeSeriesForecastingJobConfig::TimeSeriesForecastingJobConfig() : 
-    m_featureSpecificationS3UriHasBeenSet(false),
-    m_completionCriteriaHasBeenSet(false),
-    m_forecastFrequencyHasBeenSet(false),
-    m_forecastHorizon(0),
-    m_forecastHorizonHasBeenSet(false),
-    m_forecastQuantilesHasBeenSet(false),
-    m_transformationsHasBeenSet(false),
-    m_timeSeriesConfigHasBeenSet(false),
-    m_holidayConfigHasBeenSet(false)
-{
-}
-
-TimeSeriesForecastingJobConfig::TimeSeriesForecastingJobConfig(JsonView jsonValue) : 
-    m_featureSpecificationS3UriHasBeenSet(false),
-    m_completionCriteriaHasBeenSet(false),
-    m_forecastFrequencyHasBeenSet(false),
-    m_forecastHorizon(0),
-    m_forecastHorizonHasBeenSet(false),
-    m_forecastQuantilesHasBeenSet(false),
-    m_transformationsHasBeenSet(false),
-    m_timeSeriesConfigHasBeenSet(false),
-    m_holidayConfigHasBeenSet(false)
+TimeSeriesForecastingJobConfig::TimeSeriesForecastingJobConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,31 +28,23 @@ TimeSeriesForecastingJobConfig& TimeSeriesForecastingJobConfig::operator =(JsonV
   if(jsonValue.ValueExists("FeatureSpecificationS3Uri"))
   {
     m_featureSpecificationS3Uri = jsonValue.GetString("FeatureSpecificationS3Uri");
-
     m_featureSpecificationS3UriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CompletionCriteria"))
   {
     m_completionCriteria = jsonValue.GetObject("CompletionCriteria");
-
     m_completionCriteriaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ForecastFrequency"))
   {
     m_forecastFrequency = jsonValue.GetString("ForecastFrequency");
-
     m_forecastFrequencyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ForecastHorizon"))
   {
     m_forecastHorizon = jsonValue.GetInteger("ForecastHorizon");
-
     m_forecastHorizonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ForecastQuantiles"))
   {
     Aws::Utils::Array<JsonView> forecastQuantilesJsonList = jsonValue.GetArray("ForecastQuantiles");
@@ -84,21 +54,16 @@ TimeSeriesForecastingJobConfig& TimeSeriesForecastingJobConfig::operator =(JsonV
     }
     m_forecastQuantilesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Transformations"))
   {
     m_transformations = jsonValue.GetObject("Transformations");
-
     m_transformationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TimeSeriesConfig"))
   {
     m_timeSeriesConfig = jsonValue.GetObject("TimeSeriesConfig");
-
     m_timeSeriesConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HolidayConfig"))
   {
     Aws::Utils::Array<JsonView> holidayConfigJsonList = jsonValue.GetArray("HolidayConfig");
@@ -108,7 +73,11 @@ TimeSeriesForecastingJobConfig& TimeSeriesForecastingJobConfig::operator =(JsonV
     }
     m_holidayConfigHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CandidateGenerationConfig"))
+  {
+    m_candidateGenerationConfig = jsonValue.GetObject("CandidateGenerationConfig");
+    m_candidateGenerationConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -171,6 +140,12 @@ JsonValue TimeSeriesForecastingJobConfig::Jsonize() const
      holidayConfigJsonList[holidayConfigIndex].AsObject(m_holidayConfig[holidayConfigIndex].Jsonize());
    }
    payload.WithArray("HolidayConfig", std::move(holidayConfigJsonList));
+
+  }
+
+  if(m_candidateGenerationConfigHasBeenSet)
+  {
+   payload.WithObject("CandidateGenerationConfig", m_candidateGenerationConfig.Jsonize());
 
   }
 

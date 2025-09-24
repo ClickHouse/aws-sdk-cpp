@@ -12,18 +12,6 @@ using namespace Aws::CognitoIdentityProvider::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-AdminInitiateAuthRequest::AdminInitiateAuthRequest() : 
-    m_userPoolIdHasBeenSet(false),
-    m_clientIdHasBeenSet(false),
-    m_authFlow(AuthFlowType::NOT_SET),
-    m_authFlowHasBeenSet(false),
-    m_authParametersHasBeenSet(false),
-    m_clientMetadataHasBeenSet(false),
-    m_analyticsMetadataHasBeenSet(false),
-    m_contextDataHasBeenSet(false)
-{
-}
-
 Aws::String AdminInitiateAuthRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -76,6 +64,12 @@ Aws::String AdminInitiateAuthRequest::SerializePayload() const
   if(m_contextDataHasBeenSet)
   {
    payload.WithObject("ContextData", m_contextData.Jsonize());
+
+  }
+
+  if(m_sessionHasBeenSet)
+  {
+   payload.WithString("Session", m_session);
 
   }
 

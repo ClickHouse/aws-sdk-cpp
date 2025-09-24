@@ -12,14 +12,27 @@ using namespace Aws::EntityResolution::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartIdMappingJobRequest::StartIdMappingJobRequest() : 
-    m_workflowNameHasBeenSet(false)
-{
-}
-
 Aws::String StartIdMappingJobRequest::SerializePayload() const
 {
-  return {};
+  JsonValue payload;
+
+  if(m_outputSourceConfigHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> outputSourceConfigJsonList(m_outputSourceConfig.size());
+   for(unsigned outputSourceConfigIndex = 0; outputSourceConfigIndex < outputSourceConfigJsonList.GetLength(); ++outputSourceConfigIndex)
+   {
+     outputSourceConfigJsonList[outputSourceConfigIndex].AsObject(m_outputSourceConfig[outputSourceConfigIndex].Jsonize());
+   }
+   payload.WithArray("outputSourceConfig", std::move(outputSourceConfigJsonList));
+
+  }
+
+  if(m_jobTypeHasBeenSet)
+  {
+   payload.WithString("jobType", JobTypeMapper::GetNameForJobType(m_jobType));
+  }
+
+  return payload.View().WriteReadable();
 }
 
 

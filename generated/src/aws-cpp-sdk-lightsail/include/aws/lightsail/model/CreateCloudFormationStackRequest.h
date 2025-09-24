@@ -22,7 +22,7 @@ namespace Model
   class CreateCloudFormationStackRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API CreateCloudFormationStackRequest();
+    AWS_LIGHTSAIL_API CreateCloudFormationStackRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,70 +35,22 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An array of parameters that will be used to create the new Amazon EC2
      * instance. You can only pass one instance entry at a time in this array. You will
      * get an invalid parameter error if you pass more than one instance entry in this
      * array.</p>
      */
-    inline const Aws::Vector<InstanceEntry>& GetInstances() const{ return m_instances; }
-
-    /**
-     * <p>An array of parameters that will be used to create the new Amazon EC2
-     * instance. You can only pass one instance entry at a time in this array. You will
-     * get an invalid parameter error if you pass more than one instance entry in this
-     * array.</p>
-     */
+    inline const Aws::Vector<InstanceEntry>& GetInstances() const { return m_instances; }
     inline bool InstancesHasBeenSet() const { return m_instancesHasBeenSet; }
-
-    /**
-     * <p>An array of parameters that will be used to create the new Amazon EC2
-     * instance. You can only pass one instance entry at a time in this array. You will
-     * get an invalid parameter error if you pass more than one instance entry in this
-     * array.</p>
-     */
-    inline void SetInstances(const Aws::Vector<InstanceEntry>& value) { m_instancesHasBeenSet = true; m_instances = value; }
-
-    /**
-     * <p>An array of parameters that will be used to create the new Amazon EC2
-     * instance. You can only pass one instance entry at a time in this array. You will
-     * get an invalid parameter error if you pass more than one instance entry in this
-     * array.</p>
-     */
-    inline void SetInstances(Aws::Vector<InstanceEntry>&& value) { m_instancesHasBeenSet = true; m_instances = std::move(value); }
-
-    /**
-     * <p>An array of parameters that will be used to create the new Amazon EC2
-     * instance. You can only pass one instance entry at a time in this array. You will
-     * get an invalid parameter error if you pass more than one instance entry in this
-     * array.</p>
-     */
-    inline CreateCloudFormationStackRequest& WithInstances(const Aws::Vector<InstanceEntry>& value) { SetInstances(value); return *this;}
-
-    /**
-     * <p>An array of parameters that will be used to create the new Amazon EC2
-     * instance. You can only pass one instance entry at a time in this array. You will
-     * get an invalid parameter error if you pass more than one instance entry in this
-     * array.</p>
-     */
-    inline CreateCloudFormationStackRequest& WithInstances(Aws::Vector<InstanceEntry>&& value) { SetInstances(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of parameters that will be used to create the new Amazon EC2
-     * instance. You can only pass one instance entry at a time in this array. You will
-     * get an invalid parameter error if you pass more than one instance entry in this
-     * array.</p>
-     */
-    inline CreateCloudFormationStackRequest& AddInstances(const InstanceEntry& value) { m_instancesHasBeenSet = true; m_instances.push_back(value); return *this; }
-
-    /**
-     * <p>An array of parameters that will be used to create the new Amazon EC2
-     * instance. You can only pass one instance entry at a time in this array. You will
-     * get an invalid parameter error if you pass more than one instance entry in this
-     * array.</p>
-     */
-    inline CreateCloudFormationStackRequest& AddInstances(InstanceEntry&& value) { m_instancesHasBeenSet = true; m_instances.push_back(std::move(value)); return *this; }
-
+    template<typename InstancesT = Aws::Vector<InstanceEntry>>
+    void SetInstances(InstancesT&& value) { m_instancesHasBeenSet = true; m_instances = std::forward<InstancesT>(value); }
+    template<typename InstancesT = Aws::Vector<InstanceEntry>>
+    CreateCloudFormationStackRequest& WithInstances(InstancesT&& value) { SetInstances(std::forward<InstancesT>(value)); return *this;}
+    template<typename InstancesT = InstanceEntry>
+    CreateCloudFormationStackRequest& AddInstances(InstancesT&& value) { m_instancesHasBeenSet = true; m_instances.emplace_back(std::forward<InstancesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<InstanceEntry> m_instances;

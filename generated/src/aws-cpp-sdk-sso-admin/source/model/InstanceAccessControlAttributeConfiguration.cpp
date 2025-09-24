@@ -18,13 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-InstanceAccessControlAttributeConfiguration::InstanceAccessControlAttributeConfiguration() : 
-    m_accessControlAttributesHasBeenSet(false)
-{
-}
-
-InstanceAccessControlAttributeConfiguration::InstanceAccessControlAttributeConfiguration(JsonView jsonValue) : 
-    m_accessControlAttributesHasBeenSet(false)
+InstanceAccessControlAttributeConfiguration::InstanceAccessControlAttributeConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ InstanceAccessControlAttributeConfiguration& InstanceAccessControlAttributeConfi
     }
     m_accessControlAttributesHasBeenSet = true;
   }
-
   return *this;
 }
 

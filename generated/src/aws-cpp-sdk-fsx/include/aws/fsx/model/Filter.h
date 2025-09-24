@@ -35,100 +35,39 @@ namespace Model
   class Filter
   {
   public:
-    AWS_FSX_API Filter();
+    AWS_FSX_API Filter() = default;
     AWS_FSX_API Filter(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Filter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name for this filter.</p>
      */
-    inline const FilterName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name for this filter.</p>
-     */
+    inline FilterName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(FilterName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline Filter& WithName(FilterName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for this filter.</p>
-     */
-    inline void SetName(const FilterName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name for this filter.</p>
-     */
-    inline void SetName(FilterName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name for this filter.</p>
-     */
-    inline Filter& WithName(const FilterName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name for this filter.</p>
-     */
-    inline Filter& WithName(FilterName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The values of the filter. These are all the values for any of the applied
      * filters.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The values of the filter. These are all the values for any of the applied
-     * filters.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>The values of the filter. These are all the values for any of the applied
-     * filters.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The values of the filter. These are all the values for any of the applied
-     * filters.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The values of the filter. These are all the values for any of the applied
-     * filters.</p>
-     */
-    inline Filter& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The values of the filter. These are all the values for any of the applied
-     * filters.</p>
-     */
-    inline Filter& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The values of the filter. These are all the values for any of the applied
-     * filters.</p>
-     */
-    inline Filter& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The values of the filter. These are all the values for any of the applied
-     * filters.</p>
-     */
-    inline Filter& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The values of the filter. These are all the values for any of the applied
-     * filters.</p>
-     */
-    inline Filter& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    Filter& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    Filter& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
-    FilterName m_name;
+    FilterName m_name{FilterName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_values;

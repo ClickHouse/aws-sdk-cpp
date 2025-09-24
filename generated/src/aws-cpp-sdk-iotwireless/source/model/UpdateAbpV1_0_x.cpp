@@ -18,15 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-UpdateAbpV1_0_x::UpdateAbpV1_0_x() : 
-    m_fCntStart(0),
-    m_fCntStartHasBeenSet(false)
-{
-}
-
-UpdateAbpV1_0_x::UpdateAbpV1_0_x(JsonView jsonValue) : 
-    m_fCntStart(0),
-    m_fCntStartHasBeenSet(false)
+UpdateAbpV1_0_x::UpdateAbpV1_0_x(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ UpdateAbpV1_0_x& UpdateAbpV1_0_x::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FCntStart"))
   {
     m_fCntStart = jsonValue.GetInteger("FCntStart");
-
     m_fCntStartHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -27,80 +27,38 @@ namespace Model
   class UpdateServerResult
   {
   public:
-    AWS_TRANSFER_API UpdateServerResult();
+    AWS_TRANSFER_API UpdateServerResult() = default;
     AWS_TRANSFER_API UpdateServerResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_TRANSFER_API UpdateServerResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A system-assigned unique identifier for a server that the Transfer Family
      * user is assigned to.</p>
      */
-    inline const Aws::String& GetServerId() const{ return m_serverId; }
+    inline const Aws::String& GetServerId() const { return m_serverId; }
+    template<typename ServerIdT = Aws::String>
+    void SetServerId(ServerIdT&& value) { m_serverIdHasBeenSet = true; m_serverId = std::forward<ServerIdT>(value); }
+    template<typename ServerIdT = Aws::String>
+    UpdateServerResult& WithServerId(ServerIdT&& value) { SetServerId(std::forward<ServerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A system-assigned unique identifier for a server that the Transfer Family
-     * user is assigned to.</p>
-     */
-    inline void SetServerId(const Aws::String& value) { m_serverId = value; }
-
-    /**
-     * <p>A system-assigned unique identifier for a server that the Transfer Family
-     * user is assigned to.</p>
-     */
-    inline void SetServerId(Aws::String&& value) { m_serverId = std::move(value); }
-
-    /**
-     * <p>A system-assigned unique identifier for a server that the Transfer Family
-     * user is assigned to.</p>
-     */
-    inline void SetServerId(const char* value) { m_serverId.assign(value); }
-
-    /**
-     * <p>A system-assigned unique identifier for a server that the Transfer Family
-     * user is assigned to.</p>
-     */
-    inline UpdateServerResult& WithServerId(const Aws::String& value) { SetServerId(value); return *this;}
-
-    /**
-     * <p>A system-assigned unique identifier for a server that the Transfer Family
-     * user is assigned to.</p>
-     */
-    inline UpdateServerResult& WithServerId(Aws::String&& value) { SetServerId(std::move(value)); return *this;}
-
-    /**
-     * <p>A system-assigned unique identifier for a server that the Transfer Family
-     * user is assigned to.</p>
-     */
-    inline UpdateServerResult& WithServerId(const char* value) { SetServerId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateServerResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateServerResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateServerResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateServerResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serverId;
+    bool m_serverIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -24,7 +24,7 @@ namespace Model
   class StartTestSetGenerationRequest : public LexModelsV2Request
   {
   public:
-    AWS_LEXMODELSV2_API StartTestSetGenerationRequest();
+    AWS_LEXMODELSV2_API StartTestSetGenerationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,303 +35,85 @@ namespace Model
     AWS_LEXMODELSV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The test set name for the test set generation request.</p>
      */
-    inline const Aws::String& GetTestSetName() const{ return m_testSetName; }
-
-    /**
-     * <p>The test set name for the test set generation request.</p>
-     */
+    inline const Aws::String& GetTestSetName() const { return m_testSetName; }
     inline bool TestSetNameHasBeenSet() const { return m_testSetNameHasBeenSet; }
+    template<typename TestSetNameT = Aws::String>
+    void SetTestSetName(TestSetNameT&& value) { m_testSetNameHasBeenSet = true; m_testSetName = std::forward<TestSetNameT>(value); }
+    template<typename TestSetNameT = Aws::String>
+    StartTestSetGenerationRequest& WithTestSetName(TestSetNameT&& value) { SetTestSetName(std::forward<TestSetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The test set name for the test set generation request.</p>
-     */
-    inline void SetTestSetName(const Aws::String& value) { m_testSetNameHasBeenSet = true; m_testSetName = value; }
-
-    /**
-     * <p>The test set name for the test set generation request.</p>
-     */
-    inline void SetTestSetName(Aws::String&& value) { m_testSetNameHasBeenSet = true; m_testSetName = std::move(value); }
-
-    /**
-     * <p>The test set name for the test set generation request.</p>
-     */
-    inline void SetTestSetName(const char* value) { m_testSetNameHasBeenSet = true; m_testSetName.assign(value); }
-
-    /**
-     * <p>The test set name for the test set generation request.</p>
-     */
-    inline StartTestSetGenerationRequest& WithTestSetName(const Aws::String& value) { SetTestSetName(value); return *this;}
-
-    /**
-     * <p>The test set name for the test set generation request.</p>
-     */
-    inline StartTestSetGenerationRequest& WithTestSetName(Aws::String&& value) { SetTestSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The test set name for the test set generation request.</p>
-     */
-    inline StartTestSetGenerationRequest& WithTestSetName(const char* value) { SetTestSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The test set description for the test set generation request.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The test set description for the test set generation request.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    StartTestSetGenerationRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The test set description for the test set generation request.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The test set description for the test set generation request.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The test set description for the test set generation request.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The test set description for the test set generation request.</p>
-     */
-    inline StartTestSetGenerationRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The test set description for the test set generation request.</p>
-     */
-    inline StartTestSetGenerationRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The test set description for the test set generation request.</p>
-     */
-    inline StartTestSetGenerationRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon S3 storage location for the test set generation.</p>
      */
-    inline const TestSetStorageLocation& GetStorageLocation() const{ return m_storageLocation; }
-
-    /**
-     * <p>The Amazon S3 storage location for the test set generation.</p>
-     */
+    inline const TestSetStorageLocation& GetStorageLocation() const { return m_storageLocation; }
     inline bool StorageLocationHasBeenSet() const { return m_storageLocationHasBeenSet; }
+    template<typename StorageLocationT = TestSetStorageLocation>
+    void SetStorageLocation(StorageLocationT&& value) { m_storageLocationHasBeenSet = true; m_storageLocation = std::forward<StorageLocationT>(value); }
+    template<typename StorageLocationT = TestSetStorageLocation>
+    StartTestSetGenerationRequest& WithStorageLocation(StorageLocationT&& value) { SetStorageLocation(std::forward<StorageLocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 storage location for the test set generation.</p>
-     */
-    inline void SetStorageLocation(const TestSetStorageLocation& value) { m_storageLocationHasBeenSet = true; m_storageLocation = value; }
-
-    /**
-     * <p>The Amazon S3 storage location for the test set generation.</p>
-     */
-    inline void SetStorageLocation(TestSetStorageLocation&& value) { m_storageLocationHasBeenSet = true; m_storageLocation = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 storage location for the test set generation.</p>
-     */
-    inline StartTestSetGenerationRequest& WithStorageLocation(const TestSetStorageLocation& value) { SetStorageLocation(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 storage location for the test set generation.</p>
-     */
-    inline StartTestSetGenerationRequest& WithStorageLocation(TestSetStorageLocation&& value) { SetStorageLocation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data source for the test set generation.</p>
      */
-    inline const TestSetGenerationDataSource& GetGenerationDataSource() const{ return m_generationDataSource; }
-
-    /**
-     * <p>The data source for the test set generation.</p>
-     */
+    inline const TestSetGenerationDataSource& GetGenerationDataSource() const { return m_generationDataSource; }
     inline bool GenerationDataSourceHasBeenSet() const { return m_generationDataSourceHasBeenSet; }
+    template<typename GenerationDataSourceT = TestSetGenerationDataSource>
+    void SetGenerationDataSource(GenerationDataSourceT&& value) { m_generationDataSourceHasBeenSet = true; m_generationDataSource = std::forward<GenerationDataSourceT>(value); }
+    template<typename GenerationDataSourceT = TestSetGenerationDataSource>
+    StartTestSetGenerationRequest& WithGenerationDataSource(GenerationDataSourceT&& value) { SetGenerationDataSource(std::forward<GenerationDataSourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The data source for the test set generation.</p>
-     */
-    inline void SetGenerationDataSource(const TestSetGenerationDataSource& value) { m_generationDataSourceHasBeenSet = true; m_generationDataSource = value; }
-
-    /**
-     * <p>The data source for the test set generation.</p>
-     */
-    inline void SetGenerationDataSource(TestSetGenerationDataSource&& value) { m_generationDataSourceHasBeenSet = true; m_generationDataSource = std::move(value); }
-
-    /**
-     * <p>The data source for the test set generation.</p>
-     */
-    inline StartTestSetGenerationRequest& WithGenerationDataSource(const TestSetGenerationDataSource& value) { SetGenerationDataSource(value); return *this;}
-
-    /**
-     * <p>The data source for the test set generation.</p>
-     */
-    inline StartTestSetGenerationRequest& WithGenerationDataSource(TestSetGenerationDataSource&& value) { SetGenerationDataSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The roleARN used for any operation in the test set to access resources in the
      * Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The roleARN used for any operation in the test set to access resources in the
-     * Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    StartTestSetGenerationRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The roleARN used for any operation in the test set to access resources in the
-     * Amazon Web Services account.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The roleARN used for any operation in the test set to access resources in the
-     * Amazon Web Services account.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The roleARN used for any operation in the test set to access resources in the
-     * Amazon Web Services account.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The roleARN used for any operation in the test set to access resources in the
-     * Amazon Web Services account.</p>
-     */
-    inline StartTestSetGenerationRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The roleARN used for any operation in the test set to access resources in the
-     * Amazon Web Services account.</p>
-     */
-    inline StartTestSetGenerationRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The roleARN used for any operation in the test set to access resources in the
-     * Amazon Web Services account.</p>
-     */
-    inline StartTestSetGenerationRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tags to add to the test set. You can only add tags when you
      * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
      * operation to update tags. To update tags, use the <code>TagResource</code>
      * operation.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTestSetTags() const{ return m_testSetTags; }
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTestSetTags() const { return m_testSetTags; }
     inline bool TestSetTagsHasBeenSet() const { return m_testSetTagsHasBeenSet; }
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline void SetTestSetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_testSetTagsHasBeenSet = true; m_testSetTags = value; }
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline void SetTestSetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_testSetTagsHasBeenSet = true; m_testSetTags = std::move(value); }
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline StartTestSetGenerationRequest& WithTestSetTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTestSetTags(value); return *this;}
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline StartTestSetGenerationRequest& WithTestSetTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTestSetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline StartTestSetGenerationRequest& AddTestSetTags(const Aws::String& key, const Aws::String& value) { m_testSetTagsHasBeenSet = true; m_testSetTags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline StartTestSetGenerationRequest& AddTestSetTags(Aws::String&& key, const Aws::String& value) { m_testSetTagsHasBeenSet = true; m_testSetTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline StartTestSetGenerationRequest& AddTestSetTags(const Aws::String& key, Aws::String&& value) { m_testSetTagsHasBeenSet = true; m_testSetTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline StartTestSetGenerationRequest& AddTestSetTags(Aws::String&& key, Aws::String&& value) { m_testSetTagsHasBeenSet = true; m_testSetTags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline StartTestSetGenerationRequest& AddTestSetTags(const char* key, Aws::String&& value) { m_testSetTagsHasBeenSet = true; m_testSetTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline StartTestSetGenerationRequest& AddTestSetTags(Aws::String&& key, const char* value) { m_testSetTagsHasBeenSet = true; m_testSetTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test set. You can only add tags when you
-     * import/generate a new test set. You can't use the <code>UpdateTestSet</code>
-     * operation to update tags. To update tags, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline StartTestSetGenerationRequest& AddTestSetTags(const char* key, const char* value) { m_testSetTagsHasBeenSet = true; m_testSetTags.emplace(key, value); return *this; }
-
+    template<typename TestSetTagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTestSetTags(TestSetTagsT&& value) { m_testSetTagsHasBeenSet = true; m_testSetTags = std::forward<TestSetTagsT>(value); }
+    template<typename TestSetTagsT = Aws::Map<Aws::String, Aws::String>>
+    StartTestSetGenerationRequest& WithTestSetTags(TestSetTagsT&& value) { SetTestSetTags(std::forward<TestSetTagsT>(value)); return *this;}
+    template<typename TestSetTagsKeyT = Aws::String, typename TestSetTagsValueT = Aws::String>
+    StartTestSetGenerationRequest& AddTestSetTags(TestSetTagsKeyT&& key, TestSetTagsValueT&& value) {
+      m_testSetTagsHasBeenSet = true; m_testSetTags.emplace(std::forward<TestSetTagsKeyT>(key), std::forward<TestSetTagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_testSetName;

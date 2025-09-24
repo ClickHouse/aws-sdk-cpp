@@ -18,23 +18,7 @@ namespace CostOptimizationHub
 namespace Model
 {
 
-Ec2InstanceSavingsPlansConfiguration::Ec2InstanceSavingsPlansConfiguration() : 
-    m_accountScopeHasBeenSet(false),
-    m_hourlyCommitmentHasBeenSet(false),
-    m_instanceFamilyHasBeenSet(false),
-    m_paymentOptionHasBeenSet(false),
-    m_savingsPlansRegionHasBeenSet(false),
-    m_termHasBeenSet(false)
-{
-}
-
-Ec2InstanceSavingsPlansConfiguration::Ec2InstanceSavingsPlansConfiguration(JsonView jsonValue) : 
-    m_accountScopeHasBeenSet(false),
-    m_hourlyCommitmentHasBeenSet(false),
-    m_instanceFamilyHasBeenSet(false),
-    m_paymentOptionHasBeenSet(false),
-    m_savingsPlansRegionHasBeenSet(false),
-    m_termHasBeenSet(false)
+Ec2InstanceSavingsPlansConfiguration::Ec2InstanceSavingsPlansConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,45 +28,33 @@ Ec2InstanceSavingsPlansConfiguration& Ec2InstanceSavingsPlansConfiguration::oper
   if(jsonValue.ValueExists("accountScope"))
   {
     m_accountScope = jsonValue.GetString("accountScope");
-
     m_accountScopeHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("hourlyCommitment"))
-  {
-    m_hourlyCommitment = jsonValue.GetString("hourlyCommitment");
-
-    m_hourlyCommitmentHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("instanceFamily"))
-  {
-    m_instanceFamily = jsonValue.GetString("instanceFamily");
-
-    m_instanceFamilyHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("paymentOption"))
-  {
-    m_paymentOption = jsonValue.GetString("paymentOption");
-
-    m_paymentOptionHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("savingsPlansRegion"))
-  {
-    m_savingsPlansRegion = jsonValue.GetString("savingsPlansRegion");
-
-    m_savingsPlansRegionHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("term"))
   {
     m_term = jsonValue.GetString("term");
-
     m_termHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("paymentOption"))
+  {
+    m_paymentOption = jsonValue.GetString("paymentOption");
+    m_paymentOptionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("hourlyCommitment"))
+  {
+    m_hourlyCommitment = jsonValue.GetString("hourlyCommitment");
+    m_hourlyCommitmentHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("instanceFamily"))
+  {
+    m_instanceFamily = jsonValue.GetString("instanceFamily");
+    m_instanceFamilyHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("savingsPlansRegion"))
+  {
+    m_savingsPlansRegion = jsonValue.GetString("savingsPlansRegion");
+    m_savingsPlansRegionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -93,6 +65,18 @@ JsonValue Ec2InstanceSavingsPlansConfiguration::Jsonize() const
   if(m_accountScopeHasBeenSet)
   {
    payload.WithString("accountScope", m_accountScope);
+
+  }
+
+  if(m_termHasBeenSet)
+  {
+   payload.WithString("term", m_term);
+
+  }
+
+  if(m_paymentOptionHasBeenSet)
+  {
+   payload.WithString("paymentOption", m_paymentOption);
 
   }
 
@@ -108,21 +92,9 @@ JsonValue Ec2InstanceSavingsPlansConfiguration::Jsonize() const
 
   }
 
-  if(m_paymentOptionHasBeenSet)
-  {
-   payload.WithString("paymentOption", m_paymentOption);
-
-  }
-
   if(m_savingsPlansRegionHasBeenSet)
   {
    payload.WithString("savingsPlansRegion", m_savingsPlansRegion);
-
-  }
-
-  if(m_termHasBeenSet)
-  {
-   payload.WithString("term", m_term);
 
   }
 

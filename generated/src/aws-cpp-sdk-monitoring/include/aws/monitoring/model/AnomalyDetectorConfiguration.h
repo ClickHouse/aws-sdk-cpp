@@ -35,7 +35,7 @@ namespace Model
   class AnomalyDetectorConfiguration
   {
   public:
-    AWS_CLOUDWATCH_API AnomalyDetectorConfiguration();
+    AWS_CLOUDWATCH_API AnomalyDetectorConfiguration() = default;
     AWS_CLOUDWATCH_API AnomalyDetectorConfiguration(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDWATCH_API AnomalyDetectorConfiguration& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,71 +43,24 @@ namespace Model
     AWS_CLOUDWATCH_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>An array of time ranges to exclude from use when the anomaly detection model
      * is trained. Use this to make sure that events that could cause unusual values
      * for the metric, such as deployments, aren't used when CloudWatch creates the
      * model.</p>
      */
-    inline const Aws::Vector<Range>& GetExcludedTimeRanges() const{ return m_excludedTimeRanges; }
-
-    /**
-     * <p>An array of time ranges to exclude from use when the anomaly detection model
-     * is trained. Use this to make sure that events that could cause unusual values
-     * for the metric, such as deployments, aren't used when CloudWatch creates the
-     * model.</p>
-     */
+    inline const Aws::Vector<Range>& GetExcludedTimeRanges() const { return m_excludedTimeRanges; }
     inline bool ExcludedTimeRangesHasBeenSet() const { return m_excludedTimeRangesHasBeenSet; }
+    template<typename ExcludedTimeRangesT = Aws::Vector<Range>>
+    void SetExcludedTimeRanges(ExcludedTimeRangesT&& value) { m_excludedTimeRangesHasBeenSet = true; m_excludedTimeRanges = std::forward<ExcludedTimeRangesT>(value); }
+    template<typename ExcludedTimeRangesT = Aws::Vector<Range>>
+    AnomalyDetectorConfiguration& WithExcludedTimeRanges(ExcludedTimeRangesT&& value) { SetExcludedTimeRanges(std::forward<ExcludedTimeRangesT>(value)); return *this;}
+    template<typename ExcludedTimeRangesT = Range>
+    AnomalyDetectorConfiguration& AddExcludedTimeRanges(ExcludedTimeRangesT&& value) { m_excludedTimeRangesHasBeenSet = true; m_excludedTimeRanges.emplace_back(std::forward<ExcludedTimeRangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of time ranges to exclude from use when the anomaly detection model
-     * is trained. Use this to make sure that events that could cause unusual values
-     * for the metric, such as deployments, aren't used when CloudWatch creates the
-     * model.</p>
-     */
-    inline void SetExcludedTimeRanges(const Aws::Vector<Range>& value) { m_excludedTimeRangesHasBeenSet = true; m_excludedTimeRanges = value; }
-
-    /**
-     * <p>An array of time ranges to exclude from use when the anomaly detection model
-     * is trained. Use this to make sure that events that could cause unusual values
-     * for the metric, such as deployments, aren't used when CloudWatch creates the
-     * model.</p>
-     */
-    inline void SetExcludedTimeRanges(Aws::Vector<Range>&& value) { m_excludedTimeRangesHasBeenSet = true; m_excludedTimeRanges = std::move(value); }
-
-    /**
-     * <p>An array of time ranges to exclude from use when the anomaly detection model
-     * is trained. Use this to make sure that events that could cause unusual values
-     * for the metric, such as deployments, aren't used when CloudWatch creates the
-     * model.</p>
-     */
-    inline AnomalyDetectorConfiguration& WithExcludedTimeRanges(const Aws::Vector<Range>& value) { SetExcludedTimeRanges(value); return *this;}
-
-    /**
-     * <p>An array of time ranges to exclude from use when the anomaly detection model
-     * is trained. Use this to make sure that events that could cause unusual values
-     * for the metric, such as deployments, aren't used when CloudWatch creates the
-     * model.</p>
-     */
-    inline AnomalyDetectorConfiguration& WithExcludedTimeRanges(Aws::Vector<Range>&& value) { SetExcludedTimeRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of time ranges to exclude from use when the anomaly detection model
-     * is trained. Use this to make sure that events that could cause unusual values
-     * for the metric, such as deployments, aren't used when CloudWatch creates the
-     * model.</p>
-     */
-    inline AnomalyDetectorConfiguration& AddExcludedTimeRanges(const Range& value) { m_excludedTimeRangesHasBeenSet = true; m_excludedTimeRanges.push_back(value); return *this; }
-
-    /**
-     * <p>An array of time ranges to exclude from use when the anomaly detection model
-     * is trained. Use this to make sure that events that could cause unusual values
-     * for the metric, such as deployments, aren't used when CloudWatch creates the
-     * model.</p>
-     */
-    inline AnomalyDetectorConfiguration& AddExcludedTimeRanges(Range&& value) { m_excludedTimeRangesHasBeenSet = true; m_excludedTimeRanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The time zone to use for the metric. This is useful to enable the model to
      * automatically account for daylight savings time changes if the metric is
@@ -115,71 +68,13 @@ namespace Model
      * the time zone as specified in the standard tz database. For more information,
      * see <a href="https://en.wikipedia.org/wiki/Tz_database">tz database</a>.</p>
      */
-    inline const Aws::String& GetMetricTimezone() const{ return m_metricTimezone; }
-
-    /**
-     * <p>The time zone to use for the metric. This is useful to enable the model to
-     * automatically account for daylight savings time changes if the metric is
-     * sensitive to such time changes.</p> <p>To specify a time zone, use the name of
-     * the time zone as specified in the standard tz database. For more information,
-     * see <a href="https://en.wikipedia.org/wiki/Tz_database">tz database</a>.</p>
-     */
+    inline const Aws::String& GetMetricTimezone() const { return m_metricTimezone; }
     inline bool MetricTimezoneHasBeenSet() const { return m_metricTimezoneHasBeenSet; }
-
-    /**
-     * <p>The time zone to use for the metric. This is useful to enable the model to
-     * automatically account for daylight savings time changes if the metric is
-     * sensitive to such time changes.</p> <p>To specify a time zone, use the name of
-     * the time zone as specified in the standard tz database. For more information,
-     * see <a href="https://en.wikipedia.org/wiki/Tz_database">tz database</a>.</p>
-     */
-    inline void SetMetricTimezone(const Aws::String& value) { m_metricTimezoneHasBeenSet = true; m_metricTimezone = value; }
-
-    /**
-     * <p>The time zone to use for the metric. This is useful to enable the model to
-     * automatically account for daylight savings time changes if the metric is
-     * sensitive to such time changes.</p> <p>To specify a time zone, use the name of
-     * the time zone as specified in the standard tz database. For more information,
-     * see <a href="https://en.wikipedia.org/wiki/Tz_database">tz database</a>.</p>
-     */
-    inline void SetMetricTimezone(Aws::String&& value) { m_metricTimezoneHasBeenSet = true; m_metricTimezone = std::move(value); }
-
-    /**
-     * <p>The time zone to use for the metric. This is useful to enable the model to
-     * automatically account for daylight savings time changes if the metric is
-     * sensitive to such time changes.</p> <p>To specify a time zone, use the name of
-     * the time zone as specified in the standard tz database. For more information,
-     * see <a href="https://en.wikipedia.org/wiki/Tz_database">tz database</a>.</p>
-     */
-    inline void SetMetricTimezone(const char* value) { m_metricTimezoneHasBeenSet = true; m_metricTimezone.assign(value); }
-
-    /**
-     * <p>The time zone to use for the metric. This is useful to enable the model to
-     * automatically account for daylight savings time changes if the metric is
-     * sensitive to such time changes.</p> <p>To specify a time zone, use the name of
-     * the time zone as specified in the standard tz database. For more information,
-     * see <a href="https://en.wikipedia.org/wiki/Tz_database">tz database</a>.</p>
-     */
-    inline AnomalyDetectorConfiguration& WithMetricTimezone(const Aws::String& value) { SetMetricTimezone(value); return *this;}
-
-    /**
-     * <p>The time zone to use for the metric. This is useful to enable the model to
-     * automatically account for daylight savings time changes if the metric is
-     * sensitive to such time changes.</p> <p>To specify a time zone, use the name of
-     * the time zone as specified in the standard tz database. For more information,
-     * see <a href="https://en.wikipedia.org/wiki/Tz_database">tz database</a>.</p>
-     */
-    inline AnomalyDetectorConfiguration& WithMetricTimezone(Aws::String&& value) { SetMetricTimezone(std::move(value)); return *this;}
-
-    /**
-     * <p>The time zone to use for the metric. This is useful to enable the model to
-     * automatically account for daylight savings time changes if the metric is
-     * sensitive to such time changes.</p> <p>To specify a time zone, use the name of
-     * the time zone as specified in the standard tz database. For more information,
-     * see <a href="https://en.wikipedia.org/wiki/Tz_database">tz database</a>.</p>
-     */
-    inline AnomalyDetectorConfiguration& WithMetricTimezone(const char* value) { SetMetricTimezone(value); return *this;}
-
+    template<typename MetricTimezoneT = Aws::String>
+    void SetMetricTimezone(MetricTimezoneT&& value) { m_metricTimezoneHasBeenSet = true; m_metricTimezone = std::forward<MetricTimezoneT>(value); }
+    template<typename MetricTimezoneT = Aws::String>
+    AnomalyDetectorConfiguration& WithMetricTimezone(MetricTimezoneT&& value) { SetMetricTimezone(std::forward<MetricTimezoneT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Range> m_excludedTimeRanges;

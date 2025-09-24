@@ -29,83 +29,50 @@ namespace Model
   class JobStats
   {
   public:
-    AWS_CUSTOMERPROFILES_API JobStats();
+    AWS_CUSTOMERPROFILES_API JobStats() = default;
     AWS_CUSTOMERPROFILES_API JobStats(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API JobStats& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of profiles reviewed.</p>
      */
-    inline long long GetNumberOfProfilesReviewed() const{ return m_numberOfProfilesReviewed; }
-
-    /**
-     * <p>The number of profiles reviewed.</p>
-     */
+    inline long long GetNumberOfProfilesReviewed() const { return m_numberOfProfilesReviewed; }
     inline bool NumberOfProfilesReviewedHasBeenSet() const { return m_numberOfProfilesReviewedHasBeenSet; }
-
-    /**
-     * <p>The number of profiles reviewed.</p>
-     */
     inline void SetNumberOfProfilesReviewed(long long value) { m_numberOfProfilesReviewedHasBeenSet = true; m_numberOfProfilesReviewed = value; }
-
-    /**
-     * <p>The number of profiles reviewed.</p>
-     */
     inline JobStats& WithNumberOfProfilesReviewed(long long value) { SetNumberOfProfilesReviewed(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of matches found.</p>
      */
-    inline long long GetNumberOfMatchesFound() const{ return m_numberOfMatchesFound; }
-
-    /**
-     * <p>The number of matches found.</p>
-     */
+    inline long long GetNumberOfMatchesFound() const { return m_numberOfMatchesFound; }
     inline bool NumberOfMatchesFoundHasBeenSet() const { return m_numberOfMatchesFoundHasBeenSet; }
-
-    /**
-     * <p>The number of matches found.</p>
-     */
     inline void SetNumberOfMatchesFound(long long value) { m_numberOfMatchesFoundHasBeenSet = true; m_numberOfMatchesFound = value; }
-
-    /**
-     * <p>The number of matches found.</p>
-     */
     inline JobStats& WithNumberOfMatchesFound(long long value) { SetNumberOfMatchesFound(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The number of merges completed.</p>
      */
-    inline long long GetNumberOfMergesDone() const{ return m_numberOfMergesDone; }
-
-    /**
-     * <p>The number of merges completed.</p>
-     */
+    inline long long GetNumberOfMergesDone() const { return m_numberOfMergesDone; }
     inline bool NumberOfMergesDoneHasBeenSet() const { return m_numberOfMergesDoneHasBeenSet; }
-
-    /**
-     * <p>The number of merges completed.</p>
-     */
     inline void SetNumberOfMergesDone(long long value) { m_numberOfMergesDoneHasBeenSet = true; m_numberOfMergesDone = value; }
-
-    /**
-     * <p>The number of merges completed.</p>
-     */
     inline JobStats& WithNumberOfMergesDone(long long value) { SetNumberOfMergesDone(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_numberOfProfilesReviewed;
+    long long m_numberOfProfilesReviewed{0};
     bool m_numberOfProfilesReviewedHasBeenSet = false;
 
-    long long m_numberOfMatchesFound;
+    long long m_numberOfMatchesFound{0};
     bool m_numberOfMatchesFoundHasBeenSet = false;
 
-    long long m_numberOfMergesDone;
+    long long m_numberOfMergesDone{0};
     bool m_numberOfMergesDoneHasBeenSet = false;
   };
 

@@ -24,68 +24,33 @@ namespace Model
 {
 
   /**
-   * <p>The identifier for a resource object that contains resources where a finding
-   * was detected.</p><p><h3>See Also:</h3>   <a
+   * <p>The identifier for a resource object that contains resources to scan.
+   * Specifying a codeArtifactId is required to create a scan.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/codeguru-security-2018-05-10/ResourceId">AWS
    * API Reference</a></p>
    */
   class ResourceId
   {
   public:
-    AWS_CODEGURUSECURITY_API ResourceId();
+    AWS_CODEGURUSECURITY_API ResourceId() = default;
     AWS_CODEGURUSECURITY_API ResourceId(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API ResourceId& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The identifier for the code file uploaded to the resource where a finding was
-     * detected.</p>
+     * <p>The identifier for the code file uploaded to the resource object. Returned by
+     * <code>CreateUploadUrl</code> when you upload resources to be scanned.</p>
      */
-    inline const Aws::String& GetCodeArtifactId() const{ return m_codeArtifactId; }
-
-    /**
-     * <p>The identifier for the code file uploaded to the resource where a finding was
-     * detected.</p>
-     */
+    inline const Aws::String& GetCodeArtifactId() const { return m_codeArtifactId; }
     inline bool CodeArtifactIdHasBeenSet() const { return m_codeArtifactIdHasBeenSet; }
-
-    /**
-     * <p>The identifier for the code file uploaded to the resource where a finding was
-     * detected.</p>
-     */
-    inline void SetCodeArtifactId(const Aws::String& value) { m_codeArtifactIdHasBeenSet = true; m_codeArtifactId = value; }
-
-    /**
-     * <p>The identifier for the code file uploaded to the resource where a finding was
-     * detected.</p>
-     */
-    inline void SetCodeArtifactId(Aws::String&& value) { m_codeArtifactIdHasBeenSet = true; m_codeArtifactId = std::move(value); }
-
-    /**
-     * <p>The identifier for the code file uploaded to the resource where a finding was
-     * detected.</p>
-     */
-    inline void SetCodeArtifactId(const char* value) { m_codeArtifactIdHasBeenSet = true; m_codeArtifactId.assign(value); }
-
-    /**
-     * <p>The identifier for the code file uploaded to the resource where a finding was
-     * detected.</p>
-     */
-    inline ResourceId& WithCodeArtifactId(const Aws::String& value) { SetCodeArtifactId(value); return *this;}
-
-    /**
-     * <p>The identifier for the code file uploaded to the resource where a finding was
-     * detected.</p>
-     */
-    inline ResourceId& WithCodeArtifactId(Aws::String&& value) { SetCodeArtifactId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the code file uploaded to the resource where a finding was
-     * detected.</p>
-     */
-    inline ResourceId& WithCodeArtifactId(const char* value) { SetCodeArtifactId(value); return *this;}
-
+    template<typename CodeArtifactIdT = Aws::String>
+    void SetCodeArtifactId(CodeArtifactIdT&& value) { m_codeArtifactIdHasBeenSet = true; m_codeArtifactId = std::forward<CodeArtifactIdT>(value); }
+    template<typename CodeArtifactIdT = Aws::String>
+    ResourceId& WithCodeArtifactId(CodeArtifactIdT&& value) { SetCodeArtifactId(std::forward<CodeArtifactIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_codeArtifactId;

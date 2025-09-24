@@ -21,7 +21,7 @@ namespace Model
   class ListAnomalousLogGroupsRequest : public DevOpsGuruRequest
   {
   public:
-    AWS_DEVOPSGURU_API ListAnomalousLogGroupsRequest();
+    AWS_DEVOPSGURU_API ListAnomalousLogGroupsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,130 +32,48 @@ namespace Model
     AWS_DEVOPSGURU_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The ID of the insight containing the log groups. </p>
      */
-    inline const Aws::String& GetInsightId() const{ return m_insightId; }
-
-    /**
-     * <p> The ID of the insight containing the log groups. </p>
-     */
+    inline const Aws::String& GetInsightId() const { return m_insightId; }
     inline bool InsightIdHasBeenSet() const { return m_insightIdHasBeenSet; }
+    template<typename InsightIdT = Aws::String>
+    void SetInsightId(InsightIdT&& value) { m_insightIdHasBeenSet = true; m_insightId = std::forward<InsightIdT>(value); }
+    template<typename InsightIdT = Aws::String>
+    ListAnomalousLogGroupsRequest& WithInsightId(InsightIdT&& value) { SetInsightId(std::forward<InsightIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The ID of the insight containing the log groups. </p>
-     */
-    inline void SetInsightId(const Aws::String& value) { m_insightIdHasBeenSet = true; m_insightId = value; }
-
-    /**
-     * <p> The ID of the insight containing the log groups. </p>
-     */
-    inline void SetInsightId(Aws::String&& value) { m_insightIdHasBeenSet = true; m_insightId = std::move(value); }
-
-    /**
-     * <p> The ID of the insight containing the log groups. </p>
-     */
-    inline void SetInsightId(const char* value) { m_insightIdHasBeenSet = true; m_insightId.assign(value); }
-
-    /**
-     * <p> The ID of the insight containing the log groups. </p>
-     */
-    inline ListAnomalousLogGroupsRequest& WithInsightId(const Aws::String& value) { SetInsightId(value); return *this;}
-
-    /**
-     * <p> The ID of the insight containing the log groups. </p>
-     */
-    inline ListAnomalousLogGroupsRequest& WithInsightId(Aws::String&& value) { SetInsightId(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID of the insight containing the log groups. </p>
-     */
-    inline ListAnomalousLogGroupsRequest& WithInsightId(const char* value) { SetInsightId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return with a single call. To retrieve the
      * remaining results, make another call with the returned <code>nextToken</code>
      * value.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return with a single call. To retrieve the
-     * remaining results, make another call with the returned <code>nextToken</code>
-     * value.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return with a single call. To retrieve the
-     * remaining results, make another call with the returned <code>nextToken</code>
-     * value.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return with a single call. To retrieve the
-     * remaining results, make another call with the returned <code>nextToken</code>
-     * value.</p>
-     */
     inline ListAnomalousLogGroupsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The pagination token to use to retrieve the next page of results for this
      * operation. If this value is null, it retrieves the first page.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline ListAnomalousLogGroupsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline ListAnomalousLogGroupsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline ListAnomalousLogGroupsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAnomalousLogGroupsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_insightId;
     bool m_insightIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

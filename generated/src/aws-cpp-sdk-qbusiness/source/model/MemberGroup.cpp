@@ -18,17 +18,7 @@ namespace QBusiness
 namespace Model
 {
 
-MemberGroup::MemberGroup() : 
-    m_groupNameHasBeenSet(false),
-    m_type(MembershipType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-MemberGroup::MemberGroup(JsonView jsonValue) : 
-    m_groupNameHasBeenSet(false),
-    m_type(MembershipType::NOT_SET),
-    m_typeHasBeenSet(false)
+MemberGroup::MemberGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ MemberGroup& MemberGroup::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("groupName"))
   {
     m_groupName = jsonValue.GetString("groupName");
-
     m_groupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = MembershipTypeMapper::GetMembershipTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

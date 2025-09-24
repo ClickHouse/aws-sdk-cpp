@@ -22,7 +22,7 @@ namespace Model
   class GetTransactionRequest : public ManagedBlockchainQueryRequest
   {
   public:
-    AWS_MANAGEDBLOCKCHAINQUERY_API GetTransactionRequest();
+    AWS_MANAGEDBLOCKCHAINQUERY_API GetTransactionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,91 +33,50 @@ namespace Model
     AWS_MANAGEDBLOCKCHAINQUERY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The hash of the transaction. It is generated whenever a transaction is
-     * verified and added to the blockchain.</p>
+     * <p>The hash of a transaction. It is generated when a transaction is created.</p>
      */
-    inline const Aws::String& GetTransactionHash() const{ return m_transactionHash; }
-
-    /**
-     * <p>The hash of the transaction. It is generated whenever a transaction is
-     * verified and added to the blockchain.</p>
-     */
+    inline const Aws::String& GetTransactionHash() const { return m_transactionHash; }
     inline bool TransactionHashHasBeenSet() const { return m_transactionHashHasBeenSet; }
+    template<typename TransactionHashT = Aws::String>
+    void SetTransactionHash(TransactionHashT&& value) { m_transactionHashHasBeenSet = true; m_transactionHash = std::forward<TransactionHashT>(value); }
+    template<typename TransactionHashT = Aws::String>
+    GetTransactionRequest& WithTransactionHash(TransactionHashT&& value) { SetTransactionHash(std::forward<TransactionHashT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The hash of the transaction. It is generated whenever a transaction is
-     * verified and added to the blockchain.</p>
+     * <p>The identifier of a Bitcoin transaction. It is generated when a transaction
+     * is created.</p>  <p> <code>transactionId</code> is only supported on the
+     * Bitcoin networks.</p> 
      */
-    inline void SetTransactionHash(const Aws::String& value) { m_transactionHashHasBeenSet = true; m_transactionHash = value; }
+    inline const Aws::String& GetTransactionId() const { return m_transactionId; }
+    inline bool TransactionIdHasBeenSet() const { return m_transactionIdHasBeenSet; }
+    template<typename TransactionIdT = Aws::String>
+    void SetTransactionId(TransactionIdT&& value) { m_transactionIdHasBeenSet = true; m_transactionId = std::forward<TransactionIdT>(value); }
+    template<typename TransactionIdT = Aws::String>
+    GetTransactionRequest& WithTransactionId(TransactionIdT&& value) { SetTransactionId(std::forward<TransactionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The hash of the transaction. It is generated whenever a transaction is
-     * verified and added to the blockchain.</p>
-     */
-    inline void SetTransactionHash(Aws::String&& value) { m_transactionHashHasBeenSet = true; m_transactionHash = std::move(value); }
-
-    /**
-     * <p>The hash of the transaction. It is generated whenever a transaction is
-     * verified and added to the blockchain.</p>
-     */
-    inline void SetTransactionHash(const char* value) { m_transactionHashHasBeenSet = true; m_transactionHash.assign(value); }
-
-    /**
-     * <p>The hash of the transaction. It is generated whenever a transaction is
-     * verified and added to the blockchain.</p>
-     */
-    inline GetTransactionRequest& WithTransactionHash(const Aws::String& value) { SetTransactionHash(value); return *this;}
-
-    /**
-     * <p>The hash of the transaction. It is generated whenever a transaction is
-     * verified and added to the blockchain.</p>
-     */
-    inline GetTransactionRequest& WithTransactionHash(Aws::String&& value) { SetTransactionHash(std::move(value)); return *this;}
-
-    /**
-     * <p>The hash of the transaction. It is generated whenever a transaction is
-     * verified and added to the blockchain.</p>
-     */
-    inline GetTransactionRequest& WithTransactionHash(const char* value) { SetTransactionHash(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The blockchain network where the transaction occurred.</p>
      */
-    inline const QueryNetwork& GetNetwork() const{ return m_network; }
-
-    /**
-     * <p>The blockchain network where the transaction occurred.</p>
-     */
+    inline QueryNetwork GetNetwork() const { return m_network; }
     inline bool NetworkHasBeenSet() const { return m_networkHasBeenSet; }
-
-    /**
-     * <p>The blockchain network where the transaction occurred.</p>
-     */
-    inline void SetNetwork(const QueryNetwork& value) { m_networkHasBeenSet = true; m_network = value; }
-
-    /**
-     * <p>The blockchain network where the transaction occurred.</p>
-     */
-    inline void SetNetwork(QueryNetwork&& value) { m_networkHasBeenSet = true; m_network = std::move(value); }
-
-    /**
-     * <p>The blockchain network where the transaction occurred.</p>
-     */
-    inline GetTransactionRequest& WithNetwork(const QueryNetwork& value) { SetNetwork(value); return *this;}
-
-    /**
-     * <p>The blockchain network where the transaction occurred.</p>
-     */
-    inline GetTransactionRequest& WithNetwork(QueryNetwork&& value) { SetNetwork(std::move(value)); return *this;}
-
+    inline void SetNetwork(QueryNetwork value) { m_networkHasBeenSet = true; m_network = value; }
+    inline GetTransactionRequest& WithNetwork(QueryNetwork value) { SetNetwork(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_transactionHash;
     bool m_transactionHashHasBeenSet = false;
 
-    QueryNetwork m_network;
+    Aws::String m_transactionId;
+    bool m_transactionIdHasBeenSet = false;
+
+    QueryNetwork m_network{QueryNetwork::NOT_SET};
     bool m_networkHasBeenSet = false;
   };
 

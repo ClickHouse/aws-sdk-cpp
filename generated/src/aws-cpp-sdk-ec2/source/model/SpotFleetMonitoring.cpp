@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SpotFleetMonitoring::SpotFleetMonitoring() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-SpotFleetMonitoring::SpotFleetMonitoring(const XmlNode& xmlNode) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+SpotFleetMonitoring::SpotFleetMonitoring(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

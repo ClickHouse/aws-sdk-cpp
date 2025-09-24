@@ -32,45 +32,24 @@ namespace Model
   class WeeklySchedule
   {
   public:
-    AWS_MACIE2_API WeeklySchedule();
+    AWS_MACIE2_API WeeklySchedule() = default;
     AWS_MACIE2_API WeeklySchedule(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API WeeklySchedule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The day of the week when Amazon Macie runs the job.</p>
      */
-    inline const DayOfWeek& GetDayOfWeek() const{ return m_dayOfWeek; }
-
-    /**
-     * <p>The day of the week when Amazon Macie runs the job.</p>
-     */
+    inline DayOfWeek GetDayOfWeek() const { return m_dayOfWeek; }
     inline bool DayOfWeekHasBeenSet() const { return m_dayOfWeekHasBeenSet; }
-
-    /**
-     * <p>The day of the week when Amazon Macie runs the job.</p>
-     */
-    inline void SetDayOfWeek(const DayOfWeek& value) { m_dayOfWeekHasBeenSet = true; m_dayOfWeek = value; }
-
-    /**
-     * <p>The day of the week when Amazon Macie runs the job.</p>
-     */
-    inline void SetDayOfWeek(DayOfWeek&& value) { m_dayOfWeekHasBeenSet = true; m_dayOfWeek = std::move(value); }
-
-    /**
-     * <p>The day of the week when Amazon Macie runs the job.</p>
-     */
-    inline WeeklySchedule& WithDayOfWeek(const DayOfWeek& value) { SetDayOfWeek(value); return *this;}
-
-    /**
-     * <p>The day of the week when Amazon Macie runs the job.</p>
-     */
-    inline WeeklySchedule& WithDayOfWeek(DayOfWeek&& value) { SetDayOfWeek(std::move(value)); return *this;}
-
+    inline void SetDayOfWeek(DayOfWeek value) { m_dayOfWeekHasBeenSet = true; m_dayOfWeek = value; }
+    inline WeeklySchedule& WithDayOfWeek(DayOfWeek value) { SetDayOfWeek(value); return *this;}
+    ///@}
   private:
 
-    DayOfWeek m_dayOfWeek;
+    DayOfWeek m_dayOfWeek{DayOfWeek::NOT_SET};
     bool m_dayOfWeekHasBeenSet = false;
   };
 

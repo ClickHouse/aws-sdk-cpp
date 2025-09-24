@@ -10,23 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CopyImageRequest::CopyImageRequest() : 
-    m_clientTokenHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sourceImageIdHasBeenSet(false),
-    m_sourceRegionHasBeenSet(false),
-    m_destinationOutpostArnHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_copyImageTags(false),
-    m_copyImageTagsHasBeenSet(false)
-{
-}
-
 Aws::String CopyImageRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -71,14 +54,39 @@ Aws::String CopyImageRequest::SerializePayload() const
     ss << "DestinationOutpostArn=" << StringUtils::URLEncode(m_destinationOutpostArn.c_str()) << "&";
   }
 
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
   if(m_copyImageTagsHasBeenSet)
   {
     ss << "CopyImageTags=" << std::boolalpha << m_copyImageTags << "&";
+  }
+
+  if(m_tagSpecificationsHasBeenSet)
+  {
+    unsigned tagSpecificationsCount = 1;
+    for(auto& item : m_tagSpecifications)
+    {
+      item.OutputToStream(ss, "TagSpecification.", tagSpecificationsCount, "");
+      tagSpecificationsCount++;
+    }
+  }
+
+  if(m_snapshotCopyCompletionDurationMinutesHasBeenSet)
+  {
+    ss << "SnapshotCopyCompletionDurationMinutes=" << m_snapshotCopyCompletionDurationMinutes << "&";
+  }
+
+  if(m_destinationAvailabilityZoneHasBeenSet)
+  {
+    ss << "DestinationAvailabilityZone=" << StringUtils::URLEncode(m_destinationAvailabilityZone.c_str()) << "&";
+  }
+
+  if(m_destinationAvailabilityZoneIdHasBeenSet)
+  {
+    ss << "DestinationAvailabilityZoneId=" << StringUtils::URLEncode(m_destinationAvailabilityZoneId.c_str()) << "&";
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   ss << "Version=2016-11-15";

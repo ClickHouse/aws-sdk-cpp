@@ -36,176 +36,73 @@ namespace Model
   class ActionType
   {
   public:
-    AWS_CODEPIPELINE_API ActionType();
+    AWS_CODEPIPELINE_API ActionType() = default;
     AWS_CODEPIPELINE_API ActionType(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API ActionType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Represents information about an action type.</p>
      */
-    inline const ActionTypeId& GetId() const{ return m_id; }
-
-    /**
-     * <p>Represents information about an action type.</p>
-     */
+    inline const ActionTypeId& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = ActionTypeId>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = ActionTypeId>
+    ActionType& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents information about an action type.</p>
-     */
-    inline void SetId(const ActionTypeId& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>Represents information about an action type.</p>
-     */
-    inline void SetId(ActionTypeId&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>Represents information about an action type.</p>
-     */
-    inline ActionType& WithId(const ActionTypeId& value) { SetId(value); return *this;}
-
-    /**
-     * <p>Represents information about an action type.</p>
-     */
-    inline ActionType& WithId(ActionTypeId&& value) { SetId(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The settings for the action type.</p>
      */
-    inline const ActionTypeSettings& GetSettings() const{ return m_settings; }
-
-    /**
-     * <p>The settings for the action type.</p>
-     */
+    inline const ActionTypeSettings& GetSettings() const { return m_settings; }
     inline bool SettingsHasBeenSet() const { return m_settingsHasBeenSet; }
+    template<typename SettingsT = ActionTypeSettings>
+    void SetSettings(SettingsT&& value) { m_settingsHasBeenSet = true; m_settings = std::forward<SettingsT>(value); }
+    template<typename SettingsT = ActionTypeSettings>
+    ActionType& WithSettings(SettingsT&& value) { SetSettings(std::forward<SettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The settings for the action type.</p>
-     */
-    inline void SetSettings(const ActionTypeSettings& value) { m_settingsHasBeenSet = true; m_settings = value; }
-
-    /**
-     * <p>The settings for the action type.</p>
-     */
-    inline void SetSettings(ActionTypeSettings&& value) { m_settingsHasBeenSet = true; m_settings = std::move(value); }
-
-    /**
-     * <p>The settings for the action type.</p>
-     */
-    inline ActionType& WithSettings(const ActionTypeSettings& value) { SetSettings(value); return *this;}
-
-    /**
-     * <p>The settings for the action type.</p>
-     */
-    inline ActionType& WithSettings(ActionTypeSettings&& value) { SetSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration properties for the action type.</p>
      */
-    inline const Aws::Vector<ActionConfigurationProperty>& GetActionConfigurationProperties() const{ return m_actionConfigurationProperties; }
-
-    /**
-     * <p>The configuration properties for the action type.</p>
-     */
+    inline const Aws::Vector<ActionConfigurationProperty>& GetActionConfigurationProperties() const { return m_actionConfigurationProperties; }
     inline bool ActionConfigurationPropertiesHasBeenSet() const { return m_actionConfigurationPropertiesHasBeenSet; }
+    template<typename ActionConfigurationPropertiesT = Aws::Vector<ActionConfigurationProperty>>
+    void SetActionConfigurationProperties(ActionConfigurationPropertiesT&& value) { m_actionConfigurationPropertiesHasBeenSet = true; m_actionConfigurationProperties = std::forward<ActionConfigurationPropertiesT>(value); }
+    template<typename ActionConfigurationPropertiesT = Aws::Vector<ActionConfigurationProperty>>
+    ActionType& WithActionConfigurationProperties(ActionConfigurationPropertiesT&& value) { SetActionConfigurationProperties(std::forward<ActionConfigurationPropertiesT>(value)); return *this;}
+    template<typename ActionConfigurationPropertiesT = ActionConfigurationProperty>
+    ActionType& AddActionConfigurationProperties(ActionConfigurationPropertiesT&& value) { m_actionConfigurationPropertiesHasBeenSet = true; m_actionConfigurationProperties.emplace_back(std::forward<ActionConfigurationPropertiesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The configuration properties for the action type.</p>
-     */
-    inline void SetActionConfigurationProperties(const Aws::Vector<ActionConfigurationProperty>& value) { m_actionConfigurationPropertiesHasBeenSet = true; m_actionConfigurationProperties = value; }
-
-    /**
-     * <p>The configuration properties for the action type.</p>
-     */
-    inline void SetActionConfigurationProperties(Aws::Vector<ActionConfigurationProperty>&& value) { m_actionConfigurationPropertiesHasBeenSet = true; m_actionConfigurationProperties = std::move(value); }
-
-    /**
-     * <p>The configuration properties for the action type.</p>
-     */
-    inline ActionType& WithActionConfigurationProperties(const Aws::Vector<ActionConfigurationProperty>& value) { SetActionConfigurationProperties(value); return *this;}
-
-    /**
-     * <p>The configuration properties for the action type.</p>
-     */
-    inline ActionType& WithActionConfigurationProperties(Aws::Vector<ActionConfigurationProperty>&& value) { SetActionConfigurationProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>The configuration properties for the action type.</p>
-     */
-    inline ActionType& AddActionConfigurationProperties(const ActionConfigurationProperty& value) { m_actionConfigurationPropertiesHasBeenSet = true; m_actionConfigurationProperties.push_back(value); return *this; }
-
-    /**
-     * <p>The configuration properties for the action type.</p>
-     */
-    inline ActionType& AddActionConfigurationProperties(ActionConfigurationProperty&& value) { m_actionConfigurationPropertiesHasBeenSet = true; m_actionConfigurationProperties.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The details of the input artifact for the action, such as its commit ID.</p>
      */
-    inline const ArtifactDetails& GetInputArtifactDetails() const{ return m_inputArtifactDetails; }
-
-    /**
-     * <p>The details of the input artifact for the action, such as its commit ID.</p>
-     */
+    inline const ArtifactDetails& GetInputArtifactDetails() const { return m_inputArtifactDetails; }
     inline bool InputArtifactDetailsHasBeenSet() const { return m_inputArtifactDetailsHasBeenSet; }
+    template<typename InputArtifactDetailsT = ArtifactDetails>
+    void SetInputArtifactDetails(InputArtifactDetailsT&& value) { m_inputArtifactDetailsHasBeenSet = true; m_inputArtifactDetails = std::forward<InputArtifactDetailsT>(value); }
+    template<typename InputArtifactDetailsT = ArtifactDetails>
+    ActionType& WithInputArtifactDetails(InputArtifactDetailsT&& value) { SetInputArtifactDetails(std::forward<InputArtifactDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The details of the input artifact for the action, such as its commit ID.</p>
-     */
-    inline void SetInputArtifactDetails(const ArtifactDetails& value) { m_inputArtifactDetailsHasBeenSet = true; m_inputArtifactDetails = value; }
-
-    /**
-     * <p>The details of the input artifact for the action, such as its commit ID.</p>
-     */
-    inline void SetInputArtifactDetails(ArtifactDetails&& value) { m_inputArtifactDetailsHasBeenSet = true; m_inputArtifactDetails = std::move(value); }
-
-    /**
-     * <p>The details of the input artifact for the action, such as its commit ID.</p>
-     */
-    inline ActionType& WithInputArtifactDetails(const ArtifactDetails& value) { SetInputArtifactDetails(value); return *this;}
-
-    /**
-     * <p>The details of the input artifact for the action, such as its commit ID.</p>
-     */
-    inline ActionType& WithInputArtifactDetails(ArtifactDetails&& value) { SetInputArtifactDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The details of the output artifact of the action, such as its commit ID.</p>
      */
-    inline const ArtifactDetails& GetOutputArtifactDetails() const{ return m_outputArtifactDetails; }
-
-    /**
-     * <p>The details of the output artifact of the action, such as its commit ID.</p>
-     */
+    inline const ArtifactDetails& GetOutputArtifactDetails() const { return m_outputArtifactDetails; }
     inline bool OutputArtifactDetailsHasBeenSet() const { return m_outputArtifactDetailsHasBeenSet; }
-
-    /**
-     * <p>The details of the output artifact of the action, such as its commit ID.</p>
-     */
-    inline void SetOutputArtifactDetails(const ArtifactDetails& value) { m_outputArtifactDetailsHasBeenSet = true; m_outputArtifactDetails = value; }
-
-    /**
-     * <p>The details of the output artifact of the action, such as its commit ID.</p>
-     */
-    inline void SetOutputArtifactDetails(ArtifactDetails&& value) { m_outputArtifactDetailsHasBeenSet = true; m_outputArtifactDetails = std::move(value); }
-
-    /**
-     * <p>The details of the output artifact of the action, such as its commit ID.</p>
-     */
-    inline ActionType& WithOutputArtifactDetails(const ArtifactDetails& value) { SetOutputArtifactDetails(value); return *this;}
-
-    /**
-     * <p>The details of the output artifact of the action, such as its commit ID.</p>
-     */
-    inline ActionType& WithOutputArtifactDetails(ArtifactDetails&& value) { SetOutputArtifactDetails(std::move(value)); return *this;}
-
+    template<typename OutputArtifactDetailsT = ArtifactDetails>
+    void SetOutputArtifactDetails(OutputArtifactDetailsT&& value) { m_outputArtifactDetailsHasBeenSet = true; m_outputArtifactDetails = std::forward<OutputArtifactDetailsT>(value); }
+    template<typename OutputArtifactDetailsT = ArtifactDetails>
+    ActionType& WithOutputArtifactDetails(OutputArtifactDetailsT&& value) { SetOutputArtifactDetails(std::forward<OutputArtifactDetailsT>(value)); return *this;}
+    ///@}
   private:
 
     ActionTypeId m_id;

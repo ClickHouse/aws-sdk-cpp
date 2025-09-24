@@ -21,7 +21,7 @@ namespace Model
   class GetImportRequest : public CloudTrailRequest
   {
   public:
-    AWS_CLOUDTRAIL_API GetImportRequest();
+    AWS_CLOUDTRAIL_API GetImportRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_CLOUDTRAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p> The ID for the import. </p>
      */
-    inline const Aws::String& GetImportId() const{ return m_importId; }
-
-    /**
-     * <p> The ID for the import. </p>
-     */
+    inline const Aws::String& GetImportId() const { return m_importId; }
     inline bool ImportIdHasBeenSet() const { return m_importIdHasBeenSet; }
-
-    /**
-     * <p> The ID for the import. </p>
-     */
-    inline void SetImportId(const Aws::String& value) { m_importIdHasBeenSet = true; m_importId = value; }
-
-    /**
-     * <p> The ID for the import. </p>
-     */
-    inline void SetImportId(Aws::String&& value) { m_importIdHasBeenSet = true; m_importId = std::move(value); }
-
-    /**
-     * <p> The ID for the import. </p>
-     */
-    inline void SetImportId(const char* value) { m_importIdHasBeenSet = true; m_importId.assign(value); }
-
-    /**
-     * <p> The ID for the import. </p>
-     */
-    inline GetImportRequest& WithImportId(const Aws::String& value) { SetImportId(value); return *this;}
-
-    /**
-     * <p> The ID for the import. </p>
-     */
-    inline GetImportRequest& WithImportId(Aws::String&& value) { SetImportId(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID for the import. </p>
-     */
-    inline GetImportRequest& WithImportId(const char* value) { SetImportId(value); return *this;}
-
+    template<typename ImportIdT = Aws::String>
+    void SetImportId(ImportIdT&& value) { m_importIdHasBeenSet = true; m_importId = std::forward<ImportIdT>(value); }
+    template<typename ImportIdT = Aws::String>
+    GetImportRequest& WithImportId(ImportIdT&& value) { SetImportId(std::forward<ImportIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_importId;

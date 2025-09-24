@@ -22,7 +22,7 @@ namespace Model
   class SetResourceAccessForBucketRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API SetResourceAccessForBucketRequest();
+    AWS_LIGHTSAIL_API SetResourceAccessForBucketRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,104 +35,33 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the Lightsail instance for which to set bucket access. The
      * instance must be in a running or stopped state.</p>
      */
-    inline const Aws::String& GetResourceName() const{ return m_resourceName; }
-
-    /**
-     * <p>The name of the Lightsail instance for which to set bucket access. The
-     * instance must be in a running or stopped state.</p>
-     */
+    inline const Aws::String& GetResourceName() const { return m_resourceName; }
     inline bool ResourceNameHasBeenSet() const { return m_resourceNameHasBeenSet; }
+    template<typename ResourceNameT = Aws::String>
+    void SetResourceName(ResourceNameT&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::forward<ResourceNameT>(value); }
+    template<typename ResourceNameT = Aws::String>
+    SetResourceAccessForBucketRequest& WithResourceName(ResourceNameT&& value) { SetResourceName(std::forward<ResourceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Lightsail instance for which to set bucket access. The
-     * instance must be in a running or stopped state.</p>
-     */
-    inline void SetResourceName(const Aws::String& value) { m_resourceNameHasBeenSet = true; m_resourceName = value; }
-
-    /**
-     * <p>The name of the Lightsail instance for which to set bucket access. The
-     * instance must be in a running or stopped state.</p>
-     */
-    inline void SetResourceName(Aws::String&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::move(value); }
-
-    /**
-     * <p>The name of the Lightsail instance for which to set bucket access. The
-     * instance must be in a running or stopped state.</p>
-     */
-    inline void SetResourceName(const char* value) { m_resourceNameHasBeenSet = true; m_resourceName.assign(value); }
-
-    /**
-     * <p>The name of the Lightsail instance for which to set bucket access. The
-     * instance must be in a running or stopped state.</p>
-     */
-    inline SetResourceAccessForBucketRequest& WithResourceName(const Aws::String& value) { SetResourceName(value); return *this;}
-
-    /**
-     * <p>The name of the Lightsail instance for which to set bucket access. The
-     * instance must be in a running or stopped state.</p>
-     */
-    inline SetResourceAccessForBucketRequest& WithResourceName(Aws::String&& value) { SetResourceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Lightsail instance for which to set bucket access. The
-     * instance must be in a running or stopped state.</p>
-     */
-    inline SetResourceAccessForBucketRequest& WithResourceName(const char* value) { SetResourceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the bucket for which to set access to another Lightsail
      * resource.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>The name of the bucket for which to set access to another Lightsail
-     * resource.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    SetResourceAccessForBucketRequest& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the bucket for which to set access to another Lightsail
-     * resource.</p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>The name of the bucket for which to set access to another Lightsail
-     * resource.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>The name of the bucket for which to set access to another Lightsail
-     * resource.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>The name of the bucket for which to set access to another Lightsail
-     * resource.</p>
-     */
-    inline SetResourceAccessForBucketRequest& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>The name of the bucket for which to set access to another Lightsail
-     * resource.</p>
-     */
-    inline SetResourceAccessForBucketRequest& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the bucket for which to set access to another Lightsail
-     * resource.</p>
-     */
-    inline SetResourceAccessForBucketRequest& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The access setting.</p> <p>The following access settings are available:</p>
      * <ul> <li> <p> <code>allow</code> - Allows access to the bucket and its
@@ -140,53 +69,11 @@ namespace Model
      * its objects. Use this setting to remove access for a resource previously set to
      * <code>allow</code>.</p> </li> </ul>
      */
-    inline const ResourceBucketAccess& GetAccess() const{ return m_access; }
-
-    /**
-     * <p>The access setting.</p> <p>The following access settings are available:</p>
-     * <ul> <li> <p> <code>allow</code> - Allows access to the bucket and its
-     * objects.</p> </li> <li> <p> <code>deny</code> - Denies access to the bucket and
-     * its objects. Use this setting to remove access for a resource previously set to
-     * <code>allow</code>.</p> </li> </ul>
-     */
+    inline ResourceBucketAccess GetAccess() const { return m_access; }
     inline bool AccessHasBeenSet() const { return m_accessHasBeenSet; }
-
-    /**
-     * <p>The access setting.</p> <p>The following access settings are available:</p>
-     * <ul> <li> <p> <code>allow</code> - Allows access to the bucket and its
-     * objects.</p> </li> <li> <p> <code>deny</code> - Denies access to the bucket and
-     * its objects. Use this setting to remove access for a resource previously set to
-     * <code>allow</code>.</p> </li> </ul>
-     */
-    inline void SetAccess(const ResourceBucketAccess& value) { m_accessHasBeenSet = true; m_access = value; }
-
-    /**
-     * <p>The access setting.</p> <p>The following access settings are available:</p>
-     * <ul> <li> <p> <code>allow</code> - Allows access to the bucket and its
-     * objects.</p> </li> <li> <p> <code>deny</code> - Denies access to the bucket and
-     * its objects. Use this setting to remove access for a resource previously set to
-     * <code>allow</code>.</p> </li> </ul>
-     */
-    inline void SetAccess(ResourceBucketAccess&& value) { m_accessHasBeenSet = true; m_access = std::move(value); }
-
-    /**
-     * <p>The access setting.</p> <p>The following access settings are available:</p>
-     * <ul> <li> <p> <code>allow</code> - Allows access to the bucket and its
-     * objects.</p> </li> <li> <p> <code>deny</code> - Denies access to the bucket and
-     * its objects. Use this setting to remove access for a resource previously set to
-     * <code>allow</code>.</p> </li> </ul>
-     */
-    inline SetResourceAccessForBucketRequest& WithAccess(const ResourceBucketAccess& value) { SetAccess(value); return *this;}
-
-    /**
-     * <p>The access setting.</p> <p>The following access settings are available:</p>
-     * <ul> <li> <p> <code>allow</code> - Allows access to the bucket and its
-     * objects.</p> </li> <li> <p> <code>deny</code> - Denies access to the bucket and
-     * its objects. Use this setting to remove access for a resource previously set to
-     * <code>allow</code>.</p> </li> </ul>
-     */
-    inline SetResourceAccessForBucketRequest& WithAccess(ResourceBucketAccess&& value) { SetAccess(std::move(value)); return *this;}
-
+    inline void SetAccess(ResourceBucketAccess value) { m_accessHasBeenSet = true; m_access = value; }
+    inline SetResourceAccessForBucketRequest& WithAccess(ResourceBucketAccess value) { SetAccess(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceName;
@@ -195,7 +82,7 @@ namespace Model
     Aws::String m_bucketName;
     bool m_bucketNameHasBeenSet = false;
 
-    ResourceBucketAccess m_access;
+    ResourceBucketAccess m_access{ResourceBucketAccess::NOT_SET};
     bool m_accessHasBeenSet = false;
   };
 

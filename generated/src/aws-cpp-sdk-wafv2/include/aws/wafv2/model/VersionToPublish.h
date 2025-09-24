@@ -39,91 +39,41 @@ namespace Model
   class VersionToPublish
   {
   public:
-    AWS_WAFV2_API VersionToPublish();
+    AWS_WAFV2_API VersionToPublish() = default;
     AWS_WAFV2_API VersionToPublish(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API VersionToPublish& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the vendor's rule group that's used in the
      * published managed rule group version. </p>
      */
-    inline const Aws::String& GetAssociatedRuleGroupArn() const{ return m_associatedRuleGroupArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the vendor's rule group that's used in the
-     * published managed rule group version. </p>
-     */
+    inline const Aws::String& GetAssociatedRuleGroupArn() const { return m_associatedRuleGroupArn; }
     inline bool AssociatedRuleGroupArnHasBeenSet() const { return m_associatedRuleGroupArnHasBeenSet; }
+    template<typename AssociatedRuleGroupArnT = Aws::String>
+    void SetAssociatedRuleGroupArn(AssociatedRuleGroupArnT&& value) { m_associatedRuleGroupArnHasBeenSet = true; m_associatedRuleGroupArn = std::forward<AssociatedRuleGroupArnT>(value); }
+    template<typename AssociatedRuleGroupArnT = Aws::String>
+    VersionToPublish& WithAssociatedRuleGroupArn(AssociatedRuleGroupArnT&& value) { SetAssociatedRuleGroupArn(std::forward<AssociatedRuleGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the vendor's rule group that's used in the
-     * published managed rule group version. </p>
-     */
-    inline void SetAssociatedRuleGroupArn(const Aws::String& value) { m_associatedRuleGroupArnHasBeenSet = true; m_associatedRuleGroupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the vendor's rule group that's used in the
-     * published managed rule group version. </p>
-     */
-    inline void SetAssociatedRuleGroupArn(Aws::String&& value) { m_associatedRuleGroupArnHasBeenSet = true; m_associatedRuleGroupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the vendor's rule group that's used in the
-     * published managed rule group version. </p>
-     */
-    inline void SetAssociatedRuleGroupArn(const char* value) { m_associatedRuleGroupArnHasBeenSet = true; m_associatedRuleGroupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the vendor's rule group that's used in the
-     * published managed rule group version. </p>
-     */
-    inline VersionToPublish& WithAssociatedRuleGroupArn(const Aws::String& value) { SetAssociatedRuleGroupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the vendor's rule group that's used in the
-     * published managed rule group version. </p>
-     */
-    inline VersionToPublish& WithAssociatedRuleGroupArn(Aws::String&& value) { SetAssociatedRuleGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the vendor's rule group that's used in the
-     * published managed rule group version. </p>
-     */
-    inline VersionToPublish& WithAssociatedRuleGroupArn(const char* value) { SetAssociatedRuleGroupArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The amount of time the vendor expects this version of the managed rule group
      * to last, in days. </p>
      */
-    inline int GetForecastedLifetime() const{ return m_forecastedLifetime; }
-
-    /**
-     * <p>The amount of time the vendor expects this version of the managed rule group
-     * to last, in days. </p>
-     */
+    inline int GetForecastedLifetime() const { return m_forecastedLifetime; }
     inline bool ForecastedLifetimeHasBeenSet() const { return m_forecastedLifetimeHasBeenSet; }
-
-    /**
-     * <p>The amount of time the vendor expects this version of the managed rule group
-     * to last, in days. </p>
-     */
     inline void SetForecastedLifetime(int value) { m_forecastedLifetimeHasBeenSet = true; m_forecastedLifetime = value; }
-
-    /**
-     * <p>The amount of time the vendor expects this version of the managed rule group
-     * to last, in days. </p>
-     */
     inline VersionToPublish& WithForecastedLifetime(int value) { SetForecastedLifetime(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_associatedRuleGroupArn;
     bool m_associatedRuleGroupArnHasBeenSet = false;
 
-    int m_forecastedLifetime;
+    int m_forecastedLifetime{0};
     bool m_forecastedLifetimeHasBeenSet = false;
   };
 

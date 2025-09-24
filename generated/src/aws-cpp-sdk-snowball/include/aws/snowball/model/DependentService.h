@@ -33,76 +33,36 @@ namespace Model
   class DependentService
   {
   public:
-    AWS_SNOWBALL_API DependentService();
+    AWS_SNOWBALL_API DependentService() = default;
     AWS_SNOWBALL_API DependentService(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API DependentService& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the dependent service.</p>
      */
-    inline const ServiceName& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The name of the dependent service.</p>
-     */
+    inline ServiceName GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
+    inline void SetServiceName(ServiceName value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
+    inline DependentService& WithServiceName(ServiceName value) { SetServiceName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dependent service.</p>
-     */
-    inline void SetServiceName(const ServiceName& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The name of the dependent service.</p>
-     */
-    inline void SetServiceName(ServiceName&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The name of the dependent service.</p>
-     */
-    inline DependentService& WithServiceName(const ServiceName& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the dependent service.</p>
-     */
-    inline DependentService& WithServiceName(ServiceName&& value) { SetServiceName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the dependent service.</p>
      */
-    inline const ServiceVersion& GetServiceVersion() const{ return m_serviceVersion; }
-
-    /**
-     * <p>The version of the dependent service.</p>
-     */
+    inline const ServiceVersion& GetServiceVersion() const { return m_serviceVersion; }
     inline bool ServiceVersionHasBeenSet() const { return m_serviceVersionHasBeenSet; }
-
-    /**
-     * <p>The version of the dependent service.</p>
-     */
-    inline void SetServiceVersion(const ServiceVersion& value) { m_serviceVersionHasBeenSet = true; m_serviceVersion = value; }
-
-    /**
-     * <p>The version of the dependent service.</p>
-     */
-    inline void SetServiceVersion(ServiceVersion&& value) { m_serviceVersionHasBeenSet = true; m_serviceVersion = std::move(value); }
-
-    /**
-     * <p>The version of the dependent service.</p>
-     */
-    inline DependentService& WithServiceVersion(const ServiceVersion& value) { SetServiceVersion(value); return *this;}
-
-    /**
-     * <p>The version of the dependent service.</p>
-     */
-    inline DependentService& WithServiceVersion(ServiceVersion&& value) { SetServiceVersion(std::move(value)); return *this;}
-
+    template<typename ServiceVersionT = ServiceVersion>
+    void SetServiceVersion(ServiceVersionT&& value) { m_serviceVersionHasBeenSet = true; m_serviceVersion = std::forward<ServiceVersionT>(value); }
+    template<typename ServiceVersionT = ServiceVersion>
+    DependentService& WithServiceVersion(ServiceVersionT&& value) { SetServiceVersion(std::forward<ServiceVersionT>(value)); return *this;}
+    ///@}
   private:
 
-    ServiceName m_serviceName;
+    ServiceName m_serviceName{ServiceName::NOT_SET};
     bool m_serviceNameHasBeenSet = false;
 
     ServiceVersion m_serviceVersion;

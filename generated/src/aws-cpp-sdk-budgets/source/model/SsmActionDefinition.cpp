@@ -18,19 +18,7 @@ namespace Budgets
 namespace Model
 {
 
-SsmActionDefinition::SsmActionDefinition() : 
-    m_actionSubType(ActionSubType::NOT_SET),
-    m_actionSubTypeHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_instanceIdsHasBeenSet(false)
-{
-}
-
-SsmActionDefinition::SsmActionDefinition(JsonView jsonValue) : 
-    m_actionSubType(ActionSubType::NOT_SET),
-    m_actionSubTypeHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_instanceIdsHasBeenSet(false)
+SsmActionDefinition::SsmActionDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ SsmActionDefinition& SsmActionDefinition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ActionSubType"))
   {
     m_actionSubType = ActionSubTypeMapper::GetActionSubTypeForName(jsonValue.GetString("ActionSubType"));
-
     m_actionSubTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Region"))
   {
     m_region = jsonValue.GetString("Region");
-
     m_regionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceIds"))
   {
     Aws::Utils::Array<JsonView> instanceIdsJsonList = jsonValue.GetArray("InstanceIds");
@@ -60,7 +44,6 @@ SsmActionDefinition& SsmActionDefinition::operator =(JsonView jsonValue)
     }
     m_instanceIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

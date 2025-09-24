@@ -16,13 +16,7 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws;
 
-UpdateJobStatusResult::UpdateJobStatusResult() : 
-    m_status(JobStatus::NOT_SET)
-{
-}
-
-UpdateJobStatusResult::UpdateJobStatusResult(const Aws::AmazonWebServiceResult<XmlDocument>& result) : 
-    m_status(JobStatus::NOT_SET)
+UpdateJobStatusResult::UpdateJobStatusResult(const Aws::AmazonWebServiceResult<XmlDocument>& result)
 {
   *this = result;
 }
@@ -38,24 +32,35 @@ UpdateJobStatusResult& UpdateJobStatusResult::operator =(const Aws::AmazonWebSer
     if(!jobIdNode.IsNull())
     {
       m_jobId = Aws::Utils::Xml::DecodeEscapedXmlText(jobIdNode.GetText());
+      m_jobIdHasBeenSet = true;
     }
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = JobStatusMapper::GetJobStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = JobStatusMapper::GetJobStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
+      m_statusHasBeenSet = true;
     }
     XmlNode statusUpdateReasonNode = resultNode.FirstChild("StatusUpdateReason");
     if(!statusUpdateReasonNode.IsNull())
     {
       m_statusUpdateReason = Aws::Utils::Xml::DecodeEscapedXmlText(statusUpdateReasonNode.GetText());
+      m_statusUpdateReasonHasBeenSet = true;
     }
   }
 
   const auto& headers = result.GetHeaderValueCollection();
-  const auto& requestIdIter = headers.find("x-amzn-requestid");
+  const auto& requestIdIter = headers.find("x-amz-request-id");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
+  }
+
+  const auto& hostIdIter = headers.find("x-amz-id-2");
+  if(hostIdIter != headers.end())
+  {
+    m_hostId = hostIdIter->second;
+    m_hostIdHasBeenSet = true;
   }
 
   return *this;

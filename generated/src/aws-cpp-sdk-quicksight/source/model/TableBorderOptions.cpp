@@ -18,21 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TableBorderOptions::TableBorderOptions() : 
-    m_colorHasBeenSet(false),
-    m_thickness(0),
-    m_thicknessHasBeenSet(false),
-    m_style(TableBorderStyle::NOT_SET),
-    m_styleHasBeenSet(false)
-{
-}
-
-TableBorderOptions::TableBorderOptions(JsonView jsonValue) : 
-    m_colorHasBeenSet(false),
-    m_thickness(0),
-    m_thicknessHasBeenSet(false),
-    m_style(TableBorderStyle::NOT_SET),
-    m_styleHasBeenSet(false)
+TableBorderOptions::TableBorderOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ TableBorderOptions& TableBorderOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Color"))
   {
     m_color = jsonValue.GetString("Color");
-
     m_colorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Thickness"))
   {
     m_thickness = jsonValue.GetInteger("Thickness");
-
     m_thicknessHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Style"))
   {
     m_style = TableBorderStyleMapper::GetTableBorderStyleForName(jsonValue.GetString("Style"));
-
     m_styleHasBeenSet = true;
   }
-
   return *this;
 }
 

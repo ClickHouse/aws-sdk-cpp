@@ -12,6 +12,7 @@
 #include <aws/quicksight/model/LegendOptions.h>
 #include <aws/quicksight/model/DataLabelOptions.h>
 #include <aws/quicksight/model/TooltipOptions.h>
+#include <aws/quicksight/model/VisualInteractionOptions.h>
 #include <utility>
 
 namespace Aws
@@ -37,308 +38,134 @@ namespace Model
   class TreeMapConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API TreeMapConfiguration();
+    AWS_QUICKSIGHT_API TreeMapConfiguration() = default;
     AWS_QUICKSIGHT_API TreeMapConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TreeMapConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field wells of the visual.</p>
      */
-    inline const TreeMapFieldWells& GetFieldWells() const{ return m_fieldWells; }
-
-    /**
-     * <p>The field wells of the visual.</p>
-     */
+    inline const TreeMapFieldWells& GetFieldWells() const { return m_fieldWells; }
     inline bool FieldWellsHasBeenSet() const { return m_fieldWellsHasBeenSet; }
+    template<typename FieldWellsT = TreeMapFieldWells>
+    void SetFieldWells(FieldWellsT&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::forward<FieldWellsT>(value); }
+    template<typename FieldWellsT = TreeMapFieldWells>
+    TreeMapConfiguration& WithFieldWells(FieldWellsT&& value) { SetFieldWells(std::forward<FieldWellsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field wells of the visual.</p>
-     */
-    inline void SetFieldWells(const TreeMapFieldWells& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = value; }
-
-    /**
-     * <p>The field wells of the visual.</p>
-     */
-    inline void SetFieldWells(TreeMapFieldWells&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::move(value); }
-
-    /**
-     * <p>The field wells of the visual.</p>
-     */
-    inline TreeMapConfiguration& WithFieldWells(const TreeMapFieldWells& value) { SetFieldWells(value); return *this;}
-
-    /**
-     * <p>The field wells of the visual.</p>
-     */
-    inline TreeMapConfiguration& WithFieldWells(TreeMapFieldWells&& value) { SetFieldWells(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sort configuration of a tree map.</p>
      */
-    inline const TreeMapSortConfiguration& GetSortConfiguration() const{ return m_sortConfiguration; }
-
-    /**
-     * <p>The sort configuration of a tree map.</p>
-     */
+    inline const TreeMapSortConfiguration& GetSortConfiguration() const { return m_sortConfiguration; }
     inline bool SortConfigurationHasBeenSet() const { return m_sortConfigurationHasBeenSet; }
+    template<typename SortConfigurationT = TreeMapSortConfiguration>
+    void SetSortConfiguration(SortConfigurationT&& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = std::forward<SortConfigurationT>(value); }
+    template<typename SortConfigurationT = TreeMapSortConfiguration>
+    TreeMapConfiguration& WithSortConfiguration(SortConfigurationT&& value) { SetSortConfiguration(std::forward<SortConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The sort configuration of a tree map.</p>
-     */
-    inline void SetSortConfiguration(const TreeMapSortConfiguration& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = value; }
-
-    /**
-     * <p>The sort configuration of a tree map.</p>
-     */
-    inline void SetSortConfiguration(TreeMapSortConfiguration&& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = std::move(value); }
-
-    /**
-     * <p>The sort configuration of a tree map.</p>
-     */
-    inline TreeMapConfiguration& WithSortConfiguration(const TreeMapSortConfiguration& value) { SetSortConfiguration(value); return *this;}
-
-    /**
-     * <p>The sort configuration of a tree map.</p>
-     */
-    inline TreeMapConfiguration& WithSortConfiguration(TreeMapSortConfiguration&& value) { SetSortConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The label options (label text, label visibility) of the groups that are
      * displayed in a tree map.</p>
      */
-    inline const ChartAxisLabelOptions& GetGroupLabelOptions() const{ return m_groupLabelOptions; }
-
-    /**
-     * <p>The label options (label text, label visibility) of the groups that are
-     * displayed in a tree map.</p>
-     */
+    inline const ChartAxisLabelOptions& GetGroupLabelOptions() const { return m_groupLabelOptions; }
     inline bool GroupLabelOptionsHasBeenSet() const { return m_groupLabelOptionsHasBeenSet; }
+    template<typename GroupLabelOptionsT = ChartAxisLabelOptions>
+    void SetGroupLabelOptions(GroupLabelOptionsT&& value) { m_groupLabelOptionsHasBeenSet = true; m_groupLabelOptions = std::forward<GroupLabelOptionsT>(value); }
+    template<typename GroupLabelOptionsT = ChartAxisLabelOptions>
+    TreeMapConfiguration& WithGroupLabelOptions(GroupLabelOptionsT&& value) { SetGroupLabelOptions(std::forward<GroupLabelOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The label options (label text, label visibility) of the groups that are
-     * displayed in a tree map.</p>
-     */
-    inline void SetGroupLabelOptions(const ChartAxisLabelOptions& value) { m_groupLabelOptionsHasBeenSet = true; m_groupLabelOptions = value; }
-
-    /**
-     * <p>The label options (label text, label visibility) of the groups that are
-     * displayed in a tree map.</p>
-     */
-    inline void SetGroupLabelOptions(ChartAxisLabelOptions&& value) { m_groupLabelOptionsHasBeenSet = true; m_groupLabelOptions = std::move(value); }
-
-    /**
-     * <p>The label options (label text, label visibility) of the groups that are
-     * displayed in a tree map.</p>
-     */
-    inline TreeMapConfiguration& WithGroupLabelOptions(const ChartAxisLabelOptions& value) { SetGroupLabelOptions(value); return *this;}
-
-    /**
-     * <p>The label options (label text, label visibility) of the groups that are
-     * displayed in a tree map.</p>
-     */
-    inline TreeMapConfiguration& WithGroupLabelOptions(ChartAxisLabelOptions&& value) { SetGroupLabelOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The label options (label text, label visibility) of the sizes that are
      * displayed in a tree map.</p>
      */
-    inline const ChartAxisLabelOptions& GetSizeLabelOptions() const{ return m_sizeLabelOptions; }
-
-    /**
-     * <p>The label options (label text, label visibility) of the sizes that are
-     * displayed in a tree map.</p>
-     */
+    inline const ChartAxisLabelOptions& GetSizeLabelOptions() const { return m_sizeLabelOptions; }
     inline bool SizeLabelOptionsHasBeenSet() const { return m_sizeLabelOptionsHasBeenSet; }
+    template<typename SizeLabelOptionsT = ChartAxisLabelOptions>
+    void SetSizeLabelOptions(SizeLabelOptionsT&& value) { m_sizeLabelOptionsHasBeenSet = true; m_sizeLabelOptions = std::forward<SizeLabelOptionsT>(value); }
+    template<typename SizeLabelOptionsT = ChartAxisLabelOptions>
+    TreeMapConfiguration& WithSizeLabelOptions(SizeLabelOptionsT&& value) { SetSizeLabelOptions(std::forward<SizeLabelOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The label options (label text, label visibility) of the sizes that are
-     * displayed in a tree map.</p>
-     */
-    inline void SetSizeLabelOptions(const ChartAxisLabelOptions& value) { m_sizeLabelOptionsHasBeenSet = true; m_sizeLabelOptions = value; }
-
-    /**
-     * <p>The label options (label text, label visibility) of the sizes that are
-     * displayed in a tree map.</p>
-     */
-    inline void SetSizeLabelOptions(ChartAxisLabelOptions&& value) { m_sizeLabelOptionsHasBeenSet = true; m_sizeLabelOptions = std::move(value); }
-
-    /**
-     * <p>The label options (label text, label visibility) of the sizes that are
-     * displayed in a tree map.</p>
-     */
-    inline TreeMapConfiguration& WithSizeLabelOptions(const ChartAxisLabelOptions& value) { SetSizeLabelOptions(value); return *this;}
-
-    /**
-     * <p>The label options (label text, label visibility) of the sizes that are
-     * displayed in a tree map.</p>
-     */
-    inline TreeMapConfiguration& WithSizeLabelOptions(ChartAxisLabelOptions&& value) { SetSizeLabelOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The label options (label text, label visibility) for the colors displayed in
      * a tree map.</p>
      */
-    inline const ChartAxisLabelOptions& GetColorLabelOptions() const{ return m_colorLabelOptions; }
-
-    /**
-     * <p>The label options (label text, label visibility) for the colors displayed in
-     * a tree map.</p>
-     */
+    inline const ChartAxisLabelOptions& GetColorLabelOptions() const { return m_colorLabelOptions; }
     inline bool ColorLabelOptionsHasBeenSet() const { return m_colorLabelOptionsHasBeenSet; }
+    template<typename ColorLabelOptionsT = ChartAxisLabelOptions>
+    void SetColorLabelOptions(ColorLabelOptionsT&& value) { m_colorLabelOptionsHasBeenSet = true; m_colorLabelOptions = std::forward<ColorLabelOptionsT>(value); }
+    template<typename ColorLabelOptionsT = ChartAxisLabelOptions>
+    TreeMapConfiguration& WithColorLabelOptions(ColorLabelOptionsT&& value) { SetColorLabelOptions(std::forward<ColorLabelOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The label options (label text, label visibility) for the colors displayed in
-     * a tree map.</p>
-     */
-    inline void SetColorLabelOptions(const ChartAxisLabelOptions& value) { m_colorLabelOptionsHasBeenSet = true; m_colorLabelOptions = value; }
-
-    /**
-     * <p>The label options (label text, label visibility) for the colors displayed in
-     * a tree map.</p>
-     */
-    inline void SetColorLabelOptions(ChartAxisLabelOptions&& value) { m_colorLabelOptionsHasBeenSet = true; m_colorLabelOptions = std::move(value); }
-
-    /**
-     * <p>The label options (label text, label visibility) for the colors displayed in
-     * a tree map.</p>
-     */
-    inline TreeMapConfiguration& WithColorLabelOptions(const ChartAxisLabelOptions& value) { SetColorLabelOptions(value); return *this;}
-
-    /**
-     * <p>The label options (label text, label visibility) for the colors displayed in
-     * a tree map.</p>
-     */
-    inline TreeMapConfiguration& WithColorLabelOptions(ChartAxisLabelOptions&& value) { SetColorLabelOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The color options (gradient color, point of divergence) of a tree map.</p>
      */
-    inline const ColorScale& GetColorScale() const{ return m_colorScale; }
-
-    /**
-     * <p>The color options (gradient color, point of divergence) of a tree map.</p>
-     */
+    inline const ColorScale& GetColorScale() const { return m_colorScale; }
     inline bool ColorScaleHasBeenSet() const { return m_colorScaleHasBeenSet; }
+    template<typename ColorScaleT = ColorScale>
+    void SetColorScale(ColorScaleT&& value) { m_colorScaleHasBeenSet = true; m_colorScale = std::forward<ColorScaleT>(value); }
+    template<typename ColorScaleT = ColorScale>
+    TreeMapConfiguration& WithColorScale(ColorScaleT&& value) { SetColorScale(std::forward<ColorScaleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The color options (gradient color, point of divergence) of a tree map.</p>
-     */
-    inline void SetColorScale(const ColorScale& value) { m_colorScaleHasBeenSet = true; m_colorScale = value; }
-
-    /**
-     * <p>The color options (gradient color, point of divergence) of a tree map.</p>
-     */
-    inline void SetColorScale(ColorScale&& value) { m_colorScaleHasBeenSet = true; m_colorScale = std::move(value); }
-
-    /**
-     * <p>The color options (gradient color, point of divergence) of a tree map.</p>
-     */
-    inline TreeMapConfiguration& WithColorScale(const ColorScale& value) { SetColorScale(value); return *this;}
-
-    /**
-     * <p>The color options (gradient color, point of divergence) of a tree map.</p>
-     */
-    inline TreeMapConfiguration& WithColorScale(ColorScale&& value) { SetColorScale(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The legend display setup of the visual.</p>
      */
-    inline const LegendOptions& GetLegend() const{ return m_legend; }
-
-    /**
-     * <p>The legend display setup of the visual.</p>
-     */
+    inline const LegendOptions& GetLegend() const { return m_legend; }
     inline bool LegendHasBeenSet() const { return m_legendHasBeenSet; }
+    template<typename LegendT = LegendOptions>
+    void SetLegend(LegendT&& value) { m_legendHasBeenSet = true; m_legend = std::forward<LegendT>(value); }
+    template<typename LegendT = LegendOptions>
+    TreeMapConfiguration& WithLegend(LegendT&& value) { SetLegend(std::forward<LegendT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The legend display setup of the visual.</p>
-     */
-    inline void SetLegend(const LegendOptions& value) { m_legendHasBeenSet = true; m_legend = value; }
-
-    /**
-     * <p>The legend display setup of the visual.</p>
-     */
-    inline void SetLegend(LegendOptions&& value) { m_legendHasBeenSet = true; m_legend = std::move(value); }
-
-    /**
-     * <p>The legend display setup of the visual.</p>
-     */
-    inline TreeMapConfiguration& WithLegend(const LegendOptions& value) { SetLegend(value); return *this;}
-
-    /**
-     * <p>The legend display setup of the visual.</p>
-     */
-    inline TreeMapConfiguration& WithLegend(LegendOptions&& value) { SetLegend(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine if visual data labels are displayed.</p>
      */
-    inline const DataLabelOptions& GetDataLabels() const{ return m_dataLabels; }
-
-    /**
-     * <p>The options that determine if visual data labels are displayed.</p>
-     */
+    inline const DataLabelOptions& GetDataLabels() const { return m_dataLabels; }
     inline bool DataLabelsHasBeenSet() const { return m_dataLabelsHasBeenSet; }
+    template<typename DataLabelsT = DataLabelOptions>
+    void SetDataLabels(DataLabelsT&& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = std::forward<DataLabelsT>(value); }
+    template<typename DataLabelsT = DataLabelOptions>
+    TreeMapConfiguration& WithDataLabels(DataLabelsT&& value) { SetDataLabels(std::forward<DataLabelsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine if visual data labels are displayed.</p>
-     */
-    inline void SetDataLabels(const DataLabelOptions& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = value; }
-
-    /**
-     * <p>The options that determine if visual data labels are displayed.</p>
-     */
-    inline void SetDataLabels(DataLabelOptions&& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = std::move(value); }
-
-    /**
-     * <p>The options that determine if visual data labels are displayed.</p>
-     */
-    inline TreeMapConfiguration& WithDataLabels(const DataLabelOptions& value) { SetDataLabels(value); return *this;}
-
-    /**
-     * <p>The options that determine if visual data labels are displayed.</p>
-     */
-    inline TreeMapConfiguration& WithDataLabels(DataLabelOptions&& value) { SetDataLabels(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tooltip display setup of the visual.</p>
      */
-    inline const TooltipOptions& GetTooltip() const{ return m_tooltip; }
-
-    /**
-     * <p>The tooltip display setup of the visual.</p>
-     */
+    inline const TooltipOptions& GetTooltip() const { return m_tooltip; }
     inline bool TooltipHasBeenSet() const { return m_tooltipHasBeenSet; }
+    template<typename TooltipT = TooltipOptions>
+    void SetTooltip(TooltipT&& value) { m_tooltipHasBeenSet = true; m_tooltip = std::forward<TooltipT>(value); }
+    template<typename TooltipT = TooltipOptions>
+    TreeMapConfiguration& WithTooltip(TooltipT&& value) { SetTooltip(std::forward<TooltipT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The tooltip display setup of the visual.</p>
+     * <p>The general visual interactions setup for a visual.</p>
      */
-    inline void SetTooltip(const TooltipOptions& value) { m_tooltipHasBeenSet = true; m_tooltip = value; }
-
-    /**
-     * <p>The tooltip display setup of the visual.</p>
-     */
-    inline void SetTooltip(TooltipOptions&& value) { m_tooltipHasBeenSet = true; m_tooltip = std::move(value); }
-
-    /**
-     * <p>The tooltip display setup of the visual.</p>
-     */
-    inline TreeMapConfiguration& WithTooltip(const TooltipOptions& value) { SetTooltip(value); return *this;}
-
-    /**
-     * <p>The tooltip display setup of the visual.</p>
-     */
-    inline TreeMapConfiguration& WithTooltip(TooltipOptions&& value) { SetTooltip(std::move(value)); return *this;}
-
+    inline const VisualInteractionOptions& GetInteractions() const { return m_interactions; }
+    inline bool InteractionsHasBeenSet() const { return m_interactionsHasBeenSet; }
+    template<typename InteractionsT = VisualInteractionOptions>
+    void SetInteractions(InteractionsT&& value) { m_interactionsHasBeenSet = true; m_interactions = std::forward<InteractionsT>(value); }
+    template<typename InteractionsT = VisualInteractionOptions>
+    TreeMapConfiguration& WithInteractions(InteractionsT&& value) { SetInteractions(std::forward<InteractionsT>(value)); return *this;}
+    ///@}
   private:
 
     TreeMapFieldWells m_fieldWells;
@@ -367,6 +194,9 @@ namespace Model
 
     TooltipOptions m_tooltip;
     bool m_tooltipHasBeenSet = false;
+
+    VisualInteractionOptions m_interactions;
+    bool m_interactionsHasBeenSet = false;
   };
 
 } // namespace Model

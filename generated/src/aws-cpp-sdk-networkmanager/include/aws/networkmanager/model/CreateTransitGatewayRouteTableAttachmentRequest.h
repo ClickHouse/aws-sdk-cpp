@@ -24,7 +24,7 @@ namespace Model
   class CreateTransitGatewayRouteTableAttachmentRequest : public NetworkManagerRequest
   {
   public:
-    AWS_NETWORKMANAGER_API CreateTransitGatewayRouteTableAttachmentRequest();
+    AWS_NETWORKMANAGER_API CreateTransitGatewayRouteTableAttachmentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,185 +35,57 @@ namespace Model
     AWS_NETWORKMANAGER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the peer for the </p>
      */
-    inline const Aws::String& GetPeeringId() const{ return m_peeringId; }
-
-    /**
-     * <p>The ID of the peer for the </p>
-     */
+    inline const Aws::String& GetPeeringId() const { return m_peeringId; }
     inline bool PeeringIdHasBeenSet() const { return m_peeringIdHasBeenSet; }
+    template<typename PeeringIdT = Aws::String>
+    void SetPeeringId(PeeringIdT&& value) { m_peeringIdHasBeenSet = true; m_peeringId = std::forward<PeeringIdT>(value); }
+    template<typename PeeringIdT = Aws::String>
+    CreateTransitGatewayRouteTableAttachmentRequest& WithPeeringId(PeeringIdT&& value) { SetPeeringId(std::forward<PeeringIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the peer for the </p>
-     */
-    inline void SetPeeringId(const Aws::String& value) { m_peeringIdHasBeenSet = true; m_peeringId = value; }
-
-    /**
-     * <p>The ID of the peer for the </p>
-     */
-    inline void SetPeeringId(Aws::String&& value) { m_peeringIdHasBeenSet = true; m_peeringId = std::move(value); }
-
-    /**
-     * <p>The ID of the peer for the </p>
-     */
-    inline void SetPeeringId(const char* value) { m_peeringIdHasBeenSet = true; m_peeringId.assign(value); }
-
-    /**
-     * <p>The ID of the peer for the </p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithPeeringId(const Aws::String& value) { SetPeeringId(value); return *this;}
-
-    /**
-     * <p>The ID of the peer for the </p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithPeeringId(Aws::String&& value) { SetPeeringId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the peer for the </p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithPeeringId(const char* value) { SetPeeringId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the transit gateway route table for the attachment request. For
      * example, <code>"TransitGatewayRouteTableArn":
      * "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456"</code>.</p>
      */
-    inline const Aws::String& GetTransitGatewayRouteTableArn() const{ return m_transitGatewayRouteTableArn; }
-
-    /**
-     * <p>The ARN of the transit gateway route table for the attachment request. For
-     * example, <code>"TransitGatewayRouteTableArn":
-     * "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456"</code>.</p>
-     */
+    inline const Aws::String& GetTransitGatewayRouteTableArn() const { return m_transitGatewayRouteTableArn; }
     inline bool TransitGatewayRouteTableArnHasBeenSet() const { return m_transitGatewayRouteTableArnHasBeenSet; }
+    template<typename TransitGatewayRouteTableArnT = Aws::String>
+    void SetTransitGatewayRouteTableArn(TransitGatewayRouteTableArnT&& value) { m_transitGatewayRouteTableArnHasBeenSet = true; m_transitGatewayRouteTableArn = std::forward<TransitGatewayRouteTableArnT>(value); }
+    template<typename TransitGatewayRouteTableArnT = Aws::String>
+    CreateTransitGatewayRouteTableAttachmentRequest& WithTransitGatewayRouteTableArn(TransitGatewayRouteTableArnT&& value) { SetTransitGatewayRouteTableArn(std::forward<TransitGatewayRouteTableArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the transit gateway route table for the attachment request. For
-     * example, <code>"TransitGatewayRouteTableArn":
-     * "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456"</code>.</p>
-     */
-    inline void SetTransitGatewayRouteTableArn(const Aws::String& value) { m_transitGatewayRouteTableArnHasBeenSet = true; m_transitGatewayRouteTableArn = value; }
-
-    /**
-     * <p>The ARN of the transit gateway route table for the attachment request. For
-     * example, <code>"TransitGatewayRouteTableArn":
-     * "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456"</code>.</p>
-     */
-    inline void SetTransitGatewayRouteTableArn(Aws::String&& value) { m_transitGatewayRouteTableArnHasBeenSet = true; m_transitGatewayRouteTableArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the transit gateway route table for the attachment request. For
-     * example, <code>"TransitGatewayRouteTableArn":
-     * "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456"</code>.</p>
-     */
-    inline void SetTransitGatewayRouteTableArn(const char* value) { m_transitGatewayRouteTableArnHasBeenSet = true; m_transitGatewayRouteTableArn.assign(value); }
-
-    /**
-     * <p>The ARN of the transit gateway route table for the attachment request. For
-     * example, <code>"TransitGatewayRouteTableArn":
-     * "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456"</code>.</p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithTransitGatewayRouteTableArn(const Aws::String& value) { SetTransitGatewayRouteTableArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the transit gateway route table for the attachment request. For
-     * example, <code>"TransitGatewayRouteTableArn":
-     * "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456"</code>.</p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithTransitGatewayRouteTableArn(Aws::String&& value) { SetTransitGatewayRouteTableArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the transit gateway route table for the attachment request. For
-     * example, <code>"TransitGatewayRouteTableArn":
-     * "arn:aws:ec2:us-west-2:123456789012:transit-gateway-route-table/tgw-rtb-9876543210123456"</code>.</p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithTransitGatewayRouteTableArn(const char* value) { SetTransitGatewayRouteTableArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of key-value tags associated with the request.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The list of key-value tags associated with the request.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateTransitGatewayRouteTableAttachmentRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateTransitGatewayRouteTableAttachmentRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of key-value tags associated with the request.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The list of key-value tags associated with the request.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The list of key-value tags associated with the request.</p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The list of key-value tags associated with the request.</p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of key-value tags associated with the request.</p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The list of key-value tags associated with the request.</p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The client token associated with the request.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The client token associated with the request.</p>
-     */
-    inline CreateTransitGatewayRouteTableAttachmentRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateTransitGatewayRouteTableAttachmentRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_peeringId;
@@ -225,8 +97,8 @@ namespace Model
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
   };
 
 } // namespace Model

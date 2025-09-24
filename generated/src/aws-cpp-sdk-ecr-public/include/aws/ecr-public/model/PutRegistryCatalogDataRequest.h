@@ -21,7 +21,7 @@ namespace Model
   class PutRegistryCatalogDataRequest : public ECRPublicRequest
   {
   public:
-    AWS_ECRPUBLIC_API PutRegistryCatalogDataRequest();
+    AWS_ECRPUBLIC_API PutRegistryCatalogDataRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,70 +34,20 @@ namespace Model
     AWS_ECRPUBLIC_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The display name for a public registry. The display name is shown as the
      * repository author in the Amazon ECR Public Gallery.</p>  <p>The registry
      * display name is only publicly visible in the Amazon ECR Public Gallery for
      * verified accounts.</p> 
      */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>The display name for a public registry. The display name is shown as the
-     * repository author in the Amazon ECR Public Gallery.</p>  <p>The registry
-     * display name is only publicly visible in the Amazon ECR Public Gallery for
-     * verified accounts.</p> 
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
-
-    /**
-     * <p>The display name for a public registry. The display name is shown as the
-     * repository author in the Amazon ECR Public Gallery.</p>  <p>The registry
-     * display name is only publicly visible in the Amazon ECR Public Gallery for
-     * verified accounts.</p> 
-     */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
-
-    /**
-     * <p>The display name for a public registry. The display name is shown as the
-     * repository author in the Amazon ECR Public Gallery.</p>  <p>The registry
-     * display name is only publicly visible in the Amazon ECR Public Gallery for
-     * verified accounts.</p> 
-     */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
-
-    /**
-     * <p>The display name for a public registry. The display name is shown as the
-     * repository author in the Amazon ECR Public Gallery.</p>  <p>The registry
-     * display name is only publicly visible in the Amazon ECR Public Gallery for
-     * verified accounts.</p> 
-     */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>The display name for a public registry. The display name is shown as the
-     * repository author in the Amazon ECR Public Gallery.</p>  <p>The registry
-     * display name is only publicly visible in the Amazon ECR Public Gallery for
-     * verified accounts.</p> 
-     */
-    inline PutRegistryCatalogDataRequest& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>The display name for a public registry. The display name is shown as the
-     * repository author in the Amazon ECR Public Gallery.</p>  <p>The registry
-     * display name is only publicly visible in the Amazon ECR Public Gallery for
-     * verified accounts.</p> 
-     */
-    inline PutRegistryCatalogDataRequest& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name for a public registry. The display name is shown as the
-     * repository author in the Amazon ECR Public Gallery.</p>  <p>The registry
-     * display name is only publicly visible in the Amazon ECR Public Gallery for
-     * verified accounts.</p> 
-     */
-    inline PutRegistryCatalogDataRequest& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    PutRegistryCatalogDataRequest& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_displayName;

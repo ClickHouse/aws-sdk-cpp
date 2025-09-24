@@ -21,7 +21,7 @@ namespace Model
   class ListPricingRulesAssociatedToPricingPlanRequest : public BillingConductorRequest
   {
   public:
-    AWS_BILLINGCONDUCTOR_API ListPricingRulesAssociatedToPricingPlanRequest();
+    AWS_BILLINGCONDUCTOR_API ListPricingRulesAssociatedToPricingPlanRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,165 +32,53 @@ namespace Model
     AWS_BILLINGCONDUCTOR_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The billing period for which the pricing rule associations are to be listed.
      * </p>
      */
-    inline const Aws::String& GetBillingPeriod() const{ return m_billingPeriod; }
-
-    /**
-     * <p> The billing period for which the pricing rule associations are to be listed.
-     * </p>
-     */
+    inline const Aws::String& GetBillingPeriod() const { return m_billingPeriod; }
     inline bool BillingPeriodHasBeenSet() const { return m_billingPeriodHasBeenSet; }
+    template<typename BillingPeriodT = Aws::String>
+    void SetBillingPeriod(BillingPeriodT&& value) { m_billingPeriodHasBeenSet = true; m_billingPeriod = std::forward<BillingPeriodT>(value); }
+    template<typename BillingPeriodT = Aws::String>
+    ListPricingRulesAssociatedToPricingPlanRequest& WithBillingPeriod(BillingPeriodT&& value) { SetBillingPeriod(std::forward<BillingPeriodT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The billing period for which the pricing rule associations are to be listed.
-     * </p>
-     */
-    inline void SetBillingPeriod(const Aws::String& value) { m_billingPeriodHasBeenSet = true; m_billingPeriod = value; }
-
-    /**
-     * <p> The billing period for which the pricing rule associations are to be listed.
-     * </p>
-     */
-    inline void SetBillingPeriod(Aws::String&& value) { m_billingPeriodHasBeenSet = true; m_billingPeriod = std::move(value); }
-
-    /**
-     * <p> The billing period for which the pricing rule associations are to be listed.
-     * </p>
-     */
-    inline void SetBillingPeriod(const char* value) { m_billingPeriodHasBeenSet = true; m_billingPeriod.assign(value); }
-
-    /**
-     * <p> The billing period for which the pricing rule associations are to be listed.
-     * </p>
-     */
-    inline ListPricingRulesAssociatedToPricingPlanRequest& WithBillingPeriod(const Aws::String& value) { SetBillingPeriod(value); return *this;}
-
-    /**
-     * <p> The billing period for which the pricing rule associations are to be listed.
-     * </p>
-     */
-    inline ListPricingRulesAssociatedToPricingPlanRequest& WithBillingPeriod(Aws::String&& value) { SetBillingPeriod(std::move(value)); return *this;}
-
-    /**
-     * <p> The billing period for which the pricing rule associations are to be listed.
-     * </p>
-     */
-    inline ListPricingRulesAssociatedToPricingPlanRequest& WithBillingPeriod(const char* value) { SetBillingPeriod(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the pricing plan for which associations
      * are to be listed.</p>
      */
-    inline const Aws::String& GetPricingPlanArn() const{ return m_pricingPlanArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the pricing plan for which associations
-     * are to be listed.</p>
-     */
+    inline const Aws::String& GetPricingPlanArn() const { return m_pricingPlanArn; }
     inline bool PricingPlanArnHasBeenSet() const { return m_pricingPlanArnHasBeenSet; }
+    template<typename PricingPlanArnT = Aws::String>
+    void SetPricingPlanArn(PricingPlanArnT&& value) { m_pricingPlanArnHasBeenSet = true; m_pricingPlanArn = std::forward<PricingPlanArnT>(value); }
+    template<typename PricingPlanArnT = Aws::String>
+    ListPricingRulesAssociatedToPricingPlanRequest& WithPricingPlanArn(PricingPlanArnT&& value) { SetPricingPlanArn(std::forward<PricingPlanArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) of the pricing plan for which associations
-     * are to be listed.</p>
-     */
-    inline void SetPricingPlanArn(const Aws::String& value) { m_pricingPlanArnHasBeenSet = true; m_pricingPlanArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the pricing plan for which associations
-     * are to be listed.</p>
-     */
-    inline void SetPricingPlanArn(Aws::String&& value) { m_pricingPlanArnHasBeenSet = true; m_pricingPlanArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the pricing plan for which associations
-     * are to be listed.</p>
-     */
-    inline void SetPricingPlanArn(const char* value) { m_pricingPlanArnHasBeenSet = true; m_pricingPlanArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the pricing plan for which associations
-     * are to be listed.</p>
-     */
-    inline ListPricingRulesAssociatedToPricingPlanRequest& WithPricingPlanArn(const Aws::String& value) { SetPricingPlanArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the pricing plan for which associations
-     * are to be listed.</p>
-     */
-    inline ListPricingRulesAssociatedToPricingPlanRequest& WithPricingPlanArn(Aws::String&& value) { SetPricingPlanArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the pricing plan for which associations
-     * are to be listed.</p>
-     */
-    inline ListPricingRulesAssociatedToPricingPlanRequest& WithPricingPlanArn(const char* value) { SetPricingPlanArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The optional maximum number of pricing rule associations to retrieve.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The optional maximum number of pricing rule associations to retrieve.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The optional maximum number of pricing rule associations to retrieve.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The optional maximum number of pricing rule associations to retrieve.</p>
-     */
     inline ListPricingRulesAssociatedToPricingPlanRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> The optional pagination token returned by a previous call. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p> The optional pagination token returned by a previous call. </p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p> The optional pagination token returned by a previous call. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p> The optional pagination token returned by a previous call. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p> The optional pagination token returned by a previous call. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p> The optional pagination token returned by a previous call. </p>
-     */
-    inline ListPricingRulesAssociatedToPricingPlanRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p> The optional pagination token returned by a previous call. </p>
-     */
-    inline ListPricingRulesAssociatedToPricingPlanRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p> The optional pagination token returned by a previous call. </p>
-     */
-    inline ListPricingRulesAssociatedToPricingPlanRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListPricingRulesAssociatedToPricingPlanRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_billingPeriod;
@@ -199,7 +87,7 @@ namespace Model
     Aws::String m_pricingPlanArn;
     bool m_pricingPlanArnHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

@@ -34,63 +34,37 @@ namespace Model
   class DescribeDomainConfigResult
   {
   public:
-    AWS_OPENSEARCHSERVICE_API DescribeDomainConfigResult();
+    AWS_OPENSEARCHSERVICE_API DescribeDomainConfigResult() = default;
     AWS_OPENSEARCHSERVICE_API DescribeDomainConfigResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OPENSEARCHSERVICE_API DescribeDomainConfigResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Container for the configuration of the OpenSearch Service domain.</p>
      */
-    inline const DomainConfig& GetDomainConfig() const{ return m_domainConfig; }
+    inline const DomainConfig& GetDomainConfig() const { return m_domainConfig; }
+    template<typename DomainConfigT = DomainConfig>
+    void SetDomainConfig(DomainConfigT&& value) { m_domainConfigHasBeenSet = true; m_domainConfig = std::forward<DomainConfigT>(value); }
+    template<typename DomainConfigT = DomainConfig>
+    DescribeDomainConfigResult& WithDomainConfig(DomainConfigT&& value) { SetDomainConfig(std::forward<DomainConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Container for the configuration of the OpenSearch Service domain.</p>
-     */
-    inline void SetDomainConfig(const DomainConfig& value) { m_domainConfig = value; }
-
-    /**
-     * <p>Container for the configuration of the OpenSearch Service domain.</p>
-     */
-    inline void SetDomainConfig(DomainConfig&& value) { m_domainConfig = std::move(value); }
-
-    /**
-     * <p>Container for the configuration of the OpenSearch Service domain.</p>
-     */
-    inline DescribeDomainConfigResult& WithDomainConfig(const DomainConfig& value) { SetDomainConfig(value); return *this;}
-
-    /**
-     * <p>Container for the configuration of the OpenSearch Service domain.</p>
-     */
-    inline DescribeDomainConfigResult& WithDomainConfig(DomainConfig&& value) { SetDomainConfig(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeDomainConfigResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeDomainConfigResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeDomainConfigResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeDomainConfigResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     DomainConfig m_domainConfig;
+    bool m_domainConfigHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

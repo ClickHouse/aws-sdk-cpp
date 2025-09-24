@@ -32,60 +32,24 @@ namespace Model
   class AwsEc2InstanceMonitoringDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEc2InstanceMonitoringDetails();
+    AWS_SECURITYHUB_API AwsEc2InstanceMonitoringDetails() = default;
     AWS_SECURITYHUB_API AwsEc2InstanceMonitoringDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEc2InstanceMonitoringDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Indicates whether detailed monitoring is turned on. Otherwise, basic
      * monitoring is turned on. </p>
      */
-    inline const Aws::String& GetState() const{ return m_state; }
-
-    /**
-     * <p> Indicates whether detailed monitoring is turned on. Otherwise, basic
-     * monitoring is turned on. </p>
-     */
+    inline const Aws::String& GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p> Indicates whether detailed monitoring is turned on. Otherwise, basic
-     * monitoring is turned on. </p>
-     */
-    inline void SetState(const Aws::String& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p> Indicates whether detailed monitoring is turned on. Otherwise, basic
-     * monitoring is turned on. </p>
-     */
-    inline void SetState(Aws::String&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p> Indicates whether detailed monitoring is turned on. Otherwise, basic
-     * monitoring is turned on. </p>
-     */
-    inline void SetState(const char* value) { m_stateHasBeenSet = true; m_state.assign(value); }
-
-    /**
-     * <p> Indicates whether detailed monitoring is turned on. Otherwise, basic
-     * monitoring is turned on. </p>
-     */
-    inline AwsEc2InstanceMonitoringDetails& WithState(const Aws::String& value) { SetState(value); return *this;}
-
-    /**
-     * <p> Indicates whether detailed monitoring is turned on. Otherwise, basic
-     * monitoring is turned on. </p>
-     */
-    inline AwsEc2InstanceMonitoringDetails& WithState(Aws::String&& value) { SetState(std::move(value)); return *this;}
-
-    /**
-     * <p> Indicates whether detailed monitoring is turned on. Otherwise, basic
-     * monitoring is turned on. </p>
-     */
-    inline AwsEc2InstanceMonitoringDetails& WithState(const char* value) { SetState(value); return *this;}
-
+    template<typename StateT = Aws::String>
+    void SetState(StateT&& value) { m_stateHasBeenSet = true; m_state = std::forward<StateT>(value); }
+    template<typename StateT = Aws::String>
+    AwsEc2InstanceMonitoringDetails& WithState(StateT&& value) { SetState(std::forward<StateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_state;

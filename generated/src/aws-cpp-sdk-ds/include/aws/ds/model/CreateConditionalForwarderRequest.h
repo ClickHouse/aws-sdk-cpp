@@ -27,7 +27,7 @@ namespace Model
   class CreateConditionalForwarderRequest : public DirectoryServiceRequest
   {
   public:
-    AWS_DIRECTORYSERVICE_API CreateConditionalForwarderRequest();
+    AWS_DIRECTORYSERVICE_API CreateConditionalForwarderRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,158 +40,46 @@ namespace Model
     AWS_DIRECTORYSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The directory ID of the Amazon Web Services directory for which you are
      * creating the conditional forwarder.</p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>The directory ID of the Amazon Web Services directory for which you are
-     * creating the conditional forwarder.</p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    CreateConditionalForwarderRequest& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The directory ID of the Amazon Web Services directory for which you are
-     * creating the conditional forwarder.</p>
-     */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>The directory ID of the Amazon Web Services directory for which you are
-     * creating the conditional forwarder.</p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>The directory ID of the Amazon Web Services directory for which you are
-     * creating the conditional forwarder.</p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>The directory ID of the Amazon Web Services directory for which you are
-     * creating the conditional forwarder.</p>
-     */
-    inline CreateConditionalForwarderRequest& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>The directory ID of the Amazon Web Services directory for which you are
-     * creating the conditional forwarder.</p>
-     */
-    inline CreateConditionalForwarderRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The directory ID of the Amazon Web Services directory for which you are
-     * creating the conditional forwarder.</p>
-     */
-    inline CreateConditionalForwarderRequest& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The fully qualified domain name (FQDN) of the remote domain with which you
      * will set up a trust relationship.</p>
      */
-    inline const Aws::String& GetRemoteDomainName() const{ return m_remoteDomainName; }
-
-    /**
-     * <p>The fully qualified domain name (FQDN) of the remote domain with which you
-     * will set up a trust relationship.</p>
-     */
+    inline const Aws::String& GetRemoteDomainName() const { return m_remoteDomainName; }
     inline bool RemoteDomainNameHasBeenSet() const { return m_remoteDomainNameHasBeenSet; }
+    template<typename RemoteDomainNameT = Aws::String>
+    void SetRemoteDomainName(RemoteDomainNameT&& value) { m_remoteDomainNameHasBeenSet = true; m_remoteDomainName = std::forward<RemoteDomainNameT>(value); }
+    template<typename RemoteDomainNameT = Aws::String>
+    CreateConditionalForwarderRequest& WithRemoteDomainName(RemoteDomainNameT&& value) { SetRemoteDomainName(std::forward<RemoteDomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The fully qualified domain name (FQDN) of the remote domain with which you
-     * will set up a trust relationship.</p>
-     */
-    inline void SetRemoteDomainName(const Aws::String& value) { m_remoteDomainNameHasBeenSet = true; m_remoteDomainName = value; }
-
-    /**
-     * <p>The fully qualified domain name (FQDN) of the remote domain with which you
-     * will set up a trust relationship.</p>
-     */
-    inline void SetRemoteDomainName(Aws::String&& value) { m_remoteDomainNameHasBeenSet = true; m_remoteDomainName = std::move(value); }
-
-    /**
-     * <p>The fully qualified domain name (FQDN) of the remote domain with which you
-     * will set up a trust relationship.</p>
-     */
-    inline void SetRemoteDomainName(const char* value) { m_remoteDomainNameHasBeenSet = true; m_remoteDomainName.assign(value); }
-
-    /**
-     * <p>The fully qualified domain name (FQDN) of the remote domain with which you
-     * will set up a trust relationship.</p>
-     */
-    inline CreateConditionalForwarderRequest& WithRemoteDomainName(const Aws::String& value) { SetRemoteDomainName(value); return *this;}
-
-    /**
-     * <p>The fully qualified domain name (FQDN) of the remote domain with which you
-     * will set up a trust relationship.</p>
-     */
-    inline CreateConditionalForwarderRequest& WithRemoteDomainName(Aws::String&& value) { SetRemoteDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The fully qualified domain name (FQDN) of the remote domain with which you
-     * will set up a trust relationship.</p>
-     */
-    inline CreateConditionalForwarderRequest& WithRemoteDomainName(const char* value) { SetRemoteDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP addresses of the remote DNS server associated with
      * RemoteDomainName.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDnsIpAddrs() const{ return m_dnsIpAddrs; }
-
-    /**
-     * <p>The IP addresses of the remote DNS server associated with
-     * RemoteDomainName.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDnsIpAddrs() const { return m_dnsIpAddrs; }
     inline bool DnsIpAddrsHasBeenSet() const { return m_dnsIpAddrsHasBeenSet; }
-
-    /**
-     * <p>The IP addresses of the remote DNS server associated with
-     * RemoteDomainName.</p>
-     */
-    inline void SetDnsIpAddrs(const Aws::Vector<Aws::String>& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs = value; }
-
-    /**
-     * <p>The IP addresses of the remote DNS server associated with
-     * RemoteDomainName.</p>
-     */
-    inline void SetDnsIpAddrs(Aws::Vector<Aws::String>&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs = std::move(value); }
-
-    /**
-     * <p>The IP addresses of the remote DNS server associated with
-     * RemoteDomainName.</p>
-     */
-    inline CreateConditionalForwarderRequest& WithDnsIpAddrs(const Aws::Vector<Aws::String>& value) { SetDnsIpAddrs(value); return *this;}
-
-    /**
-     * <p>The IP addresses of the remote DNS server associated with
-     * RemoteDomainName.</p>
-     */
-    inline CreateConditionalForwarderRequest& WithDnsIpAddrs(Aws::Vector<Aws::String>&& value) { SetDnsIpAddrs(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP addresses of the remote DNS server associated with
-     * RemoteDomainName.</p>
-     */
-    inline CreateConditionalForwarderRequest& AddDnsIpAddrs(const Aws::String& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs.push_back(value); return *this; }
-
-    /**
-     * <p>The IP addresses of the remote DNS server associated with
-     * RemoteDomainName.</p>
-     */
-    inline CreateConditionalForwarderRequest& AddDnsIpAddrs(Aws::String&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IP addresses of the remote DNS server associated with
-     * RemoteDomainName.</p>
-     */
-    inline CreateConditionalForwarderRequest& AddDnsIpAddrs(const char* value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs.push_back(value); return *this; }
-
+    template<typename DnsIpAddrsT = Aws::Vector<Aws::String>>
+    void SetDnsIpAddrs(DnsIpAddrsT&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs = std::forward<DnsIpAddrsT>(value); }
+    template<typename DnsIpAddrsT = Aws::Vector<Aws::String>>
+    CreateConditionalForwarderRequest& WithDnsIpAddrs(DnsIpAddrsT&& value) { SetDnsIpAddrs(std::forward<DnsIpAddrsT>(value)); return *this;}
+    template<typename DnsIpAddrsT = Aws::String>
+    CreateConditionalForwarderRequest& AddDnsIpAddrs(DnsIpAddrsT&& value) { m_dnsIpAddrsHasBeenSet = true; m_dnsIpAddrs.emplace_back(std::forward<DnsIpAddrsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_directoryId;

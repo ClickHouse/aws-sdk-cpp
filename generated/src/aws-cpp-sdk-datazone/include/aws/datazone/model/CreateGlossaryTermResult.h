@@ -8,6 +8,8 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/datazone/model/GlossaryTermStatus.h>
 #include <aws/datazone/model/TermRelations.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/datazone/model/GlossaryUsageRestriction.h>
 #include <utility>
 
 namespace Aws
@@ -29,326 +31,149 @@ namespace Model
   class CreateGlossaryTermResult
   {
   public:
-    AWS_DATAZONE_API CreateGlossaryTermResult();
+    AWS_DATAZONE_API CreateGlossaryTermResult() = default;
     AWS_DATAZONE_API CreateGlossaryTermResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATAZONE_API CreateGlossaryTermResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon DataZone domain in which this business glossary term is
      * created.</p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    CreateGlossaryTermResult& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon DataZone domain in which this business glossary term is
-     * created.</p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainId = value; }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which this business glossary term is
-     * created.</p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which this business glossary term is
-     * created.</p>
-     */
-    inline void SetDomainId(const char* value) { m_domainId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which this business glossary term is
-     * created.</p>
-     */
-    inline CreateGlossaryTermResult& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which this business glossary term is
-     * created.</p>
-     */
-    inline CreateGlossaryTermResult& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon DataZone domain in which this business glossary term is
-     * created.</p>
-     */
-    inline CreateGlossaryTermResult& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the business glossary in which this term is created.</p>
      */
-    inline const Aws::String& GetGlossaryId() const{ return m_glossaryId; }
+    inline const Aws::String& GetGlossaryId() const { return m_glossaryId; }
+    template<typename GlossaryIdT = Aws::String>
+    void SetGlossaryId(GlossaryIdT&& value) { m_glossaryIdHasBeenSet = true; m_glossaryId = std::forward<GlossaryIdT>(value); }
+    template<typename GlossaryIdT = Aws::String>
+    CreateGlossaryTermResult& WithGlossaryId(GlossaryIdT&& value) { SetGlossaryId(std::forward<GlossaryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the business glossary in which this term is created.</p>
-     */
-    inline void SetGlossaryId(const Aws::String& value) { m_glossaryId = value; }
-
-    /**
-     * <p>The ID of the business glossary in which this term is created.</p>
-     */
-    inline void SetGlossaryId(Aws::String&& value) { m_glossaryId = std::move(value); }
-
-    /**
-     * <p>The ID of the business glossary in which this term is created.</p>
-     */
-    inline void SetGlossaryId(const char* value) { m_glossaryId.assign(value); }
-
-    /**
-     * <p>The ID of the business glossary in which this term is created.</p>
-     */
-    inline CreateGlossaryTermResult& WithGlossaryId(const Aws::String& value) { SetGlossaryId(value); return *this;}
-
-    /**
-     * <p>The ID of the business glossary in which this term is created.</p>
-     */
-    inline CreateGlossaryTermResult& WithGlossaryId(Aws::String&& value) { SetGlossaryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the business glossary in which this term is created.</p>
-     */
-    inline CreateGlossaryTermResult& WithGlossaryId(const char* value) { SetGlossaryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of this business glossary term.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    CreateGlossaryTermResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of this business glossary term.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The ID of this business glossary term.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The ID of this business glossary term.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The ID of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The long description of this business glossary term.</p>
      */
-    inline const Aws::String& GetLongDescription() const{ return m_longDescription; }
+    inline const Aws::String& GetLongDescription() const { return m_longDescription; }
+    template<typename LongDescriptionT = Aws::String>
+    void SetLongDescription(LongDescriptionT&& value) { m_longDescriptionHasBeenSet = true; m_longDescription = std::forward<LongDescriptionT>(value); }
+    template<typename LongDescriptionT = Aws::String>
+    CreateGlossaryTermResult& WithLongDescription(LongDescriptionT&& value) { SetLongDescription(std::forward<LongDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The long description of this business glossary term.</p>
-     */
-    inline void SetLongDescription(const Aws::String& value) { m_longDescription = value; }
-
-    /**
-     * <p>The long description of this business glossary term.</p>
-     */
-    inline void SetLongDescription(Aws::String&& value) { m_longDescription = std::move(value); }
-
-    /**
-     * <p>The long description of this business glossary term.</p>
-     */
-    inline void SetLongDescription(const char* value) { m_longDescription.assign(value); }
-
-    /**
-     * <p>The long description of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithLongDescription(const Aws::String& value) { SetLongDescription(value); return *this;}
-
-    /**
-     * <p>The long description of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithLongDescription(Aws::String&& value) { SetLongDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The long description of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithLongDescription(const char* value) { SetLongDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of this business glossary term.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateGlossaryTermResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of this business glossary term.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of this business glossary term.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of this business glossary term.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The short description of this business glossary term.</p>
      */
-    inline const Aws::String& GetShortDescription() const{ return m_shortDescription; }
+    inline const Aws::String& GetShortDescription() const { return m_shortDescription; }
+    template<typename ShortDescriptionT = Aws::String>
+    void SetShortDescription(ShortDescriptionT&& value) { m_shortDescriptionHasBeenSet = true; m_shortDescription = std::forward<ShortDescriptionT>(value); }
+    template<typename ShortDescriptionT = Aws::String>
+    CreateGlossaryTermResult& WithShortDescription(ShortDescriptionT&& value) { SetShortDescription(std::forward<ShortDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The short description of this business glossary term.</p>
-     */
-    inline void SetShortDescription(const Aws::String& value) { m_shortDescription = value; }
-
-    /**
-     * <p>The short description of this business glossary term.</p>
-     */
-    inline void SetShortDescription(Aws::String&& value) { m_shortDescription = std::move(value); }
-
-    /**
-     * <p>The short description of this business glossary term.</p>
-     */
-    inline void SetShortDescription(const char* value) { m_shortDescription.assign(value); }
-
-    /**
-     * <p>The short description of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithShortDescription(const Aws::String& value) { SetShortDescription(value); return *this;}
-
-    /**
-     * <p>The short description of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithShortDescription(Aws::String&& value) { SetShortDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The short description of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithShortDescription(const char* value) { SetShortDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of this business glossary term.</p>
      */
-    inline const GlossaryTermStatus& GetStatus() const{ return m_status; }
+    inline GlossaryTermStatus GetStatus() const { return m_status; }
+    inline void SetStatus(GlossaryTermStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline CreateGlossaryTermResult& WithStatus(GlossaryTermStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of this business glossary term.</p>
-     */
-    inline void SetStatus(const GlossaryTermStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of this business glossary term.</p>
-     */
-    inline void SetStatus(GlossaryTermStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithStatus(const GlossaryTermStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithStatus(GlossaryTermStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The term relations of this business glossary term.</p>
      */
-    inline const TermRelations& GetTermRelations() const{ return m_termRelations; }
+    inline const TermRelations& GetTermRelations() const { return m_termRelations; }
+    template<typename TermRelationsT = TermRelations>
+    void SetTermRelations(TermRelationsT&& value) { m_termRelationsHasBeenSet = true; m_termRelations = std::forward<TermRelationsT>(value); }
+    template<typename TermRelationsT = TermRelations>
+    CreateGlossaryTermResult& WithTermRelations(TermRelationsT&& value) { SetTermRelations(std::forward<TermRelationsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The term relations of this business glossary term.</p>
+     * <p>The usage restriction of the restricted glossary.</p>
      */
-    inline void SetTermRelations(const TermRelations& value) { m_termRelations = value; }
+    inline const Aws::Vector<GlossaryUsageRestriction>& GetUsageRestrictions() const { return m_usageRestrictions; }
+    template<typename UsageRestrictionsT = Aws::Vector<GlossaryUsageRestriction>>
+    void SetUsageRestrictions(UsageRestrictionsT&& value) { m_usageRestrictionsHasBeenSet = true; m_usageRestrictions = std::forward<UsageRestrictionsT>(value); }
+    template<typename UsageRestrictionsT = Aws::Vector<GlossaryUsageRestriction>>
+    CreateGlossaryTermResult& WithUsageRestrictions(UsageRestrictionsT&& value) { SetUsageRestrictions(std::forward<UsageRestrictionsT>(value)); return *this;}
+    inline CreateGlossaryTermResult& AddUsageRestrictions(GlossaryUsageRestriction value) { m_usageRestrictionsHasBeenSet = true; m_usageRestrictions.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The term relations of this business glossary term.</p>
-     */
-    inline void SetTermRelations(TermRelations&& value) { m_termRelations = std::move(value); }
-
-    /**
-     * <p>The term relations of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithTermRelations(const TermRelations& value) { SetTermRelations(value); return *this;}
-
-    /**
-     * <p>The term relations of this business glossary term.</p>
-     */
-    inline CreateGlossaryTermResult& WithTermRelations(TermRelations&& value) { SetTermRelations(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateGlossaryTermResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateGlossaryTermResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateGlossaryTermResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateGlossaryTermResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainId;
+    bool m_domainIdHasBeenSet = false;
 
     Aws::String m_glossaryId;
+    bool m_glossaryIdHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_longDescription;
+    bool m_longDescriptionHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_shortDescription;
+    bool m_shortDescriptionHasBeenSet = false;
 
-    GlossaryTermStatus m_status;
+    GlossaryTermStatus m_status{GlossaryTermStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     TermRelations m_termRelations;
+    bool m_termRelationsHasBeenSet = false;
+
+    Aws::Vector<GlossaryUsageRestriction> m_usageRestrictions;
+    bool m_usageRestrictionsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

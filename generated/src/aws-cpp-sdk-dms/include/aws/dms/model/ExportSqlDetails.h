@@ -32,101 +32,36 @@ namespace Model
   class ExportSqlDetails
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API ExportSqlDetails();
+    AWS_DATABASEMIGRATIONSERVICE_API ExportSqlDetails() = default;
     AWS_DATABASEMIGRATIONSERVICE_API ExportSqlDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATABASEMIGRATIONSERVICE_API ExportSqlDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATABASEMIGRATIONSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon S3 object key for the object containing the exported metadata
      * model assessment.</p>
      */
-    inline const Aws::String& GetS3ObjectKey() const{ return m_s3ObjectKey; }
-
-    /**
-     * <p>The Amazon S3 object key for the object containing the exported metadata
-     * model assessment.</p>
-     */
+    inline const Aws::String& GetS3ObjectKey() const { return m_s3ObjectKey; }
     inline bool S3ObjectKeyHasBeenSet() const { return m_s3ObjectKeyHasBeenSet; }
+    template<typename S3ObjectKeyT = Aws::String>
+    void SetS3ObjectKey(S3ObjectKeyT&& value) { m_s3ObjectKeyHasBeenSet = true; m_s3ObjectKey = std::forward<S3ObjectKeyT>(value); }
+    template<typename S3ObjectKeyT = Aws::String>
+    ExportSqlDetails& WithS3ObjectKey(S3ObjectKeyT&& value) { SetS3ObjectKey(std::forward<S3ObjectKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 object key for the object containing the exported metadata
-     * model assessment.</p>
-     */
-    inline void SetS3ObjectKey(const Aws::String& value) { m_s3ObjectKeyHasBeenSet = true; m_s3ObjectKey = value; }
-
-    /**
-     * <p>The Amazon S3 object key for the object containing the exported metadata
-     * model assessment.</p>
-     */
-    inline void SetS3ObjectKey(Aws::String&& value) { m_s3ObjectKeyHasBeenSet = true; m_s3ObjectKey = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 object key for the object containing the exported metadata
-     * model assessment.</p>
-     */
-    inline void SetS3ObjectKey(const char* value) { m_s3ObjectKeyHasBeenSet = true; m_s3ObjectKey.assign(value); }
-
-    /**
-     * <p>The Amazon S3 object key for the object containing the exported metadata
-     * model assessment.</p>
-     */
-    inline ExportSqlDetails& WithS3ObjectKey(const Aws::String& value) { SetS3ObjectKey(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 object key for the object containing the exported metadata
-     * model assessment.</p>
-     */
-    inline ExportSqlDetails& WithS3ObjectKey(Aws::String&& value) { SetS3ObjectKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 object key for the object containing the exported metadata
-     * model assessment.</p>
-     */
-    inline ExportSqlDetails& WithS3ObjectKey(const char* value) { SetS3ObjectKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL for the object containing the exported metadata model assessment.</p>
      */
-    inline const Aws::String& GetObjectURL() const{ return m_objectURL; }
-
-    /**
-     * <p>The URL for the object containing the exported metadata model assessment.</p>
-     */
+    inline const Aws::String& GetObjectURL() const { return m_objectURL; }
     inline bool ObjectURLHasBeenSet() const { return m_objectURLHasBeenSet; }
-
-    /**
-     * <p>The URL for the object containing the exported metadata model assessment.</p>
-     */
-    inline void SetObjectURL(const Aws::String& value) { m_objectURLHasBeenSet = true; m_objectURL = value; }
-
-    /**
-     * <p>The URL for the object containing the exported metadata model assessment.</p>
-     */
-    inline void SetObjectURL(Aws::String&& value) { m_objectURLHasBeenSet = true; m_objectURL = std::move(value); }
-
-    /**
-     * <p>The URL for the object containing the exported metadata model assessment.</p>
-     */
-    inline void SetObjectURL(const char* value) { m_objectURLHasBeenSet = true; m_objectURL.assign(value); }
-
-    /**
-     * <p>The URL for the object containing the exported metadata model assessment.</p>
-     */
-    inline ExportSqlDetails& WithObjectURL(const Aws::String& value) { SetObjectURL(value); return *this;}
-
-    /**
-     * <p>The URL for the object containing the exported metadata model assessment.</p>
-     */
-    inline ExportSqlDetails& WithObjectURL(Aws::String&& value) { SetObjectURL(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL for the object containing the exported metadata model assessment.</p>
-     */
-    inline ExportSqlDetails& WithObjectURL(const char* value) { SetObjectURL(value); return *this;}
-
+    template<typename ObjectURLT = Aws::String>
+    void SetObjectURL(ObjectURLT&& value) { m_objectURLHasBeenSet = true; m_objectURL = std::forward<ObjectURLT>(value); }
+    template<typename ObjectURLT = Aws::String>
+    ExportSqlDetails& WithObjectURL(ObjectURLT&& value) { SetObjectURL(std::forward<ObjectURLT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_s3ObjectKey;

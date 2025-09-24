@@ -18,17 +18,7 @@ namespace WAF
 namespace Model
 {
 
-SqlInjectionMatchSet::SqlInjectionMatchSet() : 
-    m_sqlInjectionMatchSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sqlInjectionMatchTuplesHasBeenSet(false)
-{
-}
-
-SqlInjectionMatchSet::SqlInjectionMatchSet(JsonView jsonValue) : 
-    m_sqlInjectionMatchSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_sqlInjectionMatchTuplesHasBeenSet(false)
+SqlInjectionMatchSet::SqlInjectionMatchSet(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SqlInjectionMatchSet& SqlInjectionMatchSet::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SqlInjectionMatchSetId"))
   {
     m_sqlInjectionMatchSetId = jsonValue.GetString("SqlInjectionMatchSetId");
-
     m_sqlInjectionMatchSetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SqlInjectionMatchTuples"))
   {
     Aws::Utils::Array<JsonView> sqlInjectionMatchTuplesJsonList = jsonValue.GetArray("SqlInjectionMatchTuples");
@@ -58,7 +44,6 @@ SqlInjectionMatchSet& SqlInjectionMatchSet::operator =(JsonView jsonValue)
     }
     m_sqlInjectionMatchTuplesHasBeenSet = true;
   }
-
   return *this;
 }
 

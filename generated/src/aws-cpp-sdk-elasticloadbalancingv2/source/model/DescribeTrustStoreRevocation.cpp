@@ -20,25 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-DescribeTrustStoreRevocation::DescribeTrustStoreRevocation() : 
-    m_trustStoreArnHasBeenSet(false),
-    m_revocationId(0),
-    m_revocationIdHasBeenSet(false),
-    m_revocationType(RevocationType::NOT_SET),
-    m_revocationTypeHasBeenSet(false),
-    m_numberOfRevokedEntries(0),
-    m_numberOfRevokedEntriesHasBeenSet(false)
-{
-}
-
-DescribeTrustStoreRevocation::DescribeTrustStoreRevocation(const XmlNode& xmlNode) : 
-    m_trustStoreArnHasBeenSet(false),
-    m_revocationId(0),
-    m_revocationIdHasBeenSet(false),
-    m_revocationType(RevocationType::NOT_SET),
-    m_revocationTypeHasBeenSet(false),
-    m_numberOfRevokedEntries(0),
-    m_numberOfRevokedEntriesHasBeenSet(false)
+DescribeTrustStoreRevocation::DescribeTrustStoreRevocation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -64,7 +46,7 @@ DescribeTrustStoreRevocation& DescribeTrustStoreRevocation::operator =(const Xml
     XmlNode revocationTypeNode = resultNode.FirstChild("RevocationType");
     if(!revocationTypeNode.IsNull())
     {
-      m_revocationType = RevocationTypeMapper::GetRevocationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(revocationTypeNode.GetText()).c_str()).c_str());
+      m_revocationType = RevocationTypeMapper::GetRevocationTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(revocationTypeNode.GetText()).c_str()));
       m_revocationTypeHasBeenSet = true;
     }
     XmlNode numberOfRevokedEntriesNode = resultNode.FirstChild("NumberOfRevokedEntries");
@@ -92,7 +74,7 @@ void DescribeTrustStoreRevocation::OutputToStream(Aws::OStream& oStream, const c
 
   if(m_revocationTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".RevocationType=" << RevocationTypeMapper::GetNameForRevocationType(m_revocationType) << "&";
+      oStream << location << index << locationValue << ".RevocationType=" << StringUtils::URLEncode(RevocationTypeMapper::GetNameForRevocationType(m_revocationType)) << "&";
   }
 
   if(m_numberOfRevokedEntriesHasBeenSet)
@@ -114,7 +96,7 @@ void DescribeTrustStoreRevocation::OutputToStream(Aws::OStream& oStream, const c
   }
   if(m_revocationTypeHasBeenSet)
   {
-      oStream << location << ".RevocationType=" << RevocationTypeMapper::GetNameForRevocationType(m_revocationType) << "&";
+      oStream << location << ".RevocationType=" << StringUtils::URLEncode(RevocationTypeMapper::GetNameForRevocationType(m_revocationType)) << "&";
   }
   if(m_numberOfRevokedEntriesHasBeenSet)
   {

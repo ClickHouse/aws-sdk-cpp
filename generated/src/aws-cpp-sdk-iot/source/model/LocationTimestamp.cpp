@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-LocationTimestamp::LocationTimestamp() : 
-    m_valueHasBeenSet(false),
-    m_unitHasBeenSet(false)
-{
-}
-
-LocationTimestamp::LocationTimestamp(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_unitHasBeenSet(false)
+LocationTimestamp::LocationTimestamp(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LocationTimestamp& LocationTimestamp::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("unit"))
   {
     m_unit = jsonValue.GetString("unit");
-
     m_unitHasBeenSet = true;
   }
-
   return *this;
 }
 

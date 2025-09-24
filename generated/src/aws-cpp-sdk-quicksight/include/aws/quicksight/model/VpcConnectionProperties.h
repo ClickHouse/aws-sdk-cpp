@@ -31,52 +31,23 @@ namespace Model
   class VpcConnectionProperties
   {
   public:
-    AWS_QUICKSIGHT_API VpcConnectionProperties();
+    AWS_QUICKSIGHT_API VpcConnectionProperties() = default;
     AWS_QUICKSIGHT_API VpcConnectionProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API VpcConnectionProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the VPC connection.</p>
      */
-    inline const Aws::String& GetVpcConnectionArn() const{ return m_vpcConnectionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the VPC connection.</p>
-     */
+    inline const Aws::String& GetVpcConnectionArn() const { return m_vpcConnectionArn; }
     inline bool VpcConnectionArnHasBeenSet() const { return m_vpcConnectionArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the VPC connection.</p>
-     */
-    inline void SetVpcConnectionArn(const Aws::String& value) { m_vpcConnectionArnHasBeenSet = true; m_vpcConnectionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the VPC connection.</p>
-     */
-    inline void SetVpcConnectionArn(Aws::String&& value) { m_vpcConnectionArnHasBeenSet = true; m_vpcConnectionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the VPC connection.</p>
-     */
-    inline void SetVpcConnectionArn(const char* value) { m_vpcConnectionArnHasBeenSet = true; m_vpcConnectionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the VPC connection.</p>
-     */
-    inline VpcConnectionProperties& WithVpcConnectionArn(const Aws::String& value) { SetVpcConnectionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the VPC connection.</p>
-     */
-    inline VpcConnectionProperties& WithVpcConnectionArn(Aws::String&& value) { SetVpcConnectionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the VPC connection.</p>
-     */
-    inline VpcConnectionProperties& WithVpcConnectionArn(const char* value) { SetVpcConnectionArn(value); return *this;}
-
+    template<typename VpcConnectionArnT = Aws::String>
+    void SetVpcConnectionArn(VpcConnectionArnT&& value) { m_vpcConnectionArnHasBeenSet = true; m_vpcConnectionArn = std::forward<VpcConnectionArnT>(value); }
+    template<typename VpcConnectionArnT = Aws::String>
+    VpcConnectionProperties& WithVpcConnectionArn(VpcConnectionArnT&& value) { SetVpcConnectionArn(std::forward<VpcConnectionArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcConnectionArn;

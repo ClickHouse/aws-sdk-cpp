@@ -6,6 +6,7 @@
 #include <aws/s3control/model/ListAccessPointsRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,14 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListAccessPointsRequest::ListAccessPointsRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
 
 Aws::String ListAccessPointsRequest::SerializePayload() const
 {
@@ -51,6 +44,20 @@ void ListAccessPointsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_maxResults;
       uri.AddQueryStringParameter("maxResults", ss.str());
+      ss.str("");
+    }
+
+    if(m_dataSourceIdHasBeenSet)
+    {
+      ss << m_dataSourceId;
+      uri.AddQueryStringParameter("dataSourceId", ss.str());
+      ss.str("");
+    }
+
+    if(m_dataSourceTypeHasBeenSet)
+    {
+      ss << m_dataSourceType;
+      uri.AddQueryStringParameter("dataSourceType", ss.str());
       ss.str("");
     }
 

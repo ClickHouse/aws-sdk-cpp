@@ -29,125 +29,55 @@ namespace Model
   class ListWirelessDeviceImportTasksResult
   {
   public:
-    AWS_IOTWIRELESS_API ListWirelessDeviceImportTasksResult();
+    AWS_IOTWIRELESS_API ListWirelessDeviceImportTasksResult() = default;
     AWS_IOTWIRELESS_API ListWirelessDeviceImportTasksResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_IOTWIRELESS_API ListWirelessDeviceImportTasksResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The token to use to get the next set of results, or <code>null</code> if
      * there are no additional results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListWirelessDeviceImportTasksResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token to use to get the next set of results, or <code>null</code> if
-     * there are no additional results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token to use to get the next set of results, or <code>null</code> if
-     * there are no additional results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to use to get the next set of results, or <code>null</code> if
-     * there are no additional results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to use to get the next set of results, or <code>null</code> if
-     * there are no additional results.</p>
-     */
-    inline ListWirelessDeviceImportTasksResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to use to get the next set of results, or <code>null</code> if
-     * there are no additional results.</p>
-     */
-    inline ListWirelessDeviceImportTasksResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to use to get the next set of results, or <code>null</code> if
-     * there are no additional results.</p>
-     */
-    inline ListWirelessDeviceImportTasksResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>List of import tasks and summary information of onboarding status of devices
      * in each import task.</p>
      */
-    inline const Aws::Vector<WirelessDeviceImportTask>& GetWirelessDeviceImportTaskList() const{ return m_wirelessDeviceImportTaskList; }
+    inline const Aws::Vector<WirelessDeviceImportTask>& GetWirelessDeviceImportTaskList() const { return m_wirelessDeviceImportTaskList; }
+    template<typename WirelessDeviceImportTaskListT = Aws::Vector<WirelessDeviceImportTask>>
+    void SetWirelessDeviceImportTaskList(WirelessDeviceImportTaskListT&& value) { m_wirelessDeviceImportTaskListHasBeenSet = true; m_wirelessDeviceImportTaskList = std::forward<WirelessDeviceImportTaskListT>(value); }
+    template<typename WirelessDeviceImportTaskListT = Aws::Vector<WirelessDeviceImportTask>>
+    ListWirelessDeviceImportTasksResult& WithWirelessDeviceImportTaskList(WirelessDeviceImportTaskListT&& value) { SetWirelessDeviceImportTaskList(std::forward<WirelessDeviceImportTaskListT>(value)); return *this;}
+    template<typename WirelessDeviceImportTaskListT = WirelessDeviceImportTask>
+    ListWirelessDeviceImportTasksResult& AddWirelessDeviceImportTaskList(WirelessDeviceImportTaskListT&& value) { m_wirelessDeviceImportTaskListHasBeenSet = true; m_wirelessDeviceImportTaskList.emplace_back(std::forward<WirelessDeviceImportTaskListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of import tasks and summary information of onboarding status of devices
-     * in each import task.</p>
-     */
-    inline void SetWirelessDeviceImportTaskList(const Aws::Vector<WirelessDeviceImportTask>& value) { m_wirelessDeviceImportTaskList = value; }
-
-    /**
-     * <p>List of import tasks and summary information of onboarding status of devices
-     * in each import task.</p>
-     */
-    inline void SetWirelessDeviceImportTaskList(Aws::Vector<WirelessDeviceImportTask>&& value) { m_wirelessDeviceImportTaskList = std::move(value); }
-
-    /**
-     * <p>List of import tasks and summary information of onboarding status of devices
-     * in each import task.</p>
-     */
-    inline ListWirelessDeviceImportTasksResult& WithWirelessDeviceImportTaskList(const Aws::Vector<WirelessDeviceImportTask>& value) { SetWirelessDeviceImportTaskList(value); return *this;}
-
-    /**
-     * <p>List of import tasks and summary information of onboarding status of devices
-     * in each import task.</p>
-     */
-    inline ListWirelessDeviceImportTasksResult& WithWirelessDeviceImportTaskList(Aws::Vector<WirelessDeviceImportTask>&& value) { SetWirelessDeviceImportTaskList(std::move(value)); return *this;}
-
-    /**
-     * <p>List of import tasks and summary information of onboarding status of devices
-     * in each import task.</p>
-     */
-    inline ListWirelessDeviceImportTasksResult& AddWirelessDeviceImportTaskList(const WirelessDeviceImportTask& value) { m_wirelessDeviceImportTaskList.push_back(value); return *this; }
-
-    /**
-     * <p>List of import tasks and summary information of onboarding status of devices
-     * in each import task.</p>
-     */
-    inline ListWirelessDeviceImportTasksResult& AddWirelessDeviceImportTaskList(WirelessDeviceImportTask&& value) { m_wirelessDeviceImportTaskList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListWirelessDeviceImportTasksResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListWirelessDeviceImportTasksResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListWirelessDeviceImportTasksResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListWirelessDeviceImportTasksResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<WirelessDeviceImportTask> m_wirelessDeviceImportTaskList;
+    bool m_wirelessDeviceImportTaskListHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

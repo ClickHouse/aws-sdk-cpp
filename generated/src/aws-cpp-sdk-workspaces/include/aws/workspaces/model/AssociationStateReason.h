@@ -33,86 +33,36 @@ namespace Model
   class AssociationStateReason
   {
   public:
-    AWS_WORKSPACES_API AssociationStateReason();
+    AWS_WORKSPACES_API AssociationStateReason() = default;
     AWS_WORKSPACES_API AssociationStateReason(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API AssociationStateReason& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The error code of the association deployment failure.</p>
      */
-    inline const AssociationErrorCode& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The error code of the association deployment failure.</p>
-     */
+    inline AssociationErrorCode GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    inline void SetErrorCode(AssociationErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline AssociationStateReason& WithErrorCode(AssociationErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code of the association deployment failure.</p>
-     */
-    inline void SetErrorCode(const AssociationErrorCode& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The error code of the association deployment failure.</p>
-     */
-    inline void SetErrorCode(AssociationErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The error code of the association deployment failure.</p>
-     */
-    inline AssociationStateReason& WithErrorCode(const AssociationErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The error code of the association deployment failure.</p>
-     */
-    inline AssociationStateReason& WithErrorCode(AssociationErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The error message of the association deployment failure.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>The error message of the association deployment failure.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
-
-    /**
-     * <p>The error message of the association deployment failure.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>The error message of the association deployment failure.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>The error message of the association deployment failure.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>The error message of the association deployment failure.</p>
-     */
-    inline AssociationStateReason& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>The error message of the association deployment failure.</p>
-     */
-    inline AssociationStateReason& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The error message of the association deployment failure.</p>
-     */
-    inline AssociationStateReason& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    AssociationStateReason& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
   private:
 
-    AssociationErrorCode m_errorCode;
+    AssociationErrorCode m_errorCode{AssociationErrorCode::NOT_SET};
     bool m_errorCodeHasBeenSet = false;
 
     Aws::String m_errorMessage;

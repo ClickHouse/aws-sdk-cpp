@@ -10,24 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-RevokeSecurityGroupIngressRequest::RevokeSecurityGroupIngressRequest() : 
-    m_cidrIpHasBeenSet(false),
-    m_fromPort(0),
-    m_fromPortHasBeenSet(false),
-    m_groupIdHasBeenSet(false),
-    m_groupNameHasBeenSet(false),
-    m_ipPermissionsHasBeenSet(false),
-    m_ipProtocolHasBeenSet(false),
-    m_sourceSecurityGroupNameHasBeenSet(false),
-    m_sourceSecurityGroupOwnerIdHasBeenSet(false),
-    m_toPort(0),
-    m_toPortHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_securityGroupRuleIdsHasBeenSet(false)
-{
-}
-
 Aws::String RevokeSecurityGroupIngressRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -82,11 +64,6 @@ Aws::String RevokeSecurityGroupIngressRequest::SerializePayload() const
     ss << "ToPort=" << m_toPort << "&";
   }
 
-  if(m_dryRunHasBeenSet)
-  {
-    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
-  }
-
   if(m_securityGroupRuleIdsHasBeenSet)
   {
     unsigned securityGroupRuleIdsCount = 1;
@@ -96,6 +73,11 @@ Aws::String RevokeSecurityGroupIngressRequest::SerializePayload() const
           << StringUtils::URLEncode(item.c_str()) << "&";
       securityGroupRuleIdsCount++;
     }
+  }
+
+  if(m_dryRunHasBeenSet)
+  {
+    ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
   }
 
   ss << "Version=2016-11-15";

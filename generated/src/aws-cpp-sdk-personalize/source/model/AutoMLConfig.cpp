@@ -18,15 +18,7 @@ namespace Personalize
 namespace Model
 {
 
-AutoMLConfig::AutoMLConfig() : 
-    m_metricNameHasBeenSet(false),
-    m_recipeListHasBeenSet(false)
-{
-}
-
-AutoMLConfig::AutoMLConfig(JsonView jsonValue) : 
-    m_metricNameHasBeenSet(false),
-    m_recipeListHasBeenSet(false)
+AutoMLConfig::AutoMLConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AutoMLConfig& AutoMLConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("metricName"))
   {
     m_metricName = jsonValue.GetString("metricName");
-
     m_metricNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("recipeList"))
   {
     Aws::Utils::Array<JsonView> recipeListJsonList = jsonValue.GetArray("recipeList");
@@ -49,7 +39,6 @@ AutoMLConfig& AutoMLConfig::operator =(JsonView jsonValue)
     }
     m_recipeListHasBeenSet = true;
   }
-
   return *this;
 }
 

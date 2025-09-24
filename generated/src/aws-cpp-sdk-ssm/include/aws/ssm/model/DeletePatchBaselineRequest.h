@@ -21,7 +21,7 @@ namespace Model
   class DeletePatchBaselineRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API DeletePatchBaselineRequest();
+    AWS_SSM_API DeletePatchBaselineRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the patch baseline to delete.</p>
      */
-    inline const Aws::String& GetBaselineId() const{ return m_baselineId; }
-
-    /**
-     * <p>The ID of the patch baseline to delete.</p>
-     */
+    inline const Aws::String& GetBaselineId() const { return m_baselineId; }
     inline bool BaselineIdHasBeenSet() const { return m_baselineIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the patch baseline to delete.</p>
-     */
-    inline void SetBaselineId(const Aws::String& value) { m_baselineIdHasBeenSet = true; m_baselineId = value; }
-
-    /**
-     * <p>The ID of the patch baseline to delete.</p>
-     */
-    inline void SetBaselineId(Aws::String&& value) { m_baselineIdHasBeenSet = true; m_baselineId = std::move(value); }
-
-    /**
-     * <p>The ID of the patch baseline to delete.</p>
-     */
-    inline void SetBaselineId(const char* value) { m_baselineIdHasBeenSet = true; m_baselineId.assign(value); }
-
-    /**
-     * <p>The ID of the patch baseline to delete.</p>
-     */
-    inline DeletePatchBaselineRequest& WithBaselineId(const Aws::String& value) { SetBaselineId(value); return *this;}
-
-    /**
-     * <p>The ID of the patch baseline to delete.</p>
-     */
-    inline DeletePatchBaselineRequest& WithBaselineId(Aws::String&& value) { SetBaselineId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the patch baseline to delete.</p>
-     */
-    inline DeletePatchBaselineRequest& WithBaselineId(const char* value) { SetBaselineId(value); return *this;}
-
+    template<typename BaselineIdT = Aws::String>
+    void SetBaselineId(BaselineIdT&& value) { m_baselineIdHasBeenSet = true; m_baselineId = std::forward<BaselineIdT>(value); }
+    template<typename BaselineIdT = Aws::String>
+    DeletePatchBaselineRequest& WithBaselineId(BaselineIdT&& value) { SetBaselineId(std::forward<BaselineIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_baselineId;

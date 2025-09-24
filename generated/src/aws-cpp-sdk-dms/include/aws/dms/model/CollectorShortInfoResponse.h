@@ -31,93 +31,35 @@ namespace Model
   class CollectorShortInfoResponse
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API CollectorShortInfoResponse();
+    AWS_DATABASEMIGRATIONSERVICE_API CollectorShortInfoResponse() = default;
     AWS_DATABASEMIGRATIONSERVICE_API CollectorShortInfoResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATABASEMIGRATIONSERVICE_API CollectorShortInfoResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATABASEMIGRATIONSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The reference ID of the Fleet Advisor collector.</p>
      */
-    inline const Aws::String& GetCollectorReferencedId() const{ return m_collectorReferencedId; }
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector.</p>
-     */
+    inline const Aws::String& GetCollectorReferencedId() const { return m_collectorReferencedId; }
     inline bool CollectorReferencedIdHasBeenSet() const { return m_collectorReferencedIdHasBeenSet; }
+    template<typename CollectorReferencedIdT = Aws::String>
+    void SetCollectorReferencedId(CollectorReferencedIdT&& value) { m_collectorReferencedIdHasBeenSet = true; m_collectorReferencedId = std::forward<CollectorReferencedIdT>(value); }
+    template<typename CollectorReferencedIdT = Aws::String>
+    CollectorShortInfoResponse& WithCollectorReferencedId(CollectorReferencedIdT&& value) { SetCollectorReferencedId(std::forward<CollectorReferencedIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference ID of the Fleet Advisor collector.</p>
-     */
-    inline void SetCollectorReferencedId(const Aws::String& value) { m_collectorReferencedIdHasBeenSet = true; m_collectorReferencedId = value; }
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector.</p>
-     */
-    inline void SetCollectorReferencedId(Aws::String&& value) { m_collectorReferencedIdHasBeenSet = true; m_collectorReferencedId = std::move(value); }
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector.</p>
-     */
-    inline void SetCollectorReferencedId(const char* value) { m_collectorReferencedIdHasBeenSet = true; m_collectorReferencedId.assign(value); }
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector.</p>
-     */
-    inline CollectorShortInfoResponse& WithCollectorReferencedId(const Aws::String& value) { SetCollectorReferencedId(value); return *this;}
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector.</p>
-     */
-    inline CollectorShortInfoResponse& WithCollectorReferencedId(Aws::String&& value) { SetCollectorReferencedId(std::move(value)); return *this;}
-
-    /**
-     * <p>The reference ID of the Fleet Advisor collector.</p>
-     */
-    inline CollectorShortInfoResponse& WithCollectorReferencedId(const char* value) { SetCollectorReferencedId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Fleet Advisor collector.</p>
      */
-    inline const Aws::String& GetCollectorName() const{ return m_collectorName; }
-
-    /**
-     * <p>The name of the Fleet Advisor collector.</p>
-     */
+    inline const Aws::String& GetCollectorName() const { return m_collectorName; }
     inline bool CollectorNameHasBeenSet() const { return m_collectorNameHasBeenSet; }
-
-    /**
-     * <p>The name of the Fleet Advisor collector.</p>
-     */
-    inline void SetCollectorName(const Aws::String& value) { m_collectorNameHasBeenSet = true; m_collectorName = value; }
-
-    /**
-     * <p>The name of the Fleet Advisor collector.</p>
-     */
-    inline void SetCollectorName(Aws::String&& value) { m_collectorNameHasBeenSet = true; m_collectorName = std::move(value); }
-
-    /**
-     * <p>The name of the Fleet Advisor collector.</p>
-     */
-    inline void SetCollectorName(const char* value) { m_collectorNameHasBeenSet = true; m_collectorName.assign(value); }
-
-    /**
-     * <p>The name of the Fleet Advisor collector.</p>
-     */
-    inline CollectorShortInfoResponse& WithCollectorName(const Aws::String& value) { SetCollectorName(value); return *this;}
-
-    /**
-     * <p>The name of the Fleet Advisor collector.</p>
-     */
-    inline CollectorShortInfoResponse& WithCollectorName(Aws::String&& value) { SetCollectorName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Fleet Advisor collector.</p>
-     */
-    inline CollectorShortInfoResponse& WithCollectorName(const char* value) { SetCollectorName(value); return *this;}
-
+    template<typename CollectorNameT = Aws::String>
+    void SetCollectorName(CollectorNameT&& value) { m_collectorNameHasBeenSet = true; m_collectorName = std::forward<CollectorNameT>(value); }
+    template<typename CollectorNameT = Aws::String>
+    CollectorShortInfoResponse& WithCollectorName(CollectorNameT&& value) { SetCollectorName(std::forward<CollectorNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_collectorReferencedId;

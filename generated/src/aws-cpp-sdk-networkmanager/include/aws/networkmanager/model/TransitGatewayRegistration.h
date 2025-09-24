@@ -33,124 +33,47 @@ namespace Model
   class TransitGatewayRegistration
   {
   public:
-    AWS_NETWORKMANAGER_API TransitGatewayRegistration();
+    AWS_NETWORKMANAGER_API TransitGatewayRegistration() = default;
     AWS_NETWORKMANAGER_API TransitGatewayRegistration(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKMANAGER_API TransitGatewayRegistration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the global network.</p>
      */
-    inline const Aws::String& GetGlobalNetworkId() const{ return m_globalNetworkId; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
+    inline const Aws::String& GetGlobalNetworkId() const { return m_globalNetworkId; }
     inline bool GlobalNetworkIdHasBeenSet() const { return m_globalNetworkIdHasBeenSet; }
+    template<typename GlobalNetworkIdT = Aws::String>
+    void SetGlobalNetworkId(GlobalNetworkIdT&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::forward<GlobalNetworkIdT>(value); }
+    template<typename GlobalNetworkIdT = Aws::String>
+    TransitGatewayRegistration& WithGlobalNetworkId(GlobalNetworkIdT&& value) { SetGlobalNetworkId(std::forward<GlobalNetworkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const Aws::String& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = value; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(Aws::String&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::move(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const char* value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId.assign(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline TransitGatewayRegistration& WithGlobalNetworkId(const Aws::String& value) { SetGlobalNetworkId(value); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline TransitGatewayRegistration& WithGlobalNetworkId(Aws::String&& value) { SetGlobalNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline TransitGatewayRegistration& WithGlobalNetworkId(const char* value) { SetGlobalNetworkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the transit gateway.</p>
      */
-    inline const Aws::String& GetTransitGatewayArn() const{ return m_transitGatewayArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transit gateway.</p>
-     */
+    inline const Aws::String& GetTransitGatewayArn() const { return m_transitGatewayArn; }
     inline bool TransitGatewayArnHasBeenSet() const { return m_transitGatewayArnHasBeenSet; }
+    template<typename TransitGatewayArnT = Aws::String>
+    void SetTransitGatewayArn(TransitGatewayArnT&& value) { m_transitGatewayArnHasBeenSet = true; m_transitGatewayArn = std::forward<TransitGatewayArnT>(value); }
+    template<typename TransitGatewayArnT = Aws::String>
+    TransitGatewayRegistration& WithTransitGatewayArn(TransitGatewayArnT&& value) { SetTransitGatewayArn(std::forward<TransitGatewayArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transit gateway.</p>
-     */
-    inline void SetTransitGatewayArn(const Aws::String& value) { m_transitGatewayArnHasBeenSet = true; m_transitGatewayArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transit gateway.</p>
-     */
-    inline void SetTransitGatewayArn(Aws::String&& value) { m_transitGatewayArnHasBeenSet = true; m_transitGatewayArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transit gateway.</p>
-     */
-    inline void SetTransitGatewayArn(const char* value) { m_transitGatewayArnHasBeenSet = true; m_transitGatewayArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transit gateway.</p>
-     */
-    inline TransitGatewayRegistration& WithTransitGatewayArn(const Aws::String& value) { SetTransitGatewayArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transit gateway.</p>
-     */
-    inline TransitGatewayRegistration& WithTransitGatewayArn(Aws::String&& value) { SetTransitGatewayArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the transit gateway.</p>
-     */
-    inline TransitGatewayRegistration& WithTransitGatewayArn(const char* value) { SetTransitGatewayArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the transit gateway registration.</p>
      */
-    inline const TransitGatewayRegistrationStateReason& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the transit gateway registration.</p>
-     */
+    inline const TransitGatewayRegistrationStateReason& GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The state of the transit gateway registration.</p>
-     */
-    inline void SetState(const TransitGatewayRegistrationStateReason& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the transit gateway registration.</p>
-     */
-    inline void SetState(TransitGatewayRegistrationStateReason&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the transit gateway registration.</p>
-     */
-    inline TransitGatewayRegistration& WithState(const TransitGatewayRegistrationStateReason& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the transit gateway registration.</p>
-     */
-    inline TransitGatewayRegistration& WithState(TransitGatewayRegistrationStateReason&& value) { SetState(std::move(value)); return *this;}
-
+    template<typename StateT = TransitGatewayRegistrationStateReason>
+    void SetState(StateT&& value) { m_stateHasBeenSet = true; m_state = std::forward<StateT>(value); }
+    template<typename StateT = TransitGatewayRegistrationStateReason>
+    TransitGatewayRegistration& WithState(StateT&& value) { SetState(std::forward<StateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_globalNetworkId;

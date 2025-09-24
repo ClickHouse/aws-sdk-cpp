@@ -33,48 +33,24 @@ namespace Model
   class TrustedTokenIssuerConfiguration
   {
   public:
-    AWS_SSOADMIN_API TrustedTokenIssuerConfiguration();
+    AWS_SSOADMIN_API TrustedTokenIssuerConfiguration() = default;
     AWS_SSOADMIN_API TrustedTokenIssuerConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSOADMIN_API TrustedTokenIssuerConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSOADMIN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A structure that describes the settings for a trusted token issuer that works
      * with OpenID Connect (OIDC) by using JSON Web Tokens (JWT).</p>
      */
-    inline const OidcJwtConfiguration& GetOidcJwtConfiguration() const{ return m_oidcJwtConfiguration; }
-
-    /**
-     * <p>A structure that describes the settings for a trusted token issuer that works
-     * with OpenID Connect (OIDC) by using JSON Web Tokens (JWT).</p>
-     */
+    inline const OidcJwtConfiguration& GetOidcJwtConfiguration() const { return m_oidcJwtConfiguration; }
     inline bool OidcJwtConfigurationHasBeenSet() const { return m_oidcJwtConfigurationHasBeenSet; }
-
-    /**
-     * <p>A structure that describes the settings for a trusted token issuer that works
-     * with OpenID Connect (OIDC) by using JSON Web Tokens (JWT).</p>
-     */
-    inline void SetOidcJwtConfiguration(const OidcJwtConfiguration& value) { m_oidcJwtConfigurationHasBeenSet = true; m_oidcJwtConfiguration = value; }
-
-    /**
-     * <p>A structure that describes the settings for a trusted token issuer that works
-     * with OpenID Connect (OIDC) by using JSON Web Tokens (JWT).</p>
-     */
-    inline void SetOidcJwtConfiguration(OidcJwtConfiguration&& value) { m_oidcJwtConfigurationHasBeenSet = true; m_oidcJwtConfiguration = std::move(value); }
-
-    /**
-     * <p>A structure that describes the settings for a trusted token issuer that works
-     * with OpenID Connect (OIDC) by using JSON Web Tokens (JWT).</p>
-     */
-    inline TrustedTokenIssuerConfiguration& WithOidcJwtConfiguration(const OidcJwtConfiguration& value) { SetOidcJwtConfiguration(value); return *this;}
-
-    /**
-     * <p>A structure that describes the settings for a trusted token issuer that works
-     * with OpenID Connect (OIDC) by using JSON Web Tokens (JWT).</p>
-     */
-    inline TrustedTokenIssuerConfiguration& WithOidcJwtConfiguration(OidcJwtConfiguration&& value) { SetOidcJwtConfiguration(std::move(value)); return *this;}
-
+    template<typename OidcJwtConfigurationT = OidcJwtConfiguration>
+    void SetOidcJwtConfiguration(OidcJwtConfigurationT&& value) { m_oidcJwtConfigurationHasBeenSet = true; m_oidcJwtConfiguration = std::forward<OidcJwtConfigurationT>(value); }
+    template<typename OidcJwtConfigurationT = OidcJwtConfiguration>
+    TrustedTokenIssuerConfiguration& WithOidcJwtConfiguration(OidcJwtConfigurationT&& value) { SetOidcJwtConfiguration(std::forward<OidcJwtConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     OidcJwtConfiguration m_oidcJwtConfiguration;

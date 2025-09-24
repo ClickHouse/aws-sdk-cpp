@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-ViewContent::ViewContent() : 
-    m_inputSchemaHasBeenSet(false),
-    m_templateHasBeenSet(false),
-    m_actionsHasBeenSet(false)
-{
-}
-
-ViewContent::ViewContent(JsonView jsonValue) : 
-    m_inputSchemaHasBeenSet(false),
-    m_templateHasBeenSet(false),
-    m_actionsHasBeenSet(false)
+ViewContent::ViewContent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ViewContent& ViewContent::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("InputSchema"))
   {
     m_inputSchema = jsonValue.GetString("InputSchema");
-
     m_inputSchemaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Template"))
   {
     m_template = jsonValue.GetString("Template");
-
     m_templateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Actions"))
   {
     Aws::Utils::Array<JsonView> actionsJsonList = jsonValue.GetArray("Actions");
@@ -58,7 +44,6 @@ ViewContent& ViewContent::operator =(JsonView jsonValue)
     }
     m_actionsHasBeenSet = true;
   }
-
   return *this;
 }
 

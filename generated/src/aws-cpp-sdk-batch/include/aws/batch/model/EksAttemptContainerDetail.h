@@ -32,88 +32,68 @@ namespace Model
   class EksAttemptContainerDetail
   {
   public:
-    AWS_BATCH_API EksAttemptContainerDetail();
+    AWS_BATCH_API EksAttemptContainerDetail() = default;
     AWS_BATCH_API EksAttemptContainerDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API EksAttemptContainerDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The exit code for the job attempt. A non-zero exit code is considered
-     * failed.</p>
+     * <p>The name of a container.</p>
      */
-    inline int GetExitCode() const{ return m_exitCode; }
+    inline const Aws::String& GetName() const { return m_name; }
+    inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    EksAttemptContainerDetail& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The exit code for the job attempt. A non-zero exit code is considered
-     * failed.</p>
+     * <p>The ID for the container.</p>
      */
+    inline const Aws::String& GetContainerID() const { return m_containerID; }
+    inline bool ContainerIDHasBeenSet() const { return m_containerIDHasBeenSet; }
+    template<typename ContainerIDT = Aws::String>
+    void SetContainerID(ContainerIDT&& value) { m_containerIDHasBeenSet = true; m_containerID = std::forward<ContainerIDT>(value); }
+    template<typename ContainerIDT = Aws::String>
+    EksAttemptContainerDetail& WithContainerID(ContainerIDT&& value) { SetContainerID(std::forward<ContainerIDT>(value)); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>The exit code returned for the job attempt. A non-zero exit code is
+     * considered failed.</p>
+     */
+    inline int GetExitCode() const { return m_exitCode; }
     inline bool ExitCodeHasBeenSet() const { return m_exitCodeHasBeenSet; }
-
-    /**
-     * <p>The exit code for the job attempt. A non-zero exit code is considered
-     * failed.</p>
-     */
     inline void SetExitCode(int value) { m_exitCodeHasBeenSet = true; m_exitCode = value; }
-
-    /**
-     * <p>The exit code for the job attempt. A non-zero exit code is considered
-     * failed.</p>
-     */
     inline EksAttemptContainerDetail& WithExitCode(int value) { SetExitCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A short (255 max characters) human-readable string to provide additional
      * details for a running or stopped container.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline EksAttemptContainerDetail& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline EksAttemptContainerDetail& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>A short (255 max characters) human-readable string to provide additional
-     * details for a running or stopped container.</p>
-     */
-    inline EksAttemptContainerDetail& WithReason(const char* value) { SetReason(value); return *this;}
-
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    EksAttemptContainerDetail& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_exitCode;
+    Aws::String m_name;
+    bool m_nameHasBeenSet = false;
+
+    Aws::String m_containerID;
+    bool m_containerIDHasBeenSet = false;
+
+    int m_exitCode{0};
     bool m_exitCodeHasBeenSet = false;
 
     Aws::String m_reason;

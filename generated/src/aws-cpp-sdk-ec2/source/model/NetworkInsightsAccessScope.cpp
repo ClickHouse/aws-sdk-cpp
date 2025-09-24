@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NetworkInsightsAccessScope::NetworkInsightsAccessScope() : 
-    m_networkInsightsAccessScopeIdHasBeenSet(false),
-    m_networkInsightsAccessScopeArnHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_updatedDateHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-NetworkInsightsAccessScope::NetworkInsightsAccessScope(const XmlNode& xmlNode) : 
-    m_networkInsightsAccessScopeIdHasBeenSet(false),
-    m_networkInsightsAccessScopeArnHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_updatedDateHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+NetworkInsightsAccessScope::NetworkInsightsAccessScope(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -73,6 +59,7 @@ NetworkInsightsAccessScope& NetworkInsightsAccessScope::operator =(const XmlNode
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -145,7 +132,7 @@ void NetworkInsightsAccessScope::OutputToStream(Aws::OStream& oStream, const cha
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

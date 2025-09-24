@@ -12,17 +12,15 @@ using namespace Aws::LocationService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutGeofenceRequest::PutGeofenceRequest() : 
-    m_collectionNameHasBeenSet(false),
-    m_geofenceIdHasBeenSet(false),
-    m_geofencePropertiesHasBeenSet(false),
-    m_geometryHasBeenSet(false)
-{
-}
-
 Aws::String PutGeofenceRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_geometryHasBeenSet)
+  {
+   payload.WithObject("Geometry", m_geometry.Jsonize());
+
+  }
 
   if(m_geofencePropertiesHasBeenSet)
   {
@@ -32,12 +30,6 @@ Aws::String PutGeofenceRequest::SerializePayload() const
      geofencePropertiesJsonMap.WithString(geofencePropertiesItem.first, geofencePropertiesItem.second);
    }
    payload.WithObject("GeofenceProperties", std::move(geofencePropertiesJsonMap));
-
-  }
-
-  if(m_geometryHasBeenSet)
-  {
-   payload.WithObject("Geometry", m_geometry.Jsonize());
 
   }
 

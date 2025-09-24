@@ -33,105 +33,51 @@ namespace Model
   class StaticImageOutputDeactivateScheduleActionSettings
   {
   public:
-    AWS_MEDIALIVE_API StaticImageOutputDeactivateScheduleActionSettings();
+    AWS_MEDIALIVE_API StaticImageOutputDeactivateScheduleActionSettings() = default;
     AWS_MEDIALIVE_API StaticImageOutputDeactivateScheduleActionSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API StaticImageOutputDeactivateScheduleActionSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The time in milliseconds for the image to fade out. Default is 0 (no fade-out).
      */
-    inline int GetFadeOut() const{ return m_fadeOut; }
-
-    /**
-     * The time in milliseconds for the image to fade out. Default is 0 (no fade-out).
-     */
+    inline int GetFadeOut() const { return m_fadeOut; }
     inline bool FadeOutHasBeenSet() const { return m_fadeOutHasBeenSet; }
-
-    /**
-     * The time in milliseconds for the image to fade out. Default is 0 (no fade-out).
-     */
     inline void SetFadeOut(int value) { m_fadeOutHasBeenSet = true; m_fadeOut = value; }
-
-    /**
-     * The time in milliseconds for the image to fade out. Default is 0 (no fade-out).
-     */
     inline StaticImageOutputDeactivateScheduleActionSettings& WithFadeOut(int value) { SetFadeOut(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * The image overlay layer to deactivate, 0 to 7. Default is 0.
      */
-    inline int GetLayer() const{ return m_layer; }
-
-    /**
-     * The image overlay layer to deactivate, 0 to 7. Default is 0.
-     */
+    inline int GetLayer() const { return m_layer; }
     inline bool LayerHasBeenSet() const { return m_layerHasBeenSet; }
-
-    /**
-     * The image overlay layer to deactivate, 0 to 7. Default is 0.
-     */
     inline void SetLayer(int value) { m_layerHasBeenSet = true; m_layer = value; }
-
-    /**
-     * The image overlay layer to deactivate, 0 to 7. Default is 0.
-     */
     inline StaticImageOutputDeactivateScheduleActionSettings& WithLayer(int value) { SetLayer(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * The name(s) of the output(s) the deactivation should apply to.
      */
-    inline const Aws::Vector<Aws::String>& GetOutputNames() const{ return m_outputNames; }
-
-    /**
-     * The name(s) of the output(s) the deactivation should apply to.
-     */
+    inline const Aws::Vector<Aws::String>& GetOutputNames() const { return m_outputNames; }
     inline bool OutputNamesHasBeenSet() const { return m_outputNamesHasBeenSet; }
-
-    /**
-     * The name(s) of the output(s) the deactivation should apply to.
-     */
-    inline void SetOutputNames(const Aws::Vector<Aws::String>& value) { m_outputNamesHasBeenSet = true; m_outputNames = value; }
-
-    /**
-     * The name(s) of the output(s) the deactivation should apply to.
-     */
-    inline void SetOutputNames(Aws::Vector<Aws::String>&& value) { m_outputNamesHasBeenSet = true; m_outputNames = std::move(value); }
-
-    /**
-     * The name(s) of the output(s) the deactivation should apply to.
-     */
-    inline StaticImageOutputDeactivateScheduleActionSettings& WithOutputNames(const Aws::Vector<Aws::String>& value) { SetOutputNames(value); return *this;}
-
-    /**
-     * The name(s) of the output(s) the deactivation should apply to.
-     */
-    inline StaticImageOutputDeactivateScheduleActionSettings& WithOutputNames(Aws::Vector<Aws::String>&& value) { SetOutputNames(std::move(value)); return *this;}
-
-    /**
-     * The name(s) of the output(s) the deactivation should apply to.
-     */
-    inline StaticImageOutputDeactivateScheduleActionSettings& AddOutputNames(const Aws::String& value) { m_outputNamesHasBeenSet = true; m_outputNames.push_back(value); return *this; }
-
-    /**
-     * The name(s) of the output(s) the deactivation should apply to.
-     */
-    inline StaticImageOutputDeactivateScheduleActionSettings& AddOutputNames(Aws::String&& value) { m_outputNamesHasBeenSet = true; m_outputNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * The name(s) of the output(s) the deactivation should apply to.
-     */
-    inline StaticImageOutputDeactivateScheduleActionSettings& AddOutputNames(const char* value) { m_outputNamesHasBeenSet = true; m_outputNames.push_back(value); return *this; }
-
+    template<typename OutputNamesT = Aws::Vector<Aws::String>>
+    void SetOutputNames(OutputNamesT&& value) { m_outputNamesHasBeenSet = true; m_outputNames = std::forward<OutputNamesT>(value); }
+    template<typename OutputNamesT = Aws::Vector<Aws::String>>
+    StaticImageOutputDeactivateScheduleActionSettings& WithOutputNames(OutputNamesT&& value) { SetOutputNames(std::forward<OutputNamesT>(value)); return *this;}
+    template<typename OutputNamesT = Aws::String>
+    StaticImageOutputDeactivateScheduleActionSettings& AddOutputNames(OutputNamesT&& value) { m_outputNamesHasBeenSet = true; m_outputNames.emplace_back(std::forward<OutputNamesT>(value)); return *this; }
+    ///@}
   private:
 
-    int m_fadeOut;
+    int m_fadeOut{0};
     bool m_fadeOutHasBeenSet = false;
 
-    int m_layer;
+    int m_layer{0};
     bool m_layerHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_outputNames;

@@ -18,13 +18,7 @@ namespace IoTEvents
 namespace Model
 {
 
-EmailRecipients::EmailRecipients() : 
-    m_toHasBeenSet(false)
-{
-}
-
-EmailRecipients::EmailRecipients(JsonView jsonValue) : 
-    m_toHasBeenSet(false)
+EmailRecipients::EmailRecipients(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ EmailRecipients& EmailRecipients::operator =(JsonView jsonValue)
     }
     m_toHasBeenSet = true;
   }
-
   return *this;
 }
 

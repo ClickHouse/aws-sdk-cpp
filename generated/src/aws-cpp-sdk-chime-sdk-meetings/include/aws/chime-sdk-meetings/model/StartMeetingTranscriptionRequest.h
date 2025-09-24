@@ -22,7 +22,7 @@ namespace Model
   class StartMeetingTranscriptionRequest : public ChimeSDKMeetingsRequest
   {
   public:
-    AWS_CHIMESDKMEETINGS_API StartMeetingTranscriptionRequest();
+    AWS_CHIMESDKMEETINGS_API StartMeetingTranscriptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,89 +33,31 @@ namespace Model
     AWS_CHIMESDKMEETINGS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique ID of the meeting being transcribed.</p>
      */
-    inline const Aws::String& GetMeetingId() const{ return m_meetingId; }
-
-    /**
-     * <p>The unique ID of the meeting being transcribed.</p>
-     */
+    inline const Aws::String& GetMeetingId() const { return m_meetingId; }
     inline bool MeetingIdHasBeenSet() const { return m_meetingIdHasBeenSet; }
+    template<typename MeetingIdT = Aws::String>
+    void SetMeetingId(MeetingIdT&& value) { m_meetingIdHasBeenSet = true; m_meetingId = std::forward<MeetingIdT>(value); }
+    template<typename MeetingIdT = Aws::String>
+    StartMeetingTranscriptionRequest& WithMeetingId(MeetingIdT&& value) { SetMeetingId(std::forward<MeetingIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the meeting being transcribed.</p>
-     */
-    inline void SetMeetingId(const Aws::String& value) { m_meetingIdHasBeenSet = true; m_meetingId = value; }
-
-    /**
-     * <p>The unique ID of the meeting being transcribed.</p>
-     */
-    inline void SetMeetingId(Aws::String&& value) { m_meetingIdHasBeenSet = true; m_meetingId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the meeting being transcribed.</p>
-     */
-    inline void SetMeetingId(const char* value) { m_meetingIdHasBeenSet = true; m_meetingId.assign(value); }
-
-    /**
-     * <p>The unique ID of the meeting being transcribed.</p>
-     */
-    inline StartMeetingTranscriptionRequest& WithMeetingId(const Aws::String& value) { SetMeetingId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the meeting being transcribed.</p>
-     */
-    inline StartMeetingTranscriptionRequest& WithMeetingId(Aws::String&& value) { SetMeetingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the meeting being transcribed.</p>
-     */
-    inline StartMeetingTranscriptionRequest& WithMeetingId(const char* value) { SetMeetingId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration for the current transcription operation. Must contain
      * <code>EngineTranscribeSettings</code> or
      * <code>EngineTranscribeMedicalSettings</code>.</p>
      */
-    inline const TranscriptionConfiguration& GetTranscriptionConfiguration() const{ return m_transcriptionConfiguration; }
-
-    /**
-     * <p>The configuration for the current transcription operation. Must contain
-     * <code>EngineTranscribeSettings</code> or
-     * <code>EngineTranscribeMedicalSettings</code>.</p>
-     */
+    inline const TranscriptionConfiguration& GetTranscriptionConfiguration() const { return m_transcriptionConfiguration; }
     inline bool TranscriptionConfigurationHasBeenSet() const { return m_transcriptionConfigurationHasBeenSet; }
-
-    /**
-     * <p>The configuration for the current transcription operation. Must contain
-     * <code>EngineTranscribeSettings</code> or
-     * <code>EngineTranscribeMedicalSettings</code>.</p>
-     */
-    inline void SetTranscriptionConfiguration(const TranscriptionConfiguration& value) { m_transcriptionConfigurationHasBeenSet = true; m_transcriptionConfiguration = value; }
-
-    /**
-     * <p>The configuration for the current transcription operation. Must contain
-     * <code>EngineTranscribeSettings</code> or
-     * <code>EngineTranscribeMedicalSettings</code>.</p>
-     */
-    inline void SetTranscriptionConfiguration(TranscriptionConfiguration&& value) { m_transcriptionConfigurationHasBeenSet = true; m_transcriptionConfiguration = std::move(value); }
-
-    /**
-     * <p>The configuration for the current transcription operation. Must contain
-     * <code>EngineTranscribeSettings</code> or
-     * <code>EngineTranscribeMedicalSettings</code>.</p>
-     */
-    inline StartMeetingTranscriptionRequest& WithTranscriptionConfiguration(const TranscriptionConfiguration& value) { SetTranscriptionConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration for the current transcription operation. Must contain
-     * <code>EngineTranscribeSettings</code> or
-     * <code>EngineTranscribeMedicalSettings</code>.</p>
-     */
-    inline StartMeetingTranscriptionRequest& WithTranscriptionConfiguration(TranscriptionConfiguration&& value) { SetTranscriptionConfiguration(std::move(value)); return *this;}
-
+    template<typename TranscriptionConfigurationT = TranscriptionConfiguration>
+    void SetTranscriptionConfiguration(TranscriptionConfigurationT&& value) { m_transcriptionConfigurationHasBeenSet = true; m_transcriptionConfiguration = std::forward<TranscriptionConfigurationT>(value); }
+    template<typename TranscriptionConfigurationT = TranscriptionConfiguration>
+    StartMeetingTranscriptionRequest& WithTranscriptionConfiguration(TranscriptionConfigurationT&& value) { SetTranscriptionConfiguration(std::forward<TranscriptionConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_meetingId;

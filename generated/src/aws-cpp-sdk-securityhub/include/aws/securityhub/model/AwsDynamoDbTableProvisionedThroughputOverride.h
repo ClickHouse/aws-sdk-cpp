@@ -30,35 +30,24 @@ namespace Model
   class AwsDynamoDbTableProvisionedThroughputOverride
   {
   public:
-    AWS_SECURITYHUB_API AwsDynamoDbTableProvisionedThroughputOverride();
+    AWS_SECURITYHUB_API AwsDynamoDbTableProvisionedThroughputOverride() = default;
     AWS_SECURITYHUB_API AwsDynamoDbTableProvisionedThroughputOverride(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsDynamoDbTableProvisionedThroughputOverride& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The read capacity units for the replica.</p>
      */
-    inline int GetReadCapacityUnits() const{ return m_readCapacityUnits; }
-
-    /**
-     * <p>The read capacity units for the replica.</p>
-     */
+    inline int GetReadCapacityUnits() const { return m_readCapacityUnits; }
     inline bool ReadCapacityUnitsHasBeenSet() const { return m_readCapacityUnitsHasBeenSet; }
-
-    /**
-     * <p>The read capacity units for the replica.</p>
-     */
     inline void SetReadCapacityUnits(int value) { m_readCapacityUnitsHasBeenSet = true; m_readCapacityUnits = value; }
-
-    /**
-     * <p>The read capacity units for the replica.</p>
-     */
     inline AwsDynamoDbTableProvisionedThroughputOverride& WithReadCapacityUnits(int value) { SetReadCapacityUnits(value); return *this;}
-
+    ///@}
   private:
 
-    int m_readCapacityUnits;
+    int m_readCapacityUnits{0};
     bool m_readCapacityUnitsHasBeenSet = false;
   };
 

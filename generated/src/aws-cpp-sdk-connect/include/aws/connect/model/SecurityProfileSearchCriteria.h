@@ -36,128 +36,51 @@ namespace Model
   class SecurityProfileSearchCriteria
   {
   public:
-    AWS_CONNECT_API SecurityProfileSearchCriteria();
+    AWS_CONNECT_API SecurityProfileSearchCriteria() = default;
     AWS_CONNECT_API SecurityProfileSearchCriteria(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API SecurityProfileSearchCriteria& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of conditions which would be applied together with an OR
      * condition.</p>
      */
-    inline const Aws::Vector<SecurityProfileSearchCriteria>& GetOrConditions() const{ return m_orConditions; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
+    inline const Aws::Vector<SecurityProfileSearchCriteria>& GetOrConditions() const { return m_orConditions; }
     inline bool OrConditionsHasBeenSet() const { return m_orConditionsHasBeenSet; }
+    template<typename OrConditionsT = Aws::Vector<SecurityProfileSearchCriteria>>
+    void SetOrConditions(OrConditionsT&& value) { m_orConditionsHasBeenSet = true; m_orConditions = std::forward<OrConditionsT>(value); }
+    template<typename OrConditionsT = Aws::Vector<SecurityProfileSearchCriteria>>
+    SecurityProfileSearchCriteria& WithOrConditions(OrConditionsT&& value) { SetOrConditions(std::forward<OrConditionsT>(value)); return *this;}
+    template<typename OrConditionsT = SecurityProfileSearchCriteria>
+    SecurityProfileSearchCriteria& AddOrConditions(OrConditionsT&& value) { m_orConditionsHasBeenSet = true; m_orConditions.emplace_back(std::forward<OrConditionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline void SetOrConditions(const Aws::Vector<SecurityProfileSearchCriteria>& value) { m_orConditionsHasBeenSet = true; m_orConditions = value; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline void SetOrConditions(Aws::Vector<SecurityProfileSearchCriteria>&& value) { m_orConditionsHasBeenSet = true; m_orConditions = std::move(value); }
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline SecurityProfileSearchCriteria& WithOrConditions(const Aws::Vector<SecurityProfileSearchCriteria>& value) { SetOrConditions(value); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline SecurityProfileSearchCriteria& WithOrConditions(Aws::Vector<SecurityProfileSearchCriteria>&& value) { SetOrConditions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline SecurityProfileSearchCriteria& AddOrConditions(const SecurityProfileSearchCriteria& value) { m_orConditionsHasBeenSet = true; m_orConditions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an OR
-     * condition.</p>
-     */
-    inline SecurityProfileSearchCriteria& AddOrConditions(SecurityProfileSearchCriteria&& value) { m_orConditionsHasBeenSet = true; m_orConditions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of conditions which would be applied together with an AND
      * condition.</p>
      */
-    inline const Aws::Vector<SecurityProfileSearchCriteria>& GetAndConditions() const{ return m_andConditions; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
+    inline const Aws::Vector<SecurityProfileSearchCriteria>& GetAndConditions() const { return m_andConditions; }
     inline bool AndConditionsHasBeenSet() const { return m_andConditionsHasBeenSet; }
+    template<typename AndConditionsT = Aws::Vector<SecurityProfileSearchCriteria>>
+    void SetAndConditions(AndConditionsT&& value) { m_andConditionsHasBeenSet = true; m_andConditions = std::forward<AndConditionsT>(value); }
+    template<typename AndConditionsT = Aws::Vector<SecurityProfileSearchCriteria>>
+    SecurityProfileSearchCriteria& WithAndConditions(AndConditionsT&& value) { SetAndConditions(std::forward<AndConditionsT>(value)); return *this;}
+    template<typename AndConditionsT = SecurityProfileSearchCriteria>
+    SecurityProfileSearchCriteria& AddAndConditions(AndConditionsT&& value) { m_andConditionsHasBeenSet = true; m_andConditions.emplace_back(std::forward<AndConditionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline void SetAndConditions(const Aws::Vector<SecurityProfileSearchCriteria>& value) { m_andConditionsHasBeenSet = true; m_andConditions = value; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline void SetAndConditions(Aws::Vector<SecurityProfileSearchCriteria>&& value) { m_andConditionsHasBeenSet = true; m_andConditions = std::move(value); }
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline SecurityProfileSearchCriteria& WithAndConditions(const Aws::Vector<SecurityProfileSearchCriteria>& value) { SetAndConditions(value); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline SecurityProfileSearchCriteria& WithAndConditions(Aws::Vector<SecurityProfileSearchCriteria>&& value) { SetAndConditions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline SecurityProfileSearchCriteria& AddAndConditions(const SecurityProfileSearchCriteria& value) { m_andConditionsHasBeenSet = true; m_andConditions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of conditions which would be applied together with an AND
-     * condition.</p>
-     */
-    inline SecurityProfileSearchCriteria& AddAndConditions(SecurityProfileSearchCriteria&& value) { m_andConditionsHasBeenSet = true; m_andConditions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const StringCondition& GetStringCondition() const{ return m_stringCondition; }
-
-    
+    inline const StringCondition& GetStringCondition() const { return m_stringCondition; }
     inline bool StringConditionHasBeenSet() const { return m_stringConditionHasBeenSet; }
-
-    
-    inline void SetStringCondition(const StringCondition& value) { m_stringConditionHasBeenSet = true; m_stringCondition = value; }
-
-    
-    inline void SetStringCondition(StringCondition&& value) { m_stringConditionHasBeenSet = true; m_stringCondition = std::move(value); }
-
-    
-    inline SecurityProfileSearchCriteria& WithStringCondition(const StringCondition& value) { SetStringCondition(value); return *this;}
-
-    
-    inline SecurityProfileSearchCriteria& WithStringCondition(StringCondition&& value) { SetStringCondition(std::move(value)); return *this;}
-
+    template<typename StringConditionT = StringCondition>
+    void SetStringCondition(StringConditionT&& value) { m_stringConditionHasBeenSet = true; m_stringCondition = std::forward<StringConditionT>(value); }
+    template<typename StringConditionT = StringCondition>
+    SecurityProfileSearchCriteria& WithStringCondition(StringConditionT&& value) { SetStringCondition(std::forward<StringConditionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<SecurityProfileSearchCriteria> m_orConditions;

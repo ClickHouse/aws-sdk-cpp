@@ -34,42 +34,23 @@ namespace Model
   class DestinationConfiguration
   {
   public:
-    AWS_IVS_API DestinationConfiguration();
+    AWS_IVS_API DestinationConfiguration() = default;
     AWS_IVS_API DestinationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVS_API DestinationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IVS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An S3 destination configuration where recorded videos will be stored.</p>
      */
-    inline const S3DestinationConfiguration& GetS3() const{ return m_s3; }
-
-    /**
-     * <p>An S3 destination configuration where recorded videos will be stored.</p>
-     */
+    inline const S3DestinationConfiguration& GetS3() const { return m_s3; }
     inline bool S3HasBeenSet() const { return m_s3HasBeenSet; }
-
-    /**
-     * <p>An S3 destination configuration where recorded videos will be stored.</p>
-     */
-    inline void SetS3(const S3DestinationConfiguration& value) { m_s3HasBeenSet = true; m_s3 = value; }
-
-    /**
-     * <p>An S3 destination configuration where recorded videos will be stored.</p>
-     */
-    inline void SetS3(S3DestinationConfiguration&& value) { m_s3HasBeenSet = true; m_s3 = std::move(value); }
-
-    /**
-     * <p>An S3 destination configuration where recorded videos will be stored.</p>
-     */
-    inline DestinationConfiguration& WithS3(const S3DestinationConfiguration& value) { SetS3(value); return *this;}
-
-    /**
-     * <p>An S3 destination configuration where recorded videos will be stored.</p>
-     */
-    inline DestinationConfiguration& WithS3(S3DestinationConfiguration&& value) { SetS3(std::move(value)); return *this;}
-
+    template<typename S3T = S3DestinationConfiguration>
+    void SetS3(S3T&& value) { m_s3HasBeenSet = true; m_s3 = std::forward<S3T>(value); }
+    template<typename S3T = S3DestinationConfiguration>
+    DestinationConfiguration& WithS3(S3T&& value) { SetS3(std::forward<S3T>(value)); return *this;}
+    ///@}
   private:
 
     S3DestinationConfiguration m_s3;

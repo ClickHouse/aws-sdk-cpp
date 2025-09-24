@@ -18,15 +18,7 @@ namespace DataZone
 namespace Model
 {
 
-SearchTypesResultItem::SearchTypesResultItem() : 
-    m_assetTypeItemHasBeenSet(false),
-    m_formTypeItemHasBeenSet(false)
-{
-}
-
-SearchTypesResultItem::SearchTypesResultItem(JsonView jsonValue) : 
-    m_assetTypeItemHasBeenSet(false),
-    m_formTypeItemHasBeenSet(false)
+SearchTypesResultItem::SearchTypesResultItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ SearchTypesResultItem& SearchTypesResultItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("assetTypeItem"))
   {
     m_assetTypeItem = jsonValue.GetObject("assetTypeItem");
-
     m_assetTypeItemHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("formTypeItem"))
   {
     m_formTypeItem = jsonValue.GetObject("formTypeItem");
-
     m_formTypeItemHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("lineageNodeTypeItem"))
+  {
+    m_lineageNodeTypeItem = jsonValue.GetObject("lineageNodeTypeItem");
+    m_lineageNodeTypeItemHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue SearchTypesResultItem::Jsonize() const
   if(m_formTypeItemHasBeenSet)
   {
    payload.WithObject("formTypeItem", m_formTypeItem.Jsonize());
+
+  }
+
+  if(m_lineageNodeTypeItemHasBeenSet)
+  {
+   payload.WithObject("lineageNodeTypeItem", m_lineageNodeTypeItem.Jsonize());
 
   }
 

@@ -20,19 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-TargetGroupStickinessConfig::TargetGroupStickinessConfig() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_durationSeconds(0),
-    m_durationSecondsHasBeenSet(false)
-{
-}
-
-TargetGroupStickinessConfig::TargetGroupStickinessConfig(const XmlNode& xmlNode) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_durationSeconds(0),
-    m_durationSecondsHasBeenSet(false)
+TargetGroupStickinessConfig::TargetGroupStickinessConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

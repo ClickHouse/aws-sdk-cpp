@@ -20,17 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-RegionalConfiguration::RegionalConfiguration() : 
-    m_replicationGroupIdHasBeenSet(false),
-    m_replicationGroupRegionHasBeenSet(false),
-    m_reshardingConfigurationHasBeenSet(false)
-{
-}
-
-RegionalConfiguration::RegionalConfiguration(const XmlNode& xmlNode) : 
-    m_replicationGroupIdHasBeenSet(false),
-    m_replicationGroupRegionHasBeenSet(false),
-    m_reshardingConfigurationHasBeenSet(false)
+RegionalConfiguration::RegionalConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ RegionalConfiguration& RegionalConfiguration::operator =(const XmlNode& xmlNode)
     if(!reshardingConfigurationNode.IsNull())
     {
       XmlNode reshardingConfigurationMember = reshardingConfigurationNode.FirstChild("ReshardingConfiguration");
+      m_reshardingConfigurationHasBeenSet = !reshardingConfigurationMember.IsNull();
       while(!reshardingConfigurationMember.IsNull())
       {
         m_reshardingConfiguration.push_back(reshardingConfigurationMember);
@@ -88,7 +79,7 @@ void RegionalConfiguration::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_reshardingConfiguration)
       {
         Aws::StringStream reshardingConfigurationSs;
-        reshardingConfigurationSs << location << index << locationValue << ".ReshardingConfiguration." << reshardingConfigurationIdx++;
+        reshardingConfigurationSs << location << index << locationValue << ".ReshardingConfiguration.ReshardingConfiguration." << reshardingConfigurationIdx++;
         item.OutputToStream(oStream, reshardingConfigurationSs.str().c_str());
       }
   }
@@ -111,7 +102,7 @@ void RegionalConfiguration::OutputToStream(Aws::OStream& oStream, const char* lo
       for(auto& item : m_reshardingConfiguration)
       {
         Aws::StringStream reshardingConfigurationSs;
-        reshardingConfigurationSs << location <<  ".ReshardingConfiguration." << reshardingConfigurationIdx++;
+        reshardingConfigurationSs << location << ".ReshardingConfiguration.ReshardingConfiguration." << reshardingConfigurationIdx++;
         item.OutputToStream(oStream, reshardingConfigurationSs.str().c_str());
       }
   }

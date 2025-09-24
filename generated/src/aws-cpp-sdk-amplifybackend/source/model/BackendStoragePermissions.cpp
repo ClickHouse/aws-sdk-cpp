@@ -18,15 +18,7 @@ namespace AmplifyBackend
 namespace Model
 {
 
-BackendStoragePermissions::BackendStoragePermissions() : 
-    m_authenticatedHasBeenSet(false),
-    m_unAuthenticatedHasBeenSet(false)
-{
-}
-
-BackendStoragePermissions::BackendStoragePermissions(JsonView jsonValue) : 
-    m_authenticatedHasBeenSet(false),
-    m_unAuthenticatedHasBeenSet(false)
+BackendStoragePermissions::BackendStoragePermissions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ BackendStoragePermissions& BackendStoragePermissions::operator =(JsonView jsonVa
     }
     m_authenticatedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("unAuthenticated"))
   {
     Aws::Utils::Array<JsonView> unAuthenticatedJsonList = jsonValue.GetArray("unAuthenticated");
@@ -52,7 +43,6 @@ BackendStoragePermissions& BackendStoragePermissions::operator =(JsonView jsonVa
     }
     m_unAuthenticatedHasBeenSet = true;
   }
-
   return *this;
 }
 

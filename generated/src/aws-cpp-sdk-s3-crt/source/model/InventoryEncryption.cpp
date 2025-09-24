@@ -20,15 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-InventoryEncryption::InventoryEncryption() : 
-    m_sSES3HasBeenSet(false),
-    m_sSEKMSHasBeenSet(false)
-{
-}
-
-InventoryEncryption::InventoryEncryption(const XmlNode& xmlNode) : 
-    m_sSES3HasBeenSet(false),
-    m_sSEKMSHasBeenSet(false)
+InventoryEncryption::InventoryEncryption(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

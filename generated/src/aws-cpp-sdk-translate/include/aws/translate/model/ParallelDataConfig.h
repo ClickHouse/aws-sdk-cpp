@@ -33,97 +33,40 @@ namespace Model
   class ParallelDataConfig
   {
   public:
-    AWS_TRANSLATE_API ParallelDataConfig();
+    AWS_TRANSLATE_API ParallelDataConfig() = default;
     AWS_TRANSLATE_API ParallelDataConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API ParallelDataConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URI of the Amazon S3 folder that contains the parallel data input file.
      * The folder must be in the same Region as the API endpoint you are calling.</p>
      */
-    inline const Aws::String& GetS3Uri() const{ return m_s3Uri; }
-
-    /**
-     * <p>The URI of the Amazon S3 folder that contains the parallel data input file.
-     * The folder must be in the same Region as the API endpoint you are calling.</p>
-     */
+    inline const Aws::String& GetS3Uri() const { return m_s3Uri; }
     inline bool S3UriHasBeenSet() const { return m_s3UriHasBeenSet; }
+    template<typename S3UriT = Aws::String>
+    void SetS3Uri(S3UriT&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::forward<S3UriT>(value); }
+    template<typename S3UriT = Aws::String>
+    ParallelDataConfig& WithS3Uri(S3UriT&& value) { SetS3Uri(std::forward<S3UriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URI of the Amazon S3 folder that contains the parallel data input file.
-     * The folder must be in the same Region as the API endpoint you are calling.</p>
-     */
-    inline void SetS3Uri(const Aws::String& value) { m_s3UriHasBeenSet = true; m_s3Uri = value; }
-
-    /**
-     * <p>The URI of the Amazon S3 folder that contains the parallel data input file.
-     * The folder must be in the same Region as the API endpoint you are calling.</p>
-     */
-    inline void SetS3Uri(Aws::String&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::move(value); }
-
-    /**
-     * <p>The URI of the Amazon S3 folder that contains the parallel data input file.
-     * The folder must be in the same Region as the API endpoint you are calling.</p>
-     */
-    inline void SetS3Uri(const char* value) { m_s3UriHasBeenSet = true; m_s3Uri.assign(value); }
-
-    /**
-     * <p>The URI of the Amazon S3 folder that contains the parallel data input file.
-     * The folder must be in the same Region as the API endpoint you are calling.</p>
-     */
-    inline ParallelDataConfig& WithS3Uri(const Aws::String& value) { SetS3Uri(value); return *this;}
-
-    /**
-     * <p>The URI of the Amazon S3 folder that contains the parallel data input file.
-     * The folder must be in the same Region as the API endpoint you are calling.</p>
-     */
-    inline ParallelDataConfig& WithS3Uri(Aws::String&& value) { SetS3Uri(std::move(value)); return *this;}
-
-    /**
-     * <p>The URI of the Amazon S3 folder that contains the parallel data input file.
-     * The folder must be in the same Region as the API endpoint you are calling.</p>
-     */
-    inline ParallelDataConfig& WithS3Uri(const char* value) { SetS3Uri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The format of the parallel data input file.</p>
      */
-    inline const ParallelDataFormat& GetFormat() const{ return m_format; }
-
-    /**
-     * <p>The format of the parallel data input file.</p>
-     */
+    inline ParallelDataFormat GetFormat() const { return m_format; }
     inline bool FormatHasBeenSet() const { return m_formatHasBeenSet; }
-
-    /**
-     * <p>The format of the parallel data input file.</p>
-     */
-    inline void SetFormat(const ParallelDataFormat& value) { m_formatHasBeenSet = true; m_format = value; }
-
-    /**
-     * <p>The format of the parallel data input file.</p>
-     */
-    inline void SetFormat(ParallelDataFormat&& value) { m_formatHasBeenSet = true; m_format = std::move(value); }
-
-    /**
-     * <p>The format of the parallel data input file.</p>
-     */
-    inline ParallelDataConfig& WithFormat(const ParallelDataFormat& value) { SetFormat(value); return *this;}
-
-    /**
-     * <p>The format of the parallel data input file.</p>
-     */
-    inline ParallelDataConfig& WithFormat(ParallelDataFormat&& value) { SetFormat(std::move(value)); return *this;}
-
+    inline void SetFormat(ParallelDataFormat value) { m_formatHasBeenSet = true; m_format = value; }
+    inline ParallelDataConfig& WithFormat(ParallelDataFormat value) { SetFormat(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_s3Uri;
     bool m_s3UriHasBeenSet = false;
 
-    ParallelDataFormat m_format;
+    ParallelDataFormat m_format{ParallelDataFormat::NOT_SET};
     bool m_formatHasBeenSet = false;
   };
 

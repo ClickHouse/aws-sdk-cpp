@@ -34,7 +34,7 @@ namespace Model
   class ImportInstanceTaskDetails
   {
   public:
-    AWS_EC2_API ImportInstanceTaskDetails();
+    AWS_EC2_API ImportInstanceTaskDetails() = default;
     AWS_EC2_API ImportInstanceTaskDetails(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ImportInstanceTaskDetails& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,159 +42,53 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>A description of the task.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the task.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ImportInstanceTaskDetails& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the task.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the task.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the task.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the task.</p>
-     */
-    inline ImportInstanceTaskDetails& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the task.</p>
-     */
-    inline ImportInstanceTaskDetails& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the task.</p>
-     */
-    inline ImportInstanceTaskDetails& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    ImportInstanceTaskDetails& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ImportInstanceTaskDetails& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ImportInstanceTaskDetails& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline ImportInstanceTaskDetails& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The instance operating system.</p>
      */
-    inline const PlatformValues& GetPlatform() const{ return m_platform; }
-
-    /**
-     * <p>The instance operating system.</p>
-     */
+    inline PlatformValues GetPlatform() const { return m_platform; }
     inline bool PlatformHasBeenSet() const { return m_platformHasBeenSet; }
+    inline void SetPlatform(PlatformValues value) { m_platformHasBeenSet = true; m_platform = value; }
+    inline ImportInstanceTaskDetails& WithPlatform(PlatformValues value) { SetPlatform(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance operating system.</p>
-     */
-    inline void SetPlatform(const PlatformValues& value) { m_platformHasBeenSet = true; m_platform = value; }
-
-    /**
-     * <p>The instance operating system.</p>
-     */
-    inline void SetPlatform(PlatformValues&& value) { m_platformHasBeenSet = true; m_platform = std::move(value); }
-
-    /**
-     * <p>The instance operating system.</p>
-     */
-    inline ImportInstanceTaskDetails& WithPlatform(const PlatformValues& value) { SetPlatform(value); return *this;}
-
-    /**
-     * <p>The instance operating system.</p>
-     */
-    inline ImportInstanceTaskDetails& WithPlatform(PlatformValues&& value) { SetPlatform(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The volumes.</p>
      */
-    inline const Aws::Vector<ImportInstanceVolumeDetailItem>& GetVolumes() const{ return m_volumes; }
-
-    /**
-     * <p>The volumes.</p>
-     */
+    inline const Aws::Vector<ImportInstanceVolumeDetailItem>& GetVolumes() const { return m_volumes; }
     inline bool VolumesHasBeenSet() const { return m_volumesHasBeenSet; }
-
-    /**
-     * <p>The volumes.</p>
-     */
-    inline void SetVolumes(const Aws::Vector<ImportInstanceVolumeDetailItem>& value) { m_volumesHasBeenSet = true; m_volumes = value; }
-
-    /**
-     * <p>The volumes.</p>
-     */
-    inline void SetVolumes(Aws::Vector<ImportInstanceVolumeDetailItem>&& value) { m_volumesHasBeenSet = true; m_volumes = std::move(value); }
-
-    /**
-     * <p>The volumes.</p>
-     */
-    inline ImportInstanceTaskDetails& WithVolumes(const Aws::Vector<ImportInstanceVolumeDetailItem>& value) { SetVolumes(value); return *this;}
-
-    /**
-     * <p>The volumes.</p>
-     */
-    inline ImportInstanceTaskDetails& WithVolumes(Aws::Vector<ImportInstanceVolumeDetailItem>&& value) { SetVolumes(std::move(value)); return *this;}
-
-    /**
-     * <p>The volumes.</p>
-     */
-    inline ImportInstanceTaskDetails& AddVolumes(const ImportInstanceVolumeDetailItem& value) { m_volumesHasBeenSet = true; m_volumes.push_back(value); return *this; }
-
-    /**
-     * <p>The volumes.</p>
-     */
-    inline ImportInstanceTaskDetails& AddVolumes(ImportInstanceVolumeDetailItem&& value) { m_volumesHasBeenSet = true; m_volumes.push_back(std::move(value)); return *this; }
-
+    template<typename VolumesT = Aws::Vector<ImportInstanceVolumeDetailItem>>
+    void SetVolumes(VolumesT&& value) { m_volumesHasBeenSet = true; m_volumes = std::forward<VolumesT>(value); }
+    template<typename VolumesT = Aws::Vector<ImportInstanceVolumeDetailItem>>
+    ImportInstanceTaskDetails& WithVolumes(VolumesT&& value) { SetVolumes(std::forward<VolumesT>(value)); return *this;}
+    template<typename VolumesT = ImportInstanceVolumeDetailItem>
+    ImportInstanceTaskDetails& AddVolumes(VolumesT&& value) { m_volumesHasBeenSet = true; m_volumes.emplace_back(std::forward<VolumesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_description;
@@ -203,7 +97,7 @@ namespace Model
     Aws::String m_instanceId;
     bool m_instanceIdHasBeenSet = false;
 
-    PlatformValues m_platform;
+    PlatformValues m_platform{PlatformValues::NOT_SET};
     bool m_platformHasBeenSet = false;
 
     Aws::Vector<ImportInstanceVolumeDetailItem> m_volumes;

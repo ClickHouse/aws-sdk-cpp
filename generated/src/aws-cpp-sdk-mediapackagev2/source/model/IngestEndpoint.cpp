@@ -18,15 +18,7 @@ namespace mediapackagev2
 namespace Model
 {
 
-IngestEndpoint::IngestEndpoint() : 
-    m_idHasBeenSet(false),
-    m_urlHasBeenSet(false)
-{
-}
-
-IngestEndpoint::IngestEndpoint(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_urlHasBeenSet(false)
+IngestEndpoint::IngestEndpoint(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ IngestEndpoint& IngestEndpoint::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Url"))
   {
     m_url = jsonValue.GetString("Url");
-
     m_urlHasBeenSet = true;
   }
-
   return *this;
 }
 

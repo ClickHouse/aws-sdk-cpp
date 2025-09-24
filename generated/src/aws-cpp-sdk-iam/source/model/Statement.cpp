@@ -20,21 +20,7 @@ namespace IAM
 namespace Model
 {
 
-Statement::Statement() : 
-    m_sourcePolicyIdHasBeenSet(false),
-    m_sourcePolicyType(PolicySourceType::NOT_SET),
-    m_sourcePolicyTypeHasBeenSet(false),
-    m_startPositionHasBeenSet(false),
-    m_endPositionHasBeenSet(false)
-{
-}
-
-Statement::Statement(const XmlNode& xmlNode) : 
-    m_sourcePolicyIdHasBeenSet(false),
-    m_sourcePolicyType(PolicySourceType::NOT_SET),
-    m_sourcePolicyTypeHasBeenSet(false),
-    m_startPositionHasBeenSet(false),
-    m_endPositionHasBeenSet(false)
+Statement::Statement(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -54,7 +40,7 @@ Statement& Statement::operator =(const XmlNode& xmlNode)
     XmlNode sourcePolicyTypeNode = resultNode.FirstChild("SourcePolicyType");
     if(!sourcePolicyTypeNode.IsNull())
     {
-      m_sourcePolicyType = PolicySourceTypeMapper::GetPolicySourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourcePolicyTypeNode.GetText()).c_str()).c_str());
+      m_sourcePolicyType = PolicySourceTypeMapper::GetPolicySourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourcePolicyTypeNode.GetText()).c_str()));
       m_sourcePolicyTypeHasBeenSet = true;
     }
     XmlNode startPositionNode = resultNode.FirstChild("StartPosition");
@@ -83,7 +69,7 @@ void Statement::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 
   if(m_sourcePolicyTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SourcePolicyType=" << PolicySourceTypeMapper::GetNameForPolicySourceType(m_sourcePolicyType) << "&";
+      oStream << location << index << locationValue << ".SourcePolicyType=" << StringUtils::URLEncode(PolicySourceTypeMapper::GetNameForPolicySourceType(m_sourcePolicyType)) << "&";
   }
 
   if(m_startPositionHasBeenSet)
@@ -110,7 +96,7 @@ void Statement::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_sourcePolicyTypeHasBeenSet)
   {
-      oStream << location << ".SourcePolicyType=" << PolicySourceTypeMapper::GetNameForPolicySourceType(m_sourcePolicyType) << "&";
+      oStream << location << ".SourcePolicyType=" << StringUtils::URLEncode(PolicySourceTypeMapper::GetNameForPolicySourceType(m_sourcePolicyType)) << "&";
   }
   if(m_startPositionHasBeenSet)
   {

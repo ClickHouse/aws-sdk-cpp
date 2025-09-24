@@ -18,17 +18,7 @@ namespace CloudTrail
 namespace Model
 {
 
-TrailInfo::TrailInfo() : 
-    m_trailARNHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_homeRegionHasBeenSet(false)
-{
-}
-
-TrailInfo::TrailInfo(JsonView jsonValue) : 
-    m_trailARNHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_homeRegionHasBeenSet(false)
+TrailInfo::TrailInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ TrailInfo& TrailInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TrailARN"))
   {
     m_trailARN = jsonValue.GetString("TrailARN");
-
     m_trailARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HomeRegion"))
   {
     m_homeRegion = jsonValue.GetString("HomeRegion");
-
     m_homeRegionHasBeenSet = true;
   }
-
   return *this;
 }
 

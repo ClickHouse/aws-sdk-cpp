@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-CaptureContentTypeHeader::CaptureContentTypeHeader() : 
-    m_csvContentTypesHasBeenSet(false),
-    m_jsonContentTypesHasBeenSet(false)
-{
-}
-
-CaptureContentTypeHeader::CaptureContentTypeHeader(JsonView jsonValue) : 
-    m_csvContentTypesHasBeenSet(false),
-    m_jsonContentTypesHasBeenSet(false)
+CaptureContentTypeHeader::CaptureContentTypeHeader(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ CaptureContentTypeHeader& CaptureContentTypeHeader::operator =(JsonView jsonValu
     }
     m_csvContentTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("JsonContentTypes"))
   {
     Aws::Utils::Array<JsonView> jsonContentTypesJsonList = jsonValue.GetArray("JsonContentTypes");
@@ -52,7 +43,6 @@ CaptureContentTypeHeader& CaptureContentTypeHeader::operator =(JsonView jsonValu
     }
     m_jsonContentTypesHasBeenSet = true;
   }
-
   return *this;
 }
 

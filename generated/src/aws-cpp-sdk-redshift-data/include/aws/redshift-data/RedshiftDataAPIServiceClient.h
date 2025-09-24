@@ -28,8 +28,8 @@ namespace RedshiftDataAPIService
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef RedshiftDataAPIServiceClientConfiguration ClientConfigurationType;
       typedef RedshiftDataAPIServiceEndpointProvider EndpointProviderType;
@@ -39,14 +39,14 @@ namespace RedshiftDataAPIService
         * is not specified, it will be initialized to default values.
         */
         RedshiftDataAPIServiceClient(const Aws::RedshiftDataAPIService::RedshiftDataAPIServiceClientConfiguration& clientConfiguration = Aws::RedshiftDataAPIService::RedshiftDataAPIServiceClientConfiguration(),
-                                     std::shared_ptr<RedshiftDataAPIServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<RedshiftDataAPIServiceEndpointProvider>(ALLOCATION_TAG));
+                                     std::shared_ptr<RedshiftDataAPIServiceEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         RedshiftDataAPIServiceClient(const Aws::Auth::AWSCredentials& credentials,
-                                     std::shared_ptr<RedshiftDataAPIServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<RedshiftDataAPIServiceEndpointProvider>(ALLOCATION_TAG),
+                                     std::shared_ptr<RedshiftDataAPIServiceEndpointProviderBase> endpointProvider = nullptr,
                                      const Aws::RedshiftDataAPIService::RedshiftDataAPIServiceClientConfiguration& clientConfiguration = Aws::RedshiftDataAPIService::RedshiftDataAPIServiceClientConfiguration());
 
        /**
@@ -54,7 +54,7 @@ namespace RedshiftDataAPIService
         * the default http client factory will be used
         */
         RedshiftDataAPIServiceClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                     std::shared_ptr<RedshiftDataAPIServiceEndpointProviderBase> endpointProvider = Aws::MakeShared<RedshiftDataAPIServiceEndpointProvider>(ALLOCATION_TAG),
+                                     std::shared_ptr<RedshiftDataAPIServiceEndpointProviderBase> endpointProvider = nullptr,
                                      const Aws::RedshiftDataAPIService::RedshiftDataAPIServiceClientConfiguration& clientConfiguration = Aws::RedshiftDataAPIService::RedshiftDataAPIServiceClientConfiguration());
 
 
@@ -308,9 +308,12 @@ namespace RedshiftDataAPIService
         }
 
         /**
-         * <p>Fetches the temporarily cached result of an SQL statement. A token is
-         * returned to page through the statement results. </p> <p>For more information
-         * about the Amazon Redshift Data API and CLI usage examples, see <a
+         * <p>Fetches the temporarily cached result of an SQL statement in JSON format. The
+         * <code>ExecuteStatement</code> or <code>BatchExecuteStatement</code> operation
+         * that ran the SQL statement must have specified <code>ResultFormat</code> as
+         * <code>JSON</code> , or let the format default to JSON. A token is returned to
+         * page through the statement results.</p> <p>For more information about the Amazon
+         * Redshift Data API and CLI usage examples, see <a
          * href="https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html">Using the
          * Amazon Redshift Data API</a> in the <i>Amazon Redshift Management Guide</i>.
          * </p><p><h3>See Also:</h3>   <a
@@ -335,6 +338,39 @@ namespace RedshiftDataAPIService
         void GetStatementResultAsync(const GetStatementResultRequestT& request, const GetStatementResultResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&RedshiftDataAPIServiceClient::GetStatementResult, request, handler, context);
+        }
+
+        /**
+         * <p>Fetches the temporarily cached result of an SQL statement in CSV format. The
+         * <code>ExecuteStatement</code> or <code>BatchExecuteStatement</code> operation
+         * that ran the SQL statement must have specified <code>ResultFormat</code> as
+         * <code>CSV</code>. A token is returned to page through the statement results.</p>
+         * <p>For more information about the Amazon Redshift Data API and CLI usage
+         * examples, see <a
+         * href="https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html">Using the
+         * Amazon Redshift Data API</a> in the <i>Amazon Redshift Management Guide</i>.
+         * </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/redshift-data-2019-12-20/GetStatementResultV2">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetStatementResultV2Outcome GetStatementResultV2(const Model::GetStatementResultV2Request& request) const;
+
+        /**
+         * A Callable wrapper for GetStatementResultV2 that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetStatementResultV2RequestT = Model::GetStatementResultV2Request>
+        Model::GetStatementResultV2OutcomeCallable GetStatementResultV2Callable(const GetStatementResultV2RequestT& request) const
+        {
+            return SubmitCallable(&RedshiftDataAPIServiceClient::GetStatementResultV2, request);
+        }
+
+        /**
+         * An Async wrapper for GetStatementResultV2 that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetStatementResultV2RequestT = Model::GetStatementResultV2Request>
+        void GetStatementResultV2Async(const GetStatementResultV2RequestT& request, const GetStatementResultV2ResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&RedshiftDataAPIServiceClient::GetStatementResultV2, request, handler, context);
         }
 
         /**
@@ -447,21 +483,27 @@ namespace RedshiftDataAPIService
 
         /**
          * <p>List of SQL statements. By default, only finished statements are shown. A
-         * token is returned to page through the statement list. </p> <p>For more
-         * information about the Amazon Redshift Data API and CLI usage examples, see <a
+         * token is returned to page through the statement list. </p> <p>When you use
+         * identity-enhanced role sessions to list statements, you must provide either the
+         * <code>cluster-identifier</code> or <code>workgroup-name</code> parameter. This
+         * ensures that the IdC user can only access the Amazon Redshift IdC applications
+         * they are assigned. For more information, see <a
+         * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-overview.html">
+         * Trusted identity propagation overview</a>.</p> <p>For more information about the
+         * Amazon Redshift Data API and CLI usage examples, see <a
          * href="https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html">Using the
          * Amazon Redshift Data API</a> in the <i>Amazon Redshift Management Guide</i>.
          * </p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/redshift-data-2019-12-20/ListStatements">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListStatementsOutcome ListStatements(const Model::ListStatementsRequest& request) const;
+        virtual Model::ListStatementsOutcome ListStatements(const Model::ListStatementsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListStatements that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListStatementsRequestT = Model::ListStatementsRequest>
-        Model::ListStatementsOutcomeCallable ListStatementsCallable(const ListStatementsRequestT& request) const
+        Model::ListStatementsOutcomeCallable ListStatementsCallable(const ListStatementsRequestT& request = {}) const
         {
             return SubmitCallable(&RedshiftDataAPIServiceClient::ListStatements, request);
         }
@@ -470,7 +512,7 @@ namespace RedshiftDataAPIService
          * An Async wrapper for ListStatements that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListStatementsRequestT = Model::ListStatementsRequest>
-        void ListStatementsAsync(const ListStatementsRequestT& request, const ListStatementsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListStatementsAsync(const ListStatementsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListStatementsRequestT& request = {}) const
         {
             return SubmitAsync(&RedshiftDataAPIServiceClient::ListStatements, request, handler, context);
         }
@@ -539,7 +581,6 @@ namespace RedshiftDataAPIService
       void init(const RedshiftDataAPIServiceClientConfiguration& clientConfiguration);
 
       RedshiftDataAPIServiceClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<RedshiftDataAPIServiceEndpointProviderBase> m_endpointProvider;
   };
 

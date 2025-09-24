@@ -18,15 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-ConnectorProfileConfig::ConnectorProfileConfig() : 
-    m_connectorProfilePropertiesHasBeenSet(false),
-    m_connectorProfileCredentialsHasBeenSet(false)
-{
-}
-
-ConnectorProfileConfig::ConnectorProfileConfig(JsonView jsonValue) : 
-    m_connectorProfilePropertiesHasBeenSet(false),
-    m_connectorProfileCredentialsHasBeenSet(false)
+ConnectorProfileConfig::ConnectorProfileConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ConnectorProfileConfig& ConnectorProfileConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("connectorProfileProperties"))
   {
     m_connectorProfileProperties = jsonValue.GetObject("connectorProfileProperties");
-
     m_connectorProfilePropertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("connectorProfileCredentials"))
   {
     m_connectorProfileCredentials = jsonValue.GetObject("connectorProfileCredentials");
-
     m_connectorProfileCredentialsHasBeenSet = true;
   }
-
   return *this;
 }
 

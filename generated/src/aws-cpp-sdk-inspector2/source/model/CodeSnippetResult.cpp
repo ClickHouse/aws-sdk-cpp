@@ -18,31 +18,28 @@ namespace Inspector2
 namespace Model
 {
 
-CodeSnippetResult::CodeSnippetResult() : 
-    m_codeSnippetHasBeenSet(false),
-    m_endLine(0),
-    m_endLineHasBeenSet(false),
-    m_findingArnHasBeenSet(false),
-    m_startLine(0),
-    m_startLineHasBeenSet(false),
-    m_suggestedFixesHasBeenSet(false)
-{
-}
-
-CodeSnippetResult::CodeSnippetResult(JsonView jsonValue) : 
-    m_codeSnippetHasBeenSet(false),
-    m_endLine(0),
-    m_endLineHasBeenSet(false),
-    m_findingArnHasBeenSet(false),
-    m_startLine(0),
-    m_startLineHasBeenSet(false),
-    m_suggestedFixesHasBeenSet(false)
+CodeSnippetResult::CodeSnippetResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 CodeSnippetResult& CodeSnippetResult::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("findingArn"))
+  {
+    m_findingArn = jsonValue.GetString("findingArn");
+    m_findingArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("startLine"))
+  {
+    m_startLine = jsonValue.GetInteger("startLine");
+    m_startLineHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("endLine"))
+  {
+    m_endLine = jsonValue.GetInteger("endLine");
+    m_endLineHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("codeSnippet"))
   {
     Aws::Utils::Array<JsonView> codeSnippetJsonList = jsonValue.GetArray("codeSnippet");
@@ -52,28 +49,6 @@ CodeSnippetResult& CodeSnippetResult::operator =(JsonView jsonValue)
     }
     m_codeSnippetHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("endLine"))
-  {
-    m_endLine = jsonValue.GetInteger("endLine");
-
-    m_endLineHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("findingArn"))
-  {
-    m_findingArn = jsonValue.GetString("findingArn");
-
-    m_findingArnHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("startLine"))
-  {
-    m_startLine = jsonValue.GetInteger("startLine");
-
-    m_startLineHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("suggestedFixes"))
   {
     Aws::Utils::Array<JsonView> suggestedFixesJsonList = jsonValue.GetArray("suggestedFixes");
@@ -83,30 +58,12 @@ CodeSnippetResult& CodeSnippetResult::operator =(JsonView jsonValue)
     }
     m_suggestedFixesHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue CodeSnippetResult::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_codeSnippetHasBeenSet)
-  {
-   Aws::Utils::Array<JsonValue> codeSnippetJsonList(m_codeSnippet.size());
-   for(unsigned codeSnippetIndex = 0; codeSnippetIndex < codeSnippetJsonList.GetLength(); ++codeSnippetIndex)
-   {
-     codeSnippetJsonList[codeSnippetIndex].AsObject(m_codeSnippet[codeSnippetIndex].Jsonize());
-   }
-   payload.WithArray("codeSnippet", std::move(codeSnippetJsonList));
-
-  }
-
-  if(m_endLineHasBeenSet)
-  {
-   payload.WithInteger("endLine", m_endLine);
-
-  }
 
   if(m_findingArnHasBeenSet)
   {
@@ -117,6 +74,23 @@ JsonValue CodeSnippetResult::Jsonize() const
   if(m_startLineHasBeenSet)
   {
    payload.WithInteger("startLine", m_startLine);
+
+  }
+
+  if(m_endLineHasBeenSet)
+  {
+   payload.WithInteger("endLine", m_endLine);
+
+  }
+
+  if(m_codeSnippetHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> codeSnippetJsonList(m_codeSnippet.size());
+   for(unsigned codeSnippetIndex = 0; codeSnippetIndex < codeSnippetJsonList.GetLength(); ++codeSnippetIndex)
+   {
+     codeSnippetJsonList[codeSnippetIndex].AsObject(m_codeSnippet[codeSnippetIndex].Jsonize());
+   }
+   payload.WithArray("codeSnippet", std::move(codeSnippetJsonList));
 
   }
 

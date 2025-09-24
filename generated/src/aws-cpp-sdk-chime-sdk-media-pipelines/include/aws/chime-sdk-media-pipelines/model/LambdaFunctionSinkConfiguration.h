@@ -32,52 +32,23 @@ namespace Model
   class LambdaFunctionSinkConfiguration
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API LambdaFunctionSinkConfiguration();
+    AWS_CHIMESDKMEDIAPIPELINES_API LambdaFunctionSinkConfiguration() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API LambdaFunctionSinkConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API LambdaFunctionSinkConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the sink.</p>
      */
-    inline const Aws::String& GetInsightsTarget() const{ return m_insightsTarget; }
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
+    inline const Aws::String& GetInsightsTarget() const { return m_insightsTarget; }
     inline bool InsightsTargetHasBeenSet() const { return m_insightsTargetHasBeenSet; }
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline void SetInsightsTarget(const Aws::String& value) { m_insightsTargetHasBeenSet = true; m_insightsTarget = value; }
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline void SetInsightsTarget(Aws::String&& value) { m_insightsTargetHasBeenSet = true; m_insightsTarget = std::move(value); }
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline void SetInsightsTarget(const char* value) { m_insightsTargetHasBeenSet = true; m_insightsTarget.assign(value); }
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline LambdaFunctionSinkConfiguration& WithInsightsTarget(const Aws::String& value) { SetInsightsTarget(value); return *this;}
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline LambdaFunctionSinkConfiguration& WithInsightsTarget(Aws::String&& value) { SetInsightsTarget(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the sink.</p>
-     */
-    inline LambdaFunctionSinkConfiguration& WithInsightsTarget(const char* value) { SetInsightsTarget(value); return *this;}
-
+    template<typename InsightsTargetT = Aws::String>
+    void SetInsightsTarget(InsightsTargetT&& value) { m_insightsTargetHasBeenSet = true; m_insightsTarget = std::forward<InsightsTargetT>(value); }
+    template<typename InsightsTargetT = Aws::String>
+    LambdaFunctionSinkConfiguration& WithInsightsTarget(InsightsTargetT&& value) { SetInsightsTarget(std::forward<InsightsTargetT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_insightsTarget;

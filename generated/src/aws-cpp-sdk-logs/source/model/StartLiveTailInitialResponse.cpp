@@ -5,6 +5,8 @@
 
 #include <aws/logs/model/StartLiveTailInitialResponse.h>
 #include <aws/core/utils/json/JsonSerializer.h>
+#include <aws/core/utils/StringUtils.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -18,10 +20,6 @@ namespace CloudWatchLogs
 namespace Model
 {
 
-StartLiveTailInitialResponse::StartLiveTailInitialResponse()
-{
-}
-
 StartLiveTailInitialResponse::StartLiveTailInitialResponse(JsonView jsonValue)
 {
   *this = jsonValue;
@@ -31,6 +29,11 @@ StartLiveTailInitialResponse& StartLiveTailInitialResponse::operator =(JsonView 
 {
   AWS_UNREFERENCED_PARAM(jsonValue);
   return *this;
+}
+
+StartLiveTailInitialResponse::StartLiveTailInitialResponse(const Http::HeaderValueCollection& headers) : StartLiveTailInitialResponse()
+{
+  AWS_UNREFERENCED_PARAM(headers);
 }
 
 JsonValue StartLiveTailInitialResponse::Jsonize() const

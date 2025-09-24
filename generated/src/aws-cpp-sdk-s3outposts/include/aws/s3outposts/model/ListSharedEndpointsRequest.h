@@ -25,7 +25,7 @@ namespace Model
   class ListSharedEndpointsRequest : public S3OutpostsRequest
   {
   public:
-    AWS_S3OUTPOSTS_API ListSharedEndpointsRequest();
+    AWS_S3OUTPOSTS_API ListSharedEndpointsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,122 +38,46 @@ namespace Model
     AWS_S3OUTPOSTS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>If a previous response from this operation included a <code>NextToken</code>
      * value, you can provide that value here to retrieve the next page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>If a previous response from this operation included a <code>NextToken</code>
-     * value, you can provide that value here to retrieve the next page of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListSharedEndpointsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If a previous response from this operation included a <code>NextToken</code>
-     * value, you can provide that value here to retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>If a previous response from this operation included a <code>NextToken</code>
-     * value, you can provide that value here to retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>If a previous response from this operation included a <code>NextToken</code>
-     * value, you can provide that value here to retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>If a previous response from this operation included a <code>NextToken</code>
-     * value, you can provide that value here to retrieve the next page of results.</p>
-     */
-    inline ListSharedEndpointsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If a previous response from this operation included a <code>NextToken</code>
-     * value, you can provide that value here to retrieve the next page of results.</p>
-     */
-    inline ListSharedEndpointsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If a previous response from this operation included a <code>NextToken</code>
-     * value, you can provide that value here to retrieve the next page of results.</p>
-     */
-    inline ListSharedEndpointsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of endpoints that will be returned in the response.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of endpoints that will be returned in the response.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of endpoints that will be returned in the response.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of endpoints that will be returned in the response.</p>
-     */
     inline ListSharedEndpointsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services Outpost.</p>
      */
-    inline const Aws::String& GetOutpostId() const{ return m_outpostId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Outpost.</p>
-     */
+    inline const Aws::String& GetOutpostId() const { return m_outpostId; }
     inline bool OutpostIdHasBeenSet() const { return m_outpostIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Outpost.</p>
-     */
-    inline void SetOutpostId(const Aws::String& value) { m_outpostIdHasBeenSet = true; m_outpostId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Outpost.</p>
-     */
-    inline void SetOutpostId(Aws::String&& value) { m_outpostIdHasBeenSet = true; m_outpostId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Outpost.</p>
-     */
-    inline void SetOutpostId(const char* value) { m_outpostIdHasBeenSet = true; m_outpostId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Outpost.</p>
-     */
-    inline ListSharedEndpointsRequest& WithOutpostId(const Aws::String& value) { SetOutpostId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Outpost.</p>
-     */
-    inline ListSharedEndpointsRequest& WithOutpostId(Aws::String&& value) { SetOutpostId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Outpost.</p>
-     */
-    inline ListSharedEndpointsRequest& WithOutpostId(const char* value) { SetOutpostId(value); return *this;}
-
+    template<typename OutpostIdT = Aws::String>
+    void SetOutpostId(OutpostIdT&& value) { m_outpostIdHasBeenSet = true; m_outpostId = std::forward<OutpostIdT>(value); }
+    template<typename OutpostIdT = Aws::String>
+    ListSharedEndpointsRequest& WithOutpostId(OutpostIdT&& value) { SetOutpostId(std::forward<OutpostIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_outpostId;

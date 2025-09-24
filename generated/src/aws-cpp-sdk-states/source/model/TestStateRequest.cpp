@@ -12,17 +12,6 @@ using namespace Aws::SFN::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-TestStateRequest::TestStateRequest() : 
-    m_definitionHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_inputHasBeenSet(false),
-    m_inspectionLevel(InspectionLevel::NOT_SET),
-    m_inspectionLevelHasBeenSet(false),
-    m_revealSecrets(false),
-    m_revealSecretsHasBeenSet(false)
-{
-}
-
 Aws::String TestStateRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -53,6 +42,12 @@ Aws::String TestStateRequest::SerializePayload() const
   if(m_revealSecretsHasBeenSet)
   {
    payload.WithBool("revealSecrets", m_revealSecrets);
+
+  }
+
+  if(m_variablesHasBeenSet)
+  {
+   payload.WithString("variables", m_variables);
 
   }
 

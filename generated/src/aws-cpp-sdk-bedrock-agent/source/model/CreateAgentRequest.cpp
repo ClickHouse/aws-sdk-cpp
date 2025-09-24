@@ -12,22 +12,6 @@ using namespace Aws::BedrockAgent::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateAgentRequest::CreateAgentRequest() : 
-    m_agentNameHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_instructionHasBeenSet(false),
-    m_foundationModelHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_idleSessionTTLInSeconds(0),
-    m_idleSessionTTLInSecondsHasBeenSet(false),
-    m_agentResourceRoleArnHasBeenSet(false),
-    m_customerEncryptionKeyArnHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_promptOverrideConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String CreateAgentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -59,6 +43,17 @@ Aws::String CreateAgentRequest::SerializePayload() const
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("description", m_description);
+
+  }
+
+  if(m_orchestrationTypeHasBeenSet)
+  {
+   payload.WithString("orchestrationType", OrchestrationTypeMapper::GetNameForOrchestrationType(m_orchestrationType));
+  }
+
+  if(m_customOrchestrationHasBeenSet)
+  {
+   payload.WithObject("customOrchestration", m_customOrchestration.Jsonize());
 
   }
 
@@ -95,6 +90,23 @@ Aws::String CreateAgentRequest::SerializePayload() const
   {
    payload.WithObject("promptOverrideConfiguration", m_promptOverrideConfiguration.Jsonize());
 
+  }
+
+  if(m_guardrailConfigurationHasBeenSet)
+  {
+   payload.WithObject("guardrailConfiguration", m_guardrailConfiguration.Jsonize());
+
+  }
+
+  if(m_memoryConfigurationHasBeenSet)
+  {
+   payload.WithObject("memoryConfiguration", m_memoryConfiguration.Jsonize());
+
+  }
+
+  if(m_agentCollaborationHasBeenSet)
+  {
+   payload.WithString("agentCollaboration", AgentCollaborationMapper::GetNameForAgentCollaboration(m_agentCollaboration));
   }
 
   return payload.View().WriteReadable();

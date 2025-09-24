@@ -32,240 +32,74 @@ namespace Model
   class InvalidConfigurationDetail
   {
   public:
-    AWS_APPCONFIG_API InvalidConfigurationDetail();
+    AWS_APPCONFIG_API InvalidConfigurationDetail() = default;
     AWS_APPCONFIG_API InvalidConfigurationDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPCONFIG_API InvalidConfigurationDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPCONFIG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The invalid or out-of-range validation constraint in your JSON schema that
      * failed validation.</p>
      */
-    inline const Aws::String& GetConstraint() const{ return m_constraint; }
-
-    /**
-     * <p>The invalid or out-of-range validation constraint in your JSON schema that
-     * failed validation.</p>
-     */
+    inline const Aws::String& GetConstraint() const { return m_constraint; }
     inline bool ConstraintHasBeenSet() const { return m_constraintHasBeenSet; }
+    template<typename ConstraintT = Aws::String>
+    void SetConstraint(ConstraintT&& value) { m_constraintHasBeenSet = true; m_constraint = std::forward<ConstraintT>(value); }
+    template<typename ConstraintT = Aws::String>
+    InvalidConfigurationDetail& WithConstraint(ConstraintT&& value) { SetConstraint(std::forward<ConstraintT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The invalid or out-of-range validation constraint in your JSON schema that
-     * failed validation.</p>
-     */
-    inline void SetConstraint(const Aws::String& value) { m_constraintHasBeenSet = true; m_constraint = value; }
-
-    /**
-     * <p>The invalid or out-of-range validation constraint in your JSON schema that
-     * failed validation.</p>
-     */
-    inline void SetConstraint(Aws::String&& value) { m_constraintHasBeenSet = true; m_constraint = std::move(value); }
-
-    /**
-     * <p>The invalid or out-of-range validation constraint in your JSON schema that
-     * failed validation.</p>
-     */
-    inline void SetConstraint(const char* value) { m_constraintHasBeenSet = true; m_constraint.assign(value); }
-
-    /**
-     * <p>The invalid or out-of-range validation constraint in your JSON schema that
-     * failed validation.</p>
-     */
-    inline InvalidConfigurationDetail& WithConstraint(const Aws::String& value) { SetConstraint(value); return *this;}
-
-    /**
-     * <p>The invalid or out-of-range validation constraint in your JSON schema that
-     * failed validation.</p>
-     */
-    inline InvalidConfigurationDetail& WithConstraint(Aws::String&& value) { SetConstraint(std::move(value)); return *this;}
-
-    /**
-     * <p>The invalid or out-of-range validation constraint in your JSON schema that
-     * failed validation.</p>
-     */
-    inline InvalidConfigurationDetail& WithConstraint(const char* value) { SetConstraint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Location of the validation constraint in the configuration JSON schema that
      * failed validation.</p>
      */
-    inline const Aws::String& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>Location of the validation constraint in the configuration JSON schema that
-     * failed validation.</p>
-     */
+    inline const Aws::String& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
+    template<typename LocationT = Aws::String>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = Aws::String>
+    InvalidConfigurationDetail& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Location of the validation constraint in the configuration JSON schema that
-     * failed validation.</p>
-     */
-    inline void SetLocation(const Aws::String& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>Location of the validation constraint in the configuration JSON schema that
-     * failed validation.</p>
-     */
-    inline void SetLocation(Aws::String&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>Location of the validation constraint in the configuration JSON schema that
-     * failed validation.</p>
-     */
-    inline void SetLocation(const char* value) { m_locationHasBeenSet = true; m_location.assign(value); }
-
-    /**
-     * <p>Location of the validation constraint in the configuration JSON schema that
-     * failed validation.</p>
-     */
-    inline InvalidConfigurationDetail& WithLocation(const Aws::String& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>Location of the validation constraint in the configuration JSON schema that
-     * failed validation.</p>
-     */
-    inline InvalidConfigurationDetail& WithLocation(Aws::String&& value) { SetLocation(std::move(value)); return *this;}
-
-    /**
-     * <p>Location of the validation constraint in the configuration JSON schema that
-     * failed validation.</p>
-     */
-    inline InvalidConfigurationDetail& WithLocation(const char* value) { SetLocation(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for an invalid configuration error.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>The reason for an invalid configuration error.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    InvalidConfigurationDetail& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason for an invalid configuration error.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>The reason for an invalid configuration error.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>The reason for an invalid configuration error.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>The reason for an invalid configuration error.</p>
-     */
-    inline InvalidConfigurationDetail& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>The reason for an invalid configuration error.</p>
-     */
-    inline InvalidConfigurationDetail& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for an invalid configuration error.</p>
-     */
-    inline InvalidConfigurationDetail& WithReason(const char* value) { SetReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of error for an invalid configuration.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of error for an invalid configuration.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    InvalidConfigurationDetail& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of error for an invalid configuration.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of error for an invalid configuration.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of error for an invalid configuration.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of error for an invalid configuration.</p>
-     */
-    inline InvalidConfigurationDetail& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of error for an invalid configuration.</p>
-     */
-    inline InvalidConfigurationDetail& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of error for an invalid configuration.</p>
-     */
-    inline InvalidConfigurationDetail& WithType(const char* value) { SetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about an error with Lambda when a synchronous extension experiences
      * an error during an invocation.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>Details about an error with Lambda when a synchronous extension experiences
-     * an error during an invocation.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Details about an error with Lambda when a synchronous extension experiences
-     * an error during an invocation.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Details about an error with Lambda when a synchronous extension experiences
-     * an error during an invocation.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>Details about an error with Lambda when a synchronous extension experiences
-     * an error during an invocation.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>Details about an error with Lambda when a synchronous extension experiences
-     * an error during an invocation.</p>
-     */
-    inline InvalidConfigurationDetail& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>Details about an error with Lambda when a synchronous extension experiences
-     * an error during an invocation.</p>
-     */
-    inline InvalidConfigurationDetail& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Details about an error with Lambda when a synchronous extension experiences
-     * an error during an invocation.</p>
-     */
-    inline InvalidConfigurationDetail& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    InvalidConfigurationDetail& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_constraint;

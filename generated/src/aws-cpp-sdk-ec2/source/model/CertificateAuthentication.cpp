@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CertificateAuthentication::CertificateAuthentication() : 
-    m_clientRootCertificateChainHasBeenSet(false)
-{
-}
-
-CertificateAuthentication::CertificateAuthentication(const XmlNode& xmlNode) : 
-    m_clientRootCertificateChainHasBeenSet(false)
+CertificateAuthentication::CertificateAuthentication(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

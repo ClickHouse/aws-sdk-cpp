@@ -10,26 +10,18 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ReplaceNetworkAclAssociationRequest::ReplaceNetworkAclAssociationRequest() : 
-    m_associationIdHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_networkAclIdHasBeenSet(false)
-{
-}
-
 Aws::String ReplaceNetworkAclAssociationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=ReplaceNetworkAclAssociation&";
-  if(m_associationIdHasBeenSet)
-  {
-    ss << "AssociationId=" << StringUtils::URLEncode(m_associationId.c_str()) << "&";
-  }
-
   if(m_dryRunHasBeenSet)
   {
     ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
+  if(m_associationIdHasBeenSet)
+  {
+    ss << "AssociationId=" << StringUtils::URLEncode(m_associationId.c_str()) << "&";
   }
 
   if(m_networkAclIdHasBeenSet)

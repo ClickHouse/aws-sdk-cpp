@@ -41,12 +41,13 @@ namespace Model
   class RegexPatternSetSummary
   {
   public:
-    AWS_WAF_API RegexPatternSetSummary();
+    AWS_WAF_API RegexPatternSetSummary() = default;
     AWS_WAF_API RegexPatternSetSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API RegexPatternSetSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The <code>RegexPatternSetId</code> for a <code>RegexPatternSet</code>. You
      * use <code>RegexPatternSetId</code> to get information about a
@@ -56,134 +57,26 @@ namespace Model
      * <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and
      * by <a>ListRegexPatternSets</a>.</p>
      */
-    inline const Aws::String& GetRegexPatternSetId() const{ return m_regexPatternSetId; }
-
-    /**
-     * <p>The <code>RegexPatternSetId</code> for a <code>RegexPatternSet</code>. You
-     * use <code>RegexPatternSetId</code> to get information about a
-     * <code>RegexPatternSet</code>, update a <code>RegexPatternSet</code>, remove a
-     * <code>RegexPatternSet</code> from a <code>RegexMatchSet</code>, and delete a
-     * <code>RegexPatternSet</code> from AWS WAF.</p> <p>
-     * <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and
-     * by <a>ListRegexPatternSets</a>.</p>
-     */
+    inline const Aws::String& GetRegexPatternSetId() const { return m_regexPatternSetId; }
     inline bool RegexPatternSetIdHasBeenSet() const { return m_regexPatternSetIdHasBeenSet; }
+    template<typename RegexPatternSetIdT = Aws::String>
+    void SetRegexPatternSetId(RegexPatternSetIdT&& value) { m_regexPatternSetIdHasBeenSet = true; m_regexPatternSetId = std::forward<RegexPatternSetIdT>(value); }
+    template<typename RegexPatternSetIdT = Aws::String>
+    RegexPatternSetSummary& WithRegexPatternSetId(RegexPatternSetIdT&& value) { SetRegexPatternSetId(std::forward<RegexPatternSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>RegexPatternSetId</code> for a <code>RegexPatternSet</code>. You
-     * use <code>RegexPatternSetId</code> to get information about a
-     * <code>RegexPatternSet</code>, update a <code>RegexPatternSet</code>, remove a
-     * <code>RegexPatternSet</code> from a <code>RegexMatchSet</code>, and delete a
-     * <code>RegexPatternSet</code> from AWS WAF.</p> <p>
-     * <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and
-     * by <a>ListRegexPatternSets</a>.</p>
-     */
-    inline void SetRegexPatternSetId(const Aws::String& value) { m_regexPatternSetIdHasBeenSet = true; m_regexPatternSetId = value; }
-
-    /**
-     * <p>The <code>RegexPatternSetId</code> for a <code>RegexPatternSet</code>. You
-     * use <code>RegexPatternSetId</code> to get information about a
-     * <code>RegexPatternSet</code>, update a <code>RegexPatternSet</code>, remove a
-     * <code>RegexPatternSet</code> from a <code>RegexMatchSet</code>, and delete a
-     * <code>RegexPatternSet</code> from AWS WAF.</p> <p>
-     * <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and
-     * by <a>ListRegexPatternSets</a>.</p>
-     */
-    inline void SetRegexPatternSetId(Aws::String&& value) { m_regexPatternSetIdHasBeenSet = true; m_regexPatternSetId = std::move(value); }
-
-    /**
-     * <p>The <code>RegexPatternSetId</code> for a <code>RegexPatternSet</code>. You
-     * use <code>RegexPatternSetId</code> to get information about a
-     * <code>RegexPatternSet</code>, update a <code>RegexPatternSet</code>, remove a
-     * <code>RegexPatternSet</code> from a <code>RegexMatchSet</code>, and delete a
-     * <code>RegexPatternSet</code> from AWS WAF.</p> <p>
-     * <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and
-     * by <a>ListRegexPatternSets</a>.</p>
-     */
-    inline void SetRegexPatternSetId(const char* value) { m_regexPatternSetIdHasBeenSet = true; m_regexPatternSetId.assign(value); }
-
-    /**
-     * <p>The <code>RegexPatternSetId</code> for a <code>RegexPatternSet</code>. You
-     * use <code>RegexPatternSetId</code> to get information about a
-     * <code>RegexPatternSet</code>, update a <code>RegexPatternSet</code>, remove a
-     * <code>RegexPatternSet</code> from a <code>RegexMatchSet</code>, and delete a
-     * <code>RegexPatternSet</code> from AWS WAF.</p> <p>
-     * <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and
-     * by <a>ListRegexPatternSets</a>.</p>
-     */
-    inline RegexPatternSetSummary& WithRegexPatternSetId(const Aws::String& value) { SetRegexPatternSetId(value); return *this;}
-
-    /**
-     * <p>The <code>RegexPatternSetId</code> for a <code>RegexPatternSet</code>. You
-     * use <code>RegexPatternSetId</code> to get information about a
-     * <code>RegexPatternSet</code>, update a <code>RegexPatternSet</code>, remove a
-     * <code>RegexPatternSet</code> from a <code>RegexMatchSet</code>, and delete a
-     * <code>RegexPatternSet</code> from AWS WAF.</p> <p>
-     * <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and
-     * by <a>ListRegexPatternSets</a>.</p>
-     */
-    inline RegexPatternSetSummary& WithRegexPatternSetId(Aws::String&& value) { SetRegexPatternSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>RegexPatternSetId</code> for a <code>RegexPatternSet</code>. You
-     * use <code>RegexPatternSetId</code> to get information about a
-     * <code>RegexPatternSet</code>, update a <code>RegexPatternSet</code>, remove a
-     * <code>RegexPatternSet</code> from a <code>RegexMatchSet</code>, and delete a
-     * <code>RegexPatternSet</code> from AWS WAF.</p> <p>
-     * <code>RegexPatternSetId</code> is returned by <a>CreateRegexPatternSet</a> and
-     * by <a>ListRegexPatternSets</a>.</p>
-     */
-    inline RegexPatternSetSummary& WithRegexPatternSetId(const char* value) { SetRegexPatternSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't
      * change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't
-     * change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't
-     * change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't
-     * change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't
-     * change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't
-     * change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
-     */
-    inline RegexPatternSetSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't
-     * change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
-     */
-    inline RegexPatternSetSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A friendly name or description of the <a>RegexPatternSet</a>. You can't
-     * change <code>Name</code> after you create a <code>RegexPatternSet</code>.</p>
-     */
-    inline RegexPatternSetSummary& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    RegexPatternSetSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regexPatternSetId;

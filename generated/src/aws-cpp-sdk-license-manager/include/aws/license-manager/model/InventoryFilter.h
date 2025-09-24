@@ -32,130 +32,51 @@ namespace Model
   class InventoryFilter
   {
   public:
-    AWS_LICENSEMANAGER_API InventoryFilter();
+    AWS_LICENSEMANAGER_API InventoryFilter() = default;
     AWS_LICENSEMANAGER_API InventoryFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API InventoryFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of the filter.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Name of the filter.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    InventoryFilter& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the filter.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Name of the filter.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Name of the filter.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Name of the filter.</p>
-     */
-    inline InventoryFilter& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Name of the filter.</p>
-     */
-    inline InventoryFilter& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the filter.</p>
-     */
-    inline InventoryFilter& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Condition of the filter.</p>
      */
-    inline const InventoryFilterCondition& GetCondition() const{ return m_condition; }
-
-    /**
-     * <p>Condition of the filter.</p>
-     */
+    inline InventoryFilterCondition GetCondition() const { return m_condition; }
     inline bool ConditionHasBeenSet() const { return m_conditionHasBeenSet; }
+    inline void SetCondition(InventoryFilterCondition value) { m_conditionHasBeenSet = true; m_condition = value; }
+    inline InventoryFilter& WithCondition(InventoryFilterCondition value) { SetCondition(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Condition of the filter.</p>
-     */
-    inline void SetCondition(const InventoryFilterCondition& value) { m_conditionHasBeenSet = true; m_condition = value; }
-
-    /**
-     * <p>Condition of the filter.</p>
-     */
-    inline void SetCondition(InventoryFilterCondition&& value) { m_conditionHasBeenSet = true; m_condition = std::move(value); }
-
-    /**
-     * <p>Condition of the filter.</p>
-     */
-    inline InventoryFilter& WithCondition(const InventoryFilterCondition& value) { SetCondition(value); return *this;}
-
-    /**
-     * <p>Condition of the filter.</p>
-     */
-    inline InventoryFilter& WithCondition(InventoryFilterCondition&& value) { SetCondition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Value of the filter.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>Value of the filter.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Value of the filter.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Value of the filter.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>Value of the filter.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>Value of the filter.</p>
-     */
-    inline InventoryFilter& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>Value of the filter.</p>
-     */
-    inline InventoryFilter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Value of the filter.</p>
-     */
-    inline InventoryFilter& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    InventoryFilter& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    InventoryFilterCondition m_condition;
+    InventoryFilterCondition m_condition{InventoryFilterCondition::NOT_SET};
     bool m_conditionHasBeenSet = false;
 
     Aws::String m_value;

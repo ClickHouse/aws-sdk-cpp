@@ -21,6 +21,10 @@ namespace Aws
       {
 
         static const int AMAZON_UserInput_HASH = HashingUtils::HashString("AMAZON.UserInput");
+        static const int AMAZON_CodeInterpreter_HASH = HashingUtils::HashString("AMAZON.CodeInterpreter");
+        static const int ANTHROPIC_Computer_HASH = HashingUtils::HashString("ANTHROPIC.Computer");
+        static const int ANTHROPIC_Bash_HASH = HashingUtils::HashString("ANTHROPIC.Bash");
+        static const int ANTHROPIC_TextEditor_HASH = HashingUtils::HashString("ANTHROPIC.TextEditor");
 
 
         ActionGroupSignature GetActionGroupSignatureForName(const Aws::String& name)
@@ -29,6 +33,22 @@ namespace Aws
           if (hashCode == AMAZON_UserInput_HASH)
           {
             return ActionGroupSignature::AMAZON_UserInput;
+          }
+          else if (hashCode == AMAZON_CodeInterpreter_HASH)
+          {
+            return ActionGroupSignature::AMAZON_CodeInterpreter;
+          }
+          else if (hashCode == ANTHROPIC_Computer_HASH)
+          {
+            return ActionGroupSignature::ANTHROPIC_Computer;
+          }
+          else if (hashCode == ANTHROPIC_Bash_HASH)
+          {
+            return ActionGroupSignature::ANTHROPIC_Bash;
+          }
+          else if (hashCode == ANTHROPIC_TextEditor_HASH)
+          {
+            return ActionGroupSignature::ANTHROPIC_TextEditor;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -48,6 +68,14 @@ namespace Aws
             return {};
           case ActionGroupSignature::AMAZON_UserInput:
             return "AMAZON.UserInput";
+          case ActionGroupSignature::AMAZON_CodeInterpreter:
+            return "AMAZON.CodeInterpreter";
+          case ActionGroupSignature::ANTHROPIC_Computer:
+            return "ANTHROPIC.Computer";
+          case ActionGroupSignature::ANTHROPIC_Bash:
+            return "ANTHROPIC.Bash";
+          case ActionGroupSignature::ANTHROPIC_TextEditor:
+            return "ANTHROPIC.TextEditor";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

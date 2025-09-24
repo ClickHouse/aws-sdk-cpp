@@ -18,25 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-AssetPropertySummary::AssetPropertySummary() : 
-    m_idHasBeenSet(false),
-    m_aliasHasBeenSet(false),
-    m_unitHasBeenSet(false),
-    m_notificationHasBeenSet(false),
-    m_assetCompositeModelIdHasBeenSet(false),
-    m_pathHasBeenSet(false),
-    m_externalIdHasBeenSet(false)
-{
-}
-
-AssetPropertySummary::AssetPropertySummary(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_aliasHasBeenSet(false),
-    m_unitHasBeenSet(false),
-    m_notificationHasBeenSet(false),
-    m_assetCompositeModelIdHasBeenSet(false),
-    m_pathHasBeenSet(false),
-    m_externalIdHasBeenSet(false)
+AssetPropertySummary::AssetPropertySummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,38 +28,33 @@ AssetPropertySummary& AssetPropertySummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("externalId"))
+  {
+    m_externalId = jsonValue.GetString("externalId");
+    m_externalIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("alias"))
   {
     m_alias = jsonValue.GetString("alias");
-
     m_aliasHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("unit"))
   {
     m_unit = jsonValue.GetString("unit");
-
     m_unitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("notification"))
   {
     m_notification = jsonValue.GetObject("notification");
-
     m_notificationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("assetCompositeModelId"))
   {
     m_assetCompositeModelId = jsonValue.GetString("assetCompositeModelId");
-
     m_assetCompositeModelIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("path"))
   {
     Aws::Utils::Array<JsonView> pathJsonList = jsonValue.GetArray("path");
@@ -87,14 +64,6 @@ AssetPropertySummary& AssetPropertySummary::operator =(JsonView jsonValue)
     }
     m_pathHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("externalId"))
-  {
-    m_externalId = jsonValue.GetString("externalId");
-
-    m_externalIdHasBeenSet = true;
-  }
-
   return *this;
 }
 
@@ -105,6 +74,12 @@ JsonValue AssetPropertySummary::Jsonize() const
   if(m_idHasBeenSet)
   {
    payload.WithString("id", m_id);
+
+  }
+
+  if(m_externalIdHasBeenSet)
+  {
+   payload.WithString("externalId", m_externalId);
 
   }
 
@@ -140,12 +115,6 @@ JsonValue AssetPropertySummary::Jsonize() const
      pathJsonList[pathIndex].AsObject(m_path[pathIndex].Jsonize());
    }
    payload.WithArray("path", std::move(pathJsonList));
-
-  }
-
-  if(m_externalIdHasBeenSet)
-  {
-   payload.WithString("externalId", m_externalId);
 
   }
 

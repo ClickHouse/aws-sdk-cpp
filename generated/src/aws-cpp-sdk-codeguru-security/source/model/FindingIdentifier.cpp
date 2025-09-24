@@ -18,35 +18,23 @@ namespace CodeGuruSecurity
 namespace Model
 {
 
-FindingIdentifier::FindingIdentifier() : 
-    m_findingIdHasBeenSet(false),
-    m_scanNameHasBeenSet(false)
-{
-}
-
-FindingIdentifier::FindingIdentifier(JsonView jsonValue) : 
-    m_findingIdHasBeenSet(false),
-    m_scanNameHasBeenSet(false)
+FindingIdentifier::FindingIdentifier(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 FindingIdentifier& FindingIdentifier::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("findingId"))
-  {
-    m_findingId = jsonValue.GetString("findingId");
-
-    m_findingIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("scanName"))
   {
     m_scanName = jsonValue.GetString("scanName");
-
     m_scanNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("findingId"))
+  {
+    m_findingId = jsonValue.GetString("findingId");
+    m_findingIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +42,15 @@ JsonValue FindingIdentifier::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_findingIdHasBeenSet)
-  {
-   payload.WithString("findingId", m_findingId);
-
-  }
-
   if(m_scanNameHasBeenSet)
   {
    payload.WithString("scanName", m_scanName);
+
+  }
+
+  if(m_findingIdHasBeenSet)
+  {
+   payload.WithString("findingId", m_findingId);
 
   }
 

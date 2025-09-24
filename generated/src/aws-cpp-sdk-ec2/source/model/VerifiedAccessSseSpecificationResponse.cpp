@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VerifiedAccessSseSpecificationResponse::VerifiedAccessSseSpecificationResponse() : 
-    m_customerManagedKeyEnabled(false),
-    m_customerManagedKeyEnabledHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false)
-{
-}
-
-VerifiedAccessSseSpecificationResponse::VerifiedAccessSseSpecificationResponse(const XmlNode& xmlNode) : 
-    m_customerManagedKeyEnabled(false),
-    m_customerManagedKeyEnabledHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false)
+VerifiedAccessSseSpecificationResponse::VerifiedAccessSseSpecificationResponse(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

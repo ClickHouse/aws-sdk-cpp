@@ -32,42 +32,23 @@ namespace Model
   class DataProductLastModifiedDateFilter
   {
   public:
-    AWS_MARKETPLACECATALOG_API DataProductLastModifiedDateFilter();
+    AWS_MARKETPLACECATALOG_API DataProductLastModifiedDateFilter() = default;
     AWS_MARKETPLACECATALOG_API DataProductLastModifiedDateFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API DataProductLastModifiedDateFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Dates between which the data product was last modified.</p>
      */
-    inline const DataProductLastModifiedDateFilterDateRange& GetDateRange() const{ return m_dateRange; }
-
-    /**
-     * <p>Dates between which the data product was last modified.</p>
-     */
+    inline const DataProductLastModifiedDateFilterDateRange& GetDateRange() const { return m_dateRange; }
     inline bool DateRangeHasBeenSet() const { return m_dateRangeHasBeenSet; }
-
-    /**
-     * <p>Dates between which the data product was last modified.</p>
-     */
-    inline void SetDateRange(const DataProductLastModifiedDateFilterDateRange& value) { m_dateRangeHasBeenSet = true; m_dateRange = value; }
-
-    /**
-     * <p>Dates between which the data product was last modified.</p>
-     */
-    inline void SetDateRange(DataProductLastModifiedDateFilterDateRange&& value) { m_dateRangeHasBeenSet = true; m_dateRange = std::move(value); }
-
-    /**
-     * <p>Dates between which the data product was last modified.</p>
-     */
-    inline DataProductLastModifiedDateFilter& WithDateRange(const DataProductLastModifiedDateFilterDateRange& value) { SetDateRange(value); return *this;}
-
-    /**
-     * <p>Dates between which the data product was last modified.</p>
-     */
-    inline DataProductLastModifiedDateFilter& WithDateRange(DataProductLastModifiedDateFilterDateRange&& value) { SetDateRange(std::move(value)); return *this;}
-
+    template<typename DateRangeT = DataProductLastModifiedDateFilterDateRange>
+    void SetDateRange(DateRangeT&& value) { m_dateRangeHasBeenSet = true; m_dateRange = std::forward<DateRangeT>(value); }
+    template<typename DateRangeT = DataProductLastModifiedDateFilterDateRange>
+    DataProductLastModifiedDateFilter& WithDateRange(DateRangeT&& value) { SetDateRange(std::forward<DateRangeT>(value)); return *this;}
+    ///@}
   private:
 
     DataProductLastModifiedDateFilterDateRange m_dateRange;

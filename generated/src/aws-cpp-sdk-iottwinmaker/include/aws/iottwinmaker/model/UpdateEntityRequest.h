@@ -25,7 +25,7 @@ namespace Model
   class UpdateEntityRequest : public IoTTwinMakerRequest
   {
   public:
-    AWS_IOTTWINMAKER_API UpdateEntityRequest();
+    AWS_IOTTWINMAKER_API UpdateEntityRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,358 +36,100 @@ namespace Model
     AWS_IOTTWINMAKER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the workspace that contains the entity.</p>
      */
-    inline const Aws::String& GetWorkspaceId() const{ return m_workspaceId; }
-
-    /**
-     * <p>The ID of the workspace that contains the entity.</p>
-     */
+    inline const Aws::String& GetWorkspaceId() const { return m_workspaceId; }
     inline bool WorkspaceIdHasBeenSet() const { return m_workspaceIdHasBeenSet; }
+    template<typename WorkspaceIdT = Aws::String>
+    void SetWorkspaceId(WorkspaceIdT&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::forward<WorkspaceIdT>(value); }
+    template<typename WorkspaceIdT = Aws::String>
+    UpdateEntityRequest& WithWorkspaceId(WorkspaceIdT&& value) { SetWorkspaceId(std::forward<WorkspaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the workspace that contains the entity.</p>
-     */
-    inline void SetWorkspaceId(const Aws::String& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = value; }
-
-    /**
-     * <p>The ID of the workspace that contains the entity.</p>
-     */
-    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::move(value); }
-
-    /**
-     * <p>The ID of the workspace that contains the entity.</p>
-     */
-    inline void SetWorkspaceId(const char* value) { m_workspaceIdHasBeenSet = true; m_workspaceId.assign(value); }
-
-    /**
-     * <p>The ID of the workspace that contains the entity.</p>
-     */
-    inline UpdateEntityRequest& WithWorkspaceId(const Aws::String& value) { SetWorkspaceId(value); return *this;}
-
-    /**
-     * <p>The ID of the workspace that contains the entity.</p>
-     */
-    inline UpdateEntityRequest& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the workspace that contains the entity.</p>
-     */
-    inline UpdateEntityRequest& WithWorkspaceId(const char* value) { SetWorkspaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the entity.</p>
      */
-    inline const Aws::String& GetEntityId() const{ return m_entityId; }
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
+    inline const Aws::String& GetEntityId() const { return m_entityId; }
     inline bool EntityIdHasBeenSet() const { return m_entityIdHasBeenSet; }
+    template<typename EntityIdT = Aws::String>
+    void SetEntityId(EntityIdT&& value) { m_entityIdHasBeenSet = true; m_entityId = std::forward<EntityIdT>(value); }
+    template<typename EntityIdT = Aws::String>
+    UpdateEntityRequest& WithEntityId(EntityIdT&& value) { SetEntityId(std::forward<EntityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline void SetEntityId(const Aws::String& value) { m_entityIdHasBeenSet = true; m_entityId = value; }
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline void SetEntityId(Aws::String&& value) { m_entityIdHasBeenSet = true; m_entityId = std::move(value); }
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline void SetEntityId(const char* value) { m_entityIdHasBeenSet = true; m_entityId.assign(value); }
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline UpdateEntityRequest& WithEntityId(const Aws::String& value) { SetEntityId(value); return *this;}
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline UpdateEntityRequest& WithEntityId(Aws::String&& value) { SetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the entity.</p>
-     */
-    inline UpdateEntityRequest& WithEntityId(const char* value) { SetEntityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the entity.</p>
      */
-    inline const Aws::String& GetEntityName() const{ return m_entityName; }
-
-    /**
-     * <p>The name of the entity.</p>
-     */
+    inline const Aws::String& GetEntityName() const { return m_entityName; }
     inline bool EntityNameHasBeenSet() const { return m_entityNameHasBeenSet; }
+    template<typename EntityNameT = Aws::String>
+    void SetEntityName(EntityNameT&& value) { m_entityNameHasBeenSet = true; m_entityName = std::forward<EntityNameT>(value); }
+    template<typename EntityNameT = Aws::String>
+    UpdateEntityRequest& WithEntityName(EntityNameT&& value) { SetEntityName(std::forward<EntityNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline void SetEntityName(const Aws::String& value) { m_entityNameHasBeenSet = true; m_entityName = value; }
-
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline void SetEntityName(Aws::String&& value) { m_entityNameHasBeenSet = true; m_entityName = std::move(value); }
-
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline void SetEntityName(const char* value) { m_entityNameHasBeenSet = true; m_entityName.assign(value); }
-
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline UpdateEntityRequest& WithEntityName(const Aws::String& value) { SetEntityName(value); return *this;}
-
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline UpdateEntityRequest& WithEntityName(Aws::String&& value) { SetEntityName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the entity.</p>
-     */
-    inline UpdateEntityRequest& WithEntityName(const char* value) { SetEntityName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the entity.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the entity.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateEntityRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline UpdateEntityRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline UpdateEntityRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the entity.</p>
-     */
-    inline UpdateEntityRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that maps strings to the component updates in the request. Each
      * string in the mapping must be unique to this object.</p>
      */
-    inline const Aws::Map<Aws::String, ComponentUpdateRequest>& GetComponentUpdates() const{ return m_componentUpdates; }
-
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
+    inline const Aws::Map<Aws::String, ComponentUpdateRequest>& GetComponentUpdates() const { return m_componentUpdates; }
     inline bool ComponentUpdatesHasBeenSet() const { return m_componentUpdatesHasBeenSet; }
+    template<typename ComponentUpdatesT = Aws::Map<Aws::String, ComponentUpdateRequest>>
+    void SetComponentUpdates(ComponentUpdatesT&& value) { m_componentUpdatesHasBeenSet = true; m_componentUpdates = std::forward<ComponentUpdatesT>(value); }
+    template<typename ComponentUpdatesT = Aws::Map<Aws::String, ComponentUpdateRequest>>
+    UpdateEntityRequest& WithComponentUpdates(ComponentUpdatesT&& value) { SetComponentUpdates(std::forward<ComponentUpdatesT>(value)); return *this;}
+    template<typename ComponentUpdatesKeyT = Aws::String, typename ComponentUpdatesValueT = ComponentUpdateRequest>
+    UpdateEntityRequest& AddComponentUpdates(ComponentUpdatesKeyT&& key, ComponentUpdatesValueT&& value) {
+      m_componentUpdatesHasBeenSet = true; m_componentUpdates.emplace(std::forward<ComponentUpdatesKeyT>(key), std::forward<ComponentUpdatesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
-    inline void SetComponentUpdates(const Aws::Map<Aws::String, ComponentUpdateRequest>& value) { m_componentUpdatesHasBeenSet = true; m_componentUpdates = value; }
-
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
-    inline void SetComponentUpdates(Aws::Map<Aws::String, ComponentUpdateRequest>&& value) { m_componentUpdatesHasBeenSet = true; m_componentUpdates = std::move(value); }
-
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
-    inline UpdateEntityRequest& WithComponentUpdates(const Aws::Map<Aws::String, ComponentUpdateRequest>& value) { SetComponentUpdates(value); return *this;}
-
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
-    inline UpdateEntityRequest& WithComponentUpdates(Aws::Map<Aws::String, ComponentUpdateRequest>&& value) { SetComponentUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
-    inline UpdateEntityRequest& AddComponentUpdates(const Aws::String& key, const ComponentUpdateRequest& value) { m_componentUpdatesHasBeenSet = true; m_componentUpdates.emplace(key, value); return *this; }
-
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
-    inline UpdateEntityRequest& AddComponentUpdates(Aws::String&& key, const ComponentUpdateRequest& value) { m_componentUpdatesHasBeenSet = true; m_componentUpdates.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
-    inline UpdateEntityRequest& AddComponentUpdates(const Aws::String& key, ComponentUpdateRequest&& value) { m_componentUpdatesHasBeenSet = true; m_componentUpdates.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
-    inline UpdateEntityRequest& AddComponentUpdates(Aws::String&& key, ComponentUpdateRequest&& value) { m_componentUpdatesHasBeenSet = true; m_componentUpdates.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
-    inline UpdateEntityRequest& AddComponentUpdates(const char* key, ComponentUpdateRequest&& value) { m_componentUpdatesHasBeenSet = true; m_componentUpdates.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>An object that maps strings to the component updates in the request. Each
-     * string in the mapping must be unique to this object.</p>
-     */
-    inline UpdateEntityRequest& AddComponentUpdates(const char* key, const ComponentUpdateRequest& value) { m_componentUpdatesHasBeenSet = true; m_componentUpdates.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>This is an object that maps strings to <code>compositeComponent</code>
      * updates in the request. Each key of the map represents the
      * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
      */
-    inline const Aws::Map<Aws::String, CompositeComponentUpdateRequest>& GetCompositeComponentUpdates() const{ return m_compositeComponentUpdates; }
-
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
+    inline const Aws::Map<Aws::String, CompositeComponentUpdateRequest>& GetCompositeComponentUpdates() const { return m_compositeComponentUpdates; }
     inline bool CompositeComponentUpdatesHasBeenSet() const { return m_compositeComponentUpdatesHasBeenSet; }
+    template<typename CompositeComponentUpdatesT = Aws::Map<Aws::String, CompositeComponentUpdateRequest>>
+    void SetCompositeComponentUpdates(CompositeComponentUpdatesT&& value) { m_compositeComponentUpdatesHasBeenSet = true; m_compositeComponentUpdates = std::forward<CompositeComponentUpdatesT>(value); }
+    template<typename CompositeComponentUpdatesT = Aws::Map<Aws::String, CompositeComponentUpdateRequest>>
+    UpdateEntityRequest& WithCompositeComponentUpdates(CompositeComponentUpdatesT&& value) { SetCompositeComponentUpdates(std::forward<CompositeComponentUpdatesT>(value)); return *this;}
+    template<typename CompositeComponentUpdatesKeyT = Aws::String, typename CompositeComponentUpdatesValueT = CompositeComponentUpdateRequest>
+    UpdateEntityRequest& AddCompositeComponentUpdates(CompositeComponentUpdatesKeyT&& key, CompositeComponentUpdatesValueT&& value) {
+      m_compositeComponentUpdatesHasBeenSet = true; m_compositeComponentUpdates.emplace(std::forward<CompositeComponentUpdatesKeyT>(key), std::forward<CompositeComponentUpdatesValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
-    inline void SetCompositeComponentUpdates(const Aws::Map<Aws::String, CompositeComponentUpdateRequest>& value) { m_compositeComponentUpdatesHasBeenSet = true; m_compositeComponentUpdates = value; }
-
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
-    inline void SetCompositeComponentUpdates(Aws::Map<Aws::String, CompositeComponentUpdateRequest>&& value) { m_compositeComponentUpdatesHasBeenSet = true; m_compositeComponentUpdates = std::move(value); }
-
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
-    inline UpdateEntityRequest& WithCompositeComponentUpdates(const Aws::Map<Aws::String, CompositeComponentUpdateRequest>& value) { SetCompositeComponentUpdates(value); return *this;}
-
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
-    inline UpdateEntityRequest& WithCompositeComponentUpdates(Aws::Map<Aws::String, CompositeComponentUpdateRequest>&& value) { SetCompositeComponentUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
-    inline UpdateEntityRequest& AddCompositeComponentUpdates(const Aws::String& key, const CompositeComponentUpdateRequest& value) { m_compositeComponentUpdatesHasBeenSet = true; m_compositeComponentUpdates.emplace(key, value); return *this; }
-
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
-    inline UpdateEntityRequest& AddCompositeComponentUpdates(Aws::String&& key, const CompositeComponentUpdateRequest& value) { m_compositeComponentUpdatesHasBeenSet = true; m_compositeComponentUpdates.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
-    inline UpdateEntityRequest& AddCompositeComponentUpdates(const Aws::String& key, CompositeComponentUpdateRequest&& value) { m_compositeComponentUpdatesHasBeenSet = true; m_compositeComponentUpdates.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
-    inline UpdateEntityRequest& AddCompositeComponentUpdates(Aws::String&& key, CompositeComponentUpdateRequest&& value) { m_compositeComponentUpdatesHasBeenSet = true; m_compositeComponentUpdates.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
-    inline UpdateEntityRequest& AddCompositeComponentUpdates(const char* key, CompositeComponentUpdateRequest&& value) { m_compositeComponentUpdatesHasBeenSet = true; m_compositeComponentUpdates.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>This is an object that maps strings to <code>compositeComponent</code>
-     * updates in the request. Each key of the map represents the
-     * <code>componentPath</code> of the <code>compositeComponent</code>.</p>
-     */
-    inline UpdateEntityRequest& AddCompositeComponentUpdates(const char* key, const CompositeComponentUpdateRequest& value) { m_compositeComponentUpdatesHasBeenSet = true; m_compositeComponentUpdates.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>An object that describes the update request for a parent entity.</p>
      */
-    inline const ParentEntityUpdateRequest& GetParentEntityUpdate() const{ return m_parentEntityUpdate; }
-
-    /**
-     * <p>An object that describes the update request for a parent entity.</p>
-     */
+    inline const ParentEntityUpdateRequest& GetParentEntityUpdate() const { return m_parentEntityUpdate; }
     inline bool ParentEntityUpdateHasBeenSet() const { return m_parentEntityUpdateHasBeenSet; }
-
-    /**
-     * <p>An object that describes the update request for a parent entity.</p>
-     */
-    inline void SetParentEntityUpdate(const ParentEntityUpdateRequest& value) { m_parentEntityUpdateHasBeenSet = true; m_parentEntityUpdate = value; }
-
-    /**
-     * <p>An object that describes the update request for a parent entity.</p>
-     */
-    inline void SetParentEntityUpdate(ParentEntityUpdateRequest&& value) { m_parentEntityUpdateHasBeenSet = true; m_parentEntityUpdate = std::move(value); }
-
-    /**
-     * <p>An object that describes the update request for a parent entity.</p>
-     */
-    inline UpdateEntityRequest& WithParentEntityUpdate(const ParentEntityUpdateRequest& value) { SetParentEntityUpdate(value); return *this;}
-
-    /**
-     * <p>An object that describes the update request for a parent entity.</p>
-     */
-    inline UpdateEntityRequest& WithParentEntityUpdate(ParentEntityUpdateRequest&& value) { SetParentEntityUpdate(std::move(value)); return *this;}
-
+    template<typename ParentEntityUpdateT = ParentEntityUpdateRequest>
+    void SetParentEntityUpdate(ParentEntityUpdateT&& value) { m_parentEntityUpdateHasBeenSet = true; m_parentEntityUpdate = std::forward<ParentEntityUpdateT>(value); }
+    template<typename ParentEntityUpdateT = ParentEntityUpdateRequest>
+    UpdateEntityRequest& WithParentEntityUpdate(ParentEntityUpdateT&& value) { SetParentEntityUpdate(std::forward<ParentEntityUpdateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_workspaceId;

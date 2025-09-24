@@ -18,19 +18,7 @@ namespace ResourceExplorer2
 namespace Model
 {
 
-ResourceCount::ResourceCount() : 
-    m_complete(false),
-    m_completeHasBeenSet(false),
-    m_totalResources(0),
-    m_totalResourcesHasBeenSet(false)
-{
-}
-
-ResourceCount::ResourceCount(JsonView jsonValue) : 
-    m_complete(false),
-    m_completeHasBeenSet(false),
-    m_totalResources(0),
-    m_totalResourcesHasBeenSet(false)
+ResourceCount::ResourceCount(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ResourceCount& ResourceCount::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Complete"))
   {
     m_complete = jsonValue.GetBool("Complete");
-
     m_completeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TotalResources"))
   {
     m_totalResources = jsonValue.GetInt64("TotalResources");
-
     m_totalResourcesHasBeenSet = true;
   }
-
   return *this;
 }
 

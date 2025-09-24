@@ -35,106 +35,40 @@ namespace Model
   class SnapshotFilter
   {
   public:
-    AWS_FSX_API SnapshotFilter();
+    AWS_FSX_API SnapshotFilter() = default;
     AWS_FSX_API SnapshotFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API SnapshotFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the filter to use. You can filter by the
      * <code>file-system-id</code> or by <code>volume-id</code>.</p>
      */
-    inline const SnapshotFilterName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the filter to use. You can filter by the
-     * <code>file-system-id</code> or by <code>volume-id</code>.</p>
-     */
+    inline SnapshotFilterName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(SnapshotFilterName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline SnapshotFilter& WithName(SnapshotFilterName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the filter to use. You can filter by the
-     * <code>file-system-id</code> or by <code>volume-id</code>.</p>
-     */
-    inline void SetName(const SnapshotFilterName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the filter to use. You can filter by the
-     * <code>file-system-id</code> or by <code>volume-id</code>.</p>
-     */
-    inline void SetName(SnapshotFilterName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the filter to use. You can filter by the
-     * <code>file-system-id</code> or by <code>volume-id</code>.</p>
-     */
-    inline SnapshotFilter& WithName(const SnapshotFilterName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the filter to use. You can filter by the
-     * <code>file-system-id</code> or by <code>volume-id</code>.</p>
-     */
-    inline SnapshotFilter& WithName(SnapshotFilterName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>file-system-id</code> or <code>volume-id</code> that you are
      * filtering for.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The <code>file-system-id</code> or <code>volume-id</code> that you are
-     * filtering for.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>The <code>file-system-id</code> or <code>volume-id</code> that you are
-     * filtering for.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The <code>file-system-id</code> or <code>volume-id</code> that you are
-     * filtering for.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The <code>file-system-id</code> or <code>volume-id</code> that you are
-     * filtering for.</p>
-     */
-    inline SnapshotFilter& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The <code>file-system-id</code> or <code>volume-id</code> that you are
-     * filtering for.</p>
-     */
-    inline SnapshotFilter& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>file-system-id</code> or <code>volume-id</code> that you are
-     * filtering for.</p>
-     */
-    inline SnapshotFilter& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The <code>file-system-id</code> or <code>volume-id</code> that you are
-     * filtering for.</p>
-     */
-    inline SnapshotFilter& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The <code>file-system-id</code> or <code>volume-id</code> that you are
-     * filtering for.</p>
-     */
-    inline SnapshotFilter& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    SnapshotFilter& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    SnapshotFilter& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
-    SnapshotFilterName m_name;
+    SnapshotFilterName m_name{SnapshotFilterName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_values;

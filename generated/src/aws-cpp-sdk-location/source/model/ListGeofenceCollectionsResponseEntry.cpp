@@ -18,19 +18,7 @@ namespace LocationService
 namespace Model
 {
 
-ListGeofenceCollectionsResponseEntry::ListGeofenceCollectionsResponseEntry() : 
-    m_collectionNameHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_updateTimeHasBeenSet(false)
-{
-}
-
-ListGeofenceCollectionsResponseEntry::ListGeofenceCollectionsResponseEntry(JsonView jsonValue) : 
-    m_collectionNameHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_updateTimeHasBeenSet(false)
+ListGeofenceCollectionsResponseEntry::ListGeofenceCollectionsResponseEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ ListGeofenceCollectionsResponseEntry& ListGeofenceCollectionsResponseEntry::oper
   if(jsonValue.ValueExists("CollectionName"))
   {
     m_collectionName = jsonValue.GetString("CollectionName");
-
     m_collectionNameHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("CreateTime"))
-  {
-    m_createTime = jsonValue.GetString("CreateTime");
-
-    m_createTimeHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CreateTime"))
+  {
+    m_createTime = jsonValue.GetString("CreateTime");
+    m_createTimeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("UpdateTime"))
   {
     m_updateTime = jsonValue.GetString("UpdateTime");
-
     m_updateTimeHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -78,15 +58,15 @@ JsonValue ListGeofenceCollectionsResponseEntry::Jsonize() const
 
   }
 
-  if(m_createTimeHasBeenSet)
-  {
-   payload.WithString("CreateTime", m_createTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
-  }
-
   if(m_descriptionHasBeenSet)
   {
    payload.WithString("Description", m_description);
 
+  }
+
+  if(m_createTimeHasBeenSet)
+  {
+   payload.WithString("CreateTime", m_createTime.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
   if(m_updateTimeHasBeenSet)

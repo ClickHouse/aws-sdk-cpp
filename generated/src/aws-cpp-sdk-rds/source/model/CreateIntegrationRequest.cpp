@@ -10,16 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-CreateIntegrationRequest::CreateIntegrationRequest() : 
-    m_sourceArnHasBeenSet(false),
-    m_targetArnHasBeenSet(false),
-    m_integrationNameHasBeenSet(false),
-    m_kMSKeyIdHasBeenSet(false),
-    m_additionalEncryptionContextHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateIntegrationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -59,12 +49,29 @@ Aws::String CreateIntegrationRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
     }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
+    }
+  }
+
+  if(m_dataFilterHasBeenSet)
+  {
+    ss << "DataFilter=" << StringUtils::URLEncode(m_dataFilter.c_str()) << "&";
+  }
+
+  if(m_descriptionHasBeenSet)
+  {
+    ss << "Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
 
   ss << "Version=2014-10-31";

@@ -18,13 +18,7 @@ namespace EMRContainers
 namespace Model
 {
 
-Credentials::Credentials() : 
-    m_tokenHasBeenSet(false)
-{
-}
-
-Credentials::Credentials(JsonView jsonValue) : 
-    m_tokenHasBeenSet(false)
+Credentials::Credentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ Credentials& Credentials::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("token"))
   {
     m_token = jsonValue.GetString("token");
-
     m_tokenHasBeenSet = true;
   }
-
   return *this;
 }
 

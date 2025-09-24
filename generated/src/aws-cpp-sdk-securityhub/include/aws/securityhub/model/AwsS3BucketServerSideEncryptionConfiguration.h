@@ -32,52 +32,25 @@ namespace Model
   class AwsS3BucketServerSideEncryptionConfiguration
   {
   public:
-    AWS_SECURITYHUB_API AwsS3BucketServerSideEncryptionConfiguration();
+    AWS_SECURITYHUB_API AwsS3BucketServerSideEncryptionConfiguration() = default;
     AWS_SECURITYHUB_API AwsS3BucketServerSideEncryptionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsS3BucketServerSideEncryptionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The encryption rules that are applied to the S3 bucket.</p>
      */
-    inline const Aws::Vector<AwsS3BucketServerSideEncryptionRule>& GetRules() const{ return m_rules; }
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
+    inline const Aws::Vector<AwsS3BucketServerSideEncryptionRule>& GetRules() const { return m_rules; }
     inline bool RulesHasBeenSet() const { return m_rulesHasBeenSet; }
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
-    inline void SetRules(const Aws::Vector<AwsS3BucketServerSideEncryptionRule>& value) { m_rulesHasBeenSet = true; m_rules = value; }
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
-    inline void SetRules(Aws::Vector<AwsS3BucketServerSideEncryptionRule>&& value) { m_rulesHasBeenSet = true; m_rules = std::move(value); }
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
-    inline AwsS3BucketServerSideEncryptionConfiguration& WithRules(const Aws::Vector<AwsS3BucketServerSideEncryptionRule>& value) { SetRules(value); return *this;}
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
-    inline AwsS3BucketServerSideEncryptionConfiguration& WithRules(Aws::Vector<AwsS3BucketServerSideEncryptionRule>&& value) { SetRules(std::move(value)); return *this;}
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
-    inline AwsS3BucketServerSideEncryptionConfiguration& AddRules(const AwsS3BucketServerSideEncryptionRule& value) { m_rulesHasBeenSet = true; m_rules.push_back(value); return *this; }
-
-    /**
-     * <p>The encryption rules that are applied to the S3 bucket.</p>
-     */
-    inline AwsS3BucketServerSideEncryptionConfiguration& AddRules(AwsS3BucketServerSideEncryptionRule&& value) { m_rulesHasBeenSet = true; m_rules.push_back(std::move(value)); return *this; }
-
+    template<typename RulesT = Aws::Vector<AwsS3BucketServerSideEncryptionRule>>
+    void SetRules(RulesT&& value) { m_rulesHasBeenSet = true; m_rules = std::forward<RulesT>(value); }
+    template<typename RulesT = Aws::Vector<AwsS3BucketServerSideEncryptionRule>>
+    AwsS3BucketServerSideEncryptionConfiguration& WithRules(RulesT&& value) { SetRules(std::forward<RulesT>(value)); return *this;}
+    template<typename RulesT = AwsS3BucketServerSideEncryptionRule>
+    AwsS3BucketServerSideEncryptionConfiguration& AddRules(RulesT&& value) { m_rulesHasBeenSet = true; m_rules.emplace_back(std::forward<RulesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AwsS3BucketServerSideEncryptionRule> m_rules;

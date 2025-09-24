@@ -36,187 +36,78 @@ namespace Model
   class AssetBundleImportJobDataSourceOverrideParameters
   {
   public:
-    AWS_QUICKSIGHT_API AssetBundleImportJobDataSourceOverrideParameters();
+    AWS_QUICKSIGHT_API AssetBundleImportJobDataSourceOverrideParameters() = default;
     AWS_QUICKSIGHT_API AssetBundleImportJobDataSourceOverrideParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AssetBundleImportJobDataSourceOverrideParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the data source to apply overrides to.</p>
      */
-    inline const Aws::String& GetDataSourceId() const{ return m_dataSourceId; }
-
-    /**
-     * <p>The ID of the data source to apply overrides to.</p>
-     */
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
     inline bool DataSourceIdHasBeenSet() const { return m_dataSourceIdHasBeenSet; }
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    AssetBundleImportJobDataSourceOverrideParameters& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the data source to apply overrides to.</p>
-     */
-    inline void SetDataSourceId(const Aws::String& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = value; }
-
-    /**
-     * <p>The ID of the data source to apply overrides to.</p>
-     */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the data source to apply overrides to.</p>
-     */
-    inline void SetDataSourceId(const char* value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId.assign(value); }
-
-    /**
-     * <p>The ID of the data source to apply overrides to.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithDataSourceId(const Aws::String& value) { SetDataSourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the data source to apply overrides to.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the data source to apply overrides to.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithDataSourceId(const char* value) { SetDataSourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A new name for the data source.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A new name for the data source.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AssetBundleImportJobDataSourceOverrideParameters& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A new name for the data source.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A new name for the data source.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A new name for the data source.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A new name for the data source.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A new name for the data source.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A new name for the data source.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     
-    inline const DataSourceParameters& GetDataSourceParameters() const{ return m_dataSourceParameters; }
-
-    
+    inline const DataSourceParameters& GetDataSourceParameters() const { return m_dataSourceParameters; }
     inline bool DataSourceParametersHasBeenSet() const { return m_dataSourceParametersHasBeenSet; }
+    template<typename DataSourceParametersT = DataSourceParameters>
+    void SetDataSourceParameters(DataSourceParametersT&& value) { m_dataSourceParametersHasBeenSet = true; m_dataSourceParameters = std::forward<DataSourceParametersT>(value); }
+    template<typename DataSourceParametersT = DataSourceParameters>
+    AssetBundleImportJobDataSourceOverrideParameters& WithDataSourceParameters(DataSourceParametersT&& value) { SetDataSourceParameters(std::forward<DataSourceParametersT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetDataSourceParameters(const DataSourceParameters& value) { m_dataSourceParametersHasBeenSet = true; m_dataSourceParameters = value; }
-
-    
-    inline void SetDataSourceParameters(DataSourceParameters&& value) { m_dataSourceParametersHasBeenSet = true; m_dataSourceParameters = std::move(value); }
-
-    
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithDataSourceParameters(const DataSourceParameters& value) { SetDataSourceParameters(value); return *this;}
-
-    
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithDataSourceParameters(DataSourceParameters&& value) { SetDataSourceParameters(std::move(value)); return *this;}
-
-
-    
-    inline const VpcConnectionProperties& GetVpcConnectionProperties() const{ return m_vpcConnectionProperties; }
-
-    
+    inline const VpcConnectionProperties& GetVpcConnectionProperties() const { return m_vpcConnectionProperties; }
     inline bool VpcConnectionPropertiesHasBeenSet() const { return m_vpcConnectionPropertiesHasBeenSet; }
+    template<typename VpcConnectionPropertiesT = VpcConnectionProperties>
+    void SetVpcConnectionProperties(VpcConnectionPropertiesT&& value) { m_vpcConnectionPropertiesHasBeenSet = true; m_vpcConnectionProperties = std::forward<VpcConnectionPropertiesT>(value); }
+    template<typename VpcConnectionPropertiesT = VpcConnectionProperties>
+    AssetBundleImportJobDataSourceOverrideParameters& WithVpcConnectionProperties(VpcConnectionPropertiesT&& value) { SetVpcConnectionProperties(std::forward<VpcConnectionPropertiesT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetVpcConnectionProperties(const VpcConnectionProperties& value) { m_vpcConnectionPropertiesHasBeenSet = true; m_vpcConnectionProperties = value; }
-
-    
-    inline void SetVpcConnectionProperties(VpcConnectionProperties&& value) { m_vpcConnectionPropertiesHasBeenSet = true; m_vpcConnectionProperties = std::move(value); }
-
-    
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithVpcConnectionProperties(const VpcConnectionProperties& value) { SetVpcConnectionProperties(value); return *this;}
-
-    
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithVpcConnectionProperties(VpcConnectionProperties&& value) { SetVpcConnectionProperties(std::move(value)); return *this;}
-
-
-    
-    inline const SslProperties& GetSslProperties() const{ return m_sslProperties; }
-
-    
+    inline const SslProperties& GetSslProperties() const { return m_sslProperties; }
     inline bool SslPropertiesHasBeenSet() const { return m_sslPropertiesHasBeenSet; }
+    template<typename SslPropertiesT = SslProperties>
+    void SetSslProperties(SslPropertiesT&& value) { m_sslPropertiesHasBeenSet = true; m_sslProperties = std::forward<SslPropertiesT>(value); }
+    template<typename SslPropertiesT = SslProperties>
+    AssetBundleImportJobDataSourceOverrideParameters& WithSslProperties(SslPropertiesT&& value) { SetSslProperties(std::forward<SslPropertiesT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetSslProperties(const SslProperties& value) { m_sslPropertiesHasBeenSet = true; m_sslProperties = value; }
-
-    
-    inline void SetSslProperties(SslProperties&& value) { m_sslPropertiesHasBeenSet = true; m_sslProperties = std::move(value); }
-
-    
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithSslProperties(const SslProperties& value) { SetSslProperties(value); return *this;}
-
-    
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithSslProperties(SslProperties&& value) { SetSslProperties(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional structure that provides the credentials to be used to create the
      * imported data source.</p>
      */
-    inline const AssetBundleImportJobDataSourceCredentials& GetCredentials() const{ return m_credentials; }
-
-    /**
-     * <p>An optional structure that provides the credentials to be used to create the
-     * imported data source.</p>
-     */
+    inline const AssetBundleImportJobDataSourceCredentials& GetCredentials() const { return m_credentials; }
     inline bool CredentialsHasBeenSet() const { return m_credentialsHasBeenSet; }
-
-    /**
-     * <p>An optional structure that provides the credentials to be used to create the
-     * imported data source.</p>
-     */
-    inline void SetCredentials(const AssetBundleImportJobDataSourceCredentials& value) { m_credentialsHasBeenSet = true; m_credentials = value; }
-
-    /**
-     * <p>An optional structure that provides the credentials to be used to create the
-     * imported data source.</p>
-     */
-    inline void SetCredentials(AssetBundleImportJobDataSourceCredentials&& value) { m_credentialsHasBeenSet = true; m_credentials = std::move(value); }
-
-    /**
-     * <p>An optional structure that provides the credentials to be used to create the
-     * imported data source.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithCredentials(const AssetBundleImportJobDataSourceCredentials& value) { SetCredentials(value); return *this;}
-
-    /**
-     * <p>An optional structure that provides the credentials to be used to create the
-     * imported data source.</p>
-     */
-    inline AssetBundleImportJobDataSourceOverrideParameters& WithCredentials(AssetBundleImportJobDataSourceCredentials&& value) { SetCredentials(std::move(value)); return *this;}
-
+    template<typename CredentialsT = AssetBundleImportJobDataSourceCredentials>
+    void SetCredentials(CredentialsT&& value) { m_credentialsHasBeenSet = true; m_credentials = std::forward<CredentialsT>(value); }
+    template<typename CredentialsT = AssetBundleImportJobDataSourceCredentials>
+    AssetBundleImportJobDataSourceOverrideParameters& WithCredentials(CredentialsT&& value) { SetCredentials(std::forward<CredentialsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dataSourceId;

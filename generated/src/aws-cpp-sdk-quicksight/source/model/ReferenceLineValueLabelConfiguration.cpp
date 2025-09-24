@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ReferenceLineValueLabelConfiguration::ReferenceLineValueLabelConfiguration() : 
-    m_relativePosition(ReferenceLineValueLabelRelativePosition::NOT_SET),
-    m_relativePositionHasBeenSet(false),
-    m_formatConfigurationHasBeenSet(false)
-{
-}
-
-ReferenceLineValueLabelConfiguration::ReferenceLineValueLabelConfiguration(JsonView jsonValue) : 
-    m_relativePosition(ReferenceLineValueLabelRelativePosition::NOT_SET),
-    m_relativePositionHasBeenSet(false),
-    m_formatConfigurationHasBeenSet(false)
+ReferenceLineValueLabelConfiguration::ReferenceLineValueLabelConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ReferenceLineValueLabelConfiguration& ReferenceLineValueLabelConfiguration::oper
   if(jsonValue.ValueExists("RelativePosition"))
   {
     m_relativePosition = ReferenceLineValueLabelRelativePositionMapper::GetReferenceLineValueLabelRelativePositionForName(jsonValue.GetString("RelativePosition"));
-
     m_relativePositionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FormatConfiguration"))
   {
     m_formatConfiguration = jsonValue.GetObject("FormatConfiguration");
-
     m_formatConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

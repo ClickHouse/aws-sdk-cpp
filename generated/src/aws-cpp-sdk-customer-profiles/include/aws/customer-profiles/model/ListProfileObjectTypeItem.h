@@ -33,221 +33,95 @@ namespace Model
   class ListProfileObjectTypeItem
   {
   public:
-    AWS_CUSTOMERPROFILES_API ListProfileObjectTypeItem();
+    AWS_CUSTOMERPROFILES_API ListProfileObjectTypeItem() = default;
     AWS_CUSTOMERPROFILES_API ListProfileObjectTypeItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API ListProfileObjectTypeItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the profile object type.</p>
      */
-    inline const Aws::String& GetObjectTypeName() const{ return m_objectTypeName; }
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
+    inline const Aws::String& GetObjectTypeName() const { return m_objectTypeName; }
     inline bool ObjectTypeNameHasBeenSet() const { return m_objectTypeNameHasBeenSet; }
+    template<typename ObjectTypeNameT = Aws::String>
+    void SetObjectTypeName(ObjectTypeNameT&& value) { m_objectTypeNameHasBeenSet = true; m_objectTypeName = std::forward<ObjectTypeNameT>(value); }
+    template<typename ObjectTypeNameT = Aws::String>
+    ListProfileObjectTypeItem& WithObjectTypeName(ObjectTypeNameT&& value) { SetObjectTypeName(std::forward<ObjectTypeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline void SetObjectTypeName(const Aws::String& value) { m_objectTypeNameHasBeenSet = true; m_objectTypeName = value; }
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline void SetObjectTypeName(Aws::String&& value) { m_objectTypeNameHasBeenSet = true; m_objectTypeName = std::move(value); }
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline void SetObjectTypeName(const char* value) { m_objectTypeNameHasBeenSet = true; m_objectTypeName.assign(value); }
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline ListProfileObjectTypeItem& WithObjectTypeName(const Aws::String& value) { SetObjectTypeName(value); return *this;}
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline ListProfileObjectTypeItem& WithObjectTypeName(Aws::String&& value) { SetObjectTypeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the profile object type.</p>
-     */
-    inline ListProfileObjectTypeItem& WithObjectTypeName(const char* value) { SetObjectTypeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Description of the profile object type.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Description of the profile object type.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ListProfileObjectTypeItem& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Description of the profile object type.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Description of the profile object type.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Description of the profile object type.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Description of the profile object type.</p>
-     */
-    inline ListProfileObjectTypeItem& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Description of the profile object type.</p>
-     */
-    inline ListProfileObjectTypeItem& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Description of the profile object type.</p>
-     */
-    inline ListProfileObjectTypeItem& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the domain was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The timestamp of when the domain was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    ListProfileObjectTypeItem& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the domain was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The timestamp of when the domain was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the domain was created.</p>
-     */
-    inline ListProfileObjectTypeItem& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the domain was created.</p>
-     */
-    inline ListProfileObjectTypeItem& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when the domain was most recently edited.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
-
-    /**
-     * <p>The timestamp of when the domain was most recently edited.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
     inline bool LastUpdatedAtHasBeenSet() const { return m_lastUpdatedAtHasBeenSet; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    ListProfileObjectTypeItem& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp of when the domain was most recently edited.</p>
+     * <p>The amount of profile object max count assigned to the object type.</p>
      */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = value; }
+    inline int GetMaxProfileObjectCount() const { return m_maxProfileObjectCount; }
+    inline bool MaxProfileObjectCountHasBeenSet() const { return m_maxProfileObjectCountHasBeenSet; }
+    inline void SetMaxProfileObjectCount(int value) { m_maxProfileObjectCountHasBeenSet = true; m_maxProfileObjectCount = value; }
+    inline ListProfileObjectTypeItem& WithMaxProfileObjectCount(int value) { SetMaxProfileObjectCount(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp of when the domain was most recently edited.</p>
+     * <p>The amount of provisioned profile object max count available.</p>
      */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::move(value); }
+    inline int GetMaxAvailableProfileObjectCount() const { return m_maxAvailableProfileObjectCount; }
+    inline bool MaxAvailableProfileObjectCountHasBeenSet() const { return m_maxAvailableProfileObjectCountHasBeenSet; }
+    inline void SetMaxAvailableProfileObjectCount(int value) { m_maxAvailableProfileObjectCountHasBeenSet = true; m_maxAvailableProfileObjectCount = value; }
+    inline ListProfileObjectTypeItem& WithMaxAvailableProfileObjectCount(int value) { SetMaxAvailableProfileObjectCount(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the domain was most recently edited.</p>
-     */
-    inline ListProfileObjectTypeItem& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the domain was most recently edited.</p>
-     */
-    inline ListProfileObjectTypeItem& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags used to organize, track, or control access for this resource.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ListProfileObjectTypeItem& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ListProfileObjectTypeItem& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ListProfileObjectTypeItem& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ListProfileObjectTypeItem& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ListProfileObjectTypeItem& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ListProfileObjectTypeItem& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ListProfileObjectTypeItem& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ListProfileObjectTypeItem& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ListProfileObjectTypeItem& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    ListProfileObjectTypeItem& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    ListProfileObjectTypeItem& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_objectTypeName;
@@ -256,11 +130,17 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
     bool m_lastUpdatedAtHasBeenSet = false;
+
+    int m_maxProfileObjectCount{0};
+    bool m_maxProfileObjectCountHasBeenSet = false;
+
+    int m_maxAvailableProfileObjectCount{0};
+    bool m_maxAvailableProfileObjectCountHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;

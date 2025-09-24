@@ -21,7 +21,7 @@ namespace Model
   class GetServiceLinkedRoleDeletionStatusRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API GetServiceLinkedRoleDeletionStatusRequest();
+    AWS_IAM_API GetServiceLinkedRoleDeletionStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,62 +36,20 @@ namespace Model
 
   public:
 
+    ///@{
     /**
-     * <p>The deletion task identifier. This identifier is returned by the
-     * <a>DeleteServiceLinkedRole</a> operation in the format
+     * <p>The deletion task identifier. This identifier is returned by the <a
+     * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_DeleteServiceLinkedRole.html">DeleteServiceLinkedRole</a>
+     * operation in the format
      * <code>task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;</code>.</p>
      */
-    inline const Aws::String& GetDeletionTaskId() const{ return m_deletionTaskId; }
-
-    /**
-     * <p>The deletion task identifier. This identifier is returned by the
-     * <a>DeleteServiceLinkedRole</a> operation in the format
-     * <code>task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;</code>.</p>
-     */
+    inline const Aws::String& GetDeletionTaskId() const { return m_deletionTaskId; }
     inline bool DeletionTaskIdHasBeenSet() const { return m_deletionTaskIdHasBeenSet; }
-
-    /**
-     * <p>The deletion task identifier. This identifier is returned by the
-     * <a>DeleteServiceLinkedRole</a> operation in the format
-     * <code>task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;</code>.</p>
-     */
-    inline void SetDeletionTaskId(const Aws::String& value) { m_deletionTaskIdHasBeenSet = true; m_deletionTaskId = value; }
-
-    /**
-     * <p>The deletion task identifier. This identifier is returned by the
-     * <a>DeleteServiceLinkedRole</a> operation in the format
-     * <code>task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;</code>.</p>
-     */
-    inline void SetDeletionTaskId(Aws::String&& value) { m_deletionTaskIdHasBeenSet = true; m_deletionTaskId = std::move(value); }
-
-    /**
-     * <p>The deletion task identifier. This identifier is returned by the
-     * <a>DeleteServiceLinkedRole</a> operation in the format
-     * <code>task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;</code>.</p>
-     */
-    inline void SetDeletionTaskId(const char* value) { m_deletionTaskIdHasBeenSet = true; m_deletionTaskId.assign(value); }
-
-    /**
-     * <p>The deletion task identifier. This identifier is returned by the
-     * <a>DeleteServiceLinkedRole</a> operation in the format
-     * <code>task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;</code>.</p>
-     */
-    inline GetServiceLinkedRoleDeletionStatusRequest& WithDeletionTaskId(const Aws::String& value) { SetDeletionTaskId(value); return *this;}
-
-    /**
-     * <p>The deletion task identifier. This identifier is returned by the
-     * <a>DeleteServiceLinkedRole</a> operation in the format
-     * <code>task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;</code>.</p>
-     */
-    inline GetServiceLinkedRoleDeletionStatusRequest& WithDeletionTaskId(Aws::String&& value) { SetDeletionTaskId(std::move(value)); return *this;}
-
-    /**
-     * <p>The deletion task identifier. This identifier is returned by the
-     * <a>DeleteServiceLinkedRole</a> operation in the format
-     * <code>task/aws-service-role/&lt;service-principal-name&gt;/&lt;role-name&gt;/&lt;task-uuid&gt;</code>.</p>
-     */
-    inline GetServiceLinkedRoleDeletionStatusRequest& WithDeletionTaskId(const char* value) { SetDeletionTaskId(value); return *this;}
-
+    template<typename DeletionTaskIdT = Aws::String>
+    void SetDeletionTaskId(DeletionTaskIdT&& value) { m_deletionTaskIdHasBeenSet = true; m_deletionTaskId = std::forward<DeletionTaskIdT>(value); }
+    template<typename DeletionTaskIdT = Aws::String>
+    GetServiceLinkedRoleDeletionStatusRequest& WithDeletionTaskId(DeletionTaskIdT&& value) { SetDeletionTaskId(std::forward<DeletionTaskIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_deletionTaskId;

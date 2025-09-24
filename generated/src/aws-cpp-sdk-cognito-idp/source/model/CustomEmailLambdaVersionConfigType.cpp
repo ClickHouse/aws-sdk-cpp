@@ -18,17 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-CustomEmailLambdaVersionConfigType::CustomEmailLambdaVersionConfigType() : 
-    m_lambdaVersion(CustomEmailSenderLambdaVersionType::NOT_SET),
-    m_lambdaVersionHasBeenSet(false),
-    m_lambdaArnHasBeenSet(false)
-{
-}
-
-CustomEmailLambdaVersionConfigType::CustomEmailLambdaVersionConfigType(JsonView jsonValue) : 
-    m_lambdaVersion(CustomEmailSenderLambdaVersionType::NOT_SET),
-    m_lambdaVersionHasBeenSet(false),
-    m_lambdaArnHasBeenSet(false)
+CustomEmailLambdaVersionConfigType::CustomEmailLambdaVersionConfigType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CustomEmailLambdaVersionConfigType& CustomEmailLambdaVersionConfigType::operator
   if(jsonValue.ValueExists("LambdaVersion"))
   {
     m_lambdaVersion = CustomEmailSenderLambdaVersionTypeMapper::GetCustomEmailSenderLambdaVersionTypeForName(jsonValue.GetString("LambdaVersion"));
-
     m_lambdaVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LambdaArn"))
   {
     m_lambdaArn = jsonValue.GetString("LambdaArn");
-
     m_lambdaArnHasBeenSet = true;
   }
-
   return *this;
 }
 

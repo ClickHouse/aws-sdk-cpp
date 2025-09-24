@@ -18,15 +18,7 @@ namespace drs
 namespace Model
 {
 
-LaunchActionsStatus::LaunchActionsStatus() : 
-    m_runsHasBeenSet(false),
-    m_ssmAgentDiscoveryDatetimeHasBeenSet(false)
-{
-}
-
-LaunchActionsStatus::LaunchActionsStatus(JsonView jsonValue) : 
-    m_runsHasBeenSet(false),
-    m_ssmAgentDiscoveryDatetimeHasBeenSet(false)
+LaunchActionsStatus::LaunchActionsStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ LaunchActionsStatus& LaunchActionsStatus::operator =(JsonView jsonValue)
     }
     m_runsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ssmAgentDiscoveryDatetime"))
   {
     m_ssmAgentDiscoveryDatetime = jsonValue.GetString("ssmAgentDiscoveryDatetime");
-
     m_ssmAgentDiscoveryDatetimeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -25,108 +25,43 @@ namespace Model
 
   /**
    * <p>The settings for assigning a custom Amazon EFS file system to a user profile
-   * or space for an Amazon SageMaker Domain.</p><p><h3>See Also:</h3>   <a
+   * or space for an Amazon SageMaker AI Domain.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/EFSFileSystemConfig">AWS
    * API Reference</a></p>
    */
   class EFSFileSystemConfig
   {
   public:
-    AWS_SAGEMAKER_API EFSFileSystemConfig();
+    AWS_SAGEMAKER_API EFSFileSystemConfig() = default;
     AWS_SAGEMAKER_API EFSFileSystemConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API EFSFileSystemConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of your Amazon EFS file system.</p>
      */
-    inline const Aws::String& GetFileSystemId() const{ return m_fileSystemId; }
-
-    /**
-     * <p>The ID of your Amazon EFS file system.</p>
-     */
+    inline const Aws::String& GetFileSystemId() const { return m_fileSystemId; }
     inline bool FileSystemIdHasBeenSet() const { return m_fileSystemIdHasBeenSet; }
+    template<typename FileSystemIdT = Aws::String>
+    void SetFileSystemId(FileSystemIdT&& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = std::forward<FileSystemIdT>(value); }
+    template<typename FileSystemIdT = Aws::String>
+    EFSFileSystemConfig& WithFileSystemId(FileSystemIdT&& value) { SetFileSystemId(std::forward<FileSystemIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of your Amazon EFS file system.</p>
-     */
-    inline void SetFileSystemId(const Aws::String& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = value; }
-
-    /**
-     * <p>The ID of your Amazon EFS file system.</p>
-     */
-    inline void SetFileSystemId(Aws::String&& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = std::move(value); }
-
-    /**
-     * <p>The ID of your Amazon EFS file system.</p>
-     */
-    inline void SetFileSystemId(const char* value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId.assign(value); }
-
-    /**
-     * <p>The ID of your Amazon EFS file system.</p>
-     */
-    inline EFSFileSystemConfig& WithFileSystemId(const Aws::String& value) { SetFileSystemId(value); return *this;}
-
-    /**
-     * <p>The ID of your Amazon EFS file system.</p>
-     */
-    inline EFSFileSystemConfig& WithFileSystemId(Aws::String&& value) { SetFileSystemId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of your Amazon EFS file system.</p>
-     */
-    inline EFSFileSystemConfig& WithFileSystemId(const char* value) { SetFileSystemId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The path to the file system directory that is accessible in Amazon SageMaker
-     * Studio. Permitted users can access only this directory and below.</p>
+     * AI Studio. Permitted users can access only this directory and below.</p>
      */
-    inline const Aws::String& GetFileSystemPath() const{ return m_fileSystemPath; }
-
-    /**
-     * <p>The path to the file system directory that is accessible in Amazon SageMaker
-     * Studio. Permitted users can access only this directory and below.</p>
-     */
+    inline const Aws::String& GetFileSystemPath() const { return m_fileSystemPath; }
     inline bool FileSystemPathHasBeenSet() const { return m_fileSystemPathHasBeenSet; }
-
-    /**
-     * <p>The path to the file system directory that is accessible in Amazon SageMaker
-     * Studio. Permitted users can access only this directory and below.</p>
-     */
-    inline void SetFileSystemPath(const Aws::String& value) { m_fileSystemPathHasBeenSet = true; m_fileSystemPath = value; }
-
-    /**
-     * <p>The path to the file system directory that is accessible in Amazon SageMaker
-     * Studio. Permitted users can access only this directory and below.</p>
-     */
-    inline void SetFileSystemPath(Aws::String&& value) { m_fileSystemPathHasBeenSet = true; m_fileSystemPath = std::move(value); }
-
-    /**
-     * <p>The path to the file system directory that is accessible in Amazon SageMaker
-     * Studio. Permitted users can access only this directory and below.</p>
-     */
-    inline void SetFileSystemPath(const char* value) { m_fileSystemPathHasBeenSet = true; m_fileSystemPath.assign(value); }
-
-    /**
-     * <p>The path to the file system directory that is accessible in Amazon SageMaker
-     * Studio. Permitted users can access only this directory and below.</p>
-     */
-    inline EFSFileSystemConfig& WithFileSystemPath(const Aws::String& value) { SetFileSystemPath(value); return *this;}
-
-    /**
-     * <p>The path to the file system directory that is accessible in Amazon SageMaker
-     * Studio. Permitted users can access only this directory and below.</p>
-     */
-    inline EFSFileSystemConfig& WithFileSystemPath(Aws::String&& value) { SetFileSystemPath(std::move(value)); return *this;}
-
-    /**
-     * <p>The path to the file system directory that is accessible in Amazon SageMaker
-     * Studio. Permitted users can access only this directory and below.</p>
-     */
-    inline EFSFileSystemConfig& WithFileSystemPath(const char* value) { SetFileSystemPath(value); return *this;}
-
+    template<typename FileSystemPathT = Aws::String>
+    void SetFileSystemPath(FileSystemPathT&& value) { m_fileSystemPathHasBeenSet = true; m_fileSystemPath = std::forward<FileSystemPathT>(value); }
+    template<typename FileSystemPathT = Aws::String>
+    EFSFileSystemConfig& WithFileSystemPath(FileSystemPathT&& value) { SetFileSystemPath(std::forward<FileSystemPathT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fileSystemId;

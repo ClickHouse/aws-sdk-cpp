@@ -18,15 +18,7 @@ namespace Lambda
 namespace Model
 {
 
-EFSMountTimeoutException::EFSMountTimeoutException() : 
-    m_typeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-EFSMountTimeoutException::EFSMountTimeoutException(JsonView jsonValue) : 
-    m_typeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+EFSMountTimeoutException::EFSMountTimeoutException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ EFSMountTimeoutException& EFSMountTimeoutException::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

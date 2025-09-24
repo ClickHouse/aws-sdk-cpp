@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CidrBlock::CidrBlock() : 
-    m_cidrBlockHasBeenSet(false)
-{
-}
-
-CidrBlock::CidrBlock(const XmlNode& xmlNode) : 
-    m_cidrBlockHasBeenSet(false)
+CidrBlock::CidrBlock(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

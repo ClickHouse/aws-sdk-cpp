@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-Tag::Tag() : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-Tag::Tag(const XmlNode& xmlNode) : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+Tag::Tag(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

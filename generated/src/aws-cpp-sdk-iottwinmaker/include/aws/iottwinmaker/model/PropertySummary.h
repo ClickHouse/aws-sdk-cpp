@@ -34,143 +34,59 @@ namespace Model
   class PropertySummary
   {
   public:
-    AWS_IOTTWINMAKER_API PropertySummary();
+    AWS_IOTTWINMAKER_API PropertySummary() = default;
     AWS_IOTTWINMAKER_API PropertySummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API PropertySummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>This is the schema for the property.</p>
      */
-    inline const PropertyDefinitionResponse& GetDefinition() const{ return m_definition; }
-
-    /**
-     * <p>This is the schema for the property.</p>
-     */
+    inline const PropertyDefinitionResponse& GetDefinition() const { return m_definition; }
     inline bool DefinitionHasBeenSet() const { return m_definitionHasBeenSet; }
+    template<typename DefinitionT = PropertyDefinitionResponse>
+    void SetDefinition(DefinitionT&& value) { m_definitionHasBeenSet = true; m_definition = std::forward<DefinitionT>(value); }
+    template<typename DefinitionT = PropertyDefinitionResponse>
+    PropertySummary& WithDefinition(DefinitionT&& value) { SetDefinition(std::forward<DefinitionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This is the schema for the property.</p>
-     */
-    inline void SetDefinition(const PropertyDefinitionResponse& value) { m_definitionHasBeenSet = true; m_definition = value; }
-
-    /**
-     * <p>This is the schema for the property.</p>
-     */
-    inline void SetDefinition(PropertyDefinitionResponse&& value) { m_definitionHasBeenSet = true; m_definition = std::move(value); }
-
-    /**
-     * <p>This is the schema for the property.</p>
-     */
-    inline PropertySummary& WithDefinition(const PropertyDefinitionResponse& value) { SetDefinition(value); return *this;}
-
-    /**
-     * <p>This is the schema for the property.</p>
-     */
-    inline PropertySummary& WithDefinition(PropertyDefinitionResponse&& value) { SetDefinition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>This is the name of the property.</p>
      */
-    inline const Aws::String& GetPropertyName() const{ return m_propertyName; }
-
-    /**
-     * <p>This is the name of the property.</p>
-     */
+    inline const Aws::String& GetPropertyName() const { return m_propertyName; }
     inline bool PropertyNameHasBeenSet() const { return m_propertyNameHasBeenSet; }
+    template<typename PropertyNameT = Aws::String>
+    void SetPropertyName(PropertyNameT&& value) { m_propertyNameHasBeenSet = true; m_propertyName = std::forward<PropertyNameT>(value); }
+    template<typename PropertyNameT = Aws::String>
+    PropertySummary& WithPropertyName(PropertyNameT&& value) { SetPropertyName(std::forward<PropertyNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This is the name of the property.</p>
-     */
-    inline void SetPropertyName(const Aws::String& value) { m_propertyNameHasBeenSet = true; m_propertyName = value; }
-
-    /**
-     * <p>This is the name of the property.</p>
-     */
-    inline void SetPropertyName(Aws::String&& value) { m_propertyNameHasBeenSet = true; m_propertyName = std::move(value); }
-
-    /**
-     * <p>This is the name of the property.</p>
-     */
-    inline void SetPropertyName(const char* value) { m_propertyNameHasBeenSet = true; m_propertyName.assign(value); }
-
-    /**
-     * <p>This is the name of the property.</p>
-     */
-    inline PropertySummary& WithPropertyName(const Aws::String& value) { SetPropertyName(value); return *this;}
-
-    /**
-     * <p>This is the name of the property.</p>
-     */
-    inline PropertySummary& WithPropertyName(Aws::String&& value) { SetPropertyName(std::move(value)); return *this;}
-
-    /**
-     * <p>This is the name of the property.</p>
-     */
-    inline PropertySummary& WithPropertyName(const char* value) { SetPropertyName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>This is the value for the property.</p>
      */
-    inline const DataValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>This is the value for the property.</p>
-     */
+    inline const DataValue& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = DataValue>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = DataValue>
+    PropertySummary& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This is the value for the property.</p>
-     */
-    inline void SetValue(const DataValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>This is the value for the property.</p>
-     */
-    inline void SetValue(DataValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>This is the value for the property.</p>
-     */
-    inline PropertySummary& WithValue(const DataValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>This is the value for the property.</p>
-     */
-    inline PropertySummary& WithValue(DataValue&& value) { SetValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>This flag notes whether all values of a list or map type property are
      * returned in the API response. The maximum number of values per property returned
      * is 50.</p>
      */
-    inline bool GetAreAllPropertyValuesReturned() const{ return m_areAllPropertyValuesReturned; }
-
-    /**
-     * <p>This flag notes whether all values of a list or map type property are
-     * returned in the API response. The maximum number of values per property returned
-     * is 50.</p>
-     */
+    inline bool GetAreAllPropertyValuesReturned() const { return m_areAllPropertyValuesReturned; }
     inline bool AreAllPropertyValuesReturnedHasBeenSet() const { return m_areAllPropertyValuesReturnedHasBeenSet; }
-
-    /**
-     * <p>This flag notes whether all values of a list or map type property are
-     * returned in the API response. The maximum number of values per property returned
-     * is 50.</p>
-     */
     inline void SetAreAllPropertyValuesReturned(bool value) { m_areAllPropertyValuesReturnedHasBeenSet = true; m_areAllPropertyValuesReturned = value; }
-
-    /**
-     * <p>This flag notes whether all values of a list or map type property are
-     * returned in the API response. The maximum number of values per property returned
-     * is 50.</p>
-     */
     inline PropertySummary& WithAreAllPropertyValuesReturned(bool value) { SetAreAllPropertyValuesReturned(value); return *this;}
-
+    ///@}
   private:
 
     PropertyDefinitionResponse m_definition;
@@ -182,7 +98,7 @@ namespace Model
     DataValue m_value;
     bool m_valueHasBeenSet = false;
 
-    bool m_areAllPropertyValuesReturned;
+    bool m_areAllPropertyValuesReturned{false};
     bool m_areAllPropertyValuesReturnedHasBeenSet = false;
   };
 

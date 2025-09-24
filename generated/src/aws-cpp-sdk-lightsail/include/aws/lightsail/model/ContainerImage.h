@@ -33,124 +33,47 @@ namespace Model
   class ContainerImage
   {
   public:
-    AWS_LIGHTSAIL_API ContainerImage();
+    AWS_LIGHTSAIL_API ContainerImage() = default;
     AWS_LIGHTSAIL_API ContainerImage(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API ContainerImage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the container image.</p>
      */
-    inline const Aws::String& GetImage() const{ return m_image; }
-
-    /**
-     * <p>The name of the container image.</p>
-     */
+    inline const Aws::String& GetImage() const { return m_image; }
     inline bool ImageHasBeenSet() const { return m_imageHasBeenSet; }
+    template<typename ImageT = Aws::String>
+    void SetImage(ImageT&& value) { m_imageHasBeenSet = true; m_image = std::forward<ImageT>(value); }
+    template<typename ImageT = Aws::String>
+    ContainerImage& WithImage(ImageT&& value) { SetImage(std::forward<ImageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the container image.</p>
-     */
-    inline void SetImage(const Aws::String& value) { m_imageHasBeenSet = true; m_image = value; }
-
-    /**
-     * <p>The name of the container image.</p>
-     */
-    inline void SetImage(Aws::String&& value) { m_imageHasBeenSet = true; m_image = std::move(value); }
-
-    /**
-     * <p>The name of the container image.</p>
-     */
-    inline void SetImage(const char* value) { m_imageHasBeenSet = true; m_image.assign(value); }
-
-    /**
-     * <p>The name of the container image.</p>
-     */
-    inline ContainerImage& WithImage(const Aws::String& value) { SetImage(value); return *this;}
-
-    /**
-     * <p>The name of the container image.</p>
-     */
-    inline ContainerImage& WithImage(Aws::String&& value) { SetImage(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the container image.</p>
-     */
-    inline ContainerImage& WithImage(const char* value) { SetImage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The digest of the container image.</p>
      */
-    inline const Aws::String& GetDigest() const{ return m_digest; }
-
-    /**
-     * <p>The digest of the container image.</p>
-     */
+    inline const Aws::String& GetDigest() const { return m_digest; }
     inline bool DigestHasBeenSet() const { return m_digestHasBeenSet; }
+    template<typename DigestT = Aws::String>
+    void SetDigest(DigestT&& value) { m_digestHasBeenSet = true; m_digest = std::forward<DigestT>(value); }
+    template<typename DigestT = Aws::String>
+    ContainerImage& WithDigest(DigestT&& value) { SetDigest(std::forward<DigestT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The digest of the container image.</p>
-     */
-    inline void SetDigest(const Aws::String& value) { m_digestHasBeenSet = true; m_digest = value; }
-
-    /**
-     * <p>The digest of the container image.</p>
-     */
-    inline void SetDigest(Aws::String&& value) { m_digestHasBeenSet = true; m_digest = std::move(value); }
-
-    /**
-     * <p>The digest of the container image.</p>
-     */
-    inline void SetDigest(const char* value) { m_digestHasBeenSet = true; m_digest.assign(value); }
-
-    /**
-     * <p>The digest of the container image.</p>
-     */
-    inline ContainerImage& WithDigest(const Aws::String& value) { SetDigest(value); return *this;}
-
-    /**
-     * <p>The digest of the container image.</p>
-     */
-    inline ContainerImage& WithDigest(Aws::String&& value) { SetDigest(std::move(value)); return *this;}
-
-    /**
-     * <p>The digest of the container image.</p>
-     */
-    inline ContainerImage& WithDigest(const char* value) { SetDigest(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the container image was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The timestamp when the container image was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
-
-    /**
-     * <p>The timestamp when the container image was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The timestamp when the container image was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp when the container image was created.</p>
-     */
-    inline ContainerImage& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp when the container image was created.</p>
-     */
-    inline ContainerImage& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    ContainerImage& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_image;
@@ -159,7 +82,7 @@ namespace Model
     Aws::String m_digest;
     bool m_digestHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
   };
 

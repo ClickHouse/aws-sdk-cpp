@@ -18,17 +18,7 @@ namespace InternetMonitor
 namespace Model
 {
 
-Network::Network() : 
-    m_aSNameHasBeenSet(false),
-    m_aSNumber(0),
-    m_aSNumberHasBeenSet(false)
-{
-}
-
-Network::Network(JsonView jsonValue) : 
-    m_aSNameHasBeenSet(false),
-    m_aSNumber(0),
-    m_aSNumberHasBeenSet(false)
+Network::Network(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Network& Network::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ASName"))
   {
     m_aSName = jsonValue.GetString("ASName");
-
     m_aSNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ASNumber"))
   {
     m_aSNumber = jsonValue.GetInt64("ASNumber");
-
     m_aSNumberHasBeenSet = true;
   }
-
   return *this;
 }
 

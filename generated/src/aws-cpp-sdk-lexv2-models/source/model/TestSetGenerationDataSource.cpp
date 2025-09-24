@@ -18,13 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-TestSetGenerationDataSource::TestSetGenerationDataSource() : 
-    m_conversationLogsDataSourceHasBeenSet(false)
-{
-}
-
-TestSetGenerationDataSource::TestSetGenerationDataSource(JsonView jsonValue) : 
-    m_conversationLogsDataSourceHasBeenSet(false)
+TestSetGenerationDataSource::TestSetGenerationDataSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ TestSetGenerationDataSource& TestSetGenerationDataSource::operator =(JsonView js
   if(jsonValue.ValueExists("conversationLogsDataSource"))
   {
     m_conversationLogsDataSource = jsonValue.GetObject("conversationLogsDataSource");
-
     m_conversationLogsDataSourceHasBeenSet = true;
   }
-
   return *this;
 }
 

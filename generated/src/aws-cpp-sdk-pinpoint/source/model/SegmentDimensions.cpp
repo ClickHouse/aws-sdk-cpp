@@ -18,23 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-SegmentDimensions::SegmentDimensions() : 
-    m_attributesHasBeenSet(false),
-    m_behaviorHasBeenSet(false),
-    m_demographicHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_userAttributesHasBeenSet(false)
-{
-}
-
-SegmentDimensions::SegmentDimensions(JsonView jsonValue) : 
-    m_attributesHasBeenSet(false),
-    m_behaviorHasBeenSet(false),
-    m_demographicHasBeenSet(false),
-    m_locationHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_userAttributesHasBeenSet(false)
+SegmentDimensions::SegmentDimensions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,28 +34,21 @@ SegmentDimensions& SegmentDimensions::operator =(JsonView jsonValue)
     }
     m_attributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Behavior"))
   {
     m_behavior = jsonValue.GetObject("Behavior");
-
     m_behaviorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Demographic"))
   {
     m_demographic = jsonValue.GetObject("Demographic");
-
     m_demographicHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Location"))
   {
     m_location = jsonValue.GetObject("Location");
-
     m_locationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Metrics"))
   {
     Aws::Map<Aws::String, JsonView> metricsJsonMap = jsonValue.GetObject("Metrics").GetAllObjects();
@@ -81,7 +58,6 @@ SegmentDimensions& SegmentDimensions::operator =(JsonView jsonValue)
     }
     m_metricsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UserAttributes"))
   {
     Aws::Map<Aws::String, JsonView> userAttributesJsonMap = jsonValue.GetObject("UserAttributes").GetAllObjects();
@@ -91,7 +67,6 @@ SegmentDimensions& SegmentDimensions::operator =(JsonView jsonValue)
     }
     m_userAttributesHasBeenSet = true;
   }
-
   return *this;
 }
 

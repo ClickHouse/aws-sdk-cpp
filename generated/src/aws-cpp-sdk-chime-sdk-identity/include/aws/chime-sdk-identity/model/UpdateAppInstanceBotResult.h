@@ -27,73 +27,37 @@ namespace Model
   class UpdateAppInstanceBotResult
   {
   public:
-    AWS_CHIMESDKIDENTITY_API UpdateAppInstanceBotResult();
+    AWS_CHIMESDKIDENTITY_API UpdateAppInstanceBotResult() = default;
     AWS_CHIMESDKIDENTITY_API UpdateAppInstanceBotResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CHIMESDKIDENTITY_API UpdateAppInstanceBotResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the <code>AppInstanceBot</code>.</p>
      */
-    inline const Aws::String& GetAppInstanceBotArn() const{ return m_appInstanceBotArn; }
+    inline const Aws::String& GetAppInstanceBotArn() const { return m_appInstanceBotArn; }
+    template<typename AppInstanceBotArnT = Aws::String>
+    void SetAppInstanceBotArn(AppInstanceBotArnT&& value) { m_appInstanceBotArnHasBeenSet = true; m_appInstanceBotArn = std::forward<AppInstanceBotArnT>(value); }
+    template<typename AppInstanceBotArnT = Aws::String>
+    UpdateAppInstanceBotResult& WithAppInstanceBotArn(AppInstanceBotArnT&& value) { SetAppInstanceBotArn(std::forward<AppInstanceBotArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the <code>AppInstanceBot</code>.</p>
-     */
-    inline void SetAppInstanceBotArn(const Aws::String& value) { m_appInstanceBotArn = value; }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceBot</code>.</p>
-     */
-    inline void SetAppInstanceBotArn(Aws::String&& value) { m_appInstanceBotArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceBot</code>.</p>
-     */
-    inline void SetAppInstanceBotArn(const char* value) { m_appInstanceBotArn.assign(value); }
-
-    /**
-     * <p>The ARN of the <code>AppInstanceBot</code>.</p>
-     */
-    inline UpdateAppInstanceBotResult& WithAppInstanceBotArn(const Aws::String& value) { SetAppInstanceBotArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceBot</code>.</p>
-     */
-    inline UpdateAppInstanceBotResult& WithAppInstanceBotArn(Aws::String&& value) { SetAppInstanceBotArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the <code>AppInstanceBot</code>.</p>
-     */
-    inline UpdateAppInstanceBotResult& WithAppInstanceBotArn(const char* value) { SetAppInstanceBotArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateAppInstanceBotResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateAppInstanceBotResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateAppInstanceBotResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateAppInstanceBotResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appInstanceBotArn;
+    bool m_appInstanceBotArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

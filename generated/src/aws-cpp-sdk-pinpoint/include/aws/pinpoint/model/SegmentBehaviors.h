@@ -33,48 +33,24 @@ namespace Model
   class SegmentBehaviors
   {
   public:
-    AWS_PINPOINT_API SegmentBehaviors();
+    AWS_PINPOINT_API SegmentBehaviors() = default;
     AWS_PINPOINT_API SegmentBehaviors(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API SegmentBehaviors& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The dimension settings that are based on how recently an endpoint was
      * active.</p>
      */
-    inline const RecencyDimension& GetRecency() const{ return m_recency; }
-
-    /**
-     * <p>The dimension settings that are based on how recently an endpoint was
-     * active.</p>
-     */
+    inline const RecencyDimension& GetRecency() const { return m_recency; }
     inline bool RecencyHasBeenSet() const { return m_recencyHasBeenSet; }
-
-    /**
-     * <p>The dimension settings that are based on how recently an endpoint was
-     * active.</p>
-     */
-    inline void SetRecency(const RecencyDimension& value) { m_recencyHasBeenSet = true; m_recency = value; }
-
-    /**
-     * <p>The dimension settings that are based on how recently an endpoint was
-     * active.</p>
-     */
-    inline void SetRecency(RecencyDimension&& value) { m_recencyHasBeenSet = true; m_recency = std::move(value); }
-
-    /**
-     * <p>The dimension settings that are based on how recently an endpoint was
-     * active.</p>
-     */
-    inline SegmentBehaviors& WithRecency(const RecencyDimension& value) { SetRecency(value); return *this;}
-
-    /**
-     * <p>The dimension settings that are based on how recently an endpoint was
-     * active.</p>
-     */
-    inline SegmentBehaviors& WithRecency(RecencyDimension&& value) { SetRecency(std::move(value)); return *this;}
-
+    template<typename RecencyT = RecencyDimension>
+    void SetRecency(RecencyT&& value) { m_recencyHasBeenSet = true; m_recency = std::forward<RecencyT>(value); }
+    template<typename RecencyT = RecencyDimension>
+    SegmentBehaviors& WithRecency(RecencyT&& value) { SetRecency(std::forward<RecencyT>(value)); return *this;}
+    ///@}
   private:
 
     RecencyDimension m_recency;

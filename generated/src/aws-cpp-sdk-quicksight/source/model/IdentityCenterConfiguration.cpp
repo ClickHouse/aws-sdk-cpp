@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-IdentityCenterConfiguration::IdentityCenterConfiguration() : 
-    m_enableIdentityPropagation(false),
-    m_enableIdentityPropagationHasBeenSet(false)
-{
-}
-
-IdentityCenterConfiguration::IdentityCenterConfiguration(JsonView jsonValue) : 
-    m_enableIdentityPropagation(false),
-    m_enableIdentityPropagationHasBeenSet(false)
+IdentityCenterConfiguration::IdentityCenterConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ IdentityCenterConfiguration& IdentityCenterConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("EnableIdentityPropagation"))
   {
     m_enableIdentityPropagation = jsonValue.GetBool("EnableIdentityPropagation");
-
     m_enableIdentityPropagationHasBeenSet = true;
   }
-
   return *this;
 }
 

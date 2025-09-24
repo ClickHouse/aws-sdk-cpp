@@ -18,21 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-SendUsersMessageRequest::SendUsersMessageRequest() : 
-    m_contextHasBeenSet(false),
-    m_messageConfigurationHasBeenSet(false),
-    m_templateConfigurationHasBeenSet(false),
-    m_traceIdHasBeenSet(false),
-    m_usersHasBeenSet(false)
-{
-}
-
-SendUsersMessageRequest::SendUsersMessageRequest(JsonView jsonValue) : 
-    m_contextHasBeenSet(false),
-    m_messageConfigurationHasBeenSet(false),
-    m_templateConfigurationHasBeenSet(false),
-    m_traceIdHasBeenSet(false),
-    m_usersHasBeenSet(false)
+SendUsersMessageRequest::SendUsersMessageRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,28 +34,21 @@ SendUsersMessageRequest& SendUsersMessageRequest::operator =(JsonView jsonValue)
     }
     m_contextHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MessageConfiguration"))
   {
     m_messageConfiguration = jsonValue.GetObject("MessageConfiguration");
-
     m_messageConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TemplateConfiguration"))
   {
     m_templateConfiguration = jsonValue.GetObject("TemplateConfiguration");
-
     m_templateConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TraceId"))
   {
     m_traceId = jsonValue.GetString("TraceId");
-
     m_traceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Users"))
   {
     Aws::Map<Aws::String, JsonView> usersJsonMap = jsonValue.GetObject("Users").GetAllObjects();
@@ -79,7 +58,6 @@ SendUsersMessageRequest& SendUsersMessageRequest::operator =(JsonView jsonValue)
     }
     m_usersHasBeenSet = true;
   }
-
   return *this;
 }
 

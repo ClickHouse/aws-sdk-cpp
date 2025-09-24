@@ -18,15 +18,7 @@ namespace SWF
 namespace Model
 {
 
-CloseStatusFilter::CloseStatusFilter() : 
-    m_status(CloseStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-CloseStatusFilter::CloseStatusFilter(JsonView jsonValue) : 
-    m_status(CloseStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+CloseStatusFilter::CloseStatusFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CloseStatusFilter& CloseStatusFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("status"))
   {
     m_status = CloseStatusMapper::GetCloseStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

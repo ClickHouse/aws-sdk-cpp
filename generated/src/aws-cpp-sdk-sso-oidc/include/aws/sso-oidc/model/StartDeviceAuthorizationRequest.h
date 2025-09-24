@@ -21,7 +21,7 @@ namespace Model
   class StartDeviceAuthorizationRequest : public SSOOIDCRequest
   {
   public:
-    AWS_SSOOIDC_API StartDeviceAuthorizationRequest();
+    AWS_SSOOIDC_API StartDeviceAuthorizationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,112 +32,34 @@ namespace Model
     AWS_SSOOIDC_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier string for the client that is registered with IAM
      * Identity Center. This value should come from the persisted result of the
      * <a>RegisterClient</a> API operation.</p>
      */
-    inline const Aws::String& GetClientId() const{ return m_clientId; }
-
-    /**
-     * <p>The unique identifier string for the client that is registered with IAM
-     * Identity Center. This value should come from the persisted result of the
-     * <a>RegisterClient</a> API operation.</p>
-     */
+    inline const Aws::String& GetClientId() const { return m_clientId; }
     inline bool ClientIdHasBeenSet() const { return m_clientIdHasBeenSet; }
+    template<typename ClientIdT = Aws::String>
+    void SetClientId(ClientIdT&& value) { m_clientIdHasBeenSet = true; m_clientId = std::forward<ClientIdT>(value); }
+    template<typename ClientIdT = Aws::String>
+    StartDeviceAuthorizationRequest& WithClientId(ClientIdT&& value) { SetClientId(std::forward<ClientIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier string for the client that is registered with IAM
-     * Identity Center. This value should come from the persisted result of the
-     * <a>RegisterClient</a> API operation.</p>
-     */
-    inline void SetClientId(const Aws::String& value) { m_clientIdHasBeenSet = true; m_clientId = value; }
-
-    /**
-     * <p>The unique identifier string for the client that is registered with IAM
-     * Identity Center. This value should come from the persisted result of the
-     * <a>RegisterClient</a> API operation.</p>
-     */
-    inline void SetClientId(Aws::String&& value) { m_clientIdHasBeenSet = true; m_clientId = std::move(value); }
-
-    /**
-     * <p>The unique identifier string for the client that is registered with IAM
-     * Identity Center. This value should come from the persisted result of the
-     * <a>RegisterClient</a> API operation.</p>
-     */
-    inline void SetClientId(const char* value) { m_clientIdHasBeenSet = true; m_clientId.assign(value); }
-
-    /**
-     * <p>The unique identifier string for the client that is registered with IAM
-     * Identity Center. This value should come from the persisted result of the
-     * <a>RegisterClient</a> API operation.</p>
-     */
-    inline StartDeviceAuthorizationRequest& WithClientId(const Aws::String& value) { SetClientId(value); return *this;}
-
-    /**
-     * <p>The unique identifier string for the client that is registered with IAM
-     * Identity Center. This value should come from the persisted result of the
-     * <a>RegisterClient</a> API operation.</p>
-     */
-    inline StartDeviceAuthorizationRequest& WithClientId(Aws::String&& value) { SetClientId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier string for the client that is registered with IAM
-     * Identity Center. This value should come from the persisted result of the
-     * <a>RegisterClient</a> API operation.</p>
-     */
-    inline StartDeviceAuthorizationRequest& WithClientId(const char* value) { SetClientId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A secret string that is generated for the client. This value should come from
      * the persisted result of the <a>RegisterClient</a> API operation.</p>
      */
-    inline const Aws::String& GetClientSecret() const{ return m_clientSecret; }
-
-    /**
-     * <p>A secret string that is generated for the client. This value should come from
-     * the persisted result of the <a>RegisterClient</a> API operation.</p>
-     */
+    inline const Aws::String& GetClientSecret() const { return m_clientSecret; }
     inline bool ClientSecretHasBeenSet() const { return m_clientSecretHasBeenSet; }
+    template<typename ClientSecretT = Aws::String>
+    void SetClientSecret(ClientSecretT&& value) { m_clientSecretHasBeenSet = true; m_clientSecret = std::forward<ClientSecretT>(value); }
+    template<typename ClientSecretT = Aws::String>
+    StartDeviceAuthorizationRequest& WithClientSecret(ClientSecretT&& value) { SetClientSecret(std::forward<ClientSecretT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A secret string that is generated for the client. This value should come from
-     * the persisted result of the <a>RegisterClient</a> API operation.</p>
-     */
-    inline void SetClientSecret(const Aws::String& value) { m_clientSecretHasBeenSet = true; m_clientSecret = value; }
-
-    /**
-     * <p>A secret string that is generated for the client. This value should come from
-     * the persisted result of the <a>RegisterClient</a> API operation.</p>
-     */
-    inline void SetClientSecret(Aws::String&& value) { m_clientSecretHasBeenSet = true; m_clientSecret = std::move(value); }
-
-    /**
-     * <p>A secret string that is generated for the client. This value should come from
-     * the persisted result of the <a>RegisterClient</a> API operation.</p>
-     */
-    inline void SetClientSecret(const char* value) { m_clientSecretHasBeenSet = true; m_clientSecret.assign(value); }
-
-    /**
-     * <p>A secret string that is generated for the client. This value should come from
-     * the persisted result of the <a>RegisterClient</a> API operation.</p>
-     */
-    inline StartDeviceAuthorizationRequest& WithClientSecret(const Aws::String& value) { SetClientSecret(value); return *this;}
-
-    /**
-     * <p>A secret string that is generated for the client. This value should come from
-     * the persisted result of the <a>RegisterClient</a> API operation.</p>
-     */
-    inline StartDeviceAuthorizationRequest& WithClientSecret(Aws::String&& value) { SetClientSecret(std::move(value)); return *this;}
-
-    /**
-     * <p>A secret string that is generated for the client. This value should come from
-     * the persisted result of the <a>RegisterClient</a> API operation.</p>
-     */
-    inline StartDeviceAuthorizationRequest& WithClientSecret(const char* value) { SetClientSecret(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL for the Amazon Web Services access portal. For more information, see
      * <a
@@ -145,71 +67,13 @@ namespace Model
      * the Amazon Web Services access portal</a> in the <i>IAM Identity Center User
      * Guide</i>.</p>
      */
-    inline const Aws::String& GetStartUrl() const{ return m_startUrl; }
-
-    /**
-     * <p>The URL for the Amazon Web Services access portal. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html">Using
-     * the Amazon Web Services access portal</a> in the <i>IAM Identity Center User
-     * Guide</i>.</p>
-     */
+    inline const Aws::String& GetStartUrl() const { return m_startUrl; }
     inline bool StartUrlHasBeenSet() const { return m_startUrlHasBeenSet; }
-
-    /**
-     * <p>The URL for the Amazon Web Services access portal. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html">Using
-     * the Amazon Web Services access portal</a> in the <i>IAM Identity Center User
-     * Guide</i>.</p>
-     */
-    inline void SetStartUrl(const Aws::String& value) { m_startUrlHasBeenSet = true; m_startUrl = value; }
-
-    /**
-     * <p>The URL for the Amazon Web Services access portal. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html">Using
-     * the Amazon Web Services access portal</a> in the <i>IAM Identity Center User
-     * Guide</i>.</p>
-     */
-    inline void SetStartUrl(Aws::String&& value) { m_startUrlHasBeenSet = true; m_startUrl = std::move(value); }
-
-    /**
-     * <p>The URL for the Amazon Web Services access portal. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html">Using
-     * the Amazon Web Services access portal</a> in the <i>IAM Identity Center User
-     * Guide</i>.</p>
-     */
-    inline void SetStartUrl(const char* value) { m_startUrlHasBeenSet = true; m_startUrl.assign(value); }
-
-    /**
-     * <p>The URL for the Amazon Web Services access portal. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html">Using
-     * the Amazon Web Services access portal</a> in the <i>IAM Identity Center User
-     * Guide</i>.</p>
-     */
-    inline StartDeviceAuthorizationRequest& WithStartUrl(const Aws::String& value) { SetStartUrl(value); return *this;}
-
-    /**
-     * <p>The URL for the Amazon Web Services access portal. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html">Using
-     * the Amazon Web Services access portal</a> in the <i>IAM Identity Center User
-     * Guide</i>.</p>
-     */
-    inline StartDeviceAuthorizationRequest& WithStartUrl(Aws::String&& value) { SetStartUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL for the Amazon Web Services access portal. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/singlesignon/latest/userguide/using-the-portal.html">Using
-     * the Amazon Web Services access portal</a> in the <i>IAM Identity Center User
-     * Guide</i>.</p>
-     */
-    inline StartDeviceAuthorizationRequest& WithStartUrl(const char* value) { SetStartUrl(value); return *this;}
-
+    template<typename StartUrlT = Aws::String>
+    void SetStartUrl(StartUrlT&& value) { m_startUrlHasBeenSet = true; m_startUrl = std::forward<StartUrlT>(value); }
+    template<typename StartUrlT = Aws::String>
+    StartDeviceAuthorizationRequest& WithStartUrl(StartUrlT&& value) { SetStartUrl(std::forward<StartUrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clientId;

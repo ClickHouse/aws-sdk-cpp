@@ -8,6 +8,8 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/kinesisanalyticsv2/model/SnapshotStatus.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/kinesisanalyticsv2/model/RuntimeEnvironment.h>
+#include <aws/kinesisanalyticsv2/model/ApplicationEncryptionConfigurationDescription.h>
 #include <utility>
 
 namespace Aws
@@ -34,148 +36,97 @@ namespace Model
   class SnapshotDetails
   {
   public:
-    AWS_KINESISANALYTICSV2_API SnapshotDetails();
+    AWS_KINESISANALYTICSV2_API SnapshotDetails() = default;
     AWS_KINESISANALYTICSV2_API SnapshotDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API SnapshotDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier for the application snapshot.</p>
      */
-    inline const Aws::String& GetSnapshotName() const{ return m_snapshotName; }
-
-    /**
-     * <p>The identifier for the application snapshot.</p>
-     */
+    inline const Aws::String& GetSnapshotName() const { return m_snapshotName; }
     inline bool SnapshotNameHasBeenSet() const { return m_snapshotNameHasBeenSet; }
+    template<typename SnapshotNameT = Aws::String>
+    void SetSnapshotName(SnapshotNameT&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::forward<SnapshotNameT>(value); }
+    template<typename SnapshotNameT = Aws::String>
+    SnapshotDetails& WithSnapshotName(SnapshotNameT&& value) { SetSnapshotName(std::forward<SnapshotNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the application snapshot.</p>
-     */
-    inline void SetSnapshotName(const Aws::String& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = value; }
-
-    /**
-     * <p>The identifier for the application snapshot.</p>
-     */
-    inline void SetSnapshotName(Aws::String&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::move(value); }
-
-    /**
-     * <p>The identifier for the application snapshot.</p>
-     */
-    inline void SetSnapshotName(const char* value) { m_snapshotNameHasBeenSet = true; m_snapshotName.assign(value); }
-
-    /**
-     * <p>The identifier for the application snapshot.</p>
-     */
-    inline SnapshotDetails& WithSnapshotName(const Aws::String& value) { SetSnapshotName(value); return *this;}
-
-    /**
-     * <p>The identifier for the application snapshot.</p>
-     */
-    inline SnapshotDetails& WithSnapshotName(Aws::String&& value) { SetSnapshotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the application snapshot.</p>
-     */
-    inline SnapshotDetails& WithSnapshotName(const char* value) { SetSnapshotName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the application snapshot.</p>
      */
-    inline const SnapshotStatus& GetSnapshotStatus() const{ return m_snapshotStatus; }
-
-    /**
-     * <p>The status of the application snapshot.</p>
-     */
+    inline SnapshotStatus GetSnapshotStatus() const { return m_snapshotStatus; }
     inline bool SnapshotStatusHasBeenSet() const { return m_snapshotStatusHasBeenSet; }
+    inline void SetSnapshotStatus(SnapshotStatus value) { m_snapshotStatusHasBeenSet = true; m_snapshotStatus = value; }
+    inline SnapshotDetails& WithSnapshotStatus(SnapshotStatus value) { SetSnapshotStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the application snapshot.</p>
-     */
-    inline void SetSnapshotStatus(const SnapshotStatus& value) { m_snapshotStatusHasBeenSet = true; m_snapshotStatus = value; }
-
-    /**
-     * <p>The status of the application snapshot.</p>
-     */
-    inline void SetSnapshotStatus(SnapshotStatus&& value) { m_snapshotStatusHasBeenSet = true; m_snapshotStatus = std::move(value); }
-
-    /**
-     * <p>The status of the application snapshot.</p>
-     */
-    inline SnapshotDetails& WithSnapshotStatus(const SnapshotStatus& value) { SetSnapshotStatus(value); return *this;}
-
-    /**
-     * <p>The status of the application snapshot.</p>
-     */
-    inline SnapshotDetails& WithSnapshotStatus(SnapshotStatus&& value) { SetSnapshotStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current application version ID when the snapshot was created.</p>
      */
-    inline long long GetApplicationVersionId() const{ return m_applicationVersionId; }
-
-    /**
-     * <p>The current application version ID when the snapshot was created.</p>
-     */
+    inline long long GetApplicationVersionId() const { return m_applicationVersionId; }
     inline bool ApplicationVersionIdHasBeenSet() const { return m_applicationVersionIdHasBeenSet; }
-
-    /**
-     * <p>The current application version ID when the snapshot was created.</p>
-     */
     inline void SetApplicationVersionId(long long value) { m_applicationVersionIdHasBeenSet = true; m_applicationVersionId = value; }
-
-    /**
-     * <p>The current application version ID when the snapshot was created.</p>
-     */
     inline SnapshotDetails& WithApplicationVersionId(long long value) { SetApplicationVersionId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The timestamp of the application snapshot.</p>
      */
-    inline const Aws::Utils::DateTime& GetSnapshotCreationTimestamp() const{ return m_snapshotCreationTimestamp; }
-
-    /**
-     * <p>The timestamp of the application snapshot.</p>
-     */
+    inline const Aws::Utils::DateTime& GetSnapshotCreationTimestamp() const { return m_snapshotCreationTimestamp; }
     inline bool SnapshotCreationTimestampHasBeenSet() const { return m_snapshotCreationTimestampHasBeenSet; }
+    template<typename SnapshotCreationTimestampT = Aws::Utils::DateTime>
+    void SetSnapshotCreationTimestamp(SnapshotCreationTimestampT&& value) { m_snapshotCreationTimestampHasBeenSet = true; m_snapshotCreationTimestamp = std::forward<SnapshotCreationTimestampT>(value); }
+    template<typename SnapshotCreationTimestampT = Aws::Utils::DateTime>
+    SnapshotDetails& WithSnapshotCreationTimestamp(SnapshotCreationTimestampT&& value) { SetSnapshotCreationTimestamp(std::forward<SnapshotCreationTimestampT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp of the application snapshot.</p>
+     * <p>The Flink Runtime for the application snapshot.</p>
      */
-    inline void SetSnapshotCreationTimestamp(const Aws::Utils::DateTime& value) { m_snapshotCreationTimestampHasBeenSet = true; m_snapshotCreationTimestamp = value; }
+    inline RuntimeEnvironment GetRuntimeEnvironment() const { return m_runtimeEnvironment; }
+    inline bool RuntimeEnvironmentHasBeenSet() const { return m_runtimeEnvironmentHasBeenSet; }
+    inline void SetRuntimeEnvironment(RuntimeEnvironment value) { m_runtimeEnvironmentHasBeenSet = true; m_runtimeEnvironment = value; }
+    inline SnapshotDetails& WithRuntimeEnvironment(RuntimeEnvironment value) { SetRuntimeEnvironment(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp of the application snapshot.</p>
+     * <p>Specifies the encryption settings of data at rest for the application
+     * snapshot.</p>
      */
-    inline void SetSnapshotCreationTimestamp(Aws::Utils::DateTime&& value) { m_snapshotCreationTimestampHasBeenSet = true; m_snapshotCreationTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp of the application snapshot.</p>
-     */
-    inline SnapshotDetails& WithSnapshotCreationTimestamp(const Aws::Utils::DateTime& value) { SetSnapshotCreationTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp of the application snapshot.</p>
-     */
-    inline SnapshotDetails& WithSnapshotCreationTimestamp(Aws::Utils::DateTime&& value) { SetSnapshotCreationTimestamp(std::move(value)); return *this;}
-
+    inline const ApplicationEncryptionConfigurationDescription& GetApplicationEncryptionConfigurationDescription() const { return m_applicationEncryptionConfigurationDescription; }
+    inline bool ApplicationEncryptionConfigurationDescriptionHasBeenSet() const { return m_applicationEncryptionConfigurationDescriptionHasBeenSet; }
+    template<typename ApplicationEncryptionConfigurationDescriptionT = ApplicationEncryptionConfigurationDescription>
+    void SetApplicationEncryptionConfigurationDescription(ApplicationEncryptionConfigurationDescriptionT&& value) { m_applicationEncryptionConfigurationDescriptionHasBeenSet = true; m_applicationEncryptionConfigurationDescription = std::forward<ApplicationEncryptionConfigurationDescriptionT>(value); }
+    template<typename ApplicationEncryptionConfigurationDescriptionT = ApplicationEncryptionConfigurationDescription>
+    SnapshotDetails& WithApplicationEncryptionConfigurationDescription(ApplicationEncryptionConfigurationDescriptionT&& value) { SetApplicationEncryptionConfigurationDescription(std::forward<ApplicationEncryptionConfigurationDescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_snapshotName;
     bool m_snapshotNameHasBeenSet = false;
 
-    SnapshotStatus m_snapshotStatus;
+    SnapshotStatus m_snapshotStatus{SnapshotStatus::NOT_SET};
     bool m_snapshotStatusHasBeenSet = false;
 
-    long long m_applicationVersionId;
+    long long m_applicationVersionId{0};
     bool m_applicationVersionIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_snapshotCreationTimestamp;
+    Aws::Utils::DateTime m_snapshotCreationTimestamp{};
     bool m_snapshotCreationTimestampHasBeenSet = false;
+
+    RuntimeEnvironment m_runtimeEnvironment{RuntimeEnvironment::NOT_SET};
+    bool m_runtimeEnvironmentHasBeenSet = false;
+
+    ApplicationEncryptionConfigurationDescription m_applicationEncryptionConfigurationDescription;
+    bool m_applicationEncryptionConfigurationDescriptionHasBeenSet = false;
   };
 
 } // namespace Model

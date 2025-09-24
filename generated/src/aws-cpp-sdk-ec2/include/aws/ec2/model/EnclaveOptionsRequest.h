@@ -33,7 +33,7 @@ namespace Model
   class EnclaveOptionsRequest
   {
   public:
-    AWS_EC2_API EnclaveOptionsRequest();
+    AWS_EC2_API EnclaveOptionsRequest() = default;
     AWS_EC2_API EnclaveOptionsRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API EnclaveOptionsRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,33 +41,19 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>To enable the instance for Amazon Web Services Nitro Enclaves, set this
      * parameter to <code>true</code>.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>To enable the instance for Amazon Web Services Nitro Enclaves, set this
-     * parameter to <code>true</code>.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>To enable the instance for Amazon Web Services Nitro Enclaves, set this
-     * parameter to <code>true</code>.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>To enable the instance for Amazon Web Services Nitro Enclaves, set this
-     * parameter to <code>true</code>.</p>
-     */
     inline EnclaveOptionsRequest& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

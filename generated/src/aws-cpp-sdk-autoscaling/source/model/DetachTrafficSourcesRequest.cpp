@@ -10,12 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DetachTrafficSourcesRequest::DetachTrafficSourcesRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_trafficSourcesHasBeenSet(false)
-{
-}
-
 Aws::String DetachTrafficSourcesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String DetachTrafficSourcesRequest::SerializePayload() const
 
   if(m_trafficSourcesHasBeenSet)
   {
-    unsigned trafficSourcesCount = 1;
-    for(auto& item : m_trafficSources)
+    if (m_trafficSources.empty())
     {
-      item.OutputToStream(ss, "TrafficSources.member.", trafficSourcesCount, "");
-      trafficSourcesCount++;
+      ss << "TrafficSources=&";
+    }
+    else
+    {
+      unsigned trafficSourcesCount = 1;
+      for(auto& item : m_trafficSources)
+      {
+        item.OutputToStream(ss, "TrafficSources.member.", trafficSourcesCount, "");
+        trafficSourcesCount++;
+      }
     }
   }
 

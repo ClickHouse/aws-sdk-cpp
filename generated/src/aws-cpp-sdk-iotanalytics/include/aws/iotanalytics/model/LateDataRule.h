@@ -33,83 +33,35 @@ namespace Model
   class LateDataRule
   {
   public:
-    AWS_IOTANALYTICS_API LateDataRule();
+    AWS_IOTANALYTICS_API LateDataRule() = default;
     AWS_IOTANALYTICS_API LateDataRule(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API LateDataRule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the late data rule.</p>
      */
-    inline const Aws::String& GetRuleName() const{ return m_ruleName; }
-
-    /**
-     * <p>The name of the late data rule.</p>
-     */
+    inline const Aws::String& GetRuleName() const { return m_ruleName; }
     inline bool RuleNameHasBeenSet() const { return m_ruleNameHasBeenSet; }
+    template<typename RuleNameT = Aws::String>
+    void SetRuleName(RuleNameT&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::forward<RuleNameT>(value); }
+    template<typename RuleNameT = Aws::String>
+    LateDataRule& WithRuleName(RuleNameT&& value) { SetRuleName(std::forward<RuleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the late data rule.</p>
-     */
-    inline void SetRuleName(const Aws::String& value) { m_ruleNameHasBeenSet = true; m_ruleName = value; }
-
-    /**
-     * <p>The name of the late data rule.</p>
-     */
-    inline void SetRuleName(Aws::String&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::move(value); }
-
-    /**
-     * <p>The name of the late data rule.</p>
-     */
-    inline void SetRuleName(const char* value) { m_ruleNameHasBeenSet = true; m_ruleName.assign(value); }
-
-    /**
-     * <p>The name of the late data rule.</p>
-     */
-    inline LateDataRule& WithRuleName(const Aws::String& value) { SetRuleName(value); return *this;}
-
-    /**
-     * <p>The name of the late data rule.</p>
-     */
-    inline LateDataRule& WithRuleName(Aws::String&& value) { SetRuleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the late data rule.</p>
-     */
-    inline LateDataRule& WithRuleName(const char* value) { SetRuleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The information needed to configure the late data rule.</p>
      */
-    inline const LateDataRuleConfiguration& GetRuleConfiguration() const{ return m_ruleConfiguration; }
-
-    /**
-     * <p>The information needed to configure the late data rule.</p>
-     */
+    inline const LateDataRuleConfiguration& GetRuleConfiguration() const { return m_ruleConfiguration; }
     inline bool RuleConfigurationHasBeenSet() const { return m_ruleConfigurationHasBeenSet; }
-
-    /**
-     * <p>The information needed to configure the late data rule.</p>
-     */
-    inline void SetRuleConfiguration(const LateDataRuleConfiguration& value) { m_ruleConfigurationHasBeenSet = true; m_ruleConfiguration = value; }
-
-    /**
-     * <p>The information needed to configure the late data rule.</p>
-     */
-    inline void SetRuleConfiguration(LateDataRuleConfiguration&& value) { m_ruleConfigurationHasBeenSet = true; m_ruleConfiguration = std::move(value); }
-
-    /**
-     * <p>The information needed to configure the late data rule.</p>
-     */
-    inline LateDataRule& WithRuleConfiguration(const LateDataRuleConfiguration& value) { SetRuleConfiguration(value); return *this;}
-
-    /**
-     * <p>The information needed to configure the late data rule.</p>
-     */
-    inline LateDataRule& WithRuleConfiguration(LateDataRuleConfiguration&& value) { SetRuleConfiguration(std::move(value)); return *this;}
-
+    template<typename RuleConfigurationT = LateDataRuleConfiguration>
+    void SetRuleConfiguration(RuleConfigurationT&& value) { m_ruleConfigurationHasBeenSet = true; m_ruleConfiguration = std::forward<RuleConfigurationT>(value); }
+    template<typename RuleConfigurationT = LateDataRuleConfiguration>
+    LateDataRule& WithRuleConfiguration(RuleConfigurationT&& value) { SetRuleConfiguration(std::forward<RuleConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleName;

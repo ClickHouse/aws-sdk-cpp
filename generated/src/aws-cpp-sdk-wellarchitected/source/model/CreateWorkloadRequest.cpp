@@ -12,31 +12,6 @@ using namespace Aws::WellArchitected::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateWorkloadRequest::CreateWorkloadRequest() : 
-    m_workloadNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_environment(WorkloadEnvironment::NOT_SET),
-    m_environmentHasBeenSet(false),
-    m_accountIdsHasBeenSet(false),
-    m_awsRegionsHasBeenSet(false),
-    m_nonAwsRegionsHasBeenSet(false),
-    m_pillarPrioritiesHasBeenSet(false),
-    m_architecturalDesignHasBeenSet(false),
-    m_reviewOwnerHasBeenSet(false),
-    m_industryTypeHasBeenSet(false),
-    m_industryHasBeenSet(false),
-    m_lensesHasBeenSet(false),
-    m_notesHasBeenSet(false),
-    m_clientRequestToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientRequestTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false),
-    m_discoveryConfigHasBeenSet(false),
-    m_applicationsHasBeenSet(false),
-    m_profileArnsHasBeenSet(false),
-    m_reviewTemplateArnsHasBeenSet(false)
-{
-}
-
 Aws::String CreateWorkloadRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -196,6 +171,12 @@ Aws::String CreateWorkloadRequest::SerializePayload() const
      reviewTemplateArnsJsonList[reviewTemplateArnsIndex].AsString(m_reviewTemplateArns[reviewTemplateArnsIndex]);
    }
    payload.WithArray("ReviewTemplateArns", std::move(reviewTemplateArnsJsonList));
+
+  }
+
+  if(m_jiraConfigurationHasBeenSet)
+  {
+   payload.WithObject("JiraConfiguration", m_jiraConfiguration.Jsonize());
 
   }
 

@@ -26,7 +26,7 @@ namespace Model
   class GetPublicAccessBlockRequest : public S3CrtRequest
   {
   public:
-    AWS_S3CRT_API GetPublicAccessBlockRequest();
+    AWS_S3CRT_API GetPublicAccessBlockRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,156 +40,52 @@ namespace Model
 
     AWS_S3CRT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+    AWS_S3CRT_API bool HasEmbeddedError(IOStream &body, const Http::HeaderValueCollection &header) const override;
     /**
      * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
      */
     AWS_S3CRT_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The name of the Amazon S3 bucket whose <code>PublicAccessBlock</code>
      * configuration you want to retrieve. </p>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p>The name of the Amazon S3 bucket whose <code>PublicAccessBlock</code>
-     * configuration you want to retrieve. </p>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    GetPublicAccessBlockRequest& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon S3 bucket whose <code>PublicAccessBlock</code>
-     * configuration you want to retrieve. </p>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p>The name of the Amazon S3 bucket whose <code>PublicAccessBlock</code>
-     * configuration you want to retrieve. </p>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon S3 bucket whose <code>PublicAccessBlock</code>
-     * configuration you want to retrieve. </p>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p>The name of the Amazon S3 bucket whose <code>PublicAccessBlock</code>
-     * configuration you want to retrieve. </p>
-     */
-    inline GetPublicAccessBlockRequest& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon S3 bucket whose <code>PublicAccessBlock</code>
-     * configuration you want to retrieve. </p>
-     */
-    inline GetPublicAccessBlockRequest& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon S3 bucket whose <code>PublicAccessBlock</code>
-     * configuration you want to retrieve. </p>
-     */
-    inline GetPublicAccessBlockRequest& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The account ID of the expected bucket owner. If the account ID that you
      * provide does not match the actual owner of the bucket, the request fails with
      * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
      */
-    inline const Aws::String& GetExpectedBucketOwner() const{ return m_expectedBucketOwner; }
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
+    inline const Aws::String& GetExpectedBucketOwner() const { return m_expectedBucketOwner; }
     inline bool ExpectedBucketOwnerHasBeenSet() const { return m_expectedBucketOwnerHasBeenSet; }
+    template<typename ExpectedBucketOwnerT = Aws::String>
+    void SetExpectedBucketOwner(ExpectedBucketOwnerT&& value) { m_expectedBucketOwnerHasBeenSet = true; m_expectedBucketOwner = std::forward<ExpectedBucketOwnerT>(value); }
+    template<typename ExpectedBucketOwnerT = Aws::String>
+    GetPublicAccessBlockRequest& WithExpectedBucketOwner(ExpectedBucketOwnerT&& value) { SetExpectedBucketOwner(std::forward<ExpectedBucketOwnerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline void SetExpectedBucketOwner(const Aws::String& value) { m_expectedBucketOwnerHasBeenSet = true; m_expectedBucketOwner = value; }
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline void SetExpectedBucketOwner(Aws::String&& value) { m_expectedBucketOwnerHasBeenSet = true; m_expectedBucketOwner = std::move(value); }
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline void SetExpectedBucketOwner(const char* value) { m_expectedBucketOwnerHasBeenSet = true; m_expectedBucketOwner.assign(value); }
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline GetPublicAccessBlockRequest& WithExpectedBucketOwner(const Aws::String& value) { SetExpectedBucketOwner(value); return *this;}
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline GetPublicAccessBlockRequest& WithExpectedBucketOwner(Aws::String&& value) { SetExpectedBucketOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline GetPublicAccessBlockRequest& WithExpectedBucketOwner(const char* value) { SetExpectedBucketOwner(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::Map<Aws::String, Aws::String>& GetCustomizedAccessLogTag() const{ return m_customizedAccessLogTag; }
-
-    
+    inline const Aws::Map<Aws::String, Aws::String>& GetCustomizedAccessLogTag() const { return m_customizedAccessLogTag; }
     inline bool CustomizedAccessLogTagHasBeenSet() const { return m_customizedAccessLogTagHasBeenSet; }
-
-    
-    inline void SetCustomizedAccessLogTag(const Aws::Map<Aws::String, Aws::String>& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag = value; }
-
-    
-    inline void SetCustomizedAccessLogTag(Aws::Map<Aws::String, Aws::String>&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag = std::move(value); }
-
-    
-    inline GetPublicAccessBlockRequest& WithCustomizedAccessLogTag(const Aws::Map<Aws::String, Aws::String>& value) { SetCustomizedAccessLogTag(value); return *this;}
-
-    
-    inline GetPublicAccessBlockRequest& WithCustomizedAccessLogTag(Aws::Map<Aws::String, Aws::String>&& value) { SetCustomizedAccessLogTag(std::move(value)); return *this;}
-
-    
-    inline GetPublicAccessBlockRequest& AddCustomizedAccessLogTag(const Aws::String& key, const Aws::String& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, value); return *this; }
-
-    
-    inline GetPublicAccessBlockRequest& AddCustomizedAccessLogTag(Aws::String&& key, const Aws::String& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::move(key), value); return *this; }
-
-    
-    inline GetPublicAccessBlockRequest& AddCustomizedAccessLogTag(const Aws::String& key, Aws::String&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, std::move(value)); return *this; }
-
-    
-    inline GetPublicAccessBlockRequest& AddCustomizedAccessLogTag(Aws::String&& key, Aws::String&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::move(key), std::move(value)); return *this; }
-
-    
-    inline GetPublicAccessBlockRequest& AddCustomizedAccessLogTag(const char* key, Aws::String&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, std::move(value)); return *this; }
-
-    
-    inline GetPublicAccessBlockRequest& AddCustomizedAccessLogTag(Aws::String&& key, const char* value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::move(key), value); return *this; }
-
-    
-    inline GetPublicAccessBlockRequest& AddCustomizedAccessLogTag(const char* key, const char* value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, value); return *this; }
-
+    template<typename CustomizedAccessLogTagT = Aws::Map<Aws::String, Aws::String>>
+    void SetCustomizedAccessLogTag(CustomizedAccessLogTagT&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag = std::forward<CustomizedAccessLogTagT>(value); }
+    template<typename CustomizedAccessLogTagT = Aws::Map<Aws::String, Aws::String>>
+    GetPublicAccessBlockRequest& WithCustomizedAccessLogTag(CustomizedAccessLogTagT&& value) { SetCustomizedAccessLogTag(std::forward<CustomizedAccessLogTagT>(value)); return *this;}
+    template<typename CustomizedAccessLogTagKeyT = Aws::String, typename CustomizedAccessLogTagValueT = Aws::String>
+    GetPublicAccessBlockRequest& AddCustomizedAccessLogTag(CustomizedAccessLogTagKeyT&& key, CustomizedAccessLogTagValueT&& value) {
+      m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::forward<CustomizedAccessLogTagKeyT>(key), std::forward<CustomizedAccessLogTagValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_bucket;

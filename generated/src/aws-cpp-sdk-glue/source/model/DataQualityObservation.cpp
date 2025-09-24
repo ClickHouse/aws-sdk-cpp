@@ -18,15 +18,7 @@ namespace Glue
 namespace Model
 {
 
-DataQualityObservation::DataQualityObservation() : 
-    m_descriptionHasBeenSet(false),
-    m_metricBasedObservationHasBeenSet(false)
-{
-}
-
-DataQualityObservation::DataQualityObservation(JsonView jsonValue) : 
-    m_descriptionHasBeenSet(false),
-    m_metricBasedObservationHasBeenSet(false)
+DataQualityObservation::DataQualityObservation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DataQualityObservation& DataQualityObservation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MetricBasedObservation"))
   {
     m_metricBasedObservation = jsonValue.GetObject("MetricBasedObservation");
-
     m_metricBasedObservationHasBeenSet = true;
   }
-
   return *this;
 }
 

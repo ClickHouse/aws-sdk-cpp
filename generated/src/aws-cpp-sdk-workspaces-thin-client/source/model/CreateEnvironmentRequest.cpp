@@ -12,23 +12,6 @@ using namespace Aws::WorkSpacesThinClient::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateEnvironmentRequest::CreateEnvironmentRequest() : 
-    m_nameHasBeenSet(false),
-    m_desktopArnHasBeenSet(false),
-    m_desktopEndpointHasBeenSet(false),
-    m_softwareSetUpdateSchedule(SoftwareSetUpdateSchedule::NOT_SET),
-    m_softwareSetUpdateScheduleHasBeenSet(false),
-    m_maintenanceWindowHasBeenSet(false),
-    m_softwareSetUpdateMode(SoftwareSetUpdateMode::NOT_SET),
-    m_softwareSetUpdateModeHasBeenSet(false),
-    m_desiredSoftwareSetIdHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateEnvironmentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -93,6 +76,17 @@ Aws::String CreateEnvironmentRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_deviceCreationTagsHasBeenSet)
+  {
+   JsonValue deviceCreationTagsJsonMap;
+   for(auto& deviceCreationTagsItem : m_deviceCreationTags)
+   {
+     deviceCreationTagsJsonMap.WithString(deviceCreationTagsItem.first, deviceCreationTagsItem.second);
+   }
+   payload.WithObject("deviceCreationTags", std::move(deviceCreationTagsJsonMap));
 
   }
 

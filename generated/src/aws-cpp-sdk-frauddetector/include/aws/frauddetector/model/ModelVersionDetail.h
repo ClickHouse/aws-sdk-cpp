@@ -38,510 +38,174 @@ namespace Model
   class ModelVersionDetail
   {
   public:
-    AWS_FRAUDDETECTOR_API ModelVersionDetail();
+    AWS_FRAUDDETECTOR_API ModelVersionDetail() = default;
     AWS_FRAUDDETECTOR_API ModelVersionDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API ModelVersionDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The model ID.</p>
      */
-    inline const Aws::String& GetModelId() const{ return m_modelId; }
-
-    /**
-     * <p>The model ID.</p>
-     */
+    inline const Aws::String& GetModelId() const { return m_modelId; }
     inline bool ModelIdHasBeenSet() const { return m_modelIdHasBeenSet; }
+    template<typename ModelIdT = Aws::String>
+    void SetModelId(ModelIdT&& value) { m_modelIdHasBeenSet = true; m_modelId = std::forward<ModelIdT>(value); }
+    template<typename ModelIdT = Aws::String>
+    ModelVersionDetail& WithModelId(ModelIdT&& value) { SetModelId(std::forward<ModelIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The model ID.</p>
-     */
-    inline void SetModelId(const Aws::String& value) { m_modelIdHasBeenSet = true; m_modelId = value; }
-
-    /**
-     * <p>The model ID.</p>
-     */
-    inline void SetModelId(Aws::String&& value) { m_modelIdHasBeenSet = true; m_modelId = std::move(value); }
-
-    /**
-     * <p>The model ID.</p>
-     */
-    inline void SetModelId(const char* value) { m_modelIdHasBeenSet = true; m_modelId.assign(value); }
-
-    /**
-     * <p>The model ID.</p>
-     */
-    inline ModelVersionDetail& WithModelId(const Aws::String& value) { SetModelId(value); return *this;}
-
-    /**
-     * <p>The model ID.</p>
-     */
-    inline ModelVersionDetail& WithModelId(Aws::String&& value) { SetModelId(std::move(value)); return *this;}
-
-    /**
-     * <p>The model ID.</p>
-     */
-    inline ModelVersionDetail& WithModelId(const char* value) { SetModelId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The model type.</p>
      */
-    inline const ModelTypeEnum& GetModelType() const{ return m_modelType; }
-
-    /**
-     * <p>The model type.</p>
-     */
+    inline ModelTypeEnum GetModelType() const { return m_modelType; }
     inline bool ModelTypeHasBeenSet() const { return m_modelTypeHasBeenSet; }
+    inline void SetModelType(ModelTypeEnum value) { m_modelTypeHasBeenSet = true; m_modelType = value; }
+    inline ModelVersionDetail& WithModelType(ModelTypeEnum value) { SetModelType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The model type.</p>
-     */
-    inline void SetModelType(const ModelTypeEnum& value) { m_modelTypeHasBeenSet = true; m_modelType = value; }
-
-    /**
-     * <p>The model type.</p>
-     */
-    inline void SetModelType(ModelTypeEnum&& value) { m_modelTypeHasBeenSet = true; m_modelType = std::move(value); }
-
-    /**
-     * <p>The model type.</p>
-     */
-    inline ModelVersionDetail& WithModelType(const ModelTypeEnum& value) { SetModelType(value); return *this;}
-
-    /**
-     * <p>The model type.</p>
-     */
-    inline ModelVersionDetail& WithModelType(ModelTypeEnum&& value) { SetModelType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The model version number.</p>
      */
-    inline const Aws::String& GetModelVersionNumber() const{ return m_modelVersionNumber; }
-
-    /**
-     * <p>The model version number.</p>
-     */
+    inline const Aws::String& GetModelVersionNumber() const { return m_modelVersionNumber; }
     inline bool ModelVersionNumberHasBeenSet() const { return m_modelVersionNumberHasBeenSet; }
+    template<typename ModelVersionNumberT = Aws::String>
+    void SetModelVersionNumber(ModelVersionNumberT&& value) { m_modelVersionNumberHasBeenSet = true; m_modelVersionNumber = std::forward<ModelVersionNumberT>(value); }
+    template<typename ModelVersionNumberT = Aws::String>
+    ModelVersionDetail& WithModelVersionNumber(ModelVersionNumberT&& value) { SetModelVersionNumber(std::forward<ModelVersionNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The model version number.</p>
-     */
-    inline void SetModelVersionNumber(const Aws::String& value) { m_modelVersionNumberHasBeenSet = true; m_modelVersionNumber = value; }
-
-    /**
-     * <p>The model version number.</p>
-     */
-    inline void SetModelVersionNumber(Aws::String&& value) { m_modelVersionNumberHasBeenSet = true; m_modelVersionNumber = std::move(value); }
-
-    /**
-     * <p>The model version number.</p>
-     */
-    inline void SetModelVersionNumber(const char* value) { m_modelVersionNumberHasBeenSet = true; m_modelVersionNumber.assign(value); }
-
-    /**
-     * <p>The model version number.</p>
-     */
-    inline ModelVersionDetail& WithModelVersionNumber(const Aws::String& value) { SetModelVersionNumber(value); return *this;}
-
-    /**
-     * <p>The model version number.</p>
-     */
-    inline ModelVersionDetail& WithModelVersionNumber(Aws::String&& value) { SetModelVersionNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The model version number.</p>
-     */
-    inline ModelVersionDetail& WithModelVersionNumber(const char* value) { SetModelVersionNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the model version.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the model version.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    ModelVersionDetail& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the model version.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the model version.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the model version.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the model version.</p>
-     */
-    inline ModelVersionDetail& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the model version.</p>
-     */
-    inline ModelVersionDetail& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the model version.</p>
-     */
-    inline ModelVersionDetail& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The model version training data source.</p>
      */
-    inline const TrainingDataSourceEnum& GetTrainingDataSource() const{ return m_trainingDataSource; }
-
-    /**
-     * <p>The model version training data source.</p>
-     */
+    inline TrainingDataSourceEnum GetTrainingDataSource() const { return m_trainingDataSource; }
     inline bool TrainingDataSourceHasBeenSet() const { return m_trainingDataSourceHasBeenSet; }
+    inline void SetTrainingDataSource(TrainingDataSourceEnum value) { m_trainingDataSourceHasBeenSet = true; m_trainingDataSource = value; }
+    inline ModelVersionDetail& WithTrainingDataSource(TrainingDataSourceEnum value) { SetTrainingDataSource(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The model version training data source.</p>
-     */
-    inline void SetTrainingDataSource(const TrainingDataSourceEnum& value) { m_trainingDataSourceHasBeenSet = true; m_trainingDataSource = value; }
-
-    /**
-     * <p>The model version training data source.</p>
-     */
-    inline void SetTrainingDataSource(TrainingDataSourceEnum&& value) { m_trainingDataSourceHasBeenSet = true; m_trainingDataSource = std::move(value); }
-
-    /**
-     * <p>The model version training data source.</p>
-     */
-    inline ModelVersionDetail& WithTrainingDataSource(const TrainingDataSourceEnum& value) { SetTrainingDataSource(value); return *this;}
-
-    /**
-     * <p>The model version training data source.</p>
-     */
-    inline ModelVersionDetail& WithTrainingDataSource(TrainingDataSourceEnum&& value) { SetTrainingDataSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The training data schema.</p>
      */
-    inline const TrainingDataSchema& GetTrainingDataSchema() const{ return m_trainingDataSchema; }
-
-    /**
-     * <p>The training data schema.</p>
-     */
+    inline const TrainingDataSchema& GetTrainingDataSchema() const { return m_trainingDataSchema; }
     inline bool TrainingDataSchemaHasBeenSet() const { return m_trainingDataSchemaHasBeenSet; }
+    template<typename TrainingDataSchemaT = TrainingDataSchema>
+    void SetTrainingDataSchema(TrainingDataSchemaT&& value) { m_trainingDataSchemaHasBeenSet = true; m_trainingDataSchema = std::forward<TrainingDataSchemaT>(value); }
+    template<typename TrainingDataSchemaT = TrainingDataSchema>
+    ModelVersionDetail& WithTrainingDataSchema(TrainingDataSchemaT&& value) { SetTrainingDataSchema(std::forward<TrainingDataSchemaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The training data schema.</p>
-     */
-    inline void SetTrainingDataSchema(const TrainingDataSchema& value) { m_trainingDataSchemaHasBeenSet = true; m_trainingDataSchema = value; }
-
-    /**
-     * <p>The training data schema.</p>
-     */
-    inline void SetTrainingDataSchema(TrainingDataSchema&& value) { m_trainingDataSchemaHasBeenSet = true; m_trainingDataSchema = std::move(value); }
-
-    /**
-     * <p>The training data schema.</p>
-     */
-    inline ModelVersionDetail& WithTrainingDataSchema(const TrainingDataSchema& value) { SetTrainingDataSchema(value); return *this;}
-
-    /**
-     * <p>The training data schema.</p>
-     */
-    inline ModelVersionDetail& WithTrainingDataSchema(TrainingDataSchema&& value) { SetTrainingDataSchema(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The external events data details. This will be populated if the
      * <code>trainingDataSource</code> for the model version is specified as
      * <code>EXTERNAL_EVENTS</code>.</p>
      */
-    inline const ExternalEventsDetail& GetExternalEventsDetail() const{ return m_externalEventsDetail; }
-
-    /**
-     * <p>The external events data details. This will be populated if the
-     * <code>trainingDataSource</code> for the model version is specified as
-     * <code>EXTERNAL_EVENTS</code>.</p>
-     */
+    inline const ExternalEventsDetail& GetExternalEventsDetail() const { return m_externalEventsDetail; }
     inline bool ExternalEventsDetailHasBeenSet() const { return m_externalEventsDetailHasBeenSet; }
+    template<typename ExternalEventsDetailT = ExternalEventsDetail>
+    void SetExternalEventsDetail(ExternalEventsDetailT&& value) { m_externalEventsDetailHasBeenSet = true; m_externalEventsDetail = std::forward<ExternalEventsDetailT>(value); }
+    template<typename ExternalEventsDetailT = ExternalEventsDetail>
+    ModelVersionDetail& WithExternalEventsDetail(ExternalEventsDetailT&& value) { SetExternalEventsDetail(std::forward<ExternalEventsDetailT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The external events data details. This will be populated if the
-     * <code>trainingDataSource</code> for the model version is specified as
-     * <code>EXTERNAL_EVENTS</code>.</p>
-     */
-    inline void SetExternalEventsDetail(const ExternalEventsDetail& value) { m_externalEventsDetailHasBeenSet = true; m_externalEventsDetail = value; }
-
-    /**
-     * <p>The external events data details. This will be populated if the
-     * <code>trainingDataSource</code> for the model version is specified as
-     * <code>EXTERNAL_EVENTS</code>.</p>
-     */
-    inline void SetExternalEventsDetail(ExternalEventsDetail&& value) { m_externalEventsDetailHasBeenSet = true; m_externalEventsDetail = std::move(value); }
-
-    /**
-     * <p>The external events data details. This will be populated if the
-     * <code>trainingDataSource</code> for the model version is specified as
-     * <code>EXTERNAL_EVENTS</code>.</p>
-     */
-    inline ModelVersionDetail& WithExternalEventsDetail(const ExternalEventsDetail& value) { SetExternalEventsDetail(value); return *this;}
-
-    /**
-     * <p>The external events data details. This will be populated if the
-     * <code>trainingDataSource</code> for the model version is specified as
-     * <code>EXTERNAL_EVENTS</code>.</p>
-     */
-    inline ModelVersionDetail& WithExternalEventsDetail(ExternalEventsDetail&& value) { SetExternalEventsDetail(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ingested events data details. This will be populated if the
      * <code>trainingDataSource</code> for the model version is specified as
      * <code>INGESTED_EVENTS</code>.</p>
      */
-    inline const IngestedEventsDetail& GetIngestedEventsDetail() const{ return m_ingestedEventsDetail; }
-
-    /**
-     * <p>The ingested events data details. This will be populated if the
-     * <code>trainingDataSource</code> for the model version is specified as
-     * <code>INGESTED_EVENTS</code>.</p>
-     */
+    inline const IngestedEventsDetail& GetIngestedEventsDetail() const { return m_ingestedEventsDetail; }
     inline bool IngestedEventsDetailHasBeenSet() const { return m_ingestedEventsDetailHasBeenSet; }
+    template<typename IngestedEventsDetailT = IngestedEventsDetail>
+    void SetIngestedEventsDetail(IngestedEventsDetailT&& value) { m_ingestedEventsDetailHasBeenSet = true; m_ingestedEventsDetail = std::forward<IngestedEventsDetailT>(value); }
+    template<typename IngestedEventsDetailT = IngestedEventsDetail>
+    ModelVersionDetail& WithIngestedEventsDetail(IngestedEventsDetailT&& value) { SetIngestedEventsDetail(std::forward<IngestedEventsDetailT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ingested events data details. This will be populated if the
-     * <code>trainingDataSource</code> for the model version is specified as
-     * <code>INGESTED_EVENTS</code>.</p>
-     */
-    inline void SetIngestedEventsDetail(const IngestedEventsDetail& value) { m_ingestedEventsDetailHasBeenSet = true; m_ingestedEventsDetail = value; }
-
-    /**
-     * <p>The ingested events data details. This will be populated if the
-     * <code>trainingDataSource</code> for the model version is specified as
-     * <code>INGESTED_EVENTS</code>.</p>
-     */
-    inline void SetIngestedEventsDetail(IngestedEventsDetail&& value) { m_ingestedEventsDetailHasBeenSet = true; m_ingestedEventsDetail = std::move(value); }
-
-    /**
-     * <p>The ingested events data details. This will be populated if the
-     * <code>trainingDataSource</code> for the model version is specified as
-     * <code>INGESTED_EVENTS</code>.</p>
-     */
-    inline ModelVersionDetail& WithIngestedEventsDetail(const IngestedEventsDetail& value) { SetIngestedEventsDetail(value); return *this;}
-
-    /**
-     * <p>The ingested events data details. This will be populated if the
-     * <code>trainingDataSource</code> for the model version is specified as
-     * <code>INGESTED_EVENTS</code>.</p>
-     */
-    inline ModelVersionDetail& WithIngestedEventsDetail(IngestedEventsDetail&& value) { SetIngestedEventsDetail(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The training results.</p>
      */
-    inline const TrainingResult& GetTrainingResult() const{ return m_trainingResult; }
-
-    /**
-     * <p>The training results.</p>
-     */
+    inline const TrainingResult& GetTrainingResult() const { return m_trainingResult; }
     inline bool TrainingResultHasBeenSet() const { return m_trainingResultHasBeenSet; }
+    template<typename TrainingResultT = TrainingResult>
+    void SetTrainingResult(TrainingResultT&& value) { m_trainingResultHasBeenSet = true; m_trainingResult = std::forward<TrainingResultT>(value); }
+    template<typename TrainingResultT = TrainingResult>
+    ModelVersionDetail& WithTrainingResult(TrainingResultT&& value) { SetTrainingResult(std::forward<TrainingResultT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The training results.</p>
-     */
-    inline void SetTrainingResult(const TrainingResult& value) { m_trainingResultHasBeenSet = true; m_trainingResult = value; }
-
-    /**
-     * <p>The training results.</p>
-     */
-    inline void SetTrainingResult(TrainingResult&& value) { m_trainingResultHasBeenSet = true; m_trainingResult = std::move(value); }
-
-    /**
-     * <p>The training results.</p>
-     */
-    inline ModelVersionDetail& WithTrainingResult(const TrainingResult& value) { SetTrainingResult(value); return *this;}
-
-    /**
-     * <p>The training results.</p>
-     */
-    inline ModelVersionDetail& WithTrainingResult(TrainingResult&& value) { SetTrainingResult(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the model was last updated.</p>
      */
-    inline const Aws::String& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The timestamp when the model was last updated.</p>
-     */
+    inline const Aws::String& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
+    template<typename LastUpdatedTimeT = Aws::String>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::String>
+    ModelVersionDetail& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the model was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(const Aws::String& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The timestamp when the model was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::String&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The timestamp when the model was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(const char* value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime.assign(value); }
-
-    /**
-     * <p>The timestamp when the model was last updated.</p>
-     */
-    inline ModelVersionDetail& WithLastUpdatedTime(const Aws::String& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The timestamp when the model was last updated.</p>
-     */
-    inline ModelVersionDetail& WithLastUpdatedTime(Aws::String&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The timestamp when the model was last updated.</p>
-     */
-    inline ModelVersionDetail& WithLastUpdatedTime(const char* value) { SetLastUpdatedTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the model was created.</p>
      */
-    inline const Aws::String& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The timestamp when the model was created.</p>
-     */
+    inline const Aws::String& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::String>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::String>
+    ModelVersionDetail& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the model was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::String& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The timestamp when the model was created.</p>
-     */
-    inline void SetCreatedTime(Aws::String&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The timestamp when the model was created.</p>
-     */
-    inline void SetCreatedTime(const char* value) { m_createdTimeHasBeenSet = true; m_createdTime.assign(value); }
-
-    /**
-     * <p>The timestamp when the model was created.</p>
-     */
-    inline ModelVersionDetail& WithCreatedTime(const Aws::String& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The timestamp when the model was created.</p>
-     */
-    inline ModelVersionDetail& WithCreatedTime(Aws::String&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The timestamp when the model was created.</p>
-     */
-    inline ModelVersionDetail& WithCreatedTime(const char* value) { SetCreatedTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The model version ARN.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The model version ARN.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ModelVersionDetail& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The model version ARN.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The model version ARN.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The model version ARN.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The model version ARN.</p>
-     */
-    inline ModelVersionDetail& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The model version ARN.</p>
-     */
-    inline ModelVersionDetail& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The model version ARN.</p>
-     */
-    inline ModelVersionDetail& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The training result details. The details include the relative importance of
      * the variables. </p>
      */
-    inline const TrainingResultV2& GetTrainingResultV2() const{ return m_trainingResultV2; }
-
-    /**
-     * <p> The training result details. The details include the relative importance of
-     * the variables. </p>
-     */
+    inline const TrainingResultV2& GetTrainingResultV2() const { return m_trainingResultV2; }
     inline bool TrainingResultV2HasBeenSet() const { return m_trainingResultV2HasBeenSet; }
-
-    /**
-     * <p> The training result details. The details include the relative importance of
-     * the variables. </p>
-     */
-    inline void SetTrainingResultV2(const TrainingResultV2& value) { m_trainingResultV2HasBeenSet = true; m_trainingResultV2 = value; }
-
-    /**
-     * <p> The training result details. The details include the relative importance of
-     * the variables. </p>
-     */
-    inline void SetTrainingResultV2(TrainingResultV2&& value) { m_trainingResultV2HasBeenSet = true; m_trainingResultV2 = std::move(value); }
-
-    /**
-     * <p> The training result details. The details include the relative importance of
-     * the variables. </p>
-     */
-    inline ModelVersionDetail& WithTrainingResultV2(const TrainingResultV2& value) { SetTrainingResultV2(value); return *this;}
-
-    /**
-     * <p> The training result details. The details include the relative importance of
-     * the variables. </p>
-     */
-    inline ModelVersionDetail& WithTrainingResultV2(TrainingResultV2&& value) { SetTrainingResultV2(std::move(value)); return *this;}
-
+    template<typename TrainingResultV2T = TrainingResultV2>
+    void SetTrainingResultV2(TrainingResultV2T&& value) { m_trainingResultV2HasBeenSet = true; m_trainingResultV2 = std::forward<TrainingResultV2T>(value); }
+    template<typename TrainingResultV2T = TrainingResultV2>
+    ModelVersionDetail& WithTrainingResultV2(TrainingResultV2T&& value) { SetTrainingResultV2(std::forward<TrainingResultV2T>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_modelId;
     bool m_modelIdHasBeenSet = false;
 
-    ModelTypeEnum m_modelType;
+    ModelTypeEnum m_modelType{ModelTypeEnum::NOT_SET};
     bool m_modelTypeHasBeenSet = false;
 
     Aws::String m_modelVersionNumber;
@@ -550,7 +214,7 @@ namespace Model
     Aws::String m_status;
     bool m_statusHasBeenSet = false;
 
-    TrainingDataSourceEnum m_trainingDataSource;
+    TrainingDataSourceEnum m_trainingDataSource{TrainingDataSourceEnum::NOT_SET};
     bool m_trainingDataSourceHasBeenSet = false;
 
     TrainingDataSchema m_trainingDataSchema;

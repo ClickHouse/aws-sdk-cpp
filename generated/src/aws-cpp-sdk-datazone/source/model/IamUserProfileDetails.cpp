@@ -18,13 +18,7 @@ namespace DataZone
 namespace Model
 {
 
-IamUserProfileDetails::IamUserProfileDetails() : 
-    m_arnHasBeenSet(false)
-{
-}
-
-IamUserProfileDetails::IamUserProfileDetails(JsonView jsonValue) : 
-    m_arnHasBeenSet(false)
+IamUserProfileDetails::IamUserProfileDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ IamUserProfileDetails& IamUserProfileDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("principalId"))
+  {
+    m_principalId = jsonValue.GetString("principalId");
+    m_principalIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue IamUserProfileDetails::Jsonize() const
   if(m_arnHasBeenSet)
   {
    payload.WithString("arn", m_arn);
+
+  }
+
+  if(m_principalIdHasBeenSet)
+  {
+   payload.WithString("principalId", m_principalId);
 
   }
 

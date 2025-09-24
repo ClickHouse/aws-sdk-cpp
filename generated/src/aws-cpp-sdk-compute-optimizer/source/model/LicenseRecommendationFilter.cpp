@@ -18,17 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-LicenseRecommendationFilter::LicenseRecommendationFilter() : 
-    m_name(LicenseRecommendationFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-LicenseRecommendationFilter::LicenseRecommendationFilter(JsonView jsonValue) : 
-    m_name(LicenseRecommendationFilterName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+LicenseRecommendationFilter::LicenseRecommendationFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ LicenseRecommendationFilter& LicenseRecommendationFilter::operator =(JsonView js
   if(jsonValue.ValueExists("name"))
   {
     m_name = LicenseRecommendationFilterNameMapper::GetLicenseRecommendationFilterNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -51,7 +39,6 @@ LicenseRecommendationFilter& LicenseRecommendationFilter::operator =(JsonView js
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

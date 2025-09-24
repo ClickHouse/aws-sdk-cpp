@@ -50,171 +50,65 @@ namespace Model
   class ResponseInspection
   {
   public:
-    AWS_WAFV2_API ResponseInspection();
+    AWS_WAFV2_API ResponseInspection() = default;
     AWS_WAFV2_API ResponseInspection(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API ResponseInspection& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Configures inspection of the response status code for success and failure
      * indicators. </p>
      */
-    inline const ResponseInspectionStatusCode& GetStatusCode() const{ return m_statusCode; }
-
-    /**
-     * <p>Configures inspection of the response status code for success and failure
-     * indicators. </p>
-     */
+    inline const ResponseInspectionStatusCode& GetStatusCode() const { return m_statusCode; }
     inline bool StatusCodeHasBeenSet() const { return m_statusCodeHasBeenSet; }
+    template<typename StatusCodeT = ResponseInspectionStatusCode>
+    void SetStatusCode(StatusCodeT&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::forward<StatusCodeT>(value); }
+    template<typename StatusCodeT = ResponseInspectionStatusCode>
+    ResponseInspection& WithStatusCode(StatusCodeT&& value) { SetStatusCode(std::forward<StatusCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configures inspection of the response status code for success and failure
-     * indicators. </p>
-     */
-    inline void SetStatusCode(const ResponseInspectionStatusCode& value) { m_statusCodeHasBeenSet = true; m_statusCode = value; }
-
-    /**
-     * <p>Configures inspection of the response status code for success and failure
-     * indicators. </p>
-     */
-    inline void SetStatusCode(ResponseInspectionStatusCode&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::move(value); }
-
-    /**
-     * <p>Configures inspection of the response status code for success and failure
-     * indicators. </p>
-     */
-    inline ResponseInspection& WithStatusCode(const ResponseInspectionStatusCode& value) { SetStatusCode(value); return *this;}
-
-    /**
-     * <p>Configures inspection of the response status code for success and failure
-     * indicators. </p>
-     */
-    inline ResponseInspection& WithStatusCode(ResponseInspectionStatusCode&& value) { SetStatusCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configures inspection of the response header for success and failure
      * indicators. </p>
      */
-    inline const ResponseInspectionHeader& GetHeader() const{ return m_header; }
-
-    /**
-     * <p>Configures inspection of the response header for success and failure
-     * indicators. </p>
-     */
+    inline const ResponseInspectionHeader& GetHeader() const { return m_header; }
     inline bool HeaderHasBeenSet() const { return m_headerHasBeenSet; }
+    template<typename HeaderT = ResponseInspectionHeader>
+    void SetHeader(HeaderT&& value) { m_headerHasBeenSet = true; m_header = std::forward<HeaderT>(value); }
+    template<typename HeaderT = ResponseInspectionHeader>
+    ResponseInspection& WithHeader(HeaderT&& value) { SetHeader(std::forward<HeaderT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configures inspection of the response header for success and failure
-     * indicators. </p>
-     */
-    inline void SetHeader(const ResponseInspectionHeader& value) { m_headerHasBeenSet = true; m_header = value; }
-
-    /**
-     * <p>Configures inspection of the response header for success and failure
-     * indicators. </p>
-     */
-    inline void SetHeader(ResponseInspectionHeader&& value) { m_headerHasBeenSet = true; m_header = std::move(value); }
-
-    /**
-     * <p>Configures inspection of the response header for success and failure
-     * indicators. </p>
-     */
-    inline ResponseInspection& WithHeader(const ResponseInspectionHeader& value) { SetHeader(value); return *this;}
-
-    /**
-     * <p>Configures inspection of the response header for success and failure
-     * indicators. </p>
-     */
-    inline ResponseInspection& WithHeader(ResponseInspectionHeader&& value) { SetHeader(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configures inspection of the response body for success and failure
      * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response body.
      * </p>
      */
-    inline const ResponseInspectionBodyContains& GetBodyContains() const{ return m_bodyContains; }
-
-    /**
-     * <p>Configures inspection of the response body for success and failure
-     * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response body.
-     * </p>
-     */
+    inline const ResponseInspectionBodyContains& GetBodyContains() const { return m_bodyContains; }
     inline bool BodyContainsHasBeenSet() const { return m_bodyContainsHasBeenSet; }
+    template<typename BodyContainsT = ResponseInspectionBodyContains>
+    void SetBodyContains(BodyContainsT&& value) { m_bodyContainsHasBeenSet = true; m_bodyContains = std::forward<BodyContainsT>(value); }
+    template<typename BodyContainsT = ResponseInspectionBodyContains>
+    ResponseInspection& WithBodyContains(BodyContainsT&& value) { SetBodyContains(std::forward<BodyContainsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configures inspection of the response body for success and failure
-     * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response body.
-     * </p>
-     */
-    inline void SetBodyContains(const ResponseInspectionBodyContains& value) { m_bodyContainsHasBeenSet = true; m_bodyContains = value; }
-
-    /**
-     * <p>Configures inspection of the response body for success and failure
-     * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response body.
-     * </p>
-     */
-    inline void SetBodyContains(ResponseInspectionBodyContains&& value) { m_bodyContainsHasBeenSet = true; m_bodyContains = std::move(value); }
-
-    /**
-     * <p>Configures inspection of the response body for success and failure
-     * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response body.
-     * </p>
-     */
-    inline ResponseInspection& WithBodyContains(const ResponseInspectionBodyContains& value) { SetBodyContains(value); return *this;}
-
-    /**
-     * <p>Configures inspection of the response body for success and failure
-     * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response body.
-     * </p>
-     */
-    inline ResponseInspection& WithBodyContains(ResponseInspectionBodyContains&& value) { SetBodyContains(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configures inspection of the response JSON for success and failure
      * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response JSON.
      * </p>
      */
-    inline const ResponseInspectionJson& GetJson() const{ return m_json; }
-
-    /**
-     * <p>Configures inspection of the response JSON for success and failure
-     * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response JSON.
-     * </p>
-     */
+    inline const ResponseInspectionJson& GetJson() const { return m_json; }
     inline bool JsonHasBeenSet() const { return m_jsonHasBeenSet; }
-
-    /**
-     * <p>Configures inspection of the response JSON for success and failure
-     * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response JSON.
-     * </p>
-     */
-    inline void SetJson(const ResponseInspectionJson& value) { m_jsonHasBeenSet = true; m_json = value; }
-
-    /**
-     * <p>Configures inspection of the response JSON for success and failure
-     * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response JSON.
-     * </p>
-     */
-    inline void SetJson(ResponseInspectionJson&& value) { m_jsonHasBeenSet = true; m_json = std::move(value); }
-
-    /**
-     * <p>Configures inspection of the response JSON for success and failure
-     * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response JSON.
-     * </p>
-     */
-    inline ResponseInspection& WithJson(const ResponseInspectionJson& value) { SetJson(value); return *this;}
-
-    /**
-     * <p>Configures inspection of the response JSON for success and failure
-     * indicators. WAF can inspect the first 65,536 bytes (64 KB) of the response JSON.
-     * </p>
-     */
-    inline ResponseInspection& WithJson(ResponseInspectionJson&& value) { SetJson(std::move(value)); return *this;}
-
+    template<typename JsonT = ResponseInspectionJson>
+    void SetJson(JsonT&& value) { m_jsonHasBeenSet = true; m_json = std::forward<JsonT>(value); }
+    template<typename JsonT = ResponseInspectionJson>
+    ResponseInspection& WithJson(JsonT&& value) { SetJson(std::forward<JsonT>(value)); return *this;}
+    ///@}
   private:
 
     ResponseInspectionStatusCode m_statusCode;

@@ -73,48 +73,24 @@ namespace Model
   class PublicWorkforceTaskPrice
   {
   public:
-    AWS_SAGEMAKER_API PublicWorkforceTaskPrice();
+    AWS_SAGEMAKER_API PublicWorkforceTaskPrice() = default;
     AWS_SAGEMAKER_API PublicWorkforceTaskPrice(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API PublicWorkforceTaskPrice& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Defines the amount of money paid to an Amazon Mechanical Turk worker in
      * United States dollars.</p>
      */
-    inline const USD& GetAmountInUsd() const{ return m_amountInUsd; }
-
-    /**
-     * <p>Defines the amount of money paid to an Amazon Mechanical Turk worker in
-     * United States dollars.</p>
-     */
+    inline const USD& GetAmountInUsd() const { return m_amountInUsd; }
     inline bool AmountInUsdHasBeenSet() const { return m_amountInUsdHasBeenSet; }
-
-    /**
-     * <p>Defines the amount of money paid to an Amazon Mechanical Turk worker in
-     * United States dollars.</p>
-     */
-    inline void SetAmountInUsd(const USD& value) { m_amountInUsdHasBeenSet = true; m_amountInUsd = value; }
-
-    /**
-     * <p>Defines the amount of money paid to an Amazon Mechanical Turk worker in
-     * United States dollars.</p>
-     */
-    inline void SetAmountInUsd(USD&& value) { m_amountInUsdHasBeenSet = true; m_amountInUsd = std::move(value); }
-
-    /**
-     * <p>Defines the amount of money paid to an Amazon Mechanical Turk worker in
-     * United States dollars.</p>
-     */
-    inline PublicWorkforceTaskPrice& WithAmountInUsd(const USD& value) { SetAmountInUsd(value); return *this;}
-
-    /**
-     * <p>Defines the amount of money paid to an Amazon Mechanical Turk worker in
-     * United States dollars.</p>
-     */
-    inline PublicWorkforceTaskPrice& WithAmountInUsd(USD&& value) { SetAmountInUsd(std::move(value)); return *this;}
-
+    template<typename AmountInUsdT = USD>
+    void SetAmountInUsd(AmountInUsdT&& value) { m_amountInUsdHasBeenSet = true; m_amountInUsd = std::forward<AmountInUsdT>(value); }
+    template<typename AmountInUsdT = USD>
+    PublicWorkforceTaskPrice& WithAmountInUsd(AmountInUsdT&& value) { SetAmountInUsd(std::forward<AmountInUsdT>(value)); return *this;}
+    ///@}
   private:
 
     USD m_amountInUsd;

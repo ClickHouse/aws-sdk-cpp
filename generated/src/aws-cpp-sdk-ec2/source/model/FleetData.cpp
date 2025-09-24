@@ -20,69 +20,7 @@ namespace EC2
 namespace Model
 {
 
-FleetData::FleetData() : 
-    m_activityStatus(FleetActivityStatus::NOT_SET),
-    m_activityStatusHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_fleetIdHasBeenSet(false),
-    m_fleetState(FleetStateCode::NOT_SET),
-    m_fleetStateHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_excessCapacityTerminationPolicy(FleetExcessCapacityTerminationPolicy::NOT_SET),
-    m_excessCapacityTerminationPolicyHasBeenSet(false),
-    m_fulfilledCapacity(0.0),
-    m_fulfilledCapacityHasBeenSet(false),
-    m_fulfilledOnDemandCapacity(0.0),
-    m_fulfilledOnDemandCapacityHasBeenSet(false),
-    m_launchTemplateConfigsHasBeenSet(false),
-    m_targetCapacitySpecificationHasBeenSet(false),
-    m_terminateInstancesWithExpiration(false),
-    m_terminateInstancesWithExpirationHasBeenSet(false),
-    m_type(FleetType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_validFromHasBeenSet(false),
-    m_validUntilHasBeenSet(false),
-    m_replaceUnhealthyInstances(false),
-    m_replaceUnhealthyInstancesHasBeenSet(false),
-    m_spotOptionsHasBeenSet(false),
-    m_onDemandOptionsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_errorsHasBeenSet(false),
-    m_instancesHasBeenSet(false),
-    m_contextHasBeenSet(false)
-{
-}
-
-FleetData::FleetData(const XmlNode& xmlNode) : 
-    m_activityStatus(FleetActivityStatus::NOT_SET),
-    m_activityStatusHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_fleetIdHasBeenSet(false),
-    m_fleetState(FleetStateCode::NOT_SET),
-    m_fleetStateHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_excessCapacityTerminationPolicy(FleetExcessCapacityTerminationPolicy::NOT_SET),
-    m_excessCapacityTerminationPolicyHasBeenSet(false),
-    m_fulfilledCapacity(0.0),
-    m_fulfilledCapacityHasBeenSet(false),
-    m_fulfilledOnDemandCapacity(0.0),
-    m_fulfilledOnDemandCapacityHasBeenSet(false),
-    m_launchTemplateConfigsHasBeenSet(false),
-    m_targetCapacitySpecificationHasBeenSet(false),
-    m_terminateInstancesWithExpiration(false),
-    m_terminateInstancesWithExpirationHasBeenSet(false),
-    m_type(FleetType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_validFromHasBeenSet(false),
-    m_validUntilHasBeenSet(false),
-    m_replaceUnhealthyInstances(false),
-    m_replaceUnhealthyInstancesHasBeenSet(false),
-    m_spotOptionsHasBeenSet(false),
-    m_onDemandOptionsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_errorsHasBeenSet(false),
-    m_instancesHasBeenSet(false),
-    m_contextHasBeenSet(false)
+FleetData::FleetData(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -96,7 +34,7 @@ FleetData& FleetData::operator =(const XmlNode& xmlNode)
     XmlNode activityStatusNode = resultNode.FirstChild("activityStatus");
     if(!activityStatusNode.IsNull())
     {
-      m_activityStatus = FleetActivityStatusMapper::GetFleetActivityStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(activityStatusNode.GetText()).c_str()).c_str());
+      m_activityStatus = FleetActivityStatusMapper::GetFleetActivityStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(activityStatusNode.GetText()).c_str()));
       m_activityStatusHasBeenSet = true;
     }
     XmlNode createTimeNode = resultNode.FirstChild("createTime");
@@ -114,7 +52,7 @@ FleetData& FleetData::operator =(const XmlNode& xmlNode)
     XmlNode fleetStateNode = resultNode.FirstChild("fleetState");
     if(!fleetStateNode.IsNull())
     {
-      m_fleetState = FleetStateCodeMapper::GetFleetStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(fleetStateNode.GetText()).c_str()).c_str());
+      m_fleetState = FleetStateCodeMapper::GetFleetStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(fleetStateNode.GetText()).c_str()));
       m_fleetStateHasBeenSet = true;
     }
     XmlNode clientTokenNode = resultNode.FirstChild("clientToken");
@@ -126,7 +64,7 @@ FleetData& FleetData::operator =(const XmlNode& xmlNode)
     XmlNode excessCapacityTerminationPolicyNode = resultNode.FirstChild("excessCapacityTerminationPolicy");
     if(!excessCapacityTerminationPolicyNode.IsNull())
     {
-      m_excessCapacityTerminationPolicy = FleetExcessCapacityTerminationPolicyMapper::GetFleetExcessCapacityTerminationPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(excessCapacityTerminationPolicyNode.GetText()).c_str()).c_str());
+      m_excessCapacityTerminationPolicy = FleetExcessCapacityTerminationPolicyMapper::GetFleetExcessCapacityTerminationPolicyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(excessCapacityTerminationPolicyNode.GetText()).c_str()));
       m_excessCapacityTerminationPolicyHasBeenSet = true;
     }
     XmlNode fulfilledCapacityNode = resultNode.FirstChild("fulfilledCapacity");
@@ -145,6 +83,7 @@ FleetData& FleetData::operator =(const XmlNode& xmlNode)
     if(!launchTemplateConfigsNode.IsNull())
     {
       XmlNode launchTemplateConfigsMember = launchTemplateConfigsNode.FirstChild("item");
+      m_launchTemplateConfigsHasBeenSet = !launchTemplateConfigsMember.IsNull();
       while(!launchTemplateConfigsMember.IsNull())
       {
         m_launchTemplateConfigs.push_back(launchTemplateConfigsMember);
@@ -168,7 +107,7 @@ FleetData& FleetData::operator =(const XmlNode& xmlNode)
     XmlNode typeNode = resultNode.FirstChild("type");
     if(!typeNode.IsNull())
     {
-      m_type = FleetTypeMapper::GetFleetTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()).c_str());
+      m_type = FleetTypeMapper::GetFleetTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(typeNode.GetText()).c_str()));
       m_typeHasBeenSet = true;
     }
     XmlNode validFromNode = resultNode.FirstChild("validFrom");
@@ -205,6 +144,7 @@ FleetData& FleetData::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -217,6 +157,7 @@ FleetData& FleetData::operator =(const XmlNode& xmlNode)
     if(!errorsNode.IsNull())
     {
       XmlNode errorsMember = errorsNode.FirstChild("item");
+      m_errorsHasBeenSet = !errorsMember.IsNull();
       while(!errorsMember.IsNull())
       {
         m_errors.push_back(errorsMember);
@@ -229,6 +170,7 @@ FleetData& FleetData::operator =(const XmlNode& xmlNode)
     if(!instancesNode.IsNull())
     {
       XmlNode instancesMember = instancesNode.FirstChild("item");
+      m_instancesHasBeenSet = !instancesMember.IsNull();
       while(!instancesMember.IsNull())
       {
         m_instances.push_back(instancesMember);
@@ -252,7 +194,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 {
   if(m_activityStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ActivityStatus=" << FleetActivityStatusMapper::GetNameForFleetActivityStatus(m_activityStatus) << "&";
+      oStream << location << index << locationValue << ".ActivityStatus=" << StringUtils::URLEncode(FleetActivityStatusMapper::GetNameForFleetActivityStatus(m_activityStatus)) << "&";
   }
 
   if(m_createTimeHasBeenSet)
@@ -267,7 +209,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 
   if(m_fleetStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".FleetState=" << FleetStateCodeMapper::GetNameForFleetStateCode(m_fleetState) << "&";
+      oStream << location << index << locationValue << ".FleetState=" << StringUtils::URLEncode(FleetStateCodeMapper::GetNameForFleetStateCode(m_fleetState)) << "&";
   }
 
   if(m_clientTokenHasBeenSet)
@@ -277,7 +219,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 
   if(m_excessCapacityTerminationPolicyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ExcessCapacityTerminationPolicy=" << FleetExcessCapacityTerminationPolicyMapper::GetNameForFleetExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy) << "&";
+      oStream << location << index << locationValue << ".ExcessCapacityTerminationPolicy=" << StringUtils::URLEncode(FleetExcessCapacityTerminationPolicyMapper::GetNameForFleetExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy)) << "&";
   }
 
   if(m_fulfilledCapacityHasBeenSet)
@@ -315,7 +257,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 
   if(m_typeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Type=" << FleetTypeMapper::GetNameForFleetType(m_type) << "&";
+      oStream << location << index << locationValue << ".Type=" << StringUtils::URLEncode(FleetTypeMapper::GetNameForFleetType(m_type)) << "&";
   }
 
   if(m_validFromHasBeenSet)
@@ -391,7 +333,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location) cons
 {
   if(m_activityStatusHasBeenSet)
   {
-      oStream << location << ".ActivityStatus=" << FleetActivityStatusMapper::GetNameForFleetActivityStatus(m_activityStatus) << "&";
+      oStream << location << ".ActivityStatus=" << StringUtils::URLEncode(FleetActivityStatusMapper::GetNameForFleetActivityStatus(m_activityStatus)) << "&";
   }
   if(m_createTimeHasBeenSet)
   {
@@ -403,7 +345,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_fleetStateHasBeenSet)
   {
-      oStream << location << ".FleetState=" << FleetStateCodeMapper::GetNameForFleetStateCode(m_fleetState) << "&";
+      oStream << location << ".FleetState=" << StringUtils::URLEncode(FleetStateCodeMapper::GetNameForFleetStateCode(m_fleetState)) << "&";
   }
   if(m_clientTokenHasBeenSet)
   {
@@ -411,15 +353,15 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_excessCapacityTerminationPolicyHasBeenSet)
   {
-      oStream << location << ".ExcessCapacityTerminationPolicy=" << FleetExcessCapacityTerminationPolicyMapper::GetNameForFleetExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy) << "&";
+      oStream << location << ".ExcessCapacityTerminationPolicy=" << StringUtils::URLEncode(FleetExcessCapacityTerminationPolicyMapper::GetNameForFleetExcessCapacityTerminationPolicy(m_excessCapacityTerminationPolicy)) << "&";
   }
   if(m_fulfilledCapacityHasBeenSet)
   {
-        oStream << location << ".FulfilledCapacity=" << StringUtils::URLEncode(m_fulfilledCapacity) << "&";
+      oStream << location << ".FulfilledCapacity=" << StringUtils::URLEncode(m_fulfilledCapacity) << "&";
   }
   if(m_fulfilledOnDemandCapacityHasBeenSet)
   {
-        oStream << location << ".FulfilledOnDemandCapacity=" << StringUtils::URLEncode(m_fulfilledOnDemandCapacity) << "&";
+      oStream << location << ".FulfilledOnDemandCapacity=" << StringUtils::URLEncode(m_fulfilledOnDemandCapacity) << "&";
   }
   if(m_launchTemplateConfigsHasBeenSet)
   {
@@ -427,7 +369,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_launchTemplateConfigs)
       {
         Aws::StringStream launchTemplateConfigsSs;
-        launchTemplateConfigsSs << location <<  ".LaunchTemplateConfigs." << launchTemplateConfigsIdx++;
+        launchTemplateConfigsSs << location << ".LaunchTemplateConfigs." << launchTemplateConfigsIdx++;
         item.OutputToStream(oStream, launchTemplateConfigsSs.str().c_str());
       }
   }
@@ -443,7 +385,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_typeHasBeenSet)
   {
-      oStream << location << ".Type=" << FleetTypeMapper::GetNameForFleetType(m_type) << "&";
+      oStream << location << ".Type=" << StringUtils::URLEncode(FleetTypeMapper::GetNameForFleetType(m_type)) << "&";
   }
   if(m_validFromHasBeenSet)
   {
@@ -475,7 +417,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -485,7 +427,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_errors)
       {
         Aws::StringStream errorsSs;
-        errorsSs << location <<  ".ErrorSet." << errorsIdx++;
+        errorsSs << location << ".ErrorSet." << errorsIdx++;
         item.OutputToStream(oStream, errorsSs.str().c_str());
       }
   }
@@ -495,7 +437,7 @@ void FleetData::OutputToStream(Aws::OStream& oStream, const char* location) cons
       for(auto& item : m_instances)
       {
         Aws::StringStream instancesSs;
-        instancesSs << location <<  ".FleetInstanceSet." << instancesIdx++;
+        instancesSs << location << ".FleetInstanceSet." << instancesIdx++;
         item.OutputToStream(oStream, instancesSs.str().c_str());
       }
   }

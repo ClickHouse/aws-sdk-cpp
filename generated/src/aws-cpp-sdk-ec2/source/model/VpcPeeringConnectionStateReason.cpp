@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VpcPeeringConnectionStateReason::VpcPeeringConnectionStateReason() : 
-    m_code(VpcPeeringConnectionStateReasonCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-VpcPeeringConnectionStateReason::VpcPeeringConnectionStateReason(const XmlNode& xmlNode) : 
-    m_code(VpcPeeringConnectionStateReasonCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+VpcPeeringConnectionStateReason::VpcPeeringConnectionStateReason(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ VpcPeeringConnectionStateReason& VpcPeeringConnectionStateReason::operator =(con
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = VpcPeeringConnectionStateReasonCodeMapper::GetVpcPeeringConnectionStateReasonCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = VpcPeeringConnectionStateReasonCodeMapper::GetVpcPeeringConnectionStateReasonCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void VpcPeeringConnectionStateReason::OutputToStream(Aws::OStream& oStream, cons
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << VpcPeeringConnectionStateReasonCodeMapper::GetNameForVpcPeeringConnectionStateReasonCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(VpcPeeringConnectionStateReasonCodeMapper::GetNameForVpcPeeringConnectionStateReasonCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void VpcPeeringConnectionStateReason::OutputToStream(Aws::OStream& oStream, cons
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << VpcPeeringConnectionStateReasonCodeMapper::GetNameForVpcPeeringConnectionStateReasonCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(VpcPeeringConnectionStateReasonCodeMapper::GetNameForVpcPeeringConnectionStateReasonCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

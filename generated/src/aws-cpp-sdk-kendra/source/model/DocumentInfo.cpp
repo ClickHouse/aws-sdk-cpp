@@ -18,15 +18,7 @@ namespace kendra
 namespace Model
 {
 
-DocumentInfo::DocumentInfo() : 
-    m_documentIdHasBeenSet(false),
-    m_attributesHasBeenSet(false)
-{
-}
-
-DocumentInfo::DocumentInfo(JsonView jsonValue) : 
-    m_documentIdHasBeenSet(false),
-    m_attributesHasBeenSet(false)
+DocumentInfo::DocumentInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DocumentInfo& DocumentInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DocumentId"))
   {
     m_documentId = jsonValue.GetString("DocumentId");
-
     m_documentIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Attributes"))
   {
     Aws::Utils::Array<JsonView> attributesJsonList = jsonValue.GetArray("Attributes");
@@ -49,7 +39,6 @@ DocumentInfo& DocumentInfo::operator =(JsonView jsonValue)
     }
     m_attributesHasBeenSet = true;
   }
-
   return *this;
 }
 

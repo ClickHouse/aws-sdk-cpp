@@ -31,93 +31,35 @@ namespace Model
   class SubDomainSetting
   {
   public:
-    AWS_AMPLIFY_API SubDomainSetting();
+    AWS_AMPLIFY_API SubDomainSetting() = default;
     AWS_AMPLIFY_API SubDomainSetting(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFY_API SubDomainSetting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The prefix setting for the subdomain. </p>
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p> The prefix setting for the subdomain. </p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    SubDomainSetting& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The prefix setting for the subdomain. </p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p> The prefix setting for the subdomain. </p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p> The prefix setting for the subdomain. </p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p> The prefix setting for the subdomain. </p>
-     */
-    inline SubDomainSetting& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p> The prefix setting for the subdomain. </p>
-     */
-    inline SubDomainSetting& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p> The prefix setting for the subdomain. </p>
-     */
-    inline SubDomainSetting& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The branch name setting for the subdomain. </p>
      */
-    inline const Aws::String& GetBranchName() const{ return m_branchName; }
-
-    /**
-     * <p> The branch name setting for the subdomain. </p>
-     */
+    inline const Aws::String& GetBranchName() const { return m_branchName; }
     inline bool BranchNameHasBeenSet() const { return m_branchNameHasBeenSet; }
-
-    /**
-     * <p> The branch name setting for the subdomain. </p>
-     */
-    inline void SetBranchName(const Aws::String& value) { m_branchNameHasBeenSet = true; m_branchName = value; }
-
-    /**
-     * <p> The branch name setting for the subdomain. </p>
-     */
-    inline void SetBranchName(Aws::String&& value) { m_branchNameHasBeenSet = true; m_branchName = std::move(value); }
-
-    /**
-     * <p> The branch name setting for the subdomain. </p>
-     */
-    inline void SetBranchName(const char* value) { m_branchNameHasBeenSet = true; m_branchName.assign(value); }
-
-    /**
-     * <p> The branch name setting for the subdomain. </p>
-     */
-    inline SubDomainSetting& WithBranchName(const Aws::String& value) { SetBranchName(value); return *this;}
-
-    /**
-     * <p> The branch name setting for the subdomain. </p>
-     */
-    inline SubDomainSetting& WithBranchName(Aws::String&& value) { SetBranchName(std::move(value)); return *this;}
-
-    /**
-     * <p> The branch name setting for the subdomain. </p>
-     */
-    inline SubDomainSetting& WithBranchName(const char* value) { SetBranchName(value); return *this;}
-
+    template<typename BranchNameT = Aws::String>
+    void SetBranchName(BranchNameT&& value) { m_branchNameHasBeenSet = true; m_branchName = std::forward<BranchNameT>(value); }
+    template<typename BranchNameT = Aws::String>
+    SubDomainSetting& WithBranchName(BranchNameT&& value) { SetBranchName(std::forward<BranchNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_prefix;

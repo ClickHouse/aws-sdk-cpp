@@ -27,7 +27,7 @@ namespace Model
   class TestRepositoryTriggersRequest : public CodeCommitRequest
   {
   public:
-    AWS_CODECOMMIT_API TestRepositoryTriggersRequest();
+    AWS_CODECOMMIT_API TestRepositoryTriggersRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,87 +40,31 @@ namespace Model
     AWS_CODECOMMIT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the repository in which to test the triggers.</p>
      */
-    inline const Aws::String& GetRepositoryName() const{ return m_repositoryName; }
-
-    /**
-     * <p>The name of the repository in which to test the triggers.</p>
-     */
+    inline const Aws::String& GetRepositoryName() const { return m_repositoryName; }
     inline bool RepositoryNameHasBeenSet() const { return m_repositoryNameHasBeenSet; }
+    template<typename RepositoryNameT = Aws::String>
+    void SetRepositoryName(RepositoryNameT&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::forward<RepositoryNameT>(value); }
+    template<typename RepositoryNameT = Aws::String>
+    TestRepositoryTriggersRequest& WithRepositoryName(RepositoryNameT&& value) { SetRepositoryName(std::forward<RepositoryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the repository in which to test the triggers.</p>
-     */
-    inline void SetRepositoryName(const Aws::String& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
-
-    /**
-     * <p>The name of the repository in which to test the triggers.</p>
-     */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
-
-    /**
-     * <p>The name of the repository in which to test the triggers.</p>
-     */
-    inline void SetRepositoryName(const char* value) { m_repositoryNameHasBeenSet = true; m_repositoryName.assign(value); }
-
-    /**
-     * <p>The name of the repository in which to test the triggers.</p>
-     */
-    inline TestRepositoryTriggersRequest& WithRepositoryName(const Aws::String& value) { SetRepositoryName(value); return *this;}
-
-    /**
-     * <p>The name of the repository in which to test the triggers.</p>
-     */
-    inline TestRepositoryTriggersRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the repository in which to test the triggers.</p>
-     */
-    inline TestRepositoryTriggersRequest& WithRepositoryName(const char* value) { SetRepositoryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of triggers to test.</p>
      */
-    inline const Aws::Vector<RepositoryTrigger>& GetTriggers() const{ return m_triggers; }
-
-    /**
-     * <p>The list of triggers to test.</p>
-     */
+    inline const Aws::Vector<RepositoryTrigger>& GetTriggers() const { return m_triggers; }
     inline bool TriggersHasBeenSet() const { return m_triggersHasBeenSet; }
-
-    /**
-     * <p>The list of triggers to test.</p>
-     */
-    inline void SetTriggers(const Aws::Vector<RepositoryTrigger>& value) { m_triggersHasBeenSet = true; m_triggers = value; }
-
-    /**
-     * <p>The list of triggers to test.</p>
-     */
-    inline void SetTriggers(Aws::Vector<RepositoryTrigger>&& value) { m_triggersHasBeenSet = true; m_triggers = std::move(value); }
-
-    /**
-     * <p>The list of triggers to test.</p>
-     */
-    inline TestRepositoryTriggersRequest& WithTriggers(const Aws::Vector<RepositoryTrigger>& value) { SetTriggers(value); return *this;}
-
-    /**
-     * <p>The list of triggers to test.</p>
-     */
-    inline TestRepositoryTriggersRequest& WithTriggers(Aws::Vector<RepositoryTrigger>&& value) { SetTriggers(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of triggers to test.</p>
-     */
-    inline TestRepositoryTriggersRequest& AddTriggers(const RepositoryTrigger& value) { m_triggersHasBeenSet = true; m_triggers.push_back(value); return *this; }
-
-    /**
-     * <p>The list of triggers to test.</p>
-     */
-    inline TestRepositoryTriggersRequest& AddTriggers(RepositoryTrigger&& value) { m_triggersHasBeenSet = true; m_triggers.push_back(std::move(value)); return *this; }
-
+    template<typename TriggersT = Aws::Vector<RepositoryTrigger>>
+    void SetTriggers(TriggersT&& value) { m_triggersHasBeenSet = true; m_triggers = std::forward<TriggersT>(value); }
+    template<typename TriggersT = Aws::Vector<RepositoryTrigger>>
+    TestRepositoryTriggersRequest& WithTriggers(TriggersT&& value) { SetTriggers(std::forward<TriggersT>(value)); return *this;}
+    template<typename TriggersT = RepositoryTrigger>
+    TestRepositoryTriggersRequest& AddTriggers(TriggersT&& value) { m_triggersHasBeenSet = true; m_triggers.emplace_back(std::forward<TriggersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_repositoryName;

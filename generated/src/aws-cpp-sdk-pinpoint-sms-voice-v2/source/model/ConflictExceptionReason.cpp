@@ -51,6 +51,11 @@ namespace Aws
         static const int TWO_WAY_CONFIG_MISMATCH_HASH = HashingUtils::HashString("TWO_WAY_CONFIG_MISMATCH");
         static const int VERIFICATION_CODE_EXPIRED_HASH = HashingUtils::HashString("VERIFICATION_CODE_EXPIRED");
         static const int VERIFICATION_ALREADY_COMPLETE_HASH = HashingUtils::HashString("VERIFICATION_ALREADY_COMPLETE");
+        static const int PROTECT_CONFIGURATION_IS_ACCOUNT_DEFAULT_HASH = HashingUtils::HashString("PROTECT_CONFIGURATION_IS_ACCOUNT_DEFAULT");
+        static const int PROTECT_CONFIGURATION_ASSOCIATED_WITH_CONFIGURATION_SET_HASH = HashingUtils::HashString("PROTECT_CONFIGURATION_ASSOCIATED_WITH_CONFIGURATION_SET");
+        static const int PROTECT_CONFIGURATION_NOT_ASSOCIATED_WITH_CONFIGURATION_SET_HASH = HashingUtils::HashString("PROTECT_CONFIGURATION_NOT_ASSOCIATED_WITH_CONFIGURATION_SET");
+        static const int DESTINATION_COUNTRY_BLOCKED_BY_PROTECT_CONFIGURATION_HASH = HashingUtils::HashString("DESTINATION_COUNTRY_BLOCKED_BY_PROTECT_CONFIGURATION");
+        static const int DESTINATION_PHONE_NUMBER_BLOCKED_BY_PROTECT_NUMBER_OVERRIDE_HASH = HashingUtils::HashString("DESTINATION_PHONE_NUMBER_BLOCKED_BY_PROTECT_NUMBER_OVERRIDE");
 
 
         ConflictExceptionReason GetConflictExceptionReasonForName(const Aws::String& name)
@@ -180,6 +185,26 @@ namespace Aws
           {
             return ConflictExceptionReason::VERIFICATION_ALREADY_COMPLETE;
           }
+          else if (hashCode == PROTECT_CONFIGURATION_IS_ACCOUNT_DEFAULT_HASH)
+          {
+            return ConflictExceptionReason::PROTECT_CONFIGURATION_IS_ACCOUNT_DEFAULT;
+          }
+          else if (hashCode == PROTECT_CONFIGURATION_ASSOCIATED_WITH_CONFIGURATION_SET_HASH)
+          {
+            return ConflictExceptionReason::PROTECT_CONFIGURATION_ASSOCIATED_WITH_CONFIGURATION_SET;
+          }
+          else if (hashCode == PROTECT_CONFIGURATION_NOT_ASSOCIATED_WITH_CONFIGURATION_SET_HASH)
+          {
+            return ConflictExceptionReason::PROTECT_CONFIGURATION_NOT_ASSOCIATED_WITH_CONFIGURATION_SET;
+          }
+          else if (hashCode == DESTINATION_COUNTRY_BLOCKED_BY_PROTECT_CONFIGURATION_HASH)
+          {
+            return ConflictExceptionReason::DESTINATION_COUNTRY_BLOCKED_BY_PROTECT_CONFIGURATION;
+          }
+          else if (hashCode == DESTINATION_PHONE_NUMBER_BLOCKED_BY_PROTECT_NUMBER_OVERRIDE_HASH)
+          {
+            return ConflictExceptionReason::DESTINATION_PHONE_NUMBER_BLOCKED_BY_PROTECT_NUMBER_OVERRIDE;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -258,6 +283,16 @@ namespace Aws
             return "VERIFICATION_CODE_EXPIRED";
           case ConflictExceptionReason::VERIFICATION_ALREADY_COMPLETE:
             return "VERIFICATION_ALREADY_COMPLETE";
+          case ConflictExceptionReason::PROTECT_CONFIGURATION_IS_ACCOUNT_DEFAULT:
+            return "PROTECT_CONFIGURATION_IS_ACCOUNT_DEFAULT";
+          case ConflictExceptionReason::PROTECT_CONFIGURATION_ASSOCIATED_WITH_CONFIGURATION_SET:
+            return "PROTECT_CONFIGURATION_ASSOCIATED_WITH_CONFIGURATION_SET";
+          case ConflictExceptionReason::PROTECT_CONFIGURATION_NOT_ASSOCIATED_WITH_CONFIGURATION_SET:
+            return "PROTECT_CONFIGURATION_NOT_ASSOCIATED_WITH_CONFIGURATION_SET";
+          case ConflictExceptionReason::DESTINATION_COUNTRY_BLOCKED_BY_PROTECT_CONFIGURATION:
+            return "DESTINATION_COUNTRY_BLOCKED_BY_PROTECT_CONFIGURATION";
+          case ConflictExceptionReason::DESTINATION_PHONE_NUMBER_BLOCKED_BY_PROTECT_NUMBER_OVERRIDE:
+            return "DESTINATION_PHONE_NUMBER_BLOCKED_BY_PROTECT_NUMBER_OVERRIDE";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -32,186 +32,69 @@ namespace Model
   class TopicRuleListItem
   {
   public:
-    AWS_IOT_API TopicRuleListItem();
+    AWS_IOT_API TopicRuleListItem() = default;
     AWS_IOT_API TopicRuleListItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API TopicRuleListItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The rule ARN.</p>
      */
-    inline const Aws::String& GetRuleArn() const{ return m_ruleArn; }
-
-    /**
-     * <p>The rule ARN.</p>
-     */
+    inline const Aws::String& GetRuleArn() const { return m_ruleArn; }
     inline bool RuleArnHasBeenSet() const { return m_ruleArnHasBeenSet; }
+    template<typename RuleArnT = Aws::String>
+    void SetRuleArn(RuleArnT&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = std::forward<RuleArnT>(value); }
+    template<typename RuleArnT = Aws::String>
+    TopicRuleListItem& WithRuleArn(RuleArnT&& value) { SetRuleArn(std::forward<RuleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The rule ARN.</p>
-     */
-    inline void SetRuleArn(const Aws::String& value) { m_ruleArnHasBeenSet = true; m_ruleArn = value; }
-
-    /**
-     * <p>The rule ARN.</p>
-     */
-    inline void SetRuleArn(Aws::String&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = std::move(value); }
-
-    /**
-     * <p>The rule ARN.</p>
-     */
-    inline void SetRuleArn(const char* value) { m_ruleArnHasBeenSet = true; m_ruleArn.assign(value); }
-
-    /**
-     * <p>The rule ARN.</p>
-     */
-    inline TopicRuleListItem& WithRuleArn(const Aws::String& value) { SetRuleArn(value); return *this;}
-
-    /**
-     * <p>The rule ARN.</p>
-     */
-    inline TopicRuleListItem& WithRuleArn(Aws::String&& value) { SetRuleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The rule ARN.</p>
-     */
-    inline TopicRuleListItem& WithRuleArn(const char* value) { SetRuleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the rule.</p>
      */
-    inline const Aws::String& GetRuleName() const{ return m_ruleName; }
-
-    /**
-     * <p>The name of the rule.</p>
-     */
+    inline const Aws::String& GetRuleName() const { return m_ruleName; }
     inline bool RuleNameHasBeenSet() const { return m_ruleNameHasBeenSet; }
+    template<typename RuleNameT = Aws::String>
+    void SetRuleName(RuleNameT&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::forward<RuleNameT>(value); }
+    template<typename RuleNameT = Aws::String>
+    TopicRuleListItem& WithRuleName(RuleNameT&& value) { SetRuleName(std::forward<RuleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline void SetRuleName(const Aws::String& value) { m_ruleNameHasBeenSet = true; m_ruleName = value; }
-
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline void SetRuleName(Aws::String&& value) { m_ruleNameHasBeenSet = true; m_ruleName = std::move(value); }
-
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline void SetRuleName(const char* value) { m_ruleNameHasBeenSet = true; m_ruleName.assign(value); }
-
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline TopicRuleListItem& WithRuleName(const Aws::String& value) { SetRuleName(value); return *this;}
-
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline TopicRuleListItem& WithRuleName(Aws::String&& value) { SetRuleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the rule.</p>
-     */
-    inline TopicRuleListItem& WithRuleName(const char* value) { SetRuleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The pattern for the topic names that apply.</p>
      */
-    inline const Aws::String& GetTopicPattern() const{ return m_topicPattern; }
-
-    /**
-     * <p>The pattern for the topic names that apply.</p>
-     */
+    inline const Aws::String& GetTopicPattern() const { return m_topicPattern; }
     inline bool TopicPatternHasBeenSet() const { return m_topicPatternHasBeenSet; }
+    template<typename TopicPatternT = Aws::String>
+    void SetTopicPattern(TopicPatternT&& value) { m_topicPatternHasBeenSet = true; m_topicPattern = std::forward<TopicPatternT>(value); }
+    template<typename TopicPatternT = Aws::String>
+    TopicRuleListItem& WithTopicPattern(TopicPatternT&& value) { SetTopicPattern(std::forward<TopicPatternT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pattern for the topic names that apply.</p>
-     */
-    inline void SetTopicPattern(const Aws::String& value) { m_topicPatternHasBeenSet = true; m_topicPattern = value; }
-
-    /**
-     * <p>The pattern for the topic names that apply.</p>
-     */
-    inline void SetTopicPattern(Aws::String&& value) { m_topicPatternHasBeenSet = true; m_topicPattern = std::move(value); }
-
-    /**
-     * <p>The pattern for the topic names that apply.</p>
-     */
-    inline void SetTopicPattern(const char* value) { m_topicPatternHasBeenSet = true; m_topicPattern.assign(value); }
-
-    /**
-     * <p>The pattern for the topic names that apply.</p>
-     */
-    inline TopicRuleListItem& WithTopicPattern(const Aws::String& value) { SetTopicPattern(value); return *this;}
-
-    /**
-     * <p>The pattern for the topic names that apply.</p>
-     */
-    inline TopicRuleListItem& WithTopicPattern(Aws::String&& value) { SetTopicPattern(std::move(value)); return *this;}
-
-    /**
-     * <p>The pattern for the topic names that apply.</p>
-     */
-    inline TopicRuleListItem& WithTopicPattern(const char* value) { SetTopicPattern(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time the rule was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The date and time the rule was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    TopicRuleListItem& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the rule was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The date and time the rule was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The date and time the rule was created.</p>
-     */
-    inline TopicRuleListItem& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time the rule was created.</p>
-     */
-    inline TopicRuleListItem& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the rule is disabled.</p>
      */
-    inline bool GetRuleDisabled() const{ return m_ruleDisabled; }
-
-    /**
-     * <p>Specifies whether the rule is disabled.</p>
-     */
+    inline bool GetRuleDisabled() const { return m_ruleDisabled; }
     inline bool RuleDisabledHasBeenSet() const { return m_ruleDisabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the rule is disabled.</p>
-     */
     inline void SetRuleDisabled(bool value) { m_ruleDisabledHasBeenSet = true; m_ruleDisabled = value; }
-
-    /**
-     * <p>Specifies whether the rule is disabled.</p>
-     */
     inline TopicRuleListItem& WithRuleDisabled(bool value) { SetRuleDisabled(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_ruleArn;
@@ -223,10 +106,10 @@ namespace Model
     Aws::String m_topicPattern;
     bool m_topicPatternHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
-    bool m_ruleDisabled;
+    bool m_ruleDisabled{false};
     bool m_ruleDisabledHasBeenSet = false;
   };
 

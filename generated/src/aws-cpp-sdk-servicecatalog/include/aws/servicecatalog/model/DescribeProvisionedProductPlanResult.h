@@ -30,153 +30,69 @@ namespace Model
   class DescribeProvisionedProductPlanResult
   {
   public:
-    AWS_SERVICECATALOG_API DescribeProvisionedProductPlanResult();
+    AWS_SERVICECATALOG_API DescribeProvisionedProductPlanResult() = default;
     AWS_SERVICECATALOG_API DescribeProvisionedProductPlanResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SERVICECATALOG_API DescribeProvisionedProductPlanResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Information about the plan.</p>
      */
-    inline const ProvisionedProductPlanDetails& GetProvisionedProductPlanDetails() const{ return m_provisionedProductPlanDetails; }
+    inline const ProvisionedProductPlanDetails& GetProvisionedProductPlanDetails() const { return m_provisionedProductPlanDetails; }
+    template<typename ProvisionedProductPlanDetailsT = ProvisionedProductPlanDetails>
+    void SetProvisionedProductPlanDetails(ProvisionedProductPlanDetailsT&& value) { m_provisionedProductPlanDetailsHasBeenSet = true; m_provisionedProductPlanDetails = std::forward<ProvisionedProductPlanDetailsT>(value); }
+    template<typename ProvisionedProductPlanDetailsT = ProvisionedProductPlanDetails>
+    DescribeProvisionedProductPlanResult& WithProvisionedProductPlanDetails(ProvisionedProductPlanDetailsT&& value) { SetProvisionedProductPlanDetails(std::forward<ProvisionedProductPlanDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the plan.</p>
-     */
-    inline void SetProvisionedProductPlanDetails(const ProvisionedProductPlanDetails& value) { m_provisionedProductPlanDetails = value; }
-
-    /**
-     * <p>Information about the plan.</p>
-     */
-    inline void SetProvisionedProductPlanDetails(ProvisionedProductPlanDetails&& value) { m_provisionedProductPlanDetails = std::move(value); }
-
-    /**
-     * <p>Information about the plan.</p>
-     */
-    inline DescribeProvisionedProductPlanResult& WithProvisionedProductPlanDetails(const ProvisionedProductPlanDetails& value) { SetProvisionedProductPlanDetails(value); return *this;}
-
-    /**
-     * <p>Information about the plan.</p>
-     */
-    inline DescribeProvisionedProductPlanResult& WithProvisionedProductPlanDetails(ProvisionedProductPlanDetails&& value) { SetProvisionedProductPlanDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the resource changes that will occur when the plan is
      * executed.</p>
      */
-    inline const Aws::Vector<ResourceChange>& GetResourceChanges() const{ return m_resourceChanges; }
+    inline const Aws::Vector<ResourceChange>& GetResourceChanges() const { return m_resourceChanges; }
+    template<typename ResourceChangesT = Aws::Vector<ResourceChange>>
+    void SetResourceChanges(ResourceChangesT&& value) { m_resourceChangesHasBeenSet = true; m_resourceChanges = std::forward<ResourceChangesT>(value); }
+    template<typename ResourceChangesT = Aws::Vector<ResourceChange>>
+    DescribeProvisionedProductPlanResult& WithResourceChanges(ResourceChangesT&& value) { SetResourceChanges(std::forward<ResourceChangesT>(value)); return *this;}
+    template<typename ResourceChangesT = ResourceChange>
+    DescribeProvisionedProductPlanResult& AddResourceChanges(ResourceChangesT&& value) { m_resourceChangesHasBeenSet = true; m_resourceChanges.emplace_back(std::forward<ResourceChangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the resource changes that will occur when the plan is
-     * executed.</p>
-     */
-    inline void SetResourceChanges(const Aws::Vector<ResourceChange>& value) { m_resourceChanges = value; }
-
-    /**
-     * <p>Information about the resource changes that will occur when the plan is
-     * executed.</p>
-     */
-    inline void SetResourceChanges(Aws::Vector<ResourceChange>&& value) { m_resourceChanges = std::move(value); }
-
-    /**
-     * <p>Information about the resource changes that will occur when the plan is
-     * executed.</p>
-     */
-    inline DescribeProvisionedProductPlanResult& WithResourceChanges(const Aws::Vector<ResourceChange>& value) { SetResourceChanges(value); return *this;}
-
-    /**
-     * <p>Information about the resource changes that will occur when the plan is
-     * executed.</p>
-     */
-    inline DescribeProvisionedProductPlanResult& WithResourceChanges(Aws::Vector<ResourceChange>&& value) { SetResourceChanges(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the resource changes that will occur when the plan is
-     * executed.</p>
-     */
-    inline DescribeProvisionedProductPlanResult& AddResourceChanges(const ResourceChange& value) { m_resourceChanges.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the resource changes that will occur when the plan is
-     * executed.</p>
-     */
-    inline DescribeProvisionedProductPlanResult& AddResourceChanges(ResourceChange&& value) { m_resourceChanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The page token to use to retrieve the next set of results. If there are no
      * additional results, this value is null.</p>
      */
-    inline const Aws::String& GetNextPageToken() const{ return m_nextPageToken; }
+    inline const Aws::String& GetNextPageToken() const { return m_nextPageToken; }
+    template<typename NextPageTokenT = Aws::String>
+    void SetNextPageToken(NextPageTokenT&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = std::forward<NextPageTokenT>(value); }
+    template<typename NextPageTokenT = Aws::String>
+    DescribeProvisionedProductPlanResult& WithNextPageToken(NextPageTokenT&& value) { SetNextPageToken(std::forward<NextPageTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline void SetNextPageToken(const Aws::String& value) { m_nextPageToken = value; }
-
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline void SetNextPageToken(Aws::String&& value) { m_nextPageToken = std::move(value); }
-
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline void SetNextPageToken(const char* value) { m_nextPageToken.assign(value); }
-
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline DescribeProvisionedProductPlanResult& WithNextPageToken(const Aws::String& value) { SetNextPageToken(value); return *this;}
-
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline DescribeProvisionedProductPlanResult& WithNextPageToken(Aws::String&& value) { SetNextPageToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The page token to use to retrieve the next set of results. If there are no
-     * additional results, this value is null.</p>
-     */
-    inline DescribeProvisionedProductPlanResult& WithNextPageToken(const char* value) { SetNextPageToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeProvisionedProductPlanResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeProvisionedProductPlanResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeProvisionedProductPlanResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeProvisionedProductPlanResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ProvisionedProductPlanDetails m_provisionedProductPlanDetails;
+    bool m_provisionedProductPlanDetailsHasBeenSet = false;
 
     Aws::Vector<ResourceChange> m_resourceChanges;
+    bool m_resourceChangesHasBeenSet = false;
 
     Aws::String m_nextPageToken;
+    bool m_nextPageTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

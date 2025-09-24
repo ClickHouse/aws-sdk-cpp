@@ -32,158 +32,50 @@ namespace Model
   class AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification
   {
   public:
-    AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification();
+    AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification() = default;
     AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the launch template. You must specify either
      * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
      */
-    inline const Aws::String& GetLaunchTemplateId() const{ return m_launchTemplateId; }
-
-    /**
-     * <p>The identifier of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
+    inline const Aws::String& GetLaunchTemplateId() const { return m_launchTemplateId; }
     inline bool LaunchTemplateIdHasBeenSet() const { return m_launchTemplateIdHasBeenSet; }
+    template<typename LaunchTemplateIdT = Aws::String>
+    void SetLaunchTemplateId(LaunchTemplateIdT&& value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId = std::forward<LaunchTemplateIdT>(value); }
+    template<typename LaunchTemplateIdT = Aws::String>
+    AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithLaunchTemplateId(LaunchTemplateIdT&& value) { SetLaunchTemplateId(std::forward<LaunchTemplateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline void SetLaunchTemplateId(const Aws::String& value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId = value; }
-
-    /**
-     * <p>The identifier of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline void SetLaunchTemplateId(Aws::String&& value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId = std::move(value); }
-
-    /**
-     * <p>The identifier of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline void SetLaunchTemplateId(const char* value) { m_launchTemplateIdHasBeenSet = true; m_launchTemplateId.assign(value); }
-
-    /**
-     * <p>The identifier of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithLaunchTemplateId(const Aws::String& value) { SetLaunchTemplateId(value); return *this;}
-
-    /**
-     * <p>The identifier of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithLaunchTemplateId(Aws::String&& value) { SetLaunchTemplateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithLaunchTemplateId(const char* value) { SetLaunchTemplateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the launch template. You must specify either
      * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
      */
-    inline const Aws::String& GetLaunchTemplateName() const{ return m_launchTemplateName; }
-
-    /**
-     * <p>The name of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
+    inline const Aws::String& GetLaunchTemplateName() const { return m_launchTemplateName; }
     inline bool LaunchTemplateNameHasBeenSet() const { return m_launchTemplateNameHasBeenSet; }
+    template<typename LaunchTemplateNameT = Aws::String>
+    void SetLaunchTemplateName(LaunchTemplateNameT&& value) { m_launchTemplateNameHasBeenSet = true; m_launchTemplateName = std::forward<LaunchTemplateNameT>(value); }
+    template<typename LaunchTemplateNameT = Aws::String>
+    AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithLaunchTemplateName(LaunchTemplateNameT&& value) { SetLaunchTemplateName(std::forward<LaunchTemplateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline void SetLaunchTemplateName(const Aws::String& value) { m_launchTemplateNameHasBeenSet = true; m_launchTemplateName = value; }
-
-    /**
-     * <p>The name of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline void SetLaunchTemplateName(Aws::String&& value) { m_launchTemplateNameHasBeenSet = true; m_launchTemplateName = std::move(value); }
-
-    /**
-     * <p>The name of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline void SetLaunchTemplateName(const char* value) { m_launchTemplateNameHasBeenSet = true; m_launchTemplateName.assign(value); }
-
-    /**
-     * <p>The name of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithLaunchTemplateName(const Aws::String& value) { SetLaunchTemplateName(value); return *this;}
-
-    /**
-     * <p>The name of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithLaunchTemplateName(Aws::String&& value) { SetLaunchTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the launch template. You must specify either
-     * <code>LaunchTemplateId</code> or <code>LaunchTemplateName</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithLaunchTemplateName(const char* value) { SetLaunchTemplateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Identifies the version of the launch template. You can specify a version
      * identifier, or use the values <code>$Latest</code> or <code>$Default</code>.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>Identifies the version of the launch template. You can specify a version
-     * identifier, or use the values <code>$Latest</code> or <code>$Default</code>.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
-
-    /**
-     * <p>Identifies the version of the launch template. You can specify a version
-     * identifier, or use the values <code>$Latest</code> or <code>$Default</code>.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>Identifies the version of the launch template. You can specify a version
-     * identifier, or use the values <code>$Latest</code> or <code>$Default</code>.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>Identifies the version of the launch template. You can specify a version
-     * identifier, or use the values <code>$Latest</code> or <code>$Default</code>.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>Identifies the version of the launch template. You can specify a version
-     * identifier, or use the values <code>$Latest</code> or <code>$Default</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>Identifies the version of the launch template. You can specify a version
-     * identifier, or use the values <code>$Latest</code> or <code>$Default</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifies the version of the launch template. You can specify a version
-     * identifier, or use the values <code>$Latest</code> or <code>$Default</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithVersion(const char* value) { SetVersion(value); return *this;}
-
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_launchTemplateId;

@@ -20,39 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackInstance::StackInstance() : 
-    m_stackSetIdHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_accountHasBeenSet(false),
-    m_stackIdHasBeenSet(false),
-    m_parameterOverridesHasBeenSet(false),
-    m_status(StackInstanceStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_stackInstanceStatusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_organizationalUnitIdHasBeenSet(false),
-    m_driftStatus(StackDriftStatus::NOT_SET),
-    m_driftStatusHasBeenSet(false),
-    m_lastDriftCheckTimestampHasBeenSet(false),
-    m_lastOperationIdHasBeenSet(false)
-{
-}
-
-StackInstance::StackInstance(const XmlNode& xmlNode) : 
-    m_stackSetIdHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_accountHasBeenSet(false),
-    m_stackIdHasBeenSet(false),
-    m_parameterOverridesHasBeenSet(false),
-    m_status(StackInstanceStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_stackInstanceStatusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_organizationalUnitIdHasBeenSet(false),
-    m_driftStatus(StackDriftStatus::NOT_SET),
-    m_driftStatusHasBeenSet(false),
-    m_lastDriftCheckTimestampHasBeenSet(false),
-    m_lastOperationIdHasBeenSet(false)
+StackInstance::StackInstance(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -91,6 +59,7 @@ StackInstance& StackInstance::operator =(const XmlNode& xmlNode)
     if(!parameterOverridesNode.IsNull())
     {
       XmlNode parameterOverridesMember = parameterOverridesNode.FirstChild("member");
+      m_parameterOverridesHasBeenSet = !parameterOverridesMember.IsNull();
       while(!parameterOverridesMember.IsNull())
       {
         m_parameterOverrides.push_back(parameterOverridesMember);
@@ -102,7 +71,7 @@ StackInstance& StackInstance::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = StackInstanceStatusMapper::GetStackInstanceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = StackInstanceStatusMapper::GetStackInstanceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode stackInstanceStatusNode = resultNode.FirstChild("StackInstanceStatus");
@@ -126,7 +95,7 @@ StackInstance& StackInstance::operator =(const XmlNode& xmlNode)
     XmlNode driftStatusNode = resultNode.FirstChild("DriftStatus");
     if(!driftStatusNode.IsNull())
     {
-      m_driftStatus = StackDriftStatusMapper::GetStackDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(driftStatusNode.GetText()).c_str()).c_str());
+      m_driftStatus = StackDriftStatusMapper::GetStackDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(driftStatusNode.GetText()).c_str()));
       m_driftStatusHasBeenSet = true;
     }
     XmlNode lastDriftCheckTimestampNode = resultNode.FirstChild("LastDriftCheckTimestamp");
@@ -181,7 +150,7 @@ void StackInstance::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << StackInstanceStatusMapper::GetNameForStackInstanceStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(StackInstanceStatusMapper::GetNameForStackInstanceStatus(m_status)) << "&";
   }
 
   if(m_stackInstanceStatusHasBeenSet)
@@ -203,7 +172,7 @@ void StackInstance::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_driftStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DriftStatus=" << StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus) << "&";
+      oStream << location << index << locationValue << ".DriftStatus=" << StringUtils::URLEncode(StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus)) << "&";
   }
 
   if(m_lastDriftCheckTimestampHasBeenSet)
@@ -242,13 +211,13 @@ void StackInstance::OutputToStream(Aws::OStream& oStream, const char* location) 
       for(auto& item : m_parameterOverrides)
       {
         Aws::StringStream parameterOverridesSs;
-        parameterOverridesSs << location <<  ".ParameterOverrides.member." << parameterOverridesIdx++;
+        parameterOverridesSs << location << ".ParameterOverrides.member." << parameterOverridesIdx++;
         item.OutputToStream(oStream, parameterOverridesSs.str().c_str());
       }
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << StackInstanceStatusMapper::GetNameForStackInstanceStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(StackInstanceStatusMapper::GetNameForStackInstanceStatus(m_status)) << "&";
   }
   if(m_stackInstanceStatusHasBeenSet)
   {
@@ -266,7 +235,7 @@ void StackInstance::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_driftStatusHasBeenSet)
   {
-      oStream << location << ".DriftStatus=" << StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus) << "&";
+      oStream << location << ".DriftStatus=" << StringUtils::URLEncode(StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus)) << "&";
   }
   if(m_lastDriftCheckTimestampHasBeenSet)
   {

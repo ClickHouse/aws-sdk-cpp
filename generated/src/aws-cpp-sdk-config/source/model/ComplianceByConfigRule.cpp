@@ -18,15 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-ComplianceByConfigRule::ComplianceByConfigRule() : 
-    m_configRuleNameHasBeenSet(false),
-    m_complianceHasBeenSet(false)
-{
-}
-
-ComplianceByConfigRule::ComplianceByConfigRule(JsonView jsonValue) : 
-    m_configRuleNameHasBeenSet(false),
-    m_complianceHasBeenSet(false)
+ComplianceByConfigRule::ComplianceByConfigRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ComplianceByConfigRule& ComplianceByConfigRule::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ConfigRuleName"))
   {
     m_configRuleName = jsonValue.GetString("ConfigRuleName");
-
     m_configRuleNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Compliance"))
   {
     m_compliance = jsonValue.GetObject("Compliance");
-
     m_complianceHasBeenSet = true;
   }
-
   return *this;
 }
 

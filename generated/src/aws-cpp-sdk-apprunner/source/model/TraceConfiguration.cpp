@@ -18,15 +18,7 @@ namespace AppRunner
 namespace Model
 {
 
-TraceConfiguration::TraceConfiguration() : 
-    m_vendor(TracingVendor::NOT_SET),
-    m_vendorHasBeenSet(false)
-{
-}
-
-TraceConfiguration::TraceConfiguration(JsonView jsonValue) : 
-    m_vendor(TracingVendor::NOT_SET),
-    m_vendorHasBeenSet(false)
+TraceConfiguration::TraceConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TraceConfiguration& TraceConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Vendor"))
   {
     m_vendor = TracingVendorMapper::GetTracingVendorForName(jsonValue.GetString("Vendor"));
-
     m_vendorHasBeenSet = true;
   }
-
   return *this;
 }
 

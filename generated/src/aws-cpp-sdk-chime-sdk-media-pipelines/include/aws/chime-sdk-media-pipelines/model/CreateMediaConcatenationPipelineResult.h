@@ -28,73 +28,39 @@ namespace Model
   class CreateMediaConcatenationPipelineResult
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API CreateMediaConcatenationPipelineResult();
+    AWS_CHIMESDKMEDIAPIPELINES_API CreateMediaConcatenationPipelineResult() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API CreateMediaConcatenationPipelineResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CHIMESDKMEDIAPIPELINES_API CreateMediaConcatenationPipelineResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A media concatenation pipeline object, the ID, source type,
      * <code>MediaPipelineARN</code>, and sink of a media concatenation pipeline
      * object.</p>
      */
-    inline const MediaConcatenationPipeline& GetMediaConcatenationPipeline() const{ return m_mediaConcatenationPipeline; }
+    inline const MediaConcatenationPipeline& GetMediaConcatenationPipeline() const { return m_mediaConcatenationPipeline; }
+    template<typename MediaConcatenationPipelineT = MediaConcatenationPipeline>
+    void SetMediaConcatenationPipeline(MediaConcatenationPipelineT&& value) { m_mediaConcatenationPipelineHasBeenSet = true; m_mediaConcatenationPipeline = std::forward<MediaConcatenationPipelineT>(value); }
+    template<typename MediaConcatenationPipelineT = MediaConcatenationPipeline>
+    CreateMediaConcatenationPipelineResult& WithMediaConcatenationPipeline(MediaConcatenationPipelineT&& value) { SetMediaConcatenationPipeline(std::forward<MediaConcatenationPipelineT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A media concatenation pipeline object, the ID, source type,
-     * <code>MediaPipelineARN</code>, and sink of a media concatenation pipeline
-     * object.</p>
-     */
-    inline void SetMediaConcatenationPipeline(const MediaConcatenationPipeline& value) { m_mediaConcatenationPipeline = value; }
-
-    /**
-     * <p>A media concatenation pipeline object, the ID, source type,
-     * <code>MediaPipelineARN</code>, and sink of a media concatenation pipeline
-     * object.</p>
-     */
-    inline void SetMediaConcatenationPipeline(MediaConcatenationPipeline&& value) { m_mediaConcatenationPipeline = std::move(value); }
-
-    /**
-     * <p>A media concatenation pipeline object, the ID, source type,
-     * <code>MediaPipelineARN</code>, and sink of a media concatenation pipeline
-     * object.</p>
-     */
-    inline CreateMediaConcatenationPipelineResult& WithMediaConcatenationPipeline(const MediaConcatenationPipeline& value) { SetMediaConcatenationPipeline(value); return *this;}
-
-    /**
-     * <p>A media concatenation pipeline object, the ID, source type,
-     * <code>MediaPipelineARN</code>, and sink of a media concatenation pipeline
-     * object.</p>
-     */
-    inline CreateMediaConcatenationPipelineResult& WithMediaConcatenationPipeline(MediaConcatenationPipeline&& value) { SetMediaConcatenationPipeline(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateMediaConcatenationPipelineResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateMediaConcatenationPipelineResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateMediaConcatenationPipelineResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateMediaConcatenationPipelineResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     MediaConcatenationPipeline m_mediaConcatenationPipeline;
+    bool m_mediaConcatenationPipelineHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

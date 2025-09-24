@@ -21,7 +21,7 @@ namespace Model
   class DeleteTrafficDistributionGroupRequest : public ConnectRequest
   {
   public:
-    AWS_CONNECT_API DeleteTrafficDistributionGroupRequest();
+    AWS_CONNECT_API DeleteTrafficDistributionGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,70 +32,18 @@ namespace Model
     AWS_CONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
+     * ARN of the traffic distribution group.</p>
      */
-    inline const Aws::String& GetTrafficDistributionGroupId() const{ return m_trafficDistributionGroupId; }
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
+    inline const Aws::String& GetTrafficDistributionGroupId() const { return m_trafficDistributionGroupId; }
     inline bool TrafficDistributionGroupIdHasBeenSet() const { return m_trafficDistributionGroupIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline void SetTrafficDistributionGroupId(const Aws::String& value) { m_trafficDistributionGroupIdHasBeenSet = true; m_trafficDistributionGroupId = value; }
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline void SetTrafficDistributionGroupId(Aws::String&& value) { m_trafficDistributionGroupIdHasBeenSet = true; m_trafficDistributionGroupId = std::move(value); }
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline void SetTrafficDistributionGroupId(const char* value) { m_trafficDistributionGroupIdHasBeenSet = true; m_trafficDistributionGroupId.assign(value); }
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline DeleteTrafficDistributionGroupRequest& WithTrafficDistributionGroupId(const Aws::String& value) { SetTrafficDistributionGroupId(value); return *this;}
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline DeleteTrafficDistributionGroupRequest& WithTrafficDistributionGroupId(Aws::String&& value) { SetTrafficDistributionGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline DeleteTrafficDistributionGroupRequest& WithTrafficDistributionGroupId(const char* value) { SetTrafficDistributionGroupId(value); return *this;}
-
+    template<typename TrafficDistributionGroupIdT = Aws::String>
+    void SetTrafficDistributionGroupId(TrafficDistributionGroupIdT&& value) { m_trafficDistributionGroupIdHasBeenSet = true; m_trafficDistributionGroupId = std::forward<TrafficDistributionGroupIdT>(value); }
+    template<typename TrafficDistributionGroupIdT = Aws::String>
+    DeleteTrafficDistributionGroupRequest& WithTrafficDistributionGroupId(TrafficDistributionGroupIdT&& value) { SetTrafficDistributionGroupId(std::forward<TrafficDistributionGroupIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_trafficDistributionGroupId;

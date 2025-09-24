@@ -10,22 +10,6 @@
 using namespace Aws::DocDB::Model;
 using namespace Aws::Utils;
 
-DescribeEventsRequest::DescribeEventsRequest() : 
-    m_sourceIdentifierHasBeenSet(false),
-    m_sourceType(SourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_eventCategoriesHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false)
-{
-}
-
 Aws::String DescribeEventsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -37,7 +21,7 @@ Aws::String DescribeEventsRequest::SerializePayload() const
 
   if(m_sourceTypeHasBeenSet)
   {
-    ss << "SourceType=" << SourceTypeMapper::GetNameForSourceType(m_sourceType) << "&";
+    ss << "SourceType=" << StringUtils::URLEncode(SourceTypeMapper::GetNameForSourceType(m_sourceType)) << "&";
   }
 
   if(m_startTimeHasBeenSet)
@@ -57,22 +41,36 @@ Aws::String DescribeEventsRequest::SerializePayload() const
 
   if(m_eventCategoriesHasBeenSet)
   {
-    unsigned eventCategoriesCount = 1;
-    for(auto& item : m_eventCategories)
+    if (m_eventCategories.empty())
     {
-      ss << "EventCategories.member." << eventCategoriesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      eventCategoriesCount++;
+      ss << "EventCategories=&";
+    }
+    else
+    {
+      unsigned eventCategoriesCount = 1;
+      for(auto& item : m_eventCategories)
+      {
+        ss << "EventCategories.EventCategory." << eventCategoriesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        eventCategoriesCount++;
+      }
     }
   }
 
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.Filter.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 

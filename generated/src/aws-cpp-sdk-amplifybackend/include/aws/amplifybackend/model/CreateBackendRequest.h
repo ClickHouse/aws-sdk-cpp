@@ -25,7 +25,7 @@ namespace Model
   class CreateBackendRequest : public AmplifyBackendRequest
   {
   public:
-    AWS_AMPLIFYBACKEND_API CreateBackendRequest();
+    AWS_AMPLIFYBACKEND_API CreateBackendRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,200 +36,65 @@ namespace Model
     AWS_AMPLIFYBACKEND_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The app ID.</p>
      */
-    inline const Aws::String& GetAppId() const{ return m_appId; }
-
-    /**
-     * <p>The app ID.</p>
-     */
+    inline const Aws::String& GetAppId() const { return m_appId; }
     inline bool AppIdHasBeenSet() const { return m_appIdHasBeenSet; }
+    template<typename AppIdT = Aws::String>
+    void SetAppId(AppIdT&& value) { m_appIdHasBeenSet = true; m_appId = std::forward<AppIdT>(value); }
+    template<typename AppIdT = Aws::String>
+    CreateBackendRequest& WithAppId(AppIdT&& value) { SetAppId(std::forward<AppIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const Aws::String& value) { m_appIdHasBeenSet = true; m_appId = value; }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(Aws::String&& value) { m_appIdHasBeenSet = true; m_appId = std::move(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline void SetAppId(const char* value) { m_appIdHasBeenSet = true; m_appId.assign(value); }
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline CreateBackendRequest& WithAppId(const Aws::String& value) { SetAppId(value); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline CreateBackendRequest& WithAppId(Aws::String&& value) { SetAppId(std::move(value)); return *this;}
-
-    /**
-     * <p>The app ID.</p>
-     */
-    inline CreateBackendRequest& WithAppId(const char* value) { SetAppId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the app.</p>
      */
-    inline const Aws::String& GetAppName() const{ return m_appName; }
-
-    /**
-     * <p>The name of the app.</p>
-     */
+    inline const Aws::String& GetAppName() const { return m_appName; }
     inline bool AppNameHasBeenSet() const { return m_appNameHasBeenSet; }
+    template<typename AppNameT = Aws::String>
+    void SetAppName(AppNameT&& value) { m_appNameHasBeenSet = true; m_appName = std::forward<AppNameT>(value); }
+    template<typename AppNameT = Aws::String>
+    CreateBackendRequest& WithAppName(AppNameT&& value) { SetAppName(std::forward<AppNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline void SetAppName(const Aws::String& value) { m_appNameHasBeenSet = true; m_appName = value; }
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline void SetAppName(Aws::String&& value) { m_appNameHasBeenSet = true; m_appName = std::move(value); }
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline void SetAppName(const char* value) { m_appNameHasBeenSet = true; m_appName.assign(value); }
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline CreateBackendRequest& WithAppName(const Aws::String& value) { SetAppName(value); return *this;}
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline CreateBackendRequest& WithAppName(Aws::String&& value) { SetAppName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the app.</p>
-     */
-    inline CreateBackendRequest& WithAppName(const char* value) { SetAppName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the backend environment.</p>
      */
-    inline const Aws::String& GetBackendEnvironmentName() const{ return m_backendEnvironmentName; }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
+    inline const Aws::String& GetBackendEnvironmentName() const { return m_backendEnvironmentName; }
     inline bool BackendEnvironmentNameHasBeenSet() const { return m_backendEnvironmentNameHasBeenSet; }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    void SetBackendEnvironmentName(BackendEnvironmentNameT&& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = std::forward<BackendEnvironmentNameT>(value); }
+    template<typename BackendEnvironmentNameT = Aws::String>
+    CreateBackendRequest& WithBackendEnvironmentName(BackendEnvironmentNameT&& value) { SetBackendEnvironmentName(std::forward<BackendEnvironmentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const Aws::String& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = value; }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(Aws::String&& value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName = std::move(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline void SetBackendEnvironmentName(const char* value) { m_backendEnvironmentNameHasBeenSet = true; m_backendEnvironmentName.assign(value); }
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline CreateBackendRequest& WithBackendEnvironmentName(const Aws::String& value) { SetBackendEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline CreateBackendRequest& WithBackendEnvironmentName(Aws::String&& value) { SetBackendEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the backend environment.</p>
-     */
-    inline CreateBackendRequest& WithBackendEnvironmentName(const char* value) { SetBackendEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource configuration for creating a backend.</p>
      */
-    inline const ResourceConfig& GetResourceConfig() const{ return m_resourceConfig; }
-
-    /**
-     * <p>The resource configuration for creating a backend.</p>
-     */
+    inline const ResourceConfig& GetResourceConfig() const { return m_resourceConfig; }
     inline bool ResourceConfigHasBeenSet() const { return m_resourceConfigHasBeenSet; }
+    template<typename ResourceConfigT = ResourceConfig>
+    void SetResourceConfig(ResourceConfigT&& value) { m_resourceConfigHasBeenSet = true; m_resourceConfig = std::forward<ResourceConfigT>(value); }
+    template<typename ResourceConfigT = ResourceConfig>
+    CreateBackendRequest& WithResourceConfig(ResourceConfigT&& value) { SetResourceConfig(std::forward<ResourceConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource configuration for creating a backend.</p>
-     */
-    inline void SetResourceConfig(const ResourceConfig& value) { m_resourceConfigHasBeenSet = true; m_resourceConfig = value; }
-
-    /**
-     * <p>The resource configuration for creating a backend.</p>
-     */
-    inline void SetResourceConfig(ResourceConfig&& value) { m_resourceConfigHasBeenSet = true; m_resourceConfig = std::move(value); }
-
-    /**
-     * <p>The resource configuration for creating a backend.</p>
-     */
-    inline CreateBackendRequest& WithResourceConfig(const ResourceConfig& value) { SetResourceConfig(value); return *this;}
-
-    /**
-     * <p>The resource configuration for creating a backend.</p>
-     */
-    inline CreateBackendRequest& WithResourceConfig(ResourceConfig&& value) { SetResourceConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the resource.</p>
      */
-    inline const Aws::String& GetResourceName() const{ return m_resourceName; }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
+    inline const Aws::String& GetResourceName() const { return m_resourceName; }
     inline bool ResourceNameHasBeenSet() const { return m_resourceNameHasBeenSet; }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetResourceName(const Aws::String& value) { m_resourceNameHasBeenSet = true; m_resourceName = value; }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetResourceName(Aws::String&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::move(value); }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetResourceName(const char* value) { m_resourceNameHasBeenSet = true; m_resourceName.assign(value); }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline CreateBackendRequest& WithResourceName(const Aws::String& value) { SetResourceName(value); return *this;}
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline CreateBackendRequest& WithResourceName(Aws::String&& value) { SetResourceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline CreateBackendRequest& WithResourceName(const char* value) { SetResourceName(value); return *this;}
-
+    template<typename ResourceNameT = Aws::String>
+    void SetResourceName(ResourceNameT&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::forward<ResourceNameT>(value); }
+    template<typename ResourceNameT = Aws::String>
+    CreateBackendRequest& WithResourceName(ResourceNameT&& value) { SetResourceName(std::forward<ResourceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appId;

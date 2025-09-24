@@ -20,23 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-StepAdjustment::StepAdjustment() : 
-    m_metricIntervalLowerBound(0.0),
-    m_metricIntervalLowerBoundHasBeenSet(false),
-    m_metricIntervalUpperBound(0.0),
-    m_metricIntervalUpperBoundHasBeenSet(false),
-    m_scalingAdjustment(0),
-    m_scalingAdjustmentHasBeenSet(false)
-{
-}
-
-StepAdjustment::StepAdjustment(const XmlNode& xmlNode) : 
-    m_metricIntervalLowerBound(0.0),
-    m_metricIntervalLowerBoundHasBeenSet(false),
-    m_metricIntervalUpperBound(0.0),
-    m_metricIntervalUpperBoundHasBeenSet(false),
-    m_scalingAdjustment(0),
-    m_scalingAdjustmentHasBeenSet(false)
+StepAdjustment::StepAdjustment(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -93,11 +77,11 @@ void StepAdjustment::OutputToStream(Aws::OStream& oStream, const char* location)
 {
   if(m_metricIntervalLowerBoundHasBeenSet)
   {
-        oStream << location << ".MetricIntervalLowerBound=" << StringUtils::URLEncode(m_metricIntervalLowerBound) << "&";
+      oStream << location << ".MetricIntervalLowerBound=" << StringUtils::URLEncode(m_metricIntervalLowerBound) << "&";
   }
   if(m_metricIntervalUpperBoundHasBeenSet)
   {
-        oStream << location << ".MetricIntervalUpperBound=" << StringUtils::URLEncode(m_metricIntervalUpperBound) << "&";
+      oStream << location << ".MetricIntervalUpperBound=" << StringUtils::URLEncode(m_metricIntervalUpperBound) << "&";
   }
   if(m_scalingAdjustmentHasBeenSet)
   {

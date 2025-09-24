@@ -21,7 +21,7 @@ namespace Model
   class DescribeBuildRequest : public GameLiftRequest
   {
   public:
-    AWS_GAMELIFT_API DescribeBuildRequest();
+    AWS_GAMELIFT_API DescribeBuildRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_GAMELIFT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A unique identifier for the build to retrieve properties for. You can use
      * either the build ID or ARN value. </p>
      */
-    inline const Aws::String& GetBuildId() const{ return m_buildId; }
-
-    /**
-     * <p>A unique identifier for the build to retrieve properties for. You can use
-     * either the build ID or ARN value. </p>
-     */
+    inline const Aws::String& GetBuildId() const { return m_buildId; }
     inline bool BuildIdHasBeenSet() const { return m_buildIdHasBeenSet; }
-
-    /**
-     * <p>A unique identifier for the build to retrieve properties for. You can use
-     * either the build ID or ARN value. </p>
-     */
-    inline void SetBuildId(const Aws::String& value) { m_buildIdHasBeenSet = true; m_buildId = value; }
-
-    /**
-     * <p>A unique identifier for the build to retrieve properties for. You can use
-     * either the build ID or ARN value. </p>
-     */
-    inline void SetBuildId(Aws::String&& value) { m_buildIdHasBeenSet = true; m_buildId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the build to retrieve properties for. You can use
-     * either the build ID or ARN value. </p>
-     */
-    inline void SetBuildId(const char* value) { m_buildIdHasBeenSet = true; m_buildId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the build to retrieve properties for. You can use
-     * either the build ID or ARN value. </p>
-     */
-    inline DescribeBuildRequest& WithBuildId(const Aws::String& value) { SetBuildId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the build to retrieve properties for. You can use
-     * either the build ID or ARN value. </p>
-     */
-    inline DescribeBuildRequest& WithBuildId(Aws::String&& value) { SetBuildId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the build to retrieve properties for. You can use
-     * either the build ID or ARN value. </p>
-     */
-    inline DescribeBuildRequest& WithBuildId(const char* value) { SetBuildId(value); return *this;}
-
+    template<typename BuildIdT = Aws::String>
+    void SetBuildId(BuildIdT&& value) { m_buildIdHasBeenSet = true; m_buildId = std::forward<BuildIdT>(value); }
+    template<typename BuildIdT = Aws::String>
+    DescribeBuildRequest& WithBuildId(BuildIdT&& value) { SetBuildId(std::forward<BuildIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_buildId;

@@ -18,17 +18,7 @@ namespace IoTThingsGraph
 namespace Model
 {
 
-DefinitionDocument::DefinitionDocument() : 
-    m_language(DefinitionLanguage::NOT_SET),
-    m_languageHasBeenSet(false),
-    m_textHasBeenSet(false)
-{
-}
-
-DefinitionDocument::DefinitionDocument(JsonView jsonValue) : 
-    m_language(DefinitionLanguage::NOT_SET),
-    m_languageHasBeenSet(false),
-    m_textHasBeenSet(false)
+DefinitionDocument::DefinitionDocument(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DefinitionDocument& DefinitionDocument::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("language"))
   {
     m_language = DefinitionLanguageMapper::GetDefinitionLanguageForName(jsonValue.GetString("language"));
-
     m_languageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("text"))
   {
     m_text = jsonValue.GetString("text");
-
     m_textHasBeenSet = true;
   }
-
   return *this;
 }
 

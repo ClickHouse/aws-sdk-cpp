@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-AccessScopePathRequest::AccessScopePathRequest() : 
-    m_sourceHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_throughResourcesHasBeenSet(false)
-{
-}
-
-AccessScopePathRequest::AccessScopePathRequest(const XmlNode& xmlNode) : 
-    m_sourceHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_throughResourcesHasBeenSet(false)
+AccessScopePathRequest::AccessScopePathRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ AccessScopePathRequest& AccessScopePathRequest::operator =(const XmlNode& xmlNod
     if(!throughResourcesNode.IsNull())
     {
       XmlNode throughResourcesMember = throughResourcesNode.FirstChild("item");
+      m_throughResourcesHasBeenSet = !throughResourcesMember.IsNull();
       while(!throughResourcesMember.IsNull())
       {
         m_throughResources.push_back(throughResourcesMember);
@@ -119,7 +110,7 @@ void AccessScopePathRequest::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_throughResources)
       {
         Aws::StringStream throughResourcesSs;
-        throughResourcesSs << location <<  ".ThroughResource." << throughResourcesIdx++;
+        throughResourcesSs << location << ".ThroughResource." << throughResourcesIdx++;
         item.OutputToStream(oStream, throughResourcesSs.str().c_str());
       }
   }

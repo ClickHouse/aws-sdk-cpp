@@ -18,17 +18,7 @@ namespace AgreementService
 namespace Model
 {
 
-Sort::Sort() : 
-    m_sortByHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
-{
-}
-
-Sort::Sort(JsonView jsonValue) : 
-    m_sortByHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
+Sort::Sort(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Sort& Sort::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("sortBy"))
   {
     m_sortBy = jsonValue.GetString("sortBy");
-
     m_sortByHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sortOrder"))
   {
     m_sortOrder = SortOrderMapper::GetSortOrderForName(jsonValue.GetString("sortOrder"));
-
     m_sortOrderHasBeenSet = true;
   }
-
   return *this;
 }
 

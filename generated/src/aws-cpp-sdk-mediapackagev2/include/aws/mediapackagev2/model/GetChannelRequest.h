@@ -21,7 +21,7 @@ namespace Model
   class GetChannelRequest : public Mediapackagev2Request
   {
   public:
-    AWS_MEDIAPACKAGEV2_API GetChannelRequest();
+    AWS_MEDIAPACKAGEV2_API GetChannelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,119 +32,33 @@ namespace Model
     AWS_MEDIAPACKAGEV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name that describes the channel group. The name is the primary identifier
      * for the channel group, and must be unique for your account in the AWS
      * Region.</p>
      */
-    inline const Aws::String& GetChannelGroupName() const{ return m_channelGroupName; }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
+    inline const Aws::String& GetChannelGroupName() const { return m_channelGroupName; }
     inline bool ChannelGroupNameHasBeenSet() const { return m_channelGroupNameHasBeenSet; }
+    template<typename ChannelGroupNameT = Aws::String>
+    void SetChannelGroupName(ChannelGroupNameT&& value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName = std::forward<ChannelGroupNameT>(value); }
+    template<typename ChannelGroupNameT = Aws::String>
+    GetChannelRequest& WithChannelGroupName(ChannelGroupNameT&& value) { SetChannelGroupName(std::forward<ChannelGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline void SetChannelGroupName(const Aws::String& value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName = value; }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline void SetChannelGroupName(Aws::String&& value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName = std::move(value); }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline void SetChannelGroupName(const char* value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName.assign(value); }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline GetChannelRequest& WithChannelGroupName(const Aws::String& value) { SetChannelGroupName(value); return *this;}
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline GetChannelRequest& WithChannelGroupName(Aws::String&& value) { SetChannelGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline GetChannelRequest& WithChannelGroupName(const char* value) { SetChannelGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name that describes the channel. The name is the primary identifier for
      * the channel, and must be unique for your account in the AWS Region and channel
      * group. </p>
      */
-    inline const Aws::String& GetChannelName() const{ return m_channelName; }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
+    inline const Aws::String& GetChannelName() const { return m_channelName; }
     inline bool ChannelNameHasBeenSet() const { return m_channelNameHasBeenSet; }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline void SetChannelName(const Aws::String& value) { m_channelNameHasBeenSet = true; m_channelName = value; }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline void SetChannelName(Aws::String&& value) { m_channelNameHasBeenSet = true; m_channelName = std::move(value); }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline void SetChannelName(const char* value) { m_channelNameHasBeenSet = true; m_channelName.assign(value); }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline GetChannelRequest& WithChannelName(const Aws::String& value) { SetChannelName(value); return *this;}
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline GetChannelRequest& WithChannelName(Aws::String&& value) { SetChannelName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline GetChannelRequest& WithChannelName(const char* value) { SetChannelName(value); return *this;}
-
+    template<typename ChannelNameT = Aws::String>
+    void SetChannelName(ChannelNameT&& value) { m_channelNameHasBeenSet = true; m_channelName = std::forward<ChannelNameT>(value); }
+    template<typename ChannelNameT = Aws::String>
+    GetChannelRequest& WithChannelName(ChannelNameT&& value) { SetChannelName(std::forward<ChannelNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelGroupName;

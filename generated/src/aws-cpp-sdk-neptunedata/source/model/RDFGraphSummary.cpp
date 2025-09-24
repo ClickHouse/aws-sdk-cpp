@@ -18,33 +18,7 @@ namespace neptunedata
 namespace Model
 {
 
-RDFGraphSummary::RDFGraphSummary() : 
-    m_numDistinctSubjects(0),
-    m_numDistinctSubjectsHasBeenSet(false),
-    m_numDistinctPredicates(0),
-    m_numDistinctPredicatesHasBeenSet(false),
-    m_numQuads(0),
-    m_numQuadsHasBeenSet(false),
-    m_numClasses(0),
-    m_numClassesHasBeenSet(false),
-    m_classesHasBeenSet(false),
-    m_predicatesHasBeenSet(false),
-    m_subjectStructuresHasBeenSet(false)
-{
-}
-
-RDFGraphSummary::RDFGraphSummary(JsonView jsonValue) : 
-    m_numDistinctSubjects(0),
-    m_numDistinctSubjectsHasBeenSet(false),
-    m_numDistinctPredicates(0),
-    m_numDistinctPredicatesHasBeenSet(false),
-    m_numQuads(0),
-    m_numQuadsHasBeenSet(false),
-    m_numClasses(0),
-    m_numClassesHasBeenSet(false),
-    m_classesHasBeenSet(false),
-    m_predicatesHasBeenSet(false),
-    m_subjectStructuresHasBeenSet(false)
+RDFGraphSummary::RDFGraphSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -54,31 +28,23 @@ RDFGraphSummary& RDFGraphSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("numDistinctSubjects"))
   {
     m_numDistinctSubjects = jsonValue.GetInt64("numDistinctSubjects");
-
     m_numDistinctSubjectsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("numDistinctPredicates"))
   {
     m_numDistinctPredicates = jsonValue.GetInt64("numDistinctPredicates");
-
     m_numDistinctPredicatesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("numQuads"))
   {
     m_numQuads = jsonValue.GetInt64("numQuads");
-
     m_numQuadsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("numClasses"))
   {
     m_numClasses = jsonValue.GetInt64("numClasses");
-
     m_numClassesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("classes"))
   {
     Aws::Utils::Array<JsonView> classesJsonList = jsonValue.GetArray("classes");
@@ -88,7 +54,6 @@ RDFGraphSummary& RDFGraphSummary::operator =(JsonView jsonValue)
     }
     m_classesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("predicates"))
   {
     Aws::Utils::Array<JsonView> predicatesJsonList = jsonValue.GetArray("predicates");
@@ -104,7 +69,6 @@ RDFGraphSummary& RDFGraphSummary::operator =(JsonView jsonValue)
     }
     m_predicatesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("subjectStructures"))
   {
     Aws::Utils::Array<JsonView> subjectStructuresJsonList = jsonValue.GetArray("subjectStructures");
@@ -114,7 +78,6 @@ RDFGraphSummary& RDFGraphSummary::operator =(JsonView jsonValue)
     }
     m_subjectStructuresHasBeenSet = true;
   }
-
   return *this;
 }
 

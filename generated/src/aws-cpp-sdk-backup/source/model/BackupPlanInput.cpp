@@ -18,17 +18,7 @@ namespace Backup
 namespace Model
 {
 
-BackupPlanInput::BackupPlanInput() : 
-    m_backupPlanNameHasBeenSet(false),
-    m_rulesHasBeenSet(false),
-    m_advancedBackupSettingsHasBeenSet(false)
-{
-}
-
-BackupPlanInput::BackupPlanInput(JsonView jsonValue) : 
-    m_backupPlanNameHasBeenSet(false),
-    m_rulesHasBeenSet(false),
-    m_advancedBackupSettingsHasBeenSet(false)
+BackupPlanInput::BackupPlanInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ BackupPlanInput& BackupPlanInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("BackupPlanName"))
   {
     m_backupPlanName = jsonValue.GetString("BackupPlanName");
-
     m_backupPlanNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Rules"))
   {
     Aws::Utils::Array<JsonView> rulesJsonList = jsonValue.GetArray("Rules");
@@ -51,7 +39,6 @@ BackupPlanInput& BackupPlanInput::operator =(JsonView jsonValue)
     }
     m_rulesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AdvancedBackupSettings"))
   {
     Aws::Utils::Array<JsonView> advancedBackupSettingsJsonList = jsonValue.GetArray("AdvancedBackupSettings");
@@ -61,7 +48,6 @@ BackupPlanInput& BackupPlanInput::operator =(JsonView jsonValue)
     }
     m_advancedBackupSettingsHasBeenSet = true;
   }
-
   return *this;
 }
 

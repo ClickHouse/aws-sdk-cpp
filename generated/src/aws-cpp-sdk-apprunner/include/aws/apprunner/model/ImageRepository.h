@@ -33,144 +33,49 @@ namespace Model
   class ImageRepository
   {
   public:
-    AWS_APPRUNNER_API ImageRepository();
+    AWS_APPRUNNER_API ImageRepository() = default;
     AWS_APPRUNNER_API ImageRepository(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API ImageRepository& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of an image.</p> <p>For an image in Amazon Elastic Container
      * Registry (Amazon ECR), this is an image name. For the image name format, see <a
      * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html">Pulling
      * an image</a> in the <i>Amazon ECR User Guide</i>.</p>
      */
-    inline const Aws::String& GetImageIdentifier() const{ return m_imageIdentifier; }
-
-    /**
-     * <p>The identifier of an image.</p> <p>For an image in Amazon Elastic Container
-     * Registry (Amazon ECR), this is an image name. For the image name format, see <a
-     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html">Pulling
-     * an image</a> in the <i>Amazon ECR User Guide</i>.</p>
-     */
+    inline const Aws::String& GetImageIdentifier() const { return m_imageIdentifier; }
     inline bool ImageIdentifierHasBeenSet() const { return m_imageIdentifierHasBeenSet; }
+    template<typename ImageIdentifierT = Aws::String>
+    void SetImageIdentifier(ImageIdentifierT&& value) { m_imageIdentifierHasBeenSet = true; m_imageIdentifier = std::forward<ImageIdentifierT>(value); }
+    template<typename ImageIdentifierT = Aws::String>
+    ImageRepository& WithImageIdentifier(ImageIdentifierT&& value) { SetImageIdentifier(std::forward<ImageIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of an image.</p> <p>For an image in Amazon Elastic Container
-     * Registry (Amazon ECR), this is an image name. For the image name format, see <a
-     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html">Pulling
-     * an image</a> in the <i>Amazon ECR User Guide</i>.</p>
-     */
-    inline void SetImageIdentifier(const Aws::String& value) { m_imageIdentifierHasBeenSet = true; m_imageIdentifier = value; }
-
-    /**
-     * <p>The identifier of an image.</p> <p>For an image in Amazon Elastic Container
-     * Registry (Amazon ECR), this is an image name. For the image name format, see <a
-     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html">Pulling
-     * an image</a> in the <i>Amazon ECR User Guide</i>.</p>
-     */
-    inline void SetImageIdentifier(Aws::String&& value) { m_imageIdentifierHasBeenSet = true; m_imageIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of an image.</p> <p>For an image in Amazon Elastic Container
-     * Registry (Amazon ECR), this is an image name. For the image name format, see <a
-     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html">Pulling
-     * an image</a> in the <i>Amazon ECR User Guide</i>.</p>
-     */
-    inline void SetImageIdentifier(const char* value) { m_imageIdentifierHasBeenSet = true; m_imageIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of an image.</p> <p>For an image in Amazon Elastic Container
-     * Registry (Amazon ECR), this is an image name. For the image name format, see <a
-     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html">Pulling
-     * an image</a> in the <i>Amazon ECR User Guide</i>.</p>
-     */
-    inline ImageRepository& WithImageIdentifier(const Aws::String& value) { SetImageIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of an image.</p> <p>For an image in Amazon Elastic Container
-     * Registry (Amazon ECR), this is an image name. For the image name format, see <a
-     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html">Pulling
-     * an image</a> in the <i>Amazon ECR User Guide</i>.</p>
-     */
-    inline ImageRepository& WithImageIdentifier(Aws::String&& value) { SetImageIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of an image.</p> <p>For an image in Amazon Elastic Container
-     * Registry (Amazon ECR), this is an image name. For the image name format, see <a
-     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-pull-ecr-image.html">Pulling
-     * an image</a> in the <i>Amazon ECR User Guide</i>.</p>
-     */
-    inline ImageRepository& WithImageIdentifier(const char* value) { SetImageIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration for running the identified image.</p>
      */
-    inline const ImageConfiguration& GetImageConfiguration() const{ return m_imageConfiguration; }
-
-    /**
-     * <p>Configuration for running the identified image.</p>
-     */
+    inline const ImageConfiguration& GetImageConfiguration() const { return m_imageConfiguration; }
     inline bool ImageConfigurationHasBeenSet() const { return m_imageConfigurationHasBeenSet; }
+    template<typename ImageConfigurationT = ImageConfiguration>
+    void SetImageConfiguration(ImageConfigurationT&& value) { m_imageConfigurationHasBeenSet = true; m_imageConfiguration = std::forward<ImageConfigurationT>(value); }
+    template<typename ImageConfigurationT = ImageConfiguration>
+    ImageRepository& WithImageConfiguration(ImageConfigurationT&& value) { SetImageConfiguration(std::forward<ImageConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration for running the identified image.</p>
-     */
-    inline void SetImageConfiguration(const ImageConfiguration& value) { m_imageConfigurationHasBeenSet = true; m_imageConfiguration = value; }
-
-    /**
-     * <p>Configuration for running the identified image.</p>
-     */
-    inline void SetImageConfiguration(ImageConfiguration&& value) { m_imageConfigurationHasBeenSet = true; m_imageConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration for running the identified image.</p>
-     */
-    inline ImageRepository& WithImageConfiguration(const ImageConfiguration& value) { SetImageConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration for running the identified image.</p>
-     */
-    inline ImageRepository& WithImageConfiguration(ImageConfiguration&& value) { SetImageConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the image repository. This reflects the repository provider and
      * whether the repository is private or public.</p>
      */
-    inline const ImageRepositoryType& GetImageRepositoryType() const{ return m_imageRepositoryType; }
-
-    /**
-     * <p>The type of the image repository. This reflects the repository provider and
-     * whether the repository is private or public.</p>
-     */
+    inline ImageRepositoryType GetImageRepositoryType() const { return m_imageRepositoryType; }
     inline bool ImageRepositoryTypeHasBeenSet() const { return m_imageRepositoryTypeHasBeenSet; }
-
-    /**
-     * <p>The type of the image repository. This reflects the repository provider and
-     * whether the repository is private or public.</p>
-     */
-    inline void SetImageRepositoryType(const ImageRepositoryType& value) { m_imageRepositoryTypeHasBeenSet = true; m_imageRepositoryType = value; }
-
-    /**
-     * <p>The type of the image repository. This reflects the repository provider and
-     * whether the repository is private or public.</p>
-     */
-    inline void SetImageRepositoryType(ImageRepositoryType&& value) { m_imageRepositoryTypeHasBeenSet = true; m_imageRepositoryType = std::move(value); }
-
-    /**
-     * <p>The type of the image repository. This reflects the repository provider and
-     * whether the repository is private or public.</p>
-     */
-    inline ImageRepository& WithImageRepositoryType(const ImageRepositoryType& value) { SetImageRepositoryType(value); return *this;}
-
-    /**
-     * <p>The type of the image repository. This reflects the repository provider and
-     * whether the repository is private or public.</p>
-     */
-    inline ImageRepository& WithImageRepositoryType(ImageRepositoryType&& value) { SetImageRepositoryType(std::move(value)); return *this;}
-
+    inline void SetImageRepositoryType(ImageRepositoryType value) { m_imageRepositoryTypeHasBeenSet = true; m_imageRepositoryType = value; }
+    inline ImageRepository& WithImageRepositoryType(ImageRepositoryType value) { SetImageRepositoryType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_imageIdentifier;
@@ -179,7 +84,7 @@ namespace Model
     ImageConfiguration m_imageConfiguration;
     bool m_imageConfigurationHasBeenSet = false;
 
-    ImageRepositoryType m_imageRepositoryType;
+    ImageRepositoryType m_imageRepositoryType{ImageRepositoryType::NOT_SET};
     bool m_imageRepositoryTypeHasBeenSet = false;
   };
 

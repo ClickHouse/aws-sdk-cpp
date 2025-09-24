@@ -21,7 +21,7 @@ namespace Model
   class PutModelInvocationLoggingConfigurationRequest : public BedrockRequest
   {
   public:
-    AWS_BEDROCK_API PutModelInvocationLoggingConfigurationRequest();
+    AWS_BEDROCK_API PutModelInvocationLoggingConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,36 +32,17 @@ namespace Model
     AWS_BEDROCK_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The logging configuration values to set.</p>
      */
-    inline const LoggingConfig& GetLoggingConfig() const{ return m_loggingConfig; }
-
-    /**
-     * <p>The logging configuration values to set.</p>
-     */
+    inline const LoggingConfig& GetLoggingConfig() const { return m_loggingConfig; }
     inline bool LoggingConfigHasBeenSet() const { return m_loggingConfigHasBeenSet; }
-
-    /**
-     * <p>The logging configuration values to set.</p>
-     */
-    inline void SetLoggingConfig(const LoggingConfig& value) { m_loggingConfigHasBeenSet = true; m_loggingConfig = value; }
-
-    /**
-     * <p>The logging configuration values to set.</p>
-     */
-    inline void SetLoggingConfig(LoggingConfig&& value) { m_loggingConfigHasBeenSet = true; m_loggingConfig = std::move(value); }
-
-    /**
-     * <p>The logging configuration values to set.</p>
-     */
-    inline PutModelInvocationLoggingConfigurationRequest& WithLoggingConfig(const LoggingConfig& value) { SetLoggingConfig(value); return *this;}
-
-    /**
-     * <p>The logging configuration values to set.</p>
-     */
-    inline PutModelInvocationLoggingConfigurationRequest& WithLoggingConfig(LoggingConfig&& value) { SetLoggingConfig(std::move(value)); return *this;}
-
+    template<typename LoggingConfigT = LoggingConfig>
+    void SetLoggingConfig(LoggingConfigT&& value) { m_loggingConfigHasBeenSet = true; m_loggingConfig = std::forward<LoggingConfigT>(value); }
+    template<typename LoggingConfigT = LoggingConfig>
+    PutModelInvocationLoggingConfigurationRequest& WithLoggingConfig(LoggingConfigT&& value) { SetLoggingConfig(std::forward<LoggingConfigT>(value)); return *this;}
+    ///@}
   private:
 
     LoggingConfig m_loggingConfig;

@@ -34,7 +34,7 @@ namespace Model
   class DefaultClusterParameters
   {
   public:
-    AWS_REDSHIFT_API DefaultClusterParameters();
+    AWS_REDSHIFT_API DefaultClusterParameters() = default;
     AWS_REDSHIFT_API DefaultClusterParameters(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API DefaultClusterParameters& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,55 +42,20 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the cluster parameter group family to which the engine default
      * parameters apply.</p>
      */
-    inline const Aws::String& GetParameterGroupFamily() const{ return m_parameterGroupFamily; }
-
-    /**
-     * <p>The name of the cluster parameter group family to which the engine default
-     * parameters apply.</p>
-     */
+    inline const Aws::String& GetParameterGroupFamily() const { return m_parameterGroupFamily; }
     inline bool ParameterGroupFamilyHasBeenSet() const { return m_parameterGroupFamilyHasBeenSet; }
+    template<typename ParameterGroupFamilyT = Aws::String>
+    void SetParameterGroupFamily(ParameterGroupFamilyT&& value) { m_parameterGroupFamilyHasBeenSet = true; m_parameterGroupFamily = std::forward<ParameterGroupFamilyT>(value); }
+    template<typename ParameterGroupFamilyT = Aws::String>
+    DefaultClusterParameters& WithParameterGroupFamily(ParameterGroupFamilyT&& value) { SetParameterGroupFamily(std::forward<ParameterGroupFamilyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the cluster parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline void SetParameterGroupFamily(const Aws::String& value) { m_parameterGroupFamilyHasBeenSet = true; m_parameterGroupFamily = value; }
-
-    /**
-     * <p>The name of the cluster parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline void SetParameterGroupFamily(Aws::String&& value) { m_parameterGroupFamilyHasBeenSet = true; m_parameterGroupFamily = std::move(value); }
-
-    /**
-     * <p>The name of the cluster parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline void SetParameterGroupFamily(const char* value) { m_parameterGroupFamilyHasBeenSet = true; m_parameterGroupFamily.assign(value); }
-
-    /**
-     * <p>The name of the cluster parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline DefaultClusterParameters& WithParameterGroupFamily(const Aws::String& value) { SetParameterGroupFamily(value); return *this;}
-
-    /**
-     * <p>The name of the cluster parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline DefaultClusterParameters& WithParameterGroupFamily(Aws::String&& value) { SetParameterGroupFamily(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the cluster parameter group family to which the engine default
-     * parameters apply.</p>
-     */
-    inline DefaultClusterParameters& WithParameterGroupFamily(const char* value) { SetParameterGroupFamily(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A value that indicates the starting point for the next set of response
      * records in a subsequent request. If a value is returned in a response, you can
@@ -99,119 +64,27 @@ namespace Model
      * <code>Marker</code> field is empty, all response records have been retrieved for
      * the request. </p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DefaultClusterParameters& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline DefaultClusterParameters& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline DefaultClusterParameters& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>A value that indicates the starting point for the next set of response
-     * records in a subsequent request. If a value is returned in a response, you can
-     * retrieve the next set of records by providing this returned marker value in the
-     * <code>Marker</code> parameter and retrying the command. If the
-     * <code>Marker</code> field is empty, all response records have been retrieved for
-     * the request. </p>
-     */
-    inline DefaultClusterParameters& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of cluster default parameters.</p>
      */
-    inline const Aws::Vector<Parameter>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>The list of cluster default parameters.</p>
-     */
+    inline const Aws::Vector<Parameter>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>The list of cluster default parameters.</p>
-     */
-    inline void SetParameters(const Aws::Vector<Parameter>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>The list of cluster default parameters.</p>
-     */
-    inline void SetParameters(Aws::Vector<Parameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>The list of cluster default parameters.</p>
-     */
-    inline DefaultClusterParameters& WithParameters(const Aws::Vector<Parameter>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>The list of cluster default parameters.</p>
-     */
-    inline DefaultClusterParameters& WithParameters(Aws::Vector<Parameter>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of cluster default parameters.</p>
-     */
-    inline DefaultClusterParameters& AddParameters(const Parameter& value) { m_parametersHasBeenSet = true; m_parameters.push_back(value); return *this; }
-
-    /**
-     * <p>The list of cluster default parameters.</p>
-     */
-    inline DefaultClusterParameters& AddParameters(Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(std::move(value)); return *this; }
-
+    template<typename ParametersT = Aws::Vector<Parameter>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Vector<Parameter>>
+    DefaultClusterParameters& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersT = Parameter>
+    DefaultClusterParameters& AddParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters.emplace_back(std::forward<ParametersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_parameterGroupFamily;

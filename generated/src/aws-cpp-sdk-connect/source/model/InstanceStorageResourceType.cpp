@@ -30,6 +30,9 @@ namespace Aws
         static const int ATTACHMENTS_HASH = HashingUtils::HashString("ATTACHMENTS");
         static const int CONTACT_EVALUATIONS_HASH = HashingUtils::HashString("CONTACT_EVALUATIONS");
         static const int SCREEN_RECORDINGS_HASH = HashingUtils::HashString("SCREEN_RECORDINGS");
+        static const int REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS_HASH = HashingUtils::HashString("REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS");
+        static const int REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS_HASH = HashingUtils::HashString("REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS");
+        static const int EMAIL_MESSAGES_HASH = HashingUtils::HashString("EMAIL_MESSAGES");
 
 
         InstanceStorageResourceType GetInstanceStorageResourceTypeForName(const Aws::String& name)
@@ -75,6 +78,18 @@ namespace Aws
           {
             return InstanceStorageResourceType::SCREEN_RECORDINGS;
           }
+          else if (hashCode == REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS_HASH)
+          {
+            return InstanceStorageResourceType::REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS;
+          }
+          else if (hashCode == REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS_HASH)
+          {
+            return InstanceStorageResourceType::REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS;
+          }
+          else if (hashCode == EMAIL_MESSAGES_HASH)
+          {
+            return InstanceStorageResourceType::EMAIL_MESSAGES;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -111,6 +126,12 @@ namespace Aws
             return "CONTACT_EVALUATIONS";
           case InstanceStorageResourceType::SCREEN_RECORDINGS:
             return "SCREEN_RECORDINGS";
+          case InstanceStorageResourceType::REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS:
+            return "REAL_TIME_CONTACT_ANALYSIS_CHAT_SEGMENTS";
+          case InstanceStorageResourceType::REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS:
+            return "REAL_TIME_CONTACT_ANALYSIS_VOICE_SEGMENTS";
+          case InstanceStorageResourceType::EMAIL_MESSAGES:
+            return "EMAIL_MESSAGES";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -20,31 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-AuthenticateCognitoActionConfig::AuthenticateCognitoActionConfig() : 
-    m_userPoolArnHasBeenSet(false),
-    m_userPoolClientIdHasBeenSet(false),
-    m_userPoolDomainHasBeenSet(false),
-    m_sessionCookieNameHasBeenSet(false),
-    m_scopeHasBeenSet(false),
-    m_sessionTimeout(0),
-    m_sessionTimeoutHasBeenSet(false),
-    m_authenticationRequestExtraParamsHasBeenSet(false),
-    m_onUnauthenticatedRequest(AuthenticateCognitoActionConditionalBehaviorEnum::NOT_SET),
-    m_onUnauthenticatedRequestHasBeenSet(false)
-{
-}
-
-AuthenticateCognitoActionConfig::AuthenticateCognitoActionConfig(const XmlNode& xmlNode) : 
-    m_userPoolArnHasBeenSet(false),
-    m_userPoolClientIdHasBeenSet(false),
-    m_userPoolDomainHasBeenSet(false),
-    m_sessionCookieNameHasBeenSet(false),
-    m_scopeHasBeenSet(false),
-    m_sessionTimeout(0),
-    m_sessionTimeoutHasBeenSet(false),
-    m_authenticationRequestExtraParamsHasBeenSet(false),
-    m_onUnauthenticatedRequest(AuthenticateCognitoActionConditionalBehaviorEnum::NOT_SET),
-    m_onUnauthenticatedRequestHasBeenSet(false)
+AuthenticateCognitoActionConfig::AuthenticateCognitoActionConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -96,6 +72,7 @@ AuthenticateCognitoActionConfig& AuthenticateCognitoActionConfig::operator =(con
     if(!authenticationRequestExtraParamsNode.IsNull())
     {
       XmlNode authenticationRequestExtraParamsEntry = authenticationRequestExtraParamsNode.FirstChild("entry");
+      m_authenticationRequestExtraParamsHasBeenSet = !authenticationRequestExtraParamsEntry.IsNull();
       while(!authenticationRequestExtraParamsEntry.IsNull())
       {
         XmlNode keyNode = authenticationRequestExtraParamsEntry.FirstChild("key");
@@ -110,7 +87,7 @@ AuthenticateCognitoActionConfig& AuthenticateCognitoActionConfig::operator =(con
     XmlNode onUnauthenticatedRequestNode = resultNode.FirstChild("OnUnauthenticatedRequest");
     if(!onUnauthenticatedRequestNode.IsNull())
     {
-      m_onUnauthenticatedRequest = AuthenticateCognitoActionConditionalBehaviorEnumMapper::GetAuthenticateCognitoActionConditionalBehaviorEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(onUnauthenticatedRequestNode.GetText()).c_str()).c_str());
+      m_onUnauthenticatedRequest = AuthenticateCognitoActionConditionalBehaviorEnumMapper::GetAuthenticateCognitoActionConditionalBehaviorEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(onUnauthenticatedRequestNode.GetText()).c_str()));
       m_onUnauthenticatedRequestHasBeenSet = true;
     }
   }
@@ -165,7 +142,7 @@ void AuthenticateCognitoActionConfig::OutputToStream(Aws::OStream& oStream, cons
 
   if(m_onUnauthenticatedRequestHasBeenSet)
   {
-      oStream << location << index << locationValue << ".OnUnauthenticatedRequest=" << AuthenticateCognitoActionConditionalBehaviorEnumMapper::GetNameForAuthenticateCognitoActionConditionalBehaviorEnum(m_onUnauthenticatedRequest) << "&";
+      oStream << location << index << locationValue << ".OnUnauthenticatedRequest=" << StringUtils::URLEncode(AuthenticateCognitoActionConditionalBehaviorEnumMapper::GetNameForAuthenticateCognitoActionConditionalBehaviorEnum(m_onUnauthenticatedRequest)) << "&";
   }
 
 }
@@ -201,17 +178,16 @@ void AuthenticateCognitoActionConfig::OutputToStream(Aws::OStream& oStream, cons
       unsigned authenticationRequestExtraParamsIdx = 1;
       for(auto& item : m_authenticationRequestExtraParams)
       {
-        oStream << location << ".AuthenticationRequestExtraParams.entry."  << authenticationRequestExtraParamsIdx << ".key="
+        oStream << location << ".AuthenticationRequestExtraParams.entry." << authenticationRequestExtraParamsIdx << ".key="
             << StringUtils::URLEncode(item.first.c_str()) << "&";
-        oStream << location <<  ".AuthenticationRequestExtraParams.entry." << authenticationRequestExtraParamsIdx << ".value="
+        oStream << location << ".AuthenticationRequestExtraParams.entry." << authenticationRequestExtraParamsIdx << ".value="
             << StringUtils::URLEncode(item.second.c_str()) << "&";
         authenticationRequestExtraParamsIdx++;
       }
-
   }
   if(m_onUnauthenticatedRequestHasBeenSet)
   {
-      oStream << location << ".OnUnauthenticatedRequest=" << AuthenticateCognitoActionConditionalBehaviorEnumMapper::GetNameForAuthenticateCognitoActionConditionalBehaviorEnum(m_onUnauthenticatedRequest) << "&";
+      oStream << location << ".OnUnauthenticatedRequest=" << StringUtils::URLEncode(AuthenticateCognitoActionConditionalBehaviorEnumMapper::GetNameForAuthenticateCognitoActionConditionalBehaviorEnum(m_onUnauthenticatedRequest)) << "&";
   }
 }
 

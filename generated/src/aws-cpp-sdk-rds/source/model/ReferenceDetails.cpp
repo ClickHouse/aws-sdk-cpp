@@ -20,13 +20,7 @@ namespace RDS
 namespace Model
 {
 
-ReferenceDetails::ReferenceDetails() : 
-    m_scalarReferenceDetailsHasBeenSet(false)
-{
-}
-
-ReferenceDetails::ReferenceDetails(const XmlNode& xmlNode) : 
-    m_scalarReferenceDetailsHasBeenSet(false)
+ReferenceDetails::ReferenceDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

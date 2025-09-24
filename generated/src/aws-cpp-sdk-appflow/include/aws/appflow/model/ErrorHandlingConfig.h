@@ -35,121 +35,49 @@ namespace Model
   class ErrorHandlingConfig
   {
   public:
-    AWS_APPFLOW_API ErrorHandlingConfig();
+    AWS_APPFLOW_API ErrorHandlingConfig() = default;
     AWS_APPFLOW_API ErrorHandlingConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API ErrorHandlingConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPFLOW_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies if the flow should fail after the first instance of a failure when
      * attempting to place data in the destination. </p>
      */
-    inline bool GetFailOnFirstDestinationError() const{ return m_failOnFirstDestinationError; }
-
-    /**
-     * <p> Specifies if the flow should fail after the first instance of a failure when
-     * attempting to place data in the destination. </p>
-     */
+    inline bool GetFailOnFirstDestinationError() const { return m_failOnFirstDestinationError; }
     inline bool FailOnFirstDestinationErrorHasBeenSet() const { return m_failOnFirstDestinationErrorHasBeenSet; }
-
-    /**
-     * <p> Specifies if the flow should fail after the first instance of a failure when
-     * attempting to place data in the destination. </p>
-     */
     inline void SetFailOnFirstDestinationError(bool value) { m_failOnFirstDestinationErrorHasBeenSet = true; m_failOnFirstDestinationError = value; }
-
-    /**
-     * <p> Specifies if the flow should fail after the first instance of a failure when
-     * attempting to place data in the destination. </p>
-     */
     inline ErrorHandlingConfig& WithFailOnFirstDestinationError(bool value) { SetFailOnFirstDestinationError(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> Specifies the Amazon S3 bucket prefix. </p>
      */
-    inline const Aws::String& GetBucketPrefix() const{ return m_bucketPrefix; }
-
-    /**
-     * <p> Specifies the Amazon S3 bucket prefix. </p>
-     */
+    inline const Aws::String& GetBucketPrefix() const { return m_bucketPrefix; }
     inline bool BucketPrefixHasBeenSet() const { return m_bucketPrefixHasBeenSet; }
+    template<typename BucketPrefixT = Aws::String>
+    void SetBucketPrefix(BucketPrefixT&& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = std::forward<BucketPrefixT>(value); }
+    template<typename BucketPrefixT = Aws::String>
+    ErrorHandlingConfig& WithBucketPrefix(BucketPrefixT&& value) { SetBucketPrefix(std::forward<BucketPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies the Amazon S3 bucket prefix. </p>
-     */
-    inline void SetBucketPrefix(const Aws::String& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = value; }
-
-    /**
-     * <p> Specifies the Amazon S3 bucket prefix. </p>
-     */
-    inline void SetBucketPrefix(Aws::String&& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = std::move(value); }
-
-    /**
-     * <p> Specifies the Amazon S3 bucket prefix. </p>
-     */
-    inline void SetBucketPrefix(const char* value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix.assign(value); }
-
-    /**
-     * <p> Specifies the Amazon S3 bucket prefix. </p>
-     */
-    inline ErrorHandlingConfig& WithBucketPrefix(const Aws::String& value) { SetBucketPrefix(value); return *this;}
-
-    /**
-     * <p> Specifies the Amazon S3 bucket prefix. </p>
-     */
-    inline ErrorHandlingConfig& WithBucketPrefix(Aws::String&& value) { SetBucketPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p> Specifies the Amazon S3 bucket prefix. </p>
-     */
-    inline ErrorHandlingConfig& WithBucketPrefix(const char* value) { SetBucketPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies the name of the Amazon S3 bucket. </p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p> Specifies the name of the Amazon S3 bucket. </p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
-
-    /**
-     * <p> Specifies the name of the Amazon S3 bucket. </p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p> Specifies the name of the Amazon S3 bucket. </p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p> Specifies the name of the Amazon S3 bucket. </p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p> Specifies the name of the Amazon S3 bucket. </p>
-     */
-    inline ErrorHandlingConfig& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p> Specifies the name of the Amazon S3 bucket. </p>
-     */
-    inline ErrorHandlingConfig& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p> Specifies the name of the Amazon S3 bucket. </p>
-     */
-    inline ErrorHandlingConfig& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    ErrorHandlingConfig& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_failOnFirstDestinationError;
+    bool m_failOnFirstDestinationError{false};
     bool m_failOnFirstDestinationErrorHasBeenSet = false;
 
     Aws::String m_bucketPrefix;

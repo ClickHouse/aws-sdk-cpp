@@ -18,25 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-ApplicationConfigurationUpdate::ApplicationConfigurationUpdate() : 
-    m_sqlApplicationConfigurationUpdateHasBeenSet(false),
-    m_applicationCodeConfigurationUpdateHasBeenSet(false),
-    m_flinkApplicationConfigurationUpdateHasBeenSet(false),
-    m_environmentPropertyUpdatesHasBeenSet(false),
-    m_applicationSnapshotConfigurationUpdateHasBeenSet(false),
-    m_vpcConfigurationUpdatesHasBeenSet(false),
-    m_zeppelinApplicationConfigurationUpdateHasBeenSet(false)
-{
-}
-
-ApplicationConfigurationUpdate::ApplicationConfigurationUpdate(JsonView jsonValue) : 
-    m_sqlApplicationConfigurationUpdateHasBeenSet(false),
-    m_applicationCodeConfigurationUpdateHasBeenSet(false),
-    m_flinkApplicationConfigurationUpdateHasBeenSet(false),
-    m_environmentPropertyUpdatesHasBeenSet(false),
-    m_applicationSnapshotConfigurationUpdateHasBeenSet(false),
-    m_vpcConfigurationUpdatesHasBeenSet(false),
-    m_zeppelinApplicationConfigurationUpdateHasBeenSet(false)
+ApplicationConfigurationUpdate::ApplicationConfigurationUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,38 +28,33 @@ ApplicationConfigurationUpdate& ApplicationConfigurationUpdate::operator =(JsonV
   if(jsonValue.ValueExists("SqlApplicationConfigurationUpdate"))
   {
     m_sqlApplicationConfigurationUpdate = jsonValue.GetObject("SqlApplicationConfigurationUpdate");
-
     m_sqlApplicationConfigurationUpdateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApplicationCodeConfigurationUpdate"))
   {
     m_applicationCodeConfigurationUpdate = jsonValue.GetObject("ApplicationCodeConfigurationUpdate");
-
     m_applicationCodeConfigurationUpdateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FlinkApplicationConfigurationUpdate"))
   {
     m_flinkApplicationConfigurationUpdate = jsonValue.GetObject("FlinkApplicationConfigurationUpdate");
-
     m_flinkApplicationConfigurationUpdateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EnvironmentPropertyUpdates"))
   {
     m_environmentPropertyUpdates = jsonValue.GetObject("EnvironmentPropertyUpdates");
-
     m_environmentPropertyUpdatesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApplicationSnapshotConfigurationUpdate"))
   {
     m_applicationSnapshotConfigurationUpdate = jsonValue.GetObject("ApplicationSnapshotConfigurationUpdate");
-
     m_applicationSnapshotConfigurationUpdateHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ApplicationSystemRollbackConfigurationUpdate"))
+  {
+    m_applicationSystemRollbackConfigurationUpdate = jsonValue.GetObject("ApplicationSystemRollbackConfigurationUpdate");
+    m_applicationSystemRollbackConfigurationUpdateHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("VpcConfigurationUpdates"))
   {
     Aws::Utils::Array<JsonView> vpcConfigurationUpdatesJsonList = jsonValue.GetArray("VpcConfigurationUpdates");
@@ -87,14 +64,16 @@ ApplicationConfigurationUpdate& ApplicationConfigurationUpdate::operator =(JsonV
     }
     m_vpcConfigurationUpdatesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ZeppelinApplicationConfigurationUpdate"))
   {
     m_zeppelinApplicationConfigurationUpdate = jsonValue.GetObject("ZeppelinApplicationConfigurationUpdate");
-
     m_zeppelinApplicationConfigurationUpdateHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ApplicationEncryptionConfigurationUpdate"))
+  {
+    m_applicationEncryptionConfigurationUpdate = jsonValue.GetObject("ApplicationEncryptionConfigurationUpdate");
+    m_applicationEncryptionConfigurationUpdateHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -132,6 +111,12 @@ JsonValue ApplicationConfigurationUpdate::Jsonize() const
 
   }
 
+  if(m_applicationSystemRollbackConfigurationUpdateHasBeenSet)
+  {
+   payload.WithObject("ApplicationSystemRollbackConfigurationUpdate", m_applicationSystemRollbackConfigurationUpdate.Jsonize());
+
+  }
+
   if(m_vpcConfigurationUpdatesHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> vpcConfigurationUpdatesJsonList(m_vpcConfigurationUpdates.size());
@@ -146,6 +131,12 @@ JsonValue ApplicationConfigurationUpdate::Jsonize() const
   if(m_zeppelinApplicationConfigurationUpdateHasBeenSet)
   {
    payload.WithObject("ZeppelinApplicationConfigurationUpdate", m_zeppelinApplicationConfigurationUpdate.Jsonize());
+
+  }
+
+  if(m_applicationEncryptionConfigurationUpdateHasBeenSet)
+  {
+   payload.WithObject("ApplicationEncryptionConfigurationUpdate", m_applicationEncryptionConfigurationUpdate.Jsonize());
 
   }
 

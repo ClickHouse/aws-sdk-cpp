@@ -33,208 +33,132 @@ namespace Model
   class DescribeKeyValueStoreResult
   {
   public:
-    AWS_CLOUDFRONTKEYVALUESTORE_API DescribeKeyValueStoreResult();
+    AWS_CLOUDFRONTKEYVALUESTORE_API DescribeKeyValueStoreResult() = default;
     AWS_CLOUDFRONTKEYVALUESTORE_API DescribeKeyValueStoreResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CLOUDFRONTKEYVALUESTORE_API DescribeKeyValueStoreResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Number of key value pairs in the Key Value Store.</p>
      */
-    inline int GetItemCount() const{ return m_itemCount; }
-
-    /**
-     * <p>Number of key value pairs in the Key Value Store.</p>
-     */
-    inline void SetItemCount(int value) { m_itemCount = value; }
-
-    /**
-     * <p>Number of key value pairs in the Key Value Store.</p>
-     */
+    inline int GetItemCount() const { return m_itemCount; }
+    inline void SetItemCount(int value) { m_itemCountHasBeenSet = true; m_itemCount = value; }
     inline DescribeKeyValueStoreResult& WithItemCount(int value) { SetItemCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Total size of the Key Value Store in bytes.</p>
      */
-    inline long long GetTotalSizeInBytes() const{ return m_totalSizeInBytes; }
-
-    /**
-     * <p>Total size of the Key Value Store in bytes.</p>
-     */
-    inline void SetTotalSizeInBytes(long long value) { m_totalSizeInBytes = value; }
-
-    /**
-     * <p>Total size of the Key Value Store in bytes.</p>
-     */
+    inline long long GetTotalSizeInBytes() const { return m_totalSizeInBytes; }
+    inline void SetTotalSizeInBytes(long long value) { m_totalSizeInBytesHasBeenSet = true; m_totalSizeInBytes = value; }
     inline DescribeKeyValueStoreResult& WithTotalSizeInBytes(long long value) { SetTotalSizeInBytes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Key Value Store.</p>
      */
-    inline const Aws::String& GetKvsARN() const{ return m_kvsARN; }
+    inline const Aws::String& GetKvsARN() const { return m_kvsARN; }
+    template<typename KvsARNT = Aws::String>
+    void SetKvsARN(KvsARNT&& value) { m_kvsARNHasBeenSet = true; m_kvsARN = std::forward<KvsARNT>(value); }
+    template<typename KvsARNT = Aws::String>
+    DescribeKeyValueStoreResult& WithKvsARN(KvsARNT&& value) { SetKvsARN(std::forward<KvsARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Key Value Store.</p>
-     */
-    inline void SetKvsARN(const Aws::String& value) { m_kvsARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Key Value Store.</p>
-     */
-    inline void SetKvsARN(Aws::String&& value) { m_kvsARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Key Value Store.</p>
-     */
-    inline void SetKvsARN(const char* value) { m_kvsARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Key Value Store.</p>
-     */
-    inline DescribeKeyValueStoreResult& WithKvsARN(const Aws::String& value) { SetKvsARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Key Value Store.</p>
-     */
-    inline DescribeKeyValueStoreResult& WithKvsARN(Aws::String&& value) { SetKvsARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Key Value Store.</p>
-     */
-    inline DescribeKeyValueStoreResult& WithKvsARN(const char* value) { SetKvsARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Date and time when the Key Value Store was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreated() const{ return m_created; }
+    inline const Aws::Utils::DateTime& GetCreated() const { return m_created; }
+    template<typename CreatedT = Aws::Utils::DateTime>
+    void SetCreated(CreatedT&& value) { m_createdHasBeenSet = true; m_created = std::forward<CreatedT>(value); }
+    template<typename CreatedT = Aws::Utils::DateTime>
+    DescribeKeyValueStoreResult& WithCreated(CreatedT&& value) { SetCreated(std::forward<CreatedT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Date and time when the Key Value Store was created.</p>
-     */
-    inline void SetCreated(const Aws::Utils::DateTime& value) { m_created = value; }
-
-    /**
-     * <p>Date and time when the Key Value Store was created.</p>
-     */
-    inline void SetCreated(Aws::Utils::DateTime&& value) { m_created = std::move(value); }
-
-    /**
-     * <p>Date and time when the Key Value Store was created.</p>
-     */
-    inline DescribeKeyValueStoreResult& WithCreated(const Aws::Utils::DateTime& value) { SetCreated(value); return *this;}
-
-    /**
-     * <p>Date and time when the Key Value Store was created.</p>
-     */
-    inline DescribeKeyValueStoreResult& WithCreated(Aws::Utils::DateTime&& value) { SetCreated(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The version identifier for the current version of the Key Value Store.</p>
      */
-    inline const Aws::String& GetETag() const{ return m_eTag; }
+    inline const Aws::String& GetETag() const { return m_eTag; }
+    template<typename ETagT = Aws::String>
+    void SetETag(ETagT&& value) { m_eTagHasBeenSet = true; m_eTag = std::forward<ETagT>(value); }
+    template<typename ETagT = Aws::String>
+    DescribeKeyValueStoreResult& WithETag(ETagT&& value) { SetETag(std::forward<ETagT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version identifier for the current version of the Key Value Store.</p>
-     */
-    inline void SetETag(const Aws::String& value) { m_eTag = value; }
-
-    /**
-     * <p>The version identifier for the current version of the Key Value Store.</p>
-     */
-    inline void SetETag(Aws::String&& value) { m_eTag = std::move(value); }
-
-    /**
-     * <p>The version identifier for the current version of the Key Value Store.</p>
-     */
-    inline void SetETag(const char* value) { m_eTag.assign(value); }
-
-    /**
-     * <p>The version identifier for the current version of the Key Value Store.</p>
-     */
-    inline DescribeKeyValueStoreResult& WithETag(const Aws::String& value) { SetETag(value); return *this;}
-
-    /**
-     * <p>The version identifier for the current version of the Key Value Store.</p>
-     */
-    inline DescribeKeyValueStoreResult& WithETag(Aws::String&& value) { SetETag(std::move(value)); return *this;}
-
-    /**
-     * <p>The version identifier for the current version of the Key Value Store.</p>
-     */
-    inline DescribeKeyValueStoreResult& WithETag(const char* value) { SetETag(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Date and time when the key value pairs in the Key Value Store was last
      * modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModified() const{ return m_lastModified; }
+    inline const Aws::Utils::DateTime& GetLastModified() const { return m_lastModified; }
+    template<typename LastModifiedT = Aws::Utils::DateTime>
+    void SetLastModified(LastModifiedT&& value) { m_lastModifiedHasBeenSet = true; m_lastModified = std::forward<LastModifiedT>(value); }
+    template<typename LastModifiedT = Aws::Utils::DateTime>
+    DescribeKeyValueStoreResult& WithLastModified(LastModifiedT&& value) { SetLastModified(std::forward<LastModifiedT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Date and time when the key value pairs in the Key Value Store was last
-     * modified.</p>
+     * <p>The current status of the Key Value Store.</p>
      */
-    inline void SetLastModified(const Aws::Utils::DateTime& value) { m_lastModified = value; }
+    inline const Aws::String& GetStatus() const { return m_status; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    DescribeKeyValueStoreResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Date and time when the key value pairs in the Key Value Store was last
-     * modified.</p>
+     * <p>The reason for Key Value Store creation failure.</p>
      */
-    inline void SetLastModified(Aws::Utils::DateTime&& value) { m_lastModified = std::move(value); }
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    DescribeKeyValueStoreResult& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Date and time when the key value pairs in the Key Value Store was last
-     * modified.</p>
-     */
-    inline DescribeKeyValueStoreResult& WithLastModified(const Aws::Utils::DateTime& value) { SetLastModified(value); return *this;}
-
-    /**
-     * <p>Date and time when the key value pairs in the Key Value Store was last
-     * modified.</p>
-     */
-    inline DescribeKeyValueStoreResult& WithLastModified(Aws::Utils::DateTime&& value) { SetLastModified(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeKeyValueStoreResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeKeyValueStoreResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeKeyValueStoreResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeKeyValueStoreResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_itemCount;
+    int m_itemCount{0};
+    bool m_itemCountHasBeenSet = false;
 
-    long long m_totalSizeInBytes;
+    long long m_totalSizeInBytes{0};
+    bool m_totalSizeInBytesHasBeenSet = false;
 
     Aws::String m_kvsARN;
+    bool m_kvsARNHasBeenSet = false;
 
-    Aws::Utils::DateTime m_created;
+    Aws::Utils::DateTime m_created{};
+    bool m_createdHasBeenSet = false;
 
     Aws::String m_eTag;
+    bool m_eTagHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModified;
+    Aws::Utils::DateTime m_lastModified{};
+    bool m_lastModifiedHasBeenSet = false;
+
+    Aws::String m_status;
+    bool m_statusHasBeenSet = false;
+
+    Aws::String m_failureReason;
+    bool m_failureReasonHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

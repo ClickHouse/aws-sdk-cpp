@@ -12,6 +12,7 @@
 #include <cassert>
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 
 static const char* CLASS_TAG = "DateTime";
 static const char* RFC822_DATE_FORMAT_STR_MINUS_Z = "%a, %d %b %Y %H:%M:%S";
@@ -1120,10 +1121,16 @@ DateTime::DateTime(int64_t millisSinceEpoch) : m_valid(true)
     m_time = std::chrono::system_clock::time_point(timestamp);
 }
 
-DateTime::DateTime(double epoch_millis) : m_valid(true)
+DateTime::DateTime(double secondsSinceEpoch) : m_valid(true)
 {
-    std::chrono::duration<double, std::chrono::seconds::period> timestamp(epoch_millis);
+    std::chrono::duration<double, std::chrono::seconds::period> timestamp(secondsSinceEpoch);
     m_time = std::chrono::system_clock::time_point(std::chrono::duration_cast<std::chrono::milliseconds>(timestamp));
+}
+
+DateTime::DateTime(uint64_t secondsSinceEpoch) : m_valid(true)
+{
+  std::chrono::duration<uint64_t, std::chrono::seconds::period> timestamp(secondsSinceEpoch);
+  m_time = std::chrono::system_clock::time_point(timestamp);
 }
 
 DateTime::DateTime(const Aws::String& timestamp, DateFormat format) : m_valid(true)
@@ -1262,6 +1269,22 @@ Aws::String DateTime::ToGmtString(const char* formatStr) const
     char formattedString[100];
     std::strftime(formattedString, sizeof(formattedString), formatStr, &gmtTimeStamp);
     return formattedString;
+}
+
+Aws::String DateTime::ToGmtStringWithMs() const
+{
+    struct tm gmtTimeStamp = ConvertTimestampToGmtStruct();
+
+    char formattedString[100];
+    std::strftime(formattedString, sizeof(formattedString), "%Y-%m-%dT%H:%M:%S", &gmtTimeStamp);
+    Aws::String formattedStringStr = formattedString;
+
+    Aws::StringStream msSs;
+    msSs << "." << std::setfill('0') << std::setw(3) <<
+        std::chrono::duration_cast<std::chrono::milliseconds>(m_time.time_since_epoch()).count() % 1000;
+
+    formattedStringStr += msSs.str();
+    return formattedStringStr;
 }
 
 double DateTime::SecondsWithMSPrecision() const
@@ -1477,8 +1500,7 @@ void DateTime::ConvertTimestampStringToTimePoint(const char* timestamp, DateForm
         }
         else
         {
-            assert(0);
-            AWS_LOGSTREAM_WARN(CLASS_TAG, "Non-UTC timestamp detected. This is always a bug. Make the world a better place and fix whatever sent you this timestamp: " << timestamp)
+            AWS_LOGSTREAM_ERROR(CLASS_TAG, "Non-UTC timestamp detected. This is always a bug. Make the world a better place and fix whatever sent you this timestamp: " << timestamp)
             tt = std::mktime(&timeStruct);
         }
         m_time = std::chrono::system_clock::from_time_t(tt);

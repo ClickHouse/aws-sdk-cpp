@@ -33,127 +33,48 @@ namespace Model
   class ResourceMapFilter
   {
   public:
-    AWS_INSPECTOR2_API ResourceMapFilter();
+    AWS_INSPECTOR2_API ResourceMapFilter() = default;
     AWS_INSPECTOR2_API ResourceMapFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API ResourceMapFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The filter's comparison.</p>
      */
-    inline const ResourceMapComparison& GetComparison() const{ return m_comparison; }
-
-    /**
-     * <p>The filter's comparison.</p>
-     */
+    inline ResourceMapComparison GetComparison() const { return m_comparison; }
     inline bool ComparisonHasBeenSet() const { return m_comparisonHasBeenSet; }
+    inline void SetComparison(ResourceMapComparison value) { m_comparisonHasBeenSet = true; m_comparison = value; }
+    inline ResourceMapFilter& WithComparison(ResourceMapComparison value) { SetComparison(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The filter's comparison.</p>
-     */
-    inline void SetComparison(const ResourceMapComparison& value) { m_comparisonHasBeenSet = true; m_comparison = value; }
-
-    /**
-     * <p>The filter's comparison.</p>
-     */
-    inline void SetComparison(ResourceMapComparison&& value) { m_comparisonHasBeenSet = true; m_comparison = std::move(value); }
-
-    /**
-     * <p>The filter's comparison.</p>
-     */
-    inline ResourceMapFilter& WithComparison(const ResourceMapComparison& value) { SetComparison(value); return *this;}
-
-    /**
-     * <p>The filter's comparison.</p>
-     */
-    inline ResourceMapFilter& WithComparison(ResourceMapComparison&& value) { SetComparison(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The filter's key.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The filter's key.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    ResourceMapFilter& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The filter's key.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The filter's key.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The filter's key.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The filter's key.</p>
-     */
-    inline ResourceMapFilter& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The filter's key.</p>
-     */
-    inline ResourceMapFilter& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The filter's key.</p>
-     */
-    inline ResourceMapFilter& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The filter's value.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The filter's value.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The filter's value.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The filter's value.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The filter's value.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The filter's value.</p>
-     */
-    inline ResourceMapFilter& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The filter's value.</p>
-     */
-    inline ResourceMapFilter& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The filter's value.</p>
-     */
-    inline ResourceMapFilter& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    ResourceMapFilter& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
-    ResourceMapComparison m_comparison;
+    ResourceMapComparison m_comparison{ResourceMapComparison::NOT_SET};
     bool m_comparisonHasBeenSet = false;
 
     Aws::String m_key;

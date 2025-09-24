@@ -32,124 +32,45 @@ namespace Model
   class CustomizedMetricSpecification
   {
   public:
-    AWS_SAGEMAKER_API CustomizedMetricSpecification();
+    AWS_SAGEMAKER_API CustomizedMetricSpecification() = default;
     AWS_SAGEMAKER_API CustomizedMetricSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API CustomizedMetricSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the customized metric.</p>
      */
-    inline const Aws::String& GetMetricName() const{ return m_metricName; }
-
-    /**
-     * <p>The name of the customized metric.</p>
-     */
+    inline const Aws::String& GetMetricName() const { return m_metricName; }
     inline bool MetricNameHasBeenSet() const { return m_metricNameHasBeenSet; }
+    template<typename MetricNameT = Aws::String>
+    void SetMetricName(MetricNameT&& value) { m_metricNameHasBeenSet = true; m_metricName = std::forward<MetricNameT>(value); }
+    template<typename MetricNameT = Aws::String>
+    CustomizedMetricSpecification& WithMetricName(MetricNameT&& value) { SetMetricName(std::forward<MetricNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the customized metric.</p>
-     */
-    inline void SetMetricName(const Aws::String& value) { m_metricNameHasBeenSet = true; m_metricName = value; }
-
-    /**
-     * <p>The name of the customized metric.</p>
-     */
-    inline void SetMetricName(Aws::String&& value) { m_metricNameHasBeenSet = true; m_metricName = std::move(value); }
-
-    /**
-     * <p>The name of the customized metric.</p>
-     */
-    inline void SetMetricName(const char* value) { m_metricNameHasBeenSet = true; m_metricName.assign(value); }
-
-    /**
-     * <p>The name of the customized metric.</p>
-     */
-    inline CustomizedMetricSpecification& WithMetricName(const Aws::String& value) { SetMetricName(value); return *this;}
-
-    /**
-     * <p>The name of the customized metric.</p>
-     */
-    inline CustomizedMetricSpecification& WithMetricName(Aws::String&& value) { SetMetricName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the customized metric.</p>
-     */
-    inline CustomizedMetricSpecification& WithMetricName(const char* value) { SetMetricName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The namespace of the customized metric.</p>
      */
-    inline const Aws::String& GetNamespace() const{ return m_namespace; }
-
-    /**
-     * <p>The namespace of the customized metric.</p>
-     */
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
     inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    CustomizedMetricSpecification& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The namespace of the customized metric.</p>
-     */
-    inline void SetNamespace(const Aws::String& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
-
-    /**
-     * <p>The namespace of the customized metric.</p>
-     */
-    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
-
-    /**
-     * <p>The namespace of the customized metric.</p>
-     */
-    inline void SetNamespace(const char* value) { m_namespaceHasBeenSet = true; m_namespace.assign(value); }
-
-    /**
-     * <p>The namespace of the customized metric.</p>
-     */
-    inline CustomizedMetricSpecification& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>The namespace of the customized metric.</p>
-     */
-    inline CustomizedMetricSpecification& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>The namespace of the customized metric.</p>
-     */
-    inline CustomizedMetricSpecification& WithNamespace(const char* value) { SetNamespace(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The statistic of the customized metric.</p>
      */
-    inline const Statistic& GetStatistic() const{ return m_statistic; }
-
-    /**
-     * <p>The statistic of the customized metric.</p>
-     */
+    inline Statistic GetStatistic() const { return m_statistic; }
     inline bool StatisticHasBeenSet() const { return m_statisticHasBeenSet; }
-
-    /**
-     * <p>The statistic of the customized metric.</p>
-     */
-    inline void SetStatistic(const Statistic& value) { m_statisticHasBeenSet = true; m_statistic = value; }
-
-    /**
-     * <p>The statistic of the customized metric.</p>
-     */
-    inline void SetStatistic(Statistic&& value) { m_statisticHasBeenSet = true; m_statistic = std::move(value); }
-
-    /**
-     * <p>The statistic of the customized metric.</p>
-     */
-    inline CustomizedMetricSpecification& WithStatistic(const Statistic& value) { SetStatistic(value); return *this;}
-
-    /**
-     * <p>The statistic of the customized metric.</p>
-     */
-    inline CustomizedMetricSpecification& WithStatistic(Statistic&& value) { SetStatistic(std::move(value)); return *this;}
-
+    inline void SetStatistic(Statistic value) { m_statisticHasBeenSet = true; m_statistic = value; }
+    inline CustomizedMetricSpecification& WithStatistic(Statistic value) { SetStatistic(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_metricName;
@@ -158,7 +79,7 @@ namespace Model
     Aws::String m_namespace;
     bool m_namespaceHasBeenSet = false;
 
-    Statistic m_statistic;
+    Statistic m_statistic{Statistic::NOT_SET};
     bool m_statisticHasBeenSet = false;
   };
 

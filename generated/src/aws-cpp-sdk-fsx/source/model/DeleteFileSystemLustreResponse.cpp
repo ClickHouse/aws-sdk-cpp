@@ -18,15 +18,7 @@ namespace FSx
 namespace Model
 {
 
-DeleteFileSystemLustreResponse::DeleteFileSystemLustreResponse() : 
-    m_finalBackupIdHasBeenSet(false),
-    m_finalBackupTagsHasBeenSet(false)
-{
-}
-
-DeleteFileSystemLustreResponse::DeleteFileSystemLustreResponse(JsonView jsonValue) : 
-    m_finalBackupIdHasBeenSet(false),
-    m_finalBackupTagsHasBeenSet(false)
+DeleteFileSystemLustreResponse::DeleteFileSystemLustreResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DeleteFileSystemLustreResponse& DeleteFileSystemLustreResponse::operator =(JsonV
   if(jsonValue.ValueExists("FinalBackupId"))
   {
     m_finalBackupId = jsonValue.GetString("FinalBackupId");
-
     m_finalBackupIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FinalBackupTags"))
   {
     Aws::Utils::Array<JsonView> finalBackupTagsJsonList = jsonValue.GetArray("FinalBackupTags");
@@ -49,7 +39,6 @@ DeleteFileSystemLustreResponse& DeleteFileSystemLustreResponse::operator =(JsonV
     }
     m_finalBackupTagsHasBeenSet = true;
   }
-
   return *this;
 }
 

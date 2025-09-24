@@ -32,7 +32,7 @@ namespace Model
   class ResumeClusterMessage
   {
   public:
-    AWS_REDSHIFT_API ResumeClusterMessage();
+    AWS_REDSHIFT_API ResumeClusterMessage() = default;
     AWS_REDSHIFT_API ResumeClusterMessage(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API ResumeClusterMessage& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,46 +40,17 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The identifier of the cluster to be resumed.</p>
      */
-    inline const Aws::String& GetClusterIdentifier() const{ return m_clusterIdentifier; }
-
-    /**
-     * <p>The identifier of the cluster to be resumed.</p>
-     */
+    inline const Aws::String& GetClusterIdentifier() const { return m_clusterIdentifier; }
     inline bool ClusterIdentifierHasBeenSet() const { return m_clusterIdentifierHasBeenSet; }
-
-    /**
-     * <p>The identifier of the cluster to be resumed.</p>
-     */
-    inline void SetClusterIdentifier(const Aws::String& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = value; }
-
-    /**
-     * <p>The identifier of the cluster to be resumed.</p>
-     */
-    inline void SetClusterIdentifier(Aws::String&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the cluster to be resumed.</p>
-     */
-    inline void SetClusterIdentifier(const char* value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of the cluster to be resumed.</p>
-     */
-    inline ResumeClusterMessage& WithClusterIdentifier(const Aws::String& value) { SetClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the cluster to be resumed.</p>
-     */
-    inline ResumeClusterMessage& WithClusterIdentifier(Aws::String&& value) { SetClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the cluster to be resumed.</p>
-     */
-    inline ResumeClusterMessage& WithClusterIdentifier(const char* value) { SetClusterIdentifier(value); return *this;}
-
+    template<typename ClusterIdentifierT = Aws::String>
+    void SetClusterIdentifier(ClusterIdentifierT&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::forward<ClusterIdentifierT>(value); }
+    template<typename ClusterIdentifierT = Aws::String>
+    ResumeClusterMessage& WithClusterIdentifier(ClusterIdentifierT&& value) { SetClusterIdentifier(std::forward<ClusterIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterIdentifier;

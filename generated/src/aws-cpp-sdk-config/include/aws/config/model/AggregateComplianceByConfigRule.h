@@ -35,171 +35,60 @@ namespace Model
   class AggregateComplianceByConfigRule
   {
   public:
-    AWS_CONFIGSERVICE_API AggregateComplianceByConfigRule();
+    AWS_CONFIGSERVICE_API AggregateComplianceByConfigRule() = default;
     AWS_CONFIGSERVICE_API AggregateComplianceByConfigRule(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API AggregateComplianceByConfigRule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Config rule.</p>
      */
-    inline const Aws::String& GetConfigRuleName() const{ return m_configRuleName; }
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
+    inline const Aws::String& GetConfigRuleName() const { return m_configRuleName; }
     inline bool ConfigRuleNameHasBeenSet() const { return m_configRuleNameHasBeenSet; }
+    template<typename ConfigRuleNameT = Aws::String>
+    void SetConfigRuleName(ConfigRuleNameT&& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = std::forward<ConfigRuleNameT>(value); }
+    template<typename ConfigRuleNameT = Aws::String>
+    AggregateComplianceByConfigRule& WithConfigRuleName(ConfigRuleNameT&& value) { SetConfigRuleName(std::forward<ConfigRuleNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline void SetConfigRuleName(const Aws::String& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = value; }
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline void SetConfigRuleName(Aws::String&& value) { m_configRuleNameHasBeenSet = true; m_configRuleName = std::move(value); }
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline void SetConfigRuleName(const char* value) { m_configRuleNameHasBeenSet = true; m_configRuleName.assign(value); }
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithConfigRuleName(const Aws::String& value) { SetConfigRuleName(value); return *this;}
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithConfigRuleName(Aws::String&& value) { SetConfigRuleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Config rule.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithConfigRuleName(const char* value) { SetConfigRuleName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether an Amazon Web Services resource or Config rule is compliant
      * and provides the number of contributors that affect the compliance.</p>
      */
-    inline const Compliance& GetCompliance() const{ return m_compliance; }
-
-    /**
-     * <p>Indicates whether an Amazon Web Services resource or Config rule is compliant
-     * and provides the number of contributors that affect the compliance.</p>
-     */
+    inline const Compliance& GetCompliance() const { return m_compliance; }
     inline bool ComplianceHasBeenSet() const { return m_complianceHasBeenSet; }
+    template<typename ComplianceT = Compliance>
+    void SetCompliance(ComplianceT&& value) { m_complianceHasBeenSet = true; m_compliance = std::forward<ComplianceT>(value); }
+    template<typename ComplianceT = Compliance>
+    AggregateComplianceByConfigRule& WithCompliance(ComplianceT&& value) { SetCompliance(std::forward<ComplianceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates whether an Amazon Web Services resource or Config rule is compliant
-     * and provides the number of contributors that affect the compliance.</p>
-     */
-    inline void SetCompliance(const Compliance& value) { m_complianceHasBeenSet = true; m_compliance = value; }
-
-    /**
-     * <p>Indicates whether an Amazon Web Services resource or Config rule is compliant
-     * and provides the number of contributors that affect the compliance.</p>
-     */
-    inline void SetCompliance(Compliance&& value) { m_complianceHasBeenSet = true; m_compliance = std::move(value); }
-
-    /**
-     * <p>Indicates whether an Amazon Web Services resource or Config rule is compliant
-     * and provides the number of contributors that affect the compliance.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithCompliance(const Compliance& value) { SetCompliance(value); return *this;}
-
-    /**
-     * <p>Indicates whether an Amazon Web Services resource or Config rule is compliant
-     * and provides the number of contributors that affect the compliance.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithCompliance(Compliance&& value) { SetCompliance(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The 12-digit account ID of the source account.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The 12-digit account ID of the source account.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    AggregateComplianceByConfigRule& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The 12-digit account ID of the source account.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The 12-digit account ID of the source account.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The 12-digit account ID of the source account.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The 12-digit account ID of the source account.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The 12-digit account ID of the source account.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The 12-digit account ID of the source account.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The source region from where the data is aggregated.</p>
      */
-    inline const Aws::String& GetAwsRegion() const{ return m_awsRegion; }
-
-    /**
-     * <p>The source region from where the data is aggregated.</p>
-     */
+    inline const Aws::String& GetAwsRegion() const { return m_awsRegion; }
     inline bool AwsRegionHasBeenSet() const { return m_awsRegionHasBeenSet; }
-
-    /**
-     * <p>The source region from where the data is aggregated.</p>
-     */
-    inline void SetAwsRegion(const Aws::String& value) { m_awsRegionHasBeenSet = true; m_awsRegion = value; }
-
-    /**
-     * <p>The source region from where the data is aggregated.</p>
-     */
-    inline void SetAwsRegion(Aws::String&& value) { m_awsRegionHasBeenSet = true; m_awsRegion = std::move(value); }
-
-    /**
-     * <p>The source region from where the data is aggregated.</p>
-     */
-    inline void SetAwsRegion(const char* value) { m_awsRegionHasBeenSet = true; m_awsRegion.assign(value); }
-
-    /**
-     * <p>The source region from where the data is aggregated.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithAwsRegion(const Aws::String& value) { SetAwsRegion(value); return *this;}
-
-    /**
-     * <p>The source region from where the data is aggregated.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithAwsRegion(Aws::String&& value) { SetAwsRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The source region from where the data is aggregated.</p>
-     */
-    inline AggregateComplianceByConfigRule& WithAwsRegion(const char* value) { SetAwsRegion(value); return *this;}
-
+    template<typename AwsRegionT = Aws::String>
+    void SetAwsRegion(AwsRegionT&& value) { m_awsRegionHasBeenSet = true; m_awsRegion = std::forward<AwsRegionT>(value); }
+    template<typename AwsRegionT = Aws::String>
+    AggregateComplianceByConfigRule& WithAwsRegion(AwsRegionT&& value) { SetAwsRegion(std::forward<AwsRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configRuleName;

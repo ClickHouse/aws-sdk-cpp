@@ -29,7 +29,7 @@ namespace Model
   class VolumeDetail
   {
   public:
-    AWS_EC2_API VolumeDetail();
+    AWS_EC2_API VolumeDetail() = default;
     AWS_EC2_API VolumeDetail(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API VolumeDetail& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -37,29 +37,18 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The size of the volume, in GiB.</p>
      */
-    inline long long GetSize() const{ return m_size; }
-
-    /**
-     * <p>The size of the volume, in GiB.</p>
-     */
+    inline long long GetSize() const { return m_size; }
     inline bool SizeHasBeenSet() const { return m_sizeHasBeenSet; }
-
-    /**
-     * <p>The size of the volume, in GiB.</p>
-     */
     inline void SetSize(long long value) { m_sizeHasBeenSet = true; m_size = value; }
-
-    /**
-     * <p>The size of the volume, in GiB.</p>
-     */
     inline VolumeDetail& WithSize(long long value) { SetSize(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_size;
+    long long m_size{0};
     bool m_sizeHasBeenSet = false;
   };
 

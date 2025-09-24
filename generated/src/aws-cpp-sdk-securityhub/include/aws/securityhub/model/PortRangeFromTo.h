@@ -29,59 +29,37 @@ namespace Model
   class PortRangeFromTo
   {
   public:
-    AWS_SECURITYHUB_API PortRangeFromTo();
+    AWS_SECURITYHUB_API PortRangeFromTo() = default;
     AWS_SECURITYHUB_API PortRangeFromTo(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API PortRangeFromTo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The first port in the port range.</p>
      */
-    inline int GetFrom() const{ return m_from; }
-
-    /**
-     * <p>The first port in the port range.</p>
-     */
+    inline int GetFrom() const { return m_from; }
     inline bool FromHasBeenSet() const { return m_fromHasBeenSet; }
-
-    /**
-     * <p>The first port in the port range.</p>
-     */
     inline void SetFrom(int value) { m_fromHasBeenSet = true; m_from = value; }
-
-    /**
-     * <p>The first port in the port range.</p>
-     */
     inline PortRangeFromTo& WithFrom(int value) { SetFrom(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The last port in the port range.</p>
      */
-    inline int GetTo() const{ return m_to; }
-
-    /**
-     * <p>The last port in the port range.</p>
-     */
+    inline int GetTo() const { return m_to; }
     inline bool ToHasBeenSet() const { return m_toHasBeenSet; }
-
-    /**
-     * <p>The last port in the port range.</p>
-     */
     inline void SetTo(int value) { m_toHasBeenSet = true; m_to = value; }
-
-    /**
-     * <p>The last port in the port range.</p>
-     */
     inline PortRangeFromTo& WithTo(int value) { SetTo(value); return *this;}
-
+    ///@}
   private:
 
-    int m_from;
+    int m_from{0};
     bool m_fromHasBeenSet = false;
 
-    int m_to;
+    int m_to{0};
     bool m_toHasBeenSet = false;
   };
 

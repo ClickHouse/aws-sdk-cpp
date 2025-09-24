@@ -22,7 +22,7 @@ namespace Model
   class PutVoiceConnectorOriginationRequest : public ChimeSDKVoiceRequest
   {
   public:
-    AWS_CHIMESDKVOICE_API PutVoiceConnectorOriginationRequest();
+    AWS_CHIMESDKVOICE_API PutVoiceConnectorOriginationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,77 +33,29 @@ namespace Model
     AWS_CHIMESDKVOICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Voice Connector ID.</p>
      */
-    inline const Aws::String& GetVoiceConnectorId() const{ return m_voiceConnectorId; }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
+    inline const Aws::String& GetVoiceConnectorId() const { return m_voiceConnectorId; }
     inline bool VoiceConnectorIdHasBeenSet() const { return m_voiceConnectorIdHasBeenSet; }
+    template<typename VoiceConnectorIdT = Aws::String>
+    void SetVoiceConnectorId(VoiceConnectorIdT&& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = std::forward<VoiceConnectorIdT>(value); }
+    template<typename VoiceConnectorIdT = Aws::String>
+    PutVoiceConnectorOriginationRequest& WithVoiceConnectorId(VoiceConnectorIdT&& value) { SetVoiceConnectorId(std::forward<VoiceConnectorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(const Aws::String& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = value; }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(Aws::String&& value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId = std::move(value); }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline void SetVoiceConnectorId(const char* value) { m_voiceConnectorIdHasBeenSet = true; m_voiceConnectorId.assign(value); }
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline PutVoiceConnectorOriginationRequest& WithVoiceConnectorId(const Aws::String& value) { SetVoiceConnectorId(value); return *this;}
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline PutVoiceConnectorOriginationRequest& WithVoiceConnectorId(Aws::String&& value) { SetVoiceConnectorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Voice Connector ID.</p>
-     */
-    inline PutVoiceConnectorOriginationRequest& WithVoiceConnectorId(const char* value) { SetVoiceConnectorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The origination settings being updated.</p>
      */
-    inline const Origination& GetOrigination() const{ return m_origination; }
-
-    /**
-     * <p>The origination settings being updated.</p>
-     */
+    inline const Origination& GetOrigination() const { return m_origination; }
     inline bool OriginationHasBeenSet() const { return m_originationHasBeenSet; }
-
-    /**
-     * <p>The origination settings being updated.</p>
-     */
-    inline void SetOrigination(const Origination& value) { m_originationHasBeenSet = true; m_origination = value; }
-
-    /**
-     * <p>The origination settings being updated.</p>
-     */
-    inline void SetOrigination(Origination&& value) { m_originationHasBeenSet = true; m_origination = std::move(value); }
-
-    /**
-     * <p>The origination settings being updated.</p>
-     */
-    inline PutVoiceConnectorOriginationRequest& WithOrigination(const Origination& value) { SetOrigination(value); return *this;}
-
-    /**
-     * <p>The origination settings being updated.</p>
-     */
-    inline PutVoiceConnectorOriginationRequest& WithOrigination(Origination&& value) { SetOrigination(std::move(value)); return *this;}
-
+    template<typename OriginationT = Origination>
+    void SetOrigination(OriginationT&& value) { m_originationHasBeenSet = true; m_origination = std::forward<OriginationT>(value); }
+    template<typename OriginationT = Origination>
+    PutVoiceConnectorOriginationRequest& WithOrigination(OriginationT&& value) { SetOrigination(std::forward<OriginationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_voiceConnectorId;

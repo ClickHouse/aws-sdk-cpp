@@ -33,7 +33,7 @@ namespace Model
   class InstanceReusePolicy
   {
   public:
-    AWS_AUTOSCALING_API InstanceReusePolicy();
+    AWS_AUTOSCALING_API InstanceReusePolicy() = default;
     AWS_AUTOSCALING_API InstanceReusePolicy(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_AUTOSCALING_API InstanceReusePolicy& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,33 +41,19 @@ namespace Model
     AWS_AUTOSCALING_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Specifies whether instances in the Auto Scaling group can be returned to the
      * warm pool on scale in. </p>
      */
-    inline bool GetReuseOnScaleIn() const{ return m_reuseOnScaleIn; }
-
-    /**
-     * <p>Specifies whether instances in the Auto Scaling group can be returned to the
-     * warm pool on scale in. </p>
-     */
+    inline bool GetReuseOnScaleIn() const { return m_reuseOnScaleIn; }
     inline bool ReuseOnScaleInHasBeenSet() const { return m_reuseOnScaleInHasBeenSet; }
-
-    /**
-     * <p>Specifies whether instances in the Auto Scaling group can be returned to the
-     * warm pool on scale in. </p>
-     */
     inline void SetReuseOnScaleIn(bool value) { m_reuseOnScaleInHasBeenSet = true; m_reuseOnScaleIn = value; }
-
-    /**
-     * <p>Specifies whether instances in the Auto Scaling group can be returned to the
-     * warm pool on scale in. </p>
-     */
     inline InstanceReusePolicy& WithReuseOnScaleIn(bool value) { SetReuseOnScaleIn(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_reuseOnScaleIn;
+    bool m_reuseOnScaleIn{false};
     bool m_reuseOnScaleInHasBeenSet = false;
   };
 

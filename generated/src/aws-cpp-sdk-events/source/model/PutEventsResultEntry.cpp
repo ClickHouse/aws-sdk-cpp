@@ -18,17 +18,7 @@ namespace CloudWatchEvents
 namespace Model
 {
 
-PutEventsResultEntry::PutEventsResultEntry() : 
-    m_eventIdHasBeenSet(false),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-PutEventsResultEntry::PutEventsResultEntry(JsonView jsonValue) : 
-    m_eventIdHasBeenSet(false),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+PutEventsResultEntry::PutEventsResultEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ PutEventsResultEntry& PutEventsResultEntry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EventId"))
   {
     m_eventId = jsonValue.GetString("EventId");
-
     m_eventIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorCode"))
   {
     m_errorCode = jsonValue.GetString("ErrorCode");
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,13 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-EncryptionConfiguration::EncryptionConfiguration() : 
-    m_replicaKmsKeyIDHasBeenSet(false)
-{
-}
-
-EncryptionConfiguration::EncryptionConfiguration(const XmlNode& xmlNode) : 
-    m_replicaKmsKeyIDHasBeenSet(false)
+EncryptionConfiguration::EncryptionConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

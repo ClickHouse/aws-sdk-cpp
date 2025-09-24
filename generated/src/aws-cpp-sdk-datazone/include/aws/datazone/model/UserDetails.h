@@ -31,52 +31,23 @@ namespace Model
   class UserDetails
   {
   public:
-    AWS_DATAZONE_API UserDetails();
+    AWS_DATAZONE_API UserDetails() = default;
     AWS_DATAZONE_API UserDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API UserDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the Amazon DataZone user.</p>
      */
-    inline const Aws::String& GetUserId() const{ return m_userId; }
-
-    /**
-     * <p>The identifier of the Amazon DataZone user.</p>
-     */
+    inline const Aws::String& GetUserId() const { return m_userId; }
     inline bool UserIdHasBeenSet() const { return m_userIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the Amazon DataZone user.</p>
-     */
-    inline void SetUserId(const Aws::String& value) { m_userIdHasBeenSet = true; m_userId = value; }
-
-    /**
-     * <p>The identifier of the Amazon DataZone user.</p>
-     */
-    inline void SetUserId(Aws::String&& value) { m_userIdHasBeenSet = true; m_userId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon DataZone user.</p>
-     */
-    inline void SetUserId(const char* value) { m_userIdHasBeenSet = true; m_userId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon DataZone user.</p>
-     */
-    inline UserDetails& WithUserId(const Aws::String& value) { SetUserId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon DataZone user.</p>
-     */
-    inline UserDetails& WithUserId(Aws::String&& value) { SetUserId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon DataZone user.</p>
-     */
-    inline UserDetails& WithUserId(const char* value) { SetUserId(value); return *this;}
-
+    template<typename UserIdT = Aws::String>
+    void SetUserId(UserIdT&& value) { m_userIdHasBeenSet = true; m_userId = std::forward<UserIdT>(value); }
+    template<typename UserIdT = Aws::String>
+    UserDetails& WithUserId(UserIdT&& value) { SetUserId(std::forward<UserIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userId;

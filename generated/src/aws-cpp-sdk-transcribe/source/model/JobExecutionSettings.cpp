@@ -18,17 +18,7 @@ namespace TranscribeService
 namespace Model
 {
 
-JobExecutionSettings::JobExecutionSettings() : 
-    m_allowDeferredExecution(false),
-    m_allowDeferredExecutionHasBeenSet(false),
-    m_dataAccessRoleArnHasBeenSet(false)
-{
-}
-
-JobExecutionSettings::JobExecutionSettings(JsonView jsonValue) : 
-    m_allowDeferredExecution(false),
-    m_allowDeferredExecutionHasBeenSet(false),
-    m_dataAccessRoleArnHasBeenSet(false)
+JobExecutionSettings::JobExecutionSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ JobExecutionSettings& JobExecutionSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AllowDeferredExecution"))
   {
     m_allowDeferredExecution = jsonValue.GetBool("AllowDeferredExecution");
-
     m_allowDeferredExecutionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataAccessRoleArn"))
   {
     m_dataAccessRoleArn = jsonValue.GetString("DataAccessRoleArn");
-
     m_dataAccessRoleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

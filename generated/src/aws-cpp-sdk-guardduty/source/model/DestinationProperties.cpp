@@ -18,15 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-DestinationProperties::DestinationProperties() : 
-    m_destinationArnHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false)
-{
-}
-
-DestinationProperties::DestinationProperties(JsonView jsonValue) : 
-    m_destinationArnHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false)
+DestinationProperties::DestinationProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DestinationProperties& DestinationProperties::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("destinationArn"))
   {
     m_destinationArn = jsonValue.GetString("destinationArn");
-
     m_destinationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("kmsKeyArn"))
   {
     m_kmsKeyArn = jsonValue.GetString("kmsKeyArn");
-
     m_kmsKeyArnHasBeenSet = true;
   }
-
   return *this;
 }
 

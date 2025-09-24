@@ -7,6 +7,9 @@
 #include <aws/quicksight/QuickSight_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/quicksight/model/DayOfTheWeek.h>
+#include <aws/quicksight/model/QBusinessInsightsStatus.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/quicksight/model/VisualCustomActionDefaults.h>
 #include <utility>
 
 namespace Aws
@@ -32,90 +35,86 @@ namespace Model
   class AssetOptions
   {
   public:
-    AWS_QUICKSIGHT_API AssetOptions();
+    AWS_QUICKSIGHT_API AssetOptions() = default;
     AWS_QUICKSIGHT_API AssetOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AssetOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines the timezone for the analysis.</p>
      */
-    inline const Aws::String& GetTimezone() const{ return m_timezone; }
-
-    /**
-     * <p>Determines the timezone for the analysis.</p>
-     */
+    inline const Aws::String& GetTimezone() const { return m_timezone; }
     inline bool TimezoneHasBeenSet() const { return m_timezoneHasBeenSet; }
+    template<typename TimezoneT = Aws::String>
+    void SetTimezone(TimezoneT&& value) { m_timezoneHasBeenSet = true; m_timezone = std::forward<TimezoneT>(value); }
+    template<typename TimezoneT = Aws::String>
+    AssetOptions& WithTimezone(TimezoneT&& value) { SetTimezone(std::forward<TimezoneT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines the timezone for the analysis.</p>
-     */
-    inline void SetTimezone(const Aws::String& value) { m_timezoneHasBeenSet = true; m_timezone = value; }
-
-    /**
-     * <p>Determines the timezone for the analysis.</p>
-     */
-    inline void SetTimezone(Aws::String&& value) { m_timezoneHasBeenSet = true; m_timezone = std::move(value); }
-
-    /**
-     * <p>Determines the timezone for the analysis.</p>
-     */
-    inline void SetTimezone(const char* value) { m_timezoneHasBeenSet = true; m_timezone.assign(value); }
-
-    /**
-     * <p>Determines the timezone for the analysis.</p>
-     */
-    inline AssetOptions& WithTimezone(const Aws::String& value) { SetTimezone(value); return *this;}
-
-    /**
-     * <p>Determines the timezone for the analysis.</p>
-     */
-    inline AssetOptions& WithTimezone(Aws::String&& value) { SetTimezone(std::move(value)); return *this;}
-
-    /**
-     * <p>Determines the timezone for the analysis.</p>
-     */
-    inline AssetOptions& WithTimezone(const char* value) { SetTimezone(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines the week start day for an analysis.</p>
      */
-    inline const DayOfTheWeek& GetWeekStart() const{ return m_weekStart; }
-
-    /**
-     * <p>Determines the week start day for an analysis.</p>
-     */
+    inline DayOfTheWeek GetWeekStart() const { return m_weekStart; }
     inline bool WeekStartHasBeenSet() const { return m_weekStartHasBeenSet; }
+    inline void SetWeekStart(DayOfTheWeek value) { m_weekStartHasBeenSet = true; m_weekStart = value; }
+    inline AssetOptions& WithWeekStart(DayOfTheWeek value) { SetWeekStart(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Determines the week start day for an analysis.</p>
+     * <p>Determines whether insight summaries from Amazon Q Business are allowed in
+     * Dashboard Q&amp;A.</p>
      */
-    inline void SetWeekStart(const DayOfTheWeek& value) { m_weekStartHasBeenSet = true; m_weekStart = value; }
+    inline QBusinessInsightsStatus GetQBusinessInsightsStatus() const { return m_qBusinessInsightsStatus; }
+    inline bool QBusinessInsightsStatusHasBeenSet() const { return m_qBusinessInsightsStatusHasBeenSet; }
+    inline void SetQBusinessInsightsStatus(QBusinessInsightsStatus value) { m_qBusinessInsightsStatusHasBeenSet = true; m_qBusinessInsightsStatus = value; }
+    inline AssetOptions& WithQBusinessInsightsStatus(QBusinessInsightsStatus value) { SetQBusinessInsightsStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Determines the week start day for an analysis.</p>
+     * <p>A list of dataset ARNS to exclude from Dashboard Q&amp;A.</p>
      */
-    inline void SetWeekStart(DayOfTheWeek&& value) { m_weekStartHasBeenSet = true; m_weekStart = std::move(value); }
+    inline const Aws::Vector<Aws::String>& GetExcludedDataSetArns() const { return m_excludedDataSetArns; }
+    inline bool ExcludedDataSetArnsHasBeenSet() const { return m_excludedDataSetArnsHasBeenSet; }
+    template<typename ExcludedDataSetArnsT = Aws::Vector<Aws::String>>
+    void SetExcludedDataSetArns(ExcludedDataSetArnsT&& value) { m_excludedDataSetArnsHasBeenSet = true; m_excludedDataSetArns = std::forward<ExcludedDataSetArnsT>(value); }
+    template<typename ExcludedDataSetArnsT = Aws::Vector<Aws::String>>
+    AssetOptions& WithExcludedDataSetArns(ExcludedDataSetArnsT&& value) { SetExcludedDataSetArns(std::forward<ExcludedDataSetArnsT>(value)); return *this;}
+    template<typename ExcludedDataSetArnsT = Aws::String>
+    AssetOptions& AddExcludedDataSetArns(ExcludedDataSetArnsT&& value) { m_excludedDataSetArnsHasBeenSet = true; m_excludedDataSetArns.emplace_back(std::forward<ExcludedDataSetArnsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Determines the week start day for an analysis.</p>
+     * <p>A list of visual custom actions for the analysis.</p>
      */
-    inline AssetOptions& WithWeekStart(const DayOfTheWeek& value) { SetWeekStart(value); return *this;}
-
-    /**
-     * <p>Determines the week start day for an analysis.</p>
-     */
-    inline AssetOptions& WithWeekStart(DayOfTheWeek&& value) { SetWeekStart(std::move(value)); return *this;}
-
+    inline const VisualCustomActionDefaults& GetCustomActionDefaults() const { return m_customActionDefaults; }
+    inline bool CustomActionDefaultsHasBeenSet() const { return m_customActionDefaultsHasBeenSet; }
+    template<typename CustomActionDefaultsT = VisualCustomActionDefaults>
+    void SetCustomActionDefaults(CustomActionDefaultsT&& value) { m_customActionDefaultsHasBeenSet = true; m_customActionDefaults = std::forward<CustomActionDefaultsT>(value); }
+    template<typename CustomActionDefaultsT = VisualCustomActionDefaults>
+    AssetOptions& WithCustomActionDefaults(CustomActionDefaultsT&& value) { SetCustomActionDefaults(std::forward<CustomActionDefaultsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_timezone;
     bool m_timezoneHasBeenSet = false;
 
-    DayOfTheWeek m_weekStart;
+    DayOfTheWeek m_weekStart{DayOfTheWeek::NOT_SET};
     bool m_weekStartHasBeenSet = false;
+
+    QBusinessInsightsStatus m_qBusinessInsightsStatus{QBusinessInsightsStatus::NOT_SET};
+    bool m_qBusinessInsightsStatusHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_excludedDataSetArns;
+    bool m_excludedDataSetArnsHasBeenSet = false;
+
+    VisualCustomActionDefaults m_customActionDefaults;
+    bool m_customActionDefaultsHasBeenSet = false;
   };
 
 } // namespace Model

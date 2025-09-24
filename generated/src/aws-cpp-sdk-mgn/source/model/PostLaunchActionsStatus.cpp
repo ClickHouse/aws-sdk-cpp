@@ -18,15 +18,7 @@ namespace mgn
 namespace Model
 {
 
-PostLaunchActionsStatus::PostLaunchActionsStatus() : 
-    m_postLaunchActionsLaunchStatusListHasBeenSet(false),
-    m_ssmAgentDiscoveryDatetimeHasBeenSet(false)
-{
-}
-
-PostLaunchActionsStatus::PostLaunchActionsStatus(JsonView jsonValue) : 
-    m_postLaunchActionsLaunchStatusListHasBeenSet(false),
-    m_ssmAgentDiscoveryDatetimeHasBeenSet(false)
+PostLaunchActionsStatus::PostLaunchActionsStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ PostLaunchActionsStatus& PostLaunchActionsStatus::operator =(JsonView jsonValue)
     }
     m_postLaunchActionsLaunchStatusListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ssmAgentDiscoveryDatetime"))
   {
     m_ssmAgentDiscoveryDatetime = jsonValue.GetString("ssmAgentDiscoveryDatetime");
-
     m_ssmAgentDiscoveryDatetimeHasBeenSet = true;
   }
-
   return *this;
 }
 

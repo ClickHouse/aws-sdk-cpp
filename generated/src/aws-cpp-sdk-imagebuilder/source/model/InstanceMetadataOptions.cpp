@@ -18,17 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-InstanceMetadataOptions::InstanceMetadataOptions() : 
-    m_httpTokensHasBeenSet(false),
-    m_httpPutResponseHopLimit(0),
-    m_httpPutResponseHopLimitHasBeenSet(false)
-{
-}
-
-InstanceMetadataOptions::InstanceMetadataOptions(JsonView jsonValue) : 
-    m_httpTokensHasBeenSet(false),
-    m_httpPutResponseHopLimit(0),
-    m_httpPutResponseHopLimitHasBeenSet(false)
+InstanceMetadataOptions::InstanceMetadataOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ InstanceMetadataOptions& InstanceMetadataOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("httpTokens"))
   {
     m_httpTokens = jsonValue.GetString("httpTokens");
-
     m_httpTokensHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("httpPutResponseHopLimit"))
   {
     m_httpPutResponseHopLimit = jsonValue.GetInteger("httpPutResponseHopLimit");
-
     m_httpPutResponseHopLimitHasBeenSet = true;
   }
-
   return *this;
 }
 

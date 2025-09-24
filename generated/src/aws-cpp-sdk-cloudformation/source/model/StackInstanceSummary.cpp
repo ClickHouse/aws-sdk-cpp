@@ -20,37 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackInstanceSummary::StackInstanceSummary() : 
-    m_stackSetIdHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_accountHasBeenSet(false),
-    m_stackIdHasBeenSet(false),
-    m_status(StackInstanceStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_stackInstanceStatusHasBeenSet(false),
-    m_organizationalUnitIdHasBeenSet(false),
-    m_driftStatus(StackDriftStatus::NOT_SET),
-    m_driftStatusHasBeenSet(false),
-    m_lastDriftCheckTimestampHasBeenSet(false),
-    m_lastOperationIdHasBeenSet(false)
-{
-}
-
-StackInstanceSummary::StackInstanceSummary(const XmlNode& xmlNode) : 
-    m_stackSetIdHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_accountHasBeenSet(false),
-    m_stackIdHasBeenSet(false),
-    m_status(StackInstanceStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_statusReasonHasBeenSet(false),
-    m_stackInstanceStatusHasBeenSet(false),
-    m_organizationalUnitIdHasBeenSet(false),
-    m_driftStatus(StackDriftStatus::NOT_SET),
-    m_driftStatusHasBeenSet(false),
-    m_lastDriftCheckTimestampHasBeenSet(false),
-    m_lastOperationIdHasBeenSet(false)
+StackInstanceSummary::StackInstanceSummary(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -88,7 +58,7 @@ StackInstanceSummary& StackInstanceSummary::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = StackInstanceStatusMapper::GetStackInstanceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = StackInstanceStatusMapper::GetStackInstanceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode statusReasonNode = resultNode.FirstChild("StatusReason");
@@ -112,7 +82,7 @@ StackInstanceSummary& StackInstanceSummary::operator =(const XmlNode& xmlNode)
     XmlNode driftStatusNode = resultNode.FirstChild("DriftStatus");
     if(!driftStatusNode.IsNull())
     {
-      m_driftStatus = StackDriftStatusMapper::GetStackDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(driftStatusNode.GetText()).c_str()).c_str());
+      m_driftStatus = StackDriftStatusMapper::GetStackDriftStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(driftStatusNode.GetText()).c_str()));
       m_driftStatusHasBeenSet = true;
     }
     XmlNode lastDriftCheckTimestampNode = resultNode.FirstChild("LastDriftCheckTimestamp");
@@ -156,7 +126,7 @@ void StackInstanceSummary::OutputToStream(Aws::OStream& oStream, const char* loc
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << StackInstanceStatusMapper::GetNameForStackInstanceStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(StackInstanceStatusMapper::GetNameForStackInstanceStatus(m_status)) << "&";
   }
 
   if(m_statusReasonHasBeenSet)
@@ -178,7 +148,7 @@ void StackInstanceSummary::OutputToStream(Aws::OStream& oStream, const char* loc
 
   if(m_driftStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DriftStatus=" << StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus) << "&";
+      oStream << location << index << locationValue << ".DriftStatus=" << StringUtils::URLEncode(StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus)) << "&";
   }
 
   if(m_lastDriftCheckTimestampHasBeenSet)
@@ -213,7 +183,7 @@ void StackInstanceSummary::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << StackInstanceStatusMapper::GetNameForStackInstanceStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(StackInstanceStatusMapper::GetNameForStackInstanceStatus(m_status)) << "&";
   }
   if(m_statusReasonHasBeenSet)
   {
@@ -231,7 +201,7 @@ void StackInstanceSummary::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_driftStatusHasBeenSet)
   {
-      oStream << location << ".DriftStatus=" << StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus) << "&";
+      oStream << location << ".DriftStatus=" << StringUtils::URLEncode(StackDriftStatusMapper::GetNameForStackDriftStatus(m_driftStatus)) << "&";
   }
   if(m_lastDriftCheckTimestampHasBeenSet)
   {

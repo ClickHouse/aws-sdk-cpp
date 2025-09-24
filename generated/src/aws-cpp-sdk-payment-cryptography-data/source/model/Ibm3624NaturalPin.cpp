@@ -18,17 +18,7 @@ namespace PaymentCryptographyData
 namespace Model
 {
 
-Ibm3624NaturalPin::Ibm3624NaturalPin() : 
-    m_decimalizationTableHasBeenSet(false),
-    m_pinValidationDataHasBeenSet(false),
-    m_pinValidationDataPadCharacterHasBeenSet(false)
-{
-}
-
-Ibm3624NaturalPin::Ibm3624NaturalPin(JsonView jsonValue) : 
-    m_decimalizationTableHasBeenSet(false),
-    m_pinValidationDataHasBeenSet(false),
-    m_pinValidationDataPadCharacterHasBeenSet(false)
+Ibm3624NaturalPin::Ibm3624NaturalPin(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ Ibm3624NaturalPin& Ibm3624NaturalPin::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DecimalizationTable"))
   {
     m_decimalizationTable = jsonValue.GetString("DecimalizationTable");
-
     m_decimalizationTableHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("PinValidationData"))
-  {
-    m_pinValidationData = jsonValue.GetString("PinValidationData");
-
-    m_pinValidationDataHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("PinValidationDataPadCharacter"))
   {
     m_pinValidationDataPadCharacter = jsonValue.GetString("PinValidationDataPadCharacter");
-
     m_pinValidationDataPadCharacterHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PinValidationData"))
+  {
+    m_pinValidationData = jsonValue.GetString("PinValidationData");
+    m_pinValidationDataHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -69,15 +53,15 @@ JsonValue Ibm3624NaturalPin::Jsonize() const
 
   }
 
-  if(m_pinValidationDataHasBeenSet)
-  {
-   payload.WithString("PinValidationData", m_pinValidationData);
-
-  }
-
   if(m_pinValidationDataPadCharacterHasBeenSet)
   {
    payload.WithString("PinValidationDataPadCharacter", m_pinValidationDataPadCharacter);
+
+  }
+
+  if(m_pinValidationDataHasBeenSet)
+  {
+   payload.WithString("PinValidationData", m_pinValidationData);
 
   }
 

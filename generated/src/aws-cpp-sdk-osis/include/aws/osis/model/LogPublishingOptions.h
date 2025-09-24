@@ -33,78 +33,38 @@ namespace Model
   class LogPublishingOptions
   {
   public:
-    AWS_OSIS_API LogPublishingOptions();
+    AWS_OSIS_API LogPublishingOptions() = default;
     AWS_OSIS_API LogPublishingOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API LogPublishingOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Whether logs should be published.</p>
      */
-    inline bool GetIsLoggingEnabled() const{ return m_isLoggingEnabled; }
-
-    /**
-     * <p>Whether logs should be published.</p>
-     */
+    inline bool GetIsLoggingEnabled() const { return m_isLoggingEnabled; }
     inline bool IsLoggingEnabledHasBeenSet() const { return m_isLoggingEnabledHasBeenSet; }
-
-    /**
-     * <p>Whether logs should be published.</p>
-     */
     inline void SetIsLoggingEnabled(bool value) { m_isLoggingEnabledHasBeenSet = true; m_isLoggingEnabled = value; }
-
-    /**
-     * <p>Whether logs should be published.</p>
-     */
     inline LogPublishingOptions& WithIsLoggingEnabled(bool value) { SetIsLoggingEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs.
      * This parameter is required if <code>IsLoggingEnabled</code> is set to
      * <code>true</code>.</p>
      */
-    inline const CloudWatchLogDestination& GetCloudWatchLogDestination() const{ return m_cloudWatchLogDestination; }
-
-    /**
-     * <p>The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs.
-     * This parameter is required if <code>IsLoggingEnabled</code> is set to
-     * <code>true</code>.</p>
-     */
+    inline const CloudWatchLogDestination& GetCloudWatchLogDestination() const { return m_cloudWatchLogDestination; }
     inline bool CloudWatchLogDestinationHasBeenSet() const { return m_cloudWatchLogDestinationHasBeenSet; }
-
-    /**
-     * <p>The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs.
-     * This parameter is required if <code>IsLoggingEnabled</code> is set to
-     * <code>true</code>.</p>
-     */
-    inline void SetCloudWatchLogDestination(const CloudWatchLogDestination& value) { m_cloudWatchLogDestinationHasBeenSet = true; m_cloudWatchLogDestination = value; }
-
-    /**
-     * <p>The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs.
-     * This parameter is required if <code>IsLoggingEnabled</code> is set to
-     * <code>true</code>.</p>
-     */
-    inline void SetCloudWatchLogDestination(CloudWatchLogDestination&& value) { m_cloudWatchLogDestinationHasBeenSet = true; m_cloudWatchLogDestination = std::move(value); }
-
-    /**
-     * <p>The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs.
-     * This parameter is required if <code>IsLoggingEnabled</code> is set to
-     * <code>true</code>.</p>
-     */
-    inline LogPublishingOptions& WithCloudWatchLogDestination(const CloudWatchLogDestination& value) { SetCloudWatchLogDestination(value); return *this;}
-
-    /**
-     * <p>The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs.
-     * This parameter is required if <code>IsLoggingEnabled</code> is set to
-     * <code>true</code>.</p>
-     */
-    inline LogPublishingOptions& WithCloudWatchLogDestination(CloudWatchLogDestination&& value) { SetCloudWatchLogDestination(std::move(value)); return *this;}
-
+    template<typename CloudWatchLogDestinationT = CloudWatchLogDestination>
+    void SetCloudWatchLogDestination(CloudWatchLogDestinationT&& value) { m_cloudWatchLogDestinationHasBeenSet = true; m_cloudWatchLogDestination = std::forward<CloudWatchLogDestinationT>(value); }
+    template<typename CloudWatchLogDestinationT = CloudWatchLogDestination>
+    LogPublishingOptions& WithCloudWatchLogDestination(CloudWatchLogDestinationT&& value) { SetCloudWatchLogDestination(std::forward<CloudWatchLogDestinationT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_isLoggingEnabled;
+    bool m_isLoggingEnabled{false};
     bool m_isLoggingEnabledHasBeenSet = false;
 
     CloudWatchLogDestination m_cloudWatchLogDestination;

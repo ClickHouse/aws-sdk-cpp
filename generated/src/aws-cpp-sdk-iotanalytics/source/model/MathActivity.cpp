@@ -18,19 +18,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-MathActivity::MathActivity() : 
-    m_nameHasBeenSet(false),
-    m_attributeHasBeenSet(false),
-    m_mathHasBeenSet(false),
-    m_nextHasBeenSet(false)
-{
-}
-
-MathActivity::MathActivity(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_attributeHasBeenSet(false),
-    m_mathHasBeenSet(false),
-    m_nextHasBeenSet(false)
+MathActivity::MathActivity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ MathActivity& MathActivity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("attribute"))
   {
     m_attribute = jsonValue.GetString("attribute");
-
     m_attributeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("math"))
   {
     m_math = jsonValue.GetString("math");
-
     m_mathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("next"))
   {
     m_next = jsonValue.GetString("next");
-
     m_nextHasBeenSet = true;
   }
-
   return *this;
 }
 

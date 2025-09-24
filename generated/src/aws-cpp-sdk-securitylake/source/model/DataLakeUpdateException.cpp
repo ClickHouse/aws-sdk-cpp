@@ -18,15 +18,7 @@ namespace SecurityLake
 namespace Model
 {
 
-DataLakeUpdateException::DataLakeUpdateException() : 
-    m_codeHasBeenSet(false),
-    m_reasonHasBeenSet(false)
-{
-}
-
-DataLakeUpdateException::DataLakeUpdateException(JsonView jsonValue) : 
-    m_codeHasBeenSet(false),
-    m_reasonHasBeenSet(false)
+DataLakeUpdateException::DataLakeUpdateException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DataLakeUpdateException& DataLakeUpdateException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("code"))
   {
     m_code = jsonValue.GetString("code");
-
     m_codeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("reason"))
   {
     m_reason = jsonValue.GetString("reason");
-
     m_reasonHasBeenSet = true;
   }
-
   return *this;
 }
 

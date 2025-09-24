@@ -33,79 +33,36 @@ namespace Model
   class FileFormatDescriptor
   {
   public:
-    AWS_LOOKOUTMETRICS_API FileFormatDescriptor();
+    AWS_LOOKOUTMETRICS_API FileFormatDescriptor() = default;
     AWS_LOOKOUTMETRICS_API FileFormatDescriptor(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API FileFormatDescriptor& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains information about how a source CSV data file should be analyzed.</p>
      */
-    inline const CsvFormatDescriptor& GetCsvFormatDescriptor() const{ return m_csvFormatDescriptor; }
-
-    /**
-     * <p>Contains information about how a source CSV data file should be analyzed.</p>
-     */
+    inline const CsvFormatDescriptor& GetCsvFormatDescriptor() const { return m_csvFormatDescriptor; }
     inline bool CsvFormatDescriptorHasBeenSet() const { return m_csvFormatDescriptorHasBeenSet; }
+    template<typename CsvFormatDescriptorT = CsvFormatDescriptor>
+    void SetCsvFormatDescriptor(CsvFormatDescriptorT&& value) { m_csvFormatDescriptorHasBeenSet = true; m_csvFormatDescriptor = std::forward<CsvFormatDescriptorT>(value); }
+    template<typename CsvFormatDescriptorT = CsvFormatDescriptor>
+    FileFormatDescriptor& WithCsvFormatDescriptor(CsvFormatDescriptorT&& value) { SetCsvFormatDescriptor(std::forward<CsvFormatDescriptorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains information about how a source CSV data file should be analyzed.</p>
-     */
-    inline void SetCsvFormatDescriptor(const CsvFormatDescriptor& value) { m_csvFormatDescriptorHasBeenSet = true; m_csvFormatDescriptor = value; }
-
-    /**
-     * <p>Contains information about how a source CSV data file should be analyzed.</p>
-     */
-    inline void SetCsvFormatDescriptor(CsvFormatDescriptor&& value) { m_csvFormatDescriptorHasBeenSet = true; m_csvFormatDescriptor = std::move(value); }
-
-    /**
-     * <p>Contains information about how a source CSV data file should be analyzed.</p>
-     */
-    inline FileFormatDescriptor& WithCsvFormatDescriptor(const CsvFormatDescriptor& value) { SetCsvFormatDescriptor(value); return *this;}
-
-    /**
-     * <p>Contains information about how a source CSV data file should be analyzed.</p>
-     */
-    inline FileFormatDescriptor& WithCsvFormatDescriptor(CsvFormatDescriptor&& value) { SetCsvFormatDescriptor(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains information about how a source JSON data file should be
      * analyzed.</p>
      */
-    inline const JsonFormatDescriptor& GetJsonFormatDescriptor() const{ return m_jsonFormatDescriptor; }
-
-    /**
-     * <p>Contains information about how a source JSON data file should be
-     * analyzed.</p>
-     */
+    inline const JsonFormatDescriptor& GetJsonFormatDescriptor() const { return m_jsonFormatDescriptor; }
     inline bool JsonFormatDescriptorHasBeenSet() const { return m_jsonFormatDescriptorHasBeenSet; }
-
-    /**
-     * <p>Contains information about how a source JSON data file should be
-     * analyzed.</p>
-     */
-    inline void SetJsonFormatDescriptor(const JsonFormatDescriptor& value) { m_jsonFormatDescriptorHasBeenSet = true; m_jsonFormatDescriptor = value; }
-
-    /**
-     * <p>Contains information about how a source JSON data file should be
-     * analyzed.</p>
-     */
-    inline void SetJsonFormatDescriptor(JsonFormatDescriptor&& value) { m_jsonFormatDescriptorHasBeenSet = true; m_jsonFormatDescriptor = std::move(value); }
-
-    /**
-     * <p>Contains information about how a source JSON data file should be
-     * analyzed.</p>
-     */
-    inline FileFormatDescriptor& WithJsonFormatDescriptor(const JsonFormatDescriptor& value) { SetJsonFormatDescriptor(value); return *this;}
-
-    /**
-     * <p>Contains information about how a source JSON data file should be
-     * analyzed.</p>
-     */
-    inline FileFormatDescriptor& WithJsonFormatDescriptor(JsonFormatDescriptor&& value) { SetJsonFormatDescriptor(std::move(value)); return *this;}
-
+    template<typename JsonFormatDescriptorT = JsonFormatDescriptor>
+    void SetJsonFormatDescriptor(JsonFormatDescriptorT&& value) { m_jsonFormatDescriptorHasBeenSet = true; m_jsonFormatDescriptor = std::forward<JsonFormatDescriptorT>(value); }
+    template<typename JsonFormatDescriptorT = JsonFormatDescriptor>
+    FileFormatDescriptor& WithJsonFormatDescriptor(JsonFormatDescriptorT&& value) { SetJsonFormatDescriptor(std::forward<JsonFormatDescriptorT>(value)); return *this;}
+    ///@}
   private:
 
     CsvFormatDescriptor m_csvFormatDescriptor;

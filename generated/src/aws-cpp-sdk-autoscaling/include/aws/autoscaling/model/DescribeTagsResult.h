@@ -30,126 +30,56 @@ namespace Model
   class DescribeTagsResult
   {
   public:
-    AWS_AUTOSCALING_API DescribeTagsResult();
+    AWS_AUTOSCALING_API DescribeTagsResult() = default;
     AWS_AUTOSCALING_API DescribeTagsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_AUTOSCALING_API DescribeTagsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>One or more tags.</p>
      */
-    inline const Aws::Vector<TagDescription>& GetTags() const{ return m_tags; }
+    inline const Aws::Vector<TagDescription>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Vector<TagDescription>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<TagDescription>>
+    DescribeTagsResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = TagDescription>
+    DescribeTagsResult& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline void SetTags(const Aws::Vector<TagDescription>& value) { m_tags = value; }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline void SetTags(Aws::Vector<TagDescription>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline DescribeTagsResult& WithTags(const Aws::Vector<TagDescription>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline DescribeTagsResult& WithTags(Aws::Vector<TagDescription>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline DescribeTagsResult& AddTags(const TagDescription& value) { m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>One or more tags.</p>
-     */
-    inline DescribeTagsResult& AddTags(TagDescription&& value) { m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A string that indicates that the response contains more items than can be
      * returned in a single response. To receive additional items, specify this string
      * for the <code>NextToken</code> value when requesting the next set of items. This
      * value is null when there are no more items to return.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeTagsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline DescribeTagsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline DescribeTagsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A string that indicates that the response contains more items than can be
-     * returned in a single response. To receive additional items, specify this string
-     * for the <code>NextToken</code> value when requesting the next set of items. This
-     * value is null when there are no more items to return.</p>
-     */
-    inline DescribeTagsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeTagsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeTagsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeTagsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<TagDescription> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

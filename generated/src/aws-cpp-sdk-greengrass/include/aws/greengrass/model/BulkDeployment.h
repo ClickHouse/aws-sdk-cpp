@@ -33,134 +33,47 @@ namespace Model
   class BulkDeployment
   {
   public:
-    AWS_GREENGRASS_API BulkDeployment();
+    AWS_GREENGRASS_API BulkDeployment() = default;
     AWS_GREENGRASS_API BulkDeployment(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASS_API BulkDeployment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The ARN of the bulk deployment.
      */
-    inline const Aws::String& GetBulkDeploymentArn() const{ return m_bulkDeploymentArn; }
-
-    /**
-     * The ARN of the bulk deployment.
-     */
+    inline const Aws::String& GetBulkDeploymentArn() const { return m_bulkDeploymentArn; }
     inline bool BulkDeploymentArnHasBeenSet() const { return m_bulkDeploymentArnHasBeenSet; }
+    template<typename BulkDeploymentArnT = Aws::String>
+    void SetBulkDeploymentArn(BulkDeploymentArnT&& value) { m_bulkDeploymentArnHasBeenSet = true; m_bulkDeploymentArn = std::forward<BulkDeploymentArnT>(value); }
+    template<typename BulkDeploymentArnT = Aws::String>
+    BulkDeployment& WithBulkDeploymentArn(BulkDeploymentArnT&& value) { SetBulkDeploymentArn(std::forward<BulkDeploymentArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ARN of the bulk deployment.
-     */
-    inline void SetBulkDeploymentArn(const Aws::String& value) { m_bulkDeploymentArnHasBeenSet = true; m_bulkDeploymentArn = value; }
-
-    /**
-     * The ARN of the bulk deployment.
-     */
-    inline void SetBulkDeploymentArn(Aws::String&& value) { m_bulkDeploymentArnHasBeenSet = true; m_bulkDeploymentArn = std::move(value); }
-
-    /**
-     * The ARN of the bulk deployment.
-     */
-    inline void SetBulkDeploymentArn(const char* value) { m_bulkDeploymentArnHasBeenSet = true; m_bulkDeploymentArn.assign(value); }
-
-    /**
-     * The ARN of the bulk deployment.
-     */
-    inline BulkDeployment& WithBulkDeploymentArn(const Aws::String& value) { SetBulkDeploymentArn(value); return *this;}
-
-    /**
-     * The ARN of the bulk deployment.
-     */
-    inline BulkDeployment& WithBulkDeploymentArn(Aws::String&& value) { SetBulkDeploymentArn(std::move(value)); return *this;}
-
-    /**
-     * The ARN of the bulk deployment.
-     */
-    inline BulkDeployment& WithBulkDeploymentArn(const char* value) { SetBulkDeploymentArn(value); return *this;}
-
-
+    ///@{
     /**
      * The ID of the bulk deployment.
      */
-    inline const Aws::String& GetBulkDeploymentId() const{ return m_bulkDeploymentId; }
-
-    /**
-     * The ID of the bulk deployment.
-     */
+    inline const Aws::String& GetBulkDeploymentId() const { return m_bulkDeploymentId; }
     inline bool BulkDeploymentIdHasBeenSet() const { return m_bulkDeploymentIdHasBeenSet; }
+    template<typename BulkDeploymentIdT = Aws::String>
+    void SetBulkDeploymentId(BulkDeploymentIdT&& value) { m_bulkDeploymentIdHasBeenSet = true; m_bulkDeploymentId = std::forward<BulkDeploymentIdT>(value); }
+    template<typename BulkDeploymentIdT = Aws::String>
+    BulkDeployment& WithBulkDeploymentId(BulkDeploymentIdT&& value) { SetBulkDeploymentId(std::forward<BulkDeploymentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the bulk deployment.
-     */
-    inline void SetBulkDeploymentId(const Aws::String& value) { m_bulkDeploymentIdHasBeenSet = true; m_bulkDeploymentId = value; }
-
-    /**
-     * The ID of the bulk deployment.
-     */
-    inline void SetBulkDeploymentId(Aws::String&& value) { m_bulkDeploymentIdHasBeenSet = true; m_bulkDeploymentId = std::move(value); }
-
-    /**
-     * The ID of the bulk deployment.
-     */
-    inline void SetBulkDeploymentId(const char* value) { m_bulkDeploymentIdHasBeenSet = true; m_bulkDeploymentId.assign(value); }
-
-    /**
-     * The ID of the bulk deployment.
-     */
-    inline BulkDeployment& WithBulkDeploymentId(const Aws::String& value) { SetBulkDeploymentId(value); return *this;}
-
-    /**
-     * The ID of the bulk deployment.
-     */
-    inline BulkDeployment& WithBulkDeploymentId(Aws::String&& value) { SetBulkDeploymentId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the bulk deployment.
-     */
-    inline BulkDeployment& WithBulkDeploymentId(const char* value) { SetBulkDeploymentId(value); return *this;}
-
-
+    ///@{
     /**
      * The time, in ISO format, when the deployment was created.
      */
-    inline const Aws::String& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * The time, in ISO format, when the deployment was created.
-     */
+    inline const Aws::String& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
-
-    /**
-     * The time, in ISO format, when the deployment was created.
-     */
-    inline void SetCreatedAt(const Aws::String& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * The time, in ISO format, when the deployment was created.
-     */
-    inline void SetCreatedAt(Aws::String&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * The time, in ISO format, when the deployment was created.
-     */
-    inline void SetCreatedAt(const char* value) { m_createdAtHasBeenSet = true; m_createdAt.assign(value); }
-
-    /**
-     * The time, in ISO format, when the deployment was created.
-     */
-    inline BulkDeployment& WithCreatedAt(const Aws::String& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * The time, in ISO format, when the deployment was created.
-     */
-    inline BulkDeployment& WithCreatedAt(Aws::String&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-    /**
-     * The time, in ISO format, when the deployment was created.
-     */
-    inline BulkDeployment& WithCreatedAt(const char* value) { SetCreatedAt(value); return *this;}
-
+    template<typename CreatedAtT = Aws::String>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::String>
+    BulkDeployment& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bulkDeploymentArn;

@@ -18,17 +18,7 @@ namespace KinesisVideoArchivedMedia
 namespace Model
 {
 
-DASHFragmentSelector::DASHFragmentSelector() : 
-    m_fragmentSelectorType(DASHFragmentSelectorType::NOT_SET),
-    m_fragmentSelectorTypeHasBeenSet(false),
-    m_timestampRangeHasBeenSet(false)
-{
-}
-
-DASHFragmentSelector::DASHFragmentSelector(JsonView jsonValue) : 
-    m_fragmentSelectorType(DASHFragmentSelectorType::NOT_SET),
-    m_fragmentSelectorTypeHasBeenSet(false),
-    m_timestampRangeHasBeenSet(false)
+DASHFragmentSelector::DASHFragmentSelector(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DASHFragmentSelector& DASHFragmentSelector::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FragmentSelectorType"))
   {
     m_fragmentSelectorType = DASHFragmentSelectorTypeMapper::GetDASHFragmentSelectorTypeForName(jsonValue.GetString("FragmentSelectorType"));
-
     m_fragmentSelectorTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TimestampRange"))
   {
     m_timestampRange = jsonValue.GetObject("TimestampRange");
-
     m_timestampRangeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,7 +32,7 @@ namespace Model
   class DomainMembership
   {
   public:
-    AWS_NEPTUNE_API DomainMembership();
+    AWS_NEPTUNE_API DomainMembership() = default;
     AWS_NEPTUNE_API DomainMembership(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_NEPTUNE_API DomainMembership& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,185 +40,55 @@ namespace Model
     AWS_NEPTUNE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The identifier of the Active Directory Domain.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The identifier of the Active Directory Domain.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    DomainMembership& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Active Directory Domain.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The identifier of the Active Directory Domain.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The identifier of the Active Directory Domain.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The identifier of the Active Directory Domain.</p>
-     */
-    inline DomainMembership& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The identifier of the Active Directory Domain.</p>
-     */
-    inline DomainMembership& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Active Directory Domain.</p>
-     */
-    inline DomainMembership& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the DB instance's Active Directory Domain membership, such as
      * joined, pending-join, failed etc).</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the DB instance's Active Directory Domain membership, such as
-     * joined, pending-join, failed etc).</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    DomainMembership& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the DB instance's Active Directory Domain membership, such as
-     * joined, pending-join, failed etc).</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the DB instance's Active Directory Domain membership, such as
-     * joined, pending-join, failed etc).</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the DB instance's Active Directory Domain membership, such as
-     * joined, pending-join, failed etc).</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the DB instance's Active Directory Domain membership, such as
-     * joined, pending-join, failed etc).</p>
-     */
-    inline DomainMembership& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the DB instance's Active Directory Domain membership, such as
-     * joined, pending-join, failed etc).</p>
-     */
-    inline DomainMembership& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the DB instance's Active Directory Domain membership, such as
-     * joined, pending-join, failed etc).</p>
-     */
-    inline DomainMembership& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The fully qualified domain name of the Active Directory Domain.</p>
      */
-    inline const Aws::String& GetFQDN() const{ return m_fQDN; }
-
-    /**
-     * <p>The fully qualified domain name of the Active Directory Domain.</p>
-     */
+    inline const Aws::String& GetFQDN() const { return m_fQDN; }
     inline bool FQDNHasBeenSet() const { return m_fQDNHasBeenSet; }
+    template<typename FQDNT = Aws::String>
+    void SetFQDN(FQDNT&& value) { m_fQDNHasBeenSet = true; m_fQDN = std::forward<FQDNT>(value); }
+    template<typename FQDNT = Aws::String>
+    DomainMembership& WithFQDN(FQDNT&& value) { SetFQDN(std::forward<FQDNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The fully qualified domain name of the Active Directory Domain.</p>
-     */
-    inline void SetFQDN(const Aws::String& value) { m_fQDNHasBeenSet = true; m_fQDN = value; }
-
-    /**
-     * <p>The fully qualified domain name of the Active Directory Domain.</p>
-     */
-    inline void SetFQDN(Aws::String&& value) { m_fQDNHasBeenSet = true; m_fQDN = std::move(value); }
-
-    /**
-     * <p>The fully qualified domain name of the Active Directory Domain.</p>
-     */
-    inline void SetFQDN(const char* value) { m_fQDNHasBeenSet = true; m_fQDN.assign(value); }
-
-    /**
-     * <p>The fully qualified domain name of the Active Directory Domain.</p>
-     */
-    inline DomainMembership& WithFQDN(const Aws::String& value) { SetFQDN(value); return *this;}
-
-    /**
-     * <p>The fully qualified domain name of the Active Directory Domain.</p>
-     */
-    inline DomainMembership& WithFQDN(Aws::String&& value) { SetFQDN(std::move(value)); return *this;}
-
-    /**
-     * <p>The fully qualified domain name of the Active Directory Domain.</p>
-     */
-    inline DomainMembership& WithFQDN(const char* value) { SetFQDN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the IAM role to be used when making API calls to the Directory
      * Service.</p>
      */
-    inline const Aws::String& GetIAMRoleName() const{ return m_iAMRoleName; }
-
-    /**
-     * <p>The name of the IAM role to be used when making API calls to the Directory
-     * Service.</p>
-     */
+    inline const Aws::String& GetIAMRoleName() const { return m_iAMRoleName; }
     inline bool IAMRoleNameHasBeenSet() const { return m_iAMRoleNameHasBeenSet; }
-
-    /**
-     * <p>The name of the IAM role to be used when making API calls to the Directory
-     * Service.</p>
-     */
-    inline void SetIAMRoleName(const Aws::String& value) { m_iAMRoleNameHasBeenSet = true; m_iAMRoleName = value; }
-
-    /**
-     * <p>The name of the IAM role to be used when making API calls to the Directory
-     * Service.</p>
-     */
-    inline void SetIAMRoleName(Aws::String&& value) { m_iAMRoleNameHasBeenSet = true; m_iAMRoleName = std::move(value); }
-
-    /**
-     * <p>The name of the IAM role to be used when making API calls to the Directory
-     * Service.</p>
-     */
-    inline void SetIAMRoleName(const char* value) { m_iAMRoleNameHasBeenSet = true; m_iAMRoleName.assign(value); }
-
-    /**
-     * <p>The name of the IAM role to be used when making API calls to the Directory
-     * Service.</p>
-     */
-    inline DomainMembership& WithIAMRoleName(const Aws::String& value) { SetIAMRoleName(value); return *this;}
-
-    /**
-     * <p>The name of the IAM role to be used when making API calls to the Directory
-     * Service.</p>
-     */
-    inline DomainMembership& WithIAMRoleName(Aws::String&& value) { SetIAMRoleName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IAM role to be used when making API calls to the Directory
-     * Service.</p>
-     */
-    inline DomainMembership& WithIAMRoleName(const char* value) { SetIAMRoleName(value); return *this;}
-
+    template<typename IAMRoleNameT = Aws::String>
+    void SetIAMRoleName(IAMRoleNameT&& value) { m_iAMRoleNameHasBeenSet = true; m_iAMRoleName = std::forward<IAMRoleNameT>(value); }
+    template<typename IAMRoleNameT = Aws::String>
+    DomainMembership& WithIAMRoleName(IAMRoleNameT&& value) { SetIAMRoleName(std::forward<IAMRoleNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;

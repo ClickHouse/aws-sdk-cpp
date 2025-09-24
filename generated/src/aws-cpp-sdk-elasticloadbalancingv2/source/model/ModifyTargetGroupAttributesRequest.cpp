@@ -10,12 +10,6 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-ModifyTargetGroupAttributesRequest::ModifyTargetGroupAttributesRequest() : 
-    m_targetGroupArnHasBeenSet(false),
-    m_attributesHasBeenSet(false)
-{
-}
-
 Aws::String ModifyTargetGroupAttributesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String ModifyTargetGroupAttributesRequest::SerializePayload() const
 
   if(m_attributesHasBeenSet)
   {
-    unsigned attributesCount = 1;
-    for(auto& item : m_attributes)
+    if (m_attributes.empty())
     {
-      item.OutputToStream(ss, "Attributes.member.", attributesCount, "");
-      attributesCount++;
+      ss << "Attributes=&";
+    }
+    else
+    {
+      unsigned attributesCount = 1;
+      for(auto& item : m_attributes)
+      {
+        item.OutputToStream(ss, "Attributes.member.", attributesCount, "");
+        attributesCount++;
+      }
     }
   }
 

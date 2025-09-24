@@ -21,7 +21,7 @@ namespace Model
   class GetOperationRequest : public ServiceDiscoveryRequest
   {
   public:
-    AWS_SERVICEDISCOVERY_API GetOperationRequest();
+    AWS_SERVICEDISCOVERY_API GetOperationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,50 +34,39 @@ namespace Model
     AWS_SERVICEDISCOVERY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the operation that you want to get more information about.</p>
      */
-    inline const Aws::String& GetOperationId() const{ return m_operationId; }
-
-    /**
-     * <p>The ID of the operation that you want to get more information about.</p>
-     */
+    inline const Aws::String& GetOperationId() const { return m_operationId; }
     inline bool OperationIdHasBeenSet() const { return m_operationIdHasBeenSet; }
+    template<typename OperationIdT = Aws::String>
+    void SetOperationId(OperationIdT&& value) { m_operationIdHasBeenSet = true; m_operationId = std::forward<OperationIdT>(value); }
+    template<typename OperationIdT = Aws::String>
+    GetOperationRequest& WithOperationId(OperationIdT&& value) { SetOperationId(std::forward<OperationIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the operation that you want to get more information about.</p>
+     * <p>The ID of the Amazon Web Services account that owns the namespace associated
+     * with the operation, as specified in the namespace <code>ResourceOwner</code>
+     * field. For operations associated with namespaces that are shared with your
+     * account, you must specify an <code>OwnerAccount</code>.</p>
      */
-    inline void SetOperationId(const Aws::String& value) { m_operationIdHasBeenSet = true; m_operationId = value; }
-
-    /**
-     * <p>The ID of the operation that you want to get more information about.</p>
-     */
-    inline void SetOperationId(Aws::String&& value) { m_operationIdHasBeenSet = true; m_operationId = std::move(value); }
-
-    /**
-     * <p>The ID of the operation that you want to get more information about.</p>
-     */
-    inline void SetOperationId(const char* value) { m_operationIdHasBeenSet = true; m_operationId.assign(value); }
-
-    /**
-     * <p>The ID of the operation that you want to get more information about.</p>
-     */
-    inline GetOperationRequest& WithOperationId(const Aws::String& value) { SetOperationId(value); return *this;}
-
-    /**
-     * <p>The ID of the operation that you want to get more information about.</p>
-     */
-    inline GetOperationRequest& WithOperationId(Aws::String&& value) { SetOperationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the operation that you want to get more information about.</p>
-     */
-    inline GetOperationRequest& WithOperationId(const char* value) { SetOperationId(value); return *this;}
-
+    inline const Aws::String& GetOwnerAccount() const { return m_ownerAccount; }
+    inline bool OwnerAccountHasBeenSet() const { return m_ownerAccountHasBeenSet; }
+    template<typename OwnerAccountT = Aws::String>
+    void SetOwnerAccount(OwnerAccountT&& value) { m_ownerAccountHasBeenSet = true; m_ownerAccount = std::forward<OwnerAccountT>(value); }
+    template<typename OwnerAccountT = Aws::String>
+    GetOperationRequest& WithOwnerAccount(OwnerAccountT&& value) { SetOwnerAccount(std::forward<OwnerAccountT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_operationId;
     bool m_operationIdHasBeenSet = false;
+
+    Aws::String m_ownerAccount;
+    bool m_ownerAccountHasBeenSet = false;
   };
 
 } // namespace Model

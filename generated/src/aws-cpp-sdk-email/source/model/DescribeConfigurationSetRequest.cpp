@@ -10,12 +10,6 @@
 using namespace Aws::SES::Model;
 using namespace Aws::Utils;
 
-DescribeConfigurationSetRequest::DescribeConfigurationSetRequest() : 
-    m_configurationSetNameHasBeenSet(false),
-    m_configurationSetAttributeNamesHasBeenSet(false)
-{
-}
-
 Aws::String DescribeConfigurationSetRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String DescribeConfigurationSetRequest::SerializePayload() const
 
   if(m_configurationSetAttributeNamesHasBeenSet)
   {
-    unsigned configurationSetAttributeNamesCount = 1;
-    for(auto& item : m_configurationSetAttributeNames)
+    if (m_configurationSetAttributeNames.empty())
     {
-      ss << "ConfigurationSetAttributeNames.member." << configurationSetAttributeNamesCount << "="
-          << StringUtils::URLEncode(ConfigurationSetAttributeMapper::GetNameForConfigurationSetAttribute(item).c_str()) << "&";
-      configurationSetAttributeNamesCount++;
+      ss << "ConfigurationSetAttributeNames=&";
+    }
+    else
+    {
+      unsigned configurationSetAttributeNamesCount = 1;
+      for(auto& item : m_configurationSetAttributeNames)
+      {
+        ss << "ConfigurationSetAttributeNames.member." << configurationSetAttributeNamesCount << "="
+            << StringUtils::URLEncode(ConfigurationSetAttributeMapper::GetNameForConfigurationSetAttribute(item)) << "&";
+        configurationSetAttributeNamesCount++;
+      }
     }
   }
 

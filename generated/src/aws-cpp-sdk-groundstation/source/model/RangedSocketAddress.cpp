@@ -18,15 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-RangedSocketAddress::RangedSocketAddress() : 
-    m_nameHasBeenSet(false),
-    m_portRangeHasBeenSet(false)
-{
-}
-
-RangedSocketAddress::RangedSocketAddress(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_portRangeHasBeenSet(false)
+RangedSocketAddress::RangedSocketAddress(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RangedSocketAddress& RangedSocketAddress::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("portRange"))
   {
     m_portRange = jsonValue.GetObject("portRange");
-
     m_portRangeHasBeenSet = true;
   }
-
   return *this;
 }
 

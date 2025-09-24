@@ -32,104 +32,47 @@ namespace Model
   class DetectedMetricSetConfig
   {
   public:
-    AWS_LOOKOUTMETRICS_API DetectedMetricSetConfig();
+    AWS_LOOKOUTMETRICS_API DetectedMetricSetConfig() = default;
     AWS_LOOKOUTMETRICS_API DetectedMetricSetConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API DetectedMetricSetConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The dataset's offset.</p>
      */
-    inline const DetectedField& GetOffset() const{ return m_offset; }
-
-    /**
-     * <p>The dataset's offset.</p>
-     */
+    inline const DetectedField& GetOffset() const { return m_offset; }
     inline bool OffsetHasBeenSet() const { return m_offsetHasBeenSet; }
+    template<typename OffsetT = DetectedField>
+    void SetOffset(OffsetT&& value) { m_offsetHasBeenSet = true; m_offset = std::forward<OffsetT>(value); }
+    template<typename OffsetT = DetectedField>
+    DetectedMetricSetConfig& WithOffset(OffsetT&& value) { SetOffset(std::forward<OffsetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dataset's offset.</p>
-     */
-    inline void SetOffset(const DetectedField& value) { m_offsetHasBeenSet = true; m_offset = value; }
-
-    /**
-     * <p>The dataset's offset.</p>
-     */
-    inline void SetOffset(DetectedField&& value) { m_offsetHasBeenSet = true; m_offset = std::move(value); }
-
-    /**
-     * <p>The dataset's offset.</p>
-     */
-    inline DetectedMetricSetConfig& WithOffset(const DetectedField& value) { SetOffset(value); return *this;}
-
-    /**
-     * <p>The dataset's offset.</p>
-     */
-    inline DetectedMetricSetConfig& WithOffset(DetectedField&& value) { SetOffset(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The dataset's interval.</p>
      */
-    inline const DetectedField& GetMetricSetFrequency() const{ return m_metricSetFrequency; }
-
-    /**
-     * <p>The dataset's interval.</p>
-     */
+    inline const DetectedField& GetMetricSetFrequency() const { return m_metricSetFrequency; }
     inline bool MetricSetFrequencyHasBeenSet() const { return m_metricSetFrequencyHasBeenSet; }
+    template<typename MetricSetFrequencyT = DetectedField>
+    void SetMetricSetFrequency(MetricSetFrequencyT&& value) { m_metricSetFrequencyHasBeenSet = true; m_metricSetFrequency = std::forward<MetricSetFrequencyT>(value); }
+    template<typename MetricSetFrequencyT = DetectedField>
+    DetectedMetricSetConfig& WithMetricSetFrequency(MetricSetFrequencyT&& value) { SetMetricSetFrequency(std::forward<MetricSetFrequencyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dataset's interval.</p>
-     */
-    inline void SetMetricSetFrequency(const DetectedField& value) { m_metricSetFrequencyHasBeenSet = true; m_metricSetFrequency = value; }
-
-    /**
-     * <p>The dataset's interval.</p>
-     */
-    inline void SetMetricSetFrequency(DetectedField&& value) { m_metricSetFrequencyHasBeenSet = true; m_metricSetFrequency = std::move(value); }
-
-    /**
-     * <p>The dataset's interval.</p>
-     */
-    inline DetectedMetricSetConfig& WithMetricSetFrequency(const DetectedField& value) { SetMetricSetFrequency(value); return *this;}
-
-    /**
-     * <p>The dataset's interval.</p>
-     */
-    inline DetectedMetricSetConfig& WithMetricSetFrequency(DetectedField&& value) { SetMetricSetFrequency(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The dataset's data source.</p>
      */
-    inline const DetectedMetricSource& GetMetricSource() const{ return m_metricSource; }
-
-    /**
-     * <p>The dataset's data source.</p>
-     */
+    inline const DetectedMetricSource& GetMetricSource() const { return m_metricSource; }
     inline bool MetricSourceHasBeenSet() const { return m_metricSourceHasBeenSet; }
-
-    /**
-     * <p>The dataset's data source.</p>
-     */
-    inline void SetMetricSource(const DetectedMetricSource& value) { m_metricSourceHasBeenSet = true; m_metricSource = value; }
-
-    /**
-     * <p>The dataset's data source.</p>
-     */
-    inline void SetMetricSource(DetectedMetricSource&& value) { m_metricSourceHasBeenSet = true; m_metricSource = std::move(value); }
-
-    /**
-     * <p>The dataset's data source.</p>
-     */
-    inline DetectedMetricSetConfig& WithMetricSource(const DetectedMetricSource& value) { SetMetricSource(value); return *this;}
-
-    /**
-     * <p>The dataset's data source.</p>
-     */
-    inline DetectedMetricSetConfig& WithMetricSource(DetectedMetricSource&& value) { SetMetricSource(std::move(value)); return *this;}
-
+    template<typename MetricSourceT = DetectedMetricSource>
+    void SetMetricSource(MetricSourceT&& value) { m_metricSourceHasBeenSet = true; m_metricSource = std::forward<MetricSourceT>(value); }
+    template<typename MetricSourceT = DetectedMetricSource>
+    DetectedMetricSetConfig& WithMetricSource(MetricSourceT&& value) { SetMetricSource(std::forward<MetricSourceT>(value)); return *this;}
+    ///@}
   private:
 
     DetectedField m_offset;

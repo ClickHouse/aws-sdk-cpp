@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-NeoVpcConfig::NeoVpcConfig() : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetsHasBeenSet(false)
-{
-}
-
-NeoVpcConfig::NeoVpcConfig(JsonView jsonValue) : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetsHasBeenSet(false)
+NeoVpcConfig::NeoVpcConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ NeoVpcConfig& NeoVpcConfig::operator =(JsonView jsonValue)
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Subnets"))
   {
     Aws::Utils::Array<JsonView> subnetsJsonList = jsonValue.GetArray("Subnets");
@@ -52,7 +43,6 @@ NeoVpcConfig& NeoVpcConfig::operator =(JsonView jsonValue)
     }
     m_subnetsHasBeenSet = true;
   }
-
   return *this;
 }
 

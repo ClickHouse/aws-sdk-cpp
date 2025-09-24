@@ -31,158 +31,50 @@ namespace Model
   class MasterUserOptions
   {
   public:
-    AWS_OPENSEARCHSERVICE_API MasterUserOptions();
+    AWS_OPENSEARCHSERVICE_API MasterUserOptions() = default;
     AWS_OPENSEARCHSERVICE_API MasterUserOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API MasterUserOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Amazon Resource Name (ARN) for the master user. Only specify if
      * <code>InternalUserDatabaseEnabled</code> is <code>false</code>.</p>
      */
-    inline const Aws::String& GetMasterUserARN() const{ return m_masterUserARN; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>false</code>.</p>
-     */
+    inline const Aws::String& GetMasterUserARN() const { return m_masterUserARN; }
     inline bool MasterUserARNHasBeenSet() const { return m_masterUserARNHasBeenSet; }
+    template<typename MasterUserARNT = Aws::String>
+    void SetMasterUserARN(MasterUserARNT&& value) { m_masterUserARNHasBeenSet = true; m_masterUserARN = std::forward<MasterUserARNT>(value); }
+    template<typename MasterUserARNT = Aws::String>
+    MasterUserOptions& WithMasterUserARN(MasterUserARNT&& value) { SetMasterUserARN(std::forward<MasterUserARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Amazon Resource Name (ARN) for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>false</code>.</p>
-     */
-    inline void SetMasterUserARN(const Aws::String& value) { m_masterUserARNHasBeenSet = true; m_masterUserARN = value; }
-
-    /**
-     * <p>Amazon Resource Name (ARN) for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>false</code>.</p>
-     */
-    inline void SetMasterUserARN(Aws::String&& value) { m_masterUserARNHasBeenSet = true; m_masterUserARN = std::move(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>false</code>.</p>
-     */
-    inline void SetMasterUserARN(const char* value) { m_masterUserARNHasBeenSet = true; m_masterUserARN.assign(value); }
-
-    /**
-     * <p>Amazon Resource Name (ARN) for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>false</code>.</p>
-     */
-    inline MasterUserOptions& WithMasterUserARN(const Aws::String& value) { SetMasterUserARN(value); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>false</code>.</p>
-     */
-    inline MasterUserOptions& WithMasterUserARN(Aws::String&& value) { SetMasterUserARN(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon Resource Name (ARN) for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>false</code>.</p>
-     */
-    inline MasterUserOptions& WithMasterUserARN(const char* value) { SetMasterUserARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>User name for the master user. Only specify if
      * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
      */
-    inline const Aws::String& GetMasterUserName() const{ return m_masterUserName; }
-
-    /**
-     * <p>User name for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
+    inline const Aws::String& GetMasterUserName() const { return m_masterUserName; }
     inline bool MasterUserNameHasBeenSet() const { return m_masterUserNameHasBeenSet; }
+    template<typename MasterUserNameT = Aws::String>
+    void SetMasterUserName(MasterUserNameT&& value) { m_masterUserNameHasBeenSet = true; m_masterUserName = std::forward<MasterUserNameT>(value); }
+    template<typename MasterUserNameT = Aws::String>
+    MasterUserOptions& WithMasterUserName(MasterUserNameT&& value) { SetMasterUserName(std::forward<MasterUserNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>User name for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline void SetMasterUserName(const Aws::String& value) { m_masterUserNameHasBeenSet = true; m_masterUserName = value; }
-
-    /**
-     * <p>User name for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline void SetMasterUserName(Aws::String&& value) { m_masterUserNameHasBeenSet = true; m_masterUserName = std::move(value); }
-
-    /**
-     * <p>User name for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline void SetMasterUserName(const char* value) { m_masterUserNameHasBeenSet = true; m_masterUserName.assign(value); }
-
-    /**
-     * <p>User name for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline MasterUserOptions& WithMasterUserName(const Aws::String& value) { SetMasterUserName(value); return *this;}
-
-    /**
-     * <p>User name for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline MasterUserOptions& WithMasterUserName(Aws::String&& value) { SetMasterUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>User name for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline MasterUserOptions& WithMasterUserName(const char* value) { SetMasterUserName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Password for the master user. Only specify if
      * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
      */
-    inline const Aws::String& GetMasterUserPassword() const{ return m_masterUserPassword; }
-
-    /**
-     * <p>Password for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
+    inline const Aws::String& GetMasterUserPassword() const { return m_masterUserPassword; }
     inline bool MasterUserPasswordHasBeenSet() const { return m_masterUserPasswordHasBeenSet; }
-
-    /**
-     * <p>Password for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline void SetMasterUserPassword(const Aws::String& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = value; }
-
-    /**
-     * <p>Password for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline void SetMasterUserPassword(Aws::String&& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = std::move(value); }
-
-    /**
-     * <p>Password for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline void SetMasterUserPassword(const char* value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword.assign(value); }
-
-    /**
-     * <p>Password for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline MasterUserOptions& WithMasterUserPassword(const Aws::String& value) { SetMasterUserPassword(value); return *this;}
-
-    /**
-     * <p>Password for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline MasterUserOptions& WithMasterUserPassword(Aws::String&& value) { SetMasterUserPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>Password for the master user. Only specify if
-     * <code>InternalUserDatabaseEnabled</code> is <code>true</code>.</p>
-     */
-    inline MasterUserOptions& WithMasterUserPassword(const char* value) { SetMasterUserPassword(value); return *this;}
-
+    template<typename MasterUserPasswordT = Aws::String>
+    void SetMasterUserPassword(MasterUserPasswordT&& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = std::forward<MasterUserPasswordT>(value); }
+    template<typename MasterUserPasswordT = Aws::String>
+    MasterUserOptions& WithMasterUserPassword(MasterUserPasswordT&& value) { SetMasterUserPassword(std::forward<MasterUserPasswordT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_masterUserARN;

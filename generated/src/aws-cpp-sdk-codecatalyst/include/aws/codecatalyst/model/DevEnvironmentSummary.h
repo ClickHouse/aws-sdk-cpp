@@ -38,583 +38,186 @@ namespace Model
   class DevEnvironmentSummary
   {
   public:
-    AWS_CODECATALYST_API DevEnvironmentSummary();
+    AWS_CODECATALYST_API DevEnvironmentSummary() = default;
     AWS_CODECATALYST_API DevEnvironmentSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API DevEnvironmentSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the space.</p>
      */
-    inline const Aws::String& GetSpaceName() const{ return m_spaceName; }
-
-    /**
-     * <p>The name of the space.</p>
-     */
+    inline const Aws::String& GetSpaceName() const { return m_spaceName; }
     inline bool SpaceNameHasBeenSet() const { return m_spaceNameHasBeenSet; }
+    template<typename SpaceNameT = Aws::String>
+    void SetSpaceName(SpaceNameT&& value) { m_spaceNameHasBeenSet = true; m_spaceName = std::forward<SpaceNameT>(value); }
+    template<typename SpaceNameT = Aws::String>
+    DevEnvironmentSummary& WithSpaceName(SpaceNameT&& value) { SetSpaceName(std::forward<SpaceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(const Aws::String& value) { m_spaceNameHasBeenSet = true; m_spaceName = value; }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(Aws::String&& value) { m_spaceNameHasBeenSet = true; m_spaceName = std::move(value); }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(const char* value) { m_spaceNameHasBeenSet = true; m_spaceName.assign(value); }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline DevEnvironmentSummary& WithSpaceName(const Aws::String& value) { SetSpaceName(value); return *this;}
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline DevEnvironmentSummary& WithSpaceName(Aws::String&& value) { SetSpaceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline DevEnvironmentSummary& WithSpaceName(const char* value) { SetSpaceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the project in the space.</p>
      */
-    inline const Aws::String& GetProjectName() const{ return m_projectName; }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
+    inline const Aws::String& GetProjectName() const { return m_projectName; }
     inline bool ProjectNameHasBeenSet() const { return m_projectNameHasBeenSet; }
+    template<typename ProjectNameT = Aws::String>
+    void SetProjectName(ProjectNameT&& value) { m_projectNameHasBeenSet = true; m_projectName = std::forward<ProjectNameT>(value); }
+    template<typename ProjectNameT = Aws::String>
+    DevEnvironmentSummary& WithProjectName(ProjectNameT&& value) { SetProjectName(std::forward<ProjectNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline void SetProjectName(const Aws::String& value) { m_projectNameHasBeenSet = true; m_projectName = value; }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline void SetProjectName(Aws::String&& value) { m_projectNameHasBeenSet = true; m_projectName = std::move(value); }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline void SetProjectName(const char* value) { m_projectNameHasBeenSet = true; m_projectName.assign(value); }
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline DevEnvironmentSummary& WithProjectName(const Aws::String& value) { SetProjectName(value); return *this;}
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline DevEnvironmentSummary& WithProjectName(Aws::String&& value) { SetProjectName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the project in the space.</p>
-     */
-    inline DevEnvironmentSummary& WithProjectName(const char* value) { SetProjectName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The system-generated unique ID for the Dev Environment. </p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The system-generated unique ID for the Dev Environment. </p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    DevEnvironmentSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The system-generated unique ID for the Dev Environment. </p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The system-generated unique ID for the Dev Environment. </p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The system-generated unique ID for the Dev Environment. </p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The system-generated unique ID for the Dev Environment. </p>
-     */
-    inline DevEnvironmentSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The system-generated unique ID for the Dev Environment. </p>
-     */
-    inline DevEnvironmentSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated unique ID for the Dev Environment. </p>
-     */
-    inline DevEnvironmentSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the Dev Environment was last updated, in coordinated universal
      * time (UTC) timestamp format as specified in <a
      * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The time when the Dev Environment was last updated, in coordinated universal
-     * time (UTC) timestamp format as specified in <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    DevEnvironmentSummary& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the Dev Environment was last updated, in coordinated universal
-     * time (UTC) timestamp format as specified in <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
-     */
-    inline void SetLastUpdatedTime(const Aws::Utils::DateTime& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The time when the Dev Environment was last updated, in coordinated universal
-     * time (UTC) timestamp format as specified in <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::Utils::DateTime&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The time when the Dev Environment was last updated, in coordinated universal
-     * time (UTC) timestamp format as specified in <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
-     */
-    inline DevEnvironmentSummary& WithLastUpdatedTime(const Aws::Utils::DateTime& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The time when the Dev Environment was last updated, in coordinated universal
-     * time (UTC) timestamp format as specified in <a
-     * href="https://www.rfc-editor.org/rfc/rfc3339#section-5.6">RFC 3339</a>.</p>
-     */
-    inline DevEnvironmentSummary& WithLastUpdatedTime(Aws::Utils::DateTime&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The system-generated unique ID of the user who created the Dev Environment.
      * </p>
      */
-    inline const Aws::String& GetCreatorId() const{ return m_creatorId; }
-
-    /**
-     * <p>The system-generated unique ID of the user who created the Dev Environment.
-     * </p>
-     */
+    inline const Aws::String& GetCreatorId() const { return m_creatorId; }
     inline bool CreatorIdHasBeenSet() const { return m_creatorIdHasBeenSet; }
+    template<typename CreatorIdT = Aws::String>
+    void SetCreatorId(CreatorIdT&& value) { m_creatorIdHasBeenSet = true; m_creatorId = std::forward<CreatorIdT>(value); }
+    template<typename CreatorIdT = Aws::String>
+    DevEnvironmentSummary& WithCreatorId(CreatorIdT&& value) { SetCreatorId(std::forward<CreatorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The system-generated unique ID of the user who created the Dev Environment.
-     * </p>
-     */
-    inline void SetCreatorId(const Aws::String& value) { m_creatorIdHasBeenSet = true; m_creatorId = value; }
-
-    /**
-     * <p>The system-generated unique ID of the user who created the Dev Environment.
-     * </p>
-     */
-    inline void SetCreatorId(Aws::String&& value) { m_creatorIdHasBeenSet = true; m_creatorId = std::move(value); }
-
-    /**
-     * <p>The system-generated unique ID of the user who created the Dev Environment.
-     * </p>
-     */
-    inline void SetCreatorId(const char* value) { m_creatorIdHasBeenSet = true; m_creatorId.assign(value); }
-
-    /**
-     * <p>The system-generated unique ID of the user who created the Dev Environment.
-     * </p>
-     */
-    inline DevEnvironmentSummary& WithCreatorId(const Aws::String& value) { SetCreatorId(value); return *this;}
-
-    /**
-     * <p>The system-generated unique ID of the user who created the Dev Environment.
-     * </p>
-     */
-    inline DevEnvironmentSummary& WithCreatorId(Aws::String&& value) { SetCreatorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated unique ID of the user who created the Dev Environment.
-     * </p>
-     */
-    inline DevEnvironmentSummary& WithCreatorId(const char* value) { SetCreatorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the Dev Environment. </p>
      */
-    inline const DevEnvironmentStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the Dev Environment. </p>
-     */
+    inline DevEnvironmentStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(DevEnvironmentStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DevEnvironmentSummary& WithStatus(DevEnvironmentStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the Dev Environment. </p>
-     */
-    inline void SetStatus(const DevEnvironmentStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the Dev Environment. </p>
-     */
-    inline void SetStatus(DevEnvironmentStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the Dev Environment. </p>
-     */
-    inline DevEnvironmentSummary& WithStatus(const DevEnvironmentStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the Dev Environment. </p>
-     */
-    inline DevEnvironmentSummary& WithStatus(DevEnvironmentStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason for the status.</p>
      */
-    inline const Aws::String& GetStatusReason() const{ return m_statusReason; }
-
-    /**
-     * <p>The reason for the status.</p>
-     */
+    inline const Aws::String& GetStatusReason() const { return m_statusReason; }
     inline bool StatusReasonHasBeenSet() const { return m_statusReasonHasBeenSet; }
+    template<typename StatusReasonT = Aws::String>
+    void SetStatusReason(StatusReasonT&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::forward<StatusReasonT>(value); }
+    template<typename StatusReasonT = Aws::String>
+    DevEnvironmentSummary& WithStatusReason(StatusReasonT&& value) { SetStatusReason(std::forward<StatusReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reason for the status.</p>
-     */
-    inline void SetStatusReason(const Aws::String& value) { m_statusReasonHasBeenSet = true; m_statusReason = value; }
-
-    /**
-     * <p>The reason for the status.</p>
-     */
-    inline void SetStatusReason(Aws::String&& value) { m_statusReasonHasBeenSet = true; m_statusReason = std::move(value); }
-
-    /**
-     * <p>The reason for the status.</p>
-     */
-    inline void SetStatusReason(const char* value) { m_statusReasonHasBeenSet = true; m_statusReason.assign(value); }
-
-    /**
-     * <p>The reason for the status.</p>
-     */
-    inline DevEnvironmentSummary& WithStatusReason(const Aws::String& value) { SetStatusReason(value); return *this;}
-
-    /**
-     * <p>The reason for the status.</p>
-     */
-    inline DevEnvironmentSummary& WithStatusReason(Aws::String&& value) { SetStatusReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason for the status.</p>
-     */
-    inline DevEnvironmentSummary& WithStatusReason(const char* value) { SetStatusReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the repositories that will be cloned into the Dev
      * Environment. If no rvalue is specified, no repository is cloned.</p>
      */
-    inline const Aws::Vector<DevEnvironmentRepositorySummary>& GetRepositories() const{ return m_repositories; }
-
-    /**
-     * <p>Information about the repositories that will be cloned into the Dev
-     * Environment. If no rvalue is specified, no repository is cloned.</p>
-     */
+    inline const Aws::Vector<DevEnvironmentRepositorySummary>& GetRepositories() const { return m_repositories; }
     inline bool RepositoriesHasBeenSet() const { return m_repositoriesHasBeenSet; }
+    template<typename RepositoriesT = Aws::Vector<DevEnvironmentRepositorySummary>>
+    void SetRepositories(RepositoriesT&& value) { m_repositoriesHasBeenSet = true; m_repositories = std::forward<RepositoriesT>(value); }
+    template<typename RepositoriesT = Aws::Vector<DevEnvironmentRepositorySummary>>
+    DevEnvironmentSummary& WithRepositories(RepositoriesT&& value) { SetRepositories(std::forward<RepositoriesT>(value)); return *this;}
+    template<typename RepositoriesT = DevEnvironmentRepositorySummary>
+    DevEnvironmentSummary& AddRepositories(RepositoriesT&& value) { m_repositoriesHasBeenSet = true; m_repositories.emplace_back(std::forward<RepositoriesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the repositories that will be cloned into the Dev
-     * Environment. If no rvalue is specified, no repository is cloned.</p>
-     */
-    inline void SetRepositories(const Aws::Vector<DevEnvironmentRepositorySummary>& value) { m_repositoriesHasBeenSet = true; m_repositories = value; }
-
-    /**
-     * <p>Information about the repositories that will be cloned into the Dev
-     * Environment. If no rvalue is specified, no repository is cloned.</p>
-     */
-    inline void SetRepositories(Aws::Vector<DevEnvironmentRepositorySummary>&& value) { m_repositoriesHasBeenSet = true; m_repositories = std::move(value); }
-
-    /**
-     * <p>Information about the repositories that will be cloned into the Dev
-     * Environment. If no rvalue is specified, no repository is cloned.</p>
-     */
-    inline DevEnvironmentSummary& WithRepositories(const Aws::Vector<DevEnvironmentRepositorySummary>& value) { SetRepositories(value); return *this;}
-
-    /**
-     * <p>Information about the repositories that will be cloned into the Dev
-     * Environment. If no rvalue is specified, no repository is cloned.</p>
-     */
-    inline DevEnvironmentSummary& WithRepositories(Aws::Vector<DevEnvironmentRepositorySummary>&& value) { SetRepositories(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the repositories that will be cloned into the Dev
-     * Environment. If no rvalue is specified, no repository is cloned.</p>
-     */
-    inline DevEnvironmentSummary& AddRepositories(const DevEnvironmentRepositorySummary& value) { m_repositoriesHasBeenSet = true; m_repositories.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the repositories that will be cloned into the Dev
-     * Environment. If no rvalue is specified, no repository is cloned.</p>
-     */
-    inline DevEnvironmentSummary& AddRepositories(DevEnvironmentRepositorySummary&& value) { m_repositoriesHasBeenSet = true; m_repositories.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The user-specified alias for the Dev Environment.</p>
      */
-    inline const Aws::String& GetAlias() const{ return m_alias; }
-
-    /**
-     * <p>The user-specified alias for the Dev Environment.</p>
-     */
+    inline const Aws::String& GetAlias() const { return m_alias; }
     inline bool AliasHasBeenSet() const { return m_aliasHasBeenSet; }
+    template<typename AliasT = Aws::String>
+    void SetAlias(AliasT&& value) { m_aliasHasBeenSet = true; m_alias = std::forward<AliasT>(value); }
+    template<typename AliasT = Aws::String>
+    DevEnvironmentSummary& WithAlias(AliasT&& value) { SetAlias(std::forward<AliasT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user-specified alias for the Dev Environment.</p>
-     */
-    inline void SetAlias(const Aws::String& value) { m_aliasHasBeenSet = true; m_alias = value; }
-
-    /**
-     * <p>The user-specified alias for the Dev Environment.</p>
-     */
-    inline void SetAlias(Aws::String&& value) { m_aliasHasBeenSet = true; m_alias = std::move(value); }
-
-    /**
-     * <p>The user-specified alias for the Dev Environment.</p>
-     */
-    inline void SetAlias(const char* value) { m_aliasHasBeenSet = true; m_alias.assign(value); }
-
-    /**
-     * <p>The user-specified alias for the Dev Environment.</p>
-     */
-    inline DevEnvironmentSummary& WithAlias(const Aws::String& value) { SetAlias(value); return *this;}
-
-    /**
-     * <p>The user-specified alias for the Dev Environment.</p>
-     */
-    inline DevEnvironmentSummary& WithAlias(Aws::String&& value) { SetAlias(std::move(value)); return *this;}
-
-    /**
-     * <p>The user-specified alias for the Dev Environment.</p>
-     */
-    inline DevEnvironmentSummary& WithAlias(const char* value) { SetAlias(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the integrated development environment (IDE) configured for
      * a Dev Environment.</p>
      */
-    inline const Aws::Vector<Ide>& GetIdes() const{ return m_ides; }
-
-    /**
-     * <p>Information about the integrated development environment (IDE) configured for
-     * a Dev Environment.</p>
-     */
+    inline const Aws::Vector<Ide>& GetIdes() const { return m_ides; }
     inline bool IdesHasBeenSet() const { return m_idesHasBeenSet; }
+    template<typename IdesT = Aws::Vector<Ide>>
+    void SetIdes(IdesT&& value) { m_idesHasBeenSet = true; m_ides = std::forward<IdesT>(value); }
+    template<typename IdesT = Aws::Vector<Ide>>
+    DevEnvironmentSummary& WithIdes(IdesT&& value) { SetIdes(std::forward<IdesT>(value)); return *this;}
+    template<typename IdesT = Ide>
+    DevEnvironmentSummary& AddIdes(IdesT&& value) { m_idesHasBeenSet = true; m_ides.emplace_back(std::forward<IdesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Information about the integrated development environment (IDE) configured for
-     * a Dev Environment.</p>
-     */
-    inline void SetIdes(const Aws::Vector<Ide>& value) { m_idesHasBeenSet = true; m_ides = value; }
-
-    /**
-     * <p>Information about the integrated development environment (IDE) configured for
-     * a Dev Environment.</p>
-     */
-    inline void SetIdes(Aws::Vector<Ide>&& value) { m_idesHasBeenSet = true; m_ides = std::move(value); }
-
-    /**
-     * <p>Information about the integrated development environment (IDE) configured for
-     * a Dev Environment.</p>
-     */
-    inline DevEnvironmentSummary& WithIdes(const Aws::Vector<Ide>& value) { SetIdes(value); return *this;}
-
-    /**
-     * <p>Information about the integrated development environment (IDE) configured for
-     * a Dev Environment.</p>
-     */
-    inline DevEnvironmentSummary& WithIdes(Aws::Vector<Ide>&& value) { SetIdes(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the integrated development environment (IDE) configured for
-     * a Dev Environment.</p>
-     */
-    inline DevEnvironmentSummary& AddIdes(const Ide& value) { m_idesHasBeenSet = true; m_ides.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the integrated development environment (IDE) configured for
-     * a Dev Environment.</p>
-     */
-    inline DevEnvironmentSummary& AddIdes(Ide&& value) { m_idesHasBeenSet = true; m_ides.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon EC2 instace type used for the Dev Environment. </p>
      */
-    inline const InstanceType& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The Amazon EC2 instace type used for the Dev Environment. </p>
-     */
+    inline InstanceType GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    inline void SetInstanceType(InstanceType value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline DevEnvironmentSummary& WithInstanceType(InstanceType value) { SetInstanceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon EC2 instace type used for the Dev Environment. </p>
-     */
-    inline void SetInstanceType(const InstanceType& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The Amazon EC2 instace type used for the Dev Environment. </p>
-     */
-    inline void SetInstanceType(InstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The Amazon EC2 instace type used for the Dev Environment. </p>
-     */
-    inline DevEnvironmentSummary& WithInstanceType(const InstanceType& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The Amazon EC2 instace type used for the Dev Environment. </p>
-     */
-    inline DevEnvironmentSummary& WithInstanceType(InstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The amount of time the Dev Environment will run without any activity detected
      * before stopping, in minutes. Dev Environments consume compute minutes when
      * running.</p>
      */
-    inline int GetInactivityTimeoutMinutes() const{ return m_inactivityTimeoutMinutes; }
-
-    /**
-     * <p>The amount of time the Dev Environment will run without any activity detected
-     * before stopping, in minutes. Dev Environments consume compute minutes when
-     * running.</p>
-     */
+    inline int GetInactivityTimeoutMinutes() const { return m_inactivityTimeoutMinutes; }
     inline bool InactivityTimeoutMinutesHasBeenSet() const { return m_inactivityTimeoutMinutesHasBeenSet; }
-
-    /**
-     * <p>The amount of time the Dev Environment will run without any activity detected
-     * before stopping, in minutes. Dev Environments consume compute minutes when
-     * running.</p>
-     */
     inline void SetInactivityTimeoutMinutes(int value) { m_inactivityTimeoutMinutesHasBeenSet = true; m_inactivityTimeoutMinutes = value; }
-
-    /**
-     * <p>The amount of time the Dev Environment will run without any activity detected
-     * before stopping, in minutes. Dev Environments consume compute minutes when
-     * running.</p>
-     */
     inline DevEnvironmentSummary& WithInactivityTimeoutMinutes(int value) { SetInactivityTimeoutMinutes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Information about the configuration of persistent storage for the Dev
      * Environment.</p>
      */
-    inline const PersistentStorage& GetPersistentStorage() const{ return m_persistentStorage; }
-
-    /**
-     * <p>Information about the configuration of persistent storage for the Dev
-     * Environment.</p>
-     */
+    inline const PersistentStorage& GetPersistentStorage() const { return m_persistentStorage; }
     inline bool PersistentStorageHasBeenSet() const { return m_persistentStorageHasBeenSet; }
+    template<typename PersistentStorageT = PersistentStorage>
+    void SetPersistentStorage(PersistentStorageT&& value) { m_persistentStorageHasBeenSet = true; m_persistentStorage = std::forward<PersistentStorageT>(value); }
+    template<typename PersistentStorageT = PersistentStorage>
+    DevEnvironmentSummary& WithPersistentStorage(PersistentStorageT&& value) { SetPersistentStorage(std::forward<PersistentStorageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the configuration of persistent storage for the Dev
-     * Environment.</p>
-     */
-    inline void SetPersistentStorage(const PersistentStorage& value) { m_persistentStorageHasBeenSet = true; m_persistentStorage = value; }
-
-    /**
-     * <p>Information about the configuration of persistent storage for the Dev
-     * Environment.</p>
-     */
-    inline void SetPersistentStorage(PersistentStorage&& value) { m_persistentStorageHasBeenSet = true; m_persistentStorage = std::move(value); }
-
-    /**
-     * <p>Information about the configuration of persistent storage for the Dev
-     * Environment.</p>
-     */
-    inline DevEnvironmentSummary& WithPersistentStorage(const PersistentStorage& value) { SetPersistentStorage(value); return *this;}
-
-    /**
-     * <p>Information about the configuration of persistent storage for the Dev
-     * Environment.</p>
-     */
-    inline DevEnvironmentSummary& WithPersistentStorage(PersistentStorage&& value) { SetPersistentStorage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the connection used to connect to Amazon VPC used when the Dev
      * Environment was created, if any.</p>
      */
-    inline const Aws::String& GetVpcConnectionName() const{ return m_vpcConnectionName; }
-
-    /**
-     * <p>The name of the connection used to connect to Amazon VPC used when the Dev
-     * Environment was created, if any.</p>
-     */
+    inline const Aws::String& GetVpcConnectionName() const { return m_vpcConnectionName; }
     inline bool VpcConnectionNameHasBeenSet() const { return m_vpcConnectionNameHasBeenSet; }
-
-    /**
-     * <p>The name of the connection used to connect to Amazon VPC used when the Dev
-     * Environment was created, if any.</p>
-     */
-    inline void SetVpcConnectionName(const Aws::String& value) { m_vpcConnectionNameHasBeenSet = true; m_vpcConnectionName = value; }
-
-    /**
-     * <p>The name of the connection used to connect to Amazon VPC used when the Dev
-     * Environment was created, if any.</p>
-     */
-    inline void SetVpcConnectionName(Aws::String&& value) { m_vpcConnectionNameHasBeenSet = true; m_vpcConnectionName = std::move(value); }
-
-    /**
-     * <p>The name of the connection used to connect to Amazon VPC used when the Dev
-     * Environment was created, if any.</p>
-     */
-    inline void SetVpcConnectionName(const char* value) { m_vpcConnectionNameHasBeenSet = true; m_vpcConnectionName.assign(value); }
-
-    /**
-     * <p>The name of the connection used to connect to Amazon VPC used when the Dev
-     * Environment was created, if any.</p>
-     */
-    inline DevEnvironmentSummary& WithVpcConnectionName(const Aws::String& value) { SetVpcConnectionName(value); return *this;}
-
-    /**
-     * <p>The name of the connection used to connect to Amazon VPC used when the Dev
-     * Environment was created, if any.</p>
-     */
-    inline DevEnvironmentSummary& WithVpcConnectionName(Aws::String&& value) { SetVpcConnectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the connection used to connect to Amazon VPC used when the Dev
-     * Environment was created, if any.</p>
-     */
-    inline DevEnvironmentSummary& WithVpcConnectionName(const char* value) { SetVpcConnectionName(value); return *this;}
-
+    template<typename VpcConnectionNameT = Aws::String>
+    void SetVpcConnectionName(VpcConnectionNameT&& value) { m_vpcConnectionNameHasBeenSet = true; m_vpcConnectionName = std::forward<VpcConnectionNameT>(value); }
+    template<typename VpcConnectionNameT = Aws::String>
+    DevEnvironmentSummary& WithVpcConnectionName(VpcConnectionNameT&& value) { SetVpcConnectionName(std::forward<VpcConnectionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_spaceName;
@@ -626,13 +229,13 @@ namespace Model
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTime;
+    Aws::Utils::DateTime m_lastUpdatedTime{};
     bool m_lastUpdatedTimeHasBeenSet = false;
 
     Aws::String m_creatorId;
     bool m_creatorIdHasBeenSet = false;
 
-    DevEnvironmentStatus m_status;
+    DevEnvironmentStatus m_status{DevEnvironmentStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_statusReason;
@@ -647,10 +250,10 @@ namespace Model
     Aws::Vector<Ide> m_ides;
     bool m_idesHasBeenSet = false;
 
-    InstanceType m_instanceType;
+    InstanceType m_instanceType{InstanceType::NOT_SET};
     bool m_instanceTypeHasBeenSet = false;
 
-    int m_inactivityTimeoutMinutes;
+    int m_inactivityTimeoutMinutes{0};
     bool m_inactivityTimeoutMinutesHasBeenSet = false;
 
     PersistentStorage m_persistentStorage;

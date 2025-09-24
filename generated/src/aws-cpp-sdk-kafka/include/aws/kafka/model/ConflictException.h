@@ -34,125 +34,39 @@ namespace Model
   class ConflictException
   {
   public:
-    AWS_KAFKA_API ConflictException();
+    AWS_KAFKA_API ConflictException() = default;
     AWS_KAFKA_API ConflictException(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API ConflictException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>The parameter that caused the error.</p>
          
      */
-    inline const Aws::String& GetInvalidParameter() const{ return m_invalidParameter; }
-
-    /**
-     * 
-            <p>The parameter that caused the error.</p>
-         
-     */
+    inline const Aws::String& GetInvalidParameter() const { return m_invalidParameter; }
     inline bool InvalidParameterHasBeenSet() const { return m_invalidParameterHasBeenSet; }
+    template<typename InvalidParameterT = Aws::String>
+    void SetInvalidParameter(InvalidParameterT&& value) { m_invalidParameterHasBeenSet = true; m_invalidParameter = std::forward<InvalidParameterT>(value); }
+    template<typename InvalidParameterT = Aws::String>
+    ConflictException& WithInvalidParameter(InvalidParameterT&& value) { SetInvalidParameter(std::forward<InvalidParameterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The parameter that caused the error.</p>
-         
-     */
-    inline void SetInvalidParameter(const Aws::String& value) { m_invalidParameterHasBeenSet = true; m_invalidParameter = value; }
-
-    /**
-     * 
-            <p>The parameter that caused the error.</p>
-         
-     */
-    inline void SetInvalidParameter(Aws::String&& value) { m_invalidParameterHasBeenSet = true; m_invalidParameter = std::move(value); }
-
-    /**
-     * 
-            <p>The parameter that caused the error.</p>
-         
-     */
-    inline void SetInvalidParameter(const char* value) { m_invalidParameterHasBeenSet = true; m_invalidParameter.assign(value); }
-
-    /**
-     * 
-            <p>The parameter that caused the error.</p>
-         
-     */
-    inline ConflictException& WithInvalidParameter(const Aws::String& value) { SetInvalidParameter(value); return *this;}
-
-    /**
-     * 
-            <p>The parameter that caused the error.</p>
-         
-     */
-    inline ConflictException& WithInvalidParameter(Aws::String&& value) { SetInvalidParameter(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The parameter that caused the error.</p>
-         
-     */
-    inline ConflictException& WithInvalidParameter(const char* value) { SetInvalidParameter(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The description of the error.</p>
          
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * 
-            <p>The description of the error.</p>
-         
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * 
-            <p>The description of the error.</p>
-         
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * 
-            <p>The description of the error.</p>
-         
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * 
-            <p>The description of the error.</p>
-         
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * 
-            <p>The description of the error.</p>
-         
-     */
-    inline ConflictException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * 
-            <p>The description of the error.</p>
-         
-     */
-    inline ConflictException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The description of the error.</p>
-         
-     */
-    inline ConflictException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ConflictException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_invalidParameter;

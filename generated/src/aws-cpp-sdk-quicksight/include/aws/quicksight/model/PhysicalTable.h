@@ -36,104 +36,47 @@ namespace Model
   class PhysicalTable
   {
   public:
-    AWS_QUICKSIGHT_API PhysicalTable();
+    AWS_QUICKSIGHT_API PhysicalTable() = default;
     AWS_QUICKSIGHT_API PhysicalTable(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API PhysicalTable& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A physical table type for relational data sources.</p>
      */
-    inline const RelationalTable& GetRelationalTable() const{ return m_relationalTable; }
-
-    /**
-     * <p>A physical table type for relational data sources.</p>
-     */
+    inline const RelationalTable& GetRelationalTable() const { return m_relationalTable; }
     inline bool RelationalTableHasBeenSet() const { return m_relationalTableHasBeenSet; }
+    template<typename RelationalTableT = RelationalTable>
+    void SetRelationalTable(RelationalTableT&& value) { m_relationalTableHasBeenSet = true; m_relationalTable = std::forward<RelationalTableT>(value); }
+    template<typename RelationalTableT = RelationalTable>
+    PhysicalTable& WithRelationalTable(RelationalTableT&& value) { SetRelationalTable(std::forward<RelationalTableT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A physical table type for relational data sources.</p>
-     */
-    inline void SetRelationalTable(const RelationalTable& value) { m_relationalTableHasBeenSet = true; m_relationalTable = value; }
-
-    /**
-     * <p>A physical table type for relational data sources.</p>
-     */
-    inline void SetRelationalTable(RelationalTable&& value) { m_relationalTableHasBeenSet = true; m_relationalTable = std::move(value); }
-
-    /**
-     * <p>A physical table type for relational data sources.</p>
-     */
-    inline PhysicalTable& WithRelationalTable(const RelationalTable& value) { SetRelationalTable(value); return *this;}
-
-    /**
-     * <p>A physical table type for relational data sources.</p>
-     */
-    inline PhysicalTable& WithRelationalTable(RelationalTable&& value) { SetRelationalTable(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A physical table type built from the results of the custom SQL query.</p>
      */
-    inline const CustomSql& GetCustomSql() const{ return m_customSql; }
-
-    /**
-     * <p>A physical table type built from the results of the custom SQL query.</p>
-     */
+    inline const CustomSql& GetCustomSql() const { return m_customSql; }
     inline bool CustomSqlHasBeenSet() const { return m_customSqlHasBeenSet; }
+    template<typename CustomSqlT = CustomSql>
+    void SetCustomSql(CustomSqlT&& value) { m_customSqlHasBeenSet = true; m_customSql = std::forward<CustomSqlT>(value); }
+    template<typename CustomSqlT = CustomSql>
+    PhysicalTable& WithCustomSql(CustomSqlT&& value) { SetCustomSql(std::forward<CustomSqlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A physical table type built from the results of the custom SQL query.</p>
-     */
-    inline void SetCustomSql(const CustomSql& value) { m_customSqlHasBeenSet = true; m_customSql = value; }
-
-    /**
-     * <p>A physical table type built from the results of the custom SQL query.</p>
-     */
-    inline void SetCustomSql(CustomSql&& value) { m_customSqlHasBeenSet = true; m_customSql = std::move(value); }
-
-    /**
-     * <p>A physical table type built from the results of the custom SQL query.</p>
-     */
-    inline PhysicalTable& WithCustomSql(const CustomSql& value) { SetCustomSql(value); return *this;}
-
-    /**
-     * <p>A physical table type built from the results of the custom SQL query.</p>
-     */
-    inline PhysicalTable& WithCustomSql(CustomSql&& value) { SetCustomSql(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A physical table type for as S3 data source.</p>
      */
-    inline const S3Source& GetS3Source() const{ return m_s3Source; }
-
-    /**
-     * <p>A physical table type for as S3 data source.</p>
-     */
+    inline const S3Source& GetS3Source() const { return m_s3Source; }
     inline bool S3SourceHasBeenSet() const { return m_s3SourceHasBeenSet; }
-
-    /**
-     * <p>A physical table type for as S3 data source.</p>
-     */
-    inline void SetS3Source(const S3Source& value) { m_s3SourceHasBeenSet = true; m_s3Source = value; }
-
-    /**
-     * <p>A physical table type for as S3 data source.</p>
-     */
-    inline void SetS3Source(S3Source&& value) { m_s3SourceHasBeenSet = true; m_s3Source = std::move(value); }
-
-    /**
-     * <p>A physical table type for as S3 data source.</p>
-     */
-    inline PhysicalTable& WithS3Source(const S3Source& value) { SetS3Source(value); return *this;}
-
-    /**
-     * <p>A physical table type for as S3 data source.</p>
-     */
-    inline PhysicalTable& WithS3Source(S3Source&& value) { SetS3Source(std::move(value)); return *this;}
-
+    template<typename S3SourceT = S3Source>
+    void SetS3Source(S3SourceT&& value) { m_s3SourceHasBeenSet = true; m_s3Source = std::forward<S3SourceT>(value); }
+    template<typename S3SourceT = S3Source>
+    PhysicalTable& WithS3Source(S3SourceT&& value) { SetS3Source(std::forward<S3SourceT>(value)); return *this;}
+    ///@}
   private:
 
     RelationalTable m_relationalTable;

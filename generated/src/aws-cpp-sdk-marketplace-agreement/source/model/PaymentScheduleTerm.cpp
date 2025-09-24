@@ -18,17 +18,7 @@ namespace AgreementService
 namespace Model
 {
 
-PaymentScheduleTerm::PaymentScheduleTerm() : 
-    m_currencyCodeHasBeenSet(false),
-    m_scheduleHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-PaymentScheduleTerm::PaymentScheduleTerm(JsonView jsonValue) : 
-    m_currencyCodeHasBeenSet(false),
-    m_scheduleHasBeenSet(false),
-    m_typeHasBeenSet(false)
+PaymentScheduleTerm::PaymentScheduleTerm(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ PaymentScheduleTerm& PaymentScheduleTerm::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("currencyCode"))
   {
     m_currencyCode = jsonValue.GetString("currencyCode");
-
     m_currencyCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("schedule"))
   {
     Aws::Utils::Array<JsonView> scheduleJsonList = jsonValue.GetArray("schedule");
@@ -51,14 +39,11 @@ PaymentScheduleTerm& PaymentScheduleTerm::operator =(JsonView jsonValue)
     }
     m_scheduleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -33,128 +33,52 @@ namespace Model
   class UnprocessedAutomationRule
   {
   public:
-    AWS_SECURITYHUB_API UnprocessedAutomationRule();
+    AWS_SECURITYHUB_API UnprocessedAutomationRule() = default;
     AWS_SECURITYHUB_API UnprocessedAutomationRule(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API UnprocessedAutomationRule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) for the unprocessed automation rule. </p>
      */
-    inline const Aws::String& GetRuleArn() const{ return m_ruleArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) for the unprocessed automation rule. </p>
-     */
+    inline const Aws::String& GetRuleArn() const { return m_ruleArn; }
     inline bool RuleArnHasBeenSet() const { return m_ruleArnHasBeenSet; }
+    template<typename RuleArnT = Aws::String>
+    void SetRuleArn(RuleArnT&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = std::forward<RuleArnT>(value); }
+    template<typename RuleArnT = Aws::String>
+    UnprocessedAutomationRule& WithRuleArn(RuleArnT&& value) { SetRuleArn(std::forward<RuleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) for the unprocessed automation rule. </p>
-     */
-    inline void SetRuleArn(const Aws::String& value) { m_ruleArnHasBeenSet = true; m_ruleArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) for the unprocessed automation rule. </p>
-     */
-    inline void SetRuleArn(Aws::String&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) for the unprocessed automation rule. </p>
-     */
-    inline void SetRuleArn(const char* value) { m_ruleArnHasBeenSet = true; m_ruleArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) for the unprocessed automation rule. </p>
-     */
-    inline UnprocessedAutomationRule& WithRuleArn(const Aws::String& value) { SetRuleArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) for the unprocessed automation rule. </p>
-     */
-    inline UnprocessedAutomationRule& WithRuleArn(Aws::String&& value) { SetRuleArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) for the unprocessed automation rule. </p>
-     */
-    inline UnprocessedAutomationRule& WithRuleArn(const char* value) { SetRuleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The error code associated with the unprocessed automation rule. </p>
      */
-    inline int GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p> The error code associated with the unprocessed automation rule. </p>
-     */
+    inline int GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
-
-    /**
-     * <p> The error code associated with the unprocessed automation rule. </p>
-     */
     inline void SetErrorCode(int value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p> The error code associated with the unprocessed automation rule. </p>
-     */
     inline UnprocessedAutomationRule& WithErrorCode(int value) { SetErrorCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> An error message describing why a request didn't process a specific rule.
      * </p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p> An error message describing why a request didn't process a specific rule.
-     * </p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
-
-    /**
-     * <p> An error message describing why a request didn't process a specific rule.
-     * </p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p> An error message describing why a request didn't process a specific rule.
-     * </p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p> An error message describing why a request didn't process a specific rule.
-     * </p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p> An error message describing why a request didn't process a specific rule.
-     * </p>
-     */
-    inline UnprocessedAutomationRule& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p> An error message describing why a request didn't process a specific rule.
-     * </p>
-     */
-    inline UnprocessedAutomationRule& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p> An error message describing why a request didn't process a specific rule.
-     * </p>
-     */
-    inline UnprocessedAutomationRule& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    UnprocessedAutomationRule& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleArn;
     bool m_ruleArnHasBeenSet = false;
 
-    int m_errorCode;
+    int m_errorCode{0};
     bool m_errorCodeHasBeenSet = false;
 
     Aws::String m_errorMessage;

@@ -12,20 +12,6 @@ using namespace Aws::DataSync::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTaskRequest::CreateTaskRequest() : 
-    m_sourceLocationArnHasBeenSet(false),
-    m_destinationLocationArnHasBeenSet(false),
-    m_cloudWatchLogGroupArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_optionsHasBeenSet(false),
-    m_excludesHasBeenSet(false),
-    m_scheduleHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_includesHasBeenSet(false),
-    m_taskReportConfigHasBeenSet(false)
-{
-}
-
 Aws::String CreateTaskRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -99,10 +85,21 @@ Aws::String CreateTaskRequest::SerializePayload() const
 
   }
 
+  if(m_manifestConfigHasBeenSet)
+  {
+   payload.WithObject("ManifestConfig", m_manifestConfig.Jsonize());
+
+  }
+
   if(m_taskReportConfigHasBeenSet)
   {
    payload.WithObject("TaskReportConfig", m_taskReportConfig.Jsonize());
 
+  }
+
+  if(m_taskModeHasBeenSet)
+  {
+   payload.WithString("TaskMode", TaskModeMapper::GetNameForTaskMode(m_taskMode));
   }
 
   return payload.View().WriteReadable();

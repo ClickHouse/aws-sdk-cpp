@@ -33,12 +33,13 @@ namespace Model
   class HierarchicalPrincipal
   {
   public:
-    AWS_KENDRA_API HierarchicalPrincipal();
+    AWS_KENDRA_API HierarchicalPrincipal() = default;
     AWS_KENDRA_API HierarchicalPrincipal(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API HierarchicalPrincipal& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of <a
      * href="https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html">principal</a>
@@ -46,71 +47,15 @@ namespace Model
      * Each hierarchical list specifies which user or group has allow or deny access
      * for each document.</p>
      */
-    inline const Aws::Vector<Principal>& GetPrincipalList() const{ return m_principalList; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html">principal</a>
-     * lists that define the hierarchy for which documents users should have access to.
-     * Each hierarchical list specifies which user or group has allow or deny access
-     * for each document.</p>
-     */
+    inline const Aws::Vector<Principal>& GetPrincipalList() const { return m_principalList; }
     inline bool PrincipalListHasBeenSet() const { return m_principalListHasBeenSet; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html">principal</a>
-     * lists that define the hierarchy for which documents users should have access to.
-     * Each hierarchical list specifies which user or group has allow or deny access
-     * for each document.</p>
-     */
-    inline void SetPrincipalList(const Aws::Vector<Principal>& value) { m_principalListHasBeenSet = true; m_principalList = value; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html">principal</a>
-     * lists that define the hierarchy for which documents users should have access to.
-     * Each hierarchical list specifies which user or group has allow or deny access
-     * for each document.</p>
-     */
-    inline void SetPrincipalList(Aws::Vector<Principal>&& value) { m_principalListHasBeenSet = true; m_principalList = std::move(value); }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html">principal</a>
-     * lists that define the hierarchy for which documents users should have access to.
-     * Each hierarchical list specifies which user or group has allow or deny access
-     * for each document.</p>
-     */
-    inline HierarchicalPrincipal& WithPrincipalList(const Aws::Vector<Principal>& value) { SetPrincipalList(value); return *this;}
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html">principal</a>
-     * lists that define the hierarchy for which documents users should have access to.
-     * Each hierarchical list specifies which user or group has allow or deny access
-     * for each document.</p>
-     */
-    inline HierarchicalPrincipal& WithPrincipalList(Aws::Vector<Principal>&& value) { SetPrincipalList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html">principal</a>
-     * lists that define the hierarchy for which documents users should have access to.
-     * Each hierarchical list specifies which user or group has allow or deny access
-     * for each document.</p>
-     */
-    inline HierarchicalPrincipal& AddPrincipalList(const Principal& value) { m_principalListHasBeenSet = true; m_principalList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/kendra/latest/dg/API_Principal.html">principal</a>
-     * lists that define the hierarchy for which documents users should have access to.
-     * Each hierarchical list specifies which user or group has allow or deny access
-     * for each document.</p>
-     */
-    inline HierarchicalPrincipal& AddPrincipalList(Principal&& value) { m_principalListHasBeenSet = true; m_principalList.push_back(std::move(value)); return *this; }
-
+    template<typename PrincipalListT = Aws::Vector<Principal>>
+    void SetPrincipalList(PrincipalListT&& value) { m_principalListHasBeenSet = true; m_principalList = std::forward<PrincipalListT>(value); }
+    template<typename PrincipalListT = Aws::Vector<Principal>>
+    HierarchicalPrincipal& WithPrincipalList(PrincipalListT&& value) { SetPrincipalList(std::forward<PrincipalListT>(value)); return *this;}
+    template<typename PrincipalListT = Principal>
+    HierarchicalPrincipal& AddPrincipalList(PrincipalListT&& value) { m_principalListHasBeenSet = true; m_principalList.emplace_back(std::forward<PrincipalListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Principal> m_principalList;

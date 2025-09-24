@@ -32,93 +32,35 @@ namespace Model
   class AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails();
+    AWS_SECURITYHUB_API AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails() = default;
     AWS_SECURITYHUB_API AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The namespaced kernel parameter for which to set a value.</p>
      */
-    inline const Aws::String& GetNamespace() const{ return m_namespace; }
-
-    /**
-     * <p>The namespaced kernel parameter for which to set a value.</p>
-     */
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
     inline bool NamespaceHasBeenSet() const { return m_namespaceHasBeenSet; }
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The namespaced kernel parameter for which to set a value.</p>
-     */
-    inline void SetNamespace(const Aws::String& value) { m_namespaceHasBeenSet = true; m_namespace = value; }
-
-    /**
-     * <p>The namespaced kernel parameter for which to set a value.</p>
-     */
-    inline void SetNamespace(Aws::String&& value) { m_namespaceHasBeenSet = true; m_namespace = std::move(value); }
-
-    /**
-     * <p>The namespaced kernel parameter for which to set a value.</p>
-     */
-    inline void SetNamespace(const char* value) { m_namespaceHasBeenSet = true; m_namespace.assign(value); }
-
-    /**
-     * <p>The namespaced kernel parameter for which to set a value.</p>
-     */
-    inline AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>The namespaced kernel parameter for which to set a value.</p>
-     */
-    inline AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>The namespaced kernel parameter for which to set a value.</p>
-     */
-    inline AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails& WithNamespace(const char* value) { SetNamespace(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the parameter.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the parameter.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of the parameter.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the parameter.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the parameter.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the parameter.</p>
-     */
-    inline AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the parameter.</p>
-     */
-    inline AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the parameter.</p>
-     */
-    inline AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_namespace;

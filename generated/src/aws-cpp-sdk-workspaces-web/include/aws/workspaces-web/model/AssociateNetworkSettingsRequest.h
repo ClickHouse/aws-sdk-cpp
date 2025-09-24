@@ -25,7 +25,7 @@ namespace Model
   class AssociateNetworkSettingsRequest : public WorkSpacesWebRequest
   {
   public:
-    AWS_WORKSPACESWEB_API AssociateNetworkSettingsRequest();
+    AWS_WORKSPACESWEB_API AssociateNetworkSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,94 +38,36 @@ namespace Model
     AWS_WORKSPACESWEB_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
-    /**
-     * <p>The ARN of the network settings.</p>
-     */
-    inline const Aws::String& GetNetworkSettingsArn() const{ return m_networkSettingsArn; }
-
-    /**
-     * <p>The ARN of the network settings.</p>
-     */
-    inline bool NetworkSettingsArnHasBeenSet() const { return m_networkSettingsArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the network settings.</p>
-     */
-    inline void SetNetworkSettingsArn(const Aws::String& value) { m_networkSettingsArnHasBeenSet = true; m_networkSettingsArn = value; }
-
-    /**
-     * <p>The ARN of the network settings.</p>
-     */
-    inline void SetNetworkSettingsArn(Aws::String&& value) { m_networkSettingsArnHasBeenSet = true; m_networkSettingsArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the network settings.</p>
-     */
-    inline void SetNetworkSettingsArn(const char* value) { m_networkSettingsArnHasBeenSet = true; m_networkSettingsArn.assign(value); }
-
-    /**
-     * <p>The ARN of the network settings.</p>
-     */
-    inline AssociateNetworkSettingsRequest& WithNetworkSettingsArn(const Aws::String& value) { SetNetworkSettingsArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the network settings.</p>
-     */
-    inline AssociateNetworkSettingsRequest& WithNetworkSettingsArn(Aws::String&& value) { SetNetworkSettingsArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the network settings.</p>
-     */
-    inline AssociateNetworkSettingsRequest& WithNetworkSettingsArn(const char* value) { SetNetworkSettingsArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the web portal.</p>
      */
-    inline const Aws::String& GetPortalArn() const{ return m_portalArn; }
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
+    inline const Aws::String& GetPortalArn() const { return m_portalArn; }
     inline bool PortalArnHasBeenSet() const { return m_portalArnHasBeenSet; }
+    template<typename PortalArnT = Aws::String>
+    void SetPortalArn(PortalArnT&& value) { m_portalArnHasBeenSet = true; m_portalArn = std::forward<PortalArnT>(value); }
+    template<typename PortalArnT = Aws::String>
+    AssociateNetworkSettingsRequest& WithPortalArn(PortalArnT&& value) { SetPortalArn(std::forward<PortalArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the web portal.</p>
+     * <p>The ARN of the network settings.</p>
      */
-    inline void SetPortalArn(const Aws::String& value) { m_portalArnHasBeenSet = true; m_portalArn = value; }
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline void SetPortalArn(Aws::String&& value) { m_portalArnHasBeenSet = true; m_portalArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline void SetPortalArn(const char* value) { m_portalArnHasBeenSet = true; m_portalArn.assign(value); }
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline AssociateNetworkSettingsRequest& WithPortalArn(const Aws::String& value) { SetPortalArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline AssociateNetworkSettingsRequest& WithPortalArn(Aws::String&& value) { SetPortalArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the web portal.</p>
-     */
-    inline AssociateNetworkSettingsRequest& WithPortalArn(const char* value) { SetPortalArn(value); return *this;}
-
+    inline const Aws::String& GetNetworkSettingsArn() const { return m_networkSettingsArn; }
+    inline bool NetworkSettingsArnHasBeenSet() const { return m_networkSettingsArnHasBeenSet; }
+    template<typename NetworkSettingsArnT = Aws::String>
+    void SetNetworkSettingsArn(NetworkSettingsArnT&& value) { m_networkSettingsArnHasBeenSet = true; m_networkSettingsArn = std::forward<NetworkSettingsArnT>(value); }
+    template<typename NetworkSettingsArnT = Aws::String>
+    AssociateNetworkSettingsRequest& WithNetworkSettingsArn(NetworkSettingsArnT&& value) { SetNetworkSettingsArn(std::forward<NetworkSettingsArnT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_networkSettingsArn;
-    bool m_networkSettingsArnHasBeenSet = false;
 
     Aws::String m_portalArn;
     bool m_portalArnHasBeenSet = false;
+
+    Aws::String m_networkSettingsArn;
+    bool m_networkSettingsArnHasBeenSet = false;
   };
 
 } // namespace Model

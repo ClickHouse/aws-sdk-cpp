@@ -28,7 +28,7 @@ namespace Model
   class ListMissionProfilesRequest : public GroundStationRequest
   {
   public:
-    AWS_GROUNDSTATION_API ListMissionProfilesRequest();
+    AWS_GROUNDSTATION_API ListMissionProfilesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,78 +41,31 @@ namespace Model
     AWS_GROUNDSTATION_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>Maximum number of mission profiles returned.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>Maximum number of mission profiles returned.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>Maximum number of mission profiles returned.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>Maximum number of mission profiles returned.</p>
-     */
     inline ListMissionProfilesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Next token returned in the request of a previous
      * <code>ListMissionProfiles</code> call. Used to get the next page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>Next token returned in the request of a previous
-     * <code>ListMissionProfiles</code> call. Used to get the next page of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>Next token returned in the request of a previous
-     * <code>ListMissionProfiles</code> call. Used to get the next page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>Next token returned in the request of a previous
-     * <code>ListMissionProfiles</code> call. Used to get the next page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>Next token returned in the request of a previous
-     * <code>ListMissionProfiles</code> call. Used to get the next page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>Next token returned in the request of a previous
-     * <code>ListMissionProfiles</code> call. Used to get the next page of results.</p>
-     */
-    inline ListMissionProfilesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Next token returned in the request of a previous
-     * <code>ListMissionProfiles</code> call. Used to get the next page of results.</p>
-     */
-    inline ListMissionProfilesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Next token returned in the request of a previous
-     * <code>ListMissionProfiles</code> call. Used to get the next page of results.</p>
-     */
-    inline ListMissionProfilesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListMissionProfilesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

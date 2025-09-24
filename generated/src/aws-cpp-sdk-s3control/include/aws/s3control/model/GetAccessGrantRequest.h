@@ -21,7 +21,7 @@ namespace Model
   class GetAccessGrantRequest : public S3ControlRequest
   {
   public:
-    AWS_S3CONTROL_API GetAccessGrantRequest();
+    AWS_S3CONTROL_API GetAccessGrantRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,95 +40,30 @@ namespace Model
      */
     AWS_S3CONTROL_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
-     * <p>The ID of the Amazon Web Services account that is making this request.</p>
+     * <p>The Amazon Web Services account ID of the S3 Access Grants instance.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that is making this request.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    GetAccessGrantRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that is making this request.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that is making this request.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that is making this request.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that is making this request.</p>
-     */
-    inline GetAccessGrantRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that is making this request.</p>
-     */
-    inline GetAccessGrantRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that is making this request.</p>
-     */
-    inline GetAccessGrantRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the access grant. S3 Access Grants auto-generates this ID when you
      * create the access grant.</p>
      */
-    inline const Aws::String& GetAccessGrantId() const{ return m_accessGrantId; }
-
-    /**
-     * <p>The ID of the access grant. S3 Access Grants auto-generates this ID when you
-     * create the access grant.</p>
-     */
+    inline const Aws::String& GetAccessGrantId() const { return m_accessGrantId; }
     inline bool AccessGrantIdHasBeenSet() const { return m_accessGrantIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the access grant. S3 Access Grants auto-generates this ID when you
-     * create the access grant.</p>
-     */
-    inline void SetAccessGrantId(const Aws::String& value) { m_accessGrantIdHasBeenSet = true; m_accessGrantId = value; }
-
-    /**
-     * <p>The ID of the access grant. S3 Access Grants auto-generates this ID when you
-     * create the access grant.</p>
-     */
-    inline void SetAccessGrantId(Aws::String&& value) { m_accessGrantIdHasBeenSet = true; m_accessGrantId = std::move(value); }
-
-    /**
-     * <p>The ID of the access grant. S3 Access Grants auto-generates this ID when you
-     * create the access grant.</p>
-     */
-    inline void SetAccessGrantId(const char* value) { m_accessGrantIdHasBeenSet = true; m_accessGrantId.assign(value); }
-
-    /**
-     * <p>The ID of the access grant. S3 Access Grants auto-generates this ID when you
-     * create the access grant.</p>
-     */
-    inline GetAccessGrantRequest& WithAccessGrantId(const Aws::String& value) { SetAccessGrantId(value); return *this;}
-
-    /**
-     * <p>The ID of the access grant. S3 Access Grants auto-generates this ID when you
-     * create the access grant.</p>
-     */
-    inline GetAccessGrantRequest& WithAccessGrantId(Aws::String&& value) { SetAccessGrantId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the access grant. S3 Access Grants auto-generates this ID when you
-     * create the access grant.</p>
-     */
-    inline GetAccessGrantRequest& WithAccessGrantId(const char* value) { SetAccessGrantId(value); return *this;}
-
+    template<typename AccessGrantIdT = Aws::String>
+    void SetAccessGrantId(AccessGrantIdT&& value) { m_accessGrantIdHasBeenSet = true; m_accessGrantId = std::forward<AccessGrantIdT>(value); }
+    template<typename AccessGrantIdT = Aws::String>
+    GetAccessGrantRequest& WithAccessGrantId(AccessGrantIdT&& value) { SetAccessGrantId(std::forward<AccessGrantIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

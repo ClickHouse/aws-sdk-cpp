@@ -22,7 +22,7 @@ namespace Model
   class BatchStartRecommendationsRequest : public DatabaseMigrationServiceRequest
   {
   public:
-    AWS_DATABASEMIGRATIONSERVICE_API BatchStartRecommendationsRequest();
+    AWS_DATABASEMIGRATIONSERVICE_API BatchStartRecommendationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,54 +35,20 @@ namespace Model
     AWS_DATABASEMIGRATIONSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Provides information about source databases to analyze. After this analysis,
      * Fleet Advisor recommends target engines for each source database.</p>
      */
-    inline const Aws::Vector<StartRecommendationsRequestEntry>& GetData() const{ return m_data; }
-
-    /**
-     * <p>Provides information about source databases to analyze. After this analysis,
-     * Fleet Advisor recommends target engines for each source database.</p>
-     */
+    inline const Aws::Vector<StartRecommendationsRequestEntry>& GetData() const { return m_data; }
     inline bool DataHasBeenSet() const { return m_dataHasBeenSet; }
-
-    /**
-     * <p>Provides information about source databases to analyze. After this analysis,
-     * Fleet Advisor recommends target engines for each source database.</p>
-     */
-    inline void SetData(const Aws::Vector<StartRecommendationsRequestEntry>& value) { m_dataHasBeenSet = true; m_data = value; }
-
-    /**
-     * <p>Provides information about source databases to analyze. After this analysis,
-     * Fleet Advisor recommends target engines for each source database.</p>
-     */
-    inline void SetData(Aws::Vector<StartRecommendationsRequestEntry>&& value) { m_dataHasBeenSet = true; m_data = std::move(value); }
-
-    /**
-     * <p>Provides information about source databases to analyze. After this analysis,
-     * Fleet Advisor recommends target engines for each source database.</p>
-     */
-    inline BatchStartRecommendationsRequest& WithData(const Aws::Vector<StartRecommendationsRequestEntry>& value) { SetData(value); return *this;}
-
-    /**
-     * <p>Provides information about source databases to analyze. After this analysis,
-     * Fleet Advisor recommends target engines for each source database.</p>
-     */
-    inline BatchStartRecommendationsRequest& WithData(Aws::Vector<StartRecommendationsRequestEntry>&& value) { SetData(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides information about source databases to analyze. After this analysis,
-     * Fleet Advisor recommends target engines for each source database.</p>
-     */
-    inline BatchStartRecommendationsRequest& AddData(const StartRecommendationsRequestEntry& value) { m_dataHasBeenSet = true; m_data.push_back(value); return *this; }
-
-    /**
-     * <p>Provides information about source databases to analyze. After this analysis,
-     * Fleet Advisor recommends target engines for each source database.</p>
-     */
-    inline BatchStartRecommendationsRequest& AddData(StartRecommendationsRequestEntry&& value) { m_dataHasBeenSet = true; m_data.push_back(std::move(value)); return *this; }
-
+    template<typename DataT = Aws::Vector<StartRecommendationsRequestEntry>>
+    void SetData(DataT&& value) { m_dataHasBeenSet = true; m_data = std::forward<DataT>(value); }
+    template<typename DataT = Aws::Vector<StartRecommendationsRequestEntry>>
+    BatchStartRecommendationsRequest& WithData(DataT&& value) { SetData(std::forward<DataT>(value)); return *this;}
+    template<typename DataT = StartRecommendationsRequestEntry>
+    BatchStartRecommendationsRequest& AddData(DataT&& value) { m_dataHasBeenSet = true; m_data.emplace_back(std::forward<DataT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<StartRecommendationsRequestEntry> m_data;

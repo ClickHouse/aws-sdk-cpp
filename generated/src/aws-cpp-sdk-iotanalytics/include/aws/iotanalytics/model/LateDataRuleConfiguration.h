@@ -32,42 +32,23 @@ namespace Model
   class LateDataRuleConfiguration
   {
   public:
-    AWS_IOTANALYTICS_API LateDataRuleConfiguration();
+    AWS_IOTANALYTICS_API LateDataRuleConfiguration() = default;
     AWS_IOTANALYTICS_API LateDataRuleConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API LateDataRuleConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The information needed to configure a delta time session window.</p>
      */
-    inline const DeltaTimeSessionWindowConfiguration& GetDeltaTimeSessionWindowConfiguration() const{ return m_deltaTimeSessionWindowConfiguration; }
-
-    /**
-     * <p>The information needed to configure a delta time session window.</p>
-     */
+    inline const DeltaTimeSessionWindowConfiguration& GetDeltaTimeSessionWindowConfiguration() const { return m_deltaTimeSessionWindowConfiguration; }
     inline bool DeltaTimeSessionWindowConfigurationHasBeenSet() const { return m_deltaTimeSessionWindowConfigurationHasBeenSet; }
-
-    /**
-     * <p>The information needed to configure a delta time session window.</p>
-     */
-    inline void SetDeltaTimeSessionWindowConfiguration(const DeltaTimeSessionWindowConfiguration& value) { m_deltaTimeSessionWindowConfigurationHasBeenSet = true; m_deltaTimeSessionWindowConfiguration = value; }
-
-    /**
-     * <p>The information needed to configure a delta time session window.</p>
-     */
-    inline void SetDeltaTimeSessionWindowConfiguration(DeltaTimeSessionWindowConfiguration&& value) { m_deltaTimeSessionWindowConfigurationHasBeenSet = true; m_deltaTimeSessionWindowConfiguration = std::move(value); }
-
-    /**
-     * <p>The information needed to configure a delta time session window.</p>
-     */
-    inline LateDataRuleConfiguration& WithDeltaTimeSessionWindowConfiguration(const DeltaTimeSessionWindowConfiguration& value) { SetDeltaTimeSessionWindowConfiguration(value); return *this;}
-
-    /**
-     * <p>The information needed to configure a delta time session window.</p>
-     */
-    inline LateDataRuleConfiguration& WithDeltaTimeSessionWindowConfiguration(DeltaTimeSessionWindowConfiguration&& value) { SetDeltaTimeSessionWindowConfiguration(std::move(value)); return *this;}
-
+    template<typename DeltaTimeSessionWindowConfigurationT = DeltaTimeSessionWindowConfiguration>
+    void SetDeltaTimeSessionWindowConfiguration(DeltaTimeSessionWindowConfigurationT&& value) { m_deltaTimeSessionWindowConfigurationHasBeenSet = true; m_deltaTimeSessionWindowConfiguration = std::forward<DeltaTimeSessionWindowConfigurationT>(value); }
+    template<typename DeltaTimeSessionWindowConfigurationT = DeltaTimeSessionWindowConfiguration>
+    LateDataRuleConfiguration& WithDeltaTimeSessionWindowConfiguration(DeltaTimeSessionWindowConfigurationT&& value) { SetDeltaTimeSessionWindowConfiguration(std::forward<DeltaTimeSessionWindowConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     DeltaTimeSessionWindowConfiguration m_deltaTimeSessionWindowConfiguration;

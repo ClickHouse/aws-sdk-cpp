@@ -24,7 +24,7 @@ namespace Model
   class ModifyRedshiftIdcApplicationRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API ModifyRedshiftIdcApplicationRequest();
+    AWS_REDSHIFT_API ModifyRedshiftIdcApplicationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,307 +39,88 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ARN for the Redshift application that integrates with IAM Identity
      * Center.</p>
      */
-    inline const Aws::String& GetRedshiftIdcApplicationArn() const{ return m_redshiftIdcApplicationArn; }
-
-    /**
-     * <p>The ARN for the Redshift application that integrates with IAM Identity
-     * Center.</p>
-     */
+    inline const Aws::String& GetRedshiftIdcApplicationArn() const { return m_redshiftIdcApplicationArn; }
     inline bool RedshiftIdcApplicationArnHasBeenSet() const { return m_redshiftIdcApplicationArnHasBeenSet; }
+    template<typename RedshiftIdcApplicationArnT = Aws::String>
+    void SetRedshiftIdcApplicationArn(RedshiftIdcApplicationArnT&& value) { m_redshiftIdcApplicationArnHasBeenSet = true; m_redshiftIdcApplicationArn = std::forward<RedshiftIdcApplicationArnT>(value); }
+    template<typename RedshiftIdcApplicationArnT = Aws::String>
+    ModifyRedshiftIdcApplicationRequest& WithRedshiftIdcApplicationArn(RedshiftIdcApplicationArnT&& value) { SetRedshiftIdcApplicationArn(std::forward<RedshiftIdcApplicationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN for the Redshift application that integrates with IAM Identity
-     * Center.</p>
-     */
-    inline void SetRedshiftIdcApplicationArn(const Aws::String& value) { m_redshiftIdcApplicationArnHasBeenSet = true; m_redshiftIdcApplicationArn = value; }
-
-    /**
-     * <p>The ARN for the Redshift application that integrates with IAM Identity
-     * Center.</p>
-     */
-    inline void SetRedshiftIdcApplicationArn(Aws::String&& value) { m_redshiftIdcApplicationArnHasBeenSet = true; m_redshiftIdcApplicationArn = std::move(value); }
-
-    /**
-     * <p>The ARN for the Redshift application that integrates with IAM Identity
-     * Center.</p>
-     */
-    inline void SetRedshiftIdcApplicationArn(const char* value) { m_redshiftIdcApplicationArnHasBeenSet = true; m_redshiftIdcApplicationArn.assign(value); }
-
-    /**
-     * <p>The ARN for the Redshift application that integrates with IAM Identity
-     * Center.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithRedshiftIdcApplicationArn(const Aws::String& value) { SetRedshiftIdcApplicationArn(value); return *this;}
-
-    /**
-     * <p>The ARN for the Redshift application that integrates with IAM Identity
-     * Center.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithRedshiftIdcApplicationArn(Aws::String&& value) { SetRedshiftIdcApplicationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN for the Redshift application that integrates with IAM Identity
-     * Center.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithRedshiftIdcApplicationArn(const char* value) { SetRedshiftIdcApplicationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The namespace for the Amazon Redshift IAM Identity Center application to
      * change. It determines which managed application verifies the connection
      * token.</p>
      */
-    inline const Aws::String& GetIdentityNamespace() const{ return m_identityNamespace; }
-
-    /**
-     * <p>The namespace for the Amazon Redshift IAM Identity Center application to
-     * change. It determines which managed application verifies the connection
-     * token.</p>
-     */
+    inline const Aws::String& GetIdentityNamespace() const { return m_identityNamespace; }
     inline bool IdentityNamespaceHasBeenSet() const { return m_identityNamespaceHasBeenSet; }
+    template<typename IdentityNamespaceT = Aws::String>
+    void SetIdentityNamespace(IdentityNamespaceT&& value) { m_identityNamespaceHasBeenSet = true; m_identityNamespace = std::forward<IdentityNamespaceT>(value); }
+    template<typename IdentityNamespaceT = Aws::String>
+    ModifyRedshiftIdcApplicationRequest& WithIdentityNamespace(IdentityNamespaceT&& value) { SetIdentityNamespace(std::forward<IdentityNamespaceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The namespace for the Amazon Redshift IAM Identity Center application to
-     * change. It determines which managed application verifies the connection
-     * token.</p>
-     */
-    inline void SetIdentityNamespace(const Aws::String& value) { m_identityNamespaceHasBeenSet = true; m_identityNamespace = value; }
-
-    /**
-     * <p>The namespace for the Amazon Redshift IAM Identity Center application to
-     * change. It determines which managed application verifies the connection
-     * token.</p>
-     */
-    inline void SetIdentityNamespace(Aws::String&& value) { m_identityNamespaceHasBeenSet = true; m_identityNamespace = std::move(value); }
-
-    /**
-     * <p>The namespace for the Amazon Redshift IAM Identity Center application to
-     * change. It determines which managed application verifies the connection
-     * token.</p>
-     */
-    inline void SetIdentityNamespace(const char* value) { m_identityNamespaceHasBeenSet = true; m_identityNamespace.assign(value); }
-
-    /**
-     * <p>The namespace for the Amazon Redshift IAM Identity Center application to
-     * change. It determines which managed application verifies the connection
-     * token.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithIdentityNamespace(const Aws::String& value) { SetIdentityNamespace(value); return *this;}
-
-    /**
-     * <p>The namespace for the Amazon Redshift IAM Identity Center application to
-     * change. It determines which managed application verifies the connection
-     * token.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithIdentityNamespace(Aws::String&& value) { SetIdentityNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>The namespace for the Amazon Redshift IAM Identity Center application to
-     * change. It determines which managed application verifies the connection
-     * token.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithIdentityNamespace(const char* value) { SetIdentityNamespace(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IAM role ARN associated with the Amazon Redshift IAM Identity Center
      * application to change. It has the required permissions to be assumed and invoke
      * the IDC Identity Center API.</p>
      */
-    inline const Aws::String& GetIamRoleArn() const{ return m_iamRoleArn; }
-
-    /**
-     * <p>The IAM role ARN associated with the Amazon Redshift IAM Identity Center
-     * application to change. It has the required permissions to be assumed and invoke
-     * the IDC Identity Center API.</p>
-     */
+    inline const Aws::String& GetIamRoleArn() const { return m_iamRoleArn; }
     inline bool IamRoleArnHasBeenSet() const { return m_iamRoleArnHasBeenSet; }
+    template<typename IamRoleArnT = Aws::String>
+    void SetIamRoleArn(IamRoleArnT&& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = std::forward<IamRoleArnT>(value); }
+    template<typename IamRoleArnT = Aws::String>
+    ModifyRedshiftIdcApplicationRequest& WithIamRoleArn(IamRoleArnT&& value) { SetIamRoleArn(std::forward<IamRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM role ARN associated with the Amazon Redshift IAM Identity Center
-     * application to change. It has the required permissions to be assumed and invoke
-     * the IDC Identity Center API.</p>
-     */
-    inline void SetIamRoleArn(const Aws::String& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = value; }
-
-    /**
-     * <p>The IAM role ARN associated with the Amazon Redshift IAM Identity Center
-     * application to change. It has the required permissions to be assumed and invoke
-     * the IDC Identity Center API.</p>
-     */
-    inline void SetIamRoleArn(Aws::String&& value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn = std::move(value); }
-
-    /**
-     * <p>The IAM role ARN associated with the Amazon Redshift IAM Identity Center
-     * application to change. It has the required permissions to be assumed and invoke
-     * the IDC Identity Center API.</p>
-     */
-    inline void SetIamRoleArn(const char* value) { m_iamRoleArnHasBeenSet = true; m_iamRoleArn.assign(value); }
-
-    /**
-     * <p>The IAM role ARN associated with the Amazon Redshift IAM Identity Center
-     * application to change. It has the required permissions to be assumed and invoke
-     * the IDC Identity Center API.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithIamRoleArn(const Aws::String& value) { SetIamRoleArn(value); return *this;}
-
-    /**
-     * <p>The IAM role ARN associated with the Amazon Redshift IAM Identity Center
-     * application to change. It has the required permissions to be assumed and invoke
-     * the IDC Identity Center API.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithIamRoleArn(Aws::String&& value) { SetIamRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The IAM role ARN associated with the Amazon Redshift IAM Identity Center
-     * application to change. It has the required permissions to be assumed and invoke
-     * the IDC Identity Center API.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithIamRoleArn(const char* value) { SetIamRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display name for the Amazon Redshift IAM Identity Center application to
      * change. It appears on the console.</p>
      */
-    inline const Aws::String& GetIdcDisplayName() const{ return m_idcDisplayName; }
-
-    /**
-     * <p>The display name for the Amazon Redshift IAM Identity Center application to
-     * change. It appears on the console.</p>
-     */
+    inline const Aws::String& GetIdcDisplayName() const { return m_idcDisplayName; }
     inline bool IdcDisplayNameHasBeenSet() const { return m_idcDisplayNameHasBeenSet; }
+    template<typename IdcDisplayNameT = Aws::String>
+    void SetIdcDisplayName(IdcDisplayNameT&& value) { m_idcDisplayNameHasBeenSet = true; m_idcDisplayName = std::forward<IdcDisplayNameT>(value); }
+    template<typename IdcDisplayNameT = Aws::String>
+    ModifyRedshiftIdcApplicationRequest& WithIdcDisplayName(IdcDisplayNameT&& value) { SetIdcDisplayName(std::forward<IdcDisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display name for the Amazon Redshift IAM Identity Center application to
-     * change. It appears on the console.</p>
-     */
-    inline void SetIdcDisplayName(const Aws::String& value) { m_idcDisplayNameHasBeenSet = true; m_idcDisplayName = value; }
-
-    /**
-     * <p>The display name for the Amazon Redshift IAM Identity Center application to
-     * change. It appears on the console.</p>
-     */
-    inline void SetIdcDisplayName(Aws::String&& value) { m_idcDisplayNameHasBeenSet = true; m_idcDisplayName = std::move(value); }
-
-    /**
-     * <p>The display name for the Amazon Redshift IAM Identity Center application to
-     * change. It appears on the console.</p>
-     */
-    inline void SetIdcDisplayName(const char* value) { m_idcDisplayNameHasBeenSet = true; m_idcDisplayName.assign(value); }
-
-    /**
-     * <p>The display name for the Amazon Redshift IAM Identity Center application to
-     * change. It appears on the console.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithIdcDisplayName(const Aws::String& value) { SetIdcDisplayName(value); return *this;}
-
-    /**
-     * <p>The display name for the Amazon Redshift IAM Identity Center application to
-     * change. It appears on the console.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithIdcDisplayName(Aws::String&& value) { SetIdcDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The display name for the Amazon Redshift IAM Identity Center application to
-     * change. It appears on the console.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithIdcDisplayName(const char* value) { SetIdcDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The authorized token issuer list for the Amazon Redshift IAM Identity Center
      * application to change.</p>
      */
-    inline const Aws::Vector<AuthorizedTokenIssuer>& GetAuthorizedTokenIssuerList() const{ return m_authorizedTokenIssuerList; }
-
-    /**
-     * <p>The authorized token issuer list for the Amazon Redshift IAM Identity Center
-     * application to change.</p>
-     */
+    inline const Aws::Vector<AuthorizedTokenIssuer>& GetAuthorizedTokenIssuerList() const { return m_authorizedTokenIssuerList; }
     inline bool AuthorizedTokenIssuerListHasBeenSet() const { return m_authorizedTokenIssuerListHasBeenSet; }
+    template<typename AuthorizedTokenIssuerListT = Aws::Vector<AuthorizedTokenIssuer>>
+    void SetAuthorizedTokenIssuerList(AuthorizedTokenIssuerListT&& value) { m_authorizedTokenIssuerListHasBeenSet = true; m_authorizedTokenIssuerList = std::forward<AuthorizedTokenIssuerListT>(value); }
+    template<typename AuthorizedTokenIssuerListT = Aws::Vector<AuthorizedTokenIssuer>>
+    ModifyRedshiftIdcApplicationRequest& WithAuthorizedTokenIssuerList(AuthorizedTokenIssuerListT&& value) { SetAuthorizedTokenIssuerList(std::forward<AuthorizedTokenIssuerListT>(value)); return *this;}
+    template<typename AuthorizedTokenIssuerListT = AuthorizedTokenIssuer>
+    ModifyRedshiftIdcApplicationRequest& AddAuthorizedTokenIssuerList(AuthorizedTokenIssuerListT&& value) { m_authorizedTokenIssuerListHasBeenSet = true; m_authorizedTokenIssuerList.emplace_back(std::forward<AuthorizedTokenIssuerListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The authorized token issuer list for the Amazon Redshift IAM Identity Center
-     * application to change.</p>
-     */
-    inline void SetAuthorizedTokenIssuerList(const Aws::Vector<AuthorizedTokenIssuer>& value) { m_authorizedTokenIssuerListHasBeenSet = true; m_authorizedTokenIssuerList = value; }
-
-    /**
-     * <p>The authorized token issuer list for the Amazon Redshift IAM Identity Center
-     * application to change.</p>
-     */
-    inline void SetAuthorizedTokenIssuerList(Aws::Vector<AuthorizedTokenIssuer>&& value) { m_authorizedTokenIssuerListHasBeenSet = true; m_authorizedTokenIssuerList = std::move(value); }
-
-    /**
-     * <p>The authorized token issuer list for the Amazon Redshift IAM Identity Center
-     * application to change.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithAuthorizedTokenIssuerList(const Aws::Vector<AuthorizedTokenIssuer>& value) { SetAuthorizedTokenIssuerList(value); return *this;}
-
-    /**
-     * <p>The authorized token issuer list for the Amazon Redshift IAM Identity Center
-     * application to change.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithAuthorizedTokenIssuerList(Aws::Vector<AuthorizedTokenIssuer>&& value) { SetAuthorizedTokenIssuerList(std::move(value)); return *this;}
-
-    /**
-     * <p>The authorized token issuer list for the Amazon Redshift IAM Identity Center
-     * application to change.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& AddAuthorizedTokenIssuerList(const AuthorizedTokenIssuer& value) { m_authorizedTokenIssuerListHasBeenSet = true; m_authorizedTokenIssuerList.push_back(value); return *this; }
-
-    /**
-     * <p>The authorized token issuer list for the Amazon Redshift IAM Identity Center
-     * application to change.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& AddAuthorizedTokenIssuerList(AuthorizedTokenIssuer&& value) { m_authorizedTokenIssuerListHasBeenSet = true; m_authorizedTokenIssuerList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A collection of service integrations associated with the application.</p>
      */
-    inline const Aws::Vector<ServiceIntegrationsUnion>& GetServiceIntegrations() const{ return m_serviceIntegrations; }
-
-    /**
-     * <p>A collection of service integrations associated with the application.</p>
-     */
+    inline const Aws::Vector<ServiceIntegrationsUnion>& GetServiceIntegrations() const { return m_serviceIntegrations; }
     inline bool ServiceIntegrationsHasBeenSet() const { return m_serviceIntegrationsHasBeenSet; }
-
-    /**
-     * <p>A collection of service integrations associated with the application.</p>
-     */
-    inline void SetServiceIntegrations(const Aws::Vector<ServiceIntegrationsUnion>& value) { m_serviceIntegrationsHasBeenSet = true; m_serviceIntegrations = value; }
-
-    /**
-     * <p>A collection of service integrations associated with the application.</p>
-     */
-    inline void SetServiceIntegrations(Aws::Vector<ServiceIntegrationsUnion>&& value) { m_serviceIntegrationsHasBeenSet = true; m_serviceIntegrations = std::move(value); }
-
-    /**
-     * <p>A collection of service integrations associated with the application.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithServiceIntegrations(const Aws::Vector<ServiceIntegrationsUnion>& value) { SetServiceIntegrations(value); return *this;}
-
-    /**
-     * <p>A collection of service integrations associated with the application.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& WithServiceIntegrations(Aws::Vector<ServiceIntegrationsUnion>&& value) { SetServiceIntegrations(std::move(value)); return *this;}
-
-    /**
-     * <p>A collection of service integrations associated with the application.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& AddServiceIntegrations(const ServiceIntegrationsUnion& value) { m_serviceIntegrationsHasBeenSet = true; m_serviceIntegrations.push_back(value); return *this; }
-
-    /**
-     * <p>A collection of service integrations associated with the application.</p>
-     */
-    inline ModifyRedshiftIdcApplicationRequest& AddServiceIntegrations(ServiceIntegrationsUnion&& value) { m_serviceIntegrationsHasBeenSet = true; m_serviceIntegrations.push_back(std::move(value)); return *this; }
-
+    template<typename ServiceIntegrationsT = Aws::Vector<ServiceIntegrationsUnion>>
+    void SetServiceIntegrations(ServiceIntegrationsT&& value) { m_serviceIntegrationsHasBeenSet = true; m_serviceIntegrations = std::forward<ServiceIntegrationsT>(value); }
+    template<typename ServiceIntegrationsT = Aws::Vector<ServiceIntegrationsUnion>>
+    ModifyRedshiftIdcApplicationRequest& WithServiceIntegrations(ServiceIntegrationsT&& value) { SetServiceIntegrations(std::forward<ServiceIntegrationsT>(value)); return *this;}
+    template<typename ServiceIntegrationsT = ServiceIntegrationsUnion>
+    ModifyRedshiftIdcApplicationRequest& AddServiceIntegrations(ServiceIntegrationsT&& value) { m_serviceIntegrationsHasBeenSet = true; m_serviceIntegrations.emplace_back(std::forward<ServiceIntegrationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_redshiftIdcApplicationArn;

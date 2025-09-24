@@ -18,19 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-AnalyticsUtteranceResult::AnalyticsUtteranceResult() : 
-    m_binKeysHasBeenSet(false),
-    m_groupByKeysHasBeenSet(false),
-    m_metricsResultsHasBeenSet(false),
-    m_attributeResultsHasBeenSet(false)
-{
-}
-
-AnalyticsUtteranceResult::AnalyticsUtteranceResult(JsonView jsonValue) : 
-    m_binKeysHasBeenSet(false),
-    m_groupByKeysHasBeenSet(false),
-    m_metricsResultsHasBeenSet(false),
-    m_attributeResultsHasBeenSet(false)
+AnalyticsUtteranceResult::AnalyticsUtteranceResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ AnalyticsUtteranceResult& AnalyticsUtteranceResult::operator =(JsonView jsonValu
     }
     m_binKeysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("groupByKeys"))
   {
     Aws::Utils::Array<JsonView> groupByKeysJsonList = jsonValue.GetArray("groupByKeys");
@@ -56,7 +43,6 @@ AnalyticsUtteranceResult& AnalyticsUtteranceResult::operator =(JsonView jsonValu
     }
     m_groupByKeysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("metricsResults"))
   {
     Aws::Utils::Array<JsonView> metricsResultsJsonList = jsonValue.GetArray("metricsResults");
@@ -66,7 +52,6 @@ AnalyticsUtteranceResult& AnalyticsUtteranceResult::operator =(JsonView jsonValu
     }
     m_metricsResultsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("attributeResults"))
   {
     Aws::Utils::Array<JsonView> attributeResultsJsonList = jsonValue.GetArray("attributeResults");
@@ -76,7 +61,6 @@ AnalyticsUtteranceResult& AnalyticsUtteranceResult::operator =(JsonView jsonValu
     }
     m_attributeResultsHasBeenSet = true;
   }
-
   return *this;
 }
 

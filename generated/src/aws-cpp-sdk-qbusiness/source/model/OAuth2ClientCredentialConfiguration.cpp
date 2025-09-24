@@ -18,35 +18,33 @@ namespace QBusiness
 namespace Model
 {
 
-OAuth2ClientCredentialConfiguration::OAuth2ClientCredentialConfiguration() : 
-    m_roleArnHasBeenSet(false),
-    m_secretArnHasBeenSet(false)
-{
-}
-
-OAuth2ClientCredentialConfiguration::OAuth2ClientCredentialConfiguration(JsonView jsonValue) : 
-    m_roleArnHasBeenSet(false),
-    m_secretArnHasBeenSet(false)
+OAuth2ClientCredentialConfiguration::OAuth2ClientCredentialConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 OAuth2ClientCredentialConfiguration& OAuth2ClientCredentialConfiguration::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("roleArn"))
-  {
-    m_roleArn = jsonValue.GetString("roleArn");
-
-    m_roleArnHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("secretArn"))
   {
     m_secretArn = jsonValue.GetString("secretArn");
-
     m_secretArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("roleArn"))
+  {
+    m_roleArn = jsonValue.GetString("roleArn");
+    m_roleArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("authorizationUrl"))
+  {
+    m_authorizationUrl = jsonValue.GetString("authorizationUrl");
+    m_authorizationUrlHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("tokenUrl"))
+  {
+    m_tokenUrl = jsonValue.GetString("tokenUrl");
+    m_tokenUrlHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +52,27 @@ JsonValue OAuth2ClientCredentialConfiguration::Jsonize() const
 {
   JsonValue payload;
 
+  if(m_secretArnHasBeenSet)
+  {
+   payload.WithString("secretArn", m_secretArn);
+
+  }
+
   if(m_roleArnHasBeenSet)
   {
    payload.WithString("roleArn", m_roleArn);
 
   }
 
-  if(m_secretArnHasBeenSet)
+  if(m_authorizationUrlHasBeenSet)
   {
-   payload.WithString("secretArn", m_secretArn);
+   payload.WithString("authorizationUrl", m_authorizationUrl);
+
+  }
+
+  if(m_tokenUrlHasBeenSet)
+  {
+   payload.WithString("tokenUrl", m_tokenUrl);
 
   }
 

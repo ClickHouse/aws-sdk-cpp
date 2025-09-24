@@ -18,23 +18,7 @@ namespace CloudWatchLogs
 namespace Model
 {
 
-PatternToken::PatternToken() : 
-    m_dynamicTokenPosition(0),
-    m_dynamicTokenPositionHasBeenSet(false),
-    m_isDynamic(false),
-    m_isDynamicHasBeenSet(false),
-    m_tokenStringHasBeenSet(false),
-    m_enumerationsHasBeenSet(false)
-{
-}
-
-PatternToken::PatternToken(JsonView jsonValue) : 
-    m_dynamicTokenPosition(0),
-    m_dynamicTokenPositionHasBeenSet(false),
-    m_isDynamic(false),
-    m_isDynamicHasBeenSet(false),
-    m_tokenStringHasBeenSet(false),
-    m_enumerationsHasBeenSet(false)
+PatternToken::PatternToken(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,24 +28,18 @@ PatternToken& PatternToken::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("dynamicTokenPosition"))
   {
     m_dynamicTokenPosition = jsonValue.GetInteger("dynamicTokenPosition");
-
     m_dynamicTokenPositionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("isDynamic"))
   {
     m_isDynamic = jsonValue.GetBool("isDynamic");
-
     m_isDynamicHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tokenString"))
   {
     m_tokenString = jsonValue.GetString("tokenString");
-
     m_tokenStringHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("enumerations"))
   {
     Aws::Map<Aws::String, JsonView> enumerationsJsonMap = jsonValue.GetObject("enumerations").GetAllObjects();
@@ -71,7 +49,11 @@ PatternToken& PatternToken::operator =(JsonView jsonValue)
     }
     m_enumerationsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("inferredTokenName"))
+  {
+    m_inferredTokenName = jsonValue.GetString("inferredTokenName");
+    m_inferredTokenNameHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -105,6 +87,12 @@ JsonValue PatternToken::Jsonize() const
      enumerationsJsonMap.WithInt64(enumerationsItem.first, enumerationsItem.second);
    }
    payload.WithObject("enumerations", std::move(enumerationsJsonMap));
+
+  }
+
+  if(m_inferredTokenNameHasBeenSet)
+  {
+   payload.WithString("inferredTokenName", m_inferredTokenName);
 
   }
 

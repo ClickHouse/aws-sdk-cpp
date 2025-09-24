@@ -28,63 +28,37 @@ namespace Model
   class DescribeJobTemplateResult
   {
   public:
-    AWS_EMRCONTAINERS_API DescribeJobTemplateResult();
+    AWS_EMRCONTAINERS_API DescribeJobTemplateResult() = default;
     AWS_EMRCONTAINERS_API DescribeJobTemplateResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EMRCONTAINERS_API DescribeJobTemplateResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>This output displays information about the specified job template.</p>
      */
-    inline const JobTemplate& GetJobTemplate() const{ return m_jobTemplate; }
+    inline const JobTemplate& GetJobTemplate() const { return m_jobTemplate; }
+    template<typename JobTemplateT = JobTemplate>
+    void SetJobTemplate(JobTemplateT&& value) { m_jobTemplateHasBeenSet = true; m_jobTemplate = std::forward<JobTemplateT>(value); }
+    template<typename JobTemplateT = JobTemplate>
+    DescribeJobTemplateResult& WithJobTemplate(JobTemplateT&& value) { SetJobTemplate(std::forward<JobTemplateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This output displays information about the specified job template.</p>
-     */
-    inline void SetJobTemplate(const JobTemplate& value) { m_jobTemplate = value; }
-
-    /**
-     * <p>This output displays information about the specified job template.</p>
-     */
-    inline void SetJobTemplate(JobTemplate&& value) { m_jobTemplate = std::move(value); }
-
-    /**
-     * <p>This output displays information about the specified job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithJobTemplate(const JobTemplate& value) { SetJobTemplate(value); return *this;}
-
-    /**
-     * <p>This output displays information about the specified job template.</p>
-     */
-    inline DescribeJobTemplateResult& WithJobTemplate(JobTemplate&& value) { SetJobTemplate(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeJobTemplateResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeJobTemplateResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeJobTemplateResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeJobTemplateResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     JobTemplate m_jobTemplate;
+    bool m_jobTemplateHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

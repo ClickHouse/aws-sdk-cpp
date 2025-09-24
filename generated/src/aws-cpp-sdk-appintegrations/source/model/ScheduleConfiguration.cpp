@@ -18,17 +18,7 @@ namespace AppIntegrationsService
 namespace Model
 {
 
-ScheduleConfiguration::ScheduleConfiguration() : 
-    m_firstExecutionFromHasBeenSet(false),
-    m_objectHasBeenSet(false),
-    m_scheduleExpressionHasBeenSet(false)
-{
-}
-
-ScheduleConfiguration::ScheduleConfiguration(JsonView jsonValue) : 
-    m_firstExecutionFromHasBeenSet(false),
-    m_objectHasBeenSet(false),
-    m_scheduleExpressionHasBeenSet(false)
+ScheduleConfiguration::ScheduleConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ScheduleConfiguration& ScheduleConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FirstExecutionFrom"))
   {
     m_firstExecutionFrom = jsonValue.GetString("FirstExecutionFrom");
-
     m_firstExecutionFromHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Object"))
   {
     m_object = jsonValue.GetString("Object");
-
     m_objectHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ScheduleExpression"))
   {
     m_scheduleExpression = jsonValue.GetString("ScheduleExpression");
-
     m_scheduleExpressionHasBeenSet = true;
   }
-
   return *this;
 }
 

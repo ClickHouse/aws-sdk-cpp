@@ -18,35 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-HubContentInfo::HubContentInfo() : 
-    m_hubContentNameHasBeenSet(false),
-    m_hubContentArnHasBeenSet(false),
-    m_hubContentVersionHasBeenSet(false),
-    m_hubContentType(HubContentType::NOT_SET),
-    m_hubContentTypeHasBeenSet(false),
-    m_documentSchemaVersionHasBeenSet(false),
-    m_hubContentDisplayNameHasBeenSet(false),
-    m_hubContentDescriptionHasBeenSet(false),
-    m_hubContentSearchKeywordsHasBeenSet(false),
-    m_hubContentStatus(HubContentStatus::NOT_SET),
-    m_hubContentStatusHasBeenSet(false),
-    m_creationTimeHasBeenSet(false)
-{
-}
-
-HubContentInfo::HubContentInfo(JsonView jsonValue) : 
-    m_hubContentNameHasBeenSet(false),
-    m_hubContentArnHasBeenSet(false),
-    m_hubContentVersionHasBeenSet(false),
-    m_hubContentType(HubContentType::NOT_SET),
-    m_hubContentTypeHasBeenSet(false),
-    m_documentSchemaVersionHasBeenSet(false),
-    m_hubContentDisplayNameHasBeenSet(false),
-    m_hubContentDescriptionHasBeenSet(false),
-    m_hubContentSearchKeywordsHasBeenSet(false),
-    m_hubContentStatus(HubContentStatus::NOT_SET),
-    m_hubContentStatusHasBeenSet(false),
-    m_creationTimeHasBeenSet(false)
+HubContentInfo::HubContentInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,52 +28,48 @@ HubContentInfo& HubContentInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("HubContentName"))
   {
     m_hubContentName = jsonValue.GetString("HubContentName");
-
     m_hubContentNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HubContentArn"))
   {
     m_hubContentArn = jsonValue.GetString("HubContentArn");
-
     m_hubContentArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SageMakerPublicHubContentArn"))
+  {
+    m_sageMakerPublicHubContentArn = jsonValue.GetString("SageMakerPublicHubContentArn");
+    m_sageMakerPublicHubContentArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("HubContentVersion"))
   {
     m_hubContentVersion = jsonValue.GetString("HubContentVersion");
-
     m_hubContentVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HubContentType"))
   {
     m_hubContentType = HubContentTypeMapper::GetHubContentTypeForName(jsonValue.GetString("HubContentType"));
-
     m_hubContentTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DocumentSchemaVersion"))
   {
     m_documentSchemaVersion = jsonValue.GetString("DocumentSchemaVersion");
-
     m_documentSchemaVersionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HubContentDisplayName"))
   {
     m_hubContentDisplayName = jsonValue.GetString("HubContentDisplayName");
-
     m_hubContentDisplayNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HubContentDescription"))
   {
     m_hubContentDescription = jsonValue.GetString("HubContentDescription");
-
     m_hubContentDescriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("SupportStatus"))
+  {
+    m_supportStatus = HubContentSupportStatusMapper::GetHubContentSupportStatusForName(jsonValue.GetString("SupportStatus"));
+    m_supportStatusHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("HubContentSearchKeywords"))
   {
     Aws::Utils::Array<JsonView> hubContentSearchKeywordsJsonList = jsonValue.GetArray("HubContentSearchKeywords");
@@ -111,21 +79,21 @@ HubContentInfo& HubContentInfo::operator =(JsonView jsonValue)
     }
     m_hubContentSearchKeywordsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HubContentStatus"))
   {
     m_hubContentStatus = HubContentStatusMapper::GetHubContentStatusForName(jsonValue.GetString("HubContentStatus"));
-
     m_hubContentStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreationTime"))
   {
     m_creationTime = jsonValue.GetDouble("CreationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("OriginalCreationTime"))
+  {
+    m_originalCreationTime = jsonValue.GetDouble("OriginalCreationTime");
+    m_originalCreationTimeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -142,6 +110,12 @@ JsonValue HubContentInfo::Jsonize() const
   if(m_hubContentArnHasBeenSet)
   {
    payload.WithString("HubContentArn", m_hubContentArn);
+
+  }
+
+  if(m_sageMakerPublicHubContentArnHasBeenSet)
+  {
+   payload.WithString("SageMakerPublicHubContentArn", m_sageMakerPublicHubContentArn);
 
   }
 
@@ -174,6 +148,11 @@ JsonValue HubContentInfo::Jsonize() const
 
   }
 
+  if(m_supportStatusHasBeenSet)
+  {
+   payload.WithString("SupportStatus", HubContentSupportStatusMapper::GetNameForHubContentSupportStatus(m_supportStatus));
+  }
+
   if(m_hubContentSearchKeywordsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> hubContentSearchKeywordsJsonList(m_hubContentSearchKeywords.size());
@@ -193,6 +172,11 @@ JsonValue HubContentInfo::Jsonize() const
   if(m_creationTimeHasBeenSet)
   {
    payload.WithDouble("CreationTime", m_creationTime.SecondsWithMSPrecision());
+  }
+
+  if(m_originalCreationTimeHasBeenSet)
+  {
+   payload.WithDouble("OriginalCreationTime", m_originalCreationTime.SecondsWithMSPrecision());
   }
 
   return payload;

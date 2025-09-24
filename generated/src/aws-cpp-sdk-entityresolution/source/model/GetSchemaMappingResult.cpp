@@ -17,13 +17,7 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-GetSchemaMappingResult::GetSchemaMappingResult() : 
-    m_hasWorkflows(false)
-{
-}
-
-GetSchemaMappingResult::GetSchemaMappingResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
-    m_hasWorkflows(false)
+GetSchemaMappingResult::GetSchemaMappingResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
 }
@@ -31,24 +25,21 @@ GetSchemaMappingResult::GetSchemaMappingResult(const Aws::AmazonWebServiceResult
 GetSchemaMappingResult& GetSchemaMappingResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("createdAt"))
+  if(jsonValue.ValueExists("schemaName"))
   {
-    m_createdAt = jsonValue.GetDouble("createdAt");
-
+    m_schemaName = jsonValue.GetString("schemaName");
+    m_schemaNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("schemaArn"))
+  {
+    m_schemaArn = jsonValue.GetString("schemaArn");
+    m_schemaArnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
+    m_descriptionHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("hasWorkflows"))
-  {
-    m_hasWorkflows = jsonValue.GetBool("hasWorkflows");
-
-  }
-
   if(jsonValue.ValueExists("mappedInputFields"))
   {
     Aws::Utils::Array<JsonView> mappedInputFieldsJsonList = jsonValue.GetArray("mappedInputFields");
@@ -56,20 +47,18 @@ GetSchemaMappingResult& GetSchemaMappingResult::operator =(const Aws::AmazonWebS
     {
       m_mappedInputFields.push_back(mappedInputFieldsJsonList[mappedInputFieldsIndex].AsObject());
     }
+    m_mappedInputFieldsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("schemaArn"))
+  if(jsonValue.ValueExists("createdAt"))
   {
-    m_schemaArn = jsonValue.GetString("schemaArn");
-
+    m_createdAt = jsonValue.GetDouble("createdAt");
+    m_createdAtHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("schemaName"))
+  if(jsonValue.ValueExists("updatedAt"))
   {
-    m_schemaName = jsonValue.GetString("schemaName");
-
+    m_updatedAt = jsonValue.GetDouble("updatedAt");
+    m_updatedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -77,20 +66,20 @@ GetSchemaMappingResult& GetSchemaMappingResult::operator =(const Aws::AmazonWebS
     {
       m_tags[tagsItem.first] = tagsItem.second.AsString();
     }
+    m_tagsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("updatedAt"))
+  if(jsonValue.ValueExists("hasWorkflows"))
   {
-    m_updatedAt = jsonValue.GetDouble("updatedAt");
-
+    m_hasWorkflows = jsonValue.GetBool("hasWorkflows");
+    m_hasWorkflowsHasBeenSet = true;
   }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

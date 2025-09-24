@@ -18,13 +18,7 @@ namespace Keyspaces
 namespace Model
 {
 
-Comment::Comment() : 
-    m_messageHasBeenSet(false)
-{
-}
-
-Comment::Comment(JsonView jsonValue) : 
-    m_messageHasBeenSet(false)
+Comment::Comment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ Comment& Comment::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

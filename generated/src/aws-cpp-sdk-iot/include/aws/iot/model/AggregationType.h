@@ -33,91 +33,38 @@ namespace Model
   class AggregationType
   {
   public:
-    AWS_IOT_API AggregationType();
+    AWS_IOT_API AggregationType() = default;
     AWS_IOT_API AggregationType(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API AggregationType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the aggregation type.</p>
      */
-    inline const AggregationTypeName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the aggregation type.</p>
-     */
+    inline AggregationTypeName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(AggregationTypeName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline AggregationType& WithName(AggregationTypeName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the aggregation type.</p>
-     */
-    inline void SetName(const AggregationTypeName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the aggregation type.</p>
-     */
-    inline void SetName(AggregationTypeName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the aggregation type.</p>
-     */
-    inline AggregationType& WithName(const AggregationTypeName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the aggregation type.</p>
-     */
-    inline AggregationType& WithName(AggregationTypeName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the values of aggregation types.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>A list of the values of aggregation types.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>A list of the values of aggregation types.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>A list of the values of aggregation types.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>A list of the values of aggregation types.</p>
-     */
-    inline AggregationType& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>A list of the values of aggregation types.</p>
-     */
-    inline AggregationType& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the values of aggregation types.</p>
-     */
-    inline AggregationType& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the values of aggregation types.</p>
-     */
-    inline AggregationType& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of the values of aggregation types.</p>
-     */
-    inline AggregationType& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    AggregationType& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    AggregationType& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
-    AggregationTypeName m_name;
+    AggregationTypeName m_name{AggregationTypeName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_values;

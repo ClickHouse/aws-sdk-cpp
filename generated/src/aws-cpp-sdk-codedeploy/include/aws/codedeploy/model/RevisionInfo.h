@@ -32,79 +32,36 @@ namespace Model
   class RevisionInfo
   {
   public:
-    AWS_CODEDEPLOY_API RevisionInfo();
+    AWS_CODEDEPLOY_API RevisionInfo() = default;
     AWS_CODEDEPLOY_API RevisionInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API RevisionInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about the location and type of an application revision.</p>
      */
-    inline const RevisionLocation& GetRevisionLocation() const{ return m_revisionLocation; }
-
-    /**
-     * <p>Information about the location and type of an application revision.</p>
-     */
+    inline const RevisionLocation& GetRevisionLocation() const { return m_revisionLocation; }
     inline bool RevisionLocationHasBeenSet() const { return m_revisionLocationHasBeenSet; }
+    template<typename RevisionLocationT = RevisionLocation>
+    void SetRevisionLocation(RevisionLocationT&& value) { m_revisionLocationHasBeenSet = true; m_revisionLocation = std::forward<RevisionLocationT>(value); }
+    template<typename RevisionLocationT = RevisionLocation>
+    RevisionInfo& WithRevisionLocation(RevisionLocationT&& value) { SetRevisionLocation(std::forward<RevisionLocationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the location and type of an application revision.</p>
-     */
-    inline void SetRevisionLocation(const RevisionLocation& value) { m_revisionLocationHasBeenSet = true; m_revisionLocation = value; }
-
-    /**
-     * <p>Information about the location and type of an application revision.</p>
-     */
-    inline void SetRevisionLocation(RevisionLocation&& value) { m_revisionLocationHasBeenSet = true; m_revisionLocation = std::move(value); }
-
-    /**
-     * <p>Information about the location and type of an application revision.</p>
-     */
-    inline RevisionInfo& WithRevisionLocation(const RevisionLocation& value) { SetRevisionLocation(value); return *this;}
-
-    /**
-     * <p>Information about the location and type of an application revision.</p>
-     */
-    inline RevisionInfo& WithRevisionLocation(RevisionLocation&& value) { SetRevisionLocation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about an application revision, including usage details and
      * associated deployment groups.</p>
      */
-    inline const GenericRevisionInfo& GetGenericRevisionInfo() const{ return m_genericRevisionInfo; }
-
-    /**
-     * <p>Information about an application revision, including usage details and
-     * associated deployment groups.</p>
-     */
+    inline const GenericRevisionInfo& GetGenericRevisionInfo() const { return m_genericRevisionInfo; }
     inline bool GenericRevisionInfoHasBeenSet() const { return m_genericRevisionInfoHasBeenSet; }
-
-    /**
-     * <p>Information about an application revision, including usage details and
-     * associated deployment groups.</p>
-     */
-    inline void SetGenericRevisionInfo(const GenericRevisionInfo& value) { m_genericRevisionInfoHasBeenSet = true; m_genericRevisionInfo = value; }
-
-    /**
-     * <p>Information about an application revision, including usage details and
-     * associated deployment groups.</p>
-     */
-    inline void SetGenericRevisionInfo(GenericRevisionInfo&& value) { m_genericRevisionInfoHasBeenSet = true; m_genericRevisionInfo = std::move(value); }
-
-    /**
-     * <p>Information about an application revision, including usage details and
-     * associated deployment groups.</p>
-     */
-    inline RevisionInfo& WithGenericRevisionInfo(const GenericRevisionInfo& value) { SetGenericRevisionInfo(value); return *this;}
-
-    /**
-     * <p>Information about an application revision, including usage details and
-     * associated deployment groups.</p>
-     */
-    inline RevisionInfo& WithGenericRevisionInfo(GenericRevisionInfo&& value) { SetGenericRevisionInfo(std::move(value)); return *this;}
-
+    template<typename GenericRevisionInfoT = GenericRevisionInfo>
+    void SetGenericRevisionInfo(GenericRevisionInfoT&& value) { m_genericRevisionInfoHasBeenSet = true; m_genericRevisionInfo = std::forward<GenericRevisionInfoT>(value); }
+    template<typename GenericRevisionInfoT = GenericRevisionInfo>
+    RevisionInfo& WithGenericRevisionInfo(GenericRevisionInfoT&& value) { SetGenericRevisionInfo(std::forward<GenericRevisionInfoT>(value)); return *this;}
+    ///@}
   private:
 
     RevisionLocation m_revisionLocation;

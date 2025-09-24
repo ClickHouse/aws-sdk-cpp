@@ -21,7 +21,7 @@ namespace Model
   class PutCommentReactionRequest : public CodeCommitRequest
   {
   public:
-    AWS_CODECOMMIT_API PutCommentReactionRequest();
+    AWS_CODECOMMIT_API PutCommentReactionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,47 +34,19 @@ namespace Model
     AWS_CODECOMMIT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the comment to which you want to add or update a reaction.</p>
      */
-    inline const Aws::String& GetCommentId() const{ return m_commentId; }
-
-    /**
-     * <p>The ID of the comment to which you want to add or update a reaction.</p>
-     */
+    inline const Aws::String& GetCommentId() const { return m_commentId; }
     inline bool CommentIdHasBeenSet() const { return m_commentIdHasBeenSet; }
+    template<typename CommentIdT = Aws::String>
+    void SetCommentId(CommentIdT&& value) { m_commentIdHasBeenSet = true; m_commentId = std::forward<CommentIdT>(value); }
+    template<typename CommentIdT = Aws::String>
+    PutCommentReactionRequest& WithCommentId(CommentIdT&& value) { SetCommentId(std::forward<CommentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the comment to which you want to add or update a reaction.</p>
-     */
-    inline void SetCommentId(const Aws::String& value) { m_commentIdHasBeenSet = true; m_commentId = value; }
-
-    /**
-     * <p>The ID of the comment to which you want to add or update a reaction.</p>
-     */
-    inline void SetCommentId(Aws::String&& value) { m_commentIdHasBeenSet = true; m_commentId = std::move(value); }
-
-    /**
-     * <p>The ID of the comment to which you want to add or update a reaction.</p>
-     */
-    inline void SetCommentId(const char* value) { m_commentIdHasBeenSet = true; m_commentId.assign(value); }
-
-    /**
-     * <p>The ID of the comment to which you want to add or update a reaction.</p>
-     */
-    inline PutCommentReactionRequest& WithCommentId(const Aws::String& value) { SetCommentId(value); return *this;}
-
-    /**
-     * <p>The ID of the comment to which you want to add or update a reaction.</p>
-     */
-    inline PutCommentReactionRequest& WithCommentId(Aws::String&& value) { SetCommentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the comment to which you want to add or update a reaction.</p>
-     */
-    inline PutCommentReactionRequest& WithCommentId(const char* value) { SetCommentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The emoji reaction you want to add or update. To remove a reaction, provide a
      * value of blank or null. You can also provide the value of none. For information
@@ -82,71 +54,13 @@ namespace Model
      * href="https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table">CodeCommit
      * User Guide</a>.</p>
      */
-    inline const Aws::String& GetReactionValue() const{ return m_reactionValue; }
-
-    /**
-     * <p>The emoji reaction you want to add or update. To remove a reaction, provide a
-     * value of blank or null. You can also provide the value of none. For information
-     * about emoji reaction values supported in CodeCommit, see the <a
-     * href="https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table">CodeCommit
-     * User Guide</a>.</p>
-     */
+    inline const Aws::String& GetReactionValue() const { return m_reactionValue; }
     inline bool ReactionValueHasBeenSet() const { return m_reactionValueHasBeenSet; }
-
-    /**
-     * <p>The emoji reaction you want to add or update. To remove a reaction, provide a
-     * value of blank or null. You can also provide the value of none. For information
-     * about emoji reaction values supported in CodeCommit, see the <a
-     * href="https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table">CodeCommit
-     * User Guide</a>.</p>
-     */
-    inline void SetReactionValue(const Aws::String& value) { m_reactionValueHasBeenSet = true; m_reactionValue = value; }
-
-    /**
-     * <p>The emoji reaction you want to add or update. To remove a reaction, provide a
-     * value of blank or null. You can also provide the value of none. For information
-     * about emoji reaction values supported in CodeCommit, see the <a
-     * href="https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table">CodeCommit
-     * User Guide</a>.</p>
-     */
-    inline void SetReactionValue(Aws::String&& value) { m_reactionValueHasBeenSet = true; m_reactionValue = std::move(value); }
-
-    /**
-     * <p>The emoji reaction you want to add or update. To remove a reaction, provide a
-     * value of blank or null. You can also provide the value of none. For information
-     * about emoji reaction values supported in CodeCommit, see the <a
-     * href="https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table">CodeCommit
-     * User Guide</a>.</p>
-     */
-    inline void SetReactionValue(const char* value) { m_reactionValueHasBeenSet = true; m_reactionValue.assign(value); }
-
-    /**
-     * <p>The emoji reaction you want to add or update. To remove a reaction, provide a
-     * value of blank or null. You can also provide the value of none. For information
-     * about emoji reaction values supported in CodeCommit, see the <a
-     * href="https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table">CodeCommit
-     * User Guide</a>.</p>
-     */
-    inline PutCommentReactionRequest& WithReactionValue(const Aws::String& value) { SetReactionValue(value); return *this;}
-
-    /**
-     * <p>The emoji reaction you want to add or update. To remove a reaction, provide a
-     * value of blank or null. You can also provide the value of none. For information
-     * about emoji reaction values supported in CodeCommit, see the <a
-     * href="https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table">CodeCommit
-     * User Guide</a>.</p>
-     */
-    inline PutCommentReactionRequest& WithReactionValue(Aws::String&& value) { SetReactionValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The emoji reaction you want to add or update. To remove a reaction, provide a
-     * value of blank or null. You can also provide the value of none. For information
-     * about emoji reaction values supported in CodeCommit, see the <a
-     * href="https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table">CodeCommit
-     * User Guide</a>.</p>
-     */
-    inline PutCommentReactionRequest& WithReactionValue(const char* value) { SetReactionValue(value); return *this;}
-
+    template<typename ReactionValueT = Aws::String>
+    void SetReactionValue(ReactionValueT&& value) { m_reactionValueHasBeenSet = true; m_reactionValue = std::forward<ReactionValueT>(value); }
+    template<typename ReactionValueT = Aws::String>
+    PutCommentReactionRequest& WithReactionValue(ReactionValueT&& value) { SetReactionValue(std::forward<ReactionValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_commentId;

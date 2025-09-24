@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-EnableFastSnapshotRestoreStateErrorItem::EnableFastSnapshotRestoreStateErrorItem() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_errorHasBeenSet(false)
-{
-}
-
-EnableFastSnapshotRestoreStateErrorItem::EnableFastSnapshotRestoreStateErrorItem(const XmlNode& xmlNode) : 
-    m_availabilityZoneHasBeenSet(false),
-    m_errorHasBeenSet(false)
+EnableFastSnapshotRestoreStateErrorItem::EnableFastSnapshotRestoreStateErrorItem(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -27,7 +27,7 @@ namespace Model
   class SearchChannelsRequest : public ChimeSDKMessagingRequest
   {
   public:
-    AWS_CHIMESDKMESSAGING_API SearchChannelsRequest();
+    AWS_CHIMESDKMESSAGING_API SearchChannelsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,157 +42,54 @@ namespace Model
     AWS_CHIMESDKMESSAGING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
      */
-    inline const Aws::String& GetChimeBearer() const{ return m_chimeBearer; }
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
-     */
+    inline const Aws::String& GetChimeBearer() const { return m_chimeBearer; }
     inline bool ChimeBearerHasBeenSet() const { return m_chimeBearerHasBeenSet; }
+    template<typename ChimeBearerT = Aws::String>
+    void SetChimeBearer(ChimeBearerT&& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = std::forward<ChimeBearerT>(value); }
+    template<typename ChimeBearerT = Aws::String>
+    SearchChannelsRequest& WithChimeBearer(ChimeBearerT&& value) { SetChimeBearer(std::forward<ChimeBearerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
-     */
-    inline void SetChimeBearer(const Aws::String& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = value; }
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
-     */
-    inline void SetChimeBearer(Aws::String&& value) { m_chimeBearerHasBeenSet = true; m_chimeBearer = std::move(value); }
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
-     */
-    inline void SetChimeBearer(const char* value) { m_chimeBearerHasBeenSet = true; m_chimeBearer.assign(value); }
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
-     */
-    inline SearchChannelsRequest& WithChimeBearer(const Aws::String& value) { SetChimeBearer(value); return *this;}
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
-     */
-    inline SearchChannelsRequest& WithChimeBearer(Aws::String&& value) { SetChimeBearer(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>AppInstanceUserArn</code> of the user making the API call.</p>
-     */
-    inline SearchChannelsRequest& WithChimeBearer(const char* value) { SetChimeBearer(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the <code>Field</code> objects in the channel being searched.</p>
      */
-    inline const Aws::Vector<SearchField>& GetFields() const{ return m_fields; }
-
-    /**
-     * <p>A list of the <code>Field</code> objects in the channel being searched.</p>
-     */
+    inline const Aws::Vector<SearchField>& GetFields() const { return m_fields; }
     inline bool FieldsHasBeenSet() const { return m_fieldsHasBeenSet; }
+    template<typename FieldsT = Aws::Vector<SearchField>>
+    void SetFields(FieldsT&& value) { m_fieldsHasBeenSet = true; m_fields = std::forward<FieldsT>(value); }
+    template<typename FieldsT = Aws::Vector<SearchField>>
+    SearchChannelsRequest& WithFields(FieldsT&& value) { SetFields(std::forward<FieldsT>(value)); return *this;}
+    template<typename FieldsT = SearchField>
+    SearchChannelsRequest& AddFields(FieldsT&& value) { m_fieldsHasBeenSet = true; m_fields.emplace_back(std::forward<FieldsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the <code>Field</code> objects in the channel being searched.</p>
-     */
-    inline void SetFields(const Aws::Vector<SearchField>& value) { m_fieldsHasBeenSet = true; m_fields = value; }
-
-    /**
-     * <p>A list of the <code>Field</code> objects in the channel being searched.</p>
-     */
-    inline void SetFields(Aws::Vector<SearchField>&& value) { m_fieldsHasBeenSet = true; m_fields = std::move(value); }
-
-    /**
-     * <p>A list of the <code>Field</code> objects in the channel being searched.</p>
-     */
-    inline SearchChannelsRequest& WithFields(const Aws::Vector<SearchField>& value) { SetFields(value); return *this;}
-
-    /**
-     * <p>A list of the <code>Field</code> objects in the channel being searched.</p>
-     */
-    inline SearchChannelsRequest& WithFields(Aws::Vector<SearchField>&& value) { SetFields(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the <code>Field</code> objects in the channel being searched.</p>
-     */
-    inline SearchChannelsRequest& AddFields(const SearchField& value) { m_fieldsHasBeenSet = true; m_fields.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the <code>Field</code> objects in the channel being searched.</p>
-     */
-    inline SearchChannelsRequest& AddFields(SearchField&& value) { m_fieldsHasBeenSet = true; m_fields.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The maximum number of channels that you want returned.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of channels that you want returned.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of channels that you want returned.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of channels that you want returned.</p>
-     */
     inline SearchChannelsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token returned from previous API requests until the number of channels is
      * reached.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token returned from previous API requests until the number of channels is
-     * reached.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The token returned from previous API requests until the number of channels is
-     * reached.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token returned from previous API requests until the number of channels is
-     * reached.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token returned from previous API requests until the number of channels is
-     * reached.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token returned from previous API requests until the number of channels is
-     * reached.</p>
-     */
-    inline SearchChannelsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token returned from previous API requests until the number of channels is
-     * reached.</p>
-     */
-    inline SearchChannelsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token returned from previous API requests until the number of channels is
-     * reached.</p>
-     */
-    inline SearchChannelsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    SearchChannelsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_chimeBearer;
@@ -201,7 +98,7 @@ namespace Model
     Aws::Vector<SearchField> m_fields;
     bool m_fieldsHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

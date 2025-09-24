@@ -20,15 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-GlobalReplicationGroupInfo::GlobalReplicationGroupInfo() : 
-    m_globalReplicationGroupIdHasBeenSet(false),
-    m_globalReplicationGroupMemberRoleHasBeenSet(false)
-{
-}
-
-GlobalReplicationGroupInfo::GlobalReplicationGroupInfo(const XmlNode& xmlNode) : 
-    m_globalReplicationGroupIdHasBeenSet(false),
-    m_globalReplicationGroupMemberRoleHasBeenSet(false)
+GlobalReplicationGroupInfo::GlobalReplicationGroupInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

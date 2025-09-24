@@ -12,16 +12,6 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateApplicationRequest::UpdateApplicationRequest() : 
-    m_applicationArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_portalOptionsHasBeenSet(false),
-    m_status(ApplicationStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String UpdateApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,27 +22,27 @@ Aws::String UpdateApplicationRequest::SerializePayload() const
 
   }
 
-  if(m_descriptionHasBeenSet)
-  {
-   payload.WithString("Description", m_description);
-
-  }
-
   if(m_nameHasBeenSet)
   {
    payload.WithString("Name", m_name);
 
   }
 
-  if(m_portalOptionsHasBeenSet)
+  if(m_descriptionHasBeenSet)
   {
-   payload.WithObject("PortalOptions", m_portalOptions.Jsonize());
+   payload.WithString("Description", m_description);
 
   }
 
   if(m_statusHasBeenSet)
   {
    payload.WithString("Status", ApplicationStatusMapper::GetNameForApplicationStatus(m_status));
+  }
+
+  if(m_portalOptionsHasBeenSet)
+  {
+   payload.WithObject("PortalOptions", m_portalOptions.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

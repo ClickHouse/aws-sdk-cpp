@@ -33,110 +33,53 @@ namespace Model
   class DevicePoolCompatibilityResult
   {
   public:
-    AWS_DEVICEFARM_API DevicePoolCompatibilityResult();
+    AWS_DEVICEFARM_API DevicePoolCompatibilityResult() = default;
     AWS_DEVICEFARM_API DevicePoolCompatibilityResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVICEFARM_API DevicePoolCompatibilityResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DEVICEFARM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The device (phone or tablet) to return information about.</p>
      */
-    inline const Device& GetDevice() const{ return m_device; }
-
-    /**
-     * <p>The device (phone or tablet) to return information about.</p>
-     */
+    inline const Device& GetDevice() const { return m_device; }
     inline bool DeviceHasBeenSet() const { return m_deviceHasBeenSet; }
+    template<typename DeviceT = Device>
+    void SetDevice(DeviceT&& value) { m_deviceHasBeenSet = true; m_device = std::forward<DeviceT>(value); }
+    template<typename DeviceT = Device>
+    DevicePoolCompatibilityResult& WithDevice(DeviceT&& value) { SetDevice(std::forward<DeviceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The device (phone or tablet) to return information about.</p>
-     */
-    inline void SetDevice(const Device& value) { m_deviceHasBeenSet = true; m_device = value; }
-
-    /**
-     * <p>The device (phone or tablet) to return information about.</p>
-     */
-    inline void SetDevice(Device&& value) { m_deviceHasBeenSet = true; m_device = std::move(value); }
-
-    /**
-     * <p>The device (phone or tablet) to return information about.</p>
-     */
-    inline DevicePoolCompatibilityResult& WithDevice(const Device& value) { SetDevice(value); return *this;}
-
-    /**
-     * <p>The device (phone or tablet) to return information about.</p>
-     */
-    inline DevicePoolCompatibilityResult& WithDevice(Device&& value) { SetDevice(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether the result was compatible with the device pool.</p>
      */
-    inline bool GetCompatible() const{ return m_compatible; }
-
-    /**
-     * <p>Whether the result was compatible with the device pool.</p>
-     */
+    inline bool GetCompatible() const { return m_compatible; }
     inline bool CompatibleHasBeenSet() const { return m_compatibleHasBeenSet; }
-
-    /**
-     * <p>Whether the result was compatible with the device pool.</p>
-     */
     inline void SetCompatible(bool value) { m_compatibleHasBeenSet = true; m_compatible = value; }
-
-    /**
-     * <p>Whether the result was compatible with the device pool.</p>
-     */
     inline DevicePoolCompatibilityResult& WithCompatible(bool value) { SetCompatible(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Information about the compatibility.</p>
      */
-    inline const Aws::Vector<IncompatibilityMessage>& GetIncompatibilityMessages() const{ return m_incompatibilityMessages; }
-
-    /**
-     * <p>Information about the compatibility.</p>
-     */
+    inline const Aws::Vector<IncompatibilityMessage>& GetIncompatibilityMessages() const { return m_incompatibilityMessages; }
     inline bool IncompatibilityMessagesHasBeenSet() const { return m_incompatibilityMessagesHasBeenSet; }
-
-    /**
-     * <p>Information about the compatibility.</p>
-     */
-    inline void SetIncompatibilityMessages(const Aws::Vector<IncompatibilityMessage>& value) { m_incompatibilityMessagesHasBeenSet = true; m_incompatibilityMessages = value; }
-
-    /**
-     * <p>Information about the compatibility.</p>
-     */
-    inline void SetIncompatibilityMessages(Aws::Vector<IncompatibilityMessage>&& value) { m_incompatibilityMessagesHasBeenSet = true; m_incompatibilityMessages = std::move(value); }
-
-    /**
-     * <p>Information about the compatibility.</p>
-     */
-    inline DevicePoolCompatibilityResult& WithIncompatibilityMessages(const Aws::Vector<IncompatibilityMessage>& value) { SetIncompatibilityMessages(value); return *this;}
-
-    /**
-     * <p>Information about the compatibility.</p>
-     */
-    inline DevicePoolCompatibilityResult& WithIncompatibilityMessages(Aws::Vector<IncompatibilityMessage>&& value) { SetIncompatibilityMessages(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the compatibility.</p>
-     */
-    inline DevicePoolCompatibilityResult& AddIncompatibilityMessages(const IncompatibilityMessage& value) { m_incompatibilityMessagesHasBeenSet = true; m_incompatibilityMessages.push_back(value); return *this; }
-
-    /**
-     * <p>Information about the compatibility.</p>
-     */
-    inline DevicePoolCompatibilityResult& AddIncompatibilityMessages(IncompatibilityMessage&& value) { m_incompatibilityMessagesHasBeenSet = true; m_incompatibilityMessages.push_back(std::move(value)); return *this; }
-
+    template<typename IncompatibilityMessagesT = Aws::Vector<IncompatibilityMessage>>
+    void SetIncompatibilityMessages(IncompatibilityMessagesT&& value) { m_incompatibilityMessagesHasBeenSet = true; m_incompatibilityMessages = std::forward<IncompatibilityMessagesT>(value); }
+    template<typename IncompatibilityMessagesT = Aws::Vector<IncompatibilityMessage>>
+    DevicePoolCompatibilityResult& WithIncompatibilityMessages(IncompatibilityMessagesT&& value) { SetIncompatibilityMessages(std::forward<IncompatibilityMessagesT>(value)); return *this;}
+    template<typename IncompatibilityMessagesT = IncompatibilityMessage>
+    DevicePoolCompatibilityResult& AddIncompatibilityMessages(IncompatibilityMessagesT&& value) { m_incompatibilityMessagesHasBeenSet = true; m_incompatibilityMessages.emplace_back(std::forward<IncompatibilityMessagesT>(value)); return *this; }
+    ///@}
   private:
 
     Device m_device;
     bool m_deviceHasBeenSet = false;
 
-    bool m_compatible;
+    bool m_compatible{false};
     bool m_compatibleHasBeenSet = false;
 
     Aws::Vector<IncompatibilityMessage> m_incompatibilityMessages;

@@ -32,42 +32,24 @@ namespace Model
   class DeviceConfiguration
   {
   public:
-    AWS_SNOWBALL_API DeviceConfiguration();
+    AWS_SNOWBALL_API DeviceConfiguration() = default;
     AWS_SNOWBALL_API DeviceConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API DeviceConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SNOWBALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>Returns information about the device configuration for an Snowcone job.</p>
+     * <p>Returns information about the device configuration for an Snowball Edge
+     * job.</p>
      */
-    inline const SnowconeDeviceConfiguration& GetSnowconeDeviceConfiguration() const{ return m_snowconeDeviceConfiguration; }
-
-    /**
-     * <p>Returns information about the device configuration for an Snowcone job.</p>
-     */
+    inline const SnowconeDeviceConfiguration& GetSnowconeDeviceConfiguration() const { return m_snowconeDeviceConfiguration; }
     inline bool SnowconeDeviceConfigurationHasBeenSet() const { return m_snowconeDeviceConfigurationHasBeenSet; }
-
-    /**
-     * <p>Returns information about the device configuration for an Snowcone job.</p>
-     */
-    inline void SetSnowconeDeviceConfiguration(const SnowconeDeviceConfiguration& value) { m_snowconeDeviceConfigurationHasBeenSet = true; m_snowconeDeviceConfiguration = value; }
-
-    /**
-     * <p>Returns information about the device configuration for an Snowcone job.</p>
-     */
-    inline void SetSnowconeDeviceConfiguration(SnowconeDeviceConfiguration&& value) { m_snowconeDeviceConfigurationHasBeenSet = true; m_snowconeDeviceConfiguration = std::move(value); }
-
-    /**
-     * <p>Returns information about the device configuration for an Snowcone job.</p>
-     */
-    inline DeviceConfiguration& WithSnowconeDeviceConfiguration(const SnowconeDeviceConfiguration& value) { SetSnowconeDeviceConfiguration(value); return *this;}
-
-    /**
-     * <p>Returns information about the device configuration for an Snowcone job.</p>
-     */
-    inline DeviceConfiguration& WithSnowconeDeviceConfiguration(SnowconeDeviceConfiguration&& value) { SetSnowconeDeviceConfiguration(std::move(value)); return *this;}
-
+    template<typename SnowconeDeviceConfigurationT = SnowconeDeviceConfiguration>
+    void SetSnowconeDeviceConfiguration(SnowconeDeviceConfigurationT&& value) { m_snowconeDeviceConfigurationHasBeenSet = true; m_snowconeDeviceConfiguration = std::forward<SnowconeDeviceConfigurationT>(value); }
+    template<typename SnowconeDeviceConfigurationT = SnowconeDeviceConfiguration>
+    DeviceConfiguration& WithSnowconeDeviceConfiguration(SnowconeDeviceConfigurationT&& value) { SetSnowconeDeviceConfiguration(std::forward<SnowconeDeviceConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     SnowconeDeviceConfiguration m_snowconeDeviceConfiguration;

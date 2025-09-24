@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/payment-cryptography-data/PaymentCryptographyData_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/payment-cryptography-data/model/ValidationExceptionField.h>
 #include <utility>
 
@@ -34,84 +34,42 @@ namespace Model
   class ValidationException
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHYDATA_API ValidationException();
+    AWS_PAYMENTCRYPTOGRAPHYDATA_API ValidationException() = default;
     AWS_PAYMENTCRYPTOGRAPHYDATA_API ValidationException(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API ValidationException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The request was denied due to an invalid request error.</p>
-     */
-    inline const Aws::Vector<ValidationExceptionField>& GetFieldList() const{ return m_fieldList; }
-
-    /**
-     * <p>The request was denied due to an invalid request error.</p>
-     */
-    inline bool FieldListHasBeenSet() const { return m_fieldListHasBeenSet; }
-
-    /**
-     * <p>The request was denied due to an invalid request error.</p>
-     */
-    inline void SetFieldList(const Aws::Vector<ValidationExceptionField>& value) { m_fieldListHasBeenSet = true; m_fieldList = value; }
-
-    /**
-     * <p>The request was denied due to an invalid request error.</p>
-     */
-    inline void SetFieldList(Aws::Vector<ValidationExceptionField>&& value) { m_fieldListHasBeenSet = true; m_fieldList = std::move(value); }
-
-    /**
-     * <p>The request was denied due to an invalid request error.</p>
-     */
-    inline ValidationException& WithFieldList(const Aws::Vector<ValidationExceptionField>& value) { SetFieldList(value); return *this;}
-
-    /**
-     * <p>The request was denied due to an invalid request error.</p>
-     */
-    inline ValidationException& WithFieldList(Aws::Vector<ValidationExceptionField>&& value) { SetFieldList(std::move(value)); return *this;}
-
-    /**
-     * <p>The request was denied due to an invalid request error.</p>
-     */
-    inline ValidationException& AddFieldList(const ValidationExceptionField& value) { m_fieldListHasBeenSet = true; m_fieldList.push_back(value); return *this; }
-
-    /**
-     * <p>The request was denied due to an invalid request error.</p>
-     */
-    inline ValidationException& AddFieldList(ValidationExceptionField&& value) { m_fieldListHasBeenSet = true; m_fieldList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ValidationException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline ValidationException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline ValidationException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline ValidationException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    ///@{
+    /**
+     * <p>The request was denied due to an invalid request error.</p>
+     */
+    inline const Aws::Vector<ValidationExceptionField>& GetFieldList() const { return m_fieldList; }
+    inline bool FieldListHasBeenSet() const { return m_fieldListHasBeenSet; }
+    template<typename FieldListT = Aws::Vector<ValidationExceptionField>>
+    void SetFieldList(FieldListT&& value) { m_fieldListHasBeenSet = true; m_fieldList = std::forward<FieldListT>(value); }
+    template<typename FieldListT = Aws::Vector<ValidationExceptionField>>
+    ValidationException& WithFieldList(FieldListT&& value) { SetFieldList(std::forward<FieldListT>(value)); return *this;}
+    template<typename FieldListT = ValidationExceptionField>
+    ValidationException& AddFieldList(FieldListT&& value) { m_fieldListHasBeenSet = true; m_fieldList.emplace_back(std::forward<FieldListT>(value)); return *this; }
+    ///@}
   private:
-
-    Aws::Vector<ValidationExceptionField> m_fieldList;
-    bool m_fieldListHasBeenSet = false;
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
+
+    Aws::Vector<ValidationExceptionField> m_fieldList;
+    bool m_fieldListHasBeenSet = false;
   };
 
 } // namespace Model

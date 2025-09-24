@@ -10,47 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-RestoreDBClusterToPointInTimeRequest::RestoreDBClusterToPointInTimeRequest() : 
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_restoreTypeHasBeenSet(false),
-    m_sourceDBClusterIdentifierHasBeenSet(false),
-    m_restoreToTimeHasBeenSet(false),
-    m_useLatestRestorableTime(false),
-    m_useLatestRestorableTimeHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_dBSubnetGroupNameHasBeenSet(false),
-    m_optionGroupNameHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_enableIAMDatabaseAuthentication(false),
-    m_enableIAMDatabaseAuthenticationHasBeenSet(false),
-    m_backtrackWindow(0),
-    m_backtrackWindowHasBeenSet(false),
-    m_enableCloudwatchLogsExportsHasBeenSet(false),
-    m_dBClusterParameterGroupNameHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_domainHasBeenSet(false),
-    m_domainIAMRoleNameHasBeenSet(false),
-    m_scalingConfigurationHasBeenSet(false),
-    m_engineModeHasBeenSet(false),
-    m_dBClusterInstanceClassHasBeenSet(false),
-    m_storageTypeHasBeenSet(false),
-    m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_serverlessV2ScalingConfigurationHasBeenSet(false),
-    m_networkTypeHasBeenSet(false),
-    m_sourceDbClusterResourceIdHasBeenSet(false),
-    m_rdsCustomClusterConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String RestoreDBClusterToPointInTimeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -97,22 +56,36 @@ Aws::String RestoreDBClusterToPointInTimeRequest::SerializePayload() const
 
   if(m_vpcSecurityGroupIdsHasBeenSet)
   {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
+    if (m_vpcSecurityGroupIds.empty())
     {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
+      ss << "VpcSecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned vpcSecurityGroupIdsCount = 1;
+      for(auto& item : m_vpcSecurityGroupIds)
+      {
+        ss << "VpcSecurityGroupIds.VpcSecurityGroupId." << vpcSecurityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcSecurityGroupIdsCount++;
+      }
     }
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
@@ -133,12 +106,19 @@ Aws::String RestoreDBClusterToPointInTimeRequest::SerializePayload() const
 
   if(m_enableCloudwatchLogsExportsHasBeenSet)
   {
-    unsigned enableCloudwatchLogsExportsCount = 1;
-    for(auto& item : m_enableCloudwatchLogsExports)
+    if (m_enableCloudwatchLogsExports.empty())
     {
-      ss << "EnableCloudwatchLogsExports.member." << enableCloudwatchLogsExportsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      enableCloudwatchLogsExportsCount++;
+      ss << "EnableCloudwatchLogsExports=&";
+    }
+    else
+    {
+      unsigned enableCloudwatchLogsExportsCount = 1;
+      for(auto& item : m_enableCloudwatchLogsExports)
+      {
+        ss << "EnableCloudwatchLogsExports.member." << enableCloudwatchLogsExportsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        enableCloudwatchLogsExportsCount++;
+      }
     }
   }
 
@@ -215,6 +195,36 @@ Aws::String RestoreDBClusterToPointInTimeRequest::SerializePayload() const
   if(m_rdsCustomClusterConfigurationHasBeenSet)
   {
     m_rdsCustomClusterConfiguration.OutputToStream(ss, "RdsCustomClusterConfiguration");
+  }
+
+  if(m_monitoringIntervalHasBeenSet)
+  {
+    ss << "MonitoringInterval=" << m_monitoringInterval << "&";
+  }
+
+  if(m_monitoringRoleArnHasBeenSet)
+  {
+    ss << "MonitoringRoleArn=" << StringUtils::URLEncode(m_monitoringRoleArn.c_str()) << "&";
+  }
+
+  if(m_enablePerformanceInsightsHasBeenSet)
+  {
+    ss << "EnablePerformanceInsights=" << std::boolalpha << m_enablePerformanceInsights << "&";
+  }
+
+  if(m_performanceInsightsKMSKeyIdHasBeenSet)
+  {
+    ss << "PerformanceInsightsKMSKeyId=" << StringUtils::URLEncode(m_performanceInsightsKMSKeyId.c_str()) << "&";
+  }
+
+  if(m_performanceInsightsRetentionPeriodHasBeenSet)
+  {
+    ss << "PerformanceInsightsRetentionPeriod=" << m_performanceInsightsRetentionPeriod << "&";
+  }
+
+  if(m_engineLifecycleSupportHasBeenSet)
+  {
+    ss << "EngineLifecycleSupport=" << StringUtils::URLEncode(m_engineLifecycleSupport.c_str()) << "&";
   }
 
   ss << "Version=2014-10-31";

@@ -18,17 +18,7 @@ namespace VerifiedPermissions
 namespace Model
 {
 
-EntityItem::EntityItem() : 
-    m_identifierHasBeenSet(false),
-    m_attributesHasBeenSet(false),
-    m_parentsHasBeenSet(false)
-{
-}
-
-EntityItem::EntityItem(JsonView jsonValue) : 
-    m_identifierHasBeenSet(false),
-    m_attributesHasBeenSet(false),
-    m_parentsHasBeenSet(false)
+EntityItem::EntityItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ EntityItem& EntityItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("identifier"))
   {
     m_identifier = jsonValue.GetObject("identifier");
-
     m_identifierHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("attributes"))
   {
     Aws::Map<Aws::String, JsonView> attributesJsonMap = jsonValue.GetObject("attributes").GetAllObjects();
@@ -51,7 +39,6 @@ EntityItem& EntityItem::operator =(JsonView jsonValue)
     }
     m_attributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("parents"))
   {
     Aws::Utils::Array<JsonView> parentsJsonList = jsonValue.GetArray("parents");
@@ -61,7 +48,6 @@ EntityItem& EntityItem::operator =(JsonView jsonValue)
     }
     m_parentsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-RetrieveAndGenerateResult::RetrieveAndGenerateResult()
-{
-}
-
 RetrieveAndGenerateResult::RetrieveAndGenerateResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,18 +25,6 @@ RetrieveAndGenerateResult::RetrieveAndGenerateResult(const Aws::AmazonWebService
 RetrieveAndGenerateResult& RetrieveAndGenerateResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("sessionId"))
-  {
-    m_sessionId = jsonValue.GetString("sessionId");
-
-  }
-
-  if(jsonValue.ValueExists("output"))
-  {
-    m_output = jsonValue.GetObject("output");
-
-  }
-
   if(jsonValue.ValueExists("citations"))
   {
     Aws::Utils::Array<JsonView> citationsJsonList = jsonValue.GetArray("citations");
@@ -48,14 +32,30 @@ RetrieveAndGenerateResult& RetrieveAndGenerateResult::operator =(const Aws::Amaz
     {
       m_citations.push_back(citationsJsonList[citationsIndex].AsObject());
     }
+    m_citationsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("guardrailAction"))
+  {
+    m_guardrailAction = GuadrailActionMapper::GetGuadrailActionForName(jsonValue.GetString("guardrailAction"));
+    m_guardrailActionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("output"))
+  {
+    m_output = jsonValue.GetObject("output");
+    m_outputHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("sessionId"))
+  {
+    m_sessionId = jsonValue.GetString("sessionId");
+    m_sessionIdHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

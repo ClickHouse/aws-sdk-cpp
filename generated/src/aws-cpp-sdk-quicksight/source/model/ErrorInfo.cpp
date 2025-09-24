@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ErrorInfo::ErrorInfo() : 
-    m_type(IngestionErrorType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ErrorInfo::ErrorInfo(JsonView jsonValue) : 
-    m_type(IngestionErrorType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ErrorInfo::ErrorInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ErrorInfo& ErrorInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = IngestionErrorTypeMapper::GetIngestionErrorTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

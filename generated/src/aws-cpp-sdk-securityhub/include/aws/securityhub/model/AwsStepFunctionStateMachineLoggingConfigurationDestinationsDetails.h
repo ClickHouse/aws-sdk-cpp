@@ -32,12 +32,13 @@ namespace Model
   class AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails();
+    AWS_SECURITYHUB_API AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails() = default;
     AWS_SECURITYHUB_API AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> An object describing a CloudWatch Logs log group. For more information, see
      * <a
@@ -45,53 +46,13 @@ namespace Model
      * Amazon Web Services::Logs::LogGroup</a> in the <i>CloudFormation User Guide</i>.
      * </p>
      */
-    inline const AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails& GetCloudWatchLogsLogGroup() const{ return m_cloudWatchLogsLogGroup; }
-
-    /**
-     * <p> An object describing a CloudWatch Logs log group. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html">
-     * Amazon Web Services::Logs::LogGroup</a> in the <i>CloudFormation User Guide</i>.
-     * </p>
-     */
+    inline const AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails& GetCloudWatchLogsLogGroup() const { return m_cloudWatchLogsLogGroup; }
     inline bool CloudWatchLogsLogGroupHasBeenSet() const { return m_cloudWatchLogsLogGroupHasBeenSet; }
-
-    /**
-     * <p> An object describing a CloudWatch Logs log group. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html">
-     * Amazon Web Services::Logs::LogGroup</a> in the <i>CloudFormation User Guide</i>.
-     * </p>
-     */
-    inline void SetCloudWatchLogsLogGroup(const AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails& value) { m_cloudWatchLogsLogGroupHasBeenSet = true; m_cloudWatchLogsLogGroup = value; }
-
-    /**
-     * <p> An object describing a CloudWatch Logs log group. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html">
-     * Amazon Web Services::Logs::LogGroup</a> in the <i>CloudFormation User Guide</i>.
-     * </p>
-     */
-    inline void SetCloudWatchLogsLogGroup(AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails&& value) { m_cloudWatchLogsLogGroupHasBeenSet = true; m_cloudWatchLogsLogGroup = std::move(value); }
-
-    /**
-     * <p> An object describing a CloudWatch Logs log group. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html">
-     * Amazon Web Services::Logs::LogGroup</a> in the <i>CloudFormation User Guide</i>.
-     * </p>
-     */
-    inline AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails& WithCloudWatchLogsLogGroup(const AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails& value) { SetCloudWatchLogsLogGroup(value); return *this;}
-
-    /**
-     * <p> An object describing a CloudWatch Logs log group. For more information, see
-     * <a
-     * href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-logs-loggroup.html">
-     * Amazon Web Services::Logs::LogGroup</a> in the <i>CloudFormation User Guide</i>.
-     * </p>
-     */
-    inline AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails& WithCloudWatchLogsLogGroup(AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails&& value) { SetCloudWatchLogsLogGroup(std::move(value)); return *this;}
-
+    template<typename CloudWatchLogsLogGroupT = AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails>
+    void SetCloudWatchLogsLogGroup(CloudWatchLogsLogGroupT&& value) { m_cloudWatchLogsLogGroupHasBeenSet = true; m_cloudWatchLogsLogGroup = std::forward<CloudWatchLogsLogGroupT>(value); }
+    template<typename CloudWatchLogsLogGroupT = AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails>
+    AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails& WithCloudWatchLogsLogGroup(CloudWatchLogsLogGroupT&& value) { SetCloudWatchLogsLogGroup(std::forward<CloudWatchLogsLogGroupT>(value)); return *this;}
+    ///@}
   private:
 
     AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails m_cloudWatchLogsLogGroup;

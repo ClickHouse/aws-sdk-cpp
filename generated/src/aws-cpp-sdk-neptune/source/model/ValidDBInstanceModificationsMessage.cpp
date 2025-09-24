@@ -20,13 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-ValidDBInstanceModificationsMessage::ValidDBInstanceModificationsMessage() : 
-    m_storageHasBeenSet(false)
-{
-}
-
-ValidDBInstanceModificationsMessage::ValidDBInstanceModificationsMessage(const XmlNode& xmlNode) : 
-    m_storageHasBeenSet(false)
+ValidDBInstanceModificationsMessage::ValidDBInstanceModificationsMessage(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ ValidDBInstanceModificationsMessage& ValidDBInstanceModificationsMessage::operat
     if(!storageNode.IsNull())
     {
       XmlNode storageMember = storageNode.FirstChild("ValidStorageOptions");
+      m_storageHasBeenSet = !storageMember.IsNull();
       while(!storageMember.IsNull())
       {
         m_storage.push_back(storageMember);
@@ -62,7 +57,7 @@ void ValidDBInstanceModificationsMessage::OutputToStream(Aws::OStream& oStream, 
       for(auto& item : m_storage)
       {
         Aws::StringStream storageSs;
-        storageSs << location << index << locationValue << ".ValidStorageOptions." << storageIdx++;
+        storageSs << location << index << locationValue << ".Storage.ValidStorageOptions." << storageIdx++;
         item.OutputToStream(oStream, storageSs.str().c_str());
       }
   }
@@ -77,7 +72,7 @@ void ValidDBInstanceModificationsMessage::OutputToStream(Aws::OStream& oStream, 
       for(auto& item : m_storage)
       {
         Aws::StringStream storageSs;
-        storageSs << location <<  ".ValidStorageOptions." << storageIdx++;
+        storageSs << location << ".Storage.ValidStorageOptions." << storageIdx++;
         item.OutputToStream(oStream, storageSs.str().c_str());
       }
   }

@@ -18,15 +18,7 @@ namespace SSM
 namespace Model
 {
 
-MaintenanceWindowStepFunctionsParameters::MaintenanceWindowStepFunctionsParameters() : 
-    m_inputHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-MaintenanceWindowStepFunctionsParameters::MaintenanceWindowStepFunctionsParameters(JsonView jsonValue) : 
-    m_inputHasBeenSet(false),
-    m_nameHasBeenSet(false)
+MaintenanceWindowStepFunctionsParameters::MaintenanceWindowStepFunctionsParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MaintenanceWindowStepFunctionsParameters& MaintenanceWindowStepFunctionsParamete
   if(jsonValue.ValueExists("Input"))
   {
     m_input = jsonValue.GetString("Input");
-
     m_inputHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

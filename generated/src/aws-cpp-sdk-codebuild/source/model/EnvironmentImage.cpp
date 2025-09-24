@@ -18,17 +18,7 @@ namespace CodeBuild
 namespace Model
 {
 
-EnvironmentImage::EnvironmentImage() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_versionsHasBeenSet(false)
-{
-}
-
-EnvironmentImage::EnvironmentImage(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_versionsHasBeenSet(false)
+EnvironmentImage::EnvironmentImage(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ EnvironmentImage& EnvironmentImage::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("versions"))
   {
     Aws::Utils::Array<JsonView> versionsJsonList = jsonValue.GetArray("versions");
@@ -58,7 +44,6 @@ EnvironmentImage& EnvironmentImage::operator =(JsonView jsonValue)
     }
     m_versionsHasBeenSet = true;
   }
-
   return *this;
 }
 

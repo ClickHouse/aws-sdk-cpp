@@ -18,17 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-ExecutionError::ExecutionError() : 
-    m_type(ExecutionErrorType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ExecutionError::ExecutionError(JsonView jsonValue) : 
-    m_type(ExecutionErrorType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ExecutionError::ExecutionError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ExecutionError& ExecutionError::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = ExecutionErrorTypeMapper::GetExecutionErrorTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

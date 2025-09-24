@@ -37,184 +37,74 @@ namespace Model
   class RuleAction
   {
   public:
-    AWS_WAFV2_API RuleAction();
+    AWS_WAFV2_API RuleAction() = default;
     AWS_WAFV2_API RuleAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API RuleAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Instructs WAF to block the web request.</p>
      */
-    inline const BlockAction& GetBlock() const{ return m_block; }
-
-    /**
-     * <p>Instructs WAF to block the web request.</p>
-     */
+    inline const BlockAction& GetBlock() const { return m_block; }
     inline bool BlockHasBeenSet() const { return m_blockHasBeenSet; }
+    template<typename BlockT = BlockAction>
+    void SetBlock(BlockT&& value) { m_blockHasBeenSet = true; m_block = std::forward<BlockT>(value); }
+    template<typename BlockT = BlockAction>
+    RuleAction& WithBlock(BlockT&& value) { SetBlock(std::forward<BlockT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Instructs WAF to block the web request.</p>
-     */
-    inline void SetBlock(const BlockAction& value) { m_blockHasBeenSet = true; m_block = value; }
-
-    /**
-     * <p>Instructs WAF to block the web request.</p>
-     */
-    inline void SetBlock(BlockAction&& value) { m_blockHasBeenSet = true; m_block = std::move(value); }
-
-    /**
-     * <p>Instructs WAF to block the web request.</p>
-     */
-    inline RuleAction& WithBlock(const BlockAction& value) { SetBlock(value); return *this;}
-
-    /**
-     * <p>Instructs WAF to block the web request.</p>
-     */
-    inline RuleAction& WithBlock(BlockAction&& value) { SetBlock(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Instructs WAF to allow the web request.</p>
      */
-    inline const AllowAction& GetAllow() const{ return m_allow; }
-
-    /**
-     * <p>Instructs WAF to allow the web request.</p>
-     */
+    inline const AllowAction& GetAllow() const { return m_allow; }
     inline bool AllowHasBeenSet() const { return m_allowHasBeenSet; }
+    template<typename AllowT = AllowAction>
+    void SetAllow(AllowT&& value) { m_allowHasBeenSet = true; m_allow = std::forward<AllowT>(value); }
+    template<typename AllowT = AllowAction>
+    RuleAction& WithAllow(AllowT&& value) { SetAllow(std::forward<AllowT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Instructs WAF to allow the web request.</p>
-     */
-    inline void SetAllow(const AllowAction& value) { m_allowHasBeenSet = true; m_allow = value; }
-
-    /**
-     * <p>Instructs WAF to allow the web request.</p>
-     */
-    inline void SetAllow(AllowAction&& value) { m_allowHasBeenSet = true; m_allow = std::move(value); }
-
-    /**
-     * <p>Instructs WAF to allow the web request.</p>
-     */
-    inline RuleAction& WithAllow(const AllowAction& value) { SetAllow(value); return *this;}
-
-    /**
-     * <p>Instructs WAF to allow the web request.</p>
-     */
-    inline RuleAction& WithAllow(AllowAction&& value) { SetAllow(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Instructs WAF to count the web request and then continue evaluating the
      * request using the remaining rules in the web ACL.</p>
      */
-    inline const CountAction& GetCount() const{ return m_count; }
-
-    /**
-     * <p>Instructs WAF to count the web request and then continue evaluating the
-     * request using the remaining rules in the web ACL.</p>
-     */
+    inline const CountAction& GetCount() const { return m_count; }
     inline bool CountHasBeenSet() const { return m_countHasBeenSet; }
+    template<typename CountT = CountAction>
+    void SetCount(CountT&& value) { m_countHasBeenSet = true; m_count = std::forward<CountT>(value); }
+    template<typename CountT = CountAction>
+    RuleAction& WithCount(CountT&& value) { SetCount(std::forward<CountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Instructs WAF to count the web request and then continue evaluating the
-     * request using the remaining rules in the web ACL.</p>
-     */
-    inline void SetCount(const CountAction& value) { m_countHasBeenSet = true; m_count = value; }
-
-    /**
-     * <p>Instructs WAF to count the web request and then continue evaluating the
-     * request using the remaining rules in the web ACL.</p>
-     */
-    inline void SetCount(CountAction&& value) { m_countHasBeenSet = true; m_count = std::move(value); }
-
-    /**
-     * <p>Instructs WAF to count the web request and then continue evaluating the
-     * request using the remaining rules in the web ACL.</p>
-     */
-    inline RuleAction& WithCount(const CountAction& value) { SetCount(value); return *this;}
-
-    /**
-     * <p>Instructs WAF to count the web request and then continue evaluating the
-     * request using the remaining rules in the web ACL.</p>
-     */
-    inline RuleAction& WithCount(CountAction&& value) { SetCount(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Instructs WAF to run a <code>CAPTCHA</code> check against the web
      * request.</p>
      */
-    inline const CaptchaAction& GetCaptcha() const{ return m_captcha; }
-
-    /**
-     * <p>Instructs WAF to run a <code>CAPTCHA</code> check against the web
-     * request.</p>
-     */
+    inline const CaptchaAction& GetCaptcha() const { return m_captcha; }
     inline bool CaptchaHasBeenSet() const { return m_captchaHasBeenSet; }
+    template<typename CaptchaT = CaptchaAction>
+    void SetCaptcha(CaptchaT&& value) { m_captchaHasBeenSet = true; m_captcha = std::forward<CaptchaT>(value); }
+    template<typename CaptchaT = CaptchaAction>
+    RuleAction& WithCaptcha(CaptchaT&& value) { SetCaptcha(std::forward<CaptchaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Instructs WAF to run a <code>CAPTCHA</code> check against the web
-     * request.</p>
-     */
-    inline void SetCaptcha(const CaptchaAction& value) { m_captchaHasBeenSet = true; m_captcha = value; }
-
-    /**
-     * <p>Instructs WAF to run a <code>CAPTCHA</code> check against the web
-     * request.</p>
-     */
-    inline void SetCaptcha(CaptchaAction&& value) { m_captchaHasBeenSet = true; m_captcha = std::move(value); }
-
-    /**
-     * <p>Instructs WAF to run a <code>CAPTCHA</code> check against the web
-     * request.</p>
-     */
-    inline RuleAction& WithCaptcha(const CaptchaAction& value) { SetCaptcha(value); return *this;}
-
-    /**
-     * <p>Instructs WAF to run a <code>CAPTCHA</code> check against the web
-     * request.</p>
-     */
-    inline RuleAction& WithCaptcha(CaptchaAction&& value) { SetCaptcha(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Instructs WAF to run a <code>Challenge</code> check against the web
      * request.</p>
      */
-    inline const ChallengeAction& GetChallenge() const{ return m_challenge; }
-
-    /**
-     * <p>Instructs WAF to run a <code>Challenge</code> check against the web
-     * request.</p>
-     */
+    inline const ChallengeAction& GetChallenge() const { return m_challenge; }
     inline bool ChallengeHasBeenSet() const { return m_challengeHasBeenSet; }
-
-    /**
-     * <p>Instructs WAF to run a <code>Challenge</code> check against the web
-     * request.</p>
-     */
-    inline void SetChallenge(const ChallengeAction& value) { m_challengeHasBeenSet = true; m_challenge = value; }
-
-    /**
-     * <p>Instructs WAF to run a <code>Challenge</code> check against the web
-     * request.</p>
-     */
-    inline void SetChallenge(ChallengeAction&& value) { m_challengeHasBeenSet = true; m_challenge = std::move(value); }
-
-    /**
-     * <p>Instructs WAF to run a <code>Challenge</code> check against the web
-     * request.</p>
-     */
-    inline RuleAction& WithChallenge(const ChallengeAction& value) { SetChallenge(value); return *this;}
-
-    /**
-     * <p>Instructs WAF to run a <code>Challenge</code> check against the web
-     * request.</p>
-     */
-    inline RuleAction& WithChallenge(ChallengeAction&& value) { SetChallenge(std::move(value)); return *this;}
-
+    template<typename ChallengeT = ChallengeAction>
+    void SetChallenge(ChallengeT&& value) { m_challengeHasBeenSet = true; m_challenge = std::forward<ChallengeT>(value); }
+    template<typename ChallengeT = ChallengeAction>
+    RuleAction& WithChallenge(ChallengeT&& value) { SetChallenge(std::forward<ChallengeT>(value)); return *this;}
+    ///@}
   private:
 
     BlockAction m_block;

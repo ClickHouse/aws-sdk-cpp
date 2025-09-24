@@ -18,27 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-HeatMapConfiguration::HeatMapConfiguration() : 
-    m_fieldWellsHasBeenSet(false),
-    m_sortConfigurationHasBeenSet(false),
-    m_rowLabelOptionsHasBeenSet(false),
-    m_columnLabelOptionsHasBeenSet(false),
-    m_colorScaleHasBeenSet(false),
-    m_legendHasBeenSet(false),
-    m_dataLabelsHasBeenSet(false),
-    m_tooltipHasBeenSet(false)
-{
-}
-
-HeatMapConfiguration::HeatMapConfiguration(JsonView jsonValue) : 
-    m_fieldWellsHasBeenSet(false),
-    m_sortConfigurationHasBeenSet(false),
-    m_rowLabelOptionsHasBeenSet(false),
-    m_columnLabelOptionsHasBeenSet(false),
-    m_colorScaleHasBeenSet(false),
-    m_legendHasBeenSet(false),
-    m_dataLabelsHasBeenSet(false),
-    m_tooltipHasBeenSet(false)
+HeatMapConfiguration::HeatMapConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,59 +28,58 @@ HeatMapConfiguration& HeatMapConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FieldWells"))
   {
     m_fieldWells = jsonValue.GetObject("FieldWells");
-
     m_fieldWellsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SortConfiguration"))
   {
     m_sortConfiguration = jsonValue.GetObject("SortConfiguration");
-
     m_sortConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("RowAxisDisplayOptions"))
+  {
+    m_rowAxisDisplayOptions = jsonValue.GetObject("RowAxisDisplayOptions");
+    m_rowAxisDisplayOptionsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("RowLabelOptions"))
   {
     m_rowLabelOptions = jsonValue.GetObject("RowLabelOptions");
-
     m_rowLabelOptionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ColumnAxisDisplayOptions"))
+  {
+    m_columnAxisDisplayOptions = jsonValue.GetObject("ColumnAxisDisplayOptions");
+    m_columnAxisDisplayOptionsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("ColumnLabelOptions"))
   {
     m_columnLabelOptions = jsonValue.GetObject("ColumnLabelOptions");
-
     m_columnLabelOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ColorScale"))
   {
     m_colorScale = jsonValue.GetObject("ColorScale");
-
     m_colorScaleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Legend"))
   {
     m_legend = jsonValue.GetObject("Legend");
-
     m_legendHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataLabels"))
   {
     m_dataLabels = jsonValue.GetObject("DataLabels");
-
     m_dataLabelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tooltip"))
   {
     m_tooltip = jsonValue.GetObject("Tooltip");
-
     m_tooltipHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Interactions"))
+  {
+    m_interactions = jsonValue.GetObject("Interactions");
+    m_interactionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -120,9 +99,21 @@ JsonValue HeatMapConfiguration::Jsonize() const
 
   }
 
+  if(m_rowAxisDisplayOptionsHasBeenSet)
+  {
+   payload.WithObject("RowAxisDisplayOptions", m_rowAxisDisplayOptions.Jsonize());
+
+  }
+
   if(m_rowLabelOptionsHasBeenSet)
   {
    payload.WithObject("RowLabelOptions", m_rowLabelOptions.Jsonize());
+
+  }
+
+  if(m_columnAxisDisplayOptionsHasBeenSet)
+  {
+   payload.WithObject("ColumnAxisDisplayOptions", m_columnAxisDisplayOptions.Jsonize());
 
   }
 
@@ -153,6 +144,12 @@ JsonValue HeatMapConfiguration::Jsonize() const
   if(m_tooltipHasBeenSet)
   {
    payload.WithObject("Tooltip", m_tooltip.Jsonize());
+
+  }
+
+  if(m_interactionsHasBeenSet)
+  {
+   payload.WithObject("Interactions", m_interactions.Jsonize());
 
   }
 

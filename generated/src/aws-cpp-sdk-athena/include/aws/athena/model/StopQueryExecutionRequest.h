@@ -22,7 +22,7 @@ namespace Model
   class StopQueryExecutionRequest : public AthenaRequest
   {
   public:
-    AWS_ATHENA_API StopQueryExecutionRequest();
+    AWS_ATHENA_API StopQueryExecutionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,50 +35,21 @@ namespace Model
     AWS_ATHENA_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique ID of the query execution to stop.</p>
      */
-    inline const Aws::String& GetQueryExecutionId() const{ return m_queryExecutionId; }
-
-    /**
-     * <p>The unique ID of the query execution to stop.</p>
-     */
+    inline const Aws::String& GetQueryExecutionId() const { return m_queryExecutionId; }
     inline bool QueryExecutionIdHasBeenSet() const { return m_queryExecutionIdHasBeenSet; }
-
-    /**
-     * <p>The unique ID of the query execution to stop.</p>
-     */
-    inline void SetQueryExecutionId(const Aws::String& value) { m_queryExecutionIdHasBeenSet = true; m_queryExecutionId = value; }
-
-    /**
-     * <p>The unique ID of the query execution to stop.</p>
-     */
-    inline void SetQueryExecutionId(Aws::String&& value) { m_queryExecutionIdHasBeenSet = true; m_queryExecutionId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the query execution to stop.</p>
-     */
-    inline void SetQueryExecutionId(const char* value) { m_queryExecutionIdHasBeenSet = true; m_queryExecutionId.assign(value); }
-
-    /**
-     * <p>The unique ID of the query execution to stop.</p>
-     */
-    inline StopQueryExecutionRequest& WithQueryExecutionId(const Aws::String& value) { SetQueryExecutionId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the query execution to stop.</p>
-     */
-    inline StopQueryExecutionRequest& WithQueryExecutionId(Aws::String&& value) { SetQueryExecutionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the query execution to stop.</p>
-     */
-    inline StopQueryExecutionRequest& WithQueryExecutionId(const char* value) { SetQueryExecutionId(value); return *this;}
-
+    template<typename QueryExecutionIdT = Aws::String>
+    void SetQueryExecutionId(QueryExecutionIdT&& value) { m_queryExecutionIdHasBeenSet = true; m_queryExecutionId = std::forward<QueryExecutionIdT>(value); }
+    template<typename QueryExecutionIdT = Aws::String>
+    StopQueryExecutionRequest& WithQueryExecutionId(QueryExecutionIdT&& value) { SetQueryExecutionId(std::forward<QueryExecutionIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_queryExecutionId;
-    bool m_queryExecutionIdHasBeenSet = false;
+    Aws::String m_queryExecutionId{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_queryExecutionIdHasBeenSet = true;
   };
 
 } // namespace Model

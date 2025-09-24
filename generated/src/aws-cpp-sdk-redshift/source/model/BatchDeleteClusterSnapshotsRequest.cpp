@@ -10,22 +10,24 @@
 using namespace Aws::Redshift::Model;
 using namespace Aws::Utils;
 
-BatchDeleteClusterSnapshotsRequest::BatchDeleteClusterSnapshotsRequest() : 
-    m_identifiersHasBeenSet(false)
-{
-}
-
 Aws::String BatchDeleteClusterSnapshotsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=BatchDeleteClusterSnapshots&";
   if(m_identifiersHasBeenSet)
   {
-    unsigned identifiersCount = 1;
-    for(auto& item : m_identifiers)
+    if (m_identifiers.empty())
     {
-      item.OutputToStream(ss, "Identifiers.member.", identifiersCount, "");
-      identifiersCount++;
+      ss << "Identifiers=&";
+    }
+    else
+    {
+      unsigned identifiersCount = 1;
+      for(auto& item : m_identifiers)
+      {
+        item.OutputToStream(ss, "Identifiers.DeleteClusterSnapshotMessage.", identifiersCount, "");
+        identifiersCount++;
+      }
     }
   }
 

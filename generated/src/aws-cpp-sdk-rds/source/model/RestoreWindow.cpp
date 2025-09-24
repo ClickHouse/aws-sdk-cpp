@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-RestoreWindow::RestoreWindow() : 
-    m_earliestTimeHasBeenSet(false),
-    m_latestTimeHasBeenSet(false)
-{
-}
-
-RestoreWindow::RestoreWindow(const XmlNode& xmlNode) : 
-    m_earliestTimeHasBeenSet(false),
-    m_latestTimeHasBeenSet(false)
+RestoreWindow::RestoreWindow(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

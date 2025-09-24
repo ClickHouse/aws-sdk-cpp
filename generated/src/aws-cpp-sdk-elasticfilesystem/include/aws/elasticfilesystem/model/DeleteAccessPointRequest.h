@@ -21,7 +21,7 @@ namespace Model
   class DeleteAccessPointRequest : public EFSRequest
   {
   public:
-    AWS_EFS_API DeleteAccessPointRequest();
+    AWS_EFS_API DeleteAccessPointRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_EFS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the access point that you want to delete.</p>
      */
-    inline const Aws::String& GetAccessPointId() const{ return m_accessPointId; }
-
-    /**
-     * <p>The ID of the access point that you want to delete.</p>
-     */
+    inline const Aws::String& GetAccessPointId() const { return m_accessPointId; }
     inline bool AccessPointIdHasBeenSet() const { return m_accessPointIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the access point that you want to delete.</p>
-     */
-    inline void SetAccessPointId(const Aws::String& value) { m_accessPointIdHasBeenSet = true; m_accessPointId = value; }
-
-    /**
-     * <p>The ID of the access point that you want to delete.</p>
-     */
-    inline void SetAccessPointId(Aws::String&& value) { m_accessPointIdHasBeenSet = true; m_accessPointId = std::move(value); }
-
-    /**
-     * <p>The ID of the access point that you want to delete.</p>
-     */
-    inline void SetAccessPointId(const char* value) { m_accessPointIdHasBeenSet = true; m_accessPointId.assign(value); }
-
-    /**
-     * <p>The ID of the access point that you want to delete.</p>
-     */
-    inline DeleteAccessPointRequest& WithAccessPointId(const Aws::String& value) { SetAccessPointId(value); return *this;}
-
-    /**
-     * <p>The ID of the access point that you want to delete.</p>
-     */
-    inline DeleteAccessPointRequest& WithAccessPointId(Aws::String&& value) { SetAccessPointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the access point that you want to delete.</p>
-     */
-    inline DeleteAccessPointRequest& WithAccessPointId(const char* value) { SetAccessPointId(value); return *this;}
-
+    template<typename AccessPointIdT = Aws::String>
+    void SetAccessPointId(AccessPointIdT&& value) { m_accessPointIdHasBeenSet = true; m_accessPointId = std::forward<AccessPointIdT>(value); }
+    template<typename AccessPointIdT = Aws::String>
+    DeleteAccessPointRequest& WithAccessPointId(AccessPointIdT&& value) { SetAccessPointId(std::forward<AccessPointIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accessPointId;

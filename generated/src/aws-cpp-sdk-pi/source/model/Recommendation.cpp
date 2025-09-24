@@ -18,15 +18,7 @@ namespace PI
 namespace Model
 {
 
-Recommendation::Recommendation() : 
-    m_recommendationIdHasBeenSet(false),
-    m_recommendationDescriptionHasBeenSet(false)
-{
-}
-
-Recommendation::Recommendation(JsonView jsonValue) : 
-    m_recommendationIdHasBeenSet(false),
-    m_recommendationDescriptionHasBeenSet(false)
+Recommendation::Recommendation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Recommendation& Recommendation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RecommendationId"))
   {
     m_recommendationId = jsonValue.GetString("RecommendationId");
-
     m_recommendationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RecommendationDescription"))
   {
     m_recommendationDescription = jsonValue.GetString("RecommendationDescription");
-
     m_recommendationDescriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

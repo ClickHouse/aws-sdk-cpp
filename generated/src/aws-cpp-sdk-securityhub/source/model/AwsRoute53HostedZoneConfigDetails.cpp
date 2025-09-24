@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsRoute53HostedZoneConfigDetails::AwsRoute53HostedZoneConfigDetails() : 
-    m_commentHasBeenSet(false)
-{
-}
-
-AwsRoute53HostedZoneConfigDetails::AwsRoute53HostedZoneConfigDetails(JsonView jsonValue) : 
-    m_commentHasBeenSet(false)
+AwsRoute53HostedZoneConfigDetails::AwsRoute53HostedZoneConfigDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AwsRoute53HostedZoneConfigDetails& AwsRoute53HostedZoneConfigDetails::operator =
   if(jsonValue.ValueExists("Comment"))
   {
     m_comment = jsonValue.GetString("Comment");
-
     m_commentHasBeenSet = true;
   }
-
   return *this;
 }
 

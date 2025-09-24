@@ -62,6 +62,7 @@ file(GLOB UTILS_EVENT_HEADERS "include/aws/core/utils/event/*.h")
 file(GLOB UTILS_BASE64_HEADERS "include/aws/core/utils/base64/*.h")
 file(GLOB UTILS_CRYPTO_HEADERS "include/aws/core/utils/crypto/*.h")
 file(GLOB UTILS_JSON_HEADERS "include/aws/core/utils/json/*.h")
+file(GLOB UTILS_CBOR_HEADERS "include/aws/core/utils/cbor/*.h")
 file(GLOB UTILS_THREADING_HEADERS "include/aws/core/utils/threading/*.h")
 file(GLOB UTILS_XML_HEADERS "include/aws/core/utils/xml/*.h")
 file(GLOB UTILS_MEMORY_HEADERS "include/aws/core/utils/memory/*.h")
@@ -73,7 +74,25 @@ file(GLOB UTILS_STREAM_HEADERS "include/aws/core/utils/stream/*.h")
 file(GLOB CJSON_HEADERS "include/aws/core/external/cjson/*.h")
 file(GLOB TINYXML2_HEADERS "include/aws/core/external/tinyxml2/tinyxml2.h")
 file(GLOB SMITHY_HEADERS "include/smithy/*.h")
+file(GLOB SMITHY_CLIENT_HEADERS "include/smithy/client/*.h")
+file(GLOB SMITHY_CLIENT_IMPL_HEADERS "include/smithy/client/impl/*.h")
+file(GLOB SMITHY_CLIENT_COMMON_HEADERS "include/smithy/client/common/*.h")
+file(GLOB SMITHY_CLIENT_FEATURES_HEADERS "include/smithy/client/features/*.h")
+file(GLOB SMITHY_CLIENT_SERIALIZER_HEADERS "include/smithy/client/serializer/*.h")
 file(GLOB SMITHY_TRACING_HEADERS "include/smithy/tracing/*.h")
+file(GLOB SMITHY_IDENTITY_HEADERS "include/smithy/identity/*.h")
+file(GLOB SMITHY_IDENTITY_AUTH_HEADERS "include/smithy/identity/auth/*.h")
+file(GLOB SMITHY_IDENTITY_AUTH_IMPL_HEADERS "include/smithy/identity/auth/impl/*.h")
+file(GLOB SMITHY_IDENTITY_AUTH_BUILTIN_HEADERS "include/smithy/identity/auth/built-in/*.h")
+file(GLOB SMITHY_IDENTITY_IDENTITY_HEADERS "include/smithy/identity/identity/*.h")
+file(GLOB SMITHY_IDENTITY_RESOLVER_HEADERS "include/smithy/identity/resolver/*.h")
+file(GLOB SMITHY_IDENTITY_RESOLVER_BUILTIN_HEADERS "include/smithy/identity/resolver/built-in/*.h")
+file(GLOB SMITHY_IDENTITY_IDENTITY_IMPL_HEADERS "include/smithy/identity/identity/impl/*.h")
+file(GLOB SMITHY_IDENTITY_RESOLVER_IMPL_HEADERS "include/smithy/identity/resolver/impl/*.h")
+file(GLOB SMITHY_IDENTITY_SIGNER_HEADERS "include/smithy/identity/signer/*.h")
+file(GLOB SMITHY_IDENTITY_SIGNER_BUILTIN_HEADERS "include/smithy/identity/signer/built-in/*.h")
+file(GLOB SMITHY_INTERCEPTOR_HEADERS "include/smithy/interceptor/*.h")
+file(GLOB SMITHY_INTERCEPTOR_IMPL_HEADERS "include/smithy/interceptor/impl/*.h")
 
 file(GLOB AWS_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp")
 file(GLOB AWS_TINYXML2_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/external/tinyxml2/*.cpp")
@@ -97,6 +116,7 @@ file(GLOB UTILS_EVENT_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/event/*.c
 file(GLOB UTILS_BASE64_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/base64/*.cpp")
 file(GLOB UTILS_CRYPTO_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/crypto/*.cpp")
 file(GLOB UTILS_JSON_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/json/*.cpp")
+file(GLOB UTILS_CBOR_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/cbor/*.cpp")
 file(GLOB UTILS_THREADING_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/threading/*.cpp")
 file(GLOB UTILS_XML_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/xml/*.cpp")
 file(GLOB UTILS_LOGGING_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/logging/*.cpp")
@@ -106,6 +126,8 @@ file(GLOB UTILS_MEMORY_STL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/memo
 file(GLOB UTILS_STREAM_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/stream/*.cpp")
 file(GLOB UTILS_CRYPTO_FACTORY_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/crypto/factory/*.cpp")
 file(GLOB SMITHY_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/smithy/*.cpp")
+file(GLOB SMITHY_CLIENT_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/smithy/client/*.cpp")
+file(GLOB SMITHY_IDENTITY_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/smithy/identity/*.cpp")
 file(GLOB SMITHY_TRACING_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/smithy/tracing/*.cpp")
 
 include(CheckCSourceCompiles)
@@ -118,7 +140,18 @@ include(CheckCXXSourceRuns)
 if(ENABLE_CURL_CLIENT)
     file(GLOB HTTP_CURL_CLIENT_HEADERS "include/aws/core/http/curl/*.h")
     file(GLOB HTTP_CURL_CLIENT_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/http/curl/*.cpp")
-    set(CMAKE_REQUIRED_LIBRARIES ${CURL_LIBRARIES})
+    # If using aliased curl we need actual target.
+    if(TARGET "${CURL_LIBRARIES}")
+        get_property(aliased_target TARGET "${CURL_LIBRARIES}" PROPERTY ALIASED_TARGET)
+        if(NOT "${aliased_target}" STREQUAL "")
+            set(curl_lib "${aliased_target}")
+        else ()
+            set(curl_lib "${CURL_LIBRARIES}")
+        endif()
+    else ()
+        set(curl_lib "${CURL_LIBRARIES}")
+    endif ()
+    set(CMAKE_REQUIRED_LIBRARIES ${curl_lib})
     set(CHECK_CURL_HAS_H2 "
     #include <curl/curl.h>
     int main() {
@@ -158,50 +191,6 @@ elseif(ENABLE_WINDOWS_CLIENT)
     else()
         file(GLOB HTTP_WINDOWS_CLIENT_HEADERS "include/aws/core/http/windows/Win*.h")
         file(GLOB HTTP_WINDOWS_CLIENT_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/http/windows/Win*.cpp")
-
-        # Starting with Windows 10, version 1507, WinINet supports HTTP2.
-        # https://docs.microsoft.com/en-us/windows/desktop/WinInet/option-flags#INTERNET_OPTION_ENABLE_HTTP_PROTOCOL
-        # Starting with Windows 10, version 1607, WinHttp supports HTTP2.
-        # https://docs.microsoft.com/en-us/windows/desktop/WinHttp/option-flags#WINHTTP_OPTION_ENABLE_HTTP_PROTOCOL
-        set(CMAKE_REQUIRED_LIBRARIES "WinHttp.lib")
-        check_cxx_source_runs("
-        #include <Windows.h>
-        #include <winhttp.h>
-        int main() {
-
-        auto handle = WinHttpOpen(L\"aws-cpp-sdk\"/*user-agent*/,
-        WINHTTP_ACCESS_TYPE_NO_PROXY,
-        nullptr/*pszProxyW*/,
-        nullptr/*pszProxyBypassW*/,
-        0/*dwFlags*/);
-
-        DWORD http2 = WINHTTP_PROTOCOL_FLAG_HTTP2;
-        if (WinHttpSetOption(handle, WINHTTP_OPTION_ENABLE_HTTP_PROTOCOL, &http2, sizeof(http2)))
-        {
-            return 0;
-        }
-        return 1;
-        }" WINHTTP_HAS_H2)
-
-        set(CMAKE_REQUIRED_LIBRARIES "Wininet.lib")
-        check_cxx_source_runs("
-        #include <Windows.h>
-        #include <WinInet.h>
-        int main() {
-        auto handle = InternetOpenA(\"aws-cpp-sdk\"/*lpszAgent*/,
-            INTERNET_OPEN_TYPE_DIRECT /*dwAccessType*/,
-            nullptr /*lpszProxy*/,
-            nullptr /*lpszProxyBypass*/,
-            0 /*dwFlags*/);
-        DWORD http2 = HTTP_PROTOCOL_FLAG_HTTP2;
-        if (InternetSetOptionA(handle, INTERNET_OPTION_ENABLE_HTTP_PROTOCOL, &http2, sizeof(http2)))
-        {
-            return 0;
-        }
-        return 1;
-        }" WININET_HAS_H2)
-        unset(CMAKE_REQUIRED_LIBRARIES)
-
     endif()
 elseif(USE_CRT_HTTP_CLIENT)
     file(GLOB CRT_HTTP_HEADERS "include/aws/core/http/crt/*.h")
@@ -217,16 +206,10 @@ else()
     file(GLOB NET_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/net/*.cpp")
 endif()
 
-# encryption implementations
-if(ENABLE_BCRYPT_ENCRYPTION)
-    file(GLOB UTILS_CRYPTO_BCRYPT_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/aws/core/utils/crypto/bcrypt/*.h")
-    file(GLOB UTILS_CRYPTO_BCRYPT_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/crypto/bcrypt/*.cpp")
-elseif(ENABLE_OPENSSL_ENCRYPTION)
-    file(GLOB UTILS_CRYPTO_OPENSSL_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/aws/core/utils/crypto/openssl/*.h")
-    file(GLOB UTILS_CRYPTO_OPENSSL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/crypto/openssl/*.cpp")
-elseif(ENABLE_COMMONCRYPTO_ENCRYPTION)
-    file(GLOB UTILS_CRYPTO_COMMONCRYPTO_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/aws/core/utils/crypto/commoncrypto/*.h")
-    file(GLOB UTILS_CRYPTO_COMMONCRYPTO_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/crypto/commoncrypto/*.cpp")
+# encryption implementation
+if (NOT NO_ENCRYPTION)
+    file(GLOB UTILS_CRYPTO_CRT_HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/aws/core/utils/crypto/crt/*.h")
+    file(GLOB UTILS_CRYPTO_CRT_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/source/utils/crypto/crt/*.cpp")
 endif()
 
 if (BUILD_OPTEL)
@@ -257,9 +240,10 @@ file(GLOB AWS_NATIVE_SDK_COMMON_SRC
     ${UTILS_MEMORY_SOURCE}
     ${UTILS_COMPONENT_REGISTRY_SOURCE}
     ${UTILS_MEMORY_STL_SOURCE}
-    ${UTILS_CRYPTO_OPENSSL_SOURCE}
-    ${UTILS_CRYPTO_COMMONCRYPTO_SOURCE}
+    ${UTILS_CRYPTO_CRT_SOURCE}
     ${SMITHY_SOURCE}
+    ${SMITHY_CLIENT_SOURCE}
+    ${SMITHY_IDENTITY_SOURCE}
     ${SMITHY_TRACING_SOURCE}
 )
 
@@ -286,6 +270,7 @@ file(GLOB AWS_NATIVE_SDK_COMMON_HEADERS
   ${UTILS_BASE64_HEADERS}
   ${UTILS_CRYPTO_HEADERS}
   ${UTILS_JSON_HEADERS}
+  ${UTILS_CBOR_HEADERS}
   ${UTILS_THREADING_HEADERS}
   ${UTILS_RETRY_HEADERS}
   ${UTILS_XML_HEADERS}
@@ -299,12 +284,27 @@ file(GLOB AWS_NATIVE_SDK_COMMON_HEADERS
   ${TINYXML2_HEADERS}
   ${HTTP_CURL_CLIENT_HEADERS}
   ${HTTP_WINDOWS_CLIENT_HEADERS}
-  ${UTILS_CRYPTO_BCRYPT_HEADERS}
-  ${UTILS_CRYPTO_OPENSSL_HEADERS}
-  ${UTILS_CRYPTO_COMMONCRYPTO_HEADERS}
   ${SMITHY_HEADERS}
+  ${SMITHY_CLIENT_HEADERS}
+  ${SMITHY_CLIENT_IMPL_HEADERS}
+  ${SMITHY_CLIENT_COMMON_HEADERS}
+  ${SMITHY_CLIENT_FEATURES_HEADERS}
+  ${SMITHY_CLIENT_SERIALIZER_HEADERS}
   ${SMITHY_TRACING_HEADERS}
+  ${SMITHY_IDENTITY_HEADERS}
+  ${SMITHY_IDENTITY_AUTH_HEADERS}
+  ${SMITHY_IDENTITY_AUTH_IMPL_HEADERS}
+  ${SMITHY_IDENTITY_AUTH_BUILTIN_HEADERS}
+  ${SMITHY_IDENTITY_IDENTITY_HEADERS}
+  ${SMITHY_IDENTITY_SIGNER_HEADERS}
+  ${SMITHY_IDENTITY_IDENTITY_IMPL_HEADERS}
+  ${SMITHY_IDENTITY_SIGNER_IMPL_HEADERS}
+  ${SMITHY_IDENTITY_SIGNER_BUILTIN_HEADERS}
+  ${SMITHY_IDENTITY_RESOLVER_HEADERS}
+  ${SMITHY_IDENTITY_RESOLVER_BUILTIN_HEADERS}
   ${OPTEL_HEADERS}
+  ${SMITHY_INTERCEPTOR_HEADERS}
+  ${SMITHY_INTERCEPTOR_IMPL_HEADERS}
 )
 
 # misc platform-specific, not related to features (encryption/http clients)
@@ -351,6 +351,7 @@ file(GLOB AWS_NATIVE_SDK_NON_UNITY_SRC
     ${MONITORING_SOURCE}
     ${UTILS_CRYPTO_FACTORY_SOURCE}
     ${UTILS_JSON_SOURCE}
+    ${UTILS_CBOR_SOURCE}
     ${UTILS_EVENT_SOURCE}
     ${UTILS_SOURCE}
     ${NET_SOURCE}
@@ -405,9 +406,11 @@ if(MSVC)
     source_group("Header Files\\aws\\core\\utils" FILES ${UTILS_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\base64" FILES ${UTILS_BASE64_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\crypto" FILES ${UTILS_CRYPTO_HEADERS})
+    source_group("Header Files\\aws\\core\\utils\\crypto\\crt" FILES ${UTILS_CRYPTO_CRT_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\event" FILES ${UTILS_EVENT_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\exceptions" FILES ${UTILS_EXCEPTIONS_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\json" FILES ${UTILS_JSON_HEADERS})
+    source_group("Header Files\\aws\\core\\utils\\cbor" FILES ${UTILS_CBOR_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\threading" FILES ${UTILS_THREADING_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\xml" FILES ${UTILS_XML_HEADERS})
     source_group("Header Files\\aws\\core\\utils\\logging" FILES ${UTILS_LOGGING_HEADERS})
@@ -419,7 +422,24 @@ if(MSVC)
     source_group("Header Files\\aws\\core\\external\\cjson" FILES ${CJSON_HEADERS})
     source_group("Header Files\\aws\\core\\external\\tinyxml2" FILES ${TINYXML2_HEADERS})
     source_group("Header Files\\smithy" FILES ${SMITHY_HEADERS})
+    source_group("Header Files\\smithy\\client" FILES ${SMITHY_CLIENT_HEADERS})
+    source_group("Header Files\\smithy\\client" FILES ${SMITHY_CLIENT_IMPL_HEADERS})
+    source_group("Header Files\\smithy\\client" FILES ${SMITHY_CLIENT_COMMON_HEADERS})
+    source_group("Header Files\\smithy\\client" FILES ${SMITHY_CLIENT_FEATURES_HEADERS})
+    source_group("Header Files\\smithy\\client" FILES ${SMITHY_CLIENT_SERIALIZER_HEADERS})
     source_group("Header Files\\smithy\\tracing" FILES ${SMITHY_TRACING_HEADERS})
+    source_group("Header Files\\smithy\\identity\\auth" FILES ${SMITHY_IDENTITY_AUTH_HEADERS})
+    source_group("Header Files\\smithy\\identity\\auth\\impl" FILES ${SMITHY_IDENTITY_AUTH_IMPL_HEADERS})
+    source_group("Header Files\\smithy\\identity\\auth\\built-in" FILES ${SMITHY_IDENTITY_AUTH_BUILTIN_HEADERS})
+    source_group("Header Files\\smithy\\identity\\identity" FILES ${SMITHY_IDENTITY_IDENTITY_HEADERS})
+    source_group("Header Files\\smithy\\identity\\resolver" FILES ${SMITHY_IDENTITY_RESOLVER_HEADERS})
+    source_group("Header Files\\smithy\\identity\\resolver\\built-in" FILES ${SMITHY_IDENTITY_RESOLVER_BUILTIN_HEADERS})
+    source_group("Header Files\\smithy\\identity\\identity\\impl" FILES ${SMITHY_IDENTITY_IDENTITY_IMPL_HEADERS})
+    source_group("Header Files\\smithy\\identity\\resolver\\impl" FILES ${SMITHY_IDENTITY_RESOLVER_IMPL_HEADERS})
+    source_group("Header Files\\smithy\\identity\\signer" FILES ${SMITHY_IDENTITY_SIGNER_HEADERS})
+    source_group("Header Files\\smithy\\identity\\signer\\built-in" FILES ${SMITHY_IDENTITY_SIGNER_BUILTIN_HEADERS})
+    source_group("Header Files\\smithy\\interceptor" FILES ${SMITHY_INTERCEPTOR_HEADERS})
+    source_group("Header Files\\smithy\\interceptor" FILES ${SMITHY_INTERCEPTOR_IMPL_HEADERS})
 
     # http client conditional headers
     if(ENABLE_CURL_CLIENT)
@@ -428,16 +448,6 @@ if(MSVC)
         source_group("Header Files\\aws\\core\\http\\windows" FILES ${HTTP_WINDOWS_CLIENT_HEADERS})
     endif()
         source_group("Header Files\\aws\\core\\http\\crt" FILES ${CRT_HTTP_HEADERS})
-
-
-    # encryption conditional headers
-    if(ENABLE_BCRYPT_ENCRYPTION)
-        source_group("Header Files\\aws\\core\\utils\\crypto\\bcrypt" FILES ${UTILS_CRYPTO_BCRYPT_HEADERS})
-    elseif(ENABLE_OPENSSL_ENCRYPTION)
-        source_group("Header Files\\aws\\core\\utils\\crypto\\openssl" FILES ${UTILS_CRYPTO_OPENSSL_HEADERS})
-    elseif(ENABLE_COMMONCRYPTO_ENCRYPTION)
-        source_group("Header Files\\aws\\core\\utils\\crypto\\commoncrypto" FILES ${UTILS_CRYPTO_COMMONCRYPTO_HEADERS})
-    endif()
 
     if (BUILD_OPTEL)
         source_group("Header Files\\smithy\\tracing\\impl\\opentelemetry" FILES ${OPTEL_HEADERS})
@@ -468,6 +478,7 @@ if(MSVC)
     source_group("Source Files\\utils\\event" FILES ${UTILS_EVENT_SOURCE})
     source_group("Source Files\\utils\\exceptions" FILES ${UTILS_EXCEPTIONS_SOURCE})
     source_group("Source Files\\utils\\json" FILES ${UTILS_JSON_SOURCE})
+    source_group("Source Files\\utils\\cbor" FILES ${UTILS_CBOR_SOURCE})
     source_group("Source Files\\utils\\threading" FILES ${UTILS_THREADING_SOURCE})
     source_group("Source Files\\utils\\xml" FILES ${UTILS_XML_SOURCE})
     source_group("Source Files\\utils\\stream" FILES ${UTILS_STREAM_SOURCE})
@@ -476,6 +487,8 @@ if(MSVC)
     source_group("Source Files\\utils\\component-registry" FILES ${UTILS_COMPONENT_REGISTRY_SOURCE})
     source_group("Source Files\\utils\\memory\\stl" FILES ${UTILS_MEMORY_STL_SOURCE})
     source_group("Source Files\\smithy" FILES ${SMITHY_SOURCE})
+    source_group("Source Files\\smithy\\client" FILES ${SMITHY_CLIENT_SOURCE})
+    source_group("Source Files\\smithy\\identity" FILES ${SMITHY_IDENTITY_SOURCE})
     source_group("Source Files\\smithy\\tracing" FILES ${SMITHY_TRACING_SOURCE})
 
     # http client conditional source
@@ -489,20 +502,21 @@ if(MSVC)
 
 
     # encryption conditional source
-    if(ENABLE_BCRYPT_ENCRYPTION)
-        source_group("Source Files\\utils\\crypto\\bcrypt" FILES ${UTILS_CRYPTO_BCRYPT_SOURCE})
-    elseif(ENABLE_OPENSSL_ENCRYPTION)
-        source_group("Source Files\\utils\\crypto\\openssl" FILES ${UTILS_CRYPTO_OPENSSL_SOURCE})
-    elseif(ENABLE_COMMONCRYPTO_ENCRYPTION)
-            source_group("Source Files\\utils\\crypto\\commoncrypto" FILES ${UTILS_CRYPTO_COMMONCRYPTO_SOURCE})
+    if (NOT NO_ENCRYPTION)
+        source_group("Source Files\\utils\\crypto\\crt" FILES ${UTILS_CRYPTO_CRT_SOURCE})
     endif()
 
     if (BUILD_OPTEL)
         source_group("Source Files\\smithy\\tracing\\impl\\opentelemetry" FILES ${OPTEL_SOURCE})
     endif ()
-
-
 endif(MSVC)
+
+check_cxx_source_compiles("
+        #include <stdlib.h>
+        int main() {
+            void* ptr = aligned_alloc(24, 64);
+            return 0;
+        }" AWS_HAS_ALIGNED_ALLOC)
 
 add_library(${PROJECT_NAME} ${AWS_NATIVE_SDK_SRC})
 add_library(AWS::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
@@ -519,12 +533,24 @@ if (WINHTTP_HAS_H2)
     target_compile_definitions(${PROJECT_NAME} PRIVATE "WINHTTP_HAS_H2")
 endif()
 
+if (WINHTTP_HAS_H3)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE "WINHTTP_HAS_H3")
+endif()
+
 if (CURL_HAS_H2)
     target_compile_definitions(${PROJECT_NAME} PRIVATE "CURL_HAS_H2")
 endif()
 
 if (CURL_HAS_TLS_PROXY)
     target_compile_definitions(${PROJECT_NAME} PRIVATE "CURL_HAS_TLS_PROXY")
+endif()
+
+if (NO_ENCRYPTION)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE "NO_ENCRYPTION")
+endif()
+
+if (AWS_HAS_ALIGNED_ALLOC)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE "AWS_HAS_ALIGNED_ALLOC")
 endif()
 
 set(Core_INCLUDES "${CMAKE_CURRENT_SOURCE_DIR}/include/")
@@ -664,6 +690,7 @@ install (FILES ${UTILS_EVENT_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/
 install (FILES ${UTILS_BASE64_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/base64)
 install (FILES ${UTILS_CRYPTO_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/crypto)
 install (FILES ${UTILS_JSON_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/json)
+install (FILES ${UTILS_CBOR_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/cbor)
 install (FILES ${UTILS_RETRY_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/retry)
 install (FILES ${UTILS_XML_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/xml)
 install (FILES ${UTILS_LOGGING_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/logging)
@@ -676,7 +703,25 @@ install (FILES ${UTILS_THREADING_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/c
 install (FILES ${CJSON_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/external/cjson)
 install (FILES ${TINYXML2_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/external/tinyxml2)
 install (FILES ${SMITHY_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy)
+install (FILES ${SMITHY_CLIENT_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/client)
+install (FILES ${SMITHY_CLIENT_IMPL_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/client/impl)
+install (FILES ${SMITHY_CLIENT_COMMON_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/client/common)
+install (FILES ${SMITHY_CLIENT_FEATURES_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/client/features)
+install (FILES ${SMITHY_CLIENT_SERIALIZER_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/client/serializer)
 install (FILES ${SMITHY_TRACING_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/tracing)
+install (FILES ${SMITHY_IDENTITY_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity)
+install (FILES ${SMITHY_IDENTITY_AUTH_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity/auth)
+install (FILES ${SMITHY_IDENTITY_AUTH_IMPL_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity/auth/impl)
+install (FILES ${SMITHY_IDENTITY_AUTH_BUILTIN_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity/auth/built-in)
+install (FILES ${SMITHY_IDENTITY_IDENTITY_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity/identity)
+install (FILES ${SMITHY_IDENTITY_RESOLVER_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity/resolver)
+install (FILES ${SMITHY_IDENTITY_RESOLVER_BUILTIN_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity/resolver/built-in)
+install (FILES ${SMITHY_IDENTITY_IDENTITY_IMPL_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity/identity/impl)
+install (FILES ${SMITHY_IDENTITY_RESOLVER_IMPL_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity/resolver/impl)
+install (FILES ${SMITHY_IDENTITY_SIGNER_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity/signer)
+install (FILES ${SMITHY_IDENTITY_SIGNER_BUILTIN_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/identity/signer/built-in)
+install (FILES ${SMITHY_INTERCEPTOR_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/interceptor)
+install (FILES ${SMITHY_INTERCEPTOR_IMPL_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/smithy/interceptor)
 
 # android logcat headers
 if(PLATFORM_ANDROID)
@@ -698,13 +743,7 @@ endif()
 
 
 # encryption headers
-if(ENABLE_BCRYPT_ENCRYPTION)
-  install (FILES ${UTILS_CRYPTO_BCRYPT_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/crypto/bcrypt)
-elseif(ENABLE_OPENSSL_ENCRYPTION)
-  install (FILES ${UTILS_CRYPTO_OPENSSL_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/crypto/openssl)
-elseif(ENABLE_COMMONCRYPTO_ENCRYPTION)
-  install (FILES ${UTILS_CRYPTO_COMMONCRYPTO_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/crypto/commoncrypto)
-endif()
+install (FILES ${UTILS_CRYPTO_CRT_HEADERS} DESTINATION ${INCLUDE_DIRECTORY}/aws/core/utils/crypto/crt)
 
 do_packaging()
 

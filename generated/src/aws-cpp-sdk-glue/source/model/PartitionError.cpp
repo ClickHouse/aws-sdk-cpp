@@ -18,15 +18,7 @@ namespace Glue
 namespace Model
 {
 
-PartitionError::PartitionError() : 
-    m_partitionValuesHasBeenSet(false),
-    m_errorDetailHasBeenSet(false)
-{
-}
-
-PartitionError::PartitionError(JsonView jsonValue) : 
-    m_partitionValuesHasBeenSet(false),
-    m_errorDetailHasBeenSet(false)
+PartitionError::PartitionError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ PartitionError& PartitionError::operator =(JsonView jsonValue)
     }
     m_partitionValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorDetail"))
   {
     m_errorDetail = jsonValue.GetObject("ErrorDetail");
-
     m_errorDetailHasBeenSet = true;
   }
-
   return *this;
 }
 

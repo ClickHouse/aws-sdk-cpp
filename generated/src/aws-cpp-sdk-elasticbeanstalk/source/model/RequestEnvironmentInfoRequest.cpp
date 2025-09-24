@@ -10,14 +10,6 @@
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils;
 
-RequestEnvironmentInfoRequest::RequestEnvironmentInfoRequest() : 
-    m_environmentIdHasBeenSet(false),
-    m_environmentNameHasBeenSet(false),
-    m_infoType(EnvironmentInfoType::NOT_SET),
-    m_infoTypeHasBeenSet(false)
-{
-}
-
 Aws::String RequestEnvironmentInfoRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,7 +26,7 @@ Aws::String RequestEnvironmentInfoRequest::SerializePayload() const
 
   if(m_infoTypeHasBeenSet)
   {
-    ss << "InfoType=" << EnvironmentInfoTypeMapper::GetNameForEnvironmentInfoType(m_infoType) << "&";
+    ss << "InfoType=" << StringUtils::URLEncode(EnvironmentInfoTypeMapper::GetNameForEnvironmentInfoType(m_infoType)) << "&";
   }
 
   ss << "Version=2010-12-01";

@@ -18,29 +18,7 @@ namespace CloudHSMV2
 namespace Model
 {
 
-Hsm::Hsm() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_clusterIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_eniIdHasBeenSet(false),
-    m_eniIpHasBeenSet(false),
-    m_hsmIdHasBeenSet(false),
-    m_state(HsmState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateMessageHasBeenSet(false)
-{
-}
-
-Hsm::Hsm(JsonView jsonValue) : 
-    m_availabilityZoneHasBeenSet(false),
-    m_clusterIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_eniIdHasBeenSet(false),
-    m_eniIpHasBeenSet(false),
-    m_hsmIdHasBeenSet(false),
-    m_state(HsmState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateMessageHasBeenSet(false)
+Hsm::Hsm(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,59 +28,53 @@ Hsm& Hsm::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AvailabilityZone"))
   {
     m_availabilityZone = jsonValue.GetString("AvailabilityZone");
-
     m_availabilityZoneHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ClusterId"))
   {
     m_clusterId = jsonValue.GetString("ClusterId");
-
     m_clusterIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubnetId"))
   {
     m_subnetId = jsonValue.GetString("SubnetId");
-
     m_subnetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EniId"))
   {
     m_eniId = jsonValue.GetString("EniId");
-
     m_eniIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EniIp"))
   {
     m_eniIp = jsonValue.GetString("EniIp");
-
     m_eniIpHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("EniIpV6"))
+  {
+    m_eniIpV6 = jsonValue.GetString("EniIpV6");
+    m_eniIpV6HasBeenSet = true;
+  }
   if(jsonValue.ValueExists("HsmId"))
   {
     m_hsmId = jsonValue.GetString("HsmId");
-
     m_hsmIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("HsmType"))
+  {
+    m_hsmType = jsonValue.GetString("HsmType");
+    m_hsmTypeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("State"))
   {
     m_state = HsmStateMapper::GetHsmStateForName(jsonValue.GetString("State"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StateMessage"))
   {
     m_stateMessage = jsonValue.GetString("StateMessage");
-
     m_stateMessageHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -140,9 +112,21 @@ JsonValue Hsm::Jsonize() const
 
   }
 
+  if(m_eniIpV6HasBeenSet)
+  {
+   payload.WithString("EniIpV6", m_eniIpV6);
+
+  }
+
   if(m_hsmIdHasBeenSet)
   {
    payload.WithString("HsmId", m_hsmId);
+
+  }
+
+  if(m_hsmTypeHasBeenSet)
+  {
+   payload.WithString("HsmType", m_hsmType);
 
   }
 

@@ -12,28 +12,13 @@ using namespace Aws::QBusiness::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateApplicationRequest::UpdateApplicationRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_attachmentsConfigurationHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_roleArnHasBeenSet(false)
-{
-}
-
 Aws::String UpdateApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_attachmentsConfigurationHasBeenSet)
+  if(m_identityCenterInstanceArnHasBeenSet)
   {
-   payload.WithObject("attachmentsConfiguration", m_attachmentsConfiguration.Jsonize());
-
-  }
-
-  if(m_descriptionHasBeenSet)
-  {
-   payload.WithString("description", m_description);
+   payload.WithString("identityCenterInstanceArn", m_identityCenterInstanceArn);
 
   }
 
@@ -43,9 +28,39 @@ Aws::String UpdateApplicationRequest::SerializePayload() const
 
   }
 
+  if(m_descriptionHasBeenSet)
+  {
+   payload.WithString("description", m_description);
+
+  }
+
   if(m_roleArnHasBeenSet)
   {
    payload.WithString("roleArn", m_roleArn);
+
+  }
+
+  if(m_attachmentsConfigurationHasBeenSet)
+  {
+   payload.WithObject("attachmentsConfiguration", m_attachmentsConfiguration.Jsonize());
+
+  }
+
+  if(m_qAppsConfigurationHasBeenSet)
+  {
+   payload.WithObject("qAppsConfiguration", m_qAppsConfiguration.Jsonize());
+
+  }
+
+  if(m_personalizationConfigurationHasBeenSet)
+  {
+   payload.WithObject("personalizationConfiguration", m_personalizationConfiguration.Jsonize());
+
+  }
+
+  if(m_autoSubscriptionConfigurationHasBeenSet)
+  {
+   payload.WithObject("autoSubscriptionConfiguration", m_autoSubscriptionConfiguration.Jsonize());
 
   }
 

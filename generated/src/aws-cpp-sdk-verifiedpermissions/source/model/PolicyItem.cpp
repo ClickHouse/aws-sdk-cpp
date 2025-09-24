@@ -18,29 +18,7 @@ namespace VerifiedPermissions
 namespace Model
 {
 
-PolicyItem::PolicyItem() : 
-    m_policyStoreIdHasBeenSet(false),
-    m_policyIdHasBeenSet(false),
-    m_policyType(PolicyType::NOT_SET),
-    m_policyTypeHasBeenSet(false),
-    m_principalHasBeenSet(false),
-    m_resourceHasBeenSet(false),
-    m_definitionHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_lastUpdatedDateHasBeenSet(false)
-{
-}
-
-PolicyItem::PolicyItem(JsonView jsonValue) : 
-    m_policyStoreIdHasBeenSet(false),
-    m_policyIdHasBeenSet(false),
-    m_policyType(PolicyType::NOT_SET),
-    m_policyTypeHasBeenSet(false),
-    m_principalHasBeenSet(false),
-    m_resourceHasBeenSet(false),
-    m_definitionHasBeenSet(false),
-    m_createdDateHasBeenSet(false),
-    m_lastUpdatedDateHasBeenSet(false)
+PolicyItem::PolicyItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,59 +28,57 @@ PolicyItem& PolicyItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("policyStoreId"))
   {
     m_policyStoreId = jsonValue.GetString("policyStoreId");
-
     m_policyStoreIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("policyId"))
   {
     m_policyId = jsonValue.GetString("policyId");
-
     m_policyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("policyType"))
   {
     m_policyType = PolicyTypeMapper::GetPolicyTypeForName(jsonValue.GetString("policyType"));
-
     m_policyTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("principal"))
   {
     m_principal = jsonValue.GetObject("principal");
-
     m_principalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resource"))
   {
     m_resource = jsonValue.GetObject("resource");
-
     m_resourceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("actions"))
+  {
+    Aws::Utils::Array<JsonView> actionsJsonList = jsonValue.GetArray("actions");
+    for(unsigned actionsIndex = 0; actionsIndex < actionsJsonList.GetLength(); ++actionsIndex)
+    {
+      m_actions.push_back(actionsJsonList[actionsIndex].AsObject());
+    }
+    m_actionsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("definition"))
   {
     m_definition = jsonValue.GetObject("definition");
-
     m_definitionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdDate"))
   {
     m_createdDate = jsonValue.GetString("createdDate");
-
     m_createdDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastUpdatedDate"))
   {
     m_lastUpdatedDate = jsonValue.GetString("lastUpdatedDate");
-
     m_lastUpdatedDateHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("effect"))
+  {
+    m_effect = PolicyEffectMapper::GetPolicyEffectForName(jsonValue.GetString("effect"));
+    m_effectHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -139,6 +115,17 @@ JsonValue PolicyItem::Jsonize() const
 
   }
 
+  if(m_actionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> actionsJsonList(m_actions.size());
+   for(unsigned actionsIndex = 0; actionsIndex < actionsJsonList.GetLength(); ++actionsIndex)
+   {
+     actionsJsonList[actionsIndex].AsObject(m_actions[actionsIndex].Jsonize());
+   }
+   payload.WithArray("actions", std::move(actionsJsonList));
+
+  }
+
   if(m_definitionHasBeenSet)
   {
    payload.WithObject("definition", m_definition.Jsonize());
@@ -153,6 +140,11 @@ JsonValue PolicyItem::Jsonize() const
   if(m_lastUpdatedDateHasBeenSet)
   {
    payload.WithString("lastUpdatedDate", m_lastUpdatedDate.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
+  }
+
+  if(m_effectHasBeenSet)
+  {
+   payload.WithString("effect", PolicyEffectMapper::GetNameForPolicyEffect(m_effect));
   }
 
   return payload;

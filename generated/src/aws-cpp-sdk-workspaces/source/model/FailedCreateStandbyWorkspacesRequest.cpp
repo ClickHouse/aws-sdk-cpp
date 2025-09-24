@@ -18,17 +18,7 @@ namespace WorkSpaces
 namespace Model
 {
 
-FailedCreateStandbyWorkspacesRequest::FailedCreateStandbyWorkspacesRequest() : 
-    m_standbyWorkspaceRequestHasBeenSet(false),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-FailedCreateStandbyWorkspacesRequest::FailedCreateStandbyWorkspacesRequest(JsonView jsonValue) : 
-    m_standbyWorkspaceRequestHasBeenSet(false),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+FailedCreateStandbyWorkspacesRequest::FailedCreateStandbyWorkspacesRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ FailedCreateStandbyWorkspacesRequest& FailedCreateStandbyWorkspacesRequest::oper
   if(jsonValue.ValueExists("StandbyWorkspaceRequest"))
   {
     m_standbyWorkspaceRequest = jsonValue.GetObject("StandbyWorkspaceRequest");
-
     m_standbyWorkspaceRequestHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorCode"))
   {
     m_errorCode = jsonValue.GetString("ErrorCode");
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

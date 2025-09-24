@@ -21,7 +21,7 @@ namespace Model
   class DescribeBackupPolicyRequest : public EFSRequest
   {
   public:
-    AWS_EFS_API DescribeBackupPolicyRequest();
+    AWS_EFS_API DescribeBackupPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_EFS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Specifies which EFS file system for which to retrieve the
      * <code>BackupPolicy</code>.</p>
      */
-    inline const Aws::String& GetFileSystemId() const{ return m_fileSystemId; }
-
-    /**
-     * <p>Specifies which EFS file system for which to retrieve the
-     * <code>BackupPolicy</code>.</p>
-     */
+    inline const Aws::String& GetFileSystemId() const { return m_fileSystemId; }
     inline bool FileSystemIdHasBeenSet() const { return m_fileSystemIdHasBeenSet; }
-
-    /**
-     * <p>Specifies which EFS file system for which to retrieve the
-     * <code>BackupPolicy</code>.</p>
-     */
-    inline void SetFileSystemId(const Aws::String& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = value; }
-
-    /**
-     * <p>Specifies which EFS file system for which to retrieve the
-     * <code>BackupPolicy</code>.</p>
-     */
-    inline void SetFileSystemId(Aws::String&& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = std::move(value); }
-
-    /**
-     * <p>Specifies which EFS file system for which to retrieve the
-     * <code>BackupPolicy</code>.</p>
-     */
-    inline void SetFileSystemId(const char* value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId.assign(value); }
-
-    /**
-     * <p>Specifies which EFS file system for which to retrieve the
-     * <code>BackupPolicy</code>.</p>
-     */
-    inline DescribeBackupPolicyRequest& WithFileSystemId(const Aws::String& value) { SetFileSystemId(value); return *this;}
-
-    /**
-     * <p>Specifies which EFS file system for which to retrieve the
-     * <code>BackupPolicy</code>.</p>
-     */
-    inline DescribeBackupPolicyRequest& WithFileSystemId(Aws::String&& value) { SetFileSystemId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies which EFS file system for which to retrieve the
-     * <code>BackupPolicy</code>.</p>
-     */
-    inline DescribeBackupPolicyRequest& WithFileSystemId(const char* value) { SetFileSystemId(value); return *this;}
-
+    template<typename FileSystemIdT = Aws::String>
+    void SetFileSystemId(FileSystemIdT&& value) { m_fileSystemIdHasBeenSet = true; m_fileSystemId = std::forward<FileSystemIdT>(value); }
+    template<typename FileSystemIdT = Aws::String>
+    DescribeBackupPolicyRequest& WithFileSystemId(FileSystemIdT&& value) { SetFileSystemId(std::forward<FileSystemIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fileSystemId;

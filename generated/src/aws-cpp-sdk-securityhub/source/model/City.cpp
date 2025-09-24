@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-City::City() : 
-    m_cityNameHasBeenSet(false)
-{
-}
-
-City::City(JsonView jsonValue) : 
-    m_cityNameHasBeenSet(false)
+City::City(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ City& City::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CityName"))
   {
     m_cityName = jsonValue.GetString("CityName");
-
     m_cityNameHasBeenSet = true;
   }
-
   return *this;
 }
 

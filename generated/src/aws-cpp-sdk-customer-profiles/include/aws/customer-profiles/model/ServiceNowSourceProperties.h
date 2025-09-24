@@ -32,52 +32,23 @@ namespace Model
   class ServiceNowSourceProperties
   {
   public:
-    AWS_CUSTOMERPROFILES_API ServiceNowSourceProperties();
+    AWS_CUSTOMERPROFILES_API ServiceNowSourceProperties() = default;
     AWS_CUSTOMERPROFILES_API ServiceNowSourceProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API ServiceNowSourceProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The object specified in the ServiceNow flow source.</p>
      */
-    inline const Aws::String& GetObject() const{ return m_object; }
-
-    /**
-     * <p>The object specified in the ServiceNow flow source.</p>
-     */
+    inline const Aws::String& GetObject() const { return m_object; }
     inline bool ObjectHasBeenSet() const { return m_objectHasBeenSet; }
-
-    /**
-     * <p>The object specified in the ServiceNow flow source.</p>
-     */
-    inline void SetObject(const Aws::String& value) { m_objectHasBeenSet = true; m_object = value; }
-
-    /**
-     * <p>The object specified in the ServiceNow flow source.</p>
-     */
-    inline void SetObject(Aws::String&& value) { m_objectHasBeenSet = true; m_object = std::move(value); }
-
-    /**
-     * <p>The object specified in the ServiceNow flow source.</p>
-     */
-    inline void SetObject(const char* value) { m_objectHasBeenSet = true; m_object.assign(value); }
-
-    /**
-     * <p>The object specified in the ServiceNow flow source.</p>
-     */
-    inline ServiceNowSourceProperties& WithObject(const Aws::String& value) { SetObject(value); return *this;}
-
-    /**
-     * <p>The object specified in the ServiceNow flow source.</p>
-     */
-    inline ServiceNowSourceProperties& WithObject(Aws::String&& value) { SetObject(std::move(value)); return *this;}
-
-    /**
-     * <p>The object specified in the ServiceNow flow source.</p>
-     */
-    inline ServiceNowSourceProperties& WithObject(const char* value) { SetObject(value); return *this;}
-
+    template<typename ObjectT = Aws::String>
+    void SetObject(ObjectT&& value) { m_objectHasBeenSet = true; m_object = std::forward<ObjectT>(value); }
+    template<typename ObjectT = Aws::String>
+    ServiceNowSourceProperties& WithObject(ObjectT&& value) { SetObject(std::forward<ObjectT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_object;

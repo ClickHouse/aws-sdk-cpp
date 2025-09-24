@@ -12,14 +12,6 @@ using namespace Aws::DynamoDBStreams::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeStreamRequest::DescribeStreamRequest() : 
-    m_streamArnHasBeenSet(false),
-    m_limit(0),
-    m_limitHasBeenSet(false),
-    m_exclusiveStartShardIdHasBeenSet(false)
-{
-}
-
 Aws::String DescribeStreamRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,6 +31,12 @@ Aws::String DescribeStreamRequest::SerializePayload() const
   if(m_exclusiveStartShardIdHasBeenSet)
   {
    payload.WithString("ExclusiveStartShardId", m_exclusiveStartShardId);
+
+  }
+
+  if(m_shardFilterHasBeenSet)
+  {
+   payload.WithObject("ShardFilter", m_shardFilter.Jsonize());
 
   }
 

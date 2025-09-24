@@ -22,7 +22,7 @@ namespace Model
   class UpdateRuleMetadataRequest : public FraudDetectorRequest
   {
   public:
-    AWS_FRAUDDETECTOR_API UpdateRuleMetadataRequest();
+    AWS_FRAUDDETECTOR_API UpdateRuleMetadataRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,77 +35,29 @@ namespace Model
     AWS_FRAUDDETECTOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The rule to update.</p>
      */
-    inline const Rule& GetRule() const{ return m_rule; }
-
-    /**
-     * <p>The rule to update.</p>
-     */
+    inline const Rule& GetRule() const { return m_rule; }
     inline bool RuleHasBeenSet() const { return m_ruleHasBeenSet; }
+    template<typename RuleT = Rule>
+    void SetRule(RuleT&& value) { m_ruleHasBeenSet = true; m_rule = std::forward<RuleT>(value); }
+    template<typename RuleT = Rule>
+    UpdateRuleMetadataRequest& WithRule(RuleT&& value) { SetRule(std::forward<RuleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The rule to update.</p>
-     */
-    inline void SetRule(const Rule& value) { m_ruleHasBeenSet = true; m_rule = value; }
-
-    /**
-     * <p>The rule to update.</p>
-     */
-    inline void SetRule(Rule&& value) { m_ruleHasBeenSet = true; m_rule = std::move(value); }
-
-    /**
-     * <p>The rule to update.</p>
-     */
-    inline UpdateRuleMetadataRequest& WithRule(const Rule& value) { SetRule(value); return *this;}
-
-    /**
-     * <p>The rule to update.</p>
-     */
-    inline UpdateRuleMetadataRequest& WithRule(Rule&& value) { SetRule(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The rule description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The rule description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>The rule description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The rule description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The rule description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The rule description.</p>
-     */
-    inline UpdateRuleMetadataRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The rule description.</p>
-     */
-    inline UpdateRuleMetadataRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The rule description.</p>
-     */
-    inline UpdateRuleMetadataRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateRuleMetadataRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Rule m_rule;

@@ -12,12 +12,6 @@ using namespace Aws::EntityResolution::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetMatchIdRequest::GetMatchIdRequest() : 
-    m_recordHasBeenSet(false),
-    m_workflowNameHasBeenSet(false)
-{
-}
-
 Aws::String GetMatchIdRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -30,6 +24,12 @@ Aws::String GetMatchIdRequest::SerializePayload() const
      recordJsonMap.WithString(recordItem.first, recordItem.second);
    }
    payload.WithObject("record", std::move(recordJsonMap));
+
+  }
+
+  if(m_applyNormalizationHasBeenSet)
+  {
+   payload.WithBool("applyNormalization", m_applyNormalization);
 
   }
 

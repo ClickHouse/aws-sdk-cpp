@@ -18,15 +18,7 @@ namespace SecretsManager
 namespace Model
 {
 
-ValidationErrorsEntry::ValidationErrorsEntry() : 
-    m_checkNameHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-ValidationErrorsEntry::ValidationErrorsEntry(JsonView jsonValue) : 
-    m_checkNameHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+ValidationErrorsEntry::ValidationErrorsEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ValidationErrorsEntry& ValidationErrorsEntry::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CheckName"))
   {
     m_checkName = jsonValue.GetString("CheckName");
-
     m_checkNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -31,52 +31,23 @@ namespace Model
   class BillingGroupProperties
   {
   public:
-    AWS_IOT_API BillingGroupProperties();
+    AWS_IOT_API BillingGroupProperties() = default;
     AWS_IOT_API BillingGroupProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API BillingGroupProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The description of the billing group.</p>
      */
-    inline const Aws::String& GetBillingGroupDescription() const{ return m_billingGroupDescription; }
-
-    /**
-     * <p>The description of the billing group.</p>
-     */
+    inline const Aws::String& GetBillingGroupDescription() const { return m_billingGroupDescription; }
     inline bool BillingGroupDescriptionHasBeenSet() const { return m_billingGroupDescriptionHasBeenSet; }
-
-    /**
-     * <p>The description of the billing group.</p>
-     */
-    inline void SetBillingGroupDescription(const Aws::String& value) { m_billingGroupDescriptionHasBeenSet = true; m_billingGroupDescription = value; }
-
-    /**
-     * <p>The description of the billing group.</p>
-     */
-    inline void SetBillingGroupDescription(Aws::String&& value) { m_billingGroupDescriptionHasBeenSet = true; m_billingGroupDescription = std::move(value); }
-
-    /**
-     * <p>The description of the billing group.</p>
-     */
-    inline void SetBillingGroupDescription(const char* value) { m_billingGroupDescriptionHasBeenSet = true; m_billingGroupDescription.assign(value); }
-
-    /**
-     * <p>The description of the billing group.</p>
-     */
-    inline BillingGroupProperties& WithBillingGroupDescription(const Aws::String& value) { SetBillingGroupDescription(value); return *this;}
-
-    /**
-     * <p>The description of the billing group.</p>
-     */
-    inline BillingGroupProperties& WithBillingGroupDescription(Aws::String&& value) { SetBillingGroupDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the billing group.</p>
-     */
-    inline BillingGroupProperties& WithBillingGroupDescription(const char* value) { SetBillingGroupDescription(value); return *this;}
-
+    template<typename BillingGroupDescriptionT = Aws::String>
+    void SetBillingGroupDescription(BillingGroupDescriptionT&& value) { m_billingGroupDescriptionHasBeenSet = true; m_billingGroupDescription = std::forward<BillingGroupDescriptionT>(value); }
+    template<typename BillingGroupDescriptionT = Aws::String>
+    BillingGroupProperties& WithBillingGroupDescription(BillingGroupDescriptionT&& value) { SetBillingGroupDescription(std::forward<BillingGroupDescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_billingGroupDescription;

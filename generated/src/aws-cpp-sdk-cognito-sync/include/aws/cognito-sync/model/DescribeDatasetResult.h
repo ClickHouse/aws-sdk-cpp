@@ -33,11 +33,12 @@ namespace Model
   class DescribeDatasetResult
   {
   public:
-    AWS_COGNITOSYNC_API DescribeDatasetResult();
+    AWS_COGNITOSYNC_API DescribeDatasetResult() = default;
     AWS_COGNITOSYNC_API DescribeDatasetResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COGNITOSYNC_API DescribeDatasetResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * Meta data for a collection of data for an identity. An identity can have
      * multiple datasets. A dataset can be general or associated with a particular
@@ -45,71 +46,28 @@ namespace Model
      * if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB
      * of key-value pairs.
      */
-    inline const Dataset& GetDataset() const{ return m_dataset; }
+    inline const Dataset& GetDataset() const { return m_dataset; }
+    template<typename DatasetT = Dataset>
+    void SetDataset(DatasetT&& value) { m_datasetHasBeenSet = true; m_dataset = std::forward<DatasetT>(value); }
+    template<typename DatasetT = Dataset>
+    DescribeDatasetResult& WithDataset(DatasetT&& value) { SetDataset(std::forward<DatasetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Meta data for a collection of data for an identity. An identity can have
-     * multiple datasets. A dataset can be general or associated with a particular
-     * entity in an application (like a saved game). Datasets are automatically created
-     * if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB
-     * of key-value pairs.
-     */
-    inline void SetDataset(const Dataset& value) { m_dataset = value; }
-
-    /**
-     * Meta data for a collection of data for an identity. An identity can have
-     * multiple datasets. A dataset can be general or associated with a particular
-     * entity in an application (like a saved game). Datasets are automatically created
-     * if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB
-     * of key-value pairs.
-     */
-    inline void SetDataset(Dataset&& value) { m_dataset = std::move(value); }
-
-    /**
-     * Meta data for a collection of data for an identity. An identity can have
-     * multiple datasets. A dataset can be general or associated with a particular
-     * entity in an application (like a saved game). Datasets are automatically created
-     * if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB
-     * of key-value pairs.
-     */
-    inline DescribeDatasetResult& WithDataset(const Dataset& value) { SetDataset(value); return *this;}
-
-    /**
-     * Meta data for a collection of data for an identity. An identity can have
-     * multiple datasets. A dataset can be general or associated with a particular
-     * entity in an application (like a saved game). Datasets are automatically created
-     * if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB
-     * of key-value pairs.
-     */
-    inline DescribeDatasetResult& WithDataset(Dataset&& value) { SetDataset(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeDatasetResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeDatasetResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeDatasetResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeDatasetResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Dataset m_dataset;
+    bool m_datasetHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

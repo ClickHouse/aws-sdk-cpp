@@ -33,104 +33,47 @@ namespace Model
   class NotificationDetails
   {
   public:
-    AWS_DATAEXCHANGE_API NotificationDetails();
+    AWS_DATAEXCHANGE_API NotificationDetails() = default;
     AWS_DATAEXCHANGE_API NotificationDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API NotificationDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Extra details specific to a data update type notification.</p>
      */
-    inline const DataUpdateRequestDetails& GetDataUpdate() const{ return m_dataUpdate; }
-
-    /**
-     * <p>Extra details specific to a data update type notification.</p>
-     */
+    inline const DataUpdateRequestDetails& GetDataUpdate() const { return m_dataUpdate; }
     inline bool DataUpdateHasBeenSet() const { return m_dataUpdateHasBeenSet; }
+    template<typename DataUpdateT = DataUpdateRequestDetails>
+    void SetDataUpdate(DataUpdateT&& value) { m_dataUpdateHasBeenSet = true; m_dataUpdate = std::forward<DataUpdateT>(value); }
+    template<typename DataUpdateT = DataUpdateRequestDetails>
+    NotificationDetails& WithDataUpdate(DataUpdateT&& value) { SetDataUpdate(std::forward<DataUpdateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Extra details specific to a data update type notification.</p>
-     */
-    inline void SetDataUpdate(const DataUpdateRequestDetails& value) { m_dataUpdateHasBeenSet = true; m_dataUpdate = value; }
-
-    /**
-     * <p>Extra details specific to a data update type notification.</p>
-     */
-    inline void SetDataUpdate(DataUpdateRequestDetails&& value) { m_dataUpdateHasBeenSet = true; m_dataUpdate = std::move(value); }
-
-    /**
-     * <p>Extra details specific to a data update type notification.</p>
-     */
-    inline NotificationDetails& WithDataUpdate(const DataUpdateRequestDetails& value) { SetDataUpdate(value); return *this;}
-
-    /**
-     * <p>Extra details specific to a data update type notification.</p>
-     */
-    inline NotificationDetails& WithDataUpdate(DataUpdateRequestDetails&& value) { SetDataUpdate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Extra details specific to a deprecation type notification.</p>
      */
-    inline const DeprecationRequestDetails& GetDeprecation() const{ return m_deprecation; }
-
-    /**
-     * <p>Extra details specific to a deprecation type notification.</p>
-     */
+    inline const DeprecationRequestDetails& GetDeprecation() const { return m_deprecation; }
     inline bool DeprecationHasBeenSet() const { return m_deprecationHasBeenSet; }
+    template<typename DeprecationT = DeprecationRequestDetails>
+    void SetDeprecation(DeprecationT&& value) { m_deprecationHasBeenSet = true; m_deprecation = std::forward<DeprecationT>(value); }
+    template<typename DeprecationT = DeprecationRequestDetails>
+    NotificationDetails& WithDeprecation(DeprecationT&& value) { SetDeprecation(std::forward<DeprecationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Extra details specific to a deprecation type notification.</p>
-     */
-    inline void SetDeprecation(const DeprecationRequestDetails& value) { m_deprecationHasBeenSet = true; m_deprecation = value; }
-
-    /**
-     * <p>Extra details specific to a deprecation type notification.</p>
-     */
-    inline void SetDeprecation(DeprecationRequestDetails&& value) { m_deprecationHasBeenSet = true; m_deprecation = std::move(value); }
-
-    /**
-     * <p>Extra details specific to a deprecation type notification.</p>
-     */
-    inline NotificationDetails& WithDeprecation(const DeprecationRequestDetails& value) { SetDeprecation(value); return *this;}
-
-    /**
-     * <p>Extra details specific to a deprecation type notification.</p>
-     */
-    inline NotificationDetails& WithDeprecation(DeprecationRequestDetails&& value) { SetDeprecation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Extra details specific to a schema change type notification.</p>
      */
-    inline const SchemaChangeRequestDetails& GetSchemaChange() const{ return m_schemaChange; }
-
-    /**
-     * <p>Extra details specific to a schema change type notification.</p>
-     */
+    inline const SchemaChangeRequestDetails& GetSchemaChange() const { return m_schemaChange; }
     inline bool SchemaChangeHasBeenSet() const { return m_schemaChangeHasBeenSet; }
-
-    /**
-     * <p>Extra details specific to a schema change type notification.</p>
-     */
-    inline void SetSchemaChange(const SchemaChangeRequestDetails& value) { m_schemaChangeHasBeenSet = true; m_schemaChange = value; }
-
-    /**
-     * <p>Extra details specific to a schema change type notification.</p>
-     */
-    inline void SetSchemaChange(SchemaChangeRequestDetails&& value) { m_schemaChangeHasBeenSet = true; m_schemaChange = std::move(value); }
-
-    /**
-     * <p>Extra details specific to a schema change type notification.</p>
-     */
-    inline NotificationDetails& WithSchemaChange(const SchemaChangeRequestDetails& value) { SetSchemaChange(value); return *this;}
-
-    /**
-     * <p>Extra details specific to a schema change type notification.</p>
-     */
-    inline NotificationDetails& WithSchemaChange(SchemaChangeRequestDetails&& value) { SetSchemaChange(std::move(value)); return *this;}
-
+    template<typename SchemaChangeT = SchemaChangeRequestDetails>
+    void SetSchemaChange(SchemaChangeT&& value) { m_schemaChangeHasBeenSet = true; m_schemaChange = std::forward<SchemaChangeT>(value); }
+    template<typename SchemaChangeT = SchemaChangeRequestDetails>
+    NotificationDetails& WithSchemaChange(SchemaChangeT&& value) { SetSchemaChange(std::forward<SchemaChangeT>(value)); return *this;}
+    ///@}
   private:
 
     DataUpdateRequestDetails m_dataUpdate;

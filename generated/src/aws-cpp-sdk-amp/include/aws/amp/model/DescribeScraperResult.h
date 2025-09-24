@@ -26,71 +26,45 @@ namespace PrometheusService
 namespace Model
 {
   /**
-   * <p>Represents the output of a DescribeScraper operation.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Represents the output of a <code>DescribeScraper</code>
+   * operation.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/amp-2020-08-01/DescribeScraperResponse">AWS
    * API Reference</a></p>
    */
   class DescribeScraperResult
   {
   public:
-    AWS_PROMETHEUSSERVICE_API DescribeScraperResult();
+    AWS_PROMETHEUSSERVICE_API DescribeScraperResult() = default;
     AWS_PROMETHEUSSERVICE_API DescribeScraperResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PROMETHEUSSERVICE_API DescribeScraperResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The properties of the selected scrapers.</p>
+     * <p>Contains details about the scraper.</p>
      */
-    inline const ScraperDescription& GetScraper() const{ return m_scraper; }
+    inline const ScraperDescription& GetScraper() const { return m_scraper; }
+    template<typename ScraperT = ScraperDescription>
+    void SetScraper(ScraperT&& value) { m_scraperHasBeenSet = true; m_scraper = std::forward<ScraperT>(value); }
+    template<typename ScraperT = ScraperDescription>
+    DescribeScraperResult& WithScraper(ScraperT&& value) { SetScraper(std::forward<ScraperT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The properties of the selected scrapers.</p>
-     */
-    inline void SetScraper(const ScraperDescription& value) { m_scraper = value; }
-
-    /**
-     * <p>The properties of the selected scrapers.</p>
-     */
-    inline void SetScraper(ScraperDescription&& value) { m_scraper = std::move(value); }
-
-    /**
-     * <p>The properties of the selected scrapers.</p>
-     */
-    inline DescribeScraperResult& WithScraper(const ScraperDescription& value) { SetScraper(value); return *this;}
-
-    /**
-     * <p>The properties of the selected scrapers.</p>
-     */
-    inline DescribeScraperResult& WithScraper(ScraperDescription&& value) { SetScraper(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeScraperResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeScraperResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeScraperResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeScraperResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ScraperDescription m_scraper;
+    bool m_scraperHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

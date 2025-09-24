@@ -33,134 +33,55 @@ namespace Model
   class NielsenWatermarksSettings
   {
   public:
-    AWS_MEDIALIVE_API NielsenWatermarksSettings();
+    AWS_MEDIALIVE_API NielsenWatermarksSettings() = default;
     AWS_MEDIALIVE_API NielsenWatermarksSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API NielsenWatermarksSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Complete these fields only if you want to insert watermarks of type Nielsen CBET
      */
-    inline const NielsenCBET& GetNielsenCbetSettings() const{ return m_nielsenCbetSettings; }
-
-    /**
-     * Complete these fields only if you want to insert watermarks of type Nielsen CBET
-     */
+    inline const NielsenCBET& GetNielsenCbetSettings() const { return m_nielsenCbetSettings; }
     inline bool NielsenCbetSettingsHasBeenSet() const { return m_nielsenCbetSettingsHasBeenSet; }
+    template<typename NielsenCbetSettingsT = NielsenCBET>
+    void SetNielsenCbetSettings(NielsenCbetSettingsT&& value) { m_nielsenCbetSettingsHasBeenSet = true; m_nielsenCbetSettings = std::forward<NielsenCbetSettingsT>(value); }
+    template<typename NielsenCbetSettingsT = NielsenCBET>
+    NielsenWatermarksSettings& WithNielsenCbetSettings(NielsenCbetSettingsT&& value) { SetNielsenCbetSettings(std::forward<NielsenCbetSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Complete these fields only if you want to insert watermarks of type Nielsen CBET
-     */
-    inline void SetNielsenCbetSettings(const NielsenCBET& value) { m_nielsenCbetSettingsHasBeenSet = true; m_nielsenCbetSettings = value; }
-
-    /**
-     * Complete these fields only if you want to insert watermarks of type Nielsen CBET
-     */
-    inline void SetNielsenCbetSettings(NielsenCBET&& value) { m_nielsenCbetSettingsHasBeenSet = true; m_nielsenCbetSettings = std::move(value); }
-
-    /**
-     * Complete these fields only if you want to insert watermarks of type Nielsen CBET
-     */
-    inline NielsenWatermarksSettings& WithNielsenCbetSettings(const NielsenCBET& value) { SetNielsenCbetSettings(value); return *this;}
-
-    /**
-     * Complete these fields only if you want to insert watermarks of type Nielsen CBET
-     */
-    inline NielsenWatermarksSettings& WithNielsenCbetSettings(NielsenCBET&& value) { SetNielsenCbetSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Choose the distribution types that you want to assign to the watermarks:
 -
      * PROGRAM_CONTENT
 - FINAL_DISTRIBUTOR
      */
-    inline const NielsenWatermarksDistributionTypes& GetNielsenDistributionType() const{ return m_nielsenDistributionType; }
-
-    /**
-     * Choose the distribution types that you want to assign to the watermarks:
--
-     * PROGRAM_CONTENT
-- FINAL_DISTRIBUTOR
-     */
+    inline NielsenWatermarksDistributionTypes GetNielsenDistributionType() const { return m_nielsenDistributionType; }
     inline bool NielsenDistributionTypeHasBeenSet() const { return m_nielsenDistributionTypeHasBeenSet; }
+    inline void SetNielsenDistributionType(NielsenWatermarksDistributionTypes value) { m_nielsenDistributionTypeHasBeenSet = true; m_nielsenDistributionType = value; }
+    inline NielsenWatermarksSettings& WithNielsenDistributionType(NielsenWatermarksDistributionTypes value) { SetNielsenDistributionType(value); return *this;}
+    ///@}
 
-    /**
-     * Choose the distribution types that you want to assign to the watermarks:
--
-     * PROGRAM_CONTENT
-- FINAL_DISTRIBUTOR
-     */
-    inline void SetNielsenDistributionType(const NielsenWatermarksDistributionTypes& value) { m_nielsenDistributionTypeHasBeenSet = true; m_nielsenDistributionType = value; }
-
-    /**
-     * Choose the distribution types that you want to assign to the watermarks:
--
-     * PROGRAM_CONTENT
-- FINAL_DISTRIBUTOR
-     */
-    inline void SetNielsenDistributionType(NielsenWatermarksDistributionTypes&& value) { m_nielsenDistributionTypeHasBeenSet = true; m_nielsenDistributionType = std::move(value); }
-
-    /**
-     * Choose the distribution types that you want to assign to the watermarks:
--
-     * PROGRAM_CONTENT
-- FINAL_DISTRIBUTOR
-     */
-    inline NielsenWatermarksSettings& WithNielsenDistributionType(const NielsenWatermarksDistributionTypes& value) { SetNielsenDistributionType(value); return *this;}
-
-    /**
-     * Choose the distribution types that you want to assign to the watermarks:
--
-     * PROGRAM_CONTENT
-- FINAL_DISTRIBUTOR
-     */
-    inline NielsenWatermarksSettings& WithNielsenDistributionType(NielsenWatermarksDistributionTypes&& value) { SetNielsenDistributionType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Complete these fields only if you want to insert watermarks of type Nielsen NAES
      * II (N2) and Nielsen NAES VI (NW).
      */
-    inline const NielsenNaesIiNw& GetNielsenNaesIiNwSettings() const{ return m_nielsenNaesIiNwSettings; }
-
-    /**
-     * Complete these fields only if you want to insert watermarks of type Nielsen NAES
-     * II (N2) and Nielsen NAES VI (NW).
-     */
+    inline const NielsenNaesIiNw& GetNielsenNaesIiNwSettings() const { return m_nielsenNaesIiNwSettings; }
     inline bool NielsenNaesIiNwSettingsHasBeenSet() const { return m_nielsenNaesIiNwSettingsHasBeenSet; }
-
-    /**
-     * Complete these fields only if you want to insert watermarks of type Nielsen NAES
-     * II (N2) and Nielsen NAES VI (NW).
-     */
-    inline void SetNielsenNaesIiNwSettings(const NielsenNaesIiNw& value) { m_nielsenNaesIiNwSettingsHasBeenSet = true; m_nielsenNaesIiNwSettings = value; }
-
-    /**
-     * Complete these fields only if you want to insert watermarks of type Nielsen NAES
-     * II (N2) and Nielsen NAES VI (NW).
-     */
-    inline void SetNielsenNaesIiNwSettings(NielsenNaesIiNw&& value) { m_nielsenNaesIiNwSettingsHasBeenSet = true; m_nielsenNaesIiNwSettings = std::move(value); }
-
-    /**
-     * Complete these fields only if you want to insert watermarks of type Nielsen NAES
-     * II (N2) and Nielsen NAES VI (NW).
-     */
-    inline NielsenWatermarksSettings& WithNielsenNaesIiNwSettings(const NielsenNaesIiNw& value) { SetNielsenNaesIiNwSettings(value); return *this;}
-
-    /**
-     * Complete these fields only if you want to insert watermarks of type Nielsen NAES
-     * II (N2) and Nielsen NAES VI (NW).
-     */
-    inline NielsenWatermarksSettings& WithNielsenNaesIiNwSettings(NielsenNaesIiNw&& value) { SetNielsenNaesIiNwSettings(std::move(value)); return *this;}
-
+    template<typename NielsenNaesIiNwSettingsT = NielsenNaesIiNw>
+    void SetNielsenNaesIiNwSettings(NielsenNaesIiNwSettingsT&& value) { m_nielsenNaesIiNwSettingsHasBeenSet = true; m_nielsenNaesIiNwSettings = std::forward<NielsenNaesIiNwSettingsT>(value); }
+    template<typename NielsenNaesIiNwSettingsT = NielsenNaesIiNw>
+    NielsenWatermarksSettings& WithNielsenNaesIiNwSettings(NielsenNaesIiNwSettingsT&& value) { SetNielsenNaesIiNwSettings(std::forward<NielsenNaesIiNwSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     NielsenCBET m_nielsenCbetSettings;
     bool m_nielsenCbetSettingsHasBeenSet = false;
 
-    NielsenWatermarksDistributionTypes m_nielsenDistributionType;
+    NielsenWatermarksDistributionTypes m_nielsenDistributionType{NielsenWatermarksDistributionTypes::NOT_SET};
     bool m_nielsenDistributionTypeHasBeenSet = false;
 
     NielsenNaesIiNw m_nielsenNaesIiNwSettings;

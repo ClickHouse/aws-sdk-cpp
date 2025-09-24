@@ -32,143 +32,55 @@ namespace Model
   class ServiceUnavailableException
   {
   public:
-    AWS_BACKUP_API ServiceUnavailableException();
+    AWS_BACKUP_API ServiceUnavailableException() = default;
     AWS_BACKUP_API ServiceUnavailableException(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API ServiceUnavailableException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    ServiceUnavailableException& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    
-    inline ServiceUnavailableException& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    
-    inline ServiceUnavailableException& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    
-    inline ServiceUnavailableException& WithCode(const char* value) { SetCode(value); return *this;}
-
-
-    
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ServiceUnavailableException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline ServiceUnavailableException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline ServiceUnavailableException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline ServiceUnavailableException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p/>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    ServiceUnavailableException& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p/>
      */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline ServiceUnavailableException& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline ServiceUnavailableException& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline ServiceUnavailableException& WithType(const char* value) { SetType(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetContext() const{ return m_context; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetContext() const { return m_context; }
     inline bool ContextHasBeenSet() const { return m_contextHasBeenSet; }
-
-    /**
-     * <p/>
-     */
-    inline void SetContext(const Aws::String& value) { m_contextHasBeenSet = true; m_context = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetContext(Aws::String&& value) { m_contextHasBeenSet = true; m_context = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetContext(const char* value) { m_contextHasBeenSet = true; m_context.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline ServiceUnavailableException& WithContext(const Aws::String& value) { SetContext(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline ServiceUnavailableException& WithContext(Aws::String&& value) { SetContext(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline ServiceUnavailableException& WithContext(const char* value) { SetContext(value); return *this;}
-
+    template<typename ContextT = Aws::String>
+    void SetContext(ContextT&& value) { m_contextHasBeenSet = true; m_context = std::forward<ContextT>(value); }
+    template<typename ContextT = Aws::String>
+    ServiceUnavailableException& WithContext(ContextT&& value) { SetContext(std::forward<ContextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_code;

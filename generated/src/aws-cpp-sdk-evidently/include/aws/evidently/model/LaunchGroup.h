@@ -34,159 +34,51 @@ namespace Model
   class LaunchGroup
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API LaunchGroup();
+    AWS_CLOUDWATCHEVIDENTLY_API LaunchGroup() = default;
     AWS_CLOUDWATCHEVIDENTLY_API LaunchGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API LaunchGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A description of the launch group.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    LaunchGroup& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline LaunchGroup& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline LaunchGroup& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the launch group.</p>
-     */
-    inline LaunchGroup& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The feature variation for this launch group. This is a key-value pair.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetFeatureVariations() const{ return m_featureVariations; }
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetFeatureVariations() const { return m_featureVariations; }
     inline bool FeatureVariationsHasBeenSet() const { return m_featureVariationsHasBeenSet; }
+    template<typename FeatureVariationsT = Aws::Map<Aws::String, Aws::String>>
+    void SetFeatureVariations(FeatureVariationsT&& value) { m_featureVariationsHasBeenSet = true; m_featureVariations = std::forward<FeatureVariationsT>(value); }
+    template<typename FeatureVariationsT = Aws::Map<Aws::String, Aws::String>>
+    LaunchGroup& WithFeatureVariations(FeatureVariationsT&& value) { SetFeatureVariations(std::forward<FeatureVariationsT>(value)); return *this;}
+    template<typename FeatureVariationsKeyT = Aws::String, typename FeatureVariationsValueT = Aws::String>
+    LaunchGroup& AddFeatureVariations(FeatureVariationsKeyT&& key, FeatureVariationsValueT&& value) {
+      m_featureVariationsHasBeenSet = true; m_featureVariations.emplace(std::forward<FeatureVariationsKeyT>(key), std::forward<FeatureVariationsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline void SetFeatureVariations(const Aws::Map<Aws::String, Aws::String>& value) { m_featureVariationsHasBeenSet = true; m_featureVariations = value; }
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline void SetFeatureVariations(Aws::Map<Aws::String, Aws::String>&& value) { m_featureVariationsHasBeenSet = true; m_featureVariations = std::move(value); }
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline LaunchGroup& WithFeatureVariations(const Aws::Map<Aws::String, Aws::String>& value) { SetFeatureVariations(value); return *this;}
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline LaunchGroup& WithFeatureVariations(Aws::Map<Aws::String, Aws::String>&& value) { SetFeatureVariations(std::move(value)); return *this;}
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline LaunchGroup& AddFeatureVariations(const Aws::String& key, const Aws::String& value) { m_featureVariationsHasBeenSet = true; m_featureVariations.emplace(key, value); return *this; }
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline LaunchGroup& AddFeatureVariations(Aws::String&& key, const Aws::String& value) { m_featureVariationsHasBeenSet = true; m_featureVariations.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline LaunchGroup& AddFeatureVariations(const Aws::String& key, Aws::String&& value) { m_featureVariationsHasBeenSet = true; m_featureVariations.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline LaunchGroup& AddFeatureVariations(Aws::String&& key, Aws::String&& value) { m_featureVariationsHasBeenSet = true; m_featureVariations.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline LaunchGroup& AddFeatureVariations(const char* key, Aws::String&& value) { m_featureVariationsHasBeenSet = true; m_featureVariations.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline LaunchGroup& AddFeatureVariations(Aws::String&& key, const char* value) { m_featureVariationsHasBeenSet = true; m_featureVariations.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The feature variation for this launch group. This is a key-value pair.</p>
-     */
-    inline LaunchGroup& AddFeatureVariations(const char* key, const char* value) { m_featureVariationsHasBeenSet = true; m_featureVariations.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the launch group.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the launch group.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the launch group.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the launch group.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the launch group.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the launch group.</p>
-     */
-    inline LaunchGroup& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the launch group.</p>
-     */
-    inline LaunchGroup& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the launch group.</p>
-     */
-    inline LaunchGroup& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    LaunchGroup& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

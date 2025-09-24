@@ -39,7 +39,7 @@ namespace Model
   class GlobalReplicationGroup
   {
   public:
-    AWS_ELASTICACHE_API GlobalReplicationGroup();
+    AWS_ELASTICACHE_API GlobalReplicationGroup() = default;
     AWS_ELASTICACHE_API GlobalReplicationGroup(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICACHE_API GlobalReplicationGroup& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -47,502 +47,167 @@ namespace Model
     AWS_ELASTICACHE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the Global datastore</p>
      */
-    inline const Aws::String& GetGlobalReplicationGroupId() const{ return m_globalReplicationGroupId; }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
+    inline const Aws::String& GetGlobalReplicationGroupId() const { return m_globalReplicationGroupId; }
     inline bool GlobalReplicationGroupIdHasBeenSet() const { return m_globalReplicationGroupIdHasBeenSet; }
+    template<typename GlobalReplicationGroupIdT = Aws::String>
+    void SetGlobalReplicationGroupId(GlobalReplicationGroupIdT&& value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId = std::forward<GlobalReplicationGroupIdT>(value); }
+    template<typename GlobalReplicationGroupIdT = Aws::String>
+    GlobalReplicationGroup& WithGlobalReplicationGroupId(GlobalReplicationGroupIdT&& value) { SetGlobalReplicationGroupId(std::forward<GlobalReplicationGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupId(const Aws::String& value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId = value; }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupId(Aws::String&& value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId = std::move(value); }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupId(const char* value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId.assign(value); }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithGlobalReplicationGroupId(const Aws::String& value) { SetGlobalReplicationGroupId(value); return *this;}
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithGlobalReplicationGroupId(Aws::String&& value) { SetGlobalReplicationGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithGlobalReplicationGroupId(const char* value) { SetGlobalReplicationGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The optional description of the Global datastore</p>
      */
-    inline const Aws::String& GetGlobalReplicationGroupDescription() const{ return m_globalReplicationGroupDescription; }
-
-    /**
-     * <p>The optional description of the Global datastore</p>
-     */
+    inline const Aws::String& GetGlobalReplicationGroupDescription() const { return m_globalReplicationGroupDescription; }
     inline bool GlobalReplicationGroupDescriptionHasBeenSet() const { return m_globalReplicationGroupDescriptionHasBeenSet; }
+    template<typename GlobalReplicationGroupDescriptionT = Aws::String>
+    void SetGlobalReplicationGroupDescription(GlobalReplicationGroupDescriptionT&& value) { m_globalReplicationGroupDescriptionHasBeenSet = true; m_globalReplicationGroupDescription = std::forward<GlobalReplicationGroupDescriptionT>(value); }
+    template<typename GlobalReplicationGroupDescriptionT = Aws::String>
+    GlobalReplicationGroup& WithGlobalReplicationGroupDescription(GlobalReplicationGroupDescriptionT&& value) { SetGlobalReplicationGroupDescription(std::forward<GlobalReplicationGroupDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The optional description of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupDescription(const Aws::String& value) { m_globalReplicationGroupDescriptionHasBeenSet = true; m_globalReplicationGroupDescription = value; }
-
-    /**
-     * <p>The optional description of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupDescription(Aws::String&& value) { m_globalReplicationGroupDescriptionHasBeenSet = true; m_globalReplicationGroupDescription = std::move(value); }
-
-    /**
-     * <p>The optional description of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupDescription(const char* value) { m_globalReplicationGroupDescriptionHasBeenSet = true; m_globalReplicationGroupDescription.assign(value); }
-
-    /**
-     * <p>The optional description of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithGlobalReplicationGroupDescription(const Aws::String& value) { SetGlobalReplicationGroupDescription(value); return *this;}
-
-    /**
-     * <p>The optional description of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithGlobalReplicationGroupDescription(Aws::String&& value) { SetGlobalReplicationGroupDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The optional description of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithGlobalReplicationGroupDescription(const char* value) { SetGlobalReplicationGroupDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the Global datastore</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the Global datastore</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    GlobalReplicationGroup& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the Global datastore</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the Global datastore</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the Global datastore</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The cache node type of the Global datastore</p>
      */
-    inline const Aws::String& GetCacheNodeType() const{ return m_cacheNodeType; }
-
-    /**
-     * <p>The cache node type of the Global datastore</p>
-     */
+    inline const Aws::String& GetCacheNodeType() const { return m_cacheNodeType; }
     inline bool CacheNodeTypeHasBeenSet() const { return m_cacheNodeTypeHasBeenSet; }
+    template<typename CacheNodeTypeT = Aws::String>
+    void SetCacheNodeType(CacheNodeTypeT&& value) { m_cacheNodeTypeHasBeenSet = true; m_cacheNodeType = std::forward<CacheNodeTypeT>(value); }
+    template<typename CacheNodeTypeT = Aws::String>
+    GlobalReplicationGroup& WithCacheNodeType(CacheNodeTypeT&& value) { SetCacheNodeType(std::forward<CacheNodeTypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The cache node type of the Global datastore</p>
+     * <p>The ElastiCache engine. For Valkey or Redis OSS only.</p>
      */
-    inline void SetCacheNodeType(const Aws::String& value) { m_cacheNodeTypeHasBeenSet = true; m_cacheNodeType = value; }
-
-    /**
-     * <p>The cache node type of the Global datastore</p>
-     */
-    inline void SetCacheNodeType(Aws::String&& value) { m_cacheNodeTypeHasBeenSet = true; m_cacheNodeType = std::move(value); }
-
-    /**
-     * <p>The cache node type of the Global datastore</p>
-     */
-    inline void SetCacheNodeType(const char* value) { m_cacheNodeTypeHasBeenSet = true; m_cacheNodeType.assign(value); }
-
-    /**
-     * <p>The cache node type of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithCacheNodeType(const Aws::String& value) { SetCacheNodeType(value); return *this;}
-
-    /**
-     * <p>The cache node type of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithCacheNodeType(Aws::String&& value) { SetCacheNodeType(std::move(value)); return *this;}
-
-    /**
-     * <p>The cache node type of the Global datastore</p>
-     */
-    inline GlobalReplicationGroup& WithCacheNodeType(const char* value) { SetCacheNodeType(value); return *this;}
-
-
-    /**
-     * <p>The Elasticache engine. For Redis only.</p>
-     */
-    inline const Aws::String& GetEngine() const{ return m_engine; }
-
-    /**
-     * <p>The Elasticache engine. For Redis only.</p>
-     */
+    inline const Aws::String& GetEngine() const { return m_engine; }
     inline bool EngineHasBeenSet() const { return m_engineHasBeenSet; }
+    template<typename EngineT = Aws::String>
+    void SetEngine(EngineT&& value) { m_engineHasBeenSet = true; m_engine = std::forward<EngineT>(value); }
+    template<typename EngineT = Aws::String>
+    GlobalReplicationGroup& WithEngine(EngineT&& value) { SetEngine(std::forward<EngineT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Elasticache engine. For Redis only.</p>
+     * <p>The ElastiCache engine version.</p>
      */
-    inline void SetEngine(const Aws::String& value) { m_engineHasBeenSet = true; m_engine = value; }
-
-    /**
-     * <p>The Elasticache engine. For Redis only.</p>
-     */
-    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = std::move(value); }
-
-    /**
-     * <p>The Elasticache engine. For Redis only.</p>
-     */
-    inline void SetEngine(const char* value) { m_engineHasBeenSet = true; m_engine.assign(value); }
-
-    /**
-     * <p>The Elasticache engine. For Redis only.</p>
-     */
-    inline GlobalReplicationGroup& WithEngine(const Aws::String& value) { SetEngine(value); return *this;}
-
-    /**
-     * <p>The Elasticache engine. For Redis only.</p>
-     */
-    inline GlobalReplicationGroup& WithEngine(Aws::String&& value) { SetEngine(std::move(value)); return *this;}
-
-    /**
-     * <p>The Elasticache engine. For Redis only.</p>
-     */
-    inline GlobalReplicationGroup& WithEngine(const char* value) { SetEngine(value); return *this;}
-
-
-    /**
-     * <p>The Elasticache Redis engine version.</p>
-     */
-    inline const Aws::String& GetEngineVersion() const{ return m_engineVersion; }
-
-    /**
-     * <p>The Elasticache Redis engine version.</p>
-     */
+    inline const Aws::String& GetEngineVersion() const { return m_engineVersion; }
     inline bool EngineVersionHasBeenSet() const { return m_engineVersionHasBeenSet; }
+    template<typename EngineVersionT = Aws::String>
+    void SetEngineVersion(EngineVersionT&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::forward<EngineVersionT>(value); }
+    template<typename EngineVersionT = Aws::String>
+    GlobalReplicationGroup& WithEngineVersion(EngineVersionT&& value) { SetEngineVersion(std::forward<EngineVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Elasticache Redis engine version.</p>
-     */
-    inline void SetEngineVersion(const Aws::String& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
-
-    /**
-     * <p>The Elasticache Redis engine version.</p>
-     */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
-
-    /**
-     * <p>The Elasticache Redis engine version.</p>
-     */
-    inline void SetEngineVersion(const char* value) { m_engineVersionHasBeenSet = true; m_engineVersion.assign(value); }
-
-    /**
-     * <p>The Elasticache Redis engine version.</p>
-     */
-    inline GlobalReplicationGroup& WithEngineVersion(const Aws::String& value) { SetEngineVersion(value); return *this;}
-
-    /**
-     * <p>The Elasticache Redis engine version.</p>
-     */
-    inline GlobalReplicationGroup& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Elasticache Redis engine version.</p>
-     */
-    inline GlobalReplicationGroup& WithEngineVersion(const char* value) { SetEngineVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The replication groups that comprise the Global datastore.</p>
      */
-    inline const Aws::Vector<GlobalReplicationGroupMember>& GetMembers() const{ return m_members; }
-
-    /**
-     * <p>The replication groups that comprise the Global datastore.</p>
-     */
+    inline const Aws::Vector<GlobalReplicationGroupMember>& GetMembers() const { return m_members; }
     inline bool MembersHasBeenSet() const { return m_membersHasBeenSet; }
+    template<typename MembersT = Aws::Vector<GlobalReplicationGroupMember>>
+    void SetMembers(MembersT&& value) { m_membersHasBeenSet = true; m_members = std::forward<MembersT>(value); }
+    template<typename MembersT = Aws::Vector<GlobalReplicationGroupMember>>
+    GlobalReplicationGroup& WithMembers(MembersT&& value) { SetMembers(std::forward<MembersT>(value)); return *this;}
+    template<typename MembersT = GlobalReplicationGroupMember>
+    GlobalReplicationGroup& AddMembers(MembersT&& value) { m_membersHasBeenSet = true; m_members.emplace_back(std::forward<MembersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The replication groups that comprise the Global datastore.</p>
-     */
-    inline void SetMembers(const Aws::Vector<GlobalReplicationGroupMember>& value) { m_membersHasBeenSet = true; m_members = value; }
-
-    /**
-     * <p>The replication groups that comprise the Global datastore.</p>
-     */
-    inline void SetMembers(Aws::Vector<GlobalReplicationGroupMember>&& value) { m_membersHasBeenSet = true; m_members = std::move(value); }
-
-    /**
-     * <p>The replication groups that comprise the Global datastore.</p>
-     */
-    inline GlobalReplicationGroup& WithMembers(const Aws::Vector<GlobalReplicationGroupMember>& value) { SetMembers(value); return *this;}
-
-    /**
-     * <p>The replication groups that comprise the Global datastore.</p>
-     */
-    inline GlobalReplicationGroup& WithMembers(Aws::Vector<GlobalReplicationGroupMember>&& value) { SetMembers(std::move(value)); return *this;}
-
-    /**
-     * <p>The replication groups that comprise the Global datastore.</p>
-     */
-    inline GlobalReplicationGroup& AddMembers(const GlobalReplicationGroupMember& value) { m_membersHasBeenSet = true; m_members.push_back(value); return *this; }
-
-    /**
-     * <p>The replication groups that comprise the Global datastore.</p>
-     */
-    inline GlobalReplicationGroup& AddMembers(GlobalReplicationGroupMember&& value) { m_membersHasBeenSet = true; m_members.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A flag that indicates whether the Global datastore is cluster enabled.</p>
      */
-    inline bool GetClusterEnabled() const{ return m_clusterEnabled; }
-
-    /**
-     * <p>A flag that indicates whether the Global datastore is cluster enabled.</p>
-     */
+    inline bool GetClusterEnabled() const { return m_clusterEnabled; }
     inline bool ClusterEnabledHasBeenSet() const { return m_clusterEnabledHasBeenSet; }
-
-    /**
-     * <p>A flag that indicates whether the Global datastore is cluster enabled.</p>
-     */
     inline void SetClusterEnabled(bool value) { m_clusterEnabledHasBeenSet = true; m_clusterEnabled = value; }
-
-    /**
-     * <p>A flag that indicates whether the Global datastore is cluster enabled.</p>
-     */
     inline GlobalReplicationGroup& WithClusterEnabled(bool value) { SetClusterEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates the slot configuration and global identifier for each slice
      * group.</p>
      */
-    inline const Aws::Vector<GlobalNodeGroup>& GetGlobalNodeGroups() const{ return m_globalNodeGroups; }
-
-    /**
-     * <p>Indicates the slot configuration and global identifier for each slice
-     * group.</p>
-     */
+    inline const Aws::Vector<GlobalNodeGroup>& GetGlobalNodeGroups() const { return m_globalNodeGroups; }
     inline bool GlobalNodeGroupsHasBeenSet() const { return m_globalNodeGroupsHasBeenSet; }
+    template<typename GlobalNodeGroupsT = Aws::Vector<GlobalNodeGroup>>
+    void SetGlobalNodeGroups(GlobalNodeGroupsT&& value) { m_globalNodeGroupsHasBeenSet = true; m_globalNodeGroups = std::forward<GlobalNodeGroupsT>(value); }
+    template<typename GlobalNodeGroupsT = Aws::Vector<GlobalNodeGroup>>
+    GlobalReplicationGroup& WithGlobalNodeGroups(GlobalNodeGroupsT&& value) { SetGlobalNodeGroups(std::forward<GlobalNodeGroupsT>(value)); return *this;}
+    template<typename GlobalNodeGroupsT = GlobalNodeGroup>
+    GlobalReplicationGroup& AddGlobalNodeGroups(GlobalNodeGroupsT&& value) { m_globalNodeGroupsHasBeenSet = true; m_globalNodeGroups.emplace_back(std::forward<GlobalNodeGroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Indicates the slot configuration and global identifier for each slice
-     * group.</p>
-     */
-    inline void SetGlobalNodeGroups(const Aws::Vector<GlobalNodeGroup>& value) { m_globalNodeGroupsHasBeenSet = true; m_globalNodeGroups = value; }
-
-    /**
-     * <p>Indicates the slot configuration and global identifier for each slice
-     * group.</p>
-     */
-    inline void SetGlobalNodeGroups(Aws::Vector<GlobalNodeGroup>&& value) { m_globalNodeGroupsHasBeenSet = true; m_globalNodeGroups = std::move(value); }
-
-    /**
-     * <p>Indicates the slot configuration and global identifier for each slice
-     * group.</p>
-     */
-    inline GlobalReplicationGroup& WithGlobalNodeGroups(const Aws::Vector<GlobalNodeGroup>& value) { SetGlobalNodeGroups(value); return *this;}
-
-    /**
-     * <p>Indicates the slot configuration and global identifier for each slice
-     * group.</p>
-     */
-    inline GlobalReplicationGroup& WithGlobalNodeGroups(Aws::Vector<GlobalNodeGroup>&& value) { SetGlobalNodeGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates the slot configuration and global identifier for each slice
-     * group.</p>
-     */
-    inline GlobalReplicationGroup& AddGlobalNodeGroups(const GlobalNodeGroup& value) { m_globalNodeGroupsHasBeenSet = true; m_globalNodeGroups.push_back(value); return *this; }
-
-    /**
-     * <p>Indicates the slot configuration and global identifier for each slice
-     * group.</p>
-     */
-    inline GlobalReplicationGroup& AddGlobalNodeGroups(GlobalNodeGroup&& value) { m_globalNodeGroupsHasBeenSet = true; m_globalNodeGroups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A flag that enables using an <code>AuthToken</code> (password) when issuing
-     * Redis commands.</p> <p>Default: <code>false</code> </p>
+     * Valkey or Redis OSS commands.</p> <p>Default: <code>false</code> </p>
      */
-    inline bool GetAuthTokenEnabled() const{ return m_authTokenEnabled; }
-
-    /**
-     * <p>A flag that enables using an <code>AuthToken</code> (password) when issuing
-     * Redis commands.</p> <p>Default: <code>false</code> </p>
-     */
+    inline bool GetAuthTokenEnabled() const { return m_authTokenEnabled; }
     inline bool AuthTokenEnabledHasBeenSet() const { return m_authTokenEnabledHasBeenSet; }
-
-    /**
-     * <p>A flag that enables using an <code>AuthToken</code> (password) when issuing
-     * Redis commands.</p> <p>Default: <code>false</code> </p>
-     */
     inline void SetAuthTokenEnabled(bool value) { m_authTokenEnabledHasBeenSet = true; m_authTokenEnabled = value; }
-
-    /**
-     * <p>A flag that enables using an <code>AuthToken</code> (password) when issuing
-     * Redis commands.</p> <p>Default: <code>false</code> </p>
-     */
     inline GlobalReplicationGroup& WithAuthTokenEnabled(bool value) { SetAuthTokenEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A flag that enables in-transit encryption when set to true.</p> <p>
      * <b>Required:</b> Only available when creating a replication group in an Amazon
-     * VPC using redis version <code>3.2.6</code>, <code>4.x</code> or later.</p>
+     * VPC using Redis OSS version <code>3.2.6</code>, <code>4.x</code> or later.</p>
      */
-    inline bool GetTransitEncryptionEnabled() const{ return m_transitEncryptionEnabled; }
-
-    /**
-     * <p>A flag that enables in-transit encryption when set to true.</p> <p>
-     * <b>Required:</b> Only available when creating a replication group in an Amazon
-     * VPC using redis version <code>3.2.6</code>, <code>4.x</code> or later.</p>
-     */
+    inline bool GetTransitEncryptionEnabled() const { return m_transitEncryptionEnabled; }
     inline bool TransitEncryptionEnabledHasBeenSet() const { return m_transitEncryptionEnabledHasBeenSet; }
-
-    /**
-     * <p>A flag that enables in-transit encryption when set to true.</p> <p>
-     * <b>Required:</b> Only available when creating a replication group in an Amazon
-     * VPC using redis version <code>3.2.6</code>, <code>4.x</code> or later.</p>
-     */
     inline void SetTransitEncryptionEnabled(bool value) { m_transitEncryptionEnabledHasBeenSet = true; m_transitEncryptionEnabled = value; }
-
-    /**
-     * <p>A flag that enables in-transit encryption when set to true.</p> <p>
-     * <b>Required:</b> Only available when creating a replication group in an Amazon
-     * VPC using redis version <code>3.2.6</code>, <code>4.x</code> or later.</p>
-     */
     inline GlobalReplicationGroup& WithTransitEncryptionEnabled(bool value) { SetTransitEncryptionEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A flag that enables encryption at rest when set to <code>true</code>.</p>
      * <p>You cannot modify the value of <code>AtRestEncryptionEnabled</code> after the
      * replication group is created. To enable encryption at rest on a replication
      * group you must set <code>AtRestEncryptionEnabled</code> to <code>true</code>
      * when you create the replication group. </p> <p> <b>Required:</b> Only available
-     * when creating a replication group in an Amazon VPC using redis version
+     * when creating a replication group in an Amazon VPC using Redis OSS version
      * <code>3.2.6</code>, <code>4.x</code> or later.</p>
      */
-    inline bool GetAtRestEncryptionEnabled() const{ return m_atRestEncryptionEnabled; }
-
-    /**
-     * <p>A flag that enables encryption at rest when set to <code>true</code>.</p>
-     * <p>You cannot modify the value of <code>AtRestEncryptionEnabled</code> after the
-     * replication group is created. To enable encryption at rest on a replication
-     * group you must set <code>AtRestEncryptionEnabled</code> to <code>true</code>
-     * when you create the replication group. </p> <p> <b>Required:</b> Only available
-     * when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code>, <code>4.x</code> or later.</p>
-     */
+    inline bool GetAtRestEncryptionEnabled() const { return m_atRestEncryptionEnabled; }
     inline bool AtRestEncryptionEnabledHasBeenSet() const { return m_atRestEncryptionEnabledHasBeenSet; }
-
-    /**
-     * <p>A flag that enables encryption at rest when set to <code>true</code>.</p>
-     * <p>You cannot modify the value of <code>AtRestEncryptionEnabled</code> after the
-     * replication group is created. To enable encryption at rest on a replication
-     * group you must set <code>AtRestEncryptionEnabled</code> to <code>true</code>
-     * when you create the replication group. </p> <p> <b>Required:</b> Only available
-     * when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code>, <code>4.x</code> or later.</p>
-     */
     inline void SetAtRestEncryptionEnabled(bool value) { m_atRestEncryptionEnabledHasBeenSet = true; m_atRestEncryptionEnabled = value; }
-
-    /**
-     * <p>A flag that enables encryption at rest when set to <code>true</code>.</p>
-     * <p>You cannot modify the value of <code>AtRestEncryptionEnabled</code> after the
-     * replication group is created. To enable encryption at rest on a replication
-     * group you must set <code>AtRestEncryptionEnabled</code> to <code>true</code>
-     * when you create the replication group. </p> <p> <b>Required:</b> Only available
-     * when creating a replication group in an Amazon VPC using redis version
-     * <code>3.2.6</code>, <code>4.x</code> or later.</p>
-     */
     inline GlobalReplicationGroup& WithAtRestEncryptionEnabled(bool value) { SetAtRestEncryptionEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ARN (Amazon Resource Name) of the global replication group.</p>
      */
-    inline const Aws::String& GetARN() const{ return m_aRN; }
-
-    /**
-     * <p>The ARN (Amazon Resource Name) of the global replication group.</p>
-     */
+    inline const Aws::String& GetARN() const { return m_aRN; }
     inline bool ARNHasBeenSet() const { return m_aRNHasBeenSet; }
-
-    /**
-     * <p>The ARN (Amazon Resource Name) of the global replication group.</p>
-     */
-    inline void SetARN(const Aws::String& value) { m_aRNHasBeenSet = true; m_aRN = value; }
-
-    /**
-     * <p>The ARN (Amazon Resource Name) of the global replication group.</p>
-     */
-    inline void SetARN(Aws::String&& value) { m_aRNHasBeenSet = true; m_aRN = std::move(value); }
-
-    /**
-     * <p>The ARN (Amazon Resource Name) of the global replication group.</p>
-     */
-    inline void SetARN(const char* value) { m_aRNHasBeenSet = true; m_aRN.assign(value); }
-
-    /**
-     * <p>The ARN (Amazon Resource Name) of the global replication group.</p>
-     */
-    inline GlobalReplicationGroup& WithARN(const Aws::String& value) { SetARN(value); return *this;}
-
-    /**
-     * <p>The ARN (Amazon Resource Name) of the global replication group.</p>
-     */
-    inline GlobalReplicationGroup& WithARN(Aws::String&& value) { SetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN (Amazon Resource Name) of the global replication group.</p>
-     */
-    inline GlobalReplicationGroup& WithARN(const char* value) { SetARN(value); return *this;}
-
+    template<typename ARNT = Aws::String>
+    void SetARN(ARNT&& value) { m_aRNHasBeenSet = true; m_aRN = std::forward<ARNT>(value); }
+    template<typename ARNT = Aws::String>
+    GlobalReplicationGroup& WithARN(ARNT&& value) { SetARN(std::forward<ARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_globalReplicationGroupId;
@@ -566,19 +231,19 @@ namespace Model
     Aws::Vector<GlobalReplicationGroupMember> m_members;
     bool m_membersHasBeenSet = false;
 
-    bool m_clusterEnabled;
+    bool m_clusterEnabled{false};
     bool m_clusterEnabledHasBeenSet = false;
 
     Aws::Vector<GlobalNodeGroup> m_globalNodeGroups;
     bool m_globalNodeGroupsHasBeenSet = false;
 
-    bool m_authTokenEnabled;
+    bool m_authTokenEnabled{false};
     bool m_authTokenEnabledHasBeenSet = false;
 
-    bool m_transitEncryptionEnabled;
+    bool m_transitEncryptionEnabled{false};
     bool m_transitEncryptionEnabledHasBeenSet = false;
 
-    bool m_atRestEncryptionEnabled;
+    bool m_atRestEncryptionEnabled{false};
     bool m_atRestEncryptionEnabledHasBeenSet = false;
 
     Aws::String m_aRN;

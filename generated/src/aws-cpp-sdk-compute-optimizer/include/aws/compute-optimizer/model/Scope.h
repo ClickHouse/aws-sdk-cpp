@@ -47,12 +47,13 @@ namespace Model
   class Scope
   {
   public:
-    AWS_COMPUTEOPTIMIZER_API Scope();
+    AWS_COMPUTEOPTIMIZER_API Scope() = default;
     AWS_COMPUTEOPTIMIZER_API Scope(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API Scope& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPUTEOPTIMIZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the scope.</p> <p>The following scopes are possible:</p> <ul>
      * <li> <p> <code>Organization</code> - Specifies that the recommendation
@@ -63,69 +64,13 @@ namespace Model
      * Specifies that the recommendation preference applies at the individual resource
      * level.</p> </li> </ul>
      */
-    inline const ScopeName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the scope.</p> <p>The following scopes are possible:</p> <ul>
-     * <li> <p> <code>Organization</code> - Specifies that the recommendation
-     * preference applies at the organization level, for all member accounts of an
-     * organization.</p> </li> <li> <p> <code>AccountId</code> - Specifies that the
-     * recommendation preference applies at the account level, for all resources of a
-     * given resource type in an account.</p> </li> <li> <p> <code>ResourceArn</code> -
-     * Specifies that the recommendation preference applies at the individual resource
-     * level.</p> </li> </ul>
-     */
+    inline ScopeName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(ScopeName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline Scope& WithName(ScopeName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the scope.</p> <p>The following scopes are possible:</p> <ul>
-     * <li> <p> <code>Organization</code> - Specifies that the recommendation
-     * preference applies at the organization level, for all member accounts of an
-     * organization.</p> </li> <li> <p> <code>AccountId</code> - Specifies that the
-     * recommendation preference applies at the account level, for all resources of a
-     * given resource type in an account.</p> </li> <li> <p> <code>ResourceArn</code> -
-     * Specifies that the recommendation preference applies at the individual resource
-     * level.</p> </li> </ul>
-     */
-    inline void SetName(const ScopeName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the scope.</p> <p>The following scopes are possible:</p> <ul>
-     * <li> <p> <code>Organization</code> - Specifies that the recommendation
-     * preference applies at the organization level, for all member accounts of an
-     * organization.</p> </li> <li> <p> <code>AccountId</code> - Specifies that the
-     * recommendation preference applies at the account level, for all resources of a
-     * given resource type in an account.</p> </li> <li> <p> <code>ResourceArn</code> -
-     * Specifies that the recommendation preference applies at the individual resource
-     * level.</p> </li> </ul>
-     */
-    inline void SetName(ScopeName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the scope.</p> <p>The following scopes are possible:</p> <ul>
-     * <li> <p> <code>Organization</code> - Specifies that the recommendation
-     * preference applies at the organization level, for all member accounts of an
-     * organization.</p> </li> <li> <p> <code>AccountId</code> - Specifies that the
-     * recommendation preference applies at the account level, for all resources of a
-     * given resource type in an account.</p> </li> <li> <p> <code>ResourceArn</code> -
-     * Specifies that the recommendation preference applies at the individual resource
-     * level.</p> </li> </ul>
-     */
-    inline Scope& WithName(const ScopeName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the scope.</p> <p>The following scopes are possible:</p> <ul>
-     * <li> <p> <code>Organization</code> - Specifies that the recommendation
-     * preference applies at the organization level, for all member accounts of an
-     * organization.</p> </li> <li> <p> <code>AccountId</code> - Specifies that the
-     * recommendation preference applies at the account level, for all resources of a
-     * given resource type in an account.</p> </li> <li> <p> <code>ResourceArn</code> -
-     * Specifies that the recommendation preference applies at the individual resource
-     * level.</p> </li> </ul>
-     */
-    inline Scope& WithName(ScopeName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the scope.</p> <p>If you specified the <code>name</code> of the
      * scope as:</p> <ul> <li> <p> <code>Organization</code> - The <code>value</code>
@@ -136,95 +81,16 @@ namespace Model
      * </li> </ul> <p>Only EC2 instance and Auto Scaling group ARNs are currently
      * supported.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the scope.</p> <p>If you specified the <code>name</code> of the
-     * scope as:</p> <ul> <li> <p> <code>Organization</code> - The <code>value</code>
-     * must be <code>ALL_ACCOUNTS</code>.</p> </li> <li> <p> <code>AccountId</code> -
-     * The <code>value</code> must be a 12-digit Amazon Web Services account ID.</p>
-     * </li> <li> <p> <code>ResourceArn</code> - The <code>value</code> must be the
-     * Amazon Resource Name (ARN) of an EC2 instance or an Auto Scaling group.</p>
-     * </li> </ul> <p>Only EC2 instance and Auto Scaling group ARNs are currently
-     * supported.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of the scope.</p> <p>If you specified the <code>name</code> of the
-     * scope as:</p> <ul> <li> <p> <code>Organization</code> - The <code>value</code>
-     * must be <code>ALL_ACCOUNTS</code>.</p> </li> <li> <p> <code>AccountId</code> -
-     * The <code>value</code> must be a 12-digit Amazon Web Services account ID.</p>
-     * </li> <li> <p> <code>ResourceArn</code> - The <code>value</code> must be the
-     * Amazon Resource Name (ARN) of an EC2 instance or an Auto Scaling group.</p>
-     * </li> </ul> <p>Only EC2 instance and Auto Scaling group ARNs are currently
-     * supported.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the scope.</p> <p>If you specified the <code>name</code> of the
-     * scope as:</p> <ul> <li> <p> <code>Organization</code> - The <code>value</code>
-     * must be <code>ALL_ACCOUNTS</code>.</p> </li> <li> <p> <code>AccountId</code> -
-     * The <code>value</code> must be a 12-digit Amazon Web Services account ID.</p>
-     * </li> <li> <p> <code>ResourceArn</code> - The <code>value</code> must be the
-     * Amazon Resource Name (ARN) of an EC2 instance or an Auto Scaling group.</p>
-     * </li> </ul> <p>Only EC2 instance and Auto Scaling group ARNs are currently
-     * supported.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the scope.</p> <p>If you specified the <code>name</code> of the
-     * scope as:</p> <ul> <li> <p> <code>Organization</code> - The <code>value</code>
-     * must be <code>ALL_ACCOUNTS</code>.</p> </li> <li> <p> <code>AccountId</code> -
-     * The <code>value</code> must be a 12-digit Amazon Web Services account ID.</p>
-     * </li> <li> <p> <code>ResourceArn</code> - The <code>value</code> must be the
-     * Amazon Resource Name (ARN) of an EC2 instance or an Auto Scaling group.</p>
-     * </li> </ul> <p>Only EC2 instance and Auto Scaling group ARNs are currently
-     * supported.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the scope.</p> <p>If you specified the <code>name</code> of the
-     * scope as:</p> <ul> <li> <p> <code>Organization</code> - The <code>value</code>
-     * must be <code>ALL_ACCOUNTS</code>.</p> </li> <li> <p> <code>AccountId</code> -
-     * The <code>value</code> must be a 12-digit Amazon Web Services account ID.</p>
-     * </li> <li> <p> <code>ResourceArn</code> - The <code>value</code> must be the
-     * Amazon Resource Name (ARN) of an EC2 instance or an Auto Scaling group.</p>
-     * </li> </ul> <p>Only EC2 instance and Auto Scaling group ARNs are currently
-     * supported.</p>
-     */
-    inline Scope& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the scope.</p> <p>If you specified the <code>name</code> of the
-     * scope as:</p> <ul> <li> <p> <code>Organization</code> - The <code>value</code>
-     * must be <code>ALL_ACCOUNTS</code>.</p> </li> <li> <p> <code>AccountId</code> -
-     * The <code>value</code> must be a 12-digit Amazon Web Services account ID.</p>
-     * </li> <li> <p> <code>ResourceArn</code> - The <code>value</code> must be the
-     * Amazon Resource Name (ARN) of an EC2 instance or an Auto Scaling group.</p>
-     * </li> </ul> <p>Only EC2 instance and Auto Scaling group ARNs are currently
-     * supported.</p>
-     */
-    inline Scope& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the scope.</p> <p>If you specified the <code>name</code> of the
-     * scope as:</p> <ul> <li> <p> <code>Organization</code> - The <code>value</code>
-     * must be <code>ALL_ACCOUNTS</code>.</p> </li> <li> <p> <code>AccountId</code> -
-     * The <code>value</code> must be a 12-digit Amazon Web Services account ID.</p>
-     * </li> <li> <p> <code>ResourceArn</code> - The <code>value</code> must be the
-     * Amazon Resource Name (ARN) of an EC2 instance or an Auto Scaling group.</p>
-     * </li> </ul> <p>Only EC2 instance and Auto Scaling group ARNs are currently
-     * supported.</p>
-     */
-    inline Scope& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    Scope& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
-    ScopeName m_name;
+    ScopeName m_name{ScopeName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
     Aws::String m_value;

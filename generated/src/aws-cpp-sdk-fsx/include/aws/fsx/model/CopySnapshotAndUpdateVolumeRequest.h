@@ -25,7 +25,7 @@ namespace Model
   class CopySnapshotAndUpdateVolumeRequest : public FSxRequest
   {
   public:
-    AWS_FSX_API CopySnapshotAndUpdateVolumeRequest();
+    AWS_FSX_API CopySnapshotAndUpdateVolumeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,97 +38,39 @@ namespace Model
     AWS_FSX_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     
-    inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
-
-    
+    inline const Aws::String& GetClientRequestToken() const { return m_clientRequestToken; }
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
+    template<typename ClientRequestTokenT = Aws::String>
+    void SetClientRequestToken(ClientRequestTokenT&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::forward<ClientRequestTokenT>(value); }
+    template<typename ClientRequestTokenT = Aws::String>
+    CopySnapshotAndUpdateVolumeRequest& WithClientRequestToken(ClientRequestTokenT&& value) { SetClientRequestToken(std::forward<ClientRequestTokenT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
-
-    
-    inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
-
-    
-    inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
-
-    
-    inline CopySnapshotAndUpdateVolumeRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
-
-    
-    inline CopySnapshotAndUpdateVolumeRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
-
-    
-    inline CopySnapshotAndUpdateVolumeRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the ID of the volume that you are copying the snapshot to.</p>
      */
-    inline const Aws::String& GetVolumeId() const{ return m_volumeId; }
-
-    /**
-     * <p>Specifies the ID of the volume that you are copying the snapshot to.</p>
-     */
+    inline const Aws::String& GetVolumeId() const { return m_volumeId; }
     inline bool VolumeIdHasBeenSet() const { return m_volumeIdHasBeenSet; }
+    template<typename VolumeIdT = Aws::String>
+    void SetVolumeId(VolumeIdT&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::forward<VolumeIdT>(value); }
+    template<typename VolumeIdT = Aws::String>
+    CopySnapshotAndUpdateVolumeRequest& WithVolumeId(VolumeIdT&& value) { SetVolumeId(std::forward<VolumeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the ID of the volume that you are copying the snapshot to.</p>
-     */
-    inline void SetVolumeId(const Aws::String& value) { m_volumeIdHasBeenSet = true; m_volumeId = value; }
-
-    /**
-     * <p>Specifies the ID of the volume that you are copying the snapshot to.</p>
-     */
-    inline void SetVolumeId(Aws::String&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::move(value); }
-
-    /**
-     * <p>Specifies the ID of the volume that you are copying the snapshot to.</p>
-     */
-    inline void SetVolumeId(const char* value) { m_volumeIdHasBeenSet = true; m_volumeId.assign(value); }
-
-    /**
-     * <p>Specifies the ID of the volume that you are copying the snapshot to.</p>
-     */
-    inline CopySnapshotAndUpdateVolumeRequest& WithVolumeId(const Aws::String& value) { SetVolumeId(value); return *this;}
-
-    /**
-     * <p>Specifies the ID of the volume that you are copying the snapshot to.</p>
-     */
-    inline CopySnapshotAndUpdateVolumeRequest& WithVolumeId(Aws::String&& value) { SetVolumeId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the ID of the volume that you are copying the snapshot to.</p>
-     */
-    inline CopySnapshotAndUpdateVolumeRequest& WithVolumeId(const char* value) { SetVolumeId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetSourceSnapshotARN() const{ return m_sourceSnapshotARN; }
-
-    
+    inline const Aws::String& GetSourceSnapshotARN() const { return m_sourceSnapshotARN; }
     inline bool SourceSnapshotARNHasBeenSet() const { return m_sourceSnapshotARNHasBeenSet; }
+    template<typename SourceSnapshotARNT = Aws::String>
+    void SetSourceSnapshotARN(SourceSnapshotARNT&& value) { m_sourceSnapshotARNHasBeenSet = true; m_sourceSnapshotARN = std::forward<SourceSnapshotARNT>(value); }
+    template<typename SourceSnapshotARNT = Aws::String>
+    CopySnapshotAndUpdateVolumeRequest& WithSourceSnapshotARN(SourceSnapshotARNT&& value) { SetSourceSnapshotARN(std::forward<SourceSnapshotARNT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetSourceSnapshotARN(const Aws::String& value) { m_sourceSnapshotARNHasBeenSet = true; m_sourceSnapshotARN = value; }
-
-    
-    inline void SetSourceSnapshotARN(Aws::String&& value) { m_sourceSnapshotARNHasBeenSet = true; m_sourceSnapshotARN = std::move(value); }
-
-    
-    inline void SetSourceSnapshotARN(const char* value) { m_sourceSnapshotARNHasBeenSet = true; m_sourceSnapshotARN.assign(value); }
-
-    
-    inline CopySnapshotAndUpdateVolumeRequest& WithSourceSnapshotARN(const Aws::String& value) { SetSourceSnapshotARN(value); return *this;}
-
-    
-    inline CopySnapshotAndUpdateVolumeRequest& WithSourceSnapshotARN(Aws::String&& value) { SetSourceSnapshotARN(std::move(value)); return *this;}
-
-    
-    inline CopySnapshotAndUpdateVolumeRequest& WithSourceSnapshotARN(const char* value) { SetSourceSnapshotARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the strategy to use when copying data from a snapshot to the
      * volume. </p> <ul> <li> <p> <code>FULL_COPY</code> - Copies all data from the
@@ -137,59 +79,13 @@ namespace Model
      * </li> </ul>  <p> <code>CLONE</code> isn't a valid copy strategy option for
      * the <code>CopySnapshotAndUpdateVolume</code> operation.</p> 
      */
-    inline const OpenZFSCopyStrategy& GetCopyStrategy() const{ return m_copyStrategy; }
-
-    /**
-     * <p>Specifies the strategy to use when copying data from a snapshot to the
-     * volume. </p> <ul> <li> <p> <code>FULL_COPY</code> - Copies all data from the
-     * snapshot to the volume. </p> </li> <li> <p> <code>INCREMENTAL_COPY</code> -
-     * Copies only the snapshot data that's changed since the previous replication.</p>
-     * </li> </ul>  <p> <code>CLONE</code> isn't a valid copy strategy option for
-     * the <code>CopySnapshotAndUpdateVolume</code> operation.</p> 
-     */
+    inline OpenZFSCopyStrategy GetCopyStrategy() const { return m_copyStrategy; }
     inline bool CopyStrategyHasBeenSet() const { return m_copyStrategyHasBeenSet; }
+    inline void SetCopyStrategy(OpenZFSCopyStrategy value) { m_copyStrategyHasBeenSet = true; m_copyStrategy = value; }
+    inline CopySnapshotAndUpdateVolumeRequest& WithCopyStrategy(OpenZFSCopyStrategy value) { SetCopyStrategy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the strategy to use when copying data from a snapshot to the
-     * volume. </p> <ul> <li> <p> <code>FULL_COPY</code> - Copies all data from the
-     * snapshot to the volume. </p> </li> <li> <p> <code>INCREMENTAL_COPY</code> -
-     * Copies only the snapshot data that's changed since the previous replication.</p>
-     * </li> </ul>  <p> <code>CLONE</code> isn't a valid copy strategy option for
-     * the <code>CopySnapshotAndUpdateVolume</code> operation.</p> 
-     */
-    inline void SetCopyStrategy(const OpenZFSCopyStrategy& value) { m_copyStrategyHasBeenSet = true; m_copyStrategy = value; }
-
-    /**
-     * <p>Specifies the strategy to use when copying data from a snapshot to the
-     * volume. </p> <ul> <li> <p> <code>FULL_COPY</code> - Copies all data from the
-     * snapshot to the volume. </p> </li> <li> <p> <code>INCREMENTAL_COPY</code> -
-     * Copies only the snapshot data that's changed since the previous replication.</p>
-     * </li> </ul>  <p> <code>CLONE</code> isn't a valid copy strategy option for
-     * the <code>CopySnapshotAndUpdateVolume</code> operation.</p> 
-     */
-    inline void SetCopyStrategy(OpenZFSCopyStrategy&& value) { m_copyStrategyHasBeenSet = true; m_copyStrategy = std::move(value); }
-
-    /**
-     * <p>Specifies the strategy to use when copying data from a snapshot to the
-     * volume. </p> <ul> <li> <p> <code>FULL_COPY</code> - Copies all data from the
-     * snapshot to the volume. </p> </li> <li> <p> <code>INCREMENTAL_COPY</code> -
-     * Copies only the snapshot data that's changed since the previous replication.</p>
-     * </li> </ul>  <p> <code>CLONE</code> isn't a valid copy strategy option for
-     * the <code>CopySnapshotAndUpdateVolume</code> operation.</p> 
-     */
-    inline CopySnapshotAndUpdateVolumeRequest& WithCopyStrategy(const OpenZFSCopyStrategy& value) { SetCopyStrategy(value); return *this;}
-
-    /**
-     * <p>Specifies the strategy to use when copying data from a snapshot to the
-     * volume. </p> <ul> <li> <p> <code>FULL_COPY</code> - Copies all data from the
-     * snapshot to the volume. </p> </li> <li> <p> <code>INCREMENTAL_COPY</code> -
-     * Copies only the snapshot data that's changed since the previous replication.</p>
-     * </li> </ul>  <p> <code>CLONE</code> isn't a valid copy strategy option for
-     * the <code>CopySnapshotAndUpdateVolume</code> operation.</p> 
-     */
-    inline CopySnapshotAndUpdateVolumeRequest& WithCopyStrategy(OpenZFSCopyStrategy&& value) { SetCopyStrategy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Confirms that you want to delete data on the destination volume that wasn’t
      * there during the previous snapshot replication.</p> <p>Your replication will
@@ -204,124 +100,18 @@ namespace Model
      * <code>DELETE_INTERMEDIATE_DATA</code> - Overwrites snapshots on the destination
      * volume that don’t match the source snapshot that you’re copying.</p> </li> </ul>
      */
-    inline const Aws::Vector<UpdateOpenZFSVolumeOption>& GetOptions() const{ return m_options; }
-
-    /**
-     * <p>Confirms that you want to delete data on the destination volume that wasn’t
-     * there during the previous snapshot replication.</p> <p>Your replication will
-     * fail if you don’t include an option for a specific type of data and that data is
-     * on your destination. For example, if you don’t include
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> and there are intermediate snapshots
-     * on the destination, you can’t copy the snapshot.</p> <ul> <li> <p>
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> - Deletes snapshots on the
-     * destination volume that aren’t on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_CLONED_VOLUMES</code> - Deletes snapshot clones on the destination
-     * volume that aren't on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_INTERMEDIATE_DATA</code> - Overwrites snapshots on the destination
-     * volume that don’t match the source snapshot that you’re copying.</p> </li> </ul>
-     */
+    inline const Aws::Vector<UpdateOpenZFSVolumeOption>& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
-
-    /**
-     * <p>Confirms that you want to delete data on the destination volume that wasn’t
-     * there during the previous snapshot replication.</p> <p>Your replication will
-     * fail if you don’t include an option for a specific type of data and that data is
-     * on your destination. For example, if you don’t include
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> and there are intermediate snapshots
-     * on the destination, you can’t copy the snapshot.</p> <ul> <li> <p>
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> - Deletes snapshots on the
-     * destination volume that aren’t on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_CLONED_VOLUMES</code> - Deletes snapshot clones on the destination
-     * volume that aren't on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_INTERMEDIATE_DATA</code> - Overwrites snapshots on the destination
-     * volume that don’t match the source snapshot that you’re copying.</p> </li> </ul>
-     */
-    inline void SetOptions(const Aws::Vector<UpdateOpenZFSVolumeOption>& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p>Confirms that you want to delete data on the destination volume that wasn’t
-     * there during the previous snapshot replication.</p> <p>Your replication will
-     * fail if you don’t include an option for a specific type of data and that data is
-     * on your destination. For example, if you don’t include
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> and there are intermediate snapshots
-     * on the destination, you can’t copy the snapshot.</p> <ul> <li> <p>
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> - Deletes snapshots on the
-     * destination volume that aren’t on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_CLONED_VOLUMES</code> - Deletes snapshot clones on the destination
-     * volume that aren't on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_INTERMEDIATE_DATA</code> - Overwrites snapshots on the destination
-     * volume that don’t match the source snapshot that you’re copying.</p> </li> </ul>
-     */
-    inline void SetOptions(Aws::Vector<UpdateOpenZFSVolumeOption>&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p>Confirms that you want to delete data on the destination volume that wasn’t
-     * there during the previous snapshot replication.</p> <p>Your replication will
-     * fail if you don’t include an option for a specific type of data and that data is
-     * on your destination. For example, if you don’t include
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> and there are intermediate snapshots
-     * on the destination, you can’t copy the snapshot.</p> <ul> <li> <p>
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> - Deletes snapshots on the
-     * destination volume that aren’t on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_CLONED_VOLUMES</code> - Deletes snapshot clones on the destination
-     * volume that aren't on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_INTERMEDIATE_DATA</code> - Overwrites snapshots on the destination
-     * volume that don’t match the source snapshot that you’re copying.</p> </li> </ul>
-     */
-    inline CopySnapshotAndUpdateVolumeRequest& WithOptions(const Aws::Vector<UpdateOpenZFSVolumeOption>& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p>Confirms that you want to delete data on the destination volume that wasn’t
-     * there during the previous snapshot replication.</p> <p>Your replication will
-     * fail if you don’t include an option for a specific type of data and that data is
-     * on your destination. For example, if you don’t include
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> and there are intermediate snapshots
-     * on the destination, you can’t copy the snapshot.</p> <ul> <li> <p>
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> - Deletes snapshots on the
-     * destination volume that aren’t on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_CLONED_VOLUMES</code> - Deletes snapshot clones on the destination
-     * volume that aren't on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_INTERMEDIATE_DATA</code> - Overwrites snapshots on the destination
-     * volume that don’t match the source snapshot that you’re copying.</p> </li> </ul>
-     */
-    inline CopySnapshotAndUpdateVolumeRequest& WithOptions(Aws::Vector<UpdateOpenZFSVolumeOption>&& value) { SetOptions(std::move(value)); return *this;}
-
-    /**
-     * <p>Confirms that you want to delete data on the destination volume that wasn’t
-     * there during the previous snapshot replication.</p> <p>Your replication will
-     * fail if you don’t include an option for a specific type of data and that data is
-     * on your destination. For example, if you don’t include
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> and there are intermediate snapshots
-     * on the destination, you can’t copy the snapshot.</p> <ul> <li> <p>
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> - Deletes snapshots on the
-     * destination volume that aren’t on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_CLONED_VOLUMES</code> - Deletes snapshot clones on the destination
-     * volume that aren't on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_INTERMEDIATE_DATA</code> - Overwrites snapshots on the destination
-     * volume that don’t match the source snapshot that you’re copying.</p> </li> </ul>
-     */
-    inline CopySnapshotAndUpdateVolumeRequest& AddOptions(const UpdateOpenZFSVolumeOption& value) { m_optionsHasBeenSet = true; m_options.push_back(value); return *this; }
-
-    /**
-     * <p>Confirms that you want to delete data on the destination volume that wasn’t
-     * there during the previous snapshot replication.</p> <p>Your replication will
-     * fail if you don’t include an option for a specific type of data and that data is
-     * on your destination. For example, if you don’t include
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> and there are intermediate snapshots
-     * on the destination, you can’t copy the snapshot.</p> <ul> <li> <p>
-     * <code>DELETE_INTERMEDIATE_SNAPSHOTS</code> - Deletes snapshots on the
-     * destination volume that aren’t on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_CLONED_VOLUMES</code> - Deletes snapshot clones on the destination
-     * volume that aren't on the source volume.</p> </li> <li> <p>
-     * <code>DELETE_INTERMEDIATE_DATA</code> - Overwrites snapshots on the destination
-     * volume that don’t match the source snapshot that you’re copying.</p> </li> </ul>
-     */
-    inline CopySnapshotAndUpdateVolumeRequest& AddOptions(UpdateOpenZFSVolumeOption&& value) { m_optionsHasBeenSet = true; m_options.push_back(std::move(value)); return *this; }
-
+    template<typename OptionsT = Aws::Vector<UpdateOpenZFSVolumeOption>>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = Aws::Vector<UpdateOpenZFSVolumeOption>>
+    CopySnapshotAndUpdateVolumeRequest& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    inline CopySnapshotAndUpdateVolumeRequest& AddOptions(UpdateOpenZFSVolumeOption value) { m_optionsHasBeenSet = true; m_options.push_back(value); return *this; }
+    ///@}
   private:
 
-    Aws::String m_clientRequestToken;
-    bool m_clientRequestTokenHasBeenSet = false;
+    Aws::String m_clientRequestToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientRequestTokenHasBeenSet = true;
 
     Aws::String m_volumeId;
     bool m_volumeIdHasBeenSet = false;
@@ -329,7 +119,7 @@ namespace Model
     Aws::String m_sourceSnapshotARN;
     bool m_sourceSnapshotARNHasBeenSet = false;
 
-    OpenZFSCopyStrategy m_copyStrategy;
+    OpenZFSCopyStrategy m_copyStrategy{OpenZFSCopyStrategy::NOT_SET};
     bool m_copyStrategyHasBeenSet = false;
 
     Aws::Vector<UpdateOpenZFSVolumeOption> m_options;

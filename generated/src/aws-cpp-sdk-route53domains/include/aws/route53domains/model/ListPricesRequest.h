@@ -21,7 +21,7 @@ namespace Model
   class ListPricesRequest : public Route53DomainsRequest
   {
   public:
-    AWS_ROUTE53DOMAINS_API ListPricesRequest();
+    AWS_ROUTE53DOMAINS_API ListPricesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,63 +34,21 @@ namespace Model
     AWS_ROUTE53DOMAINS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The TLD for which you want to receive the pricing information. For example.
      * <code>.net</code>.</p> <p>If a <code>Tld</code> value is not provided, a list of
      * prices for all TLDs supported by Route 53 is returned.</p>
      */
-    inline const Aws::String& GetTld() const{ return m_tld; }
-
-    /**
-     * <p>The TLD for which you want to receive the pricing information. For example.
-     * <code>.net</code>.</p> <p>If a <code>Tld</code> value is not provided, a list of
-     * prices for all TLDs supported by Route 53 is returned.</p>
-     */
+    inline const Aws::String& GetTld() const { return m_tld; }
     inline bool TldHasBeenSet() const { return m_tldHasBeenSet; }
+    template<typename TldT = Aws::String>
+    void SetTld(TldT&& value) { m_tldHasBeenSet = true; m_tld = std::forward<TldT>(value); }
+    template<typename TldT = Aws::String>
+    ListPricesRequest& WithTld(TldT&& value) { SetTld(std::forward<TldT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The TLD for which you want to receive the pricing information. For example.
-     * <code>.net</code>.</p> <p>If a <code>Tld</code> value is not provided, a list of
-     * prices for all TLDs supported by Route 53 is returned.</p>
-     */
-    inline void SetTld(const Aws::String& value) { m_tldHasBeenSet = true; m_tld = value; }
-
-    /**
-     * <p>The TLD for which you want to receive the pricing information. For example.
-     * <code>.net</code>.</p> <p>If a <code>Tld</code> value is not provided, a list of
-     * prices for all TLDs supported by Route 53 is returned.</p>
-     */
-    inline void SetTld(Aws::String&& value) { m_tldHasBeenSet = true; m_tld = std::move(value); }
-
-    /**
-     * <p>The TLD for which you want to receive the pricing information. For example.
-     * <code>.net</code>.</p> <p>If a <code>Tld</code> value is not provided, a list of
-     * prices for all TLDs supported by Route 53 is returned.</p>
-     */
-    inline void SetTld(const char* value) { m_tldHasBeenSet = true; m_tld.assign(value); }
-
-    /**
-     * <p>The TLD for which you want to receive the pricing information. For example.
-     * <code>.net</code>.</p> <p>If a <code>Tld</code> value is not provided, a list of
-     * prices for all TLDs supported by Route 53 is returned.</p>
-     */
-    inline ListPricesRequest& WithTld(const Aws::String& value) { SetTld(value); return *this;}
-
-    /**
-     * <p>The TLD for which you want to receive the pricing information. For example.
-     * <code>.net</code>.</p> <p>If a <code>Tld</code> value is not provided, a list of
-     * prices for all TLDs supported by Route 53 is returned.</p>
-     */
-    inline ListPricesRequest& WithTld(Aws::String&& value) { SetTld(std::move(value)); return *this;}
-
-    /**
-     * <p>The TLD for which you want to receive the pricing information. For example.
-     * <code>.net</code>.</p> <p>If a <code>Tld</code> value is not provided, a list of
-     * prices for all TLDs supported by Route 53 is returned.</p>
-     */
-    inline ListPricesRequest& WithTld(const char* value) { SetTld(value); return *this;}
-
-
+    ///@{
     /**
      * <p>For an initial request for a list of prices, omit this element. If the number
      * of prices that are not yet complete is greater than the value that you specified
@@ -101,117 +59,24 @@ namespace Model
      * only for all TLDs. If you specify a TLD, don't specify a
      * <code>Marker</code>.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>For an initial request for a list of prices, omit this element. If the number
-     * of prices that are not yet complete is greater than the value that you specified
-     * for <code>MaxItems</code>, you can use <code>Marker</code> to return additional
-     * prices. Get the value of <code>NextPageMarker</code> from the previous response,
-     * and submit another request that includes the value of
-     * <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Used
-     * only for all TLDs. If you specify a TLD, don't specify a
-     * <code>Marker</code>.</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    ListPricesRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>For an initial request for a list of prices, omit this element. If the number
-     * of prices that are not yet complete is greater than the value that you specified
-     * for <code>MaxItems</code>, you can use <code>Marker</code> to return additional
-     * prices. Get the value of <code>NextPageMarker</code> from the previous response,
-     * and submit another request that includes the value of
-     * <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Used
-     * only for all TLDs. If you specify a TLD, don't specify a
-     * <code>Marker</code>.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>For an initial request for a list of prices, omit this element. If the number
-     * of prices that are not yet complete is greater than the value that you specified
-     * for <code>MaxItems</code>, you can use <code>Marker</code> to return additional
-     * prices. Get the value of <code>NextPageMarker</code> from the previous response,
-     * and submit another request that includes the value of
-     * <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Used
-     * only for all TLDs. If you specify a TLD, don't specify a
-     * <code>Marker</code>.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>For an initial request for a list of prices, omit this element. If the number
-     * of prices that are not yet complete is greater than the value that you specified
-     * for <code>MaxItems</code>, you can use <code>Marker</code> to return additional
-     * prices. Get the value of <code>NextPageMarker</code> from the previous response,
-     * and submit another request that includes the value of
-     * <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Used
-     * only for all TLDs. If you specify a TLD, don't specify a
-     * <code>Marker</code>.</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>For an initial request for a list of prices, omit this element. If the number
-     * of prices that are not yet complete is greater than the value that you specified
-     * for <code>MaxItems</code>, you can use <code>Marker</code> to return additional
-     * prices. Get the value of <code>NextPageMarker</code> from the previous response,
-     * and submit another request that includes the value of
-     * <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Used
-     * only for all TLDs. If you specify a TLD, don't specify a
-     * <code>Marker</code>.</p>
-     */
-    inline ListPricesRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>For an initial request for a list of prices, omit this element. If the number
-     * of prices that are not yet complete is greater than the value that you specified
-     * for <code>MaxItems</code>, you can use <code>Marker</code> to return additional
-     * prices. Get the value of <code>NextPageMarker</code> from the previous response,
-     * and submit another request that includes the value of
-     * <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Used
-     * only for all TLDs. If you specify a TLD, don't specify a
-     * <code>Marker</code>.</p>
-     */
-    inline ListPricesRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>For an initial request for a list of prices, omit this element. If the number
-     * of prices that are not yet complete is greater than the value that you specified
-     * for <code>MaxItems</code>, you can use <code>Marker</code> to return additional
-     * prices. Get the value of <code>NextPageMarker</code> from the previous response,
-     * and submit another request that includes the value of
-     * <code>NextPageMarker</code> in the <code>Marker</code> element. </p> <p>Used
-     * only for all TLDs. If you specify a TLD, don't specify a
-     * <code>Marker</code>.</p>
-     */
-    inline ListPricesRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Number of <code>Prices</code> to be returned.</p> <p>Used only for all TLDs.
      * If you specify a TLD, don't specify a <code>MaxItems</code>.</p>
      */
-    inline int GetMaxItems() const{ return m_maxItems; }
-
-    /**
-     * <p>Number of <code>Prices</code> to be returned.</p> <p>Used only for all TLDs.
-     * If you specify a TLD, don't specify a <code>MaxItems</code>.</p>
-     */
+    inline int GetMaxItems() const { return m_maxItems; }
     inline bool MaxItemsHasBeenSet() const { return m_maxItemsHasBeenSet; }
-
-    /**
-     * <p>Number of <code>Prices</code> to be returned.</p> <p>Used only for all TLDs.
-     * If you specify a TLD, don't specify a <code>MaxItems</code>.</p>
-     */
     inline void SetMaxItems(int value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
-
-    /**
-     * <p>Number of <code>Prices</code> to be returned.</p> <p>Used only for all TLDs.
-     * If you specify a TLD, don't specify a <code>MaxItems</code>.</p>
-     */
     inline ListPricesRequest& WithMaxItems(int value) { SetMaxItems(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_tld;
@@ -220,7 +85,7 @@ namespace Model
     Aws::String m_marker;
     bool m_markerHasBeenSet = false;
 
-    int m_maxItems;
+    int m_maxItems{0};
     bool m_maxItemsHasBeenSet = false;
   };
 

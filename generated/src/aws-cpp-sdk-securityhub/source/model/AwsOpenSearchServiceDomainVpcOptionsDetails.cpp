@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsOpenSearchServiceDomainVpcOptionsDetails::AwsOpenSearchServiceDomainVpcOptionsDetails() : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false)
-{
-}
-
-AwsOpenSearchServiceDomainVpcOptionsDetails::AwsOpenSearchServiceDomainVpcOptionsDetails(JsonView jsonValue) : 
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false)
+AwsOpenSearchServiceDomainVpcOptionsDetails::AwsOpenSearchServiceDomainVpcOptionsDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ AwsOpenSearchServiceDomainVpcOptionsDetails& AwsOpenSearchServiceDomainVpcOption
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("SubnetIds");
@@ -52,7 +43,6 @@ AwsOpenSearchServiceDomainVpcOptionsDetails& AwsOpenSearchServiceDomainVpcOption
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

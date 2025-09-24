@@ -23,7 +23,7 @@ namespace Model
   class BatchGetSecretValueRequest : public SecretsManagerRequest
   {
   public:
-    AWS_SECRETSMANAGER_API BatchGetSecretValueRequest();
+    AWS_SECRETSMANAGER_API BatchGetSecretValueRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,203 +36,64 @@ namespace Model
     AWS_SECRETSMANAGER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN or names of the secrets to retrieve. You must include
      * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSecretIdList() const{ return m_secretIdList; }
-
-    /**
-     * <p>The ARN or names of the secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecretIdList() const { return m_secretIdList; }
     inline bool SecretIdListHasBeenSet() const { return m_secretIdListHasBeenSet; }
+    template<typename SecretIdListT = Aws::Vector<Aws::String>>
+    void SetSecretIdList(SecretIdListT&& value) { m_secretIdListHasBeenSet = true; m_secretIdList = std::forward<SecretIdListT>(value); }
+    template<typename SecretIdListT = Aws::Vector<Aws::String>>
+    BatchGetSecretValueRequest& WithSecretIdList(SecretIdListT&& value) { SetSecretIdList(std::forward<SecretIdListT>(value)); return *this;}
+    template<typename SecretIdListT = Aws::String>
+    BatchGetSecretValueRequest& AddSecretIdList(SecretIdListT&& value) { m_secretIdListHasBeenSet = true; m_secretIdList.emplace_back(std::forward<SecretIdListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The ARN or names of the secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline void SetSecretIdList(const Aws::Vector<Aws::String>& value) { m_secretIdListHasBeenSet = true; m_secretIdList = value; }
-
-    /**
-     * <p>The ARN or names of the secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline void SetSecretIdList(Aws::Vector<Aws::String>&& value) { m_secretIdListHasBeenSet = true; m_secretIdList = std::move(value); }
-
-    /**
-     * <p>The ARN or names of the secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline BatchGetSecretValueRequest& WithSecretIdList(const Aws::Vector<Aws::String>& value) { SetSecretIdList(value); return *this;}
-
-    /**
-     * <p>The ARN or names of the secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline BatchGetSecretValueRequest& WithSecretIdList(Aws::Vector<Aws::String>&& value) { SetSecretIdList(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN or names of the secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline BatchGetSecretValueRequest& AddSecretIdList(const Aws::String& value) { m_secretIdListHasBeenSet = true; m_secretIdList.push_back(value); return *this; }
-
-    /**
-     * <p>The ARN or names of the secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline BatchGetSecretValueRequest& AddSecretIdList(Aws::String&& value) { m_secretIdListHasBeenSet = true; m_secretIdList.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ARN or names of the secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline BatchGetSecretValueRequest& AddSecretIdList(const char* value) { m_secretIdListHasBeenSet = true; m_secretIdList.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The filters to choose which secrets to retrieve. You must include
      * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
      */
-    inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>The filters to choose which secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
+    inline const Aws::Vector<Filter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    BatchGetSecretValueRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = Filter>
+    BatchGetSecretValueRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The filters to choose which secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>The filters to choose which secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>The filters to choose which secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline BatchGetSecretValueRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>The filters to choose which secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline BatchGetSecretValueRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>The filters to choose which secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline BatchGetSecretValueRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>The filters to choose which secrets to retrieve. You must include
-     * <code>Filters</code> or <code>SecretIdList</code>, but not both.</p>
-     */
-    inline BatchGetSecretValueRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The number of results to include in the response.</p> <p>If there are more
      * results available, in the response, Secrets Manager includes
      * <code>NextToken</code>. To get the next results, call
      * <code>BatchGetSecretValue</code> again with the value from
-     * <code>NextToken</code>.</p>
+     * <code>NextToken</code>. To use this parameter, you must also use the
+     * <code>Filters</code> parameter.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The number of results to include in the response.</p> <p>If there are more
-     * results available, in the response, Secrets Manager includes
-     * <code>NextToken</code>. To get the next results, call
-     * <code>BatchGetSecretValue</code> again with the value from
-     * <code>NextToken</code>.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The number of results to include in the response.</p> <p>If there are more
-     * results available, in the response, Secrets Manager includes
-     * <code>NextToken</code>. To get the next results, call
-     * <code>BatchGetSecretValue</code> again with the value from
-     * <code>NextToken</code>.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The number of results to include in the response.</p> <p>If there are more
-     * results available, in the response, Secrets Manager includes
-     * <code>NextToken</code>. To get the next results, call
-     * <code>BatchGetSecretValue</code> again with the value from
-     * <code>NextToken</code>.</p>
-     */
     inline BatchGetSecretValueRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A token that indicates where the output should continue from, if a previous
      * call did not show all results. To get the next results, call
      * <code>BatchGetSecretValue</code> again with this value.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>BatchGetSecretValue</code> again with this value.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>BatchGetSecretValue</code> again with this value.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>BatchGetSecretValue</code> again with this value.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>BatchGetSecretValue</code> again with this value.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>BatchGetSecretValue</code> again with this value.</p>
-     */
-    inline BatchGetSecretValueRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>BatchGetSecretValue</code> again with this value.</p>
-     */
-    inline BatchGetSecretValueRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token that indicates where the output should continue from, if a previous
-     * call did not show all results. To get the next results, call
-     * <code>BatchGetSecretValue</code> again with this value.</p>
-     */
-    inline BatchGetSecretValueRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    BatchGetSecretValueRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_secretIdList;
@@ -241,7 +102,7 @@ namespace Model
     Aws::Vector<Filter> m_filters;
     bool m_filtersHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

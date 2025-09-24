@@ -20,45 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchSpecification::LaunchSpecification() : 
-    m_userDataHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_addressingTypeHasBeenSet(false),
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_monitoringHasBeenSet(false)
-{
-}
-
-LaunchSpecification::LaunchSpecification(const XmlNode& xmlNode) : 
-    m_userDataHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_addressingTypeHasBeenSet(false),
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_subnetIdHasBeenSet(false),
-    m_monitoringHasBeenSet(false)
+LaunchSpecification::LaunchSpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -75,18 +37,6 @@ LaunchSpecification& LaunchSpecification::operator =(const XmlNode& xmlNode)
       m_userData = Aws::Utils::Xml::DecodeEscapedXmlText(userDataNode.GetText());
       m_userDataHasBeenSet = true;
     }
-    XmlNode securityGroupsNode = resultNode.FirstChild("groupSet");
-    if(!securityGroupsNode.IsNull())
-    {
-      XmlNode securityGroupsMember = securityGroupsNode.FirstChild("item");
-      while(!securityGroupsMember.IsNull())
-      {
-        m_securityGroups.push_back(securityGroupsMember);
-        securityGroupsMember = securityGroupsMember.NextNode("item");
-      }
-
-      m_securityGroupsHasBeenSet = true;
-    }
     XmlNode addressingTypeNode = resultNode.FirstChild("addressingType");
     if(!addressingTypeNode.IsNull())
     {
@@ -97,6 +47,7 @@ LaunchSpecification& LaunchSpecification::operator =(const XmlNode& xmlNode)
     if(!blockDeviceMappingsNode.IsNull())
     {
       XmlNode blockDeviceMappingsMember = blockDeviceMappingsNode.FirstChild("item");
+      m_blockDeviceMappingsHasBeenSet = !blockDeviceMappingsMember.IsNull();
       while(!blockDeviceMappingsMember.IsNull())
       {
         m_blockDeviceMappings.push_back(blockDeviceMappingsMember);
@@ -126,7 +77,7 @@ LaunchSpecification& LaunchSpecification::operator =(const XmlNode& xmlNode)
     XmlNode instanceTypeNode = resultNode.FirstChild("instanceType");
     if(!instanceTypeNode.IsNull())
     {
-      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()).c_str());
+      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()));
       m_instanceTypeHasBeenSet = true;
     }
     XmlNode kernelIdNode = resultNode.FirstChild("kernelId");
@@ -145,6 +96,7 @@ LaunchSpecification& LaunchSpecification::operator =(const XmlNode& xmlNode)
     if(!networkInterfacesNode.IsNull())
     {
       XmlNode networkInterfacesMember = networkInterfacesNode.FirstChild("item");
+      m_networkInterfacesHasBeenSet = !networkInterfacesMember.IsNull();
       while(!networkInterfacesMember.IsNull())
       {
         m_networkInterfaces.push_back(networkInterfacesMember);
@@ -171,6 +123,19 @@ LaunchSpecification& LaunchSpecification::operator =(const XmlNode& xmlNode)
       m_subnetId = Aws::Utils::Xml::DecodeEscapedXmlText(subnetIdNode.GetText());
       m_subnetIdHasBeenSet = true;
     }
+    XmlNode securityGroupsNode = resultNode.FirstChild("groupSet");
+    if(!securityGroupsNode.IsNull())
+    {
+      XmlNode securityGroupsMember = securityGroupsNode.FirstChild("item");
+      m_securityGroupsHasBeenSet = !securityGroupsMember.IsNull();
+      while(!securityGroupsMember.IsNull())
+      {
+        m_securityGroups.push_back(securityGroupsMember);
+        securityGroupsMember = securityGroupsMember.NextNode("item");
+      }
+
+      m_securityGroupsHasBeenSet = true;
+    }
     XmlNode monitoringNode = resultNode.FirstChild("monitoring");
     if(!monitoringNode.IsNull())
     {
@@ -187,17 +152,6 @@ void LaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* loca
   if(m_userDataHasBeenSet)
   {
       oStream << location << index << locationValue << ".UserData=" << StringUtils::URLEncode(m_userData.c_str()) << "&";
-  }
-
-  if(m_securityGroupsHasBeenSet)
-  {
-      unsigned securityGroupsIdx = 1;
-      for(auto& item : m_securityGroups)
-      {
-        Aws::StringStream securityGroupsSs;
-        securityGroupsSs << location << index << locationValue << ".GroupSet." << securityGroupsIdx++;
-        item.OutputToStream(oStream, securityGroupsSs.str().c_str());
-      }
   }
 
   if(m_addressingTypeHasBeenSet)
@@ -235,7 +189,7 @@ void LaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
 
   if(m_kernelIdHasBeenSet)
@@ -276,6 +230,17 @@ void LaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* loca
       oStream << location << index << locationValue << ".SubnetId=" << StringUtils::URLEncode(m_subnetId.c_str()) << "&";
   }
 
+  if(m_securityGroupsHasBeenSet)
+  {
+      unsigned securityGroupsIdx = 1;
+      for(auto& item : m_securityGroups)
+      {
+        Aws::StringStream securityGroupsSs;
+        securityGroupsSs << location << index << locationValue << ".GroupSet." << securityGroupsIdx++;
+        item.OutputToStream(oStream, securityGroupsSs.str().c_str());
+      }
+  }
+
   if(m_monitoringHasBeenSet)
   {
       Aws::StringStream monitoringLocationAndMemberSs;
@@ -291,16 +256,6 @@ void LaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* loca
   {
       oStream << location << ".UserData=" << StringUtils::URLEncode(m_userData.c_str()) << "&";
   }
-  if(m_securityGroupsHasBeenSet)
-  {
-      unsigned securityGroupsIdx = 1;
-      for(auto& item : m_securityGroups)
-      {
-        Aws::StringStream securityGroupsSs;
-        securityGroupsSs << location <<  ".GroupSet." << securityGroupsIdx++;
-        item.OutputToStream(oStream, securityGroupsSs.str().c_str());
-      }
-  }
   if(m_addressingTypeHasBeenSet)
   {
       oStream << location << ".AddressingType=" << StringUtils::URLEncode(m_addressingType.c_str()) << "&";
@@ -311,7 +266,7 @@ void LaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_blockDeviceMappings)
       {
         Aws::StringStream blockDeviceMappingsSs;
-        blockDeviceMappingsSs << location <<  ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
+        blockDeviceMappingsSs << location << ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
         item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
@@ -331,7 +286,7 @@ void LaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
   if(m_kernelIdHasBeenSet)
   {
@@ -347,7 +302,7 @@ void LaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_networkInterfaces)
       {
         Aws::StringStream networkInterfacesSs;
-        networkInterfacesSs << location <<  ".NetworkInterfaceSet." << networkInterfacesIdx++;
+        networkInterfacesSs << location << ".NetworkInterfaceSet." << networkInterfacesIdx++;
         item.OutputToStream(oStream, networkInterfacesSs.str().c_str());
       }
   }
@@ -364,6 +319,16 @@ void LaunchSpecification::OutputToStream(Aws::OStream& oStream, const char* loca
   if(m_subnetIdHasBeenSet)
   {
       oStream << location << ".SubnetId=" << StringUtils::URLEncode(m_subnetId.c_str()) << "&";
+  }
+  if(m_securityGroupsHasBeenSet)
+  {
+      unsigned securityGroupsIdx = 1;
+      for(auto& item : m_securityGroups)
+      {
+        Aws::StringStream securityGroupsSs;
+        securityGroupsSs << location << ".GroupSet." << securityGroupsIdx++;
+        item.OutputToStream(oStream, securityGroupsSs.str().c_str());
+      }
   }
   if(m_monitoringHasBeenSet)
   {

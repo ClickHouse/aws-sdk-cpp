@@ -32,168 +32,60 @@ namespace Model
   class MaintenanceStatus
   {
   public:
-    AWS_MEDIALIVE_API MaintenanceStatus();
+    AWS_MEDIALIVE_API MaintenanceStatus() = default;
     AWS_MEDIALIVE_API MaintenanceStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API MaintenanceStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The currently selected maintenance day.
      */
-    inline const MaintenanceDay& GetMaintenanceDay() const{ return m_maintenanceDay; }
-
-    /**
-     * The currently selected maintenance day.
-     */
+    inline MaintenanceDay GetMaintenanceDay() const { return m_maintenanceDay; }
     inline bool MaintenanceDayHasBeenSet() const { return m_maintenanceDayHasBeenSet; }
+    inline void SetMaintenanceDay(MaintenanceDay value) { m_maintenanceDayHasBeenSet = true; m_maintenanceDay = value; }
+    inline MaintenanceStatus& WithMaintenanceDay(MaintenanceDay value) { SetMaintenanceDay(value); return *this;}
+    ///@}
 
-    /**
-     * The currently selected maintenance day.
-     */
-    inline void SetMaintenanceDay(const MaintenanceDay& value) { m_maintenanceDayHasBeenSet = true; m_maintenanceDay = value; }
-
-    /**
-     * The currently selected maintenance day.
-     */
-    inline void SetMaintenanceDay(MaintenanceDay&& value) { m_maintenanceDayHasBeenSet = true; m_maintenanceDay = std::move(value); }
-
-    /**
-     * The currently selected maintenance day.
-     */
-    inline MaintenanceStatus& WithMaintenanceDay(const MaintenanceDay& value) { SetMaintenanceDay(value); return *this;}
-
-    /**
-     * The currently selected maintenance day.
-     */
-    inline MaintenanceStatus& WithMaintenanceDay(MaintenanceDay&& value) { SetMaintenanceDay(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Maintenance is required by the displayed date and time. Date and time is in ISO.
      */
-    inline const Aws::String& GetMaintenanceDeadline() const{ return m_maintenanceDeadline; }
-
-    /**
-     * Maintenance is required by the displayed date and time. Date and time is in ISO.
-     */
+    inline const Aws::String& GetMaintenanceDeadline() const { return m_maintenanceDeadline; }
     inline bool MaintenanceDeadlineHasBeenSet() const { return m_maintenanceDeadlineHasBeenSet; }
+    template<typename MaintenanceDeadlineT = Aws::String>
+    void SetMaintenanceDeadline(MaintenanceDeadlineT&& value) { m_maintenanceDeadlineHasBeenSet = true; m_maintenanceDeadline = std::forward<MaintenanceDeadlineT>(value); }
+    template<typename MaintenanceDeadlineT = Aws::String>
+    MaintenanceStatus& WithMaintenanceDeadline(MaintenanceDeadlineT&& value) { SetMaintenanceDeadline(std::forward<MaintenanceDeadlineT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Maintenance is required by the displayed date and time. Date and time is in ISO.
-     */
-    inline void SetMaintenanceDeadline(const Aws::String& value) { m_maintenanceDeadlineHasBeenSet = true; m_maintenanceDeadline = value; }
-
-    /**
-     * Maintenance is required by the displayed date and time. Date and time is in ISO.
-     */
-    inline void SetMaintenanceDeadline(Aws::String&& value) { m_maintenanceDeadlineHasBeenSet = true; m_maintenanceDeadline = std::move(value); }
-
-    /**
-     * Maintenance is required by the displayed date and time. Date and time is in ISO.
-     */
-    inline void SetMaintenanceDeadline(const char* value) { m_maintenanceDeadlineHasBeenSet = true; m_maintenanceDeadline.assign(value); }
-
-    /**
-     * Maintenance is required by the displayed date and time. Date and time is in ISO.
-     */
-    inline MaintenanceStatus& WithMaintenanceDeadline(const Aws::String& value) { SetMaintenanceDeadline(value); return *this;}
-
-    /**
-     * Maintenance is required by the displayed date and time. Date and time is in ISO.
-     */
-    inline MaintenanceStatus& WithMaintenanceDeadline(Aws::String&& value) { SetMaintenanceDeadline(std::move(value)); return *this;}
-
-    /**
-     * Maintenance is required by the displayed date and time. Date and time is in ISO.
-     */
-    inline MaintenanceStatus& WithMaintenanceDeadline(const char* value) { SetMaintenanceDeadline(value); return *this;}
-
-
+    ///@{
     /**
      * The currently scheduled maintenance date and time. Date and time is in ISO.
      */
-    inline const Aws::String& GetMaintenanceScheduledDate() const{ return m_maintenanceScheduledDate; }
-
-    /**
-     * The currently scheduled maintenance date and time. Date and time is in ISO.
-     */
+    inline const Aws::String& GetMaintenanceScheduledDate() const { return m_maintenanceScheduledDate; }
     inline bool MaintenanceScheduledDateHasBeenSet() const { return m_maintenanceScheduledDateHasBeenSet; }
+    template<typename MaintenanceScheduledDateT = Aws::String>
+    void SetMaintenanceScheduledDate(MaintenanceScheduledDateT&& value) { m_maintenanceScheduledDateHasBeenSet = true; m_maintenanceScheduledDate = std::forward<MaintenanceScheduledDateT>(value); }
+    template<typename MaintenanceScheduledDateT = Aws::String>
+    MaintenanceStatus& WithMaintenanceScheduledDate(MaintenanceScheduledDateT&& value) { SetMaintenanceScheduledDate(std::forward<MaintenanceScheduledDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The currently scheduled maintenance date and time. Date and time is in ISO.
-     */
-    inline void SetMaintenanceScheduledDate(const Aws::String& value) { m_maintenanceScheduledDateHasBeenSet = true; m_maintenanceScheduledDate = value; }
-
-    /**
-     * The currently scheduled maintenance date and time. Date and time is in ISO.
-     */
-    inline void SetMaintenanceScheduledDate(Aws::String&& value) { m_maintenanceScheduledDateHasBeenSet = true; m_maintenanceScheduledDate = std::move(value); }
-
-    /**
-     * The currently scheduled maintenance date and time. Date and time is in ISO.
-     */
-    inline void SetMaintenanceScheduledDate(const char* value) { m_maintenanceScheduledDateHasBeenSet = true; m_maintenanceScheduledDate.assign(value); }
-
-    /**
-     * The currently scheduled maintenance date and time. Date and time is in ISO.
-     */
-    inline MaintenanceStatus& WithMaintenanceScheduledDate(const Aws::String& value) { SetMaintenanceScheduledDate(value); return *this;}
-
-    /**
-     * The currently scheduled maintenance date and time. Date and time is in ISO.
-     */
-    inline MaintenanceStatus& WithMaintenanceScheduledDate(Aws::String&& value) { SetMaintenanceScheduledDate(std::move(value)); return *this;}
-
-    /**
-     * The currently scheduled maintenance date and time. Date and time is in ISO.
-     */
-    inline MaintenanceStatus& WithMaintenanceScheduledDate(const char* value) { SetMaintenanceScheduledDate(value); return *this;}
-
-
+    ///@{
     /**
      * The currently selected maintenance start time. Time is in UTC.
      */
-    inline const Aws::String& GetMaintenanceStartTime() const{ return m_maintenanceStartTime; }
-
-    /**
-     * The currently selected maintenance start time. Time is in UTC.
-     */
+    inline const Aws::String& GetMaintenanceStartTime() const { return m_maintenanceStartTime; }
     inline bool MaintenanceStartTimeHasBeenSet() const { return m_maintenanceStartTimeHasBeenSet; }
-
-    /**
-     * The currently selected maintenance start time. Time is in UTC.
-     */
-    inline void SetMaintenanceStartTime(const Aws::String& value) { m_maintenanceStartTimeHasBeenSet = true; m_maintenanceStartTime = value; }
-
-    /**
-     * The currently selected maintenance start time. Time is in UTC.
-     */
-    inline void SetMaintenanceStartTime(Aws::String&& value) { m_maintenanceStartTimeHasBeenSet = true; m_maintenanceStartTime = std::move(value); }
-
-    /**
-     * The currently selected maintenance start time. Time is in UTC.
-     */
-    inline void SetMaintenanceStartTime(const char* value) { m_maintenanceStartTimeHasBeenSet = true; m_maintenanceStartTime.assign(value); }
-
-    /**
-     * The currently selected maintenance start time. Time is in UTC.
-     */
-    inline MaintenanceStatus& WithMaintenanceStartTime(const Aws::String& value) { SetMaintenanceStartTime(value); return *this;}
-
-    /**
-     * The currently selected maintenance start time. Time is in UTC.
-     */
-    inline MaintenanceStatus& WithMaintenanceStartTime(Aws::String&& value) { SetMaintenanceStartTime(std::move(value)); return *this;}
-
-    /**
-     * The currently selected maintenance start time. Time is in UTC.
-     */
-    inline MaintenanceStatus& WithMaintenanceStartTime(const char* value) { SetMaintenanceStartTime(value); return *this;}
-
+    template<typename MaintenanceStartTimeT = Aws::String>
+    void SetMaintenanceStartTime(MaintenanceStartTimeT&& value) { m_maintenanceStartTimeHasBeenSet = true; m_maintenanceStartTime = std::forward<MaintenanceStartTimeT>(value); }
+    template<typename MaintenanceStartTimeT = Aws::String>
+    MaintenanceStatus& WithMaintenanceStartTime(MaintenanceStartTimeT&& value) { SetMaintenanceStartTime(std::forward<MaintenanceStartTimeT>(value)); return *this;}
+    ///@}
   private:
 
-    MaintenanceDay m_maintenanceDay;
+    MaintenanceDay m_maintenanceDay{MaintenanceDay::NOT_SET};
     bool m_maintenanceDayHasBeenSet = false;
 
     Aws::String m_maintenanceDeadline;

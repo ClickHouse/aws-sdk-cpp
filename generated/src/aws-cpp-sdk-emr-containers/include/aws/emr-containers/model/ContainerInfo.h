@@ -32,42 +32,23 @@ namespace Model
   class ContainerInfo
   {
   public:
-    AWS_EMRCONTAINERS_API ContainerInfo();
+    AWS_EMRCONTAINERS_API ContainerInfo() = default;
     AWS_EMRCONTAINERS_API ContainerInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRCONTAINERS_API ContainerInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRCONTAINERS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The information about the Amazon EKS cluster.</p>
      */
-    inline const EksInfo& GetEksInfo() const{ return m_eksInfo; }
-
-    /**
-     * <p>The information about the Amazon EKS cluster.</p>
-     */
+    inline const EksInfo& GetEksInfo() const { return m_eksInfo; }
     inline bool EksInfoHasBeenSet() const { return m_eksInfoHasBeenSet; }
-
-    /**
-     * <p>The information about the Amazon EKS cluster.</p>
-     */
-    inline void SetEksInfo(const EksInfo& value) { m_eksInfoHasBeenSet = true; m_eksInfo = value; }
-
-    /**
-     * <p>The information about the Amazon EKS cluster.</p>
-     */
-    inline void SetEksInfo(EksInfo&& value) { m_eksInfoHasBeenSet = true; m_eksInfo = std::move(value); }
-
-    /**
-     * <p>The information about the Amazon EKS cluster.</p>
-     */
-    inline ContainerInfo& WithEksInfo(const EksInfo& value) { SetEksInfo(value); return *this;}
-
-    /**
-     * <p>The information about the Amazon EKS cluster.</p>
-     */
-    inline ContainerInfo& WithEksInfo(EksInfo&& value) { SetEksInfo(std::move(value)); return *this;}
-
+    template<typename EksInfoT = EksInfo>
+    void SetEksInfo(EksInfoT&& value) { m_eksInfoHasBeenSet = true; m_eksInfo = std::forward<EksInfoT>(value); }
+    template<typename EksInfoT = EksInfo>
+    ContainerInfo& WithEksInfo(EksInfoT&& value) { SetEksInfo(std::forward<EksInfoT>(value)); return *this;}
+    ///@}
   private:
 
     EksInfo m_eksInfo;

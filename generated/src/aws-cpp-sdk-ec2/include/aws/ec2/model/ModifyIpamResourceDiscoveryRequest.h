@@ -10,6 +10,8 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/AddIpamOperatingRegion.h>
 #include <aws/ec2/model/RemoveIpamOperatingRegion.h>
+#include <aws/ec2/model/AddIpamOrganizationalUnitExclusion.h>
+#include <aws/ec2/model/RemoveIpamOrganizationalUnitExclusion.h>
 #include <utility>
 
 namespace Aws
@@ -24,7 +26,7 @@ namespace Model
   class ModifyIpamResourceDiscoveryRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ModifyIpamResourceDiscoveryRequest();
+    AWS_EC2_API ModifyIpamResourceDiscoveryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,229 +41,126 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>A check for whether you have the required permissions for the action without
      * actually making the request and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline ModifyIpamResourceDiscoveryRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A resource discovery ID.</p>
      */
-    inline const Aws::String& GetIpamResourceDiscoveryId() const{ return m_ipamResourceDiscoveryId; }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
+    inline const Aws::String& GetIpamResourceDiscoveryId() const { return m_ipamResourceDiscoveryId; }
     inline bool IpamResourceDiscoveryIdHasBeenSet() const { return m_ipamResourceDiscoveryIdHasBeenSet; }
+    template<typename IpamResourceDiscoveryIdT = Aws::String>
+    void SetIpamResourceDiscoveryId(IpamResourceDiscoveryIdT&& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = std::forward<IpamResourceDiscoveryIdT>(value); }
+    template<typename IpamResourceDiscoveryIdT = Aws::String>
+    ModifyIpamResourceDiscoveryRequest& WithIpamResourceDiscoveryId(IpamResourceDiscoveryIdT&& value) { SetIpamResourceDiscoveryId(std::forward<IpamResourceDiscoveryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(const Aws::String& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = value; }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(Aws::String&& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = std::move(value); }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(const char* value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId.assign(value); }
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& WithIpamResourceDiscoveryId(const Aws::String& value) { SetIpamResourceDiscoveryId(value); return *this;}
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& WithIpamResourceDiscoveryId(Aws::String&& value) { SetIpamResourceDiscoveryId(std::move(value)); return *this;}
-
-    /**
-     * <p>A resource discovery ID.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& WithIpamResourceDiscoveryId(const char* value) { SetIpamResourceDiscoveryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A resource discovery description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A resource discovery description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ModifyIpamResourceDiscoveryRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A resource discovery description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A resource discovery description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A resource discovery description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A resource discovery description.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A resource discovery description.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A resource discovery description.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Add operating Regions to the resource discovery. Operating Regions are Amazon
      * Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM
      * only discovers and monitors resources in the Amazon Web Services Regions you
      * select as operating Regions.</p>
      */
-    inline const Aws::Vector<AddIpamOperatingRegion>& GetAddOperatingRegions() const{ return m_addOperatingRegions; }
-
-    /**
-     * <p>Add operating Regions to the resource discovery. Operating Regions are Amazon
-     * Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM
-     * only discovers and monitors resources in the Amazon Web Services Regions you
-     * select as operating Regions.</p>
-     */
+    inline const Aws::Vector<AddIpamOperatingRegion>& GetAddOperatingRegions() const { return m_addOperatingRegions; }
     inline bool AddOperatingRegionsHasBeenSet() const { return m_addOperatingRegionsHasBeenSet; }
+    template<typename AddOperatingRegionsT = Aws::Vector<AddIpamOperatingRegion>>
+    void SetAddOperatingRegions(AddOperatingRegionsT&& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions = std::forward<AddOperatingRegionsT>(value); }
+    template<typename AddOperatingRegionsT = Aws::Vector<AddIpamOperatingRegion>>
+    ModifyIpamResourceDiscoveryRequest& WithAddOperatingRegions(AddOperatingRegionsT&& value) { SetAddOperatingRegions(std::forward<AddOperatingRegionsT>(value)); return *this;}
+    template<typename AddOperatingRegionsT = AddIpamOperatingRegion>
+    ModifyIpamResourceDiscoveryRequest& AddAddOperatingRegions(AddOperatingRegionsT&& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions.emplace_back(std::forward<AddOperatingRegionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Add operating Regions to the resource discovery. Operating Regions are Amazon
-     * Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM
-     * only discovers and monitors resources in the Amazon Web Services Regions you
-     * select as operating Regions.</p>
-     */
-    inline void SetAddOperatingRegions(const Aws::Vector<AddIpamOperatingRegion>& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions = value; }
-
-    /**
-     * <p>Add operating Regions to the resource discovery. Operating Regions are Amazon
-     * Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM
-     * only discovers and monitors resources in the Amazon Web Services Regions you
-     * select as operating Regions.</p>
-     */
-    inline void SetAddOperatingRegions(Aws::Vector<AddIpamOperatingRegion>&& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions = std::move(value); }
-
-    /**
-     * <p>Add operating Regions to the resource discovery. Operating Regions are Amazon
-     * Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM
-     * only discovers and monitors resources in the Amazon Web Services Regions you
-     * select as operating Regions.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& WithAddOperatingRegions(const Aws::Vector<AddIpamOperatingRegion>& value) { SetAddOperatingRegions(value); return *this;}
-
-    /**
-     * <p>Add operating Regions to the resource discovery. Operating Regions are Amazon
-     * Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM
-     * only discovers and monitors resources in the Amazon Web Services Regions you
-     * select as operating Regions.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& WithAddOperatingRegions(Aws::Vector<AddIpamOperatingRegion>&& value) { SetAddOperatingRegions(std::move(value)); return *this;}
-
-    /**
-     * <p>Add operating Regions to the resource discovery. Operating Regions are Amazon
-     * Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM
-     * only discovers and monitors resources in the Amazon Web Services Regions you
-     * select as operating Regions.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& AddAddOperatingRegions(const AddIpamOperatingRegion& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions.push_back(value); return *this; }
-
-    /**
-     * <p>Add operating Regions to the resource discovery. Operating Regions are Amazon
-     * Web Services Regions where the IPAM is allowed to manage IP address CIDRs. IPAM
-     * only discovers and monitors resources in the Amazon Web Services Regions you
-     * select as operating Regions.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& AddAddOperatingRegions(AddIpamOperatingRegion&& value) { m_addOperatingRegionsHasBeenSet = true; m_addOperatingRegions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Remove operating Regions.</p>
      */
-    inline const Aws::Vector<RemoveIpamOperatingRegion>& GetRemoveOperatingRegions() const{ return m_removeOperatingRegions; }
-
-    /**
-     * <p>Remove operating Regions.</p>
-     */
+    inline const Aws::Vector<RemoveIpamOperatingRegion>& GetRemoveOperatingRegions() const { return m_removeOperatingRegions; }
     inline bool RemoveOperatingRegionsHasBeenSet() const { return m_removeOperatingRegionsHasBeenSet; }
+    template<typename RemoveOperatingRegionsT = Aws::Vector<RemoveIpamOperatingRegion>>
+    void SetRemoveOperatingRegions(RemoveOperatingRegionsT&& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions = std::forward<RemoveOperatingRegionsT>(value); }
+    template<typename RemoveOperatingRegionsT = Aws::Vector<RemoveIpamOperatingRegion>>
+    ModifyIpamResourceDiscoveryRequest& WithRemoveOperatingRegions(RemoveOperatingRegionsT&& value) { SetRemoveOperatingRegions(std::forward<RemoveOperatingRegionsT>(value)); return *this;}
+    template<typename RemoveOperatingRegionsT = RemoveIpamOperatingRegion>
+    ModifyIpamResourceDiscoveryRequest& AddRemoveOperatingRegions(RemoveOperatingRegionsT&& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions.emplace_back(std::forward<RemoveOperatingRegionsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Remove operating Regions.</p>
+     * <p>Add an Organizational Unit (OU) exclusion to your IPAM. If your IPAM is
+     * integrated with Amazon Web Services Organizations and you add an organizational
+     * unit (OU) exclusion, IPAM will not manage the IP addresses in accounts in that
+     * OU exclusion. There is a limit on the number of exclusions you can create. For
+     * more information, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html">Quotas for
+     * your IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>  <p>The
+     * resulting set of exclusions must not result in "overlap", meaning two or more OU
+     * exclusions must not exclude the same OU. For more information and examples, see
+     * the Amazon Web Services CLI request process in <a
+     * href="https://docs.aws.amazon.com/vpc/latest/ipam/exclude-ous.html#exclude-ous-create-delete">Add
+     * or remove OU exclusions </a> in the <i>Amazon VPC User Guide</i>.</p> 
      */
-    inline void SetRemoveOperatingRegions(const Aws::Vector<RemoveIpamOperatingRegion>& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions = value; }
+    inline const Aws::Vector<AddIpamOrganizationalUnitExclusion>& GetAddOrganizationalUnitExclusions() const { return m_addOrganizationalUnitExclusions; }
+    inline bool AddOrganizationalUnitExclusionsHasBeenSet() const { return m_addOrganizationalUnitExclusionsHasBeenSet; }
+    template<typename AddOrganizationalUnitExclusionsT = Aws::Vector<AddIpamOrganizationalUnitExclusion>>
+    void SetAddOrganizationalUnitExclusions(AddOrganizationalUnitExclusionsT&& value) { m_addOrganizationalUnitExclusionsHasBeenSet = true; m_addOrganizationalUnitExclusions = std::forward<AddOrganizationalUnitExclusionsT>(value); }
+    template<typename AddOrganizationalUnitExclusionsT = Aws::Vector<AddIpamOrganizationalUnitExclusion>>
+    ModifyIpamResourceDiscoveryRequest& WithAddOrganizationalUnitExclusions(AddOrganizationalUnitExclusionsT&& value) { SetAddOrganizationalUnitExclusions(std::forward<AddOrganizationalUnitExclusionsT>(value)); return *this;}
+    template<typename AddOrganizationalUnitExclusionsT = AddIpamOrganizationalUnitExclusion>
+    ModifyIpamResourceDiscoveryRequest& AddAddOrganizationalUnitExclusions(AddOrganizationalUnitExclusionsT&& value) { m_addOrganizationalUnitExclusionsHasBeenSet = true; m_addOrganizationalUnitExclusions.emplace_back(std::forward<AddOrganizationalUnitExclusionsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Remove operating Regions.</p>
+     * <p>Remove an Organizational Unit (OU) exclusion to your IPAM. If your IPAM is
+     * integrated with Amazon Web Services Organizations and you add an organizational
+     * unit (OU) exclusion, IPAM will not manage the IP addresses in accounts in that
+     * OU exclusion. There is a limit on the number of exclusions you can create. For
+     * more information, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html">Quotas for
+     * your IPAM</a> in the <i>Amazon VPC IPAM User Guide</i>.</p>  <p>The
+     * resulting set of exclusions must not result in "overlap", meaning two or more OU
+     * exclusions must not exclude the same OU. For more information and examples, see
+     * the Amazon Web Services CLI request process in <a
+     * href="https://docs.aws.amazon.com/vpc/latest/ipam/exclude-ous.html#exclude-ous-create-delete">Add
+     * or remove OU exclusions </a> in the <i>Amazon VPC User Guide</i>.</p> 
      */
-    inline void SetRemoveOperatingRegions(Aws::Vector<RemoveIpamOperatingRegion>&& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions = std::move(value); }
-
-    /**
-     * <p>Remove operating Regions.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& WithRemoveOperatingRegions(const Aws::Vector<RemoveIpamOperatingRegion>& value) { SetRemoveOperatingRegions(value); return *this;}
-
-    /**
-     * <p>Remove operating Regions.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& WithRemoveOperatingRegions(Aws::Vector<RemoveIpamOperatingRegion>&& value) { SetRemoveOperatingRegions(std::move(value)); return *this;}
-
-    /**
-     * <p>Remove operating Regions.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& AddRemoveOperatingRegions(const RemoveIpamOperatingRegion& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions.push_back(value); return *this; }
-
-    /**
-     * <p>Remove operating Regions.</p>
-     */
-    inline ModifyIpamResourceDiscoveryRequest& AddRemoveOperatingRegions(RemoveIpamOperatingRegion&& value) { m_removeOperatingRegionsHasBeenSet = true; m_removeOperatingRegions.push_back(std::move(value)); return *this; }
-
+    inline const Aws::Vector<RemoveIpamOrganizationalUnitExclusion>& GetRemoveOrganizationalUnitExclusions() const { return m_removeOrganizationalUnitExclusions; }
+    inline bool RemoveOrganizationalUnitExclusionsHasBeenSet() const { return m_removeOrganizationalUnitExclusionsHasBeenSet; }
+    template<typename RemoveOrganizationalUnitExclusionsT = Aws::Vector<RemoveIpamOrganizationalUnitExclusion>>
+    void SetRemoveOrganizationalUnitExclusions(RemoveOrganizationalUnitExclusionsT&& value) { m_removeOrganizationalUnitExclusionsHasBeenSet = true; m_removeOrganizationalUnitExclusions = std::forward<RemoveOrganizationalUnitExclusionsT>(value); }
+    template<typename RemoveOrganizationalUnitExclusionsT = Aws::Vector<RemoveIpamOrganizationalUnitExclusion>>
+    ModifyIpamResourceDiscoveryRequest& WithRemoveOrganizationalUnitExclusions(RemoveOrganizationalUnitExclusionsT&& value) { SetRemoveOrganizationalUnitExclusions(std::forward<RemoveOrganizationalUnitExclusionsT>(value)); return *this;}
+    template<typename RemoveOrganizationalUnitExclusionsT = RemoveIpamOrganizationalUnitExclusion>
+    ModifyIpamResourceDiscoveryRequest& AddRemoveOrganizationalUnitExclusions(RemoveOrganizationalUnitExclusionsT&& value) { m_removeOrganizationalUnitExclusionsHasBeenSet = true; m_removeOrganizationalUnitExclusions.emplace_back(std::forward<RemoveOrganizationalUnitExclusionsT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_ipamResourceDiscoveryId;
@@ -275,6 +174,12 @@ namespace Model
 
     Aws::Vector<RemoveIpamOperatingRegion> m_removeOperatingRegions;
     bool m_removeOperatingRegionsHasBeenSet = false;
+
+    Aws::Vector<AddIpamOrganizationalUnitExclusion> m_addOrganizationalUnitExclusions;
+    bool m_addOrganizationalUnitExclusionsHasBeenSet = false;
+
+    Aws::Vector<RemoveIpamOrganizationalUnitExclusion> m_removeOrganizationalUnitExclusions;
+    bool m_removeOrganizationalUnitExclusionsHasBeenSet = false;
   };
 
 } // namespace Model

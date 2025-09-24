@@ -18,15 +18,7 @@ namespace Personalize
 namespace Model
 {
 
-AlgorithmImage::AlgorithmImage() : 
-    m_nameHasBeenSet(false),
-    m_dockerURIHasBeenSet(false)
-{
-}
-
-AlgorithmImage::AlgorithmImage(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_dockerURIHasBeenSet(false)
+AlgorithmImage::AlgorithmImage(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AlgorithmImage& AlgorithmImage::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dockerURI"))
   {
     m_dockerURI = jsonValue.GetString("dockerURI");
-
     m_dockerURIHasBeenSet = true;
   }
-
   return *this;
 }
 

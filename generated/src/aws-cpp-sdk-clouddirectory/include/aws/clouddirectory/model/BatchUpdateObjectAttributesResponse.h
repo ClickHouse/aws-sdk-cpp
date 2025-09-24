@@ -32,52 +32,23 @@ namespace Model
   class BatchUpdateObjectAttributesResponse
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchUpdateObjectAttributesResponse();
+    AWS_CLOUDDIRECTORY_API BatchUpdateObjectAttributesResponse() = default;
     AWS_CLOUDDIRECTORY_API BatchUpdateObjectAttributesResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchUpdateObjectAttributesResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>ID that is associated with the object.</p>
      */
-    inline const Aws::String& GetObjectIdentifier() const{ return m_objectIdentifier; }
-
-    /**
-     * <p>ID that is associated with the object.</p>
-     */
+    inline const Aws::String& GetObjectIdentifier() const { return m_objectIdentifier; }
     inline bool ObjectIdentifierHasBeenSet() const { return m_objectIdentifierHasBeenSet; }
-
-    /**
-     * <p>ID that is associated with the object.</p>
-     */
-    inline void SetObjectIdentifier(const Aws::String& value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier = value; }
-
-    /**
-     * <p>ID that is associated with the object.</p>
-     */
-    inline void SetObjectIdentifier(Aws::String&& value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier = std::move(value); }
-
-    /**
-     * <p>ID that is associated with the object.</p>
-     */
-    inline void SetObjectIdentifier(const char* value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier.assign(value); }
-
-    /**
-     * <p>ID that is associated with the object.</p>
-     */
-    inline BatchUpdateObjectAttributesResponse& WithObjectIdentifier(const Aws::String& value) { SetObjectIdentifier(value); return *this;}
-
-    /**
-     * <p>ID that is associated with the object.</p>
-     */
-    inline BatchUpdateObjectAttributesResponse& WithObjectIdentifier(Aws::String&& value) { SetObjectIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>ID that is associated with the object.</p>
-     */
-    inline BatchUpdateObjectAttributesResponse& WithObjectIdentifier(const char* value) { SetObjectIdentifier(value); return *this;}
-
+    template<typename ObjectIdentifierT = Aws::String>
+    void SetObjectIdentifier(ObjectIdentifierT&& value) { m_objectIdentifierHasBeenSet = true; m_objectIdentifier = std::forward<ObjectIdentifierT>(value); }
+    template<typename ObjectIdentifierT = Aws::String>
+    BatchUpdateObjectAttributesResponse& WithObjectIdentifier(ObjectIdentifierT&& value) { SetObjectIdentifier(std::forward<ObjectIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_objectIdentifier;

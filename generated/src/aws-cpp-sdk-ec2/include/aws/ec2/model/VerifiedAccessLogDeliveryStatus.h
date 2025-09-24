@@ -32,7 +32,7 @@ namespace Model
   class VerifiedAccessLogDeliveryStatus
   {
   public:
-    AWS_EC2_API VerifiedAccessLogDeliveryStatus();
+    AWS_EC2_API VerifiedAccessLogDeliveryStatus() = default;
     AWS_EC2_API VerifiedAccessLogDeliveryStatus(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API VerifiedAccessLogDeliveryStatus& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,80 +40,30 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The status code.</p>
      */
-    inline const VerifiedAccessLogDeliveryStatusCode& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The status code.</p>
-     */
+    inline VerifiedAccessLogDeliveryStatusCode GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    inline void SetCode(VerifiedAccessLogDeliveryStatusCode value) { m_codeHasBeenSet = true; m_code = value; }
+    inline VerifiedAccessLogDeliveryStatus& WithCode(VerifiedAccessLogDeliveryStatusCode value) { SetCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status code.</p>
-     */
-    inline void SetCode(const VerifiedAccessLogDeliveryStatusCode& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The status code.</p>
-     */
-    inline void SetCode(VerifiedAccessLogDeliveryStatusCode&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The status code.</p>
-     */
-    inline VerifiedAccessLogDeliveryStatus& WithCode(const VerifiedAccessLogDeliveryStatusCode& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The status code.</p>
-     */
-    inline VerifiedAccessLogDeliveryStatus& WithCode(VerifiedAccessLogDeliveryStatusCode&& value) { SetCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The status message.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The status message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The status message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The status message.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The status message.</p>
-     */
-    inline VerifiedAccessLogDeliveryStatus& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The status message.</p>
-     */
-    inline VerifiedAccessLogDeliveryStatus& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The status message.</p>
-     */
-    inline VerifiedAccessLogDeliveryStatus& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    VerifiedAccessLogDeliveryStatus& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    VerifiedAccessLogDeliveryStatusCode m_code;
+    VerifiedAccessLogDeliveryStatusCode m_code{VerifiedAccessLogDeliveryStatusCode::NOT_SET};
     bool m_codeHasBeenSet = false;
 
     Aws::String m_message;

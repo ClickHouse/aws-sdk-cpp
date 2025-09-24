@@ -32,149 +32,39 @@ namespace Model
   class AwsDynamoDbTableBillingModeSummary
   {
   public:
-    AWS_SECURITYHUB_API AwsDynamoDbTableBillingModeSummary();
+    AWS_SECURITYHUB_API AwsDynamoDbTableBillingModeSummary() = default;
     AWS_SECURITYHUB_API AwsDynamoDbTableBillingModeSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsDynamoDbTableBillingModeSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The method used to charge for read and write throughput and to manage
      * capacity.</p>
      */
-    inline const Aws::String& GetBillingMode() const{ return m_billingMode; }
-
-    /**
-     * <p>The method used to charge for read and write throughput and to manage
-     * capacity.</p>
-     */
+    inline const Aws::String& GetBillingMode() const { return m_billingMode; }
     inline bool BillingModeHasBeenSet() const { return m_billingModeHasBeenSet; }
+    template<typename BillingModeT = Aws::String>
+    void SetBillingMode(BillingModeT&& value) { m_billingModeHasBeenSet = true; m_billingMode = std::forward<BillingModeT>(value); }
+    template<typename BillingModeT = Aws::String>
+    AwsDynamoDbTableBillingModeSummary& WithBillingMode(BillingModeT&& value) { SetBillingMode(std::forward<BillingModeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The method used to charge for read and write throughput and to manage
-     * capacity.</p>
-     */
-    inline void SetBillingMode(const Aws::String& value) { m_billingModeHasBeenSet = true; m_billingMode = value; }
-
-    /**
-     * <p>The method used to charge for read and write throughput and to manage
-     * capacity.</p>
-     */
-    inline void SetBillingMode(Aws::String&& value) { m_billingModeHasBeenSet = true; m_billingMode = std::move(value); }
-
-    /**
-     * <p>The method used to charge for read and write throughput and to manage
-     * capacity.</p>
-     */
-    inline void SetBillingMode(const char* value) { m_billingModeHasBeenSet = true; m_billingMode.assign(value); }
-
-    /**
-     * <p>The method used to charge for read and write throughput and to manage
-     * capacity.</p>
-     */
-    inline AwsDynamoDbTableBillingModeSummary& WithBillingMode(const Aws::String& value) { SetBillingMode(value); return *this;}
-
-    /**
-     * <p>The method used to charge for read and write throughput and to manage
-     * capacity.</p>
-     */
-    inline AwsDynamoDbTableBillingModeSummary& WithBillingMode(Aws::String&& value) { SetBillingMode(std::move(value)); return *this;}
-
-    /**
-     * <p>The method used to charge for read and write throughput and to manage
-     * capacity.</p>
-     */
-    inline AwsDynamoDbTableBillingModeSummary& WithBillingMode(const char* value) { SetBillingMode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If the billing mode is <code>PAY_PER_REQUEST</code>, indicates when the
-     * billing mode was set to that value.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
+     * billing mode was set to that value.</p> <p>For more information about the
+     * validation and formatting of timestamp fields in Security Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline const Aws::String& GetLastUpdateToPayPerRequestDateTime() const{ return m_lastUpdateToPayPerRequestDateTime; }
-
-    /**
-     * <p>If the billing mode is <code>PAY_PER_REQUEST</code>, indicates when the
-     * billing mode was set to that value.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetLastUpdateToPayPerRequestDateTime() const { return m_lastUpdateToPayPerRequestDateTime; }
     inline bool LastUpdateToPayPerRequestDateTimeHasBeenSet() const { return m_lastUpdateToPayPerRequestDateTimeHasBeenSet; }
-
-    /**
-     * <p>If the billing mode is <code>PAY_PER_REQUEST</code>, indicates when the
-     * billing mode was set to that value.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetLastUpdateToPayPerRequestDateTime(const Aws::String& value) { m_lastUpdateToPayPerRequestDateTimeHasBeenSet = true; m_lastUpdateToPayPerRequestDateTime = value; }
-
-    /**
-     * <p>If the billing mode is <code>PAY_PER_REQUEST</code>, indicates when the
-     * billing mode was set to that value.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetLastUpdateToPayPerRequestDateTime(Aws::String&& value) { m_lastUpdateToPayPerRequestDateTimeHasBeenSet = true; m_lastUpdateToPayPerRequestDateTime = std::move(value); }
-
-    /**
-     * <p>If the billing mode is <code>PAY_PER_REQUEST</code>, indicates when the
-     * billing mode was set to that value.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetLastUpdateToPayPerRequestDateTime(const char* value) { m_lastUpdateToPayPerRequestDateTimeHasBeenSet = true; m_lastUpdateToPayPerRequestDateTime.assign(value); }
-
-    /**
-     * <p>If the billing mode is <code>PAY_PER_REQUEST</code>, indicates when the
-     * billing mode was set to that value.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsDynamoDbTableBillingModeSummary& WithLastUpdateToPayPerRequestDateTime(const Aws::String& value) { SetLastUpdateToPayPerRequestDateTime(value); return *this;}
-
-    /**
-     * <p>If the billing mode is <code>PAY_PER_REQUEST</code>, indicates when the
-     * billing mode was set to that value.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsDynamoDbTableBillingModeSummary& WithLastUpdateToPayPerRequestDateTime(Aws::String&& value) { SetLastUpdateToPayPerRequestDateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>If the billing mode is <code>PAY_PER_REQUEST</code>, indicates when the
-     * billing mode was set to that value.</p> <p>Uses the <code>date-time</code>
-     * format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsDynamoDbTableBillingModeSummary& WithLastUpdateToPayPerRequestDateTime(const char* value) { SetLastUpdateToPayPerRequestDateTime(value); return *this;}
-
+    template<typename LastUpdateToPayPerRequestDateTimeT = Aws::String>
+    void SetLastUpdateToPayPerRequestDateTime(LastUpdateToPayPerRequestDateTimeT&& value) { m_lastUpdateToPayPerRequestDateTimeHasBeenSet = true; m_lastUpdateToPayPerRequestDateTime = std::forward<LastUpdateToPayPerRequestDateTimeT>(value); }
+    template<typename LastUpdateToPayPerRequestDateTimeT = Aws::String>
+    AwsDynamoDbTableBillingModeSummary& WithLastUpdateToPayPerRequestDateTime(LastUpdateToPayPerRequestDateTimeT&& value) { SetLastUpdateToPayPerRequestDateTime(std::forward<LastUpdateToPayPerRequestDateTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_billingMode;

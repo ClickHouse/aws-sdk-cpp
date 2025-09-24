@@ -18,15 +18,7 @@ namespace mgn
 namespace Model
 {
 
-Licensing::Licensing() : 
-    m_osByol(false),
-    m_osByolHasBeenSet(false)
-{
-}
-
-Licensing::Licensing(JsonView jsonValue) : 
-    m_osByol(false),
-    m_osByolHasBeenSet(false)
+Licensing::Licensing(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Licensing& Licensing::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("osByol"))
   {
     m_osByol = jsonValue.GetBool("osByol");
-
     m_osByolHasBeenSet = true;
   }
-
   return *this;
 }
 

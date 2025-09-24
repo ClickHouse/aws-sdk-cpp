@@ -38,7 +38,7 @@ namespace Model
   class ModifyTransitGatewayOptions
   {
   public:
-    AWS_EC2_API ModifyTransitGatewayOptions();
+    AWS_EC2_API ModifyTransitGatewayOptions() = default;
     AWS_EC2_API ModifyTransitGatewayOptions(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ModifyTransitGatewayOptions& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -46,487 +46,145 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Adds IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24
      * CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAddTransitGatewayCidrBlocks() const{ return m_addTransitGatewayCidrBlocks; }
-
-    /**
-     * <p>Adds IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24
-     * CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAddTransitGatewayCidrBlocks() const { return m_addTransitGatewayCidrBlocks; }
     inline bool AddTransitGatewayCidrBlocksHasBeenSet() const { return m_addTransitGatewayCidrBlocksHasBeenSet; }
+    template<typename AddTransitGatewayCidrBlocksT = Aws::Vector<Aws::String>>
+    void SetAddTransitGatewayCidrBlocks(AddTransitGatewayCidrBlocksT&& value) { m_addTransitGatewayCidrBlocksHasBeenSet = true; m_addTransitGatewayCidrBlocks = std::forward<AddTransitGatewayCidrBlocksT>(value); }
+    template<typename AddTransitGatewayCidrBlocksT = Aws::Vector<Aws::String>>
+    ModifyTransitGatewayOptions& WithAddTransitGatewayCidrBlocks(AddTransitGatewayCidrBlocksT&& value) { SetAddTransitGatewayCidrBlocks(std::forward<AddTransitGatewayCidrBlocksT>(value)); return *this;}
+    template<typename AddTransitGatewayCidrBlocksT = Aws::String>
+    ModifyTransitGatewayOptions& AddAddTransitGatewayCidrBlocks(AddTransitGatewayCidrBlocksT&& value) { m_addTransitGatewayCidrBlocksHasBeenSet = true; m_addTransitGatewayCidrBlocks.emplace_back(std::forward<AddTransitGatewayCidrBlocksT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Adds IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24
-     * CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.</p>
-     */
-    inline void SetAddTransitGatewayCidrBlocks(const Aws::Vector<Aws::String>& value) { m_addTransitGatewayCidrBlocksHasBeenSet = true; m_addTransitGatewayCidrBlocks = value; }
-
-    /**
-     * <p>Adds IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24
-     * CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.</p>
-     */
-    inline void SetAddTransitGatewayCidrBlocks(Aws::Vector<Aws::String>&& value) { m_addTransitGatewayCidrBlocksHasBeenSet = true; m_addTransitGatewayCidrBlocks = std::move(value); }
-
-    /**
-     * <p>Adds IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24
-     * CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithAddTransitGatewayCidrBlocks(const Aws::Vector<Aws::String>& value) { SetAddTransitGatewayCidrBlocks(value); return *this;}
-
-    /**
-     * <p>Adds IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24
-     * CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithAddTransitGatewayCidrBlocks(Aws::Vector<Aws::String>&& value) { SetAddTransitGatewayCidrBlocks(std::move(value)); return *this;}
-
-    /**
-     * <p>Adds IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24
-     * CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.</p>
-     */
-    inline ModifyTransitGatewayOptions& AddAddTransitGatewayCidrBlocks(const Aws::String& value) { m_addTransitGatewayCidrBlocksHasBeenSet = true; m_addTransitGatewayCidrBlocks.push_back(value); return *this; }
-
-    /**
-     * <p>Adds IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24
-     * CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.</p>
-     */
-    inline ModifyTransitGatewayOptions& AddAddTransitGatewayCidrBlocks(Aws::String&& value) { m_addTransitGatewayCidrBlocksHasBeenSet = true; m_addTransitGatewayCidrBlocks.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Adds IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24
-     * CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.</p>
-     */
-    inline ModifyTransitGatewayOptions& AddAddTransitGatewayCidrBlocks(const char* value) { m_addTransitGatewayCidrBlocksHasBeenSet = true; m_addTransitGatewayCidrBlocks.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Removes CIDR blocks for the transit gateway.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRemoveTransitGatewayCidrBlocks() const{ return m_removeTransitGatewayCidrBlocks; }
-
-    /**
-     * <p>Removes CIDR blocks for the transit gateway.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRemoveTransitGatewayCidrBlocks() const { return m_removeTransitGatewayCidrBlocks; }
     inline bool RemoveTransitGatewayCidrBlocksHasBeenSet() const { return m_removeTransitGatewayCidrBlocksHasBeenSet; }
+    template<typename RemoveTransitGatewayCidrBlocksT = Aws::Vector<Aws::String>>
+    void SetRemoveTransitGatewayCidrBlocks(RemoveTransitGatewayCidrBlocksT&& value) { m_removeTransitGatewayCidrBlocksHasBeenSet = true; m_removeTransitGatewayCidrBlocks = std::forward<RemoveTransitGatewayCidrBlocksT>(value); }
+    template<typename RemoveTransitGatewayCidrBlocksT = Aws::Vector<Aws::String>>
+    ModifyTransitGatewayOptions& WithRemoveTransitGatewayCidrBlocks(RemoveTransitGatewayCidrBlocksT&& value) { SetRemoveTransitGatewayCidrBlocks(std::forward<RemoveTransitGatewayCidrBlocksT>(value)); return *this;}
+    template<typename RemoveTransitGatewayCidrBlocksT = Aws::String>
+    ModifyTransitGatewayOptions& AddRemoveTransitGatewayCidrBlocks(RemoveTransitGatewayCidrBlocksT&& value) { m_removeTransitGatewayCidrBlocksHasBeenSet = true; m_removeTransitGatewayCidrBlocks.emplace_back(std::forward<RemoveTransitGatewayCidrBlocksT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Removes CIDR blocks for the transit gateway.</p>
-     */
-    inline void SetRemoveTransitGatewayCidrBlocks(const Aws::Vector<Aws::String>& value) { m_removeTransitGatewayCidrBlocksHasBeenSet = true; m_removeTransitGatewayCidrBlocks = value; }
-
-    /**
-     * <p>Removes CIDR blocks for the transit gateway.</p>
-     */
-    inline void SetRemoveTransitGatewayCidrBlocks(Aws::Vector<Aws::String>&& value) { m_removeTransitGatewayCidrBlocksHasBeenSet = true; m_removeTransitGatewayCidrBlocks = std::move(value); }
-
-    /**
-     * <p>Removes CIDR blocks for the transit gateway.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithRemoveTransitGatewayCidrBlocks(const Aws::Vector<Aws::String>& value) { SetRemoveTransitGatewayCidrBlocks(value); return *this;}
-
-    /**
-     * <p>Removes CIDR blocks for the transit gateway.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithRemoveTransitGatewayCidrBlocks(Aws::Vector<Aws::String>&& value) { SetRemoveTransitGatewayCidrBlocks(std::move(value)); return *this;}
-
-    /**
-     * <p>Removes CIDR blocks for the transit gateway.</p>
-     */
-    inline ModifyTransitGatewayOptions& AddRemoveTransitGatewayCidrBlocks(const Aws::String& value) { m_removeTransitGatewayCidrBlocksHasBeenSet = true; m_removeTransitGatewayCidrBlocks.push_back(value); return *this; }
-
-    /**
-     * <p>Removes CIDR blocks for the transit gateway.</p>
-     */
-    inline ModifyTransitGatewayOptions& AddRemoveTransitGatewayCidrBlocks(Aws::String&& value) { m_removeTransitGatewayCidrBlocksHasBeenSet = true; m_removeTransitGatewayCidrBlocks.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Removes CIDR blocks for the transit gateway.</p>
-     */
-    inline ModifyTransitGatewayOptions& AddRemoveTransitGatewayCidrBlocks(const char* value) { m_removeTransitGatewayCidrBlocksHasBeenSet = true; m_removeTransitGatewayCidrBlocks.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Enable or disable Equal Cost Multipath Protocol support.</p>
      */
-    inline const VpnEcmpSupportValue& GetVpnEcmpSupport() const{ return m_vpnEcmpSupport; }
-
-    /**
-     * <p>Enable or disable Equal Cost Multipath Protocol support.</p>
-     */
+    inline VpnEcmpSupportValue GetVpnEcmpSupport() const { return m_vpnEcmpSupport; }
     inline bool VpnEcmpSupportHasBeenSet() const { return m_vpnEcmpSupportHasBeenSet; }
+    inline void SetVpnEcmpSupport(VpnEcmpSupportValue value) { m_vpnEcmpSupportHasBeenSet = true; m_vpnEcmpSupport = value; }
+    inline ModifyTransitGatewayOptions& WithVpnEcmpSupport(VpnEcmpSupportValue value) { SetVpnEcmpSupport(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Enable or disable Equal Cost Multipath Protocol support.</p>
-     */
-    inline void SetVpnEcmpSupport(const VpnEcmpSupportValue& value) { m_vpnEcmpSupportHasBeenSet = true; m_vpnEcmpSupport = value; }
-
-    /**
-     * <p>Enable or disable Equal Cost Multipath Protocol support.</p>
-     */
-    inline void SetVpnEcmpSupport(VpnEcmpSupportValue&& value) { m_vpnEcmpSupportHasBeenSet = true; m_vpnEcmpSupport = std::move(value); }
-
-    /**
-     * <p>Enable or disable Equal Cost Multipath Protocol support.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithVpnEcmpSupport(const VpnEcmpSupportValue& value) { SetVpnEcmpSupport(value); return *this;}
-
-    /**
-     * <p>Enable or disable Equal Cost Multipath Protocol support.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithVpnEcmpSupport(VpnEcmpSupportValue&& value) { SetVpnEcmpSupport(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Enable or disable DNS support.</p>
      */
-    inline const DnsSupportValue& GetDnsSupport() const{ return m_dnsSupport; }
-
-    /**
-     * <p>Enable or disable DNS support.</p>
-     */
+    inline DnsSupportValue GetDnsSupport() const { return m_dnsSupport; }
     inline bool DnsSupportHasBeenSet() const { return m_dnsSupportHasBeenSet; }
+    inline void SetDnsSupport(DnsSupportValue value) { m_dnsSupportHasBeenSet = true; m_dnsSupport = value; }
+    inline ModifyTransitGatewayOptions& WithDnsSupport(DnsSupportValue value) { SetDnsSupport(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Enable or disable DNS support.</p>
-     */
-    inline void SetDnsSupport(const DnsSupportValue& value) { m_dnsSupportHasBeenSet = true; m_dnsSupport = value; }
-
-    /**
-     * <p>Enable or disable DNS support.</p>
-     */
-    inline void SetDnsSupport(DnsSupportValue&& value) { m_dnsSupportHasBeenSet = true; m_dnsSupport = std::move(value); }
-
-    /**
-     * <p>Enable or disable DNS support.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithDnsSupport(const DnsSupportValue& value) { SetDnsSupport(value); return *this;}
-
-    /**
-     * <p>Enable or disable DNS support.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithDnsSupport(DnsSupportValue&& value) { SetDnsSupport(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Enables you to reference a security group across VPCs attached to a transit
-     * gateway (TGW). Use this option to simplify security group management and control
-     * of instance-to-instance traffic across VPCs that are connected by transit
-     * gateway. You can also use this option to migrate from VPC peering (which was the
-     * only option that supported security group referencing) to transit gateways
-     * (which now also support security group referencing). This option is disabled by
-     * default and there are no additional costs to use this feature.</p> <p>For
-     * important information about this feature, see <a
-     * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw">Create
-     * a transit gateway</a> in the <i>Amazon Web Services Transit Gateway
+     * gateway to simplify security group management. </p> <p>This option is disabled
+     * by default.</p> <p>For more information about security group referencing, see <a
+     * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-vpc-attachments.html#vpc-attachment-security">Security
+     * group referencing</a> in the <i>Amazon Web Services Transit Gateways
      * Guide</i>.</p>
      */
-    inline const SecurityGroupReferencingSupportValue& GetSecurityGroupReferencingSupport() const{ return m_securityGroupReferencingSupport; }
-
-    /**
-     * <p>Enables you to reference a security group across VPCs attached to a transit
-     * gateway (TGW). Use this option to simplify security group management and control
-     * of instance-to-instance traffic across VPCs that are connected by transit
-     * gateway. You can also use this option to migrate from VPC peering (which was the
-     * only option that supported security group referencing) to transit gateways
-     * (which now also support security group referencing). This option is disabled by
-     * default and there are no additional costs to use this feature.</p> <p>For
-     * important information about this feature, see <a
-     * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw">Create
-     * a transit gateway</a> in the <i>Amazon Web Services Transit Gateway
-     * Guide</i>.</p>
-     */
+    inline SecurityGroupReferencingSupportValue GetSecurityGroupReferencingSupport() const { return m_securityGroupReferencingSupport; }
     inline bool SecurityGroupReferencingSupportHasBeenSet() const { return m_securityGroupReferencingSupportHasBeenSet; }
+    inline void SetSecurityGroupReferencingSupport(SecurityGroupReferencingSupportValue value) { m_securityGroupReferencingSupportHasBeenSet = true; m_securityGroupReferencingSupport = value; }
+    inline ModifyTransitGatewayOptions& WithSecurityGroupReferencingSupport(SecurityGroupReferencingSupportValue value) { SetSecurityGroupReferencingSupport(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Enables you to reference a security group across VPCs attached to a transit
-     * gateway (TGW). Use this option to simplify security group management and control
-     * of instance-to-instance traffic across VPCs that are connected by transit
-     * gateway. You can also use this option to migrate from VPC peering (which was the
-     * only option that supported security group referencing) to transit gateways
-     * (which now also support security group referencing). This option is disabled by
-     * default and there are no additional costs to use this feature.</p> <p>For
-     * important information about this feature, see <a
-     * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw">Create
-     * a transit gateway</a> in the <i>Amazon Web Services Transit Gateway
-     * Guide</i>.</p>
-     */
-    inline void SetSecurityGroupReferencingSupport(const SecurityGroupReferencingSupportValue& value) { m_securityGroupReferencingSupportHasBeenSet = true; m_securityGroupReferencingSupport = value; }
-
-    /**
-     * <p>Enables you to reference a security group across VPCs attached to a transit
-     * gateway (TGW). Use this option to simplify security group management and control
-     * of instance-to-instance traffic across VPCs that are connected by transit
-     * gateway. You can also use this option to migrate from VPC peering (which was the
-     * only option that supported security group referencing) to transit gateways
-     * (which now also support security group referencing). This option is disabled by
-     * default and there are no additional costs to use this feature.</p> <p>For
-     * important information about this feature, see <a
-     * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw">Create
-     * a transit gateway</a> in the <i>Amazon Web Services Transit Gateway
-     * Guide</i>.</p>
-     */
-    inline void SetSecurityGroupReferencingSupport(SecurityGroupReferencingSupportValue&& value) { m_securityGroupReferencingSupportHasBeenSet = true; m_securityGroupReferencingSupport = std::move(value); }
-
-    /**
-     * <p>Enables you to reference a security group across VPCs attached to a transit
-     * gateway (TGW). Use this option to simplify security group management and control
-     * of instance-to-instance traffic across VPCs that are connected by transit
-     * gateway. You can also use this option to migrate from VPC peering (which was the
-     * only option that supported security group referencing) to transit gateways
-     * (which now also support security group referencing). This option is disabled by
-     * default and there are no additional costs to use this feature.</p> <p>For
-     * important information about this feature, see <a
-     * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw">Create
-     * a transit gateway</a> in the <i>Amazon Web Services Transit Gateway
-     * Guide</i>.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithSecurityGroupReferencingSupport(const SecurityGroupReferencingSupportValue& value) { SetSecurityGroupReferencingSupport(value); return *this;}
-
-    /**
-     * <p>Enables you to reference a security group across VPCs attached to a transit
-     * gateway (TGW). Use this option to simplify security group management and control
-     * of instance-to-instance traffic across VPCs that are connected by transit
-     * gateway. You can also use this option to migrate from VPC peering (which was the
-     * only option that supported security group referencing) to transit gateways
-     * (which now also support security group referencing). This option is disabled by
-     * default and there are no additional costs to use this feature.</p> <p>For
-     * important information about this feature, see <a
-     * href="https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html#create-tgw">Create
-     * a transit gateway</a> in the <i>Amazon Web Services Transit Gateway
-     * Guide</i>.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithSecurityGroupReferencingSupport(SecurityGroupReferencingSupportValue&& value) { SetSecurityGroupReferencingSupport(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Enable or disable automatic acceptance of attachment requests.</p>
      */
-    inline const AutoAcceptSharedAttachmentsValue& GetAutoAcceptSharedAttachments() const{ return m_autoAcceptSharedAttachments; }
-
-    /**
-     * <p>Enable or disable automatic acceptance of attachment requests.</p>
-     */
+    inline AutoAcceptSharedAttachmentsValue GetAutoAcceptSharedAttachments() const { return m_autoAcceptSharedAttachments; }
     inline bool AutoAcceptSharedAttachmentsHasBeenSet() const { return m_autoAcceptSharedAttachmentsHasBeenSet; }
+    inline void SetAutoAcceptSharedAttachments(AutoAcceptSharedAttachmentsValue value) { m_autoAcceptSharedAttachmentsHasBeenSet = true; m_autoAcceptSharedAttachments = value; }
+    inline ModifyTransitGatewayOptions& WithAutoAcceptSharedAttachments(AutoAcceptSharedAttachmentsValue value) { SetAutoAcceptSharedAttachments(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Enable or disable automatic acceptance of attachment requests.</p>
-     */
-    inline void SetAutoAcceptSharedAttachments(const AutoAcceptSharedAttachmentsValue& value) { m_autoAcceptSharedAttachmentsHasBeenSet = true; m_autoAcceptSharedAttachments = value; }
-
-    /**
-     * <p>Enable or disable automatic acceptance of attachment requests.</p>
-     */
-    inline void SetAutoAcceptSharedAttachments(AutoAcceptSharedAttachmentsValue&& value) { m_autoAcceptSharedAttachmentsHasBeenSet = true; m_autoAcceptSharedAttachments = std::move(value); }
-
-    /**
-     * <p>Enable or disable automatic acceptance of attachment requests.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithAutoAcceptSharedAttachments(const AutoAcceptSharedAttachmentsValue& value) { SetAutoAcceptSharedAttachments(value); return *this;}
-
-    /**
-     * <p>Enable or disable automatic acceptance of attachment requests.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithAutoAcceptSharedAttachments(AutoAcceptSharedAttachmentsValue&& value) { SetAutoAcceptSharedAttachments(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Enable or disable automatic association with the default association route
      * table.</p>
      */
-    inline const DefaultRouteTableAssociationValue& GetDefaultRouteTableAssociation() const{ return m_defaultRouteTableAssociation; }
-
-    /**
-     * <p>Enable or disable automatic association with the default association route
-     * table.</p>
-     */
+    inline DefaultRouteTableAssociationValue GetDefaultRouteTableAssociation() const { return m_defaultRouteTableAssociation; }
     inline bool DefaultRouteTableAssociationHasBeenSet() const { return m_defaultRouteTableAssociationHasBeenSet; }
+    inline void SetDefaultRouteTableAssociation(DefaultRouteTableAssociationValue value) { m_defaultRouteTableAssociationHasBeenSet = true; m_defaultRouteTableAssociation = value; }
+    inline ModifyTransitGatewayOptions& WithDefaultRouteTableAssociation(DefaultRouteTableAssociationValue value) { SetDefaultRouteTableAssociation(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Enable or disable automatic association with the default association route
-     * table.</p>
-     */
-    inline void SetDefaultRouteTableAssociation(const DefaultRouteTableAssociationValue& value) { m_defaultRouteTableAssociationHasBeenSet = true; m_defaultRouteTableAssociation = value; }
-
-    /**
-     * <p>Enable or disable automatic association with the default association route
-     * table.</p>
-     */
-    inline void SetDefaultRouteTableAssociation(DefaultRouteTableAssociationValue&& value) { m_defaultRouteTableAssociationHasBeenSet = true; m_defaultRouteTableAssociation = std::move(value); }
-
-    /**
-     * <p>Enable or disable automatic association with the default association route
-     * table.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithDefaultRouteTableAssociation(const DefaultRouteTableAssociationValue& value) { SetDefaultRouteTableAssociation(value); return *this;}
-
-    /**
-     * <p>Enable or disable automatic association with the default association route
-     * table.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithDefaultRouteTableAssociation(DefaultRouteTableAssociationValue&& value) { SetDefaultRouteTableAssociation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the default association route table.</p>
      */
-    inline const Aws::String& GetAssociationDefaultRouteTableId() const{ return m_associationDefaultRouteTableId; }
-
-    /**
-     * <p>The ID of the default association route table.</p>
-     */
+    inline const Aws::String& GetAssociationDefaultRouteTableId() const { return m_associationDefaultRouteTableId; }
     inline bool AssociationDefaultRouteTableIdHasBeenSet() const { return m_associationDefaultRouteTableIdHasBeenSet; }
+    template<typename AssociationDefaultRouteTableIdT = Aws::String>
+    void SetAssociationDefaultRouteTableId(AssociationDefaultRouteTableIdT&& value) { m_associationDefaultRouteTableIdHasBeenSet = true; m_associationDefaultRouteTableId = std::forward<AssociationDefaultRouteTableIdT>(value); }
+    template<typename AssociationDefaultRouteTableIdT = Aws::String>
+    ModifyTransitGatewayOptions& WithAssociationDefaultRouteTableId(AssociationDefaultRouteTableIdT&& value) { SetAssociationDefaultRouteTableId(std::forward<AssociationDefaultRouteTableIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the default association route table.</p>
+     * <p>Indicates whether resource attachments automatically propagate routes to the
+     * default propagation route table. Enabled by default. If
+     * <code>defaultRouteTablePropagation</code> is set to <code>enable</code>, Amazon
+     * Web Services Transit Gateway will create the default transit gateway route
+     * table.</p>
      */
-    inline void SetAssociationDefaultRouteTableId(const Aws::String& value) { m_associationDefaultRouteTableIdHasBeenSet = true; m_associationDefaultRouteTableId = value; }
-
-    /**
-     * <p>The ID of the default association route table.</p>
-     */
-    inline void SetAssociationDefaultRouteTableId(Aws::String&& value) { m_associationDefaultRouteTableIdHasBeenSet = true; m_associationDefaultRouteTableId = std::move(value); }
-
-    /**
-     * <p>The ID of the default association route table.</p>
-     */
-    inline void SetAssociationDefaultRouteTableId(const char* value) { m_associationDefaultRouteTableIdHasBeenSet = true; m_associationDefaultRouteTableId.assign(value); }
-
-    /**
-     * <p>The ID of the default association route table.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithAssociationDefaultRouteTableId(const Aws::String& value) { SetAssociationDefaultRouteTableId(value); return *this;}
-
-    /**
-     * <p>The ID of the default association route table.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithAssociationDefaultRouteTableId(Aws::String&& value) { SetAssociationDefaultRouteTableId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the default association route table.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithAssociationDefaultRouteTableId(const char* value) { SetAssociationDefaultRouteTableId(value); return *this;}
-
-
-    /**
-     * <p>Enable or disable automatic propagation of routes to the default propagation
-     * route table.</p>
-     */
-    inline const DefaultRouteTablePropagationValue& GetDefaultRouteTablePropagation() const{ return m_defaultRouteTablePropagation; }
-
-    /**
-     * <p>Enable or disable automatic propagation of routes to the default propagation
-     * route table.</p>
-     */
+    inline DefaultRouteTablePropagationValue GetDefaultRouteTablePropagation() const { return m_defaultRouteTablePropagation; }
     inline bool DefaultRouteTablePropagationHasBeenSet() const { return m_defaultRouteTablePropagationHasBeenSet; }
+    inline void SetDefaultRouteTablePropagation(DefaultRouteTablePropagationValue value) { m_defaultRouteTablePropagationHasBeenSet = true; m_defaultRouteTablePropagation = value; }
+    inline ModifyTransitGatewayOptions& WithDefaultRouteTablePropagation(DefaultRouteTablePropagationValue value) { SetDefaultRouteTablePropagation(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Enable or disable automatic propagation of routes to the default propagation
-     * route table.</p>
-     */
-    inline void SetDefaultRouteTablePropagation(const DefaultRouteTablePropagationValue& value) { m_defaultRouteTablePropagationHasBeenSet = true; m_defaultRouteTablePropagation = value; }
-
-    /**
-     * <p>Enable or disable automatic propagation of routes to the default propagation
-     * route table.</p>
-     */
-    inline void SetDefaultRouteTablePropagation(DefaultRouteTablePropagationValue&& value) { m_defaultRouteTablePropagationHasBeenSet = true; m_defaultRouteTablePropagation = std::move(value); }
-
-    /**
-     * <p>Enable or disable automatic propagation of routes to the default propagation
-     * route table.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithDefaultRouteTablePropagation(const DefaultRouteTablePropagationValue& value) { SetDefaultRouteTablePropagation(value); return *this;}
-
-    /**
-     * <p>Enable or disable automatic propagation of routes to the default propagation
-     * route table.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithDefaultRouteTablePropagation(DefaultRouteTablePropagationValue&& value) { SetDefaultRouteTablePropagation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the default propagation route table.</p>
      */
-    inline const Aws::String& GetPropagationDefaultRouteTableId() const{ return m_propagationDefaultRouteTableId; }
-
-    /**
-     * <p>The ID of the default propagation route table.</p>
-     */
+    inline const Aws::String& GetPropagationDefaultRouteTableId() const { return m_propagationDefaultRouteTableId; }
     inline bool PropagationDefaultRouteTableIdHasBeenSet() const { return m_propagationDefaultRouteTableIdHasBeenSet; }
+    template<typename PropagationDefaultRouteTableIdT = Aws::String>
+    void SetPropagationDefaultRouteTableId(PropagationDefaultRouteTableIdT&& value) { m_propagationDefaultRouteTableIdHasBeenSet = true; m_propagationDefaultRouteTableId = std::forward<PropagationDefaultRouteTableIdT>(value); }
+    template<typename PropagationDefaultRouteTableIdT = Aws::String>
+    ModifyTransitGatewayOptions& WithPropagationDefaultRouteTableId(PropagationDefaultRouteTableIdT&& value) { SetPropagationDefaultRouteTableId(std::forward<PropagationDefaultRouteTableIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the default propagation route table.</p>
-     */
-    inline void SetPropagationDefaultRouteTableId(const Aws::String& value) { m_propagationDefaultRouteTableIdHasBeenSet = true; m_propagationDefaultRouteTableId = value; }
-
-    /**
-     * <p>The ID of the default propagation route table.</p>
-     */
-    inline void SetPropagationDefaultRouteTableId(Aws::String&& value) { m_propagationDefaultRouteTableIdHasBeenSet = true; m_propagationDefaultRouteTableId = std::move(value); }
-
-    /**
-     * <p>The ID of the default propagation route table.</p>
-     */
-    inline void SetPropagationDefaultRouteTableId(const char* value) { m_propagationDefaultRouteTableIdHasBeenSet = true; m_propagationDefaultRouteTableId.assign(value); }
-
-    /**
-     * <p>The ID of the default propagation route table.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithPropagationDefaultRouteTableId(const Aws::String& value) { SetPropagationDefaultRouteTableId(value); return *this;}
-
-    /**
-     * <p>The ID of the default propagation route table.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithPropagationDefaultRouteTableId(Aws::String&& value) { SetPropagationDefaultRouteTableId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the default propagation route table.</p>
-     */
-    inline ModifyTransitGatewayOptions& WithPropagationDefaultRouteTableId(const char* value) { SetPropagationDefaultRouteTableId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A private Autonomous System Number (ASN) for the Amazon side of a BGP
      * session. The range is 64512 to 65534 for 16-bit ASNs and 4200000000 to
      * 4294967294 for 32-bit ASNs.</p> <p>The modify ASN operation is not allowed on a
-     * transit gateway with active BGP sessions. You must first delete all transit
-     * gateway attachments that have BGP configured prior to modifying the ASN on the
-     * transit gateway.</p>
+     * transit gateway if it has the following attachments:</p> <ul> <li> <p>Dynamic
+     * VPN</p> </li> <li> <p>Static VPN</p> </li> <li> <p>Direct Connect Gateway</p>
+     * </li> <li> <p>Connect</p> </li> </ul> <p>You must first delete all transit
+     * gateway attachments configured prior to modifying the ASN on the transit
+     * gateway.</p>
      */
-    inline long long GetAmazonSideAsn() const{ return m_amazonSideAsn; }
-
-    /**
-     * <p>A private Autonomous System Number (ASN) for the Amazon side of a BGP
-     * session. The range is 64512 to 65534 for 16-bit ASNs and 4200000000 to
-     * 4294967294 for 32-bit ASNs.</p> <p>The modify ASN operation is not allowed on a
-     * transit gateway with active BGP sessions. You must first delete all transit
-     * gateway attachments that have BGP configured prior to modifying the ASN on the
-     * transit gateway.</p>
-     */
+    inline long long GetAmazonSideAsn() const { return m_amazonSideAsn; }
     inline bool AmazonSideAsnHasBeenSet() const { return m_amazonSideAsnHasBeenSet; }
-
-    /**
-     * <p>A private Autonomous System Number (ASN) for the Amazon side of a BGP
-     * session. The range is 64512 to 65534 for 16-bit ASNs and 4200000000 to
-     * 4294967294 for 32-bit ASNs.</p> <p>The modify ASN operation is not allowed on a
-     * transit gateway with active BGP sessions. You must first delete all transit
-     * gateway attachments that have BGP configured prior to modifying the ASN on the
-     * transit gateway.</p>
-     */
     inline void SetAmazonSideAsn(long long value) { m_amazonSideAsnHasBeenSet = true; m_amazonSideAsn = value; }
-
-    /**
-     * <p>A private Autonomous System Number (ASN) for the Amazon side of a BGP
-     * session. The range is 64512 to 65534 for 16-bit ASNs and 4200000000 to
-     * 4294967294 for 32-bit ASNs.</p> <p>The modify ASN operation is not allowed on a
-     * transit gateway with active BGP sessions. You must first delete all transit
-     * gateway attachments that have BGP configured prior to modifying the ASN on the
-     * transit gateway.</p>
-     */
     inline ModifyTransitGatewayOptions& WithAmazonSideAsn(long long value) { SetAmazonSideAsn(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_addTransitGatewayCidrBlocks;
@@ -535,31 +193,31 @@ namespace Model
     Aws::Vector<Aws::String> m_removeTransitGatewayCidrBlocks;
     bool m_removeTransitGatewayCidrBlocksHasBeenSet = false;
 
-    VpnEcmpSupportValue m_vpnEcmpSupport;
+    VpnEcmpSupportValue m_vpnEcmpSupport{VpnEcmpSupportValue::NOT_SET};
     bool m_vpnEcmpSupportHasBeenSet = false;
 
-    DnsSupportValue m_dnsSupport;
+    DnsSupportValue m_dnsSupport{DnsSupportValue::NOT_SET};
     bool m_dnsSupportHasBeenSet = false;
 
-    SecurityGroupReferencingSupportValue m_securityGroupReferencingSupport;
+    SecurityGroupReferencingSupportValue m_securityGroupReferencingSupport{SecurityGroupReferencingSupportValue::NOT_SET};
     bool m_securityGroupReferencingSupportHasBeenSet = false;
 
-    AutoAcceptSharedAttachmentsValue m_autoAcceptSharedAttachments;
+    AutoAcceptSharedAttachmentsValue m_autoAcceptSharedAttachments{AutoAcceptSharedAttachmentsValue::NOT_SET};
     bool m_autoAcceptSharedAttachmentsHasBeenSet = false;
 
-    DefaultRouteTableAssociationValue m_defaultRouteTableAssociation;
+    DefaultRouteTableAssociationValue m_defaultRouteTableAssociation{DefaultRouteTableAssociationValue::NOT_SET};
     bool m_defaultRouteTableAssociationHasBeenSet = false;
 
     Aws::String m_associationDefaultRouteTableId;
     bool m_associationDefaultRouteTableIdHasBeenSet = false;
 
-    DefaultRouteTablePropagationValue m_defaultRouteTablePropagation;
+    DefaultRouteTablePropagationValue m_defaultRouteTablePropagation{DefaultRouteTablePropagationValue::NOT_SET};
     bool m_defaultRouteTablePropagationHasBeenSet = false;
 
     Aws::String m_propagationDefaultRouteTableId;
     bool m_propagationDefaultRouteTableIdHasBeenSet = false;
 
-    long long m_amazonSideAsn;
+    long long m_amazonSideAsn{0};
     bool m_amazonSideAsnHasBeenSet = false;
   };
 

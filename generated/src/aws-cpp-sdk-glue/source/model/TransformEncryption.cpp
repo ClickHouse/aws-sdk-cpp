@@ -18,15 +18,7 @@ namespace Glue
 namespace Model
 {
 
-TransformEncryption::TransformEncryption() : 
-    m_mlUserDataEncryptionHasBeenSet(false),
-    m_taskRunSecurityConfigurationNameHasBeenSet(false)
-{
-}
-
-TransformEncryption::TransformEncryption(JsonView jsonValue) : 
-    m_mlUserDataEncryptionHasBeenSet(false),
-    m_taskRunSecurityConfigurationNameHasBeenSet(false)
+TransformEncryption::TransformEncryption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TransformEncryption& TransformEncryption::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MlUserDataEncryption"))
   {
     m_mlUserDataEncryption = jsonValue.GetObject("MlUserDataEncryption");
-
     m_mlUserDataEncryptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TaskRunSecurityConfigurationName"))
   {
     m_taskRunSecurityConfigurationName = jsonValue.GetString("TaskRunSecurityConfigurationName");
-
     m_taskRunSecurityConfigurationNameHasBeenSet = true;
   }
-
   return *this;
 }
 

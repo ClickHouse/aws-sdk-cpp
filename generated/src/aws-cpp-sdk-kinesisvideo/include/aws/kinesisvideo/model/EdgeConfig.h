@@ -36,181 +36,65 @@ namespace Model
   class EdgeConfig
   {
   public:
-    AWS_KINESISVIDEO_API EdgeConfig();
+    AWS_KINESISVIDEO_API EdgeConfig() = default;
     AWS_KINESISVIDEO_API EdgeConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEO_API EdgeConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEO_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The "<b>Internet of Things (IoT) Thing</b>" Arn of the stream.</p>
      */
-    inline const Aws::String& GetHubDeviceArn() const{ return m_hubDeviceArn; }
-
-    /**
-     * <p>The "<b>Internet of Things (IoT) Thing</b>" Arn of the stream.</p>
-     */
+    inline const Aws::String& GetHubDeviceArn() const { return m_hubDeviceArn; }
     inline bool HubDeviceArnHasBeenSet() const { return m_hubDeviceArnHasBeenSet; }
+    template<typename HubDeviceArnT = Aws::String>
+    void SetHubDeviceArn(HubDeviceArnT&& value) { m_hubDeviceArnHasBeenSet = true; m_hubDeviceArn = std::forward<HubDeviceArnT>(value); }
+    template<typename HubDeviceArnT = Aws::String>
+    EdgeConfig& WithHubDeviceArn(HubDeviceArnT&& value) { SetHubDeviceArn(std::forward<HubDeviceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The "<b>Internet of Things (IoT) Thing</b>" Arn of the stream.</p>
-     */
-    inline void SetHubDeviceArn(const Aws::String& value) { m_hubDeviceArnHasBeenSet = true; m_hubDeviceArn = value; }
-
-    /**
-     * <p>The "<b>Internet of Things (IoT) Thing</b>" Arn of the stream.</p>
-     */
-    inline void SetHubDeviceArn(Aws::String&& value) { m_hubDeviceArnHasBeenSet = true; m_hubDeviceArn = std::move(value); }
-
-    /**
-     * <p>The "<b>Internet of Things (IoT) Thing</b>" Arn of the stream.</p>
-     */
-    inline void SetHubDeviceArn(const char* value) { m_hubDeviceArnHasBeenSet = true; m_hubDeviceArn.assign(value); }
-
-    /**
-     * <p>The "<b>Internet of Things (IoT) Thing</b>" Arn of the stream.</p>
-     */
-    inline EdgeConfig& WithHubDeviceArn(const Aws::String& value) { SetHubDeviceArn(value); return *this;}
-
-    /**
-     * <p>The "<b>Internet of Things (IoT) Thing</b>" Arn of the stream.</p>
-     */
-    inline EdgeConfig& WithHubDeviceArn(Aws::String&& value) { SetHubDeviceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The "<b>Internet of Things (IoT) Thing</b>" Arn of the stream.</p>
-     */
-    inline EdgeConfig& WithHubDeviceArn(const char* value) { SetHubDeviceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The recorder configuration consists of the local
      * <code>MediaSourceConfig</code> details, that are used as credentials to access
      * the local media files streamed on the camera. </p>
      */
-    inline const RecorderConfig& GetRecorderConfig() const{ return m_recorderConfig; }
-
-    /**
-     * <p>The recorder configuration consists of the local
-     * <code>MediaSourceConfig</code> details, that are used as credentials to access
-     * the local media files streamed on the camera. </p>
-     */
+    inline const RecorderConfig& GetRecorderConfig() const { return m_recorderConfig; }
     inline bool RecorderConfigHasBeenSet() const { return m_recorderConfigHasBeenSet; }
+    template<typename RecorderConfigT = RecorderConfig>
+    void SetRecorderConfig(RecorderConfigT&& value) { m_recorderConfigHasBeenSet = true; m_recorderConfig = std::forward<RecorderConfigT>(value); }
+    template<typename RecorderConfigT = RecorderConfig>
+    EdgeConfig& WithRecorderConfig(RecorderConfigT&& value) { SetRecorderConfig(std::forward<RecorderConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The recorder configuration consists of the local
-     * <code>MediaSourceConfig</code> details, that are used as credentials to access
-     * the local media files streamed on the camera. </p>
-     */
-    inline void SetRecorderConfig(const RecorderConfig& value) { m_recorderConfigHasBeenSet = true; m_recorderConfig = value; }
-
-    /**
-     * <p>The recorder configuration consists of the local
-     * <code>MediaSourceConfig</code> details, that are used as credentials to access
-     * the local media files streamed on the camera. </p>
-     */
-    inline void SetRecorderConfig(RecorderConfig&& value) { m_recorderConfigHasBeenSet = true; m_recorderConfig = std::move(value); }
-
-    /**
-     * <p>The recorder configuration consists of the local
-     * <code>MediaSourceConfig</code> details, that are used as credentials to access
-     * the local media files streamed on the camera. </p>
-     */
-    inline EdgeConfig& WithRecorderConfig(const RecorderConfig& value) { SetRecorderConfig(value); return *this;}
-
-    /**
-     * <p>The recorder configuration consists of the local
-     * <code>MediaSourceConfig</code> details, that are used as credentials to access
-     * the local media files streamed on the camera. </p>
-     */
-    inline EdgeConfig& WithRecorderConfig(RecorderConfig&& value) { SetRecorderConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The uploader configuration contains the <code>ScheduleExpression</code>
      * details that are used to schedule upload jobs for the recorded media files from
      * the Edge Agent to a Kinesis Video Stream.</p>
      */
-    inline const UploaderConfig& GetUploaderConfig() const{ return m_uploaderConfig; }
-
-    /**
-     * <p>The uploader configuration contains the <code>ScheduleExpression</code>
-     * details that are used to schedule upload jobs for the recorded media files from
-     * the Edge Agent to a Kinesis Video Stream.</p>
-     */
+    inline const UploaderConfig& GetUploaderConfig() const { return m_uploaderConfig; }
     inline bool UploaderConfigHasBeenSet() const { return m_uploaderConfigHasBeenSet; }
+    template<typename UploaderConfigT = UploaderConfig>
+    void SetUploaderConfig(UploaderConfigT&& value) { m_uploaderConfigHasBeenSet = true; m_uploaderConfig = std::forward<UploaderConfigT>(value); }
+    template<typename UploaderConfigT = UploaderConfig>
+    EdgeConfig& WithUploaderConfig(UploaderConfigT&& value) { SetUploaderConfig(std::forward<UploaderConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The uploader configuration contains the <code>ScheduleExpression</code>
-     * details that are used to schedule upload jobs for the recorded media files from
-     * the Edge Agent to a Kinesis Video Stream.</p>
-     */
-    inline void SetUploaderConfig(const UploaderConfig& value) { m_uploaderConfigHasBeenSet = true; m_uploaderConfig = value; }
-
-    /**
-     * <p>The uploader configuration contains the <code>ScheduleExpression</code>
-     * details that are used to schedule upload jobs for the recorded media files from
-     * the Edge Agent to a Kinesis Video Stream.</p>
-     */
-    inline void SetUploaderConfig(UploaderConfig&& value) { m_uploaderConfigHasBeenSet = true; m_uploaderConfig = std::move(value); }
-
-    /**
-     * <p>The uploader configuration contains the <code>ScheduleExpression</code>
-     * details that are used to schedule upload jobs for the recorded media files from
-     * the Edge Agent to a Kinesis Video Stream.</p>
-     */
-    inline EdgeConfig& WithUploaderConfig(const UploaderConfig& value) { SetUploaderConfig(value); return *this;}
-
-    /**
-     * <p>The uploader configuration contains the <code>ScheduleExpression</code>
-     * details that are used to schedule upload jobs for the recorded media files from
-     * the Edge Agent to a Kinesis Video Stream.</p>
-     */
-    inline EdgeConfig& WithUploaderConfig(UploaderConfig&& value) { SetUploaderConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The deletion configuration is made up of the retention time
      * (<code>EdgeRetentionInHours</code>) and local size configuration
      * (<code>LocalSizeConfig</code>) details that are used to make the deletion.</p>
      */
-    inline const DeletionConfig& GetDeletionConfig() const{ return m_deletionConfig; }
-
-    /**
-     * <p>The deletion configuration is made up of the retention time
-     * (<code>EdgeRetentionInHours</code>) and local size configuration
-     * (<code>LocalSizeConfig</code>) details that are used to make the deletion.</p>
-     */
+    inline const DeletionConfig& GetDeletionConfig() const { return m_deletionConfig; }
     inline bool DeletionConfigHasBeenSet() const { return m_deletionConfigHasBeenSet; }
-
-    /**
-     * <p>The deletion configuration is made up of the retention time
-     * (<code>EdgeRetentionInHours</code>) and local size configuration
-     * (<code>LocalSizeConfig</code>) details that are used to make the deletion.</p>
-     */
-    inline void SetDeletionConfig(const DeletionConfig& value) { m_deletionConfigHasBeenSet = true; m_deletionConfig = value; }
-
-    /**
-     * <p>The deletion configuration is made up of the retention time
-     * (<code>EdgeRetentionInHours</code>) and local size configuration
-     * (<code>LocalSizeConfig</code>) details that are used to make the deletion.</p>
-     */
-    inline void SetDeletionConfig(DeletionConfig&& value) { m_deletionConfigHasBeenSet = true; m_deletionConfig = std::move(value); }
-
-    /**
-     * <p>The deletion configuration is made up of the retention time
-     * (<code>EdgeRetentionInHours</code>) and local size configuration
-     * (<code>LocalSizeConfig</code>) details that are used to make the deletion.</p>
-     */
-    inline EdgeConfig& WithDeletionConfig(const DeletionConfig& value) { SetDeletionConfig(value); return *this;}
-
-    /**
-     * <p>The deletion configuration is made up of the retention time
-     * (<code>EdgeRetentionInHours</code>) and local size configuration
-     * (<code>LocalSizeConfig</code>) details that are used to make the deletion.</p>
-     */
-    inline EdgeConfig& WithDeletionConfig(DeletionConfig&& value) { SetDeletionConfig(std::move(value)); return *this;}
-
+    template<typename DeletionConfigT = DeletionConfig>
+    void SetDeletionConfig(DeletionConfigT&& value) { m_deletionConfigHasBeenSet = true; m_deletionConfig = std::forward<DeletionConfigT>(value); }
+    template<typename DeletionConfigT = DeletionConfig>
+    EdgeConfig& WithDeletionConfig(DeletionConfigT&& value) { SetDeletionConfig(std::forward<DeletionConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hubDeviceArn;

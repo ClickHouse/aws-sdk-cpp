@@ -33,52 +33,25 @@ namespace Model
   class LineItemFields
   {
   public:
-    AWS_TEXTRACT_API LineItemFields();
+    AWS_TEXTRACT_API LineItemFields() = default;
     AWS_TEXTRACT_API LineItemFields(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API LineItemFields& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>ExpenseFields used to show information from detected lines on a table.</p>
      */
-    inline const Aws::Vector<ExpenseField>& GetLineItemExpenseFields() const{ return m_lineItemExpenseFields; }
-
-    /**
-     * <p>ExpenseFields used to show information from detected lines on a table.</p>
-     */
+    inline const Aws::Vector<ExpenseField>& GetLineItemExpenseFields() const { return m_lineItemExpenseFields; }
     inline bool LineItemExpenseFieldsHasBeenSet() const { return m_lineItemExpenseFieldsHasBeenSet; }
-
-    /**
-     * <p>ExpenseFields used to show information from detected lines on a table.</p>
-     */
-    inline void SetLineItemExpenseFields(const Aws::Vector<ExpenseField>& value) { m_lineItemExpenseFieldsHasBeenSet = true; m_lineItemExpenseFields = value; }
-
-    /**
-     * <p>ExpenseFields used to show information from detected lines on a table.</p>
-     */
-    inline void SetLineItemExpenseFields(Aws::Vector<ExpenseField>&& value) { m_lineItemExpenseFieldsHasBeenSet = true; m_lineItemExpenseFields = std::move(value); }
-
-    /**
-     * <p>ExpenseFields used to show information from detected lines on a table.</p>
-     */
-    inline LineItemFields& WithLineItemExpenseFields(const Aws::Vector<ExpenseField>& value) { SetLineItemExpenseFields(value); return *this;}
-
-    /**
-     * <p>ExpenseFields used to show information from detected lines on a table.</p>
-     */
-    inline LineItemFields& WithLineItemExpenseFields(Aws::Vector<ExpenseField>&& value) { SetLineItemExpenseFields(std::move(value)); return *this;}
-
-    /**
-     * <p>ExpenseFields used to show information from detected lines on a table.</p>
-     */
-    inline LineItemFields& AddLineItemExpenseFields(const ExpenseField& value) { m_lineItemExpenseFieldsHasBeenSet = true; m_lineItemExpenseFields.push_back(value); return *this; }
-
-    /**
-     * <p>ExpenseFields used to show information from detected lines on a table.</p>
-     */
-    inline LineItemFields& AddLineItemExpenseFields(ExpenseField&& value) { m_lineItemExpenseFieldsHasBeenSet = true; m_lineItemExpenseFields.push_back(std::move(value)); return *this; }
-
+    template<typename LineItemExpenseFieldsT = Aws::Vector<ExpenseField>>
+    void SetLineItemExpenseFields(LineItemExpenseFieldsT&& value) { m_lineItemExpenseFieldsHasBeenSet = true; m_lineItemExpenseFields = std::forward<LineItemExpenseFieldsT>(value); }
+    template<typename LineItemExpenseFieldsT = Aws::Vector<ExpenseField>>
+    LineItemFields& WithLineItemExpenseFields(LineItemExpenseFieldsT&& value) { SetLineItemExpenseFields(std::forward<LineItemExpenseFieldsT>(value)); return *this;}
+    template<typename LineItemExpenseFieldsT = ExpenseField>
+    LineItemFields& AddLineItemExpenseFields(LineItemExpenseFieldsT&& value) { m_lineItemExpenseFieldsHasBeenSet = true; m_lineItemExpenseFields.emplace_back(std::forward<LineItemExpenseFieldsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<ExpenseField> m_lineItemExpenseFields;

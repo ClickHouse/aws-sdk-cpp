@@ -18,17 +18,7 @@ namespace GreengrassV2
 namespace Model
 {
 
-LambdaEventSource::LambdaEventSource() : 
-    m_topicHasBeenSet(false),
-    m_type(LambdaEventSourceType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-LambdaEventSource::LambdaEventSource(JsonView jsonValue) : 
-    m_topicHasBeenSet(false),
-    m_type(LambdaEventSourceType::NOT_SET),
-    m_typeHasBeenSet(false)
+LambdaEventSource::LambdaEventSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ LambdaEventSource& LambdaEventSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("topic"))
   {
     m_topic = jsonValue.GetString("topic");
-
     m_topicHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = LambdaEventSourceTypeMapper::GetLambdaEventSourceTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

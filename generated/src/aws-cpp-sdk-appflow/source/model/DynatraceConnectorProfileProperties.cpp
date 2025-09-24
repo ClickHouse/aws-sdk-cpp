@@ -18,13 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-DynatraceConnectorProfileProperties::DynatraceConnectorProfileProperties() : 
-    m_instanceUrlHasBeenSet(false)
-{
-}
-
-DynatraceConnectorProfileProperties::DynatraceConnectorProfileProperties(JsonView jsonValue) : 
-    m_instanceUrlHasBeenSet(false)
+DynatraceConnectorProfileProperties::DynatraceConnectorProfileProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ DynatraceConnectorProfileProperties& DynatraceConnectorProfileProperties::operat
   if(jsonValue.ValueExists("instanceUrl"))
   {
     m_instanceUrl = jsonValue.GetString("instanceUrl");
-
     m_instanceUrlHasBeenSet = true;
   }
-
   return *this;
 }
 

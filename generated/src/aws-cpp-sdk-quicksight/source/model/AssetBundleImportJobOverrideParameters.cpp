@@ -18,27 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AssetBundleImportJobOverrideParameters::AssetBundleImportJobOverrideParameters() : 
-    m_resourceIdOverrideConfigurationHasBeenSet(false),
-    m_vPCConnectionsHasBeenSet(false),
-    m_refreshSchedulesHasBeenSet(false),
-    m_dataSourcesHasBeenSet(false),
-    m_dataSetsHasBeenSet(false),
-    m_themesHasBeenSet(false),
-    m_analysesHasBeenSet(false),
-    m_dashboardsHasBeenSet(false)
-{
-}
-
-AssetBundleImportJobOverrideParameters::AssetBundleImportJobOverrideParameters(JsonView jsonValue) : 
-    m_resourceIdOverrideConfigurationHasBeenSet(false),
-    m_vPCConnectionsHasBeenSet(false),
-    m_refreshSchedulesHasBeenSet(false),
-    m_dataSourcesHasBeenSet(false),
-    m_dataSetsHasBeenSet(false),
-    m_themesHasBeenSet(false),
-    m_analysesHasBeenSet(false),
-    m_dashboardsHasBeenSet(false)
+AssetBundleImportJobOverrideParameters::AssetBundleImportJobOverrideParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,10 +28,8 @@ AssetBundleImportJobOverrideParameters& AssetBundleImportJobOverrideParameters::
   if(jsonValue.ValueExists("ResourceIdOverrideConfiguration"))
   {
     m_resourceIdOverrideConfiguration = jsonValue.GetObject("ResourceIdOverrideConfiguration");
-
     m_resourceIdOverrideConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VPCConnections"))
   {
     Aws::Utils::Array<JsonView> vPCConnectionsJsonList = jsonValue.GetArray("VPCConnections");
@@ -61,7 +39,6 @@ AssetBundleImportJobOverrideParameters& AssetBundleImportJobOverrideParameters::
     }
     m_vPCConnectionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RefreshSchedules"))
   {
     Aws::Utils::Array<JsonView> refreshSchedulesJsonList = jsonValue.GetArray("RefreshSchedules");
@@ -71,7 +48,6 @@ AssetBundleImportJobOverrideParameters& AssetBundleImportJobOverrideParameters::
     }
     m_refreshSchedulesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataSources"))
   {
     Aws::Utils::Array<JsonView> dataSourcesJsonList = jsonValue.GetArray("DataSources");
@@ -81,7 +57,6 @@ AssetBundleImportJobOverrideParameters& AssetBundleImportJobOverrideParameters::
     }
     m_dataSourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataSets"))
   {
     Aws::Utils::Array<JsonView> dataSetsJsonList = jsonValue.GetArray("DataSets");
@@ -91,7 +66,6 @@ AssetBundleImportJobOverrideParameters& AssetBundleImportJobOverrideParameters::
     }
     m_dataSetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Themes"))
   {
     Aws::Utils::Array<JsonView> themesJsonList = jsonValue.GetArray("Themes");
@@ -101,7 +75,6 @@ AssetBundleImportJobOverrideParameters& AssetBundleImportJobOverrideParameters::
     }
     m_themesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Analyses"))
   {
     Aws::Utils::Array<JsonView> analysesJsonList = jsonValue.GetArray("Analyses");
@@ -111,7 +84,6 @@ AssetBundleImportJobOverrideParameters& AssetBundleImportJobOverrideParameters::
     }
     m_analysesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Dashboards"))
   {
     Aws::Utils::Array<JsonView> dashboardsJsonList = jsonValue.GetArray("Dashboards");
@@ -121,7 +93,15 @@ AssetBundleImportJobOverrideParameters& AssetBundleImportJobOverrideParameters::
     }
     m_dashboardsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Folders"))
+  {
+    Aws::Utils::Array<JsonView> foldersJsonList = jsonValue.GetArray("Folders");
+    for(unsigned foldersIndex = 0; foldersIndex < foldersJsonList.GetLength(); ++foldersIndex)
+    {
+      m_folders.push_back(foldersJsonList[foldersIndex].AsObject());
+    }
+    m_foldersHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -209,6 +189,17 @@ JsonValue AssetBundleImportJobOverrideParameters::Jsonize() const
      dashboardsJsonList[dashboardsIndex].AsObject(m_dashboards[dashboardsIndex].Jsonize());
    }
    payload.WithArray("Dashboards", std::move(dashboardsJsonList));
+
+  }
+
+  if(m_foldersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> foldersJsonList(m_folders.size());
+   for(unsigned foldersIndex = 0; foldersIndex < foldersJsonList.GetLength(); ++foldersIndex)
+   {
+     foldersJsonList[foldersIndex].AsObject(m_folders[foldersIndex].Jsonize());
+   }
+   payload.WithArray("Folders", std::move(foldersJsonList));
 
   }
 

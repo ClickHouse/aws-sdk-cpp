@@ -19,6 +19,7 @@
 #include <aws/quicksight/model/DataLabelOptions.h>
 #include <aws/quicksight/model/TooltipOptions.h>
 #include <aws/quicksight/model/VisualPalette.h>
+#include <aws/quicksight/model/VisualInteractionOptions.h>
 #include <aws/quicksight/model/ForecastConfiguration.h>
 #include <aws/quicksight/model/SeriesItem.h>
 #include <aws/quicksight/model/ReferenceLine.h>
@@ -48,671 +49,269 @@ namespace Model
   class LineChartConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API LineChartConfiguration();
+    AWS_QUICKSIGHT_API LineChartConfiguration() = default;
     AWS_QUICKSIGHT_API LineChartConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API LineChartConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field well configuration of a line chart.</p>
      */
-    inline const LineChartFieldWells& GetFieldWells() const{ return m_fieldWells; }
-
-    /**
-     * <p>The field well configuration of a line chart.</p>
-     */
+    inline const LineChartFieldWells& GetFieldWells() const { return m_fieldWells; }
     inline bool FieldWellsHasBeenSet() const { return m_fieldWellsHasBeenSet; }
+    template<typename FieldWellsT = LineChartFieldWells>
+    void SetFieldWells(FieldWellsT&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::forward<FieldWellsT>(value); }
+    template<typename FieldWellsT = LineChartFieldWells>
+    LineChartConfiguration& WithFieldWells(FieldWellsT&& value) { SetFieldWells(std::forward<FieldWellsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field well configuration of a line chart.</p>
-     */
-    inline void SetFieldWells(const LineChartFieldWells& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = value; }
-
-    /**
-     * <p>The field well configuration of a line chart.</p>
-     */
-    inline void SetFieldWells(LineChartFieldWells&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::move(value); }
-
-    /**
-     * <p>The field well configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithFieldWells(const LineChartFieldWells& value) { SetFieldWells(value); return *this;}
-
-    /**
-     * <p>The field well configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithFieldWells(LineChartFieldWells&& value) { SetFieldWells(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sort configuration of a line chart.</p>
      */
-    inline const LineChartSortConfiguration& GetSortConfiguration() const{ return m_sortConfiguration; }
-
-    /**
-     * <p>The sort configuration of a line chart.</p>
-     */
+    inline const LineChartSortConfiguration& GetSortConfiguration() const { return m_sortConfiguration; }
     inline bool SortConfigurationHasBeenSet() const { return m_sortConfigurationHasBeenSet; }
+    template<typename SortConfigurationT = LineChartSortConfiguration>
+    void SetSortConfiguration(SortConfigurationT&& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = std::forward<SortConfigurationT>(value); }
+    template<typename SortConfigurationT = LineChartSortConfiguration>
+    LineChartConfiguration& WithSortConfiguration(SortConfigurationT&& value) { SetSortConfiguration(std::forward<SortConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The sort configuration of a line chart.</p>
-     */
-    inline void SetSortConfiguration(const LineChartSortConfiguration& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = value; }
-
-    /**
-     * <p>The sort configuration of a line chart.</p>
-     */
-    inline void SetSortConfiguration(LineChartSortConfiguration&& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = std::move(value); }
-
-    /**
-     * <p>The sort configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithSortConfiguration(const LineChartSortConfiguration& value) { SetSortConfiguration(value); return *this;}
-
-    /**
-     * <p>The sort configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithSortConfiguration(LineChartSortConfiguration&& value) { SetSortConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The forecast configuration of a line chart.</p>
      */
-    inline const Aws::Vector<ForecastConfiguration>& GetForecastConfigurations() const{ return m_forecastConfigurations; }
-
-    /**
-     * <p>The forecast configuration of a line chart.</p>
-     */
+    inline const Aws::Vector<ForecastConfiguration>& GetForecastConfigurations() const { return m_forecastConfigurations; }
     inline bool ForecastConfigurationsHasBeenSet() const { return m_forecastConfigurationsHasBeenSet; }
+    template<typename ForecastConfigurationsT = Aws::Vector<ForecastConfiguration>>
+    void SetForecastConfigurations(ForecastConfigurationsT&& value) { m_forecastConfigurationsHasBeenSet = true; m_forecastConfigurations = std::forward<ForecastConfigurationsT>(value); }
+    template<typename ForecastConfigurationsT = Aws::Vector<ForecastConfiguration>>
+    LineChartConfiguration& WithForecastConfigurations(ForecastConfigurationsT&& value) { SetForecastConfigurations(std::forward<ForecastConfigurationsT>(value)); return *this;}
+    template<typename ForecastConfigurationsT = ForecastConfiguration>
+    LineChartConfiguration& AddForecastConfigurations(ForecastConfigurationsT&& value) { m_forecastConfigurationsHasBeenSet = true; m_forecastConfigurations.emplace_back(std::forward<ForecastConfigurationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The forecast configuration of a line chart.</p>
-     */
-    inline void SetForecastConfigurations(const Aws::Vector<ForecastConfiguration>& value) { m_forecastConfigurationsHasBeenSet = true; m_forecastConfigurations = value; }
-
-    /**
-     * <p>The forecast configuration of a line chart.</p>
-     */
-    inline void SetForecastConfigurations(Aws::Vector<ForecastConfiguration>&& value) { m_forecastConfigurationsHasBeenSet = true; m_forecastConfigurations = std::move(value); }
-
-    /**
-     * <p>The forecast configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithForecastConfigurations(const Aws::Vector<ForecastConfiguration>& value) { SetForecastConfigurations(value); return *this;}
-
-    /**
-     * <p>The forecast configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithForecastConfigurations(Aws::Vector<ForecastConfiguration>&& value) { SetForecastConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>The forecast configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& AddForecastConfigurations(const ForecastConfiguration& value) { m_forecastConfigurationsHasBeenSet = true; m_forecastConfigurations.push_back(value); return *this; }
-
-    /**
-     * <p>The forecast configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& AddForecastConfigurations(ForecastConfiguration&& value) { m_forecastConfigurationsHasBeenSet = true; m_forecastConfigurations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Determines the type of the line chart.</p>
      */
-    inline const LineChartType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Determines the type of the line chart.</p>
-     */
+    inline LineChartType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(LineChartType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline LineChartConfiguration& WithType(LineChartType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines the type of the line chart.</p>
-     */
-    inline void SetType(const LineChartType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Determines the type of the line chart.</p>
-     */
-    inline void SetType(LineChartType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Determines the type of the line chart.</p>
-     */
-    inline LineChartConfiguration& WithType(const LineChartType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Determines the type of the line chart.</p>
-     */
-    inline LineChartConfiguration& WithType(LineChartType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The small multiples setup for the visual.</p>
      */
-    inline const SmallMultiplesOptions& GetSmallMultiplesOptions() const{ return m_smallMultiplesOptions; }
-
-    /**
-     * <p>The small multiples setup for the visual.</p>
-     */
+    inline const SmallMultiplesOptions& GetSmallMultiplesOptions() const { return m_smallMultiplesOptions; }
     inline bool SmallMultiplesOptionsHasBeenSet() const { return m_smallMultiplesOptionsHasBeenSet; }
+    template<typename SmallMultiplesOptionsT = SmallMultiplesOptions>
+    void SetSmallMultiplesOptions(SmallMultiplesOptionsT&& value) { m_smallMultiplesOptionsHasBeenSet = true; m_smallMultiplesOptions = std::forward<SmallMultiplesOptionsT>(value); }
+    template<typename SmallMultiplesOptionsT = SmallMultiplesOptions>
+    LineChartConfiguration& WithSmallMultiplesOptions(SmallMultiplesOptionsT&& value) { SetSmallMultiplesOptions(std::forward<SmallMultiplesOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The small multiples setup for the visual.</p>
-     */
-    inline void SetSmallMultiplesOptions(const SmallMultiplesOptions& value) { m_smallMultiplesOptionsHasBeenSet = true; m_smallMultiplesOptions = value; }
-
-    /**
-     * <p>The small multiples setup for the visual.</p>
-     */
-    inline void SetSmallMultiplesOptions(SmallMultiplesOptions&& value) { m_smallMultiplesOptionsHasBeenSet = true; m_smallMultiplesOptions = std::move(value); }
-
-    /**
-     * <p>The small multiples setup for the visual.</p>
-     */
-    inline LineChartConfiguration& WithSmallMultiplesOptions(const SmallMultiplesOptions& value) { SetSmallMultiplesOptions(value); return *this;}
-
-    /**
-     * <p>The small multiples setup for the visual.</p>
-     */
-    inline LineChartConfiguration& WithSmallMultiplesOptions(SmallMultiplesOptions&& value) { SetSmallMultiplesOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of the x-axis.</p>
      */
-    inline const AxisDisplayOptions& GetXAxisDisplayOptions() const{ return m_xAxisDisplayOptions; }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis.</p>
-     */
+    inline const AxisDisplayOptions& GetXAxisDisplayOptions() const { return m_xAxisDisplayOptions; }
     inline bool XAxisDisplayOptionsHasBeenSet() const { return m_xAxisDisplayOptionsHasBeenSet; }
+    template<typename XAxisDisplayOptionsT = AxisDisplayOptions>
+    void SetXAxisDisplayOptions(XAxisDisplayOptionsT&& value) { m_xAxisDisplayOptionsHasBeenSet = true; m_xAxisDisplayOptions = std::forward<XAxisDisplayOptionsT>(value); }
+    template<typename XAxisDisplayOptionsT = AxisDisplayOptions>
+    LineChartConfiguration& WithXAxisDisplayOptions(XAxisDisplayOptionsT&& value) { SetXAxisDisplayOptions(std::forward<XAxisDisplayOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of the x-axis.</p>
-     */
-    inline void SetXAxisDisplayOptions(const AxisDisplayOptions& value) { m_xAxisDisplayOptionsHasBeenSet = true; m_xAxisDisplayOptions = value; }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis.</p>
-     */
-    inline void SetXAxisDisplayOptions(AxisDisplayOptions&& value) { m_xAxisDisplayOptionsHasBeenSet = true; m_xAxisDisplayOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis.</p>
-     */
-    inline LineChartConfiguration& WithXAxisDisplayOptions(const AxisDisplayOptions& value) { SetXAxisDisplayOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of the x-axis.</p>
-     */
-    inline LineChartConfiguration& WithXAxisDisplayOptions(AxisDisplayOptions&& value) { SetXAxisDisplayOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of the x-axis label.</p>
      */
-    inline const ChartAxisLabelOptions& GetXAxisLabelOptions() const{ return m_xAxisLabelOptions; }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis label.</p>
-     */
+    inline const ChartAxisLabelOptions& GetXAxisLabelOptions() const { return m_xAxisLabelOptions; }
     inline bool XAxisLabelOptionsHasBeenSet() const { return m_xAxisLabelOptionsHasBeenSet; }
+    template<typename XAxisLabelOptionsT = ChartAxisLabelOptions>
+    void SetXAxisLabelOptions(XAxisLabelOptionsT&& value) { m_xAxisLabelOptionsHasBeenSet = true; m_xAxisLabelOptions = std::forward<XAxisLabelOptionsT>(value); }
+    template<typename XAxisLabelOptionsT = ChartAxisLabelOptions>
+    LineChartConfiguration& WithXAxisLabelOptions(XAxisLabelOptionsT&& value) { SetXAxisLabelOptions(std::forward<XAxisLabelOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of the x-axis label.</p>
-     */
-    inline void SetXAxisLabelOptions(const ChartAxisLabelOptions& value) { m_xAxisLabelOptionsHasBeenSet = true; m_xAxisLabelOptions = value; }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis label.</p>
-     */
-    inline void SetXAxisLabelOptions(ChartAxisLabelOptions&& value) { m_xAxisLabelOptionsHasBeenSet = true; m_xAxisLabelOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of the x-axis label.</p>
-     */
-    inline LineChartConfiguration& WithXAxisLabelOptions(const ChartAxisLabelOptions& value) { SetXAxisLabelOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of the x-axis label.</p>
-     */
-    inline LineChartConfiguration& WithXAxisLabelOptions(ChartAxisLabelOptions&& value) { SetXAxisLabelOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The series axis configuration of a line chart.</p>
      */
-    inline const LineSeriesAxisDisplayOptions& GetPrimaryYAxisDisplayOptions() const{ return m_primaryYAxisDisplayOptions; }
-
-    /**
-     * <p>The series axis configuration of a line chart.</p>
-     */
+    inline const LineSeriesAxisDisplayOptions& GetPrimaryYAxisDisplayOptions() const { return m_primaryYAxisDisplayOptions; }
     inline bool PrimaryYAxisDisplayOptionsHasBeenSet() const { return m_primaryYAxisDisplayOptionsHasBeenSet; }
+    template<typename PrimaryYAxisDisplayOptionsT = LineSeriesAxisDisplayOptions>
+    void SetPrimaryYAxisDisplayOptions(PrimaryYAxisDisplayOptionsT&& value) { m_primaryYAxisDisplayOptionsHasBeenSet = true; m_primaryYAxisDisplayOptions = std::forward<PrimaryYAxisDisplayOptionsT>(value); }
+    template<typename PrimaryYAxisDisplayOptionsT = LineSeriesAxisDisplayOptions>
+    LineChartConfiguration& WithPrimaryYAxisDisplayOptions(PrimaryYAxisDisplayOptionsT&& value) { SetPrimaryYAxisDisplayOptions(std::forward<PrimaryYAxisDisplayOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The series axis configuration of a line chart.</p>
-     */
-    inline void SetPrimaryYAxisDisplayOptions(const LineSeriesAxisDisplayOptions& value) { m_primaryYAxisDisplayOptionsHasBeenSet = true; m_primaryYAxisDisplayOptions = value; }
-
-    /**
-     * <p>The series axis configuration of a line chart.</p>
-     */
-    inline void SetPrimaryYAxisDisplayOptions(LineSeriesAxisDisplayOptions&& value) { m_primaryYAxisDisplayOptionsHasBeenSet = true; m_primaryYAxisDisplayOptions = std::move(value); }
-
-    /**
-     * <p>The series axis configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithPrimaryYAxisDisplayOptions(const LineSeriesAxisDisplayOptions& value) { SetPrimaryYAxisDisplayOptions(value); return *this;}
-
-    /**
-     * <p>The series axis configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithPrimaryYAxisDisplayOptions(LineSeriesAxisDisplayOptions&& value) { SetPrimaryYAxisDisplayOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of the y-axis label.</p>
      */
-    inline const ChartAxisLabelOptions& GetPrimaryYAxisLabelOptions() const{ return m_primaryYAxisLabelOptions; }
-
-    /**
-     * <p>The options that determine the presentation of the y-axis label.</p>
-     */
+    inline const ChartAxisLabelOptions& GetPrimaryYAxisLabelOptions() const { return m_primaryYAxisLabelOptions; }
     inline bool PrimaryYAxisLabelOptionsHasBeenSet() const { return m_primaryYAxisLabelOptionsHasBeenSet; }
+    template<typename PrimaryYAxisLabelOptionsT = ChartAxisLabelOptions>
+    void SetPrimaryYAxisLabelOptions(PrimaryYAxisLabelOptionsT&& value) { m_primaryYAxisLabelOptionsHasBeenSet = true; m_primaryYAxisLabelOptions = std::forward<PrimaryYAxisLabelOptionsT>(value); }
+    template<typename PrimaryYAxisLabelOptionsT = ChartAxisLabelOptions>
+    LineChartConfiguration& WithPrimaryYAxisLabelOptions(PrimaryYAxisLabelOptionsT&& value) { SetPrimaryYAxisLabelOptions(std::forward<PrimaryYAxisLabelOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of the y-axis label.</p>
-     */
-    inline void SetPrimaryYAxisLabelOptions(const ChartAxisLabelOptions& value) { m_primaryYAxisLabelOptionsHasBeenSet = true; m_primaryYAxisLabelOptions = value; }
-
-    /**
-     * <p>The options that determine the presentation of the y-axis label.</p>
-     */
-    inline void SetPrimaryYAxisLabelOptions(ChartAxisLabelOptions&& value) { m_primaryYAxisLabelOptionsHasBeenSet = true; m_primaryYAxisLabelOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of the y-axis label.</p>
-     */
-    inline LineChartConfiguration& WithPrimaryYAxisLabelOptions(const ChartAxisLabelOptions& value) { SetPrimaryYAxisLabelOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of the y-axis label.</p>
-     */
-    inline LineChartConfiguration& WithPrimaryYAxisLabelOptions(ChartAxisLabelOptions&& value) { SetPrimaryYAxisLabelOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The series axis configuration of a line chart.</p>
      */
-    inline const LineSeriesAxisDisplayOptions& GetSecondaryYAxisDisplayOptions() const{ return m_secondaryYAxisDisplayOptions; }
-
-    /**
-     * <p>The series axis configuration of a line chart.</p>
-     */
+    inline const LineSeriesAxisDisplayOptions& GetSecondaryYAxisDisplayOptions() const { return m_secondaryYAxisDisplayOptions; }
     inline bool SecondaryYAxisDisplayOptionsHasBeenSet() const { return m_secondaryYAxisDisplayOptionsHasBeenSet; }
+    template<typename SecondaryYAxisDisplayOptionsT = LineSeriesAxisDisplayOptions>
+    void SetSecondaryYAxisDisplayOptions(SecondaryYAxisDisplayOptionsT&& value) { m_secondaryYAxisDisplayOptionsHasBeenSet = true; m_secondaryYAxisDisplayOptions = std::forward<SecondaryYAxisDisplayOptionsT>(value); }
+    template<typename SecondaryYAxisDisplayOptionsT = LineSeriesAxisDisplayOptions>
+    LineChartConfiguration& WithSecondaryYAxisDisplayOptions(SecondaryYAxisDisplayOptionsT&& value) { SetSecondaryYAxisDisplayOptions(std::forward<SecondaryYAxisDisplayOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The series axis configuration of a line chart.</p>
-     */
-    inline void SetSecondaryYAxisDisplayOptions(const LineSeriesAxisDisplayOptions& value) { m_secondaryYAxisDisplayOptionsHasBeenSet = true; m_secondaryYAxisDisplayOptions = value; }
-
-    /**
-     * <p>The series axis configuration of a line chart.</p>
-     */
-    inline void SetSecondaryYAxisDisplayOptions(LineSeriesAxisDisplayOptions&& value) { m_secondaryYAxisDisplayOptionsHasBeenSet = true; m_secondaryYAxisDisplayOptions = std::move(value); }
-
-    /**
-     * <p>The series axis configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithSecondaryYAxisDisplayOptions(const LineSeriesAxisDisplayOptions& value) { SetSecondaryYAxisDisplayOptions(value); return *this;}
-
-    /**
-     * <p>The series axis configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithSecondaryYAxisDisplayOptions(LineSeriesAxisDisplayOptions&& value) { SetSecondaryYAxisDisplayOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of the secondary y-axis
      * label.</p>
      */
-    inline const ChartAxisLabelOptions& GetSecondaryYAxisLabelOptions() const{ return m_secondaryYAxisLabelOptions; }
-
-    /**
-     * <p>The options that determine the presentation of the secondary y-axis
-     * label.</p>
-     */
+    inline const ChartAxisLabelOptions& GetSecondaryYAxisLabelOptions() const { return m_secondaryYAxisLabelOptions; }
     inline bool SecondaryYAxisLabelOptionsHasBeenSet() const { return m_secondaryYAxisLabelOptionsHasBeenSet; }
+    template<typename SecondaryYAxisLabelOptionsT = ChartAxisLabelOptions>
+    void SetSecondaryYAxisLabelOptions(SecondaryYAxisLabelOptionsT&& value) { m_secondaryYAxisLabelOptionsHasBeenSet = true; m_secondaryYAxisLabelOptions = std::forward<SecondaryYAxisLabelOptionsT>(value); }
+    template<typename SecondaryYAxisLabelOptionsT = ChartAxisLabelOptions>
+    LineChartConfiguration& WithSecondaryYAxisLabelOptions(SecondaryYAxisLabelOptionsT&& value) { SetSecondaryYAxisLabelOptions(std::forward<SecondaryYAxisLabelOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the presentation of the secondary y-axis
-     * label.</p>
-     */
-    inline void SetSecondaryYAxisLabelOptions(const ChartAxisLabelOptions& value) { m_secondaryYAxisLabelOptionsHasBeenSet = true; m_secondaryYAxisLabelOptions = value; }
-
-    /**
-     * <p>The options that determine the presentation of the secondary y-axis
-     * label.</p>
-     */
-    inline void SetSecondaryYAxisLabelOptions(ChartAxisLabelOptions&& value) { m_secondaryYAxisLabelOptionsHasBeenSet = true; m_secondaryYAxisLabelOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of the secondary y-axis
-     * label.</p>
-     */
-    inline LineChartConfiguration& WithSecondaryYAxisLabelOptions(const ChartAxisLabelOptions& value) { SetSecondaryYAxisLabelOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of the secondary y-axis
-     * label.</p>
-     */
-    inline LineChartConfiguration& WithSecondaryYAxisLabelOptions(ChartAxisLabelOptions&& value) { SetSecondaryYAxisLabelOptions(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const SingleAxisOptions& GetSingleAxisOptions() const{ return m_singleAxisOptions; }
-
-    
+    inline const SingleAxisOptions& GetSingleAxisOptions() const { return m_singleAxisOptions; }
     inline bool SingleAxisOptionsHasBeenSet() const { return m_singleAxisOptionsHasBeenSet; }
+    template<typename SingleAxisOptionsT = SingleAxisOptions>
+    void SetSingleAxisOptions(SingleAxisOptionsT&& value) { m_singleAxisOptionsHasBeenSet = true; m_singleAxisOptions = std::forward<SingleAxisOptionsT>(value); }
+    template<typename SingleAxisOptionsT = SingleAxisOptions>
+    LineChartConfiguration& WithSingleAxisOptions(SingleAxisOptionsT&& value) { SetSingleAxisOptions(std::forward<SingleAxisOptionsT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetSingleAxisOptions(const SingleAxisOptions& value) { m_singleAxisOptionsHasBeenSet = true; m_singleAxisOptions = value; }
-
-    
-    inline void SetSingleAxisOptions(SingleAxisOptions&& value) { m_singleAxisOptionsHasBeenSet = true; m_singleAxisOptions = std::move(value); }
-
-    
-    inline LineChartConfiguration& WithSingleAxisOptions(const SingleAxisOptions& value) { SetSingleAxisOptions(value); return *this;}
-
-    
-    inline LineChartConfiguration& WithSingleAxisOptions(SingleAxisOptions&& value) { SetSingleAxisOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the default presentation of all line series in
      * <code>LineChartVisual</code>.</p>
      */
-    inline const LineChartDefaultSeriesSettings& GetDefaultSeriesSettings() const{ return m_defaultSeriesSettings; }
-
-    /**
-     * <p>The options that determine the default presentation of all line series in
-     * <code>LineChartVisual</code>.</p>
-     */
+    inline const LineChartDefaultSeriesSettings& GetDefaultSeriesSettings() const { return m_defaultSeriesSettings; }
     inline bool DefaultSeriesSettingsHasBeenSet() const { return m_defaultSeriesSettingsHasBeenSet; }
+    template<typename DefaultSeriesSettingsT = LineChartDefaultSeriesSettings>
+    void SetDefaultSeriesSettings(DefaultSeriesSettingsT&& value) { m_defaultSeriesSettingsHasBeenSet = true; m_defaultSeriesSettings = std::forward<DefaultSeriesSettingsT>(value); }
+    template<typename DefaultSeriesSettingsT = LineChartDefaultSeriesSettings>
+    LineChartConfiguration& WithDefaultSeriesSettings(DefaultSeriesSettingsT&& value) { SetDefaultSeriesSettings(std::forward<DefaultSeriesSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the default presentation of all line series in
-     * <code>LineChartVisual</code>.</p>
-     */
-    inline void SetDefaultSeriesSettings(const LineChartDefaultSeriesSettings& value) { m_defaultSeriesSettingsHasBeenSet = true; m_defaultSeriesSettings = value; }
-
-    /**
-     * <p>The options that determine the default presentation of all line series in
-     * <code>LineChartVisual</code>.</p>
-     */
-    inline void SetDefaultSeriesSettings(LineChartDefaultSeriesSettings&& value) { m_defaultSeriesSettingsHasBeenSet = true; m_defaultSeriesSettings = std::move(value); }
-
-    /**
-     * <p>The options that determine the default presentation of all line series in
-     * <code>LineChartVisual</code>.</p>
-     */
-    inline LineChartConfiguration& WithDefaultSeriesSettings(const LineChartDefaultSeriesSettings& value) { SetDefaultSeriesSettings(value); return *this;}
-
-    /**
-     * <p>The options that determine the default presentation of all line series in
-     * <code>LineChartVisual</code>.</p>
-     */
-    inline LineChartConfiguration& WithDefaultSeriesSettings(LineChartDefaultSeriesSettings&& value) { SetDefaultSeriesSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The series item configuration of a line chart.</p>
      */
-    inline const Aws::Vector<SeriesItem>& GetSeries() const{ return m_series; }
-
-    /**
-     * <p>The series item configuration of a line chart.</p>
-     */
+    inline const Aws::Vector<SeriesItem>& GetSeries() const { return m_series; }
     inline bool SeriesHasBeenSet() const { return m_seriesHasBeenSet; }
+    template<typename SeriesT = Aws::Vector<SeriesItem>>
+    void SetSeries(SeriesT&& value) { m_seriesHasBeenSet = true; m_series = std::forward<SeriesT>(value); }
+    template<typename SeriesT = Aws::Vector<SeriesItem>>
+    LineChartConfiguration& WithSeries(SeriesT&& value) { SetSeries(std::forward<SeriesT>(value)); return *this;}
+    template<typename SeriesT = SeriesItem>
+    LineChartConfiguration& AddSeries(SeriesT&& value) { m_seriesHasBeenSet = true; m_series.emplace_back(std::forward<SeriesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The series item configuration of a line chart.</p>
-     */
-    inline void SetSeries(const Aws::Vector<SeriesItem>& value) { m_seriesHasBeenSet = true; m_series = value; }
-
-    /**
-     * <p>The series item configuration of a line chart.</p>
-     */
-    inline void SetSeries(Aws::Vector<SeriesItem>&& value) { m_seriesHasBeenSet = true; m_series = std::move(value); }
-
-    /**
-     * <p>The series item configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithSeries(const Aws::Vector<SeriesItem>& value) { SetSeries(value); return *this;}
-
-    /**
-     * <p>The series item configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithSeries(Aws::Vector<SeriesItem>&& value) { SetSeries(std::move(value)); return *this;}
-
-    /**
-     * <p>The series item configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& AddSeries(const SeriesItem& value) { m_seriesHasBeenSet = true; m_series.push_back(value); return *this; }
-
-    /**
-     * <p>The series item configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& AddSeries(SeriesItem&& value) { m_seriesHasBeenSet = true; m_series.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The legend configuration of a line chart.</p>
      */
-    inline const LegendOptions& GetLegend() const{ return m_legend; }
-
-    /**
-     * <p>The legend configuration of a line chart.</p>
-     */
+    inline const LegendOptions& GetLegend() const { return m_legend; }
     inline bool LegendHasBeenSet() const { return m_legendHasBeenSet; }
+    template<typename LegendT = LegendOptions>
+    void SetLegend(LegendT&& value) { m_legendHasBeenSet = true; m_legend = std::forward<LegendT>(value); }
+    template<typename LegendT = LegendOptions>
+    LineChartConfiguration& WithLegend(LegendT&& value) { SetLegend(std::forward<LegendT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The legend configuration of a line chart.</p>
-     */
-    inline void SetLegend(const LegendOptions& value) { m_legendHasBeenSet = true; m_legend = value; }
-
-    /**
-     * <p>The legend configuration of a line chart.</p>
-     */
-    inline void SetLegend(LegendOptions&& value) { m_legendHasBeenSet = true; m_legend = std::move(value); }
-
-    /**
-     * <p>The legend configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithLegend(const LegendOptions& value) { SetLegend(value); return *this;}
-
-    /**
-     * <p>The legend configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithLegend(LegendOptions&& value) { SetLegend(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data label configuration of a line chart.</p>
      */
-    inline const DataLabelOptions& GetDataLabels() const{ return m_dataLabels; }
-
-    /**
-     * <p>The data label configuration of a line chart.</p>
-     */
+    inline const DataLabelOptions& GetDataLabels() const { return m_dataLabels; }
     inline bool DataLabelsHasBeenSet() const { return m_dataLabelsHasBeenSet; }
+    template<typename DataLabelsT = DataLabelOptions>
+    void SetDataLabels(DataLabelsT&& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = std::forward<DataLabelsT>(value); }
+    template<typename DataLabelsT = DataLabelOptions>
+    LineChartConfiguration& WithDataLabels(DataLabelsT&& value) { SetDataLabels(std::forward<DataLabelsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The data label configuration of a line chart.</p>
-     */
-    inline void SetDataLabels(const DataLabelOptions& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = value; }
-
-    /**
-     * <p>The data label configuration of a line chart.</p>
-     */
-    inline void SetDataLabels(DataLabelOptions&& value) { m_dataLabelsHasBeenSet = true; m_dataLabels = std::move(value); }
-
-    /**
-     * <p>The data label configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithDataLabels(const DataLabelOptions& value) { SetDataLabels(value); return *this;}
-
-    /**
-     * <p>The data label configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithDataLabels(DataLabelOptions&& value) { SetDataLabels(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reference lines configuration of a line chart.</p>
      */
-    inline const Aws::Vector<ReferenceLine>& GetReferenceLines() const{ return m_referenceLines; }
-
-    /**
-     * <p>The reference lines configuration of a line chart.</p>
-     */
+    inline const Aws::Vector<ReferenceLine>& GetReferenceLines() const { return m_referenceLines; }
     inline bool ReferenceLinesHasBeenSet() const { return m_referenceLinesHasBeenSet; }
+    template<typename ReferenceLinesT = Aws::Vector<ReferenceLine>>
+    void SetReferenceLines(ReferenceLinesT&& value) { m_referenceLinesHasBeenSet = true; m_referenceLines = std::forward<ReferenceLinesT>(value); }
+    template<typename ReferenceLinesT = Aws::Vector<ReferenceLine>>
+    LineChartConfiguration& WithReferenceLines(ReferenceLinesT&& value) { SetReferenceLines(std::forward<ReferenceLinesT>(value)); return *this;}
+    template<typename ReferenceLinesT = ReferenceLine>
+    LineChartConfiguration& AddReferenceLines(ReferenceLinesT&& value) { m_referenceLinesHasBeenSet = true; m_referenceLines.emplace_back(std::forward<ReferenceLinesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The reference lines configuration of a line chart.</p>
-     */
-    inline void SetReferenceLines(const Aws::Vector<ReferenceLine>& value) { m_referenceLinesHasBeenSet = true; m_referenceLines = value; }
-
-    /**
-     * <p>The reference lines configuration of a line chart.</p>
-     */
-    inline void SetReferenceLines(Aws::Vector<ReferenceLine>&& value) { m_referenceLinesHasBeenSet = true; m_referenceLines = std::move(value); }
-
-    /**
-     * <p>The reference lines configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithReferenceLines(const Aws::Vector<ReferenceLine>& value) { SetReferenceLines(value); return *this;}
-
-    /**
-     * <p>The reference lines configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithReferenceLines(Aws::Vector<ReferenceLine>&& value) { SetReferenceLines(std::move(value)); return *this;}
-
-    /**
-     * <p>The reference lines configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& AddReferenceLines(const ReferenceLine& value) { m_referenceLinesHasBeenSet = true; m_referenceLines.push_back(value); return *this; }
-
-    /**
-     * <p>The reference lines configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& AddReferenceLines(ReferenceLine&& value) { m_referenceLinesHasBeenSet = true; m_referenceLines.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The tooltip configuration of a line chart.</p>
      */
-    inline const TooltipOptions& GetTooltip() const{ return m_tooltip; }
-
-    /**
-     * <p>The tooltip configuration of a line chart.</p>
-     */
+    inline const TooltipOptions& GetTooltip() const { return m_tooltip; }
     inline bool TooltipHasBeenSet() const { return m_tooltipHasBeenSet; }
+    template<typename TooltipT = TooltipOptions>
+    void SetTooltip(TooltipT&& value) { m_tooltipHasBeenSet = true; m_tooltip = std::forward<TooltipT>(value); }
+    template<typename TooltipT = TooltipOptions>
+    LineChartConfiguration& WithTooltip(TooltipT&& value) { SetTooltip(std::forward<TooltipT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The tooltip configuration of a line chart.</p>
-     */
-    inline void SetTooltip(const TooltipOptions& value) { m_tooltipHasBeenSet = true; m_tooltip = value; }
-
-    /**
-     * <p>The tooltip configuration of a line chart.</p>
-     */
-    inline void SetTooltip(TooltipOptions&& value) { m_tooltipHasBeenSet = true; m_tooltip = std::move(value); }
-
-    /**
-     * <p>The tooltip configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithTooltip(const TooltipOptions& value) { SetTooltip(value); return *this;}
-
-    /**
-     * <p>The tooltip configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithTooltip(TooltipOptions&& value) { SetTooltip(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The default configuration of a line chart's contribution analysis.</p>
      */
-    inline const Aws::Vector<ContributionAnalysisDefault>& GetContributionAnalysisDefaults() const{ return m_contributionAnalysisDefaults; }
-
-    /**
-     * <p>The default configuration of a line chart's contribution analysis.</p>
-     */
+    inline const Aws::Vector<ContributionAnalysisDefault>& GetContributionAnalysisDefaults() const { return m_contributionAnalysisDefaults; }
     inline bool ContributionAnalysisDefaultsHasBeenSet() const { return m_contributionAnalysisDefaultsHasBeenSet; }
+    template<typename ContributionAnalysisDefaultsT = Aws::Vector<ContributionAnalysisDefault>>
+    void SetContributionAnalysisDefaults(ContributionAnalysisDefaultsT&& value) { m_contributionAnalysisDefaultsHasBeenSet = true; m_contributionAnalysisDefaults = std::forward<ContributionAnalysisDefaultsT>(value); }
+    template<typename ContributionAnalysisDefaultsT = Aws::Vector<ContributionAnalysisDefault>>
+    LineChartConfiguration& WithContributionAnalysisDefaults(ContributionAnalysisDefaultsT&& value) { SetContributionAnalysisDefaults(std::forward<ContributionAnalysisDefaultsT>(value)); return *this;}
+    template<typename ContributionAnalysisDefaultsT = ContributionAnalysisDefault>
+    LineChartConfiguration& AddContributionAnalysisDefaults(ContributionAnalysisDefaultsT&& value) { m_contributionAnalysisDefaultsHasBeenSet = true; m_contributionAnalysisDefaults.emplace_back(std::forward<ContributionAnalysisDefaultsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The default configuration of a line chart's contribution analysis.</p>
-     */
-    inline void SetContributionAnalysisDefaults(const Aws::Vector<ContributionAnalysisDefault>& value) { m_contributionAnalysisDefaultsHasBeenSet = true; m_contributionAnalysisDefaults = value; }
-
-    /**
-     * <p>The default configuration of a line chart's contribution analysis.</p>
-     */
-    inline void SetContributionAnalysisDefaults(Aws::Vector<ContributionAnalysisDefault>&& value) { m_contributionAnalysisDefaultsHasBeenSet = true; m_contributionAnalysisDefaults = std::move(value); }
-
-    /**
-     * <p>The default configuration of a line chart's contribution analysis.</p>
-     */
-    inline LineChartConfiguration& WithContributionAnalysisDefaults(const Aws::Vector<ContributionAnalysisDefault>& value) { SetContributionAnalysisDefaults(value); return *this;}
-
-    /**
-     * <p>The default configuration of a line chart's contribution analysis.</p>
-     */
-    inline LineChartConfiguration& WithContributionAnalysisDefaults(Aws::Vector<ContributionAnalysisDefault>&& value) { SetContributionAnalysisDefaults(std::move(value)); return *this;}
-
-    /**
-     * <p>The default configuration of a line chart's contribution analysis.</p>
-     */
-    inline LineChartConfiguration& AddContributionAnalysisDefaults(const ContributionAnalysisDefault& value) { m_contributionAnalysisDefaultsHasBeenSet = true; m_contributionAnalysisDefaults.push_back(value); return *this; }
-
-    /**
-     * <p>The default configuration of a line chart's contribution analysis.</p>
-     */
-    inline LineChartConfiguration& AddContributionAnalysisDefaults(ContributionAnalysisDefault&& value) { m_contributionAnalysisDefaultsHasBeenSet = true; m_contributionAnalysisDefaults.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The visual palette configuration of a line chart.</p>
      */
-    inline const VisualPalette& GetVisualPalette() const{ return m_visualPalette; }
-
-    /**
-     * <p>The visual palette configuration of a line chart.</p>
-     */
+    inline const VisualPalette& GetVisualPalette() const { return m_visualPalette; }
     inline bool VisualPaletteHasBeenSet() const { return m_visualPaletteHasBeenSet; }
+    template<typename VisualPaletteT = VisualPalette>
+    void SetVisualPalette(VisualPaletteT&& value) { m_visualPaletteHasBeenSet = true; m_visualPalette = std::forward<VisualPaletteT>(value); }
+    template<typename VisualPaletteT = VisualPalette>
+    LineChartConfiguration& WithVisualPalette(VisualPaletteT&& value) { SetVisualPalette(std::forward<VisualPaletteT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The visual palette configuration of a line chart.</p>
+     * <p>The general visual interactions setup for a visual.</p>
      */
-    inline void SetVisualPalette(const VisualPalette& value) { m_visualPaletteHasBeenSet = true; m_visualPalette = value; }
-
-    /**
-     * <p>The visual palette configuration of a line chart.</p>
-     */
-    inline void SetVisualPalette(VisualPalette&& value) { m_visualPaletteHasBeenSet = true; m_visualPalette = std::move(value); }
-
-    /**
-     * <p>The visual palette configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithVisualPalette(const VisualPalette& value) { SetVisualPalette(value); return *this;}
-
-    /**
-     * <p>The visual palette configuration of a line chart.</p>
-     */
-    inline LineChartConfiguration& WithVisualPalette(VisualPalette&& value) { SetVisualPalette(std::move(value)); return *this;}
-
+    inline const VisualInteractionOptions& GetInteractions() const { return m_interactions; }
+    inline bool InteractionsHasBeenSet() const { return m_interactionsHasBeenSet; }
+    template<typename InteractionsT = VisualInteractionOptions>
+    void SetInteractions(InteractionsT&& value) { m_interactionsHasBeenSet = true; m_interactions = std::forward<InteractionsT>(value); }
+    template<typename InteractionsT = VisualInteractionOptions>
+    LineChartConfiguration& WithInteractions(InteractionsT&& value) { SetInteractions(std::forward<InteractionsT>(value)); return *this;}
+    ///@}
   private:
 
     LineChartFieldWells m_fieldWells;
@@ -724,7 +323,7 @@ namespace Model
     Aws::Vector<ForecastConfiguration> m_forecastConfigurations;
     bool m_forecastConfigurationsHasBeenSet = false;
 
-    LineChartType m_type;
+    LineChartType m_type{LineChartType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     SmallMultiplesOptions m_smallMultiplesOptions;
@@ -774,6 +373,9 @@ namespace Model
 
     VisualPalette m_visualPalette;
     bool m_visualPaletteHasBeenSet = false;
+
+    VisualInteractionOptions m_interactions;
+    bool m_interactionsHasBeenSet = false;
   };
 
 } // namespace Model

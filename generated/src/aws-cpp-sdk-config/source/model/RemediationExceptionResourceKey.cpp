@@ -18,15 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-RemediationExceptionResourceKey::RemediationExceptionResourceKey() : 
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdHasBeenSet(false)
-{
-}
-
-RemediationExceptionResourceKey::RemediationExceptionResourceKey(JsonView jsonValue) : 
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdHasBeenSet(false)
+RemediationExceptionResourceKey::RemediationExceptionResourceKey(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RemediationExceptionResourceKey& RemediationExceptionResourceKey::operator =(Jso
   if(jsonValue.ValueExists("ResourceType"))
   {
     m_resourceType = jsonValue.GetString("ResourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceId"))
   {
     m_resourceId = jsonValue.GetString("ResourceId");
-
     m_resourceIdHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -10,24 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-CreateServerlessCacheRequest::CreateServerlessCacheRequest() : 
-    m_serverlessCacheNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_majorEngineVersionHasBeenSet(false),
-    m_cacheUsageLimitsHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_snapshotArnsToRestoreHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_userGroupIdHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_snapshotRetentionLimit(0),
-    m_snapshotRetentionLimitHasBeenSet(false),
-    m_dailySnapshotTimeHasBeenSet(false)
-{
-}
-
 Aws::String CreateServerlessCacheRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -64,33 +46,54 @@ Aws::String CreateServerlessCacheRequest::SerializePayload() const
 
   if(m_securityGroupIdsHasBeenSet)
   {
-    unsigned securityGroupIdsCount = 1;
-    for(auto& item : m_securityGroupIds)
+    if (m_securityGroupIds.empty())
     {
-      ss << "SecurityGroupIds.member." << securityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      securityGroupIdsCount++;
+      ss << "SecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned securityGroupIdsCount = 1;
+      for(auto& item : m_securityGroupIds)
+      {
+        ss << "SecurityGroupIds.SecurityGroupId." << securityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        securityGroupIdsCount++;
+      }
     }
   }
 
   if(m_snapshotArnsToRestoreHasBeenSet)
   {
-    unsigned snapshotArnsToRestoreCount = 1;
-    for(auto& item : m_snapshotArnsToRestore)
+    if (m_snapshotArnsToRestore.empty())
     {
-      ss << "SnapshotArnsToRestore.member." << snapshotArnsToRestoreCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      snapshotArnsToRestoreCount++;
+      ss << "SnapshotArnsToRestore=&";
+    }
+    else
+    {
+      unsigned snapshotArnsToRestoreCount = 1;
+      for(auto& item : m_snapshotArnsToRestore)
+      {
+        ss << "SnapshotArnsToRestore.SnapshotArn." << snapshotArnsToRestoreCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        snapshotArnsToRestoreCount++;
+      }
     }
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
@@ -101,12 +104,19 @@ Aws::String CreateServerlessCacheRequest::SerializePayload() const
 
   if(m_subnetIdsHasBeenSet)
   {
-    unsigned subnetIdsCount = 1;
-    for(auto& item : m_subnetIds)
+    if (m_subnetIds.empty())
     {
-      ss << "SubnetIds.member." << subnetIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      subnetIdsCount++;
+      ss << "SubnetIds=&";
+    }
+    else
+    {
+      unsigned subnetIdsCount = 1;
+      for(auto& item : m_subnetIds)
+      {
+        ss << "SubnetIds.SubnetId." << subnetIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        subnetIdsCount++;
+      }
     }
   }
 

@@ -25,7 +25,7 @@ namespace Model
   class ListAssistantAssociationsRequest : public QConnectRequest
   {
   public:
-    AWS_QCONNECT_API ListAssistantAssociationsRequest();
+    AWS_QCONNECT_API ListAssistantAssociationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,134 +38,51 @@ namespace Model
     AWS_QCONNECT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
-    /**
-     * <p>The identifier of the Amazon Q assistant. Can be either the ID or the ARN.
-     * URLs cannot contain the ARN.</p>
-     */
-    inline const Aws::String& GetAssistantId() const{ return m_assistantId; }
-
-    /**
-     * <p>The identifier of the Amazon Q assistant. Can be either the ID or the ARN.
-     * URLs cannot contain the ARN.</p>
-     */
-    inline bool AssistantIdHasBeenSet() const { return m_assistantIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the Amazon Q assistant. Can be either the ID or the ARN.
-     * URLs cannot contain the ARN.</p>
-     */
-    inline void SetAssistantId(const Aws::String& value) { m_assistantIdHasBeenSet = true; m_assistantId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Q assistant. Can be either the ID or the ARN.
-     * URLs cannot contain the ARN.</p>
-     */
-    inline void SetAssistantId(Aws::String&& value) { m_assistantIdHasBeenSet = true; m_assistantId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Q assistant. Can be either the ID or the ARN.
-     * URLs cannot contain the ARN.</p>
-     */
-    inline void SetAssistantId(const char* value) { m_assistantIdHasBeenSet = true; m_assistantId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Q assistant. Can be either the ID or the ARN.
-     * URLs cannot contain the ARN.</p>
-     */
-    inline ListAssistantAssociationsRequest& WithAssistantId(const Aws::String& value) { SetAssistantId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q assistant. Can be either the ID or the ARN.
-     * URLs cannot contain the ARN.</p>
-     */
-    inline ListAssistantAssociationsRequest& WithAssistantId(Aws::String&& value) { SetAssistantId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q assistant. Can be either the ID or the ARN.
-     * URLs cannot contain the ARN.</p>
-     */
-    inline ListAssistantAssociationsRequest& WithAssistantId(const char* value) { SetAssistantId(value); return *this;}
-
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
-    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
-    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
-    inline ListAssistantAssociationsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The token for the next set of results. Use the value returned in the previous
      * response in the next request to retrieve the next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAssistantAssociationsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
+     * <p>The maximum number of results to return per page.</p>
      */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
+    inline int GetMaxResults() const { return m_maxResults; }
+    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline ListAssistantAssociationsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
+     * <p>The identifier of the Amazon Q in Connect assistant. Can be either the ID or
+     * the ARN. URLs cannot contain the ARN.</p>
      */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListAssistantAssociationsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListAssistantAssociationsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListAssistantAssociationsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    inline const Aws::String& GetAssistantId() const { return m_assistantId; }
+    inline bool AssistantIdHasBeenSet() const { return m_assistantIdHasBeenSet; }
+    template<typename AssistantIdT = Aws::String>
+    void SetAssistantId(AssistantIdT&& value) { m_assistantIdHasBeenSet = true; m_assistantId = std::forward<AssistantIdT>(value); }
+    template<typename AssistantIdT = Aws::String>
+    ListAssistantAssociationsRequest& WithAssistantId(AssistantIdT&& value) { SetAssistantId(std::forward<AssistantIdT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_assistantId;
-    bool m_assistantIdHasBeenSet = false;
-
-    int m_maxResults;
-    bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
+
+    int m_maxResults{0};
+    bool m_maxResultsHasBeenSet = false;
+
+    Aws::String m_assistantId;
+    bool m_assistantIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -33,159 +33,50 @@ namespace Model
   class S3LogDestinationParameters
   {
   public:
-    AWS_PIPES_API S3LogDestinationParameters();
+    AWS_PIPES_API S3LogDestinationParameters() = default;
     AWS_PIPES_API S3LogDestinationParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API S3LogDestinationParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the name of the Amazon S3 bucket to which EventBridge delivers the
      * log records for the pipe.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>Specifies the name of the Amazon S3 bucket to which EventBridge delivers the
-     * log records for the pipe.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    S3LogDestinationParameters& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the name of the Amazon S3 bucket to which EventBridge delivers the
-     * log records for the pipe.</p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>Specifies the name of the Amazon S3 bucket to which EventBridge delivers the
-     * log records for the pipe.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the Amazon S3 bucket to which EventBridge delivers the
-     * log records for the pipe.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>Specifies the name of the Amazon S3 bucket to which EventBridge delivers the
-     * log records for the pipe.</p>
-     */
-    inline S3LogDestinationParameters& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the Amazon S3 bucket to which EventBridge delivers the
-     * log records for the pipe.</p>
-     */
-    inline S3LogDestinationParameters& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the Amazon S3 bucket to which EventBridge delivers the
-     * log records for the pipe.</p>
-     */
-    inline S3LogDestinationParameters& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the Amazon Web Services account that owns the Amazon S3 bucket to
      * which EventBridge delivers the log records for the pipe.</p>
      */
-    inline const Aws::String& GetBucketOwner() const{ return m_bucketOwner; }
-
-    /**
-     * <p>Specifies the Amazon Web Services account that owns the Amazon S3 bucket to
-     * which EventBridge delivers the log records for the pipe.</p>
-     */
+    inline const Aws::String& GetBucketOwner() const { return m_bucketOwner; }
     inline bool BucketOwnerHasBeenSet() const { return m_bucketOwnerHasBeenSet; }
+    template<typename BucketOwnerT = Aws::String>
+    void SetBucketOwner(BucketOwnerT&& value) { m_bucketOwnerHasBeenSet = true; m_bucketOwner = std::forward<BucketOwnerT>(value); }
+    template<typename BucketOwnerT = Aws::String>
+    S3LogDestinationParameters& WithBucketOwner(BucketOwnerT&& value) { SetBucketOwner(std::forward<BucketOwnerT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Specifies the Amazon Web Services account that owns the Amazon S3 bucket to
-     * which EventBridge delivers the log records for the pipe.</p>
+     * <p>How EventBridge should format the log records.</p> <p>EventBridge currently
+     * only supports <code>json</code> formatting.</p>
      */
-    inline void SetBucketOwner(const Aws::String& value) { m_bucketOwnerHasBeenSet = true; m_bucketOwner = value; }
-
-    /**
-     * <p>Specifies the Amazon Web Services account that owns the Amazon S3 bucket to
-     * which EventBridge delivers the log records for the pipe.</p>
-     */
-    inline void SetBucketOwner(Aws::String&& value) { m_bucketOwnerHasBeenSet = true; m_bucketOwner = std::move(value); }
-
-    /**
-     * <p>Specifies the Amazon Web Services account that owns the Amazon S3 bucket to
-     * which EventBridge delivers the log records for the pipe.</p>
-     */
-    inline void SetBucketOwner(const char* value) { m_bucketOwnerHasBeenSet = true; m_bucketOwner.assign(value); }
-
-    /**
-     * <p>Specifies the Amazon Web Services account that owns the Amazon S3 bucket to
-     * which EventBridge delivers the log records for the pipe.</p>
-     */
-    inline S3LogDestinationParameters& WithBucketOwner(const Aws::String& value) { SetBucketOwner(value); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Web Services account that owns the Amazon S3 bucket to
-     * which EventBridge delivers the log records for the pipe.</p>
-     */
-    inline S3LogDestinationParameters& WithBucketOwner(Aws::String&& value) { SetBucketOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the Amazon Web Services account that owns the Amazon S3 bucket to
-     * which EventBridge delivers the log records for the pipe.</p>
-     */
-    inline S3LogDestinationParameters& WithBucketOwner(const char* value) { SetBucketOwner(value); return *this;}
-
-
-    /**
-     * <p>How EventBridge should format the log records.</p> <ul> <li> <p>
-     * <code>json</code>: JSON </p> </li> <li> <p> <code>plain</code>: Plain text</p>
-     * </li> <li> <p> <code>w3c</code>: <a href="https://www.w3.org/TR/WD-logfile">W3C
-     * extended logging file format</a> </p> </li> </ul>
-     */
-    inline const S3OutputFormat& GetOutputFormat() const{ return m_outputFormat; }
-
-    /**
-     * <p>How EventBridge should format the log records.</p> <ul> <li> <p>
-     * <code>json</code>: JSON </p> </li> <li> <p> <code>plain</code>: Plain text</p>
-     * </li> <li> <p> <code>w3c</code>: <a href="https://www.w3.org/TR/WD-logfile">W3C
-     * extended logging file format</a> </p> </li> </ul>
-     */
+    inline S3OutputFormat GetOutputFormat() const { return m_outputFormat; }
     inline bool OutputFormatHasBeenSet() const { return m_outputFormatHasBeenSet; }
+    inline void SetOutputFormat(S3OutputFormat value) { m_outputFormatHasBeenSet = true; m_outputFormat = value; }
+    inline S3LogDestinationParameters& WithOutputFormat(S3OutputFormat value) { SetOutputFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>How EventBridge should format the log records.</p> <ul> <li> <p>
-     * <code>json</code>: JSON </p> </li> <li> <p> <code>plain</code>: Plain text</p>
-     * </li> <li> <p> <code>w3c</code>: <a href="https://www.w3.org/TR/WD-logfile">W3C
-     * extended logging file format</a> </p> </li> </ul>
-     */
-    inline void SetOutputFormat(const S3OutputFormat& value) { m_outputFormatHasBeenSet = true; m_outputFormat = value; }
-
-    /**
-     * <p>How EventBridge should format the log records.</p> <ul> <li> <p>
-     * <code>json</code>: JSON </p> </li> <li> <p> <code>plain</code>: Plain text</p>
-     * </li> <li> <p> <code>w3c</code>: <a href="https://www.w3.org/TR/WD-logfile">W3C
-     * extended logging file format</a> </p> </li> </ul>
-     */
-    inline void SetOutputFormat(S3OutputFormat&& value) { m_outputFormatHasBeenSet = true; m_outputFormat = std::move(value); }
-
-    /**
-     * <p>How EventBridge should format the log records.</p> <ul> <li> <p>
-     * <code>json</code>: JSON </p> </li> <li> <p> <code>plain</code>: Plain text</p>
-     * </li> <li> <p> <code>w3c</code>: <a href="https://www.w3.org/TR/WD-logfile">W3C
-     * extended logging file format</a> </p> </li> </ul>
-     */
-    inline S3LogDestinationParameters& WithOutputFormat(const S3OutputFormat& value) { SetOutputFormat(value); return *this;}
-
-    /**
-     * <p>How EventBridge should format the log records.</p> <ul> <li> <p>
-     * <code>json</code>: JSON </p> </li> <li> <p> <code>plain</code>: Plain text</p>
-     * </li> <li> <p> <code>w3c</code>: <a href="https://www.w3.org/TR/WD-logfile">W3C
-     * extended logging file format</a> </p> </li> </ul>
-     */
-    inline S3LogDestinationParameters& WithOutputFormat(S3OutputFormat&& value) { SetOutputFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies any prefix text with which to begin Amazon S3 log object names.</p>
      * <p>You can use prefixes to organize the data that you store in Amazon S3
@@ -196,92 +87,13 @@ namespace Model
      * objects using prefixes</a> in the <i>Amazon Simple Storage Service User
      * Guide</i>.</p>
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>Specifies any prefix text with which to begin Amazon S3 log object names.</p>
-     * <p>You can use prefixes to organize the data that you store in Amazon S3
-     * buckets. A prefix is a string of characters at the beginning of the object key
-     * name. A prefix can be any length, subject to the maximum length of the object
-     * key name (1,024 bytes). For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html">Organizing
-     * objects using prefixes</a> in the <i>Amazon Simple Storage Service User
-     * Guide</i>.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
-
-    /**
-     * <p>Specifies any prefix text with which to begin Amazon S3 log object names.</p>
-     * <p>You can use prefixes to organize the data that you store in Amazon S3
-     * buckets. A prefix is a string of characters at the beginning of the object key
-     * name. A prefix can be any length, subject to the maximum length of the object
-     * key name (1,024 bytes). For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html">Organizing
-     * objects using prefixes</a> in the <i>Amazon Simple Storage Service User
-     * Guide</i>.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>Specifies any prefix text with which to begin Amazon S3 log object names.</p>
-     * <p>You can use prefixes to organize the data that you store in Amazon S3
-     * buckets. A prefix is a string of characters at the beginning of the object key
-     * name. A prefix can be any length, subject to the maximum length of the object
-     * key name (1,024 bytes). For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html">Organizing
-     * objects using prefixes</a> in the <i>Amazon Simple Storage Service User
-     * Guide</i>.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>Specifies any prefix text with which to begin Amazon S3 log object names.</p>
-     * <p>You can use prefixes to organize the data that you store in Amazon S3
-     * buckets. A prefix is a string of characters at the beginning of the object key
-     * name. A prefix can be any length, subject to the maximum length of the object
-     * key name (1,024 bytes). For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html">Organizing
-     * objects using prefixes</a> in the <i>Amazon Simple Storage Service User
-     * Guide</i>.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>Specifies any prefix text with which to begin Amazon S3 log object names.</p>
-     * <p>You can use prefixes to organize the data that you store in Amazon S3
-     * buckets. A prefix is a string of characters at the beginning of the object key
-     * name. A prefix can be any length, subject to the maximum length of the object
-     * key name (1,024 bytes). For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html">Organizing
-     * objects using prefixes</a> in the <i>Amazon Simple Storage Service User
-     * Guide</i>.</p>
-     */
-    inline S3LogDestinationParameters& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>Specifies any prefix text with which to begin Amazon S3 log object names.</p>
-     * <p>You can use prefixes to organize the data that you store in Amazon S3
-     * buckets. A prefix is a string of characters at the beginning of the object key
-     * name. A prefix can be any length, subject to the maximum length of the object
-     * key name (1,024 bytes). For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html">Organizing
-     * objects using prefixes</a> in the <i>Amazon Simple Storage Service User
-     * Guide</i>.</p>
-     */
-    inline S3LogDestinationParameters& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies any prefix text with which to begin Amazon S3 log object names.</p>
-     * <p>You can use prefixes to organize the data that you store in Amazon S3
-     * buckets. A prefix is a string of characters at the beginning of the object key
-     * name. A prefix can be any length, subject to the maximum length of the object
-     * key name (1,024 bytes). For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-prefixes.html">Organizing
-     * objects using prefixes</a> in the <i>Amazon Simple Storage Service User
-     * Guide</i>.</p>
-     */
-    inline S3LogDestinationParameters& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    S3LogDestinationParameters& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;
@@ -290,7 +102,7 @@ namespace Model
     Aws::String m_bucketOwner;
     bool m_bucketOwnerHasBeenSet = false;
 
-    S3OutputFormat m_outputFormat;
+    S3OutputFormat m_outputFormat{S3OutputFormat::NOT_SET};
     bool m_outputFormatHasBeenSet = false;
 
     Aws::String m_prefix;

@@ -18,19 +18,7 @@ namespace EMR
 namespace Model
 {
 
-HadoopJarStepConfig::HadoopJarStepConfig() : 
-    m_propertiesHasBeenSet(false),
-    m_jarHasBeenSet(false),
-    m_mainClassHasBeenSet(false),
-    m_argsHasBeenSet(false)
-{
-}
-
-HadoopJarStepConfig::HadoopJarStepConfig(JsonView jsonValue) : 
-    m_propertiesHasBeenSet(false),
-    m_jarHasBeenSet(false),
-    m_mainClassHasBeenSet(false),
-    m_argsHasBeenSet(false)
+HadoopJarStepConfig::HadoopJarStepConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,21 +34,16 @@ HadoopJarStepConfig& HadoopJarStepConfig::operator =(JsonView jsonValue)
     }
     m_propertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Jar"))
   {
     m_jar = jsonValue.GetString("Jar");
-
     m_jarHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MainClass"))
   {
     m_mainClass = jsonValue.GetString("MainClass");
-
     m_mainClassHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Args"))
   {
     Aws::Utils::Array<JsonView> argsJsonList = jsonValue.GetArray("Args");
@@ -70,7 +53,6 @@ HadoopJarStepConfig& HadoopJarStepConfig::operator =(JsonView jsonValue)
     }
     m_argsHasBeenSet = true;
   }
-
   return *this;
 }
 

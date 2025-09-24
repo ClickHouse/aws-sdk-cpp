@@ -12,14 +12,6 @@ using namespace Aws::FIS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartExperimentRequest::StartExperimentRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_experimentTemplateIdHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String StartExperimentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -33,6 +25,12 @@ Aws::String StartExperimentRequest::SerializePayload() const
   if(m_experimentTemplateIdHasBeenSet)
   {
    payload.WithString("experimentTemplateId", m_experimentTemplateId);
+
+  }
+
+  if(m_experimentOptionsHasBeenSet)
+  {
+   payload.WithObject("experimentOptions", m_experimentOptions.Jsonize());
 
   }
 

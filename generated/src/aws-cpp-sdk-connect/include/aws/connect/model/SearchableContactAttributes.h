@@ -26,97 +26,51 @@ namespace Model
 {
 
   /**
-   * <p>A structure that defines searchable contact attributes which can be used to
-   * filter search results. </p><p><h3>See Also:</h3>   <a
+   * <p>A structure that defines search criteria based on user-defined contact
+   * attributes that are configured for contact search.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/connect-2017-08-08/SearchableContactAttributes">AWS
    * API Reference</a></p>
    */
   class SearchableContactAttributes
   {
   public:
-    AWS_CONNECT_API SearchableContactAttributes();
+    AWS_CONNECT_API SearchableContactAttributes() = default;
     AWS_CONNECT_API SearchableContactAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API SearchableContactAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The array of searhale contact attribute criteria</p>
+     * <p>The list of criteria based on user-defined contact attributes that are
+     * configured for contact search.</p>
      */
-    inline const Aws::Vector<SearchableContactAttributesCriteria>& GetCriteria() const{ return m_criteria; }
-
-    /**
-     * <p>The array of searhale contact attribute criteria</p>
-     */
+    inline const Aws::Vector<SearchableContactAttributesCriteria>& GetCriteria() const { return m_criteria; }
     inline bool CriteriaHasBeenSet() const { return m_criteriaHasBeenSet; }
+    template<typename CriteriaT = Aws::Vector<SearchableContactAttributesCriteria>>
+    void SetCriteria(CriteriaT&& value) { m_criteriaHasBeenSet = true; m_criteria = std::forward<CriteriaT>(value); }
+    template<typename CriteriaT = Aws::Vector<SearchableContactAttributesCriteria>>
+    SearchableContactAttributes& WithCriteria(CriteriaT&& value) { SetCriteria(std::forward<CriteriaT>(value)); return *this;}
+    template<typename CriteriaT = SearchableContactAttributesCriteria>
+    SearchableContactAttributes& AddCriteria(CriteriaT&& value) { m_criteriaHasBeenSet = true; m_criteria.emplace_back(std::forward<CriteriaT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The array of searhale contact attribute criteria</p>
+     * <p>The match type combining search criteria using multiple searchable contact
+     * attributes.</p>
      */
-    inline void SetCriteria(const Aws::Vector<SearchableContactAttributesCriteria>& value) { m_criteriaHasBeenSet = true; m_criteria = value; }
-
-    /**
-     * <p>The array of searhale contact attribute criteria</p>
-     */
-    inline void SetCriteria(Aws::Vector<SearchableContactAttributesCriteria>&& value) { m_criteriaHasBeenSet = true; m_criteria = std::move(value); }
-
-    /**
-     * <p>The array of searhale contact attribute criteria</p>
-     */
-    inline SearchableContactAttributes& WithCriteria(const Aws::Vector<SearchableContactAttributesCriteria>& value) { SetCriteria(value); return *this;}
-
-    /**
-     * <p>The array of searhale contact attribute criteria</p>
-     */
-    inline SearchableContactAttributes& WithCriteria(Aws::Vector<SearchableContactAttributesCriteria>&& value) { SetCriteria(std::move(value)); return *this;}
-
-    /**
-     * <p>The array of searhale contact attribute criteria</p>
-     */
-    inline SearchableContactAttributes& AddCriteria(const SearchableContactAttributesCriteria& value) { m_criteriaHasBeenSet = true; m_criteria.push_back(value); return *this; }
-
-    /**
-     * <p>The array of searhale contact attribute criteria</p>
-     */
-    inline SearchableContactAttributes& AddCriteria(SearchableContactAttributesCriteria&& value) { m_criteriaHasBeenSet = true; m_criteria.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The match type of multiple searchable contact attributes criteria.</p>
-     */
-    inline const SearchContactsMatchType& GetMatchType() const{ return m_matchType; }
-
-    /**
-     * <p>The match type of multiple searchable contact attributes criteria.</p>
-     */
+    inline SearchContactsMatchType GetMatchType() const { return m_matchType; }
     inline bool MatchTypeHasBeenSet() const { return m_matchTypeHasBeenSet; }
-
-    /**
-     * <p>The match type of multiple searchable contact attributes criteria.</p>
-     */
-    inline void SetMatchType(const SearchContactsMatchType& value) { m_matchTypeHasBeenSet = true; m_matchType = value; }
-
-    /**
-     * <p>The match type of multiple searchable contact attributes criteria.</p>
-     */
-    inline void SetMatchType(SearchContactsMatchType&& value) { m_matchTypeHasBeenSet = true; m_matchType = std::move(value); }
-
-    /**
-     * <p>The match type of multiple searchable contact attributes criteria.</p>
-     */
-    inline SearchableContactAttributes& WithMatchType(const SearchContactsMatchType& value) { SetMatchType(value); return *this;}
-
-    /**
-     * <p>The match type of multiple searchable contact attributes criteria.</p>
-     */
-    inline SearchableContactAttributes& WithMatchType(SearchContactsMatchType&& value) { SetMatchType(std::move(value)); return *this;}
-
+    inline void SetMatchType(SearchContactsMatchType value) { m_matchTypeHasBeenSet = true; m_matchType = value; }
+    inline SearchableContactAttributes& WithMatchType(SearchContactsMatchType value) { SetMatchType(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<SearchableContactAttributesCriteria> m_criteria;
     bool m_criteriaHasBeenSet = false;
 
-    SearchContactsMatchType m_matchType;
+    SearchContactsMatchType m_matchType{SearchContactsMatchType::NOT_SET};
     bool m_matchTypeHasBeenSet = false;
   };
 

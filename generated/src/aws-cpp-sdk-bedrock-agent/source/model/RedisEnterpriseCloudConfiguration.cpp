@@ -18,19 +18,7 @@ namespace BedrockAgent
 namespace Model
 {
 
-RedisEnterpriseCloudConfiguration::RedisEnterpriseCloudConfiguration() : 
-    m_endpointHasBeenSet(false),
-    m_vectorIndexNameHasBeenSet(false),
-    m_credentialsSecretArnHasBeenSet(false),
-    m_fieldMappingHasBeenSet(false)
-{
-}
-
-RedisEnterpriseCloudConfiguration::RedisEnterpriseCloudConfiguration(JsonView jsonValue) : 
-    m_endpointHasBeenSet(false),
-    m_vectorIndexNameHasBeenSet(false),
-    m_credentialsSecretArnHasBeenSet(false),
-    m_fieldMappingHasBeenSet(false)
+RedisEnterpriseCloudConfiguration::RedisEnterpriseCloudConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ RedisEnterpriseCloudConfiguration& RedisEnterpriseCloudConfiguration::operator =
   if(jsonValue.ValueExists("endpoint"))
   {
     m_endpoint = jsonValue.GetString("endpoint");
-
     m_endpointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vectorIndexName"))
   {
     m_vectorIndexName = jsonValue.GetString("vectorIndexName");
-
     m_vectorIndexNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("credentialsSecretArn"))
   {
     m_credentialsSecretArn = jsonValue.GetString("credentialsSecretArn");
-
     m_credentialsSecretArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fieldMapping"))
   {
     m_fieldMapping = jsonValue.GetObject("fieldMapping");
-
     m_fieldMappingHasBeenSet = true;
   }
-
   return *this;
 }
 

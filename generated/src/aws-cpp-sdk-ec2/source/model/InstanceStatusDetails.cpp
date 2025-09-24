@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceStatusDetails::InstanceStatusDetails() : 
-    m_impairedSinceHasBeenSet(false),
-    m_name(StatusName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_status(StatusType::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-InstanceStatusDetails::InstanceStatusDetails(const XmlNode& xmlNode) : 
-    m_impairedSinceHasBeenSet(false),
-    m_name(StatusName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_status(StatusType::NOT_SET),
-    m_statusHasBeenSet(false)
+InstanceStatusDetails::InstanceStatusDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -54,13 +40,13 @@ InstanceStatusDetails& InstanceStatusDetails::operator =(const XmlNode& xmlNode)
     XmlNode nameNode = resultNode.FirstChild("name");
     if(!nameNode.IsNull())
     {
-      m_name = StatusNameMapper::GetStatusNameForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nameNode.GetText()).c_str()).c_str());
+      m_name = StatusNameMapper::GetStatusNameForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nameNode.GetText()).c_str()));
       m_nameHasBeenSet = true;
     }
     XmlNode statusNode = resultNode.FirstChild("status");
     if(!statusNode.IsNull())
     {
-      m_status = StatusTypeMapper::GetStatusTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = StatusTypeMapper::GetStatusTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
   }
@@ -77,12 +63,12 @@ void InstanceStatusDetails::OutputToStream(Aws::OStream& oStream, const char* lo
 
   if(m_nameHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Name=" << StatusNameMapper::GetNameForStatusName(m_name) << "&";
+      oStream << location << index << locationValue << ".Name=" << StringUtils::URLEncode(StatusNameMapper::GetNameForStatusName(m_name)) << "&";
   }
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << StatusTypeMapper::GetNameForStatusType(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(StatusTypeMapper::GetNameForStatusType(m_status)) << "&";
   }
 
 }
@@ -95,11 +81,11 @@ void InstanceStatusDetails::OutputToStream(Aws::OStream& oStream, const char* lo
   }
   if(m_nameHasBeenSet)
   {
-      oStream << location << ".Name=" << StatusNameMapper::GetNameForStatusName(m_name) << "&";
+      oStream << location << ".Name=" << StringUtils::URLEncode(StatusNameMapper::GetNameForStatusName(m_name)) << "&";
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << StatusTypeMapper::GetNameForStatusType(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(StatusTypeMapper::GetNameForStatusType(m_status)) << "&";
   }
 }
 

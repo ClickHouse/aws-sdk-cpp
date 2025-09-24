@@ -33,124 +33,57 @@ namespace Model
   class AttachmentReference
   {
   public:
-    AWS_CONNECT_API AttachmentReference();
+    AWS_CONNECT_API AttachmentReference() = default;
     AWS_CONNECT_API AttachmentReference(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API AttachmentReference& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Identifier of the attachment reference.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Identifier of the attachment reference.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AttachmentReference& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identifier of the attachment reference.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Identifier of the attachment reference.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Identifier of the attachment reference.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Identifier of the attachment reference.</p>
-     */
-    inline AttachmentReference& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Identifier of the attachment reference.</p>
-     */
-    inline AttachmentReference& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Identifier of the attachment reference.</p>
-     */
-    inline AttachmentReference& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The location path of the attachment reference.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The location path of the attachment reference.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    AttachmentReference& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location path of the attachment reference.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The location path of the attachment reference.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The location path of the attachment reference.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The location path of the attachment reference.</p>
-     */
-    inline AttachmentReference& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The location path of the attachment reference.</p>
-     */
-    inline AttachmentReference& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The location path of the attachment reference.</p>
-     */
-    inline AttachmentReference& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Status of the attachment reference type.</p>
      */
-    inline const ReferenceStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Status of the attachment reference type.</p>
-     */
+    inline ReferenceStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ReferenceStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline AttachmentReference& WithStatus(ReferenceStatus value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Status of the attachment reference type.</p>
+     * <p>The Amazon Resource Name (ARN) of the attachment reference.</p>
      */
-    inline void SetStatus(const ReferenceStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Status of the attachment reference type.</p>
-     */
-    inline void SetStatus(ReferenceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Status of the attachment reference type.</p>
-     */
-    inline AttachmentReference& WithStatus(const ReferenceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Status of the attachment reference type.</p>
-     */
-    inline AttachmentReference& WithStatus(ReferenceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline const Aws::String& GetArn() const { return m_arn; }
+    inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    AttachmentReference& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -159,8 +92,11 @@ namespace Model
     Aws::String m_value;
     bool m_valueHasBeenSet = false;
 
-    ReferenceStatus m_status;
+    ReferenceStatus m_status{ReferenceStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
+
+    Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
   };
 
 } // namespace Model

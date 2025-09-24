@@ -18,15 +18,7 @@ namespace MarketplaceCatalog
 namespace Model
 {
 
-OfferLastModifiedDateFilterDateRange::OfferLastModifiedDateFilterDateRange() : 
-    m_afterValueHasBeenSet(false),
-    m_beforeValueHasBeenSet(false)
-{
-}
-
-OfferLastModifiedDateFilterDateRange::OfferLastModifiedDateFilterDateRange(JsonView jsonValue) : 
-    m_afterValueHasBeenSet(false),
-    m_beforeValueHasBeenSet(false)
+OfferLastModifiedDateFilterDateRange::OfferLastModifiedDateFilterDateRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ OfferLastModifiedDateFilterDateRange& OfferLastModifiedDateFilterDateRange::oper
   if(jsonValue.ValueExists("AfterValue"))
   {
     m_afterValue = jsonValue.GetString("AfterValue");
-
     m_afterValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BeforeValue"))
   {
     m_beforeValue = jsonValue.GetString("BeforeValue");
-
     m_beforeValueHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-GeospatialHeatmapColorScale::GeospatialHeatmapColorScale() : 
-    m_colorsHasBeenSet(false)
-{
-}
-
-GeospatialHeatmapColorScale::GeospatialHeatmapColorScale(JsonView jsonValue) : 
-    m_colorsHasBeenSet(false)
+GeospatialHeatmapColorScale::GeospatialHeatmapColorScale(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ GeospatialHeatmapColorScale& GeospatialHeatmapColorScale::operator =(JsonView js
     }
     m_colorsHasBeenSet = true;
   }
-
   return *this;
 }
 

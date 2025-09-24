@@ -21,7 +21,7 @@ namespace Model
   class DeleteFilterRequest : public PersonalizeRequest
   {
   public:
-    AWS_PERSONALIZE_API DeleteFilterRequest();
+    AWS_PERSONALIZE_API DeleteFilterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_PERSONALIZE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the filter to delete.</p>
      */
-    inline const Aws::String& GetFilterArn() const{ return m_filterArn; }
-
-    /**
-     * <p>The ARN of the filter to delete.</p>
-     */
+    inline const Aws::String& GetFilterArn() const { return m_filterArn; }
     inline bool FilterArnHasBeenSet() const { return m_filterArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the filter to delete.</p>
-     */
-    inline void SetFilterArn(const Aws::String& value) { m_filterArnHasBeenSet = true; m_filterArn = value; }
-
-    /**
-     * <p>The ARN of the filter to delete.</p>
-     */
-    inline void SetFilterArn(Aws::String&& value) { m_filterArnHasBeenSet = true; m_filterArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the filter to delete.</p>
-     */
-    inline void SetFilterArn(const char* value) { m_filterArnHasBeenSet = true; m_filterArn.assign(value); }
-
-    /**
-     * <p>The ARN of the filter to delete.</p>
-     */
-    inline DeleteFilterRequest& WithFilterArn(const Aws::String& value) { SetFilterArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the filter to delete.</p>
-     */
-    inline DeleteFilterRequest& WithFilterArn(Aws::String&& value) { SetFilterArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the filter to delete.</p>
-     */
-    inline DeleteFilterRequest& WithFilterArn(const char* value) { SetFilterArn(value); return *this;}
-
+    template<typename FilterArnT = Aws::String>
+    void SetFilterArn(FilterArnT&& value) { m_filterArnHasBeenSet = true; m_filterArn = std::forward<FilterArnT>(value); }
+    template<typename FilterArnT = Aws::String>
+    DeleteFilterRequest& WithFilterArn(FilterArnT&& value) { SetFilterArn(std::forward<FilterArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_filterArn;

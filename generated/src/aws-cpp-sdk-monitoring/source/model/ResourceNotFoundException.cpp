@@ -20,15 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-ResourceNotFoundException::ResourceNotFoundException() : 
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdHasBeenSet(false)
-{
-}
-
-ResourceNotFoundException::ResourceNotFoundException(const XmlNode& xmlNode) : 
-    m_resourceTypeHasBeenSet(false),
-    m_resourceIdHasBeenSet(false)
+ResourceNotFoundException::ResourceNotFoundException(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

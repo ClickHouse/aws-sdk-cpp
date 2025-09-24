@@ -20,33 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-Parameter::Parameter() : 
-    m_parameterNameHasBeenSet(false),
-    m_parameterValueHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_dataTypeHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false),
-    m_isModifiable(false),
-    m_isModifiableHasBeenSet(false),
-    m_minimumEngineVersionHasBeenSet(false),
-    m_changeType(ChangeType::NOT_SET),
-    m_changeTypeHasBeenSet(false)
-{
-}
-
-Parameter::Parameter(const XmlNode& xmlNode) : 
-    m_parameterNameHasBeenSet(false),
-    m_parameterValueHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_dataTypeHasBeenSet(false),
-    m_allowedValuesHasBeenSet(false),
-    m_isModifiable(false),
-    m_isModifiableHasBeenSet(false),
-    m_minimumEngineVersionHasBeenSet(false),
-    m_changeType(ChangeType::NOT_SET),
-    m_changeTypeHasBeenSet(false)
+Parameter::Parameter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -108,7 +82,7 @@ Parameter& Parameter::operator =(const XmlNode& xmlNode)
     XmlNode changeTypeNode = resultNode.FirstChild("ChangeType");
     if(!changeTypeNode.IsNull())
     {
-      m_changeType = ChangeTypeMapper::GetChangeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(changeTypeNode.GetText()).c_str()).c_str());
+      m_changeType = ChangeTypeMapper::GetChangeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(changeTypeNode.GetText()).c_str()));
       m_changeTypeHasBeenSet = true;
     }
   }
@@ -160,7 +134,7 @@ void Parameter::OutputToStream(Aws::OStream& oStream, const char* location, unsi
 
   if(m_changeTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ChangeType=" << ChangeTypeMapper::GetNameForChangeType(m_changeType) << "&";
+      oStream << location << index << locationValue << ".ChangeType=" << StringUtils::URLEncode(ChangeTypeMapper::GetNameForChangeType(m_changeType)) << "&";
   }
 
 }
@@ -201,7 +175,7 @@ void Parameter::OutputToStream(Aws::OStream& oStream, const char* location) cons
   }
   if(m_changeTypeHasBeenSet)
   {
-      oStream << location << ".ChangeType=" << ChangeTypeMapper::GetNameForChangeType(m_changeType) << "&";
+      oStream << location << ".ChangeType=" << StringUtils::URLEncode(ChangeTypeMapper::GetNameForChangeType(m_changeType)) << "&";
   }
 }
 

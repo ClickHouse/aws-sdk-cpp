@@ -18,15 +18,7 @@ namespace kendra
 namespace Model
 {
 
-SalesforceStandardObjectAttachmentConfiguration::SalesforceStandardObjectAttachmentConfiguration() : 
-    m_documentTitleFieldNameHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false)
-{
-}
-
-SalesforceStandardObjectAttachmentConfiguration::SalesforceStandardObjectAttachmentConfiguration(JsonView jsonValue) : 
-    m_documentTitleFieldNameHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false)
+SalesforceStandardObjectAttachmentConfiguration::SalesforceStandardObjectAttachmentConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SalesforceStandardObjectAttachmentConfiguration& SalesforceStandardObjectAttachm
   if(jsonValue.ValueExists("DocumentTitleFieldName"))
   {
     m_documentTitleFieldName = jsonValue.GetString("DocumentTitleFieldName");
-
     m_documentTitleFieldNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FieldMappings"))
   {
     Aws::Utils::Array<JsonView> fieldMappingsJsonList = jsonValue.GetArray("FieldMappings");
@@ -49,7 +39,6 @@ SalesforceStandardObjectAttachmentConfiguration& SalesforceStandardObjectAttachm
     }
     m_fieldMappingsHasBeenSet = true;
   }
-
   return *this;
 }
 

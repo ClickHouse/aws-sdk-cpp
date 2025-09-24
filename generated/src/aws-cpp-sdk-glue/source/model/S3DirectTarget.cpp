@@ -18,27 +18,7 @@ namespace Glue
 namespace Model
 {
 
-S3DirectTarget::S3DirectTarget() : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_partitionKeysHasBeenSet(false),
-    m_pathHasBeenSet(false),
-    m_compressionHasBeenSet(false),
-    m_format(TargetFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_schemaChangePolicyHasBeenSet(false)
-{
-}
-
-S3DirectTarget::S3DirectTarget(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_partitionKeysHasBeenSet(false),
-    m_pathHasBeenSet(false),
-    m_compressionHasBeenSet(false),
-    m_format(TargetFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_schemaChangePolicyHasBeenSet(false)
+S3DirectTarget::S3DirectTarget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,10 +28,8 @@ S3DirectTarget& S3DirectTarget::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -61,7 +39,6 @@ S3DirectTarget& S3DirectTarget::operator =(JsonView jsonValue)
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PartitionKeys"))
   {
     Aws::Utils::Array<JsonView> partitionKeysJsonList = jsonValue.GetArray("PartitionKeys");
@@ -78,35 +55,45 @@ S3DirectTarget& S3DirectTarget::operator =(JsonView jsonValue)
     }
     m_partitionKeysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Path"))
   {
     m_path = jsonValue.GetString("Path");
-
     m_pathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Compression"))
   {
     m_compression = jsonValue.GetString("Compression");
-
     m_compressionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("NumberTargetPartitions"))
+  {
+    m_numberTargetPartitions = jsonValue.GetString("NumberTargetPartitions");
+    m_numberTargetPartitionsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Format"))
   {
     m_format = TargetFormatMapper::GetTargetFormatForName(jsonValue.GetString("Format"));
-
     m_formatHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SchemaChangePolicy"))
   {
     m_schemaChangePolicy = jsonValue.GetObject("SchemaChangePolicy");
-
     m_schemaChangePolicyHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AutoDataQuality"))
+  {
+    m_autoDataQuality = jsonValue.GetObject("AutoDataQuality");
+    m_autoDataQualityHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("OutputSchemas"))
+  {
+    Aws::Utils::Array<JsonView> outputSchemasJsonList = jsonValue.GetArray("OutputSchemas");
+    for(unsigned outputSchemasIndex = 0; outputSchemasIndex < outputSchemasJsonList.GetLength(); ++outputSchemasIndex)
+    {
+      m_outputSchemas.push_back(outputSchemasJsonList[outputSchemasIndex].AsObject());
+    }
+    m_outputSchemasHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -159,6 +146,12 @@ JsonValue S3DirectTarget::Jsonize() const
 
   }
 
+  if(m_numberTargetPartitionsHasBeenSet)
+  {
+   payload.WithString("NumberTargetPartitions", m_numberTargetPartitions);
+
+  }
+
   if(m_formatHasBeenSet)
   {
    payload.WithString("Format", TargetFormatMapper::GetNameForTargetFormat(m_format));
@@ -167,6 +160,23 @@ JsonValue S3DirectTarget::Jsonize() const
   if(m_schemaChangePolicyHasBeenSet)
   {
    payload.WithObject("SchemaChangePolicy", m_schemaChangePolicy.Jsonize());
+
+  }
+
+  if(m_autoDataQualityHasBeenSet)
+  {
+   payload.WithObject("AutoDataQuality", m_autoDataQuality.Jsonize());
+
+  }
+
+  if(m_outputSchemasHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> outputSchemasJsonList(m_outputSchemas.size());
+   for(unsigned outputSchemasIndex = 0; outputSchemasIndex < outputSchemasJsonList.GetLength(); ++outputSchemasIndex)
+   {
+     outputSchemasJsonList[outputSchemasIndex].AsObject(m_outputSchemas[outputSchemasIndex].Jsonize());
+   }
+   payload.WithArray("OutputSchemas", std::move(outputSchemasJsonList));
 
   }
 

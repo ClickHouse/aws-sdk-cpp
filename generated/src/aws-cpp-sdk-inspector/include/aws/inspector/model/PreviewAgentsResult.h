@@ -29,132 +29,56 @@ namespace Model
   class PreviewAgentsResult
   {
   public:
-    AWS_INSPECTOR_API PreviewAgentsResult();
+    AWS_INSPECTOR_API PreviewAgentsResult() = default;
     AWS_INSPECTOR_API PreviewAgentsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_INSPECTOR_API PreviewAgentsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The resulting list of agents.</p>
      */
-    inline const Aws::Vector<AgentPreview>& GetAgentPreviews() const{ return m_agentPreviews; }
+    inline const Aws::Vector<AgentPreview>& GetAgentPreviews() const { return m_agentPreviews; }
+    template<typename AgentPreviewsT = Aws::Vector<AgentPreview>>
+    void SetAgentPreviews(AgentPreviewsT&& value) { m_agentPreviewsHasBeenSet = true; m_agentPreviews = std::forward<AgentPreviewsT>(value); }
+    template<typename AgentPreviewsT = Aws::Vector<AgentPreview>>
+    PreviewAgentsResult& WithAgentPreviews(AgentPreviewsT&& value) { SetAgentPreviews(std::forward<AgentPreviewsT>(value)); return *this;}
+    template<typename AgentPreviewsT = AgentPreview>
+    PreviewAgentsResult& AddAgentPreviews(AgentPreviewsT&& value) { m_agentPreviewsHasBeenSet = true; m_agentPreviews.emplace_back(std::forward<AgentPreviewsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The resulting list of agents.</p>
-     */
-    inline void SetAgentPreviews(const Aws::Vector<AgentPreview>& value) { m_agentPreviews = value; }
-
-    /**
-     * <p>The resulting list of agents.</p>
-     */
-    inline void SetAgentPreviews(Aws::Vector<AgentPreview>&& value) { m_agentPreviews = std::move(value); }
-
-    /**
-     * <p>The resulting list of agents.</p>
-     */
-    inline PreviewAgentsResult& WithAgentPreviews(const Aws::Vector<AgentPreview>& value) { SetAgentPreviews(value); return *this;}
-
-    /**
-     * <p>The resulting list of agents.</p>
-     */
-    inline PreviewAgentsResult& WithAgentPreviews(Aws::Vector<AgentPreview>&& value) { SetAgentPreviews(std::move(value)); return *this;}
-
-    /**
-     * <p>The resulting list of agents.</p>
-     */
-    inline PreviewAgentsResult& AddAgentPreviews(const AgentPreview& value) { m_agentPreviews.push_back(value); return *this; }
-
-    /**
-     * <p>The resulting list of agents.</p>
-     */
-    inline PreviewAgentsResult& AddAgentPreviews(AgentPreview&& value) { m_agentPreviews.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> When a response is generated, if there is more data to be listed, this
      * parameter is present in the response and contains the value to use for the
      * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
      * more data to be listed, this parameter is set to null.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    PreviewAgentsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> When a response is generated, if there is more data to be listed, this
-     * parameter is present in the response and contains the value to use for the
-     * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
-     * more data to be listed, this parameter is set to null.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p> When a response is generated, if there is more data to be listed, this
-     * parameter is present in the response and contains the value to use for the
-     * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
-     * more data to be listed, this parameter is set to null.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p> When a response is generated, if there is more data to be listed, this
-     * parameter is present in the response and contains the value to use for the
-     * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
-     * more data to be listed, this parameter is set to null.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p> When a response is generated, if there is more data to be listed, this
-     * parameter is present in the response and contains the value to use for the
-     * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
-     * more data to be listed, this parameter is set to null.</p>
-     */
-    inline PreviewAgentsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p> When a response is generated, if there is more data to be listed, this
-     * parameter is present in the response and contains the value to use for the
-     * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
-     * more data to be listed, this parameter is set to null.</p>
-     */
-    inline PreviewAgentsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p> When a response is generated, if there is more data to be listed, this
-     * parameter is present in the response and contains the value to use for the
-     * <b>nextToken</b> parameter in a subsequent pagination request. If there is no
-     * more data to be listed, this parameter is set to null.</p>
-     */
-    inline PreviewAgentsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline PreviewAgentsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline PreviewAgentsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline PreviewAgentsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    PreviewAgentsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<AgentPreview> m_agentPreviews;
+    bool m_agentPreviewsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

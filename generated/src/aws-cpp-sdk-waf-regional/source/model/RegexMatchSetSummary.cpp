@@ -18,15 +18,7 @@ namespace WAFRegional
 namespace Model
 {
 
-RegexMatchSetSummary::RegexMatchSetSummary() : 
-    m_regexMatchSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-RegexMatchSetSummary::RegexMatchSetSummary(JsonView jsonValue) : 
-    m_regexMatchSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
+RegexMatchSetSummary::RegexMatchSetSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RegexMatchSetSummary& RegexMatchSetSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RegexMatchSetId"))
   {
     m_regexMatchSetId = jsonValue.GetString("RegexMatchSetId");
-
     m_regexMatchSetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

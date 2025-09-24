@@ -31,86 +31,43 @@ namespace Model
   class CoverageDateFilter
   {
   public:
-    AWS_INSPECTOR2_API CoverageDateFilter();
+    AWS_INSPECTOR2_API CoverageDateFilter() = default;
     AWS_INSPECTOR2_API CoverageDateFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API CoverageDateFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>A timestamp representing the end of the time period to filter results by.</p>
-     */
-    inline const Aws::Utils::DateTime& GetEndInclusive() const{ return m_endInclusive; }
-
-    /**
-     * <p>A timestamp representing the end of the time period to filter results by.</p>
-     */
-    inline bool EndInclusiveHasBeenSet() const { return m_endInclusiveHasBeenSet; }
-
-    /**
-     * <p>A timestamp representing the end of the time period to filter results by.</p>
-     */
-    inline void SetEndInclusive(const Aws::Utils::DateTime& value) { m_endInclusiveHasBeenSet = true; m_endInclusive = value; }
-
-    /**
-     * <p>A timestamp representing the end of the time period to filter results by.</p>
-     */
-    inline void SetEndInclusive(Aws::Utils::DateTime&& value) { m_endInclusiveHasBeenSet = true; m_endInclusive = std::move(value); }
-
-    /**
-     * <p>A timestamp representing the end of the time period to filter results by.</p>
-     */
-    inline CoverageDateFilter& WithEndInclusive(const Aws::Utils::DateTime& value) { SetEndInclusive(value); return *this;}
-
-    /**
-     * <p>A timestamp representing the end of the time period to filter results by.</p>
-     */
-    inline CoverageDateFilter& WithEndInclusive(Aws::Utils::DateTime&& value) { SetEndInclusive(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp representing the start of the time period to filter results
      * by.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartInclusive() const{ return m_startInclusive; }
-
-    /**
-     * <p>A timestamp representing the start of the time period to filter results
-     * by.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartInclusive() const { return m_startInclusive; }
     inline bool StartInclusiveHasBeenSet() const { return m_startInclusiveHasBeenSet; }
+    template<typename StartInclusiveT = Aws::Utils::DateTime>
+    void SetStartInclusive(StartInclusiveT&& value) { m_startInclusiveHasBeenSet = true; m_startInclusive = std::forward<StartInclusiveT>(value); }
+    template<typename StartInclusiveT = Aws::Utils::DateTime>
+    CoverageDateFilter& WithStartInclusive(StartInclusiveT&& value) { SetStartInclusive(std::forward<StartInclusiveT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A timestamp representing the start of the time period to filter results
-     * by.</p>
+     * <p>A timestamp representing the end of the time period to filter results by.</p>
      */
-    inline void SetStartInclusive(const Aws::Utils::DateTime& value) { m_startInclusiveHasBeenSet = true; m_startInclusive = value; }
-
-    /**
-     * <p>A timestamp representing the start of the time period to filter results
-     * by.</p>
-     */
-    inline void SetStartInclusive(Aws::Utils::DateTime&& value) { m_startInclusiveHasBeenSet = true; m_startInclusive = std::move(value); }
-
-    /**
-     * <p>A timestamp representing the start of the time period to filter results
-     * by.</p>
-     */
-    inline CoverageDateFilter& WithStartInclusive(const Aws::Utils::DateTime& value) { SetStartInclusive(value); return *this;}
-
-    /**
-     * <p>A timestamp representing the start of the time period to filter results
-     * by.</p>
-     */
-    inline CoverageDateFilter& WithStartInclusive(Aws::Utils::DateTime&& value) { SetStartInclusive(std::move(value)); return *this;}
-
+    inline const Aws::Utils::DateTime& GetEndInclusive() const { return m_endInclusive; }
+    inline bool EndInclusiveHasBeenSet() const { return m_endInclusiveHasBeenSet; }
+    template<typename EndInclusiveT = Aws::Utils::DateTime>
+    void SetEndInclusive(EndInclusiveT&& value) { m_endInclusiveHasBeenSet = true; m_endInclusive = std::forward<EndInclusiveT>(value); }
+    template<typename EndInclusiveT = Aws::Utils::DateTime>
+    CoverageDateFilter& WithEndInclusive(EndInclusiveT&& value) { SetEndInclusive(std::forward<EndInclusiveT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_endInclusive;
-    bool m_endInclusiveHasBeenSet = false;
-
-    Aws::Utils::DateTime m_startInclusive;
+    Aws::Utils::DateTime m_startInclusive{};
     bool m_startInclusiveHasBeenSet = false;
+
+    Aws::Utils::DateTime m_endInclusive{};
+    bool m_endInclusiveHasBeenSet = false;
   };
 
 } // namespace Model

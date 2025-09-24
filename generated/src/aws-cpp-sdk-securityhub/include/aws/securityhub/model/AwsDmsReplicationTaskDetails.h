@@ -33,624 +33,177 @@ namespace Model
   class AwsDmsReplicationTaskDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsDmsReplicationTaskDetails();
+    AWS_SECURITYHUB_API AwsDmsReplicationTaskDetails() = default;
     AWS_SECURITYHUB_API AwsDmsReplicationTaskDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsDmsReplicationTaskDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Indicates when you want a change data capture (CDC) operation to start.
      * <code>CCdcStartPosition</code> or <code>CCdcStartTime</code> specifies when you
      * want a CDC operation to start. Only a value for one of these fields is
      * included.</p>
      */
-    inline const Aws::String& GetCdcStartPosition() const{ return m_cdcStartPosition; }
-
-    /**
-     * <p> Indicates when you want a change data capture (CDC) operation to start.
-     * <code>CCdcStartPosition</code> or <code>CCdcStartTime</code> specifies when you
-     * want a CDC operation to start. Only a value for one of these fields is
-     * included.</p>
-     */
+    inline const Aws::String& GetCdcStartPosition() const { return m_cdcStartPosition; }
     inline bool CdcStartPositionHasBeenSet() const { return m_cdcStartPositionHasBeenSet; }
+    template<typename CdcStartPositionT = Aws::String>
+    void SetCdcStartPosition(CdcStartPositionT&& value) { m_cdcStartPositionHasBeenSet = true; m_cdcStartPosition = std::forward<CdcStartPositionT>(value); }
+    template<typename CdcStartPositionT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithCdcStartPosition(CdcStartPositionT&& value) { SetCdcStartPosition(std::forward<CdcStartPositionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Indicates when you want a change data capture (CDC) operation to start.
-     * <code>CCdcStartPosition</code> or <code>CCdcStartTime</code> specifies when you
-     * want a CDC operation to start. Only a value for one of these fields is
-     * included.</p>
-     */
-    inline void SetCdcStartPosition(const Aws::String& value) { m_cdcStartPositionHasBeenSet = true; m_cdcStartPosition = value; }
-
-    /**
-     * <p> Indicates when you want a change data capture (CDC) operation to start.
-     * <code>CCdcStartPosition</code> or <code>CCdcStartTime</code> specifies when you
-     * want a CDC operation to start. Only a value for one of these fields is
-     * included.</p>
-     */
-    inline void SetCdcStartPosition(Aws::String&& value) { m_cdcStartPositionHasBeenSet = true; m_cdcStartPosition = std::move(value); }
-
-    /**
-     * <p> Indicates when you want a change data capture (CDC) operation to start.
-     * <code>CCdcStartPosition</code> or <code>CCdcStartTime</code> specifies when you
-     * want a CDC operation to start. Only a value for one of these fields is
-     * included.</p>
-     */
-    inline void SetCdcStartPosition(const char* value) { m_cdcStartPositionHasBeenSet = true; m_cdcStartPosition.assign(value); }
-
-    /**
-     * <p> Indicates when you want a change data capture (CDC) operation to start.
-     * <code>CCdcStartPosition</code> or <code>CCdcStartTime</code> specifies when you
-     * want a CDC operation to start. Only a value for one of these fields is
-     * included.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithCdcStartPosition(const Aws::String& value) { SetCdcStartPosition(value); return *this;}
-
-    /**
-     * <p> Indicates when you want a change data capture (CDC) operation to start.
-     * <code>CCdcStartPosition</code> or <code>CCdcStartTime</code> specifies when you
-     * want a CDC operation to start. Only a value for one of these fields is
-     * included.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithCdcStartPosition(Aws::String&& value) { SetCdcStartPosition(std::move(value)); return *this;}
-
-    /**
-     * <p> Indicates when you want a change data capture (CDC) operation to start.
-     * <code>CCdcStartPosition</code> or <code>CCdcStartTime</code> specifies when you
-     * want a CDC operation to start. Only a value for one of these fields is
-     * included.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithCdcStartPosition(const char* value) { SetCdcStartPosition(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Indicates the start time for a CDC operation. <code>CdcStartPosition</code>
      * or <code>CCdcStartTime</code> specifies when you want a CDC operation to start.
      * Only a value for one of these fields is included.</p>
      */
-    inline const Aws::String& GetCdcStartTime() const{ return m_cdcStartTime; }
-
-    /**
-     * <p> Indicates the start time for a CDC operation. <code>CdcStartPosition</code>
-     * or <code>CCdcStartTime</code> specifies when you want a CDC operation to start.
-     * Only a value for one of these fields is included.</p>
-     */
+    inline const Aws::String& GetCdcStartTime() const { return m_cdcStartTime; }
     inline bool CdcStartTimeHasBeenSet() const { return m_cdcStartTimeHasBeenSet; }
+    template<typename CdcStartTimeT = Aws::String>
+    void SetCdcStartTime(CdcStartTimeT&& value) { m_cdcStartTimeHasBeenSet = true; m_cdcStartTime = std::forward<CdcStartTimeT>(value); }
+    template<typename CdcStartTimeT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithCdcStartTime(CdcStartTimeT&& value) { SetCdcStartTime(std::forward<CdcStartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Indicates the start time for a CDC operation. <code>CdcStartPosition</code>
-     * or <code>CCdcStartTime</code> specifies when you want a CDC operation to start.
-     * Only a value for one of these fields is included.</p>
-     */
-    inline void SetCdcStartTime(const Aws::String& value) { m_cdcStartTimeHasBeenSet = true; m_cdcStartTime = value; }
-
-    /**
-     * <p> Indicates the start time for a CDC operation. <code>CdcStartPosition</code>
-     * or <code>CCdcStartTime</code> specifies when you want a CDC operation to start.
-     * Only a value for one of these fields is included.</p>
-     */
-    inline void SetCdcStartTime(Aws::String&& value) { m_cdcStartTimeHasBeenSet = true; m_cdcStartTime = std::move(value); }
-
-    /**
-     * <p> Indicates the start time for a CDC operation. <code>CdcStartPosition</code>
-     * or <code>CCdcStartTime</code> specifies when you want a CDC operation to start.
-     * Only a value for one of these fields is included.</p>
-     */
-    inline void SetCdcStartTime(const char* value) { m_cdcStartTimeHasBeenSet = true; m_cdcStartTime.assign(value); }
-
-    /**
-     * <p> Indicates the start time for a CDC operation. <code>CdcStartPosition</code>
-     * or <code>CCdcStartTime</code> specifies when you want a CDC operation to start.
-     * Only a value for one of these fields is included.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithCdcStartTime(const Aws::String& value) { SetCdcStartTime(value); return *this;}
-
-    /**
-     * <p> Indicates the start time for a CDC operation. <code>CdcStartPosition</code>
-     * or <code>CCdcStartTime</code> specifies when you want a CDC operation to start.
-     * Only a value for one of these fields is included.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithCdcStartTime(Aws::String&& value) { SetCdcStartTime(std::move(value)); return *this;}
-
-    /**
-     * <p> Indicates the start time for a CDC operation. <code>CdcStartPosition</code>
-     * or <code>CCdcStartTime</code> specifies when you want a CDC operation to start.
-     * Only a value for one of these fields is included.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithCdcStartTime(const char* value) { SetCdcStartTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Indicates when you want a CDC operation to stop. The value can be either
      * server time or commit time.</p>
      */
-    inline const Aws::String& GetCdcStopPosition() const{ return m_cdcStopPosition; }
-
-    /**
-     * <p> Indicates when you want a CDC operation to stop. The value can be either
-     * server time or commit time.</p>
-     */
+    inline const Aws::String& GetCdcStopPosition() const { return m_cdcStopPosition; }
     inline bool CdcStopPositionHasBeenSet() const { return m_cdcStopPositionHasBeenSet; }
+    template<typename CdcStopPositionT = Aws::String>
+    void SetCdcStopPosition(CdcStopPositionT&& value) { m_cdcStopPositionHasBeenSet = true; m_cdcStopPosition = std::forward<CdcStopPositionT>(value); }
+    template<typename CdcStopPositionT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithCdcStopPosition(CdcStopPositionT&& value) { SetCdcStopPosition(std::forward<CdcStopPositionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Indicates when you want a CDC operation to stop. The value can be either
-     * server time or commit time.</p>
-     */
-    inline void SetCdcStopPosition(const Aws::String& value) { m_cdcStopPositionHasBeenSet = true; m_cdcStopPosition = value; }
-
-    /**
-     * <p> Indicates when you want a CDC operation to stop. The value can be either
-     * server time or commit time.</p>
-     */
-    inline void SetCdcStopPosition(Aws::String&& value) { m_cdcStopPositionHasBeenSet = true; m_cdcStopPosition = std::move(value); }
-
-    /**
-     * <p> Indicates when you want a CDC operation to stop. The value can be either
-     * server time or commit time.</p>
-     */
-    inline void SetCdcStopPosition(const char* value) { m_cdcStopPositionHasBeenSet = true; m_cdcStopPosition.assign(value); }
-
-    /**
-     * <p> Indicates when you want a CDC operation to stop. The value can be either
-     * server time or commit time.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithCdcStopPosition(const Aws::String& value) { SetCdcStopPosition(value); return *this;}
-
-    /**
-     * <p> Indicates when you want a CDC operation to stop. The value can be either
-     * server time or commit time.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithCdcStopPosition(Aws::String&& value) { SetCdcStopPosition(std::move(value)); return *this;}
-
-    /**
-     * <p> Indicates when you want a CDC operation to stop. The value can be either
-     * server time or commit time.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithCdcStopPosition(const char* value) { SetCdcStopPosition(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The migration type. </p>
      */
-    inline const Aws::String& GetMigrationType() const{ return m_migrationType; }
-
-    /**
-     * <p> The migration type. </p>
-     */
+    inline const Aws::String& GetMigrationType() const { return m_migrationType; }
     inline bool MigrationTypeHasBeenSet() const { return m_migrationTypeHasBeenSet; }
+    template<typename MigrationTypeT = Aws::String>
+    void SetMigrationType(MigrationTypeT&& value) { m_migrationTypeHasBeenSet = true; m_migrationType = std::forward<MigrationTypeT>(value); }
+    template<typename MigrationTypeT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithMigrationType(MigrationTypeT&& value) { SetMigrationType(std::forward<MigrationTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The migration type. </p>
-     */
-    inline void SetMigrationType(const Aws::String& value) { m_migrationTypeHasBeenSet = true; m_migrationType = value; }
-
-    /**
-     * <p> The migration type. </p>
-     */
-    inline void SetMigrationType(Aws::String&& value) { m_migrationTypeHasBeenSet = true; m_migrationType = std::move(value); }
-
-    /**
-     * <p> The migration type. </p>
-     */
-    inline void SetMigrationType(const char* value) { m_migrationTypeHasBeenSet = true; m_migrationType.assign(value); }
-
-    /**
-     * <p> The migration type. </p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithMigrationType(const Aws::String& value) { SetMigrationType(value); return *this;}
-
-    /**
-     * <p> The migration type. </p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithMigrationType(Aws::String&& value) { SetMigrationType(std::move(value)); return *this;}
-
-    /**
-     * <p> The migration type. </p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithMigrationType(const char* value) { SetMigrationType(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The identifier of the replication task.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p> The identifier of the replication task.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The identifier of the replication task.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p> The identifier of the replication task.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p> The identifier of the replication task.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p> The identifier of the replication task.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p> The identifier of the replication task.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p> The identifier of the replication task.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> A display name for the resource identifier at the end of the
      * <code>EndpointArn</code> response parameter. If you don't specify a
      * <code>ResourceIdentifier</code> value, DMS generates a default identifier value
      * for the end of <code>EndpointArn</code>.</p>
      */
-    inline const Aws::String& GetResourceIdentifier() const{ return m_resourceIdentifier; }
-
-    /**
-     * <p> A display name for the resource identifier at the end of the
-     * <code>EndpointArn</code> response parameter. If you don't specify a
-     * <code>ResourceIdentifier</code> value, DMS generates a default identifier value
-     * for the end of <code>EndpointArn</code>.</p>
-     */
+    inline const Aws::String& GetResourceIdentifier() const { return m_resourceIdentifier; }
     inline bool ResourceIdentifierHasBeenSet() const { return m_resourceIdentifierHasBeenSet; }
+    template<typename ResourceIdentifierT = Aws::String>
+    void SetResourceIdentifier(ResourceIdentifierT&& value) { m_resourceIdentifierHasBeenSet = true; m_resourceIdentifier = std::forward<ResourceIdentifierT>(value); }
+    template<typename ResourceIdentifierT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithResourceIdentifier(ResourceIdentifierT&& value) { SetResourceIdentifier(std::forward<ResourceIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A display name for the resource identifier at the end of the
-     * <code>EndpointArn</code> response parameter. If you don't specify a
-     * <code>ResourceIdentifier</code> value, DMS generates a default identifier value
-     * for the end of <code>EndpointArn</code>.</p>
-     */
-    inline void SetResourceIdentifier(const Aws::String& value) { m_resourceIdentifierHasBeenSet = true; m_resourceIdentifier = value; }
-
-    /**
-     * <p> A display name for the resource identifier at the end of the
-     * <code>EndpointArn</code> response parameter. If you don't specify a
-     * <code>ResourceIdentifier</code> value, DMS generates a default identifier value
-     * for the end of <code>EndpointArn</code>.</p>
-     */
-    inline void SetResourceIdentifier(Aws::String&& value) { m_resourceIdentifierHasBeenSet = true; m_resourceIdentifier = std::move(value); }
-
-    /**
-     * <p> A display name for the resource identifier at the end of the
-     * <code>EndpointArn</code> response parameter. If you don't specify a
-     * <code>ResourceIdentifier</code> value, DMS generates a default identifier value
-     * for the end of <code>EndpointArn</code>.</p>
-     */
-    inline void SetResourceIdentifier(const char* value) { m_resourceIdentifierHasBeenSet = true; m_resourceIdentifier.assign(value); }
-
-    /**
-     * <p> A display name for the resource identifier at the end of the
-     * <code>EndpointArn</code> response parameter. If you don't specify a
-     * <code>ResourceIdentifier</code> value, DMS generates a default identifier value
-     * for the end of <code>EndpointArn</code>.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithResourceIdentifier(const Aws::String& value) { SetResourceIdentifier(value); return *this;}
-
-    /**
-     * <p> A display name for the resource identifier at the end of the
-     * <code>EndpointArn</code> response parameter. If you don't specify a
-     * <code>ResourceIdentifier</code> value, DMS generates a default identifier value
-     * for the end of <code>EndpointArn</code>.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithResourceIdentifier(Aws::String&& value) { SetResourceIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p> A display name for the resource identifier at the end of the
-     * <code>EndpointArn</code> response parameter. If you don't specify a
-     * <code>ResourceIdentifier</code> value, DMS generates a default identifier value
-     * for the end of <code>EndpointArn</code>.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithResourceIdentifier(const char* value) { SetResourceIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of a replication instance. </p>
      */
-    inline const Aws::String& GetReplicationInstanceArn() const{ return m_replicationInstanceArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of a replication instance. </p>
-     */
+    inline const Aws::String& GetReplicationInstanceArn() const { return m_replicationInstanceArn; }
     inline bool ReplicationInstanceArnHasBeenSet() const { return m_replicationInstanceArnHasBeenSet; }
+    template<typename ReplicationInstanceArnT = Aws::String>
+    void SetReplicationInstanceArn(ReplicationInstanceArnT&& value) { m_replicationInstanceArnHasBeenSet = true; m_replicationInstanceArn = std::forward<ReplicationInstanceArnT>(value); }
+    template<typename ReplicationInstanceArnT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithReplicationInstanceArn(ReplicationInstanceArnT&& value) { SetReplicationInstanceArn(std::forward<ReplicationInstanceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) of a replication instance. </p>
-     */
-    inline void SetReplicationInstanceArn(const Aws::String& value) { m_replicationInstanceArnHasBeenSet = true; m_replicationInstanceArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of a replication instance. </p>
-     */
-    inline void SetReplicationInstanceArn(Aws::String&& value) { m_replicationInstanceArnHasBeenSet = true; m_replicationInstanceArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of a replication instance. </p>
-     */
-    inline void SetReplicationInstanceArn(const char* value) { m_replicationInstanceArnHasBeenSet = true; m_replicationInstanceArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of a replication instance. </p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithReplicationInstanceArn(const Aws::String& value) { SetReplicationInstanceArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of a replication instance. </p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithReplicationInstanceArn(Aws::String&& value) { SetReplicationInstanceArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of a replication instance. </p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithReplicationInstanceArn(const char* value) { SetReplicationInstanceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The user-defined replication task identifier or name.</p>
      */
-    inline const Aws::String& GetReplicationTaskIdentifier() const{ return m_replicationTaskIdentifier; }
-
-    /**
-     * <p> The user-defined replication task identifier or name.</p>
-     */
+    inline const Aws::String& GetReplicationTaskIdentifier() const { return m_replicationTaskIdentifier; }
     inline bool ReplicationTaskIdentifierHasBeenSet() const { return m_replicationTaskIdentifierHasBeenSet; }
+    template<typename ReplicationTaskIdentifierT = Aws::String>
+    void SetReplicationTaskIdentifier(ReplicationTaskIdentifierT&& value) { m_replicationTaskIdentifierHasBeenSet = true; m_replicationTaskIdentifier = std::forward<ReplicationTaskIdentifierT>(value); }
+    template<typename ReplicationTaskIdentifierT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithReplicationTaskIdentifier(ReplicationTaskIdentifierT&& value) { SetReplicationTaskIdentifier(std::forward<ReplicationTaskIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The user-defined replication task identifier or name.</p>
-     */
-    inline void SetReplicationTaskIdentifier(const Aws::String& value) { m_replicationTaskIdentifierHasBeenSet = true; m_replicationTaskIdentifier = value; }
-
-    /**
-     * <p> The user-defined replication task identifier or name.</p>
-     */
-    inline void SetReplicationTaskIdentifier(Aws::String&& value) { m_replicationTaskIdentifierHasBeenSet = true; m_replicationTaskIdentifier = std::move(value); }
-
-    /**
-     * <p> The user-defined replication task identifier or name.</p>
-     */
-    inline void SetReplicationTaskIdentifier(const char* value) { m_replicationTaskIdentifierHasBeenSet = true; m_replicationTaskIdentifier.assign(value); }
-
-    /**
-     * <p> The user-defined replication task identifier or name.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithReplicationTaskIdentifier(const Aws::String& value) { SetReplicationTaskIdentifier(value); return *this;}
-
-    /**
-     * <p> The user-defined replication task identifier or name.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithReplicationTaskIdentifier(Aws::String&& value) { SetReplicationTaskIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p> The user-defined replication task identifier or name.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithReplicationTaskIdentifier(const char* value) { SetReplicationTaskIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The settings for the replication task.</p>
      */
-    inline const Aws::String& GetReplicationTaskSettings() const{ return m_replicationTaskSettings; }
-
-    /**
-     * <p> The settings for the replication task.</p>
-     */
+    inline const Aws::String& GetReplicationTaskSettings() const { return m_replicationTaskSettings; }
     inline bool ReplicationTaskSettingsHasBeenSet() const { return m_replicationTaskSettingsHasBeenSet; }
+    template<typename ReplicationTaskSettingsT = Aws::String>
+    void SetReplicationTaskSettings(ReplicationTaskSettingsT&& value) { m_replicationTaskSettingsHasBeenSet = true; m_replicationTaskSettings = std::forward<ReplicationTaskSettingsT>(value); }
+    template<typename ReplicationTaskSettingsT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithReplicationTaskSettings(ReplicationTaskSettingsT&& value) { SetReplicationTaskSettings(std::forward<ReplicationTaskSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The settings for the replication task.</p>
-     */
-    inline void SetReplicationTaskSettings(const Aws::String& value) { m_replicationTaskSettingsHasBeenSet = true; m_replicationTaskSettings = value; }
-
-    /**
-     * <p> The settings for the replication task.</p>
-     */
-    inline void SetReplicationTaskSettings(Aws::String&& value) { m_replicationTaskSettingsHasBeenSet = true; m_replicationTaskSettings = std::move(value); }
-
-    /**
-     * <p> The settings for the replication task.</p>
-     */
-    inline void SetReplicationTaskSettings(const char* value) { m_replicationTaskSettingsHasBeenSet = true; m_replicationTaskSettings.assign(value); }
-
-    /**
-     * <p> The settings for the replication task.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithReplicationTaskSettings(const Aws::String& value) { SetReplicationTaskSettings(value); return *this;}
-
-    /**
-     * <p> The settings for the replication task.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithReplicationTaskSettings(Aws::String&& value) { SetReplicationTaskSettings(std::move(value)); return *this;}
-
-    /**
-     * <p> The settings for the replication task.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithReplicationTaskSettings(const char* value) { SetReplicationTaskSettings(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The ARN of the source endpoint.</p>
      */
-    inline const Aws::String& GetSourceEndpointArn() const{ return m_sourceEndpointArn; }
-
-    /**
-     * <p> The ARN of the source endpoint.</p>
-     */
+    inline const Aws::String& GetSourceEndpointArn() const { return m_sourceEndpointArn; }
     inline bool SourceEndpointArnHasBeenSet() const { return m_sourceEndpointArnHasBeenSet; }
+    template<typename SourceEndpointArnT = Aws::String>
+    void SetSourceEndpointArn(SourceEndpointArnT&& value) { m_sourceEndpointArnHasBeenSet = true; m_sourceEndpointArn = std::forward<SourceEndpointArnT>(value); }
+    template<typename SourceEndpointArnT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithSourceEndpointArn(SourceEndpointArnT&& value) { SetSourceEndpointArn(std::forward<SourceEndpointArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The ARN of the source endpoint.</p>
-     */
-    inline void SetSourceEndpointArn(const Aws::String& value) { m_sourceEndpointArnHasBeenSet = true; m_sourceEndpointArn = value; }
-
-    /**
-     * <p> The ARN of the source endpoint.</p>
-     */
-    inline void SetSourceEndpointArn(Aws::String&& value) { m_sourceEndpointArnHasBeenSet = true; m_sourceEndpointArn = std::move(value); }
-
-    /**
-     * <p> The ARN of the source endpoint.</p>
-     */
-    inline void SetSourceEndpointArn(const char* value) { m_sourceEndpointArnHasBeenSet = true; m_sourceEndpointArn.assign(value); }
-
-    /**
-     * <p> The ARN of the source endpoint.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithSourceEndpointArn(const Aws::String& value) { SetSourceEndpointArn(value); return *this;}
-
-    /**
-     * <p> The ARN of the source endpoint.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithSourceEndpointArn(Aws::String&& value) { SetSourceEndpointArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The ARN of the source endpoint.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithSourceEndpointArn(const char* value) { SetSourceEndpointArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The table mappings for the replication task, in JSON format.</p>
      */
-    inline const Aws::String& GetTableMappings() const{ return m_tableMappings; }
-
-    /**
-     * <p> The table mappings for the replication task, in JSON format.</p>
-     */
+    inline const Aws::String& GetTableMappings() const { return m_tableMappings; }
     inline bool TableMappingsHasBeenSet() const { return m_tableMappingsHasBeenSet; }
+    template<typename TableMappingsT = Aws::String>
+    void SetTableMappings(TableMappingsT&& value) { m_tableMappingsHasBeenSet = true; m_tableMappings = std::forward<TableMappingsT>(value); }
+    template<typename TableMappingsT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithTableMappings(TableMappingsT&& value) { SetTableMappings(std::forward<TableMappingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The table mappings for the replication task, in JSON format.</p>
-     */
-    inline void SetTableMappings(const Aws::String& value) { m_tableMappingsHasBeenSet = true; m_tableMappings = value; }
-
-    /**
-     * <p> The table mappings for the replication task, in JSON format.</p>
-     */
-    inline void SetTableMappings(Aws::String&& value) { m_tableMappingsHasBeenSet = true; m_tableMappings = std::move(value); }
-
-    /**
-     * <p> The table mappings for the replication task, in JSON format.</p>
-     */
-    inline void SetTableMappings(const char* value) { m_tableMappingsHasBeenSet = true; m_tableMappings.assign(value); }
-
-    /**
-     * <p> The table mappings for the replication task, in JSON format.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithTableMappings(const Aws::String& value) { SetTableMappings(value); return *this;}
-
-    /**
-     * <p> The table mappings for the replication task, in JSON format.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithTableMappings(Aws::String&& value) { SetTableMappings(std::move(value)); return *this;}
-
-    /**
-     * <p> The table mappings for the replication task, in JSON format.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithTableMappings(const char* value) { SetTableMappings(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The ARN of the target endpoint.</p>
      */
-    inline const Aws::String& GetTargetEndpointArn() const{ return m_targetEndpointArn; }
-
-    /**
-     * <p> The ARN of the target endpoint.</p>
-     */
+    inline const Aws::String& GetTargetEndpointArn() const { return m_targetEndpointArn; }
     inline bool TargetEndpointArnHasBeenSet() const { return m_targetEndpointArnHasBeenSet; }
+    template<typename TargetEndpointArnT = Aws::String>
+    void SetTargetEndpointArn(TargetEndpointArnT&& value) { m_targetEndpointArnHasBeenSet = true; m_targetEndpointArn = std::forward<TargetEndpointArnT>(value); }
+    template<typename TargetEndpointArnT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithTargetEndpointArn(TargetEndpointArnT&& value) { SetTargetEndpointArn(std::forward<TargetEndpointArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The ARN of the target endpoint.</p>
-     */
-    inline void SetTargetEndpointArn(const Aws::String& value) { m_targetEndpointArnHasBeenSet = true; m_targetEndpointArn = value; }
-
-    /**
-     * <p> The ARN of the target endpoint.</p>
-     */
-    inline void SetTargetEndpointArn(Aws::String&& value) { m_targetEndpointArnHasBeenSet = true; m_targetEndpointArn = std::move(value); }
-
-    /**
-     * <p> The ARN of the target endpoint.</p>
-     */
-    inline void SetTargetEndpointArn(const char* value) { m_targetEndpointArnHasBeenSet = true; m_targetEndpointArn.assign(value); }
-
-    /**
-     * <p> The ARN of the target endpoint.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithTargetEndpointArn(const Aws::String& value) { SetTargetEndpointArn(value); return *this;}
-
-    /**
-     * <p> The ARN of the target endpoint.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithTargetEndpointArn(Aws::String&& value) { SetTargetEndpointArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The ARN of the target endpoint.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithTargetEndpointArn(const char* value) { SetTargetEndpointArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Supplemental information that the task requires to migrate the data for
      * certain source and target endpoints.</p>
      */
-    inline const Aws::String& GetTaskData() const{ return m_taskData; }
-
-    /**
-     * <p> Supplemental information that the task requires to migrate the data for
-     * certain source and target endpoints.</p>
-     */
+    inline const Aws::String& GetTaskData() const { return m_taskData; }
     inline bool TaskDataHasBeenSet() const { return m_taskDataHasBeenSet; }
-
-    /**
-     * <p> Supplemental information that the task requires to migrate the data for
-     * certain source and target endpoints.</p>
-     */
-    inline void SetTaskData(const Aws::String& value) { m_taskDataHasBeenSet = true; m_taskData = value; }
-
-    /**
-     * <p> Supplemental information that the task requires to migrate the data for
-     * certain source and target endpoints.</p>
-     */
-    inline void SetTaskData(Aws::String&& value) { m_taskDataHasBeenSet = true; m_taskData = std::move(value); }
-
-    /**
-     * <p> Supplemental information that the task requires to migrate the data for
-     * certain source and target endpoints.</p>
-     */
-    inline void SetTaskData(const char* value) { m_taskDataHasBeenSet = true; m_taskData.assign(value); }
-
-    /**
-     * <p> Supplemental information that the task requires to migrate the data for
-     * certain source and target endpoints.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithTaskData(const Aws::String& value) { SetTaskData(value); return *this;}
-
-    /**
-     * <p> Supplemental information that the task requires to migrate the data for
-     * certain source and target endpoints.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithTaskData(Aws::String&& value) { SetTaskData(std::move(value)); return *this;}
-
-    /**
-     * <p> Supplemental information that the task requires to migrate the data for
-     * certain source and target endpoints.</p>
-     */
-    inline AwsDmsReplicationTaskDetails& WithTaskData(const char* value) { SetTaskData(value); return *this;}
-
+    template<typename TaskDataT = Aws::String>
+    void SetTaskData(TaskDataT&& value) { m_taskDataHasBeenSet = true; m_taskData = std::forward<TaskDataT>(value); }
+    template<typename TaskDataT = Aws::String>
+    AwsDmsReplicationTaskDetails& WithTaskData(TaskDataT&& value) { SetTaskData(std::forward<TaskDataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cdcStartPosition;

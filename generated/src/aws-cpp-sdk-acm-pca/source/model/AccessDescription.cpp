@@ -18,15 +18,7 @@ namespace ACMPCA
 namespace Model
 {
 
-AccessDescription::AccessDescription() : 
-    m_accessMethodHasBeenSet(false),
-    m_accessLocationHasBeenSet(false)
-{
-}
-
-AccessDescription::AccessDescription(JsonView jsonValue) : 
-    m_accessMethodHasBeenSet(false),
-    m_accessLocationHasBeenSet(false)
+AccessDescription::AccessDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AccessDescription& AccessDescription::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AccessMethod"))
   {
     m_accessMethod = jsonValue.GetObject("AccessMethod");
-
     m_accessMethodHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AccessLocation"))
   {
     m_accessLocation = jsonValue.GetObject("AccessLocation");
-
     m_accessLocationHasBeenSet = true;
   }
-
   return *this;
 }
 

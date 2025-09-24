@@ -18,19 +18,7 @@ namespace Pipes
 namespace Model
 {
 
-BatchContainerOverrides::BatchContainerOverrides() : 
-    m_commandHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_resourceRequirementsHasBeenSet(false)
-{
-}
-
-BatchContainerOverrides::BatchContainerOverrides(JsonView jsonValue) : 
-    m_commandHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_resourceRequirementsHasBeenSet(false)
+BatchContainerOverrides::BatchContainerOverrides(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ BatchContainerOverrides& BatchContainerOverrides::operator =(JsonView jsonValue)
     }
     m_commandHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Environment"))
   {
     Aws::Utils::Array<JsonView> environmentJsonList = jsonValue.GetArray("Environment");
@@ -56,14 +43,11 @@ BatchContainerOverrides& BatchContainerOverrides::operator =(JsonView jsonValue)
     }
     m_environmentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceType"))
   {
     m_instanceType = jsonValue.GetString("InstanceType");
-
     m_instanceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceRequirements"))
   {
     Aws::Utils::Array<JsonView> resourceRequirementsJsonList = jsonValue.GetArray("ResourceRequirements");
@@ -73,7 +57,6 @@ BatchContainerOverrides& BatchContainerOverrides::operator =(JsonView jsonValue)
     }
     m_resourceRequirementsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,15 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-InstanceReusePolicy::InstanceReusePolicy() : 
-    m_reuseOnScaleIn(false),
-    m_reuseOnScaleInHasBeenSet(false)
-{
-}
-
-InstanceReusePolicy::InstanceReusePolicy(const XmlNode& xmlNode) : 
-    m_reuseOnScaleIn(false),
-    m_reuseOnScaleInHasBeenSet(false)
+InstanceReusePolicy::InstanceReusePolicy(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

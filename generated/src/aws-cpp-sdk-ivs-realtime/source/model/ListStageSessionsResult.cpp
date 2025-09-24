@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListStageSessionsResult::ListStageSessionsResult()
-{
-}
-
 ListStageSessionsResult::ListStageSessionsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,12 +25,6 @@ ListStageSessionsResult::ListStageSessionsResult(const Aws::AmazonWebServiceResu
 ListStageSessionsResult& ListStageSessionsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("nextToken"))
-  {
-    m_nextToken = jsonValue.GetString("nextToken");
-
-  }
-
   if(jsonValue.ValueExists("stageSessions"))
   {
     Aws::Utils::Array<JsonView> stageSessionsJsonList = jsonValue.GetArray("stageSessions");
@@ -42,14 +32,20 @@ ListStageSessionsResult& ListStageSessionsResult::operator =(const Aws::AmazonWe
     {
       m_stageSessions.push_back(stageSessionsJsonList[stageSessionsIndex].AsObject());
     }
+    m_stageSessionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("nextToken"))
+  {
+    m_nextToken = jsonValue.GetString("nextToken");
+    m_nextTokenHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

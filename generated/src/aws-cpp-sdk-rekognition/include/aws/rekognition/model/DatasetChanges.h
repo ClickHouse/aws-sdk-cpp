@@ -36,12 +36,13 @@ namespace Model
   class DatasetChanges
   {
   public:
-    AWS_REKOGNITION_API DatasetChanges();
+    AWS_REKOGNITION_API DatasetChanges() = default;
     AWS_REKOGNITION_API DatasetChanges(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API DatasetChanges& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A Base64-encoded binary data object containing one or JSON lines that either
      * update the dataset or are additions to the dataset. You change a dataset by
@@ -51,66 +52,16 @@ namespace Model
      * Image-Level labels in manifest files and and Object localization in manifest
      * files in the <i>Amazon Rekognition Custom Labels Developer Guide</i>. </p>
      */
-    inline const Aws::Utils::ByteBuffer& GetGroundTruth() const{ return m_groundTruth; }
-
-    /**
-     * <p>A Base64-encoded binary data object containing one or JSON lines that either
-     * update the dataset or are additions to the dataset. You change a dataset by
-     * calling <a>UpdateDatasetEntries</a>. If you are using an AWS SDK to call
-     * <code>UpdateDatasetEntries</code>, you don't need to encode <code>Changes</code>
-     * as the SDK encodes the data for you. </p> <p>For example JSON lines, see
-     * Image-Level labels in manifest files and and Object localization in manifest
-     * files in the <i>Amazon Rekognition Custom Labels Developer Guide</i>. </p>
-     */
+    inline const Aws::Utils::ByteBuffer& GetGroundTruth() const { return m_groundTruth; }
     inline bool GroundTruthHasBeenSet() const { return m_groundTruthHasBeenSet; }
-
-    /**
-     * <p>A Base64-encoded binary data object containing one or JSON lines that either
-     * update the dataset or are additions to the dataset. You change a dataset by
-     * calling <a>UpdateDatasetEntries</a>. If you are using an AWS SDK to call
-     * <code>UpdateDatasetEntries</code>, you don't need to encode <code>Changes</code>
-     * as the SDK encodes the data for you. </p> <p>For example JSON lines, see
-     * Image-Level labels in manifest files and and Object localization in manifest
-     * files in the <i>Amazon Rekognition Custom Labels Developer Guide</i>. </p>
-     */
-    inline void SetGroundTruth(const Aws::Utils::ByteBuffer& value) { m_groundTruthHasBeenSet = true; m_groundTruth = value; }
-
-    /**
-     * <p>A Base64-encoded binary data object containing one or JSON lines that either
-     * update the dataset or are additions to the dataset. You change a dataset by
-     * calling <a>UpdateDatasetEntries</a>. If you are using an AWS SDK to call
-     * <code>UpdateDatasetEntries</code>, you don't need to encode <code>Changes</code>
-     * as the SDK encodes the data for you. </p> <p>For example JSON lines, see
-     * Image-Level labels in manifest files and and Object localization in manifest
-     * files in the <i>Amazon Rekognition Custom Labels Developer Guide</i>. </p>
-     */
-    inline void SetGroundTruth(Aws::Utils::ByteBuffer&& value) { m_groundTruthHasBeenSet = true; m_groundTruth = std::move(value); }
-
-    /**
-     * <p>A Base64-encoded binary data object containing one or JSON lines that either
-     * update the dataset or are additions to the dataset. You change a dataset by
-     * calling <a>UpdateDatasetEntries</a>. If you are using an AWS SDK to call
-     * <code>UpdateDatasetEntries</code>, you don't need to encode <code>Changes</code>
-     * as the SDK encodes the data for you. </p> <p>For example JSON lines, see
-     * Image-Level labels in manifest files and and Object localization in manifest
-     * files in the <i>Amazon Rekognition Custom Labels Developer Guide</i>. </p>
-     */
-    inline DatasetChanges& WithGroundTruth(const Aws::Utils::ByteBuffer& value) { SetGroundTruth(value); return *this;}
-
-    /**
-     * <p>A Base64-encoded binary data object containing one or JSON lines that either
-     * update the dataset or are additions to the dataset. You change a dataset by
-     * calling <a>UpdateDatasetEntries</a>. If you are using an AWS SDK to call
-     * <code>UpdateDatasetEntries</code>, you don't need to encode <code>Changes</code>
-     * as the SDK encodes the data for you. </p> <p>For example JSON lines, see
-     * Image-Level labels in manifest files and and Object localization in manifest
-     * files in the <i>Amazon Rekognition Custom Labels Developer Guide</i>. </p>
-     */
-    inline DatasetChanges& WithGroundTruth(Aws::Utils::ByteBuffer&& value) { SetGroundTruth(std::move(value)); return *this;}
-
+    template<typename GroundTruthT = Aws::Utils::ByteBuffer>
+    void SetGroundTruth(GroundTruthT&& value) { m_groundTruthHasBeenSet = true; m_groundTruth = std::forward<GroundTruthT>(value); }
+    template<typename GroundTruthT = Aws::Utils::ByteBuffer>
+    DatasetChanges& WithGroundTruth(GroundTruthT&& value) { SetGroundTruth(std::forward<GroundTruthT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::ByteBuffer m_groundTruth;
+    Aws::Utils::ByteBuffer m_groundTruth{};
     bool m_groundTruthHasBeenSet = false;
   };
 

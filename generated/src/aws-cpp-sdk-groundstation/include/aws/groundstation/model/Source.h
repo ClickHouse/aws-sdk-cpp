@@ -33,167 +33,59 @@ namespace Model
   class Source
   {
   public:
-    AWS_GROUNDSTATION_API Source();
+    AWS_GROUNDSTATION_API Source() = default;
     AWS_GROUNDSTATION_API Source(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API Source& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Additional details for a <code>Config</code>, if type is
      * <code>dataflow-endpoint</code> or <code>antenna-downlink-demod-decode</code>
      * </p>
      */
-    inline const ConfigDetails& GetConfigDetails() const{ return m_configDetails; }
-
-    /**
-     * <p>Additional details for a <code>Config</code>, if type is
-     * <code>dataflow-endpoint</code> or <code>antenna-downlink-demod-decode</code>
-     * </p>
-     */
+    inline const ConfigDetails& GetConfigDetails() const { return m_configDetails; }
     inline bool ConfigDetailsHasBeenSet() const { return m_configDetailsHasBeenSet; }
+    template<typename ConfigDetailsT = ConfigDetails>
+    void SetConfigDetails(ConfigDetailsT&& value) { m_configDetailsHasBeenSet = true; m_configDetails = std::forward<ConfigDetailsT>(value); }
+    template<typename ConfigDetailsT = ConfigDetails>
+    Source& WithConfigDetails(ConfigDetailsT&& value) { SetConfigDetails(std::forward<ConfigDetailsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Additional details for a <code>Config</code>, if type is
-     * <code>dataflow-endpoint</code> or <code>antenna-downlink-demod-decode</code>
-     * </p>
-     */
-    inline void SetConfigDetails(const ConfigDetails& value) { m_configDetailsHasBeenSet = true; m_configDetails = value; }
-
-    /**
-     * <p>Additional details for a <code>Config</code>, if type is
-     * <code>dataflow-endpoint</code> or <code>antenna-downlink-demod-decode</code>
-     * </p>
-     */
-    inline void SetConfigDetails(ConfigDetails&& value) { m_configDetailsHasBeenSet = true; m_configDetails = std::move(value); }
-
-    /**
-     * <p>Additional details for a <code>Config</code>, if type is
-     * <code>dataflow-endpoint</code> or <code>antenna-downlink-demod-decode</code>
-     * </p>
-     */
-    inline Source& WithConfigDetails(const ConfigDetails& value) { SetConfigDetails(value); return *this;}
-
-    /**
-     * <p>Additional details for a <code>Config</code>, if type is
-     * <code>dataflow-endpoint</code> or <code>antenna-downlink-demod-decode</code>
-     * </p>
-     */
-    inline Source& WithConfigDetails(ConfigDetails&& value) { SetConfigDetails(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>UUID of a <code>Config</code>.</p>
      */
-    inline const Aws::String& GetConfigId() const{ return m_configId; }
-
-    /**
-     * <p>UUID of a <code>Config</code>.</p>
-     */
+    inline const Aws::String& GetConfigId() const { return m_configId; }
     inline bool ConfigIdHasBeenSet() const { return m_configIdHasBeenSet; }
+    template<typename ConfigIdT = Aws::String>
+    void SetConfigId(ConfigIdT&& value) { m_configIdHasBeenSet = true; m_configId = std::forward<ConfigIdT>(value); }
+    template<typename ConfigIdT = Aws::String>
+    Source& WithConfigId(ConfigIdT&& value) { SetConfigId(std::forward<ConfigIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>UUID of a <code>Config</code>.</p>
-     */
-    inline void SetConfigId(const Aws::String& value) { m_configIdHasBeenSet = true; m_configId = value; }
-
-    /**
-     * <p>UUID of a <code>Config</code>.</p>
-     */
-    inline void SetConfigId(Aws::String&& value) { m_configIdHasBeenSet = true; m_configId = std::move(value); }
-
-    /**
-     * <p>UUID of a <code>Config</code>.</p>
-     */
-    inline void SetConfigId(const char* value) { m_configIdHasBeenSet = true; m_configId.assign(value); }
-
-    /**
-     * <p>UUID of a <code>Config</code>.</p>
-     */
-    inline Source& WithConfigId(const Aws::String& value) { SetConfigId(value); return *this;}
-
-    /**
-     * <p>UUID of a <code>Config</code>.</p>
-     */
-    inline Source& WithConfigId(Aws::String&& value) { SetConfigId(std::move(value)); return *this;}
-
-    /**
-     * <p>UUID of a <code>Config</code>.</p>
-     */
-    inline Source& WithConfigId(const char* value) { SetConfigId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Type of a <code>Config</code>.</p>
      */
-    inline const ConfigCapabilityType& GetConfigType() const{ return m_configType; }
-
-    /**
-     * <p>Type of a <code>Config</code>.</p>
-     */
+    inline ConfigCapabilityType GetConfigType() const { return m_configType; }
     inline bool ConfigTypeHasBeenSet() const { return m_configTypeHasBeenSet; }
+    inline void SetConfigType(ConfigCapabilityType value) { m_configTypeHasBeenSet = true; m_configType = value; }
+    inline Source& WithConfigType(ConfigCapabilityType value) { SetConfigType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Type of a <code>Config</code>.</p>
-     */
-    inline void SetConfigType(const ConfigCapabilityType& value) { m_configTypeHasBeenSet = true; m_configType = value; }
-
-    /**
-     * <p>Type of a <code>Config</code>.</p>
-     */
-    inline void SetConfigType(ConfigCapabilityType&& value) { m_configTypeHasBeenSet = true; m_configType = std::move(value); }
-
-    /**
-     * <p>Type of a <code>Config</code>.</p>
-     */
-    inline Source& WithConfigType(const ConfigCapabilityType& value) { SetConfigType(value); return *this;}
-
-    /**
-     * <p>Type of a <code>Config</code>.</p>
-     */
-    inline Source& WithConfigType(ConfigCapabilityType&& value) { SetConfigType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Region of a dataflow source.</p>
      */
-    inline const Aws::String& GetDataflowSourceRegion() const{ return m_dataflowSourceRegion; }
-
-    /**
-     * <p>Region of a dataflow source.</p>
-     */
+    inline const Aws::String& GetDataflowSourceRegion() const { return m_dataflowSourceRegion; }
     inline bool DataflowSourceRegionHasBeenSet() const { return m_dataflowSourceRegionHasBeenSet; }
-
-    /**
-     * <p>Region of a dataflow source.</p>
-     */
-    inline void SetDataflowSourceRegion(const Aws::String& value) { m_dataflowSourceRegionHasBeenSet = true; m_dataflowSourceRegion = value; }
-
-    /**
-     * <p>Region of a dataflow source.</p>
-     */
-    inline void SetDataflowSourceRegion(Aws::String&& value) { m_dataflowSourceRegionHasBeenSet = true; m_dataflowSourceRegion = std::move(value); }
-
-    /**
-     * <p>Region of a dataflow source.</p>
-     */
-    inline void SetDataflowSourceRegion(const char* value) { m_dataflowSourceRegionHasBeenSet = true; m_dataflowSourceRegion.assign(value); }
-
-    /**
-     * <p>Region of a dataflow source.</p>
-     */
-    inline Source& WithDataflowSourceRegion(const Aws::String& value) { SetDataflowSourceRegion(value); return *this;}
-
-    /**
-     * <p>Region of a dataflow source.</p>
-     */
-    inline Source& WithDataflowSourceRegion(Aws::String&& value) { SetDataflowSourceRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>Region of a dataflow source.</p>
-     */
-    inline Source& WithDataflowSourceRegion(const char* value) { SetDataflowSourceRegion(value); return *this;}
-
+    template<typename DataflowSourceRegionT = Aws::String>
+    void SetDataflowSourceRegion(DataflowSourceRegionT&& value) { m_dataflowSourceRegionHasBeenSet = true; m_dataflowSourceRegion = std::forward<DataflowSourceRegionT>(value); }
+    template<typename DataflowSourceRegionT = Aws::String>
+    Source& WithDataflowSourceRegion(DataflowSourceRegionT&& value) { SetDataflowSourceRegion(std::forward<DataflowSourceRegionT>(value)); return *this;}
+    ///@}
   private:
 
     ConfigDetails m_configDetails;
@@ -202,7 +94,7 @@ namespace Model
     Aws::String m_configId;
     bool m_configIdHasBeenSet = false;
 
-    ConfigCapabilityType m_configType;
+    ConfigCapabilityType m_configType{ConfigCapabilityType::NOT_SET};
     bool m_configTypeHasBeenSet = false;
 
     Aws::String m_dataflowSourceRegion;

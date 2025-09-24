@@ -22,7 +22,7 @@ namespace Model
   class DescribeEnvironmentsRequest : public Cloud9Request
   {
   public:
-    AWS_CLOUD9_API DescribeEnvironmentsRequest();
+    AWS_CLOUD9_API DescribeEnvironmentsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,51 +35,19 @@ namespace Model
     AWS_CLOUD9_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The IDs of individual environments to get information about.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetEnvironmentIds() const{ return m_environmentIds; }
-
-    /**
-     * <p>The IDs of individual environments to get information about.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEnvironmentIds() const { return m_environmentIds; }
     inline bool EnvironmentIdsHasBeenSet() const { return m_environmentIdsHasBeenSet; }
-
-    /**
-     * <p>The IDs of individual environments to get information about.</p>
-     */
-    inline void SetEnvironmentIds(const Aws::Vector<Aws::String>& value) { m_environmentIdsHasBeenSet = true; m_environmentIds = value; }
-
-    /**
-     * <p>The IDs of individual environments to get information about.</p>
-     */
-    inline void SetEnvironmentIds(Aws::Vector<Aws::String>&& value) { m_environmentIdsHasBeenSet = true; m_environmentIds = std::move(value); }
-
-    /**
-     * <p>The IDs of individual environments to get information about.</p>
-     */
-    inline DescribeEnvironmentsRequest& WithEnvironmentIds(const Aws::Vector<Aws::String>& value) { SetEnvironmentIds(value); return *this;}
-
-    /**
-     * <p>The IDs of individual environments to get information about.</p>
-     */
-    inline DescribeEnvironmentsRequest& WithEnvironmentIds(Aws::Vector<Aws::String>&& value) { SetEnvironmentIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of individual environments to get information about.</p>
-     */
-    inline DescribeEnvironmentsRequest& AddEnvironmentIds(const Aws::String& value) { m_environmentIdsHasBeenSet = true; m_environmentIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of individual environments to get information about.</p>
-     */
-    inline DescribeEnvironmentsRequest& AddEnvironmentIds(Aws::String&& value) { m_environmentIdsHasBeenSet = true; m_environmentIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of individual environments to get information about.</p>
-     */
-    inline DescribeEnvironmentsRequest& AddEnvironmentIds(const char* value) { m_environmentIdsHasBeenSet = true; m_environmentIds.push_back(value); return *this; }
-
+    template<typename EnvironmentIdsT = Aws::Vector<Aws::String>>
+    void SetEnvironmentIds(EnvironmentIdsT&& value) { m_environmentIdsHasBeenSet = true; m_environmentIds = std::forward<EnvironmentIdsT>(value); }
+    template<typename EnvironmentIdsT = Aws::Vector<Aws::String>>
+    DescribeEnvironmentsRequest& WithEnvironmentIds(EnvironmentIdsT&& value) { SetEnvironmentIds(std::forward<EnvironmentIdsT>(value)); return *this;}
+    template<typename EnvironmentIdsT = Aws::String>
+    DescribeEnvironmentsRequest& AddEnvironmentIds(EnvironmentIdsT&& value) { m_environmentIdsHasBeenSet = true; m_environmentIds.emplace_back(std::forward<EnvironmentIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_environmentIds;

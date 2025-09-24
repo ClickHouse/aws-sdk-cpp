@@ -35,269 +35,95 @@ namespace Model
   class AccountModification
   {
   public:
-    AWS_WORKSPACES_API AccountModification();
+    AWS_WORKSPACES_API AccountModification() = default;
     AWS_WORKSPACES_API AccountModification(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API AccountModification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WORKSPACES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The state of the modification to the configuration of BYOL.</p>
      */
-    inline const DedicatedTenancyModificationStateEnum& GetModificationState() const{ return m_modificationState; }
-
-    /**
-     * <p>The state of the modification to the configuration of BYOL.</p>
-     */
+    inline DedicatedTenancyModificationStateEnum GetModificationState() const { return m_modificationState; }
     inline bool ModificationStateHasBeenSet() const { return m_modificationStateHasBeenSet; }
+    inline void SetModificationState(DedicatedTenancyModificationStateEnum value) { m_modificationStateHasBeenSet = true; m_modificationState = value; }
+    inline AccountModification& WithModificationState(DedicatedTenancyModificationStateEnum value) { SetModificationState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the modification to the configuration of BYOL.</p>
-     */
-    inline void SetModificationState(const DedicatedTenancyModificationStateEnum& value) { m_modificationStateHasBeenSet = true; m_modificationState = value; }
-
-    /**
-     * <p>The state of the modification to the configuration of BYOL.</p>
-     */
-    inline void SetModificationState(DedicatedTenancyModificationStateEnum&& value) { m_modificationStateHasBeenSet = true; m_modificationState = std::move(value); }
-
-    /**
-     * <p>The state of the modification to the configuration of BYOL.</p>
-     */
-    inline AccountModification& WithModificationState(const DedicatedTenancyModificationStateEnum& value) { SetModificationState(value); return *this;}
-
-    /**
-     * <p>The state of the modification to the configuration of BYOL.</p>
-     */
-    inline AccountModification& WithModificationState(DedicatedTenancyModificationStateEnum&& value) { SetModificationState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of BYOL (whether BYOL is being enabled or disabled).</p>
      */
-    inline const DedicatedTenancySupportResultEnum& GetDedicatedTenancySupport() const{ return m_dedicatedTenancySupport; }
-
-    /**
-     * <p>The status of BYOL (whether BYOL is being enabled or disabled).</p>
-     */
+    inline DedicatedTenancySupportResultEnum GetDedicatedTenancySupport() const { return m_dedicatedTenancySupport; }
     inline bool DedicatedTenancySupportHasBeenSet() const { return m_dedicatedTenancySupportHasBeenSet; }
+    inline void SetDedicatedTenancySupport(DedicatedTenancySupportResultEnum value) { m_dedicatedTenancySupportHasBeenSet = true; m_dedicatedTenancySupport = value; }
+    inline AccountModification& WithDedicatedTenancySupport(DedicatedTenancySupportResultEnum value) { SetDedicatedTenancySupport(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of BYOL (whether BYOL is being enabled or disabled).</p>
-     */
-    inline void SetDedicatedTenancySupport(const DedicatedTenancySupportResultEnum& value) { m_dedicatedTenancySupportHasBeenSet = true; m_dedicatedTenancySupport = value; }
-
-    /**
-     * <p>The status of BYOL (whether BYOL is being enabled or disabled).</p>
-     */
-    inline void SetDedicatedTenancySupport(DedicatedTenancySupportResultEnum&& value) { m_dedicatedTenancySupportHasBeenSet = true; m_dedicatedTenancySupport = std::move(value); }
-
-    /**
-     * <p>The status of BYOL (whether BYOL is being enabled or disabled).</p>
-     */
-    inline AccountModification& WithDedicatedTenancySupport(const DedicatedTenancySupportResultEnum& value) { SetDedicatedTenancySupport(value); return *this;}
-
-    /**
-     * <p>The status of BYOL (whether BYOL is being enabled or disabled).</p>
-     */
-    inline AccountModification& WithDedicatedTenancySupport(DedicatedTenancySupportResultEnum&& value) { SetDedicatedTenancySupport(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP address range, specified as an IPv4 CIDR block, for the management
      * network interface used for the account.</p>
      */
-    inline const Aws::String& GetDedicatedTenancyManagementCidrRange() const{ return m_dedicatedTenancyManagementCidrRange; }
-
-    /**
-     * <p>The IP address range, specified as an IPv4 CIDR block, for the management
-     * network interface used for the account.</p>
-     */
+    inline const Aws::String& GetDedicatedTenancyManagementCidrRange() const { return m_dedicatedTenancyManagementCidrRange; }
     inline bool DedicatedTenancyManagementCidrRangeHasBeenSet() const { return m_dedicatedTenancyManagementCidrRangeHasBeenSet; }
+    template<typename DedicatedTenancyManagementCidrRangeT = Aws::String>
+    void SetDedicatedTenancyManagementCidrRange(DedicatedTenancyManagementCidrRangeT&& value) { m_dedicatedTenancyManagementCidrRangeHasBeenSet = true; m_dedicatedTenancyManagementCidrRange = std::forward<DedicatedTenancyManagementCidrRangeT>(value); }
+    template<typename DedicatedTenancyManagementCidrRangeT = Aws::String>
+    AccountModification& WithDedicatedTenancyManagementCidrRange(DedicatedTenancyManagementCidrRangeT&& value) { SetDedicatedTenancyManagementCidrRange(std::forward<DedicatedTenancyManagementCidrRangeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IP address range, specified as an IPv4 CIDR block, for the management
-     * network interface used for the account.</p>
-     */
-    inline void SetDedicatedTenancyManagementCidrRange(const Aws::String& value) { m_dedicatedTenancyManagementCidrRangeHasBeenSet = true; m_dedicatedTenancyManagementCidrRange = value; }
-
-    /**
-     * <p>The IP address range, specified as an IPv4 CIDR block, for the management
-     * network interface used for the account.</p>
-     */
-    inline void SetDedicatedTenancyManagementCidrRange(Aws::String&& value) { m_dedicatedTenancyManagementCidrRangeHasBeenSet = true; m_dedicatedTenancyManagementCidrRange = std::move(value); }
-
-    /**
-     * <p>The IP address range, specified as an IPv4 CIDR block, for the management
-     * network interface used for the account.</p>
-     */
-    inline void SetDedicatedTenancyManagementCidrRange(const char* value) { m_dedicatedTenancyManagementCidrRangeHasBeenSet = true; m_dedicatedTenancyManagementCidrRange.assign(value); }
-
-    /**
-     * <p>The IP address range, specified as an IPv4 CIDR block, for the management
-     * network interface used for the account.</p>
-     */
-    inline AccountModification& WithDedicatedTenancyManagementCidrRange(const Aws::String& value) { SetDedicatedTenancyManagementCidrRange(value); return *this;}
-
-    /**
-     * <p>The IP address range, specified as an IPv4 CIDR block, for the management
-     * network interface used for the account.</p>
-     */
-    inline AccountModification& WithDedicatedTenancyManagementCidrRange(Aws::String&& value) { SetDedicatedTenancyManagementCidrRange(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP address range, specified as an IPv4 CIDR block, for the management
-     * network interface used for the account.</p>
-     */
-    inline AccountModification& WithDedicatedTenancyManagementCidrRange(const char* value) { SetDedicatedTenancyManagementCidrRange(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the modification of the BYOL configuration was
      * started.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The timestamp when the modification of the BYOL configuration was
-     * started.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    AccountModification& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the modification of the BYOL configuration was
-     * started.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The timestamp when the modification of the BYOL configuration was
-     * started.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The timestamp when the modification of the BYOL configuration was
-     * started.</p>
-     */
-    inline AccountModification& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The timestamp when the modification of the BYOL configuration was
-     * started.</p>
-     */
-    inline AccountModification& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The error code that is returned if the configuration of BYOL cannot be
      * modified.</p>
      */
-    inline const Aws::String& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The error code that is returned if the configuration of BYOL cannot be
-     * modified.</p>
-     */
+    inline const Aws::String& GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    template<typename ErrorCodeT = Aws::String>
+    void SetErrorCode(ErrorCodeT&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::forward<ErrorCodeT>(value); }
+    template<typename ErrorCodeT = Aws::String>
+    AccountModification& WithErrorCode(ErrorCodeT&& value) { SetErrorCode(std::forward<ErrorCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code that is returned if the configuration of BYOL cannot be
-     * modified.</p>
-     */
-    inline void SetErrorCode(const Aws::String& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The error code that is returned if the configuration of BYOL cannot be
-     * modified.</p>
-     */
-    inline void SetErrorCode(Aws::String&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The error code that is returned if the configuration of BYOL cannot be
-     * modified.</p>
-     */
-    inline void SetErrorCode(const char* value) { m_errorCodeHasBeenSet = true; m_errorCode.assign(value); }
-
-    /**
-     * <p>The error code that is returned if the configuration of BYOL cannot be
-     * modified.</p>
-     */
-    inline AccountModification& WithErrorCode(const Aws::String& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The error code that is returned if the configuration of BYOL cannot be
-     * modified.</p>
-     */
-    inline AccountModification& WithErrorCode(Aws::String&& value) { SetErrorCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The error code that is returned if the configuration of BYOL cannot be
-     * modified.</p>
-     */
-    inline AccountModification& WithErrorCode(const char* value) { SetErrorCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The text of the error message that is returned if the configuration of BYOL
      * cannot be modified.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>The text of the error message that is returned if the configuration of BYOL
-     * cannot be modified.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
-
-    /**
-     * <p>The text of the error message that is returned if the configuration of BYOL
-     * cannot be modified.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>The text of the error message that is returned if the configuration of BYOL
-     * cannot be modified.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>The text of the error message that is returned if the configuration of BYOL
-     * cannot be modified.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>The text of the error message that is returned if the configuration of BYOL
-     * cannot be modified.</p>
-     */
-    inline AccountModification& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>The text of the error message that is returned if the configuration of BYOL
-     * cannot be modified.</p>
-     */
-    inline AccountModification& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The text of the error message that is returned if the configuration of BYOL
-     * cannot be modified.</p>
-     */
-    inline AccountModification& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    AccountModification& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
   private:
 
-    DedicatedTenancyModificationStateEnum m_modificationState;
+    DedicatedTenancyModificationStateEnum m_modificationState{DedicatedTenancyModificationStateEnum::NOT_SET};
     bool m_modificationStateHasBeenSet = false;
 
-    DedicatedTenancySupportResultEnum m_dedicatedTenancySupport;
+    DedicatedTenancySupportResultEnum m_dedicatedTenancySupport{DedicatedTenancySupportResultEnum::NOT_SET};
     bool m_dedicatedTenancySupportHasBeenSet = false;
 
     Aws::String m_dedicatedTenancyManagementCidrRange;
     bool m_dedicatedTenancyManagementCidrRangeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
     Aws::String m_errorCode;

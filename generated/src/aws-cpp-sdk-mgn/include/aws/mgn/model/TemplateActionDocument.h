@@ -31,519 +31,175 @@ namespace Model
   class TemplateActionDocument
   {
   public:
-    AWS_MGN_API TemplateActionDocument();
+    AWS_MGN_API TemplateActionDocument() = default;
     AWS_MGN_API TemplateActionDocument(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API TemplateActionDocument& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MGN_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Template post migration custom action ID.</p>
      */
-    inline const Aws::String& GetActionID() const{ return m_actionID; }
-
-    /**
-     * <p>Template post migration custom action ID.</p>
-     */
+    inline const Aws::String& GetActionID() const { return m_actionID; }
     inline bool ActionIDHasBeenSet() const { return m_actionIDHasBeenSet; }
+    template<typename ActionIDT = Aws::String>
+    void SetActionID(ActionIDT&& value) { m_actionIDHasBeenSet = true; m_actionID = std::forward<ActionIDT>(value); }
+    template<typename ActionIDT = Aws::String>
+    TemplateActionDocument& WithActionID(ActionIDT&& value) { SetActionID(std::forward<ActionIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Template post migration custom action ID.</p>
-     */
-    inline void SetActionID(const Aws::String& value) { m_actionIDHasBeenSet = true; m_actionID = value; }
-
-    /**
-     * <p>Template post migration custom action ID.</p>
-     */
-    inline void SetActionID(Aws::String&& value) { m_actionIDHasBeenSet = true; m_actionID = std::move(value); }
-
-    /**
-     * <p>Template post migration custom action ID.</p>
-     */
-    inline void SetActionID(const char* value) { m_actionIDHasBeenSet = true; m_actionID.assign(value); }
-
-    /**
-     * <p>Template post migration custom action ID.</p>
-     */
-    inline TemplateActionDocument& WithActionID(const Aws::String& value) { SetActionID(value); return *this;}
-
-    /**
-     * <p>Template post migration custom action ID.</p>
-     */
-    inline TemplateActionDocument& WithActionID(Aws::String&& value) { SetActionID(std::move(value)); return *this;}
-
-    /**
-     * <p>Template post migration custom action ID.</p>
-     */
-    inline TemplateActionDocument& WithActionID(const char* value) { SetActionID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Template post migration custom action name.</p>
      */
-    inline const Aws::String& GetActionName() const{ return m_actionName; }
-
-    /**
-     * <p>Template post migration custom action name.</p>
-     */
+    inline const Aws::String& GetActionName() const { return m_actionName; }
     inline bool ActionNameHasBeenSet() const { return m_actionNameHasBeenSet; }
+    template<typename ActionNameT = Aws::String>
+    void SetActionName(ActionNameT&& value) { m_actionNameHasBeenSet = true; m_actionName = std::forward<ActionNameT>(value); }
+    template<typename ActionNameT = Aws::String>
+    TemplateActionDocument& WithActionName(ActionNameT&& value) { SetActionName(std::forward<ActionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Template post migration custom action name.</p>
-     */
-    inline void SetActionName(const Aws::String& value) { m_actionNameHasBeenSet = true; m_actionName = value; }
-
-    /**
-     * <p>Template post migration custom action name.</p>
-     */
-    inline void SetActionName(Aws::String&& value) { m_actionNameHasBeenSet = true; m_actionName = std::move(value); }
-
-    /**
-     * <p>Template post migration custom action name.</p>
-     */
-    inline void SetActionName(const char* value) { m_actionNameHasBeenSet = true; m_actionName.assign(value); }
-
-    /**
-     * <p>Template post migration custom action name.</p>
-     */
-    inline TemplateActionDocument& WithActionName(const Aws::String& value) { SetActionName(value); return *this;}
-
-    /**
-     * <p>Template post migration custom action name.</p>
-     */
-    inline TemplateActionDocument& WithActionName(Aws::String&& value) { SetActionName(std::move(value)); return *this;}
-
-    /**
-     * <p>Template post migration custom action name.</p>
-     */
-    inline TemplateActionDocument& WithActionName(const char* value) { SetActionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Template post migration custom action active status.</p>
      */
-    inline bool GetActive() const{ return m_active; }
-
-    /**
-     * <p>Template post migration custom action active status.</p>
-     */
+    inline bool GetActive() const { return m_active; }
     inline bool ActiveHasBeenSet() const { return m_activeHasBeenSet; }
-
-    /**
-     * <p>Template post migration custom action active status.</p>
-     */
     inline void SetActive(bool value) { m_activeHasBeenSet = true; m_active = value; }
-
-    /**
-     * <p>Template post migration custom action active status.</p>
-     */
     inline TemplateActionDocument& WithActive(bool value) { SetActive(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Template post migration custom action category.</p>
      */
-    inline const ActionCategory& GetCategory() const{ return m_category; }
-
-    /**
-     * <p>Template post migration custom action category.</p>
-     */
+    inline ActionCategory GetCategory() const { return m_category; }
     inline bool CategoryHasBeenSet() const { return m_categoryHasBeenSet; }
+    inline void SetCategory(ActionCategory value) { m_categoryHasBeenSet = true; m_category = value; }
+    inline TemplateActionDocument& WithCategory(ActionCategory value) { SetCategory(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Template post migration custom action category.</p>
-     */
-    inline void SetCategory(const ActionCategory& value) { m_categoryHasBeenSet = true; m_category = value; }
-
-    /**
-     * <p>Template post migration custom action category.</p>
-     */
-    inline void SetCategory(ActionCategory&& value) { m_categoryHasBeenSet = true; m_category = std::move(value); }
-
-    /**
-     * <p>Template post migration custom action category.</p>
-     */
-    inline TemplateActionDocument& WithCategory(const ActionCategory& value) { SetCategory(value); return *this;}
-
-    /**
-     * <p>Template post migration custom action category.</p>
-     */
-    inline TemplateActionDocument& WithCategory(ActionCategory&& value) { SetCategory(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Template post migration custom action description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Template post migration custom action description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    TemplateActionDocument& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Template post migration custom action description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Template post migration custom action description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Template post migration custom action description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Template post migration custom action description.</p>
-     */
-    inline TemplateActionDocument& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Template post migration custom action description.</p>
-     */
-    inline TemplateActionDocument& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Template post migration custom action description.</p>
-     */
-    inline TemplateActionDocument& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Template post migration custom action document identifier.</p>
      */
-    inline const Aws::String& GetDocumentIdentifier() const{ return m_documentIdentifier; }
-
-    /**
-     * <p>Template post migration custom action document identifier.</p>
-     */
+    inline const Aws::String& GetDocumentIdentifier() const { return m_documentIdentifier; }
     inline bool DocumentIdentifierHasBeenSet() const { return m_documentIdentifierHasBeenSet; }
+    template<typename DocumentIdentifierT = Aws::String>
+    void SetDocumentIdentifier(DocumentIdentifierT&& value) { m_documentIdentifierHasBeenSet = true; m_documentIdentifier = std::forward<DocumentIdentifierT>(value); }
+    template<typename DocumentIdentifierT = Aws::String>
+    TemplateActionDocument& WithDocumentIdentifier(DocumentIdentifierT&& value) { SetDocumentIdentifier(std::forward<DocumentIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Template post migration custom action document identifier.</p>
-     */
-    inline void SetDocumentIdentifier(const Aws::String& value) { m_documentIdentifierHasBeenSet = true; m_documentIdentifier = value; }
-
-    /**
-     * <p>Template post migration custom action document identifier.</p>
-     */
-    inline void SetDocumentIdentifier(Aws::String&& value) { m_documentIdentifierHasBeenSet = true; m_documentIdentifier = std::move(value); }
-
-    /**
-     * <p>Template post migration custom action document identifier.</p>
-     */
-    inline void SetDocumentIdentifier(const char* value) { m_documentIdentifierHasBeenSet = true; m_documentIdentifier.assign(value); }
-
-    /**
-     * <p>Template post migration custom action document identifier.</p>
-     */
-    inline TemplateActionDocument& WithDocumentIdentifier(const Aws::String& value) { SetDocumentIdentifier(value); return *this;}
-
-    /**
-     * <p>Template post migration custom action document identifier.</p>
-     */
-    inline TemplateActionDocument& WithDocumentIdentifier(Aws::String&& value) { SetDocumentIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>Template post migration custom action document identifier.</p>
-     */
-    inline TemplateActionDocument& WithDocumentIdentifier(const char* value) { SetDocumentIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Template post migration custom action document version.</p>
      */
-    inline const Aws::String& GetDocumentVersion() const{ return m_documentVersion; }
-
-    /**
-     * <p>Template post migration custom action document version.</p>
-     */
+    inline const Aws::String& GetDocumentVersion() const { return m_documentVersion; }
     inline bool DocumentVersionHasBeenSet() const { return m_documentVersionHasBeenSet; }
+    template<typename DocumentVersionT = Aws::String>
+    void SetDocumentVersion(DocumentVersionT&& value) { m_documentVersionHasBeenSet = true; m_documentVersion = std::forward<DocumentVersionT>(value); }
+    template<typename DocumentVersionT = Aws::String>
+    TemplateActionDocument& WithDocumentVersion(DocumentVersionT&& value) { SetDocumentVersion(std::forward<DocumentVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Template post migration custom action document version.</p>
-     */
-    inline void SetDocumentVersion(const Aws::String& value) { m_documentVersionHasBeenSet = true; m_documentVersion = value; }
-
-    /**
-     * <p>Template post migration custom action document version.</p>
-     */
-    inline void SetDocumentVersion(Aws::String&& value) { m_documentVersionHasBeenSet = true; m_documentVersion = std::move(value); }
-
-    /**
-     * <p>Template post migration custom action document version.</p>
-     */
-    inline void SetDocumentVersion(const char* value) { m_documentVersionHasBeenSet = true; m_documentVersion.assign(value); }
-
-    /**
-     * <p>Template post migration custom action document version.</p>
-     */
-    inline TemplateActionDocument& WithDocumentVersion(const Aws::String& value) { SetDocumentVersion(value); return *this;}
-
-    /**
-     * <p>Template post migration custom action document version.</p>
-     */
-    inline TemplateActionDocument& WithDocumentVersion(Aws::String&& value) { SetDocumentVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>Template post migration custom action document version.</p>
-     */
-    inline TemplateActionDocument& WithDocumentVersion(const char* value) { SetDocumentVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Template post migration custom action external parameters.</p>
      */
-    inline const Aws::Map<Aws::String, SsmExternalParameter>& GetExternalParameters() const{ return m_externalParameters; }
-
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
+    inline const Aws::Map<Aws::String, SsmExternalParameter>& GetExternalParameters() const { return m_externalParameters; }
     inline bool ExternalParametersHasBeenSet() const { return m_externalParametersHasBeenSet; }
+    template<typename ExternalParametersT = Aws::Map<Aws::String, SsmExternalParameter>>
+    void SetExternalParameters(ExternalParametersT&& value) { m_externalParametersHasBeenSet = true; m_externalParameters = std::forward<ExternalParametersT>(value); }
+    template<typename ExternalParametersT = Aws::Map<Aws::String, SsmExternalParameter>>
+    TemplateActionDocument& WithExternalParameters(ExternalParametersT&& value) { SetExternalParameters(std::forward<ExternalParametersT>(value)); return *this;}
+    template<typename ExternalParametersKeyT = Aws::String, typename ExternalParametersValueT = SsmExternalParameter>
+    TemplateActionDocument& AddExternalParameters(ExternalParametersKeyT&& key, ExternalParametersValueT&& value) {
+      m_externalParametersHasBeenSet = true; m_externalParameters.emplace(std::forward<ExternalParametersKeyT>(key), std::forward<ExternalParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
-    inline void SetExternalParameters(const Aws::Map<Aws::String, SsmExternalParameter>& value) { m_externalParametersHasBeenSet = true; m_externalParameters = value; }
-
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
-    inline void SetExternalParameters(Aws::Map<Aws::String, SsmExternalParameter>&& value) { m_externalParametersHasBeenSet = true; m_externalParameters = std::move(value); }
-
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
-    inline TemplateActionDocument& WithExternalParameters(const Aws::Map<Aws::String, SsmExternalParameter>& value) { SetExternalParameters(value); return *this;}
-
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
-    inline TemplateActionDocument& WithExternalParameters(Aws::Map<Aws::String, SsmExternalParameter>&& value) { SetExternalParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
-    inline TemplateActionDocument& AddExternalParameters(const Aws::String& key, const SsmExternalParameter& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
-    inline TemplateActionDocument& AddExternalParameters(Aws::String&& key, const SsmExternalParameter& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
-    inline TemplateActionDocument& AddExternalParameters(const Aws::String& key, SsmExternalParameter&& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
-    inline TemplateActionDocument& AddExternalParameters(Aws::String&& key, SsmExternalParameter&& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
-    inline TemplateActionDocument& AddExternalParameters(const char* key, SsmExternalParameter&& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Template post migration custom action external parameters.</p>
-     */
-    inline TemplateActionDocument& AddExternalParameters(const char* key, const SsmExternalParameter& value) { m_externalParametersHasBeenSet = true; m_externalParameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Template post migration custom action must succeed for cutover.</p>
      */
-    inline bool GetMustSucceedForCutover() const{ return m_mustSucceedForCutover; }
-
-    /**
-     * <p>Template post migration custom action must succeed for cutover.</p>
-     */
+    inline bool GetMustSucceedForCutover() const { return m_mustSucceedForCutover; }
     inline bool MustSucceedForCutoverHasBeenSet() const { return m_mustSucceedForCutoverHasBeenSet; }
-
-    /**
-     * <p>Template post migration custom action must succeed for cutover.</p>
-     */
     inline void SetMustSucceedForCutover(bool value) { m_mustSucceedForCutoverHasBeenSet = true; m_mustSucceedForCutover = value; }
-
-    /**
-     * <p>Template post migration custom action must succeed for cutover.</p>
-     */
     inline TemplateActionDocument& WithMustSucceedForCutover(bool value) { SetMustSucceedForCutover(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Operating system eligible for this template post migration custom action.</p>
      */
-    inline const Aws::String& GetOperatingSystem() const{ return m_operatingSystem; }
-
-    /**
-     * <p>Operating system eligible for this template post migration custom action.</p>
-     */
+    inline const Aws::String& GetOperatingSystem() const { return m_operatingSystem; }
     inline bool OperatingSystemHasBeenSet() const { return m_operatingSystemHasBeenSet; }
+    template<typename OperatingSystemT = Aws::String>
+    void SetOperatingSystem(OperatingSystemT&& value) { m_operatingSystemHasBeenSet = true; m_operatingSystem = std::forward<OperatingSystemT>(value); }
+    template<typename OperatingSystemT = Aws::String>
+    TemplateActionDocument& WithOperatingSystem(OperatingSystemT&& value) { SetOperatingSystem(std::forward<OperatingSystemT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Operating system eligible for this template post migration custom action.</p>
-     */
-    inline void SetOperatingSystem(const Aws::String& value) { m_operatingSystemHasBeenSet = true; m_operatingSystem = value; }
-
-    /**
-     * <p>Operating system eligible for this template post migration custom action.</p>
-     */
-    inline void SetOperatingSystem(Aws::String&& value) { m_operatingSystemHasBeenSet = true; m_operatingSystem = std::move(value); }
-
-    /**
-     * <p>Operating system eligible for this template post migration custom action.</p>
-     */
-    inline void SetOperatingSystem(const char* value) { m_operatingSystemHasBeenSet = true; m_operatingSystem.assign(value); }
-
-    /**
-     * <p>Operating system eligible for this template post migration custom action.</p>
-     */
-    inline TemplateActionDocument& WithOperatingSystem(const Aws::String& value) { SetOperatingSystem(value); return *this;}
-
-    /**
-     * <p>Operating system eligible for this template post migration custom action.</p>
-     */
-    inline TemplateActionDocument& WithOperatingSystem(Aws::String&& value) { SetOperatingSystem(std::move(value)); return *this;}
-
-    /**
-     * <p>Operating system eligible for this template post migration custom action.</p>
-     */
-    inline TemplateActionDocument& WithOperatingSystem(const char* value) { SetOperatingSystem(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Template post migration custom action order.</p>
      */
-    inline int GetOrder() const{ return m_order; }
-
-    /**
-     * <p>Template post migration custom action order.</p>
-     */
+    inline int GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
-
-    /**
-     * <p>Template post migration custom action order.</p>
-     */
     inline void SetOrder(int value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>Template post migration custom action order.</p>
-     */
     inline TemplateActionDocument& WithOrder(int value) { SetOrder(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Template post migration custom action parameters.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>>
+    TemplateActionDocument& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = Aws::Vector<SsmParameterStoreParameter>>
+    TemplateActionDocument& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
-    inline TemplateActionDocument& WithParameters(const Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
-    inline TemplateActionDocument& WithParameters(Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
-    inline TemplateActionDocument& AddParameters(const Aws::String& key, const Aws::Vector<SsmParameterStoreParameter>& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
-    inline TemplateActionDocument& AddParameters(Aws::String&& key, const Aws::Vector<SsmParameterStoreParameter>& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
-    inline TemplateActionDocument& AddParameters(const Aws::String& key, Aws::Vector<SsmParameterStoreParameter>&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
-    inline TemplateActionDocument& AddParameters(Aws::String&& key, Aws::Vector<SsmParameterStoreParameter>&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
-    inline TemplateActionDocument& AddParameters(const char* key, Aws::Vector<SsmParameterStoreParameter>&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Template post migration custom action parameters.</p>
-     */
-    inline TemplateActionDocument& AddParameters(const char* key, const Aws::Vector<SsmParameterStoreParameter>& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Template post migration custom action timeout in seconds.</p>
      */
-    inline int GetTimeoutSeconds() const{ return m_timeoutSeconds; }
-
-    /**
-     * <p>Template post migration custom action timeout in seconds.</p>
-     */
+    inline int GetTimeoutSeconds() const { return m_timeoutSeconds; }
     inline bool TimeoutSecondsHasBeenSet() const { return m_timeoutSecondsHasBeenSet; }
-
-    /**
-     * <p>Template post migration custom action timeout in seconds.</p>
-     */
     inline void SetTimeoutSeconds(int value) { m_timeoutSecondsHasBeenSet = true; m_timeoutSeconds = value; }
-
-    /**
-     * <p>Template post migration custom action timeout in seconds.</p>
-     */
     inline TemplateActionDocument& WithTimeoutSeconds(int value) { SetTimeoutSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
     inline bool RequestIdHasBeenSet() const { return m_requestIdHasBeenSet; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestIdHasBeenSet = true; m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestIdHasBeenSet = true; m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestIdHasBeenSet = true; m_requestId.assign(value); }
-
-    
-    inline TemplateActionDocument& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline TemplateActionDocument& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline TemplateActionDocument& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    TemplateActionDocument& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_actionID;
@@ -552,10 +208,10 @@ namespace Model
     Aws::String m_actionName;
     bool m_actionNameHasBeenSet = false;
 
-    bool m_active;
+    bool m_active{false};
     bool m_activeHasBeenSet = false;
 
-    ActionCategory m_category;
+    ActionCategory m_category{ActionCategory::NOT_SET};
     bool m_categoryHasBeenSet = false;
 
     Aws::String m_description;
@@ -570,19 +226,19 @@ namespace Model
     Aws::Map<Aws::String, SsmExternalParameter> m_externalParameters;
     bool m_externalParametersHasBeenSet = false;
 
-    bool m_mustSucceedForCutover;
+    bool m_mustSucceedForCutover{false};
     bool m_mustSucceedForCutoverHasBeenSet = false;
 
     Aws::String m_operatingSystem;
     bool m_operatingSystemHasBeenSet = false;
 
-    int m_order;
+    int m_order{0};
     bool m_orderHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::Vector<SsmParameterStoreParameter>> m_parameters;
     bool m_parametersHasBeenSet = false;
 
-    int m_timeoutSeconds;
+    int m_timeoutSeconds{0};
     bool m_timeoutSecondsHasBeenSet = false;
 
     Aws::String m_requestId;

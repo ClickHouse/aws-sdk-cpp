@@ -32,106 +32,39 @@ namespace Model
   class MsSmoothOutputSettings
   {
   public:
-    AWS_MEDIALIVE_API MsSmoothOutputSettings();
+    AWS_MEDIALIVE_API MsSmoothOutputSettings() = default;
     AWS_MEDIALIVE_API MsSmoothOutputSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API MsSmoothOutputSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Only applicable when this output is referencing an H.265 video
      * description.
 Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
      */
-    inline const MsSmoothH265PackagingType& GetH265PackagingType() const{ return m_h265PackagingType; }
-
-    /**
-     * Only applicable when this output is referencing an H.265 video
-     * description.
-Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
-     */
+    inline MsSmoothH265PackagingType GetH265PackagingType() const { return m_h265PackagingType; }
     inline bool H265PackagingTypeHasBeenSet() const { return m_h265PackagingTypeHasBeenSet; }
+    inline void SetH265PackagingType(MsSmoothH265PackagingType value) { m_h265PackagingTypeHasBeenSet = true; m_h265PackagingType = value; }
+    inline MsSmoothOutputSettings& WithH265PackagingType(MsSmoothH265PackagingType value) { SetH265PackagingType(value); return *this;}
+    ///@}
 
-    /**
-     * Only applicable when this output is referencing an H.265 video
-     * description.
-Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
-     */
-    inline void SetH265PackagingType(const MsSmoothH265PackagingType& value) { m_h265PackagingTypeHasBeenSet = true; m_h265PackagingType = value; }
-
-    /**
-     * Only applicable when this output is referencing an H.265 video
-     * description.
-Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
-     */
-    inline void SetH265PackagingType(MsSmoothH265PackagingType&& value) { m_h265PackagingTypeHasBeenSet = true; m_h265PackagingType = std::move(value); }
-
-    /**
-     * Only applicable when this output is referencing an H.265 video
-     * description.
-Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
-     */
-    inline MsSmoothOutputSettings& WithH265PackagingType(const MsSmoothH265PackagingType& value) { SetH265PackagingType(value); return *this;}
-
-    /**
-     * Only applicable when this output is referencing an H.265 video
-     * description.
-Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
-     */
-    inline MsSmoothOutputSettings& WithH265PackagingType(MsSmoothH265PackagingType&& value) { SetH265PackagingType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * String concatenated to the end of the destination filename.  Required for
      * multiple outputs of the same type.
      */
-    inline const Aws::String& GetNameModifier() const{ return m_nameModifier; }
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
+    inline const Aws::String& GetNameModifier() const { return m_nameModifier; }
     inline bool NameModifierHasBeenSet() const { return m_nameModifierHasBeenSet; }
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline void SetNameModifier(const Aws::String& value) { m_nameModifierHasBeenSet = true; m_nameModifier = value; }
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline void SetNameModifier(Aws::String&& value) { m_nameModifierHasBeenSet = true; m_nameModifier = std::move(value); }
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline void SetNameModifier(const char* value) { m_nameModifierHasBeenSet = true; m_nameModifier.assign(value); }
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline MsSmoothOutputSettings& WithNameModifier(const Aws::String& value) { SetNameModifier(value); return *this;}
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline MsSmoothOutputSettings& WithNameModifier(Aws::String&& value) { SetNameModifier(std::move(value)); return *this;}
-
-    /**
-     * String concatenated to the end of the destination filename.  Required for
-     * multiple outputs of the same type.
-     */
-    inline MsSmoothOutputSettings& WithNameModifier(const char* value) { SetNameModifier(value); return *this;}
-
+    template<typename NameModifierT = Aws::String>
+    void SetNameModifier(NameModifierT&& value) { m_nameModifierHasBeenSet = true; m_nameModifier = std::forward<NameModifierT>(value); }
+    template<typename NameModifierT = Aws::String>
+    MsSmoothOutputSettings& WithNameModifier(NameModifierT&& value) { SetNameModifier(std::forward<NameModifierT>(value)); return *this;}
+    ///@}
   private:
 
-    MsSmoothH265PackagingType m_h265PackagingType;
+    MsSmoothH265PackagingType m_h265PackagingType{MsSmoothH265PackagingType::NOT_SET};
     bool m_h265PackagingTypeHasBeenSet = false;
 
     Aws::String m_nameModifier;

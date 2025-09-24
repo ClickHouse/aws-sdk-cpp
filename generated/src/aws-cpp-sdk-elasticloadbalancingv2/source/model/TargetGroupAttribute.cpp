@@ -20,15 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-TargetGroupAttribute::TargetGroupAttribute() : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-TargetGroupAttribute::TargetGroupAttribute(const XmlNode& xmlNode) : 
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+TargetGroupAttribute::TargetGroupAttribute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

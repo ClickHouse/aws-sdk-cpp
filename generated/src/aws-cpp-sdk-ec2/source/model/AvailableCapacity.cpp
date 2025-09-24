@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-AvailableCapacity::AvailableCapacity() : 
-    m_availableInstanceCapacityHasBeenSet(false),
-    m_availableVCpus(0),
-    m_availableVCpusHasBeenSet(false)
-{
-}
-
-AvailableCapacity::AvailableCapacity(const XmlNode& xmlNode) : 
-    m_availableInstanceCapacityHasBeenSet(false),
-    m_availableVCpus(0),
-    m_availableVCpusHasBeenSet(false)
+AvailableCapacity::AvailableCapacity(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ AvailableCapacity& AvailableCapacity::operator =(const XmlNode& xmlNode)
     if(!availableInstanceCapacityNode.IsNull())
     {
       XmlNode availableInstanceCapacityMember = availableInstanceCapacityNode.FirstChild("item");
+      m_availableInstanceCapacityHasBeenSet = !availableInstanceCapacityMember.IsNull();
       while(!availableInstanceCapacityMember.IsNull())
       {
         m_availableInstanceCapacity.push_back(availableInstanceCapacityMember);
@@ -92,7 +83,7 @@ void AvailableCapacity::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_availableInstanceCapacity)
       {
         Aws::StringStream availableInstanceCapacitySs;
-        availableInstanceCapacitySs << location <<  ".AvailableInstanceCapacity." << availableInstanceCapacityIdx++;
+        availableInstanceCapacitySs << location << ".AvailableInstanceCapacity." << availableInstanceCapacityIdx++;
         item.OutputToStream(oStream, availableInstanceCapacitySs.str().c_str());
       }
   }

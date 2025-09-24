@@ -26,7 +26,7 @@ namespace Model
   class DeleteAssessmentFrameworkShareRequest : public AuditManagerRequest
   {
   public:
-    AWS_AUDITMANAGER_API DeleteAssessmentFrameworkShareRequest();
+    AWS_AUDITMANAGER_API DeleteAssessmentFrameworkShareRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,89 +39,34 @@ namespace Model
     AWS_AUDITMANAGER_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the share request to be deleted.</p>
      */
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    /**
-     * <p>The unique identifier for the share request to be deleted.</p>
-     */
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
     inline bool RequestIdHasBeenSet() const { return m_requestIdHasBeenSet; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteAssessmentFrameworkShareRequest& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the share request to be deleted.</p>
-     */
-    inline void SetRequestId(const Aws::String& value) { m_requestIdHasBeenSet = true; m_requestId = value; }
-
-    /**
-     * <p>The unique identifier for the share request to be deleted.</p>
-     */
-    inline void SetRequestId(Aws::String&& value) { m_requestIdHasBeenSet = true; m_requestId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the share request to be deleted.</p>
-     */
-    inline void SetRequestId(const char* value) { m_requestIdHasBeenSet = true; m_requestId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the share request to be deleted.</p>
-     */
-    inline DeleteAssessmentFrameworkShareRequest& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the share request to be deleted.</p>
-     */
-    inline DeleteAssessmentFrameworkShareRequest& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the share request to be deleted.</p>
-     */
-    inline DeleteAssessmentFrameworkShareRequest& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the share request is a sent request or a received
      * request.</p>
      */
-    inline const ShareRequestType& GetRequestType() const{ return m_requestType; }
-
-    /**
-     * <p>Specifies whether the share request is a sent request or a received
-     * request.</p>
-     */
+    inline ShareRequestType GetRequestType() const { return m_requestType; }
     inline bool RequestTypeHasBeenSet() const { return m_requestTypeHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the share request is a sent request or a received
-     * request.</p>
-     */
-    inline void SetRequestType(const ShareRequestType& value) { m_requestTypeHasBeenSet = true; m_requestType = value; }
-
-    /**
-     * <p>Specifies whether the share request is a sent request or a received
-     * request.</p>
-     */
-    inline void SetRequestType(ShareRequestType&& value) { m_requestTypeHasBeenSet = true; m_requestType = std::move(value); }
-
-    /**
-     * <p>Specifies whether the share request is a sent request or a received
-     * request.</p>
-     */
-    inline DeleteAssessmentFrameworkShareRequest& WithRequestType(const ShareRequestType& value) { SetRequestType(value); return *this;}
-
-    /**
-     * <p>Specifies whether the share request is a sent request or a received
-     * request.</p>
-     */
-    inline DeleteAssessmentFrameworkShareRequest& WithRequestType(ShareRequestType&& value) { SetRequestType(std::move(value)); return *this;}
-
+    inline void SetRequestType(ShareRequestType value) { m_requestTypeHasBeenSet = true; m_requestType = value; }
+    inline DeleteAssessmentFrameworkShareRequest& WithRequestType(ShareRequestType value) { SetRequestType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_requestId;
     bool m_requestIdHasBeenSet = false;
 
-    ShareRequestType m_requestType;
+    ShareRequestType m_requestType{ShareRequestType::NOT_SET};
     bool m_requestTypeHasBeenSet = false;
   };
 

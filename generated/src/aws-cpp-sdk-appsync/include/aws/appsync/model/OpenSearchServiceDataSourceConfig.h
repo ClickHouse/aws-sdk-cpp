@@ -32,93 +32,35 @@ namespace Model
   class OpenSearchServiceDataSourceConfig
   {
   public:
-    AWS_APPSYNC_API OpenSearchServiceDataSourceConfig();
+    AWS_APPSYNC_API OpenSearchServiceDataSourceConfig() = default;
     AWS_APPSYNC_API OpenSearchServiceDataSourceConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSYNC_API OpenSearchServiceDataSourceConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSYNC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The endpoint.</p>
      */
-    inline const Aws::String& GetEndpoint() const{ return m_endpoint; }
-
-    /**
-     * <p>The endpoint.</p>
-     */
+    inline const Aws::String& GetEndpoint() const { return m_endpoint; }
     inline bool EndpointHasBeenSet() const { return m_endpointHasBeenSet; }
+    template<typename EndpointT = Aws::String>
+    void SetEndpoint(EndpointT&& value) { m_endpointHasBeenSet = true; m_endpoint = std::forward<EndpointT>(value); }
+    template<typename EndpointT = Aws::String>
+    OpenSearchServiceDataSourceConfig& WithEndpoint(EndpointT&& value) { SetEndpoint(std::forward<EndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The endpoint.</p>
-     */
-    inline void SetEndpoint(const Aws::String& value) { m_endpointHasBeenSet = true; m_endpoint = value; }
-
-    /**
-     * <p>The endpoint.</p>
-     */
-    inline void SetEndpoint(Aws::String&& value) { m_endpointHasBeenSet = true; m_endpoint = std::move(value); }
-
-    /**
-     * <p>The endpoint.</p>
-     */
-    inline void SetEndpoint(const char* value) { m_endpointHasBeenSet = true; m_endpoint.assign(value); }
-
-    /**
-     * <p>The endpoint.</p>
-     */
-    inline OpenSearchServiceDataSourceConfig& WithEndpoint(const Aws::String& value) { SetEndpoint(value); return *this;}
-
-    /**
-     * <p>The endpoint.</p>
-     */
-    inline OpenSearchServiceDataSourceConfig& WithEndpoint(Aws::String&& value) { SetEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The endpoint.</p>
-     */
-    inline OpenSearchServiceDataSourceConfig& WithEndpoint(const char* value) { SetEndpoint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services Region.</p>
      */
-    inline const Aws::String& GetAwsRegion() const{ return m_awsRegion; }
-
-    /**
-     * <p>The Amazon Web Services Region.</p>
-     */
+    inline const Aws::String& GetAwsRegion() const { return m_awsRegion; }
     inline bool AwsRegionHasBeenSet() const { return m_awsRegionHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services Region.</p>
-     */
-    inline void SetAwsRegion(const Aws::String& value) { m_awsRegionHasBeenSet = true; m_awsRegion = value; }
-
-    /**
-     * <p>The Amazon Web Services Region.</p>
-     */
-    inline void SetAwsRegion(Aws::String&& value) { m_awsRegionHasBeenSet = true; m_awsRegion = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services Region.</p>
-     */
-    inline void SetAwsRegion(const char* value) { m_awsRegionHasBeenSet = true; m_awsRegion.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services Region.</p>
-     */
-    inline OpenSearchServiceDataSourceConfig& WithAwsRegion(const Aws::String& value) { SetAwsRegion(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region.</p>
-     */
-    inline OpenSearchServiceDataSourceConfig& WithAwsRegion(Aws::String&& value) { SetAwsRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region.</p>
-     */
-    inline OpenSearchServiceDataSourceConfig& WithAwsRegion(const char* value) { SetAwsRegion(value); return *this;}
-
+    template<typename AwsRegionT = Aws::String>
+    void SetAwsRegion(AwsRegionT&& value) { m_awsRegionHasBeenSet = true; m_awsRegion = std::forward<AwsRegionT>(value); }
+    template<typename AwsRegionT = Aws::String>
+    OpenSearchServiceDataSourceConfig& WithAwsRegion(AwsRegionT&& value) { SetAwsRegion(std::forward<AwsRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_endpoint;

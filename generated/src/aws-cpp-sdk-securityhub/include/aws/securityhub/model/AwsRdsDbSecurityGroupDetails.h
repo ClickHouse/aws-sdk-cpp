@@ -35,306 +35,100 @@ namespace Model
   class AwsRdsDbSecurityGroupDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsRdsDbSecurityGroupDetails();
+    AWS_SECURITYHUB_API AwsRdsDbSecurityGroupDetails() = default;
     AWS_SECURITYHUB_API AwsRdsDbSecurityGroupDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsRdsDbSecurityGroupDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN for the DB security group.</p>
      */
-    inline const Aws::String& GetDbSecurityGroupArn() const{ return m_dbSecurityGroupArn; }
-
-    /**
-     * <p>The ARN for the DB security group.</p>
-     */
+    inline const Aws::String& GetDbSecurityGroupArn() const { return m_dbSecurityGroupArn; }
     inline bool DbSecurityGroupArnHasBeenSet() const { return m_dbSecurityGroupArnHasBeenSet; }
+    template<typename DbSecurityGroupArnT = Aws::String>
+    void SetDbSecurityGroupArn(DbSecurityGroupArnT&& value) { m_dbSecurityGroupArnHasBeenSet = true; m_dbSecurityGroupArn = std::forward<DbSecurityGroupArnT>(value); }
+    template<typename DbSecurityGroupArnT = Aws::String>
+    AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupArn(DbSecurityGroupArnT&& value) { SetDbSecurityGroupArn(std::forward<DbSecurityGroupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN for the DB security group.</p>
-     */
-    inline void SetDbSecurityGroupArn(const Aws::String& value) { m_dbSecurityGroupArnHasBeenSet = true; m_dbSecurityGroupArn = value; }
-
-    /**
-     * <p>The ARN for the DB security group.</p>
-     */
-    inline void SetDbSecurityGroupArn(Aws::String&& value) { m_dbSecurityGroupArnHasBeenSet = true; m_dbSecurityGroupArn = std::move(value); }
-
-    /**
-     * <p>The ARN for the DB security group.</p>
-     */
-    inline void SetDbSecurityGroupArn(const char* value) { m_dbSecurityGroupArnHasBeenSet = true; m_dbSecurityGroupArn.assign(value); }
-
-    /**
-     * <p>The ARN for the DB security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupArn(const Aws::String& value) { SetDbSecurityGroupArn(value); return *this;}
-
-    /**
-     * <p>The ARN for the DB security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupArn(Aws::String&& value) { SetDbSecurityGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN for the DB security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupArn(const char* value) { SetDbSecurityGroupArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides the description of the DB security group.</p>
      */
-    inline const Aws::String& GetDbSecurityGroupDescription() const{ return m_dbSecurityGroupDescription; }
-
-    /**
-     * <p>Provides the description of the DB security group.</p>
-     */
+    inline const Aws::String& GetDbSecurityGroupDescription() const { return m_dbSecurityGroupDescription; }
     inline bool DbSecurityGroupDescriptionHasBeenSet() const { return m_dbSecurityGroupDescriptionHasBeenSet; }
+    template<typename DbSecurityGroupDescriptionT = Aws::String>
+    void SetDbSecurityGroupDescription(DbSecurityGroupDescriptionT&& value) { m_dbSecurityGroupDescriptionHasBeenSet = true; m_dbSecurityGroupDescription = std::forward<DbSecurityGroupDescriptionT>(value); }
+    template<typename DbSecurityGroupDescriptionT = Aws::String>
+    AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupDescription(DbSecurityGroupDescriptionT&& value) { SetDbSecurityGroupDescription(std::forward<DbSecurityGroupDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides the description of the DB security group.</p>
-     */
-    inline void SetDbSecurityGroupDescription(const Aws::String& value) { m_dbSecurityGroupDescriptionHasBeenSet = true; m_dbSecurityGroupDescription = value; }
-
-    /**
-     * <p>Provides the description of the DB security group.</p>
-     */
-    inline void SetDbSecurityGroupDescription(Aws::String&& value) { m_dbSecurityGroupDescriptionHasBeenSet = true; m_dbSecurityGroupDescription = std::move(value); }
-
-    /**
-     * <p>Provides the description of the DB security group.</p>
-     */
-    inline void SetDbSecurityGroupDescription(const char* value) { m_dbSecurityGroupDescriptionHasBeenSet = true; m_dbSecurityGroupDescription.assign(value); }
-
-    /**
-     * <p>Provides the description of the DB security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupDescription(const Aws::String& value) { SetDbSecurityGroupDescription(value); return *this;}
-
-    /**
-     * <p>Provides the description of the DB security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupDescription(Aws::String&& value) { SetDbSecurityGroupDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides the description of the DB security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupDescription(const char* value) { SetDbSecurityGroupDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the name of the DB security group.</p>
      */
-    inline const Aws::String& GetDbSecurityGroupName() const{ return m_dbSecurityGroupName; }
-
-    /**
-     * <p>Specifies the name of the DB security group.</p>
-     */
+    inline const Aws::String& GetDbSecurityGroupName() const { return m_dbSecurityGroupName; }
     inline bool DbSecurityGroupNameHasBeenSet() const { return m_dbSecurityGroupNameHasBeenSet; }
+    template<typename DbSecurityGroupNameT = Aws::String>
+    void SetDbSecurityGroupName(DbSecurityGroupNameT&& value) { m_dbSecurityGroupNameHasBeenSet = true; m_dbSecurityGroupName = std::forward<DbSecurityGroupNameT>(value); }
+    template<typename DbSecurityGroupNameT = Aws::String>
+    AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupName(DbSecurityGroupNameT&& value) { SetDbSecurityGroupName(std::forward<DbSecurityGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the name of the DB security group.</p>
-     */
-    inline void SetDbSecurityGroupName(const Aws::String& value) { m_dbSecurityGroupNameHasBeenSet = true; m_dbSecurityGroupName = value; }
-
-    /**
-     * <p>Specifies the name of the DB security group.</p>
-     */
-    inline void SetDbSecurityGroupName(Aws::String&& value) { m_dbSecurityGroupNameHasBeenSet = true; m_dbSecurityGroupName = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the DB security group.</p>
-     */
-    inline void SetDbSecurityGroupName(const char* value) { m_dbSecurityGroupNameHasBeenSet = true; m_dbSecurityGroupName.assign(value); }
-
-    /**
-     * <p>Specifies the name of the DB security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupName(const Aws::String& value) { SetDbSecurityGroupName(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the DB security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupName(Aws::String&& value) { SetDbSecurityGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the DB security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithDbSecurityGroupName(const char* value) { SetDbSecurityGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains a list of EC2 security groups.</p>
      */
-    inline const Aws::Vector<AwsRdsDbSecurityGroupEc2SecurityGroup>& GetEc2SecurityGroups() const{ return m_ec2SecurityGroups; }
-
-    /**
-     * <p>Contains a list of EC2 security groups.</p>
-     */
+    inline const Aws::Vector<AwsRdsDbSecurityGroupEc2SecurityGroup>& GetEc2SecurityGroups() const { return m_ec2SecurityGroups; }
     inline bool Ec2SecurityGroupsHasBeenSet() const { return m_ec2SecurityGroupsHasBeenSet; }
+    template<typename Ec2SecurityGroupsT = Aws::Vector<AwsRdsDbSecurityGroupEc2SecurityGroup>>
+    void SetEc2SecurityGroups(Ec2SecurityGroupsT&& value) { m_ec2SecurityGroupsHasBeenSet = true; m_ec2SecurityGroups = std::forward<Ec2SecurityGroupsT>(value); }
+    template<typename Ec2SecurityGroupsT = Aws::Vector<AwsRdsDbSecurityGroupEc2SecurityGroup>>
+    AwsRdsDbSecurityGroupDetails& WithEc2SecurityGroups(Ec2SecurityGroupsT&& value) { SetEc2SecurityGroups(std::forward<Ec2SecurityGroupsT>(value)); return *this;}
+    template<typename Ec2SecurityGroupsT = AwsRdsDbSecurityGroupEc2SecurityGroup>
+    AwsRdsDbSecurityGroupDetails& AddEc2SecurityGroups(Ec2SecurityGroupsT&& value) { m_ec2SecurityGroupsHasBeenSet = true; m_ec2SecurityGroups.emplace_back(std::forward<Ec2SecurityGroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contains a list of EC2 security groups.</p>
-     */
-    inline void SetEc2SecurityGroups(const Aws::Vector<AwsRdsDbSecurityGroupEc2SecurityGroup>& value) { m_ec2SecurityGroupsHasBeenSet = true; m_ec2SecurityGroups = value; }
-
-    /**
-     * <p>Contains a list of EC2 security groups.</p>
-     */
-    inline void SetEc2SecurityGroups(Aws::Vector<AwsRdsDbSecurityGroupEc2SecurityGroup>&& value) { m_ec2SecurityGroupsHasBeenSet = true; m_ec2SecurityGroups = std::move(value); }
-
-    /**
-     * <p>Contains a list of EC2 security groups.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithEc2SecurityGroups(const Aws::Vector<AwsRdsDbSecurityGroupEc2SecurityGroup>& value) { SetEc2SecurityGroups(value); return *this;}
-
-    /**
-     * <p>Contains a list of EC2 security groups.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithEc2SecurityGroups(Aws::Vector<AwsRdsDbSecurityGroupEc2SecurityGroup>&& value) { SetEc2SecurityGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains a list of EC2 security groups.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& AddEc2SecurityGroups(const AwsRdsDbSecurityGroupEc2SecurityGroup& value) { m_ec2SecurityGroupsHasBeenSet = true; m_ec2SecurityGroups.push_back(value); return *this; }
-
-    /**
-     * <p>Contains a list of EC2 security groups.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& AddEc2SecurityGroups(AwsRdsDbSecurityGroupEc2SecurityGroup&& value) { m_ec2SecurityGroupsHasBeenSet = true; m_ec2SecurityGroups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Contains a list of IP ranges.</p>
      */
-    inline const Aws::Vector<AwsRdsDbSecurityGroupIpRange>& GetIpRanges() const{ return m_ipRanges; }
-
-    /**
-     * <p>Contains a list of IP ranges.</p>
-     */
+    inline const Aws::Vector<AwsRdsDbSecurityGroupIpRange>& GetIpRanges() const { return m_ipRanges; }
     inline bool IpRangesHasBeenSet() const { return m_ipRangesHasBeenSet; }
+    template<typename IpRangesT = Aws::Vector<AwsRdsDbSecurityGroupIpRange>>
+    void SetIpRanges(IpRangesT&& value) { m_ipRangesHasBeenSet = true; m_ipRanges = std::forward<IpRangesT>(value); }
+    template<typename IpRangesT = Aws::Vector<AwsRdsDbSecurityGroupIpRange>>
+    AwsRdsDbSecurityGroupDetails& WithIpRanges(IpRangesT&& value) { SetIpRanges(std::forward<IpRangesT>(value)); return *this;}
+    template<typename IpRangesT = AwsRdsDbSecurityGroupIpRange>
+    AwsRdsDbSecurityGroupDetails& AddIpRanges(IpRangesT&& value) { m_ipRangesHasBeenSet = true; m_ipRanges.emplace_back(std::forward<IpRangesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contains a list of IP ranges.</p>
-     */
-    inline void SetIpRanges(const Aws::Vector<AwsRdsDbSecurityGroupIpRange>& value) { m_ipRangesHasBeenSet = true; m_ipRanges = value; }
-
-    /**
-     * <p>Contains a list of IP ranges.</p>
-     */
-    inline void SetIpRanges(Aws::Vector<AwsRdsDbSecurityGroupIpRange>&& value) { m_ipRangesHasBeenSet = true; m_ipRanges = std::move(value); }
-
-    /**
-     * <p>Contains a list of IP ranges.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithIpRanges(const Aws::Vector<AwsRdsDbSecurityGroupIpRange>& value) { SetIpRanges(value); return *this;}
-
-    /**
-     * <p>Contains a list of IP ranges.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithIpRanges(Aws::Vector<AwsRdsDbSecurityGroupIpRange>&& value) { SetIpRanges(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains a list of IP ranges.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& AddIpRanges(const AwsRdsDbSecurityGroupIpRange& value) { m_ipRangesHasBeenSet = true; m_ipRanges.push_back(value); return *this; }
-
-    /**
-     * <p>Contains a list of IP ranges.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& AddIpRanges(AwsRdsDbSecurityGroupIpRange&& value) { m_ipRangesHasBeenSet = true; m_ipRanges.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Provides the Amazon Web Services ID of the owner of a specific DB security
      * group.</p>
      */
-    inline const Aws::String& GetOwnerId() const{ return m_ownerId; }
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of a specific DB security
-     * group.</p>
-     */
+    inline const Aws::String& GetOwnerId() const { return m_ownerId; }
     inline bool OwnerIdHasBeenSet() const { return m_ownerIdHasBeenSet; }
+    template<typename OwnerIdT = Aws::String>
+    void SetOwnerId(OwnerIdT&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::forward<OwnerIdT>(value); }
+    template<typename OwnerIdT = Aws::String>
+    AwsRdsDbSecurityGroupDetails& WithOwnerId(OwnerIdT&& value) { SetOwnerId(std::forward<OwnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of a specific DB security
-     * group.</p>
-     */
-    inline void SetOwnerId(const Aws::String& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of a specific DB security
-     * group.</p>
-     */
-    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of a specific DB security
-     * group.</p>
-     */
-    inline void SetOwnerId(const char* value) { m_ownerIdHasBeenSet = true; m_ownerId.assign(value); }
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of a specific DB security
-     * group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithOwnerId(const Aws::String& value) { SetOwnerId(value); return *this;}
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of a specific DB security
-     * group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of a specific DB security
-     * group.</p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithOwnerId(const char* value) { SetOwnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides VPC ID associated with the DB security group. </p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>Provides VPC ID associated with the DB security group. </p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
-
-    /**
-     * <p>Provides VPC ID associated with the DB security group. </p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>Provides VPC ID associated with the DB security group. </p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>Provides VPC ID associated with the DB security group. </p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>Provides VPC ID associated with the DB security group. </p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>Provides VPC ID associated with the DB security group. </p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides VPC ID associated with the DB security group. </p>
-     */
-    inline AwsRdsDbSecurityGroupDetails& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    AwsRdsDbSecurityGroupDetails& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dbSecurityGroupArn;

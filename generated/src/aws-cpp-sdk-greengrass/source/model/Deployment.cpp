@@ -18,23 +18,7 @@ namespace Greengrass
 namespace Model
 {
 
-Deployment::Deployment() : 
-    m_createdAtHasBeenSet(false),
-    m_deploymentArnHasBeenSet(false),
-    m_deploymentIdHasBeenSet(false),
-    m_deploymentType(DeploymentType::NOT_SET),
-    m_deploymentTypeHasBeenSet(false),
-    m_groupArnHasBeenSet(false)
-{
-}
-
-Deployment::Deployment(JsonView jsonValue) : 
-    m_createdAtHasBeenSet(false),
-    m_deploymentArnHasBeenSet(false),
-    m_deploymentIdHasBeenSet(false),
-    m_deploymentType(DeploymentType::NOT_SET),
-    m_deploymentTypeHasBeenSet(false),
-    m_groupArnHasBeenSet(false)
+Deployment::Deployment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,38 +28,28 @@ Deployment& Deployment::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CreatedAt"))
   {
     m_createdAt = jsonValue.GetString("CreatedAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeploymentArn"))
   {
     m_deploymentArn = jsonValue.GetString("DeploymentArn");
-
     m_deploymentArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeploymentId"))
   {
     m_deploymentId = jsonValue.GetString("DeploymentId");
-
     m_deploymentIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DeploymentType"))
   {
     m_deploymentType = DeploymentTypeMapper::GetDeploymentTypeForName(jsonValue.GetString("DeploymentType"));
-
     m_deploymentTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("GroupArn"))
   {
     m_groupArn = jsonValue.GetString("GroupArn");
-
     m_groupArnHasBeenSet = true;
   }
-
   return *this;
 }
 

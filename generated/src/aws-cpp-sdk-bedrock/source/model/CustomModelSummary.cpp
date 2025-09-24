@@ -18,25 +18,7 @@ namespace Bedrock
 namespace Model
 {
 
-CustomModelSummary::CustomModelSummary() : 
-    m_modelArnHasBeenSet(false),
-    m_modelNameHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_baseModelArnHasBeenSet(false),
-    m_baseModelNameHasBeenSet(false),
-    m_customizationType(CustomizationType::NOT_SET),
-    m_customizationTypeHasBeenSet(false)
-{
-}
-
-CustomModelSummary::CustomModelSummary(JsonView jsonValue) : 
-    m_modelArnHasBeenSet(false),
-    m_modelNameHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_baseModelArnHasBeenSet(false),
-    m_baseModelNameHasBeenSet(false),
-    m_customizationType(CustomizationType::NOT_SET),
-    m_customizationTypeHasBeenSet(false)
+CustomModelSummary::CustomModelSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,45 +28,43 @@ CustomModelSummary& CustomModelSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("modelArn"))
   {
     m_modelArn = jsonValue.GetString("modelArn");
-
     m_modelArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("modelName"))
   {
     m_modelName = jsonValue.GetString("modelName");
-
     m_modelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("creationTime"))
   {
     m_creationTime = jsonValue.GetString("creationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("baseModelArn"))
   {
     m_baseModelArn = jsonValue.GetString("baseModelArn");
-
     m_baseModelArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("baseModelName"))
   {
     m_baseModelName = jsonValue.GetString("baseModelName");
-
     m_baseModelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("customizationType"))
   {
     m_customizationType = CustomizationTypeMapper::GetCustomizationTypeForName(jsonValue.GetString("customizationType"));
-
     m_customizationTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ownerAccountId"))
+  {
+    m_ownerAccountId = jsonValue.GetString("ownerAccountId");
+    m_ownerAccountIdHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("modelStatus"))
+  {
+    m_modelStatus = ModelStatusMapper::GetModelStatusForName(jsonValue.GetString("modelStatus"));
+    m_modelStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -124,6 +104,17 @@ JsonValue CustomModelSummary::Jsonize() const
   if(m_customizationTypeHasBeenSet)
   {
    payload.WithString("customizationType", CustomizationTypeMapper::GetNameForCustomizationType(m_customizationType));
+  }
+
+  if(m_ownerAccountIdHasBeenSet)
+  {
+   payload.WithString("ownerAccountId", m_ownerAccountId);
+
+  }
+
+  if(m_modelStatusHasBeenSet)
+  {
+   payload.WithString("modelStatus", ModelStatusMapper::GetNameForModelStatus(m_modelStatus));
   }
 
   return payload;

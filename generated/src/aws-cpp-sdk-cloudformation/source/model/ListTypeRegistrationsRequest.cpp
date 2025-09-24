@@ -10,26 +10,13 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-ListTypeRegistrationsRequest::ListTypeRegistrationsRequest() : 
-    m_type(RegistryType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_typeNameHasBeenSet(false),
-    m_typeArnHasBeenSet(false),
-    m_registrationStatusFilter(RegistrationStatus::NOT_SET),
-    m_registrationStatusFilterHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListTypeRegistrationsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=ListTypeRegistrations&";
   if(m_typeHasBeenSet)
   {
-    ss << "Type=" << RegistryTypeMapper::GetNameForRegistryType(m_type) << "&";
+    ss << "Type=" << StringUtils::URLEncode(RegistryTypeMapper::GetNameForRegistryType(m_type)) << "&";
   }
 
   if(m_typeNameHasBeenSet)
@@ -44,7 +31,7 @@ Aws::String ListTypeRegistrationsRequest::SerializePayload() const
 
   if(m_registrationStatusFilterHasBeenSet)
   {
-    ss << "RegistrationStatusFilter=" << RegistrationStatusMapper::GetNameForRegistrationStatus(m_registrationStatusFilter) << "&";
+    ss << "RegistrationStatusFilter=" << StringUtils::URLEncode(RegistrationStatusMapper::GetNameForRegistrationStatus(m_registrationStatusFilter)) << "&";
   }
 
   if(m_maxResultsHasBeenSet)

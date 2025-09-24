@@ -24,117 +24,45 @@ namespace Model
 {
 
   /**
-   * <p>Represents a package installed on an Image Builder image.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>A software package that's installed on top of the base image to create a
+   * customized image.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/imagebuilder-2019-12-02/ImagePackage">AWS
    * API Reference</a></p>
    */
   class ImagePackage
   {
   public:
-    AWS_IMAGEBUILDER_API ImagePackage();
+    AWS_IMAGEBUILDER_API ImagePackage() = default;
     AWS_IMAGEBUILDER_API ImagePackage(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API ImagePackage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The name of the package as reported to the operating system package
+     * <p>The name of the package that's reported to the operating system package
      * manager.</p>
      */
-    inline const Aws::String& GetPackageName() const{ return m_packageName; }
-
-    /**
-     * <p>The name of the package as reported to the operating system package
-     * manager.</p>
-     */
+    inline const Aws::String& GetPackageName() const { return m_packageName; }
     inline bool PackageNameHasBeenSet() const { return m_packageNameHasBeenSet; }
+    template<typename PackageNameT = Aws::String>
+    void SetPackageName(PackageNameT&& value) { m_packageNameHasBeenSet = true; m_packageName = std::forward<PackageNameT>(value); }
+    template<typename PackageNameT = Aws::String>
+    ImagePackage& WithPackageName(PackageNameT&& value) { SetPackageName(std::forward<PackageNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the package as reported to the operating system package
+     * <p>The version of the package that's reported to the operating system package
      * manager.</p>
      */
-    inline void SetPackageName(const Aws::String& value) { m_packageNameHasBeenSet = true; m_packageName = value; }
-
-    /**
-     * <p>The name of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline void SetPackageName(Aws::String&& value) { m_packageNameHasBeenSet = true; m_packageName = std::move(value); }
-
-    /**
-     * <p>The name of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline void SetPackageName(const char* value) { m_packageNameHasBeenSet = true; m_packageName.assign(value); }
-
-    /**
-     * <p>The name of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline ImagePackage& WithPackageName(const Aws::String& value) { SetPackageName(value); return *this;}
-
-    /**
-     * <p>The name of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline ImagePackage& WithPackageName(Aws::String&& value) { SetPackageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline ImagePackage& WithPackageName(const char* value) { SetPackageName(value); return *this;}
-
-
-    /**
-     * <p>The version of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline const Aws::String& GetPackageVersion() const{ return m_packageVersion; }
-
-    /**
-     * <p>The version of the package as reported to the operating system package
-     * manager.</p>
-     */
+    inline const Aws::String& GetPackageVersion() const { return m_packageVersion; }
     inline bool PackageVersionHasBeenSet() const { return m_packageVersionHasBeenSet; }
-
-    /**
-     * <p>The version of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline void SetPackageVersion(const Aws::String& value) { m_packageVersionHasBeenSet = true; m_packageVersion = value; }
-
-    /**
-     * <p>The version of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline void SetPackageVersion(Aws::String&& value) { m_packageVersionHasBeenSet = true; m_packageVersion = std::move(value); }
-
-    /**
-     * <p>The version of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline void SetPackageVersion(const char* value) { m_packageVersionHasBeenSet = true; m_packageVersion.assign(value); }
-
-    /**
-     * <p>The version of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline ImagePackage& WithPackageVersion(const Aws::String& value) { SetPackageVersion(value); return *this;}
-
-    /**
-     * <p>The version of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline ImagePackage& WithPackageVersion(Aws::String&& value) { SetPackageVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the package as reported to the operating system package
-     * manager.</p>
-     */
-    inline ImagePackage& WithPackageVersion(const char* value) { SetPackageVersion(value); return *this;}
-
+    template<typename PackageVersionT = Aws::String>
+    void SetPackageVersion(PackageVersionT&& value) { m_packageVersionHasBeenSet = true; m_packageVersion = std::forward<PackageVersionT>(value); }
+    template<typename PackageVersionT = Aws::String>
+    ImagePackage& WithPackageVersion(PackageVersionT&& value) { SetPackageVersion(std::forward<PackageVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_packageName;

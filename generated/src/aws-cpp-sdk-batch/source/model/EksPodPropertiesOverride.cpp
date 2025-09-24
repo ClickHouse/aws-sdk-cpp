@@ -18,15 +18,7 @@ namespace Batch
 namespace Model
 {
 
-EksPodPropertiesOverride::EksPodPropertiesOverride() : 
-    m_containersHasBeenSet(false),
-    m_metadataHasBeenSet(false)
-{
-}
-
-EksPodPropertiesOverride::EksPodPropertiesOverride(JsonView jsonValue) : 
-    m_containersHasBeenSet(false),
-    m_metadataHasBeenSet(false)
+EksPodPropertiesOverride::EksPodPropertiesOverride(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,20 @@ EksPodPropertiesOverride& EksPodPropertiesOverride::operator =(JsonView jsonValu
     }
     m_containersHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("initContainers"))
+  {
+    Aws::Utils::Array<JsonView> initContainersJsonList = jsonValue.GetArray("initContainers");
+    for(unsigned initContainersIndex = 0; initContainersIndex < initContainersJsonList.GetLength(); ++initContainersIndex)
+    {
+      m_initContainers.push_back(initContainersJsonList[initContainersIndex].AsObject());
+    }
+    m_initContainersHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("metadata"))
   {
     m_metadata = jsonValue.GetObject("metadata");
-
     m_metadataHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -65,6 +63,17 @@ JsonValue EksPodPropertiesOverride::Jsonize() const
      containersJsonList[containersIndex].AsObject(m_containers[containersIndex].Jsonize());
    }
    payload.WithArray("containers", std::move(containersJsonList));
+
+  }
+
+  if(m_initContainersHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> initContainersJsonList(m_initContainers.size());
+   for(unsigned initContainersIndex = 0; initContainersIndex < initContainersJsonList.GetLength(); ++initContainersIndex)
+   {
+     initContainersJsonList[initContainersIndex].AsObject(m_initContainers[initContainersIndex].Jsonize());
+   }
+   payload.WithArray("initContainers", std::move(initContainersJsonList));
 
   }
 

@@ -10,17 +10,6 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-DescribeAnomalyDetectorsRequest::DescribeAnomalyDetectorsRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_metricNameHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_anomalyDetectorTypesHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAnomalyDetectorsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -47,22 +36,36 @@ Aws::String DescribeAnomalyDetectorsRequest::SerializePayload() const
 
   if(m_dimensionsHasBeenSet)
   {
-    unsigned dimensionsCount = 1;
-    for(auto& item : m_dimensions)
+    if (m_dimensions.empty())
     {
-      item.OutputToStream(ss, "Dimensions.member.", dimensionsCount, "");
-      dimensionsCount++;
+      ss << "Dimensions=&";
+    }
+    else
+    {
+      unsigned dimensionsCount = 1;
+      for(auto& item : m_dimensions)
+      {
+        item.OutputToStream(ss, "Dimensions.member.", dimensionsCount, "");
+        dimensionsCount++;
+      }
     }
   }
 
   if(m_anomalyDetectorTypesHasBeenSet)
   {
-    unsigned anomalyDetectorTypesCount = 1;
-    for(auto& item : m_anomalyDetectorTypes)
+    if (m_anomalyDetectorTypes.empty())
     {
-      ss << "AnomalyDetectorTypes.member." << anomalyDetectorTypesCount << "="
-          << StringUtils::URLEncode(AnomalyDetectorTypeMapper::GetNameForAnomalyDetectorType(item).c_str()) << "&";
-      anomalyDetectorTypesCount++;
+      ss << "AnomalyDetectorTypes=&";
+    }
+    else
+    {
+      unsigned anomalyDetectorTypesCount = 1;
+      for(auto& item : m_anomalyDetectorTypes)
+      {
+        ss << "AnomalyDetectorTypes.member." << anomalyDetectorTypesCount << "="
+            << StringUtils::URLEncode(AnomalyDetectorTypeMapper::GetNameForAnomalyDetectorType(item)) << "&";
+        anomalyDetectorTypesCount++;
+      }
     }
   }
 

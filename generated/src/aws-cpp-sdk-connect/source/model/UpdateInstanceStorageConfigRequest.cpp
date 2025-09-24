@@ -15,15 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-UpdateInstanceStorageConfigRequest::UpdateInstanceStorageConfigRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_associationIdHasBeenSet(false),
-    m_resourceType(InstanceStorageResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_storageConfigHasBeenSet(false)
-{
-}
-
 Aws::String UpdateInstanceStorageConfigRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +22,12 @@ Aws::String UpdateInstanceStorageConfigRequest::SerializePayload() const
   if(m_storageConfigHasBeenSet)
   {
    payload.WithObject("StorageConfig", m_storageConfig.Jsonize());
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("ClientToken", m_clientToken);
 
   }
 

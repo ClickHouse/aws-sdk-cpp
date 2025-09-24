@@ -18,19 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-VpcOutputSettingsDescription::VpcOutputSettingsDescription() : 
-    m_availabilityZonesHasBeenSet(false),
-    m_networkInterfaceIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false)
-{
-}
-
-VpcOutputSettingsDescription::VpcOutputSettingsDescription(JsonView jsonValue) : 
-    m_availabilityZonesHasBeenSet(false),
-    m_networkInterfaceIdsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false)
+VpcOutputSettingsDescription::VpcOutputSettingsDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ VpcOutputSettingsDescription& VpcOutputSettingsDescription::operator =(JsonView 
     }
     m_availabilityZonesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("networkInterfaceIds"))
   {
     Aws::Utils::Array<JsonView> networkInterfaceIdsJsonList = jsonValue.GetArray("networkInterfaceIds");
@@ -56,7 +43,6 @@ VpcOutputSettingsDescription& VpcOutputSettingsDescription::operator =(JsonView 
     }
     m_networkInterfaceIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("securityGroupIds"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdsJsonList = jsonValue.GetArray("securityGroupIds");
@@ -66,7 +52,6 @@ VpcOutputSettingsDescription& VpcOutputSettingsDescription::operator =(JsonView 
     }
     m_securityGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("subnetIds"))
   {
     Aws::Utils::Array<JsonView> subnetIdsJsonList = jsonValue.GetArray("subnetIds");
@@ -76,7 +61,6 @@ VpcOutputSettingsDescription& VpcOutputSettingsDescription::operator =(JsonView 
     }
     m_subnetIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

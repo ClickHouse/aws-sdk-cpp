@@ -33,155 +33,59 @@ namespace Model
   class PackageSummary
   {
   public:
-    AWS_IOT_API PackageSummary();
+    AWS_IOT_API PackageSummary() = default;
     AWS_IOT_API PackageSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API PackageSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name for the target software package.</p>
      */
-    inline const Aws::String& GetPackageName() const{ return m_packageName; }
-
-    /**
-     * <p>The name for the target software package.</p>
-     */
+    inline const Aws::String& GetPackageName() const { return m_packageName; }
     inline bool PackageNameHasBeenSet() const { return m_packageNameHasBeenSet; }
+    template<typename PackageNameT = Aws::String>
+    void SetPackageName(PackageNameT&& value) { m_packageNameHasBeenSet = true; m_packageName = std::forward<PackageNameT>(value); }
+    template<typename PackageNameT = Aws::String>
+    PackageSummary& WithPackageName(PackageNameT&& value) { SetPackageName(std::forward<PackageNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for the target software package.</p>
-     */
-    inline void SetPackageName(const Aws::String& value) { m_packageNameHasBeenSet = true; m_packageName = value; }
-
-    /**
-     * <p>The name for the target software package.</p>
-     */
-    inline void SetPackageName(Aws::String&& value) { m_packageNameHasBeenSet = true; m_packageName = std::move(value); }
-
-    /**
-     * <p>The name for the target software package.</p>
-     */
-    inline void SetPackageName(const char* value) { m_packageNameHasBeenSet = true; m_packageName.assign(value); }
-
-    /**
-     * <p>The name for the target software package.</p>
-     */
-    inline PackageSummary& WithPackageName(const Aws::String& value) { SetPackageName(value); return *this;}
-
-    /**
-     * <p>The name for the target software package.</p>
-     */
-    inline PackageSummary& WithPackageName(Aws::String&& value) { SetPackageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the target software package.</p>
-     */
-    inline PackageSummary& WithPackageName(const char* value) { SetPackageName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the default package version.</p>
      */
-    inline const Aws::String& GetDefaultVersionName() const{ return m_defaultVersionName; }
-
-    /**
-     * <p>The name of the default package version.</p>
-     */
+    inline const Aws::String& GetDefaultVersionName() const { return m_defaultVersionName; }
     inline bool DefaultVersionNameHasBeenSet() const { return m_defaultVersionNameHasBeenSet; }
+    template<typename DefaultVersionNameT = Aws::String>
+    void SetDefaultVersionName(DefaultVersionNameT&& value) { m_defaultVersionNameHasBeenSet = true; m_defaultVersionName = std::forward<DefaultVersionNameT>(value); }
+    template<typename DefaultVersionNameT = Aws::String>
+    PackageSummary& WithDefaultVersionName(DefaultVersionNameT&& value) { SetDefaultVersionName(std::forward<DefaultVersionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the default package version.</p>
-     */
-    inline void SetDefaultVersionName(const Aws::String& value) { m_defaultVersionNameHasBeenSet = true; m_defaultVersionName = value; }
-
-    /**
-     * <p>The name of the default package version.</p>
-     */
-    inline void SetDefaultVersionName(Aws::String&& value) { m_defaultVersionNameHasBeenSet = true; m_defaultVersionName = std::move(value); }
-
-    /**
-     * <p>The name of the default package version.</p>
-     */
-    inline void SetDefaultVersionName(const char* value) { m_defaultVersionNameHasBeenSet = true; m_defaultVersionName.assign(value); }
-
-    /**
-     * <p>The name of the default package version.</p>
-     */
-    inline PackageSummary& WithDefaultVersionName(const Aws::String& value) { SetDefaultVersionName(value); return *this;}
-
-    /**
-     * <p>The name of the default package version.</p>
-     */
-    inline PackageSummary& WithDefaultVersionName(Aws::String&& value) { SetDefaultVersionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the default package version.</p>
-     */
-    inline PackageSummary& WithDefaultVersionName(const char* value) { SetDefaultVersionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the package was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>The date that the package was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    PackageSummary& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date that the package was created.</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>The date that the package was created.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>The date that the package was created.</p>
-     */
-    inline PackageSummary& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>The date that the package was created.</p>
-     */
-    inline PackageSummary& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date that the package was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedDate() const{ return m_lastModifiedDate; }
-
-    /**
-     * <p>The date that the package was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastModifiedDate() const { return m_lastModifiedDate; }
     inline bool LastModifiedDateHasBeenSet() const { return m_lastModifiedDateHasBeenSet; }
-
-    /**
-     * <p>The date that the package was last updated.</p>
-     */
-    inline void SetLastModifiedDate(const Aws::Utils::DateTime& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = value; }
-
-    /**
-     * <p>The date that the package was last updated.</p>
-     */
-    inline void SetLastModifiedDate(Aws::Utils::DateTime&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::move(value); }
-
-    /**
-     * <p>The date that the package was last updated.</p>
-     */
-    inline PackageSummary& WithLastModifiedDate(const Aws::Utils::DateTime& value) { SetLastModifiedDate(value); return *this;}
-
-    /**
-     * <p>The date that the package was last updated.</p>
-     */
-    inline PackageSummary& WithLastModifiedDate(Aws::Utils::DateTime&& value) { SetLastModifiedDate(std::move(value)); return *this;}
-
+    template<typename LastModifiedDateT = Aws::Utils::DateTime>
+    void SetLastModifiedDate(LastModifiedDateT&& value) { m_lastModifiedDateHasBeenSet = true; m_lastModifiedDate = std::forward<LastModifiedDateT>(value); }
+    template<typename LastModifiedDateT = Aws::Utils::DateTime>
+    PackageSummary& WithLastModifiedDate(LastModifiedDateT&& value) { SetLastModifiedDate(std::forward<LastModifiedDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_packageName;
@@ -190,10 +94,10 @@ namespace Model
     Aws::String m_defaultVersionName;
     bool m_defaultVersionNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedDate;
+    Aws::Utils::DateTime m_lastModifiedDate{};
     bool m_lastModifiedDateHasBeenSet = false;
   };
 

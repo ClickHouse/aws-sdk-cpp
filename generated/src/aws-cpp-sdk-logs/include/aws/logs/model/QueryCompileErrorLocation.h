@@ -29,59 +29,37 @@ namespace Model
   class QueryCompileErrorLocation
   {
   public:
-    AWS_CLOUDWATCHLOGS_API QueryCompileErrorLocation();
+    AWS_CLOUDWATCHLOGS_API QueryCompileErrorLocation() = default;
     AWS_CLOUDWATCHLOGS_API QueryCompileErrorLocation(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHLOGS_API QueryCompileErrorLocation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHLOGS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Reserved.</p>
      */
-    inline int GetStartCharOffset() const{ return m_startCharOffset; }
-
-    /**
-     * <p>Reserved.</p>
-     */
+    inline int GetStartCharOffset() const { return m_startCharOffset; }
     inline bool StartCharOffsetHasBeenSet() const { return m_startCharOffsetHasBeenSet; }
-
-    /**
-     * <p>Reserved.</p>
-     */
     inline void SetStartCharOffset(int value) { m_startCharOffsetHasBeenSet = true; m_startCharOffset = value; }
-
-    /**
-     * <p>Reserved.</p>
-     */
     inline QueryCompileErrorLocation& WithStartCharOffset(int value) { SetStartCharOffset(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Reserved.</p>
      */
-    inline int GetEndCharOffset() const{ return m_endCharOffset; }
-
-    /**
-     * <p>Reserved.</p>
-     */
+    inline int GetEndCharOffset() const { return m_endCharOffset; }
     inline bool EndCharOffsetHasBeenSet() const { return m_endCharOffsetHasBeenSet; }
-
-    /**
-     * <p>Reserved.</p>
-     */
     inline void SetEndCharOffset(int value) { m_endCharOffsetHasBeenSet = true; m_endCharOffset = value; }
-
-    /**
-     * <p>Reserved.</p>
-     */
     inline QueryCompileErrorLocation& WithEndCharOffset(int value) { SetEndCharOffset(value); return *this;}
-
+    ///@}
   private:
 
-    int m_startCharOffset;
+    int m_startCharOffset{0};
     bool m_startCharOffsetHasBeenSet = false;
 
-    int m_endCharOffset;
+    int m_endCharOffset{0};
     bool m_endCharOffsetHasBeenSet = false;
   };
 

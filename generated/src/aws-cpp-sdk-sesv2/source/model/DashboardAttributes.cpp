@@ -18,15 +18,7 @@ namespace SESV2
 namespace Model
 {
 
-DashboardAttributes::DashboardAttributes() : 
-    m_engagementMetrics(FeatureStatus::NOT_SET),
-    m_engagementMetricsHasBeenSet(false)
-{
-}
-
-DashboardAttributes::DashboardAttributes(JsonView jsonValue) : 
-    m_engagementMetrics(FeatureStatus::NOT_SET),
-    m_engagementMetricsHasBeenSet(false)
+DashboardAttributes::DashboardAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ DashboardAttributes& DashboardAttributes::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EngagementMetrics"))
   {
     m_engagementMetrics = FeatureStatusMapper::GetFeatureStatusForName(jsonValue.GetString("EngagementMetrics"));
-
     m_engagementMetricsHasBeenSet = true;
   }
-
   return *this;
 }
 

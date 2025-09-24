@@ -35,174 +35,69 @@ namespace Model
   class VirtualServiceData
   {
   public:
-    AWS_APPMESH_API VirtualServiceData();
+    AWS_APPMESH_API VirtualServiceData() = default;
     AWS_APPMESH_API VirtualServiceData(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API VirtualServiceData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the service mesh that the virtual service resides in.</p>
      */
-    inline const Aws::String& GetMeshName() const{ return m_meshName; }
-
-    /**
-     * <p>The name of the service mesh that the virtual service resides in.</p>
-     */
+    inline const Aws::String& GetMeshName() const { return m_meshName; }
     inline bool MeshNameHasBeenSet() const { return m_meshNameHasBeenSet; }
+    template<typename MeshNameT = Aws::String>
+    void SetMeshName(MeshNameT&& value) { m_meshNameHasBeenSet = true; m_meshName = std::forward<MeshNameT>(value); }
+    template<typename MeshNameT = Aws::String>
+    VirtualServiceData& WithMeshName(MeshNameT&& value) { SetMeshName(std::forward<MeshNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service mesh that the virtual service resides in.</p>
-     */
-    inline void SetMeshName(const Aws::String& value) { m_meshNameHasBeenSet = true; m_meshName = value; }
-
-    /**
-     * <p>The name of the service mesh that the virtual service resides in.</p>
-     */
-    inline void SetMeshName(Aws::String&& value) { m_meshNameHasBeenSet = true; m_meshName = std::move(value); }
-
-    /**
-     * <p>The name of the service mesh that the virtual service resides in.</p>
-     */
-    inline void SetMeshName(const char* value) { m_meshNameHasBeenSet = true; m_meshName.assign(value); }
-
-    /**
-     * <p>The name of the service mesh that the virtual service resides in.</p>
-     */
-    inline VirtualServiceData& WithMeshName(const Aws::String& value) { SetMeshName(value); return *this;}
-
-    /**
-     * <p>The name of the service mesh that the virtual service resides in.</p>
-     */
-    inline VirtualServiceData& WithMeshName(Aws::String&& value) { SetMeshName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service mesh that the virtual service resides in.</p>
-     */
-    inline VirtualServiceData& WithMeshName(const char* value) { SetMeshName(value); return *this;}
-
-
+    ///@{
     
-    inline const ResourceMetadata& GetMetadata() const{ return m_metadata; }
-
-    
+    inline const ResourceMetadata& GetMetadata() const { return m_metadata; }
     inline bool MetadataHasBeenSet() const { return m_metadataHasBeenSet; }
+    template<typename MetadataT = ResourceMetadata>
+    void SetMetadata(MetadataT&& value) { m_metadataHasBeenSet = true; m_metadata = std::forward<MetadataT>(value); }
+    template<typename MetadataT = ResourceMetadata>
+    VirtualServiceData& WithMetadata(MetadataT&& value) { SetMetadata(std::forward<MetadataT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMetadata(const ResourceMetadata& value) { m_metadataHasBeenSet = true; m_metadata = value; }
-
-    
-    inline void SetMetadata(ResourceMetadata&& value) { m_metadataHasBeenSet = true; m_metadata = std::move(value); }
-
-    
-    inline VirtualServiceData& WithMetadata(const ResourceMetadata& value) { SetMetadata(value); return *this;}
-
-    
-    inline VirtualServiceData& WithMetadata(ResourceMetadata&& value) { SetMetadata(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The specifications of the virtual service.</p>
      */
-    inline const VirtualServiceSpec& GetSpec() const{ return m_spec; }
-
-    /**
-     * <p>The specifications of the virtual service.</p>
-     */
+    inline const VirtualServiceSpec& GetSpec() const { return m_spec; }
     inline bool SpecHasBeenSet() const { return m_specHasBeenSet; }
+    template<typename SpecT = VirtualServiceSpec>
+    void SetSpec(SpecT&& value) { m_specHasBeenSet = true; m_spec = std::forward<SpecT>(value); }
+    template<typename SpecT = VirtualServiceSpec>
+    VirtualServiceData& WithSpec(SpecT&& value) { SetSpec(std::forward<SpecT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The specifications of the virtual service.</p>
-     */
-    inline void SetSpec(const VirtualServiceSpec& value) { m_specHasBeenSet = true; m_spec = value; }
-
-    /**
-     * <p>The specifications of the virtual service.</p>
-     */
-    inline void SetSpec(VirtualServiceSpec&& value) { m_specHasBeenSet = true; m_spec = std::move(value); }
-
-    /**
-     * <p>The specifications of the virtual service.</p>
-     */
-    inline VirtualServiceData& WithSpec(const VirtualServiceSpec& value) { SetSpec(value); return *this;}
-
-    /**
-     * <p>The specifications of the virtual service.</p>
-     */
-    inline VirtualServiceData& WithSpec(VirtualServiceSpec&& value) { SetSpec(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the virtual service.</p>
      */
-    inline const VirtualServiceStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of the virtual service.</p>
-     */
+    inline const VirtualServiceStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = VirtualServiceStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = VirtualServiceStatus>
+    VirtualServiceData& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the virtual service.</p>
-     */
-    inline void SetStatus(const VirtualServiceStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of the virtual service.</p>
-     */
-    inline void SetStatus(VirtualServiceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the virtual service.</p>
-     */
-    inline VirtualServiceData& WithStatus(const VirtualServiceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the virtual service.</p>
-     */
-    inline VirtualServiceData& WithStatus(VirtualServiceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the virtual service.</p>
      */
-    inline const Aws::String& GetVirtualServiceName() const{ return m_virtualServiceName; }
-
-    /**
-     * <p>The name of the virtual service.</p>
-     */
+    inline const Aws::String& GetVirtualServiceName() const { return m_virtualServiceName; }
     inline bool VirtualServiceNameHasBeenSet() const { return m_virtualServiceNameHasBeenSet; }
-
-    /**
-     * <p>The name of the virtual service.</p>
-     */
-    inline void SetVirtualServiceName(const Aws::String& value) { m_virtualServiceNameHasBeenSet = true; m_virtualServiceName = value; }
-
-    /**
-     * <p>The name of the virtual service.</p>
-     */
-    inline void SetVirtualServiceName(Aws::String&& value) { m_virtualServiceNameHasBeenSet = true; m_virtualServiceName = std::move(value); }
-
-    /**
-     * <p>The name of the virtual service.</p>
-     */
-    inline void SetVirtualServiceName(const char* value) { m_virtualServiceNameHasBeenSet = true; m_virtualServiceName.assign(value); }
-
-    /**
-     * <p>The name of the virtual service.</p>
-     */
-    inline VirtualServiceData& WithVirtualServiceName(const Aws::String& value) { SetVirtualServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the virtual service.</p>
-     */
-    inline VirtualServiceData& WithVirtualServiceName(Aws::String&& value) { SetVirtualServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the virtual service.</p>
-     */
-    inline VirtualServiceData& WithVirtualServiceName(const char* value) { SetVirtualServiceName(value); return *this;}
-
+    template<typename VirtualServiceNameT = Aws::String>
+    void SetVirtualServiceName(VirtualServiceNameT&& value) { m_virtualServiceNameHasBeenSet = true; m_virtualServiceName = std::forward<VirtualServiceNameT>(value); }
+    template<typename VirtualServiceNameT = Aws::String>
+    VirtualServiceData& WithVirtualServiceName(VirtualServiceNameT&& value) { SetVirtualServiceName(std::forward<VirtualServiceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_meshName;

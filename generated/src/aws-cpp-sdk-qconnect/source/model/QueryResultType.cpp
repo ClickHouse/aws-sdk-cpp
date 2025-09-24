@@ -21,7 +21,12 @@ namespace Aws
       {
 
         static const int KNOWLEDGE_CONTENT_HASH = HashingUtils::HashString("KNOWLEDGE_CONTENT");
+        static const int INTENT_ANSWER_HASH = HashingUtils::HashString("INTENT_ANSWER");
         static const int GENERATIVE_ANSWER_HASH = HashingUtils::HashString("GENERATIVE_ANSWER");
+        static const int GENERATIVE_ANSWER_CHUNK_HASH = HashingUtils::HashString("GENERATIVE_ANSWER_CHUNK");
+        static const int BLOCKED_GENERATIVE_ANSWER_CHUNK_HASH = HashingUtils::HashString("BLOCKED_GENERATIVE_ANSWER_CHUNK");
+        static const int INTENT_ANSWER_CHUNK_HASH = HashingUtils::HashString("INTENT_ANSWER_CHUNK");
+        static const int BLOCKED_INTENT_ANSWER_CHUNK_HASH = HashingUtils::HashString("BLOCKED_INTENT_ANSWER_CHUNK");
 
 
         QueryResultType GetQueryResultTypeForName(const Aws::String& name)
@@ -31,9 +36,29 @@ namespace Aws
           {
             return QueryResultType::KNOWLEDGE_CONTENT;
           }
+          else if (hashCode == INTENT_ANSWER_HASH)
+          {
+            return QueryResultType::INTENT_ANSWER;
+          }
           else if (hashCode == GENERATIVE_ANSWER_HASH)
           {
             return QueryResultType::GENERATIVE_ANSWER;
+          }
+          else if (hashCode == GENERATIVE_ANSWER_CHUNK_HASH)
+          {
+            return QueryResultType::GENERATIVE_ANSWER_CHUNK;
+          }
+          else if (hashCode == BLOCKED_GENERATIVE_ANSWER_CHUNK_HASH)
+          {
+            return QueryResultType::BLOCKED_GENERATIVE_ANSWER_CHUNK;
+          }
+          else if (hashCode == INTENT_ANSWER_CHUNK_HASH)
+          {
+            return QueryResultType::INTENT_ANSWER_CHUNK;
+          }
+          else if (hashCode == BLOCKED_INTENT_ANSWER_CHUNK_HASH)
+          {
+            return QueryResultType::BLOCKED_INTENT_ANSWER_CHUNK;
           }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
@@ -53,8 +78,18 @@ namespace Aws
             return {};
           case QueryResultType::KNOWLEDGE_CONTENT:
             return "KNOWLEDGE_CONTENT";
+          case QueryResultType::INTENT_ANSWER:
+            return "INTENT_ANSWER";
           case QueryResultType::GENERATIVE_ANSWER:
             return "GENERATIVE_ANSWER";
+          case QueryResultType::GENERATIVE_ANSWER_CHUNK:
+            return "GENERATIVE_ANSWER_CHUNK";
+          case QueryResultType::BLOCKED_GENERATIVE_ANSWER_CHUNK:
+            return "BLOCKED_GENERATIVE_ANSWER_CHUNK";
+          case QueryResultType::INTENT_ANSWER_CHUNK:
+            return "INTENT_ANSWER_CHUNK";
+          case QueryResultType::BLOCKED_INTENT_ANSWER_CHUNK:
+            return "BLOCKED_INTENT_ANSWER_CHUNK";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

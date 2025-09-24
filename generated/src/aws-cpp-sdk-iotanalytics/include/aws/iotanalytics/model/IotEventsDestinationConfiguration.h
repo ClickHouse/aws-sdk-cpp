@@ -32,101 +32,36 @@ namespace Model
   class IotEventsDestinationConfiguration
   {
   public:
-    AWS_IOTANALYTICS_API IotEventsDestinationConfiguration();
+    AWS_IOTANALYTICS_API IotEventsDestinationConfiguration() = default;
     AWS_IOTANALYTICS_API IotEventsDestinationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API IotEventsDestinationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the IoT Events input to which dataset contents are delivered.</p>
      */
-    inline const Aws::String& GetInputName() const{ return m_inputName; }
-
-    /**
-     * <p>The name of the IoT Events input to which dataset contents are delivered.</p>
-     */
+    inline const Aws::String& GetInputName() const { return m_inputName; }
     inline bool InputNameHasBeenSet() const { return m_inputNameHasBeenSet; }
+    template<typename InputNameT = Aws::String>
+    void SetInputName(InputNameT&& value) { m_inputNameHasBeenSet = true; m_inputName = std::forward<InputNameT>(value); }
+    template<typename InputNameT = Aws::String>
+    IotEventsDestinationConfiguration& WithInputName(InputNameT&& value) { SetInputName(std::forward<InputNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the IoT Events input to which dataset contents are delivered.</p>
-     */
-    inline void SetInputName(const Aws::String& value) { m_inputNameHasBeenSet = true; m_inputName = value; }
-
-    /**
-     * <p>The name of the IoT Events input to which dataset contents are delivered.</p>
-     */
-    inline void SetInputName(Aws::String&& value) { m_inputNameHasBeenSet = true; m_inputName = std::move(value); }
-
-    /**
-     * <p>The name of the IoT Events input to which dataset contents are delivered.</p>
-     */
-    inline void SetInputName(const char* value) { m_inputNameHasBeenSet = true; m_inputName.assign(value); }
-
-    /**
-     * <p>The name of the IoT Events input to which dataset contents are delivered.</p>
-     */
-    inline IotEventsDestinationConfiguration& WithInputName(const Aws::String& value) { SetInputName(value); return *this;}
-
-    /**
-     * <p>The name of the IoT Events input to which dataset contents are delivered.</p>
-     */
-    inline IotEventsDestinationConfiguration& WithInputName(Aws::String&& value) { SetInputName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IoT Events input to which dataset contents are delivered.</p>
-     */
-    inline IotEventsDestinationConfiguration& WithInputName(const char* value) { SetInputName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the role that grants IoT Analytics permission to deliver dataset
      * contents to an IoT Events input.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The ARN of the role that grants IoT Analytics permission to deliver dataset
-     * contents to an IoT Events input.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the role that grants IoT Analytics permission to deliver dataset
-     * contents to an IoT Events input.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The ARN of the role that grants IoT Analytics permission to deliver dataset
-     * contents to an IoT Events input.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the role that grants IoT Analytics permission to deliver dataset
-     * contents to an IoT Events input.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The ARN of the role that grants IoT Analytics permission to deliver dataset
-     * contents to an IoT Events input.</p>
-     */
-    inline IotEventsDestinationConfiguration& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the role that grants IoT Analytics permission to deliver dataset
-     * contents to an IoT Events input.</p>
-     */
-    inline IotEventsDestinationConfiguration& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the role that grants IoT Analytics permission to deliver dataset
-     * contents to an IoT Events input.</p>
-     */
-    inline IotEventsDestinationConfiguration& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    IotEventsDestinationConfiguration& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_inputName;

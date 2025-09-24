@@ -29,125 +29,55 @@ namespace Model
   class ListStudioSessionMappingsResult
   {
   public:
-    AWS_EMR_API ListStudioSessionMappingsResult();
+    AWS_EMR_API ListStudioSessionMappingsResult() = default;
     AWS_EMR_API ListStudioSessionMappingsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EMR_API ListStudioSessionMappingsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of session mapping summary objects. Each object includes session
      * mapping details such as creation time, identity type (user or group), and Amazon
      * EMR Studio ID.</p>
      */
-    inline const Aws::Vector<SessionMappingSummary>& GetSessionMappings() const{ return m_sessionMappings; }
+    inline const Aws::Vector<SessionMappingSummary>& GetSessionMappings() const { return m_sessionMappings; }
+    template<typename SessionMappingsT = Aws::Vector<SessionMappingSummary>>
+    void SetSessionMappings(SessionMappingsT&& value) { m_sessionMappingsHasBeenSet = true; m_sessionMappings = std::forward<SessionMappingsT>(value); }
+    template<typename SessionMappingsT = Aws::Vector<SessionMappingSummary>>
+    ListStudioSessionMappingsResult& WithSessionMappings(SessionMappingsT&& value) { SetSessionMappings(std::forward<SessionMappingsT>(value)); return *this;}
+    template<typename SessionMappingsT = SessionMappingSummary>
+    ListStudioSessionMappingsResult& AddSessionMappings(SessionMappingsT&& value) { m_sessionMappingsHasBeenSet = true; m_sessionMappings.emplace_back(std::forward<SessionMappingsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of session mapping summary objects. Each object includes session
-     * mapping details such as creation time, identity type (user or group), and Amazon
-     * EMR Studio ID.</p>
-     */
-    inline void SetSessionMappings(const Aws::Vector<SessionMappingSummary>& value) { m_sessionMappings = value; }
-
-    /**
-     * <p>A list of session mapping summary objects. Each object includes session
-     * mapping details such as creation time, identity type (user or group), and Amazon
-     * EMR Studio ID.</p>
-     */
-    inline void SetSessionMappings(Aws::Vector<SessionMappingSummary>&& value) { m_sessionMappings = std::move(value); }
-
-    /**
-     * <p>A list of session mapping summary objects. Each object includes session
-     * mapping details such as creation time, identity type (user or group), and Amazon
-     * EMR Studio ID.</p>
-     */
-    inline ListStudioSessionMappingsResult& WithSessionMappings(const Aws::Vector<SessionMappingSummary>& value) { SetSessionMappings(value); return *this;}
-
-    /**
-     * <p>A list of session mapping summary objects. Each object includes session
-     * mapping details such as creation time, identity type (user or group), and Amazon
-     * EMR Studio ID.</p>
-     */
-    inline ListStudioSessionMappingsResult& WithSessionMappings(Aws::Vector<SessionMappingSummary>&& value) { SetSessionMappings(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of session mapping summary objects. Each object includes session
-     * mapping details such as creation time, identity type (user or group), and Amazon
-     * EMR Studio ID.</p>
-     */
-    inline ListStudioSessionMappingsResult& AddSessionMappings(const SessionMappingSummary& value) { m_sessionMappings.push_back(value); return *this; }
-
-    /**
-     * <p>A list of session mapping summary objects. Each object includes session
-     * mapping details such as creation time, identity type (user or group), and Amazon
-     * EMR Studio ID.</p>
-     */
-    inline ListStudioSessionMappingsResult& AddSessionMappings(SessionMappingSummary&& value) { m_sessionMappings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    ListStudioSessionMappingsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListStudioSessionMappingsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListStudioSessionMappingsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListStudioSessionMappingsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListStudioSessionMappingsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListStudioSessionMappingsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListStudioSessionMappingsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListStudioSessionMappingsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<SessionMappingSummary> m_sessionMappings;
+    bool m_sessionMappingsHasBeenSet = false;
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

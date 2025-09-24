@@ -12,20 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateTaskTemplateRequest::UpdateTaskTemplateRequest() : 
-    m_taskTemplateIdHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_contactFlowIdHasBeenSet(false),
-    m_constraintsHasBeenSet(false),
-    m_defaultsHasBeenSet(false),
-    m_status(TaskTemplateStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_fieldsHasBeenSet(false)
-{
-}
-
 Aws::String UpdateTaskTemplateRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -45,6 +31,12 @@ Aws::String UpdateTaskTemplateRequest::SerializePayload() const
   if(m_contactFlowIdHasBeenSet)
   {
    payload.WithString("ContactFlowId", m_contactFlowId);
+
+  }
+
+  if(m_selfAssignFlowIdHasBeenSet)
+  {
+   payload.WithString("SelfAssignFlowId", m_selfAssignFlowId);
 
   }
 

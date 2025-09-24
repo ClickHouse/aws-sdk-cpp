@@ -32,42 +32,23 @@ namespace Model
   class MetricMonitorConfig
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API MetricMonitorConfig();
+    AWS_CLOUDWATCHEVIDENTLY_API MetricMonitorConfig() = default;
     AWS_CLOUDWATCHEVIDENTLY_API MetricMonitorConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API MetricMonitorConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A structure that defines the metric.</p>
      */
-    inline const MetricDefinitionConfig& GetMetricDefinition() const{ return m_metricDefinition; }
-
-    /**
-     * <p>A structure that defines the metric.</p>
-     */
+    inline const MetricDefinitionConfig& GetMetricDefinition() const { return m_metricDefinition; }
     inline bool MetricDefinitionHasBeenSet() const { return m_metricDefinitionHasBeenSet; }
-
-    /**
-     * <p>A structure that defines the metric.</p>
-     */
-    inline void SetMetricDefinition(const MetricDefinitionConfig& value) { m_metricDefinitionHasBeenSet = true; m_metricDefinition = value; }
-
-    /**
-     * <p>A structure that defines the metric.</p>
-     */
-    inline void SetMetricDefinition(MetricDefinitionConfig&& value) { m_metricDefinitionHasBeenSet = true; m_metricDefinition = std::move(value); }
-
-    /**
-     * <p>A structure that defines the metric.</p>
-     */
-    inline MetricMonitorConfig& WithMetricDefinition(const MetricDefinitionConfig& value) { SetMetricDefinition(value); return *this;}
-
-    /**
-     * <p>A structure that defines the metric.</p>
-     */
-    inline MetricMonitorConfig& WithMetricDefinition(MetricDefinitionConfig&& value) { SetMetricDefinition(std::move(value)); return *this;}
-
+    template<typename MetricDefinitionT = MetricDefinitionConfig>
+    void SetMetricDefinition(MetricDefinitionT&& value) { m_metricDefinitionHasBeenSet = true; m_metricDefinition = std::forward<MetricDefinitionT>(value); }
+    template<typename MetricDefinitionT = MetricDefinitionConfig>
+    MetricMonitorConfig& WithMetricDefinition(MetricDefinitionT&& value) { SetMetricDefinition(std::forward<MetricDefinitionT>(value)); return *this;}
+    ///@}
   private:
 
     MetricDefinitionConfig m_metricDefinition;

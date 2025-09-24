@@ -31,52 +31,23 @@ namespace Model
   class Mitigation
   {
   public:
-    AWS_SHIELD_API Mitigation();
+    AWS_SHIELD_API Mitigation() = default;
     AWS_SHIELD_API Mitigation(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API Mitigation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the mitigation taken for this attack.</p>
      */
-    inline const Aws::String& GetMitigationName() const{ return m_mitigationName; }
-
-    /**
-     * <p>The name of the mitigation taken for this attack.</p>
-     */
+    inline const Aws::String& GetMitigationName() const { return m_mitigationName; }
     inline bool MitigationNameHasBeenSet() const { return m_mitigationNameHasBeenSet; }
-
-    /**
-     * <p>The name of the mitigation taken for this attack.</p>
-     */
-    inline void SetMitigationName(const Aws::String& value) { m_mitigationNameHasBeenSet = true; m_mitigationName = value; }
-
-    /**
-     * <p>The name of the mitigation taken for this attack.</p>
-     */
-    inline void SetMitigationName(Aws::String&& value) { m_mitigationNameHasBeenSet = true; m_mitigationName = std::move(value); }
-
-    /**
-     * <p>The name of the mitigation taken for this attack.</p>
-     */
-    inline void SetMitigationName(const char* value) { m_mitigationNameHasBeenSet = true; m_mitigationName.assign(value); }
-
-    /**
-     * <p>The name of the mitigation taken for this attack.</p>
-     */
-    inline Mitigation& WithMitigationName(const Aws::String& value) { SetMitigationName(value); return *this;}
-
-    /**
-     * <p>The name of the mitigation taken for this attack.</p>
-     */
-    inline Mitigation& WithMitigationName(Aws::String&& value) { SetMitigationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the mitigation taken for this attack.</p>
-     */
-    inline Mitigation& WithMitigationName(const char* value) { SetMitigationName(value); return *this;}
-
+    template<typename MitigationNameT = Aws::String>
+    void SetMitigationName(MitigationNameT&& value) { m_mitigationNameHasBeenSet = true; m_mitigationName = std::forward<MitigationNameT>(value); }
+    template<typename MitigationNameT = Aws::String>
+    Mitigation& WithMitigationName(MitigationNameT&& value) { SetMitigationName(std::forward<MitigationNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_mitigationName;

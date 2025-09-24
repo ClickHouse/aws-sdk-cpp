@@ -32,51 +32,27 @@ namespace Model
   class ExperimentSchedule
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API ExperimentSchedule();
+    AWS_CLOUDWATCHEVIDENTLY_API ExperimentSchedule() = default;
     AWS_CLOUDWATCHEVIDENTLY_API ExperimentSchedule(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API ExperimentSchedule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The time and date that Evidently completed the analysis of the
      * experiment.</p>
      */
-    inline const Aws::Utils::DateTime& GetAnalysisCompleteTime() const{ return m_analysisCompleteTime; }
-
-    /**
-     * <p>The time and date that Evidently completed the analysis of the
-     * experiment.</p>
-     */
+    inline const Aws::Utils::DateTime& GetAnalysisCompleteTime() const { return m_analysisCompleteTime; }
     inline bool AnalysisCompleteTimeHasBeenSet() const { return m_analysisCompleteTimeHasBeenSet; }
-
-    /**
-     * <p>The time and date that Evidently completed the analysis of the
-     * experiment.</p>
-     */
-    inline void SetAnalysisCompleteTime(const Aws::Utils::DateTime& value) { m_analysisCompleteTimeHasBeenSet = true; m_analysisCompleteTime = value; }
-
-    /**
-     * <p>The time and date that Evidently completed the analysis of the
-     * experiment.</p>
-     */
-    inline void SetAnalysisCompleteTime(Aws::Utils::DateTime&& value) { m_analysisCompleteTimeHasBeenSet = true; m_analysisCompleteTime = std::move(value); }
-
-    /**
-     * <p>The time and date that Evidently completed the analysis of the
-     * experiment.</p>
-     */
-    inline ExperimentSchedule& WithAnalysisCompleteTime(const Aws::Utils::DateTime& value) { SetAnalysisCompleteTime(value); return *this;}
-
-    /**
-     * <p>The time and date that Evidently completed the analysis of the
-     * experiment.</p>
-     */
-    inline ExperimentSchedule& WithAnalysisCompleteTime(Aws::Utils::DateTime&& value) { SetAnalysisCompleteTime(std::move(value)); return *this;}
-
+    template<typename AnalysisCompleteTimeT = Aws::Utils::DateTime>
+    void SetAnalysisCompleteTime(AnalysisCompleteTimeT&& value) { m_analysisCompleteTimeHasBeenSet = true; m_analysisCompleteTime = std::forward<AnalysisCompleteTimeT>(value); }
+    template<typename AnalysisCompleteTimeT = Aws::Utils::DateTime>
+    ExperimentSchedule& WithAnalysisCompleteTime(AnalysisCompleteTimeT&& value) { SetAnalysisCompleteTime(std::forward<AnalysisCompleteTimeT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_analysisCompleteTime;
+    Aws::Utils::DateTime m_analysisCompleteTime{};
     bool m_analysisCompleteTimeHasBeenSet = false;
   };
 

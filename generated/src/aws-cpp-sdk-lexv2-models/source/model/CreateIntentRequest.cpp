@@ -12,25 +12,6 @@ using namespace Aws::LexModelsV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateIntentRequest::CreateIntentRequest() : 
-    m_intentNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_parentIntentSignatureHasBeenSet(false),
-    m_sampleUtterancesHasBeenSet(false),
-    m_dialogCodeHookHasBeenSet(false),
-    m_fulfillmentCodeHookHasBeenSet(false),
-    m_intentConfirmationSettingHasBeenSet(false),
-    m_intentClosingSettingHasBeenSet(false),
-    m_inputContextsHasBeenSet(false),
-    m_outputContextsHasBeenSet(false),
-    m_kendraConfigurationHasBeenSet(false),
-    m_botIdHasBeenSet(false),
-    m_botVersionHasBeenSet(false),
-    m_localeIdHasBeenSet(false),
-    m_initialResponseSettingHasBeenSet(false)
-{
-}
-
 Aws::String CreateIntentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -119,6 +100,18 @@ Aws::String CreateIntentRequest::SerializePayload() const
   if(m_initialResponseSettingHasBeenSet)
   {
    payload.WithObject("initialResponseSetting", m_initialResponseSetting.Jsonize());
+
+  }
+
+  if(m_qnAIntentConfigurationHasBeenSet)
+  {
+   payload.WithObject("qnAIntentConfiguration", m_qnAIntentConfiguration.Jsonize());
+
+  }
+
+  if(m_qInConnectIntentConfigurationHasBeenSet)
+  {
+   payload.WithObject("qInConnectIntentConfiguration", m_qInConnectIntentConfiguration.Jsonize());
 
   }
 

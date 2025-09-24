@@ -32,69 +32,39 @@ namespace Model
   class RemediationActionWithOrder
   {
   public:
-    AWS_FMS_API RemediationActionWithOrder();
+    AWS_FMS_API RemediationActionWithOrder() = default;
     AWS_FMS_API RemediationActionWithOrder(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API RemediationActionWithOrder& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about an action you can take to remediate a violation.</p>
      */
-    inline const RemediationAction& GetRemediationAction() const{ return m_remediationAction; }
-
-    /**
-     * <p>Information about an action you can take to remediate a violation.</p>
-     */
+    inline const RemediationAction& GetRemediationAction() const { return m_remediationAction; }
     inline bool RemediationActionHasBeenSet() const { return m_remediationActionHasBeenSet; }
+    template<typename RemediationActionT = RemediationAction>
+    void SetRemediationAction(RemediationActionT&& value) { m_remediationActionHasBeenSet = true; m_remediationAction = std::forward<RemediationActionT>(value); }
+    template<typename RemediationActionT = RemediationAction>
+    RemediationActionWithOrder& WithRemediationAction(RemediationActionT&& value) { SetRemediationAction(std::forward<RemediationActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about an action you can take to remediate a violation.</p>
-     */
-    inline void SetRemediationAction(const RemediationAction& value) { m_remediationActionHasBeenSet = true; m_remediationAction = value; }
-
-    /**
-     * <p>Information about an action you can take to remediate a violation.</p>
-     */
-    inline void SetRemediationAction(RemediationAction&& value) { m_remediationActionHasBeenSet = true; m_remediationAction = std::move(value); }
-
-    /**
-     * <p>Information about an action you can take to remediate a violation.</p>
-     */
-    inline RemediationActionWithOrder& WithRemediationAction(const RemediationAction& value) { SetRemediationAction(value); return *this;}
-
-    /**
-     * <p>Information about an action you can take to remediate a violation.</p>
-     */
-    inline RemediationActionWithOrder& WithRemediationAction(RemediationAction&& value) { SetRemediationAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The order of the remediation actions in the list.</p>
      */
-    inline int GetOrder() const{ return m_order; }
-
-    /**
-     * <p>The order of the remediation actions in the list.</p>
-     */
+    inline int GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
-
-    /**
-     * <p>The order of the remediation actions in the list.</p>
-     */
     inline void SetOrder(int value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>The order of the remediation actions in the list.</p>
-     */
     inline RemediationActionWithOrder& WithOrder(int value) { SetOrder(value); return *this;}
-
+    ///@}
   private:
 
     RemediationAction m_remediationAction;
     bool m_remediationActionHasBeenSet = false;
 
-    int m_order;
+    int m_order{0};
     bool m_orderHasBeenSet = false;
   };
 

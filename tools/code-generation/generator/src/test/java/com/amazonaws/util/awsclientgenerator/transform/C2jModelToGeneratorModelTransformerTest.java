@@ -13,8 +13,10 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import com.google.common.collect.ImmutableList;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
 
 public class C2jModelToGeneratorModelTransformerTest {
@@ -42,7 +44,7 @@ public class C2jModelToGeneratorModelTransformerTest {
         assertEquals(c2jMetadata.getApiVersion(), metadata.getApiVersion());
         assertEquals(c2jMetadata.getEndpointPrefix(), metadata.getEndpointPrefix());
         assertEquals(c2jMetadata.getJsonVersion(), metadata.getJsonVersion());
-        assertEquals(c2jMetadata.getProtocol(), metadata.getProtocol());
+        assertEquals(c2jMetadata.getProtocol(), metadata.findFirstSupportedProtocol());
         assertEquals("ServiceAbbr", metadata.getNamespace());
         assertEquals(c2jMetadata.getServiceFullName(), metadata.getServiceFullName());
         assertEquals(c2jMetadata.getSignatureVersion(), metadata.getSignatureVersion());
@@ -55,7 +57,7 @@ public class C2jModelToGeneratorModelTransformerTest {
         assertEquals(c2jMetadata.getApiVersion(), metadata.getApiVersion());
         assertEquals(c2jMetadata.getEndpointPrefix(), metadata.getEndpointPrefix());
         assertEquals(c2jMetadata.getJsonVersion(), metadata.getJsonVersion());
-        assertEquals(c2jMetadata.getProtocol(), metadata.getProtocol());
+        assertEquals(c2jMetadata.getProtocol(), metadata.findFirstSupportedProtocol());
         assertEquals("ServiceAbbr", metadata.getNamespace());
         assertEquals(c2jMetadata.getServiceFullName(), metadata.getServiceFullName());
         assertEquals(c2jMetadata.getSignatureVersion(), metadata.getSignatureVersion());
@@ -82,7 +84,7 @@ public class C2jModelToGeneratorModelTransformerTest {
         assertTrue(metadata.isStandalone());
         assertTrue(metadata.isApigateway());
         assertEquals("service-abbr.execute-api", metadata.getEndpointPrefix());
-        assertEquals("application-json", metadata.getProtocol());
+        assertEquals("application-json", metadata.findFirstSupportedProtocol());
     }
 
     @Test
@@ -342,7 +344,8 @@ public class C2jModelToGeneratorModelTransformerTest {
     //     "EventStreamShape":{
     //         "type":"structure",
     //         "members":{
-    //             "EventShape":{"shape":"EventShape"}
+    //             "EventShape":{"shape":"EventShape"},
+    //             "EventEnumShape":{"shape":"EventEnumShape"}
     //         },
     //         "eventstream":true
     //     },
@@ -353,6 +356,17 @@ public class C2jModelToGeneratorModelTransformerTest {
     //         },
     //         "event":true
     //     },
+    //     "EventEnumShape":{
+    //         "type":"structure",
+    //         "members":{
+    //             "BlobShape":{"shape":"BlobShape"}
+    //         },
+    //         "event":true
+    //     },
+    //     "EnumShape":{
+    //         "type":"string",
+    //          "enum":[VALUE]
+    //     }
     //     "BlobShape":{
     //         "type":"blob"
     //     }
@@ -390,6 +404,27 @@ public class C2jModelToGeneratorModelTransformerTest {
         eventStreamShape.setMembers(new HashMap<>());
         eventStreamShape.getMembers().put("EventShape", eventShapeMember);
 
+        C2jShape eventEnumShape = new C2jShape();
+        eventEnumShape.setType("structure");
+        eventEnumShape.setEvent(true);
+        c2jShapeMap.put("EventEnumShape", eventEnumShape);
+
+        C2jShape enumShape = new C2jShape();
+        enumShape.setType("string");
+        enumShape.setEnums(ImmutableList.of("VALUE"));
+        c2jShapeMap.put("EnumShape", enumShape);
+
+        C2jShapeMember enumShapeMember = new C2jShapeMember();
+        enumShapeMember.setShape("EnumShape");
+
+        eventEnumShape.setMembers(new HashMap<>());
+        eventEnumShape.getMembers().put("EnumShape", enumShapeMember);
+
+        C2jShapeMember eventEnumShapeMember = new C2jShapeMember();
+        eventEnumShapeMember.setShape("EventEnumShape");
+
+        eventStreamShape.getMembers().put("EvenEnumShape", eventEnumShapeMember);
+
         c2jServiceModel.setShapes(c2jShapeMap);
 
         C2jModelToGeneratorModelTransformer c2jModelToGeneratorModelTransformer = new C2jModelToGeneratorModelTransformer(c2jServiceModel, false);
@@ -397,19 +432,21 @@ public class C2jModelToGeneratorModelTransformerTest {
         c2jModelToGeneratorModelTransformer.postProcessShapes();
 
         Map<String, Shape> shapes = c2jModelToGeneratorModelTransformer.shapes;
-        assertEquals(3, shapes.size());
+        assertEquals(5, shapes.size());
         assertEquals("EventStreamShape", shapes.get("EventStreamShape").getName());
         assertTrue(shapes.get("EventStreamShape").isEventStream());
         assertEquals("EventShape", shapes.get("EventShape").getName());
         assertTrue(shapes.get("EventShape").isEvent());
-        assertEquals("blob", shapes.get("EventShape").getEventPayloadType());
-        assertEquals("BlobShape", shapes.get("EventShape").getEventPayloadMemberName());
+        assertEquals("structure", shapes.get("EventShape").getEventPayloadType());
         assertEquals("BlobShape", shapes.get("BlobShape").getName());
         assertEquals("blob", shapes.get("BlobShape").getType());
-        assertEquals(1, shapes.get("EventStreamShape").getMembers().size());
+        assertEquals(2, shapes.get("EventStreamShape").getMembers().size());
         assertEquals("EventShape", shapes.get("EventStreamShape").getMembers().get("EventShape").getShape().getName());
         assertEquals(1, shapes.get("EventShape").getMembers().size());
         assertEquals("BlobShape", shapes.get("EventShape").getMembers().get("BlobShape").getShape().getName());
-        assertTrue(shapes.get("EventShape").getMembers().get("BlobShape").isEventPayload());
+        assertFalse(shapes.get("EventShape").getMembers().get("BlobShape").isEventPayload());
+
+        assertFalse(shapes.get("EventEnumShape").getMembers().get("EnumShape").isEventPayload());
+        assertEquals("structure", shapes.get("EventEnumShape").getEventPayloadType());
     }
 }

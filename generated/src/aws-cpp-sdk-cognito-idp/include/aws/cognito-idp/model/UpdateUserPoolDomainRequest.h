@@ -25,7 +25,7 @@ namespace Model
   class UpdateUserPoolDomainRequest : public CognitoIdentityProviderRequest
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API UpdateUserPoolDomainRequest();
+    AWS_COGNITOIDENTITYPROVIDER_API UpdateUserPoolDomainRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,170 +38,65 @@ namespace Model
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The domain name for the custom domain that hosts the sign-up and sign-in
-     * pages for your application. One example might be <code>auth.example.com</code>.
-     * </p> <p>This string can include only lowercase letters, numbers, and hyphens.
-     * Don't use a hyphen for the first or last character. Use periods to separate
-     * subdomain names.</p>
+     * <p>The name of the domain that you want to update. For custom domains, this is
+     * the fully-qualified domain name, for example <code>auth.example.com</code>. For
+     * prefix domains, this is the prefix alone, such as <code>myprefix</code>.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The domain name for the custom domain that hosts the sign-up and sign-in
-     * pages for your application. One example might be <code>auth.example.com</code>.
-     * </p> <p>This string can include only lowercase letters, numbers, and hyphens.
-     * Don't use a hyphen for the first or last character. Use periods to separate
-     * subdomain names.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    UpdateUserPoolDomainRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The domain name for the custom domain that hosts the sign-up and sign-in
-     * pages for your application. One example might be <code>auth.example.com</code>.
-     * </p> <p>This string can include only lowercase letters, numbers, and hyphens.
-     * Don't use a hyphen for the first or last character. Use periods to separate
-     * subdomain names.</p>
+     * <p>The ID of the user pool that is associated with the domain you're
+     * updating.</p>
      */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The domain name for the custom domain that hosts the sign-up and sign-in
-     * pages for your application. One example might be <code>auth.example.com</code>.
-     * </p> <p>This string can include only lowercase letters, numbers, and hyphens.
-     * Don't use a hyphen for the first or last character. Use periods to separate
-     * subdomain names.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The domain name for the custom domain that hosts the sign-up and sign-in
-     * pages for your application. One example might be <code>auth.example.com</code>.
-     * </p> <p>This string can include only lowercase letters, numbers, and hyphens.
-     * Don't use a hyphen for the first or last character. Use periods to separate
-     * subdomain names.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The domain name for the custom domain that hosts the sign-up and sign-in
-     * pages for your application. One example might be <code>auth.example.com</code>.
-     * </p> <p>This string can include only lowercase letters, numbers, and hyphens.
-     * Don't use a hyphen for the first or last character. Use periods to separate
-     * subdomain names.</p>
-     */
-    inline UpdateUserPoolDomainRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The domain name for the custom domain that hosts the sign-up and sign-in
-     * pages for your application. One example might be <code>auth.example.com</code>.
-     * </p> <p>This string can include only lowercase letters, numbers, and hyphens.
-     * Don't use a hyphen for the first or last character. Use periods to separate
-     * subdomain names.</p>
-     */
-    inline UpdateUserPoolDomainRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain name for the custom domain that hosts the sign-up and sign-in
-     * pages for your application. One example might be <code>auth.example.com</code>.
-     * </p> <p>This string can include only lowercase letters, numbers, and hyphens.
-     * Don't use a hyphen for the first or last character. Use periods to separate
-     * subdomain names.</p>
-     */
-    inline UpdateUserPoolDomainRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
-    /**
-     * <p>The ID of the user pool that is associated with the custom domain whose
-     * certificate you're updating.</p>
-     */
-    inline const Aws::String& GetUserPoolId() const{ return m_userPoolId; }
-
-    /**
-     * <p>The ID of the user pool that is associated with the custom domain whose
-     * certificate you're updating.</p>
-     */
+    inline const Aws::String& GetUserPoolId() const { return m_userPoolId; }
     inline bool UserPoolIdHasBeenSet() const { return m_userPoolIdHasBeenSet; }
+    template<typename UserPoolIdT = Aws::String>
+    void SetUserPoolId(UserPoolIdT&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::forward<UserPoolIdT>(value); }
+    template<typename UserPoolIdT = Aws::String>
+    UpdateUserPoolDomainRequest& WithUserPoolId(UserPoolIdT&& value) { SetUserPoolId(std::forward<UserPoolIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the user pool that is associated with the custom domain whose
-     * certificate you're updating.</p>
+     * <p>A version number that indicates the state of managed login for your domain.
+     * Version <code>1</code> is hosted UI (classic). Version <code>2</code> is the
+     * newer managed login with the branding editor. For more information, see <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html">Managed
+     * login</a>.</p>
      */
-    inline void SetUserPoolId(const Aws::String& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = value; }
+    inline int GetManagedLoginVersion() const { return m_managedLoginVersion; }
+    inline bool ManagedLoginVersionHasBeenSet() const { return m_managedLoginVersionHasBeenSet; }
+    inline void SetManagedLoginVersion(int value) { m_managedLoginVersionHasBeenSet = true; m_managedLoginVersion = value; }
+    inline UpdateUserPoolDomainRequest& WithManagedLoginVersion(int value) { SetManagedLoginVersion(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the user pool that is associated with the custom domain whose
-     * certificate you're updating.</p>
+     * <p>The configuration for a custom domain that hosts managed login for your
+     * application. In an <code>UpdateUserPoolDomain</code> request, this parameter
+     * specifies an SSL certificate for the managed login hosted webserver. The
+     * certificate must be an ACM ARN in <code>us-east-1</code>.</p> <p>When you create
+     * a custom domain, the passkey RP ID defaults to the custom domain. If you had a
+     * prefix domain active, this will cause passkey integration for your prefix domain
+     * to stop working due to a mismatch in RP ID. To keep the prefix domain passkey
+     * integration working, you can explicitly set RP ID to the prefix domain.</p>
      */
-    inline void SetUserPoolId(Aws::String&& value) { m_userPoolIdHasBeenSet = true; m_userPoolId = std::move(value); }
-
-    /**
-     * <p>The ID of the user pool that is associated with the custom domain whose
-     * certificate you're updating.</p>
-     */
-    inline void SetUserPoolId(const char* value) { m_userPoolIdHasBeenSet = true; m_userPoolId.assign(value); }
-
-    /**
-     * <p>The ID of the user pool that is associated with the custom domain whose
-     * certificate you're updating.</p>
-     */
-    inline UpdateUserPoolDomainRequest& WithUserPoolId(const Aws::String& value) { SetUserPoolId(value); return *this;}
-
-    /**
-     * <p>The ID of the user pool that is associated with the custom domain whose
-     * certificate you're updating.</p>
-     */
-    inline UpdateUserPoolDomainRequest& WithUserPoolId(Aws::String&& value) { SetUserPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the user pool that is associated with the custom domain whose
-     * certificate you're updating.</p>
-     */
-    inline UpdateUserPoolDomainRequest& WithUserPoolId(const char* value) { SetUserPoolId(value); return *this;}
-
-
-    /**
-     * <p>The configuration for a custom domain that hosts the sign-up and sign-in
-     * pages for your application. Use this object to specify an SSL certificate that
-     * is managed by ACM.</p>
-     */
-    inline const CustomDomainConfigType& GetCustomDomainConfig() const{ return m_customDomainConfig; }
-
-    /**
-     * <p>The configuration for a custom domain that hosts the sign-up and sign-in
-     * pages for your application. Use this object to specify an SSL certificate that
-     * is managed by ACM.</p>
-     */
+    inline const CustomDomainConfigType& GetCustomDomainConfig() const { return m_customDomainConfig; }
     inline bool CustomDomainConfigHasBeenSet() const { return m_customDomainConfigHasBeenSet; }
-
-    /**
-     * <p>The configuration for a custom domain that hosts the sign-up and sign-in
-     * pages for your application. Use this object to specify an SSL certificate that
-     * is managed by ACM.</p>
-     */
-    inline void SetCustomDomainConfig(const CustomDomainConfigType& value) { m_customDomainConfigHasBeenSet = true; m_customDomainConfig = value; }
-
-    /**
-     * <p>The configuration for a custom domain that hosts the sign-up and sign-in
-     * pages for your application. Use this object to specify an SSL certificate that
-     * is managed by ACM.</p>
-     */
-    inline void SetCustomDomainConfig(CustomDomainConfigType&& value) { m_customDomainConfigHasBeenSet = true; m_customDomainConfig = std::move(value); }
-
-    /**
-     * <p>The configuration for a custom domain that hosts the sign-up and sign-in
-     * pages for your application. Use this object to specify an SSL certificate that
-     * is managed by ACM.</p>
-     */
-    inline UpdateUserPoolDomainRequest& WithCustomDomainConfig(const CustomDomainConfigType& value) { SetCustomDomainConfig(value); return *this;}
-
-    /**
-     * <p>The configuration for a custom domain that hosts the sign-up and sign-in
-     * pages for your application. Use this object to specify an SSL certificate that
-     * is managed by ACM.</p>
-     */
-    inline UpdateUserPoolDomainRequest& WithCustomDomainConfig(CustomDomainConfigType&& value) { SetCustomDomainConfig(std::move(value)); return *this;}
-
+    template<typename CustomDomainConfigT = CustomDomainConfigType>
+    void SetCustomDomainConfig(CustomDomainConfigT&& value) { m_customDomainConfigHasBeenSet = true; m_customDomainConfig = std::forward<CustomDomainConfigT>(value); }
+    template<typename CustomDomainConfigT = CustomDomainConfigType>
+    UpdateUserPoolDomainRequest& WithCustomDomainConfig(CustomDomainConfigT&& value) { SetCustomDomainConfig(std::forward<CustomDomainConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;
@@ -209,6 +104,9 @@ namespace Model
 
     Aws::String m_userPoolId;
     bool m_userPoolIdHasBeenSet = false;
+
+    int m_managedLoginVersion{0};
+    bool m_managedLoginVersionHasBeenSet = false;
 
     CustomDomainConfigType m_customDomainConfig;
     bool m_customDomainConfigHasBeenSet = false;

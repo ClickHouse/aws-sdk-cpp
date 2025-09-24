@@ -18,21 +18,7 @@ namespace Connect
 namespace Model
 {
 
-MediaPlacement::MediaPlacement() : 
-    m_audioHostUrlHasBeenSet(false),
-    m_audioFallbackUrlHasBeenSet(false),
-    m_signalingUrlHasBeenSet(false),
-    m_turnControlUrlHasBeenSet(false),
-    m_eventIngestionUrlHasBeenSet(false)
-{
-}
-
-MediaPlacement::MediaPlacement(JsonView jsonValue) : 
-    m_audioHostUrlHasBeenSet(false),
-    m_audioFallbackUrlHasBeenSet(false),
-    m_signalingUrlHasBeenSet(false),
-    m_turnControlUrlHasBeenSet(false),
-    m_eventIngestionUrlHasBeenSet(false)
+MediaPlacement::MediaPlacement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,28 @@ MediaPlacement& MediaPlacement::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AudioHostUrl"))
   {
     m_audioHostUrl = jsonValue.GetString("AudioHostUrl");
-
     m_audioHostUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AudioFallbackUrl"))
   {
     m_audioFallbackUrl = jsonValue.GetString("AudioFallbackUrl");
-
     m_audioFallbackUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SignalingUrl"))
   {
     m_signalingUrl = jsonValue.GetString("SignalingUrl");
-
     m_signalingUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TurnControlUrl"))
   {
     m_turnControlUrl = jsonValue.GetString("TurnControlUrl");
-
     m_turnControlUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EventIngestionUrl"))
   {
     m_eventIngestionUrl = jsonValue.GetString("EventIngestionUrl");
-
     m_eventIngestionUrlHasBeenSet = true;
   }
-
   return *this;
 }
 

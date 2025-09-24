@@ -24,7 +24,7 @@ namespace Model
   class CancelDataRepositoryTaskRequest : public FSxRequest
   {
   public:
-    AWS_FSX_API CancelDataRepositoryTaskRequest();
+    AWS_FSX_API CancelDataRepositoryTaskRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,46 +37,17 @@ namespace Model
     AWS_FSX_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies the data repository task to cancel.</p>
      */
-    inline const Aws::String& GetTaskId() const{ return m_taskId; }
-
-    /**
-     * <p>Specifies the data repository task to cancel.</p>
-     */
+    inline const Aws::String& GetTaskId() const { return m_taskId; }
     inline bool TaskIdHasBeenSet() const { return m_taskIdHasBeenSet; }
-
-    /**
-     * <p>Specifies the data repository task to cancel.</p>
-     */
-    inline void SetTaskId(const Aws::String& value) { m_taskIdHasBeenSet = true; m_taskId = value; }
-
-    /**
-     * <p>Specifies the data repository task to cancel.</p>
-     */
-    inline void SetTaskId(Aws::String&& value) { m_taskIdHasBeenSet = true; m_taskId = std::move(value); }
-
-    /**
-     * <p>Specifies the data repository task to cancel.</p>
-     */
-    inline void SetTaskId(const char* value) { m_taskIdHasBeenSet = true; m_taskId.assign(value); }
-
-    /**
-     * <p>Specifies the data repository task to cancel.</p>
-     */
-    inline CancelDataRepositoryTaskRequest& WithTaskId(const Aws::String& value) { SetTaskId(value); return *this;}
-
-    /**
-     * <p>Specifies the data repository task to cancel.</p>
-     */
-    inline CancelDataRepositoryTaskRequest& WithTaskId(Aws::String&& value) { SetTaskId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the data repository task to cancel.</p>
-     */
-    inline CancelDataRepositoryTaskRequest& WithTaskId(const char* value) { SetTaskId(value); return *this;}
-
+    template<typename TaskIdT = Aws::String>
+    void SetTaskId(TaskIdT&& value) { m_taskIdHasBeenSet = true; m_taskId = std::forward<TaskIdT>(value); }
+    template<typename TaskIdT = Aws::String>
+    CancelDataRepositoryTaskRequest& WithTaskId(TaskIdT&& value) { SetTaskId(std::forward<TaskIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskId;

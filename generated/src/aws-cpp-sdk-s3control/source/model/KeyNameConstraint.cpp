@@ -20,17 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-KeyNameConstraint::KeyNameConstraint() : 
-    m_matchAnyPrefixHasBeenSet(false),
-    m_matchAnySuffixHasBeenSet(false),
-    m_matchAnySubstringHasBeenSet(false)
-{
-}
-
-KeyNameConstraint::KeyNameConstraint(const XmlNode& xmlNode) : 
-    m_matchAnyPrefixHasBeenSet(false),
-    m_matchAnySuffixHasBeenSet(false),
-    m_matchAnySubstringHasBeenSet(false)
+KeyNameConstraint::KeyNameConstraint(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ KeyNameConstraint& KeyNameConstraint::operator =(const XmlNode& xmlNode)
     if(!matchAnyPrefixNode.IsNull())
     {
       XmlNode matchAnyPrefixMember = matchAnyPrefixNode.FirstChild("member");
+      m_matchAnyPrefixHasBeenSet = !matchAnyPrefixMember.IsNull();
       while(!matchAnyPrefixMember.IsNull())
       {
         m_matchAnyPrefix.push_back(matchAnyPrefixMember.GetText());
@@ -57,6 +48,7 @@ KeyNameConstraint& KeyNameConstraint::operator =(const XmlNode& xmlNode)
     if(!matchAnySuffixNode.IsNull())
     {
       XmlNode matchAnySuffixMember = matchAnySuffixNode.FirstChild("member");
+      m_matchAnySuffixHasBeenSet = !matchAnySuffixMember.IsNull();
       while(!matchAnySuffixMember.IsNull())
       {
         m_matchAnySuffix.push_back(matchAnySuffixMember.GetText());
@@ -69,6 +61,7 @@ KeyNameConstraint& KeyNameConstraint::operator =(const XmlNode& xmlNode)
     if(!matchAnySubstringNode.IsNull())
     {
       XmlNode matchAnySubstringMember = matchAnySubstringNode.FirstChild("member");
+      m_matchAnySubstringHasBeenSet = !matchAnySubstringMember.IsNull();
       while(!matchAnySubstringMember.IsNull())
       {
         m_matchAnySubstring.push_back(matchAnySubstringMember.GetText());
@@ -90,7 +83,7 @@ void KeyNameConstraint::AddToNode(XmlNode& parentNode) const
    XmlNode matchAnyPrefixParentNode = parentNode.CreateChildElement("MatchAnyPrefix");
    for(const auto& item : m_matchAnyPrefix)
    {
-     XmlNode matchAnyPrefixNode = matchAnyPrefixParentNode.CreateChildElement("NonEmptyMaxLength1024String");
+     XmlNode matchAnyPrefixNode = matchAnyPrefixParentNode.CreateChildElement("member");
      matchAnyPrefixNode.SetText(item);
    }
   }
@@ -100,7 +93,7 @@ void KeyNameConstraint::AddToNode(XmlNode& parentNode) const
    XmlNode matchAnySuffixParentNode = parentNode.CreateChildElement("MatchAnySuffix");
    for(const auto& item : m_matchAnySuffix)
    {
-     XmlNode matchAnySuffixNode = matchAnySuffixParentNode.CreateChildElement("NonEmptyMaxLength1024String");
+     XmlNode matchAnySuffixNode = matchAnySuffixParentNode.CreateChildElement("member");
      matchAnySuffixNode.SetText(item);
    }
   }
@@ -110,7 +103,7 @@ void KeyNameConstraint::AddToNode(XmlNode& parentNode) const
    XmlNode matchAnySubstringParentNode = parentNode.CreateChildElement("MatchAnySubstring");
    for(const auto& item : m_matchAnySubstring)
    {
-     XmlNode matchAnySubstringNode = matchAnySubstringParentNode.CreateChildElement("NonEmptyMaxLength1024String");
+     XmlNode matchAnySubstringNode = matchAnySubstringParentNode.CreateChildElement("member");
      matchAnySubstringNode.SetText(item);
    }
   }

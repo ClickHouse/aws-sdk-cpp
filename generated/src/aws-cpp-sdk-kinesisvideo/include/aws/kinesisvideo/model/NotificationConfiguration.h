@@ -34,82 +34,37 @@ namespace Model
   class NotificationConfiguration
   {
   public:
-    AWS_KINESISVIDEO_API NotificationConfiguration();
+    AWS_KINESISVIDEO_API NotificationConfiguration() = default;
     AWS_KINESISVIDEO_API NotificationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEO_API NotificationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISVIDEO_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates if a notification configuration is enabled or disabled.</p>
      */
-    inline const ConfigurationStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Indicates if a notification configuration is enabled or disabled.</p>
-     */
+    inline ConfigurationStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ConfigurationStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline NotificationConfiguration& WithStatus(ConfigurationStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates if a notification configuration is enabled or disabled.</p>
-     */
-    inline void SetStatus(const ConfigurationStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Indicates if a notification configuration is enabled or disabled.</p>
-     */
-    inline void SetStatus(ConfigurationStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Indicates if a notification configuration is enabled or disabled.</p>
-     */
-    inline NotificationConfiguration& WithStatus(const ConfigurationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Indicates if a notification configuration is enabled or disabled.</p>
-     */
-    inline NotificationConfiguration& WithStatus(ConfigurationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The destination information required to deliver a notification to a
      * customer.</p>
      */
-    inline const NotificationDestinationConfig& GetDestinationConfig() const{ return m_destinationConfig; }
-
-    /**
-     * <p>The destination information required to deliver a notification to a
-     * customer.</p>
-     */
+    inline const NotificationDestinationConfig& GetDestinationConfig() const { return m_destinationConfig; }
     inline bool DestinationConfigHasBeenSet() const { return m_destinationConfigHasBeenSet; }
-
-    /**
-     * <p>The destination information required to deliver a notification to a
-     * customer.</p>
-     */
-    inline void SetDestinationConfig(const NotificationDestinationConfig& value) { m_destinationConfigHasBeenSet = true; m_destinationConfig = value; }
-
-    /**
-     * <p>The destination information required to deliver a notification to a
-     * customer.</p>
-     */
-    inline void SetDestinationConfig(NotificationDestinationConfig&& value) { m_destinationConfigHasBeenSet = true; m_destinationConfig = std::move(value); }
-
-    /**
-     * <p>The destination information required to deliver a notification to a
-     * customer.</p>
-     */
-    inline NotificationConfiguration& WithDestinationConfig(const NotificationDestinationConfig& value) { SetDestinationConfig(value); return *this;}
-
-    /**
-     * <p>The destination information required to deliver a notification to a
-     * customer.</p>
-     */
-    inline NotificationConfiguration& WithDestinationConfig(NotificationDestinationConfig&& value) { SetDestinationConfig(std::move(value)); return *this;}
-
+    template<typename DestinationConfigT = NotificationDestinationConfig>
+    void SetDestinationConfig(DestinationConfigT&& value) { m_destinationConfigHasBeenSet = true; m_destinationConfig = std::forward<DestinationConfigT>(value); }
+    template<typename DestinationConfigT = NotificationDestinationConfig>
+    NotificationConfiguration& WithDestinationConfig(DestinationConfigT&& value) { SetDestinationConfig(std::forward<DestinationConfigT>(value)); return *this;}
+    ///@}
   private:
 
-    ConfigurationStatus m_status;
+    ConfigurationStatus m_status{ConfigurationStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     NotificationDestinationConfig m_destinationConfig;

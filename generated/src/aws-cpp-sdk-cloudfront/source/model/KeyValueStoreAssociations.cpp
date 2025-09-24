@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-KeyValueStoreAssociations::KeyValueStoreAssociations() : 
-    m_quantity(0),
-    m_quantityHasBeenSet(false),
-    m_itemsHasBeenSet(false)
-{
-}
-
-KeyValueStoreAssociations::KeyValueStoreAssociations(const XmlNode& xmlNode) : 
-    m_quantity(0),
-    m_quantityHasBeenSet(false),
-    m_itemsHasBeenSet(false)
+KeyValueStoreAssociations::KeyValueStoreAssociations(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -51,6 +41,7 @@ KeyValueStoreAssociations& KeyValueStoreAssociations::operator =(const XmlNode& 
     if(!itemsNode.IsNull())
     {
       XmlNode itemsMember = itemsNode.FirstChild("KeyValueStoreAssociation");
+      m_itemsHasBeenSet = !itemsMember.IsNull();
       while(!itemsMember.IsNull())
       {
         m_items.push_back(itemsMember);

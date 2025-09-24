@@ -21,7 +21,7 @@ namespace Model
   class DeleteAccessKeyRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API DeleteAccessKeyRequest();
+    AWS_IAM_API DeleteAccessKeyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,6 +36,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the user whose access key pair you want to delete.</p> <p>This
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
@@ -43,136 +44,28 @@ namespace Model
      * alphanumeric characters with no spaces. You can also include any of the
      * following characters: _+=,.@-</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The name of the user whose access key pair you want to delete.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    DeleteAccessKeyRequest& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the user whose access key pair you want to delete.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The name of the user whose access key pair you want to delete.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The name of the user whose access key pair you want to delete.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The name of the user whose access key pair you want to delete.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline DeleteAccessKeyRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The name of the user whose access key pair you want to delete.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline DeleteAccessKeyRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the user whose access key pair you want to delete.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline DeleteAccessKeyRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The access key ID for the access key ID and secret access key you want to
      * delete.</p> <p>This parameter allows (through its <a
      * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
      * that can consist of any upper or lowercased letter or digit.</p>
      */
-    inline const Aws::String& GetAccessKeyId() const{ return m_accessKeyId; }
-
-    /**
-     * <p>The access key ID for the access key ID and secret access key you want to
-     * delete.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * that can consist of any upper or lowercased letter or digit.</p>
-     */
+    inline const Aws::String& GetAccessKeyId() const { return m_accessKeyId; }
     inline bool AccessKeyIdHasBeenSet() const { return m_accessKeyIdHasBeenSet; }
-
-    /**
-     * <p>The access key ID for the access key ID and secret access key you want to
-     * delete.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * that can consist of any upper or lowercased letter or digit.</p>
-     */
-    inline void SetAccessKeyId(const Aws::String& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = value; }
-
-    /**
-     * <p>The access key ID for the access key ID and secret access key you want to
-     * delete.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * that can consist of any upper or lowercased letter or digit.</p>
-     */
-    inline void SetAccessKeyId(Aws::String&& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = std::move(value); }
-
-    /**
-     * <p>The access key ID for the access key ID and secret access key you want to
-     * delete.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * that can consist of any upper or lowercased letter or digit.</p>
-     */
-    inline void SetAccessKeyId(const char* value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId.assign(value); }
-
-    /**
-     * <p>The access key ID for the access key ID and secret access key you want to
-     * delete.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * that can consist of any upper or lowercased letter or digit.</p>
-     */
-    inline DeleteAccessKeyRequest& WithAccessKeyId(const Aws::String& value) { SetAccessKeyId(value); return *this;}
-
-    /**
-     * <p>The access key ID for the access key ID and secret access key you want to
-     * delete.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * that can consist of any upper or lowercased letter or digit.</p>
-     */
-    inline DeleteAccessKeyRequest& WithAccessKeyId(Aws::String&& value) { SetAccessKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The access key ID for the access key ID and secret access key you want to
-     * delete.</p> <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * that can consist of any upper or lowercased letter or digit.</p>
-     */
-    inline DeleteAccessKeyRequest& WithAccessKeyId(const char* value) { SetAccessKeyId(value); return *this;}
-
+    template<typename AccessKeyIdT = Aws::String>
+    void SetAccessKeyId(AccessKeyIdT&& value) { m_accessKeyIdHasBeenSet = true; m_accessKeyId = std::forward<AccessKeyIdT>(value); }
+    template<typename AccessKeyIdT = Aws::String>
+    DeleteAccessKeyRequest& WithAccessKeyId(AccessKeyIdT&& value) { SetAccessKeyId(std::forward<AccessKeyIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;

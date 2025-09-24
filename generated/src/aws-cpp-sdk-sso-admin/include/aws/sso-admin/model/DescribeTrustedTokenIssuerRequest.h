@@ -21,7 +21,7 @@ namespace Model
   class DescribeTrustedTokenIssuerRequest : public SSOAdminRequest
   {
   public:
-    AWS_SSOADMIN_API DescribeTrustedTokenIssuerRequest();
+    AWS_SSOADMIN_API DescribeTrustedTokenIssuerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_SSOADMIN_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Specifies the ARN of the trusted token issuer configuration that you want
      * details about.</p>
      */
-    inline const Aws::String& GetTrustedTokenIssuerArn() const{ return m_trustedTokenIssuerArn; }
-
-    /**
-     * <p>Specifies the ARN of the trusted token issuer configuration that you want
-     * details about.</p>
-     */
+    inline const Aws::String& GetTrustedTokenIssuerArn() const { return m_trustedTokenIssuerArn; }
     inline bool TrustedTokenIssuerArnHasBeenSet() const { return m_trustedTokenIssuerArnHasBeenSet; }
-
-    /**
-     * <p>Specifies the ARN of the trusted token issuer configuration that you want
-     * details about.</p>
-     */
-    inline void SetTrustedTokenIssuerArn(const Aws::String& value) { m_trustedTokenIssuerArnHasBeenSet = true; m_trustedTokenIssuerArn = value; }
-
-    /**
-     * <p>Specifies the ARN of the trusted token issuer configuration that you want
-     * details about.</p>
-     */
-    inline void SetTrustedTokenIssuerArn(Aws::String&& value) { m_trustedTokenIssuerArnHasBeenSet = true; m_trustedTokenIssuerArn = std::move(value); }
-
-    /**
-     * <p>Specifies the ARN of the trusted token issuer configuration that you want
-     * details about.</p>
-     */
-    inline void SetTrustedTokenIssuerArn(const char* value) { m_trustedTokenIssuerArnHasBeenSet = true; m_trustedTokenIssuerArn.assign(value); }
-
-    /**
-     * <p>Specifies the ARN of the trusted token issuer configuration that you want
-     * details about.</p>
-     */
-    inline DescribeTrustedTokenIssuerRequest& WithTrustedTokenIssuerArn(const Aws::String& value) { SetTrustedTokenIssuerArn(value); return *this;}
-
-    /**
-     * <p>Specifies the ARN of the trusted token issuer configuration that you want
-     * details about.</p>
-     */
-    inline DescribeTrustedTokenIssuerRequest& WithTrustedTokenIssuerArn(Aws::String&& value) { SetTrustedTokenIssuerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the ARN of the trusted token issuer configuration that you want
-     * details about.</p>
-     */
-    inline DescribeTrustedTokenIssuerRequest& WithTrustedTokenIssuerArn(const char* value) { SetTrustedTokenIssuerArn(value); return *this;}
-
+    template<typename TrustedTokenIssuerArnT = Aws::String>
+    void SetTrustedTokenIssuerArn(TrustedTokenIssuerArnT&& value) { m_trustedTokenIssuerArnHasBeenSet = true; m_trustedTokenIssuerArn = std::forward<TrustedTokenIssuerArnT>(value); }
+    template<typename TrustedTokenIssuerArnT = Aws::String>
+    DescribeTrustedTokenIssuerRequest& WithTrustedTokenIssuerArn(TrustedTokenIssuerArnT&& value) { SetTrustedTokenIssuerArn(std::forward<TrustedTokenIssuerArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_trustedTokenIssuerArn;

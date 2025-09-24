@@ -18,15 +18,7 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-UnusedAccessConfiguration::UnusedAccessConfiguration() : 
-    m_unusedAccessAge(0),
-    m_unusedAccessAgeHasBeenSet(false)
-{
-}
-
-UnusedAccessConfiguration::UnusedAccessConfiguration(JsonView jsonValue) : 
-    m_unusedAccessAge(0),
-    m_unusedAccessAgeHasBeenSet(false)
+UnusedAccessConfiguration::UnusedAccessConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,13 @@ UnusedAccessConfiguration& UnusedAccessConfiguration::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("unusedAccessAge"))
   {
     m_unusedAccessAge = jsonValue.GetInteger("unusedAccessAge");
-
     m_unusedAccessAgeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("analysisRule"))
+  {
+    m_analysisRule = jsonValue.GetObject("analysisRule");
+    m_analysisRuleHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -50,6 +45,12 @@ JsonValue UnusedAccessConfiguration::Jsonize() const
   if(m_unusedAccessAgeHasBeenSet)
   {
    payload.WithInteger("unusedAccessAge", m_unusedAccessAge);
+
+  }
+
+  if(m_analysisRuleHasBeenSet)
+  {
+   payload.WithObject("analysisRule", m_analysisRule.Jsonize());
 
   }
 

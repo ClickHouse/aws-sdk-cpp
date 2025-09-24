@@ -34,97 +34,39 @@ namespace Model
   class LinuxSubscriptionsDiscoverySettings
   {
   public:
-    AWS_LICENSEMANAGERLINUXSUBSCRIPTIONS_API LinuxSubscriptionsDiscoverySettings();
+    AWS_LICENSEMANAGERLINUXSUBSCRIPTIONS_API LinuxSubscriptionsDiscoverySettings() = default;
     AWS_LICENSEMANAGERLINUXSUBSCRIPTIONS_API LinuxSubscriptionsDiscoverySettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGERLINUXSUBSCRIPTIONS_API LinuxSubscriptionsDiscoverySettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGERLINUXSUBSCRIPTIONS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details if you have enabled resource discovery across your accounts in
      * Organizations.</p>
      */
-    inline const OrganizationIntegration& GetOrganizationIntegration() const{ return m_organizationIntegration; }
-
-    /**
-     * <p>Details if you have enabled resource discovery across your accounts in
-     * Organizations.</p>
-     */
+    inline OrganizationIntegration GetOrganizationIntegration() const { return m_organizationIntegration; }
     inline bool OrganizationIntegrationHasBeenSet() const { return m_organizationIntegrationHasBeenSet; }
+    inline void SetOrganizationIntegration(OrganizationIntegration value) { m_organizationIntegrationHasBeenSet = true; m_organizationIntegration = value; }
+    inline LinuxSubscriptionsDiscoverySettings& WithOrganizationIntegration(OrganizationIntegration value) { SetOrganizationIntegration(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Details if you have enabled resource discovery across your accounts in
-     * Organizations.</p>
-     */
-    inline void SetOrganizationIntegration(const OrganizationIntegration& value) { m_organizationIntegrationHasBeenSet = true; m_organizationIntegration = value; }
-
-    /**
-     * <p>Details if you have enabled resource discovery across your accounts in
-     * Organizations.</p>
-     */
-    inline void SetOrganizationIntegration(OrganizationIntegration&& value) { m_organizationIntegrationHasBeenSet = true; m_organizationIntegration = std::move(value); }
-
-    /**
-     * <p>Details if you have enabled resource discovery across your accounts in
-     * Organizations.</p>
-     */
-    inline LinuxSubscriptionsDiscoverySettings& WithOrganizationIntegration(const OrganizationIntegration& value) { SetOrganizationIntegration(value); return *this;}
-
-    /**
-     * <p>Details if you have enabled resource discovery across your accounts in
-     * Organizations.</p>
-     */
-    inline LinuxSubscriptionsDiscoverySettings& WithOrganizationIntegration(OrganizationIntegration&& value) { SetOrganizationIntegration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Regions in which to discover data for Linux subscriptions.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSourceRegions() const{ return m_sourceRegions; }
-
-    /**
-     * <p>The Regions in which to discover data for Linux subscriptions.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSourceRegions() const { return m_sourceRegions; }
     inline bool SourceRegionsHasBeenSet() const { return m_sourceRegionsHasBeenSet; }
-
-    /**
-     * <p>The Regions in which to discover data for Linux subscriptions.</p>
-     */
-    inline void SetSourceRegions(const Aws::Vector<Aws::String>& value) { m_sourceRegionsHasBeenSet = true; m_sourceRegions = value; }
-
-    /**
-     * <p>The Regions in which to discover data for Linux subscriptions.</p>
-     */
-    inline void SetSourceRegions(Aws::Vector<Aws::String>&& value) { m_sourceRegionsHasBeenSet = true; m_sourceRegions = std::move(value); }
-
-    /**
-     * <p>The Regions in which to discover data for Linux subscriptions.</p>
-     */
-    inline LinuxSubscriptionsDiscoverySettings& WithSourceRegions(const Aws::Vector<Aws::String>& value) { SetSourceRegions(value); return *this;}
-
-    /**
-     * <p>The Regions in which to discover data for Linux subscriptions.</p>
-     */
-    inline LinuxSubscriptionsDiscoverySettings& WithSourceRegions(Aws::Vector<Aws::String>&& value) { SetSourceRegions(std::move(value)); return *this;}
-
-    /**
-     * <p>The Regions in which to discover data for Linux subscriptions.</p>
-     */
-    inline LinuxSubscriptionsDiscoverySettings& AddSourceRegions(const Aws::String& value) { m_sourceRegionsHasBeenSet = true; m_sourceRegions.push_back(value); return *this; }
-
-    /**
-     * <p>The Regions in which to discover data for Linux subscriptions.</p>
-     */
-    inline LinuxSubscriptionsDiscoverySettings& AddSourceRegions(Aws::String&& value) { m_sourceRegionsHasBeenSet = true; m_sourceRegions.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Regions in which to discover data for Linux subscriptions.</p>
-     */
-    inline LinuxSubscriptionsDiscoverySettings& AddSourceRegions(const char* value) { m_sourceRegionsHasBeenSet = true; m_sourceRegions.push_back(value); return *this; }
-
+    template<typename SourceRegionsT = Aws::Vector<Aws::String>>
+    void SetSourceRegions(SourceRegionsT&& value) { m_sourceRegionsHasBeenSet = true; m_sourceRegions = std::forward<SourceRegionsT>(value); }
+    template<typename SourceRegionsT = Aws::Vector<Aws::String>>
+    LinuxSubscriptionsDiscoverySettings& WithSourceRegions(SourceRegionsT&& value) { SetSourceRegions(std::forward<SourceRegionsT>(value)); return *this;}
+    template<typename SourceRegionsT = Aws::String>
+    LinuxSubscriptionsDiscoverySettings& AddSourceRegions(SourceRegionsT&& value) { m_sourceRegionsHasBeenSet = true; m_sourceRegions.emplace_back(std::forward<SourceRegionsT>(value)); return *this; }
+    ///@}
   private:
 
-    OrganizationIntegration m_organizationIntegration;
+    OrganizationIntegration m_organizationIntegration{OrganizationIntegration::NOT_SET};
     bool m_organizationIntegrationHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_sourceRegions;

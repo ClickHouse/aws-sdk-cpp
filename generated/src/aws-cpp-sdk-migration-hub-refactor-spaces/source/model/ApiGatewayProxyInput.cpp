@@ -18,17 +18,7 @@ namespace MigrationHubRefactorSpaces
 namespace Model
 {
 
-ApiGatewayProxyInput::ApiGatewayProxyInput() : 
-    m_endpointType(ApiGatewayEndpointType::NOT_SET),
-    m_endpointTypeHasBeenSet(false),
-    m_stageNameHasBeenSet(false)
-{
-}
-
-ApiGatewayProxyInput::ApiGatewayProxyInput(JsonView jsonValue) : 
-    m_endpointType(ApiGatewayEndpointType::NOT_SET),
-    m_endpointTypeHasBeenSet(false),
-    m_stageNameHasBeenSet(false)
+ApiGatewayProxyInput::ApiGatewayProxyInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ApiGatewayProxyInput& ApiGatewayProxyInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EndpointType"))
   {
     m_endpointType = ApiGatewayEndpointTypeMapper::GetApiGatewayEndpointTypeForName(jsonValue.GetString("EndpointType"));
-
     m_endpointTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StageName"))
   {
     m_stageName = jsonValue.GetString("StageName");
-
     m_stageNameHasBeenSet = true;
   }
-
   return *this;
 }
 

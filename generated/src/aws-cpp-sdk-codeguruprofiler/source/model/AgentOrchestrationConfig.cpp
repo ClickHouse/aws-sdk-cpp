@@ -18,15 +18,7 @@ namespace CodeGuruProfiler
 namespace Model
 {
 
-AgentOrchestrationConfig::AgentOrchestrationConfig() : 
-    m_profilingEnabled(false),
-    m_profilingEnabledHasBeenSet(false)
-{
-}
-
-AgentOrchestrationConfig::AgentOrchestrationConfig(JsonView jsonValue) : 
-    m_profilingEnabled(false),
-    m_profilingEnabledHasBeenSet(false)
+AgentOrchestrationConfig::AgentOrchestrationConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AgentOrchestrationConfig& AgentOrchestrationConfig::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("profilingEnabled"))
   {
     m_profilingEnabled = jsonValue.GetBool("profilingEnabled");
-
     m_profilingEnabledHasBeenSet = true;
   }
-
   return *this;
 }
 

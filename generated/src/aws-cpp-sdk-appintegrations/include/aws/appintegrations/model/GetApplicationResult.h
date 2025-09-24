@@ -10,6 +10,8 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/appintegrations/model/ApplicationConfig.h>
+#include <aws/appintegrations/model/IframeConfig.h>
 #include <utility>
 
 namespace Aws
@@ -31,435 +33,224 @@ namespace Model
   class GetApplicationResult
   {
   public:
-    AWS_APPINTEGRATIONSSERVICE_API GetApplicationResult();
+    AWS_APPINTEGRATIONSSERVICE_API GetApplicationResult() = default;
     AWS_APPINTEGRATIONSSERVICE_API GetApplicationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_APPINTEGRATIONSSERVICE_API GetApplicationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Application.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetApplicationResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Application.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Application.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Application.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Application.</p>
-     */
-    inline GetApplicationResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Application.</p>
-     */
-    inline GetApplicationResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Application.</p>
-     */
-    inline GetApplicationResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the Application.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetApplicationResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the Application.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>A unique identifier for the Application.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the Application.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>A unique identifier for the Application.</p>
-     */
-    inline GetApplicationResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the Application.</p>
-     */
-    inline GetApplicationResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the Application.</p>
-     */
-    inline GetApplicationResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the application.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetApplicationResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline GetApplicationResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline GetApplicationResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the application.</p>
-     */
-    inline GetApplicationResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The namespace of the application.</p>
      */
-    inline const Aws::String& GetNamespace() const{ return m_namespace; }
+    inline const Aws::String& GetNamespace() const { return m_namespace; }
+    template<typename NamespaceT = Aws::String>
+    void SetNamespace(NamespaceT&& value) { m_namespaceHasBeenSet = true; m_namespace = std::forward<NamespaceT>(value); }
+    template<typename NamespaceT = Aws::String>
+    GetApplicationResult& WithNamespace(NamespaceT&& value) { SetNamespace(std::forward<NamespaceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The namespace of the application.</p>
-     */
-    inline void SetNamespace(const Aws::String& value) { m_namespace = value; }
-
-    /**
-     * <p>The namespace of the application.</p>
-     */
-    inline void SetNamespace(Aws::String&& value) { m_namespace = std::move(value); }
-
-    /**
-     * <p>The namespace of the application.</p>
-     */
-    inline void SetNamespace(const char* value) { m_namespace.assign(value); }
-
-    /**
-     * <p>The namespace of the application.</p>
-     */
-    inline GetApplicationResult& WithNamespace(const Aws::String& value) { SetNamespace(value); return *this;}
-
-    /**
-     * <p>The namespace of the application.</p>
-     */
-    inline GetApplicationResult& WithNamespace(Aws::String&& value) { SetNamespace(std::move(value)); return *this;}
-
-    /**
-     * <p>The namespace of the application.</p>
-     */
-    inline GetApplicationResult& WithNamespace(const char* value) { SetNamespace(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the application.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetApplicationResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the application.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The description of the application.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The description of the application.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The description of the application.</p>
-     */
-    inline GetApplicationResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the application.</p>
-     */
-    inline GetApplicationResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the application.</p>
-     */
-    inline GetApplicationResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration for where the application should be loaded from.</p>
      */
-    inline const ApplicationSourceConfig& GetApplicationSourceConfig() const{ return m_applicationSourceConfig; }
+    inline const ApplicationSourceConfig& GetApplicationSourceConfig() const { return m_applicationSourceConfig; }
+    template<typename ApplicationSourceConfigT = ApplicationSourceConfig>
+    void SetApplicationSourceConfig(ApplicationSourceConfigT&& value) { m_applicationSourceConfigHasBeenSet = true; m_applicationSourceConfig = std::forward<ApplicationSourceConfigT>(value); }
+    template<typename ApplicationSourceConfigT = ApplicationSourceConfig>
+    GetApplicationResult& WithApplicationSourceConfig(ApplicationSourceConfigT&& value) { SetApplicationSourceConfig(std::forward<ApplicationSourceConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration for where the application should be loaded from.</p>
-     */
-    inline void SetApplicationSourceConfig(const ApplicationSourceConfig& value) { m_applicationSourceConfig = value; }
-
-    /**
-     * <p>The configuration for where the application should be loaded from.</p>
-     */
-    inline void SetApplicationSourceConfig(ApplicationSourceConfig&& value) { m_applicationSourceConfig = std::move(value); }
-
-    /**
-     * <p>The configuration for where the application should be loaded from.</p>
-     */
-    inline GetApplicationResult& WithApplicationSourceConfig(const ApplicationSourceConfig& value) { SetApplicationSourceConfig(value); return *this;}
-
-    /**
-     * <p>The configuration for where the application should be loaded from.</p>
-     */
-    inline GetApplicationResult& WithApplicationSourceConfig(ApplicationSourceConfig&& value) { SetApplicationSourceConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The created time of the Application.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    GetApplicationResult& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The created time of the Application.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTime = value; }
-
-    /**
-     * <p>The created time of the Application.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTime = std::move(value); }
-
-    /**
-     * <p>The created time of the Application.</p>
-     */
-    inline GetApplicationResult& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The created time of the Application.</p>
-     */
-    inline GetApplicationResult& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last modified time of the Application.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    GetApplicationResult& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last modified time of the Application.</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTime = value; }
-
-    /**
-     * <p>The last modified time of the Application.</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>The last modified time of the Application.</p>
-     */
-    inline GetApplicationResult& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>The last modified time of the Application.</p>
-     */
-    inline GetApplicationResult& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags used to organize, track, or control access for this resource. For
      * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    GetApplicationResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    GetApplicationResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetApplicationResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetApplicationResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetApplicationResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetApplicationResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetApplicationResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetApplicationResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetApplicationResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetApplicationResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetApplicationResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The configuration of events or requests that the application has access
      * to.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPermissions() const{ return m_permissions; }
+    inline const Aws::Vector<Aws::String>& GetPermissions() const { return m_permissions; }
+    template<typename PermissionsT = Aws::Vector<Aws::String>>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = Aws::Vector<Aws::String>>
+    GetApplicationResult& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    template<typename PermissionsT = Aws::String>
+    GetApplicationResult& AddPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions.emplace_back(std::forward<PermissionsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The configuration of events or requests that the application has access
-     * to.</p>
+     * <p>Indicates whether the application is a service.</p>
      */
-    inline void SetPermissions(const Aws::Vector<Aws::String>& value) { m_permissions = value; }
+    inline bool GetIsService() const { return m_isService; }
+    inline void SetIsService(bool value) { m_isServiceHasBeenSet = true; m_isService = value; }
+    inline GetApplicationResult& WithIsService(bool value) { SetIsService(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The configuration of events or requests that the application has access
-     * to.</p>
+     * <p>The maximum time in milliseconds allowed to establish a connection with the
+     * workspace.</p>
      */
-    inline void SetPermissions(Aws::Vector<Aws::String>&& value) { m_permissions = std::move(value); }
+    inline int GetInitializationTimeout() const { return m_initializationTimeout; }
+    inline void SetInitializationTimeout(int value) { m_initializationTimeoutHasBeenSet = true; m_initializationTimeout = value; }
+    inline GetApplicationResult& WithInitializationTimeout(int value) { SetInitializationTimeout(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The configuration of events or requests that the application has access
-     * to.</p>
+     * <p>The configuration settings for the application.</p>
      */
-    inline GetApplicationResult& WithPermissions(const Aws::Vector<Aws::String>& value) { SetPermissions(value); return *this;}
+    inline const ApplicationConfig& GetApplicationConfig() const { return m_applicationConfig; }
+    template<typename ApplicationConfigT = ApplicationConfig>
+    void SetApplicationConfig(ApplicationConfigT&& value) { m_applicationConfigHasBeenSet = true; m_applicationConfig = std::forward<ApplicationConfigT>(value); }
+    template<typename ApplicationConfigT = ApplicationConfig>
+    GetApplicationResult& WithApplicationConfig(ApplicationConfigT&& value) { SetApplicationConfig(std::forward<ApplicationConfigT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The configuration of events or requests that the application has access
-     * to.</p>
+     * <p>The iframe configuration for the application.</p>
      */
-    inline GetApplicationResult& WithPermissions(Aws::Vector<Aws::String>&& value) { SetPermissions(std::move(value)); return *this;}
+    inline const IframeConfig& GetIframeConfig() const { return m_iframeConfig; }
+    template<typename IframeConfigT = IframeConfig>
+    void SetIframeConfig(IframeConfigT&& value) { m_iframeConfigHasBeenSet = true; m_iframeConfig = std::forward<IframeConfigT>(value); }
+    template<typename IframeConfigT = IframeConfig>
+    GetApplicationResult& WithIframeConfig(IframeConfigT&& value) { SetIframeConfig(std::forward<IframeConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration of events or requests that the application has access
-     * to.</p>
-     */
-    inline GetApplicationResult& AddPermissions(const Aws::String& value) { m_permissions.push_back(value); return *this; }
-
-    /**
-     * <p>The configuration of events or requests that the application has access
-     * to.</p>
-     */
-    inline GetApplicationResult& AddPermissions(Aws::String&& value) { m_permissions.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The configuration of events or requests that the application has access
-     * to.</p>
-     */
-    inline GetApplicationResult& AddPermissions(const char* value) { m_permissions.push_back(value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetApplicationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetApplicationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetApplicationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetApplicationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_namespace;
+    bool m_namespaceHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     ApplicationSourceConfig m_applicationSourceConfig;
+    bool m_applicationSourceConfigHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
+    bool m_createdTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTime;
+    Aws::Utils::DateTime m_lastModifiedTime{};
+    bool m_lastModifiedTimeHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_permissions;
+    bool m_permissionsHasBeenSet = false;
+
+    bool m_isService{false};
+    bool m_isServiceHasBeenSet = false;
+
+    int m_initializationTimeout{0};
+    bool m_initializationTimeoutHasBeenSet = false;
+
+    ApplicationConfig m_applicationConfig;
+    bool m_applicationConfigHasBeenSet = false;
+
+    IframeConfig m_iframeConfig;
+    bool m_iframeConfigHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-M2tsScte35Esam::M2tsScte35Esam() : 
-    m_scte35EsamPid(0),
-    m_scte35EsamPidHasBeenSet(false)
-{
-}
-
-M2tsScte35Esam::M2tsScte35Esam(JsonView jsonValue) : 
-    m_scte35EsamPid(0),
-    m_scte35EsamPidHasBeenSet(false)
+M2tsScte35Esam::M2tsScte35Esam(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ M2tsScte35Esam& M2tsScte35Esam::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("scte35EsamPid"))
   {
     m_scte35EsamPid = jsonValue.GetInteger("scte35EsamPid");
-
     m_scte35EsamPidHasBeenSet = true;
   }
-
   return *this;
 }
 

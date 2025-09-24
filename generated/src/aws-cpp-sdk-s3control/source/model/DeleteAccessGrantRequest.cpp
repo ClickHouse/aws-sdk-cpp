@@ -6,6 +6,7 @@
 #include <aws/s3control/model/DeleteAccessGrantRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
@@ -14,11 +15,6 @@ using namespace Aws::S3Control::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-DeleteAccessGrantRequest::DeleteAccessGrantRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_accessGrantIdHasBeenSet(false)
-{
-}
 
 Aws::String DeleteAccessGrantRequest::SerializePayload() const
 {

@@ -12,40 +12,6 @@ using namespace Aws::ECS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateServiceRequest::CreateServiceRequest() : 
-    m_clusterHasBeenSet(false),
-    m_serviceNameHasBeenSet(false),
-    m_taskDefinitionHasBeenSet(false),
-    m_loadBalancersHasBeenSet(false),
-    m_serviceRegistriesHasBeenSet(false),
-    m_desiredCount(0),
-    m_desiredCountHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_launchType(LaunchType::NOT_SET),
-    m_launchTypeHasBeenSet(false),
-    m_capacityProviderStrategyHasBeenSet(false),
-    m_platformVersionHasBeenSet(false),
-    m_roleHasBeenSet(false),
-    m_deploymentConfigurationHasBeenSet(false),
-    m_placementConstraintsHasBeenSet(false),
-    m_placementStrategyHasBeenSet(false),
-    m_networkConfigurationHasBeenSet(false),
-    m_healthCheckGracePeriodSeconds(0),
-    m_healthCheckGracePeriodSecondsHasBeenSet(false),
-    m_schedulingStrategy(SchedulingStrategy::NOT_SET),
-    m_schedulingStrategyHasBeenSet(false),
-    m_deploymentControllerHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_enableECSManagedTags(false),
-    m_enableECSManagedTagsHasBeenSet(false),
-    m_propagateTags(PropagateTags::NOT_SET),
-    m_propagateTagsHasBeenSet(false),
-    m_enableExecuteCommand(false),
-    m_enableExecuteCommandHasBeenSet(false),
-    m_serviceConnectConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String CreateServiceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -66,6 +32,11 @@ Aws::String CreateServiceRequest::SerializePayload() const
   {
    payload.WithString("taskDefinition", m_taskDefinition);
 
+  }
+
+  if(m_availabilityZoneRebalancingHasBeenSet)
+  {
+   payload.WithString("availabilityZoneRebalancing", AvailabilityZoneRebalancingMapper::GetNameForAvailabilityZoneRebalancing(m_availabilityZoneRebalancing));
   }
 
   if(m_loadBalancersHasBeenSet)
@@ -212,6 +183,28 @@ Aws::String CreateServiceRequest::SerializePayload() const
   if(m_serviceConnectConfigurationHasBeenSet)
   {
    payload.WithObject("serviceConnectConfiguration", m_serviceConnectConfiguration.Jsonize());
+
+  }
+
+  if(m_volumeConfigurationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> volumeConfigurationsJsonList(m_volumeConfigurations.size());
+   for(unsigned volumeConfigurationsIndex = 0; volumeConfigurationsIndex < volumeConfigurationsJsonList.GetLength(); ++volumeConfigurationsIndex)
+   {
+     volumeConfigurationsJsonList[volumeConfigurationsIndex].AsObject(m_volumeConfigurations[volumeConfigurationsIndex].Jsonize());
+   }
+   payload.WithArray("volumeConfigurations", std::move(volumeConfigurationsJsonList));
+
+  }
+
+  if(m_vpcLatticeConfigurationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> vpcLatticeConfigurationsJsonList(m_vpcLatticeConfigurations.size());
+   for(unsigned vpcLatticeConfigurationsIndex = 0; vpcLatticeConfigurationsIndex < vpcLatticeConfigurationsJsonList.GetLength(); ++vpcLatticeConfigurationsIndex)
+   {
+     vpcLatticeConfigurationsJsonList[vpcLatticeConfigurationsIndex].AsObject(m_vpcLatticeConfigurations[vpcLatticeConfigurationsIndex].Jsonize());
+   }
+   payload.WithArray("vpcLatticeConfigurations", std::move(vpcLatticeConfigurationsJsonList));
 
   }
 

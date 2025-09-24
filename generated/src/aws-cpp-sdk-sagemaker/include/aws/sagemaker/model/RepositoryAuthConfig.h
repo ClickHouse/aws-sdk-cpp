@@ -37,12 +37,13 @@ namespace Model
   class RepositoryAuthConfig
   {
   public:
-    AWS_SAGEMAKER_API RepositoryAuthConfig();
+    AWS_SAGEMAKER_API RepositoryAuthConfig() = default;
     AWS_SAGEMAKER_API RepositoryAuthConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API RepositoryAuthConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of an Amazon Web Services Lambda function that
      * provides credentials to authenticate to the private Docker registry where your
@@ -52,85 +53,13 @@ namespace Model
      * a Lambda function with the console</a> in the <i>Amazon Web Services Lambda
      * Developer Guide</i>.</p>
      */
-    inline const Aws::String& GetRepositoryCredentialsProviderArn() const{ return m_repositoryCredentialsProviderArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Amazon Web Services Lambda function that
-     * provides credentials to authenticate to the private Docker registry where your
-     * model image is hosted. For information about how to create an Amazon Web
-     * Services Lambda function, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html">Create
-     * a Lambda function with the console</a> in the <i>Amazon Web Services Lambda
-     * Developer Guide</i>.</p>
-     */
+    inline const Aws::String& GetRepositoryCredentialsProviderArn() const { return m_repositoryCredentialsProviderArn; }
     inline bool RepositoryCredentialsProviderArnHasBeenSet() const { return m_repositoryCredentialsProviderArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Amazon Web Services Lambda function that
-     * provides credentials to authenticate to the private Docker registry where your
-     * model image is hosted. For information about how to create an Amazon Web
-     * Services Lambda function, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html">Create
-     * a Lambda function with the console</a> in the <i>Amazon Web Services Lambda
-     * Developer Guide</i>.</p>
-     */
-    inline void SetRepositoryCredentialsProviderArn(const Aws::String& value) { m_repositoryCredentialsProviderArnHasBeenSet = true; m_repositoryCredentialsProviderArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Amazon Web Services Lambda function that
-     * provides credentials to authenticate to the private Docker registry where your
-     * model image is hosted. For information about how to create an Amazon Web
-     * Services Lambda function, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html">Create
-     * a Lambda function with the console</a> in the <i>Amazon Web Services Lambda
-     * Developer Guide</i>.</p>
-     */
-    inline void SetRepositoryCredentialsProviderArn(Aws::String&& value) { m_repositoryCredentialsProviderArnHasBeenSet = true; m_repositoryCredentialsProviderArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Amazon Web Services Lambda function that
-     * provides credentials to authenticate to the private Docker registry where your
-     * model image is hosted. For information about how to create an Amazon Web
-     * Services Lambda function, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html">Create
-     * a Lambda function with the console</a> in the <i>Amazon Web Services Lambda
-     * Developer Guide</i>.</p>
-     */
-    inline void SetRepositoryCredentialsProviderArn(const char* value) { m_repositoryCredentialsProviderArnHasBeenSet = true; m_repositoryCredentialsProviderArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Amazon Web Services Lambda function that
-     * provides credentials to authenticate to the private Docker registry where your
-     * model image is hosted. For information about how to create an Amazon Web
-     * Services Lambda function, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html">Create
-     * a Lambda function with the console</a> in the <i>Amazon Web Services Lambda
-     * Developer Guide</i>.</p>
-     */
-    inline RepositoryAuthConfig& WithRepositoryCredentialsProviderArn(const Aws::String& value) { SetRepositoryCredentialsProviderArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Amazon Web Services Lambda function that
-     * provides credentials to authenticate to the private Docker registry where your
-     * model image is hosted. For information about how to create an Amazon Web
-     * Services Lambda function, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html">Create
-     * a Lambda function with the console</a> in the <i>Amazon Web Services Lambda
-     * Developer Guide</i>.</p>
-     */
-    inline RepositoryAuthConfig& WithRepositoryCredentialsProviderArn(Aws::String&& value) { SetRepositoryCredentialsProviderArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of an Amazon Web Services Lambda function that
-     * provides credentials to authenticate to the private Docker registry where your
-     * model image is hosted. For information about how to create an Amazon Web
-     * Services Lambda function, see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html">Create
-     * a Lambda function with the console</a> in the <i>Amazon Web Services Lambda
-     * Developer Guide</i>.</p>
-     */
-    inline RepositoryAuthConfig& WithRepositoryCredentialsProviderArn(const char* value) { SetRepositoryCredentialsProviderArn(value); return *this;}
-
+    template<typename RepositoryCredentialsProviderArnT = Aws::String>
+    void SetRepositoryCredentialsProviderArn(RepositoryCredentialsProviderArnT&& value) { m_repositoryCredentialsProviderArnHasBeenSet = true; m_repositoryCredentialsProviderArn = std::forward<RepositoryCredentialsProviderArnT>(value); }
+    template<typename RepositoryCredentialsProviderArnT = Aws::String>
+    RepositoryAuthConfig& WithRepositoryCredentialsProviderArn(RepositoryCredentialsProviderArnT&& value) { SetRepositoryCredentialsProviderArn(std::forward<RepositoryCredentialsProviderArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_repositoryCredentialsProviderArn;

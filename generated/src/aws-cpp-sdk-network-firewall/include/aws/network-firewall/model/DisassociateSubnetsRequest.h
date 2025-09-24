@@ -22,7 +22,7 @@ namespace Model
   class DisassociateSubnetsRequest : public NetworkFirewallRequest
   {
   public:
-    AWS_NETWORKFIREWALL_API DisassociateSubnetsRequest();
+    AWS_NETWORKFIREWALL_API DisassociateSubnetsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,6 +35,7 @@ namespace Model
     AWS_NETWORKFIREWALL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An optional token that you can use for optimistic locking. Network Firewall
      * returns a token to your requests that access the firewall. The token marks the
@@ -49,272 +50,54 @@ namespace Model
      * to get a current copy of it with a new token. Reapply your changes as needed,
      * then try the operation again using the new token. </p>
      */
-    inline const Aws::String& GetUpdateToken() const{ return m_updateToken; }
-
-    /**
-     * <p>An optional token that you can use for optimistic locking. Network Firewall
-     * returns a token to your requests that access the firewall. The token marks the
-     * state of the firewall resource at the time of the request. </p> <p>To make an
-     * unconditional change to the firewall, omit the token in your update request.
-     * Without the token, Network Firewall performs your updates regardless of whether
-     * the firewall has changed since you last retrieved it.</p> <p>To make a
-     * conditional change to the firewall, provide the token in your update request.
-     * Network Firewall uses the token to ensure that the firewall hasn't changed since
-     * you last retrieved it. If it has changed, the operation fails with an
-     * <code>InvalidTokenException</code>. If this happens, retrieve the firewall again
-     * to get a current copy of it with a new token. Reapply your changes as needed,
-     * then try the operation again using the new token. </p>
-     */
+    inline const Aws::String& GetUpdateToken() const { return m_updateToken; }
     inline bool UpdateTokenHasBeenSet() const { return m_updateTokenHasBeenSet; }
+    template<typename UpdateTokenT = Aws::String>
+    void SetUpdateToken(UpdateTokenT&& value) { m_updateTokenHasBeenSet = true; m_updateToken = std::forward<UpdateTokenT>(value); }
+    template<typename UpdateTokenT = Aws::String>
+    DisassociateSubnetsRequest& WithUpdateToken(UpdateTokenT&& value) { SetUpdateToken(std::forward<UpdateTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional token that you can use for optimistic locking. Network Firewall
-     * returns a token to your requests that access the firewall. The token marks the
-     * state of the firewall resource at the time of the request. </p> <p>To make an
-     * unconditional change to the firewall, omit the token in your update request.
-     * Without the token, Network Firewall performs your updates regardless of whether
-     * the firewall has changed since you last retrieved it.</p> <p>To make a
-     * conditional change to the firewall, provide the token in your update request.
-     * Network Firewall uses the token to ensure that the firewall hasn't changed since
-     * you last retrieved it. If it has changed, the operation fails with an
-     * <code>InvalidTokenException</code>. If this happens, retrieve the firewall again
-     * to get a current copy of it with a new token. Reapply your changes as needed,
-     * then try the operation again using the new token. </p>
-     */
-    inline void SetUpdateToken(const Aws::String& value) { m_updateTokenHasBeenSet = true; m_updateToken = value; }
-
-    /**
-     * <p>An optional token that you can use for optimistic locking. Network Firewall
-     * returns a token to your requests that access the firewall. The token marks the
-     * state of the firewall resource at the time of the request. </p> <p>To make an
-     * unconditional change to the firewall, omit the token in your update request.
-     * Without the token, Network Firewall performs your updates regardless of whether
-     * the firewall has changed since you last retrieved it.</p> <p>To make a
-     * conditional change to the firewall, provide the token in your update request.
-     * Network Firewall uses the token to ensure that the firewall hasn't changed since
-     * you last retrieved it. If it has changed, the operation fails with an
-     * <code>InvalidTokenException</code>. If this happens, retrieve the firewall again
-     * to get a current copy of it with a new token. Reapply your changes as needed,
-     * then try the operation again using the new token. </p>
-     */
-    inline void SetUpdateToken(Aws::String&& value) { m_updateTokenHasBeenSet = true; m_updateToken = std::move(value); }
-
-    /**
-     * <p>An optional token that you can use for optimistic locking. Network Firewall
-     * returns a token to your requests that access the firewall. The token marks the
-     * state of the firewall resource at the time of the request. </p> <p>To make an
-     * unconditional change to the firewall, omit the token in your update request.
-     * Without the token, Network Firewall performs your updates regardless of whether
-     * the firewall has changed since you last retrieved it.</p> <p>To make a
-     * conditional change to the firewall, provide the token in your update request.
-     * Network Firewall uses the token to ensure that the firewall hasn't changed since
-     * you last retrieved it. If it has changed, the operation fails with an
-     * <code>InvalidTokenException</code>. If this happens, retrieve the firewall again
-     * to get a current copy of it with a new token. Reapply your changes as needed,
-     * then try the operation again using the new token. </p>
-     */
-    inline void SetUpdateToken(const char* value) { m_updateTokenHasBeenSet = true; m_updateToken.assign(value); }
-
-    /**
-     * <p>An optional token that you can use for optimistic locking. Network Firewall
-     * returns a token to your requests that access the firewall. The token marks the
-     * state of the firewall resource at the time of the request. </p> <p>To make an
-     * unconditional change to the firewall, omit the token in your update request.
-     * Without the token, Network Firewall performs your updates regardless of whether
-     * the firewall has changed since you last retrieved it.</p> <p>To make a
-     * conditional change to the firewall, provide the token in your update request.
-     * Network Firewall uses the token to ensure that the firewall hasn't changed since
-     * you last retrieved it. If it has changed, the operation fails with an
-     * <code>InvalidTokenException</code>. If this happens, retrieve the firewall again
-     * to get a current copy of it with a new token. Reapply your changes as needed,
-     * then try the operation again using the new token. </p>
-     */
-    inline DisassociateSubnetsRequest& WithUpdateToken(const Aws::String& value) { SetUpdateToken(value); return *this;}
-
-    /**
-     * <p>An optional token that you can use for optimistic locking. Network Firewall
-     * returns a token to your requests that access the firewall. The token marks the
-     * state of the firewall resource at the time of the request. </p> <p>To make an
-     * unconditional change to the firewall, omit the token in your update request.
-     * Without the token, Network Firewall performs your updates regardless of whether
-     * the firewall has changed since you last retrieved it.</p> <p>To make a
-     * conditional change to the firewall, provide the token in your update request.
-     * Network Firewall uses the token to ensure that the firewall hasn't changed since
-     * you last retrieved it. If it has changed, the operation fails with an
-     * <code>InvalidTokenException</code>. If this happens, retrieve the firewall again
-     * to get a current copy of it with a new token. Reapply your changes as needed,
-     * then try the operation again using the new token. </p>
-     */
-    inline DisassociateSubnetsRequest& WithUpdateToken(Aws::String&& value) { SetUpdateToken(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional token that you can use for optimistic locking. Network Firewall
-     * returns a token to your requests that access the firewall. The token marks the
-     * state of the firewall resource at the time of the request. </p> <p>To make an
-     * unconditional change to the firewall, omit the token in your update request.
-     * Without the token, Network Firewall performs your updates regardless of whether
-     * the firewall has changed since you last retrieved it.</p> <p>To make a
-     * conditional change to the firewall, provide the token in your update request.
-     * Network Firewall uses the token to ensure that the firewall hasn't changed since
-     * you last retrieved it. If it has changed, the operation fails with an
-     * <code>InvalidTokenException</code>. If this happens, retrieve the firewall again
-     * to get a current copy of it with a new token. Reapply your changes as needed,
-     * then try the operation again using the new token. </p>
-     */
-    inline DisassociateSubnetsRequest& WithUpdateToken(const char* value) { SetUpdateToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the firewall.</p> <p>You must specify the
      * ARN or the name, and you can specify both. </p>
      */
-    inline const Aws::String& GetFirewallArn() const{ return m_firewallArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p> <p>You must specify the
-     * ARN or the name, and you can specify both. </p>
-     */
+    inline const Aws::String& GetFirewallArn() const { return m_firewallArn; }
     inline bool FirewallArnHasBeenSet() const { return m_firewallArnHasBeenSet; }
+    template<typename FirewallArnT = Aws::String>
+    void SetFirewallArn(FirewallArnT&& value) { m_firewallArnHasBeenSet = true; m_firewallArn = std::forward<FirewallArnT>(value); }
+    template<typename FirewallArnT = Aws::String>
+    DisassociateSubnetsRequest& WithFirewallArn(FirewallArnT&& value) { SetFirewallArn(std::forward<FirewallArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p> <p>You must specify the
-     * ARN or the name, and you can specify both. </p>
-     */
-    inline void SetFirewallArn(const Aws::String& value) { m_firewallArnHasBeenSet = true; m_firewallArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p> <p>You must specify the
-     * ARN or the name, and you can specify both. </p>
-     */
-    inline void SetFirewallArn(Aws::String&& value) { m_firewallArnHasBeenSet = true; m_firewallArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p> <p>You must specify the
-     * ARN or the name, and you can specify both. </p>
-     */
-    inline void SetFirewallArn(const char* value) { m_firewallArnHasBeenSet = true; m_firewallArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p> <p>You must specify the
-     * ARN or the name, and you can specify both. </p>
-     */
-    inline DisassociateSubnetsRequest& WithFirewallArn(const Aws::String& value) { SetFirewallArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p> <p>You must specify the
-     * ARN or the name, and you can specify both. </p>
-     */
-    inline DisassociateSubnetsRequest& WithFirewallArn(Aws::String&& value) { SetFirewallArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the firewall.</p> <p>You must specify the
-     * ARN or the name, and you can specify both. </p>
-     */
-    inline DisassociateSubnetsRequest& WithFirewallArn(const char* value) { SetFirewallArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The descriptive name of the firewall. You can't change the name of a firewall
      * after you create it.</p> <p>You must specify the ARN or the name, and you can
      * specify both. </p>
      */
-    inline const Aws::String& GetFirewallName() const{ return m_firewallName; }
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p> <p>You must specify the ARN or the name, and you can
-     * specify both. </p>
-     */
+    inline const Aws::String& GetFirewallName() const { return m_firewallName; }
     inline bool FirewallNameHasBeenSet() const { return m_firewallNameHasBeenSet; }
+    template<typename FirewallNameT = Aws::String>
+    void SetFirewallName(FirewallNameT&& value) { m_firewallNameHasBeenSet = true; m_firewallName = std::forward<FirewallNameT>(value); }
+    template<typename FirewallNameT = Aws::String>
+    DisassociateSubnetsRequest& WithFirewallName(FirewallNameT&& value) { SetFirewallName(std::forward<FirewallNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p> <p>You must specify the ARN or the name, and you can
-     * specify both. </p>
-     */
-    inline void SetFirewallName(const Aws::String& value) { m_firewallNameHasBeenSet = true; m_firewallName = value; }
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p> <p>You must specify the ARN or the name, and you can
-     * specify both. </p>
-     */
-    inline void SetFirewallName(Aws::String&& value) { m_firewallNameHasBeenSet = true; m_firewallName = std::move(value); }
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p> <p>You must specify the ARN or the name, and you can
-     * specify both. </p>
-     */
-    inline void SetFirewallName(const char* value) { m_firewallNameHasBeenSet = true; m_firewallName.assign(value); }
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p> <p>You must specify the ARN or the name, and you can
-     * specify both. </p>
-     */
-    inline DisassociateSubnetsRequest& WithFirewallName(const Aws::String& value) { SetFirewallName(value); return *this;}
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p> <p>You must specify the ARN or the name, and you can
-     * specify both. </p>
-     */
-    inline DisassociateSubnetsRequest& WithFirewallName(Aws::String&& value) { SetFirewallName(std::move(value)); return *this;}
-
-    /**
-     * <p>The descriptive name of the firewall. You can't change the name of a firewall
-     * after you create it.</p> <p>You must specify the ARN or the name, and you can
-     * specify both. </p>
-     */
-    inline DisassociateSubnetsRequest& WithFirewallName(const char* value) { SetFirewallName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifiers for the subnets that you want to disassociate. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetSubnetIds() const{ return m_subnetIds; }
-
-    /**
-     * <p>The unique identifiers for the subnets that you want to disassociate. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSubnetIds() const { return m_subnetIds; }
     inline bool SubnetIdsHasBeenSet() const { return m_subnetIdsHasBeenSet; }
-
-    /**
-     * <p>The unique identifiers for the subnets that you want to disassociate. </p>
-     */
-    inline void SetSubnetIds(const Aws::Vector<Aws::String>& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
-
-    /**
-     * <p>The unique identifiers for the subnets that you want to disassociate. </p>
-     */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
-
-    /**
-     * <p>The unique identifiers for the subnets that you want to disassociate. </p>
-     */
-    inline DisassociateSubnetsRequest& WithSubnetIds(const Aws::Vector<Aws::String>& value) { SetSubnetIds(value); return *this;}
-
-    /**
-     * <p>The unique identifiers for the subnets that you want to disassociate. </p>
-     */
-    inline DisassociateSubnetsRequest& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifiers for the subnets that you want to disassociate. </p>
-     */
-    inline DisassociateSubnetsRequest& AddSubnetIds(const Aws::String& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
-    /**
-     * <p>The unique identifiers for the subnets that you want to disassociate. </p>
-     */
-    inline DisassociateSubnetsRequest& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The unique identifiers for the subnets that you want to disassociate. </p>
-     */
-    inline DisassociateSubnetsRequest& AddSubnetIds(const char* value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    void SetSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::forward<SubnetIdsT>(value); }
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    DisassociateSubnetsRequest& WithSubnetIds(SubnetIdsT&& value) { SetSubnetIds(std::forward<SubnetIdsT>(value)); return *this;}
+    template<typename SubnetIdsT = Aws::String>
+    DisassociateSubnetsRequest& AddSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.emplace_back(std::forward<SubnetIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_updateToken;

@@ -33,97 +33,42 @@ namespace Model
   class CampaignEventFilter
   {
   public:
-    AWS_PINPOINT_API CampaignEventFilter();
+    AWS_PINPOINT_API CampaignEventFilter() = default;
     AWS_PINPOINT_API CampaignEventFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API CampaignEventFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The dimension settings of the event filter for the campaign.</p>
      */
-    inline const EventDimensions& GetDimensions() const{ return m_dimensions; }
-
-    /**
-     * <p>The dimension settings of the event filter for the campaign.</p>
-     */
+    inline const EventDimensions& GetDimensions() const { return m_dimensions; }
     inline bool DimensionsHasBeenSet() const { return m_dimensionsHasBeenSet; }
+    template<typename DimensionsT = EventDimensions>
+    void SetDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::forward<DimensionsT>(value); }
+    template<typename DimensionsT = EventDimensions>
+    CampaignEventFilter& WithDimensions(DimensionsT&& value) { SetDimensions(std::forward<DimensionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dimension settings of the event filter for the campaign.</p>
-     */
-    inline void SetDimensions(const EventDimensions& value) { m_dimensionsHasBeenSet = true; m_dimensions = value; }
-
-    /**
-     * <p>The dimension settings of the event filter for the campaign.</p>
-     */
-    inline void SetDimensions(EventDimensions&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::move(value); }
-
-    /**
-     * <p>The dimension settings of the event filter for the campaign.</p>
-     */
-    inline CampaignEventFilter& WithDimensions(const EventDimensions& value) { SetDimensions(value); return *this;}
-
-    /**
-     * <p>The dimension settings of the event filter for the campaign.</p>
-     */
-    inline CampaignEventFilter& WithDimensions(EventDimensions&& value) { SetDimensions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of event that causes the campaign to be sent. Valid values are:
      * SYSTEM, sends the campaign when a system event occurs; and, ENDPOINT, sends the
      * campaign when an endpoint event (<link 
      * linkend="apps-application-id-events">Events</link> resource) occurs.</p>
      */
-    inline const FilterType& GetFilterType() const{ return m_filterType; }
-
-    /**
-     * <p>The type of event that causes the campaign to be sent. Valid values are:
-     * SYSTEM, sends the campaign when a system event occurs; and, ENDPOINT, sends the
-     * campaign when an endpoint event (<link 
-     * linkend="apps-application-id-events">Events</link> resource) occurs.</p>
-     */
+    inline FilterType GetFilterType() const { return m_filterType; }
     inline bool FilterTypeHasBeenSet() const { return m_filterTypeHasBeenSet; }
-
-    /**
-     * <p>The type of event that causes the campaign to be sent. Valid values are:
-     * SYSTEM, sends the campaign when a system event occurs; and, ENDPOINT, sends the
-     * campaign when an endpoint event (<link 
-     * linkend="apps-application-id-events">Events</link> resource) occurs.</p>
-     */
-    inline void SetFilterType(const FilterType& value) { m_filterTypeHasBeenSet = true; m_filterType = value; }
-
-    /**
-     * <p>The type of event that causes the campaign to be sent. Valid values are:
-     * SYSTEM, sends the campaign when a system event occurs; and, ENDPOINT, sends the
-     * campaign when an endpoint event (<link 
-     * linkend="apps-application-id-events">Events</link> resource) occurs.</p>
-     */
-    inline void SetFilterType(FilterType&& value) { m_filterTypeHasBeenSet = true; m_filterType = std::move(value); }
-
-    /**
-     * <p>The type of event that causes the campaign to be sent. Valid values are:
-     * SYSTEM, sends the campaign when a system event occurs; and, ENDPOINT, sends the
-     * campaign when an endpoint event (<link 
-     * linkend="apps-application-id-events">Events</link> resource) occurs.</p>
-     */
-    inline CampaignEventFilter& WithFilterType(const FilterType& value) { SetFilterType(value); return *this;}
-
-    /**
-     * <p>The type of event that causes the campaign to be sent. Valid values are:
-     * SYSTEM, sends the campaign when a system event occurs; and, ENDPOINT, sends the
-     * campaign when an endpoint event (<link 
-     * linkend="apps-application-id-events">Events</link> resource) occurs.</p>
-     */
-    inline CampaignEventFilter& WithFilterType(FilterType&& value) { SetFilterType(std::move(value)); return *this;}
-
+    inline void SetFilterType(FilterType value) { m_filterTypeHasBeenSet = true; m_filterType = value; }
+    inline CampaignEventFilter& WithFilterType(FilterType value) { SetFilterType(value); return *this;}
+    ///@}
   private:
 
     EventDimensions m_dimensions;
     bool m_dimensionsHasBeenSet = false;
 
-    FilterType m_filterType;
+    FilterType m_filterType{FilterType::NOT_SET};
     bool m_filterTypeHasBeenSet = false;
   };
 

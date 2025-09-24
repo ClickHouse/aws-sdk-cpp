@@ -25,7 +25,12 @@ namespace Model
     UnsupportedAz,
     InvalidAlarmCondition,
     InvalidConditionType,
-    InvalidPracticeBlocker
+    InvalidPracticeBlocker,
+    FISExperimentUpdateNotAllowed,
+    AutoshiftUpdateNotAllowed,
+    UnsupportedPracticeCancelShiftType,
+    InvalidPracticeAllowedWindow,
+    InvalidPracticeWindows
   };
 
 namespace ValidationExceptionReasonMapper

@@ -39,170 +39,60 @@ namespace Model
   class OrganizationEventDetails
   {
   public:
-    AWS_HEALTH_API OrganizationEventDetails();
+    AWS_HEALTH_API OrganizationEventDetails() = default;
     AWS_HEALTH_API OrganizationEventDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTH_API OrganizationEventDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_HEALTH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The 12-digit Amazon Web Services account numbers that contains the affected
      * entities.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    OrganizationEventDetails& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline OrganizationEventDetails& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline OrganizationEventDetails& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The 12-digit Amazon Web Services account numbers that contains the affected
-     * entities.</p>
-     */
-    inline OrganizationEventDetails& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     
-    inline const Event& GetEvent() const{ return m_event; }
-
-    
+    inline const Event& GetEvent() const { return m_event; }
     inline bool EventHasBeenSet() const { return m_eventHasBeenSet; }
+    template<typename EventT = Event>
+    void SetEvent(EventT&& value) { m_eventHasBeenSet = true; m_event = std::forward<EventT>(value); }
+    template<typename EventT = Event>
+    OrganizationEventDetails& WithEvent(EventT&& value) { SetEvent(std::forward<EventT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetEvent(const Event& value) { m_eventHasBeenSet = true; m_event = value; }
-
-    
-    inline void SetEvent(Event&& value) { m_eventHasBeenSet = true; m_event = std::move(value); }
-
-    
-    inline OrganizationEventDetails& WithEvent(const Event& value) { SetEvent(value); return *this;}
-
-    
-    inline OrganizationEventDetails& WithEvent(Event&& value) { SetEvent(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetEventDescription() const{ return m_eventDescription; }
-
-    
+    inline const Aws::String& GetEventDescription() const { return m_eventDescription; }
     inline bool EventDescriptionHasBeenSet() const { return m_eventDescriptionHasBeenSet; }
+    template<typename EventDescriptionT = Aws::String>
+    void SetEventDescription(EventDescriptionT&& value) { m_eventDescriptionHasBeenSet = true; m_eventDescription = std::forward<EventDescriptionT>(value); }
+    template<typename EventDescriptionT = Aws::String>
+    OrganizationEventDetails& WithEventDescription(EventDescriptionT&& value) { SetEventDescription(std::forward<EventDescriptionT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetEventDescription(const Aws::String& value) { m_eventDescriptionHasBeenSet = true; m_eventDescription = value; }
-
-    
-    inline void SetEventDescription(Aws::String&& value) { m_eventDescriptionHasBeenSet = true; m_eventDescription = std::move(value); }
-
-    
-    inline void SetEventDescription(const char* value) { m_eventDescriptionHasBeenSet = true; m_eventDescription.assign(value); }
-
-    
-    inline OrganizationEventDetails& WithEventDescription(const Aws::String& value) { SetEventDescription(value); return *this;}
-
-    
-    inline OrganizationEventDetails& WithEventDescription(Aws::String&& value) { SetEventDescription(std::move(value)); return *this;}
-
-    
-    inline OrganizationEventDetails& WithEventDescription(const char* value) { SetEventDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional metadata about the event.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetEventMetadata() const{ return m_eventMetadata; }
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetEventMetadata() const { return m_eventMetadata; }
     inline bool EventMetadataHasBeenSet() const { return m_eventMetadataHasBeenSet; }
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline void SetEventMetadata(const Aws::Map<Aws::String, Aws::String>& value) { m_eventMetadataHasBeenSet = true; m_eventMetadata = value; }
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline void SetEventMetadata(Aws::Map<Aws::String, Aws::String>&& value) { m_eventMetadataHasBeenSet = true; m_eventMetadata = std::move(value); }
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline OrganizationEventDetails& WithEventMetadata(const Aws::Map<Aws::String, Aws::String>& value) { SetEventMetadata(value); return *this;}
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline OrganizationEventDetails& WithEventMetadata(Aws::Map<Aws::String, Aws::String>&& value) { SetEventMetadata(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline OrganizationEventDetails& AddEventMetadata(const Aws::String& key, const Aws::String& value) { m_eventMetadataHasBeenSet = true; m_eventMetadata.emplace(key, value); return *this; }
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline OrganizationEventDetails& AddEventMetadata(Aws::String&& key, const Aws::String& value) { m_eventMetadataHasBeenSet = true; m_eventMetadata.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline OrganizationEventDetails& AddEventMetadata(const Aws::String& key, Aws::String&& value) { m_eventMetadataHasBeenSet = true; m_eventMetadata.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline OrganizationEventDetails& AddEventMetadata(Aws::String&& key, Aws::String&& value) { m_eventMetadataHasBeenSet = true; m_eventMetadata.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline OrganizationEventDetails& AddEventMetadata(const char* key, Aws::String&& value) { m_eventMetadataHasBeenSet = true; m_eventMetadata.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline OrganizationEventDetails& AddEventMetadata(Aws::String&& key, const char* value) { m_eventMetadataHasBeenSet = true; m_eventMetadata.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Additional metadata about the event.</p>
-     */
-    inline OrganizationEventDetails& AddEventMetadata(const char* key, const char* value) { m_eventMetadataHasBeenSet = true; m_eventMetadata.emplace(key, value); return *this; }
-
+    template<typename EventMetadataT = Aws::Map<Aws::String, Aws::String>>
+    void SetEventMetadata(EventMetadataT&& value) { m_eventMetadataHasBeenSet = true; m_eventMetadata = std::forward<EventMetadataT>(value); }
+    template<typename EventMetadataT = Aws::Map<Aws::String, Aws::String>>
+    OrganizationEventDetails& WithEventMetadata(EventMetadataT&& value) { SetEventMetadata(std::forward<EventMetadataT>(value)); return *this;}
+    template<typename EventMetadataKeyT = Aws::String, typename EventMetadataValueT = Aws::String>
+    OrganizationEventDetails& AddEventMetadata(EventMetadataKeyT&& key, EventMetadataValueT&& value) {
+      m_eventMetadataHasBeenSet = true; m_eventMetadata.emplace(std::forward<EventMetadataKeyT>(key), std::forward<EventMetadataValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

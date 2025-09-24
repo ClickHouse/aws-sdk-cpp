@@ -33,121 +33,53 @@ namespace Model
   class DialogAction
   {
   public:
-    AWS_LEXMODELSV2_API DialogAction();
+    AWS_LEXMODELSV2_API DialogAction() = default;
     AWS_LEXMODELSV2_API DialogAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API DialogAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The action that the bot should execute. </p>
      */
-    inline const DialogActionType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The action that the bot should execute. </p>
-     */
+    inline DialogActionType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(DialogActionType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline DialogAction& WithType(DialogActionType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The action that the bot should execute. </p>
-     */
-    inline void SetType(const DialogActionType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The action that the bot should execute. </p>
-     */
-    inline void SetType(DialogActionType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The action that the bot should execute. </p>
-     */
-    inline DialogAction& WithType(const DialogActionType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The action that the bot should execute. </p>
-     */
-    inline DialogAction& WithType(DialogActionType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the dialog action is <code>ElicitSlot</code>, defines the slot to elicit
      * from the user.</p>
      */
-    inline const Aws::String& GetSlotToElicit() const{ return m_slotToElicit; }
-
-    /**
-     * <p>If the dialog action is <code>ElicitSlot</code>, defines the slot to elicit
-     * from the user.</p>
-     */
+    inline const Aws::String& GetSlotToElicit() const { return m_slotToElicit; }
     inline bool SlotToElicitHasBeenSet() const { return m_slotToElicitHasBeenSet; }
+    template<typename SlotToElicitT = Aws::String>
+    void SetSlotToElicit(SlotToElicitT&& value) { m_slotToElicitHasBeenSet = true; m_slotToElicit = std::forward<SlotToElicitT>(value); }
+    template<typename SlotToElicitT = Aws::String>
+    DialogAction& WithSlotToElicit(SlotToElicitT&& value) { SetSlotToElicit(std::forward<SlotToElicitT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the dialog action is <code>ElicitSlot</code>, defines the slot to elicit
-     * from the user.</p>
-     */
-    inline void SetSlotToElicit(const Aws::String& value) { m_slotToElicitHasBeenSet = true; m_slotToElicit = value; }
-
-    /**
-     * <p>If the dialog action is <code>ElicitSlot</code>, defines the slot to elicit
-     * from the user.</p>
-     */
-    inline void SetSlotToElicit(Aws::String&& value) { m_slotToElicitHasBeenSet = true; m_slotToElicit = std::move(value); }
-
-    /**
-     * <p>If the dialog action is <code>ElicitSlot</code>, defines the slot to elicit
-     * from the user.</p>
-     */
-    inline void SetSlotToElicit(const char* value) { m_slotToElicitHasBeenSet = true; m_slotToElicit.assign(value); }
-
-    /**
-     * <p>If the dialog action is <code>ElicitSlot</code>, defines the slot to elicit
-     * from the user.</p>
-     */
-    inline DialogAction& WithSlotToElicit(const Aws::String& value) { SetSlotToElicit(value); return *this;}
-
-    /**
-     * <p>If the dialog action is <code>ElicitSlot</code>, defines the slot to elicit
-     * from the user.</p>
-     */
-    inline DialogAction& WithSlotToElicit(Aws::String&& value) { SetSlotToElicit(std::move(value)); return *this;}
-
-    /**
-     * <p>If the dialog action is <code>ElicitSlot</code>, defines the slot to elicit
-     * from the user.</p>
-     */
-    inline DialogAction& WithSlotToElicit(const char* value) { SetSlotToElicit(value); return *this;}
-
-
+    ///@{
     /**
      * <p>When true the next message for the intent is not used.</p>
      */
-    inline bool GetSuppressNextMessage() const{ return m_suppressNextMessage; }
-
-    /**
-     * <p>When true the next message for the intent is not used.</p>
-     */
+    inline bool GetSuppressNextMessage() const { return m_suppressNextMessage; }
     inline bool SuppressNextMessageHasBeenSet() const { return m_suppressNextMessageHasBeenSet; }
-
-    /**
-     * <p>When true the next message for the intent is not used.</p>
-     */
     inline void SetSuppressNextMessage(bool value) { m_suppressNextMessageHasBeenSet = true; m_suppressNextMessage = value; }
-
-    /**
-     * <p>When true the next message for the intent is not used.</p>
-     */
     inline DialogAction& WithSuppressNextMessage(bool value) { SetSuppressNextMessage(value); return *this;}
-
+    ///@}
   private:
 
-    DialogActionType m_type;
+    DialogActionType m_type{DialogActionType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_slotToElicit;
     bool m_slotToElicitHasBeenSet = false;
 
-    bool m_suppressNextMessage;
+    bool m_suppressNextMessage{false};
     bool m_suppressNextMessageHasBeenSet = false;
   };
 

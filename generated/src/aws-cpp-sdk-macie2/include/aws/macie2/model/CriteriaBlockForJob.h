@@ -34,68 +34,27 @@ namespace Model
   class CriteriaBlockForJob
   {
   public:
-    AWS_MACIE2_API CriteriaBlockForJob();
+    AWS_MACIE2_API CriteriaBlockForJob() = default;
     AWS_MACIE2_API CriteriaBlockForJob(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API CriteriaBlockForJob& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of conditions, one for each condition that determines which buckets
      * to include or exclude from the job. If you specify more than one condition,
      * Amazon Macie uses AND logic to join the conditions.</p>
      */
-    inline const Aws::Vector<CriteriaForJob>& GetAnd() const{ return m_and; }
-
-    /**
-     * <p>An array of conditions, one for each condition that determines which buckets
-     * to include or exclude from the job. If you specify more than one condition,
-     * Amazon Macie uses AND logic to join the conditions.</p>
-     */
+    inline const Aws::Vector<CriteriaForJob>& GetAnd() const { return m_and; }
     inline bool AndHasBeenSet() const { return m_andHasBeenSet; }
-
-    /**
-     * <p>An array of conditions, one for each condition that determines which buckets
-     * to include or exclude from the job. If you specify more than one condition,
-     * Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline void SetAnd(const Aws::Vector<CriteriaForJob>& value) { m_andHasBeenSet = true; m_and = value; }
-
-    /**
-     * <p>An array of conditions, one for each condition that determines which buckets
-     * to include or exclude from the job. If you specify more than one condition,
-     * Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline void SetAnd(Aws::Vector<CriteriaForJob>&& value) { m_andHasBeenSet = true; m_and = std::move(value); }
-
-    /**
-     * <p>An array of conditions, one for each condition that determines which buckets
-     * to include or exclude from the job. If you specify more than one condition,
-     * Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline CriteriaBlockForJob& WithAnd(const Aws::Vector<CriteriaForJob>& value) { SetAnd(value); return *this;}
-
-    /**
-     * <p>An array of conditions, one for each condition that determines which buckets
-     * to include or exclude from the job. If you specify more than one condition,
-     * Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline CriteriaBlockForJob& WithAnd(Aws::Vector<CriteriaForJob>&& value) { SetAnd(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of conditions, one for each condition that determines which buckets
-     * to include or exclude from the job. If you specify more than one condition,
-     * Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline CriteriaBlockForJob& AddAnd(const CriteriaForJob& value) { m_andHasBeenSet = true; m_and.push_back(value); return *this; }
-
-    /**
-     * <p>An array of conditions, one for each condition that determines which buckets
-     * to include or exclude from the job. If you specify more than one condition,
-     * Amazon Macie uses AND logic to join the conditions.</p>
-     */
-    inline CriteriaBlockForJob& AddAnd(CriteriaForJob&& value) { m_andHasBeenSet = true; m_and.push_back(std::move(value)); return *this; }
-
+    template<typename AndT = Aws::Vector<CriteriaForJob>>
+    void SetAnd(AndT&& value) { m_andHasBeenSet = true; m_and = std::forward<AndT>(value); }
+    template<typename AndT = Aws::Vector<CriteriaForJob>>
+    CriteriaBlockForJob& WithAnd(AndT&& value) { SetAnd(std::forward<AndT>(value)); return *this;}
+    template<typename AndT = CriteriaForJob>
+    CriteriaBlockForJob& AddAnd(AndT&& value) { m_andHasBeenSet = true; m_and.emplace_back(std::forward<AndT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<CriteriaForJob> m_and;

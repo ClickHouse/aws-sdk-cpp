@@ -28,187 +28,79 @@ namespace Model
   class DeleteBotLocaleResult
   {
   public:
-    AWS_LEXMODELSV2_API DeleteBotLocaleResult();
+    AWS_LEXMODELSV2_API DeleteBotLocaleResult() = default;
     AWS_LEXMODELSV2_API DeleteBotLocaleResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LEXMODELSV2_API DeleteBotLocaleResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The identifier of the bot that contained the deleted locale.</p>
      */
-    inline const Aws::String& GetBotId() const{ return m_botId; }
+    inline const Aws::String& GetBotId() const { return m_botId; }
+    template<typename BotIdT = Aws::String>
+    void SetBotId(BotIdT&& value) { m_botIdHasBeenSet = true; m_botId = std::forward<BotIdT>(value); }
+    template<typename BotIdT = Aws::String>
+    DeleteBotLocaleResult& WithBotId(BotIdT&& value) { SetBotId(std::forward<BotIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the bot that contained the deleted locale.</p>
-     */
-    inline void SetBotId(const Aws::String& value) { m_botId = value; }
-
-    /**
-     * <p>The identifier of the bot that contained the deleted locale.</p>
-     */
-    inline void SetBotId(Aws::String&& value) { m_botId = std::move(value); }
-
-    /**
-     * <p>The identifier of the bot that contained the deleted locale.</p>
-     */
-    inline void SetBotId(const char* value) { m_botId.assign(value); }
-
-    /**
-     * <p>The identifier of the bot that contained the deleted locale.</p>
-     */
-    inline DeleteBotLocaleResult& WithBotId(const Aws::String& value) { SetBotId(value); return *this;}
-
-    /**
-     * <p>The identifier of the bot that contained the deleted locale.</p>
-     */
-    inline DeleteBotLocaleResult& WithBotId(Aws::String&& value) { SetBotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the bot that contained the deleted locale.</p>
-     */
-    inline DeleteBotLocaleResult& WithBotId(const char* value) { SetBotId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the bot that contained the deleted locale.</p>
      */
-    inline const Aws::String& GetBotVersion() const{ return m_botVersion; }
+    inline const Aws::String& GetBotVersion() const { return m_botVersion; }
+    template<typename BotVersionT = Aws::String>
+    void SetBotVersion(BotVersionT&& value) { m_botVersionHasBeenSet = true; m_botVersion = std::forward<BotVersionT>(value); }
+    template<typename BotVersionT = Aws::String>
+    DeleteBotLocaleResult& WithBotVersion(BotVersionT&& value) { SetBotVersion(std::forward<BotVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the bot that contained the deleted locale.</p>
-     */
-    inline void SetBotVersion(const Aws::String& value) { m_botVersion = value; }
-
-    /**
-     * <p>The version of the bot that contained the deleted locale.</p>
-     */
-    inline void SetBotVersion(Aws::String&& value) { m_botVersion = std::move(value); }
-
-    /**
-     * <p>The version of the bot that contained the deleted locale.</p>
-     */
-    inline void SetBotVersion(const char* value) { m_botVersion.assign(value); }
-
-    /**
-     * <p>The version of the bot that contained the deleted locale.</p>
-     */
-    inline DeleteBotLocaleResult& WithBotVersion(const Aws::String& value) { SetBotVersion(value); return *this;}
-
-    /**
-     * <p>The version of the bot that contained the deleted locale.</p>
-     */
-    inline DeleteBotLocaleResult& WithBotVersion(Aws::String&& value) { SetBotVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the bot that contained the deleted locale.</p>
-     */
-    inline DeleteBotLocaleResult& WithBotVersion(const char* value) { SetBotVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The language and locale of the deleted locale.</p>
      */
-    inline const Aws::String& GetLocaleId() const{ return m_localeId; }
+    inline const Aws::String& GetLocaleId() const { return m_localeId; }
+    template<typename LocaleIdT = Aws::String>
+    void SetLocaleId(LocaleIdT&& value) { m_localeIdHasBeenSet = true; m_localeId = std::forward<LocaleIdT>(value); }
+    template<typename LocaleIdT = Aws::String>
+    DeleteBotLocaleResult& WithLocaleId(LocaleIdT&& value) { SetLocaleId(std::forward<LocaleIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The language and locale of the deleted locale.</p>
-     */
-    inline void SetLocaleId(const Aws::String& value) { m_localeId = value; }
-
-    /**
-     * <p>The language and locale of the deleted locale.</p>
-     */
-    inline void SetLocaleId(Aws::String&& value) { m_localeId = std::move(value); }
-
-    /**
-     * <p>The language and locale of the deleted locale.</p>
-     */
-    inline void SetLocaleId(const char* value) { m_localeId.assign(value); }
-
-    /**
-     * <p>The language and locale of the deleted locale.</p>
-     */
-    inline DeleteBotLocaleResult& WithLocaleId(const Aws::String& value) { SetLocaleId(value); return *this;}
-
-    /**
-     * <p>The language and locale of the deleted locale.</p>
-     */
-    inline DeleteBotLocaleResult& WithLocaleId(Aws::String&& value) { SetLocaleId(std::move(value)); return *this;}
-
-    /**
-     * <p>The language and locale of the deleted locale.</p>
-     */
-    inline DeleteBotLocaleResult& WithLocaleId(const char* value) { SetLocaleId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of deleting the bot locale. The locale first enters the
      * <code>Deleting</code> status. Once the locale is deleted it no longer appears in
      * the list of locales for the bot.</p>
      */
-    inline const BotLocaleStatus& GetBotLocaleStatus() const{ return m_botLocaleStatus; }
+    inline BotLocaleStatus GetBotLocaleStatus() const { return m_botLocaleStatus; }
+    inline void SetBotLocaleStatus(BotLocaleStatus value) { m_botLocaleStatusHasBeenSet = true; m_botLocaleStatus = value; }
+    inline DeleteBotLocaleResult& WithBotLocaleStatus(BotLocaleStatus value) { SetBotLocaleStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of deleting the bot locale. The locale first enters the
-     * <code>Deleting</code> status. Once the locale is deleted it no longer appears in
-     * the list of locales for the bot.</p>
-     */
-    inline void SetBotLocaleStatus(const BotLocaleStatus& value) { m_botLocaleStatus = value; }
-
-    /**
-     * <p>The status of deleting the bot locale. The locale first enters the
-     * <code>Deleting</code> status. Once the locale is deleted it no longer appears in
-     * the list of locales for the bot.</p>
-     */
-    inline void SetBotLocaleStatus(BotLocaleStatus&& value) { m_botLocaleStatus = std::move(value); }
-
-    /**
-     * <p>The status of deleting the bot locale. The locale first enters the
-     * <code>Deleting</code> status. Once the locale is deleted it no longer appears in
-     * the list of locales for the bot.</p>
-     */
-    inline DeleteBotLocaleResult& WithBotLocaleStatus(const BotLocaleStatus& value) { SetBotLocaleStatus(value); return *this;}
-
-    /**
-     * <p>The status of deleting the bot locale. The locale first enters the
-     * <code>Deleting</code> status. Once the locale is deleted it no longer appears in
-     * the list of locales for the bot.</p>
-     */
-    inline DeleteBotLocaleResult& WithBotLocaleStatus(BotLocaleStatus&& value) { SetBotLocaleStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteBotLocaleResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteBotLocaleResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteBotLocaleResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteBotLocaleResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_botId;
+    bool m_botIdHasBeenSet = false;
 
     Aws::String m_botVersion;
+    bool m_botVersionHasBeenSet = false;
 
     Aws::String m_localeId;
+    bool m_localeIdHasBeenSet = false;
 
-    BotLocaleStatus m_botLocaleStatus;
+    BotLocaleStatus m_botLocaleStatus{BotLocaleStatus::NOT_SET};
+    bool m_botLocaleStatusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

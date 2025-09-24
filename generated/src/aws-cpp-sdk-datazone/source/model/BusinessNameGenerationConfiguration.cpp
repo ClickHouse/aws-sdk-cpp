@@ -18,15 +18,7 @@ namespace DataZone
 namespace Model
 {
 
-BusinessNameGenerationConfiguration::BusinessNameGenerationConfiguration() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-BusinessNameGenerationConfiguration::BusinessNameGenerationConfiguration(JsonView jsonValue) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+BusinessNameGenerationConfiguration::BusinessNameGenerationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ BusinessNameGenerationConfiguration& BusinessNameGenerationConfiguration::operat
   if(jsonValue.ValueExists("enabled"))
   {
     m_enabled = jsonValue.GetBool("enabled");
-
     m_enabledHasBeenSet = true;
   }
-
   return *this;
 }
 

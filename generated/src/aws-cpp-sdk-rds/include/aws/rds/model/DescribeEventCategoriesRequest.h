@@ -26,7 +26,7 @@ namespace Model
   class DescribeEventCategoriesRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API DescribeEventCategoriesRequest();
+    AWS_RDS_API DescribeEventCategoriesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,6 +41,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The type of source that is generating the events. For RDS Proxy events,
      * specify <code>db-proxy</code>.</p> <p>Valid Values: <code>db-instance</code> |
@@ -48,112 +49,27 @@ namespace Model
      * <code>db-security-group</code> | <code>db-snapshot</code> |
      * <code>db-cluster-snapshot</code> | <code>db-proxy</code> </p>
      */
-    inline const Aws::String& GetSourceType() const{ return m_sourceType; }
-
-    /**
-     * <p>The type of source that is generating the events. For RDS Proxy events,
-     * specify <code>db-proxy</code>.</p> <p>Valid Values: <code>db-instance</code> |
-     * <code>db-cluster</code> | <code>db-parameter-group</code> |
-     * <code>db-security-group</code> | <code>db-snapshot</code> |
-     * <code>db-cluster-snapshot</code> | <code>db-proxy</code> </p>
-     */
+    inline const Aws::String& GetSourceType() const { return m_sourceType; }
     inline bool SourceTypeHasBeenSet() const { return m_sourceTypeHasBeenSet; }
+    template<typename SourceTypeT = Aws::String>
+    void SetSourceType(SourceTypeT&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::forward<SourceTypeT>(value); }
+    template<typename SourceTypeT = Aws::String>
+    DescribeEventCategoriesRequest& WithSourceType(SourceTypeT&& value) { SetSourceType(std::forward<SourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of source that is generating the events. For RDS Proxy events,
-     * specify <code>db-proxy</code>.</p> <p>Valid Values: <code>db-instance</code> |
-     * <code>db-cluster</code> | <code>db-parameter-group</code> |
-     * <code>db-security-group</code> | <code>db-snapshot</code> |
-     * <code>db-cluster-snapshot</code> | <code>db-proxy</code> </p>
-     */
-    inline void SetSourceType(const Aws::String& value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
-
-    /**
-     * <p>The type of source that is generating the events. For RDS Proxy events,
-     * specify <code>db-proxy</code>.</p> <p>Valid Values: <code>db-instance</code> |
-     * <code>db-cluster</code> | <code>db-parameter-group</code> |
-     * <code>db-security-group</code> | <code>db-snapshot</code> |
-     * <code>db-cluster-snapshot</code> | <code>db-proxy</code> </p>
-     */
-    inline void SetSourceType(Aws::String&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::move(value); }
-
-    /**
-     * <p>The type of source that is generating the events. For RDS Proxy events,
-     * specify <code>db-proxy</code>.</p> <p>Valid Values: <code>db-instance</code> |
-     * <code>db-cluster</code> | <code>db-parameter-group</code> |
-     * <code>db-security-group</code> | <code>db-snapshot</code> |
-     * <code>db-cluster-snapshot</code> | <code>db-proxy</code> </p>
-     */
-    inline void SetSourceType(const char* value) { m_sourceTypeHasBeenSet = true; m_sourceType.assign(value); }
-
-    /**
-     * <p>The type of source that is generating the events. For RDS Proxy events,
-     * specify <code>db-proxy</code>.</p> <p>Valid Values: <code>db-instance</code> |
-     * <code>db-cluster</code> | <code>db-parameter-group</code> |
-     * <code>db-security-group</code> | <code>db-snapshot</code> |
-     * <code>db-cluster-snapshot</code> | <code>db-proxy</code> </p>
-     */
-    inline DescribeEventCategoriesRequest& WithSourceType(const Aws::String& value) { SetSourceType(value); return *this;}
-
-    /**
-     * <p>The type of source that is generating the events. For RDS Proxy events,
-     * specify <code>db-proxy</code>.</p> <p>Valid Values: <code>db-instance</code> |
-     * <code>db-cluster</code> | <code>db-parameter-group</code> |
-     * <code>db-security-group</code> | <code>db-snapshot</code> |
-     * <code>db-cluster-snapshot</code> | <code>db-proxy</code> </p>
-     */
-    inline DescribeEventCategoriesRequest& WithSourceType(Aws::String&& value) { SetSourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of source that is generating the events. For RDS Proxy events,
-     * specify <code>db-proxy</code>.</p> <p>Valid Values: <code>db-instance</code> |
-     * <code>db-cluster</code> | <code>db-parameter-group</code> |
-     * <code>db-security-group</code> | <code>db-snapshot</code> |
-     * <code>db-cluster-snapshot</code> | <code>db-proxy</code> </p>
-     */
-    inline DescribeEventCategoriesRequest& WithSourceType(const char* value) { SetSourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>This parameter isn't currently supported.</p>
      */
-    inline const Aws::Vector<Filter>& GetFilters() const{ return m_filters; }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
+    inline const Aws::Vector<Filter>& GetFilters() const { return m_filters; }
     inline bool FiltersHasBeenSet() const { return m_filtersHasBeenSet; }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline void SetFilters(const Aws::Vector<Filter>& value) { m_filtersHasBeenSet = true; m_filters = value; }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline void SetFilters(Aws::Vector<Filter>&& value) { m_filtersHasBeenSet = true; m_filters = std::move(value); }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeEventCategoriesRequest& WithFilters(const Aws::Vector<Filter>& value) { SetFilters(value); return *this;}
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeEventCategoriesRequest& WithFilters(Aws::Vector<Filter>&& value) { SetFilters(std::move(value)); return *this;}
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeEventCategoriesRequest& AddFilters(const Filter& value) { m_filtersHasBeenSet = true; m_filters.push_back(value); return *this; }
-
-    /**
-     * <p>This parameter isn't currently supported.</p>
-     */
-    inline DescribeEventCategoriesRequest& AddFilters(Filter&& value) { m_filtersHasBeenSet = true; m_filters.push_back(std::move(value)); return *this; }
-
+    template<typename FiltersT = Aws::Vector<Filter>>
+    void SetFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters = std::forward<FiltersT>(value); }
+    template<typename FiltersT = Aws::Vector<Filter>>
+    DescribeEventCategoriesRequest& WithFilters(FiltersT&& value) { SetFilters(std::forward<FiltersT>(value)); return *this;}
+    template<typename FiltersT = Filter>
+    DescribeEventCategoriesRequest& AddFilters(FiltersT&& value) { m_filtersHasBeenSet = true; m_filters.emplace_back(std::forward<FiltersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_sourceType;

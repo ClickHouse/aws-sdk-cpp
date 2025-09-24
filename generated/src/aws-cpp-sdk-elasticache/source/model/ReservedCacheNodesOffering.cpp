@@ -20,33 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-ReservedCacheNodesOffering::ReservedCacheNodesOffering() : 
-    m_reservedCacheNodesOfferingIdHasBeenSet(false),
-    m_cacheNodeTypeHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_fixedPrice(0.0),
-    m_fixedPriceHasBeenSet(false),
-    m_usagePrice(0.0),
-    m_usagePriceHasBeenSet(false),
-    m_productDescriptionHasBeenSet(false),
-    m_offeringTypeHasBeenSet(false),
-    m_recurringChargesHasBeenSet(false)
-{
-}
-
-ReservedCacheNodesOffering::ReservedCacheNodesOffering(const XmlNode& xmlNode) : 
-    m_reservedCacheNodesOfferingIdHasBeenSet(false),
-    m_cacheNodeTypeHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_fixedPrice(0.0),
-    m_fixedPriceHasBeenSet(false),
-    m_usagePrice(0.0),
-    m_usagePriceHasBeenSet(false),
-    m_productDescriptionHasBeenSet(false),
-    m_offeringTypeHasBeenSet(false),
-    m_recurringChargesHasBeenSet(false)
+ReservedCacheNodesOffering::ReservedCacheNodesOffering(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -103,6 +77,7 @@ ReservedCacheNodesOffering& ReservedCacheNodesOffering::operator =(const XmlNode
     if(!recurringChargesNode.IsNull())
     {
       XmlNode recurringChargesMember = recurringChargesNode.FirstChild("RecurringCharge");
+      m_recurringChargesHasBeenSet = !recurringChargesMember.IsNull();
       while(!recurringChargesMember.IsNull())
       {
         m_recurringCharges.push_back(recurringChargesMember);
@@ -159,7 +134,7 @@ void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const cha
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location << index << locationValue << ".RecurringCharge." << recurringChargesIdx++;
+        recurringChargesSs << location << index << locationValue << ".RecurringCharges.RecurringCharge." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
@@ -182,11 +157,11 @@ void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const cha
   }
   if(m_fixedPriceHasBeenSet)
   {
-        oStream << location << ".FixedPrice=" << StringUtils::URLEncode(m_fixedPrice) << "&";
+      oStream << location << ".FixedPrice=" << StringUtils::URLEncode(m_fixedPrice) << "&";
   }
   if(m_usagePriceHasBeenSet)
   {
-        oStream << location << ".UsagePrice=" << StringUtils::URLEncode(m_usagePrice) << "&";
+      oStream << location << ".UsagePrice=" << StringUtils::URLEncode(m_usagePrice) << "&";
   }
   if(m_productDescriptionHasBeenSet)
   {
@@ -202,7 +177,7 @@ void ReservedCacheNodesOffering::OutputToStream(Aws::OStream& oStream, const cha
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location <<  ".RecurringCharge." << recurringChargesIdx++;
+        recurringChargesSs << location << ".RecurringCharges.RecurringCharge." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }

@@ -33,13 +33,18 @@ namespace Model
     CassandraReadCapacityUtilization,
     CassandraWriteCapacityUtilization,
     KafkaBrokerStorageUtilization,
+    ElastiCacheEngineCPUUtilization,
+    ElastiCacheDatabaseMemoryUsagePercentage,
     ElastiCachePrimaryEngineCPUUtilization,
     ElastiCacheReplicaEngineCPUUtilization,
     ElastiCacheDatabaseMemoryUsageCountedForEvictPercentage,
     NeptuneReaderAverageCPUUtilization,
     SageMakerVariantProvisionedConcurrencyUtilization,
     ElastiCacheDatabaseCapacityUsageCountedForEvictPercentage,
-    SageMakerInferenceComponentInvocationsPerCopy
+    SageMakerInferenceComponentInvocationsPerCopy,
+    WorkSpacesAverageUserSessionsCapacityUtilization,
+    SageMakerInferenceComponentConcurrentRequestsPerCopyHighResolution,
+    SageMakerVariantConcurrentRequestsPerModelHighResolution
   };
 
 namespace MetricTypeMapper

@@ -18,15 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-DatadogConnectorProfileCredentials::DatadogConnectorProfileCredentials() : 
-    m_apiKeyHasBeenSet(false),
-    m_applicationKeyHasBeenSet(false)
-{
-}
-
-DatadogConnectorProfileCredentials::DatadogConnectorProfileCredentials(JsonView jsonValue) : 
-    m_apiKeyHasBeenSet(false),
-    m_applicationKeyHasBeenSet(false)
+DatadogConnectorProfileCredentials::DatadogConnectorProfileCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DatadogConnectorProfileCredentials& DatadogConnectorProfileCredentials::operator
   if(jsonValue.ValueExists("apiKey"))
   {
     m_apiKey = jsonValue.GetString("apiKey");
-
     m_apiKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("applicationKey"))
   {
     m_applicationKey = jsonValue.GetString("applicationKey");
-
     m_applicationKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

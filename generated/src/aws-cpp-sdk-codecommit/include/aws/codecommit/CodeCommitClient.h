@@ -183,8 +183,8 @@ namespace CodeCommit
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef CodeCommitClientConfiguration ClientConfigurationType;
       typedef CodeCommitEndpointProvider EndpointProviderType;
@@ -194,14 +194,14 @@ namespace CodeCommit
         * is not specified, it will be initialized to default values.
         */
         CodeCommitClient(const Aws::CodeCommit::CodeCommitClientConfiguration& clientConfiguration = Aws::CodeCommit::CodeCommitClientConfiguration(),
-                         std::shared_ptr<CodeCommitEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeCommitEndpointProvider>(ALLOCATION_TAG));
+                         std::shared_ptr<CodeCommitEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         CodeCommitClient(const Aws::Auth::AWSCredentials& credentials,
-                         std::shared_ptr<CodeCommitEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeCommitEndpointProvider>(ALLOCATION_TAG),
+                         std::shared_ptr<CodeCommitEndpointProviderBase> endpointProvider = nullptr,
                          const Aws::CodeCommit::CodeCommitClientConfiguration& clientConfiguration = Aws::CodeCommit::CodeCommitClientConfiguration());
 
        /**
@@ -209,7 +209,7 @@ namespace CodeCommit
         * the default http client factory will be used
         */
         CodeCommitClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                         std::shared_ptr<CodeCommitEndpointProviderBase> endpointProvider = Aws::MakeShared<CodeCommitEndpointProvider>(ALLOCATION_TAG),
+                         std::shared_ptr<CodeCommitEndpointProviderBase> endpointProvider = nullptr,
                          const Aws::CodeCommit::CodeCommitClientConfiguration& clientConfiguration = Aws::CodeCommit::CodeCommitClientConfiguration());
 
 
@@ -930,13 +930,13 @@ namespace CodeCommit
          * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/GetBranch">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetBranchOutcome GetBranch(const Model::GetBranchRequest& request) const;
+        virtual Model::GetBranchOutcome GetBranch(const Model::GetBranchRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetBranch that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetBranchRequestT = Model::GetBranchRequest>
-        Model::GetBranchOutcomeCallable GetBranchCallable(const GetBranchRequestT& request) const
+        Model::GetBranchOutcomeCallable GetBranchCallable(const GetBranchRequestT& request = {}) const
         {
             return SubmitCallable(&CodeCommitClient::GetBranch, request);
         }
@@ -945,7 +945,7 @@ namespace CodeCommit
          * An Async wrapper for GetBranch that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetBranchRequestT = Model::GetBranchRequest>
-        void GetBranchAsync(const GetBranchRequestT& request, const GetBranchResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetBranchAsync(const GetBranchResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetBranchRequestT& request = {}) const
         {
             return SubmitAsync(&CodeCommitClient::GetBranch, request, handler, context);
         }
@@ -1392,13 +1392,13 @@ namespace CodeCommit
          * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListApprovalRuleTemplates">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListApprovalRuleTemplatesOutcome ListApprovalRuleTemplates(const Model::ListApprovalRuleTemplatesRequest& request) const;
+        virtual Model::ListApprovalRuleTemplatesOutcome ListApprovalRuleTemplates(const Model::ListApprovalRuleTemplatesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListApprovalRuleTemplates that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListApprovalRuleTemplatesRequestT = Model::ListApprovalRuleTemplatesRequest>
-        Model::ListApprovalRuleTemplatesOutcomeCallable ListApprovalRuleTemplatesCallable(const ListApprovalRuleTemplatesRequestT& request) const
+        Model::ListApprovalRuleTemplatesOutcomeCallable ListApprovalRuleTemplatesCallable(const ListApprovalRuleTemplatesRequestT& request = {}) const
         {
             return SubmitCallable(&CodeCommitClient::ListApprovalRuleTemplates, request);
         }
@@ -1407,7 +1407,7 @@ namespace CodeCommit
          * An Async wrapper for ListApprovalRuleTemplates that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListApprovalRuleTemplatesRequestT = Model::ListApprovalRuleTemplatesRequest>
-        void ListApprovalRuleTemplatesAsync(const ListApprovalRuleTemplatesRequestT& request, const ListApprovalRuleTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListApprovalRuleTemplatesAsync(const ListApprovalRuleTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListApprovalRuleTemplatesRequestT& request = {}) const
         {
             return SubmitAsync(&CodeCommitClient::ListApprovalRuleTemplates, request, handler, context);
         }
@@ -1523,13 +1523,13 @@ namespace CodeCommit
          * href="http://docs.aws.amazon.com/goto/WebAPI/codecommit-2015-04-13/ListRepositories">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRepositoriesOutcome ListRepositories(const Model::ListRepositoriesRequest& request) const;
+        virtual Model::ListRepositoriesOutcome ListRepositories(const Model::ListRepositoriesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRepositories that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRepositoriesRequestT = Model::ListRepositoriesRequest>
-        Model::ListRepositoriesOutcomeCallable ListRepositoriesCallable(const ListRepositoriesRequestT& request) const
+        Model::ListRepositoriesOutcomeCallable ListRepositoriesCallable(const ListRepositoriesRequestT& request = {}) const
         {
             return SubmitCallable(&CodeCommitClient::ListRepositories, request);
         }
@@ -1538,7 +1538,7 @@ namespace CodeCommit
          * An Async wrapper for ListRepositories that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRepositoriesRequestT = Model::ListRepositoriesRequest>
-        void ListRepositoriesAsync(const ListRepositoriesRequestT& request, const ListRepositoriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRepositoriesAsync(const ListRepositoriesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRepositoriesRequestT& request = {}) const
         {
             return SubmitAsync(&CodeCommitClient::ListRepositories, request, handler, context);
         }
@@ -2388,7 +2388,6 @@ namespace CodeCommit
       void init(const CodeCommitClientConfiguration& clientConfiguration);
 
       CodeCommitClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<CodeCommitEndpointProviderBase> m_endpointProvider;
   };
 

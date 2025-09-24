@@ -22,7 +22,7 @@ namespace Model
   class DescribeVolumeAttributeRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DescribeVolumeAttributeRequest();
+    AWS_EC2_API DescribeVolumeAttributeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,119 +37,49 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The attribute of the volume. This parameter is required.</p>
      */
-    inline const VolumeAttributeName& GetAttribute() const{ return m_attribute; }
-
-    /**
-     * <p>The attribute of the volume. This parameter is required.</p>
-     */
+    inline VolumeAttributeName GetAttribute() const { return m_attribute; }
     inline bool AttributeHasBeenSet() const { return m_attributeHasBeenSet; }
+    inline void SetAttribute(VolumeAttributeName value) { m_attributeHasBeenSet = true; m_attribute = value; }
+    inline DescribeVolumeAttributeRequest& WithAttribute(VolumeAttributeName value) { SetAttribute(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The attribute of the volume. This parameter is required.</p>
-     */
-    inline void SetAttribute(const VolumeAttributeName& value) { m_attributeHasBeenSet = true; m_attribute = value; }
-
-    /**
-     * <p>The attribute of the volume. This parameter is required.</p>
-     */
-    inline void SetAttribute(VolumeAttributeName&& value) { m_attributeHasBeenSet = true; m_attribute = std::move(value); }
-
-    /**
-     * <p>The attribute of the volume. This parameter is required.</p>
-     */
-    inline DescribeVolumeAttributeRequest& WithAttribute(const VolumeAttributeName& value) { SetAttribute(value); return *this;}
-
-    /**
-     * <p>The attribute of the volume. This parameter is required.</p>
-     */
-    inline DescribeVolumeAttributeRequest& WithAttribute(VolumeAttributeName&& value) { SetAttribute(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the volume.</p>
      */
-    inline const Aws::String& GetVolumeId() const{ return m_volumeId; }
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
+    inline const Aws::String& GetVolumeId() const { return m_volumeId; }
     inline bool VolumeIdHasBeenSet() const { return m_volumeIdHasBeenSet; }
+    template<typename VolumeIdT = Aws::String>
+    void SetVolumeId(VolumeIdT&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::forward<VolumeIdT>(value); }
+    template<typename VolumeIdT = Aws::String>
+    DescribeVolumeAttributeRequest& WithVolumeId(VolumeIdT&& value) { SetVolumeId(std::forward<VolumeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline void SetVolumeId(const Aws::String& value) { m_volumeIdHasBeenSet = true; m_volumeId = value; }
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline void SetVolumeId(Aws::String&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::move(value); }
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline void SetVolumeId(const char* value) { m_volumeIdHasBeenSet = true; m_volumeId.assign(value); }
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline DescribeVolumeAttributeRequest& WithVolumeId(const Aws::String& value) { SetVolumeId(value); return *this;}
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline DescribeVolumeAttributeRequest& WithVolumeId(Aws::String&& value) { SetVolumeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the volume.</p>
-     */
-    inline DescribeVolumeAttributeRequest& WithVolumeId(const char* value) { SetVolumeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DescribeVolumeAttributeRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
-    VolumeAttributeName m_attribute;
+    VolumeAttributeName m_attribute{VolumeAttributeName::NOT_SET};
     bool m_attributeHasBeenSet = false;
 
     Aws::String m_volumeId;
     bool m_volumeIdHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

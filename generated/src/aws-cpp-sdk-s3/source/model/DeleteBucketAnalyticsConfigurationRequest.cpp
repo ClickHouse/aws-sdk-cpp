@@ -6,6 +6,7 @@
 #include <aws/s3/model/DeleteBucketAnalyticsConfigurationRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,13 +17,6 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-DeleteBucketAnalyticsConfigurationRequest::DeleteBucketAnalyticsConfigurationRequest() : 
-    m_bucketHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_expectedBucketOwnerHasBeenSet(false),
-    m_customizedAccessLogTagHasBeenSet(false)
-{
-}
 
 Aws::String DeleteBucketAnalyticsConfigurationRequest::SerializePayload() const
 {

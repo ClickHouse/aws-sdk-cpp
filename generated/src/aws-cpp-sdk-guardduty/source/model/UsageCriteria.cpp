@@ -18,17 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-UsageCriteria::UsageCriteria() : 
-    m_accountIdsHasBeenSet(false),
-    m_resourcesHasBeenSet(false),
-    m_featuresHasBeenSet(false)
-{
-}
-
-UsageCriteria::UsageCriteria(JsonView jsonValue) : 
-    m_accountIdsHasBeenSet(false),
-    m_resourcesHasBeenSet(false),
-    m_featuresHasBeenSet(false)
+UsageCriteria::UsageCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ UsageCriteria& UsageCriteria::operator =(JsonView jsonValue)
     }
     m_accountIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resources"))
   {
     Aws::Utils::Array<JsonView> resourcesJsonList = jsonValue.GetArray("resources");
@@ -54,7 +43,6 @@ UsageCriteria& UsageCriteria::operator =(JsonView jsonValue)
     }
     m_resourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("features"))
   {
     Aws::Utils::Array<JsonView> featuresJsonList = jsonValue.GetArray("features");
@@ -64,7 +52,6 @@ UsageCriteria& UsageCriteria::operator =(JsonView jsonValue)
     }
     m_featuresHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,79 +32,39 @@ namespace Model
   class Endpoint
   {
   public:
-    AWS_TIMESTREAMWRITE_API Endpoint();
+    AWS_TIMESTREAMWRITE_API Endpoint() = default;
     AWS_TIMESTREAMWRITE_API Endpoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMWRITE_API Endpoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMWRITE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An endpoint address.</p>
      */
-    inline const Aws::String& GetAddress() const{ return m_address; }
-
-    /**
-     * <p>An endpoint address.</p>
-     */
+    inline const Aws::String& GetAddress() const { return m_address; }
     inline bool AddressHasBeenSet() const { return m_addressHasBeenSet; }
+    template<typename AddressT = Aws::String>
+    void SetAddress(AddressT&& value) { m_addressHasBeenSet = true; m_address = std::forward<AddressT>(value); }
+    template<typename AddressT = Aws::String>
+    Endpoint& WithAddress(AddressT&& value) { SetAddress(std::forward<AddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An endpoint address.</p>
-     */
-    inline void SetAddress(const Aws::String& value) { m_addressHasBeenSet = true; m_address = value; }
-
-    /**
-     * <p>An endpoint address.</p>
-     */
-    inline void SetAddress(Aws::String&& value) { m_addressHasBeenSet = true; m_address = std::move(value); }
-
-    /**
-     * <p>An endpoint address.</p>
-     */
-    inline void SetAddress(const char* value) { m_addressHasBeenSet = true; m_address.assign(value); }
-
-    /**
-     * <p>An endpoint address.</p>
-     */
-    inline Endpoint& WithAddress(const Aws::String& value) { SetAddress(value); return *this;}
-
-    /**
-     * <p>An endpoint address.</p>
-     */
-    inline Endpoint& WithAddress(Aws::String&& value) { SetAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>An endpoint address.</p>
-     */
-    inline Endpoint& WithAddress(const char* value) { SetAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The TTL for the endpoint, in minutes.</p>
      */
-    inline long long GetCachePeriodInMinutes() const{ return m_cachePeriodInMinutes; }
-
-    /**
-     * <p>The TTL for the endpoint, in minutes.</p>
-     */
+    inline long long GetCachePeriodInMinutes() const { return m_cachePeriodInMinutes; }
     inline bool CachePeriodInMinutesHasBeenSet() const { return m_cachePeriodInMinutesHasBeenSet; }
-
-    /**
-     * <p>The TTL for the endpoint, in minutes.</p>
-     */
     inline void SetCachePeriodInMinutes(long long value) { m_cachePeriodInMinutesHasBeenSet = true; m_cachePeriodInMinutes = value; }
-
-    /**
-     * <p>The TTL for the endpoint, in minutes.</p>
-     */
     inline Endpoint& WithCachePeriodInMinutes(long long value) { SetCachePeriodInMinutes(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_address;
     bool m_addressHasBeenSet = false;
 
-    long long m_cachePeriodInMinutes;
+    long long m_cachePeriodInMinutes{0};
     bool m_cachePeriodInMinutesHasBeenSet = false;
   };
 

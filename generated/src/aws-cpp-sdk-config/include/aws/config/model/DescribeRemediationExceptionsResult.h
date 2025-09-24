@@ -29,118 +29,54 @@ namespace Model
   class DescribeRemediationExceptionsResult
   {
   public:
-    AWS_CONFIGSERVICE_API DescribeRemediationExceptionsResult();
+    AWS_CONFIGSERVICE_API DescribeRemediationExceptionsResult() = default;
     AWS_CONFIGSERVICE_API DescribeRemediationExceptionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CONFIGSERVICE_API DescribeRemediationExceptionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Returns a list of remediation exception objects.</p>
      */
-    inline const Aws::Vector<RemediationException>& GetRemediationExceptions() const{ return m_remediationExceptions; }
+    inline const Aws::Vector<RemediationException>& GetRemediationExceptions() const { return m_remediationExceptions; }
+    template<typename RemediationExceptionsT = Aws::Vector<RemediationException>>
+    void SetRemediationExceptions(RemediationExceptionsT&& value) { m_remediationExceptionsHasBeenSet = true; m_remediationExceptions = std::forward<RemediationExceptionsT>(value); }
+    template<typename RemediationExceptionsT = Aws::Vector<RemediationException>>
+    DescribeRemediationExceptionsResult& WithRemediationExceptions(RemediationExceptionsT&& value) { SetRemediationExceptions(std::forward<RemediationExceptionsT>(value)); return *this;}
+    template<typename RemediationExceptionsT = RemediationException>
+    DescribeRemediationExceptionsResult& AddRemediationExceptions(RemediationExceptionsT&& value) { m_remediationExceptionsHasBeenSet = true; m_remediationExceptions.emplace_back(std::forward<RemediationExceptionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Returns a list of remediation exception objects.</p>
-     */
-    inline void SetRemediationExceptions(const Aws::Vector<RemediationException>& value) { m_remediationExceptions = value; }
-
-    /**
-     * <p>Returns a list of remediation exception objects.</p>
-     */
-    inline void SetRemediationExceptions(Aws::Vector<RemediationException>&& value) { m_remediationExceptions = std::move(value); }
-
-    /**
-     * <p>Returns a list of remediation exception objects.</p>
-     */
-    inline DescribeRemediationExceptionsResult& WithRemediationExceptions(const Aws::Vector<RemediationException>& value) { SetRemediationExceptions(value); return *this;}
-
-    /**
-     * <p>Returns a list of remediation exception objects.</p>
-     */
-    inline DescribeRemediationExceptionsResult& WithRemediationExceptions(Aws::Vector<RemediationException>&& value) { SetRemediationExceptions(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns a list of remediation exception objects.</p>
-     */
-    inline DescribeRemediationExceptionsResult& AddRemediationExceptions(const RemediationException& value) { m_remediationExceptions.push_back(value); return *this; }
-
-    /**
-     * <p>Returns a list of remediation exception objects.</p>
-     */
-    inline DescribeRemediationExceptionsResult& AddRemediationExceptions(RemediationException&& value) { m_remediationExceptions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The <code>nextToken</code> string returned in a previous request that you use
      * to request the next page of results in a paginated response.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeRemediationExceptionsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>nextToken</code> string returned in a previous request that you use
-     * to request the next page of results in a paginated response.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The <code>nextToken</code> string returned in a previous request that you use
-     * to request the next page of results in a paginated response.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The <code>nextToken</code> string returned in a previous request that you use
-     * to request the next page of results in a paginated response.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The <code>nextToken</code> string returned in a previous request that you use
-     * to request the next page of results in a paginated response.</p>
-     */
-    inline DescribeRemediationExceptionsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The <code>nextToken</code> string returned in a previous request that you use
-     * to request the next page of results in a paginated response.</p>
-     */
-    inline DescribeRemediationExceptionsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>nextToken</code> string returned in a previous request that you use
-     * to request the next page of results in a paginated response.</p>
-     */
-    inline DescribeRemediationExceptionsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeRemediationExceptionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeRemediationExceptionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeRemediationExceptionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeRemediationExceptionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<RemediationException> m_remediationExceptions;
+    bool m_remediationExceptionsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

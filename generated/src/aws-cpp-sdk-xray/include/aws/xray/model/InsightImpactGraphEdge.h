@@ -30,35 +30,24 @@ namespace Model
   class InsightImpactGraphEdge
   {
   public:
-    AWS_XRAY_API InsightImpactGraphEdge();
+    AWS_XRAY_API InsightImpactGraphEdge() = default;
     AWS_XRAY_API InsightImpactGraphEdge(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API InsightImpactGraphEdge& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Identifier of the edge. Unique within a service map.</p>
      */
-    inline int GetReferenceId() const{ return m_referenceId; }
-
-    /**
-     * <p>Identifier of the edge. Unique within a service map.</p>
-     */
+    inline int GetReferenceId() const { return m_referenceId; }
     inline bool ReferenceIdHasBeenSet() const { return m_referenceIdHasBeenSet; }
-
-    /**
-     * <p>Identifier of the edge. Unique within a service map.</p>
-     */
     inline void SetReferenceId(int value) { m_referenceIdHasBeenSet = true; m_referenceId = value; }
-
-    /**
-     * <p>Identifier of the edge. Unique within a service map.</p>
-     */
     inline InsightImpactGraphEdge& WithReferenceId(int value) { SetReferenceId(value); return *this;}
-
+    ///@}
   private:
 
-    int m_referenceId;
+    int m_referenceId{0};
     bool m_referenceIdHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-PivotTableFieldCollapseStateOption::PivotTableFieldCollapseStateOption() : 
-    m_targetHasBeenSet(false),
-    m_state(PivotTableFieldCollapseState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-PivotTableFieldCollapseStateOption::PivotTableFieldCollapseStateOption(JsonView jsonValue) : 
-    m_targetHasBeenSet(false),
-    m_state(PivotTableFieldCollapseState::NOT_SET),
-    m_stateHasBeenSet(false)
+PivotTableFieldCollapseStateOption::PivotTableFieldCollapseStateOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PivotTableFieldCollapseStateOption& PivotTableFieldCollapseStateOption::operator
   if(jsonValue.ValueExists("Target"))
   {
     m_target = jsonValue.GetObject("Target");
-
     m_targetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("State"))
   {
     m_state = PivotTableFieldCollapseStateMapper::GetPivotTableFieldCollapseStateForName(jsonValue.GetString("State"));
-
     m_stateHasBeenSet = true;
   }
-
   return *this;
 }
 

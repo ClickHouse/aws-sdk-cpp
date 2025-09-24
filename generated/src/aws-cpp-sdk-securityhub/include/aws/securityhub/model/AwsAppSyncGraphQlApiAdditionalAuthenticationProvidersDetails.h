@@ -35,161 +35,61 @@ namespace Model
   class AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails();
+    AWS_SECURITYHUB_API AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails() = default;
     AWS_SECURITYHUB_API AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The type of security configuration for your GraphQL API: API key, Identity
      * and Access Management (IAM), OpenID Connect (OIDC), Amazon Cognito user pools,
      * or Lambda. </p>
      */
-    inline const Aws::String& GetAuthenticationType() const{ return m_authenticationType; }
-
-    /**
-     * <p> The type of security configuration for your GraphQL API: API key, Identity
-     * and Access Management (IAM), OpenID Connect (OIDC), Amazon Cognito user pools,
-     * or Lambda. </p>
-     */
+    inline const Aws::String& GetAuthenticationType() const { return m_authenticationType; }
     inline bool AuthenticationTypeHasBeenSet() const { return m_authenticationTypeHasBeenSet; }
+    template<typename AuthenticationTypeT = Aws::String>
+    void SetAuthenticationType(AuthenticationTypeT&& value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = std::forward<AuthenticationTypeT>(value); }
+    template<typename AuthenticationTypeT = Aws::String>
+    AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithAuthenticationType(AuthenticationTypeT&& value) { SetAuthenticationType(std::forward<AuthenticationTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The type of security configuration for your GraphQL API: API key, Identity
-     * and Access Management (IAM), OpenID Connect (OIDC), Amazon Cognito user pools,
-     * or Lambda. </p>
-     */
-    inline void SetAuthenticationType(const Aws::String& value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = value; }
-
-    /**
-     * <p> The type of security configuration for your GraphQL API: API key, Identity
-     * and Access Management (IAM), OpenID Connect (OIDC), Amazon Cognito user pools,
-     * or Lambda. </p>
-     */
-    inline void SetAuthenticationType(Aws::String&& value) { m_authenticationTypeHasBeenSet = true; m_authenticationType = std::move(value); }
-
-    /**
-     * <p> The type of security configuration for your GraphQL API: API key, Identity
-     * and Access Management (IAM), OpenID Connect (OIDC), Amazon Cognito user pools,
-     * or Lambda. </p>
-     */
-    inline void SetAuthenticationType(const char* value) { m_authenticationTypeHasBeenSet = true; m_authenticationType.assign(value); }
-
-    /**
-     * <p> The type of security configuration for your GraphQL API: API key, Identity
-     * and Access Management (IAM), OpenID Connect (OIDC), Amazon Cognito user pools,
-     * or Lambda. </p>
-     */
-    inline AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithAuthenticationType(const Aws::String& value) { SetAuthenticationType(value); return *this;}
-
-    /**
-     * <p> The type of security configuration for your GraphQL API: API key, Identity
-     * and Access Management (IAM), OpenID Connect (OIDC), Amazon Cognito user pools,
-     * or Lambda. </p>
-     */
-    inline AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithAuthenticationType(Aws::String&& value) { SetAuthenticationType(std::move(value)); return *this;}
-
-    /**
-     * <p> The type of security configuration for your GraphQL API: API key, Identity
-     * and Access Management (IAM), OpenID Connect (OIDC), Amazon Cognito user pools,
-     * or Lambda. </p>
-     */
-    inline AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithAuthenticationType(const char* value) { SetAuthenticationType(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The configuration for Lambda function authorization. </p>
      */
-    inline const AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails& GetLambdaAuthorizerConfig() const{ return m_lambdaAuthorizerConfig; }
-
-    /**
-     * <p> The configuration for Lambda function authorization. </p>
-     */
+    inline const AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails& GetLambdaAuthorizerConfig() const { return m_lambdaAuthorizerConfig; }
     inline bool LambdaAuthorizerConfigHasBeenSet() const { return m_lambdaAuthorizerConfigHasBeenSet; }
+    template<typename LambdaAuthorizerConfigT = AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails>
+    void SetLambdaAuthorizerConfig(LambdaAuthorizerConfigT&& value) { m_lambdaAuthorizerConfigHasBeenSet = true; m_lambdaAuthorizerConfig = std::forward<LambdaAuthorizerConfigT>(value); }
+    template<typename LambdaAuthorizerConfigT = AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails>
+    AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithLambdaAuthorizerConfig(LambdaAuthorizerConfigT&& value) { SetLambdaAuthorizerConfig(std::forward<LambdaAuthorizerConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The configuration for Lambda function authorization. </p>
-     */
-    inline void SetLambdaAuthorizerConfig(const AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails& value) { m_lambdaAuthorizerConfigHasBeenSet = true; m_lambdaAuthorizerConfig = value; }
-
-    /**
-     * <p> The configuration for Lambda function authorization. </p>
-     */
-    inline void SetLambdaAuthorizerConfig(AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails&& value) { m_lambdaAuthorizerConfigHasBeenSet = true; m_lambdaAuthorizerConfig = std::move(value); }
-
-    /**
-     * <p> The configuration for Lambda function authorization. </p>
-     */
-    inline AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithLambdaAuthorizerConfig(const AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails& value) { SetLambdaAuthorizerConfig(value); return *this;}
-
-    /**
-     * <p> The configuration for Lambda function authorization. </p>
-     */
-    inline AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithLambdaAuthorizerConfig(AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails&& value) { SetLambdaAuthorizerConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The OpenID Connect configuration. </p>
      */
-    inline const AwsAppSyncGraphQlApiOpenIdConnectConfigDetails& GetOpenIdConnectConfig() const{ return m_openIdConnectConfig; }
-
-    /**
-     * <p> The OpenID Connect configuration. </p>
-     */
+    inline const AwsAppSyncGraphQlApiOpenIdConnectConfigDetails& GetOpenIdConnectConfig() const { return m_openIdConnectConfig; }
     inline bool OpenIdConnectConfigHasBeenSet() const { return m_openIdConnectConfigHasBeenSet; }
+    template<typename OpenIdConnectConfigT = AwsAppSyncGraphQlApiOpenIdConnectConfigDetails>
+    void SetOpenIdConnectConfig(OpenIdConnectConfigT&& value) { m_openIdConnectConfigHasBeenSet = true; m_openIdConnectConfig = std::forward<OpenIdConnectConfigT>(value); }
+    template<typename OpenIdConnectConfigT = AwsAppSyncGraphQlApiOpenIdConnectConfigDetails>
+    AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithOpenIdConnectConfig(OpenIdConnectConfigT&& value) { SetOpenIdConnectConfig(std::forward<OpenIdConnectConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The OpenID Connect configuration. </p>
-     */
-    inline void SetOpenIdConnectConfig(const AwsAppSyncGraphQlApiOpenIdConnectConfigDetails& value) { m_openIdConnectConfigHasBeenSet = true; m_openIdConnectConfig = value; }
-
-    /**
-     * <p> The OpenID Connect configuration. </p>
-     */
-    inline void SetOpenIdConnectConfig(AwsAppSyncGraphQlApiOpenIdConnectConfigDetails&& value) { m_openIdConnectConfigHasBeenSet = true; m_openIdConnectConfig = std::move(value); }
-
-    /**
-     * <p> The OpenID Connect configuration. </p>
-     */
-    inline AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithOpenIdConnectConfig(const AwsAppSyncGraphQlApiOpenIdConnectConfigDetails& value) { SetOpenIdConnectConfig(value); return *this;}
-
-    /**
-     * <p> The OpenID Connect configuration. </p>
-     */
-    inline AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithOpenIdConnectConfig(AwsAppSyncGraphQlApiOpenIdConnectConfigDetails&& value) { SetOpenIdConnectConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Cognito user pools configuration. </p>
      */
-    inline const AwsAppSyncGraphQlApiUserPoolConfigDetails& GetUserPoolConfig() const{ return m_userPoolConfig; }
-
-    /**
-     * <p> The Amazon Cognito user pools configuration. </p>
-     */
+    inline const AwsAppSyncGraphQlApiUserPoolConfigDetails& GetUserPoolConfig() const { return m_userPoolConfig; }
     inline bool UserPoolConfigHasBeenSet() const { return m_userPoolConfigHasBeenSet; }
-
-    /**
-     * <p> The Amazon Cognito user pools configuration. </p>
-     */
-    inline void SetUserPoolConfig(const AwsAppSyncGraphQlApiUserPoolConfigDetails& value) { m_userPoolConfigHasBeenSet = true; m_userPoolConfig = value; }
-
-    /**
-     * <p> The Amazon Cognito user pools configuration. </p>
-     */
-    inline void SetUserPoolConfig(AwsAppSyncGraphQlApiUserPoolConfigDetails&& value) { m_userPoolConfigHasBeenSet = true; m_userPoolConfig = std::move(value); }
-
-    /**
-     * <p> The Amazon Cognito user pools configuration. </p>
-     */
-    inline AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithUserPoolConfig(const AwsAppSyncGraphQlApiUserPoolConfigDetails& value) { SetUserPoolConfig(value); return *this;}
-
-    /**
-     * <p> The Amazon Cognito user pools configuration. </p>
-     */
-    inline AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithUserPoolConfig(AwsAppSyncGraphQlApiUserPoolConfigDetails&& value) { SetUserPoolConfig(std::move(value)); return *this;}
-
+    template<typename UserPoolConfigT = AwsAppSyncGraphQlApiUserPoolConfigDetails>
+    void SetUserPoolConfig(UserPoolConfigT&& value) { m_userPoolConfigHasBeenSet = true; m_userPoolConfig = std::forward<UserPoolConfigT>(value); }
+    template<typename UserPoolConfigT = AwsAppSyncGraphQlApiUserPoolConfigDetails>
+    AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails& WithUserPoolConfig(UserPoolConfigT&& value) { SetUserPoolConfig(std::forward<UserPoolConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_authenticationType;

@@ -32,12 +32,13 @@ namespace Model
   class CampaignState
   {
   public:
-    AWS_PINPOINT_API CampaignState();
+    AWS_PINPOINT_API CampaignState() = default;
     AWS_PINPOINT_API CampaignState(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API CampaignState& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The current status of the campaign, or the current status of a treatment that
      * belongs to an A/B test campaign.</p> <p>If a campaign uses A/B testing, the
@@ -45,56 +46,14 @@ namespace Model
      * of COMPLETED. If you delete the segment that's associated with a campaign, the
      * campaign fails and has a status of DELETED.</p>
      */
-    inline const CampaignStatus& GetCampaignStatus() const{ return m_campaignStatus; }
-
-    /**
-     * <p>The current status of the campaign, or the current status of a treatment that
-     * belongs to an A/B test campaign.</p> <p>If a campaign uses A/B testing, the
-     * campaign has a status of COMPLETED only if all campaign treatments have a status
-     * of COMPLETED. If you delete the segment that's associated with a campaign, the
-     * campaign fails and has a status of DELETED.</p>
-     */
+    inline CampaignStatus GetCampaignStatus() const { return m_campaignStatus; }
     inline bool CampaignStatusHasBeenSet() const { return m_campaignStatusHasBeenSet; }
-
-    /**
-     * <p>The current status of the campaign, or the current status of a treatment that
-     * belongs to an A/B test campaign.</p> <p>If a campaign uses A/B testing, the
-     * campaign has a status of COMPLETED only if all campaign treatments have a status
-     * of COMPLETED. If you delete the segment that's associated with a campaign, the
-     * campaign fails and has a status of DELETED.</p>
-     */
-    inline void SetCampaignStatus(const CampaignStatus& value) { m_campaignStatusHasBeenSet = true; m_campaignStatus = value; }
-
-    /**
-     * <p>The current status of the campaign, or the current status of a treatment that
-     * belongs to an A/B test campaign.</p> <p>If a campaign uses A/B testing, the
-     * campaign has a status of COMPLETED only if all campaign treatments have a status
-     * of COMPLETED. If you delete the segment that's associated with a campaign, the
-     * campaign fails and has a status of DELETED.</p>
-     */
-    inline void SetCampaignStatus(CampaignStatus&& value) { m_campaignStatusHasBeenSet = true; m_campaignStatus = std::move(value); }
-
-    /**
-     * <p>The current status of the campaign, or the current status of a treatment that
-     * belongs to an A/B test campaign.</p> <p>If a campaign uses A/B testing, the
-     * campaign has a status of COMPLETED only if all campaign treatments have a status
-     * of COMPLETED. If you delete the segment that's associated with a campaign, the
-     * campaign fails and has a status of DELETED.</p>
-     */
-    inline CampaignState& WithCampaignStatus(const CampaignStatus& value) { SetCampaignStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the campaign, or the current status of a treatment that
-     * belongs to an A/B test campaign.</p> <p>If a campaign uses A/B testing, the
-     * campaign has a status of COMPLETED only if all campaign treatments have a status
-     * of COMPLETED. If you delete the segment that's associated with a campaign, the
-     * campaign fails and has a status of DELETED.</p>
-     */
-    inline CampaignState& WithCampaignStatus(CampaignStatus&& value) { SetCampaignStatus(std::move(value)); return *this;}
-
+    inline void SetCampaignStatus(CampaignStatus value) { m_campaignStatusHasBeenSet = true; m_campaignStatus = value; }
+    inline CampaignState& WithCampaignStatus(CampaignStatus value) { SetCampaignStatus(value); return *this;}
+    ///@}
   private:
 
-    CampaignStatus m_campaignStatus;
+    CampaignStatus m_campaignStatus{CampaignStatus::NOT_SET};
     bool m_campaignStatusHasBeenSet = false;
   };
 

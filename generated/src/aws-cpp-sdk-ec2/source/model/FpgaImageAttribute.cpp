@@ -20,21 +20,7 @@ namespace EC2
 namespace Model
 {
 
-FpgaImageAttribute::FpgaImageAttribute() : 
-    m_fpgaImageIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_loadPermissionsHasBeenSet(false),
-    m_productCodesHasBeenSet(false)
-{
-}
-
-FpgaImageAttribute::FpgaImageAttribute(const XmlNode& xmlNode) : 
-    m_fpgaImageIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_loadPermissionsHasBeenSet(false),
-    m_productCodesHasBeenSet(false)
+FpgaImageAttribute::FpgaImageAttribute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -67,6 +53,7 @@ FpgaImageAttribute& FpgaImageAttribute::operator =(const XmlNode& xmlNode)
     if(!loadPermissionsNode.IsNull())
     {
       XmlNode loadPermissionsMember = loadPermissionsNode.FirstChild("item");
+      m_loadPermissionsHasBeenSet = !loadPermissionsMember.IsNull();
       while(!loadPermissionsMember.IsNull())
       {
         m_loadPermissions.push_back(loadPermissionsMember);
@@ -79,6 +66,7 @@ FpgaImageAttribute& FpgaImageAttribute::operator =(const XmlNode& xmlNode)
     if(!productCodesNode.IsNull())
     {
       XmlNode productCodesMember = productCodesNode.FirstChild("item");
+      m_productCodesHasBeenSet = !productCodesMember.IsNull();
       while(!productCodesMember.IsNull())
       {
         m_productCodes.push_back(productCodesMember);
@@ -153,7 +141,7 @@ void FpgaImageAttribute::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_loadPermissions)
       {
         Aws::StringStream loadPermissionsSs;
-        loadPermissionsSs << location <<  ".LoadPermissions." << loadPermissionsIdx++;
+        loadPermissionsSs << location << ".LoadPermissions." << loadPermissionsIdx++;
         item.OutputToStream(oStream, loadPermissionsSs.str().c_str());
       }
   }
@@ -163,7 +151,7 @@ void FpgaImageAttribute::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_productCodes)
       {
         Aws::StringStream productCodesSs;
-        productCodesSs << location <<  ".ProductCodes." << productCodesIdx++;
+        productCodesSs << location << ".ProductCodes." << productCodesIdx++;
         item.OutputToStream(oStream, productCodesSs.str().c_str());
       }
   }

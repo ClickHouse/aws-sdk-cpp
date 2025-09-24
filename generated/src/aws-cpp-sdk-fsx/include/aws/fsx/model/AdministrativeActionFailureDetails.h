@@ -32,52 +32,23 @@ namespace Model
   class AdministrativeActionFailureDetails
   {
   public:
-    AWS_FSX_API AdministrativeActionFailureDetails();
+    AWS_FSX_API AdministrativeActionFailureDetails() = default;
     AWS_FSX_API AdministrativeActionFailureDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API AdministrativeActionFailureDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Error message providing details about the failed administrative action.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>Error message providing details about the failed administrative action.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>Error message providing details about the failed administrative action.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>Error message providing details about the failed administrative action.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>Error message providing details about the failed administrative action.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>Error message providing details about the failed administrative action.</p>
-     */
-    inline AdministrativeActionFailureDetails& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>Error message providing details about the failed administrative action.</p>
-     */
-    inline AdministrativeActionFailureDetails& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Error message providing details about the failed administrative action.</p>
-     */
-    inline AdministrativeActionFailureDetails& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    AdministrativeActionFailureDetails& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;

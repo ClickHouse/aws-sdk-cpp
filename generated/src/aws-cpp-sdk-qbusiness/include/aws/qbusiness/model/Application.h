@@ -8,6 +8,8 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/qbusiness/model/ApplicationStatus.h>
+#include <aws/qbusiness/model/IdentityType.h>
+#include <aws/qbusiness/model/QuickSightConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -26,216 +28,124 @@ namespace Model
 {
 
   /**
-   * <p>Summary information for an Amazon Q application.</p><p><h3>See Also:</h3>  
-   * <a
+   * <p>Summary information for an Amazon Q Business application.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/qbusiness-2023-11-27/Application">AWS
    * API Reference</a></p>
    */
   class Application
   {
   public:
-    AWS_QBUSINESS_API Application();
+    AWS_QBUSINESS_API Application() = default;
     AWS_QBUSINESS_API Application(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API Application& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The identifier for the Amazon Q application.</p>
+     * <p>The name of the Amazon Q Business application.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The identifier for the Amazon Q application.</p>
-     */
-    inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
-
-    /**
-     * <p>The identifier for the Amazon Q application.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The identifier for the Amazon Q application.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The identifier for the Amazon Q application.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The identifier for the Amazon Q application.</p>
-     */
-    inline Application& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The identifier for the Amazon Q application.</p>
-     */
-    inline Application& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the Amazon Q application.</p>
-     */
-    inline Application& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
-    /**
-     * <p>The Unix timestamp when the Amazon Q application was created.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The Unix timestamp when the Amazon Q application was created.</p>
-     */
-    inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
-
-    /**
-     * <p>The Unix timestamp when the Amazon Q application was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The Unix timestamp when the Amazon Q application was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The Unix timestamp when the Amazon Q application was created.</p>
-     */
-    inline Application& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The Unix timestamp when the Amazon Q application was created.</p>
-     */
-    inline Application& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The name of the Amazon Q application.</p>
-     */
-    inline const Aws::String& GetDisplayName() const{ return m_displayName; }
-
-    /**
-     * <p>The name of the Amazon Q application.</p>
-     */
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
     inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    Application& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the Amazon Q application.</p>
+     * <p>The identifier for the Amazon Q Business application.</p>
      */
-    inline void SetDisplayName(const Aws::String& value) { m_displayNameHasBeenSet = true; m_displayName = value; }
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
+    inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    Application& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the Amazon Q application.</p>
+     * <p>The Unix timestamp when the Amazon Q Business application was created.</p>
      */
-    inline void SetDisplayName(Aws::String&& value) { m_displayNameHasBeenSet = true; m_displayName = std::move(value); }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    Application& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the Amazon Q application.</p>
+     * <p>The Unix timestamp when the Amazon Q Business application was last updated.
+     * </p>
      */
-    inline void SetDisplayName(const char* value) { m_displayNameHasBeenSet = true; m_displayName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon Q application.</p>
-     */
-    inline Application& WithDisplayName(const Aws::String& value) { SetDisplayName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Q application.</p>
-     */
-    inline Application& WithDisplayName(Aws::String&& value) { SetDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon Q application.</p>
-     */
-    inline Application& WithDisplayName(const char* value) { SetDisplayName(value); return *this;}
-
-
-    /**
-     * <p>The status of the Amazon Q application. The application is ready to use when
-     * the status is <code>ACTIVE</code>.</p>
-     */
-    inline const ApplicationStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the Amazon Q application. The application is ready to use when
-     * the status is <code>ACTIVE</code>.</p>
-     */
-    inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the Amazon Q application. The application is ready to use when
-     * the status is <code>ACTIVE</code>.</p>
-     */
-    inline void SetStatus(const ApplicationStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the Amazon Q application. The application is ready to use when
-     * the status is <code>ACTIVE</code>.</p>
-     */
-    inline void SetStatus(ApplicationStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the Amazon Q application. The application is ready to use when
-     * the status is <code>ACTIVE</code>.</p>
-     */
-    inline Application& WithStatus(const ApplicationStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the Amazon Q application. The application is ready to use when
-     * the status is <code>ACTIVE</code>.</p>
-     */
-    inline Application& WithStatus(ApplicationStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The Unix timestamp when the Amazon Q application was last updated. </p>
-     */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    /**
-     * <p>The Unix timestamp when the Amazon Q application was last updated. </p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    Application& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Unix timestamp when the Amazon Q application was last updated. </p>
+     * <p>The status of the Amazon Q Business application. The application is ready to
+     * use when the status is <code>ACTIVE</code>.</p>
      */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
+    inline ApplicationStatus GetStatus() const { return m_status; }
+    inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ApplicationStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline Application& WithStatus(ApplicationStatus value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Unix timestamp when the Amazon Q application was last updated. </p>
+     * <p>The authentication type being used by a Amazon Q Business application.</p>
      */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
+    inline IdentityType GetIdentityType() const { return m_identityType; }
+    inline bool IdentityTypeHasBeenSet() const { return m_identityTypeHasBeenSet; }
+    inline void SetIdentityType(IdentityType value) { m_identityTypeHasBeenSet = true; m_identityType = value; }
+    inline Application& WithIdentityType(IdentityType value) { SetIdentityType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Unix timestamp when the Amazon Q application was last updated. </p>
+     * <p>The Amazon QuickSight configuration for an Amazon Q Business application that
+     * uses QuickSight as the identity provider.</p>
      */
-    inline Application& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The Unix timestamp when the Amazon Q application was last updated. </p>
-     */
-    inline Application& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
+    inline const QuickSightConfiguration& GetQuickSightConfiguration() const { return m_quickSightConfiguration; }
+    inline bool QuickSightConfigurationHasBeenSet() const { return m_quickSightConfigurationHasBeenSet; }
+    template<typename QuickSightConfigurationT = QuickSightConfiguration>
+    void SetQuickSightConfiguration(QuickSightConfigurationT&& value) { m_quickSightConfigurationHasBeenSet = true; m_quickSightConfiguration = std::forward<QuickSightConfigurationT>(value); }
+    template<typename QuickSightConfigurationT = QuickSightConfiguration>
+    Application& WithQuickSightConfiguration(QuickSightConfigurationT&& value) { SetQuickSightConfiguration(std::forward<QuickSightConfigurationT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_applicationId;
-    bool m_applicationIdHasBeenSet = false;
-
-    Aws::Utils::DateTime m_createdAt;
-    bool m_createdAtHasBeenSet = false;
 
     Aws::String m_displayName;
     bool m_displayNameHasBeenSet = false;
 
-    ApplicationStatus m_status;
+    Aws::String m_applicationId;
+    bool m_applicationIdHasBeenSet = false;
+
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
+
+    Aws::Utils::DateTime m_updatedAt{};
+    bool m_updatedAtHasBeenSet = false;
+
+    ApplicationStatus m_status{ApplicationStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
-    bool m_updatedAtHasBeenSet = false;
+    IdentityType m_identityType{IdentityType::NOT_SET};
+    bool m_identityTypeHasBeenSet = false;
+
+    QuickSightConfiguration m_quickSightConfiguration;
+    bool m_quickSightConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

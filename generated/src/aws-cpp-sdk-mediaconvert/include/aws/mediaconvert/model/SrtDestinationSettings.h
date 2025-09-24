@@ -34,12 +34,13 @@ namespace Model
   class SrtDestinationSettings
   {
   public:
-    AWS_MEDIACONVERT_API SrtDestinationSettings();
+    AWS_MEDIACONVERT_API SrtDestinationSettings() = default;
     AWS_MEDIACONVERT_API SrtDestinationSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API SrtDestinationSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Set Style passthrough to ENABLED to use the available style, color, and position
      * information from your input captions. MediaConvert uses default settings for any
@@ -47,56 +48,14 @@ namespace Model
      * passthrough to DISABLED, or leave blank, to ignore the style and position
      * information from your input captions and use simplified output captions.
      */
-    inline const SrtStylePassthrough& GetStylePassthrough() const{ return m_stylePassthrough; }
-
-    /**
-     * Set Style passthrough to ENABLED to use the available style, color, and position
-     * information from your input captions. MediaConvert uses default settings for any
-     * missing style and position information in your input captions. Set Style
-     * passthrough to DISABLED, or leave blank, to ignore the style and position
-     * information from your input captions and use simplified output captions.
-     */
+    inline SrtStylePassthrough GetStylePassthrough() const { return m_stylePassthrough; }
     inline bool StylePassthroughHasBeenSet() const { return m_stylePassthroughHasBeenSet; }
-
-    /**
-     * Set Style passthrough to ENABLED to use the available style, color, and position
-     * information from your input captions. MediaConvert uses default settings for any
-     * missing style and position information in your input captions. Set Style
-     * passthrough to DISABLED, or leave blank, to ignore the style and position
-     * information from your input captions and use simplified output captions.
-     */
-    inline void SetStylePassthrough(const SrtStylePassthrough& value) { m_stylePassthroughHasBeenSet = true; m_stylePassthrough = value; }
-
-    /**
-     * Set Style passthrough to ENABLED to use the available style, color, and position
-     * information from your input captions. MediaConvert uses default settings for any
-     * missing style and position information in your input captions. Set Style
-     * passthrough to DISABLED, or leave blank, to ignore the style and position
-     * information from your input captions and use simplified output captions.
-     */
-    inline void SetStylePassthrough(SrtStylePassthrough&& value) { m_stylePassthroughHasBeenSet = true; m_stylePassthrough = std::move(value); }
-
-    /**
-     * Set Style passthrough to ENABLED to use the available style, color, and position
-     * information from your input captions. MediaConvert uses default settings for any
-     * missing style and position information in your input captions. Set Style
-     * passthrough to DISABLED, or leave blank, to ignore the style and position
-     * information from your input captions and use simplified output captions.
-     */
-    inline SrtDestinationSettings& WithStylePassthrough(const SrtStylePassthrough& value) { SetStylePassthrough(value); return *this;}
-
-    /**
-     * Set Style passthrough to ENABLED to use the available style, color, and position
-     * information from your input captions. MediaConvert uses default settings for any
-     * missing style and position information in your input captions. Set Style
-     * passthrough to DISABLED, or leave blank, to ignore the style and position
-     * information from your input captions and use simplified output captions.
-     */
-    inline SrtDestinationSettings& WithStylePassthrough(SrtStylePassthrough&& value) { SetStylePassthrough(std::move(value)); return *this;}
-
+    inline void SetStylePassthrough(SrtStylePassthrough value) { m_stylePassthroughHasBeenSet = true; m_stylePassthrough = value; }
+    inline SrtDestinationSettings& WithStylePassthrough(SrtStylePassthrough value) { SetStylePassthrough(value); return *this;}
+    ///@}
   private:
 
-    SrtStylePassthrough m_stylePassthrough;
+    SrtStylePassthrough m_stylePassthrough{SrtStylePassthrough::NOT_SET};
     bool m_stylePassthroughHasBeenSet = false;
   };
 

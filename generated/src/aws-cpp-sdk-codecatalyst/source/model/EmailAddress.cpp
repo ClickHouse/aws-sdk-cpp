@@ -18,17 +18,7 @@ namespace CodeCatalyst
 namespace Model
 {
 
-EmailAddress::EmailAddress() : 
-    m_emailHasBeenSet(false),
-    m_verified(false),
-    m_verifiedHasBeenSet(false)
-{
-}
-
-EmailAddress::EmailAddress(JsonView jsonValue) : 
-    m_emailHasBeenSet(false),
-    m_verified(false),
-    m_verifiedHasBeenSet(false)
+EmailAddress::EmailAddress(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ EmailAddress& EmailAddress::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("email"))
   {
     m_email = jsonValue.GetString("email");
-
     m_emailHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("verified"))
   {
     m_verified = jsonValue.GetBool("verified");
-
     m_verifiedHasBeenSet = true;
   }
-
   return *this;
 }
 

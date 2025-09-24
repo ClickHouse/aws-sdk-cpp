@@ -10,19 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyVerifiedAccessTrustProviderRequest::ModifyVerifiedAccessTrustProviderRequest() : 
-    m_verifiedAccessTrustProviderIdHasBeenSet(false),
-    m_oidcOptionsHasBeenSet(false),
-    m_deviceOptionsHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_sseSpecificationHasBeenSet(false)
-{
-}
-
 Aws::String ModifyVerifiedAccessTrustProviderRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -60,6 +47,11 @@ Aws::String ModifyVerifiedAccessTrustProviderRequest::SerializePayload() const
   if(m_sseSpecificationHasBeenSet)
   {
     m_sseSpecification.OutputToStream(ss, "SseSpecification");
+  }
+
+  if(m_nativeApplicationOidcOptionsHasBeenSet)
+  {
+    m_nativeApplicationOidcOptions.OutputToStream(ss, "NativeApplicationOidcOptions");
   }
 
   ss << "Version=2016-11-15";

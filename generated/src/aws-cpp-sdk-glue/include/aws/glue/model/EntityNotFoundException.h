@@ -31,79 +31,39 @@ namespace Model
   class EntityNotFoundException
   {
   public:
-    AWS_GLUE_API EntityNotFoundException();
+    AWS_GLUE_API EntityNotFoundException() = default;
     AWS_GLUE_API EntityNotFoundException(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API EntityNotFoundException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A message describing the problem.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>A message describing the problem.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    EntityNotFoundException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A message describing the problem.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>A message describing the problem.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>A message describing the problem.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>A message describing the problem.</p>
-     */
-    inline EntityNotFoundException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>A message describing the problem.</p>
-     */
-    inline EntityNotFoundException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A message describing the problem.</p>
-     */
-    inline EntityNotFoundException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether or not the exception relates to a federated source.</p>
      */
-    inline bool GetFromFederationSource() const{ return m_fromFederationSource; }
-
-    /**
-     * <p>Indicates whether or not the exception relates to a federated source.</p>
-     */
+    inline bool GetFromFederationSource() const { return m_fromFederationSource; }
     inline bool FromFederationSourceHasBeenSet() const { return m_fromFederationSourceHasBeenSet; }
-
-    /**
-     * <p>Indicates whether or not the exception relates to a federated source.</p>
-     */
     inline void SetFromFederationSource(bool value) { m_fromFederationSourceHasBeenSet = true; m_fromFederationSource = value; }
-
-    /**
-     * <p>Indicates whether or not the exception relates to a federated source.</p>
-     */
     inline EntityNotFoundException& WithFromFederationSource(bool value) { SetFromFederationSource(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    bool m_fromFederationSource;
+    bool m_fromFederationSource{false};
     bool m_fromFederationSourceHasBeenSet = false;
   };
 

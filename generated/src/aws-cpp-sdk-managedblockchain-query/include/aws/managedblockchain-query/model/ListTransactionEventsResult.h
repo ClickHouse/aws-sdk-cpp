@@ -29,118 +29,54 @@ namespace Model
   class ListTransactionEventsResult
   {
   public:
-    AWS_MANAGEDBLOCKCHAINQUERY_API ListTransactionEventsResult();
+    AWS_MANAGEDBLOCKCHAINQUERY_API ListTransactionEventsResult() = default;
     AWS_MANAGEDBLOCKCHAINQUERY_API ListTransactionEventsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MANAGEDBLOCKCHAINQUERY_API ListTransactionEventsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An array of <code>TransactionEvent</code> objects. Each object contains
      * details about the transaction events.</p>
      */
-    inline const Aws::Vector<TransactionEvent>& GetEvents() const{ return m_events; }
+    inline const Aws::Vector<TransactionEvent>& GetEvents() const { return m_events; }
+    template<typename EventsT = Aws::Vector<TransactionEvent>>
+    void SetEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events = std::forward<EventsT>(value); }
+    template<typename EventsT = Aws::Vector<TransactionEvent>>
+    ListTransactionEventsResult& WithEvents(EventsT&& value) { SetEvents(std::forward<EventsT>(value)); return *this;}
+    template<typename EventsT = TransactionEvent>
+    ListTransactionEventsResult& AddEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events.emplace_back(std::forward<EventsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of <code>TransactionEvent</code> objects. Each object contains
-     * details about the transaction events.</p>
-     */
-    inline void SetEvents(const Aws::Vector<TransactionEvent>& value) { m_events = value; }
-
-    /**
-     * <p>An array of <code>TransactionEvent</code> objects. Each object contains
-     * details about the transaction events.</p>
-     */
-    inline void SetEvents(Aws::Vector<TransactionEvent>&& value) { m_events = std::move(value); }
-
-    /**
-     * <p>An array of <code>TransactionEvent</code> objects. Each object contains
-     * details about the transaction events.</p>
-     */
-    inline ListTransactionEventsResult& WithEvents(const Aws::Vector<TransactionEvent>& value) { SetEvents(value); return *this;}
-
-    /**
-     * <p>An array of <code>TransactionEvent</code> objects. Each object contains
-     * details about the transaction events.</p>
-     */
-    inline ListTransactionEventsResult& WithEvents(Aws::Vector<TransactionEvent>&& value) { SetEvents(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <code>TransactionEvent</code> objects. Each object contains
-     * details about the transaction events.</p>
-     */
-    inline ListTransactionEventsResult& AddEvents(const TransactionEvent& value) { m_events.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <code>TransactionEvent</code> objects. Each object contains
-     * details about the transaction events.</p>
-     */
-    inline ListTransactionEventsResult& AddEvents(TransactionEvent&& value) { m_events.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The pagination token that indicates the next set of results to retrieve.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListTransactionEventsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListTransactionEventsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListTransactionEventsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token that indicates the next set of results to retrieve.</p>
-     */
-    inline ListTransactionEventsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListTransactionEventsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListTransactionEventsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListTransactionEventsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListTransactionEventsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<TransactionEvent> m_events;
+    bool m_eventsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

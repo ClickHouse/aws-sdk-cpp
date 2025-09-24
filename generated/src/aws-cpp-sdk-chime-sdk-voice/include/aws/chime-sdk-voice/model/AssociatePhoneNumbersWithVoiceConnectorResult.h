@@ -29,87 +29,41 @@ namespace Model
   class AssociatePhoneNumbersWithVoiceConnectorResult
   {
   public:
-    AWS_CHIMESDKVOICE_API AssociatePhoneNumbersWithVoiceConnectorResult();
+    AWS_CHIMESDKVOICE_API AssociatePhoneNumbersWithVoiceConnectorResult() = default;
     AWS_CHIMESDKVOICE_API AssociatePhoneNumbersWithVoiceConnectorResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CHIMESDKVOICE_API AssociatePhoneNumbersWithVoiceConnectorResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>If the action fails for one or more of the phone numbers in the request, a
      * list of the phone numbers is returned, along with error codes and error
      * messages.</p>
      */
-    inline const Aws::Vector<PhoneNumberError>& GetPhoneNumberErrors() const{ return m_phoneNumberErrors; }
+    inline const Aws::Vector<PhoneNumberError>& GetPhoneNumberErrors() const { return m_phoneNumberErrors; }
+    template<typename PhoneNumberErrorsT = Aws::Vector<PhoneNumberError>>
+    void SetPhoneNumberErrors(PhoneNumberErrorsT&& value) { m_phoneNumberErrorsHasBeenSet = true; m_phoneNumberErrors = std::forward<PhoneNumberErrorsT>(value); }
+    template<typename PhoneNumberErrorsT = Aws::Vector<PhoneNumberError>>
+    AssociatePhoneNumbersWithVoiceConnectorResult& WithPhoneNumberErrors(PhoneNumberErrorsT&& value) { SetPhoneNumberErrors(std::forward<PhoneNumberErrorsT>(value)); return *this;}
+    template<typename PhoneNumberErrorsT = PhoneNumberError>
+    AssociatePhoneNumbersWithVoiceConnectorResult& AddPhoneNumberErrors(PhoneNumberErrorsT&& value) { m_phoneNumberErrorsHasBeenSet = true; m_phoneNumberErrors.emplace_back(std::forward<PhoneNumberErrorsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>If the action fails for one or more of the phone numbers in the request, a
-     * list of the phone numbers is returned, along with error codes and error
-     * messages.</p>
-     */
-    inline void SetPhoneNumberErrors(const Aws::Vector<PhoneNumberError>& value) { m_phoneNumberErrors = value; }
-
-    /**
-     * <p>If the action fails for one or more of the phone numbers in the request, a
-     * list of the phone numbers is returned, along with error codes and error
-     * messages.</p>
-     */
-    inline void SetPhoneNumberErrors(Aws::Vector<PhoneNumberError>&& value) { m_phoneNumberErrors = std::move(value); }
-
-    /**
-     * <p>If the action fails for one or more of the phone numbers in the request, a
-     * list of the phone numbers is returned, along with error codes and error
-     * messages.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorResult& WithPhoneNumberErrors(const Aws::Vector<PhoneNumberError>& value) { SetPhoneNumberErrors(value); return *this;}
-
-    /**
-     * <p>If the action fails for one or more of the phone numbers in the request, a
-     * list of the phone numbers is returned, along with error codes and error
-     * messages.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorResult& WithPhoneNumberErrors(Aws::Vector<PhoneNumberError>&& value) { SetPhoneNumberErrors(std::move(value)); return *this;}
-
-    /**
-     * <p>If the action fails for one or more of the phone numbers in the request, a
-     * list of the phone numbers is returned, along with error codes and error
-     * messages.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorResult& AddPhoneNumberErrors(const PhoneNumberError& value) { m_phoneNumberErrors.push_back(value); return *this; }
-
-    /**
-     * <p>If the action fails for one or more of the phone numbers in the request, a
-     * list of the phone numbers is returned, along with error codes and error
-     * messages.</p>
-     */
-    inline AssociatePhoneNumbersWithVoiceConnectorResult& AddPhoneNumberErrors(PhoneNumberError&& value) { m_phoneNumberErrors.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline AssociatePhoneNumbersWithVoiceConnectorResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline AssociatePhoneNumbersWithVoiceConnectorResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline AssociatePhoneNumbersWithVoiceConnectorResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    AssociatePhoneNumbersWithVoiceConnectorResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<PhoneNumberError> m_phoneNumberErrors;
+    bool m_phoneNumberErrorsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

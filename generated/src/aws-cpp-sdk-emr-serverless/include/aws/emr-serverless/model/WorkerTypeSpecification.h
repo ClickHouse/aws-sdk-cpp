@@ -31,42 +31,23 @@ namespace Model
   class WorkerTypeSpecification
   {
   public:
-    AWS_EMRSERVERLESS_API WorkerTypeSpecification();
+    AWS_EMRSERVERLESS_API WorkerTypeSpecification() = default;
     AWS_EMRSERVERLESS_API WorkerTypeSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRSERVERLESS_API WorkerTypeSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRSERVERLESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The image configuration for a worker type.</p>
      */
-    inline const ImageConfiguration& GetImageConfiguration() const{ return m_imageConfiguration; }
-
-    /**
-     * <p>The image configuration for a worker type.</p>
-     */
+    inline const ImageConfiguration& GetImageConfiguration() const { return m_imageConfiguration; }
     inline bool ImageConfigurationHasBeenSet() const { return m_imageConfigurationHasBeenSet; }
-
-    /**
-     * <p>The image configuration for a worker type.</p>
-     */
-    inline void SetImageConfiguration(const ImageConfiguration& value) { m_imageConfigurationHasBeenSet = true; m_imageConfiguration = value; }
-
-    /**
-     * <p>The image configuration for a worker type.</p>
-     */
-    inline void SetImageConfiguration(ImageConfiguration&& value) { m_imageConfigurationHasBeenSet = true; m_imageConfiguration = std::move(value); }
-
-    /**
-     * <p>The image configuration for a worker type.</p>
-     */
-    inline WorkerTypeSpecification& WithImageConfiguration(const ImageConfiguration& value) { SetImageConfiguration(value); return *this;}
-
-    /**
-     * <p>The image configuration for a worker type.</p>
-     */
-    inline WorkerTypeSpecification& WithImageConfiguration(ImageConfiguration&& value) { SetImageConfiguration(std::move(value)); return *this;}
-
+    template<typename ImageConfigurationT = ImageConfiguration>
+    void SetImageConfiguration(ImageConfigurationT&& value) { m_imageConfigurationHasBeenSet = true; m_imageConfiguration = std::forward<ImageConfigurationT>(value); }
+    template<typename ImageConfigurationT = ImageConfiguration>
+    WorkerTypeSpecification& WithImageConfiguration(ImageConfigurationT&& value) { SetImageConfiguration(std::forward<ImageConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     ImageConfiguration m_imageConfiguration;

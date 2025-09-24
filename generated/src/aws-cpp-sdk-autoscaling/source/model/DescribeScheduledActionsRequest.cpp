@@ -10,17 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-DescribeScheduledActionsRequest::DescribeScheduledActionsRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_scheduledActionNamesHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeScheduledActionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -32,12 +21,19 @@ Aws::String DescribeScheduledActionsRequest::SerializePayload() const
 
   if(m_scheduledActionNamesHasBeenSet)
   {
-    unsigned scheduledActionNamesCount = 1;
-    for(auto& item : m_scheduledActionNames)
+    if (m_scheduledActionNames.empty())
     {
-      ss << "ScheduledActionNames.member." << scheduledActionNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      scheduledActionNamesCount++;
+      ss << "ScheduledActionNames=&";
+    }
+    else
+    {
+      unsigned scheduledActionNamesCount = 1;
+      for(auto& item : m_scheduledActionNames)
+      {
+        ss << "ScheduledActionNames.member." << scheduledActionNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        scheduledActionNamesCount++;
+      }
     }
   }
 

@@ -18,27 +18,7 @@ namespace EntityResolution
 namespace Model
 {
 
-JobMetrics::JobMetrics() : 
-    m_inputRecords(0),
-    m_inputRecordsHasBeenSet(false),
-    m_matchIDs(0),
-    m_matchIDsHasBeenSet(false),
-    m_recordsNotProcessed(0),
-    m_recordsNotProcessedHasBeenSet(false),
-    m_totalRecordsProcessed(0),
-    m_totalRecordsProcessedHasBeenSet(false)
-{
-}
-
-JobMetrics::JobMetrics(JsonView jsonValue) : 
-    m_inputRecords(0),
-    m_inputRecordsHasBeenSet(false),
-    m_matchIDs(0),
-    m_matchIDsHasBeenSet(false),
-    m_recordsNotProcessed(0),
-    m_recordsNotProcessedHasBeenSet(false),
-    m_totalRecordsProcessed(0),
-    m_totalRecordsProcessedHasBeenSet(false)
+JobMetrics::JobMetrics(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,31 +28,28 @@ JobMetrics& JobMetrics::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("inputRecords"))
   {
     m_inputRecords = jsonValue.GetInteger("inputRecords");
-
     m_inputRecordsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("matchIDs"))
-  {
-    m_matchIDs = jsonValue.GetInteger("matchIDs");
-
-    m_matchIDsHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("recordsNotProcessed"))
-  {
-    m_recordsNotProcessed = jsonValue.GetInteger("recordsNotProcessed");
-
-    m_recordsNotProcessedHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("totalRecordsProcessed"))
   {
     m_totalRecordsProcessed = jsonValue.GetInteger("totalRecordsProcessed");
-
     m_totalRecordsProcessedHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("recordsNotProcessed"))
+  {
+    m_recordsNotProcessed = jsonValue.GetInteger("recordsNotProcessed");
+    m_recordsNotProcessedHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("deleteRecordsProcessed"))
+  {
+    m_deleteRecordsProcessed = jsonValue.GetInteger("deleteRecordsProcessed");
+    m_deleteRecordsProcessedHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("matchIDs"))
+  {
+    m_matchIDs = jsonValue.GetInteger("matchIDs");
+    m_matchIDsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -86,9 +63,9 @@ JsonValue JobMetrics::Jsonize() const
 
   }
 
-  if(m_matchIDsHasBeenSet)
+  if(m_totalRecordsProcessedHasBeenSet)
   {
-   payload.WithInteger("matchIDs", m_matchIDs);
+   payload.WithInteger("totalRecordsProcessed", m_totalRecordsProcessed);
 
   }
 
@@ -98,9 +75,15 @@ JsonValue JobMetrics::Jsonize() const
 
   }
 
-  if(m_totalRecordsProcessedHasBeenSet)
+  if(m_deleteRecordsProcessedHasBeenSet)
   {
-   payload.WithInteger("totalRecordsProcessed", m_totalRecordsProcessed);
+   payload.WithInteger("deleteRecordsProcessed", m_deleteRecordsProcessed);
+
+  }
+
+  if(m_matchIDsHasBeenSet)
+  {
+   payload.WithInteger("matchIDs", m_matchIDs);
 
   }
 

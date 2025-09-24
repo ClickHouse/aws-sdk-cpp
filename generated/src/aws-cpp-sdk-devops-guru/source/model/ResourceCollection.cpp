@@ -18,15 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-ResourceCollection::ResourceCollection() : 
-    m_cloudFormationHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-ResourceCollection::ResourceCollection(JsonView jsonValue) : 
-    m_cloudFormationHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+ResourceCollection::ResourceCollection(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ResourceCollection& ResourceCollection::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CloudFormation"))
   {
     m_cloudFormation = jsonValue.GetObject("CloudFormation");
-
     m_cloudFormationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Utils::Array<JsonView> tagsJsonList = jsonValue.GetArray("Tags");
@@ -49,7 +39,6 @@ ResourceCollection& ResourceCollection::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 

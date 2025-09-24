@@ -21,7 +21,7 @@ namespace Model
   class DescribeGatewayRequest : public IoTSiteWiseRequest
   {
   public:
-    AWS_IOTSITEWISE_API DescribeGatewayRequest();
+    AWS_IOTSITEWISE_API DescribeGatewayRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOTSITEWISE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the gateway device.</p>
      */
-    inline const Aws::String& GetGatewayId() const{ return m_gatewayId; }
-
-    /**
-     * <p>The ID of the gateway device.</p>
-     */
+    inline const Aws::String& GetGatewayId() const { return m_gatewayId; }
     inline bool GatewayIdHasBeenSet() const { return m_gatewayIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the gateway device.</p>
-     */
-    inline void SetGatewayId(const Aws::String& value) { m_gatewayIdHasBeenSet = true; m_gatewayId = value; }
-
-    /**
-     * <p>The ID of the gateway device.</p>
-     */
-    inline void SetGatewayId(Aws::String&& value) { m_gatewayIdHasBeenSet = true; m_gatewayId = std::move(value); }
-
-    /**
-     * <p>The ID of the gateway device.</p>
-     */
-    inline void SetGatewayId(const char* value) { m_gatewayIdHasBeenSet = true; m_gatewayId.assign(value); }
-
-    /**
-     * <p>The ID of the gateway device.</p>
-     */
-    inline DescribeGatewayRequest& WithGatewayId(const Aws::String& value) { SetGatewayId(value); return *this;}
-
-    /**
-     * <p>The ID of the gateway device.</p>
-     */
-    inline DescribeGatewayRequest& WithGatewayId(Aws::String&& value) { SetGatewayId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the gateway device.</p>
-     */
-    inline DescribeGatewayRequest& WithGatewayId(const char* value) { SetGatewayId(value); return *this;}
-
+    template<typename GatewayIdT = Aws::String>
+    void SetGatewayId(GatewayIdT&& value) { m_gatewayIdHasBeenSet = true; m_gatewayId = std::forward<GatewayIdT>(value); }
+    template<typename GatewayIdT = Aws::String>
+    DescribeGatewayRequest& WithGatewayId(GatewayIdT&& value) { SetGatewayId(std::forward<GatewayIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_gatewayId;

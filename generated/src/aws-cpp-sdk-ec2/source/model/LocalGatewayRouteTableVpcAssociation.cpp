@@ -20,27 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LocalGatewayRouteTableVpcAssociation::LocalGatewayRouteTableVpcAssociation() : 
-    m_localGatewayRouteTableVpcAssociationIdHasBeenSet(false),
-    m_localGatewayRouteTableIdHasBeenSet(false),
-    m_localGatewayRouteTableArnHasBeenSet(false),
-    m_localGatewayIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-LocalGatewayRouteTableVpcAssociation::LocalGatewayRouteTableVpcAssociation(const XmlNode& xmlNode) : 
-    m_localGatewayRouteTableVpcAssociationIdHasBeenSet(false),
-    m_localGatewayRouteTableIdHasBeenSet(false),
-    m_localGatewayRouteTableArnHasBeenSet(false),
-    m_localGatewayIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+LocalGatewayRouteTableVpcAssociation::LocalGatewayRouteTableVpcAssociation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -97,6 +77,7 @@ LocalGatewayRouteTableVpcAssociation& LocalGatewayRouteTableVpcAssociation::oper
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -196,7 +177,7 @@ void LocalGatewayRouteTableVpcAssociation::OutputToStream(Aws::OStream& oStream,
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

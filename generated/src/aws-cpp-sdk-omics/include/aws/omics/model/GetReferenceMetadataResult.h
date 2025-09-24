@@ -9,6 +9,7 @@
 #include <aws/omics/model/ReferenceStatus.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/omics/model/ReferenceFiles.h>
+#include <aws/omics/model/ReferenceCreationType.h>
 #include <utility>
 
 namespace Aws
@@ -30,375 +31,187 @@ namespace Model
   class GetReferenceMetadataResult
   {
   public:
-    AWS_OMICS_API GetReferenceMetadataResult();
+    AWS_OMICS_API GetReferenceMetadataResult() = default;
     AWS_OMICS_API GetReferenceMetadataResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API GetReferenceMetadataResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The reference's ID.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetReferenceMetadataResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference's ID.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The reference's ID.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The reference's ID.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The reference's ID.</p>
-     */
-    inline GetReferenceMetadataResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The reference's ID.</p>
-     */
-    inline GetReferenceMetadataResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The reference's ID.</p>
-     */
-    inline GetReferenceMetadataResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reference's ARN.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetReferenceMetadataResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference's ARN.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The reference's ARN.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The reference's ARN.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The reference's ARN.</p>
-     */
-    inline GetReferenceMetadataResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The reference's ARN.</p>
-     */
-    inline GetReferenceMetadataResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The reference's ARN.</p>
-     */
-    inline GetReferenceMetadataResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reference's reference store ID.</p>
      */
-    inline const Aws::String& GetReferenceStoreId() const{ return m_referenceStoreId; }
+    inline const Aws::String& GetReferenceStoreId() const { return m_referenceStoreId; }
+    template<typename ReferenceStoreIdT = Aws::String>
+    void SetReferenceStoreId(ReferenceStoreIdT&& value) { m_referenceStoreIdHasBeenSet = true; m_referenceStoreId = std::forward<ReferenceStoreIdT>(value); }
+    template<typename ReferenceStoreIdT = Aws::String>
+    GetReferenceMetadataResult& WithReferenceStoreId(ReferenceStoreIdT&& value) { SetReferenceStoreId(std::forward<ReferenceStoreIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference's reference store ID.</p>
-     */
-    inline void SetReferenceStoreId(const Aws::String& value) { m_referenceStoreId = value; }
-
-    /**
-     * <p>The reference's reference store ID.</p>
-     */
-    inline void SetReferenceStoreId(Aws::String&& value) { m_referenceStoreId = std::move(value); }
-
-    /**
-     * <p>The reference's reference store ID.</p>
-     */
-    inline void SetReferenceStoreId(const char* value) { m_referenceStoreId.assign(value); }
-
-    /**
-     * <p>The reference's reference store ID.</p>
-     */
-    inline GetReferenceMetadataResult& WithReferenceStoreId(const Aws::String& value) { SetReferenceStoreId(value); return *this;}
-
-    /**
-     * <p>The reference's reference store ID.</p>
-     */
-    inline GetReferenceMetadataResult& WithReferenceStoreId(Aws::String&& value) { SetReferenceStoreId(std::move(value)); return *this;}
-
-    /**
-     * <p>The reference's reference store ID.</p>
-     */
-    inline GetReferenceMetadataResult& WithReferenceStoreId(const char* value) { SetReferenceStoreId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reference's MD5 checksum.</p>
      */
-    inline const Aws::String& GetMd5() const{ return m_md5; }
+    inline const Aws::String& GetMd5() const { return m_md5; }
+    template<typename Md5T = Aws::String>
+    void SetMd5(Md5T&& value) { m_md5HasBeenSet = true; m_md5 = std::forward<Md5T>(value); }
+    template<typename Md5T = Aws::String>
+    GetReferenceMetadataResult& WithMd5(Md5T&& value) { SetMd5(std::forward<Md5T>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference's MD5 checksum.</p>
-     */
-    inline void SetMd5(const Aws::String& value) { m_md5 = value; }
-
-    /**
-     * <p>The reference's MD5 checksum.</p>
-     */
-    inline void SetMd5(Aws::String&& value) { m_md5 = std::move(value); }
-
-    /**
-     * <p>The reference's MD5 checksum.</p>
-     */
-    inline void SetMd5(const char* value) { m_md5.assign(value); }
-
-    /**
-     * <p>The reference's MD5 checksum.</p>
-     */
-    inline GetReferenceMetadataResult& WithMd5(const Aws::String& value) { SetMd5(value); return *this;}
-
-    /**
-     * <p>The reference's MD5 checksum.</p>
-     */
-    inline GetReferenceMetadataResult& WithMd5(Aws::String&& value) { SetMd5(std::move(value)); return *this;}
-
-    /**
-     * <p>The reference's MD5 checksum.</p>
-     */
-    inline GetReferenceMetadataResult& WithMd5(const char* value) { SetMd5(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reference's status.</p>
      */
-    inline const ReferenceStatus& GetStatus() const{ return m_status; }
+    inline ReferenceStatus GetStatus() const { return m_status; }
+    inline void SetStatus(ReferenceStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetReferenceMetadataResult& WithStatus(ReferenceStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference's status.</p>
-     */
-    inline void SetStatus(const ReferenceStatus& value) { m_status = value; }
-
-    /**
-     * <p>The reference's status.</p>
-     */
-    inline void SetStatus(ReferenceStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The reference's status.</p>
-     */
-    inline GetReferenceMetadataResult& WithStatus(const ReferenceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The reference's status.</p>
-     */
-    inline GetReferenceMetadataResult& WithStatus(ReferenceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reference's name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetReferenceMetadataResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference's name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The reference's name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The reference's name.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The reference's name.</p>
-     */
-    inline GetReferenceMetadataResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The reference's name.</p>
-     */
-    inline GetReferenceMetadataResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The reference's name.</p>
-     */
-    inline GetReferenceMetadataResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reference's description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetReferenceMetadataResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference's description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The reference's description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The reference's description.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The reference's description.</p>
-     */
-    inline GetReferenceMetadataResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The reference's description.</p>
-     */
-    inline GetReferenceMetadataResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The reference's description.</p>
-     */
-    inline GetReferenceMetadataResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>When the reference was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    GetReferenceMetadataResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the reference was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>When the reference was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>When the reference was created.</p>
-     */
-    inline GetReferenceMetadataResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>When the reference was created.</p>
-     */
-    inline GetReferenceMetadataResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When the reference was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdateTime() const{ return m_updateTime; }
+    inline const Aws::Utils::DateTime& GetUpdateTime() const { return m_updateTime; }
+    template<typename UpdateTimeT = Aws::Utils::DateTime>
+    void SetUpdateTime(UpdateTimeT&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::forward<UpdateTimeT>(value); }
+    template<typename UpdateTimeT = Aws::Utils::DateTime>
+    GetReferenceMetadataResult& WithUpdateTime(UpdateTimeT&& value) { SetUpdateTime(std::forward<UpdateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When the reference was updated.</p>
-     */
-    inline void SetUpdateTime(const Aws::Utils::DateTime& value) { m_updateTime = value; }
-
-    /**
-     * <p>When the reference was updated.</p>
-     */
-    inline void SetUpdateTime(Aws::Utils::DateTime&& value) { m_updateTime = std::move(value); }
-
-    /**
-     * <p>When the reference was updated.</p>
-     */
-    inline GetReferenceMetadataResult& WithUpdateTime(const Aws::Utils::DateTime& value) { SetUpdateTime(value); return *this;}
-
-    /**
-     * <p>When the reference was updated.</p>
-     */
-    inline GetReferenceMetadataResult& WithUpdateTime(Aws::Utils::DateTime&& value) { SetUpdateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The reference's files.</p>
      */
-    inline const ReferenceFiles& GetFiles() const{ return m_files; }
+    inline const ReferenceFiles& GetFiles() const { return m_files; }
+    template<typename FilesT = ReferenceFiles>
+    void SetFiles(FilesT&& value) { m_filesHasBeenSet = true; m_files = std::forward<FilesT>(value); }
+    template<typename FilesT = ReferenceFiles>
+    GetReferenceMetadataResult& WithFiles(FilesT&& value) { SetFiles(std::forward<FilesT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The reference's files.</p>
+     * <p>The reference's creation type.</p>
      */
-    inline void SetFiles(const ReferenceFiles& value) { m_files = value; }
+    inline ReferenceCreationType GetCreationType() const { return m_creationType; }
+    inline void SetCreationType(ReferenceCreationType value) { m_creationTypeHasBeenSet = true; m_creationType = value; }
+    inline GetReferenceMetadataResult& WithCreationType(ReferenceCreationType value) { SetCreationType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The reference's files.</p>
+     * <p>The reference's creation job ID.</p>
      */
-    inline void SetFiles(ReferenceFiles&& value) { m_files = std::move(value); }
+    inline const Aws::String& GetCreationJobId() const { return m_creationJobId; }
+    template<typename CreationJobIdT = Aws::String>
+    void SetCreationJobId(CreationJobIdT&& value) { m_creationJobIdHasBeenSet = true; m_creationJobId = std::forward<CreationJobIdT>(value); }
+    template<typename CreationJobIdT = Aws::String>
+    GetReferenceMetadataResult& WithCreationJobId(CreationJobIdT&& value) { SetCreationJobId(std::forward<CreationJobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The reference's files.</p>
-     */
-    inline GetReferenceMetadataResult& WithFiles(const ReferenceFiles& value) { SetFiles(value); return *this;}
-
-    /**
-     * <p>The reference's files.</p>
-     */
-    inline GetReferenceMetadataResult& WithFiles(ReferenceFiles&& value) { SetFiles(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetReferenceMetadataResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetReferenceMetadataResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetReferenceMetadataResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetReferenceMetadataResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_referenceStoreId;
+    bool m_referenceStoreIdHasBeenSet = false;
 
     Aws::String m_md5;
+    bool m_md5HasBeenSet = false;
 
-    ReferenceStatus m_status;
+    ReferenceStatus m_status{ReferenceStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updateTime;
+    Aws::Utils::DateTime m_updateTime{};
+    bool m_updateTimeHasBeenSet = false;
 
     ReferenceFiles m_files;
+    bool m_filesHasBeenSet = false;
+
+    ReferenceCreationType m_creationType{ReferenceCreationType::NOT_SET};
+    bool m_creationTypeHasBeenSet = false;
+
+    Aws::String m_creationJobId;
+    bool m_creationJobIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ElasticGpuHealth::ElasticGpuHealth() : 
-    m_status(ElasticGpuStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-ElasticGpuHealth::ElasticGpuHealth(const XmlNode& xmlNode) : 
-    m_status(ElasticGpuStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+ElasticGpuHealth::ElasticGpuHealth(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ ElasticGpuHealth& ElasticGpuHealth::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("status");
     if(!statusNode.IsNull())
     {
-      m_status = ElasticGpuStatusMapper::GetElasticGpuStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = ElasticGpuStatusMapper::GetElasticGpuStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void ElasticGpuHealth::OutputToStream(Aws::OStream& oStream, const char* locatio
 {
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << ElasticGpuStatusMapper::GetNameForElasticGpuStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(ElasticGpuStatusMapper::GetNameForElasticGpuStatus(m_status)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void ElasticGpuHealth::OutputToStream(Aws::OStream& oStream, const char* locatio
 {
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << ElasticGpuStatusMapper::GetNameForElasticGpuStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(ElasticGpuStatusMapper::GetNameForElasticGpuStatus(m_status)) << "&";
   }
 }
 

@@ -18,17 +18,7 @@ namespace ManagedGrafana
 namespace Model
 {
 
-SamlAuthentication::SamlAuthentication() : 
-    m_configurationHasBeenSet(false),
-    m_status(SamlConfigurationStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-SamlAuthentication::SamlAuthentication(JsonView jsonValue) : 
-    m_configurationHasBeenSet(false),
-    m_status(SamlConfigurationStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+SamlAuthentication::SamlAuthentication(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SamlAuthentication& SamlAuthentication::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("configuration"))
   {
     m_configuration = jsonValue.GetObject("configuration");
-
     m_configurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = SamlConfigurationStatusMapper::GetSamlConfigurationStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

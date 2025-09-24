@@ -32,60 +32,24 @@ namespace Model
   class AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails();
+    AWS_SECURITYHUB_API AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails() = default;
     AWS_SECURITYHUB_API AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Describes whether Kubernetes audit logs are activated as a data source for
      * the detector. </p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> Describes whether Kubernetes audit logs are activated as a data source for
-     * the detector. </p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p> Describes whether Kubernetes audit logs are activated as a data source for
-     * the detector. </p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> Describes whether Kubernetes audit logs are activated as a data source for
-     * the detector. </p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> Describes whether Kubernetes audit logs are activated as a data source for
-     * the detector. </p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p> Describes whether Kubernetes audit logs are activated as a data source for
-     * the detector. </p>
-     */
-    inline AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> Describes whether Kubernetes audit logs are activated as a data source for
-     * the detector. </p>
-     */
-    inline AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p> Describes whether Kubernetes audit logs are activated as a data source for
-     * the detector. </p>
-     */
-    inline AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_status;

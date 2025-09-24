@@ -36,43 +36,26 @@ namespace Model
   class EcsEphemeralStorage
   {
   public:
-    AWS_PIPES_API EcsEphemeralStorage();
+    AWS_PIPES_API EcsEphemeralStorage() = default;
     AWS_PIPES_API EcsEphemeralStorage(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API EcsEphemeralStorage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PIPES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The total amount, in GiB, of ephemeral storage to set for the task. The
      * minimum supported value is <code>21</code> GiB and the maximum supported value
      * is <code>200</code> GiB.</p>
      */
-    inline int GetSizeInGiB() const{ return m_sizeInGiB; }
-
-    /**
-     * <p>The total amount, in GiB, of ephemeral storage to set for the task. The
-     * minimum supported value is <code>21</code> GiB and the maximum supported value
-     * is <code>200</code> GiB.</p>
-     */
+    inline int GetSizeInGiB() const { return m_sizeInGiB; }
     inline bool SizeInGiBHasBeenSet() const { return m_sizeInGiBHasBeenSet; }
-
-    /**
-     * <p>The total amount, in GiB, of ephemeral storage to set for the task. The
-     * minimum supported value is <code>21</code> GiB and the maximum supported value
-     * is <code>200</code> GiB.</p>
-     */
     inline void SetSizeInGiB(int value) { m_sizeInGiBHasBeenSet = true; m_sizeInGiB = value; }
-
-    /**
-     * <p>The total amount, in GiB, of ephemeral storage to set for the task. The
-     * minimum supported value is <code>21</code> GiB and the maximum supported value
-     * is <code>200</code> GiB.</p>
-     */
     inline EcsEphemeralStorage& WithSizeInGiB(int value) { SetSizeInGiB(value); return *this;}
-
+    ///@}
   private:
 
-    int m_sizeInGiB;
+    int m_sizeInGiB{0};
     bool m_sizeInGiBHasBeenSet = false;
   };
 

@@ -18,19 +18,7 @@ namespace DeviceFarm
 namespace Model
 {
 
-TestGridSessionArtifact::TestGridSessionArtifact() : 
-    m_filenameHasBeenSet(false),
-    m_type(TestGridSessionArtifactType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_urlHasBeenSet(false)
-{
-}
-
-TestGridSessionArtifact::TestGridSessionArtifact(JsonView jsonValue) : 
-    m_filenameHasBeenSet(false),
-    m_type(TestGridSessionArtifactType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_urlHasBeenSet(false)
+TestGridSessionArtifact::TestGridSessionArtifact(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ TestGridSessionArtifact& TestGridSessionArtifact::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("filename"))
   {
     m_filename = jsonValue.GetString("filename");
-
     m_filenameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = TestGridSessionArtifactTypeMapper::GetTestGridSessionArtifactTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("url"))
   {
     m_url = jsonValue.GetString("url");
-
     m_urlHasBeenSet = true;
   }
-
   return *this;
 }
 

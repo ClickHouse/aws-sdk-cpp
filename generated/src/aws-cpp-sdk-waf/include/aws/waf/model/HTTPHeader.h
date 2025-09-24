@@ -43,93 +43,35 @@ namespace Model
   class HTTPHeader
   {
   public:
-    AWS_WAF_API HTTPHeader();
+    AWS_WAF_API HTTPHeader() = default;
     AWS_WAF_API HTTPHeader(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API HTTPHeader& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of one of the headers in the sampled web request.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of one of the headers in the sampled web request.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    HTTPHeader& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of one of the headers in the sampled web request.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of one of the headers in the sampled web request.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of one of the headers in the sampled web request.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of one of the headers in the sampled web request.</p>
-     */
-    inline HTTPHeader& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of one of the headers in the sampled web request.</p>
-     */
-    inline HTTPHeader& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of one of the headers in the sampled web request.</p>
-     */
-    inline HTTPHeader& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of one of the headers in the sampled web request.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of one of the headers in the sampled web request.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of one of the headers in the sampled web request.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of one of the headers in the sampled web request.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of one of the headers in the sampled web request.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of one of the headers in the sampled web request.</p>
-     */
-    inline HTTPHeader& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of one of the headers in the sampled web request.</p>
-     */
-    inline HTTPHeader& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of one of the headers in the sampled web request.</p>
-     */
-    inline HTTPHeader& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    HTTPHeader& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

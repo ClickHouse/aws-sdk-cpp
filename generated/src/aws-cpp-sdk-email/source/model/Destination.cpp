@@ -20,17 +20,7 @@ namespace SES
 namespace Model
 {
 
-Destination::Destination() : 
-    m_toAddressesHasBeenSet(false),
-    m_ccAddressesHasBeenSet(false),
-    m_bccAddressesHasBeenSet(false)
-{
-}
-
-Destination::Destination(const XmlNode& xmlNode) : 
-    m_toAddressesHasBeenSet(false),
-    m_ccAddressesHasBeenSet(false),
-    m_bccAddressesHasBeenSet(false)
+Destination::Destination(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -45,6 +35,7 @@ Destination& Destination::operator =(const XmlNode& xmlNode)
     if(!toAddressesNode.IsNull())
     {
       XmlNode toAddressesMember = toAddressesNode.FirstChild("member");
+      m_toAddressesHasBeenSet = !toAddressesMember.IsNull();
       while(!toAddressesMember.IsNull())
       {
         m_toAddresses.push_back(toAddressesMember.GetText());
@@ -57,6 +48,7 @@ Destination& Destination::operator =(const XmlNode& xmlNode)
     if(!ccAddressesNode.IsNull())
     {
       XmlNode ccAddressesMember = ccAddressesNode.FirstChild("member");
+      m_ccAddressesHasBeenSet = !ccAddressesMember.IsNull();
       while(!ccAddressesMember.IsNull())
       {
         m_ccAddresses.push_back(ccAddressesMember.GetText());
@@ -69,6 +61,7 @@ Destination& Destination::operator =(const XmlNode& xmlNode)
     if(!bccAddressesNode.IsNull())
     {
       XmlNode bccAddressesMember = bccAddressesNode.FirstChild("member");
+      m_bccAddressesHasBeenSet = !bccAddressesMember.IsNull();
       while(!bccAddressesMember.IsNull())
       {
         m_bccAddresses.push_back(bccAddressesMember.GetText());

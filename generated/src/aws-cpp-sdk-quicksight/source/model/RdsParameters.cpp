@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-RdsParameters::RdsParameters() : 
-    m_instanceIdHasBeenSet(false),
-    m_databaseHasBeenSet(false)
-{
-}
-
-RdsParameters::RdsParameters(JsonView jsonValue) : 
-    m_instanceIdHasBeenSet(false),
-    m_databaseHasBeenSet(false)
+RdsParameters::RdsParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RdsParameters& RdsParameters::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("InstanceId"))
   {
     m_instanceId = jsonValue.GetString("InstanceId");
-
     m_instanceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Database"))
   {
     m_database = jsonValue.GetString("Database");
-
     m_databaseHasBeenSet = true;
   }
-
   return *this;
 }
 

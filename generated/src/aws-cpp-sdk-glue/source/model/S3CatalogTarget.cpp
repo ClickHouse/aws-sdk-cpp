@@ -18,23 +18,7 @@ namespace Glue
 namespace Model
 {
 
-S3CatalogTarget::S3CatalogTarget() : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_partitionKeysHasBeenSet(false),
-    m_tableHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_schemaChangePolicyHasBeenSet(false)
-{
-}
-
-S3CatalogTarget::S3CatalogTarget(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_partitionKeysHasBeenSet(false),
-    m_tableHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_schemaChangePolicyHasBeenSet(false)
+S3CatalogTarget::S3CatalogTarget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,10 +28,8 @@ S3CatalogTarget& S3CatalogTarget::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -57,7 +39,6 @@ S3CatalogTarget& S3CatalogTarget::operator =(JsonView jsonValue)
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PartitionKeys"))
   {
     Aws::Utils::Array<JsonView> partitionKeysJsonList = jsonValue.GetArray("PartitionKeys");
@@ -74,28 +55,26 @@ S3CatalogTarget& S3CatalogTarget::operator =(JsonView jsonValue)
     }
     m_partitionKeysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Table"))
   {
     m_table = jsonValue.GetString("Table");
-
     m_tableHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Database"))
   {
     m_database = jsonValue.GetString("Database");
-
     m_databaseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SchemaChangePolicy"))
   {
     m_schemaChangePolicy = jsonValue.GetObject("SchemaChangePolicy");
-
     m_schemaChangePolicyHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AutoDataQuality"))
+  {
+    m_autoDataQuality = jsonValue.GetObject("AutoDataQuality");
+    m_autoDataQualityHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -151,6 +130,12 @@ JsonValue S3CatalogTarget::Jsonize() const
   if(m_schemaChangePolicyHasBeenSet)
   {
    payload.WithObject("SchemaChangePolicy", m_schemaChangePolicy.Jsonize());
+
+  }
+
+  if(m_autoDataQualityHasBeenSet)
+  {
+   payload.WithObject("AutoDataQuality", m_autoDataQuality.Jsonize());
 
   }
 

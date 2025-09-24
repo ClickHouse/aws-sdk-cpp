@@ -18,21 +18,7 @@ namespace KafkaConnect
 namespace Model
 {
 
-WorkerConfigurationSummary::WorkerConfigurationSummary() : 
-    m_creationTimeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_latestRevisionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_workerConfigurationArnHasBeenSet(false)
-{
-}
-
-WorkerConfigurationSummary::WorkerConfigurationSummary(JsonView jsonValue) : 
-    m_creationTimeHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_latestRevisionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_workerConfigurationArnHasBeenSet(false)
+WorkerConfigurationSummary::WorkerConfigurationSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,33 @@ WorkerConfigurationSummary& WorkerConfigurationSummary::operator =(JsonView json
   if(jsonValue.ValueExists("creationTime"))
   {
     m_creationTime = jsonValue.GetString("creationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("latestRevision"))
   {
     m_latestRevision = jsonValue.GetObject("latestRevision");
-
     m_latestRevisionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("workerConfigurationArn"))
   {
     m_workerConfigurationArn = jsonValue.GetString("workerConfigurationArn");
-
     m_workerConfigurationArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("workerConfigurationState"))
+  {
+    m_workerConfigurationState = WorkerConfigurationStateMapper::GetWorkerConfigurationStateForName(jsonValue.GetString("workerConfigurationState"));
+    m_workerConfigurationStateHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -108,6 +89,11 @@ JsonValue WorkerConfigurationSummary::Jsonize() const
   {
    payload.WithString("workerConfigurationArn", m_workerConfigurationArn);
 
+  }
+
+  if(m_workerConfigurationStateHasBeenSet)
+  {
+   payload.WithString("workerConfigurationState", WorkerConfigurationStateMapper::GetNameForWorkerConfigurationState(m_workerConfigurationState));
   }
 
   return payload;

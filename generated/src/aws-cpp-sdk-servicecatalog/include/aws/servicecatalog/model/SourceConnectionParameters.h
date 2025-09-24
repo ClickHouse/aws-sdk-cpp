@@ -31,42 +31,23 @@ namespace Model
   class SourceConnectionParameters
   {
   public:
-    AWS_SERVICECATALOG_API SourceConnectionParameters();
+    AWS_SERVICECATALOG_API SourceConnectionParameters() = default;
     AWS_SERVICECATALOG_API SourceConnectionParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API SourceConnectionParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Provides <code>ConnectionType</code> details.</p>
      */
-    inline const CodeStarParameters& GetCodeStar() const{ return m_codeStar; }
-
-    /**
-     * <p>Provides <code>ConnectionType</code> details.</p>
-     */
+    inline const CodeStarParameters& GetCodeStar() const { return m_codeStar; }
     inline bool CodeStarHasBeenSet() const { return m_codeStarHasBeenSet; }
-
-    /**
-     * <p>Provides <code>ConnectionType</code> details.</p>
-     */
-    inline void SetCodeStar(const CodeStarParameters& value) { m_codeStarHasBeenSet = true; m_codeStar = value; }
-
-    /**
-     * <p>Provides <code>ConnectionType</code> details.</p>
-     */
-    inline void SetCodeStar(CodeStarParameters&& value) { m_codeStarHasBeenSet = true; m_codeStar = std::move(value); }
-
-    /**
-     * <p>Provides <code>ConnectionType</code> details.</p>
-     */
-    inline SourceConnectionParameters& WithCodeStar(const CodeStarParameters& value) { SetCodeStar(value); return *this;}
-
-    /**
-     * <p>Provides <code>ConnectionType</code> details.</p>
-     */
-    inline SourceConnectionParameters& WithCodeStar(CodeStarParameters&& value) { SetCodeStar(std::move(value)); return *this;}
-
+    template<typename CodeStarT = CodeStarParameters>
+    void SetCodeStar(CodeStarT&& value) { m_codeStarHasBeenSet = true; m_codeStar = std::forward<CodeStarT>(value); }
+    template<typename CodeStarT = CodeStarParameters>
+    SourceConnectionParameters& WithCodeStar(CodeStarT&& value) { SetCodeStar(std::forward<CodeStarT>(value)); return *this;}
+    ///@}
   private:
 
     CodeStarParameters m_codeStar;

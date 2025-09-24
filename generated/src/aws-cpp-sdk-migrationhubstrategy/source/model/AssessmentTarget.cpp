@@ -18,19 +18,7 @@ namespace MigrationHubStrategyRecommendations
 namespace Model
 {
 
-AssessmentTarget::AssessmentTarget() : 
-    m_condition(Condition::NOT_SET),
-    m_conditionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-AssessmentTarget::AssessmentTarget(JsonView jsonValue) : 
-    m_condition(Condition::NOT_SET),
-    m_conditionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+AssessmentTarget::AssessmentTarget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AssessmentTarget& AssessmentTarget::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("condition"))
   {
     m_condition = ConditionMapper::GetConditionForName(jsonValue.GetString("condition"));
-
     m_conditionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -60,7 +44,6 @@ AssessmentTarget& AssessmentTarget::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

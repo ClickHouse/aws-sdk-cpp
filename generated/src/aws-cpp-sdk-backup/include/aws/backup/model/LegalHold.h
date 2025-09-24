@@ -39,296 +39,100 @@ namespace Model
   class LegalHold
   {
   public:
-    AWS_BACKUP_API LegalHold();
+    AWS_BACKUP_API LegalHold() = default;
     AWS_BACKUP_API LegalHold(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API LegalHold& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BACKUP_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>This is the title of a legal hold.</p>
+     * <p>The title of a legal hold.</p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>This is the title of a legal hold.</p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    LegalHold& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>This is the title of a legal hold.</p>
+     * <p>The status of the legal hold.</p>
      */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>This is the title of a legal hold.</p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>This is the title of a legal hold.</p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>This is the title of a legal hold.</p>
-     */
-    inline LegalHold& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>This is the title of a legal hold.</p>
-     */
-    inline LegalHold& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>This is the title of a legal hold.</p>
-     */
-    inline LegalHold& WithTitle(const char* value) { SetTitle(value); return *this;}
-
-
-    /**
-     * <p>This is the status of the legal hold. Statuses can be <code>ACTIVE</code>,
-     * <code>CREATING</code>, <code>CANCELED</code>, and <code>CANCELING</code>.</p>
-     */
-    inline const LegalHoldStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>This is the status of the legal hold. Statuses can be <code>ACTIVE</code>,
-     * <code>CREATING</code>, <code>CANCELED</code>, and <code>CANCELING</code>.</p>
-     */
+    inline LegalHoldStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(LegalHoldStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline LegalHold& WithStatus(LegalHoldStatus value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>This is the status of the legal hold. Statuses can be <code>ACTIVE</code>,
-     * <code>CREATING</code>, <code>CANCELED</code>, and <code>CANCELING</code>.</p>
+     * <p>The description of a legal hold.</p>
      */
-    inline void SetStatus(const LegalHoldStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>This is the status of the legal hold. Statuses can be <code>ACTIVE</code>,
-     * <code>CREATING</code>, <code>CANCELED</code>, and <code>CANCELING</code>.</p>
-     */
-    inline void SetStatus(LegalHoldStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>This is the status of the legal hold. Statuses can be <code>ACTIVE</code>,
-     * <code>CREATING</code>, <code>CANCELED</code>, and <code>CANCELING</code>.</p>
-     */
-    inline LegalHold& WithStatus(const LegalHoldStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>This is the status of the legal hold. Statuses can be <code>ACTIVE</code>,
-     * <code>CREATING</code>, <code>CANCELED</code>, and <code>CANCELING</code>.</p>
-     */
-    inline LegalHold& WithStatus(LegalHoldStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>This is the description of a legal hold.</p>
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>This is the description of a legal hold.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    LegalHold& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>This is the description of a legal hold.</p>
+     * <p>The ID of the legal hold.</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>This is the description of a legal hold.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>This is the description of a legal hold.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>This is the description of a legal hold.</p>
-     */
-    inline LegalHold& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>This is the description of a legal hold.</p>
-     */
-    inline LegalHold& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>This is the description of a legal hold.</p>
-     */
-    inline LegalHold& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
-    /**
-     * <p>ID of specific legal hold on one or more recovery points.</p>
-     */
-    inline const Aws::String& GetLegalHoldId() const{ return m_legalHoldId; }
-
-    /**
-     * <p>ID of specific legal hold on one or more recovery points.</p>
-     */
+    inline const Aws::String& GetLegalHoldId() const { return m_legalHoldId; }
     inline bool LegalHoldIdHasBeenSet() const { return m_legalHoldIdHasBeenSet; }
+    template<typename LegalHoldIdT = Aws::String>
+    void SetLegalHoldId(LegalHoldIdT&& value) { m_legalHoldIdHasBeenSet = true; m_legalHoldId = std::forward<LegalHoldIdT>(value); }
+    template<typename LegalHoldIdT = Aws::String>
+    LegalHold& WithLegalHoldId(LegalHoldIdT&& value) { SetLegalHoldId(std::forward<LegalHoldIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>ID of specific legal hold on one or more recovery points.</p>
-     */
-    inline void SetLegalHoldId(const Aws::String& value) { m_legalHoldIdHasBeenSet = true; m_legalHoldId = value; }
-
-    /**
-     * <p>ID of specific legal hold on one or more recovery points.</p>
-     */
-    inline void SetLegalHoldId(Aws::String&& value) { m_legalHoldIdHasBeenSet = true; m_legalHoldId = std::move(value); }
-
-    /**
-     * <p>ID of specific legal hold on one or more recovery points.</p>
-     */
-    inline void SetLegalHoldId(const char* value) { m_legalHoldIdHasBeenSet = true; m_legalHoldId.assign(value); }
-
-    /**
-     * <p>ID of specific legal hold on one or more recovery points.</p>
-     */
-    inline LegalHold& WithLegalHoldId(const Aws::String& value) { SetLegalHoldId(value); return *this;}
-
-    /**
-     * <p>ID of specific legal hold on one or more recovery points.</p>
-     */
-    inline LegalHold& WithLegalHoldId(Aws::String&& value) { SetLegalHoldId(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of specific legal hold on one or more recovery points.</p>
-     */
-    inline LegalHold& WithLegalHoldId(const char* value) { SetLegalHoldId(value); return *this;}
-
-
-    /**
-     * <p>This is an Amazon Resource Number (ARN) that uniquely identifies the legal
-     * hold; for example,
+     * <p>The Amazon Resource Name (ARN) of the legal hold; for example,
      * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
      */
-    inline const Aws::String& GetLegalHoldArn() const{ return m_legalHoldArn; }
-
-    /**
-     * <p>This is an Amazon Resource Number (ARN) that uniquely identifies the legal
-     * hold; for example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
+    inline const Aws::String& GetLegalHoldArn() const { return m_legalHoldArn; }
     inline bool LegalHoldArnHasBeenSet() const { return m_legalHoldArnHasBeenSet; }
+    template<typename LegalHoldArnT = Aws::String>
+    void SetLegalHoldArn(LegalHoldArnT&& value) { m_legalHoldArnHasBeenSet = true; m_legalHoldArn = std::forward<LegalHoldArnT>(value); }
+    template<typename LegalHoldArnT = Aws::String>
+    LegalHold& WithLegalHoldArn(LegalHoldArnT&& value) { SetLegalHoldArn(std::forward<LegalHoldArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>This is an Amazon Resource Number (ARN) that uniquely identifies the legal
-     * hold; for example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
+     * <p>The time when the legal hold was created.</p>
      */
-    inline void SetLegalHoldArn(const Aws::String& value) { m_legalHoldArnHasBeenSet = true; m_legalHoldArn = value; }
-
-    /**
-     * <p>This is an Amazon Resource Number (ARN) that uniquely identifies the legal
-     * hold; for example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline void SetLegalHoldArn(Aws::String&& value) { m_legalHoldArnHasBeenSet = true; m_legalHoldArn = std::move(value); }
-
-    /**
-     * <p>This is an Amazon Resource Number (ARN) that uniquely identifies the legal
-     * hold; for example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline void SetLegalHoldArn(const char* value) { m_legalHoldArnHasBeenSet = true; m_legalHoldArn.assign(value); }
-
-    /**
-     * <p>This is an Amazon Resource Number (ARN) that uniquely identifies the legal
-     * hold; for example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline LegalHold& WithLegalHoldArn(const Aws::String& value) { SetLegalHoldArn(value); return *this;}
-
-    /**
-     * <p>This is an Amazon Resource Number (ARN) that uniquely identifies the legal
-     * hold; for example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline LegalHold& WithLegalHoldArn(Aws::String&& value) { SetLegalHoldArn(std::move(value)); return *this;}
-
-    /**
-     * <p>This is an Amazon Resource Number (ARN) that uniquely identifies the legal
-     * hold; for example,
-     * <code>arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45</code>.</p>
-     */
-    inline LegalHold& WithLegalHoldArn(const char* value) { SetLegalHoldArn(value); return *this;}
-
-
-    /**
-     * <p>This is the time in number format when legal hold was created.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>This is the time in number format when legal hold was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    LegalHold& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>This is the time in number format when legal hold was created.</p>
+     * <p>The time when the legal hold was cancelled.</p>
      */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>This is the time in number format when legal hold was created.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>This is the time in number format when legal hold was created.</p>
-     */
-    inline LegalHold& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>This is the time in number format when legal hold was created.</p>
-     */
-    inline LegalHold& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
-
-    /**
-     * <p>This is the time in number format when legal hold was cancelled.</p>
-     */
-    inline const Aws::Utils::DateTime& GetCancellationDate() const{ return m_cancellationDate; }
-
-    /**
-     * <p>This is the time in number format when legal hold was cancelled.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCancellationDate() const { return m_cancellationDate; }
     inline bool CancellationDateHasBeenSet() const { return m_cancellationDateHasBeenSet; }
-
-    /**
-     * <p>This is the time in number format when legal hold was cancelled.</p>
-     */
-    inline void SetCancellationDate(const Aws::Utils::DateTime& value) { m_cancellationDateHasBeenSet = true; m_cancellationDate = value; }
-
-    /**
-     * <p>This is the time in number format when legal hold was cancelled.</p>
-     */
-    inline void SetCancellationDate(Aws::Utils::DateTime&& value) { m_cancellationDateHasBeenSet = true; m_cancellationDate = std::move(value); }
-
-    /**
-     * <p>This is the time in number format when legal hold was cancelled.</p>
-     */
-    inline LegalHold& WithCancellationDate(const Aws::Utils::DateTime& value) { SetCancellationDate(value); return *this;}
-
-    /**
-     * <p>This is the time in number format when legal hold was cancelled.</p>
-     */
-    inline LegalHold& WithCancellationDate(Aws::Utils::DateTime&& value) { SetCancellationDate(std::move(value)); return *this;}
-
+    template<typename CancellationDateT = Aws::Utils::DateTime>
+    void SetCancellationDate(CancellationDateT&& value) { m_cancellationDateHasBeenSet = true; m_cancellationDate = std::forward<CancellationDateT>(value); }
+    template<typename CancellationDateT = Aws::Utils::DateTime>
+    LegalHold& WithCancellationDate(CancellationDateT&& value) { SetCancellationDate(std::forward<CancellationDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_title;
     bool m_titleHasBeenSet = false;
 
-    LegalHoldStatus m_status;
+    LegalHoldStatus m_status{LegalHoldStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_description;
@@ -340,10 +144,10 @@ namespace Model
     Aws::String m_legalHoldArn;
     bool m_legalHoldArnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_cancellationDate;
+    Aws::Utils::DateTime m_cancellationDate{};
     bool m_cancellationDateHasBeenSet = false;
   };
 

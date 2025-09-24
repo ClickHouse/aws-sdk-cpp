@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NetworkInsightsAccessScopeContent::NetworkInsightsAccessScopeContent() : 
-    m_networkInsightsAccessScopeIdHasBeenSet(false),
-    m_matchPathsHasBeenSet(false),
-    m_excludePathsHasBeenSet(false)
-{
-}
-
-NetworkInsightsAccessScopeContent::NetworkInsightsAccessScopeContent(const XmlNode& xmlNode) : 
-    m_networkInsightsAccessScopeIdHasBeenSet(false),
-    m_matchPathsHasBeenSet(false),
-    m_excludePathsHasBeenSet(false)
+NetworkInsightsAccessScopeContent::NetworkInsightsAccessScopeContent(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -51,6 +41,7 @@ NetworkInsightsAccessScopeContent& NetworkInsightsAccessScopeContent::operator =
     if(!matchPathsNode.IsNull())
     {
       XmlNode matchPathsMember = matchPathsNode.FirstChild("item");
+      m_matchPathsHasBeenSet = !matchPathsMember.IsNull();
       while(!matchPathsMember.IsNull())
       {
         m_matchPaths.push_back(matchPathsMember);
@@ -63,6 +54,7 @@ NetworkInsightsAccessScopeContent& NetworkInsightsAccessScopeContent::operator =
     if(!excludePathsNode.IsNull())
     {
       XmlNode excludePathsMember = excludePathsNode.FirstChild("item");
+      m_excludePathsHasBeenSet = !excludePathsMember.IsNull();
       while(!excludePathsMember.IsNull())
       {
         m_excludePaths.push_back(excludePathsMember);
@@ -119,7 +111,7 @@ void NetworkInsightsAccessScopeContent::OutputToStream(Aws::OStream& oStream, co
       for(auto& item : m_matchPaths)
       {
         Aws::StringStream matchPathsSs;
-        matchPathsSs << location <<  ".MatchPathSet." << matchPathsIdx++;
+        matchPathsSs << location << ".MatchPathSet." << matchPathsIdx++;
         item.OutputToStream(oStream, matchPathsSs.str().c_str());
       }
   }
@@ -129,7 +121,7 @@ void NetworkInsightsAccessScopeContent::OutputToStream(Aws::OStream& oStream, co
       for(auto& item : m_excludePaths)
       {
         Aws::StringStream excludePathsSs;
-        excludePathsSs << location <<  ".ExcludePathSet." << excludePathsIdx++;
+        excludePathsSs << location << ".ExcludePathSet." << excludePathsIdx++;
         item.OutputToStream(oStream, excludePathsSs.str().c_str());
       }
   }

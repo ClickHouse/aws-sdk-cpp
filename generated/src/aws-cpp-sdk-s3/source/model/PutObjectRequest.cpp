@@ -17,55 +17,6 @@ using namespace Aws::Utils;
 using namespace Aws::Http;
 using namespace Aws;
 
-PutObjectRequest::PutObjectRequest() : 
-    m_aCL(ObjectCannedACL::NOT_SET),
-    m_aCLHasBeenSet(false),
-    m_bucketHasBeenSet(false),
-    m_cacheControlHasBeenSet(false),
-    m_contentDispositionHasBeenSet(false),
-    m_contentEncodingHasBeenSet(false),
-    m_contentLanguageHasBeenSet(false),
-    m_contentLength(0),
-    m_contentLengthHasBeenSet(false),
-    m_contentMD5HasBeenSet(false),
-    m_checksumAlgorithm(ChecksumAlgorithm::NOT_SET),
-    m_checksumAlgorithmHasBeenSet(false),
-    m_checksumCRC32HasBeenSet(false),
-    m_checksumCRC32CHasBeenSet(false),
-    m_checksumSHA1HasBeenSet(false),
-    m_checksumSHA256HasBeenSet(false),
-    m_expiresHasBeenSet(false),
-    m_grantFullControlHasBeenSet(false),
-    m_grantReadHasBeenSet(false),
-    m_grantReadACPHasBeenSet(false),
-    m_grantWriteACPHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_metadataHasBeenSet(false),
-    m_serverSideEncryption(ServerSideEncryption::NOT_SET),
-    m_serverSideEncryptionHasBeenSet(false),
-    m_storageClass(StorageClass::NOT_SET),
-    m_storageClassHasBeenSet(false),
-    m_websiteRedirectLocationHasBeenSet(false),
-    m_sSECustomerAlgorithmHasBeenSet(false),
-    m_sSECustomerKeyHasBeenSet(false),
-    m_sSECustomerKeyMD5HasBeenSet(false),
-    m_sSEKMSKeyIdHasBeenSet(false),
-    m_sSEKMSEncryptionContextHasBeenSet(false),
-    m_bucketKeyEnabled(false),
-    m_bucketKeyEnabledHasBeenSet(false),
-    m_requestPayer(RequestPayer::NOT_SET),
-    m_requestPayerHasBeenSet(false),
-    m_taggingHasBeenSet(false),
-    m_objectLockMode(ObjectLockMode::NOT_SET),
-    m_objectLockModeHasBeenSet(false),
-    m_objectLockRetainUntilDateHasBeenSet(false),
-    m_objectLockLegalHoldStatus(ObjectLockLegalHoldStatus::NOT_SET),
-    m_objectLockLegalHoldStatusHasBeenSet(false),
-    m_expectedBucketOwnerHasBeenSet(false),
-    m_customizedAccessLogTagHasBeenSet(false)
-{
-}
-
 
 void PutObjectRequest::AddQueryStringParameters(URI& uri) const
 {
@@ -93,7 +44,7 @@ Aws::Http::HeaderValueCollection PutObjectRequest::GetRequestSpecificHeaders() c
 {
   Aws::Http::HeaderValueCollection headers;
   Aws::StringStream ss;
-  if(m_aCLHasBeenSet)
+  if(m_aCLHasBeenSet && m_aCL != ObjectCannedACL::NOT_SET)
   {
     headers.emplace("x-amz-acl", ObjectCannedACLMapper::GetNameForObjectCannedACL(m_aCL));
   }
@@ -140,7 +91,7 @@ Aws::Http::HeaderValueCollection PutObjectRequest::GetRequestSpecificHeaders() c
     ss.str("");
   }
 
-  if(m_checksumAlgorithmHasBeenSet)
+  if(m_checksumAlgorithmHasBeenSet && m_checksumAlgorithm != ChecksumAlgorithm::NOT_SET)
   {
     headers.emplace("x-amz-sdk-checksum-algorithm", ChecksumAlgorithmMapper::GetNameForChecksumAlgorithm(m_checksumAlgorithm));
   }
@@ -156,6 +107,13 @@ Aws::Http::HeaderValueCollection PutObjectRequest::GetRequestSpecificHeaders() c
   {
     ss << m_checksumCRC32C;
     headers.emplace("x-amz-checksum-crc32c",  ss.str());
+    ss.str("");
+  }
+
+  if(m_checksumCRC64NVMEHasBeenSet)
+  {
+    ss << m_checksumCRC64NVME;
+    headers.emplace("x-amz-checksum-crc64nvme",  ss.str());
     ss.str("");
   }
 
@@ -176,6 +134,20 @@ Aws::Http::HeaderValueCollection PutObjectRequest::GetRequestSpecificHeaders() c
   if(m_expiresHasBeenSet)
   {
     headers.emplace("expires", m_expires.ToGmtString(Aws::Utils::DateFormat::RFC822));
+  }
+
+  if(m_ifMatchHasBeenSet)
+  {
+    ss << m_ifMatch;
+    headers.emplace("if-match",  ss.str());
+    ss.str("");
+  }
+
+  if(m_ifNoneMatchHasBeenSet)
+  {
+    ss << m_ifNoneMatch;
+    headers.emplace("if-none-match",  ss.str());
+    ss.str("");
   }
 
   if(m_grantFullControlHasBeenSet)
@@ -206,6 +178,13 @@ Aws::Http::HeaderValueCollection PutObjectRequest::GetRequestSpecificHeaders() c
     ss.str("");
   }
 
+  if(m_writeOffsetBytesHasBeenSet)
+  {
+    ss << m_writeOffsetBytes;
+    headers.emplace("x-amz-write-offset-bytes",  ss.str());
+    ss.str("");
+  }
+
   if(m_metadataHasBeenSet)
   {
     for(const auto& item : m_metadata)
@@ -216,12 +195,12 @@ Aws::Http::HeaderValueCollection PutObjectRequest::GetRequestSpecificHeaders() c
     }
   }
 
-  if(m_serverSideEncryptionHasBeenSet)
+  if(m_serverSideEncryptionHasBeenSet && m_serverSideEncryption != ServerSideEncryption::NOT_SET)
   {
     headers.emplace("x-amz-server-side-encryption", ServerSideEncryptionMapper::GetNameForServerSideEncryption(m_serverSideEncryption));
   }
 
-  if(m_storageClassHasBeenSet)
+  if(m_storageClassHasBeenSet && m_storageClass != StorageClass::NOT_SET)
   {
     headers.emplace("x-amz-storage-class", StorageClassMapper::GetNameForStorageClass(m_storageClass));
   }
@@ -275,7 +254,7 @@ Aws::Http::HeaderValueCollection PutObjectRequest::GetRequestSpecificHeaders() c
     ss.str("");
   }
 
-  if(m_requestPayerHasBeenSet)
+  if(m_requestPayerHasBeenSet && m_requestPayer != RequestPayer::NOT_SET)
   {
     headers.emplace("x-amz-request-payer", RequestPayerMapper::GetNameForRequestPayer(m_requestPayer));
   }
@@ -287,7 +266,7 @@ Aws::Http::HeaderValueCollection PutObjectRequest::GetRequestSpecificHeaders() c
     ss.str("");
   }
 
-  if(m_objectLockModeHasBeenSet)
+  if(m_objectLockModeHasBeenSet && m_objectLockMode != ObjectLockMode::NOT_SET)
   {
     headers.emplace("x-amz-object-lock-mode", ObjectLockModeMapper::GetNameForObjectLockMode(m_objectLockMode));
   }
@@ -297,7 +276,7 @@ Aws::Http::HeaderValueCollection PutObjectRequest::GetRequestSpecificHeaders() c
     headers.emplace("x-amz-object-lock-retain-until-date", m_objectLockRetainUntilDate.ToGmtString(Aws::Utils::DateFormat::ISO_8601));
   }
 
-  if(m_objectLockLegalHoldStatusHasBeenSet)
+  if(m_objectLockLegalHoldStatusHasBeenSet && m_objectLockLegalHoldStatus != ObjectLockLegalHoldStatus::NOT_SET)
   {
     headers.emplace("x-amz-object-lock-legal-hold", ObjectLockLegalHoldStatusMapper::GetNameForObjectLockLegalHoldStatus(m_objectLockLegalHoldStatus));
   }
@@ -311,6 +290,27 @@ Aws::Http::HeaderValueCollection PutObjectRequest::GetRequestSpecificHeaders() c
 
   return headers;
 
+}
+
+bool PutObjectRequest::HasEmbeddedError(Aws::IOStream &body,
+  const Aws::Http::HeaderValueCollection &header) const
+{
+  // Header is unused
+  AWS_UNREFERENCED_PARAM(header);
+
+  auto readPointer = body.tellg();
+  Utils::Xml::XmlDocument doc = Utils::Xml::XmlDocument::CreateFromXmlStream(body);
+  body.seekg(readPointer);
+
+  if (!doc.WasParseSuccessful()) {
+    return false;
+  }
+
+  if (!doc.GetRootElement().IsNull() && doc.GetRootElement().GetName() == Aws::String("Error")) {
+    return true;
+  }
+
+  return false;
 }
 
 PutObjectRequest::EndpointParameters PutObjectRequest::GetEndpointContextParams() const
@@ -330,7 +330,7 @@ Aws::String PutObjectRequest::GetChecksumAlgorithmName() const
 {
   if (m_checksumAlgorithm == ChecksumAlgorithm::NOT_SET)
   {
-    return "md5";
+    return "crc64nvme";
   }
   else
   {

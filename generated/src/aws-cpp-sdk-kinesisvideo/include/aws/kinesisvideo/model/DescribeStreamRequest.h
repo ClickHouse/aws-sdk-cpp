@@ -21,7 +21,7 @@ namespace Model
   class DescribeStreamRequest : public KinesisVideoRequest
   {
   public:
-    AWS_KINESISVIDEO_API DescribeStreamRequest();
+    AWS_KINESISVIDEO_API DescribeStreamRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_KINESISVIDEO_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the stream.</p>
      */
-    inline const Aws::String& GetStreamName() const{ return m_streamName; }
-
-    /**
-     * <p>The name of the stream.</p>
-     */
+    inline const Aws::String& GetStreamName() const { return m_streamName; }
     inline bool StreamNameHasBeenSet() const { return m_streamNameHasBeenSet; }
+    template<typename StreamNameT = Aws::String>
+    void SetStreamName(StreamNameT&& value) { m_streamNameHasBeenSet = true; m_streamName = std::forward<StreamNameT>(value); }
+    template<typename StreamNameT = Aws::String>
+    DescribeStreamRequest& WithStreamName(StreamNameT&& value) { SetStreamName(std::forward<StreamNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the stream.</p>
-     */
-    inline void SetStreamName(const Aws::String& value) { m_streamNameHasBeenSet = true; m_streamName = value; }
-
-    /**
-     * <p>The name of the stream.</p>
-     */
-    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = std::move(value); }
-
-    /**
-     * <p>The name of the stream.</p>
-     */
-    inline void SetStreamName(const char* value) { m_streamNameHasBeenSet = true; m_streamName.assign(value); }
-
-    /**
-     * <p>The name of the stream.</p>
-     */
-    inline DescribeStreamRequest& WithStreamName(const Aws::String& value) { SetStreamName(value); return *this;}
-
-    /**
-     * <p>The name of the stream.</p>
-     */
-    inline DescribeStreamRequest& WithStreamName(Aws::String&& value) { SetStreamName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stream.</p>
-     */
-    inline DescribeStreamRequest& WithStreamName(const char* value) { SetStreamName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the stream.</p>
      */
-    inline const Aws::String& GetStreamARN() const{ return m_streamARN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the stream.</p>
-     */
+    inline const Aws::String& GetStreamARN() const { return m_streamARN; }
     inline bool StreamARNHasBeenSet() const { return m_streamARNHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the stream.</p>
-     */
-    inline void SetStreamARN(const Aws::String& value) { m_streamARNHasBeenSet = true; m_streamARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the stream.</p>
-     */
-    inline void SetStreamARN(Aws::String&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the stream.</p>
-     */
-    inline void SetStreamARN(const char* value) { m_streamARNHasBeenSet = true; m_streamARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the stream.</p>
-     */
-    inline DescribeStreamRequest& WithStreamARN(const Aws::String& value) { SetStreamARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the stream.</p>
-     */
-    inline DescribeStreamRequest& WithStreamARN(Aws::String&& value) { SetStreamARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the stream.</p>
-     */
-    inline DescribeStreamRequest& WithStreamARN(const char* value) { SetStreamARN(value); return *this;}
-
+    template<typename StreamARNT = Aws::String>
+    void SetStreamARN(StreamARNT&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::forward<StreamARNT>(value); }
+    template<typename StreamARNT = Aws::String>
+    DescribeStreamRequest& WithStreamARN(StreamARNT&& value) { SetStreamARN(std::forward<StreamARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_streamName;

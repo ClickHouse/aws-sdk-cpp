@@ -21,7 +21,7 @@ namespace Model
   class DeleteRegexMatchSetRequest : public WAFRegionalRequest
   {
   public:
-    AWS_WAFREGIONAL_API DeleteRegexMatchSetRequest();
+    AWS_WAFREGIONAL_API DeleteRegexMatchSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,103 +34,31 @@ namespace Model
     AWS_WAFREGIONAL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to
      * delete. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a>
      * and by <a>ListRegexMatchSets</a>.</p>
      */
-    inline const Aws::String& GetRegexMatchSetId() const{ return m_regexMatchSetId; }
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to
-     * delete. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a>
-     * and by <a>ListRegexMatchSets</a>.</p>
-     */
+    inline const Aws::String& GetRegexMatchSetId() const { return m_regexMatchSetId; }
     inline bool RegexMatchSetIdHasBeenSet() const { return m_regexMatchSetIdHasBeenSet; }
+    template<typename RegexMatchSetIdT = Aws::String>
+    void SetRegexMatchSetId(RegexMatchSetIdT&& value) { m_regexMatchSetIdHasBeenSet = true; m_regexMatchSetId = std::forward<RegexMatchSetIdT>(value); }
+    template<typename RegexMatchSetIdT = Aws::String>
+    DeleteRegexMatchSetRequest& WithRegexMatchSetId(RegexMatchSetIdT&& value) { SetRegexMatchSetId(std::forward<RegexMatchSetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to
-     * delete. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a>
-     * and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline void SetRegexMatchSetId(const Aws::String& value) { m_regexMatchSetIdHasBeenSet = true; m_regexMatchSetId = value; }
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to
-     * delete. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a>
-     * and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline void SetRegexMatchSetId(Aws::String&& value) { m_regexMatchSetIdHasBeenSet = true; m_regexMatchSetId = std::move(value); }
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to
-     * delete. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a>
-     * and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline void SetRegexMatchSetId(const char* value) { m_regexMatchSetIdHasBeenSet = true; m_regexMatchSetId.assign(value); }
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to
-     * delete. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a>
-     * and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline DeleteRegexMatchSetRequest& WithRegexMatchSetId(const Aws::String& value) { SetRegexMatchSetId(value); return *this;}
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to
-     * delete. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a>
-     * and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline DeleteRegexMatchSetRequest& WithRegexMatchSetId(Aws::String&& value) { SetRegexMatchSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>RegexMatchSetId</code> of the <a>RegexMatchSet</a> that you want to
-     * delete. <code>RegexMatchSetId</code> is returned by <a>CreateRegexMatchSet</a>
-     * and by <a>ListRegexMatchSets</a>.</p>
-     */
-    inline DeleteRegexMatchSetRequest& WithRegexMatchSetId(const char* value) { SetRegexMatchSetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
      */
-    inline const Aws::String& GetChangeToken() const{ return m_changeToken; }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
+    inline const Aws::String& GetChangeToken() const { return m_changeToken; }
     inline bool ChangeTokenHasBeenSet() const { return m_changeTokenHasBeenSet; }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline void SetChangeToken(const Aws::String& value) { m_changeTokenHasBeenSet = true; m_changeToken = value; }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline void SetChangeToken(Aws::String&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::move(value); }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline void SetChangeToken(const char* value) { m_changeTokenHasBeenSet = true; m_changeToken.assign(value); }
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline DeleteRegexMatchSetRequest& WithChangeToken(const Aws::String& value) { SetChangeToken(value); return *this;}
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline DeleteRegexMatchSetRequest& WithChangeToken(Aws::String&& value) { SetChangeToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The value returned by the most recent call to <a>GetChangeToken</a>.</p>
-     */
-    inline DeleteRegexMatchSetRequest& WithChangeToken(const char* value) { SetChangeToken(value); return *this;}
-
+    template<typename ChangeTokenT = Aws::String>
+    void SetChangeToken(ChangeTokenT&& value) { m_changeTokenHasBeenSet = true; m_changeToken = std::forward<ChangeTokenT>(value); }
+    template<typename ChangeTokenT = Aws::String>
+    DeleteRegexMatchSetRequest& WithChangeToken(ChangeTokenT&& value) { SetChangeToken(std::forward<ChangeTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regexMatchSetId;

@@ -21,7 +21,7 @@ namespace Model
   class DetectPHIRequest : public ComprehendMedicalRequest
   {
   public:
-    AWS_COMPREHENDMEDICAL_API DetectPHIRequest();
+    AWS_COMPREHENDMEDICAL_API DetectPHIRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_COMPREHENDMEDICAL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A UTF-8 text string containing the clinical content being examined for PHI
      * entities.</p>
      */
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    /**
-     * <p>A UTF-8 text string containing the clinical content being examined for PHI
-     * entities.</p>
-     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
-
-    /**
-     * <p>A UTF-8 text string containing the clinical content being examined for PHI
-     * entities.</p>
-     */
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p>A UTF-8 text string containing the clinical content being examined for PHI
-     * entities.</p>
-     */
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p>A UTF-8 text string containing the clinical content being examined for PHI
-     * entities.</p>
-     */
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    /**
-     * <p>A UTF-8 text string containing the clinical content being examined for PHI
-     * entities.</p>
-     */
-    inline DetectPHIRequest& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    /**
-     * <p>A UTF-8 text string containing the clinical content being examined for PHI
-     * entities.</p>
-     */
-    inline DetectPHIRequest& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    /**
-     * <p>A UTF-8 text string containing the clinical content being examined for PHI
-     * entities.</p>
-     */
-    inline DetectPHIRequest& WithText(const char* value) { SetText(value); return *this;}
-
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    DetectPHIRequest& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_text;

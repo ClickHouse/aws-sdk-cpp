@@ -18,13 +18,7 @@ namespace FSx
 namespace Model
 {
 
-DeleteVolumeOpenZFSConfiguration::DeleteVolumeOpenZFSConfiguration() : 
-    m_optionsHasBeenSet(false)
-{
-}
-
-DeleteVolumeOpenZFSConfiguration::DeleteVolumeOpenZFSConfiguration(JsonView jsonValue) : 
-    m_optionsHasBeenSet(false)
+DeleteVolumeOpenZFSConfiguration::DeleteVolumeOpenZFSConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ DeleteVolumeOpenZFSConfiguration& DeleteVolumeOpenZFSConfiguration::operator =(J
     }
     m_optionsHasBeenSet = true;
   }
-
   return *this;
 }
 

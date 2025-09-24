@@ -34,91 +34,38 @@ namespace Model
   class ExperienceConfiguration
   {
   public:
-    AWS_KENDRA_API ExperienceConfiguration();
+    AWS_KENDRA_API ExperienceConfiguration() = default;
     AWS_KENDRA_API ExperienceConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API ExperienceConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifiers of your data sources and FAQs. Or, you can specify that you
      * want to use documents indexed via the <code>BatchPutDocument</code> API. This is
      * the content you want to use for your Amazon Kendra experience.</p>
      */
-    inline const ContentSourceConfiguration& GetContentSourceConfiguration() const{ return m_contentSourceConfiguration; }
-
-    /**
-     * <p>The identifiers of your data sources and FAQs. Or, you can specify that you
-     * want to use documents indexed via the <code>BatchPutDocument</code> API. This is
-     * the content you want to use for your Amazon Kendra experience.</p>
-     */
+    inline const ContentSourceConfiguration& GetContentSourceConfiguration() const { return m_contentSourceConfiguration; }
     inline bool ContentSourceConfigurationHasBeenSet() const { return m_contentSourceConfigurationHasBeenSet; }
+    template<typename ContentSourceConfigurationT = ContentSourceConfiguration>
+    void SetContentSourceConfiguration(ContentSourceConfigurationT&& value) { m_contentSourceConfigurationHasBeenSet = true; m_contentSourceConfiguration = std::forward<ContentSourceConfigurationT>(value); }
+    template<typename ContentSourceConfigurationT = ContentSourceConfiguration>
+    ExperienceConfiguration& WithContentSourceConfiguration(ContentSourceConfigurationT&& value) { SetContentSourceConfiguration(std::forward<ContentSourceConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifiers of your data sources and FAQs. Or, you can specify that you
-     * want to use documents indexed via the <code>BatchPutDocument</code> API. This is
-     * the content you want to use for your Amazon Kendra experience.</p>
-     */
-    inline void SetContentSourceConfiguration(const ContentSourceConfiguration& value) { m_contentSourceConfigurationHasBeenSet = true; m_contentSourceConfiguration = value; }
-
-    /**
-     * <p>The identifiers of your data sources and FAQs. Or, you can specify that you
-     * want to use documents indexed via the <code>BatchPutDocument</code> API. This is
-     * the content you want to use for your Amazon Kendra experience.</p>
-     */
-    inline void SetContentSourceConfiguration(ContentSourceConfiguration&& value) { m_contentSourceConfigurationHasBeenSet = true; m_contentSourceConfiguration = std::move(value); }
-
-    /**
-     * <p>The identifiers of your data sources and FAQs. Or, you can specify that you
-     * want to use documents indexed via the <code>BatchPutDocument</code> API. This is
-     * the content you want to use for your Amazon Kendra experience.</p>
-     */
-    inline ExperienceConfiguration& WithContentSourceConfiguration(const ContentSourceConfiguration& value) { SetContentSourceConfiguration(value); return *this;}
-
-    /**
-     * <p>The identifiers of your data sources and FAQs. Or, you can specify that you
-     * want to use documents indexed via the <code>BatchPutDocument</code> API. This is
-     * the content you want to use for your Amazon Kendra experience.</p>
-     */
-    inline ExperienceConfiguration& WithContentSourceConfiguration(ContentSourceConfiguration&& value) { SetContentSourceConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The IAM Identity Center field name that contains the identifiers of your
      * users, such as their emails.</p>
      */
-    inline const UserIdentityConfiguration& GetUserIdentityConfiguration() const{ return m_userIdentityConfiguration; }
-
-    /**
-     * <p>The IAM Identity Center field name that contains the identifiers of your
-     * users, such as their emails.</p>
-     */
+    inline const UserIdentityConfiguration& GetUserIdentityConfiguration() const { return m_userIdentityConfiguration; }
     inline bool UserIdentityConfigurationHasBeenSet() const { return m_userIdentityConfigurationHasBeenSet; }
-
-    /**
-     * <p>The IAM Identity Center field name that contains the identifiers of your
-     * users, such as their emails.</p>
-     */
-    inline void SetUserIdentityConfiguration(const UserIdentityConfiguration& value) { m_userIdentityConfigurationHasBeenSet = true; m_userIdentityConfiguration = value; }
-
-    /**
-     * <p>The IAM Identity Center field name that contains the identifiers of your
-     * users, such as their emails.</p>
-     */
-    inline void SetUserIdentityConfiguration(UserIdentityConfiguration&& value) { m_userIdentityConfigurationHasBeenSet = true; m_userIdentityConfiguration = std::move(value); }
-
-    /**
-     * <p>The IAM Identity Center field name that contains the identifiers of your
-     * users, such as their emails.</p>
-     */
-    inline ExperienceConfiguration& WithUserIdentityConfiguration(const UserIdentityConfiguration& value) { SetUserIdentityConfiguration(value); return *this;}
-
-    /**
-     * <p>The IAM Identity Center field name that contains the identifiers of your
-     * users, such as their emails.</p>
-     */
-    inline ExperienceConfiguration& WithUserIdentityConfiguration(UserIdentityConfiguration&& value) { SetUserIdentityConfiguration(std::move(value)); return *this;}
-
+    template<typename UserIdentityConfigurationT = UserIdentityConfiguration>
+    void SetUserIdentityConfiguration(UserIdentityConfigurationT&& value) { m_userIdentityConfigurationHasBeenSet = true; m_userIdentityConfiguration = std::forward<UserIdentityConfigurationT>(value); }
+    template<typename UserIdentityConfigurationT = UserIdentityConfiguration>
+    ExperienceConfiguration& WithUserIdentityConfiguration(UserIdentityConfigurationT&& value) { SetUserIdentityConfiguration(std::forward<UserIdentityConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     ContentSourceConfiguration m_contentSourceConfiguration;

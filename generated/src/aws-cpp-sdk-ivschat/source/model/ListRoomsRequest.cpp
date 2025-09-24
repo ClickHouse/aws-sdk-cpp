@@ -12,23 +12,19 @@ using namespace Aws::ivschat::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListRoomsRequest::ListRoomsRequest() : 
-    m_loggingConfigurationIdentifierHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_messageReviewHandlerUriHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListRoomsRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_loggingConfigurationIdentifierHasBeenSet)
+  if(m_nameHasBeenSet)
   {
-   payload.WithString("loggingConfigurationIdentifier", m_loggingConfigurationIdentifier);
+   payload.WithString("name", m_name);
+
+  }
+
+  if(m_nextTokenHasBeenSet)
+  {
+   payload.WithString("nextToken", m_nextToken);
 
   }
 
@@ -44,15 +40,9 @@ Aws::String ListRoomsRequest::SerializePayload() const
 
   }
 
-  if(m_nameHasBeenSet)
+  if(m_loggingConfigurationIdentifierHasBeenSet)
   {
-   payload.WithString("name", m_name);
-
-  }
-
-  if(m_nextTokenHasBeenSet)
-  {
-   payload.WithString("nextToken", m_nextToken);
+   payload.WithString("loggingConfigurationIdentifier", m_loggingConfigurationIdentifier);
 
   }
 

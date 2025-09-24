@@ -18,17 +18,7 @@ namespace kendra
 namespace Model
 {
 
-ConfluenceAttachmentConfiguration::ConfluenceAttachmentConfiguration() : 
-    m_crawlAttachments(false),
-    m_crawlAttachmentsHasBeenSet(false),
-    m_attachmentFieldMappingsHasBeenSet(false)
-{
-}
-
-ConfluenceAttachmentConfiguration::ConfluenceAttachmentConfiguration(JsonView jsonValue) : 
-    m_crawlAttachments(false),
-    m_crawlAttachmentsHasBeenSet(false),
-    m_attachmentFieldMappingsHasBeenSet(false)
+ConfluenceAttachmentConfiguration::ConfluenceAttachmentConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ ConfluenceAttachmentConfiguration& ConfluenceAttachmentConfiguration::operator =
   if(jsonValue.ValueExists("CrawlAttachments"))
   {
     m_crawlAttachments = jsonValue.GetBool("CrawlAttachments");
-
     m_crawlAttachmentsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AttachmentFieldMappings"))
   {
     Aws::Utils::Array<JsonView> attachmentFieldMappingsJsonList = jsonValue.GetArray("AttachmentFieldMappings");
@@ -51,7 +39,6 @@ ConfluenceAttachmentConfiguration& ConfluenceAttachmentConfiguration::operator =
     }
     m_attachmentFieldMappingsHasBeenSet = true;
   }
-
   return *this;
 }
 

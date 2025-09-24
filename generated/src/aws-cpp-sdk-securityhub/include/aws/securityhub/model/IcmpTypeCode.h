@@ -30,67 +30,39 @@ namespace Model
   class IcmpTypeCode
   {
   public:
-    AWS_SECURITYHUB_API IcmpTypeCode();
+    AWS_SECURITYHUB_API IcmpTypeCode() = default;
     AWS_SECURITYHUB_API IcmpTypeCode(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API IcmpTypeCode& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ICMP code for which to deny or allow access. To deny or allow all codes,
      * use the value <code>-1</code>.</p>
      */
-    inline int GetCode() const{ return m_code; }
-
-    /**
-     * <p>The ICMP code for which to deny or allow access. To deny or allow all codes,
-     * use the value <code>-1</code>.</p>
-     */
+    inline int GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
-
-    /**
-     * <p>The ICMP code for which to deny or allow access. To deny or allow all codes,
-     * use the value <code>-1</code>.</p>
-     */
     inline void SetCode(int value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The ICMP code for which to deny or allow access. To deny or allow all codes,
-     * use the value <code>-1</code>.</p>
-     */
     inline IcmpTypeCode& WithCode(int value) { SetCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ICMP type for which to deny or allow access. To deny or allow all types,
      * use the value <code>-1</code>.</p>
      */
-    inline int GetType() const{ return m_type; }
-
-    /**
-     * <p>The ICMP type for which to deny or allow access. To deny or allow all types,
-     * use the value <code>-1</code>.</p>
-     */
+    inline int GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The ICMP type for which to deny or allow access. To deny or allow all types,
-     * use the value <code>-1</code>.</p>
-     */
     inline void SetType(int value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The ICMP type for which to deny or allow access. To deny or allow all types,
-     * use the value <code>-1</code>.</p>
-     */
     inline IcmpTypeCode& WithType(int value) { SetType(value); return *this;}
-
+    ///@}
   private:
 
-    int m_code;
+    int m_code{0};
     bool m_codeHasBeenSet = false;
 
-    int m_type;
+    int m_type{0};
     bool m_typeHasBeenSet = false;
   };
 

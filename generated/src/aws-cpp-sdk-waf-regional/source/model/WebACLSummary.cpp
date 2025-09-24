@@ -18,15 +18,7 @@ namespace WAFRegional
 namespace Model
 {
 
-WebACLSummary::WebACLSummary() : 
-    m_webACLIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-WebACLSummary::WebACLSummary(JsonView jsonValue) : 
-    m_webACLIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
+WebACLSummary::WebACLSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ WebACLSummary& WebACLSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("WebACLId"))
   {
     m_webACLId = jsonValue.GetString("WebACLId");
-
     m_webACLIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

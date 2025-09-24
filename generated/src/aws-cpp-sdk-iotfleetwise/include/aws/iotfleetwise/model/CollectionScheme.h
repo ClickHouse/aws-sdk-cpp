@@ -33,85 +33,37 @@ namespace Model
   class CollectionScheme
   {
   public:
-    AWS_IOTFLEETWISE_API CollectionScheme();
+    AWS_IOTFLEETWISE_API CollectionScheme() = default;
     AWS_IOTFLEETWISE_API CollectionScheme(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API CollectionScheme& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTFLEETWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about a collection scheme that uses a time period to decide how
      * often to collect data.</p>
      */
-    inline const TimeBasedCollectionScheme& GetTimeBasedCollectionScheme() const{ return m_timeBasedCollectionScheme; }
-
-    /**
-     * <p>Information about a collection scheme that uses a time period to decide how
-     * often to collect data.</p>
-     */
+    inline const TimeBasedCollectionScheme& GetTimeBasedCollectionScheme() const { return m_timeBasedCollectionScheme; }
     inline bool TimeBasedCollectionSchemeHasBeenSet() const { return m_timeBasedCollectionSchemeHasBeenSet; }
+    template<typename TimeBasedCollectionSchemeT = TimeBasedCollectionScheme>
+    void SetTimeBasedCollectionScheme(TimeBasedCollectionSchemeT&& value) { m_timeBasedCollectionSchemeHasBeenSet = true; m_timeBasedCollectionScheme = std::forward<TimeBasedCollectionSchemeT>(value); }
+    template<typename TimeBasedCollectionSchemeT = TimeBasedCollectionScheme>
+    CollectionScheme& WithTimeBasedCollectionScheme(TimeBasedCollectionSchemeT&& value) { SetTimeBasedCollectionScheme(std::forward<TimeBasedCollectionSchemeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about a collection scheme that uses a time period to decide how
-     * often to collect data.</p>
-     */
-    inline void SetTimeBasedCollectionScheme(const TimeBasedCollectionScheme& value) { m_timeBasedCollectionSchemeHasBeenSet = true; m_timeBasedCollectionScheme = value; }
-
-    /**
-     * <p>Information about a collection scheme that uses a time period to decide how
-     * often to collect data.</p>
-     */
-    inline void SetTimeBasedCollectionScheme(TimeBasedCollectionScheme&& value) { m_timeBasedCollectionSchemeHasBeenSet = true; m_timeBasedCollectionScheme = std::move(value); }
-
-    /**
-     * <p>Information about a collection scheme that uses a time period to decide how
-     * often to collect data.</p>
-     */
-    inline CollectionScheme& WithTimeBasedCollectionScheme(const TimeBasedCollectionScheme& value) { SetTimeBasedCollectionScheme(value); return *this;}
-
-    /**
-     * <p>Information about a collection scheme that uses a time period to decide how
-     * often to collect data.</p>
-     */
-    inline CollectionScheme& WithTimeBasedCollectionScheme(TimeBasedCollectionScheme&& value) { SetTimeBasedCollectionScheme(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about a collection scheme that uses a simple logical expression
      * to recognize what data to collect.</p>
      */
-    inline const ConditionBasedCollectionScheme& GetConditionBasedCollectionScheme() const{ return m_conditionBasedCollectionScheme; }
-
-    /**
-     * <p>Information about a collection scheme that uses a simple logical expression
-     * to recognize what data to collect.</p>
-     */
+    inline const ConditionBasedCollectionScheme& GetConditionBasedCollectionScheme() const { return m_conditionBasedCollectionScheme; }
     inline bool ConditionBasedCollectionSchemeHasBeenSet() const { return m_conditionBasedCollectionSchemeHasBeenSet; }
-
-    /**
-     * <p>Information about a collection scheme that uses a simple logical expression
-     * to recognize what data to collect.</p>
-     */
-    inline void SetConditionBasedCollectionScheme(const ConditionBasedCollectionScheme& value) { m_conditionBasedCollectionSchemeHasBeenSet = true; m_conditionBasedCollectionScheme = value; }
-
-    /**
-     * <p>Information about a collection scheme that uses a simple logical expression
-     * to recognize what data to collect.</p>
-     */
-    inline void SetConditionBasedCollectionScheme(ConditionBasedCollectionScheme&& value) { m_conditionBasedCollectionSchemeHasBeenSet = true; m_conditionBasedCollectionScheme = std::move(value); }
-
-    /**
-     * <p>Information about a collection scheme that uses a simple logical expression
-     * to recognize what data to collect.</p>
-     */
-    inline CollectionScheme& WithConditionBasedCollectionScheme(const ConditionBasedCollectionScheme& value) { SetConditionBasedCollectionScheme(value); return *this;}
-
-    /**
-     * <p>Information about a collection scheme that uses a simple logical expression
-     * to recognize what data to collect.</p>
-     */
-    inline CollectionScheme& WithConditionBasedCollectionScheme(ConditionBasedCollectionScheme&& value) { SetConditionBasedCollectionScheme(std::move(value)); return *this;}
-
+    template<typename ConditionBasedCollectionSchemeT = ConditionBasedCollectionScheme>
+    void SetConditionBasedCollectionScheme(ConditionBasedCollectionSchemeT&& value) { m_conditionBasedCollectionSchemeHasBeenSet = true; m_conditionBasedCollectionScheme = std::forward<ConditionBasedCollectionSchemeT>(value); }
+    template<typename ConditionBasedCollectionSchemeT = ConditionBasedCollectionScheme>
+    CollectionScheme& WithConditionBasedCollectionScheme(ConditionBasedCollectionSchemeT&& value) { SetConditionBasedCollectionScheme(std::forward<ConditionBasedCollectionSchemeT>(value)); return *this;}
+    ///@}
   private:
 
     TimeBasedCollectionScheme m_timeBasedCollectionScheme;

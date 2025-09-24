@@ -29,59 +29,37 @@ namespace Model
   class RealTimeContactAnalysisCharacterInterval
   {
   public:
-    AWS_CONNECT_API RealTimeContactAnalysisCharacterInterval();
+    AWS_CONNECT_API RealTimeContactAnalysisCharacterInterval() = default;
     AWS_CONNECT_API RealTimeContactAnalysisCharacterInterval(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API RealTimeContactAnalysisCharacterInterval& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The beginning of the character interval.</p>
      */
-    inline int GetBeginOffsetChar() const{ return m_beginOffsetChar; }
-
-    /**
-     * <p>The beginning of the character interval.</p>
-     */
+    inline int GetBeginOffsetChar() const { return m_beginOffsetChar; }
     inline bool BeginOffsetCharHasBeenSet() const { return m_beginOffsetCharHasBeenSet; }
-
-    /**
-     * <p>The beginning of the character interval.</p>
-     */
     inline void SetBeginOffsetChar(int value) { m_beginOffsetCharHasBeenSet = true; m_beginOffsetChar = value; }
-
-    /**
-     * <p>The beginning of the character interval.</p>
-     */
     inline RealTimeContactAnalysisCharacterInterval& WithBeginOffsetChar(int value) { SetBeginOffsetChar(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The end of the character interval.</p>
      */
-    inline int GetEndOffsetChar() const{ return m_endOffsetChar; }
-
-    /**
-     * <p>The end of the character interval.</p>
-     */
+    inline int GetEndOffsetChar() const { return m_endOffsetChar; }
     inline bool EndOffsetCharHasBeenSet() const { return m_endOffsetCharHasBeenSet; }
-
-    /**
-     * <p>The end of the character interval.</p>
-     */
     inline void SetEndOffsetChar(int value) { m_endOffsetCharHasBeenSet = true; m_endOffsetChar = value; }
-
-    /**
-     * <p>The end of the character interval.</p>
-     */
     inline RealTimeContactAnalysisCharacterInterval& WithEndOffsetChar(int value) { SetEndOffsetChar(value); return *this;}
-
+    ///@}
   private:
 
-    int m_beginOffsetChar;
+    int m_beginOffsetChar{0};
     bool m_beginOffsetCharHasBeenSet = false;
 
-    int m_endOffsetChar;
+    int m_endOffsetChar{0};
     bool m_endOffsetCharHasBeenSet = false;
   };
 

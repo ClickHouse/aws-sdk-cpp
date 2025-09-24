@@ -18,21 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-SpekeKeyProviderCmaf::SpekeKeyProviderCmaf() : 
-    m_certificateArnHasBeenSet(false),
-    m_dashSignaledSystemIdsHasBeenSet(false),
-    m_hlsSignaledSystemIdsHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_urlHasBeenSet(false)
-{
-}
-
-SpekeKeyProviderCmaf::SpekeKeyProviderCmaf(JsonView jsonValue) : 
-    m_certificateArnHasBeenSet(false),
-    m_dashSignaledSystemIdsHasBeenSet(false),
-    m_hlsSignaledSystemIdsHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_urlHasBeenSet(false)
+SpekeKeyProviderCmaf::SpekeKeyProviderCmaf(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ SpekeKeyProviderCmaf& SpekeKeyProviderCmaf::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("certificateArn"))
   {
     m_certificateArn = jsonValue.GetString("certificateArn");
-
     m_certificateArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dashSignaledSystemIds"))
   {
     Aws::Utils::Array<JsonView> dashSignaledSystemIdsJsonList = jsonValue.GetArray("dashSignaledSystemIds");
@@ -55,7 +39,11 @@ SpekeKeyProviderCmaf& SpekeKeyProviderCmaf::operator =(JsonView jsonValue)
     }
     m_dashSignaledSystemIdsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("encryptionContractConfiguration"))
+  {
+    m_encryptionContractConfiguration = jsonValue.GetObject("encryptionContractConfiguration");
+    m_encryptionContractConfigurationHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("hlsSignaledSystemIds"))
   {
     Aws::Utils::Array<JsonView> hlsSignaledSystemIdsJsonList = jsonValue.GetArray("hlsSignaledSystemIds");
@@ -65,21 +53,16 @@ SpekeKeyProviderCmaf& SpekeKeyProviderCmaf::operator =(JsonView jsonValue)
     }
     m_hlsSignaledSystemIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resourceId"))
   {
     m_resourceId = jsonValue.GetString("resourceId");
-
     m_resourceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("url"))
   {
     m_url = jsonValue.GetString("url");
-
     m_urlHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -101,6 +84,12 @@ JsonValue SpekeKeyProviderCmaf::Jsonize() const
      dashSignaledSystemIdsJsonList[dashSignaledSystemIdsIndex].AsString(m_dashSignaledSystemIds[dashSignaledSystemIdsIndex]);
    }
    payload.WithArray("dashSignaledSystemIds", std::move(dashSignaledSystemIdsJsonList));
+
+  }
+
+  if(m_encryptionContractConfigurationHasBeenSet)
+  {
+   payload.WithObject("encryptionContractConfiguration", m_encryptionContractConfiguration.Jsonize());
 
   }
 

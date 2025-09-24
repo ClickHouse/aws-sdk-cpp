@@ -25,7 +25,7 @@ namespace Model
   class CreateDocumentationVersionRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API CreateDocumentationVersionRequest();
+    AWS_APIGATEWAY_API CreateDocumentationVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,169 +36,53 @@ namespace Model
     AWS_APIGATEWAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The string identifier of the associated RestApi.</p>
      */
-    inline const Aws::String& GetRestApiId() const{ return m_restApiId; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
+    inline const Aws::String& GetRestApiId() const { return m_restApiId; }
     inline bool RestApiIdHasBeenSet() const { return m_restApiIdHasBeenSet; }
+    template<typename RestApiIdT = Aws::String>
+    void SetRestApiId(RestApiIdT&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::forward<RestApiIdT>(value); }
+    template<typename RestApiIdT = Aws::String>
+    CreateDocumentationVersionRequest& WithRestApiId(RestApiIdT&& value) { SetRestApiId(std::forward<RestApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const Aws::String& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const char* value) { m_restApiIdHasBeenSet = true; m_restApiId.assign(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithRestApiId(const Aws::String& value) { SetRestApiId(value); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithRestApiId(const char* value) { SetRestApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version identifier of the new snapshot.</p>
      */
-    inline const Aws::String& GetDocumentationVersion() const{ return m_documentationVersion; }
-
-    /**
-     * <p>The version identifier of the new snapshot.</p>
-     */
+    inline const Aws::String& GetDocumentationVersion() const { return m_documentationVersion; }
     inline bool DocumentationVersionHasBeenSet() const { return m_documentationVersionHasBeenSet; }
+    template<typename DocumentationVersionT = Aws::String>
+    void SetDocumentationVersion(DocumentationVersionT&& value) { m_documentationVersionHasBeenSet = true; m_documentationVersion = std::forward<DocumentationVersionT>(value); }
+    template<typename DocumentationVersionT = Aws::String>
+    CreateDocumentationVersionRequest& WithDocumentationVersion(DocumentationVersionT&& value) { SetDocumentationVersion(std::forward<DocumentationVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version identifier of the new snapshot.</p>
-     */
-    inline void SetDocumentationVersion(const Aws::String& value) { m_documentationVersionHasBeenSet = true; m_documentationVersion = value; }
-
-    /**
-     * <p>The version identifier of the new snapshot.</p>
-     */
-    inline void SetDocumentationVersion(Aws::String&& value) { m_documentationVersionHasBeenSet = true; m_documentationVersion = std::move(value); }
-
-    /**
-     * <p>The version identifier of the new snapshot.</p>
-     */
-    inline void SetDocumentationVersion(const char* value) { m_documentationVersionHasBeenSet = true; m_documentationVersion.assign(value); }
-
-    /**
-     * <p>The version identifier of the new snapshot.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithDocumentationVersion(const Aws::String& value) { SetDocumentationVersion(value); return *this;}
-
-    /**
-     * <p>The version identifier of the new snapshot.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithDocumentationVersion(Aws::String&& value) { SetDocumentationVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version identifier of the new snapshot.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithDocumentationVersion(const char* value) { SetDocumentationVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The stage name to be associated with the new documentation snapshot.</p>
      */
-    inline const Aws::String& GetStageName() const{ return m_stageName; }
-
-    /**
-     * <p>The stage name to be associated with the new documentation snapshot.</p>
-     */
+    inline const Aws::String& GetStageName() const { return m_stageName; }
     inline bool StageNameHasBeenSet() const { return m_stageNameHasBeenSet; }
+    template<typename StageNameT = Aws::String>
+    void SetStageName(StageNameT&& value) { m_stageNameHasBeenSet = true; m_stageName = std::forward<StageNameT>(value); }
+    template<typename StageNameT = Aws::String>
+    CreateDocumentationVersionRequest& WithStageName(StageNameT&& value) { SetStageName(std::forward<StageNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The stage name to be associated with the new documentation snapshot.</p>
-     */
-    inline void SetStageName(const Aws::String& value) { m_stageNameHasBeenSet = true; m_stageName = value; }
-
-    /**
-     * <p>The stage name to be associated with the new documentation snapshot.</p>
-     */
-    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = std::move(value); }
-
-    /**
-     * <p>The stage name to be associated with the new documentation snapshot.</p>
-     */
-    inline void SetStageName(const char* value) { m_stageNameHasBeenSet = true; m_stageName.assign(value); }
-
-    /**
-     * <p>The stage name to be associated with the new documentation snapshot.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithStageName(const Aws::String& value) { SetStageName(value); return *this;}
-
-    /**
-     * <p>The stage name to be associated with the new documentation snapshot.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The stage name to be associated with the new documentation snapshot.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithStageName(const char* value) { SetStageName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description about the new documentation snapshot.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description about the new documentation snapshot.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>A description about the new documentation snapshot.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description about the new documentation snapshot.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description about the new documentation snapshot.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description about the new documentation snapshot.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description about the new documentation snapshot.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description about the new documentation snapshot.</p>
-     */
-    inline CreateDocumentationVersionRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateDocumentationVersionRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_restApiId;

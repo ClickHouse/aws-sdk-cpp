@@ -28,7 +28,7 @@ namespace Model
   class GetDomainDeliverabilityCampaignRequest : public PinpointEmailRequest
   {
   public:
-    AWS_PINPOINTEMAIL_API GetDomainDeliverabilityCampaignRequest();
+    AWS_PINPOINTEMAIL_API GetDomainDeliverabilityCampaignRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,6 +39,7 @@ namespace Model
     AWS_PINPOINTEMAIL_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the campaign. Amazon Pinpoint automatically
      * generates and assigns this identifier to a campaign. This value is not the same
@@ -46,71 +47,13 @@ namespace Model
      * create and manage by using the Amazon Pinpoint API or the Amazon Pinpoint
      * console.</p>
      */
-    inline const Aws::String& GetCampaignId() const{ return m_campaignId; }
-
-    /**
-     * <p>The unique identifier for the campaign. Amazon Pinpoint automatically
-     * generates and assigns this identifier to a campaign. This value is not the same
-     * as the campaign identifier that Amazon Pinpoint assigns to campaigns that you
-     * create and manage by using the Amazon Pinpoint API or the Amazon Pinpoint
-     * console.</p>
-     */
+    inline const Aws::String& GetCampaignId() const { return m_campaignId; }
     inline bool CampaignIdHasBeenSet() const { return m_campaignIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the campaign. Amazon Pinpoint automatically
-     * generates and assigns this identifier to a campaign. This value is not the same
-     * as the campaign identifier that Amazon Pinpoint assigns to campaigns that you
-     * create and manage by using the Amazon Pinpoint API or the Amazon Pinpoint
-     * console.</p>
-     */
-    inline void SetCampaignId(const Aws::String& value) { m_campaignIdHasBeenSet = true; m_campaignId = value; }
-
-    /**
-     * <p>The unique identifier for the campaign. Amazon Pinpoint automatically
-     * generates and assigns this identifier to a campaign. This value is not the same
-     * as the campaign identifier that Amazon Pinpoint assigns to campaigns that you
-     * create and manage by using the Amazon Pinpoint API or the Amazon Pinpoint
-     * console.</p>
-     */
-    inline void SetCampaignId(Aws::String&& value) { m_campaignIdHasBeenSet = true; m_campaignId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the campaign. Amazon Pinpoint automatically
-     * generates and assigns this identifier to a campaign. This value is not the same
-     * as the campaign identifier that Amazon Pinpoint assigns to campaigns that you
-     * create and manage by using the Amazon Pinpoint API or the Amazon Pinpoint
-     * console.</p>
-     */
-    inline void SetCampaignId(const char* value) { m_campaignIdHasBeenSet = true; m_campaignId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the campaign. Amazon Pinpoint automatically
-     * generates and assigns this identifier to a campaign. This value is not the same
-     * as the campaign identifier that Amazon Pinpoint assigns to campaigns that you
-     * create and manage by using the Amazon Pinpoint API or the Amazon Pinpoint
-     * console.</p>
-     */
-    inline GetDomainDeliverabilityCampaignRequest& WithCampaignId(const Aws::String& value) { SetCampaignId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the campaign. Amazon Pinpoint automatically
-     * generates and assigns this identifier to a campaign. This value is not the same
-     * as the campaign identifier that Amazon Pinpoint assigns to campaigns that you
-     * create and manage by using the Amazon Pinpoint API or the Amazon Pinpoint
-     * console.</p>
-     */
-    inline GetDomainDeliverabilityCampaignRequest& WithCampaignId(Aws::String&& value) { SetCampaignId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the campaign. Amazon Pinpoint automatically
-     * generates and assigns this identifier to a campaign. This value is not the same
-     * as the campaign identifier that Amazon Pinpoint assigns to campaigns that you
-     * create and manage by using the Amazon Pinpoint API or the Amazon Pinpoint
-     * console.</p>
-     */
-    inline GetDomainDeliverabilityCampaignRequest& WithCampaignId(const char* value) { SetCampaignId(value); return *this;}
-
+    template<typename CampaignIdT = Aws::String>
+    void SetCampaignId(CampaignIdT&& value) { m_campaignIdHasBeenSet = true; m_campaignId = std::forward<CampaignIdT>(value); }
+    template<typename CampaignIdT = Aws::String>
+    GetDomainDeliverabilityCampaignRequest& WithCampaignId(CampaignIdT&& value) { SetCampaignId(std::forward<CampaignIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_campaignId;

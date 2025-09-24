@@ -22,7 +22,7 @@ namespace Model
   class GroupResourcesRequest : public ResourceGroupsRequest
   {
   public:
-    AWS_RESOURCEGROUPS_API GroupResourcesRequest();
+    AWS_RESOURCEGROUPS_API GroupResourcesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,92 +33,33 @@ namespace Model
     AWS_RESOURCEGROUPS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The name or the ARN of the resource group to add resources to.</p>
+     * <p>The name or the Amazon resource name (ARN) of the resource group to add
+     * resources to.</p>
      */
-    inline const Aws::String& GetGroup() const{ return m_group; }
-
-    /**
-     * <p>The name or the ARN of the resource group to add resources to.</p>
-     */
+    inline const Aws::String& GetGroup() const { return m_group; }
     inline bool GroupHasBeenSet() const { return m_groupHasBeenSet; }
+    template<typename GroupT = Aws::String>
+    void SetGroup(GroupT&& value) { m_groupHasBeenSet = true; m_group = std::forward<GroupT>(value); }
+    template<typename GroupT = Aws::String>
+    GroupResourcesRequest& WithGroup(GroupT&& value) { SetGroup(std::forward<GroupT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name or the ARN of the resource group to add resources to.</p>
+     * <p>The list of Amazon resource names (ARNs) of the resources to be added to the
+     * group. </p>
      */
-    inline void SetGroup(const Aws::String& value) { m_groupHasBeenSet = true; m_group = value; }
-
-    /**
-     * <p>The name or the ARN of the resource group to add resources to.</p>
-     */
-    inline void SetGroup(Aws::String&& value) { m_groupHasBeenSet = true; m_group = std::move(value); }
-
-    /**
-     * <p>The name or the ARN of the resource group to add resources to.</p>
-     */
-    inline void SetGroup(const char* value) { m_groupHasBeenSet = true; m_group.assign(value); }
-
-    /**
-     * <p>The name or the ARN of the resource group to add resources to.</p>
-     */
-    inline GroupResourcesRequest& WithGroup(const Aws::String& value) { SetGroup(value); return *this;}
-
-    /**
-     * <p>The name or the ARN of the resource group to add resources to.</p>
-     */
-    inline GroupResourcesRequest& WithGroup(Aws::String&& value) { SetGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or the ARN of the resource group to add resources to.</p>
-     */
-    inline GroupResourcesRequest& WithGroup(const char* value) { SetGroup(value); return *this;}
-
-
-    /**
-     * <p>The list of ARNs of the resources to be added to the group. </p>
-     */
-    inline const Aws::Vector<Aws::String>& GetResourceArns() const{ return m_resourceArns; }
-
-    /**
-     * <p>The list of ARNs of the resources to be added to the group. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetResourceArns() const { return m_resourceArns; }
     inline bool ResourceArnsHasBeenSet() const { return m_resourceArnsHasBeenSet; }
-
-    /**
-     * <p>The list of ARNs of the resources to be added to the group. </p>
-     */
-    inline void SetResourceArns(const Aws::Vector<Aws::String>& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = value; }
-
-    /**
-     * <p>The list of ARNs of the resources to be added to the group. </p>
-     */
-    inline void SetResourceArns(Aws::Vector<Aws::String>&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = std::move(value); }
-
-    /**
-     * <p>The list of ARNs of the resources to be added to the group. </p>
-     */
-    inline GroupResourcesRequest& WithResourceArns(const Aws::Vector<Aws::String>& value) { SetResourceArns(value); return *this;}
-
-    /**
-     * <p>The list of ARNs of the resources to be added to the group. </p>
-     */
-    inline GroupResourcesRequest& WithResourceArns(Aws::Vector<Aws::String>&& value) { SetResourceArns(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of ARNs of the resources to be added to the group. </p>
-     */
-    inline GroupResourcesRequest& AddResourceArns(const Aws::String& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(value); return *this; }
-
-    /**
-     * <p>The list of ARNs of the resources to be added to the group. </p>
-     */
-    inline GroupResourcesRequest& AddResourceArns(Aws::String&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of ARNs of the resources to be added to the group. </p>
-     */
-    inline GroupResourcesRequest& AddResourceArns(const char* value) { m_resourceArnsHasBeenSet = true; m_resourceArns.push_back(value); return *this; }
-
+    template<typename ResourceArnsT = Aws::Vector<Aws::String>>
+    void SetResourceArns(ResourceArnsT&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns = std::forward<ResourceArnsT>(value); }
+    template<typename ResourceArnsT = Aws::Vector<Aws::String>>
+    GroupResourcesRequest& WithResourceArns(ResourceArnsT&& value) { SetResourceArns(std::forward<ResourceArnsT>(value)); return *this;}
+    template<typename ResourceArnsT = Aws::String>
+    GroupResourcesRequest& AddResourceArns(ResourceArnsT&& value) { m_resourceArnsHasBeenSet = true; m_resourceArns.emplace_back(std::forward<ResourceArnsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_group;

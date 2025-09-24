@@ -34,146 +34,52 @@ namespace Model
   class Suggestion
   {
   public:
-    AWS_KENDRA_API Suggestion();
+    AWS_KENDRA_API Suggestion() = default;
     AWS_KENDRA_API Suggestion(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Suggestion& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The UUID (universally unique identifier) of a single query suggestion.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The UUID (universally unique identifier) of a single query suggestion.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Suggestion& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The UUID (universally unique identifier) of a single query suggestion.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The UUID (universally unique identifier) of a single query suggestion.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The UUID (universally unique identifier) of a single query suggestion.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The UUID (universally unique identifier) of a single query suggestion.</p>
-     */
-    inline Suggestion& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The UUID (universally unique identifier) of a single query suggestion.</p>
-     */
-    inline Suggestion& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The UUID (universally unique identifier) of a single query suggestion.</p>
-     */
-    inline Suggestion& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value for the UUID (universally unique identifier) of a single query
      * suggestion.</p> <p>The value is the text string of a suggestion.</p>
      */
-    inline const SuggestionValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value for the UUID (universally unique identifier) of a single query
-     * suggestion.</p> <p>The value is the text string of a suggestion.</p>
-     */
+    inline const SuggestionValue& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = SuggestionValue>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = SuggestionValue>
+    Suggestion& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value for the UUID (universally unique identifier) of a single query
-     * suggestion.</p> <p>The value is the text string of a suggestion.</p>
-     */
-    inline void SetValue(const SuggestionValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value for the UUID (universally unique identifier) of a single query
-     * suggestion.</p> <p>The value is the text string of a suggestion.</p>
-     */
-    inline void SetValue(SuggestionValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value for the UUID (universally unique identifier) of a single query
-     * suggestion.</p> <p>The value is the text string of a suggestion.</p>
-     */
-    inline Suggestion& WithValue(const SuggestionValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value for the UUID (universally unique identifier) of a single query
-     * suggestion.</p> <p>The value is the text string of a suggestion.</p>
-     */
-    inline Suggestion& WithValue(SuggestionValue&& value) { SetValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of document IDs and their fields/attributes that are used for a
      * single query suggestion, if document fields set to use for query
      * suggestions.</p>
      */
-    inline const Aws::Vector<SourceDocument>& GetSourceDocuments() const{ return m_sourceDocuments; }
-
-    /**
-     * <p>The list of document IDs and their fields/attributes that are used for a
-     * single query suggestion, if document fields set to use for query
-     * suggestions.</p>
-     */
+    inline const Aws::Vector<SourceDocument>& GetSourceDocuments() const { return m_sourceDocuments; }
     inline bool SourceDocumentsHasBeenSet() const { return m_sourceDocumentsHasBeenSet; }
-
-    /**
-     * <p>The list of document IDs and their fields/attributes that are used for a
-     * single query suggestion, if document fields set to use for query
-     * suggestions.</p>
-     */
-    inline void SetSourceDocuments(const Aws::Vector<SourceDocument>& value) { m_sourceDocumentsHasBeenSet = true; m_sourceDocuments = value; }
-
-    /**
-     * <p>The list of document IDs and their fields/attributes that are used for a
-     * single query suggestion, if document fields set to use for query
-     * suggestions.</p>
-     */
-    inline void SetSourceDocuments(Aws::Vector<SourceDocument>&& value) { m_sourceDocumentsHasBeenSet = true; m_sourceDocuments = std::move(value); }
-
-    /**
-     * <p>The list of document IDs and their fields/attributes that are used for a
-     * single query suggestion, if document fields set to use for query
-     * suggestions.</p>
-     */
-    inline Suggestion& WithSourceDocuments(const Aws::Vector<SourceDocument>& value) { SetSourceDocuments(value); return *this;}
-
-    /**
-     * <p>The list of document IDs and their fields/attributes that are used for a
-     * single query suggestion, if document fields set to use for query
-     * suggestions.</p>
-     */
-    inline Suggestion& WithSourceDocuments(Aws::Vector<SourceDocument>&& value) { SetSourceDocuments(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of document IDs and their fields/attributes that are used for a
-     * single query suggestion, if document fields set to use for query
-     * suggestions.</p>
-     */
-    inline Suggestion& AddSourceDocuments(const SourceDocument& value) { m_sourceDocumentsHasBeenSet = true; m_sourceDocuments.push_back(value); return *this; }
-
-    /**
-     * <p>The list of document IDs and their fields/attributes that are used for a
-     * single query suggestion, if document fields set to use for query
-     * suggestions.</p>
-     */
-    inline Suggestion& AddSourceDocuments(SourceDocument&& value) { m_sourceDocumentsHasBeenSet = true; m_sourceDocuments.push_back(std::move(value)); return *this; }
-
+    template<typename SourceDocumentsT = Aws::Vector<SourceDocument>>
+    void SetSourceDocuments(SourceDocumentsT&& value) { m_sourceDocumentsHasBeenSet = true; m_sourceDocuments = std::forward<SourceDocumentsT>(value); }
+    template<typename SourceDocumentsT = Aws::Vector<SourceDocument>>
+    Suggestion& WithSourceDocuments(SourceDocumentsT&& value) { SetSourceDocuments(std::forward<SourceDocumentsT>(value)); return *this;}
+    template<typename SourceDocumentsT = SourceDocument>
+    Suggestion& AddSourceDocuments(SourceDocumentsT&& value) { m_sourceDocumentsHasBeenSet = true; m_sourceDocuments.emplace_back(std::forward<SourceDocumentsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_id;

@@ -18,15 +18,7 @@ namespace EMRContainers
 namespace Model
 {
 
-SparkSqlJobDriver::SparkSqlJobDriver() : 
-    m_entryPointHasBeenSet(false),
-    m_sparkSqlParametersHasBeenSet(false)
-{
-}
-
-SparkSqlJobDriver::SparkSqlJobDriver(JsonView jsonValue) : 
-    m_entryPointHasBeenSet(false),
-    m_sparkSqlParametersHasBeenSet(false)
+SparkSqlJobDriver::SparkSqlJobDriver(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SparkSqlJobDriver& SparkSqlJobDriver::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("entryPoint"))
   {
     m_entryPoint = jsonValue.GetString("entryPoint");
-
     m_entryPointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sparkSqlParameters"))
   {
     m_sparkSqlParameters = jsonValue.GetString("sparkSqlParameters");
-
     m_sparkSqlParametersHasBeenSet = true;
   }
-
   return *this;
 }
 

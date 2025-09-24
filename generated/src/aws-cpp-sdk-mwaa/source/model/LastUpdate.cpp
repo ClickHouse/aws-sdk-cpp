@@ -18,61 +18,49 @@ namespace MWAA
 namespace Model
 {
 
-LastUpdate::LastUpdate() : 
-    m_createdAtHasBeenSet(false),
-    m_errorHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_status(UpdateStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-LastUpdate::LastUpdate(JsonView jsonValue) : 
-    m_createdAtHasBeenSet(false),
-    m_errorHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_status(UpdateStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+LastUpdate::LastUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 LastUpdate& LastUpdate::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("CreatedAt"))
-  {
-    m_createdAt = jsonValue.GetDouble("CreatedAt");
-
-    m_createdAtHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("Error"))
-  {
-    m_error = jsonValue.GetObject("Error");
-
-    m_errorHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("Source"))
-  {
-    m_source = jsonValue.GetString("Source");
-
-    m_sourceHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = UpdateStatusMapper::GetUpdateStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CreatedAt"))
+  {
+    m_createdAt = jsonValue.GetDouble("CreatedAt");
+    m_createdAtHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Error"))
+  {
+    m_error = jsonValue.GetObject("Error");
+    m_errorHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Source"))
+  {
+    m_source = jsonValue.GetString("Source");
+    m_sourceHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("WorkerReplacementStrategy"))
+  {
+    m_workerReplacementStrategy = WorkerReplacementStrategyMapper::GetWorkerReplacementStrategyForName(jsonValue.GetString("WorkerReplacementStrategy"));
+    m_workerReplacementStrategyHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue LastUpdate::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("Status", UpdateStatusMapper::GetNameForUpdateStatus(m_status));
+  }
 
   if(m_createdAtHasBeenSet)
   {
@@ -91,9 +79,9 @@ JsonValue LastUpdate::Jsonize() const
 
   }
 
-  if(m_statusHasBeenSet)
+  if(m_workerReplacementStrategyHasBeenSet)
   {
-   payload.WithString("Status", UpdateStatusMapper::GetNameForUpdateStatus(m_status));
+   payload.WithString("WorkerReplacementStrategy", WorkerReplacementStrategyMapper::GetNameForWorkerReplacementStrategy(m_workerReplacementStrategy));
   }
 
   return payload;

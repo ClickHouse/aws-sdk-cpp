@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PrivateDnsDetails::PrivateDnsDetails() : 
-    m_privateDnsNameHasBeenSet(false)
-{
-}
-
-PrivateDnsDetails::PrivateDnsDetails(const XmlNode& xmlNode) : 
-    m_privateDnsNameHasBeenSet(false)
+PrivateDnsDetails::PrivateDnsDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

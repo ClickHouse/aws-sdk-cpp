@@ -18,15 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-ExecutionResults::ExecutionResults() : 
-    m_stepsHasBeenSet(false),
-    m_onExceptionStepsHasBeenSet(false)
-{
-}
-
-ExecutionResults::ExecutionResults(JsonView jsonValue) : 
-    m_stepsHasBeenSet(false),
-    m_onExceptionStepsHasBeenSet(false)
+ExecutionResults::ExecutionResults(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ ExecutionResults& ExecutionResults::operator =(JsonView jsonValue)
     }
     m_stepsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OnExceptionSteps"))
   {
     Aws::Utils::Array<JsonView> onExceptionStepsJsonList = jsonValue.GetArray("OnExceptionSteps");
@@ -52,7 +43,6 @@ ExecutionResults& ExecutionResults::operator =(JsonView jsonValue)
     }
     m_onExceptionStepsHasBeenSet = true;
   }
-
   return *this;
 }
 

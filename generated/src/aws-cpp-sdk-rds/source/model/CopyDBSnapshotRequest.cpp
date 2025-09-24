@@ -10,22 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-CopyDBSnapshotRequest::CopyDBSnapshotRequest() : 
-    m_sourceDBSnapshotIdentifierHasBeenSet(false),
-    m_targetDBSnapshotIdentifierHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_copyTags(false),
-    m_copyTagsHasBeenSet(false),
-    m_preSignedUrlHasBeenSet(false),
-    m_optionGroupNameHasBeenSet(false),
-    m_targetCustomAvailabilityZoneHasBeenSet(false),
-    m_copyOptionGroup(false),
-    m_copyOptionGroupHasBeenSet(false),
-    m_sourceRegionHasBeenSet(false)
-{
-}
-
 Aws::String CopyDBSnapshotRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -47,11 +31,18 @@ Aws::String CopyDBSnapshotRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
@@ -78,6 +69,16 @@ Aws::String CopyDBSnapshotRequest::SerializePayload() const
   if(m_copyOptionGroupHasBeenSet)
   {
     ss << "CopyOptionGroup=" << std::boolalpha << m_copyOptionGroup << "&";
+  }
+
+  if(m_snapshotAvailabilityZoneHasBeenSet)
+  {
+    ss << "SnapshotAvailabilityZone=" << StringUtils::URLEncode(m_snapshotAvailabilityZone.c_str()) << "&";
+  }
+
+  if(m_snapshotTargetHasBeenSet)
+  {
+    ss << "SnapshotTarget=" << StringUtils::URLEncode(m_snapshotTarget.c_str()) << "&";
   }
 
   ss << "Version=2014-10-31";

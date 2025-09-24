@@ -32,57 +32,25 @@ namespace Model
   class LaunchActionsRequestFilters
   {
   public:
-    AWS_DRS_API LaunchActionsRequestFilters();
+    AWS_DRS_API LaunchActionsRequestFilters() = default;
     AWS_DRS_API LaunchActionsRequestFilters(Aws::Utils::Json::JsonView jsonValue);
     AWS_DRS_API LaunchActionsRequestFilters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DRS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Launch actions Ids.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetActionIds() const{ return m_actionIds; }
-
-    /**
-     * <p>Launch actions Ids.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetActionIds() const { return m_actionIds; }
     inline bool ActionIdsHasBeenSet() const { return m_actionIdsHasBeenSet; }
-
-    /**
-     * <p>Launch actions Ids.</p>
-     */
-    inline void SetActionIds(const Aws::Vector<Aws::String>& value) { m_actionIdsHasBeenSet = true; m_actionIds = value; }
-
-    /**
-     * <p>Launch actions Ids.</p>
-     */
-    inline void SetActionIds(Aws::Vector<Aws::String>&& value) { m_actionIdsHasBeenSet = true; m_actionIds = std::move(value); }
-
-    /**
-     * <p>Launch actions Ids.</p>
-     */
-    inline LaunchActionsRequestFilters& WithActionIds(const Aws::Vector<Aws::String>& value) { SetActionIds(value); return *this;}
-
-    /**
-     * <p>Launch actions Ids.</p>
-     */
-    inline LaunchActionsRequestFilters& WithActionIds(Aws::Vector<Aws::String>&& value) { SetActionIds(std::move(value)); return *this;}
-
-    /**
-     * <p>Launch actions Ids.</p>
-     */
-    inline LaunchActionsRequestFilters& AddActionIds(const Aws::String& value) { m_actionIdsHasBeenSet = true; m_actionIds.push_back(value); return *this; }
-
-    /**
-     * <p>Launch actions Ids.</p>
-     */
-    inline LaunchActionsRequestFilters& AddActionIds(Aws::String&& value) { m_actionIdsHasBeenSet = true; m_actionIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Launch actions Ids.</p>
-     */
-    inline LaunchActionsRequestFilters& AddActionIds(const char* value) { m_actionIdsHasBeenSet = true; m_actionIds.push_back(value); return *this; }
-
+    template<typename ActionIdsT = Aws::Vector<Aws::String>>
+    void SetActionIds(ActionIdsT&& value) { m_actionIdsHasBeenSet = true; m_actionIds = std::forward<ActionIdsT>(value); }
+    template<typename ActionIdsT = Aws::Vector<Aws::String>>
+    LaunchActionsRequestFilters& WithActionIds(ActionIdsT&& value) { SetActionIds(std::forward<ActionIdsT>(value)); return *this;}
+    template<typename ActionIdsT = Aws::String>
+    LaunchActionsRequestFilters& AddActionIds(ActionIdsT&& value) { m_actionIdsHasBeenSet = true; m_actionIds.emplace_back(std::forward<ActionIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_actionIds;

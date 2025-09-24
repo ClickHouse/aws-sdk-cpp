@@ -31,73 +31,35 @@ namespace Model
   class LoRaWANUpdateGatewayTaskEntry
   {
   public:
-    AWS_IOTWIRELESS_API LoRaWANUpdateGatewayTaskEntry();
+    AWS_IOTWIRELESS_API LoRaWANUpdateGatewayTaskEntry() = default;
     AWS_IOTWIRELESS_API LoRaWANUpdateGatewayTaskEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API LoRaWANUpdateGatewayTaskEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The version of the gateways that should receive the update.</p>
      */
-    inline const LoRaWANGatewayVersion& GetCurrentVersion() const{ return m_currentVersion; }
-
-    /**
-     * <p>The version of the gateways that should receive the update.</p>
-     */
+    inline const LoRaWANGatewayVersion& GetCurrentVersion() const { return m_currentVersion; }
     inline bool CurrentVersionHasBeenSet() const { return m_currentVersionHasBeenSet; }
+    template<typename CurrentVersionT = LoRaWANGatewayVersion>
+    void SetCurrentVersion(CurrentVersionT&& value) { m_currentVersionHasBeenSet = true; m_currentVersion = std::forward<CurrentVersionT>(value); }
+    template<typename CurrentVersionT = LoRaWANGatewayVersion>
+    LoRaWANUpdateGatewayTaskEntry& WithCurrentVersion(CurrentVersionT&& value) { SetCurrentVersion(std::forward<CurrentVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the gateways that should receive the update.</p>
-     */
-    inline void SetCurrentVersion(const LoRaWANGatewayVersion& value) { m_currentVersionHasBeenSet = true; m_currentVersion = value; }
-
-    /**
-     * <p>The version of the gateways that should receive the update.</p>
-     */
-    inline void SetCurrentVersion(LoRaWANGatewayVersion&& value) { m_currentVersionHasBeenSet = true; m_currentVersion = std::move(value); }
-
-    /**
-     * <p>The version of the gateways that should receive the update.</p>
-     */
-    inline LoRaWANUpdateGatewayTaskEntry& WithCurrentVersion(const LoRaWANGatewayVersion& value) { SetCurrentVersion(value); return *this;}
-
-    /**
-     * <p>The version of the gateways that should receive the update.</p>
-     */
-    inline LoRaWANUpdateGatewayTaskEntry& WithCurrentVersion(LoRaWANGatewayVersion&& value) { SetCurrentVersion(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The firmware version to update the gateway to.</p>
      */
-    inline const LoRaWANGatewayVersion& GetUpdateVersion() const{ return m_updateVersion; }
-
-    /**
-     * <p>The firmware version to update the gateway to.</p>
-     */
+    inline const LoRaWANGatewayVersion& GetUpdateVersion() const { return m_updateVersion; }
     inline bool UpdateVersionHasBeenSet() const { return m_updateVersionHasBeenSet; }
-
-    /**
-     * <p>The firmware version to update the gateway to.</p>
-     */
-    inline void SetUpdateVersion(const LoRaWANGatewayVersion& value) { m_updateVersionHasBeenSet = true; m_updateVersion = value; }
-
-    /**
-     * <p>The firmware version to update the gateway to.</p>
-     */
-    inline void SetUpdateVersion(LoRaWANGatewayVersion&& value) { m_updateVersionHasBeenSet = true; m_updateVersion = std::move(value); }
-
-    /**
-     * <p>The firmware version to update the gateway to.</p>
-     */
-    inline LoRaWANUpdateGatewayTaskEntry& WithUpdateVersion(const LoRaWANGatewayVersion& value) { SetUpdateVersion(value); return *this;}
-
-    /**
-     * <p>The firmware version to update the gateway to.</p>
-     */
-    inline LoRaWANUpdateGatewayTaskEntry& WithUpdateVersion(LoRaWANGatewayVersion&& value) { SetUpdateVersion(std::move(value)); return *this;}
-
+    template<typename UpdateVersionT = LoRaWANGatewayVersion>
+    void SetUpdateVersion(UpdateVersionT&& value) { m_updateVersionHasBeenSet = true; m_updateVersion = std::forward<UpdateVersionT>(value); }
+    template<typename UpdateVersionT = LoRaWANGatewayVersion>
+    LoRaWANUpdateGatewayTaskEntry& WithUpdateVersion(UpdateVersionT&& value) { SetUpdateVersion(std::forward<UpdateVersionT>(value)); return *this;}
+    ///@}
   private:
 
     LoRaWANGatewayVersion m_currentVersion;

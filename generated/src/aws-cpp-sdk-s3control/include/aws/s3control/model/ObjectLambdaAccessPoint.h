@@ -32,125 +32,48 @@ namespace Model
   class ObjectLambdaAccessPoint
   {
   public:
-    AWS_S3CONTROL_API ObjectLambdaAccessPoint();
+    AWS_S3CONTROL_API ObjectLambdaAccessPoint() = default;
     AWS_S3CONTROL_API ObjectLambdaAccessPoint(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API ObjectLambdaAccessPoint& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The name of the Object Lambda Access Point.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the Object Lambda Access Point.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ObjectLambdaAccessPoint& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Object Lambda Access Point.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the Object Lambda Access Point.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the Object Lambda Access Point.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the Object Lambda Access Point.</p>
-     */
-    inline ObjectLambdaAccessPoint& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the Object Lambda Access Point.</p>
-     */
-    inline ObjectLambdaAccessPoint& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Object Lambda Access Point.</p>
-     */
-    inline ObjectLambdaAccessPoint& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the ARN for the Object Lambda Access Point.</p>
      */
-    inline const Aws::String& GetObjectLambdaAccessPointArn() const{ return m_objectLambdaAccessPointArn; }
-
-    /**
-     * <p>Specifies the ARN for the Object Lambda Access Point.</p>
-     */
+    inline const Aws::String& GetObjectLambdaAccessPointArn() const { return m_objectLambdaAccessPointArn; }
     inline bool ObjectLambdaAccessPointArnHasBeenSet() const { return m_objectLambdaAccessPointArnHasBeenSet; }
+    template<typename ObjectLambdaAccessPointArnT = Aws::String>
+    void SetObjectLambdaAccessPointArn(ObjectLambdaAccessPointArnT&& value) { m_objectLambdaAccessPointArnHasBeenSet = true; m_objectLambdaAccessPointArn = std::forward<ObjectLambdaAccessPointArnT>(value); }
+    template<typename ObjectLambdaAccessPointArnT = Aws::String>
+    ObjectLambdaAccessPoint& WithObjectLambdaAccessPointArn(ObjectLambdaAccessPointArnT&& value) { SetObjectLambdaAccessPointArn(std::forward<ObjectLambdaAccessPointArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the ARN for the Object Lambda Access Point.</p>
-     */
-    inline void SetObjectLambdaAccessPointArn(const Aws::String& value) { m_objectLambdaAccessPointArnHasBeenSet = true; m_objectLambdaAccessPointArn = value; }
-
-    /**
-     * <p>Specifies the ARN for the Object Lambda Access Point.</p>
-     */
-    inline void SetObjectLambdaAccessPointArn(Aws::String&& value) { m_objectLambdaAccessPointArnHasBeenSet = true; m_objectLambdaAccessPointArn = std::move(value); }
-
-    /**
-     * <p>Specifies the ARN for the Object Lambda Access Point.</p>
-     */
-    inline void SetObjectLambdaAccessPointArn(const char* value) { m_objectLambdaAccessPointArnHasBeenSet = true; m_objectLambdaAccessPointArn.assign(value); }
-
-    /**
-     * <p>Specifies the ARN for the Object Lambda Access Point.</p>
-     */
-    inline ObjectLambdaAccessPoint& WithObjectLambdaAccessPointArn(const Aws::String& value) { SetObjectLambdaAccessPointArn(value); return *this;}
-
-    /**
-     * <p>Specifies the ARN for the Object Lambda Access Point.</p>
-     */
-    inline ObjectLambdaAccessPoint& WithObjectLambdaAccessPointArn(Aws::String&& value) { SetObjectLambdaAccessPointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the ARN for the Object Lambda Access Point.</p>
-     */
-    inline ObjectLambdaAccessPoint& WithObjectLambdaAccessPointArn(const char* value) { SetObjectLambdaAccessPointArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The alias of the Object Lambda Access Point.</p>
      */
-    inline const ObjectLambdaAccessPointAlias& GetAlias() const{ return m_alias; }
-
-    /**
-     * <p>The alias of the Object Lambda Access Point.</p>
-     */
+    inline const ObjectLambdaAccessPointAlias& GetAlias() const { return m_alias; }
     inline bool AliasHasBeenSet() const { return m_aliasHasBeenSet; }
-
-    /**
-     * <p>The alias of the Object Lambda Access Point.</p>
-     */
-    inline void SetAlias(const ObjectLambdaAccessPointAlias& value) { m_aliasHasBeenSet = true; m_alias = value; }
-
-    /**
-     * <p>The alias of the Object Lambda Access Point.</p>
-     */
-    inline void SetAlias(ObjectLambdaAccessPointAlias&& value) { m_aliasHasBeenSet = true; m_alias = std::move(value); }
-
-    /**
-     * <p>The alias of the Object Lambda Access Point.</p>
-     */
-    inline ObjectLambdaAccessPoint& WithAlias(const ObjectLambdaAccessPointAlias& value) { SetAlias(value); return *this;}
-
-    /**
-     * <p>The alias of the Object Lambda Access Point.</p>
-     */
-    inline ObjectLambdaAccessPoint& WithAlias(ObjectLambdaAccessPointAlias&& value) { SetAlias(std::move(value)); return *this;}
-
+    template<typename AliasT = ObjectLambdaAccessPointAlias>
+    void SetAlias(AliasT&& value) { m_aliasHasBeenSet = true; m_alias = std::forward<AliasT>(value); }
+    template<typename AliasT = ObjectLambdaAccessPointAlias>
+    ObjectLambdaAccessPoint& WithAlias(AliasT&& value) { SetAlias(std::forward<AliasT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

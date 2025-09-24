@@ -21,7 +21,7 @@ namespace Model
   class ModifyCustomDomainAssociationRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API ModifyCustomDomainAssociationRequest();
+    AWS_REDSHIFT_API ModifyCustomDomainAssociationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,136 +36,42 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The custom domain name for a changed custom domain association.</p>
      */
-    inline const Aws::String& GetCustomDomainName() const{ return m_customDomainName; }
-
-    /**
-     * <p>The custom domain name for a changed custom domain association.</p>
-     */
+    inline const Aws::String& GetCustomDomainName() const { return m_customDomainName; }
     inline bool CustomDomainNameHasBeenSet() const { return m_customDomainNameHasBeenSet; }
+    template<typename CustomDomainNameT = Aws::String>
+    void SetCustomDomainName(CustomDomainNameT&& value) { m_customDomainNameHasBeenSet = true; m_customDomainName = std::forward<CustomDomainNameT>(value); }
+    template<typename CustomDomainNameT = Aws::String>
+    ModifyCustomDomainAssociationRequest& WithCustomDomainName(CustomDomainNameT&& value) { SetCustomDomainName(std::forward<CustomDomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom domain name for a changed custom domain association.</p>
-     */
-    inline void SetCustomDomainName(const Aws::String& value) { m_customDomainNameHasBeenSet = true; m_customDomainName = value; }
-
-    /**
-     * <p>The custom domain name for a changed custom domain association.</p>
-     */
-    inline void SetCustomDomainName(Aws::String&& value) { m_customDomainNameHasBeenSet = true; m_customDomainName = std::move(value); }
-
-    /**
-     * <p>The custom domain name for a changed custom domain association.</p>
-     */
-    inline void SetCustomDomainName(const char* value) { m_customDomainNameHasBeenSet = true; m_customDomainName.assign(value); }
-
-    /**
-     * <p>The custom domain name for a changed custom domain association.</p>
-     */
-    inline ModifyCustomDomainAssociationRequest& WithCustomDomainName(const Aws::String& value) { SetCustomDomainName(value); return *this;}
-
-    /**
-     * <p>The custom domain name for a changed custom domain association.</p>
-     */
-    inline ModifyCustomDomainAssociationRequest& WithCustomDomainName(Aws::String&& value) { SetCustomDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The custom domain name for a changed custom domain association.</p>
-     */
-    inline ModifyCustomDomainAssociationRequest& WithCustomDomainName(const char* value) { SetCustomDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The certificate Amazon Resource Name (ARN) for the changed custom domain
      * association.</p>
      */
-    inline const Aws::String& GetCustomDomainCertificateArn() const{ return m_customDomainCertificateArn; }
-
-    /**
-     * <p>The certificate Amazon Resource Name (ARN) for the changed custom domain
-     * association.</p>
-     */
+    inline const Aws::String& GetCustomDomainCertificateArn() const { return m_customDomainCertificateArn; }
     inline bool CustomDomainCertificateArnHasBeenSet() const { return m_customDomainCertificateArnHasBeenSet; }
+    template<typename CustomDomainCertificateArnT = Aws::String>
+    void SetCustomDomainCertificateArn(CustomDomainCertificateArnT&& value) { m_customDomainCertificateArnHasBeenSet = true; m_customDomainCertificateArn = std::forward<CustomDomainCertificateArnT>(value); }
+    template<typename CustomDomainCertificateArnT = Aws::String>
+    ModifyCustomDomainAssociationRequest& WithCustomDomainCertificateArn(CustomDomainCertificateArnT&& value) { SetCustomDomainCertificateArn(std::forward<CustomDomainCertificateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The certificate Amazon Resource Name (ARN) for the changed custom domain
-     * association.</p>
-     */
-    inline void SetCustomDomainCertificateArn(const Aws::String& value) { m_customDomainCertificateArnHasBeenSet = true; m_customDomainCertificateArn = value; }
-
-    /**
-     * <p>The certificate Amazon Resource Name (ARN) for the changed custom domain
-     * association.</p>
-     */
-    inline void SetCustomDomainCertificateArn(Aws::String&& value) { m_customDomainCertificateArnHasBeenSet = true; m_customDomainCertificateArn = std::move(value); }
-
-    /**
-     * <p>The certificate Amazon Resource Name (ARN) for the changed custom domain
-     * association.</p>
-     */
-    inline void SetCustomDomainCertificateArn(const char* value) { m_customDomainCertificateArnHasBeenSet = true; m_customDomainCertificateArn.assign(value); }
-
-    /**
-     * <p>The certificate Amazon Resource Name (ARN) for the changed custom domain
-     * association.</p>
-     */
-    inline ModifyCustomDomainAssociationRequest& WithCustomDomainCertificateArn(const Aws::String& value) { SetCustomDomainCertificateArn(value); return *this;}
-
-    /**
-     * <p>The certificate Amazon Resource Name (ARN) for the changed custom domain
-     * association.</p>
-     */
-    inline ModifyCustomDomainAssociationRequest& WithCustomDomainCertificateArn(Aws::String&& value) { SetCustomDomainCertificateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The certificate Amazon Resource Name (ARN) for the changed custom domain
-     * association.</p>
-     */
-    inline ModifyCustomDomainAssociationRequest& WithCustomDomainCertificateArn(const char* value) { SetCustomDomainCertificateArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the cluster to change a custom domain association for.</p>
      */
-    inline const Aws::String& GetClusterIdentifier() const{ return m_clusterIdentifier; }
-
-    /**
-     * <p>The identifier of the cluster to change a custom domain association for.</p>
-     */
+    inline const Aws::String& GetClusterIdentifier() const { return m_clusterIdentifier; }
     inline bool ClusterIdentifierHasBeenSet() const { return m_clusterIdentifierHasBeenSet; }
-
-    /**
-     * <p>The identifier of the cluster to change a custom domain association for.</p>
-     */
-    inline void SetClusterIdentifier(const Aws::String& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = value; }
-
-    /**
-     * <p>The identifier of the cluster to change a custom domain association for.</p>
-     */
-    inline void SetClusterIdentifier(Aws::String&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the cluster to change a custom domain association for.</p>
-     */
-    inline void SetClusterIdentifier(const char* value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of the cluster to change a custom domain association for.</p>
-     */
-    inline ModifyCustomDomainAssociationRequest& WithClusterIdentifier(const Aws::String& value) { SetClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the cluster to change a custom domain association for.</p>
-     */
-    inline ModifyCustomDomainAssociationRequest& WithClusterIdentifier(Aws::String&& value) { SetClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the cluster to change a custom domain association for.</p>
-     */
-    inline ModifyCustomDomainAssociationRequest& WithClusterIdentifier(const char* value) { SetClusterIdentifier(value); return *this;}
-
+    template<typename ClusterIdentifierT = Aws::String>
+    void SetClusterIdentifier(ClusterIdentifierT&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::forward<ClusterIdentifierT>(value); }
+    template<typename ClusterIdentifierT = Aws::String>
+    ModifyCustomDomainAssociationRequest& WithClusterIdentifier(ClusterIdentifierT&& value) { SetClusterIdentifier(std::forward<ClusterIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_customDomainName;

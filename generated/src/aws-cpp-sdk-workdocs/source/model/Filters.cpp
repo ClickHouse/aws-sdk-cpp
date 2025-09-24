@@ -18,31 +18,7 @@ namespace WorkDocs
 namespace Model
 {
 
-Filters::Filters() : 
-    m_textLocalesHasBeenSet(false),
-    m_contentCategoriesHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false),
-    m_labelsHasBeenSet(false),
-    m_principalsHasBeenSet(false),
-    m_ancestorIdsHasBeenSet(false),
-    m_searchCollectionTypesHasBeenSet(false),
-    m_sizeRangeHasBeenSet(false),
-    m_createdRangeHasBeenSet(false),
-    m_modifiedRangeHasBeenSet(false)
-{
-}
-
-Filters::Filters(JsonView jsonValue) : 
-    m_textLocalesHasBeenSet(false),
-    m_contentCategoriesHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false),
-    m_labelsHasBeenSet(false),
-    m_principalsHasBeenSet(false),
-    m_ancestorIdsHasBeenSet(false),
-    m_searchCollectionTypesHasBeenSet(false),
-    m_sizeRangeHasBeenSet(false),
-    m_createdRangeHasBeenSet(false),
-    m_modifiedRangeHasBeenSet(false)
+Filters::Filters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -58,7 +34,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_textLocalesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContentCategories"))
   {
     Aws::Utils::Array<JsonView> contentCategoriesJsonList = jsonValue.GetArray("ContentCategories");
@@ -68,7 +43,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_contentCategoriesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceTypes"))
   {
     Aws::Utils::Array<JsonView> resourceTypesJsonList = jsonValue.GetArray("ResourceTypes");
@@ -78,7 +52,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_resourceTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Labels"))
   {
     Aws::Utils::Array<JsonView> labelsJsonList = jsonValue.GetArray("Labels");
@@ -88,7 +61,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_labelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Principals"))
   {
     Aws::Utils::Array<JsonView> principalsJsonList = jsonValue.GetArray("Principals");
@@ -98,7 +70,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_principalsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AncestorIds"))
   {
     Aws::Utils::Array<JsonView> ancestorIdsJsonList = jsonValue.GetArray("AncestorIds");
@@ -108,7 +79,6 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_ancestorIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SearchCollectionTypes"))
   {
     Aws::Utils::Array<JsonView> searchCollectionTypesJsonList = jsonValue.GetArray("SearchCollectionTypes");
@@ -118,28 +88,21 @@ Filters& Filters::operator =(JsonView jsonValue)
     }
     m_searchCollectionTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SizeRange"))
   {
     m_sizeRange = jsonValue.GetObject("SizeRange");
-
     m_sizeRangeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedRange"))
   {
     m_createdRange = jsonValue.GetObject("CreatedRange");
-
     m_createdRangeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModifiedRange"))
   {
     m_modifiedRange = jsonValue.GetObject("ModifiedRange");
-
     m_modifiedRangeHasBeenSet = true;
   }
-
   return *this;
 }
 

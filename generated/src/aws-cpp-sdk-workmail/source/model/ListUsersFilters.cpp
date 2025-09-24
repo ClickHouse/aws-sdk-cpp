@@ -18,21 +18,7 @@ namespace WorkMail
 namespace Model
 {
 
-ListUsersFilters::ListUsersFilters() : 
-    m_usernamePrefixHasBeenSet(false),
-    m_displayNamePrefixHasBeenSet(false),
-    m_primaryEmailPrefixHasBeenSet(false),
-    m_state(EntityState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-ListUsersFilters::ListUsersFilters(JsonView jsonValue) : 
-    m_usernamePrefixHasBeenSet(false),
-    m_displayNamePrefixHasBeenSet(false),
-    m_primaryEmailPrefixHasBeenSet(false),
-    m_state(EntityState::NOT_SET),
-    m_stateHasBeenSet(false)
+ListUsersFilters::ListUsersFilters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,28 @@ ListUsersFilters& ListUsersFilters::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("UsernamePrefix"))
   {
     m_usernamePrefix = jsonValue.GetString("UsernamePrefix");
-
     m_usernamePrefixHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisplayNamePrefix"))
   {
     m_displayNamePrefix = jsonValue.GetString("DisplayNamePrefix");
-
     m_displayNamePrefixHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PrimaryEmailPrefix"))
   {
     m_primaryEmailPrefix = jsonValue.GetString("PrimaryEmailPrefix");
-
     m_primaryEmailPrefixHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("State"))
   {
     m_state = EntityStateMapper::GetEntityStateForName(jsonValue.GetString("State"));
-
     m_stateHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("IdentityProviderUserIdPrefix"))
+  {
+    m_identityProviderUserIdPrefix = jsonValue.GetString("IdentityProviderUserIdPrefix");
+    m_identityProviderUserIdPrefixHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -95,6 +78,12 @@ JsonValue ListUsersFilters::Jsonize() const
   if(m_stateHasBeenSet)
   {
    payload.WithString("State", EntityStateMapper::GetNameForEntityState(m_state));
+  }
+
+  if(m_identityProviderUserIdPrefixHasBeenSet)
+  {
+   payload.WithString("IdentityProviderUserIdPrefix", m_identityProviderUserIdPrefix);
+
   }
 
   return payload;

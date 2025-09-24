@@ -24,7 +24,7 @@ namespace Model
   class CreateDistribution2020_05_31Request : public CloudFrontRequest
   {
   public:
-    AWS_CLOUDFRONT_API CreateDistribution2020_05_31Request();
+    AWS_CLOUDFRONT_API CreateDistribution2020_05_31Request() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,36 +35,17 @@ namespace Model
     AWS_CLOUDFRONT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The distribution's configuration information.</p>
      */
-    inline const DistributionConfig& GetDistributionConfig() const{ return m_distributionConfig; }
-
-    /**
-     * <p>The distribution's configuration information.</p>
-     */
+    inline const DistributionConfig& GetDistributionConfig() const { return m_distributionConfig; }
     inline bool DistributionConfigHasBeenSet() const { return m_distributionConfigHasBeenSet; }
-
-    /**
-     * <p>The distribution's configuration information.</p>
-     */
-    inline void SetDistributionConfig(const DistributionConfig& value) { m_distributionConfigHasBeenSet = true; m_distributionConfig = value; }
-
-    /**
-     * <p>The distribution's configuration information.</p>
-     */
-    inline void SetDistributionConfig(DistributionConfig&& value) { m_distributionConfigHasBeenSet = true; m_distributionConfig = std::move(value); }
-
-    /**
-     * <p>The distribution's configuration information.</p>
-     */
-    inline CreateDistribution2020_05_31Request& WithDistributionConfig(const DistributionConfig& value) { SetDistributionConfig(value); return *this;}
-
-    /**
-     * <p>The distribution's configuration information.</p>
-     */
-    inline CreateDistribution2020_05_31Request& WithDistributionConfig(DistributionConfig&& value) { SetDistributionConfig(std::move(value)); return *this;}
-
+    template<typename DistributionConfigT = DistributionConfig>
+    void SetDistributionConfig(DistributionConfigT&& value) { m_distributionConfigHasBeenSet = true; m_distributionConfig = std::forward<DistributionConfigT>(value); }
+    template<typename DistributionConfigT = DistributionConfig>
+    CreateDistribution2020_05_31Request& WithDistributionConfig(DistributionConfigT&& value) { SetDistributionConfig(std::forward<DistributionConfigT>(value)); return *this;}
+    ///@}
   private:
 
     DistributionConfig m_distributionConfig;

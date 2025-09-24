@@ -21,7 +21,7 @@ namespace Model
   class GetSubjectRequest : public RolesAnywhereRequest
   {
   public:
-    AWS_ROLESANYWHERE_API GetSubjectRequest();
+    AWS_ROLESANYWHERE_API GetSubjectRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_ROLESANYWHERE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the subject. </p>
      */
-    inline const Aws::String& GetSubjectId() const{ return m_subjectId; }
-
-    /**
-     * <p>The unique identifier of the subject. </p>
-     */
+    inline const Aws::String& GetSubjectId() const { return m_subjectId; }
     inline bool SubjectIdHasBeenSet() const { return m_subjectIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the subject. </p>
-     */
-    inline void SetSubjectId(const Aws::String& value) { m_subjectIdHasBeenSet = true; m_subjectId = value; }
-
-    /**
-     * <p>The unique identifier of the subject. </p>
-     */
-    inline void SetSubjectId(Aws::String&& value) { m_subjectIdHasBeenSet = true; m_subjectId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the subject. </p>
-     */
-    inline void SetSubjectId(const char* value) { m_subjectIdHasBeenSet = true; m_subjectId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the subject. </p>
-     */
-    inline GetSubjectRequest& WithSubjectId(const Aws::String& value) { SetSubjectId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the subject. </p>
-     */
-    inline GetSubjectRequest& WithSubjectId(Aws::String&& value) { SetSubjectId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the subject. </p>
-     */
-    inline GetSubjectRequest& WithSubjectId(const char* value) { SetSubjectId(value); return *this;}
-
+    template<typename SubjectIdT = Aws::String>
+    void SetSubjectId(SubjectIdT&& value) { m_subjectIdHasBeenSet = true; m_subjectId = std::forward<SubjectIdT>(value); }
+    template<typename SubjectIdT = Aws::String>
+    GetSubjectRequest& WithSubjectId(SubjectIdT&& value) { SetSubjectId(std::forward<SubjectIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_subjectId;

@@ -10,12 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-ResumeProcessesRequest::ResumeProcessesRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_scalingProcessesHasBeenSet(false)
-{
-}
-
 Aws::String ResumeProcessesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String ResumeProcessesRequest::SerializePayload() const
 
   if(m_scalingProcessesHasBeenSet)
   {
-    unsigned scalingProcessesCount = 1;
-    for(auto& item : m_scalingProcesses)
+    if (m_scalingProcesses.empty())
     {
-      ss << "ScalingProcesses.member." << scalingProcessesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      scalingProcessesCount++;
+      ss << "ScalingProcesses=&";
+    }
+    else
+    {
+      unsigned scalingProcessesCount = 1;
+      for(auto& item : m_scalingProcesses)
+      {
+        ss << "ScalingProcesses.member." << scalingProcessesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        scalingProcessesCount++;
+      }
     }
   }
 

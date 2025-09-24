@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-JupyterServerAppSettings::JupyterServerAppSettings() : 
-    m_defaultResourceSpecHasBeenSet(false),
-    m_lifecycleConfigArnsHasBeenSet(false),
-    m_codeRepositoriesHasBeenSet(false)
-{
-}
-
-JupyterServerAppSettings::JupyterServerAppSettings(JsonView jsonValue) : 
-    m_defaultResourceSpecHasBeenSet(false),
-    m_lifecycleConfigArnsHasBeenSet(false),
-    m_codeRepositoriesHasBeenSet(false)
+JupyterServerAppSettings::JupyterServerAppSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ JupyterServerAppSettings& JupyterServerAppSettings::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("DefaultResourceSpec"))
   {
     m_defaultResourceSpec = jsonValue.GetObject("DefaultResourceSpec");
-
     m_defaultResourceSpecHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LifecycleConfigArns"))
   {
     Aws::Utils::Array<JsonView> lifecycleConfigArnsJsonList = jsonValue.GetArray("LifecycleConfigArns");
@@ -51,7 +39,6 @@ JupyterServerAppSettings& JupyterServerAppSettings::operator =(JsonView jsonValu
     }
     m_lifecycleConfigArnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CodeRepositories"))
   {
     Aws::Utils::Array<JsonView> codeRepositoriesJsonList = jsonValue.GetArray("CodeRepositories");
@@ -61,7 +48,6 @@ JupyterServerAppSettings& JupyterServerAppSettings::operator =(JsonView jsonValu
     }
     m_codeRepositoriesHasBeenSet = true;
   }
-
   return *this;
 }
 

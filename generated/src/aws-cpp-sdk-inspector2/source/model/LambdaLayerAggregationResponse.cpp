@@ -18,62 +18,38 @@ namespace Inspector2
 namespace Model
 {
 
-LambdaLayerAggregationResponse::LambdaLayerAggregationResponse() : 
-    m_accountIdHasBeenSet(false),
-    m_functionNameHasBeenSet(false),
-    m_layerArnHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_severityCountsHasBeenSet(false)
-{
-}
-
-LambdaLayerAggregationResponse::LambdaLayerAggregationResponse(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_functionNameHasBeenSet(false),
-    m_layerArnHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_severityCountsHasBeenSet(false)
+LambdaLayerAggregationResponse::LambdaLayerAggregationResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 LambdaLayerAggregationResponse& LambdaLayerAggregationResponse::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("accountId"))
-  {
-    m_accountId = jsonValue.GetString("accountId");
-
-    m_accountIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("functionName"))
   {
     m_functionName = jsonValue.GetString("functionName");
-
     m_functionNameHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("layerArn"))
-  {
-    m_layerArn = jsonValue.GetString("layerArn");
-
-    m_layerArnHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("resourceId"))
   {
     m_resourceId = jsonValue.GetString("resourceId");
-
     m_resourceIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("layerArn"))
+  {
+    m_layerArn = jsonValue.GetString("layerArn");
+    m_layerArnHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("accountId"))
+  {
+    m_accountId = jsonValue.GetString("accountId");
+    m_accountIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("severityCounts"))
   {
     m_severityCounts = jsonValue.GetObject("severityCounts");
-
     m_severityCountsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -81,15 +57,15 @@ JsonValue LambdaLayerAggregationResponse::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_accountIdHasBeenSet)
-  {
-   payload.WithString("accountId", m_accountId);
-
-  }
-
   if(m_functionNameHasBeenSet)
   {
    payload.WithString("functionName", m_functionName);
+
+  }
+
+  if(m_resourceIdHasBeenSet)
+  {
+   payload.WithString("resourceId", m_resourceId);
 
   }
 
@@ -99,9 +75,9 @@ JsonValue LambdaLayerAggregationResponse::Jsonize() const
 
   }
 
-  if(m_resourceIdHasBeenSet)
+  if(m_accountIdHasBeenSet)
   {
-   payload.WithString("resourceId", m_resourceId);
+   payload.WithString("accountId", m_accountId);
 
   }
 

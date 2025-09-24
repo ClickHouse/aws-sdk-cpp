@@ -5,6 +5,9 @@
 
 #pragma once
 #include <aws/qbusiness/QBusiness_EXPORTS.h>
+#include <aws/qbusiness/model/SnippetExcerpt.h>
+#include <aws/qbusiness/model/SourceDetails.h>
+#include <utility>
 
 namespace Aws
 {
@@ -30,68 +33,72 @@ namespace Model
   class TextSegment
   {
   public:
-    AWS_QBUSINESS_API TextSegment();
+    AWS_QBUSINESS_API TextSegment() = default;
     AWS_QBUSINESS_API TextSegment(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API TextSegment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The zero-based location in the response string where the source attribution
      * starts.</p>
      */
-    inline int GetBeginOffset() const{ return m_beginOffset; }
-
-    /**
-     * <p>The zero-based location in the response string where the source attribution
-     * starts.</p>
-     */
+    inline int GetBeginOffset() const { return m_beginOffset; }
     inline bool BeginOffsetHasBeenSet() const { return m_beginOffsetHasBeenSet; }
-
-    /**
-     * <p>The zero-based location in the response string where the source attribution
-     * starts.</p>
-     */
     inline void SetBeginOffset(int value) { m_beginOffsetHasBeenSet = true; m_beginOffset = value; }
-
-    /**
-     * <p>The zero-based location in the response string where the source attribution
-     * starts.</p>
-     */
     inline TextSegment& WithBeginOffset(int value) { SetBeginOffset(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The zero-based location in the response string where the source attribution
      * ends.</p>
      */
-    inline int GetEndOffset() const{ return m_endOffset; }
-
-    /**
-     * <p>The zero-based location in the response string where the source attribution
-     * ends.</p>
-     */
+    inline int GetEndOffset() const { return m_endOffset; }
     inline bool EndOffsetHasBeenSet() const { return m_endOffsetHasBeenSet; }
-
-    /**
-     * <p>The zero-based location in the response string where the source attribution
-     * ends.</p>
-     */
     inline void SetEndOffset(int value) { m_endOffsetHasBeenSet = true; m_endOffset = value; }
-
-    /**
-     * <p>The zero-based location in the response string where the source attribution
-     * ends.</p>
-     */
     inline TextSegment& WithEndOffset(int value) { SetEndOffset(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The relevant text excerpt from a source that was used to generate a citation
+     * text segment in an Amazon Q Business chat response.</p>
+     */
+    inline const SnippetExcerpt& GetSnippetExcerpt() const { return m_snippetExcerpt; }
+    inline bool SnippetExcerptHasBeenSet() const { return m_snippetExcerptHasBeenSet; }
+    template<typename SnippetExcerptT = SnippetExcerpt>
+    void SetSnippetExcerpt(SnippetExcerptT&& value) { m_snippetExcerptHasBeenSet = true; m_snippetExcerpt = std::forward<SnippetExcerptT>(value); }
+    template<typename SnippetExcerptT = SnippetExcerpt>
+    TextSegment& WithSnippetExcerpt(SnippetExcerptT&& value) { SetSnippetExcerpt(std::forward<SnippetExcerptT>(value)); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>Source information for a segment of extracted text, including its media
+     * type.</p>
+     */
+    inline const SourceDetails& GetSourceDetails() const { return m_sourceDetails; }
+    inline bool SourceDetailsHasBeenSet() const { return m_sourceDetailsHasBeenSet; }
+    template<typename SourceDetailsT = SourceDetails>
+    void SetSourceDetails(SourceDetailsT&& value) { m_sourceDetailsHasBeenSet = true; m_sourceDetails = std::forward<SourceDetailsT>(value); }
+    template<typename SourceDetailsT = SourceDetails>
+    TextSegment& WithSourceDetails(SourceDetailsT&& value) { SetSourceDetails(std::forward<SourceDetailsT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_beginOffset;
+    int m_beginOffset{0};
     bool m_beginOffsetHasBeenSet = false;
 
-    int m_endOffset;
+    int m_endOffset{0};
     bool m_endOffsetHasBeenSet = false;
+
+    SnippetExcerpt m_snippetExcerpt;
+    bool m_snippetExcerptHasBeenSet = false;
+
+    SourceDetails m_sourceDetails;
+    bool m_sourceDetailsHasBeenSet = false;
   };
 
 } // namespace Model

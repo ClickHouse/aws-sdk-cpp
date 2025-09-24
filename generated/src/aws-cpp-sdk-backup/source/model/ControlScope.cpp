@@ -18,17 +18,7 @@ namespace Backup
 namespace Model
 {
 
-ControlScope::ControlScope() : 
-    m_complianceResourceIdsHasBeenSet(false),
-    m_complianceResourceTypesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-ControlScope::ControlScope(JsonView jsonValue) : 
-    m_complianceResourceIdsHasBeenSet(false),
-    m_complianceResourceTypesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+ControlScope::ControlScope(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ ControlScope& ControlScope::operator =(JsonView jsonValue)
     }
     m_complianceResourceIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComplianceResourceTypes"))
   {
     Aws::Utils::Array<JsonView> complianceResourceTypesJsonList = jsonValue.GetArray("ComplianceResourceTypes");
@@ -54,7 +43,6 @@ ControlScope& ControlScope::operator =(JsonView jsonValue)
     }
     m_complianceResourceTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("Tags").GetAllObjects();
@@ -64,7 +52,6 @@ ControlScope& ControlScope::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 

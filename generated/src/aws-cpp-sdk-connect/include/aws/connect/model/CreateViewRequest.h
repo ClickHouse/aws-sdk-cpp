@@ -24,7 +24,7 @@ namespace Model
   class CreateViewRequest : public ConnectRequest
   {
   public:
-    AWS_CONNECT_API CreateViewRequest();
+    AWS_CONNECT_API CreateViewRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,363 +35,99 @@ namespace Model
     AWS_CONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
      * the ARN of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    CreateViewRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline CreateViewRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline CreateViewRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can find the instanceId in
-     * the ARN of the instance.</p>
-     */
-    inline CreateViewRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique Id for each create view request to avoid duplicate view creation.
      * For example, the view is idempotent ClientToken is provided.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>A unique Id for each create view request to avoid duplicate view creation.
-     * For example, the view is idempotent ClientToken is provided.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateViewRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique Id for each create view request to avoid duplicate view creation.
-     * For example, the view is idempotent ClientToken is provided.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>A unique Id for each create view request to avoid duplicate view creation.
-     * For example, the view is idempotent ClientToken is provided.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>A unique Id for each create view request to avoid duplicate view creation.
-     * For example, the view is idempotent ClientToken is provided.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>A unique Id for each create view request to avoid duplicate view creation.
-     * For example, the view is idempotent ClientToken is provided.</p>
-     */
-    inline CreateViewRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>A unique Id for each create view request to avoid duplicate view creation.
-     * For example, the view is idempotent ClientToken is provided.</p>
-     */
-    inline CreateViewRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique Id for each create view request to avoid duplicate view creation.
-     * For example, the view is idempotent ClientToken is provided.</p>
-     */
-    inline CreateViewRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the view status as either <code>SAVED</code> or
      * <code>PUBLISHED</code>. The <code>PUBLISHED</code> status will initiate
      * validation on the content.</p>
      */
-    inline const ViewStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Indicates the view status as either <code>SAVED</code> or
-     * <code>PUBLISHED</code>. The <code>PUBLISHED</code> status will initiate
-     * validation on the content.</p>
-     */
+    inline ViewStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ViewStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline CreateViewRequest& WithStatus(ViewStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the view status as either <code>SAVED</code> or
-     * <code>PUBLISHED</code>. The <code>PUBLISHED</code> status will initiate
-     * validation on the content.</p>
-     */
-    inline void SetStatus(const ViewStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Indicates the view status as either <code>SAVED</code> or
-     * <code>PUBLISHED</code>. The <code>PUBLISHED</code> status will initiate
-     * validation on the content.</p>
-     */
-    inline void SetStatus(ViewStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Indicates the view status as either <code>SAVED</code> or
-     * <code>PUBLISHED</code>. The <code>PUBLISHED</code> status will initiate
-     * validation on the content.</p>
-     */
-    inline CreateViewRequest& WithStatus(const ViewStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Indicates the view status as either <code>SAVED</code> or
-     * <code>PUBLISHED</code>. The <code>PUBLISHED</code> status will initiate
-     * validation on the content.</p>
-     */
-    inline CreateViewRequest& WithStatus(ViewStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>View content containing all content necessary to render a view except for
      * runtime input data.</p> <p>The total uncompressed content has a maximum file
      * size of 400kB.</p>
      */
-    inline const ViewInputContent& GetContent() const{ return m_content; }
-
-    /**
-     * <p>View content containing all content necessary to render a view except for
-     * runtime input data.</p> <p>The total uncompressed content has a maximum file
-     * size of 400kB.</p>
-     */
+    inline const ViewInputContent& GetContent() const { return m_content; }
     inline bool ContentHasBeenSet() const { return m_contentHasBeenSet; }
+    template<typename ContentT = ViewInputContent>
+    void SetContent(ContentT&& value) { m_contentHasBeenSet = true; m_content = std::forward<ContentT>(value); }
+    template<typename ContentT = ViewInputContent>
+    CreateViewRequest& WithContent(ContentT&& value) { SetContent(std::forward<ContentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>View content containing all content necessary to render a view except for
-     * runtime input data.</p> <p>The total uncompressed content has a maximum file
-     * size of 400kB.</p>
-     */
-    inline void SetContent(const ViewInputContent& value) { m_contentHasBeenSet = true; m_content = value; }
-
-    /**
-     * <p>View content containing all content necessary to render a view except for
-     * runtime input data.</p> <p>The total uncompressed content has a maximum file
-     * size of 400kB.</p>
-     */
-    inline void SetContent(ViewInputContent&& value) { m_contentHasBeenSet = true; m_content = std::move(value); }
-
-    /**
-     * <p>View content containing all content necessary to render a view except for
-     * runtime input data.</p> <p>The total uncompressed content has a maximum file
-     * size of 400kB.</p>
-     */
-    inline CreateViewRequest& WithContent(const ViewInputContent& value) { SetContent(value); return *this;}
-
-    /**
-     * <p>View content containing all content necessary to render a view except for
-     * runtime input data.</p> <p>The total uncompressed content has a maximum file
-     * size of 400kB.</p>
-     */
-    inline CreateViewRequest& WithContent(ViewInputContent&& value) { SetContent(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the view.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the view.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateViewRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the view.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the view.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the view.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the view.</p>
-     */
-    inline CreateViewRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the view.</p>
-     */
-    inline CreateViewRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the view.</p>
-     */
-    inline CreateViewRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the view.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the view.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateViewRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the view.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the view.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the view.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the view.</p>
-     */
-    inline CreateViewRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the view.</p>
-     */
-    inline CreateViewRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the view.</p>
-     */
-    inline CreateViewRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags associated with the view resource (not specific to view
      * version).These tags can be used to organize, track, or control access for this
      * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline CreateViewRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline CreateViewRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline CreateViewRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline CreateViewRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline CreateViewRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline CreateViewRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline CreateViewRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline CreateViewRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags associated with the view resource (not specific to view
-     * version).These tags can be used to organize, track, or control access for this
-     * resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline CreateViewRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateViewRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateViewRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_instanceId;
@@ -400,7 +136,7 @@ namespace Model
     Aws::String m_clientToken;
     bool m_clientTokenHasBeenSet = false;
 
-    ViewStatus m_status;
+    ViewStatus m_status{ViewStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     ViewInputContent m_content;

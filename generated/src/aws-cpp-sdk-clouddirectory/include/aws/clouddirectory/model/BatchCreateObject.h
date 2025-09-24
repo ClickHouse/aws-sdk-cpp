@@ -36,238 +36,79 @@ namespace Model
   class BatchCreateObject
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchCreateObject();
+    AWS_CLOUDDIRECTORY_API BatchCreateObject() = default;
     AWS_CLOUDDIRECTORY_API BatchCreateObject(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchCreateObject& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of <code>FacetArns</code> that will be associated with the object. For
      * more information, see <a>arns</a>.</p>
      */
-    inline const Aws::Vector<SchemaFacet>& GetSchemaFacet() const{ return m_schemaFacet; }
-
-    /**
-     * <p>A list of <code>FacetArns</code> that will be associated with the object. For
-     * more information, see <a>arns</a>.</p>
-     */
+    inline const Aws::Vector<SchemaFacet>& GetSchemaFacet() const { return m_schemaFacet; }
     inline bool SchemaFacetHasBeenSet() const { return m_schemaFacetHasBeenSet; }
+    template<typename SchemaFacetT = Aws::Vector<SchemaFacet>>
+    void SetSchemaFacet(SchemaFacetT&& value) { m_schemaFacetHasBeenSet = true; m_schemaFacet = std::forward<SchemaFacetT>(value); }
+    template<typename SchemaFacetT = Aws::Vector<SchemaFacet>>
+    BatchCreateObject& WithSchemaFacet(SchemaFacetT&& value) { SetSchemaFacet(std::forward<SchemaFacetT>(value)); return *this;}
+    template<typename SchemaFacetT = SchemaFacet>
+    BatchCreateObject& AddSchemaFacet(SchemaFacetT&& value) { m_schemaFacetHasBeenSet = true; m_schemaFacet.emplace_back(std::forward<SchemaFacetT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of <code>FacetArns</code> that will be associated with the object. For
-     * more information, see <a>arns</a>.</p>
-     */
-    inline void SetSchemaFacet(const Aws::Vector<SchemaFacet>& value) { m_schemaFacetHasBeenSet = true; m_schemaFacet = value; }
-
-    /**
-     * <p>A list of <code>FacetArns</code> that will be associated with the object. For
-     * more information, see <a>arns</a>.</p>
-     */
-    inline void SetSchemaFacet(Aws::Vector<SchemaFacet>&& value) { m_schemaFacetHasBeenSet = true; m_schemaFacet = std::move(value); }
-
-    /**
-     * <p>A list of <code>FacetArns</code> that will be associated with the object. For
-     * more information, see <a>arns</a>.</p>
-     */
-    inline BatchCreateObject& WithSchemaFacet(const Aws::Vector<SchemaFacet>& value) { SetSchemaFacet(value); return *this;}
-
-    /**
-     * <p>A list of <code>FacetArns</code> that will be associated with the object. For
-     * more information, see <a>arns</a>.</p>
-     */
-    inline BatchCreateObject& WithSchemaFacet(Aws::Vector<SchemaFacet>&& value) { SetSchemaFacet(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>FacetArns</code> that will be associated with the object. For
-     * more information, see <a>arns</a>.</p>
-     */
-    inline BatchCreateObject& AddSchemaFacet(const SchemaFacet& value) { m_schemaFacetHasBeenSet = true; m_schemaFacet.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>FacetArns</code> that will be associated with the object. For
-     * more information, see <a>arns</a>.</p>
-     */
-    inline BatchCreateObject& AddSchemaFacet(SchemaFacet&& value) { m_schemaFacetHasBeenSet = true; m_schemaFacet.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An attribute map, which contains an attribute ARN as the key and attribute
      * value as the map value.</p>
      */
-    inline const Aws::Vector<AttributeKeyAndValue>& GetObjectAttributeList() const{ return m_objectAttributeList; }
-
-    /**
-     * <p>An attribute map, which contains an attribute ARN as the key and attribute
-     * value as the map value.</p>
-     */
+    inline const Aws::Vector<AttributeKeyAndValue>& GetObjectAttributeList() const { return m_objectAttributeList; }
     inline bool ObjectAttributeListHasBeenSet() const { return m_objectAttributeListHasBeenSet; }
+    template<typename ObjectAttributeListT = Aws::Vector<AttributeKeyAndValue>>
+    void SetObjectAttributeList(ObjectAttributeListT&& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList = std::forward<ObjectAttributeListT>(value); }
+    template<typename ObjectAttributeListT = Aws::Vector<AttributeKeyAndValue>>
+    BatchCreateObject& WithObjectAttributeList(ObjectAttributeListT&& value) { SetObjectAttributeList(std::forward<ObjectAttributeListT>(value)); return *this;}
+    template<typename ObjectAttributeListT = AttributeKeyAndValue>
+    BatchCreateObject& AddObjectAttributeList(ObjectAttributeListT&& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList.emplace_back(std::forward<ObjectAttributeListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An attribute map, which contains an attribute ARN as the key and attribute
-     * value as the map value.</p>
-     */
-    inline void SetObjectAttributeList(const Aws::Vector<AttributeKeyAndValue>& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList = value; }
-
-    /**
-     * <p>An attribute map, which contains an attribute ARN as the key and attribute
-     * value as the map value.</p>
-     */
-    inline void SetObjectAttributeList(Aws::Vector<AttributeKeyAndValue>&& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList = std::move(value); }
-
-    /**
-     * <p>An attribute map, which contains an attribute ARN as the key and attribute
-     * value as the map value.</p>
-     */
-    inline BatchCreateObject& WithObjectAttributeList(const Aws::Vector<AttributeKeyAndValue>& value) { SetObjectAttributeList(value); return *this;}
-
-    /**
-     * <p>An attribute map, which contains an attribute ARN as the key and attribute
-     * value as the map value.</p>
-     */
-    inline BatchCreateObject& WithObjectAttributeList(Aws::Vector<AttributeKeyAndValue>&& value) { SetObjectAttributeList(std::move(value)); return *this;}
-
-    /**
-     * <p>An attribute map, which contains an attribute ARN as the key and attribute
-     * value as the map value.</p>
-     */
-    inline BatchCreateObject& AddObjectAttributeList(const AttributeKeyAndValue& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList.push_back(value); return *this; }
-
-    /**
-     * <p>An attribute map, which contains an attribute ARN as the key and attribute
-     * value as the map value.</p>
-     */
-    inline BatchCreateObject& AddObjectAttributeList(AttributeKeyAndValue&& value) { m_objectAttributeListHasBeenSet = true; m_objectAttributeList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If specified, the parent reference to which this object will be attached.</p>
      */
-    inline const ObjectReference& GetParentReference() const{ return m_parentReference; }
-
-    /**
-     * <p>If specified, the parent reference to which this object will be attached.</p>
-     */
+    inline const ObjectReference& GetParentReference() const { return m_parentReference; }
     inline bool ParentReferenceHasBeenSet() const { return m_parentReferenceHasBeenSet; }
+    template<typename ParentReferenceT = ObjectReference>
+    void SetParentReference(ParentReferenceT&& value) { m_parentReferenceHasBeenSet = true; m_parentReference = std::forward<ParentReferenceT>(value); }
+    template<typename ParentReferenceT = ObjectReference>
+    BatchCreateObject& WithParentReference(ParentReferenceT&& value) { SetParentReference(std::forward<ParentReferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If specified, the parent reference to which this object will be attached.</p>
-     */
-    inline void SetParentReference(const ObjectReference& value) { m_parentReferenceHasBeenSet = true; m_parentReference = value; }
-
-    /**
-     * <p>If specified, the parent reference to which this object will be attached.</p>
-     */
-    inline void SetParentReference(ObjectReference&& value) { m_parentReferenceHasBeenSet = true; m_parentReference = std::move(value); }
-
-    /**
-     * <p>If specified, the parent reference to which this object will be attached.</p>
-     */
-    inline BatchCreateObject& WithParentReference(const ObjectReference& value) { SetParentReference(value); return *this;}
-
-    /**
-     * <p>If specified, the parent reference to which this object will be attached.</p>
-     */
-    inline BatchCreateObject& WithParentReference(ObjectReference&& value) { SetParentReference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the link.</p>
      */
-    inline const Aws::String& GetLinkName() const{ return m_linkName; }
-
-    /**
-     * <p>The name of the link.</p>
-     */
+    inline const Aws::String& GetLinkName() const { return m_linkName; }
     inline bool LinkNameHasBeenSet() const { return m_linkNameHasBeenSet; }
+    template<typename LinkNameT = Aws::String>
+    void SetLinkName(LinkNameT&& value) { m_linkNameHasBeenSet = true; m_linkName = std::forward<LinkNameT>(value); }
+    template<typename LinkNameT = Aws::String>
+    BatchCreateObject& WithLinkName(LinkNameT&& value) { SetLinkName(std::forward<LinkNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the link.</p>
-     */
-    inline void SetLinkName(const Aws::String& value) { m_linkNameHasBeenSet = true; m_linkName = value; }
-
-    /**
-     * <p>The name of the link.</p>
-     */
-    inline void SetLinkName(Aws::String&& value) { m_linkNameHasBeenSet = true; m_linkName = std::move(value); }
-
-    /**
-     * <p>The name of the link.</p>
-     */
-    inline void SetLinkName(const char* value) { m_linkNameHasBeenSet = true; m_linkName.assign(value); }
-
-    /**
-     * <p>The name of the link.</p>
-     */
-    inline BatchCreateObject& WithLinkName(const Aws::String& value) { SetLinkName(value); return *this;}
-
-    /**
-     * <p>The name of the link.</p>
-     */
-    inline BatchCreateObject& WithLinkName(Aws::String&& value) { SetLinkName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the link.</p>
-     */
-    inline BatchCreateObject& WithLinkName(const char* value) { SetLinkName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The batch reference name. See <a
      * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction
      * Support</a> for more information.</p>
      */
-    inline const Aws::String& GetBatchReferenceName() const{ return m_batchReferenceName; }
-
-    /**
-     * <p>The batch reference name. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction
-     * Support</a> for more information.</p>
-     */
+    inline const Aws::String& GetBatchReferenceName() const { return m_batchReferenceName; }
     inline bool BatchReferenceNameHasBeenSet() const { return m_batchReferenceNameHasBeenSet; }
-
-    /**
-     * <p>The batch reference name. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction
-     * Support</a> for more information.</p>
-     */
-    inline void SetBatchReferenceName(const Aws::String& value) { m_batchReferenceNameHasBeenSet = true; m_batchReferenceName = value; }
-
-    /**
-     * <p>The batch reference name. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction
-     * Support</a> for more information.</p>
-     */
-    inline void SetBatchReferenceName(Aws::String&& value) { m_batchReferenceNameHasBeenSet = true; m_batchReferenceName = std::move(value); }
-
-    /**
-     * <p>The batch reference name. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction
-     * Support</a> for more information.</p>
-     */
-    inline void SetBatchReferenceName(const char* value) { m_batchReferenceNameHasBeenSet = true; m_batchReferenceName.assign(value); }
-
-    /**
-     * <p>The batch reference name. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction
-     * Support</a> for more information.</p>
-     */
-    inline BatchCreateObject& WithBatchReferenceName(const Aws::String& value) { SetBatchReferenceName(value); return *this;}
-
-    /**
-     * <p>The batch reference name. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction
-     * Support</a> for more information.</p>
-     */
-    inline BatchCreateObject& WithBatchReferenceName(Aws::String&& value) { SetBatchReferenceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The batch reference name. See <a
-     * href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/transaction_support.html">Transaction
-     * Support</a> for more information.</p>
-     */
-    inline BatchCreateObject& WithBatchReferenceName(const char* value) { SetBatchReferenceName(value); return *this;}
-
+    template<typename BatchReferenceNameT = Aws::String>
+    void SetBatchReferenceName(BatchReferenceNameT&& value) { m_batchReferenceNameHasBeenSet = true; m_batchReferenceName = std::forward<BatchReferenceNameT>(value); }
+    template<typename BatchReferenceNameT = Aws::String>
+    BatchCreateObject& WithBatchReferenceName(BatchReferenceNameT&& value) { SetBatchReferenceName(std::forward<BatchReferenceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<SchemaFacet> m_schemaFacet;

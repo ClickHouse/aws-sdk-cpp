@@ -21,7 +21,7 @@ namespace Model
   class DescribeSubscriptionFiltersRequest : public CloudWatchLogsRequest
   {
   public:
-    AWS_CLOUDWATCHLOGS_API DescribeSubscriptionFiltersRequest();
+    AWS_CLOUDWATCHLOGS_API DescribeSubscriptionFiltersRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,169 +34,54 @@ namespace Model
     AWS_CLOUDWATCHLOGS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the log group.</p>
      */
-    inline const Aws::String& GetLogGroupName() const{ return m_logGroupName; }
-
-    /**
-     * <p>The name of the log group.</p>
-     */
+    inline const Aws::String& GetLogGroupName() const { return m_logGroupName; }
     inline bool LogGroupNameHasBeenSet() const { return m_logGroupNameHasBeenSet; }
+    template<typename LogGroupNameT = Aws::String>
+    void SetLogGroupName(LogGroupNameT&& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = std::forward<LogGroupNameT>(value); }
+    template<typename LogGroupNameT = Aws::String>
+    DescribeSubscriptionFiltersRequest& WithLogGroupName(LogGroupNameT&& value) { SetLogGroupName(std::forward<LogGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the log group.</p>
-     */
-    inline void SetLogGroupName(const Aws::String& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = value; }
-
-    /**
-     * <p>The name of the log group.</p>
-     */
-    inline void SetLogGroupName(Aws::String&& value) { m_logGroupNameHasBeenSet = true; m_logGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the log group.</p>
-     */
-    inline void SetLogGroupName(const char* value) { m_logGroupNameHasBeenSet = true; m_logGroupName.assign(value); }
-
-    /**
-     * <p>The name of the log group.</p>
-     */
-    inline DescribeSubscriptionFiltersRequest& WithLogGroupName(const Aws::String& value) { SetLogGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the log group.</p>
-     */
-    inline DescribeSubscriptionFiltersRequest& WithLogGroupName(Aws::String&& value) { SetLogGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the log group.</p>
-     */
-    inline DescribeSubscriptionFiltersRequest& WithLogGroupName(const char* value) { SetLogGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The prefix to match. If you don't specify a value, no prefix filter is
      * applied.</p>
      */
-    inline const Aws::String& GetFilterNamePrefix() const{ return m_filterNamePrefix; }
-
-    /**
-     * <p>The prefix to match. If you don't specify a value, no prefix filter is
-     * applied.</p>
-     */
+    inline const Aws::String& GetFilterNamePrefix() const { return m_filterNamePrefix; }
     inline bool FilterNamePrefixHasBeenSet() const { return m_filterNamePrefixHasBeenSet; }
+    template<typename FilterNamePrefixT = Aws::String>
+    void SetFilterNamePrefix(FilterNamePrefixT&& value) { m_filterNamePrefixHasBeenSet = true; m_filterNamePrefix = std::forward<FilterNamePrefixT>(value); }
+    template<typename FilterNamePrefixT = Aws::String>
+    DescribeSubscriptionFiltersRequest& WithFilterNamePrefix(FilterNamePrefixT&& value) { SetFilterNamePrefix(std::forward<FilterNamePrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The prefix to match. If you don't specify a value, no prefix filter is
-     * applied.</p>
-     */
-    inline void SetFilterNamePrefix(const Aws::String& value) { m_filterNamePrefixHasBeenSet = true; m_filterNamePrefix = value; }
-
-    /**
-     * <p>The prefix to match. If you don't specify a value, no prefix filter is
-     * applied.</p>
-     */
-    inline void SetFilterNamePrefix(Aws::String&& value) { m_filterNamePrefixHasBeenSet = true; m_filterNamePrefix = std::move(value); }
-
-    /**
-     * <p>The prefix to match. If you don't specify a value, no prefix filter is
-     * applied.</p>
-     */
-    inline void SetFilterNamePrefix(const char* value) { m_filterNamePrefixHasBeenSet = true; m_filterNamePrefix.assign(value); }
-
-    /**
-     * <p>The prefix to match. If you don't specify a value, no prefix filter is
-     * applied.</p>
-     */
-    inline DescribeSubscriptionFiltersRequest& WithFilterNamePrefix(const Aws::String& value) { SetFilterNamePrefix(value); return *this;}
-
-    /**
-     * <p>The prefix to match. If you don't specify a value, no prefix filter is
-     * applied.</p>
-     */
-    inline DescribeSubscriptionFiltersRequest& WithFilterNamePrefix(Aws::String&& value) { SetFilterNamePrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The prefix to match. If you don't specify a value, no prefix filter is
-     * applied.</p>
-     */
-    inline DescribeSubscriptionFiltersRequest& WithFilterNamePrefix(const char* value) { SetFilterNamePrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The token for the next set of items to return. (You received this token from
      * a previous call.)</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeSubscriptionFiltersRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeSubscriptionFiltersRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeSubscriptionFiltersRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of items to return. (You received this token from
-     * a previous call.)</p>
-     */
-    inline DescribeSubscriptionFiltersRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of items returned. If you don't specify a value, the
      * default is up to 50 items.</p>
      */
-    inline int GetLimit() const{ return m_limit; }
-
-    /**
-     * <p>The maximum number of items returned. If you don't specify a value, the
-     * default is up to 50 items.</p>
-     */
+    inline int GetLimit() const { return m_limit; }
     inline bool LimitHasBeenSet() const { return m_limitHasBeenSet; }
-
-    /**
-     * <p>The maximum number of items returned. If you don't specify a value, the
-     * default is up to 50 items.</p>
-     */
     inline void SetLimit(int value) { m_limitHasBeenSet = true; m_limit = value; }
-
-    /**
-     * <p>The maximum number of items returned. If you don't specify a value, the
-     * default is up to 50 items.</p>
-     */
     inline DescribeSubscriptionFiltersRequest& WithLimit(int value) { SetLimit(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_logGroupName;
@@ -208,7 +93,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_limit;
+    int m_limit{0};
     bool m_limitHasBeenSet = false;
   };
 

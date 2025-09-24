@@ -18,39 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-CollaborationAnalysisTemplate::CollaborationAnalysisTemplate() : 
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_collaborationIdHasBeenSet(false),
-    m_collaborationArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creatorAccountIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false),
-    m_schemaHasBeenSet(false),
-    m_format(AnalysisFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_analysisParametersHasBeenSet(false)
-{
-}
-
-CollaborationAnalysisTemplate::CollaborationAnalysisTemplate(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_collaborationIdHasBeenSet(false),
-    m_collaborationArnHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_creatorAccountIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_updateTimeHasBeenSet(false),
-    m_schemaHasBeenSet(false),
-    m_format(AnalysisFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_analysisParametersHasBeenSet(false)
+CollaborationAnalysisTemplate::CollaborationAnalysisTemplate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -60,87 +28,68 @@ CollaborationAnalysisTemplate& CollaborationAnalysisTemplate::operator =(JsonVie
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("collaborationId"))
   {
     m_collaborationId = jsonValue.GetString("collaborationId");
-
     m_collaborationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("collaborationArn"))
   {
     m_collaborationArn = jsonValue.GetString("collaborationArn");
-
     m_collaborationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("description"))
   {
     m_description = jsonValue.GetString("description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("creatorAccountId"))
   {
     m_creatorAccountId = jsonValue.GetString("creatorAccountId");
-
     m_creatorAccountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createTime"))
   {
     m_createTime = jsonValue.GetDouble("createTime");
-
     m_createTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updateTime"))
   {
     m_updateTime = jsonValue.GetDouble("updateTime");
-
     m_updateTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("schema"))
   {
     m_schema = jsonValue.GetObject("schema");
-
     m_schemaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("format"))
   {
     m_format = AnalysisFormatMapper::GetAnalysisFormatForName(jsonValue.GetString("format"));
-
     m_formatHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("source"))
   {
     m_source = jsonValue.GetObject("source");
-
     m_sourceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("sourceMetadata"))
+  {
+    m_sourceMetadata = jsonValue.GetObject("sourceMetadata");
+    m_sourceMetadataHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("analysisParameters"))
   {
     Aws::Utils::Array<JsonView> analysisParametersJsonList = jsonValue.GetArray("analysisParameters");
@@ -150,7 +99,20 @@ CollaborationAnalysisTemplate& CollaborationAnalysisTemplate::operator =(JsonVie
     }
     m_analysisParametersHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("validations"))
+  {
+    Aws::Utils::Array<JsonView> validationsJsonList = jsonValue.GetArray("validations");
+    for(unsigned validationsIndex = 0; validationsIndex < validationsJsonList.GetLength(); ++validationsIndex)
+    {
+      m_validations.push_back(validationsJsonList[validationsIndex].AsObject());
+    }
+    m_validationsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("errorMessageConfiguration"))
+  {
+    m_errorMessageConfiguration = jsonValue.GetObject("errorMessageConfiguration");
+    m_errorMessageConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -227,6 +189,12 @@ JsonValue CollaborationAnalysisTemplate::Jsonize() const
 
   }
 
+  if(m_sourceMetadataHasBeenSet)
+  {
+   payload.WithObject("sourceMetadata", m_sourceMetadata.Jsonize());
+
+  }
+
   if(m_analysisParametersHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> analysisParametersJsonList(m_analysisParameters.size());
@@ -235,6 +203,23 @@ JsonValue CollaborationAnalysisTemplate::Jsonize() const
      analysisParametersJsonList[analysisParametersIndex].AsObject(m_analysisParameters[analysisParametersIndex].Jsonize());
    }
    payload.WithArray("analysisParameters", std::move(analysisParametersJsonList));
+
+  }
+
+  if(m_validationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> validationsJsonList(m_validations.size());
+   for(unsigned validationsIndex = 0; validationsIndex < validationsJsonList.GetLength(); ++validationsIndex)
+   {
+     validationsJsonList[validationsIndex].AsObject(m_validations[validationsIndex].Jsonize());
+   }
+   payload.WithArray("validations", std::move(validationsJsonList));
+
+  }
+
+  if(m_errorMessageConfigurationHasBeenSet)
+  {
+   payload.WithObject("errorMessageConfiguration", m_errorMessageConfiguration.Jsonize());
 
   }
 

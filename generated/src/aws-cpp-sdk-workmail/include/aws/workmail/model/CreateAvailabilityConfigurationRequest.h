@@ -24,7 +24,7 @@ namespace Model
   class CreateAvailabilityConfigurationRequest : public WorkMailRequest
   {
   public:
-    AWS_WORKMAIL_API CreateAvailabilityConfigurationRequest();
+    AWS_WORKMAIL_API CreateAvailabilityConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,234 +37,75 @@ namespace Model
     AWS_WORKMAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An idempotent token that ensures that an API request is executed only
      * once.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>An idempotent token that ensures that an API request is executed only
-     * once.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateAvailabilityConfigurationRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An idempotent token that ensures that an API request is executed only
-     * once.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>An idempotent token that ensures that an API request is executed only
-     * once.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>An idempotent token that ensures that an API request is executed only
-     * once.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>An idempotent token that ensures that an API request is executed only
-     * once.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>An idempotent token that ensures that an API request is executed only
-     * once.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>An idempotent token that ensures that an API request is executed only
-     * once.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The WorkMail organization for which the
      * <code>AvailabilityConfiguration</code> will be created.</p>
      */
-    inline const Aws::String& GetOrganizationId() const{ return m_organizationId; }
-
-    /**
-     * <p>The WorkMail organization for which the
-     * <code>AvailabilityConfiguration</code> will be created.</p>
-     */
+    inline const Aws::String& GetOrganizationId() const { return m_organizationId; }
     inline bool OrganizationIdHasBeenSet() const { return m_organizationIdHasBeenSet; }
+    template<typename OrganizationIdT = Aws::String>
+    void SetOrganizationId(OrganizationIdT&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::forward<OrganizationIdT>(value); }
+    template<typename OrganizationIdT = Aws::String>
+    CreateAvailabilityConfigurationRequest& WithOrganizationId(OrganizationIdT&& value) { SetOrganizationId(std::forward<OrganizationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The WorkMail organization for which the
-     * <code>AvailabilityConfiguration</code> will be created.</p>
-     */
-    inline void SetOrganizationId(const Aws::String& value) { m_organizationIdHasBeenSet = true; m_organizationId = value; }
-
-    /**
-     * <p>The WorkMail organization for which the
-     * <code>AvailabilityConfiguration</code> will be created.</p>
-     */
-    inline void SetOrganizationId(Aws::String&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::move(value); }
-
-    /**
-     * <p>The WorkMail organization for which the
-     * <code>AvailabilityConfiguration</code> will be created.</p>
-     */
-    inline void SetOrganizationId(const char* value) { m_organizationIdHasBeenSet = true; m_organizationId.assign(value); }
-
-    /**
-     * <p>The WorkMail organization for which the
-     * <code>AvailabilityConfiguration</code> will be created.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithOrganizationId(const Aws::String& value) { SetOrganizationId(value); return *this;}
-
-    /**
-     * <p>The WorkMail organization for which the
-     * <code>AvailabilityConfiguration</code> will be created.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithOrganizationId(Aws::String&& value) { SetOrganizationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The WorkMail organization for which the
-     * <code>AvailabilityConfiguration</code> will be created.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithOrganizationId(const char* value) { SetOrganizationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The domain to which the provider applies.</p>
      */
-    inline const Aws::String& GetDomainName() const{ return m_domainName; }
-
-    /**
-     * <p>The domain to which the provider applies.</p>
-     */
+    inline const Aws::String& GetDomainName() const { return m_domainName; }
     inline bool DomainNameHasBeenSet() const { return m_domainNameHasBeenSet; }
+    template<typename DomainNameT = Aws::String>
+    void SetDomainName(DomainNameT&& value) { m_domainNameHasBeenSet = true; m_domainName = std::forward<DomainNameT>(value); }
+    template<typename DomainNameT = Aws::String>
+    CreateAvailabilityConfigurationRequest& WithDomainName(DomainNameT&& value) { SetDomainName(std::forward<DomainNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain to which the provider applies.</p>
-     */
-    inline void SetDomainName(const Aws::String& value) { m_domainNameHasBeenSet = true; m_domainName = value; }
-
-    /**
-     * <p>The domain to which the provider applies.</p>
-     */
-    inline void SetDomainName(Aws::String&& value) { m_domainNameHasBeenSet = true; m_domainName = std::move(value); }
-
-    /**
-     * <p>The domain to which the provider applies.</p>
-     */
-    inline void SetDomainName(const char* value) { m_domainNameHasBeenSet = true; m_domainName.assign(value); }
-
-    /**
-     * <p>The domain to which the provider applies.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithDomainName(const Aws::String& value) { SetDomainName(value); return *this;}
-
-    /**
-     * <p>The domain to which the provider applies.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithDomainName(Aws::String&& value) { SetDomainName(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain to which the provider applies.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithDomainName(const char* value) { SetDomainName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Exchange Web Services (EWS) availability provider definition. The request
      * must contain exactly one provider definition, either <code>EwsProvider</code> or
      * <code>LambdaProvider</code>.</p>
      */
-    inline const EwsAvailabilityProvider& GetEwsProvider() const{ return m_ewsProvider; }
-
-    /**
-     * <p>Exchange Web Services (EWS) availability provider definition. The request
-     * must contain exactly one provider definition, either <code>EwsProvider</code> or
-     * <code>LambdaProvider</code>.</p>
-     */
+    inline const EwsAvailabilityProvider& GetEwsProvider() const { return m_ewsProvider; }
     inline bool EwsProviderHasBeenSet() const { return m_ewsProviderHasBeenSet; }
+    template<typename EwsProviderT = EwsAvailabilityProvider>
+    void SetEwsProvider(EwsProviderT&& value) { m_ewsProviderHasBeenSet = true; m_ewsProvider = std::forward<EwsProviderT>(value); }
+    template<typename EwsProviderT = EwsAvailabilityProvider>
+    CreateAvailabilityConfigurationRequest& WithEwsProvider(EwsProviderT&& value) { SetEwsProvider(std::forward<EwsProviderT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Exchange Web Services (EWS) availability provider definition. The request
-     * must contain exactly one provider definition, either <code>EwsProvider</code> or
-     * <code>LambdaProvider</code>.</p>
-     */
-    inline void SetEwsProvider(const EwsAvailabilityProvider& value) { m_ewsProviderHasBeenSet = true; m_ewsProvider = value; }
-
-    /**
-     * <p>Exchange Web Services (EWS) availability provider definition. The request
-     * must contain exactly one provider definition, either <code>EwsProvider</code> or
-     * <code>LambdaProvider</code>.</p>
-     */
-    inline void SetEwsProvider(EwsAvailabilityProvider&& value) { m_ewsProviderHasBeenSet = true; m_ewsProvider = std::move(value); }
-
-    /**
-     * <p>Exchange Web Services (EWS) availability provider definition. The request
-     * must contain exactly one provider definition, either <code>EwsProvider</code> or
-     * <code>LambdaProvider</code>.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithEwsProvider(const EwsAvailabilityProvider& value) { SetEwsProvider(value); return *this;}
-
-    /**
-     * <p>Exchange Web Services (EWS) availability provider definition. The request
-     * must contain exactly one provider definition, either <code>EwsProvider</code> or
-     * <code>LambdaProvider</code>.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithEwsProvider(EwsAvailabilityProvider&& value) { SetEwsProvider(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Lambda availability provider definition. The request must contain exactly one
      * provider definition, either <code>EwsProvider</code> or
      * <code>LambdaProvider</code>.</p>
      */
-    inline const LambdaAvailabilityProvider& GetLambdaProvider() const{ return m_lambdaProvider; }
-
-    /**
-     * <p>Lambda availability provider definition. The request must contain exactly one
-     * provider definition, either <code>EwsProvider</code> or
-     * <code>LambdaProvider</code>.</p>
-     */
+    inline const LambdaAvailabilityProvider& GetLambdaProvider() const { return m_lambdaProvider; }
     inline bool LambdaProviderHasBeenSet() const { return m_lambdaProviderHasBeenSet; }
-
-    /**
-     * <p>Lambda availability provider definition. The request must contain exactly one
-     * provider definition, either <code>EwsProvider</code> or
-     * <code>LambdaProvider</code>.</p>
-     */
-    inline void SetLambdaProvider(const LambdaAvailabilityProvider& value) { m_lambdaProviderHasBeenSet = true; m_lambdaProvider = value; }
-
-    /**
-     * <p>Lambda availability provider definition. The request must contain exactly one
-     * provider definition, either <code>EwsProvider</code> or
-     * <code>LambdaProvider</code>.</p>
-     */
-    inline void SetLambdaProvider(LambdaAvailabilityProvider&& value) { m_lambdaProviderHasBeenSet = true; m_lambdaProvider = std::move(value); }
-
-    /**
-     * <p>Lambda availability provider definition. The request must contain exactly one
-     * provider definition, either <code>EwsProvider</code> or
-     * <code>LambdaProvider</code>.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithLambdaProvider(const LambdaAvailabilityProvider& value) { SetLambdaProvider(value); return *this;}
-
-    /**
-     * <p>Lambda availability provider definition. The request must contain exactly one
-     * provider definition, either <code>EwsProvider</code> or
-     * <code>LambdaProvider</code>.</p>
-     */
-    inline CreateAvailabilityConfigurationRequest& WithLambdaProvider(LambdaAvailabilityProvider&& value) { SetLambdaProvider(std::move(value)); return *this;}
-
+    template<typename LambdaProviderT = LambdaAvailabilityProvider>
+    void SetLambdaProvider(LambdaProviderT&& value) { m_lambdaProviderHasBeenSet = true; m_lambdaProvider = std::forward<LambdaProviderT>(value); }
+    template<typename LambdaProviderT = LambdaAvailabilityProvider>
+    CreateAvailabilityConfigurationRequest& WithLambdaProvider(LambdaProviderT&& value) { SetLambdaProvider(std::forward<LambdaProviderT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     Aws::String m_organizationId;
     bool m_organizationIdHasBeenSet = false;

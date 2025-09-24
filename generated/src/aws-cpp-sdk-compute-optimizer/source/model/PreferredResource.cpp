@@ -18,19 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-PreferredResource::PreferredResource() : 
-    m_name(PreferredResourceName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_includeListHasBeenSet(false),
-    m_excludeListHasBeenSet(false)
-{
-}
-
-PreferredResource::PreferredResource(JsonView jsonValue) : 
-    m_name(PreferredResourceName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_includeListHasBeenSet(false),
-    m_excludeListHasBeenSet(false)
+PreferredResource::PreferredResource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ PreferredResource& PreferredResource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = PreferredResourceNameMapper::GetPreferredResourceNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("includeList"))
   {
     Aws::Utils::Array<JsonView> includeListJsonList = jsonValue.GetArray("includeList");
@@ -53,7 +39,6 @@ PreferredResource& PreferredResource::operator =(JsonView jsonValue)
     }
     m_includeListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("excludeList"))
   {
     Aws::Utils::Array<JsonView> excludeListJsonList = jsonValue.GetArray("excludeList");
@@ -63,7 +48,6 @@ PreferredResource& PreferredResource::operator =(JsonView jsonValue)
     }
     m_excludeListHasBeenSet = true;
   }
-
   return *this;
 }
 

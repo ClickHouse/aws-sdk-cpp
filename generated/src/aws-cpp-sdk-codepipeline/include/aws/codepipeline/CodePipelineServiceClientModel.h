@@ -32,8 +32,11 @@
 #include <aws/codepipeline/model/GetThirdPartyJobDetailsResult.h>
 #include <aws/codepipeline/model/ListActionExecutionsResult.h>
 #include <aws/codepipeline/model/ListActionTypesResult.h>
+#include <aws/codepipeline/model/ListDeployActionExecutionTargetsResult.h>
 #include <aws/codepipeline/model/ListPipelineExecutionsResult.h>
 #include <aws/codepipeline/model/ListPipelinesResult.h>
+#include <aws/codepipeline/model/ListRuleExecutionsResult.h>
+#include <aws/codepipeline/model/ListRuleTypesResult.h>
 #include <aws/codepipeline/model/ListTagsForResourceResult.h>
 #include <aws/codepipeline/model/ListWebhooksResult.h>
 #include <aws/codepipeline/model/PollForJobsResult.h>
@@ -43,11 +46,18 @@
 #include <aws/codepipeline/model/PutWebhookResult.h>
 #include <aws/codepipeline/model/RegisterWebhookWithThirdPartyResult.h>
 #include <aws/codepipeline/model/RetryStageExecutionResult.h>
+#include <aws/codepipeline/model/RollbackStageResult.h>
 #include <aws/codepipeline/model/StartPipelineExecutionResult.h>
 #include <aws/codepipeline/model/StopPipelineExecutionResult.h>
 #include <aws/codepipeline/model/TagResourceResult.h>
 #include <aws/codepipeline/model/UntagResourceResult.h>
 #include <aws/codepipeline/model/UpdatePipelineResult.h>
+#include <aws/codepipeline/model/ListRuleTypesRequest.h>
+#include <aws/codepipeline/model/DeregisterWebhookWithThirdPartyRequest.h>
+#include <aws/codepipeline/model/RegisterWebhookWithThirdPartyRequest.h>
+#include <aws/codepipeline/model/ListWebhooksRequest.h>
+#include <aws/codepipeline/model/ListActionTypesRequest.h>
+#include <aws/codepipeline/model/ListPipelinesRequest.h>
 #include <aws/core/NoResult.h>
 /* End of service model headers required in CodePipelineClient header */
 
@@ -82,7 +92,7 @@ namespace Aws
 
   namespace CodePipeline
   {
-    using CodePipelineClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using CodePipelineClientConfiguration = Aws::Client::GenericClientConfiguration;
     using CodePipelineEndpointProviderBase = Aws::CodePipeline::Endpoint::CodePipelineEndpointProviderBase;
     using CodePipelineEndpointProvider = Aws::CodePipeline::Endpoint::CodePipelineEndpointProvider;
 
@@ -107,10 +117,14 @@ namespace Aws
       class GetThirdPartyJobDetailsRequest;
       class ListActionExecutionsRequest;
       class ListActionTypesRequest;
+      class ListDeployActionExecutionTargetsRequest;
       class ListPipelineExecutionsRequest;
       class ListPipelinesRequest;
+      class ListRuleExecutionsRequest;
+      class ListRuleTypesRequest;
       class ListTagsForResourceRequest;
       class ListWebhooksRequest;
+      class OverrideStageConditionRequest;
       class PollForJobsRequest;
       class PollForThirdPartyJobsRequest;
       class PutActionRevisionRequest;
@@ -122,6 +136,7 @@ namespace Aws
       class PutWebhookRequest;
       class RegisterWebhookWithThirdPartyRequest;
       class RetryStageExecutionRequest;
+      class RollbackStageRequest;
       class StartPipelineExecutionRequest;
       class StopPipelineExecutionRequest;
       class TagResourceRequest;
@@ -149,10 +164,14 @@ namespace Aws
       typedef Aws::Utils::Outcome<GetThirdPartyJobDetailsResult, CodePipelineError> GetThirdPartyJobDetailsOutcome;
       typedef Aws::Utils::Outcome<ListActionExecutionsResult, CodePipelineError> ListActionExecutionsOutcome;
       typedef Aws::Utils::Outcome<ListActionTypesResult, CodePipelineError> ListActionTypesOutcome;
+      typedef Aws::Utils::Outcome<ListDeployActionExecutionTargetsResult, CodePipelineError> ListDeployActionExecutionTargetsOutcome;
       typedef Aws::Utils::Outcome<ListPipelineExecutionsResult, CodePipelineError> ListPipelineExecutionsOutcome;
       typedef Aws::Utils::Outcome<ListPipelinesResult, CodePipelineError> ListPipelinesOutcome;
+      typedef Aws::Utils::Outcome<ListRuleExecutionsResult, CodePipelineError> ListRuleExecutionsOutcome;
+      typedef Aws::Utils::Outcome<ListRuleTypesResult, CodePipelineError> ListRuleTypesOutcome;
       typedef Aws::Utils::Outcome<ListTagsForResourceResult, CodePipelineError> ListTagsForResourceOutcome;
       typedef Aws::Utils::Outcome<ListWebhooksResult, CodePipelineError> ListWebhooksOutcome;
+      typedef Aws::Utils::Outcome<Aws::NoResult, CodePipelineError> OverrideStageConditionOutcome;
       typedef Aws::Utils::Outcome<PollForJobsResult, CodePipelineError> PollForJobsOutcome;
       typedef Aws::Utils::Outcome<PollForThirdPartyJobsResult, CodePipelineError> PollForThirdPartyJobsOutcome;
       typedef Aws::Utils::Outcome<PutActionRevisionResult, CodePipelineError> PutActionRevisionOutcome;
@@ -164,6 +183,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<PutWebhookResult, CodePipelineError> PutWebhookOutcome;
       typedef Aws::Utils::Outcome<RegisterWebhookWithThirdPartyResult, CodePipelineError> RegisterWebhookWithThirdPartyOutcome;
       typedef Aws::Utils::Outcome<RetryStageExecutionResult, CodePipelineError> RetryStageExecutionOutcome;
+      typedef Aws::Utils::Outcome<RollbackStageResult, CodePipelineError> RollbackStageOutcome;
       typedef Aws::Utils::Outcome<StartPipelineExecutionResult, CodePipelineError> StartPipelineExecutionOutcome;
       typedef Aws::Utils::Outcome<StopPipelineExecutionResult, CodePipelineError> StopPipelineExecutionOutcome;
       typedef Aws::Utils::Outcome<TagResourceResult, CodePipelineError> TagResourceOutcome;
@@ -191,10 +211,14 @@ namespace Aws
       typedef std::future<GetThirdPartyJobDetailsOutcome> GetThirdPartyJobDetailsOutcomeCallable;
       typedef std::future<ListActionExecutionsOutcome> ListActionExecutionsOutcomeCallable;
       typedef std::future<ListActionTypesOutcome> ListActionTypesOutcomeCallable;
+      typedef std::future<ListDeployActionExecutionTargetsOutcome> ListDeployActionExecutionTargetsOutcomeCallable;
       typedef std::future<ListPipelineExecutionsOutcome> ListPipelineExecutionsOutcomeCallable;
       typedef std::future<ListPipelinesOutcome> ListPipelinesOutcomeCallable;
+      typedef std::future<ListRuleExecutionsOutcome> ListRuleExecutionsOutcomeCallable;
+      typedef std::future<ListRuleTypesOutcome> ListRuleTypesOutcomeCallable;
       typedef std::future<ListTagsForResourceOutcome> ListTagsForResourceOutcomeCallable;
       typedef std::future<ListWebhooksOutcome> ListWebhooksOutcomeCallable;
+      typedef std::future<OverrideStageConditionOutcome> OverrideStageConditionOutcomeCallable;
       typedef std::future<PollForJobsOutcome> PollForJobsOutcomeCallable;
       typedef std::future<PollForThirdPartyJobsOutcome> PollForThirdPartyJobsOutcomeCallable;
       typedef std::future<PutActionRevisionOutcome> PutActionRevisionOutcomeCallable;
@@ -206,6 +230,7 @@ namespace Aws
       typedef std::future<PutWebhookOutcome> PutWebhookOutcomeCallable;
       typedef std::future<RegisterWebhookWithThirdPartyOutcome> RegisterWebhookWithThirdPartyOutcomeCallable;
       typedef std::future<RetryStageExecutionOutcome> RetryStageExecutionOutcomeCallable;
+      typedef std::future<RollbackStageOutcome> RollbackStageOutcomeCallable;
       typedef std::future<StartPipelineExecutionOutcome> StartPipelineExecutionOutcomeCallable;
       typedef std::future<StopPipelineExecutionOutcome> StopPipelineExecutionOutcomeCallable;
       typedef std::future<TagResourceOutcome> TagResourceOutcomeCallable;
@@ -236,10 +261,14 @@ namespace Aws
     typedef std::function<void(const CodePipelineClient*, const Model::GetThirdPartyJobDetailsRequest&, const Model::GetThirdPartyJobDetailsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetThirdPartyJobDetailsResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::ListActionExecutionsRequest&, const Model::ListActionExecutionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListActionExecutionsResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::ListActionTypesRequest&, const Model::ListActionTypesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListActionTypesResponseReceivedHandler;
+    typedef std::function<void(const CodePipelineClient*, const Model::ListDeployActionExecutionTargetsRequest&, const Model::ListDeployActionExecutionTargetsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListDeployActionExecutionTargetsResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::ListPipelineExecutionsRequest&, const Model::ListPipelineExecutionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListPipelineExecutionsResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::ListPipelinesRequest&, const Model::ListPipelinesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListPipelinesResponseReceivedHandler;
+    typedef std::function<void(const CodePipelineClient*, const Model::ListRuleExecutionsRequest&, const Model::ListRuleExecutionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListRuleExecutionsResponseReceivedHandler;
+    typedef std::function<void(const CodePipelineClient*, const Model::ListRuleTypesRequest&, const Model::ListRuleTypesOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListRuleTypesResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::ListTagsForResourceRequest&, const Model::ListTagsForResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListTagsForResourceResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::ListWebhooksRequest&, const Model::ListWebhooksOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListWebhooksResponseReceivedHandler;
+    typedef std::function<void(const CodePipelineClient*, const Model::OverrideStageConditionRequest&, const Model::OverrideStageConditionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > OverrideStageConditionResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::PollForJobsRequest&, const Model::PollForJobsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PollForJobsResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::PollForThirdPartyJobsRequest&, const Model::PollForThirdPartyJobsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PollForThirdPartyJobsResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::PutActionRevisionRequest&, const Model::PutActionRevisionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PutActionRevisionResponseReceivedHandler;
@@ -251,6 +280,7 @@ namespace Aws
     typedef std::function<void(const CodePipelineClient*, const Model::PutWebhookRequest&, const Model::PutWebhookOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > PutWebhookResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::RegisterWebhookWithThirdPartyRequest&, const Model::RegisterWebhookWithThirdPartyOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RegisterWebhookWithThirdPartyResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::RetryStageExecutionRequest&, const Model::RetryStageExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RetryStageExecutionResponseReceivedHandler;
+    typedef std::function<void(const CodePipelineClient*, const Model::RollbackStageRequest&, const Model::RollbackStageOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > RollbackStageResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::StartPipelineExecutionRequest&, const Model::StartPipelineExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StartPipelineExecutionResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::StopPipelineExecutionRequest&, const Model::StopPipelineExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > StopPipelineExecutionResponseReceivedHandler;
     typedef std::function<void(const CodePipelineClient*, const Model::TagResourceRequest&, const Model::TagResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > TagResourceResponseReceivedHandler;

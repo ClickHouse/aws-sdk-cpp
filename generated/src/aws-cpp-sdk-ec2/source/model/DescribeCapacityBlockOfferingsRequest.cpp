@@ -10,22 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeCapacityBlockOfferingsRequest::DescribeCapacityBlockOfferingsRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_instanceCount(0),
-    m_instanceCountHasBeenSet(false),
-    m_startDateRangeHasBeenSet(false),
-    m_endDateRangeHasBeenSet(false),
-    m_capacityDurationHours(0),
-    m_capacityDurationHoursHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeCapacityBlockOfferingsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -68,6 +52,16 @@ Aws::String DescribeCapacityBlockOfferingsRequest::SerializePayload() const
   if(m_maxResultsHasBeenSet)
   {
     ss << "MaxResults=" << m_maxResults << "&";
+  }
+
+  if(m_ultraserverTypeHasBeenSet)
+  {
+    ss << "UltraserverType=" << StringUtils::URLEncode(m_ultraserverType.c_str()) << "&";
+  }
+
+  if(m_ultraserverCountHasBeenSet)
+  {
+    ss << "UltraserverCount=" << m_ultraserverCount << "&";
   }
 
   ss << "Version=2016-11-15";

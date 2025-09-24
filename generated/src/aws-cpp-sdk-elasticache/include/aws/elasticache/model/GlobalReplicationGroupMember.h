@@ -34,7 +34,7 @@ namespace Model
   class GlobalReplicationGroupMember
   {
   public:
-    AWS_ELASTICACHE_API GlobalReplicationGroupMember();
+    AWS_ELASTICACHE_API GlobalReplicationGroupMember() = default;
     AWS_ELASTICACHE_API GlobalReplicationGroupMember(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICACHE_API GlobalReplicationGroupMember& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,206 +42,64 @@ namespace Model
     AWS_ELASTICACHE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The replication group id of the Global datastore member.</p>
      */
-    inline const Aws::String& GetReplicationGroupId() const{ return m_replicationGroupId; }
-
-    /**
-     * <p>The replication group id of the Global datastore member.</p>
-     */
+    inline const Aws::String& GetReplicationGroupId() const { return m_replicationGroupId; }
     inline bool ReplicationGroupIdHasBeenSet() const { return m_replicationGroupIdHasBeenSet; }
+    template<typename ReplicationGroupIdT = Aws::String>
+    void SetReplicationGroupId(ReplicationGroupIdT&& value) { m_replicationGroupIdHasBeenSet = true; m_replicationGroupId = std::forward<ReplicationGroupIdT>(value); }
+    template<typename ReplicationGroupIdT = Aws::String>
+    GlobalReplicationGroupMember& WithReplicationGroupId(ReplicationGroupIdT&& value) { SetReplicationGroupId(std::forward<ReplicationGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The replication group id of the Global datastore member.</p>
-     */
-    inline void SetReplicationGroupId(const Aws::String& value) { m_replicationGroupIdHasBeenSet = true; m_replicationGroupId = value; }
-
-    /**
-     * <p>The replication group id of the Global datastore member.</p>
-     */
-    inline void SetReplicationGroupId(Aws::String&& value) { m_replicationGroupIdHasBeenSet = true; m_replicationGroupId = std::move(value); }
-
-    /**
-     * <p>The replication group id of the Global datastore member.</p>
-     */
-    inline void SetReplicationGroupId(const char* value) { m_replicationGroupIdHasBeenSet = true; m_replicationGroupId.assign(value); }
-
-    /**
-     * <p>The replication group id of the Global datastore member.</p>
-     */
-    inline GlobalReplicationGroupMember& WithReplicationGroupId(const Aws::String& value) { SetReplicationGroupId(value); return *this;}
-
-    /**
-     * <p>The replication group id of the Global datastore member.</p>
-     */
-    inline GlobalReplicationGroupMember& WithReplicationGroupId(Aws::String&& value) { SetReplicationGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The replication group id of the Global datastore member.</p>
-     */
-    inline GlobalReplicationGroupMember& WithReplicationGroupId(const char* value) { SetReplicationGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon region of the Global datastore member.</p>
      */
-    inline const Aws::String& GetReplicationGroupRegion() const{ return m_replicationGroupRegion; }
-
-    /**
-     * <p>The Amazon region of the Global datastore member.</p>
-     */
+    inline const Aws::String& GetReplicationGroupRegion() const { return m_replicationGroupRegion; }
     inline bool ReplicationGroupRegionHasBeenSet() const { return m_replicationGroupRegionHasBeenSet; }
+    template<typename ReplicationGroupRegionT = Aws::String>
+    void SetReplicationGroupRegion(ReplicationGroupRegionT&& value) { m_replicationGroupRegionHasBeenSet = true; m_replicationGroupRegion = std::forward<ReplicationGroupRegionT>(value); }
+    template<typename ReplicationGroupRegionT = Aws::String>
+    GlobalReplicationGroupMember& WithReplicationGroupRegion(ReplicationGroupRegionT&& value) { SetReplicationGroupRegion(std::forward<ReplicationGroupRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon region of the Global datastore member.</p>
-     */
-    inline void SetReplicationGroupRegion(const Aws::String& value) { m_replicationGroupRegionHasBeenSet = true; m_replicationGroupRegion = value; }
-
-    /**
-     * <p>The Amazon region of the Global datastore member.</p>
-     */
-    inline void SetReplicationGroupRegion(Aws::String&& value) { m_replicationGroupRegionHasBeenSet = true; m_replicationGroupRegion = std::move(value); }
-
-    /**
-     * <p>The Amazon region of the Global datastore member.</p>
-     */
-    inline void SetReplicationGroupRegion(const char* value) { m_replicationGroupRegionHasBeenSet = true; m_replicationGroupRegion.assign(value); }
-
-    /**
-     * <p>The Amazon region of the Global datastore member.</p>
-     */
-    inline GlobalReplicationGroupMember& WithReplicationGroupRegion(const Aws::String& value) { SetReplicationGroupRegion(value); return *this;}
-
-    /**
-     * <p>The Amazon region of the Global datastore member.</p>
-     */
-    inline GlobalReplicationGroupMember& WithReplicationGroupRegion(Aws::String&& value) { SetReplicationGroupRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon region of the Global datastore member.</p>
-     */
-    inline GlobalReplicationGroupMember& WithReplicationGroupRegion(const char* value) { SetReplicationGroupRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates the role of the replication group, primary or secondary.</p>
      */
-    inline const Aws::String& GetRole() const{ return m_role; }
-
-    /**
-     * <p>Indicates the role of the replication group, primary or secondary.</p>
-     */
+    inline const Aws::String& GetRole() const { return m_role; }
     inline bool RoleHasBeenSet() const { return m_roleHasBeenSet; }
+    template<typename RoleT = Aws::String>
+    void SetRole(RoleT&& value) { m_roleHasBeenSet = true; m_role = std::forward<RoleT>(value); }
+    template<typename RoleT = Aws::String>
+    GlobalReplicationGroupMember& WithRole(RoleT&& value) { SetRole(std::forward<RoleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the role of the replication group, primary or secondary.</p>
-     */
-    inline void SetRole(const Aws::String& value) { m_roleHasBeenSet = true; m_role = value; }
-
-    /**
-     * <p>Indicates the role of the replication group, primary or secondary.</p>
-     */
-    inline void SetRole(Aws::String&& value) { m_roleHasBeenSet = true; m_role = std::move(value); }
-
-    /**
-     * <p>Indicates the role of the replication group, primary or secondary.</p>
-     */
-    inline void SetRole(const char* value) { m_roleHasBeenSet = true; m_role.assign(value); }
-
-    /**
-     * <p>Indicates the role of the replication group, primary or secondary.</p>
-     */
-    inline GlobalReplicationGroupMember& WithRole(const Aws::String& value) { SetRole(value); return *this;}
-
-    /**
-     * <p>Indicates the role of the replication group, primary or secondary.</p>
-     */
-    inline GlobalReplicationGroupMember& WithRole(Aws::String&& value) { SetRole(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates the role of the replication group, primary or secondary.</p>
-     */
-    inline GlobalReplicationGroupMember& WithRole(const char* value) { SetRole(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether automatic failover is enabled for the replication
      * group.</p>
      */
-    inline const AutomaticFailoverStatus& GetAutomaticFailover() const{ return m_automaticFailover; }
-
-    /**
-     * <p>Indicates whether automatic failover is enabled for the replication
-     * group.</p>
-     */
+    inline AutomaticFailoverStatus GetAutomaticFailover() const { return m_automaticFailover; }
     inline bool AutomaticFailoverHasBeenSet() const { return m_automaticFailoverHasBeenSet; }
+    inline void SetAutomaticFailover(AutomaticFailoverStatus value) { m_automaticFailoverHasBeenSet = true; m_automaticFailover = value; }
+    inline GlobalReplicationGroupMember& WithAutomaticFailover(AutomaticFailoverStatus value) { SetAutomaticFailover(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates whether automatic failover is enabled for the replication
-     * group.</p>
-     */
-    inline void SetAutomaticFailover(const AutomaticFailoverStatus& value) { m_automaticFailoverHasBeenSet = true; m_automaticFailover = value; }
-
-    /**
-     * <p>Indicates whether automatic failover is enabled for the replication
-     * group.</p>
-     */
-    inline void SetAutomaticFailover(AutomaticFailoverStatus&& value) { m_automaticFailoverHasBeenSet = true; m_automaticFailover = std::move(value); }
-
-    /**
-     * <p>Indicates whether automatic failover is enabled for the replication
-     * group.</p>
-     */
-    inline GlobalReplicationGroupMember& WithAutomaticFailover(const AutomaticFailoverStatus& value) { SetAutomaticFailover(value); return *this;}
-
-    /**
-     * <p>Indicates whether automatic failover is enabled for the replication
-     * group.</p>
-     */
-    inline GlobalReplicationGroupMember& WithAutomaticFailover(AutomaticFailoverStatus&& value) { SetAutomaticFailover(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the membership of the replication group.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the membership of the replication group.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the membership of the replication group.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the membership of the replication group.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the membership of the replication group.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the membership of the replication group.</p>
-     */
-    inline GlobalReplicationGroupMember& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the membership of the replication group.</p>
-     */
-    inline GlobalReplicationGroupMember& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the membership of the replication group.</p>
-     */
-    inline GlobalReplicationGroupMember& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    GlobalReplicationGroupMember& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_replicationGroupId;
@@ -253,7 +111,7 @@ namespace Model
     Aws::String m_role;
     bool m_roleHasBeenSet = false;
 
-    AutomaticFailoverStatus m_automaticFailover;
+    AutomaticFailoverStatus m_automaticFailover{AutomaticFailoverStatus::NOT_SET};
     bool m_automaticFailoverHasBeenSet = false;
 
     Aws::String m_status;

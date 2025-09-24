@@ -17,14 +17,11 @@ namespace Model
 {
 
   /**
-   * A request to purchase a offering.<p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/PurchaseOfferingRequest">AWS
-   * API Reference</a></p>
    */
   class PurchaseOfferingRequest : public MediaConnectRequest
   {
   public:
-    AWS_MEDIACONNECT_API PurchaseOfferingRequest();
+    AWS_MEDIACONNECT_API PurchaseOfferingRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,168 +32,47 @@ namespace Model
     AWS_MEDIACONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * The Amazon Resource Name (ARN) of the offering.
+     * <p> The Amazon Resource Name (ARN) of the offering.</p>
      */
-    inline const Aws::String& GetOfferingArn() const{ return m_offeringArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the offering.
-     */
+    inline const Aws::String& GetOfferingArn() const { return m_offeringArn; }
     inline bool OfferingArnHasBeenSet() const { return m_offeringArnHasBeenSet; }
+    template<typename OfferingArnT = Aws::String>
+    void SetOfferingArn(OfferingArnT&& value) { m_offeringArnHasBeenSet = true; m_offeringArn = std::forward<OfferingArnT>(value); }
+    template<typename OfferingArnT = Aws::String>
+    PurchaseOfferingRequest& WithOfferingArn(OfferingArnT&& value) { SetOfferingArn(std::forward<OfferingArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The Amazon Resource Name (ARN) of the offering.
+     * <p> The name that you want to use for the reservation.</p>
      */
-    inline void SetOfferingArn(const Aws::String& value) { m_offeringArnHasBeenSet = true; m_offeringArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the offering.
-     */
-    inline void SetOfferingArn(Aws::String&& value) { m_offeringArnHasBeenSet = true; m_offeringArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the offering.
-     */
-    inline void SetOfferingArn(const char* value) { m_offeringArnHasBeenSet = true; m_offeringArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the offering.
-     */
-    inline PurchaseOfferingRequest& WithOfferingArn(const Aws::String& value) { SetOfferingArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the offering.
-     */
-    inline PurchaseOfferingRequest& WithOfferingArn(Aws::String&& value) { SetOfferingArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the offering.
-     */
-    inline PurchaseOfferingRequest& WithOfferingArn(const char* value) { SetOfferingArn(value); return *this;}
-
-
-    /**
-     * The name that you want to use for the reservation.
-     */
-    inline const Aws::String& GetReservationName() const{ return m_reservationName; }
-
-    /**
-     * The name that you want to use for the reservation.
-     */
+    inline const Aws::String& GetReservationName() const { return m_reservationName; }
     inline bool ReservationNameHasBeenSet() const { return m_reservationNameHasBeenSet; }
+    template<typename ReservationNameT = Aws::String>
+    void SetReservationName(ReservationNameT&& value) { m_reservationNameHasBeenSet = true; m_reservationName = std::forward<ReservationNameT>(value); }
+    template<typename ReservationNameT = Aws::String>
+    PurchaseOfferingRequest& WithReservationName(ReservationNameT&& value) { SetReservationName(std::forward<ReservationNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The name that you want to use for the reservation.
+     * <p> The date and time that you want the reservation to begin, in Coordinated
+     * Universal Time (UTC). </p> <p>You can specify any date and time between 12:00am
+     * on the first day of the current month to the current time on today's date,
+     * inclusive. Specify the start in a 24-hour notation. Use the following format:
+     * <code>YYYY-MM-DDTHH:mm:SSZ</code>, where <code>T</code> and <code>Z</code> are
+     * literal characters. For example, to specify 11:30pm on March 5, 2020, enter
+     * <code>2020-03-05T23:30:00Z</code>.</p>
      */
-    inline void SetReservationName(const Aws::String& value) { m_reservationNameHasBeenSet = true; m_reservationName = value; }
-
-    /**
-     * The name that you want to use for the reservation.
-     */
-    inline void SetReservationName(Aws::String&& value) { m_reservationNameHasBeenSet = true; m_reservationName = std::move(value); }
-
-    /**
-     * The name that you want to use for the reservation.
-     */
-    inline void SetReservationName(const char* value) { m_reservationNameHasBeenSet = true; m_reservationName.assign(value); }
-
-    /**
-     * The name that you want to use for the reservation.
-     */
-    inline PurchaseOfferingRequest& WithReservationName(const Aws::String& value) { SetReservationName(value); return *this;}
-
-    /**
-     * The name that you want to use for the reservation.
-     */
-    inline PurchaseOfferingRequest& WithReservationName(Aws::String&& value) { SetReservationName(std::move(value)); return *this;}
-
-    /**
-     * The name that you want to use for the reservation.
-     */
-    inline PurchaseOfferingRequest& WithReservationName(const char* value) { SetReservationName(value); return *this;}
-
-
-    /**
-     * The date and time that you want the reservation to begin, in Coordinated
-     * Universal Time (UTC). You can specify any date and time between 12:00am on the
-     * first day of the current month to the current time on today's date, inclusive.
-     * Specify the start in a 24-hour notation. Use the following format:
-     * YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to
-     * specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.
-     */
-    inline const Aws::String& GetStart() const{ return m_start; }
-
-    /**
-     * The date and time that you want the reservation to begin, in Coordinated
-     * Universal Time (UTC). You can specify any date and time between 12:00am on the
-     * first day of the current month to the current time on today's date, inclusive.
-     * Specify the start in a 24-hour notation. Use the following format:
-     * YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to
-     * specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.
-     */
+    inline const Aws::String& GetStart() const { return m_start; }
     inline bool StartHasBeenSet() const { return m_startHasBeenSet; }
-
-    /**
-     * The date and time that you want the reservation to begin, in Coordinated
-     * Universal Time (UTC). You can specify any date and time between 12:00am on the
-     * first day of the current month to the current time on today's date, inclusive.
-     * Specify the start in a 24-hour notation. Use the following format:
-     * YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to
-     * specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.
-     */
-    inline void SetStart(const Aws::String& value) { m_startHasBeenSet = true; m_start = value; }
-
-    /**
-     * The date and time that you want the reservation to begin, in Coordinated
-     * Universal Time (UTC). You can specify any date and time between 12:00am on the
-     * first day of the current month to the current time on today's date, inclusive.
-     * Specify the start in a 24-hour notation. Use the following format:
-     * YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to
-     * specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.
-     */
-    inline void SetStart(Aws::String&& value) { m_startHasBeenSet = true; m_start = std::move(value); }
-
-    /**
-     * The date and time that you want the reservation to begin, in Coordinated
-     * Universal Time (UTC). You can specify any date and time between 12:00am on the
-     * first day of the current month to the current time on today's date, inclusive.
-     * Specify the start in a 24-hour notation. Use the following format:
-     * YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to
-     * specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.
-     */
-    inline void SetStart(const char* value) { m_startHasBeenSet = true; m_start.assign(value); }
-
-    /**
-     * The date and time that you want the reservation to begin, in Coordinated
-     * Universal Time (UTC). You can specify any date and time between 12:00am on the
-     * first day of the current month to the current time on today's date, inclusive.
-     * Specify the start in a 24-hour notation. Use the following format:
-     * YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to
-     * specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.
-     */
-    inline PurchaseOfferingRequest& WithStart(const Aws::String& value) { SetStart(value); return *this;}
-
-    /**
-     * The date and time that you want the reservation to begin, in Coordinated
-     * Universal Time (UTC). You can specify any date and time between 12:00am on the
-     * first day of the current month to the current time on today's date, inclusive.
-     * Specify the start in a 24-hour notation. Use the following format:
-     * YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to
-     * specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.
-     */
-    inline PurchaseOfferingRequest& WithStart(Aws::String&& value) { SetStart(std::move(value)); return *this;}
-
-    /**
-     * The date and time that you want the reservation to begin, in Coordinated
-     * Universal Time (UTC). You can specify any date and time between 12:00am on the
-     * first day of the current month to the current time on today's date, inclusive.
-     * Specify the start in a 24-hour notation. Use the following format:
-     * YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to
-     * specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.
-     */
-    inline PurchaseOfferingRequest& WithStart(const char* value) { SetStart(value); return *this;}
-
+    template<typename StartT = Aws::String>
+    void SetStart(StartT&& value) { m_startHasBeenSet = true; m_start = std::forward<StartT>(value); }
+    template<typename StartT = Aws::String>
+    PurchaseOfferingRequest& WithStart(StartT&& value) { SetStart(std::forward<StartT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_offeringArn;

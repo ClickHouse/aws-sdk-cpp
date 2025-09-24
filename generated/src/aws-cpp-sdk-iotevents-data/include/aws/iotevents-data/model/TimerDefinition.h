@@ -31,83 +31,40 @@ namespace Model
   class TimerDefinition
   {
   public:
-    AWS_IOTEVENTSDATA_API TimerDefinition();
+    AWS_IOTEVENTSDATA_API TimerDefinition() = default;
     AWS_IOTEVENTSDATA_API TimerDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API TimerDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the timer.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the timer.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    TimerDefinition& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the timer.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the timer.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the timer.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the timer.</p>
-     */
-    inline TimerDefinition& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the timer.</p>
-     */
-    inline TimerDefinition& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the timer.</p>
-     */
-    inline TimerDefinition& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new setting of the timer (the number of seconds before the timer
      * elapses).</p>
      */
-    inline int GetSeconds() const{ return m_seconds; }
-
-    /**
-     * <p>The new setting of the timer (the number of seconds before the timer
-     * elapses).</p>
-     */
+    inline int GetSeconds() const { return m_seconds; }
     inline bool SecondsHasBeenSet() const { return m_secondsHasBeenSet; }
-
-    /**
-     * <p>The new setting of the timer (the number of seconds before the timer
-     * elapses).</p>
-     */
     inline void SetSeconds(int value) { m_secondsHasBeenSet = true; m_seconds = value; }
-
-    /**
-     * <p>The new setting of the timer (the number of seconds before the timer
-     * elapses).</p>
-     */
     inline TimerDefinition& WithSeconds(int value) { SetSeconds(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    int m_seconds;
+    int m_seconds{0};
     bool m_secondsHasBeenSet = false;
   };
 

@@ -29,7 +29,10 @@ namespace Model
     AWS_RDS_DBSnapshot,
     AWS_RDS_DBClusterSnapshot,
     AWS_SNS_Topic,
-    AWS_S3Express_DirectoryBucket
+    AWS_S3Express_DirectoryBucket,
+    AWS_DynamoDB_Table,
+    AWS_DynamoDB_Stream,
+    AWS_IAM_User
   };
 
 namespace ResourceTypeMapper

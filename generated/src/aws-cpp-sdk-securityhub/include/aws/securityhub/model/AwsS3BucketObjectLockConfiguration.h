@@ -34,83 +34,35 @@ namespace Model
   class AwsS3BucketObjectLockConfiguration
   {
   public:
-    AWS_SECURITYHUB_API AwsS3BucketObjectLockConfiguration();
+    AWS_SECURITYHUB_API AwsS3BucketObjectLockConfiguration() = default;
     AWS_SECURITYHUB_API AwsS3BucketObjectLockConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsS3BucketObjectLockConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Indicates whether the bucket has an Object Lock configuration enabled. </p>
      */
-    inline const Aws::String& GetObjectLockEnabled() const{ return m_objectLockEnabled; }
-
-    /**
-     * <p> Indicates whether the bucket has an Object Lock configuration enabled. </p>
-     */
+    inline const Aws::String& GetObjectLockEnabled() const { return m_objectLockEnabled; }
     inline bool ObjectLockEnabledHasBeenSet() const { return m_objectLockEnabledHasBeenSet; }
+    template<typename ObjectLockEnabledT = Aws::String>
+    void SetObjectLockEnabled(ObjectLockEnabledT&& value) { m_objectLockEnabledHasBeenSet = true; m_objectLockEnabled = std::forward<ObjectLockEnabledT>(value); }
+    template<typename ObjectLockEnabledT = Aws::String>
+    AwsS3BucketObjectLockConfiguration& WithObjectLockEnabled(ObjectLockEnabledT&& value) { SetObjectLockEnabled(std::forward<ObjectLockEnabledT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Indicates whether the bucket has an Object Lock configuration enabled. </p>
-     */
-    inline void SetObjectLockEnabled(const Aws::String& value) { m_objectLockEnabledHasBeenSet = true; m_objectLockEnabled = value; }
-
-    /**
-     * <p> Indicates whether the bucket has an Object Lock configuration enabled. </p>
-     */
-    inline void SetObjectLockEnabled(Aws::String&& value) { m_objectLockEnabledHasBeenSet = true; m_objectLockEnabled = std::move(value); }
-
-    /**
-     * <p> Indicates whether the bucket has an Object Lock configuration enabled. </p>
-     */
-    inline void SetObjectLockEnabled(const char* value) { m_objectLockEnabledHasBeenSet = true; m_objectLockEnabled.assign(value); }
-
-    /**
-     * <p> Indicates whether the bucket has an Object Lock configuration enabled. </p>
-     */
-    inline AwsS3BucketObjectLockConfiguration& WithObjectLockEnabled(const Aws::String& value) { SetObjectLockEnabled(value); return *this;}
-
-    /**
-     * <p> Indicates whether the bucket has an Object Lock configuration enabled. </p>
-     */
-    inline AwsS3BucketObjectLockConfiguration& WithObjectLockEnabled(Aws::String&& value) { SetObjectLockEnabled(std::move(value)); return *this;}
-
-    /**
-     * <p> Indicates whether the bucket has an Object Lock configuration enabled. </p>
-     */
-    inline AwsS3BucketObjectLockConfiguration& WithObjectLockEnabled(const char* value) { SetObjectLockEnabled(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies the Object Lock rule for the specified object. </p>
      */
-    inline const AwsS3BucketObjectLockConfigurationRuleDetails& GetRule() const{ return m_rule; }
-
-    /**
-     * <p> Specifies the Object Lock rule for the specified object. </p>
-     */
+    inline const AwsS3BucketObjectLockConfigurationRuleDetails& GetRule() const { return m_rule; }
     inline bool RuleHasBeenSet() const { return m_ruleHasBeenSet; }
-
-    /**
-     * <p> Specifies the Object Lock rule for the specified object. </p>
-     */
-    inline void SetRule(const AwsS3BucketObjectLockConfigurationRuleDetails& value) { m_ruleHasBeenSet = true; m_rule = value; }
-
-    /**
-     * <p> Specifies the Object Lock rule for the specified object. </p>
-     */
-    inline void SetRule(AwsS3BucketObjectLockConfigurationRuleDetails&& value) { m_ruleHasBeenSet = true; m_rule = std::move(value); }
-
-    /**
-     * <p> Specifies the Object Lock rule for the specified object. </p>
-     */
-    inline AwsS3BucketObjectLockConfiguration& WithRule(const AwsS3BucketObjectLockConfigurationRuleDetails& value) { SetRule(value); return *this;}
-
-    /**
-     * <p> Specifies the Object Lock rule for the specified object. </p>
-     */
-    inline AwsS3BucketObjectLockConfiguration& WithRule(AwsS3BucketObjectLockConfigurationRuleDetails&& value) { SetRule(std::move(value)); return *this;}
-
+    template<typename RuleT = AwsS3BucketObjectLockConfigurationRuleDetails>
+    void SetRule(RuleT&& value) { m_ruleHasBeenSet = true; m_rule = std::forward<RuleT>(value); }
+    template<typename RuleT = AwsS3BucketObjectLockConfigurationRuleDetails>
+    AwsS3BucketObjectLockConfiguration& WithRule(RuleT&& value) { SetRule(std::forward<RuleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_objectLockEnabled;

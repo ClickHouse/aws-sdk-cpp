@@ -32,12 +32,13 @@ namespace Model
   class DvbSdtSettings
   {
   public:
-    AWS_MEDIALIVE_API DvbSdtSettings();
+    AWS_MEDIALIVE_API DvbSdtSettings() = default;
     AWS_MEDIALIVE_API DvbSdtSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API DvbSdtSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Selects method of inserting SDT information into output stream. The sdtFollow
      * setting copies SDT information from input stream to output stream. The
@@ -47,192 +48,54 @@ namespace Model
      * information. The sdtNone setting means output stream will not contain SDT
      * information.
      */
-    inline const DvbSdtOutputSdt& GetOutputSdt() const{ return m_outputSdt; }
-
-    /**
-     * Selects method of inserting SDT information into output stream. The sdtFollow
-     * setting copies SDT information from input stream to output stream. The
-     * sdtFollowIfPresent setting copies SDT information from input stream to output
-     * stream if SDT information is present in the input, otherwise it will fall back
-     * on the user-defined values. The sdtManual setting means user will enter the SDT
-     * information. The sdtNone setting means output stream will not contain SDT
-     * information.
-     */
+    inline DvbSdtOutputSdt GetOutputSdt() const { return m_outputSdt; }
     inline bool OutputSdtHasBeenSet() const { return m_outputSdtHasBeenSet; }
+    inline void SetOutputSdt(DvbSdtOutputSdt value) { m_outputSdtHasBeenSet = true; m_outputSdt = value; }
+    inline DvbSdtSettings& WithOutputSdt(DvbSdtOutputSdt value) { SetOutputSdt(value); return *this;}
+    ///@}
 
-    /**
-     * Selects method of inserting SDT information into output stream. The sdtFollow
-     * setting copies SDT information from input stream to output stream. The
-     * sdtFollowIfPresent setting copies SDT information from input stream to output
-     * stream if SDT information is present in the input, otherwise it will fall back
-     * on the user-defined values. The sdtManual setting means user will enter the SDT
-     * information. The sdtNone setting means output stream will not contain SDT
-     * information.
-     */
-    inline void SetOutputSdt(const DvbSdtOutputSdt& value) { m_outputSdtHasBeenSet = true; m_outputSdt = value; }
-
-    /**
-     * Selects method of inserting SDT information into output stream. The sdtFollow
-     * setting copies SDT information from input stream to output stream. The
-     * sdtFollowIfPresent setting copies SDT information from input stream to output
-     * stream if SDT information is present in the input, otherwise it will fall back
-     * on the user-defined values. The sdtManual setting means user will enter the SDT
-     * information. The sdtNone setting means output stream will not contain SDT
-     * information.
-     */
-    inline void SetOutputSdt(DvbSdtOutputSdt&& value) { m_outputSdtHasBeenSet = true; m_outputSdt = std::move(value); }
-
-    /**
-     * Selects method of inserting SDT information into output stream. The sdtFollow
-     * setting copies SDT information from input stream to output stream. The
-     * sdtFollowIfPresent setting copies SDT information from input stream to output
-     * stream if SDT information is present in the input, otherwise it will fall back
-     * on the user-defined values. The sdtManual setting means user will enter the SDT
-     * information. The sdtNone setting means output stream will not contain SDT
-     * information.
-     */
-    inline DvbSdtSettings& WithOutputSdt(const DvbSdtOutputSdt& value) { SetOutputSdt(value); return *this;}
-
-    /**
-     * Selects method of inserting SDT information into output stream. The sdtFollow
-     * setting copies SDT information from input stream to output stream. The
-     * sdtFollowIfPresent setting copies SDT information from input stream to output
-     * stream if SDT information is present in the input, otherwise it will fall back
-     * on the user-defined values. The sdtManual setting means user will enter the SDT
-     * information. The sdtNone setting means output stream will not contain SDT
-     * information.
-     */
-    inline DvbSdtSettings& WithOutputSdt(DvbSdtOutputSdt&& value) { SetOutputSdt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * The number of milliseconds between instances of this table in the output
      * transport stream.
      */
-    inline int GetRepInterval() const{ return m_repInterval; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
+    inline int GetRepInterval() const { return m_repInterval; }
     inline bool RepIntervalHasBeenSet() const { return m_repIntervalHasBeenSet; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
     inline void SetRepInterval(int value) { m_repIntervalHasBeenSet = true; m_repInterval = value; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
     inline DvbSdtSettings& WithRepInterval(int value) { SetRepInterval(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * The service name placed in the serviceDescriptor in the Service Description
      * Table. Maximum length is 256 characters.
      */
-    inline const Aws::String& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * The service name placed in the serviceDescriptor in the Service Description
-     * Table. Maximum length is 256 characters.
-     */
+    inline const Aws::String& GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
+    template<typename ServiceNameT = Aws::String>
+    void SetServiceName(ServiceNameT&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::forward<ServiceNameT>(value); }
+    template<typename ServiceNameT = Aws::String>
+    DvbSdtSettings& WithServiceName(ServiceNameT&& value) { SetServiceName(std::forward<ServiceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The service name placed in the serviceDescriptor in the Service Description
-     * Table. Maximum length is 256 characters.
-     */
-    inline void SetServiceName(const Aws::String& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * The service name placed in the serviceDescriptor in the Service Description
-     * Table. Maximum length is 256 characters.
-     */
-    inline void SetServiceName(Aws::String&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * The service name placed in the serviceDescriptor in the Service Description
-     * Table. Maximum length is 256 characters.
-     */
-    inline void SetServiceName(const char* value) { m_serviceNameHasBeenSet = true; m_serviceName.assign(value); }
-
-    /**
-     * The service name placed in the serviceDescriptor in the Service Description
-     * Table. Maximum length is 256 characters.
-     */
-    inline DvbSdtSettings& WithServiceName(const Aws::String& value) { SetServiceName(value); return *this;}
-
-    /**
-     * The service name placed in the serviceDescriptor in the Service Description
-     * Table. Maximum length is 256 characters.
-     */
-    inline DvbSdtSettings& WithServiceName(Aws::String&& value) { SetServiceName(std::move(value)); return *this;}
-
-    /**
-     * The service name placed in the serviceDescriptor in the Service Description
-     * Table. Maximum length is 256 characters.
-     */
-    inline DvbSdtSettings& WithServiceName(const char* value) { SetServiceName(value); return *this;}
-
-
+    ///@{
     /**
      * The service provider name placed in the serviceDescriptor in the Service
      * Description Table. Maximum length is 256 characters.
      */
-    inline const Aws::String& GetServiceProviderName() const{ return m_serviceProviderName; }
-
-    /**
-     * The service provider name placed in the serviceDescriptor in the Service
-     * Description Table. Maximum length is 256 characters.
-     */
+    inline const Aws::String& GetServiceProviderName() const { return m_serviceProviderName; }
     inline bool ServiceProviderNameHasBeenSet() const { return m_serviceProviderNameHasBeenSet; }
-
-    /**
-     * The service provider name placed in the serviceDescriptor in the Service
-     * Description Table. Maximum length is 256 characters.
-     */
-    inline void SetServiceProviderName(const Aws::String& value) { m_serviceProviderNameHasBeenSet = true; m_serviceProviderName = value; }
-
-    /**
-     * The service provider name placed in the serviceDescriptor in the Service
-     * Description Table. Maximum length is 256 characters.
-     */
-    inline void SetServiceProviderName(Aws::String&& value) { m_serviceProviderNameHasBeenSet = true; m_serviceProviderName = std::move(value); }
-
-    /**
-     * The service provider name placed in the serviceDescriptor in the Service
-     * Description Table. Maximum length is 256 characters.
-     */
-    inline void SetServiceProviderName(const char* value) { m_serviceProviderNameHasBeenSet = true; m_serviceProviderName.assign(value); }
-
-    /**
-     * The service provider name placed in the serviceDescriptor in the Service
-     * Description Table. Maximum length is 256 characters.
-     */
-    inline DvbSdtSettings& WithServiceProviderName(const Aws::String& value) { SetServiceProviderName(value); return *this;}
-
-    /**
-     * The service provider name placed in the serviceDescriptor in the Service
-     * Description Table. Maximum length is 256 characters.
-     */
-    inline DvbSdtSettings& WithServiceProviderName(Aws::String&& value) { SetServiceProviderName(std::move(value)); return *this;}
-
-    /**
-     * The service provider name placed in the serviceDescriptor in the Service
-     * Description Table. Maximum length is 256 characters.
-     */
-    inline DvbSdtSettings& WithServiceProviderName(const char* value) { SetServiceProviderName(value); return *this;}
-
+    template<typename ServiceProviderNameT = Aws::String>
+    void SetServiceProviderName(ServiceProviderNameT&& value) { m_serviceProviderNameHasBeenSet = true; m_serviceProviderName = std::forward<ServiceProviderNameT>(value); }
+    template<typename ServiceProviderNameT = Aws::String>
+    DvbSdtSettings& WithServiceProviderName(ServiceProviderNameT&& value) { SetServiceProviderName(std::forward<ServiceProviderNameT>(value)); return *this;}
+    ///@}
   private:
 
-    DvbSdtOutputSdt m_outputSdt;
+    DvbSdtOutputSdt m_outputSdt{DvbSdtOutputSdt::NOT_SET};
     bool m_outputSdtHasBeenSet = false;
 
-    int m_repInterval;
+    int m_repInterval{0};
     bool m_repIntervalHasBeenSet = false;
 
     Aws::String m_serviceName;

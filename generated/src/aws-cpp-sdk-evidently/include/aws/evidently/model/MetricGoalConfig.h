@@ -34,88 +34,38 @@ namespace Model
   class MetricGoalConfig
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API MetricGoalConfig();
+    AWS_CLOUDWATCHEVIDENTLY_API MetricGoalConfig() = default;
     AWS_CLOUDWATCHEVIDENTLY_API MetricGoalConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API MetricGoalConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVIDENTLY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> <code>INCREASE</code> means that a variation with a higher number for this
      * metric is performing better.</p> <p> <code>DECREASE</code> means that a
      * variation with a lower number for this metric is performing better.</p>
      */
-    inline const ChangeDirectionEnum& GetDesiredChange() const{ return m_desiredChange; }
-
-    /**
-     * <p> <code>INCREASE</code> means that a variation with a higher number for this
-     * metric is performing better.</p> <p> <code>DECREASE</code> means that a
-     * variation with a lower number for this metric is performing better.</p>
-     */
+    inline ChangeDirectionEnum GetDesiredChange() const { return m_desiredChange; }
     inline bool DesiredChangeHasBeenSet() const { return m_desiredChangeHasBeenSet; }
+    inline void SetDesiredChange(ChangeDirectionEnum value) { m_desiredChangeHasBeenSet = true; m_desiredChange = value; }
+    inline MetricGoalConfig& WithDesiredChange(ChangeDirectionEnum value) { SetDesiredChange(value); return *this;}
+    ///@}
 
-    /**
-     * <p> <code>INCREASE</code> means that a variation with a higher number for this
-     * metric is performing better.</p> <p> <code>DECREASE</code> means that a
-     * variation with a lower number for this metric is performing better.</p>
-     */
-    inline void SetDesiredChange(const ChangeDirectionEnum& value) { m_desiredChangeHasBeenSet = true; m_desiredChange = value; }
-
-    /**
-     * <p> <code>INCREASE</code> means that a variation with a higher number for this
-     * metric is performing better.</p> <p> <code>DECREASE</code> means that a
-     * variation with a lower number for this metric is performing better.</p>
-     */
-    inline void SetDesiredChange(ChangeDirectionEnum&& value) { m_desiredChangeHasBeenSet = true; m_desiredChange = std::move(value); }
-
-    /**
-     * <p> <code>INCREASE</code> means that a variation with a higher number for this
-     * metric is performing better.</p> <p> <code>DECREASE</code> means that a
-     * variation with a lower number for this metric is performing better.</p>
-     */
-    inline MetricGoalConfig& WithDesiredChange(const ChangeDirectionEnum& value) { SetDesiredChange(value); return *this;}
-
-    /**
-     * <p> <code>INCREASE</code> means that a variation with a higher number for this
-     * metric is performing better.</p> <p> <code>DECREASE</code> means that a
-     * variation with a lower number for this metric is performing better.</p>
-     */
-    inline MetricGoalConfig& WithDesiredChange(ChangeDirectionEnum&& value) { SetDesiredChange(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A structure that contains details about the metric.</p>
      */
-    inline const MetricDefinitionConfig& GetMetricDefinition() const{ return m_metricDefinition; }
-
-    /**
-     * <p>A structure that contains details about the metric.</p>
-     */
+    inline const MetricDefinitionConfig& GetMetricDefinition() const { return m_metricDefinition; }
     inline bool MetricDefinitionHasBeenSet() const { return m_metricDefinitionHasBeenSet; }
-
-    /**
-     * <p>A structure that contains details about the metric.</p>
-     */
-    inline void SetMetricDefinition(const MetricDefinitionConfig& value) { m_metricDefinitionHasBeenSet = true; m_metricDefinition = value; }
-
-    /**
-     * <p>A structure that contains details about the metric.</p>
-     */
-    inline void SetMetricDefinition(MetricDefinitionConfig&& value) { m_metricDefinitionHasBeenSet = true; m_metricDefinition = std::move(value); }
-
-    /**
-     * <p>A structure that contains details about the metric.</p>
-     */
-    inline MetricGoalConfig& WithMetricDefinition(const MetricDefinitionConfig& value) { SetMetricDefinition(value); return *this;}
-
-    /**
-     * <p>A structure that contains details about the metric.</p>
-     */
-    inline MetricGoalConfig& WithMetricDefinition(MetricDefinitionConfig&& value) { SetMetricDefinition(std::move(value)); return *this;}
-
+    template<typename MetricDefinitionT = MetricDefinitionConfig>
+    void SetMetricDefinition(MetricDefinitionT&& value) { m_metricDefinitionHasBeenSet = true; m_metricDefinition = std::forward<MetricDefinitionT>(value); }
+    template<typename MetricDefinitionT = MetricDefinitionConfig>
+    MetricGoalConfig& WithMetricDefinition(MetricDefinitionT&& value) { SetMetricDefinition(std::forward<MetricDefinitionT>(value)); return *this;}
+    ///@}
   private:
 
-    ChangeDirectionEnum m_desiredChange;
+    ChangeDirectionEnum m_desiredChange{ChangeDirectionEnum::NOT_SET};
     bool m_desiredChangeHasBeenSet = false;
 
     MetricDefinitionConfig m_metricDefinition;

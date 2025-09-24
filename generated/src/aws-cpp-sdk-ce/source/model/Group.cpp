@@ -18,15 +18,7 @@ namespace CostExplorer
 namespace Model
 {
 
-Group::Group() : 
-    m_keysHasBeenSet(false),
-    m_metricsHasBeenSet(false)
-{
-}
-
-Group::Group(JsonView jsonValue) : 
-    m_keysHasBeenSet(false),
-    m_metricsHasBeenSet(false)
+Group::Group(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ Group& Group::operator =(JsonView jsonValue)
     }
     m_keysHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Metrics"))
   {
     Aws::Map<Aws::String, JsonView> metricsJsonMap = jsonValue.GetObject("Metrics").GetAllObjects();
@@ -52,7 +43,6 @@ Group& Group::operator =(JsonView jsonValue)
     }
     m_metricsHasBeenSet = true;
   }
-
   return *this;
 }
 

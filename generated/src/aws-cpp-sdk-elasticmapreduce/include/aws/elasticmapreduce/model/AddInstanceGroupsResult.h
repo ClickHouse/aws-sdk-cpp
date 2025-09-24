@@ -33,154 +33,67 @@ namespace Model
   class AddInstanceGroupsResult
   {
   public:
-    AWS_EMR_API AddInstanceGroupsResult();
+    AWS_EMR_API AddInstanceGroupsResult() = default;
     AWS_EMR_API AddInstanceGroupsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EMR_API AddInstanceGroupsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The job flow ID in which the instance groups are added.</p>
      */
-    inline const Aws::String& GetJobFlowId() const{ return m_jobFlowId; }
+    inline const Aws::String& GetJobFlowId() const { return m_jobFlowId; }
+    template<typename JobFlowIdT = Aws::String>
+    void SetJobFlowId(JobFlowIdT&& value) { m_jobFlowIdHasBeenSet = true; m_jobFlowId = std::forward<JobFlowIdT>(value); }
+    template<typename JobFlowIdT = Aws::String>
+    AddInstanceGroupsResult& WithJobFlowId(JobFlowIdT&& value) { SetJobFlowId(std::forward<JobFlowIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The job flow ID in which the instance groups are added.</p>
-     */
-    inline void SetJobFlowId(const Aws::String& value) { m_jobFlowId = value; }
-
-    /**
-     * <p>The job flow ID in which the instance groups are added.</p>
-     */
-    inline void SetJobFlowId(Aws::String&& value) { m_jobFlowId = std::move(value); }
-
-    /**
-     * <p>The job flow ID in which the instance groups are added.</p>
-     */
-    inline void SetJobFlowId(const char* value) { m_jobFlowId.assign(value); }
-
-    /**
-     * <p>The job flow ID in which the instance groups are added.</p>
-     */
-    inline AddInstanceGroupsResult& WithJobFlowId(const Aws::String& value) { SetJobFlowId(value); return *this;}
-
-    /**
-     * <p>The job flow ID in which the instance groups are added.</p>
-     */
-    inline AddInstanceGroupsResult& WithJobFlowId(Aws::String&& value) { SetJobFlowId(std::move(value)); return *this;}
-
-    /**
-     * <p>The job flow ID in which the instance groups are added.</p>
-     */
-    inline AddInstanceGroupsResult& WithJobFlowId(const char* value) { SetJobFlowId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Instance group IDs of the newly created instance groups.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInstanceGroupIds() const{ return m_instanceGroupIds; }
+    inline const Aws::Vector<Aws::String>& GetInstanceGroupIds() const { return m_instanceGroupIds; }
+    template<typename InstanceGroupIdsT = Aws::Vector<Aws::String>>
+    void SetInstanceGroupIds(InstanceGroupIdsT&& value) { m_instanceGroupIdsHasBeenSet = true; m_instanceGroupIds = std::forward<InstanceGroupIdsT>(value); }
+    template<typename InstanceGroupIdsT = Aws::Vector<Aws::String>>
+    AddInstanceGroupsResult& WithInstanceGroupIds(InstanceGroupIdsT&& value) { SetInstanceGroupIds(std::forward<InstanceGroupIdsT>(value)); return *this;}
+    template<typename InstanceGroupIdsT = Aws::String>
+    AddInstanceGroupsResult& AddInstanceGroupIds(InstanceGroupIdsT&& value) { m_instanceGroupIdsHasBeenSet = true; m_instanceGroupIds.emplace_back(std::forward<InstanceGroupIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Instance group IDs of the newly created instance groups.</p>
-     */
-    inline void SetInstanceGroupIds(const Aws::Vector<Aws::String>& value) { m_instanceGroupIds = value; }
-
-    /**
-     * <p>Instance group IDs of the newly created instance groups.</p>
-     */
-    inline void SetInstanceGroupIds(Aws::Vector<Aws::String>&& value) { m_instanceGroupIds = std::move(value); }
-
-    /**
-     * <p>Instance group IDs of the newly created instance groups.</p>
-     */
-    inline AddInstanceGroupsResult& WithInstanceGroupIds(const Aws::Vector<Aws::String>& value) { SetInstanceGroupIds(value); return *this;}
-
-    /**
-     * <p>Instance group IDs of the newly created instance groups.</p>
-     */
-    inline AddInstanceGroupsResult& WithInstanceGroupIds(Aws::Vector<Aws::String>&& value) { SetInstanceGroupIds(std::move(value)); return *this;}
-
-    /**
-     * <p>Instance group IDs of the newly created instance groups.</p>
-     */
-    inline AddInstanceGroupsResult& AddInstanceGroupIds(const Aws::String& value) { m_instanceGroupIds.push_back(value); return *this; }
-
-    /**
-     * <p>Instance group IDs of the newly created instance groups.</p>
-     */
-    inline AddInstanceGroupsResult& AddInstanceGroupIds(Aws::String&& value) { m_instanceGroupIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Instance group IDs of the newly created instance groups.</p>
-     */
-    inline AddInstanceGroupsResult& AddInstanceGroupIds(const char* value) { m_instanceGroupIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name of the cluster.</p>
      */
-    inline const Aws::String& GetClusterArn() const{ return m_clusterArn; }
+    inline const Aws::String& GetClusterArn() const { return m_clusterArn; }
+    template<typename ClusterArnT = Aws::String>
+    void SetClusterArn(ClusterArnT&& value) { m_clusterArnHasBeenSet = true; m_clusterArn = std::forward<ClusterArnT>(value); }
+    template<typename ClusterArnT = Aws::String>
+    AddInstanceGroupsResult& WithClusterArn(ClusterArnT&& value) { SetClusterArn(std::forward<ClusterArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name of the cluster.</p>
-     */
-    inline void SetClusterArn(const Aws::String& value) { m_clusterArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name of the cluster.</p>
-     */
-    inline void SetClusterArn(Aws::String&& value) { m_clusterArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the cluster.</p>
-     */
-    inline void SetClusterArn(const char* value) { m_clusterArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the cluster.</p>
-     */
-    inline AddInstanceGroupsResult& WithClusterArn(const Aws::String& value) { SetClusterArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the cluster.</p>
-     */
-    inline AddInstanceGroupsResult& WithClusterArn(Aws::String&& value) { SetClusterArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the cluster.</p>
-     */
-    inline AddInstanceGroupsResult& WithClusterArn(const char* value) { SetClusterArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline AddInstanceGroupsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline AddInstanceGroupsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline AddInstanceGroupsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    AddInstanceGroupsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobFlowId;
+    bool m_jobFlowIdHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_instanceGroupIds;
+    bool m_instanceGroupIdsHasBeenSet = false;
 
     Aws::String m_clusterArn;
+    bool m_clusterArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

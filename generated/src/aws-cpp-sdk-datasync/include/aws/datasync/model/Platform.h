@@ -32,108 +32,23 @@ namespace Model
   class Platform
   {
   public:
-    AWS_DATASYNC_API Platform();
+    AWS_DATASYNC_API Platform() = default;
     AWS_DATASYNC_API Platform(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATASYNC_API Platform& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATASYNC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The version of the DataSync agent.</p>  <p>Beginning December 7,
-     * 2023, we will discontinue version 1 DataSync agents. Check the DataSync console
-     * to see if you have affected agents. If you do, <a
-     * href="https://docs.aws.amazon.com/datasync/latest/userguide/replacing-agent.html">replace</a>
-     * those agents before then to avoid data transfer or storage discovery
-     * disruptions. If you need more help, contact <a
-     * href="https://aws.amazon.com/contact-us/">Amazon Web Services Support</a>.</p>
-     * 
+     * <p>The version of the DataSync agent.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>The version of the DataSync agent.</p>  <p>Beginning December 7,
-     * 2023, we will discontinue version 1 DataSync agents. Check the DataSync console
-     * to see if you have affected agents. If you do, <a
-     * href="https://docs.aws.amazon.com/datasync/latest/userguide/replacing-agent.html">replace</a>
-     * those agents before then to avoid data transfer or storage discovery
-     * disruptions. If you need more help, contact <a
-     * href="https://aws.amazon.com/contact-us/">Amazon Web Services Support</a>.</p>
-     * 
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
-
-    /**
-     * <p>The version of the DataSync agent.</p>  <p>Beginning December 7,
-     * 2023, we will discontinue version 1 DataSync agents. Check the DataSync console
-     * to see if you have affected agents. If you do, <a
-     * href="https://docs.aws.amazon.com/datasync/latest/userguide/replacing-agent.html">replace</a>
-     * those agents before then to avoid data transfer or storage discovery
-     * disruptions. If you need more help, contact <a
-     * href="https://aws.amazon.com/contact-us/">Amazon Web Services Support</a>.</p>
-     * 
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>The version of the DataSync agent.</p>  <p>Beginning December 7,
-     * 2023, we will discontinue version 1 DataSync agents. Check the DataSync console
-     * to see if you have affected agents. If you do, <a
-     * href="https://docs.aws.amazon.com/datasync/latest/userguide/replacing-agent.html">replace</a>
-     * those agents before then to avoid data transfer or storage discovery
-     * disruptions. If you need more help, contact <a
-     * href="https://aws.amazon.com/contact-us/">Amazon Web Services Support</a>.</p>
-     * 
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>The version of the DataSync agent.</p>  <p>Beginning December 7,
-     * 2023, we will discontinue version 1 DataSync agents. Check the DataSync console
-     * to see if you have affected agents. If you do, <a
-     * href="https://docs.aws.amazon.com/datasync/latest/userguide/replacing-agent.html">replace</a>
-     * those agents before then to avoid data transfer or storage discovery
-     * disruptions. If you need more help, contact <a
-     * href="https://aws.amazon.com/contact-us/">Amazon Web Services Support</a>.</p>
-     * 
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>The version of the DataSync agent.</p>  <p>Beginning December 7,
-     * 2023, we will discontinue version 1 DataSync agents. Check the DataSync console
-     * to see if you have affected agents. If you do, <a
-     * href="https://docs.aws.amazon.com/datasync/latest/userguide/replacing-agent.html">replace</a>
-     * those agents before then to avoid data transfer or storage discovery
-     * disruptions. If you need more help, contact <a
-     * href="https://aws.amazon.com/contact-us/">Amazon Web Services Support</a>.</p>
-     * 
-     */
-    inline Platform& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>The version of the DataSync agent.</p>  <p>Beginning December 7,
-     * 2023, we will discontinue version 1 DataSync agents. Check the DataSync console
-     * to see if you have affected agents. If you do, <a
-     * href="https://docs.aws.amazon.com/datasync/latest/userguide/replacing-agent.html">replace</a>
-     * those agents before then to avoid data transfer or storage discovery
-     * disruptions. If you need more help, contact <a
-     * href="https://aws.amazon.com/contact-us/">Amazon Web Services Support</a>.</p>
-     * 
-     */
-    inline Platform& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the DataSync agent.</p>  <p>Beginning December 7,
-     * 2023, we will discontinue version 1 DataSync agents. Check the DataSync console
-     * to see if you have affected agents. If you do, <a
-     * href="https://docs.aws.amazon.com/datasync/latest/userguide/replacing-agent.html">replace</a>
-     * those agents before then to avoid data transfer or storage discovery
-     * disruptions. If you need more help, contact <a
-     * href="https://aws.amazon.com/contact-us/">Amazon Web Services Support</a>.</p>
-     * 
-     */
-    inline Platform& WithVersion(const char* value) { SetVersion(value); return *this;}
-
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    Platform& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_version;

@@ -32,7 +32,7 @@ namespace Model
   class RecommendedActionUpdate
   {
   public:
-    AWS_RDS_API RecommendedActionUpdate();
+    AWS_RDS_API RecommendedActionUpdate() = default;
     AWS_RDS_API RecommendedActionUpdate(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API RecommendedActionUpdate& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,95 +40,30 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>A unique identifier of the updated recommendation action.</p>
      */
-    inline const Aws::String& GetActionId() const{ return m_actionId; }
-
-    /**
-     * <p>A unique identifier of the updated recommendation action.</p>
-     */
+    inline const Aws::String& GetActionId() const { return m_actionId; }
     inline bool ActionIdHasBeenSet() const { return m_actionIdHasBeenSet; }
+    template<typename ActionIdT = Aws::String>
+    void SetActionId(ActionIdT&& value) { m_actionIdHasBeenSet = true; m_actionId = std::forward<ActionIdT>(value); }
+    template<typename ActionIdT = Aws::String>
+    RecommendedActionUpdate& WithActionId(ActionIdT&& value) { SetActionId(std::forward<ActionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier of the updated recommendation action.</p>
-     */
-    inline void SetActionId(const Aws::String& value) { m_actionIdHasBeenSet = true; m_actionId = value; }
-
-    /**
-     * <p>A unique identifier of the updated recommendation action.</p>
-     */
-    inline void SetActionId(Aws::String&& value) { m_actionIdHasBeenSet = true; m_actionId = std::move(value); }
-
-    /**
-     * <p>A unique identifier of the updated recommendation action.</p>
-     */
-    inline void SetActionId(const char* value) { m_actionIdHasBeenSet = true; m_actionId.assign(value); }
-
-    /**
-     * <p>A unique identifier of the updated recommendation action.</p>
-     */
-    inline RecommendedActionUpdate& WithActionId(const Aws::String& value) { SetActionId(value); return *this;}
-
-    /**
-     * <p>A unique identifier of the updated recommendation action.</p>
-     */
-    inline RecommendedActionUpdate& WithActionId(Aws::String&& value) { SetActionId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier of the updated recommendation action.</p>
-     */
-    inline RecommendedActionUpdate& WithActionId(const char* value) { SetActionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the updated recommendation action.</p> <ul> <li> <p>
      * <code>applied</code> </p> </li> <li> <p> <code>scheduled</code> </p> </li> </ul>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the updated recommendation action.</p> <ul> <li> <p>
-     * <code>applied</code> </p> </li> <li> <p> <code>scheduled</code> </p> </li> </ul>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the updated recommendation action.</p> <ul> <li> <p>
-     * <code>applied</code> </p> </li> <li> <p> <code>scheduled</code> </p> </li> </ul>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the updated recommendation action.</p> <ul> <li> <p>
-     * <code>applied</code> </p> </li> <li> <p> <code>scheduled</code> </p> </li> </ul>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the updated recommendation action.</p> <ul> <li> <p>
-     * <code>applied</code> </p> </li> <li> <p> <code>scheduled</code> </p> </li> </ul>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the updated recommendation action.</p> <ul> <li> <p>
-     * <code>applied</code> </p> </li> <li> <p> <code>scheduled</code> </p> </li> </ul>
-     */
-    inline RecommendedActionUpdate& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the updated recommendation action.</p> <ul> <li> <p>
-     * <code>applied</code> </p> </li> <li> <p> <code>scheduled</code> </p> </li> </ul>
-     */
-    inline RecommendedActionUpdate& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the updated recommendation action.</p> <ul> <li> <p>
-     * <code>applied</code> </p> </li> <li> <p> <code>scheduled</code> </p> </li> </ul>
-     */
-    inline RecommendedActionUpdate& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    RecommendedActionUpdate& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_actionId;

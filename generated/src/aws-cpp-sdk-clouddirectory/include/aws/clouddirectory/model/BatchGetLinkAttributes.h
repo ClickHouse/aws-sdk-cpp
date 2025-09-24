@@ -35,88 +35,37 @@ namespace Model
   class BatchGetLinkAttributes
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchGetLinkAttributes();
+    AWS_CLOUDDIRECTORY_API BatchGetLinkAttributes() = default;
     AWS_CLOUDDIRECTORY_API BatchGetLinkAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchGetLinkAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Allows a typed link specifier to be accepted as input.</p>
      */
-    inline const TypedLinkSpecifier& GetTypedLinkSpecifier() const{ return m_typedLinkSpecifier; }
-
-    /**
-     * <p>Allows a typed link specifier to be accepted as input.</p>
-     */
+    inline const TypedLinkSpecifier& GetTypedLinkSpecifier() const { return m_typedLinkSpecifier; }
     inline bool TypedLinkSpecifierHasBeenSet() const { return m_typedLinkSpecifierHasBeenSet; }
+    template<typename TypedLinkSpecifierT = TypedLinkSpecifier>
+    void SetTypedLinkSpecifier(TypedLinkSpecifierT&& value) { m_typedLinkSpecifierHasBeenSet = true; m_typedLinkSpecifier = std::forward<TypedLinkSpecifierT>(value); }
+    template<typename TypedLinkSpecifierT = TypedLinkSpecifier>
+    BatchGetLinkAttributes& WithTypedLinkSpecifier(TypedLinkSpecifierT&& value) { SetTypedLinkSpecifier(std::forward<TypedLinkSpecifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Allows a typed link specifier to be accepted as input.</p>
-     */
-    inline void SetTypedLinkSpecifier(const TypedLinkSpecifier& value) { m_typedLinkSpecifierHasBeenSet = true; m_typedLinkSpecifier = value; }
-
-    /**
-     * <p>Allows a typed link specifier to be accepted as input.</p>
-     */
-    inline void SetTypedLinkSpecifier(TypedLinkSpecifier&& value) { m_typedLinkSpecifierHasBeenSet = true; m_typedLinkSpecifier = std::move(value); }
-
-    /**
-     * <p>Allows a typed link specifier to be accepted as input.</p>
-     */
-    inline BatchGetLinkAttributes& WithTypedLinkSpecifier(const TypedLinkSpecifier& value) { SetTypedLinkSpecifier(value); return *this;}
-
-    /**
-     * <p>Allows a typed link specifier to be accepted as input.</p>
-     */
-    inline BatchGetLinkAttributes& WithTypedLinkSpecifier(TypedLinkSpecifier&& value) { SetTypedLinkSpecifier(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of attribute names whose values will be retrieved.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAttributeNames() const{ return m_attributeNames; }
-
-    /**
-     * <p>A list of attribute names whose values will be retrieved.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAttributeNames() const { return m_attributeNames; }
     inline bool AttributeNamesHasBeenSet() const { return m_attributeNamesHasBeenSet; }
-
-    /**
-     * <p>A list of attribute names whose values will be retrieved.</p>
-     */
-    inline void SetAttributeNames(const Aws::Vector<Aws::String>& value) { m_attributeNamesHasBeenSet = true; m_attributeNames = value; }
-
-    /**
-     * <p>A list of attribute names whose values will be retrieved.</p>
-     */
-    inline void SetAttributeNames(Aws::Vector<Aws::String>&& value) { m_attributeNamesHasBeenSet = true; m_attributeNames = std::move(value); }
-
-    /**
-     * <p>A list of attribute names whose values will be retrieved.</p>
-     */
-    inline BatchGetLinkAttributes& WithAttributeNames(const Aws::Vector<Aws::String>& value) { SetAttributeNames(value); return *this;}
-
-    /**
-     * <p>A list of attribute names whose values will be retrieved.</p>
-     */
-    inline BatchGetLinkAttributes& WithAttributeNames(Aws::Vector<Aws::String>&& value) { SetAttributeNames(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of attribute names whose values will be retrieved.</p>
-     */
-    inline BatchGetLinkAttributes& AddAttributeNames(const Aws::String& value) { m_attributeNamesHasBeenSet = true; m_attributeNames.push_back(value); return *this; }
-
-    /**
-     * <p>A list of attribute names whose values will be retrieved.</p>
-     */
-    inline BatchGetLinkAttributes& AddAttributeNames(Aws::String&& value) { m_attributeNamesHasBeenSet = true; m_attributeNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of attribute names whose values will be retrieved.</p>
-     */
-    inline BatchGetLinkAttributes& AddAttributeNames(const char* value) { m_attributeNamesHasBeenSet = true; m_attributeNames.push_back(value); return *this; }
-
+    template<typename AttributeNamesT = Aws::Vector<Aws::String>>
+    void SetAttributeNames(AttributeNamesT&& value) { m_attributeNamesHasBeenSet = true; m_attributeNames = std::forward<AttributeNamesT>(value); }
+    template<typename AttributeNamesT = Aws::Vector<Aws::String>>
+    BatchGetLinkAttributes& WithAttributeNames(AttributeNamesT&& value) { SetAttributeNames(std::forward<AttributeNamesT>(value)); return *this;}
+    template<typename AttributeNamesT = Aws::String>
+    BatchGetLinkAttributes& AddAttributeNames(AttributeNamesT&& value) { m_attributeNamesHasBeenSet = true; m_attributeNames.emplace_back(std::forward<AttributeNamesT>(value)); return *this; }
+    ///@}
   private:
 
     TypedLinkSpecifier m_typedLinkSpecifier;

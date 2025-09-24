@@ -21,7 +21,7 @@ namespace Model
   class DisableHostedZoneDNSSECRequest : public Route53Request
   {
   public:
-    AWS_ROUTE53_API DisableHostedZoneDNSSECRequest();
+    AWS_ROUTE53_API DisableHostedZoneDNSSECRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_ROUTE53_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A unique string used to identify a hosted zone.</p>
      */
-    inline const Aws::String& GetHostedZoneId() const{ return m_hostedZoneId; }
-
-    /**
-     * <p>A unique string used to identify a hosted zone.</p>
-     */
+    inline const Aws::String& GetHostedZoneId() const { return m_hostedZoneId; }
     inline bool HostedZoneIdHasBeenSet() const { return m_hostedZoneIdHasBeenSet; }
-
-    /**
-     * <p>A unique string used to identify a hosted zone.</p>
-     */
-    inline void SetHostedZoneId(const Aws::String& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = value; }
-
-    /**
-     * <p>A unique string used to identify a hosted zone.</p>
-     */
-    inline void SetHostedZoneId(Aws::String&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::move(value); }
-
-    /**
-     * <p>A unique string used to identify a hosted zone.</p>
-     */
-    inline void SetHostedZoneId(const char* value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId.assign(value); }
-
-    /**
-     * <p>A unique string used to identify a hosted zone.</p>
-     */
-    inline DisableHostedZoneDNSSECRequest& WithHostedZoneId(const Aws::String& value) { SetHostedZoneId(value); return *this;}
-
-    /**
-     * <p>A unique string used to identify a hosted zone.</p>
-     */
-    inline DisableHostedZoneDNSSECRequest& WithHostedZoneId(Aws::String&& value) { SetHostedZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique string used to identify a hosted zone.</p>
-     */
-    inline DisableHostedZoneDNSSECRequest& WithHostedZoneId(const char* value) { SetHostedZoneId(value); return *this;}
-
+    template<typename HostedZoneIdT = Aws::String>
+    void SetHostedZoneId(HostedZoneIdT&& value) { m_hostedZoneIdHasBeenSet = true; m_hostedZoneId = std::forward<HostedZoneIdT>(value); }
+    template<typename HostedZoneIdT = Aws::String>
+    DisableHostedZoneDNSSECRequest& WithHostedZoneId(HostedZoneIdT&& value) { SetHostedZoneId(std::forward<HostedZoneIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hostedZoneId;

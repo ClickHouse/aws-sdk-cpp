@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/inspector2/Inspector2_EXPORTS.h>
 #include <aws/inspector2/model/AggregationType.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/inspector2/model/AggregationResponse.h>
 #include <utility>
 
@@ -30,160 +30,68 @@ namespace Model
   class ListFindingAggregationsResult
   {
   public:
-    AWS_INSPECTOR2_API ListFindingAggregationsResult();
+    AWS_INSPECTOR2_API ListFindingAggregationsResult() = default;
     AWS_INSPECTOR2_API ListFindingAggregationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_INSPECTOR2_API ListFindingAggregationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The type of aggregation to perform.</p>
      */
-    inline const AggregationType& GetAggregationType() const{ return m_aggregationType; }
+    inline AggregationType GetAggregationType() const { return m_aggregationType; }
+    inline void SetAggregationType(AggregationType value) { m_aggregationTypeHasBeenSet = true; m_aggregationType = value; }
+    inline ListFindingAggregationsResult& WithAggregationType(AggregationType value) { SetAggregationType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of aggregation to perform.</p>
+     * <p>Objects that contain the results of an aggregation operation.</p>
      */
-    inline void SetAggregationType(const AggregationType& value) { m_aggregationType = value; }
+    inline const Aws::Vector<AggregationResponse>& GetResponses() const { return m_responses; }
+    template<typename ResponsesT = Aws::Vector<AggregationResponse>>
+    void SetResponses(ResponsesT&& value) { m_responsesHasBeenSet = true; m_responses = std::forward<ResponsesT>(value); }
+    template<typename ResponsesT = Aws::Vector<AggregationResponse>>
+    ListFindingAggregationsResult& WithResponses(ResponsesT&& value) { SetResponses(std::forward<ResponsesT>(value)); return *this;}
+    template<typename ResponsesT = AggregationResponse>
+    ListFindingAggregationsResult& AddResponses(ResponsesT&& value) { m_responsesHasBeenSet = true; m_responses.emplace_back(std::forward<ResponsesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The type of aggregation to perform.</p>
-     */
-    inline void SetAggregationType(AggregationType&& value) { m_aggregationType = std::move(value); }
-
-    /**
-     * <p>The type of aggregation to perform.</p>
-     */
-    inline ListFindingAggregationsResult& WithAggregationType(const AggregationType& value) { SetAggregationType(value); return *this;}
-
-    /**
-     * <p>The type of aggregation to perform.</p>
-     */
-    inline ListFindingAggregationsResult& WithAggregationType(AggregationType&& value) { SetAggregationType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A token to use for paginating results that are returned in the response. Set
      * the value of this parameter to null for the first request to a list action. For
      * subsequent calls, use the <code>NextToken</code> value returned from the
      * previous request to continue listing results after the first page.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListFindingAggregationsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the <code>NextToken</code> value returned from the
-     * previous request to continue listing results after the first page.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the <code>NextToken</code> value returned from the
-     * previous request to continue listing results after the first page.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the <code>NextToken</code> value returned from the
-     * previous request to continue listing results after the first page.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the <code>NextToken</code> value returned from the
-     * previous request to continue listing results after the first page.</p>
-     */
-    inline ListFindingAggregationsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the <code>NextToken</code> value returned from the
-     * previous request to continue listing results after the first page.</p>
-     */
-    inline ListFindingAggregationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. For
-     * subsequent calls, use the <code>NextToken</code> value returned from the
-     * previous request to continue listing results after the first page.</p>
-     */
-    inline ListFindingAggregationsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
-    /**
-     * <p>Objects that contain the results of an aggregation operation.</p>
-     */
-    inline const Aws::Vector<AggregationResponse>& GetResponses() const{ return m_responses; }
-
-    /**
-     * <p>Objects that contain the results of an aggregation operation.</p>
-     */
-    inline void SetResponses(const Aws::Vector<AggregationResponse>& value) { m_responses = value; }
-
-    /**
-     * <p>Objects that contain the results of an aggregation operation.</p>
-     */
-    inline void SetResponses(Aws::Vector<AggregationResponse>&& value) { m_responses = std::move(value); }
-
-    /**
-     * <p>Objects that contain the results of an aggregation operation.</p>
-     */
-    inline ListFindingAggregationsResult& WithResponses(const Aws::Vector<AggregationResponse>& value) { SetResponses(value); return *this;}
-
-    /**
-     * <p>Objects that contain the results of an aggregation operation.</p>
-     */
-    inline ListFindingAggregationsResult& WithResponses(Aws::Vector<AggregationResponse>&& value) { SetResponses(std::move(value)); return *this;}
-
-    /**
-     * <p>Objects that contain the results of an aggregation operation.</p>
-     */
-    inline ListFindingAggregationsResult& AddResponses(const AggregationResponse& value) { m_responses.push_back(value); return *this; }
-
-    /**
-     * <p>Objects that contain the results of an aggregation operation.</p>
-     */
-    inline ListFindingAggregationsResult& AddResponses(AggregationResponse&& value) { m_responses.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListFindingAggregationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListFindingAggregationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListFindingAggregationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListFindingAggregationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    AggregationType m_aggregationType;
-
-    Aws::String m_nextToken;
+    AggregationType m_aggregationType{AggregationType::NOT_SET};
+    bool m_aggregationTypeHasBeenSet = false;
 
     Aws::Vector<AggregationResponse> m_responses;
+    bool m_responsesHasBeenSet = false;
+
+    Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

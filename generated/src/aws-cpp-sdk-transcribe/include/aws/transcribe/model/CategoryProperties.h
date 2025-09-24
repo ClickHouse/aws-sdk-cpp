@@ -10,6 +10,7 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/transcribe/model/InputType.h>
 #include <aws/transcribe/model/Rule.h>
+#include <aws/transcribe/model/Tag.h>
 #include <utility>
 
 namespace Aws
@@ -37,256 +38,97 @@ namespace Model
   class CategoryProperties
   {
   public:
-    AWS_TRANSCRIBESERVICE_API CategoryProperties();
+    AWS_TRANSCRIBESERVICE_API CategoryProperties() = default;
     AWS_TRANSCRIBESERVICE_API CategoryProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESERVICE_API CategoryProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Call Analytics category. Category names are case sensitive
      * and must be unique within an Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetCategoryName() const{ return m_categoryName; }
-
-    /**
-     * <p>The name of the Call Analytics category. Category names are case sensitive
-     * and must be unique within an Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetCategoryName() const { return m_categoryName; }
     inline bool CategoryNameHasBeenSet() const { return m_categoryNameHasBeenSet; }
+    template<typename CategoryNameT = Aws::String>
+    void SetCategoryName(CategoryNameT&& value) { m_categoryNameHasBeenSet = true; m_categoryName = std::forward<CategoryNameT>(value); }
+    template<typename CategoryNameT = Aws::String>
+    CategoryProperties& WithCategoryName(CategoryNameT&& value) { SetCategoryName(std::forward<CategoryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Call Analytics category. Category names are case sensitive
-     * and must be unique within an Amazon Web Services account.</p>
-     */
-    inline void SetCategoryName(const Aws::String& value) { m_categoryNameHasBeenSet = true; m_categoryName = value; }
-
-    /**
-     * <p>The name of the Call Analytics category. Category names are case sensitive
-     * and must be unique within an Amazon Web Services account.</p>
-     */
-    inline void SetCategoryName(Aws::String&& value) { m_categoryNameHasBeenSet = true; m_categoryName = std::move(value); }
-
-    /**
-     * <p>The name of the Call Analytics category. Category names are case sensitive
-     * and must be unique within an Amazon Web Services account.</p>
-     */
-    inline void SetCategoryName(const char* value) { m_categoryNameHasBeenSet = true; m_categoryName.assign(value); }
-
-    /**
-     * <p>The name of the Call Analytics category. Category names are case sensitive
-     * and must be unique within an Amazon Web Services account.</p>
-     */
-    inline CategoryProperties& WithCategoryName(const Aws::String& value) { SetCategoryName(value); return *this;}
-
-    /**
-     * <p>The name of the Call Analytics category. Category names are case sensitive
-     * and must be unique within an Amazon Web Services account.</p>
-     */
-    inline CategoryProperties& WithCategoryName(Aws::String&& value) { SetCategoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Call Analytics category. Category names are case sensitive
-     * and must be unique within an Amazon Web Services account.</p>
-     */
-    inline CategoryProperties& WithCategoryName(const char* value) { SetCategoryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The rules used to define a Call Analytics category. Each category can have
      * between 1 and 20 rules.</p>
      */
-    inline const Aws::Vector<Rule>& GetRules() const{ return m_rules; }
-
-    /**
-     * <p>The rules used to define a Call Analytics category. Each category can have
-     * between 1 and 20 rules.</p>
-     */
+    inline const Aws::Vector<Rule>& GetRules() const { return m_rules; }
     inline bool RulesHasBeenSet() const { return m_rulesHasBeenSet; }
+    template<typename RulesT = Aws::Vector<Rule>>
+    void SetRules(RulesT&& value) { m_rulesHasBeenSet = true; m_rules = std::forward<RulesT>(value); }
+    template<typename RulesT = Aws::Vector<Rule>>
+    CategoryProperties& WithRules(RulesT&& value) { SetRules(std::forward<RulesT>(value)); return *this;}
+    template<typename RulesT = Rule>
+    CategoryProperties& AddRules(RulesT&& value) { m_rulesHasBeenSet = true; m_rules.emplace_back(std::forward<RulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The rules used to define a Call Analytics category. Each category can have
-     * between 1 and 20 rules.</p>
-     */
-    inline void SetRules(const Aws::Vector<Rule>& value) { m_rulesHasBeenSet = true; m_rules = value; }
-
-    /**
-     * <p>The rules used to define a Call Analytics category. Each category can have
-     * between 1 and 20 rules.</p>
-     */
-    inline void SetRules(Aws::Vector<Rule>&& value) { m_rulesHasBeenSet = true; m_rules = std::move(value); }
-
-    /**
-     * <p>The rules used to define a Call Analytics category. Each category can have
-     * between 1 and 20 rules.</p>
-     */
-    inline CategoryProperties& WithRules(const Aws::Vector<Rule>& value) { SetRules(value); return *this;}
-
-    /**
-     * <p>The rules used to define a Call Analytics category. Each category can have
-     * between 1 and 20 rules.</p>
-     */
-    inline CategoryProperties& WithRules(Aws::Vector<Rule>&& value) { SetRules(std::move(value)); return *this;}
-
-    /**
-     * <p>The rules used to define a Call Analytics category. Each category can have
-     * between 1 and 20 rules.</p>
-     */
-    inline CategoryProperties& AddRules(const Rule& value) { m_rulesHasBeenSet = true; m_rules.push_back(value); return *this; }
-
-    /**
-     * <p>The rules used to define a Call Analytics category. Each category can have
-     * between 1 and 20 rules.</p>
-     */
-    inline CategoryProperties& AddRules(Rule&& value) { m_rulesHasBeenSet = true; m_rules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The date and time the specified Call Analytics category was created.</p>
      * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
      * For example, <code>2022-05-04T12:32:58.761000-07:00</code> represents 12:32 PM
      * UTC-7 on May 4, 2022.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreateTime() const{ return m_createTime; }
-
-    /**
-     * <p>The date and time the specified Call Analytics category was created.</p>
-     * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
-     * For example, <code>2022-05-04T12:32:58.761000-07:00</code> represents 12:32 PM
-     * UTC-7 on May 4, 2022.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreateTime() const { return m_createTime; }
     inline bool CreateTimeHasBeenSet() const { return m_createTimeHasBeenSet; }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    void SetCreateTime(CreateTimeT&& value) { m_createTimeHasBeenSet = true; m_createTime = std::forward<CreateTimeT>(value); }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    CategoryProperties& WithCreateTime(CreateTimeT&& value) { SetCreateTime(std::forward<CreateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the specified Call Analytics category was created.</p>
-     * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
-     * For example, <code>2022-05-04T12:32:58.761000-07:00</code> represents 12:32 PM
-     * UTC-7 on May 4, 2022.</p>
-     */
-    inline void SetCreateTime(const Aws::Utils::DateTime& value) { m_createTimeHasBeenSet = true; m_createTime = value; }
-
-    /**
-     * <p>The date and time the specified Call Analytics category was created.</p>
-     * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
-     * For example, <code>2022-05-04T12:32:58.761000-07:00</code> represents 12:32 PM
-     * UTC-7 on May 4, 2022.</p>
-     */
-    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = std::move(value); }
-
-    /**
-     * <p>The date and time the specified Call Analytics category was created.</p>
-     * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
-     * For example, <code>2022-05-04T12:32:58.761000-07:00</code> represents 12:32 PM
-     * UTC-7 on May 4, 2022.</p>
-     */
-    inline CategoryProperties& WithCreateTime(const Aws::Utils::DateTime& value) { SetCreateTime(value); return *this;}
-
-    /**
-     * <p>The date and time the specified Call Analytics category was created.</p>
-     * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
-     * For example, <code>2022-05-04T12:32:58.761000-07:00</code> represents 12:32 PM
-     * UTC-7 on May 4, 2022.</p>
-     */
-    inline CategoryProperties& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time the specified Call Analytics category was last updated.</p>
      * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
      * For example, <code>2022-05-05T12:45:32.691000-07:00</code> represents 12:45 PM
      * UTC-7 on May 5, 2022.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdateTime() const{ return m_lastUpdateTime; }
-
-    /**
-     * <p>The date and time the specified Call Analytics category was last updated.</p>
-     * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
-     * For example, <code>2022-05-05T12:45:32.691000-07:00</code> represents 12:45 PM
-     * UTC-7 on May 5, 2022.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdateTime() const { return m_lastUpdateTime; }
     inline bool LastUpdateTimeHasBeenSet() const { return m_lastUpdateTimeHasBeenSet; }
+    template<typename LastUpdateTimeT = Aws::Utils::DateTime>
+    void SetLastUpdateTime(LastUpdateTimeT&& value) { m_lastUpdateTimeHasBeenSet = true; m_lastUpdateTime = std::forward<LastUpdateTimeT>(value); }
+    template<typename LastUpdateTimeT = Aws::Utils::DateTime>
+    CategoryProperties& WithLastUpdateTime(LastUpdateTimeT&& value) { SetLastUpdateTime(std::forward<LastUpdateTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The date and time the specified Call Analytics category was last updated.</p>
-     * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
-     * For example, <code>2022-05-05T12:45:32.691000-07:00</code> represents 12:45 PM
-     * UTC-7 on May 5, 2022.</p>
+     * <p>The tags, each in the form of a key:value pair, assigned to the specified
+     * call analytics category.</p>
      */
-    inline void SetLastUpdateTime(const Aws::Utils::DateTime& value) { m_lastUpdateTimeHasBeenSet = true; m_lastUpdateTime = value; }
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CategoryProperties& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CategoryProperties& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The date and time the specified Call Analytics category was last updated.</p>
-     * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
-     * For example, <code>2022-05-05T12:45:32.691000-07:00</code> represents 12:45 PM
-     * UTC-7 on May 5, 2022.</p>
-     */
-    inline void SetLastUpdateTime(Aws::Utils::DateTime&& value) { m_lastUpdateTimeHasBeenSet = true; m_lastUpdateTime = std::move(value); }
-
-    /**
-     * <p>The date and time the specified Call Analytics category was last updated.</p>
-     * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
-     * For example, <code>2022-05-05T12:45:32.691000-07:00</code> represents 12:45 PM
-     * UTC-7 on May 5, 2022.</p>
-     */
-    inline CategoryProperties& WithLastUpdateTime(const Aws::Utils::DateTime& value) { SetLastUpdateTime(value); return *this;}
-
-    /**
-     * <p>The date and time the specified Call Analytics category was last updated.</p>
-     * <p>Timestamps are in the format <code>YYYY-MM-DD'T'HH:MM:SS.SSSSSS-UTC</code>.
-     * For example, <code>2022-05-05T12:45:32.691000-07:00</code> represents 12:45 PM
-     * UTC-7 on May 5, 2022.</p>
-     */
-    inline CategoryProperties& WithLastUpdateTime(Aws::Utils::DateTime&& value) { SetLastUpdateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The input type associated with the specified category. <code>POST_CALL</code>
      * refers to a category that is applied to batch transcriptions;
      * <code>REAL_TIME</code> refers to a category that is applied to streaming
      * transcriptions.</p>
      */
-    inline const InputType& GetInputType() const{ return m_inputType; }
-
-    /**
-     * <p>The input type associated with the specified category. <code>POST_CALL</code>
-     * refers to a category that is applied to batch transcriptions;
-     * <code>REAL_TIME</code> refers to a category that is applied to streaming
-     * transcriptions.</p>
-     */
+    inline InputType GetInputType() const { return m_inputType; }
     inline bool InputTypeHasBeenSet() const { return m_inputTypeHasBeenSet; }
-
-    /**
-     * <p>The input type associated with the specified category. <code>POST_CALL</code>
-     * refers to a category that is applied to batch transcriptions;
-     * <code>REAL_TIME</code> refers to a category that is applied to streaming
-     * transcriptions.</p>
-     */
-    inline void SetInputType(const InputType& value) { m_inputTypeHasBeenSet = true; m_inputType = value; }
-
-    /**
-     * <p>The input type associated with the specified category. <code>POST_CALL</code>
-     * refers to a category that is applied to batch transcriptions;
-     * <code>REAL_TIME</code> refers to a category that is applied to streaming
-     * transcriptions.</p>
-     */
-    inline void SetInputType(InputType&& value) { m_inputTypeHasBeenSet = true; m_inputType = std::move(value); }
-
-    /**
-     * <p>The input type associated with the specified category. <code>POST_CALL</code>
-     * refers to a category that is applied to batch transcriptions;
-     * <code>REAL_TIME</code> refers to a category that is applied to streaming
-     * transcriptions.</p>
-     */
-    inline CategoryProperties& WithInputType(const InputType& value) { SetInputType(value); return *this;}
-
-    /**
-     * <p>The input type associated with the specified category. <code>POST_CALL</code>
-     * refers to a category that is applied to batch transcriptions;
-     * <code>REAL_TIME</code> refers to a category that is applied to streaming
-     * transcriptions.</p>
-     */
-    inline CategoryProperties& WithInputType(InputType&& value) { SetInputType(std::move(value)); return *this;}
-
+    inline void SetInputType(InputType value) { m_inputTypeHasBeenSet = true; m_inputType = value; }
+    inline CategoryProperties& WithInputType(InputType value) { SetInputType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_categoryName;
@@ -295,13 +137,16 @@ namespace Model
     Aws::Vector<Rule> m_rules;
     bool m_rulesHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createTime;
+    Aws::Utils::DateTime m_createTime{};
     bool m_createTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdateTime;
+    Aws::Utils::DateTime m_lastUpdateTime{};
     bool m_lastUpdateTimeHasBeenSet = false;
 
-    InputType m_inputType;
+    Aws::Vector<Tag> m_tags;
+    bool m_tagsHasBeenSet = false;
+
+    InputType m_inputType{InputType::NOT_SET};
     bool m_inputTypeHasBeenSet = false;
   };
 

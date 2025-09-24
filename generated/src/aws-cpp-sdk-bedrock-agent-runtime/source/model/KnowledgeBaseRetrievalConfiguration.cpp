@@ -18,13 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-KnowledgeBaseRetrievalConfiguration::KnowledgeBaseRetrievalConfiguration() : 
-    m_vectorSearchConfigurationHasBeenSet(false)
-{
-}
-
-KnowledgeBaseRetrievalConfiguration::KnowledgeBaseRetrievalConfiguration(JsonView jsonValue) : 
-    m_vectorSearchConfigurationHasBeenSet(false)
+KnowledgeBaseRetrievalConfiguration::KnowledgeBaseRetrievalConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ KnowledgeBaseRetrievalConfiguration& KnowledgeBaseRetrievalConfiguration::operat
   if(jsonValue.ValueExists("vectorSearchConfiguration"))
   {
     m_vectorSearchConfiguration = jsonValue.GetObject("vectorSearchConfiguration");
-
     m_vectorSearchConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

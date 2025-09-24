@@ -32,54 +32,25 @@ namespace Model
   class ScalingTrigger
   {
   public:
-    AWS_EMR_API ScalingTrigger();
+    AWS_EMR_API ScalingTrigger() = default;
     AWS_EMR_API ScalingTrigger(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API ScalingTrigger& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The definition of a CloudWatch metric alarm. When the defined alarm
      * conditions are met along with other trigger parameters, scaling activity
      * begins.</p>
      */
-    inline const CloudWatchAlarmDefinition& GetCloudWatchAlarmDefinition() const{ return m_cloudWatchAlarmDefinition; }
-
-    /**
-     * <p>The definition of a CloudWatch metric alarm. When the defined alarm
-     * conditions are met along with other trigger parameters, scaling activity
-     * begins.</p>
-     */
+    inline const CloudWatchAlarmDefinition& GetCloudWatchAlarmDefinition() const { return m_cloudWatchAlarmDefinition; }
     inline bool CloudWatchAlarmDefinitionHasBeenSet() const { return m_cloudWatchAlarmDefinitionHasBeenSet; }
-
-    /**
-     * <p>The definition of a CloudWatch metric alarm. When the defined alarm
-     * conditions are met along with other trigger parameters, scaling activity
-     * begins.</p>
-     */
-    inline void SetCloudWatchAlarmDefinition(const CloudWatchAlarmDefinition& value) { m_cloudWatchAlarmDefinitionHasBeenSet = true; m_cloudWatchAlarmDefinition = value; }
-
-    /**
-     * <p>The definition of a CloudWatch metric alarm. When the defined alarm
-     * conditions are met along with other trigger parameters, scaling activity
-     * begins.</p>
-     */
-    inline void SetCloudWatchAlarmDefinition(CloudWatchAlarmDefinition&& value) { m_cloudWatchAlarmDefinitionHasBeenSet = true; m_cloudWatchAlarmDefinition = std::move(value); }
-
-    /**
-     * <p>The definition of a CloudWatch metric alarm. When the defined alarm
-     * conditions are met along with other trigger parameters, scaling activity
-     * begins.</p>
-     */
-    inline ScalingTrigger& WithCloudWatchAlarmDefinition(const CloudWatchAlarmDefinition& value) { SetCloudWatchAlarmDefinition(value); return *this;}
-
-    /**
-     * <p>The definition of a CloudWatch metric alarm. When the defined alarm
-     * conditions are met along with other trigger parameters, scaling activity
-     * begins.</p>
-     */
-    inline ScalingTrigger& WithCloudWatchAlarmDefinition(CloudWatchAlarmDefinition&& value) { SetCloudWatchAlarmDefinition(std::move(value)); return *this;}
-
+    template<typename CloudWatchAlarmDefinitionT = CloudWatchAlarmDefinition>
+    void SetCloudWatchAlarmDefinition(CloudWatchAlarmDefinitionT&& value) { m_cloudWatchAlarmDefinitionHasBeenSet = true; m_cloudWatchAlarmDefinition = std::forward<CloudWatchAlarmDefinitionT>(value); }
+    template<typename CloudWatchAlarmDefinitionT = CloudWatchAlarmDefinition>
+    ScalingTrigger& WithCloudWatchAlarmDefinition(CloudWatchAlarmDefinitionT&& value) { SetCloudWatchAlarmDefinition(std::forward<CloudWatchAlarmDefinitionT>(value)); return *this;}
+    ///@}
   private:
 
     CloudWatchAlarmDefinition m_cloudWatchAlarmDefinition;

@@ -27,7 +27,7 @@ namespace Model
   class ModifyCacheParameterGroupRequest : public ElastiCacheRequest
   {
   public:
-    AWS_ELASTICACHE_API ModifyCacheParameterGroupRequest();
+    AWS_ELASTICACHE_API ModifyCacheParameterGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,103 +42,33 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the cache parameter group to modify.</p>
      */
-    inline const Aws::String& GetCacheParameterGroupName() const{ return m_cacheParameterGroupName; }
-
-    /**
-     * <p>The name of the cache parameter group to modify.</p>
-     */
+    inline const Aws::String& GetCacheParameterGroupName() const { return m_cacheParameterGroupName; }
     inline bool CacheParameterGroupNameHasBeenSet() const { return m_cacheParameterGroupNameHasBeenSet; }
+    template<typename CacheParameterGroupNameT = Aws::String>
+    void SetCacheParameterGroupName(CacheParameterGroupNameT&& value) { m_cacheParameterGroupNameHasBeenSet = true; m_cacheParameterGroupName = std::forward<CacheParameterGroupNameT>(value); }
+    template<typename CacheParameterGroupNameT = Aws::String>
+    ModifyCacheParameterGroupRequest& WithCacheParameterGroupName(CacheParameterGroupNameT&& value) { SetCacheParameterGroupName(std::forward<CacheParameterGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the cache parameter group to modify.</p>
-     */
-    inline void SetCacheParameterGroupName(const Aws::String& value) { m_cacheParameterGroupNameHasBeenSet = true; m_cacheParameterGroupName = value; }
-
-    /**
-     * <p>The name of the cache parameter group to modify.</p>
-     */
-    inline void SetCacheParameterGroupName(Aws::String&& value) { m_cacheParameterGroupNameHasBeenSet = true; m_cacheParameterGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the cache parameter group to modify.</p>
-     */
-    inline void SetCacheParameterGroupName(const char* value) { m_cacheParameterGroupNameHasBeenSet = true; m_cacheParameterGroupName.assign(value); }
-
-    /**
-     * <p>The name of the cache parameter group to modify.</p>
-     */
-    inline ModifyCacheParameterGroupRequest& WithCacheParameterGroupName(const Aws::String& value) { SetCacheParameterGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the cache parameter group to modify.</p>
-     */
-    inline ModifyCacheParameterGroupRequest& WithCacheParameterGroupName(Aws::String&& value) { SetCacheParameterGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the cache parameter group to modify.</p>
-     */
-    inline ModifyCacheParameterGroupRequest& WithCacheParameterGroupName(const char* value) { SetCacheParameterGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of parameter names and values for the parameter update. You must
      * supply at least one parameter name and value; subsequent arguments are optional.
      * A maximum of 20 parameters may be modified per request.</p>
      */
-    inline const Aws::Vector<ParameterNameValue>& GetParameterNameValues() const{ return m_parameterNameValues; }
-
-    /**
-     * <p>An array of parameter names and values for the parameter update. You must
-     * supply at least one parameter name and value; subsequent arguments are optional.
-     * A maximum of 20 parameters may be modified per request.</p>
-     */
+    inline const Aws::Vector<ParameterNameValue>& GetParameterNameValues() const { return m_parameterNameValues; }
     inline bool ParameterNameValuesHasBeenSet() const { return m_parameterNameValuesHasBeenSet; }
-
-    /**
-     * <p>An array of parameter names and values for the parameter update. You must
-     * supply at least one parameter name and value; subsequent arguments are optional.
-     * A maximum of 20 parameters may be modified per request.</p>
-     */
-    inline void SetParameterNameValues(const Aws::Vector<ParameterNameValue>& value) { m_parameterNameValuesHasBeenSet = true; m_parameterNameValues = value; }
-
-    /**
-     * <p>An array of parameter names and values for the parameter update. You must
-     * supply at least one parameter name and value; subsequent arguments are optional.
-     * A maximum of 20 parameters may be modified per request.</p>
-     */
-    inline void SetParameterNameValues(Aws::Vector<ParameterNameValue>&& value) { m_parameterNameValuesHasBeenSet = true; m_parameterNameValues = std::move(value); }
-
-    /**
-     * <p>An array of parameter names and values for the parameter update. You must
-     * supply at least one parameter name and value; subsequent arguments are optional.
-     * A maximum of 20 parameters may be modified per request.</p>
-     */
-    inline ModifyCacheParameterGroupRequest& WithParameterNameValues(const Aws::Vector<ParameterNameValue>& value) { SetParameterNameValues(value); return *this;}
-
-    /**
-     * <p>An array of parameter names and values for the parameter update. You must
-     * supply at least one parameter name and value; subsequent arguments are optional.
-     * A maximum of 20 parameters may be modified per request.</p>
-     */
-    inline ModifyCacheParameterGroupRequest& WithParameterNameValues(Aws::Vector<ParameterNameValue>&& value) { SetParameterNameValues(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of parameter names and values for the parameter update. You must
-     * supply at least one parameter name and value; subsequent arguments are optional.
-     * A maximum of 20 parameters may be modified per request.</p>
-     */
-    inline ModifyCacheParameterGroupRequest& AddParameterNameValues(const ParameterNameValue& value) { m_parameterNameValuesHasBeenSet = true; m_parameterNameValues.push_back(value); return *this; }
-
-    /**
-     * <p>An array of parameter names and values for the parameter update. You must
-     * supply at least one parameter name and value; subsequent arguments are optional.
-     * A maximum of 20 parameters may be modified per request.</p>
-     */
-    inline ModifyCacheParameterGroupRequest& AddParameterNameValues(ParameterNameValue&& value) { m_parameterNameValuesHasBeenSet = true; m_parameterNameValues.push_back(std::move(value)); return *this; }
-
+    template<typename ParameterNameValuesT = Aws::Vector<ParameterNameValue>>
+    void SetParameterNameValues(ParameterNameValuesT&& value) { m_parameterNameValuesHasBeenSet = true; m_parameterNameValues = std::forward<ParameterNameValuesT>(value); }
+    template<typename ParameterNameValuesT = Aws::Vector<ParameterNameValue>>
+    ModifyCacheParameterGroupRequest& WithParameterNameValues(ParameterNameValuesT&& value) { SetParameterNameValues(std::forward<ParameterNameValuesT>(value)); return *this;}
+    template<typename ParameterNameValuesT = ParameterNameValue>
+    ModifyCacheParameterGroupRequest& AddParameterNameValues(ParameterNameValuesT&& value) { m_parameterNameValuesHasBeenSet = true; m_parameterNameValues.emplace_back(std::forward<ParameterNameValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_cacheParameterGroupName;

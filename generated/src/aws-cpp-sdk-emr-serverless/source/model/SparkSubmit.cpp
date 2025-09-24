@@ -18,17 +18,7 @@ namespace EMRServerless
 namespace Model
 {
 
-SparkSubmit::SparkSubmit() : 
-    m_entryPointHasBeenSet(false),
-    m_entryPointArgumentsHasBeenSet(false),
-    m_sparkSubmitParametersHasBeenSet(false)
-{
-}
-
-SparkSubmit::SparkSubmit(JsonView jsonValue) : 
-    m_entryPointHasBeenSet(false),
-    m_entryPointArgumentsHasBeenSet(false),
-    m_sparkSubmitParametersHasBeenSet(false)
+SparkSubmit::SparkSubmit(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ SparkSubmit& SparkSubmit::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("entryPoint"))
   {
     m_entryPoint = jsonValue.GetString("entryPoint");
-
     m_entryPointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("entryPointArguments"))
   {
     Aws::Utils::Array<JsonView> entryPointArgumentsJsonList = jsonValue.GetArray("entryPointArguments");
@@ -51,14 +39,11 @@ SparkSubmit& SparkSubmit::operator =(JsonView jsonValue)
     }
     m_entryPointArgumentsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sparkSubmitParameters"))
   {
     m_sparkSubmitParameters = jsonValue.GetString("sparkSubmitParameters");
-
     m_sparkSubmitParametersHasBeenSet = true;
   }
-
   return *this;
 }
 

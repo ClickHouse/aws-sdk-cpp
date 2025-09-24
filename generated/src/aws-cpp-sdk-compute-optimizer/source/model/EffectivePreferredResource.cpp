@@ -18,21 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-EffectivePreferredResource::EffectivePreferredResource() : 
-    m_name(PreferredResourceName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_includeListHasBeenSet(false),
-    m_effectiveIncludeListHasBeenSet(false),
-    m_excludeListHasBeenSet(false)
-{
-}
-
-EffectivePreferredResource::EffectivePreferredResource(JsonView jsonValue) : 
-    m_name(PreferredResourceName::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_includeListHasBeenSet(false),
-    m_effectiveIncludeListHasBeenSet(false),
-    m_excludeListHasBeenSet(false)
+EffectivePreferredResource::EffectivePreferredResource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,10 +28,8 @@ EffectivePreferredResource& EffectivePreferredResource::operator =(JsonView json
   if(jsonValue.ValueExists("name"))
   {
     m_name = PreferredResourceNameMapper::GetPreferredResourceNameForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("includeList"))
   {
     Aws::Utils::Array<JsonView> includeListJsonList = jsonValue.GetArray("includeList");
@@ -55,7 +39,6 @@ EffectivePreferredResource& EffectivePreferredResource::operator =(JsonView json
     }
     m_includeListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("effectiveIncludeList"))
   {
     Aws::Utils::Array<JsonView> effectiveIncludeListJsonList = jsonValue.GetArray("effectiveIncludeList");
@@ -65,7 +48,6 @@ EffectivePreferredResource& EffectivePreferredResource::operator =(JsonView json
     }
     m_effectiveIncludeListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("excludeList"))
   {
     Aws::Utils::Array<JsonView> excludeListJsonList = jsonValue.GetArray("excludeList");
@@ -75,7 +57,6 @@ EffectivePreferredResource& EffectivePreferredResource::operator =(JsonView json
     }
     m_excludeListHasBeenSet = true;
   }
-
   return *this;
 }
 

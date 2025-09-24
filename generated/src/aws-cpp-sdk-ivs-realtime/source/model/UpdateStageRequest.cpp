@@ -12,12 +12,6 @@ using namespace Aws::ivsrealtime::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateStageRequest::UpdateStageRequest() : 
-    m_arnHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String UpdateStageRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,12 @@ Aws::String UpdateStageRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_autoParticipantRecordingConfigurationHasBeenSet)
+  {
+   payload.WithObject("autoParticipantRecordingConfiguration", m_autoParticipantRecordingConfiguration.Jsonize());
 
   }
 

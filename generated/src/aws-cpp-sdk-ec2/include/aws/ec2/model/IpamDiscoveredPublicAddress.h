@@ -38,7 +38,7 @@ namespace Model
   class IpamDiscoveredPublicAddress
   {
   public:
-    AWS_EC2_API IpamDiscoveredPublicAddress();
+    AWS_EC2_API IpamDiscoveredPublicAddress() = default;
     AWS_EC2_API IpamDiscoveredPublicAddress(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API IpamDiscoveredPublicAddress& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -46,766 +46,236 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The resource discovery ID.</p>
      */
-    inline const Aws::String& GetIpamResourceDiscoveryId() const{ return m_ipamResourceDiscoveryId; }
-
-    /**
-     * <p>The resource discovery ID.</p>
-     */
+    inline const Aws::String& GetIpamResourceDiscoveryId() const { return m_ipamResourceDiscoveryId; }
     inline bool IpamResourceDiscoveryIdHasBeenSet() const { return m_ipamResourceDiscoveryIdHasBeenSet; }
+    template<typename IpamResourceDiscoveryIdT = Aws::String>
+    void SetIpamResourceDiscoveryId(IpamResourceDiscoveryIdT&& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = std::forward<IpamResourceDiscoveryIdT>(value); }
+    template<typename IpamResourceDiscoveryIdT = Aws::String>
+    IpamDiscoveredPublicAddress& WithIpamResourceDiscoveryId(IpamResourceDiscoveryIdT&& value) { SetIpamResourceDiscoveryId(std::forward<IpamResourceDiscoveryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(const Aws::String& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = value; }
-
-    /**
-     * <p>The resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(Aws::String&& value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId = std::move(value); }
-
-    /**
-     * <p>The resource discovery ID.</p>
-     */
-    inline void SetIpamResourceDiscoveryId(const char* value) { m_ipamResourceDiscoveryIdHasBeenSet = true; m_ipamResourceDiscoveryId.assign(value); }
-
-    /**
-     * <p>The resource discovery ID.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithIpamResourceDiscoveryId(const Aws::String& value) { SetIpamResourceDiscoveryId(value); return *this;}
-
-    /**
-     * <p>The resource discovery ID.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithIpamResourceDiscoveryId(Aws::String&& value) { SetIpamResourceDiscoveryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource discovery ID.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithIpamResourceDiscoveryId(const char* value) { SetIpamResourceDiscoveryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Region of the resource the IP address is assigned to.</p>
      */
-    inline const Aws::String& GetAddressRegion() const{ return m_addressRegion; }
-
-    /**
-     * <p>The Region of the resource the IP address is assigned to.</p>
-     */
+    inline const Aws::String& GetAddressRegion() const { return m_addressRegion; }
     inline bool AddressRegionHasBeenSet() const { return m_addressRegionHasBeenSet; }
+    template<typename AddressRegionT = Aws::String>
+    void SetAddressRegion(AddressRegionT&& value) { m_addressRegionHasBeenSet = true; m_addressRegion = std::forward<AddressRegionT>(value); }
+    template<typename AddressRegionT = Aws::String>
+    IpamDiscoveredPublicAddress& WithAddressRegion(AddressRegionT&& value) { SetAddressRegion(std::forward<AddressRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Region of the resource the IP address is assigned to.</p>
-     */
-    inline void SetAddressRegion(const Aws::String& value) { m_addressRegionHasBeenSet = true; m_addressRegion = value; }
-
-    /**
-     * <p>The Region of the resource the IP address is assigned to.</p>
-     */
-    inline void SetAddressRegion(Aws::String&& value) { m_addressRegionHasBeenSet = true; m_addressRegion = std::move(value); }
-
-    /**
-     * <p>The Region of the resource the IP address is assigned to.</p>
-     */
-    inline void SetAddressRegion(const char* value) { m_addressRegionHasBeenSet = true; m_addressRegion.assign(value); }
-
-    /**
-     * <p>The Region of the resource the IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressRegion(const Aws::String& value) { SetAddressRegion(value); return *this;}
-
-    /**
-     * <p>The Region of the resource the IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressRegion(Aws::String&& value) { SetAddressRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Region of the resource the IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressRegion(const char* value) { SetAddressRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP address.</p>
      */
-    inline const Aws::String& GetAddress() const{ return m_address; }
-
-    /**
-     * <p>The IP address.</p>
-     */
+    inline const Aws::String& GetAddress() const { return m_address; }
     inline bool AddressHasBeenSet() const { return m_addressHasBeenSet; }
+    template<typename AddressT = Aws::String>
+    void SetAddress(AddressT&& value) { m_addressHasBeenSet = true; m_address = std::forward<AddressT>(value); }
+    template<typename AddressT = Aws::String>
+    IpamDiscoveredPublicAddress& WithAddress(AddressT&& value) { SetAddress(std::forward<AddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IP address.</p>
-     */
-    inline void SetAddress(const Aws::String& value) { m_addressHasBeenSet = true; m_address = value; }
-
-    /**
-     * <p>The IP address.</p>
-     */
-    inline void SetAddress(Aws::String&& value) { m_addressHasBeenSet = true; m_address = std::move(value); }
-
-    /**
-     * <p>The IP address.</p>
-     */
-    inline void SetAddress(const char* value) { m_addressHasBeenSet = true; m_address.assign(value); }
-
-    /**
-     * <p>The IP address.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddress(const Aws::String& value) { SetAddress(value); return *this;}
-
-    /**
-     * <p>The IP address.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddress(Aws::String&& value) { SetAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP address.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddress(const char* value) { SetAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the owner of the resource the IP address is assigned to.</p>
      */
-    inline const Aws::String& GetAddressOwnerId() const{ return m_addressOwnerId; }
-
-    /**
-     * <p>The ID of the owner of the resource the IP address is assigned to.</p>
-     */
+    inline const Aws::String& GetAddressOwnerId() const { return m_addressOwnerId; }
     inline bool AddressOwnerIdHasBeenSet() const { return m_addressOwnerIdHasBeenSet; }
+    template<typename AddressOwnerIdT = Aws::String>
+    void SetAddressOwnerId(AddressOwnerIdT&& value) { m_addressOwnerIdHasBeenSet = true; m_addressOwnerId = std::forward<AddressOwnerIdT>(value); }
+    template<typename AddressOwnerIdT = Aws::String>
+    IpamDiscoveredPublicAddress& WithAddressOwnerId(AddressOwnerIdT&& value) { SetAddressOwnerId(std::forward<AddressOwnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the owner of the resource the IP address is assigned to.</p>
-     */
-    inline void SetAddressOwnerId(const Aws::String& value) { m_addressOwnerIdHasBeenSet = true; m_addressOwnerId = value; }
-
-    /**
-     * <p>The ID of the owner of the resource the IP address is assigned to.</p>
-     */
-    inline void SetAddressOwnerId(Aws::String&& value) { m_addressOwnerIdHasBeenSet = true; m_addressOwnerId = std::move(value); }
-
-    /**
-     * <p>The ID of the owner of the resource the IP address is assigned to.</p>
-     */
-    inline void SetAddressOwnerId(const char* value) { m_addressOwnerIdHasBeenSet = true; m_addressOwnerId.assign(value); }
-
-    /**
-     * <p>The ID of the owner of the resource the IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressOwnerId(const Aws::String& value) { SetAddressOwnerId(value); return *this;}
-
-    /**
-     * <p>The ID of the owner of the resource the IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressOwnerId(Aws::String&& value) { SetAddressOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the owner of the resource the IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressOwnerId(const char* value) { SetAddressOwnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The allocation ID of the resource the IP address is assigned to.</p>
      */
-    inline const Aws::String& GetAddressAllocationId() const{ return m_addressAllocationId; }
-
-    /**
-     * <p>The allocation ID of the resource the IP address is assigned to.</p>
-     */
+    inline const Aws::String& GetAddressAllocationId() const { return m_addressAllocationId; }
     inline bool AddressAllocationIdHasBeenSet() const { return m_addressAllocationIdHasBeenSet; }
+    template<typename AddressAllocationIdT = Aws::String>
+    void SetAddressAllocationId(AddressAllocationIdT&& value) { m_addressAllocationIdHasBeenSet = true; m_addressAllocationId = std::forward<AddressAllocationIdT>(value); }
+    template<typename AddressAllocationIdT = Aws::String>
+    IpamDiscoveredPublicAddress& WithAddressAllocationId(AddressAllocationIdT&& value) { SetAddressAllocationId(std::forward<AddressAllocationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The allocation ID of the resource the IP address is assigned to.</p>
-     */
-    inline void SetAddressAllocationId(const Aws::String& value) { m_addressAllocationIdHasBeenSet = true; m_addressAllocationId = value; }
-
-    /**
-     * <p>The allocation ID of the resource the IP address is assigned to.</p>
-     */
-    inline void SetAddressAllocationId(Aws::String&& value) { m_addressAllocationIdHasBeenSet = true; m_addressAllocationId = std::move(value); }
-
-    /**
-     * <p>The allocation ID of the resource the IP address is assigned to.</p>
-     */
-    inline void SetAddressAllocationId(const char* value) { m_addressAllocationIdHasBeenSet = true; m_addressAllocationId.assign(value); }
-
-    /**
-     * <p>The allocation ID of the resource the IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressAllocationId(const Aws::String& value) { SetAddressAllocationId(value); return *this;}
-
-    /**
-     * <p>The allocation ID of the resource the IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressAllocationId(Aws::String&& value) { SetAddressAllocationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The allocation ID of the resource the IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressAllocationId(const char* value) { SetAddressAllocationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The association status.</p>
      */
-    inline const IpamPublicAddressAssociationStatus& GetAssociationStatus() const{ return m_associationStatus; }
-
-    /**
-     * <p>The association status.</p>
-     */
+    inline IpamPublicAddressAssociationStatus GetAssociationStatus() const { return m_associationStatus; }
     inline bool AssociationStatusHasBeenSet() const { return m_associationStatusHasBeenSet; }
+    inline void SetAssociationStatus(IpamPublicAddressAssociationStatus value) { m_associationStatusHasBeenSet = true; m_associationStatus = value; }
+    inline IpamDiscoveredPublicAddress& WithAssociationStatus(IpamPublicAddressAssociationStatus value) { SetAssociationStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The association status.</p>
-     */
-    inline void SetAssociationStatus(const IpamPublicAddressAssociationStatus& value) { m_associationStatusHasBeenSet = true; m_associationStatus = value; }
-
-    /**
-     * <p>The association status.</p>
-     */
-    inline void SetAssociationStatus(IpamPublicAddressAssociationStatus&& value) { m_associationStatusHasBeenSet = true; m_associationStatus = std::move(value); }
-
-    /**
-     * <p>The association status.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAssociationStatus(const IpamPublicAddressAssociationStatus& value) { SetAssociationStatus(value); return *this;}
-
-    /**
-     * <p>The association status.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAssociationStatus(IpamPublicAddressAssociationStatus&& value) { SetAssociationStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP address type.</p>
      */
-    inline const IpamPublicAddressType& GetAddressType() const{ return m_addressType; }
-
-    /**
-     * <p>The IP address type.</p>
-     */
+    inline IpamPublicAddressType GetAddressType() const { return m_addressType; }
     inline bool AddressTypeHasBeenSet() const { return m_addressTypeHasBeenSet; }
+    inline void SetAddressType(IpamPublicAddressType value) { m_addressTypeHasBeenSet = true; m_addressType = value; }
+    inline IpamDiscoveredPublicAddress& WithAddressType(IpamPublicAddressType value) { SetAddressType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The IP address type.</p>
-     */
-    inline void SetAddressType(const IpamPublicAddressType& value) { m_addressTypeHasBeenSet = true; m_addressType = value; }
-
-    /**
-     * <p>The IP address type.</p>
-     */
-    inline void SetAddressType(IpamPublicAddressType&& value) { m_addressTypeHasBeenSet = true; m_addressType = std::move(value); }
-
-    /**
-     * <p>The IP address type.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressType(const IpamPublicAddressType& value) { SetAddressType(value); return *this;}
-
-    /**
-     * <p>The IP address type.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithAddressType(IpamPublicAddressType&& value) { SetAddressType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services service associated with the IP address.</p>
      */
-    inline const IpamPublicAddressAwsService& GetService() const{ return m_service; }
-
-    /**
-     * <p>The Amazon Web Services service associated with the IP address.</p>
-     */
+    inline IpamPublicAddressAwsService GetService() const { return m_service; }
     inline bool ServiceHasBeenSet() const { return m_serviceHasBeenSet; }
+    inline void SetService(IpamPublicAddressAwsService value) { m_serviceHasBeenSet = true; m_service = value; }
+    inline IpamDiscoveredPublicAddress& WithService(IpamPublicAddressAwsService value) { SetService(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services service associated with the IP address.</p>
-     */
-    inline void SetService(const IpamPublicAddressAwsService& value) { m_serviceHasBeenSet = true; m_service = value; }
-
-    /**
-     * <p>The Amazon Web Services service associated with the IP address.</p>
-     */
-    inline void SetService(IpamPublicAddressAwsService&& value) { m_serviceHasBeenSet = true; m_service = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services service associated with the IP address.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithService(const IpamPublicAddressAwsService& value) { SetService(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services service associated with the IP address.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithService(IpamPublicAddressAwsService&& value) { SetService(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource ARN or ID.</p>
      */
-    inline const Aws::String& GetServiceResource() const{ return m_serviceResource; }
-
-    /**
-     * <p>The resource ARN or ID.</p>
-     */
+    inline const Aws::String& GetServiceResource() const { return m_serviceResource; }
     inline bool ServiceResourceHasBeenSet() const { return m_serviceResourceHasBeenSet; }
+    template<typename ServiceResourceT = Aws::String>
+    void SetServiceResource(ServiceResourceT&& value) { m_serviceResourceHasBeenSet = true; m_serviceResource = std::forward<ServiceResourceT>(value); }
+    template<typename ServiceResourceT = Aws::String>
+    IpamDiscoveredPublicAddress& WithServiceResource(ServiceResourceT&& value) { SetServiceResource(std::forward<ServiceResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource ARN or ID.</p>
-     */
-    inline void SetServiceResource(const Aws::String& value) { m_serviceResourceHasBeenSet = true; m_serviceResource = value; }
-
-    /**
-     * <p>The resource ARN or ID.</p>
-     */
-    inline void SetServiceResource(Aws::String&& value) { m_serviceResourceHasBeenSet = true; m_serviceResource = std::move(value); }
-
-    /**
-     * <p>The resource ARN or ID.</p>
-     */
-    inline void SetServiceResource(const char* value) { m_serviceResourceHasBeenSet = true; m_serviceResource.assign(value); }
-
-    /**
-     * <p>The resource ARN or ID.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithServiceResource(const Aws::String& value) { SetServiceResource(value); return *this;}
-
-    /**
-     * <p>The resource ARN or ID.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithServiceResource(Aws::String&& value) { SetServiceResource(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource ARN or ID.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithServiceResource(const char* value) { SetServiceResource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the VPC that the resource with the assigned IP address is in.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The ID of the VPC that the resource with the assigned IP address is in.</p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    IpamDiscoveredPublicAddress& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the VPC that the resource with the assigned IP address is in.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The ID of the VPC that the resource with the assigned IP address is in.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC that the resource with the assigned IP address is in.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC that the resource with the assigned IP address is in.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC that the resource with the assigned IP address is in.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC that the resource with the assigned IP address is in.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the subnet that the resource with the assigned IP address is
      * in.</p>
      */
-    inline const Aws::String& GetSubnetId() const{ return m_subnetId; }
-
-    /**
-     * <p>The ID of the subnet that the resource with the assigned IP address is
-     * in.</p>
-     */
+    inline const Aws::String& GetSubnetId() const { return m_subnetId; }
     inline bool SubnetIdHasBeenSet() const { return m_subnetIdHasBeenSet; }
+    template<typename SubnetIdT = Aws::String>
+    void SetSubnetId(SubnetIdT&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::forward<SubnetIdT>(value); }
+    template<typename SubnetIdT = Aws::String>
+    IpamDiscoveredPublicAddress& WithSubnetId(SubnetIdT&& value) { SetSubnetId(std::forward<SubnetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the subnet that the resource with the assigned IP address is
-     * in.</p>
-     */
-    inline void SetSubnetId(const Aws::String& value) { m_subnetIdHasBeenSet = true; m_subnetId = value; }
-
-    /**
-     * <p>The ID of the subnet that the resource with the assigned IP address is
-     * in.</p>
-     */
-    inline void SetSubnetId(Aws::String&& value) { m_subnetIdHasBeenSet = true; m_subnetId = std::move(value); }
-
-    /**
-     * <p>The ID of the subnet that the resource with the assigned IP address is
-     * in.</p>
-     */
-    inline void SetSubnetId(const char* value) { m_subnetIdHasBeenSet = true; m_subnetId.assign(value); }
-
-    /**
-     * <p>The ID of the subnet that the resource with the assigned IP address is
-     * in.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithSubnetId(const Aws::String& value) { SetSubnetId(value); return *this;}
-
-    /**
-     * <p>The ID of the subnet that the resource with the assigned IP address is
-     * in.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithSubnetId(Aws::String&& value) { SetSubnetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the subnet that the resource with the assigned IP address is
-     * in.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithSubnetId(const char* value) { SetSubnetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the public IPv4 pool that the resource with the assigned IP address
      * is from.</p>
      */
-    inline const Aws::String& GetPublicIpv4PoolId() const{ return m_publicIpv4PoolId; }
-
-    /**
-     * <p>The ID of the public IPv4 pool that the resource with the assigned IP address
-     * is from.</p>
-     */
+    inline const Aws::String& GetPublicIpv4PoolId() const { return m_publicIpv4PoolId; }
     inline bool PublicIpv4PoolIdHasBeenSet() const { return m_publicIpv4PoolIdHasBeenSet; }
+    template<typename PublicIpv4PoolIdT = Aws::String>
+    void SetPublicIpv4PoolId(PublicIpv4PoolIdT&& value) { m_publicIpv4PoolIdHasBeenSet = true; m_publicIpv4PoolId = std::forward<PublicIpv4PoolIdT>(value); }
+    template<typename PublicIpv4PoolIdT = Aws::String>
+    IpamDiscoveredPublicAddress& WithPublicIpv4PoolId(PublicIpv4PoolIdT&& value) { SetPublicIpv4PoolId(std::forward<PublicIpv4PoolIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the public IPv4 pool that the resource with the assigned IP address
-     * is from.</p>
-     */
-    inline void SetPublicIpv4PoolId(const Aws::String& value) { m_publicIpv4PoolIdHasBeenSet = true; m_publicIpv4PoolId = value; }
-
-    /**
-     * <p>The ID of the public IPv4 pool that the resource with the assigned IP address
-     * is from.</p>
-     */
-    inline void SetPublicIpv4PoolId(Aws::String&& value) { m_publicIpv4PoolIdHasBeenSet = true; m_publicIpv4PoolId = std::move(value); }
-
-    /**
-     * <p>The ID of the public IPv4 pool that the resource with the assigned IP address
-     * is from.</p>
-     */
-    inline void SetPublicIpv4PoolId(const char* value) { m_publicIpv4PoolIdHasBeenSet = true; m_publicIpv4PoolId.assign(value); }
-
-    /**
-     * <p>The ID of the public IPv4 pool that the resource with the assigned IP address
-     * is from.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithPublicIpv4PoolId(const Aws::String& value) { SetPublicIpv4PoolId(value); return *this;}
-
-    /**
-     * <p>The ID of the public IPv4 pool that the resource with the assigned IP address
-     * is from.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithPublicIpv4PoolId(Aws::String&& value) { SetPublicIpv4PoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the public IPv4 pool that the resource with the assigned IP address
-     * is from.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithPublicIpv4PoolId(const char* value) { SetPublicIpv4PoolId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The network interface ID of the resource with the assigned IP address.</p>
      */
-    inline const Aws::String& GetNetworkInterfaceId() const{ return m_networkInterfaceId; }
-
-    /**
-     * <p>The network interface ID of the resource with the assigned IP address.</p>
-     */
+    inline const Aws::String& GetNetworkInterfaceId() const { return m_networkInterfaceId; }
     inline bool NetworkInterfaceIdHasBeenSet() const { return m_networkInterfaceIdHasBeenSet; }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    void SetNetworkInterfaceId(NetworkInterfaceIdT&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::forward<NetworkInterfaceIdT>(value); }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    IpamDiscoveredPublicAddress& WithNetworkInterfaceId(NetworkInterfaceIdT&& value) { SetNetworkInterfaceId(std::forward<NetworkInterfaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The network interface ID of the resource with the assigned IP address.</p>
-     */
-    inline void SetNetworkInterfaceId(const Aws::String& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = value; }
-
-    /**
-     * <p>The network interface ID of the resource with the assigned IP address.</p>
-     */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::move(value); }
-
-    /**
-     * <p>The network interface ID of the resource with the assigned IP address.</p>
-     */
-    inline void SetNetworkInterfaceId(const char* value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId.assign(value); }
-
-    /**
-     * <p>The network interface ID of the resource with the assigned IP address.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithNetworkInterfaceId(const Aws::String& value) { SetNetworkInterfaceId(value); return *this;}
-
-    /**
-     * <p>The network interface ID of the resource with the assigned IP address.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The network interface ID of the resource with the assigned IP address.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithNetworkInterfaceId(const char* value) { SetNetworkInterfaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the network interface that IP address is assigned to.</p>
      */
-    inline const Aws::String& GetNetworkInterfaceDescription() const{ return m_networkInterfaceDescription; }
-
-    /**
-     * <p>The description of the network interface that IP address is assigned to.</p>
-     */
+    inline const Aws::String& GetNetworkInterfaceDescription() const { return m_networkInterfaceDescription; }
     inline bool NetworkInterfaceDescriptionHasBeenSet() const { return m_networkInterfaceDescriptionHasBeenSet; }
+    template<typename NetworkInterfaceDescriptionT = Aws::String>
+    void SetNetworkInterfaceDescription(NetworkInterfaceDescriptionT&& value) { m_networkInterfaceDescriptionHasBeenSet = true; m_networkInterfaceDescription = std::forward<NetworkInterfaceDescriptionT>(value); }
+    template<typename NetworkInterfaceDescriptionT = Aws::String>
+    IpamDiscoveredPublicAddress& WithNetworkInterfaceDescription(NetworkInterfaceDescriptionT&& value) { SetNetworkInterfaceDescription(std::forward<NetworkInterfaceDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the network interface that IP address is assigned to.</p>
-     */
-    inline void SetNetworkInterfaceDescription(const Aws::String& value) { m_networkInterfaceDescriptionHasBeenSet = true; m_networkInterfaceDescription = value; }
-
-    /**
-     * <p>The description of the network interface that IP address is assigned to.</p>
-     */
-    inline void SetNetworkInterfaceDescription(Aws::String&& value) { m_networkInterfaceDescriptionHasBeenSet = true; m_networkInterfaceDescription = std::move(value); }
-
-    /**
-     * <p>The description of the network interface that IP address is assigned to.</p>
-     */
-    inline void SetNetworkInterfaceDescription(const char* value) { m_networkInterfaceDescriptionHasBeenSet = true; m_networkInterfaceDescription.assign(value); }
-
-    /**
-     * <p>The description of the network interface that IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithNetworkInterfaceDescription(const Aws::String& value) { SetNetworkInterfaceDescription(value); return *this;}
-
-    /**
-     * <p>The description of the network interface that IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithNetworkInterfaceDescription(Aws::String&& value) { SetNetworkInterfaceDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the network interface that IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithNetworkInterfaceDescription(const char* value) { SetNetworkInterfaceDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The instance ID of the instance the assigned IP address is assigned to.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The instance ID of the instance the assigned IP address is assigned to.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    IpamDiscoveredPublicAddress& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance ID of the instance the assigned IP address is assigned to.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The instance ID of the instance the assigned IP address is assigned to.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The instance ID of the instance the assigned IP address is assigned to.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The instance ID of the instance the assigned IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The instance ID of the instance the assigned IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The instance ID of the instance the assigned IP address is assigned to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Tags associated with the IP address.</p>
      */
-    inline const IpamPublicAddressTags& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Tags associated with the IP address.</p>
-     */
+    inline const IpamPublicAddressTags& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = IpamPublicAddressTags>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = IpamPublicAddressTags>
+    IpamDiscoveredPublicAddress& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Tags associated with the IP address.</p>
+     * <p>The Availability Zone (AZ) or Local Zone (LZ) network border group that the
+     * resource that the IP address is assigned to is in. Defaults to an AZ network
+     * border group. For more information on available Local Zones, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail">Local
+     * Zone availability</a> in the <i>Amazon EC2 User Guide</i>.</p>
      */
-    inline void SetTags(const IpamPublicAddressTags& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Tags associated with the IP address.</p>
-     */
-    inline void SetTags(IpamPublicAddressTags&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Tags associated with the IP address.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithTags(const IpamPublicAddressTags& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Tags associated with the IP address.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithTags(IpamPublicAddressTags&& value) { SetTags(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The network border group that the resource that the IP address is assigned to
-     * is in.</p>
-     */
-    inline const Aws::String& GetNetworkBorderGroup() const{ return m_networkBorderGroup; }
-
-    /**
-     * <p>The network border group that the resource that the IP address is assigned to
-     * is in.</p>
-     */
+    inline const Aws::String& GetNetworkBorderGroup() const { return m_networkBorderGroup; }
     inline bool NetworkBorderGroupHasBeenSet() const { return m_networkBorderGroupHasBeenSet; }
+    template<typename NetworkBorderGroupT = Aws::String>
+    void SetNetworkBorderGroup(NetworkBorderGroupT&& value) { m_networkBorderGroupHasBeenSet = true; m_networkBorderGroup = std::forward<NetworkBorderGroupT>(value); }
+    template<typename NetworkBorderGroupT = Aws::String>
+    IpamDiscoveredPublicAddress& WithNetworkBorderGroup(NetworkBorderGroupT&& value) { SetNetworkBorderGroup(std::forward<NetworkBorderGroupT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The network border group that the resource that the IP address is assigned to
-     * is in.</p>
-     */
-    inline void SetNetworkBorderGroup(const Aws::String& value) { m_networkBorderGroupHasBeenSet = true; m_networkBorderGroup = value; }
-
-    /**
-     * <p>The network border group that the resource that the IP address is assigned to
-     * is in.</p>
-     */
-    inline void SetNetworkBorderGroup(Aws::String&& value) { m_networkBorderGroupHasBeenSet = true; m_networkBorderGroup = std::move(value); }
-
-    /**
-     * <p>The network border group that the resource that the IP address is assigned to
-     * is in.</p>
-     */
-    inline void SetNetworkBorderGroup(const char* value) { m_networkBorderGroupHasBeenSet = true; m_networkBorderGroup.assign(value); }
-
-    /**
-     * <p>The network border group that the resource that the IP address is assigned to
-     * is in.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithNetworkBorderGroup(const Aws::String& value) { SetNetworkBorderGroup(value); return *this;}
-
-    /**
-     * <p>The network border group that the resource that the IP address is assigned to
-     * is in.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithNetworkBorderGroup(Aws::String&& value) { SetNetworkBorderGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The network border group that the resource that the IP address is assigned to
-     * is in.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithNetworkBorderGroup(const char* value) { SetNetworkBorderGroup(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Security groups associated with the resource that the IP address is assigned
      * to.</p>
      */
-    inline const Aws::Vector<IpamPublicAddressSecurityGroup>& GetSecurityGroups() const{ return m_securityGroups; }
-
-    /**
-     * <p>Security groups associated with the resource that the IP address is assigned
-     * to.</p>
-     */
+    inline const Aws::Vector<IpamPublicAddressSecurityGroup>& GetSecurityGroups() const { return m_securityGroups; }
     inline bool SecurityGroupsHasBeenSet() const { return m_securityGroupsHasBeenSet; }
+    template<typename SecurityGroupsT = Aws::Vector<IpamPublicAddressSecurityGroup>>
+    void SetSecurityGroups(SecurityGroupsT&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::forward<SecurityGroupsT>(value); }
+    template<typename SecurityGroupsT = Aws::Vector<IpamPublicAddressSecurityGroup>>
+    IpamDiscoveredPublicAddress& WithSecurityGroups(SecurityGroupsT&& value) { SetSecurityGroups(std::forward<SecurityGroupsT>(value)); return *this;}
+    template<typename SecurityGroupsT = IpamPublicAddressSecurityGroup>
+    IpamDiscoveredPublicAddress& AddSecurityGroups(SecurityGroupsT&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.emplace_back(std::forward<SecurityGroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Security groups associated with the resource that the IP address is assigned
-     * to.</p>
-     */
-    inline void SetSecurityGroups(const Aws::Vector<IpamPublicAddressSecurityGroup>& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = value; }
-
-    /**
-     * <p>Security groups associated with the resource that the IP address is assigned
-     * to.</p>
-     */
-    inline void SetSecurityGroups(Aws::Vector<IpamPublicAddressSecurityGroup>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::move(value); }
-
-    /**
-     * <p>Security groups associated with the resource that the IP address is assigned
-     * to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithSecurityGroups(const Aws::Vector<IpamPublicAddressSecurityGroup>& value) { SetSecurityGroups(value); return *this;}
-
-    /**
-     * <p>Security groups associated with the resource that the IP address is assigned
-     * to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithSecurityGroups(Aws::Vector<IpamPublicAddressSecurityGroup>&& value) { SetSecurityGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>Security groups associated with the resource that the IP address is assigned
-     * to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& AddSecurityGroups(const IpamPublicAddressSecurityGroup& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
-
-    /**
-     * <p>Security groups associated with the resource that the IP address is assigned
-     * to.</p>
-     */
-    inline IpamDiscoveredPublicAddress& AddSecurityGroups(IpamPublicAddressSecurityGroup&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The last successful resource discovery time.</p>
      */
-    inline const Aws::Utils::DateTime& GetSampleTime() const{ return m_sampleTime; }
-
-    /**
-     * <p>The last successful resource discovery time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetSampleTime() const { return m_sampleTime; }
     inline bool SampleTimeHasBeenSet() const { return m_sampleTimeHasBeenSet; }
-
-    /**
-     * <p>The last successful resource discovery time.</p>
-     */
-    inline void SetSampleTime(const Aws::Utils::DateTime& value) { m_sampleTimeHasBeenSet = true; m_sampleTime = value; }
-
-    /**
-     * <p>The last successful resource discovery time.</p>
-     */
-    inline void SetSampleTime(Aws::Utils::DateTime&& value) { m_sampleTimeHasBeenSet = true; m_sampleTime = std::move(value); }
-
-    /**
-     * <p>The last successful resource discovery time.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithSampleTime(const Aws::Utils::DateTime& value) { SetSampleTime(value); return *this;}
-
-    /**
-     * <p>The last successful resource discovery time.</p>
-     */
-    inline IpamDiscoveredPublicAddress& WithSampleTime(Aws::Utils::DateTime&& value) { SetSampleTime(std::move(value)); return *this;}
-
+    template<typename SampleTimeT = Aws::Utils::DateTime>
+    void SetSampleTime(SampleTimeT&& value) { m_sampleTimeHasBeenSet = true; m_sampleTime = std::forward<SampleTimeT>(value); }
+    template<typename SampleTimeT = Aws::Utils::DateTime>
+    IpamDiscoveredPublicAddress& WithSampleTime(SampleTimeT&& value) { SetSampleTime(std::forward<SampleTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ipamResourceDiscoveryId;
@@ -823,13 +293,13 @@ namespace Model
     Aws::String m_addressAllocationId;
     bool m_addressAllocationIdHasBeenSet = false;
 
-    IpamPublicAddressAssociationStatus m_associationStatus;
+    IpamPublicAddressAssociationStatus m_associationStatus{IpamPublicAddressAssociationStatus::NOT_SET};
     bool m_associationStatusHasBeenSet = false;
 
-    IpamPublicAddressType m_addressType;
+    IpamPublicAddressType m_addressType{IpamPublicAddressType::NOT_SET};
     bool m_addressTypeHasBeenSet = false;
 
-    IpamPublicAddressAwsService m_service;
+    IpamPublicAddressAwsService m_service{IpamPublicAddressAwsService::NOT_SET};
     bool m_serviceHasBeenSet = false;
 
     Aws::String m_serviceResource;
@@ -862,7 +332,7 @@ namespace Model
     Aws::Vector<IpamPublicAddressSecurityGroup> m_securityGroups;
     bool m_securityGroupsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_sampleTime;
+    Aws::Utils::DateTime m_sampleTime{};
     bool m_sampleTimeHasBeenSet = false;
   };
 

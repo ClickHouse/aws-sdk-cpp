@@ -33,72 +33,27 @@ namespace Model
   class ItemResponse
   {
   public:
-    AWS_DYNAMODB_API ItemResponse();
+    AWS_DYNAMODB_API ItemResponse() = default;
     AWS_DYNAMODB_API ItemResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API ItemResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Map of attribute data consisting of the data type and attribute value.</p>
      */
-    inline const Aws::Map<Aws::String, AttributeValue>& GetItem() const{ return m_item; }
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
+    inline const Aws::Map<Aws::String, AttributeValue>& GetItem() const { return m_item; }
     inline bool ItemHasBeenSet() const { return m_itemHasBeenSet; }
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
-    inline void SetItem(const Aws::Map<Aws::String, AttributeValue>& value) { m_itemHasBeenSet = true; m_item = value; }
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
-    inline void SetItem(Aws::Map<Aws::String, AttributeValue>&& value) { m_itemHasBeenSet = true; m_item = std::move(value); }
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
-    inline ItemResponse& WithItem(const Aws::Map<Aws::String, AttributeValue>& value) { SetItem(value); return *this;}
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
-    inline ItemResponse& WithItem(Aws::Map<Aws::String, AttributeValue>&& value) { SetItem(std::move(value)); return *this;}
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
-    inline ItemResponse& AddItem(const Aws::String& key, const AttributeValue& value) { m_itemHasBeenSet = true; m_item.emplace(key, value); return *this; }
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
-    inline ItemResponse& AddItem(Aws::String&& key, const AttributeValue& value) { m_itemHasBeenSet = true; m_item.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
-    inline ItemResponse& AddItem(const Aws::String& key, AttributeValue&& value) { m_itemHasBeenSet = true; m_item.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
-    inline ItemResponse& AddItem(Aws::String&& key, AttributeValue&& value) { m_itemHasBeenSet = true; m_item.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
-    inline ItemResponse& AddItem(const char* key, AttributeValue&& value) { m_itemHasBeenSet = true; m_item.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Map of attribute data consisting of the data type and attribute value.</p>
-     */
-    inline ItemResponse& AddItem(const char* key, const AttributeValue& value) { m_itemHasBeenSet = true; m_item.emplace(key, value); return *this; }
-
+    template<typename ItemT = Aws::Map<Aws::String, AttributeValue>>
+    void SetItem(ItemT&& value) { m_itemHasBeenSet = true; m_item = std::forward<ItemT>(value); }
+    template<typename ItemT = Aws::Map<Aws::String, AttributeValue>>
+    ItemResponse& WithItem(ItemT&& value) { SetItem(std::forward<ItemT>(value)); return *this;}
+    template<typename ItemKeyT = Aws::String, typename ItemValueT = AttributeValue>
+    ItemResponse& AddItem(ItemKeyT&& key, ItemValueT&& value) {
+      m_itemHasBeenSet = true; m_item.emplace(std::forward<ItemKeyT>(key), std::forward<ItemValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::Map<Aws::String, AttributeValue> m_item;

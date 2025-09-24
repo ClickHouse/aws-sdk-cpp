@@ -18,19 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-HighestSeverityThreatDetails::HighestSeverityThreatDetails() : 
-    m_severityHasBeenSet(false),
-    m_threatNameHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false)
-{
-}
-
-HighestSeverityThreatDetails::HighestSeverityThreatDetails(JsonView jsonValue) : 
-    m_severityHasBeenSet(false),
-    m_threatNameHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false)
+HighestSeverityThreatDetails::HighestSeverityThreatDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ HighestSeverityThreatDetails& HighestSeverityThreatDetails::operator =(JsonView 
   if(jsonValue.ValueExists("severity"))
   {
     m_severity = jsonValue.GetString("severity");
-
     m_severityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("threatName"))
   {
     m_threatName = jsonValue.GetString("threatName");
-
     m_threatNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("count"))
   {
     m_count = jsonValue.GetInteger("count");
-
     m_countHasBeenSet = true;
   }
-
   return *this;
 }
 

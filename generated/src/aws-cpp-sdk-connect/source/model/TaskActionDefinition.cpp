@@ -18,19 +18,7 @@ namespace Connect
 namespace Model
 {
 
-TaskActionDefinition::TaskActionDefinition() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_contactFlowIdHasBeenSet(false),
-    m_referencesHasBeenSet(false)
-{
-}
-
-TaskActionDefinition::TaskActionDefinition(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_contactFlowIdHasBeenSet(false),
-    m_referencesHasBeenSet(false)
+TaskActionDefinition::TaskActionDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ TaskActionDefinition& TaskActionDefinition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContactFlowId"))
   {
     m_contactFlowId = jsonValue.GetString("ContactFlowId");
-
     m_contactFlowIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("References"))
   {
     Aws::Map<Aws::String, JsonView> referencesJsonMap = jsonValue.GetObject("References").GetAllObjects();
@@ -67,7 +49,6 @@ TaskActionDefinition& TaskActionDefinition::operator =(JsonView jsonValue)
     }
     m_referencesHasBeenSet = true;
   }
-
   return *this;
 }
 

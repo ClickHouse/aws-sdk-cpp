@@ -32,100 +32,43 @@ namespace Model
   class SuggestedFix
   {
   public:
-    AWS_CODEGURUSECURITY_API SuggestedFix();
+    AWS_CODEGURUSECURITY_API SuggestedFix() = default;
     AWS_CODEGURUSECURITY_API SuggestedFix(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API SuggestedFix& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUSECURITY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The suggested code to add to your file. </p>
-     */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The suggested code to add to your file. </p>
-     */
-    inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
-
-    /**
-     * <p>The suggested code to add to your file. </p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The suggested code to add to your file. </p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The suggested code to add to your file. </p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p>The suggested code to add to your file. </p>
-     */
-    inline SuggestedFix& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The suggested code to add to your file. </p>
-     */
-    inline SuggestedFix& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The suggested code to add to your file. </p>
-     */
-    inline SuggestedFix& WithCode(const char* value) { SetCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the suggested code fix and why it is being suggested. </p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the suggested code fix and why it is being suggested. </p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    SuggestedFix& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A description of the suggested code fix and why it is being suggested. </p>
+     * <p>The suggested code fix. If applicable, includes code patch to replace your
+     * source code. </p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the suggested code fix and why it is being suggested. </p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the suggested code fix and why it is being suggested. </p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the suggested code fix and why it is being suggested. </p>
-     */
-    inline SuggestedFix& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the suggested code fix and why it is being suggested. </p>
-     */
-    inline SuggestedFix& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the suggested code fix and why it is being suggested. </p>
-     */
-    inline SuggestedFix& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    inline const Aws::String& GetCode() const { return m_code; }
+    inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    SuggestedFix& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
   private:
-
-    Aws::String m_code;
-    bool m_codeHasBeenSet = false;
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
+
+    Aws::String m_code;
+    bool m_codeHasBeenSet = false;
   };
 
 } // namespace Model

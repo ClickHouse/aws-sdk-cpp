@@ -31,150 +31,50 @@ namespace Model
   class NetworkInterface
   {
   public:
-    AWS_STORAGEGATEWAY_API NetworkInterface();
+    AWS_STORAGEGATEWAY_API NetworkInterface() = default;
     AWS_STORAGEGATEWAY_API NetworkInterface(Aws::Utils::Json::JsonView jsonValue);
     AWS_STORAGEGATEWAY_API NetworkInterface& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_STORAGEGATEWAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
      */
-    inline const Aws::String& GetIpv4Address() const{ return m_ipv4Address; }
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
-     */
+    inline const Aws::String& GetIpv4Address() const { return m_ipv4Address; }
     inline bool Ipv4AddressHasBeenSet() const { return m_ipv4AddressHasBeenSet; }
+    template<typename Ipv4AddressT = Aws::String>
+    void SetIpv4Address(Ipv4AddressT&& value) { m_ipv4AddressHasBeenSet = true; m_ipv4Address = std::forward<Ipv4AddressT>(value); }
+    template<typename Ipv4AddressT = Aws::String>
+    NetworkInterface& WithIpv4Address(Ipv4AddressT&& value) { SetIpv4Address(std::forward<Ipv4AddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
-     */
-    inline void SetIpv4Address(const Aws::String& value) { m_ipv4AddressHasBeenSet = true; m_ipv4Address = value; }
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
-     */
-    inline void SetIpv4Address(Aws::String&& value) { m_ipv4AddressHasBeenSet = true; m_ipv4Address = std::move(value); }
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
-     */
-    inline void SetIpv4Address(const char* value) { m_ipv4AddressHasBeenSet = true; m_ipv4Address.assign(value); }
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
-     */
-    inline NetworkInterface& WithIpv4Address(const Aws::String& value) { SetIpv4Address(value); return *this;}
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
-     */
-    inline NetworkInterface& WithIpv4Address(Aws::String&& value) { SetIpv4Address(std::move(value)); return *this;}
-
-    /**
-     * <p>The Internet Protocol version 4 (IPv4) address of the interface.</p>
-     */
-    inline NetworkInterface& WithIpv4Address(const char* value) { SetIpv4Address(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Media Access Control (MAC) address of the interface.</p>  <p>This
      * is currently unsupported and will not be returned in output.</p> 
      */
-    inline const Aws::String& GetMacAddress() const{ return m_macAddress; }
-
-    /**
-     * <p>The Media Access Control (MAC) address of the interface.</p>  <p>This
-     * is currently unsupported and will not be returned in output.</p> 
-     */
+    inline const Aws::String& GetMacAddress() const { return m_macAddress; }
     inline bool MacAddressHasBeenSet() const { return m_macAddressHasBeenSet; }
+    template<typename MacAddressT = Aws::String>
+    void SetMacAddress(MacAddressT&& value) { m_macAddressHasBeenSet = true; m_macAddress = std::forward<MacAddressT>(value); }
+    template<typename MacAddressT = Aws::String>
+    NetworkInterface& WithMacAddress(MacAddressT&& value) { SetMacAddress(std::forward<MacAddressT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Media Access Control (MAC) address of the interface.</p>  <p>This
-     * is currently unsupported and will not be returned in output.</p> 
+     * <p>The Internet Protocol version 6 (IPv6) address of the interface.</p> 
+     * <p>This element returns IPv6 addresses for all gateway types except FSx File
+     * Gateway.</p> 
      */
-    inline void SetMacAddress(const Aws::String& value) { m_macAddressHasBeenSet = true; m_macAddress = value; }
-
-    /**
-     * <p>The Media Access Control (MAC) address of the interface.</p>  <p>This
-     * is currently unsupported and will not be returned in output.</p> 
-     */
-    inline void SetMacAddress(Aws::String&& value) { m_macAddressHasBeenSet = true; m_macAddress = std::move(value); }
-
-    /**
-     * <p>The Media Access Control (MAC) address of the interface.</p>  <p>This
-     * is currently unsupported and will not be returned in output.</p> 
-     */
-    inline void SetMacAddress(const char* value) { m_macAddressHasBeenSet = true; m_macAddress.assign(value); }
-
-    /**
-     * <p>The Media Access Control (MAC) address of the interface.</p>  <p>This
-     * is currently unsupported and will not be returned in output.</p> 
-     */
-    inline NetworkInterface& WithMacAddress(const Aws::String& value) { SetMacAddress(value); return *this;}
-
-    /**
-     * <p>The Media Access Control (MAC) address of the interface.</p>  <p>This
-     * is currently unsupported and will not be returned in output.</p> 
-     */
-    inline NetworkInterface& WithMacAddress(Aws::String&& value) { SetMacAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The Media Access Control (MAC) address of the interface.</p>  <p>This
-     * is currently unsupported and will not be returned in output.</p> 
-     */
-    inline NetworkInterface& WithMacAddress(const char* value) { SetMacAddress(value); return *this;}
-
-
-    /**
-     * <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently
-     * not supported</i>.</p>
-     */
-    inline const Aws::String& GetIpv6Address() const{ return m_ipv6Address; }
-
-    /**
-     * <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently
-     * not supported</i>.</p>
-     */
+    inline const Aws::String& GetIpv6Address() const { return m_ipv6Address; }
     inline bool Ipv6AddressHasBeenSet() const { return m_ipv6AddressHasBeenSet; }
-
-    /**
-     * <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently
-     * not supported</i>.</p>
-     */
-    inline void SetIpv6Address(const Aws::String& value) { m_ipv6AddressHasBeenSet = true; m_ipv6Address = value; }
-
-    /**
-     * <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently
-     * not supported</i>.</p>
-     */
-    inline void SetIpv6Address(Aws::String&& value) { m_ipv6AddressHasBeenSet = true; m_ipv6Address = std::move(value); }
-
-    /**
-     * <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently
-     * not supported</i>.</p>
-     */
-    inline void SetIpv6Address(const char* value) { m_ipv6AddressHasBeenSet = true; m_ipv6Address.assign(value); }
-
-    /**
-     * <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently
-     * not supported</i>.</p>
-     */
-    inline NetworkInterface& WithIpv6Address(const Aws::String& value) { SetIpv6Address(value); return *this;}
-
-    /**
-     * <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently
-     * not supported</i>.</p>
-     */
-    inline NetworkInterface& WithIpv6Address(Aws::String&& value) { SetIpv6Address(std::move(value)); return *this;}
-
-    /**
-     * <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently
-     * not supported</i>.</p>
-     */
-    inline NetworkInterface& WithIpv6Address(const char* value) { SetIpv6Address(value); return *this;}
-
+    template<typename Ipv6AddressT = Aws::String>
+    void SetIpv6Address(Ipv6AddressT&& value) { m_ipv6AddressHasBeenSet = true; m_ipv6Address = std::forward<Ipv6AddressT>(value); }
+    template<typename Ipv6AddressT = Aws::String>
+    NetworkInterface& WithIpv6Address(Ipv6AddressT&& value) { SetIpv6Address(std::forward<Ipv6AddressT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ipv4Address;

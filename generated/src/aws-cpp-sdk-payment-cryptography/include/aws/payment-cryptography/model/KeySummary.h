@@ -6,8 +6,9 @@
 #pragma once
 #include <aws/payment-cryptography/PaymentCryptography_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/payment-cryptography/model/KeyAttributes.h>
 #include <aws/payment-cryptography/model/KeyState.h>
+#include <aws/payment-cryptography/model/KeyAttributes.h>
+#include <aws/payment-cryptography/model/MultiRegionKeyType.h>
 #include <utility>
 
 namespace Aws
@@ -34,237 +35,113 @@ namespace Model
   class KeySummary
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHY_API KeySummary();
+    AWS_PAYMENTCRYPTOGRAPHY_API KeySummary() = default;
     AWS_PAYMENTCRYPTOGRAPHY_API KeySummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHY_API KeySummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>Specifies whether the key is enabled. </p>
-     */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies whether the key is enabled. </p>
-     */
-    inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the key is enabled. </p>
-     */
-    inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies whether the key is enabled. </p>
-     */
-    inline KeySummary& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
-
-    /**
-     * <p>Specifies whether the key is exportable. This data is immutable after the key
-     * is created.</p>
-     */
-    inline bool GetExportable() const{ return m_exportable; }
-
-    /**
-     * <p>Specifies whether the key is exportable. This data is immutable after the key
-     * is created.</p>
-     */
-    inline bool ExportableHasBeenSet() const { return m_exportableHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the key is exportable. This data is immutable after the key
-     * is created.</p>
-     */
-    inline void SetExportable(bool value) { m_exportableHasBeenSet = true; m_exportable = value; }
-
-    /**
-     * <p>Specifies whether the key is exportable. This data is immutable after the key
-     * is created.</p>
-     */
-    inline KeySummary& WithExportable(bool value) { SetExportable(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the key.</p>
      */
-    inline const Aws::String& GetKeyArn() const{ return m_keyArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the key.</p>
-     */
+    inline const Aws::String& GetKeyArn() const { return m_keyArn; }
     inline bool KeyArnHasBeenSet() const { return m_keyArnHasBeenSet; }
+    template<typename KeyArnT = Aws::String>
+    void SetKeyArn(KeyArnT&& value) { m_keyArnHasBeenSet = true; m_keyArn = std::forward<KeyArnT>(value); }
+    template<typename KeyArnT = Aws::String>
+    KeySummary& WithKeyArn(KeyArnT&& value) { SetKeyArn(std::forward<KeyArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the key.</p>
-     */
-    inline void SetKeyArn(const Aws::String& value) { m_keyArnHasBeenSet = true; m_keyArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the key.</p>
-     */
-    inline void SetKeyArn(Aws::String&& value) { m_keyArnHasBeenSet = true; m_keyArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the key.</p>
-     */
-    inline void SetKeyArn(const char* value) { m_keyArnHasBeenSet = true; m_keyArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the key.</p>
-     */
-    inline KeySummary& WithKeyArn(const Aws::String& value) { SetKeyArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the key.</p>
-     */
-    inline KeySummary& WithKeyArn(Aws::String&& value) { SetKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the key.</p>
-     */
-    inline KeySummary& WithKeyArn(const char* value) { SetKeyArn(value); return *this;}
-
-
-    /**
-     * <p>The role of the key, the algorithm it supports, and the cryptographic
-     * operations allowed with the key. This data is immutable after the key is
-     * created.</p>
-     */
-    inline const KeyAttributes& GetKeyAttributes() const{ return m_keyAttributes; }
-
-    /**
-     * <p>The role of the key, the algorithm it supports, and the cryptographic
-     * operations allowed with the key. This data is immutable after the key is
-     * created.</p>
-     */
-    inline bool KeyAttributesHasBeenSet() const { return m_keyAttributesHasBeenSet; }
-
-    /**
-     * <p>The role of the key, the algorithm it supports, and the cryptographic
-     * operations allowed with the key. This data is immutable after the key is
-     * created.</p>
-     */
-    inline void SetKeyAttributes(const KeyAttributes& value) { m_keyAttributesHasBeenSet = true; m_keyAttributes = value; }
-
-    /**
-     * <p>The role of the key, the algorithm it supports, and the cryptographic
-     * operations allowed with the key. This data is immutable after the key is
-     * created.</p>
-     */
-    inline void SetKeyAttributes(KeyAttributes&& value) { m_keyAttributesHasBeenSet = true; m_keyAttributes = std::move(value); }
-
-    /**
-     * <p>The role of the key, the algorithm it supports, and the cryptographic
-     * operations allowed with the key. This data is immutable after the key is
-     * created.</p>
-     */
-    inline KeySummary& WithKeyAttributes(const KeyAttributes& value) { SetKeyAttributes(value); return *this;}
-
-    /**
-     * <p>The role of the key, the algorithm it supports, and the cryptographic
-     * operations allowed with the key. This data is immutable after the key is
-     * created.</p>
-     */
-    inline KeySummary& WithKeyAttributes(KeyAttributes&& value) { SetKeyAttributes(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The key check value (KCV) is used to check if all parties holding a given key
-     * have the same key or to detect that a key has changed.</p>
-     */
-    inline const Aws::String& GetKeyCheckValue() const{ return m_keyCheckValue; }
-
-    /**
-     * <p>The key check value (KCV) is used to check if all parties holding a given key
-     * have the same key or to detect that a key has changed.</p>
-     */
-    inline bool KeyCheckValueHasBeenSet() const { return m_keyCheckValueHasBeenSet; }
-
-    /**
-     * <p>The key check value (KCV) is used to check if all parties holding a given key
-     * have the same key or to detect that a key has changed.</p>
-     */
-    inline void SetKeyCheckValue(const Aws::String& value) { m_keyCheckValueHasBeenSet = true; m_keyCheckValue = value; }
-
-    /**
-     * <p>The key check value (KCV) is used to check if all parties holding a given key
-     * have the same key or to detect that a key has changed.</p>
-     */
-    inline void SetKeyCheckValue(Aws::String&& value) { m_keyCheckValueHasBeenSet = true; m_keyCheckValue = std::move(value); }
-
-    /**
-     * <p>The key check value (KCV) is used to check if all parties holding a given key
-     * have the same key or to detect that a key has changed.</p>
-     */
-    inline void SetKeyCheckValue(const char* value) { m_keyCheckValueHasBeenSet = true; m_keyCheckValue.assign(value); }
-
-    /**
-     * <p>The key check value (KCV) is used to check if all parties holding a given key
-     * have the same key or to detect that a key has changed.</p>
-     */
-    inline KeySummary& WithKeyCheckValue(const Aws::String& value) { SetKeyCheckValue(value); return *this;}
-
-    /**
-     * <p>The key check value (KCV) is used to check if all parties holding a given key
-     * have the same key or to detect that a key has changed.</p>
-     */
-    inline KeySummary& WithKeyCheckValue(Aws::String&& value) { SetKeyCheckValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The key check value (KCV) is used to check if all parties holding a given key
-     * have the same key or to detect that a key has changed.</p>
-     */
-    inline KeySummary& WithKeyCheckValue(const char* value) { SetKeyCheckValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of an Amazon Web Services Payment Cryptography that is being
      * created or deleted.</p>
      */
-    inline const KeyState& GetKeyState() const{ return m_keyState; }
-
-    /**
-     * <p>The state of an Amazon Web Services Payment Cryptography that is being
-     * created or deleted.</p>
-     */
+    inline KeyState GetKeyState() const { return m_keyState; }
     inline bool KeyStateHasBeenSet() const { return m_keyStateHasBeenSet; }
+    inline void SetKeyState(KeyState value) { m_keyStateHasBeenSet = true; m_keyState = value; }
+    inline KeySummary& WithKeyState(KeyState value) { SetKeyState(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The state of an Amazon Web Services Payment Cryptography that is being
-     * created or deleted.</p>
+     * <p>The role of the key, the algorithm it supports, and the cryptographic
+     * operations allowed with the key. This data is immutable after the key is
+     * created.</p>
      */
-    inline void SetKeyState(const KeyState& value) { m_keyStateHasBeenSet = true; m_keyState = value; }
+    inline const KeyAttributes& GetKeyAttributes() const { return m_keyAttributes; }
+    inline bool KeyAttributesHasBeenSet() const { return m_keyAttributesHasBeenSet; }
+    template<typename KeyAttributesT = KeyAttributes>
+    void SetKeyAttributes(KeyAttributesT&& value) { m_keyAttributesHasBeenSet = true; m_keyAttributes = std::forward<KeyAttributesT>(value); }
+    template<typename KeyAttributesT = KeyAttributes>
+    KeySummary& WithKeyAttributes(KeyAttributesT&& value) { SetKeyAttributes(std::forward<KeyAttributesT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The state of an Amazon Web Services Payment Cryptography that is being
-     * created or deleted.</p>
+     * <p>The key check value (KCV) is used to check if all parties holding a given key
+     * have the same key or to detect that a key has changed.</p>
      */
-    inline void SetKeyState(KeyState&& value) { m_keyStateHasBeenSet = true; m_keyState = std::move(value); }
+    inline const Aws::String& GetKeyCheckValue() const { return m_keyCheckValue; }
+    inline bool KeyCheckValueHasBeenSet() const { return m_keyCheckValueHasBeenSet; }
+    template<typename KeyCheckValueT = Aws::String>
+    void SetKeyCheckValue(KeyCheckValueT&& value) { m_keyCheckValueHasBeenSet = true; m_keyCheckValue = std::forward<KeyCheckValueT>(value); }
+    template<typename KeyCheckValueT = Aws::String>
+    KeySummary& WithKeyCheckValue(KeyCheckValueT&& value) { SetKeyCheckValue(std::forward<KeyCheckValueT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The state of an Amazon Web Services Payment Cryptography that is being
-     * created or deleted.</p>
+     * <p>Specifies whether the key is exportable. This data is immutable after the key
+     * is created.</p>
      */
-    inline KeySummary& WithKeyState(const KeyState& value) { SetKeyState(value); return *this;}
+    inline bool GetExportable() const { return m_exportable; }
+    inline bool ExportableHasBeenSet() const { return m_exportableHasBeenSet; }
+    inline void SetExportable(bool value) { m_exportableHasBeenSet = true; m_exportable = value; }
+    inline KeySummary& WithExportable(bool value) { SetExportable(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The state of an Amazon Web Services Payment Cryptography that is being
-     * created or deleted.</p>
+     * <p>Specifies whether the key is enabled. </p>
      */
-    inline KeySummary& WithKeyState(KeyState&& value) { SetKeyState(std::move(value)); return *this;}
+    inline bool GetEnabled() const { return m_enabled; }
+    inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
+    inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
+    inline KeySummary& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>Indicates whether this key is a multi-region key and its role in the
+     * multi-region key hierarchy.</p> <p>Multi-region keys allow the same key material
+     * to be used across multiple Amazon Web Services Regions. This field specifies
+     * whether the key is a primary key (which can be replicated to other regions) or a
+     * replica key (which is a copy of a primary key in another region).</p>
+     */
+    inline MultiRegionKeyType GetMultiRegionKeyType() const { return m_multiRegionKeyType; }
+    inline bool MultiRegionKeyTypeHasBeenSet() const { return m_multiRegionKeyTypeHasBeenSet; }
+    inline void SetMultiRegionKeyType(MultiRegionKeyType value) { m_multiRegionKeyTypeHasBeenSet = true; m_multiRegionKeyType = value; }
+    inline KeySummary& WithMultiRegionKeyType(MultiRegionKeyType value) { SetMultiRegionKeyType(value); return *this;}
+    ///@}
+
+    ///@{
+    
+    inline const Aws::String& GetPrimaryRegion() const { return m_primaryRegion; }
+    inline bool PrimaryRegionHasBeenSet() const { return m_primaryRegionHasBeenSet; }
+    template<typename PrimaryRegionT = Aws::String>
+    void SetPrimaryRegion(PrimaryRegionT&& value) { m_primaryRegionHasBeenSet = true; m_primaryRegion = std::forward<PrimaryRegionT>(value); }
+    template<typename PrimaryRegionT = Aws::String>
+    KeySummary& WithPrimaryRegion(PrimaryRegionT&& value) { SetPrimaryRegion(std::forward<PrimaryRegionT>(value)); return *this;}
+    ///@}
   private:
-
-    bool m_enabled;
-    bool m_enabledHasBeenSet = false;
-
-    bool m_exportable;
-    bool m_exportableHasBeenSet = false;
 
     Aws::String m_keyArn;
     bool m_keyArnHasBeenSet = false;
+
+    KeyState m_keyState{KeyState::NOT_SET};
+    bool m_keyStateHasBeenSet = false;
 
     KeyAttributes m_keyAttributes;
     bool m_keyAttributesHasBeenSet = false;
@@ -272,8 +149,17 @@ namespace Model
     Aws::String m_keyCheckValue;
     bool m_keyCheckValueHasBeenSet = false;
 
-    KeyState m_keyState;
-    bool m_keyStateHasBeenSet = false;
+    bool m_exportable{false};
+    bool m_exportableHasBeenSet = false;
+
+    bool m_enabled{false};
+    bool m_enabledHasBeenSet = false;
+
+    MultiRegionKeyType m_multiRegionKeyType{MultiRegionKeyType::NOT_SET};
+    bool m_multiRegionKeyTypeHasBeenSet = false;
+
+    Aws::String m_primaryRegion;
+    bool m_primaryRegionHasBeenSet = false;
   };
 
 } // namespace Model

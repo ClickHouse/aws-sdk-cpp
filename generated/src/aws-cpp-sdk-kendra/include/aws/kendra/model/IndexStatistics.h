@@ -33,73 +33,35 @@ namespace Model
   class IndexStatistics
   {
   public:
-    AWS_KENDRA_API IndexStatistics();
+    AWS_KENDRA_API IndexStatistics() = default;
     AWS_KENDRA_API IndexStatistics(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API IndexStatistics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of question and answer topics in the index.</p>
      */
-    inline const FaqStatistics& GetFaqStatistics() const{ return m_faqStatistics; }
-
-    /**
-     * <p>The number of question and answer topics in the index.</p>
-     */
+    inline const FaqStatistics& GetFaqStatistics() const { return m_faqStatistics; }
     inline bool FaqStatisticsHasBeenSet() const { return m_faqStatisticsHasBeenSet; }
+    template<typename FaqStatisticsT = FaqStatistics>
+    void SetFaqStatistics(FaqStatisticsT&& value) { m_faqStatisticsHasBeenSet = true; m_faqStatistics = std::forward<FaqStatisticsT>(value); }
+    template<typename FaqStatisticsT = FaqStatistics>
+    IndexStatistics& WithFaqStatistics(FaqStatisticsT&& value) { SetFaqStatistics(std::forward<FaqStatisticsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The number of question and answer topics in the index.</p>
-     */
-    inline void SetFaqStatistics(const FaqStatistics& value) { m_faqStatisticsHasBeenSet = true; m_faqStatistics = value; }
-
-    /**
-     * <p>The number of question and answer topics in the index.</p>
-     */
-    inline void SetFaqStatistics(FaqStatistics&& value) { m_faqStatisticsHasBeenSet = true; m_faqStatistics = std::move(value); }
-
-    /**
-     * <p>The number of question and answer topics in the index.</p>
-     */
-    inline IndexStatistics& WithFaqStatistics(const FaqStatistics& value) { SetFaqStatistics(value); return *this;}
-
-    /**
-     * <p>The number of question and answer topics in the index.</p>
-     */
-    inline IndexStatistics& WithFaqStatistics(FaqStatistics&& value) { SetFaqStatistics(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of text documents indexed.</p>
      */
-    inline const TextDocumentStatistics& GetTextDocumentStatistics() const{ return m_textDocumentStatistics; }
-
-    /**
-     * <p>The number of text documents indexed.</p>
-     */
+    inline const TextDocumentStatistics& GetTextDocumentStatistics() const { return m_textDocumentStatistics; }
     inline bool TextDocumentStatisticsHasBeenSet() const { return m_textDocumentStatisticsHasBeenSet; }
-
-    /**
-     * <p>The number of text documents indexed.</p>
-     */
-    inline void SetTextDocumentStatistics(const TextDocumentStatistics& value) { m_textDocumentStatisticsHasBeenSet = true; m_textDocumentStatistics = value; }
-
-    /**
-     * <p>The number of text documents indexed.</p>
-     */
-    inline void SetTextDocumentStatistics(TextDocumentStatistics&& value) { m_textDocumentStatisticsHasBeenSet = true; m_textDocumentStatistics = std::move(value); }
-
-    /**
-     * <p>The number of text documents indexed.</p>
-     */
-    inline IndexStatistics& WithTextDocumentStatistics(const TextDocumentStatistics& value) { SetTextDocumentStatistics(value); return *this;}
-
-    /**
-     * <p>The number of text documents indexed.</p>
-     */
-    inline IndexStatistics& WithTextDocumentStatistics(TextDocumentStatistics&& value) { SetTextDocumentStatistics(std::move(value)); return *this;}
-
+    template<typename TextDocumentStatisticsT = TextDocumentStatistics>
+    void SetTextDocumentStatistics(TextDocumentStatisticsT&& value) { m_textDocumentStatisticsHasBeenSet = true; m_textDocumentStatistics = std::forward<TextDocumentStatisticsT>(value); }
+    template<typename TextDocumentStatisticsT = TextDocumentStatistics>
+    IndexStatistics& WithTextDocumentStatistics(TextDocumentStatisticsT&& value) { SetTextDocumentStatistics(std::forward<TextDocumentStatisticsT>(value)); return *this;}
+    ///@}
   private:
 
     FaqStatistics m_faqStatistics;

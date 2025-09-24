@@ -44,12 +44,13 @@ namespace Model
   class RulesSourceList
   {
   public:
-    AWS_NETWORKFIREWALL_API RulesSourceList();
+    AWS_NETWORKFIREWALL_API RulesSourceList() = default;
     AWS_NETWORKFIREWALL_API RulesSourceList(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API RulesSourceList& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NETWORKFIREWALL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The domains that you want to inspect for in your traffic flows. Valid domain
      * specifications are the following:</p> <ul> <li> <p>Explicit names. For example,
@@ -60,198 +61,41 @@ namespace Model
      * all subdomains of <code>example.com</code>, such as <code>abc.example.com</code>
      * and <code>www.example.com</code>. </p> </li> </ul>
      */
-    inline const Aws::Vector<Aws::String>& GetTargets() const{ return m_targets; }
-
-    /**
-     * <p>The domains that you want to inspect for in your traffic flows. Valid domain
-     * specifications are the following:</p> <ul> <li> <p>Explicit names. For example,
-     * <code>abc.example.com</code> matches only the domain
-     * <code>abc.example.com</code>.</p> </li> <li> <p>Names that use a domain
-     * wildcard, which you indicate with an initial '<code>.</code>'. For
-     * example,<code>.example.com</code> matches <code>example.com</code> and matches
-     * all subdomains of <code>example.com</code>, such as <code>abc.example.com</code>
-     * and <code>www.example.com</code>. </p> </li> </ul>
-     */
+    inline const Aws::Vector<Aws::String>& GetTargets() const { return m_targets; }
     inline bool TargetsHasBeenSet() const { return m_targetsHasBeenSet; }
+    template<typename TargetsT = Aws::Vector<Aws::String>>
+    void SetTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets = std::forward<TargetsT>(value); }
+    template<typename TargetsT = Aws::Vector<Aws::String>>
+    RulesSourceList& WithTargets(TargetsT&& value) { SetTargets(std::forward<TargetsT>(value)); return *this;}
+    template<typename TargetsT = Aws::String>
+    RulesSourceList& AddTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets.emplace_back(std::forward<TargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The domains that you want to inspect for in your traffic flows. Valid domain
-     * specifications are the following:</p> <ul> <li> <p>Explicit names. For example,
-     * <code>abc.example.com</code> matches only the domain
-     * <code>abc.example.com</code>.</p> </li> <li> <p>Names that use a domain
-     * wildcard, which you indicate with an initial '<code>.</code>'. For
-     * example,<code>.example.com</code> matches <code>example.com</code> and matches
-     * all subdomains of <code>example.com</code>, such as <code>abc.example.com</code>
-     * and <code>www.example.com</code>. </p> </li> </ul>
-     */
-    inline void SetTargets(const Aws::Vector<Aws::String>& value) { m_targetsHasBeenSet = true; m_targets = value; }
-
-    /**
-     * <p>The domains that you want to inspect for in your traffic flows. Valid domain
-     * specifications are the following:</p> <ul> <li> <p>Explicit names. For example,
-     * <code>abc.example.com</code> matches only the domain
-     * <code>abc.example.com</code>.</p> </li> <li> <p>Names that use a domain
-     * wildcard, which you indicate with an initial '<code>.</code>'. For
-     * example,<code>.example.com</code> matches <code>example.com</code> and matches
-     * all subdomains of <code>example.com</code>, such as <code>abc.example.com</code>
-     * and <code>www.example.com</code>. </p> </li> </ul>
-     */
-    inline void SetTargets(Aws::Vector<Aws::String>&& value) { m_targetsHasBeenSet = true; m_targets = std::move(value); }
-
-    /**
-     * <p>The domains that you want to inspect for in your traffic flows. Valid domain
-     * specifications are the following:</p> <ul> <li> <p>Explicit names. For example,
-     * <code>abc.example.com</code> matches only the domain
-     * <code>abc.example.com</code>.</p> </li> <li> <p>Names that use a domain
-     * wildcard, which you indicate with an initial '<code>.</code>'. For
-     * example,<code>.example.com</code> matches <code>example.com</code> and matches
-     * all subdomains of <code>example.com</code>, such as <code>abc.example.com</code>
-     * and <code>www.example.com</code>. </p> </li> </ul>
-     */
-    inline RulesSourceList& WithTargets(const Aws::Vector<Aws::String>& value) { SetTargets(value); return *this;}
-
-    /**
-     * <p>The domains that you want to inspect for in your traffic flows. Valid domain
-     * specifications are the following:</p> <ul> <li> <p>Explicit names. For example,
-     * <code>abc.example.com</code> matches only the domain
-     * <code>abc.example.com</code>.</p> </li> <li> <p>Names that use a domain
-     * wildcard, which you indicate with an initial '<code>.</code>'. For
-     * example,<code>.example.com</code> matches <code>example.com</code> and matches
-     * all subdomains of <code>example.com</code>, such as <code>abc.example.com</code>
-     * and <code>www.example.com</code>. </p> </li> </ul>
-     */
-    inline RulesSourceList& WithTargets(Aws::Vector<Aws::String>&& value) { SetTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>The domains that you want to inspect for in your traffic flows. Valid domain
-     * specifications are the following:</p> <ul> <li> <p>Explicit names. For example,
-     * <code>abc.example.com</code> matches only the domain
-     * <code>abc.example.com</code>.</p> </li> <li> <p>Names that use a domain
-     * wildcard, which you indicate with an initial '<code>.</code>'. For
-     * example,<code>.example.com</code> matches <code>example.com</code> and matches
-     * all subdomains of <code>example.com</code>, such as <code>abc.example.com</code>
-     * and <code>www.example.com</code>. </p> </li> </ul>
-     */
-    inline RulesSourceList& AddTargets(const Aws::String& value) { m_targetsHasBeenSet = true; m_targets.push_back(value); return *this; }
-
-    /**
-     * <p>The domains that you want to inspect for in your traffic flows. Valid domain
-     * specifications are the following:</p> <ul> <li> <p>Explicit names. For example,
-     * <code>abc.example.com</code> matches only the domain
-     * <code>abc.example.com</code>.</p> </li> <li> <p>Names that use a domain
-     * wildcard, which you indicate with an initial '<code>.</code>'. For
-     * example,<code>.example.com</code> matches <code>example.com</code> and matches
-     * all subdomains of <code>example.com</code>, such as <code>abc.example.com</code>
-     * and <code>www.example.com</code>. </p> </li> </ul>
-     */
-    inline RulesSourceList& AddTargets(Aws::String&& value) { m_targetsHasBeenSet = true; m_targets.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The domains that you want to inspect for in your traffic flows. Valid domain
-     * specifications are the following:</p> <ul> <li> <p>Explicit names. For example,
-     * <code>abc.example.com</code> matches only the domain
-     * <code>abc.example.com</code>.</p> </li> <li> <p>Names that use a domain
-     * wildcard, which you indicate with an initial '<code>.</code>'. For
-     * example,<code>.example.com</code> matches <code>example.com</code> and matches
-     * all subdomains of <code>example.com</code>, such as <code>abc.example.com</code>
-     * and <code>www.example.com</code>. </p> </li> </ul>
-     */
-    inline RulesSourceList& AddTargets(const char* value) { m_targetsHasBeenSet = true; m_targets.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The protocols you want to inspect. Specify <code>TLS_SNI</code> for
      * <code>HTTPS</code>. Specify <code>HTTP_HOST</code> for <code>HTTP</code>. You
      * can specify either or both. </p>
      */
-    inline const Aws::Vector<TargetType>& GetTargetTypes() const{ return m_targetTypes; }
-
-    /**
-     * <p>The protocols you want to inspect. Specify <code>TLS_SNI</code> for
-     * <code>HTTPS</code>. Specify <code>HTTP_HOST</code> for <code>HTTP</code>. You
-     * can specify either or both. </p>
-     */
+    inline const Aws::Vector<TargetType>& GetTargetTypes() const { return m_targetTypes; }
     inline bool TargetTypesHasBeenSet() const { return m_targetTypesHasBeenSet; }
+    template<typename TargetTypesT = Aws::Vector<TargetType>>
+    void SetTargetTypes(TargetTypesT&& value) { m_targetTypesHasBeenSet = true; m_targetTypes = std::forward<TargetTypesT>(value); }
+    template<typename TargetTypesT = Aws::Vector<TargetType>>
+    RulesSourceList& WithTargetTypes(TargetTypesT&& value) { SetTargetTypes(std::forward<TargetTypesT>(value)); return *this;}
+    inline RulesSourceList& AddTargetTypes(TargetType value) { m_targetTypesHasBeenSet = true; m_targetTypes.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The protocols you want to inspect. Specify <code>TLS_SNI</code> for
-     * <code>HTTPS</code>. Specify <code>HTTP_HOST</code> for <code>HTTP</code>. You
-     * can specify either or both. </p>
-     */
-    inline void SetTargetTypes(const Aws::Vector<TargetType>& value) { m_targetTypesHasBeenSet = true; m_targetTypes = value; }
-
-    /**
-     * <p>The protocols you want to inspect. Specify <code>TLS_SNI</code> for
-     * <code>HTTPS</code>. Specify <code>HTTP_HOST</code> for <code>HTTP</code>. You
-     * can specify either or both. </p>
-     */
-    inline void SetTargetTypes(Aws::Vector<TargetType>&& value) { m_targetTypesHasBeenSet = true; m_targetTypes = std::move(value); }
-
-    /**
-     * <p>The protocols you want to inspect. Specify <code>TLS_SNI</code> for
-     * <code>HTTPS</code>. Specify <code>HTTP_HOST</code> for <code>HTTP</code>. You
-     * can specify either or both. </p>
-     */
-    inline RulesSourceList& WithTargetTypes(const Aws::Vector<TargetType>& value) { SetTargetTypes(value); return *this;}
-
-    /**
-     * <p>The protocols you want to inspect. Specify <code>TLS_SNI</code> for
-     * <code>HTTPS</code>. Specify <code>HTTP_HOST</code> for <code>HTTP</code>. You
-     * can specify either or both. </p>
-     */
-    inline RulesSourceList& WithTargetTypes(Aws::Vector<TargetType>&& value) { SetTargetTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The protocols you want to inspect. Specify <code>TLS_SNI</code> for
-     * <code>HTTPS</code>. Specify <code>HTTP_HOST</code> for <code>HTTP</code>. You
-     * can specify either or both. </p>
-     */
-    inline RulesSourceList& AddTargetTypes(const TargetType& value) { m_targetTypesHasBeenSet = true; m_targetTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The protocols you want to inspect. Specify <code>TLS_SNI</code> for
-     * <code>HTTPS</code>. Specify <code>HTTP_HOST</code> for <code>HTTP</code>. You
-     * can specify either or both. </p>
-     */
-    inline RulesSourceList& AddTargetTypes(TargetType&& value) { m_targetTypesHasBeenSet = true; m_targetTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Whether you want to allow or deny access to the domains in your target
      * list.</p>
      */
-    inline const GeneratedRulesType& GetGeneratedRulesType() const{ return m_generatedRulesType; }
-
-    /**
-     * <p>Whether you want to allow or deny access to the domains in your target
-     * list.</p>
-     */
+    inline GeneratedRulesType GetGeneratedRulesType() const { return m_generatedRulesType; }
     inline bool GeneratedRulesTypeHasBeenSet() const { return m_generatedRulesTypeHasBeenSet; }
-
-    /**
-     * <p>Whether you want to allow or deny access to the domains in your target
-     * list.</p>
-     */
-    inline void SetGeneratedRulesType(const GeneratedRulesType& value) { m_generatedRulesTypeHasBeenSet = true; m_generatedRulesType = value; }
-
-    /**
-     * <p>Whether you want to allow or deny access to the domains in your target
-     * list.</p>
-     */
-    inline void SetGeneratedRulesType(GeneratedRulesType&& value) { m_generatedRulesTypeHasBeenSet = true; m_generatedRulesType = std::move(value); }
-
-    /**
-     * <p>Whether you want to allow or deny access to the domains in your target
-     * list.</p>
-     */
-    inline RulesSourceList& WithGeneratedRulesType(const GeneratedRulesType& value) { SetGeneratedRulesType(value); return *this;}
-
-    /**
-     * <p>Whether you want to allow or deny access to the domains in your target
-     * list.</p>
-     */
-    inline RulesSourceList& WithGeneratedRulesType(GeneratedRulesType&& value) { SetGeneratedRulesType(std::move(value)); return *this;}
-
+    inline void SetGeneratedRulesType(GeneratedRulesType value) { m_generatedRulesTypeHasBeenSet = true; m_generatedRulesType = value; }
+    inline RulesSourceList& WithGeneratedRulesType(GeneratedRulesType value) { SetGeneratedRulesType(value); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_targets;
@@ -260,7 +104,7 @@ namespace Model
     Aws::Vector<TargetType> m_targetTypes;
     bool m_targetTypesHasBeenSet = false;
 
-    GeneratedRulesType m_generatedRulesType;
+    GeneratedRulesType m_generatedRulesType{GeneratedRulesType::NOT_SET};
     bool m_generatedRulesTypeHasBeenSet = false;
   };
 

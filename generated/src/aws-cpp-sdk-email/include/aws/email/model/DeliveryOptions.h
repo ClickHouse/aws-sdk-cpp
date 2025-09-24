@@ -32,7 +32,7 @@ namespace Model
   class DeliveryOptions
   {
   public:
-    AWS_SES_API DeliveryOptions();
+    AWS_SES_API DeliveryOptions() = default;
     AWS_SES_API DeliveryOptions(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SES_API DeliveryOptions& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,6 +40,7 @@ namespace Model
     AWS_SES_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Specifies whether messages that use the configuration set are required to use
      * Transport Layer Security (TLS). If the value is <code>Require</code>, messages
@@ -47,56 +48,14 @@ namespace Model
      * <code>Optional</code>, messages can be delivered in plain text if a TLS
      * connection can't be established.</p>
      */
-    inline const TlsPolicy& GetTlsPolicy() const{ return m_tlsPolicy; }
-
-    /**
-     * <p>Specifies whether messages that use the configuration set are required to use
-     * Transport Layer Security (TLS). If the value is <code>Require</code>, messages
-     * are only delivered if a TLS connection can be established. If the value is
-     * <code>Optional</code>, messages can be delivered in plain text if a TLS
-     * connection can't be established.</p>
-     */
+    inline TlsPolicy GetTlsPolicy() const { return m_tlsPolicy; }
     inline bool TlsPolicyHasBeenSet() const { return m_tlsPolicyHasBeenSet; }
-
-    /**
-     * <p>Specifies whether messages that use the configuration set are required to use
-     * Transport Layer Security (TLS). If the value is <code>Require</code>, messages
-     * are only delivered if a TLS connection can be established. If the value is
-     * <code>Optional</code>, messages can be delivered in plain text if a TLS
-     * connection can't be established.</p>
-     */
-    inline void SetTlsPolicy(const TlsPolicy& value) { m_tlsPolicyHasBeenSet = true; m_tlsPolicy = value; }
-
-    /**
-     * <p>Specifies whether messages that use the configuration set are required to use
-     * Transport Layer Security (TLS). If the value is <code>Require</code>, messages
-     * are only delivered if a TLS connection can be established. If the value is
-     * <code>Optional</code>, messages can be delivered in plain text if a TLS
-     * connection can't be established.</p>
-     */
-    inline void SetTlsPolicy(TlsPolicy&& value) { m_tlsPolicyHasBeenSet = true; m_tlsPolicy = std::move(value); }
-
-    /**
-     * <p>Specifies whether messages that use the configuration set are required to use
-     * Transport Layer Security (TLS). If the value is <code>Require</code>, messages
-     * are only delivered if a TLS connection can be established. If the value is
-     * <code>Optional</code>, messages can be delivered in plain text if a TLS
-     * connection can't be established.</p>
-     */
-    inline DeliveryOptions& WithTlsPolicy(const TlsPolicy& value) { SetTlsPolicy(value); return *this;}
-
-    /**
-     * <p>Specifies whether messages that use the configuration set are required to use
-     * Transport Layer Security (TLS). If the value is <code>Require</code>, messages
-     * are only delivered if a TLS connection can be established. If the value is
-     * <code>Optional</code>, messages can be delivered in plain text if a TLS
-     * connection can't be established.</p>
-     */
-    inline DeliveryOptions& WithTlsPolicy(TlsPolicy&& value) { SetTlsPolicy(std::move(value)); return *this;}
-
+    inline void SetTlsPolicy(TlsPolicy value) { m_tlsPolicyHasBeenSet = true; m_tlsPolicy = value; }
+    inline DeliveryOptions& WithTlsPolicy(TlsPolicy value) { SetTlsPolicy(value); return *this;}
+    ///@}
   private:
 
-    TlsPolicy m_tlsPolicy;
+    TlsPolicy m_tlsPolicy{TlsPolicy::NOT_SET};
     bool m_tlsPolicyHasBeenSet = false;
   };
 

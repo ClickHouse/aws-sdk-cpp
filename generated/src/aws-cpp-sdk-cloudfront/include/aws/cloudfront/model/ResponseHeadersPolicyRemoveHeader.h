@@ -32,53 +32,24 @@ namespace Model
   class ResponseHeadersPolicyRemoveHeader
   {
   public:
-    AWS_CLOUDFRONT_API ResponseHeadersPolicyRemoveHeader();
+    AWS_CLOUDFRONT_API ResponseHeadersPolicyRemoveHeader() = default;
     AWS_CLOUDFRONT_API ResponseHeadersPolicyRemoveHeader(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API ResponseHeadersPolicyRemoveHeader& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The HTTP header name.</p>
      */
-    inline const Aws::String& GetHeader() const{ return m_header; }
-
-    /**
-     * <p>The HTTP header name.</p>
-     */
+    inline const Aws::String& GetHeader() const { return m_header; }
     inline bool HeaderHasBeenSet() const { return m_headerHasBeenSet; }
-
-    /**
-     * <p>The HTTP header name.</p>
-     */
-    inline void SetHeader(const Aws::String& value) { m_headerHasBeenSet = true; m_header = value; }
-
-    /**
-     * <p>The HTTP header name.</p>
-     */
-    inline void SetHeader(Aws::String&& value) { m_headerHasBeenSet = true; m_header = std::move(value); }
-
-    /**
-     * <p>The HTTP header name.</p>
-     */
-    inline void SetHeader(const char* value) { m_headerHasBeenSet = true; m_header.assign(value); }
-
-    /**
-     * <p>The HTTP header name.</p>
-     */
-    inline ResponseHeadersPolicyRemoveHeader& WithHeader(const Aws::String& value) { SetHeader(value); return *this;}
-
-    /**
-     * <p>The HTTP header name.</p>
-     */
-    inline ResponseHeadersPolicyRemoveHeader& WithHeader(Aws::String&& value) { SetHeader(std::move(value)); return *this;}
-
-    /**
-     * <p>The HTTP header name.</p>
-     */
-    inline ResponseHeadersPolicyRemoveHeader& WithHeader(const char* value) { SetHeader(value); return *this;}
-
+    template<typename HeaderT = Aws::String>
+    void SetHeader(HeaderT&& value) { m_headerHasBeenSet = true; m_header = std::forward<HeaderT>(value); }
+    template<typename HeaderT = Aws::String>
+    ResponseHeadersPolicyRemoveHeader& WithHeader(HeaderT&& value) { SetHeader(std::forward<HeaderT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_header;

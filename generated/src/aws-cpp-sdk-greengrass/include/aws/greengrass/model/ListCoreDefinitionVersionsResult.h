@@ -29,118 +29,54 @@ namespace Model
   class ListCoreDefinitionVersionsResult
   {
   public:
-    AWS_GREENGRASS_API ListCoreDefinitionVersionsResult();
+    AWS_GREENGRASS_API ListCoreDefinitionVersionsResult() = default;
     AWS_GREENGRASS_API ListCoreDefinitionVersionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GREENGRASS_API ListCoreDefinitionVersionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * The token for the next set of results, or ''null'' if there are no additional
      * results.
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListCoreDefinitionVersionsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline ListCoreDefinitionVersionsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline ListCoreDefinitionVersionsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * The token for the next set of results, or ''null'' if there are no additional
-     * results.
-     */
-    inline ListCoreDefinitionVersionsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * Information about a version.
      */
-    inline const Aws::Vector<VersionInformation>& GetVersions() const{ return m_versions; }
+    inline const Aws::Vector<VersionInformation>& GetVersions() const { return m_versions; }
+    template<typename VersionsT = Aws::Vector<VersionInformation>>
+    void SetVersions(VersionsT&& value) { m_versionsHasBeenSet = true; m_versions = std::forward<VersionsT>(value); }
+    template<typename VersionsT = Aws::Vector<VersionInformation>>
+    ListCoreDefinitionVersionsResult& WithVersions(VersionsT&& value) { SetVersions(std::forward<VersionsT>(value)); return *this;}
+    template<typename VersionsT = VersionInformation>
+    ListCoreDefinitionVersionsResult& AddVersions(VersionsT&& value) { m_versionsHasBeenSet = true; m_versions.emplace_back(std::forward<VersionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * Information about a version.
-     */
-    inline void SetVersions(const Aws::Vector<VersionInformation>& value) { m_versions = value; }
-
-    /**
-     * Information about a version.
-     */
-    inline void SetVersions(Aws::Vector<VersionInformation>&& value) { m_versions = std::move(value); }
-
-    /**
-     * Information about a version.
-     */
-    inline ListCoreDefinitionVersionsResult& WithVersions(const Aws::Vector<VersionInformation>& value) { SetVersions(value); return *this;}
-
-    /**
-     * Information about a version.
-     */
-    inline ListCoreDefinitionVersionsResult& WithVersions(Aws::Vector<VersionInformation>&& value) { SetVersions(std::move(value)); return *this;}
-
-    /**
-     * Information about a version.
-     */
-    inline ListCoreDefinitionVersionsResult& AddVersions(const VersionInformation& value) { m_versions.push_back(value); return *this; }
-
-    /**
-     * Information about a version.
-     */
-    inline ListCoreDefinitionVersionsResult& AddVersions(VersionInformation&& value) { m_versions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListCoreDefinitionVersionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListCoreDefinitionVersionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListCoreDefinitionVersionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListCoreDefinitionVersionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<VersionInformation> m_versions;
+    bool m_versionsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

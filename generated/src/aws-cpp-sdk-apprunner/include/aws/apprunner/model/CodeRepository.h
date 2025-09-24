@@ -33,183 +33,63 @@ namespace Model
   class CodeRepository
   {
   public:
-    AWS_APPRUNNER_API CodeRepository();
+    AWS_APPRUNNER_API CodeRepository() = default;
     AWS_APPRUNNER_API CodeRepository(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API CodeRepository& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPRUNNER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The location of the repository that contains the source code.</p>
      */
-    inline const Aws::String& GetRepositoryUrl() const{ return m_repositoryUrl; }
-
-    /**
-     * <p>The location of the repository that contains the source code.</p>
-     */
+    inline const Aws::String& GetRepositoryUrl() const { return m_repositoryUrl; }
     inline bool RepositoryUrlHasBeenSet() const { return m_repositoryUrlHasBeenSet; }
+    template<typename RepositoryUrlT = Aws::String>
+    void SetRepositoryUrl(RepositoryUrlT&& value) { m_repositoryUrlHasBeenSet = true; m_repositoryUrl = std::forward<RepositoryUrlT>(value); }
+    template<typename RepositoryUrlT = Aws::String>
+    CodeRepository& WithRepositoryUrl(RepositoryUrlT&& value) { SetRepositoryUrl(std::forward<RepositoryUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of the repository that contains the source code.</p>
-     */
-    inline void SetRepositoryUrl(const Aws::String& value) { m_repositoryUrlHasBeenSet = true; m_repositoryUrl = value; }
-
-    /**
-     * <p>The location of the repository that contains the source code.</p>
-     */
-    inline void SetRepositoryUrl(Aws::String&& value) { m_repositoryUrlHasBeenSet = true; m_repositoryUrl = std::move(value); }
-
-    /**
-     * <p>The location of the repository that contains the source code.</p>
-     */
-    inline void SetRepositoryUrl(const char* value) { m_repositoryUrlHasBeenSet = true; m_repositoryUrl.assign(value); }
-
-    /**
-     * <p>The location of the repository that contains the source code.</p>
-     */
-    inline CodeRepository& WithRepositoryUrl(const Aws::String& value) { SetRepositoryUrl(value); return *this;}
-
-    /**
-     * <p>The location of the repository that contains the source code.</p>
-     */
-    inline CodeRepository& WithRepositoryUrl(Aws::String&& value) { SetRepositoryUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The location of the repository that contains the source code.</p>
-     */
-    inline CodeRepository& WithRepositoryUrl(const char* value) { SetRepositoryUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version that should be used within the source code repository.</p>
      */
-    inline const SourceCodeVersion& GetSourceCodeVersion() const{ return m_sourceCodeVersion; }
-
-    /**
-     * <p>The version that should be used within the source code repository.</p>
-     */
+    inline const SourceCodeVersion& GetSourceCodeVersion() const { return m_sourceCodeVersion; }
     inline bool SourceCodeVersionHasBeenSet() const { return m_sourceCodeVersionHasBeenSet; }
+    template<typename SourceCodeVersionT = SourceCodeVersion>
+    void SetSourceCodeVersion(SourceCodeVersionT&& value) { m_sourceCodeVersionHasBeenSet = true; m_sourceCodeVersion = std::forward<SourceCodeVersionT>(value); }
+    template<typename SourceCodeVersionT = SourceCodeVersion>
+    CodeRepository& WithSourceCodeVersion(SourceCodeVersionT&& value) { SetSourceCodeVersion(std::forward<SourceCodeVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version that should be used within the source code repository.</p>
-     */
-    inline void SetSourceCodeVersion(const SourceCodeVersion& value) { m_sourceCodeVersionHasBeenSet = true; m_sourceCodeVersion = value; }
-
-    /**
-     * <p>The version that should be used within the source code repository.</p>
-     */
-    inline void SetSourceCodeVersion(SourceCodeVersion&& value) { m_sourceCodeVersionHasBeenSet = true; m_sourceCodeVersion = std::move(value); }
-
-    /**
-     * <p>The version that should be used within the source code repository.</p>
-     */
-    inline CodeRepository& WithSourceCodeVersion(const SourceCodeVersion& value) { SetSourceCodeVersion(value); return *this;}
-
-    /**
-     * <p>The version that should be used within the source code repository.</p>
-     */
-    inline CodeRepository& WithSourceCodeVersion(SourceCodeVersion&& value) { SetSourceCodeVersion(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration for building and running the service from a source code
      * repository.</p>  <p> <code>CodeConfiguration</code> is required only for
      * <code>CreateService</code> request.</p> 
      */
-    inline const CodeConfiguration& GetCodeConfiguration() const{ return m_codeConfiguration; }
-
-    /**
-     * <p>Configuration for building and running the service from a source code
-     * repository.</p>  <p> <code>CodeConfiguration</code> is required only for
-     * <code>CreateService</code> request.</p> 
-     */
+    inline const CodeConfiguration& GetCodeConfiguration() const { return m_codeConfiguration; }
     inline bool CodeConfigurationHasBeenSet() const { return m_codeConfigurationHasBeenSet; }
+    template<typename CodeConfigurationT = CodeConfiguration>
+    void SetCodeConfiguration(CodeConfigurationT&& value) { m_codeConfigurationHasBeenSet = true; m_codeConfiguration = std::forward<CodeConfigurationT>(value); }
+    template<typename CodeConfigurationT = CodeConfiguration>
+    CodeRepository& WithCodeConfiguration(CodeConfigurationT&& value) { SetCodeConfiguration(std::forward<CodeConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration for building and running the service from a source code
-     * repository.</p>  <p> <code>CodeConfiguration</code> is required only for
-     * <code>CreateService</code> request.</p> 
-     */
-    inline void SetCodeConfiguration(const CodeConfiguration& value) { m_codeConfigurationHasBeenSet = true; m_codeConfiguration = value; }
-
-    /**
-     * <p>Configuration for building and running the service from a source code
-     * repository.</p>  <p> <code>CodeConfiguration</code> is required only for
-     * <code>CreateService</code> request.</p> 
-     */
-    inline void SetCodeConfiguration(CodeConfiguration&& value) { m_codeConfigurationHasBeenSet = true; m_codeConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration for building and running the service from a source code
-     * repository.</p>  <p> <code>CodeConfiguration</code> is required only for
-     * <code>CreateService</code> request.</p> 
-     */
-    inline CodeRepository& WithCodeConfiguration(const CodeConfiguration& value) { SetCodeConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration for building and running the service from a source code
-     * repository.</p>  <p> <code>CodeConfiguration</code> is required only for
-     * <code>CreateService</code> request.</p> 
-     */
-    inline CodeRepository& WithCodeConfiguration(CodeConfiguration&& value) { SetCodeConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The path of the directory that stores source code and configuration files.
      * The build and start commands also execute from here. The path is absolute from
      * root and, if not specified, defaults to the repository root.</p>
      */
-    inline const Aws::String& GetSourceDirectory() const{ return m_sourceDirectory; }
-
-    /**
-     * <p>The path of the directory that stores source code and configuration files.
-     * The build and start commands also execute from here. The path is absolute from
-     * root and, if not specified, defaults to the repository root.</p>
-     */
+    inline const Aws::String& GetSourceDirectory() const { return m_sourceDirectory; }
     inline bool SourceDirectoryHasBeenSet() const { return m_sourceDirectoryHasBeenSet; }
-
-    /**
-     * <p>The path of the directory that stores source code and configuration files.
-     * The build and start commands also execute from here. The path is absolute from
-     * root and, if not specified, defaults to the repository root.</p>
-     */
-    inline void SetSourceDirectory(const Aws::String& value) { m_sourceDirectoryHasBeenSet = true; m_sourceDirectory = value; }
-
-    /**
-     * <p>The path of the directory that stores source code and configuration files.
-     * The build and start commands also execute from here. The path is absolute from
-     * root and, if not specified, defaults to the repository root.</p>
-     */
-    inline void SetSourceDirectory(Aws::String&& value) { m_sourceDirectoryHasBeenSet = true; m_sourceDirectory = std::move(value); }
-
-    /**
-     * <p>The path of the directory that stores source code and configuration files.
-     * The build and start commands also execute from here. The path is absolute from
-     * root and, if not specified, defaults to the repository root.</p>
-     */
-    inline void SetSourceDirectory(const char* value) { m_sourceDirectoryHasBeenSet = true; m_sourceDirectory.assign(value); }
-
-    /**
-     * <p>The path of the directory that stores source code and configuration files.
-     * The build and start commands also execute from here. The path is absolute from
-     * root and, if not specified, defaults to the repository root.</p>
-     */
-    inline CodeRepository& WithSourceDirectory(const Aws::String& value) { SetSourceDirectory(value); return *this;}
-
-    /**
-     * <p>The path of the directory that stores source code and configuration files.
-     * The build and start commands also execute from here. The path is absolute from
-     * root and, if not specified, defaults to the repository root.</p>
-     */
-    inline CodeRepository& WithSourceDirectory(Aws::String&& value) { SetSourceDirectory(std::move(value)); return *this;}
-
-    /**
-     * <p>The path of the directory that stores source code and configuration files.
-     * The build and start commands also execute from here. The path is absolute from
-     * root and, if not specified, defaults to the repository root.</p>
-     */
-    inline CodeRepository& WithSourceDirectory(const char* value) { SetSourceDirectory(value); return *this;}
-
+    template<typename SourceDirectoryT = Aws::String>
+    void SetSourceDirectory(SourceDirectoryT&& value) { m_sourceDirectoryHasBeenSet = true; m_sourceDirectory = std::forward<SourceDirectoryT>(value); }
+    template<typename SourceDirectoryT = Aws::String>
+    CodeRepository& WithSourceDirectory(SourceDirectoryT&& value) { SetSourceDirectory(std::forward<SourceDirectoryT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_repositoryUrl;

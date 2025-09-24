@@ -26,7 +26,7 @@ namespace Model
   class DeleteBackupRequest : public FSxRequest
   {
   public:
-    AWS_FSX_API DeleteBackupRequest();
+    AWS_FSX_API DeleteBackupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,110 +39,38 @@ namespace Model
     AWS_FSX_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the backup that you want to delete.</p>
      */
-    inline const Aws::String& GetBackupId() const{ return m_backupId; }
-
-    /**
-     * <p>The ID of the backup that you want to delete.</p>
-     */
+    inline const Aws::String& GetBackupId() const { return m_backupId; }
     inline bool BackupIdHasBeenSet() const { return m_backupIdHasBeenSet; }
+    template<typename BackupIdT = Aws::String>
+    void SetBackupId(BackupIdT&& value) { m_backupIdHasBeenSet = true; m_backupId = std::forward<BackupIdT>(value); }
+    template<typename BackupIdT = Aws::String>
+    DeleteBackupRequest& WithBackupId(BackupIdT&& value) { SetBackupId(std::forward<BackupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the backup that you want to delete.</p>
-     */
-    inline void SetBackupId(const Aws::String& value) { m_backupIdHasBeenSet = true; m_backupId = value; }
-
-    /**
-     * <p>The ID of the backup that you want to delete.</p>
-     */
-    inline void SetBackupId(Aws::String&& value) { m_backupIdHasBeenSet = true; m_backupId = std::move(value); }
-
-    /**
-     * <p>The ID of the backup that you want to delete.</p>
-     */
-    inline void SetBackupId(const char* value) { m_backupIdHasBeenSet = true; m_backupId.assign(value); }
-
-    /**
-     * <p>The ID of the backup that you want to delete.</p>
-     */
-    inline DeleteBackupRequest& WithBackupId(const Aws::String& value) { SetBackupId(value); return *this;}
-
-    /**
-     * <p>The ID of the backup that you want to delete.</p>
-     */
-    inline DeleteBackupRequest& WithBackupId(Aws::String&& value) { SetBackupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the backup that you want to delete.</p>
-     */
-    inline DeleteBackupRequest& WithBackupId(const char* value) { SetBackupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A string of up to 63 ASCII characters that Amazon FSx uses to ensure
      * idempotent deletion. This parameter is automatically filled on your behalf when
      * using the CLI or SDK.</p>
      */
-    inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
-
-    /**
-     * <p>A string of up to 63 ASCII characters that Amazon FSx uses to ensure
-     * idempotent deletion. This parameter is automatically filled on your behalf when
-     * using the CLI or SDK.</p>
-     */
+    inline const Aws::String& GetClientRequestToken() const { return m_clientRequestToken; }
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
-
-    /**
-     * <p>A string of up to 63 ASCII characters that Amazon FSx uses to ensure
-     * idempotent deletion. This parameter is automatically filled on your behalf when
-     * using the CLI or SDK.</p>
-     */
-    inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
-
-    /**
-     * <p>A string of up to 63 ASCII characters that Amazon FSx uses to ensure
-     * idempotent deletion. This parameter is automatically filled on your behalf when
-     * using the CLI or SDK.</p>
-     */
-    inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
-
-    /**
-     * <p>A string of up to 63 ASCII characters that Amazon FSx uses to ensure
-     * idempotent deletion. This parameter is automatically filled on your behalf when
-     * using the CLI or SDK.</p>
-     */
-    inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
-
-    /**
-     * <p>A string of up to 63 ASCII characters that Amazon FSx uses to ensure
-     * idempotent deletion. This parameter is automatically filled on your behalf when
-     * using the CLI or SDK.</p>
-     */
-    inline DeleteBackupRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
-
-    /**
-     * <p>A string of up to 63 ASCII characters that Amazon FSx uses to ensure
-     * idempotent deletion. This parameter is automatically filled on your behalf when
-     * using the CLI or SDK.</p>
-     */
-    inline DeleteBackupRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A string of up to 63 ASCII characters that Amazon FSx uses to ensure
-     * idempotent deletion. This parameter is automatically filled on your behalf when
-     * using the CLI or SDK.</p>
-     */
-    inline DeleteBackupRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
-
+    template<typename ClientRequestTokenT = Aws::String>
+    void SetClientRequestToken(ClientRequestTokenT&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::forward<ClientRequestTokenT>(value); }
+    template<typename ClientRequestTokenT = Aws::String>
+    DeleteBackupRequest& WithClientRequestToken(ClientRequestTokenT&& value) { SetClientRequestToken(std::forward<ClientRequestTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_backupId;
     bool m_backupIdHasBeenSet = false;
 
-    Aws::String m_clientRequestToken;
-    bool m_clientRequestTokenHasBeenSet = false;
+    Aws::String m_clientRequestToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientRequestTokenHasBeenSet = true;
   };
 
 } // namespace Model

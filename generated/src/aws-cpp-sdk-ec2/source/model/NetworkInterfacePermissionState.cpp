@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-NetworkInterfacePermissionState::NetworkInterfacePermissionState() : 
-    m_state(NetworkInterfacePermissionStateCode::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
-{
-}
-
-NetworkInterfacePermissionState::NetworkInterfacePermissionState(const XmlNode& xmlNode) : 
-    m_state(NetworkInterfacePermissionStateCode::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
+NetworkInterfacePermissionState::NetworkInterfacePermissionState(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ NetworkInterfacePermissionState& NetworkInterfacePermissionState::operator =(con
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = NetworkInterfacePermissionStateCodeMapper::GetNetworkInterfacePermissionStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = NetworkInterfacePermissionStateCodeMapper::GetNetworkInterfacePermissionStateCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode statusMessageNode = resultNode.FirstChild("statusMessage");
@@ -62,7 +52,7 @@ void NetworkInterfacePermissionState::OutputToStream(Aws::OStream& oStream, cons
 {
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << NetworkInterfacePermissionStateCodeMapper::GetNameForNetworkInterfacePermissionStateCode(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(NetworkInterfacePermissionStateCodeMapper::GetNameForNetworkInterfacePermissionStateCode(m_state)) << "&";
   }
 
   if(m_statusMessageHasBeenSet)
@@ -76,7 +66,7 @@ void NetworkInterfacePermissionState::OutputToStream(Aws::OStream& oStream, cons
 {
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << NetworkInterfacePermissionStateCodeMapper::GetNameForNetworkInterfacePermissionStateCode(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(NetworkInterfacePermissionStateCodeMapper::GetNameForNetworkInterfacePermissionStateCode(m_state)) << "&";
   }
   if(m_statusMessageHasBeenSet)
   {

@@ -18,15 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-SftpConnectorConfig::SftpConnectorConfig() : 
-    m_userSecretIdHasBeenSet(false),
-    m_trustedHostKeysHasBeenSet(false)
-{
-}
-
-SftpConnectorConfig::SftpConnectorConfig(JsonView jsonValue) : 
-    m_userSecretIdHasBeenSet(false),
-    m_trustedHostKeysHasBeenSet(false)
+SftpConnectorConfig::SftpConnectorConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ SftpConnectorConfig& SftpConnectorConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("UserSecretId"))
   {
     m_userSecretId = jsonValue.GetString("UserSecretId");
-
     m_userSecretIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TrustedHostKeys"))
   {
     Aws::Utils::Array<JsonView> trustedHostKeysJsonList = jsonValue.GetArray("TrustedHostKeys");
@@ -49,7 +39,11 @@ SftpConnectorConfig& SftpConnectorConfig::operator =(JsonView jsonValue)
     }
     m_trustedHostKeysHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("MaxConcurrentConnections"))
+  {
+    m_maxConcurrentConnections = jsonValue.GetInteger("MaxConcurrentConnections");
+    m_maxConcurrentConnectionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -71,6 +65,12 @@ JsonValue SftpConnectorConfig::Jsonize() const
      trustedHostKeysJsonList[trustedHostKeysIndex].AsString(m_trustedHostKeys[trustedHostKeysIndex]);
    }
    payload.WithArray("TrustedHostKeys", std::move(trustedHostKeysJsonList));
+
+  }
+
+  if(m_maxConcurrentConnectionsHasBeenSet)
+  {
+   payload.WithInteger("MaxConcurrentConnections", m_maxConcurrentConnections);
 
   }
 

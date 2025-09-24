@@ -10,24 +10,18 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeIdentityIdFormatRequest::DescribeIdentityIdFormatRequest() : 
-    m_principalArnHasBeenSet(false),
-    m_resourceHasBeenSet(false)
-{
-}
-
 Aws::String DescribeIdentityIdFormatRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeIdentityIdFormat&";
-  if(m_principalArnHasBeenSet)
-  {
-    ss << "PrincipalArn=" << StringUtils::URLEncode(m_principalArn.c_str()) << "&";
-  }
-
   if(m_resourceHasBeenSet)
   {
     ss << "Resource=" << StringUtils::URLEncode(m_resource.c_str()) << "&";
+  }
+
+  if(m_principalArnHasBeenSet)
+  {
+    ss << "PrincipalArn=" << StringUtils::URLEncode(m_principalArn.c_str()) << "&";
   }
 
   ss << "Version=2016-11-15";

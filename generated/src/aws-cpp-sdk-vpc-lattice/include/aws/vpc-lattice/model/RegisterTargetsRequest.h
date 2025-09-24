@@ -23,7 +23,7 @@ namespace Model
   class RegisterTargetsRequest : public VPCLatticeRequest
   {
   public:
-    AWS_VPCLATTICE_API RegisterTargetsRequest();
+    AWS_VPCLATTICE_API RegisterTargetsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,31 @@ namespace Model
     AWS_VPCLATTICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
+     * <p>The ID or ARN of the target group.</p>
      */
-    inline const Aws::String& GetTargetGroupIdentifier() const{ return m_targetGroupIdentifier; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
+    inline const Aws::String& GetTargetGroupIdentifier() const { return m_targetGroupIdentifier; }
     inline bool TargetGroupIdentifierHasBeenSet() const { return m_targetGroupIdentifierHasBeenSet; }
+    template<typename TargetGroupIdentifierT = Aws::String>
+    void SetTargetGroupIdentifier(TargetGroupIdentifierT&& value) { m_targetGroupIdentifierHasBeenSet = true; m_targetGroupIdentifier = std::forward<TargetGroupIdentifierT>(value); }
+    template<typename TargetGroupIdentifierT = Aws::String>
+    RegisterTargetsRequest& WithTargetGroupIdentifier(TargetGroupIdentifierT&& value) { SetTargetGroupIdentifier(std::forward<TargetGroupIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline void SetTargetGroupIdentifier(const Aws::String& value) { m_targetGroupIdentifierHasBeenSet = true; m_targetGroupIdentifier = value; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline void SetTargetGroupIdentifier(Aws::String&& value) { m_targetGroupIdentifierHasBeenSet = true; m_targetGroupIdentifier = std::move(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline void SetTargetGroupIdentifier(const char* value) { m_targetGroupIdentifierHasBeenSet = true; m_targetGroupIdentifier.assign(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline RegisterTargetsRequest& WithTargetGroupIdentifier(const Aws::String& value) { SetTargetGroupIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline RegisterTargetsRequest& WithTargetGroupIdentifier(Aws::String&& value) { SetTargetGroupIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the target group.</p>
-     */
-    inline RegisterTargetsRequest& WithTargetGroupIdentifier(const char* value) { SetTargetGroupIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The targets.</p>
      */
-    inline const Aws::Vector<Target>& GetTargets() const{ return m_targets; }
-
-    /**
-     * <p>The targets.</p>
-     */
+    inline const Aws::Vector<Target>& GetTargets() const { return m_targets; }
     inline bool TargetsHasBeenSet() const { return m_targetsHasBeenSet; }
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline void SetTargets(const Aws::Vector<Target>& value) { m_targetsHasBeenSet = true; m_targets = value; }
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline void SetTargets(Aws::Vector<Target>&& value) { m_targetsHasBeenSet = true; m_targets = std::move(value); }
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline RegisterTargetsRequest& WithTargets(const Aws::Vector<Target>& value) { SetTargets(value); return *this;}
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline RegisterTargetsRequest& WithTargets(Aws::Vector<Target>&& value) { SetTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline RegisterTargetsRequest& AddTargets(const Target& value) { m_targetsHasBeenSet = true; m_targets.push_back(value); return *this; }
-
-    /**
-     * <p>The targets.</p>
-     */
-    inline RegisterTargetsRequest& AddTargets(Target&& value) { m_targetsHasBeenSet = true; m_targets.push_back(std::move(value)); return *this; }
-
+    template<typename TargetsT = Aws::Vector<Target>>
+    void SetTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets = std::forward<TargetsT>(value); }
+    template<typename TargetsT = Aws::Vector<Target>>
+    RegisterTargetsRequest& WithTargets(TargetsT&& value) { SetTargets(std::forward<TargetsT>(value)); return *this;}
+    template<typename TargetsT = Target>
+    RegisterTargetsRequest& AddTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets.emplace_back(std::forward<TargetsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_targetGroupIdentifier;

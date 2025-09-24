@@ -15,17 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListJobRunsRequest::ListJobRunsRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_createdAtAfterHasBeenSet(false),
-    m_createdAtBeforeHasBeenSet(false),
-    m_statesHasBeenSet(false)
-{
-}
-
 Aws::String ListJobRunsRequest::SerializePayload() const
 {
   return {};
@@ -70,6 +59,13 @@ void ListJobRunsRequest::AddQueryStringParameters(URI& uri) const
         uri.AddQueryStringParameter("states", ss.str());
         ss.str("");
       }
+    }
+
+    if(m_modeHasBeenSet)
+    {
+      ss << JobRunModeMapper::GetNameForJobRunMode(m_mode);
+      uri.AddQueryStringParameter("mode", ss.str());
+      ss.str("");
     }
 
 }

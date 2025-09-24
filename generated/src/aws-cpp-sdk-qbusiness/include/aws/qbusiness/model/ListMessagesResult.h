@@ -29,118 +29,54 @@ namespace Model
   class ListMessagesResult
   {
   public:
-    AWS_QBUSINESS_API ListMessagesResult();
+    AWS_QBUSINESS_API ListMessagesResult() = default;
     AWS_QBUSINESS_API ListMessagesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QBUSINESS_API ListMessagesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An array of information on one or more messages.</p>
      */
-    inline const Aws::Vector<Message>& GetMessages() const{ return m_messages; }
+    inline const Aws::Vector<Message>& GetMessages() const { return m_messages; }
+    template<typename MessagesT = Aws::Vector<Message>>
+    void SetMessages(MessagesT&& value) { m_messagesHasBeenSet = true; m_messages = std::forward<MessagesT>(value); }
+    template<typename MessagesT = Aws::Vector<Message>>
+    ListMessagesResult& WithMessages(MessagesT&& value) { SetMessages(std::forward<MessagesT>(value)); return *this;}
+    template<typename MessagesT = Message>
+    ListMessagesResult& AddMessages(MessagesT&& value) { m_messagesHasBeenSet = true; m_messages.emplace_back(std::forward<MessagesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>An array of information on one or more messages.</p>
+     * <p>If the response is truncated, Amazon Q Business returns this token, which you
+     * can use in a later request to list the next set of messages.</p>
      */
-    inline void SetMessages(const Aws::Vector<Message>& value) { m_messages = value; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListMessagesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An array of information on one or more messages.</p>
-     */
-    inline void SetMessages(Aws::Vector<Message>&& value) { m_messages = std::move(value); }
-
-    /**
-     * <p>An array of information on one or more messages.</p>
-     */
-    inline ListMessagesResult& WithMessages(const Aws::Vector<Message>& value) { SetMessages(value); return *this;}
-
-    /**
-     * <p>An array of information on one or more messages.</p>
-     */
-    inline ListMessagesResult& WithMessages(Aws::Vector<Message>&& value) { SetMessages(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of information on one or more messages.</p>
-     */
-    inline ListMessagesResult& AddMessages(const Message& value) { m_messages.push_back(value); return *this; }
-
-    /**
-     * <p>An array of information on one or more messages.</p>
-     */
-    inline ListMessagesResult& AddMessages(Message&& value) { m_messages.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token, which you can use
-     * in a later request to list the next set of messages.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token, which you can use
-     * in a later request to list the next set of messages.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token, which you can use
-     * in a later request to list the next set of messages.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token, which you can use
-     * in a later request to list the next set of messages.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token, which you can use
-     * in a later request to list the next set of messages.</p>
-     */
-    inline ListMessagesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token, which you can use
-     * in a later request to list the next set of messages.</p>
-     */
-    inline ListMessagesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token, which you can use
-     * in a later request to list the next set of messages.</p>
-     */
-    inline ListMessagesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListMessagesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListMessagesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListMessagesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListMessagesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Message> m_messages;
+    bool m_messagesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

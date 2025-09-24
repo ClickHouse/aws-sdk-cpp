@@ -21,7 +21,7 @@ namespace Model
   class SearchFacesRequest : public RekognitionRequest
   {
   public:
-    AWS_REKOGNITION_API SearchFacesRequest();
+    AWS_REKOGNITION_API SearchFacesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,141 +34,52 @@ namespace Model
     AWS_REKOGNITION_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>ID of the collection the face belongs to.</p>
      */
-    inline const Aws::String& GetCollectionId() const{ return m_collectionId; }
-
-    /**
-     * <p>ID of the collection the face belongs to.</p>
-     */
+    inline const Aws::String& GetCollectionId() const { return m_collectionId; }
     inline bool CollectionIdHasBeenSet() const { return m_collectionIdHasBeenSet; }
+    template<typename CollectionIdT = Aws::String>
+    void SetCollectionId(CollectionIdT&& value) { m_collectionIdHasBeenSet = true; m_collectionId = std::forward<CollectionIdT>(value); }
+    template<typename CollectionIdT = Aws::String>
+    SearchFacesRequest& WithCollectionId(CollectionIdT&& value) { SetCollectionId(std::forward<CollectionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ID of the collection the face belongs to.</p>
-     */
-    inline void SetCollectionId(const Aws::String& value) { m_collectionIdHasBeenSet = true; m_collectionId = value; }
-
-    /**
-     * <p>ID of the collection the face belongs to.</p>
-     */
-    inline void SetCollectionId(Aws::String&& value) { m_collectionIdHasBeenSet = true; m_collectionId = std::move(value); }
-
-    /**
-     * <p>ID of the collection the face belongs to.</p>
-     */
-    inline void SetCollectionId(const char* value) { m_collectionIdHasBeenSet = true; m_collectionId.assign(value); }
-
-    /**
-     * <p>ID of the collection the face belongs to.</p>
-     */
-    inline SearchFacesRequest& WithCollectionId(const Aws::String& value) { SetCollectionId(value); return *this;}
-
-    /**
-     * <p>ID of the collection the face belongs to.</p>
-     */
-    inline SearchFacesRequest& WithCollectionId(Aws::String&& value) { SetCollectionId(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of the collection the face belongs to.</p>
-     */
-    inline SearchFacesRequest& WithCollectionId(const char* value) { SetCollectionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>ID of a face to find matches for in the collection.</p>
      */
-    inline const Aws::String& GetFaceId() const{ return m_faceId; }
-
-    /**
-     * <p>ID of a face to find matches for in the collection.</p>
-     */
+    inline const Aws::String& GetFaceId() const { return m_faceId; }
     inline bool FaceIdHasBeenSet() const { return m_faceIdHasBeenSet; }
+    template<typename FaceIdT = Aws::String>
+    void SetFaceId(FaceIdT&& value) { m_faceIdHasBeenSet = true; m_faceId = std::forward<FaceIdT>(value); }
+    template<typename FaceIdT = Aws::String>
+    SearchFacesRequest& WithFaceId(FaceIdT&& value) { SetFaceId(std::forward<FaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ID of a face to find matches for in the collection.</p>
-     */
-    inline void SetFaceId(const Aws::String& value) { m_faceIdHasBeenSet = true; m_faceId = value; }
-
-    /**
-     * <p>ID of a face to find matches for in the collection.</p>
-     */
-    inline void SetFaceId(Aws::String&& value) { m_faceIdHasBeenSet = true; m_faceId = std::move(value); }
-
-    /**
-     * <p>ID of a face to find matches for in the collection.</p>
-     */
-    inline void SetFaceId(const char* value) { m_faceIdHasBeenSet = true; m_faceId.assign(value); }
-
-    /**
-     * <p>ID of a face to find matches for in the collection.</p>
-     */
-    inline SearchFacesRequest& WithFaceId(const Aws::String& value) { SetFaceId(value); return *this;}
-
-    /**
-     * <p>ID of a face to find matches for in the collection.</p>
-     */
-    inline SearchFacesRequest& WithFaceId(Aws::String&& value) { SetFaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>ID of a face to find matches for in the collection.</p>
-     */
-    inline SearchFacesRequest& WithFaceId(const char* value) { SetFaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Maximum number of faces to return. The operation returns the maximum number
      * of faces with the highest confidence in the match.</p>
      */
-    inline int GetMaxFaces() const{ return m_maxFaces; }
-
-    /**
-     * <p>Maximum number of faces to return. The operation returns the maximum number
-     * of faces with the highest confidence in the match.</p>
-     */
+    inline int GetMaxFaces() const { return m_maxFaces; }
     inline bool MaxFacesHasBeenSet() const { return m_maxFacesHasBeenSet; }
-
-    /**
-     * <p>Maximum number of faces to return. The operation returns the maximum number
-     * of faces with the highest confidence in the match.</p>
-     */
     inline void SetMaxFaces(int value) { m_maxFacesHasBeenSet = true; m_maxFaces = value; }
-
-    /**
-     * <p>Maximum number of faces to return. The operation returns the maximum number
-     * of faces with the highest confidence in the match.</p>
-     */
     inline SearchFacesRequest& WithMaxFaces(int value) { SetMaxFaces(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Optional value specifying the minimum confidence in the face match to return.
      * For example, don't return any matches where confidence in matches is less than
      * 70%. The default value is 80%. </p>
      */
-    inline double GetFaceMatchThreshold() const{ return m_faceMatchThreshold; }
-
-    /**
-     * <p>Optional value specifying the minimum confidence in the face match to return.
-     * For example, don't return any matches where confidence in matches is less than
-     * 70%. The default value is 80%. </p>
-     */
+    inline double GetFaceMatchThreshold() const { return m_faceMatchThreshold; }
     inline bool FaceMatchThresholdHasBeenSet() const { return m_faceMatchThresholdHasBeenSet; }
-
-    /**
-     * <p>Optional value specifying the minimum confidence in the face match to return.
-     * For example, don't return any matches where confidence in matches is less than
-     * 70%. The default value is 80%. </p>
-     */
     inline void SetFaceMatchThreshold(double value) { m_faceMatchThresholdHasBeenSet = true; m_faceMatchThreshold = value; }
-
-    /**
-     * <p>Optional value specifying the minimum confidence in the face match to return.
-     * For example, don't return any matches where confidence in matches is less than
-     * 70%. The default value is 80%. </p>
-     */
     inline SearchFacesRequest& WithFaceMatchThreshold(double value) { SetFaceMatchThreshold(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_collectionId;
@@ -177,10 +88,10 @@ namespace Model
     Aws::String m_faceId;
     bool m_faceIdHasBeenSet = false;
 
-    int m_maxFaces;
+    int m_maxFaces{0};
     bool m_maxFacesHasBeenSet = false;
 
-    double m_faceMatchThreshold;
+    double m_faceMatchThreshold{0.0};
     bool m_faceMatchThresholdHasBeenSet = false;
   };
 

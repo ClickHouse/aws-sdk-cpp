@@ -18,17 +18,7 @@ namespace Comprehend
 namespace Model
 {
 
-BatchDetectDominantLanguageItemResult::BatchDetectDominantLanguageItemResult() : 
-    m_index(0),
-    m_indexHasBeenSet(false),
-    m_languagesHasBeenSet(false)
-{
-}
-
-BatchDetectDominantLanguageItemResult::BatchDetectDominantLanguageItemResult(JsonView jsonValue) : 
-    m_index(0),
-    m_indexHasBeenSet(false),
-    m_languagesHasBeenSet(false)
+BatchDetectDominantLanguageItemResult::BatchDetectDominantLanguageItemResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ BatchDetectDominantLanguageItemResult& BatchDetectDominantLanguageItemResult::op
   if(jsonValue.ValueExists("Index"))
   {
     m_index = jsonValue.GetInteger("Index");
-
     m_indexHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Languages"))
   {
     Aws::Utils::Array<JsonView> languagesJsonList = jsonValue.GetArray("Languages");
@@ -51,7 +39,6 @@ BatchDetectDominantLanguageItemResult& BatchDetectDominantLanguageItemResult::op
     }
     m_languagesHasBeenSet = true;
   }
-
   return *this;
 }
 

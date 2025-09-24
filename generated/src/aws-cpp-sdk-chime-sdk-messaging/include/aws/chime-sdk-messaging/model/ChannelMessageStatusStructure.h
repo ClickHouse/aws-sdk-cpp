@@ -32,86 +32,36 @@ namespace Model
   class ChannelMessageStatusStructure
   {
   public:
-    AWS_CHIMESDKMESSAGING_API ChannelMessageStatusStructure();
+    AWS_CHIMESDKMESSAGING_API ChannelMessageStatusStructure() = default;
     AWS_CHIMESDKMESSAGING_API ChannelMessageStatusStructure(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API ChannelMessageStatusStructure& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMESSAGING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The message status value.</p>
      */
-    inline const ChannelMessageStatus& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The message status value.</p>
-     */
+    inline ChannelMessageStatus GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    inline void SetValue(ChannelMessageStatus value) { m_valueHasBeenSet = true; m_value = value; }
+    inline ChannelMessageStatusStructure& WithValue(ChannelMessageStatus value) { SetValue(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The message status value.</p>
-     */
-    inline void SetValue(const ChannelMessageStatus& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The message status value.</p>
-     */
-    inline void SetValue(ChannelMessageStatus&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The message status value.</p>
-     */
-    inline ChannelMessageStatusStructure& WithValue(const ChannelMessageStatus& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The message status value.</p>
-     */
-    inline ChannelMessageStatusStructure& WithValue(ChannelMessageStatus&& value) { SetValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains more details about the message status.</p>
      */
-    inline const Aws::String& GetDetail() const{ return m_detail; }
-
-    /**
-     * <p>Contains more details about the message status.</p>
-     */
+    inline const Aws::String& GetDetail() const { return m_detail; }
     inline bool DetailHasBeenSet() const { return m_detailHasBeenSet; }
-
-    /**
-     * <p>Contains more details about the message status.</p>
-     */
-    inline void SetDetail(const Aws::String& value) { m_detailHasBeenSet = true; m_detail = value; }
-
-    /**
-     * <p>Contains more details about the message status.</p>
-     */
-    inline void SetDetail(Aws::String&& value) { m_detailHasBeenSet = true; m_detail = std::move(value); }
-
-    /**
-     * <p>Contains more details about the message status.</p>
-     */
-    inline void SetDetail(const char* value) { m_detailHasBeenSet = true; m_detail.assign(value); }
-
-    /**
-     * <p>Contains more details about the message status.</p>
-     */
-    inline ChannelMessageStatusStructure& WithDetail(const Aws::String& value) { SetDetail(value); return *this;}
-
-    /**
-     * <p>Contains more details about the message status.</p>
-     */
-    inline ChannelMessageStatusStructure& WithDetail(Aws::String&& value) { SetDetail(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains more details about the message status.</p>
-     */
-    inline ChannelMessageStatusStructure& WithDetail(const char* value) { SetDetail(value); return *this;}
-
+    template<typename DetailT = Aws::String>
+    void SetDetail(DetailT&& value) { m_detailHasBeenSet = true; m_detail = std::forward<DetailT>(value); }
+    template<typename DetailT = Aws::String>
+    ChannelMessageStatusStructure& WithDetail(DetailT&& value) { SetDetail(std::forward<DetailT>(value)); return *this;}
+    ///@}
   private:
 
-    ChannelMessageStatus m_value;
+    ChannelMessageStatus m_value{ChannelMessageStatus::NOT_SET};
     bool m_valueHasBeenSet = false;
 
     Aws::String m_detail;

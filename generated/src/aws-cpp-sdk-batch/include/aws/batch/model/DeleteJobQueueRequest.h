@@ -25,7 +25,7 @@ namespace Model
   class DeleteJobQueueRequest : public BatchRequest
   {
   public:
-    AWS_BATCH_API DeleteJobQueueRequest();
+    AWS_BATCH_API DeleteJobQueueRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
     AWS_BATCH_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The short name or full Amazon Resource Name (ARN) of the queue to delete.</p>
      */
-    inline const Aws::String& GetJobQueue() const{ return m_jobQueue; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the queue to delete.</p>
-     */
+    inline const Aws::String& GetJobQueue() const { return m_jobQueue; }
     inline bool JobQueueHasBeenSet() const { return m_jobQueueHasBeenSet; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the queue to delete.</p>
-     */
-    inline void SetJobQueue(const Aws::String& value) { m_jobQueueHasBeenSet = true; m_jobQueue = value; }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the queue to delete.</p>
-     */
-    inline void SetJobQueue(Aws::String&& value) { m_jobQueueHasBeenSet = true; m_jobQueue = std::move(value); }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the queue to delete.</p>
-     */
-    inline void SetJobQueue(const char* value) { m_jobQueueHasBeenSet = true; m_jobQueue.assign(value); }
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the queue to delete.</p>
-     */
-    inline DeleteJobQueueRequest& WithJobQueue(const Aws::String& value) { SetJobQueue(value); return *this;}
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the queue to delete.</p>
-     */
-    inline DeleteJobQueueRequest& WithJobQueue(Aws::String&& value) { SetJobQueue(std::move(value)); return *this;}
-
-    /**
-     * <p>The short name or full Amazon Resource Name (ARN) of the queue to delete.</p>
-     */
-    inline DeleteJobQueueRequest& WithJobQueue(const char* value) { SetJobQueue(value); return *this;}
-
+    template<typename JobQueueT = Aws::String>
+    void SetJobQueue(JobQueueT&& value) { m_jobQueueHasBeenSet = true; m_jobQueue = std::forward<JobQueueT>(value); }
+    template<typename JobQueueT = Aws::String>
+    DeleteJobQueueRequest& WithJobQueue(JobQueueT&& value) { SetJobQueue(std::forward<JobQueueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobQueue;

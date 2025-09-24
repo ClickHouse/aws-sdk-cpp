@@ -22,7 +22,7 @@ namespace Model
   class UpdateProjectRequest : public CloudWatchEvidentlyRequest
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API UpdateProjectRequest();
+    AWS_CLOUDWATCHEVIDENTLY_API UpdateProjectRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,6 +33,7 @@ namespace Model
     AWS_CLOUDWATCHEVIDENTLY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Use this parameter if the project will use client-side evaluation powered by
      * AppConfig. Client-side evaluation allows your application to assign variations
@@ -43,150 +44,37 @@ namespace Model
      * information about the AppConfig application that will be used for client-side
      * evaluation.</p>
      */
-    inline const ProjectAppConfigResourceConfig& GetAppConfigResource() const{ return m_appConfigResource; }
-
-    /**
-     * <p>Use this parameter if the project will use client-side evaluation powered by
-     * AppConfig. Client-side evaluation allows your application to assign variations
-     * to user sessions locally instead of by calling the <a
-     * href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html">EvaluateFeature</a>
-     * operation. This mitigates the latency and availability risks that come with an
-     * API call. allows you to</p> <p>This parameter is a structure that contains
-     * information about the AppConfig application that will be used for client-side
-     * evaluation.</p>
-     */
+    inline const ProjectAppConfigResourceConfig& GetAppConfigResource() const { return m_appConfigResource; }
     inline bool AppConfigResourceHasBeenSet() const { return m_appConfigResourceHasBeenSet; }
+    template<typename AppConfigResourceT = ProjectAppConfigResourceConfig>
+    void SetAppConfigResource(AppConfigResourceT&& value) { m_appConfigResourceHasBeenSet = true; m_appConfigResource = std::forward<AppConfigResourceT>(value); }
+    template<typename AppConfigResourceT = ProjectAppConfigResourceConfig>
+    UpdateProjectRequest& WithAppConfigResource(AppConfigResourceT&& value) { SetAppConfigResource(std::forward<AppConfigResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Use this parameter if the project will use client-side evaluation powered by
-     * AppConfig. Client-side evaluation allows your application to assign variations
-     * to user sessions locally instead of by calling the <a
-     * href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html">EvaluateFeature</a>
-     * operation. This mitigates the latency and availability risks that come with an
-     * API call. allows you to</p> <p>This parameter is a structure that contains
-     * information about the AppConfig application that will be used for client-side
-     * evaluation.</p>
-     */
-    inline void SetAppConfigResource(const ProjectAppConfigResourceConfig& value) { m_appConfigResourceHasBeenSet = true; m_appConfigResource = value; }
-
-    /**
-     * <p>Use this parameter if the project will use client-side evaluation powered by
-     * AppConfig. Client-side evaluation allows your application to assign variations
-     * to user sessions locally instead of by calling the <a
-     * href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html">EvaluateFeature</a>
-     * operation. This mitigates the latency and availability risks that come with an
-     * API call. allows you to</p> <p>This parameter is a structure that contains
-     * information about the AppConfig application that will be used for client-side
-     * evaluation.</p>
-     */
-    inline void SetAppConfigResource(ProjectAppConfigResourceConfig&& value) { m_appConfigResourceHasBeenSet = true; m_appConfigResource = std::move(value); }
-
-    /**
-     * <p>Use this parameter if the project will use client-side evaluation powered by
-     * AppConfig. Client-side evaluation allows your application to assign variations
-     * to user sessions locally instead of by calling the <a
-     * href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html">EvaluateFeature</a>
-     * operation. This mitigates the latency and availability risks that come with an
-     * API call. allows you to</p> <p>This parameter is a structure that contains
-     * information about the AppConfig application that will be used for client-side
-     * evaluation.</p>
-     */
-    inline UpdateProjectRequest& WithAppConfigResource(const ProjectAppConfigResourceConfig& value) { SetAppConfigResource(value); return *this;}
-
-    /**
-     * <p>Use this parameter if the project will use client-side evaluation powered by
-     * AppConfig. Client-side evaluation allows your application to assign variations
-     * to user sessions locally instead of by calling the <a
-     * href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html">EvaluateFeature</a>
-     * operation. This mitigates the latency and availability risks that come with an
-     * API call. allows you to</p> <p>This parameter is a structure that contains
-     * information about the AppConfig application that will be used for client-side
-     * evaluation.</p>
-     */
-    inline UpdateProjectRequest& WithAppConfigResource(ProjectAppConfigResourceConfig&& value) { SetAppConfigResource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional description of the project.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>An optional description of the project.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateProjectRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional description of the project.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>An optional description of the project.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>An optional description of the project.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>An optional description of the project.</p>
-     */
-    inline UpdateProjectRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>An optional description of the project.</p>
-     */
-    inline UpdateProjectRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional description of the project.</p>
-     */
-    inline UpdateProjectRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name or ARN of the project to update.</p>
      */
-    inline const Aws::String& GetProject() const{ return m_project; }
-
-    /**
-     * <p>The name or ARN of the project to update.</p>
-     */
+    inline const Aws::String& GetProject() const { return m_project; }
     inline bool ProjectHasBeenSet() const { return m_projectHasBeenSet; }
-
-    /**
-     * <p>The name or ARN of the project to update.</p>
-     */
-    inline void SetProject(const Aws::String& value) { m_projectHasBeenSet = true; m_project = value; }
-
-    /**
-     * <p>The name or ARN of the project to update.</p>
-     */
-    inline void SetProject(Aws::String&& value) { m_projectHasBeenSet = true; m_project = std::move(value); }
-
-    /**
-     * <p>The name or ARN of the project to update.</p>
-     */
-    inline void SetProject(const char* value) { m_projectHasBeenSet = true; m_project.assign(value); }
-
-    /**
-     * <p>The name or ARN of the project to update.</p>
-     */
-    inline UpdateProjectRequest& WithProject(const Aws::String& value) { SetProject(value); return *this;}
-
-    /**
-     * <p>The name or ARN of the project to update.</p>
-     */
-    inline UpdateProjectRequest& WithProject(Aws::String&& value) { SetProject(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or ARN of the project to update.</p>
-     */
-    inline UpdateProjectRequest& WithProject(const char* value) { SetProject(value); return *this;}
-
+    template<typename ProjectT = Aws::String>
+    void SetProject(ProjectT&& value) { m_projectHasBeenSet = true; m_project = std::forward<ProjectT>(value); }
+    template<typename ProjectT = Aws::String>
+    UpdateProjectRequest& WithProject(ProjectT&& value) { SetProject(std::forward<ProjectT>(value)); return *this;}
+    ///@}
   private:
 
     ProjectAppConfigResourceConfig m_appConfigResource;

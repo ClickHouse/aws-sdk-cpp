@@ -21,7 +21,7 @@ namespace Model
   class DescribePredictorRequest : public ForecastServiceRequest
   {
   public:
-    AWS_FORECASTSERVICE_API DescribePredictorRequest();
+    AWS_FORECASTSERVICE_API DescribePredictorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_FORECASTSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the predictor that you want information
      * about.</p>
      */
-    inline const Aws::String& GetPredictorArn() const{ return m_predictorArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the predictor that you want information
-     * about.</p>
-     */
+    inline const Aws::String& GetPredictorArn() const { return m_predictorArn; }
     inline bool PredictorArnHasBeenSet() const { return m_predictorArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the predictor that you want information
-     * about.</p>
-     */
-    inline void SetPredictorArn(const Aws::String& value) { m_predictorArnHasBeenSet = true; m_predictorArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the predictor that you want information
-     * about.</p>
-     */
-    inline void SetPredictorArn(Aws::String&& value) { m_predictorArnHasBeenSet = true; m_predictorArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the predictor that you want information
-     * about.</p>
-     */
-    inline void SetPredictorArn(const char* value) { m_predictorArnHasBeenSet = true; m_predictorArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the predictor that you want information
-     * about.</p>
-     */
-    inline DescribePredictorRequest& WithPredictorArn(const Aws::String& value) { SetPredictorArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the predictor that you want information
-     * about.</p>
-     */
-    inline DescribePredictorRequest& WithPredictorArn(Aws::String&& value) { SetPredictorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the predictor that you want information
-     * about.</p>
-     */
-    inline DescribePredictorRequest& WithPredictorArn(const char* value) { SetPredictorArn(value); return *this;}
-
+    template<typename PredictorArnT = Aws::String>
+    void SetPredictorArn(PredictorArnT&& value) { m_predictorArnHasBeenSet = true; m_predictorArn = std::forward<PredictorArnT>(value); }
+    template<typename PredictorArnT = Aws::String>
+    DescribePredictorRequest& WithPredictorArn(PredictorArnT&& value) { SetPredictorArn(std::forward<PredictorArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_predictorArn;

@@ -25,7 +25,7 @@ namespace Model
   class GetLatestConfigurationRequest : public AppConfigDataRequest
   {
   public:
-    AWS_APPCONFIGDATA_API GetLatestConfigurationRequest();
+    AWS_APPCONFIGDATA_API GetLatestConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,6 +38,7 @@ namespace Model
     AWS_APPCONFIGDATA_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>Token describing the current state of the configuration session. To obtain a
      * token, first call the <a>StartConfigurationSession</a> API. Note that every call
@@ -49,99 +50,13 @@ namespace Model
      * up to 24 hours. If a <code>GetLatestConfiguration</code> call uses an expired
      * token, the system returns <code>BadRequestException</code>.</p> 
      */
-    inline const Aws::String& GetConfigurationToken() const{ return m_configurationToken; }
-
-    /**
-     * <p>Token describing the current state of the configuration session. To obtain a
-     * token, first call the <a>StartConfigurationSession</a> API. Note that every call
-     * to <code>GetLatestConfiguration</code> will return a new
-     * <code>ConfigurationToken</code> (<code>NextPollConfigurationToken</code> in the
-     * response) and <i>must</i> be provided to subsequent
-     * <code>GetLatestConfiguration</code> API calls.</p>  <p>This token
-     * should only be used once. To support long poll use cases, the token is valid for
-     * up to 24 hours. If a <code>GetLatestConfiguration</code> call uses an expired
-     * token, the system returns <code>BadRequestException</code>.</p> 
-     */
+    inline const Aws::String& GetConfigurationToken() const { return m_configurationToken; }
     inline bool ConfigurationTokenHasBeenSet() const { return m_configurationTokenHasBeenSet; }
-
-    /**
-     * <p>Token describing the current state of the configuration session. To obtain a
-     * token, first call the <a>StartConfigurationSession</a> API. Note that every call
-     * to <code>GetLatestConfiguration</code> will return a new
-     * <code>ConfigurationToken</code> (<code>NextPollConfigurationToken</code> in the
-     * response) and <i>must</i> be provided to subsequent
-     * <code>GetLatestConfiguration</code> API calls.</p>  <p>This token
-     * should only be used once. To support long poll use cases, the token is valid for
-     * up to 24 hours. If a <code>GetLatestConfiguration</code> call uses an expired
-     * token, the system returns <code>BadRequestException</code>.</p> 
-     */
-    inline void SetConfigurationToken(const Aws::String& value) { m_configurationTokenHasBeenSet = true; m_configurationToken = value; }
-
-    /**
-     * <p>Token describing the current state of the configuration session. To obtain a
-     * token, first call the <a>StartConfigurationSession</a> API. Note that every call
-     * to <code>GetLatestConfiguration</code> will return a new
-     * <code>ConfigurationToken</code> (<code>NextPollConfigurationToken</code> in the
-     * response) and <i>must</i> be provided to subsequent
-     * <code>GetLatestConfiguration</code> API calls.</p>  <p>This token
-     * should only be used once. To support long poll use cases, the token is valid for
-     * up to 24 hours. If a <code>GetLatestConfiguration</code> call uses an expired
-     * token, the system returns <code>BadRequestException</code>.</p> 
-     */
-    inline void SetConfigurationToken(Aws::String&& value) { m_configurationTokenHasBeenSet = true; m_configurationToken = std::move(value); }
-
-    /**
-     * <p>Token describing the current state of the configuration session. To obtain a
-     * token, first call the <a>StartConfigurationSession</a> API. Note that every call
-     * to <code>GetLatestConfiguration</code> will return a new
-     * <code>ConfigurationToken</code> (<code>NextPollConfigurationToken</code> in the
-     * response) and <i>must</i> be provided to subsequent
-     * <code>GetLatestConfiguration</code> API calls.</p>  <p>This token
-     * should only be used once. To support long poll use cases, the token is valid for
-     * up to 24 hours. If a <code>GetLatestConfiguration</code> call uses an expired
-     * token, the system returns <code>BadRequestException</code>.</p> 
-     */
-    inline void SetConfigurationToken(const char* value) { m_configurationTokenHasBeenSet = true; m_configurationToken.assign(value); }
-
-    /**
-     * <p>Token describing the current state of the configuration session. To obtain a
-     * token, first call the <a>StartConfigurationSession</a> API. Note that every call
-     * to <code>GetLatestConfiguration</code> will return a new
-     * <code>ConfigurationToken</code> (<code>NextPollConfigurationToken</code> in the
-     * response) and <i>must</i> be provided to subsequent
-     * <code>GetLatestConfiguration</code> API calls.</p>  <p>This token
-     * should only be used once. To support long poll use cases, the token is valid for
-     * up to 24 hours. If a <code>GetLatestConfiguration</code> call uses an expired
-     * token, the system returns <code>BadRequestException</code>.</p> 
-     */
-    inline GetLatestConfigurationRequest& WithConfigurationToken(const Aws::String& value) { SetConfigurationToken(value); return *this;}
-
-    /**
-     * <p>Token describing the current state of the configuration session. To obtain a
-     * token, first call the <a>StartConfigurationSession</a> API. Note that every call
-     * to <code>GetLatestConfiguration</code> will return a new
-     * <code>ConfigurationToken</code> (<code>NextPollConfigurationToken</code> in the
-     * response) and <i>must</i> be provided to subsequent
-     * <code>GetLatestConfiguration</code> API calls.</p>  <p>This token
-     * should only be used once. To support long poll use cases, the token is valid for
-     * up to 24 hours. If a <code>GetLatestConfiguration</code> call uses an expired
-     * token, the system returns <code>BadRequestException</code>.</p> 
-     */
-    inline GetLatestConfigurationRequest& WithConfigurationToken(Aws::String&& value) { SetConfigurationToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Token describing the current state of the configuration session. To obtain a
-     * token, first call the <a>StartConfigurationSession</a> API. Note that every call
-     * to <code>GetLatestConfiguration</code> will return a new
-     * <code>ConfigurationToken</code> (<code>NextPollConfigurationToken</code> in the
-     * response) and <i>must</i> be provided to subsequent
-     * <code>GetLatestConfiguration</code> API calls.</p>  <p>This token
-     * should only be used once. To support long poll use cases, the token is valid for
-     * up to 24 hours. If a <code>GetLatestConfiguration</code> call uses an expired
-     * token, the system returns <code>BadRequestException</code>.</p> 
-     */
-    inline GetLatestConfigurationRequest& WithConfigurationToken(const char* value) { SetConfigurationToken(value); return *this;}
-
+    template<typename ConfigurationTokenT = Aws::String>
+    void SetConfigurationToken(ConfigurationTokenT&& value) { m_configurationTokenHasBeenSet = true; m_configurationToken = std::forward<ConfigurationTokenT>(value); }
+    template<typename ConfigurationTokenT = Aws::String>
+    GetLatestConfigurationRequest& WithConfigurationToken(ConfigurationTokenT&& value) { SetConfigurationToken(std::forward<ConfigurationTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_configurationToken;

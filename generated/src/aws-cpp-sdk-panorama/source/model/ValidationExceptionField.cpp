@@ -18,15 +18,7 @@ namespace Panorama
 namespace Model
 {
 
-ValidationExceptionField::ValidationExceptionField() : 
-    m_messageHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-ValidationExceptionField::ValidationExceptionField(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_nameHasBeenSet(false)
+ValidationExceptionField::ValidationExceptionField(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ValidationExceptionField& ValidationExceptionField::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

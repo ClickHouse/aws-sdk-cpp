@@ -30,60 +30,38 @@ namespace Model
   class NumberFilter
   {
   public:
-    AWS_INSPECTOR2_API NumberFilter();
+    AWS_INSPECTOR2_API NumberFilter() = default;
     AWS_INSPECTOR2_API NumberFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API NumberFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The lowest number to be included in the filter.</p>
-     */
-    inline double GetLowerInclusive() const{ return m_lowerInclusive; }
-
-    /**
-     * <p>The lowest number to be included in the filter.</p>
-     */
-    inline bool LowerInclusiveHasBeenSet() const { return m_lowerInclusiveHasBeenSet; }
-
-    /**
-     * <p>The lowest number to be included in the filter.</p>
-     */
-    inline void SetLowerInclusive(double value) { m_lowerInclusiveHasBeenSet = true; m_lowerInclusive = value; }
-
-    /**
-     * <p>The lowest number to be included in the filter.</p>
-     */
-    inline NumberFilter& WithLowerInclusive(double value) { SetLowerInclusive(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The highest number to be included in the filter.</p>
      */
-    inline double GetUpperInclusive() const{ return m_upperInclusive; }
-
-    /**
-     * <p>The highest number to be included in the filter.</p>
-     */
+    inline double GetUpperInclusive() const { return m_upperInclusive; }
     inline bool UpperInclusiveHasBeenSet() const { return m_upperInclusiveHasBeenSet; }
-
-    /**
-     * <p>The highest number to be included in the filter.</p>
-     */
     inline void SetUpperInclusive(double value) { m_upperInclusiveHasBeenSet = true; m_upperInclusive = value; }
-
-    /**
-     * <p>The highest number to be included in the filter.</p>
-     */
     inline NumberFilter& WithUpperInclusive(double value) { SetUpperInclusive(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The lowest number to be included in the filter.</p>
+     */
+    inline double GetLowerInclusive() const { return m_lowerInclusive; }
+    inline bool LowerInclusiveHasBeenSet() const { return m_lowerInclusiveHasBeenSet; }
+    inline void SetLowerInclusive(double value) { m_lowerInclusiveHasBeenSet = true; m_lowerInclusive = value; }
+    inline NumberFilter& WithLowerInclusive(double value) { SetLowerInclusive(value); return *this;}
+    ///@}
   private:
 
-    double m_lowerInclusive;
-    bool m_lowerInclusiveHasBeenSet = false;
-
-    double m_upperInclusive;
+    double m_upperInclusive{0.0};
     bool m_upperInclusiveHasBeenSet = false;
+
+    double m_lowerInclusive{0.0};
+    bool m_lowerInclusiveHasBeenSet = false;
   };
 
 } // namespace Model

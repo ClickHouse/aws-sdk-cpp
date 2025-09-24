@@ -18,19 +18,7 @@ namespace CloudSearchDomain
 namespace Model
 {
 
-SuggestModel::SuggestModel() : 
-    m_queryHasBeenSet(false),
-    m_found(0),
-    m_foundHasBeenSet(false),
-    m_suggestionsHasBeenSet(false)
-{
-}
-
-SuggestModel::SuggestModel(JsonView jsonValue) : 
-    m_queryHasBeenSet(false),
-    m_found(0),
-    m_foundHasBeenSet(false),
-    m_suggestionsHasBeenSet(false)
+SuggestModel::SuggestModel(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ SuggestModel& SuggestModel::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("query"))
   {
     m_query = jsonValue.GetString("query");
-
     m_queryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("found"))
   {
     m_found = jsonValue.GetInt64("found");
-
     m_foundHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("suggestions"))
   {
     Aws::Utils::Array<JsonView> suggestionsJsonList = jsonValue.GetArray("suggestions");
@@ -60,7 +44,6 @@ SuggestModel& SuggestModel::operator =(JsonView jsonValue)
     }
     m_suggestionsHasBeenSet = true;
   }
-
   return *this;
 }
 

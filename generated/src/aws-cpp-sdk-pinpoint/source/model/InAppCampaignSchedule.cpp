@@ -18,17 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-InAppCampaignSchedule::InAppCampaignSchedule() : 
-    m_endDateHasBeenSet(false),
-    m_eventFilterHasBeenSet(false),
-    m_quietTimeHasBeenSet(false)
-{
-}
-
-InAppCampaignSchedule::InAppCampaignSchedule(JsonView jsonValue) : 
-    m_endDateHasBeenSet(false),
-    m_eventFilterHasBeenSet(false),
-    m_quietTimeHasBeenSet(false)
+InAppCampaignSchedule::InAppCampaignSchedule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ InAppCampaignSchedule& InAppCampaignSchedule::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EndDate"))
   {
     m_endDate = jsonValue.GetString("EndDate");
-
     m_endDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EventFilter"))
   {
     m_eventFilter = jsonValue.GetObject("EventFilter");
-
     m_eventFilterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("QuietTime"))
   {
     m_quietTime = jsonValue.GetObject("QuietTime");
-
     m_quietTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

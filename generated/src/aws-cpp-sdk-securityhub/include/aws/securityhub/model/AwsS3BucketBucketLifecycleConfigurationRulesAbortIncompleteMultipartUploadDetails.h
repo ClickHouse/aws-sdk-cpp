@@ -30,39 +30,25 @@ namespace Model
   class AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails();
+    AWS_SECURITYHUB_API AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails() = default;
     AWS_SECURITYHUB_API AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of days after which Amazon S3 cancels an incomplete multipart
      * upload.</p>
      */
-    inline int GetDaysAfterInitiation() const{ return m_daysAfterInitiation; }
-
-    /**
-     * <p>The number of days after which Amazon S3 cancels an incomplete multipart
-     * upload.</p>
-     */
+    inline int GetDaysAfterInitiation() const { return m_daysAfterInitiation; }
     inline bool DaysAfterInitiationHasBeenSet() const { return m_daysAfterInitiationHasBeenSet; }
-
-    /**
-     * <p>The number of days after which Amazon S3 cancels an incomplete multipart
-     * upload.</p>
-     */
     inline void SetDaysAfterInitiation(int value) { m_daysAfterInitiationHasBeenSet = true; m_daysAfterInitiation = value; }
-
-    /**
-     * <p>The number of days after which Amazon S3 cancels an incomplete multipart
-     * upload.</p>
-     */
     inline AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails& WithDaysAfterInitiation(int value) { SetDaysAfterInitiation(value); return *this;}
-
+    ///@}
   private:
 
-    int m_daysAfterInitiation;
+    int m_daysAfterInitiation{0};
     bool m_daysAfterInitiationHasBeenSet = false;
   };
 

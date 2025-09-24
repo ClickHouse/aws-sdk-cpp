@@ -32,319 +32,138 @@ namespace Model
   class UpdateRobotApplicationResult
   {
   public:
-    AWS_ROBOMAKER_API UpdateRobotApplicationResult();
+    AWS_ROBOMAKER_API UpdateRobotApplicationResult() = default;
     AWS_ROBOMAKER_API UpdateRobotApplicationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ROBOMAKER_API UpdateRobotApplicationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the updated robot application.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    UpdateRobotApplicationResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated robot application.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated robot application.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated robot application.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the updated robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the robot application.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateRobotApplicationResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the robot application.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the robot application.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the robot application.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the robot application.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
+    inline const Aws::String& GetVersion() const { return m_version; }
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    UpdateRobotApplicationResult& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_version = value; }
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_version = std::move(value); }
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline void SetVersion(const char* value) { m_version.assign(value); }
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithVersion(const char* value) { SetVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The sources of the robot application.</p>
      */
-    inline const Aws::Vector<Source>& GetSources() const{ return m_sources; }
+    inline const Aws::Vector<Source>& GetSources() const { return m_sources; }
+    template<typename SourcesT = Aws::Vector<Source>>
+    void SetSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources = std::forward<SourcesT>(value); }
+    template<typename SourcesT = Aws::Vector<Source>>
+    UpdateRobotApplicationResult& WithSources(SourcesT&& value) { SetSources(std::forward<SourcesT>(value)); return *this;}
+    template<typename SourcesT = Source>
+    UpdateRobotApplicationResult& AddSources(SourcesT&& value) { m_sourcesHasBeenSet = true; m_sources.emplace_back(std::forward<SourcesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The sources of the robot application.</p>
+     * <p>The robot software suite used by the robot application.</p>
      */
-    inline void SetSources(const Aws::Vector<Source>& value) { m_sources = value; }
+    inline const RobotSoftwareSuite& GetRobotSoftwareSuite() const { return m_robotSoftwareSuite; }
+    template<typename RobotSoftwareSuiteT = RobotSoftwareSuite>
+    void SetRobotSoftwareSuite(RobotSoftwareSuiteT&& value) { m_robotSoftwareSuiteHasBeenSet = true; m_robotSoftwareSuite = std::forward<RobotSoftwareSuiteT>(value); }
+    template<typename RobotSoftwareSuiteT = RobotSoftwareSuite>
+    UpdateRobotApplicationResult& WithRobotSoftwareSuite(RobotSoftwareSuiteT&& value) { SetRobotSoftwareSuite(std::forward<RobotSoftwareSuiteT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The sources of the robot application.</p>
-     */
-    inline void SetSources(Aws::Vector<Source>&& value) { m_sources = std::move(value); }
-
-    /**
-     * <p>The sources of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithSources(const Aws::Vector<Source>& value) { SetSources(value); return *this;}
-
-    /**
-     * <p>The sources of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithSources(Aws::Vector<Source>&& value) { SetSources(std::move(value)); return *this;}
-
-    /**
-     * <p>The sources of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& AddSources(const Source& value) { m_sources.push_back(value); return *this; }
-
-    /**
-     * <p>The sources of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& AddSources(Source&& value) { m_sources.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The robot software suite (ROS distribution) used by the robot
-     * application.</p>
-     */
-    inline const RobotSoftwareSuite& GetRobotSoftwareSuite() const{ return m_robotSoftwareSuite; }
-
-    /**
-     * <p>The robot software suite (ROS distribution) used by the robot
-     * application.</p>
-     */
-    inline void SetRobotSoftwareSuite(const RobotSoftwareSuite& value) { m_robotSoftwareSuite = value; }
-
-    /**
-     * <p>The robot software suite (ROS distribution) used by the robot
-     * application.</p>
-     */
-    inline void SetRobotSoftwareSuite(RobotSoftwareSuite&& value) { m_robotSoftwareSuite = std::move(value); }
-
-    /**
-     * <p>The robot software suite (ROS distribution) used by the robot
-     * application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithRobotSoftwareSuite(const RobotSoftwareSuite& value) { SetRobotSoftwareSuite(value); return *this;}
-
-    /**
-     * <p>The robot software suite (ROS distribution) used by the robot
-     * application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithRobotSoftwareSuite(RobotSoftwareSuite&& value) { SetRobotSoftwareSuite(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time, in milliseconds since the epoch, when the robot application was
      * last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    UpdateRobotApplicationResult& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time, in milliseconds since the epoch, when the robot application was
-     * last updated.</p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAt = value; }
-
-    /**
-     * <p>The time, in milliseconds since the epoch, when the robot application was
-     * last updated.</p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p>The time, in milliseconds since the epoch, when the robot application was
-     * last updated.</p>
-     */
-    inline UpdateRobotApplicationResult& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The time, in milliseconds since the epoch, when the robot application was
-     * last updated.</p>
-     */
-    inline UpdateRobotApplicationResult& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The revision id of the robot application.</p>
      */
-    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
+    inline const Aws::String& GetRevisionId() const { return m_revisionId; }
+    template<typename RevisionIdT = Aws::String>
+    void SetRevisionId(RevisionIdT&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::forward<RevisionIdT>(value); }
+    template<typename RevisionIdT = Aws::String>
+    UpdateRobotApplicationResult& WithRevisionId(RevisionIdT&& value) { SetRevisionId(std::forward<RevisionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The revision id of the robot application.</p>
-     */
-    inline void SetRevisionId(const Aws::String& value) { m_revisionId = value; }
-
-    /**
-     * <p>The revision id of the robot application.</p>
-     */
-    inline void SetRevisionId(Aws::String&& value) { m_revisionId = std::move(value); }
-
-    /**
-     * <p>The revision id of the robot application.</p>
-     */
-    inline void SetRevisionId(const char* value) { m_revisionId.assign(value); }
-
-    /**
-     * <p>The revision id of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
-
-    /**
-     * <p>The revision id of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The revision id of the robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The object that contains the Docker image URI for your robot application.</p>
      */
-    inline const Environment& GetEnvironment() const{ return m_environment; }
+    inline const Environment& GetEnvironment() const { return m_environment; }
+    template<typename EnvironmentT = Environment>
+    void SetEnvironment(EnvironmentT&& value) { m_environmentHasBeenSet = true; m_environment = std::forward<EnvironmentT>(value); }
+    template<typename EnvironmentT = Environment>
+    UpdateRobotApplicationResult& WithEnvironment(EnvironmentT&& value) { SetEnvironment(std::forward<EnvironmentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The object that contains the Docker image URI for your robot application.</p>
-     */
-    inline void SetEnvironment(const Environment& value) { m_environment = value; }
-
-    /**
-     * <p>The object that contains the Docker image URI for your robot application.</p>
-     */
-    inline void SetEnvironment(Environment&& value) { m_environment = std::move(value); }
-
-    /**
-     * <p>The object that contains the Docker image URI for your robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithEnvironment(const Environment& value) { SetEnvironment(value); return *this;}
-
-    /**
-     * <p>The object that contains the Docker image URI for your robot application.</p>
-     */
-    inline UpdateRobotApplicationResult& WithEnvironment(Environment&& value) { SetEnvironment(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateRobotApplicationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateRobotApplicationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateRobotApplicationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateRobotApplicationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_version;
+    bool m_versionHasBeenSet = false;
 
     Aws::Vector<Source> m_sources;
+    bool m_sourcesHasBeenSet = false;
 
     RobotSoftwareSuite m_robotSoftwareSuite;
+    bool m_robotSoftwareSuiteHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
+    bool m_lastUpdatedAtHasBeenSet = false;
 
     Aws::String m_revisionId;
+    bool m_revisionIdHasBeenSet = false;
 
     Environment m_environment;
+    bool m_environmentHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

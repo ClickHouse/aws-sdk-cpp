@@ -21,7 +21,7 @@ namespace Model
   class DescribeProfileRequest : public TransferRequest
   {
   public:
-    AWS_TRANSFER_API DescribeProfileRequest();
+    AWS_TRANSFER_API DescribeProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_TRANSFER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the profile that you want described.</p>
      */
-    inline const Aws::String& GetProfileId() const{ return m_profileId; }
-
-    /**
-     * <p>The identifier of the profile that you want described.</p>
-     */
+    inline const Aws::String& GetProfileId() const { return m_profileId; }
     inline bool ProfileIdHasBeenSet() const { return m_profileIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the profile that you want described.</p>
-     */
-    inline void SetProfileId(const Aws::String& value) { m_profileIdHasBeenSet = true; m_profileId = value; }
-
-    /**
-     * <p>The identifier of the profile that you want described.</p>
-     */
-    inline void SetProfileId(Aws::String&& value) { m_profileIdHasBeenSet = true; m_profileId = std::move(value); }
-
-    /**
-     * <p>The identifier of the profile that you want described.</p>
-     */
-    inline void SetProfileId(const char* value) { m_profileIdHasBeenSet = true; m_profileId.assign(value); }
-
-    /**
-     * <p>The identifier of the profile that you want described.</p>
-     */
-    inline DescribeProfileRequest& WithProfileId(const Aws::String& value) { SetProfileId(value); return *this;}
-
-    /**
-     * <p>The identifier of the profile that you want described.</p>
-     */
-    inline DescribeProfileRequest& WithProfileId(Aws::String&& value) { SetProfileId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the profile that you want described.</p>
-     */
-    inline DescribeProfileRequest& WithProfileId(const char* value) { SetProfileId(value); return *this;}
-
+    template<typename ProfileIdT = Aws::String>
+    void SetProfileId(ProfileIdT&& value) { m_profileIdHasBeenSet = true; m_profileId = std::forward<ProfileIdT>(value); }
+    template<typename ProfileIdT = Aws::String>
+    DescribeProfileRequest& WithProfileId(ProfileIdT&& value) { SetProfileId(std::forward<ProfileIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_profileId;

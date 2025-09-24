@@ -18,19 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-DecimalValueWhenUnsetConfiguration::DecimalValueWhenUnsetConfiguration() : 
-    m_valueWhenUnsetOption(ValueWhenUnsetOption::NOT_SET),
-    m_valueWhenUnsetOptionHasBeenSet(false),
-    m_customValue(0.0),
-    m_customValueHasBeenSet(false)
-{
-}
-
-DecimalValueWhenUnsetConfiguration::DecimalValueWhenUnsetConfiguration(JsonView jsonValue) : 
-    m_valueWhenUnsetOption(ValueWhenUnsetOption::NOT_SET),
-    m_valueWhenUnsetOptionHasBeenSet(false),
-    m_customValue(0.0),
-    m_customValueHasBeenSet(false)
+DecimalValueWhenUnsetConfiguration::DecimalValueWhenUnsetConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ DecimalValueWhenUnsetConfiguration& DecimalValueWhenUnsetConfiguration::operator
   if(jsonValue.ValueExists("ValueWhenUnsetOption"))
   {
     m_valueWhenUnsetOption = ValueWhenUnsetOptionMapper::GetValueWhenUnsetOptionForName(jsonValue.GetString("ValueWhenUnsetOption"));
-
     m_valueWhenUnsetOptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CustomValue"))
   {
     m_customValue = jsonValue.GetDouble("CustomValue");
-
     m_customValueHasBeenSet = true;
   }
-
   return *this;
 }
 

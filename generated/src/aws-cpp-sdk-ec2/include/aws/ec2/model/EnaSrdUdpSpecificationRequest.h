@@ -30,7 +30,7 @@ namespace Model
   class EnaSrdUdpSpecificationRequest
   {
   public:
-    AWS_EC2_API EnaSrdUdpSpecificationRequest();
+    AWS_EC2_API EnaSrdUdpSpecificationRequest() = default;
     AWS_EC2_API EnaSrdUdpSpecificationRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API EnaSrdUdpSpecificationRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,41 +38,21 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Indicates whether UDP traffic uses ENA Express for your instance. To ensure
      * that UDP traffic can use ENA Express when you launch an instance, you must also
      * set <b>EnaSrdEnabled</b> in the <b>EnaSrdSpecificationRequest</b> to
-     * <code>true</code> in your launch template.</p>
+     * <code>true</code>.</p>
      */
-    inline bool GetEnaSrdUdpEnabled() const{ return m_enaSrdUdpEnabled; }
-
-    /**
-     * <p>Indicates whether UDP traffic uses ENA Express for your instance. To ensure
-     * that UDP traffic can use ENA Express when you launch an instance, you must also
-     * set <b>EnaSrdEnabled</b> in the <b>EnaSrdSpecificationRequest</b> to
-     * <code>true</code> in your launch template.</p>
-     */
+    inline bool GetEnaSrdUdpEnabled() const { return m_enaSrdUdpEnabled; }
     inline bool EnaSrdUdpEnabledHasBeenSet() const { return m_enaSrdUdpEnabledHasBeenSet; }
-
-    /**
-     * <p>Indicates whether UDP traffic uses ENA Express for your instance. To ensure
-     * that UDP traffic can use ENA Express when you launch an instance, you must also
-     * set <b>EnaSrdEnabled</b> in the <b>EnaSrdSpecificationRequest</b> to
-     * <code>true</code> in your launch template.</p>
-     */
     inline void SetEnaSrdUdpEnabled(bool value) { m_enaSrdUdpEnabledHasBeenSet = true; m_enaSrdUdpEnabled = value; }
-
-    /**
-     * <p>Indicates whether UDP traffic uses ENA Express for your instance. To ensure
-     * that UDP traffic can use ENA Express when you launch an instance, you must also
-     * set <b>EnaSrdEnabled</b> in the <b>EnaSrdSpecificationRequest</b> to
-     * <code>true</code> in your launch template.</p>
-     */
     inline EnaSrdUdpSpecificationRequest& WithEnaSrdUdpEnabled(bool value) { SetEnaSrdUdpEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enaSrdUdpEnabled;
+    bool m_enaSrdUdpEnabled{false};
     bool m_enaSrdUdpEnabledHasBeenSet = false;
   };
 

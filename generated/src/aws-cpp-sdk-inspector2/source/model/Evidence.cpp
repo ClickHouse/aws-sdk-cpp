@@ -18,44 +18,28 @@ namespace Inspector2
 namespace Model
 {
 
-Evidence::Evidence() : 
-    m_evidenceDetailHasBeenSet(false),
-    m_evidenceRuleHasBeenSet(false),
-    m_severityHasBeenSet(false)
-{
-}
-
-Evidence::Evidence(JsonView jsonValue) : 
-    m_evidenceDetailHasBeenSet(false),
-    m_evidenceRuleHasBeenSet(false),
-    m_severityHasBeenSet(false)
+Evidence::Evidence(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 Evidence& Evidence::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("evidenceDetail"))
-  {
-    m_evidenceDetail = jsonValue.GetString("evidenceDetail");
-
-    m_evidenceDetailHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("evidenceRule"))
   {
     m_evidenceRule = jsonValue.GetString("evidenceRule");
-
     m_evidenceRuleHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("evidenceDetail"))
+  {
+    m_evidenceDetail = jsonValue.GetString("evidenceDetail");
+    m_evidenceDetailHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("severity"))
   {
     m_severity = jsonValue.GetString("severity");
-
     m_severityHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -63,15 +47,15 @@ JsonValue Evidence::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_evidenceDetailHasBeenSet)
-  {
-   payload.WithString("evidenceDetail", m_evidenceDetail);
-
-  }
-
   if(m_evidenceRuleHasBeenSet)
   {
    payload.WithString("evidenceRule", m_evidenceRule);
+
+  }
+
+  if(m_evidenceDetailHasBeenSet)
+  {
+   payload.WithString("evidenceDetail", m_evidenceDetail);
 
   }
 

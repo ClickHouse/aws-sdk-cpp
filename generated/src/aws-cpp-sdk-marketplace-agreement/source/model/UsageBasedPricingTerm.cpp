@@ -18,17 +18,7 @@ namespace AgreementService
 namespace Model
 {
 
-UsageBasedPricingTerm::UsageBasedPricingTerm() : 
-    m_currencyCodeHasBeenSet(false),
-    m_rateCardsHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-UsageBasedPricingTerm::UsageBasedPricingTerm(JsonView jsonValue) : 
-    m_currencyCodeHasBeenSet(false),
-    m_rateCardsHasBeenSet(false),
-    m_typeHasBeenSet(false)
+UsageBasedPricingTerm::UsageBasedPricingTerm(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ UsageBasedPricingTerm& UsageBasedPricingTerm::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("currencyCode"))
   {
     m_currencyCode = jsonValue.GetString("currencyCode");
-
     m_currencyCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rateCards"))
   {
     Aws::Utils::Array<JsonView> rateCardsJsonList = jsonValue.GetArray("rateCards");
@@ -51,14 +39,11 @@ UsageBasedPricingTerm& UsageBasedPricingTerm::operator =(JsonView jsonValue)
     }
     m_rateCardsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = jsonValue.GetString("type");
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

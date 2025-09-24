@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-AwsJobPresignedUrlConfig::AwsJobPresignedUrlConfig() : 
-    m_expiresInSec(0),
-    m_expiresInSecHasBeenSet(false)
-{
-}
-
-AwsJobPresignedUrlConfig::AwsJobPresignedUrlConfig(JsonView jsonValue) : 
-    m_expiresInSec(0),
-    m_expiresInSecHasBeenSet(false)
+AwsJobPresignedUrlConfig::AwsJobPresignedUrlConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AwsJobPresignedUrlConfig& AwsJobPresignedUrlConfig::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("expiresInSec"))
   {
     m_expiresInSec = jsonValue.GetInt64("expiresInSec");
-
     m_expiresInSecHasBeenSet = true;
   }
-
   return *this;
 }
 

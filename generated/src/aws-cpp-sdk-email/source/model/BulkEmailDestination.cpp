@@ -20,17 +20,7 @@ namespace SES
 namespace Model
 {
 
-BulkEmailDestination::BulkEmailDestination() : 
-    m_destinationHasBeenSet(false),
-    m_replacementTagsHasBeenSet(false),
-    m_replacementTemplateDataHasBeenSet(false)
-{
-}
-
-BulkEmailDestination::BulkEmailDestination(const XmlNode& xmlNode) : 
-    m_destinationHasBeenSet(false),
-    m_replacementTagsHasBeenSet(false),
-    m_replacementTemplateDataHasBeenSet(false)
+BulkEmailDestination::BulkEmailDestination(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -51,6 +41,7 @@ BulkEmailDestination& BulkEmailDestination::operator =(const XmlNode& xmlNode)
     if(!replacementTagsNode.IsNull())
     {
       XmlNode replacementTagsMember = replacementTagsNode.FirstChild("member");
+      m_replacementTagsHasBeenSet = !replacementTagsMember.IsNull();
       while(!replacementTagsMember.IsNull())
       {
         m_replacementTags.push_back(replacementTagsMember);
@@ -111,7 +102,7 @@ void BulkEmailDestination::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_replacementTags)
       {
         Aws::StringStream replacementTagsSs;
-        replacementTagsSs << location <<  ".ReplacementTags.member." << replacementTagsIdx++;
+        replacementTagsSs << location << ".ReplacementTags.member." << replacementTagsIdx++;
         item.OutputToStream(oStream, replacementTagsSs.str().c_str());
       }
   }

@@ -14,6 +14,7 @@
 #include <aws/quicksight/model/AssetBundleExportJobThemeOverrideProperties.h>
 #include <aws/quicksight/model/AssetBundleExportJobAnalysisOverrideProperties.h>
 #include <aws/quicksight/model/AssetBundleExportJobDashboardOverrideProperties.h>
+#include <aws/quicksight/model/AssetBundleExportJobFolderOverrideProperties.h>
 #include <utility>
 
 namespace Aws
@@ -40,391 +41,144 @@ namespace Model
   class AssetBundleCloudFormationOverridePropertyConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API AssetBundleCloudFormationOverridePropertyConfiguration();
+    AWS_QUICKSIGHT_API AssetBundleCloudFormationOverridePropertyConfiguration() = default;
     AWS_QUICKSIGHT_API AssetBundleCloudFormationOverridePropertyConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AssetBundleCloudFormationOverridePropertyConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An optional list of structures that control how resource IDs are
      * parameterized in the returned CloudFormation template.</p>
      */
-    inline const AssetBundleExportJobResourceIdOverrideConfiguration& GetResourceIdOverrideConfiguration() const{ return m_resourceIdOverrideConfiguration; }
-
-    /**
-     * <p>An optional list of structures that control how resource IDs are
-     * parameterized in the returned CloudFormation template.</p>
-     */
+    inline const AssetBundleExportJobResourceIdOverrideConfiguration& GetResourceIdOverrideConfiguration() const { return m_resourceIdOverrideConfiguration; }
     inline bool ResourceIdOverrideConfigurationHasBeenSet() const { return m_resourceIdOverrideConfigurationHasBeenSet; }
+    template<typename ResourceIdOverrideConfigurationT = AssetBundleExportJobResourceIdOverrideConfiguration>
+    void SetResourceIdOverrideConfiguration(ResourceIdOverrideConfigurationT&& value) { m_resourceIdOverrideConfigurationHasBeenSet = true; m_resourceIdOverrideConfiguration = std::forward<ResourceIdOverrideConfigurationT>(value); }
+    template<typename ResourceIdOverrideConfigurationT = AssetBundleExportJobResourceIdOverrideConfiguration>
+    AssetBundleCloudFormationOverridePropertyConfiguration& WithResourceIdOverrideConfiguration(ResourceIdOverrideConfigurationT&& value) { SetResourceIdOverrideConfiguration(std::forward<ResourceIdOverrideConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional list of structures that control how resource IDs are
-     * parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetResourceIdOverrideConfiguration(const AssetBundleExportJobResourceIdOverrideConfiguration& value) { m_resourceIdOverrideConfigurationHasBeenSet = true; m_resourceIdOverrideConfiguration = value; }
-
-    /**
-     * <p>An optional list of structures that control how resource IDs are
-     * parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetResourceIdOverrideConfiguration(AssetBundleExportJobResourceIdOverrideConfiguration&& value) { m_resourceIdOverrideConfigurationHasBeenSet = true; m_resourceIdOverrideConfiguration = std::move(value); }
-
-    /**
-     * <p>An optional list of structures that control how resource IDs are
-     * parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithResourceIdOverrideConfiguration(const AssetBundleExportJobResourceIdOverrideConfiguration& value) { SetResourceIdOverrideConfiguration(value); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how resource IDs are
-     * parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithResourceIdOverrideConfiguration(AssetBundleExportJobResourceIdOverrideConfiguration&& value) { SetResourceIdOverrideConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional list of structures that control how <code>VPCConnection</code>
      * resources are parameterized in the returned CloudFormation template.</p>
      */
-    inline const Aws::Vector<AssetBundleExportJobVPCConnectionOverrideProperties>& GetVPCConnections() const{ return m_vPCConnections; }
-
-    /**
-     * <p>An optional list of structures that control how <code>VPCConnection</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
+    inline const Aws::Vector<AssetBundleExportJobVPCConnectionOverrideProperties>& GetVPCConnections() const { return m_vPCConnections; }
     inline bool VPCConnectionsHasBeenSet() const { return m_vPCConnectionsHasBeenSet; }
+    template<typename VPCConnectionsT = Aws::Vector<AssetBundleExportJobVPCConnectionOverrideProperties>>
+    void SetVPCConnections(VPCConnectionsT&& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections = std::forward<VPCConnectionsT>(value); }
+    template<typename VPCConnectionsT = Aws::Vector<AssetBundleExportJobVPCConnectionOverrideProperties>>
+    AssetBundleCloudFormationOverridePropertyConfiguration& WithVPCConnections(VPCConnectionsT&& value) { SetVPCConnections(std::forward<VPCConnectionsT>(value)); return *this;}
+    template<typename VPCConnectionsT = AssetBundleExportJobVPCConnectionOverrideProperties>
+    AssetBundleCloudFormationOverridePropertyConfiguration& AddVPCConnections(VPCConnectionsT&& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections.emplace_back(std::forward<VPCConnectionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An optional list of structures that control how <code>VPCConnection</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetVPCConnections(const Aws::Vector<AssetBundleExportJobVPCConnectionOverrideProperties>& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections = value; }
-
-    /**
-     * <p>An optional list of structures that control how <code>VPCConnection</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetVPCConnections(Aws::Vector<AssetBundleExportJobVPCConnectionOverrideProperties>&& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections = std::move(value); }
-
-    /**
-     * <p>An optional list of structures that control how <code>VPCConnection</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithVPCConnections(const Aws::Vector<AssetBundleExportJobVPCConnectionOverrideProperties>& value) { SetVPCConnections(value); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>VPCConnection</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithVPCConnections(Aws::Vector<AssetBundleExportJobVPCConnectionOverrideProperties>&& value) { SetVPCConnections(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>VPCConnection</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddVPCConnections(const AssetBundleExportJobVPCConnectionOverrideProperties& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections.push_back(value); return *this; }
-
-    /**
-     * <p>An optional list of structures that control how <code>VPCConnection</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddVPCConnections(AssetBundleExportJobVPCConnectionOverrideProperties&& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An optional list of structures that control how <code>RefreshSchedule</code>
      * resources are parameterized in the returned CloudFormation template.</p>
      */
-    inline const Aws::Vector<AssetBundleExportJobRefreshScheduleOverrideProperties>& GetRefreshSchedules() const{ return m_refreshSchedules; }
-
-    /**
-     * <p>An optional list of structures that control how <code>RefreshSchedule</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
+    inline const Aws::Vector<AssetBundleExportJobRefreshScheduleOverrideProperties>& GetRefreshSchedules() const { return m_refreshSchedules; }
     inline bool RefreshSchedulesHasBeenSet() const { return m_refreshSchedulesHasBeenSet; }
+    template<typename RefreshSchedulesT = Aws::Vector<AssetBundleExportJobRefreshScheduleOverrideProperties>>
+    void SetRefreshSchedules(RefreshSchedulesT&& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules = std::forward<RefreshSchedulesT>(value); }
+    template<typename RefreshSchedulesT = Aws::Vector<AssetBundleExportJobRefreshScheduleOverrideProperties>>
+    AssetBundleCloudFormationOverridePropertyConfiguration& WithRefreshSchedules(RefreshSchedulesT&& value) { SetRefreshSchedules(std::forward<RefreshSchedulesT>(value)); return *this;}
+    template<typename RefreshSchedulesT = AssetBundleExportJobRefreshScheduleOverrideProperties>
+    AssetBundleCloudFormationOverridePropertyConfiguration& AddRefreshSchedules(RefreshSchedulesT&& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules.emplace_back(std::forward<RefreshSchedulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An optional list of structures that control how <code>RefreshSchedule</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetRefreshSchedules(const Aws::Vector<AssetBundleExportJobRefreshScheduleOverrideProperties>& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules = value; }
-
-    /**
-     * <p>An optional list of structures that control how <code>RefreshSchedule</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetRefreshSchedules(Aws::Vector<AssetBundleExportJobRefreshScheduleOverrideProperties>&& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules = std::move(value); }
-
-    /**
-     * <p>An optional list of structures that control how <code>RefreshSchedule</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithRefreshSchedules(const Aws::Vector<AssetBundleExportJobRefreshScheduleOverrideProperties>& value) { SetRefreshSchedules(value); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>RefreshSchedule</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithRefreshSchedules(Aws::Vector<AssetBundleExportJobRefreshScheduleOverrideProperties>&& value) { SetRefreshSchedules(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>RefreshSchedule</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddRefreshSchedules(const AssetBundleExportJobRefreshScheduleOverrideProperties& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules.push_back(value); return *this; }
-
-    /**
-     * <p>An optional list of structures that control how <code>RefreshSchedule</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddRefreshSchedules(AssetBundleExportJobRefreshScheduleOverrideProperties&& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An optional list of structures that control how <code>DataSource</code>
      * resources are parameterized in the returned CloudFormation template.</p>
      */
-    inline const Aws::Vector<AssetBundleExportJobDataSourceOverrideProperties>& GetDataSources() const{ return m_dataSources; }
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSource</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
+    inline const Aws::Vector<AssetBundleExportJobDataSourceOverrideProperties>& GetDataSources() const { return m_dataSources; }
     inline bool DataSourcesHasBeenSet() const { return m_dataSourcesHasBeenSet; }
+    template<typename DataSourcesT = Aws::Vector<AssetBundleExportJobDataSourceOverrideProperties>>
+    void SetDataSources(DataSourcesT&& value) { m_dataSourcesHasBeenSet = true; m_dataSources = std::forward<DataSourcesT>(value); }
+    template<typename DataSourcesT = Aws::Vector<AssetBundleExportJobDataSourceOverrideProperties>>
+    AssetBundleCloudFormationOverridePropertyConfiguration& WithDataSources(DataSourcesT&& value) { SetDataSources(std::forward<DataSourcesT>(value)); return *this;}
+    template<typename DataSourcesT = AssetBundleExportJobDataSourceOverrideProperties>
+    AssetBundleCloudFormationOverridePropertyConfiguration& AddDataSources(DataSourcesT&& value) { m_dataSourcesHasBeenSet = true; m_dataSources.emplace_back(std::forward<DataSourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An optional list of structures that control how <code>DataSource</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetDataSources(const Aws::Vector<AssetBundleExportJobDataSourceOverrideProperties>& value) { m_dataSourcesHasBeenSet = true; m_dataSources = value; }
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSource</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetDataSources(Aws::Vector<AssetBundleExportJobDataSourceOverrideProperties>&& value) { m_dataSourcesHasBeenSet = true; m_dataSources = std::move(value); }
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSource</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithDataSources(const Aws::Vector<AssetBundleExportJobDataSourceOverrideProperties>& value) { SetDataSources(value); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSource</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithDataSources(Aws::Vector<AssetBundleExportJobDataSourceOverrideProperties>&& value) { SetDataSources(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSource</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddDataSources(const AssetBundleExportJobDataSourceOverrideProperties& value) { m_dataSourcesHasBeenSet = true; m_dataSources.push_back(value); return *this; }
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSource</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddDataSources(AssetBundleExportJobDataSourceOverrideProperties&& value) { m_dataSourcesHasBeenSet = true; m_dataSources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An optional list of structures that control how <code>DataSet</code>
      * resources are parameterized in the returned CloudFormation template.</p>
      */
-    inline const Aws::Vector<AssetBundleExportJobDataSetOverrideProperties>& GetDataSets() const{ return m_dataSets; }
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSet</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
+    inline const Aws::Vector<AssetBundleExportJobDataSetOverrideProperties>& GetDataSets() const { return m_dataSets; }
     inline bool DataSetsHasBeenSet() const { return m_dataSetsHasBeenSet; }
+    template<typename DataSetsT = Aws::Vector<AssetBundleExportJobDataSetOverrideProperties>>
+    void SetDataSets(DataSetsT&& value) { m_dataSetsHasBeenSet = true; m_dataSets = std::forward<DataSetsT>(value); }
+    template<typename DataSetsT = Aws::Vector<AssetBundleExportJobDataSetOverrideProperties>>
+    AssetBundleCloudFormationOverridePropertyConfiguration& WithDataSets(DataSetsT&& value) { SetDataSets(std::forward<DataSetsT>(value)); return *this;}
+    template<typename DataSetsT = AssetBundleExportJobDataSetOverrideProperties>
+    AssetBundleCloudFormationOverridePropertyConfiguration& AddDataSets(DataSetsT&& value) { m_dataSetsHasBeenSet = true; m_dataSets.emplace_back(std::forward<DataSetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An optional list of structures that control how <code>DataSet</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetDataSets(const Aws::Vector<AssetBundleExportJobDataSetOverrideProperties>& value) { m_dataSetsHasBeenSet = true; m_dataSets = value; }
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSet</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetDataSets(Aws::Vector<AssetBundleExportJobDataSetOverrideProperties>&& value) { m_dataSetsHasBeenSet = true; m_dataSets = std::move(value); }
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSet</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithDataSets(const Aws::Vector<AssetBundleExportJobDataSetOverrideProperties>& value) { SetDataSets(value); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSet</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithDataSets(Aws::Vector<AssetBundleExportJobDataSetOverrideProperties>&& value) { SetDataSets(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSet</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddDataSets(const AssetBundleExportJobDataSetOverrideProperties& value) { m_dataSetsHasBeenSet = true; m_dataSets.push_back(value); return *this; }
-
-    /**
-     * <p>An optional list of structures that control how <code>DataSet</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddDataSets(AssetBundleExportJobDataSetOverrideProperties&& value) { m_dataSetsHasBeenSet = true; m_dataSets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An optional list of structures that control how <code>Theme</code> resources
      * are parameterized in the returned CloudFormation template.</p>
      */
-    inline const Aws::Vector<AssetBundleExportJobThemeOverrideProperties>& GetThemes() const{ return m_themes; }
-
-    /**
-     * <p>An optional list of structures that control how <code>Theme</code> resources
-     * are parameterized in the returned CloudFormation template.</p>
-     */
+    inline const Aws::Vector<AssetBundleExportJobThemeOverrideProperties>& GetThemes() const { return m_themes; }
     inline bool ThemesHasBeenSet() const { return m_themesHasBeenSet; }
+    template<typename ThemesT = Aws::Vector<AssetBundleExportJobThemeOverrideProperties>>
+    void SetThemes(ThemesT&& value) { m_themesHasBeenSet = true; m_themes = std::forward<ThemesT>(value); }
+    template<typename ThemesT = Aws::Vector<AssetBundleExportJobThemeOverrideProperties>>
+    AssetBundleCloudFormationOverridePropertyConfiguration& WithThemes(ThemesT&& value) { SetThemes(std::forward<ThemesT>(value)); return *this;}
+    template<typename ThemesT = AssetBundleExportJobThemeOverrideProperties>
+    AssetBundleCloudFormationOverridePropertyConfiguration& AddThemes(ThemesT&& value) { m_themesHasBeenSet = true; m_themes.emplace_back(std::forward<ThemesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An optional list of structures that control how <code>Theme</code> resources
-     * are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetThemes(const Aws::Vector<AssetBundleExportJobThemeOverrideProperties>& value) { m_themesHasBeenSet = true; m_themes = value; }
-
-    /**
-     * <p>An optional list of structures that control how <code>Theme</code> resources
-     * are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetThemes(Aws::Vector<AssetBundleExportJobThemeOverrideProperties>&& value) { m_themesHasBeenSet = true; m_themes = std::move(value); }
-
-    /**
-     * <p>An optional list of structures that control how <code>Theme</code> resources
-     * are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithThemes(const Aws::Vector<AssetBundleExportJobThemeOverrideProperties>& value) { SetThemes(value); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>Theme</code> resources
-     * are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithThemes(Aws::Vector<AssetBundleExportJobThemeOverrideProperties>&& value) { SetThemes(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>Theme</code> resources
-     * are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddThemes(const AssetBundleExportJobThemeOverrideProperties& value) { m_themesHasBeenSet = true; m_themes.push_back(value); return *this; }
-
-    /**
-     * <p>An optional list of structures that control how <code>Theme</code> resources
-     * are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddThemes(AssetBundleExportJobThemeOverrideProperties&& value) { m_themesHasBeenSet = true; m_themes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An optional list of structures that control how <code>Analysis</code>
      * resources are parameterized in the returned CloudFormation template.</p>
      */
-    inline const Aws::Vector<AssetBundleExportJobAnalysisOverrideProperties>& GetAnalyses() const{ return m_analyses; }
-
-    /**
-     * <p>An optional list of structures that control how <code>Analysis</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
+    inline const Aws::Vector<AssetBundleExportJobAnalysisOverrideProperties>& GetAnalyses() const { return m_analyses; }
     inline bool AnalysesHasBeenSet() const { return m_analysesHasBeenSet; }
+    template<typename AnalysesT = Aws::Vector<AssetBundleExportJobAnalysisOverrideProperties>>
+    void SetAnalyses(AnalysesT&& value) { m_analysesHasBeenSet = true; m_analyses = std::forward<AnalysesT>(value); }
+    template<typename AnalysesT = Aws::Vector<AssetBundleExportJobAnalysisOverrideProperties>>
+    AssetBundleCloudFormationOverridePropertyConfiguration& WithAnalyses(AnalysesT&& value) { SetAnalyses(std::forward<AnalysesT>(value)); return *this;}
+    template<typename AnalysesT = AssetBundleExportJobAnalysisOverrideProperties>
+    AssetBundleCloudFormationOverridePropertyConfiguration& AddAnalyses(AnalysesT&& value) { m_analysesHasBeenSet = true; m_analyses.emplace_back(std::forward<AnalysesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An optional list of structures that control how <code>Analysis</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetAnalyses(const Aws::Vector<AssetBundleExportJobAnalysisOverrideProperties>& value) { m_analysesHasBeenSet = true; m_analyses = value; }
-
-    /**
-     * <p>An optional list of structures that control how <code>Analysis</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetAnalyses(Aws::Vector<AssetBundleExportJobAnalysisOverrideProperties>&& value) { m_analysesHasBeenSet = true; m_analyses = std::move(value); }
-
-    /**
-     * <p>An optional list of structures that control how <code>Analysis</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithAnalyses(const Aws::Vector<AssetBundleExportJobAnalysisOverrideProperties>& value) { SetAnalyses(value); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>Analysis</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithAnalyses(Aws::Vector<AssetBundleExportJobAnalysisOverrideProperties>&& value) { SetAnalyses(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>Analysis</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddAnalyses(const AssetBundleExportJobAnalysisOverrideProperties& value) { m_analysesHasBeenSet = true; m_analyses.push_back(value); return *this; }
-
-    /**
-     * <p>An optional list of structures that control how <code>Analysis</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddAnalyses(AssetBundleExportJobAnalysisOverrideProperties&& value) { m_analysesHasBeenSet = true; m_analyses.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An optional list of structures that control how <code>Dashboard</code>
      * resources are parameterized in the returned CloudFormation template.</p>
      */
-    inline const Aws::Vector<AssetBundleExportJobDashboardOverrideProperties>& GetDashboards() const{ return m_dashboards; }
-
-    /**
-     * <p>An optional list of structures that control how <code>Dashboard</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
+    inline const Aws::Vector<AssetBundleExportJobDashboardOverrideProperties>& GetDashboards() const { return m_dashboards; }
     inline bool DashboardsHasBeenSet() const { return m_dashboardsHasBeenSet; }
+    template<typename DashboardsT = Aws::Vector<AssetBundleExportJobDashboardOverrideProperties>>
+    void SetDashboards(DashboardsT&& value) { m_dashboardsHasBeenSet = true; m_dashboards = std::forward<DashboardsT>(value); }
+    template<typename DashboardsT = Aws::Vector<AssetBundleExportJobDashboardOverrideProperties>>
+    AssetBundleCloudFormationOverridePropertyConfiguration& WithDashboards(DashboardsT&& value) { SetDashboards(std::forward<DashboardsT>(value)); return *this;}
+    template<typename DashboardsT = AssetBundleExportJobDashboardOverrideProperties>
+    AssetBundleCloudFormationOverridePropertyConfiguration& AddDashboards(DashboardsT&& value) { m_dashboardsHasBeenSet = true; m_dashboards.emplace_back(std::forward<DashboardsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>An optional list of structures that control how <code>Dashboard</code>
+     * <p>An optional list of structures that controls how <code>Folder</code>
      * resources are parameterized in the returned CloudFormation template.</p>
      */
-    inline void SetDashboards(const Aws::Vector<AssetBundleExportJobDashboardOverrideProperties>& value) { m_dashboardsHasBeenSet = true; m_dashboards = value; }
-
-    /**
-     * <p>An optional list of structures that control how <code>Dashboard</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline void SetDashboards(Aws::Vector<AssetBundleExportJobDashboardOverrideProperties>&& value) { m_dashboardsHasBeenSet = true; m_dashboards = std::move(value); }
-
-    /**
-     * <p>An optional list of structures that control how <code>Dashboard</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithDashboards(const Aws::Vector<AssetBundleExportJobDashboardOverrideProperties>& value) { SetDashboards(value); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>Dashboard</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& WithDashboards(Aws::Vector<AssetBundleExportJobDashboardOverrideProperties>&& value) { SetDashboards(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional list of structures that control how <code>Dashboard</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddDashboards(const AssetBundleExportJobDashboardOverrideProperties& value) { m_dashboardsHasBeenSet = true; m_dashboards.push_back(value); return *this; }
-
-    /**
-     * <p>An optional list of structures that control how <code>Dashboard</code>
-     * resources are parameterized in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleCloudFormationOverridePropertyConfiguration& AddDashboards(AssetBundleExportJobDashboardOverrideProperties&& value) { m_dashboardsHasBeenSet = true; m_dashboards.push_back(std::move(value)); return *this; }
-
+    inline const Aws::Vector<AssetBundleExportJobFolderOverrideProperties>& GetFolders() const { return m_folders; }
+    inline bool FoldersHasBeenSet() const { return m_foldersHasBeenSet; }
+    template<typename FoldersT = Aws::Vector<AssetBundleExportJobFolderOverrideProperties>>
+    void SetFolders(FoldersT&& value) { m_foldersHasBeenSet = true; m_folders = std::forward<FoldersT>(value); }
+    template<typename FoldersT = Aws::Vector<AssetBundleExportJobFolderOverrideProperties>>
+    AssetBundleCloudFormationOverridePropertyConfiguration& WithFolders(FoldersT&& value) { SetFolders(std::forward<FoldersT>(value)); return *this;}
+    template<typename FoldersT = AssetBundleExportJobFolderOverrideProperties>
+    AssetBundleCloudFormationOverridePropertyConfiguration& AddFolders(FoldersT&& value) { m_foldersHasBeenSet = true; m_folders.emplace_back(std::forward<FoldersT>(value)); return *this; }
+    ///@}
   private:
 
     AssetBundleExportJobResourceIdOverrideConfiguration m_resourceIdOverrideConfiguration;
@@ -450,6 +204,9 @@ namespace Model
 
     Aws::Vector<AssetBundleExportJobDashboardOverrideProperties> m_dashboards;
     bool m_dashboardsHasBeenSet = false;
+
+    Aws::Vector<AssetBundleExportJobFolderOverrideProperties> m_folders;
+    bool m_foldersHasBeenSet = false;
   };
 
 } // namespace Model

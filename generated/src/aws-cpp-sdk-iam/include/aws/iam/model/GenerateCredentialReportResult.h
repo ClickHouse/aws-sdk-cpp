@@ -27,7 +27,8 @@ namespace IAM
 namespace Model
 {
   /**
-   * <p>Contains the response to a successful <a>GenerateCredentialReport</a>
+   * <p>Contains the response to a successful <a
+   * href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_GenerateCredentialReport.html">GenerateCredentialReport</a>
    * request. </p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GenerateCredentialReportResponse">AWS
    * API Reference</a></p>
@@ -35,95 +36,49 @@ namespace Model
   class GenerateCredentialReportResult
   {
   public:
-    AWS_IAM_API GenerateCredentialReportResult();
+    AWS_IAM_API GenerateCredentialReportResult() = default;
     AWS_IAM_API GenerateCredentialReportResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_IAM_API GenerateCredentialReportResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Information about the state of the credential report.</p>
      */
-    inline const ReportStateType& GetState() const{ return m_state; }
+    inline ReportStateType GetState() const { return m_state; }
+    inline void SetState(ReportStateType value) { m_stateHasBeenSet = true; m_state = value; }
+    inline GenerateCredentialReportResult& WithState(ReportStateType value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the state of the credential report.</p>
-     */
-    inline void SetState(const ReportStateType& value) { m_state = value; }
-
-    /**
-     * <p>Information about the state of the credential report.</p>
-     */
-    inline void SetState(ReportStateType&& value) { m_state = std::move(value); }
-
-    /**
-     * <p>Information about the state of the credential report.</p>
-     */
-    inline GenerateCredentialReportResult& WithState(const ReportStateType& value) { SetState(value); return *this;}
-
-    /**
-     * <p>Information about the state of the credential report.</p>
-     */
-    inline GenerateCredentialReportResult& WithState(ReportStateType&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the credential report.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GenerateCredentialReportResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the credential report.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>Information about the credential report.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>Information about the credential report.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>Information about the credential report.</p>
-     */
-    inline GenerateCredentialReportResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Information about the credential report.</p>
-     */
-    inline GenerateCredentialReportResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about the credential report.</p>
-     */
-    inline GenerateCredentialReportResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline GenerateCredentialReportResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline GenerateCredentialReportResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    GenerateCredentialReportResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
-    ReportStateType m_state;
+    ReportStateType m_state{ReportStateType::NOT_SET};
+    bool m_stateHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

@@ -12,27 +12,9 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTrustedTokenIssuerRequest::CreateTrustedTokenIssuerRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_instanceArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_trustedTokenIssuerConfigurationHasBeenSet(false),
-    m_trustedTokenIssuerType(TrustedTokenIssuerType::NOT_SET),
-    m_trustedTokenIssuerTypeHasBeenSet(false)
-{
-}
-
 Aws::String CreateTrustedTokenIssuerRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("ClientToken", m_clientToken);
-
-  }
 
   if(m_instanceArnHasBeenSet)
   {
@@ -46,6 +28,23 @@ Aws::String CreateTrustedTokenIssuerRequest::SerializePayload() const
 
   }
 
+  if(m_trustedTokenIssuerTypeHasBeenSet)
+  {
+   payload.WithString("TrustedTokenIssuerType", TrustedTokenIssuerTypeMapper::GetNameForTrustedTokenIssuerType(m_trustedTokenIssuerType));
+  }
+
+  if(m_trustedTokenIssuerConfigurationHasBeenSet)
+  {
+   payload.WithObject("TrustedTokenIssuerConfiguration", m_trustedTokenIssuerConfiguration.Jsonize());
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("ClientToken", m_clientToken);
+
+  }
+
   if(m_tagsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
@@ -55,17 +54,6 @@ Aws::String CreateTrustedTokenIssuerRequest::SerializePayload() const
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
 
-  }
-
-  if(m_trustedTokenIssuerConfigurationHasBeenSet)
-  {
-   payload.WithObject("TrustedTokenIssuerConfiguration", m_trustedTokenIssuerConfiguration.Jsonize());
-
-  }
-
-  if(m_trustedTokenIssuerTypeHasBeenSet)
-  {
-   payload.WithString("TrustedTokenIssuerType", TrustedTokenIssuerTypeMapper::GetNameForTrustedTokenIssuerType(m_trustedTokenIssuerType));
   }
 
   return payload.View().WriteReadable();

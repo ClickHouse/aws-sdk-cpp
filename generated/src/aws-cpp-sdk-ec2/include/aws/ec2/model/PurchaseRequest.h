@@ -32,7 +32,7 @@ namespace Model
   class PurchaseRequest
   {
   public:
-    AWS_EC2_API PurchaseRequest();
+    AWS_EC2_API PurchaseRequest() = default;
     AWS_EC2_API PurchaseRequest(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API PurchaseRequest& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,70 +40,30 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The number of instances.</p>
      */
-    inline int GetInstanceCount() const{ return m_instanceCount; }
-
-    /**
-     * <p>The number of instances.</p>
-     */
+    inline int GetInstanceCount() const { return m_instanceCount; }
     inline bool InstanceCountHasBeenSet() const { return m_instanceCountHasBeenSet; }
-
-    /**
-     * <p>The number of instances.</p>
-     */
     inline void SetInstanceCount(int value) { m_instanceCountHasBeenSet = true; m_instanceCount = value; }
-
-    /**
-     * <p>The number of instances.</p>
-     */
     inline PurchaseRequest& WithInstanceCount(int value) { SetInstanceCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The purchase token.</p>
      */
-    inline const Aws::String& GetPurchaseToken() const{ return m_purchaseToken; }
-
-    /**
-     * <p>The purchase token.</p>
-     */
+    inline const Aws::String& GetPurchaseToken() const { return m_purchaseToken; }
     inline bool PurchaseTokenHasBeenSet() const { return m_purchaseTokenHasBeenSet; }
-
-    /**
-     * <p>The purchase token.</p>
-     */
-    inline void SetPurchaseToken(const Aws::String& value) { m_purchaseTokenHasBeenSet = true; m_purchaseToken = value; }
-
-    /**
-     * <p>The purchase token.</p>
-     */
-    inline void SetPurchaseToken(Aws::String&& value) { m_purchaseTokenHasBeenSet = true; m_purchaseToken = std::move(value); }
-
-    /**
-     * <p>The purchase token.</p>
-     */
-    inline void SetPurchaseToken(const char* value) { m_purchaseTokenHasBeenSet = true; m_purchaseToken.assign(value); }
-
-    /**
-     * <p>The purchase token.</p>
-     */
-    inline PurchaseRequest& WithPurchaseToken(const Aws::String& value) { SetPurchaseToken(value); return *this;}
-
-    /**
-     * <p>The purchase token.</p>
-     */
-    inline PurchaseRequest& WithPurchaseToken(Aws::String&& value) { SetPurchaseToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The purchase token.</p>
-     */
-    inline PurchaseRequest& WithPurchaseToken(const char* value) { SetPurchaseToken(value); return *this;}
-
+    template<typename PurchaseTokenT = Aws::String>
+    void SetPurchaseToken(PurchaseTokenT&& value) { m_purchaseTokenHasBeenSet = true; m_purchaseToken = std::forward<PurchaseTokenT>(value); }
+    template<typename PurchaseTokenT = Aws::String>
+    PurchaseRequest& WithPurchaseToken(PurchaseTokenT&& value) { SetPurchaseToken(std::forward<PurchaseTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_instanceCount;
+    int m_instanceCount{0};
     bool m_instanceCountHasBeenSet = false;
 
     Aws::String m_purchaseToken;

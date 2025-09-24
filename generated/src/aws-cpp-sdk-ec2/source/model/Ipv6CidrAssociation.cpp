@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-Ipv6CidrAssociation::Ipv6CidrAssociation() : 
-    m_ipv6CidrHasBeenSet(false),
-    m_associatedResourceHasBeenSet(false)
-{
-}
-
-Ipv6CidrAssociation::Ipv6CidrAssociation(const XmlNode& xmlNode) : 
-    m_ipv6CidrHasBeenSet(false),
-    m_associatedResourceHasBeenSet(false)
+Ipv6CidrAssociation::Ipv6CidrAssociation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

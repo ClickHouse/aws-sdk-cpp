@@ -21,7 +21,7 @@ namespace Model
   class UpdateEndpointRequest : public ComprehendRequest
   {
   public:
-    AWS_COMPREHEND_API UpdateEndpointRequest();
+    AWS_COMPREHEND_API UpdateEndpointRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,206 +34,66 @@ namespace Model
     AWS_COMPREHEND_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Number (ARN) of the endpoint being updated.</p>
      */
-    inline const Aws::String& GetEndpointArn() const{ return m_endpointArn; }
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the endpoint being updated.</p>
-     */
+    inline const Aws::String& GetEndpointArn() const { return m_endpointArn; }
     inline bool EndpointArnHasBeenSet() const { return m_endpointArnHasBeenSet; }
+    template<typename EndpointArnT = Aws::String>
+    void SetEndpointArn(EndpointArnT&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = std::forward<EndpointArnT>(value); }
+    template<typename EndpointArnT = Aws::String>
+    UpdateEndpointRequest& WithEndpointArn(EndpointArnT&& value) { SetEndpointArn(std::forward<EndpointArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Number (ARN) of the endpoint being updated.</p>
-     */
-    inline void SetEndpointArn(const Aws::String& value) { m_endpointArnHasBeenSet = true; m_endpointArn = value; }
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the endpoint being updated.</p>
-     */
-    inline void SetEndpointArn(Aws::String&& value) { m_endpointArnHasBeenSet = true; m_endpointArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the endpoint being updated.</p>
-     */
-    inline void SetEndpointArn(const char* value) { m_endpointArnHasBeenSet = true; m_endpointArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the endpoint being updated.</p>
-     */
-    inline UpdateEndpointRequest& WithEndpointArn(const Aws::String& value) { SetEndpointArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the endpoint being updated.</p>
-     */
-    inline UpdateEndpointRequest& WithEndpointArn(Aws::String&& value) { SetEndpointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the endpoint being updated.</p>
-     */
-    inline UpdateEndpointRequest& WithEndpointArn(const char* value) { SetEndpointArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the new model to use when updating an existing endpoint.</p>
      */
-    inline const Aws::String& GetDesiredModelArn() const{ return m_desiredModelArn; }
-
-    /**
-     * <p>The ARN of the new model to use when updating an existing endpoint.</p>
-     */
+    inline const Aws::String& GetDesiredModelArn() const { return m_desiredModelArn; }
     inline bool DesiredModelArnHasBeenSet() const { return m_desiredModelArnHasBeenSet; }
+    template<typename DesiredModelArnT = Aws::String>
+    void SetDesiredModelArn(DesiredModelArnT&& value) { m_desiredModelArnHasBeenSet = true; m_desiredModelArn = std::forward<DesiredModelArnT>(value); }
+    template<typename DesiredModelArnT = Aws::String>
+    UpdateEndpointRequest& WithDesiredModelArn(DesiredModelArnT&& value) { SetDesiredModelArn(std::forward<DesiredModelArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the new model to use when updating an existing endpoint.</p>
-     */
-    inline void SetDesiredModelArn(const Aws::String& value) { m_desiredModelArnHasBeenSet = true; m_desiredModelArn = value; }
-
-    /**
-     * <p>The ARN of the new model to use when updating an existing endpoint.</p>
-     */
-    inline void SetDesiredModelArn(Aws::String&& value) { m_desiredModelArnHasBeenSet = true; m_desiredModelArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the new model to use when updating an existing endpoint.</p>
-     */
-    inline void SetDesiredModelArn(const char* value) { m_desiredModelArnHasBeenSet = true; m_desiredModelArn.assign(value); }
-
-    /**
-     * <p>The ARN of the new model to use when updating an existing endpoint.</p>
-     */
-    inline UpdateEndpointRequest& WithDesiredModelArn(const Aws::String& value) { SetDesiredModelArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the new model to use when updating an existing endpoint.</p>
-     */
-    inline UpdateEndpointRequest& WithDesiredModelArn(Aws::String&& value) { SetDesiredModelArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the new model to use when updating an existing endpoint.</p>
-     */
-    inline UpdateEndpointRequest& WithDesiredModelArn(const char* value) { SetDesiredModelArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The desired number of inference units to be used by the model using this
      * endpoint. Each inference unit represents of a throughput of 100 characters per
      * second.</p>
      */
-    inline int GetDesiredInferenceUnits() const{ return m_desiredInferenceUnits; }
-
-    /**
-     * <p> The desired number of inference units to be used by the model using this
-     * endpoint. Each inference unit represents of a throughput of 100 characters per
-     * second.</p>
-     */
+    inline int GetDesiredInferenceUnits() const { return m_desiredInferenceUnits; }
     inline bool DesiredInferenceUnitsHasBeenSet() const { return m_desiredInferenceUnitsHasBeenSet; }
-
-    /**
-     * <p> The desired number of inference units to be used by the model using this
-     * endpoint. Each inference unit represents of a throughput of 100 characters per
-     * second.</p>
-     */
     inline void SetDesiredInferenceUnits(int value) { m_desiredInferenceUnitsHasBeenSet = true; m_desiredInferenceUnits = value; }
-
-    /**
-     * <p> The desired number of inference units to be used by the model using this
-     * endpoint. Each inference unit represents of a throughput of 100 characters per
-     * second.</p>
-     */
     inline UpdateEndpointRequest& WithDesiredInferenceUnits(int value) { SetDesiredInferenceUnits(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Data access role ARN to use in case the new model is encrypted with a
      * customer CMK.</p>
      */
-    inline const Aws::String& GetDesiredDataAccessRoleArn() const{ return m_desiredDataAccessRoleArn; }
-
-    /**
-     * <p>Data access role ARN to use in case the new model is encrypted with a
-     * customer CMK.</p>
-     */
+    inline const Aws::String& GetDesiredDataAccessRoleArn() const { return m_desiredDataAccessRoleArn; }
     inline bool DesiredDataAccessRoleArnHasBeenSet() const { return m_desiredDataAccessRoleArnHasBeenSet; }
+    template<typename DesiredDataAccessRoleArnT = Aws::String>
+    void SetDesiredDataAccessRoleArn(DesiredDataAccessRoleArnT&& value) { m_desiredDataAccessRoleArnHasBeenSet = true; m_desiredDataAccessRoleArn = std::forward<DesiredDataAccessRoleArnT>(value); }
+    template<typename DesiredDataAccessRoleArnT = Aws::String>
+    UpdateEndpointRequest& WithDesiredDataAccessRoleArn(DesiredDataAccessRoleArnT&& value) { SetDesiredDataAccessRoleArn(std::forward<DesiredDataAccessRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Data access role ARN to use in case the new model is encrypted with a
-     * customer CMK.</p>
-     */
-    inline void SetDesiredDataAccessRoleArn(const Aws::String& value) { m_desiredDataAccessRoleArnHasBeenSet = true; m_desiredDataAccessRoleArn = value; }
-
-    /**
-     * <p>Data access role ARN to use in case the new model is encrypted with a
-     * customer CMK.</p>
-     */
-    inline void SetDesiredDataAccessRoleArn(Aws::String&& value) { m_desiredDataAccessRoleArnHasBeenSet = true; m_desiredDataAccessRoleArn = std::move(value); }
-
-    /**
-     * <p>Data access role ARN to use in case the new model is encrypted with a
-     * customer CMK.</p>
-     */
-    inline void SetDesiredDataAccessRoleArn(const char* value) { m_desiredDataAccessRoleArnHasBeenSet = true; m_desiredDataAccessRoleArn.assign(value); }
-
-    /**
-     * <p>Data access role ARN to use in case the new model is encrypted with a
-     * customer CMK.</p>
-     */
-    inline UpdateEndpointRequest& WithDesiredDataAccessRoleArn(const Aws::String& value) { SetDesiredDataAccessRoleArn(value); return *this;}
-
-    /**
-     * <p>Data access role ARN to use in case the new model is encrypted with a
-     * customer CMK.</p>
-     */
-    inline UpdateEndpointRequest& WithDesiredDataAccessRoleArn(Aws::String&& value) { SetDesiredDataAccessRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>Data access role ARN to use in case the new model is encrypted with a
-     * customer CMK.</p>
-     */
-    inline UpdateEndpointRequest& WithDesiredDataAccessRoleArn(const char* value) { SetDesiredDataAccessRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Number (ARN) of the flywheel</p>
      */
-    inline const Aws::String& GetFlywheelArn() const{ return m_flywheelArn; }
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the flywheel</p>
-     */
+    inline const Aws::String& GetFlywheelArn() const { return m_flywheelArn; }
     inline bool FlywheelArnHasBeenSet() const { return m_flywheelArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the flywheel</p>
-     */
-    inline void SetFlywheelArn(const Aws::String& value) { m_flywheelArnHasBeenSet = true; m_flywheelArn = value; }
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the flywheel</p>
-     */
-    inline void SetFlywheelArn(Aws::String&& value) { m_flywheelArnHasBeenSet = true; m_flywheelArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the flywheel</p>
-     */
-    inline void SetFlywheelArn(const char* value) { m_flywheelArnHasBeenSet = true; m_flywheelArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the flywheel</p>
-     */
-    inline UpdateEndpointRequest& WithFlywheelArn(const Aws::String& value) { SetFlywheelArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the flywheel</p>
-     */
-    inline UpdateEndpointRequest& WithFlywheelArn(Aws::String&& value) { SetFlywheelArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Number (ARN) of the flywheel</p>
-     */
-    inline UpdateEndpointRequest& WithFlywheelArn(const char* value) { SetFlywheelArn(value); return *this;}
-
+    template<typename FlywheelArnT = Aws::String>
+    void SetFlywheelArn(FlywheelArnT&& value) { m_flywheelArnHasBeenSet = true; m_flywheelArn = std::forward<FlywheelArnT>(value); }
+    template<typename FlywheelArnT = Aws::String>
+    UpdateEndpointRequest& WithFlywheelArn(FlywheelArnT&& value) { SetFlywheelArn(std::forward<FlywheelArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_endpointArn;
@@ -242,7 +102,7 @@ namespace Model
     Aws::String m_desiredModelArn;
     bool m_desiredModelArnHasBeenSet = false;
 
-    int m_desiredInferenceUnits;
+    int m_desiredInferenceUnits{0};
     bool m_desiredInferenceUnitsHasBeenSet = false;
 
     Aws::String m_desiredDataAccessRoleArn;

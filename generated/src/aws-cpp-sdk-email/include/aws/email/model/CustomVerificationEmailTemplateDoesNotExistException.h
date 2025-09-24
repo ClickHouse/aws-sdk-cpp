@@ -32,7 +32,7 @@ namespace Model
   class CustomVerificationEmailTemplateDoesNotExistException
   {
   public:
-    AWS_SES_API CustomVerificationEmailTemplateDoesNotExistException();
+    AWS_SES_API CustomVerificationEmailTemplateDoesNotExistException() = default;
     AWS_SES_API CustomVerificationEmailTemplateDoesNotExistException(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SES_API CustomVerificationEmailTemplateDoesNotExistException& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,54 +40,18 @@ namespace Model
     AWS_SES_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Indicates that the provided custom verification email template does not
      * exist.</p>
      */
-    inline const Aws::String& GetCustomVerificationEmailTemplateName() const{ return m_customVerificationEmailTemplateName; }
-
-    /**
-     * <p>Indicates that the provided custom verification email template does not
-     * exist.</p>
-     */
+    inline const Aws::String& GetCustomVerificationEmailTemplateName() const { return m_customVerificationEmailTemplateName; }
     inline bool CustomVerificationEmailTemplateNameHasBeenSet() const { return m_customVerificationEmailTemplateNameHasBeenSet; }
-
-    /**
-     * <p>Indicates that the provided custom verification email template does not
-     * exist.</p>
-     */
-    inline void SetCustomVerificationEmailTemplateName(const Aws::String& value) { m_customVerificationEmailTemplateNameHasBeenSet = true; m_customVerificationEmailTemplateName = value; }
-
-    /**
-     * <p>Indicates that the provided custom verification email template does not
-     * exist.</p>
-     */
-    inline void SetCustomVerificationEmailTemplateName(Aws::String&& value) { m_customVerificationEmailTemplateNameHasBeenSet = true; m_customVerificationEmailTemplateName = std::move(value); }
-
-    /**
-     * <p>Indicates that the provided custom verification email template does not
-     * exist.</p>
-     */
-    inline void SetCustomVerificationEmailTemplateName(const char* value) { m_customVerificationEmailTemplateNameHasBeenSet = true; m_customVerificationEmailTemplateName.assign(value); }
-
-    /**
-     * <p>Indicates that the provided custom verification email template does not
-     * exist.</p>
-     */
-    inline CustomVerificationEmailTemplateDoesNotExistException& WithCustomVerificationEmailTemplateName(const Aws::String& value) { SetCustomVerificationEmailTemplateName(value); return *this;}
-
-    /**
-     * <p>Indicates that the provided custom verification email template does not
-     * exist.</p>
-     */
-    inline CustomVerificationEmailTemplateDoesNotExistException& WithCustomVerificationEmailTemplateName(Aws::String&& value) { SetCustomVerificationEmailTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates that the provided custom verification email template does not
-     * exist.</p>
-     */
-    inline CustomVerificationEmailTemplateDoesNotExistException& WithCustomVerificationEmailTemplateName(const char* value) { SetCustomVerificationEmailTemplateName(value); return *this;}
-
+    template<typename CustomVerificationEmailTemplateNameT = Aws::String>
+    void SetCustomVerificationEmailTemplateName(CustomVerificationEmailTemplateNameT&& value) { m_customVerificationEmailTemplateNameHasBeenSet = true; m_customVerificationEmailTemplateName = std::forward<CustomVerificationEmailTemplateNameT>(value); }
+    template<typename CustomVerificationEmailTemplateNameT = Aws::String>
+    CustomVerificationEmailTemplateDoesNotExistException& WithCustomVerificationEmailTemplateName(CustomVerificationEmailTemplateNameT&& value) { SetCustomVerificationEmailTemplateName(std::forward<CustomVerificationEmailTemplateNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_customVerificationEmailTemplateName;

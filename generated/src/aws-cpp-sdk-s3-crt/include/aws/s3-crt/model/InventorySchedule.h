@@ -23,7 +23,7 @@ namespace Model
 {
 
   /**
-   * <p>Specifies the schedule for generating inventory results.</p><p><h3>See
+   * <p>Specifies the schedule for generating S3 Inventory results.</p><p><h3>See
    * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/s3-2006-03-01/InventorySchedule">AWS
    * API Reference</a></p>
@@ -31,46 +31,25 @@ namespace Model
   class InventorySchedule
   {
   public:
-    AWS_S3CRT_API InventorySchedule();
+    AWS_S3CRT_API InventorySchedule() = default;
     AWS_S3CRT_API InventorySchedule(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API InventorySchedule& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Specifies how frequently inventory results are produced.</p>
      */
-    inline const InventoryFrequency& GetFrequency() const{ return m_frequency; }
-
-    /**
-     * <p>Specifies how frequently inventory results are produced.</p>
-     */
+    inline InventoryFrequency GetFrequency() const { return m_frequency; }
     inline bool FrequencyHasBeenSet() const { return m_frequencyHasBeenSet; }
-
-    /**
-     * <p>Specifies how frequently inventory results are produced.</p>
-     */
-    inline void SetFrequency(const InventoryFrequency& value) { m_frequencyHasBeenSet = true; m_frequency = value; }
-
-    /**
-     * <p>Specifies how frequently inventory results are produced.</p>
-     */
-    inline void SetFrequency(InventoryFrequency&& value) { m_frequencyHasBeenSet = true; m_frequency = std::move(value); }
-
-    /**
-     * <p>Specifies how frequently inventory results are produced.</p>
-     */
-    inline InventorySchedule& WithFrequency(const InventoryFrequency& value) { SetFrequency(value); return *this;}
-
-    /**
-     * <p>Specifies how frequently inventory results are produced.</p>
-     */
-    inline InventorySchedule& WithFrequency(InventoryFrequency&& value) { SetFrequency(std::move(value)); return *this;}
-
+    inline void SetFrequency(InventoryFrequency value) { m_frequencyHasBeenSet = true; m_frequency = value; }
+    inline InventorySchedule& WithFrequency(InventoryFrequency value) { SetFrequency(value); return *this;}
+    ///@}
   private:
 
-    InventoryFrequency m_frequency;
+    InventoryFrequency m_frequency{InventoryFrequency::NOT_SET};
     bool m_frequencyHasBeenSet = false;
   };
 

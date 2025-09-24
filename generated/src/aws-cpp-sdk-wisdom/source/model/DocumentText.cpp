@@ -18,15 +18,7 @@ namespace ConnectWisdomService
 namespace Model
 {
 
-DocumentText::DocumentText() : 
-    m_highlightsHasBeenSet(false),
-    m_textHasBeenSet(false)
-{
-}
-
-DocumentText::DocumentText(JsonView jsonValue) : 
-    m_highlightsHasBeenSet(false),
-    m_textHasBeenSet(false)
+DocumentText::DocumentText(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ DocumentText& DocumentText::operator =(JsonView jsonValue)
     }
     m_highlightsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("text"))
   {
     m_text = jsonValue.GetString("text");
-
     m_textHasBeenSet = true;
   }
-
   return *this;
 }
 

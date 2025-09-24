@@ -6,6 +6,7 @@
 #include <aws/s3control/model/PutAccessGrantsInstanceResourcePolicyRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
 #include <utility>
@@ -14,12 +15,6 @@ using namespace Aws::S3Control::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-PutAccessGrantsInstanceResourcePolicyRequest::PutAccessGrantsInstanceResourcePolicyRequest() : 
-    m_accountIdHasBeenSet(false),
-    m_policyHasBeenSet(false),
-    m_organizationHasBeenSet(false)
-{
-}
 
 Aws::String PutAccessGrantsInstanceResourcePolicyRequest::SerializePayload() const
 {

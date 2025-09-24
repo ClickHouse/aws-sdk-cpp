@@ -11,6 +11,7 @@
 #include <aws/marketplace-catalog/model/OfferSort.h>
 #include <aws/marketplace-catalog/model/ContainerProductSort.h>
 #include <aws/marketplace-catalog/model/ResaleAuthorizationSort.h>
+#include <aws/marketplace-catalog/model/MachineLearningProductSort.h>
 #include <utility>
 
 namespace Aws
@@ -37,197 +38,93 @@ namespace Model
   class EntityTypeSort
   {
   public:
-    AWS_MARKETPLACECATALOG_API EntityTypeSort();
+    AWS_MARKETPLACECATALOG_API EntityTypeSort() = default;
     AWS_MARKETPLACECATALOG_API EntityTypeSort(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API EntityTypeSort& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A sort for data products.</p>
      */
-    inline const DataProductSort& GetDataProductSort() const{ return m_dataProductSort; }
-
-    /**
-     * <p>A sort for data products.</p>
-     */
+    inline const DataProductSort& GetDataProductSort() const { return m_dataProductSort; }
     inline bool DataProductSortHasBeenSet() const { return m_dataProductSortHasBeenSet; }
+    template<typename DataProductSortT = DataProductSort>
+    void SetDataProductSort(DataProductSortT&& value) { m_dataProductSortHasBeenSet = true; m_dataProductSort = std::forward<DataProductSortT>(value); }
+    template<typename DataProductSortT = DataProductSort>
+    EntityTypeSort& WithDataProductSort(DataProductSortT&& value) { SetDataProductSort(std::forward<DataProductSortT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A sort for data products.</p>
-     */
-    inline void SetDataProductSort(const DataProductSort& value) { m_dataProductSortHasBeenSet = true; m_dataProductSort = value; }
-
-    /**
-     * <p>A sort for data products.</p>
-     */
-    inline void SetDataProductSort(DataProductSort&& value) { m_dataProductSortHasBeenSet = true; m_dataProductSort = std::move(value); }
-
-    /**
-     * <p>A sort for data products.</p>
-     */
-    inline EntityTypeSort& WithDataProductSort(const DataProductSort& value) { SetDataProductSort(value); return *this;}
-
-    /**
-     * <p>A sort for data products.</p>
-     */
-    inline EntityTypeSort& WithDataProductSort(DataProductSort&& value) { SetDataProductSort(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A sort for SaaS products.</p>
      */
-    inline const SaaSProductSort& GetSaaSProductSort() const{ return m_saaSProductSort; }
-
-    /**
-     * <p>A sort for SaaS products.</p>
-     */
+    inline const SaaSProductSort& GetSaaSProductSort() const { return m_saaSProductSort; }
     inline bool SaaSProductSortHasBeenSet() const { return m_saaSProductSortHasBeenSet; }
+    template<typename SaaSProductSortT = SaaSProductSort>
+    void SetSaaSProductSort(SaaSProductSortT&& value) { m_saaSProductSortHasBeenSet = true; m_saaSProductSort = std::forward<SaaSProductSortT>(value); }
+    template<typename SaaSProductSortT = SaaSProductSort>
+    EntityTypeSort& WithSaaSProductSort(SaaSProductSortT&& value) { SetSaaSProductSort(std::forward<SaaSProductSortT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A sort for SaaS products.</p>
-     */
-    inline void SetSaaSProductSort(const SaaSProductSort& value) { m_saaSProductSortHasBeenSet = true; m_saaSProductSort = value; }
-
-    /**
-     * <p>A sort for SaaS products.</p>
-     */
-    inline void SetSaaSProductSort(SaaSProductSort&& value) { m_saaSProductSortHasBeenSet = true; m_saaSProductSort = std::move(value); }
-
-    /**
-     * <p>A sort for SaaS products.</p>
-     */
-    inline EntityTypeSort& WithSaaSProductSort(const SaaSProductSort& value) { SetSaaSProductSort(value); return *this;}
-
-    /**
-     * <p>A sort for SaaS products.</p>
-     */
-    inline EntityTypeSort& WithSaaSProductSort(SaaSProductSort&& value) { SetSaaSProductSort(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A sort for AMI products.</p>
      */
-    inline const AmiProductSort& GetAmiProductSort() const{ return m_amiProductSort; }
-
-    /**
-     * <p>A sort for AMI products.</p>
-     */
+    inline const AmiProductSort& GetAmiProductSort() const { return m_amiProductSort; }
     inline bool AmiProductSortHasBeenSet() const { return m_amiProductSortHasBeenSet; }
+    template<typename AmiProductSortT = AmiProductSort>
+    void SetAmiProductSort(AmiProductSortT&& value) { m_amiProductSortHasBeenSet = true; m_amiProductSort = std::forward<AmiProductSortT>(value); }
+    template<typename AmiProductSortT = AmiProductSort>
+    EntityTypeSort& WithAmiProductSort(AmiProductSortT&& value) { SetAmiProductSort(std::forward<AmiProductSortT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A sort for AMI products.</p>
-     */
-    inline void SetAmiProductSort(const AmiProductSort& value) { m_amiProductSortHasBeenSet = true; m_amiProductSort = value; }
-
-    /**
-     * <p>A sort for AMI products.</p>
-     */
-    inline void SetAmiProductSort(AmiProductSort&& value) { m_amiProductSortHasBeenSet = true; m_amiProductSort = std::move(value); }
-
-    /**
-     * <p>A sort for AMI products.</p>
-     */
-    inline EntityTypeSort& WithAmiProductSort(const AmiProductSort& value) { SetAmiProductSort(value); return *this;}
-
-    /**
-     * <p>A sort for AMI products.</p>
-     */
-    inline EntityTypeSort& WithAmiProductSort(AmiProductSort&& value) { SetAmiProductSort(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A sort for offers.</p>
      */
-    inline const OfferSort& GetOfferSort() const{ return m_offerSort; }
-
-    /**
-     * <p>A sort for offers.</p>
-     */
+    inline const OfferSort& GetOfferSort() const { return m_offerSort; }
     inline bool OfferSortHasBeenSet() const { return m_offerSortHasBeenSet; }
+    template<typename OfferSortT = OfferSort>
+    void SetOfferSort(OfferSortT&& value) { m_offerSortHasBeenSet = true; m_offerSort = std::forward<OfferSortT>(value); }
+    template<typename OfferSortT = OfferSort>
+    EntityTypeSort& WithOfferSort(OfferSortT&& value) { SetOfferSort(std::forward<OfferSortT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A sort for offers.</p>
-     */
-    inline void SetOfferSort(const OfferSort& value) { m_offerSortHasBeenSet = true; m_offerSort = value; }
-
-    /**
-     * <p>A sort for offers.</p>
-     */
-    inline void SetOfferSort(OfferSort&& value) { m_offerSortHasBeenSet = true; m_offerSort = std::move(value); }
-
-    /**
-     * <p>A sort for offers.</p>
-     */
-    inline EntityTypeSort& WithOfferSort(const OfferSort& value) { SetOfferSort(value); return *this;}
-
-    /**
-     * <p>A sort for offers.</p>
-     */
-    inline EntityTypeSort& WithOfferSort(OfferSort&& value) { SetOfferSort(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A sort for container products.</p>
      */
-    inline const ContainerProductSort& GetContainerProductSort() const{ return m_containerProductSort; }
-
-    /**
-     * <p>A sort for container products.</p>
-     */
+    inline const ContainerProductSort& GetContainerProductSort() const { return m_containerProductSort; }
     inline bool ContainerProductSortHasBeenSet() const { return m_containerProductSortHasBeenSet; }
+    template<typename ContainerProductSortT = ContainerProductSort>
+    void SetContainerProductSort(ContainerProductSortT&& value) { m_containerProductSortHasBeenSet = true; m_containerProductSort = std::forward<ContainerProductSortT>(value); }
+    template<typename ContainerProductSortT = ContainerProductSort>
+    EntityTypeSort& WithContainerProductSort(ContainerProductSortT&& value) { SetContainerProductSort(std::forward<ContainerProductSortT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A sort for container products.</p>
-     */
-    inline void SetContainerProductSort(const ContainerProductSort& value) { m_containerProductSortHasBeenSet = true; m_containerProductSort = value; }
-
-    /**
-     * <p>A sort for container products.</p>
-     */
-    inline void SetContainerProductSort(ContainerProductSort&& value) { m_containerProductSortHasBeenSet = true; m_containerProductSort = std::move(value); }
-
-    /**
-     * <p>A sort for container products.</p>
-     */
-    inline EntityTypeSort& WithContainerProductSort(const ContainerProductSort& value) { SetContainerProductSort(value); return *this;}
-
-    /**
-     * <p>A sort for container products.</p>
-     */
-    inline EntityTypeSort& WithContainerProductSort(ContainerProductSort&& value) { SetContainerProductSort(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A sort for Resale Authorizations.</p>
      */
-    inline const ResaleAuthorizationSort& GetResaleAuthorizationSort() const{ return m_resaleAuthorizationSort; }
-
-    /**
-     * <p>A sort for Resale Authorizations.</p>
-     */
+    inline const ResaleAuthorizationSort& GetResaleAuthorizationSort() const { return m_resaleAuthorizationSort; }
     inline bool ResaleAuthorizationSortHasBeenSet() const { return m_resaleAuthorizationSortHasBeenSet; }
+    template<typename ResaleAuthorizationSortT = ResaleAuthorizationSort>
+    void SetResaleAuthorizationSort(ResaleAuthorizationSortT&& value) { m_resaleAuthorizationSortHasBeenSet = true; m_resaleAuthorizationSort = std::forward<ResaleAuthorizationSortT>(value); }
+    template<typename ResaleAuthorizationSortT = ResaleAuthorizationSort>
+    EntityTypeSort& WithResaleAuthorizationSort(ResaleAuthorizationSortT&& value) { SetResaleAuthorizationSort(std::forward<ResaleAuthorizationSortT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A sort for Resale Authorizations.</p>
-     */
-    inline void SetResaleAuthorizationSort(const ResaleAuthorizationSort& value) { m_resaleAuthorizationSortHasBeenSet = true; m_resaleAuthorizationSort = value; }
-
-    /**
-     * <p>A sort for Resale Authorizations.</p>
-     */
-    inline void SetResaleAuthorizationSort(ResaleAuthorizationSort&& value) { m_resaleAuthorizationSortHasBeenSet = true; m_resaleAuthorizationSort = std::move(value); }
-
-    /**
-     * <p>A sort for Resale Authorizations.</p>
-     */
-    inline EntityTypeSort& WithResaleAuthorizationSort(const ResaleAuthorizationSort& value) { SetResaleAuthorizationSort(value); return *this;}
-
-    /**
-     * <p>A sort for Resale Authorizations.</p>
-     */
-    inline EntityTypeSort& WithResaleAuthorizationSort(ResaleAuthorizationSort&& value) { SetResaleAuthorizationSort(std::move(value)); return *this;}
-
+    ///@{
+    
+    inline const MachineLearningProductSort& GetMachineLearningProductSort() const { return m_machineLearningProductSort; }
+    inline bool MachineLearningProductSortHasBeenSet() const { return m_machineLearningProductSortHasBeenSet; }
+    template<typename MachineLearningProductSortT = MachineLearningProductSort>
+    void SetMachineLearningProductSort(MachineLearningProductSortT&& value) { m_machineLearningProductSortHasBeenSet = true; m_machineLearningProductSort = std::forward<MachineLearningProductSortT>(value); }
+    template<typename MachineLearningProductSortT = MachineLearningProductSort>
+    EntityTypeSort& WithMachineLearningProductSort(MachineLearningProductSortT&& value) { SetMachineLearningProductSort(std::forward<MachineLearningProductSortT>(value)); return *this;}
+    ///@}
   private:
 
     DataProductSort m_dataProductSort;
@@ -247,6 +144,9 @@ namespace Model
 
     ResaleAuthorizationSort m_resaleAuthorizationSort;
     bool m_resaleAuthorizationSortHasBeenSet = false;
+
+    MachineLearningProductSort m_machineLearningProductSort;
+    bool m_machineLearningProductSortHasBeenSet = false;
   };
 
 } // namespace Model

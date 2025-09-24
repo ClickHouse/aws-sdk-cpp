@@ -33,360 +33,117 @@ namespace Model
   class ApiGatewayApiAsset
   {
   public:
-    AWS_DATAEXCHANGE_API ApiGatewayApiAsset();
+    AWS_DATAEXCHANGE_API ApiGatewayApiAsset() = default;
     AWS_DATAEXCHANGE_API ApiGatewayApiAsset(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API ApiGatewayApiAsset& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The API description of the API asset.</p>
      */
-    inline const Aws::String& GetApiDescription() const{ return m_apiDescription; }
-
-    /**
-     * <p>The API description of the API asset.</p>
-     */
+    inline const Aws::String& GetApiDescription() const { return m_apiDescription; }
     inline bool ApiDescriptionHasBeenSet() const { return m_apiDescriptionHasBeenSet; }
+    template<typename ApiDescriptionT = Aws::String>
+    void SetApiDescription(ApiDescriptionT&& value) { m_apiDescriptionHasBeenSet = true; m_apiDescription = std::forward<ApiDescriptionT>(value); }
+    template<typename ApiDescriptionT = Aws::String>
+    ApiGatewayApiAsset& WithApiDescription(ApiDescriptionT&& value) { SetApiDescription(std::forward<ApiDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API description of the API asset.</p>
-     */
-    inline void SetApiDescription(const Aws::String& value) { m_apiDescriptionHasBeenSet = true; m_apiDescription = value; }
-
-    /**
-     * <p>The API description of the API asset.</p>
-     */
-    inline void SetApiDescription(Aws::String&& value) { m_apiDescriptionHasBeenSet = true; m_apiDescription = std::move(value); }
-
-    /**
-     * <p>The API description of the API asset.</p>
-     */
-    inline void SetApiDescription(const char* value) { m_apiDescriptionHasBeenSet = true; m_apiDescription.assign(value); }
-
-    /**
-     * <p>The API description of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiDescription(const Aws::String& value) { SetApiDescription(value); return *this;}
-
-    /**
-     * <p>The API description of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiDescription(Aws::String&& value) { SetApiDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The API description of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiDescription(const char* value) { SetApiDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The API endpoint of the API asset.</p>
      */
-    inline const Aws::String& GetApiEndpoint() const{ return m_apiEndpoint; }
-
-    /**
-     * <p>The API endpoint of the API asset.</p>
-     */
+    inline const Aws::String& GetApiEndpoint() const { return m_apiEndpoint; }
     inline bool ApiEndpointHasBeenSet() const { return m_apiEndpointHasBeenSet; }
+    template<typename ApiEndpointT = Aws::String>
+    void SetApiEndpoint(ApiEndpointT&& value) { m_apiEndpointHasBeenSet = true; m_apiEndpoint = std::forward<ApiEndpointT>(value); }
+    template<typename ApiEndpointT = Aws::String>
+    ApiGatewayApiAsset& WithApiEndpoint(ApiEndpointT&& value) { SetApiEndpoint(std::forward<ApiEndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API endpoint of the API asset.</p>
-     */
-    inline void SetApiEndpoint(const Aws::String& value) { m_apiEndpointHasBeenSet = true; m_apiEndpoint = value; }
-
-    /**
-     * <p>The API endpoint of the API asset.</p>
-     */
-    inline void SetApiEndpoint(Aws::String&& value) { m_apiEndpointHasBeenSet = true; m_apiEndpoint = std::move(value); }
-
-    /**
-     * <p>The API endpoint of the API asset.</p>
-     */
-    inline void SetApiEndpoint(const char* value) { m_apiEndpointHasBeenSet = true; m_apiEndpoint.assign(value); }
-
-    /**
-     * <p>The API endpoint of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiEndpoint(const Aws::String& value) { SetApiEndpoint(value); return *this;}
-
-    /**
-     * <p>The API endpoint of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiEndpoint(Aws::String&& value) { SetApiEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The API endpoint of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiEndpoint(const char* value) { SetApiEndpoint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the API asset.</p>
      */
-    inline const Aws::String& GetApiId() const{ return m_apiId; }
-
-    /**
-     * <p>The unique identifier of the API asset.</p>
-     */
+    inline const Aws::String& GetApiId() const { return m_apiId; }
     inline bool ApiIdHasBeenSet() const { return m_apiIdHasBeenSet; }
+    template<typename ApiIdT = Aws::String>
+    void SetApiId(ApiIdT&& value) { m_apiIdHasBeenSet = true; m_apiId = std::forward<ApiIdT>(value); }
+    template<typename ApiIdT = Aws::String>
+    ApiGatewayApiAsset& WithApiId(ApiIdT&& value) { SetApiId(std::forward<ApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the API asset.</p>
-     */
-    inline void SetApiId(const Aws::String& value) { m_apiIdHasBeenSet = true; m_apiId = value; }
-
-    /**
-     * <p>The unique identifier of the API asset.</p>
-     */
-    inline void SetApiId(Aws::String&& value) { m_apiIdHasBeenSet = true; m_apiId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the API asset.</p>
-     */
-    inline void SetApiId(const char* value) { m_apiIdHasBeenSet = true; m_apiId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiId(const Aws::String& value) { SetApiId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiId(Aws::String&& value) { SetApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiId(const char* value) { SetApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The API key of the API asset.</p>
      */
-    inline const Aws::String& GetApiKey() const{ return m_apiKey; }
-
-    /**
-     * <p>The API key of the API asset.</p>
-     */
+    inline const Aws::String& GetApiKey() const { return m_apiKey; }
     inline bool ApiKeyHasBeenSet() const { return m_apiKeyHasBeenSet; }
+    template<typename ApiKeyT = Aws::String>
+    void SetApiKey(ApiKeyT&& value) { m_apiKeyHasBeenSet = true; m_apiKey = std::forward<ApiKeyT>(value); }
+    template<typename ApiKeyT = Aws::String>
+    ApiGatewayApiAsset& WithApiKey(ApiKeyT&& value) { SetApiKey(std::forward<ApiKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API key of the API asset.</p>
-     */
-    inline void SetApiKey(const Aws::String& value) { m_apiKeyHasBeenSet = true; m_apiKey = value; }
-
-    /**
-     * <p>The API key of the API asset.</p>
-     */
-    inline void SetApiKey(Aws::String&& value) { m_apiKeyHasBeenSet = true; m_apiKey = std::move(value); }
-
-    /**
-     * <p>The API key of the API asset.</p>
-     */
-    inline void SetApiKey(const char* value) { m_apiKeyHasBeenSet = true; m_apiKey.assign(value); }
-
-    /**
-     * <p>The API key of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiKey(const Aws::String& value) { SetApiKey(value); return *this;}
-
-    /**
-     * <p>The API key of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiKey(Aws::String&& value) { SetApiKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The API key of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiKey(const char* value) { SetApiKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The API name of the API asset.</p>
      */
-    inline const Aws::String& GetApiName() const{ return m_apiName; }
-
-    /**
-     * <p>The API name of the API asset.</p>
-     */
+    inline const Aws::String& GetApiName() const { return m_apiName; }
     inline bool ApiNameHasBeenSet() const { return m_apiNameHasBeenSet; }
+    template<typename ApiNameT = Aws::String>
+    void SetApiName(ApiNameT&& value) { m_apiNameHasBeenSet = true; m_apiName = std::forward<ApiNameT>(value); }
+    template<typename ApiNameT = Aws::String>
+    ApiGatewayApiAsset& WithApiName(ApiNameT&& value) { SetApiName(std::forward<ApiNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API name of the API asset.</p>
-     */
-    inline void SetApiName(const Aws::String& value) { m_apiNameHasBeenSet = true; m_apiName = value; }
-
-    /**
-     * <p>The API name of the API asset.</p>
-     */
-    inline void SetApiName(Aws::String&& value) { m_apiNameHasBeenSet = true; m_apiName = std::move(value); }
-
-    /**
-     * <p>The API name of the API asset.</p>
-     */
-    inline void SetApiName(const char* value) { m_apiNameHasBeenSet = true; m_apiName.assign(value); }
-
-    /**
-     * <p>The API name of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiName(const Aws::String& value) { SetApiName(value); return *this;}
-
-    /**
-     * <p>The API name of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiName(Aws::String&& value) { SetApiName(std::move(value)); return *this;}
-
-    /**
-     * <p>The API name of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiName(const char* value) { SetApiName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The download URL of the API specification of the API asset.</p>
      */
-    inline const Aws::String& GetApiSpecificationDownloadUrl() const{ return m_apiSpecificationDownloadUrl; }
-
-    /**
-     * <p>The download URL of the API specification of the API asset.</p>
-     */
+    inline const Aws::String& GetApiSpecificationDownloadUrl() const { return m_apiSpecificationDownloadUrl; }
     inline bool ApiSpecificationDownloadUrlHasBeenSet() const { return m_apiSpecificationDownloadUrlHasBeenSet; }
+    template<typename ApiSpecificationDownloadUrlT = Aws::String>
+    void SetApiSpecificationDownloadUrl(ApiSpecificationDownloadUrlT&& value) { m_apiSpecificationDownloadUrlHasBeenSet = true; m_apiSpecificationDownloadUrl = std::forward<ApiSpecificationDownloadUrlT>(value); }
+    template<typename ApiSpecificationDownloadUrlT = Aws::String>
+    ApiGatewayApiAsset& WithApiSpecificationDownloadUrl(ApiSpecificationDownloadUrlT&& value) { SetApiSpecificationDownloadUrl(std::forward<ApiSpecificationDownloadUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The download URL of the API specification of the API asset.</p>
-     */
-    inline void SetApiSpecificationDownloadUrl(const Aws::String& value) { m_apiSpecificationDownloadUrlHasBeenSet = true; m_apiSpecificationDownloadUrl = value; }
-
-    /**
-     * <p>The download URL of the API specification of the API asset.</p>
-     */
-    inline void SetApiSpecificationDownloadUrl(Aws::String&& value) { m_apiSpecificationDownloadUrlHasBeenSet = true; m_apiSpecificationDownloadUrl = std::move(value); }
-
-    /**
-     * <p>The download URL of the API specification of the API asset.</p>
-     */
-    inline void SetApiSpecificationDownloadUrl(const char* value) { m_apiSpecificationDownloadUrlHasBeenSet = true; m_apiSpecificationDownloadUrl.assign(value); }
-
-    /**
-     * <p>The download URL of the API specification of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiSpecificationDownloadUrl(const Aws::String& value) { SetApiSpecificationDownloadUrl(value); return *this;}
-
-    /**
-     * <p>The download URL of the API specification of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiSpecificationDownloadUrl(Aws::String&& value) { SetApiSpecificationDownloadUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The download URL of the API specification of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiSpecificationDownloadUrl(const char* value) { SetApiSpecificationDownloadUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the upload URL expires, in ISO 8601 format.</p>
      */
-    inline const Aws::Utils::DateTime& GetApiSpecificationDownloadUrlExpiresAt() const{ return m_apiSpecificationDownloadUrlExpiresAt; }
-
-    /**
-     * <p>The date and time that the upload URL expires, in ISO 8601 format.</p>
-     */
+    inline const Aws::Utils::DateTime& GetApiSpecificationDownloadUrlExpiresAt() const { return m_apiSpecificationDownloadUrlExpiresAt; }
     inline bool ApiSpecificationDownloadUrlExpiresAtHasBeenSet() const { return m_apiSpecificationDownloadUrlExpiresAtHasBeenSet; }
+    template<typename ApiSpecificationDownloadUrlExpiresAtT = Aws::Utils::DateTime>
+    void SetApiSpecificationDownloadUrlExpiresAt(ApiSpecificationDownloadUrlExpiresAtT&& value) { m_apiSpecificationDownloadUrlExpiresAtHasBeenSet = true; m_apiSpecificationDownloadUrlExpiresAt = std::forward<ApiSpecificationDownloadUrlExpiresAtT>(value); }
+    template<typename ApiSpecificationDownloadUrlExpiresAtT = Aws::Utils::DateTime>
+    ApiGatewayApiAsset& WithApiSpecificationDownloadUrlExpiresAt(ApiSpecificationDownloadUrlExpiresAtT&& value) { SetApiSpecificationDownloadUrlExpiresAt(std::forward<ApiSpecificationDownloadUrlExpiresAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the upload URL expires, in ISO 8601 format.</p>
-     */
-    inline void SetApiSpecificationDownloadUrlExpiresAt(const Aws::Utils::DateTime& value) { m_apiSpecificationDownloadUrlExpiresAtHasBeenSet = true; m_apiSpecificationDownloadUrlExpiresAt = value; }
-
-    /**
-     * <p>The date and time that the upload URL expires, in ISO 8601 format.</p>
-     */
-    inline void SetApiSpecificationDownloadUrlExpiresAt(Aws::Utils::DateTime&& value) { m_apiSpecificationDownloadUrlExpiresAtHasBeenSet = true; m_apiSpecificationDownloadUrlExpiresAt = std::move(value); }
-
-    /**
-     * <p>The date and time that the upload URL expires, in ISO 8601 format.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiSpecificationDownloadUrlExpiresAt(const Aws::Utils::DateTime& value) { SetApiSpecificationDownloadUrlExpiresAt(value); return *this;}
-
-    /**
-     * <p>The date and time that the upload URL expires, in ISO 8601 format.</p>
-     */
-    inline ApiGatewayApiAsset& WithApiSpecificationDownloadUrlExpiresAt(Aws::Utils::DateTime&& value) { SetApiSpecificationDownloadUrlExpiresAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The protocol type of the API asset.</p>
      */
-    inline const ProtocolType& GetProtocolType() const{ return m_protocolType; }
-
-    /**
-     * <p>The protocol type of the API asset.</p>
-     */
+    inline ProtocolType GetProtocolType() const { return m_protocolType; }
     inline bool ProtocolTypeHasBeenSet() const { return m_protocolTypeHasBeenSet; }
+    inline void SetProtocolType(ProtocolType value) { m_protocolTypeHasBeenSet = true; m_protocolType = value; }
+    inline ApiGatewayApiAsset& WithProtocolType(ProtocolType value) { SetProtocolType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The protocol type of the API asset.</p>
-     */
-    inline void SetProtocolType(const ProtocolType& value) { m_protocolTypeHasBeenSet = true; m_protocolType = value; }
-
-    /**
-     * <p>The protocol type of the API asset.</p>
-     */
-    inline void SetProtocolType(ProtocolType&& value) { m_protocolTypeHasBeenSet = true; m_protocolType = std::move(value); }
-
-    /**
-     * <p>The protocol type of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithProtocolType(const ProtocolType& value) { SetProtocolType(value); return *this;}
-
-    /**
-     * <p>The protocol type of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithProtocolType(ProtocolType&& value) { SetProtocolType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The stage of the API asset.</p>
      */
-    inline const Aws::String& GetStage() const{ return m_stage; }
-
-    /**
-     * <p>The stage of the API asset.</p>
-     */
+    inline const Aws::String& GetStage() const { return m_stage; }
     inline bool StageHasBeenSet() const { return m_stageHasBeenSet; }
-
-    /**
-     * <p>The stage of the API asset.</p>
-     */
-    inline void SetStage(const Aws::String& value) { m_stageHasBeenSet = true; m_stage = value; }
-
-    /**
-     * <p>The stage of the API asset.</p>
-     */
-    inline void SetStage(Aws::String&& value) { m_stageHasBeenSet = true; m_stage = std::move(value); }
-
-    /**
-     * <p>The stage of the API asset.</p>
-     */
-    inline void SetStage(const char* value) { m_stageHasBeenSet = true; m_stage.assign(value); }
-
-    /**
-     * <p>The stage of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithStage(const Aws::String& value) { SetStage(value); return *this;}
-
-    /**
-     * <p>The stage of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithStage(Aws::String&& value) { SetStage(std::move(value)); return *this;}
-
-    /**
-     * <p>The stage of the API asset.</p>
-     */
-    inline ApiGatewayApiAsset& WithStage(const char* value) { SetStage(value); return *this;}
-
+    template<typename StageT = Aws::String>
+    void SetStage(StageT&& value) { m_stageHasBeenSet = true; m_stage = std::forward<StageT>(value); }
+    template<typename StageT = Aws::String>
+    ApiGatewayApiAsset& WithStage(StageT&& value) { SetStage(std::forward<StageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_apiDescription;
@@ -407,10 +164,10 @@ namespace Model
     Aws::String m_apiSpecificationDownloadUrl;
     bool m_apiSpecificationDownloadUrlHasBeenSet = false;
 
-    Aws::Utils::DateTime m_apiSpecificationDownloadUrlExpiresAt;
+    Aws::Utils::DateTime m_apiSpecificationDownloadUrlExpiresAt{};
     bool m_apiSpecificationDownloadUrlExpiresAtHasBeenSet = false;
 
-    ProtocolType m_protocolType;
+    ProtocolType m_protocolType{ProtocolType::NOT_SET};
     bool m_protocolTypeHasBeenSet = false;
 
     Aws::String m_stage;

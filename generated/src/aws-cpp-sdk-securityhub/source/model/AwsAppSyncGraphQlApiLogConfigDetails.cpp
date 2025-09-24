@@ -18,19 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsAppSyncGraphQlApiLogConfigDetails::AwsAppSyncGraphQlApiLogConfigDetails() : 
-    m_cloudWatchLogsRoleArnHasBeenSet(false),
-    m_excludeVerboseContent(false),
-    m_excludeVerboseContentHasBeenSet(false),
-    m_fieldLogLevelHasBeenSet(false)
-{
-}
-
-AwsAppSyncGraphQlApiLogConfigDetails::AwsAppSyncGraphQlApiLogConfigDetails(JsonView jsonValue) : 
-    m_cloudWatchLogsRoleArnHasBeenSet(false),
-    m_excludeVerboseContent(false),
-    m_excludeVerboseContentHasBeenSet(false),
-    m_fieldLogLevelHasBeenSet(false)
+AwsAppSyncGraphQlApiLogConfigDetails::AwsAppSyncGraphQlApiLogConfigDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ AwsAppSyncGraphQlApiLogConfigDetails& AwsAppSyncGraphQlApiLogConfigDetails::oper
   if(jsonValue.ValueExists("CloudWatchLogsRoleArn"))
   {
     m_cloudWatchLogsRoleArn = jsonValue.GetString("CloudWatchLogsRoleArn");
-
     m_cloudWatchLogsRoleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExcludeVerboseContent"))
   {
     m_excludeVerboseContent = jsonValue.GetBool("ExcludeVerboseContent");
-
     m_excludeVerboseContentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FieldLogLevel"))
   {
     m_fieldLogLevel = jsonValue.GetString("FieldLogLevel");
-
     m_fieldLogLevelHasBeenSet = true;
   }
-
   return *this;
 }
 

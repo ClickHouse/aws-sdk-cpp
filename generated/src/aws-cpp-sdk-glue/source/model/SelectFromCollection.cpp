@@ -18,19 +18,7 @@ namespace Glue
 namespace Model
 {
 
-SelectFromCollection::SelectFromCollection() : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_index(0),
-    m_indexHasBeenSet(false)
-{
-}
-
-SelectFromCollection::SelectFromCollection(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_inputsHasBeenSet(false),
-    m_index(0),
-    m_indexHasBeenSet(false)
+SelectFromCollection::SelectFromCollection(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ SelectFromCollection& SelectFromCollection::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Inputs"))
   {
     Aws::Utils::Array<JsonView> inputsJsonList = jsonValue.GetArray("Inputs");
@@ -53,14 +39,11 @@ SelectFromCollection& SelectFromCollection::operator =(JsonView jsonValue)
     }
     m_inputsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Index"))
   {
     m_index = jsonValue.GetInteger("Index");
-
     m_indexHasBeenSet = true;
   }
-
   return *this;
 }
 

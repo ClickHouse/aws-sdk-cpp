@@ -10,29 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-ModifyClientVpnEndpointRequest::ModifyClientVpnEndpointRequest() : 
-    m_clientVpnEndpointIdHasBeenSet(false),
-    m_serverCertificateArnHasBeenSet(false),
-    m_connectionLogOptionsHasBeenSet(false),
-    m_dnsServersHasBeenSet(false),
-    m_vpnPort(0),
-    m_vpnPortHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_splitTunnel(false),
-    m_splitTunnelHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_selfServicePortal(SelfServicePortal::NOT_SET),
-    m_selfServicePortalHasBeenSet(false),
-    m_clientConnectOptionsHasBeenSet(false),
-    m_sessionTimeoutHours(0),
-    m_sessionTimeoutHoursHasBeenSet(false),
-    m_clientLoginBannerOptionsHasBeenSet(false)
-{
-}
-
 Aws::String ModifyClientVpnEndpointRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -95,7 +72,7 @@ Aws::String ModifyClientVpnEndpointRequest::SerializePayload() const
 
   if(m_selfServicePortalHasBeenSet)
   {
-    ss << "SelfServicePortal=" << SelfServicePortalMapper::GetNameForSelfServicePortal(m_selfServicePortal) << "&";
+    ss << "SelfServicePortal=" << StringUtils::URLEncode(SelfServicePortalMapper::GetNameForSelfServicePortal(m_selfServicePortal)) << "&";
   }
 
   if(m_clientConnectOptionsHasBeenSet)
@@ -111,6 +88,16 @@ Aws::String ModifyClientVpnEndpointRequest::SerializePayload() const
   if(m_clientLoginBannerOptionsHasBeenSet)
   {
     m_clientLoginBannerOptions.OutputToStream(ss, "ClientLoginBannerOptions");
+  }
+
+  if(m_clientRouteEnforcementOptionsHasBeenSet)
+  {
+    m_clientRouteEnforcementOptions.OutputToStream(ss, "ClientRouteEnforcementOptions");
+  }
+
+  if(m_disconnectOnSessionTimeoutHasBeenSet)
+  {
+    ss << "DisconnectOnSessionTimeout=" << std::boolalpha << m_disconnectOnSessionTimeout << "&";
   }
 
   ss << "Version=2016-11-15";

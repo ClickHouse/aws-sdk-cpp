@@ -12,11 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeGlobalTableRequest::DescribeGlobalTableRequest() : 
-    m_globalTableNameHasBeenSet(false)
-{
-}
-
 Aws::String DescribeGlobalTableRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,5 +34,15 @@ Aws::Http::HeaderValueCollection DescribeGlobalTableRequest::GetRequestSpecificH
 }
 
 
+
+DescribeGlobalTableRequest::EndpointParameters DescribeGlobalTableRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (GlobalTableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetGlobalTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

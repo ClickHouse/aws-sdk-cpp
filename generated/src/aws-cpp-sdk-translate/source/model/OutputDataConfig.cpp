@@ -18,15 +18,7 @@ namespace Translate
 namespace Model
 {
 
-OutputDataConfig::OutputDataConfig() : 
-    m_s3UriHasBeenSet(false),
-    m_encryptionKeyHasBeenSet(false)
-{
-}
-
-OutputDataConfig::OutputDataConfig(JsonView jsonValue) : 
-    m_s3UriHasBeenSet(false),
-    m_encryptionKeyHasBeenSet(false)
+OutputDataConfig::OutputDataConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ OutputDataConfig& OutputDataConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3Uri"))
   {
     m_s3Uri = jsonValue.GetString("S3Uri");
-
     m_s3UriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EncryptionKey"))
   {
     m_encryptionKey = jsonValue.GetObject("EncryptionKey");
-
     m_encryptionKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

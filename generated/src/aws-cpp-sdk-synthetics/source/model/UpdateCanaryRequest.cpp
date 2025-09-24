@@ -12,24 +12,6 @@ using namespace Aws::Synthetics::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateCanaryRequest::UpdateCanaryRequest() : 
-    m_nameHasBeenSet(false),
-    m_codeHasBeenSet(false),
-    m_executionRoleArnHasBeenSet(false),
-    m_runtimeVersionHasBeenSet(false),
-    m_scheduleHasBeenSet(false),
-    m_runConfigHasBeenSet(false),
-    m_successRetentionPeriodInDays(0),
-    m_successRetentionPeriodInDaysHasBeenSet(false),
-    m_failureRetentionPeriodInDays(0),
-    m_failureRetentionPeriodInDaysHasBeenSet(false),
-    m_vpcConfigHasBeenSet(false),
-    m_visualReferenceHasBeenSet(false),
-    m_artifactS3LocationHasBeenSet(false),
-    m_artifactConfigHasBeenSet(false)
-{
-}
-
 Aws::String UpdateCanaryRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -97,6 +79,39 @@ Aws::String UpdateCanaryRequest::SerializePayload() const
   if(m_artifactConfigHasBeenSet)
   {
    payload.WithObject("ArtifactConfig", m_artifactConfig.Jsonize());
+
+  }
+
+  if(m_provisionedResourceCleanupHasBeenSet)
+  {
+   payload.WithString("ProvisionedResourceCleanup", ProvisionedResourceCleanupSettingMapper::GetNameForProvisionedResourceCleanupSetting(m_provisionedResourceCleanup));
+  }
+
+  if(m_dryRunIdHasBeenSet)
+  {
+   payload.WithString("DryRunId", m_dryRunId);
+
+  }
+
+  if(m_visualReferencesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> visualReferencesJsonList(m_visualReferences.size());
+   for(unsigned visualReferencesIndex = 0; visualReferencesIndex < visualReferencesJsonList.GetLength(); ++visualReferencesIndex)
+   {
+     visualReferencesJsonList[visualReferencesIndex].AsObject(m_visualReferences[visualReferencesIndex].Jsonize());
+   }
+   payload.WithArray("VisualReferences", std::move(visualReferencesJsonList));
+
+  }
+
+  if(m_browserConfigsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> browserConfigsJsonList(m_browserConfigs.size());
+   for(unsigned browserConfigsIndex = 0; browserConfigsIndex < browserConfigsJsonList.GetLength(); ++browserConfigsIndex)
+   {
+     browserConfigsJsonList[browserConfigsIndex].AsObject(m_browserConfigs[browserConfigsIndex].Jsonize());
+   }
+   payload.WithArray("BrowserConfigs", std::move(browserConfigsJsonList));
 
   }
 

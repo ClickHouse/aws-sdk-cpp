@@ -28,177 +28,77 @@ namespace Model
   class ImportFirewallDomainsResult
   {
   public:
-    AWS_ROUTE53RESOLVER_API ImportFirewallDomainsResult();
+    AWS_ROUTE53RESOLVER_API ImportFirewallDomainsResult() = default;
     AWS_ROUTE53RESOLVER_API ImportFirewallDomainsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ROUTE53RESOLVER_API ImportFirewallDomainsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Id of the firewall domain list that DNS Firewall just updated.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    ImportFirewallDomainsResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Id of the firewall domain list that DNS Firewall just updated.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The Id of the firewall domain list that DNS Firewall just updated.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The Id of the firewall domain list that DNS Firewall just updated.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The Id of the firewall domain list that DNS Firewall just updated.</p>
-     */
-    inline ImportFirewallDomainsResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The Id of the firewall domain list that DNS Firewall just updated.</p>
-     */
-    inline ImportFirewallDomainsResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Id of the firewall domain list that DNS Firewall just updated.</p>
-     */
-    inline ImportFirewallDomainsResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the domain list. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ImportFirewallDomainsResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline ImportFirewallDomainsResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline ImportFirewallDomainsResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain list. </p>
-     */
-    inline ImportFirewallDomainsResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Status of the import request.</p>
      */
-    inline const FirewallDomainListStatus& GetStatus() const{ return m_status; }
+    inline FirewallDomainListStatus GetStatus() const { return m_status; }
+    inline void SetStatus(FirewallDomainListStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ImportFirewallDomainsResult& WithStatus(FirewallDomainListStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Status of the import request.</p>
-     */
-    inline void SetStatus(const FirewallDomainListStatus& value) { m_status = value; }
-
-    /**
-     * <p>Status of the import request.</p>
-     */
-    inline void SetStatus(FirewallDomainListStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>Status of the import request.</p>
-     */
-    inline ImportFirewallDomainsResult& WithStatus(const FirewallDomainListStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Status of the import request.</p>
-     */
-    inline ImportFirewallDomainsResult& WithStatus(FirewallDomainListStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional information about the status of the list, if available.</p>
      */
-    inline const Aws::String& GetStatusMessage() const{ return m_statusMessage; }
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    ImportFirewallDomainsResult& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline void SetStatusMessage(const Aws::String& value) { m_statusMessage = value; }
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessage = std::move(value); }
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline void SetStatusMessage(const char* value) { m_statusMessage.assign(value); }
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline ImportFirewallDomainsResult& WithStatusMessage(const Aws::String& value) { SetStatusMessage(value); return *this;}
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline ImportFirewallDomainsResult& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional information about the status of the list, if available.</p>
-     */
-    inline ImportFirewallDomainsResult& WithStatusMessage(const char* value) { SetStatusMessage(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ImportFirewallDomainsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ImportFirewallDomainsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ImportFirewallDomainsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ImportFirewallDomainsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
-    FirewallDomainListStatus m_status;
+    FirewallDomainListStatus m_status{FirewallDomainListStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_statusMessage;
+    bool m_statusMessageHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

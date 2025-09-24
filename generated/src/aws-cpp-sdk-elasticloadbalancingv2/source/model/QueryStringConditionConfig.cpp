@@ -20,13 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-QueryStringConditionConfig::QueryStringConditionConfig() : 
-    m_valuesHasBeenSet(false)
-{
-}
-
-QueryStringConditionConfig::QueryStringConditionConfig(const XmlNode& xmlNode) : 
-    m_valuesHasBeenSet(false)
+QueryStringConditionConfig::QueryStringConditionConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ QueryStringConditionConfig& QueryStringConditionConfig::operator =(const XmlNode
     if(!valuesNode.IsNull())
     {
       XmlNode valuesMember = valuesNode.FirstChild("member");
+      m_valuesHasBeenSet = !valuesMember.IsNull();
       while(!valuesMember.IsNull())
       {
         m_values.push_back(valuesMember);
@@ -77,7 +72,7 @@ void QueryStringConditionConfig::OutputToStream(Aws::OStream& oStream, const cha
       for(auto& item : m_values)
       {
         Aws::StringStream valuesSs;
-        valuesSs << location <<  ".Values.member." << valuesIdx++;
+        valuesSs << location << ".Values.member." << valuesIdx++;
         item.OutputToStream(oStream, valuesSs.str().c_str());
       }
   }

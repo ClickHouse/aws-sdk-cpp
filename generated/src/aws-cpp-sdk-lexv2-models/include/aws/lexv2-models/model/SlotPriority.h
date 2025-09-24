@@ -32,76 +32,36 @@ namespace Model
   class SlotPriority
   {
   public:
-    AWS_LEXMODELSV2_API SlotPriority();
+    AWS_LEXMODELSV2_API SlotPriority() = default;
     AWS_LEXMODELSV2_API SlotPriority(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API SlotPriority& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The priority that Amazon Lex should apply to the slot.</p>
      */
-    inline int GetPriority() const{ return m_priority; }
-
-    /**
-     * <p>The priority that Amazon Lex should apply to the slot.</p>
-     */
+    inline int GetPriority() const { return m_priority; }
     inline bool PriorityHasBeenSet() const { return m_priorityHasBeenSet; }
-
-    /**
-     * <p>The priority that Amazon Lex should apply to the slot.</p>
-     */
     inline void SetPriority(int value) { m_priorityHasBeenSet = true; m_priority = value; }
-
-    /**
-     * <p>The priority that Amazon Lex should apply to the slot.</p>
-     */
     inline SlotPriority& WithPriority(int value) { SetPriority(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The unique identifier of the slot.</p>
      */
-    inline const Aws::String& GetSlotId() const{ return m_slotId; }
-
-    /**
-     * <p>The unique identifier of the slot.</p>
-     */
+    inline const Aws::String& GetSlotId() const { return m_slotId; }
     inline bool SlotIdHasBeenSet() const { return m_slotIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the slot.</p>
-     */
-    inline void SetSlotId(const Aws::String& value) { m_slotIdHasBeenSet = true; m_slotId = value; }
-
-    /**
-     * <p>The unique identifier of the slot.</p>
-     */
-    inline void SetSlotId(Aws::String&& value) { m_slotIdHasBeenSet = true; m_slotId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the slot.</p>
-     */
-    inline void SetSlotId(const char* value) { m_slotIdHasBeenSet = true; m_slotId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the slot.</p>
-     */
-    inline SlotPriority& WithSlotId(const Aws::String& value) { SetSlotId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the slot.</p>
-     */
-    inline SlotPriority& WithSlotId(Aws::String&& value) { SetSlotId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the slot.</p>
-     */
-    inline SlotPriority& WithSlotId(const char* value) { SetSlotId(value); return *this;}
-
+    template<typename SlotIdT = Aws::String>
+    void SetSlotId(SlotIdT&& value) { m_slotIdHasBeenSet = true; m_slotId = std::forward<SlotIdT>(value); }
+    template<typename SlotIdT = Aws::String>
+    SlotPriority& WithSlotId(SlotIdT&& value) { SetSlotId(std::forward<SlotIdT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_priority;
+    int m_priority{0};
     bool m_priorityHasBeenSet = false;
 
     Aws::String m_slotId;

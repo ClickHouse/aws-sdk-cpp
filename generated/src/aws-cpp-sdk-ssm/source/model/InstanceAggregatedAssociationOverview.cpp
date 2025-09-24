@@ -18,15 +18,7 @@ namespace SSM
 namespace Model
 {
 
-InstanceAggregatedAssociationOverview::InstanceAggregatedAssociationOverview() : 
-    m_detailedStatusHasBeenSet(false),
-    m_instanceAssociationStatusAggregatedCountHasBeenSet(false)
-{
-}
-
-InstanceAggregatedAssociationOverview::InstanceAggregatedAssociationOverview(JsonView jsonValue) : 
-    m_detailedStatusHasBeenSet(false),
-    m_instanceAssociationStatusAggregatedCountHasBeenSet(false)
+InstanceAggregatedAssociationOverview::InstanceAggregatedAssociationOverview(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InstanceAggregatedAssociationOverview& InstanceAggregatedAssociationOverview::op
   if(jsonValue.ValueExists("DetailedStatus"))
   {
     m_detailedStatus = jsonValue.GetString("DetailedStatus");
-
     m_detailedStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceAssociationStatusAggregatedCount"))
   {
     Aws::Map<Aws::String, JsonView> instanceAssociationStatusAggregatedCountJsonMap = jsonValue.GetObject("InstanceAssociationStatusAggregatedCount").GetAllObjects();
@@ -49,7 +39,6 @@ InstanceAggregatedAssociationOverview& InstanceAggregatedAssociationOverview::op
     }
     m_instanceAssociationStatusAggregatedCountHasBeenSet = true;
   }
-
   return *this;
 }
 

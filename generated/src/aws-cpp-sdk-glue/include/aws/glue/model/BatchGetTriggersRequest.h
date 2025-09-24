@@ -22,7 +22,7 @@ namespace Model
   class BatchGetTriggersRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API BatchGetTriggersRequest();
+    AWS_GLUE_API BatchGetTriggersRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,60 +35,20 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A list of trigger names, which may be the names returned from the
      * <code>ListTriggers</code> operation.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTriggerNames() const{ return m_triggerNames; }
-
-    /**
-     * <p>A list of trigger names, which may be the names returned from the
-     * <code>ListTriggers</code> operation.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTriggerNames() const { return m_triggerNames; }
     inline bool TriggerNamesHasBeenSet() const { return m_triggerNamesHasBeenSet; }
-
-    /**
-     * <p>A list of trigger names, which may be the names returned from the
-     * <code>ListTriggers</code> operation.</p>
-     */
-    inline void SetTriggerNames(const Aws::Vector<Aws::String>& value) { m_triggerNamesHasBeenSet = true; m_triggerNames = value; }
-
-    /**
-     * <p>A list of trigger names, which may be the names returned from the
-     * <code>ListTriggers</code> operation.</p>
-     */
-    inline void SetTriggerNames(Aws::Vector<Aws::String>&& value) { m_triggerNamesHasBeenSet = true; m_triggerNames = std::move(value); }
-
-    /**
-     * <p>A list of trigger names, which may be the names returned from the
-     * <code>ListTriggers</code> operation.</p>
-     */
-    inline BatchGetTriggersRequest& WithTriggerNames(const Aws::Vector<Aws::String>& value) { SetTriggerNames(value); return *this;}
-
-    /**
-     * <p>A list of trigger names, which may be the names returned from the
-     * <code>ListTriggers</code> operation.</p>
-     */
-    inline BatchGetTriggersRequest& WithTriggerNames(Aws::Vector<Aws::String>&& value) { SetTriggerNames(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of trigger names, which may be the names returned from the
-     * <code>ListTriggers</code> operation.</p>
-     */
-    inline BatchGetTriggersRequest& AddTriggerNames(const Aws::String& value) { m_triggerNamesHasBeenSet = true; m_triggerNames.push_back(value); return *this; }
-
-    /**
-     * <p>A list of trigger names, which may be the names returned from the
-     * <code>ListTriggers</code> operation.</p>
-     */
-    inline BatchGetTriggersRequest& AddTriggerNames(Aws::String&& value) { m_triggerNamesHasBeenSet = true; m_triggerNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of trigger names, which may be the names returned from the
-     * <code>ListTriggers</code> operation.</p>
-     */
-    inline BatchGetTriggersRequest& AddTriggerNames(const char* value) { m_triggerNamesHasBeenSet = true; m_triggerNames.push_back(value); return *this; }
-
+    template<typename TriggerNamesT = Aws::Vector<Aws::String>>
+    void SetTriggerNames(TriggerNamesT&& value) { m_triggerNamesHasBeenSet = true; m_triggerNames = std::forward<TriggerNamesT>(value); }
+    template<typename TriggerNamesT = Aws::Vector<Aws::String>>
+    BatchGetTriggersRequest& WithTriggerNames(TriggerNamesT&& value) { SetTriggerNames(std::forward<TriggerNamesT>(value)); return *this;}
+    template<typename TriggerNamesT = Aws::String>
+    BatchGetTriggersRequest& AddTriggerNames(TriggerNamesT&& value) { m_triggerNamesHasBeenSet = true; m_triggerNames.emplace_back(std::forward<TriggerNamesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_triggerNames;

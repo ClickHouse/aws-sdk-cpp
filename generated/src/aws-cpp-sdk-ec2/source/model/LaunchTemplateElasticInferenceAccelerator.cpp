@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplateElasticInferenceAccelerator::LaunchTemplateElasticInferenceAccelerator() : 
-    m_typeHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false)
-{
-}
-
-LaunchTemplateElasticInferenceAccelerator::LaunchTemplateElasticInferenceAccelerator(const XmlNode& xmlNode) : 
-    m_typeHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false)
+LaunchTemplateElasticInferenceAccelerator::LaunchTemplateElasticInferenceAccelerator(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

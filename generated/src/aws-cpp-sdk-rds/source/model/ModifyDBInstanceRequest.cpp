@@ -10,99 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-ModifyDBInstanceRequest::ModifyDBInstanceRequest() : 
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_allocatedStorage(0),
-    m_allocatedStorageHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_dBSubnetGroupNameHasBeenSet(false),
-    m_dBSecurityGroupsHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false),
-    m_applyImmediately(false),
-    m_applyImmediatelyHasBeenSet(false),
-    m_masterUserPasswordHasBeenSet(false),
-    m_dBParameterGroupNameHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_preferredBackupWindowHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_multiAZ(false),
-    m_multiAZHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_allowMajorVersionUpgrade(false),
-    m_allowMajorVersionUpgradeHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_licenseModelHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_optionGroupNameHasBeenSet(false),
-    m_newDBInstanceIdentifierHasBeenSet(false),
-    m_storageTypeHasBeenSet(false),
-    m_tdeCredentialArnHasBeenSet(false),
-    m_tdeCredentialPasswordHasBeenSet(false),
-    m_cACertificateIdentifierHasBeenSet(false),
-    m_domainHasBeenSet(false),
-    m_domainFqdnHasBeenSet(false),
-    m_domainOuHasBeenSet(false),
-    m_domainAuthSecretArnHasBeenSet(false),
-    m_domainDnsIpsHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_monitoringInterval(0),
-    m_monitoringIntervalHasBeenSet(false),
-    m_dBPortNumber(0),
-    m_dBPortNumberHasBeenSet(false),
-    m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false),
-    m_monitoringRoleArnHasBeenSet(false),
-    m_domainIAMRoleNameHasBeenSet(false),
-    m_disableDomain(false),
-    m_disableDomainHasBeenSet(false),
-    m_promotionTier(0),
-    m_promotionTierHasBeenSet(false),
-    m_enableIAMDatabaseAuthentication(false),
-    m_enableIAMDatabaseAuthenticationHasBeenSet(false),
-    m_enablePerformanceInsights(false),
-    m_enablePerformanceInsightsHasBeenSet(false),
-    m_performanceInsightsKMSKeyIdHasBeenSet(false),
-    m_performanceInsightsRetentionPeriod(0),
-    m_performanceInsightsRetentionPeriodHasBeenSet(false),
-    m_cloudwatchLogsExportConfigurationHasBeenSet(false),
-    m_processorFeaturesHasBeenSet(false),
-    m_useDefaultProcessorFeatures(false),
-    m_useDefaultProcessorFeaturesHasBeenSet(false),
-    m_deletionProtection(false),
-    m_deletionProtectionHasBeenSet(false),
-    m_maxAllocatedStorage(0),
-    m_maxAllocatedStorageHasBeenSet(false),
-    m_certificateRotationRestart(false),
-    m_certificateRotationRestartHasBeenSet(false),
-    m_replicaMode(ReplicaMode::NOT_SET),
-    m_replicaModeHasBeenSet(false),
-    m_enableCustomerOwnedIp(false),
-    m_enableCustomerOwnedIpHasBeenSet(false),
-    m_awsBackupRecoveryPointArnHasBeenSet(false),
-    m_automationMode(AutomationMode::NOT_SET),
-    m_automationModeHasBeenSet(false),
-    m_resumeFullAutomationModeMinutes(0),
-    m_resumeFullAutomationModeMinutesHasBeenSet(false),
-    m_networkTypeHasBeenSet(false),
-    m_storageThroughput(0),
-    m_storageThroughputHasBeenSet(false),
-    m_manageMasterUserPassword(false),
-    m_manageMasterUserPasswordHasBeenSet(false),
-    m_rotateMasterUserPassword(false),
-    m_rotateMasterUserPasswordHasBeenSet(false),
-    m_masterUserSecretKmsKeyIdHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_dedicatedLogVolume(false),
-    m_dedicatedLogVolumeHasBeenSet(false),
-    m_multiTenant(false),
-    m_multiTenantHasBeenSet(false)
-{
-}
-
 Aws::String ModifyDBInstanceRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -129,23 +36,37 @@ Aws::String ModifyDBInstanceRequest::SerializePayload() const
 
   if(m_dBSecurityGroupsHasBeenSet)
   {
-    unsigned dBSecurityGroupsCount = 1;
-    for(auto& item : m_dBSecurityGroups)
+    if (m_dBSecurityGroups.empty())
     {
-      ss << "DBSecurityGroups.member." << dBSecurityGroupsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      dBSecurityGroupsCount++;
+      ss << "DBSecurityGroups=&";
+    }
+    else
+    {
+      unsigned dBSecurityGroupsCount = 1;
+      for(auto& item : m_dBSecurityGroups)
+      {
+        ss << "DBSecurityGroups.DBSecurityGroupName." << dBSecurityGroupsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        dBSecurityGroupsCount++;
+      }
     }
   }
 
   if(m_vpcSecurityGroupIdsHasBeenSet)
   {
-    unsigned vpcSecurityGroupIdsCount = 1;
-    for(auto& item : m_vpcSecurityGroupIds)
+    if (m_vpcSecurityGroupIds.empty())
     {
-      ss << "VpcSecurityGroupIds.member." << vpcSecurityGroupIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      vpcSecurityGroupIdsCount++;
+      ss << "VpcSecurityGroupIds=&";
+    }
+    else
+    {
+      unsigned vpcSecurityGroupIdsCount = 1;
+      for(auto& item : m_vpcSecurityGroupIds)
+      {
+        ss << "VpcSecurityGroupIds.VpcSecurityGroupId." << vpcSecurityGroupIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        vpcSecurityGroupIdsCount++;
+      }
     }
   }
 
@@ -261,12 +182,19 @@ Aws::String ModifyDBInstanceRequest::SerializePayload() const
 
   if(m_domainDnsIpsHasBeenSet)
   {
-    unsigned domainDnsIpsCount = 1;
-    for(auto& item : m_domainDnsIps)
+    if (m_domainDnsIps.empty())
     {
-      ss << "DomainDnsIps.member." << domainDnsIpsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      domainDnsIpsCount++;
+      ss << "DomainDnsIps=&";
+    }
+    else
+    {
+      unsigned domainDnsIpsCount = 1;
+      for(auto& item : m_domainDnsIps)
+      {
+        ss << "DomainDnsIps.member." << domainDnsIpsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        domainDnsIpsCount++;
+      }
     }
   }
 
@@ -315,6 +243,11 @@ Aws::String ModifyDBInstanceRequest::SerializePayload() const
     ss << "EnableIAMDatabaseAuthentication=" << std::boolalpha << m_enableIAMDatabaseAuthentication << "&";
   }
 
+  if(m_databaseInsightsModeHasBeenSet)
+  {
+    ss << "DatabaseInsightsMode=" << StringUtils::URLEncode(DatabaseInsightsModeMapper::GetNameForDatabaseInsightsMode(m_databaseInsightsMode)) << "&";
+  }
+
   if(m_enablePerformanceInsightsHasBeenSet)
   {
     ss << "EnablePerformanceInsights=" << std::boolalpha << m_enablePerformanceInsights << "&";
@@ -337,11 +270,18 @@ Aws::String ModifyDBInstanceRequest::SerializePayload() const
 
   if(m_processorFeaturesHasBeenSet)
   {
-    unsigned processorFeaturesCount = 1;
-    for(auto& item : m_processorFeatures)
+    if (m_processorFeatures.empty())
     {
-      item.OutputToStream(ss, "ProcessorFeatures.member.", processorFeaturesCount, "");
-      processorFeaturesCount++;
+      ss << "ProcessorFeatures=&";
+    }
+    else
+    {
+      unsigned processorFeaturesCount = 1;
+      for(auto& item : m_processorFeatures)
+      {
+        item.OutputToStream(ss, "ProcessorFeatures.ProcessorFeature.", processorFeaturesCount, "");
+        processorFeaturesCount++;
+      }
     }
   }
 
@@ -367,7 +307,7 @@ Aws::String ModifyDBInstanceRequest::SerializePayload() const
 
   if(m_replicaModeHasBeenSet)
   {
-    ss << "ReplicaMode=" << ReplicaModeMapper::GetNameForReplicaMode(m_replicaMode) << "&";
+    ss << "ReplicaMode=" << StringUtils::URLEncode(ReplicaModeMapper::GetNameForReplicaMode(m_replicaMode)) << "&";
   }
 
   if(m_enableCustomerOwnedIpHasBeenSet)
@@ -382,7 +322,7 @@ Aws::String ModifyDBInstanceRequest::SerializePayload() const
 
   if(m_automationModeHasBeenSet)
   {
-    ss << "AutomationMode=" << AutomationModeMapper::GetNameForAutomationMode(m_automationMode) << "&";
+    ss << "AutomationMode=" << StringUtils::URLEncode(AutomationModeMapper::GetNameForAutomationMode(m_automationMode)) << "&";
   }
 
   if(m_resumeFullAutomationModeMinutesHasBeenSet)
@@ -428,6 +368,11 @@ Aws::String ModifyDBInstanceRequest::SerializePayload() const
   if(m_multiTenantHasBeenSet)
   {
     ss << "MultiTenant=" << std::boolalpha << m_multiTenant << "&";
+  }
+
+  if(m_masterUserAuthenticationTypeHasBeenSet)
+  {
+    ss << "MasterUserAuthenticationType=" << StringUtils::URLEncode(MasterUserAuthenticationTypeMapper::GetNameForMasterUserAuthenticationType(m_masterUserAuthenticationType)) << "&";
   }
 
   ss << "Version=2014-10-31";

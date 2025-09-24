@@ -33,7 +33,7 @@ namespace Model
   class UnsuccessfulInstanceCreditSpecificationItem
   {
   public:
-    AWS_EC2_API UnsuccessfulInstanceCreditSpecificationItem();
+    AWS_EC2_API UnsuccessfulInstanceCreditSpecificationItem() = default;
     AWS_EC2_API UnsuccessfulInstanceCreditSpecificationItem(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API UnsuccessfulInstanceCreditSpecificationItem& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,83 +41,30 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    UnsuccessfulInstanceCreditSpecificationItem& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline UnsuccessfulInstanceCreditSpecificationItem& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline UnsuccessfulInstanceCreditSpecificationItem& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance.</p>
-     */
-    inline UnsuccessfulInstanceCreditSpecificationItem& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The applicable error for the burstable performance instance whose credit
      * option for CPU usage was not modified.</p>
      */
-    inline const UnsuccessfulInstanceCreditSpecificationItemError& GetError() const{ return m_error; }
-
-    /**
-     * <p>The applicable error for the burstable performance instance whose credit
-     * option for CPU usage was not modified.</p>
-     */
+    inline const UnsuccessfulInstanceCreditSpecificationItemError& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
-
-    /**
-     * <p>The applicable error for the burstable performance instance whose credit
-     * option for CPU usage was not modified.</p>
-     */
-    inline void SetError(const UnsuccessfulInstanceCreditSpecificationItemError& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>The applicable error for the burstable performance instance whose credit
-     * option for CPU usage was not modified.</p>
-     */
-    inline void SetError(UnsuccessfulInstanceCreditSpecificationItemError&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>The applicable error for the burstable performance instance whose credit
-     * option for CPU usage was not modified.</p>
-     */
-    inline UnsuccessfulInstanceCreditSpecificationItem& WithError(const UnsuccessfulInstanceCreditSpecificationItemError& value) { SetError(value); return *this;}
-
-    /**
-     * <p>The applicable error for the burstable performance instance whose credit
-     * option for CPU usage was not modified.</p>
-     */
-    inline UnsuccessfulInstanceCreditSpecificationItem& WithError(UnsuccessfulInstanceCreditSpecificationItemError&& value) { SetError(std::move(value)); return *this;}
-
+    template<typename ErrorT = UnsuccessfulInstanceCreditSpecificationItemError>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = UnsuccessfulInstanceCreditSpecificationItemError>
+    UnsuccessfulInstanceCreditSpecificationItem& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceId;

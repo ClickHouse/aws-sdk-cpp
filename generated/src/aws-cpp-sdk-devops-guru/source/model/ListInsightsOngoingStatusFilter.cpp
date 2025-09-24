@@ -18,15 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-ListInsightsOngoingStatusFilter::ListInsightsOngoingStatusFilter() : 
-    m_type(InsightType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-ListInsightsOngoingStatusFilter::ListInsightsOngoingStatusFilter(JsonView jsonValue) : 
-    m_type(InsightType::NOT_SET),
-    m_typeHasBeenSet(false)
+ListInsightsOngoingStatusFilter::ListInsightsOngoingStatusFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ListInsightsOngoingStatusFilter& ListInsightsOngoingStatusFilter::operator =(Jso
   if(jsonValue.ValueExists("Type"))
   {
     m_type = InsightTypeMapper::GetInsightTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

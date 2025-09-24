@@ -30,158 +30,70 @@ namespace Model
   class DetectProtectiveEquipmentResult
   {
   public:
-    AWS_REKOGNITION_API DetectProtectiveEquipmentResult();
+    AWS_REKOGNITION_API DetectProtectiveEquipmentResult() = default;
     AWS_REKOGNITION_API DetectProtectiveEquipmentResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_REKOGNITION_API DetectProtectiveEquipmentResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The version number of the PPE detection model used to detect PPE in the
      * image.</p>
      */
-    inline const Aws::String& GetProtectiveEquipmentModelVersion() const{ return m_protectiveEquipmentModelVersion; }
+    inline const Aws::String& GetProtectiveEquipmentModelVersion() const { return m_protectiveEquipmentModelVersion; }
+    template<typename ProtectiveEquipmentModelVersionT = Aws::String>
+    void SetProtectiveEquipmentModelVersion(ProtectiveEquipmentModelVersionT&& value) { m_protectiveEquipmentModelVersionHasBeenSet = true; m_protectiveEquipmentModelVersion = std::forward<ProtectiveEquipmentModelVersionT>(value); }
+    template<typename ProtectiveEquipmentModelVersionT = Aws::String>
+    DetectProtectiveEquipmentResult& WithProtectiveEquipmentModelVersion(ProtectiveEquipmentModelVersionT&& value) { SetProtectiveEquipmentModelVersion(std::forward<ProtectiveEquipmentModelVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version number of the PPE detection model used to detect PPE in the
-     * image.</p>
-     */
-    inline void SetProtectiveEquipmentModelVersion(const Aws::String& value) { m_protectiveEquipmentModelVersion = value; }
-
-    /**
-     * <p>The version number of the PPE detection model used to detect PPE in the
-     * image.</p>
-     */
-    inline void SetProtectiveEquipmentModelVersion(Aws::String&& value) { m_protectiveEquipmentModelVersion = std::move(value); }
-
-    /**
-     * <p>The version number of the PPE detection model used to detect PPE in the
-     * image.</p>
-     */
-    inline void SetProtectiveEquipmentModelVersion(const char* value) { m_protectiveEquipmentModelVersion.assign(value); }
-
-    /**
-     * <p>The version number of the PPE detection model used to detect PPE in the
-     * image.</p>
-     */
-    inline DetectProtectiveEquipmentResult& WithProtectiveEquipmentModelVersion(const Aws::String& value) { SetProtectiveEquipmentModelVersion(value); return *this;}
-
-    /**
-     * <p>The version number of the PPE detection model used to detect PPE in the
-     * image.</p>
-     */
-    inline DetectProtectiveEquipmentResult& WithProtectiveEquipmentModelVersion(Aws::String&& value) { SetProtectiveEquipmentModelVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version number of the PPE detection model used to detect PPE in the
-     * image.</p>
-     */
-    inline DetectProtectiveEquipmentResult& WithProtectiveEquipmentModelVersion(const char* value) { SetProtectiveEquipmentModelVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of persons detected in the image (including persons not wearing
      * PPE).</p>
      */
-    inline const Aws::Vector<ProtectiveEquipmentPerson>& GetPersons() const{ return m_persons; }
+    inline const Aws::Vector<ProtectiveEquipmentPerson>& GetPersons() const { return m_persons; }
+    template<typename PersonsT = Aws::Vector<ProtectiveEquipmentPerson>>
+    void SetPersons(PersonsT&& value) { m_personsHasBeenSet = true; m_persons = std::forward<PersonsT>(value); }
+    template<typename PersonsT = Aws::Vector<ProtectiveEquipmentPerson>>
+    DetectProtectiveEquipmentResult& WithPersons(PersonsT&& value) { SetPersons(std::forward<PersonsT>(value)); return *this;}
+    template<typename PersonsT = ProtectiveEquipmentPerson>
+    DetectProtectiveEquipmentResult& AddPersons(PersonsT&& value) { m_personsHasBeenSet = true; m_persons.emplace_back(std::forward<PersonsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of persons detected in the image (including persons not wearing
-     * PPE).</p>
-     */
-    inline void SetPersons(const Aws::Vector<ProtectiveEquipmentPerson>& value) { m_persons = value; }
-
-    /**
-     * <p>An array of persons detected in the image (including persons not wearing
-     * PPE).</p>
-     */
-    inline void SetPersons(Aws::Vector<ProtectiveEquipmentPerson>&& value) { m_persons = std::move(value); }
-
-    /**
-     * <p>An array of persons detected in the image (including persons not wearing
-     * PPE).</p>
-     */
-    inline DetectProtectiveEquipmentResult& WithPersons(const Aws::Vector<ProtectiveEquipmentPerson>& value) { SetPersons(value); return *this;}
-
-    /**
-     * <p>An array of persons detected in the image (including persons not wearing
-     * PPE).</p>
-     */
-    inline DetectProtectiveEquipmentResult& WithPersons(Aws::Vector<ProtectiveEquipmentPerson>&& value) { SetPersons(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of persons detected in the image (including persons not wearing
-     * PPE).</p>
-     */
-    inline DetectProtectiveEquipmentResult& AddPersons(const ProtectiveEquipmentPerson& value) { m_persons.push_back(value); return *this; }
-
-    /**
-     * <p>An array of persons detected in the image (including persons not wearing
-     * PPE).</p>
-     */
-    inline DetectProtectiveEquipmentResult& AddPersons(ProtectiveEquipmentPerson&& value) { m_persons.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Summary information for the types of PPE specified in the
      * <code>SummarizationAttributes</code> input parameter.</p>
      */
-    inline const ProtectiveEquipmentSummary& GetSummary() const{ return m_summary; }
+    inline const ProtectiveEquipmentSummary& GetSummary() const { return m_summary; }
+    template<typename SummaryT = ProtectiveEquipmentSummary>
+    void SetSummary(SummaryT&& value) { m_summaryHasBeenSet = true; m_summary = std::forward<SummaryT>(value); }
+    template<typename SummaryT = ProtectiveEquipmentSummary>
+    DetectProtectiveEquipmentResult& WithSummary(SummaryT&& value) { SetSummary(std::forward<SummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Summary information for the types of PPE specified in the
-     * <code>SummarizationAttributes</code> input parameter.</p>
-     */
-    inline void SetSummary(const ProtectiveEquipmentSummary& value) { m_summary = value; }
-
-    /**
-     * <p>Summary information for the types of PPE specified in the
-     * <code>SummarizationAttributes</code> input parameter.</p>
-     */
-    inline void SetSummary(ProtectiveEquipmentSummary&& value) { m_summary = std::move(value); }
-
-    /**
-     * <p>Summary information for the types of PPE specified in the
-     * <code>SummarizationAttributes</code> input parameter.</p>
-     */
-    inline DetectProtectiveEquipmentResult& WithSummary(const ProtectiveEquipmentSummary& value) { SetSummary(value); return *this;}
-
-    /**
-     * <p>Summary information for the types of PPE specified in the
-     * <code>SummarizationAttributes</code> input parameter.</p>
-     */
-    inline DetectProtectiveEquipmentResult& WithSummary(ProtectiveEquipmentSummary&& value) { SetSummary(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DetectProtectiveEquipmentResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DetectProtectiveEquipmentResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DetectProtectiveEquipmentResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DetectProtectiveEquipmentResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_protectiveEquipmentModelVersion;
+    bool m_protectiveEquipmentModelVersionHasBeenSet = false;
 
     Aws::Vector<ProtectiveEquipmentPerson> m_persons;
+    bool m_personsHasBeenSet = false;
 
     ProtectiveEquipmentSummary m_summary;
+    bool m_summaryHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

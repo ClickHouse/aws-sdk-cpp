@@ -20,13 +20,7 @@ namespace SES
 namespace Model
 {
 
-ConfigurationSet::ConfigurationSet() : 
-    m_nameHasBeenSet(false)
-{
-}
-
-ConfigurationSet::ConfigurationSet(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false)
+ConfigurationSet::ConfigurationSet(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

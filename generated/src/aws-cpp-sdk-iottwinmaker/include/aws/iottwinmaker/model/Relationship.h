@@ -32,93 +32,35 @@ namespace Model
   class Relationship
   {
   public:
-    AWS_IOTTWINMAKER_API Relationship();
+    AWS_IOTTWINMAKER_API Relationship() = default;
     AWS_IOTTWINMAKER_API Relationship(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Relationship& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the target component type associated with this relationship.</p>
      */
-    inline const Aws::String& GetTargetComponentTypeId() const{ return m_targetComponentTypeId; }
-
-    /**
-     * <p>The ID of the target component type associated with this relationship.</p>
-     */
+    inline const Aws::String& GetTargetComponentTypeId() const { return m_targetComponentTypeId; }
     inline bool TargetComponentTypeIdHasBeenSet() const { return m_targetComponentTypeIdHasBeenSet; }
+    template<typename TargetComponentTypeIdT = Aws::String>
+    void SetTargetComponentTypeId(TargetComponentTypeIdT&& value) { m_targetComponentTypeIdHasBeenSet = true; m_targetComponentTypeId = std::forward<TargetComponentTypeIdT>(value); }
+    template<typename TargetComponentTypeIdT = Aws::String>
+    Relationship& WithTargetComponentTypeId(TargetComponentTypeIdT&& value) { SetTargetComponentTypeId(std::forward<TargetComponentTypeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the target component type associated with this relationship.</p>
-     */
-    inline void SetTargetComponentTypeId(const Aws::String& value) { m_targetComponentTypeIdHasBeenSet = true; m_targetComponentTypeId = value; }
-
-    /**
-     * <p>The ID of the target component type associated with this relationship.</p>
-     */
-    inline void SetTargetComponentTypeId(Aws::String&& value) { m_targetComponentTypeIdHasBeenSet = true; m_targetComponentTypeId = std::move(value); }
-
-    /**
-     * <p>The ID of the target component type associated with this relationship.</p>
-     */
-    inline void SetTargetComponentTypeId(const char* value) { m_targetComponentTypeIdHasBeenSet = true; m_targetComponentTypeId.assign(value); }
-
-    /**
-     * <p>The ID of the target component type associated with this relationship.</p>
-     */
-    inline Relationship& WithTargetComponentTypeId(const Aws::String& value) { SetTargetComponentTypeId(value); return *this;}
-
-    /**
-     * <p>The ID of the target component type associated with this relationship.</p>
-     */
-    inline Relationship& WithTargetComponentTypeId(Aws::String&& value) { SetTargetComponentTypeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the target component type associated with this relationship.</p>
-     */
-    inline Relationship& WithTargetComponentTypeId(const char* value) { SetTargetComponentTypeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the relationship.</p>
      */
-    inline const Aws::String& GetRelationshipType() const{ return m_relationshipType; }
-
-    /**
-     * <p>The type of the relationship.</p>
-     */
+    inline const Aws::String& GetRelationshipType() const { return m_relationshipType; }
     inline bool RelationshipTypeHasBeenSet() const { return m_relationshipTypeHasBeenSet; }
-
-    /**
-     * <p>The type of the relationship.</p>
-     */
-    inline void SetRelationshipType(const Aws::String& value) { m_relationshipTypeHasBeenSet = true; m_relationshipType = value; }
-
-    /**
-     * <p>The type of the relationship.</p>
-     */
-    inline void SetRelationshipType(Aws::String&& value) { m_relationshipTypeHasBeenSet = true; m_relationshipType = std::move(value); }
-
-    /**
-     * <p>The type of the relationship.</p>
-     */
-    inline void SetRelationshipType(const char* value) { m_relationshipTypeHasBeenSet = true; m_relationshipType.assign(value); }
-
-    /**
-     * <p>The type of the relationship.</p>
-     */
-    inline Relationship& WithRelationshipType(const Aws::String& value) { SetRelationshipType(value); return *this;}
-
-    /**
-     * <p>The type of the relationship.</p>
-     */
-    inline Relationship& WithRelationshipType(Aws::String&& value) { SetRelationshipType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the relationship.</p>
-     */
-    inline Relationship& WithRelationshipType(const char* value) { SetRelationshipType(value); return *this;}
-
+    template<typename RelationshipTypeT = Aws::String>
+    void SetRelationshipType(RelationshipTypeT&& value) { m_relationshipTypeHasBeenSet = true; m_relationshipType = std::forward<RelationshipTypeT>(value); }
+    template<typename RelationshipTypeT = Aws::String>
+    Relationship& WithRelationshipType(RelationshipTypeT&& value) { SetRelationshipType(std::forward<RelationshipTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_targetComponentTypeId;

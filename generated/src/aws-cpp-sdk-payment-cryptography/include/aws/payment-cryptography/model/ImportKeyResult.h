@@ -28,68 +28,38 @@ namespace Model
   class ImportKeyResult
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHY_API ImportKeyResult();
+    AWS_PAYMENTCRYPTOGRAPHY_API ImportKeyResult() = default;
     AWS_PAYMENTCRYPTOGRAPHY_API ImportKeyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PAYMENTCRYPTOGRAPHY_API ImportKeyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The <code>KeyARN</code> of the key material imported within Amazon Web
      * Services Payment Cryptography.</p>
      */
-    inline const Key& GetKey() const{ return m_key; }
+    inline const Key& GetKey() const { return m_key; }
+    template<typename KeyT = Key>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Key>
+    ImportKeyResult& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>KeyARN</code> of the key material imported within Amazon Web
-     * Services Payment Cryptography.</p>
-     */
-    inline void SetKey(const Key& value) { m_key = value; }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key material imported within Amazon Web
-     * Services Payment Cryptography.</p>
-     */
-    inline void SetKey(Key&& value) { m_key = std::move(value); }
-
-    /**
-     * <p>The <code>KeyARN</code> of the key material imported within Amazon Web
-     * Services Payment Cryptography.</p>
-     */
-    inline ImportKeyResult& WithKey(const Key& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The <code>KeyARN</code> of the key material imported within Amazon Web
-     * Services Payment Cryptography.</p>
-     */
-    inline ImportKeyResult& WithKey(Key&& value) { SetKey(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ImportKeyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ImportKeyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ImportKeyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ImportKeyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Key m_key;
+    bool m_keyHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

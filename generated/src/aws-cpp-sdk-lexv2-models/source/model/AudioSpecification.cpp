@@ -18,19 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-AudioSpecification::AudioSpecification() : 
-    m_maxLengthMs(0),
-    m_maxLengthMsHasBeenSet(false),
-    m_endTimeoutMs(0),
-    m_endTimeoutMsHasBeenSet(false)
-{
-}
-
-AudioSpecification::AudioSpecification(JsonView jsonValue) : 
-    m_maxLengthMs(0),
-    m_maxLengthMsHasBeenSet(false),
-    m_endTimeoutMs(0),
-    m_endTimeoutMsHasBeenSet(false)
+AudioSpecification::AudioSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AudioSpecification& AudioSpecification::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("maxLengthMs"))
   {
     m_maxLengthMs = jsonValue.GetInteger("maxLengthMs");
-
     m_maxLengthMsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("endTimeoutMs"))
   {
     m_endTimeoutMs = jsonValue.GetInteger("endTimeoutMs");
-
     m_endTimeoutMsHasBeenSet = true;
   }
-
   return *this;
 }
 

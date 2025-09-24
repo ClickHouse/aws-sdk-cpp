@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-FastLaunchLaunchTemplateSpecificationRequest::FastLaunchLaunchTemplateSpecificationRequest() : 
-    m_launchTemplateIdHasBeenSet(false),
-    m_launchTemplateNameHasBeenSet(false),
-    m_versionHasBeenSet(false)
-{
-}
-
-FastLaunchLaunchTemplateSpecificationRequest::FastLaunchLaunchTemplateSpecificationRequest(const XmlNode& xmlNode) : 
-    m_launchTemplateIdHasBeenSet(false),
-    m_launchTemplateNameHasBeenSet(false),
-    m_versionHasBeenSet(false)
+FastLaunchLaunchTemplateSpecificationRequest::FastLaunchLaunchTemplateSpecificationRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

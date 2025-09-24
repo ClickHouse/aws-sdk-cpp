@@ -18,19 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-AtigData::AtigData() : 
-    m_firstSeenHasBeenSet(false),
-    m_lastSeenHasBeenSet(false),
-    m_targetsHasBeenSet(false),
-    m_ttpsHasBeenSet(false)
-{
-}
-
-AtigData::AtigData(JsonView jsonValue) : 
-    m_firstSeenHasBeenSet(false),
-    m_lastSeenHasBeenSet(false),
-    m_targetsHasBeenSet(false),
-    m_ttpsHasBeenSet(false)
+AtigData::AtigData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AtigData& AtigData::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("firstSeen"))
   {
     m_firstSeen = jsonValue.GetDouble("firstSeen");
-
     m_firstSeenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastSeen"))
   {
     m_lastSeen = jsonValue.GetDouble("lastSeen");
-
     m_lastSeenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("targets"))
   {
     Aws::Utils::Array<JsonView> targetsJsonList = jsonValue.GetArray("targets");
@@ -60,7 +44,6 @@ AtigData& AtigData::operator =(JsonView jsonValue)
     }
     m_targetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ttps"))
   {
     Aws::Utils::Array<JsonView> ttpsJsonList = jsonValue.GetArray("ttps");
@@ -70,7 +53,6 @@ AtigData& AtigData::operator =(JsonView jsonValue)
     }
     m_ttpsHasBeenSet = true;
   }
-
   return *this;
 }
 

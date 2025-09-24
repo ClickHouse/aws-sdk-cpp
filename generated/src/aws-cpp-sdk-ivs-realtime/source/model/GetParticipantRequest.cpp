@@ -12,20 +12,13 @@ using namespace Aws::ivsrealtime::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetParticipantRequest::GetParticipantRequest() : 
-    m_participantIdHasBeenSet(false),
-    m_sessionIdHasBeenSet(false),
-    m_stageArnHasBeenSet(false)
-{
-}
-
 Aws::String GetParticipantRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_participantIdHasBeenSet)
+  if(m_stageArnHasBeenSet)
   {
-   payload.WithString("participantId", m_participantId);
+   payload.WithString("stageArn", m_stageArn);
 
   }
 
@@ -35,9 +28,9 @@ Aws::String GetParticipantRequest::SerializePayload() const
 
   }
 
-  if(m_stageArnHasBeenSet)
+  if(m_participantIdHasBeenSet)
   {
-   payload.WithString("stageArn", m_stageArn);
+   payload.WithString("participantId", m_participantId);
 
   }
 

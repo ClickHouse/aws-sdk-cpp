@@ -12,31 +12,19 @@ using namespace Aws::QConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateContentRequest::UpdateContentRequest() : 
-    m_contentIdHasBeenSet(false),
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_metadataHasBeenSet(false),
-    m_overrideLinkOutUriHasBeenSet(false),
-    m_removeOverrideLinkOutUri(false),
-    m_removeOverrideLinkOutUriHasBeenSet(false),
-    m_revisionIdHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_uploadIdHasBeenSet(false)
-{
-}
-
 Aws::String UpdateContentRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_metadataHasBeenSet)
+  if(m_revisionIdHasBeenSet)
   {
-   JsonValue metadataJsonMap;
-   for(auto& metadataItem : m_metadata)
-   {
-     metadataJsonMap.WithString(metadataItem.first, metadataItem.second);
-   }
-   payload.WithObject("metadata", std::move(metadataJsonMap));
+   payload.WithString("revisionId", m_revisionId);
+
+  }
+
+  if(m_titleHasBeenSet)
+  {
+   payload.WithString("title", m_title);
 
   }
 
@@ -52,15 +40,14 @@ Aws::String UpdateContentRequest::SerializePayload() const
 
   }
 
-  if(m_revisionIdHasBeenSet)
+  if(m_metadataHasBeenSet)
   {
-   payload.WithString("revisionId", m_revisionId);
-
-  }
-
-  if(m_titleHasBeenSet)
-  {
-   payload.WithString("title", m_title);
+   JsonValue metadataJsonMap;
+   for(auto& metadataItem : m_metadata)
+   {
+     metadataJsonMap.WithString(metadataItem.first, metadataItem.second);
+   }
+   payload.WithObject("metadata", std::move(metadataJsonMap));
 
   }
 

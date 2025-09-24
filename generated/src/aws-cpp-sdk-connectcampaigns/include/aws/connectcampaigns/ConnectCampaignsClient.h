@@ -22,8 +22,8 @@ namespace ConnectCampaigns
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef ConnectCampaignsClientConfiguration ClientConfigurationType;
       typedef ConnectCampaignsEndpointProvider EndpointProviderType;
@@ -33,14 +33,14 @@ namespace ConnectCampaigns
         * is not specified, it will be initialized to default values.
         */
         ConnectCampaignsClient(const Aws::ConnectCampaigns::ConnectCampaignsClientConfiguration& clientConfiguration = Aws::ConnectCampaigns::ConnectCampaignsClientConfiguration(),
-                               std::shared_ptr<ConnectCampaignsEndpointProviderBase> endpointProvider = Aws::MakeShared<ConnectCampaignsEndpointProvider>(ALLOCATION_TAG));
+                               std::shared_ptr<ConnectCampaignsEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         ConnectCampaignsClient(const Aws::Auth::AWSCredentials& credentials,
-                               std::shared_ptr<ConnectCampaignsEndpointProviderBase> endpointProvider = Aws::MakeShared<ConnectCampaignsEndpointProvider>(ALLOCATION_TAG),
+                               std::shared_ptr<ConnectCampaignsEndpointProviderBase> endpointProvider = nullptr,
                                const Aws::ConnectCampaigns::ConnectCampaignsClientConfiguration& clientConfiguration = Aws::ConnectCampaigns::ConnectCampaignsClientConfiguration());
 
        /**
@@ -48,7 +48,7 @@ namespace ConnectCampaigns
         * the default http client factory will be used
         */
         ConnectCampaignsClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                               std::shared_ptr<ConnectCampaignsEndpointProviderBase> endpointProvider = Aws::MakeShared<ConnectCampaignsEndpointProvider>(ALLOCATION_TAG),
+                               std::shared_ptr<ConnectCampaignsEndpointProviderBase> endpointProvider = nullptr,
                                const Aws::ConnectCampaigns::ConnectCampaignsClientConfiguration& clientConfiguration = Aws::ConnectCampaigns::ConnectCampaignsClientConfiguration());
 
 
@@ -314,13 +314,13 @@ namespace ConnectCampaigns
          * href="http://docs.aws.amazon.com/goto/WebAPI/connectcampaigns-2021-01-30/ListCampaigns">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCampaignsOutcome ListCampaigns(const Model::ListCampaignsRequest& request) const;
+        virtual Model::ListCampaignsOutcome ListCampaigns(const Model::ListCampaignsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCampaigns that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCampaignsRequestT = Model::ListCampaignsRequest>
-        Model::ListCampaignsOutcomeCallable ListCampaignsCallable(const ListCampaignsRequestT& request) const
+        Model::ListCampaignsOutcomeCallable ListCampaignsCallable(const ListCampaignsRequestT& request = {}) const
         {
             return SubmitCallable(&ConnectCampaignsClient::ListCampaigns, request);
         }
@@ -329,7 +329,7 @@ namespace ConnectCampaigns
          * An Async wrapper for ListCampaigns that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCampaignsRequestT = Model::ListCampaignsRequest>
-        void ListCampaignsAsync(const ListCampaignsRequestT& request, const ListCampaignsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCampaignsAsync(const ListCampaignsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCampaignsRequestT& request = {}) const
         {
             return SubmitAsync(&ConnectCampaignsClient::ListCampaigns, request, handler, context);
         }
@@ -651,7 +651,6 @@ namespace ConnectCampaigns
       void init(const ConnectCampaignsClientConfiguration& clientConfiguration);
 
       ConnectCampaignsClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<ConnectCampaignsEndpointProviderBase> m_endpointProvider;
   };
 

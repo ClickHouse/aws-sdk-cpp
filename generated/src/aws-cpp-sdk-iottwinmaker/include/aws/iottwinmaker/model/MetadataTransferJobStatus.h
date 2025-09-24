@@ -32,103 +32,52 @@ namespace Model
   class MetadataTransferJobStatus
   {
   public:
-    AWS_IOTTWINMAKER_API MetadataTransferJobStatus();
+    AWS_IOTTWINMAKER_API MetadataTransferJobStatus() = default;
     AWS_IOTTWINMAKER_API MetadataTransferJobStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API MetadataTransferJobStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The metadata transfer job state.</p>
      */
-    inline const MetadataTransferJobState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The metadata transfer job state.</p>
-     */
+    inline MetadataTransferJobState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(MetadataTransferJobState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline MetadataTransferJobStatus& WithState(MetadataTransferJobState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job state.</p>
-     */
-    inline void SetState(const MetadataTransferJobState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The metadata transfer job state.</p>
-     */
-    inline void SetState(MetadataTransferJobState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job state.</p>
-     */
-    inline MetadataTransferJobStatus& WithState(const MetadataTransferJobState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job state.</p>
-     */
-    inline MetadataTransferJobStatus& WithState(MetadataTransferJobState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The metadata transfer job error.</p>
      */
-    inline const ErrorDetails& GetError() const{ return m_error; }
-
-    /**
-     * <p>The metadata transfer job error.</p>
-     */
+    inline const ErrorDetails& GetError() const { return m_error; }
     inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
+    template<typename ErrorT = ErrorDetails>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = ErrorDetails>
+    MetadataTransferJobStatus& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The metadata transfer job error.</p>
-     */
-    inline void SetError(const ErrorDetails& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>The metadata transfer job error.</p>
-     */
-    inline void SetError(ErrorDetails&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>The metadata transfer job error.</p>
-     */
-    inline MetadataTransferJobStatus& WithError(const ErrorDetails& value) { SetError(value); return *this;}
-
-    /**
-     * <p>The metadata transfer job error.</p>
-     */
-    inline MetadataTransferJobStatus& WithError(ErrorDetails&& value) { SetError(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The queued position.</p>
      */
-    inline int GetQueuedPosition() const{ return m_queuedPosition; }
-
-    /**
-     * <p>The queued position.</p>
-     */
+    inline int GetQueuedPosition() const { return m_queuedPosition; }
     inline bool QueuedPositionHasBeenSet() const { return m_queuedPositionHasBeenSet; }
-
-    /**
-     * <p>The queued position.</p>
-     */
     inline void SetQueuedPosition(int value) { m_queuedPositionHasBeenSet = true; m_queuedPosition = value; }
-
-    /**
-     * <p>The queued position.</p>
-     */
     inline MetadataTransferJobStatus& WithQueuedPosition(int value) { SetQueuedPosition(value); return *this;}
-
+    ///@}
   private:
 
-    MetadataTransferJobState m_state;
+    MetadataTransferJobState m_state{MetadataTransferJobState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     ErrorDetails m_error;
     bool m_errorHasBeenSet = false;
 
-    int m_queuedPosition;
+    int m_queuedPosition{0};
     bool m_queuedPositionHasBeenSet = false;
   };
 

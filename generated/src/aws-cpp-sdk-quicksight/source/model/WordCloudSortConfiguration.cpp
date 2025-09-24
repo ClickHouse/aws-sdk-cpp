@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-WordCloudSortConfiguration::WordCloudSortConfiguration() : 
-    m_categoryItemsLimitHasBeenSet(false),
-    m_categorySortHasBeenSet(false)
-{
-}
-
-WordCloudSortConfiguration::WordCloudSortConfiguration(JsonView jsonValue) : 
-    m_categoryItemsLimitHasBeenSet(false),
-    m_categorySortHasBeenSet(false)
+WordCloudSortConfiguration::WordCloudSortConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ WordCloudSortConfiguration& WordCloudSortConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("CategoryItemsLimit"))
   {
     m_categoryItemsLimit = jsonValue.GetObject("CategoryItemsLimit");
-
     m_categoryItemsLimitHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CategorySort"))
   {
     Aws::Utils::Array<JsonView> categorySortJsonList = jsonValue.GetArray("CategorySort");
@@ -49,7 +39,6 @@ WordCloudSortConfiguration& WordCloudSortConfiguration::operator =(JsonView json
     }
     m_categorySortHasBeenSet = true;
   }
-
   return *this;
 }
 

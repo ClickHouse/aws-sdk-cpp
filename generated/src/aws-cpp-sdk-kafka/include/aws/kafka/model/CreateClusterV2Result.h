@@ -29,111 +29,38 @@ namespace Model
   class CreateClusterV2Result
   {
   public:
-    AWS_KAFKA_API CreateClusterV2Result();
+    AWS_KAFKA_API CreateClusterV2Result() = default;
     AWS_KAFKA_API CreateClusterV2Result(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KAFKA_API CreateClusterV2Result& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * 
             <p>The Amazon Resource Name (ARN) of the cluster.</p>
          
      */
-    inline const Aws::String& GetClusterArn() const{ return m_clusterArn; }
+    inline const Aws::String& GetClusterArn() const { return m_clusterArn; }
+    template<typename ClusterArnT = Aws::String>
+    void SetClusterArn(ClusterArnT&& value) { m_clusterArnHasBeenSet = true; m_clusterArn = std::forward<ClusterArnT>(value); }
+    template<typename ClusterArnT = Aws::String>
+    CreateClusterV2Result& WithClusterArn(ClusterArnT&& value) { SetClusterArn(std::forward<ClusterArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) of the cluster.</p>
-         
-     */
-    inline void SetClusterArn(const Aws::String& value) { m_clusterArn = value; }
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) of the cluster.</p>
-         
-     */
-    inline void SetClusterArn(Aws::String&& value) { m_clusterArn = std::move(value); }
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) of the cluster.</p>
-         
-     */
-    inline void SetClusterArn(const char* value) { m_clusterArn.assign(value); }
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) of the cluster.</p>
-         
-     */
-    inline CreateClusterV2Result& WithClusterArn(const Aws::String& value) { SetClusterArn(value); return *this;}
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) of the cluster.</p>
-         
-     */
-    inline CreateClusterV2Result& WithClusterArn(Aws::String&& value) { SetClusterArn(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The Amazon Resource Name (ARN) of the cluster.</p>
-         
-     */
-    inline CreateClusterV2Result& WithClusterArn(const char* value) { SetClusterArn(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The name of the MSK cluster.</p>
          
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    CreateClusterV2Result& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The name of the MSK cluster.</p>
-         
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterName = value; }
-
-    /**
-     * 
-            <p>The name of the MSK cluster.</p>
-         
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterName = std::move(value); }
-
-    /**
-     * 
-            <p>The name of the MSK cluster.</p>
-         
-     */
-    inline void SetClusterName(const char* value) { m_clusterName.assign(value); }
-
-    /**
-     * 
-            <p>The name of the MSK cluster.</p>
-         
-     */
-    inline CreateClusterV2Result& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * 
-            <p>The name of the MSK cluster.</p>
-         
-     */
-    inline CreateClusterV2Result& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * 
-            <p>The name of the MSK cluster.</p>
-         
-     */
-    inline CreateClusterV2Result& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The state of the cluster. The possible states are ACTIVE,
@@ -141,118 +68,47 @@ namespace Model
      * UPDATING.</p>
          
      */
-    inline const ClusterState& GetState() const{ return m_state; }
+    inline ClusterState GetState() const { return m_state; }
+    inline void SetState(ClusterState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline CreateClusterV2Result& WithState(ClusterState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The state of the cluster. The possible states are ACTIVE,
-     * CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and
-     * UPDATING.</p>
-         
-     */
-    inline void SetState(const ClusterState& value) { m_state = value; }
-
-    /**
-     * 
-            <p>The state of the cluster. The possible states are ACTIVE,
-     * CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and
-     * UPDATING.</p>
-         
-     */
-    inline void SetState(ClusterState&& value) { m_state = std::move(value); }
-
-    /**
-     * 
-            <p>The state of the cluster. The possible states are ACTIVE,
-     * CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and
-     * UPDATING.</p>
-         
-     */
-    inline CreateClusterV2Result& WithState(const ClusterState& value) { SetState(value); return *this;}
-
-    /**
-     * 
-            <p>The state of the cluster. The possible states are ACTIVE,
-     * CREATING, DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and
-     * UPDATING.</p>
-         
-     */
-    inline CreateClusterV2Result& WithState(ClusterState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * 
             <p>The type of the cluster. The possible states are PROVISIONED or
      * SERVERLESS.</p>
          
      */
-    inline const ClusterType& GetClusterType() const{ return m_clusterType; }
+    inline ClusterType GetClusterType() const { return m_clusterType; }
+    inline void SetClusterType(ClusterType value) { m_clusterTypeHasBeenSet = true; m_clusterType = value; }
+    inline CreateClusterV2Result& WithClusterType(ClusterType value) { SetClusterType(value); return *this;}
+    ///@}
 
-    /**
-     * 
-            <p>The type of the cluster. The possible states are PROVISIONED or
-     * SERVERLESS.</p>
-         
-     */
-    inline void SetClusterType(const ClusterType& value) { m_clusterType = value; }
-
-    /**
-     * 
-            <p>The type of the cluster. The possible states are PROVISIONED or
-     * SERVERLESS.</p>
-         
-     */
-    inline void SetClusterType(ClusterType&& value) { m_clusterType = std::move(value); }
-
-    /**
-     * 
-            <p>The type of the cluster. The possible states are PROVISIONED or
-     * SERVERLESS.</p>
-         
-     */
-    inline CreateClusterV2Result& WithClusterType(const ClusterType& value) { SetClusterType(value); return *this;}
-
-    /**
-     * 
-            <p>The type of the cluster. The possible states are PROVISIONED or
-     * SERVERLESS.</p>
-         
-     */
-    inline CreateClusterV2Result& WithClusterType(ClusterType&& value) { SetClusterType(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateClusterV2Result& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateClusterV2Result& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateClusterV2Result& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateClusterV2Result& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterArn;
+    bool m_clusterArnHasBeenSet = false;
 
     Aws::String m_clusterName;
+    bool m_clusterNameHasBeenSet = false;
 
-    ClusterState m_state;
+    ClusterState m_state{ClusterState::NOT_SET};
+    bool m_stateHasBeenSet = false;
 
-    ClusterType m_clusterType;
+    ClusterType m_clusterType{ClusterType::NOT_SET};
+    bool m_clusterTypeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

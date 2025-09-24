@@ -18,23 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-InsightVisual::InsightVisual() : 
-    m_visualIdHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_subtitleHasBeenSet(false),
-    m_insightConfigurationHasBeenSet(false),
-    m_actionsHasBeenSet(false),
-    m_dataSetIdentifierHasBeenSet(false)
-{
-}
-
-InsightVisual::InsightVisual(JsonView jsonValue) : 
-    m_visualIdHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_subtitleHasBeenSet(false),
-    m_insightConfigurationHasBeenSet(false),
-    m_actionsHasBeenSet(false),
-    m_dataSetIdentifierHasBeenSet(false)
+InsightVisual::InsightVisual(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,31 +28,23 @@ InsightVisual& InsightVisual::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("VisualId"))
   {
     m_visualId = jsonValue.GetString("VisualId");
-
     m_visualIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Title"))
   {
     m_title = jsonValue.GetObject("Title");
-
     m_titleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Subtitle"))
   {
     m_subtitle = jsonValue.GetObject("Subtitle");
-
     m_subtitleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InsightConfiguration"))
   {
     m_insightConfiguration = jsonValue.GetObject("InsightConfiguration");
-
     m_insightConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Actions"))
   {
     Aws::Utils::Array<JsonView> actionsJsonList = jsonValue.GetArray("Actions");
@@ -78,14 +54,16 @@ InsightVisual& InsightVisual::operator =(JsonView jsonValue)
     }
     m_actionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataSetIdentifier"))
   {
     m_dataSetIdentifier = jsonValue.GetString("DataSetIdentifier");
-
     m_dataSetIdentifierHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("VisualContentAltText"))
+  {
+    m_visualContentAltText = jsonValue.GetString("VisualContentAltText");
+    m_visualContentAltTextHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -131,6 +109,12 @@ JsonValue InsightVisual::Jsonize() const
   if(m_dataSetIdentifierHasBeenSet)
   {
    payload.WithString("DataSetIdentifier", m_dataSetIdentifier);
+
+  }
+
+  if(m_visualContentAltTextHasBeenSet)
+  {
+   payload.WithString("VisualContentAltText", m_visualContentAltText);
 
   }
 

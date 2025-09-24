@@ -31,45 +31,24 @@ namespace Model
   class TableStyleTarget
   {
   public:
-    AWS_QUICKSIGHT_API TableStyleTarget();
+    AWS_QUICKSIGHT_API TableStyleTarget() = default;
     AWS_QUICKSIGHT_API TableStyleTarget(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TableStyleTarget& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The cell type of the table style target.</p>
      */
-    inline const StyledCellType& GetCellType() const{ return m_cellType; }
-
-    /**
-     * <p>The cell type of the table style target.</p>
-     */
+    inline StyledCellType GetCellType() const { return m_cellType; }
     inline bool CellTypeHasBeenSet() const { return m_cellTypeHasBeenSet; }
-
-    /**
-     * <p>The cell type of the table style target.</p>
-     */
-    inline void SetCellType(const StyledCellType& value) { m_cellTypeHasBeenSet = true; m_cellType = value; }
-
-    /**
-     * <p>The cell type of the table style target.</p>
-     */
-    inline void SetCellType(StyledCellType&& value) { m_cellTypeHasBeenSet = true; m_cellType = std::move(value); }
-
-    /**
-     * <p>The cell type of the table style target.</p>
-     */
-    inline TableStyleTarget& WithCellType(const StyledCellType& value) { SetCellType(value); return *this;}
-
-    /**
-     * <p>The cell type of the table style target.</p>
-     */
-    inline TableStyleTarget& WithCellType(StyledCellType&& value) { SetCellType(std::move(value)); return *this;}
-
+    inline void SetCellType(StyledCellType value) { m_cellTypeHasBeenSet = true; m_cellType = value; }
+    inline TableStyleTarget& WithCellType(StyledCellType value) { SetCellType(value); return *this;}
+    ///@}
   private:
 
-    StyledCellType m_cellType;
+    StyledCellType m_cellType{StyledCellType::NOT_SET};
     bool m_cellTypeHasBeenSet = false;
   };
 

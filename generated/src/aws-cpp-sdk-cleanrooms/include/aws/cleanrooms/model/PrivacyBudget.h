@@ -32,48 +32,24 @@ namespace Model
   class PrivacyBudget
   {
   public:
-    AWS_CLEANROOMS_API PrivacyBudget();
+    AWS_CLEANROOMS_API PrivacyBudget() = default;
     AWS_CLEANROOMS_API PrivacyBudget(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API PrivacyBudget& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An object that specifies the epsilon parameter and the utility in terms of
      * total aggregations, as well as the remaining aggregations available.</p>
      */
-    inline const DifferentialPrivacyPrivacyBudget& GetDifferentialPrivacy() const{ return m_differentialPrivacy; }
-
-    /**
-     * <p>An object that specifies the epsilon parameter and the utility in terms of
-     * total aggregations, as well as the remaining aggregations available.</p>
-     */
+    inline const DifferentialPrivacyPrivacyBudget& GetDifferentialPrivacy() const { return m_differentialPrivacy; }
     inline bool DifferentialPrivacyHasBeenSet() const { return m_differentialPrivacyHasBeenSet; }
-
-    /**
-     * <p>An object that specifies the epsilon parameter and the utility in terms of
-     * total aggregations, as well as the remaining aggregations available.</p>
-     */
-    inline void SetDifferentialPrivacy(const DifferentialPrivacyPrivacyBudget& value) { m_differentialPrivacyHasBeenSet = true; m_differentialPrivacy = value; }
-
-    /**
-     * <p>An object that specifies the epsilon parameter and the utility in terms of
-     * total aggregations, as well as the remaining aggregations available.</p>
-     */
-    inline void SetDifferentialPrivacy(DifferentialPrivacyPrivacyBudget&& value) { m_differentialPrivacyHasBeenSet = true; m_differentialPrivacy = std::move(value); }
-
-    /**
-     * <p>An object that specifies the epsilon parameter and the utility in terms of
-     * total aggregations, as well as the remaining aggregations available.</p>
-     */
-    inline PrivacyBudget& WithDifferentialPrivacy(const DifferentialPrivacyPrivacyBudget& value) { SetDifferentialPrivacy(value); return *this;}
-
-    /**
-     * <p>An object that specifies the epsilon parameter and the utility in terms of
-     * total aggregations, as well as the remaining aggregations available.</p>
-     */
-    inline PrivacyBudget& WithDifferentialPrivacy(DifferentialPrivacyPrivacyBudget&& value) { SetDifferentialPrivacy(std::move(value)); return *this;}
-
+    template<typename DifferentialPrivacyT = DifferentialPrivacyPrivacyBudget>
+    void SetDifferentialPrivacy(DifferentialPrivacyT&& value) { m_differentialPrivacyHasBeenSet = true; m_differentialPrivacy = std::forward<DifferentialPrivacyT>(value); }
+    template<typename DifferentialPrivacyT = DifferentialPrivacyPrivacyBudget>
+    PrivacyBudget& WithDifferentialPrivacy(DifferentialPrivacyT&& value) { SetDifferentialPrivacy(std::forward<DifferentialPrivacyT>(value)); return *this;}
+    ///@}
   private:
 
     DifferentialPrivacyPrivacyBudget m_differentialPrivacy;

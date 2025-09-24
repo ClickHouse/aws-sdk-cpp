@@ -9,6 +9,7 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/quicksight/model/TopicDetails.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/quicksight/model/CustomInstructions.h>
 #include <aws/quicksight/model/Tag.h>
 #include <utility>
 
@@ -24,7 +25,7 @@ namespace Model
   class CreateTopicRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API CreateTopicRequest();
+    AWS_QUICKSIGHT_API CreateTopicRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,183 +36,84 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that you want to create a topic
      * in.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that you want to create a topic
-     * in.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    CreateTopicRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that you want to create a topic
-     * in.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that you want to create a topic
-     * in.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that you want to create a topic
-     * in.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that you want to create a topic
-     * in.</p>
-     */
-    inline CreateTopicRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that you want to create a topic
-     * in.</p>
-     */
-    inline CreateTopicRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that you want to create a topic
-     * in.</p>
-     */
-    inline CreateTopicRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for the topic that you want to create. This ID is unique per Amazon
      * Web Services Region for each Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetTopicId() const{ return m_topicId; }
-
-    /**
-     * <p>The ID for the topic that you want to create. This ID is unique per Amazon
-     * Web Services Region for each Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetTopicId() const { return m_topicId; }
     inline bool TopicIdHasBeenSet() const { return m_topicIdHasBeenSet; }
+    template<typename TopicIdT = Aws::String>
+    void SetTopicId(TopicIdT&& value) { m_topicIdHasBeenSet = true; m_topicId = std::forward<TopicIdT>(value); }
+    template<typename TopicIdT = Aws::String>
+    CreateTopicRequest& WithTopicId(TopicIdT&& value) { SetTopicId(std::forward<TopicIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the topic that you want to create. This ID is unique per Amazon
-     * Web Services Region for each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(const Aws::String& value) { m_topicIdHasBeenSet = true; m_topicId = value; }
-
-    /**
-     * <p>The ID for the topic that you want to create. This ID is unique per Amazon
-     * Web Services Region for each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(Aws::String&& value) { m_topicIdHasBeenSet = true; m_topicId = std::move(value); }
-
-    /**
-     * <p>The ID for the topic that you want to create. This ID is unique per Amazon
-     * Web Services Region for each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(const char* value) { m_topicIdHasBeenSet = true; m_topicId.assign(value); }
-
-    /**
-     * <p>The ID for the topic that you want to create. This ID is unique per Amazon
-     * Web Services Region for each Amazon Web Services account.</p>
-     */
-    inline CreateTopicRequest& WithTopicId(const Aws::String& value) { SetTopicId(value); return *this;}
-
-    /**
-     * <p>The ID for the topic that you want to create. This ID is unique per Amazon
-     * Web Services Region for each Amazon Web Services account.</p>
-     */
-    inline CreateTopicRequest& WithTopicId(Aws::String&& value) { SetTopicId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the topic that you want to create. This ID is unique per Amazon
-     * Web Services Region for each Amazon Web Services account.</p>
-     */
-    inline CreateTopicRequest& WithTopicId(const char* value) { SetTopicId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The definition of a topic to create.</p>
      */
-    inline const TopicDetails& GetTopic() const{ return m_topic; }
-
-    /**
-     * <p>The definition of a topic to create.</p>
-     */
+    inline const TopicDetails& GetTopic() const { return m_topic; }
     inline bool TopicHasBeenSet() const { return m_topicHasBeenSet; }
+    template<typename TopicT = TopicDetails>
+    void SetTopic(TopicT&& value) { m_topicHasBeenSet = true; m_topic = std::forward<TopicT>(value); }
+    template<typename TopicT = TopicDetails>
+    CreateTopicRequest& WithTopic(TopicT&& value) { SetTopic(std::forward<TopicT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The definition of a topic to create.</p>
-     */
-    inline void SetTopic(const TopicDetails& value) { m_topicHasBeenSet = true; m_topic = value; }
-
-    /**
-     * <p>The definition of a topic to create.</p>
-     */
-    inline void SetTopic(TopicDetails&& value) { m_topicHasBeenSet = true; m_topic = std::move(value); }
-
-    /**
-     * <p>The definition of a topic to create.</p>
-     */
-    inline CreateTopicRequest& WithTopic(const TopicDetails& value) { SetTopic(value); return *this;}
-
-    /**
-     * <p>The definition of a topic to create.</p>
-     */
-    inline CreateTopicRequest& WithTopic(TopicDetails&& value) { SetTopic(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains a map of the key-value pairs for the resource tag or tags that are
      * assigned to the dataset.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags that are
-     * assigned to the dataset.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateTopicRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateTopicRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags that are
-     * assigned to the dataset.</p>
+     * <p>The Folder ARN of the folder that you want the topic to reside in.</p>
      */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
+    inline const Aws::Vector<Aws::String>& GetFolderArns() const { return m_folderArns; }
+    inline bool FolderArnsHasBeenSet() const { return m_folderArnsHasBeenSet; }
+    template<typename FolderArnsT = Aws::Vector<Aws::String>>
+    void SetFolderArns(FolderArnsT&& value) { m_folderArnsHasBeenSet = true; m_folderArns = std::forward<FolderArnsT>(value); }
+    template<typename FolderArnsT = Aws::Vector<Aws::String>>
+    CreateTopicRequest& WithFolderArns(FolderArnsT&& value) { SetFolderArns(std::forward<FolderArnsT>(value)); return *this;}
+    template<typename FolderArnsT = Aws::String>
+    CreateTopicRequest& AddFolderArns(FolderArnsT&& value) { m_folderArnsHasBeenSet = true; m_folderArns.emplace_back(std::forward<FolderArnsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags that are
-     * assigned to the dataset.</p>
+     * <p>Custom instructions for the topic.</p>
      */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags that are
-     * assigned to the dataset.</p>
-     */
-    inline CreateTopicRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags that are
-     * assigned to the dataset.</p>
-     */
-    inline CreateTopicRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags that are
-     * assigned to the dataset.</p>
-     */
-    inline CreateTopicRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags that are
-     * assigned to the dataset.</p>
-     */
-    inline CreateTopicRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    inline const CustomInstructions& GetCustomInstructions() const { return m_customInstructions; }
+    inline bool CustomInstructionsHasBeenSet() const { return m_customInstructionsHasBeenSet; }
+    template<typename CustomInstructionsT = CustomInstructions>
+    void SetCustomInstructions(CustomInstructionsT&& value) { m_customInstructionsHasBeenSet = true; m_customInstructions = std::forward<CustomInstructionsT>(value); }
+    template<typename CustomInstructionsT = CustomInstructions>
+    CreateTopicRequest& WithCustomInstructions(CustomInstructionsT&& value) { SetCustomInstructions(std::forward<CustomInstructionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_awsAccountId;
@@ -225,6 +127,12 @@ namespace Model
 
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_folderArns;
+    bool m_folderArnsHasBeenSet = false;
+
+    CustomInstructions m_customInstructions;
+    bool m_customInstructionsHasBeenSet = false;
   };
 
 } // namespace Model

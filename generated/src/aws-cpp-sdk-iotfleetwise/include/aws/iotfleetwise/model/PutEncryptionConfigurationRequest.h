@@ -22,7 +22,7 @@ namespace Model
   class PutEncryptionConfigurationRequest : public IoTFleetWiseRequest
   {
   public:
-    AWS_IOTFLEETWISE_API PutEncryptionConfigurationRequest();
+    AWS_IOTFLEETWISE_API PutEncryptionConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,95 +35,35 @@ namespace Model
     AWS_IOTFLEETWISE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the KMS key that is used for encryption.</p>
      */
-    inline const Aws::String& GetKmsKeyId() const{ return m_kmsKeyId; }
-
-    /**
-     * <p>The ID of the KMS key that is used for encryption.</p>
-     */
+    inline const Aws::String& GetKmsKeyId() const { return m_kmsKeyId; }
     inline bool KmsKeyIdHasBeenSet() const { return m_kmsKeyIdHasBeenSet; }
+    template<typename KmsKeyIdT = Aws::String>
+    void SetKmsKeyId(KmsKeyIdT&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::forward<KmsKeyIdT>(value); }
+    template<typename KmsKeyIdT = Aws::String>
+    PutEncryptionConfigurationRequest& WithKmsKeyId(KmsKeyIdT&& value) { SetKmsKeyId(std::forward<KmsKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the KMS key that is used for encryption.</p>
-     */
-    inline void SetKmsKeyId(const Aws::String& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = value; }
-
-    /**
-     * <p>The ID of the KMS key that is used for encryption.</p>
-     */
-    inline void SetKmsKeyId(Aws::String&& value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId = std::move(value); }
-
-    /**
-     * <p>The ID of the KMS key that is used for encryption.</p>
-     */
-    inline void SetKmsKeyId(const char* value) { m_kmsKeyIdHasBeenSet = true; m_kmsKeyId.assign(value); }
-
-    /**
-     * <p>The ID of the KMS key that is used for encryption.</p>
-     */
-    inline PutEncryptionConfigurationRequest& WithKmsKeyId(const Aws::String& value) { SetKmsKeyId(value); return *this;}
-
-    /**
-     * <p>The ID of the KMS key that is used for encryption.</p>
-     */
-    inline PutEncryptionConfigurationRequest& WithKmsKeyId(Aws::String&& value) { SetKmsKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the KMS key that is used for encryption.</p>
-     */
-    inline PutEncryptionConfigurationRequest& WithKmsKeyId(const char* value) { SetKmsKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of encryption. Choose <code>KMS_BASED_ENCRYPTION</code> to use a KMS
      * key or <code>FLEETWISE_DEFAULT_ENCRYPTION</code> to use an Amazon Web Services
      * managed key.</p>
      */
-    inline const EncryptionType& GetEncryptionType() const{ return m_encryptionType; }
-
-    /**
-     * <p>The type of encryption. Choose <code>KMS_BASED_ENCRYPTION</code> to use a KMS
-     * key or <code>FLEETWISE_DEFAULT_ENCRYPTION</code> to use an Amazon Web Services
-     * managed key.</p>
-     */
+    inline EncryptionType GetEncryptionType() const { return m_encryptionType; }
     inline bool EncryptionTypeHasBeenSet() const { return m_encryptionTypeHasBeenSet; }
-
-    /**
-     * <p>The type of encryption. Choose <code>KMS_BASED_ENCRYPTION</code> to use a KMS
-     * key or <code>FLEETWISE_DEFAULT_ENCRYPTION</code> to use an Amazon Web Services
-     * managed key.</p>
-     */
-    inline void SetEncryptionType(const EncryptionType& value) { m_encryptionTypeHasBeenSet = true; m_encryptionType = value; }
-
-    /**
-     * <p>The type of encryption. Choose <code>KMS_BASED_ENCRYPTION</code> to use a KMS
-     * key or <code>FLEETWISE_DEFAULT_ENCRYPTION</code> to use an Amazon Web Services
-     * managed key.</p>
-     */
-    inline void SetEncryptionType(EncryptionType&& value) { m_encryptionTypeHasBeenSet = true; m_encryptionType = std::move(value); }
-
-    /**
-     * <p>The type of encryption. Choose <code>KMS_BASED_ENCRYPTION</code> to use a KMS
-     * key or <code>FLEETWISE_DEFAULT_ENCRYPTION</code> to use an Amazon Web Services
-     * managed key.</p>
-     */
-    inline PutEncryptionConfigurationRequest& WithEncryptionType(const EncryptionType& value) { SetEncryptionType(value); return *this;}
-
-    /**
-     * <p>The type of encryption. Choose <code>KMS_BASED_ENCRYPTION</code> to use a KMS
-     * key or <code>FLEETWISE_DEFAULT_ENCRYPTION</code> to use an Amazon Web Services
-     * managed key.</p>
-     */
-    inline PutEncryptionConfigurationRequest& WithEncryptionType(EncryptionType&& value) { SetEncryptionType(std::move(value)); return *this;}
-
+    inline void SetEncryptionType(EncryptionType value) { m_encryptionTypeHasBeenSet = true; m_encryptionType = value; }
+    inline PutEncryptionConfigurationRequest& WithEncryptionType(EncryptionType value) { SetEncryptionType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_kmsKeyId;
     bool m_kmsKeyIdHasBeenSet = false;
 
-    EncryptionType m_encryptionType;
+    EncryptionType m_encryptionType{EncryptionType::NOT_SET};
     bool m_encryptionTypeHasBeenSet = false;
   };
 

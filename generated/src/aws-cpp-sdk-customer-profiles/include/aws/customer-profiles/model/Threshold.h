@@ -32,89 +32,39 @@ namespace Model
   class Threshold
   {
   public:
-    AWS_CUSTOMERPROFILES_API Threshold();
+    AWS_CUSTOMERPROFILES_API Threshold() = default;
     AWS_CUSTOMERPROFILES_API Threshold(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Threshold& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CUSTOMERPROFILES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value of the threshold.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the threshold.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    Threshold& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value of the threshold.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the threshold.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the threshold.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The value of the threshold.</p>
-     */
-    inline Threshold& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the threshold.</p>
-     */
-    inline Threshold& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the threshold.</p>
-     */
-    inline Threshold& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The operator of the threshold.</p>
      */
-    inline const Operator& GetOperator() const{ return m_operator; }
-
-    /**
-     * <p>The operator of the threshold.</p>
-     */
+    inline Operator GetOperator() const { return m_operator; }
     inline bool OperatorHasBeenSet() const { return m_operatorHasBeenSet; }
-
-    /**
-     * <p>The operator of the threshold.</p>
-     */
-    inline void SetOperator(const Operator& value) { m_operatorHasBeenSet = true; m_operator = value; }
-
-    /**
-     * <p>The operator of the threshold.</p>
-     */
-    inline void SetOperator(Operator&& value) { m_operatorHasBeenSet = true; m_operator = std::move(value); }
-
-    /**
-     * <p>The operator of the threshold.</p>
-     */
-    inline Threshold& WithOperator(const Operator& value) { SetOperator(value); return *this;}
-
-    /**
-     * <p>The operator of the threshold.</p>
-     */
-    inline Threshold& WithOperator(Operator&& value) { SetOperator(std::move(value)); return *this;}
-
+    inline void SetOperator(Operator value) { m_operatorHasBeenSet = true; m_operator = value; }
+    inline Threshold& WithOperator(Operator value) { SetOperator(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_value;
     bool m_valueHasBeenSet = false;
 
-    Operator m_operator;
+    Operator m_operator{Operator::NOT_SET};
     bool m_operatorHasBeenSet = false;
   };
 

@@ -28,63 +28,37 @@ namespace Model
   class DeleteScheduledActionResult
   {
   public:
-    AWS_REDSHIFTSERVERLESS_API DeleteScheduledActionResult();
+    AWS_REDSHIFTSERVERLESS_API DeleteScheduledActionResult() = default;
     AWS_REDSHIFTSERVERLESS_API DeleteScheduledActionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_REDSHIFTSERVERLESS_API DeleteScheduledActionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The deleted scheduled action object.</p>
      */
-    inline const ScheduledActionResponse& GetScheduledAction() const{ return m_scheduledAction; }
+    inline const ScheduledActionResponse& GetScheduledAction() const { return m_scheduledAction; }
+    template<typename ScheduledActionT = ScheduledActionResponse>
+    void SetScheduledAction(ScheduledActionT&& value) { m_scheduledActionHasBeenSet = true; m_scheduledAction = std::forward<ScheduledActionT>(value); }
+    template<typename ScheduledActionT = ScheduledActionResponse>
+    DeleteScheduledActionResult& WithScheduledAction(ScheduledActionT&& value) { SetScheduledAction(std::forward<ScheduledActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The deleted scheduled action object.</p>
-     */
-    inline void SetScheduledAction(const ScheduledActionResponse& value) { m_scheduledAction = value; }
-
-    /**
-     * <p>The deleted scheduled action object.</p>
-     */
-    inline void SetScheduledAction(ScheduledActionResponse&& value) { m_scheduledAction = std::move(value); }
-
-    /**
-     * <p>The deleted scheduled action object.</p>
-     */
-    inline DeleteScheduledActionResult& WithScheduledAction(const ScheduledActionResponse& value) { SetScheduledAction(value); return *this;}
-
-    /**
-     * <p>The deleted scheduled action object.</p>
-     */
-    inline DeleteScheduledActionResult& WithScheduledAction(ScheduledActionResponse&& value) { SetScheduledAction(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteScheduledActionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteScheduledActionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteScheduledActionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteScheduledActionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ScheduledActionResponse m_scheduledAction;
+    bool m_scheduledActionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

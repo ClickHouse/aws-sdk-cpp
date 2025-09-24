@@ -33,73 +33,35 @@ namespace Model
   class WriteOperation
   {
   public:
-    AWS_LAKEFORMATION_API WriteOperation();
+    AWS_LAKEFORMATION_API WriteOperation() = default;
     AWS_LAKEFORMATION_API WriteOperation(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAKEFORMATION_API WriteOperation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAKEFORMATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A new object to add to the governed table.</p>
      */
-    inline const AddObjectInput& GetAddObject() const{ return m_addObject; }
-
-    /**
-     * <p>A new object to add to the governed table.</p>
-     */
+    inline const AddObjectInput& GetAddObject() const { return m_addObject; }
     inline bool AddObjectHasBeenSet() const { return m_addObjectHasBeenSet; }
+    template<typename AddObjectT = AddObjectInput>
+    void SetAddObject(AddObjectT&& value) { m_addObjectHasBeenSet = true; m_addObject = std::forward<AddObjectT>(value); }
+    template<typename AddObjectT = AddObjectInput>
+    WriteOperation& WithAddObject(AddObjectT&& value) { SetAddObject(std::forward<AddObjectT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A new object to add to the governed table.</p>
-     */
-    inline void SetAddObject(const AddObjectInput& value) { m_addObjectHasBeenSet = true; m_addObject = value; }
-
-    /**
-     * <p>A new object to add to the governed table.</p>
-     */
-    inline void SetAddObject(AddObjectInput&& value) { m_addObjectHasBeenSet = true; m_addObject = std::move(value); }
-
-    /**
-     * <p>A new object to add to the governed table.</p>
-     */
-    inline WriteOperation& WithAddObject(const AddObjectInput& value) { SetAddObject(value); return *this;}
-
-    /**
-     * <p>A new object to add to the governed table.</p>
-     */
-    inline WriteOperation& WithAddObject(AddObjectInput&& value) { SetAddObject(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object to delete from the governed table.</p>
      */
-    inline const DeleteObjectInput& GetDeleteObject() const{ return m_deleteObject; }
-
-    /**
-     * <p>An object to delete from the governed table.</p>
-     */
+    inline const DeleteObjectInput& GetDeleteObject() const { return m_deleteObject; }
     inline bool DeleteObjectHasBeenSet() const { return m_deleteObjectHasBeenSet; }
-
-    /**
-     * <p>An object to delete from the governed table.</p>
-     */
-    inline void SetDeleteObject(const DeleteObjectInput& value) { m_deleteObjectHasBeenSet = true; m_deleteObject = value; }
-
-    /**
-     * <p>An object to delete from the governed table.</p>
-     */
-    inline void SetDeleteObject(DeleteObjectInput&& value) { m_deleteObjectHasBeenSet = true; m_deleteObject = std::move(value); }
-
-    /**
-     * <p>An object to delete from the governed table.</p>
-     */
-    inline WriteOperation& WithDeleteObject(const DeleteObjectInput& value) { SetDeleteObject(value); return *this;}
-
-    /**
-     * <p>An object to delete from the governed table.</p>
-     */
-    inline WriteOperation& WithDeleteObject(DeleteObjectInput&& value) { SetDeleteObject(std::move(value)); return *this;}
-
+    template<typename DeleteObjectT = DeleteObjectInput>
+    void SetDeleteObject(DeleteObjectT&& value) { m_deleteObjectHasBeenSet = true; m_deleteObject = std::forward<DeleteObjectT>(value); }
+    template<typename DeleteObjectT = DeleteObjectInput>
+    WriteOperation& WithDeleteObject(DeleteObjectT&& value) { SetDeleteObject(std::forward<DeleteObjectT>(value)); return *this;}
+    ///@}
   private:
 
     AddObjectInput m_addObject;

@@ -38,109 +38,37 @@ namespace Model
   class Spend
   {
   public:
-    AWS_BUDGETS_API Spend();
+    AWS_BUDGETS_API Spend() = default;
     AWS_BUDGETS_API Spend(Aws::Utils::Json::JsonView jsonValue);
     AWS_BUDGETS_API Spend& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BUDGETS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The cost or usage amount that's associated with a budget forecast, actual
      * spend, or budget threshold.</p>
      */
-    inline const Aws::String& GetAmount() const{ return m_amount; }
-
-    /**
-     * <p>The cost or usage amount that's associated with a budget forecast, actual
-     * spend, or budget threshold.</p>
-     */
+    inline const Aws::String& GetAmount() const { return m_amount; }
     inline bool AmountHasBeenSet() const { return m_amountHasBeenSet; }
+    template<typename AmountT = Aws::String>
+    void SetAmount(AmountT&& value) { m_amountHasBeenSet = true; m_amount = std::forward<AmountT>(value); }
+    template<typename AmountT = Aws::String>
+    Spend& WithAmount(AmountT&& value) { SetAmount(std::forward<AmountT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The cost or usage amount that's associated with a budget forecast, actual
-     * spend, or budget threshold.</p>
-     */
-    inline void SetAmount(const Aws::String& value) { m_amountHasBeenSet = true; m_amount = value; }
-
-    /**
-     * <p>The cost or usage amount that's associated with a budget forecast, actual
-     * spend, or budget threshold.</p>
-     */
-    inline void SetAmount(Aws::String&& value) { m_amountHasBeenSet = true; m_amount = std::move(value); }
-
-    /**
-     * <p>The cost or usage amount that's associated with a budget forecast, actual
-     * spend, or budget threshold.</p>
-     */
-    inline void SetAmount(const char* value) { m_amountHasBeenSet = true; m_amount.assign(value); }
-
-    /**
-     * <p>The cost or usage amount that's associated with a budget forecast, actual
-     * spend, or budget threshold.</p>
-     */
-    inline Spend& WithAmount(const Aws::String& value) { SetAmount(value); return *this;}
-
-    /**
-     * <p>The cost or usage amount that's associated with a budget forecast, actual
-     * spend, or budget threshold.</p>
-     */
-    inline Spend& WithAmount(Aws::String&& value) { SetAmount(std::move(value)); return *this;}
-
-    /**
-     * <p>The cost or usage amount that's associated with a budget forecast, actual
-     * spend, or budget threshold.</p>
-     */
-    inline Spend& WithAmount(const char* value) { SetAmount(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unit of measurement that's used for the budget forecast, actual spend, or
      * budget threshold.</p>
      */
-    inline const Aws::String& GetUnit() const{ return m_unit; }
-
-    /**
-     * <p>The unit of measurement that's used for the budget forecast, actual spend, or
-     * budget threshold.</p>
-     */
+    inline const Aws::String& GetUnit() const { return m_unit; }
     inline bool UnitHasBeenSet() const { return m_unitHasBeenSet; }
-
-    /**
-     * <p>The unit of measurement that's used for the budget forecast, actual spend, or
-     * budget threshold.</p>
-     */
-    inline void SetUnit(const Aws::String& value) { m_unitHasBeenSet = true; m_unit = value; }
-
-    /**
-     * <p>The unit of measurement that's used for the budget forecast, actual spend, or
-     * budget threshold.</p>
-     */
-    inline void SetUnit(Aws::String&& value) { m_unitHasBeenSet = true; m_unit = std::move(value); }
-
-    /**
-     * <p>The unit of measurement that's used for the budget forecast, actual spend, or
-     * budget threshold.</p>
-     */
-    inline void SetUnit(const char* value) { m_unitHasBeenSet = true; m_unit.assign(value); }
-
-    /**
-     * <p>The unit of measurement that's used for the budget forecast, actual spend, or
-     * budget threshold.</p>
-     */
-    inline Spend& WithUnit(const Aws::String& value) { SetUnit(value); return *this;}
-
-    /**
-     * <p>The unit of measurement that's used for the budget forecast, actual spend, or
-     * budget threshold.</p>
-     */
-    inline Spend& WithUnit(Aws::String&& value) { SetUnit(std::move(value)); return *this;}
-
-    /**
-     * <p>The unit of measurement that's used for the budget forecast, actual spend, or
-     * budget threshold.</p>
-     */
-    inline Spend& WithUnit(const char* value) { SetUnit(value); return *this;}
-
+    template<typename UnitT = Aws::String>
+    void SetUnit(UnitT&& value) { m_unitHasBeenSet = true; m_unit = std::forward<UnitT>(value); }
+    template<typename UnitT = Aws::String>
+    Spend& WithUnit(UnitT&& value) { SetUnit(std::forward<UnitT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_amount;

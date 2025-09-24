@@ -34,253 +34,87 @@ namespace Model
   class EC2ResourceUtilization
   {
   public:
-    AWS_COSTEXPLORER_API EC2ResourceUtilization();
+    AWS_COSTEXPLORER_API EC2ResourceUtilization() = default;
     AWS_COSTEXPLORER_API EC2ResourceUtilization(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API EC2ResourceUtilization& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The maximum observed or expected CPU utilization of the instance.</p>
      */
-    inline const Aws::String& GetMaxCpuUtilizationPercentage() const{ return m_maxCpuUtilizationPercentage; }
-
-    /**
-     * <p>The maximum observed or expected CPU utilization of the instance.</p>
-     */
+    inline const Aws::String& GetMaxCpuUtilizationPercentage() const { return m_maxCpuUtilizationPercentage; }
     inline bool MaxCpuUtilizationPercentageHasBeenSet() const { return m_maxCpuUtilizationPercentageHasBeenSet; }
+    template<typename MaxCpuUtilizationPercentageT = Aws::String>
+    void SetMaxCpuUtilizationPercentage(MaxCpuUtilizationPercentageT&& value) { m_maxCpuUtilizationPercentageHasBeenSet = true; m_maxCpuUtilizationPercentage = std::forward<MaxCpuUtilizationPercentageT>(value); }
+    template<typename MaxCpuUtilizationPercentageT = Aws::String>
+    EC2ResourceUtilization& WithMaxCpuUtilizationPercentage(MaxCpuUtilizationPercentageT&& value) { SetMaxCpuUtilizationPercentage(std::forward<MaxCpuUtilizationPercentageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The maximum observed or expected CPU utilization of the instance.</p>
-     */
-    inline void SetMaxCpuUtilizationPercentage(const Aws::String& value) { m_maxCpuUtilizationPercentageHasBeenSet = true; m_maxCpuUtilizationPercentage = value; }
-
-    /**
-     * <p>The maximum observed or expected CPU utilization of the instance.</p>
-     */
-    inline void SetMaxCpuUtilizationPercentage(Aws::String&& value) { m_maxCpuUtilizationPercentageHasBeenSet = true; m_maxCpuUtilizationPercentage = std::move(value); }
-
-    /**
-     * <p>The maximum observed or expected CPU utilization of the instance.</p>
-     */
-    inline void SetMaxCpuUtilizationPercentage(const char* value) { m_maxCpuUtilizationPercentageHasBeenSet = true; m_maxCpuUtilizationPercentage.assign(value); }
-
-    /**
-     * <p>The maximum observed or expected CPU utilization of the instance.</p>
-     */
-    inline EC2ResourceUtilization& WithMaxCpuUtilizationPercentage(const Aws::String& value) { SetMaxCpuUtilizationPercentage(value); return *this;}
-
-    /**
-     * <p>The maximum observed or expected CPU utilization of the instance.</p>
-     */
-    inline EC2ResourceUtilization& WithMaxCpuUtilizationPercentage(Aws::String&& value) { SetMaxCpuUtilizationPercentage(std::move(value)); return *this;}
-
-    /**
-     * <p>The maximum observed or expected CPU utilization of the instance.</p>
-     */
-    inline EC2ResourceUtilization& WithMaxCpuUtilizationPercentage(const char* value) { SetMaxCpuUtilizationPercentage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum observed or expected memory utilization of the instance.</p>
      */
-    inline const Aws::String& GetMaxMemoryUtilizationPercentage() const{ return m_maxMemoryUtilizationPercentage; }
-
-    /**
-     * <p>The maximum observed or expected memory utilization of the instance.</p>
-     */
+    inline const Aws::String& GetMaxMemoryUtilizationPercentage() const { return m_maxMemoryUtilizationPercentage; }
     inline bool MaxMemoryUtilizationPercentageHasBeenSet() const { return m_maxMemoryUtilizationPercentageHasBeenSet; }
+    template<typename MaxMemoryUtilizationPercentageT = Aws::String>
+    void SetMaxMemoryUtilizationPercentage(MaxMemoryUtilizationPercentageT&& value) { m_maxMemoryUtilizationPercentageHasBeenSet = true; m_maxMemoryUtilizationPercentage = std::forward<MaxMemoryUtilizationPercentageT>(value); }
+    template<typename MaxMemoryUtilizationPercentageT = Aws::String>
+    EC2ResourceUtilization& WithMaxMemoryUtilizationPercentage(MaxMemoryUtilizationPercentageT&& value) { SetMaxMemoryUtilizationPercentage(std::forward<MaxMemoryUtilizationPercentageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The maximum observed or expected memory utilization of the instance.</p>
-     */
-    inline void SetMaxMemoryUtilizationPercentage(const Aws::String& value) { m_maxMemoryUtilizationPercentageHasBeenSet = true; m_maxMemoryUtilizationPercentage = value; }
-
-    /**
-     * <p>The maximum observed or expected memory utilization of the instance.</p>
-     */
-    inline void SetMaxMemoryUtilizationPercentage(Aws::String&& value) { m_maxMemoryUtilizationPercentageHasBeenSet = true; m_maxMemoryUtilizationPercentage = std::move(value); }
-
-    /**
-     * <p>The maximum observed or expected memory utilization of the instance.</p>
-     */
-    inline void SetMaxMemoryUtilizationPercentage(const char* value) { m_maxMemoryUtilizationPercentageHasBeenSet = true; m_maxMemoryUtilizationPercentage.assign(value); }
-
-    /**
-     * <p>The maximum observed or expected memory utilization of the instance.</p>
-     */
-    inline EC2ResourceUtilization& WithMaxMemoryUtilizationPercentage(const Aws::String& value) { SetMaxMemoryUtilizationPercentage(value); return *this;}
-
-    /**
-     * <p>The maximum observed or expected memory utilization of the instance.</p>
-     */
-    inline EC2ResourceUtilization& WithMaxMemoryUtilizationPercentage(Aws::String&& value) { SetMaxMemoryUtilizationPercentage(std::move(value)); return *this;}
-
-    /**
-     * <p>The maximum observed or expected memory utilization of the instance.</p>
-     */
-    inline EC2ResourceUtilization& WithMaxMemoryUtilizationPercentage(const char* value) { SetMaxMemoryUtilizationPercentage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum observed or expected storage utilization of the instance. This
      * doesn't include EBS storage.</p>
      */
-    inline const Aws::String& GetMaxStorageUtilizationPercentage() const{ return m_maxStorageUtilizationPercentage; }
-
-    /**
-     * <p>The maximum observed or expected storage utilization of the instance. This
-     * doesn't include EBS storage.</p>
-     */
+    inline const Aws::String& GetMaxStorageUtilizationPercentage() const { return m_maxStorageUtilizationPercentage; }
     inline bool MaxStorageUtilizationPercentageHasBeenSet() const { return m_maxStorageUtilizationPercentageHasBeenSet; }
+    template<typename MaxStorageUtilizationPercentageT = Aws::String>
+    void SetMaxStorageUtilizationPercentage(MaxStorageUtilizationPercentageT&& value) { m_maxStorageUtilizationPercentageHasBeenSet = true; m_maxStorageUtilizationPercentage = std::forward<MaxStorageUtilizationPercentageT>(value); }
+    template<typename MaxStorageUtilizationPercentageT = Aws::String>
+    EC2ResourceUtilization& WithMaxStorageUtilizationPercentage(MaxStorageUtilizationPercentageT&& value) { SetMaxStorageUtilizationPercentage(std::forward<MaxStorageUtilizationPercentageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The maximum observed or expected storage utilization of the instance. This
-     * doesn't include EBS storage.</p>
-     */
-    inline void SetMaxStorageUtilizationPercentage(const Aws::String& value) { m_maxStorageUtilizationPercentageHasBeenSet = true; m_maxStorageUtilizationPercentage = value; }
-
-    /**
-     * <p>The maximum observed or expected storage utilization of the instance. This
-     * doesn't include EBS storage.</p>
-     */
-    inline void SetMaxStorageUtilizationPercentage(Aws::String&& value) { m_maxStorageUtilizationPercentageHasBeenSet = true; m_maxStorageUtilizationPercentage = std::move(value); }
-
-    /**
-     * <p>The maximum observed or expected storage utilization of the instance. This
-     * doesn't include EBS storage.</p>
-     */
-    inline void SetMaxStorageUtilizationPercentage(const char* value) { m_maxStorageUtilizationPercentageHasBeenSet = true; m_maxStorageUtilizationPercentage.assign(value); }
-
-    /**
-     * <p>The maximum observed or expected storage utilization of the instance. This
-     * doesn't include EBS storage.</p>
-     */
-    inline EC2ResourceUtilization& WithMaxStorageUtilizationPercentage(const Aws::String& value) { SetMaxStorageUtilizationPercentage(value); return *this;}
-
-    /**
-     * <p>The maximum observed or expected storage utilization of the instance. This
-     * doesn't include EBS storage.</p>
-     */
-    inline EC2ResourceUtilization& WithMaxStorageUtilizationPercentage(Aws::String&& value) { SetMaxStorageUtilizationPercentage(std::move(value)); return *this;}
-
-    /**
-     * <p>The maximum observed or expected storage utilization of the instance. This
-     * doesn't include EBS storage.</p>
-     */
-    inline EC2ResourceUtilization& WithMaxStorageUtilizationPercentage(const char* value) { SetMaxStorageUtilizationPercentage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The EBS field that contains a list of EBS metrics that are associated with
      * the current instance. </p>
      */
-    inline const EBSResourceUtilization& GetEBSResourceUtilization() const{ return m_eBSResourceUtilization; }
-
-    /**
-     * <p>The EBS field that contains a list of EBS metrics that are associated with
-     * the current instance. </p>
-     */
+    inline const EBSResourceUtilization& GetEBSResourceUtilization() const { return m_eBSResourceUtilization; }
     inline bool EBSResourceUtilizationHasBeenSet() const { return m_eBSResourceUtilizationHasBeenSet; }
+    template<typename EBSResourceUtilizationT = EBSResourceUtilization>
+    void SetEBSResourceUtilization(EBSResourceUtilizationT&& value) { m_eBSResourceUtilizationHasBeenSet = true; m_eBSResourceUtilization = std::forward<EBSResourceUtilizationT>(value); }
+    template<typename EBSResourceUtilizationT = EBSResourceUtilization>
+    EC2ResourceUtilization& WithEBSResourceUtilization(EBSResourceUtilizationT&& value) { SetEBSResourceUtilization(std::forward<EBSResourceUtilizationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The EBS field that contains a list of EBS metrics that are associated with
-     * the current instance. </p>
-     */
-    inline void SetEBSResourceUtilization(const EBSResourceUtilization& value) { m_eBSResourceUtilizationHasBeenSet = true; m_eBSResourceUtilization = value; }
-
-    /**
-     * <p>The EBS field that contains a list of EBS metrics that are associated with
-     * the current instance. </p>
-     */
-    inline void SetEBSResourceUtilization(EBSResourceUtilization&& value) { m_eBSResourceUtilizationHasBeenSet = true; m_eBSResourceUtilization = std::move(value); }
-
-    /**
-     * <p>The EBS field that contains a list of EBS metrics that are associated with
-     * the current instance. </p>
-     */
-    inline EC2ResourceUtilization& WithEBSResourceUtilization(const EBSResourceUtilization& value) { SetEBSResourceUtilization(value); return *this;}
-
-    /**
-     * <p>The EBS field that contains a list of EBS metrics that are associated with
-     * the current instance. </p>
-     */
-    inline EC2ResourceUtilization& WithEBSResourceUtilization(EBSResourceUtilization&& value) { SetEBSResourceUtilization(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The field that contains a list of disk (local storage) metrics that are
      * associated with the current instance. </p>
      */
-    inline const DiskResourceUtilization& GetDiskResourceUtilization() const{ return m_diskResourceUtilization; }
-
-    /**
-     * <p>The field that contains a list of disk (local storage) metrics that are
-     * associated with the current instance. </p>
-     */
+    inline const DiskResourceUtilization& GetDiskResourceUtilization() const { return m_diskResourceUtilization; }
     inline bool DiskResourceUtilizationHasBeenSet() const { return m_diskResourceUtilizationHasBeenSet; }
+    template<typename DiskResourceUtilizationT = DiskResourceUtilization>
+    void SetDiskResourceUtilization(DiskResourceUtilizationT&& value) { m_diskResourceUtilizationHasBeenSet = true; m_diskResourceUtilization = std::forward<DiskResourceUtilizationT>(value); }
+    template<typename DiskResourceUtilizationT = DiskResourceUtilization>
+    EC2ResourceUtilization& WithDiskResourceUtilization(DiskResourceUtilizationT&& value) { SetDiskResourceUtilization(std::forward<DiskResourceUtilizationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field that contains a list of disk (local storage) metrics that are
-     * associated with the current instance. </p>
-     */
-    inline void SetDiskResourceUtilization(const DiskResourceUtilization& value) { m_diskResourceUtilizationHasBeenSet = true; m_diskResourceUtilization = value; }
-
-    /**
-     * <p>The field that contains a list of disk (local storage) metrics that are
-     * associated with the current instance. </p>
-     */
-    inline void SetDiskResourceUtilization(DiskResourceUtilization&& value) { m_diskResourceUtilizationHasBeenSet = true; m_diskResourceUtilization = std::move(value); }
-
-    /**
-     * <p>The field that contains a list of disk (local storage) metrics that are
-     * associated with the current instance. </p>
-     */
-    inline EC2ResourceUtilization& WithDiskResourceUtilization(const DiskResourceUtilization& value) { SetDiskResourceUtilization(value); return *this;}
-
-    /**
-     * <p>The field that contains a list of disk (local storage) metrics that are
-     * associated with the current instance. </p>
-     */
-    inline EC2ResourceUtilization& WithDiskResourceUtilization(DiskResourceUtilization&& value) { SetDiskResourceUtilization(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The network field that contains a list of network metrics that are associated
      * with the current instance. </p>
      */
-    inline const NetworkResourceUtilization& GetNetworkResourceUtilization() const{ return m_networkResourceUtilization; }
-
-    /**
-     * <p>The network field that contains a list of network metrics that are associated
-     * with the current instance. </p>
-     */
+    inline const NetworkResourceUtilization& GetNetworkResourceUtilization() const { return m_networkResourceUtilization; }
     inline bool NetworkResourceUtilizationHasBeenSet() const { return m_networkResourceUtilizationHasBeenSet; }
-
-    /**
-     * <p>The network field that contains a list of network metrics that are associated
-     * with the current instance. </p>
-     */
-    inline void SetNetworkResourceUtilization(const NetworkResourceUtilization& value) { m_networkResourceUtilizationHasBeenSet = true; m_networkResourceUtilization = value; }
-
-    /**
-     * <p>The network field that contains a list of network metrics that are associated
-     * with the current instance. </p>
-     */
-    inline void SetNetworkResourceUtilization(NetworkResourceUtilization&& value) { m_networkResourceUtilizationHasBeenSet = true; m_networkResourceUtilization = std::move(value); }
-
-    /**
-     * <p>The network field that contains a list of network metrics that are associated
-     * with the current instance. </p>
-     */
-    inline EC2ResourceUtilization& WithNetworkResourceUtilization(const NetworkResourceUtilization& value) { SetNetworkResourceUtilization(value); return *this;}
-
-    /**
-     * <p>The network field that contains a list of network metrics that are associated
-     * with the current instance. </p>
-     */
-    inline EC2ResourceUtilization& WithNetworkResourceUtilization(NetworkResourceUtilization&& value) { SetNetworkResourceUtilization(std::move(value)); return *this;}
-
+    template<typename NetworkResourceUtilizationT = NetworkResourceUtilization>
+    void SetNetworkResourceUtilization(NetworkResourceUtilizationT&& value) { m_networkResourceUtilizationHasBeenSet = true; m_networkResourceUtilization = std::forward<NetworkResourceUtilizationT>(value); }
+    template<typename NetworkResourceUtilizationT = NetworkResourceUtilization>
+    EC2ResourceUtilization& WithNetworkResourceUtilization(NetworkResourceUtilizationT&& value) { SetNetworkResourceUtilization(std::forward<NetworkResourceUtilizationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_maxCpuUtilizationPercentage;

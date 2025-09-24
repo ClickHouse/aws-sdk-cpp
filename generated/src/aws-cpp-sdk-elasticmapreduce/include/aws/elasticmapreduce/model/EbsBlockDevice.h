@@ -33,95 +33,37 @@ namespace Model
   class EbsBlockDevice
   {
   public:
-    AWS_EMR_API EbsBlockDevice();
+    AWS_EMR_API EbsBlockDevice() = default;
     AWS_EMR_API EbsBlockDevice(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API EbsBlockDevice& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>EBS volume specifications such as volume type, IOPS, size (GiB) and
      * throughput (MiB/s) that are requested for the EBS volume attached to an Amazon
      * EC2 instance in the cluster.</p>
      */
-    inline const VolumeSpecification& GetVolumeSpecification() const{ return m_volumeSpecification; }
-
-    /**
-     * <p>EBS volume specifications such as volume type, IOPS, size (GiB) and
-     * throughput (MiB/s) that are requested for the EBS volume attached to an Amazon
-     * EC2 instance in the cluster.</p>
-     */
+    inline const VolumeSpecification& GetVolumeSpecification() const { return m_volumeSpecification; }
     inline bool VolumeSpecificationHasBeenSet() const { return m_volumeSpecificationHasBeenSet; }
+    template<typename VolumeSpecificationT = VolumeSpecification>
+    void SetVolumeSpecification(VolumeSpecificationT&& value) { m_volumeSpecificationHasBeenSet = true; m_volumeSpecification = std::forward<VolumeSpecificationT>(value); }
+    template<typename VolumeSpecificationT = VolumeSpecification>
+    EbsBlockDevice& WithVolumeSpecification(VolumeSpecificationT&& value) { SetVolumeSpecification(std::forward<VolumeSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>EBS volume specifications such as volume type, IOPS, size (GiB) and
-     * throughput (MiB/s) that are requested for the EBS volume attached to an Amazon
-     * EC2 instance in the cluster.</p>
-     */
-    inline void SetVolumeSpecification(const VolumeSpecification& value) { m_volumeSpecificationHasBeenSet = true; m_volumeSpecification = value; }
-
-    /**
-     * <p>EBS volume specifications such as volume type, IOPS, size (GiB) and
-     * throughput (MiB/s) that are requested for the EBS volume attached to an Amazon
-     * EC2 instance in the cluster.</p>
-     */
-    inline void SetVolumeSpecification(VolumeSpecification&& value) { m_volumeSpecificationHasBeenSet = true; m_volumeSpecification = std::move(value); }
-
-    /**
-     * <p>EBS volume specifications such as volume type, IOPS, size (GiB) and
-     * throughput (MiB/s) that are requested for the EBS volume attached to an Amazon
-     * EC2 instance in the cluster.</p>
-     */
-    inline EbsBlockDevice& WithVolumeSpecification(const VolumeSpecification& value) { SetVolumeSpecification(value); return *this;}
-
-    /**
-     * <p>EBS volume specifications such as volume type, IOPS, size (GiB) and
-     * throughput (MiB/s) that are requested for the EBS volume attached to an Amazon
-     * EC2 instance in the cluster.</p>
-     */
-    inline EbsBlockDevice& WithVolumeSpecification(VolumeSpecification&& value) { SetVolumeSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
      */
-    inline const Aws::String& GetDevice() const{ return m_device; }
-
-    /**
-     * <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
-     */
+    inline const Aws::String& GetDevice() const { return m_device; }
     inline bool DeviceHasBeenSet() const { return m_deviceHasBeenSet; }
-
-    /**
-     * <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
-     */
-    inline void SetDevice(const Aws::String& value) { m_deviceHasBeenSet = true; m_device = value; }
-
-    /**
-     * <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
-     */
-    inline void SetDevice(Aws::String&& value) { m_deviceHasBeenSet = true; m_device = std::move(value); }
-
-    /**
-     * <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
-     */
-    inline void SetDevice(const char* value) { m_deviceHasBeenSet = true; m_device.assign(value); }
-
-    /**
-     * <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
-     */
-    inline EbsBlockDevice& WithDevice(const Aws::String& value) { SetDevice(value); return *this;}
-
-    /**
-     * <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
-     */
-    inline EbsBlockDevice& WithDevice(Aws::String&& value) { SetDevice(std::move(value)); return *this;}
-
-    /**
-     * <p>The device name that is exposed to the instance, such as /dev/sdh.</p>
-     */
-    inline EbsBlockDevice& WithDevice(const char* value) { SetDevice(value); return *this;}
-
+    template<typename DeviceT = Aws::String>
+    void SetDevice(DeviceT&& value) { m_deviceHasBeenSet = true; m_device = std::forward<DeviceT>(value); }
+    template<typename DeviceT = Aws::String>
+    EbsBlockDevice& WithDevice(DeviceT&& value) { SetDevice(std::forward<DeviceT>(value)); return *this;}
+    ///@}
   private:
 
     VolumeSpecification m_volumeSpecification;

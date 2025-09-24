@@ -12,31 +12,6 @@ using namespace Aws::CognitoIdentityProvider::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateUserPoolRequest::UpdateUserPoolRequest() : 
-    m_userPoolIdHasBeenSet(false),
-    m_policiesHasBeenSet(false),
-    m_deletionProtection(DeletionProtectionType::NOT_SET),
-    m_deletionProtectionHasBeenSet(false),
-    m_lambdaConfigHasBeenSet(false),
-    m_autoVerifiedAttributesHasBeenSet(false),
-    m_smsVerificationMessageHasBeenSet(false),
-    m_emailVerificationMessageHasBeenSet(false),
-    m_emailVerificationSubjectHasBeenSet(false),
-    m_verificationMessageTemplateHasBeenSet(false),
-    m_smsAuthenticationMessageHasBeenSet(false),
-    m_userAttributeUpdateSettingsHasBeenSet(false),
-    m_mfaConfiguration(UserPoolMfaType::NOT_SET),
-    m_mfaConfigurationHasBeenSet(false),
-    m_deviceConfigurationHasBeenSet(false),
-    m_emailConfigurationHasBeenSet(false),
-    m_smsConfigurationHasBeenSet(false),
-    m_userPoolTagsHasBeenSet(false),
-    m_adminCreateUserConfigHasBeenSet(false),
-    m_userPoolAddOnsHasBeenSet(false),
-    m_accountRecoverySettingHasBeenSet(false)
-{
-}
-
 Aws::String UpdateUserPoolRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -161,6 +136,17 @@ Aws::String UpdateUserPoolRequest::SerializePayload() const
   {
    payload.WithObject("AccountRecoverySetting", m_accountRecoverySetting.Jsonize());
 
+  }
+
+  if(m_poolNameHasBeenSet)
+  {
+   payload.WithString("PoolName", m_poolName);
+
+  }
+
+  if(m_userPoolTierHasBeenSet)
+  {
+   payload.WithString("UserPoolTier", UserPoolTierTypeMapper::GetNameForUserPoolTierType(m_userPoolTier));
   }
 
   return payload.View().WriteReadable();

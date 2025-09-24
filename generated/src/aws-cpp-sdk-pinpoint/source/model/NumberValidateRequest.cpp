@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-NumberValidateRequest::NumberValidateRequest() : 
-    m_isoCountryCodeHasBeenSet(false),
-    m_phoneNumberHasBeenSet(false)
-{
-}
-
-NumberValidateRequest::NumberValidateRequest(JsonView jsonValue) : 
-    m_isoCountryCodeHasBeenSet(false),
-    m_phoneNumberHasBeenSet(false)
+NumberValidateRequest::NumberValidateRequest(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ NumberValidateRequest& NumberValidateRequest::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("IsoCountryCode"))
   {
     m_isoCountryCode = jsonValue.GetString("IsoCountryCode");
-
     m_isoCountryCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PhoneNumber"))
   {
     m_phoneNumber = jsonValue.GetString("PhoneNumber");
-
     m_phoneNumberHasBeenSet = true;
   }
-
   return *this;
 }
 

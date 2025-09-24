@@ -18,13 +18,7 @@ namespace CloudSearchDomain
 namespace Model
 {
 
-DocumentServiceWarning::DocumentServiceWarning() : 
-    m_messageHasBeenSet(false)
-{
-}
-
-DocumentServiceWarning::DocumentServiceWarning(JsonView jsonValue) : 
-    m_messageHasBeenSet(false)
+DocumentServiceWarning::DocumentServiceWarning(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ DocumentServiceWarning& DocumentServiceWarning::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

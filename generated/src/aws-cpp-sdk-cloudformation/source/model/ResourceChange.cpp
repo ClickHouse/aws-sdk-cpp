@@ -20,33 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-ResourceChange::ResourceChange() : 
-    m_action(ChangeAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_replacement(Replacement::NOT_SET),
-    m_replacementHasBeenSet(false),
-    m_scopeHasBeenSet(false),
-    m_detailsHasBeenSet(false),
-    m_changeSetIdHasBeenSet(false),
-    m_moduleInfoHasBeenSet(false)
-{
-}
-
-ResourceChange::ResourceChange(const XmlNode& xmlNode) : 
-    m_action(ChangeAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_replacement(Replacement::NOT_SET),
-    m_replacementHasBeenSet(false),
-    m_scopeHasBeenSet(false),
-    m_detailsHasBeenSet(false),
-    m_changeSetIdHasBeenSet(false),
-    m_moduleInfoHasBeenSet(false)
+ResourceChange::ResourceChange(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,10 +31,16 @@ ResourceChange& ResourceChange::operator =(const XmlNode& xmlNode)
 
   if(!resultNode.IsNull())
   {
+    XmlNode policyActionNode = resultNode.FirstChild("PolicyAction");
+    if(!policyActionNode.IsNull())
+    {
+      m_policyAction = PolicyActionMapper::GetPolicyActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(policyActionNode.GetText()).c_str()));
+      m_policyActionHasBeenSet = true;
+    }
     XmlNode actionNode = resultNode.FirstChild("Action");
     if(!actionNode.IsNull())
     {
-      m_action = ChangeActionMapper::GetChangeActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(actionNode.GetText()).c_str()).c_str());
+      m_action = ChangeActionMapper::GetChangeActionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(actionNode.GetText()).c_str()));
       m_actionHasBeenSet = true;
     }
     XmlNode logicalResourceIdNode = resultNode.FirstChild("LogicalResourceId");
@@ -84,13 +64,14 @@ ResourceChange& ResourceChange::operator =(const XmlNode& xmlNode)
     XmlNode replacementNode = resultNode.FirstChild("Replacement");
     if(!replacementNode.IsNull())
     {
-      m_replacement = ReplacementMapper::GetReplacementForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(replacementNode.GetText()).c_str()).c_str());
+      m_replacement = ReplacementMapper::GetReplacementForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(replacementNode.GetText()).c_str()));
       m_replacementHasBeenSet = true;
     }
     XmlNode scopeNode = resultNode.FirstChild("Scope");
     if(!scopeNode.IsNull())
     {
       XmlNode scopeMember = scopeNode.FirstChild("member");
+      m_scopeHasBeenSet = !scopeMember.IsNull();
       while(!scopeMember.IsNull())
       {
         m_scope.push_back(ResourceAttributeMapper::GetResourceAttributeForName(StringUtils::Trim(scopeMember.GetText().c_str())));
@@ -103,6 +84,7 @@ ResourceChange& ResourceChange::operator =(const XmlNode& xmlNode)
     if(!detailsNode.IsNull())
     {
       XmlNode detailsMember = detailsNode.FirstChild("member");
+      m_detailsHasBeenSet = !detailsMember.IsNull();
       while(!detailsMember.IsNull())
       {
         m_details.push_back(detailsMember);
@@ -123,6 +105,18 @@ ResourceChange& ResourceChange::operator =(const XmlNode& xmlNode)
       m_moduleInfo = moduleInfoNode;
       m_moduleInfoHasBeenSet = true;
     }
+    XmlNode beforeContextNode = resultNode.FirstChild("BeforeContext");
+    if(!beforeContextNode.IsNull())
+    {
+      m_beforeContext = Aws::Utils::Xml::DecodeEscapedXmlText(beforeContextNode.GetText());
+      m_beforeContextHasBeenSet = true;
+    }
+    XmlNode afterContextNode = resultNode.FirstChild("AfterContext");
+    if(!afterContextNode.IsNull())
+    {
+      m_afterContext = Aws::Utils::Xml::DecodeEscapedXmlText(afterContextNode.GetText());
+      m_afterContextHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -130,9 +124,14 @@ ResourceChange& ResourceChange::operator =(const XmlNode& xmlNode)
 
 void ResourceChange::OutputToStream(Aws::OStream& oStream, const char* location, unsigned index, const char* locationValue) const
 {
+  if(m_policyActionHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PolicyAction=" << StringUtils::URLEncode(PolicyActionMapper::GetNameForPolicyAction(m_policyAction)) << "&";
+  }
+
   if(m_actionHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Action=" << ChangeActionMapper::GetNameForChangeAction(m_action) << "&";
+      oStream << location << index << locationValue << ".Action=" << StringUtils::URLEncode(ChangeActionMapper::GetNameForChangeAction(m_action)) << "&";
   }
 
   if(m_logicalResourceIdHasBeenSet)
@@ -152,7 +151,7 @@ void ResourceChange::OutputToStream(Aws::OStream& oStream, const char* location,
 
   if(m_replacementHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Replacement=" << ReplacementMapper::GetNameForReplacement(m_replacement) << "&";
+      oStream << location << index << locationValue << ".Replacement=" << StringUtils::URLEncode(ReplacementMapper::GetNameForReplacement(m_replacement)) << "&";
   }
 
   if(m_scopeHasBeenSet)
@@ -160,7 +159,7 @@ void ResourceChange::OutputToStream(Aws::OStream& oStream, const char* location,
       unsigned scopeIdx = 1;
       for(auto& item : m_scope)
       {
-        oStream << location << index << locationValue << ".Scope.member." << scopeIdx++ << "=" << ResourceAttributeMapper::GetNameForResourceAttribute(item) << "&";
+        oStream << location << index << locationValue << ".Scope.member." << scopeIdx++ << "=" << StringUtils::URLEncode(ResourceAttributeMapper::GetNameForResourceAttribute(item)) << "&";
       }
   }
 
@@ -187,13 +186,27 @@ void ResourceChange::OutputToStream(Aws::OStream& oStream, const char* location,
       m_moduleInfo.OutputToStream(oStream, moduleInfoLocationAndMemberSs.str().c_str());
   }
 
+  if(m_beforeContextHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".BeforeContext=" << StringUtils::URLEncode(m_beforeContext.c_str()) << "&";
+  }
+
+  if(m_afterContextHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AfterContext=" << StringUtils::URLEncode(m_afterContext.c_str()) << "&";
+  }
+
 }
 
 void ResourceChange::OutputToStream(Aws::OStream& oStream, const char* location) const
 {
+  if(m_policyActionHasBeenSet)
+  {
+      oStream << location << ".PolicyAction=" << StringUtils::URLEncode(PolicyActionMapper::GetNameForPolicyAction(m_policyAction)) << "&";
+  }
   if(m_actionHasBeenSet)
   {
-      oStream << location << ".Action=" << ChangeActionMapper::GetNameForChangeAction(m_action) << "&";
+      oStream << location << ".Action=" << StringUtils::URLEncode(ChangeActionMapper::GetNameForChangeAction(m_action)) << "&";
   }
   if(m_logicalResourceIdHasBeenSet)
   {
@@ -209,14 +222,14 @@ void ResourceChange::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_replacementHasBeenSet)
   {
-      oStream << location << ".Replacement=" << ReplacementMapper::GetNameForReplacement(m_replacement) << "&";
+      oStream << location << ".Replacement=" << StringUtils::URLEncode(ReplacementMapper::GetNameForReplacement(m_replacement)) << "&";
   }
   if(m_scopeHasBeenSet)
   {
       unsigned scopeIdx = 1;
       for(auto& item : m_scope)
       {
-        oStream << location << ".Scope.member." << scopeIdx++ << "=" << ResourceAttributeMapper::GetNameForResourceAttribute(item) << "&";
+        oStream << location << ".Scope.member." << scopeIdx++ << "=" << StringUtils::URLEncode(ResourceAttributeMapper::GetNameForResourceAttribute(item)) << "&";
       }
   }
   if(m_detailsHasBeenSet)
@@ -225,7 +238,7 @@ void ResourceChange::OutputToStream(Aws::OStream& oStream, const char* location)
       for(auto& item : m_details)
       {
         Aws::StringStream detailsSs;
-        detailsSs << location <<  ".Details.member." << detailsIdx++;
+        detailsSs << location << ".Details.member." << detailsIdx++;
         item.OutputToStream(oStream, detailsSs.str().c_str());
       }
   }
@@ -238,6 +251,14 @@ void ResourceChange::OutputToStream(Aws::OStream& oStream, const char* location)
       Aws::String moduleInfoLocationAndMember(location);
       moduleInfoLocationAndMember += ".ModuleInfo";
       m_moduleInfo.OutputToStream(oStream, moduleInfoLocationAndMember.c_str());
+  }
+  if(m_beforeContextHasBeenSet)
+  {
+      oStream << location << ".BeforeContext=" << StringUtils::URLEncode(m_beforeContext.c_str()) << "&";
+  }
+  if(m_afterContextHasBeenSet)
+  {
+      oStream << location << ".AfterContext=" << StringUtils::URLEncode(m_afterContext.c_str()) << "&";
   }
 }
 

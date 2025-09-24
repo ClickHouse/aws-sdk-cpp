@@ -7,6 +7,7 @@
 #include <aws/mediapackagev2/Mediapackagev2_EXPORTS.h>
 #include <aws/mediapackagev2/Mediapackagev2Request.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/mediapackagev2/model/CdnAuthConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -21,7 +22,7 @@ namespace Model
   class PutOriginEndpointPolicyRequest : public Mediapackagev2Request
   {
   public:
-    AWS_MEDIAPACKAGEV2_API PutOriginEndpointPolicyRequest();
+    AWS_MEDIAPACKAGEV2_API PutOriginEndpointPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,217 +33,74 @@ namespace Model
     AWS_MEDIAPACKAGEV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name that describes the channel group. The name is the primary identifier
      * for the channel group, and must be unique for your account in the AWS
      * Region.</p>
      */
-    inline const Aws::String& GetChannelGroupName() const{ return m_channelGroupName; }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
+    inline const Aws::String& GetChannelGroupName() const { return m_channelGroupName; }
     inline bool ChannelGroupNameHasBeenSet() const { return m_channelGroupNameHasBeenSet; }
+    template<typename ChannelGroupNameT = Aws::String>
+    void SetChannelGroupName(ChannelGroupNameT&& value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName = std::forward<ChannelGroupNameT>(value); }
+    template<typename ChannelGroupNameT = Aws::String>
+    PutOriginEndpointPolicyRequest& WithChannelGroupName(ChannelGroupNameT&& value) { SetChannelGroupName(std::forward<ChannelGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline void SetChannelGroupName(const Aws::String& value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName = value; }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline void SetChannelGroupName(Aws::String&& value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName = std::move(value); }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline void SetChannelGroupName(const char* value) { m_channelGroupNameHasBeenSet = true; m_channelGroupName.assign(value); }
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithChannelGroupName(const Aws::String& value) { SetChannelGroupName(value); return *this;}
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithChannelGroupName(Aws::String&& value) { SetChannelGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that describes the channel group. The name is the primary identifier
-     * for the channel group, and must be unique for your account in the AWS
-     * Region.</p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithChannelGroupName(const char* value) { SetChannelGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name that describes the channel. The name is the primary identifier for
      * the channel, and must be unique for your account in the AWS Region and channel
      * group. </p>
      */
-    inline const Aws::String& GetChannelName() const{ return m_channelName; }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
+    inline const Aws::String& GetChannelName() const { return m_channelName; }
     inline bool ChannelNameHasBeenSet() const { return m_channelNameHasBeenSet; }
+    template<typename ChannelNameT = Aws::String>
+    void SetChannelName(ChannelNameT&& value) { m_channelNameHasBeenSet = true; m_channelName = std::forward<ChannelNameT>(value); }
+    template<typename ChannelNameT = Aws::String>
+    PutOriginEndpointPolicyRequest& WithChannelName(ChannelNameT&& value) { SetChannelName(std::forward<ChannelNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline void SetChannelName(const Aws::String& value) { m_channelNameHasBeenSet = true; m_channelName = value; }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline void SetChannelName(Aws::String&& value) { m_channelNameHasBeenSet = true; m_channelName = std::move(value); }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline void SetChannelName(const char* value) { m_channelNameHasBeenSet = true; m_channelName.assign(value); }
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithChannelName(const Aws::String& value) { SetChannelName(value); return *this;}
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithChannelName(Aws::String&& value) { SetChannelName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that describes the channel. The name is the primary identifier for
-     * the channel, and must be unique for your account in the AWS Region and channel
-     * group. </p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithChannelName(const char* value) { SetChannelName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name that describes the origin endpoint. The name is the primary
      * identifier for the origin endpoint, and and must be unique for your account in
      * the AWS Region and channel. </p>
      */
-    inline const Aws::String& GetOriginEndpointName() const{ return m_originEndpointName; }
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
+    inline const Aws::String& GetOriginEndpointName() const { return m_originEndpointName; }
     inline bool OriginEndpointNameHasBeenSet() const { return m_originEndpointNameHasBeenSet; }
+    template<typename OriginEndpointNameT = Aws::String>
+    void SetOriginEndpointName(OriginEndpointNameT&& value) { m_originEndpointNameHasBeenSet = true; m_originEndpointName = std::forward<OriginEndpointNameT>(value); }
+    template<typename OriginEndpointNameT = Aws::String>
+    PutOriginEndpointPolicyRequest& WithOriginEndpointName(OriginEndpointNameT&& value) { SetOriginEndpointName(std::forward<OriginEndpointNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline void SetOriginEndpointName(const Aws::String& value) { m_originEndpointNameHasBeenSet = true; m_originEndpointName = value; }
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline void SetOriginEndpointName(Aws::String&& value) { m_originEndpointNameHasBeenSet = true; m_originEndpointName = std::move(value); }
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline void SetOriginEndpointName(const char* value) { m_originEndpointNameHasBeenSet = true; m_originEndpointName.assign(value); }
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithOriginEndpointName(const Aws::String& value) { SetOriginEndpointName(value); return *this;}
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithOriginEndpointName(Aws::String&& value) { SetOriginEndpointName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that describes the origin endpoint. The name is the primary
-     * identifier for the origin endpoint, and and must be unique for your account in
-     * the AWS Region and channel. </p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithOriginEndpointName(const char* value) { SetOriginEndpointName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The policy to attach to the specified origin endpoint.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
-
-    /**
-     * <p>The policy to attach to the specified origin endpoint.</p>
-     */
+    inline const Aws::String& GetPolicy() const { return m_policy; }
     inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    PutOriginEndpointPolicyRequest& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The policy to attach to the specified origin endpoint.</p>
+     * <p>The settings for using authorization headers between the MediaPackage
+     * endpoint and your CDN. </p> <p>For information about CDN authorization, see <a
+     * href="https://docs.aws.amazon.com/mediapackage/latest/userguide/cdn-auth.html">CDN
+     * authorization in Elemental MediaPackage</a> in the MediaPackage user guide. </p>
      */
-    inline void SetPolicy(const Aws::String& value) { m_policyHasBeenSet = true; m_policy = value; }
-
-    /**
-     * <p>The policy to attach to the specified origin endpoint.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
-
-    /**
-     * <p>The policy to attach to the specified origin endpoint.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policyHasBeenSet = true; m_policy.assign(value); }
-
-    /**
-     * <p>The policy to attach to the specified origin endpoint.</p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The policy to attach to the specified origin endpoint.</p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The policy to attach to the specified origin endpoint.</p>
-     */
-    inline PutOriginEndpointPolicyRequest& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
+    inline const CdnAuthConfiguration& GetCdnAuthConfiguration() const { return m_cdnAuthConfiguration; }
+    inline bool CdnAuthConfigurationHasBeenSet() const { return m_cdnAuthConfigurationHasBeenSet; }
+    template<typename CdnAuthConfigurationT = CdnAuthConfiguration>
+    void SetCdnAuthConfiguration(CdnAuthConfigurationT&& value) { m_cdnAuthConfigurationHasBeenSet = true; m_cdnAuthConfiguration = std::forward<CdnAuthConfigurationT>(value); }
+    template<typename CdnAuthConfigurationT = CdnAuthConfiguration>
+    PutOriginEndpointPolicyRequest& WithCdnAuthConfiguration(CdnAuthConfigurationT&& value) { SetCdnAuthConfiguration(std::forward<CdnAuthConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelGroupName;
@@ -256,6 +114,9 @@ namespace Model
 
     Aws::String m_policy;
     bool m_policyHasBeenSet = false;
+
+    CdnAuthConfiguration m_cdnAuthConfiguration;
+    bool m_cdnAuthConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

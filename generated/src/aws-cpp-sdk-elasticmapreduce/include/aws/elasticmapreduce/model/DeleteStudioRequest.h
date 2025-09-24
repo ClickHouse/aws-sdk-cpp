@@ -21,7 +21,7 @@ namespace Model
   class DeleteStudioRequest : public EMRRequest
   {
   public:
-    AWS_EMR_API DeleteStudioRequest();
+    AWS_EMR_API DeleteStudioRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_EMR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon EMR Studio.</p>
      */
-    inline const Aws::String& GetStudioId() const{ return m_studioId; }
-
-    /**
-     * <p>The ID of the Amazon EMR Studio.</p>
-     */
+    inline const Aws::String& GetStudioId() const { return m_studioId; }
     inline bool StudioIdHasBeenSet() const { return m_studioIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the Amazon EMR Studio.</p>
-     */
-    inline void SetStudioId(const Aws::String& value) { m_studioIdHasBeenSet = true; m_studioId = value; }
-
-    /**
-     * <p>The ID of the Amazon EMR Studio.</p>
-     */
-    inline void SetStudioId(Aws::String&& value) { m_studioIdHasBeenSet = true; m_studioId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon EMR Studio.</p>
-     */
-    inline void SetStudioId(const char* value) { m_studioIdHasBeenSet = true; m_studioId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon EMR Studio.</p>
-     */
-    inline DeleteStudioRequest& WithStudioId(const Aws::String& value) { SetStudioId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon EMR Studio.</p>
-     */
-    inline DeleteStudioRequest& WithStudioId(Aws::String&& value) { SetStudioId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon EMR Studio.</p>
-     */
-    inline DeleteStudioRequest& WithStudioId(const char* value) { SetStudioId(value); return *this;}
-
+    template<typename StudioIdT = Aws::String>
+    void SetStudioId(StudioIdT&& value) { m_studioIdHasBeenSet = true; m_studioId = std::forward<StudioIdT>(value); }
+    template<typename StudioIdT = Aws::String>
+    DeleteStudioRequest& WithStudioId(StudioIdT&& value) { SetStudioId(std::forward<StudioIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_studioId;

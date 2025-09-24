@@ -18,19 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-Metric::Metric() : 
-    m_expressionHasBeenSet(false),
-    m_variablesHasBeenSet(false),
-    m_windowHasBeenSet(false),
-    m_processingConfigHasBeenSet(false)
-{
-}
-
-Metric::Metric(JsonView jsonValue) : 
-    m_expressionHasBeenSet(false),
-    m_variablesHasBeenSet(false),
-    m_windowHasBeenSet(false),
-    m_processingConfigHasBeenSet(false)
+Metric::Metric(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ Metric& Metric::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("expression"))
   {
     m_expression = jsonValue.GetString("expression");
-
     m_expressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("variables"))
   {
     Aws::Utils::Array<JsonView> variablesJsonList = jsonValue.GetArray("variables");
@@ -53,21 +39,16 @@ Metric& Metric::operator =(JsonView jsonValue)
     }
     m_variablesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("window"))
   {
     m_window = jsonValue.GetObject("window");
-
     m_windowHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("processingConfig"))
   {
     m_processingConfig = jsonValue.GetObject("processingConfig");
-
     m_processingConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

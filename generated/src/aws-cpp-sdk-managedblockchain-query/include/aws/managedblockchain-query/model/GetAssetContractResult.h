@@ -30,152 +30,76 @@ namespace Model
   class GetAssetContractResult
   {
   public:
-    AWS_MANAGEDBLOCKCHAINQUERY_API GetAssetContractResult();
+    AWS_MANAGEDBLOCKCHAINQUERY_API GetAssetContractResult() = default;
     AWS_MANAGEDBLOCKCHAINQUERY_API GetAssetContractResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MANAGEDBLOCKCHAINQUERY_API GetAssetContractResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Contains the blockchain address and network information about the
      * contract.</p>
      */
-    inline const ContractIdentifier& GetContractIdentifier() const{ return m_contractIdentifier; }
+    inline const ContractIdentifier& GetContractIdentifier() const { return m_contractIdentifier; }
+    template<typename ContractIdentifierT = ContractIdentifier>
+    void SetContractIdentifier(ContractIdentifierT&& value) { m_contractIdentifierHasBeenSet = true; m_contractIdentifier = std::forward<ContractIdentifierT>(value); }
+    template<typename ContractIdentifierT = ContractIdentifier>
+    GetAssetContractResult& WithContractIdentifier(ContractIdentifierT&& value) { SetContractIdentifier(std::forward<ContractIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the blockchain address and network information about the
-     * contract.</p>
-     */
-    inline void SetContractIdentifier(const ContractIdentifier& value) { m_contractIdentifier = value; }
-
-    /**
-     * <p>Contains the blockchain address and network information about the
-     * contract.</p>
-     */
-    inline void SetContractIdentifier(ContractIdentifier&& value) { m_contractIdentifier = std::move(value); }
-
-    /**
-     * <p>Contains the blockchain address and network information about the
-     * contract.</p>
-     */
-    inline GetAssetContractResult& WithContractIdentifier(const ContractIdentifier& value) { SetContractIdentifier(value); return *this;}
-
-    /**
-     * <p>Contains the blockchain address and network information about the
-     * contract.</p>
-     */
-    inline GetAssetContractResult& WithContractIdentifier(ContractIdentifier&& value) { SetContractIdentifier(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The token standard of the contract requested.</p>
      */
-    inline const QueryTokenStandard& GetTokenStandard() const{ return m_tokenStandard; }
+    inline QueryTokenStandard GetTokenStandard() const { return m_tokenStandard; }
+    inline void SetTokenStandard(QueryTokenStandard value) { m_tokenStandardHasBeenSet = true; m_tokenStandard = value; }
+    inline GetAssetContractResult& WithTokenStandard(QueryTokenStandard value) { SetTokenStandard(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The token standard of the contract requested.</p>
-     */
-    inline void SetTokenStandard(const QueryTokenStandard& value) { m_tokenStandard = value; }
-
-    /**
-     * <p>The token standard of the contract requested.</p>
-     */
-    inline void SetTokenStandard(QueryTokenStandard&& value) { m_tokenStandard = std::move(value); }
-
-    /**
-     * <p>The token standard of the contract requested.</p>
-     */
-    inline GetAssetContractResult& WithTokenStandard(const QueryTokenStandard& value) { SetTokenStandard(value); return *this;}
-
-    /**
-     * <p>The token standard of the contract requested.</p>
-     */
-    inline GetAssetContractResult& WithTokenStandard(QueryTokenStandard&& value) { SetTokenStandard(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The address of the deployer of contract.</p>
      */
-    inline const Aws::String& GetDeployerAddress() const{ return m_deployerAddress; }
+    inline const Aws::String& GetDeployerAddress() const { return m_deployerAddress; }
+    template<typename DeployerAddressT = Aws::String>
+    void SetDeployerAddress(DeployerAddressT&& value) { m_deployerAddressHasBeenSet = true; m_deployerAddress = std::forward<DeployerAddressT>(value); }
+    template<typename DeployerAddressT = Aws::String>
+    GetAssetContractResult& WithDeployerAddress(DeployerAddressT&& value) { SetDeployerAddress(std::forward<DeployerAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The address of the deployer of contract.</p>
-     */
-    inline void SetDeployerAddress(const Aws::String& value) { m_deployerAddress = value; }
-
-    /**
-     * <p>The address of the deployer of contract.</p>
-     */
-    inline void SetDeployerAddress(Aws::String&& value) { m_deployerAddress = std::move(value); }
-
-    /**
-     * <p>The address of the deployer of contract.</p>
-     */
-    inline void SetDeployerAddress(const char* value) { m_deployerAddress.assign(value); }
-
-    /**
-     * <p>The address of the deployer of contract.</p>
-     */
-    inline GetAssetContractResult& WithDeployerAddress(const Aws::String& value) { SetDeployerAddress(value); return *this;}
-
-    /**
-     * <p>The address of the deployer of contract.</p>
-     */
-    inline GetAssetContractResult& WithDeployerAddress(Aws::String&& value) { SetDeployerAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The address of the deployer of contract.</p>
-     */
-    inline GetAssetContractResult& WithDeployerAddress(const char* value) { SetDeployerAddress(value); return *this;}
-
-
+    ///@{
     
-    inline const ContractMetadata& GetMetadata() const{ return m_metadata; }
+    inline const ContractMetadata& GetMetadata() const { return m_metadata; }
+    template<typename MetadataT = ContractMetadata>
+    void SetMetadata(MetadataT&& value) { m_metadataHasBeenSet = true; m_metadata = std::forward<MetadataT>(value); }
+    template<typename MetadataT = ContractMetadata>
+    GetAssetContractResult& WithMetadata(MetadataT&& value) { SetMetadata(std::forward<MetadataT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetMetadata(const ContractMetadata& value) { m_metadata = value; }
-
-    
-    inline void SetMetadata(ContractMetadata&& value) { m_metadata = std::move(value); }
-
-    
-    inline GetAssetContractResult& WithMetadata(const ContractMetadata& value) { SetMetadata(value); return *this;}
-
-    
-    inline GetAssetContractResult& WithMetadata(ContractMetadata&& value) { SetMetadata(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetAssetContractResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetAssetContractResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetAssetContractResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetAssetContractResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ContractIdentifier m_contractIdentifier;
+    bool m_contractIdentifierHasBeenSet = false;
 
-    QueryTokenStandard m_tokenStandard;
+    QueryTokenStandard m_tokenStandard{QueryTokenStandard::NOT_SET};
+    bool m_tokenStandardHasBeenSet = false;
 
     Aws::String m_deployerAddress;
+    bool m_deployerAddressHasBeenSet = false;
 
     ContractMetadata m_metadata;
+    bool m_metadataHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

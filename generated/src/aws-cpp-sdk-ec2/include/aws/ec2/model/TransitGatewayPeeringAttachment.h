@@ -39,7 +39,7 @@ namespace Model
   class TransitGatewayPeeringAttachment
   {
   public:
-    AWS_EC2_API TransitGatewayPeeringAttachment();
+    AWS_EC2_API TransitGatewayPeeringAttachment() = default;
     AWS_EC2_API TransitGatewayPeeringAttachment(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API TransitGatewayPeeringAttachment& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -47,320 +47,114 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the transit gateway peering attachment.</p>
      */
-    inline const Aws::String& GetTransitGatewayAttachmentId() const{ return m_transitGatewayAttachmentId; }
-
-    /**
-     * <p>The ID of the transit gateway peering attachment.</p>
-     */
+    inline const Aws::String& GetTransitGatewayAttachmentId() const { return m_transitGatewayAttachmentId; }
     inline bool TransitGatewayAttachmentIdHasBeenSet() const { return m_transitGatewayAttachmentIdHasBeenSet; }
+    template<typename TransitGatewayAttachmentIdT = Aws::String>
+    void SetTransitGatewayAttachmentId(TransitGatewayAttachmentIdT&& value) { m_transitGatewayAttachmentIdHasBeenSet = true; m_transitGatewayAttachmentId = std::forward<TransitGatewayAttachmentIdT>(value); }
+    template<typename TransitGatewayAttachmentIdT = Aws::String>
+    TransitGatewayPeeringAttachment& WithTransitGatewayAttachmentId(TransitGatewayAttachmentIdT&& value) { SetTransitGatewayAttachmentId(std::forward<TransitGatewayAttachmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the transit gateway peering attachment.</p>
-     */
-    inline void SetTransitGatewayAttachmentId(const Aws::String& value) { m_transitGatewayAttachmentIdHasBeenSet = true; m_transitGatewayAttachmentId = value; }
-
-    /**
-     * <p>The ID of the transit gateway peering attachment.</p>
-     */
-    inline void SetTransitGatewayAttachmentId(Aws::String&& value) { m_transitGatewayAttachmentIdHasBeenSet = true; m_transitGatewayAttachmentId = std::move(value); }
-
-    /**
-     * <p>The ID of the transit gateway peering attachment.</p>
-     */
-    inline void SetTransitGatewayAttachmentId(const char* value) { m_transitGatewayAttachmentIdHasBeenSet = true; m_transitGatewayAttachmentId.assign(value); }
-
-    /**
-     * <p>The ID of the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithTransitGatewayAttachmentId(const Aws::String& value) { SetTransitGatewayAttachmentId(value); return *this;}
-
-    /**
-     * <p>The ID of the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithTransitGatewayAttachmentId(Aws::String&& value) { SetTransitGatewayAttachmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithTransitGatewayAttachmentId(const char* value) { SetTransitGatewayAttachmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the accepter transit gateway attachment.</p>
      */
-    inline const Aws::String& GetAccepterTransitGatewayAttachmentId() const{ return m_accepterTransitGatewayAttachmentId; }
-
-    /**
-     * <p>The ID of the accepter transit gateway attachment.</p>
-     */
+    inline const Aws::String& GetAccepterTransitGatewayAttachmentId() const { return m_accepterTransitGatewayAttachmentId; }
     inline bool AccepterTransitGatewayAttachmentIdHasBeenSet() const { return m_accepterTransitGatewayAttachmentIdHasBeenSet; }
+    template<typename AccepterTransitGatewayAttachmentIdT = Aws::String>
+    void SetAccepterTransitGatewayAttachmentId(AccepterTransitGatewayAttachmentIdT&& value) { m_accepterTransitGatewayAttachmentIdHasBeenSet = true; m_accepterTransitGatewayAttachmentId = std::forward<AccepterTransitGatewayAttachmentIdT>(value); }
+    template<typename AccepterTransitGatewayAttachmentIdT = Aws::String>
+    TransitGatewayPeeringAttachment& WithAccepterTransitGatewayAttachmentId(AccepterTransitGatewayAttachmentIdT&& value) { SetAccepterTransitGatewayAttachmentId(std::forward<AccepterTransitGatewayAttachmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the accepter transit gateway attachment.</p>
-     */
-    inline void SetAccepterTransitGatewayAttachmentId(const Aws::String& value) { m_accepterTransitGatewayAttachmentIdHasBeenSet = true; m_accepterTransitGatewayAttachmentId = value; }
-
-    /**
-     * <p>The ID of the accepter transit gateway attachment.</p>
-     */
-    inline void SetAccepterTransitGatewayAttachmentId(Aws::String&& value) { m_accepterTransitGatewayAttachmentIdHasBeenSet = true; m_accepterTransitGatewayAttachmentId = std::move(value); }
-
-    /**
-     * <p>The ID of the accepter transit gateway attachment.</p>
-     */
-    inline void SetAccepterTransitGatewayAttachmentId(const char* value) { m_accepterTransitGatewayAttachmentIdHasBeenSet = true; m_accepterTransitGatewayAttachmentId.assign(value); }
-
-    /**
-     * <p>The ID of the accepter transit gateway attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithAccepterTransitGatewayAttachmentId(const Aws::String& value) { SetAccepterTransitGatewayAttachmentId(value); return *this;}
-
-    /**
-     * <p>The ID of the accepter transit gateway attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithAccepterTransitGatewayAttachmentId(Aws::String&& value) { SetAccepterTransitGatewayAttachmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the accepter transit gateway attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithAccepterTransitGatewayAttachmentId(const char* value) { SetAccepterTransitGatewayAttachmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the requester transit gateway.</p>
      */
-    inline const PeeringTgwInfo& GetRequesterTgwInfo() const{ return m_requesterTgwInfo; }
-
-    /**
-     * <p>Information about the requester transit gateway.</p>
-     */
+    inline const PeeringTgwInfo& GetRequesterTgwInfo() const { return m_requesterTgwInfo; }
     inline bool RequesterTgwInfoHasBeenSet() const { return m_requesterTgwInfoHasBeenSet; }
+    template<typename RequesterTgwInfoT = PeeringTgwInfo>
+    void SetRequesterTgwInfo(RequesterTgwInfoT&& value) { m_requesterTgwInfoHasBeenSet = true; m_requesterTgwInfo = std::forward<RequesterTgwInfoT>(value); }
+    template<typename RequesterTgwInfoT = PeeringTgwInfo>
+    TransitGatewayPeeringAttachment& WithRequesterTgwInfo(RequesterTgwInfoT&& value) { SetRequesterTgwInfo(std::forward<RequesterTgwInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the requester transit gateway.</p>
-     */
-    inline void SetRequesterTgwInfo(const PeeringTgwInfo& value) { m_requesterTgwInfoHasBeenSet = true; m_requesterTgwInfo = value; }
-
-    /**
-     * <p>Information about the requester transit gateway.</p>
-     */
-    inline void SetRequesterTgwInfo(PeeringTgwInfo&& value) { m_requesterTgwInfoHasBeenSet = true; m_requesterTgwInfo = std::move(value); }
-
-    /**
-     * <p>Information about the requester transit gateway.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithRequesterTgwInfo(const PeeringTgwInfo& value) { SetRequesterTgwInfo(value); return *this;}
-
-    /**
-     * <p>Information about the requester transit gateway.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithRequesterTgwInfo(PeeringTgwInfo&& value) { SetRequesterTgwInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the accepter transit gateway.</p>
      */
-    inline const PeeringTgwInfo& GetAccepterTgwInfo() const{ return m_accepterTgwInfo; }
-
-    /**
-     * <p>Information about the accepter transit gateway.</p>
-     */
+    inline const PeeringTgwInfo& GetAccepterTgwInfo() const { return m_accepterTgwInfo; }
     inline bool AccepterTgwInfoHasBeenSet() const { return m_accepterTgwInfoHasBeenSet; }
+    template<typename AccepterTgwInfoT = PeeringTgwInfo>
+    void SetAccepterTgwInfo(AccepterTgwInfoT&& value) { m_accepterTgwInfoHasBeenSet = true; m_accepterTgwInfo = std::forward<AccepterTgwInfoT>(value); }
+    template<typename AccepterTgwInfoT = PeeringTgwInfo>
+    TransitGatewayPeeringAttachment& WithAccepterTgwInfo(AccepterTgwInfoT&& value) { SetAccepterTgwInfo(std::forward<AccepterTgwInfoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the accepter transit gateway.</p>
-     */
-    inline void SetAccepterTgwInfo(const PeeringTgwInfo& value) { m_accepterTgwInfoHasBeenSet = true; m_accepterTgwInfo = value; }
-
-    /**
-     * <p>Information about the accepter transit gateway.</p>
-     */
-    inline void SetAccepterTgwInfo(PeeringTgwInfo&& value) { m_accepterTgwInfoHasBeenSet = true; m_accepterTgwInfo = std::move(value); }
-
-    /**
-     * <p>Information about the accepter transit gateway.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithAccepterTgwInfo(const PeeringTgwInfo& value) { SetAccepterTgwInfo(value); return *this;}
-
-    /**
-     * <p>Information about the accepter transit gateway.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithAccepterTgwInfo(PeeringTgwInfo&& value) { SetAccepterTgwInfo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Details about the transit gateway peering attachment.</p>
      */
-    inline const TransitGatewayPeeringAttachmentOptions& GetOptions() const{ return m_options; }
-
-    /**
-     * <p>Details about the transit gateway peering attachment.</p>
-     */
+    inline const TransitGatewayPeeringAttachmentOptions& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = TransitGatewayPeeringAttachmentOptions>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = TransitGatewayPeeringAttachmentOptions>
+    TransitGatewayPeeringAttachment& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details about the transit gateway peering attachment.</p>
-     */
-    inline void SetOptions(const TransitGatewayPeeringAttachmentOptions& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p>Details about the transit gateway peering attachment.</p>
-     */
-    inline void SetOptions(TransitGatewayPeeringAttachmentOptions&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p>Details about the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithOptions(const TransitGatewayPeeringAttachmentOptions& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p>Details about the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithOptions(TransitGatewayPeeringAttachmentOptions&& value) { SetOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the transit gateway peering attachment.</p>
      */
-    inline const PeeringAttachmentStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the transit gateway peering attachment.</p>
-     */
+    inline const PeeringAttachmentStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = PeeringAttachmentStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = PeeringAttachmentStatus>
+    TransitGatewayPeeringAttachment& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the transit gateway peering attachment.</p>
-     */
-    inline void SetStatus(const PeeringAttachmentStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the transit gateway peering attachment.</p>
-     */
-    inline void SetStatus(PeeringAttachmentStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithStatus(const PeeringAttachmentStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithStatus(PeeringAttachmentStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the transit gateway peering attachment. Note that the
      * <code>initiating</code> state has been deprecated.</p>
      */
-    inline const TransitGatewayAttachmentState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the transit gateway peering attachment. Note that the
-     * <code>initiating</code> state has been deprecated.</p>
-     */
+    inline TransitGatewayAttachmentState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(TransitGatewayAttachmentState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline TransitGatewayPeeringAttachment& WithState(TransitGatewayAttachmentState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the transit gateway peering attachment. Note that the
-     * <code>initiating</code> state has been deprecated.</p>
-     */
-    inline void SetState(const TransitGatewayAttachmentState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the transit gateway peering attachment. Note that the
-     * <code>initiating</code> state has been deprecated.</p>
-     */
-    inline void SetState(TransitGatewayAttachmentState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the transit gateway peering attachment. Note that the
-     * <code>initiating</code> state has been deprecated.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithState(const TransitGatewayAttachmentState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the transit gateway peering attachment. Note that the
-     * <code>initiating</code> state has been deprecated.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithState(TransitGatewayAttachmentState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time the transit gateway peering attachment was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The time the transit gateway peering attachment was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    TransitGatewayPeeringAttachment& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time the transit gateway peering attachment was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The time the transit gateway peering attachment was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The time the transit gateway peering attachment was created.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The time the transit gateway peering attachment was created.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags for the transit gateway peering attachment.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags for the transit gateway peering attachment.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags for the transit gateway peering attachment.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags for the transit gateway peering attachment.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags for the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags for the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags for the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags for the transit gateway peering attachment.</p>
-     */
-    inline TransitGatewayPeeringAttachment& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    TransitGatewayPeeringAttachment& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    TransitGatewayPeeringAttachment& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_transitGatewayAttachmentId;
@@ -381,10 +175,10 @@ namespace Model
     PeeringAttachmentStatus m_status;
     bool m_statusHasBeenSet = false;
 
-    TransitGatewayAttachmentState m_state;
+    TransitGatewayAttachmentState m_state{TransitGatewayAttachmentState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;

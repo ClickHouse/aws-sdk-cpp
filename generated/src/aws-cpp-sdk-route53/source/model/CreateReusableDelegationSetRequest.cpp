@@ -6,6 +6,7 @@
 #include <aws/route53/model/CreateReusableDelegationSetRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -13,11 +14,6 @@ using namespace Aws::Route53::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-CreateReusableDelegationSetRequest::CreateReusableDelegationSetRequest() : 
-    m_callerReferenceHasBeenSet(false),
-    m_hostedZoneIdHasBeenSet(false)
-{
-}
 
 Aws::String CreateReusableDelegationSetRequest::SerializePayload() const
 {

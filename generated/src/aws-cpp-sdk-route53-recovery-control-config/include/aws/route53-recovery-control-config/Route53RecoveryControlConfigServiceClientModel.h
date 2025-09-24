@@ -39,9 +39,14 @@
 #include <aws/route53-recovery-control-config/model/ListTagsForResourceResult.h>
 #include <aws/route53-recovery-control-config/model/TagResourceResult.h>
 #include <aws/route53-recovery-control-config/model/UntagResourceResult.h>
+#include <aws/route53-recovery-control-config/model/UpdateClusterResult.h>
 #include <aws/route53-recovery-control-config/model/UpdateControlPanelResult.h>
 #include <aws/route53-recovery-control-config/model/UpdateRoutingControlResult.h>
 #include <aws/route53-recovery-control-config/model/UpdateSafetyRuleResult.h>
+#include <aws/route53-recovery-control-config/model/ListControlPanelsRequest.h>
+#include <aws/route53-recovery-control-config/model/CreateSafetyRuleRequest.h>
+#include <aws/route53-recovery-control-config/model/ListClustersRequest.h>
+#include <aws/route53-recovery-control-config/model/UpdateSafetyRuleRequest.h>
 /* End of service model headers required in Route53RecoveryControlConfigClient header */
 
 namespace Aws
@@ -75,7 +80,7 @@ namespace Aws
 
   namespace Route53RecoveryControlConfig
   {
-    using Route53RecoveryControlConfigClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using Route53RecoveryControlConfigClientConfiguration = Aws::Client::GenericClientConfiguration;
     using Route53RecoveryControlConfigEndpointProviderBase = Aws::Route53RecoveryControlConfig::Endpoint::Route53RecoveryControlConfigEndpointProviderBase;
     using Route53RecoveryControlConfigEndpointProvider = Aws::Route53RecoveryControlConfig::Endpoint::Route53RecoveryControlConfigEndpointProvider;
 
@@ -103,6 +108,7 @@ namespace Aws
       class ListTagsForResourceRequest;
       class TagResourceRequest;
       class UntagResourceRequest;
+      class UpdateClusterRequest;
       class UpdateControlPanelRequest;
       class UpdateRoutingControlRequest;
       class UpdateSafetyRuleRequest;
@@ -130,6 +136,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<ListTagsForResourceResult, Route53RecoveryControlConfigError> ListTagsForResourceOutcome;
       typedef Aws::Utils::Outcome<TagResourceResult, Route53RecoveryControlConfigError> TagResourceOutcome;
       typedef Aws::Utils::Outcome<UntagResourceResult, Route53RecoveryControlConfigError> UntagResourceOutcome;
+      typedef Aws::Utils::Outcome<UpdateClusterResult, Route53RecoveryControlConfigError> UpdateClusterOutcome;
       typedef Aws::Utils::Outcome<UpdateControlPanelResult, Route53RecoveryControlConfigError> UpdateControlPanelOutcome;
       typedef Aws::Utils::Outcome<UpdateRoutingControlResult, Route53RecoveryControlConfigError> UpdateRoutingControlOutcome;
       typedef Aws::Utils::Outcome<UpdateSafetyRuleResult, Route53RecoveryControlConfigError> UpdateSafetyRuleOutcome;
@@ -157,6 +164,7 @@ namespace Aws
       typedef std::future<ListTagsForResourceOutcome> ListTagsForResourceOutcomeCallable;
       typedef std::future<TagResourceOutcome> TagResourceOutcomeCallable;
       typedef std::future<UntagResourceOutcome> UntagResourceOutcomeCallable;
+      typedef std::future<UpdateClusterOutcome> UpdateClusterOutcomeCallable;
       typedef std::future<UpdateControlPanelOutcome> UpdateControlPanelOutcomeCallable;
       typedef std::future<UpdateRoutingControlOutcome> UpdateRoutingControlOutcomeCallable;
       typedef std::future<UpdateSafetyRuleOutcome> UpdateSafetyRuleOutcomeCallable;
@@ -187,6 +195,7 @@ namespace Aws
     typedef std::function<void(const Route53RecoveryControlConfigClient*, const Model::ListTagsForResourceRequest&, const Model::ListTagsForResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListTagsForResourceResponseReceivedHandler;
     typedef std::function<void(const Route53RecoveryControlConfigClient*, const Model::TagResourceRequest&, const Model::TagResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > TagResourceResponseReceivedHandler;
     typedef std::function<void(const Route53RecoveryControlConfigClient*, const Model::UntagResourceRequest&, const Model::UntagResourceOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UntagResourceResponseReceivedHandler;
+    typedef std::function<void(const Route53RecoveryControlConfigClient*, const Model::UpdateClusterRequest&, const Model::UpdateClusterOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateClusterResponseReceivedHandler;
     typedef std::function<void(const Route53RecoveryControlConfigClient*, const Model::UpdateControlPanelRequest&, const Model::UpdateControlPanelOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateControlPanelResponseReceivedHandler;
     typedef std::function<void(const Route53RecoveryControlConfigClient*, const Model::UpdateRoutingControlRequest&, const Model::UpdateRoutingControlOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateRoutingControlResponseReceivedHandler;
     typedef std::function<void(const Route53RecoveryControlConfigClient*, const Model::UpdateSafetyRuleRequest&, const Model::UpdateSafetyRuleOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > UpdateSafetyRuleResponseReceivedHandler;

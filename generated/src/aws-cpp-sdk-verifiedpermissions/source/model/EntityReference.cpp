@@ -18,17 +18,7 @@ namespace VerifiedPermissions
 namespace Model
 {
 
-EntityReference::EntityReference() : 
-    m_unspecified(false),
-    m_unspecifiedHasBeenSet(false),
-    m_identifierHasBeenSet(false)
-{
-}
-
-EntityReference::EntityReference(JsonView jsonValue) : 
-    m_unspecified(false),
-    m_unspecifiedHasBeenSet(false),
-    m_identifierHasBeenSet(false)
+EntityReference::EntityReference(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ EntityReference& EntityReference::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("unspecified"))
   {
     m_unspecified = jsonValue.GetBool("unspecified");
-
     m_unspecifiedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("identifier"))
   {
     m_identifier = jsonValue.GetObject("identifier");
-
     m_identifierHasBeenSet = true;
   }
-
   return *this;
 }
 

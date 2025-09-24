@@ -28,68 +28,38 @@ namespace Model
   class GetGatewayResult
   {
   public:
-    AWS_BACKUPGATEWAY_API GetGatewayResult();
+    AWS_BACKUPGATEWAY_API GetGatewayResult() = default;
     AWS_BACKUPGATEWAY_API GetGatewayResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_BACKUPGATEWAY_API GetGatewayResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>By providing the ARN (Amazon Resource Name), this API returns the
      * gateway.</p>
      */
-    inline const GatewayDetails& GetGateway() const{ return m_gateway; }
+    inline const GatewayDetails& GetGateway() const { return m_gateway; }
+    template<typename GatewayT = GatewayDetails>
+    void SetGateway(GatewayT&& value) { m_gatewayHasBeenSet = true; m_gateway = std::forward<GatewayT>(value); }
+    template<typename GatewayT = GatewayDetails>
+    GetGatewayResult& WithGateway(GatewayT&& value) { SetGateway(std::forward<GatewayT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>By providing the ARN (Amazon Resource Name), this API returns the
-     * gateway.</p>
-     */
-    inline void SetGateway(const GatewayDetails& value) { m_gateway = value; }
-
-    /**
-     * <p>By providing the ARN (Amazon Resource Name), this API returns the
-     * gateway.</p>
-     */
-    inline void SetGateway(GatewayDetails&& value) { m_gateway = std::move(value); }
-
-    /**
-     * <p>By providing the ARN (Amazon Resource Name), this API returns the
-     * gateway.</p>
-     */
-    inline GetGatewayResult& WithGateway(const GatewayDetails& value) { SetGateway(value); return *this;}
-
-    /**
-     * <p>By providing the ARN (Amazon Resource Name), this API returns the
-     * gateway.</p>
-     */
-    inline GetGatewayResult& WithGateway(GatewayDetails&& value) { SetGateway(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetGatewayResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetGatewayResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetGatewayResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetGatewayResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     GatewayDetails m_gateway;
+    bool m_gatewayHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

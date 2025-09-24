@@ -32,93 +32,35 @@ namespace Model
   class InternalServerErrorException
   {
   public:
-    AWS_PINPOINT_API InternalServerErrorException();
+    AWS_PINPOINT_API InternalServerErrorException() = default;
     AWS_PINPOINT_API InternalServerErrorException(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API InternalServerErrorException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The message that's returned from the API.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The message that's returned from the API.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    InternalServerErrorException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message that's returned from the API.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The message that's returned from the API.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The message that's returned from the API.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The message that's returned from the API.</p>
-     */
-    inline InternalServerErrorException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The message that's returned from the API.</p>
-     */
-    inline InternalServerErrorException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message that's returned from the API.</p>
-     */
-    inline InternalServerErrorException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the request or response.</p>
      */
-    inline const Aws::String& GetRequestID() const{ return m_requestID; }
-
-    /**
-     * <p>The unique identifier for the request or response.</p>
-     */
+    inline const Aws::String& GetRequestID() const { return m_requestID; }
     inline bool RequestIDHasBeenSet() const { return m_requestIDHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for the request or response.</p>
-     */
-    inline void SetRequestID(const Aws::String& value) { m_requestIDHasBeenSet = true; m_requestID = value; }
-
-    /**
-     * <p>The unique identifier for the request or response.</p>
-     */
-    inline void SetRequestID(Aws::String&& value) { m_requestIDHasBeenSet = true; m_requestID = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the request or response.</p>
-     */
-    inline void SetRequestID(const char* value) { m_requestIDHasBeenSet = true; m_requestID.assign(value); }
-
-    /**
-     * <p>The unique identifier for the request or response.</p>
-     */
-    inline InternalServerErrorException& WithRequestID(const Aws::String& value) { SetRequestID(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the request or response.</p>
-     */
-    inline InternalServerErrorException& WithRequestID(Aws::String&& value) { SetRequestID(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the request or response.</p>
-     */
-    inline InternalServerErrorException& WithRequestID(const char* value) { SetRequestID(value); return *this;}
-
+    template<typename RequestIDT = Aws::String>
+    void SetRequestID(RequestIDT&& value) { m_requestIDHasBeenSet = true; m_requestID = std::forward<RequestIDT>(value); }
+    template<typename RequestIDT = Aws::String>
+    InternalServerErrorException& WithRequestID(RequestIDT&& value) { SetRequestID(std::forward<RequestIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;

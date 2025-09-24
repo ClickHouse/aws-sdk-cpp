@@ -18,19 +18,7 @@ namespace Backup
 namespace Model
 {
 
-Conditions::Conditions() : 
-    m_stringEqualsHasBeenSet(false),
-    m_stringNotEqualsHasBeenSet(false),
-    m_stringLikeHasBeenSet(false),
-    m_stringNotLikeHasBeenSet(false)
-{
-}
-
-Conditions::Conditions(JsonView jsonValue) : 
-    m_stringEqualsHasBeenSet(false),
-    m_stringNotEqualsHasBeenSet(false),
-    m_stringLikeHasBeenSet(false),
-    m_stringNotLikeHasBeenSet(false)
+Conditions::Conditions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ Conditions& Conditions::operator =(JsonView jsonValue)
     }
     m_stringEqualsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StringNotEquals"))
   {
     Aws::Utils::Array<JsonView> stringNotEqualsJsonList = jsonValue.GetArray("StringNotEquals");
@@ -56,7 +43,6 @@ Conditions& Conditions::operator =(JsonView jsonValue)
     }
     m_stringNotEqualsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StringLike"))
   {
     Aws::Utils::Array<JsonView> stringLikeJsonList = jsonValue.GetArray("StringLike");
@@ -66,7 +52,6 @@ Conditions& Conditions::operator =(JsonView jsonValue)
     }
     m_stringLikeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StringNotLike"))
   {
     Aws::Utils::Array<JsonView> stringNotLikeJsonList = jsonValue.GetArray("StringNotLike");
@@ -76,7 +61,6 @@ Conditions& Conditions::operator =(JsonView jsonValue)
     }
     m_stringNotLikeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsGuardDutyDetectorDataSourcesDnsLogsDetails::AwsGuardDutyDetectorDataSourcesDnsLogsDetails() : 
-    m_statusHasBeenSet(false)
-{
-}
-
-AwsGuardDutyDetectorDataSourcesDnsLogsDetails::AwsGuardDutyDetectorDataSourcesDnsLogsDetails(JsonView jsonValue) : 
-    m_statusHasBeenSet(false)
+AwsGuardDutyDetectorDataSourcesDnsLogsDetails::AwsGuardDutyDetectorDataSourcesDnsLogsDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AwsGuardDutyDetectorDataSourcesDnsLogsDetails& AwsGuardDutyDetectorDataSourcesDn
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetString("Status");
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

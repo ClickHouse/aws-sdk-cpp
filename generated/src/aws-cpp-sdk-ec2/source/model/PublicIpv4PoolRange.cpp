@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PublicIpv4PoolRange::PublicIpv4PoolRange() : 
-    m_firstAddressHasBeenSet(false),
-    m_lastAddressHasBeenSet(false),
-    m_addressCount(0),
-    m_addressCountHasBeenSet(false),
-    m_availableAddressCount(0),
-    m_availableAddressCountHasBeenSet(false)
-{
-}
-
-PublicIpv4PoolRange::PublicIpv4PoolRange(const XmlNode& xmlNode) : 
-    m_firstAddressHasBeenSet(false),
-    m_lastAddressHasBeenSet(false),
-    m_addressCount(0),
-    m_addressCountHasBeenSet(false),
-    m_availableAddressCount(0),
-    m_availableAddressCountHasBeenSet(false)
+PublicIpv4PoolRange::PublicIpv4PoolRange(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

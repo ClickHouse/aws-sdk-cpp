@@ -35,52 +35,25 @@ namespace Model
   class CompositionDetails
   {
   public:
-    AWS_IOTSITEWISE_API CompositionDetails();
+    AWS_IOTSITEWISE_API CompositionDetails() = default;
     AWS_IOTSITEWISE_API CompositionDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API CompositionDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array detailing the composition relationship for this composite model.</p>
      */
-    inline const Aws::Vector<CompositionRelationshipItem>& GetCompositionRelationship() const{ return m_compositionRelationship; }
-
-    /**
-     * <p>An array detailing the composition relationship for this composite model.</p>
-     */
+    inline const Aws::Vector<CompositionRelationshipItem>& GetCompositionRelationship() const { return m_compositionRelationship; }
     inline bool CompositionRelationshipHasBeenSet() const { return m_compositionRelationshipHasBeenSet; }
-
-    /**
-     * <p>An array detailing the composition relationship for this composite model.</p>
-     */
-    inline void SetCompositionRelationship(const Aws::Vector<CompositionRelationshipItem>& value) { m_compositionRelationshipHasBeenSet = true; m_compositionRelationship = value; }
-
-    /**
-     * <p>An array detailing the composition relationship for this composite model.</p>
-     */
-    inline void SetCompositionRelationship(Aws::Vector<CompositionRelationshipItem>&& value) { m_compositionRelationshipHasBeenSet = true; m_compositionRelationship = std::move(value); }
-
-    /**
-     * <p>An array detailing the composition relationship for this composite model.</p>
-     */
-    inline CompositionDetails& WithCompositionRelationship(const Aws::Vector<CompositionRelationshipItem>& value) { SetCompositionRelationship(value); return *this;}
-
-    /**
-     * <p>An array detailing the composition relationship for this composite model.</p>
-     */
-    inline CompositionDetails& WithCompositionRelationship(Aws::Vector<CompositionRelationshipItem>&& value) { SetCompositionRelationship(std::move(value)); return *this;}
-
-    /**
-     * <p>An array detailing the composition relationship for this composite model.</p>
-     */
-    inline CompositionDetails& AddCompositionRelationship(const CompositionRelationshipItem& value) { m_compositionRelationshipHasBeenSet = true; m_compositionRelationship.push_back(value); return *this; }
-
-    /**
-     * <p>An array detailing the composition relationship for this composite model.</p>
-     */
-    inline CompositionDetails& AddCompositionRelationship(CompositionRelationshipItem&& value) { m_compositionRelationshipHasBeenSet = true; m_compositionRelationship.push_back(std::move(value)); return *this; }
-
+    template<typename CompositionRelationshipT = Aws::Vector<CompositionRelationshipItem>>
+    void SetCompositionRelationship(CompositionRelationshipT&& value) { m_compositionRelationshipHasBeenSet = true; m_compositionRelationship = std::forward<CompositionRelationshipT>(value); }
+    template<typename CompositionRelationshipT = Aws::Vector<CompositionRelationshipItem>>
+    CompositionDetails& WithCompositionRelationship(CompositionRelationshipT&& value) { SetCompositionRelationship(std::forward<CompositionRelationshipT>(value)); return *this;}
+    template<typename CompositionRelationshipT = CompositionRelationshipItem>
+    CompositionDetails& AddCompositionRelationship(CompositionRelationshipT&& value) { m_compositionRelationshipHasBeenSet = true; m_compositionRelationship.emplace_back(std::forward<CompositionRelationshipT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<CompositionRelationshipItem> m_compositionRelationship;

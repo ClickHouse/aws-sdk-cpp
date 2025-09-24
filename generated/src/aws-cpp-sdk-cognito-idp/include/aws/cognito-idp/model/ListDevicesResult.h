@@ -34,132 +34,57 @@ namespace Model
   class ListDevicesResult
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API ListDevicesResult();
+    AWS_COGNITOIDENTITYPROVIDER_API ListDevicesResult() = default;
     AWS_COGNITOIDENTITYPROVIDER_API ListDevicesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COGNITOIDENTITYPROVIDER_API ListDevicesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The devices returned in the list devices response.</p>
+     * <p>An array of devices and their details. Each entry that's returned includes
+     * device information, last-accessed and created dates, and the device key.</p>
      */
-    inline const Aws::Vector<DeviceType>& GetDevices() const{ return m_devices; }
+    inline const Aws::Vector<DeviceType>& GetDevices() const { return m_devices; }
+    template<typename DevicesT = Aws::Vector<DeviceType>>
+    void SetDevices(DevicesT&& value) { m_devicesHasBeenSet = true; m_devices = std::forward<DevicesT>(value); }
+    template<typename DevicesT = Aws::Vector<DeviceType>>
+    ListDevicesResult& WithDevices(DevicesT&& value) { SetDevices(std::forward<DevicesT>(value)); return *this;}
+    template<typename DevicesT = DeviceType>
+    ListDevicesResult& AddDevices(DevicesT&& value) { m_devicesHasBeenSet = true; m_devices.emplace_back(std::forward<DevicesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The devices returned in the list devices response.</p>
-     */
-    inline void SetDevices(const Aws::Vector<DeviceType>& value) { m_devices = value; }
-
-    /**
-     * <p>The devices returned in the list devices response.</p>
-     */
-    inline void SetDevices(Aws::Vector<DeviceType>&& value) { m_devices = std::move(value); }
-
-    /**
-     * <p>The devices returned in the list devices response.</p>
-     */
-    inline ListDevicesResult& WithDevices(const Aws::Vector<DeviceType>& value) { SetDevices(value); return *this;}
-
-    /**
-     * <p>The devices returned in the list devices response.</p>
-     */
-    inline ListDevicesResult& WithDevices(Aws::Vector<DeviceType>&& value) { SetDevices(std::move(value)); return *this;}
-
-    /**
-     * <p>The devices returned in the list devices response.</p>
-     */
-    inline ListDevicesResult& AddDevices(const DeviceType& value) { m_devices.push_back(value); return *this; }
-
-    /**
-     * <p>The devices returned in the list devices response.</p>
-     */
-    inline ListDevicesResult& AddDevices(DeviceType&& value) { m_devices.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The identifier that Amazon Cognito returned with the previous request to this
      * operation. When you include a pagination token in your request, Amazon Cognito
      * returns the next set of items in the list. By use of this token, you can
      * paginate through the full list of items.</p>
      */
-    inline const Aws::String& GetPaginationToken() const{ return m_paginationToken; }
+    inline const Aws::String& GetPaginationToken() const { return m_paginationToken; }
+    template<typename PaginationTokenT = Aws::String>
+    void SetPaginationToken(PaginationTokenT&& value) { m_paginationTokenHasBeenSet = true; m_paginationToken = std::forward<PaginationTokenT>(value); }
+    template<typename PaginationTokenT = Aws::String>
+    ListDevicesResult& WithPaginationToken(PaginationTokenT&& value) { SetPaginationToken(std::forward<PaginationTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline void SetPaginationToken(const Aws::String& value) { m_paginationToken = value; }
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline void SetPaginationToken(Aws::String&& value) { m_paginationToken = std::move(value); }
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline void SetPaginationToken(const char* value) { m_paginationToken.assign(value); }
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline ListDevicesResult& WithPaginationToken(const Aws::String& value) { SetPaginationToken(value); return *this;}
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline ListDevicesResult& WithPaginationToken(Aws::String&& value) { SetPaginationToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline ListDevicesResult& WithPaginationToken(const char* value) { SetPaginationToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListDevicesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListDevicesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListDevicesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListDevicesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<DeviceType> m_devices;
+    bool m_devicesHasBeenSet = false;
 
     Aws::String m_paginationToken;
+    bool m_paginationTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

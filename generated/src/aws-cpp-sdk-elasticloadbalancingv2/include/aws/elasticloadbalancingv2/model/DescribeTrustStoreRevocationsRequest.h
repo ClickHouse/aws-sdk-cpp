@@ -22,7 +22,7 @@ namespace Model
   class DescribeTrustStoreRevocationsRequest : public ElasticLoadBalancingv2Request
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API DescribeTrustStoreRevocationsRequest();
+    AWS_ELASTICLOADBALANCINGV2_API DescribeTrustStoreRevocationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,152 +37,53 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the trust store.</p>
      */
-    inline const Aws::String& GetTrustStoreArn() const{ return m_trustStoreArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the trust store.</p>
-     */
+    inline const Aws::String& GetTrustStoreArn() const { return m_trustStoreArn; }
     inline bool TrustStoreArnHasBeenSet() const { return m_trustStoreArnHasBeenSet; }
+    template<typename TrustStoreArnT = Aws::String>
+    void SetTrustStoreArn(TrustStoreArnT&& value) { m_trustStoreArnHasBeenSet = true; m_trustStoreArn = std::forward<TrustStoreArnT>(value); }
+    template<typename TrustStoreArnT = Aws::String>
+    DescribeTrustStoreRevocationsRequest& WithTrustStoreArn(TrustStoreArnT&& value) { SetTrustStoreArn(std::forward<TrustStoreArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the trust store.</p>
-     */
-    inline void SetTrustStoreArn(const Aws::String& value) { m_trustStoreArnHasBeenSet = true; m_trustStoreArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the trust store.</p>
-     */
-    inline void SetTrustStoreArn(Aws::String&& value) { m_trustStoreArnHasBeenSet = true; m_trustStoreArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the trust store.</p>
-     */
-    inline void SetTrustStoreArn(const char* value) { m_trustStoreArnHasBeenSet = true; m_trustStoreArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the trust store.</p>
-     */
-    inline DescribeTrustStoreRevocationsRequest& WithTrustStoreArn(const Aws::String& value) { SetTrustStoreArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the trust store.</p>
-     */
-    inline DescribeTrustStoreRevocationsRequest& WithTrustStoreArn(Aws::String&& value) { SetTrustStoreArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the trust store.</p>
-     */
-    inline DescribeTrustStoreRevocationsRequest& WithTrustStoreArn(const char* value) { SetTrustStoreArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The revocation IDs of the revocation files you want to describe.</p>
      */
-    inline const Aws::Vector<long long>& GetRevocationIds() const{ return m_revocationIds; }
-
-    /**
-     * <p>The revocation IDs of the revocation files you want to describe.</p>
-     */
+    inline const Aws::Vector<long long>& GetRevocationIds() const { return m_revocationIds; }
     inline bool RevocationIdsHasBeenSet() const { return m_revocationIdsHasBeenSet; }
-
-    /**
-     * <p>The revocation IDs of the revocation files you want to describe.</p>
-     */
-    inline void SetRevocationIds(const Aws::Vector<long long>& value) { m_revocationIdsHasBeenSet = true; m_revocationIds = value; }
-
-    /**
-     * <p>The revocation IDs of the revocation files you want to describe.</p>
-     */
-    inline void SetRevocationIds(Aws::Vector<long long>&& value) { m_revocationIdsHasBeenSet = true; m_revocationIds = std::move(value); }
-
-    /**
-     * <p>The revocation IDs of the revocation files you want to describe.</p>
-     */
-    inline DescribeTrustStoreRevocationsRequest& WithRevocationIds(const Aws::Vector<long long>& value) { SetRevocationIds(value); return *this;}
-
-    /**
-     * <p>The revocation IDs of the revocation files you want to describe.</p>
-     */
-    inline DescribeTrustStoreRevocationsRequest& WithRevocationIds(Aws::Vector<long long>&& value) { SetRevocationIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The revocation IDs of the revocation files you want to describe.</p>
-     */
+    template<typename RevocationIdsT = Aws::Vector<long long>>
+    void SetRevocationIds(RevocationIdsT&& value) { m_revocationIdsHasBeenSet = true; m_revocationIds = std::forward<RevocationIdsT>(value); }
+    template<typename RevocationIdsT = Aws::Vector<long long>>
+    DescribeTrustStoreRevocationsRequest& WithRevocationIds(RevocationIdsT&& value) { SetRevocationIds(std::forward<RevocationIdsT>(value)); return *this;}
     inline DescribeTrustStoreRevocationsRequest& AddRevocationIds(long long value) { m_revocationIdsHasBeenSet = true; m_revocationIds.push_back(value); return *this; }
+    ///@}
 
-
+    ///@{
     /**
      * <p>The marker for the next set of results. (You received this marker from a
      * previous call.)</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeTrustStoreRevocationsRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline DescribeTrustStoreRevocationsRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline DescribeTrustStoreRevocationsRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>The marker for the next set of results. (You received this marker from a
-     * previous call.)</p>
-     */
-    inline DescribeTrustStoreRevocationsRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return with this call.</p>
      */
-    inline int GetPageSize() const{ return m_pageSize; }
-
-    /**
-     * <p>The maximum number of results to return with this call.</p>
-     */
+    inline int GetPageSize() const { return m_pageSize; }
     inline bool PageSizeHasBeenSet() const { return m_pageSizeHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return with this call.</p>
-     */
     inline void SetPageSize(int value) { m_pageSizeHasBeenSet = true; m_pageSize = value; }
-
-    /**
-     * <p>The maximum number of results to return with this call.</p>
-     */
     inline DescribeTrustStoreRevocationsRequest& WithPageSize(int value) { SetPageSize(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_trustStoreArn;
@@ -194,7 +95,7 @@ namespace Model
     Aws::String m_marker;
     bool m_markerHasBeenSet = false;
 
-    int m_pageSize;
+    int m_pageSize{0};
     bool m_pageSizeHasBeenSet = false;
   };
 

@@ -18,21 +18,7 @@ namespace ManagedGrafana
 namespace Model
 {
 
-UpdateInstruction::UpdateInstruction() : 
-    m_action(UpdateAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_role(Role::NOT_SET),
-    m_roleHasBeenSet(false),
-    m_usersHasBeenSet(false)
-{
-}
-
-UpdateInstruction::UpdateInstruction(JsonView jsonValue) : 
-    m_action(UpdateAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_role(Role::NOT_SET),
-    m_roleHasBeenSet(false),
-    m_usersHasBeenSet(false)
+UpdateInstruction::UpdateInstruction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ UpdateInstruction& UpdateInstruction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("action"))
   {
     m_action = UpdateActionMapper::GetUpdateActionForName(jsonValue.GetString("action"));
-
     m_actionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("role"))
   {
     m_role = RoleMapper::GetRoleForName(jsonValue.GetString("role"));
-
     m_roleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("users"))
   {
     Aws::Utils::Array<JsonView> usersJsonList = jsonValue.GetArray("users");
@@ -62,7 +44,6 @@ UpdateInstruction& UpdateInstruction::operator =(JsonView jsonValue)
     }
     m_usersHasBeenSet = true;
   }
-
   return *this;
 }
 

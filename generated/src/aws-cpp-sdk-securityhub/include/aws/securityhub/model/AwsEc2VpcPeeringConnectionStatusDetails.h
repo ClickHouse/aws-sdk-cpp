@@ -32,101 +32,36 @@ namespace Model
   class AwsEc2VpcPeeringConnectionStatusDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEc2VpcPeeringConnectionStatusDetails();
+    AWS_SECURITYHUB_API AwsEc2VpcPeeringConnectionStatusDetails() = default;
     AWS_SECURITYHUB_API AwsEc2VpcPeeringConnectionStatusDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEc2VpcPeeringConnectionStatusDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status of the VPC peering connection. </p>
      */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The status of the VPC peering connection. </p>
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    AwsEc2VpcPeeringConnectionStatusDetails& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the VPC peering connection. </p>
-     */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The status of the VPC peering connection. </p>
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The status of the VPC peering connection. </p>
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * <p>The status of the VPC peering connection. </p>
-     */
-    inline AwsEc2VpcPeeringConnectionStatusDetails& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The status of the VPC peering connection. </p>
-     */
-    inline AwsEc2VpcPeeringConnectionStatusDetails& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the VPC peering connection. </p>
-     */
-    inline AwsEc2VpcPeeringConnectionStatusDetails& WithCode(const char* value) { SetCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A message that provides more information about the status, if applicable.
      * </p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>A message that provides more information about the status, if applicable.
-     * </p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>A message that provides more information about the status, if applicable.
-     * </p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>A message that provides more information about the status, if applicable.
-     * </p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>A message that provides more information about the status, if applicable.
-     * </p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>A message that provides more information about the status, if applicable.
-     * </p>
-     */
-    inline AwsEc2VpcPeeringConnectionStatusDetails& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>A message that provides more information about the status, if applicable.
-     * </p>
-     */
-    inline AwsEc2VpcPeeringConnectionStatusDetails& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A message that provides more information about the status, if applicable.
-     * </p>
-     */
-    inline AwsEc2VpcPeeringConnectionStatusDetails& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    AwsEc2VpcPeeringConnectionStatusDetails& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_code;

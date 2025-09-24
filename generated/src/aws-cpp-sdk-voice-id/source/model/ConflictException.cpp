@@ -18,17 +18,7 @@ namespace VoiceID
 namespace Model
 {
 
-ConflictException::ConflictException() : 
-    m_conflictType(ConflictType::NOT_SET),
-    m_conflictTypeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ConflictException::ConflictException(JsonView jsonValue) : 
-    m_conflictType(ConflictType::NOT_SET),
-    m_conflictTypeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ConflictException::ConflictException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ConflictException& ConflictException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ConflictType"))
   {
     m_conflictType = ConflictTypeMapper::GetConflictTypeForName(jsonValue.GetString("ConflictType"));
-
     m_conflictTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

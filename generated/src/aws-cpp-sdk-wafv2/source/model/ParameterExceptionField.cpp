@@ -90,6 +90,8 @@ namespace Aws
         static const int SCOPE_DOWN_HASH = HashingUtils::HashString("SCOPE_DOWN");
         static const int CUSTOM_KEYS_HASH = HashingUtils::HashString("CUSTOM_KEYS");
         static const int ACP_RULE_SET_RESPONSE_INSPECTION_HASH = HashingUtils::HashString("ACP_RULE_SET_RESPONSE_INSPECTION");
+        static const int DATA_PROTECTION_CONFIG_HASH = HashingUtils::HashString("DATA_PROTECTION_CONFIG");
+        static const int LOW_REPUTATION_MODE_HASH = HashingUtils::HashString("LOW_REPUTATION_MODE");
 
 
         ParameterExceptionField GetParameterExceptionFieldForName(const Aws::String& name)
@@ -375,6 +377,14 @@ namespace Aws
           {
             return ParameterExceptionField::ACP_RULE_SET_RESPONSE_INSPECTION;
           }
+          else if (hashCode == DATA_PROTECTION_CONFIG_HASH)
+          {
+            return ParameterExceptionField::DATA_PROTECTION_CONFIG;
+          }
+          else if (hashCode == LOW_REPUTATION_MODE_HASH)
+          {
+            return ParameterExceptionField::LOW_REPUTATION_MODE;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -531,6 +541,10 @@ namespace Aws
             return "CUSTOM_KEYS";
           case ParameterExceptionField::ACP_RULE_SET_RESPONSE_INSPECTION:
             return "ACP_RULE_SET_RESPONSE_INSPECTION";
+          case ParameterExceptionField::DATA_PROTECTION_CONFIG:
+            return "DATA_PROTECTION_CONFIG";
+          case ParameterExceptionField::LOW_REPUTATION_MODE:
+            return "LOW_REPUTATION_MODE";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

@@ -18,19 +18,7 @@ namespace LexRuntimeService
 namespace Model
 {
 
-ResponseCard::ResponseCard() : 
-    m_versionHasBeenSet(false),
-    m_contentType(ContentType::NOT_SET),
-    m_contentTypeHasBeenSet(false),
-    m_genericAttachmentsHasBeenSet(false)
-{
-}
-
-ResponseCard::ResponseCard(JsonView jsonValue) : 
-    m_versionHasBeenSet(false),
-    m_contentType(ContentType::NOT_SET),
-    m_contentTypeHasBeenSet(false),
-    m_genericAttachmentsHasBeenSet(false)
+ResponseCard::ResponseCard(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ResponseCard& ResponseCard::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("version"))
   {
     m_version = jsonValue.GetString("version");
-
     m_versionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("contentType"))
   {
     m_contentType = ContentTypeMapper::GetContentTypeForName(jsonValue.GetString("contentType"));
-
     m_contentTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("genericAttachments"))
   {
     Aws::Utils::Array<JsonView> genericAttachmentsJsonList = jsonValue.GetArray("genericAttachments");
@@ -60,7 +44,6 @@ ResponseCard& ResponseCard::operator =(JsonView jsonValue)
     }
     m_genericAttachmentsHasBeenSet = true;
   }
-
   return *this;
 }
 

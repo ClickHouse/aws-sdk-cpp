@@ -18,15 +18,7 @@ namespace SSM
 namespace Model
 {
 
-InvalidItemContentException::InvalidItemContentException() : 
-    m_typeNameHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-InvalidItemContentException::InvalidItemContentException(JsonView jsonValue) : 
-    m_typeNameHasBeenSet(false),
-    m_messageHasBeenSet(false)
+InvalidItemContentException::InvalidItemContentException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InvalidItemContentException& InvalidItemContentException::operator =(JsonView js
   if(jsonValue.ValueExists("TypeName"))
   {
     m_typeName = jsonValue.GetString("TypeName");
-
     m_typeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

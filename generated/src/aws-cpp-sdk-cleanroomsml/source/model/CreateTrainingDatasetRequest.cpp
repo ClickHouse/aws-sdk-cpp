@@ -12,24 +12,9 @@ using namespace Aws::CleanRoomsML::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateTrainingDatasetRequest::CreateTrainingDatasetRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_trainingDataHasBeenSet(false)
-{
-}
-
 Aws::String CreateTrainingDatasetRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_descriptionHasBeenSet)
-  {
-   payload.WithString("description", m_description);
-
-  }
 
   if(m_nameHasBeenSet)
   {
@@ -40,6 +25,17 @@ Aws::String CreateTrainingDatasetRequest::SerializePayload() const
   if(m_roleArnHasBeenSet)
   {
    payload.WithString("roleArn", m_roleArn);
+
+  }
+
+  if(m_trainingDataHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> trainingDataJsonList(m_trainingData.size());
+   for(unsigned trainingDataIndex = 0; trainingDataIndex < trainingDataJsonList.GetLength(); ++trainingDataIndex)
+   {
+     trainingDataJsonList[trainingDataIndex].AsObject(m_trainingData[trainingDataIndex].Jsonize());
+   }
+   payload.WithArray("trainingData", std::move(trainingDataJsonList));
 
   }
 
@@ -54,14 +50,9 @@ Aws::String CreateTrainingDatasetRequest::SerializePayload() const
 
   }
 
-  if(m_trainingDataHasBeenSet)
+  if(m_descriptionHasBeenSet)
   {
-   Aws::Utils::Array<JsonValue> trainingDataJsonList(m_trainingData.size());
-   for(unsigned trainingDataIndex = 0; trainingDataIndex < trainingDataJsonList.GetLength(); ++trainingDataIndex)
-   {
-     trainingDataJsonList[trainingDataIndex].AsObject(m_trainingData[trainingDataIndex].Jsonize());
-   }
-   payload.WithArray("trainingData", std::move(trainingDataJsonList));
+   payload.WithString("description", m_description);
 
   }
 

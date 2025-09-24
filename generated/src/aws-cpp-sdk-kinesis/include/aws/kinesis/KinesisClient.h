@@ -24,8 +24,8 @@ namespace Kinesis
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef KinesisClientConfiguration ClientConfigurationType;
       typedef KinesisEndpointProvider EndpointProviderType;
@@ -35,14 +35,14 @@ namespace Kinesis
         * is not specified, it will be initialized to default values.
         */
         KinesisClient(const Aws::Kinesis::KinesisClientConfiguration& clientConfiguration = Aws::Kinesis::KinesisClientConfiguration(),
-                      std::shared_ptr<KinesisEndpointProviderBase> endpointProvider = Aws::MakeShared<KinesisEndpointProvider>(ALLOCATION_TAG));
+                      std::shared_ptr<KinesisEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         KinesisClient(const Aws::Auth::AWSCredentials& credentials,
-                      std::shared_ptr<KinesisEndpointProviderBase> endpointProvider = Aws::MakeShared<KinesisEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<KinesisEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::Kinesis::KinesisClientConfiguration& clientConfiguration = Aws::Kinesis::KinesisClientConfiguration());
 
        /**
@@ -50,7 +50,7 @@ namespace Kinesis
         * the default http client factory will be used
         */
         KinesisClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                      std::shared_ptr<KinesisEndpointProviderBase> endpointProvider = Aws::MakeShared<KinesisEndpointProvider>(ALLOCATION_TAG),
+                      std::shared_ptr<KinesisEndpointProviderBase> endpointProvider = nullptr,
                       const Aws::Kinesis::KinesisClientConfiguration& clientConfiguration = Aws::Kinesis::KinesisClientConfiguration());
 
 
@@ -147,7 +147,15 @@ namespace Kinesis
          * Amazon Web Services Support</a>.</p> <p>You can use <a>DescribeStreamSummary</a>
          * to check the stream status, which is returned in <code>StreamStatus</code>.</p>
          * <p> <a>CreateStream</a> has a limit of five transactions per second per
-         * account.</p><p><h3>See Also:</h3>   <a
+         * account.</p> <p>You can add tags to the stream when making a
+         * <code>CreateStream</code> request by setting the <code>Tags</code> parameter. If
+         * you pass the <code>Tags</code> parameter, in addition to having the
+         * <code>kinesis:CreateStream</code> permission, you must also have the
+         * <code>kinesis:AddTagsToStream</code> permission for the stream that will be
+         * created. The <code>kinesis:TagResource</code> permission won’t work to tag
+         * streams on creation. Tags will take effect from the <code>CREATING</code> status
+         * of the stream, but you can't make any updates to the tags until the stream is in
+         * <code>ACTIVE</code> state.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/CreateStream">AWS
          * API Reference</a></p>
          */
@@ -258,13 +266,13 @@ namespace Kinesis
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DeleteStream">AWS
          * API Reference</a></p>
          */
-        virtual Model::DeleteStreamOutcome DeleteStream(const Model::DeleteStreamRequest& request) const;
+        virtual Model::DeleteStreamOutcome DeleteStream(const Model::DeleteStreamRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DeleteStream that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DeleteStreamRequestT = Model::DeleteStreamRequest>
-        Model::DeleteStreamOutcomeCallable DeleteStreamCallable(const DeleteStreamRequestT& request) const
+        Model::DeleteStreamOutcomeCallable DeleteStreamCallable(const DeleteStreamRequestT& request = {}) const
         {
             return SubmitCallable(&KinesisClient::DeleteStream, request);
         }
@@ -273,7 +281,7 @@ namespace Kinesis
          * An Async wrapper for DeleteStream that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DeleteStreamRequestT = Model::DeleteStreamRequest>
-        void DeleteStreamAsync(const DeleteStreamRequestT& request, const DeleteStreamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DeleteStreamAsync(const DeleteStreamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DeleteStreamRequestT& request = {}) const
         {
             return SubmitAsync(&KinesisClient::DeleteStream, request, handler, context);
         }
@@ -291,13 +299,13 @@ namespace Kinesis
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DeregisterStreamConsumer">AWS
          * API Reference</a></p>
          */
-        virtual Model::DeregisterStreamConsumerOutcome DeregisterStreamConsumer(const Model::DeregisterStreamConsumerRequest& request) const;
+        virtual Model::DeregisterStreamConsumerOutcome DeregisterStreamConsumer(const Model::DeregisterStreamConsumerRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DeregisterStreamConsumer that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DeregisterStreamConsumerRequestT = Model::DeregisterStreamConsumerRequest>
-        Model::DeregisterStreamConsumerOutcomeCallable DeregisterStreamConsumerCallable(const DeregisterStreamConsumerRequestT& request) const
+        Model::DeregisterStreamConsumerOutcomeCallable DeregisterStreamConsumerCallable(const DeregisterStreamConsumerRequestT& request = {}) const
         {
             return SubmitCallable(&KinesisClient::DeregisterStreamConsumer, request);
         }
@@ -306,7 +314,7 @@ namespace Kinesis
          * An Async wrapper for DeregisterStreamConsumer that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DeregisterStreamConsumerRequestT = Model::DeregisterStreamConsumerRequest>
-        void DeregisterStreamConsumerAsync(const DeregisterStreamConsumerRequestT& request, const DeregisterStreamConsumerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DeregisterStreamConsumerAsync(const DeregisterStreamConsumerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DeregisterStreamConsumerRequestT& request = {}) const
         {
             return SubmitAsync(&KinesisClient::DeregisterStreamConsumer, request, handler, context);
         }
@@ -319,13 +327,13 @@ namespace Kinesis
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DescribeLimits">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeLimitsOutcome DescribeLimits(const Model::DescribeLimitsRequest& request) const;
+        virtual Model::DescribeLimitsOutcome DescribeLimits(const Model::DescribeLimitsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeLimits that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeLimitsRequestT = Model::DescribeLimitsRequest>
-        Model::DescribeLimitsOutcomeCallable DescribeLimitsCallable(const DescribeLimitsRequestT& request) const
+        Model::DescribeLimitsOutcomeCallable DescribeLimitsCallable(const DescribeLimitsRequestT& request = {}) const
         {
             return SubmitCallable(&KinesisClient::DescribeLimits, request);
         }
@@ -334,7 +342,7 @@ namespace Kinesis
          * An Async wrapper for DescribeLimits that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeLimitsRequestT = Model::DescribeLimitsRequest>
-        void DescribeLimitsAsync(const DescribeLimitsRequestT& request, const DescribeLimitsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeLimitsAsync(const DescribeLimitsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeLimitsRequestT& request = {}) const
         {
             return SubmitAsync(&KinesisClient::DescribeLimits, request, handler, context);
         }
@@ -365,13 +373,13 @@ namespace Kinesis
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DescribeStream">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeStreamOutcome DescribeStream(const Model::DescribeStreamRequest& request) const;
+        virtual Model::DescribeStreamOutcome DescribeStream(const Model::DescribeStreamRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeStream that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeStreamRequestT = Model::DescribeStreamRequest>
-        Model::DescribeStreamOutcomeCallable DescribeStreamCallable(const DescribeStreamRequestT& request) const
+        Model::DescribeStreamOutcomeCallable DescribeStreamCallable(const DescribeStreamRequestT& request = {}) const
         {
             return SubmitCallable(&KinesisClient::DescribeStream, request);
         }
@@ -380,7 +388,7 @@ namespace Kinesis
          * An Async wrapper for DescribeStream that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeStreamRequestT = Model::DescribeStreamRequest>
-        void DescribeStreamAsync(const DescribeStreamRequestT& request, const DescribeStreamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeStreamAsync(const DescribeStreamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeStreamRequestT& request = {}) const
         {
             return SubmitAsync(&KinesisClient::DescribeStream, request, handler, context);
         }
@@ -400,13 +408,13 @@ namespace Kinesis
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DescribeStreamConsumer">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeStreamConsumerOutcome DescribeStreamConsumer(const Model::DescribeStreamConsumerRequest& request) const;
+        virtual Model::DescribeStreamConsumerOutcome DescribeStreamConsumer(const Model::DescribeStreamConsumerRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeStreamConsumer that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeStreamConsumerRequestT = Model::DescribeStreamConsumerRequest>
-        Model::DescribeStreamConsumerOutcomeCallable DescribeStreamConsumerCallable(const DescribeStreamConsumerRequestT& request) const
+        Model::DescribeStreamConsumerOutcomeCallable DescribeStreamConsumerCallable(const DescribeStreamConsumerRequestT& request = {}) const
         {
             return SubmitCallable(&KinesisClient::DescribeStreamConsumer, request);
         }
@@ -415,7 +423,7 @@ namespace Kinesis
          * An Async wrapper for DescribeStreamConsumer that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeStreamConsumerRequestT = Model::DescribeStreamConsumerRequest>
-        void DescribeStreamConsumerAsync(const DescribeStreamConsumerRequestT& request, const DescribeStreamConsumerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeStreamConsumerAsync(const DescribeStreamConsumerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeStreamConsumerRequestT& request = {}) const
         {
             return SubmitAsync(&KinesisClient::DescribeStreamConsumer, request, handler, context);
         }
@@ -433,13 +441,13 @@ namespace Kinesis
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/DescribeStreamSummary">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeStreamSummaryOutcome DescribeStreamSummary(const Model::DescribeStreamSummaryRequest& request) const;
+        virtual Model::DescribeStreamSummaryOutcome DescribeStreamSummary(const Model::DescribeStreamSummaryRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeStreamSummary that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeStreamSummaryRequestT = Model::DescribeStreamSummaryRequest>
-        Model::DescribeStreamSummaryOutcomeCallable DescribeStreamSummaryCallable(const DescribeStreamSummaryRequestT& request) const
+        Model::DescribeStreamSummaryOutcomeCallable DescribeStreamSummaryCallable(const DescribeStreamSummaryRequestT& request = {}) const
         {
             return SubmitCallable(&KinesisClient::DescribeStreamSummary, request);
         }
@@ -448,7 +456,7 @@ namespace Kinesis
          * An Async wrapper for DescribeStreamSummary that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeStreamSummaryRequestT = Model::DescribeStreamSummaryRequest>
-        void DescribeStreamSummaryAsync(const DescribeStreamSummaryRequestT& request, const DescribeStreamSummaryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeStreamSummaryAsync(const DescribeStreamSummaryResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeStreamSummaryRequestT& request = {}) const
         {
             return SubmitAsync(&KinesisClient::DescribeStreamSummary, request, handler, context);
         }
@@ -741,13 +749,13 @@ namespace Kinesis
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/ListShards">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListShardsOutcome ListShards(const Model::ListShardsRequest& request) const;
+        virtual Model::ListShardsOutcome ListShards(const Model::ListShardsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListShards that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListShardsRequestT = Model::ListShardsRequest>
-        Model::ListShardsOutcomeCallable ListShardsCallable(const ListShardsRequestT& request) const
+        Model::ListShardsOutcomeCallable ListShardsCallable(const ListShardsRequestT& request = {}) const
         {
             return SubmitCallable(&KinesisClient::ListShards, request);
         }
@@ -756,7 +764,7 @@ namespace Kinesis
          * An Async wrapper for ListShards that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListShardsRequestT = Model::ListShardsRequest>
-        void ListShardsAsync(const ListShardsRequestT& request, const ListShardsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListShardsAsync(const ListShardsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListShardsRequestT& request = {}) const
         {
             return SubmitAsync(&KinesisClient::ListShards, request, handler, context);
         }
@@ -806,13 +814,13 @@ namespace Kinesis
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/ListStreams">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListStreamsOutcome ListStreams(const Model::ListStreamsRequest& request) const;
+        virtual Model::ListStreamsOutcome ListStreams(const Model::ListStreamsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListStreams that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListStreamsRequestT = Model::ListStreamsRequest>
-        Model::ListStreamsOutcomeCallable ListStreamsCallable(const ListStreamsRequestT& request) const
+        Model::ListStreamsOutcomeCallable ListStreamsCallable(const ListStreamsRequestT& request = {}) const
         {
             return SubmitCallable(&KinesisClient::ListStreams, request);
         }
@@ -821,9 +829,39 @@ namespace Kinesis
          * An Async wrapper for ListStreams that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListStreamsRequestT = Model::ListStreamsRequest>
-        void ListStreamsAsync(const ListStreamsRequestT& request, const ListStreamsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListStreamsAsync(const ListStreamsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListStreamsRequestT& request = {}) const
         {
             return SubmitAsync(&KinesisClient::ListStreams, request, handler, context);
+        }
+
+        /**
+         * <p>List all tags added to the specified Kinesis resource. Each tag is a label
+         * consisting of a user-defined key and value. Tags can help you manage, identify,
+         * organize, search for, and filter resources.</p> <p>For more information about
+         * tagging Kinesis resources, see <a
+         * href="https://docs.aws.amazon.com/streams/latest/dev/tagging.html">Tag your
+         * Amazon Kinesis Data Streams resources</a>.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/ListTagsForResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListTagsForResourceOutcome ListTagsForResource(const Model::ListTagsForResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListTagsForResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListTagsForResourceRequestT = Model::ListTagsForResourceRequest>
+        Model::ListTagsForResourceOutcomeCallable ListTagsForResourceCallable(const ListTagsForResourceRequestT& request) const
+        {
+            return SubmitCallable(&KinesisClient::ListTagsForResource, request);
+        }
+
+        /**
+         * An Async wrapper for ListTagsForResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListTagsForResourceRequestT = Model::ListTagsForResourceRequest>
+        void ListTagsForResourceAsync(const ListTagsForResourceRequestT& request, const ListTagsForResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&KinesisClient::ListTagsForResource, request, handler, context);
         }
 
         /**
@@ -836,13 +874,13 @@ namespace Kinesis
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/ListTagsForStream">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTagsForStreamOutcome ListTagsForStream(const Model::ListTagsForStreamRequest& request) const;
+        virtual Model::ListTagsForStreamOutcome ListTagsForStream(const Model::ListTagsForStreamRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTagsForStream that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTagsForStreamRequestT = Model::ListTagsForStreamRequest>
-        Model::ListTagsForStreamOutcomeCallable ListTagsForStreamCallable(const ListTagsForStreamRequestT& request) const
+        Model::ListTagsForStreamOutcomeCallable ListTagsForStreamCallable(const ListTagsForStreamRequestT& request = {}) const
         {
             return SubmitCallable(&KinesisClient::ListTagsForStream, request);
         }
@@ -851,7 +889,7 @@ namespace Kinesis
          * An Async wrapper for ListTagsForStream that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTagsForStreamRequestT = Model::ListTagsForStreamRequest>
-        void ListTagsForStreamAsync(const ListTagsForStreamRequestT& request, const ListTagsForStreamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTagsForStreamAsync(const ListTagsForStreamResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTagsForStreamRequestT& request = {}) const
         {
             return SubmitAsync(&KinesisClient::ListTagsForStream, request, handler, context);
         }
@@ -1115,15 +1153,21 @@ namespace Kinesis
          * the consumer you register can then call <a>SubscribeToShard</a> to receive data
          * from the stream using enhanced fan-out, at a rate of up to 2 MiB per second for
          * every shard you subscribe to. This rate is unaffected by the total number of
-         * consumers that read from the same stream.</p> <p>You can register up to 20
+         * consumers that read from the same stream.</p> <p>You can add tags to the
+         * registered consumer when making a <code>RegisterStreamConsumer</code> request by
+         * setting the <code>Tags</code> parameter. If you pass the <code>Tags</code>
+         * parameter, in addition to having the <code>kinesis:RegisterStreamConsumer</code>
+         * permission, you must also have the <code>kinesis:TagResource</code> permission
+         * for the consumer that will be registered. Tags will take effect from the
+         * <code>CREATING</code> status of the consumer.</p> <p>You can register up to 20
          * consumers per stream. A given consumer can only be registered with one stream at
-         * a time.</p> <p>For an example of how to use this operations, see <a
-         * href="/streams/latest/dev/building-enhanced-consumers-api.html">Enhanced Fan-Out
-         * Using the Kinesis Data Streams API</a>.</p> <p>The use of this operation has a
-         * limit of five transactions per second per account. Also, only 5 consumers can be
-         * created simultaneously. In other words, you cannot have more than 5 consumers in
-         * a <code>CREATING</code> status at the same time. Registering a 6th consumer
-         * while there are 5 in a <code>CREATING</code> status results in a
+         * a time.</p> <p>For an example of how to use this operation, see <a
+         * href="https://docs.aws.amazon.com/streams/latest/dev/building-enhanced-consumers-api.html">Enhanced
+         * Fan-Out Using the Kinesis Data Streams API</a>.</p> <p>The use of this operation
+         * has a limit of five transactions per second per account. Also, only 5 consumers
+         * can be created simultaneously. In other words, you cannot have more than 5
+         * consumers in a <code>CREATING</code> status at the same time. Registering a 6th
+         * consumer while there are 5 in a <code>CREATING</code> status results in a
          * <code>LimitExceededException</code>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/RegisterStreamConsumer">AWS
          * API Reference</a></p>
@@ -1358,9 +1402,9 @@ namespace Kinesis
          * seconds or more after a successful call, the second call takes over the
          * subscription and the previous connection expires or fails with a
          * <code>ResourceInUseException</code>.</p> <p>For an example of how to use this
-         * operations, see <a
-         * href="/streams/latest/dev/building-enhanced-consumers-api.html">Enhanced Fan-Out
-         * Using the Kinesis Data Streams API</a>.</p><p><h3>See Also:</h3>   <a
+         * operation, see <a
+         * href="https://docs.aws.amazon.com/streams/latest/dev/building-enhanced-consumers-api.html">Enhanced
+         * Fan-Out Using the Kinesis Data Streams API</a>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/SubscribeToShard">AWS
          * API Reference</a></p>
          */
@@ -1382,6 +1426,61 @@ namespace Kinesis
         void SubscribeToShardAsync(SubscribeToShardRequestT& request, const SubscribeToShardResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&KinesisClient::SubscribeToShard, request, handler, context);
+        }
+
+        /**
+         * <p>Adds or updates tags for the specified Kinesis resource. Each tag is a label
+         * consisting of a user-defined key and value. Tags can help you manage, identify,
+         * organize, search for, and filter resources. You can assign up to 50 tags to a
+         * Kinesis resource.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/TagResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::TagResourceOutcome TagResource(const Model::TagResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for TagResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename TagResourceRequestT = Model::TagResourceRequest>
+        Model::TagResourceOutcomeCallable TagResourceCallable(const TagResourceRequestT& request) const
+        {
+            return SubmitCallable(&KinesisClient::TagResource, request);
+        }
+
+        /**
+         * An Async wrapper for TagResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename TagResourceRequestT = Model::TagResourceRequest>
+        void TagResourceAsync(const TagResourceRequestT& request, const TagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&KinesisClient::TagResource, request, handler, context);
+        }
+
+        /**
+         * <p>Removes tags from the specified Kinesis resource. Removed tags are deleted
+         * and can't be recovered after this operation completes
+         * successfully.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/kinesis-2013-12-02/UntagResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UntagResourceOutcome UntagResource(const Model::UntagResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for UntagResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UntagResourceRequestT = Model::UntagResourceRequest>
+        Model::UntagResourceOutcomeCallable UntagResourceCallable(const UntagResourceRequestT& request) const
+        {
+            return SubmitCallable(&KinesisClient::UntagResource, request);
+        }
+
+        /**
+         * An Async wrapper for UntagResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UntagResourceRequestT = Model::UntagResourceRequest>
+        void UntagResourceAsync(const UntagResourceRequestT& request, const UntagResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&KinesisClient::UntagResource, request, handler, context);
         }
 
         /**
@@ -1479,7 +1578,6 @@ namespace Kinesis
       void init(const KinesisClientConfiguration& clientConfiguration);
 
       KinesisClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<KinesisEndpointProviderBase> m_endpointProvider;
   };
 

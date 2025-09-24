@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceTypeInfoFromInstanceRequirements::InstanceTypeInfoFromInstanceRequirements() : 
-    m_instanceTypeHasBeenSet(false)
-{
-}
-
-InstanceTypeInfoFromInstanceRequirements::InstanceTypeInfoFromInstanceRequirements(const XmlNode& xmlNode) : 
-    m_instanceTypeHasBeenSet(false)
+InstanceTypeInfoFromInstanceRequirements::InstanceTypeInfoFromInstanceRequirements(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

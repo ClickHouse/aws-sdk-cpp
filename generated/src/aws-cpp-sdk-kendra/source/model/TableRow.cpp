@@ -18,13 +18,7 @@ namespace kendra
 namespace Model
 {
 
-TableRow::TableRow() : 
-    m_cellsHasBeenSet(false)
-{
-}
-
-TableRow::TableRow(JsonView jsonValue) : 
-    m_cellsHasBeenSet(false)
+TableRow::TableRow(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ TableRow& TableRow::operator =(JsonView jsonValue)
     }
     m_cellsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace Bedrock
 namespace Model
 {
 
-TrainingMetrics::TrainingMetrics() : 
-    m_trainingLoss(0.0),
-    m_trainingLossHasBeenSet(false)
-{
-}
-
-TrainingMetrics::TrainingMetrics(JsonView jsonValue) : 
-    m_trainingLoss(0.0),
-    m_trainingLossHasBeenSet(false)
+TrainingMetrics::TrainingMetrics(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TrainingMetrics& TrainingMetrics::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("trainingLoss"))
   {
     m_trainingLoss = jsonValue.GetDouble("trainingLoss");
-
     m_trainingLossHasBeenSet = true;
   }
-
   return *this;
 }
 

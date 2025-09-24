@@ -22,7 +22,7 @@ namespace Model
   class CreateSipMediaApplicationCallRequest : public ChimeSDKVoiceRequest
   {
   public:
-    AWS_CHIMESDKVOICE_API CreateSipMediaApplicationCallRequest();
+    AWS_CHIMESDKVOICE_API CreateSipMediaApplicationCallRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,294 +33,76 @@ namespace Model
     AWS_CHIMESDKVOICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The phone number that a user calls from. This is a phone number in your
      * Amazon Chime SDK phone number inventory.</p>
      */
-    inline const Aws::String& GetFromPhoneNumber() const{ return m_fromPhoneNumber; }
-
-    /**
-     * <p>The phone number that a user calls from. This is a phone number in your
-     * Amazon Chime SDK phone number inventory.</p>
-     */
+    inline const Aws::String& GetFromPhoneNumber() const { return m_fromPhoneNumber; }
     inline bool FromPhoneNumberHasBeenSet() const { return m_fromPhoneNumberHasBeenSet; }
+    template<typename FromPhoneNumberT = Aws::String>
+    void SetFromPhoneNumber(FromPhoneNumberT&& value) { m_fromPhoneNumberHasBeenSet = true; m_fromPhoneNumber = std::forward<FromPhoneNumberT>(value); }
+    template<typename FromPhoneNumberT = Aws::String>
+    CreateSipMediaApplicationCallRequest& WithFromPhoneNumber(FromPhoneNumberT&& value) { SetFromPhoneNumber(std::forward<FromPhoneNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The phone number that a user calls from. This is a phone number in your
-     * Amazon Chime SDK phone number inventory.</p>
-     */
-    inline void SetFromPhoneNumber(const Aws::String& value) { m_fromPhoneNumberHasBeenSet = true; m_fromPhoneNumber = value; }
-
-    /**
-     * <p>The phone number that a user calls from. This is a phone number in your
-     * Amazon Chime SDK phone number inventory.</p>
-     */
-    inline void SetFromPhoneNumber(Aws::String&& value) { m_fromPhoneNumberHasBeenSet = true; m_fromPhoneNumber = std::move(value); }
-
-    /**
-     * <p>The phone number that a user calls from. This is a phone number in your
-     * Amazon Chime SDK phone number inventory.</p>
-     */
-    inline void SetFromPhoneNumber(const char* value) { m_fromPhoneNumberHasBeenSet = true; m_fromPhoneNumber.assign(value); }
-
-    /**
-     * <p>The phone number that a user calls from. This is a phone number in your
-     * Amazon Chime SDK phone number inventory.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithFromPhoneNumber(const Aws::String& value) { SetFromPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The phone number that a user calls from. This is a phone number in your
-     * Amazon Chime SDK phone number inventory.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithFromPhoneNumber(Aws::String&& value) { SetFromPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The phone number that a user calls from. This is a phone number in your
-     * Amazon Chime SDK phone number inventory.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithFromPhoneNumber(const char* value) { SetFromPhoneNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The phone number that the service should call.</p>
      */
-    inline const Aws::String& GetToPhoneNumber() const{ return m_toPhoneNumber; }
-
-    /**
-     * <p>The phone number that the service should call.</p>
-     */
+    inline const Aws::String& GetToPhoneNumber() const { return m_toPhoneNumber; }
     inline bool ToPhoneNumberHasBeenSet() const { return m_toPhoneNumberHasBeenSet; }
+    template<typename ToPhoneNumberT = Aws::String>
+    void SetToPhoneNumber(ToPhoneNumberT&& value) { m_toPhoneNumberHasBeenSet = true; m_toPhoneNumber = std::forward<ToPhoneNumberT>(value); }
+    template<typename ToPhoneNumberT = Aws::String>
+    CreateSipMediaApplicationCallRequest& WithToPhoneNumber(ToPhoneNumberT&& value) { SetToPhoneNumber(std::forward<ToPhoneNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The phone number that the service should call.</p>
-     */
-    inline void SetToPhoneNumber(const Aws::String& value) { m_toPhoneNumberHasBeenSet = true; m_toPhoneNumber = value; }
-
-    /**
-     * <p>The phone number that the service should call.</p>
-     */
-    inline void SetToPhoneNumber(Aws::String&& value) { m_toPhoneNumberHasBeenSet = true; m_toPhoneNumber = std::move(value); }
-
-    /**
-     * <p>The phone number that the service should call.</p>
-     */
-    inline void SetToPhoneNumber(const char* value) { m_toPhoneNumberHasBeenSet = true; m_toPhoneNumber.assign(value); }
-
-    /**
-     * <p>The phone number that the service should call.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithToPhoneNumber(const Aws::String& value) { SetToPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The phone number that the service should call.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithToPhoneNumber(Aws::String&& value) { SetToPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The phone number that the service should call.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithToPhoneNumber(const char* value) { SetToPhoneNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the SIP media application.</p>
      */
-    inline const Aws::String& GetSipMediaApplicationId() const{ return m_sipMediaApplicationId; }
-
-    /**
-     * <p>The ID of the SIP media application.</p>
-     */
+    inline const Aws::String& GetSipMediaApplicationId() const { return m_sipMediaApplicationId; }
     inline bool SipMediaApplicationIdHasBeenSet() const { return m_sipMediaApplicationIdHasBeenSet; }
+    template<typename SipMediaApplicationIdT = Aws::String>
+    void SetSipMediaApplicationId(SipMediaApplicationIdT&& value) { m_sipMediaApplicationIdHasBeenSet = true; m_sipMediaApplicationId = std::forward<SipMediaApplicationIdT>(value); }
+    template<typename SipMediaApplicationIdT = Aws::String>
+    CreateSipMediaApplicationCallRequest& WithSipMediaApplicationId(SipMediaApplicationIdT&& value) { SetSipMediaApplicationId(std::forward<SipMediaApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the SIP media application.</p>
-     */
-    inline void SetSipMediaApplicationId(const Aws::String& value) { m_sipMediaApplicationIdHasBeenSet = true; m_sipMediaApplicationId = value; }
-
-    /**
-     * <p>The ID of the SIP media application.</p>
-     */
-    inline void SetSipMediaApplicationId(Aws::String&& value) { m_sipMediaApplicationIdHasBeenSet = true; m_sipMediaApplicationId = std::move(value); }
-
-    /**
-     * <p>The ID of the SIP media application.</p>
-     */
-    inline void SetSipMediaApplicationId(const char* value) { m_sipMediaApplicationIdHasBeenSet = true; m_sipMediaApplicationId.assign(value); }
-
-    /**
-     * <p>The ID of the SIP media application.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithSipMediaApplicationId(const Aws::String& value) { SetSipMediaApplicationId(value); return *this;}
-
-    /**
-     * <p>The ID of the SIP media application.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithSipMediaApplicationId(Aws::String&& value) { SetSipMediaApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the SIP media application.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithSipMediaApplicationId(const char* value) { SetSipMediaApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The SIP headers added to an outbound call leg.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetSipHeaders() const{ return m_sipHeaders; }
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetSipHeaders() const { return m_sipHeaders; }
     inline bool SipHeadersHasBeenSet() const { return m_sipHeadersHasBeenSet; }
+    template<typename SipHeadersT = Aws::Map<Aws::String, Aws::String>>
+    void SetSipHeaders(SipHeadersT&& value) { m_sipHeadersHasBeenSet = true; m_sipHeaders = std::forward<SipHeadersT>(value); }
+    template<typename SipHeadersT = Aws::Map<Aws::String, Aws::String>>
+    CreateSipMediaApplicationCallRequest& WithSipHeaders(SipHeadersT&& value) { SetSipHeaders(std::forward<SipHeadersT>(value)); return *this;}
+    template<typename SipHeadersKeyT = Aws::String, typename SipHeadersValueT = Aws::String>
+    CreateSipMediaApplicationCallRequest& AddSipHeaders(SipHeadersKeyT&& key, SipHeadersValueT&& value) {
+      m_sipHeadersHasBeenSet = true; m_sipHeaders.emplace(std::forward<SipHeadersKeyT>(key), std::forward<SipHeadersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline void SetSipHeaders(const Aws::Map<Aws::String, Aws::String>& value) { m_sipHeadersHasBeenSet = true; m_sipHeaders = value; }
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline void SetSipHeaders(Aws::Map<Aws::String, Aws::String>&& value) { m_sipHeadersHasBeenSet = true; m_sipHeaders = std::move(value); }
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithSipHeaders(const Aws::Map<Aws::String, Aws::String>& value) { SetSipHeaders(value); return *this;}
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithSipHeaders(Aws::Map<Aws::String, Aws::String>&& value) { SetSipHeaders(std::move(value)); return *this;}
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddSipHeaders(const Aws::String& key, const Aws::String& value) { m_sipHeadersHasBeenSet = true; m_sipHeaders.emplace(key, value); return *this; }
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddSipHeaders(Aws::String&& key, const Aws::String& value) { m_sipHeadersHasBeenSet = true; m_sipHeaders.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddSipHeaders(const Aws::String& key, Aws::String&& value) { m_sipHeadersHasBeenSet = true; m_sipHeaders.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddSipHeaders(Aws::String&& key, Aws::String&& value) { m_sipHeadersHasBeenSet = true; m_sipHeaders.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddSipHeaders(const char* key, Aws::String&& value) { m_sipHeadersHasBeenSet = true; m_sipHeaders.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddSipHeaders(Aws::String&& key, const char* value) { m_sipHeadersHasBeenSet = true; m_sipHeaders.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The SIP headers added to an outbound call leg.</p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddSipHeaders(const char* key, const char* value) { m_sipHeadersHasBeenSet = true; m_sipHeaders.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Context passed to a CreateSipMediaApplication API call. For example, you
      * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
      * "Doe"</code> </p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetArgumentsMap() const{ return m_argumentsMap; }
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetArgumentsMap() const { return m_argumentsMap; }
     inline bool ArgumentsMapHasBeenSet() const { return m_argumentsMapHasBeenSet; }
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline void SetArgumentsMap(const Aws::Map<Aws::String, Aws::String>& value) { m_argumentsMapHasBeenSet = true; m_argumentsMap = value; }
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline void SetArgumentsMap(Aws::Map<Aws::String, Aws::String>&& value) { m_argumentsMapHasBeenSet = true; m_argumentsMap = std::move(value); }
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithArgumentsMap(const Aws::Map<Aws::String, Aws::String>& value) { SetArgumentsMap(value); return *this;}
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline CreateSipMediaApplicationCallRequest& WithArgumentsMap(Aws::Map<Aws::String, Aws::String>&& value) { SetArgumentsMap(std::move(value)); return *this;}
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddArgumentsMap(const Aws::String& key, const Aws::String& value) { m_argumentsMapHasBeenSet = true; m_argumentsMap.emplace(key, value); return *this; }
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddArgumentsMap(Aws::String&& key, const Aws::String& value) { m_argumentsMapHasBeenSet = true; m_argumentsMap.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddArgumentsMap(const Aws::String& key, Aws::String&& value) { m_argumentsMapHasBeenSet = true; m_argumentsMap.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddArgumentsMap(Aws::String&& key, Aws::String&& value) { m_argumentsMapHasBeenSet = true; m_argumentsMap.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddArgumentsMap(const char* key, Aws::String&& value) { m_argumentsMapHasBeenSet = true; m_argumentsMap.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddArgumentsMap(Aws::String&& key, const char* value) { m_argumentsMapHasBeenSet = true; m_argumentsMap.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Context passed to a CreateSipMediaApplication API call. For example, you
-     * could pass key-value pairs such as: <code>"FirstName": "John", "LastName":
-     * "Doe"</code> </p>
-     */
-    inline CreateSipMediaApplicationCallRequest& AddArgumentsMap(const char* key, const char* value) { m_argumentsMapHasBeenSet = true; m_argumentsMap.emplace(key, value); return *this; }
-
+    template<typename ArgumentsMapT = Aws::Map<Aws::String, Aws::String>>
+    void SetArgumentsMap(ArgumentsMapT&& value) { m_argumentsMapHasBeenSet = true; m_argumentsMap = std::forward<ArgumentsMapT>(value); }
+    template<typename ArgumentsMapT = Aws::Map<Aws::String, Aws::String>>
+    CreateSipMediaApplicationCallRequest& WithArgumentsMap(ArgumentsMapT&& value) { SetArgumentsMap(std::forward<ArgumentsMapT>(value)); return *this;}
+    template<typename ArgumentsMapKeyT = Aws::String, typename ArgumentsMapValueT = Aws::String>
+    CreateSipMediaApplicationCallRequest& AddArgumentsMap(ArgumentsMapKeyT&& key, ArgumentsMapValueT&& value) {
+      m_argumentsMapHasBeenSet = true; m_argumentsMap.emplace(std::forward<ArgumentsMapKeyT>(key), std::forward<ArgumentsMapValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_fromPhoneNumber;

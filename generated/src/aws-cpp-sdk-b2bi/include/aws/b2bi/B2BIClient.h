@@ -34,8 +34,8 @@ namespace B2BI
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef B2BIClientConfiguration ClientConfigurationType;
       typedef B2BIEndpointProvider EndpointProviderType;
@@ -45,14 +45,14 @@ namespace B2BI
         * is not specified, it will be initialized to default values.
         */
         B2BIClient(const Aws::B2BI::B2BIClientConfiguration& clientConfiguration = Aws::B2BI::B2BIClientConfiguration(),
-                   std::shared_ptr<B2BIEndpointProviderBase> endpointProvider = Aws::MakeShared<B2BIEndpointProvider>(ALLOCATION_TAG));
+                   std::shared_ptr<B2BIEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         B2BIClient(const Aws::Auth::AWSCredentials& credentials,
-                   std::shared_ptr<B2BIEndpointProviderBase> endpointProvider = Aws::MakeShared<B2BIEndpointProvider>(ALLOCATION_TAG),
+                   std::shared_ptr<B2BIEndpointProviderBase> endpointProvider = nullptr,
                    const Aws::B2BI::B2BIClientConfiguration& clientConfiguration = Aws::B2BI::B2BIClientConfiguration());
 
        /**
@@ -60,7 +60,7 @@ namespace B2BI
         * the default http client factory will be used
         */
         B2BIClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                   std::shared_ptr<B2BIEndpointProviderBase> endpointProvider = Aws::MakeShared<B2BIEndpointProvider>(ALLOCATION_TAG),
+                   std::shared_ptr<B2BIEndpointProviderBase> endpointProvider = nullptr,
                    const Aws::B2BI::B2BIClientConfiguration& clientConfiguration = Aws::B2BI::B2BIClientConfiguration());
 
 
@@ -171,9 +171,62 @@ namespace B2BI
         }
 
         /**
-         * <p>Creates a transformer. A transformer describes how to process the incoming
-         * EDI documents and extract the necessary information to the output
+         * <p>Amazon Web Services B2B Data Interchange uses a mapping template in JSONata
+         * or XSLT format to transform a customer input file into a JSON or XML file that
+         * can be converted to EDI.</p> <p>If you provide a sample EDI file with the same
+         * structure as the EDI files that you wish to generate, then the service can
+         * generate a mapping template. The starter template contains placeholder values
+         * which you can replace with JSONata or XSLT expressions to take data from your
+         * input file and insert it into the JSON or XML file that is used to generate the
+         * EDI.</p> <p>If you do not provide a sample EDI file, then the service can
+         * generate a mapping template based on the EDI settings in the
+         * <code>templateDetails</code> parameter. </p> <p> Currently, we only support
+         * generating a template that can generate the input to produce an Outbound X12 EDI
          * file.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/CreateStarterMappingTemplate">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateStarterMappingTemplateOutcome CreateStarterMappingTemplate(const Model::CreateStarterMappingTemplateRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateStarterMappingTemplate that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateStarterMappingTemplateRequestT = Model::CreateStarterMappingTemplateRequest>
+        Model::CreateStarterMappingTemplateOutcomeCallable CreateStarterMappingTemplateCallable(const CreateStarterMappingTemplateRequestT& request) const
+        {
+            return SubmitCallable(&B2BIClient::CreateStarterMappingTemplate, request);
+        }
+
+        /**
+         * An Async wrapper for CreateStarterMappingTemplate that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateStarterMappingTemplateRequestT = Model::CreateStarterMappingTemplateRequest>
+        void CreateStarterMappingTemplateAsync(const CreateStarterMappingTemplateRequestT& request, const CreateStarterMappingTemplateResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&B2BIClient::CreateStarterMappingTemplate, request, handler, context);
+        }
+
+        /**
+         * <p>Creates a transformer. Amazon Web Services B2B Data Interchange currently
+         * supports two scenarios:</p> <ul> <li> <p> <i>Inbound EDI</i>: the Amazon Web
+         * Services customer receives an EDI file from their trading partner. Amazon Web
+         * Services B2B Data Interchange converts this EDI file into a JSON or XML file
+         * with a service-defined structure. A mapping template provided by the customer,
+         * in JSONata or XSLT format, is optionally applied to this file to produce a JSON
+         * or XML file with the structure the customer requires.</p> </li> <li> <p>
+         * <i>Outbound EDI</i>: the Amazon Web Services customer has a JSON or XML file
+         * containing data that they wish to use in an EDI file. A mapping template,
+         * provided by the customer (in either JSONata or XSLT format) is applied to this
+         * file to generate a JSON or XML file in the service-defined structure. This file
+         * is then converted to an EDI file.</p> </li> </ul>  <p>The following fields
+         * are provided for backwards compatibility only: <code>fileFormat</code>,
+         * <code>mappingTemplate</code>, <code>ediType</code>, and
+         * <code>sampleDocument</code>.</p> <ul> <li> <p>Use the <code>mapping</code> data
+         * type in place of <code>mappingTemplate</code> and <code>fileFormat</code> </p>
+         * </li> <li> <p>Use the <code>sampleDocuments</code> data type in place of
+         * <code>sampleDocument</code> </p> </li> <li> <p>Use either the
+         * <code>inputConversion</code> or <code>outputConversion</code> in place of
+         * <code>ediType</code> </p> </li> </ul> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/CreateTransformer">AWS
          * API Reference</a></p>
          */
@@ -278,9 +331,10 @@ namespace B2BI
         }
 
         /**
-         * <p>Deletes the specified transformer. A transformer describes how to process the
-         * incoming EDI documents and extract the necessary information to the output
-         * file.</p><p><h3>See Also:</h3>   <a
+         * <p>Deletes the specified transformer. A transformer can take an EDI file as
+         * input and transform it into a JSON-or XML-formatted document. Alternatively, a
+         * transformer can take a JSON-or XML-formatted document as input and transform it
+         * into an EDI file.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/DeleteTransformer">AWS
          * API Reference</a></p>
          */
@@ -302,6 +356,43 @@ namespace B2BI
         void DeleteTransformerAsync(const DeleteTransformerRequestT& request, const DeleteTransformerResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&B2BIClient::DeleteTransformer, request, handler, context);
+        }
+
+        /**
+         * <p>Takes sample input and output documents and uses Amazon Bedrock to generate a
+         * mapping automatically. Depending on the accuracy and other factors, you can then
+         * edit the mapping for your needs.</p>  <p>Before you can use the
+         * AI-assisted feature for Amazon Web Services B2B Data Interchange you must enable
+         * models in Amazon Bedrock. For details, see <a
+         * href="https://docs.aws.amazon.com/b2bi/latest/userguide/ai-assisted-mapping.html#ai-assist-prereq">AI-assisted
+         * template mapping prerequisites</a> in the <i>Amazon Web Services B2B Data
+         * Interchange User guide</i>.</p>  <p>To generate a mapping, perform the
+         * following steps:</p> <ol> <li> <p>Start with an X12 EDI document to use as the
+         * input.</p> </li> <li> <p>Call <code>TestMapping</code> using your EDI
+         * document.</p> </li> <li> <p>Use the output from the <code>TestMapping</code>
+         * operation as either input or output for your GenerateMapping call, along with
+         * your sample file.</p> </li> </ol><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/GenerateMapping">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GenerateMappingOutcome GenerateMapping(const Model::GenerateMappingRequest& request) const;
+
+        /**
+         * A Callable wrapper for GenerateMapping that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GenerateMappingRequestT = Model::GenerateMappingRequest>
+        Model::GenerateMappingOutcomeCallable GenerateMappingCallable(const GenerateMappingRequestT& request) const
+        {
+            return SubmitCallable(&B2BIClient::GenerateMapping, request);
+        }
+
+        /**
+         * An Async wrapper for GenerateMapping that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GenerateMappingRequestT = Model::GenerateMappingRequest>
+        void GenerateMappingAsync(const GenerateMappingRequestT& request, const GenerateMappingResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&B2BIClient::GenerateMapping, request, handler, context);
         }
 
         /**
@@ -388,8 +479,10 @@ namespace B2BI
 
         /**
          * <p>Retrieves the details for the transformer specified by the transformer ID. A
-         * transformer describes how to process the incoming EDI documents and extract the
-         * necessary information to the output file.</p><p><h3>See Also:</h3>   <a
+         * transformer can take an EDI file as input and transform it into a JSON-or
+         * XML-formatted document. Alternatively, a transformer can take a JSON-or
+         * XML-formatted document as input and transform it into an EDI file.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/GetTransformer">AWS
          * API Reference</a></p>
          */
@@ -415,7 +508,11 @@ namespace B2BI
 
         /**
          * <p>Returns the details of the transformer run, based on the Transformer job
-         * ID.</p><p><h3>See Also:</h3>   <a
+         * ID.</p>  <p>If 30 days have elapsed since your transformer job was
+         * started, the system deletes it. So, if you run <code>GetTransformerJob</code>
+         * and supply a <code>transformerId</code> and <code>transformerJobId</code> for a
+         * job that was started more than 30 days previously, you receive a 404
+         * response.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/GetTransformerJob">AWS
          * API Reference</a></p>
          */
@@ -447,13 +544,13 @@ namespace B2BI
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/ListCapabilities">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCapabilitiesOutcome ListCapabilities(const Model::ListCapabilitiesRequest& request) const;
+        virtual Model::ListCapabilitiesOutcome ListCapabilities(const Model::ListCapabilitiesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCapabilities that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCapabilitiesRequestT = Model::ListCapabilitiesRequest>
-        Model::ListCapabilitiesOutcomeCallable ListCapabilitiesCallable(const ListCapabilitiesRequestT& request) const
+        Model::ListCapabilitiesOutcomeCallable ListCapabilitiesCallable(const ListCapabilitiesRequestT& request = {}) const
         {
             return SubmitCallable(&B2BIClient::ListCapabilities, request);
         }
@@ -462,7 +559,7 @@ namespace B2BI
          * An Async wrapper for ListCapabilities that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCapabilitiesRequestT = Model::ListCapabilitiesRequest>
-        void ListCapabilitiesAsync(const ListCapabilitiesRequestT& request, const ListCapabilitiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCapabilitiesAsync(const ListCapabilitiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCapabilitiesRequestT& request = {}) const
         {
             return SubmitAsync(&B2BIClient::ListCapabilities, request, handler, context);
         }
@@ -475,13 +572,13 @@ namespace B2BI
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/ListPartnerships">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListPartnershipsOutcome ListPartnerships(const Model::ListPartnershipsRequest& request) const;
+        virtual Model::ListPartnershipsOutcome ListPartnerships(const Model::ListPartnershipsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListPartnerships that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListPartnershipsRequestT = Model::ListPartnershipsRequest>
-        Model::ListPartnershipsOutcomeCallable ListPartnershipsCallable(const ListPartnershipsRequestT& request) const
+        Model::ListPartnershipsOutcomeCallable ListPartnershipsCallable(const ListPartnershipsRequestT& request = {}) const
         {
             return SubmitCallable(&B2BIClient::ListPartnerships, request);
         }
@@ -490,7 +587,7 @@ namespace B2BI
          * An Async wrapper for ListPartnerships that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListPartnershipsRequestT = Model::ListPartnershipsRequest>
-        void ListPartnershipsAsync(const ListPartnershipsRequestT& request, const ListPartnershipsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListPartnershipsAsync(const ListPartnershipsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListPartnershipsRequestT& request = {}) const
         {
             return SubmitAsync(&B2BIClient::ListPartnerships, request, handler, context);
         }
@@ -502,13 +599,13 @@ namespace B2BI
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/ListProfiles">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListProfilesOutcome ListProfiles(const Model::ListProfilesRequest& request) const;
+        virtual Model::ListProfilesOutcome ListProfiles(const Model::ListProfilesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListProfiles that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListProfilesRequestT = Model::ListProfilesRequest>
-        Model::ListProfilesOutcomeCallable ListProfilesCallable(const ListProfilesRequestT& request) const
+        Model::ListProfilesOutcomeCallable ListProfilesCallable(const ListProfilesRequestT& request = {}) const
         {
             return SubmitCallable(&B2BIClient::ListProfiles, request);
         }
@@ -517,7 +614,7 @@ namespace B2BI
          * An Async wrapper for ListProfiles that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListProfilesRequestT = Model::ListProfilesRequest>
-        void ListProfilesAsync(const ListProfilesRequestT& request, const ListProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListProfilesAsync(const ListProfilesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListProfilesRequestT& request = {}) const
         {
             return SubmitAsync(&B2BIClient::ListProfiles, request, handler, context);
         }
@@ -550,19 +647,20 @@ namespace B2BI
         }
 
         /**
-         * <p>Lists the available transformers. A transformer describes how to process the
-         * incoming EDI documents and extract the necessary information to the output
-         * file.</p><p><h3>See Also:</h3>   <a
+         * <p>Lists the available transformers. A transformer can take an EDI file as input
+         * and transform it into a JSON-or XML-formatted document. Alternatively, a
+         * transformer can take a JSON-or XML-formatted document as input and transform it
+         * into an EDI file.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/ListTransformers">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListTransformersOutcome ListTransformers(const Model::ListTransformersRequest& request) const;
+        virtual Model::ListTransformersOutcome ListTransformers(const Model::ListTransformersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListTransformers that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListTransformersRequestT = Model::ListTransformersRequest>
-        Model::ListTransformersOutcomeCallable ListTransformersCallable(const ListTransformersRequestT& request) const
+        Model::ListTransformersOutcomeCallable ListTransformersCallable(const ListTransformersRequestT& request = {}) const
         {
             return SubmitCallable(&B2BIClient::ListTransformers, request);
         }
@@ -571,19 +669,22 @@ namespace B2BI
          * An Async wrapper for ListTransformers that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListTransformersRequestT = Model::ListTransformersRequest>
-        void ListTransformersAsync(const ListTransformersRequestT& request, const ListTransformersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListTransformersAsync(const ListTransformersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTransformersRequestT& request = {}) const
         {
             return SubmitAsync(&B2BIClient::ListTransformers, request, handler, context);
         }
 
         /**
          * <p>Runs a job, using a transformer, to parse input EDI (electronic data
-         * interchange) file into the output structures used by Amazon Web Services B2BI
+         * interchange) file into the output structures used by Amazon Web Services B2B
          * Data Interchange.</p> <p>If you only want to transform EDI (electronic data
          * interchange) documents, you don't need to create profiles, partnerships or
          * capabilities. Just create and configure a transformer, and then run the
-         * <code>StartTransformerJob</code> API to process your files.</p><p><h3>See
-         * Also:</h3>   <a
+         * <code>StartTransformerJob</code> API to process your files.</p>  <p>The
+         * system stores transformer jobs for 30 days. During that period, you can run <a
+         * href="https://docs.aws.amazon.com/b2bi/latest/APIReference/API_GetTransformerJob.html">GetTransformerJob</a>
+         * and supply its <code>transformerId</code> and <code>transformerJobId</code> to
+         * return details of the job.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/StartTransformerJob">AWS
          * API Reference</a></p>
          */
@@ -636,6 +737,33 @@ namespace B2BI
         }
 
         /**
+         * <p>This operation mimics the latter half of a typical Outbound EDI request. It
+         * takes an input JSON/XML in the B2Bi shape as input, converts it to an X12 EDI
+         * string, and return that string.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/TestConversion">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::TestConversionOutcome TestConversion(const Model::TestConversionRequest& request) const;
+
+        /**
+         * A Callable wrapper for TestConversion that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename TestConversionRequestT = Model::TestConversionRequest>
+        Model::TestConversionOutcomeCallable TestConversionCallable(const TestConversionRequestT& request) const
+        {
+            return SubmitCallable(&B2BIClient::TestConversion, request);
+        }
+
+        /**
+         * An Async wrapper for TestConversion that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename TestConversionRequestT = Model::TestConversionRequest>
+        void TestConversionAsync(const TestConversionRequestT& request, const TestConversionResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&B2BIClient::TestConversion, request, handler, context);
+        }
+
+        /**
          * <p>Maps the input file according to the provided template file. The API call
          * downloads the file contents from the Amazon S3 location, and passes the contents
          * in as a string, to the <code>inputFileContent</code> parameter.</p><p><h3>See
@@ -664,8 +792,8 @@ namespace B2BI
         }
 
         /**
-         * <p>Parses the input EDI (electronic data interchange) file.</p><p><h3>See
-         * Also:</h3>   <a
+         * <p>Parses the input EDI (electronic data interchange) file. The input file has a
+         * file size limit of 250 KB.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/TestParsing">AWS
          * API Reference</a></p>
          */
@@ -798,9 +926,10 @@ namespace B2BI
         }
 
         /**
-         * <p>Updates the specified parameters for a transformer. A transformer describes
-         * how to process the incoming EDI documents and extract the necessary information
-         * to the output file.</p><p><h3>See Also:</h3>   <a
+         * <p>Updates the specified parameters for a transformer. A transformer can take an
+         * EDI file as input and transform it into a JSON-or XML-formatted document.
+         * Alternatively, a transformer can take a JSON-or XML-formatted document as input
+         * and transform it into an EDI file.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/b2bi-2022-06-23/UpdateTransformer">AWS
          * API Reference</a></p>
          */
@@ -832,7 +961,6 @@ namespace B2BI
       void init(const B2BIClientConfiguration& clientConfiguration);
 
       B2BIClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<B2BIEndpointProviderBase> m_endpointProvider;
   };
 

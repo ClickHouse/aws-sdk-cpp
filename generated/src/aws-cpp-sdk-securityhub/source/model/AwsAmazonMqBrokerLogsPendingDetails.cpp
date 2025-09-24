@@ -18,19 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsAmazonMqBrokerLogsPendingDetails::AwsAmazonMqBrokerLogsPendingDetails() : 
-    m_audit(false),
-    m_auditHasBeenSet(false),
-    m_general(false),
-    m_generalHasBeenSet(false)
-{
-}
-
-AwsAmazonMqBrokerLogsPendingDetails::AwsAmazonMqBrokerLogsPendingDetails(JsonView jsonValue) : 
-    m_audit(false),
-    m_auditHasBeenSet(false),
-    m_general(false),
-    m_generalHasBeenSet(false)
+AwsAmazonMqBrokerLogsPendingDetails::AwsAmazonMqBrokerLogsPendingDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ AwsAmazonMqBrokerLogsPendingDetails& AwsAmazonMqBrokerLogsPendingDetails::operat
   if(jsonValue.ValueExists("Audit"))
   {
     m_audit = jsonValue.GetBool("Audit");
-
     m_auditHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("General"))
   {
     m_general = jsonValue.GetBool("General");
-
     m_generalHasBeenSet = true;
   }
-
   return *this;
 }
 

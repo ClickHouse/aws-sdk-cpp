@@ -32,73 +32,35 @@ namespace Model
   class NumericAxisOptions
   {
   public:
-    AWS_QUICKSIGHT_API NumericAxisOptions();
+    AWS_QUICKSIGHT_API NumericAxisOptions() = default;
     AWS_QUICKSIGHT_API NumericAxisOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API NumericAxisOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The scale setup of a numeric axis.</p>
      */
-    inline const AxisScale& GetScale() const{ return m_scale; }
-
-    /**
-     * <p>The scale setup of a numeric axis.</p>
-     */
+    inline const AxisScale& GetScale() const { return m_scale; }
     inline bool ScaleHasBeenSet() const { return m_scaleHasBeenSet; }
+    template<typename ScaleT = AxisScale>
+    void SetScale(ScaleT&& value) { m_scaleHasBeenSet = true; m_scale = std::forward<ScaleT>(value); }
+    template<typename ScaleT = AxisScale>
+    NumericAxisOptions& WithScale(ScaleT&& value) { SetScale(std::forward<ScaleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The scale setup of a numeric axis.</p>
-     */
-    inline void SetScale(const AxisScale& value) { m_scaleHasBeenSet = true; m_scale = value; }
-
-    /**
-     * <p>The scale setup of a numeric axis.</p>
-     */
-    inline void SetScale(AxisScale&& value) { m_scaleHasBeenSet = true; m_scale = std::move(value); }
-
-    /**
-     * <p>The scale setup of a numeric axis.</p>
-     */
-    inline NumericAxisOptions& WithScale(const AxisScale& value) { SetScale(value); return *this;}
-
-    /**
-     * <p>The scale setup of a numeric axis.</p>
-     */
-    inline NumericAxisOptions& WithScale(AxisScale&& value) { SetScale(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The range setup of a numeric axis.</p>
      */
-    inline const AxisDisplayRange& GetRange() const{ return m_range; }
-
-    /**
-     * <p>The range setup of a numeric axis.</p>
-     */
+    inline const AxisDisplayRange& GetRange() const { return m_range; }
     inline bool RangeHasBeenSet() const { return m_rangeHasBeenSet; }
-
-    /**
-     * <p>The range setup of a numeric axis.</p>
-     */
-    inline void SetRange(const AxisDisplayRange& value) { m_rangeHasBeenSet = true; m_range = value; }
-
-    /**
-     * <p>The range setup of a numeric axis.</p>
-     */
-    inline void SetRange(AxisDisplayRange&& value) { m_rangeHasBeenSet = true; m_range = std::move(value); }
-
-    /**
-     * <p>The range setup of a numeric axis.</p>
-     */
-    inline NumericAxisOptions& WithRange(const AxisDisplayRange& value) { SetRange(value); return *this;}
-
-    /**
-     * <p>The range setup of a numeric axis.</p>
-     */
-    inline NumericAxisOptions& WithRange(AxisDisplayRange&& value) { SetRange(std::move(value)); return *this;}
-
+    template<typename RangeT = AxisDisplayRange>
+    void SetRange(RangeT&& value) { m_rangeHasBeenSet = true; m_range = std::forward<RangeT>(value); }
+    template<typename RangeT = AxisDisplayRange>
+    NumericAxisOptions& WithRange(RangeT&& value) { SetRange(std::forward<RangeT>(value)); return *this;}
+    ///@}
   private:
 
     AxisScale m_scale;

@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsCodeBuildProjectEnvironmentRegistryCredential::AwsCodeBuildProjectEnvironmentRegistryCredential() : 
-    m_credentialHasBeenSet(false),
-    m_credentialProviderHasBeenSet(false)
-{
-}
-
-AwsCodeBuildProjectEnvironmentRegistryCredential::AwsCodeBuildProjectEnvironmentRegistryCredential(JsonView jsonValue) : 
-    m_credentialHasBeenSet(false),
-    m_credentialProviderHasBeenSet(false)
+AwsCodeBuildProjectEnvironmentRegistryCredential::AwsCodeBuildProjectEnvironmentRegistryCredential(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsCodeBuildProjectEnvironmentRegistryCredential& AwsCodeBuildProjectEnvironment
   if(jsonValue.ValueExists("Credential"))
   {
     m_credential = jsonValue.GetString("Credential");
-
     m_credentialHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CredentialProvider"))
   {
     m_credentialProvider = jsonValue.GetString("CredentialProvider");
-
     m_credentialProviderHasBeenSet = true;
   }
-
   return *this;
 }
 

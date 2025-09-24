@@ -32,95 +32,42 @@ namespace Model
   class DecisionTaskStartedEventAttributes
   {
   public:
-    AWS_SWF_API DecisionTaskStartedEventAttributes();
+    AWS_SWF_API DecisionTaskStartedEventAttributes() = default;
     AWS_SWF_API DecisionTaskStartedEventAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API DecisionTaskStartedEventAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Identity of the decider making the request. This enables diagnostic tracing
      * when problems arise. The form of this identity is user defined.</p>
      */
-    inline const Aws::String& GetIdentity() const{ return m_identity; }
-
-    /**
-     * <p>Identity of the decider making the request. This enables diagnostic tracing
-     * when problems arise. The form of this identity is user defined.</p>
-     */
+    inline const Aws::String& GetIdentity() const { return m_identity; }
     inline bool IdentityHasBeenSet() const { return m_identityHasBeenSet; }
+    template<typename IdentityT = Aws::String>
+    void SetIdentity(IdentityT&& value) { m_identityHasBeenSet = true; m_identity = std::forward<IdentityT>(value); }
+    template<typename IdentityT = Aws::String>
+    DecisionTaskStartedEventAttributes& WithIdentity(IdentityT&& value) { SetIdentity(std::forward<IdentityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Identity of the decider making the request. This enables diagnostic tracing
-     * when problems arise. The form of this identity is user defined.</p>
-     */
-    inline void SetIdentity(const Aws::String& value) { m_identityHasBeenSet = true; m_identity = value; }
-
-    /**
-     * <p>Identity of the decider making the request. This enables diagnostic tracing
-     * when problems arise. The form of this identity is user defined.</p>
-     */
-    inline void SetIdentity(Aws::String&& value) { m_identityHasBeenSet = true; m_identity = std::move(value); }
-
-    /**
-     * <p>Identity of the decider making the request. This enables diagnostic tracing
-     * when problems arise. The form of this identity is user defined.</p>
-     */
-    inline void SetIdentity(const char* value) { m_identityHasBeenSet = true; m_identity.assign(value); }
-
-    /**
-     * <p>Identity of the decider making the request. This enables diagnostic tracing
-     * when problems arise. The form of this identity is user defined.</p>
-     */
-    inline DecisionTaskStartedEventAttributes& WithIdentity(const Aws::String& value) { SetIdentity(value); return *this;}
-
-    /**
-     * <p>Identity of the decider making the request. This enables diagnostic tracing
-     * when problems arise. The form of this identity is user defined.</p>
-     */
-    inline DecisionTaskStartedEventAttributes& WithIdentity(Aws::String&& value) { SetIdentity(std::move(value)); return *this;}
-
-    /**
-     * <p>Identity of the decider making the request. This enables diagnostic tracing
-     * when problems arise. The form of this identity is user defined.</p>
-     */
-    inline DecisionTaskStartedEventAttributes& WithIdentity(const char* value) { SetIdentity(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the <code>DecisionTaskScheduled</code> event that was recorded when
      * this decision task was scheduled. This information can be useful for diagnosing
      * problems by tracing back the chain of events leading up to this event.</p>
      */
-    inline long long GetScheduledEventId() const{ return m_scheduledEventId; }
-
-    /**
-     * <p>The ID of the <code>DecisionTaskScheduled</code> event that was recorded when
-     * this decision task was scheduled. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
+    inline long long GetScheduledEventId() const { return m_scheduledEventId; }
     inline bool ScheduledEventIdHasBeenSet() const { return m_scheduledEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>DecisionTaskScheduled</code> event that was recorded when
-     * this decision task was scheduled. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
     inline void SetScheduledEventId(long long value) { m_scheduledEventIdHasBeenSet = true; m_scheduledEventId = value; }
-
-    /**
-     * <p>The ID of the <code>DecisionTaskScheduled</code> event that was recorded when
-     * this decision task was scheduled. This information can be useful for diagnosing
-     * problems by tracing back the chain of events leading up to this event.</p>
-     */
     inline DecisionTaskStartedEventAttributes& WithScheduledEventId(long long value) { SetScheduledEventId(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_identity;
     bool m_identityHasBeenSet = false;
 
-    long long m_scheduledEventId;
+    long long m_scheduledEventId{0};
     bool m_scheduledEventIdHasBeenSet = false;
   };
 

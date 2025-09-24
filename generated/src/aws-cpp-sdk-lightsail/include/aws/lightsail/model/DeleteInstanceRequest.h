@@ -21,7 +21,7 @@ namespace Model
   class DeleteInstanceRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API DeleteInstanceRequest();
+    AWS_LIGHTSAIL_API DeleteInstanceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,77 +34,34 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the instance to delete.</p>
      */
-    inline const Aws::String& GetInstanceName() const{ return m_instanceName; }
-
-    /**
-     * <p>The name of the instance to delete.</p>
-     */
+    inline const Aws::String& GetInstanceName() const { return m_instanceName; }
     inline bool InstanceNameHasBeenSet() const { return m_instanceNameHasBeenSet; }
+    template<typename InstanceNameT = Aws::String>
+    void SetInstanceName(InstanceNameT&& value) { m_instanceNameHasBeenSet = true; m_instanceName = std::forward<InstanceNameT>(value); }
+    template<typename InstanceNameT = Aws::String>
+    DeleteInstanceRequest& WithInstanceName(InstanceNameT&& value) { SetInstanceName(std::forward<InstanceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the instance to delete.</p>
-     */
-    inline void SetInstanceName(const Aws::String& value) { m_instanceNameHasBeenSet = true; m_instanceName = value; }
-
-    /**
-     * <p>The name of the instance to delete.</p>
-     */
-    inline void SetInstanceName(Aws::String&& value) { m_instanceNameHasBeenSet = true; m_instanceName = std::move(value); }
-
-    /**
-     * <p>The name of the instance to delete.</p>
-     */
-    inline void SetInstanceName(const char* value) { m_instanceNameHasBeenSet = true; m_instanceName.assign(value); }
-
-    /**
-     * <p>The name of the instance to delete.</p>
-     */
-    inline DeleteInstanceRequest& WithInstanceName(const Aws::String& value) { SetInstanceName(value); return *this;}
-
-    /**
-     * <p>The name of the instance to delete.</p>
-     */
-    inline DeleteInstanceRequest& WithInstanceName(Aws::String&& value) { SetInstanceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the instance to delete.</p>
-     */
-    inline DeleteInstanceRequest& WithInstanceName(const char* value) { SetInstanceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A Boolean value to indicate whether to delete all add-ons for the
      * instance.</p>
      */
-    inline bool GetForceDeleteAddOns() const{ return m_forceDeleteAddOns; }
-
-    /**
-     * <p>A Boolean value to indicate whether to delete all add-ons for the
-     * instance.</p>
-     */
+    inline bool GetForceDeleteAddOns() const { return m_forceDeleteAddOns; }
     inline bool ForceDeleteAddOnsHasBeenSet() const { return m_forceDeleteAddOnsHasBeenSet; }
-
-    /**
-     * <p>A Boolean value to indicate whether to delete all add-ons for the
-     * instance.</p>
-     */
     inline void SetForceDeleteAddOns(bool value) { m_forceDeleteAddOnsHasBeenSet = true; m_forceDeleteAddOns = value; }
-
-    /**
-     * <p>A Boolean value to indicate whether to delete all add-ons for the
-     * instance.</p>
-     */
     inline DeleteInstanceRequest& WithForceDeleteAddOns(bool value) { SetForceDeleteAddOns(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_instanceName;
     bool m_instanceNameHasBeenSet = false;
 
-    bool m_forceDeleteAddOns;
+    bool m_forceDeleteAddOns{false};
     bool m_forceDeleteAddOnsHasBeenSet = false;
   };
 

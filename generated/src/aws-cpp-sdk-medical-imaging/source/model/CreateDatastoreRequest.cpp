@@ -12,15 +12,6 @@ using namespace Aws::MedicalImaging::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDatastoreRequest::CreateDatastoreRequest() : 
-    m_datastoreNameHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_tagsHasBeenSet(false),
-    m_kmsKeyArnHasBeenSet(false)
-{
-}
-
 Aws::String CreateDatastoreRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -51,6 +42,12 @@ Aws::String CreateDatastoreRequest::SerializePayload() const
   if(m_kmsKeyArnHasBeenSet)
   {
    payload.WithString("kmsKeyArn", m_kmsKeyArn);
+
+  }
+
+  if(m_lambdaAuthorizerArnHasBeenSet)
+  {
+   payload.WithString("lambdaAuthorizerArn", m_lambdaAuthorizerArn);
 
   }
 

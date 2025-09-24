@@ -21,7 +21,7 @@ namespace Model
   class StopEngagementRequest : public SSMContactsRequest
   {
   public:
-    AWS_SSMCONTACTS_API StopEngagementRequest();
+    AWS_SSMCONTACTS_API StopEngagementRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_SSMCONTACTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the engagement.</p>
      */
-    inline const Aws::String& GetEngagementId() const{ return m_engagementId; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement.</p>
-     */
+    inline const Aws::String& GetEngagementId() const { return m_engagementId; }
     inline bool EngagementIdHasBeenSet() const { return m_engagementIdHasBeenSet; }
+    template<typename EngagementIdT = Aws::String>
+    void SetEngagementId(EngagementIdT&& value) { m_engagementIdHasBeenSet = true; m_engagementId = std::forward<EngagementIdT>(value); }
+    template<typename EngagementIdT = Aws::String>
+    StopEngagementRequest& WithEngagementId(EngagementIdT&& value) { SetEngagementId(std::forward<EngagementIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement.</p>
-     */
-    inline void SetEngagementId(const Aws::String& value) { m_engagementIdHasBeenSet = true; m_engagementId = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement.</p>
-     */
-    inline void SetEngagementId(Aws::String&& value) { m_engagementIdHasBeenSet = true; m_engagementId = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement.</p>
-     */
-    inline void SetEngagementId(const char* value) { m_engagementIdHasBeenSet = true; m_engagementId.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement.</p>
-     */
-    inline StopEngagementRequest& WithEngagementId(const Aws::String& value) { SetEngagementId(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement.</p>
-     */
-    inline StopEngagementRequest& WithEngagementId(Aws::String&& value) { SetEngagementId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the engagement.</p>
-     */
-    inline StopEngagementRequest& WithEngagementId(const char* value) { SetEngagementId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The reason that you're stopping the engagement.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>The reason that you're stopping the engagement.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>The reason that you're stopping the engagement.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>The reason that you're stopping the engagement.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>The reason that you're stopping the engagement.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>The reason that you're stopping the engagement.</p>
-     */
-    inline StopEngagementRequest& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>The reason that you're stopping the engagement.</p>
-     */
-    inline StopEngagementRequest& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>The reason that you're stopping the engagement.</p>
-     */
-    inline StopEngagementRequest& WithReason(const char* value) { SetReason(value); return *this;}
-
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    StopEngagementRequest& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_engagementId;

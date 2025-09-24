@@ -34,73 +34,35 @@ namespace Model
   class OffPeakWindowOptionsStatus
   {
   public:
-    AWS_OPENSEARCHSERVICE_API OffPeakWindowOptionsStatus();
+    AWS_OPENSEARCHSERVICE_API OffPeakWindowOptionsStatus() = default;
     AWS_OPENSEARCHSERVICE_API OffPeakWindowOptionsStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API OffPeakWindowOptionsStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The domain's off-peak window configuration.</p>
      */
-    inline const OffPeakWindowOptions& GetOptions() const{ return m_options; }
-
-    /**
-     * <p>The domain's off-peak window configuration.</p>
-     */
+    inline const OffPeakWindowOptions& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = OffPeakWindowOptions>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = OffPeakWindowOptions>
+    OffPeakWindowOptionsStatus& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain's off-peak window configuration.</p>
-     */
-    inline void SetOptions(const OffPeakWindowOptions& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p>The domain's off-peak window configuration.</p>
-     */
-    inline void SetOptions(OffPeakWindowOptions&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p>The domain's off-peak window configuration.</p>
-     */
-    inline OffPeakWindowOptionsStatus& WithOptions(const OffPeakWindowOptions& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p>The domain's off-peak window configuration.</p>
-     */
-    inline OffPeakWindowOptionsStatus& WithOptions(OffPeakWindowOptions&& value) { SetOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of off-peak window options.</p>
      */
-    inline const OptionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current status of off-peak window options.</p>
-     */
+    inline const OptionStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The current status of off-peak window options.</p>
-     */
-    inline void SetStatus(const OptionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current status of off-peak window options.</p>
-     */
-    inline void SetStatus(OptionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current status of off-peak window options.</p>
-     */
-    inline OffPeakWindowOptionsStatus& WithStatus(const OptionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of off-peak window options.</p>
-     */
-    inline OffPeakWindowOptionsStatus& WithStatus(OptionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    template<typename StatusT = OptionStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = OptionStatus>
+    OffPeakWindowOptionsStatus& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     OffPeakWindowOptions m_options;

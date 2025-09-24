@@ -20,17 +20,7 @@ namespace RDS
 namespace Model
 {
 
-OptionVersion::OptionVersion() : 
-    m_versionHasBeenSet(false),
-    m_isDefault(false),
-    m_isDefaultHasBeenSet(false)
-{
-}
-
-OptionVersion::OptionVersion(const XmlNode& xmlNode) : 
-    m_versionHasBeenSet(false),
-    m_isDefault(false),
-    m_isDefaultHasBeenSet(false)
+OptionVersion::OptionVersion(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

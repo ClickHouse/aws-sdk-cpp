@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-DeleteConversationRequest::DeleteConversationRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_conversationIdHasBeenSet(false),
-    m_userIdHasBeenSet(false)
-{
-}
-
 Aws::String DeleteConversationRequest::SerializePayload() const
 {
   return {};

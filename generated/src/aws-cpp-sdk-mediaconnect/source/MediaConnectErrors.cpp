@@ -37,7 +37,7 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
 
   if (hashCode == CONFLICT_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(MediaConnectErrors::CONFLICT), RetryableType::NOT_RETRYABLE);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(MediaConnectErrors::CONFLICT), RetryableType::RETRYABLE);
   }
   else if (hashCode == CREATE_FLOW420_HASH)
   {
@@ -65,7 +65,7 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   }
   else if (hashCode == INTERNAL_SERVER_ERROR_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(MediaConnectErrors::INTERNAL_SERVER_ERROR), RetryableType::NOT_RETRYABLE);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(MediaConnectErrors::INTERNAL_SERVER_ERROR), RetryableType::RETRYABLE);
   }
   else if (hashCode == GRANT_FLOW_ENTITLEMENTS420_HASH)
   {

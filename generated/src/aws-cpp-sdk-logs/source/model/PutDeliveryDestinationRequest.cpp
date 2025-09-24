@@ -12,15 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutDeliveryDestinationRequest::PutDeliveryDestinationRequest() : 
-    m_nameHasBeenSet(false),
-    m_outputFormat(OutputFormat::NOT_SET),
-    m_outputFormatHasBeenSet(false),
-    m_deliveryDestinationConfigurationHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String PutDeliveryDestinationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -40,6 +31,11 @@ Aws::String PutDeliveryDestinationRequest::SerializePayload() const
   {
    payload.WithObject("deliveryDestinationConfiguration", m_deliveryDestinationConfiguration.Jsonize());
 
+  }
+
+  if(m_deliveryDestinationTypeHasBeenSet)
+  {
+   payload.WithString("deliveryDestinationType", DeliveryDestinationTypeMapper::GetNameForDeliveryDestinationType(m_deliveryDestinationType));
   }
 
   if(m_tagsHasBeenSet)

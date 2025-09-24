@@ -18,19 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-ExtendedDataServices::ExtendedDataServices() : 
-    m_copyProtectionAction(CopyProtectionAction::NOT_SET),
-    m_copyProtectionActionHasBeenSet(false),
-    m_vchipAction(VchipAction::NOT_SET),
-    m_vchipActionHasBeenSet(false)
-{
-}
-
-ExtendedDataServices::ExtendedDataServices(JsonView jsonValue) : 
-    m_copyProtectionAction(CopyProtectionAction::NOT_SET),
-    m_copyProtectionActionHasBeenSet(false),
-    m_vchipAction(VchipAction::NOT_SET),
-    m_vchipActionHasBeenSet(false)
+ExtendedDataServices::ExtendedDataServices(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ExtendedDataServices& ExtendedDataServices::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("copyProtectionAction"))
   {
     m_copyProtectionAction = CopyProtectionActionMapper::GetCopyProtectionActionForName(jsonValue.GetString("copyProtectionAction"));
-
     m_copyProtectionActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vchipAction"))
   {
     m_vchipAction = VchipActionMapper::GetVchipActionForName(jsonValue.GetString("vchipAction"));
-
     m_vchipActionHasBeenSet = true;
   }
-
   return *this;
 }
 

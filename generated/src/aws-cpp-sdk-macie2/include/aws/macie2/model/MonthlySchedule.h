@@ -30,12 +30,13 @@ namespace Model
   class MonthlySchedule
   {
   public:
-    AWS_MACIE2_API MonthlySchedule();
+    AWS_MACIE2_API MonthlySchedule() = default;
     AWS_MACIE2_API MonthlySchedule(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API MonthlySchedule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The numeric day of the month when Amazon Macie runs the job. This value can
      * be an integer from 1 through 31.</p> <p>If this value exceeds the number of days
@@ -44,41 +45,14 @@ namespace Model
      * and a month has only 30 days, Macie doesn't run the job that month. To run the
      * job every month, specify a value that's less than 29.</p>
      */
-    inline int GetDayOfMonth() const{ return m_dayOfMonth; }
-
-    /**
-     * <p>The numeric day of the month when Amazon Macie runs the job. This value can
-     * be an integer from 1 through 31.</p> <p>If this value exceeds the number of days
-     * in a certain month, Macie doesn't run the job that month. Macie runs the job
-     * only during months that have the specified day. For example, if this value is 31
-     * and a month has only 30 days, Macie doesn't run the job that month. To run the
-     * job every month, specify a value that's less than 29.</p>
-     */
+    inline int GetDayOfMonth() const { return m_dayOfMonth; }
     inline bool DayOfMonthHasBeenSet() const { return m_dayOfMonthHasBeenSet; }
-
-    /**
-     * <p>The numeric day of the month when Amazon Macie runs the job. This value can
-     * be an integer from 1 through 31.</p> <p>If this value exceeds the number of days
-     * in a certain month, Macie doesn't run the job that month. Macie runs the job
-     * only during months that have the specified day. For example, if this value is 31
-     * and a month has only 30 days, Macie doesn't run the job that month. To run the
-     * job every month, specify a value that's less than 29.</p>
-     */
     inline void SetDayOfMonth(int value) { m_dayOfMonthHasBeenSet = true; m_dayOfMonth = value; }
-
-    /**
-     * <p>The numeric day of the month when Amazon Macie runs the job. This value can
-     * be an integer from 1 through 31.</p> <p>If this value exceeds the number of days
-     * in a certain month, Macie doesn't run the job that month. Macie runs the job
-     * only during months that have the specified day. For example, if this value is 31
-     * and a month has only 30 days, Macie doesn't run the job that month. To run the
-     * job every month, specify a value that's less than 29.</p>
-     */
     inline MonthlySchedule& WithDayOfMonth(int value) { SetDayOfMonth(value); return *this;}
-
+    ///@}
   private:
 
-    int m_dayOfMonth;
+    int m_dayOfMonth{0};
     bool m_dayOfMonthHasBeenSet = false;
   };
 

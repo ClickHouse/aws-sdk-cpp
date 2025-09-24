@@ -34,109 +34,38 @@ namespace Model
   class AssetBundleExportJobVPCConnectionOverrideProperties
   {
   public:
-    AWS_QUICKSIGHT_API AssetBundleExportJobVPCConnectionOverrideProperties();
+    AWS_QUICKSIGHT_API AssetBundleExportJobVPCConnectionOverrideProperties() = default;
     AWS_QUICKSIGHT_API AssetBundleExportJobVPCConnectionOverrideProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AssetBundleExportJobVPCConnectionOverrideProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the specific <code>VPCConnection</code> resource whose override
      * properties are configured in this structure.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the specific <code>VPCConnection</code> resource whose override
-     * properties are configured in this structure.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    AssetBundleExportJobVPCConnectionOverrideProperties& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the specific <code>VPCConnection</code> resource whose override
-     * properties are configured in this structure.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the specific <code>VPCConnection</code> resource whose override
-     * properties are configured in this structure.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the specific <code>VPCConnection</code> resource whose override
-     * properties are configured in this structure.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the specific <code>VPCConnection</code> resource whose override
-     * properties are configured in this structure.</p>
-     */
-    inline AssetBundleExportJobVPCConnectionOverrideProperties& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the specific <code>VPCConnection</code> resource whose override
-     * properties are configured in this structure.</p>
-     */
-    inline AssetBundleExportJobVPCConnectionOverrideProperties& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the specific <code>VPCConnection</code> resource whose override
-     * properties are configured in this structure.</p>
-     */
-    inline AssetBundleExportJobVPCConnectionOverrideProperties& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of <code>VPCConnection</code> resource properties to generate
      * variables for in the returned CloudFormation template.</p>
      */
-    inline const Aws::Vector<AssetBundleExportJobVPCConnectionPropertyToOverride>& GetProperties() const{ return m_properties; }
-
-    /**
-     * <p>A list of <code>VPCConnection</code> resource properties to generate
-     * variables for in the returned CloudFormation template.</p>
-     */
+    inline const Aws::Vector<AssetBundleExportJobVPCConnectionPropertyToOverride>& GetProperties() const { return m_properties; }
     inline bool PropertiesHasBeenSet() const { return m_propertiesHasBeenSet; }
-
-    /**
-     * <p>A list of <code>VPCConnection</code> resource properties to generate
-     * variables for in the returned CloudFormation template.</p>
-     */
-    inline void SetProperties(const Aws::Vector<AssetBundleExportJobVPCConnectionPropertyToOverride>& value) { m_propertiesHasBeenSet = true; m_properties = value; }
-
-    /**
-     * <p>A list of <code>VPCConnection</code> resource properties to generate
-     * variables for in the returned CloudFormation template.</p>
-     */
-    inline void SetProperties(Aws::Vector<AssetBundleExportJobVPCConnectionPropertyToOverride>&& value) { m_propertiesHasBeenSet = true; m_properties = std::move(value); }
-
-    /**
-     * <p>A list of <code>VPCConnection</code> resource properties to generate
-     * variables for in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleExportJobVPCConnectionOverrideProperties& WithProperties(const Aws::Vector<AssetBundleExportJobVPCConnectionPropertyToOverride>& value) { SetProperties(value); return *this;}
-
-    /**
-     * <p>A list of <code>VPCConnection</code> resource properties to generate
-     * variables for in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleExportJobVPCConnectionOverrideProperties& WithProperties(Aws::Vector<AssetBundleExportJobVPCConnectionPropertyToOverride>&& value) { SetProperties(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <code>VPCConnection</code> resource properties to generate
-     * variables for in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleExportJobVPCConnectionOverrideProperties& AddProperties(const AssetBundleExportJobVPCConnectionPropertyToOverride& value) { m_propertiesHasBeenSet = true; m_properties.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <code>VPCConnection</code> resource properties to generate
-     * variables for in the returned CloudFormation template.</p>
-     */
-    inline AssetBundleExportJobVPCConnectionOverrideProperties& AddProperties(AssetBundleExportJobVPCConnectionPropertyToOverride&& value) { m_propertiesHasBeenSet = true; m_properties.push_back(std::move(value)); return *this; }
-
+    template<typename PropertiesT = Aws::Vector<AssetBundleExportJobVPCConnectionPropertyToOverride>>
+    void SetProperties(PropertiesT&& value) { m_propertiesHasBeenSet = true; m_properties = std::forward<PropertiesT>(value); }
+    template<typename PropertiesT = Aws::Vector<AssetBundleExportJobVPCConnectionPropertyToOverride>>
+    AssetBundleExportJobVPCConnectionOverrideProperties& WithProperties(PropertiesT&& value) { SetProperties(std::forward<PropertiesT>(value)); return *this;}
+    inline AssetBundleExportJobVPCConnectionOverrideProperties& AddProperties(AssetBundleExportJobVPCConnectionPropertyToOverride value) { m_propertiesHasBeenSet = true; m_properties.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::String m_arn;

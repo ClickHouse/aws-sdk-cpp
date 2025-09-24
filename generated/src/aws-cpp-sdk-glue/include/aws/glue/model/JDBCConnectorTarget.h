@@ -35,377 +35,116 @@ namespace Model
   class JDBCConnectorTarget
   {
   public:
-    AWS_GLUE_API JDBCConnectorTarget();
+    AWS_GLUE_API JDBCConnectorTarget() = default;
     AWS_GLUE_API JDBCConnectorTarget(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API JDBCConnectorTarget& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the data target.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the data target.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    JDBCConnectorTarget& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the data target.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the data target.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the data target.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the data target.</p>
-     */
-    inline JDBCConnectorTarget& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the data target.</p>
-     */
-    inline JDBCConnectorTarget& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the data target.</p>
-     */
-    inline JDBCConnectorTarget& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The nodes that are inputs to the data target.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInputs() const{ return m_inputs; }
-
-    /**
-     * <p>The nodes that are inputs to the data target.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInputs() const { return m_inputs; }
     inline bool InputsHasBeenSet() const { return m_inputsHasBeenSet; }
+    template<typename InputsT = Aws::Vector<Aws::String>>
+    void SetInputs(InputsT&& value) { m_inputsHasBeenSet = true; m_inputs = std::forward<InputsT>(value); }
+    template<typename InputsT = Aws::Vector<Aws::String>>
+    JDBCConnectorTarget& WithInputs(InputsT&& value) { SetInputs(std::forward<InputsT>(value)); return *this;}
+    template<typename InputsT = Aws::String>
+    JDBCConnectorTarget& AddInputs(InputsT&& value) { m_inputsHasBeenSet = true; m_inputs.emplace_back(std::forward<InputsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The nodes that are inputs to the data target.</p>
-     */
-    inline void SetInputs(const Aws::Vector<Aws::String>& value) { m_inputsHasBeenSet = true; m_inputs = value; }
-
-    /**
-     * <p>The nodes that are inputs to the data target.</p>
-     */
-    inline void SetInputs(Aws::Vector<Aws::String>&& value) { m_inputsHasBeenSet = true; m_inputs = std::move(value); }
-
-    /**
-     * <p>The nodes that are inputs to the data target.</p>
-     */
-    inline JDBCConnectorTarget& WithInputs(const Aws::Vector<Aws::String>& value) { SetInputs(value); return *this;}
-
-    /**
-     * <p>The nodes that are inputs to the data target.</p>
-     */
-    inline JDBCConnectorTarget& WithInputs(Aws::Vector<Aws::String>&& value) { SetInputs(std::move(value)); return *this;}
-
-    /**
-     * <p>The nodes that are inputs to the data target.</p>
-     */
-    inline JDBCConnectorTarget& AddInputs(const Aws::String& value) { m_inputsHasBeenSet = true; m_inputs.push_back(value); return *this; }
-
-    /**
-     * <p>The nodes that are inputs to the data target.</p>
-     */
-    inline JDBCConnectorTarget& AddInputs(Aws::String&& value) { m_inputsHasBeenSet = true; m_inputs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The nodes that are inputs to the data target.</p>
-     */
-    inline JDBCConnectorTarget& AddInputs(const char* value) { m_inputsHasBeenSet = true; m_inputs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the connection that is associated with the connector.</p>
      */
-    inline const Aws::String& GetConnectionName() const{ return m_connectionName; }
-
-    /**
-     * <p>The name of the connection that is associated with the connector.</p>
-     */
+    inline const Aws::String& GetConnectionName() const { return m_connectionName; }
     inline bool ConnectionNameHasBeenSet() const { return m_connectionNameHasBeenSet; }
+    template<typename ConnectionNameT = Aws::String>
+    void SetConnectionName(ConnectionNameT&& value) { m_connectionNameHasBeenSet = true; m_connectionName = std::forward<ConnectionNameT>(value); }
+    template<typename ConnectionNameT = Aws::String>
+    JDBCConnectorTarget& WithConnectionName(ConnectionNameT&& value) { SetConnectionName(std::forward<ConnectionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the connection that is associated with the connector.</p>
-     */
-    inline void SetConnectionName(const Aws::String& value) { m_connectionNameHasBeenSet = true; m_connectionName = value; }
-
-    /**
-     * <p>The name of the connection that is associated with the connector.</p>
-     */
-    inline void SetConnectionName(Aws::String&& value) { m_connectionNameHasBeenSet = true; m_connectionName = std::move(value); }
-
-    /**
-     * <p>The name of the connection that is associated with the connector.</p>
-     */
-    inline void SetConnectionName(const char* value) { m_connectionNameHasBeenSet = true; m_connectionName.assign(value); }
-
-    /**
-     * <p>The name of the connection that is associated with the connector.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectionName(const Aws::String& value) { SetConnectionName(value); return *this;}
-
-    /**
-     * <p>The name of the connection that is associated with the connector.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectionName(Aws::String&& value) { SetConnectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the connection that is associated with the connector.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectionName(const char* value) { SetConnectionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the table in the data target.</p>
      */
-    inline const Aws::String& GetConnectionTable() const{ return m_connectionTable; }
-
-    /**
-     * <p>The name of the table in the data target.</p>
-     */
+    inline const Aws::String& GetConnectionTable() const { return m_connectionTable; }
     inline bool ConnectionTableHasBeenSet() const { return m_connectionTableHasBeenSet; }
+    template<typename ConnectionTableT = Aws::String>
+    void SetConnectionTable(ConnectionTableT&& value) { m_connectionTableHasBeenSet = true; m_connectionTable = std::forward<ConnectionTableT>(value); }
+    template<typename ConnectionTableT = Aws::String>
+    JDBCConnectorTarget& WithConnectionTable(ConnectionTableT&& value) { SetConnectionTable(std::forward<ConnectionTableT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the table in the data target.</p>
-     */
-    inline void SetConnectionTable(const Aws::String& value) { m_connectionTableHasBeenSet = true; m_connectionTable = value; }
-
-    /**
-     * <p>The name of the table in the data target.</p>
-     */
-    inline void SetConnectionTable(Aws::String&& value) { m_connectionTableHasBeenSet = true; m_connectionTable = std::move(value); }
-
-    /**
-     * <p>The name of the table in the data target.</p>
-     */
-    inline void SetConnectionTable(const char* value) { m_connectionTableHasBeenSet = true; m_connectionTable.assign(value); }
-
-    /**
-     * <p>The name of the table in the data target.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectionTable(const Aws::String& value) { SetConnectionTable(value); return *this;}
-
-    /**
-     * <p>The name of the table in the data target.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectionTable(Aws::String&& value) { SetConnectionTable(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the table in the data target.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectionTable(const char* value) { SetConnectionTable(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of a connector that will be used.</p>
      */
-    inline const Aws::String& GetConnectorName() const{ return m_connectorName; }
-
-    /**
-     * <p>The name of a connector that will be used.</p>
-     */
+    inline const Aws::String& GetConnectorName() const { return m_connectorName; }
     inline bool ConnectorNameHasBeenSet() const { return m_connectorNameHasBeenSet; }
+    template<typename ConnectorNameT = Aws::String>
+    void SetConnectorName(ConnectorNameT&& value) { m_connectorNameHasBeenSet = true; m_connectorName = std::forward<ConnectorNameT>(value); }
+    template<typename ConnectorNameT = Aws::String>
+    JDBCConnectorTarget& WithConnectorName(ConnectorNameT&& value) { SetConnectorName(std::forward<ConnectorNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a connector that will be used.</p>
-     */
-    inline void SetConnectorName(const Aws::String& value) { m_connectorNameHasBeenSet = true; m_connectorName = value; }
-
-    /**
-     * <p>The name of a connector that will be used.</p>
-     */
-    inline void SetConnectorName(Aws::String&& value) { m_connectorNameHasBeenSet = true; m_connectorName = std::move(value); }
-
-    /**
-     * <p>The name of a connector that will be used.</p>
-     */
-    inline void SetConnectorName(const char* value) { m_connectorNameHasBeenSet = true; m_connectorName.assign(value); }
-
-    /**
-     * <p>The name of a connector that will be used.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectorName(const Aws::String& value) { SetConnectorName(value); return *this;}
-
-    /**
-     * <p>The name of a connector that will be used.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectorName(Aws::String&& value) { SetConnectorName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a connector that will be used.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectorName(const char* value) { SetConnectorName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of connection, such as marketplace.jdbc or custom.jdbc, designating
      * a connection to a JDBC data target.</p>
      */
-    inline const Aws::String& GetConnectionType() const{ return m_connectionType; }
-
-    /**
-     * <p>The type of connection, such as marketplace.jdbc or custom.jdbc, designating
-     * a connection to a JDBC data target.</p>
-     */
+    inline const Aws::String& GetConnectionType() const { return m_connectionType; }
     inline bool ConnectionTypeHasBeenSet() const { return m_connectionTypeHasBeenSet; }
+    template<typename ConnectionTypeT = Aws::String>
+    void SetConnectionType(ConnectionTypeT&& value) { m_connectionTypeHasBeenSet = true; m_connectionType = std::forward<ConnectionTypeT>(value); }
+    template<typename ConnectionTypeT = Aws::String>
+    JDBCConnectorTarget& WithConnectionType(ConnectionTypeT&& value) { SetConnectionType(std::forward<ConnectionTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of connection, such as marketplace.jdbc or custom.jdbc, designating
-     * a connection to a JDBC data target.</p>
-     */
-    inline void SetConnectionType(const Aws::String& value) { m_connectionTypeHasBeenSet = true; m_connectionType = value; }
-
-    /**
-     * <p>The type of connection, such as marketplace.jdbc or custom.jdbc, designating
-     * a connection to a JDBC data target.</p>
-     */
-    inline void SetConnectionType(Aws::String&& value) { m_connectionTypeHasBeenSet = true; m_connectionType = std::move(value); }
-
-    /**
-     * <p>The type of connection, such as marketplace.jdbc or custom.jdbc, designating
-     * a connection to a JDBC data target.</p>
-     */
-    inline void SetConnectionType(const char* value) { m_connectionTypeHasBeenSet = true; m_connectionType.assign(value); }
-
-    /**
-     * <p>The type of connection, such as marketplace.jdbc or custom.jdbc, designating
-     * a connection to a JDBC data target.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectionType(const Aws::String& value) { SetConnectionType(value); return *this;}
-
-    /**
-     * <p>The type of connection, such as marketplace.jdbc or custom.jdbc, designating
-     * a connection to a JDBC data target.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectionType(Aws::String&& value) { SetConnectionType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of connection, such as marketplace.jdbc or custom.jdbc, designating
-     * a connection to a JDBC data target.</p>
-     */
-    inline JDBCConnectorTarget& WithConnectionType(const char* value) { SetConnectionType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional connection options for the connector.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetAdditionalOptions() const{ return m_additionalOptions; }
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetAdditionalOptions() const { return m_additionalOptions; }
     inline bool AdditionalOptionsHasBeenSet() const { return m_additionalOptionsHasBeenSet; }
+    template<typename AdditionalOptionsT = Aws::Map<Aws::String, Aws::String>>
+    void SetAdditionalOptions(AdditionalOptionsT&& value) { m_additionalOptionsHasBeenSet = true; m_additionalOptions = std::forward<AdditionalOptionsT>(value); }
+    template<typename AdditionalOptionsT = Aws::Map<Aws::String, Aws::String>>
+    JDBCConnectorTarget& WithAdditionalOptions(AdditionalOptionsT&& value) { SetAdditionalOptions(std::forward<AdditionalOptionsT>(value)); return *this;}
+    template<typename AdditionalOptionsKeyT = Aws::String, typename AdditionalOptionsValueT = Aws::String>
+    JDBCConnectorTarget& AddAdditionalOptions(AdditionalOptionsKeyT&& key, AdditionalOptionsValueT&& value) {
+      m_additionalOptionsHasBeenSet = true; m_additionalOptions.emplace(std::forward<AdditionalOptionsKeyT>(key), std::forward<AdditionalOptionsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline void SetAdditionalOptions(const Aws::Map<Aws::String, Aws::String>& value) { m_additionalOptionsHasBeenSet = true; m_additionalOptions = value; }
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline void SetAdditionalOptions(Aws::Map<Aws::String, Aws::String>&& value) { m_additionalOptionsHasBeenSet = true; m_additionalOptions = std::move(value); }
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline JDBCConnectorTarget& WithAdditionalOptions(const Aws::Map<Aws::String, Aws::String>& value) { SetAdditionalOptions(value); return *this;}
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline JDBCConnectorTarget& WithAdditionalOptions(Aws::Map<Aws::String, Aws::String>&& value) { SetAdditionalOptions(std::move(value)); return *this;}
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline JDBCConnectorTarget& AddAdditionalOptions(const Aws::String& key, const Aws::String& value) { m_additionalOptionsHasBeenSet = true; m_additionalOptions.emplace(key, value); return *this; }
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline JDBCConnectorTarget& AddAdditionalOptions(Aws::String&& key, const Aws::String& value) { m_additionalOptionsHasBeenSet = true; m_additionalOptions.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline JDBCConnectorTarget& AddAdditionalOptions(const Aws::String& key, Aws::String&& value) { m_additionalOptionsHasBeenSet = true; m_additionalOptions.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline JDBCConnectorTarget& AddAdditionalOptions(Aws::String&& key, Aws::String&& value) { m_additionalOptionsHasBeenSet = true; m_additionalOptions.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline JDBCConnectorTarget& AddAdditionalOptions(const char* key, Aws::String&& value) { m_additionalOptionsHasBeenSet = true; m_additionalOptions.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline JDBCConnectorTarget& AddAdditionalOptions(Aws::String&& key, const char* value) { m_additionalOptionsHasBeenSet = true; m_additionalOptions.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Additional connection options for the connector.</p>
-     */
-    inline JDBCConnectorTarget& AddAdditionalOptions(const char* key, const char* value) { m_additionalOptionsHasBeenSet = true; m_additionalOptions.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies the data schema for the JDBC target.</p>
      */
-    inline const Aws::Vector<GlueSchema>& GetOutputSchemas() const{ return m_outputSchemas; }
-
-    /**
-     * <p>Specifies the data schema for the JDBC target.</p>
-     */
+    inline const Aws::Vector<GlueSchema>& GetOutputSchemas() const { return m_outputSchemas; }
     inline bool OutputSchemasHasBeenSet() const { return m_outputSchemasHasBeenSet; }
-
-    /**
-     * <p>Specifies the data schema for the JDBC target.</p>
-     */
-    inline void SetOutputSchemas(const Aws::Vector<GlueSchema>& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas = value; }
-
-    /**
-     * <p>Specifies the data schema for the JDBC target.</p>
-     */
-    inline void SetOutputSchemas(Aws::Vector<GlueSchema>&& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas = std::move(value); }
-
-    /**
-     * <p>Specifies the data schema for the JDBC target.</p>
-     */
-    inline JDBCConnectorTarget& WithOutputSchemas(const Aws::Vector<GlueSchema>& value) { SetOutputSchemas(value); return *this;}
-
-    /**
-     * <p>Specifies the data schema for the JDBC target.</p>
-     */
-    inline JDBCConnectorTarget& WithOutputSchemas(Aws::Vector<GlueSchema>&& value) { SetOutputSchemas(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the data schema for the JDBC target.</p>
-     */
-    inline JDBCConnectorTarget& AddOutputSchemas(const GlueSchema& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the data schema for the JDBC target.</p>
-     */
-    inline JDBCConnectorTarget& AddOutputSchemas(GlueSchema&& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas.push_back(std::move(value)); return *this; }
-
+    template<typename OutputSchemasT = Aws::Vector<GlueSchema>>
+    void SetOutputSchemas(OutputSchemasT&& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas = std::forward<OutputSchemasT>(value); }
+    template<typename OutputSchemasT = Aws::Vector<GlueSchema>>
+    JDBCConnectorTarget& WithOutputSchemas(OutputSchemasT&& value) { SetOutputSchemas(std::forward<OutputSchemasT>(value)); return *this;}
+    template<typename OutputSchemasT = GlueSchema>
+    JDBCConnectorTarget& AddOutputSchemas(OutputSchemasT&& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas.emplace_back(std::forward<OutputSchemasT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

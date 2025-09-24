@@ -20,13 +20,7 @@ namespace SES
 namespace Model
 {
 
-RuleDoesNotExistException::RuleDoesNotExistException() : 
-    m_nameHasBeenSet(false)
-{
-}
-
-RuleDoesNotExistException::RuleDoesNotExistException(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false)
+RuleDoesNotExistException::RuleDoesNotExistException(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

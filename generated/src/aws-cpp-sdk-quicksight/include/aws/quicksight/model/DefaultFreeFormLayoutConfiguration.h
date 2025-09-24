@@ -32,42 +32,23 @@ namespace Model
   class DefaultFreeFormLayoutConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API DefaultFreeFormLayoutConfiguration();
+    AWS_QUICKSIGHT_API DefaultFreeFormLayoutConfiguration() = default;
     AWS_QUICKSIGHT_API DefaultFreeFormLayoutConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DefaultFreeFormLayoutConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines the screen canvas size options for a free-form layout.</p>
      */
-    inline const FreeFormLayoutCanvasSizeOptions& GetCanvasSizeOptions() const{ return m_canvasSizeOptions; }
-
-    /**
-     * <p>Determines the screen canvas size options for a free-form layout.</p>
-     */
+    inline const FreeFormLayoutCanvasSizeOptions& GetCanvasSizeOptions() const { return m_canvasSizeOptions; }
     inline bool CanvasSizeOptionsHasBeenSet() const { return m_canvasSizeOptionsHasBeenSet; }
-
-    /**
-     * <p>Determines the screen canvas size options for a free-form layout.</p>
-     */
-    inline void SetCanvasSizeOptions(const FreeFormLayoutCanvasSizeOptions& value) { m_canvasSizeOptionsHasBeenSet = true; m_canvasSizeOptions = value; }
-
-    /**
-     * <p>Determines the screen canvas size options for a free-form layout.</p>
-     */
-    inline void SetCanvasSizeOptions(FreeFormLayoutCanvasSizeOptions&& value) { m_canvasSizeOptionsHasBeenSet = true; m_canvasSizeOptions = std::move(value); }
-
-    /**
-     * <p>Determines the screen canvas size options for a free-form layout.</p>
-     */
-    inline DefaultFreeFormLayoutConfiguration& WithCanvasSizeOptions(const FreeFormLayoutCanvasSizeOptions& value) { SetCanvasSizeOptions(value); return *this;}
-
-    /**
-     * <p>Determines the screen canvas size options for a free-form layout.</p>
-     */
-    inline DefaultFreeFormLayoutConfiguration& WithCanvasSizeOptions(FreeFormLayoutCanvasSizeOptions&& value) { SetCanvasSizeOptions(std::move(value)); return *this;}
-
+    template<typename CanvasSizeOptionsT = FreeFormLayoutCanvasSizeOptions>
+    void SetCanvasSizeOptions(CanvasSizeOptionsT&& value) { m_canvasSizeOptionsHasBeenSet = true; m_canvasSizeOptions = std::forward<CanvasSizeOptionsT>(value); }
+    template<typename CanvasSizeOptionsT = FreeFormLayoutCanvasSizeOptions>
+    DefaultFreeFormLayoutConfiguration& WithCanvasSizeOptions(CanvasSizeOptionsT&& value) { SetCanvasSizeOptions(std::forward<CanvasSizeOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     FreeFormLayoutCanvasSizeOptions m_canvasSizeOptions;

@@ -24,100 +24,43 @@ namespace Model
 {
 
   /**
-   * <p>The HTTP header.</p><p><h3>See Also:</h3>   <a
+   * <p>The HTTP header in the <code>ContextData</code> parameter.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/HttpHeader">AWS
    * API Reference</a></p>
    */
   class HttpHeader
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API HttpHeader();
+    AWS_COGNITOIDENTITYPROVIDER_API HttpHeader() = default;
     AWS_COGNITOIDENTITYPROVIDER_API HttpHeader(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API HttpHeader& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The header name.</p>
      */
-    inline const Aws::String& GetHeaderName() const{ return m_headerName; }
-
-    /**
-     * <p>The header name.</p>
-     */
+    inline const Aws::String& GetHeaderName() const { return m_headerName; }
     inline bool HeaderNameHasBeenSet() const { return m_headerNameHasBeenSet; }
+    template<typename HeaderNameT = Aws::String>
+    void SetHeaderName(HeaderNameT&& value) { m_headerNameHasBeenSet = true; m_headerName = std::forward<HeaderNameT>(value); }
+    template<typename HeaderNameT = Aws::String>
+    HttpHeader& WithHeaderName(HeaderNameT&& value) { SetHeaderName(std::forward<HeaderNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The header name.</p>
-     */
-    inline void SetHeaderName(const Aws::String& value) { m_headerNameHasBeenSet = true; m_headerName = value; }
-
-    /**
-     * <p>The header name.</p>
-     */
-    inline void SetHeaderName(Aws::String&& value) { m_headerNameHasBeenSet = true; m_headerName = std::move(value); }
-
-    /**
-     * <p>The header name.</p>
-     */
-    inline void SetHeaderName(const char* value) { m_headerNameHasBeenSet = true; m_headerName.assign(value); }
-
-    /**
-     * <p>The header name.</p>
-     */
-    inline HttpHeader& WithHeaderName(const Aws::String& value) { SetHeaderName(value); return *this;}
-
-    /**
-     * <p>The header name.</p>
-     */
-    inline HttpHeader& WithHeaderName(Aws::String&& value) { SetHeaderName(std::move(value)); return *this;}
-
-    /**
-     * <p>The header name.</p>
-     */
-    inline HttpHeader& WithHeaderName(const char* value) { SetHeaderName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The header value.</p>
      */
-    inline const Aws::String& GetHeaderValue() const{ return m_headerValue; }
-
-    /**
-     * <p>The header value.</p>
-     */
+    inline const Aws::String& GetHeaderValue() const { return m_headerValue; }
     inline bool HeaderValueHasBeenSet() const { return m_headerValueHasBeenSet; }
-
-    /**
-     * <p>The header value.</p>
-     */
-    inline void SetHeaderValue(const Aws::String& value) { m_headerValueHasBeenSet = true; m_headerValue = value; }
-
-    /**
-     * <p>The header value.</p>
-     */
-    inline void SetHeaderValue(Aws::String&& value) { m_headerValueHasBeenSet = true; m_headerValue = std::move(value); }
-
-    /**
-     * <p>The header value.</p>
-     */
-    inline void SetHeaderValue(const char* value) { m_headerValueHasBeenSet = true; m_headerValue.assign(value); }
-
-    /**
-     * <p>The header value.</p>
-     */
-    inline HttpHeader& WithHeaderValue(const Aws::String& value) { SetHeaderValue(value); return *this;}
-
-    /**
-     * <p>The header value.</p>
-     */
-    inline HttpHeader& WithHeaderValue(Aws::String&& value) { SetHeaderValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The header value.</p>
-     */
-    inline HttpHeader& WithHeaderValue(const char* value) { SetHeaderValue(value); return *this;}
-
+    template<typename HeaderValueT = Aws::String>
+    void SetHeaderValue(HeaderValueT&& value) { m_headerValueHasBeenSet = true; m_headerValue = std::forward<HeaderValueT>(value); }
+    template<typename HeaderValueT = Aws::String>
+    HttpHeader& WithHeaderValue(HeaderValueT&& value) { SetHeaderValue(std::forward<HeaderValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_headerName;

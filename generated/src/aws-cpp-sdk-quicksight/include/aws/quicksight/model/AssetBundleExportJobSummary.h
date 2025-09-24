@@ -35,285 +35,124 @@ namespace Model
   class AssetBundleExportJobSummary
   {
   public:
-    AWS_QUICKSIGHT_API AssetBundleExportJobSummary();
+    AWS_QUICKSIGHT_API AssetBundleExportJobSummary() = default;
     AWS_QUICKSIGHT_API AssetBundleExportJobSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AssetBundleExportJobSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The current status of the export job.</p>
      */
-    inline const AssetBundleExportJobStatus& GetJobStatus() const{ return m_jobStatus; }
-
-    /**
-     * <p>The current status of the export job.</p>
-     */
+    inline AssetBundleExportJobStatus GetJobStatus() const { return m_jobStatus; }
     inline bool JobStatusHasBeenSet() const { return m_jobStatusHasBeenSet; }
+    inline void SetJobStatus(AssetBundleExportJobStatus value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
+    inline AssetBundleExportJobSummary& WithJobStatus(AssetBundleExportJobStatus value) { SetJobStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the export job.</p>
-     */
-    inline void SetJobStatus(const AssetBundleExportJobStatus& value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
-
-    /**
-     * <p>The current status of the export job.</p>
-     */
-    inline void SetJobStatus(AssetBundleExportJobStatus&& value) { m_jobStatusHasBeenSet = true; m_jobStatus = std::move(value); }
-
-    /**
-     * <p>The current status of the export job.</p>
-     */
-    inline AssetBundleExportJobSummary& WithJobStatus(const AssetBundleExportJobStatus& value) { SetJobStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the export job.</p>
-     */
-    inline AssetBundleExportJobSummary& WithJobStatus(AssetBundleExportJobStatus&& value) { SetJobStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the export job.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the export job.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    AssetBundleExportJobSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the export job.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the export job.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the export job.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the export job.</p>
-     */
-    inline AssetBundleExportJobSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the export job.</p>
-     */
-    inline AssetBundleExportJobSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the export job.</p>
-     */
-    inline AssetBundleExportJobSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time that the export job was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The time that the export job was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    AssetBundleExportJobSummary& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the export job was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The time that the export job was created.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The time that the export job was created.</p>
-     */
-    inline AssetBundleExportJobSummary& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The time that the export job was created.</p>
-     */
-    inline AssetBundleExportJobSummary& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the export job.</p>
      */
-    inline const Aws::String& GetAssetBundleExportJobId() const{ return m_assetBundleExportJobId; }
-
-    /**
-     * <p>The ID of the export job.</p>
-     */
+    inline const Aws::String& GetAssetBundleExportJobId() const { return m_assetBundleExportJobId; }
     inline bool AssetBundleExportJobIdHasBeenSet() const { return m_assetBundleExportJobIdHasBeenSet; }
+    template<typename AssetBundleExportJobIdT = Aws::String>
+    void SetAssetBundleExportJobId(AssetBundleExportJobIdT&& value) { m_assetBundleExportJobIdHasBeenSet = true; m_assetBundleExportJobId = std::forward<AssetBundleExportJobIdT>(value); }
+    template<typename AssetBundleExportJobIdT = Aws::String>
+    AssetBundleExportJobSummary& WithAssetBundleExportJobId(AssetBundleExportJobIdT&& value) { SetAssetBundleExportJobId(std::forward<AssetBundleExportJobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the export job.</p>
-     */
-    inline void SetAssetBundleExportJobId(const Aws::String& value) { m_assetBundleExportJobIdHasBeenSet = true; m_assetBundleExportJobId = value; }
-
-    /**
-     * <p>The ID of the export job.</p>
-     */
-    inline void SetAssetBundleExportJobId(Aws::String&& value) { m_assetBundleExportJobIdHasBeenSet = true; m_assetBundleExportJobId = std::move(value); }
-
-    /**
-     * <p>The ID of the export job.</p>
-     */
-    inline void SetAssetBundleExportJobId(const char* value) { m_assetBundleExportJobIdHasBeenSet = true; m_assetBundleExportJobId.assign(value); }
-
-    /**
-     * <p>The ID of the export job.</p>
-     */
-    inline AssetBundleExportJobSummary& WithAssetBundleExportJobId(const Aws::String& value) { SetAssetBundleExportJobId(value); return *this;}
-
-    /**
-     * <p>The ID of the export job.</p>
-     */
-    inline AssetBundleExportJobSummary& WithAssetBundleExportJobId(Aws::String&& value) { SetAssetBundleExportJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the export job.</p>
-     */
-    inline AssetBundleExportJobSummary& WithAssetBundleExportJobId(const char* value) { SetAssetBundleExportJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The flag that determines the inclusion of resource dependencies in the
      * returned asset bundle.</p>
      */
-    inline bool GetIncludeAllDependencies() const{ return m_includeAllDependencies; }
-
-    /**
-     * <p>The flag that determines the inclusion of resource dependencies in the
-     * returned asset bundle.</p>
-     */
+    inline bool GetIncludeAllDependencies() const { return m_includeAllDependencies; }
     inline bool IncludeAllDependenciesHasBeenSet() const { return m_includeAllDependenciesHasBeenSet; }
-
-    /**
-     * <p>The flag that determines the inclusion of resource dependencies in the
-     * returned asset bundle.</p>
-     */
     inline void SetIncludeAllDependencies(bool value) { m_includeAllDependenciesHasBeenSet = true; m_includeAllDependencies = value; }
-
-    /**
-     * <p>The flag that determines the inclusion of resource dependencies in the
-     * returned asset bundle.</p>
-     */
     inline AssetBundleExportJobSummary& WithIncludeAllDependencies(bool value) { SetIncludeAllDependencies(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The format for the export job.</p>
      */
-    inline const AssetBundleExportFormat& GetExportFormat() const{ return m_exportFormat; }
-
-    /**
-     * <p>The format for the export job.</p>
-     */
+    inline AssetBundleExportFormat GetExportFormat() const { return m_exportFormat; }
     inline bool ExportFormatHasBeenSet() const { return m_exportFormatHasBeenSet; }
+    inline void SetExportFormat(AssetBundleExportFormat value) { m_exportFormatHasBeenSet = true; m_exportFormat = value; }
+    inline AssetBundleExportJobSummary& WithExportFormat(AssetBundleExportFormat value) { SetExportFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The format for the export job.</p>
-     */
-    inline void SetExportFormat(const AssetBundleExportFormat& value) { m_exportFormatHasBeenSet = true; m_exportFormat = value; }
-
-    /**
-     * <p>The format for the export job.</p>
-     */
-    inline void SetExportFormat(AssetBundleExportFormat&& value) { m_exportFormatHasBeenSet = true; m_exportFormat = std::move(value); }
-
-    /**
-     * <p>The format for the export job.</p>
-     */
-    inline AssetBundleExportJobSummary& WithExportFormat(const AssetBundleExportFormat& value) { SetExportFormat(value); return *this;}
-
-    /**
-     * <p>The format for the export job.</p>
-     */
-    inline AssetBundleExportJobSummary& WithExportFormat(AssetBundleExportFormat&& value) { SetExportFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The flag that determines the inclusion of permissions associated with each
      * resource ARN.</p>
      */
-    inline bool GetIncludePermissions() const{ return m_includePermissions; }
-
-    /**
-     * <p>The flag that determines the inclusion of permissions associated with each
-     * resource ARN.</p>
-     */
+    inline bool GetIncludePermissions() const { return m_includePermissions; }
     inline bool IncludePermissionsHasBeenSet() const { return m_includePermissionsHasBeenSet; }
-
-    /**
-     * <p>The flag that determines the inclusion of permissions associated with each
-     * resource ARN.</p>
-     */
     inline void SetIncludePermissions(bool value) { m_includePermissionsHasBeenSet = true; m_includePermissions = value; }
-
-    /**
-     * <p>The flag that determines the inclusion of permissions associated with each
-     * resource ARN.</p>
-     */
     inline AssetBundleExportJobSummary& WithIncludePermissions(bool value) { SetIncludePermissions(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The flag that determines the inclusion of tags associated with each resource
      * ARN.</p>
      */
-    inline bool GetIncludeTags() const{ return m_includeTags; }
-
-    /**
-     * <p>The flag that determines the inclusion of tags associated with each resource
-     * ARN.</p>
-     */
+    inline bool GetIncludeTags() const { return m_includeTags; }
     inline bool IncludeTagsHasBeenSet() const { return m_includeTagsHasBeenSet; }
-
-    /**
-     * <p>The flag that determines the inclusion of tags associated with each resource
-     * ARN.</p>
-     */
     inline void SetIncludeTags(bool value) { m_includeTagsHasBeenSet = true; m_includeTags = value; }
-
-    /**
-     * <p>The flag that determines the inclusion of tags associated with each resource
-     * ARN.</p>
-     */
     inline AssetBundleExportJobSummary& WithIncludeTags(bool value) { SetIncludeTags(value); return *this;}
-
+    ///@}
   private:
 
-    AssetBundleExportJobStatus m_jobStatus;
+    AssetBundleExportJobStatus m_jobStatus{AssetBundleExportJobStatus::NOT_SET};
     bool m_jobStatusHasBeenSet = false;
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
     bool m_createdTimeHasBeenSet = false;
 
     Aws::String m_assetBundleExportJobId;
     bool m_assetBundleExportJobIdHasBeenSet = false;
 
-    bool m_includeAllDependencies;
+    bool m_includeAllDependencies{false};
     bool m_includeAllDependenciesHasBeenSet = false;
 
-    AssetBundleExportFormat m_exportFormat;
+    AssetBundleExportFormat m_exportFormat{AssetBundleExportFormat::NOT_SET};
     bool m_exportFormatHasBeenSet = false;
 
-    bool m_includePermissions;
+    bool m_includePermissions{false};
     bool m_includePermissionsHasBeenSet = false;
 
-    bool m_includeTags;
+    bool m_includeTags{false};
     bool m_includeTagsHasBeenSet = false;
   };
 

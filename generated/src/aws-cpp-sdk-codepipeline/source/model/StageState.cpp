@@ -18,21 +18,7 @@ namespace CodePipeline
 namespace Model
 {
 
-StageState::StageState() : 
-    m_stageNameHasBeenSet(false),
-    m_inboundExecutionHasBeenSet(false),
-    m_inboundTransitionStateHasBeenSet(false),
-    m_actionStatesHasBeenSet(false),
-    m_latestExecutionHasBeenSet(false)
-{
-}
-
-StageState::StageState(JsonView jsonValue) : 
-    m_stageNameHasBeenSet(false),
-    m_inboundExecutionHasBeenSet(false),
-    m_inboundTransitionStateHasBeenSet(false),
-    m_actionStatesHasBeenSet(false),
-    m_latestExecutionHasBeenSet(false)
+StageState::StageState(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,27 @@ StageState& StageState::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("stageName"))
   {
     m_stageName = jsonValue.GetString("stageName");
-
     m_stageNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inboundExecution"))
   {
     m_inboundExecution = jsonValue.GetObject("inboundExecution");
-
     m_inboundExecutionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("inboundExecutions"))
+  {
+    Aws::Utils::Array<JsonView> inboundExecutionsJsonList = jsonValue.GetArray("inboundExecutions");
+    for(unsigned inboundExecutionsIndex = 0; inboundExecutionsIndex < inboundExecutionsJsonList.GetLength(); ++inboundExecutionsIndex)
+    {
+      m_inboundExecutions.push_back(inboundExecutionsJsonList[inboundExecutionsIndex].AsObject());
+    }
+    m_inboundExecutionsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("inboundTransitionState"))
   {
     m_inboundTransitionState = jsonValue.GetObject("inboundTransitionState");
-
     m_inboundTransitionStateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("actionStates"))
   {
     Aws::Utils::Array<JsonView> actionStatesJsonList = jsonValue.GetArray("actionStates");
@@ -69,14 +58,31 @@ StageState& StageState::operator =(JsonView jsonValue)
     }
     m_actionStatesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("latestExecution"))
   {
     m_latestExecution = jsonValue.GetObject("latestExecution");
-
     m_latestExecutionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("beforeEntryConditionState"))
+  {
+    m_beforeEntryConditionState = jsonValue.GetObject("beforeEntryConditionState");
+    m_beforeEntryConditionStateHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("onSuccessConditionState"))
+  {
+    m_onSuccessConditionState = jsonValue.GetObject("onSuccessConditionState");
+    m_onSuccessConditionStateHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("onFailureConditionState"))
+  {
+    m_onFailureConditionState = jsonValue.GetObject("onFailureConditionState");
+    m_onFailureConditionStateHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("retryStageMetadata"))
+  {
+    m_retryStageMetadata = jsonValue.GetObject("retryStageMetadata");
+    m_retryStageMetadataHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -93,6 +99,17 @@ JsonValue StageState::Jsonize() const
   if(m_inboundExecutionHasBeenSet)
   {
    payload.WithObject("inboundExecution", m_inboundExecution.Jsonize());
+
+  }
+
+  if(m_inboundExecutionsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> inboundExecutionsJsonList(m_inboundExecutions.size());
+   for(unsigned inboundExecutionsIndex = 0; inboundExecutionsIndex < inboundExecutionsJsonList.GetLength(); ++inboundExecutionsIndex)
+   {
+     inboundExecutionsJsonList[inboundExecutionsIndex].AsObject(m_inboundExecutions[inboundExecutionsIndex].Jsonize());
+   }
+   payload.WithArray("inboundExecutions", std::move(inboundExecutionsJsonList));
 
   }
 
@@ -116,6 +133,30 @@ JsonValue StageState::Jsonize() const
   if(m_latestExecutionHasBeenSet)
   {
    payload.WithObject("latestExecution", m_latestExecution.Jsonize());
+
+  }
+
+  if(m_beforeEntryConditionStateHasBeenSet)
+  {
+   payload.WithObject("beforeEntryConditionState", m_beforeEntryConditionState.Jsonize());
+
+  }
+
+  if(m_onSuccessConditionStateHasBeenSet)
+  {
+   payload.WithObject("onSuccessConditionState", m_onSuccessConditionState.Jsonize());
+
+  }
+
+  if(m_onFailureConditionStateHasBeenSet)
+  {
+   payload.WithObject("onFailureConditionState", m_onFailureConditionState.Jsonize());
+
+  }
+
+  if(m_retryStageMetadataHasBeenSet)
+  {
+   payload.WithObject("retryStageMetadata", m_retryStageMetadata.Jsonize());
 
   }
 

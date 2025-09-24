@@ -18,30 +18,13 @@ namespace EntityResolution
 namespace Model
 {
 
-RuleBasedProperties::RuleBasedProperties() : 
-    m_attributeMatchingModel(AttributeMatchingModel::NOT_SET),
-    m_attributeMatchingModelHasBeenSet(false),
-    m_rulesHasBeenSet(false)
-{
-}
-
-RuleBasedProperties::RuleBasedProperties(JsonView jsonValue) : 
-    m_attributeMatchingModel(AttributeMatchingModel::NOT_SET),
-    m_attributeMatchingModelHasBeenSet(false),
-    m_rulesHasBeenSet(false)
+RuleBasedProperties::RuleBasedProperties(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 RuleBasedProperties& RuleBasedProperties::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("attributeMatchingModel"))
-  {
-    m_attributeMatchingModel = AttributeMatchingModelMapper::GetAttributeMatchingModelForName(jsonValue.GetString("attributeMatchingModel"));
-
-    m_attributeMatchingModelHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("rules"))
   {
     Aws::Utils::Array<JsonView> rulesJsonList = jsonValue.GetArray("rules");
@@ -51,18 +34,22 @@ RuleBasedProperties& RuleBasedProperties::operator =(JsonView jsonValue)
     }
     m_rulesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("attributeMatchingModel"))
+  {
+    m_attributeMatchingModel = AttributeMatchingModelMapper::GetAttributeMatchingModelForName(jsonValue.GetString("attributeMatchingModel"));
+    m_attributeMatchingModelHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("matchPurpose"))
+  {
+    m_matchPurpose = MatchPurposeMapper::GetMatchPurposeForName(jsonValue.GetString("matchPurpose"));
+    m_matchPurposeHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue RuleBasedProperties::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_attributeMatchingModelHasBeenSet)
-  {
-   payload.WithString("attributeMatchingModel", AttributeMatchingModelMapper::GetNameForAttributeMatchingModel(m_attributeMatchingModel));
-  }
 
   if(m_rulesHasBeenSet)
   {
@@ -73,6 +60,16 @@ JsonValue RuleBasedProperties::Jsonize() const
    }
    payload.WithArray("rules", std::move(rulesJsonList));
 
+  }
+
+  if(m_attributeMatchingModelHasBeenSet)
+  {
+   payload.WithString("attributeMatchingModel", AttributeMatchingModelMapper::GetNameForAttributeMatchingModel(m_attributeMatchingModel));
+  }
+
+  if(m_matchPurposeHasBeenSet)
+  {
+   payload.WithString("matchPurpose", MatchPurposeMapper::GetNameForMatchPurpose(m_matchPurpose));
   }
 
   return payload;

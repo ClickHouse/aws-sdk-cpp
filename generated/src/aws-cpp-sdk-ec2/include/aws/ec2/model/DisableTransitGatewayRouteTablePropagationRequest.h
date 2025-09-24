@@ -21,7 +21,7 @@ namespace Model
   class DisableTransitGatewayRouteTablePropagationRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DisableTransitGatewayRouteTablePropagationRequest();
+    AWS_EC2_API DisableTransitGatewayRouteTablePropagationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,161 +36,54 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the propagation route table.</p>
      */
-    inline const Aws::String& GetTransitGatewayRouteTableId() const{ return m_transitGatewayRouteTableId; }
-
-    /**
-     * <p>The ID of the propagation route table.</p>
-     */
+    inline const Aws::String& GetTransitGatewayRouteTableId() const { return m_transitGatewayRouteTableId; }
     inline bool TransitGatewayRouteTableIdHasBeenSet() const { return m_transitGatewayRouteTableIdHasBeenSet; }
+    template<typename TransitGatewayRouteTableIdT = Aws::String>
+    void SetTransitGatewayRouteTableId(TransitGatewayRouteTableIdT&& value) { m_transitGatewayRouteTableIdHasBeenSet = true; m_transitGatewayRouteTableId = std::forward<TransitGatewayRouteTableIdT>(value); }
+    template<typename TransitGatewayRouteTableIdT = Aws::String>
+    DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayRouteTableId(TransitGatewayRouteTableIdT&& value) { SetTransitGatewayRouteTableId(std::forward<TransitGatewayRouteTableIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the propagation route table.</p>
-     */
-    inline void SetTransitGatewayRouteTableId(const Aws::String& value) { m_transitGatewayRouteTableIdHasBeenSet = true; m_transitGatewayRouteTableId = value; }
-
-    /**
-     * <p>The ID of the propagation route table.</p>
-     */
-    inline void SetTransitGatewayRouteTableId(Aws::String&& value) { m_transitGatewayRouteTableIdHasBeenSet = true; m_transitGatewayRouteTableId = std::move(value); }
-
-    /**
-     * <p>The ID of the propagation route table.</p>
-     */
-    inline void SetTransitGatewayRouteTableId(const char* value) { m_transitGatewayRouteTableIdHasBeenSet = true; m_transitGatewayRouteTableId.assign(value); }
-
-    /**
-     * <p>The ID of the propagation route table.</p>
-     */
-    inline DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayRouteTableId(const Aws::String& value) { SetTransitGatewayRouteTableId(value); return *this;}
-
-    /**
-     * <p>The ID of the propagation route table.</p>
-     */
-    inline DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayRouteTableId(Aws::String&& value) { SetTransitGatewayRouteTableId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the propagation route table.</p>
-     */
-    inline DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayRouteTableId(const char* value) { SetTransitGatewayRouteTableId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the attachment.</p>
      */
-    inline const Aws::String& GetTransitGatewayAttachmentId() const{ return m_transitGatewayAttachmentId; }
-
-    /**
-     * <p>The ID of the attachment.</p>
-     */
+    inline const Aws::String& GetTransitGatewayAttachmentId() const { return m_transitGatewayAttachmentId; }
     inline bool TransitGatewayAttachmentIdHasBeenSet() const { return m_transitGatewayAttachmentIdHasBeenSet; }
+    template<typename TransitGatewayAttachmentIdT = Aws::String>
+    void SetTransitGatewayAttachmentId(TransitGatewayAttachmentIdT&& value) { m_transitGatewayAttachmentIdHasBeenSet = true; m_transitGatewayAttachmentId = std::forward<TransitGatewayAttachmentIdT>(value); }
+    template<typename TransitGatewayAttachmentIdT = Aws::String>
+    DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayAttachmentId(TransitGatewayAttachmentIdT&& value) { SetTransitGatewayAttachmentId(std::forward<TransitGatewayAttachmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the attachment.</p>
-     */
-    inline void SetTransitGatewayAttachmentId(const Aws::String& value) { m_transitGatewayAttachmentIdHasBeenSet = true; m_transitGatewayAttachmentId = value; }
-
-    /**
-     * <p>The ID of the attachment.</p>
-     */
-    inline void SetTransitGatewayAttachmentId(Aws::String&& value) { m_transitGatewayAttachmentIdHasBeenSet = true; m_transitGatewayAttachmentId = std::move(value); }
-
-    /**
-     * <p>The ID of the attachment.</p>
-     */
-    inline void SetTransitGatewayAttachmentId(const char* value) { m_transitGatewayAttachmentIdHasBeenSet = true; m_transitGatewayAttachmentId.assign(value); }
-
-    /**
-     * <p>The ID of the attachment.</p>
-     */
-    inline DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayAttachmentId(const Aws::String& value) { SetTransitGatewayAttachmentId(value); return *this;}
-
-    /**
-     * <p>The ID of the attachment.</p>
-     */
-    inline DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayAttachmentId(Aws::String&& value) { SetTransitGatewayAttachmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the attachment.</p>
-     */
-    inline DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayAttachmentId(const char* value) { SetTransitGatewayAttachmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DisableTransitGatewayRouteTablePropagationRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the route table announcement.</p>
      */
-    inline const Aws::String& GetTransitGatewayRouteTableAnnouncementId() const{ return m_transitGatewayRouteTableAnnouncementId; }
-
-    /**
-     * <p>The ID of the route table announcement.</p>
-     */
+    inline const Aws::String& GetTransitGatewayRouteTableAnnouncementId() const { return m_transitGatewayRouteTableAnnouncementId; }
     inline bool TransitGatewayRouteTableAnnouncementIdHasBeenSet() const { return m_transitGatewayRouteTableAnnouncementIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the route table announcement.</p>
-     */
-    inline void SetTransitGatewayRouteTableAnnouncementId(const Aws::String& value) { m_transitGatewayRouteTableAnnouncementIdHasBeenSet = true; m_transitGatewayRouteTableAnnouncementId = value; }
-
-    /**
-     * <p>The ID of the route table announcement.</p>
-     */
-    inline void SetTransitGatewayRouteTableAnnouncementId(Aws::String&& value) { m_transitGatewayRouteTableAnnouncementIdHasBeenSet = true; m_transitGatewayRouteTableAnnouncementId = std::move(value); }
-
-    /**
-     * <p>The ID of the route table announcement.</p>
-     */
-    inline void SetTransitGatewayRouteTableAnnouncementId(const char* value) { m_transitGatewayRouteTableAnnouncementIdHasBeenSet = true; m_transitGatewayRouteTableAnnouncementId.assign(value); }
-
-    /**
-     * <p>The ID of the route table announcement.</p>
-     */
-    inline DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayRouteTableAnnouncementId(const Aws::String& value) { SetTransitGatewayRouteTableAnnouncementId(value); return *this;}
-
-    /**
-     * <p>The ID of the route table announcement.</p>
-     */
-    inline DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayRouteTableAnnouncementId(Aws::String&& value) { SetTransitGatewayRouteTableAnnouncementId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the route table announcement.</p>
-     */
-    inline DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayRouteTableAnnouncementId(const char* value) { SetTransitGatewayRouteTableAnnouncementId(value); return *this;}
-
+    template<typename TransitGatewayRouteTableAnnouncementIdT = Aws::String>
+    void SetTransitGatewayRouteTableAnnouncementId(TransitGatewayRouteTableAnnouncementIdT&& value) { m_transitGatewayRouteTableAnnouncementIdHasBeenSet = true; m_transitGatewayRouteTableAnnouncementId = std::forward<TransitGatewayRouteTableAnnouncementIdT>(value); }
+    template<typename TransitGatewayRouteTableAnnouncementIdT = Aws::String>
+    DisableTransitGatewayRouteTablePropagationRequest& WithTransitGatewayRouteTableAnnouncementId(TransitGatewayRouteTableAnnouncementIdT&& value) { SetTransitGatewayRouteTableAnnouncementId(std::forward<TransitGatewayRouteTableAnnouncementIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_transitGatewayRouteTableId;
@@ -199,7 +92,7 @@ namespace Model
     Aws::String m_transitGatewayAttachmentId;
     bool m_transitGatewayAttachmentIdHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_transitGatewayRouteTableAnnouncementId;

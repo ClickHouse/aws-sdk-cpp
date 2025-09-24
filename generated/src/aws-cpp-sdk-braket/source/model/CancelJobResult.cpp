@@ -17,13 +17,7 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-CancelJobResult::CancelJobResult() : 
-    m_cancellationStatus(CancellationStatus::NOT_SET)
-{
-}
-
-CancelJobResult::CancelJobResult(const Aws::AmazonWebServiceResult<JsonValue>& result) : 
-    m_cancellationStatus(CancellationStatus::NOT_SET)
+CancelJobResult::CancelJobResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
 }
@@ -31,24 +25,23 @@ CancelJobResult::CancelJobResult(const Aws::AmazonWebServiceResult<JsonValue>& r
 CancelJobResult& CancelJobResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("cancellationStatus"))
-  {
-    m_cancellationStatus = CancellationStatusMapper::GetCancellationStatusForName(jsonValue.GetString("cancellationStatus"));
-
-  }
-
   if(jsonValue.ValueExists("jobArn"))
   {
     m_jobArn = jsonValue.GetString("jobArn");
-
+    m_jobArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("cancellationStatus"))
+  {
+    m_cancellationStatus = CancellationStatusMapper::GetCancellationStatusForName(jsonValue.GetString("cancellationStatus"));
+    m_cancellationStatusHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

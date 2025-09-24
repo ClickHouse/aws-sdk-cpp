@@ -18,17 +18,7 @@ namespace EMR
 namespace Model
 {
 
-ErrorDetail::ErrorDetail() : 
-    m_errorCodeHasBeenSet(false),
-    m_errorDataHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-ErrorDetail::ErrorDetail(JsonView jsonValue) : 
-    m_errorCodeHasBeenSet(false),
-    m_errorDataHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+ErrorDetail::ErrorDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ ErrorDetail& ErrorDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ErrorCode"))
   {
     m_errorCode = jsonValue.GetString("ErrorCode");
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorData"))
   {
     Aws::Utils::Array<JsonView> errorDataJsonList = jsonValue.GetArray("ErrorData");
@@ -57,14 +45,11 @@ ErrorDetail& ErrorDetail::operator =(JsonView jsonValue)
     }
     m_errorDataHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

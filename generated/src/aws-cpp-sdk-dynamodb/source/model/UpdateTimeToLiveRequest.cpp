@@ -12,12 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateTimeToLiveRequest::UpdateTimeToLiveRequest() : 
-    m_tableNameHasBeenSet(false),
-    m_timeToLiveSpecificationHasBeenSet(false)
-{
-}
-
 Aws::String UpdateTimeToLiveRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,5 +40,15 @@ Aws::Http::HeaderValueCollection UpdateTimeToLiveRequest::GetRequestSpecificHead
 }
 
 
+
+UpdateTimeToLiveRequest::EndpointParameters UpdateTimeToLiveRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

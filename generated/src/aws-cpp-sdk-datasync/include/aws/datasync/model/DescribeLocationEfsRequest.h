@@ -24,7 +24,7 @@ namespace Model
   class DescribeLocationEfsRequest : public DataSyncRequest
   {
   public:
-    AWS_DATASYNC_API DescribeLocationEfsRequest();
+    AWS_DATASYNC_API DescribeLocationEfsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,54 +37,18 @@ namespace Model
     AWS_DATASYNC_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Amazon EFS file system location that
      * you want information about.</p>
      */
-    inline const Aws::String& GetLocationArn() const{ return m_locationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon EFS file system location that
-     * you want information about.</p>
-     */
+    inline const Aws::String& GetLocationArn() const { return m_locationArn; }
     inline bool LocationArnHasBeenSet() const { return m_locationArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon EFS file system location that
-     * you want information about.</p>
-     */
-    inline void SetLocationArn(const Aws::String& value) { m_locationArnHasBeenSet = true; m_locationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon EFS file system location that
-     * you want information about.</p>
-     */
-    inline void SetLocationArn(Aws::String&& value) { m_locationArnHasBeenSet = true; m_locationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon EFS file system location that
-     * you want information about.</p>
-     */
-    inline void SetLocationArn(const char* value) { m_locationArnHasBeenSet = true; m_locationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon EFS file system location that
-     * you want information about.</p>
-     */
-    inline DescribeLocationEfsRequest& WithLocationArn(const Aws::String& value) { SetLocationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon EFS file system location that
-     * you want information about.</p>
-     */
-    inline DescribeLocationEfsRequest& WithLocationArn(Aws::String&& value) { SetLocationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon EFS file system location that
-     * you want information about.</p>
-     */
-    inline DescribeLocationEfsRequest& WithLocationArn(const char* value) { SetLocationArn(value); return *this;}
-
+    template<typename LocationArnT = Aws::String>
+    void SetLocationArn(LocationArnT&& value) { m_locationArnHasBeenSet = true; m_locationArn = std::forward<LocationArnT>(value); }
+    template<typename LocationArnT = Aws::String>
+    DescribeLocationEfsRequest& WithLocationArn(LocationArnT&& value) { SetLocationArn(std::forward<LocationArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_locationArn;

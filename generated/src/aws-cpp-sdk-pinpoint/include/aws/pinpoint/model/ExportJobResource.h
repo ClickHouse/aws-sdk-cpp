@@ -35,69 +35,27 @@ namespace Model
   class ExportJobResource
   {
   public:
-    AWS_PINPOINT_API ExportJobResource();
+    AWS_PINPOINT_API ExportJobResource() = default;
     AWS_PINPOINT_API ExportJobResource(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API ExportJobResource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
      * (IAM) role that authorized Amazon Pinpoint to access the Amazon S3 location
      * where the endpoint definitions were exported to.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorized Amazon Pinpoint to access the Amazon S3 location
-     * where the endpoint definitions were exported to.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    ExportJobResource& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorized Amazon Pinpoint to access the Amazon S3 location
-     * where the endpoint definitions were exported to.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorized Amazon Pinpoint to access the Amazon S3 location
-     * where the endpoint definitions were exported to.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorized Amazon Pinpoint to access the Amazon S3 location
-     * where the endpoint definitions were exported to.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorized Amazon Pinpoint to access the Amazon S3 location
-     * where the endpoint definitions were exported to.</p>
-     */
-    inline ExportJobResource& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorized Amazon Pinpoint to access the Amazon S3 location
-     * where the endpoint definitions were exported to.</p>
-     */
-    inline ExportJobResource& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-     * (IAM) role that authorized Amazon Pinpoint to access the Amazon S3 location
-     * where the endpoint definitions were exported to.</p>
-     */
-    inline ExportJobResource& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL of the location in an Amazon Simple Storage Service (Amazon S3)
      * bucket where the endpoint definitions were exported to. This location is
@@ -105,153 +63,38 @@ namespace Model
      * following format:
      * s3://<replaceable>bucket-name</replaceable>/<replaceable>folder-name</replaceable>/.</p>
      */
-    inline const Aws::String& GetS3UrlPrefix() const{ return m_s3UrlPrefix; }
-
-    /**
-     * <p>The URL of the location in an Amazon Simple Storage Service (Amazon S3)
-     * bucket where the endpoint definitions were exported to. This location is
-     * typically a folder that contains multiple files. The URL should be in the
-     * following format:
-     * s3://<replaceable>bucket-name</replaceable>/<replaceable>folder-name</replaceable>/.</p>
-     */
+    inline const Aws::String& GetS3UrlPrefix() const { return m_s3UrlPrefix; }
     inline bool S3UrlPrefixHasBeenSet() const { return m_s3UrlPrefixHasBeenSet; }
+    template<typename S3UrlPrefixT = Aws::String>
+    void SetS3UrlPrefix(S3UrlPrefixT&& value) { m_s3UrlPrefixHasBeenSet = true; m_s3UrlPrefix = std::forward<S3UrlPrefixT>(value); }
+    template<typename S3UrlPrefixT = Aws::String>
+    ExportJobResource& WithS3UrlPrefix(S3UrlPrefixT&& value) { SetS3UrlPrefix(std::forward<S3UrlPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of the location in an Amazon Simple Storage Service (Amazon S3)
-     * bucket where the endpoint definitions were exported to. This location is
-     * typically a folder that contains multiple files. The URL should be in the
-     * following format:
-     * s3://<replaceable>bucket-name</replaceable>/<replaceable>folder-name</replaceable>/.</p>
-     */
-    inline void SetS3UrlPrefix(const Aws::String& value) { m_s3UrlPrefixHasBeenSet = true; m_s3UrlPrefix = value; }
-
-    /**
-     * <p>The URL of the location in an Amazon Simple Storage Service (Amazon S3)
-     * bucket where the endpoint definitions were exported to. This location is
-     * typically a folder that contains multiple files. The URL should be in the
-     * following format:
-     * s3://<replaceable>bucket-name</replaceable>/<replaceable>folder-name</replaceable>/.</p>
-     */
-    inline void SetS3UrlPrefix(Aws::String&& value) { m_s3UrlPrefixHasBeenSet = true; m_s3UrlPrefix = std::move(value); }
-
-    /**
-     * <p>The URL of the location in an Amazon Simple Storage Service (Amazon S3)
-     * bucket where the endpoint definitions were exported to. This location is
-     * typically a folder that contains multiple files. The URL should be in the
-     * following format:
-     * s3://<replaceable>bucket-name</replaceable>/<replaceable>folder-name</replaceable>/.</p>
-     */
-    inline void SetS3UrlPrefix(const char* value) { m_s3UrlPrefixHasBeenSet = true; m_s3UrlPrefix.assign(value); }
-
-    /**
-     * <p>The URL of the location in an Amazon Simple Storage Service (Amazon S3)
-     * bucket where the endpoint definitions were exported to. This location is
-     * typically a folder that contains multiple files. The URL should be in the
-     * following format:
-     * s3://<replaceable>bucket-name</replaceable>/<replaceable>folder-name</replaceable>/.</p>
-     */
-    inline ExportJobResource& WithS3UrlPrefix(const Aws::String& value) { SetS3UrlPrefix(value); return *this;}
-
-    /**
-     * <p>The URL of the location in an Amazon Simple Storage Service (Amazon S3)
-     * bucket where the endpoint definitions were exported to. This location is
-     * typically a folder that contains multiple files. The URL should be in the
-     * following format:
-     * s3://<replaceable>bucket-name</replaceable>/<replaceable>folder-name</replaceable>/.</p>
-     */
-    inline ExportJobResource& WithS3UrlPrefix(Aws::String&& value) { SetS3UrlPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of the location in an Amazon Simple Storage Service (Amazon S3)
-     * bucket where the endpoint definitions were exported to. This location is
-     * typically a folder that contains multiple files. The URL should be in the
-     * following format:
-     * s3://<replaceable>bucket-name</replaceable>/<replaceable>folder-name</replaceable>/.</p>
-     */
-    inline ExportJobResource& WithS3UrlPrefix(const char* value) { SetS3UrlPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier for the segment that the endpoint definitions were exported
      * from. If this value isn't present, Amazon Pinpoint exported definitions for all
      * the endpoints that are associated with the application.</p>
      */
-    inline const Aws::String& GetSegmentId() const{ return m_segmentId; }
-
-    /**
-     * <p>The identifier for the segment that the endpoint definitions were exported
-     * from. If this value isn't present, Amazon Pinpoint exported definitions for all
-     * the endpoints that are associated with the application.</p>
-     */
+    inline const Aws::String& GetSegmentId() const { return m_segmentId; }
     inline bool SegmentIdHasBeenSet() const { return m_segmentIdHasBeenSet; }
+    template<typename SegmentIdT = Aws::String>
+    void SetSegmentId(SegmentIdT&& value) { m_segmentIdHasBeenSet = true; m_segmentId = std::forward<SegmentIdT>(value); }
+    template<typename SegmentIdT = Aws::String>
+    ExportJobResource& WithSegmentId(SegmentIdT&& value) { SetSegmentId(std::forward<SegmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the segment that the endpoint definitions were exported
-     * from. If this value isn't present, Amazon Pinpoint exported definitions for all
-     * the endpoints that are associated with the application.</p>
-     */
-    inline void SetSegmentId(const Aws::String& value) { m_segmentIdHasBeenSet = true; m_segmentId = value; }
-
-    /**
-     * <p>The identifier for the segment that the endpoint definitions were exported
-     * from. If this value isn't present, Amazon Pinpoint exported definitions for all
-     * the endpoints that are associated with the application.</p>
-     */
-    inline void SetSegmentId(Aws::String&& value) { m_segmentIdHasBeenSet = true; m_segmentId = std::move(value); }
-
-    /**
-     * <p>The identifier for the segment that the endpoint definitions were exported
-     * from. If this value isn't present, Amazon Pinpoint exported definitions for all
-     * the endpoints that are associated with the application.</p>
-     */
-    inline void SetSegmentId(const char* value) { m_segmentIdHasBeenSet = true; m_segmentId.assign(value); }
-
-    /**
-     * <p>The identifier for the segment that the endpoint definitions were exported
-     * from. If this value isn't present, Amazon Pinpoint exported definitions for all
-     * the endpoints that are associated with the application.</p>
-     */
-    inline ExportJobResource& WithSegmentId(const Aws::String& value) { SetSegmentId(value); return *this;}
-
-    /**
-     * <p>The identifier for the segment that the endpoint definitions were exported
-     * from. If this value isn't present, Amazon Pinpoint exported definitions for all
-     * the endpoints that are associated with the application.</p>
-     */
-    inline ExportJobResource& WithSegmentId(Aws::String&& value) { SetSegmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the segment that the endpoint definitions were exported
-     * from. If this value isn't present, Amazon Pinpoint exported definitions for all
-     * the endpoints that are associated with the application.</p>
-     */
-    inline ExportJobResource& WithSegmentId(const char* value) { SetSegmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the segment that the endpoint definitions were exported
      * from.</p>
      */
-    inline int GetSegmentVersion() const{ return m_segmentVersion; }
-
-    /**
-     * <p>The version of the segment that the endpoint definitions were exported
-     * from.</p>
-     */
+    inline int GetSegmentVersion() const { return m_segmentVersion; }
     inline bool SegmentVersionHasBeenSet() const { return m_segmentVersionHasBeenSet; }
-
-    /**
-     * <p>The version of the segment that the endpoint definitions were exported
-     * from.</p>
-     */
     inline void SetSegmentVersion(int value) { m_segmentVersionHasBeenSet = true; m_segmentVersion = value; }
-
-    /**
-     * <p>The version of the segment that the endpoint definitions were exported
-     * from.</p>
-     */
     inline ExportJobResource& WithSegmentVersion(int value) { SetSegmentVersion(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_roleArn;
@@ -263,7 +106,7 @@ namespace Model
     Aws::String m_segmentId;
     bool m_segmentIdHasBeenSet = false;
 
-    int m_segmentVersion;
+    int m_segmentVersion{0};
     bool m_segmentVersionHasBeenSet = false;
   };
 

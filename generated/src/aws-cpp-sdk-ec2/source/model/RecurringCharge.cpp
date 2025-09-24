@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-RecurringCharge::RecurringCharge() : 
-    m_amount(0.0),
-    m_amountHasBeenSet(false),
-    m_frequency(RecurringChargeFrequency::NOT_SET),
-    m_frequencyHasBeenSet(false)
-{
-}
-
-RecurringCharge::RecurringCharge(const XmlNode& xmlNode) : 
-    m_amount(0.0),
-    m_amountHasBeenSet(false),
-    m_frequency(RecurringChargeFrequency::NOT_SET),
-    m_frequencyHasBeenSet(false)
+RecurringCharge::RecurringCharge(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -52,7 +40,7 @@ RecurringCharge& RecurringCharge::operator =(const XmlNode& xmlNode)
     XmlNode frequencyNode = resultNode.FirstChild("frequency");
     if(!frequencyNode.IsNull())
     {
-      m_frequency = RecurringChargeFrequencyMapper::GetRecurringChargeFrequencyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(frequencyNode.GetText()).c_str()).c_str());
+      m_frequency = RecurringChargeFrequencyMapper::GetRecurringChargeFrequencyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(frequencyNode.GetText()).c_str()));
       m_frequencyHasBeenSet = true;
     }
   }
@@ -69,7 +57,7 @@ void RecurringCharge::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_frequencyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Frequency=" << RecurringChargeFrequencyMapper::GetNameForRecurringChargeFrequency(m_frequency) << "&";
+      oStream << location << index << locationValue << ".Frequency=" << StringUtils::URLEncode(RecurringChargeFrequencyMapper::GetNameForRecurringChargeFrequency(m_frequency)) << "&";
   }
 
 }
@@ -78,11 +66,11 @@ void RecurringCharge::OutputToStream(Aws::OStream& oStream, const char* location
 {
   if(m_amountHasBeenSet)
   {
-        oStream << location << ".Amount=" << StringUtils::URLEncode(m_amount) << "&";
+      oStream << location << ".Amount=" << StringUtils::URLEncode(m_amount) << "&";
   }
   if(m_frequencyHasBeenSet)
   {
-      oStream << location << ".Frequency=" << RecurringChargeFrequencyMapper::GetNameForRecurringChargeFrequency(m_frequency) << "&";
+      oStream << location << ".Frequency=" << StringUtils::URLEncode(RecurringChargeFrequencyMapper::GetNameForRecurringChargeFrequency(m_frequency)) << "&";
   }
 }
 

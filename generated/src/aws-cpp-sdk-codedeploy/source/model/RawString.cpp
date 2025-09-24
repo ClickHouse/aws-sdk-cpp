@@ -18,15 +18,7 @@ namespace CodeDeploy
 namespace Model
 {
 
-RawString::RawString() : 
-    m_contentHasBeenSet(false),
-    m_sha256HasBeenSet(false)
-{
-}
-
-RawString::RawString(JsonView jsonValue) : 
-    m_contentHasBeenSet(false),
-    m_sha256HasBeenSet(false)
+RawString::RawString(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RawString& RawString::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("content"))
   {
     m_content = jsonValue.GetString("content");
-
     m_contentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sha256"))
   {
     m_sha256 = jsonValue.GetString("sha256");
-
     m_sha256HasBeenSet = true;
   }
-
   return *this;
 }
 

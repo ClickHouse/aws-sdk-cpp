@@ -36,150 +36,53 @@ namespace Model
   class Alternative
   {
   public:
-    AWS_TRANSCRIBESTREAMINGSERVICE_API Alternative();
+    AWS_TRANSCRIBESTREAMINGSERVICE_API Alternative() = default;
     AWS_TRANSCRIBESTREAMINGSERVICE_API Alternative(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API Alternative& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSCRIBESTREAMINGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains transcribed text.</p>
      */
-    inline const Aws::String& GetTranscript() const{ return m_transcript; }
-
-    /**
-     * <p>Contains transcribed text.</p>
-     */
+    inline const Aws::String& GetTranscript() const { return m_transcript; }
     inline bool TranscriptHasBeenSet() const { return m_transcriptHasBeenSet; }
+    template<typename TranscriptT = Aws::String>
+    void SetTranscript(TranscriptT&& value) { m_transcriptHasBeenSet = true; m_transcript = std::forward<TranscriptT>(value); }
+    template<typename TranscriptT = Aws::String>
+    Alternative& WithTranscript(TranscriptT&& value) { SetTranscript(std::forward<TranscriptT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains transcribed text.</p>
-     */
-    inline void SetTranscript(const Aws::String& value) { m_transcriptHasBeenSet = true; m_transcript = value; }
-
-    /**
-     * <p>Contains transcribed text.</p>
-     */
-    inline void SetTranscript(Aws::String&& value) { m_transcriptHasBeenSet = true; m_transcript = std::move(value); }
-
-    /**
-     * <p>Contains transcribed text.</p>
-     */
-    inline void SetTranscript(const char* value) { m_transcriptHasBeenSet = true; m_transcript.assign(value); }
-
-    /**
-     * <p>Contains transcribed text.</p>
-     */
-    inline Alternative& WithTranscript(const Aws::String& value) { SetTranscript(value); return *this;}
-
-    /**
-     * <p>Contains transcribed text.</p>
-     */
-    inline Alternative& WithTranscript(Aws::String&& value) { SetTranscript(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains transcribed text.</p>
-     */
-    inline Alternative& WithTranscript(const char* value) { SetTranscript(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains words, phrases, or punctuation marks in your transcription
      * output.</p>
      */
-    inline const Aws::Vector<Item>& GetItems() const{ return m_items; }
-
-    /**
-     * <p>Contains words, phrases, or punctuation marks in your transcription
-     * output.</p>
-     */
+    inline const Aws::Vector<Item>& GetItems() const { return m_items; }
     inline bool ItemsHasBeenSet() const { return m_itemsHasBeenSet; }
+    template<typename ItemsT = Aws::Vector<Item>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<Item>>
+    Alternative& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = Item>
+    Alternative& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contains words, phrases, or punctuation marks in your transcription
-     * output.</p>
-     */
-    inline void SetItems(const Aws::Vector<Item>& value) { m_itemsHasBeenSet = true; m_items = value; }
-
-    /**
-     * <p>Contains words, phrases, or punctuation marks in your transcription
-     * output.</p>
-     */
-    inline void SetItems(Aws::Vector<Item>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
-
-    /**
-     * <p>Contains words, phrases, or punctuation marks in your transcription
-     * output.</p>
-     */
-    inline Alternative& WithItems(const Aws::Vector<Item>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>Contains words, phrases, or punctuation marks in your transcription
-     * output.</p>
-     */
-    inline Alternative& WithItems(Aws::Vector<Item>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains words, phrases, or punctuation marks in your transcription
-     * output.</p>
-     */
-    inline Alternative& AddItems(const Item& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
-    /**
-     * <p>Contains words, phrases, or punctuation marks in your transcription
-     * output.</p>
-     */
-    inline Alternative& AddItems(Item&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Contains entities identified as personally identifiable information (PII) in
      * your transcription output.</p>
      */
-    inline const Aws::Vector<Entity>& GetEntities() const{ return m_entities; }
-
-    /**
-     * <p>Contains entities identified as personally identifiable information (PII) in
-     * your transcription output.</p>
-     */
+    inline const Aws::Vector<Entity>& GetEntities() const { return m_entities; }
     inline bool EntitiesHasBeenSet() const { return m_entitiesHasBeenSet; }
-
-    /**
-     * <p>Contains entities identified as personally identifiable information (PII) in
-     * your transcription output.</p>
-     */
-    inline void SetEntities(const Aws::Vector<Entity>& value) { m_entitiesHasBeenSet = true; m_entities = value; }
-
-    /**
-     * <p>Contains entities identified as personally identifiable information (PII) in
-     * your transcription output.</p>
-     */
-    inline void SetEntities(Aws::Vector<Entity>&& value) { m_entitiesHasBeenSet = true; m_entities = std::move(value); }
-
-    /**
-     * <p>Contains entities identified as personally identifiable information (PII) in
-     * your transcription output.</p>
-     */
-    inline Alternative& WithEntities(const Aws::Vector<Entity>& value) { SetEntities(value); return *this;}
-
-    /**
-     * <p>Contains entities identified as personally identifiable information (PII) in
-     * your transcription output.</p>
-     */
-    inline Alternative& WithEntities(Aws::Vector<Entity>&& value) { SetEntities(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains entities identified as personally identifiable information (PII) in
-     * your transcription output.</p>
-     */
-    inline Alternative& AddEntities(const Entity& value) { m_entitiesHasBeenSet = true; m_entities.push_back(value); return *this; }
-
-    /**
-     * <p>Contains entities identified as personally identifiable information (PII) in
-     * your transcription output.</p>
-     */
-    inline Alternative& AddEntities(Entity&& value) { m_entitiesHasBeenSet = true; m_entities.push_back(std::move(value)); return *this; }
-
+    template<typename EntitiesT = Aws::Vector<Entity>>
+    void SetEntities(EntitiesT&& value) { m_entitiesHasBeenSet = true; m_entities = std::forward<EntitiesT>(value); }
+    template<typename EntitiesT = Aws::Vector<Entity>>
+    Alternative& WithEntities(EntitiesT&& value) { SetEntities(std::forward<EntitiesT>(value)); return *this;}
+    template<typename EntitiesT = Entity>
+    Alternative& AddEntities(EntitiesT&& value) { m_entitiesHasBeenSet = true; m_entities.emplace_back(std::forward<EntitiesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_transcript;

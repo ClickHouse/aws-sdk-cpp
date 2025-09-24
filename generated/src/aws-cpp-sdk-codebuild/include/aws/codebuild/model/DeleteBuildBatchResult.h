@@ -29,169 +29,71 @@ namespace Model
   class DeleteBuildBatchResult
   {
   public:
-    AWS_CODEBUILD_API DeleteBuildBatchResult();
+    AWS_CODEBUILD_API DeleteBuildBatchResult() = default;
     AWS_CODEBUILD_API DeleteBuildBatchResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODEBUILD_API DeleteBuildBatchResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The status code.</p>
      */
-    inline const Aws::String& GetStatusCode() const{ return m_statusCode; }
+    inline const Aws::String& GetStatusCode() const { return m_statusCode; }
+    template<typename StatusCodeT = Aws::String>
+    void SetStatusCode(StatusCodeT&& value) { m_statusCodeHasBeenSet = true; m_statusCode = std::forward<StatusCodeT>(value); }
+    template<typename StatusCodeT = Aws::String>
+    DeleteBuildBatchResult& WithStatusCode(StatusCodeT&& value) { SetStatusCode(std::forward<StatusCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status code.</p>
-     */
-    inline void SetStatusCode(const Aws::String& value) { m_statusCode = value; }
-
-    /**
-     * <p>The status code.</p>
-     */
-    inline void SetStatusCode(Aws::String&& value) { m_statusCode = std::move(value); }
-
-    /**
-     * <p>The status code.</p>
-     */
-    inline void SetStatusCode(const char* value) { m_statusCode.assign(value); }
-
-    /**
-     * <p>The status code.</p>
-     */
-    inline DeleteBuildBatchResult& WithStatusCode(const Aws::String& value) { SetStatusCode(value); return *this;}
-
-    /**
-     * <p>The status code.</p>
-     */
-    inline DeleteBuildBatchResult& WithStatusCode(Aws::String&& value) { SetStatusCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The status code.</p>
-     */
-    inline DeleteBuildBatchResult& WithStatusCode(const char* value) { SetStatusCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of strings that contain the identifiers of the builds that were
      * deleted.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetBuildsDeleted() const{ return m_buildsDeleted; }
+    inline const Aws::Vector<Aws::String>& GetBuildsDeleted() const { return m_buildsDeleted; }
+    template<typename BuildsDeletedT = Aws::Vector<Aws::String>>
+    void SetBuildsDeleted(BuildsDeletedT&& value) { m_buildsDeletedHasBeenSet = true; m_buildsDeleted = std::forward<BuildsDeletedT>(value); }
+    template<typename BuildsDeletedT = Aws::Vector<Aws::String>>
+    DeleteBuildBatchResult& WithBuildsDeleted(BuildsDeletedT&& value) { SetBuildsDeleted(std::forward<BuildsDeletedT>(value)); return *this;}
+    template<typename BuildsDeletedT = Aws::String>
+    DeleteBuildBatchResult& AddBuildsDeleted(BuildsDeletedT&& value) { m_buildsDeletedHasBeenSet = true; m_buildsDeleted.emplace_back(std::forward<BuildsDeletedT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of strings that contain the identifiers of the builds that were
-     * deleted.</p>
-     */
-    inline void SetBuildsDeleted(const Aws::Vector<Aws::String>& value) { m_buildsDeleted = value; }
-
-    /**
-     * <p>An array of strings that contain the identifiers of the builds that were
-     * deleted.</p>
-     */
-    inline void SetBuildsDeleted(Aws::Vector<Aws::String>&& value) { m_buildsDeleted = std::move(value); }
-
-    /**
-     * <p>An array of strings that contain the identifiers of the builds that were
-     * deleted.</p>
-     */
-    inline DeleteBuildBatchResult& WithBuildsDeleted(const Aws::Vector<Aws::String>& value) { SetBuildsDeleted(value); return *this;}
-
-    /**
-     * <p>An array of strings that contain the identifiers of the builds that were
-     * deleted.</p>
-     */
-    inline DeleteBuildBatchResult& WithBuildsDeleted(Aws::Vector<Aws::String>&& value) { SetBuildsDeleted(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of strings that contain the identifiers of the builds that were
-     * deleted.</p>
-     */
-    inline DeleteBuildBatchResult& AddBuildsDeleted(const Aws::String& value) { m_buildsDeleted.push_back(value); return *this; }
-
-    /**
-     * <p>An array of strings that contain the identifiers of the builds that were
-     * deleted.</p>
-     */
-    inline DeleteBuildBatchResult& AddBuildsDeleted(Aws::String&& value) { m_buildsDeleted.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of strings that contain the identifiers of the builds that were
-     * deleted.</p>
-     */
-    inline DeleteBuildBatchResult& AddBuildsDeleted(const char* value) { m_buildsDeleted.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>An array of <code>BuildNotDeleted</code> objects that specify the builds that
      * could not be deleted.</p>
      */
-    inline const Aws::Vector<BuildNotDeleted>& GetBuildsNotDeleted() const{ return m_buildsNotDeleted; }
+    inline const Aws::Vector<BuildNotDeleted>& GetBuildsNotDeleted() const { return m_buildsNotDeleted; }
+    template<typename BuildsNotDeletedT = Aws::Vector<BuildNotDeleted>>
+    void SetBuildsNotDeleted(BuildsNotDeletedT&& value) { m_buildsNotDeletedHasBeenSet = true; m_buildsNotDeleted = std::forward<BuildsNotDeletedT>(value); }
+    template<typename BuildsNotDeletedT = Aws::Vector<BuildNotDeleted>>
+    DeleteBuildBatchResult& WithBuildsNotDeleted(BuildsNotDeletedT&& value) { SetBuildsNotDeleted(std::forward<BuildsNotDeletedT>(value)); return *this;}
+    template<typename BuildsNotDeletedT = BuildNotDeleted>
+    DeleteBuildBatchResult& AddBuildsNotDeleted(BuildsNotDeletedT&& value) { m_buildsNotDeletedHasBeenSet = true; m_buildsNotDeleted.emplace_back(std::forward<BuildsNotDeletedT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of <code>BuildNotDeleted</code> objects that specify the builds that
-     * could not be deleted.</p>
-     */
-    inline void SetBuildsNotDeleted(const Aws::Vector<BuildNotDeleted>& value) { m_buildsNotDeleted = value; }
-
-    /**
-     * <p>An array of <code>BuildNotDeleted</code> objects that specify the builds that
-     * could not be deleted.</p>
-     */
-    inline void SetBuildsNotDeleted(Aws::Vector<BuildNotDeleted>&& value) { m_buildsNotDeleted = std::move(value); }
-
-    /**
-     * <p>An array of <code>BuildNotDeleted</code> objects that specify the builds that
-     * could not be deleted.</p>
-     */
-    inline DeleteBuildBatchResult& WithBuildsNotDeleted(const Aws::Vector<BuildNotDeleted>& value) { SetBuildsNotDeleted(value); return *this;}
-
-    /**
-     * <p>An array of <code>BuildNotDeleted</code> objects that specify the builds that
-     * could not be deleted.</p>
-     */
-    inline DeleteBuildBatchResult& WithBuildsNotDeleted(Aws::Vector<BuildNotDeleted>&& value) { SetBuildsNotDeleted(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of <code>BuildNotDeleted</code> objects that specify the builds that
-     * could not be deleted.</p>
-     */
-    inline DeleteBuildBatchResult& AddBuildsNotDeleted(const BuildNotDeleted& value) { m_buildsNotDeleted.push_back(value); return *this; }
-
-    /**
-     * <p>An array of <code>BuildNotDeleted</code> objects that specify the builds that
-     * could not be deleted.</p>
-     */
-    inline DeleteBuildBatchResult& AddBuildsNotDeleted(BuildNotDeleted&& value) { m_buildsNotDeleted.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DeleteBuildBatchResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DeleteBuildBatchResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DeleteBuildBatchResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DeleteBuildBatchResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_statusCode;
+    bool m_statusCodeHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_buildsDeleted;
+    bool m_buildsDeletedHasBeenSet = false;
 
     Aws::Vector<BuildNotDeleted> m_buildsNotDeleted;
+    bool m_buildsNotDeletedHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

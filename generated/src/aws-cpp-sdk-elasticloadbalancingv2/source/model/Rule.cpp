@@ -20,23 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-Rule::Rule() : 
-    m_ruleArnHasBeenSet(false),
-    m_priorityHasBeenSet(false),
-    m_conditionsHasBeenSet(false),
-    m_actionsHasBeenSet(false),
-    m_isDefault(false),
-    m_isDefaultHasBeenSet(false)
-{
-}
-
-Rule::Rule(const XmlNode& xmlNode) : 
-    m_ruleArnHasBeenSet(false),
-    m_priorityHasBeenSet(false),
-    m_conditionsHasBeenSet(false),
-    m_actionsHasBeenSet(false),
-    m_isDefault(false),
-    m_isDefaultHasBeenSet(false)
+Rule::Rule(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -63,6 +47,7 @@ Rule& Rule::operator =(const XmlNode& xmlNode)
     if(!conditionsNode.IsNull())
     {
       XmlNode conditionsMember = conditionsNode.FirstChild("member");
+      m_conditionsHasBeenSet = !conditionsMember.IsNull();
       while(!conditionsMember.IsNull())
       {
         m_conditions.push_back(conditionsMember);
@@ -75,6 +60,7 @@ Rule& Rule::operator =(const XmlNode& xmlNode)
     if(!actionsNode.IsNull())
     {
       XmlNode actionsMember = actionsNode.FirstChild("member");
+      m_actionsHasBeenSet = !actionsMember.IsNull();
       while(!actionsMember.IsNull())
       {
         m_actions.push_back(actionsMember);
@@ -151,7 +137,7 @@ void Rule::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_conditions)
       {
         Aws::StringStream conditionsSs;
-        conditionsSs << location <<  ".Conditions.member." << conditionsIdx++;
+        conditionsSs << location << ".Conditions.member." << conditionsIdx++;
         item.OutputToStream(oStream, conditionsSs.str().c_str());
       }
   }
@@ -161,7 +147,7 @@ void Rule::OutputToStream(Aws::OStream& oStream, const char* location) const
       for(auto& item : m_actions)
       {
         Aws::StringStream actionsSs;
-        actionsSs << location <<  ".Actions.member." << actionsIdx++;
+        actionsSs << location << ".Actions.member." << actionsIdx++;
         item.OutputToStream(oStream, actionsSs.str().c_str());
       }
   }

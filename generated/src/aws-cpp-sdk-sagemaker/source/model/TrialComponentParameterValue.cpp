@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TrialComponentParameterValue::TrialComponentParameterValue() : 
-    m_stringValueHasBeenSet(false),
-    m_numberValue(0.0),
-    m_numberValueHasBeenSet(false)
-{
-}
-
-TrialComponentParameterValue::TrialComponentParameterValue(JsonView jsonValue) : 
-    m_stringValueHasBeenSet(false),
-    m_numberValue(0.0),
-    m_numberValueHasBeenSet(false)
+TrialComponentParameterValue::TrialComponentParameterValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ TrialComponentParameterValue& TrialComponentParameterValue::operator =(JsonView 
   if(jsonValue.ValueExists("StringValue"))
   {
     m_stringValue = jsonValue.GetString("StringValue");
-
     m_stringValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NumberValue"))
   {
     m_numberValue = jsonValue.GetDouble("NumberValue");
-
     m_numberValueHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -24,7 +24,7 @@ namespace Model
   class UpdateBillingGroupRequest : public BillingConductorRequest
   {
   public:
-    AWS_BILLINGCONDUCTOR_API UpdateBillingGroupRequest();
+    AWS_BILLINGCONDUCTOR_API UpdateBillingGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,247 +35,79 @@ namespace Model
     AWS_BILLINGCONDUCTOR_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the billing group being updated. </p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the billing group being updated. </p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    UpdateBillingGroupRequest& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the billing group being updated. </p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the billing group being updated. </p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the billing group being updated. </p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the billing group being updated. </p>
-     */
-    inline UpdateBillingGroupRequest& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the billing group being updated. </p>
-     */
-    inline UpdateBillingGroupRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the billing group being updated. </p>
-     */
-    inline UpdateBillingGroupRequest& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the billing group. The names must be unique to each billing
      * group. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the billing group. The names must be unique to each billing
-     * group. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateBillingGroupRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the billing group. The names must be unique to each billing
-     * group. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the billing group. The names must be unique to each billing
-     * group. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the billing group. The names must be unique to each billing
-     * group. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the billing group. The names must be unique to each billing
-     * group. </p>
-     */
-    inline UpdateBillingGroupRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the billing group. The names must be unique to each billing
-     * group. </p>
-     */
-    inline UpdateBillingGroupRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the billing group. The names must be unique to each billing
-     * group. </p>
-     */
-    inline UpdateBillingGroupRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the billing group. Only one of the valid values can be used.
      * </p>
      */
-    inline const BillingGroupStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the billing group. Only one of the valid values can be used.
-     * </p>
-     */
+    inline BillingGroupStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(BillingGroupStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline UpdateBillingGroupRequest& WithStatus(BillingGroupStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the billing group. Only one of the valid values can be used.
-     * </p>
-     */
-    inline void SetStatus(const BillingGroupStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the billing group. Only one of the valid values can be used.
-     * </p>
-     */
-    inline void SetStatus(BillingGroupStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the billing group. Only one of the valid values can be used.
-     * </p>
-     */
-    inline UpdateBillingGroupRequest& WithStatus(const BillingGroupStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the billing group. Only one of the valid values can be used.
-     * </p>
-     */
-    inline UpdateBillingGroupRequest& WithStatus(BillingGroupStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The preferences and settings that will be used to compute the Amazon Web
      * Services charges for a billing group. </p>
      */
-    inline const ComputationPreference& GetComputationPreference() const{ return m_computationPreference; }
-
-    /**
-     * <p> The preferences and settings that will be used to compute the Amazon Web
-     * Services charges for a billing group. </p>
-     */
+    inline const ComputationPreference& GetComputationPreference() const { return m_computationPreference; }
     inline bool ComputationPreferenceHasBeenSet() const { return m_computationPreferenceHasBeenSet; }
+    template<typename ComputationPreferenceT = ComputationPreference>
+    void SetComputationPreference(ComputationPreferenceT&& value) { m_computationPreferenceHasBeenSet = true; m_computationPreference = std::forward<ComputationPreferenceT>(value); }
+    template<typename ComputationPreferenceT = ComputationPreference>
+    UpdateBillingGroupRequest& WithComputationPreference(ComputationPreferenceT&& value) { SetComputationPreference(std::forward<ComputationPreferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The preferences and settings that will be used to compute the Amazon Web
-     * Services charges for a billing group. </p>
-     */
-    inline void SetComputationPreference(const ComputationPreference& value) { m_computationPreferenceHasBeenSet = true; m_computationPreference = value; }
-
-    /**
-     * <p> The preferences and settings that will be used to compute the Amazon Web
-     * Services charges for a billing group. </p>
-     */
-    inline void SetComputationPreference(ComputationPreference&& value) { m_computationPreferenceHasBeenSet = true; m_computationPreference = std::move(value); }
-
-    /**
-     * <p> The preferences and settings that will be used to compute the Amazon Web
-     * Services charges for a billing group. </p>
-     */
-    inline UpdateBillingGroupRequest& WithComputationPreference(const ComputationPreference& value) { SetComputationPreference(value); return *this;}
-
-    /**
-     * <p> The preferences and settings that will be used to compute the Amazon Web
-     * Services charges for a billing group. </p>
-     */
-    inline UpdateBillingGroupRequest& WithComputationPreference(ComputationPreference&& value) { SetComputationPreference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the billing group. </p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the billing group. </p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateBillingGroupRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the billing group. </p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the billing group. </p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the billing group. </p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the billing group. </p>
-     */
-    inline UpdateBillingGroupRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the billing group. </p>
-     */
-    inline UpdateBillingGroupRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the billing group. </p>
-     */
-    inline UpdateBillingGroupRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies if the billing group has automatic account association
      * (<code>AutoAssociate</code>) enabled.</p>
      */
-    inline const UpdateBillingGroupAccountGrouping& GetAccountGrouping() const{ return m_accountGrouping; }
-
-    /**
-     * <p>Specifies if the billing group has automatic account association
-     * (<code>AutoAssociate</code>) enabled.</p>
-     */
+    inline const UpdateBillingGroupAccountGrouping& GetAccountGrouping() const { return m_accountGrouping; }
     inline bool AccountGroupingHasBeenSet() const { return m_accountGroupingHasBeenSet; }
-
-    /**
-     * <p>Specifies if the billing group has automatic account association
-     * (<code>AutoAssociate</code>) enabled.</p>
-     */
-    inline void SetAccountGrouping(const UpdateBillingGroupAccountGrouping& value) { m_accountGroupingHasBeenSet = true; m_accountGrouping = value; }
-
-    /**
-     * <p>Specifies if the billing group has automatic account association
-     * (<code>AutoAssociate</code>) enabled.</p>
-     */
-    inline void SetAccountGrouping(UpdateBillingGroupAccountGrouping&& value) { m_accountGroupingHasBeenSet = true; m_accountGrouping = std::move(value); }
-
-    /**
-     * <p>Specifies if the billing group has automatic account association
-     * (<code>AutoAssociate</code>) enabled.</p>
-     */
-    inline UpdateBillingGroupRequest& WithAccountGrouping(const UpdateBillingGroupAccountGrouping& value) { SetAccountGrouping(value); return *this;}
-
-    /**
-     * <p>Specifies if the billing group has automatic account association
-     * (<code>AutoAssociate</code>) enabled.</p>
-     */
-    inline UpdateBillingGroupRequest& WithAccountGrouping(UpdateBillingGroupAccountGrouping&& value) { SetAccountGrouping(std::move(value)); return *this;}
-
+    template<typename AccountGroupingT = UpdateBillingGroupAccountGrouping>
+    void SetAccountGrouping(AccountGroupingT&& value) { m_accountGroupingHasBeenSet = true; m_accountGrouping = std::forward<AccountGroupingT>(value); }
+    template<typename AccountGroupingT = UpdateBillingGroupAccountGrouping>
+    UpdateBillingGroupRequest& WithAccountGrouping(AccountGroupingT&& value) { SetAccountGrouping(std::forward<AccountGroupingT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
@@ -284,7 +116,7 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    BillingGroupStatus m_status;
+    BillingGroupStatus m_status{BillingGroupStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     ComputationPreference m_computationPreference;

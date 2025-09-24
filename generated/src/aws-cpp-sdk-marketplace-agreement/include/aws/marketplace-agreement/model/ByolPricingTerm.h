@@ -34,52 +34,23 @@ namespace Model
   class ByolPricingTerm
   {
   public:
-    AWS_AGREEMENTSERVICE_API ByolPricingTerm();
+    AWS_AGREEMENTSERVICE_API ByolPricingTerm() = default;
     AWS_AGREEMENTSERVICE_API ByolPricingTerm(Aws::Utils::Json::JsonView jsonValue);
     AWS_AGREEMENTSERVICE_API ByolPricingTerm& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AGREEMENTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Type of the term being updated.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>Type of the term being updated.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>Type of the term being updated.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Type of the term being updated.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Type of the term being updated.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>Type of the term being updated.</p>
-     */
-    inline ByolPricingTerm& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Type of the term being updated.</p>
-     */
-    inline ByolPricingTerm& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>Type of the term being updated.</p>
-     */
-    inline ByolPricingTerm& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    ByolPricingTerm& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_type;

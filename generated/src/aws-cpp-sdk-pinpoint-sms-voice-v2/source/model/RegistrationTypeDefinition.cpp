@@ -18,17 +18,7 @@ namespace PinpointSMSVoiceV2
 namespace Model
 {
 
-RegistrationTypeDefinition::RegistrationTypeDefinition() : 
-    m_registrationTypeHasBeenSet(false),
-    m_supportedAssociationsHasBeenSet(false),
-    m_displayHintsHasBeenSet(false)
-{
-}
-
-RegistrationTypeDefinition::RegistrationTypeDefinition(JsonView jsonValue) : 
-    m_registrationTypeHasBeenSet(false),
-    m_supportedAssociationsHasBeenSet(false),
-    m_displayHintsHasBeenSet(false)
+RegistrationTypeDefinition::RegistrationTypeDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ RegistrationTypeDefinition& RegistrationTypeDefinition::operator =(JsonView json
   if(jsonValue.ValueExists("RegistrationType"))
   {
     m_registrationType = jsonValue.GetString("RegistrationType");
-
     m_registrationTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SupportedAssociations"))
   {
     Aws::Utils::Array<JsonView> supportedAssociationsJsonList = jsonValue.GetArray("SupportedAssociations");
@@ -51,14 +39,11 @@ RegistrationTypeDefinition& RegistrationTypeDefinition::operator =(JsonView json
     }
     m_supportedAssociationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisplayHints"))
   {
     m_displayHints = jsonValue.GetObject("DisplayHints");
-
     m_displayHintsHasBeenSet = true;
   }
-
   return *this;
 }
 

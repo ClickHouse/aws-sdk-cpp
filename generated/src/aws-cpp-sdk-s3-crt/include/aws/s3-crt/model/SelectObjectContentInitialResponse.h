@@ -5,6 +5,7 @@
 
 #pragma once
 #include <aws/s3-crt/S3Crt_EXPORTS.h>
+#include <aws/core/http/HttpTypes.h>
 
 namespace Aws
 {
@@ -23,7 +24,7 @@ namespace Model
   class SelectObjectContentInitialResponse
   {
   public:
-    AWS_S3CRT_API SelectObjectContentInitialResponse();
+    AWS_S3CRT_API SelectObjectContentInitialResponse() = default;
     AWS_S3CRT_API SelectObjectContentInitialResponse(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API SelectObjectContentInitialResponse& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 

@@ -33,85 +33,38 @@ namespace Model
   class BuiltInIntentSortBy
   {
   public:
-    AWS_LEXMODELSV2_API BuiltInIntentSortBy();
+    AWS_LEXMODELSV2_API BuiltInIntentSortBy() = default;
     AWS_LEXMODELSV2_API BuiltInIntentSortBy(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API BuiltInIntentSortBy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The attribute to use to sort the list of built-in intents.</p>
      */
-    inline const BuiltInIntentSortAttribute& GetAttribute() const{ return m_attribute; }
-
-    /**
-     * <p>The attribute to use to sort the list of built-in intents.</p>
-     */
+    inline BuiltInIntentSortAttribute GetAttribute() const { return m_attribute; }
     inline bool AttributeHasBeenSet() const { return m_attributeHasBeenSet; }
+    inline void SetAttribute(BuiltInIntentSortAttribute value) { m_attributeHasBeenSet = true; m_attribute = value; }
+    inline BuiltInIntentSortBy& WithAttribute(BuiltInIntentSortAttribute value) { SetAttribute(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The attribute to use to sort the list of built-in intents.</p>
-     */
-    inline void SetAttribute(const BuiltInIntentSortAttribute& value) { m_attributeHasBeenSet = true; m_attribute = value; }
-
-    /**
-     * <p>The attribute to use to sort the list of built-in intents.</p>
-     */
-    inline void SetAttribute(BuiltInIntentSortAttribute&& value) { m_attributeHasBeenSet = true; m_attribute = std::move(value); }
-
-    /**
-     * <p>The attribute to use to sort the list of built-in intents.</p>
-     */
-    inline BuiltInIntentSortBy& WithAttribute(const BuiltInIntentSortAttribute& value) { SetAttribute(value); return *this;}
-
-    /**
-     * <p>The attribute to use to sort the list of built-in intents.</p>
-     */
-    inline BuiltInIntentSortBy& WithAttribute(BuiltInIntentSortAttribute&& value) { SetAttribute(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The order to sort the list. You can specify ascending or descending
      * order.</p>
      */
-    inline const SortOrder& GetOrder() const{ return m_order; }
-
-    /**
-     * <p>The order to sort the list. You can specify ascending or descending
-     * order.</p>
-     */
+    inline SortOrder GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
-
-    /**
-     * <p>The order to sort the list. You can specify ascending or descending
-     * order.</p>
-     */
-    inline void SetOrder(const SortOrder& value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>The order to sort the list. You can specify ascending or descending
-     * order.</p>
-     */
-    inline void SetOrder(SortOrder&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
-
-    /**
-     * <p>The order to sort the list. You can specify ascending or descending
-     * order.</p>
-     */
-    inline BuiltInIntentSortBy& WithOrder(const SortOrder& value) { SetOrder(value); return *this;}
-
-    /**
-     * <p>The order to sort the list. You can specify ascending or descending
-     * order.</p>
-     */
-    inline BuiltInIntentSortBy& WithOrder(SortOrder&& value) { SetOrder(std::move(value)); return *this;}
-
+    inline void SetOrder(SortOrder value) { m_orderHasBeenSet = true; m_order = value; }
+    inline BuiltInIntentSortBy& WithOrder(SortOrder value) { SetOrder(value); return *this;}
+    ///@}
   private:
 
-    BuiltInIntentSortAttribute m_attribute;
+    BuiltInIntentSortAttribute m_attribute{BuiltInIntentSortAttribute::NOT_SET};
     bool m_attributeHasBeenSet = false;
 
-    SortOrder m_order;
+    SortOrder m_order{SortOrder::NOT_SET};
     bool m_orderHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace SSM
 namespace Model
 {
 
-CommandFilter::CommandFilter() : 
-    m_key(CommandFilterKey::NOT_SET),
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-CommandFilter::CommandFilter(JsonView jsonValue) : 
-    m_key(CommandFilterKey::NOT_SET),
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+CommandFilter::CommandFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CommandFilter& CommandFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("key"))
   {
     m_key = CommandFilterKeyMapper::GetCommandFilterKeyForName(jsonValue.GetString("key"));
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

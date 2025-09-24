@@ -18,15 +18,7 @@ namespace CognitoIdentity
 namespace Model
 {
 
-IdentityPoolShortDescription::IdentityPoolShortDescription() : 
-    m_identityPoolIdHasBeenSet(false),
-    m_identityPoolNameHasBeenSet(false)
-{
-}
-
-IdentityPoolShortDescription::IdentityPoolShortDescription(JsonView jsonValue) : 
-    m_identityPoolIdHasBeenSet(false),
-    m_identityPoolNameHasBeenSet(false)
+IdentityPoolShortDescription::IdentityPoolShortDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ IdentityPoolShortDescription& IdentityPoolShortDescription::operator =(JsonView 
   if(jsonValue.ValueExists("IdentityPoolId"))
   {
     m_identityPoolId = jsonValue.GetString("IdentityPoolId");
-
     m_identityPoolIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IdentityPoolName"))
   {
     m_identityPoolName = jsonValue.GetString("IdentityPoolName");
-
     m_identityPoolNameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,93 +32,35 @@ namespace Model
   class IntegerParameterRangeSpecification
   {
   public:
-    AWS_SAGEMAKER_API IntegerParameterRangeSpecification();
+    AWS_SAGEMAKER_API IntegerParameterRangeSpecification() = default;
     AWS_SAGEMAKER_API IntegerParameterRangeSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API IntegerParameterRangeSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The minimum integer value allowed.</p>
      */
-    inline const Aws::String& GetMinValue() const{ return m_minValue; }
-
-    /**
-     * <p>The minimum integer value allowed.</p>
-     */
+    inline const Aws::String& GetMinValue() const { return m_minValue; }
     inline bool MinValueHasBeenSet() const { return m_minValueHasBeenSet; }
+    template<typename MinValueT = Aws::String>
+    void SetMinValue(MinValueT&& value) { m_minValueHasBeenSet = true; m_minValue = std::forward<MinValueT>(value); }
+    template<typename MinValueT = Aws::String>
+    IntegerParameterRangeSpecification& WithMinValue(MinValueT&& value) { SetMinValue(std::forward<MinValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The minimum integer value allowed.</p>
-     */
-    inline void SetMinValue(const Aws::String& value) { m_minValueHasBeenSet = true; m_minValue = value; }
-
-    /**
-     * <p>The minimum integer value allowed.</p>
-     */
-    inline void SetMinValue(Aws::String&& value) { m_minValueHasBeenSet = true; m_minValue = std::move(value); }
-
-    /**
-     * <p>The minimum integer value allowed.</p>
-     */
-    inline void SetMinValue(const char* value) { m_minValueHasBeenSet = true; m_minValue.assign(value); }
-
-    /**
-     * <p>The minimum integer value allowed.</p>
-     */
-    inline IntegerParameterRangeSpecification& WithMinValue(const Aws::String& value) { SetMinValue(value); return *this;}
-
-    /**
-     * <p>The minimum integer value allowed.</p>
-     */
-    inline IntegerParameterRangeSpecification& WithMinValue(Aws::String&& value) { SetMinValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The minimum integer value allowed.</p>
-     */
-    inline IntegerParameterRangeSpecification& WithMinValue(const char* value) { SetMinValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum integer value allowed.</p>
      */
-    inline const Aws::String& GetMaxValue() const{ return m_maxValue; }
-
-    /**
-     * <p>The maximum integer value allowed.</p>
-     */
+    inline const Aws::String& GetMaxValue() const { return m_maxValue; }
     inline bool MaxValueHasBeenSet() const { return m_maxValueHasBeenSet; }
-
-    /**
-     * <p>The maximum integer value allowed.</p>
-     */
-    inline void SetMaxValue(const Aws::String& value) { m_maxValueHasBeenSet = true; m_maxValue = value; }
-
-    /**
-     * <p>The maximum integer value allowed.</p>
-     */
-    inline void SetMaxValue(Aws::String&& value) { m_maxValueHasBeenSet = true; m_maxValue = std::move(value); }
-
-    /**
-     * <p>The maximum integer value allowed.</p>
-     */
-    inline void SetMaxValue(const char* value) { m_maxValueHasBeenSet = true; m_maxValue.assign(value); }
-
-    /**
-     * <p>The maximum integer value allowed.</p>
-     */
-    inline IntegerParameterRangeSpecification& WithMaxValue(const Aws::String& value) { SetMaxValue(value); return *this;}
-
-    /**
-     * <p>The maximum integer value allowed.</p>
-     */
-    inline IntegerParameterRangeSpecification& WithMaxValue(Aws::String&& value) { SetMaxValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The maximum integer value allowed.</p>
-     */
-    inline IntegerParameterRangeSpecification& WithMaxValue(const char* value) { SetMaxValue(value); return *this;}
-
+    template<typename MaxValueT = Aws::String>
+    void SetMaxValue(MaxValueT&& value) { m_maxValueHasBeenSet = true; m_maxValue = std::forward<MaxValueT>(value); }
+    template<typename MaxValueT = Aws::String>
+    IntegerParameterRangeSpecification& WithMaxValue(MaxValueT&& value) { SetMaxValue(std::forward<MaxValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_minValue;

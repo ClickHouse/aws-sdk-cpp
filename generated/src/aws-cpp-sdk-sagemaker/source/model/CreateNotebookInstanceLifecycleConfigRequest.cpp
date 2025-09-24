@@ -12,13 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateNotebookInstanceLifecycleConfigRequest::CreateNotebookInstanceLifecycleConfigRequest() : 
-    m_notebookInstanceLifecycleConfigNameHasBeenSet(false),
-    m_onCreateHasBeenSet(false),
-    m_onStartHasBeenSet(false)
-{
-}
-
 Aws::String CreateNotebookInstanceLifecycleConfigRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -48,6 +41,17 @@ Aws::String CreateNotebookInstanceLifecycleConfigRequest::SerializePayload() con
      onStartJsonList[onStartIndex].AsObject(m_onStart[onStartIndex].Jsonize());
    }
    payload.WithArray("OnStart", std::move(onStartJsonList));
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
+   for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+   {
+     tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
+   }
+   payload.WithArray("Tags", std::move(tagsJsonList));
 
   }
 

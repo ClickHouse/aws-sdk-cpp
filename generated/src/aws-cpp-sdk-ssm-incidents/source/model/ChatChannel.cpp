@@ -18,15 +18,7 @@ namespace SSMIncidents
 namespace Model
 {
 
-ChatChannel::ChatChannel() : 
-    m_chatbotSnsHasBeenSet(false),
-    m_emptyHasBeenSet(false)
-{
-}
-
-ChatChannel::ChatChannel(JsonView jsonValue) : 
-    m_chatbotSnsHasBeenSet(false),
-    m_emptyHasBeenSet(false)
+ChatChannel::ChatChannel(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ChatChannel& ChatChannel::operator =(JsonView jsonValue)
     }
     m_chatbotSnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("empty"))
   {
     m_empty = jsonValue.GetObject("empty");
-
     m_emptyHasBeenSet = true;
   }
-
   return *this;
 }
 

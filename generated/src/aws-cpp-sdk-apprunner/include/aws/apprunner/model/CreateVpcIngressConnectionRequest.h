@@ -24,7 +24,7 @@ namespace Model
   class CreateVpcIngressConnectionRequest : public AppRunnerRequest
   {
   public:
-    AWS_APPRUNNER_API CreateVpcIngressConnectionRequest();
+    AWS_APPRUNNER_API CreateVpcIngressConnectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,203 +37,61 @@ namespace Model
     AWS_APPRUNNER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for this App Runner service that is used to
      * create the VPC Ingress Connection resource.</p>
      */
-    inline const Aws::String& GetServiceArn() const{ return m_serviceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this App Runner service that is used to
-     * create the VPC Ingress Connection resource.</p>
-     */
+    inline const Aws::String& GetServiceArn() const { return m_serviceArn; }
     inline bool ServiceArnHasBeenSet() const { return m_serviceArnHasBeenSet; }
+    template<typename ServiceArnT = Aws::String>
+    void SetServiceArn(ServiceArnT&& value) { m_serviceArnHasBeenSet = true; m_serviceArn = std::forward<ServiceArnT>(value); }
+    template<typename ServiceArnT = Aws::String>
+    CreateVpcIngressConnectionRequest& WithServiceArn(ServiceArnT&& value) { SetServiceArn(std::forward<ServiceArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for this App Runner service that is used to
-     * create the VPC Ingress Connection resource.</p>
-     */
-    inline void SetServiceArn(const Aws::String& value) { m_serviceArnHasBeenSet = true; m_serviceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this App Runner service that is used to
-     * create the VPC Ingress Connection resource.</p>
-     */
-    inline void SetServiceArn(Aws::String&& value) { m_serviceArnHasBeenSet = true; m_serviceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this App Runner service that is used to
-     * create the VPC Ingress Connection resource.</p>
-     */
-    inline void SetServiceArn(const char* value) { m_serviceArnHasBeenSet = true; m_serviceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this App Runner service that is used to
-     * create the VPC Ingress Connection resource.</p>
-     */
-    inline CreateVpcIngressConnectionRequest& WithServiceArn(const Aws::String& value) { SetServiceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this App Runner service that is used to
-     * create the VPC Ingress Connection resource.</p>
-     */
-    inline CreateVpcIngressConnectionRequest& WithServiceArn(Aws::String&& value) { SetServiceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this App Runner service that is used to
-     * create the VPC Ingress Connection resource.</p>
-     */
-    inline CreateVpcIngressConnectionRequest& WithServiceArn(const char* value) { SetServiceArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A name for the VPC Ingress Connection resource. It must be unique across all
      * the active VPC Ingress Connections in your Amazon Web Services account in the
      * Amazon Web Services Region. </p>
      */
-    inline const Aws::String& GetVpcIngressConnectionName() const{ return m_vpcIngressConnectionName; }
-
-    /**
-     * <p>A name for the VPC Ingress Connection resource. It must be unique across all
-     * the active VPC Ingress Connections in your Amazon Web Services account in the
-     * Amazon Web Services Region. </p>
-     */
+    inline const Aws::String& GetVpcIngressConnectionName() const { return m_vpcIngressConnectionName; }
     inline bool VpcIngressConnectionNameHasBeenSet() const { return m_vpcIngressConnectionNameHasBeenSet; }
+    template<typename VpcIngressConnectionNameT = Aws::String>
+    void SetVpcIngressConnectionName(VpcIngressConnectionNameT&& value) { m_vpcIngressConnectionNameHasBeenSet = true; m_vpcIngressConnectionName = std::forward<VpcIngressConnectionNameT>(value); }
+    template<typename VpcIngressConnectionNameT = Aws::String>
+    CreateVpcIngressConnectionRequest& WithVpcIngressConnectionName(VpcIngressConnectionNameT&& value) { SetVpcIngressConnectionName(std::forward<VpcIngressConnectionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A name for the VPC Ingress Connection resource. It must be unique across all
-     * the active VPC Ingress Connections in your Amazon Web Services account in the
-     * Amazon Web Services Region. </p>
-     */
-    inline void SetVpcIngressConnectionName(const Aws::String& value) { m_vpcIngressConnectionNameHasBeenSet = true; m_vpcIngressConnectionName = value; }
-
-    /**
-     * <p>A name for the VPC Ingress Connection resource. It must be unique across all
-     * the active VPC Ingress Connections in your Amazon Web Services account in the
-     * Amazon Web Services Region. </p>
-     */
-    inline void SetVpcIngressConnectionName(Aws::String&& value) { m_vpcIngressConnectionNameHasBeenSet = true; m_vpcIngressConnectionName = std::move(value); }
-
-    /**
-     * <p>A name for the VPC Ingress Connection resource. It must be unique across all
-     * the active VPC Ingress Connections in your Amazon Web Services account in the
-     * Amazon Web Services Region. </p>
-     */
-    inline void SetVpcIngressConnectionName(const char* value) { m_vpcIngressConnectionNameHasBeenSet = true; m_vpcIngressConnectionName.assign(value); }
-
-    /**
-     * <p>A name for the VPC Ingress Connection resource. It must be unique across all
-     * the active VPC Ingress Connections in your Amazon Web Services account in the
-     * Amazon Web Services Region. </p>
-     */
-    inline CreateVpcIngressConnectionRequest& WithVpcIngressConnectionName(const Aws::String& value) { SetVpcIngressConnectionName(value); return *this;}
-
-    /**
-     * <p>A name for the VPC Ingress Connection resource. It must be unique across all
-     * the active VPC Ingress Connections in your Amazon Web Services account in the
-     * Amazon Web Services Region. </p>
-     */
-    inline CreateVpcIngressConnectionRequest& WithVpcIngressConnectionName(Aws::String&& value) { SetVpcIngressConnectionName(std::move(value)); return *this;}
-
-    /**
-     * <p>A name for the VPC Ingress Connection resource. It must be unique across all
-     * the active VPC Ingress Connections in your Amazon Web Services account in the
-     * Amazon Web Services Region. </p>
-     */
-    inline CreateVpcIngressConnectionRequest& WithVpcIngressConnectionName(const char* value) { SetVpcIngressConnectionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifications for the customer’s Amazon VPC and the related Amazon Web
      * Services PrivateLink VPC endpoint that are used to create the VPC Ingress
      * Connection resource.</p>
      */
-    inline const IngressVpcConfiguration& GetIngressVpcConfiguration() const{ return m_ingressVpcConfiguration; }
-
-    /**
-     * <p>Specifications for the customer’s Amazon VPC and the related Amazon Web
-     * Services PrivateLink VPC endpoint that are used to create the VPC Ingress
-     * Connection resource.</p>
-     */
+    inline const IngressVpcConfiguration& GetIngressVpcConfiguration() const { return m_ingressVpcConfiguration; }
     inline bool IngressVpcConfigurationHasBeenSet() const { return m_ingressVpcConfigurationHasBeenSet; }
+    template<typename IngressVpcConfigurationT = IngressVpcConfiguration>
+    void SetIngressVpcConfiguration(IngressVpcConfigurationT&& value) { m_ingressVpcConfigurationHasBeenSet = true; m_ingressVpcConfiguration = std::forward<IngressVpcConfigurationT>(value); }
+    template<typename IngressVpcConfigurationT = IngressVpcConfiguration>
+    CreateVpcIngressConnectionRequest& WithIngressVpcConfiguration(IngressVpcConfigurationT&& value) { SetIngressVpcConfiguration(std::forward<IngressVpcConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifications for the customer’s Amazon VPC and the related Amazon Web
-     * Services PrivateLink VPC endpoint that are used to create the VPC Ingress
-     * Connection resource.</p>
-     */
-    inline void SetIngressVpcConfiguration(const IngressVpcConfiguration& value) { m_ingressVpcConfigurationHasBeenSet = true; m_ingressVpcConfiguration = value; }
-
-    /**
-     * <p>Specifications for the customer’s Amazon VPC and the related Amazon Web
-     * Services PrivateLink VPC endpoint that are used to create the VPC Ingress
-     * Connection resource.</p>
-     */
-    inline void SetIngressVpcConfiguration(IngressVpcConfiguration&& value) { m_ingressVpcConfigurationHasBeenSet = true; m_ingressVpcConfiguration = std::move(value); }
-
-    /**
-     * <p>Specifications for the customer’s Amazon VPC and the related Amazon Web
-     * Services PrivateLink VPC endpoint that are used to create the VPC Ingress
-     * Connection resource.</p>
-     */
-    inline CreateVpcIngressConnectionRequest& WithIngressVpcConfiguration(const IngressVpcConfiguration& value) { SetIngressVpcConfiguration(value); return *this;}
-
-    /**
-     * <p>Specifications for the customer’s Amazon VPC and the related Amazon Web
-     * Services PrivateLink VPC endpoint that are used to create the VPC Ingress
-     * Connection resource.</p>
-     */
-    inline CreateVpcIngressConnectionRequest& WithIngressVpcConfiguration(IngressVpcConfiguration&& value) { SetIngressVpcConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional list of metadata items that you can associate with the VPC
      * Ingress Connection resource. A tag is a key-value pair.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the VPC
-     * Ingress Connection resource. A tag is a key-value pair.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the VPC
-     * Ingress Connection resource. A tag is a key-value pair.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the VPC
-     * Ingress Connection resource. A tag is a key-value pair.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the VPC
-     * Ingress Connection resource. A tag is a key-value pair.</p>
-     */
-    inline CreateVpcIngressConnectionRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the VPC
-     * Ingress Connection resource. A tag is a key-value pair.</p>
-     */
-    inline CreateVpcIngressConnectionRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the VPC
-     * Ingress Connection resource. A tag is a key-value pair.</p>
-     */
-    inline CreateVpcIngressConnectionRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the VPC
-     * Ingress Connection resource. A tag is a key-value pair.</p>
-     */
-    inline CreateVpcIngressConnectionRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateVpcIngressConnectionRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateVpcIngressConnectionRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_serviceArn;

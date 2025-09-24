@@ -35,277 +35,88 @@ namespace Model
   class DatasetSummary
   {
   public:
-    AWS_PERSONALIZE_API DatasetSummary();
+    AWS_PERSONALIZE_API DatasetSummary() = default;
     AWS_PERSONALIZE_API DatasetSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API DatasetSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the dataset.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DatasetSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline DatasetSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline DatasetSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the dataset.</p>
-     */
-    inline DatasetSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the dataset.</p>
      */
-    inline const Aws::String& GetDatasetArn() const{ return m_datasetArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
+    inline const Aws::String& GetDatasetArn() const { return m_datasetArn; }
     inline bool DatasetArnHasBeenSet() const { return m_datasetArnHasBeenSet; }
+    template<typename DatasetArnT = Aws::String>
+    void SetDatasetArn(DatasetArnT&& value) { m_datasetArnHasBeenSet = true; m_datasetArn = std::forward<DatasetArnT>(value); }
+    template<typename DatasetArnT = Aws::String>
+    DatasetSummary& WithDatasetArn(DatasetArnT&& value) { SetDatasetArn(std::forward<DatasetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline void SetDatasetArn(const Aws::String& value) { m_datasetArnHasBeenSet = true; m_datasetArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline void SetDatasetArn(Aws::String&& value) { m_datasetArnHasBeenSet = true; m_datasetArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline void SetDatasetArn(const char* value) { m_datasetArnHasBeenSet = true; m_datasetArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline DatasetSummary& WithDatasetArn(const Aws::String& value) { SetDatasetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline DatasetSummary& WithDatasetArn(Aws::String&& value) { SetDatasetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset.</p>
-     */
-    inline DatasetSummary& WithDatasetArn(const char* value) { SetDatasetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The dataset type. One of the following values:</p> <ul> <li>
      * <p>Interactions</p> </li> <li> <p>Items</p> </li> <li> <p>Users</p> </li> <li>
      * <p>Event-Interactions</p> </li> </ul>
      */
-    inline const Aws::String& GetDatasetType() const{ return m_datasetType; }
-
-    /**
-     * <p>The dataset type. One of the following values:</p> <ul> <li>
-     * <p>Interactions</p> </li> <li> <p>Items</p> </li> <li> <p>Users</p> </li> <li>
-     * <p>Event-Interactions</p> </li> </ul>
-     */
+    inline const Aws::String& GetDatasetType() const { return m_datasetType; }
     inline bool DatasetTypeHasBeenSet() const { return m_datasetTypeHasBeenSet; }
+    template<typename DatasetTypeT = Aws::String>
+    void SetDatasetType(DatasetTypeT&& value) { m_datasetTypeHasBeenSet = true; m_datasetType = std::forward<DatasetTypeT>(value); }
+    template<typename DatasetTypeT = Aws::String>
+    DatasetSummary& WithDatasetType(DatasetTypeT&& value) { SetDatasetType(std::forward<DatasetTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dataset type. One of the following values:</p> <ul> <li>
-     * <p>Interactions</p> </li> <li> <p>Items</p> </li> <li> <p>Users</p> </li> <li>
-     * <p>Event-Interactions</p> </li> </ul>
-     */
-    inline void SetDatasetType(const Aws::String& value) { m_datasetTypeHasBeenSet = true; m_datasetType = value; }
-
-    /**
-     * <p>The dataset type. One of the following values:</p> <ul> <li>
-     * <p>Interactions</p> </li> <li> <p>Items</p> </li> <li> <p>Users</p> </li> <li>
-     * <p>Event-Interactions</p> </li> </ul>
-     */
-    inline void SetDatasetType(Aws::String&& value) { m_datasetTypeHasBeenSet = true; m_datasetType = std::move(value); }
-
-    /**
-     * <p>The dataset type. One of the following values:</p> <ul> <li>
-     * <p>Interactions</p> </li> <li> <p>Items</p> </li> <li> <p>Users</p> </li> <li>
-     * <p>Event-Interactions</p> </li> </ul>
-     */
-    inline void SetDatasetType(const char* value) { m_datasetTypeHasBeenSet = true; m_datasetType.assign(value); }
-
-    /**
-     * <p>The dataset type. One of the following values:</p> <ul> <li>
-     * <p>Interactions</p> </li> <li> <p>Items</p> </li> <li> <p>Users</p> </li> <li>
-     * <p>Event-Interactions</p> </li> </ul>
-     */
-    inline DatasetSummary& WithDatasetType(const Aws::String& value) { SetDatasetType(value); return *this;}
-
-    /**
-     * <p>The dataset type. One of the following values:</p> <ul> <li>
-     * <p>Interactions</p> </li> <li> <p>Items</p> </li> <li> <p>Users</p> </li> <li>
-     * <p>Event-Interactions</p> </li> </ul>
-     */
-    inline DatasetSummary& WithDatasetType(Aws::String&& value) { SetDatasetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The dataset type. One of the following values:</p> <ul> <li>
-     * <p>Interactions</p> </li> <li> <p>Items</p> </li> <li> <p>Users</p> </li> <li>
-     * <p>Event-Interactions</p> </li> </ul>
-     */
-    inline DatasetSummary& WithDatasetType(const char* value) { SetDatasetType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the dataset.</p> <p>A dataset can be in one of the following
      * states:</p> <ul> <li> <p>CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or-
      * CREATE FAILED</p> </li> <li> <p>DELETE PENDING &gt; DELETE IN_PROGRESS</p> </li>
      * </ul>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the dataset.</p> <p>A dataset can be in one of the following
-     * states:</p> <ul> <li> <p>CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or-
-     * CREATE FAILED</p> </li> <li> <p>DELETE PENDING &gt; DELETE IN_PROGRESS</p> </li>
-     * </ul>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    DatasetSummary& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the dataset.</p> <p>A dataset can be in one of the following
-     * states:</p> <ul> <li> <p>CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or-
-     * CREATE FAILED</p> </li> <li> <p>DELETE PENDING &gt; DELETE IN_PROGRESS</p> </li>
-     * </ul>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the dataset.</p> <p>A dataset can be in one of the following
-     * states:</p> <ul> <li> <p>CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or-
-     * CREATE FAILED</p> </li> <li> <p>DELETE PENDING &gt; DELETE IN_PROGRESS</p> </li>
-     * </ul>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the dataset.</p> <p>A dataset can be in one of the following
-     * states:</p> <ul> <li> <p>CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or-
-     * CREATE FAILED</p> </li> <li> <p>DELETE PENDING &gt; DELETE IN_PROGRESS</p> </li>
-     * </ul>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the dataset.</p> <p>A dataset can be in one of the following
-     * states:</p> <ul> <li> <p>CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or-
-     * CREATE FAILED</p> </li> <li> <p>DELETE PENDING &gt; DELETE IN_PROGRESS</p> </li>
-     * </ul>
-     */
-    inline DatasetSummary& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the dataset.</p> <p>A dataset can be in one of the following
-     * states:</p> <ul> <li> <p>CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or-
-     * CREATE FAILED</p> </li> <li> <p>DELETE PENDING &gt; DELETE IN_PROGRESS</p> </li>
-     * </ul>
-     */
-    inline DatasetSummary& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the dataset.</p> <p>A dataset can be in one of the following
-     * states:</p> <ul> <li> <p>CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or-
-     * CREATE FAILED</p> </li> <li> <p>DELETE PENDING &gt; DELETE IN_PROGRESS</p> </li>
-     * </ul>
-     */
-    inline DatasetSummary& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time (in Unix time) that the dataset was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDateTime() const{ return m_creationDateTime; }
-
-    /**
-     * <p>The date and time (in Unix time) that the dataset was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDateTime() const { return m_creationDateTime; }
     inline bool CreationDateTimeHasBeenSet() const { return m_creationDateTimeHasBeenSet; }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    void SetCreationDateTime(CreationDateTimeT&& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = std::forward<CreationDateTimeT>(value); }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    DatasetSummary& WithCreationDateTime(CreationDateTimeT&& value) { SetCreationDateTime(std::forward<CreationDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time (in Unix time) that the dataset was created.</p>
-     */
-    inline void SetCreationDateTime(const Aws::Utils::DateTime& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = value; }
-
-    /**
-     * <p>The date and time (in Unix time) that the dataset was created.</p>
-     */
-    inline void SetCreationDateTime(Aws::Utils::DateTime&& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time (in Unix time) that the dataset was created.</p>
-     */
-    inline DatasetSummary& WithCreationDateTime(const Aws::Utils::DateTime& value) { SetCreationDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time (in Unix time) that the dataset was created.</p>
-     */
-    inline DatasetSummary& WithCreationDateTime(Aws::Utils::DateTime&& value) { SetCreationDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time (in Unix time) that the dataset was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedDateTime() const{ return m_lastUpdatedDateTime; }
-
-    /**
-     * <p>The date and time (in Unix time) that the dataset was last updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedDateTime() const { return m_lastUpdatedDateTime; }
     inline bool LastUpdatedDateTimeHasBeenSet() const { return m_lastUpdatedDateTimeHasBeenSet; }
-
-    /**
-     * <p>The date and time (in Unix time) that the dataset was last updated.</p>
-     */
-    inline void SetLastUpdatedDateTime(const Aws::Utils::DateTime& value) { m_lastUpdatedDateTimeHasBeenSet = true; m_lastUpdatedDateTime = value; }
-
-    /**
-     * <p>The date and time (in Unix time) that the dataset was last updated.</p>
-     */
-    inline void SetLastUpdatedDateTime(Aws::Utils::DateTime&& value) { m_lastUpdatedDateTimeHasBeenSet = true; m_lastUpdatedDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time (in Unix time) that the dataset was last updated.</p>
-     */
-    inline DatasetSummary& WithLastUpdatedDateTime(const Aws::Utils::DateTime& value) { SetLastUpdatedDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time (in Unix time) that the dataset was last updated.</p>
-     */
-    inline DatasetSummary& WithLastUpdatedDateTime(Aws::Utils::DateTime&& value) { SetLastUpdatedDateTime(std::move(value)); return *this;}
-
+    template<typename LastUpdatedDateTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedDateTime(LastUpdatedDateTimeT&& value) { m_lastUpdatedDateTimeHasBeenSet = true; m_lastUpdatedDateTime = std::forward<LastUpdatedDateTimeT>(value); }
+    template<typename LastUpdatedDateTimeT = Aws::Utils::DateTime>
+    DatasetSummary& WithLastUpdatedDateTime(LastUpdatedDateTimeT&& value) { SetLastUpdatedDateTime(std::forward<LastUpdatedDateTimeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -320,10 +131,10 @@ namespace Model
     Aws::String m_status;
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDateTime;
+    Aws::Utils::DateTime m_creationDateTime{};
     bool m_creationDateTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedDateTime;
+    Aws::Utils::DateTime m_lastUpdatedDateTime{};
     bool m_lastUpdatedDateTimeHasBeenSet = false;
   };
 

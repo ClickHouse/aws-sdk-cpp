@@ -28,7 +28,7 @@ namespace Model
   class CreateFunctionDefinitionVersionRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API CreateFunctionDefinitionVersionRequest();
+    AWS_GREENGRASS_API CreateFunctionDefinitionVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,165 +41,56 @@ namespace Model
     AWS_GREENGRASS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * A client token used to correlate requests and responses.
      */
-    inline const Aws::String& GetAmznClientToken() const{ return m_amznClientToken; }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
+    inline const Aws::String& GetAmznClientToken() const { return m_amznClientToken; }
     inline bool AmznClientTokenHasBeenSet() const { return m_amznClientTokenHasBeenSet; }
+    template<typename AmznClientTokenT = Aws::String>
+    void SetAmznClientToken(AmznClientTokenT&& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = std::forward<AmznClientTokenT>(value); }
+    template<typename AmznClientTokenT = Aws::String>
+    CreateFunctionDefinitionVersionRequest& WithAmznClientToken(AmznClientTokenT&& value) { SetAmznClientToken(std::forward<AmznClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(const Aws::String& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = value; }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(Aws::String&& value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken = std::move(value); }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline void SetAmznClientToken(const char* value) { m_amznClientTokenHasBeenSet = true; m_amznClientToken.assign(value); }
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline CreateFunctionDefinitionVersionRequest& WithAmznClientToken(const Aws::String& value) { SetAmznClientToken(value); return *this;}
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline CreateFunctionDefinitionVersionRequest& WithAmznClientToken(Aws::String&& value) { SetAmznClientToken(std::move(value)); return *this;}
-
-    /**
-     * A client token used to correlate requests and responses.
-     */
-    inline CreateFunctionDefinitionVersionRequest& WithAmznClientToken(const char* value) { SetAmznClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * The default configuration that applies to all Lambda functions in this function
      * definition version. Individual Lambda functions can override these settings.
      */
-    inline const FunctionDefaultConfig& GetDefaultConfig() const{ return m_defaultConfig; }
-
-    /**
-     * The default configuration that applies to all Lambda functions in this function
-     * definition version. Individual Lambda functions can override these settings.
-     */
+    inline const FunctionDefaultConfig& GetDefaultConfig() const { return m_defaultConfig; }
     inline bool DefaultConfigHasBeenSet() const { return m_defaultConfigHasBeenSet; }
+    template<typename DefaultConfigT = FunctionDefaultConfig>
+    void SetDefaultConfig(DefaultConfigT&& value) { m_defaultConfigHasBeenSet = true; m_defaultConfig = std::forward<DefaultConfigT>(value); }
+    template<typename DefaultConfigT = FunctionDefaultConfig>
+    CreateFunctionDefinitionVersionRequest& WithDefaultConfig(DefaultConfigT&& value) { SetDefaultConfig(std::forward<DefaultConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The default configuration that applies to all Lambda functions in this function
-     * definition version. Individual Lambda functions can override these settings.
-     */
-    inline void SetDefaultConfig(const FunctionDefaultConfig& value) { m_defaultConfigHasBeenSet = true; m_defaultConfig = value; }
-
-    /**
-     * The default configuration that applies to all Lambda functions in this function
-     * definition version. Individual Lambda functions can override these settings.
-     */
-    inline void SetDefaultConfig(FunctionDefaultConfig&& value) { m_defaultConfigHasBeenSet = true; m_defaultConfig = std::move(value); }
-
-    /**
-     * The default configuration that applies to all Lambda functions in this function
-     * definition version. Individual Lambda functions can override these settings.
-     */
-    inline CreateFunctionDefinitionVersionRequest& WithDefaultConfig(const FunctionDefaultConfig& value) { SetDefaultConfig(value); return *this;}
-
-    /**
-     * The default configuration that applies to all Lambda functions in this function
-     * definition version. Individual Lambda functions can override these settings.
-     */
-    inline CreateFunctionDefinitionVersionRequest& WithDefaultConfig(FunctionDefaultConfig&& value) { SetDefaultConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * The ID of the Lambda function definition.
      */
-    inline const Aws::String& GetFunctionDefinitionId() const{ return m_functionDefinitionId; }
-
-    /**
-     * The ID of the Lambda function definition.
-     */
+    inline const Aws::String& GetFunctionDefinitionId() const { return m_functionDefinitionId; }
     inline bool FunctionDefinitionIdHasBeenSet() const { return m_functionDefinitionIdHasBeenSet; }
+    template<typename FunctionDefinitionIdT = Aws::String>
+    void SetFunctionDefinitionId(FunctionDefinitionIdT&& value) { m_functionDefinitionIdHasBeenSet = true; m_functionDefinitionId = std::forward<FunctionDefinitionIdT>(value); }
+    template<typename FunctionDefinitionIdT = Aws::String>
+    CreateFunctionDefinitionVersionRequest& WithFunctionDefinitionId(FunctionDefinitionIdT&& value) { SetFunctionDefinitionId(std::forward<FunctionDefinitionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline void SetFunctionDefinitionId(const Aws::String& value) { m_functionDefinitionIdHasBeenSet = true; m_functionDefinitionId = value; }
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline void SetFunctionDefinitionId(Aws::String&& value) { m_functionDefinitionIdHasBeenSet = true; m_functionDefinitionId = std::move(value); }
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline void SetFunctionDefinitionId(const char* value) { m_functionDefinitionIdHasBeenSet = true; m_functionDefinitionId.assign(value); }
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline CreateFunctionDefinitionVersionRequest& WithFunctionDefinitionId(const Aws::String& value) { SetFunctionDefinitionId(value); return *this;}
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline CreateFunctionDefinitionVersionRequest& WithFunctionDefinitionId(Aws::String&& value) { SetFunctionDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the Lambda function definition.
-     */
-    inline CreateFunctionDefinitionVersionRequest& WithFunctionDefinitionId(const char* value) { SetFunctionDefinitionId(value); return *this;}
-
-
+    ///@{
     /**
      * A list of Lambda functions in this function definition version.
      */
-    inline const Aws::Vector<Function>& GetFunctions() const{ return m_functions; }
-
-    /**
-     * A list of Lambda functions in this function definition version.
-     */
+    inline const Aws::Vector<Function>& GetFunctions() const { return m_functions; }
     inline bool FunctionsHasBeenSet() const { return m_functionsHasBeenSet; }
-
-    /**
-     * A list of Lambda functions in this function definition version.
-     */
-    inline void SetFunctions(const Aws::Vector<Function>& value) { m_functionsHasBeenSet = true; m_functions = value; }
-
-    /**
-     * A list of Lambda functions in this function definition version.
-     */
-    inline void SetFunctions(Aws::Vector<Function>&& value) { m_functionsHasBeenSet = true; m_functions = std::move(value); }
-
-    /**
-     * A list of Lambda functions in this function definition version.
-     */
-    inline CreateFunctionDefinitionVersionRequest& WithFunctions(const Aws::Vector<Function>& value) { SetFunctions(value); return *this;}
-
-    /**
-     * A list of Lambda functions in this function definition version.
-     */
-    inline CreateFunctionDefinitionVersionRequest& WithFunctions(Aws::Vector<Function>&& value) { SetFunctions(std::move(value)); return *this;}
-
-    /**
-     * A list of Lambda functions in this function definition version.
-     */
-    inline CreateFunctionDefinitionVersionRequest& AddFunctions(const Function& value) { m_functionsHasBeenSet = true; m_functions.push_back(value); return *this; }
-
-    /**
-     * A list of Lambda functions in this function definition version.
-     */
-    inline CreateFunctionDefinitionVersionRequest& AddFunctions(Function&& value) { m_functionsHasBeenSet = true; m_functions.push_back(std::move(value)); return *this; }
-
+    template<typename FunctionsT = Aws::Vector<Function>>
+    void SetFunctions(FunctionsT&& value) { m_functionsHasBeenSet = true; m_functions = std::forward<FunctionsT>(value); }
+    template<typename FunctionsT = Aws::Vector<Function>>
+    CreateFunctionDefinitionVersionRequest& WithFunctions(FunctionsT&& value) { SetFunctions(std::forward<FunctionsT>(value)); return *this;}
+    template<typename FunctionsT = Function>
+    CreateFunctionDefinitionVersionRequest& AddFunctions(FunctionsT&& value) { m_functionsHasBeenSet = true; m_functions.emplace_back(std::forward<FunctionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_amznClientToken;

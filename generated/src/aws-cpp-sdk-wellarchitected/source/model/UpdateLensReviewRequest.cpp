@@ -12,14 +12,6 @@ using namespace Aws::WellArchitected::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateLensReviewRequest::UpdateLensReviewRequest() : 
-    m_workloadIdHasBeenSet(false),
-    m_lensAliasHasBeenSet(false),
-    m_lensNotesHasBeenSet(false),
-    m_pillarNotesHasBeenSet(false)
-{
-}
-
 Aws::String UpdateLensReviewRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +30,12 @@ Aws::String UpdateLensReviewRequest::SerializePayload() const
      pillarNotesJsonMap.WithString(pillarNotesItem.first, pillarNotesItem.second);
    }
    payload.WithObject("PillarNotes", std::move(pillarNotesJsonMap));
+
+  }
+
+  if(m_jiraConfigurationHasBeenSet)
+  {
+   payload.WithObject("JiraConfiguration", m_jiraConfiguration.Jsonize());
 
   }
 

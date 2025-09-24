@@ -18,17 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-DashIsoEncryptionSettings::DashIsoEncryptionSettings() : 
-    m_playbackDeviceCompatibility(DashIsoPlaybackDeviceCompatibility::NOT_SET),
-    m_playbackDeviceCompatibilityHasBeenSet(false),
-    m_spekeKeyProviderHasBeenSet(false)
-{
-}
-
-DashIsoEncryptionSettings::DashIsoEncryptionSettings(JsonView jsonValue) : 
-    m_playbackDeviceCompatibility(DashIsoPlaybackDeviceCompatibility::NOT_SET),
-    m_playbackDeviceCompatibilityHasBeenSet(false),
-    m_spekeKeyProviderHasBeenSet(false)
+DashIsoEncryptionSettings::DashIsoEncryptionSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DashIsoEncryptionSettings& DashIsoEncryptionSettings::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("playbackDeviceCompatibility"))
   {
     m_playbackDeviceCompatibility = DashIsoPlaybackDeviceCompatibilityMapper::GetDashIsoPlaybackDeviceCompatibilityForName(jsonValue.GetString("playbackDeviceCompatibility"));
-
     m_playbackDeviceCompatibilityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("spekeKeyProvider"))
   {
     m_spekeKeyProvider = jsonValue.GetObject("spekeKeyProvider");
-
     m_spekeKeyProviderHasBeenSet = true;
   }
-
   return *this;
 }
 

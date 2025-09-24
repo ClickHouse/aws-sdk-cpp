@@ -12,23 +12,13 @@ using namespace Aws::OpenSearchServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DeleteAccessPolicyRequest::DeleteAccessPolicyRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_nameHasBeenSet(false),
-    m_type(AccessPolicyType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
 Aws::String DeleteAccessPolicyRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_clientTokenHasBeenSet)
+  if(m_typeHasBeenSet)
   {
-   payload.WithString("clientToken", m_clientToken);
-
+   payload.WithString("type", AccessPolicyTypeMapper::GetNameForAccessPolicyType(m_type));
   }
 
   if(m_nameHasBeenSet)
@@ -37,9 +27,10 @@ Aws::String DeleteAccessPolicyRequest::SerializePayload() const
 
   }
 
-  if(m_typeHasBeenSet)
+  if(m_clientTokenHasBeenSet)
   {
-   payload.WithString("type", AccessPolicyTypeMapper::GetNameForAccessPolicyType(m_type));
+   payload.WithString("clientToken", m_clientToken);
+
   }
 
   return payload.View().WriteReadable();

@@ -29,139 +29,57 @@ namespace Model
   class GetFindingHistoryResult
   {
   public:
-    AWS_SECURITYHUB_API GetFindingHistoryResult();
+    AWS_SECURITYHUB_API GetFindingHistoryResult() = default;
     AWS_SECURITYHUB_API GetFindingHistoryResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SECURITYHUB_API GetFindingHistoryResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> A list of events that altered the specified finding during the specified
      * time period. </p>
      */
-    inline const Aws::Vector<FindingHistoryRecord>& GetRecords() const{ return m_records; }
+    inline const Aws::Vector<FindingHistoryRecord>& GetRecords() const { return m_records; }
+    template<typename RecordsT = Aws::Vector<FindingHistoryRecord>>
+    void SetRecords(RecordsT&& value) { m_recordsHasBeenSet = true; m_records = std::forward<RecordsT>(value); }
+    template<typename RecordsT = Aws::Vector<FindingHistoryRecord>>
+    GetFindingHistoryResult& WithRecords(RecordsT&& value) { SetRecords(std::forward<RecordsT>(value)); return *this;}
+    template<typename RecordsT = FindingHistoryRecord>
+    GetFindingHistoryResult& AddRecords(RecordsT&& value) { m_recordsHasBeenSet = true; m_records.emplace_back(std::forward<RecordsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> A list of events that altered the specified finding during the specified
-     * time period. </p>
-     */
-    inline void SetRecords(const Aws::Vector<FindingHistoryRecord>& value) { m_records = value; }
-
-    /**
-     * <p> A list of events that altered the specified finding during the specified
-     * time period. </p>
-     */
-    inline void SetRecords(Aws::Vector<FindingHistoryRecord>&& value) { m_records = std::move(value); }
-
-    /**
-     * <p> A list of events that altered the specified finding during the specified
-     * time period. </p>
-     */
-    inline GetFindingHistoryResult& WithRecords(const Aws::Vector<FindingHistoryRecord>& value) { SetRecords(value); return *this;}
-
-    /**
-     * <p> A list of events that altered the specified finding during the specified
-     * time period. </p>
-     */
-    inline GetFindingHistoryResult& WithRecords(Aws::Vector<FindingHistoryRecord>&& value) { SetRecords(std::move(value)); return *this;}
-
-    /**
-     * <p> A list of events that altered the specified finding during the specified
-     * time period. </p>
-     */
-    inline GetFindingHistoryResult& AddRecords(const FindingHistoryRecord& value) { m_records.push_back(value); return *this; }
-
-    /**
-     * <p> A list of events that altered the specified finding during the specified
-     * time period. </p>
-     */
-    inline GetFindingHistoryResult& AddRecords(FindingHistoryRecord&& value) { m_records.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> A token for pagination purposes. Provide this token in the subsequent
      * request to <code>GetFindingsHistory</code> to get up to an additional 100
      * results of history for the same finding that you specified in your initial
      * request. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetFindingHistoryResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A token for pagination purposes. Provide this token in the subsequent
-     * request to <code>GetFindingsHistory</code> to get up to an additional 100
-     * results of history for the same finding that you specified in your initial
-     * request. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p> A token for pagination purposes. Provide this token in the subsequent
-     * request to <code>GetFindingsHistory</code> to get up to an additional 100
-     * results of history for the same finding that you specified in your initial
-     * request. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p> A token for pagination purposes. Provide this token in the subsequent
-     * request to <code>GetFindingsHistory</code> to get up to an additional 100
-     * results of history for the same finding that you specified in your initial
-     * request. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p> A token for pagination purposes. Provide this token in the subsequent
-     * request to <code>GetFindingsHistory</code> to get up to an additional 100
-     * results of history for the same finding that you specified in your initial
-     * request. </p>
-     */
-    inline GetFindingHistoryResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p> A token for pagination purposes. Provide this token in the subsequent
-     * request to <code>GetFindingsHistory</code> to get up to an additional 100
-     * results of history for the same finding that you specified in your initial
-     * request. </p>
-     */
-    inline GetFindingHistoryResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p> A token for pagination purposes. Provide this token in the subsequent
-     * request to <code>GetFindingsHistory</code> to get up to an additional 100
-     * results of history for the same finding that you specified in your initial
-     * request. </p>
-     */
-    inline GetFindingHistoryResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetFindingHistoryResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetFindingHistoryResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetFindingHistoryResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetFindingHistoryResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<FindingHistoryRecord> m_records;
+    bool m_recordsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

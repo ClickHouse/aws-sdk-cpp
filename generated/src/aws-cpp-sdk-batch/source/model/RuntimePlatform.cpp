@@ -18,15 +18,7 @@ namespace Batch
 namespace Model
 {
 
-RuntimePlatform::RuntimePlatform() : 
-    m_operatingSystemFamilyHasBeenSet(false),
-    m_cpuArchitectureHasBeenSet(false)
-{
-}
-
-RuntimePlatform::RuntimePlatform(JsonView jsonValue) : 
-    m_operatingSystemFamilyHasBeenSet(false),
-    m_cpuArchitectureHasBeenSet(false)
+RuntimePlatform::RuntimePlatform(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RuntimePlatform& RuntimePlatform::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("operatingSystemFamily"))
   {
     m_operatingSystemFamily = jsonValue.GetString("operatingSystemFamily");
-
     m_operatingSystemFamilyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("cpuArchitecture"))
   {
     m_cpuArchitecture = jsonValue.GetString("cpuArchitecture");
-
     m_cpuArchitectureHasBeenSet = true;
   }
-
   return *this;
 }
 

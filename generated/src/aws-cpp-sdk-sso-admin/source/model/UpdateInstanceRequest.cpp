@@ -12,15 +12,15 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateInstanceRequest::UpdateInstanceRequest() : 
-    m_instanceArnHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
 Aws::String UpdateInstanceRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("Name", m_name);
+
+  }
 
   if(m_instanceArnHasBeenSet)
   {
@@ -28,9 +28,9 @@ Aws::String UpdateInstanceRequest::SerializePayload() const
 
   }
 
-  if(m_nameHasBeenSet)
+  if(m_encryptionConfigurationHasBeenSet)
   {
-   payload.WithString("Name", m_name);
+   payload.WithObject("EncryptionConfiguration", m_encryptionConfiguration.Jsonize());
 
   }
 

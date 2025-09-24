@@ -22,7 +22,7 @@ namespace Model
   class BatchImportFindingsRequest : public SecurityHubRequest
   {
   public:
-    AWS_SECURITYHUB_API BatchImportFindingsRequest();
+    AWS_SECURITYHUB_API BatchImportFindingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,6 +33,7 @@ namespace Model
     AWS_SECURITYHUB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>A list of findings to import. To successfully import a finding, it must
      * follow the <a
@@ -40,71 +41,15 @@ namespace Model
      * Web Services Security Finding Format</a>. Maximum of 100 findings per
      * request.</p>
      */
-    inline const Aws::Vector<AwsSecurityFinding>& GetFindings() const{ return m_findings; }
-
-    /**
-     * <p>A list of findings to import. To successfully import a finding, it must
-     * follow the <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html">Amazon
-     * Web Services Security Finding Format</a>. Maximum of 100 findings per
-     * request.</p>
-     */
+    inline const Aws::Vector<AwsSecurityFinding>& GetFindings() const { return m_findings; }
     inline bool FindingsHasBeenSet() const { return m_findingsHasBeenSet; }
-
-    /**
-     * <p>A list of findings to import. To successfully import a finding, it must
-     * follow the <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html">Amazon
-     * Web Services Security Finding Format</a>. Maximum of 100 findings per
-     * request.</p>
-     */
-    inline void SetFindings(const Aws::Vector<AwsSecurityFinding>& value) { m_findingsHasBeenSet = true; m_findings = value; }
-
-    /**
-     * <p>A list of findings to import. To successfully import a finding, it must
-     * follow the <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html">Amazon
-     * Web Services Security Finding Format</a>. Maximum of 100 findings per
-     * request.</p>
-     */
-    inline void SetFindings(Aws::Vector<AwsSecurityFinding>&& value) { m_findingsHasBeenSet = true; m_findings = std::move(value); }
-
-    /**
-     * <p>A list of findings to import. To successfully import a finding, it must
-     * follow the <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html">Amazon
-     * Web Services Security Finding Format</a>. Maximum of 100 findings per
-     * request.</p>
-     */
-    inline BatchImportFindingsRequest& WithFindings(const Aws::Vector<AwsSecurityFinding>& value) { SetFindings(value); return *this;}
-
-    /**
-     * <p>A list of findings to import. To successfully import a finding, it must
-     * follow the <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html">Amazon
-     * Web Services Security Finding Format</a>. Maximum of 100 findings per
-     * request.</p>
-     */
-    inline BatchImportFindingsRequest& WithFindings(Aws::Vector<AwsSecurityFinding>&& value) { SetFindings(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of findings to import. To successfully import a finding, it must
-     * follow the <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html">Amazon
-     * Web Services Security Finding Format</a>. Maximum of 100 findings per
-     * request.</p>
-     */
-    inline BatchImportFindingsRequest& AddFindings(const AwsSecurityFinding& value) { m_findingsHasBeenSet = true; m_findings.push_back(value); return *this; }
-
-    /**
-     * <p>A list of findings to import. To successfully import a finding, it must
-     * follow the <a
-     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-findings-format.html">Amazon
-     * Web Services Security Finding Format</a>. Maximum of 100 findings per
-     * request.</p>
-     */
-    inline BatchImportFindingsRequest& AddFindings(AwsSecurityFinding&& value) { m_findingsHasBeenSet = true; m_findings.push_back(std::move(value)); return *this; }
-
+    template<typename FindingsT = Aws::Vector<AwsSecurityFinding>>
+    void SetFindings(FindingsT&& value) { m_findingsHasBeenSet = true; m_findings = std::forward<FindingsT>(value); }
+    template<typename FindingsT = Aws::Vector<AwsSecurityFinding>>
+    BatchImportFindingsRequest& WithFindings(FindingsT&& value) { SetFindings(std::forward<FindingsT>(value)); return *this;}
+    template<typename FindingsT = AwsSecurityFinding>
+    BatchImportFindingsRequest& AddFindings(FindingsT&& value) { m_findingsHasBeenSet = true; m_findings.emplace_back(std::forward<FindingsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AwsSecurityFinding> m_findings;

@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DnsOptions::DnsOptions() : 
-    m_dnsRecordIpType(DnsRecordIpType::NOT_SET),
-    m_dnsRecordIpTypeHasBeenSet(false),
-    m_privateDnsOnlyForInboundResolverEndpoint(false),
-    m_privateDnsOnlyForInboundResolverEndpointHasBeenSet(false)
-{
-}
-
-DnsOptions::DnsOptions(const XmlNode& xmlNode) : 
-    m_dnsRecordIpType(DnsRecordIpType::NOT_SET),
-    m_dnsRecordIpTypeHasBeenSet(false),
-    m_privateDnsOnlyForInboundResolverEndpoint(false),
-    m_privateDnsOnlyForInboundResolverEndpointHasBeenSet(false)
+DnsOptions::DnsOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -46,7 +34,7 @@ DnsOptions& DnsOptions::operator =(const XmlNode& xmlNode)
     XmlNode dnsRecordIpTypeNode = resultNode.FirstChild("dnsRecordIpType");
     if(!dnsRecordIpTypeNode.IsNull())
     {
-      m_dnsRecordIpType = DnsRecordIpTypeMapper::GetDnsRecordIpTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dnsRecordIpTypeNode.GetText()).c_str()).c_str());
+      m_dnsRecordIpType = DnsRecordIpTypeMapper::GetDnsRecordIpTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(dnsRecordIpTypeNode.GetText()).c_str()));
       m_dnsRecordIpTypeHasBeenSet = true;
     }
     XmlNode privateDnsOnlyForInboundResolverEndpointNode = resultNode.FirstChild("privateDnsOnlyForInboundResolverEndpoint");
@@ -64,7 +52,7 @@ void DnsOptions::OutputToStream(Aws::OStream& oStream, const char* location, uns
 {
   if(m_dnsRecordIpTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DnsRecordIpType=" << DnsRecordIpTypeMapper::GetNameForDnsRecordIpType(m_dnsRecordIpType) << "&";
+      oStream << location << index << locationValue << ".DnsRecordIpType=" << StringUtils::URLEncode(DnsRecordIpTypeMapper::GetNameForDnsRecordIpType(m_dnsRecordIpType)) << "&";
   }
 
   if(m_privateDnsOnlyForInboundResolverEndpointHasBeenSet)
@@ -78,7 +66,7 @@ void DnsOptions::OutputToStream(Aws::OStream& oStream, const char* location) con
 {
   if(m_dnsRecordIpTypeHasBeenSet)
   {
-      oStream << location << ".DnsRecordIpType=" << DnsRecordIpTypeMapper::GetNameForDnsRecordIpType(m_dnsRecordIpType) << "&";
+      oStream << location << ".DnsRecordIpType=" << StringUtils::URLEncode(DnsRecordIpTypeMapper::GetNameForDnsRecordIpType(m_dnsRecordIpType)) << "&";
   }
   if(m_privateDnsOnlyForInboundResolverEndpointHasBeenSet)
   {

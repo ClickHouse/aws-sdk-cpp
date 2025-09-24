@@ -18,15 +18,7 @@ namespace AppStream
 namespace Model
 {
 
-AppBlockBuilderAppBlockAssociation::AppBlockBuilderAppBlockAssociation() : 
-    m_appBlockArnHasBeenSet(false),
-    m_appBlockBuilderNameHasBeenSet(false)
-{
-}
-
-AppBlockBuilderAppBlockAssociation::AppBlockBuilderAppBlockAssociation(JsonView jsonValue) : 
-    m_appBlockArnHasBeenSet(false),
-    m_appBlockBuilderNameHasBeenSet(false)
+AppBlockBuilderAppBlockAssociation::AppBlockBuilderAppBlockAssociation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AppBlockBuilderAppBlockAssociation& AppBlockBuilderAppBlockAssociation::operator
   if(jsonValue.ValueExists("AppBlockArn"))
   {
     m_appBlockArn = jsonValue.GetString("AppBlockArn");
-
     m_appBlockArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AppBlockBuilderName"))
   {
     m_appBlockBuilderName = jsonValue.GetString("AppBlockBuilderName");
-
     m_appBlockBuilderNameHasBeenSet = true;
   }
-
   return *this;
 }
 

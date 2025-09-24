@@ -33,95 +33,40 @@ namespace Model
   class ReferencePredictorSummary
   {
   public:
-    AWS_FORECASTSERVICE_API ReferencePredictorSummary();
+    AWS_FORECASTSERVICE_API ReferencePredictorSummary() = default;
     AWS_FORECASTSERVICE_API ReferencePredictorSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API ReferencePredictorSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the reference predictor.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the reference predictor.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ReferencePredictorSummary& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the reference predictor.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the reference predictor.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the reference predictor.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the reference predictor.</p>
-     */
-    inline ReferencePredictorSummary& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the reference predictor.</p>
-     */
-    inline ReferencePredictorSummary& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the reference predictor.</p>
-     */
-    inline ReferencePredictorSummary& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether the reference predictor is <code>Active</code> or
      * <code>Deleted</code>.</p>
      */
-    inline const State& GetState() const{ return m_state; }
-
-    /**
-     * <p>Whether the reference predictor is <code>Active</code> or
-     * <code>Deleted</code>.</p>
-     */
+    inline State GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>Whether the reference predictor is <code>Active</code> or
-     * <code>Deleted</code>.</p>
-     */
-    inline void SetState(const State& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>Whether the reference predictor is <code>Active</code> or
-     * <code>Deleted</code>.</p>
-     */
-    inline void SetState(State&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>Whether the reference predictor is <code>Active</code> or
-     * <code>Deleted</code>.</p>
-     */
-    inline ReferencePredictorSummary& WithState(const State& value) { SetState(value); return *this;}
-
-    /**
-     * <p>Whether the reference predictor is <code>Active</code> or
-     * <code>Deleted</code>.</p>
-     */
-    inline ReferencePredictorSummary& WithState(State&& value) { SetState(std::move(value)); return *this;}
-
+    inline void SetState(State value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ReferencePredictorSummary& WithState(State value) { SetState(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
     bool m_arnHasBeenSet = false;
 
-    State m_state;
+    State m_state{State::NOT_SET};
     bool m_stateHasBeenSet = false;
   };
 

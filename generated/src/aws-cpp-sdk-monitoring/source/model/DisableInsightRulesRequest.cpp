@@ -10,23 +10,25 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-DisableInsightRulesRequest::DisableInsightRulesRequest() : 
-    m_ruleNamesHasBeenSet(false)
-{
-}
-
 Aws::String DisableInsightRulesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DisableInsightRules&";
   if(m_ruleNamesHasBeenSet)
   {
-    unsigned ruleNamesCount = 1;
-    for(auto& item : m_ruleNames)
+    if (m_ruleNames.empty())
     {
-      ss << "RuleNames.member." << ruleNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      ruleNamesCount++;
+      ss << "RuleNames=&";
+    }
+    else
+    {
+      unsigned ruleNamesCount = 1;
+      for(auto& item : m_ruleNames)
+      {
+        ss << "RuleNames.member." << ruleNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        ruleNamesCount++;
+      }
     }
   }
 

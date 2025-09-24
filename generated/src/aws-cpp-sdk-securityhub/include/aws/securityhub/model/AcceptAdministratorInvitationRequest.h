@@ -21,7 +21,7 @@ namespace Model
   class AcceptAdministratorInvitationRequest : public SecurityHubRequest
   {
   public:
-    AWS_SECURITYHUB_API AcceptAdministratorInvitationRequest();
+    AWS_SECURITYHUB_API AcceptAdministratorInvitationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,31 @@ namespace Model
     AWS_SECURITYHUB_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The account ID of the Security Hub administrator account that sent the
      * invitation.</p>
      */
-    inline const Aws::String& GetAdministratorId() const{ return m_administratorId; }
-
-    /**
-     * <p>The account ID of the Security Hub administrator account that sent the
-     * invitation.</p>
-     */
+    inline const Aws::String& GetAdministratorId() const { return m_administratorId; }
     inline bool AdministratorIdHasBeenSet() const { return m_administratorIdHasBeenSet; }
+    template<typename AdministratorIdT = Aws::String>
+    void SetAdministratorId(AdministratorIdT&& value) { m_administratorIdHasBeenSet = true; m_administratorId = std::forward<AdministratorIdT>(value); }
+    template<typename AdministratorIdT = Aws::String>
+    AcceptAdministratorInvitationRequest& WithAdministratorId(AdministratorIdT&& value) { SetAdministratorId(std::forward<AdministratorIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account ID of the Security Hub administrator account that sent the
-     * invitation.</p>
-     */
-    inline void SetAdministratorId(const Aws::String& value) { m_administratorIdHasBeenSet = true; m_administratorId = value; }
-
-    /**
-     * <p>The account ID of the Security Hub administrator account that sent the
-     * invitation.</p>
-     */
-    inline void SetAdministratorId(Aws::String&& value) { m_administratorIdHasBeenSet = true; m_administratorId = std::move(value); }
-
-    /**
-     * <p>The account ID of the Security Hub administrator account that sent the
-     * invitation.</p>
-     */
-    inline void SetAdministratorId(const char* value) { m_administratorIdHasBeenSet = true; m_administratorId.assign(value); }
-
-    /**
-     * <p>The account ID of the Security Hub administrator account that sent the
-     * invitation.</p>
-     */
-    inline AcceptAdministratorInvitationRequest& WithAdministratorId(const Aws::String& value) { SetAdministratorId(value); return *this;}
-
-    /**
-     * <p>The account ID of the Security Hub administrator account that sent the
-     * invitation.</p>
-     */
-    inline AcceptAdministratorInvitationRequest& WithAdministratorId(Aws::String&& value) { SetAdministratorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The account ID of the Security Hub administrator account that sent the
-     * invitation.</p>
-     */
-    inline AcceptAdministratorInvitationRequest& WithAdministratorId(const char* value) { SetAdministratorId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the invitation sent from the Security Hub administrator
      * account.</p>
      */
-    inline const Aws::String& GetInvitationId() const{ return m_invitationId; }
-
-    /**
-     * <p>The identifier of the invitation sent from the Security Hub administrator
-     * account.</p>
-     */
+    inline const Aws::String& GetInvitationId() const { return m_invitationId; }
     inline bool InvitationIdHasBeenSet() const { return m_invitationIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the invitation sent from the Security Hub administrator
-     * account.</p>
-     */
-    inline void SetInvitationId(const Aws::String& value) { m_invitationIdHasBeenSet = true; m_invitationId = value; }
-
-    /**
-     * <p>The identifier of the invitation sent from the Security Hub administrator
-     * account.</p>
-     */
-    inline void SetInvitationId(Aws::String&& value) { m_invitationIdHasBeenSet = true; m_invitationId = std::move(value); }
-
-    /**
-     * <p>The identifier of the invitation sent from the Security Hub administrator
-     * account.</p>
-     */
-    inline void SetInvitationId(const char* value) { m_invitationIdHasBeenSet = true; m_invitationId.assign(value); }
-
-    /**
-     * <p>The identifier of the invitation sent from the Security Hub administrator
-     * account.</p>
-     */
-    inline AcceptAdministratorInvitationRequest& WithInvitationId(const Aws::String& value) { SetInvitationId(value); return *this;}
-
-    /**
-     * <p>The identifier of the invitation sent from the Security Hub administrator
-     * account.</p>
-     */
-    inline AcceptAdministratorInvitationRequest& WithInvitationId(Aws::String&& value) { SetInvitationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the invitation sent from the Security Hub administrator
-     * account.</p>
-     */
-    inline AcceptAdministratorInvitationRequest& WithInvitationId(const char* value) { SetInvitationId(value); return *this;}
-
+    template<typename InvitationIdT = Aws::String>
+    void SetInvitationId(InvitationIdT&& value) { m_invitationIdHasBeenSet = true; m_invitationId = std::forward<InvitationIdT>(value); }
+    template<typename InvitationIdT = Aws::String>
+    AcceptAdministratorInvitationRequest& WithInvitationId(InvitationIdT&& value) { SetInvitationId(std::forward<InvitationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_administratorId;

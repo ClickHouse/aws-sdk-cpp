@@ -12,39 +12,6 @@ using namespace Aws::MemoryDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateClusterRequest::CreateClusterRequest() : 
-    m_clusterNameHasBeenSet(false),
-    m_nodeTypeHasBeenSet(false),
-    m_parameterGroupNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_numShards(0),
-    m_numShardsHasBeenSet(false),
-    m_numReplicasPerShard(0),
-    m_numReplicasPerShardHasBeenSet(false),
-    m_subnetGroupNameHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_maintenanceWindowHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_snsTopicArnHasBeenSet(false),
-    m_tLSEnabled(false),
-    m_tLSEnabledHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_snapshotArnsHasBeenSet(false),
-    m_snapshotNameHasBeenSet(false),
-    m_snapshotRetentionLimit(0),
-    m_snapshotRetentionLimitHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_snapshotWindowHasBeenSet(false),
-    m_aCLNameHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_dataTiering(false),
-    m_dataTieringHasBeenSet(false)
-{
-}
-
 Aws::String CreateClusterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -58,6 +25,12 @@ Aws::String CreateClusterRequest::SerializePayload() const
   if(m_nodeTypeHasBeenSet)
   {
    payload.WithString("NodeType", m_nodeType);
+
+  }
+
+  if(m_multiRegionClusterNameHasBeenSet)
+  {
+   payload.WithString("MultiRegionClusterName", m_multiRegionClusterName);
 
   }
 
@@ -178,6 +151,12 @@ Aws::String CreateClusterRequest::SerializePayload() const
 
   }
 
+  if(m_engineHasBeenSet)
+  {
+   payload.WithString("Engine", m_engine);
+
+  }
+
   if(m_engineVersionHasBeenSet)
   {
    payload.WithString("EngineVersion", m_engineVersion);
@@ -194,6 +173,16 @@ Aws::String CreateClusterRequest::SerializePayload() const
   {
    payload.WithBool("DataTiering", m_dataTiering);
 
+  }
+
+  if(m_networkTypeHasBeenSet)
+  {
+   payload.WithString("NetworkType", NetworkTypeMapper::GetNameForNetworkType(m_networkType));
+  }
+
+  if(m_ipDiscoveryHasBeenSet)
+  {
+   payload.WithString("IpDiscovery", IpDiscoveryMapper::GetNameForIpDiscovery(m_ipDiscovery));
   }
 
   return payload.View().WriteReadable();

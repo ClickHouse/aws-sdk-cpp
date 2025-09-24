@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AssetBundleImportSourceDescription::AssetBundleImportSourceDescription() : 
-    m_bodyHasBeenSet(false),
-    m_s3UriHasBeenSet(false)
-{
-}
-
-AssetBundleImportSourceDescription::AssetBundleImportSourceDescription(JsonView jsonValue) : 
-    m_bodyHasBeenSet(false),
-    m_s3UriHasBeenSet(false)
+AssetBundleImportSourceDescription::AssetBundleImportSourceDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AssetBundleImportSourceDescription& AssetBundleImportSourceDescription::operator
   if(jsonValue.ValueExists("Body"))
   {
     m_body = jsonValue.GetString("Body");
-
     m_bodyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3Uri"))
   {
     m_s3Uri = jsonValue.GetString("S3Uri");
-
     m_s3UriHasBeenSet = true;
   }
-
   return *this;
 }
 

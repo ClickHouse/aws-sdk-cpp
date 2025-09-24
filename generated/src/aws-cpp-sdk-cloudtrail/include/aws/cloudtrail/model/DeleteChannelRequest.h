@@ -21,7 +21,7 @@ namespace Model
   class DeleteChannelRequest : public CloudTrailRequest
   {
   public:
-    AWS_CLOUDTRAIL_API DeleteChannelRequest();
+    AWS_CLOUDTRAIL_API DeleteChannelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_CLOUDTRAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ARN or the <code>UUID</code> value of the channel that you want to
      * delete.</p>
      */
-    inline const Aws::String& GetChannel() const{ return m_channel; }
-
-    /**
-     * <p>The ARN or the <code>UUID</code> value of the channel that you want to
-     * delete.</p>
-     */
+    inline const Aws::String& GetChannel() const { return m_channel; }
     inline bool ChannelHasBeenSet() const { return m_channelHasBeenSet; }
-
-    /**
-     * <p>The ARN or the <code>UUID</code> value of the channel that you want to
-     * delete.</p>
-     */
-    inline void SetChannel(const Aws::String& value) { m_channelHasBeenSet = true; m_channel = value; }
-
-    /**
-     * <p>The ARN or the <code>UUID</code> value of the channel that you want to
-     * delete.</p>
-     */
-    inline void SetChannel(Aws::String&& value) { m_channelHasBeenSet = true; m_channel = std::move(value); }
-
-    /**
-     * <p>The ARN or the <code>UUID</code> value of the channel that you want to
-     * delete.</p>
-     */
-    inline void SetChannel(const char* value) { m_channelHasBeenSet = true; m_channel.assign(value); }
-
-    /**
-     * <p>The ARN or the <code>UUID</code> value of the channel that you want to
-     * delete.</p>
-     */
-    inline DeleteChannelRequest& WithChannel(const Aws::String& value) { SetChannel(value); return *this;}
-
-    /**
-     * <p>The ARN or the <code>UUID</code> value of the channel that you want to
-     * delete.</p>
-     */
-    inline DeleteChannelRequest& WithChannel(Aws::String&& value) { SetChannel(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN or the <code>UUID</code> value of the channel that you want to
-     * delete.</p>
-     */
-    inline DeleteChannelRequest& WithChannel(const char* value) { SetChannel(value); return *this;}
-
+    template<typename ChannelT = Aws::String>
+    void SetChannel(ChannelT&& value) { m_channelHasBeenSet = true; m_channel = std::forward<ChannelT>(value); }
+    template<typename ChannelT = Aws::String>
+    DeleteChannelRequest& WithChannel(ChannelT&& value) { SetChannel(std::forward<ChannelT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channel;

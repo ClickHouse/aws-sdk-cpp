@@ -25,7 +25,7 @@ namespace Model
   class GetSuiteDefinitionRequest : public IoTDeviceAdvisorRequest
   {
   public:
-    AWS_IOTDEVICEADVISOR_API GetSuiteDefinitionRequest();
+    AWS_IOTDEVICEADVISOR_API GetSuiteDefinitionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,87 +38,29 @@ namespace Model
     AWS_IOTDEVICEADVISOR_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>Suite definition ID of the test suite to get.</p>
      */
-    inline const Aws::String& GetSuiteDefinitionId() const{ return m_suiteDefinitionId; }
-
-    /**
-     * <p>Suite definition ID of the test suite to get.</p>
-     */
+    inline const Aws::String& GetSuiteDefinitionId() const { return m_suiteDefinitionId; }
     inline bool SuiteDefinitionIdHasBeenSet() const { return m_suiteDefinitionIdHasBeenSet; }
+    template<typename SuiteDefinitionIdT = Aws::String>
+    void SetSuiteDefinitionId(SuiteDefinitionIdT&& value) { m_suiteDefinitionIdHasBeenSet = true; m_suiteDefinitionId = std::forward<SuiteDefinitionIdT>(value); }
+    template<typename SuiteDefinitionIdT = Aws::String>
+    GetSuiteDefinitionRequest& WithSuiteDefinitionId(SuiteDefinitionIdT&& value) { SetSuiteDefinitionId(std::forward<SuiteDefinitionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Suite definition ID of the test suite to get.</p>
-     */
-    inline void SetSuiteDefinitionId(const Aws::String& value) { m_suiteDefinitionIdHasBeenSet = true; m_suiteDefinitionId = value; }
-
-    /**
-     * <p>Suite definition ID of the test suite to get.</p>
-     */
-    inline void SetSuiteDefinitionId(Aws::String&& value) { m_suiteDefinitionIdHasBeenSet = true; m_suiteDefinitionId = std::move(value); }
-
-    /**
-     * <p>Suite definition ID of the test suite to get.</p>
-     */
-    inline void SetSuiteDefinitionId(const char* value) { m_suiteDefinitionIdHasBeenSet = true; m_suiteDefinitionId.assign(value); }
-
-    /**
-     * <p>Suite definition ID of the test suite to get.</p>
-     */
-    inline GetSuiteDefinitionRequest& WithSuiteDefinitionId(const Aws::String& value) { SetSuiteDefinitionId(value); return *this;}
-
-    /**
-     * <p>Suite definition ID of the test suite to get.</p>
-     */
-    inline GetSuiteDefinitionRequest& WithSuiteDefinitionId(Aws::String&& value) { SetSuiteDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * <p>Suite definition ID of the test suite to get.</p>
-     */
-    inline GetSuiteDefinitionRequest& WithSuiteDefinitionId(const char* value) { SetSuiteDefinitionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Suite definition version of the test suite to get.</p>
      */
-    inline const Aws::String& GetSuiteDefinitionVersion() const{ return m_suiteDefinitionVersion; }
-
-    /**
-     * <p>Suite definition version of the test suite to get.</p>
-     */
+    inline const Aws::String& GetSuiteDefinitionVersion() const { return m_suiteDefinitionVersion; }
     inline bool SuiteDefinitionVersionHasBeenSet() const { return m_suiteDefinitionVersionHasBeenSet; }
-
-    /**
-     * <p>Suite definition version of the test suite to get.</p>
-     */
-    inline void SetSuiteDefinitionVersion(const Aws::String& value) { m_suiteDefinitionVersionHasBeenSet = true; m_suiteDefinitionVersion = value; }
-
-    /**
-     * <p>Suite definition version of the test suite to get.</p>
-     */
-    inline void SetSuiteDefinitionVersion(Aws::String&& value) { m_suiteDefinitionVersionHasBeenSet = true; m_suiteDefinitionVersion = std::move(value); }
-
-    /**
-     * <p>Suite definition version of the test suite to get.</p>
-     */
-    inline void SetSuiteDefinitionVersion(const char* value) { m_suiteDefinitionVersionHasBeenSet = true; m_suiteDefinitionVersion.assign(value); }
-
-    /**
-     * <p>Suite definition version of the test suite to get.</p>
-     */
-    inline GetSuiteDefinitionRequest& WithSuiteDefinitionVersion(const Aws::String& value) { SetSuiteDefinitionVersion(value); return *this;}
-
-    /**
-     * <p>Suite definition version of the test suite to get.</p>
-     */
-    inline GetSuiteDefinitionRequest& WithSuiteDefinitionVersion(Aws::String&& value) { SetSuiteDefinitionVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>Suite definition version of the test suite to get.</p>
-     */
-    inline GetSuiteDefinitionRequest& WithSuiteDefinitionVersion(const char* value) { SetSuiteDefinitionVersion(value); return *this;}
-
+    template<typename SuiteDefinitionVersionT = Aws::String>
+    void SetSuiteDefinitionVersion(SuiteDefinitionVersionT&& value) { m_suiteDefinitionVersionHasBeenSet = true; m_suiteDefinitionVersion = std::forward<SuiteDefinitionVersionT>(value); }
+    template<typename SuiteDefinitionVersionT = Aws::String>
+    GetSuiteDefinitionRequest& WithSuiteDefinitionVersion(SuiteDefinitionVersionT&& value) { SetSuiteDefinitionVersion(std::forward<SuiteDefinitionVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_suiteDefinitionId;

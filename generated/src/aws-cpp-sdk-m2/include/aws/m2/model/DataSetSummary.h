@@ -32,230 +32,86 @@ namespace Model
   class DataSetSummary
   {
   public:
-    AWS_MAINFRAMEMODERNIZATION_API DataSetSummary();
+    AWS_MAINFRAMEMODERNIZATION_API DataSetSummary() = default;
     AWS_MAINFRAMEMODERNIZATION_API DataSetSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_MAINFRAMEMODERNIZATION_API DataSetSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MAINFRAMEMODERNIZATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The timestamp when the data set was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The timestamp when the data set was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    DataSetSummary& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the data set was created.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The timestamp when the data set was created.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The timestamp when the data set was created.</p>
-     */
-    inline DataSetSummary& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The timestamp when the data set was created.</p>
-     */
-    inline DataSetSummary& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the data set.</p>
      */
-    inline const Aws::String& GetDataSetName() const{ return m_dataSetName; }
-
-    /**
-     * <p>The name of the data set.</p>
-     */
+    inline const Aws::String& GetDataSetName() const { return m_dataSetName; }
     inline bool DataSetNameHasBeenSet() const { return m_dataSetNameHasBeenSet; }
+    template<typename DataSetNameT = Aws::String>
+    void SetDataSetName(DataSetNameT&& value) { m_dataSetNameHasBeenSet = true; m_dataSetName = std::forward<DataSetNameT>(value); }
+    template<typename DataSetNameT = Aws::String>
+    DataSetSummary& WithDataSetName(DataSetNameT&& value) { SetDataSetName(std::forward<DataSetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline void SetDataSetName(const Aws::String& value) { m_dataSetNameHasBeenSet = true; m_dataSetName = value; }
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline void SetDataSetName(Aws::String&& value) { m_dataSetNameHasBeenSet = true; m_dataSetName = std::move(value); }
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline void SetDataSetName(const char* value) { m_dataSetNameHasBeenSet = true; m_dataSetName.assign(value); }
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline DataSetSummary& WithDataSetName(const Aws::String& value) { SetDataSetName(value); return *this;}
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline DataSetSummary& WithDataSetName(Aws::String&& value) { SetDataSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the data set.</p>
-     */
-    inline DataSetSummary& WithDataSetName(const char* value) { SetDataSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of data set. The only supported value is VSAM.</p>
      */
-    inline const Aws::String& GetDataSetOrg() const{ return m_dataSetOrg; }
-
-    /**
-     * <p>The type of data set. The only supported value is VSAM.</p>
-     */
+    inline const Aws::String& GetDataSetOrg() const { return m_dataSetOrg; }
     inline bool DataSetOrgHasBeenSet() const { return m_dataSetOrgHasBeenSet; }
+    template<typename DataSetOrgT = Aws::String>
+    void SetDataSetOrg(DataSetOrgT&& value) { m_dataSetOrgHasBeenSet = true; m_dataSetOrg = std::forward<DataSetOrgT>(value); }
+    template<typename DataSetOrgT = Aws::String>
+    DataSetSummary& WithDataSetOrg(DataSetOrgT&& value) { SetDataSetOrg(std::forward<DataSetOrgT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of data set. The only supported value is VSAM.</p>
-     */
-    inline void SetDataSetOrg(const Aws::String& value) { m_dataSetOrgHasBeenSet = true; m_dataSetOrg = value; }
-
-    /**
-     * <p>The type of data set. The only supported value is VSAM.</p>
-     */
-    inline void SetDataSetOrg(Aws::String&& value) { m_dataSetOrgHasBeenSet = true; m_dataSetOrg = std::move(value); }
-
-    /**
-     * <p>The type of data set. The only supported value is VSAM.</p>
-     */
-    inline void SetDataSetOrg(const char* value) { m_dataSetOrgHasBeenSet = true; m_dataSetOrg.assign(value); }
-
-    /**
-     * <p>The type of data set. The only supported value is VSAM.</p>
-     */
-    inline DataSetSummary& WithDataSetOrg(const Aws::String& value) { SetDataSetOrg(value); return *this;}
-
-    /**
-     * <p>The type of data set. The only supported value is VSAM.</p>
-     */
-    inline DataSetSummary& WithDataSetOrg(Aws::String&& value) { SetDataSetOrg(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of data set. The only supported value is VSAM.</p>
-     */
-    inline DataSetSummary& WithDataSetOrg(const char* value) { SetDataSetOrg(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The format of the data set. </p>
      */
-    inline const Aws::String& GetFormat() const{ return m_format; }
-
-    /**
-     * <p>The format of the data set. </p>
-     */
+    inline const Aws::String& GetFormat() const { return m_format; }
     inline bool FormatHasBeenSet() const { return m_formatHasBeenSet; }
+    template<typename FormatT = Aws::String>
+    void SetFormat(FormatT&& value) { m_formatHasBeenSet = true; m_format = std::forward<FormatT>(value); }
+    template<typename FormatT = Aws::String>
+    DataSetSummary& WithFormat(FormatT&& value) { SetFormat(std::forward<FormatT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The format of the data set. </p>
-     */
-    inline void SetFormat(const Aws::String& value) { m_formatHasBeenSet = true; m_format = value; }
-
-    /**
-     * <p>The format of the data set. </p>
-     */
-    inline void SetFormat(Aws::String&& value) { m_formatHasBeenSet = true; m_format = std::move(value); }
-
-    /**
-     * <p>The format of the data set. </p>
-     */
-    inline void SetFormat(const char* value) { m_formatHasBeenSet = true; m_format.assign(value); }
-
-    /**
-     * <p>The format of the data set. </p>
-     */
-    inline DataSetSummary& WithFormat(const Aws::String& value) { SetFormat(value); return *this;}
-
-    /**
-     * <p>The format of the data set. </p>
-     */
-    inline DataSetSummary& WithFormat(Aws::String&& value) { SetFormat(std::move(value)); return *this;}
-
-    /**
-     * <p>The format of the data set. </p>
-     */
-    inline DataSetSummary& WithFormat(const char* value) { SetFormat(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time the data set was referenced.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastReferencedTime() const{ return m_lastReferencedTime; }
-
-    /**
-     * <p>The last time the data set was referenced.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastReferencedTime() const { return m_lastReferencedTime; }
     inline bool LastReferencedTimeHasBeenSet() const { return m_lastReferencedTimeHasBeenSet; }
+    template<typename LastReferencedTimeT = Aws::Utils::DateTime>
+    void SetLastReferencedTime(LastReferencedTimeT&& value) { m_lastReferencedTimeHasBeenSet = true; m_lastReferencedTime = std::forward<LastReferencedTimeT>(value); }
+    template<typename LastReferencedTimeT = Aws::Utils::DateTime>
+    DataSetSummary& WithLastReferencedTime(LastReferencedTimeT&& value) { SetLastReferencedTime(std::forward<LastReferencedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last time the data set was referenced.</p>
-     */
-    inline void SetLastReferencedTime(const Aws::Utils::DateTime& value) { m_lastReferencedTimeHasBeenSet = true; m_lastReferencedTime = value; }
-
-    /**
-     * <p>The last time the data set was referenced.</p>
-     */
-    inline void SetLastReferencedTime(Aws::Utils::DateTime&& value) { m_lastReferencedTimeHasBeenSet = true; m_lastReferencedTime = std::move(value); }
-
-    /**
-     * <p>The last time the data set was referenced.</p>
-     */
-    inline DataSetSummary& WithLastReferencedTime(const Aws::Utils::DateTime& value) { SetLastReferencedTime(value); return *this;}
-
-    /**
-     * <p>The last time the data set was referenced.</p>
-     */
-    inline DataSetSummary& WithLastReferencedTime(Aws::Utils::DateTime&& value) { SetLastReferencedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last time the data set was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The last time the data set was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
-
-    /**
-     * <p>The last time the data set was updated.</p>
-     */
-    inline void SetLastUpdatedTime(const Aws::Utils::DateTime& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The last time the data set was updated.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::Utils::DateTime&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The last time the data set was updated.</p>
-     */
-    inline DataSetSummary& WithLastUpdatedTime(const Aws::Utils::DateTime& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The last time the data set was updated.</p>
-     */
-    inline DataSetSummary& WithLastUpdatedTime(Aws::Utils::DateTime&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::Utils::DateTime>
+    DataSetSummary& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
     Aws::String m_dataSetName;
@@ -267,10 +123,10 @@ namespace Model
     Aws::String m_format;
     bool m_formatHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastReferencedTime;
+    Aws::Utils::DateTime m_lastReferencedTime{};
     bool m_lastReferencedTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTime;
+    Aws::Utils::DateTime m_lastUpdatedTime{};
     bool m_lastUpdatedTimeHasBeenSet = false;
   };
 

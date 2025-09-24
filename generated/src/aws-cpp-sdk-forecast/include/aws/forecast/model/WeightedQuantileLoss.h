@@ -30,71 +30,40 @@ namespace Model
   class WeightedQuantileLoss
   {
   public:
-    AWS_FORECASTSERVICE_API WeightedQuantileLoss();
+    AWS_FORECASTSERVICE_API WeightedQuantileLoss() = default;
     AWS_FORECASTSERVICE_API WeightedQuantileLoss(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API WeightedQuantileLoss& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The quantile. Quantiles divide a probability distribution into regions of
      * equal probability. For example, if the distribution was divided into 5 regions
      * of equal probability, the quantiles would be 0.2, 0.4, 0.6, and 0.8.</p>
      */
-    inline double GetQuantile() const{ return m_quantile; }
-
-    /**
-     * <p>The quantile. Quantiles divide a probability distribution into regions of
-     * equal probability. For example, if the distribution was divided into 5 regions
-     * of equal probability, the quantiles would be 0.2, 0.4, 0.6, and 0.8.</p>
-     */
+    inline double GetQuantile() const { return m_quantile; }
     inline bool QuantileHasBeenSet() const { return m_quantileHasBeenSet; }
-
-    /**
-     * <p>The quantile. Quantiles divide a probability distribution into regions of
-     * equal probability. For example, if the distribution was divided into 5 regions
-     * of equal probability, the quantiles would be 0.2, 0.4, 0.6, and 0.8.</p>
-     */
     inline void SetQuantile(double value) { m_quantileHasBeenSet = true; m_quantile = value; }
-
-    /**
-     * <p>The quantile. Quantiles divide a probability distribution into regions of
-     * equal probability. For example, if the distribution was divided into 5 regions
-     * of equal probability, the quantiles would be 0.2, 0.4, 0.6, and 0.8.</p>
-     */
     inline WeightedQuantileLoss& WithQuantile(double value) { SetQuantile(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The difference between the predicted value and the actual value over the
      * quantile, weighted (normalized) by dividing by the sum over all quantiles.</p>
      */
-    inline double GetLossValue() const{ return m_lossValue; }
-
-    /**
-     * <p>The difference between the predicted value and the actual value over the
-     * quantile, weighted (normalized) by dividing by the sum over all quantiles.</p>
-     */
+    inline double GetLossValue() const { return m_lossValue; }
     inline bool LossValueHasBeenSet() const { return m_lossValueHasBeenSet; }
-
-    /**
-     * <p>The difference between the predicted value and the actual value over the
-     * quantile, weighted (normalized) by dividing by the sum over all quantiles.</p>
-     */
     inline void SetLossValue(double value) { m_lossValueHasBeenSet = true; m_lossValue = value; }
-
-    /**
-     * <p>The difference between the predicted value and the actual value over the
-     * quantile, weighted (normalized) by dividing by the sum over all quantiles.</p>
-     */
     inline WeightedQuantileLoss& WithLossValue(double value) { SetLossValue(value); return *this;}
-
+    ///@}
   private:
 
-    double m_quantile;
+    double m_quantile{0.0};
     bool m_quantileHasBeenSet = false;
 
-    double m_lossValue;
+    double m_lossValue{0.0};
     bool m_lossValueHasBeenSet = false;
   };
 

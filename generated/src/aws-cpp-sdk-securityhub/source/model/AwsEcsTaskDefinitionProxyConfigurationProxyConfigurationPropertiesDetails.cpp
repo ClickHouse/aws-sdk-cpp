@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails::AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails() : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails::AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false)
+AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails::AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails& AwsEc
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

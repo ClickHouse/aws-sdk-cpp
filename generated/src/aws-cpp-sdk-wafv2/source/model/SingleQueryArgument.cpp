@@ -18,13 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-SingleQueryArgument::SingleQueryArgument() : 
-    m_nameHasBeenSet(false)
-{
-}
-
-SingleQueryArgument::SingleQueryArgument(JsonView jsonValue) : 
-    m_nameHasBeenSet(false)
+SingleQueryArgument::SingleQueryArgument(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ SingleQueryArgument& SingleQueryArgument::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

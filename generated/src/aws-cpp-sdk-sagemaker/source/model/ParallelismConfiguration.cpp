@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ParallelismConfiguration::ParallelismConfiguration() : 
-    m_maxParallelExecutionSteps(0),
-    m_maxParallelExecutionStepsHasBeenSet(false)
-{
-}
-
-ParallelismConfiguration::ParallelismConfiguration(JsonView jsonValue) : 
-    m_maxParallelExecutionSteps(0),
-    m_maxParallelExecutionStepsHasBeenSet(false)
+ParallelismConfiguration::ParallelismConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ParallelismConfiguration& ParallelismConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("MaxParallelExecutionSteps"))
   {
     m_maxParallelExecutionSteps = jsonValue.GetInteger("MaxParallelExecutionSteps");
-
     m_maxParallelExecutionStepsHasBeenSet = true;
   }
-
   return *this;
 }
 

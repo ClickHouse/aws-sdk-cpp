@@ -12,29 +12,9 @@ using namespace Aws::ARCZonalShift::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdatePracticeRunConfigurationRequest::UpdatePracticeRunConfigurationRequest() : 
-    m_blockedDatesHasBeenSet(false),
-    m_blockedWindowsHasBeenSet(false),
-    m_blockingAlarmsHasBeenSet(false),
-    m_outcomeAlarmsHasBeenSet(false),
-    m_resourceIdentifierHasBeenSet(false)
-{
-}
-
 Aws::String UpdatePracticeRunConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
-
-  if(m_blockedDatesHasBeenSet)
-  {
-   Aws::Utils::Array<JsonValue> blockedDatesJsonList(m_blockedDates.size());
-   for(unsigned blockedDatesIndex = 0; blockedDatesIndex < blockedDatesJsonList.GetLength(); ++blockedDatesIndex)
-   {
-     blockedDatesJsonList[blockedDatesIndex].AsString(m_blockedDates[blockedDatesIndex]);
-   }
-   payload.WithArray("blockedDates", std::move(blockedDatesJsonList));
-
-  }
 
   if(m_blockedWindowsHasBeenSet)
   {
@@ -47,6 +27,17 @@ Aws::String UpdatePracticeRunConfigurationRequest::SerializePayload() const
 
   }
 
+  if(m_blockedDatesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> blockedDatesJsonList(m_blockedDates.size());
+   for(unsigned blockedDatesIndex = 0; blockedDatesIndex < blockedDatesJsonList.GetLength(); ++blockedDatesIndex)
+   {
+     blockedDatesJsonList[blockedDatesIndex].AsString(m_blockedDates[blockedDatesIndex]);
+   }
+   payload.WithArray("blockedDates", std::move(blockedDatesJsonList));
+
+  }
+
   if(m_blockingAlarmsHasBeenSet)
   {
    Aws::Utils::Array<JsonValue> blockingAlarmsJsonList(m_blockingAlarms.size());
@@ -55,6 +46,17 @@ Aws::String UpdatePracticeRunConfigurationRequest::SerializePayload() const
      blockingAlarmsJsonList[blockingAlarmsIndex].AsObject(m_blockingAlarms[blockingAlarmsIndex].Jsonize());
    }
    payload.WithArray("blockingAlarms", std::move(blockingAlarmsJsonList));
+
+  }
+
+  if(m_allowedWindowsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> allowedWindowsJsonList(m_allowedWindows.size());
+   for(unsigned allowedWindowsIndex = 0; allowedWindowsIndex < allowedWindowsJsonList.GetLength(); ++allowedWindowsIndex)
+   {
+     allowedWindowsJsonList[allowedWindowsIndex].AsString(m_allowedWindows[allowedWindowsIndex]);
+   }
+   payload.WithArray("allowedWindows", std::move(allowedWindowsJsonList));
 
   }
 

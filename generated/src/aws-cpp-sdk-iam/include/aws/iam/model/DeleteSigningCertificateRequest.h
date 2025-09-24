@@ -21,7 +21,7 @@ namespace Model
   class DeleteSigningCertificateRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API DeleteSigningCertificateRequest();
+    AWS_IAM_API DeleteSigningCertificateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,6 +36,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the user the signing certificate belongs to.</p> <p>This
      * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
@@ -43,136 +44,28 @@ namespace Model
      * alphanumeric characters with no spaces. You can also include any of the
      * following characters: _+=,.@-</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The name of the user the signing certificate belongs to.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    DeleteSigningCertificateRequest& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the user the signing certificate belongs to.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The name of the user the signing certificate belongs to.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The name of the user the signing certificate belongs to.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The name of the user the signing certificate belongs to.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline DeleteSigningCertificateRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The name of the user the signing certificate belongs to.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline DeleteSigningCertificateRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the user the signing certificate belongs to.</p> <p>This
-     * parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex
-     * pattern</a>) a string of characters consisting of upper and lowercase
-     * alphanumeric characters with no spaces. You can also include any of the
-     * following characters: _+=,.@-</p>
-     */
-    inline DeleteSigningCertificateRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the signing certificate to delete.</p> <p>The format of this
      * parameter, as described by its <a
      * href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of
      * characters that can be upper- or lower-cased letters or digits.</p>
      */
-    inline const Aws::String& GetCertificateId() const{ return m_certificateId; }
-
-    /**
-     * <p>The ID of the signing certificate to delete.</p> <p>The format of this
-     * parameter, as described by its <a
-     * href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of
-     * characters that can be upper- or lower-cased letters or digits.</p>
-     */
+    inline const Aws::String& GetCertificateId() const { return m_certificateId; }
     inline bool CertificateIdHasBeenSet() const { return m_certificateIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the signing certificate to delete.</p> <p>The format of this
-     * parameter, as described by its <a
-     * href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of
-     * characters that can be upper- or lower-cased letters or digits.</p>
-     */
-    inline void SetCertificateId(const Aws::String& value) { m_certificateIdHasBeenSet = true; m_certificateId = value; }
-
-    /**
-     * <p>The ID of the signing certificate to delete.</p> <p>The format of this
-     * parameter, as described by its <a
-     * href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of
-     * characters that can be upper- or lower-cased letters or digits.</p>
-     */
-    inline void SetCertificateId(Aws::String&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::move(value); }
-
-    /**
-     * <p>The ID of the signing certificate to delete.</p> <p>The format of this
-     * parameter, as described by its <a
-     * href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of
-     * characters that can be upper- or lower-cased letters or digits.</p>
-     */
-    inline void SetCertificateId(const char* value) { m_certificateIdHasBeenSet = true; m_certificateId.assign(value); }
-
-    /**
-     * <p>The ID of the signing certificate to delete.</p> <p>The format of this
-     * parameter, as described by its <a
-     * href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of
-     * characters that can be upper- or lower-cased letters or digits.</p>
-     */
-    inline DeleteSigningCertificateRequest& WithCertificateId(const Aws::String& value) { SetCertificateId(value); return *this;}
-
-    /**
-     * <p>The ID of the signing certificate to delete.</p> <p>The format of this
-     * parameter, as described by its <a
-     * href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of
-     * characters that can be upper- or lower-cased letters or digits.</p>
-     */
-    inline DeleteSigningCertificateRequest& WithCertificateId(Aws::String&& value) { SetCertificateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the signing certificate to delete.</p> <p>The format of this
-     * parameter, as described by its <a
-     * href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of
-     * characters that can be upper- or lower-cased letters or digits.</p>
-     */
-    inline DeleteSigningCertificateRequest& WithCertificateId(const char* value) { SetCertificateId(value); return *this;}
-
+    template<typename CertificateIdT = Aws::String>
+    void SetCertificateId(CertificateIdT&& value) { m_certificateIdHasBeenSet = true; m_certificateId = std::forward<CertificateIdT>(value); }
+    template<typename CertificateIdT = Aws::String>
+    DeleteSigningCertificateRequest& WithCertificateId(CertificateIdT&& value) { SetCertificateId(std::forward<CertificateIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;

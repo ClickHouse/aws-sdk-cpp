@@ -18,17 +18,7 @@ namespace WorkSpaces
 namespace Model
 {
 
-ErrorDetails::ErrorDetails() : 
-    m_errorCode(WorkspaceImageErrorDetailCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-ErrorDetails::ErrorDetails(JsonView jsonValue) : 
-    m_errorCode(WorkspaceImageErrorDetailCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+ErrorDetails::ErrorDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ErrorDetails& ErrorDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ErrorCode"))
   {
     m_errorCode = WorkspaceImageErrorDetailCodeMapper::GetWorkspaceImageErrorDetailCodeForName(jsonValue.GetString("ErrorCode"));
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

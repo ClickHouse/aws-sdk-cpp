@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-ListRecommenderConfigurationsResponse::ListRecommenderConfigurationsResponse() : 
-    m_itemHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
-ListRecommenderConfigurationsResponse::ListRecommenderConfigurationsResponse(JsonView jsonValue) : 
-    m_itemHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
+ListRecommenderConfigurationsResponse::ListRecommenderConfigurationsResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ListRecommenderConfigurationsResponse& ListRecommenderConfigurationsResponse::op
     }
     m_itemHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NextToken"))
   {
     m_nextToken = jsonValue.GetString("NextToken");
-
     m_nextTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

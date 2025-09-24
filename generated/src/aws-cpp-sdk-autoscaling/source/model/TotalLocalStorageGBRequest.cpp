@@ -20,19 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-TotalLocalStorageGBRequest::TotalLocalStorageGBRequest() : 
-    m_min(0.0),
-    m_minHasBeenSet(false),
-    m_max(0.0),
-    m_maxHasBeenSet(false)
-{
-}
-
-TotalLocalStorageGBRequest::TotalLocalStorageGBRequest(const XmlNode& xmlNode) : 
-    m_min(0.0),
-    m_minHasBeenSet(false),
-    m_max(0.0),
-    m_maxHasBeenSet(false)
+TotalLocalStorageGBRequest::TotalLocalStorageGBRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -78,11 +66,11 @@ void TotalLocalStorageGBRequest::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_minHasBeenSet)
   {
-        oStream << location << ".Min=" << StringUtils::URLEncode(m_min) << "&";
+      oStream << location << ".Min=" << StringUtils::URLEncode(m_min) << "&";
   }
   if(m_maxHasBeenSet)
   {
-        oStream << location << ".Max=" << StringUtils::URLEncode(m_max) << "&";
+      oStream << location << ".Max=" << StringUtils::URLEncode(m_max) << "&";
   }
 }
 

@@ -25,7 +25,7 @@ namespace Model
   class BacktrackDBClusterRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API BacktrackDBClusterRequest();
+    AWS_RDS_API BacktrackDBClusterRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,6 +40,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The DB cluster identifier of the DB cluster to be backtracked. This parameter
      * is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
@@ -48,79 +49,15 @@ namespace Model
      * two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code>
      * </p>
      */
-    inline const Aws::String& GetDBClusterIdentifier() const{ return m_dBClusterIdentifier; }
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster to be backtracked. This parameter
-     * is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't end with a hyphen or contain
-     * two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code>
-     * </p>
-     */
+    inline const Aws::String& GetDBClusterIdentifier() const { return m_dBClusterIdentifier; }
     inline bool DBClusterIdentifierHasBeenSet() const { return m_dBClusterIdentifierHasBeenSet; }
+    template<typename DBClusterIdentifierT = Aws::String>
+    void SetDBClusterIdentifier(DBClusterIdentifierT&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::forward<DBClusterIdentifierT>(value); }
+    template<typename DBClusterIdentifierT = Aws::String>
+    BacktrackDBClusterRequest& WithDBClusterIdentifier(DBClusterIdentifierT&& value) { SetDBClusterIdentifier(std::forward<DBClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DB cluster identifier of the DB cluster to be backtracked. This parameter
-     * is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't end with a hyphen or contain
-     * two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code>
-     * </p>
-     */
-    inline void SetDBClusterIdentifier(const Aws::String& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = value; }
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster to be backtracked. This parameter
-     * is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't end with a hyphen or contain
-     * two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code>
-     * </p>
-     */
-    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster to be backtracked. This parameter
-     * is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't end with a hyphen or contain
-     * two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code>
-     * </p>
-     */
-    inline void SetDBClusterIdentifier(const char* value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier.assign(value); }
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster to be backtracked. This parameter
-     * is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't end with a hyphen or contain
-     * two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code>
-     * </p>
-     */
-    inline BacktrackDBClusterRequest& WithDBClusterIdentifier(const Aws::String& value) { SetDBClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster to be backtracked. This parameter
-     * is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't end with a hyphen or contain
-     * two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code>
-     * </p>
-     */
-    inline BacktrackDBClusterRequest& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster to be backtracked. This parameter
-     * is stored as a lowercase string.</p> <p>Constraints:</p> <ul> <li> <p>Must
-     * contain from 1 to 63 alphanumeric characters or hyphens.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't end with a hyphen or contain
-     * two consecutive hyphens.</p> </li> </ul> <p>Example: <code>my-cluster1</code>
-     * </p>
-     */
-    inline BacktrackDBClusterRequest& WithDBClusterIdentifier(const char* value) { SetDBClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of the time to backtrack the DB cluster to, specified in ISO
      * 8601 format. For more information about ISO 8601, see the <a
@@ -131,94 +68,26 @@ namespace Model
      * 8601 timestamp.</p> </li> <li> <p>Can't contain a timestamp set in the
      * future.</p> </li> </ul> <p>Example: <code>2017-07-08T18:00Z</code> </p>
      */
-    inline const Aws::Utils::DateTime& GetBacktrackTo() const{ return m_backtrackTo; }
-
-    /**
-     * <p>The timestamp of the time to backtrack the DB cluster to, specified in ISO
-     * 8601 format. For more information about ISO 8601, see the <a
-     * href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p>
-     *  <p>If the specified time isn't a consistent time for the DB cluster,
-     * Aurora automatically chooses the nearest possible consistent time for the DB
-     * cluster.</p>  <p>Constraints:</p> <ul> <li> <p>Must contain a valid ISO
-     * 8601 timestamp.</p> </li> <li> <p>Can't contain a timestamp set in the
-     * future.</p> </li> </ul> <p>Example: <code>2017-07-08T18:00Z</code> </p>
-     */
+    inline const Aws::Utils::DateTime& GetBacktrackTo() const { return m_backtrackTo; }
     inline bool BacktrackToHasBeenSet() const { return m_backtrackToHasBeenSet; }
+    template<typename BacktrackToT = Aws::Utils::DateTime>
+    void SetBacktrackTo(BacktrackToT&& value) { m_backtrackToHasBeenSet = true; m_backtrackTo = std::forward<BacktrackToT>(value); }
+    template<typename BacktrackToT = Aws::Utils::DateTime>
+    BacktrackDBClusterRequest& WithBacktrackTo(BacktrackToT&& value) { SetBacktrackTo(std::forward<BacktrackToT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of the time to backtrack the DB cluster to, specified in ISO
-     * 8601 format. For more information about ISO 8601, see the <a
-     * href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p>
-     *  <p>If the specified time isn't a consistent time for the DB cluster,
-     * Aurora automatically chooses the nearest possible consistent time for the DB
-     * cluster.</p>  <p>Constraints:</p> <ul> <li> <p>Must contain a valid ISO
-     * 8601 timestamp.</p> </li> <li> <p>Can't contain a timestamp set in the
-     * future.</p> </li> </ul> <p>Example: <code>2017-07-08T18:00Z</code> </p>
-     */
-    inline void SetBacktrackTo(const Aws::Utils::DateTime& value) { m_backtrackToHasBeenSet = true; m_backtrackTo = value; }
-
-    /**
-     * <p>The timestamp of the time to backtrack the DB cluster to, specified in ISO
-     * 8601 format. For more information about ISO 8601, see the <a
-     * href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p>
-     *  <p>If the specified time isn't a consistent time for the DB cluster,
-     * Aurora automatically chooses the nearest possible consistent time for the DB
-     * cluster.</p>  <p>Constraints:</p> <ul> <li> <p>Must contain a valid ISO
-     * 8601 timestamp.</p> </li> <li> <p>Can't contain a timestamp set in the
-     * future.</p> </li> </ul> <p>Example: <code>2017-07-08T18:00Z</code> </p>
-     */
-    inline void SetBacktrackTo(Aws::Utils::DateTime&& value) { m_backtrackToHasBeenSet = true; m_backtrackTo = std::move(value); }
-
-    /**
-     * <p>The timestamp of the time to backtrack the DB cluster to, specified in ISO
-     * 8601 format. For more information about ISO 8601, see the <a
-     * href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p>
-     *  <p>If the specified time isn't a consistent time for the DB cluster,
-     * Aurora automatically chooses the nearest possible consistent time for the DB
-     * cluster.</p>  <p>Constraints:</p> <ul> <li> <p>Must contain a valid ISO
-     * 8601 timestamp.</p> </li> <li> <p>Can't contain a timestamp set in the
-     * future.</p> </li> </ul> <p>Example: <code>2017-07-08T18:00Z</code> </p>
-     */
-    inline BacktrackDBClusterRequest& WithBacktrackTo(const Aws::Utils::DateTime& value) { SetBacktrackTo(value); return *this;}
-
-    /**
-     * <p>The timestamp of the time to backtrack the DB cluster to, specified in ISO
-     * 8601 format. For more information about ISO 8601, see the <a
-     * href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p>
-     *  <p>If the specified time isn't a consistent time for the DB cluster,
-     * Aurora automatically chooses the nearest possible consistent time for the DB
-     * cluster.</p>  <p>Constraints:</p> <ul> <li> <p>Must contain a valid ISO
-     * 8601 timestamp.</p> </li> <li> <p>Can't contain a timestamp set in the
-     * future.</p> </li> </ul> <p>Example: <code>2017-07-08T18:00Z</code> </p>
-     */
-    inline BacktrackDBClusterRequest& WithBacktrackTo(Aws::Utils::DateTime&& value) { SetBacktrackTo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether to force the DB cluster to backtrack when binary logging is
      * enabled. Otherwise, an error occurs when binary logging is enabled.</p>
      */
-    inline bool GetForce() const{ return m_force; }
-
-    /**
-     * <p>Specifies whether to force the DB cluster to backtrack when binary logging is
-     * enabled. Otherwise, an error occurs when binary logging is enabled.</p>
-     */
+    inline bool GetForce() const { return m_force; }
     inline bool ForceHasBeenSet() const { return m_forceHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to force the DB cluster to backtrack when binary logging is
-     * enabled. Otherwise, an error occurs when binary logging is enabled.</p>
-     */
     inline void SetForce(bool value) { m_forceHasBeenSet = true; m_force = value; }
-
-    /**
-     * <p>Specifies whether to force the DB cluster to backtrack when binary logging is
-     * enabled. Otherwise, an error occurs when binary logging is enabled.</p>
-     */
     inline BacktrackDBClusterRequest& WithForce(bool value) { SetForce(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies whether to backtrack the DB cluster to the earliest possible
      * backtrack time when <i>BacktrackTo</i> is set to a timestamp earlier than the
@@ -226,47 +95,23 @@ namespace Model
      * is set to a timestamp earlier than the earliest backtrack time, an error
      * occurs.</p>
      */
-    inline bool GetUseEarliestTimeOnPointInTimeUnavailable() const{ return m_useEarliestTimeOnPointInTimeUnavailable; }
-
-    /**
-     * <p>Specifies whether to backtrack the DB cluster to the earliest possible
-     * backtrack time when <i>BacktrackTo</i> is set to a timestamp earlier than the
-     * earliest backtrack time. When this parameter is disabled and <i>BacktrackTo</i>
-     * is set to a timestamp earlier than the earliest backtrack time, an error
-     * occurs.</p>
-     */
+    inline bool GetUseEarliestTimeOnPointInTimeUnavailable() const { return m_useEarliestTimeOnPointInTimeUnavailable; }
     inline bool UseEarliestTimeOnPointInTimeUnavailableHasBeenSet() const { return m_useEarliestTimeOnPointInTimeUnavailableHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to backtrack the DB cluster to the earliest possible
-     * backtrack time when <i>BacktrackTo</i> is set to a timestamp earlier than the
-     * earliest backtrack time. When this parameter is disabled and <i>BacktrackTo</i>
-     * is set to a timestamp earlier than the earliest backtrack time, an error
-     * occurs.</p>
-     */
     inline void SetUseEarliestTimeOnPointInTimeUnavailable(bool value) { m_useEarliestTimeOnPointInTimeUnavailableHasBeenSet = true; m_useEarliestTimeOnPointInTimeUnavailable = value; }
-
-    /**
-     * <p>Specifies whether to backtrack the DB cluster to the earliest possible
-     * backtrack time when <i>BacktrackTo</i> is set to a timestamp earlier than the
-     * earliest backtrack time. When this parameter is disabled and <i>BacktrackTo</i>
-     * is set to a timestamp earlier than the earliest backtrack time, an error
-     * occurs.</p>
-     */
     inline BacktrackDBClusterRequest& WithUseEarliestTimeOnPointInTimeUnavailable(bool value) { SetUseEarliestTimeOnPointInTimeUnavailable(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_dBClusterIdentifier;
     bool m_dBClusterIdentifierHasBeenSet = false;
 
-    Aws::Utils::DateTime m_backtrackTo;
+    Aws::Utils::DateTime m_backtrackTo{};
     bool m_backtrackToHasBeenSet = false;
 
-    bool m_force;
+    bool m_force{false};
     bool m_forceHasBeenSet = false;
 
-    bool m_useEarliestTimeOnPointInTimeUnavailable;
+    bool m_useEarliestTimeOnPointInTimeUnavailable{false};
     bool m_useEarliestTimeOnPointInTimeUnavailableHasBeenSet = false;
   };
 

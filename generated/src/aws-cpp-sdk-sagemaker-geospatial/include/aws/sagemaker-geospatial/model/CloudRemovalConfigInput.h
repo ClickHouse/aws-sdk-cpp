@@ -34,132 +34,50 @@ namespace Model
   class CloudRemovalConfigInput
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API CloudRemovalConfigInput();
+    AWS_SAGEMAKERGEOSPATIAL_API CloudRemovalConfigInput() = default;
     AWS_SAGEMAKERGEOSPATIAL_API CloudRemovalConfigInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API CloudRemovalConfigInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the algorithm used for cloud removal.</p>
      */
-    inline const AlgorithmNameCloudRemoval& GetAlgorithmName() const{ return m_algorithmName; }
-
-    /**
-     * <p>The name of the algorithm used for cloud removal.</p>
-     */
+    inline AlgorithmNameCloudRemoval GetAlgorithmName() const { return m_algorithmName; }
     inline bool AlgorithmNameHasBeenSet() const { return m_algorithmNameHasBeenSet; }
+    inline void SetAlgorithmName(AlgorithmNameCloudRemoval value) { m_algorithmNameHasBeenSet = true; m_algorithmName = value; }
+    inline CloudRemovalConfigInput& WithAlgorithmName(AlgorithmNameCloudRemoval value) { SetAlgorithmName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the algorithm used for cloud removal.</p>
-     */
-    inline void SetAlgorithmName(const AlgorithmNameCloudRemoval& value) { m_algorithmNameHasBeenSet = true; m_algorithmName = value; }
-
-    /**
-     * <p>The name of the algorithm used for cloud removal.</p>
-     */
-    inline void SetAlgorithmName(AlgorithmNameCloudRemoval&& value) { m_algorithmNameHasBeenSet = true; m_algorithmName = std::move(value); }
-
-    /**
-     * <p>The name of the algorithm used for cloud removal.</p>
-     */
-    inline CloudRemovalConfigInput& WithAlgorithmName(const AlgorithmNameCloudRemoval& value) { SetAlgorithmName(value); return *this;}
-
-    /**
-     * <p>The name of the algorithm used for cloud removal.</p>
-     */
-    inline CloudRemovalConfigInput& WithAlgorithmName(AlgorithmNameCloudRemoval&& value) { SetAlgorithmName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The interpolation value you provide for cloud removal.</p>
      */
-    inline const Aws::String& GetInterpolationValue() const{ return m_interpolationValue; }
-
-    /**
-     * <p>The interpolation value you provide for cloud removal.</p>
-     */
+    inline const Aws::String& GetInterpolationValue() const { return m_interpolationValue; }
     inline bool InterpolationValueHasBeenSet() const { return m_interpolationValueHasBeenSet; }
+    template<typename InterpolationValueT = Aws::String>
+    void SetInterpolationValue(InterpolationValueT&& value) { m_interpolationValueHasBeenSet = true; m_interpolationValue = std::forward<InterpolationValueT>(value); }
+    template<typename InterpolationValueT = Aws::String>
+    CloudRemovalConfigInput& WithInterpolationValue(InterpolationValueT&& value) { SetInterpolationValue(std::forward<InterpolationValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The interpolation value you provide for cloud removal.</p>
-     */
-    inline void SetInterpolationValue(const Aws::String& value) { m_interpolationValueHasBeenSet = true; m_interpolationValue = value; }
-
-    /**
-     * <p>The interpolation value you provide for cloud removal.</p>
-     */
-    inline void SetInterpolationValue(Aws::String&& value) { m_interpolationValueHasBeenSet = true; m_interpolationValue = std::move(value); }
-
-    /**
-     * <p>The interpolation value you provide for cloud removal.</p>
-     */
-    inline void SetInterpolationValue(const char* value) { m_interpolationValueHasBeenSet = true; m_interpolationValue.assign(value); }
-
-    /**
-     * <p>The interpolation value you provide for cloud removal.</p>
-     */
-    inline CloudRemovalConfigInput& WithInterpolationValue(const Aws::String& value) { SetInterpolationValue(value); return *this;}
-
-    /**
-     * <p>The interpolation value you provide for cloud removal.</p>
-     */
-    inline CloudRemovalConfigInput& WithInterpolationValue(Aws::String&& value) { SetInterpolationValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The interpolation value you provide for cloud removal.</p>
-     */
-    inline CloudRemovalConfigInput& WithInterpolationValue(const char* value) { SetInterpolationValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>TargetBands to be returned in the output of CloudRemoval operation.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTargetBands() const{ return m_targetBands; }
-
-    /**
-     * <p>TargetBands to be returned in the output of CloudRemoval operation.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTargetBands() const { return m_targetBands; }
     inline bool TargetBandsHasBeenSet() const { return m_targetBandsHasBeenSet; }
-
-    /**
-     * <p>TargetBands to be returned in the output of CloudRemoval operation.</p>
-     */
-    inline void SetTargetBands(const Aws::Vector<Aws::String>& value) { m_targetBandsHasBeenSet = true; m_targetBands = value; }
-
-    /**
-     * <p>TargetBands to be returned in the output of CloudRemoval operation.</p>
-     */
-    inline void SetTargetBands(Aws::Vector<Aws::String>&& value) { m_targetBandsHasBeenSet = true; m_targetBands = std::move(value); }
-
-    /**
-     * <p>TargetBands to be returned in the output of CloudRemoval operation.</p>
-     */
-    inline CloudRemovalConfigInput& WithTargetBands(const Aws::Vector<Aws::String>& value) { SetTargetBands(value); return *this;}
-
-    /**
-     * <p>TargetBands to be returned in the output of CloudRemoval operation.</p>
-     */
-    inline CloudRemovalConfigInput& WithTargetBands(Aws::Vector<Aws::String>&& value) { SetTargetBands(std::move(value)); return *this;}
-
-    /**
-     * <p>TargetBands to be returned in the output of CloudRemoval operation.</p>
-     */
-    inline CloudRemovalConfigInput& AddTargetBands(const Aws::String& value) { m_targetBandsHasBeenSet = true; m_targetBands.push_back(value); return *this; }
-
-    /**
-     * <p>TargetBands to be returned in the output of CloudRemoval operation.</p>
-     */
-    inline CloudRemovalConfigInput& AddTargetBands(Aws::String&& value) { m_targetBandsHasBeenSet = true; m_targetBands.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>TargetBands to be returned in the output of CloudRemoval operation.</p>
-     */
-    inline CloudRemovalConfigInput& AddTargetBands(const char* value) { m_targetBandsHasBeenSet = true; m_targetBands.push_back(value); return *this; }
-
+    template<typename TargetBandsT = Aws::Vector<Aws::String>>
+    void SetTargetBands(TargetBandsT&& value) { m_targetBandsHasBeenSet = true; m_targetBands = std::forward<TargetBandsT>(value); }
+    template<typename TargetBandsT = Aws::Vector<Aws::String>>
+    CloudRemovalConfigInput& WithTargetBands(TargetBandsT&& value) { SetTargetBands(std::forward<TargetBandsT>(value)); return *this;}
+    template<typename TargetBandsT = Aws::String>
+    CloudRemovalConfigInput& AddTargetBands(TargetBandsT&& value) { m_targetBandsHasBeenSet = true; m_targetBands.emplace_back(std::forward<TargetBandsT>(value)); return *this; }
+    ///@}
   private:
 
-    AlgorithmNameCloudRemoval m_algorithmName;
+    AlgorithmNameCloudRemoval m_algorithmName{AlgorithmNameCloudRemoval::NOT_SET};
     bool m_algorithmNameHasBeenSet = false;
 
     Aws::String m_interpolationValue;

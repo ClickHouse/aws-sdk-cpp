@@ -32,92 +32,37 @@ namespace Model
   class DataAggregation
   {
   public:
-    AWS_QUICKSIGHT_API DataAggregation();
+    AWS_QUICKSIGHT_API DataAggregation() = default;
     AWS_QUICKSIGHT_API DataAggregation(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DataAggregation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The level of time precision that is used to aggregate <code>DateTime</code>
      * values.</p>
      */
-    inline const TopicTimeGranularity& GetDatasetRowDateGranularity() const{ return m_datasetRowDateGranularity; }
-
-    /**
-     * <p>The level of time precision that is used to aggregate <code>DateTime</code>
-     * values.</p>
-     */
+    inline TopicTimeGranularity GetDatasetRowDateGranularity() const { return m_datasetRowDateGranularity; }
     inline bool DatasetRowDateGranularityHasBeenSet() const { return m_datasetRowDateGranularityHasBeenSet; }
+    inline void SetDatasetRowDateGranularity(TopicTimeGranularity value) { m_datasetRowDateGranularityHasBeenSet = true; m_datasetRowDateGranularity = value; }
+    inline DataAggregation& WithDatasetRowDateGranularity(TopicTimeGranularity value) { SetDatasetRowDateGranularity(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The level of time precision that is used to aggregate <code>DateTime</code>
-     * values.</p>
-     */
-    inline void SetDatasetRowDateGranularity(const TopicTimeGranularity& value) { m_datasetRowDateGranularityHasBeenSet = true; m_datasetRowDateGranularity = value; }
-
-    /**
-     * <p>The level of time precision that is used to aggregate <code>DateTime</code>
-     * values.</p>
-     */
-    inline void SetDatasetRowDateGranularity(TopicTimeGranularity&& value) { m_datasetRowDateGranularityHasBeenSet = true; m_datasetRowDateGranularity = std::move(value); }
-
-    /**
-     * <p>The level of time precision that is used to aggregate <code>DateTime</code>
-     * values.</p>
-     */
-    inline DataAggregation& WithDatasetRowDateGranularity(const TopicTimeGranularity& value) { SetDatasetRowDateGranularity(value); return *this;}
-
-    /**
-     * <p>The level of time precision that is used to aggregate <code>DateTime</code>
-     * values.</p>
-     */
-    inline DataAggregation& WithDatasetRowDateGranularity(TopicTimeGranularity&& value) { SetDatasetRowDateGranularity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The column name for the default date.</p>
      */
-    inline const Aws::String& GetDefaultDateColumnName() const{ return m_defaultDateColumnName; }
-
-    /**
-     * <p>The column name for the default date.</p>
-     */
+    inline const Aws::String& GetDefaultDateColumnName() const { return m_defaultDateColumnName; }
     inline bool DefaultDateColumnNameHasBeenSet() const { return m_defaultDateColumnNameHasBeenSet; }
-
-    /**
-     * <p>The column name for the default date.</p>
-     */
-    inline void SetDefaultDateColumnName(const Aws::String& value) { m_defaultDateColumnNameHasBeenSet = true; m_defaultDateColumnName = value; }
-
-    /**
-     * <p>The column name for the default date.</p>
-     */
-    inline void SetDefaultDateColumnName(Aws::String&& value) { m_defaultDateColumnNameHasBeenSet = true; m_defaultDateColumnName = std::move(value); }
-
-    /**
-     * <p>The column name for the default date.</p>
-     */
-    inline void SetDefaultDateColumnName(const char* value) { m_defaultDateColumnNameHasBeenSet = true; m_defaultDateColumnName.assign(value); }
-
-    /**
-     * <p>The column name for the default date.</p>
-     */
-    inline DataAggregation& WithDefaultDateColumnName(const Aws::String& value) { SetDefaultDateColumnName(value); return *this;}
-
-    /**
-     * <p>The column name for the default date.</p>
-     */
-    inline DataAggregation& WithDefaultDateColumnName(Aws::String&& value) { SetDefaultDateColumnName(std::move(value)); return *this;}
-
-    /**
-     * <p>The column name for the default date.</p>
-     */
-    inline DataAggregation& WithDefaultDateColumnName(const char* value) { SetDefaultDateColumnName(value); return *this;}
-
+    template<typename DefaultDateColumnNameT = Aws::String>
+    void SetDefaultDateColumnName(DefaultDateColumnNameT&& value) { m_defaultDateColumnNameHasBeenSet = true; m_defaultDateColumnName = std::forward<DefaultDateColumnNameT>(value); }
+    template<typename DefaultDateColumnNameT = Aws::String>
+    DataAggregation& WithDefaultDateColumnName(DefaultDateColumnNameT&& value) { SetDefaultDateColumnName(std::forward<DefaultDateColumnNameT>(value)); return *this;}
+    ///@}
   private:
 
-    TopicTimeGranularity m_datasetRowDateGranularity;
+    TopicTimeGranularity m_datasetRowDateGranularity{TopicTimeGranularity::NOT_SET};
     bool m_datasetRowDateGranularityHasBeenSet = false;
 
     Aws::String m_defaultDateColumnName;

@@ -21,7 +21,7 @@ namespace Model
   class RequestCancelWorkflowExecutionRequest : public SWFRequest
   {
   public:
-    AWS_SWF_API RequestCancelWorkflowExecutionRequest();
+    AWS_SWF_API RequestCancelWorkflowExecutionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,128 +34,41 @@ namespace Model
     AWS_SWF_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the domain containing the workflow execution to cancel.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The name of the domain containing the workflow execution to cancel.</p>
-     */
+    inline const Aws::String& GetDomain() const { return m_domain; }
     inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    RequestCancelWorkflowExecutionRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the domain containing the workflow execution to cancel.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The name of the domain containing the workflow execution to cancel.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The name of the domain containing the workflow execution to cancel.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The name of the domain containing the workflow execution to cancel.</p>
-     */
-    inline RequestCancelWorkflowExecutionRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The name of the domain containing the workflow execution to cancel.</p>
-     */
-    inline RequestCancelWorkflowExecutionRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the domain containing the workflow execution to cancel.</p>
-     */
-    inline RequestCancelWorkflowExecutionRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The workflowId of the workflow execution to cancel.</p>
      */
-    inline const Aws::String& GetWorkflowId() const{ return m_workflowId; }
-
-    /**
-     * <p>The workflowId of the workflow execution to cancel.</p>
-     */
+    inline const Aws::String& GetWorkflowId() const { return m_workflowId; }
     inline bool WorkflowIdHasBeenSet() const { return m_workflowIdHasBeenSet; }
+    template<typename WorkflowIdT = Aws::String>
+    void SetWorkflowId(WorkflowIdT&& value) { m_workflowIdHasBeenSet = true; m_workflowId = std::forward<WorkflowIdT>(value); }
+    template<typename WorkflowIdT = Aws::String>
+    RequestCancelWorkflowExecutionRequest& WithWorkflowId(WorkflowIdT&& value) { SetWorkflowId(std::forward<WorkflowIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The workflowId of the workflow execution to cancel.</p>
-     */
-    inline void SetWorkflowId(const Aws::String& value) { m_workflowIdHasBeenSet = true; m_workflowId = value; }
-
-    /**
-     * <p>The workflowId of the workflow execution to cancel.</p>
-     */
-    inline void SetWorkflowId(Aws::String&& value) { m_workflowIdHasBeenSet = true; m_workflowId = std::move(value); }
-
-    /**
-     * <p>The workflowId of the workflow execution to cancel.</p>
-     */
-    inline void SetWorkflowId(const char* value) { m_workflowIdHasBeenSet = true; m_workflowId.assign(value); }
-
-    /**
-     * <p>The workflowId of the workflow execution to cancel.</p>
-     */
-    inline RequestCancelWorkflowExecutionRequest& WithWorkflowId(const Aws::String& value) { SetWorkflowId(value); return *this;}
-
-    /**
-     * <p>The workflowId of the workflow execution to cancel.</p>
-     */
-    inline RequestCancelWorkflowExecutionRequest& WithWorkflowId(Aws::String&& value) { SetWorkflowId(std::move(value)); return *this;}
-
-    /**
-     * <p>The workflowId of the workflow execution to cancel.</p>
-     */
-    inline RequestCancelWorkflowExecutionRequest& WithWorkflowId(const char* value) { SetWorkflowId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The runId of the workflow execution to cancel.</p>
      */
-    inline const Aws::String& GetRunId() const{ return m_runId; }
-
-    /**
-     * <p>The runId of the workflow execution to cancel.</p>
-     */
+    inline const Aws::String& GetRunId() const { return m_runId; }
     inline bool RunIdHasBeenSet() const { return m_runIdHasBeenSet; }
-
-    /**
-     * <p>The runId of the workflow execution to cancel.</p>
-     */
-    inline void SetRunId(const Aws::String& value) { m_runIdHasBeenSet = true; m_runId = value; }
-
-    /**
-     * <p>The runId of the workflow execution to cancel.</p>
-     */
-    inline void SetRunId(Aws::String&& value) { m_runIdHasBeenSet = true; m_runId = std::move(value); }
-
-    /**
-     * <p>The runId of the workflow execution to cancel.</p>
-     */
-    inline void SetRunId(const char* value) { m_runIdHasBeenSet = true; m_runId.assign(value); }
-
-    /**
-     * <p>The runId of the workflow execution to cancel.</p>
-     */
-    inline RequestCancelWorkflowExecutionRequest& WithRunId(const Aws::String& value) { SetRunId(value); return *this;}
-
-    /**
-     * <p>The runId of the workflow execution to cancel.</p>
-     */
-    inline RequestCancelWorkflowExecutionRequest& WithRunId(Aws::String&& value) { SetRunId(std::move(value)); return *this;}
-
-    /**
-     * <p>The runId of the workflow execution to cancel.</p>
-     */
-    inline RequestCancelWorkflowExecutionRequest& WithRunId(const char* value) { SetRunId(value); return *this;}
-
+    template<typename RunIdT = Aws::String>
+    void SetRunId(RunIdT&& value) { m_runIdHasBeenSet = true; m_runId = std::forward<RunIdT>(value); }
+    template<typename RunIdT = Aws::String>
+    RequestCancelWorkflowExecutionRequest& WithRunId(RunIdT&& value) { SetRunId(std::forward<RunIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domain;

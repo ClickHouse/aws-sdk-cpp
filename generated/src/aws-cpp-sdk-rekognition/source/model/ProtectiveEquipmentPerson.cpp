@@ -18,23 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-ProtectiveEquipmentPerson::ProtectiveEquipmentPerson() : 
-    m_bodyPartsHasBeenSet(false),
-    m_boundingBoxHasBeenSet(false),
-    m_confidence(0.0),
-    m_confidenceHasBeenSet(false),
-    m_id(0),
-    m_idHasBeenSet(false)
-{
-}
-
-ProtectiveEquipmentPerson::ProtectiveEquipmentPerson(JsonView jsonValue) : 
-    m_bodyPartsHasBeenSet(false),
-    m_boundingBoxHasBeenSet(false),
-    m_confidence(0.0),
-    m_confidenceHasBeenSet(false),
-    m_id(0),
-    m_idHasBeenSet(false)
+ProtectiveEquipmentPerson::ProtectiveEquipmentPerson(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,28 +34,21 @@ ProtectiveEquipmentPerson& ProtectiveEquipmentPerson::operator =(JsonView jsonVa
     }
     m_bodyPartsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("BoundingBox"))
   {
     m_boundingBox = jsonValue.GetObject("BoundingBox");
-
     m_boundingBoxHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Confidence"))
   {
     m_confidence = jsonValue.GetDouble("Confidence");
-
     m_confidenceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetInteger("Id");
-
     m_idHasBeenSet = true;
   }
-
   return *this;
 }
 

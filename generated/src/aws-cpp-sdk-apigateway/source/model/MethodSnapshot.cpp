@@ -18,17 +18,7 @@ namespace APIGateway
 namespace Model
 {
 
-MethodSnapshot::MethodSnapshot() : 
-    m_authorizationTypeHasBeenSet(false),
-    m_apiKeyRequired(false),
-    m_apiKeyRequiredHasBeenSet(false)
-{
-}
-
-MethodSnapshot::MethodSnapshot(JsonView jsonValue) : 
-    m_authorizationTypeHasBeenSet(false),
-    m_apiKeyRequired(false),
-    m_apiKeyRequiredHasBeenSet(false)
+MethodSnapshot::MethodSnapshot(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ MethodSnapshot& MethodSnapshot::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("authorizationType"))
   {
     m_authorizationType = jsonValue.GetString("authorizationType");
-
     m_authorizationTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("apiKeyRequired"))
   {
     m_apiKeyRequired = jsonValue.GetBool("apiKeyRequired");
-
     m_apiKeyRequiredHasBeenSet = true;
   }
-
   return *this;
 }
 

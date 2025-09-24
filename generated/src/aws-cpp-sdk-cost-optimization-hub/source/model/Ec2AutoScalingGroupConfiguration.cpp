@@ -18,13 +18,7 @@ namespace CostOptimizationHub
 namespace Model
 {
 
-Ec2AutoScalingGroupConfiguration::Ec2AutoScalingGroupConfiguration() : 
-    m_instanceHasBeenSet(false)
-{
-}
-
-Ec2AutoScalingGroupConfiguration::Ec2AutoScalingGroupConfiguration(JsonView jsonValue) : 
-    m_instanceHasBeenSet(false)
+Ec2AutoScalingGroupConfiguration::Ec2AutoScalingGroupConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,27 @@ Ec2AutoScalingGroupConfiguration& Ec2AutoScalingGroupConfiguration::operator =(J
   if(jsonValue.ValueExists("instance"))
   {
     m_instance = jsonValue.GetObject("instance");
-
     m_instanceHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("mixedInstances"))
+  {
+    Aws::Utils::Array<JsonView> mixedInstancesJsonList = jsonValue.GetArray("mixedInstances");
+    for(unsigned mixedInstancesIndex = 0; mixedInstancesIndex < mixedInstancesJsonList.GetLength(); ++mixedInstancesIndex)
+    {
+      m_mixedInstances.push_back(mixedInstancesJsonList[mixedInstancesIndex].AsObject());
+    }
+    m_mixedInstancesHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("type"))
+  {
+    m_type = Ec2AutoScalingGroupTypeMapper::GetEc2AutoScalingGroupTypeForName(jsonValue.GetString("type"));
+    m_typeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("allocationStrategy"))
+  {
+    m_allocationStrategy = AllocationStrategyMapper::GetAllocationStrategyForName(jsonValue.GetString("allocationStrategy"));
+    m_allocationStrategyHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -49,6 +60,27 @@ JsonValue Ec2AutoScalingGroupConfiguration::Jsonize() const
   {
    payload.WithObject("instance", m_instance.Jsonize());
 
+  }
+
+  if(m_mixedInstancesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> mixedInstancesJsonList(m_mixedInstances.size());
+   for(unsigned mixedInstancesIndex = 0; mixedInstancesIndex < mixedInstancesJsonList.GetLength(); ++mixedInstancesIndex)
+   {
+     mixedInstancesJsonList[mixedInstancesIndex].AsObject(m_mixedInstances[mixedInstancesIndex].Jsonize());
+   }
+   payload.WithArray("mixedInstances", std::move(mixedInstancesJsonList));
+
+  }
+
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("type", Ec2AutoScalingGroupTypeMapper::GetNameForEc2AutoScalingGroupType(m_type));
+  }
+
+  if(m_allocationStrategyHasBeenSet)
+  {
+   payload.WithString("allocationStrategy", AllocationStrategyMapper::GetNameForAllocationStrategy(m_allocationStrategy));
   }
 
   return payload;

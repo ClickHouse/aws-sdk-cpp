@@ -27,7 +27,7 @@ namespace Model
   class DescribeProvisionedProductRequest : public ServiceCatalogRequest
   {
   public:
-    AWS_SERVICECATALOG_API DescribeProvisionedProductRequest();
+    AWS_SERVICECATALOG_API DescribeProvisionedProductRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,168 +40,46 @@ namespace Model
     AWS_SERVICECATALOG_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
      * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
      */
-    inline const Aws::String& GetAcceptLanguage() const{ return m_acceptLanguage; }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
+    inline const Aws::String& GetAcceptLanguage() const { return m_acceptLanguage; }
     inline bool AcceptLanguageHasBeenSet() const { return m_acceptLanguageHasBeenSet; }
+    template<typename AcceptLanguageT = Aws::String>
+    void SetAcceptLanguage(AcceptLanguageT&& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = std::forward<AcceptLanguageT>(value); }
+    template<typename AcceptLanguageT = Aws::String>
+    DescribeProvisionedProductRequest& WithAcceptLanguage(AcceptLanguageT&& value) { SetAcceptLanguage(std::forward<AcceptLanguageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline void SetAcceptLanguage(const Aws::String& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = value; }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline void SetAcceptLanguage(Aws::String&& value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage = std::move(value); }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline void SetAcceptLanguage(const char* value) { m_acceptLanguageHasBeenSet = true; m_acceptLanguage.assign(value); }
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline DescribeProvisionedProductRequest& WithAcceptLanguage(const Aws::String& value) { SetAcceptLanguage(value); return *this;}
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline DescribeProvisionedProductRequest& WithAcceptLanguage(Aws::String&& value) { SetAcceptLanguage(std::move(value)); return *this;}
-
-    /**
-     * <p>The language code.</p> <ul> <li> <p> <code>jp</code> - Japanese</p> </li>
-     * <li> <p> <code>zh</code> - Chinese</p> </li> </ul>
-     */
-    inline DescribeProvisionedProductRequest& WithAcceptLanguage(const char* value) { SetAcceptLanguage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The provisioned product identifier. You must provide the name or ID, but not
      * both.</p> <p>If you do not provide a name or ID, or you provide both name and
      * ID, an <code>InvalidParametersException</code> will occur.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The provisioned product identifier. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    DescribeProvisionedProductRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The provisioned product identifier. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The provisioned product identifier. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The provisioned product identifier. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The provisioned product identifier. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline DescribeProvisionedProductRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The provisioned product identifier. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline DescribeProvisionedProductRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The provisioned product identifier. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline DescribeProvisionedProductRequest& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the provisioned product. You must provide the name or ID, but not
      * both.</p> <p>If you do not provide a name or ID, or you provide both name and
      * ID, an <code>InvalidParametersException</code> will occur.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the provisioned product. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the provisioned product. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the provisioned product. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the provisioned product. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the provisioned product. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline DescribeProvisionedProductRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the provisioned product. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline DescribeProvisionedProductRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the provisioned product. You must provide the name or ID, but not
-     * both.</p> <p>If you do not provide a name or ID, or you provide both name and
-     * ID, an <code>InvalidParametersException</code> will occur.</p>
-     */
-    inline DescribeProvisionedProductRequest& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DescribeProvisionedProductRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_acceptLanguage;

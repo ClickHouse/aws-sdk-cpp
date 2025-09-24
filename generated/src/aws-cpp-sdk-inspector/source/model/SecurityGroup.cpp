@@ -18,15 +18,7 @@ namespace Inspector
 namespace Model
 {
 
-SecurityGroup::SecurityGroup() : 
-    m_groupNameHasBeenSet(false),
-    m_groupIdHasBeenSet(false)
-{
-}
-
-SecurityGroup::SecurityGroup(JsonView jsonValue) : 
-    m_groupNameHasBeenSet(false),
-    m_groupIdHasBeenSet(false)
+SecurityGroup::SecurityGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SecurityGroup& SecurityGroup::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("groupName"))
   {
     m_groupName = jsonValue.GetString("groupName");
-
     m_groupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("groupId"))
   {
     m_groupId = jsonValue.GetString("groupId");
-
     m_groupIdHasBeenSet = true;
   }
-
   return *this;
 }
 

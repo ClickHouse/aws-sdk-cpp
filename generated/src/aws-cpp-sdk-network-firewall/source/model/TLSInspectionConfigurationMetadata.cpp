@@ -18,15 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-TLSInspectionConfigurationMetadata::TLSInspectionConfigurationMetadata() : 
-    m_nameHasBeenSet(false),
-    m_arnHasBeenSet(false)
-{
-}
-
-TLSInspectionConfigurationMetadata::TLSInspectionConfigurationMetadata(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_arnHasBeenSet(false)
+TLSInspectionConfigurationMetadata::TLSInspectionConfigurationMetadata(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TLSInspectionConfigurationMetadata& TLSInspectionConfigurationMetadata::operator
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   return *this;
 }
 

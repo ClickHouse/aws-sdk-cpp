@@ -34,186 +34,70 @@ namespace Model
   class AssetInfo
   {
   public:
-    AWS_OUTPOSTS_API AssetInfo();
+    AWS_OUTPOSTS_API AssetInfo() = default;
     AWS_OUTPOSTS_API AssetInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_OUTPOSTS_API AssetInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OUTPOSTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p> The ID of the asset. </p>
+     * <p> The ID of the asset. An Outpost asset can be a single server within an
+     * Outposts rack or an Outposts server configuration.</p>
      */
-    inline const Aws::String& GetAssetId() const{ return m_assetId; }
-
-    /**
-     * <p> The ID of the asset. </p>
-     */
+    inline const Aws::String& GetAssetId() const { return m_assetId; }
     inline bool AssetIdHasBeenSet() const { return m_assetIdHasBeenSet; }
+    template<typename AssetIdT = Aws::String>
+    void SetAssetId(AssetIdT&& value) { m_assetIdHasBeenSet = true; m_assetId = std::forward<AssetIdT>(value); }
+    template<typename AssetIdT = Aws::String>
+    AssetInfo& WithAssetId(AssetIdT&& value) { SetAssetId(std::forward<AssetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The ID of the asset. </p>
-     */
-    inline void SetAssetId(const Aws::String& value) { m_assetIdHasBeenSet = true; m_assetId = value; }
-
-    /**
-     * <p> The ID of the asset. </p>
-     */
-    inline void SetAssetId(Aws::String&& value) { m_assetIdHasBeenSet = true; m_assetId = std::move(value); }
-
-    /**
-     * <p> The ID of the asset. </p>
-     */
-    inline void SetAssetId(const char* value) { m_assetIdHasBeenSet = true; m_assetId.assign(value); }
-
-    /**
-     * <p> The ID of the asset. </p>
-     */
-    inline AssetInfo& WithAssetId(const Aws::String& value) { SetAssetId(value); return *this;}
-
-    /**
-     * <p> The ID of the asset. </p>
-     */
-    inline AssetInfo& WithAssetId(Aws::String&& value) { SetAssetId(std::move(value)); return *this;}
-
-    /**
-     * <p> The ID of the asset. </p>
-     */
-    inline AssetInfo& WithAssetId(const char* value) { SetAssetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The rack ID of the asset. </p>
      */
-    inline const Aws::String& GetRackId() const{ return m_rackId; }
-
-    /**
-     * <p> The rack ID of the asset. </p>
-     */
+    inline const Aws::String& GetRackId() const { return m_rackId; }
     inline bool RackIdHasBeenSet() const { return m_rackIdHasBeenSet; }
+    template<typename RackIdT = Aws::String>
+    void SetRackId(RackIdT&& value) { m_rackIdHasBeenSet = true; m_rackId = std::forward<RackIdT>(value); }
+    template<typename RackIdT = Aws::String>
+    AssetInfo& WithRackId(RackIdT&& value) { SetRackId(std::forward<RackIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The rack ID of the asset. </p>
-     */
-    inline void SetRackId(const Aws::String& value) { m_rackIdHasBeenSet = true; m_rackId = value; }
-
-    /**
-     * <p> The rack ID of the asset. </p>
-     */
-    inline void SetRackId(Aws::String&& value) { m_rackIdHasBeenSet = true; m_rackId = std::move(value); }
-
-    /**
-     * <p> The rack ID of the asset. </p>
-     */
-    inline void SetRackId(const char* value) { m_rackIdHasBeenSet = true; m_rackId.assign(value); }
-
-    /**
-     * <p> The rack ID of the asset. </p>
-     */
-    inline AssetInfo& WithRackId(const Aws::String& value) { SetRackId(value); return *this;}
-
-    /**
-     * <p> The rack ID of the asset. </p>
-     */
-    inline AssetInfo& WithRackId(Aws::String&& value) { SetRackId(std::move(value)); return *this;}
-
-    /**
-     * <p> The rack ID of the asset. </p>
-     */
-    inline AssetInfo& WithRackId(const char* value) { SetRackId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The type of the asset. </p>
      */
-    inline const AssetType& GetAssetType() const{ return m_assetType; }
-
-    /**
-     * <p> The type of the asset. </p>
-     */
+    inline AssetType GetAssetType() const { return m_assetType; }
     inline bool AssetTypeHasBeenSet() const { return m_assetTypeHasBeenSet; }
+    inline void SetAssetType(AssetType value) { m_assetTypeHasBeenSet = true; m_assetType = value; }
+    inline AssetInfo& WithAssetType(AssetType value) { SetAssetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The type of the asset. </p>
-     */
-    inline void SetAssetType(const AssetType& value) { m_assetTypeHasBeenSet = true; m_assetType = value; }
-
-    /**
-     * <p> The type of the asset. </p>
-     */
-    inline void SetAssetType(AssetType&& value) { m_assetTypeHasBeenSet = true; m_assetType = std::move(value); }
-
-    /**
-     * <p> The type of the asset. </p>
-     */
-    inline AssetInfo& WithAssetType(const AssetType& value) { SetAssetType(value); return *this;}
-
-    /**
-     * <p> The type of the asset. </p>
-     */
-    inline AssetInfo& WithAssetType(AssetType&& value) { SetAssetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Information about compute hardware assets. </p>
      */
-    inline const ComputeAttributes& GetComputeAttributes() const{ return m_computeAttributes; }
-
-    /**
-     * <p> Information about compute hardware assets. </p>
-     */
+    inline const ComputeAttributes& GetComputeAttributes() const { return m_computeAttributes; }
     inline bool ComputeAttributesHasBeenSet() const { return m_computeAttributesHasBeenSet; }
+    template<typename ComputeAttributesT = ComputeAttributes>
+    void SetComputeAttributes(ComputeAttributesT&& value) { m_computeAttributesHasBeenSet = true; m_computeAttributes = std::forward<ComputeAttributesT>(value); }
+    template<typename ComputeAttributesT = ComputeAttributes>
+    AssetInfo& WithComputeAttributes(ComputeAttributesT&& value) { SetComputeAttributes(std::forward<ComputeAttributesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Information about compute hardware assets. </p>
-     */
-    inline void SetComputeAttributes(const ComputeAttributes& value) { m_computeAttributesHasBeenSet = true; m_computeAttributes = value; }
-
-    /**
-     * <p> Information about compute hardware assets. </p>
-     */
-    inline void SetComputeAttributes(ComputeAttributes&& value) { m_computeAttributesHasBeenSet = true; m_computeAttributes = std::move(value); }
-
-    /**
-     * <p> Information about compute hardware assets. </p>
-     */
-    inline AssetInfo& WithComputeAttributes(const ComputeAttributes& value) { SetComputeAttributes(value); return *this;}
-
-    /**
-     * <p> Information about compute hardware assets. </p>
-     */
-    inline AssetInfo& WithComputeAttributes(ComputeAttributes&& value) { SetComputeAttributes(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The position of an asset in a rack. </p>
      */
-    inline const AssetLocation& GetAssetLocation() const{ return m_assetLocation; }
-
-    /**
-     * <p> The position of an asset in a rack. </p>
-     */
+    inline const AssetLocation& GetAssetLocation() const { return m_assetLocation; }
     inline bool AssetLocationHasBeenSet() const { return m_assetLocationHasBeenSet; }
-
-    /**
-     * <p> The position of an asset in a rack. </p>
-     */
-    inline void SetAssetLocation(const AssetLocation& value) { m_assetLocationHasBeenSet = true; m_assetLocation = value; }
-
-    /**
-     * <p> The position of an asset in a rack. </p>
-     */
-    inline void SetAssetLocation(AssetLocation&& value) { m_assetLocationHasBeenSet = true; m_assetLocation = std::move(value); }
-
-    /**
-     * <p> The position of an asset in a rack. </p>
-     */
-    inline AssetInfo& WithAssetLocation(const AssetLocation& value) { SetAssetLocation(value); return *this;}
-
-    /**
-     * <p> The position of an asset in a rack. </p>
-     */
-    inline AssetInfo& WithAssetLocation(AssetLocation&& value) { SetAssetLocation(std::move(value)); return *this;}
-
+    template<typename AssetLocationT = AssetLocation>
+    void SetAssetLocation(AssetLocationT&& value) { m_assetLocationHasBeenSet = true; m_assetLocation = std::forward<AssetLocationT>(value); }
+    template<typename AssetLocationT = AssetLocation>
+    AssetInfo& WithAssetLocation(AssetLocationT&& value) { SetAssetLocation(std::forward<AssetLocationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_assetId;
@@ -222,7 +106,7 @@ namespace Model
     Aws::String m_rackId;
     bool m_rackIdHasBeenSet = false;
 
-    AssetType m_assetType;
+    AssetType m_assetType{AssetType::NOT_SET};
     bool m_assetTypeHasBeenSet = false;
 
     ComputeAttributes m_computeAttributes;

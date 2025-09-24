@@ -23,145 +23,56 @@ namespace MediaConnect
 namespace Model
 {
 
+  /**
+   * <p>The details of an error message. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/MessageDetail">AWS
+   * API Reference</a></p>
+   */
   class MessageDetail
   {
   public:
-    AWS_MEDIACONNECT_API MessageDetail();
+    AWS_MEDIACONNECT_API MessageDetail() = default;
     AWS_MEDIACONNECT_API MessageDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API MessageDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The error code.
+     * <p> The error code.</p>
      */
-    inline const Aws::String& GetCode() const{ return m_code; }
-
-    /**
-     * The error code.
-     */
+    inline const Aws::String& GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    template<typename CodeT = Aws::String>
+    void SetCode(CodeT&& value) { m_codeHasBeenSet = true; m_code = std::forward<CodeT>(value); }
+    template<typename CodeT = Aws::String>
+    MessageDetail& WithCode(CodeT&& value) { SetCode(std::forward<CodeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The error code.
+     * <p> The specific error message that MediaConnect returns to help you understand
+     * the reason that the request did not succeed.</p>
      */
-    inline void SetCode(const Aws::String& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * The error code.
-     */
-    inline void SetCode(Aws::String&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * The error code.
-     */
-    inline void SetCode(const char* value) { m_codeHasBeenSet = true; m_code.assign(value); }
-
-    /**
-     * The error code.
-     */
-    inline MessageDetail& WithCode(const Aws::String& value) { SetCode(value); return *this;}
-
-    /**
-     * The error code.
-     */
-    inline MessageDetail& WithCode(Aws::String&& value) { SetCode(std::move(value)); return *this;}
-
-    /**
-     * The error code.
-     */
-    inline MessageDetail& WithCode(const char* value) { SetCode(value); return *this;}
-
-
-    /**
-     * The specific error message that MediaConnect returns to help you understand the
-     * reason that the request did not succeed.
-     */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * The specific error message that MediaConnect returns to help you understand the
-     * reason that the request did not succeed.
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    MessageDetail& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The specific error message that MediaConnect returns to help you understand the
-     * reason that the request did not succeed.
+     * <p> The name of the resource.</p>
      */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * The specific error message that MediaConnect returns to help you understand the
-     * reason that the request did not succeed.
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * The specific error message that MediaConnect returns to help you understand the
-     * reason that the request did not succeed.
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * The specific error message that MediaConnect returns to help you understand the
-     * reason that the request did not succeed.
-     */
-    inline MessageDetail& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * The specific error message that MediaConnect returns to help you understand the
-     * reason that the request did not succeed.
-     */
-    inline MessageDetail& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * The specific error message that MediaConnect returns to help you understand the
-     * reason that the request did not succeed.
-     */
-    inline MessageDetail& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
-    /**
-     * The name of the resource.
-     */
-    inline const Aws::String& GetResourceName() const{ return m_resourceName; }
-
-    /**
-     * The name of the resource.
-     */
+    inline const Aws::String& GetResourceName() const { return m_resourceName; }
     inline bool ResourceNameHasBeenSet() const { return m_resourceNameHasBeenSet; }
-
-    /**
-     * The name of the resource.
-     */
-    inline void SetResourceName(const Aws::String& value) { m_resourceNameHasBeenSet = true; m_resourceName = value; }
-
-    /**
-     * The name of the resource.
-     */
-    inline void SetResourceName(Aws::String&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::move(value); }
-
-    /**
-     * The name of the resource.
-     */
-    inline void SetResourceName(const char* value) { m_resourceNameHasBeenSet = true; m_resourceName.assign(value); }
-
-    /**
-     * The name of the resource.
-     */
-    inline MessageDetail& WithResourceName(const Aws::String& value) { SetResourceName(value); return *this;}
-
-    /**
-     * The name of the resource.
-     */
-    inline MessageDetail& WithResourceName(Aws::String&& value) { SetResourceName(std::move(value)); return *this;}
-
-    /**
-     * The name of the resource.
-     */
-    inline MessageDetail& WithResourceName(const char* value) { SetResourceName(value); return *this;}
-
+    template<typename ResourceNameT = Aws::String>
+    void SetResourceName(ResourceNameT&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::forward<ResourceNameT>(value); }
+    template<typename ResourceNameT = Aws::String>
+    MessageDetail& WithResourceName(ResourceNameT&& value) { SetResourceName(std::forward<ResourceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_code;

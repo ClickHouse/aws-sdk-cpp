@@ -34,651 +34,172 @@ namespace Model
   class OidcIdentityProviderConfig
   {
   public:
-    AWS_EKS_API OidcIdentityProviderConfig();
+    AWS_EKS_API OidcIdentityProviderConfig() = default;
     AWS_EKS_API OidcIdentityProviderConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API OidcIdentityProviderConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the configuration.</p>
      */
-    inline const Aws::String& GetIdentityProviderConfigName() const{ return m_identityProviderConfigName; }
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
+    inline const Aws::String& GetIdentityProviderConfigName() const { return m_identityProviderConfigName; }
     inline bool IdentityProviderConfigNameHasBeenSet() const { return m_identityProviderConfigNameHasBeenSet; }
+    template<typename IdentityProviderConfigNameT = Aws::String>
+    void SetIdentityProviderConfigName(IdentityProviderConfigNameT&& value) { m_identityProviderConfigNameHasBeenSet = true; m_identityProviderConfigName = std::forward<IdentityProviderConfigNameT>(value); }
+    template<typename IdentityProviderConfigNameT = Aws::String>
+    OidcIdentityProviderConfig& WithIdentityProviderConfigName(IdentityProviderConfigNameT&& value) { SetIdentityProviderConfigName(std::forward<IdentityProviderConfigNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline void SetIdentityProviderConfigName(const Aws::String& value) { m_identityProviderConfigNameHasBeenSet = true; m_identityProviderConfigName = value; }
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline void SetIdentityProviderConfigName(Aws::String&& value) { m_identityProviderConfigNameHasBeenSet = true; m_identityProviderConfigName = std::move(value); }
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline void SetIdentityProviderConfigName(const char* value) { m_identityProviderConfigNameHasBeenSet = true; m_identityProviderConfigName.assign(value); }
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline OidcIdentityProviderConfig& WithIdentityProviderConfigName(const Aws::String& value) { SetIdentityProviderConfigName(value); return *this;}
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline OidcIdentityProviderConfig& WithIdentityProviderConfigName(Aws::String&& value) { SetIdentityProviderConfigName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the configuration.</p>
-     */
-    inline OidcIdentityProviderConfig& WithIdentityProviderConfigName(const char* value) { SetIdentityProviderConfigName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the configuration.</p>
      */
-    inline const Aws::String& GetIdentityProviderConfigArn() const{ return m_identityProviderConfigArn; }
-
-    /**
-     * <p>The ARN of the configuration.</p>
-     */
+    inline const Aws::String& GetIdentityProviderConfigArn() const { return m_identityProviderConfigArn; }
     inline bool IdentityProviderConfigArnHasBeenSet() const { return m_identityProviderConfigArnHasBeenSet; }
+    template<typename IdentityProviderConfigArnT = Aws::String>
+    void SetIdentityProviderConfigArn(IdentityProviderConfigArnT&& value) { m_identityProviderConfigArnHasBeenSet = true; m_identityProviderConfigArn = std::forward<IdentityProviderConfigArnT>(value); }
+    template<typename IdentityProviderConfigArnT = Aws::String>
+    OidcIdentityProviderConfig& WithIdentityProviderConfigArn(IdentityProviderConfigArnT&& value) { SetIdentityProviderConfigArn(std::forward<IdentityProviderConfigArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the configuration.</p>
-     */
-    inline void SetIdentityProviderConfigArn(const Aws::String& value) { m_identityProviderConfigArnHasBeenSet = true; m_identityProviderConfigArn = value; }
-
-    /**
-     * <p>The ARN of the configuration.</p>
-     */
-    inline void SetIdentityProviderConfigArn(Aws::String&& value) { m_identityProviderConfigArnHasBeenSet = true; m_identityProviderConfigArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the configuration.</p>
-     */
-    inline void SetIdentityProviderConfigArn(const char* value) { m_identityProviderConfigArnHasBeenSet = true; m_identityProviderConfigArn.assign(value); }
-
-    /**
-     * <p>The ARN of the configuration.</p>
-     */
-    inline OidcIdentityProviderConfig& WithIdentityProviderConfigArn(const Aws::String& value) { SetIdentityProviderConfigArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the configuration.</p>
-     */
-    inline OidcIdentityProviderConfig& WithIdentityProviderConfigArn(Aws::String&& value) { SetIdentityProviderConfigArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the configuration.</p>
-     */
-    inline OidcIdentityProviderConfig& WithIdentityProviderConfigArn(const char* value) { SetIdentityProviderConfigArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of your cluster.</p>
      */
-    inline const Aws::String& GetClusterName() const{ return m_clusterName; }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
+    inline const Aws::String& GetClusterName() const { return m_clusterName; }
     inline bool ClusterNameHasBeenSet() const { return m_clusterNameHasBeenSet; }
+    template<typename ClusterNameT = Aws::String>
+    void SetClusterName(ClusterNameT&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::forward<ClusterNameT>(value); }
+    template<typename ClusterNameT = Aws::String>
+    OidcIdentityProviderConfig& WithClusterName(ClusterNameT&& value) { SetClusterName(std::forward<ClusterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline void SetClusterName(const Aws::String& value) { m_clusterNameHasBeenSet = true; m_clusterName = value; }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline void SetClusterName(Aws::String&& value) { m_clusterNameHasBeenSet = true; m_clusterName = std::move(value); }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline void SetClusterName(const char* value) { m_clusterNameHasBeenSet = true; m_clusterName.assign(value); }
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline OidcIdentityProviderConfig& WithClusterName(const Aws::String& value) { SetClusterName(value); return *this;}
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline OidcIdentityProviderConfig& WithClusterName(Aws::String&& value) { SetClusterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of your cluster.</p>
-     */
-    inline OidcIdentityProviderConfig& WithClusterName(const char* value) { SetClusterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The URL of the OIDC identity provider that allows the API server to discover
      * public signing keys for verifying tokens.</p>
      */
-    inline const Aws::String& GetIssuerUrl() const{ return m_issuerUrl; }
-
-    /**
-     * <p>The URL of the OIDC identity provider that allows the API server to discover
-     * public signing keys for verifying tokens.</p>
-     */
+    inline const Aws::String& GetIssuerUrl() const { return m_issuerUrl; }
     inline bool IssuerUrlHasBeenSet() const { return m_issuerUrlHasBeenSet; }
+    template<typename IssuerUrlT = Aws::String>
+    void SetIssuerUrl(IssuerUrlT&& value) { m_issuerUrlHasBeenSet = true; m_issuerUrl = std::forward<IssuerUrlT>(value); }
+    template<typename IssuerUrlT = Aws::String>
+    OidcIdentityProviderConfig& WithIssuerUrl(IssuerUrlT&& value) { SetIssuerUrl(std::forward<IssuerUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URL of the OIDC identity provider that allows the API server to discover
-     * public signing keys for verifying tokens.</p>
-     */
-    inline void SetIssuerUrl(const Aws::String& value) { m_issuerUrlHasBeenSet = true; m_issuerUrl = value; }
-
-    /**
-     * <p>The URL of the OIDC identity provider that allows the API server to discover
-     * public signing keys for verifying tokens.</p>
-     */
-    inline void SetIssuerUrl(Aws::String&& value) { m_issuerUrlHasBeenSet = true; m_issuerUrl = std::move(value); }
-
-    /**
-     * <p>The URL of the OIDC identity provider that allows the API server to discover
-     * public signing keys for verifying tokens.</p>
-     */
-    inline void SetIssuerUrl(const char* value) { m_issuerUrlHasBeenSet = true; m_issuerUrl.assign(value); }
-
-    /**
-     * <p>The URL of the OIDC identity provider that allows the API server to discover
-     * public signing keys for verifying tokens.</p>
-     */
-    inline OidcIdentityProviderConfig& WithIssuerUrl(const Aws::String& value) { SetIssuerUrl(value); return *this;}
-
-    /**
-     * <p>The URL of the OIDC identity provider that allows the API server to discover
-     * public signing keys for verifying tokens.</p>
-     */
-    inline OidcIdentityProviderConfig& WithIssuerUrl(Aws::String&& value) { SetIssuerUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL of the OIDC identity provider that allows the API server to discover
-     * public signing keys for verifying tokens.</p>
-     */
-    inline OidcIdentityProviderConfig& WithIssuerUrl(const char* value) { SetIssuerUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>This is also known as <i>audience</i>. The ID of the client application that
      * makes authentication requests to the OIDC identity provider.</p>
      */
-    inline const Aws::String& GetClientId() const{ return m_clientId; }
-
-    /**
-     * <p>This is also known as <i>audience</i>. The ID of the client application that
-     * makes authentication requests to the OIDC identity provider.</p>
-     */
+    inline const Aws::String& GetClientId() const { return m_clientId; }
     inline bool ClientIdHasBeenSet() const { return m_clientIdHasBeenSet; }
+    template<typename ClientIdT = Aws::String>
+    void SetClientId(ClientIdT&& value) { m_clientIdHasBeenSet = true; m_clientId = std::forward<ClientIdT>(value); }
+    template<typename ClientIdT = Aws::String>
+    OidcIdentityProviderConfig& WithClientId(ClientIdT&& value) { SetClientId(std::forward<ClientIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This is also known as <i>audience</i>. The ID of the client application that
-     * makes authentication requests to the OIDC identity provider.</p>
-     */
-    inline void SetClientId(const Aws::String& value) { m_clientIdHasBeenSet = true; m_clientId = value; }
-
-    /**
-     * <p>This is also known as <i>audience</i>. The ID of the client application that
-     * makes authentication requests to the OIDC identity provider.</p>
-     */
-    inline void SetClientId(Aws::String&& value) { m_clientIdHasBeenSet = true; m_clientId = std::move(value); }
-
-    /**
-     * <p>This is also known as <i>audience</i>. The ID of the client application that
-     * makes authentication requests to the OIDC identity provider.</p>
-     */
-    inline void SetClientId(const char* value) { m_clientIdHasBeenSet = true; m_clientId.assign(value); }
-
-    /**
-     * <p>This is also known as <i>audience</i>. The ID of the client application that
-     * makes authentication requests to the OIDC identity provider.</p>
-     */
-    inline OidcIdentityProviderConfig& WithClientId(const Aws::String& value) { SetClientId(value); return *this;}
-
-    /**
-     * <p>This is also known as <i>audience</i>. The ID of the client application that
-     * makes authentication requests to the OIDC identity provider.</p>
-     */
-    inline OidcIdentityProviderConfig& WithClientId(Aws::String&& value) { SetClientId(std::move(value)); return *this;}
-
-    /**
-     * <p>This is also known as <i>audience</i>. The ID of the client application that
-     * makes authentication requests to the OIDC identity provider.</p>
-     */
-    inline OidcIdentityProviderConfig& WithClientId(const char* value) { SetClientId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The JSON Web token (JWT) claim that is used as the username.</p>
      */
-    inline const Aws::String& GetUsernameClaim() const{ return m_usernameClaim; }
-
-    /**
-     * <p>The JSON Web token (JWT) claim that is used as the username.</p>
-     */
+    inline const Aws::String& GetUsernameClaim() const { return m_usernameClaim; }
     inline bool UsernameClaimHasBeenSet() const { return m_usernameClaimHasBeenSet; }
+    template<typename UsernameClaimT = Aws::String>
+    void SetUsernameClaim(UsernameClaimT&& value) { m_usernameClaimHasBeenSet = true; m_usernameClaim = std::forward<UsernameClaimT>(value); }
+    template<typename UsernameClaimT = Aws::String>
+    OidcIdentityProviderConfig& WithUsernameClaim(UsernameClaimT&& value) { SetUsernameClaim(std::forward<UsernameClaimT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The JSON Web token (JWT) claim that is used as the username.</p>
-     */
-    inline void SetUsernameClaim(const Aws::String& value) { m_usernameClaimHasBeenSet = true; m_usernameClaim = value; }
-
-    /**
-     * <p>The JSON Web token (JWT) claim that is used as the username.</p>
-     */
-    inline void SetUsernameClaim(Aws::String&& value) { m_usernameClaimHasBeenSet = true; m_usernameClaim = std::move(value); }
-
-    /**
-     * <p>The JSON Web token (JWT) claim that is used as the username.</p>
-     */
-    inline void SetUsernameClaim(const char* value) { m_usernameClaimHasBeenSet = true; m_usernameClaim.assign(value); }
-
-    /**
-     * <p>The JSON Web token (JWT) claim that is used as the username.</p>
-     */
-    inline OidcIdentityProviderConfig& WithUsernameClaim(const Aws::String& value) { SetUsernameClaim(value); return *this;}
-
-    /**
-     * <p>The JSON Web token (JWT) claim that is used as the username.</p>
-     */
-    inline OidcIdentityProviderConfig& WithUsernameClaim(Aws::String&& value) { SetUsernameClaim(std::move(value)); return *this;}
-
-    /**
-     * <p>The JSON Web token (JWT) claim that is used as the username.</p>
-     */
-    inline OidcIdentityProviderConfig& WithUsernameClaim(const char* value) { SetUsernameClaim(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The prefix that is prepended to username claims to prevent clashes with
      * existing names. The prefix can't contain <code>system:</code> </p>
      */
-    inline const Aws::String& GetUsernamePrefix() const{ return m_usernamePrefix; }
-
-    /**
-     * <p>The prefix that is prepended to username claims to prevent clashes with
-     * existing names. The prefix can't contain <code>system:</code> </p>
-     */
+    inline const Aws::String& GetUsernamePrefix() const { return m_usernamePrefix; }
     inline bool UsernamePrefixHasBeenSet() const { return m_usernamePrefixHasBeenSet; }
+    template<typename UsernamePrefixT = Aws::String>
+    void SetUsernamePrefix(UsernamePrefixT&& value) { m_usernamePrefixHasBeenSet = true; m_usernamePrefix = std::forward<UsernamePrefixT>(value); }
+    template<typename UsernamePrefixT = Aws::String>
+    OidcIdentityProviderConfig& WithUsernamePrefix(UsernamePrefixT&& value) { SetUsernamePrefix(std::forward<UsernamePrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The prefix that is prepended to username claims to prevent clashes with
-     * existing names. The prefix can't contain <code>system:</code> </p>
-     */
-    inline void SetUsernamePrefix(const Aws::String& value) { m_usernamePrefixHasBeenSet = true; m_usernamePrefix = value; }
-
-    /**
-     * <p>The prefix that is prepended to username claims to prevent clashes with
-     * existing names. The prefix can't contain <code>system:</code> </p>
-     */
-    inline void SetUsernamePrefix(Aws::String&& value) { m_usernamePrefixHasBeenSet = true; m_usernamePrefix = std::move(value); }
-
-    /**
-     * <p>The prefix that is prepended to username claims to prevent clashes with
-     * existing names. The prefix can't contain <code>system:</code> </p>
-     */
-    inline void SetUsernamePrefix(const char* value) { m_usernamePrefixHasBeenSet = true; m_usernamePrefix.assign(value); }
-
-    /**
-     * <p>The prefix that is prepended to username claims to prevent clashes with
-     * existing names. The prefix can't contain <code>system:</code> </p>
-     */
-    inline OidcIdentityProviderConfig& WithUsernamePrefix(const Aws::String& value) { SetUsernamePrefix(value); return *this;}
-
-    /**
-     * <p>The prefix that is prepended to username claims to prevent clashes with
-     * existing names. The prefix can't contain <code>system:</code> </p>
-     */
-    inline OidcIdentityProviderConfig& WithUsernamePrefix(Aws::String&& value) { SetUsernamePrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The prefix that is prepended to username claims to prevent clashes with
-     * existing names. The prefix can't contain <code>system:</code> </p>
-     */
-    inline OidcIdentityProviderConfig& WithUsernamePrefix(const char* value) { SetUsernamePrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The JSON web token (JWT) claim that the provider uses to return your
      * groups.</p>
      */
-    inline const Aws::String& GetGroupsClaim() const{ return m_groupsClaim; }
-
-    /**
-     * <p>The JSON web token (JWT) claim that the provider uses to return your
-     * groups.</p>
-     */
+    inline const Aws::String& GetGroupsClaim() const { return m_groupsClaim; }
     inline bool GroupsClaimHasBeenSet() const { return m_groupsClaimHasBeenSet; }
+    template<typename GroupsClaimT = Aws::String>
+    void SetGroupsClaim(GroupsClaimT&& value) { m_groupsClaimHasBeenSet = true; m_groupsClaim = std::forward<GroupsClaimT>(value); }
+    template<typename GroupsClaimT = Aws::String>
+    OidcIdentityProviderConfig& WithGroupsClaim(GroupsClaimT&& value) { SetGroupsClaim(std::forward<GroupsClaimT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The JSON web token (JWT) claim that the provider uses to return your
-     * groups.</p>
-     */
-    inline void SetGroupsClaim(const Aws::String& value) { m_groupsClaimHasBeenSet = true; m_groupsClaim = value; }
-
-    /**
-     * <p>The JSON web token (JWT) claim that the provider uses to return your
-     * groups.</p>
-     */
-    inline void SetGroupsClaim(Aws::String&& value) { m_groupsClaimHasBeenSet = true; m_groupsClaim = std::move(value); }
-
-    /**
-     * <p>The JSON web token (JWT) claim that the provider uses to return your
-     * groups.</p>
-     */
-    inline void SetGroupsClaim(const char* value) { m_groupsClaimHasBeenSet = true; m_groupsClaim.assign(value); }
-
-    /**
-     * <p>The JSON web token (JWT) claim that the provider uses to return your
-     * groups.</p>
-     */
-    inline OidcIdentityProviderConfig& WithGroupsClaim(const Aws::String& value) { SetGroupsClaim(value); return *this;}
-
-    /**
-     * <p>The JSON web token (JWT) claim that the provider uses to return your
-     * groups.</p>
-     */
-    inline OidcIdentityProviderConfig& WithGroupsClaim(Aws::String&& value) { SetGroupsClaim(std::move(value)); return *this;}
-
-    /**
-     * <p>The JSON web token (JWT) claim that the provider uses to return your
-     * groups.</p>
-     */
-    inline OidcIdentityProviderConfig& WithGroupsClaim(const char* value) { SetGroupsClaim(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The prefix that is prepended to group claims to prevent clashes with existing
      * names (such as <code>system:</code> groups). For example, the value<code>
      * oidc:</code> creates group names like <code>oidc:engineering</code> and
      * <code>oidc:infra</code>. The prefix can't contain <code>system:</code> </p>
      */
-    inline const Aws::String& GetGroupsPrefix() const{ return m_groupsPrefix; }
-
-    /**
-     * <p>The prefix that is prepended to group claims to prevent clashes with existing
-     * names (such as <code>system:</code> groups). For example, the value<code>
-     * oidc:</code> creates group names like <code>oidc:engineering</code> and
-     * <code>oidc:infra</code>. The prefix can't contain <code>system:</code> </p>
-     */
+    inline const Aws::String& GetGroupsPrefix() const { return m_groupsPrefix; }
     inline bool GroupsPrefixHasBeenSet() const { return m_groupsPrefixHasBeenSet; }
+    template<typename GroupsPrefixT = Aws::String>
+    void SetGroupsPrefix(GroupsPrefixT&& value) { m_groupsPrefixHasBeenSet = true; m_groupsPrefix = std::forward<GroupsPrefixT>(value); }
+    template<typename GroupsPrefixT = Aws::String>
+    OidcIdentityProviderConfig& WithGroupsPrefix(GroupsPrefixT&& value) { SetGroupsPrefix(std::forward<GroupsPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The prefix that is prepended to group claims to prevent clashes with existing
-     * names (such as <code>system:</code> groups). For example, the value<code>
-     * oidc:</code> creates group names like <code>oidc:engineering</code> and
-     * <code>oidc:infra</code>. The prefix can't contain <code>system:</code> </p>
-     */
-    inline void SetGroupsPrefix(const Aws::String& value) { m_groupsPrefixHasBeenSet = true; m_groupsPrefix = value; }
-
-    /**
-     * <p>The prefix that is prepended to group claims to prevent clashes with existing
-     * names (such as <code>system:</code> groups). For example, the value<code>
-     * oidc:</code> creates group names like <code>oidc:engineering</code> and
-     * <code>oidc:infra</code>. The prefix can't contain <code>system:</code> </p>
-     */
-    inline void SetGroupsPrefix(Aws::String&& value) { m_groupsPrefixHasBeenSet = true; m_groupsPrefix = std::move(value); }
-
-    /**
-     * <p>The prefix that is prepended to group claims to prevent clashes with existing
-     * names (such as <code>system:</code> groups). For example, the value<code>
-     * oidc:</code> creates group names like <code>oidc:engineering</code> and
-     * <code>oidc:infra</code>. The prefix can't contain <code>system:</code> </p>
-     */
-    inline void SetGroupsPrefix(const char* value) { m_groupsPrefixHasBeenSet = true; m_groupsPrefix.assign(value); }
-
-    /**
-     * <p>The prefix that is prepended to group claims to prevent clashes with existing
-     * names (such as <code>system:</code> groups). For example, the value<code>
-     * oidc:</code> creates group names like <code>oidc:engineering</code> and
-     * <code>oidc:infra</code>. The prefix can't contain <code>system:</code> </p>
-     */
-    inline OidcIdentityProviderConfig& WithGroupsPrefix(const Aws::String& value) { SetGroupsPrefix(value); return *this;}
-
-    /**
-     * <p>The prefix that is prepended to group claims to prevent clashes with existing
-     * names (such as <code>system:</code> groups). For example, the value<code>
-     * oidc:</code> creates group names like <code>oidc:engineering</code> and
-     * <code>oidc:infra</code>. The prefix can't contain <code>system:</code> </p>
-     */
-    inline OidcIdentityProviderConfig& WithGroupsPrefix(Aws::String&& value) { SetGroupsPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The prefix that is prepended to group claims to prevent clashes with existing
-     * names (such as <code>system:</code> groups). For example, the value<code>
-     * oidc:</code> creates group names like <code>oidc:engineering</code> and
-     * <code>oidc:infra</code>. The prefix can't contain <code>system:</code> </p>
-     */
-    inline OidcIdentityProviderConfig& WithGroupsPrefix(const char* value) { SetGroupsPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The key-value pairs that describe required claims in the identity token. If
      * set, each claim is verified to be present in the token with a matching
      * value.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetRequiredClaims() const{ return m_requiredClaims; }
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetRequiredClaims() const { return m_requiredClaims; }
     inline bool RequiredClaimsHasBeenSet() const { return m_requiredClaimsHasBeenSet; }
+    template<typename RequiredClaimsT = Aws::Map<Aws::String, Aws::String>>
+    void SetRequiredClaims(RequiredClaimsT&& value) { m_requiredClaimsHasBeenSet = true; m_requiredClaims = std::forward<RequiredClaimsT>(value); }
+    template<typename RequiredClaimsT = Aws::Map<Aws::String, Aws::String>>
+    OidcIdentityProviderConfig& WithRequiredClaims(RequiredClaimsT&& value) { SetRequiredClaims(std::forward<RequiredClaimsT>(value)); return *this;}
+    template<typename RequiredClaimsKeyT = Aws::String, typename RequiredClaimsValueT = Aws::String>
+    OidcIdentityProviderConfig& AddRequiredClaims(RequiredClaimsKeyT&& key, RequiredClaimsValueT&& value) {
+      m_requiredClaimsHasBeenSet = true; m_requiredClaims.emplace(std::forward<RequiredClaimsKeyT>(key), std::forward<RequiredClaimsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline void SetRequiredClaims(const Aws::Map<Aws::String, Aws::String>& value) { m_requiredClaimsHasBeenSet = true; m_requiredClaims = value; }
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline void SetRequiredClaims(Aws::Map<Aws::String, Aws::String>&& value) { m_requiredClaimsHasBeenSet = true; m_requiredClaims = std::move(value); }
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline OidcIdentityProviderConfig& WithRequiredClaims(const Aws::Map<Aws::String, Aws::String>& value) { SetRequiredClaims(value); return *this;}
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline OidcIdentityProviderConfig& WithRequiredClaims(Aws::Map<Aws::String, Aws::String>&& value) { SetRequiredClaims(std::move(value)); return *this;}
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline OidcIdentityProviderConfig& AddRequiredClaims(const Aws::String& key, const Aws::String& value) { m_requiredClaimsHasBeenSet = true; m_requiredClaims.emplace(key, value); return *this; }
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline OidcIdentityProviderConfig& AddRequiredClaims(Aws::String&& key, const Aws::String& value) { m_requiredClaimsHasBeenSet = true; m_requiredClaims.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline OidcIdentityProviderConfig& AddRequiredClaims(const Aws::String& key, Aws::String&& value) { m_requiredClaimsHasBeenSet = true; m_requiredClaims.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline OidcIdentityProviderConfig& AddRequiredClaims(Aws::String&& key, Aws::String&& value) { m_requiredClaimsHasBeenSet = true; m_requiredClaims.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline OidcIdentityProviderConfig& AddRequiredClaims(const char* key, Aws::String&& value) { m_requiredClaimsHasBeenSet = true; m_requiredClaims.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline OidcIdentityProviderConfig& AddRequiredClaims(Aws::String&& key, const char* value) { m_requiredClaimsHasBeenSet = true; m_requiredClaims.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The key-value pairs that describe required claims in the identity token. If
-     * set, each claim is verified to be present in the token with a matching
-     * value.</p>
-     */
-    inline OidcIdentityProviderConfig& AddRequiredClaims(const char* key, const char* value) { m_requiredClaimsHasBeenSet = true; m_requiredClaims.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Metadata that assists with categorization and organization. Each tag consists
      * of a key and an optional value. You define both. Tags don't propagate to any
      * other cluster or Amazon Web Services resources.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    OidcIdentityProviderConfig& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    OidcIdentityProviderConfig& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline OidcIdentityProviderConfig& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline OidcIdentityProviderConfig& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline OidcIdentityProviderConfig& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline OidcIdentityProviderConfig& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline OidcIdentityProviderConfig& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline OidcIdentityProviderConfig& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline OidcIdentityProviderConfig& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline OidcIdentityProviderConfig& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Metadata that assists with categorization and organization. Each tag consists
-     * of a key and an optional value. You define both. Tags don't propagate to any
-     * other cluster or Amazon Web Services resources.</p>
-     */
-    inline OidcIdentityProviderConfig& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The status of the OIDC identity provider.</p>
      */
-    inline const ConfigStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the OIDC identity provider.</p>
-     */
+    inline ConfigStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the OIDC identity provider.</p>
-     */
-    inline void SetStatus(const ConfigStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the OIDC identity provider.</p>
-     */
-    inline void SetStatus(ConfigStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the OIDC identity provider.</p>
-     */
-    inline OidcIdentityProviderConfig& WithStatus(const ConfigStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the OIDC identity provider.</p>
-     */
-    inline OidcIdentityProviderConfig& WithStatus(ConfigStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(ConfigStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline OidcIdentityProviderConfig& WithStatus(ConfigStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_identityProviderConfigName;
@@ -714,7 +235,7 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    ConfigStatus m_status;
+    ConfigStatus m_status{ConfigStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

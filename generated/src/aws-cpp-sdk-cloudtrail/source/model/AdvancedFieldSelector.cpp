@@ -18,25 +18,7 @@ namespace CloudTrail
 namespace Model
 {
 
-AdvancedFieldSelector::AdvancedFieldSelector() : 
-    m_fieldHasBeenSet(false),
-    m_equalsHasBeenSet(false),
-    m_startsWithHasBeenSet(false),
-    m_endsWithHasBeenSet(false),
-    m_notEqualsHasBeenSet(false),
-    m_notStartsWithHasBeenSet(false),
-    m_notEndsWithHasBeenSet(false)
-{
-}
-
-AdvancedFieldSelector::AdvancedFieldSelector(JsonView jsonValue) : 
-    m_fieldHasBeenSet(false),
-    m_equalsHasBeenSet(false),
-    m_startsWithHasBeenSet(false),
-    m_endsWithHasBeenSet(false),
-    m_notEqualsHasBeenSet(false),
-    m_notStartsWithHasBeenSet(false),
-    m_notEndsWithHasBeenSet(false)
+AdvancedFieldSelector::AdvancedFieldSelector(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,10 +28,8 @@ AdvancedFieldSelector& AdvancedFieldSelector::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Field"))
   {
     m_field = jsonValue.GetString("Field");
-
     m_fieldHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Equals"))
   {
     Aws::Utils::Array<JsonView> equalsJsonList = jsonValue.GetArray("Equals");
@@ -59,7 +39,6 @@ AdvancedFieldSelector& AdvancedFieldSelector::operator =(JsonView jsonValue)
     }
     m_equalsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StartsWith"))
   {
     Aws::Utils::Array<JsonView> startsWithJsonList = jsonValue.GetArray("StartsWith");
@@ -69,7 +48,6 @@ AdvancedFieldSelector& AdvancedFieldSelector::operator =(JsonView jsonValue)
     }
     m_startsWithHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EndsWith"))
   {
     Aws::Utils::Array<JsonView> endsWithJsonList = jsonValue.GetArray("EndsWith");
@@ -79,7 +57,6 @@ AdvancedFieldSelector& AdvancedFieldSelector::operator =(JsonView jsonValue)
     }
     m_endsWithHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NotEquals"))
   {
     Aws::Utils::Array<JsonView> notEqualsJsonList = jsonValue.GetArray("NotEquals");
@@ -89,7 +66,6 @@ AdvancedFieldSelector& AdvancedFieldSelector::operator =(JsonView jsonValue)
     }
     m_notEqualsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NotStartsWith"))
   {
     Aws::Utils::Array<JsonView> notStartsWithJsonList = jsonValue.GetArray("NotStartsWith");
@@ -99,7 +75,6 @@ AdvancedFieldSelector& AdvancedFieldSelector::operator =(JsonView jsonValue)
     }
     m_notStartsWithHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NotEndsWith"))
   {
     Aws::Utils::Array<JsonView> notEndsWithJsonList = jsonValue.GetArray("NotEndsWith");
@@ -109,7 +84,6 @@ AdvancedFieldSelector& AdvancedFieldSelector::operator =(JsonView jsonValue)
     }
     m_notEndsWithHasBeenSet = true;
   }
-
   return *this;
 }
 

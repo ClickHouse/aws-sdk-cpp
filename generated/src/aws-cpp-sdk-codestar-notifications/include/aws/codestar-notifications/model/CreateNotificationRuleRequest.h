@@ -27,7 +27,7 @@ namespace Model
   class CreateNotificationRuleRequest : public CodeStarNotificationsRequest
   {
   public:
-    AWS_CODESTARNOTIFICATIONS_API CreateNotificationRuleRequest();
+    AWS_CODESTARNOTIFICATIONS_API CreateNotificationRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,271 +38,79 @@ namespace Model
     AWS_CODESTARNOTIFICATIONS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name for the notification rule. Notification rule names must be unique in
      * your Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name for the notification rule. Notification rule names must be unique in
-     * your Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateNotificationRuleRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for the notification rule. Notification rule names must be unique in
-     * your Amazon Web Services account.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name for the notification rule. Notification rule names must be unique in
-     * your Amazon Web Services account.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name for the notification rule. Notification rule names must be unique in
-     * your Amazon Web Services account.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name for the notification rule. Notification rule names must be unique in
-     * your Amazon Web Services account.</p>
-     */
-    inline CreateNotificationRuleRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name for the notification rule. Notification rule names must be unique in
-     * your Amazon Web Services account.</p>
-     */
-    inline CreateNotificationRuleRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the notification rule. Notification rule names must be unique in
-     * your Amazon Web Services account.</p>
-     */
-    inline CreateNotificationRuleRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of event types associated with this notification rule. For a list of
      * allowed events, see <a>EventTypeSummary</a>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetEventTypeIds() const{ return m_eventTypeIds; }
-
-    /**
-     * <p>A list of event types associated with this notification rule. For a list of
-     * allowed events, see <a>EventTypeSummary</a>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetEventTypeIds() const { return m_eventTypeIds; }
     inline bool EventTypeIdsHasBeenSet() const { return m_eventTypeIdsHasBeenSet; }
+    template<typename EventTypeIdsT = Aws::Vector<Aws::String>>
+    void SetEventTypeIds(EventTypeIdsT&& value) { m_eventTypeIdsHasBeenSet = true; m_eventTypeIds = std::forward<EventTypeIdsT>(value); }
+    template<typename EventTypeIdsT = Aws::Vector<Aws::String>>
+    CreateNotificationRuleRequest& WithEventTypeIds(EventTypeIdsT&& value) { SetEventTypeIds(std::forward<EventTypeIdsT>(value)); return *this;}
+    template<typename EventTypeIdsT = Aws::String>
+    CreateNotificationRuleRequest& AddEventTypeIds(EventTypeIdsT&& value) { m_eventTypeIdsHasBeenSet = true; m_eventTypeIds.emplace_back(std::forward<EventTypeIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of event types associated with this notification rule. For a list of
-     * allowed events, see <a>EventTypeSummary</a>.</p>
-     */
-    inline void SetEventTypeIds(const Aws::Vector<Aws::String>& value) { m_eventTypeIdsHasBeenSet = true; m_eventTypeIds = value; }
-
-    /**
-     * <p>A list of event types associated with this notification rule. For a list of
-     * allowed events, see <a>EventTypeSummary</a>.</p>
-     */
-    inline void SetEventTypeIds(Aws::Vector<Aws::String>&& value) { m_eventTypeIdsHasBeenSet = true; m_eventTypeIds = std::move(value); }
-
-    /**
-     * <p>A list of event types associated with this notification rule. For a list of
-     * allowed events, see <a>EventTypeSummary</a>.</p>
-     */
-    inline CreateNotificationRuleRequest& WithEventTypeIds(const Aws::Vector<Aws::String>& value) { SetEventTypeIds(value); return *this;}
-
-    /**
-     * <p>A list of event types associated with this notification rule. For a list of
-     * allowed events, see <a>EventTypeSummary</a>.</p>
-     */
-    inline CreateNotificationRuleRequest& WithEventTypeIds(Aws::Vector<Aws::String>&& value) { SetEventTypeIds(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of event types associated with this notification rule. For a list of
-     * allowed events, see <a>EventTypeSummary</a>.</p>
-     */
-    inline CreateNotificationRuleRequest& AddEventTypeIds(const Aws::String& value) { m_eventTypeIdsHasBeenSet = true; m_eventTypeIds.push_back(value); return *this; }
-
-    /**
-     * <p>A list of event types associated with this notification rule. For a list of
-     * allowed events, see <a>EventTypeSummary</a>.</p>
-     */
-    inline CreateNotificationRuleRequest& AddEventTypeIds(Aws::String&& value) { m_eventTypeIdsHasBeenSet = true; m_eventTypeIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of event types associated with this notification rule. For a list of
-     * allowed events, see <a>EventTypeSummary</a>.</p>
-     */
-    inline CreateNotificationRuleRequest& AddEventTypeIds(const char* value) { m_eventTypeIdsHasBeenSet = true; m_eventTypeIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the resource to associate with the
      * notification rule. Supported resources include pipelines in CodePipeline,
      * repositories in CodeCommit, and build projects in CodeBuild.</p>
      */
-    inline const Aws::String& GetResource() const{ return m_resource; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource to associate with the
-     * notification rule. Supported resources include pipelines in CodePipeline,
-     * repositories in CodeCommit, and build projects in CodeBuild.</p>
-     */
+    inline const Aws::String& GetResource() const { return m_resource; }
     inline bool ResourceHasBeenSet() const { return m_resourceHasBeenSet; }
+    template<typename ResourceT = Aws::String>
+    void SetResource(ResourceT&& value) { m_resourceHasBeenSet = true; m_resource = std::forward<ResourceT>(value); }
+    template<typename ResourceT = Aws::String>
+    CreateNotificationRuleRequest& WithResource(ResourceT&& value) { SetResource(std::forward<ResourceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource to associate with the
-     * notification rule. Supported resources include pipelines in CodePipeline,
-     * repositories in CodeCommit, and build projects in CodeBuild.</p>
-     */
-    inline void SetResource(const Aws::String& value) { m_resourceHasBeenSet = true; m_resource = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource to associate with the
-     * notification rule. Supported resources include pipelines in CodePipeline,
-     * repositories in CodeCommit, and build projects in CodeBuild.</p>
-     */
-    inline void SetResource(Aws::String&& value) { m_resourceHasBeenSet = true; m_resource = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource to associate with the
-     * notification rule. Supported resources include pipelines in CodePipeline,
-     * repositories in CodeCommit, and build projects in CodeBuild.</p>
-     */
-    inline void SetResource(const char* value) { m_resourceHasBeenSet = true; m_resource.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource to associate with the
-     * notification rule. Supported resources include pipelines in CodePipeline,
-     * repositories in CodeCommit, and build projects in CodeBuild.</p>
-     */
-    inline CreateNotificationRuleRequest& WithResource(const Aws::String& value) { SetResource(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource to associate with the
-     * notification rule. Supported resources include pipelines in CodePipeline,
-     * repositories in CodeCommit, and build projects in CodeBuild.</p>
-     */
-    inline CreateNotificationRuleRequest& WithResource(Aws::String&& value) { SetResource(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the resource to associate with the
-     * notification rule. Supported resources include pipelines in CodePipeline,
-     * repositories in CodeCommit, and build projects in CodeBuild.</p>
-     */
-    inline CreateNotificationRuleRequest& WithResource(const char* value) { SetResource(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service
-     * topics and Chatbot clients to associate with the notification rule.</p>
+     * topics and Amazon Q Developer in chat applications clients to associate with the
+     * notification rule.</p>
      */
-    inline const Aws::Vector<Target>& GetTargets() const{ return m_targets; }
-
-    /**
-     * <p>A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service
-     * topics and Chatbot clients to associate with the notification rule.</p>
-     */
+    inline const Aws::Vector<Target>& GetTargets() const { return m_targets; }
     inline bool TargetsHasBeenSet() const { return m_targetsHasBeenSet; }
+    template<typename TargetsT = Aws::Vector<Target>>
+    void SetTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets = std::forward<TargetsT>(value); }
+    template<typename TargetsT = Aws::Vector<Target>>
+    CreateNotificationRuleRequest& WithTargets(TargetsT&& value) { SetTargets(std::forward<TargetsT>(value)); return *this;}
+    template<typename TargetsT = Target>
+    CreateNotificationRuleRequest& AddTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets.emplace_back(std::forward<TargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service
-     * topics and Chatbot clients to associate with the notification rule.</p>
-     */
-    inline void SetTargets(const Aws::Vector<Target>& value) { m_targetsHasBeenSet = true; m_targets = value; }
-
-    /**
-     * <p>A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service
-     * topics and Chatbot clients to associate with the notification rule.</p>
-     */
-    inline void SetTargets(Aws::Vector<Target>&& value) { m_targetsHasBeenSet = true; m_targets = std::move(value); }
-
-    /**
-     * <p>A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service
-     * topics and Chatbot clients to associate with the notification rule.</p>
-     */
-    inline CreateNotificationRuleRequest& WithTargets(const Aws::Vector<Target>& value) { SetTargets(value); return *this;}
-
-    /**
-     * <p>A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service
-     * topics and Chatbot clients to associate with the notification rule.</p>
-     */
-    inline CreateNotificationRuleRequest& WithTargets(Aws::Vector<Target>&& value) { SetTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service
-     * topics and Chatbot clients to associate with the notification rule.</p>
-     */
-    inline CreateNotificationRuleRequest& AddTargets(const Target& value) { m_targetsHasBeenSet = true; m_targets.push_back(value); return *this; }
-
-    /**
-     * <p>A list of Amazon Resource Names (ARNs) of Amazon Simple Notification Service
-     * topics and Chatbot clients to associate with the notification rule.</p>
-     */
-    inline CreateNotificationRuleRequest& AddTargets(Target&& value) { m_targetsHasBeenSet = true; m_targets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The level of detail to include in the notifications for this resource.
      * <code>BASIC</code> will include only the contents of the event as it would
      * appear in Amazon CloudWatch. <code>FULL</code> will include any supplemental
-     * information provided by AWS CodeStar Notifications and/or the service for the
+     * information provided by CodeStar Notifications and/or the service for the
      * resource for which the notification is created.</p>
      */
-    inline const DetailType& GetDetailType() const{ return m_detailType; }
-
-    /**
-     * <p>The level of detail to include in the notifications for this resource.
-     * <code>BASIC</code> will include only the contents of the event as it would
-     * appear in Amazon CloudWatch. <code>FULL</code> will include any supplemental
-     * information provided by AWS CodeStar Notifications and/or the service for the
-     * resource for which the notification is created.</p>
-     */
+    inline DetailType GetDetailType() const { return m_detailType; }
     inline bool DetailTypeHasBeenSet() const { return m_detailTypeHasBeenSet; }
+    inline void SetDetailType(DetailType value) { m_detailTypeHasBeenSet = true; m_detailType = value; }
+    inline CreateNotificationRuleRequest& WithDetailType(DetailType value) { SetDetailType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The level of detail to include in the notifications for this resource.
-     * <code>BASIC</code> will include only the contents of the event as it would
-     * appear in Amazon CloudWatch. <code>FULL</code> will include any supplemental
-     * information provided by AWS CodeStar Notifications and/or the service for the
-     * resource for which the notification is created.</p>
-     */
-    inline void SetDetailType(const DetailType& value) { m_detailTypeHasBeenSet = true; m_detailType = value; }
-
-    /**
-     * <p>The level of detail to include in the notifications for this resource.
-     * <code>BASIC</code> will include only the contents of the event as it would
-     * appear in Amazon CloudWatch. <code>FULL</code> will include any supplemental
-     * information provided by AWS CodeStar Notifications and/or the service for the
-     * resource for which the notification is created.</p>
-     */
-    inline void SetDetailType(DetailType&& value) { m_detailTypeHasBeenSet = true; m_detailType = std::move(value); }
-
-    /**
-     * <p>The level of detail to include in the notifications for this resource.
-     * <code>BASIC</code> will include only the contents of the event as it would
-     * appear in Amazon CloudWatch. <code>FULL</code> will include any supplemental
-     * information provided by AWS CodeStar Notifications and/or the service for the
-     * resource for which the notification is created.</p>
-     */
-    inline CreateNotificationRuleRequest& WithDetailType(const DetailType& value) { SetDetailType(value); return *this;}
-
-    /**
-     * <p>The level of detail to include in the notifications for this resource.
-     * <code>BASIC</code> will include only the contents of the event as it would
-     * appear in Amazon CloudWatch. <code>FULL</code> will include any supplemental
-     * information provided by AWS CodeStar Notifications and/or the service for the
-     * resource for which the notification is created.</p>
-     */
-    inline CreateNotificationRuleRequest& WithDetailType(DetailType&& value) { SetDetailType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique, client-generated idempotency token that, when provided in a
      * request, ensures the request cannot be repeated with a changed parameter. If a
@@ -312,207 +120,42 @@ namespace Model
      * are using an Amazon Web Services SDK, an idempotency token is created for
      * you.</p> 
      */
-    inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
-
-    /**
-     * <p>A unique, client-generated idempotency token that, when provided in a
-     * request, ensures the request cannot be repeated with a changed parameter. If a
-     * request with the same parameters is received and a token is included, the
-     * request returns information about the initial request that used that token.</p>
-     *  <p>The Amazon Web Services SDKs prepopulate client request tokens. If you
-     * are using an Amazon Web Services SDK, an idempotency token is created for
-     * you.</p> 
-     */
+    inline const Aws::String& GetClientRequestToken() const { return m_clientRequestToken; }
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
+    template<typename ClientRequestTokenT = Aws::String>
+    void SetClientRequestToken(ClientRequestTokenT&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::forward<ClientRequestTokenT>(value); }
+    template<typename ClientRequestTokenT = Aws::String>
+    CreateNotificationRuleRequest& WithClientRequestToken(ClientRequestTokenT&& value) { SetClientRequestToken(std::forward<ClientRequestTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique, client-generated idempotency token that, when provided in a
-     * request, ensures the request cannot be repeated with a changed parameter. If a
-     * request with the same parameters is received and a token is included, the
-     * request returns information about the initial request that used that token.</p>
-     *  <p>The Amazon Web Services SDKs prepopulate client request tokens. If you
-     * are using an Amazon Web Services SDK, an idempotency token is created for
-     * you.</p> 
-     */
-    inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
-
-    /**
-     * <p>A unique, client-generated idempotency token that, when provided in a
-     * request, ensures the request cannot be repeated with a changed parameter. If a
-     * request with the same parameters is received and a token is included, the
-     * request returns information about the initial request that used that token.</p>
-     *  <p>The Amazon Web Services SDKs prepopulate client request tokens. If you
-     * are using an Amazon Web Services SDK, an idempotency token is created for
-     * you.</p> 
-     */
-    inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
-
-    /**
-     * <p>A unique, client-generated idempotency token that, when provided in a
-     * request, ensures the request cannot be repeated with a changed parameter. If a
-     * request with the same parameters is received and a token is included, the
-     * request returns information about the initial request that used that token.</p>
-     *  <p>The Amazon Web Services SDKs prepopulate client request tokens. If you
-     * are using an Amazon Web Services SDK, an idempotency token is created for
-     * you.</p> 
-     */
-    inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
-
-    /**
-     * <p>A unique, client-generated idempotency token that, when provided in a
-     * request, ensures the request cannot be repeated with a changed parameter. If a
-     * request with the same parameters is received and a token is included, the
-     * request returns information about the initial request that used that token.</p>
-     *  <p>The Amazon Web Services SDKs prepopulate client request tokens. If you
-     * are using an Amazon Web Services SDK, an idempotency token is created for
-     * you.</p> 
-     */
-    inline CreateNotificationRuleRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
-
-    /**
-     * <p>A unique, client-generated idempotency token that, when provided in a
-     * request, ensures the request cannot be repeated with a changed parameter. If a
-     * request with the same parameters is received and a token is included, the
-     * request returns information about the initial request that used that token.</p>
-     *  <p>The Amazon Web Services SDKs prepopulate client request tokens. If you
-     * are using an Amazon Web Services SDK, an idempotency token is created for
-     * you.</p> 
-     */
-    inline CreateNotificationRuleRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique, client-generated idempotency token that, when provided in a
-     * request, ensures the request cannot be repeated with a changed parameter. If a
-     * request with the same parameters is received and a token is included, the
-     * request returns information about the initial request that used that token.</p>
-     *  <p>The Amazon Web Services SDKs prepopulate client request tokens. If you
-     * are using an Amazon Web Services SDK, an idempotency token is created for
-     * you.</p> 
-     */
-    inline CreateNotificationRuleRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tags to apply to this notification rule. Key names cannot start
      * with "<code>aws</code>". </p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateNotificationRuleRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateNotificationRuleRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline CreateNotificationRuleRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline CreateNotificationRuleRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline CreateNotificationRuleRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline CreateNotificationRuleRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline CreateNotificationRuleRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline CreateNotificationRuleRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline CreateNotificationRuleRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline CreateNotificationRuleRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of tags to apply to this notification rule. Key names cannot start
-     * with "<code>aws</code>". </p>
-     */
-    inline CreateNotificationRuleRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The status of the notification rule. The default value is
      * <code>ENABLED</code>. If the status is set to <code>DISABLED</code>,
      * notifications aren't sent for the notification rule.</p>
      */
-    inline const NotificationRuleStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the notification rule. The default value is
-     * <code>ENABLED</code>. If the status is set to <code>DISABLED</code>,
-     * notifications aren't sent for the notification rule.</p>
-     */
+    inline NotificationRuleStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the notification rule. The default value is
-     * <code>ENABLED</code>. If the status is set to <code>DISABLED</code>,
-     * notifications aren't sent for the notification rule.</p>
-     */
-    inline void SetStatus(const NotificationRuleStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the notification rule. The default value is
-     * <code>ENABLED</code>. If the status is set to <code>DISABLED</code>,
-     * notifications aren't sent for the notification rule.</p>
-     */
-    inline void SetStatus(NotificationRuleStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the notification rule. The default value is
-     * <code>ENABLED</code>. If the status is set to <code>DISABLED</code>,
-     * notifications aren't sent for the notification rule.</p>
-     */
-    inline CreateNotificationRuleRequest& WithStatus(const NotificationRuleStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the notification rule. The default value is
-     * <code>ENABLED</code>. If the status is set to <code>DISABLED</code>,
-     * notifications aren't sent for the notification rule.</p>
-     */
-    inline CreateNotificationRuleRequest& WithStatus(NotificationRuleStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(NotificationRuleStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline CreateNotificationRuleRequest& WithStatus(NotificationRuleStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -527,16 +170,16 @@ namespace Model
     Aws::Vector<Target> m_targets;
     bool m_targetsHasBeenSet = false;
 
-    DetailType m_detailType;
+    DetailType m_detailType{DetailType::NOT_SET};
     bool m_detailTypeHasBeenSet = false;
 
-    Aws::String m_clientRequestToken;
-    bool m_clientRequestTokenHasBeenSet = false;
+    Aws::String m_clientRequestToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientRequestTokenHasBeenSet = true;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    NotificationRuleStatus m_status;
+    NotificationRuleStatus m_status{NotificationRuleStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

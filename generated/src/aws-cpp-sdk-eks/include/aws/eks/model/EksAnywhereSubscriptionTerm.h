@@ -34,73 +34,38 @@ namespace Model
   class EksAnywhereSubscriptionTerm
   {
   public:
-    AWS_EKS_API EksAnywhereSubscriptionTerm();
+    AWS_EKS_API EksAnywhereSubscriptionTerm() = default;
     AWS_EKS_API EksAnywhereSubscriptionTerm(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API EksAnywhereSubscriptionTerm& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The duration of the subscription term. Valid values are 12 and 36, indicating
      * a 12 month or 36 month subscription.</p>
      */
-    inline int GetDuration() const{ return m_duration; }
-
-    /**
-     * <p>The duration of the subscription term. Valid values are 12 and 36, indicating
-     * a 12 month or 36 month subscription.</p>
-     */
+    inline int GetDuration() const { return m_duration; }
     inline bool DurationHasBeenSet() const { return m_durationHasBeenSet; }
-
-    /**
-     * <p>The duration of the subscription term. Valid values are 12 and 36, indicating
-     * a 12 month or 36 month subscription.</p>
-     */
     inline void SetDuration(int value) { m_durationHasBeenSet = true; m_duration = value; }
-
-    /**
-     * <p>The duration of the subscription term. Valid values are 12 and 36, indicating
-     * a 12 month or 36 month subscription.</p>
-     */
     inline EksAnywhereSubscriptionTerm& WithDuration(int value) { SetDuration(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The term unit of the subscription. Valid value is <code>MONTHS</code>.</p>
      */
-    inline const EksAnywhereSubscriptionTermUnit& GetUnit() const{ return m_unit; }
-
-    /**
-     * <p>The term unit of the subscription. Valid value is <code>MONTHS</code>.</p>
-     */
+    inline EksAnywhereSubscriptionTermUnit GetUnit() const { return m_unit; }
     inline bool UnitHasBeenSet() const { return m_unitHasBeenSet; }
-
-    /**
-     * <p>The term unit of the subscription. Valid value is <code>MONTHS</code>.</p>
-     */
-    inline void SetUnit(const EksAnywhereSubscriptionTermUnit& value) { m_unitHasBeenSet = true; m_unit = value; }
-
-    /**
-     * <p>The term unit of the subscription. Valid value is <code>MONTHS</code>.</p>
-     */
-    inline void SetUnit(EksAnywhereSubscriptionTermUnit&& value) { m_unitHasBeenSet = true; m_unit = std::move(value); }
-
-    /**
-     * <p>The term unit of the subscription. Valid value is <code>MONTHS</code>.</p>
-     */
-    inline EksAnywhereSubscriptionTerm& WithUnit(const EksAnywhereSubscriptionTermUnit& value) { SetUnit(value); return *this;}
-
-    /**
-     * <p>The term unit of the subscription. Valid value is <code>MONTHS</code>.</p>
-     */
-    inline EksAnywhereSubscriptionTerm& WithUnit(EksAnywhereSubscriptionTermUnit&& value) { SetUnit(std::move(value)); return *this;}
-
+    inline void SetUnit(EksAnywhereSubscriptionTermUnit value) { m_unitHasBeenSet = true; m_unit = value; }
+    inline EksAnywhereSubscriptionTerm& WithUnit(EksAnywhereSubscriptionTermUnit value) { SetUnit(value); return *this;}
+    ///@}
   private:
 
-    int m_duration;
+    int m_duration{0};
     bool m_durationHasBeenSet = false;
 
-    EksAnywhereSubscriptionTermUnit m_unit;
+    EksAnywhereSubscriptionTermUnit m_unit{EksAnywhereSubscriptionTermUnit::NOT_SET};
     bool m_unitHasBeenSet = false;
   };
 

@@ -20,55 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-LaunchConfiguration::LaunchConfiguration() : 
-    m_launchConfigurationNameHasBeenSet(false),
-    m_launchConfigurationARNHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_classicLinkVPCIdHasBeenSet(false),
-    m_classicLinkVPCSecurityGroupsHasBeenSet(false),
-    m_userDataHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_instanceMonitoringHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_associatePublicIpAddress(false),
-    m_associatePublicIpAddressHasBeenSet(false),
-    m_placementTenancyHasBeenSet(false),
-    m_metadataOptionsHasBeenSet(false)
-{
-}
-
-LaunchConfiguration::LaunchConfiguration(const XmlNode& xmlNode) : 
-    m_launchConfigurationNameHasBeenSet(false),
-    m_launchConfigurationARNHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_classicLinkVPCIdHasBeenSet(false),
-    m_classicLinkVPCSecurityGroupsHasBeenSet(false),
-    m_userDataHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_kernelIdHasBeenSet(false),
-    m_ramdiskIdHasBeenSet(false),
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_instanceMonitoringHasBeenSet(false),
-    m_spotPriceHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_createdTimeHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_associatePublicIpAddress(false),
-    m_associatePublicIpAddressHasBeenSet(false),
-    m_placementTenancyHasBeenSet(false),
-    m_metadataOptionsHasBeenSet(false)
+LaunchConfiguration::LaunchConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -107,6 +59,7 @@ LaunchConfiguration& LaunchConfiguration::operator =(const XmlNode& xmlNode)
     if(!securityGroupsNode.IsNull())
     {
       XmlNode securityGroupsMember = securityGroupsNode.FirstChild("member");
+      m_securityGroupsHasBeenSet = !securityGroupsMember.IsNull();
       while(!securityGroupsMember.IsNull())
       {
         m_securityGroups.push_back(securityGroupsMember.GetText());
@@ -125,6 +78,7 @@ LaunchConfiguration& LaunchConfiguration::operator =(const XmlNode& xmlNode)
     if(!classicLinkVPCSecurityGroupsNode.IsNull())
     {
       XmlNode classicLinkVPCSecurityGroupsMember = classicLinkVPCSecurityGroupsNode.FirstChild("member");
+      m_classicLinkVPCSecurityGroupsHasBeenSet = !classicLinkVPCSecurityGroupsMember.IsNull();
       while(!classicLinkVPCSecurityGroupsMember.IsNull())
       {
         m_classicLinkVPCSecurityGroups.push_back(classicLinkVPCSecurityGroupsMember.GetText());
@@ -161,6 +115,7 @@ LaunchConfiguration& LaunchConfiguration::operator =(const XmlNode& xmlNode)
     if(!blockDeviceMappingsNode.IsNull())
     {
       XmlNode blockDeviceMappingsMember = blockDeviceMappingsNode.FirstChild("member");
+      m_blockDeviceMappingsHasBeenSet = !blockDeviceMappingsMember.IsNull();
       while(!blockDeviceMappingsMember.IsNull())
       {
         m_blockDeviceMappings.push_back(blockDeviceMappingsMember);
@@ -404,7 +359,7 @@ void LaunchConfiguration::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_blockDeviceMappings)
       {
         Aws::StringStream blockDeviceMappingsSs;
-        blockDeviceMappingsSs << location <<  ".BlockDeviceMappings.member." << blockDeviceMappingsIdx++;
+        blockDeviceMappingsSs << location << ".BlockDeviceMappings.member." << blockDeviceMappingsIdx++;
         item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }

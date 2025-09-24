@@ -31,42 +31,23 @@ namespace Model
   class BodySectionContent
   {
   public:
-    AWS_QUICKSIGHT_API BodySectionContent();
+    AWS_QUICKSIGHT_API BodySectionContent() = default;
     AWS_QUICKSIGHT_API BodySectionContent(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API BodySectionContent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The layout configuration of a body section.</p>
      */
-    inline const SectionLayoutConfiguration& GetLayout() const{ return m_layout; }
-
-    /**
-     * <p>The layout configuration of a body section.</p>
-     */
+    inline const SectionLayoutConfiguration& GetLayout() const { return m_layout; }
     inline bool LayoutHasBeenSet() const { return m_layoutHasBeenSet; }
-
-    /**
-     * <p>The layout configuration of a body section.</p>
-     */
-    inline void SetLayout(const SectionLayoutConfiguration& value) { m_layoutHasBeenSet = true; m_layout = value; }
-
-    /**
-     * <p>The layout configuration of a body section.</p>
-     */
-    inline void SetLayout(SectionLayoutConfiguration&& value) { m_layoutHasBeenSet = true; m_layout = std::move(value); }
-
-    /**
-     * <p>The layout configuration of a body section.</p>
-     */
-    inline BodySectionContent& WithLayout(const SectionLayoutConfiguration& value) { SetLayout(value); return *this;}
-
-    /**
-     * <p>The layout configuration of a body section.</p>
-     */
-    inline BodySectionContent& WithLayout(SectionLayoutConfiguration&& value) { SetLayout(std::move(value)); return *this;}
-
+    template<typename LayoutT = SectionLayoutConfiguration>
+    void SetLayout(LayoutT&& value) { m_layoutHasBeenSet = true; m_layout = std::forward<LayoutT>(value); }
+    template<typename LayoutT = SectionLayoutConfiguration>
+    BodySectionContent& WithLayout(LayoutT&& value) { SetLayout(std::forward<LayoutT>(value)); return *this;}
+    ///@}
   private:
 
     SectionLayoutConfiguration m_layout;

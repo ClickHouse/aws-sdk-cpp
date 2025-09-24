@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-ScalarReferenceDetails::ScalarReferenceDetails() : 
-    m_value(0.0),
-    m_valueHasBeenSet(false)
-{
-}
-
-ScalarReferenceDetails::ScalarReferenceDetails(const XmlNode& xmlNode) : 
-    m_value(0.0),
-    m_valueHasBeenSet(false)
+ScalarReferenceDetails::ScalarReferenceDetails(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -63,7 +55,7 @@ void ScalarReferenceDetails::OutputToStream(Aws::OStream& oStream, const char* l
 {
   if(m_valueHasBeenSet)
   {
-        oStream << location << ".Value=" << StringUtils::URLEncode(m_value) << "&";
+      oStream << location << ".Value=" << StringUtils::URLEncode(m_value) << "&";
   }
 }
 

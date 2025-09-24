@@ -18,17 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-ProviderUserIdentifierType::ProviderUserIdentifierType() : 
-    m_providerNameHasBeenSet(false),
-    m_providerAttributeNameHasBeenSet(false),
-    m_providerAttributeValueHasBeenSet(false)
-{
-}
-
-ProviderUserIdentifierType::ProviderUserIdentifierType(JsonView jsonValue) : 
-    m_providerNameHasBeenSet(false),
-    m_providerAttributeNameHasBeenSet(false),
-    m_providerAttributeValueHasBeenSet(false)
+ProviderUserIdentifierType::ProviderUserIdentifierType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ProviderUserIdentifierType& ProviderUserIdentifierType::operator =(JsonView json
   if(jsonValue.ValueExists("ProviderName"))
   {
     m_providerName = jsonValue.GetString("ProviderName");
-
     m_providerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProviderAttributeName"))
   {
     m_providerAttributeName = jsonValue.GetString("ProviderAttributeName");
-
     m_providerAttributeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProviderAttributeValue"))
   {
     m_providerAttributeValue = jsonValue.GetString("ProviderAttributeValue");
-
     m_providerAttributeValueHasBeenSet = true;
   }
-
   return *this;
 }
 

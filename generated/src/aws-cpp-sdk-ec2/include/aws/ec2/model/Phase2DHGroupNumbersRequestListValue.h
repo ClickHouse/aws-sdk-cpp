@@ -30,7 +30,7 @@ namespace Model
   class Phase2DHGroupNumbersRequestListValue
   {
   public:
-    AWS_EC2_API Phase2DHGroupNumbersRequestListValue();
+    AWS_EC2_API Phase2DHGroupNumbersRequestListValue() = default;
     AWS_EC2_API Phase2DHGroupNumbersRequestListValue(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API Phase2DHGroupNumbersRequestListValue& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -38,29 +38,18 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The Diffie-Hellmann group number.</p>
      */
-    inline int GetValue() const{ return m_value; }
-
-    /**
-     * <p>The Diffie-Hellmann group number.</p>
-     */
+    inline int GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The Diffie-Hellmann group number.</p>
-     */
     inline void SetValue(int value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The Diffie-Hellmann group number.</p>
-     */
     inline Phase2DHGroupNumbersRequestListValue& WithValue(int value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    int m_value;
+    int m_value{0};
     bool m_valueHasBeenSet = false;
   };
 

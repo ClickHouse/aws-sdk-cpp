@@ -34,150 +34,51 @@ namespace Model
   class ModelConfiguration
   {
   public:
-    AWS_SAGEMAKER_API ModelConfiguration();
+    AWS_SAGEMAKER_API ModelConfiguration() = default;
     AWS_SAGEMAKER_API ModelConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ModelConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The inference specification name in the model package version.</p>
      */
-    inline const Aws::String& GetInferenceSpecificationName() const{ return m_inferenceSpecificationName; }
-
-    /**
-     * <p>The inference specification name in the model package version.</p>
-     */
+    inline const Aws::String& GetInferenceSpecificationName() const { return m_inferenceSpecificationName; }
     inline bool InferenceSpecificationNameHasBeenSet() const { return m_inferenceSpecificationNameHasBeenSet; }
+    template<typename InferenceSpecificationNameT = Aws::String>
+    void SetInferenceSpecificationName(InferenceSpecificationNameT&& value) { m_inferenceSpecificationNameHasBeenSet = true; m_inferenceSpecificationName = std::forward<InferenceSpecificationNameT>(value); }
+    template<typename InferenceSpecificationNameT = Aws::String>
+    ModelConfiguration& WithInferenceSpecificationName(InferenceSpecificationNameT&& value) { SetInferenceSpecificationName(std::forward<InferenceSpecificationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The inference specification name in the model package version.</p>
-     */
-    inline void SetInferenceSpecificationName(const Aws::String& value) { m_inferenceSpecificationNameHasBeenSet = true; m_inferenceSpecificationName = value; }
-
-    /**
-     * <p>The inference specification name in the model package version.</p>
-     */
-    inline void SetInferenceSpecificationName(Aws::String&& value) { m_inferenceSpecificationNameHasBeenSet = true; m_inferenceSpecificationName = std::move(value); }
-
-    /**
-     * <p>The inference specification name in the model package version.</p>
-     */
-    inline void SetInferenceSpecificationName(const char* value) { m_inferenceSpecificationNameHasBeenSet = true; m_inferenceSpecificationName.assign(value); }
-
-    /**
-     * <p>The inference specification name in the model package version.</p>
-     */
-    inline ModelConfiguration& WithInferenceSpecificationName(const Aws::String& value) { SetInferenceSpecificationName(value); return *this;}
-
-    /**
-     * <p>The inference specification name in the model package version.</p>
-     */
-    inline ModelConfiguration& WithInferenceSpecificationName(Aws::String&& value) { SetInferenceSpecificationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The inference specification name in the model package version.</p>
-     */
-    inline ModelConfiguration& WithInferenceSpecificationName(const char* value) { SetInferenceSpecificationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Defines the environment parameters that includes key, value types, and
      * values.</p>
      */
-    inline const Aws::Vector<EnvironmentParameter>& GetEnvironmentParameters() const{ return m_environmentParameters; }
-
-    /**
-     * <p>Defines the environment parameters that includes key, value types, and
-     * values.</p>
-     */
+    inline const Aws::Vector<EnvironmentParameter>& GetEnvironmentParameters() const { return m_environmentParameters; }
     inline bool EnvironmentParametersHasBeenSet() const { return m_environmentParametersHasBeenSet; }
+    template<typename EnvironmentParametersT = Aws::Vector<EnvironmentParameter>>
+    void SetEnvironmentParameters(EnvironmentParametersT&& value) { m_environmentParametersHasBeenSet = true; m_environmentParameters = std::forward<EnvironmentParametersT>(value); }
+    template<typename EnvironmentParametersT = Aws::Vector<EnvironmentParameter>>
+    ModelConfiguration& WithEnvironmentParameters(EnvironmentParametersT&& value) { SetEnvironmentParameters(std::forward<EnvironmentParametersT>(value)); return *this;}
+    template<typename EnvironmentParametersT = EnvironmentParameter>
+    ModelConfiguration& AddEnvironmentParameters(EnvironmentParametersT&& value) { m_environmentParametersHasBeenSet = true; m_environmentParameters.emplace_back(std::forward<EnvironmentParametersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Defines the environment parameters that includes key, value types, and
-     * values.</p>
-     */
-    inline void SetEnvironmentParameters(const Aws::Vector<EnvironmentParameter>& value) { m_environmentParametersHasBeenSet = true; m_environmentParameters = value; }
-
-    /**
-     * <p>Defines the environment parameters that includes key, value types, and
-     * values.</p>
-     */
-    inline void SetEnvironmentParameters(Aws::Vector<EnvironmentParameter>&& value) { m_environmentParametersHasBeenSet = true; m_environmentParameters = std::move(value); }
-
-    /**
-     * <p>Defines the environment parameters that includes key, value types, and
-     * values.</p>
-     */
-    inline ModelConfiguration& WithEnvironmentParameters(const Aws::Vector<EnvironmentParameter>& value) { SetEnvironmentParameters(value); return *this;}
-
-    /**
-     * <p>Defines the environment parameters that includes key, value types, and
-     * values.</p>
-     */
-    inline ModelConfiguration& WithEnvironmentParameters(Aws::Vector<EnvironmentParameter>&& value) { SetEnvironmentParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>Defines the environment parameters that includes key, value types, and
-     * values.</p>
-     */
-    inline ModelConfiguration& AddEnvironmentParameters(const EnvironmentParameter& value) { m_environmentParametersHasBeenSet = true; m_environmentParameters.push_back(value); return *this; }
-
-    /**
-     * <p>Defines the environment parameters that includes key, value types, and
-     * values.</p>
-     */
-    inline ModelConfiguration& AddEnvironmentParameters(EnvironmentParameter&& value) { m_environmentParametersHasBeenSet = true; m_environmentParameters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the compilation job used to create the recommended model
      * artifacts.</p>
      */
-    inline const Aws::String& GetCompilationJobName() const{ return m_compilationJobName; }
-
-    /**
-     * <p>The name of the compilation job used to create the recommended model
-     * artifacts.</p>
-     */
+    inline const Aws::String& GetCompilationJobName() const { return m_compilationJobName; }
     inline bool CompilationJobNameHasBeenSet() const { return m_compilationJobNameHasBeenSet; }
-
-    /**
-     * <p>The name of the compilation job used to create the recommended model
-     * artifacts.</p>
-     */
-    inline void SetCompilationJobName(const Aws::String& value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName = value; }
-
-    /**
-     * <p>The name of the compilation job used to create the recommended model
-     * artifacts.</p>
-     */
-    inline void SetCompilationJobName(Aws::String&& value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName = std::move(value); }
-
-    /**
-     * <p>The name of the compilation job used to create the recommended model
-     * artifacts.</p>
-     */
-    inline void SetCompilationJobName(const char* value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName.assign(value); }
-
-    /**
-     * <p>The name of the compilation job used to create the recommended model
-     * artifacts.</p>
-     */
-    inline ModelConfiguration& WithCompilationJobName(const Aws::String& value) { SetCompilationJobName(value); return *this;}
-
-    /**
-     * <p>The name of the compilation job used to create the recommended model
-     * artifacts.</p>
-     */
-    inline ModelConfiguration& WithCompilationJobName(Aws::String&& value) { SetCompilationJobName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the compilation job used to create the recommended model
-     * artifacts.</p>
-     */
-    inline ModelConfiguration& WithCompilationJobName(const char* value) { SetCompilationJobName(value); return *this;}
-
+    template<typename CompilationJobNameT = Aws::String>
+    void SetCompilationJobName(CompilationJobNameT&& value) { m_compilationJobNameHasBeenSet = true; m_compilationJobName = std::forward<CompilationJobNameT>(value); }
+    template<typename CompilationJobNameT = Aws::String>
+    ModelConfiguration& WithCompilationJobName(CompilationJobNameT&& value) { SetCompilationJobName(std::forward<CompilationJobNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_inferenceSpecificationName;

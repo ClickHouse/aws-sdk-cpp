@@ -35,174 +35,69 @@ namespace Model
   class PutFileEntry
   {
   public:
-    AWS_CODECOMMIT_API PutFileEntry();
+    AWS_CODECOMMIT_API PutFileEntry() = default;
     AWS_CODECOMMIT_API PutFileEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API PutFileEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The full path to the file in the repository, including the name of the
      * file.</p>
      */
-    inline const Aws::String& GetFilePath() const{ return m_filePath; }
-
-    /**
-     * <p>The full path to the file in the repository, including the name of the
-     * file.</p>
-     */
+    inline const Aws::String& GetFilePath() const { return m_filePath; }
     inline bool FilePathHasBeenSet() const { return m_filePathHasBeenSet; }
+    template<typename FilePathT = Aws::String>
+    void SetFilePath(FilePathT&& value) { m_filePathHasBeenSet = true; m_filePath = std::forward<FilePathT>(value); }
+    template<typename FilePathT = Aws::String>
+    PutFileEntry& WithFilePath(FilePathT&& value) { SetFilePath(std::forward<FilePathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The full path to the file in the repository, including the name of the
-     * file.</p>
-     */
-    inline void SetFilePath(const Aws::String& value) { m_filePathHasBeenSet = true; m_filePath = value; }
-
-    /**
-     * <p>The full path to the file in the repository, including the name of the
-     * file.</p>
-     */
-    inline void SetFilePath(Aws::String&& value) { m_filePathHasBeenSet = true; m_filePath = std::move(value); }
-
-    /**
-     * <p>The full path to the file in the repository, including the name of the
-     * file.</p>
-     */
-    inline void SetFilePath(const char* value) { m_filePathHasBeenSet = true; m_filePath.assign(value); }
-
-    /**
-     * <p>The full path to the file in the repository, including the name of the
-     * file.</p>
-     */
-    inline PutFileEntry& WithFilePath(const Aws::String& value) { SetFilePath(value); return *this;}
-
-    /**
-     * <p>The full path to the file in the repository, including the name of the
-     * file.</p>
-     */
-    inline PutFileEntry& WithFilePath(Aws::String&& value) { SetFilePath(std::move(value)); return *this;}
-
-    /**
-     * <p>The full path to the file in the repository, including the name of the
-     * file.</p>
-     */
-    inline PutFileEntry& WithFilePath(const char* value) { SetFilePath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The extrapolated file mode permissions for the file. Valid values include
      * EXECUTABLE and NORMAL.</p>
      */
-    inline const FileModeTypeEnum& GetFileMode() const{ return m_fileMode; }
-
-    /**
-     * <p>The extrapolated file mode permissions for the file. Valid values include
-     * EXECUTABLE and NORMAL.</p>
-     */
+    inline FileModeTypeEnum GetFileMode() const { return m_fileMode; }
     inline bool FileModeHasBeenSet() const { return m_fileModeHasBeenSet; }
+    inline void SetFileMode(FileModeTypeEnum value) { m_fileModeHasBeenSet = true; m_fileMode = value; }
+    inline PutFileEntry& WithFileMode(FileModeTypeEnum value) { SetFileMode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The extrapolated file mode permissions for the file. Valid values include
-     * EXECUTABLE and NORMAL.</p>
-     */
-    inline void SetFileMode(const FileModeTypeEnum& value) { m_fileModeHasBeenSet = true; m_fileMode = value; }
-
-    /**
-     * <p>The extrapolated file mode permissions for the file. Valid values include
-     * EXECUTABLE and NORMAL.</p>
-     */
-    inline void SetFileMode(FileModeTypeEnum&& value) { m_fileModeHasBeenSet = true; m_fileMode = std::move(value); }
-
-    /**
-     * <p>The extrapolated file mode permissions for the file. Valid values include
-     * EXECUTABLE and NORMAL.</p>
-     */
-    inline PutFileEntry& WithFileMode(const FileModeTypeEnum& value) { SetFileMode(value); return *this;}
-
-    /**
-     * <p>The extrapolated file mode permissions for the file. Valid values include
-     * EXECUTABLE and NORMAL.</p>
-     */
-    inline PutFileEntry& WithFileMode(FileModeTypeEnum&& value) { SetFileMode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The content of the file, if a source file is not specified.</p>
      */
-    inline const Aws::Utils::ByteBuffer& GetFileContent() const{ return m_fileContent; }
-
-    /**
-     * <p>The content of the file, if a source file is not specified.</p>
-     */
+    inline const Aws::Utils::ByteBuffer& GetFileContent() const { return m_fileContent; }
     inline bool FileContentHasBeenSet() const { return m_fileContentHasBeenSet; }
+    template<typename FileContentT = Aws::Utils::ByteBuffer>
+    void SetFileContent(FileContentT&& value) { m_fileContentHasBeenSet = true; m_fileContent = std::forward<FileContentT>(value); }
+    template<typename FileContentT = Aws::Utils::ByteBuffer>
+    PutFileEntry& WithFileContent(FileContentT&& value) { SetFileContent(std::forward<FileContentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The content of the file, if a source file is not specified.</p>
-     */
-    inline void SetFileContent(const Aws::Utils::ByteBuffer& value) { m_fileContentHasBeenSet = true; m_fileContent = value; }
-
-    /**
-     * <p>The content of the file, if a source file is not specified.</p>
-     */
-    inline void SetFileContent(Aws::Utils::ByteBuffer&& value) { m_fileContentHasBeenSet = true; m_fileContent = std::move(value); }
-
-    /**
-     * <p>The content of the file, if a source file is not specified.</p>
-     */
-    inline PutFileEntry& WithFileContent(const Aws::Utils::ByteBuffer& value) { SetFileContent(value); return *this;}
-
-    /**
-     * <p>The content of the file, if a source file is not specified.</p>
-     */
-    inline PutFileEntry& WithFileContent(Aws::Utils::ByteBuffer&& value) { SetFileContent(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name and full path of the file that contains the changes you want to make
      * as part of the commit, if you are not providing the file content directly.</p>
      */
-    inline const SourceFileSpecifier& GetSourceFile() const{ return m_sourceFile; }
-
-    /**
-     * <p>The name and full path of the file that contains the changes you want to make
-     * as part of the commit, if you are not providing the file content directly.</p>
-     */
+    inline const SourceFileSpecifier& GetSourceFile() const { return m_sourceFile; }
     inline bool SourceFileHasBeenSet() const { return m_sourceFileHasBeenSet; }
-
-    /**
-     * <p>The name and full path of the file that contains the changes you want to make
-     * as part of the commit, if you are not providing the file content directly.</p>
-     */
-    inline void SetSourceFile(const SourceFileSpecifier& value) { m_sourceFileHasBeenSet = true; m_sourceFile = value; }
-
-    /**
-     * <p>The name and full path of the file that contains the changes you want to make
-     * as part of the commit, if you are not providing the file content directly.</p>
-     */
-    inline void SetSourceFile(SourceFileSpecifier&& value) { m_sourceFileHasBeenSet = true; m_sourceFile = std::move(value); }
-
-    /**
-     * <p>The name and full path of the file that contains the changes you want to make
-     * as part of the commit, if you are not providing the file content directly.</p>
-     */
-    inline PutFileEntry& WithSourceFile(const SourceFileSpecifier& value) { SetSourceFile(value); return *this;}
-
-    /**
-     * <p>The name and full path of the file that contains the changes you want to make
-     * as part of the commit, if you are not providing the file content directly.</p>
-     */
-    inline PutFileEntry& WithSourceFile(SourceFileSpecifier&& value) { SetSourceFile(std::move(value)); return *this;}
-
+    template<typename SourceFileT = SourceFileSpecifier>
+    void SetSourceFile(SourceFileT&& value) { m_sourceFileHasBeenSet = true; m_sourceFile = std::forward<SourceFileT>(value); }
+    template<typename SourceFileT = SourceFileSpecifier>
+    PutFileEntry& WithSourceFile(SourceFileT&& value) { SetSourceFile(std::forward<SourceFileT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_filePath;
     bool m_filePathHasBeenSet = false;
 
-    FileModeTypeEnum m_fileMode;
+    FileModeTypeEnum m_fileMode{FileModeTypeEnum::NOT_SET};
     bool m_fileModeHasBeenSet = false;
 
-    Aws::Utils::ByteBuffer m_fileContent;
+    Aws::Utils::ByteBuffer m_fileContent{};
     bool m_fileContentHasBeenSet = false;
 
     SourceFileSpecifier m_sourceFile;

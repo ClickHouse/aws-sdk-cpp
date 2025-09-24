@@ -18,15 +18,7 @@ namespace Glue
 namespace Model
 {
 
-GlueStudioSchemaColumn::GlueStudioSchemaColumn() : 
-    m_nameHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-GlueStudioSchemaColumn::GlueStudioSchemaColumn(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_typeHasBeenSet(false)
+GlueStudioSchemaColumn::GlueStudioSchemaColumn(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ GlueStudioSchemaColumn& GlueStudioSchemaColumn::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("GlueStudioType"))
+  {
+    m_glueStudioType = jsonValue.GetString("GlueStudioType");
+    m_glueStudioTypeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue GlueStudioSchemaColumn::Jsonize() const
   if(m_typeHasBeenSet)
   {
    payload.WithString("Type", m_type);
+
+  }
+
+  if(m_glueStudioTypeHasBeenSet)
+  {
+   payload.WithString("GlueStudioType", m_glueStudioType);
 
   }
 

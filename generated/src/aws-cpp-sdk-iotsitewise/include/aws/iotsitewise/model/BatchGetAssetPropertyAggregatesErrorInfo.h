@@ -35,79 +35,39 @@ namespace Model
   class BatchGetAssetPropertyAggregatesErrorInfo
   {
   public:
-    AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesErrorInfo();
+    AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesErrorInfo() = default;
     AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesErrorInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API BatchGetAssetPropertyAggregatesErrorInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The error code.</p>
      */
-    inline const BatchGetAssetPropertyAggregatesErrorCode& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The error code.</p>
-     */
+    inline BatchGetAssetPropertyAggregatesErrorCode GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    inline void SetErrorCode(BatchGetAssetPropertyAggregatesErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline BatchGetAssetPropertyAggregatesErrorInfo& WithErrorCode(BatchGetAssetPropertyAggregatesErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetErrorCode(const BatchGetAssetPropertyAggregatesErrorCode& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetErrorCode(BatchGetAssetPropertyAggregatesErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorInfo& WithErrorCode(const BatchGetAssetPropertyAggregatesErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorInfo& WithErrorCode(BatchGetAssetPropertyAggregatesErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date the error occurred, in Unix epoch time.</p>
      */
-    inline const Aws::Utils::DateTime& GetErrorTimestamp() const{ return m_errorTimestamp; }
-
-    /**
-     * <p>The date the error occurred, in Unix epoch time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetErrorTimestamp() const { return m_errorTimestamp; }
     inline bool ErrorTimestampHasBeenSet() const { return m_errorTimestampHasBeenSet; }
-
-    /**
-     * <p>The date the error occurred, in Unix epoch time.</p>
-     */
-    inline void SetErrorTimestamp(const Aws::Utils::DateTime& value) { m_errorTimestampHasBeenSet = true; m_errorTimestamp = value; }
-
-    /**
-     * <p>The date the error occurred, in Unix epoch time.</p>
-     */
-    inline void SetErrorTimestamp(Aws::Utils::DateTime&& value) { m_errorTimestampHasBeenSet = true; m_errorTimestamp = std::move(value); }
-
-    /**
-     * <p>The date the error occurred, in Unix epoch time.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorInfo& WithErrorTimestamp(const Aws::Utils::DateTime& value) { SetErrorTimestamp(value); return *this;}
-
-    /**
-     * <p>The date the error occurred, in Unix epoch time.</p>
-     */
-    inline BatchGetAssetPropertyAggregatesErrorInfo& WithErrorTimestamp(Aws::Utils::DateTime&& value) { SetErrorTimestamp(std::move(value)); return *this;}
-
+    template<typename ErrorTimestampT = Aws::Utils::DateTime>
+    void SetErrorTimestamp(ErrorTimestampT&& value) { m_errorTimestampHasBeenSet = true; m_errorTimestamp = std::forward<ErrorTimestampT>(value); }
+    template<typename ErrorTimestampT = Aws::Utils::DateTime>
+    BatchGetAssetPropertyAggregatesErrorInfo& WithErrorTimestamp(ErrorTimestampT&& value) { SetErrorTimestamp(std::forward<ErrorTimestampT>(value)); return *this;}
+    ///@}
   private:
 
-    BatchGetAssetPropertyAggregatesErrorCode m_errorCode;
+    BatchGetAssetPropertyAggregatesErrorCode m_errorCode{BatchGetAssetPropertyAggregatesErrorCode::NOT_SET};
     bool m_errorCodeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_errorTimestamp;
+    Aws::Utils::DateTime m_errorTimestamp{};
     bool m_errorTimestampHasBeenSet = false;
   };
 

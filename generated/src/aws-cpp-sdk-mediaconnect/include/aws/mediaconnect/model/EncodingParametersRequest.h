@@ -24,106 +24,52 @@ namespace Model
 {
 
   /**
-   * A collection of parameters that determine how MediaConnect will convert the
+   * <p> A collection of parameters that determine how MediaConnect will convert the
    * content. These fields only apply to outputs on flows that have a CDI
-   * source.<p><h3>See Also:</h3>   <a
+   * source.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/EncodingParametersRequest">AWS
    * API Reference</a></p>
    */
   class EncodingParametersRequest
   {
   public:
-    AWS_MEDIACONNECT_API EncodingParametersRequest();
+    AWS_MEDIACONNECT_API EncodingParametersRequest() = default;
     AWS_MEDIACONNECT_API EncodingParametersRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API EncodingParametersRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * A value that is used to calculate compression for an output. The bitrate of the
-     * output is calculated as follows: Output bitrate = (1 / compressionFactor) *
+     * <p> A value that is used to calculate compression for an output. The bitrate of
+     * the output is calculated as follows: Output bitrate = (1 / compressionFactor) *
      * (source bitrate) This property only applies to outputs that use the ST 2110 JPEG
      * XS protocol, with a flow source that uses the CDI protocol. Valid values are
-     * floating point numbers in the range of 3.0 to 10.0, inclusive.
+     * floating point numbers in the range of 3.0 to 10.0, inclusive.</p>
      */
-    inline double GetCompressionFactor() const{ return m_compressionFactor; }
-
-    /**
-     * A value that is used to calculate compression for an output. The bitrate of the
-     * output is calculated as follows: Output bitrate = (1 / compressionFactor) *
-     * (source bitrate) This property only applies to outputs that use the ST 2110 JPEG
-     * XS protocol, with a flow source that uses the CDI protocol. Valid values are
-     * floating point numbers in the range of 3.0 to 10.0, inclusive.
-     */
+    inline double GetCompressionFactor() const { return m_compressionFactor; }
     inline bool CompressionFactorHasBeenSet() const { return m_compressionFactorHasBeenSet; }
-
-    /**
-     * A value that is used to calculate compression for an output. The bitrate of the
-     * output is calculated as follows: Output bitrate = (1 / compressionFactor) *
-     * (source bitrate) This property only applies to outputs that use the ST 2110 JPEG
-     * XS protocol, with a flow source that uses the CDI protocol. Valid values are
-     * floating point numbers in the range of 3.0 to 10.0, inclusive.
-     */
     inline void SetCompressionFactor(double value) { m_compressionFactorHasBeenSet = true; m_compressionFactor = value; }
-
-    /**
-     * A value that is used to calculate compression for an output. The bitrate of the
-     * output is calculated as follows: Output bitrate = (1 / compressionFactor) *
-     * (source bitrate) This property only applies to outputs that use the ST 2110 JPEG
-     * XS protocol, with a flow source that uses the CDI protocol. Valid values are
-     * floating point numbers in the range of 3.0 to 10.0, inclusive.
-     */
     inline EncodingParametersRequest& WithCompressionFactor(double value) { SetCompressionFactor(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * A setting on the encoder that drives compression settings. This property only
-     * applies to video media streams associated with outputs that use the ST 2110 JPEG
-     * XS protocol, if at least one source on the flow uses the CDI protocol.
+     * <p> A setting on the encoder that drives compression settings. This property
+     * only applies to video media streams associated with outputs that use the ST 2110
+     * JPEG XS protocol, if at least one source on the flow uses the CDI protocol.</p>
      */
-    inline const EncoderProfile& GetEncoderProfile() const{ return m_encoderProfile; }
-
-    /**
-     * A setting on the encoder that drives compression settings. This property only
-     * applies to video media streams associated with outputs that use the ST 2110 JPEG
-     * XS protocol, if at least one source on the flow uses the CDI protocol.
-     */
+    inline EncoderProfile GetEncoderProfile() const { return m_encoderProfile; }
     inline bool EncoderProfileHasBeenSet() const { return m_encoderProfileHasBeenSet; }
-
-    /**
-     * A setting on the encoder that drives compression settings. This property only
-     * applies to video media streams associated with outputs that use the ST 2110 JPEG
-     * XS protocol, if at least one source on the flow uses the CDI protocol.
-     */
-    inline void SetEncoderProfile(const EncoderProfile& value) { m_encoderProfileHasBeenSet = true; m_encoderProfile = value; }
-
-    /**
-     * A setting on the encoder that drives compression settings. This property only
-     * applies to video media streams associated with outputs that use the ST 2110 JPEG
-     * XS protocol, if at least one source on the flow uses the CDI protocol.
-     */
-    inline void SetEncoderProfile(EncoderProfile&& value) { m_encoderProfileHasBeenSet = true; m_encoderProfile = std::move(value); }
-
-    /**
-     * A setting on the encoder that drives compression settings. This property only
-     * applies to video media streams associated with outputs that use the ST 2110 JPEG
-     * XS protocol, if at least one source on the flow uses the CDI protocol.
-     */
-    inline EncodingParametersRequest& WithEncoderProfile(const EncoderProfile& value) { SetEncoderProfile(value); return *this;}
-
-    /**
-     * A setting on the encoder that drives compression settings. This property only
-     * applies to video media streams associated with outputs that use the ST 2110 JPEG
-     * XS protocol, if at least one source on the flow uses the CDI protocol.
-     */
-    inline EncodingParametersRequest& WithEncoderProfile(EncoderProfile&& value) { SetEncoderProfile(std::move(value)); return *this;}
-
+    inline void SetEncoderProfile(EncoderProfile value) { m_encoderProfileHasBeenSet = true; m_encoderProfile = value; }
+    inline EncodingParametersRequest& WithEncoderProfile(EncoderProfile value) { SetEncoderProfile(value); return *this;}
+    ///@}
   private:
 
-    double m_compressionFactor;
+    double m_compressionFactor{0.0};
     bool m_compressionFactorHasBeenSet = false;
 
-    EncoderProfile m_encoderProfile;
+    EncoderProfile m_encoderProfile{EncoderProfile::NOT_SET};
     bool m_encoderProfileHasBeenSet = false;
   };
 

@@ -20,15 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-SecondaryClusterInfo::SecondaryClusterInfo() : 
-    m_availabilityZoneHasBeenSet(false),
-    m_clusterNodesHasBeenSet(false)
-{
-}
-
-SecondaryClusterInfo::SecondaryClusterInfo(const XmlNode& xmlNode) : 
-    m_availabilityZoneHasBeenSet(false),
-    m_clusterNodesHasBeenSet(false)
+SecondaryClusterInfo::SecondaryClusterInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ SecondaryClusterInfo& SecondaryClusterInfo::operator =(const XmlNode& xmlNode)
     if(!clusterNodesNode.IsNull())
     {
       XmlNode clusterNodesMember = clusterNodesNode.FirstChild("member");
+      m_clusterNodesHasBeenSet = !clusterNodesMember.IsNull();
       while(!clusterNodesMember.IsNull())
       {
         m_clusterNodes.push_back(clusterNodesMember);
@@ -94,7 +87,7 @@ void SecondaryClusterInfo::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_clusterNodes)
       {
         Aws::StringStream clusterNodesSs;
-        clusterNodesSs << location <<  ".ClusterNodes.member." << clusterNodesIdx++;
+        clusterNodesSs << location << ".ClusterNodes.member." << clusterNodesIdx++;
         item.OutputToStream(oStream, clusterNodesSs.str().c_str());
       }
   }

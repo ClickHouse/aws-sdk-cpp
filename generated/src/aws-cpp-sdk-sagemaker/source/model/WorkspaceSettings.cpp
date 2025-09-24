@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-WorkspaceSettings::WorkspaceSettings() : 
-    m_s3ArtifactPathHasBeenSet(false),
-    m_s3KmsKeyIdHasBeenSet(false)
-{
-}
-
-WorkspaceSettings::WorkspaceSettings(JsonView jsonValue) : 
-    m_s3ArtifactPathHasBeenSet(false),
-    m_s3KmsKeyIdHasBeenSet(false)
+WorkspaceSettings::WorkspaceSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ WorkspaceSettings& WorkspaceSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3ArtifactPath"))
   {
     m_s3ArtifactPath = jsonValue.GetString("S3ArtifactPath");
-
     m_s3ArtifactPathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3KmsKeyId"))
   {
     m_s3KmsKeyId = jsonValue.GetString("S3KmsKeyId");
-
     m_s3KmsKeyIdHasBeenSet = true;
   }
-
   return *this;
 }
 

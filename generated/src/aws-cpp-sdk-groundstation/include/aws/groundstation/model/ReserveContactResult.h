@@ -32,73 +32,37 @@ namespace Model
   class ReserveContactResult
   {
   public:
-    AWS_GROUNDSTATION_API ReserveContactResult();
+    AWS_GROUNDSTATION_API ReserveContactResult() = default;
     AWS_GROUNDSTATION_API ReserveContactResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GROUNDSTATION_API ReserveContactResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>UUID of a contact.</p>
      */
-    inline const Aws::String& GetContactId() const{ return m_contactId; }
+    inline const Aws::String& GetContactId() const { return m_contactId; }
+    template<typename ContactIdT = Aws::String>
+    void SetContactId(ContactIdT&& value) { m_contactIdHasBeenSet = true; m_contactId = std::forward<ContactIdT>(value); }
+    template<typename ContactIdT = Aws::String>
+    ReserveContactResult& WithContactId(ContactIdT&& value) { SetContactId(std::forward<ContactIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>UUID of a contact.</p>
-     */
-    inline void SetContactId(const Aws::String& value) { m_contactId = value; }
-
-    /**
-     * <p>UUID of a contact.</p>
-     */
-    inline void SetContactId(Aws::String&& value) { m_contactId = std::move(value); }
-
-    /**
-     * <p>UUID of a contact.</p>
-     */
-    inline void SetContactId(const char* value) { m_contactId.assign(value); }
-
-    /**
-     * <p>UUID of a contact.</p>
-     */
-    inline ReserveContactResult& WithContactId(const Aws::String& value) { SetContactId(value); return *this;}
-
-    /**
-     * <p>UUID of a contact.</p>
-     */
-    inline ReserveContactResult& WithContactId(Aws::String&& value) { SetContactId(std::move(value)); return *this;}
-
-    /**
-     * <p>UUID of a contact.</p>
-     */
-    inline ReserveContactResult& WithContactId(const char* value) { SetContactId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ReserveContactResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ReserveContactResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ReserveContactResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ReserveContactResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_contactId;
+    bool m_contactIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

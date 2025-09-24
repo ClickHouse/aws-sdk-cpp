@@ -30,83 +30,43 @@ namespace Model
   class SimulationAppPortMapping
   {
   public:
-    AWS_SIMSPACEWEAVER_API SimulationAppPortMapping();
+    AWS_SIMSPACEWEAVER_API SimulationAppPortMapping() = default;
     AWS_SIMSPACEWEAVER_API SimulationAppPortMapping(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIMSPACEWEAVER_API SimulationAppPortMapping& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SIMSPACEWEAVER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The TCP/UDP port number of the running app. SimSpace Weaver dynamically
      * assigns this port number when the app starts. SimSpace Weaver maps the
      * <code>Declared</code> port to the <code>Actual</code> port. Clients connect to
      * the app using the app's IP address and the <code>Actual</code> port number.</p>
      */
-    inline int GetActual() const{ return m_actual; }
-
-    /**
-     * <p>The TCP/UDP port number of the running app. SimSpace Weaver dynamically
-     * assigns this port number when the app starts. SimSpace Weaver maps the
-     * <code>Declared</code> port to the <code>Actual</code> port. Clients connect to
-     * the app using the app's IP address and the <code>Actual</code> port number.</p>
-     */
+    inline int GetActual() const { return m_actual; }
     inline bool ActualHasBeenSet() const { return m_actualHasBeenSet; }
-
-    /**
-     * <p>The TCP/UDP port number of the running app. SimSpace Weaver dynamically
-     * assigns this port number when the app starts. SimSpace Weaver maps the
-     * <code>Declared</code> port to the <code>Actual</code> port. Clients connect to
-     * the app using the app's IP address and the <code>Actual</code> port number.</p>
-     */
     inline void SetActual(int value) { m_actualHasBeenSet = true; m_actual = value; }
-
-    /**
-     * <p>The TCP/UDP port number of the running app. SimSpace Weaver dynamically
-     * assigns this port number when the app starts. SimSpace Weaver maps the
-     * <code>Declared</code> port to the <code>Actual</code> port. Clients connect to
-     * the app using the app's IP address and the <code>Actual</code> port number.</p>
-     */
     inline SimulationAppPortMapping& WithActual(int value) { SetActual(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The TCP/UDP port number of the app, declared in the simulation schema.
      * SimSpace Weaver maps the <code>Declared</code> port to the <code>Actual</code>
      * port. The source code for the app should bind to the <code>Declared</code>
      * port.</p>
      */
-    inline int GetDeclared() const{ return m_declared; }
-
-    /**
-     * <p>The TCP/UDP port number of the app, declared in the simulation schema.
-     * SimSpace Weaver maps the <code>Declared</code> port to the <code>Actual</code>
-     * port. The source code for the app should bind to the <code>Declared</code>
-     * port.</p>
-     */
+    inline int GetDeclared() const { return m_declared; }
     inline bool DeclaredHasBeenSet() const { return m_declaredHasBeenSet; }
-
-    /**
-     * <p>The TCP/UDP port number of the app, declared in the simulation schema.
-     * SimSpace Weaver maps the <code>Declared</code> port to the <code>Actual</code>
-     * port. The source code for the app should bind to the <code>Declared</code>
-     * port.</p>
-     */
     inline void SetDeclared(int value) { m_declaredHasBeenSet = true; m_declared = value; }
-
-    /**
-     * <p>The TCP/UDP port number of the app, declared in the simulation schema.
-     * SimSpace Weaver maps the <code>Declared</code> port to the <code>Actual</code>
-     * port. The source code for the app should bind to the <code>Declared</code>
-     * port.</p>
-     */
     inline SimulationAppPortMapping& WithDeclared(int value) { SetDeclared(value); return *this;}
-
+    ///@}
   private:
 
-    int m_actual;
+    int m_actual{0};
     bool m_actualHasBeenSet = false;
 
-    int m_declared;
+    int m_declared{0};
     bool m_declaredHasBeenSet = false;
   };
 

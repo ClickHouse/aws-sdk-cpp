@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-TableOptimizerConfiguration::TableOptimizerConfiguration() : 
-    m_roleArnHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
-{
-}
-
-TableOptimizerConfiguration::TableOptimizerConfiguration(JsonView jsonValue) : 
-    m_roleArnHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false)
+TableOptimizerConfiguration::TableOptimizerConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,33 @@ TableOptimizerConfiguration& TableOptimizerConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("enabled"))
   {
     m_enabled = jsonValue.GetBool("enabled");
-
     m_enabledHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("vpcConfiguration"))
+  {
+    m_vpcConfiguration = jsonValue.GetObject("vpcConfiguration");
+    m_vpcConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("compactionConfiguration"))
+  {
+    m_compactionConfiguration = jsonValue.GetObject("compactionConfiguration");
+    m_compactionConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("retentionConfiguration"))
+  {
+    m_retentionConfiguration = jsonValue.GetObject("retentionConfiguration");
+    m_retentionConfigurationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("orphanFileDeletionConfiguration"))
+  {
+    m_orphanFileDeletionConfiguration = jsonValue.GetObject("orphanFileDeletionConfiguration");
+    m_orphanFileDeletionConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,6 +71,30 @@ JsonValue TableOptimizerConfiguration::Jsonize() const
   if(m_enabledHasBeenSet)
   {
    payload.WithBool("enabled", m_enabled);
+
+  }
+
+  if(m_vpcConfigurationHasBeenSet)
+  {
+   payload.WithObject("vpcConfiguration", m_vpcConfiguration.Jsonize());
+
+  }
+
+  if(m_compactionConfigurationHasBeenSet)
+  {
+   payload.WithObject("compactionConfiguration", m_compactionConfiguration.Jsonize());
+
+  }
+
+  if(m_retentionConfigurationHasBeenSet)
+  {
+   payload.WithObject("retentionConfiguration", m_retentionConfiguration.Jsonize());
+
+  }
+
+  if(m_orphanFileDeletionConfigurationHasBeenSet)
+  {
+   payload.WithObject("orphanFileDeletionConfiguration", m_orphanFileDeletionConfiguration.Jsonize());
 
   }
 

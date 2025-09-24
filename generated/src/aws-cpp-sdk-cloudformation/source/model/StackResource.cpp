@@ -20,35 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackResource::StackResource() : 
-    m_stackNameHasBeenSet(false),
-    m_stackIdHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_resourceStatus(ResourceStatus::NOT_SET),
-    m_resourceStatusHasBeenSet(false),
-    m_resourceStatusReasonHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_driftInformationHasBeenSet(false),
-    m_moduleInfoHasBeenSet(false)
-{
-}
-
-StackResource::StackResource(const XmlNode& xmlNode) : 
-    m_stackNameHasBeenSet(false),
-    m_stackIdHasBeenSet(false),
-    m_logicalResourceIdHasBeenSet(false),
-    m_physicalResourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_timestampHasBeenSet(false),
-    m_resourceStatus(ResourceStatus::NOT_SET),
-    m_resourceStatusHasBeenSet(false),
-    m_resourceStatusReasonHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_driftInformationHasBeenSet(false),
-    m_moduleInfoHasBeenSet(false)
+StackResource::StackResource(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -98,7 +70,7 @@ StackResource& StackResource::operator =(const XmlNode& xmlNode)
     XmlNode resourceStatusNode = resultNode.FirstChild("ResourceStatus");
     if(!resourceStatusNode.IsNull())
     {
-      m_resourceStatus = ResourceStatusMapper::GetResourceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceStatusNode.GetText()).c_str()).c_str());
+      m_resourceStatus = ResourceStatusMapper::GetResourceStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(resourceStatusNode.GetText()).c_str()));
       m_resourceStatusHasBeenSet = true;
     }
     XmlNode resourceStatusReasonNode = resultNode.FirstChild("ResourceStatusReason");
@@ -164,7 +136,7 @@ void StackResource::OutputToStream(Aws::OStream& oStream, const char* location, 
 
   if(m_resourceStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ResourceStatus=" << ResourceStatusMapper::GetNameForResourceStatus(m_resourceStatus) << "&";
+      oStream << location << index << locationValue << ".ResourceStatus=" << StringUtils::URLEncode(ResourceStatusMapper::GetNameForResourceStatus(m_resourceStatus)) << "&";
   }
 
   if(m_resourceStatusReasonHasBeenSet)
@@ -221,7 +193,7 @@ void StackResource::OutputToStream(Aws::OStream& oStream, const char* location) 
   }
   if(m_resourceStatusHasBeenSet)
   {
-      oStream << location << ".ResourceStatus=" << ResourceStatusMapper::GetNameForResourceStatus(m_resourceStatus) << "&";
+      oStream << location << ".ResourceStatus=" << StringUtils::URLEncode(ResourceStatusMapper::GetNameForResourceStatus(m_resourceStatus)) << "&";
   }
   if(m_resourceStatusReasonHasBeenSet)
   {

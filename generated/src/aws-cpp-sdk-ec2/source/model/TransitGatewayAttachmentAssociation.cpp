@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayAttachmentAssociation::TransitGatewayAttachmentAssociation() : 
-    m_transitGatewayRouteTableIdHasBeenSet(false),
-    m_state(TransitGatewayAssociationState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-TransitGatewayAttachmentAssociation::TransitGatewayAttachmentAssociation(const XmlNode& xmlNode) : 
-    m_transitGatewayRouteTableIdHasBeenSet(false),
-    m_state(TransitGatewayAssociationState::NOT_SET),
-    m_stateHasBeenSet(false)
+TransitGatewayAttachmentAssociation::TransitGatewayAttachmentAssociation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +40,7 @@ TransitGatewayAttachmentAssociation& TransitGatewayAttachmentAssociation::operat
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayAssociationStateMapper::GetTransitGatewayAssociationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayAssociationStateMapper::GetTransitGatewayAssociationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
   }
@@ -67,7 +57,7 @@ void TransitGatewayAttachmentAssociation::OutputToStream(Aws::OStream& oStream, 
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayAssociationStateMapper::GetNameForTransitGatewayAssociationState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayAssociationStateMapper::GetNameForTransitGatewayAssociationState(m_state)) << "&";
   }
 
 }
@@ -80,7 +70,7 @@ void TransitGatewayAttachmentAssociation::OutputToStream(Aws::OStream& oStream, 
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayAssociationStateMapper::GetNameForTransitGatewayAssociationState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayAssociationStateMapper::GetNameForTransitGatewayAssociationState(m_state)) << "&";
   }
 }
 

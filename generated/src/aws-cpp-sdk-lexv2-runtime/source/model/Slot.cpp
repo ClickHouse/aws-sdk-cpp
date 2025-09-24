@@ -18,21 +18,7 @@ namespace LexRuntimeV2
 namespace Model
 {
 
-Slot::Slot() : 
-    m_valueHasBeenSet(false),
-    m_shape(Shape::NOT_SET),
-    m_shapeHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_subSlotsHasBeenSet(false)
-{
-}
-
-Slot::Slot(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_shape(Shape::NOT_SET),
-    m_shapeHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_subSlotsHasBeenSet(false)
+Slot::Slot(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ Slot& Slot::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetObject("value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("shape"))
   {
     m_shape = ShapeMapper::GetShapeForName(jsonValue.GetString("shape"));
-
     m_shapeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -62,7 +44,6 @@ Slot& Slot::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("subSlots"))
   {
     Aws::Map<Aws::String, JsonView> subSlotsJsonMap = jsonValue.GetObject("subSlots").GetAllObjects();
@@ -72,7 +53,6 @@ Slot& Slot::operator =(JsonView jsonValue)
     }
     m_subSlotsHasBeenSet = true;
   }
-
   return *this;
 }
 

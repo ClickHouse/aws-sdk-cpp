@@ -33,115 +33,39 @@ namespace Model
   class RegionsInfo
   {
   public:
-    AWS_DIRECTORYSERVICE_API RegionsInfo();
+    AWS_DIRECTORYSERVICE_API RegionsInfo() = default;
     AWS_DIRECTORYSERVICE_API RegionsInfo(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTORYSERVICE_API RegionsInfo& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DIRECTORYSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Region where the Managed Microsoft AD directory was originally
      * created.</p>
      */
-    inline const Aws::String& GetPrimaryRegion() const{ return m_primaryRegion; }
-
-    /**
-     * <p>The Region where the Managed Microsoft AD directory was originally
-     * created.</p>
-     */
+    inline const Aws::String& GetPrimaryRegion() const { return m_primaryRegion; }
     inline bool PrimaryRegionHasBeenSet() const { return m_primaryRegionHasBeenSet; }
+    template<typename PrimaryRegionT = Aws::String>
+    void SetPrimaryRegion(PrimaryRegionT&& value) { m_primaryRegionHasBeenSet = true; m_primaryRegion = std::forward<PrimaryRegionT>(value); }
+    template<typename PrimaryRegionT = Aws::String>
+    RegionsInfo& WithPrimaryRegion(PrimaryRegionT&& value) { SetPrimaryRegion(std::forward<PrimaryRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Region where the Managed Microsoft AD directory was originally
-     * created.</p>
-     */
-    inline void SetPrimaryRegion(const Aws::String& value) { m_primaryRegionHasBeenSet = true; m_primaryRegion = value; }
-
-    /**
-     * <p>The Region where the Managed Microsoft AD directory was originally
-     * created.</p>
-     */
-    inline void SetPrimaryRegion(Aws::String&& value) { m_primaryRegionHasBeenSet = true; m_primaryRegion = std::move(value); }
-
-    /**
-     * <p>The Region where the Managed Microsoft AD directory was originally
-     * created.</p>
-     */
-    inline void SetPrimaryRegion(const char* value) { m_primaryRegionHasBeenSet = true; m_primaryRegion.assign(value); }
-
-    /**
-     * <p>The Region where the Managed Microsoft AD directory was originally
-     * created.</p>
-     */
-    inline RegionsInfo& WithPrimaryRegion(const Aws::String& value) { SetPrimaryRegion(value); return *this;}
-
-    /**
-     * <p>The Region where the Managed Microsoft AD directory was originally
-     * created.</p>
-     */
-    inline RegionsInfo& WithPrimaryRegion(Aws::String&& value) { SetPrimaryRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Region where the Managed Microsoft AD directory was originally
-     * created.</p>
-     */
-    inline RegionsInfo& WithPrimaryRegion(const char* value) { SetPrimaryRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Lists the Regions where the directory has been replicated, excluding the
      * primary Region.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAdditionalRegions() const{ return m_additionalRegions; }
-
-    /**
-     * <p>Lists the Regions where the directory has been replicated, excluding the
-     * primary Region.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAdditionalRegions() const { return m_additionalRegions; }
     inline bool AdditionalRegionsHasBeenSet() const { return m_additionalRegionsHasBeenSet; }
-
-    /**
-     * <p>Lists the Regions where the directory has been replicated, excluding the
-     * primary Region.</p>
-     */
-    inline void SetAdditionalRegions(const Aws::Vector<Aws::String>& value) { m_additionalRegionsHasBeenSet = true; m_additionalRegions = value; }
-
-    /**
-     * <p>Lists the Regions where the directory has been replicated, excluding the
-     * primary Region.</p>
-     */
-    inline void SetAdditionalRegions(Aws::Vector<Aws::String>&& value) { m_additionalRegionsHasBeenSet = true; m_additionalRegions = std::move(value); }
-
-    /**
-     * <p>Lists the Regions where the directory has been replicated, excluding the
-     * primary Region.</p>
-     */
-    inline RegionsInfo& WithAdditionalRegions(const Aws::Vector<Aws::String>& value) { SetAdditionalRegions(value); return *this;}
-
-    /**
-     * <p>Lists the Regions where the directory has been replicated, excluding the
-     * primary Region.</p>
-     */
-    inline RegionsInfo& WithAdditionalRegions(Aws::Vector<Aws::String>&& value) { SetAdditionalRegions(std::move(value)); return *this;}
-
-    /**
-     * <p>Lists the Regions where the directory has been replicated, excluding the
-     * primary Region.</p>
-     */
-    inline RegionsInfo& AddAdditionalRegions(const Aws::String& value) { m_additionalRegionsHasBeenSet = true; m_additionalRegions.push_back(value); return *this; }
-
-    /**
-     * <p>Lists the Regions where the directory has been replicated, excluding the
-     * primary Region.</p>
-     */
-    inline RegionsInfo& AddAdditionalRegions(Aws::String&& value) { m_additionalRegionsHasBeenSet = true; m_additionalRegions.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Lists the Regions where the directory has been replicated, excluding the
-     * primary Region.</p>
-     */
-    inline RegionsInfo& AddAdditionalRegions(const char* value) { m_additionalRegionsHasBeenSet = true; m_additionalRegions.push_back(value); return *this; }
-
+    template<typename AdditionalRegionsT = Aws::Vector<Aws::String>>
+    void SetAdditionalRegions(AdditionalRegionsT&& value) { m_additionalRegionsHasBeenSet = true; m_additionalRegions = std::forward<AdditionalRegionsT>(value); }
+    template<typename AdditionalRegionsT = Aws::Vector<Aws::String>>
+    RegionsInfo& WithAdditionalRegions(AdditionalRegionsT&& value) { SetAdditionalRegions(std::forward<AdditionalRegionsT>(value)); return *this;}
+    template<typename AdditionalRegionsT = Aws::String>
+    RegionsInfo& AddAdditionalRegions(AdditionalRegionsT&& value) { m_additionalRegionsHasBeenSet = true; m_additionalRegions.emplace_back(std::forward<AdditionalRegionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_primaryRegion;

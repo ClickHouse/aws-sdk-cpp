@@ -18,15 +18,7 @@ namespace Inspector
 namespace Model
 {
 
-AgentFilter::AgentFilter() : 
-    m_agentHealthsHasBeenSet(false),
-    m_agentHealthCodesHasBeenSet(false)
-{
-}
-
-AgentFilter::AgentFilter(JsonView jsonValue) : 
-    m_agentHealthsHasBeenSet(false),
-    m_agentHealthCodesHasBeenSet(false)
+AgentFilter::AgentFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ AgentFilter& AgentFilter::operator =(JsonView jsonValue)
     }
     m_agentHealthsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("agentHealthCodes"))
   {
     Aws::Utils::Array<JsonView> agentHealthCodesJsonList = jsonValue.GetArray("agentHealthCodes");
@@ -52,7 +43,6 @@ AgentFilter& AgentFilter::operator =(JsonView jsonValue)
     }
     m_agentHealthCodesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -37,51 +37,25 @@ namespace Model
   class DirectDeploySettings
   {
   public:
-    AWS_SAGEMAKER_API DirectDeploySettings();
+    AWS_SAGEMAKER_API DirectDeploySettings() = default;
     AWS_SAGEMAKER_API DirectDeploySettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API DirectDeploySettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Describes whether model deployment permissions are enabled or disabled in the
      * Canvas application.</p>
      */
-    inline const FeatureStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Describes whether model deployment permissions are enabled or disabled in the
-     * Canvas application.</p>
-     */
+    inline FeatureStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>Describes whether model deployment permissions are enabled or disabled in the
-     * Canvas application.</p>
-     */
-    inline void SetStatus(const FeatureStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Describes whether model deployment permissions are enabled or disabled in the
-     * Canvas application.</p>
-     */
-    inline void SetStatus(FeatureStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Describes whether model deployment permissions are enabled or disabled in the
-     * Canvas application.</p>
-     */
-    inline DirectDeploySettings& WithStatus(const FeatureStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Describes whether model deployment permissions are enabled or disabled in the
-     * Canvas application.</p>
-     */
-    inline DirectDeploySettings& WithStatus(FeatureStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(FeatureStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DirectDeploySettings& WithStatus(FeatureStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    FeatureStatus m_status;
+    FeatureStatus m_status{FeatureStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

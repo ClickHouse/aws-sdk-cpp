@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-BinCountOptions::BinCountOptions() : 
-    m_value(0),
-    m_valueHasBeenSet(false)
-{
-}
-
-BinCountOptions::BinCountOptions(JsonView jsonValue) : 
-    m_value(0),
-    m_valueHasBeenSet(false)
+BinCountOptions::BinCountOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ BinCountOptions& BinCountOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetInteger("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

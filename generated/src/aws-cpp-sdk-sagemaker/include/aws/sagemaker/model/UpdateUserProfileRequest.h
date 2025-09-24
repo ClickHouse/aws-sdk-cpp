@@ -22,7 +22,7 @@ namespace Model
   class UpdateUserProfileRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API UpdateUserProfileRequest();
+    AWS_SAGEMAKER_API UpdateUserProfileRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,118 +35,41 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The domain ID.</p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
-
-    /**
-     * <p>The domain ID.</p>
-     */
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
     inline bool DomainIdHasBeenSet() const { return m_domainIdHasBeenSet; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    UpdateUserProfileRequest& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainIdHasBeenSet = true; m_domainId = value; }
-
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = std::move(value); }
-
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline void SetDomainId(const char* value) { m_domainIdHasBeenSet = true; m_domainId.assign(value); }
-
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline UpdateUserProfileRequest& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline UpdateUserProfileRequest& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain ID.</p>
-     */
-    inline UpdateUserProfileRequest& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The user profile name.</p>
      */
-    inline const Aws::String& GetUserProfileName() const{ return m_userProfileName; }
-
-    /**
-     * <p>The user profile name.</p>
-     */
+    inline const Aws::String& GetUserProfileName() const { return m_userProfileName; }
     inline bool UserProfileNameHasBeenSet() const { return m_userProfileNameHasBeenSet; }
+    template<typename UserProfileNameT = Aws::String>
+    void SetUserProfileName(UserProfileNameT&& value) { m_userProfileNameHasBeenSet = true; m_userProfileName = std::forward<UserProfileNameT>(value); }
+    template<typename UserProfileNameT = Aws::String>
+    UpdateUserProfileRequest& WithUserProfileName(UserProfileNameT&& value) { SetUserProfileName(std::forward<UserProfileNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user profile name.</p>
-     */
-    inline void SetUserProfileName(const Aws::String& value) { m_userProfileNameHasBeenSet = true; m_userProfileName = value; }
-
-    /**
-     * <p>The user profile name.</p>
-     */
-    inline void SetUserProfileName(Aws::String&& value) { m_userProfileNameHasBeenSet = true; m_userProfileName = std::move(value); }
-
-    /**
-     * <p>The user profile name.</p>
-     */
-    inline void SetUserProfileName(const char* value) { m_userProfileNameHasBeenSet = true; m_userProfileName.assign(value); }
-
-    /**
-     * <p>The user profile name.</p>
-     */
-    inline UpdateUserProfileRequest& WithUserProfileName(const Aws::String& value) { SetUserProfileName(value); return *this;}
-
-    /**
-     * <p>The user profile name.</p>
-     */
-    inline UpdateUserProfileRequest& WithUserProfileName(Aws::String&& value) { SetUserProfileName(std::move(value)); return *this;}
-
-    /**
-     * <p>The user profile name.</p>
-     */
-    inline UpdateUserProfileRequest& WithUserProfileName(const char* value) { SetUserProfileName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A collection of settings.</p>
      */
-    inline const UserSettings& GetUserSettings() const{ return m_userSettings; }
-
-    /**
-     * <p>A collection of settings.</p>
-     */
+    inline const UserSettings& GetUserSettings() const { return m_userSettings; }
     inline bool UserSettingsHasBeenSet() const { return m_userSettingsHasBeenSet; }
-
-    /**
-     * <p>A collection of settings.</p>
-     */
-    inline void SetUserSettings(const UserSettings& value) { m_userSettingsHasBeenSet = true; m_userSettings = value; }
-
-    /**
-     * <p>A collection of settings.</p>
-     */
-    inline void SetUserSettings(UserSettings&& value) { m_userSettingsHasBeenSet = true; m_userSettings = std::move(value); }
-
-    /**
-     * <p>A collection of settings.</p>
-     */
-    inline UpdateUserProfileRequest& WithUserSettings(const UserSettings& value) { SetUserSettings(value); return *this;}
-
-    /**
-     * <p>A collection of settings.</p>
-     */
-    inline UpdateUserProfileRequest& WithUserSettings(UserSettings&& value) { SetUserSettings(std::move(value)); return *this;}
-
+    template<typename UserSettingsT = UserSettings>
+    void SetUserSettings(UserSettingsT&& value) { m_userSettingsHasBeenSet = true; m_userSettings = std::forward<UserSettingsT>(value); }
+    template<typename UserSettingsT = UserSettings>
+    UpdateUserProfileRequest& WithUserSettings(UserSettingsT&& value) { SetUserSettings(std::forward<UserSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainId;

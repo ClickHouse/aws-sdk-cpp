@@ -12,13 +12,6 @@ using namespace Aws::BedrockAgent::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetIngestionJobRequest::GetIngestionJobRequest() : 
-    m_knowledgeBaseIdHasBeenSet(false),
-    m_dataSourceIdHasBeenSet(false),
-    m_ingestionJobIdHasBeenSet(false)
-{
-}
-
 Aws::String GetIngestionJobRequest::SerializePayload() const
 {
   return {};

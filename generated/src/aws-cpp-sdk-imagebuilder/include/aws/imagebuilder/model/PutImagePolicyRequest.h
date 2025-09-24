@@ -21,7 +21,7 @@ namespace Model
   class PutImagePolicyRequest : public ImagebuilderRequest
   {
   public:
-    AWS_IMAGEBUILDER_API PutImagePolicyRequest();
+    AWS_IMAGEBUILDER_API PutImagePolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,30 @@ namespace Model
     AWS_IMAGEBUILDER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the image that this policy should be
      * applied to.</p>
      */
-    inline const Aws::String& GetImageArn() const{ return m_imageArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image that this policy should be
-     * applied to.</p>
-     */
+    inline const Aws::String& GetImageArn() const { return m_imageArn; }
     inline bool ImageArnHasBeenSet() const { return m_imageArnHasBeenSet; }
+    template<typename ImageArnT = Aws::String>
+    void SetImageArn(ImageArnT&& value) { m_imageArnHasBeenSet = true; m_imageArn = std::forward<ImageArnT>(value); }
+    template<typename ImageArnT = Aws::String>
+    PutImagePolicyRequest& WithImageArn(ImageArnT&& value) { SetImageArn(std::forward<ImageArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image that this policy should be
-     * applied to.</p>
-     */
-    inline void SetImageArn(const Aws::String& value) { m_imageArnHasBeenSet = true; m_imageArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image that this policy should be
-     * applied to.</p>
-     */
-    inline void SetImageArn(Aws::String&& value) { m_imageArnHasBeenSet = true; m_imageArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image that this policy should be
-     * applied to.</p>
-     */
-    inline void SetImageArn(const char* value) { m_imageArnHasBeenSet = true; m_imageArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image that this policy should be
-     * applied to.</p>
-     */
-    inline PutImagePolicyRequest& WithImageArn(const Aws::String& value) { SetImageArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image that this policy should be
-     * applied to.</p>
-     */
-    inline PutImagePolicyRequest& WithImageArn(Aws::String&& value) { SetImageArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image that this policy should be
-     * applied to.</p>
-     */
-    inline PutImagePolicyRequest& WithImageArn(const char* value) { SetImageArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The policy to apply.</p>
      */
-    inline const Aws::String& GetPolicy() const{ return m_policy; }
-
-    /**
-     * <p>The policy to apply.</p>
-     */
+    inline const Aws::String& GetPolicy() const { return m_policy; }
     inline bool PolicyHasBeenSet() const { return m_policyHasBeenSet; }
-
-    /**
-     * <p>The policy to apply.</p>
-     */
-    inline void SetPolicy(const Aws::String& value) { m_policyHasBeenSet = true; m_policy = value; }
-
-    /**
-     * <p>The policy to apply.</p>
-     */
-    inline void SetPolicy(Aws::String&& value) { m_policyHasBeenSet = true; m_policy = std::move(value); }
-
-    /**
-     * <p>The policy to apply.</p>
-     */
-    inline void SetPolicy(const char* value) { m_policyHasBeenSet = true; m_policy.assign(value); }
-
-    /**
-     * <p>The policy to apply.</p>
-     */
-    inline PutImagePolicyRequest& WithPolicy(const Aws::String& value) { SetPolicy(value); return *this;}
-
-    /**
-     * <p>The policy to apply.</p>
-     */
-    inline PutImagePolicyRequest& WithPolicy(Aws::String&& value) { SetPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>The policy to apply.</p>
-     */
-    inline PutImagePolicyRequest& WithPolicy(const char* value) { SetPolicy(value); return *this;}
-
+    template<typename PolicyT = Aws::String>
+    void SetPolicy(PolicyT&& value) { m_policyHasBeenSet = true; m_policy = std::forward<PolicyT>(value); }
+    template<typename PolicyT = Aws::String>
+    PutImagePolicyRequest& WithPolicy(PolicyT&& value) { SetPolicy(std::forward<PolicyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_imageArn;

@@ -30,59 +30,37 @@ namespace Model
   class IntegerRange
   {
   public:
-    AWS_GROUNDSTATION_API IntegerRange();
+    AWS_GROUNDSTATION_API IntegerRange() = default;
     AWS_GROUNDSTATION_API IntegerRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API IntegerRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GROUNDSTATION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A maximum value.</p>
      */
-    inline int GetMaximum() const{ return m_maximum; }
-
-    /**
-     * <p>A maximum value.</p>
-     */
+    inline int GetMaximum() const { return m_maximum; }
     inline bool MaximumHasBeenSet() const { return m_maximumHasBeenSet; }
-
-    /**
-     * <p>A maximum value.</p>
-     */
     inline void SetMaximum(int value) { m_maximumHasBeenSet = true; m_maximum = value; }
-
-    /**
-     * <p>A maximum value.</p>
-     */
     inline IntegerRange& WithMaximum(int value) { SetMaximum(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A minimum value.</p>
      */
-    inline int GetMinimum() const{ return m_minimum; }
-
-    /**
-     * <p>A minimum value.</p>
-     */
+    inline int GetMinimum() const { return m_minimum; }
     inline bool MinimumHasBeenSet() const { return m_minimumHasBeenSet; }
-
-    /**
-     * <p>A minimum value.</p>
-     */
     inline void SetMinimum(int value) { m_minimumHasBeenSet = true; m_minimum = value; }
-
-    /**
-     * <p>A minimum value.</p>
-     */
     inline IntegerRange& WithMinimum(int value) { SetMinimum(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maximum;
+    int m_maximum{0};
     bool m_maximumHasBeenSet = false;
 
-    int m_minimum;
+    int m_minimum{0};
     bool m_minimumHasBeenSet = false;
   };
 

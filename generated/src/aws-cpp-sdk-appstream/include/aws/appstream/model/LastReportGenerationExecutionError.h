@@ -33,100 +33,38 @@ namespace Model
   class LastReportGenerationExecutionError
   {
   public:
-    AWS_APPSTREAM_API LastReportGenerationExecutionError();
+    AWS_APPSTREAM_API LastReportGenerationExecutionError() = default;
     AWS_APPSTREAM_API LastReportGenerationExecutionError(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSTREAM_API LastReportGenerationExecutionError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSTREAM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The error code for the error that is returned when a usage report can't be
      * generated.</p>
      */
-    inline const UsageReportExecutionErrorCode& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>The error code for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
+    inline UsageReportExecutionErrorCode GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    inline void SetErrorCode(UsageReportExecutionErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline LastReportGenerationExecutionError& WithErrorCode(UsageReportExecutionErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
-    inline void SetErrorCode(const UsageReportExecutionErrorCode& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>The error code for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
-    inline void SetErrorCode(UsageReportExecutionErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>The error code for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
-    inline LastReportGenerationExecutionError& WithErrorCode(const UsageReportExecutionErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>The error code for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
-    inline LastReportGenerationExecutionError& WithErrorCode(UsageReportExecutionErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The error message for the error that is returned when a usage report can't be
      * generated.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
-
-    /**
-     * <p>The error message for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
     inline bool ErrorMessageHasBeenSet() const { return m_errorMessageHasBeenSet; }
-
-    /**
-     * <p>The error message for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessageHasBeenSet = true; m_errorMessage = value; }
-
-    /**
-     * <p>The error message for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::move(value); }
-
-    /**
-     * <p>The error message for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessageHasBeenSet = true; m_errorMessage.assign(value); }
-
-    /**
-     * <p>The error message for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
-    inline LastReportGenerationExecutionError& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>The error message for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
-    inline LastReportGenerationExecutionError& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The error message for the error that is returned when a usage report can't be
-     * generated.</p>
-     */
-    inline LastReportGenerationExecutionError& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    LastReportGenerationExecutionError& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
   private:
 
-    UsageReportExecutionErrorCode m_errorCode;
+    UsageReportExecutionErrorCode m_errorCode{UsageReportExecutionErrorCode::NOT_SET};
     bool m_errorCodeHasBeenSet = false;
 
     Aws::String m_errorMessage;

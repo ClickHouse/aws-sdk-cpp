@@ -18,13 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-MultiplexOutputSettings::MultiplexOutputSettings() : 
-    m_destinationHasBeenSet(false)
-{
-}
-
-MultiplexOutputSettings::MultiplexOutputSettings(JsonView jsonValue) : 
-    m_destinationHasBeenSet(false)
+MultiplexOutputSettings::MultiplexOutputSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ MultiplexOutputSettings& MultiplexOutputSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("destination"))
   {
     m_destination = jsonValue.GetObject("destination");
-
     m_destinationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("containerSettings"))
+  {
+    m_containerSettings = jsonValue.GetObject("containerSettings");
+    m_containerSettingsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue MultiplexOutputSettings::Jsonize() const
   if(m_destinationHasBeenSet)
   {
    payload.WithObject("destination", m_destination.Jsonize());
+
+  }
+
+  if(m_containerSettingsHasBeenSet)
+  {
+   payload.WithObject("containerSettings", m_containerSettings.Jsonize());
 
   }
 

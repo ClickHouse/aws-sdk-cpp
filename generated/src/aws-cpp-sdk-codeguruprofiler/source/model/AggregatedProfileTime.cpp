@@ -18,17 +18,7 @@ namespace CodeGuruProfiler
 namespace Model
 {
 
-AggregatedProfileTime::AggregatedProfileTime() : 
-    m_period(AggregationPeriod::NOT_SET),
-    m_periodHasBeenSet(false),
-    m_startHasBeenSet(false)
-{
-}
-
-AggregatedProfileTime::AggregatedProfileTime(JsonView jsonValue) : 
-    m_period(AggregationPeriod::NOT_SET),
-    m_periodHasBeenSet(false),
-    m_startHasBeenSet(false)
+AggregatedProfileTime::AggregatedProfileTime(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ AggregatedProfileTime& AggregatedProfileTime::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("period"))
   {
     m_period = AggregationPeriodMapper::GetAggregationPeriodForName(jsonValue.GetString("period"));
-
     m_periodHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("start"))
   {
     m_start = jsonValue.GetString("start");
-
     m_startHasBeenSet = true;
   }
-
   return *this;
 }
 

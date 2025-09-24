@@ -21,7 +21,7 @@ namespace Model
   class GetPluginRequest : public QBusinessRequest
   {
   public:
-    AWS_QBUSINESS_API GetPluginRequest();
+    AWS_QBUSINESS_API GetPluginRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_QBUSINESS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the application which contains the plugin.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The identifier of the application which contains the plugin.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    GetPluginRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the application which contains the plugin.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The identifier of the application which contains the plugin.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The identifier of the application which contains the plugin.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The identifier of the application which contains the plugin.</p>
-     */
-    inline GetPluginRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The identifier of the application which contains the plugin.</p>
-     */
-    inline GetPluginRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the application which contains the plugin.</p>
-     */
-    inline GetPluginRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the plugin.</p>
      */
-    inline const Aws::String& GetPluginId() const{ return m_pluginId; }
-
-    /**
-     * <p>The identifier of the plugin.</p>
-     */
+    inline const Aws::String& GetPluginId() const { return m_pluginId; }
     inline bool PluginIdHasBeenSet() const { return m_pluginIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the plugin.</p>
-     */
-    inline void SetPluginId(const Aws::String& value) { m_pluginIdHasBeenSet = true; m_pluginId = value; }
-
-    /**
-     * <p>The identifier of the plugin.</p>
-     */
-    inline void SetPluginId(Aws::String&& value) { m_pluginIdHasBeenSet = true; m_pluginId = std::move(value); }
-
-    /**
-     * <p>The identifier of the plugin.</p>
-     */
-    inline void SetPluginId(const char* value) { m_pluginIdHasBeenSet = true; m_pluginId.assign(value); }
-
-    /**
-     * <p>The identifier of the plugin.</p>
-     */
-    inline GetPluginRequest& WithPluginId(const Aws::String& value) { SetPluginId(value); return *this;}
-
-    /**
-     * <p>The identifier of the plugin.</p>
-     */
-    inline GetPluginRequest& WithPluginId(Aws::String&& value) { SetPluginId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the plugin.</p>
-     */
-    inline GetPluginRequest& WithPluginId(const char* value) { SetPluginId(value); return *this;}
-
+    template<typename PluginIdT = Aws::String>
+    void SetPluginId(PluginIdT&& value) { m_pluginIdHasBeenSet = true; m_pluginId = std::forward<PluginIdT>(value); }
+    template<typename PluginIdT = Aws::String>
+    GetPluginRequest& WithPluginId(PluginIdT&& value) { SetPluginId(std::forward<PluginIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

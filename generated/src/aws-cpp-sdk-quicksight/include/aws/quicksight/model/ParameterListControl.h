@@ -36,264 +36,94 @@ namespace Model
   class ParameterListControl
   {
   public:
-    AWS_QUICKSIGHT_API ParameterListControl();
+    AWS_QUICKSIGHT_API ParameterListControl() = default;
     AWS_QUICKSIGHT_API ParameterListControl(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ParameterListControl& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the <code>ParameterListControl</code>.</p>
      */
-    inline const Aws::String& GetParameterControlId() const{ return m_parameterControlId; }
-
-    /**
-     * <p>The ID of the <code>ParameterListControl</code>.</p>
-     */
+    inline const Aws::String& GetParameterControlId() const { return m_parameterControlId; }
     inline bool ParameterControlIdHasBeenSet() const { return m_parameterControlIdHasBeenSet; }
+    template<typename ParameterControlIdT = Aws::String>
+    void SetParameterControlId(ParameterControlIdT&& value) { m_parameterControlIdHasBeenSet = true; m_parameterControlId = std::forward<ParameterControlIdT>(value); }
+    template<typename ParameterControlIdT = Aws::String>
+    ParameterListControl& WithParameterControlId(ParameterControlIdT&& value) { SetParameterControlId(std::forward<ParameterControlIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the <code>ParameterListControl</code>.</p>
-     */
-    inline void SetParameterControlId(const Aws::String& value) { m_parameterControlIdHasBeenSet = true; m_parameterControlId = value; }
-
-    /**
-     * <p>The ID of the <code>ParameterListControl</code>.</p>
-     */
-    inline void SetParameterControlId(Aws::String&& value) { m_parameterControlIdHasBeenSet = true; m_parameterControlId = std::move(value); }
-
-    /**
-     * <p>The ID of the <code>ParameterListControl</code>.</p>
-     */
-    inline void SetParameterControlId(const char* value) { m_parameterControlIdHasBeenSet = true; m_parameterControlId.assign(value); }
-
-    /**
-     * <p>The ID of the <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithParameterControlId(const Aws::String& value) { SetParameterControlId(value); return *this;}
-
-    /**
-     * <p>The ID of the <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithParameterControlId(Aws::String&& value) { SetParameterControlId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithParameterControlId(const char* value) { SetParameterControlId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The title of the <code>ParameterListControl</code>.</p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The title of the <code>ParameterListControl</code>.</p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    ParameterListControl& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The title of the <code>ParameterListControl</code>.</p>
-     */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>The title of the <code>ParameterListControl</code>.</p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>The title of the <code>ParameterListControl</code>.</p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>The title of the <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The title of the <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The title of the <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithTitle(const char* value) { SetTitle(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The source parameter name of the <code>ParameterListControl</code>.</p>
      */
-    inline const Aws::String& GetSourceParameterName() const{ return m_sourceParameterName; }
-
-    /**
-     * <p>The source parameter name of the <code>ParameterListControl</code>.</p>
-     */
+    inline const Aws::String& GetSourceParameterName() const { return m_sourceParameterName; }
     inline bool SourceParameterNameHasBeenSet() const { return m_sourceParameterNameHasBeenSet; }
+    template<typename SourceParameterNameT = Aws::String>
+    void SetSourceParameterName(SourceParameterNameT&& value) { m_sourceParameterNameHasBeenSet = true; m_sourceParameterName = std::forward<SourceParameterNameT>(value); }
+    template<typename SourceParameterNameT = Aws::String>
+    ParameterListControl& WithSourceParameterName(SourceParameterNameT&& value) { SetSourceParameterName(std::forward<SourceParameterNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source parameter name of the <code>ParameterListControl</code>.</p>
-     */
-    inline void SetSourceParameterName(const Aws::String& value) { m_sourceParameterNameHasBeenSet = true; m_sourceParameterName = value; }
-
-    /**
-     * <p>The source parameter name of the <code>ParameterListControl</code>.</p>
-     */
-    inline void SetSourceParameterName(Aws::String&& value) { m_sourceParameterNameHasBeenSet = true; m_sourceParameterName = std::move(value); }
-
-    /**
-     * <p>The source parameter name of the <code>ParameterListControl</code>.</p>
-     */
-    inline void SetSourceParameterName(const char* value) { m_sourceParameterNameHasBeenSet = true; m_sourceParameterName.assign(value); }
-
-    /**
-     * <p>The source parameter name of the <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithSourceParameterName(const Aws::String& value) { SetSourceParameterName(value); return *this;}
-
-    /**
-     * <p>The source parameter name of the <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithSourceParameterName(Aws::String&& value) { SetSourceParameterName(std::move(value)); return *this;}
-
-    /**
-     * <p>The source parameter name of the <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithSourceParameterName(const char* value) { SetSourceParameterName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The display options of a control.</p>
      */
-    inline const ListControlDisplayOptions& GetDisplayOptions() const{ return m_displayOptions; }
-
-    /**
-     * <p>The display options of a control.</p>
-     */
+    inline const ListControlDisplayOptions& GetDisplayOptions() const { return m_displayOptions; }
     inline bool DisplayOptionsHasBeenSet() const { return m_displayOptionsHasBeenSet; }
+    template<typename DisplayOptionsT = ListControlDisplayOptions>
+    void SetDisplayOptions(DisplayOptionsT&& value) { m_displayOptionsHasBeenSet = true; m_displayOptions = std::forward<DisplayOptionsT>(value); }
+    template<typename DisplayOptionsT = ListControlDisplayOptions>
+    ParameterListControl& WithDisplayOptions(DisplayOptionsT&& value) { SetDisplayOptions(std::forward<DisplayOptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The display options of a control.</p>
-     */
-    inline void SetDisplayOptions(const ListControlDisplayOptions& value) { m_displayOptionsHasBeenSet = true; m_displayOptions = value; }
-
-    /**
-     * <p>The display options of a control.</p>
-     */
-    inline void SetDisplayOptions(ListControlDisplayOptions&& value) { m_displayOptionsHasBeenSet = true; m_displayOptions = std::move(value); }
-
-    /**
-     * <p>The display options of a control.</p>
-     */
-    inline ParameterListControl& WithDisplayOptions(const ListControlDisplayOptions& value) { SetDisplayOptions(value); return *this;}
-
-    /**
-     * <p>The display options of a control.</p>
-     */
-    inline ParameterListControl& WithDisplayOptions(ListControlDisplayOptions&& value) { SetDisplayOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of <code>ParameterListControl</code>.</p>
      */
-    inline const SheetControlListType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of <code>ParameterListControl</code>.</p>
-     */
+    inline SheetControlListType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(SheetControlListType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline ParameterListControl& WithType(SheetControlListType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of <code>ParameterListControl</code>.</p>
-     */
-    inline void SetType(const SheetControlListType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of <code>ParameterListControl</code>.</p>
-     */
-    inline void SetType(SheetControlListType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithType(const SheetControlListType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of <code>ParameterListControl</code>.</p>
-     */
-    inline ParameterListControl& WithType(SheetControlListType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of selectable values that are used in a control.</p>
      */
-    inline const ParameterSelectableValues& GetSelectableValues() const{ return m_selectableValues; }
-
-    /**
-     * <p>A list of selectable values that are used in a control.</p>
-     */
+    inline const ParameterSelectableValues& GetSelectableValues() const { return m_selectableValues; }
     inline bool SelectableValuesHasBeenSet() const { return m_selectableValuesHasBeenSet; }
+    template<typename SelectableValuesT = ParameterSelectableValues>
+    void SetSelectableValues(SelectableValuesT&& value) { m_selectableValuesHasBeenSet = true; m_selectableValues = std::forward<SelectableValuesT>(value); }
+    template<typename SelectableValuesT = ParameterSelectableValues>
+    ParameterListControl& WithSelectableValues(SelectableValuesT&& value) { SetSelectableValues(std::forward<SelectableValuesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A list of selectable values that are used in a control.</p>
-     */
-    inline void SetSelectableValues(const ParameterSelectableValues& value) { m_selectableValuesHasBeenSet = true; m_selectableValues = value; }
-
-    /**
-     * <p>A list of selectable values that are used in a control.</p>
-     */
-    inline void SetSelectableValues(ParameterSelectableValues&& value) { m_selectableValuesHasBeenSet = true; m_selectableValues = std::move(value); }
-
-    /**
-     * <p>A list of selectable values that are used in a control.</p>
-     */
-    inline ParameterListControl& WithSelectableValues(const ParameterSelectableValues& value) { SetSelectableValues(value); return *this;}
-
-    /**
-     * <p>A list of selectable values that are used in a control.</p>
-     */
-    inline ParameterListControl& WithSelectableValues(ParameterSelectableValues&& value) { SetSelectableValues(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The values that are displayed in a control can be configured to only show
      * values that are valid based on what's selected in other controls.</p>
      */
-    inline const CascadingControlConfiguration& GetCascadingControlConfiguration() const{ return m_cascadingControlConfiguration; }
-
-    /**
-     * <p>The values that are displayed in a control can be configured to only show
-     * values that are valid based on what's selected in other controls.</p>
-     */
+    inline const CascadingControlConfiguration& GetCascadingControlConfiguration() const { return m_cascadingControlConfiguration; }
     inline bool CascadingControlConfigurationHasBeenSet() const { return m_cascadingControlConfigurationHasBeenSet; }
-
-    /**
-     * <p>The values that are displayed in a control can be configured to only show
-     * values that are valid based on what's selected in other controls.</p>
-     */
-    inline void SetCascadingControlConfiguration(const CascadingControlConfiguration& value) { m_cascadingControlConfigurationHasBeenSet = true; m_cascadingControlConfiguration = value; }
-
-    /**
-     * <p>The values that are displayed in a control can be configured to only show
-     * values that are valid based on what's selected in other controls.</p>
-     */
-    inline void SetCascadingControlConfiguration(CascadingControlConfiguration&& value) { m_cascadingControlConfigurationHasBeenSet = true; m_cascadingControlConfiguration = std::move(value); }
-
-    /**
-     * <p>The values that are displayed in a control can be configured to only show
-     * values that are valid based on what's selected in other controls.</p>
-     */
-    inline ParameterListControl& WithCascadingControlConfiguration(const CascadingControlConfiguration& value) { SetCascadingControlConfiguration(value); return *this;}
-
-    /**
-     * <p>The values that are displayed in a control can be configured to only show
-     * values that are valid based on what's selected in other controls.</p>
-     */
-    inline ParameterListControl& WithCascadingControlConfiguration(CascadingControlConfiguration&& value) { SetCascadingControlConfiguration(std::move(value)); return *this;}
-
+    template<typename CascadingControlConfigurationT = CascadingControlConfiguration>
+    void SetCascadingControlConfiguration(CascadingControlConfigurationT&& value) { m_cascadingControlConfigurationHasBeenSet = true; m_cascadingControlConfiguration = std::forward<CascadingControlConfigurationT>(value); }
+    template<typename CascadingControlConfigurationT = CascadingControlConfiguration>
+    ParameterListControl& WithCascadingControlConfiguration(CascadingControlConfigurationT&& value) { SetCascadingControlConfiguration(std::forward<CascadingControlConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_parameterControlId;
@@ -308,7 +138,7 @@ namespace Model
     ListControlDisplayOptions m_displayOptions;
     bool m_displayOptionsHasBeenSet = false;
 
-    SheetControlListType m_type;
+    SheetControlListType m_type{SheetControlListType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     ParameterSelectableValues m_selectableValues;

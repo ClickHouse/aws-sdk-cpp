@@ -18,17 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-CacheBehaviorPerPath::CacheBehaviorPerPath() : 
-    m_pathHasBeenSet(false),
-    m_behavior(BehaviorEnum::NOT_SET),
-    m_behaviorHasBeenSet(false)
-{
-}
-
-CacheBehaviorPerPath::CacheBehaviorPerPath(JsonView jsonValue) : 
-    m_pathHasBeenSet(false),
-    m_behavior(BehaviorEnum::NOT_SET),
-    m_behaviorHasBeenSet(false)
+CacheBehaviorPerPath::CacheBehaviorPerPath(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CacheBehaviorPerPath& CacheBehaviorPerPath::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("path"))
   {
     m_path = jsonValue.GetString("path");
-
     m_pathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("behavior"))
   {
     m_behavior = BehaviorEnumMapper::GetBehaviorEnumForName(jsonValue.GetString("behavior"));
-
     m_behaviorHasBeenSet = true;
   }
-
   return *this;
 }
 

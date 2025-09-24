@@ -18,23 +18,7 @@ namespace DatabaseMigrationService
 namespace Model
 {
 
-MySqlDataProviderSettings::MySqlDataProviderSettings() : 
-    m_serverNameHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_sslMode(DmsSslModeValue::NOT_SET),
-    m_sslModeHasBeenSet(false),
-    m_certificateArnHasBeenSet(false)
-{
-}
-
-MySqlDataProviderSettings::MySqlDataProviderSettings(JsonView jsonValue) : 
-    m_serverNameHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_sslMode(DmsSslModeValue::NOT_SET),
-    m_sslModeHasBeenSet(false),
-    m_certificateArnHasBeenSet(false)
+MySqlDataProviderSettings::MySqlDataProviderSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,31 +28,33 @@ MySqlDataProviderSettings& MySqlDataProviderSettings::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("ServerName"))
   {
     m_serverName = jsonValue.GetString("ServerName");
-
     m_serverNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Port"))
   {
     m_port = jsonValue.GetInteger("Port");
-
     m_portHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SslMode"))
   {
     m_sslMode = DmsSslModeValueMapper::GetDmsSslModeValueForName(jsonValue.GetString("SslMode"));
-
     m_sslModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CertificateArn"))
   {
     m_certificateArn = jsonValue.GetString("CertificateArn");
-
     m_certificateArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("S3Path"))
+  {
+    m_s3Path = jsonValue.GetString("S3Path");
+    m_s3PathHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("S3AccessRoleArn"))
+  {
+    m_s3AccessRoleArn = jsonValue.GetString("S3AccessRoleArn");
+    m_s3AccessRoleArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -96,6 +82,18 @@ JsonValue MySqlDataProviderSettings::Jsonize() const
   if(m_certificateArnHasBeenSet)
   {
    payload.WithString("CertificateArn", m_certificateArn);
+
+  }
+
+  if(m_s3PathHasBeenSet)
+  {
+   payload.WithString("S3Path", m_s3Path);
+
+  }
+
+  if(m_s3AccessRoleArnHasBeenSet)
+  {
+   payload.WithString("S3AccessRoleArn", m_s3AccessRoleArn);
 
   }
 

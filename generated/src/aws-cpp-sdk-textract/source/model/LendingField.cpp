@@ -18,17 +18,7 @@ namespace Textract
 namespace Model
 {
 
-LendingField::LendingField() : 
-    m_typeHasBeenSet(false),
-    m_keyDetectionHasBeenSet(false),
-    m_valueDetectionsHasBeenSet(false)
-{
-}
-
-LendingField::LendingField(JsonView jsonValue) : 
-    m_typeHasBeenSet(false),
-    m_keyDetectionHasBeenSet(false),
-    m_valueDetectionsHasBeenSet(false)
+LendingField::LendingField(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ LendingField& LendingField::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KeyDetection"))
   {
     m_keyDetection = jsonValue.GetObject("KeyDetection");
-
     m_keyDetectionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ValueDetections"))
   {
     Aws::Utils::Array<JsonView> valueDetectionsJsonList = jsonValue.GetArray("ValueDetections");
@@ -58,7 +44,6 @@ LendingField& LendingField::operator =(JsonView jsonValue)
     }
     m_valueDetectionsHasBeenSet = true;
   }
-
   return *this;
 }
 

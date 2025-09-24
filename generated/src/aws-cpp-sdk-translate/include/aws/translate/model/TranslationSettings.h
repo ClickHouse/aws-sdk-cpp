@@ -39,12 +39,13 @@ namespace Model
   class TranslationSettings
   {
   public:
-    AWS_TRANSLATE_API TranslationSettings();
+    AWS_TRANSLATE_API TranslationSettings() = default;
     AWS_TRANSLATE_API TranslationSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API TranslationSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>You can specify the desired level of formality for translations to supported
      * target languages. The formality setting controls the level of formal language
@@ -59,89 +60,13 @@ namespace Model
      * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-formality.html#customizing-translations-formality-languages">Supported
      * languages</a> in the Amazon Translate Developer Guide.</p>
      */
-    inline const Formality& GetFormality() const{ return m_formality; }
-
-    /**
-     * <p>You can specify the desired level of formality for translations to supported
-     * target languages. The formality setting controls the level of formal language
-     * usage (also known as <a
-     * href="https://en.wikipedia.org/wiki/Register_(sociolinguistics)">register</a>)
-     * in the translation output. You can set the value to informal or formal. If you
-     * don't specify a value for formality, or if the target language doesn't support
-     * formality, the translation will ignore the formality setting.</p> <p> If you
-     * specify multiple target languages for the job, translate ignores the formality
-     * setting for any unsupported target language.</p> <p>For a list of target
-     * languages that support formality, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-formality.html#customizing-translations-formality-languages">Supported
-     * languages</a> in the Amazon Translate Developer Guide.</p>
-     */
+    inline Formality GetFormality() const { return m_formality; }
     inline bool FormalityHasBeenSet() const { return m_formalityHasBeenSet; }
+    inline void SetFormality(Formality value) { m_formalityHasBeenSet = true; m_formality = value; }
+    inline TranslationSettings& WithFormality(Formality value) { SetFormality(value); return *this;}
+    ///@}
 
-    /**
-     * <p>You can specify the desired level of formality for translations to supported
-     * target languages. The formality setting controls the level of formal language
-     * usage (also known as <a
-     * href="https://en.wikipedia.org/wiki/Register_(sociolinguistics)">register</a>)
-     * in the translation output. You can set the value to informal or formal. If you
-     * don't specify a value for formality, or if the target language doesn't support
-     * formality, the translation will ignore the formality setting.</p> <p> If you
-     * specify multiple target languages for the job, translate ignores the formality
-     * setting for any unsupported target language.</p> <p>For a list of target
-     * languages that support formality, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-formality.html#customizing-translations-formality-languages">Supported
-     * languages</a> in the Amazon Translate Developer Guide.</p>
-     */
-    inline void SetFormality(const Formality& value) { m_formalityHasBeenSet = true; m_formality = value; }
-
-    /**
-     * <p>You can specify the desired level of formality for translations to supported
-     * target languages. The formality setting controls the level of formal language
-     * usage (also known as <a
-     * href="https://en.wikipedia.org/wiki/Register_(sociolinguistics)">register</a>)
-     * in the translation output. You can set the value to informal or formal. If you
-     * don't specify a value for formality, or if the target language doesn't support
-     * formality, the translation will ignore the formality setting.</p> <p> If you
-     * specify multiple target languages for the job, translate ignores the formality
-     * setting for any unsupported target language.</p> <p>For a list of target
-     * languages that support formality, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-formality.html#customizing-translations-formality-languages">Supported
-     * languages</a> in the Amazon Translate Developer Guide.</p>
-     */
-    inline void SetFormality(Formality&& value) { m_formalityHasBeenSet = true; m_formality = std::move(value); }
-
-    /**
-     * <p>You can specify the desired level of formality for translations to supported
-     * target languages. The formality setting controls the level of formal language
-     * usage (also known as <a
-     * href="https://en.wikipedia.org/wiki/Register_(sociolinguistics)">register</a>)
-     * in the translation output. You can set the value to informal or formal. If you
-     * don't specify a value for formality, or if the target language doesn't support
-     * formality, the translation will ignore the formality setting.</p> <p> If you
-     * specify multiple target languages for the job, translate ignores the formality
-     * setting for any unsupported target language.</p> <p>For a list of target
-     * languages that support formality, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-formality.html#customizing-translations-formality-languages">Supported
-     * languages</a> in the Amazon Translate Developer Guide.</p>
-     */
-    inline TranslationSettings& WithFormality(const Formality& value) { SetFormality(value); return *this;}
-
-    /**
-     * <p>You can specify the desired level of formality for translations to supported
-     * target languages. The formality setting controls the level of formal language
-     * usage (also known as <a
-     * href="https://en.wikipedia.org/wiki/Register_(sociolinguistics)">register</a>)
-     * in the translation output. You can set the value to informal or formal. If you
-     * don't specify a value for formality, or if the target language doesn't support
-     * formality, the translation will ignore the formality setting.</p> <p> If you
-     * specify multiple target languages for the job, translate ignores the formality
-     * setting for any unsupported target language.</p> <p>For a list of target
-     * languages that support formality, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-formality.html#customizing-translations-formality-languages">Supported
-     * languages</a> in the Amazon Translate Developer Guide.</p>
-     */
-    inline TranslationSettings& WithFormality(Formality&& value) { SetFormality(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>You can enable the profanity setting if you want to mask profane words and
      * phrases in your translation output.</p> <p>To mask profane words and phrases,
@@ -156,89 +81,13 @@ namespace Model
      * profanity masking. If any of the target languages don't support profanity
      * masking, the translation job won't mask profanity for any target language.</p>
      */
-    inline const Profanity& GetProfanity() const{ return m_profanity; }
-
-    /**
-     * <p>You can enable the profanity setting if you want to mask profane words and
-     * phrases in your translation output.</p> <p>To mask profane words and phrases,
-     * Amazon Translate replaces them with the grawlix string “?$#@$“. This 5-character
-     * sequence is used for each profane word or phrase, regardless of the length or
-     * number of words.</p> <p>Amazon Translate doesn't detect profanity in all of its
-     * supported languages. For languages that don't support profanity detection, see
-     * <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-profanity.html#customizing-translations-profanity-languages">Unsupported
-     * languages</a> in the Amazon Translate Developer Guide.</p> <p>If you specify
-     * multiple target languages for the job, all the target languages must support
-     * profanity masking. If any of the target languages don't support profanity
-     * masking, the translation job won't mask profanity for any target language.</p>
-     */
+    inline Profanity GetProfanity() const { return m_profanity; }
     inline bool ProfanityHasBeenSet() const { return m_profanityHasBeenSet; }
+    inline void SetProfanity(Profanity value) { m_profanityHasBeenSet = true; m_profanity = value; }
+    inline TranslationSettings& WithProfanity(Profanity value) { SetProfanity(value); return *this;}
+    ///@}
 
-    /**
-     * <p>You can enable the profanity setting if you want to mask profane words and
-     * phrases in your translation output.</p> <p>To mask profane words and phrases,
-     * Amazon Translate replaces them with the grawlix string “?$#@$“. This 5-character
-     * sequence is used for each profane word or phrase, regardless of the length or
-     * number of words.</p> <p>Amazon Translate doesn't detect profanity in all of its
-     * supported languages. For languages that don't support profanity detection, see
-     * <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-profanity.html#customizing-translations-profanity-languages">Unsupported
-     * languages</a> in the Amazon Translate Developer Guide.</p> <p>If you specify
-     * multiple target languages for the job, all the target languages must support
-     * profanity masking. If any of the target languages don't support profanity
-     * masking, the translation job won't mask profanity for any target language.</p>
-     */
-    inline void SetProfanity(const Profanity& value) { m_profanityHasBeenSet = true; m_profanity = value; }
-
-    /**
-     * <p>You can enable the profanity setting if you want to mask profane words and
-     * phrases in your translation output.</p> <p>To mask profane words and phrases,
-     * Amazon Translate replaces them with the grawlix string “?$#@$“. This 5-character
-     * sequence is used for each profane word or phrase, regardless of the length or
-     * number of words.</p> <p>Amazon Translate doesn't detect profanity in all of its
-     * supported languages. For languages that don't support profanity detection, see
-     * <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-profanity.html#customizing-translations-profanity-languages">Unsupported
-     * languages</a> in the Amazon Translate Developer Guide.</p> <p>If you specify
-     * multiple target languages for the job, all the target languages must support
-     * profanity masking. If any of the target languages don't support profanity
-     * masking, the translation job won't mask profanity for any target language.</p>
-     */
-    inline void SetProfanity(Profanity&& value) { m_profanityHasBeenSet = true; m_profanity = std::move(value); }
-
-    /**
-     * <p>You can enable the profanity setting if you want to mask profane words and
-     * phrases in your translation output.</p> <p>To mask profane words and phrases,
-     * Amazon Translate replaces them with the grawlix string “?$#@$“. This 5-character
-     * sequence is used for each profane word or phrase, regardless of the length or
-     * number of words.</p> <p>Amazon Translate doesn't detect profanity in all of its
-     * supported languages. For languages that don't support profanity detection, see
-     * <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-profanity.html#customizing-translations-profanity-languages">Unsupported
-     * languages</a> in the Amazon Translate Developer Guide.</p> <p>If you specify
-     * multiple target languages for the job, all the target languages must support
-     * profanity masking. If any of the target languages don't support profanity
-     * masking, the translation job won't mask profanity for any target language.</p>
-     */
-    inline TranslationSettings& WithProfanity(const Profanity& value) { SetProfanity(value); return *this;}
-
-    /**
-     * <p>You can enable the profanity setting if you want to mask profane words and
-     * phrases in your translation output.</p> <p>To mask profane words and phrases,
-     * Amazon Translate replaces them with the grawlix string “?$#@$“. This 5-character
-     * sequence is used for each profane word or phrase, regardless of the length or
-     * number of words.</p> <p>Amazon Translate doesn't detect profanity in all of its
-     * supported languages. For languages that don't support profanity detection, see
-     * <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-profanity.html#customizing-translations-profanity-languages">Unsupported
-     * languages</a> in the Amazon Translate Developer Guide.</p> <p>If you specify
-     * multiple target languages for the job, all the target languages must support
-     * profanity masking. If any of the target languages don't support profanity
-     * masking, the translation job won't mask profanity for any target language.</p>
-     */
-    inline TranslationSettings& WithProfanity(Profanity&& value) { SetProfanity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>When you turn on brevity, Amazon Translate reduces the length of the
      * translation output for most translations (when compared with the same
@@ -249,77 +98,20 @@ namespace Model
      * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-brevity">Using
      * brevity</a> in the Amazon Translate Developer Guide.</p>
      */
-    inline const Brevity& GetBrevity() const{ return m_brevity; }
-
-    /**
-     * <p>When you turn on brevity, Amazon Translate reduces the length of the
-     * translation output for most translations (when compared with the same
-     * translation with brevity turned off). By default, brevity is turned off.</p>
-     * <p>If you turn on brevity for a translation request with an unsupported language
-     * pair, the translation proceeds with the brevity setting turned off.</p> <p>For
-     * the language pairs that brevity supports, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-brevity">Using
-     * brevity</a> in the Amazon Translate Developer Guide.</p>
-     */
+    inline Brevity GetBrevity() const { return m_brevity; }
     inline bool BrevityHasBeenSet() const { return m_brevityHasBeenSet; }
-
-    /**
-     * <p>When you turn on brevity, Amazon Translate reduces the length of the
-     * translation output for most translations (when compared with the same
-     * translation with brevity turned off). By default, brevity is turned off.</p>
-     * <p>If you turn on brevity for a translation request with an unsupported language
-     * pair, the translation proceeds with the brevity setting turned off.</p> <p>For
-     * the language pairs that brevity supports, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-brevity">Using
-     * brevity</a> in the Amazon Translate Developer Guide.</p>
-     */
-    inline void SetBrevity(const Brevity& value) { m_brevityHasBeenSet = true; m_brevity = value; }
-
-    /**
-     * <p>When you turn on brevity, Amazon Translate reduces the length of the
-     * translation output for most translations (when compared with the same
-     * translation with brevity turned off). By default, brevity is turned off.</p>
-     * <p>If you turn on brevity for a translation request with an unsupported language
-     * pair, the translation proceeds with the brevity setting turned off.</p> <p>For
-     * the language pairs that brevity supports, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-brevity">Using
-     * brevity</a> in the Amazon Translate Developer Guide.</p>
-     */
-    inline void SetBrevity(Brevity&& value) { m_brevityHasBeenSet = true; m_brevity = std::move(value); }
-
-    /**
-     * <p>When you turn on brevity, Amazon Translate reduces the length of the
-     * translation output for most translations (when compared with the same
-     * translation with brevity turned off). By default, brevity is turned off.</p>
-     * <p>If you turn on brevity for a translation request with an unsupported language
-     * pair, the translation proceeds with the brevity setting turned off.</p> <p>For
-     * the language pairs that brevity supports, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-brevity">Using
-     * brevity</a> in the Amazon Translate Developer Guide.</p>
-     */
-    inline TranslationSettings& WithBrevity(const Brevity& value) { SetBrevity(value); return *this;}
-
-    /**
-     * <p>When you turn on brevity, Amazon Translate reduces the length of the
-     * translation output for most translations (when compared with the same
-     * translation with brevity turned off). By default, brevity is turned off.</p>
-     * <p>If you turn on brevity for a translation request with an unsupported language
-     * pair, the translation proceeds with the brevity setting turned off.</p> <p>For
-     * the language pairs that brevity supports, see <a
-     * href="https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-brevity">Using
-     * brevity</a> in the Amazon Translate Developer Guide.</p>
-     */
-    inline TranslationSettings& WithBrevity(Brevity&& value) { SetBrevity(std::move(value)); return *this;}
-
+    inline void SetBrevity(Brevity value) { m_brevityHasBeenSet = true; m_brevity = value; }
+    inline TranslationSettings& WithBrevity(Brevity value) { SetBrevity(value); return *this;}
+    ///@}
   private:
 
-    Formality m_formality;
+    Formality m_formality{Formality::NOT_SET};
     bool m_formalityHasBeenSet = false;
 
-    Profanity m_profanity;
+    Profanity m_profanity{Profanity::NOT_SET};
     bool m_profanityHasBeenSet = false;
 
-    Brevity m_brevity;
+    Brevity m_brevity{Brevity::NOT_SET};
     bool m_brevityHasBeenSet = false;
   };
 

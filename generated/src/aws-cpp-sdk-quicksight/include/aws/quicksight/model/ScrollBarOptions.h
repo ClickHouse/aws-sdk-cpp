@@ -33,76 +33,36 @@ namespace Model
   class ScrollBarOptions
   {
   public:
-    AWS_QUICKSIGHT_API ScrollBarOptions();
+    AWS_QUICKSIGHT_API ScrollBarOptions() = default;
     AWS_QUICKSIGHT_API ScrollBarOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ScrollBarOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The visibility of the data zoom scroll bar.</p>
      */
-    inline const Visibility& GetVisibility() const{ return m_visibility; }
-
-    /**
-     * <p>The visibility of the data zoom scroll bar.</p>
-     */
+    inline Visibility GetVisibility() const { return m_visibility; }
     inline bool VisibilityHasBeenSet() const { return m_visibilityHasBeenSet; }
+    inline void SetVisibility(Visibility value) { m_visibilityHasBeenSet = true; m_visibility = value; }
+    inline ScrollBarOptions& WithVisibility(Visibility value) { SetVisibility(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The visibility of the data zoom scroll bar.</p>
-     */
-    inline void SetVisibility(const Visibility& value) { m_visibilityHasBeenSet = true; m_visibility = value; }
-
-    /**
-     * <p>The visibility of the data zoom scroll bar.</p>
-     */
-    inline void SetVisibility(Visibility&& value) { m_visibilityHasBeenSet = true; m_visibility = std::move(value); }
-
-    /**
-     * <p>The visibility of the data zoom scroll bar.</p>
-     */
-    inline ScrollBarOptions& WithVisibility(const Visibility& value) { SetVisibility(value); return *this;}
-
-    /**
-     * <p>The visibility of the data zoom scroll bar.</p>
-     */
-    inline ScrollBarOptions& WithVisibility(Visibility&& value) { SetVisibility(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The visibility range for the data zoom scroll bar.</p>
      */
-    inline const VisibleRangeOptions& GetVisibleRange() const{ return m_visibleRange; }
-
-    /**
-     * <p>The visibility range for the data zoom scroll bar.</p>
-     */
+    inline const VisibleRangeOptions& GetVisibleRange() const { return m_visibleRange; }
     inline bool VisibleRangeHasBeenSet() const { return m_visibleRangeHasBeenSet; }
-
-    /**
-     * <p>The visibility range for the data zoom scroll bar.</p>
-     */
-    inline void SetVisibleRange(const VisibleRangeOptions& value) { m_visibleRangeHasBeenSet = true; m_visibleRange = value; }
-
-    /**
-     * <p>The visibility range for the data zoom scroll bar.</p>
-     */
-    inline void SetVisibleRange(VisibleRangeOptions&& value) { m_visibleRangeHasBeenSet = true; m_visibleRange = std::move(value); }
-
-    /**
-     * <p>The visibility range for the data zoom scroll bar.</p>
-     */
-    inline ScrollBarOptions& WithVisibleRange(const VisibleRangeOptions& value) { SetVisibleRange(value); return *this;}
-
-    /**
-     * <p>The visibility range for the data zoom scroll bar.</p>
-     */
-    inline ScrollBarOptions& WithVisibleRange(VisibleRangeOptions&& value) { SetVisibleRange(std::move(value)); return *this;}
-
+    template<typename VisibleRangeT = VisibleRangeOptions>
+    void SetVisibleRange(VisibleRangeT&& value) { m_visibleRangeHasBeenSet = true; m_visibleRange = std::forward<VisibleRangeT>(value); }
+    template<typename VisibleRangeT = VisibleRangeOptions>
+    ScrollBarOptions& WithVisibleRange(VisibleRangeT&& value) { SetVisibleRange(std::forward<VisibleRangeT>(value)); return *this;}
+    ///@}
   private:
 
-    Visibility m_visibility;
+    Visibility m_visibility{Visibility::NOT_SET};
     bool m_visibilityHasBeenSet = false;
 
     VisibleRangeOptions m_visibleRange;

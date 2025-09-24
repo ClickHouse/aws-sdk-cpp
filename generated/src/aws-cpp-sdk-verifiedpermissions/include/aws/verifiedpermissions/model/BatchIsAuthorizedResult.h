@@ -29,80 +29,41 @@ namespace Model
   class BatchIsAuthorizedResult
   {
   public:
-    AWS_VERIFIEDPERMISSIONS_API BatchIsAuthorizedResult();
+    AWS_VERIFIEDPERMISSIONS_API BatchIsAuthorizedResult() = default;
     AWS_VERIFIEDPERMISSIONS_API BatchIsAuthorizedResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_VERIFIEDPERMISSIONS_API BatchIsAuthorizedResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A series of <code>Allow</code> or <code>Deny</code> decisions for each
-     * request, and the policies that produced them.</p>
+     * request, and the policies that produced them. These results are returned in the
+     * order they were requested.</p>
      */
-    inline const Aws::Vector<BatchIsAuthorizedOutputItem>& GetResults() const{ return m_results; }
+    inline const Aws::Vector<BatchIsAuthorizedOutputItem>& GetResults() const { return m_results; }
+    template<typename ResultsT = Aws::Vector<BatchIsAuthorizedOutputItem>>
+    void SetResults(ResultsT&& value) { m_resultsHasBeenSet = true; m_results = std::forward<ResultsT>(value); }
+    template<typename ResultsT = Aws::Vector<BatchIsAuthorizedOutputItem>>
+    BatchIsAuthorizedResult& WithResults(ResultsT&& value) { SetResults(std::forward<ResultsT>(value)); return *this;}
+    template<typename ResultsT = BatchIsAuthorizedOutputItem>
+    BatchIsAuthorizedResult& AddResults(ResultsT&& value) { m_resultsHasBeenSet = true; m_results.emplace_back(std::forward<ResultsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A series of <code>Allow</code> or <code>Deny</code> decisions for each
-     * request, and the policies that produced them.</p>
-     */
-    inline void SetResults(const Aws::Vector<BatchIsAuthorizedOutputItem>& value) { m_results = value; }
-
-    /**
-     * <p>A series of <code>Allow</code> or <code>Deny</code> decisions for each
-     * request, and the policies that produced them.</p>
-     */
-    inline void SetResults(Aws::Vector<BatchIsAuthorizedOutputItem>&& value) { m_results = std::move(value); }
-
-    /**
-     * <p>A series of <code>Allow</code> or <code>Deny</code> decisions for each
-     * request, and the policies that produced them.</p>
-     */
-    inline BatchIsAuthorizedResult& WithResults(const Aws::Vector<BatchIsAuthorizedOutputItem>& value) { SetResults(value); return *this;}
-
-    /**
-     * <p>A series of <code>Allow</code> or <code>Deny</code> decisions for each
-     * request, and the policies that produced them.</p>
-     */
-    inline BatchIsAuthorizedResult& WithResults(Aws::Vector<BatchIsAuthorizedOutputItem>&& value) { SetResults(std::move(value)); return *this;}
-
-    /**
-     * <p>A series of <code>Allow</code> or <code>Deny</code> decisions for each
-     * request, and the policies that produced them.</p>
-     */
-    inline BatchIsAuthorizedResult& AddResults(const BatchIsAuthorizedOutputItem& value) { m_results.push_back(value); return *this; }
-
-    /**
-     * <p>A series of <code>Allow</code> or <code>Deny</code> decisions for each
-     * request, and the policies that produced them.</p>
-     */
-    inline BatchIsAuthorizedResult& AddResults(BatchIsAuthorizedOutputItem&& value) { m_results.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline BatchIsAuthorizedResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline BatchIsAuthorizedResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline BatchIsAuthorizedResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    BatchIsAuthorizedResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<BatchIsAuthorizedOutputItem> m_results;
+    bool m_resultsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

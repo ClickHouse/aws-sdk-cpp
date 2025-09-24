@@ -18,19 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-IamUser::IamUser() : 
-    m_accountIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_principalIdHasBeenSet(false),
-    m_userNameHasBeenSet(false)
-{
-}
-
-IamUser::IamUser(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_principalIdHasBeenSet(false),
-    m_userNameHasBeenSet(false)
+IamUser::IamUser(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ IamUser& IamUser::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("principalId"))
   {
     m_principalId = jsonValue.GetString("principalId");
-
     m_principalIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("userName"))
   {
     m_userName = jsonValue.GetString("userName");
-
     m_userNameHasBeenSet = true;
   }
-
   return *this;
 }
 

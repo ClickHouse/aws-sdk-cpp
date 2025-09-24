@@ -12,19 +12,6 @@ using namespace Aws::StorageGateway::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateMaintenanceStartTimeRequest::UpdateMaintenanceStartTimeRequest() : 
-    m_gatewayARNHasBeenSet(false),
-    m_hourOfDay(0),
-    m_hourOfDayHasBeenSet(false),
-    m_minuteOfHour(0),
-    m_minuteOfHourHasBeenSet(false),
-    m_dayOfWeek(0),
-    m_dayOfWeekHasBeenSet(false),
-    m_dayOfMonth(0),
-    m_dayOfMonthHasBeenSet(false)
-{
-}
-
 Aws::String UpdateMaintenanceStartTimeRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -56,6 +43,12 @@ Aws::String UpdateMaintenanceStartTimeRequest::SerializePayload() const
   if(m_dayOfMonthHasBeenSet)
   {
    payload.WithInteger("DayOfMonth", m_dayOfMonth);
+
+  }
+
+  if(m_softwareUpdatePreferencesHasBeenSet)
+  {
+   payload.WithObject("SoftwareUpdatePreferences", m_softwareUpdatePreferences.Jsonize());
 
   }
 

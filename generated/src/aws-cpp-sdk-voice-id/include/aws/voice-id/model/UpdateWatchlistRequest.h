@@ -21,7 +21,7 @@ namespace Model
   class UpdateWatchlistRequest : public VoiceIDRequest
   {
   public:
-    AWS_VOICEID_API UpdateWatchlistRequest();
+    AWS_VOICEID_API UpdateWatchlistRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,169 +34,53 @@ namespace Model
     AWS_VOICEID_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A brief description about this watchlist.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A brief description about this watchlist.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateWatchlistRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A brief description about this watchlist.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A brief description about this watchlist.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A brief description about this watchlist.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A brief description about this watchlist.</p>
-     */
-    inline UpdateWatchlistRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A brief description about this watchlist.</p>
-     */
-    inline UpdateWatchlistRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A brief description about this watchlist.</p>
-     */
-    inline UpdateWatchlistRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the domain that contains the watchlist.</p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
-
-    /**
-     * <p>The identifier of the domain that contains the watchlist.</p>
-     */
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
     inline bool DomainIdHasBeenSet() const { return m_domainIdHasBeenSet; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    UpdateWatchlistRequest& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the domain that contains the watchlist.</p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainIdHasBeenSet = true; m_domainId = value; }
-
-    /**
-     * <p>The identifier of the domain that contains the watchlist.</p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = std::move(value); }
-
-    /**
-     * <p>The identifier of the domain that contains the watchlist.</p>
-     */
-    inline void SetDomainId(const char* value) { m_domainIdHasBeenSet = true; m_domainId.assign(value); }
-
-    /**
-     * <p>The identifier of the domain that contains the watchlist.</p>
-     */
-    inline UpdateWatchlistRequest& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The identifier of the domain that contains the watchlist.</p>
-     */
-    inline UpdateWatchlistRequest& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the domain that contains the watchlist.</p>
-     */
-    inline UpdateWatchlistRequest& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the watchlist.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the watchlist.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateWatchlistRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the watchlist.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the watchlist.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the watchlist.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the watchlist.</p>
-     */
-    inline UpdateWatchlistRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the watchlist.</p>
-     */
-    inline UpdateWatchlistRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the watchlist.</p>
-     */
-    inline UpdateWatchlistRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the watchlist to be updated.</p>
      */
-    inline const Aws::String& GetWatchlistId() const{ return m_watchlistId; }
-
-    /**
-     * <p>The identifier of the watchlist to be updated.</p>
-     */
+    inline const Aws::String& GetWatchlistId() const { return m_watchlistId; }
     inline bool WatchlistIdHasBeenSet() const { return m_watchlistIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the watchlist to be updated.</p>
-     */
-    inline void SetWatchlistId(const Aws::String& value) { m_watchlistIdHasBeenSet = true; m_watchlistId = value; }
-
-    /**
-     * <p>The identifier of the watchlist to be updated.</p>
-     */
-    inline void SetWatchlistId(Aws::String&& value) { m_watchlistIdHasBeenSet = true; m_watchlistId = std::move(value); }
-
-    /**
-     * <p>The identifier of the watchlist to be updated.</p>
-     */
-    inline void SetWatchlistId(const char* value) { m_watchlistIdHasBeenSet = true; m_watchlistId.assign(value); }
-
-    /**
-     * <p>The identifier of the watchlist to be updated.</p>
-     */
-    inline UpdateWatchlistRequest& WithWatchlistId(const Aws::String& value) { SetWatchlistId(value); return *this;}
-
-    /**
-     * <p>The identifier of the watchlist to be updated.</p>
-     */
-    inline UpdateWatchlistRequest& WithWatchlistId(Aws::String&& value) { SetWatchlistId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the watchlist to be updated.</p>
-     */
-    inline UpdateWatchlistRequest& WithWatchlistId(const char* value) { SetWatchlistId(value); return *this;}
-
+    template<typename WatchlistIdT = Aws::String>
+    void SetWatchlistId(WatchlistIdT&& value) { m_watchlistIdHasBeenSet = true; m_watchlistId = std::forward<WatchlistIdT>(value); }
+    template<typename WatchlistIdT = Aws::String>
+    UpdateWatchlistRequest& WithWatchlistId(WatchlistIdT&& value) { SetWatchlistId(std::forward<WatchlistIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

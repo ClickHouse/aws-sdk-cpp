@@ -31,76 +31,26 @@ namespace Model
   class Schedule
   {
   public:
-    AWS_IOTANALYTICS_API Schedule();
+    AWS_IOTANALYTICS_API Schedule() = default;
     AWS_IOTANALYTICS_API Schedule(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Schedule& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The expression that defines when to trigger an update. For more information,
      * see <a
      * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">Schedule
      * Expressions for Rules</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
      */
-    inline const Aws::String& GetExpression() const{ return m_expression; }
-
-    /**
-     * <p>The expression that defines when to trigger an update. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">Schedule
-     * Expressions for Rules</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
-     */
+    inline const Aws::String& GetExpression() const { return m_expression; }
     inline bool ExpressionHasBeenSet() const { return m_expressionHasBeenSet; }
-
-    /**
-     * <p>The expression that defines when to trigger an update. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">Schedule
-     * Expressions for Rules</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
-     */
-    inline void SetExpression(const Aws::String& value) { m_expressionHasBeenSet = true; m_expression = value; }
-
-    /**
-     * <p>The expression that defines when to trigger an update. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">Schedule
-     * Expressions for Rules</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
-     */
-    inline void SetExpression(Aws::String&& value) { m_expressionHasBeenSet = true; m_expression = std::move(value); }
-
-    /**
-     * <p>The expression that defines when to trigger an update. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">Schedule
-     * Expressions for Rules</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
-     */
-    inline void SetExpression(const char* value) { m_expressionHasBeenSet = true; m_expression.assign(value); }
-
-    /**
-     * <p>The expression that defines when to trigger an update. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">Schedule
-     * Expressions for Rules</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
-     */
-    inline Schedule& WithExpression(const Aws::String& value) { SetExpression(value); return *this;}
-
-    /**
-     * <p>The expression that defines when to trigger an update. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">Schedule
-     * Expressions for Rules</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
-     */
-    inline Schedule& WithExpression(Aws::String&& value) { SetExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>The expression that defines when to trigger an update. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">Schedule
-     * Expressions for Rules</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
-     */
-    inline Schedule& WithExpression(const char* value) { SetExpression(value); return *this;}
-
+    template<typename ExpressionT = Aws::String>
+    void SetExpression(ExpressionT&& value) { m_expressionHasBeenSet = true; m_expression = std::forward<ExpressionT>(value); }
+    template<typename ExpressionT = Aws::String>
+    Schedule& WithExpression(ExpressionT&& value) { SetExpression(std::forward<ExpressionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_expression;

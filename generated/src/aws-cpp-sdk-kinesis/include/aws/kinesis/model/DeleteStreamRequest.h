@@ -24,7 +24,7 @@ namespace Model
   class DeleteStreamRequest : public KinesisRequest
   {
   public:
-    AWS_KINESIS_API DeleteStreamRequest();
+    AWS_KINESIS_API DeleteStreamRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,122 +41,47 @@ namespace Model
      */
     AWS_KINESIS_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The name of the stream to delete.</p>
      */
-    inline const Aws::String& GetStreamName() const{ return m_streamName; }
-
-    /**
-     * <p>The name of the stream to delete.</p>
-     */
+    inline const Aws::String& GetStreamName() const { return m_streamName; }
     inline bool StreamNameHasBeenSet() const { return m_streamNameHasBeenSet; }
+    template<typename StreamNameT = Aws::String>
+    void SetStreamName(StreamNameT&& value) { m_streamNameHasBeenSet = true; m_streamName = std::forward<StreamNameT>(value); }
+    template<typename StreamNameT = Aws::String>
+    DeleteStreamRequest& WithStreamName(StreamNameT&& value) { SetStreamName(std::forward<StreamNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the stream to delete.</p>
-     */
-    inline void SetStreamName(const Aws::String& value) { m_streamNameHasBeenSet = true; m_streamName = value; }
-
-    /**
-     * <p>The name of the stream to delete.</p>
-     */
-    inline void SetStreamName(Aws::String&& value) { m_streamNameHasBeenSet = true; m_streamName = std::move(value); }
-
-    /**
-     * <p>The name of the stream to delete.</p>
-     */
-    inline void SetStreamName(const char* value) { m_streamNameHasBeenSet = true; m_streamName.assign(value); }
-
-    /**
-     * <p>The name of the stream to delete.</p>
-     */
-    inline DeleteStreamRequest& WithStreamName(const Aws::String& value) { SetStreamName(value); return *this;}
-
-    /**
-     * <p>The name of the stream to delete.</p>
-     */
-    inline DeleteStreamRequest& WithStreamName(Aws::String&& value) { SetStreamName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stream to delete.</p>
-     */
-    inline DeleteStreamRequest& WithStreamName(const char* value) { SetStreamName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If this parameter is unset (<code>null</code>) or if you set it to
      * <code>false</code>, and the stream has registered consumers, the call to
      * <code>DeleteStream</code> fails with a <code>ResourceInUseException</code>. </p>
      */
-    inline bool GetEnforceConsumerDeletion() const{ return m_enforceConsumerDeletion; }
-
-    /**
-     * <p>If this parameter is unset (<code>null</code>) or if you set it to
-     * <code>false</code>, and the stream has registered consumers, the call to
-     * <code>DeleteStream</code> fails with a <code>ResourceInUseException</code>. </p>
-     */
+    inline bool GetEnforceConsumerDeletion() const { return m_enforceConsumerDeletion; }
     inline bool EnforceConsumerDeletionHasBeenSet() const { return m_enforceConsumerDeletionHasBeenSet; }
-
-    /**
-     * <p>If this parameter is unset (<code>null</code>) or if you set it to
-     * <code>false</code>, and the stream has registered consumers, the call to
-     * <code>DeleteStream</code> fails with a <code>ResourceInUseException</code>. </p>
-     */
     inline void SetEnforceConsumerDeletion(bool value) { m_enforceConsumerDeletionHasBeenSet = true; m_enforceConsumerDeletion = value; }
-
-    /**
-     * <p>If this parameter is unset (<code>null</code>) or if you set it to
-     * <code>false</code>, and the stream has registered consumers, the call to
-     * <code>DeleteStream</code> fails with a <code>ResourceInUseException</code>. </p>
-     */
     inline DeleteStreamRequest& WithEnforceConsumerDeletion(bool value) { SetEnforceConsumerDeletion(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ARN of the stream.</p>
      */
-    inline const Aws::String& GetStreamARN() const{ return m_streamARN; }
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
+    inline const Aws::String& GetStreamARN() const { return m_streamARN; }
     inline bool StreamARNHasBeenSet() const { return m_streamARNHasBeenSet; }
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline void SetStreamARN(const Aws::String& value) { m_streamARNHasBeenSet = true; m_streamARN = value; }
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline void SetStreamARN(Aws::String&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::move(value); }
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline void SetStreamARN(const char* value) { m_streamARNHasBeenSet = true; m_streamARN.assign(value); }
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline DeleteStreamRequest& WithStreamARN(const Aws::String& value) { SetStreamARN(value); return *this;}
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline DeleteStreamRequest& WithStreamARN(Aws::String&& value) { SetStreamARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the stream.</p>
-     */
-    inline DeleteStreamRequest& WithStreamARN(const char* value) { SetStreamARN(value); return *this;}
-
+    template<typename StreamARNT = Aws::String>
+    void SetStreamARN(StreamARNT&& value) { m_streamARNHasBeenSet = true; m_streamARN = std::forward<StreamARNT>(value); }
+    template<typename StreamARNT = Aws::String>
+    DeleteStreamRequest& WithStreamARN(StreamARNT&& value) { SetStreamARN(std::forward<StreamARNT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_streamName;
     bool m_streamNameHasBeenSet = false;
 
-    bool m_enforceConsumerDeletion;
+    bool m_enforceConsumerDeletion{false};
     bool m_enforceConsumerDeletionHasBeenSet = false;
 
     Aws::String m_streamARN;

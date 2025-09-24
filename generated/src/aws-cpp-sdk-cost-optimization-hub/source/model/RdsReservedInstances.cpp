@@ -18,15 +18,7 @@ namespace CostOptimizationHub
 namespace Model
 {
 
-RdsReservedInstances::RdsReservedInstances() : 
-    m_configurationHasBeenSet(false),
-    m_costCalculationHasBeenSet(false)
-{
-}
-
-RdsReservedInstances::RdsReservedInstances(JsonView jsonValue) : 
-    m_configurationHasBeenSet(false),
-    m_costCalculationHasBeenSet(false)
+RdsReservedInstances::RdsReservedInstances(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RdsReservedInstances& RdsReservedInstances::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("configuration"))
   {
     m_configuration = jsonValue.GetObject("configuration");
-
     m_configurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("costCalculation"))
   {
     m_costCalculation = jsonValue.GetObject("costCalculation");
-
     m_costCalculationHasBeenSet = true;
   }
-
   return *this;
 }
 

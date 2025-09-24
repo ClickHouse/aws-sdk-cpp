@@ -27,73 +27,37 @@ namespace Model
   class VerifySessionResult
   {
   public:
-    AWS_CODECATALYST_API VerifySessionResult();
+    AWS_CODECATALYST_API VerifySessionResult() = default;
     AWS_CODECATALYST_API VerifySessionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODECATALYST_API VerifySessionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The system-generated unique ID of the user in Amazon CodeCatalyst.</p>
      */
-    inline const Aws::String& GetIdentity() const{ return m_identity; }
+    inline const Aws::String& GetIdentity() const { return m_identity; }
+    template<typename IdentityT = Aws::String>
+    void SetIdentity(IdentityT&& value) { m_identityHasBeenSet = true; m_identity = std::forward<IdentityT>(value); }
+    template<typename IdentityT = Aws::String>
+    VerifySessionResult& WithIdentity(IdentityT&& value) { SetIdentity(std::forward<IdentityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The system-generated unique ID of the user in Amazon CodeCatalyst.</p>
-     */
-    inline void SetIdentity(const Aws::String& value) { m_identity = value; }
-
-    /**
-     * <p>The system-generated unique ID of the user in Amazon CodeCatalyst.</p>
-     */
-    inline void SetIdentity(Aws::String&& value) { m_identity = std::move(value); }
-
-    /**
-     * <p>The system-generated unique ID of the user in Amazon CodeCatalyst.</p>
-     */
-    inline void SetIdentity(const char* value) { m_identity.assign(value); }
-
-    /**
-     * <p>The system-generated unique ID of the user in Amazon CodeCatalyst.</p>
-     */
-    inline VerifySessionResult& WithIdentity(const Aws::String& value) { SetIdentity(value); return *this;}
-
-    /**
-     * <p>The system-generated unique ID of the user in Amazon CodeCatalyst.</p>
-     */
-    inline VerifySessionResult& WithIdentity(Aws::String&& value) { SetIdentity(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated unique ID of the user in Amazon CodeCatalyst.</p>
-     */
-    inline VerifySessionResult& WithIdentity(const char* value) { SetIdentity(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline VerifySessionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline VerifySessionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline VerifySessionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    VerifySessionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_identity;
+    bool m_identityHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

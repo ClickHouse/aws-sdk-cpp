@@ -18,15 +18,7 @@ namespace ManagedGrafana
 namespace Model
 {
 
-NetworkAccessConfiguration::NetworkAccessConfiguration() : 
-    m_prefixListIdsHasBeenSet(false),
-    m_vpceIdsHasBeenSet(false)
-{
-}
-
-NetworkAccessConfiguration::NetworkAccessConfiguration(JsonView jsonValue) : 
-    m_prefixListIdsHasBeenSet(false),
-    m_vpceIdsHasBeenSet(false)
+NetworkAccessConfiguration::NetworkAccessConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ NetworkAccessConfiguration& NetworkAccessConfiguration::operator =(JsonView json
     }
     m_prefixListIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("vpceIds"))
   {
     Aws::Utils::Array<JsonView> vpceIdsJsonList = jsonValue.GetArray("vpceIds");
@@ -52,7 +43,6 @@ NetworkAccessConfiguration& NetworkAccessConfiguration::operator =(JsonView json
     }
     m_vpceIdsHasBeenSet = true;
   }
-
   return *this;
 }
 

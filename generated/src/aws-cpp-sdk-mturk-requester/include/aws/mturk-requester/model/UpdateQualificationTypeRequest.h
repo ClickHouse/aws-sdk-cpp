@@ -22,7 +22,7 @@ namespace Model
   class UpdateQualificationTypeRequest : public MTurkRequest
   {
   public:
-    AWS_MTURK_API UpdateQualificationTypeRequest();
+    AWS_MTURK_API UpdateQualificationTypeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,119 +35,41 @@ namespace Model
     AWS_MTURK_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Qualification type to update.</p>
      */
-    inline const Aws::String& GetQualificationTypeId() const{ return m_qualificationTypeId; }
-
-    /**
-     * <p>The ID of the Qualification type to update.</p>
-     */
+    inline const Aws::String& GetQualificationTypeId() const { return m_qualificationTypeId; }
     inline bool QualificationTypeIdHasBeenSet() const { return m_qualificationTypeIdHasBeenSet; }
+    template<typename QualificationTypeIdT = Aws::String>
+    void SetQualificationTypeId(QualificationTypeIdT&& value) { m_qualificationTypeIdHasBeenSet = true; m_qualificationTypeId = std::forward<QualificationTypeIdT>(value); }
+    template<typename QualificationTypeIdT = Aws::String>
+    UpdateQualificationTypeRequest& WithQualificationTypeId(QualificationTypeIdT&& value) { SetQualificationTypeId(std::forward<QualificationTypeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Qualification type to update.</p>
-     */
-    inline void SetQualificationTypeId(const Aws::String& value) { m_qualificationTypeIdHasBeenSet = true; m_qualificationTypeId = value; }
-
-    /**
-     * <p>The ID of the Qualification type to update.</p>
-     */
-    inline void SetQualificationTypeId(Aws::String&& value) { m_qualificationTypeIdHasBeenSet = true; m_qualificationTypeId = std::move(value); }
-
-    /**
-     * <p>The ID of the Qualification type to update.</p>
-     */
-    inline void SetQualificationTypeId(const char* value) { m_qualificationTypeIdHasBeenSet = true; m_qualificationTypeId.assign(value); }
-
-    /**
-     * <p>The ID of the Qualification type to update.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithQualificationTypeId(const Aws::String& value) { SetQualificationTypeId(value); return *this;}
-
-    /**
-     * <p>The ID of the Qualification type to update.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithQualificationTypeId(Aws::String&& value) { SetQualificationTypeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Qualification type to update.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithQualificationTypeId(const char* value) { SetQualificationTypeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new description of the Qualification type.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The new description of the Qualification type.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateQualificationTypeRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The new description of the Qualification type.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The new description of the Qualification type.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The new description of the Qualification type.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The new description of the Qualification type.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The new description of the Qualification type.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The new description of the Qualification type.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new status of the Qualification type - Active | Inactive</p>
      */
-    inline const QualificationTypeStatus& GetQualificationTypeStatus() const{ return m_qualificationTypeStatus; }
-
-    /**
-     * <p>The new status of the Qualification type - Active | Inactive</p>
-     */
+    inline QualificationTypeStatus GetQualificationTypeStatus() const { return m_qualificationTypeStatus; }
     inline bool QualificationTypeStatusHasBeenSet() const { return m_qualificationTypeStatusHasBeenSet; }
+    inline void SetQualificationTypeStatus(QualificationTypeStatus value) { m_qualificationTypeStatusHasBeenSet = true; m_qualificationTypeStatus = value; }
+    inline UpdateQualificationTypeRequest& WithQualificationTypeStatus(QualificationTypeStatus value) { SetQualificationTypeStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The new status of the Qualification type - Active | Inactive</p>
-     */
-    inline void SetQualificationTypeStatus(const QualificationTypeStatus& value) { m_qualificationTypeStatusHasBeenSet = true; m_qualificationTypeStatus = value; }
-
-    /**
-     * <p>The new status of the Qualification type - Active | Inactive</p>
-     */
-    inline void SetQualificationTypeStatus(QualificationTypeStatus&& value) { m_qualificationTypeStatusHasBeenSet = true; m_qualificationTypeStatus = std::move(value); }
-
-    /**
-     * <p>The new status of the Qualification type - Active | Inactive</p>
-     */
-    inline UpdateQualificationTypeRequest& WithQualificationTypeStatus(const QualificationTypeStatus& value) { SetQualificationTypeStatus(value); return *this;}
-
-    /**
-     * <p>The new status of the Qualification type - Active | Inactive</p>
-     */
-    inline UpdateQualificationTypeRequest& WithQualificationTypeStatus(QualificationTypeStatus&& value) { SetQualificationTypeStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The questions for the Qualification test a Worker must answer correctly to
      * obtain a Qualification of this type. If this parameter is specified,
@@ -157,160 +79,39 @@ namespace Model
      * If not specified, the Worker may request the Qualification without answering any
      * questions.</p>
      */
-    inline const Aws::String& GetTest() const{ return m_test; }
-
-    /**
-     * <p>The questions for the Qualification test a Worker must answer correctly to
-     * obtain a Qualification of this type. If this parameter is specified,
-     * <code>TestDurationInSeconds</code> must also be specified.</p> <p>Constraints:
-     * Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This
-     * parameter cannot be specified if AutoGranted is true.</p> <p>Constraints: None.
-     * If not specified, the Worker may request the Qualification without answering any
-     * questions.</p>
-     */
+    inline const Aws::String& GetTest() const { return m_test; }
     inline bool TestHasBeenSet() const { return m_testHasBeenSet; }
+    template<typename TestT = Aws::String>
+    void SetTest(TestT&& value) { m_testHasBeenSet = true; m_test = std::forward<TestT>(value); }
+    template<typename TestT = Aws::String>
+    UpdateQualificationTypeRequest& WithTest(TestT&& value) { SetTest(std::forward<TestT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The questions for the Qualification test a Worker must answer correctly to
-     * obtain a Qualification of this type. If this parameter is specified,
-     * <code>TestDurationInSeconds</code> must also be specified.</p> <p>Constraints:
-     * Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This
-     * parameter cannot be specified if AutoGranted is true.</p> <p>Constraints: None.
-     * If not specified, the Worker may request the Qualification without answering any
-     * questions.</p>
-     */
-    inline void SetTest(const Aws::String& value) { m_testHasBeenSet = true; m_test = value; }
-
-    /**
-     * <p>The questions for the Qualification test a Worker must answer correctly to
-     * obtain a Qualification of this type. If this parameter is specified,
-     * <code>TestDurationInSeconds</code> must also be specified.</p> <p>Constraints:
-     * Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This
-     * parameter cannot be specified if AutoGranted is true.</p> <p>Constraints: None.
-     * If not specified, the Worker may request the Qualification without answering any
-     * questions.</p>
-     */
-    inline void SetTest(Aws::String&& value) { m_testHasBeenSet = true; m_test = std::move(value); }
-
-    /**
-     * <p>The questions for the Qualification test a Worker must answer correctly to
-     * obtain a Qualification of this type. If this parameter is specified,
-     * <code>TestDurationInSeconds</code> must also be specified.</p> <p>Constraints:
-     * Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This
-     * parameter cannot be specified if AutoGranted is true.</p> <p>Constraints: None.
-     * If not specified, the Worker may request the Qualification without answering any
-     * questions.</p>
-     */
-    inline void SetTest(const char* value) { m_testHasBeenSet = true; m_test.assign(value); }
-
-    /**
-     * <p>The questions for the Qualification test a Worker must answer correctly to
-     * obtain a Qualification of this type. If this parameter is specified,
-     * <code>TestDurationInSeconds</code> must also be specified.</p> <p>Constraints:
-     * Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This
-     * parameter cannot be specified if AutoGranted is true.</p> <p>Constraints: None.
-     * If not specified, the Worker may request the Qualification without answering any
-     * questions.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithTest(const Aws::String& value) { SetTest(value); return *this;}
-
-    /**
-     * <p>The questions for the Qualification test a Worker must answer correctly to
-     * obtain a Qualification of this type. If this parameter is specified,
-     * <code>TestDurationInSeconds</code> must also be specified.</p> <p>Constraints:
-     * Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This
-     * parameter cannot be specified if AutoGranted is true.</p> <p>Constraints: None.
-     * If not specified, the Worker may request the Qualification without answering any
-     * questions.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithTest(Aws::String&& value) { SetTest(std::move(value)); return *this;}
-
-    /**
-     * <p>The questions for the Qualification test a Worker must answer correctly to
-     * obtain a Qualification of this type. If this parameter is specified,
-     * <code>TestDurationInSeconds</code> must also be specified.</p> <p>Constraints:
-     * Must not be longer than 65535 bytes. Must be a QuestionForm data structure. This
-     * parameter cannot be specified if AutoGranted is true.</p> <p>Constraints: None.
-     * If not specified, the Worker may request the Qualification without answering any
-     * questions.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithTest(const char* value) { SetTest(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The answers to the Qualification test specified in the Test parameter, in the
      * form of an AnswerKey data structure.</p>
      */
-    inline const Aws::String& GetAnswerKey() const{ return m_answerKey; }
-
-    /**
-     * <p>The answers to the Qualification test specified in the Test parameter, in the
-     * form of an AnswerKey data structure.</p>
-     */
+    inline const Aws::String& GetAnswerKey() const { return m_answerKey; }
     inline bool AnswerKeyHasBeenSet() const { return m_answerKeyHasBeenSet; }
+    template<typename AnswerKeyT = Aws::String>
+    void SetAnswerKey(AnswerKeyT&& value) { m_answerKeyHasBeenSet = true; m_answerKey = std::forward<AnswerKeyT>(value); }
+    template<typename AnswerKeyT = Aws::String>
+    UpdateQualificationTypeRequest& WithAnswerKey(AnswerKeyT&& value) { SetAnswerKey(std::forward<AnswerKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The answers to the Qualification test specified in the Test parameter, in the
-     * form of an AnswerKey data structure.</p>
-     */
-    inline void SetAnswerKey(const Aws::String& value) { m_answerKeyHasBeenSet = true; m_answerKey = value; }
-
-    /**
-     * <p>The answers to the Qualification test specified in the Test parameter, in the
-     * form of an AnswerKey data structure.</p>
-     */
-    inline void SetAnswerKey(Aws::String&& value) { m_answerKeyHasBeenSet = true; m_answerKey = std::move(value); }
-
-    /**
-     * <p>The answers to the Qualification test specified in the Test parameter, in the
-     * form of an AnswerKey data structure.</p>
-     */
-    inline void SetAnswerKey(const char* value) { m_answerKeyHasBeenSet = true; m_answerKey.assign(value); }
-
-    /**
-     * <p>The answers to the Qualification test specified in the Test parameter, in the
-     * form of an AnswerKey data structure.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithAnswerKey(const Aws::String& value) { SetAnswerKey(value); return *this;}
-
-    /**
-     * <p>The answers to the Qualification test specified in the Test parameter, in the
-     * form of an AnswerKey data structure.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithAnswerKey(Aws::String&& value) { SetAnswerKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The answers to the Qualification test specified in the Test parameter, in the
-     * form of an AnswerKey data structure.</p>
-     */
-    inline UpdateQualificationTypeRequest& WithAnswerKey(const char* value) { SetAnswerKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of seconds the Worker has to complete the Qualification test,
      * starting from the time the Worker requests the Qualification.</p>
      */
-    inline long long GetTestDurationInSeconds() const{ return m_testDurationInSeconds; }
-
-    /**
-     * <p>The number of seconds the Worker has to complete the Qualification test,
-     * starting from the time the Worker requests the Qualification.</p>
-     */
+    inline long long GetTestDurationInSeconds() const { return m_testDurationInSeconds; }
     inline bool TestDurationInSecondsHasBeenSet() const { return m_testDurationInSecondsHasBeenSet; }
-
-    /**
-     * <p>The number of seconds the Worker has to complete the Qualification test,
-     * starting from the time the Worker requests the Qualification.</p>
-     */
     inline void SetTestDurationInSeconds(long long value) { m_testDurationInSecondsHasBeenSet = true; m_testDurationInSeconds = value; }
-
-    /**
-     * <p>The number of seconds the Worker has to complete the Qualification test,
-     * starting from the time the Worker requests the Qualification.</p>
-     */
     inline UpdateQualificationTypeRequest& WithTestDurationInSeconds(long long value) { SetTestDurationInSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The amount of time, in seconds, that Workers must wait after requesting a
      * Qualification of the specified Qualification type before they can retry the
@@ -320,99 +121,35 @@ namespace Model
      * DisposeQualificationType and then create a new Qualification type with retries
      * disabled using CreateQualificationType.</p>
      */
-    inline long long GetRetryDelayInSeconds() const{ return m_retryDelayInSeconds; }
-
-    /**
-     * <p>The amount of time, in seconds, that Workers must wait after requesting a
-     * Qualification of the specified Qualification type before they can retry the
-     * Qualification request. It is not possible to disable retries for a Qualification
-     * type after it has been created with retries enabled. If you want to disable
-     * retries, you must dispose of the existing retry-enabled Qualification type using
-     * DisposeQualificationType and then create a new Qualification type with retries
-     * disabled using CreateQualificationType.</p>
-     */
+    inline long long GetRetryDelayInSeconds() const { return m_retryDelayInSeconds; }
     inline bool RetryDelayInSecondsHasBeenSet() const { return m_retryDelayInSecondsHasBeenSet; }
-
-    /**
-     * <p>The amount of time, in seconds, that Workers must wait after requesting a
-     * Qualification of the specified Qualification type before they can retry the
-     * Qualification request. It is not possible to disable retries for a Qualification
-     * type after it has been created with retries enabled. If you want to disable
-     * retries, you must dispose of the existing retry-enabled Qualification type using
-     * DisposeQualificationType and then create a new Qualification type with retries
-     * disabled using CreateQualificationType.</p>
-     */
     inline void SetRetryDelayInSeconds(long long value) { m_retryDelayInSecondsHasBeenSet = true; m_retryDelayInSeconds = value; }
-
-    /**
-     * <p>The amount of time, in seconds, that Workers must wait after requesting a
-     * Qualification of the specified Qualification type before they can retry the
-     * Qualification request. It is not possible to disable retries for a Qualification
-     * type after it has been created with retries enabled. If you want to disable
-     * retries, you must dispose of the existing retry-enabled Qualification type using
-     * DisposeQualificationType and then create a new Qualification type with retries
-     * disabled using CreateQualificationType.</p>
-     */
     inline UpdateQualificationTypeRequest& WithRetryDelayInSeconds(long long value) { SetRetryDelayInSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Specifies whether requests for the Qualification type are granted
      * immediately, without prompting the Worker with a Qualification test.</p>
      * <p>Constraints: If the Test parameter is specified, this parameter cannot be
      * true.</p>
      */
-    inline bool GetAutoGranted() const{ return m_autoGranted; }
-
-    /**
-     * <p>Specifies whether requests for the Qualification type are granted
-     * immediately, without prompting the Worker with a Qualification test.</p>
-     * <p>Constraints: If the Test parameter is specified, this parameter cannot be
-     * true.</p>
-     */
+    inline bool GetAutoGranted() const { return m_autoGranted; }
     inline bool AutoGrantedHasBeenSet() const { return m_autoGrantedHasBeenSet; }
-
-    /**
-     * <p>Specifies whether requests for the Qualification type are granted
-     * immediately, without prompting the Worker with a Qualification test.</p>
-     * <p>Constraints: If the Test parameter is specified, this parameter cannot be
-     * true.</p>
-     */
     inline void SetAutoGranted(bool value) { m_autoGrantedHasBeenSet = true; m_autoGranted = value; }
-
-    /**
-     * <p>Specifies whether requests for the Qualification type are granted
-     * immediately, without prompting the Worker with a Qualification test.</p>
-     * <p>Constraints: If the Test parameter is specified, this parameter cannot be
-     * true.</p>
-     */
     inline UpdateQualificationTypeRequest& WithAutoGranted(bool value) { SetAutoGranted(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Qualification value to use for automatically granted Qualifications. This
      * parameter is used only if the AutoGranted parameter is true.</p>
      */
-    inline int GetAutoGrantedValue() const{ return m_autoGrantedValue; }
-
-    /**
-     * <p>The Qualification value to use for automatically granted Qualifications. This
-     * parameter is used only if the AutoGranted parameter is true.</p>
-     */
+    inline int GetAutoGrantedValue() const { return m_autoGrantedValue; }
     inline bool AutoGrantedValueHasBeenSet() const { return m_autoGrantedValueHasBeenSet; }
-
-    /**
-     * <p>The Qualification value to use for automatically granted Qualifications. This
-     * parameter is used only if the AutoGranted parameter is true.</p>
-     */
     inline void SetAutoGrantedValue(int value) { m_autoGrantedValueHasBeenSet = true; m_autoGrantedValue = value; }
-
-    /**
-     * <p>The Qualification value to use for automatically granted Qualifications. This
-     * parameter is used only if the AutoGranted parameter is true.</p>
-     */
     inline UpdateQualificationTypeRequest& WithAutoGrantedValue(int value) { SetAutoGrantedValue(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_qualificationTypeId;
@@ -421,7 +158,7 @@ namespace Model
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
 
-    QualificationTypeStatus m_qualificationTypeStatus;
+    QualificationTypeStatus m_qualificationTypeStatus{QualificationTypeStatus::NOT_SET};
     bool m_qualificationTypeStatusHasBeenSet = false;
 
     Aws::String m_test;
@@ -430,16 +167,16 @@ namespace Model
     Aws::String m_answerKey;
     bool m_answerKeyHasBeenSet = false;
 
-    long long m_testDurationInSeconds;
+    long long m_testDurationInSeconds{0};
     bool m_testDurationInSecondsHasBeenSet = false;
 
-    long long m_retryDelayInSeconds;
+    long long m_retryDelayInSeconds{0};
     bool m_retryDelayInSecondsHasBeenSet = false;
 
-    bool m_autoGranted;
+    bool m_autoGranted{false};
     bool m_autoGrantedHasBeenSet = false;
 
-    int m_autoGrantedValue;
+    int m_autoGrantedValue{0};
     bool m_autoGrantedValueHasBeenSet = false;
   };
 

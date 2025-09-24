@@ -18,15 +18,7 @@ namespace CloudDirectory
 namespace Model
 {
 
-BatchRemoveFacetFromObject::BatchRemoveFacetFromObject() : 
-    m_schemaFacetHasBeenSet(false),
-    m_objectReferenceHasBeenSet(false)
-{
-}
-
-BatchRemoveFacetFromObject::BatchRemoveFacetFromObject(JsonView jsonValue) : 
-    m_schemaFacetHasBeenSet(false),
-    m_objectReferenceHasBeenSet(false)
+BatchRemoveFacetFromObject::BatchRemoveFacetFromObject(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ BatchRemoveFacetFromObject& BatchRemoveFacetFromObject::operator =(JsonView json
   if(jsonValue.ValueExists("SchemaFacet"))
   {
     m_schemaFacet = jsonValue.GetObject("SchemaFacet");
-
     m_schemaFacetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ObjectReference"))
   {
     m_objectReference = jsonValue.GetObject("ObjectReference");
-
     m_objectReferenceHasBeenSet = true;
   }
-
   return *this;
 }
 

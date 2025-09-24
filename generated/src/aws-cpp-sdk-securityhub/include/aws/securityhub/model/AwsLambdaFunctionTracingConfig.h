@@ -31,52 +31,23 @@ namespace Model
   class AwsLambdaFunctionTracingConfig
   {
   public:
-    AWS_SECURITYHUB_API AwsLambdaFunctionTracingConfig();
+    AWS_SECURITYHUB_API AwsLambdaFunctionTracingConfig() = default;
     AWS_SECURITYHUB_API AwsLambdaFunctionTracingConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsLambdaFunctionTracingConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The tracing mode.</p>
      */
-    inline const Aws::String& GetMode() const{ return m_mode; }
-
-    /**
-     * <p>The tracing mode.</p>
-     */
+    inline const Aws::String& GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * <p>The tracing mode.</p>
-     */
-    inline void SetMode(const Aws::String& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * <p>The tracing mode.</p>
-     */
-    inline void SetMode(Aws::String&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * <p>The tracing mode.</p>
-     */
-    inline void SetMode(const char* value) { m_modeHasBeenSet = true; m_mode.assign(value); }
-
-    /**
-     * <p>The tracing mode.</p>
-     */
-    inline AwsLambdaFunctionTracingConfig& WithMode(const Aws::String& value) { SetMode(value); return *this;}
-
-    /**
-     * <p>The tracing mode.</p>
-     */
-    inline AwsLambdaFunctionTracingConfig& WithMode(Aws::String&& value) { SetMode(std::move(value)); return *this;}
-
-    /**
-     * <p>The tracing mode.</p>
-     */
-    inline AwsLambdaFunctionTracingConfig& WithMode(const char* value) { SetMode(value); return *this;}
-
+    template<typename ModeT = Aws::String>
+    void SetMode(ModeT&& value) { m_modeHasBeenSet = true; m_mode = std::forward<ModeT>(value); }
+    template<typename ModeT = Aws::String>
+    AwsLambdaFunctionTracingConfig& WithMode(ModeT&& value) { SetMode(std::forward<ModeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_mode;

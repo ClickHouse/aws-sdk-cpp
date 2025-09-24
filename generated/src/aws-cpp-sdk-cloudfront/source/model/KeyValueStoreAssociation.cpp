@@ -20,13 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-KeyValueStoreAssociation::KeyValueStoreAssociation() : 
-    m_keyValueStoreARNHasBeenSet(false)
-{
-}
-
-KeyValueStoreAssociation::KeyValueStoreAssociation(const XmlNode& xmlNode) : 
-    m_keyValueStoreARNHasBeenSet(false)
+KeyValueStoreAssociation::KeyValueStoreAssociation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

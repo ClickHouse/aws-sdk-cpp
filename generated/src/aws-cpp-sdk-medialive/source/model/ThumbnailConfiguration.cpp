@@ -18,15 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-ThumbnailConfiguration::ThumbnailConfiguration() : 
-    m_state(ThumbnailState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-ThumbnailConfiguration::ThumbnailConfiguration(JsonView jsonValue) : 
-    m_state(ThumbnailState::NOT_SET),
-    m_stateHasBeenSet(false)
+ThumbnailConfiguration::ThumbnailConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ThumbnailConfiguration& ThumbnailConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("state"))
   {
     m_state = ThumbnailStateMapper::GetThumbnailStateForName(jsonValue.GetString("state"));
-
     m_stateHasBeenSet = true;
   }
-
   return *this;
 }
 

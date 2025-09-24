@@ -20,19 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-ResponseHeadersPolicyCustomHeader::ResponseHeadersPolicyCustomHeader() : 
-    m_headerHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_override(false),
-    m_overrideHasBeenSet(false)
-{
-}
-
-ResponseHeadersPolicyCustomHeader::ResponseHeadersPolicyCustomHeader(const XmlNode& xmlNode) : 
-    m_headerHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_override(false),
-    m_overrideHasBeenSet(false)
+ResponseHeadersPolicyCustomHeader::ResponseHeadersPolicyCustomHeader(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

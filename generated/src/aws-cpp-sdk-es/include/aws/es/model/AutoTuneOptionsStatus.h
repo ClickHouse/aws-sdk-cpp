@@ -33,79 +33,36 @@ namespace Model
   class AutoTuneOptionsStatus
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API AutoTuneOptionsStatus();
+    AWS_ELASTICSEARCHSERVICE_API AutoTuneOptionsStatus() = default;
     AWS_ELASTICSEARCHSERVICE_API AutoTuneOptionsStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API AutoTuneOptionsStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies Auto-Tune options for the specified Elasticsearch domain.</p>
      */
-    inline const AutoTuneOptions& GetOptions() const{ return m_options; }
-
-    /**
-     * <p> Specifies Auto-Tune options for the specified Elasticsearch domain.</p>
-     */
+    inline const AutoTuneOptions& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = AutoTuneOptions>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = AutoTuneOptions>
+    AutoTuneOptionsStatus& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies Auto-Tune options for the specified Elasticsearch domain.</p>
-     */
-    inline void SetOptions(const AutoTuneOptions& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p> Specifies Auto-Tune options for the specified Elasticsearch domain.</p>
-     */
-    inline void SetOptions(AutoTuneOptions&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p> Specifies Auto-Tune options for the specified Elasticsearch domain.</p>
-     */
-    inline AutoTuneOptionsStatus& WithOptions(const AutoTuneOptions& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p> Specifies Auto-Tune options for the specified Elasticsearch domain.</p>
-     */
-    inline AutoTuneOptionsStatus& WithOptions(AutoTuneOptions&& value) { SetOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies Status of the Auto-Tune options for the specified Elasticsearch
      * domain.</p>
      */
-    inline const AutoTuneStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> Specifies Status of the Auto-Tune options for the specified Elasticsearch
-     * domain.</p>
-     */
+    inline const AutoTuneStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p> Specifies Status of the Auto-Tune options for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline void SetStatus(const AutoTuneStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> Specifies Status of the Auto-Tune options for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline void SetStatus(AutoTuneStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> Specifies Status of the Auto-Tune options for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline AutoTuneOptionsStatus& WithStatus(const AutoTuneStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> Specifies Status of the Auto-Tune options for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline AutoTuneOptionsStatus& WithStatus(AutoTuneStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    template<typename StatusT = AutoTuneStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = AutoTuneStatus>
+    AutoTuneOptionsStatus& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     AutoTuneOptions m_options;

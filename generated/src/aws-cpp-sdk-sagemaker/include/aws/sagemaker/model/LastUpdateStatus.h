@@ -33,86 +33,36 @@ namespace Model
   class LastUpdateStatus
   {
   public:
-    AWS_SAGEMAKER_API LastUpdateStatus();
+    AWS_SAGEMAKER_API LastUpdateStatus() = default;
     AWS_SAGEMAKER_API LastUpdateStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API LastUpdateStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A value that indicates whether the update was made successful.</p>
      */
-    inline const LastUpdateStatusValue& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>A value that indicates whether the update was made successful.</p>
-     */
+    inline LastUpdateStatusValue GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(LastUpdateStatusValue value) { m_statusHasBeenSet = true; m_status = value; }
+    inline LastUpdateStatus& WithStatus(LastUpdateStatusValue value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>A value that indicates whether the update was made successful.</p>
-     */
-    inline void SetStatus(const LastUpdateStatusValue& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>A value that indicates whether the update was made successful.</p>
-     */
-    inline void SetStatus(LastUpdateStatusValue&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>A value that indicates whether the update was made successful.</p>
-     */
-    inline LastUpdateStatus& WithStatus(const LastUpdateStatusValue& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>A value that indicates whether the update was made successful.</p>
-     */
-    inline LastUpdateStatus& WithStatus(LastUpdateStatusValue&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the update wasn't successful, indicates the reason why it failed.</p>
      */
-    inline const Aws::String& GetFailureReason() const{ return m_failureReason; }
-
-    /**
-     * <p>If the update wasn't successful, indicates the reason why it failed.</p>
-     */
+    inline const Aws::String& GetFailureReason() const { return m_failureReason; }
     inline bool FailureReasonHasBeenSet() const { return m_failureReasonHasBeenSet; }
-
-    /**
-     * <p>If the update wasn't successful, indicates the reason why it failed.</p>
-     */
-    inline void SetFailureReason(const Aws::String& value) { m_failureReasonHasBeenSet = true; m_failureReason = value; }
-
-    /**
-     * <p>If the update wasn't successful, indicates the reason why it failed.</p>
-     */
-    inline void SetFailureReason(Aws::String&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::move(value); }
-
-    /**
-     * <p>If the update wasn't successful, indicates the reason why it failed.</p>
-     */
-    inline void SetFailureReason(const char* value) { m_failureReasonHasBeenSet = true; m_failureReason.assign(value); }
-
-    /**
-     * <p>If the update wasn't successful, indicates the reason why it failed.</p>
-     */
-    inline LastUpdateStatus& WithFailureReason(const Aws::String& value) { SetFailureReason(value); return *this;}
-
-    /**
-     * <p>If the update wasn't successful, indicates the reason why it failed.</p>
-     */
-    inline LastUpdateStatus& WithFailureReason(Aws::String&& value) { SetFailureReason(std::move(value)); return *this;}
-
-    /**
-     * <p>If the update wasn't successful, indicates the reason why it failed.</p>
-     */
-    inline LastUpdateStatus& WithFailureReason(const char* value) { SetFailureReason(value); return *this;}
-
+    template<typename FailureReasonT = Aws::String>
+    void SetFailureReason(FailureReasonT&& value) { m_failureReasonHasBeenSet = true; m_failureReason = std::forward<FailureReasonT>(value); }
+    template<typename FailureReasonT = Aws::String>
+    LastUpdateStatus& WithFailureReason(FailureReasonT&& value) { SetFailureReason(std::forward<FailureReasonT>(value)); return *this;}
+    ///@}
   private:
 
-    LastUpdateStatusValue m_status;
+    LastUpdateStatusValue m_status{LastUpdateStatusValue::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_failureReason;

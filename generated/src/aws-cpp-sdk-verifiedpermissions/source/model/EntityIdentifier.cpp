@@ -18,15 +18,7 @@ namespace VerifiedPermissions
 namespace Model
 {
 
-EntityIdentifier::EntityIdentifier() : 
-    m_entityTypeHasBeenSet(false),
-    m_entityIdHasBeenSet(false)
-{
-}
-
-EntityIdentifier::EntityIdentifier(JsonView jsonValue) : 
-    m_entityTypeHasBeenSet(false),
-    m_entityIdHasBeenSet(false)
+EntityIdentifier::EntityIdentifier(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ EntityIdentifier& EntityIdentifier::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("entityType"))
   {
     m_entityType = jsonValue.GetString("entityType");
-
     m_entityTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("entityId"))
   {
     m_entityId = jsonValue.GetString("entityId");
-
     m_entityIdHasBeenSet = true;
   }
-
   return *this;
 }
 

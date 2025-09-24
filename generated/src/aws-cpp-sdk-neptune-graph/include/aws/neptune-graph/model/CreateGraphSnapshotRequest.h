@@ -22,7 +22,7 @@ namespace Model
   class CreateGraphSnapshotRequest : public NeptuneGraphRequest
   {
   public:
-    AWS_NEPTUNEGRAPH_API CreateGraphSnapshotRequest();
+    AWS_NEPTUNEGRAPH_API CreateGraphSnapshotRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,190 +37,49 @@ namespace Model
      */
     AWS_NEPTUNEGRAPH_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The unique identifier of the Neptune Analytics graph.</p>
      */
-    inline const Aws::String& GetGraphIdentifier() const{ return m_graphIdentifier; }
-
-    /**
-     * <p>The unique identifier of the Neptune Analytics graph.</p>
-     */
+    inline const Aws::String& GetGraphIdentifier() const { return m_graphIdentifier; }
     inline bool GraphIdentifierHasBeenSet() const { return m_graphIdentifierHasBeenSet; }
+    template<typename GraphIdentifierT = Aws::String>
+    void SetGraphIdentifier(GraphIdentifierT&& value) { m_graphIdentifierHasBeenSet = true; m_graphIdentifier = std::forward<GraphIdentifierT>(value); }
+    template<typename GraphIdentifierT = Aws::String>
+    CreateGraphSnapshotRequest& WithGraphIdentifier(GraphIdentifierT&& value) { SetGraphIdentifier(std::forward<GraphIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the Neptune Analytics graph.</p>
-     */
-    inline void SetGraphIdentifier(const Aws::String& value) { m_graphIdentifierHasBeenSet = true; m_graphIdentifier = value; }
-
-    /**
-     * <p>The unique identifier of the Neptune Analytics graph.</p>
-     */
-    inline void SetGraphIdentifier(Aws::String&& value) { m_graphIdentifierHasBeenSet = true; m_graphIdentifier = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the Neptune Analytics graph.</p>
-     */
-    inline void SetGraphIdentifier(const char* value) { m_graphIdentifierHasBeenSet = true; m_graphIdentifier.assign(value); }
-
-    /**
-     * <p>The unique identifier of the Neptune Analytics graph.</p>
-     */
-    inline CreateGraphSnapshotRequest& WithGraphIdentifier(const Aws::String& value) { SetGraphIdentifier(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the Neptune Analytics graph.</p>
-     */
-    inline CreateGraphSnapshotRequest& WithGraphIdentifier(Aws::String&& value) { SetGraphIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the Neptune Analytics graph.</p>
-     */
-    inline CreateGraphSnapshotRequest& WithGraphIdentifier(const char* value) { SetGraphIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The snapshot name. For example: <code>my-snapshot-1</code>.</p> <p>The name
      * must contain from 1 to 63 letters, numbers, or hyphens, and its first character
      * must be a letter. It cannot end with a hyphen or contain two consecutive
-     * hyphens.</p>
+     * hyphens. Only lowercase letters are allowed.</p>
      */
-    inline const Aws::String& GetSnapshotName() const{ return m_snapshotName; }
-
-    /**
-     * <p>The snapshot name. For example: <code>my-snapshot-1</code>.</p> <p>The name
-     * must contain from 1 to 63 letters, numbers, or hyphens, and its first character
-     * must be a letter. It cannot end with a hyphen or contain two consecutive
-     * hyphens.</p>
-     */
+    inline const Aws::String& GetSnapshotName() const { return m_snapshotName; }
     inline bool SnapshotNameHasBeenSet() const { return m_snapshotNameHasBeenSet; }
+    template<typename SnapshotNameT = Aws::String>
+    void SetSnapshotName(SnapshotNameT&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::forward<SnapshotNameT>(value); }
+    template<typename SnapshotNameT = Aws::String>
+    CreateGraphSnapshotRequest& WithSnapshotName(SnapshotNameT&& value) { SetSnapshotName(std::forward<SnapshotNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The snapshot name. For example: <code>my-snapshot-1</code>.</p> <p>The name
-     * must contain from 1 to 63 letters, numbers, or hyphens, and its first character
-     * must be a letter. It cannot end with a hyphen or contain two consecutive
-     * hyphens.</p>
-     */
-    inline void SetSnapshotName(const Aws::String& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = value; }
-
-    /**
-     * <p>The snapshot name. For example: <code>my-snapshot-1</code>.</p> <p>The name
-     * must contain from 1 to 63 letters, numbers, or hyphens, and its first character
-     * must be a letter. It cannot end with a hyphen or contain two consecutive
-     * hyphens.</p>
-     */
-    inline void SetSnapshotName(Aws::String&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::move(value); }
-
-    /**
-     * <p>The snapshot name. For example: <code>my-snapshot-1</code>.</p> <p>The name
-     * must contain from 1 to 63 letters, numbers, or hyphens, and its first character
-     * must be a letter. It cannot end with a hyphen or contain two consecutive
-     * hyphens.</p>
-     */
-    inline void SetSnapshotName(const char* value) { m_snapshotNameHasBeenSet = true; m_snapshotName.assign(value); }
-
-    /**
-     * <p>The snapshot name. For example: <code>my-snapshot-1</code>.</p> <p>The name
-     * must contain from 1 to 63 letters, numbers, or hyphens, and its first character
-     * must be a letter. It cannot end with a hyphen or contain two consecutive
-     * hyphens.</p>
-     */
-    inline CreateGraphSnapshotRequest& WithSnapshotName(const Aws::String& value) { SetSnapshotName(value); return *this;}
-
-    /**
-     * <p>The snapshot name. For example: <code>my-snapshot-1</code>.</p> <p>The name
-     * must contain from 1 to 63 letters, numbers, or hyphens, and its first character
-     * must be a letter. It cannot end with a hyphen or contain two consecutive
-     * hyphens.</p>
-     */
-    inline CreateGraphSnapshotRequest& WithSnapshotName(Aws::String&& value) { SetSnapshotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The snapshot name. For example: <code>my-snapshot-1</code>.</p> <p>The name
-     * must contain from 1 to 63 letters, numbers, or hyphens, and its first character
-     * must be a letter. It cannot end with a hyphen or contain two consecutive
-     * hyphens.</p>
-     */
-    inline CreateGraphSnapshotRequest& WithSnapshotName(const char* value) { SetSnapshotName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Adds metadata tags to the new graph. These tags can also be used with cost
      * allocation reporting, or used in a Condition statement in an IAM policy.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline CreateGraphSnapshotRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline CreateGraphSnapshotRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline CreateGraphSnapshotRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline CreateGraphSnapshotRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline CreateGraphSnapshotRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline CreateGraphSnapshotRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline CreateGraphSnapshotRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline CreateGraphSnapshotRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Adds metadata tags to the new graph. These tags can also be used with cost
-     * allocation reporting, or used in a Condition statement in an IAM policy.</p>
-     */
-    inline CreateGraphSnapshotRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateGraphSnapshotRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateGraphSnapshotRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_graphIdentifier;

@@ -22,7 +22,7 @@ namespace Batch
    * resources. Batch uses the advantages of the batch computing to remove the
    * undifferentiated heavy lifting of configuring and managing required
    * infrastructure. At the same time, it also adopts a familiar batch computing
-   * software approach. You can use Batch to efficiently provision resources d, and
+   * software approach. You can use Batch to efficiently provision resources, and
    * work toward eliminating capacity constraints, reducing your overall compute
    * costs, and delivering results more quickly.</p> <p>As a fully managed service,
    * Batch can run batch computing workloads of any scale. Batch automatically
@@ -35,8 +35,8 @@ namespace Batch
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef BatchClientConfiguration ClientConfigurationType;
       typedef BatchEndpointProvider EndpointProviderType;
@@ -46,14 +46,14 @@ namespace Batch
         * is not specified, it will be initialized to default values.
         */
         BatchClient(const Aws::Batch::BatchClientConfiguration& clientConfiguration = Aws::Batch::BatchClientConfiguration(),
-                    std::shared_ptr<BatchEndpointProviderBase> endpointProvider = Aws::MakeShared<BatchEndpointProvider>(ALLOCATION_TAG));
+                    std::shared_ptr<BatchEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         BatchClient(const Aws::Auth::AWSCredentials& credentials,
-                    std::shared_ptr<BatchEndpointProviderBase> endpointProvider = Aws::MakeShared<BatchEndpointProvider>(ALLOCATION_TAG),
+                    std::shared_ptr<BatchEndpointProviderBase> endpointProvider = nullptr,
                     const Aws::Batch::BatchClientConfiguration& clientConfiguration = Aws::Batch::BatchClientConfiguration());
 
        /**
@@ -61,7 +61,7 @@ namespace Batch
         * the default http client factory will be used
         */
         BatchClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                    std::shared_ptr<BatchEndpointProviderBase> endpointProvider = Aws::MakeShared<BatchEndpointProvider>(ALLOCATION_TAG),
+                    std::shared_ptr<BatchEndpointProviderBase> endpointProvider = nullptr,
                     const Aws::Batch::BatchClientConfiguration& clientConfiguration = Aws::Batch::BatchClientConfiguration());
 
 
@@ -90,19 +90,18 @@ namespace Batch
         virtual ~BatchClient();
 
         /**
-         * <p>Cancels a job in an Batch job queue. Jobs that are in the
-         * <code>SUBMITTED</code> or <code>PENDING</code> are canceled. A job
-         * in<code>RUNNABLE</code> remains in <code>RUNNABLE</code> until it reaches the
-         * head of the job queue. Then the job status is updated to
-         * <code>FAILED</code>.</p>  <p>A <code>PENDING</code> job is canceled after
-         * all dependency jobs are completed. Therefore, it may take longer than expected
-         * to cancel a job in <code>PENDING</code> status.</p> <p>When you try to cancel an
-         * array parent job in <code>PENDING</code>, Batch attempts to cancel all child
-         * jobs. The array parent job is canceled when all child jobs are completed.</p>
-         *  <p>Jobs that progressed to the <code>STARTING</code> or
-         * <code>RUNNING</code> state aren't canceled. However, the API operation still
-         * succeeds, even if no job is canceled. These jobs must be terminated with the
-         * <a>TerminateJob</a> operation.</p><p><h3>See Also:</h3>   <a
+         * <p>Cancels a job in an Batch job queue. Jobs that are in a
+         * <code>SUBMITTED</code>, <code>PENDING</code>, or <code>RUNNABLE</code> state are
+         * cancelled and the job status is updated to <code>FAILED</code>.</p>  <p>A
+         * <code>PENDING</code> job is canceled after all dependency jobs are completed.
+         * Therefore, it may take longer than expected to cancel a job in
+         * <code>PENDING</code> status.</p> <p>When you try to cancel an array parent job
+         * in <code>PENDING</code>, Batch attempts to cancel all child jobs. The array
+         * parent job is canceled when all child jobs are completed.</p>  <p>Jobs
+         * that progressed to the <code>STARTING</code> or <code>RUNNING</code> state
+         * aren't canceled. However, the API operation still succeeds, even if no job is
+         * canceled. These jobs must be terminated with the <a>TerminateJob</a>
+         * operation.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/CancelJob">AWS API
          * Reference</a></p>
          */
@@ -140,12 +139,11 @@ namespace Batch
          * can use Fargate and Fargate Spot capacity in your managed compute environment.
          * You can optionally set a maximum price so that Spot Instances only launch when
          * the Spot Instance price is less than a specified percentage of the On-Demand
-         * price.</p>  <p>Multi-node parallel jobs aren't supported on Spot
-         * Instances.</p>  <p>In an unmanaged compute environment, you can manage
-         * your own EC2 compute resources and have flexibility with how you configure your
-         * compute resources. For example, you can use custom AMIs. However, you must
-         * verify that each of your AMIs meet the Amazon ECS container instance AMI
-         * specification. For more information, see <a
+         * price.</p> <p>In an unmanaged compute environment, you can manage your own EC2
+         * compute resources and have flexibility with how you configure your compute
+         * resources. For example, you can use custom AMIs. However, you must verify that
+         * each of your AMIs meet the Amazon ECS container instance AMI specification. For
+         * more information, see <a
          * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html">container
          * instance AMIs</a> in the <i>Amazon Elastic Container Service Developer
          * Guide</i>. After you created your unmanaged compute environment, you can use the
@@ -154,57 +152,12 @@ namespace Batch
          * Amazon ECS cluster. For more information, see <a
          * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html">Launching
          * an Amazon ECS container instance</a> in the <i>Amazon Elastic Container Service
-         * Developer Guide</i>.</p>  <p>To create a compute environment that uses EKS
-         * resources, the caller must have permissions to call
-         * <code>eks:DescribeCluster</code>.</p>   <p>Batch doesn't
-         * automatically upgrade the AMIs in a compute environment after it's created. For
-         * example, it also doesn't update the AMIs in your compute environment when a
-         * newer version of the Amazon ECS optimized AMI is available. You're responsible
-         * for the management of the guest operating system. This includes any updates and
-         * security patches. You're also responsible for any additional application
-         * software or utilities that you install on the compute resources. There are two
-         * ways to use a new AMI for your Batch jobs. The original method is to complete
-         * these steps:</p> <ol> <li> <p>Create a new compute environment with the new
-         * AMI.</p> </li> <li> <p>Add the compute environment to an existing job queue.</p>
-         * </li> <li> <p>Remove the earlier compute environment from your job queue.</p>
-         * </li> <li> <p>Delete the earlier compute environment.</p> </li> </ol> <p>In
-         * April 2022, Batch added enhanced support for updating compute environments. For
-         * more information, see <a
+         * Developer Guide</i>.</p>  <p>Batch doesn't automatically upgrade the AMIs
+         * in a compute environment after it's created. For more information on how to
+         * update a compute environment's AMI, see <a
          * href="https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html">Updating
-         * compute environments</a>. To use the enhanced updating of compute environments
-         * to update AMIs, follow these rules:</p> <ul> <li> <p>Either don't set the
-         * service role (<code>serviceRole</code>) parameter or set it to the
-         * <b>AWSBatchServiceRole</b> service-linked role.</p> </li> <li> <p>Set the
-         * allocation strategy (<code>allocationStrategy</code>) parameter to
-         * <code>BEST_FIT_PROGRESSIVE</code>, <code>SPOT_CAPACITY_OPTIMIZED</code>, or
-         * <code>SPOT_PRICE_CAPACITY_OPTIMIZED</code>.</p> </li> <li> <p>Set the update to
-         * latest image version (<code>updateToLatestImageVersion</code>) parameter to
-         * <code>true</code>. The <code>updateToLatestImageVersion</code> parameter is used
-         * when you update a compute environment. This parameter is ignored when you create
-         * a compute environment.</p> </li> <li> <p>Don't specify an AMI ID in
-         * <code>imageId</code>, <code>imageIdOverride</code> (in <a
-         * href="https://docs.aws.amazon.com/batch/latest/APIReference/API_Ec2Configuration.html">
-         * <code>ec2Configuration</code> </a>), or in the launch template
-         * (<code>launchTemplate</code>). In that case, Batch selects the latest Amazon ECS
-         * optimized AMI that's supported by Batch at the time the infrastructure update is
-         * initiated. Alternatively, you can specify the AMI ID in the <code>imageId</code>
-         * or <code>imageIdOverride</code> parameters, or the launch template identified by
-         * the <code>LaunchTemplate</code> properties. Changing any of these properties
-         * starts an infrastructure update. If the AMI ID is specified in the launch
-         * template, it can't be replaced by specifying an AMI ID in either the
-         * <code>imageId</code> or <code>imageIdOverride</code> parameters. It can only be
-         * replaced by specifying a different launch template, or if the launch template
-         * version is set to <code>$Default</code> or <code>$Latest</code>, by setting
-         * either a new default version for the launch template (if <code>$Default</code>)
-         * or by adding a new version to the launch template (if <code>$Latest</code>).</p>
-         * </li> </ul> <p>If these rules are followed, any update that starts an
-         * infrastructure update causes the AMI ID to be re-selected. If the
-         * <code>version</code> setting in the launch template
-         * (<code>launchTemplate</code>) is set to <code>$Latest</code> or
-         * <code>$Default</code>, the latest or default version of the launch template is
-         * evaluated up at the time of the infrastructure update, even if the
-         * <code>launchTemplate</code> wasn't updated.</p> <p><h3>See Also:</h3>  
-         * <a
+         * compute environments</a> in the <i>Batch User Guide</i>.</p> <p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/CreateComputeEnvironment">AWS
          * API Reference</a></p>
          */
@@ -226,6 +179,31 @@ namespace Batch
         void CreateComputeEnvironmentAsync(const CreateComputeEnvironmentRequestT& request, const CreateComputeEnvironmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&BatchClient::CreateComputeEnvironment, request, handler, context);
+        }
+
+        /**
+         * <p>Creates an Batch consumable resource.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/CreateConsumableResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateConsumableResourceOutcome CreateConsumableResource(const Model::CreateConsumableResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateConsumableResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateConsumableResourceRequestT = Model::CreateConsumableResourceRequest>
+        Model::CreateConsumableResourceOutcomeCallable CreateConsumableResourceCallable(const CreateConsumableResourceRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::CreateConsumableResource, request);
+        }
+
+        /**
+         * An Async wrapper for CreateConsumableResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateConsumableResourceRequestT = Model::CreateConsumableResourceRequest>
+        void CreateConsumableResourceAsync(const CreateConsumableResourceRequestT& request, const CreateConsumableResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::CreateConsumableResource, request, handler, context);
         }
 
         /**
@@ -286,6 +264,33 @@ namespace Batch
         }
 
         /**
+         * <p>Creates a service environment for running service jobs. Service environments
+         * define capacity limits for specific service types such as SageMaker Training
+         * jobs.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/CreateServiceEnvironment">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateServiceEnvironmentOutcome CreateServiceEnvironment(const Model::CreateServiceEnvironmentRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateServiceEnvironment that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateServiceEnvironmentRequestT = Model::CreateServiceEnvironmentRequest>
+        Model::CreateServiceEnvironmentOutcomeCallable CreateServiceEnvironmentCallable(const CreateServiceEnvironmentRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::CreateServiceEnvironment, request);
+        }
+
+        /**
+         * An Async wrapper for CreateServiceEnvironment that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateServiceEnvironmentRequestT = Model::CreateServiceEnvironmentRequest>
+        void CreateServiceEnvironmentAsync(const CreateServiceEnvironmentRequestT& request, const CreateServiceEnvironmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::CreateServiceEnvironment, request, handler, context);
+        }
+
+        /**
          * <p>Deletes an Batch compute environment.</p> <p>Before you can delete a compute
          * environment, you must set its state to <code>DISABLED</code> with the
          * <a>UpdateComputeEnvironment</a> API operation and disassociate it from any job
@@ -314,6 +319,31 @@ namespace Batch
         void DeleteComputeEnvironmentAsync(const DeleteComputeEnvironmentRequestT& request, const DeleteComputeEnvironmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&BatchClient::DeleteComputeEnvironment, request, handler, context);
+        }
+
+        /**
+         * <p>Deletes the specified consumable resource.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DeleteConsumableResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteConsumableResourceOutcome DeleteConsumableResource(const Model::DeleteConsumableResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteConsumableResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteConsumableResourceRequestT = Model::DeleteConsumableResourceRequest>
+        Model::DeleteConsumableResourceOutcomeCallable DeleteConsumableResourceCallable(const DeleteConsumableResourceRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::DeleteConsumableResource, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteConsumableResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteConsumableResourceRequestT = Model::DeleteConsumableResourceRequest>
+        void DeleteConsumableResourceAsync(const DeleteConsumableResourceRequestT& request, const DeleteConsumableResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::DeleteConsumableResource, request, handler, context);
         }
 
         /**
@@ -373,6 +403,35 @@ namespace Batch
         }
 
         /**
+         * <p>Deletes a Service environment. Before you can delete a service environment,
+         * you must first set its state to <code>DISABLED</code> with the
+         * <code>UpdateServiceEnvironment</code> API operation and disassociate it from any
+         * job queues with the <code>UpdateJobQueue</code> API operation.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DeleteServiceEnvironment">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteServiceEnvironmentOutcome DeleteServiceEnvironment(const Model::DeleteServiceEnvironmentRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteServiceEnvironment that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteServiceEnvironmentRequestT = Model::DeleteServiceEnvironmentRequest>
+        Model::DeleteServiceEnvironmentOutcomeCallable DeleteServiceEnvironmentCallable(const DeleteServiceEnvironmentRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::DeleteServiceEnvironment, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteServiceEnvironment that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteServiceEnvironmentRequestT = Model::DeleteServiceEnvironmentRequest>
+        void DeleteServiceEnvironmentAsync(const DeleteServiceEnvironmentRequestT& request, const DeleteServiceEnvironmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::DeleteServiceEnvironment, request, handler, context);
+        }
+
+        /**
          * <p>Deregisters an Batch job definition. Job definitions are permanently deleted
          * after 180 days.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DeregisterJobDefinition">AWS
@@ -407,13 +466,13 @@ namespace Batch
          * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DescribeComputeEnvironments">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeComputeEnvironmentsOutcome DescribeComputeEnvironments(const Model::DescribeComputeEnvironmentsRequest& request) const;
+        virtual Model::DescribeComputeEnvironmentsOutcome DescribeComputeEnvironments(const Model::DescribeComputeEnvironmentsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeComputeEnvironments that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeComputeEnvironmentsRequestT = Model::DescribeComputeEnvironmentsRequest>
-        Model::DescribeComputeEnvironmentsOutcomeCallable DescribeComputeEnvironmentsCallable(const DescribeComputeEnvironmentsRequestT& request) const
+        Model::DescribeComputeEnvironmentsOutcomeCallable DescribeComputeEnvironmentsCallable(const DescribeComputeEnvironmentsRequestT& request = {}) const
         {
             return SubmitCallable(&BatchClient::DescribeComputeEnvironments, request);
         }
@@ -422,9 +481,35 @@ namespace Batch
          * An Async wrapper for DescribeComputeEnvironments that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeComputeEnvironmentsRequestT = Model::DescribeComputeEnvironmentsRequest>
-        void DescribeComputeEnvironmentsAsync(const DescribeComputeEnvironmentsRequestT& request, const DescribeComputeEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeComputeEnvironmentsAsync(const DescribeComputeEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeComputeEnvironmentsRequestT& request = {}) const
         {
             return SubmitAsync(&BatchClient::DescribeComputeEnvironments, request, handler, context);
+        }
+
+        /**
+         * <p>Returns a description of the specified consumable resource.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DescribeConsumableResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeConsumableResourceOutcome DescribeConsumableResource(const Model::DescribeConsumableResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeConsumableResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeConsumableResourceRequestT = Model::DescribeConsumableResourceRequest>
+        Model::DescribeConsumableResourceOutcomeCallable DescribeConsumableResourceCallable(const DescribeConsumableResourceRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::DescribeConsumableResource, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeConsumableResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeConsumableResourceRequestT = Model::DescribeConsumableResourceRequest>
+        void DescribeConsumableResourceAsync(const DescribeConsumableResourceRequestT& request, const DescribeConsumableResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::DescribeConsumableResource, request, handler, context);
         }
 
         /**
@@ -434,13 +519,13 @@ namespace Batch
          * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DescribeJobDefinitions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeJobDefinitionsOutcome DescribeJobDefinitions(const Model::DescribeJobDefinitionsRequest& request) const;
+        virtual Model::DescribeJobDefinitionsOutcome DescribeJobDefinitions(const Model::DescribeJobDefinitionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeJobDefinitions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeJobDefinitionsRequestT = Model::DescribeJobDefinitionsRequest>
-        Model::DescribeJobDefinitionsOutcomeCallable DescribeJobDefinitionsCallable(const DescribeJobDefinitionsRequestT& request) const
+        Model::DescribeJobDefinitionsOutcomeCallable DescribeJobDefinitionsCallable(const DescribeJobDefinitionsRequestT& request = {}) const
         {
             return SubmitCallable(&BatchClient::DescribeJobDefinitions, request);
         }
@@ -449,7 +534,7 @@ namespace Batch
          * An Async wrapper for DescribeJobDefinitions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeJobDefinitionsRequestT = Model::DescribeJobDefinitionsRequest>
-        void DescribeJobDefinitionsAsync(const DescribeJobDefinitionsRequestT& request, const DescribeJobDefinitionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeJobDefinitionsAsync(const DescribeJobDefinitionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeJobDefinitionsRequestT& request = {}) const
         {
             return SubmitAsync(&BatchClient::DescribeJobDefinitions, request, handler, context);
         }
@@ -459,13 +544,13 @@ namespace Batch
          * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DescribeJobQueues">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeJobQueuesOutcome DescribeJobQueues(const Model::DescribeJobQueuesRequest& request) const;
+        virtual Model::DescribeJobQueuesOutcome DescribeJobQueues(const Model::DescribeJobQueuesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeJobQueues that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeJobQueuesRequestT = Model::DescribeJobQueuesRequest>
-        Model::DescribeJobQueuesOutcomeCallable DescribeJobQueuesCallable(const DescribeJobQueuesRequestT& request) const
+        Model::DescribeJobQueuesOutcomeCallable DescribeJobQueuesCallable(const DescribeJobQueuesRequestT& request = {}) const
         {
             return SubmitCallable(&BatchClient::DescribeJobQueues, request);
         }
@@ -474,7 +559,7 @@ namespace Batch
          * An Async wrapper for DescribeJobQueues that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeJobQueuesRequestT = Model::DescribeJobQueuesRequest>
-        void DescribeJobQueuesAsync(const DescribeJobQueuesRequestT& request, const DescribeJobQueuesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeJobQueuesAsync(const DescribeJobQueuesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeJobQueuesRequestT& request = {}) const
         {
             return SubmitAsync(&BatchClient::DescribeJobQueues, request, handler, context);
         }
@@ -531,6 +616,108 @@ namespace Batch
         }
 
         /**
+         * <p>Describes one or more of your service environments.</p><p><h3>See Also:</h3> 
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DescribeServiceEnvironments">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeServiceEnvironmentsOutcome DescribeServiceEnvironments(const Model::DescribeServiceEnvironmentsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeServiceEnvironments that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeServiceEnvironmentsRequestT = Model::DescribeServiceEnvironmentsRequest>
+        Model::DescribeServiceEnvironmentsOutcomeCallable DescribeServiceEnvironmentsCallable(const DescribeServiceEnvironmentsRequestT& request = {}) const
+        {
+            return SubmitCallable(&BatchClient::DescribeServiceEnvironments, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeServiceEnvironments that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeServiceEnvironmentsRequestT = Model::DescribeServiceEnvironmentsRequest>
+        void DescribeServiceEnvironmentsAsync(const DescribeServiceEnvironmentsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeServiceEnvironmentsRequestT& request = {}) const
+        {
+            return SubmitAsync(&BatchClient::DescribeServiceEnvironments, request, handler, context);
+        }
+
+        /**
+         * <p>The details of a service job.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/DescribeServiceJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeServiceJobOutcome DescribeServiceJob(const Model::DescribeServiceJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeServiceJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeServiceJobRequestT = Model::DescribeServiceJobRequest>
+        Model::DescribeServiceJobOutcomeCallable DescribeServiceJobCallable(const DescribeServiceJobRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::DescribeServiceJob, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeServiceJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeServiceJobRequestT = Model::DescribeServiceJobRequest>
+        void DescribeServiceJobAsync(const DescribeServiceJobRequestT& request, const DescribeServiceJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::DescribeServiceJob, request, handler, context);
+        }
+
+        /**
+         * <p>Provides a list of the first 100 <code>RUNNABLE</code> jobs associated to a
+         * single job queue.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/GetJobQueueSnapshot">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetJobQueueSnapshotOutcome GetJobQueueSnapshot(const Model::GetJobQueueSnapshotRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetJobQueueSnapshot that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetJobQueueSnapshotRequestT = Model::GetJobQueueSnapshotRequest>
+        Model::GetJobQueueSnapshotOutcomeCallable GetJobQueueSnapshotCallable(const GetJobQueueSnapshotRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::GetJobQueueSnapshot, request);
+        }
+
+        /**
+         * An Async wrapper for GetJobQueueSnapshot that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetJobQueueSnapshotRequestT = Model::GetJobQueueSnapshotRequest>
+        void GetJobQueueSnapshotAsync(const GetJobQueueSnapshotRequestT& request, const GetJobQueueSnapshotResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::GetJobQueueSnapshot, request, handler, context);
+        }
+
+        /**
+         * <p>Returns a list of Batch consumable resources.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/ListConsumableResources">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListConsumableResourcesOutcome ListConsumableResources(const Model::ListConsumableResourcesRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListConsumableResources that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListConsumableResourcesRequestT = Model::ListConsumableResourcesRequest>
+        Model::ListConsumableResourcesOutcomeCallable ListConsumableResourcesCallable(const ListConsumableResourcesRequestT& request = {}) const
+        {
+            return SubmitCallable(&BatchClient::ListConsumableResources, request);
+        }
+
+        /**
+         * An Async wrapper for ListConsumableResources that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListConsumableResourcesRequestT = Model::ListConsumableResourcesRequest>
+        void ListConsumableResourcesAsync(const ListConsumableResourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListConsumableResourcesRequestT& request = {}) const
+        {
+            return SubmitAsync(&BatchClient::ListConsumableResources, request, handler, context);
+        }
+
+        /**
          * <p>Returns a list of Batch jobs.</p> <p>You must specify only one of the
          * following items:</p> <ul> <li> <p>A job queue ID to return a list of jobs in
          * that job queue</p> </li> <li> <p>A multi-node parallel job ID to return a list
@@ -541,13 +728,13 @@ namespace Batch
          * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/ListJobs">AWS API
          * Reference</a></p>
          */
-        virtual Model::ListJobsOutcome ListJobs(const Model::ListJobsRequest& request) const;
+        virtual Model::ListJobsOutcome ListJobs(const Model::ListJobsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListJobs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListJobsRequestT = Model::ListJobsRequest>
-        Model::ListJobsOutcomeCallable ListJobsCallable(const ListJobsRequestT& request) const
+        Model::ListJobsOutcomeCallable ListJobsCallable(const ListJobsRequestT& request = {}) const
         {
             return SubmitCallable(&BatchClient::ListJobs, request);
         }
@@ -556,9 +743,35 @@ namespace Batch
          * An Async wrapper for ListJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListJobsRequestT = Model::ListJobsRequest>
-        void ListJobsAsync(const ListJobsRequestT& request, const ListJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListJobsAsync(const ListJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListJobsRequestT& request = {}) const
         {
             return SubmitAsync(&BatchClient::ListJobs, request, handler, context);
+        }
+
+        /**
+         * <p>Returns a list of Batch jobs that require a specific consumable
+         * resource.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/ListJobsByConsumableResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListJobsByConsumableResourceOutcome ListJobsByConsumableResource(const Model::ListJobsByConsumableResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListJobsByConsumableResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListJobsByConsumableResourceRequestT = Model::ListJobsByConsumableResourceRequest>
+        Model::ListJobsByConsumableResourceOutcomeCallable ListJobsByConsumableResourceCallable(const ListJobsByConsumableResourceRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::ListJobsByConsumableResource, request);
+        }
+
+        /**
+         * An Async wrapper for ListJobsByConsumableResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListJobsByConsumableResourceRequestT = Model::ListJobsByConsumableResourceRequest>
+        void ListJobsByConsumableResourceAsync(const ListJobsByConsumableResourceRequestT& request, const ListJobsByConsumableResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::ListJobsByConsumableResource, request, handler, context);
         }
 
         /**
@@ -566,13 +779,13 @@ namespace Batch
          * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/ListSchedulingPolicies">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSchedulingPoliciesOutcome ListSchedulingPolicies(const Model::ListSchedulingPoliciesRequest& request) const;
+        virtual Model::ListSchedulingPoliciesOutcome ListSchedulingPolicies(const Model::ListSchedulingPoliciesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSchedulingPolicies that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSchedulingPoliciesRequestT = Model::ListSchedulingPoliciesRequest>
-        Model::ListSchedulingPoliciesOutcomeCallable ListSchedulingPoliciesCallable(const ListSchedulingPoliciesRequestT& request) const
+        Model::ListSchedulingPoliciesOutcomeCallable ListSchedulingPoliciesCallable(const ListSchedulingPoliciesRequestT& request = {}) const
         {
             return SubmitCallable(&BatchClient::ListSchedulingPolicies, request);
         }
@@ -581,9 +794,35 @@ namespace Batch
          * An Async wrapper for ListSchedulingPolicies that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSchedulingPoliciesRequestT = Model::ListSchedulingPoliciesRequest>
-        void ListSchedulingPoliciesAsync(const ListSchedulingPoliciesRequestT& request, const ListSchedulingPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSchedulingPoliciesAsync(const ListSchedulingPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSchedulingPoliciesRequestT& request = {}) const
         {
             return SubmitAsync(&BatchClient::ListSchedulingPolicies, request, handler, context);
+        }
+
+        /**
+         * <p>Returns a list of service jobs for a specified job queue.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/ListServiceJobs">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListServiceJobsOutcome ListServiceJobs(const Model::ListServiceJobsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListServiceJobs that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListServiceJobsRequestT = Model::ListServiceJobsRequest>
+        Model::ListServiceJobsOutcomeCallable ListServiceJobsCallable(const ListServiceJobsRequestT& request = {}) const
+        {
+            return SubmitCallable(&BatchClient::ListServiceJobs, request);
+        }
+
+        /**
+         * An Async wrapper for ListServiceJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListServiceJobsRequestT = Model::ListServiceJobsRequest>
+        void ListServiceJobsAsync(const ListServiceJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListServiceJobsRequestT& request = {}) const
+        {
+            return SubmitAsync(&BatchClient::ListServiceJobs, request, handler, context);
         }
 
         /**
@@ -648,10 +887,10 @@ namespace Batch
          * <code>vcpus</code> parameters. Rather, you must specify updates to job
          * definition parameters in a <code>resourceRequirements</code> object that's
          * included in the <code>containerOverrides</code> parameter.</p>  <p>Job
-         * queues with a scheduling policy are limited to 500 active fair share identifiers
-         * at a time. </p>   <p>Jobs that run on Fargate resources can't
-         * be guaranteed to run for more than 14 days. This is because, after 14 days,
-         * Fargate resources might become unavailable and job might be terminated.</p>
+         * queues with a scheduling policy are limited to 500 active share identifiers at a
+         * time. </p>   <p>Jobs that run on Fargate resources can't be
+         * guaranteed to run for more than 14 days. This is because, after 14 days, Fargate
+         * resources might become unavailable and job might be terminated.</p>
          * <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/SubmitJob">AWS API
          * Reference</a></p>
@@ -674,6 +913,33 @@ namespace Batch
         void SubmitJobAsync(const SubmitJobRequestT& request, const SubmitJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&BatchClient::SubmitJob, request, handler, context);
+        }
+
+        /**
+         * <p>Submits a service job to a specified job queue to run on SageMaker AI. A
+         * service job is a unit of work that you submit to Batch for execution on
+         * SageMaker AI.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/SubmitServiceJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::SubmitServiceJobOutcome SubmitServiceJob(const Model::SubmitServiceJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for SubmitServiceJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename SubmitServiceJobRequestT = Model::SubmitServiceJobRequest>
+        Model::SubmitServiceJobOutcomeCallable SubmitServiceJobCallable(const SubmitServiceJobRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::SubmitServiceJob, request);
+        }
+
+        /**
+         * An Async wrapper for SubmitServiceJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename SubmitServiceJobRequestT = Model::SubmitServiceJobRequest>
+        void SubmitServiceJobAsync(const SubmitServiceJobRequestT& request, const SubmitServiceJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::SubmitServiceJob, request, handler, context);
         }
 
         /**
@@ -736,6 +1002,31 @@ namespace Batch
         }
 
         /**
+         * <p>Terminates a service job in a job queue. </p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/TerminateServiceJob">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::TerminateServiceJobOutcome TerminateServiceJob(const Model::TerminateServiceJobRequest& request) const;
+
+        /**
+         * A Callable wrapper for TerminateServiceJob that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename TerminateServiceJobRequestT = Model::TerminateServiceJobRequest>
+        Model::TerminateServiceJobOutcomeCallable TerminateServiceJobCallable(const TerminateServiceJobRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::TerminateServiceJob, request);
+        }
+
+        /**
+         * An Async wrapper for TerminateServiceJob that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename TerminateServiceJobRequestT = Model::TerminateServiceJobRequest>
+        void TerminateServiceJobAsync(const TerminateServiceJobRequestT& request, const TerminateServiceJobResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::TerminateServiceJob, request, handler, context);
+        }
+
+        /**
          * <p>Deletes specified tags from an Batch resource.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/UntagResource">AWS
          * API Reference</a></p>
@@ -783,6 +1074,31 @@ namespace Batch
         void UpdateComputeEnvironmentAsync(const UpdateComputeEnvironmentRequestT& request, const UpdateComputeEnvironmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&BatchClient::UpdateComputeEnvironment, request, handler, context);
+        }
+
+        /**
+         * <p>Updates a consumable resource.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/UpdateConsumableResource">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateConsumableResourceOutcome UpdateConsumableResource(const Model::UpdateConsumableResourceRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateConsumableResource that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateConsumableResourceRequestT = Model::UpdateConsumableResourceRequest>
+        Model::UpdateConsumableResourceOutcomeCallable UpdateConsumableResourceCallable(const UpdateConsumableResourceRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::UpdateConsumableResource, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateConsumableResource that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateConsumableResourceRequestT = Model::UpdateConsumableResourceRequest>
+        void UpdateConsumableResourceAsync(const UpdateConsumableResourceRequestT& request, const UpdateConsumableResourceResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::UpdateConsumableResource, request, handler, context);
         }
 
         /**
@@ -835,6 +1151,34 @@ namespace Batch
             return SubmitAsync(&BatchClient::UpdateSchedulingPolicy, request, handler, context);
         }
 
+        /**
+         * <p>Updates a service environment. You can update the state of a service
+         * environment from <code>ENABLED</code> to <code>DISABLED</code> to prevent new
+         * service jobs from being placed in the service environment.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/UpdateServiceEnvironment">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateServiceEnvironmentOutcome UpdateServiceEnvironment(const Model::UpdateServiceEnvironmentRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateServiceEnvironment that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateServiceEnvironmentRequestT = Model::UpdateServiceEnvironmentRequest>
+        Model::UpdateServiceEnvironmentOutcomeCallable UpdateServiceEnvironmentCallable(const UpdateServiceEnvironmentRequestT& request) const
+        {
+            return SubmitCallable(&BatchClient::UpdateServiceEnvironment, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateServiceEnvironment that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateServiceEnvironmentRequestT = Model::UpdateServiceEnvironmentRequest>
+        void UpdateServiceEnvironmentAsync(const UpdateServiceEnvironmentRequestT& request, const UpdateServiceEnvironmentResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&BatchClient::UpdateServiceEnvironment, request, handler, context);
+        }
+
 
       void OverrideEndpoint(const Aws::String& endpoint);
       std::shared_ptr<BatchEndpointProviderBase>& accessEndpointProvider();
@@ -843,7 +1187,6 @@ namespace Batch
       void init(const BatchClientConfiguration& clientConfiguration);
 
       BatchClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<BatchEndpointProviderBase> m_endpointProvider;
   };
 

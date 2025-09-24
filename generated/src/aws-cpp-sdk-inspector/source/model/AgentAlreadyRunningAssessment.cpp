@@ -18,15 +18,7 @@ namespace Inspector
 namespace Model
 {
 
-AgentAlreadyRunningAssessment::AgentAlreadyRunningAssessment() : 
-    m_agentIdHasBeenSet(false),
-    m_assessmentRunArnHasBeenSet(false)
-{
-}
-
-AgentAlreadyRunningAssessment::AgentAlreadyRunningAssessment(JsonView jsonValue) : 
-    m_agentIdHasBeenSet(false),
-    m_assessmentRunArnHasBeenSet(false)
+AgentAlreadyRunningAssessment::AgentAlreadyRunningAssessment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AgentAlreadyRunningAssessment& AgentAlreadyRunningAssessment::operator =(JsonVie
   if(jsonValue.ValueExists("agentId"))
   {
     m_agentId = jsonValue.GetString("agentId");
-
     m_agentIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("assessmentRunArn"))
   {
     m_assessmentRunArn = jsonValue.GetString("assessmentRunArn");
-
     m_assessmentRunArnHasBeenSet = true;
   }
-
   return *this;
 }
 

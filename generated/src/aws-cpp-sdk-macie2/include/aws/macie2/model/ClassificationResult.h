@@ -37,12 +37,13 @@ namespace Model
   class ClassificationResult
   {
   public:
-    AWS_MACIE2_API ClassificationResult();
+    AWS_MACIE2_API ClassificationResult() = default;
     AWS_MACIE2_API ClassificationResult(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API ClassificationResult& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies whether Amazon Macie detected additional occurrences of sensitive
      * data in the S3 object. A finding includes location data for a maximum of 15
@@ -51,236 +52,78 @@ namespace Model
      * this by referring to the corresponding sensitive data discovery result for the
      * finding (classificationDetails.detailedResultsLocation).</p>
      */
-    inline bool GetAdditionalOccurrences() const{ return m_additionalOccurrences; }
-
-    /**
-     * <p>Specifies whether Amazon Macie detected additional occurrences of sensitive
-     * data in the S3 object. A finding includes location data for a maximum of 15
-     * occurrences of sensitive data.</p> <p>This value can help you determine whether
-     * to investigate additional occurrences of sensitive data in an object. You can do
-     * this by referring to the corresponding sensitive data discovery result for the
-     * finding (classificationDetails.detailedResultsLocation).</p>
-     */
+    inline bool GetAdditionalOccurrences() const { return m_additionalOccurrences; }
     inline bool AdditionalOccurrencesHasBeenSet() const { return m_additionalOccurrencesHasBeenSet; }
-
-    /**
-     * <p>Specifies whether Amazon Macie detected additional occurrences of sensitive
-     * data in the S3 object. A finding includes location data for a maximum of 15
-     * occurrences of sensitive data.</p> <p>This value can help you determine whether
-     * to investigate additional occurrences of sensitive data in an object. You can do
-     * this by referring to the corresponding sensitive data discovery result for the
-     * finding (classificationDetails.detailedResultsLocation).</p>
-     */
     inline void SetAdditionalOccurrences(bool value) { m_additionalOccurrencesHasBeenSet = true; m_additionalOccurrences = value; }
-
-    /**
-     * <p>Specifies whether Amazon Macie detected additional occurrences of sensitive
-     * data in the S3 object. A finding includes location data for a maximum of 15
-     * occurrences of sensitive data.</p> <p>This value can help you determine whether
-     * to investigate additional occurrences of sensitive data in an object. You can do
-     * this by referring to the corresponding sensitive data discovery result for the
-     * finding (classificationDetails.detailedResultsLocation).</p>
-     */
     inline ClassificationResult& WithAdditionalOccurrences(bool value) { SetAdditionalOccurrences(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The custom data identifiers that detected the sensitive data and the number
      * of occurrences of the data that they detected.</p>
      */
-    inline const CustomDataIdentifiers& GetCustomDataIdentifiers() const{ return m_customDataIdentifiers; }
-
-    /**
-     * <p>The custom data identifiers that detected the sensitive data and the number
-     * of occurrences of the data that they detected.</p>
-     */
+    inline const CustomDataIdentifiers& GetCustomDataIdentifiers() const { return m_customDataIdentifiers; }
     inline bool CustomDataIdentifiersHasBeenSet() const { return m_customDataIdentifiersHasBeenSet; }
+    template<typename CustomDataIdentifiersT = CustomDataIdentifiers>
+    void SetCustomDataIdentifiers(CustomDataIdentifiersT&& value) { m_customDataIdentifiersHasBeenSet = true; m_customDataIdentifiers = std::forward<CustomDataIdentifiersT>(value); }
+    template<typename CustomDataIdentifiersT = CustomDataIdentifiers>
+    ClassificationResult& WithCustomDataIdentifiers(CustomDataIdentifiersT&& value) { SetCustomDataIdentifiers(std::forward<CustomDataIdentifiersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The custom data identifiers that detected the sensitive data and the number
-     * of occurrences of the data that they detected.</p>
-     */
-    inline void SetCustomDataIdentifiers(const CustomDataIdentifiers& value) { m_customDataIdentifiersHasBeenSet = true; m_customDataIdentifiers = value; }
-
-    /**
-     * <p>The custom data identifiers that detected the sensitive data and the number
-     * of occurrences of the data that they detected.</p>
-     */
-    inline void SetCustomDataIdentifiers(CustomDataIdentifiers&& value) { m_customDataIdentifiersHasBeenSet = true; m_customDataIdentifiers = std::move(value); }
-
-    /**
-     * <p>The custom data identifiers that detected the sensitive data and the number
-     * of occurrences of the data that they detected.</p>
-     */
-    inline ClassificationResult& WithCustomDataIdentifiers(const CustomDataIdentifiers& value) { SetCustomDataIdentifiers(value); return *this;}
-
-    /**
-     * <p>The custom data identifiers that detected the sensitive data and the number
-     * of occurrences of the data that they detected.</p>
-     */
-    inline ClassificationResult& WithCustomDataIdentifiers(CustomDataIdentifiers&& value) { SetCustomDataIdentifiers(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of content, as a MIME type, that the finding applies to. For
      * example, application/gzip, for a GNU Gzip compressed archive file, or
      * application/pdf, for an Adobe Portable Document Format file.</p>
      */
-    inline const Aws::String& GetMimeType() const{ return m_mimeType; }
-
-    /**
-     * <p>The type of content, as a MIME type, that the finding applies to. For
-     * example, application/gzip, for a GNU Gzip compressed archive file, or
-     * application/pdf, for an Adobe Portable Document Format file.</p>
-     */
+    inline const Aws::String& GetMimeType() const { return m_mimeType; }
     inline bool MimeTypeHasBeenSet() const { return m_mimeTypeHasBeenSet; }
+    template<typename MimeTypeT = Aws::String>
+    void SetMimeType(MimeTypeT&& value) { m_mimeTypeHasBeenSet = true; m_mimeType = std::forward<MimeTypeT>(value); }
+    template<typename MimeTypeT = Aws::String>
+    ClassificationResult& WithMimeType(MimeTypeT&& value) { SetMimeType(std::forward<MimeTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of content, as a MIME type, that the finding applies to. For
-     * example, application/gzip, for a GNU Gzip compressed archive file, or
-     * application/pdf, for an Adobe Portable Document Format file.</p>
-     */
-    inline void SetMimeType(const Aws::String& value) { m_mimeTypeHasBeenSet = true; m_mimeType = value; }
-
-    /**
-     * <p>The type of content, as a MIME type, that the finding applies to. For
-     * example, application/gzip, for a GNU Gzip compressed archive file, or
-     * application/pdf, for an Adobe Portable Document Format file.</p>
-     */
-    inline void SetMimeType(Aws::String&& value) { m_mimeTypeHasBeenSet = true; m_mimeType = std::move(value); }
-
-    /**
-     * <p>The type of content, as a MIME type, that the finding applies to. For
-     * example, application/gzip, for a GNU Gzip compressed archive file, or
-     * application/pdf, for an Adobe Portable Document Format file.</p>
-     */
-    inline void SetMimeType(const char* value) { m_mimeTypeHasBeenSet = true; m_mimeType.assign(value); }
-
-    /**
-     * <p>The type of content, as a MIME type, that the finding applies to. For
-     * example, application/gzip, for a GNU Gzip compressed archive file, or
-     * application/pdf, for an Adobe Portable Document Format file.</p>
-     */
-    inline ClassificationResult& WithMimeType(const Aws::String& value) { SetMimeType(value); return *this;}
-
-    /**
-     * <p>The type of content, as a MIME type, that the finding applies to. For
-     * example, application/gzip, for a GNU Gzip compressed archive file, or
-     * application/pdf, for an Adobe Portable Document Format file.</p>
-     */
-    inline ClassificationResult& WithMimeType(Aws::String&& value) { SetMimeType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of content, as a MIME type, that the finding applies to. For
-     * example, application/gzip, for a GNU Gzip compressed archive file, or
-     * application/pdf, for an Adobe Portable Document Format file.</p>
-     */
-    inline ClassificationResult& WithMimeType(const char* value) { SetMimeType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The category, types, and number of occurrences of the sensitive data that
      * produced the finding.</p>
      */
-    inline const Aws::Vector<SensitiveDataItem>& GetSensitiveData() const{ return m_sensitiveData; }
-
-    /**
-     * <p>The category, types, and number of occurrences of the sensitive data that
-     * produced the finding.</p>
-     */
+    inline const Aws::Vector<SensitiveDataItem>& GetSensitiveData() const { return m_sensitiveData; }
     inline bool SensitiveDataHasBeenSet() const { return m_sensitiveDataHasBeenSet; }
+    template<typename SensitiveDataT = Aws::Vector<SensitiveDataItem>>
+    void SetSensitiveData(SensitiveDataT&& value) { m_sensitiveDataHasBeenSet = true; m_sensitiveData = std::forward<SensitiveDataT>(value); }
+    template<typename SensitiveDataT = Aws::Vector<SensitiveDataItem>>
+    ClassificationResult& WithSensitiveData(SensitiveDataT&& value) { SetSensitiveData(std::forward<SensitiveDataT>(value)); return *this;}
+    template<typename SensitiveDataT = SensitiveDataItem>
+    ClassificationResult& AddSensitiveData(SensitiveDataT&& value) { m_sensitiveDataHasBeenSet = true; m_sensitiveData.emplace_back(std::forward<SensitiveDataT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The category, types, and number of occurrences of the sensitive data that
-     * produced the finding.</p>
-     */
-    inline void SetSensitiveData(const Aws::Vector<SensitiveDataItem>& value) { m_sensitiveDataHasBeenSet = true; m_sensitiveData = value; }
-
-    /**
-     * <p>The category, types, and number of occurrences of the sensitive data that
-     * produced the finding.</p>
-     */
-    inline void SetSensitiveData(Aws::Vector<SensitiveDataItem>&& value) { m_sensitiveDataHasBeenSet = true; m_sensitiveData = std::move(value); }
-
-    /**
-     * <p>The category, types, and number of occurrences of the sensitive data that
-     * produced the finding.</p>
-     */
-    inline ClassificationResult& WithSensitiveData(const Aws::Vector<SensitiveDataItem>& value) { SetSensitiveData(value); return *this;}
-
-    /**
-     * <p>The category, types, and number of occurrences of the sensitive data that
-     * produced the finding.</p>
-     */
-    inline ClassificationResult& WithSensitiveData(Aws::Vector<SensitiveDataItem>&& value) { SetSensitiveData(std::move(value)); return *this;}
-
-    /**
-     * <p>The category, types, and number of occurrences of the sensitive data that
-     * produced the finding.</p>
-     */
-    inline ClassificationResult& AddSensitiveData(const SensitiveDataItem& value) { m_sensitiveDataHasBeenSet = true; m_sensitiveData.push_back(value); return *this; }
-
-    /**
-     * <p>The category, types, and number of occurrences of the sensitive data that
-     * produced the finding.</p>
-     */
-    inline ClassificationResult& AddSensitiveData(SensitiveDataItem&& value) { m_sensitiveDataHasBeenSet = true; m_sensitiveData.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The total size, in bytes, of the data that the finding applies to.</p>
      */
-    inline long long GetSizeClassified() const{ return m_sizeClassified; }
-
-    /**
-     * <p>The total size, in bytes, of the data that the finding applies to.</p>
-     */
+    inline long long GetSizeClassified() const { return m_sizeClassified; }
     inline bool SizeClassifiedHasBeenSet() const { return m_sizeClassifiedHasBeenSet; }
-
-    /**
-     * <p>The total size, in bytes, of the data that the finding applies to.</p>
-     */
     inline void SetSizeClassified(long long value) { m_sizeClassifiedHasBeenSet = true; m_sizeClassified = value; }
-
-    /**
-     * <p>The total size, in bytes, of the data that the finding applies to.</p>
-     */
     inline ClassificationResult& WithSizeClassified(long long value) { SetSizeClassified(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The status of the finding.</p>
      */
-    inline const ClassificationResultStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the finding.</p>
-     */
+    inline const ClassificationResultStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the finding.</p>
-     */
-    inline void SetStatus(const ClassificationResultStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the finding.</p>
-     */
-    inline void SetStatus(ClassificationResultStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the finding.</p>
-     */
-    inline ClassificationResult& WithStatus(const ClassificationResultStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the finding.</p>
-     */
-    inline ClassificationResult& WithStatus(ClassificationResultStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    template<typename StatusT = ClassificationResultStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = ClassificationResultStatus>
+    ClassificationResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_additionalOccurrences;
+    bool m_additionalOccurrences{false};
     bool m_additionalOccurrencesHasBeenSet = false;
 
     CustomDataIdentifiers m_customDataIdentifiers;
@@ -292,7 +135,7 @@ namespace Model
     Aws::Vector<SensitiveDataItem> m_sensitiveData;
     bool m_sensitiveDataHasBeenSet = false;
 
-    long long m_sizeClassified;
+    long long m_sizeClassified{0};
     bool m_sizeClassifiedHasBeenSet = false;
 
     ClassificationResultStatus m_status;

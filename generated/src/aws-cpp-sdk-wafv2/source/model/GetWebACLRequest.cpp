@@ -12,14 +12,6 @@ using namespace Aws::WAFV2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetWebACLRequest::GetWebACLRequest() : 
-    m_nameHasBeenSet(false),
-    m_scope(Scope::NOT_SET),
-    m_scopeHasBeenSet(false),
-    m_idHasBeenSet(false)
-{
-}
-
 Aws::String GetWebACLRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +30,12 @@ Aws::String GetWebACLRequest::SerializePayload() const
   if(m_idHasBeenSet)
   {
    payload.WithString("Id", m_id);
+
+  }
+
+  if(m_aRNHasBeenSet)
+  {
+   payload.WithString("ARN", m_aRN);
 
   }
 

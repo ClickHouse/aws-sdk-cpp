@@ -21,7 +21,7 @@ namespace Model
   class GetStaticIpRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API GetStaticIpRequest();
+    AWS_LIGHTSAIL_API GetStaticIpRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the static IP in Lightsail.</p>
      */
-    inline const Aws::String& GetStaticIpName() const{ return m_staticIpName; }
-
-    /**
-     * <p>The name of the static IP in Lightsail.</p>
-     */
+    inline const Aws::String& GetStaticIpName() const { return m_staticIpName; }
     inline bool StaticIpNameHasBeenSet() const { return m_staticIpNameHasBeenSet; }
-
-    /**
-     * <p>The name of the static IP in Lightsail.</p>
-     */
-    inline void SetStaticIpName(const Aws::String& value) { m_staticIpNameHasBeenSet = true; m_staticIpName = value; }
-
-    /**
-     * <p>The name of the static IP in Lightsail.</p>
-     */
-    inline void SetStaticIpName(Aws::String&& value) { m_staticIpNameHasBeenSet = true; m_staticIpName = std::move(value); }
-
-    /**
-     * <p>The name of the static IP in Lightsail.</p>
-     */
-    inline void SetStaticIpName(const char* value) { m_staticIpNameHasBeenSet = true; m_staticIpName.assign(value); }
-
-    /**
-     * <p>The name of the static IP in Lightsail.</p>
-     */
-    inline GetStaticIpRequest& WithStaticIpName(const Aws::String& value) { SetStaticIpName(value); return *this;}
-
-    /**
-     * <p>The name of the static IP in Lightsail.</p>
-     */
-    inline GetStaticIpRequest& WithStaticIpName(Aws::String&& value) { SetStaticIpName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the static IP in Lightsail.</p>
-     */
-    inline GetStaticIpRequest& WithStaticIpName(const char* value) { SetStaticIpName(value); return *this;}
-
+    template<typename StaticIpNameT = Aws::String>
+    void SetStaticIpName(StaticIpNameT&& value) { m_staticIpNameHasBeenSet = true; m_staticIpName = std::forward<StaticIpNameT>(value); }
+    template<typename StaticIpNameT = Aws::String>
+    GetStaticIpRequest& WithStaticIpName(StaticIpNameT&& value) { SetStaticIpName(std::forward<StaticIpNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_staticIpName;

@@ -35,12 +35,13 @@ namespace Model
   class InputDataConfig
   {
   public:
-    AWS_COMPREHEND_API InputDataConfig();
+    AWS_COMPREHEND_API InputDataConfig() = default;
     AWS_COMPREHEND_API InputDataConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API InputDataConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHEND_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon S3 URI for the input data. The URI must be in same Region as the
      * API endpoint that you are calling. The URI can point to a single input file or
@@ -49,79 +50,15 @@ namespace Model
      * single file, Amazon Comprehend uses that file as input. If more than one file
      * begins with the prefix, Amazon Comprehend uses all of them as input.</p>
      */
-    inline const Aws::String& GetS3Uri() const{ return m_s3Uri; }
-
-    /**
-     * <p>The Amazon S3 URI for the input data. The URI must be in same Region as the
-     * API endpoint that you are calling. The URI can point to a single input file or
-     * it can provide the prefix for a collection of data files. </p> <p>For example,
-     * if you use the URI <code>S3://bucketName/prefix</code>, if the prefix is a
-     * single file, Amazon Comprehend uses that file as input. If more than one file
-     * begins with the prefix, Amazon Comprehend uses all of them as input.</p>
-     */
+    inline const Aws::String& GetS3Uri() const { return m_s3Uri; }
     inline bool S3UriHasBeenSet() const { return m_s3UriHasBeenSet; }
+    template<typename S3UriT = Aws::String>
+    void SetS3Uri(S3UriT&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::forward<S3UriT>(value); }
+    template<typename S3UriT = Aws::String>
+    InputDataConfig& WithS3Uri(S3UriT&& value) { SetS3Uri(std::forward<S3UriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon S3 URI for the input data. The URI must be in same Region as the
-     * API endpoint that you are calling. The URI can point to a single input file or
-     * it can provide the prefix for a collection of data files. </p> <p>For example,
-     * if you use the URI <code>S3://bucketName/prefix</code>, if the prefix is a
-     * single file, Amazon Comprehend uses that file as input. If more than one file
-     * begins with the prefix, Amazon Comprehend uses all of them as input.</p>
-     */
-    inline void SetS3Uri(const Aws::String& value) { m_s3UriHasBeenSet = true; m_s3Uri = value; }
-
-    /**
-     * <p>The Amazon S3 URI for the input data. The URI must be in same Region as the
-     * API endpoint that you are calling. The URI can point to a single input file or
-     * it can provide the prefix for a collection of data files. </p> <p>For example,
-     * if you use the URI <code>S3://bucketName/prefix</code>, if the prefix is a
-     * single file, Amazon Comprehend uses that file as input. If more than one file
-     * begins with the prefix, Amazon Comprehend uses all of them as input.</p>
-     */
-    inline void SetS3Uri(Aws::String&& value) { m_s3UriHasBeenSet = true; m_s3Uri = std::move(value); }
-
-    /**
-     * <p>The Amazon S3 URI for the input data. The URI must be in same Region as the
-     * API endpoint that you are calling. The URI can point to a single input file or
-     * it can provide the prefix for a collection of data files. </p> <p>For example,
-     * if you use the URI <code>S3://bucketName/prefix</code>, if the prefix is a
-     * single file, Amazon Comprehend uses that file as input. If more than one file
-     * begins with the prefix, Amazon Comprehend uses all of them as input.</p>
-     */
-    inline void SetS3Uri(const char* value) { m_s3UriHasBeenSet = true; m_s3Uri.assign(value); }
-
-    /**
-     * <p>The Amazon S3 URI for the input data. The URI must be in same Region as the
-     * API endpoint that you are calling. The URI can point to a single input file or
-     * it can provide the prefix for a collection of data files. </p> <p>For example,
-     * if you use the URI <code>S3://bucketName/prefix</code>, if the prefix is a
-     * single file, Amazon Comprehend uses that file as input. If more than one file
-     * begins with the prefix, Amazon Comprehend uses all of them as input.</p>
-     */
-    inline InputDataConfig& WithS3Uri(const Aws::String& value) { SetS3Uri(value); return *this;}
-
-    /**
-     * <p>The Amazon S3 URI for the input data. The URI must be in same Region as the
-     * API endpoint that you are calling. The URI can point to a single input file or
-     * it can provide the prefix for a collection of data files. </p> <p>For example,
-     * if you use the URI <code>S3://bucketName/prefix</code>, if the prefix is a
-     * single file, Amazon Comprehend uses that file as input. If more than one file
-     * begins with the prefix, Amazon Comprehend uses all of them as input.</p>
-     */
-    inline InputDataConfig& WithS3Uri(Aws::String&& value) { SetS3Uri(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon S3 URI for the input data. The URI must be in same Region as the
-     * API endpoint that you are calling. The URI can point to a single input file or
-     * it can provide the prefix for a collection of data files. </p> <p>For example,
-     * if you use the URI <code>S3://bucketName/prefix</code>, if the prefix is a
-     * single file, Amazon Comprehend uses that file as input. If more than one file
-     * begins with the prefix, Amazon Comprehend uses all of them as input.</p>
-     */
-    inline InputDataConfig& WithS3Uri(const char* value) { SetS3Uri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies how the text in an input file should be processed:</p> <ul> <li>
      * <p> <code>ONE_DOC_PER_FILE</code> - Each file is considered a separate document.
@@ -130,101 +67,30 @@ namespace Model
      * - Each line in a file is considered a separate document. Use this option when
      * you are processing many short documents, such as text messages.</p> </li> </ul>
      */
-    inline const InputFormat& GetInputFormat() const{ return m_inputFormat; }
-
-    /**
-     * <p>Specifies how the text in an input file should be processed:</p> <ul> <li>
-     * <p> <code>ONE_DOC_PER_FILE</code> - Each file is considered a separate document.
-     * Use this option when you are processing large documents, such as newspaper
-     * articles or scientific papers.</p> </li> <li> <p> <code>ONE_DOC_PER_LINE</code>
-     * - Each line in a file is considered a separate document. Use this option when
-     * you are processing many short documents, such as text messages.</p> </li> </ul>
-     */
+    inline InputFormat GetInputFormat() const { return m_inputFormat; }
     inline bool InputFormatHasBeenSet() const { return m_inputFormatHasBeenSet; }
+    inline void SetInputFormat(InputFormat value) { m_inputFormatHasBeenSet = true; m_inputFormat = value; }
+    inline InputDataConfig& WithInputFormat(InputFormat value) { SetInputFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies how the text in an input file should be processed:</p> <ul> <li>
-     * <p> <code>ONE_DOC_PER_FILE</code> - Each file is considered a separate document.
-     * Use this option when you are processing large documents, such as newspaper
-     * articles or scientific papers.</p> </li> <li> <p> <code>ONE_DOC_PER_LINE</code>
-     * - Each line in a file is considered a separate document. Use this option when
-     * you are processing many short documents, such as text messages.</p> </li> </ul>
-     */
-    inline void SetInputFormat(const InputFormat& value) { m_inputFormatHasBeenSet = true; m_inputFormat = value; }
-
-    /**
-     * <p>Specifies how the text in an input file should be processed:</p> <ul> <li>
-     * <p> <code>ONE_DOC_PER_FILE</code> - Each file is considered a separate document.
-     * Use this option when you are processing large documents, such as newspaper
-     * articles or scientific papers.</p> </li> <li> <p> <code>ONE_DOC_PER_LINE</code>
-     * - Each line in a file is considered a separate document. Use this option when
-     * you are processing many short documents, such as text messages.</p> </li> </ul>
-     */
-    inline void SetInputFormat(InputFormat&& value) { m_inputFormatHasBeenSet = true; m_inputFormat = std::move(value); }
-
-    /**
-     * <p>Specifies how the text in an input file should be processed:</p> <ul> <li>
-     * <p> <code>ONE_DOC_PER_FILE</code> - Each file is considered a separate document.
-     * Use this option when you are processing large documents, such as newspaper
-     * articles or scientific papers.</p> </li> <li> <p> <code>ONE_DOC_PER_LINE</code>
-     * - Each line in a file is considered a separate document. Use this option when
-     * you are processing many short documents, such as text messages.</p> </li> </ul>
-     */
-    inline InputDataConfig& WithInputFormat(const InputFormat& value) { SetInputFormat(value); return *this;}
-
-    /**
-     * <p>Specifies how the text in an input file should be processed:</p> <ul> <li>
-     * <p> <code>ONE_DOC_PER_FILE</code> - Each file is considered a separate document.
-     * Use this option when you are processing large documents, such as newspaper
-     * articles or scientific papers.</p> </li> <li> <p> <code>ONE_DOC_PER_LINE</code>
-     * - Each line in a file is considered a separate document. Use this option when
-     * you are processing many short documents, such as text messages.</p> </li> </ul>
-     */
-    inline InputDataConfig& WithInputFormat(InputFormat&& value) { SetInputFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides configuration parameters to override the default actions for
      * extracting text from PDF documents and image files.</p>
      */
-    inline const DocumentReaderConfig& GetDocumentReaderConfig() const{ return m_documentReaderConfig; }
-
-    /**
-     * <p>Provides configuration parameters to override the default actions for
-     * extracting text from PDF documents and image files.</p>
-     */
+    inline const DocumentReaderConfig& GetDocumentReaderConfig() const { return m_documentReaderConfig; }
     inline bool DocumentReaderConfigHasBeenSet() const { return m_documentReaderConfigHasBeenSet; }
-
-    /**
-     * <p>Provides configuration parameters to override the default actions for
-     * extracting text from PDF documents and image files.</p>
-     */
-    inline void SetDocumentReaderConfig(const DocumentReaderConfig& value) { m_documentReaderConfigHasBeenSet = true; m_documentReaderConfig = value; }
-
-    /**
-     * <p>Provides configuration parameters to override the default actions for
-     * extracting text from PDF documents and image files.</p>
-     */
-    inline void SetDocumentReaderConfig(DocumentReaderConfig&& value) { m_documentReaderConfigHasBeenSet = true; m_documentReaderConfig = std::move(value); }
-
-    /**
-     * <p>Provides configuration parameters to override the default actions for
-     * extracting text from PDF documents and image files.</p>
-     */
-    inline InputDataConfig& WithDocumentReaderConfig(const DocumentReaderConfig& value) { SetDocumentReaderConfig(value); return *this;}
-
-    /**
-     * <p>Provides configuration parameters to override the default actions for
-     * extracting text from PDF documents and image files.</p>
-     */
-    inline InputDataConfig& WithDocumentReaderConfig(DocumentReaderConfig&& value) { SetDocumentReaderConfig(std::move(value)); return *this;}
-
+    template<typename DocumentReaderConfigT = DocumentReaderConfig>
+    void SetDocumentReaderConfig(DocumentReaderConfigT&& value) { m_documentReaderConfigHasBeenSet = true; m_documentReaderConfig = std::forward<DocumentReaderConfigT>(value); }
+    template<typename DocumentReaderConfigT = DocumentReaderConfig>
+    InputDataConfig& WithDocumentReaderConfig(DocumentReaderConfigT&& value) { SetDocumentReaderConfig(std::forward<DocumentReaderConfigT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_s3Uri;
     bool m_s3UriHasBeenSet = false;
 
-    InputFormat m_inputFormat;
+    InputFormat m_inputFormat{InputFormat::NOT_SET};
     bool m_inputFormatHasBeenSet = false;
 
     DocumentReaderConfig m_documentReaderConfig;

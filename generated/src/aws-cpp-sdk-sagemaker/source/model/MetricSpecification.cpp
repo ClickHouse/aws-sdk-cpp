@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-MetricSpecification::MetricSpecification() : 
-    m_predefinedHasBeenSet(false),
-    m_customizedHasBeenSet(false)
-{
-}
-
-MetricSpecification::MetricSpecification(JsonView jsonValue) : 
-    m_predefinedHasBeenSet(false),
-    m_customizedHasBeenSet(false)
+MetricSpecification::MetricSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MetricSpecification& MetricSpecification::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Predefined"))
   {
     m_predefined = jsonValue.GetObject("Predefined");
-
     m_predefinedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Customized"))
   {
     m_customized = jsonValue.GetObject("Customized");
-
     m_customizedHasBeenSet = true;
   }
-
   return *this;
 }
 

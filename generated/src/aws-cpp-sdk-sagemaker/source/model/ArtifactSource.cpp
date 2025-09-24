@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ArtifactSource::ArtifactSource() : 
-    m_sourceUriHasBeenSet(false),
-    m_sourceTypesHasBeenSet(false)
-{
-}
-
-ArtifactSource::ArtifactSource(JsonView jsonValue) : 
-    m_sourceUriHasBeenSet(false),
-    m_sourceTypesHasBeenSet(false)
+ArtifactSource::ArtifactSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ArtifactSource& ArtifactSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SourceUri"))
   {
     m_sourceUri = jsonValue.GetString("SourceUri");
-
     m_sourceUriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceTypes"))
   {
     Aws::Utils::Array<JsonView> sourceTypesJsonList = jsonValue.GetArray("SourceTypes");
@@ -49,7 +39,6 @@ ArtifactSource& ArtifactSource::operator =(JsonView jsonValue)
     }
     m_sourceTypesHasBeenSet = true;
   }
-
   return *this;
 }
 

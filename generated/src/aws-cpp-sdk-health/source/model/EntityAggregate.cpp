@@ -18,19 +18,7 @@ namespace Health
 namespace Model
 {
 
-EntityAggregate::EntityAggregate() : 
-    m_eventArnHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false),
-    m_statusesHasBeenSet(false)
-{
-}
-
-EntityAggregate::EntityAggregate(JsonView jsonValue) : 
-    m_eventArnHasBeenSet(false),
-    m_count(0),
-    m_countHasBeenSet(false),
-    m_statusesHasBeenSet(false)
+EntityAggregate::EntityAggregate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ EntityAggregate& EntityAggregate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("eventArn"))
   {
     m_eventArn = jsonValue.GetString("eventArn");
-
     m_eventArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("count"))
   {
     m_count = jsonValue.GetInteger("count");
-
     m_countHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("statuses"))
   {
     Aws::Map<Aws::String, JsonView> statusesJsonMap = jsonValue.GetObject("statuses").GetAllObjects();
@@ -60,7 +44,6 @@ EntityAggregate& EntityAggregate::operator =(JsonView jsonValue)
     }
     m_statusesHasBeenSet = true;
   }
-
   return *this;
 }
 

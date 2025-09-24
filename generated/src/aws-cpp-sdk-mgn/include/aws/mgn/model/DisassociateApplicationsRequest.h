@@ -22,7 +22,7 @@ namespace Model
   class DisassociateApplicationsRequest : public MgnRequest
   {
   public:
-    AWS_MGN_API DisassociateApplicationsRequest();
+    AWS_MGN_API DisassociateApplicationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,133 +33,43 @@ namespace Model
     AWS_MGN_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Account ID.</p>
      */
-    inline const Aws::String& GetAccountID() const{ return m_accountID; }
-
-    /**
-     * <p>Account ID.</p>
-     */
+    inline const Aws::String& GetAccountID() const { return m_accountID; }
     inline bool AccountIDHasBeenSet() const { return m_accountIDHasBeenSet; }
+    template<typename AccountIDT = Aws::String>
+    void SetAccountID(AccountIDT&& value) { m_accountIDHasBeenSet = true; m_accountID = std::forward<AccountIDT>(value); }
+    template<typename AccountIDT = Aws::String>
+    DisassociateApplicationsRequest& WithAccountID(AccountIDT&& value) { SetAccountID(std::forward<AccountIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Account ID.</p>
-     */
-    inline void SetAccountID(const Aws::String& value) { m_accountIDHasBeenSet = true; m_accountID = value; }
-
-    /**
-     * <p>Account ID.</p>
-     */
-    inline void SetAccountID(Aws::String&& value) { m_accountIDHasBeenSet = true; m_accountID = std::move(value); }
-
-    /**
-     * <p>Account ID.</p>
-     */
-    inline void SetAccountID(const char* value) { m_accountIDHasBeenSet = true; m_accountID.assign(value); }
-
-    /**
-     * <p>Account ID.</p>
-     */
-    inline DisassociateApplicationsRequest& WithAccountID(const Aws::String& value) { SetAccountID(value); return *this;}
-
-    /**
-     * <p>Account ID.</p>
-     */
-    inline DisassociateApplicationsRequest& WithAccountID(Aws::String&& value) { SetAccountID(std::move(value)); return *this;}
-
-    /**
-     * <p>Account ID.</p>
-     */
-    inline DisassociateApplicationsRequest& WithAccountID(const char* value) { SetAccountID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Application IDs list.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetApplicationIDs() const{ return m_applicationIDs; }
-
-    /**
-     * <p>Application IDs list.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetApplicationIDs() const { return m_applicationIDs; }
     inline bool ApplicationIDsHasBeenSet() const { return m_applicationIDsHasBeenSet; }
+    template<typename ApplicationIDsT = Aws::Vector<Aws::String>>
+    void SetApplicationIDs(ApplicationIDsT&& value) { m_applicationIDsHasBeenSet = true; m_applicationIDs = std::forward<ApplicationIDsT>(value); }
+    template<typename ApplicationIDsT = Aws::Vector<Aws::String>>
+    DisassociateApplicationsRequest& WithApplicationIDs(ApplicationIDsT&& value) { SetApplicationIDs(std::forward<ApplicationIDsT>(value)); return *this;}
+    template<typename ApplicationIDsT = Aws::String>
+    DisassociateApplicationsRequest& AddApplicationIDs(ApplicationIDsT&& value) { m_applicationIDsHasBeenSet = true; m_applicationIDs.emplace_back(std::forward<ApplicationIDsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Application IDs list.</p>
-     */
-    inline void SetApplicationIDs(const Aws::Vector<Aws::String>& value) { m_applicationIDsHasBeenSet = true; m_applicationIDs = value; }
-
-    /**
-     * <p>Application IDs list.</p>
-     */
-    inline void SetApplicationIDs(Aws::Vector<Aws::String>&& value) { m_applicationIDsHasBeenSet = true; m_applicationIDs = std::move(value); }
-
-    /**
-     * <p>Application IDs list.</p>
-     */
-    inline DisassociateApplicationsRequest& WithApplicationIDs(const Aws::Vector<Aws::String>& value) { SetApplicationIDs(value); return *this;}
-
-    /**
-     * <p>Application IDs list.</p>
-     */
-    inline DisassociateApplicationsRequest& WithApplicationIDs(Aws::Vector<Aws::String>&& value) { SetApplicationIDs(std::move(value)); return *this;}
-
-    /**
-     * <p>Application IDs list.</p>
-     */
-    inline DisassociateApplicationsRequest& AddApplicationIDs(const Aws::String& value) { m_applicationIDsHasBeenSet = true; m_applicationIDs.push_back(value); return *this; }
-
-    /**
-     * <p>Application IDs list.</p>
-     */
-    inline DisassociateApplicationsRequest& AddApplicationIDs(Aws::String&& value) { m_applicationIDsHasBeenSet = true; m_applicationIDs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Application IDs list.</p>
-     */
-    inline DisassociateApplicationsRequest& AddApplicationIDs(const char* value) { m_applicationIDsHasBeenSet = true; m_applicationIDs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Wave ID.</p>
      */
-    inline const Aws::String& GetWaveID() const{ return m_waveID; }
-
-    /**
-     * <p>Wave ID.</p>
-     */
+    inline const Aws::String& GetWaveID() const { return m_waveID; }
     inline bool WaveIDHasBeenSet() const { return m_waveIDHasBeenSet; }
-
-    /**
-     * <p>Wave ID.</p>
-     */
-    inline void SetWaveID(const Aws::String& value) { m_waveIDHasBeenSet = true; m_waveID = value; }
-
-    /**
-     * <p>Wave ID.</p>
-     */
-    inline void SetWaveID(Aws::String&& value) { m_waveIDHasBeenSet = true; m_waveID = std::move(value); }
-
-    /**
-     * <p>Wave ID.</p>
-     */
-    inline void SetWaveID(const char* value) { m_waveIDHasBeenSet = true; m_waveID.assign(value); }
-
-    /**
-     * <p>Wave ID.</p>
-     */
-    inline DisassociateApplicationsRequest& WithWaveID(const Aws::String& value) { SetWaveID(value); return *this;}
-
-    /**
-     * <p>Wave ID.</p>
-     */
-    inline DisassociateApplicationsRequest& WithWaveID(Aws::String&& value) { SetWaveID(std::move(value)); return *this;}
-
-    /**
-     * <p>Wave ID.</p>
-     */
-    inline DisassociateApplicationsRequest& WithWaveID(const char* value) { SetWaveID(value); return *this;}
-
+    template<typename WaveIDT = Aws::String>
+    void SetWaveID(WaveIDT&& value) { m_waveIDHasBeenSet = true; m_waveID = std::forward<WaveIDT>(value); }
+    template<typename WaveIDT = Aws::String>
+    DisassociateApplicationsRequest& WithWaveID(WaveIDT&& value) { SetWaveID(std::forward<WaveIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountID;

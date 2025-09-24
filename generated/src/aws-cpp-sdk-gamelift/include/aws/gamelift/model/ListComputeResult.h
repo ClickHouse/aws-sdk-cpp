@@ -29,125 +29,55 @@ namespace Model
   class ListComputeResult
   {
   public:
-    AWS_GAMELIFT_API ListComputeResult();
+    AWS_GAMELIFT_API ListComputeResult() = default;
     AWS_GAMELIFT_API ListComputeResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GAMELIFT_API ListComputeResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of compute resources in the specified fleet.</p>
      */
-    inline const Aws::Vector<Compute>& GetComputeList() const{ return m_computeList; }
+    inline const Aws::Vector<Compute>& GetComputeList() const { return m_computeList; }
+    template<typename ComputeListT = Aws::Vector<Compute>>
+    void SetComputeList(ComputeListT&& value) { m_computeListHasBeenSet = true; m_computeList = std::forward<ComputeListT>(value); }
+    template<typename ComputeListT = Aws::Vector<Compute>>
+    ListComputeResult& WithComputeList(ComputeListT&& value) { SetComputeList(std::forward<ComputeListT>(value)); return *this;}
+    template<typename ComputeListT = Compute>
+    ListComputeResult& AddComputeList(ComputeListT&& value) { m_computeListHasBeenSet = true; m_computeList.emplace_back(std::forward<ComputeListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of compute resources in the specified fleet.</p>
-     */
-    inline void SetComputeList(const Aws::Vector<Compute>& value) { m_computeList = value; }
-
-    /**
-     * <p>A list of compute resources in the specified fleet.</p>
-     */
-    inline void SetComputeList(Aws::Vector<Compute>&& value) { m_computeList = std::move(value); }
-
-    /**
-     * <p>A list of compute resources in the specified fleet.</p>
-     */
-    inline ListComputeResult& WithComputeList(const Aws::Vector<Compute>& value) { SetComputeList(value); return *this;}
-
-    /**
-     * <p>A list of compute resources in the specified fleet.</p>
-     */
-    inline ListComputeResult& WithComputeList(Aws::Vector<Compute>&& value) { SetComputeList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of compute resources in the specified fleet.</p>
-     */
-    inline ListComputeResult& AddComputeList(const Compute& value) { m_computeList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of compute resources in the specified fleet.</p>
-     */
-    inline ListComputeResult& AddComputeList(Compute&& value) { m_computeList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A token that indicates where to resume retrieving results on the next call to
      * this operation. If no token is returned, these results represent the end of the
      * list.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListComputeResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token that indicates where to resume retrieving results on the next call to
-     * this operation. If no token is returned, these results represent the end of the
-     * list.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A token that indicates where to resume retrieving results on the next call to
-     * this operation. If no token is returned, these results represent the end of the
-     * list.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token that indicates where to resume retrieving results on the next call to
-     * this operation. If no token is returned, these results represent the end of the
-     * list.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A token that indicates where to resume retrieving results on the next call to
-     * this operation. If no token is returned, these results represent the end of the
-     * list.</p>
-     */
-    inline ListComputeResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token that indicates where to resume retrieving results on the next call to
-     * this operation. If no token is returned, these results represent the end of the
-     * list.</p>
-     */
-    inline ListComputeResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token that indicates where to resume retrieving results on the next call to
-     * this operation. If no token is returned, these results represent the end of the
-     * list.</p>
-     */
-    inline ListComputeResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListComputeResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListComputeResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListComputeResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListComputeResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Compute> m_computeList;
+    bool m_computeListHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

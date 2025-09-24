@@ -18,15 +18,7 @@ namespace LookoutMetrics
 namespace Model
 {
 
-VpcConfiguration::VpcConfiguration() : 
-    m_subnetIdListHasBeenSet(false),
-    m_securityGroupIdListHasBeenSet(false)
-{
-}
-
-VpcConfiguration::VpcConfiguration(JsonView jsonValue) : 
-    m_subnetIdListHasBeenSet(false),
-    m_securityGroupIdListHasBeenSet(false)
+VpcConfiguration::VpcConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ VpcConfiguration& VpcConfiguration::operator =(JsonView jsonValue)
     }
     m_subnetIdListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecurityGroupIdList"))
   {
     Aws::Utils::Array<JsonView> securityGroupIdListJsonList = jsonValue.GetArray("SecurityGroupIdList");
@@ -52,7 +43,6 @@ VpcConfiguration& VpcConfiguration::operator =(JsonView jsonValue)
     }
     m_securityGroupIdListHasBeenSet = true;
   }
-
   return *this;
 }
 

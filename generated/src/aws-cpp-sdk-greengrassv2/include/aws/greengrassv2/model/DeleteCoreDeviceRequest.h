@@ -21,7 +21,7 @@ namespace Model
   class DeleteCoreDeviceRequest : public GreengrassV2Request
   {
   public:
-    AWS_GREENGRASSV2_API DeleteCoreDeviceRequest();
+    AWS_GREENGRASSV2_API DeleteCoreDeviceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_GREENGRASSV2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the core device. This is also the name of the IoT thing.</p>
      */
-    inline const Aws::String& GetCoreDeviceThingName() const{ return m_coreDeviceThingName; }
-
-    /**
-     * <p>The name of the core device. This is also the name of the IoT thing.</p>
-     */
+    inline const Aws::String& GetCoreDeviceThingName() const { return m_coreDeviceThingName; }
     inline bool CoreDeviceThingNameHasBeenSet() const { return m_coreDeviceThingNameHasBeenSet; }
-
-    /**
-     * <p>The name of the core device. This is also the name of the IoT thing.</p>
-     */
-    inline void SetCoreDeviceThingName(const Aws::String& value) { m_coreDeviceThingNameHasBeenSet = true; m_coreDeviceThingName = value; }
-
-    /**
-     * <p>The name of the core device. This is also the name of the IoT thing.</p>
-     */
-    inline void SetCoreDeviceThingName(Aws::String&& value) { m_coreDeviceThingNameHasBeenSet = true; m_coreDeviceThingName = std::move(value); }
-
-    /**
-     * <p>The name of the core device. This is also the name of the IoT thing.</p>
-     */
-    inline void SetCoreDeviceThingName(const char* value) { m_coreDeviceThingNameHasBeenSet = true; m_coreDeviceThingName.assign(value); }
-
-    /**
-     * <p>The name of the core device. This is also the name of the IoT thing.</p>
-     */
-    inline DeleteCoreDeviceRequest& WithCoreDeviceThingName(const Aws::String& value) { SetCoreDeviceThingName(value); return *this;}
-
-    /**
-     * <p>The name of the core device. This is also the name of the IoT thing.</p>
-     */
-    inline DeleteCoreDeviceRequest& WithCoreDeviceThingName(Aws::String&& value) { SetCoreDeviceThingName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the core device. This is also the name of the IoT thing.</p>
-     */
-    inline DeleteCoreDeviceRequest& WithCoreDeviceThingName(const char* value) { SetCoreDeviceThingName(value); return *this;}
-
+    template<typename CoreDeviceThingNameT = Aws::String>
+    void SetCoreDeviceThingName(CoreDeviceThingNameT&& value) { m_coreDeviceThingNameHasBeenSet = true; m_coreDeviceThingName = std::forward<CoreDeviceThingNameT>(value); }
+    template<typename CoreDeviceThingNameT = Aws::String>
+    DeleteCoreDeviceRequest& WithCoreDeviceThingName(CoreDeviceThingNameT&& value) { SetCoreDeviceThingName(std::forward<CoreDeviceThingNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_coreDeviceThingName;

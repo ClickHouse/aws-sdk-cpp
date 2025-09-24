@@ -27,73 +27,37 @@ namespace Model
   class CreateDatasetImportJobResult
   {
   public:
-    AWS_FORECASTSERVICE_API CreateDatasetImportJobResult();
+    AWS_FORECASTSERVICE_API CreateDatasetImportJobResult() = default;
     AWS_FORECASTSERVICE_API CreateDatasetImportJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_FORECASTSERVICE_API CreateDatasetImportJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the dataset import job.</p>
      */
-    inline const Aws::String& GetDatasetImportJobArn() const{ return m_datasetImportJobArn; }
+    inline const Aws::String& GetDatasetImportJobArn() const { return m_datasetImportJobArn; }
+    template<typename DatasetImportJobArnT = Aws::String>
+    void SetDatasetImportJobArn(DatasetImportJobArnT&& value) { m_datasetImportJobArnHasBeenSet = true; m_datasetImportJobArn = std::forward<DatasetImportJobArnT>(value); }
+    template<typename DatasetImportJobArnT = Aws::String>
+    CreateDatasetImportJobResult& WithDatasetImportJobArn(DatasetImportJobArnT&& value) { SetDatasetImportJobArn(std::forward<DatasetImportJobArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset import job.</p>
-     */
-    inline void SetDatasetImportJobArn(const Aws::String& value) { m_datasetImportJobArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset import job.</p>
-     */
-    inline void SetDatasetImportJobArn(Aws::String&& value) { m_datasetImportJobArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset import job.</p>
-     */
-    inline void SetDatasetImportJobArn(const char* value) { m_datasetImportJobArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset import job.</p>
-     */
-    inline CreateDatasetImportJobResult& WithDatasetImportJobArn(const Aws::String& value) { SetDatasetImportJobArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset import job.</p>
-     */
-    inline CreateDatasetImportJobResult& WithDatasetImportJobArn(Aws::String&& value) { SetDatasetImportJobArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the dataset import job.</p>
-     */
-    inline CreateDatasetImportJobResult& WithDatasetImportJobArn(const char* value) { SetDatasetImportJobArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateDatasetImportJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateDatasetImportJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateDatasetImportJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateDatasetImportJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_datasetImportJobArn;
+    bool m_datasetImportJobArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

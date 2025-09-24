@@ -18,19 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-DifferentialPrivacyTemplateUpdateParameters::DifferentialPrivacyTemplateUpdateParameters() : 
-    m_epsilon(0),
-    m_epsilonHasBeenSet(false),
-    m_usersNoisePerQuery(0),
-    m_usersNoisePerQueryHasBeenSet(false)
-{
-}
-
-DifferentialPrivacyTemplateUpdateParameters::DifferentialPrivacyTemplateUpdateParameters(JsonView jsonValue) : 
-    m_epsilon(0),
-    m_epsilonHasBeenSet(false),
-    m_usersNoisePerQuery(0),
-    m_usersNoisePerQueryHasBeenSet(false)
+DifferentialPrivacyTemplateUpdateParameters::DifferentialPrivacyTemplateUpdateParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ DifferentialPrivacyTemplateUpdateParameters& DifferentialPrivacyTemplateUpdatePa
   if(jsonValue.ValueExists("epsilon"))
   {
     m_epsilon = jsonValue.GetInteger("epsilon");
-
     m_epsilonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("usersNoisePerQuery"))
   {
     m_usersNoisePerQuery = jsonValue.GetInteger("usersNoisePerQuery");
-
     m_usersNoisePerQueryHasBeenSet = true;
   }
-
   return *this;
 }
 

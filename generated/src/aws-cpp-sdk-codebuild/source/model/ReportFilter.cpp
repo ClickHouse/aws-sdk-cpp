@@ -18,15 +18,7 @@ namespace CodeBuild
 namespace Model
 {
 
-ReportFilter::ReportFilter() : 
-    m_status(ReportStatusType::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-ReportFilter::ReportFilter(JsonView jsonValue) : 
-    m_status(ReportStatusType::NOT_SET),
-    m_statusHasBeenSet(false)
+ReportFilter::ReportFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ReportFilter& ReportFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("status"))
   {
     m_status = ReportStatusTypeMapper::GetReportStatusTypeForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

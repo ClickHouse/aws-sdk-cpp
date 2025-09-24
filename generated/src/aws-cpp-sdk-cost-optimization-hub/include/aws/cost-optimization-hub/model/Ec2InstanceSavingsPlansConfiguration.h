@@ -32,261 +32,93 @@ namespace Model
   class Ec2InstanceSavingsPlansConfiguration
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API Ec2InstanceSavingsPlansConfiguration();
+    AWS_COSTOPTIMIZATIONHUB_API Ec2InstanceSavingsPlansConfiguration() = default;
     AWS_COSTOPTIMIZATIONHUB_API Ec2InstanceSavingsPlansConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API Ec2InstanceSavingsPlansConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The account scope that you want your recommendations for.</p>
+     * <p>The account scope for which you want recommendations.</p>
      */
-    inline const Aws::String& GetAccountScope() const{ return m_accountScope; }
-
-    /**
-     * <p>The account scope that you want your recommendations for.</p>
-     */
+    inline const Aws::String& GetAccountScope() const { return m_accountScope; }
     inline bool AccountScopeHasBeenSet() const { return m_accountScopeHasBeenSet; }
+    template<typename AccountScopeT = Aws::String>
+    void SetAccountScope(AccountScopeT&& value) { m_accountScopeHasBeenSet = true; m_accountScope = std::forward<AccountScopeT>(value); }
+    template<typename AccountScopeT = Aws::String>
+    Ec2InstanceSavingsPlansConfiguration& WithAccountScope(AccountScopeT&& value) { SetAccountScope(std::forward<AccountScopeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account scope that you want your recommendations for.</p>
-     */
-    inline void SetAccountScope(const Aws::String& value) { m_accountScopeHasBeenSet = true; m_accountScope = value; }
-
-    /**
-     * <p>The account scope that you want your recommendations for.</p>
-     */
-    inline void SetAccountScope(Aws::String&& value) { m_accountScopeHasBeenSet = true; m_accountScope = std::move(value); }
-
-    /**
-     * <p>The account scope that you want your recommendations for.</p>
-     */
-    inline void SetAccountScope(const char* value) { m_accountScopeHasBeenSet = true; m_accountScope.assign(value); }
-
-    /**
-     * <p>The account scope that you want your recommendations for.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithAccountScope(const Aws::String& value) { SetAccountScope(value); return *this;}
-
-    /**
-     * <p>The account scope that you want your recommendations for.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithAccountScope(Aws::String&& value) { SetAccountScope(std::move(value)); return *this;}
-
-    /**
-     * <p>The account scope that you want your recommendations for.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithAccountScope(const char* value) { SetAccountScope(value); return *this;}
-
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline const Aws::String& GetHourlyCommitment() const{ return m_hourlyCommitment; }
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline bool HourlyCommitmentHasBeenSet() const { return m_hourlyCommitmentHasBeenSet; }
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline void SetHourlyCommitment(const Aws::String& value) { m_hourlyCommitmentHasBeenSet = true; m_hourlyCommitment = value; }
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline void SetHourlyCommitment(Aws::String&& value) { m_hourlyCommitmentHasBeenSet = true; m_hourlyCommitment = std::move(value); }
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline void SetHourlyCommitment(const char* value) { m_hourlyCommitmentHasBeenSet = true; m_hourlyCommitment.assign(value); }
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithHourlyCommitment(const Aws::String& value) { SetHourlyCommitment(value); return *this;}
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithHourlyCommitment(Aws::String&& value) { SetHourlyCommitment(std::move(value)); return *this;}
-
-    /**
-     * <p>The hourly commitment for the Savings Plans type.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithHourlyCommitment(const char* value) { SetHourlyCommitment(value); return *this;}
-
-
-    /**
-     * <p>The instance family of the recommended Savings Plan.</p>
-     */
-    inline const Aws::String& GetInstanceFamily() const{ return m_instanceFamily; }
-
-    /**
-     * <p>The instance family of the recommended Savings Plan.</p>
-     */
-    inline bool InstanceFamilyHasBeenSet() const { return m_instanceFamilyHasBeenSet; }
-
-    /**
-     * <p>The instance family of the recommended Savings Plan.</p>
-     */
-    inline void SetInstanceFamily(const Aws::String& value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily = value; }
-
-    /**
-     * <p>The instance family of the recommended Savings Plan.</p>
-     */
-    inline void SetInstanceFamily(Aws::String&& value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily = std::move(value); }
-
-    /**
-     * <p>The instance family of the recommended Savings Plan.</p>
-     */
-    inline void SetInstanceFamily(const char* value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily.assign(value); }
-
-    /**
-     * <p>The instance family of the recommended Savings Plan.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithInstanceFamily(const Aws::String& value) { SetInstanceFamily(value); return *this;}
-
-    /**
-     * <p>The instance family of the recommended Savings Plan.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithInstanceFamily(Aws::String&& value) { SetInstanceFamily(std::move(value)); return *this;}
-
-    /**
-     * <p>The instance family of the recommended Savings Plan.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithInstanceFamily(const char* value) { SetInstanceFamily(value); return *this;}
-
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline const Aws::String& GetPaymentOption() const{ return m_paymentOption; }
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline bool PaymentOptionHasBeenSet() const { return m_paymentOptionHasBeenSet; }
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline void SetPaymentOption(const Aws::String& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = value; }
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline void SetPaymentOption(Aws::String&& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = std::move(value); }
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline void SetPaymentOption(const char* value) { m_paymentOptionHasBeenSet = true; m_paymentOption.assign(value); }
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithPaymentOption(const Aws::String& value) { SetPaymentOption(value); return *this;}
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithPaymentOption(Aws::String&& value) { SetPaymentOption(std::move(value)); return *this;}
-
-    /**
-     * <p>The payment option for the commitment.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithPaymentOption(const char* value) { SetPaymentOption(value); return *this;}
-
-
-    /**
-     * <p>The Amazon Web Services Region of the commitment.</p>
-     */
-    inline const Aws::String& GetSavingsPlansRegion() const{ return m_savingsPlansRegion; }
-
-    /**
-     * <p>The Amazon Web Services Region of the commitment.</p>
-     */
-    inline bool SavingsPlansRegionHasBeenSet() const { return m_savingsPlansRegionHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services Region of the commitment.</p>
-     */
-    inline void SetSavingsPlansRegion(const Aws::String& value) { m_savingsPlansRegionHasBeenSet = true; m_savingsPlansRegion = value; }
-
-    /**
-     * <p>The Amazon Web Services Region of the commitment.</p>
-     */
-    inline void SetSavingsPlansRegion(Aws::String&& value) { m_savingsPlansRegionHasBeenSet = true; m_savingsPlansRegion = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services Region of the commitment.</p>
-     */
-    inline void SetSavingsPlansRegion(const char* value) { m_savingsPlansRegionHasBeenSet = true; m_savingsPlansRegion.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services Region of the commitment.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithSavingsPlansRegion(const Aws::String& value) { SetSavingsPlansRegion(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region of the commitment.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithSavingsPlansRegion(Aws::String&& value) { SetSavingsPlansRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Region of the commitment.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithSavingsPlansRegion(const char* value) { SetSavingsPlansRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Savings Plans recommendation term in years.</p>
      */
-    inline const Aws::String& GetTerm() const{ return m_term; }
-
-    /**
-     * <p>The Savings Plans recommendation term in years.</p>
-     */
+    inline const Aws::String& GetTerm() const { return m_term; }
     inline bool TermHasBeenSet() const { return m_termHasBeenSet; }
+    template<typename TermT = Aws::String>
+    void SetTerm(TermT&& value) { m_termHasBeenSet = true; m_term = std::forward<TermT>(value); }
+    template<typename TermT = Aws::String>
+    Ec2InstanceSavingsPlansConfiguration& WithTerm(TermT&& value) { SetTerm(std::forward<TermT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Savings Plans recommendation term in years.</p>
+     * <p>The payment option for the commitment.</p>
      */
-    inline void SetTerm(const Aws::String& value) { m_termHasBeenSet = true; m_term = value; }
+    inline const Aws::String& GetPaymentOption() const { return m_paymentOption; }
+    inline bool PaymentOptionHasBeenSet() const { return m_paymentOptionHasBeenSet; }
+    template<typename PaymentOptionT = Aws::String>
+    void SetPaymentOption(PaymentOptionT&& value) { m_paymentOptionHasBeenSet = true; m_paymentOption = std::forward<PaymentOptionT>(value); }
+    template<typename PaymentOptionT = Aws::String>
+    Ec2InstanceSavingsPlansConfiguration& WithPaymentOption(PaymentOptionT&& value) { SetPaymentOption(std::forward<PaymentOptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Savings Plans recommendation term in years.</p>
+     * <p>The hourly commitment for the Savings Plans type.</p>
      */
-    inline void SetTerm(Aws::String&& value) { m_termHasBeenSet = true; m_term = std::move(value); }
+    inline const Aws::String& GetHourlyCommitment() const { return m_hourlyCommitment; }
+    inline bool HourlyCommitmentHasBeenSet() const { return m_hourlyCommitmentHasBeenSet; }
+    template<typename HourlyCommitmentT = Aws::String>
+    void SetHourlyCommitment(HourlyCommitmentT&& value) { m_hourlyCommitmentHasBeenSet = true; m_hourlyCommitment = std::forward<HourlyCommitmentT>(value); }
+    template<typename HourlyCommitmentT = Aws::String>
+    Ec2InstanceSavingsPlansConfiguration& WithHourlyCommitment(HourlyCommitmentT&& value) { SetHourlyCommitment(std::forward<HourlyCommitmentT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Savings Plans recommendation term in years.</p>
+     * <p>The instance family of the recommended Savings Plan.</p>
      */
-    inline void SetTerm(const char* value) { m_termHasBeenSet = true; m_term.assign(value); }
+    inline const Aws::String& GetInstanceFamily() const { return m_instanceFamily; }
+    inline bool InstanceFamilyHasBeenSet() const { return m_instanceFamilyHasBeenSet; }
+    template<typename InstanceFamilyT = Aws::String>
+    void SetInstanceFamily(InstanceFamilyT&& value) { m_instanceFamilyHasBeenSet = true; m_instanceFamily = std::forward<InstanceFamilyT>(value); }
+    template<typename InstanceFamilyT = Aws::String>
+    Ec2InstanceSavingsPlansConfiguration& WithInstanceFamily(InstanceFamilyT&& value) { SetInstanceFamily(std::forward<InstanceFamilyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Savings Plans recommendation term in years.</p>
+     * <p>The Amazon Web Services Region of the commitment.</p>
      */
-    inline Ec2InstanceSavingsPlansConfiguration& WithTerm(const Aws::String& value) { SetTerm(value); return *this;}
-
-    /**
-     * <p>The Savings Plans recommendation term in years.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithTerm(Aws::String&& value) { SetTerm(std::move(value)); return *this;}
-
-    /**
-     * <p>The Savings Plans recommendation term in years.</p>
-     */
-    inline Ec2InstanceSavingsPlansConfiguration& WithTerm(const char* value) { SetTerm(value); return *this;}
-
+    inline const Aws::String& GetSavingsPlansRegion() const { return m_savingsPlansRegion; }
+    inline bool SavingsPlansRegionHasBeenSet() const { return m_savingsPlansRegionHasBeenSet; }
+    template<typename SavingsPlansRegionT = Aws::String>
+    void SetSavingsPlansRegion(SavingsPlansRegionT&& value) { m_savingsPlansRegionHasBeenSet = true; m_savingsPlansRegion = std::forward<SavingsPlansRegionT>(value); }
+    template<typename SavingsPlansRegionT = Aws::String>
+    Ec2InstanceSavingsPlansConfiguration& WithSavingsPlansRegion(SavingsPlansRegionT&& value) { SetSavingsPlansRegion(std::forward<SavingsPlansRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountScope;
     bool m_accountScopeHasBeenSet = false;
+
+    Aws::String m_term;
+    bool m_termHasBeenSet = false;
+
+    Aws::String m_paymentOption;
+    bool m_paymentOptionHasBeenSet = false;
 
     Aws::String m_hourlyCommitment;
     bool m_hourlyCommitmentHasBeenSet = false;
@@ -294,14 +126,8 @@ namespace Model
     Aws::String m_instanceFamily;
     bool m_instanceFamilyHasBeenSet = false;
 
-    Aws::String m_paymentOption;
-    bool m_paymentOptionHasBeenSet = false;
-
     Aws::String m_savingsPlansRegion;
     bool m_savingsPlansRegionHasBeenSet = false;
-
-    Aws::String m_term;
-    bool m_termHasBeenSet = false;
   };
 
 } // namespace Model

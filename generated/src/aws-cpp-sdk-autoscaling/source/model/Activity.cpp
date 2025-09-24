@@ -20,39 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-Activity::Activity() : 
-    m_activityIdHasBeenSet(false),
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_causeHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_statusCode(ScalingActivityStatusCode::NOT_SET),
-    m_statusCodeHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_progress(0),
-    m_progressHasBeenSet(false),
-    m_detailsHasBeenSet(false),
-    m_autoScalingGroupStateHasBeenSet(false),
-    m_autoScalingGroupARNHasBeenSet(false)
-{
-}
-
-Activity::Activity(const XmlNode& xmlNode) : 
-    m_activityIdHasBeenSet(false),
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_causeHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_statusCode(ScalingActivityStatusCode::NOT_SET),
-    m_statusCodeHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_progress(0),
-    m_progressHasBeenSet(false),
-    m_detailsHasBeenSet(false),
-    m_autoScalingGroupStateHasBeenSet(false),
-    m_autoScalingGroupARNHasBeenSet(false)
+Activity::Activity(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -102,7 +70,7 @@ Activity& Activity::operator =(const XmlNode& xmlNode)
     XmlNode statusCodeNode = resultNode.FirstChild("StatusCode");
     if(!statusCodeNode.IsNull())
     {
-      m_statusCode = ScalingActivityStatusCodeMapper::GetScalingActivityStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusCodeNode.GetText()).c_str()).c_str());
+      m_statusCode = ScalingActivityStatusCodeMapper::GetScalingActivityStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusCodeNode.GetText()).c_str()));
       m_statusCodeHasBeenSet = true;
     }
     XmlNode statusMessageNode = resultNode.FirstChild("StatusMessage");
@@ -174,7 +142,7 @@ void Activity::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_statusCodeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".StatusCode=" << ScalingActivityStatusCodeMapper::GetNameForScalingActivityStatusCode(m_statusCode) << "&";
+      oStream << location << index << locationValue << ".StatusCode=" << StringUtils::URLEncode(ScalingActivityStatusCodeMapper::GetNameForScalingActivityStatusCode(m_statusCode)) << "&";
   }
 
   if(m_statusMessageHasBeenSet)
@@ -232,7 +200,7 @@ void Activity::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_statusCodeHasBeenSet)
   {
-      oStream << location << ".StatusCode=" << ScalingActivityStatusCodeMapper::GetNameForScalingActivityStatusCode(m_statusCode) << "&";
+      oStream << location << ".StatusCode=" << StringUtils::URLEncode(ScalingActivityStatusCodeMapper::GetNameForScalingActivityStatusCode(m_statusCode)) << "&";
   }
   if(m_statusMessageHasBeenSet)
   {

@@ -37,168 +37,62 @@ namespace Model
   class MetricsFilter
   {
   public:
-    AWS_S3CRT_API MetricsFilter();
+    AWS_S3CRT_API MetricsFilter() = default;
     AWS_S3CRT_API MetricsFilter(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API MetricsFilter& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The prefix used when evaluating a metrics filter.</p>
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>The prefix used when evaluating a metrics filter.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    MetricsFilter& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The prefix used when evaluating a metrics filter.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>The prefix used when evaluating a metrics filter.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>The prefix used when evaluating a metrics filter.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>The prefix used when evaluating a metrics filter.</p>
-     */
-    inline MetricsFilter& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>The prefix used when evaluating a metrics filter.</p>
-     */
-    inline MetricsFilter& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The prefix used when evaluating a metrics filter.</p>
-     */
-    inline MetricsFilter& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tag used when evaluating a metrics filter.</p>
      */
-    inline const Tag& GetTag() const{ return m_tag; }
-
-    /**
-     * <p>The tag used when evaluating a metrics filter.</p>
-     */
+    inline const Tag& GetTag() const { return m_tag; }
     inline bool TagHasBeenSet() const { return m_tagHasBeenSet; }
+    template<typename TagT = Tag>
+    void SetTag(TagT&& value) { m_tagHasBeenSet = true; m_tag = std::forward<TagT>(value); }
+    template<typename TagT = Tag>
+    MetricsFilter& WithTag(TagT&& value) { SetTag(std::forward<TagT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The tag used when evaluating a metrics filter.</p>
-     */
-    inline void SetTag(const Tag& value) { m_tagHasBeenSet = true; m_tag = value; }
-
-    /**
-     * <p>The tag used when evaluating a metrics filter.</p>
-     */
-    inline void SetTag(Tag&& value) { m_tagHasBeenSet = true; m_tag = std::move(value); }
-
-    /**
-     * <p>The tag used when evaluating a metrics filter.</p>
-     */
-    inline MetricsFilter& WithTag(const Tag& value) { SetTag(value); return *this;}
-
-    /**
-     * <p>The tag used when evaluating a metrics filter.</p>
-     */
-    inline MetricsFilter& WithTag(Tag&& value) { SetTag(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The access point ARN used when evaluating a metrics filter.</p>
      */
-    inline const Aws::String& GetAccessPointArn() const{ return m_accessPointArn; }
-
-    /**
-     * <p>The access point ARN used when evaluating a metrics filter.</p>
-     */
+    inline const Aws::String& GetAccessPointArn() const { return m_accessPointArn; }
     inline bool AccessPointArnHasBeenSet() const { return m_accessPointArnHasBeenSet; }
+    template<typename AccessPointArnT = Aws::String>
+    void SetAccessPointArn(AccessPointArnT&& value) { m_accessPointArnHasBeenSet = true; m_accessPointArn = std::forward<AccessPointArnT>(value); }
+    template<typename AccessPointArnT = Aws::String>
+    MetricsFilter& WithAccessPointArn(AccessPointArnT&& value) { SetAccessPointArn(std::forward<AccessPointArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The access point ARN used when evaluating a metrics filter.</p>
-     */
-    inline void SetAccessPointArn(const Aws::String& value) { m_accessPointArnHasBeenSet = true; m_accessPointArn = value; }
-
-    /**
-     * <p>The access point ARN used when evaluating a metrics filter.</p>
-     */
-    inline void SetAccessPointArn(Aws::String&& value) { m_accessPointArnHasBeenSet = true; m_accessPointArn = std::move(value); }
-
-    /**
-     * <p>The access point ARN used when evaluating a metrics filter.</p>
-     */
-    inline void SetAccessPointArn(const char* value) { m_accessPointArnHasBeenSet = true; m_accessPointArn.assign(value); }
-
-    /**
-     * <p>The access point ARN used when evaluating a metrics filter.</p>
-     */
-    inline MetricsFilter& WithAccessPointArn(const Aws::String& value) { SetAccessPointArn(value); return *this;}
-
-    /**
-     * <p>The access point ARN used when evaluating a metrics filter.</p>
-     */
-    inline MetricsFilter& WithAccessPointArn(Aws::String&& value) { SetAccessPointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The access point ARN used when evaluating a metrics filter.</p>
-     */
-    inline MetricsFilter& WithAccessPointArn(const char* value) { SetAccessPointArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
      * metrics filter. The operator must have at least two predicates, and an object
      * must match all of the predicates in order for the filter to apply.</p>
      */
-    inline const MetricsAndOperator& GetAnd() const{ return m_and; }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
-     * metrics filter. The operator must have at least two predicates, and an object
-     * must match all of the predicates in order for the filter to apply.</p>
-     */
+    inline const MetricsAndOperator& GetAnd() const { return m_and; }
     inline bool AndHasBeenSet() const { return m_andHasBeenSet; }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
-     * metrics filter. The operator must have at least two predicates, and an object
-     * must match all of the predicates in order for the filter to apply.</p>
-     */
-    inline void SetAnd(const MetricsAndOperator& value) { m_andHasBeenSet = true; m_and = value; }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
-     * metrics filter. The operator must have at least two predicates, and an object
-     * must match all of the predicates in order for the filter to apply.</p>
-     */
-    inline void SetAnd(MetricsAndOperator&& value) { m_andHasBeenSet = true; m_and = std::move(value); }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
-     * metrics filter. The operator must have at least two predicates, and an object
-     * must match all of the predicates in order for the filter to apply.</p>
-     */
-    inline MetricsFilter& WithAnd(const MetricsAndOperator& value) { SetAnd(value); return *this;}
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating a
-     * metrics filter. The operator must have at least two predicates, and an object
-     * must match all of the predicates in order for the filter to apply.</p>
-     */
-    inline MetricsFilter& WithAnd(MetricsAndOperator&& value) { SetAnd(std::move(value)); return *this;}
-
+    template<typename AndT = MetricsAndOperator>
+    void SetAnd(AndT&& value) { m_andHasBeenSet = true; m_and = std::forward<AndT>(value); }
+    template<typename AndT = MetricsAndOperator>
+    MetricsFilter& WithAnd(AndT&& value) { SetAnd(std::forward<AndT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_prefix;

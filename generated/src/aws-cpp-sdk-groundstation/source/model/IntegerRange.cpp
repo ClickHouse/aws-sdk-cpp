@@ -18,19 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-IntegerRange::IntegerRange() : 
-    m_maximum(0),
-    m_maximumHasBeenSet(false),
-    m_minimum(0),
-    m_minimumHasBeenSet(false)
-{
-}
-
-IntegerRange::IntegerRange(JsonView jsonValue) : 
-    m_maximum(0),
-    m_maximumHasBeenSet(false),
-    m_minimum(0),
-    m_minimumHasBeenSet(false)
+IntegerRange::IntegerRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ IntegerRange& IntegerRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("maximum"))
   {
     m_maximum = jsonValue.GetInteger("maximum");
-
     m_maximumHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("minimum"))
   {
     m_minimum = jsonValue.GetInteger("minimum");
-
     m_minimumHasBeenSet = true;
   }
-
   return *this;
 }
 

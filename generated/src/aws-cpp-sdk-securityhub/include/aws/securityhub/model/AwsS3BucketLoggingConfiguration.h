@@ -31,93 +31,35 @@ namespace Model
   class AwsS3BucketLoggingConfiguration
   {
   public:
-    AWS_SECURITYHUB_API AwsS3BucketLoggingConfiguration();
+    AWS_SECURITYHUB_API AwsS3BucketLoggingConfiguration() = default;
     AWS_SECURITYHUB_API AwsS3BucketLoggingConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsS3BucketLoggingConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the S3 bucket where log files for the S3 bucket are stored.</p>
      */
-    inline const Aws::String& GetDestinationBucketName() const{ return m_destinationBucketName; }
-
-    /**
-     * <p>The name of the S3 bucket where log files for the S3 bucket are stored.</p>
-     */
+    inline const Aws::String& GetDestinationBucketName() const { return m_destinationBucketName; }
     inline bool DestinationBucketNameHasBeenSet() const { return m_destinationBucketNameHasBeenSet; }
+    template<typename DestinationBucketNameT = Aws::String>
+    void SetDestinationBucketName(DestinationBucketNameT&& value) { m_destinationBucketNameHasBeenSet = true; m_destinationBucketName = std::forward<DestinationBucketNameT>(value); }
+    template<typename DestinationBucketNameT = Aws::String>
+    AwsS3BucketLoggingConfiguration& WithDestinationBucketName(DestinationBucketNameT&& value) { SetDestinationBucketName(std::forward<DestinationBucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the S3 bucket where log files for the S3 bucket are stored.</p>
-     */
-    inline void SetDestinationBucketName(const Aws::String& value) { m_destinationBucketNameHasBeenSet = true; m_destinationBucketName = value; }
-
-    /**
-     * <p>The name of the S3 bucket where log files for the S3 bucket are stored.</p>
-     */
-    inline void SetDestinationBucketName(Aws::String&& value) { m_destinationBucketNameHasBeenSet = true; m_destinationBucketName = std::move(value); }
-
-    /**
-     * <p>The name of the S3 bucket where log files for the S3 bucket are stored.</p>
-     */
-    inline void SetDestinationBucketName(const char* value) { m_destinationBucketNameHasBeenSet = true; m_destinationBucketName.assign(value); }
-
-    /**
-     * <p>The name of the S3 bucket where log files for the S3 bucket are stored.</p>
-     */
-    inline AwsS3BucketLoggingConfiguration& WithDestinationBucketName(const Aws::String& value) { SetDestinationBucketName(value); return *this;}
-
-    /**
-     * <p>The name of the S3 bucket where log files for the S3 bucket are stored.</p>
-     */
-    inline AwsS3BucketLoggingConfiguration& WithDestinationBucketName(Aws::String&& value) { SetDestinationBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the S3 bucket where log files for the S3 bucket are stored.</p>
-     */
-    inline AwsS3BucketLoggingConfiguration& WithDestinationBucketName(const char* value) { SetDestinationBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The prefix added to log files for the S3 bucket.</p>
      */
-    inline const Aws::String& GetLogFilePrefix() const{ return m_logFilePrefix; }
-
-    /**
-     * <p>The prefix added to log files for the S3 bucket.</p>
-     */
+    inline const Aws::String& GetLogFilePrefix() const { return m_logFilePrefix; }
     inline bool LogFilePrefixHasBeenSet() const { return m_logFilePrefixHasBeenSet; }
-
-    /**
-     * <p>The prefix added to log files for the S3 bucket.</p>
-     */
-    inline void SetLogFilePrefix(const Aws::String& value) { m_logFilePrefixHasBeenSet = true; m_logFilePrefix = value; }
-
-    /**
-     * <p>The prefix added to log files for the S3 bucket.</p>
-     */
-    inline void SetLogFilePrefix(Aws::String&& value) { m_logFilePrefixHasBeenSet = true; m_logFilePrefix = std::move(value); }
-
-    /**
-     * <p>The prefix added to log files for the S3 bucket.</p>
-     */
-    inline void SetLogFilePrefix(const char* value) { m_logFilePrefixHasBeenSet = true; m_logFilePrefix.assign(value); }
-
-    /**
-     * <p>The prefix added to log files for the S3 bucket.</p>
-     */
-    inline AwsS3BucketLoggingConfiguration& WithLogFilePrefix(const Aws::String& value) { SetLogFilePrefix(value); return *this;}
-
-    /**
-     * <p>The prefix added to log files for the S3 bucket.</p>
-     */
-    inline AwsS3BucketLoggingConfiguration& WithLogFilePrefix(Aws::String&& value) { SetLogFilePrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The prefix added to log files for the S3 bucket.</p>
-     */
-    inline AwsS3BucketLoggingConfiguration& WithLogFilePrefix(const char* value) { SetLogFilePrefix(value); return *this;}
-
+    template<typename LogFilePrefixT = Aws::String>
+    void SetLogFilePrefix(LogFilePrefixT&& value) { m_logFilePrefixHasBeenSet = true; m_logFilePrefix = std::forward<LogFilePrefixT>(value); }
+    template<typename LogFilePrefixT = Aws::String>
+    AwsS3BucketLoggingConfiguration& WithLogFilePrefix(LogFilePrefixT&& value) { SetLogFilePrefix(std::forward<LogFilePrefixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_destinationBucketName;

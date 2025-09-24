@@ -32,145 +32,52 @@ namespace Model
   class PagerDutyIncidentDetail
   {
   public:
-    AWS_SSMINCIDENTS_API PagerDutyIncidentDetail();
+    AWS_SSMINCIDENTS_API PagerDutyIncidentDetail() = default;
     AWS_SSMINCIDENTS_API PagerDutyIncidentDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API PagerDutyIncidentDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates whether to resolve the PagerDuty incident when you resolve the
      * associated Incident Manager incident.</p>
      */
-    inline bool GetAutoResolve() const{ return m_autoResolve; }
-
-    /**
-     * <p>Indicates whether to resolve the PagerDuty incident when you resolve the
-     * associated Incident Manager incident.</p>
-     */
+    inline bool GetAutoResolve() const { return m_autoResolve; }
     inline bool AutoResolveHasBeenSet() const { return m_autoResolveHasBeenSet; }
-
-    /**
-     * <p>Indicates whether to resolve the PagerDuty incident when you resolve the
-     * associated Incident Manager incident.</p>
-     */
     inline void SetAutoResolve(bool value) { m_autoResolveHasBeenSet = true; m_autoResolve = value; }
-
-    /**
-     * <p>Indicates whether to resolve the PagerDuty incident when you resolve the
-     * associated Incident Manager incident.</p>
-     */
     inline PagerDutyIncidentDetail& WithAutoResolve(bool value) { SetAutoResolve(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the incident associated with the PagerDuty service for the response
      * plan.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the incident associated with the PagerDuty service for the response
-     * plan.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    PagerDutyIncidentDetail& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the incident associated with the PagerDuty service for the response
-     * plan.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the incident associated with the PagerDuty service for the response
-     * plan.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the incident associated with the PagerDuty service for the response
-     * plan.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the incident associated with the PagerDuty service for the response
-     * plan.</p>
-     */
-    inline PagerDutyIncidentDetail& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the incident associated with the PagerDuty service for the response
-     * plan.</p>
-     */
-    inline PagerDutyIncidentDetail& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the incident associated with the PagerDuty service for the response
-     * plan.</p>
-     */
-    inline PagerDutyIncidentDetail& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services Secrets Manager secret that stores your
      * PagerDuty key, either a General Access REST API Key or User Token REST API Key,
      * and other user credentials.</p>
      */
-    inline const Aws::String& GetSecretId() const{ return m_secretId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Secrets Manager secret that stores your
-     * PagerDuty key, either a General Access REST API Key or User Token REST API Key,
-     * and other user credentials.</p>
-     */
+    inline const Aws::String& GetSecretId() const { return m_secretId; }
     inline bool SecretIdHasBeenSet() const { return m_secretIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Secrets Manager secret that stores your
-     * PagerDuty key, either a General Access REST API Key or User Token REST API Key,
-     * and other user credentials.</p>
-     */
-    inline void SetSecretId(const Aws::String& value) { m_secretIdHasBeenSet = true; m_secretId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services Secrets Manager secret that stores your
-     * PagerDuty key, either a General Access REST API Key or User Token REST API Key,
-     * and other user credentials.</p>
-     */
-    inline void SetSecretId(Aws::String&& value) { m_secretIdHasBeenSet = true; m_secretId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Secrets Manager secret that stores your
-     * PagerDuty key, either a General Access REST API Key or User Token REST API Key,
-     * and other user credentials.</p>
-     */
-    inline void SetSecretId(const char* value) { m_secretIdHasBeenSet = true; m_secretId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services Secrets Manager secret that stores your
-     * PagerDuty key, either a General Access REST API Key or User Token REST API Key,
-     * and other user credentials.</p>
-     */
-    inline PagerDutyIncidentDetail& WithSecretId(const Aws::String& value) { SetSecretId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Secrets Manager secret that stores your
-     * PagerDuty key, either a General Access REST API Key or User Token REST API Key,
-     * and other user credentials.</p>
-     */
-    inline PagerDutyIncidentDetail& WithSecretId(Aws::String&& value) { SetSecretId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services Secrets Manager secret that stores your
-     * PagerDuty key, either a General Access REST API Key or User Token REST API Key,
-     * and other user credentials.</p>
-     */
-    inline PagerDutyIncidentDetail& WithSecretId(const char* value) { SetSecretId(value); return *this;}
-
+    template<typename SecretIdT = Aws::String>
+    void SetSecretId(SecretIdT&& value) { m_secretIdHasBeenSet = true; m_secretId = std::forward<SecretIdT>(value); }
+    template<typename SecretIdT = Aws::String>
+    PagerDutyIncidentDetail& WithSecretId(SecretIdT&& value) { SetSecretId(std::forward<SecretIdT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_autoResolve;
+    bool m_autoResolve{false};
     bool m_autoResolveHasBeenSet = false;
 
     Aws::String m_id;

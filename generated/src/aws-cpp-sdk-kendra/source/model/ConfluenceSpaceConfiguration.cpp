@@ -18,25 +18,7 @@ namespace kendra
 namespace Model
 {
 
-ConfluenceSpaceConfiguration::ConfluenceSpaceConfiguration() : 
-    m_crawlPersonalSpaces(false),
-    m_crawlPersonalSpacesHasBeenSet(false),
-    m_crawlArchivedSpaces(false),
-    m_crawlArchivedSpacesHasBeenSet(false),
-    m_includeSpacesHasBeenSet(false),
-    m_excludeSpacesHasBeenSet(false),
-    m_spaceFieldMappingsHasBeenSet(false)
-{
-}
-
-ConfluenceSpaceConfiguration::ConfluenceSpaceConfiguration(JsonView jsonValue) : 
-    m_crawlPersonalSpaces(false),
-    m_crawlPersonalSpacesHasBeenSet(false),
-    m_crawlArchivedSpaces(false),
-    m_crawlArchivedSpacesHasBeenSet(false),
-    m_includeSpacesHasBeenSet(false),
-    m_excludeSpacesHasBeenSet(false),
-    m_spaceFieldMappingsHasBeenSet(false)
+ConfluenceSpaceConfiguration::ConfluenceSpaceConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,17 +28,13 @@ ConfluenceSpaceConfiguration& ConfluenceSpaceConfiguration::operator =(JsonView 
   if(jsonValue.ValueExists("CrawlPersonalSpaces"))
   {
     m_crawlPersonalSpaces = jsonValue.GetBool("CrawlPersonalSpaces");
-
     m_crawlPersonalSpacesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CrawlArchivedSpaces"))
   {
     m_crawlArchivedSpaces = jsonValue.GetBool("CrawlArchivedSpaces");
-
     m_crawlArchivedSpacesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IncludeSpaces"))
   {
     Aws::Utils::Array<JsonView> includeSpacesJsonList = jsonValue.GetArray("IncludeSpaces");
@@ -66,7 +44,6 @@ ConfluenceSpaceConfiguration& ConfluenceSpaceConfiguration::operator =(JsonView 
     }
     m_includeSpacesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExcludeSpaces"))
   {
     Aws::Utils::Array<JsonView> excludeSpacesJsonList = jsonValue.GetArray("ExcludeSpaces");
@@ -76,7 +53,6 @@ ConfluenceSpaceConfiguration& ConfluenceSpaceConfiguration::operator =(JsonView 
     }
     m_excludeSpacesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SpaceFieldMappings"))
   {
     Aws::Utils::Array<JsonView> spaceFieldMappingsJsonList = jsonValue.GetArray("SpaceFieldMappings");
@@ -86,7 +62,6 @@ ConfluenceSpaceConfiguration& ConfluenceSpaceConfiguration::operator =(JsonView 
     }
     m_spaceFieldMappingsHasBeenSet = true;
   }
-
   return *this;
 }
 

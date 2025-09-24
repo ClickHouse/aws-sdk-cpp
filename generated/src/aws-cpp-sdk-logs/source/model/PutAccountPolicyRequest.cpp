@@ -12,16 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutAccountPolicyRequest::PutAccountPolicyRequest() : 
-    m_policyNameHasBeenSet(false),
-    m_policyDocumentHasBeenSet(false),
-    m_policyType(PolicyType::NOT_SET),
-    m_policyTypeHasBeenSet(false),
-    m_scope(Scope::NOT_SET),
-    m_scopeHasBeenSet(false)
-{
-}
-
 Aws::String PutAccountPolicyRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +36,12 @@ Aws::String PutAccountPolicyRequest::SerializePayload() const
   if(m_scopeHasBeenSet)
   {
    payload.WithString("scope", ScopeMapper::GetNameForScope(m_scope));
+  }
+
+  if(m_selectionCriteriaHasBeenSet)
+  {
+   payload.WithString("selectionCriteria", m_selectionCriteria);
+
   }
 
   return payload.View().WriteReadable();

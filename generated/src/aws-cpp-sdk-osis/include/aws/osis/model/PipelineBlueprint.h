@@ -32,93 +32,83 @@ namespace Model
   class PipelineBlueprint
   {
   public:
-    AWS_OSIS_API PipelineBlueprint();
+    AWS_OSIS_API PipelineBlueprint() = default;
     AWS_OSIS_API PipelineBlueprint(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API PipelineBlueprint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the blueprint.</p>
      */
-    inline const Aws::String& GetBlueprintName() const{ return m_blueprintName; }
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
+    inline const Aws::String& GetBlueprintName() const { return m_blueprintName; }
     inline bool BlueprintNameHasBeenSet() const { return m_blueprintNameHasBeenSet; }
+    template<typename BlueprintNameT = Aws::String>
+    void SetBlueprintName(BlueprintNameT&& value) { m_blueprintNameHasBeenSet = true; m_blueprintName = std::forward<BlueprintNameT>(value); }
+    template<typename BlueprintNameT = Aws::String>
+    PipelineBlueprint& WithBlueprintName(BlueprintNameT&& value) { SetBlueprintName(std::forward<BlueprintNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline void SetBlueprintName(const Aws::String& value) { m_blueprintNameHasBeenSet = true; m_blueprintName = value; }
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline void SetBlueprintName(Aws::String&& value) { m_blueprintNameHasBeenSet = true; m_blueprintName = std::move(value); }
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline void SetBlueprintName(const char* value) { m_blueprintNameHasBeenSet = true; m_blueprintName.assign(value); }
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline PipelineBlueprint& WithBlueprintName(const Aws::String& value) { SetBlueprintName(value); return *this;}
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline PipelineBlueprint& WithBlueprintName(Aws::String&& value) { SetBlueprintName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the blueprint.</p>
-     */
-    inline PipelineBlueprint& WithBlueprintName(const char* value) { SetBlueprintName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The YAML configuration of the blueprint.</p>
      */
-    inline const Aws::String& GetPipelineConfigurationBody() const{ return m_pipelineConfigurationBody; }
-
-    /**
-     * <p>The YAML configuration of the blueprint.</p>
-     */
+    inline const Aws::String& GetPipelineConfigurationBody() const { return m_pipelineConfigurationBody; }
     inline bool PipelineConfigurationBodyHasBeenSet() const { return m_pipelineConfigurationBodyHasBeenSet; }
+    template<typename PipelineConfigurationBodyT = Aws::String>
+    void SetPipelineConfigurationBody(PipelineConfigurationBodyT&& value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody = std::forward<PipelineConfigurationBodyT>(value); }
+    template<typename PipelineConfigurationBodyT = Aws::String>
+    PipelineBlueprint& WithPipelineConfigurationBody(PipelineConfigurationBodyT&& value) { SetPipelineConfigurationBody(std::forward<PipelineConfigurationBodyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The YAML configuration of the blueprint.</p>
+     * <p>The display name of the blueprint.</p>
      */
-    inline void SetPipelineConfigurationBody(const Aws::String& value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody = value; }
+    inline const Aws::String& GetDisplayName() const { return m_displayName; }
+    inline bool DisplayNameHasBeenSet() const { return m_displayNameHasBeenSet; }
+    template<typename DisplayNameT = Aws::String>
+    void SetDisplayName(DisplayNameT&& value) { m_displayNameHasBeenSet = true; m_displayName = std::forward<DisplayNameT>(value); }
+    template<typename DisplayNameT = Aws::String>
+    PipelineBlueprint& WithDisplayName(DisplayNameT&& value) { SetDisplayName(std::forward<DisplayNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The YAML configuration of the blueprint.</p>
+     * <p>A description of the blueprint.</p>
      */
-    inline void SetPipelineConfigurationBody(Aws::String&& value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody = std::move(value); }
+    inline const Aws::String& GetDisplayDescription() const { return m_displayDescription; }
+    inline bool DisplayDescriptionHasBeenSet() const { return m_displayDescriptionHasBeenSet; }
+    template<typename DisplayDescriptionT = Aws::String>
+    void SetDisplayDescription(DisplayDescriptionT&& value) { m_displayDescriptionHasBeenSet = true; m_displayDescription = std::forward<DisplayDescriptionT>(value); }
+    template<typename DisplayDescriptionT = Aws::String>
+    PipelineBlueprint& WithDisplayDescription(DisplayDescriptionT&& value) { SetDisplayDescription(std::forward<DisplayDescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The YAML configuration of the blueprint.</p>
+     * <p>The name of the service that the blueprint is associated with.</p>
      */
-    inline void SetPipelineConfigurationBody(const char* value) { m_pipelineConfigurationBodyHasBeenSet = true; m_pipelineConfigurationBody.assign(value); }
+    inline const Aws::String& GetService() const { return m_service; }
+    inline bool ServiceHasBeenSet() const { return m_serviceHasBeenSet; }
+    template<typename ServiceT = Aws::String>
+    void SetService(ServiceT&& value) { m_serviceHasBeenSet = true; m_service = std::forward<ServiceT>(value); }
+    template<typename ServiceT = Aws::String>
+    PipelineBlueprint& WithService(ServiceT&& value) { SetService(std::forward<ServiceT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The YAML configuration of the blueprint.</p>
+     * <p>The use case that the blueprint relates to.</p>
      */
-    inline PipelineBlueprint& WithPipelineConfigurationBody(const Aws::String& value) { SetPipelineConfigurationBody(value); return *this;}
-
-    /**
-     * <p>The YAML configuration of the blueprint.</p>
-     */
-    inline PipelineBlueprint& WithPipelineConfigurationBody(Aws::String&& value) { SetPipelineConfigurationBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The YAML configuration of the blueprint.</p>
-     */
-    inline PipelineBlueprint& WithPipelineConfigurationBody(const char* value) { SetPipelineConfigurationBody(value); return *this;}
-
+    inline const Aws::String& GetUseCase() const { return m_useCase; }
+    inline bool UseCaseHasBeenSet() const { return m_useCaseHasBeenSet; }
+    template<typename UseCaseT = Aws::String>
+    void SetUseCase(UseCaseT&& value) { m_useCaseHasBeenSet = true; m_useCase = std::forward<UseCaseT>(value); }
+    template<typename UseCaseT = Aws::String>
+    PipelineBlueprint& WithUseCase(UseCaseT&& value) { SetUseCase(std::forward<UseCaseT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_blueprintName;
@@ -126,6 +116,18 @@ namespace Model
 
     Aws::String m_pipelineConfigurationBody;
     bool m_pipelineConfigurationBodyHasBeenSet = false;
+
+    Aws::String m_displayName;
+    bool m_displayNameHasBeenSet = false;
+
+    Aws::String m_displayDescription;
+    bool m_displayDescriptionHasBeenSet = false;
+
+    Aws::String m_service;
+    bool m_serviceHasBeenSet = false;
+
+    Aws::String m_useCase;
+    bool m_useCaseHasBeenSet = false;
   };
 
 } // namespace Model

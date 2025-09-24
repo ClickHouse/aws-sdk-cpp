@@ -12,13 +12,6 @@ using namespace Aws::LicenseManagerUserSubscriptions::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RegisterIdentityProviderRequest::RegisterIdentityProviderRequest() : 
-    m_identityProviderHasBeenSet(false),
-    m_productHasBeenSet(false),
-    m_settingsHasBeenSet(false)
-{
-}
-
 Aws::String RegisterIdentityProviderRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,17 @@ Aws::String RegisterIdentityProviderRequest::SerializePayload() const
   if(m_settingsHasBeenSet)
   {
    payload.WithObject("Settings", m_settings.Jsonize());
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
 
   }
 

@@ -32,60 +32,24 @@ namespace Model
   class HttpUrlDestinationConfiguration
   {
   public:
-    AWS_IOT_API HttpUrlDestinationConfiguration();
+    AWS_IOT_API HttpUrlDestinationConfiguration() = default;
     AWS_IOT_API HttpUrlDestinationConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API HttpUrlDestinationConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URL IoT uses to confirm ownership of or access to the topic rule
      * destination URL.</p>
      */
-    inline const Aws::String& GetConfirmationUrl() const{ return m_confirmationUrl; }
-
-    /**
-     * <p>The URL IoT uses to confirm ownership of or access to the topic rule
-     * destination URL.</p>
-     */
+    inline const Aws::String& GetConfirmationUrl() const { return m_confirmationUrl; }
     inline bool ConfirmationUrlHasBeenSet() const { return m_confirmationUrlHasBeenSet; }
-
-    /**
-     * <p>The URL IoT uses to confirm ownership of or access to the topic rule
-     * destination URL.</p>
-     */
-    inline void SetConfirmationUrl(const Aws::String& value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl = value; }
-
-    /**
-     * <p>The URL IoT uses to confirm ownership of or access to the topic rule
-     * destination URL.</p>
-     */
-    inline void SetConfirmationUrl(Aws::String&& value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl = std::move(value); }
-
-    /**
-     * <p>The URL IoT uses to confirm ownership of or access to the topic rule
-     * destination URL.</p>
-     */
-    inline void SetConfirmationUrl(const char* value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl.assign(value); }
-
-    /**
-     * <p>The URL IoT uses to confirm ownership of or access to the topic rule
-     * destination URL.</p>
-     */
-    inline HttpUrlDestinationConfiguration& WithConfirmationUrl(const Aws::String& value) { SetConfirmationUrl(value); return *this;}
-
-    /**
-     * <p>The URL IoT uses to confirm ownership of or access to the topic rule
-     * destination URL.</p>
-     */
-    inline HttpUrlDestinationConfiguration& WithConfirmationUrl(Aws::String&& value) { SetConfirmationUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The URL IoT uses to confirm ownership of or access to the topic rule
-     * destination URL.</p>
-     */
-    inline HttpUrlDestinationConfiguration& WithConfirmationUrl(const char* value) { SetConfirmationUrl(value); return *this;}
-
+    template<typename ConfirmationUrlT = Aws::String>
+    void SetConfirmationUrl(ConfirmationUrlT&& value) { m_confirmationUrlHasBeenSet = true; m_confirmationUrl = std::forward<ConfirmationUrlT>(value); }
+    template<typename ConfirmationUrlT = Aws::String>
+    HttpUrlDestinationConfiguration& WithConfirmationUrl(ConfirmationUrlT&& value) { SetConfirmationUrl(std::forward<ConfirmationUrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_confirmationUrl;

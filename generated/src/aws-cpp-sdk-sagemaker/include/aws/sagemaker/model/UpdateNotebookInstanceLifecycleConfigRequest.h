@@ -23,7 +23,7 @@ namespace Model
   class UpdateNotebookInstanceLifecycleConfigRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API UpdateNotebookInstanceLifecycleConfigRequest();
+    AWS_SAGEMAKER_API UpdateNotebookInstanceLifecycleConfigRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,152 +36,48 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the lifecycle configuration.</p>
      */
-    inline const Aws::String& GetNotebookInstanceLifecycleConfigName() const{ return m_notebookInstanceLifecycleConfigName; }
-
-    /**
-     * <p>The name of the lifecycle configuration.</p>
-     */
+    inline const Aws::String& GetNotebookInstanceLifecycleConfigName() const { return m_notebookInstanceLifecycleConfigName; }
     inline bool NotebookInstanceLifecycleConfigNameHasBeenSet() const { return m_notebookInstanceLifecycleConfigNameHasBeenSet; }
+    template<typename NotebookInstanceLifecycleConfigNameT = Aws::String>
+    void SetNotebookInstanceLifecycleConfigName(NotebookInstanceLifecycleConfigNameT&& value) { m_notebookInstanceLifecycleConfigNameHasBeenSet = true; m_notebookInstanceLifecycleConfigName = std::forward<NotebookInstanceLifecycleConfigNameT>(value); }
+    template<typename NotebookInstanceLifecycleConfigNameT = Aws::String>
+    UpdateNotebookInstanceLifecycleConfigRequest& WithNotebookInstanceLifecycleConfigName(NotebookInstanceLifecycleConfigNameT&& value) { SetNotebookInstanceLifecycleConfigName(std::forward<NotebookInstanceLifecycleConfigNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the lifecycle configuration.</p>
-     */
-    inline void SetNotebookInstanceLifecycleConfigName(const Aws::String& value) { m_notebookInstanceLifecycleConfigNameHasBeenSet = true; m_notebookInstanceLifecycleConfigName = value; }
-
-    /**
-     * <p>The name of the lifecycle configuration.</p>
-     */
-    inline void SetNotebookInstanceLifecycleConfigName(Aws::String&& value) { m_notebookInstanceLifecycleConfigNameHasBeenSet = true; m_notebookInstanceLifecycleConfigName = std::move(value); }
-
-    /**
-     * <p>The name of the lifecycle configuration.</p>
-     */
-    inline void SetNotebookInstanceLifecycleConfigName(const char* value) { m_notebookInstanceLifecycleConfigNameHasBeenSet = true; m_notebookInstanceLifecycleConfigName.assign(value); }
-
-    /**
-     * <p>The name of the lifecycle configuration.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& WithNotebookInstanceLifecycleConfigName(const Aws::String& value) { SetNotebookInstanceLifecycleConfigName(value); return *this;}
-
-    /**
-     * <p>The name of the lifecycle configuration.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& WithNotebookInstanceLifecycleConfigName(Aws::String&& value) { SetNotebookInstanceLifecycleConfigName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the lifecycle configuration.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& WithNotebookInstanceLifecycleConfigName(const char* value) { SetNotebookInstanceLifecycleConfigName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The shell script that runs only once, when you create a notebook instance.
      * The shell script must be a base64-encoded string.</p>
      */
-    inline const Aws::Vector<NotebookInstanceLifecycleHook>& GetOnCreate() const{ return m_onCreate; }
-
-    /**
-     * <p>The shell script that runs only once, when you create a notebook instance.
-     * The shell script must be a base64-encoded string.</p>
-     */
+    inline const Aws::Vector<NotebookInstanceLifecycleHook>& GetOnCreate() const { return m_onCreate; }
     inline bool OnCreateHasBeenSet() const { return m_onCreateHasBeenSet; }
+    template<typename OnCreateT = Aws::Vector<NotebookInstanceLifecycleHook>>
+    void SetOnCreate(OnCreateT&& value) { m_onCreateHasBeenSet = true; m_onCreate = std::forward<OnCreateT>(value); }
+    template<typename OnCreateT = Aws::Vector<NotebookInstanceLifecycleHook>>
+    UpdateNotebookInstanceLifecycleConfigRequest& WithOnCreate(OnCreateT&& value) { SetOnCreate(std::forward<OnCreateT>(value)); return *this;}
+    template<typename OnCreateT = NotebookInstanceLifecycleHook>
+    UpdateNotebookInstanceLifecycleConfigRequest& AddOnCreate(OnCreateT&& value) { m_onCreateHasBeenSet = true; m_onCreate.emplace_back(std::forward<OnCreateT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The shell script that runs only once, when you create a notebook instance.
-     * The shell script must be a base64-encoded string.</p>
-     */
-    inline void SetOnCreate(const Aws::Vector<NotebookInstanceLifecycleHook>& value) { m_onCreateHasBeenSet = true; m_onCreate = value; }
-
-    /**
-     * <p>The shell script that runs only once, when you create a notebook instance.
-     * The shell script must be a base64-encoded string.</p>
-     */
-    inline void SetOnCreate(Aws::Vector<NotebookInstanceLifecycleHook>&& value) { m_onCreateHasBeenSet = true; m_onCreate = std::move(value); }
-
-    /**
-     * <p>The shell script that runs only once, when you create a notebook instance.
-     * The shell script must be a base64-encoded string.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& WithOnCreate(const Aws::Vector<NotebookInstanceLifecycleHook>& value) { SetOnCreate(value); return *this;}
-
-    /**
-     * <p>The shell script that runs only once, when you create a notebook instance.
-     * The shell script must be a base64-encoded string.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& WithOnCreate(Aws::Vector<NotebookInstanceLifecycleHook>&& value) { SetOnCreate(std::move(value)); return *this;}
-
-    /**
-     * <p>The shell script that runs only once, when you create a notebook instance.
-     * The shell script must be a base64-encoded string.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& AddOnCreate(const NotebookInstanceLifecycleHook& value) { m_onCreateHasBeenSet = true; m_onCreate.push_back(value); return *this; }
-
-    /**
-     * <p>The shell script that runs only once, when you create a notebook instance.
-     * The shell script must be a base64-encoded string.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& AddOnCreate(NotebookInstanceLifecycleHook&& value) { m_onCreateHasBeenSet = true; m_onCreate.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The shell script that runs every time you start a notebook instance,
      * including when you create the notebook instance. The shell script must be a
      * base64-encoded string.</p>
      */
-    inline const Aws::Vector<NotebookInstanceLifecycleHook>& GetOnStart() const{ return m_onStart; }
-
-    /**
-     * <p>The shell script that runs every time you start a notebook instance,
-     * including when you create the notebook instance. The shell script must be a
-     * base64-encoded string.</p>
-     */
+    inline const Aws::Vector<NotebookInstanceLifecycleHook>& GetOnStart() const { return m_onStart; }
     inline bool OnStartHasBeenSet() const { return m_onStartHasBeenSet; }
-
-    /**
-     * <p>The shell script that runs every time you start a notebook instance,
-     * including when you create the notebook instance. The shell script must be a
-     * base64-encoded string.</p>
-     */
-    inline void SetOnStart(const Aws::Vector<NotebookInstanceLifecycleHook>& value) { m_onStartHasBeenSet = true; m_onStart = value; }
-
-    /**
-     * <p>The shell script that runs every time you start a notebook instance,
-     * including when you create the notebook instance. The shell script must be a
-     * base64-encoded string.</p>
-     */
-    inline void SetOnStart(Aws::Vector<NotebookInstanceLifecycleHook>&& value) { m_onStartHasBeenSet = true; m_onStart = std::move(value); }
-
-    /**
-     * <p>The shell script that runs every time you start a notebook instance,
-     * including when you create the notebook instance. The shell script must be a
-     * base64-encoded string.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& WithOnStart(const Aws::Vector<NotebookInstanceLifecycleHook>& value) { SetOnStart(value); return *this;}
-
-    /**
-     * <p>The shell script that runs every time you start a notebook instance,
-     * including when you create the notebook instance. The shell script must be a
-     * base64-encoded string.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& WithOnStart(Aws::Vector<NotebookInstanceLifecycleHook>&& value) { SetOnStart(std::move(value)); return *this;}
-
-    /**
-     * <p>The shell script that runs every time you start a notebook instance,
-     * including when you create the notebook instance. The shell script must be a
-     * base64-encoded string.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& AddOnStart(const NotebookInstanceLifecycleHook& value) { m_onStartHasBeenSet = true; m_onStart.push_back(value); return *this; }
-
-    /**
-     * <p>The shell script that runs every time you start a notebook instance,
-     * including when you create the notebook instance. The shell script must be a
-     * base64-encoded string.</p>
-     */
-    inline UpdateNotebookInstanceLifecycleConfigRequest& AddOnStart(NotebookInstanceLifecycleHook&& value) { m_onStartHasBeenSet = true; m_onStart.push_back(std::move(value)); return *this; }
-
+    template<typename OnStartT = Aws::Vector<NotebookInstanceLifecycleHook>>
+    void SetOnStart(OnStartT&& value) { m_onStartHasBeenSet = true; m_onStart = std::forward<OnStartT>(value); }
+    template<typename OnStartT = Aws::Vector<NotebookInstanceLifecycleHook>>
+    UpdateNotebookInstanceLifecycleConfigRequest& WithOnStart(OnStartT&& value) { SetOnStart(std::forward<OnStartT>(value)); return *this;}
+    template<typename OnStartT = NotebookInstanceLifecycleHook>
+    UpdateNotebookInstanceLifecycleConfigRequest& AddOnStart(OnStartT&& value) { m_onStartHasBeenSet = true; m_onStart.emplace_back(std::forward<OnStartT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_notebookInstanceLifecycleConfigName;

@@ -18,13 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-InAppMessagesResponse::InAppMessagesResponse() : 
-    m_inAppMessageCampaignsHasBeenSet(false)
-{
-}
-
-InAppMessagesResponse::InAppMessagesResponse(JsonView jsonValue) : 
-    m_inAppMessageCampaignsHasBeenSet(false)
+InAppMessagesResponse::InAppMessagesResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ InAppMessagesResponse& InAppMessagesResponse::operator =(JsonView jsonValue)
     }
     m_inAppMessageCampaignsHasBeenSet = true;
   }
-
   return *this;
 }
 

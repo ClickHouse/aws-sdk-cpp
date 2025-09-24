@@ -12,27 +12,13 @@ using namespace Aws::LicenseManagerUserSubscriptions::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-AssociateUserRequest::AssociateUserRequest() : 
-    m_domainHasBeenSet(false),
-    m_identityProviderHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_usernameHasBeenSet(false)
-{
-}
-
 Aws::String AssociateUserRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_domainHasBeenSet)
+  if(m_usernameHasBeenSet)
   {
-   payload.WithString("Domain", m_domain);
-
-  }
-
-  if(m_identityProviderHasBeenSet)
-  {
-   payload.WithObject("IdentityProvider", m_identityProvider.Jsonize());
+   payload.WithString("Username", m_username);
 
   }
 
@@ -42,9 +28,26 @@ Aws::String AssociateUserRequest::SerializePayload() const
 
   }
 
-  if(m_usernameHasBeenSet)
+  if(m_identityProviderHasBeenSet)
   {
-   payload.WithString("Username", m_username);
+   payload.WithObject("IdentityProvider", m_identityProvider.Jsonize());
+
+  }
+
+  if(m_domainHasBeenSet)
+  {
+   payload.WithString("Domain", m_domain);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
 
   }
 

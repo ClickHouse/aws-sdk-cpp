@@ -25,7 +25,7 @@ namespace Model
   class CreateCrossAccountAttachmentRequest : public GlobalAcceleratorRequest
   {
   public:
-    AWS_GLOBALACCELERATOR_API CreateCrossAccountAttachmentRequest();
+    AWS_GLOBALACCELERATOR_API CreateCrossAccountAttachmentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,273 +38,79 @@ namespace Model
     AWS_GLOBALACCELERATOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the cross-account attachment. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the cross-account attachment. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateCrossAccountAttachmentRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The name of the cross-account attachment. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the cross-account attachment. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the cross-account attachment. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the cross-account attachment. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the cross-account attachment. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the cross-account attachment. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>The principals to list in the cross-account attachment. A principal can be an
-     * Amazon Web Services account number or the Amazon Resource Name (ARN) for an
+     * <p>The principals to include in the cross-account attachment. A principal can be
+     * an Amazon Web Services account number or the Amazon Resource Name (ARN) for an
      * accelerator. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetPrincipals() const{ return m_principals; }
-
-    /**
-     * <p>The principals to list in the cross-account attachment. A principal can be an
-     * Amazon Web Services account number or the Amazon Resource Name (ARN) for an
-     * accelerator. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPrincipals() const { return m_principals; }
     inline bool PrincipalsHasBeenSet() const { return m_principalsHasBeenSet; }
+    template<typename PrincipalsT = Aws::Vector<Aws::String>>
+    void SetPrincipals(PrincipalsT&& value) { m_principalsHasBeenSet = true; m_principals = std::forward<PrincipalsT>(value); }
+    template<typename PrincipalsT = Aws::Vector<Aws::String>>
+    CreateCrossAccountAttachmentRequest& WithPrincipals(PrincipalsT&& value) { SetPrincipals(std::forward<PrincipalsT>(value)); return *this;}
+    template<typename PrincipalsT = Aws::String>
+    CreateCrossAccountAttachmentRequest& AddPrincipals(PrincipalsT&& value) { m_principalsHasBeenSet = true; m_principals.emplace_back(std::forward<PrincipalsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The principals to list in the cross-account attachment. A principal can be an
-     * Amazon Web Services account number or the Amazon Resource Name (ARN) for an
-     * accelerator. </p>
-     */
-    inline void SetPrincipals(const Aws::Vector<Aws::String>& value) { m_principalsHasBeenSet = true; m_principals = value; }
-
-    /**
-     * <p>The principals to list in the cross-account attachment. A principal can be an
-     * Amazon Web Services account number or the Amazon Resource Name (ARN) for an
-     * accelerator. </p>
-     */
-    inline void SetPrincipals(Aws::Vector<Aws::String>&& value) { m_principalsHasBeenSet = true; m_principals = std::move(value); }
-
-    /**
-     * <p>The principals to list in the cross-account attachment. A principal can be an
-     * Amazon Web Services account number or the Amazon Resource Name (ARN) for an
-     * accelerator. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithPrincipals(const Aws::Vector<Aws::String>& value) { SetPrincipals(value); return *this;}
-
-    /**
-     * <p>The principals to list in the cross-account attachment. A principal can be an
-     * Amazon Web Services account number or the Amazon Resource Name (ARN) for an
-     * accelerator. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithPrincipals(Aws::Vector<Aws::String>&& value) { SetPrincipals(std::move(value)); return *this;}
-
-    /**
-     * <p>The principals to list in the cross-account attachment. A principal can be an
-     * Amazon Web Services account number or the Amazon Resource Name (ARN) for an
-     * accelerator. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& AddPrincipals(const Aws::String& value) { m_principalsHasBeenSet = true; m_principals.push_back(value); return *this; }
-
-    /**
-     * <p>The principals to list in the cross-account attachment. A principal can be an
-     * Amazon Web Services account number or the Amazon Resource Name (ARN) for an
-     * accelerator. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& AddPrincipals(Aws::String&& value) { m_principalsHasBeenSet = true; m_principals.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The principals to list in the cross-account attachment. A principal can be an
-     * Amazon Web Services account number or the Amazon Resource Name (ARN) for an
-     * accelerator. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& AddPrincipals(const char* value) { m_principalsHasBeenSet = true; m_principals.push_back(value); return *this; }
-
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) for the resources to list in the
+     * <p>The Amazon Resource Names (ARNs) for the resources to include in the
      * cross-account attachment. A resource can be any supported Amazon Web Services
-     * resource type for Global Accelerator. </p>
+     * resource type for Global Accelerator or a CIDR range for a bring your own IP
+     * address (BYOIP) address pool. </p>
      */
-    inline const Aws::Vector<Resource>& GetResources() const{ return m_resources; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) for the resources to list in the
-     * cross-account attachment. A resource can be any supported Amazon Web Services
-     * resource type for Global Accelerator. </p>
-     */
+    inline const Aws::Vector<Resource>& GetResources() const { return m_resources; }
     inline bool ResourcesHasBeenSet() const { return m_resourcesHasBeenSet; }
+    template<typename ResourcesT = Aws::Vector<Resource>>
+    void SetResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources = std::forward<ResourcesT>(value); }
+    template<typename ResourcesT = Aws::Vector<Resource>>
+    CreateCrossAccountAttachmentRequest& WithResources(ResourcesT&& value) { SetResources(std::forward<ResourcesT>(value)); return *this;}
+    template<typename ResourcesT = Resource>
+    CreateCrossAccountAttachmentRequest& AddResources(ResourcesT&& value) { m_resourcesHasBeenSet = true; m_resources.emplace_back(std::forward<ResourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Names (ARNs) for the resources to list in the
-     * cross-account attachment. A resource can be any supported Amazon Web Services
-     * resource type for Global Accelerator. </p>
-     */
-    inline void SetResources(const Aws::Vector<Resource>& value) { m_resourcesHasBeenSet = true; m_resources = value; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) for the resources to list in the
-     * cross-account attachment. A resource can be any supported Amazon Web Services
-     * resource type for Global Accelerator. </p>
-     */
-    inline void SetResources(Aws::Vector<Resource>&& value) { m_resourcesHasBeenSet = true; m_resources = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) for the resources to list in the
-     * cross-account attachment. A resource can be any supported Amazon Web Services
-     * resource type for Global Accelerator. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithResources(const Aws::Vector<Resource>& value) { SetResources(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) for the resources to list in the
-     * cross-account attachment. A resource can be any supported Amazon Web Services
-     * resource type for Global Accelerator. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithResources(Aws::Vector<Resource>&& value) { SetResources(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) for the resources to list in the
-     * cross-account attachment. A resource can be any supported Amazon Web Services
-     * resource type for Global Accelerator. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& AddResources(const Resource& value) { m_resourcesHasBeenSet = true; m_resources.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Resource Names (ARNs) for the resources to list in the
-     * cross-account attachment. A resource can be any supported Amazon Web Services
-     * resource type for Global Accelerator. </p>
-     */
-    inline CreateCrossAccountAttachmentRequest& AddResources(Resource&& value) { m_resourcesHasBeenSet = true; m_resources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A unique, case-sensitive identifier that you provide to ensure the
      * idempotency—that is, the uniqueness—of the request.</p>
      */
-    inline const Aws::String& GetIdempotencyToken() const{ return m_idempotencyToken; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
+    inline const Aws::String& GetIdempotencyToken() const { return m_idempotencyToken; }
     inline bool IdempotencyTokenHasBeenSet() const { return m_idempotencyTokenHasBeenSet; }
+    template<typename IdempotencyTokenT = Aws::String>
+    void SetIdempotencyToken(IdempotencyTokenT&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::forward<IdempotencyTokenT>(value); }
+    template<typename IdempotencyTokenT = Aws::String>
+    CreateCrossAccountAttachmentRequest& WithIdempotencyToken(IdempotencyTokenT&& value) { SetIdempotencyToken(std::forward<IdempotencyTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline void SetIdempotencyToken(const Aws::String& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = value; }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline void SetIdempotencyToken(Aws::String&& value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken = std::move(value); }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline void SetIdempotencyToken(const char* value) { m_idempotencyTokenHasBeenSet = true; m_idempotencyToken.assign(value); }
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithIdempotencyToken(const Aws::String& value) { SetIdempotencyToken(value); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithIdempotencyToken(Aws::String&& value) { SetIdempotencyToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique, case-sensitive identifier that you provide to ensure the
-     * idempotency—that is, the uniqueness—of the request.</p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithIdempotencyToken(const char* value) { SetIdempotencyToken(value); return *this;}
-
-
-    /**
-     * <p>Create tags for cross-account attachment.</p> <p>For more information, see <a
+     * <p>Add tags for a cross-account attachment.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html">Tagging
      * in Global Accelerator</a> in the <i>Global Accelerator Developer Guide</i>.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Create tags for cross-account attachment.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html">Tagging
-     * in Global Accelerator</a> in the <i>Global Accelerator Developer Guide</i>.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Create tags for cross-account attachment.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html">Tagging
-     * in Global Accelerator</a> in the <i>Global Accelerator Developer Guide</i>.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Create tags for cross-account attachment.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html">Tagging
-     * in Global Accelerator</a> in the <i>Global Accelerator Developer Guide</i>.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Create tags for cross-account attachment.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html">Tagging
-     * in Global Accelerator</a> in the <i>Global Accelerator Developer Guide</i>.</p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Create tags for cross-account attachment.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html">Tagging
-     * in Global Accelerator</a> in the <i>Global Accelerator Developer Guide</i>.</p>
-     */
-    inline CreateCrossAccountAttachmentRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Create tags for cross-account attachment.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html">Tagging
-     * in Global Accelerator</a> in the <i>Global Accelerator Developer Guide</i>.</p>
-     */
-    inline CreateCrossAccountAttachmentRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Create tags for cross-account attachment.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html">Tagging
-     * in Global Accelerator</a> in the <i>Global Accelerator Developer Guide</i>.</p>
-     */
-    inline CreateCrossAccountAttachmentRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateCrossAccountAttachmentRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateCrossAccountAttachmentRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;
@@ -316,8 +122,8 @@ namespace Model
     Aws::Vector<Resource> m_resources;
     bool m_resourcesHasBeenSet = false;
 
-    Aws::String m_idempotencyToken;
-    bool m_idempotencyTokenHasBeenSet = false;
+    Aws::String m_idempotencyToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_idempotencyTokenHasBeenSet = true;
 
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;

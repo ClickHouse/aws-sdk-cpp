@@ -34,101 +34,38 @@ namespace Model
   class JourneyRunsResponse
   {
   public:
-    AWS_PINPOINT_API JourneyRunsResponse();
+    AWS_PINPOINT_API JourneyRunsResponse() = default;
     AWS_PINPOINT_API JourneyRunsResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API JourneyRunsResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An array of responses, one for each run of the journey</p>
      */
-    inline const Aws::Vector<JourneyRunResponse>& GetItem() const{ return m_item; }
-
-    /**
-     * <p>An array of responses, one for each run of the journey</p>
-     */
+    inline const Aws::Vector<JourneyRunResponse>& GetItem() const { return m_item; }
     inline bool ItemHasBeenSet() const { return m_itemHasBeenSet; }
+    template<typename ItemT = Aws::Vector<JourneyRunResponse>>
+    void SetItem(ItemT&& value) { m_itemHasBeenSet = true; m_item = std::forward<ItemT>(value); }
+    template<typename ItemT = Aws::Vector<JourneyRunResponse>>
+    JourneyRunsResponse& WithItem(ItemT&& value) { SetItem(std::forward<ItemT>(value)); return *this;}
+    template<typename ItemT = JourneyRunResponse>
+    JourneyRunsResponse& AddItem(ItemT&& value) { m_itemHasBeenSet = true; m_item.emplace_back(std::forward<ItemT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of responses, one for each run of the journey</p>
-     */
-    inline void SetItem(const Aws::Vector<JourneyRunResponse>& value) { m_itemHasBeenSet = true; m_item = value; }
-
-    /**
-     * <p>An array of responses, one for each run of the journey</p>
-     */
-    inline void SetItem(Aws::Vector<JourneyRunResponse>&& value) { m_itemHasBeenSet = true; m_item = std::move(value); }
-
-    /**
-     * <p>An array of responses, one for each run of the journey</p>
-     */
-    inline JourneyRunsResponse& WithItem(const Aws::Vector<JourneyRunResponse>& value) { SetItem(value); return *this;}
-
-    /**
-     * <p>An array of responses, one for each run of the journey</p>
-     */
-    inline JourneyRunsResponse& WithItem(Aws::Vector<JourneyRunResponse>&& value) { SetItem(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of responses, one for each run of the journey</p>
-     */
-    inline JourneyRunsResponse& AddItem(const JourneyRunResponse& value) { m_itemHasBeenSet = true; m_item.push_back(value); return *this; }
-
-    /**
-     * <p>An array of responses, one for each run of the journey</p>
-     */
-    inline JourneyRunsResponse& AddItem(JourneyRunResponse&& value) { m_itemHasBeenSet = true; m_item.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The string to use in a subsequent request to get the next page of results in
      * a paginated response. This value is null if there are no additional pages.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline JourneyRunsResponse& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline JourneyRunsResponse& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The string to use in a subsequent request to get the next page of results in
-     * a paginated response. This value is null if there are no additional pages.</p>
-     */
-    inline JourneyRunsResponse& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    JourneyRunsResponse& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<JourneyRunResponse> m_item;

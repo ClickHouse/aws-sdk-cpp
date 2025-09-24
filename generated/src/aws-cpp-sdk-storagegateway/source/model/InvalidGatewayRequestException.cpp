@@ -18,15 +18,7 @@ namespace StorageGateway
 namespace Model
 {
 
-InvalidGatewayRequestException::InvalidGatewayRequestException() : 
-    m_messageHasBeenSet(false),
-    m_errorHasBeenSet(false)
-{
-}
-
-InvalidGatewayRequestException::InvalidGatewayRequestException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_errorHasBeenSet(false)
+InvalidGatewayRequestException::InvalidGatewayRequestException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InvalidGatewayRequestException& InvalidGatewayRequestException::operator =(JsonV
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("error"))
   {
     m_error = jsonValue.GetObject("error");
-
     m_errorHasBeenSet = true;
   }
-
   return *this;
 }
 

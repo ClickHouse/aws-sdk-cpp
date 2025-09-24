@@ -42,68 +42,27 @@ namespace Model
   class ChannelMapping
   {
   public:
-    AWS_MEDIACONVERT_API ChannelMapping();
+    AWS_MEDIACONVERT_API ChannelMapping() = default;
     AWS_MEDIACONVERT_API ChannelMapping(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API ChannelMapping& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * In your JSON job specification, include one child of OutputChannels for each
      * audio channel that you want in your output. Each child should contain one
      * instance of InputChannels or InputChannelsFineTune.
      */
-    inline const Aws::Vector<OutputChannelMapping>& GetOutputChannels() const{ return m_outputChannels; }
-
-    /**
-     * In your JSON job specification, include one child of OutputChannels for each
-     * audio channel that you want in your output. Each child should contain one
-     * instance of InputChannels or InputChannelsFineTune.
-     */
+    inline const Aws::Vector<OutputChannelMapping>& GetOutputChannels() const { return m_outputChannels; }
     inline bool OutputChannelsHasBeenSet() const { return m_outputChannelsHasBeenSet; }
-
-    /**
-     * In your JSON job specification, include one child of OutputChannels for each
-     * audio channel that you want in your output. Each child should contain one
-     * instance of InputChannels or InputChannelsFineTune.
-     */
-    inline void SetOutputChannels(const Aws::Vector<OutputChannelMapping>& value) { m_outputChannelsHasBeenSet = true; m_outputChannels = value; }
-
-    /**
-     * In your JSON job specification, include one child of OutputChannels for each
-     * audio channel that you want in your output. Each child should contain one
-     * instance of InputChannels or InputChannelsFineTune.
-     */
-    inline void SetOutputChannels(Aws::Vector<OutputChannelMapping>&& value) { m_outputChannelsHasBeenSet = true; m_outputChannels = std::move(value); }
-
-    /**
-     * In your JSON job specification, include one child of OutputChannels for each
-     * audio channel that you want in your output. Each child should contain one
-     * instance of InputChannels or InputChannelsFineTune.
-     */
-    inline ChannelMapping& WithOutputChannels(const Aws::Vector<OutputChannelMapping>& value) { SetOutputChannels(value); return *this;}
-
-    /**
-     * In your JSON job specification, include one child of OutputChannels for each
-     * audio channel that you want in your output. Each child should contain one
-     * instance of InputChannels or InputChannelsFineTune.
-     */
-    inline ChannelMapping& WithOutputChannels(Aws::Vector<OutputChannelMapping>&& value) { SetOutputChannels(std::move(value)); return *this;}
-
-    /**
-     * In your JSON job specification, include one child of OutputChannels for each
-     * audio channel that you want in your output. Each child should contain one
-     * instance of InputChannels or InputChannelsFineTune.
-     */
-    inline ChannelMapping& AddOutputChannels(const OutputChannelMapping& value) { m_outputChannelsHasBeenSet = true; m_outputChannels.push_back(value); return *this; }
-
-    /**
-     * In your JSON job specification, include one child of OutputChannels for each
-     * audio channel that you want in your output. Each child should contain one
-     * instance of InputChannels or InputChannelsFineTune.
-     */
-    inline ChannelMapping& AddOutputChannels(OutputChannelMapping&& value) { m_outputChannelsHasBeenSet = true; m_outputChannels.push_back(std::move(value)); return *this; }
-
+    template<typename OutputChannelsT = Aws::Vector<OutputChannelMapping>>
+    void SetOutputChannels(OutputChannelsT&& value) { m_outputChannelsHasBeenSet = true; m_outputChannels = std::forward<OutputChannelsT>(value); }
+    template<typename OutputChannelsT = Aws::Vector<OutputChannelMapping>>
+    ChannelMapping& WithOutputChannels(OutputChannelsT&& value) { SetOutputChannels(std::forward<OutputChannelsT>(value)); return *this;}
+    template<typename OutputChannelsT = OutputChannelMapping>
+    ChannelMapping& AddOutputChannels(OutputChannelsT&& value) { m_outputChannelsHasBeenSet = true; m_outputChannels.emplace_back(std::forward<OutputChannelsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<OutputChannelMapping> m_outputChannels;

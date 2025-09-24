@@ -8,6 +8,8 @@
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/dynamodb/model/ReplicaStatus.h>
 #include <aws/dynamodb/model/ProvisionedThroughputOverride.h>
+#include <aws/dynamodb/model/OnDemandThroughputOverride.h>
+#include <aws/dynamodb/model/TableWarmThroughputDescription.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/dynamodb/model/TableClassSummary.h>
@@ -37,53 +39,25 @@ namespace Model
   class ReplicaDescription
   {
   public:
-    AWS_DYNAMODB_API ReplicaDescription();
+    AWS_DYNAMODB_API ReplicaDescription() = default;
     AWS_DYNAMODB_API ReplicaDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API ReplicaDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Region.</p>
      */
-    inline const Aws::String& GetRegionName() const{ return m_regionName; }
-
-    /**
-     * <p>The name of the Region.</p>
-     */
+    inline const Aws::String& GetRegionName() const { return m_regionName; }
     inline bool RegionNameHasBeenSet() const { return m_regionNameHasBeenSet; }
+    template<typename RegionNameT = Aws::String>
+    void SetRegionName(RegionNameT&& value) { m_regionNameHasBeenSet = true; m_regionName = std::forward<RegionNameT>(value); }
+    template<typename RegionNameT = Aws::String>
+    ReplicaDescription& WithRegionName(RegionNameT&& value) { SetRegionName(std::forward<RegionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Region.</p>
-     */
-    inline void SetRegionName(const Aws::String& value) { m_regionNameHasBeenSet = true; m_regionName = value; }
-
-    /**
-     * <p>The name of the Region.</p>
-     */
-    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = std::move(value); }
-
-    /**
-     * <p>The name of the Region.</p>
-     */
-    inline void SetRegionName(const char* value) { m_regionNameHasBeenSet = true; m_regionName.assign(value); }
-
-    /**
-     * <p>The name of the Region.</p>
-     */
-    inline ReplicaDescription& WithRegionName(const Aws::String& value) { SetRegionName(value); return *this;}
-
-    /**
-     * <p>The name of the Region.</p>
-     */
-    inline ReplicaDescription& WithRegionName(Aws::String&& value) { SetRegionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Region.</p>
-     */
-    inline ReplicaDescription& WithRegionName(const char* value) { SetRegionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the replica:</p> <ul> <li> <p> <code>CREATING</code> -
      * The replica is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
@@ -100,375 +74,130 @@ namespace Model
      * remove this replica from the replication group. The replica will not be deleted
      * and replication will stop from and to this region.</p>  </li> </ul>
      */
-    inline const ReplicaStatus& GetReplicaStatus() const{ return m_replicaStatus; }
-
-    /**
-     * <p>The current state of the replica:</p> <ul> <li> <p> <code>CREATING</code> -
-     * The replica is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
-     * replica is being updated.</p> </li> <li> <p> <code>DELETING</code> - The replica
-     * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The replica is ready
-     * for use.</p> </li> <li> <p> <code>REGION_DISABLED</code> - The replica is
-     * inaccessible because the Amazon Web Services Region has been disabled.</p>
-     *  <p>If the Amazon Web Services Region remains inaccessible for more than
-     * 20 hours, DynamoDB will remove this replica from the replication group. The
-     * replica will not be deleted and replication will stop from and to this
-     * region.</p>  </li> <li> <p> <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS
-     * </code> - The KMS key used to encrypt the table is inaccessible.</p> 
-     * <p>If the KMS key remains inaccessible for more than 20 hours, DynamoDB will
-     * remove this replica from the replication group. The replica will not be deleted
-     * and replication will stop from and to this region.</p>  </li> </ul>
-     */
+    inline ReplicaStatus GetReplicaStatus() const { return m_replicaStatus; }
     inline bool ReplicaStatusHasBeenSet() const { return m_replicaStatusHasBeenSet; }
+    inline void SetReplicaStatus(ReplicaStatus value) { m_replicaStatusHasBeenSet = true; m_replicaStatus = value; }
+    inline ReplicaDescription& WithReplicaStatus(ReplicaStatus value) { SetReplicaStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the replica:</p> <ul> <li> <p> <code>CREATING</code> -
-     * The replica is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
-     * replica is being updated.</p> </li> <li> <p> <code>DELETING</code> - The replica
-     * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The replica is ready
-     * for use.</p> </li> <li> <p> <code>REGION_DISABLED</code> - The replica is
-     * inaccessible because the Amazon Web Services Region has been disabled.</p>
-     *  <p>If the Amazon Web Services Region remains inaccessible for more than
-     * 20 hours, DynamoDB will remove this replica from the replication group. The
-     * replica will not be deleted and replication will stop from and to this
-     * region.</p>  </li> <li> <p> <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS
-     * </code> - The KMS key used to encrypt the table is inaccessible.</p> 
-     * <p>If the KMS key remains inaccessible for more than 20 hours, DynamoDB will
-     * remove this replica from the replication group. The replica will not be deleted
-     * and replication will stop from and to this region.</p>  </li> </ul>
-     */
-    inline void SetReplicaStatus(const ReplicaStatus& value) { m_replicaStatusHasBeenSet = true; m_replicaStatus = value; }
-
-    /**
-     * <p>The current state of the replica:</p> <ul> <li> <p> <code>CREATING</code> -
-     * The replica is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
-     * replica is being updated.</p> </li> <li> <p> <code>DELETING</code> - The replica
-     * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The replica is ready
-     * for use.</p> </li> <li> <p> <code>REGION_DISABLED</code> - The replica is
-     * inaccessible because the Amazon Web Services Region has been disabled.</p>
-     *  <p>If the Amazon Web Services Region remains inaccessible for more than
-     * 20 hours, DynamoDB will remove this replica from the replication group. The
-     * replica will not be deleted and replication will stop from and to this
-     * region.</p>  </li> <li> <p> <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS
-     * </code> - The KMS key used to encrypt the table is inaccessible.</p> 
-     * <p>If the KMS key remains inaccessible for more than 20 hours, DynamoDB will
-     * remove this replica from the replication group. The replica will not be deleted
-     * and replication will stop from and to this region.</p>  </li> </ul>
-     */
-    inline void SetReplicaStatus(ReplicaStatus&& value) { m_replicaStatusHasBeenSet = true; m_replicaStatus = std::move(value); }
-
-    /**
-     * <p>The current state of the replica:</p> <ul> <li> <p> <code>CREATING</code> -
-     * The replica is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
-     * replica is being updated.</p> </li> <li> <p> <code>DELETING</code> - The replica
-     * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The replica is ready
-     * for use.</p> </li> <li> <p> <code>REGION_DISABLED</code> - The replica is
-     * inaccessible because the Amazon Web Services Region has been disabled.</p>
-     *  <p>If the Amazon Web Services Region remains inaccessible for more than
-     * 20 hours, DynamoDB will remove this replica from the replication group. The
-     * replica will not be deleted and replication will stop from and to this
-     * region.</p>  </li> <li> <p> <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS
-     * </code> - The KMS key used to encrypt the table is inaccessible.</p> 
-     * <p>If the KMS key remains inaccessible for more than 20 hours, DynamoDB will
-     * remove this replica from the replication group. The replica will not be deleted
-     * and replication will stop from and to this region.</p>  </li> </ul>
-     */
-    inline ReplicaDescription& WithReplicaStatus(const ReplicaStatus& value) { SetReplicaStatus(value); return *this;}
-
-    /**
-     * <p>The current state of the replica:</p> <ul> <li> <p> <code>CREATING</code> -
-     * The replica is being created.</p> </li> <li> <p> <code>UPDATING</code> - The
-     * replica is being updated.</p> </li> <li> <p> <code>DELETING</code> - The replica
-     * is being deleted.</p> </li> <li> <p> <code>ACTIVE</code> - The replica is ready
-     * for use.</p> </li> <li> <p> <code>REGION_DISABLED</code> - The replica is
-     * inaccessible because the Amazon Web Services Region has been disabled.</p>
-     *  <p>If the Amazon Web Services Region remains inaccessible for more than
-     * 20 hours, DynamoDB will remove this replica from the replication group. The
-     * replica will not be deleted and replication will stop from and to this
-     * region.</p>  </li> <li> <p> <code>INACCESSIBLE_ENCRYPTION_CREDENTIALS
-     * </code> - The KMS key used to encrypt the table is inaccessible.</p> 
-     * <p>If the KMS key remains inaccessible for more than 20 hours, DynamoDB will
-     * remove this replica from the replication group. The replica will not be deleted
-     * and replication will stop from and to this region.</p>  </li> </ul>
-     */
-    inline ReplicaDescription& WithReplicaStatus(ReplicaStatus&& value) { SetReplicaStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Detailed information about the replica status.</p>
      */
-    inline const Aws::String& GetReplicaStatusDescription() const{ return m_replicaStatusDescription; }
-
-    /**
-     * <p>Detailed information about the replica status.</p>
-     */
+    inline const Aws::String& GetReplicaStatusDescription() const { return m_replicaStatusDescription; }
     inline bool ReplicaStatusDescriptionHasBeenSet() const { return m_replicaStatusDescriptionHasBeenSet; }
+    template<typename ReplicaStatusDescriptionT = Aws::String>
+    void SetReplicaStatusDescription(ReplicaStatusDescriptionT&& value) { m_replicaStatusDescriptionHasBeenSet = true; m_replicaStatusDescription = std::forward<ReplicaStatusDescriptionT>(value); }
+    template<typename ReplicaStatusDescriptionT = Aws::String>
+    ReplicaDescription& WithReplicaStatusDescription(ReplicaStatusDescriptionT&& value) { SetReplicaStatusDescription(std::forward<ReplicaStatusDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Detailed information about the replica status.</p>
-     */
-    inline void SetReplicaStatusDescription(const Aws::String& value) { m_replicaStatusDescriptionHasBeenSet = true; m_replicaStatusDescription = value; }
-
-    /**
-     * <p>Detailed information about the replica status.</p>
-     */
-    inline void SetReplicaStatusDescription(Aws::String&& value) { m_replicaStatusDescriptionHasBeenSet = true; m_replicaStatusDescription = std::move(value); }
-
-    /**
-     * <p>Detailed information about the replica status.</p>
-     */
-    inline void SetReplicaStatusDescription(const char* value) { m_replicaStatusDescriptionHasBeenSet = true; m_replicaStatusDescription.assign(value); }
-
-    /**
-     * <p>Detailed information about the replica status.</p>
-     */
-    inline ReplicaDescription& WithReplicaStatusDescription(const Aws::String& value) { SetReplicaStatusDescription(value); return *this;}
-
-    /**
-     * <p>Detailed information about the replica status.</p>
-     */
-    inline ReplicaDescription& WithReplicaStatusDescription(Aws::String&& value) { SetReplicaStatusDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Detailed information about the replica status.</p>
-     */
-    inline ReplicaDescription& WithReplicaStatusDescription(const char* value) { SetReplicaStatusDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the progress of a Create, Update, or Delete action on the replica
      * as a percentage.</p>
      */
-    inline const Aws::String& GetReplicaStatusPercentProgress() const{ return m_replicaStatusPercentProgress; }
-
-    /**
-     * <p>Specifies the progress of a Create, Update, or Delete action on the replica
-     * as a percentage.</p>
-     */
+    inline const Aws::String& GetReplicaStatusPercentProgress() const { return m_replicaStatusPercentProgress; }
     inline bool ReplicaStatusPercentProgressHasBeenSet() const { return m_replicaStatusPercentProgressHasBeenSet; }
+    template<typename ReplicaStatusPercentProgressT = Aws::String>
+    void SetReplicaStatusPercentProgress(ReplicaStatusPercentProgressT&& value) { m_replicaStatusPercentProgressHasBeenSet = true; m_replicaStatusPercentProgress = std::forward<ReplicaStatusPercentProgressT>(value); }
+    template<typename ReplicaStatusPercentProgressT = Aws::String>
+    ReplicaDescription& WithReplicaStatusPercentProgress(ReplicaStatusPercentProgressT&& value) { SetReplicaStatusPercentProgress(std::forward<ReplicaStatusPercentProgressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the progress of a Create, Update, or Delete action on the replica
-     * as a percentage.</p>
-     */
-    inline void SetReplicaStatusPercentProgress(const Aws::String& value) { m_replicaStatusPercentProgressHasBeenSet = true; m_replicaStatusPercentProgress = value; }
-
-    /**
-     * <p>Specifies the progress of a Create, Update, or Delete action on the replica
-     * as a percentage.</p>
-     */
-    inline void SetReplicaStatusPercentProgress(Aws::String&& value) { m_replicaStatusPercentProgressHasBeenSet = true; m_replicaStatusPercentProgress = std::move(value); }
-
-    /**
-     * <p>Specifies the progress of a Create, Update, or Delete action on the replica
-     * as a percentage.</p>
-     */
-    inline void SetReplicaStatusPercentProgress(const char* value) { m_replicaStatusPercentProgressHasBeenSet = true; m_replicaStatusPercentProgress.assign(value); }
-
-    /**
-     * <p>Specifies the progress of a Create, Update, or Delete action on the replica
-     * as a percentage.</p>
-     */
-    inline ReplicaDescription& WithReplicaStatusPercentProgress(const Aws::String& value) { SetReplicaStatusPercentProgress(value); return *this;}
-
-    /**
-     * <p>Specifies the progress of a Create, Update, or Delete action on the replica
-     * as a percentage.</p>
-     */
-    inline ReplicaDescription& WithReplicaStatusPercentProgress(Aws::String&& value) { SetReplicaStatusPercentProgress(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the progress of a Create, Update, or Delete action on the replica
-     * as a percentage.</p>
-     */
-    inline ReplicaDescription& WithReplicaStatusPercentProgress(const char* value) { SetReplicaStatusPercentProgress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The KMS key of the replica that will be used for KMS encryption.</p>
      */
-    inline const Aws::String& GetKMSMasterKeyId() const{ return m_kMSMasterKeyId; }
-
-    /**
-     * <p>The KMS key of the replica that will be used for KMS encryption.</p>
-     */
+    inline const Aws::String& GetKMSMasterKeyId() const { return m_kMSMasterKeyId; }
     inline bool KMSMasterKeyIdHasBeenSet() const { return m_kMSMasterKeyIdHasBeenSet; }
+    template<typename KMSMasterKeyIdT = Aws::String>
+    void SetKMSMasterKeyId(KMSMasterKeyIdT&& value) { m_kMSMasterKeyIdHasBeenSet = true; m_kMSMasterKeyId = std::forward<KMSMasterKeyIdT>(value); }
+    template<typename KMSMasterKeyIdT = Aws::String>
+    ReplicaDescription& WithKMSMasterKeyId(KMSMasterKeyIdT&& value) { SetKMSMasterKeyId(std::forward<KMSMasterKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The KMS key of the replica that will be used for KMS encryption.</p>
-     */
-    inline void SetKMSMasterKeyId(const Aws::String& value) { m_kMSMasterKeyIdHasBeenSet = true; m_kMSMasterKeyId = value; }
-
-    /**
-     * <p>The KMS key of the replica that will be used for KMS encryption.</p>
-     */
-    inline void SetKMSMasterKeyId(Aws::String&& value) { m_kMSMasterKeyIdHasBeenSet = true; m_kMSMasterKeyId = std::move(value); }
-
-    /**
-     * <p>The KMS key of the replica that will be used for KMS encryption.</p>
-     */
-    inline void SetKMSMasterKeyId(const char* value) { m_kMSMasterKeyIdHasBeenSet = true; m_kMSMasterKeyId.assign(value); }
-
-    /**
-     * <p>The KMS key of the replica that will be used for KMS encryption.</p>
-     */
-    inline ReplicaDescription& WithKMSMasterKeyId(const Aws::String& value) { SetKMSMasterKeyId(value); return *this;}
-
-    /**
-     * <p>The KMS key of the replica that will be used for KMS encryption.</p>
-     */
-    inline ReplicaDescription& WithKMSMasterKeyId(Aws::String&& value) { SetKMSMasterKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The KMS key of the replica that will be used for KMS encryption.</p>
-     */
-    inline ReplicaDescription& WithKMSMasterKeyId(const char* value) { SetKMSMasterKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Replica-specific provisioned throughput. If not described, uses the source
      * table's provisioned throughput settings.</p>
      */
-    inline const ProvisionedThroughputOverride& GetProvisionedThroughputOverride() const{ return m_provisionedThroughputOverride; }
-
-    /**
-     * <p>Replica-specific provisioned throughput. If not described, uses the source
-     * table's provisioned throughput settings.</p>
-     */
+    inline const ProvisionedThroughputOverride& GetProvisionedThroughputOverride() const { return m_provisionedThroughputOverride; }
     inline bool ProvisionedThroughputOverrideHasBeenSet() const { return m_provisionedThroughputOverrideHasBeenSet; }
+    template<typename ProvisionedThroughputOverrideT = ProvisionedThroughputOverride>
+    void SetProvisionedThroughputOverride(ProvisionedThroughputOverrideT&& value) { m_provisionedThroughputOverrideHasBeenSet = true; m_provisionedThroughputOverride = std::forward<ProvisionedThroughputOverrideT>(value); }
+    template<typename ProvisionedThroughputOverrideT = ProvisionedThroughputOverride>
+    ReplicaDescription& WithProvisionedThroughputOverride(ProvisionedThroughputOverrideT&& value) { SetProvisionedThroughputOverride(std::forward<ProvisionedThroughputOverrideT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Replica-specific provisioned throughput. If not described, uses the source
-     * table's provisioned throughput settings.</p>
+     * <p>Overrides the maximum on-demand throughput settings for the specified replica
+     * table.</p>
      */
-    inline void SetProvisionedThroughputOverride(const ProvisionedThroughputOverride& value) { m_provisionedThroughputOverrideHasBeenSet = true; m_provisionedThroughputOverride = value; }
+    inline const OnDemandThroughputOverride& GetOnDemandThroughputOverride() const { return m_onDemandThroughputOverride; }
+    inline bool OnDemandThroughputOverrideHasBeenSet() const { return m_onDemandThroughputOverrideHasBeenSet; }
+    template<typename OnDemandThroughputOverrideT = OnDemandThroughputOverride>
+    void SetOnDemandThroughputOverride(OnDemandThroughputOverrideT&& value) { m_onDemandThroughputOverrideHasBeenSet = true; m_onDemandThroughputOverride = std::forward<OnDemandThroughputOverrideT>(value); }
+    template<typename OnDemandThroughputOverrideT = OnDemandThroughputOverride>
+    ReplicaDescription& WithOnDemandThroughputOverride(OnDemandThroughputOverrideT&& value) { SetOnDemandThroughputOverride(std::forward<OnDemandThroughputOverrideT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Replica-specific provisioned throughput. If not described, uses the source
-     * table's provisioned throughput settings.</p>
+     * <p>Represents the warm throughput value for this replica.</p>
      */
-    inline void SetProvisionedThroughputOverride(ProvisionedThroughputOverride&& value) { m_provisionedThroughputOverrideHasBeenSet = true; m_provisionedThroughputOverride = std::move(value); }
+    inline const TableWarmThroughputDescription& GetWarmThroughput() const { return m_warmThroughput; }
+    inline bool WarmThroughputHasBeenSet() const { return m_warmThroughputHasBeenSet; }
+    template<typename WarmThroughputT = TableWarmThroughputDescription>
+    void SetWarmThroughput(WarmThroughputT&& value) { m_warmThroughputHasBeenSet = true; m_warmThroughput = std::forward<WarmThroughputT>(value); }
+    template<typename WarmThroughputT = TableWarmThroughputDescription>
+    ReplicaDescription& WithWarmThroughput(WarmThroughputT&& value) { SetWarmThroughput(std::forward<WarmThroughputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Replica-specific provisioned throughput. If not described, uses the source
-     * table's provisioned throughput settings.</p>
-     */
-    inline ReplicaDescription& WithProvisionedThroughputOverride(const ProvisionedThroughputOverride& value) { SetProvisionedThroughputOverride(value); return *this;}
-
-    /**
-     * <p>Replica-specific provisioned throughput. If not described, uses the source
-     * table's provisioned throughput settings.</p>
-     */
-    inline ReplicaDescription& WithProvisionedThroughputOverride(ProvisionedThroughputOverride&& value) { SetProvisionedThroughputOverride(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Replica-specific global secondary index settings.</p>
      */
-    inline const Aws::Vector<ReplicaGlobalSecondaryIndexDescription>& GetGlobalSecondaryIndexes() const{ return m_globalSecondaryIndexes; }
-
-    /**
-     * <p>Replica-specific global secondary index settings.</p>
-     */
+    inline const Aws::Vector<ReplicaGlobalSecondaryIndexDescription>& GetGlobalSecondaryIndexes() const { return m_globalSecondaryIndexes; }
     inline bool GlobalSecondaryIndexesHasBeenSet() const { return m_globalSecondaryIndexesHasBeenSet; }
+    template<typename GlobalSecondaryIndexesT = Aws::Vector<ReplicaGlobalSecondaryIndexDescription>>
+    void SetGlobalSecondaryIndexes(GlobalSecondaryIndexesT&& value) { m_globalSecondaryIndexesHasBeenSet = true; m_globalSecondaryIndexes = std::forward<GlobalSecondaryIndexesT>(value); }
+    template<typename GlobalSecondaryIndexesT = Aws::Vector<ReplicaGlobalSecondaryIndexDescription>>
+    ReplicaDescription& WithGlobalSecondaryIndexes(GlobalSecondaryIndexesT&& value) { SetGlobalSecondaryIndexes(std::forward<GlobalSecondaryIndexesT>(value)); return *this;}
+    template<typename GlobalSecondaryIndexesT = ReplicaGlobalSecondaryIndexDescription>
+    ReplicaDescription& AddGlobalSecondaryIndexes(GlobalSecondaryIndexesT&& value) { m_globalSecondaryIndexesHasBeenSet = true; m_globalSecondaryIndexes.emplace_back(std::forward<GlobalSecondaryIndexesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Replica-specific global secondary index settings.</p>
-     */
-    inline void SetGlobalSecondaryIndexes(const Aws::Vector<ReplicaGlobalSecondaryIndexDescription>& value) { m_globalSecondaryIndexesHasBeenSet = true; m_globalSecondaryIndexes = value; }
-
-    /**
-     * <p>Replica-specific global secondary index settings.</p>
-     */
-    inline void SetGlobalSecondaryIndexes(Aws::Vector<ReplicaGlobalSecondaryIndexDescription>&& value) { m_globalSecondaryIndexesHasBeenSet = true; m_globalSecondaryIndexes = std::move(value); }
-
-    /**
-     * <p>Replica-specific global secondary index settings.</p>
-     */
-    inline ReplicaDescription& WithGlobalSecondaryIndexes(const Aws::Vector<ReplicaGlobalSecondaryIndexDescription>& value) { SetGlobalSecondaryIndexes(value); return *this;}
-
-    /**
-     * <p>Replica-specific global secondary index settings.</p>
-     */
-    inline ReplicaDescription& WithGlobalSecondaryIndexes(Aws::Vector<ReplicaGlobalSecondaryIndexDescription>&& value) { SetGlobalSecondaryIndexes(std::move(value)); return *this;}
-
-    /**
-     * <p>Replica-specific global secondary index settings.</p>
-     */
-    inline ReplicaDescription& AddGlobalSecondaryIndexes(const ReplicaGlobalSecondaryIndexDescription& value) { m_globalSecondaryIndexesHasBeenSet = true; m_globalSecondaryIndexes.push_back(value); return *this; }
-
-    /**
-     * <p>Replica-specific global secondary index settings.</p>
-     */
-    inline ReplicaDescription& AddGlobalSecondaryIndexes(ReplicaGlobalSecondaryIndexDescription&& value) { m_globalSecondaryIndexesHasBeenSet = true; m_globalSecondaryIndexes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The time at which the replica was first detected as inaccessible. To
      * determine cause of inaccessibility check the <code>ReplicaStatus</code>
      * property.</p>
      */
-    inline const Aws::Utils::DateTime& GetReplicaInaccessibleDateTime() const{ return m_replicaInaccessibleDateTime; }
-
-    /**
-     * <p>The time at which the replica was first detected as inaccessible. To
-     * determine cause of inaccessibility check the <code>ReplicaStatus</code>
-     * property.</p>
-     */
+    inline const Aws::Utils::DateTime& GetReplicaInaccessibleDateTime() const { return m_replicaInaccessibleDateTime; }
     inline bool ReplicaInaccessibleDateTimeHasBeenSet() const { return m_replicaInaccessibleDateTimeHasBeenSet; }
+    template<typename ReplicaInaccessibleDateTimeT = Aws::Utils::DateTime>
+    void SetReplicaInaccessibleDateTime(ReplicaInaccessibleDateTimeT&& value) { m_replicaInaccessibleDateTimeHasBeenSet = true; m_replicaInaccessibleDateTime = std::forward<ReplicaInaccessibleDateTimeT>(value); }
+    template<typename ReplicaInaccessibleDateTimeT = Aws::Utils::DateTime>
+    ReplicaDescription& WithReplicaInaccessibleDateTime(ReplicaInaccessibleDateTimeT&& value) { SetReplicaInaccessibleDateTime(std::forward<ReplicaInaccessibleDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the replica was first detected as inaccessible. To
-     * determine cause of inaccessibility check the <code>ReplicaStatus</code>
-     * property.</p>
-     */
-    inline void SetReplicaInaccessibleDateTime(const Aws::Utils::DateTime& value) { m_replicaInaccessibleDateTimeHasBeenSet = true; m_replicaInaccessibleDateTime = value; }
-
-    /**
-     * <p>The time at which the replica was first detected as inaccessible. To
-     * determine cause of inaccessibility check the <code>ReplicaStatus</code>
-     * property.</p>
-     */
-    inline void SetReplicaInaccessibleDateTime(Aws::Utils::DateTime&& value) { m_replicaInaccessibleDateTimeHasBeenSet = true; m_replicaInaccessibleDateTime = std::move(value); }
-
-    /**
-     * <p>The time at which the replica was first detected as inaccessible. To
-     * determine cause of inaccessibility check the <code>ReplicaStatus</code>
-     * property.</p>
-     */
-    inline ReplicaDescription& WithReplicaInaccessibleDateTime(const Aws::Utils::DateTime& value) { SetReplicaInaccessibleDateTime(value); return *this;}
-
-    /**
-     * <p>The time at which the replica was first detected as inaccessible. To
-     * determine cause of inaccessibility check the <code>ReplicaStatus</code>
-     * property.</p>
-     */
-    inline ReplicaDescription& WithReplicaInaccessibleDateTime(Aws::Utils::DateTime&& value) { SetReplicaInaccessibleDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const TableClassSummary& GetReplicaTableClassSummary() const{ return m_replicaTableClassSummary; }
-
-    
+    inline const TableClassSummary& GetReplicaTableClassSummary() const { return m_replicaTableClassSummary; }
     inline bool ReplicaTableClassSummaryHasBeenSet() const { return m_replicaTableClassSummaryHasBeenSet; }
-
-    
-    inline void SetReplicaTableClassSummary(const TableClassSummary& value) { m_replicaTableClassSummaryHasBeenSet = true; m_replicaTableClassSummary = value; }
-
-    
-    inline void SetReplicaTableClassSummary(TableClassSummary&& value) { m_replicaTableClassSummaryHasBeenSet = true; m_replicaTableClassSummary = std::move(value); }
-
-    
-    inline ReplicaDescription& WithReplicaTableClassSummary(const TableClassSummary& value) { SetReplicaTableClassSummary(value); return *this;}
-
-    
-    inline ReplicaDescription& WithReplicaTableClassSummary(TableClassSummary&& value) { SetReplicaTableClassSummary(std::move(value)); return *this;}
-
+    template<typename ReplicaTableClassSummaryT = TableClassSummary>
+    void SetReplicaTableClassSummary(ReplicaTableClassSummaryT&& value) { m_replicaTableClassSummaryHasBeenSet = true; m_replicaTableClassSummary = std::forward<ReplicaTableClassSummaryT>(value); }
+    template<typename ReplicaTableClassSummaryT = TableClassSummary>
+    ReplicaDescription& WithReplicaTableClassSummary(ReplicaTableClassSummaryT&& value) { SetReplicaTableClassSummary(std::forward<ReplicaTableClassSummaryT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regionName;
     bool m_regionNameHasBeenSet = false;
 
-    ReplicaStatus m_replicaStatus;
+    ReplicaStatus m_replicaStatus{ReplicaStatus::NOT_SET};
     bool m_replicaStatusHasBeenSet = false;
 
     Aws::String m_replicaStatusDescription;
@@ -483,10 +212,16 @@ namespace Model
     ProvisionedThroughputOverride m_provisionedThroughputOverride;
     bool m_provisionedThroughputOverrideHasBeenSet = false;
 
+    OnDemandThroughputOverride m_onDemandThroughputOverride;
+    bool m_onDemandThroughputOverrideHasBeenSet = false;
+
+    TableWarmThroughputDescription m_warmThroughput;
+    bool m_warmThroughputHasBeenSet = false;
+
     Aws::Vector<ReplicaGlobalSecondaryIndexDescription> m_globalSecondaryIndexes;
     bool m_globalSecondaryIndexesHasBeenSet = false;
 
-    Aws::Utils::DateTime m_replicaInaccessibleDateTime;
+    Aws::Utils::DateTime m_replicaInaccessibleDateTime{};
     bool m_replicaInaccessibleDateTimeHasBeenSet = false;
 
     TableClassSummary m_replicaTableClassSummary;

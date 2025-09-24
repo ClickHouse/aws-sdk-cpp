@@ -32,42 +32,23 @@ namespace Model
   class AnalysisDefaults
   {
   public:
-    AWS_QUICKSIGHT_API AnalysisDefaults();
+    AWS_QUICKSIGHT_API AnalysisDefaults() = default;
     AWS_QUICKSIGHT_API AnalysisDefaults(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AnalysisDefaults& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The configuration for default new sheet settings.</p>
      */
-    inline const DefaultNewSheetConfiguration& GetDefaultNewSheetConfiguration() const{ return m_defaultNewSheetConfiguration; }
-
-    /**
-     * <p>The configuration for default new sheet settings.</p>
-     */
+    inline const DefaultNewSheetConfiguration& GetDefaultNewSheetConfiguration() const { return m_defaultNewSheetConfiguration; }
     inline bool DefaultNewSheetConfigurationHasBeenSet() const { return m_defaultNewSheetConfigurationHasBeenSet; }
-
-    /**
-     * <p>The configuration for default new sheet settings.</p>
-     */
-    inline void SetDefaultNewSheetConfiguration(const DefaultNewSheetConfiguration& value) { m_defaultNewSheetConfigurationHasBeenSet = true; m_defaultNewSheetConfiguration = value; }
-
-    /**
-     * <p>The configuration for default new sheet settings.</p>
-     */
-    inline void SetDefaultNewSheetConfiguration(DefaultNewSheetConfiguration&& value) { m_defaultNewSheetConfigurationHasBeenSet = true; m_defaultNewSheetConfiguration = std::move(value); }
-
-    /**
-     * <p>The configuration for default new sheet settings.</p>
-     */
-    inline AnalysisDefaults& WithDefaultNewSheetConfiguration(const DefaultNewSheetConfiguration& value) { SetDefaultNewSheetConfiguration(value); return *this;}
-
-    /**
-     * <p>The configuration for default new sheet settings.</p>
-     */
-    inline AnalysisDefaults& WithDefaultNewSheetConfiguration(DefaultNewSheetConfiguration&& value) { SetDefaultNewSheetConfiguration(std::move(value)); return *this;}
-
+    template<typename DefaultNewSheetConfigurationT = DefaultNewSheetConfiguration>
+    void SetDefaultNewSheetConfiguration(DefaultNewSheetConfigurationT&& value) { m_defaultNewSheetConfigurationHasBeenSet = true; m_defaultNewSheetConfiguration = std::forward<DefaultNewSheetConfigurationT>(value); }
+    template<typename DefaultNewSheetConfigurationT = DefaultNewSheetConfiguration>
+    AnalysisDefaults& WithDefaultNewSheetConfiguration(DefaultNewSheetConfigurationT&& value) { SetDefaultNewSheetConfiguration(std::forward<DefaultNewSheetConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     DefaultNewSheetConfiguration m_defaultNewSheetConfiguration;

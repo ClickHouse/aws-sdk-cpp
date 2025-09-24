@@ -18,71 +18,39 @@ namespace IoTSiteWise
 namespace Model
 {
 
-AssetModelHierarchyDefinition::AssetModelHierarchyDefinition() : 
-    m_nameHasBeenSet(false),
-    m_childAssetModelIdHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_externalIdHasBeenSet(false)
-{
-}
-
-AssetModelHierarchyDefinition::AssetModelHierarchyDefinition(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_childAssetModelIdHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_externalIdHasBeenSet(false)
+AssetModelHierarchyDefinition::AssetModelHierarchyDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 AssetModelHierarchyDefinition& AssetModelHierarchyDefinition::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("name"))
-  {
-    m_name = jsonValue.GetString("name");
-
-    m_nameHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("childAssetModelId"))
-  {
-    m_childAssetModelId = jsonValue.GetString("childAssetModelId");
-
-    m_childAssetModelIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("externalId"))
   {
     m_externalId = jsonValue.GetString("externalId");
-
     m_externalIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("name"))
+  {
+    m_name = jsonValue.GetString("name");
+    m_nameHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("childAssetModelId"))
+  {
+    m_childAssetModelId = jsonValue.GetString("childAssetModelId");
+    m_childAssetModelIdHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue AssetModelHierarchyDefinition::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_nameHasBeenSet)
-  {
-   payload.WithString("name", m_name);
-
-  }
-
-  if(m_childAssetModelIdHasBeenSet)
-  {
-   payload.WithString("childAssetModelId", m_childAssetModelId);
-
-  }
 
   if(m_idHasBeenSet)
   {
@@ -93,6 +61,18 @@ JsonValue AssetModelHierarchyDefinition::Jsonize() const
   if(m_externalIdHasBeenSet)
   {
    payload.WithString("externalId", m_externalId);
+
+  }
+
+  if(m_nameHasBeenSet)
+  {
+   payload.WithString("name", m_name);
+
+  }
+
+  if(m_childAssetModelIdHasBeenSet)
+  {
+   payload.WithString("childAssetModelId", m_childAssetModelId);
 
   }
 

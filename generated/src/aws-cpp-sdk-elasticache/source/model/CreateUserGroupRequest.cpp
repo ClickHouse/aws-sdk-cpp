@@ -10,14 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-CreateUserGroupRequest::CreateUserGroupRequest() : 
-    m_userGroupIdHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_userIdsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateUserGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,22 +26,36 @@ Aws::String CreateUserGroupRequest::SerializePayload() const
 
   if(m_userIdsHasBeenSet)
   {
-    unsigned userIdsCount = 1;
-    for(auto& item : m_userIds)
+    if (m_userIds.empty())
     {
-      ss << "UserIds.member." << userIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      userIdsCount++;
+      ss << "UserIds=&";
+    }
+    else
+    {
+      unsigned userIdsCount = 1;
+      for(auto& item : m_userIds)
+      {
+        ss << "UserIds.member." << userIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        userIdsCount++;
+      }
     }
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.Tag.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

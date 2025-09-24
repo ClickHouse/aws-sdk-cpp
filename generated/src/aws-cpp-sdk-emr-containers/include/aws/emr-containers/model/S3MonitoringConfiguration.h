@@ -32,52 +32,23 @@ namespace Model
   class S3MonitoringConfiguration
   {
   public:
-    AWS_EMRCONTAINERS_API S3MonitoringConfiguration();
+    AWS_EMRCONTAINERS_API S3MonitoringConfiguration() = default;
     AWS_EMRCONTAINERS_API S3MonitoringConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRCONTAINERS_API S3MonitoringConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRCONTAINERS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Amazon S3 destination URI for log publishing.</p>
      */
-    inline const Aws::String& GetLogUri() const{ return m_logUri; }
-
-    /**
-     * <p>Amazon S3 destination URI for log publishing.</p>
-     */
+    inline const Aws::String& GetLogUri() const { return m_logUri; }
     inline bool LogUriHasBeenSet() const { return m_logUriHasBeenSet; }
-
-    /**
-     * <p>Amazon S3 destination URI for log publishing.</p>
-     */
-    inline void SetLogUri(const Aws::String& value) { m_logUriHasBeenSet = true; m_logUri = value; }
-
-    /**
-     * <p>Amazon S3 destination URI for log publishing.</p>
-     */
-    inline void SetLogUri(Aws::String&& value) { m_logUriHasBeenSet = true; m_logUri = std::move(value); }
-
-    /**
-     * <p>Amazon S3 destination URI for log publishing.</p>
-     */
-    inline void SetLogUri(const char* value) { m_logUriHasBeenSet = true; m_logUri.assign(value); }
-
-    /**
-     * <p>Amazon S3 destination URI for log publishing.</p>
-     */
-    inline S3MonitoringConfiguration& WithLogUri(const Aws::String& value) { SetLogUri(value); return *this;}
-
-    /**
-     * <p>Amazon S3 destination URI for log publishing.</p>
-     */
-    inline S3MonitoringConfiguration& WithLogUri(Aws::String&& value) { SetLogUri(std::move(value)); return *this;}
-
-    /**
-     * <p>Amazon S3 destination URI for log publishing.</p>
-     */
-    inline S3MonitoringConfiguration& WithLogUri(const char* value) { SetLogUri(value); return *this;}
-
+    template<typename LogUriT = Aws::String>
+    void SetLogUri(LogUriT&& value) { m_logUriHasBeenSet = true; m_logUri = std::forward<LogUriT>(value); }
+    template<typename LogUriT = Aws::String>
+    S3MonitoringConfiguration& WithLogUri(LogUriT&& value) { SetLogUri(std::forward<LogUriT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_logUri;

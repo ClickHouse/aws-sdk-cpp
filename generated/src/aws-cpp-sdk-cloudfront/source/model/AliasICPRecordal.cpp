@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-AliasICPRecordal::AliasICPRecordal() : 
-    m_cNAMEHasBeenSet(false),
-    m_iCPRecordalStatus(ICPRecordalStatus::NOT_SET),
-    m_iCPRecordalStatusHasBeenSet(false)
-{
-}
-
-AliasICPRecordal::AliasICPRecordal(const XmlNode& xmlNode) : 
-    m_cNAMEHasBeenSet(false),
-    m_iCPRecordalStatus(ICPRecordalStatus::NOT_SET),
-    m_iCPRecordalStatusHasBeenSet(false)
+AliasICPRecordal::AliasICPRecordal(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +40,7 @@ AliasICPRecordal& AliasICPRecordal::operator =(const XmlNode& xmlNode)
     XmlNode iCPRecordalStatusNode = resultNode.FirstChild("ICPRecordalStatus");
     if(!iCPRecordalStatusNode.IsNull())
     {
-      m_iCPRecordalStatus = ICPRecordalStatusMapper::GetICPRecordalStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(iCPRecordalStatusNode.GetText()).c_str()).c_str());
+      m_iCPRecordalStatus = ICPRecordalStatusMapper::GetICPRecordalStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(iCPRecordalStatusNode.GetText()).c_str()));
       m_iCPRecordalStatusHasBeenSet = true;
     }
   }

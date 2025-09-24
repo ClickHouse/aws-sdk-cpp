@@ -21,7 +21,7 @@ namespace Model
   class StartCrawlerScheduleRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API StartCrawlerScheduleRequest();
+    AWS_GLUE_API StartCrawlerScheduleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Name of the crawler to schedule.</p>
      */
-    inline const Aws::String& GetCrawlerName() const{ return m_crawlerName; }
-
-    /**
-     * <p>Name of the crawler to schedule.</p>
-     */
+    inline const Aws::String& GetCrawlerName() const { return m_crawlerName; }
     inline bool CrawlerNameHasBeenSet() const { return m_crawlerNameHasBeenSet; }
-
-    /**
-     * <p>Name of the crawler to schedule.</p>
-     */
-    inline void SetCrawlerName(const Aws::String& value) { m_crawlerNameHasBeenSet = true; m_crawlerName = value; }
-
-    /**
-     * <p>Name of the crawler to schedule.</p>
-     */
-    inline void SetCrawlerName(Aws::String&& value) { m_crawlerNameHasBeenSet = true; m_crawlerName = std::move(value); }
-
-    /**
-     * <p>Name of the crawler to schedule.</p>
-     */
-    inline void SetCrawlerName(const char* value) { m_crawlerNameHasBeenSet = true; m_crawlerName.assign(value); }
-
-    /**
-     * <p>Name of the crawler to schedule.</p>
-     */
-    inline StartCrawlerScheduleRequest& WithCrawlerName(const Aws::String& value) { SetCrawlerName(value); return *this;}
-
-    /**
-     * <p>Name of the crawler to schedule.</p>
-     */
-    inline StartCrawlerScheduleRequest& WithCrawlerName(Aws::String&& value) { SetCrawlerName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the crawler to schedule.</p>
-     */
-    inline StartCrawlerScheduleRequest& WithCrawlerName(const char* value) { SetCrawlerName(value); return *this;}
-
+    template<typename CrawlerNameT = Aws::String>
+    void SetCrawlerName(CrawlerNameT&& value) { m_crawlerNameHasBeenSet = true; m_crawlerName = std::forward<CrawlerNameT>(value); }
+    template<typename CrawlerNameT = Aws::String>
+    StartCrawlerScheduleRequest& WithCrawlerName(CrawlerNameT&& value) { SetCrawlerName(std::forward<CrawlerNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_crawlerName;

@@ -31,76 +31,36 @@ namespace Model
   class OTAJobConfig
   {
   public:
-    AWS_PANORAMA_API OTAJobConfig();
+    AWS_PANORAMA_API OTAJobConfig() = default;
     AWS_PANORAMA_API OTAJobConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_PANORAMA_API OTAJobConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PANORAMA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Whether to apply the update if it is a major version change.</p>
      */
-    inline bool GetAllowMajorVersionUpdate() const{ return m_allowMajorVersionUpdate; }
-
-    /**
-     * <p>Whether to apply the update if it is a major version change.</p>
-     */
+    inline bool GetAllowMajorVersionUpdate() const { return m_allowMajorVersionUpdate; }
     inline bool AllowMajorVersionUpdateHasBeenSet() const { return m_allowMajorVersionUpdateHasBeenSet; }
-
-    /**
-     * <p>Whether to apply the update if it is a major version change.</p>
-     */
     inline void SetAllowMajorVersionUpdate(bool value) { m_allowMajorVersionUpdateHasBeenSet = true; m_allowMajorVersionUpdate = value; }
-
-    /**
-     * <p>Whether to apply the update if it is a major version change.</p>
-     */
     inline OTAJobConfig& WithAllowMajorVersionUpdate(bool value) { SetAllowMajorVersionUpdate(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The target version of the device software.</p>
      */
-    inline const Aws::String& GetImageVersion() const{ return m_imageVersion; }
-
-    /**
-     * <p>The target version of the device software.</p>
-     */
+    inline const Aws::String& GetImageVersion() const { return m_imageVersion; }
     inline bool ImageVersionHasBeenSet() const { return m_imageVersionHasBeenSet; }
-
-    /**
-     * <p>The target version of the device software.</p>
-     */
-    inline void SetImageVersion(const Aws::String& value) { m_imageVersionHasBeenSet = true; m_imageVersion = value; }
-
-    /**
-     * <p>The target version of the device software.</p>
-     */
-    inline void SetImageVersion(Aws::String&& value) { m_imageVersionHasBeenSet = true; m_imageVersion = std::move(value); }
-
-    /**
-     * <p>The target version of the device software.</p>
-     */
-    inline void SetImageVersion(const char* value) { m_imageVersionHasBeenSet = true; m_imageVersion.assign(value); }
-
-    /**
-     * <p>The target version of the device software.</p>
-     */
-    inline OTAJobConfig& WithImageVersion(const Aws::String& value) { SetImageVersion(value); return *this;}
-
-    /**
-     * <p>The target version of the device software.</p>
-     */
-    inline OTAJobConfig& WithImageVersion(Aws::String&& value) { SetImageVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The target version of the device software.</p>
-     */
-    inline OTAJobConfig& WithImageVersion(const char* value) { SetImageVersion(value); return *this;}
-
+    template<typename ImageVersionT = Aws::String>
+    void SetImageVersion(ImageVersionT&& value) { m_imageVersionHasBeenSet = true; m_imageVersion = std::forward<ImageVersionT>(value); }
+    template<typename ImageVersionT = Aws::String>
+    OTAJobConfig& WithImageVersion(ImageVersionT&& value) { SetImageVersion(std::forward<ImageVersionT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_allowMajorVersionUpdate;
+    bool m_allowMajorVersionUpdate{false};
     bool m_allowMajorVersionUpdateHasBeenSet = false;
 
     Aws::String m_imageVersion;

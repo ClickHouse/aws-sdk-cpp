@@ -30,126 +30,56 @@ namespace Model
   class DescribeDBProxyTargetsResult
   {
   public:
-    AWS_RDS_API DescribeDBProxyTargetsResult();
+    AWS_RDS_API DescribeDBProxyTargetsResult() = default;
     AWS_RDS_API DescribeDBProxyTargetsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_RDS_API DescribeDBProxyTargetsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>An arbitrary number of <code>DBProxyTarget</code> objects, containing details
      * of the corresponding targets.</p>
      */
-    inline const Aws::Vector<DBProxyTarget>& GetTargets() const{ return m_targets; }
+    inline const Aws::Vector<DBProxyTarget>& GetTargets() const { return m_targets; }
+    template<typename TargetsT = Aws::Vector<DBProxyTarget>>
+    void SetTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets = std::forward<TargetsT>(value); }
+    template<typename TargetsT = Aws::Vector<DBProxyTarget>>
+    DescribeDBProxyTargetsResult& WithTargets(TargetsT&& value) { SetTargets(std::forward<TargetsT>(value)); return *this;}
+    template<typename TargetsT = DBProxyTarget>
+    DescribeDBProxyTargetsResult& AddTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets.emplace_back(std::forward<TargetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An arbitrary number of <code>DBProxyTarget</code> objects, containing details
-     * of the corresponding targets.</p>
-     */
-    inline void SetTargets(const Aws::Vector<DBProxyTarget>& value) { m_targets = value; }
-
-    /**
-     * <p>An arbitrary number of <code>DBProxyTarget</code> objects, containing details
-     * of the corresponding targets.</p>
-     */
-    inline void SetTargets(Aws::Vector<DBProxyTarget>&& value) { m_targets = std::move(value); }
-
-    /**
-     * <p>An arbitrary number of <code>DBProxyTarget</code> objects, containing details
-     * of the corresponding targets.</p>
-     */
-    inline DescribeDBProxyTargetsResult& WithTargets(const Aws::Vector<DBProxyTarget>& value) { SetTargets(value); return *this;}
-
-    /**
-     * <p>An arbitrary number of <code>DBProxyTarget</code> objects, containing details
-     * of the corresponding targets.</p>
-     */
-    inline DescribeDBProxyTargetsResult& WithTargets(Aws::Vector<DBProxyTarget>&& value) { SetTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>An arbitrary number of <code>DBProxyTarget</code> objects, containing details
-     * of the corresponding targets.</p>
-     */
-    inline DescribeDBProxyTargetsResult& AddTargets(const DBProxyTarget& value) { m_targets.push_back(value); return *this; }
-
-    /**
-     * <p>An arbitrary number of <code>DBProxyTarget</code> objects, containing details
-     * of the corresponding targets.</p>
-     */
-    inline DescribeDBProxyTargetsResult& AddTargets(DBProxyTarget&& value) { m_targets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An optional pagination token provided by a previous request. If this
      * parameter is specified, the response includes only records beyond the marker, up
      * to the value specified by <code>MaxRecords</code>.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
+    inline const Aws::String& GetMarker() const { return m_marker; }
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeDBProxyTargetsResult& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_marker = value; }
-
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_marker = std::move(value); }
-
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline void SetMarker(const char* value) { m_marker.assign(value); }
-
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeDBProxyTargetsResult& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeDBProxyTargetsResult& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional pagination token provided by a previous request. If this
-     * parameter is specified, the response includes only records beyond the marker, up
-     * to the value specified by <code>MaxRecords</code>.</p>
-     */
-    inline DescribeDBProxyTargetsResult& WithMarker(const char* value) { SetMarker(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeDBProxyTargetsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeDBProxyTargetsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeDBProxyTargetsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<DBProxyTarget> m_targets;
+    bool m_targetsHasBeenSet = false;
 
     Aws::String m_marker;
+    bool m_markerHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

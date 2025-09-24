@@ -25,7 +25,7 @@ namespace Model
   class ListTrafficDistributionGroupUsersRequest : public ConnectRequest
   {
   public:
-    AWS_CONNECT_API ListTrafficDistributionGroupUsersRequest();
+    AWS_CONNECT_API ListTrafficDistributionGroupUsersRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,146 +38,49 @@ namespace Model
     AWS_CONNECT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the traffic distribution group. This can be the ID or the
      * ARN if the API is being called in the Region where the traffic distribution
      * group was created. The ARN must be provided if the call is from the replicated
      * Region.</p>
      */
-    inline const Aws::String& GetTrafficDistributionGroupId() const{ return m_trafficDistributionGroupId; }
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
+    inline const Aws::String& GetTrafficDistributionGroupId() const { return m_trafficDistributionGroupId; }
     inline bool TrafficDistributionGroupIdHasBeenSet() const { return m_trafficDistributionGroupIdHasBeenSet; }
+    template<typename TrafficDistributionGroupIdT = Aws::String>
+    void SetTrafficDistributionGroupId(TrafficDistributionGroupIdT&& value) { m_trafficDistributionGroupIdHasBeenSet = true; m_trafficDistributionGroupId = std::forward<TrafficDistributionGroupIdT>(value); }
+    template<typename TrafficDistributionGroupIdT = Aws::String>
+    ListTrafficDistributionGroupUsersRequest& WithTrafficDistributionGroupId(TrafficDistributionGroupIdT&& value) { SetTrafficDistributionGroupId(std::forward<TrafficDistributionGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline void SetTrafficDistributionGroupId(const Aws::String& value) { m_trafficDistributionGroupIdHasBeenSet = true; m_trafficDistributionGroupId = value; }
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline void SetTrafficDistributionGroupId(Aws::String&& value) { m_trafficDistributionGroupIdHasBeenSet = true; m_trafficDistributionGroupId = std::move(value); }
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline void SetTrafficDistributionGroupId(const char* value) { m_trafficDistributionGroupIdHasBeenSet = true; m_trafficDistributionGroupId.assign(value); }
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline ListTrafficDistributionGroupUsersRequest& WithTrafficDistributionGroupId(const Aws::String& value) { SetTrafficDistributionGroupId(value); return *this;}
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline ListTrafficDistributionGroupUsersRequest& WithTrafficDistributionGroupId(Aws::String&& value) { SetTrafficDistributionGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the traffic distribution group. This can be the ID or the
-     * ARN if the API is being called in the Region where the traffic distribution
-     * group was created. The ARN must be provided if the call is from the replicated
-     * Region.</p>
-     */
-    inline ListTrafficDistributionGroupUsersRequest& WithTrafficDistributionGroupId(const char* value) { SetTrafficDistributionGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return per page.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return per page.</p>
-     */
     inline ListTrafficDistributionGroupUsersRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token for the next set of results. Use the value returned in the previous
      * response in the next request to retrieve the next set of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListTrafficDistributionGroupUsersRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListTrafficDistributionGroupUsersRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token for the next set of results. Use the value returned in the previous
-     * response in the next request to retrieve the next set of results.</p>
-     */
-    inline ListTrafficDistributionGroupUsersRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListTrafficDistributionGroupUsersRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_trafficDistributionGroupId;
     bool m_trafficDistributionGroupIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

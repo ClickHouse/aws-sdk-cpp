@@ -36,12 +36,13 @@ namespace Model
   class AttackProperty
   {
   public:
-    AWS_SHIELD_API AttackProperty();
+    AWS_SHIELD_API AttackProperty() = default;
     AWS_SHIELD_API AttackProperty(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API AttackProperty& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of Shield event that was observed. <code>NETWORK</code> indicates
      * layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7
@@ -51,242 +52,76 @@ namespace Model
      * href="https://docs.aws.amazon.com/waf/latest/developerguide/monitoring-cloudwatch.html#set-ddos-alarms">Shield
      * metrics and alarms</a> in the <i>WAF Developer Guide</i>. </p>
      */
-    inline const AttackLayer& GetAttackLayer() const{ return m_attackLayer; }
-
-    /**
-     * <p>The type of Shield event that was observed. <code>NETWORK</code> indicates
-     * layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7
-     * events.</p> <p>For infrastructure layer events (L3 and L4 events), you can view
-     * metrics for top contributors in Amazon CloudWatch metrics. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/monitoring-cloudwatch.html#set-ddos-alarms">Shield
-     * metrics and alarms</a> in the <i>WAF Developer Guide</i>. </p>
-     */
+    inline AttackLayer GetAttackLayer() const { return m_attackLayer; }
     inline bool AttackLayerHasBeenSet() const { return m_attackLayerHasBeenSet; }
+    inline void SetAttackLayer(AttackLayer value) { m_attackLayerHasBeenSet = true; m_attackLayer = value; }
+    inline AttackProperty& WithAttackLayer(AttackLayer value) { SetAttackLayer(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of Shield event that was observed. <code>NETWORK</code> indicates
-     * layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7
-     * events.</p> <p>For infrastructure layer events (L3 and L4 events), you can view
-     * metrics for top contributors in Amazon CloudWatch metrics. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/monitoring-cloudwatch.html#set-ddos-alarms">Shield
-     * metrics and alarms</a> in the <i>WAF Developer Guide</i>. </p>
-     */
-    inline void SetAttackLayer(const AttackLayer& value) { m_attackLayerHasBeenSet = true; m_attackLayer = value; }
-
-    /**
-     * <p>The type of Shield event that was observed. <code>NETWORK</code> indicates
-     * layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7
-     * events.</p> <p>For infrastructure layer events (L3 and L4 events), you can view
-     * metrics for top contributors in Amazon CloudWatch metrics. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/monitoring-cloudwatch.html#set-ddos-alarms">Shield
-     * metrics and alarms</a> in the <i>WAF Developer Guide</i>. </p>
-     */
-    inline void SetAttackLayer(AttackLayer&& value) { m_attackLayerHasBeenSet = true; m_attackLayer = std::move(value); }
-
-    /**
-     * <p>The type of Shield event that was observed. <code>NETWORK</code> indicates
-     * layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7
-     * events.</p> <p>For infrastructure layer events (L3 and L4 events), you can view
-     * metrics for top contributors in Amazon CloudWatch metrics. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/monitoring-cloudwatch.html#set-ddos-alarms">Shield
-     * metrics and alarms</a> in the <i>WAF Developer Guide</i>. </p>
-     */
-    inline AttackProperty& WithAttackLayer(const AttackLayer& value) { SetAttackLayer(value); return *this;}
-
-    /**
-     * <p>The type of Shield event that was observed. <code>NETWORK</code> indicates
-     * layer 3 and layer 4 events and <code>APPLICATION</code> indicates layer 7
-     * events.</p> <p>For infrastructure layer events (L3 and L4 events), you can view
-     * metrics for top contributors in Amazon CloudWatch metrics. For more information,
-     * see <a
-     * href="https://docs.aws.amazon.com/waf/latest/developerguide/monitoring-cloudwatch.html#set-ddos-alarms">Shield
-     * metrics and alarms</a> in the <i>WAF Developer Guide</i>. </p>
-     */
-    inline AttackProperty& WithAttackLayer(AttackLayer&& value) { SetAttackLayer(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Defines the Shield event property information that is provided. The
      * <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
      * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress
      * reflective pingback events.</p>
      */
-    inline const AttackPropertyIdentifier& GetAttackPropertyIdentifier() const{ return m_attackPropertyIdentifier; }
-
-    /**
-     * <p>Defines the Shield event property information that is provided. The
-     * <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
-     * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress
-     * reflective pingback events.</p>
-     */
+    inline AttackPropertyIdentifier GetAttackPropertyIdentifier() const { return m_attackPropertyIdentifier; }
     inline bool AttackPropertyIdentifierHasBeenSet() const { return m_attackPropertyIdentifierHasBeenSet; }
+    inline void SetAttackPropertyIdentifier(AttackPropertyIdentifier value) { m_attackPropertyIdentifierHasBeenSet = true; m_attackPropertyIdentifier = value; }
+    inline AttackProperty& WithAttackPropertyIdentifier(AttackPropertyIdentifier value) { SetAttackPropertyIdentifier(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Defines the Shield event property information that is provided. The
-     * <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
-     * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress
-     * reflective pingback events.</p>
-     */
-    inline void SetAttackPropertyIdentifier(const AttackPropertyIdentifier& value) { m_attackPropertyIdentifierHasBeenSet = true; m_attackPropertyIdentifier = value; }
-
-    /**
-     * <p>Defines the Shield event property information that is provided. The
-     * <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
-     * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress
-     * reflective pingback events.</p>
-     */
-    inline void SetAttackPropertyIdentifier(AttackPropertyIdentifier&& value) { m_attackPropertyIdentifierHasBeenSet = true; m_attackPropertyIdentifier = std::move(value); }
-
-    /**
-     * <p>Defines the Shield event property information that is provided. The
-     * <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
-     * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress
-     * reflective pingback events.</p>
-     */
-    inline AttackProperty& WithAttackPropertyIdentifier(const AttackPropertyIdentifier& value) { SetAttackPropertyIdentifier(value); return *this;}
-
-    /**
-     * <p>Defines the Shield event property information that is provided. The
-     * <code>WORDPRESS_PINGBACK_REFLECTOR</code> and
-     * <code>WORDPRESS_PINGBACK_SOURCE</code> values are valid only for WordPress
-     * reflective pingback events.</p>
-     */
-    inline AttackProperty& WithAttackPropertyIdentifier(AttackPropertyIdentifier&& value) { SetAttackPropertyIdentifier(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contributor objects for the top five contributors to a Shield event. A
      * contributor is a source of traffic that Shield Advanced identifies as
      * responsible for some or all of an event.</p>
      */
-    inline const Aws::Vector<Contributor>& GetTopContributors() const{ return m_topContributors; }
-
-    /**
-     * <p>Contributor objects for the top five contributors to a Shield event. A
-     * contributor is a source of traffic that Shield Advanced identifies as
-     * responsible for some or all of an event.</p>
-     */
+    inline const Aws::Vector<Contributor>& GetTopContributors() const { return m_topContributors; }
     inline bool TopContributorsHasBeenSet() const { return m_topContributorsHasBeenSet; }
+    template<typename TopContributorsT = Aws::Vector<Contributor>>
+    void SetTopContributors(TopContributorsT&& value) { m_topContributorsHasBeenSet = true; m_topContributors = std::forward<TopContributorsT>(value); }
+    template<typename TopContributorsT = Aws::Vector<Contributor>>
+    AttackProperty& WithTopContributors(TopContributorsT&& value) { SetTopContributors(std::forward<TopContributorsT>(value)); return *this;}
+    template<typename TopContributorsT = Contributor>
+    AttackProperty& AddTopContributors(TopContributorsT&& value) { m_topContributorsHasBeenSet = true; m_topContributors.emplace_back(std::forward<TopContributorsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contributor objects for the top five contributors to a Shield event. A
-     * contributor is a source of traffic that Shield Advanced identifies as
-     * responsible for some or all of an event.</p>
-     */
-    inline void SetTopContributors(const Aws::Vector<Contributor>& value) { m_topContributorsHasBeenSet = true; m_topContributors = value; }
-
-    /**
-     * <p>Contributor objects for the top five contributors to a Shield event. A
-     * contributor is a source of traffic that Shield Advanced identifies as
-     * responsible for some or all of an event.</p>
-     */
-    inline void SetTopContributors(Aws::Vector<Contributor>&& value) { m_topContributorsHasBeenSet = true; m_topContributors = std::move(value); }
-
-    /**
-     * <p>Contributor objects for the top five contributors to a Shield event. A
-     * contributor is a source of traffic that Shield Advanced identifies as
-     * responsible for some or all of an event.</p>
-     */
-    inline AttackProperty& WithTopContributors(const Aws::Vector<Contributor>& value) { SetTopContributors(value); return *this;}
-
-    /**
-     * <p>Contributor objects for the top five contributors to a Shield event. A
-     * contributor is a source of traffic that Shield Advanced identifies as
-     * responsible for some or all of an event.</p>
-     */
-    inline AttackProperty& WithTopContributors(Aws::Vector<Contributor>&& value) { SetTopContributors(std::move(value)); return *this;}
-
-    /**
-     * <p>Contributor objects for the top five contributors to a Shield event. A
-     * contributor is a source of traffic that Shield Advanced identifies as
-     * responsible for some or all of an event.</p>
-     */
-    inline AttackProperty& AddTopContributors(const Contributor& value) { m_topContributorsHasBeenSet = true; m_topContributors.push_back(value); return *this; }
-
-    /**
-     * <p>Contributor objects for the top five contributors to a Shield event. A
-     * contributor is a source of traffic that Shield Advanced identifies as
-     * responsible for some or all of an event.</p>
-     */
-    inline AttackProperty& AddTopContributors(Contributor&& value) { m_topContributorsHasBeenSet = true; m_topContributors.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The unit used for the <code>Contributor</code> <code>Value</code> property.
      * </p>
      */
-    inline const Unit& GetUnit() const{ return m_unit; }
-
-    /**
-     * <p>The unit used for the <code>Contributor</code> <code>Value</code> property.
-     * </p>
-     */
+    inline Unit GetUnit() const { return m_unit; }
     inline bool UnitHasBeenSet() const { return m_unitHasBeenSet; }
+    inline void SetUnit(Unit value) { m_unitHasBeenSet = true; m_unit = value; }
+    inline AttackProperty& WithUnit(Unit value) { SetUnit(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The unit used for the <code>Contributor</code> <code>Value</code> property.
-     * </p>
-     */
-    inline void SetUnit(const Unit& value) { m_unitHasBeenSet = true; m_unit = value; }
-
-    /**
-     * <p>The unit used for the <code>Contributor</code> <code>Value</code> property.
-     * </p>
-     */
-    inline void SetUnit(Unit&& value) { m_unitHasBeenSet = true; m_unit = std::move(value); }
-
-    /**
-     * <p>The unit used for the <code>Contributor</code> <code>Value</code> property.
-     * </p>
-     */
-    inline AttackProperty& WithUnit(const Unit& value) { SetUnit(value); return *this;}
-
-    /**
-     * <p>The unit used for the <code>Contributor</code> <code>Value</code> property.
-     * </p>
-     */
-    inline AttackProperty& WithUnit(Unit&& value) { SetUnit(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The total contributions made to this Shield event by all contributors.</p>
      */
-    inline long long GetTotal() const{ return m_total; }
-
-    /**
-     * <p>The total contributions made to this Shield event by all contributors.</p>
-     */
+    inline long long GetTotal() const { return m_total; }
     inline bool TotalHasBeenSet() const { return m_totalHasBeenSet; }
-
-    /**
-     * <p>The total contributions made to this Shield event by all contributors.</p>
-     */
     inline void SetTotal(long long value) { m_totalHasBeenSet = true; m_total = value; }
-
-    /**
-     * <p>The total contributions made to this Shield event by all contributors.</p>
-     */
     inline AttackProperty& WithTotal(long long value) { SetTotal(value); return *this;}
-
+    ///@}
   private:
 
-    AttackLayer m_attackLayer;
+    AttackLayer m_attackLayer{AttackLayer::NOT_SET};
     bool m_attackLayerHasBeenSet = false;
 
-    AttackPropertyIdentifier m_attackPropertyIdentifier;
+    AttackPropertyIdentifier m_attackPropertyIdentifier{AttackPropertyIdentifier::NOT_SET};
     bool m_attackPropertyIdentifierHasBeenSet = false;
 
     Aws::Vector<Contributor> m_topContributors;
     bool m_topContributorsHasBeenSet = false;
 
-    Unit m_unit;
+    Unit m_unit{Unit::NOT_SET};
     bool m_unitHasBeenSet = false;
 
-    long long m_total;
+    long long m_total{0};
     bool m_totalHasBeenSet = false;
   };
 

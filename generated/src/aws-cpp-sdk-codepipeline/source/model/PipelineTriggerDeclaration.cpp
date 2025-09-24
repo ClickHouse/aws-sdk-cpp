@@ -18,17 +18,7 @@ namespace CodePipeline
 namespace Model
 {
 
-PipelineTriggerDeclaration::PipelineTriggerDeclaration() : 
-    m_providerType(PipelineTriggerProviderType::NOT_SET),
-    m_providerTypeHasBeenSet(false),
-    m_gitConfigurationHasBeenSet(false)
-{
-}
-
-PipelineTriggerDeclaration::PipelineTriggerDeclaration(JsonView jsonValue) : 
-    m_providerType(PipelineTriggerProviderType::NOT_SET),
-    m_providerTypeHasBeenSet(false),
-    m_gitConfigurationHasBeenSet(false)
+PipelineTriggerDeclaration::PipelineTriggerDeclaration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PipelineTriggerDeclaration& PipelineTriggerDeclaration::operator =(JsonView json
   if(jsonValue.ValueExists("providerType"))
   {
     m_providerType = PipelineTriggerProviderTypeMapper::GetPipelineTriggerProviderTypeForName(jsonValue.GetString("providerType"));
-
     m_providerTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("gitConfiguration"))
   {
     m_gitConfiguration = jsonValue.GetObject("gitConfiguration");
-
     m_gitConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

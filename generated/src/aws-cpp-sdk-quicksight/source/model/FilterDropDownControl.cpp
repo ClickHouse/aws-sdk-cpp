@@ -18,27 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-FilterDropDownControl::FilterDropDownControl() : 
-    m_filterControlIdHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_sourceFilterIdHasBeenSet(false),
-    m_displayOptionsHasBeenSet(false),
-    m_type(SheetControlListType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_selectableValuesHasBeenSet(false),
-    m_cascadingControlConfigurationHasBeenSet(false)
-{
-}
-
-FilterDropDownControl::FilterDropDownControl(JsonView jsonValue) : 
-    m_filterControlIdHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_sourceFilterIdHasBeenSet(false),
-    m_displayOptionsHasBeenSet(false),
-    m_type(SheetControlListType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_selectableValuesHasBeenSet(false),
-    m_cascadingControlConfigurationHasBeenSet(false)
+FilterDropDownControl::FilterDropDownControl(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,52 +28,43 @@ FilterDropDownControl& FilterDropDownControl::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FilterControlId"))
   {
     m_filterControlId = jsonValue.GetString("FilterControlId");
-
     m_filterControlIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Title"))
   {
     m_title = jsonValue.GetString("Title");
-
     m_titleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceFilterId"))
   {
     m_sourceFilterId = jsonValue.GetString("SourceFilterId");
-
     m_sourceFilterIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisplayOptions"))
   {
     m_displayOptions = jsonValue.GetObject("DisplayOptions");
-
     m_displayOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = SheetControlListTypeMapper::GetSheetControlListTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SelectableValues"))
   {
     m_selectableValues = jsonValue.GetObject("SelectableValues");
-
     m_selectableValuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CascadingControlConfiguration"))
   {
     m_cascadingControlConfiguration = jsonValue.GetObject("CascadingControlConfiguration");
-
     m_cascadingControlConfigurationHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CommitMode"))
+  {
+    m_commitMode = CommitModeMapper::GetCommitModeForName(jsonValue.GetString("CommitMode"));
+    m_commitModeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -140,6 +111,11 @@ JsonValue FilterDropDownControl::Jsonize() const
   {
    payload.WithObject("CascadingControlConfiguration", m_cascadingControlConfiguration.Jsonize());
 
+  }
+
+  if(m_commitModeHasBeenSet)
+  {
+   payload.WithString("CommitMode", CommitModeMapper::GetNameForCommitMode(m_commitMode));
   }
 
   return payload;

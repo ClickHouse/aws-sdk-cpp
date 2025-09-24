@@ -33,11 +33,12 @@ namespace Model
   class UpdateFileSystemProtectionResult
   {
   public:
-    AWS_EFS_API UpdateFileSystemProtectionResult();
+    AWS_EFS_API UpdateFileSystemProtectionResult() = default;
     AWS_EFS_API UpdateFileSystemProtectionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EFS_API UpdateFileSystemProtectionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The status of the file system's replication overwrite protection.</p> <ul>
      * <li> <p> <code>ENABLED</code> – The file system cannot be used as the
@@ -47,104 +48,31 @@ namespace Model
      * destination file system in a replication configuration. The file system is
      * read-only and can only be modified by EFS replication.</p> </li> <li> <p>
      * <code>REPLICATING</code> – The file system is being used as the destination file
-     * system in a replication configuration. The file system is read-only and is only
+     * system in a replication configuration. The file system is read-only and is
      * modified only by EFS replication.</p> </li> </ul> <p>If the replication
      * configuration is deleted, the file system's replication overwrite protection is
      * re-enabled, the file system becomes writeable.</p>
      */
-    inline const ReplicationOverwriteProtection& GetReplicationOverwriteProtection() const{ return m_replicationOverwriteProtection; }
+    inline ReplicationOverwriteProtection GetReplicationOverwriteProtection() const { return m_replicationOverwriteProtection; }
+    inline void SetReplicationOverwriteProtection(ReplicationOverwriteProtection value) { m_replicationOverwriteProtectionHasBeenSet = true; m_replicationOverwriteProtection = value; }
+    inline UpdateFileSystemProtectionResult& WithReplicationOverwriteProtection(ReplicationOverwriteProtection value) { SetReplicationOverwriteProtection(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the file system's replication overwrite protection.</p> <ul>
-     * <li> <p> <code>ENABLED</code> – The file system cannot be used as the
-     * destination file system in a replication configuration. The file system is
-     * writeable. Replication overwrite protection is <code>ENABLED</code> by default.
-     * </p> </li> <li> <p> <code>DISABLED</code> – The file system can be used as the
-     * destination file system in a replication configuration. The file system is
-     * read-only and can only be modified by EFS replication.</p> </li> <li> <p>
-     * <code>REPLICATING</code> – The file system is being used as the destination file
-     * system in a replication configuration. The file system is read-only and is only
-     * modified only by EFS replication.</p> </li> </ul> <p>If the replication
-     * configuration is deleted, the file system's replication overwrite protection is
-     * re-enabled, the file system becomes writeable.</p>
-     */
-    inline void SetReplicationOverwriteProtection(const ReplicationOverwriteProtection& value) { m_replicationOverwriteProtection = value; }
-
-    /**
-     * <p>The status of the file system's replication overwrite protection.</p> <ul>
-     * <li> <p> <code>ENABLED</code> – The file system cannot be used as the
-     * destination file system in a replication configuration. The file system is
-     * writeable. Replication overwrite protection is <code>ENABLED</code> by default.
-     * </p> </li> <li> <p> <code>DISABLED</code> – The file system can be used as the
-     * destination file system in a replication configuration. The file system is
-     * read-only and can only be modified by EFS replication.</p> </li> <li> <p>
-     * <code>REPLICATING</code> – The file system is being used as the destination file
-     * system in a replication configuration. The file system is read-only and is only
-     * modified only by EFS replication.</p> </li> </ul> <p>If the replication
-     * configuration is deleted, the file system's replication overwrite protection is
-     * re-enabled, the file system becomes writeable.</p>
-     */
-    inline void SetReplicationOverwriteProtection(ReplicationOverwriteProtection&& value) { m_replicationOverwriteProtection = std::move(value); }
-
-    /**
-     * <p>The status of the file system's replication overwrite protection.</p> <ul>
-     * <li> <p> <code>ENABLED</code> – The file system cannot be used as the
-     * destination file system in a replication configuration. The file system is
-     * writeable. Replication overwrite protection is <code>ENABLED</code> by default.
-     * </p> </li> <li> <p> <code>DISABLED</code> – The file system can be used as the
-     * destination file system in a replication configuration. The file system is
-     * read-only and can only be modified by EFS replication.</p> </li> <li> <p>
-     * <code>REPLICATING</code> – The file system is being used as the destination file
-     * system in a replication configuration. The file system is read-only and is only
-     * modified only by EFS replication.</p> </li> </ul> <p>If the replication
-     * configuration is deleted, the file system's replication overwrite protection is
-     * re-enabled, the file system becomes writeable.</p>
-     */
-    inline UpdateFileSystemProtectionResult& WithReplicationOverwriteProtection(const ReplicationOverwriteProtection& value) { SetReplicationOverwriteProtection(value); return *this;}
-
-    /**
-     * <p>The status of the file system's replication overwrite protection.</p> <ul>
-     * <li> <p> <code>ENABLED</code> – The file system cannot be used as the
-     * destination file system in a replication configuration. The file system is
-     * writeable. Replication overwrite protection is <code>ENABLED</code> by default.
-     * </p> </li> <li> <p> <code>DISABLED</code> – The file system can be used as the
-     * destination file system in a replication configuration. The file system is
-     * read-only and can only be modified by EFS replication.</p> </li> <li> <p>
-     * <code>REPLICATING</code> – The file system is being used as the destination file
-     * system in a replication configuration. The file system is read-only and is only
-     * modified only by EFS replication.</p> </li> </ul> <p>If the replication
-     * configuration is deleted, the file system's replication overwrite protection is
-     * re-enabled, the file system becomes writeable.</p>
-     */
-    inline UpdateFileSystemProtectionResult& WithReplicationOverwriteProtection(ReplicationOverwriteProtection&& value) { SetReplicationOverwriteProtection(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateFileSystemProtectionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateFileSystemProtectionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateFileSystemProtectionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateFileSystemProtectionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    ReplicationOverwriteProtection m_replicationOverwriteProtection;
+    ReplicationOverwriteProtection m_replicationOverwriteProtection{ReplicationOverwriteProtection::NOT_SET};
+    bool m_replicationOverwriteProtectionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

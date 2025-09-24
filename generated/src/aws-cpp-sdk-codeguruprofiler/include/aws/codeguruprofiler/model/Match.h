@@ -32,111 +32,53 @@ namespace Model
   class Match
   {
   public:
-    AWS_CODEGURUPROFILER_API Match();
+    AWS_CODEGURUPROFILER_API Match() = default;
     AWS_CODEGURUPROFILER_API Match(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUPROFILER_API Match& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEGURUPROFILER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The location in the profiling graph that contains a recommendation found
      * during analysis.</p>
      */
-    inline const Aws::String& GetFrameAddress() const{ return m_frameAddress; }
-
-    /**
-     * <p>The location in the profiling graph that contains a recommendation found
-     * during analysis.</p>
-     */
+    inline const Aws::String& GetFrameAddress() const { return m_frameAddress; }
     inline bool FrameAddressHasBeenSet() const { return m_frameAddressHasBeenSet; }
+    template<typename FrameAddressT = Aws::String>
+    void SetFrameAddress(FrameAddressT&& value) { m_frameAddressHasBeenSet = true; m_frameAddress = std::forward<FrameAddressT>(value); }
+    template<typename FrameAddressT = Aws::String>
+    Match& WithFrameAddress(FrameAddressT&& value) { SetFrameAddress(std::forward<FrameAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location in the profiling graph that contains a recommendation found
-     * during analysis.</p>
-     */
-    inline void SetFrameAddress(const Aws::String& value) { m_frameAddressHasBeenSet = true; m_frameAddress = value; }
-
-    /**
-     * <p>The location in the profiling graph that contains a recommendation found
-     * during analysis.</p>
-     */
-    inline void SetFrameAddress(Aws::String&& value) { m_frameAddressHasBeenSet = true; m_frameAddress = std::move(value); }
-
-    /**
-     * <p>The location in the profiling graph that contains a recommendation found
-     * during analysis.</p>
-     */
-    inline void SetFrameAddress(const char* value) { m_frameAddressHasBeenSet = true; m_frameAddress.assign(value); }
-
-    /**
-     * <p>The location in the profiling graph that contains a recommendation found
-     * during analysis.</p>
-     */
-    inline Match& WithFrameAddress(const Aws::String& value) { SetFrameAddress(value); return *this;}
-
-    /**
-     * <p>The location in the profiling graph that contains a recommendation found
-     * during analysis.</p>
-     */
-    inline Match& WithFrameAddress(Aws::String&& value) { SetFrameAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The location in the profiling graph that contains a recommendation found
-     * during analysis.</p>
-     */
-    inline Match& WithFrameAddress(const char* value) { SetFrameAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The target frame that triggered a match.</p>
      */
-    inline int GetTargetFramesIndex() const{ return m_targetFramesIndex; }
-
-    /**
-     * <p>The target frame that triggered a match.</p>
-     */
+    inline int GetTargetFramesIndex() const { return m_targetFramesIndex; }
     inline bool TargetFramesIndexHasBeenSet() const { return m_targetFramesIndexHasBeenSet; }
-
-    /**
-     * <p>The target frame that triggered a match.</p>
-     */
     inline void SetTargetFramesIndex(int value) { m_targetFramesIndexHasBeenSet = true; m_targetFramesIndex = value; }
-
-    /**
-     * <p>The target frame that triggered a match.</p>
-     */
     inline Match& WithTargetFramesIndex(int value) { SetTargetFramesIndex(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The value in the profile data that exceeded the recommendation threshold.</p>
      */
-    inline double GetThresholdBreachValue() const{ return m_thresholdBreachValue; }
-
-    /**
-     * <p>The value in the profile data that exceeded the recommendation threshold.</p>
-     */
+    inline double GetThresholdBreachValue() const { return m_thresholdBreachValue; }
     inline bool ThresholdBreachValueHasBeenSet() const { return m_thresholdBreachValueHasBeenSet; }
-
-    /**
-     * <p>The value in the profile data that exceeded the recommendation threshold.</p>
-     */
     inline void SetThresholdBreachValue(double value) { m_thresholdBreachValueHasBeenSet = true; m_thresholdBreachValue = value; }
-
-    /**
-     * <p>The value in the profile data that exceeded the recommendation threshold.</p>
-     */
     inline Match& WithThresholdBreachValue(double value) { SetThresholdBreachValue(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_frameAddress;
     bool m_frameAddressHasBeenSet = false;
 
-    int m_targetFramesIndex;
+    int m_targetFramesIndex{0};
     bool m_targetFramesIndexHasBeenSet = false;
 
-    double m_thresholdBreachValue;
+    double m_thresholdBreachValue{0.0};
     bool m_thresholdBreachValueHasBeenSet = false;
   };
 

@@ -21,7 +21,7 @@ namespace Model
   class DeleteEmailMonitoringConfigurationRequest : public WorkMailRequest
   {
   public:
-    AWS_WORKMAIL_API DeleteEmailMonitoringConfigurationRequest();
+    AWS_WORKMAIL_API DeleteEmailMonitoringConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_WORKMAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the organization from which the email monitoring configuration is
      * deleted.</p>
      */
-    inline const Aws::String& GetOrganizationId() const{ return m_organizationId; }
-
-    /**
-     * <p>The ID of the organization from which the email monitoring configuration is
-     * deleted.</p>
-     */
+    inline const Aws::String& GetOrganizationId() const { return m_organizationId; }
     inline bool OrganizationIdHasBeenSet() const { return m_organizationIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the organization from which the email monitoring configuration is
-     * deleted.</p>
-     */
-    inline void SetOrganizationId(const Aws::String& value) { m_organizationIdHasBeenSet = true; m_organizationId = value; }
-
-    /**
-     * <p>The ID of the organization from which the email monitoring configuration is
-     * deleted.</p>
-     */
-    inline void SetOrganizationId(Aws::String&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::move(value); }
-
-    /**
-     * <p>The ID of the organization from which the email monitoring configuration is
-     * deleted.</p>
-     */
-    inline void SetOrganizationId(const char* value) { m_organizationIdHasBeenSet = true; m_organizationId.assign(value); }
-
-    /**
-     * <p>The ID of the organization from which the email monitoring configuration is
-     * deleted.</p>
-     */
-    inline DeleteEmailMonitoringConfigurationRequest& WithOrganizationId(const Aws::String& value) { SetOrganizationId(value); return *this;}
-
-    /**
-     * <p>The ID of the organization from which the email monitoring configuration is
-     * deleted.</p>
-     */
-    inline DeleteEmailMonitoringConfigurationRequest& WithOrganizationId(Aws::String&& value) { SetOrganizationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the organization from which the email monitoring configuration is
-     * deleted.</p>
-     */
-    inline DeleteEmailMonitoringConfigurationRequest& WithOrganizationId(const char* value) { SetOrganizationId(value); return *this;}
-
+    template<typename OrganizationIdT = Aws::String>
+    void SetOrganizationId(OrganizationIdT&& value) { m_organizationIdHasBeenSet = true; m_organizationId = std::forward<OrganizationIdT>(value); }
+    template<typename OrganizationIdT = Aws::String>
+    DeleteEmailMonitoringConfigurationRequest& WithOrganizationId(OrganizationIdT&& value) { SetOrganizationId(std::forward<OrganizationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_organizationId;

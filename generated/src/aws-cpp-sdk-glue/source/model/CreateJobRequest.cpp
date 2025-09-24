@@ -12,37 +12,6 @@ using namespace Aws::Glue::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateJobRequest::CreateJobRequest() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_logUriHasBeenSet(false),
-    m_roleHasBeenSet(false),
-    m_executionPropertyHasBeenSet(false),
-    m_commandHasBeenSet(false),
-    m_defaultArgumentsHasBeenSet(false),
-    m_nonOverridableArgumentsHasBeenSet(false),
-    m_connectionsHasBeenSet(false),
-    m_maxRetries(0),
-    m_maxRetriesHasBeenSet(false),
-    m_timeout(0),
-    m_timeoutHasBeenSet(false),
-    m_maxCapacity(0.0),
-    m_maxCapacityHasBeenSet(false),
-    m_securityConfigurationHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_notificationPropertyHasBeenSet(false),
-    m_glueVersionHasBeenSet(false),
-    m_numberOfWorkers(0),
-    m_numberOfWorkersHasBeenSet(false),
-    m_workerType(WorkerType::NOT_SET),
-    m_workerTypeHasBeenSet(false),
-    m_codeGenConfigurationNodesHasBeenSet(false),
-    m_executionClass(ExecutionClass::NOT_SET),
-    m_executionClassHasBeenSet(false),
-    m_sourceControlDetailsHasBeenSet(false)
-{
-}
-
 Aws::String CreateJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -50,6 +19,17 @@ Aws::String CreateJobRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("Name", m_name);
+
+  }
+
+  if(m_jobModeHasBeenSet)
+  {
+   payload.WithString("JobMode", JobModeMapper::GetNameForJobMode(m_jobMode));
+  }
+
+  if(m_jobRunQueuingEnabledHasBeenSet)
+  {
+   payload.WithBool("JobRunQueuingEnabled", m_jobRunQueuingEnabled);
 
   }
 
@@ -188,6 +168,12 @@ Aws::String CreateJobRequest::SerializePayload() const
   if(m_sourceControlDetailsHasBeenSet)
   {
    payload.WithObject("SourceControlDetails", m_sourceControlDetails.Jsonize());
+
+  }
+
+  if(m_maintenanceWindowHasBeenSet)
+  {
+   payload.WithString("MaintenanceWindow", m_maintenanceWindow);
 
   }
 

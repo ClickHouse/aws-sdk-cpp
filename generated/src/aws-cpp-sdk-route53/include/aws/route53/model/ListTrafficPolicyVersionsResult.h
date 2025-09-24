@@ -35,79 +35,38 @@ namespace Model
   class ListTrafficPolicyVersionsResult
   {
   public:
-    AWS_ROUTE53_API ListTrafficPolicyVersionsResult();
+    AWS_ROUTE53_API ListTrafficPolicyVersionsResult() = default;
     AWS_ROUTE53_API ListTrafficPolicyVersionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_ROUTE53_API ListTrafficPolicyVersionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>A list that contains one <code>TrafficPolicy</code> element for each traffic
      * policy version that is associated with the specified traffic policy.</p>
      */
-    inline const Aws::Vector<TrafficPolicy>& GetTrafficPolicies() const{ return m_trafficPolicies; }
+    inline const Aws::Vector<TrafficPolicy>& GetTrafficPolicies() const { return m_trafficPolicies; }
+    template<typename TrafficPoliciesT = Aws::Vector<TrafficPolicy>>
+    void SetTrafficPolicies(TrafficPoliciesT&& value) { m_trafficPoliciesHasBeenSet = true; m_trafficPolicies = std::forward<TrafficPoliciesT>(value); }
+    template<typename TrafficPoliciesT = Aws::Vector<TrafficPolicy>>
+    ListTrafficPolicyVersionsResult& WithTrafficPolicies(TrafficPoliciesT&& value) { SetTrafficPolicies(std::forward<TrafficPoliciesT>(value)); return *this;}
+    template<typename TrafficPoliciesT = TrafficPolicy>
+    ListTrafficPolicyVersionsResult& AddTrafficPolicies(TrafficPoliciesT&& value) { m_trafficPoliciesHasBeenSet = true; m_trafficPolicies.emplace_back(std::forward<TrafficPoliciesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list that contains one <code>TrafficPolicy</code> element for each traffic
-     * policy version that is associated with the specified traffic policy.</p>
-     */
-    inline void SetTrafficPolicies(const Aws::Vector<TrafficPolicy>& value) { m_trafficPolicies = value; }
-
-    /**
-     * <p>A list that contains one <code>TrafficPolicy</code> element for each traffic
-     * policy version that is associated with the specified traffic policy.</p>
-     */
-    inline void SetTrafficPolicies(Aws::Vector<TrafficPolicy>&& value) { m_trafficPolicies = std::move(value); }
-
-    /**
-     * <p>A list that contains one <code>TrafficPolicy</code> element for each traffic
-     * policy version that is associated with the specified traffic policy.</p>
-     */
-    inline ListTrafficPolicyVersionsResult& WithTrafficPolicies(const Aws::Vector<TrafficPolicy>& value) { SetTrafficPolicies(value); return *this;}
-
-    /**
-     * <p>A list that contains one <code>TrafficPolicy</code> element for each traffic
-     * policy version that is associated with the specified traffic policy.</p>
-     */
-    inline ListTrafficPolicyVersionsResult& WithTrafficPolicies(Aws::Vector<TrafficPolicy>&& value) { SetTrafficPolicies(std::move(value)); return *this;}
-
-    /**
-     * <p>A list that contains one <code>TrafficPolicy</code> element for each traffic
-     * policy version that is associated with the specified traffic policy.</p>
-     */
-    inline ListTrafficPolicyVersionsResult& AddTrafficPolicies(const TrafficPolicy& value) { m_trafficPolicies.push_back(value); return *this; }
-
-    /**
-     * <p>A list that contains one <code>TrafficPolicy</code> element for each traffic
-     * policy version that is associated with the specified traffic policy.</p>
-     */
-    inline ListTrafficPolicyVersionsResult& AddTrafficPolicies(TrafficPolicy&& value) { m_trafficPolicies.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A flag that indicates whether there are more traffic policies to be listed.
      * If the response was truncated, you can get the next group of traffic policies by
      * submitting another <code>ListTrafficPolicyVersions</code> request and specifying
      * the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
      */
-    inline bool GetIsTruncated() const{ return m_isTruncated; }
-
-    /**
-     * <p>A flag that indicates whether there are more traffic policies to be listed.
-     * If the response was truncated, you can get the next group of traffic policies by
-     * submitting another <code>ListTrafficPolicyVersions</code> request and specifying
-     * the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
-     */
-    inline void SetIsTruncated(bool value) { m_isTruncated = value; }
-
-    /**
-     * <p>A flag that indicates whether there are more traffic policies to be listed.
-     * If the response was truncated, you can get the next group of traffic policies by
-     * submitting another <code>ListTrafficPolicyVersions</code> request and specifying
-     * the value of <code>NextMarker</code> in the <code>marker</code> parameter.</p>
-     */
+    inline bool GetIsTruncated() const { return m_isTruncated; }
+    inline void SetIsTruncated(bool value) { m_isTruncatedHasBeenSet = true; m_isTruncated = value; }
     inline ListTrafficPolicyVersionsResult& WithIsTruncated(bool value) { SetIsTruncated(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>If <code>IsTruncated</code> is <code>true</code>, the value of
      * <code>TrafficPolicyVersionMarker</code> identifies the first traffic policy that
@@ -117,157 +76,50 @@ namespace Model
      * <code>TrafficPolicyVersionMarker</code> request parameter.</p> <p>This element
      * is present only if <code>IsTruncated</code> is <code>true</code>.</p>
      */
-    inline const Aws::String& GetTrafficPolicyVersionMarker() const{ return m_trafficPolicyVersionMarker; }
+    inline const Aws::String& GetTrafficPolicyVersionMarker() const { return m_trafficPolicyVersionMarker; }
+    template<typename TrafficPolicyVersionMarkerT = Aws::String>
+    void SetTrafficPolicyVersionMarker(TrafficPolicyVersionMarkerT&& value) { m_trafficPolicyVersionMarkerHasBeenSet = true; m_trafficPolicyVersionMarker = std::forward<TrafficPolicyVersionMarkerT>(value); }
+    template<typename TrafficPolicyVersionMarkerT = Aws::String>
+    ListTrafficPolicyVersionsResult& WithTrafficPolicyVersionMarker(TrafficPolicyVersionMarkerT&& value) { SetTrafficPolicyVersionMarker(std::forward<TrafficPolicyVersionMarkerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, the value of
-     * <code>TrafficPolicyVersionMarker</code> identifies the first traffic policy that
-     * Amazon Route 53 will return if you submit another request. Call
-     * <code>ListTrafficPolicyVersions</code> again and specify the value of
-     * <code>TrafficPolicyVersionMarker</code> in the
-     * <code>TrafficPolicyVersionMarker</code> request parameter.</p> <p>This element
-     * is present only if <code>IsTruncated</code> is <code>true</code>.</p>
-     */
-    inline void SetTrafficPolicyVersionMarker(const Aws::String& value) { m_trafficPolicyVersionMarker = value; }
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, the value of
-     * <code>TrafficPolicyVersionMarker</code> identifies the first traffic policy that
-     * Amazon Route 53 will return if you submit another request. Call
-     * <code>ListTrafficPolicyVersions</code> again and specify the value of
-     * <code>TrafficPolicyVersionMarker</code> in the
-     * <code>TrafficPolicyVersionMarker</code> request parameter.</p> <p>This element
-     * is present only if <code>IsTruncated</code> is <code>true</code>.</p>
-     */
-    inline void SetTrafficPolicyVersionMarker(Aws::String&& value) { m_trafficPolicyVersionMarker = std::move(value); }
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, the value of
-     * <code>TrafficPolicyVersionMarker</code> identifies the first traffic policy that
-     * Amazon Route 53 will return if you submit another request. Call
-     * <code>ListTrafficPolicyVersions</code> again and specify the value of
-     * <code>TrafficPolicyVersionMarker</code> in the
-     * <code>TrafficPolicyVersionMarker</code> request parameter.</p> <p>This element
-     * is present only if <code>IsTruncated</code> is <code>true</code>.</p>
-     */
-    inline void SetTrafficPolicyVersionMarker(const char* value) { m_trafficPolicyVersionMarker.assign(value); }
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, the value of
-     * <code>TrafficPolicyVersionMarker</code> identifies the first traffic policy that
-     * Amazon Route 53 will return if you submit another request. Call
-     * <code>ListTrafficPolicyVersions</code> again and specify the value of
-     * <code>TrafficPolicyVersionMarker</code> in the
-     * <code>TrafficPolicyVersionMarker</code> request parameter.</p> <p>This element
-     * is present only if <code>IsTruncated</code> is <code>true</code>.</p>
-     */
-    inline ListTrafficPolicyVersionsResult& WithTrafficPolicyVersionMarker(const Aws::String& value) { SetTrafficPolicyVersionMarker(value); return *this;}
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, the value of
-     * <code>TrafficPolicyVersionMarker</code> identifies the first traffic policy that
-     * Amazon Route 53 will return if you submit another request. Call
-     * <code>ListTrafficPolicyVersions</code> again and specify the value of
-     * <code>TrafficPolicyVersionMarker</code> in the
-     * <code>TrafficPolicyVersionMarker</code> request parameter.</p> <p>This element
-     * is present only if <code>IsTruncated</code> is <code>true</code>.</p>
-     */
-    inline ListTrafficPolicyVersionsResult& WithTrafficPolicyVersionMarker(Aws::String&& value) { SetTrafficPolicyVersionMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>If <code>IsTruncated</code> is <code>true</code>, the value of
-     * <code>TrafficPolicyVersionMarker</code> identifies the first traffic policy that
-     * Amazon Route 53 will return if you submit another request. Call
-     * <code>ListTrafficPolicyVersions</code> again and specify the value of
-     * <code>TrafficPolicyVersionMarker</code> in the
-     * <code>TrafficPolicyVersionMarker</code> request parameter.</p> <p>This element
-     * is present only if <code>IsTruncated</code> is <code>true</code>.</p>
-     */
-    inline ListTrafficPolicyVersionsResult& WithTrafficPolicyVersionMarker(const char* value) { SetTrafficPolicyVersionMarker(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value that you specified for the <code>maxitems</code> parameter in the
      * <code>ListTrafficPolicyVersions</code> request that produced the current
      * response.</p>
      */
-    inline const Aws::String& GetMaxItems() const{ return m_maxItems; }
+    inline const Aws::String& GetMaxItems() const { return m_maxItems; }
+    template<typename MaxItemsT = Aws::String>
+    void SetMaxItems(MaxItemsT&& value) { m_maxItemsHasBeenSet = true; m_maxItems = std::forward<MaxItemsT>(value); }
+    template<typename MaxItemsT = Aws::String>
+    ListTrafficPolicyVersionsResult& WithMaxItems(MaxItemsT&& value) { SetMaxItems(std::forward<MaxItemsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value that you specified for the <code>maxitems</code> parameter in the
-     * <code>ListTrafficPolicyVersions</code> request that produced the current
-     * response.</p>
-     */
-    inline void SetMaxItems(const Aws::String& value) { m_maxItems = value; }
-
-    /**
-     * <p>The value that you specified for the <code>maxitems</code> parameter in the
-     * <code>ListTrafficPolicyVersions</code> request that produced the current
-     * response.</p>
-     */
-    inline void SetMaxItems(Aws::String&& value) { m_maxItems = std::move(value); }
-
-    /**
-     * <p>The value that you specified for the <code>maxitems</code> parameter in the
-     * <code>ListTrafficPolicyVersions</code> request that produced the current
-     * response.</p>
-     */
-    inline void SetMaxItems(const char* value) { m_maxItems.assign(value); }
-
-    /**
-     * <p>The value that you specified for the <code>maxitems</code> parameter in the
-     * <code>ListTrafficPolicyVersions</code> request that produced the current
-     * response.</p>
-     */
-    inline ListTrafficPolicyVersionsResult& WithMaxItems(const Aws::String& value) { SetMaxItems(value); return *this;}
-
-    /**
-     * <p>The value that you specified for the <code>maxitems</code> parameter in the
-     * <code>ListTrafficPolicyVersions</code> request that produced the current
-     * response.</p>
-     */
-    inline ListTrafficPolicyVersionsResult& WithMaxItems(Aws::String&& value) { SetMaxItems(std::move(value)); return *this;}
-
-    /**
-     * <p>The value that you specified for the <code>maxitems</code> parameter in the
-     * <code>ListTrafficPolicyVersions</code> request that produced the current
-     * response.</p>
-     */
-    inline ListTrafficPolicyVersionsResult& WithMaxItems(const char* value) { SetMaxItems(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListTrafficPolicyVersionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListTrafficPolicyVersionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListTrafficPolicyVersionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListTrafficPolicyVersionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<TrafficPolicy> m_trafficPolicies;
+    bool m_trafficPoliciesHasBeenSet = false;
 
-    bool m_isTruncated;
+    bool m_isTruncated{false};
+    bool m_isTruncatedHasBeenSet = false;
 
     Aws::String m_trafficPolicyVersionMarker;
+    bool m_trafficPolicyVersionMarkerHasBeenSet = false;
 
     Aws::String m_maxItems;
+    bool m_maxItemsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

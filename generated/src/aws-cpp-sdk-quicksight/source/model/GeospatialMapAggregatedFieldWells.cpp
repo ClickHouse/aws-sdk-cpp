@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-GeospatialMapAggregatedFieldWells::GeospatialMapAggregatedFieldWells() : 
-    m_geospatialHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_colorsHasBeenSet(false)
-{
-}
-
-GeospatialMapAggregatedFieldWells::GeospatialMapAggregatedFieldWells(JsonView jsonValue) : 
-    m_geospatialHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_colorsHasBeenSet(false)
+GeospatialMapAggregatedFieldWells::GeospatialMapAggregatedFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ GeospatialMapAggregatedFieldWells& GeospatialMapAggregatedFieldWells::operator =
     }
     m_geospatialHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -54,7 +43,6 @@ GeospatialMapAggregatedFieldWells& GeospatialMapAggregatedFieldWells::operator =
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Colors"))
   {
     Aws::Utils::Array<JsonView> colorsJsonList = jsonValue.GetArray("Colors");
@@ -64,7 +52,6 @@ GeospatialMapAggregatedFieldWells& GeospatialMapAggregatedFieldWells::operator =
     }
     m_colorsHasBeenSet = true;
   }
-
   return *this;
 }
 

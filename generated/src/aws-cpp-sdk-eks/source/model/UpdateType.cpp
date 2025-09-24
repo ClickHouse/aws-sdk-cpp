@@ -30,6 +30,11 @@ namespace Aws
         static const int AddonUpdate_HASH = HashingUtils::HashString("AddonUpdate");
         static const int VpcConfigUpdate_HASH = HashingUtils::HashString("VpcConfigUpdate");
         static const int AccessConfigUpdate_HASH = HashingUtils::HashString("AccessConfigUpdate");
+        static const int UpgradePolicyUpdate_HASH = HashingUtils::HashString("UpgradePolicyUpdate");
+        static const int ZonalShiftConfigUpdate_HASH = HashingUtils::HashString("ZonalShiftConfigUpdate");
+        static const int AutoModeUpdate_HASH = HashingUtils::HashString("AutoModeUpdate");
+        static const int RemoteNetworkConfigUpdate_HASH = HashingUtils::HashString("RemoteNetworkConfigUpdate");
+        static const int DeletionProtectionUpdate_HASH = HashingUtils::HashString("DeletionProtectionUpdate");
 
 
         UpdateType GetUpdateTypeForName(const Aws::String& name)
@@ -75,6 +80,26 @@ namespace Aws
           {
             return UpdateType::AccessConfigUpdate;
           }
+          else if (hashCode == UpgradePolicyUpdate_HASH)
+          {
+            return UpdateType::UpgradePolicyUpdate;
+          }
+          else if (hashCode == ZonalShiftConfigUpdate_HASH)
+          {
+            return UpdateType::ZonalShiftConfigUpdate;
+          }
+          else if (hashCode == AutoModeUpdate_HASH)
+          {
+            return UpdateType::AutoModeUpdate;
+          }
+          else if (hashCode == RemoteNetworkConfigUpdate_HASH)
+          {
+            return UpdateType::RemoteNetworkConfigUpdate;
+          }
+          else if (hashCode == DeletionProtectionUpdate_HASH)
+          {
+            return UpdateType::DeletionProtectionUpdate;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -111,6 +136,16 @@ namespace Aws
             return "VpcConfigUpdate";
           case UpdateType::AccessConfigUpdate:
             return "AccessConfigUpdate";
+          case UpdateType::UpgradePolicyUpdate:
+            return "UpgradePolicyUpdate";
+          case UpdateType::ZonalShiftConfigUpdate:
+            return "ZonalShiftConfigUpdate";
+          case UpdateType::AutoModeUpdate:
+            return "AutoModeUpdate";
+          case UpdateType::RemoteNetworkConfigUpdate:
+            return "RemoteNetworkConfigUpdate";
+          case UpdateType::DeletionProtectionUpdate:
+            return "DeletionProtectionUpdate";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

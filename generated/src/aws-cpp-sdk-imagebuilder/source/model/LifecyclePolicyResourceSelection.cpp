@@ -18,15 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-LifecyclePolicyResourceSelection::LifecyclePolicyResourceSelection() : 
-    m_recipesHasBeenSet(false),
-    m_tagMapHasBeenSet(false)
-{
-}
-
-LifecyclePolicyResourceSelection::LifecyclePolicyResourceSelection(JsonView jsonValue) : 
-    m_recipesHasBeenSet(false),
-    m_tagMapHasBeenSet(false)
+LifecyclePolicyResourceSelection::LifecyclePolicyResourceSelection(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ LifecyclePolicyResourceSelection& LifecyclePolicyResourceSelection::operator =(J
     }
     m_recipesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tagMap"))
   {
     Aws::Map<Aws::String, JsonView> tagMapJsonMap = jsonValue.GetObject("tagMap").GetAllObjects();
@@ -52,7 +43,6 @@ LifecyclePolicyResourceSelection& LifecyclePolicyResourceSelection::operator =(J
     }
     m_tagMapHasBeenSet = true;
   }
-
   return *this;
 }
 

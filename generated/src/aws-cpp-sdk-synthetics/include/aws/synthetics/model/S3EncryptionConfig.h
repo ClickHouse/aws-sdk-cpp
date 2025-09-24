@@ -36,12 +36,13 @@ namespace Model
   class S3EncryptionConfig
   {
   public:
-    AWS_SYNTHETICS_API S3EncryptionConfig();
+    AWS_SYNTHETICS_API S3EncryptionConfig() = default;
     AWS_SYNTHETICS_API S3EncryptionConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SYNTHETICS_API S3EncryptionConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SYNTHETICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The encryption method to use for artifacts created by this canary. Specify
      * <code>SSE_S3</code> to use server-side encryption (SSE) with an Amazon
@@ -49,105 +50,27 @@ namespace Model
      * a customer-managed KMS key.</p> <p>If you omit this parameter, an Amazon Web
      * Services-managed KMS key is used. </p>
      */
-    inline const EncryptionMode& GetEncryptionMode() const{ return m_encryptionMode; }
-
-    /**
-     * <p> The encryption method to use for artifacts created by this canary. Specify
-     * <code>SSE_S3</code> to use server-side encryption (SSE) with an Amazon
-     * S3-managed key. Specify <code>SSE-KMS</code> to use server-side encryption with
-     * a customer-managed KMS key.</p> <p>If you omit this parameter, an Amazon Web
-     * Services-managed KMS key is used. </p>
-     */
+    inline EncryptionMode GetEncryptionMode() const { return m_encryptionMode; }
     inline bool EncryptionModeHasBeenSet() const { return m_encryptionModeHasBeenSet; }
+    inline void SetEncryptionMode(EncryptionMode value) { m_encryptionModeHasBeenSet = true; m_encryptionMode = value; }
+    inline S3EncryptionConfig& WithEncryptionMode(EncryptionMode value) { SetEncryptionMode(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The encryption method to use for artifacts created by this canary. Specify
-     * <code>SSE_S3</code> to use server-side encryption (SSE) with an Amazon
-     * S3-managed key. Specify <code>SSE-KMS</code> to use server-side encryption with
-     * a customer-managed KMS key.</p> <p>If you omit this parameter, an Amazon Web
-     * Services-managed KMS key is used. </p>
-     */
-    inline void SetEncryptionMode(const EncryptionMode& value) { m_encryptionModeHasBeenSet = true; m_encryptionMode = value; }
-
-    /**
-     * <p> The encryption method to use for artifacts created by this canary. Specify
-     * <code>SSE_S3</code> to use server-side encryption (SSE) with an Amazon
-     * S3-managed key. Specify <code>SSE-KMS</code> to use server-side encryption with
-     * a customer-managed KMS key.</p> <p>If you omit this parameter, an Amazon Web
-     * Services-managed KMS key is used. </p>
-     */
-    inline void SetEncryptionMode(EncryptionMode&& value) { m_encryptionModeHasBeenSet = true; m_encryptionMode = std::move(value); }
-
-    /**
-     * <p> The encryption method to use for artifacts created by this canary. Specify
-     * <code>SSE_S3</code> to use server-side encryption (SSE) with an Amazon
-     * S3-managed key. Specify <code>SSE-KMS</code> to use server-side encryption with
-     * a customer-managed KMS key.</p> <p>If you omit this parameter, an Amazon Web
-     * Services-managed KMS key is used. </p>
-     */
-    inline S3EncryptionConfig& WithEncryptionMode(const EncryptionMode& value) { SetEncryptionMode(value); return *this;}
-
-    /**
-     * <p> The encryption method to use for artifacts created by this canary. Specify
-     * <code>SSE_S3</code> to use server-side encryption (SSE) with an Amazon
-     * S3-managed key. Specify <code>SSE-KMS</code> to use server-side encryption with
-     * a customer-managed KMS key.</p> <p>If you omit this parameter, an Amazon Web
-     * Services-managed KMS key is used. </p>
-     */
-    inline S3EncryptionConfig& WithEncryptionMode(EncryptionMode&& value) { SetEncryptionMode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the customer-managed KMS key to use, if you specify
      * <code>SSE-KMS</code> for <code>EncryptionMode</code> </p>
      */
-    inline const Aws::String& GetKmsKeyArn() const{ return m_kmsKeyArn; }
-
-    /**
-     * <p>The ARN of the customer-managed KMS key to use, if you specify
-     * <code>SSE-KMS</code> for <code>EncryptionMode</code> </p>
-     */
+    inline const Aws::String& GetKmsKeyArn() const { return m_kmsKeyArn; }
     inline bool KmsKeyArnHasBeenSet() const { return m_kmsKeyArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the customer-managed KMS key to use, if you specify
-     * <code>SSE-KMS</code> for <code>EncryptionMode</code> </p>
-     */
-    inline void SetKmsKeyArn(const Aws::String& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = value; }
-
-    /**
-     * <p>The ARN of the customer-managed KMS key to use, if you specify
-     * <code>SSE-KMS</code> for <code>EncryptionMode</code> </p>
-     */
-    inline void SetKmsKeyArn(Aws::String&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the customer-managed KMS key to use, if you specify
-     * <code>SSE-KMS</code> for <code>EncryptionMode</code> </p>
-     */
-    inline void SetKmsKeyArn(const char* value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn.assign(value); }
-
-    /**
-     * <p>The ARN of the customer-managed KMS key to use, if you specify
-     * <code>SSE-KMS</code> for <code>EncryptionMode</code> </p>
-     */
-    inline S3EncryptionConfig& WithKmsKeyArn(const Aws::String& value) { SetKmsKeyArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the customer-managed KMS key to use, if you specify
-     * <code>SSE-KMS</code> for <code>EncryptionMode</code> </p>
-     */
-    inline S3EncryptionConfig& WithKmsKeyArn(Aws::String&& value) { SetKmsKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the customer-managed KMS key to use, if you specify
-     * <code>SSE-KMS</code> for <code>EncryptionMode</code> </p>
-     */
-    inline S3EncryptionConfig& WithKmsKeyArn(const char* value) { SetKmsKeyArn(value); return *this;}
-
+    template<typename KmsKeyArnT = Aws::String>
+    void SetKmsKeyArn(KmsKeyArnT&& value) { m_kmsKeyArnHasBeenSet = true; m_kmsKeyArn = std::forward<KmsKeyArnT>(value); }
+    template<typename KmsKeyArnT = Aws::String>
+    S3EncryptionConfig& WithKmsKeyArn(KmsKeyArnT&& value) { SetKmsKeyArn(std::forward<KmsKeyArnT>(value)); return *this;}
+    ///@}
   private:
 
-    EncryptionMode m_encryptionMode;
+    EncryptionMode m_encryptionMode{EncryptionMode::NOT_SET};
     bool m_encryptionModeHasBeenSet = false;
 
     Aws::String m_kmsKeyArn;

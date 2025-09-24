@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-HyperParameterTuningJobConsumedResources::HyperParameterTuningJobConsumedResources() : 
-    m_runtimeInSeconds(0),
-    m_runtimeInSecondsHasBeenSet(false)
-{
-}
-
-HyperParameterTuningJobConsumedResources::HyperParameterTuningJobConsumedResources(JsonView jsonValue) : 
-    m_runtimeInSeconds(0),
-    m_runtimeInSecondsHasBeenSet(false)
+HyperParameterTuningJobConsumedResources::HyperParameterTuningJobConsumedResources(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ HyperParameterTuningJobConsumedResources& HyperParameterTuningJobConsumedResourc
   if(jsonValue.ValueExists("RuntimeInSeconds"))
   {
     m_runtimeInSeconds = jsonValue.GetInteger("RuntimeInSeconds");
-
     m_runtimeInSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

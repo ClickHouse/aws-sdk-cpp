@@ -12,27 +12,19 @@ using namespace Aws::CostOptimizationHub::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateEnrollmentStatusRequest::UpdateEnrollmentStatusRequest() : 
-    m_includeMemberAccounts(false),
-    m_includeMemberAccountsHasBeenSet(false),
-    m_status(EnrollmentStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String UpdateEnrollmentStatusRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("status", EnrollmentStatusMapper::GetNameForEnrollmentStatus(m_status));
+  }
 
   if(m_includeMemberAccountsHasBeenSet)
   {
    payload.WithBool("includeMemberAccounts", m_includeMemberAccounts);
 
-  }
-
-  if(m_statusHasBeenSet)
-  {
-   payload.WithString("status", EnrollmentStatusMapper::GetNameForEnrollmentStatus(m_status));
   }
 
   return payload.View().WriteReadable();

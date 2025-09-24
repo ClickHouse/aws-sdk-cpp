@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-CancelSpotFleetRequestsErrorItem::CancelSpotFleetRequestsErrorItem() : 
-    m_errorHasBeenSet(false),
-    m_spotFleetRequestIdHasBeenSet(false)
-{
-}
-
-CancelSpotFleetRequestsErrorItem::CancelSpotFleetRequestsErrorItem(const XmlNode& xmlNode) : 
-    m_errorHasBeenSet(false),
-    m_spotFleetRequestIdHasBeenSet(false)
+CancelSpotFleetRequestsErrorItem::CancelSpotFleetRequestsErrorItem(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

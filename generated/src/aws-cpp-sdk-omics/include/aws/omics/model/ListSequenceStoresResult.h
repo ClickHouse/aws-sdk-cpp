@@ -29,111 +29,53 @@ namespace Model
   class ListSequenceStoresResult
   {
   public:
-    AWS_OMICS_API ListSequenceStoresResult();
+    AWS_OMICS_API ListSequenceStoresResult() = default;
     AWS_OMICS_API ListSequenceStoresResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API ListSequenceStoresResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A pagination token that's included if more results are available.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListSequenceStoresResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline ListSequenceStoresResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline ListSequenceStoresResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline ListSequenceStoresResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of sequence stores.</p>
      */
-    inline const Aws::Vector<SequenceStoreDetail>& GetSequenceStores() const{ return m_sequenceStores; }
+    inline const Aws::Vector<SequenceStoreDetail>& GetSequenceStores() const { return m_sequenceStores; }
+    template<typename SequenceStoresT = Aws::Vector<SequenceStoreDetail>>
+    void SetSequenceStores(SequenceStoresT&& value) { m_sequenceStoresHasBeenSet = true; m_sequenceStores = std::forward<SequenceStoresT>(value); }
+    template<typename SequenceStoresT = Aws::Vector<SequenceStoreDetail>>
+    ListSequenceStoresResult& WithSequenceStores(SequenceStoresT&& value) { SetSequenceStores(std::forward<SequenceStoresT>(value)); return *this;}
+    template<typename SequenceStoresT = SequenceStoreDetail>
+    ListSequenceStoresResult& AddSequenceStores(SequenceStoresT&& value) { m_sequenceStoresHasBeenSet = true; m_sequenceStores.emplace_back(std::forward<SequenceStoresT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of sequence stores.</p>
-     */
-    inline void SetSequenceStores(const Aws::Vector<SequenceStoreDetail>& value) { m_sequenceStores = value; }
-
-    /**
-     * <p>A list of sequence stores.</p>
-     */
-    inline void SetSequenceStores(Aws::Vector<SequenceStoreDetail>&& value) { m_sequenceStores = std::move(value); }
-
-    /**
-     * <p>A list of sequence stores.</p>
-     */
-    inline ListSequenceStoresResult& WithSequenceStores(const Aws::Vector<SequenceStoreDetail>& value) { SetSequenceStores(value); return *this;}
-
-    /**
-     * <p>A list of sequence stores.</p>
-     */
-    inline ListSequenceStoresResult& WithSequenceStores(Aws::Vector<SequenceStoreDetail>&& value) { SetSequenceStores(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of sequence stores.</p>
-     */
-    inline ListSequenceStoresResult& AddSequenceStores(const SequenceStoreDetail& value) { m_sequenceStores.push_back(value); return *this; }
-
-    /**
-     * <p>A list of sequence stores.</p>
-     */
-    inline ListSequenceStoresResult& AddSequenceStores(SequenceStoreDetail&& value) { m_sequenceStores.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListSequenceStoresResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListSequenceStoresResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListSequenceStoresResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListSequenceStoresResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<SequenceStoreDetail> m_sequenceStores;
+    bool m_sequenceStoresHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

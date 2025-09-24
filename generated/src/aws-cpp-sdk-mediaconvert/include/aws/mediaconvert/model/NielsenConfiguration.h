@@ -34,88 +34,38 @@ namespace Model
   class NielsenConfiguration
   {
   public:
-    AWS_MEDIACONVERT_API NielsenConfiguration();
+    AWS_MEDIACONVERT_API NielsenConfiguration() = default;
     AWS_MEDIACONVERT_API NielsenConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API NielsenConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Nielsen has discontinued the use of breakout code functionality. If you must
      * include this property, set the value to zero.
      */
-    inline int GetBreakoutCode() const{ return m_breakoutCode; }
-
-    /**
-     * Nielsen has discontinued the use of breakout code functionality. If you must
-     * include this property, set the value to zero.
-     */
+    inline int GetBreakoutCode() const { return m_breakoutCode; }
     inline bool BreakoutCodeHasBeenSet() const { return m_breakoutCodeHasBeenSet; }
-
-    /**
-     * Nielsen has discontinued the use of breakout code functionality. If you must
-     * include this property, set the value to zero.
-     */
     inline void SetBreakoutCode(int value) { m_breakoutCodeHasBeenSet = true; m_breakoutCode = value; }
-
-    /**
-     * Nielsen has discontinued the use of breakout code functionality. If you must
-     * include this property, set the value to zero.
-     */
     inline NielsenConfiguration& WithBreakoutCode(int value) { SetBreakoutCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * Use Distributor ID to specify the distributor ID that is assigned to your
      * organization by Nielsen.
      */
-    inline const Aws::String& GetDistributorId() const{ return m_distributorId; }
-
-    /**
-     * Use Distributor ID to specify the distributor ID that is assigned to your
-     * organization by Nielsen.
-     */
+    inline const Aws::String& GetDistributorId() const { return m_distributorId; }
     inline bool DistributorIdHasBeenSet() const { return m_distributorIdHasBeenSet; }
-
-    /**
-     * Use Distributor ID to specify the distributor ID that is assigned to your
-     * organization by Nielsen.
-     */
-    inline void SetDistributorId(const Aws::String& value) { m_distributorIdHasBeenSet = true; m_distributorId = value; }
-
-    /**
-     * Use Distributor ID to specify the distributor ID that is assigned to your
-     * organization by Nielsen.
-     */
-    inline void SetDistributorId(Aws::String&& value) { m_distributorIdHasBeenSet = true; m_distributorId = std::move(value); }
-
-    /**
-     * Use Distributor ID to specify the distributor ID that is assigned to your
-     * organization by Nielsen.
-     */
-    inline void SetDistributorId(const char* value) { m_distributorIdHasBeenSet = true; m_distributorId.assign(value); }
-
-    /**
-     * Use Distributor ID to specify the distributor ID that is assigned to your
-     * organization by Nielsen.
-     */
-    inline NielsenConfiguration& WithDistributorId(const Aws::String& value) { SetDistributorId(value); return *this;}
-
-    /**
-     * Use Distributor ID to specify the distributor ID that is assigned to your
-     * organization by Nielsen.
-     */
-    inline NielsenConfiguration& WithDistributorId(Aws::String&& value) { SetDistributorId(std::move(value)); return *this;}
-
-    /**
-     * Use Distributor ID to specify the distributor ID that is assigned to your
-     * organization by Nielsen.
-     */
-    inline NielsenConfiguration& WithDistributorId(const char* value) { SetDistributorId(value); return *this;}
-
+    template<typename DistributorIdT = Aws::String>
+    void SetDistributorId(DistributorIdT&& value) { m_distributorIdHasBeenSet = true; m_distributorId = std::forward<DistributorIdT>(value); }
+    template<typename DistributorIdT = Aws::String>
+    NielsenConfiguration& WithDistributorId(DistributorIdT&& value) { SetDistributorId(std::forward<DistributorIdT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_breakoutCode;
+    int m_breakoutCode{0};
     bool m_breakoutCodeHasBeenSet = false;
 
     Aws::String m_distributorId;

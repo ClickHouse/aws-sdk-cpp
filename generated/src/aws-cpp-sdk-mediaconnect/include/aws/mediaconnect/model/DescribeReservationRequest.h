@@ -21,7 +21,7 @@ namespace Model
   class DescribeReservationRequest : public MediaConnectRequest
   {
   public:
-    AWS_MEDIACONNECT_API DescribeReservationRequest();
+    AWS_MEDIACONNECT_API DescribeReservationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_MEDIACONNECT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * The Amazon Resource Name (ARN) of the reservation.
+     * <p>The Amazon Resource Name (ARN) of the offering. </p>
      */
-    inline const Aws::String& GetReservationArn() const{ return m_reservationArn; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the reservation.
-     */
+    inline const Aws::String& GetReservationArn() const { return m_reservationArn; }
     inline bool ReservationArnHasBeenSet() const { return m_reservationArnHasBeenSet; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the reservation.
-     */
-    inline void SetReservationArn(const Aws::String& value) { m_reservationArnHasBeenSet = true; m_reservationArn = value; }
-
-    /**
-     * The Amazon Resource Name (ARN) of the reservation.
-     */
-    inline void SetReservationArn(Aws::String&& value) { m_reservationArnHasBeenSet = true; m_reservationArn = std::move(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the reservation.
-     */
-    inline void SetReservationArn(const char* value) { m_reservationArnHasBeenSet = true; m_reservationArn.assign(value); }
-
-    /**
-     * The Amazon Resource Name (ARN) of the reservation.
-     */
-    inline DescribeReservationRequest& WithReservationArn(const Aws::String& value) { SetReservationArn(value); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the reservation.
-     */
-    inline DescribeReservationRequest& WithReservationArn(Aws::String&& value) { SetReservationArn(std::move(value)); return *this;}
-
-    /**
-     * The Amazon Resource Name (ARN) of the reservation.
-     */
-    inline DescribeReservationRequest& WithReservationArn(const char* value) { SetReservationArn(value); return *this;}
-
+    template<typename ReservationArnT = Aws::String>
+    void SetReservationArn(ReservationArnT&& value) { m_reservationArnHasBeenSet = true; m_reservationArn = std::forward<ReservationArnT>(value); }
+    template<typename ReservationArnT = Aws::String>
+    DescribeReservationRequest& WithReservationArn(ReservationArnT&& value) { SetReservationArn(std::forward<ReservationArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_reservationArn;

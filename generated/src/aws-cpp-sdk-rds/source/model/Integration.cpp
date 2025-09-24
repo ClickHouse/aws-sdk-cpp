@@ -20,33 +20,7 @@ namespace RDS
 namespace Model
 {
 
-Integration::Integration() : 
-    m_sourceArnHasBeenSet(false),
-    m_targetArnHasBeenSet(false),
-    m_integrationNameHasBeenSet(false),
-    m_integrationArnHasBeenSet(false),
-    m_kMSKeyIdHasBeenSet(false),
-    m_additionalEncryptionContextHasBeenSet(false),
-    m_status(IntegrationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_errorsHasBeenSet(false)
-{
-}
-
-Integration::Integration(const XmlNode& xmlNode) : 
-    m_sourceArnHasBeenSet(false),
-    m_targetArnHasBeenSet(false),
-    m_integrationNameHasBeenSet(false),
-    m_integrationArnHasBeenSet(false),
-    m_kMSKeyIdHasBeenSet(false),
-    m_additionalEncryptionContextHasBeenSet(false),
-    m_status(IntegrationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_errorsHasBeenSet(false)
+Integration::Integration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -92,6 +66,7 @@ Integration& Integration::operator =(const XmlNode& xmlNode)
     if(!additionalEncryptionContextNode.IsNull())
     {
       XmlNode additionalEncryptionContextEntry = additionalEncryptionContextNode.FirstChild("entry");
+      m_additionalEncryptionContextHasBeenSet = !additionalEncryptionContextEntry.IsNull();
       while(!additionalEncryptionContextEntry.IsNull())
       {
         XmlNode keyNode = additionalEncryptionContextEntry.FirstChild("key");
@@ -106,13 +81,14 @@ Integration& Integration::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = IntegrationStatusMapper::GetIntegrationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = IntegrationStatusMapper::GetIntegrationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode tagsNode = resultNode.FirstChild("Tags");
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("Tag");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -131,6 +107,7 @@ Integration& Integration::operator =(const XmlNode& xmlNode)
     if(!errorsNode.IsNull())
     {
       XmlNode errorsMember = errorsNode.FirstChild("IntegrationError");
+      m_errorsHasBeenSet = !errorsMember.IsNull();
       while(!errorsMember.IsNull())
       {
         m_errors.push_back(errorsMember);
@@ -138,6 +115,18 @@ Integration& Integration::operator =(const XmlNode& xmlNode)
       }
 
       m_errorsHasBeenSet = true;
+    }
+    XmlNode dataFilterNode = resultNode.FirstChild("DataFilter");
+    if(!dataFilterNode.IsNull())
+    {
+      m_dataFilter = Aws::Utils::Xml::DecodeEscapedXmlText(dataFilterNode.GetText());
+      m_dataFilterHasBeenSet = true;
+    }
+    XmlNode descriptionNode = resultNode.FirstChild("Description");
+    if(!descriptionNode.IsNull())
+    {
+      m_description = Aws::Utils::Xml::DecodeEscapedXmlText(descriptionNode.GetText());
+      m_descriptionHasBeenSet = true;
     }
   }
 
@@ -186,7 +175,7 @@ void Integration::OutputToStream(Aws::OStream& oStream, const char* location, un
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << IntegrationStatusMapper::GetNameForIntegrationStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(IntegrationStatusMapper::GetNameForIntegrationStatus(m_status)) << "&";
   }
 
   if(m_tagsHasBeenSet)
@@ -195,7 +184,7 @@ void Integration::OutputToStream(Aws::OStream& oStream, const char* location, un
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".Tag." << tagsIdx++;
+        tagsSs << location << index << locationValue << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -211,9 +200,19 @@ void Integration::OutputToStream(Aws::OStream& oStream, const char* location, un
       for(auto& item : m_errors)
       {
         Aws::StringStream errorsSs;
-        errorsSs << location << index << locationValue << ".IntegrationError." << errorsIdx++;
+        errorsSs << location << index << locationValue << ".Errors.IntegrationError." << errorsIdx++;
         item.OutputToStream(oStream, errorsSs.str().c_str());
       }
+  }
+
+  if(m_dataFilterHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".DataFilter=" << StringUtils::URLEncode(m_dataFilter.c_str()) << "&";
+  }
+
+  if(m_descriptionHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
 
   Aws::StringStream responseMetadataLocationAndMemberSs;
@@ -248,17 +247,16 @@ void Integration::OutputToStream(Aws::OStream& oStream, const char* location) co
       unsigned additionalEncryptionContextIdx = 1;
       for(auto& item : m_additionalEncryptionContext)
       {
-        oStream << location << ".AdditionalEncryptionContext.entry."  << additionalEncryptionContextIdx << ".key="
+        oStream << location << ".AdditionalEncryptionContext.entry." << additionalEncryptionContextIdx << ".key="
             << StringUtils::URLEncode(item.first.c_str()) << "&";
-        oStream << location <<  ".AdditionalEncryptionContext.entry." << additionalEncryptionContextIdx << ".value="
+        oStream << location << ".AdditionalEncryptionContext.entry." << additionalEncryptionContextIdx << ".value="
             << StringUtils::URLEncode(item.second.c_str()) << "&";
         additionalEncryptionContextIdx++;
       }
-
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << IntegrationStatusMapper::GetNameForIntegrationStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(IntegrationStatusMapper::GetNameForIntegrationStatus(m_status)) << "&";
   }
   if(m_tagsHasBeenSet)
   {
@@ -266,7 +264,7 @@ void Integration::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tag." << tagsIdx++;
+        tagsSs << location << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -280,9 +278,17 @@ void Integration::OutputToStream(Aws::OStream& oStream, const char* location) co
       for(auto& item : m_errors)
       {
         Aws::StringStream errorsSs;
-        errorsSs << location <<  ".IntegrationError." << errorsIdx++;
+        errorsSs << location << ".Errors.IntegrationError." << errorsIdx++;
         item.OutputToStream(oStream, errorsSs.str().c_str());
       }
+  }
+  if(m_dataFilterHasBeenSet)
+  {
+      oStream << location << ".DataFilter=" << StringUtils::URLEncode(m_dataFilter.c_str()) << "&";
+  }
+  if(m_descriptionHasBeenSet)
+  {
+      oStream << location << ".Description=" << StringUtils::URLEncode(m_description.c_str()) << "&";
   }
   Aws::String responseMetadataLocationAndMember(location);
   responseMetadataLocationAndMember += ".ResponseMetadata";

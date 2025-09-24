@@ -22,7 +22,7 @@ namespace Model
   class UpdateReviewTemplateRequest : public WellArchitectedRequest
   {
   public:
-    AWS_WELLARCHITECTED_API UpdateReviewTemplateRequest();
+    AWS_WELLARCHITECTED_API UpdateReviewTemplateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,254 +33,80 @@ namespace Model
     AWS_WELLARCHITECTED_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The review template ARN.</p>
      */
-    inline const Aws::String& GetTemplateArn() const{ return m_templateArn; }
-
-    /**
-     * <p>The review template ARN.</p>
-     */
+    inline const Aws::String& GetTemplateArn() const { return m_templateArn; }
     inline bool TemplateArnHasBeenSet() const { return m_templateArnHasBeenSet; }
+    template<typename TemplateArnT = Aws::String>
+    void SetTemplateArn(TemplateArnT&& value) { m_templateArnHasBeenSet = true; m_templateArn = std::forward<TemplateArnT>(value); }
+    template<typename TemplateArnT = Aws::String>
+    UpdateReviewTemplateRequest& WithTemplateArn(TemplateArnT&& value) { SetTemplateArn(std::forward<TemplateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline void SetTemplateArn(const Aws::String& value) { m_templateArnHasBeenSet = true; m_templateArn = value; }
-
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline void SetTemplateArn(Aws::String&& value) { m_templateArnHasBeenSet = true; m_templateArn = std::move(value); }
-
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline void SetTemplateArn(const char* value) { m_templateArnHasBeenSet = true; m_templateArn.assign(value); }
-
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithTemplateArn(const Aws::String& value) { SetTemplateArn(value); return *this;}
-
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithTemplateArn(Aws::String&& value) { SetTemplateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithTemplateArn(const char* value) { SetTemplateArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The review template name.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The review template name.</p>
-     */
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    UpdateReviewTemplateRequest& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The review template name.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The review template name.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The review template name.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    /**
-     * <p>The review template name.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The review template name.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The review template name.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The review template description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The review template description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateReviewTemplateRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The review template description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The review template description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The review template description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The review template description.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The review template description.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The review template description.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetNotes() const{ return m_notes; }
-
-    
+    inline const Aws::String& GetNotes() const { return m_notes; }
     inline bool NotesHasBeenSet() const { return m_notesHasBeenSet; }
+    template<typename NotesT = Aws::String>
+    void SetNotes(NotesT&& value) { m_notesHasBeenSet = true; m_notes = std::forward<NotesT>(value); }
+    template<typename NotesT = Aws::String>
+    UpdateReviewTemplateRequest& WithNotes(NotesT&& value) { SetNotes(std::forward<NotesT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetNotes(const Aws::String& value) { m_notesHasBeenSet = true; m_notes = value; }
-
-    
-    inline void SetNotes(Aws::String&& value) { m_notesHasBeenSet = true; m_notes = std::move(value); }
-
-    
-    inline void SetNotes(const char* value) { m_notesHasBeenSet = true; m_notes.assign(value); }
-
-    
-    inline UpdateReviewTemplateRequest& WithNotes(const Aws::String& value) { SetNotes(value); return *this;}
-
-    
-    inline UpdateReviewTemplateRequest& WithNotes(Aws::String&& value) { SetNotes(std::move(value)); return *this;}
-
-    
-    inline UpdateReviewTemplateRequest& WithNotes(const char* value) { SetNotes(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of lens aliases or ARNs to apply to the review template.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLensesToAssociate() const{ return m_lensesToAssociate; }
-
-    /**
-     * <p>A list of lens aliases or ARNs to apply to the review template.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLensesToAssociate() const { return m_lensesToAssociate; }
     inline bool LensesToAssociateHasBeenSet() const { return m_lensesToAssociateHasBeenSet; }
+    template<typename LensesToAssociateT = Aws::Vector<Aws::String>>
+    void SetLensesToAssociate(LensesToAssociateT&& value) { m_lensesToAssociateHasBeenSet = true; m_lensesToAssociate = std::forward<LensesToAssociateT>(value); }
+    template<typename LensesToAssociateT = Aws::Vector<Aws::String>>
+    UpdateReviewTemplateRequest& WithLensesToAssociate(LensesToAssociateT&& value) { SetLensesToAssociate(std::forward<LensesToAssociateT>(value)); return *this;}
+    template<typename LensesToAssociateT = Aws::String>
+    UpdateReviewTemplateRequest& AddLensesToAssociate(LensesToAssociateT&& value) { m_lensesToAssociateHasBeenSet = true; m_lensesToAssociate.emplace_back(std::forward<LensesToAssociateT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of lens aliases or ARNs to apply to the review template.</p>
-     */
-    inline void SetLensesToAssociate(const Aws::Vector<Aws::String>& value) { m_lensesToAssociateHasBeenSet = true; m_lensesToAssociate = value; }
-
-    /**
-     * <p>A list of lens aliases or ARNs to apply to the review template.</p>
-     */
-    inline void SetLensesToAssociate(Aws::Vector<Aws::String>&& value) { m_lensesToAssociateHasBeenSet = true; m_lensesToAssociate = std::move(value); }
-
-    /**
-     * <p>A list of lens aliases or ARNs to apply to the review template.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithLensesToAssociate(const Aws::Vector<Aws::String>& value) { SetLensesToAssociate(value); return *this;}
-
-    /**
-     * <p>A list of lens aliases or ARNs to apply to the review template.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithLensesToAssociate(Aws::Vector<Aws::String>&& value) { SetLensesToAssociate(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of lens aliases or ARNs to apply to the review template.</p>
-     */
-    inline UpdateReviewTemplateRequest& AddLensesToAssociate(const Aws::String& value) { m_lensesToAssociateHasBeenSet = true; m_lensesToAssociate.push_back(value); return *this; }
-
-    /**
-     * <p>A list of lens aliases or ARNs to apply to the review template.</p>
-     */
-    inline UpdateReviewTemplateRequest& AddLensesToAssociate(Aws::String&& value) { m_lensesToAssociateHasBeenSet = true; m_lensesToAssociate.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of lens aliases or ARNs to apply to the review template.</p>
-     */
-    inline UpdateReviewTemplateRequest& AddLensesToAssociate(const char* value) { m_lensesToAssociateHasBeenSet = true; m_lensesToAssociate.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of lens aliases or ARNs to unapply to the review template. The
      * <code>wellarchitected</code> lens cannot be unapplied.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLensesToDisassociate() const{ return m_lensesToDisassociate; }
-
-    /**
-     * <p>A list of lens aliases or ARNs to unapply to the review template. The
-     * <code>wellarchitected</code> lens cannot be unapplied.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLensesToDisassociate() const { return m_lensesToDisassociate; }
     inline bool LensesToDisassociateHasBeenSet() const { return m_lensesToDisassociateHasBeenSet; }
-
-    /**
-     * <p>A list of lens aliases or ARNs to unapply to the review template. The
-     * <code>wellarchitected</code> lens cannot be unapplied.</p>
-     */
-    inline void SetLensesToDisassociate(const Aws::Vector<Aws::String>& value) { m_lensesToDisassociateHasBeenSet = true; m_lensesToDisassociate = value; }
-
-    /**
-     * <p>A list of lens aliases or ARNs to unapply to the review template. The
-     * <code>wellarchitected</code> lens cannot be unapplied.</p>
-     */
-    inline void SetLensesToDisassociate(Aws::Vector<Aws::String>&& value) { m_lensesToDisassociateHasBeenSet = true; m_lensesToDisassociate = std::move(value); }
-
-    /**
-     * <p>A list of lens aliases or ARNs to unapply to the review template. The
-     * <code>wellarchitected</code> lens cannot be unapplied.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithLensesToDisassociate(const Aws::Vector<Aws::String>& value) { SetLensesToDisassociate(value); return *this;}
-
-    /**
-     * <p>A list of lens aliases or ARNs to unapply to the review template. The
-     * <code>wellarchitected</code> lens cannot be unapplied.</p>
-     */
-    inline UpdateReviewTemplateRequest& WithLensesToDisassociate(Aws::Vector<Aws::String>&& value) { SetLensesToDisassociate(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of lens aliases or ARNs to unapply to the review template. The
-     * <code>wellarchitected</code> lens cannot be unapplied.</p>
-     */
-    inline UpdateReviewTemplateRequest& AddLensesToDisassociate(const Aws::String& value) { m_lensesToDisassociateHasBeenSet = true; m_lensesToDisassociate.push_back(value); return *this; }
-
-    /**
-     * <p>A list of lens aliases or ARNs to unapply to the review template. The
-     * <code>wellarchitected</code> lens cannot be unapplied.</p>
-     */
-    inline UpdateReviewTemplateRequest& AddLensesToDisassociate(Aws::String&& value) { m_lensesToDisassociateHasBeenSet = true; m_lensesToDisassociate.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of lens aliases or ARNs to unapply to the review template. The
-     * <code>wellarchitected</code> lens cannot be unapplied.</p>
-     */
-    inline UpdateReviewTemplateRequest& AddLensesToDisassociate(const char* value) { m_lensesToDisassociateHasBeenSet = true; m_lensesToDisassociate.push_back(value); return *this; }
-
+    template<typename LensesToDisassociateT = Aws::Vector<Aws::String>>
+    void SetLensesToDisassociate(LensesToDisassociateT&& value) { m_lensesToDisassociateHasBeenSet = true; m_lensesToDisassociate = std::forward<LensesToDisassociateT>(value); }
+    template<typename LensesToDisassociateT = Aws::Vector<Aws::String>>
+    UpdateReviewTemplateRequest& WithLensesToDisassociate(LensesToDisassociateT&& value) { SetLensesToDisassociate(std::forward<LensesToDisassociateT>(value)); return *this;}
+    template<typename LensesToDisassociateT = Aws::String>
+    UpdateReviewTemplateRequest& AddLensesToDisassociate(LensesToDisassociateT&& value) { m_lensesToDisassociateHasBeenSet = true; m_lensesToDisassociate.emplace_back(std::forward<LensesToDisassociateT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_templateArn;

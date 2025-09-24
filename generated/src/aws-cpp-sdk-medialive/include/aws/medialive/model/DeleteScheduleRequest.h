@@ -24,7 +24,7 @@ namespace Model
   class DeleteScheduleRequest : public MediaLiveRequest
   {
   public:
-    AWS_MEDIALIVE_API DeleteScheduleRequest();
+    AWS_MEDIALIVE_API DeleteScheduleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,46 +35,17 @@ namespace Model
     AWS_MEDIALIVE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * Id of the channel whose schedule is being deleted.
      */
-    inline const Aws::String& GetChannelId() const{ return m_channelId; }
-
-    /**
-     * Id of the channel whose schedule is being deleted.
-     */
+    inline const Aws::String& GetChannelId() const { return m_channelId; }
     inline bool ChannelIdHasBeenSet() const { return m_channelIdHasBeenSet; }
-
-    /**
-     * Id of the channel whose schedule is being deleted.
-     */
-    inline void SetChannelId(const Aws::String& value) { m_channelIdHasBeenSet = true; m_channelId = value; }
-
-    /**
-     * Id of the channel whose schedule is being deleted.
-     */
-    inline void SetChannelId(Aws::String&& value) { m_channelIdHasBeenSet = true; m_channelId = std::move(value); }
-
-    /**
-     * Id of the channel whose schedule is being deleted.
-     */
-    inline void SetChannelId(const char* value) { m_channelIdHasBeenSet = true; m_channelId.assign(value); }
-
-    /**
-     * Id of the channel whose schedule is being deleted.
-     */
-    inline DeleteScheduleRequest& WithChannelId(const Aws::String& value) { SetChannelId(value); return *this;}
-
-    /**
-     * Id of the channel whose schedule is being deleted.
-     */
-    inline DeleteScheduleRequest& WithChannelId(Aws::String&& value) { SetChannelId(std::move(value)); return *this;}
-
-    /**
-     * Id of the channel whose schedule is being deleted.
-     */
-    inline DeleteScheduleRequest& WithChannelId(const char* value) { SetChannelId(value); return *this;}
-
+    template<typename ChannelIdT = Aws::String>
+    void SetChannelId(ChannelIdT&& value) { m_channelIdHasBeenSet = true; m_channelId = std::forward<ChannelIdT>(value); }
+    template<typename ChannelIdT = Aws::String>
+    DeleteScheduleRequest& WithChannelId(ChannelIdT&& value) { SetChannelId(std::forward<ChannelIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelId;

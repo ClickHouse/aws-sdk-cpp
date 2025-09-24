@@ -18,13 +18,7 @@ namespace RedshiftServerless
 namespace Model
 {
 
-TargetAction::TargetAction() : 
-    m_createSnapshotHasBeenSet(false)
-{
-}
-
-TargetAction::TargetAction(JsonView jsonValue) : 
-    m_createSnapshotHasBeenSet(false)
+TargetAction::TargetAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ TargetAction& TargetAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("createSnapshot"))
   {
     m_createSnapshot = jsonValue.GetObject("createSnapshot");
-
     m_createSnapshotHasBeenSet = true;
   }
-
   return *this;
 }
 

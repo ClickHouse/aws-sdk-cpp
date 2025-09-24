@@ -32,51 +32,25 @@ namespace Model
   class AdvancedRecognitionSetting
   {
   public:
-    AWS_LEXMODELSV2_API AdvancedRecognitionSetting();
+    AWS_LEXMODELSV2_API AdvancedRecognitionSetting() = default;
     AWS_LEXMODELSV2_API AdvancedRecognitionSetting(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API AdvancedRecognitionSetting& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Enables using the slot values as a custom vocabulary for recognizing user
      * utterances.</p>
      */
-    inline const AudioRecognitionStrategy& GetAudioRecognitionStrategy() const{ return m_audioRecognitionStrategy; }
-
-    /**
-     * <p>Enables using the slot values as a custom vocabulary for recognizing user
-     * utterances.</p>
-     */
+    inline AudioRecognitionStrategy GetAudioRecognitionStrategy() const { return m_audioRecognitionStrategy; }
     inline bool AudioRecognitionStrategyHasBeenSet() const { return m_audioRecognitionStrategyHasBeenSet; }
-
-    /**
-     * <p>Enables using the slot values as a custom vocabulary for recognizing user
-     * utterances.</p>
-     */
-    inline void SetAudioRecognitionStrategy(const AudioRecognitionStrategy& value) { m_audioRecognitionStrategyHasBeenSet = true; m_audioRecognitionStrategy = value; }
-
-    /**
-     * <p>Enables using the slot values as a custom vocabulary for recognizing user
-     * utterances.</p>
-     */
-    inline void SetAudioRecognitionStrategy(AudioRecognitionStrategy&& value) { m_audioRecognitionStrategyHasBeenSet = true; m_audioRecognitionStrategy = std::move(value); }
-
-    /**
-     * <p>Enables using the slot values as a custom vocabulary for recognizing user
-     * utterances.</p>
-     */
-    inline AdvancedRecognitionSetting& WithAudioRecognitionStrategy(const AudioRecognitionStrategy& value) { SetAudioRecognitionStrategy(value); return *this;}
-
-    /**
-     * <p>Enables using the slot values as a custom vocabulary for recognizing user
-     * utterances.</p>
-     */
-    inline AdvancedRecognitionSetting& WithAudioRecognitionStrategy(AudioRecognitionStrategy&& value) { SetAudioRecognitionStrategy(std::move(value)); return *this;}
-
+    inline void SetAudioRecognitionStrategy(AudioRecognitionStrategy value) { m_audioRecognitionStrategyHasBeenSet = true; m_audioRecognitionStrategy = value; }
+    inline AdvancedRecognitionSetting& WithAudioRecognitionStrategy(AudioRecognitionStrategy value) { SetAudioRecognitionStrategy(value); return *this;}
+    ///@}
   private:
 
-    AudioRecognitionStrategy m_audioRecognitionStrategy;
+    AudioRecognitionStrategy m_audioRecognitionStrategy{AudioRecognitionStrategy::NOT_SET};
     bool m_audioRecognitionStrategyHasBeenSet = false;
   };
 

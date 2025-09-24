@@ -18,13 +18,7 @@ namespace IoTWireless
 namespace Model
 {
 
-MessageDeliveryStatusResourceTypeEventConfiguration::MessageDeliveryStatusResourceTypeEventConfiguration() : 
-    m_sidewalkHasBeenSet(false)
-{
-}
-
-MessageDeliveryStatusResourceTypeEventConfiguration::MessageDeliveryStatusResourceTypeEventConfiguration(JsonView jsonValue) : 
-    m_sidewalkHasBeenSet(false)
+MessageDeliveryStatusResourceTypeEventConfiguration::MessageDeliveryStatusResourceTypeEventConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ MessageDeliveryStatusResourceTypeEventConfiguration& MessageDeliveryStatusResour
   if(jsonValue.ValueExists("Sidewalk"))
   {
     m_sidewalk = jsonValue.GetObject("Sidewalk");
-
     m_sidewalkHasBeenSet = true;
   }
-
   return *this;
 }
 

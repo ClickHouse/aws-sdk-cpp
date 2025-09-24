@@ -18,15 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-CustomAction::CustomAction() : 
-    m_actionNameHasBeenSet(false),
-    m_actionDefinitionHasBeenSet(false)
-{
-}
-
-CustomAction::CustomAction(JsonView jsonValue) : 
-    m_actionNameHasBeenSet(false),
-    m_actionDefinitionHasBeenSet(false)
+CustomAction::CustomAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CustomAction& CustomAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ActionName"))
   {
     m_actionName = jsonValue.GetString("ActionName");
-
     m_actionNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ActionDefinition"))
   {
     m_actionDefinition = jsonValue.GetObject("ActionDefinition");
-
     m_actionDefinitionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -28,68 +28,38 @@ namespace Model
   class UpdateAccountSettingsResult
   {
   public:
-    AWS_RESOURCEGROUPS_API UpdateAccountSettingsResult();
+    AWS_RESOURCEGROUPS_API UpdateAccountSettingsResult() = default;
     AWS_RESOURCEGROUPS_API UpdateAccountSettingsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_RESOURCEGROUPS_API UpdateAccountSettingsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A structure that displays the status of the optional features in the
      * account.</p>
      */
-    inline const AccountSettings& GetAccountSettings() const{ return m_accountSettings; }
+    inline const AccountSettings& GetAccountSettings() const { return m_accountSettings; }
+    template<typename AccountSettingsT = AccountSettings>
+    void SetAccountSettings(AccountSettingsT&& value) { m_accountSettingsHasBeenSet = true; m_accountSettings = std::forward<AccountSettingsT>(value); }
+    template<typename AccountSettingsT = AccountSettings>
+    UpdateAccountSettingsResult& WithAccountSettings(AccountSettingsT&& value) { SetAccountSettings(std::forward<AccountSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A structure that displays the status of the optional features in the
-     * account.</p>
-     */
-    inline void SetAccountSettings(const AccountSettings& value) { m_accountSettings = value; }
-
-    /**
-     * <p>A structure that displays the status of the optional features in the
-     * account.</p>
-     */
-    inline void SetAccountSettings(AccountSettings&& value) { m_accountSettings = std::move(value); }
-
-    /**
-     * <p>A structure that displays the status of the optional features in the
-     * account.</p>
-     */
-    inline UpdateAccountSettingsResult& WithAccountSettings(const AccountSettings& value) { SetAccountSettings(value); return *this;}
-
-    /**
-     * <p>A structure that displays the status of the optional features in the
-     * account.</p>
-     */
-    inline UpdateAccountSettingsResult& WithAccountSettings(AccountSettings&& value) { SetAccountSettings(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateAccountSettingsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateAccountSettingsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateAccountSettingsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateAccountSettingsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     AccountSettings m_accountSettings;
+    bool m_accountSettingsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

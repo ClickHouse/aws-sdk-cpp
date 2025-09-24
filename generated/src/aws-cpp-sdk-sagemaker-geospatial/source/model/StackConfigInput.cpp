@@ -18,15 +18,7 @@ namespace SageMakerGeospatial
 namespace Model
 {
 
-StackConfigInput::StackConfigInput() : 
-    m_outputResolutionHasBeenSet(false),
-    m_targetBandsHasBeenSet(false)
-{
-}
-
-StackConfigInput::StackConfigInput(JsonView jsonValue) : 
-    m_outputResolutionHasBeenSet(false),
-    m_targetBandsHasBeenSet(false)
+StackConfigInput::StackConfigInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ StackConfigInput& StackConfigInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("OutputResolution"))
   {
     m_outputResolution = jsonValue.GetObject("OutputResolution");
-
     m_outputResolutionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetBands"))
   {
     Aws::Utils::Array<JsonView> targetBandsJsonList = jsonValue.GetArray("TargetBands");
@@ -49,7 +39,6 @@ StackConfigInput& StackConfigInput::operator =(JsonView jsonValue)
     }
     m_targetBandsHasBeenSet = true;
   }
-
   return *this;
 }
 

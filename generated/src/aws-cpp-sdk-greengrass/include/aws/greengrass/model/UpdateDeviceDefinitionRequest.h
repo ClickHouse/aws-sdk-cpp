@@ -21,7 +21,7 @@ namespace Model
   class UpdateDeviceDefinitionRequest : public GreengrassRequest
   {
   public:
-    AWS_GREENGRASS_API UpdateDeviceDefinitionRequest();
+    AWS_GREENGRASS_API UpdateDeviceDefinitionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_GREENGRASS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * The ID of the device definition.
      */
-    inline const Aws::String& GetDeviceDefinitionId() const{ return m_deviceDefinitionId; }
-
-    /**
-     * The ID of the device definition.
-     */
+    inline const Aws::String& GetDeviceDefinitionId() const { return m_deviceDefinitionId; }
     inline bool DeviceDefinitionIdHasBeenSet() const { return m_deviceDefinitionIdHasBeenSet; }
+    template<typename DeviceDefinitionIdT = Aws::String>
+    void SetDeviceDefinitionId(DeviceDefinitionIdT&& value) { m_deviceDefinitionIdHasBeenSet = true; m_deviceDefinitionId = std::forward<DeviceDefinitionIdT>(value); }
+    template<typename DeviceDefinitionIdT = Aws::String>
+    UpdateDeviceDefinitionRequest& WithDeviceDefinitionId(DeviceDefinitionIdT&& value) { SetDeviceDefinitionId(std::forward<DeviceDefinitionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the device definition.
-     */
-    inline void SetDeviceDefinitionId(const Aws::String& value) { m_deviceDefinitionIdHasBeenSet = true; m_deviceDefinitionId = value; }
-
-    /**
-     * The ID of the device definition.
-     */
-    inline void SetDeviceDefinitionId(Aws::String&& value) { m_deviceDefinitionIdHasBeenSet = true; m_deviceDefinitionId = std::move(value); }
-
-    /**
-     * The ID of the device definition.
-     */
-    inline void SetDeviceDefinitionId(const char* value) { m_deviceDefinitionIdHasBeenSet = true; m_deviceDefinitionId.assign(value); }
-
-    /**
-     * The ID of the device definition.
-     */
-    inline UpdateDeviceDefinitionRequest& WithDeviceDefinitionId(const Aws::String& value) { SetDeviceDefinitionId(value); return *this;}
-
-    /**
-     * The ID of the device definition.
-     */
-    inline UpdateDeviceDefinitionRequest& WithDeviceDefinitionId(Aws::String&& value) { SetDeviceDefinitionId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the device definition.
-     */
-    inline UpdateDeviceDefinitionRequest& WithDeviceDefinitionId(const char* value) { SetDeviceDefinitionId(value); return *this;}
-
-
+    ///@{
     /**
      * The name of the definition.
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * The name of the definition.
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * The name of the definition.
-     */
-    inline UpdateDeviceDefinitionRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * The name of the definition.
-     */
-    inline UpdateDeviceDefinitionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * The name of the definition.
-     */
-    inline UpdateDeviceDefinitionRequest& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    UpdateDeviceDefinitionRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_deviceDefinitionId;

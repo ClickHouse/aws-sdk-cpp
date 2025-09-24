@@ -33,89 +33,39 @@ namespace Model
   class SortProperty
   {
   public:
-    AWS_AMPLIFYUIBUILDER_API SortProperty();
+    AWS_AMPLIFYUIBUILDER_API SortProperty() = default;
     AWS_AMPLIFYUIBUILDER_API SortProperty(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API SortProperty& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_AMPLIFYUIBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field to perform the sort on.</p>
      */
-    inline const Aws::String& GetField() const{ return m_field; }
-
-    /**
-     * <p>The field to perform the sort on.</p>
-     */
+    inline const Aws::String& GetField() const { return m_field; }
     inline bool FieldHasBeenSet() const { return m_fieldHasBeenSet; }
+    template<typename FieldT = Aws::String>
+    void SetField(FieldT&& value) { m_fieldHasBeenSet = true; m_field = std::forward<FieldT>(value); }
+    template<typename FieldT = Aws::String>
+    SortProperty& WithField(FieldT&& value) { SetField(std::forward<FieldT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field to perform the sort on.</p>
-     */
-    inline void SetField(const Aws::String& value) { m_fieldHasBeenSet = true; m_field = value; }
-
-    /**
-     * <p>The field to perform the sort on.</p>
-     */
-    inline void SetField(Aws::String&& value) { m_fieldHasBeenSet = true; m_field = std::move(value); }
-
-    /**
-     * <p>The field to perform the sort on.</p>
-     */
-    inline void SetField(const char* value) { m_fieldHasBeenSet = true; m_field.assign(value); }
-
-    /**
-     * <p>The field to perform the sort on.</p>
-     */
-    inline SortProperty& WithField(const Aws::String& value) { SetField(value); return *this;}
-
-    /**
-     * <p>The field to perform the sort on.</p>
-     */
-    inline SortProperty& WithField(Aws::String&& value) { SetField(std::move(value)); return *this;}
-
-    /**
-     * <p>The field to perform the sort on.</p>
-     */
-    inline SortProperty& WithField(const char* value) { SetField(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The direction of the sort, either ascending or descending.</p>
      */
-    inline const SortDirection& GetDirection() const{ return m_direction; }
-
-    /**
-     * <p>The direction of the sort, either ascending or descending.</p>
-     */
+    inline SortDirection GetDirection() const { return m_direction; }
     inline bool DirectionHasBeenSet() const { return m_directionHasBeenSet; }
-
-    /**
-     * <p>The direction of the sort, either ascending or descending.</p>
-     */
-    inline void SetDirection(const SortDirection& value) { m_directionHasBeenSet = true; m_direction = value; }
-
-    /**
-     * <p>The direction of the sort, either ascending or descending.</p>
-     */
-    inline void SetDirection(SortDirection&& value) { m_directionHasBeenSet = true; m_direction = std::move(value); }
-
-    /**
-     * <p>The direction of the sort, either ascending or descending.</p>
-     */
-    inline SortProperty& WithDirection(const SortDirection& value) { SetDirection(value); return *this;}
-
-    /**
-     * <p>The direction of the sort, either ascending or descending.</p>
-     */
-    inline SortProperty& WithDirection(SortDirection&& value) { SetDirection(std::move(value)); return *this;}
-
+    inline void SetDirection(SortDirection value) { m_directionHasBeenSet = true; m_direction = value; }
+    inline SortProperty& WithDirection(SortDirection value) { SetDirection(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_field;
     bool m_fieldHasBeenSet = false;
 
-    SortDirection m_direction;
+    SortDirection m_direction{SortDirection::NOT_SET};
     bool m_directionHasBeenSet = false;
   };
 

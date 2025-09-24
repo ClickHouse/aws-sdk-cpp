@@ -31,7 +31,7 @@ namespace Model
   class LaunchTemplateInstanceMaintenanceOptions
   {
   public:
-    AWS_EC2_API LaunchTemplateInstanceMaintenanceOptions();
+    AWS_EC2_API LaunchTemplateInstanceMaintenanceOptions() = default;
     AWS_EC2_API LaunchTemplateInstanceMaintenanceOptions(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API LaunchTemplateInstanceMaintenanceOptions& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,45 +39,19 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Disables the automatic recovery behavior of your instance or sets it to
      * default.</p>
      */
-    inline const LaunchTemplateAutoRecoveryState& GetAutoRecovery() const{ return m_autoRecovery; }
-
-    /**
-     * <p>Disables the automatic recovery behavior of your instance or sets it to
-     * default.</p>
-     */
+    inline LaunchTemplateAutoRecoveryState GetAutoRecovery() const { return m_autoRecovery; }
     inline bool AutoRecoveryHasBeenSet() const { return m_autoRecoveryHasBeenSet; }
-
-    /**
-     * <p>Disables the automatic recovery behavior of your instance or sets it to
-     * default.</p>
-     */
-    inline void SetAutoRecovery(const LaunchTemplateAutoRecoveryState& value) { m_autoRecoveryHasBeenSet = true; m_autoRecovery = value; }
-
-    /**
-     * <p>Disables the automatic recovery behavior of your instance or sets it to
-     * default.</p>
-     */
-    inline void SetAutoRecovery(LaunchTemplateAutoRecoveryState&& value) { m_autoRecoveryHasBeenSet = true; m_autoRecovery = std::move(value); }
-
-    /**
-     * <p>Disables the automatic recovery behavior of your instance or sets it to
-     * default.</p>
-     */
-    inline LaunchTemplateInstanceMaintenanceOptions& WithAutoRecovery(const LaunchTemplateAutoRecoveryState& value) { SetAutoRecovery(value); return *this;}
-
-    /**
-     * <p>Disables the automatic recovery behavior of your instance or sets it to
-     * default.</p>
-     */
-    inline LaunchTemplateInstanceMaintenanceOptions& WithAutoRecovery(LaunchTemplateAutoRecoveryState&& value) { SetAutoRecovery(std::move(value)); return *this;}
-
+    inline void SetAutoRecovery(LaunchTemplateAutoRecoveryState value) { m_autoRecoveryHasBeenSet = true; m_autoRecovery = value; }
+    inline LaunchTemplateInstanceMaintenanceOptions& WithAutoRecovery(LaunchTemplateAutoRecoveryState value) { SetAutoRecovery(value); return *this;}
+    ///@}
   private:
 
-    LaunchTemplateAutoRecoveryState m_autoRecovery;
+    LaunchTemplateAutoRecoveryState m_autoRecovery{LaunchTemplateAutoRecoveryState::NOT_SET};
     bool m_autoRecoveryHasBeenSet = false;
   };
 

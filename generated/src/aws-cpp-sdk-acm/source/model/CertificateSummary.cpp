@@ -18,61 +18,7 @@ namespace ACM
 namespace Model
 {
 
-CertificateSummary::CertificateSummary() : 
-    m_certificateArnHasBeenSet(false),
-    m_domainNameHasBeenSet(false),
-    m_subjectAlternativeNameSummariesHasBeenSet(false),
-    m_hasAdditionalSubjectAlternativeNames(false),
-    m_hasAdditionalSubjectAlternativeNamesHasBeenSet(false),
-    m_status(CertificateStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_type(CertificateType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_keyAlgorithm(KeyAlgorithm::NOT_SET),
-    m_keyAlgorithmHasBeenSet(false),
-    m_keyUsagesHasBeenSet(false),
-    m_extendedKeyUsagesHasBeenSet(false),
-    m_inUse(false),
-    m_inUseHasBeenSet(false),
-    m_exported(false),
-    m_exportedHasBeenSet(false),
-    m_renewalEligibility(RenewalEligibility::NOT_SET),
-    m_renewalEligibilityHasBeenSet(false),
-    m_notBeforeHasBeenSet(false),
-    m_notAfterHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_issuedAtHasBeenSet(false),
-    m_importedAtHasBeenSet(false),
-    m_revokedAtHasBeenSet(false)
-{
-}
-
-CertificateSummary::CertificateSummary(JsonView jsonValue) : 
-    m_certificateArnHasBeenSet(false),
-    m_domainNameHasBeenSet(false),
-    m_subjectAlternativeNameSummariesHasBeenSet(false),
-    m_hasAdditionalSubjectAlternativeNames(false),
-    m_hasAdditionalSubjectAlternativeNamesHasBeenSet(false),
-    m_status(CertificateStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_type(CertificateType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_keyAlgorithm(KeyAlgorithm::NOT_SET),
-    m_keyAlgorithmHasBeenSet(false),
-    m_keyUsagesHasBeenSet(false),
-    m_extendedKeyUsagesHasBeenSet(false),
-    m_inUse(false),
-    m_inUseHasBeenSet(false),
-    m_exported(false),
-    m_exportedHasBeenSet(false),
-    m_renewalEligibility(RenewalEligibility::NOT_SET),
-    m_renewalEligibilityHasBeenSet(false),
-    m_notBeforeHasBeenSet(false),
-    m_notAfterHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_issuedAtHasBeenSet(false),
-    m_importedAtHasBeenSet(false),
-    m_revokedAtHasBeenSet(false)
+CertificateSummary::CertificateSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -82,17 +28,13 @@ CertificateSummary& CertificateSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CertificateArn"))
   {
     m_certificateArn = jsonValue.GetString("CertificateArn");
-
     m_certificateArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DomainName"))
   {
     m_domainName = jsonValue.GetString("DomainName");
-
     m_domainNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SubjectAlternativeNameSummaries"))
   {
     Aws::Utils::Array<JsonView> subjectAlternativeNameSummariesJsonList = jsonValue.GetArray("SubjectAlternativeNameSummaries");
@@ -102,35 +44,26 @@ CertificateSummary& CertificateSummary::operator =(JsonView jsonValue)
     }
     m_subjectAlternativeNameSummariesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HasAdditionalSubjectAlternativeNames"))
   {
     m_hasAdditionalSubjectAlternativeNames = jsonValue.GetBool("HasAdditionalSubjectAlternativeNames");
-
     m_hasAdditionalSubjectAlternativeNamesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = CertificateStatusMapper::GetCertificateStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = CertificateTypeMapper::GetCertificateTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KeyAlgorithm"))
   {
     m_keyAlgorithm = KeyAlgorithmMapper::GetKeyAlgorithmForName(jsonValue.GetString("KeyAlgorithm"));
-
     m_keyAlgorithmHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KeyUsages"))
   {
     Aws::Utils::Array<JsonView> keyUsagesJsonList = jsonValue.GetArray("KeyUsages");
@@ -140,7 +73,6 @@ CertificateSummary& CertificateSummary::operator =(JsonView jsonValue)
     }
     m_keyUsagesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExtendedKeyUsages"))
   {
     Aws::Utils::Array<JsonView> extendedKeyUsagesJsonList = jsonValue.GetArray("ExtendedKeyUsages");
@@ -150,70 +82,61 @@ CertificateSummary& CertificateSummary::operator =(JsonView jsonValue)
     }
     m_extendedKeyUsagesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ExportOption"))
+  {
+    m_exportOption = CertificateExportMapper::GetCertificateExportForName(jsonValue.GetString("ExportOption"));
+    m_exportOptionHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("InUse"))
   {
     m_inUse = jsonValue.GetBool("InUse");
-
     m_inUseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Exported"))
   {
     m_exported = jsonValue.GetBool("Exported");
-
     m_exportedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RenewalEligibility"))
   {
     m_renewalEligibility = RenewalEligibilityMapper::GetRenewalEligibilityForName(jsonValue.GetString("RenewalEligibility"));
-
     m_renewalEligibilityHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NotBefore"))
   {
     m_notBefore = jsonValue.GetDouble("NotBefore");
-
     m_notBeforeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NotAfter"))
   {
     m_notAfter = jsonValue.GetDouble("NotAfter");
-
     m_notAfterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedAt"))
   {
     m_createdAt = jsonValue.GetDouble("CreatedAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IssuedAt"))
   {
     m_issuedAt = jsonValue.GetDouble("IssuedAt");
-
     m_issuedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ImportedAt"))
   {
     m_importedAt = jsonValue.GetDouble("ImportedAt");
-
     m_importedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RevokedAt"))
   {
     m_revokedAt = jsonValue.GetDouble("RevokedAt");
-
     m_revokedAtHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ManagedBy"))
+  {
+    m_managedBy = CertificateManagedByMapper::GetCertificateManagedByForName(jsonValue.GetString("ManagedBy"));
+    m_managedByHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -287,6 +210,11 @@ JsonValue CertificateSummary::Jsonize() const
 
   }
 
+  if(m_exportOptionHasBeenSet)
+  {
+   payload.WithString("ExportOption", CertificateExportMapper::GetNameForCertificateExport(m_exportOption));
+  }
+
   if(m_inUseHasBeenSet)
   {
    payload.WithBool("InUse", m_inUse);
@@ -332,6 +260,11 @@ JsonValue CertificateSummary::Jsonize() const
   if(m_revokedAtHasBeenSet)
   {
    payload.WithDouble("RevokedAt", m_revokedAt.SecondsWithMSPrecision());
+  }
+
+  if(m_managedByHasBeenSet)
+  {
+   payload.WithString("ManagedBy", CertificateManagedByMapper::GetNameForCertificateManagedBy(m_managedBy));
   }
 
   return payload;

@@ -18,17 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-RevealConfiguration::RevealConfiguration() : 
-    m_kmsKeyIdHasBeenSet(false),
-    m_status(RevealStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-RevealConfiguration::RevealConfiguration(JsonView jsonValue) : 
-    m_kmsKeyIdHasBeenSet(false),
-    m_status(RevealStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+RevealConfiguration::RevealConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RevealConfiguration& RevealConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("kmsKeyId"))
   {
     m_kmsKeyId = jsonValue.GetString("kmsKeyId");
-
     m_kmsKeyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = RevealStatusMapper::GetRevealStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

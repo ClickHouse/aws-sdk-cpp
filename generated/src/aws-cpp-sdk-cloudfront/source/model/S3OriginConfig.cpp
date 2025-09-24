@@ -20,13 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-S3OriginConfig::S3OriginConfig() : 
-    m_originAccessIdentityHasBeenSet(false)
-{
-}
-
-S3OriginConfig::S3OriginConfig(const XmlNode& xmlNode) : 
-    m_originAccessIdentityHasBeenSet(false)
+S3OriginConfig::S3OriginConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -43,6 +37,12 @@ S3OriginConfig& S3OriginConfig::operator =(const XmlNode& xmlNode)
       m_originAccessIdentity = Aws::Utils::Xml::DecodeEscapedXmlText(originAccessIdentityNode.GetText());
       m_originAccessIdentityHasBeenSet = true;
     }
+    XmlNode originReadTimeoutNode = resultNode.FirstChild("OriginReadTimeout");
+    if(!originReadTimeoutNode.IsNull())
+    {
+      m_originReadTimeout = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(originReadTimeoutNode.GetText()).c_str()).c_str());
+      m_originReadTimeoutHasBeenSet = true;
+    }
   }
 
   return *this;
@@ -55,6 +55,14 @@ void S3OriginConfig::AddToNode(XmlNode& parentNode) const
   {
    XmlNode originAccessIdentityNode = parentNode.CreateChildElement("OriginAccessIdentity");
    originAccessIdentityNode.SetText(m_originAccessIdentity);
+  }
+
+  if(m_originReadTimeoutHasBeenSet)
+  {
+   XmlNode originReadTimeoutNode = parentNode.CreateChildElement("OriginReadTimeout");
+   ss << m_originReadTimeout;
+   originReadTimeoutNode.SetText(ss.str());
+   ss.str("");
   }
 
 }

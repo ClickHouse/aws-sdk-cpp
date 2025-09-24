@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/ec2/EC2_EXPORTS.h>
 #include <aws/ec2/EC2Request.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/ec2/model/IpPermission.h>
 #include <utility>
 
@@ -23,7 +23,7 @@ namespace Model
   class RevokeSecurityGroupEgressRequest : public EC2Request
   {
   public:
-    AWS_EC2_API RevokeSecurityGroupEgressRequest();
+    AWS_EC2_API RevokeSecurityGroupEgressRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,435 +38,161 @@ namespace Model
 
   public:
 
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline const Aws::String& GetGroupId() const{ return m_groupId; }
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline bool GroupIdHasBeenSet() const { return m_groupIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline void SetGroupId(const Aws::String& value) { m_groupIdHasBeenSet = true; m_groupId = value; }
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline void SetGroupId(Aws::String&& value) { m_groupIdHasBeenSet = true; m_groupId = std::move(value); }
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline void SetGroupId(const char* value) { m_groupIdHasBeenSet = true; m_groupId.assign(value); }
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithGroupId(const Aws::String& value) { SetGroupId(value); return *this;}
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithGroupId(Aws::String&& value) { SetGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the security group.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithGroupId(const char* value) { SetGroupId(value); return *this;}
-
-
-    /**
-     * <p>The sets of IP permissions. You can't specify a destination security group
-     * and a CIDR IP address range in the same set of permissions.</p>
-     */
-    inline const Aws::Vector<IpPermission>& GetIpPermissions() const{ return m_ipPermissions; }
-
-    /**
-     * <p>The sets of IP permissions. You can't specify a destination security group
-     * and a CIDR IP address range in the same set of permissions.</p>
-     */
-    inline bool IpPermissionsHasBeenSet() const { return m_ipPermissionsHasBeenSet; }
-
-    /**
-     * <p>The sets of IP permissions. You can't specify a destination security group
-     * and a CIDR IP address range in the same set of permissions.</p>
-     */
-    inline void SetIpPermissions(const Aws::Vector<IpPermission>& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions = value; }
-
-    /**
-     * <p>The sets of IP permissions. You can't specify a destination security group
-     * and a CIDR IP address range in the same set of permissions.</p>
-     */
-    inline void SetIpPermissions(Aws::Vector<IpPermission>&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions = std::move(value); }
-
-    /**
-     * <p>The sets of IP permissions. You can't specify a destination security group
-     * and a CIDR IP address range in the same set of permissions.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithIpPermissions(const Aws::Vector<IpPermission>& value) { SetIpPermissions(value); return *this;}
-
-    /**
-     * <p>The sets of IP permissions. You can't specify a destination security group
-     * and a CIDR IP address range in the same set of permissions.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithIpPermissions(Aws::Vector<IpPermission>&& value) { SetIpPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>The sets of IP permissions. You can't specify a destination security group
-     * and a CIDR IP address range in the same set of permissions.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& AddIpPermissions(const IpPermission& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions.push_back(value); return *this; }
-
-    /**
-     * <p>The sets of IP permissions. You can't specify a destination security group
-     * and a CIDR IP address range in the same set of permissions.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& AddIpPermissions(IpPermission&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The IDs of the security group rules.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroupRuleIds() const{ return m_securityGroupRuleIds; }
-
-    /**
-     * <p>The IDs of the security group rules.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroupRuleIds() const { return m_securityGroupRuleIds; }
     inline bool SecurityGroupRuleIdsHasBeenSet() const { return m_securityGroupRuleIdsHasBeenSet; }
+    template<typename SecurityGroupRuleIdsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroupRuleIds(SecurityGroupRuleIdsT&& value) { m_securityGroupRuleIdsHasBeenSet = true; m_securityGroupRuleIds = std::forward<SecurityGroupRuleIdsT>(value); }
+    template<typename SecurityGroupRuleIdsT = Aws::Vector<Aws::String>>
+    RevokeSecurityGroupEgressRequest& WithSecurityGroupRuleIds(SecurityGroupRuleIdsT&& value) { SetSecurityGroupRuleIds(std::forward<SecurityGroupRuleIdsT>(value)); return *this;}
+    template<typename SecurityGroupRuleIdsT = Aws::String>
+    RevokeSecurityGroupEgressRequest& AddSecurityGroupRuleIds(SecurityGroupRuleIdsT&& value) { m_securityGroupRuleIdsHasBeenSet = true; m_securityGroupRuleIds.emplace_back(std::forward<SecurityGroupRuleIdsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The IDs of the security group rules.</p>
+     * <p>Checks whether you have the required permissions for the action, without
+     * actually making the request, and provides an error response. If you have the
+     * required permissions, the error response is <code>DryRunOperation</code>.
+     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline void SetSecurityGroupRuleIds(const Aws::Vector<Aws::String>& value) { m_securityGroupRuleIdsHasBeenSet = true; m_securityGroupRuleIds = value; }
+    inline bool GetDryRun() const { return m_dryRun; }
+    inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
+    inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
+    inline RevokeSecurityGroupEgressRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The IDs of the security group rules.</p>
+     * <p>The ID of the security group.</p>
      */
-    inline void SetSecurityGroupRuleIds(Aws::Vector<Aws::String>&& value) { m_securityGroupRuleIdsHasBeenSet = true; m_securityGroupRuleIds = std::move(value); }
+    inline const Aws::String& GetGroupId() const { return m_groupId; }
+    inline bool GroupIdHasBeenSet() const { return m_groupIdHasBeenSet; }
+    template<typename GroupIdT = Aws::String>
+    void SetGroupId(GroupIdT&& value) { m_groupIdHasBeenSet = true; m_groupId = std::forward<GroupIdT>(value); }
+    template<typename GroupIdT = Aws::String>
+    RevokeSecurityGroupEgressRequest& WithGroupId(GroupIdT&& value) { SetGroupId(std::forward<GroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IDs of the security group rules.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithSecurityGroupRuleIds(const Aws::Vector<Aws::String>& value) { SetSecurityGroupRuleIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the security group rules.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithSecurityGroupRuleIds(Aws::Vector<Aws::String>&& value) { SetSecurityGroupRuleIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the security group rules.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& AddSecurityGroupRuleIds(const Aws::String& value) { m_securityGroupRuleIdsHasBeenSet = true; m_securityGroupRuleIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the security group rules.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& AddSecurityGroupRuleIds(Aws::String&& value) { m_securityGroupRuleIdsHasBeenSet = true; m_securityGroupRuleIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the security group rules.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& AddSecurityGroupRuleIds(const char* value) { m_securityGroupRuleIdsHasBeenSet = true; m_securityGroupRuleIds.push_back(value); return *this; }
-
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the CIDR.</p>
-     */
-    inline const Aws::String& GetCidrIp() const{ return m_cidrIp; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the CIDR.</p>
-     */
-    inline bool CidrIpHasBeenSet() const { return m_cidrIpHasBeenSet; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the CIDR.</p>
-     */
-    inline void SetCidrIp(const Aws::String& value) { m_cidrIpHasBeenSet = true; m_cidrIp = value; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the CIDR.</p>
-     */
-    inline void SetCidrIp(Aws::String&& value) { m_cidrIpHasBeenSet = true; m_cidrIp = std::move(value); }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the CIDR.</p>
-     */
-    inline void SetCidrIp(const char* value) { m_cidrIpHasBeenSet = true; m_cidrIp.assign(value); }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the CIDR.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithCidrIp(const Aws::String& value) { SetCidrIp(value); return *this;}
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the CIDR.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithCidrIp(Aws::String&& value) { SetCidrIp(std::move(value)); return *this;}
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the CIDR.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithCidrIp(const char* value) { SetCidrIp(value); return *this;}
-
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the port.</p>
-     */
-    inline int GetFromPort() const{ return m_fromPort; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the port.</p>
-     */
-    inline bool FromPortHasBeenSet() const { return m_fromPortHasBeenSet; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the port.</p>
-     */
-    inline void SetFromPort(int value) { m_fromPortHasBeenSet = true; m_fromPort = value; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the port.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithFromPort(int value) { SetFromPort(value); return *this;}
-
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the protocol name or
-     * number.</p>
-     */
-    inline const Aws::String& GetIpProtocol() const{ return m_ipProtocol; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the protocol name or
-     * number.</p>
-     */
-    inline bool IpProtocolHasBeenSet() const { return m_ipProtocolHasBeenSet; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the protocol name or
-     * number.</p>
-     */
-    inline void SetIpProtocol(const Aws::String& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = value; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the protocol name or
-     * number.</p>
-     */
-    inline void SetIpProtocol(Aws::String&& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = std::move(value); }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the protocol name or
-     * number.</p>
-     */
-    inline void SetIpProtocol(const char* value) { m_ipProtocolHasBeenSet = true; m_ipProtocol.assign(value); }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the protocol name or
-     * number.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithIpProtocol(const Aws::String& value) { SetIpProtocol(value); return *this;}
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the protocol name or
-     * number.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithIpProtocol(Aws::String&& value) { SetIpProtocol(std::move(value)); return *this;}
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the protocol name or
-     * number.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithIpProtocol(const char* value) { SetIpProtocol(value); return *this;}
-
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the port.</p>
-     */
-    inline int GetToPort() const{ return m_toPort; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the port.</p>
-     */
-    inline bool ToPortHasBeenSet() const { return m_toPortHasBeenSet; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the port.</p>
-     */
-    inline void SetToPort(int value) { m_toPortHasBeenSet = true; m_toPort = value; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify the port.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithToPort(int value) { SetToPort(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Not supported. Use a set of IP permissions to specify a destination security
      * group.</p>
      */
-    inline const Aws::String& GetSourceSecurityGroupName() const{ return m_sourceSecurityGroupName; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
-     */
+    inline const Aws::String& GetSourceSecurityGroupName() const { return m_sourceSecurityGroupName; }
     inline bool SourceSecurityGroupNameHasBeenSet() const { return m_sourceSecurityGroupNameHasBeenSet; }
+    template<typename SourceSecurityGroupNameT = Aws::String>
+    void SetSourceSecurityGroupName(SourceSecurityGroupNameT&& value) { m_sourceSecurityGroupNameHasBeenSet = true; m_sourceSecurityGroupName = std::forward<SourceSecurityGroupNameT>(value); }
+    template<typename SourceSecurityGroupNameT = Aws::String>
+    RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupName(SourceSecurityGroupNameT&& value) { SetSourceSecurityGroupName(std::forward<SourceSecurityGroupNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Not supported. Use a set of IP permissions to specify a destination security
      * group.</p>
      */
-    inline void SetSourceSecurityGroupName(const Aws::String& value) { m_sourceSecurityGroupNameHasBeenSet = true; m_sourceSecurityGroupName = value; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
-     */
-    inline void SetSourceSecurityGroupName(Aws::String&& value) { m_sourceSecurityGroupNameHasBeenSet = true; m_sourceSecurityGroupName = std::move(value); }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
-     */
-    inline void SetSourceSecurityGroupName(const char* value) { m_sourceSecurityGroupNameHasBeenSet = true; m_sourceSecurityGroupName.assign(value); }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupName(const Aws::String& value) { SetSourceSecurityGroupName(value); return *this;}
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupName(Aws::String&& value) { SetSourceSecurityGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupName(const char* value) { SetSourceSecurityGroupName(value); return *this;}
-
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
-     */
-    inline const Aws::String& GetSourceSecurityGroupOwnerId() const{ return m_sourceSecurityGroupOwnerId; }
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
-     */
+    inline const Aws::String& GetSourceSecurityGroupOwnerId() const { return m_sourceSecurityGroupOwnerId; }
     inline bool SourceSecurityGroupOwnerIdHasBeenSet() const { return m_sourceSecurityGroupOwnerIdHasBeenSet; }
+    template<typename SourceSecurityGroupOwnerIdT = Aws::String>
+    void SetSourceSecurityGroupOwnerId(SourceSecurityGroupOwnerIdT&& value) { m_sourceSecurityGroupOwnerIdHasBeenSet = true; m_sourceSecurityGroupOwnerId = std::forward<SourceSecurityGroupOwnerIdT>(value); }
+    template<typename SourceSecurityGroupOwnerIdT = Aws::String>
+    RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupOwnerId(SourceSecurityGroupOwnerIdT&& value) { SetSourceSecurityGroupOwnerId(std::forward<SourceSecurityGroupOwnerIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
+     * <p>Not supported. Use a set of IP permissions to specify the protocol name or
+     * number.</p>
      */
-    inline void SetSourceSecurityGroupOwnerId(const Aws::String& value) { m_sourceSecurityGroupOwnerIdHasBeenSet = true; m_sourceSecurityGroupOwnerId = value; }
+    inline const Aws::String& GetIpProtocol() const { return m_ipProtocol; }
+    inline bool IpProtocolHasBeenSet() const { return m_ipProtocolHasBeenSet; }
+    template<typename IpProtocolT = Aws::String>
+    void SetIpProtocol(IpProtocolT&& value) { m_ipProtocolHasBeenSet = true; m_ipProtocol = std::forward<IpProtocolT>(value); }
+    template<typename IpProtocolT = Aws::String>
+    RevokeSecurityGroupEgressRequest& WithIpProtocol(IpProtocolT&& value) { SetIpProtocol(std::forward<IpProtocolT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
+     * <p>Not supported. Use a set of IP permissions to specify the port.</p>
      */
-    inline void SetSourceSecurityGroupOwnerId(Aws::String&& value) { m_sourceSecurityGroupOwnerIdHasBeenSet = true; m_sourceSecurityGroupOwnerId = std::move(value); }
+    inline int GetFromPort() const { return m_fromPort; }
+    inline bool FromPortHasBeenSet() const { return m_fromPortHasBeenSet; }
+    inline void SetFromPort(int value) { m_fromPortHasBeenSet = true; m_fromPort = value; }
+    inline RevokeSecurityGroupEgressRequest& WithFromPort(int value) { SetFromPort(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
+     * <p>Not supported. Use a set of IP permissions to specify the port.</p>
      */
-    inline void SetSourceSecurityGroupOwnerId(const char* value) { m_sourceSecurityGroupOwnerIdHasBeenSet = true; m_sourceSecurityGroupOwnerId.assign(value); }
+    inline int GetToPort() const { return m_toPort; }
+    inline bool ToPortHasBeenSet() const { return m_toPortHasBeenSet; }
+    inline void SetToPort(int value) { m_toPortHasBeenSet = true; m_toPort = value; }
+    inline RevokeSecurityGroupEgressRequest& WithToPort(int value) { SetToPort(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
+     * <p>Not supported. Use a set of IP permissions to specify the CIDR.</p>
      */
-    inline RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupOwnerId(const Aws::String& value) { SetSourceSecurityGroupOwnerId(value); return *this;}
+    inline const Aws::String& GetCidrIp() const { return m_cidrIp; }
+    inline bool CidrIpHasBeenSet() const { return m_cidrIpHasBeenSet; }
+    template<typename CidrIpT = Aws::String>
+    void SetCidrIp(CidrIpT&& value) { m_cidrIpHasBeenSet = true; m_cidrIp = std::forward<CidrIpT>(value); }
+    template<typename CidrIpT = Aws::String>
+    RevokeSecurityGroupEgressRequest& WithCidrIp(CidrIpT&& value) { SetCidrIp(std::forward<CidrIpT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
+     * <p>The sets of IP permissions. You can't specify a destination security group
+     * and a CIDR IP address range in the same set of permissions.</p>
      */
-    inline RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupOwnerId(Aws::String&& value) { SetSourceSecurityGroupOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>Not supported. Use a set of IP permissions to specify a destination security
-     * group.</p>
-     */
-    inline RevokeSecurityGroupEgressRequest& WithSourceSecurityGroupOwnerId(const char* value) { SetSourceSecurityGroupOwnerId(value); return *this;}
-
+    inline const Aws::Vector<IpPermission>& GetIpPermissions() const { return m_ipPermissions; }
+    inline bool IpPermissionsHasBeenSet() const { return m_ipPermissionsHasBeenSet; }
+    template<typename IpPermissionsT = Aws::Vector<IpPermission>>
+    void SetIpPermissions(IpPermissionsT&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions = std::forward<IpPermissionsT>(value); }
+    template<typename IpPermissionsT = Aws::Vector<IpPermission>>
+    RevokeSecurityGroupEgressRequest& WithIpPermissions(IpPermissionsT&& value) { SetIpPermissions(std::forward<IpPermissionsT>(value)); return *this;}
+    template<typename IpPermissionsT = IpPermission>
+    RevokeSecurityGroupEgressRequest& AddIpPermissions(IpPermissionsT&& value) { m_ipPermissionsHasBeenSet = true; m_ipPermissions.emplace_back(std::forward<IpPermissionsT>(value)); return *this; }
+    ///@}
   private:
-
-    bool m_dryRun;
-    bool m_dryRunHasBeenSet = false;
-
-    Aws::String m_groupId;
-    bool m_groupIdHasBeenSet = false;
-
-    Aws::Vector<IpPermission> m_ipPermissions;
-    bool m_ipPermissionsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_securityGroupRuleIds;
     bool m_securityGroupRuleIdsHasBeenSet = false;
 
-    Aws::String m_cidrIp;
-    bool m_cidrIpHasBeenSet = false;
+    bool m_dryRun{false};
+    bool m_dryRunHasBeenSet = false;
 
-    int m_fromPort;
-    bool m_fromPortHasBeenSet = false;
-
-    Aws::String m_ipProtocol;
-    bool m_ipProtocolHasBeenSet = false;
-
-    int m_toPort;
-    bool m_toPortHasBeenSet = false;
+    Aws::String m_groupId;
+    bool m_groupIdHasBeenSet = false;
 
     Aws::String m_sourceSecurityGroupName;
     bool m_sourceSecurityGroupNameHasBeenSet = false;
 
     Aws::String m_sourceSecurityGroupOwnerId;
     bool m_sourceSecurityGroupOwnerIdHasBeenSet = false;
+
+    Aws::String m_ipProtocol;
+    bool m_ipProtocolHasBeenSet = false;
+
+    int m_fromPort{0};
+    bool m_fromPortHasBeenSet = false;
+
+    int m_toPort{0};
+    bool m_toPortHasBeenSet = false;
+
+    Aws::String m_cidrIp;
+    bool m_cidrIpHasBeenSet = false;
+
+    Aws::Vector<IpPermission> m_ipPermissions;
+    bool m_ipPermissionsHasBeenSet = false;
   };
 
 } // namespace Model

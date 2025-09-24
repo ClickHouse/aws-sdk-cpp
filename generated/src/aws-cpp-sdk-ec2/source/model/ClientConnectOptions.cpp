@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ClientConnectOptions::ClientConnectOptions() : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_lambdaFunctionArnHasBeenSet(false)
-{
-}
-
-ClientConnectOptions::ClientConnectOptions(const XmlNode& xmlNode) : 
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_lambdaFunctionArnHasBeenSet(false)
+ClientConnectOptions::ClientConnectOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

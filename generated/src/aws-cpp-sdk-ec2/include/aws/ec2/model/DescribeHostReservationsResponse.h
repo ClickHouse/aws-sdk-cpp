@@ -30,112 +30,54 @@ namespace Model
   class DescribeHostReservationsResponse
   {
   public:
-    AWS_EC2_API DescribeHostReservationsResponse();
+    AWS_EC2_API DescribeHostReservationsResponse() = default;
     AWS_EC2_API DescribeHostReservationsResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API DescribeHostReservationsResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>Details about the reservation's configuration.</p>
      */
-    inline const Aws::Vector<HostReservation>& GetHostReservationSet() const{ return m_hostReservationSet; }
+    inline const Aws::Vector<HostReservation>& GetHostReservationSet() const { return m_hostReservationSet; }
+    template<typename HostReservationSetT = Aws::Vector<HostReservation>>
+    void SetHostReservationSet(HostReservationSetT&& value) { m_hostReservationSetHasBeenSet = true; m_hostReservationSet = std::forward<HostReservationSetT>(value); }
+    template<typename HostReservationSetT = Aws::Vector<HostReservation>>
+    DescribeHostReservationsResponse& WithHostReservationSet(HostReservationSetT&& value) { SetHostReservationSet(std::forward<HostReservationSetT>(value)); return *this;}
+    template<typename HostReservationSetT = HostReservation>
+    DescribeHostReservationsResponse& AddHostReservationSet(HostReservationSetT&& value) { m_hostReservationSetHasBeenSet = true; m_hostReservationSet.emplace_back(std::forward<HostReservationSetT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Details about the reservation's configuration.</p>
-     */
-    inline void SetHostReservationSet(const Aws::Vector<HostReservation>& value) { m_hostReservationSet = value; }
-
-    /**
-     * <p>Details about the reservation's configuration.</p>
-     */
-    inline void SetHostReservationSet(Aws::Vector<HostReservation>&& value) { m_hostReservationSet = std::move(value); }
-
-    /**
-     * <p>Details about the reservation's configuration.</p>
-     */
-    inline DescribeHostReservationsResponse& WithHostReservationSet(const Aws::Vector<HostReservation>& value) { SetHostReservationSet(value); return *this;}
-
-    /**
-     * <p>Details about the reservation's configuration.</p>
-     */
-    inline DescribeHostReservationsResponse& WithHostReservationSet(Aws::Vector<HostReservation>&& value) { SetHostReservationSet(std::move(value)); return *this;}
-
-    /**
-     * <p>Details about the reservation's configuration.</p>
-     */
-    inline DescribeHostReservationsResponse& AddHostReservationSet(const HostReservation& value) { m_hostReservationSet.push_back(value); return *this; }
-
-    /**
-     * <p>Details about the reservation's configuration.</p>
-     */
-    inline DescribeHostReservationsResponse& AddHostReservationSet(HostReservation&& value) { m_hostReservationSet.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token to use to retrieve the next page of results. This value is
      * <code>null</code> when there are no more results to return.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeHostReservationsResponse& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline DescribeHostReservationsResponse& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline DescribeHostReservationsResponse& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to use to retrieve the next page of results. This value is
-     * <code>null</code> when there are no more results to return.</p>
-     */
-    inline DescribeHostReservationsResponse& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DescribeHostReservationsResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DescribeHostReservationsResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DescribeHostReservationsResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<HostReservation> m_hostReservationSet;
+    bool m_hostReservationSetHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

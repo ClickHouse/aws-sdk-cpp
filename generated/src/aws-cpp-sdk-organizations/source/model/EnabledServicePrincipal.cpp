@@ -18,15 +18,7 @@ namespace Organizations
 namespace Model
 {
 
-EnabledServicePrincipal::EnabledServicePrincipal() : 
-    m_servicePrincipalHasBeenSet(false),
-    m_dateEnabledHasBeenSet(false)
-{
-}
-
-EnabledServicePrincipal::EnabledServicePrincipal(JsonView jsonValue) : 
-    m_servicePrincipalHasBeenSet(false),
-    m_dateEnabledHasBeenSet(false)
+EnabledServicePrincipal::EnabledServicePrincipal(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ EnabledServicePrincipal& EnabledServicePrincipal::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ServicePrincipal"))
   {
     m_servicePrincipal = jsonValue.GetString("ServicePrincipal");
-
     m_servicePrincipalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DateEnabled"))
   {
     m_dateEnabled = jsonValue.GetDouble("DateEnabled");
-
     m_dateEnabledHasBeenSet = true;
   }
-
   return *this;
 }
 

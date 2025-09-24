@@ -18,19 +18,7 @@ namespace GreengrassV2
 namespace Model
 {
 
-DeploymentComponentUpdatePolicy::DeploymentComponentUpdatePolicy() : 
-    m_timeoutInSeconds(0),
-    m_timeoutInSecondsHasBeenSet(false),
-    m_action(DeploymentComponentUpdatePolicyAction::NOT_SET),
-    m_actionHasBeenSet(false)
-{
-}
-
-DeploymentComponentUpdatePolicy::DeploymentComponentUpdatePolicy(JsonView jsonValue) : 
-    m_timeoutInSeconds(0),
-    m_timeoutInSecondsHasBeenSet(false),
-    m_action(DeploymentComponentUpdatePolicyAction::NOT_SET),
-    m_actionHasBeenSet(false)
+DeploymentComponentUpdatePolicy::DeploymentComponentUpdatePolicy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ DeploymentComponentUpdatePolicy& DeploymentComponentUpdatePolicy::operator =(Jso
   if(jsonValue.ValueExists("timeoutInSeconds"))
   {
     m_timeoutInSeconds = jsonValue.GetInteger("timeoutInSeconds");
-
     m_timeoutInSecondsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("action"))
   {
     m_action = DeploymentComponentUpdatePolicyActionMapper::GetDeploymentComponentUpdatePolicyActionForName(jsonValue.GetString("action"));
-
     m_actionHasBeenSet = true;
   }
-
   return *this;
 }
 

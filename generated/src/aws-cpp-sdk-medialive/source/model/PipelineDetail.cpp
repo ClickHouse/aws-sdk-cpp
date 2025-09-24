@@ -18,21 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-PipelineDetail::PipelineDetail() : 
-    m_activeInputAttachmentNameHasBeenSet(false),
-    m_activeInputSwitchActionNameHasBeenSet(false),
-    m_activeMotionGraphicsActionNameHasBeenSet(false),
-    m_activeMotionGraphicsUriHasBeenSet(false),
-    m_pipelineIdHasBeenSet(false)
-{
-}
-
-PipelineDetail::PipelineDetail(JsonView jsonValue) : 
-    m_activeInputAttachmentNameHasBeenSet(false),
-    m_activeInputSwitchActionNameHasBeenSet(false),
-    m_activeMotionGraphicsActionNameHasBeenSet(false),
-    m_activeMotionGraphicsUriHasBeenSet(false),
-    m_pipelineIdHasBeenSet(false)
+PipelineDetail::PipelineDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,33 @@ PipelineDetail& PipelineDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("activeInputAttachmentName"))
   {
     m_activeInputAttachmentName = jsonValue.GetString("activeInputAttachmentName");
-
     m_activeInputAttachmentNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("activeInputSwitchActionName"))
   {
     m_activeInputSwitchActionName = jsonValue.GetString("activeInputSwitchActionName");
-
     m_activeInputSwitchActionNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("activeMotionGraphicsActionName"))
   {
     m_activeMotionGraphicsActionName = jsonValue.GetString("activeMotionGraphicsActionName");
-
     m_activeMotionGraphicsActionNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("activeMotionGraphicsUri"))
   {
     m_activeMotionGraphicsUri = jsonValue.GetString("activeMotionGraphicsUri");
-
     m_activeMotionGraphicsUriHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("pipelineId"))
   {
     m_pipelineId = jsonValue.GetString("pipelineId");
-
     m_pipelineIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("channelEngineVersion"))
+  {
+    m_channelEngineVersion = jsonValue.GetObject("channelEngineVersion");
+    m_channelEngineVersionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -108,6 +89,12 @@ JsonValue PipelineDetail::Jsonize() const
   if(m_pipelineIdHasBeenSet)
   {
    payload.WithString("pipelineId", m_pipelineId);
+
+  }
+
+  if(m_channelEngineVersionHasBeenSet)
+  {
+   payload.WithObject("channelEngineVersion", m_channelEngineVersion.Jsonize());
 
   }
 

@@ -18,19 +18,7 @@ namespace AmplifyUIBuilder
 namespace Model
 {
 
-CreateThemeData::CreateThemeData() : 
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_overridesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-CreateThemeData::CreateThemeData(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_valuesHasBeenSet(false),
-    m_overridesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+CreateThemeData::CreateThemeData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ CreateThemeData& CreateThemeData::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("values");
@@ -53,7 +39,6 @@ CreateThemeData& CreateThemeData::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("overrides"))
   {
     Aws::Utils::Array<JsonView> overridesJsonList = jsonValue.GetArray("overrides");
@@ -63,7 +48,6 @@ CreateThemeData& CreateThemeData::operator =(JsonView jsonValue)
     }
     m_overridesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -73,7 +57,6 @@ CreateThemeData& CreateThemeData::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 

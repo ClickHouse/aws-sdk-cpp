@@ -33,52 +33,25 @@ namespace Model
   class RealTimeContactAnalysisCategoryDetails
   {
   public:
-    AWS_CONNECT_API RealTimeContactAnalysisCategoryDetails();
+    AWS_CONNECT_API RealTimeContactAnalysisCategoryDetails() = default;
     AWS_CONNECT_API RealTimeContactAnalysisCategoryDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API RealTimeContactAnalysisCategoryDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>List of PointOfInterest - objects describing a single match of a rule.</p>
      */
-    inline const Aws::Vector<RealTimeContactAnalysisPointOfInterest>& GetPointsOfInterest() const{ return m_pointsOfInterest; }
-
-    /**
-     * <p>List of PointOfInterest - objects describing a single match of a rule.</p>
-     */
+    inline const Aws::Vector<RealTimeContactAnalysisPointOfInterest>& GetPointsOfInterest() const { return m_pointsOfInterest; }
     inline bool PointsOfInterestHasBeenSet() const { return m_pointsOfInterestHasBeenSet; }
-
-    /**
-     * <p>List of PointOfInterest - objects describing a single match of a rule.</p>
-     */
-    inline void SetPointsOfInterest(const Aws::Vector<RealTimeContactAnalysisPointOfInterest>& value) { m_pointsOfInterestHasBeenSet = true; m_pointsOfInterest = value; }
-
-    /**
-     * <p>List of PointOfInterest - objects describing a single match of a rule.</p>
-     */
-    inline void SetPointsOfInterest(Aws::Vector<RealTimeContactAnalysisPointOfInterest>&& value) { m_pointsOfInterestHasBeenSet = true; m_pointsOfInterest = std::move(value); }
-
-    /**
-     * <p>List of PointOfInterest - objects describing a single match of a rule.</p>
-     */
-    inline RealTimeContactAnalysisCategoryDetails& WithPointsOfInterest(const Aws::Vector<RealTimeContactAnalysisPointOfInterest>& value) { SetPointsOfInterest(value); return *this;}
-
-    /**
-     * <p>List of PointOfInterest - objects describing a single match of a rule.</p>
-     */
-    inline RealTimeContactAnalysisCategoryDetails& WithPointsOfInterest(Aws::Vector<RealTimeContactAnalysisPointOfInterest>&& value) { SetPointsOfInterest(std::move(value)); return *this;}
-
-    /**
-     * <p>List of PointOfInterest - objects describing a single match of a rule.</p>
-     */
-    inline RealTimeContactAnalysisCategoryDetails& AddPointsOfInterest(const RealTimeContactAnalysisPointOfInterest& value) { m_pointsOfInterestHasBeenSet = true; m_pointsOfInterest.push_back(value); return *this; }
-
-    /**
-     * <p>List of PointOfInterest - objects describing a single match of a rule.</p>
-     */
-    inline RealTimeContactAnalysisCategoryDetails& AddPointsOfInterest(RealTimeContactAnalysisPointOfInterest&& value) { m_pointsOfInterestHasBeenSet = true; m_pointsOfInterest.push_back(std::move(value)); return *this; }
-
+    template<typename PointsOfInterestT = Aws::Vector<RealTimeContactAnalysisPointOfInterest>>
+    void SetPointsOfInterest(PointsOfInterestT&& value) { m_pointsOfInterestHasBeenSet = true; m_pointsOfInterest = std::forward<PointsOfInterestT>(value); }
+    template<typename PointsOfInterestT = Aws::Vector<RealTimeContactAnalysisPointOfInterest>>
+    RealTimeContactAnalysisCategoryDetails& WithPointsOfInterest(PointsOfInterestT&& value) { SetPointsOfInterest(std::forward<PointsOfInterestT>(value)); return *this;}
+    template<typename PointsOfInterestT = RealTimeContactAnalysisPointOfInterest>
+    RealTimeContactAnalysisCategoryDetails& AddPointsOfInterest(PointsOfInterestT&& value) { m_pointsOfInterestHasBeenSet = true; m_pointsOfInterest.emplace_back(std::forward<PointsOfInterestT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<RealTimeContactAnalysisPointOfInterest> m_pointsOfInterest;

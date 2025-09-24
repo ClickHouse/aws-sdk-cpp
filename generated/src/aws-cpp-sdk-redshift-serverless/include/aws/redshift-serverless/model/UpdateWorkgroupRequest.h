@@ -8,6 +8,7 @@
 #include <aws/redshift-serverless/RedshiftServerlessRequest.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/redshift-serverless/model/PerformanceTarget.h>
 #include <aws/redshift-serverless/model/ConfigParameter.h>
 #include <utility>
 
@@ -23,7 +24,7 @@ namespace Model
   class UpdateWorkgroupRequest : public RedshiftServerlessRequest
   {
   public:
-    AWS_REDSHIFTSERVERLESS_API UpdateWorkgroupRequest();
+    AWS_REDSHIFTSERVERLESS_API UpdateWorkgroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,394 +37,187 @@ namespace Model
     AWS_REDSHIFTSERVERLESS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The new base data warehouse capacity in Redshift Processing Units (RPUs).</p>
      */
-    inline int GetBaseCapacity() const{ return m_baseCapacity; }
-
-    /**
-     * <p>The new base data warehouse capacity in Redshift Processing Units (RPUs).</p>
-     */
+    inline int GetBaseCapacity() const { return m_baseCapacity; }
     inline bool BaseCapacityHasBeenSet() const { return m_baseCapacityHasBeenSet; }
-
-    /**
-     * <p>The new base data warehouse capacity in Redshift Processing Units (RPUs).</p>
-     */
     inline void SetBaseCapacity(int value) { m_baseCapacityHasBeenSet = true; m_baseCapacity = value; }
-
-    /**
-     * <p>The new base data warehouse capacity in Redshift Processing Units (RPUs).</p>
-     */
     inline UpdateWorkgroupRequest& WithBaseCapacity(int value) { SetBaseCapacity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An array of parameters to set for advanced control over a database. The
      * options are <code>auto_mv</code>, <code>datestyle</code>,
      * <code>enable_case_sensitive_identifier</code>,
      * <code>enable_user_activity_logging</code>, <code>query_group</code>,
-     * <code>search_path</code>, and query monitoring metrics that let you define
-     * performance boundaries. For more information about query monitoring rules and
-     * available metrics, see <a
+     * <code>search_path</code>, <code>require_ssl</code>, <code>use_fips_ssl</code>,
+     * and query monitoring metrics that let you define performance boundaries. For
+     * more information about query monitoring rules and available metrics, see <a
      * href="https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless">
      * Query monitoring metrics for Amazon Redshift Serverless</a>.</p>
      */
-    inline const Aws::Vector<ConfigParameter>& GetConfigParameters() const{ return m_configParameters; }
-
-    /**
-     * <p>An array of parameters to set for advanced control over a database. The
-     * options are <code>auto_mv</code>, <code>datestyle</code>,
-     * <code>enable_case_sensitive_identifier</code>,
-     * <code>enable_user_activity_logging</code>, <code>query_group</code>,
-     * <code>search_path</code>, and query monitoring metrics that let you define
-     * performance boundaries. For more information about query monitoring rules and
-     * available metrics, see <a
-     * href="https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless">
-     * Query monitoring metrics for Amazon Redshift Serverless</a>.</p>
-     */
+    inline const Aws::Vector<ConfigParameter>& GetConfigParameters() const { return m_configParameters; }
     inline bool ConfigParametersHasBeenSet() const { return m_configParametersHasBeenSet; }
+    template<typename ConfigParametersT = Aws::Vector<ConfigParameter>>
+    void SetConfigParameters(ConfigParametersT&& value) { m_configParametersHasBeenSet = true; m_configParameters = std::forward<ConfigParametersT>(value); }
+    template<typename ConfigParametersT = Aws::Vector<ConfigParameter>>
+    UpdateWorkgroupRequest& WithConfigParameters(ConfigParametersT&& value) { SetConfigParameters(std::forward<ConfigParametersT>(value)); return *this;}
+    template<typename ConfigParametersT = ConfigParameter>
+    UpdateWorkgroupRequest& AddConfigParameters(ConfigParametersT&& value) { m_configParametersHasBeenSet = true; m_configParameters.emplace_back(std::forward<ConfigParametersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of parameters to set for advanced control over a database. The
-     * options are <code>auto_mv</code>, <code>datestyle</code>,
-     * <code>enable_case_sensitive_identifier</code>,
-     * <code>enable_user_activity_logging</code>, <code>query_group</code>,
-     * <code>search_path</code>, and query monitoring metrics that let you define
-     * performance boundaries. For more information about query monitoring rules and
-     * available metrics, see <a
-     * href="https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless">
-     * Query monitoring metrics for Amazon Redshift Serverless</a>.</p>
-     */
-    inline void SetConfigParameters(const Aws::Vector<ConfigParameter>& value) { m_configParametersHasBeenSet = true; m_configParameters = value; }
-
-    /**
-     * <p>An array of parameters to set for advanced control over a database. The
-     * options are <code>auto_mv</code>, <code>datestyle</code>,
-     * <code>enable_case_sensitive_identifier</code>,
-     * <code>enable_user_activity_logging</code>, <code>query_group</code>,
-     * <code>search_path</code>, and query monitoring metrics that let you define
-     * performance boundaries. For more information about query monitoring rules and
-     * available metrics, see <a
-     * href="https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless">
-     * Query monitoring metrics for Amazon Redshift Serverless</a>.</p>
-     */
-    inline void SetConfigParameters(Aws::Vector<ConfigParameter>&& value) { m_configParametersHasBeenSet = true; m_configParameters = std::move(value); }
-
-    /**
-     * <p>An array of parameters to set for advanced control over a database. The
-     * options are <code>auto_mv</code>, <code>datestyle</code>,
-     * <code>enable_case_sensitive_identifier</code>,
-     * <code>enable_user_activity_logging</code>, <code>query_group</code>,
-     * <code>search_path</code>, and query monitoring metrics that let you define
-     * performance boundaries. For more information about query monitoring rules and
-     * available metrics, see <a
-     * href="https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless">
-     * Query monitoring metrics for Amazon Redshift Serverless</a>.</p>
-     */
-    inline UpdateWorkgroupRequest& WithConfigParameters(const Aws::Vector<ConfigParameter>& value) { SetConfigParameters(value); return *this;}
-
-    /**
-     * <p>An array of parameters to set for advanced control over a database. The
-     * options are <code>auto_mv</code>, <code>datestyle</code>,
-     * <code>enable_case_sensitive_identifier</code>,
-     * <code>enable_user_activity_logging</code>, <code>query_group</code>,
-     * <code>search_path</code>, and query monitoring metrics that let you define
-     * performance boundaries. For more information about query monitoring rules and
-     * available metrics, see <a
-     * href="https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless">
-     * Query monitoring metrics for Amazon Redshift Serverless</a>.</p>
-     */
-    inline UpdateWorkgroupRequest& WithConfigParameters(Aws::Vector<ConfigParameter>&& value) { SetConfigParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of parameters to set for advanced control over a database. The
-     * options are <code>auto_mv</code>, <code>datestyle</code>,
-     * <code>enable_case_sensitive_identifier</code>,
-     * <code>enable_user_activity_logging</code>, <code>query_group</code>,
-     * <code>search_path</code>, and query monitoring metrics that let you define
-     * performance boundaries. For more information about query monitoring rules and
-     * available metrics, see <a
-     * href="https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless">
-     * Query monitoring metrics for Amazon Redshift Serverless</a>.</p>
-     */
-    inline UpdateWorkgroupRequest& AddConfigParameters(const ConfigParameter& value) { m_configParametersHasBeenSet = true; m_configParameters.push_back(value); return *this; }
-
-    /**
-     * <p>An array of parameters to set for advanced control over a database. The
-     * options are <code>auto_mv</code>, <code>datestyle</code>,
-     * <code>enable_case_sensitive_identifier</code>,
-     * <code>enable_user_activity_logging</code>, <code>query_group</code>,
-     * <code>search_path</code>, and query monitoring metrics that let you define
-     * performance boundaries. For more information about query monitoring rules and
-     * available metrics, see <a
-     * href="https://docs.aws.amazon.com/redshift/latest/dg/cm-c-wlm-query-monitoring-rules.html#cm-c-wlm-query-monitoring-metrics-serverless">
-     * Query monitoring metrics for Amazon Redshift Serverless</a>.</p>
-     */
-    inline UpdateWorkgroupRequest& AddConfigParameters(ConfigParameter&& value) { m_configParametersHasBeenSet = true; m_configParameters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The value that specifies whether to turn on enhanced virtual private cloud
      * (VPC) routing, which forces Amazon Redshift Serverless to route traffic through
      * your VPC.</p>
      */
-    inline bool GetEnhancedVpcRouting() const{ return m_enhancedVpcRouting; }
-
-    /**
-     * <p>The value that specifies whether to turn on enhanced virtual private cloud
-     * (VPC) routing, which forces Amazon Redshift Serverless to route traffic through
-     * your VPC.</p>
-     */
+    inline bool GetEnhancedVpcRouting() const { return m_enhancedVpcRouting; }
     inline bool EnhancedVpcRoutingHasBeenSet() const { return m_enhancedVpcRoutingHasBeenSet; }
-
-    /**
-     * <p>The value that specifies whether to turn on enhanced virtual private cloud
-     * (VPC) routing, which forces Amazon Redshift Serverless to route traffic through
-     * your VPC.</p>
-     */
     inline void SetEnhancedVpcRouting(bool value) { m_enhancedVpcRoutingHasBeenSet = true; m_enhancedVpcRouting = value; }
-
-    /**
-     * <p>The value that specifies whether to turn on enhanced virtual private cloud
-     * (VPC) routing, which forces Amazon Redshift Serverless to route traffic through
-     * your VPC.</p>
-     */
     inline UpdateWorkgroupRequest& WithEnhancedVpcRouting(bool value) { SetEnhancedVpcRouting(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The IP address type that the workgroup supports. Possible values are
+     * <code>ipv4</code> and <code>dualstack</code>.</p>
+     */
+    inline const Aws::String& GetIpAddressType() const { return m_ipAddressType; }
+    inline bool IpAddressTypeHasBeenSet() const { return m_ipAddressTypeHasBeenSet; }
+    template<typename IpAddressTypeT = Aws::String>
+    void SetIpAddressType(IpAddressTypeT&& value) { m_ipAddressTypeHasBeenSet = true; m_ipAddressType = std::forward<IpAddressTypeT>(value); }
+    template<typename IpAddressTypeT = Aws::String>
+    UpdateWorkgroupRequest& WithIpAddressType(IpAddressTypeT&& value) { SetIpAddressType(std::forward<IpAddressTypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>The maximum data-warehouse capacity Amazon Redshift Serverless uses to serve
      * queries. The max capacity is specified in RPUs.</p>
      */
-    inline int GetMaxCapacity() const{ return m_maxCapacity; }
-
-    /**
-     * <p>The maximum data-warehouse capacity Amazon Redshift Serverless uses to serve
-     * queries. The max capacity is specified in RPUs.</p>
-     */
+    inline int GetMaxCapacity() const { return m_maxCapacity; }
     inline bool MaxCapacityHasBeenSet() const { return m_maxCapacityHasBeenSet; }
-
-    /**
-     * <p>The maximum data-warehouse capacity Amazon Redshift Serverless uses to serve
-     * queries. The max capacity is specified in RPUs.</p>
-     */
     inline void SetMaxCapacity(int value) { m_maxCapacityHasBeenSet = true; m_maxCapacity = value; }
-
-    /**
-     * <p>The maximum data-warehouse capacity Amazon Redshift Serverless uses to serve
-     * queries. The max capacity is specified in RPUs.</p>
-     */
     inline UpdateWorkgroupRequest& WithMaxCapacity(int value) { SetMaxCapacity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The custom port to use when connecting to a workgroup. Valid port ranges are
      * 5431-5455 and 8191-8215. The default is 5439.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The custom port to use when connecting to a workgroup. Valid port ranges are
-     * 5431-5455 and 8191-8215. The default is 5439.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The custom port to use when connecting to a workgroup. Valid port ranges are
-     * 5431-5455 and 8191-8215. The default is 5439.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The custom port to use when connecting to a workgroup. Valid port ranges are
-     * 5431-5455 and 8191-8215. The default is 5439.</p>
-     */
     inline UpdateWorkgroupRequest& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>An object that represents the price performance target settings for the
+     * workgroup.</p>
+     */
+    inline const PerformanceTarget& GetPricePerformanceTarget() const { return m_pricePerformanceTarget; }
+    inline bool PricePerformanceTargetHasBeenSet() const { return m_pricePerformanceTargetHasBeenSet; }
+    template<typename PricePerformanceTargetT = PerformanceTarget>
+    void SetPricePerformanceTarget(PricePerformanceTargetT&& value) { m_pricePerformanceTargetHasBeenSet = true; m_pricePerformanceTarget = std::forward<PricePerformanceTargetT>(value); }
+    template<typename PricePerformanceTargetT = PerformanceTarget>
+    UpdateWorkgroupRequest& WithPricePerformanceTarget(PricePerformanceTargetT&& value) { SetPricePerformanceTarget(std::forward<PricePerformanceTargetT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>A value that specifies whether the workgroup can be accessible from a public
      * network.</p>
      */
-    inline bool GetPubliclyAccessible() const{ return m_publiclyAccessible; }
-
-    /**
-     * <p>A value that specifies whether the workgroup can be accessible from a public
-     * network.</p>
-     */
+    inline bool GetPubliclyAccessible() const { return m_publiclyAccessible; }
     inline bool PubliclyAccessibleHasBeenSet() const { return m_publiclyAccessibleHasBeenSet; }
-
-    /**
-     * <p>A value that specifies whether the workgroup can be accessible from a public
-     * network.</p>
-     */
     inline void SetPubliclyAccessible(bool value) { m_publiclyAccessibleHasBeenSet = true; m_publiclyAccessible = value; }
-
-    /**
-     * <p>A value that specifies whether the workgroup can be accessible from a public
-     * network.</p>
-     */
     inline UpdateWorkgroupRequest& WithPubliclyAccessible(bool value) { SetPubliclyAccessible(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An array of security group IDs to associate with the workgroup.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroupIds() const{ return m_securityGroupIds; }
-
-    /**
-     * <p>An array of security group IDs to associate with the workgroup.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroupIds() const { return m_securityGroupIds; }
     inline bool SecurityGroupIdsHasBeenSet() const { return m_securityGroupIdsHasBeenSet; }
+    template<typename SecurityGroupIdsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroupIds(SecurityGroupIdsT&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::forward<SecurityGroupIdsT>(value); }
+    template<typename SecurityGroupIdsT = Aws::Vector<Aws::String>>
+    UpdateWorkgroupRequest& WithSecurityGroupIds(SecurityGroupIdsT&& value) { SetSecurityGroupIds(std::forward<SecurityGroupIdsT>(value)); return *this;}
+    template<typename SecurityGroupIdsT = Aws::String>
+    UpdateWorkgroupRequest& AddSecurityGroupIds(SecurityGroupIdsT&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.emplace_back(std::forward<SecurityGroupIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of security group IDs to associate with the workgroup.</p>
-     */
-    inline void SetSecurityGroupIds(const Aws::Vector<Aws::String>& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = value; }
-
-    /**
-     * <p>An array of security group IDs to associate with the workgroup.</p>
-     */
-    inline void SetSecurityGroupIds(Aws::Vector<Aws::String>&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds = std::move(value); }
-
-    /**
-     * <p>An array of security group IDs to associate with the workgroup.</p>
-     */
-    inline UpdateWorkgroupRequest& WithSecurityGroupIds(const Aws::Vector<Aws::String>& value) { SetSecurityGroupIds(value); return *this;}
-
-    /**
-     * <p>An array of security group IDs to associate with the workgroup.</p>
-     */
-    inline UpdateWorkgroupRequest& WithSecurityGroupIds(Aws::Vector<Aws::String>&& value) { SetSecurityGroupIds(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of security group IDs to associate with the workgroup.</p>
-     */
-    inline UpdateWorkgroupRequest& AddSecurityGroupIds(const Aws::String& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
-
-    /**
-     * <p>An array of security group IDs to associate with the workgroup.</p>
-     */
-    inline UpdateWorkgroupRequest& AddSecurityGroupIds(Aws::String&& value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of security group IDs to associate with the workgroup.</p>
-     */
-    inline UpdateWorkgroupRequest& AddSecurityGroupIds(const char* value) { m_securityGroupIdsHasBeenSet = true; m_securityGroupIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>An array of VPC subnet IDs to associate with the workgroup.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSubnetIds() const{ return m_subnetIds; }
-
-    /**
-     * <p>An array of VPC subnet IDs to associate with the workgroup.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSubnetIds() const { return m_subnetIds; }
     inline bool SubnetIdsHasBeenSet() const { return m_subnetIdsHasBeenSet; }
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    void SetSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::forward<SubnetIdsT>(value); }
+    template<typename SubnetIdsT = Aws::Vector<Aws::String>>
+    UpdateWorkgroupRequest& WithSubnetIds(SubnetIdsT&& value) { SetSubnetIds(std::forward<SubnetIdsT>(value)); return *this;}
+    template<typename SubnetIdsT = Aws::String>
+    UpdateWorkgroupRequest& AddSubnetIds(SubnetIdsT&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.emplace_back(std::forward<SubnetIdsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>An array of VPC subnet IDs to associate with the workgroup.</p>
+     * <p>An optional parameter for the name of the track for the workgroup. If you
+     * don't provide a track name, the workgroup is assigned to the
+     * <code>current</code> track.</p>
      */
-    inline void SetSubnetIds(const Aws::Vector<Aws::String>& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = value; }
+    inline const Aws::String& GetTrackName() const { return m_trackName; }
+    inline bool TrackNameHasBeenSet() const { return m_trackNameHasBeenSet; }
+    template<typename TrackNameT = Aws::String>
+    void SetTrackName(TrackNameT&& value) { m_trackNameHasBeenSet = true; m_trackName = std::forward<TrackNameT>(value); }
+    template<typename TrackNameT = Aws::String>
+    UpdateWorkgroupRequest& WithTrackName(TrackNameT&& value) { SetTrackName(std::forward<TrackNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An array of VPC subnet IDs to associate with the workgroup.</p>
-     */
-    inline void SetSubnetIds(Aws::Vector<Aws::String>&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds = std::move(value); }
-
-    /**
-     * <p>An array of VPC subnet IDs to associate with the workgroup.</p>
-     */
-    inline UpdateWorkgroupRequest& WithSubnetIds(const Aws::Vector<Aws::String>& value) { SetSubnetIds(value); return *this;}
-
-    /**
-     * <p>An array of VPC subnet IDs to associate with the workgroup.</p>
-     */
-    inline UpdateWorkgroupRequest& WithSubnetIds(Aws::Vector<Aws::String>&& value) { SetSubnetIds(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of VPC subnet IDs to associate with the workgroup.</p>
-     */
-    inline UpdateWorkgroupRequest& AddSubnetIds(const Aws::String& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
-    /**
-     * <p>An array of VPC subnet IDs to associate with the workgroup.</p>
-     */
-    inline UpdateWorkgroupRequest& AddSubnetIds(Aws::String&& value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of VPC subnet IDs to associate with the workgroup.</p>
-     */
-    inline UpdateWorkgroupRequest& AddSubnetIds(const char* value) { m_subnetIdsHasBeenSet = true; m_subnetIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the workgroup to update. You can't update the name of a workgroup
      * once it is created.</p>
      */
-    inline const Aws::String& GetWorkgroupName() const{ return m_workgroupName; }
-
-    /**
-     * <p>The name of the workgroup to update. You can't update the name of a workgroup
-     * once it is created.</p>
-     */
+    inline const Aws::String& GetWorkgroupName() const { return m_workgroupName; }
     inline bool WorkgroupNameHasBeenSet() const { return m_workgroupNameHasBeenSet; }
-
-    /**
-     * <p>The name of the workgroup to update. You can't update the name of a workgroup
-     * once it is created.</p>
-     */
-    inline void SetWorkgroupName(const Aws::String& value) { m_workgroupNameHasBeenSet = true; m_workgroupName = value; }
-
-    /**
-     * <p>The name of the workgroup to update. You can't update the name of a workgroup
-     * once it is created.</p>
-     */
-    inline void SetWorkgroupName(Aws::String&& value) { m_workgroupNameHasBeenSet = true; m_workgroupName = std::move(value); }
-
-    /**
-     * <p>The name of the workgroup to update. You can't update the name of a workgroup
-     * once it is created.</p>
-     */
-    inline void SetWorkgroupName(const char* value) { m_workgroupNameHasBeenSet = true; m_workgroupName.assign(value); }
-
-    /**
-     * <p>The name of the workgroup to update. You can't update the name of a workgroup
-     * once it is created.</p>
-     */
-    inline UpdateWorkgroupRequest& WithWorkgroupName(const Aws::String& value) { SetWorkgroupName(value); return *this;}
-
-    /**
-     * <p>The name of the workgroup to update. You can't update the name of a workgroup
-     * once it is created.</p>
-     */
-    inline UpdateWorkgroupRequest& WithWorkgroupName(Aws::String&& value) { SetWorkgroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the workgroup to update. You can't update the name of a workgroup
-     * once it is created.</p>
-     */
-    inline UpdateWorkgroupRequest& WithWorkgroupName(const char* value) { SetWorkgroupName(value); return *this;}
-
+    template<typename WorkgroupNameT = Aws::String>
+    void SetWorkgroupName(WorkgroupNameT&& value) { m_workgroupNameHasBeenSet = true; m_workgroupName = std::forward<WorkgroupNameT>(value); }
+    template<typename WorkgroupNameT = Aws::String>
+    UpdateWorkgroupRequest& WithWorkgroupName(WorkgroupNameT&& value) { SetWorkgroupName(std::forward<WorkgroupNameT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_baseCapacity;
+    int m_baseCapacity{0};
     bool m_baseCapacityHasBeenSet = false;
 
     Aws::Vector<ConfigParameter> m_configParameters;
     bool m_configParametersHasBeenSet = false;
 
-    bool m_enhancedVpcRouting;
+    bool m_enhancedVpcRouting{false};
     bool m_enhancedVpcRoutingHasBeenSet = false;
 
-    int m_maxCapacity;
+    Aws::String m_ipAddressType;
+    bool m_ipAddressTypeHasBeenSet = false;
+
+    int m_maxCapacity{0};
     bool m_maxCapacityHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
-    bool m_publiclyAccessible;
+    PerformanceTarget m_pricePerformanceTarget;
+    bool m_pricePerformanceTargetHasBeenSet = false;
+
+    bool m_publiclyAccessible{false};
     bool m_publiclyAccessibleHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_securityGroupIds;
@@ -431,6 +225,9 @@ namespace Model
 
     Aws::Vector<Aws::String> m_subnetIds;
     bool m_subnetIdsHasBeenSet = false;
+
+    Aws::String m_trackName;
+    bool m_trackNameHasBeenSet = false;
 
     Aws::String m_workgroupName;
     bool m_workgroupNameHasBeenSet = false;

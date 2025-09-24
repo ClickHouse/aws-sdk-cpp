@@ -20,23 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-TargetTrackingMetricDataQuery::TargetTrackingMetricDataQuery() : 
-    m_idHasBeenSet(false),
-    m_expressionHasBeenSet(false),
-    m_metricStatHasBeenSet(false),
-    m_labelHasBeenSet(false),
-    m_returnData(false),
-    m_returnDataHasBeenSet(false)
-{
-}
-
-TargetTrackingMetricDataQuery::TargetTrackingMetricDataQuery(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_expressionHasBeenSet(false),
-    m_metricStatHasBeenSet(false),
-    m_labelHasBeenSet(false),
-    m_returnData(false),
-    m_returnDataHasBeenSet(false)
+TargetTrackingMetricDataQuery::TargetTrackingMetricDataQuery(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -70,6 +54,12 @@ TargetTrackingMetricDataQuery& TargetTrackingMetricDataQuery::operator =(const X
     {
       m_label = Aws::Utils::Xml::DecodeEscapedXmlText(labelNode.GetText());
       m_labelHasBeenSet = true;
+    }
+    XmlNode periodNode = resultNode.FirstChild("Period");
+    if(!periodNode.IsNull())
+    {
+      m_period = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(periodNode.GetText()).c_str()).c_str());
+      m_periodHasBeenSet = true;
     }
     XmlNode returnDataNode = resultNode.FirstChild("ReturnData");
     if(!returnDataNode.IsNull())
@@ -106,6 +96,11 @@ void TargetTrackingMetricDataQuery::OutputToStream(Aws::OStream& oStream, const 
       oStream << location << index << locationValue << ".Label=" << StringUtils::URLEncode(m_label.c_str()) << "&";
   }
 
+  if(m_periodHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".Period=" << m_period << "&";
+  }
+
   if(m_returnDataHasBeenSet)
   {
       oStream << location << index << locationValue << ".ReturnData=" << std::boolalpha << m_returnData << "&";
@@ -132,6 +127,10 @@ void TargetTrackingMetricDataQuery::OutputToStream(Aws::OStream& oStream, const 
   if(m_labelHasBeenSet)
   {
       oStream << location << ".Label=" << StringUtils::URLEncode(m_label.c_str()) << "&";
+  }
+  if(m_periodHasBeenSet)
+  {
+      oStream << location << ".Period=" << m_period << "&";
   }
   if(m_returnDataHasBeenSet)
   {

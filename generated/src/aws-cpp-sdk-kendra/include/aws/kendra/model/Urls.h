@@ -40,12 +40,13 @@ namespace Model
   class Urls
   {
   public:
-    AWS_KENDRA_API Urls();
+    AWS_KENDRA_API Urls() = default;
     AWS_KENDRA_API Urls(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Urls& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Configuration of the seed or starting point URLs of the websites you want to
      * crawl.</p> <p>You can choose to crawl only the website host names, or the
@@ -53,96 +54,27 @@ namespace Model
      * and other domains that the web pages link to.</p> <p>You can list up to 100 seed
      * URLs.</p>
      */
-    inline const SeedUrlConfiguration& GetSeedUrlConfiguration() const{ return m_seedUrlConfiguration; }
-
-    /**
-     * <p>Configuration of the seed or starting point URLs of the websites you want to
-     * crawl.</p> <p>You can choose to crawl only the website host names, or the
-     * website host names with subdomains, or the website host names with subdomains
-     * and other domains that the web pages link to.</p> <p>You can list up to 100 seed
-     * URLs.</p>
-     */
+    inline const SeedUrlConfiguration& GetSeedUrlConfiguration() const { return m_seedUrlConfiguration; }
     inline bool SeedUrlConfigurationHasBeenSet() const { return m_seedUrlConfigurationHasBeenSet; }
+    template<typename SeedUrlConfigurationT = SeedUrlConfiguration>
+    void SetSeedUrlConfiguration(SeedUrlConfigurationT&& value) { m_seedUrlConfigurationHasBeenSet = true; m_seedUrlConfiguration = std::forward<SeedUrlConfigurationT>(value); }
+    template<typename SeedUrlConfigurationT = SeedUrlConfiguration>
+    Urls& WithSeedUrlConfiguration(SeedUrlConfigurationT&& value) { SetSeedUrlConfiguration(std::forward<SeedUrlConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Configuration of the seed or starting point URLs of the websites you want to
-     * crawl.</p> <p>You can choose to crawl only the website host names, or the
-     * website host names with subdomains, or the website host names with subdomains
-     * and other domains that the web pages link to.</p> <p>You can list up to 100 seed
-     * URLs.</p>
-     */
-    inline void SetSeedUrlConfiguration(const SeedUrlConfiguration& value) { m_seedUrlConfigurationHasBeenSet = true; m_seedUrlConfiguration = value; }
-
-    /**
-     * <p>Configuration of the seed or starting point URLs of the websites you want to
-     * crawl.</p> <p>You can choose to crawl only the website host names, or the
-     * website host names with subdomains, or the website host names with subdomains
-     * and other domains that the web pages link to.</p> <p>You can list up to 100 seed
-     * URLs.</p>
-     */
-    inline void SetSeedUrlConfiguration(SeedUrlConfiguration&& value) { m_seedUrlConfigurationHasBeenSet = true; m_seedUrlConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration of the seed or starting point URLs of the websites you want to
-     * crawl.</p> <p>You can choose to crawl only the website host names, or the
-     * website host names with subdomains, or the website host names with subdomains
-     * and other domains that the web pages link to.</p> <p>You can list up to 100 seed
-     * URLs.</p>
-     */
-    inline Urls& WithSeedUrlConfiguration(const SeedUrlConfiguration& value) { SetSeedUrlConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration of the seed or starting point URLs of the websites you want to
-     * crawl.</p> <p>You can choose to crawl only the website host names, or the
-     * website host names with subdomains, or the website host names with subdomains
-     * and other domains that the web pages link to.</p> <p>You can list up to 100 seed
-     * URLs.</p>
-     */
-    inline Urls& WithSeedUrlConfiguration(SeedUrlConfiguration&& value) { SetSeedUrlConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Configuration of the sitemap URLs of the websites you want to crawl.</p>
      * <p>Only URLs belonging to the same website host names are crawled. You can list
      * up to three sitemap URLs.</p>
      */
-    inline const SiteMapsConfiguration& GetSiteMapsConfiguration() const{ return m_siteMapsConfiguration; }
-
-    /**
-     * <p>Configuration of the sitemap URLs of the websites you want to crawl.</p>
-     * <p>Only URLs belonging to the same website host names are crawled. You can list
-     * up to three sitemap URLs.</p>
-     */
+    inline const SiteMapsConfiguration& GetSiteMapsConfiguration() const { return m_siteMapsConfiguration; }
     inline bool SiteMapsConfigurationHasBeenSet() const { return m_siteMapsConfigurationHasBeenSet; }
-
-    /**
-     * <p>Configuration of the sitemap URLs of the websites you want to crawl.</p>
-     * <p>Only URLs belonging to the same website host names are crawled. You can list
-     * up to three sitemap URLs.</p>
-     */
-    inline void SetSiteMapsConfiguration(const SiteMapsConfiguration& value) { m_siteMapsConfigurationHasBeenSet = true; m_siteMapsConfiguration = value; }
-
-    /**
-     * <p>Configuration of the sitemap URLs of the websites you want to crawl.</p>
-     * <p>Only URLs belonging to the same website host names are crawled. You can list
-     * up to three sitemap URLs.</p>
-     */
-    inline void SetSiteMapsConfiguration(SiteMapsConfiguration&& value) { m_siteMapsConfigurationHasBeenSet = true; m_siteMapsConfiguration = std::move(value); }
-
-    /**
-     * <p>Configuration of the sitemap URLs of the websites you want to crawl.</p>
-     * <p>Only URLs belonging to the same website host names are crawled. You can list
-     * up to three sitemap URLs.</p>
-     */
-    inline Urls& WithSiteMapsConfiguration(const SiteMapsConfiguration& value) { SetSiteMapsConfiguration(value); return *this;}
-
-    /**
-     * <p>Configuration of the sitemap URLs of the websites you want to crawl.</p>
-     * <p>Only URLs belonging to the same website host names are crawled. You can list
-     * up to three sitemap URLs.</p>
-     */
-    inline Urls& WithSiteMapsConfiguration(SiteMapsConfiguration&& value) { SetSiteMapsConfiguration(std::move(value)); return *this;}
-
+    template<typename SiteMapsConfigurationT = SiteMapsConfiguration>
+    void SetSiteMapsConfiguration(SiteMapsConfigurationT&& value) { m_siteMapsConfigurationHasBeenSet = true; m_siteMapsConfiguration = std::forward<SiteMapsConfigurationT>(value); }
+    template<typename SiteMapsConfigurationT = SiteMapsConfiguration>
+    Urls& WithSiteMapsConfiguration(SiteMapsConfigurationT&& value) { SetSiteMapsConfiguration(std::forward<SiteMapsConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     SeedUrlConfiguration m_seedUrlConfiguration;

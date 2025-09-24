@@ -35,97 +35,49 @@ namespace Model
   class Geometry
   {
   public:
-    AWS_TEXTRACT_API Geometry();
+    AWS_TEXTRACT_API Geometry() = default;
     AWS_TEXTRACT_API Geometry(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API Geometry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An axis-aligned coarse representation of the location of the recognized item
      * on the document page.</p>
      */
-    inline const BoundingBox& GetBoundingBox() const{ return m_boundingBox; }
-
-    /**
-     * <p>An axis-aligned coarse representation of the location of the recognized item
-     * on the document page.</p>
-     */
+    inline const BoundingBox& GetBoundingBox() const { return m_boundingBox; }
     inline bool BoundingBoxHasBeenSet() const { return m_boundingBoxHasBeenSet; }
+    template<typename BoundingBoxT = BoundingBox>
+    void SetBoundingBox(BoundingBoxT&& value) { m_boundingBoxHasBeenSet = true; m_boundingBox = std::forward<BoundingBoxT>(value); }
+    template<typename BoundingBoxT = BoundingBox>
+    Geometry& WithBoundingBox(BoundingBoxT&& value) { SetBoundingBox(std::forward<BoundingBoxT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An axis-aligned coarse representation of the location of the recognized item
-     * on the document page.</p>
-     */
-    inline void SetBoundingBox(const BoundingBox& value) { m_boundingBoxHasBeenSet = true; m_boundingBox = value; }
-
-    /**
-     * <p>An axis-aligned coarse representation of the location of the recognized item
-     * on the document page.</p>
-     */
-    inline void SetBoundingBox(BoundingBox&& value) { m_boundingBoxHasBeenSet = true; m_boundingBox = std::move(value); }
-
-    /**
-     * <p>An axis-aligned coarse representation of the location of the recognized item
-     * on the document page.</p>
-     */
-    inline Geometry& WithBoundingBox(const BoundingBox& value) { SetBoundingBox(value); return *this;}
-
-    /**
-     * <p>An axis-aligned coarse representation of the location of the recognized item
-     * on the document page.</p>
-     */
-    inline Geometry& WithBoundingBox(BoundingBox&& value) { SetBoundingBox(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Within the bounding box, a fine-grained polygon around the recognized
      * item.</p>
      */
-    inline const Aws::Vector<Point>& GetPolygon() const{ return m_polygon; }
-
-    /**
-     * <p>Within the bounding box, a fine-grained polygon around the recognized
-     * item.</p>
-     */
+    inline const Aws::Vector<Point>& GetPolygon() const { return m_polygon; }
     inline bool PolygonHasBeenSet() const { return m_polygonHasBeenSet; }
+    template<typename PolygonT = Aws::Vector<Point>>
+    void SetPolygon(PolygonT&& value) { m_polygonHasBeenSet = true; m_polygon = std::forward<PolygonT>(value); }
+    template<typename PolygonT = Aws::Vector<Point>>
+    Geometry& WithPolygon(PolygonT&& value) { SetPolygon(std::forward<PolygonT>(value)); return *this;}
+    template<typename PolygonT = Point>
+    Geometry& AddPolygon(PolygonT&& value) { m_polygonHasBeenSet = true; m_polygon.emplace_back(std::forward<PolygonT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Within the bounding box, a fine-grained polygon around the recognized
-     * item.</p>
+     * <p>Provides a numerical value corresponding to the rotation of the text.</p>
      */
-    inline void SetPolygon(const Aws::Vector<Point>& value) { m_polygonHasBeenSet = true; m_polygon = value; }
-
-    /**
-     * <p>Within the bounding box, a fine-grained polygon around the recognized
-     * item.</p>
-     */
-    inline void SetPolygon(Aws::Vector<Point>&& value) { m_polygonHasBeenSet = true; m_polygon = std::move(value); }
-
-    /**
-     * <p>Within the bounding box, a fine-grained polygon around the recognized
-     * item.</p>
-     */
-    inline Geometry& WithPolygon(const Aws::Vector<Point>& value) { SetPolygon(value); return *this;}
-
-    /**
-     * <p>Within the bounding box, a fine-grained polygon around the recognized
-     * item.</p>
-     */
-    inline Geometry& WithPolygon(Aws::Vector<Point>&& value) { SetPolygon(std::move(value)); return *this;}
-
-    /**
-     * <p>Within the bounding box, a fine-grained polygon around the recognized
-     * item.</p>
-     */
-    inline Geometry& AddPolygon(const Point& value) { m_polygonHasBeenSet = true; m_polygon.push_back(value); return *this; }
-
-    /**
-     * <p>Within the bounding box, a fine-grained polygon around the recognized
-     * item.</p>
-     */
-    inline Geometry& AddPolygon(Point&& value) { m_polygonHasBeenSet = true; m_polygon.push_back(std::move(value)); return *this; }
-
+    inline double GetRotationAngle() const { return m_rotationAngle; }
+    inline bool RotationAngleHasBeenSet() const { return m_rotationAngleHasBeenSet; }
+    inline void SetRotationAngle(double value) { m_rotationAngleHasBeenSet = true; m_rotationAngle = value; }
+    inline Geometry& WithRotationAngle(double value) { SetRotationAngle(value); return *this;}
+    ///@}
   private:
 
     BoundingBox m_boundingBox;
@@ -133,6 +85,9 @@ namespace Model
 
     Aws::Vector<Point> m_polygon;
     bool m_polygonHasBeenSet = false;
+
+    double m_rotationAngle{0.0};
+    bool m_rotationAngleHasBeenSet = false;
   };
 
 } // namespace Model

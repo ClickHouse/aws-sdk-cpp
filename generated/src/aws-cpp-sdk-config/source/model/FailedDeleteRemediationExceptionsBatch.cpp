@@ -18,15 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-FailedDeleteRemediationExceptionsBatch::FailedDeleteRemediationExceptionsBatch() : 
-    m_failureMessageHasBeenSet(false),
-    m_failedItemsHasBeenSet(false)
-{
-}
-
-FailedDeleteRemediationExceptionsBatch::FailedDeleteRemediationExceptionsBatch(JsonView jsonValue) : 
-    m_failureMessageHasBeenSet(false),
-    m_failedItemsHasBeenSet(false)
+FailedDeleteRemediationExceptionsBatch::FailedDeleteRemediationExceptionsBatch(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ FailedDeleteRemediationExceptionsBatch& FailedDeleteRemediationExceptionsBatch::
   if(jsonValue.ValueExists("FailureMessage"))
   {
     m_failureMessage = jsonValue.GetString("FailureMessage");
-
     m_failureMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FailedItems"))
   {
     Aws::Utils::Array<JsonView> failedItemsJsonList = jsonValue.GetArray("FailedItems");
@@ -49,7 +39,6 @@ FailedDeleteRemediationExceptionsBatch& FailedDeleteRemediationExceptionsBatch::
     }
     m_failedItemsHasBeenSet = true;
   }
-
   return *this;
 }
 

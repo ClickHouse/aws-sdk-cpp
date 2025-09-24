@@ -12,23 +12,6 @@ using namespace Aws::CustomerProfiles::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutProfileObjectTypeRequest::PutProfileObjectTypeRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_objectTypeNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_templateIdHasBeenSet(false),
-    m_expirationDays(0),
-    m_expirationDaysHasBeenSet(false),
-    m_encryptionKeyHasBeenSet(false),
-    m_allowProfileCreation(false),
-    m_allowProfileCreationHasBeenSet(false),
-    m_sourceLastUpdatedTimestampFormatHasBeenSet(false),
-    m_fieldsHasBeenSet(false),
-    m_keysHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String PutProfileObjectTypeRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -66,6 +49,12 @@ Aws::String PutProfileObjectTypeRequest::SerializePayload() const
   if(m_sourceLastUpdatedTimestampFormatHasBeenSet)
   {
    payload.WithString("SourceLastUpdatedTimestampFormat", m_sourceLastUpdatedTimestampFormat);
+
+  }
+
+  if(m_maxProfileObjectCountHasBeenSet)
+  {
+   payload.WithInteger("MaxProfileObjectCount", m_maxProfileObjectCount);
 
   }
 

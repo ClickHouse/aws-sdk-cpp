@@ -18,19 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-LogOddsMetric::LogOddsMetric() : 
-    m_variableNameHasBeenSet(false),
-    m_variableTypeHasBeenSet(false),
-    m_variableImportance(0.0),
-    m_variableImportanceHasBeenSet(false)
-{
-}
-
-LogOddsMetric::LogOddsMetric(JsonView jsonValue) : 
-    m_variableNameHasBeenSet(false),
-    m_variableTypeHasBeenSet(false),
-    m_variableImportance(0.0),
-    m_variableImportanceHasBeenSet(false)
+LogOddsMetric::LogOddsMetric(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ LogOddsMetric& LogOddsMetric::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("variableName"))
   {
     m_variableName = jsonValue.GetString("variableName");
-
     m_variableNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("variableType"))
   {
     m_variableType = jsonValue.GetString("variableType");
-
     m_variableTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("variableImportance"))
   {
     m_variableImportance = jsonValue.GetDouble("variableImportance");
-
     m_variableImportanceHasBeenSet = true;
   }
-
   return *this;
 }
 

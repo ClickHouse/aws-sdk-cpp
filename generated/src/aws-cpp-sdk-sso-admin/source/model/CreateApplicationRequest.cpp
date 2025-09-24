@@ -12,45 +12,19 @@ using namespace Aws::SSOAdmin::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateApplicationRequest::CreateApplicationRequest() : 
-    m_applicationProviderArnHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_instanceArnHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_portalOptionsHasBeenSet(false),
-    m_status(ApplicationStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateApplicationRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_applicationProviderArnHasBeenSet)
-  {
-   payload.WithString("ApplicationProviderArn", m_applicationProviderArn);
-
-  }
-
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("ClientToken", m_clientToken);
-
-  }
-
-  if(m_descriptionHasBeenSet)
-  {
-   payload.WithString("Description", m_description);
-
-  }
-
   if(m_instanceArnHasBeenSet)
   {
    payload.WithString("InstanceArn", m_instanceArn);
+
+  }
+
+  if(m_applicationProviderArnHasBeenSet)
+  {
+   payload.WithString("ApplicationProviderArn", m_applicationProviderArn);
 
   }
 
@@ -60,15 +34,16 @@ Aws::String CreateApplicationRequest::SerializePayload() const
 
   }
 
+  if(m_descriptionHasBeenSet)
+  {
+   payload.WithString("Description", m_description);
+
+  }
+
   if(m_portalOptionsHasBeenSet)
   {
    payload.WithObject("PortalOptions", m_portalOptions.Jsonize());
 
-  }
-
-  if(m_statusHasBeenSet)
-  {
-   payload.WithString("Status", ApplicationStatusMapper::GetNameForApplicationStatus(m_status));
   }
 
   if(m_tagsHasBeenSet)
@@ -79,6 +54,17 @@ Aws::String CreateApplicationRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("Status", ApplicationStatusMapper::GetNameForApplicationStatus(m_status));
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("ClientToken", m_clientToken);
 
   }
 

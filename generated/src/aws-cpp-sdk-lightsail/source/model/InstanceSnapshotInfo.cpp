@@ -18,17 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-InstanceSnapshotInfo::InstanceSnapshotInfo() : 
-    m_fromBundleIdHasBeenSet(false),
-    m_fromBlueprintIdHasBeenSet(false),
-    m_fromDiskInfoHasBeenSet(false)
-{
-}
-
-InstanceSnapshotInfo::InstanceSnapshotInfo(JsonView jsonValue) : 
-    m_fromBundleIdHasBeenSet(false),
-    m_fromBlueprintIdHasBeenSet(false),
-    m_fromDiskInfoHasBeenSet(false)
+InstanceSnapshotInfo::InstanceSnapshotInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ InstanceSnapshotInfo& InstanceSnapshotInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("fromBundleId"))
   {
     m_fromBundleId = jsonValue.GetString("fromBundleId");
-
     m_fromBundleIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fromBlueprintId"))
   {
     m_fromBlueprintId = jsonValue.GetString("fromBlueprintId");
-
     m_fromBlueprintIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fromDiskInfo"))
   {
     Aws::Utils::Array<JsonView> fromDiskInfoJsonList = jsonValue.GetArray("fromDiskInfo");
@@ -58,7 +44,6 @@ InstanceSnapshotInfo& InstanceSnapshotInfo::operator =(JsonView jsonValue)
     }
     m_fromDiskInfoHasBeenSet = true;
   }
-
   return *this;
 }
 

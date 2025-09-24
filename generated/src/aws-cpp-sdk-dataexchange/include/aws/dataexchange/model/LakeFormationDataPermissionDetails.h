@@ -32,42 +32,23 @@ namespace Model
   class LakeFormationDataPermissionDetails
   {
   public:
-    AWS_DATAEXCHANGE_API LakeFormationDataPermissionDetails();
+    AWS_DATAEXCHANGE_API LakeFormationDataPermissionDetails() = default;
     AWS_DATAEXCHANGE_API LakeFormationDataPermissionDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API LakeFormationDataPermissionDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAEXCHANGE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details about the LF-tag policy.</p>
      */
-    inline const LFTagPolicyDetails& GetLFTagPolicy() const{ return m_lFTagPolicy; }
-
-    /**
-     * <p>Details about the LF-tag policy.</p>
-     */
+    inline const LFTagPolicyDetails& GetLFTagPolicy() const { return m_lFTagPolicy; }
     inline bool LFTagPolicyHasBeenSet() const { return m_lFTagPolicyHasBeenSet; }
-
-    /**
-     * <p>Details about the LF-tag policy.</p>
-     */
-    inline void SetLFTagPolicy(const LFTagPolicyDetails& value) { m_lFTagPolicyHasBeenSet = true; m_lFTagPolicy = value; }
-
-    /**
-     * <p>Details about the LF-tag policy.</p>
-     */
-    inline void SetLFTagPolicy(LFTagPolicyDetails&& value) { m_lFTagPolicyHasBeenSet = true; m_lFTagPolicy = std::move(value); }
-
-    /**
-     * <p>Details about the LF-tag policy.</p>
-     */
-    inline LakeFormationDataPermissionDetails& WithLFTagPolicy(const LFTagPolicyDetails& value) { SetLFTagPolicy(value); return *this;}
-
-    /**
-     * <p>Details about the LF-tag policy.</p>
-     */
-    inline LakeFormationDataPermissionDetails& WithLFTagPolicy(LFTagPolicyDetails&& value) { SetLFTagPolicy(std::move(value)); return *this;}
-
+    template<typename LFTagPolicyT = LFTagPolicyDetails>
+    void SetLFTagPolicy(LFTagPolicyT&& value) { m_lFTagPolicyHasBeenSet = true; m_lFTagPolicy = std::forward<LFTagPolicyT>(value); }
+    template<typename LFTagPolicyT = LFTagPolicyDetails>
+    LakeFormationDataPermissionDetails& WithLFTagPolicy(LFTagPolicyT&& value) { SetLFTagPolicy(std::forward<LFTagPolicyT>(value)); return *this;}
+    ///@}
   private:
 
     LFTagPolicyDetails m_lFTagPolicy;

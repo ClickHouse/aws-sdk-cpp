@@ -33,42 +33,23 @@ namespace Model
   class AwsSsmPatchComplianceDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsSsmPatchComplianceDetails();
+    AWS_SECURITYHUB_API AwsSsmPatchComplianceDetails() = default;
     AWS_SECURITYHUB_API AwsSsmPatchComplianceDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsSsmPatchComplianceDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about the status of a patch.</p>
      */
-    inline const AwsSsmPatch& GetPatch() const{ return m_patch; }
-
-    /**
-     * <p>Information about the status of a patch.</p>
-     */
+    inline const AwsSsmPatch& GetPatch() const { return m_patch; }
     inline bool PatchHasBeenSet() const { return m_patchHasBeenSet; }
-
-    /**
-     * <p>Information about the status of a patch.</p>
-     */
-    inline void SetPatch(const AwsSsmPatch& value) { m_patchHasBeenSet = true; m_patch = value; }
-
-    /**
-     * <p>Information about the status of a patch.</p>
-     */
-    inline void SetPatch(AwsSsmPatch&& value) { m_patchHasBeenSet = true; m_patch = std::move(value); }
-
-    /**
-     * <p>Information about the status of a patch.</p>
-     */
-    inline AwsSsmPatchComplianceDetails& WithPatch(const AwsSsmPatch& value) { SetPatch(value); return *this;}
-
-    /**
-     * <p>Information about the status of a patch.</p>
-     */
-    inline AwsSsmPatchComplianceDetails& WithPatch(AwsSsmPatch&& value) { SetPatch(std::move(value)); return *this;}
-
+    template<typename PatchT = AwsSsmPatch>
+    void SetPatch(PatchT&& value) { m_patchHasBeenSet = true; m_patch = std::forward<PatchT>(value); }
+    template<typename PatchT = AwsSsmPatch>
+    AwsSsmPatchComplianceDetails& WithPatch(PatchT&& value) { SetPatch(std::forward<PatchT>(value)); return *this;}
+    ///@}
   private:
 
     AwsSsmPatch m_patch;

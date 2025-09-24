@@ -18,15 +18,7 @@ namespace DataExchange
 namespace Model
 {
 
-AutoExportRevisionDestinationEntry::AutoExportRevisionDestinationEntry() : 
-    m_bucketHasBeenSet(false),
-    m_keyPatternHasBeenSet(false)
-{
-}
-
-AutoExportRevisionDestinationEntry::AutoExportRevisionDestinationEntry(JsonView jsonValue) : 
-    m_bucketHasBeenSet(false),
-    m_keyPatternHasBeenSet(false)
+AutoExportRevisionDestinationEntry::AutoExportRevisionDestinationEntry(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AutoExportRevisionDestinationEntry& AutoExportRevisionDestinationEntry::operator
   if(jsonValue.ValueExists("Bucket"))
   {
     m_bucket = jsonValue.GetString("Bucket");
-
     m_bucketHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("KeyPattern"))
   {
     m_keyPattern = jsonValue.GetString("KeyPattern");
-
     m_keyPatternHasBeenSet = true;
   }
-
   return *this;
 }
 

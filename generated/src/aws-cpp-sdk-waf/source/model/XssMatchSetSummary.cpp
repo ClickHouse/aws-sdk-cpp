@@ -18,15 +18,7 @@ namespace WAF
 namespace Model
 {
 
-XssMatchSetSummary::XssMatchSetSummary() : 
-    m_xssMatchSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-XssMatchSetSummary::XssMatchSetSummary(JsonView jsonValue) : 
-    m_xssMatchSetIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
+XssMatchSetSummary::XssMatchSetSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ XssMatchSetSummary& XssMatchSetSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("XssMatchSetId"))
   {
     m_xssMatchSetId = jsonValue.GetString("XssMatchSetId");
-
     m_xssMatchSetIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,11 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeBackupRequest::DescribeBackupRequest() : 
-    m_backupArnHasBeenSet(false)
-{
-}
-
 Aws::String DescribeBackupRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,5 +34,15 @@ Aws::Http::HeaderValueCollection DescribeBackupRequest::GetRequestSpecificHeader
 }
 
 
+
+DescribeBackupRequest::EndpointParameters DescribeBackupRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (BackupArnHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetBackupArn(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

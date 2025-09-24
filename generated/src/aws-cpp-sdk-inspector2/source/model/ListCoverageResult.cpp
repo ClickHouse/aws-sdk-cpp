@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListCoverageResult::ListCoverageResult()
-{
-}
-
 ListCoverageResult::ListCoverageResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,6 +25,11 @@ ListCoverageResult::ListCoverageResult(const Aws::AmazonWebServiceResult<JsonVal
 ListCoverageResult& ListCoverageResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("nextToken"))
+  {
+    m_nextToken = jsonValue.GetString("nextToken");
+    m_nextTokenHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("coveredResources"))
   {
     Aws::Utils::Array<JsonView> coveredResourcesJsonList = jsonValue.GetArray("coveredResources");
@@ -36,20 +37,15 @@ ListCoverageResult& ListCoverageResult::operator =(const Aws::AmazonWebServiceRe
     {
       m_coveredResources.push_back(coveredResourcesJsonList[coveredResourcesIndex].AsObject());
     }
+    m_coveredResourcesHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("nextToken"))
-  {
-    m_nextToken = jsonValue.GetString("nextToken");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

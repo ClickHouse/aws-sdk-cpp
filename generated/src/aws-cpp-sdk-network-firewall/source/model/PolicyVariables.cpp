@@ -18,13 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-PolicyVariables::PolicyVariables() : 
-    m_ruleVariablesHasBeenSet(false)
-{
-}
-
-PolicyVariables::PolicyVariables(JsonView jsonValue) : 
-    m_ruleVariablesHasBeenSet(false)
+PolicyVariables::PolicyVariables(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ PolicyVariables& PolicyVariables::operator =(JsonView jsonValue)
     }
     m_ruleVariablesHasBeenSet = true;
   }
-
   return *this;
 }
 

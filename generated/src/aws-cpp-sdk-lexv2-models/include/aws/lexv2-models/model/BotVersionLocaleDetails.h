@@ -31,52 +31,23 @@ namespace Model
   class BotVersionLocaleDetails
   {
   public:
-    AWS_LEXMODELSV2_API BotVersionLocaleDetails();
+    AWS_LEXMODELSV2_API BotVersionLocaleDetails() = default;
     AWS_LEXMODELSV2_API BotVersionLocaleDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API BotVersionLocaleDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The version of a bot used for a bot locale.</p>
      */
-    inline const Aws::String& GetSourceBotVersion() const{ return m_sourceBotVersion; }
-
-    /**
-     * <p>The version of a bot used for a bot locale.</p>
-     */
+    inline const Aws::String& GetSourceBotVersion() const { return m_sourceBotVersion; }
     inline bool SourceBotVersionHasBeenSet() const { return m_sourceBotVersionHasBeenSet; }
-
-    /**
-     * <p>The version of a bot used for a bot locale.</p>
-     */
-    inline void SetSourceBotVersion(const Aws::String& value) { m_sourceBotVersionHasBeenSet = true; m_sourceBotVersion = value; }
-
-    /**
-     * <p>The version of a bot used for a bot locale.</p>
-     */
-    inline void SetSourceBotVersion(Aws::String&& value) { m_sourceBotVersionHasBeenSet = true; m_sourceBotVersion = std::move(value); }
-
-    /**
-     * <p>The version of a bot used for a bot locale.</p>
-     */
-    inline void SetSourceBotVersion(const char* value) { m_sourceBotVersionHasBeenSet = true; m_sourceBotVersion.assign(value); }
-
-    /**
-     * <p>The version of a bot used for a bot locale.</p>
-     */
-    inline BotVersionLocaleDetails& WithSourceBotVersion(const Aws::String& value) { SetSourceBotVersion(value); return *this;}
-
-    /**
-     * <p>The version of a bot used for a bot locale.</p>
-     */
-    inline BotVersionLocaleDetails& WithSourceBotVersion(Aws::String&& value) { SetSourceBotVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of a bot used for a bot locale.</p>
-     */
-    inline BotVersionLocaleDetails& WithSourceBotVersion(const char* value) { SetSourceBotVersion(value); return *this;}
-
+    template<typename SourceBotVersionT = Aws::String>
+    void SetSourceBotVersion(SourceBotVersionT&& value) { m_sourceBotVersionHasBeenSet = true; m_sourceBotVersion = std::forward<SourceBotVersionT>(value); }
+    template<typename SourceBotVersionT = Aws::String>
+    BotVersionLocaleDetails& WithSourceBotVersion(SourceBotVersionT&& value) { SetSourceBotVersion(std::forward<SourceBotVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceBotVersion;

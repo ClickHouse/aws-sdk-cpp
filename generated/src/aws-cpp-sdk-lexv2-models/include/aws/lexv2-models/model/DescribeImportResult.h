@@ -32,367 +32,153 @@ namespace Model
   class DescribeImportResult
   {
   public:
-    AWS_LEXMODELSV2_API DescribeImportResult();
+    AWS_LEXMODELSV2_API DescribeImportResult() = default;
     AWS_LEXMODELSV2_API DescribeImportResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LEXMODELSV2_API DescribeImportResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique identifier of the described import.</p>
      */
-    inline const Aws::String& GetImportId() const{ return m_importId; }
+    inline const Aws::String& GetImportId() const { return m_importId; }
+    template<typename ImportIdT = Aws::String>
+    void SetImportId(ImportIdT&& value) { m_importIdHasBeenSet = true; m_importId = std::forward<ImportIdT>(value); }
+    template<typename ImportIdT = Aws::String>
+    DescribeImportResult& WithImportId(ImportIdT&& value) { SetImportId(std::forward<ImportIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the described import.</p>
-     */
-    inline void SetImportId(const Aws::String& value) { m_importId = value; }
-
-    /**
-     * <p>The unique identifier of the described import.</p>
-     */
-    inline void SetImportId(Aws::String&& value) { m_importId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the described import.</p>
-     */
-    inline void SetImportId(const char* value) { m_importId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the described import.</p>
-     */
-    inline DescribeImportResult& WithImportId(const Aws::String& value) { SetImportId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the described import.</p>
-     */
-    inline DescribeImportResult& WithImportId(Aws::String&& value) { SetImportId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the described import.</p>
-     */
-    inline DescribeImportResult& WithImportId(const char* value) { SetImportId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The specifications of the imported bot, bot locale, or custom vocabulary.</p>
      */
-    inline const ImportResourceSpecification& GetResourceSpecification() const{ return m_resourceSpecification; }
+    inline const ImportResourceSpecification& GetResourceSpecification() const { return m_resourceSpecification; }
+    template<typename ResourceSpecificationT = ImportResourceSpecification>
+    void SetResourceSpecification(ResourceSpecificationT&& value) { m_resourceSpecificationHasBeenSet = true; m_resourceSpecification = std::forward<ResourceSpecificationT>(value); }
+    template<typename ResourceSpecificationT = ImportResourceSpecification>
+    DescribeImportResult& WithResourceSpecification(ResourceSpecificationT&& value) { SetResourceSpecification(std::forward<ResourceSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The specifications of the imported bot, bot locale, or custom vocabulary.</p>
-     */
-    inline void SetResourceSpecification(const ImportResourceSpecification& value) { m_resourceSpecification = value; }
-
-    /**
-     * <p>The specifications of the imported bot, bot locale, or custom vocabulary.</p>
-     */
-    inline void SetResourceSpecification(ImportResourceSpecification&& value) { m_resourceSpecification = std::move(value); }
-
-    /**
-     * <p>The specifications of the imported bot, bot locale, or custom vocabulary.</p>
-     */
-    inline DescribeImportResult& WithResourceSpecification(const ImportResourceSpecification& value) { SetResourceSpecification(value); return *this;}
-
-    /**
-     * <p>The specifications of the imported bot, bot locale, or custom vocabulary.</p>
-     */
-    inline DescribeImportResult& WithResourceSpecification(ImportResourceSpecification&& value) { SetResourceSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier that Amazon Lex assigned to the resource created by the
      * import.</p>
      */
-    inline const Aws::String& GetImportedResourceId() const{ return m_importedResourceId; }
+    inline const Aws::String& GetImportedResourceId() const { return m_importedResourceId; }
+    template<typename ImportedResourceIdT = Aws::String>
+    void SetImportedResourceId(ImportedResourceIdT&& value) { m_importedResourceIdHasBeenSet = true; m_importedResourceId = std::forward<ImportedResourceIdT>(value); }
+    template<typename ImportedResourceIdT = Aws::String>
+    DescribeImportResult& WithImportedResourceId(ImportedResourceIdT&& value) { SetImportedResourceId(std::forward<ImportedResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier that Amazon Lex assigned to the resource created by the
-     * import.</p>
-     */
-    inline void SetImportedResourceId(const Aws::String& value) { m_importedResourceId = value; }
-
-    /**
-     * <p>The unique identifier that Amazon Lex assigned to the resource created by the
-     * import.</p>
-     */
-    inline void SetImportedResourceId(Aws::String&& value) { m_importedResourceId = std::move(value); }
-
-    /**
-     * <p>The unique identifier that Amazon Lex assigned to the resource created by the
-     * import.</p>
-     */
-    inline void SetImportedResourceId(const char* value) { m_importedResourceId.assign(value); }
-
-    /**
-     * <p>The unique identifier that Amazon Lex assigned to the resource created by the
-     * import.</p>
-     */
-    inline DescribeImportResult& WithImportedResourceId(const Aws::String& value) { SetImportedResourceId(value); return *this;}
-
-    /**
-     * <p>The unique identifier that Amazon Lex assigned to the resource created by the
-     * import.</p>
-     */
-    inline DescribeImportResult& WithImportedResourceId(Aws::String&& value) { SetImportedResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier that Amazon Lex assigned to the resource created by the
-     * import.</p>
-     */
-    inline DescribeImportResult& WithImportedResourceId(const char* value) { SetImportedResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the imported resource.</p>
      */
-    inline const Aws::String& GetImportedResourceName() const{ return m_importedResourceName; }
+    inline const Aws::String& GetImportedResourceName() const { return m_importedResourceName; }
+    template<typename ImportedResourceNameT = Aws::String>
+    void SetImportedResourceName(ImportedResourceNameT&& value) { m_importedResourceNameHasBeenSet = true; m_importedResourceName = std::forward<ImportedResourceNameT>(value); }
+    template<typename ImportedResourceNameT = Aws::String>
+    DescribeImportResult& WithImportedResourceName(ImportedResourceNameT&& value) { SetImportedResourceName(std::forward<ImportedResourceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the imported resource.</p>
-     */
-    inline void SetImportedResourceName(const Aws::String& value) { m_importedResourceName = value; }
-
-    /**
-     * <p>The name of the imported resource.</p>
-     */
-    inline void SetImportedResourceName(Aws::String&& value) { m_importedResourceName = std::move(value); }
-
-    /**
-     * <p>The name of the imported resource.</p>
-     */
-    inline void SetImportedResourceName(const char* value) { m_importedResourceName.assign(value); }
-
-    /**
-     * <p>The name of the imported resource.</p>
-     */
-    inline DescribeImportResult& WithImportedResourceName(const Aws::String& value) { SetImportedResourceName(value); return *this;}
-
-    /**
-     * <p>The name of the imported resource.</p>
-     */
-    inline DescribeImportResult& WithImportedResourceName(Aws::String&& value) { SetImportedResourceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the imported resource.</p>
-     */
-    inline DescribeImportResult& WithImportedResourceName(const char* value) { SetImportedResourceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The strategy used when there was a name conflict between the imported
      * resource and an existing resource. When the merge strategy is
      * <code>FailOnConflict</code> existing resources are not overwritten and the
      * import fails.</p>
      */
-    inline const MergeStrategy& GetMergeStrategy() const{ return m_mergeStrategy; }
+    inline MergeStrategy GetMergeStrategy() const { return m_mergeStrategy; }
+    inline void SetMergeStrategy(MergeStrategy value) { m_mergeStrategyHasBeenSet = true; m_mergeStrategy = value; }
+    inline DescribeImportResult& WithMergeStrategy(MergeStrategy value) { SetMergeStrategy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The strategy used when there was a name conflict between the imported
-     * resource and an existing resource. When the merge strategy is
-     * <code>FailOnConflict</code> existing resources are not overwritten and the
-     * import fails.</p>
-     */
-    inline void SetMergeStrategy(const MergeStrategy& value) { m_mergeStrategy = value; }
-
-    /**
-     * <p>The strategy used when there was a name conflict between the imported
-     * resource and an existing resource. When the merge strategy is
-     * <code>FailOnConflict</code> existing resources are not overwritten and the
-     * import fails.</p>
-     */
-    inline void SetMergeStrategy(MergeStrategy&& value) { m_mergeStrategy = std::move(value); }
-
-    /**
-     * <p>The strategy used when there was a name conflict between the imported
-     * resource and an existing resource. When the merge strategy is
-     * <code>FailOnConflict</code> existing resources are not overwritten and the
-     * import fails.</p>
-     */
-    inline DescribeImportResult& WithMergeStrategy(const MergeStrategy& value) { SetMergeStrategy(value); return *this;}
-
-    /**
-     * <p>The strategy used when there was a name conflict between the imported
-     * resource and an existing resource. When the merge strategy is
-     * <code>FailOnConflict</code> existing resources are not overwritten and the
-     * import fails.</p>
-     */
-    inline DescribeImportResult& WithMergeStrategy(MergeStrategy&& value) { SetMergeStrategy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the import process. When the status is <code>Completed</code>
      * the resource is imported and ready for use.</p>
      */
-    inline const ImportStatus& GetImportStatus() const{ return m_importStatus; }
+    inline ImportStatus GetImportStatus() const { return m_importStatus; }
+    inline void SetImportStatus(ImportStatus value) { m_importStatusHasBeenSet = true; m_importStatus = value; }
+    inline DescribeImportResult& WithImportStatus(ImportStatus value) { SetImportStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the import process. When the status is <code>Completed</code>
-     * the resource is imported and ready for use.</p>
-     */
-    inline void SetImportStatus(const ImportStatus& value) { m_importStatus = value; }
-
-    /**
-     * <p>The status of the import process. When the status is <code>Completed</code>
-     * the resource is imported and ready for use.</p>
-     */
-    inline void SetImportStatus(ImportStatus&& value) { m_importStatus = std::move(value); }
-
-    /**
-     * <p>The status of the import process. When the status is <code>Completed</code>
-     * the resource is imported and ready for use.</p>
-     */
-    inline DescribeImportResult& WithImportStatus(const ImportStatus& value) { SetImportStatus(value); return *this;}
-
-    /**
-     * <p>The status of the import process. When the status is <code>Completed</code>
-     * the resource is imported and ready for use.</p>
-     */
-    inline DescribeImportResult& WithImportStatus(ImportStatus&& value) { SetImportStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the <code>importStatus</code> field is <code>Failed</code>, this provides
      * one or more reasons for the failure.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetFailureReasons() const{ return m_failureReasons; }
+    inline const Aws::Vector<Aws::String>& GetFailureReasons() const { return m_failureReasons; }
+    template<typename FailureReasonsT = Aws::Vector<Aws::String>>
+    void SetFailureReasons(FailureReasonsT&& value) { m_failureReasonsHasBeenSet = true; m_failureReasons = std::forward<FailureReasonsT>(value); }
+    template<typename FailureReasonsT = Aws::Vector<Aws::String>>
+    DescribeImportResult& WithFailureReasons(FailureReasonsT&& value) { SetFailureReasons(std::forward<FailureReasonsT>(value)); return *this;}
+    template<typename FailureReasonsT = Aws::String>
+    DescribeImportResult& AddFailureReasons(FailureReasonsT&& value) { m_failureReasonsHasBeenSet = true; m_failureReasons.emplace_back(std::forward<FailureReasonsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>If the <code>importStatus</code> field is <code>Failed</code>, this provides
-     * one or more reasons for the failure.</p>
-     */
-    inline void SetFailureReasons(const Aws::Vector<Aws::String>& value) { m_failureReasons = value; }
-
-    /**
-     * <p>If the <code>importStatus</code> field is <code>Failed</code>, this provides
-     * one or more reasons for the failure.</p>
-     */
-    inline void SetFailureReasons(Aws::Vector<Aws::String>&& value) { m_failureReasons = std::move(value); }
-
-    /**
-     * <p>If the <code>importStatus</code> field is <code>Failed</code>, this provides
-     * one or more reasons for the failure.</p>
-     */
-    inline DescribeImportResult& WithFailureReasons(const Aws::Vector<Aws::String>& value) { SetFailureReasons(value); return *this;}
-
-    /**
-     * <p>If the <code>importStatus</code> field is <code>Failed</code>, this provides
-     * one or more reasons for the failure.</p>
-     */
-    inline DescribeImportResult& WithFailureReasons(Aws::Vector<Aws::String>&& value) { SetFailureReasons(std::move(value)); return *this;}
-
-    /**
-     * <p>If the <code>importStatus</code> field is <code>Failed</code>, this provides
-     * one or more reasons for the failure.</p>
-     */
-    inline DescribeImportResult& AddFailureReasons(const Aws::String& value) { m_failureReasons.push_back(value); return *this; }
-
-    /**
-     * <p>If the <code>importStatus</code> field is <code>Failed</code>, this provides
-     * one or more reasons for the failure.</p>
-     */
-    inline DescribeImportResult& AddFailureReasons(Aws::String&& value) { m_failureReasons.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>If the <code>importStatus</code> field is <code>Failed</code>, this provides
-     * one or more reasons for the failure.</p>
-     */
-    inline DescribeImportResult& AddFailureReasons(const char* value) { m_failureReasons.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The date and time that the import was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDateTime() const{ return m_creationDateTime; }
+    inline const Aws::Utils::DateTime& GetCreationDateTime() const { return m_creationDateTime; }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    void SetCreationDateTime(CreationDateTimeT&& value) { m_creationDateTimeHasBeenSet = true; m_creationDateTime = std::forward<CreationDateTimeT>(value); }
+    template<typename CreationDateTimeT = Aws::Utils::DateTime>
+    DescribeImportResult& WithCreationDateTime(CreationDateTimeT&& value) { SetCreationDateTime(std::forward<CreationDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the import was created.</p>
-     */
-    inline void SetCreationDateTime(const Aws::Utils::DateTime& value) { m_creationDateTime = value; }
-
-    /**
-     * <p>The date and time that the import was created.</p>
-     */
-    inline void SetCreationDateTime(Aws::Utils::DateTime&& value) { m_creationDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the import was created.</p>
-     */
-    inline DescribeImportResult& WithCreationDateTime(const Aws::Utils::DateTime& value) { SetCreationDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the import was created.</p>
-     */
-    inline DescribeImportResult& WithCreationDateTime(Aws::Utils::DateTime&& value) { SetCreationDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the import was last updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedDateTime() const{ return m_lastUpdatedDateTime; }
+    inline const Aws::Utils::DateTime& GetLastUpdatedDateTime() const { return m_lastUpdatedDateTime; }
+    template<typename LastUpdatedDateTimeT = Aws::Utils::DateTime>
+    void SetLastUpdatedDateTime(LastUpdatedDateTimeT&& value) { m_lastUpdatedDateTimeHasBeenSet = true; m_lastUpdatedDateTime = std::forward<LastUpdatedDateTimeT>(value); }
+    template<typename LastUpdatedDateTimeT = Aws::Utils::DateTime>
+    DescribeImportResult& WithLastUpdatedDateTime(LastUpdatedDateTimeT&& value) { SetLastUpdatedDateTime(std::forward<LastUpdatedDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the import was last updated.</p>
-     */
-    inline void SetLastUpdatedDateTime(const Aws::Utils::DateTime& value) { m_lastUpdatedDateTime = value; }
-
-    /**
-     * <p>The date and time that the import was last updated.</p>
-     */
-    inline void SetLastUpdatedDateTime(Aws::Utils::DateTime&& value) { m_lastUpdatedDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the import was last updated.</p>
-     */
-    inline DescribeImportResult& WithLastUpdatedDateTime(const Aws::Utils::DateTime& value) { SetLastUpdatedDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the import was last updated.</p>
-     */
-    inline DescribeImportResult& WithLastUpdatedDateTime(Aws::Utils::DateTime&& value) { SetLastUpdatedDateTime(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeImportResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeImportResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeImportResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeImportResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_importId;
+    bool m_importIdHasBeenSet = false;
 
     ImportResourceSpecification m_resourceSpecification;
+    bool m_resourceSpecificationHasBeenSet = false;
 
     Aws::String m_importedResourceId;
+    bool m_importedResourceIdHasBeenSet = false;
 
     Aws::String m_importedResourceName;
+    bool m_importedResourceNameHasBeenSet = false;
 
-    MergeStrategy m_mergeStrategy;
+    MergeStrategy m_mergeStrategy{MergeStrategy::NOT_SET};
+    bool m_mergeStrategyHasBeenSet = false;
 
-    ImportStatus m_importStatus;
+    ImportStatus m_importStatus{ImportStatus::NOT_SET};
+    bool m_importStatusHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_failureReasons;
+    bool m_failureReasonsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDateTime;
+    Aws::Utils::DateTime m_creationDateTime{};
+    bool m_creationDateTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedDateTime;
+    Aws::Utils::DateTime m_lastUpdatedDateTime{};
+    bool m_lastUpdatedDateTimeHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

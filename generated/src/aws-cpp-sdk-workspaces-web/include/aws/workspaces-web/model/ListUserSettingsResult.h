@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/workspaces-web/WorkSpacesWeb_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/workspaces-web/model/UserSettingsSummary.h>
 #include <utility>
 
@@ -29,118 +29,54 @@ namespace Model
   class ListUserSettingsResult
   {
   public:
-    AWS_WORKSPACESWEB_API ListUserSettingsResult();
+    AWS_WORKSPACESWEB_API ListUserSettingsResult() = default;
     AWS_WORKSPACESWEB_API ListUserSettingsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WORKSPACESWEB_API ListUserSettingsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
+    /**
+     * <p>The user settings.</p>
+     */
+    inline const Aws::Vector<UserSettingsSummary>& GetUserSettings() const { return m_userSettings; }
+    template<typename UserSettingsT = Aws::Vector<UserSettingsSummary>>
+    void SetUserSettings(UserSettingsT&& value) { m_userSettingsHasBeenSet = true; m_userSettings = std::forward<UserSettingsT>(value); }
+    template<typename UserSettingsT = Aws::Vector<UserSettingsSummary>>
+    ListUserSettingsResult& WithUserSettings(UserSettingsT&& value) { SetUserSettings(std::forward<UserSettingsT>(value)); return *this;}
+    template<typename UserSettingsT = UserSettingsSummary>
+    ListUserSettingsResult& AddUserSettings(UserSettingsT&& value) { m_userSettingsHasBeenSet = true; m_userSettings.emplace_back(std::forward<UserSettingsT>(value)); return *this; }
+    ///@}
+
+    ///@{
     /**
      * <p>The pagination token used to retrieve the next page of results for this
      * operation. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListUserSettingsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token used to retrieve the next page of results for this
-     * operation. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The pagination token used to retrieve the next page of results for this
-     * operation. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token used to retrieve the next page of results for this
-     * operation. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token used to retrieve the next page of results for this
-     * operation. </p>
-     */
-    inline ListUserSettingsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token used to retrieve the next page of results for this
-     * operation. </p>
-     */
-    inline ListUserSettingsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token used to retrieve the next page of results for this
-     * operation. </p>
-     */
-    inline ListUserSettingsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
-    /**
-     * <p>The user settings.</p>
-     */
-    inline const Aws::Vector<UserSettingsSummary>& GetUserSettings() const{ return m_userSettings; }
-
-    /**
-     * <p>The user settings.</p>
-     */
-    inline void SetUserSettings(const Aws::Vector<UserSettingsSummary>& value) { m_userSettings = value; }
-
-    /**
-     * <p>The user settings.</p>
-     */
-    inline void SetUserSettings(Aws::Vector<UserSettingsSummary>&& value) { m_userSettings = std::move(value); }
-
-    /**
-     * <p>The user settings.</p>
-     */
-    inline ListUserSettingsResult& WithUserSettings(const Aws::Vector<UserSettingsSummary>& value) { SetUserSettings(value); return *this;}
-
-    /**
-     * <p>The user settings.</p>
-     */
-    inline ListUserSettingsResult& WithUserSettings(Aws::Vector<UserSettingsSummary>&& value) { SetUserSettings(std::move(value)); return *this;}
-
-    /**
-     * <p>The user settings.</p>
-     */
-    inline ListUserSettingsResult& AddUserSettings(const UserSettingsSummary& value) { m_userSettings.push_back(value); return *this; }
-
-    /**
-     * <p>The user settings.</p>
-     */
-    inline ListUserSettingsResult& AddUserSettings(UserSettingsSummary&& value) { m_userSettings.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListUserSettingsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListUserSettingsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListUserSettingsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListUserSettingsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_nextToken;
-
     Aws::Vector<UserSettingsSummary> m_userSettings;
+    bool m_userSettingsHasBeenSet = false;
+
+    Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

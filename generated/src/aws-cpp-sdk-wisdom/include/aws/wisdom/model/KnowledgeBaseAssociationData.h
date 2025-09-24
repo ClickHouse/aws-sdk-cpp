@@ -32,101 +32,36 @@ namespace Model
   class KnowledgeBaseAssociationData
   {
   public:
-    AWS_CONNECTWISDOMSERVICE_API KnowledgeBaseAssociationData();
+    AWS_CONNECTWISDOMSERVICE_API KnowledgeBaseAssociationData() = default;
     AWS_CONNECTWISDOMSERVICE_API KnowledgeBaseAssociationData(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTWISDOMSERVICE_API KnowledgeBaseAssociationData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTWISDOMSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
      */
-    inline const Aws::String& GetKnowledgeBaseArn() const{ return m_knowledgeBaseArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
+    inline const Aws::String& GetKnowledgeBaseArn() const { return m_knowledgeBaseArn; }
     inline bool KnowledgeBaseArnHasBeenSet() const { return m_knowledgeBaseArnHasBeenSet; }
+    template<typename KnowledgeBaseArnT = Aws::String>
+    void SetKnowledgeBaseArn(KnowledgeBaseArnT&& value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn = std::forward<KnowledgeBaseArnT>(value); }
+    template<typename KnowledgeBaseArnT = Aws::String>
+    KnowledgeBaseAssociationData& WithKnowledgeBaseArn(KnowledgeBaseArnT&& value) { SetKnowledgeBaseArn(std::forward<KnowledgeBaseArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseArn(const Aws::String& value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseArn(Aws::String&& value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseArn(const char* value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline KnowledgeBaseAssociationData& WithKnowledgeBaseArn(const Aws::String& value) { SetKnowledgeBaseArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline KnowledgeBaseAssociationData& WithKnowledgeBaseArn(Aws::String&& value) { SetKnowledgeBaseArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline KnowledgeBaseAssociationData& WithKnowledgeBaseArn(const char* value) { SetKnowledgeBaseArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
      * type knowledge base if you're storing Wisdom Content resource to it.</p>
      */
-    inline const Aws::String& GetKnowledgeBaseId() const{ return m_knowledgeBaseId; }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
+    inline const Aws::String& GetKnowledgeBaseId() const { return m_knowledgeBaseId; }
     inline bool KnowledgeBaseIdHasBeenSet() const { return m_knowledgeBaseIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(const Aws::String& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = value; }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(Aws::String&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::move(value); }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(const char* value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId.assign(value); }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline KnowledgeBaseAssociationData& WithKnowledgeBaseId(const Aws::String& value) { SetKnowledgeBaseId(value); return *this;}
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline KnowledgeBaseAssociationData& WithKnowledgeBaseId(Aws::String&& value) { SetKnowledgeBaseId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Wisdom Content resource to it.</p>
-     */
-    inline KnowledgeBaseAssociationData& WithKnowledgeBaseId(const char* value) { SetKnowledgeBaseId(value); return *this;}
-
+    template<typename KnowledgeBaseIdT = Aws::String>
+    void SetKnowledgeBaseId(KnowledgeBaseIdT&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::forward<KnowledgeBaseIdT>(value); }
+    template<typename KnowledgeBaseIdT = Aws::String>
+    KnowledgeBaseAssociationData& WithKnowledgeBaseId(KnowledgeBaseIdT&& value) { SetKnowledgeBaseId(std::forward<KnowledgeBaseIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_knowledgeBaseArn;

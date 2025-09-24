@@ -18,19 +18,7 @@ namespace Glue
 namespace Model
 {
 
-TaskRunSortCriteria::TaskRunSortCriteria() : 
-    m_column(TaskRunSortColumnType::NOT_SET),
-    m_columnHasBeenSet(false),
-    m_sortDirection(SortDirectionType::NOT_SET),
-    m_sortDirectionHasBeenSet(false)
-{
-}
-
-TaskRunSortCriteria::TaskRunSortCriteria(JsonView jsonValue) : 
-    m_column(TaskRunSortColumnType::NOT_SET),
-    m_columnHasBeenSet(false),
-    m_sortDirection(SortDirectionType::NOT_SET),
-    m_sortDirectionHasBeenSet(false)
+TaskRunSortCriteria::TaskRunSortCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ TaskRunSortCriteria& TaskRunSortCriteria::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Column"))
   {
     m_column = TaskRunSortColumnTypeMapper::GetTaskRunSortColumnTypeForName(jsonValue.GetString("Column"));
-
     m_columnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SortDirection"))
   {
     m_sortDirection = SortDirectionTypeMapper::GetSortDirectionTypeForName(jsonValue.GetString("SortDirection"));
-
     m_sortDirectionHasBeenSet = true;
   }
-
   return *this;
 }
 

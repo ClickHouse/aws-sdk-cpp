@@ -34,92 +34,39 @@ namespace Model
   class Predicate
   {
   public:
-    AWS_GLUE_API Predicate();
+    AWS_GLUE_API Predicate() = default;
     AWS_GLUE_API Predicate(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Predicate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An optional field if only one condition is listed. If multiple conditions are
      * listed, then this field is required.</p>
      */
-    inline const Logical& GetLogical() const{ return m_logical; }
-
-    /**
-     * <p>An optional field if only one condition is listed. If multiple conditions are
-     * listed, then this field is required.</p>
-     */
+    inline Logical GetLogical() const { return m_logical; }
     inline bool LogicalHasBeenSet() const { return m_logicalHasBeenSet; }
+    inline void SetLogical(Logical value) { m_logicalHasBeenSet = true; m_logical = value; }
+    inline Predicate& WithLogical(Logical value) { SetLogical(value); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional field if only one condition is listed. If multiple conditions are
-     * listed, then this field is required.</p>
-     */
-    inline void SetLogical(const Logical& value) { m_logicalHasBeenSet = true; m_logical = value; }
-
-    /**
-     * <p>An optional field if only one condition is listed. If multiple conditions are
-     * listed, then this field is required.</p>
-     */
-    inline void SetLogical(Logical&& value) { m_logicalHasBeenSet = true; m_logical = std::move(value); }
-
-    /**
-     * <p>An optional field if only one condition is listed. If multiple conditions are
-     * listed, then this field is required.</p>
-     */
-    inline Predicate& WithLogical(const Logical& value) { SetLogical(value); return *this;}
-
-    /**
-     * <p>An optional field if only one condition is listed. If multiple conditions are
-     * listed, then this field is required.</p>
-     */
-    inline Predicate& WithLogical(Logical&& value) { SetLogical(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the conditions that determine when the trigger will fire.</p>
      */
-    inline const Aws::Vector<Condition>& GetConditions() const{ return m_conditions; }
-
-    /**
-     * <p>A list of the conditions that determine when the trigger will fire.</p>
-     */
+    inline const Aws::Vector<Condition>& GetConditions() const { return m_conditions; }
     inline bool ConditionsHasBeenSet() const { return m_conditionsHasBeenSet; }
-
-    /**
-     * <p>A list of the conditions that determine when the trigger will fire.</p>
-     */
-    inline void SetConditions(const Aws::Vector<Condition>& value) { m_conditionsHasBeenSet = true; m_conditions = value; }
-
-    /**
-     * <p>A list of the conditions that determine when the trigger will fire.</p>
-     */
-    inline void SetConditions(Aws::Vector<Condition>&& value) { m_conditionsHasBeenSet = true; m_conditions = std::move(value); }
-
-    /**
-     * <p>A list of the conditions that determine when the trigger will fire.</p>
-     */
-    inline Predicate& WithConditions(const Aws::Vector<Condition>& value) { SetConditions(value); return *this;}
-
-    /**
-     * <p>A list of the conditions that determine when the trigger will fire.</p>
-     */
-    inline Predicate& WithConditions(Aws::Vector<Condition>&& value) { SetConditions(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the conditions that determine when the trigger will fire.</p>
-     */
-    inline Predicate& AddConditions(const Condition& value) { m_conditionsHasBeenSet = true; m_conditions.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the conditions that determine when the trigger will fire.</p>
-     */
-    inline Predicate& AddConditions(Condition&& value) { m_conditionsHasBeenSet = true; m_conditions.push_back(std::move(value)); return *this; }
-
+    template<typename ConditionsT = Aws::Vector<Condition>>
+    void SetConditions(ConditionsT&& value) { m_conditionsHasBeenSet = true; m_conditions = std::forward<ConditionsT>(value); }
+    template<typename ConditionsT = Aws::Vector<Condition>>
+    Predicate& WithConditions(ConditionsT&& value) { SetConditions(std::forward<ConditionsT>(value)); return *this;}
+    template<typename ConditionsT = Condition>
+    Predicate& AddConditions(ConditionsT&& value) { m_conditionsHasBeenSet = true; m_conditions.emplace_back(std::forward<ConditionsT>(value)); return *this; }
+    ///@}
   private:
 
-    Logical m_logical;
+    Logical m_logical{Logical::NOT_SET};
     bool m_logicalHasBeenSet = false;
 
     Aws::Vector<Condition> m_conditions;

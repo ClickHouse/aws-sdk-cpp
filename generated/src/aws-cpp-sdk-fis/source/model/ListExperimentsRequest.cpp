@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListExperimentsRequest::ListExperimentsRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListExperimentsRequest::SerializePayload() const
 {
   return {};
@@ -41,6 +34,13 @@ void ListExperimentsRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_nextToken;
       uri.AddQueryStringParameter("nextToken", ss.str());
+      ss.str("");
+    }
+
+    if(m_experimentTemplateIdHasBeenSet)
+    {
+      ss << m_experimentTemplateId;
+      uri.AddQueryStringParameter("experimentTemplateId", ss.str());
       ss.str("");
     }
 

@@ -18,35 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-InstanceRecommendationOption::InstanceRecommendationOption() : 
-    m_instanceTypeHasBeenSet(false),
-    m_projectedUtilizationMetricsHasBeenSet(false),
-    m_platformDifferencesHasBeenSet(false),
-    m_performanceRisk(0.0),
-    m_performanceRiskHasBeenSet(false),
-    m_rank(0),
-    m_rankHasBeenSet(false),
-    m_savingsOpportunityHasBeenSet(false),
-    m_migrationEffort(MigrationEffort::NOT_SET),
-    m_migrationEffortHasBeenSet(false),
-    m_instanceGpuInfoHasBeenSet(false),
-    m_savingsOpportunityAfterDiscountsHasBeenSet(false)
-{
-}
-
-InstanceRecommendationOption::InstanceRecommendationOption(JsonView jsonValue) : 
-    m_instanceTypeHasBeenSet(false),
-    m_projectedUtilizationMetricsHasBeenSet(false),
-    m_platformDifferencesHasBeenSet(false),
-    m_performanceRisk(0.0),
-    m_performanceRiskHasBeenSet(false),
-    m_rank(0),
-    m_rankHasBeenSet(false),
-    m_savingsOpportunityHasBeenSet(false),
-    m_migrationEffort(MigrationEffort::NOT_SET),
-    m_migrationEffortHasBeenSet(false),
-    m_instanceGpuInfoHasBeenSet(false),
-    m_savingsOpportunityAfterDiscountsHasBeenSet(false)
+InstanceRecommendationOption::InstanceRecommendationOption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,10 +28,13 @@ InstanceRecommendationOption& InstanceRecommendationOption::operator =(JsonView 
   if(jsonValue.ValueExists("instanceType"))
   {
     m_instanceType = jsonValue.GetString("instanceType");
-
     m_instanceTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("instanceGpuInfo"))
+  {
+    m_instanceGpuInfo = jsonValue.GetObject("instanceGpuInfo");
+    m_instanceGpuInfoHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("projectedUtilizationMetrics"))
   {
     Aws::Utils::Array<JsonView> projectedUtilizationMetricsJsonList = jsonValue.GetArray("projectedUtilizationMetrics");
@@ -69,7 +44,6 @@ InstanceRecommendationOption& InstanceRecommendationOption::operator =(JsonView 
     }
     m_projectedUtilizationMetricsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("platformDifferences"))
   {
     Aws::Utils::Array<JsonView> platformDifferencesJsonList = jsonValue.GetArray("platformDifferences");
@@ -79,49 +53,31 @@ InstanceRecommendationOption& InstanceRecommendationOption::operator =(JsonView 
     }
     m_platformDifferencesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("performanceRisk"))
   {
     m_performanceRisk = jsonValue.GetDouble("performanceRisk");
-
     m_performanceRiskHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rank"))
   {
     m_rank = jsonValue.GetInteger("rank");
-
     m_rankHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("savingsOpportunity"))
   {
     m_savingsOpportunity = jsonValue.GetObject("savingsOpportunity");
-
     m_savingsOpportunityHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("migrationEffort"))
-  {
-    m_migrationEffort = MigrationEffortMapper::GetMigrationEffortForName(jsonValue.GetString("migrationEffort"));
-
-    m_migrationEffortHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("instanceGpuInfo"))
-  {
-    m_instanceGpuInfo = jsonValue.GetObject("instanceGpuInfo");
-
-    m_instanceGpuInfoHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("savingsOpportunityAfterDiscounts"))
   {
     m_savingsOpportunityAfterDiscounts = jsonValue.GetObject("savingsOpportunityAfterDiscounts");
-
     m_savingsOpportunityAfterDiscountsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("migrationEffort"))
+  {
+    m_migrationEffort = MigrationEffortMapper::GetMigrationEffortForName(jsonValue.GetString("migrationEffort"));
+    m_migrationEffortHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -132,6 +88,12 @@ JsonValue InstanceRecommendationOption::Jsonize() const
   if(m_instanceTypeHasBeenSet)
   {
    payload.WithString("instanceType", m_instanceType);
+
+  }
+
+  if(m_instanceGpuInfoHasBeenSet)
+  {
+   payload.WithObject("instanceGpuInfo", m_instanceGpuInfo.Jsonize());
 
   }
 
@@ -175,21 +137,15 @@ JsonValue InstanceRecommendationOption::Jsonize() const
 
   }
 
-  if(m_migrationEffortHasBeenSet)
-  {
-   payload.WithString("migrationEffort", MigrationEffortMapper::GetNameForMigrationEffort(m_migrationEffort));
-  }
-
-  if(m_instanceGpuInfoHasBeenSet)
-  {
-   payload.WithObject("instanceGpuInfo", m_instanceGpuInfo.Jsonize());
-
-  }
-
   if(m_savingsOpportunityAfterDiscountsHasBeenSet)
   {
    payload.WithObject("savingsOpportunityAfterDiscounts", m_savingsOpportunityAfterDiscounts.Jsonize());
 
+  }
+
+  if(m_migrationEffortHasBeenSet)
+  {
+   payload.WithString("migrationEffort", MigrationEffortMapper::GetNameForMigrationEffort(m_migrationEffort));
   }
 
   return payload;

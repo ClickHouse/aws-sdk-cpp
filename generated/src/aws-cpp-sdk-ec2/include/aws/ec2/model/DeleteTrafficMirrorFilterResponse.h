@@ -28,67 +28,37 @@ namespace Model
   class DeleteTrafficMirrorFilterResponse
   {
   public:
-    AWS_EC2_API DeleteTrafficMirrorFilterResponse();
+    AWS_EC2_API DeleteTrafficMirrorFilterResponse() = default;
     AWS_EC2_API DeleteTrafficMirrorFilterResponse(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_EC2_API DeleteTrafficMirrorFilterResponse& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the Traffic Mirror filter.</p>
      */
-    inline const Aws::String& GetTrafficMirrorFilterId() const{ return m_trafficMirrorFilterId; }
+    inline const Aws::String& GetTrafficMirrorFilterId() const { return m_trafficMirrorFilterId; }
+    template<typename TrafficMirrorFilterIdT = Aws::String>
+    void SetTrafficMirrorFilterId(TrafficMirrorFilterIdT&& value) { m_trafficMirrorFilterIdHasBeenSet = true; m_trafficMirrorFilterId = std::forward<TrafficMirrorFilterIdT>(value); }
+    template<typename TrafficMirrorFilterIdT = Aws::String>
+    DeleteTrafficMirrorFilterResponse& WithTrafficMirrorFilterId(TrafficMirrorFilterIdT&& value) { SetTrafficMirrorFilterId(std::forward<TrafficMirrorFilterIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline void SetTrafficMirrorFilterId(const Aws::String& value) { m_trafficMirrorFilterId = value; }
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline void SetTrafficMirrorFilterId(Aws::String&& value) { m_trafficMirrorFilterId = std::move(value); }
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline void SetTrafficMirrorFilterId(const char* value) { m_trafficMirrorFilterId.assign(value); }
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline DeleteTrafficMirrorFilterResponse& WithTrafficMirrorFilterId(const Aws::String& value) { SetTrafficMirrorFilterId(value); return *this;}
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline DeleteTrafficMirrorFilterResponse& WithTrafficMirrorFilterId(Aws::String&& value) { SetTrafficMirrorFilterId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Traffic Mirror filter.</p>
-     */
-    inline DeleteTrafficMirrorFilterResponse& WithTrafficMirrorFilterId(const char* value) { SetTrafficMirrorFilterId(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DeleteTrafficMirrorFilterResponse& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DeleteTrafficMirrorFilterResponse& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DeleteTrafficMirrorFilterResponse& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_trafficMirrorFilterId;
+    bool m_trafficMirrorFilterIdHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

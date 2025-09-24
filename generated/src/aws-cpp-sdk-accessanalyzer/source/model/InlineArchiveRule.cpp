@@ -18,15 +18,7 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-InlineArchiveRule::InlineArchiveRule() : 
-    m_ruleNameHasBeenSet(false),
-    m_filterHasBeenSet(false)
-{
-}
-
-InlineArchiveRule::InlineArchiveRule(JsonView jsonValue) : 
-    m_ruleNameHasBeenSet(false),
-    m_filterHasBeenSet(false)
+InlineArchiveRule::InlineArchiveRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InlineArchiveRule& InlineArchiveRule::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ruleName"))
   {
     m_ruleName = jsonValue.GetString("ruleName");
-
     m_ruleNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("filter"))
   {
     Aws::Map<Aws::String, JsonView> filterJsonMap = jsonValue.GetObject("filter").GetAllObjects();
@@ -49,7 +39,6 @@ InlineArchiveRule& InlineArchiveRule::operator =(JsonView jsonValue)
     }
     m_filterHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,21 +18,7 @@ namespace ECRPublic
 namespace Model
 {
 
-Image::Image() : 
-    m_registryIdHasBeenSet(false),
-    m_repositoryNameHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_imageManifestHasBeenSet(false),
-    m_imageManifestMediaTypeHasBeenSet(false)
-{
-}
-
-Image::Image(JsonView jsonValue) : 
-    m_registryIdHasBeenSet(false),
-    m_repositoryNameHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_imageManifestHasBeenSet(false),
-    m_imageManifestMediaTypeHasBeenSet(false)
+Image::Image(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,38 +28,28 @@ Image& Image::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("registryId"))
   {
     m_registryId = jsonValue.GetString("registryId");
-
     m_registryIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("repositoryName"))
   {
     m_repositoryName = jsonValue.GetString("repositoryName");
-
     m_repositoryNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("imageId"))
   {
     m_imageId = jsonValue.GetObject("imageId");
-
     m_imageIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("imageManifest"))
   {
     m_imageManifest = jsonValue.GetString("imageManifest");
-
     m_imageManifestHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("imageManifestMediaType"))
   {
     m_imageManifestMediaType = jsonValue.GetString("imageManifestMediaType");
-
     m_imageManifestMediaTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

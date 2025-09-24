@@ -21,7 +21,7 @@ namespace Model
   class CreateRealtimeEndpointRequest : public MachineLearningRequest
   {
   public:
-    AWS_MACHINELEARNING_API CreateRealtimeEndpointRequest();
+    AWS_MACHINELEARNING_API CreateRealtimeEndpointRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_MACHINELEARNING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
      */
-    inline const Aws::String& GetMLModelId() const{ return m_mLModelId; }
-
-    /**
-     * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
-     */
+    inline const Aws::String& GetMLModelId() const { return m_mLModelId; }
     inline bool MLModelIdHasBeenSet() const { return m_mLModelIdHasBeenSet; }
-
-    /**
-     * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
-     */
-    inline void SetMLModelId(const Aws::String& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = value; }
-
-    /**
-     * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
-     */
-    inline void SetMLModelId(Aws::String&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = std::move(value); }
-
-    /**
-     * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
-     */
-    inline void SetMLModelId(const char* value) { m_mLModelIdHasBeenSet = true; m_mLModelId.assign(value); }
-
-    /**
-     * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
-     */
-    inline CreateRealtimeEndpointRequest& WithMLModelId(const Aws::String& value) { SetMLModelId(value); return *this;}
-
-    /**
-     * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
-     */
-    inline CreateRealtimeEndpointRequest& WithMLModelId(Aws::String&& value) { SetMLModelId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID assigned to the <code>MLModel</code> during creation.</p>
-     */
-    inline CreateRealtimeEndpointRequest& WithMLModelId(const char* value) { SetMLModelId(value); return *this;}
-
+    template<typename MLModelIdT = Aws::String>
+    void SetMLModelId(MLModelIdT&& value) { m_mLModelIdHasBeenSet = true; m_mLModelId = std::forward<MLModelIdT>(value); }
+    template<typename MLModelIdT = Aws::String>
+    CreateRealtimeEndpointRequest& WithMLModelId(MLModelIdT&& value) { SetMLModelId(std::forward<MLModelIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_mLModelId;

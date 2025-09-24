@@ -21,7 +21,7 @@ namespace Model
   class GetAnnotationStoreVersionRequest : public OmicsRequest
   {
   public:
-    AWS_OMICS_API GetAnnotationStoreVersionRequest();
+    AWS_OMICS_API GetAnnotationStoreVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,103 +32,31 @@ namespace Model
     AWS_OMICS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The name given to an annotation store version to distinguish it from others.
      * </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetAnnotationStoreVersionRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p> The name given to an annotation store version to distinguish it from others.
      * </p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline GetAnnotationStoreVersionRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline GetAnnotationStoreVersionRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline GetAnnotationStoreVersionRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline const Aws::String& GetVersionName() const{ return m_versionName; }
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
+    inline const Aws::String& GetVersionName() const { return m_versionName; }
     inline bool VersionNameHasBeenSet() const { return m_versionNameHasBeenSet; }
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline void SetVersionName(const Aws::String& value) { m_versionNameHasBeenSet = true; m_versionName = value; }
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline void SetVersionName(Aws::String&& value) { m_versionNameHasBeenSet = true; m_versionName = std::move(value); }
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline void SetVersionName(const char* value) { m_versionNameHasBeenSet = true; m_versionName.assign(value); }
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline GetAnnotationStoreVersionRequest& WithVersionName(const Aws::String& value) { SetVersionName(value); return *this;}
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline GetAnnotationStoreVersionRequest& WithVersionName(Aws::String&& value) { SetVersionName(std::move(value)); return *this;}
-
-    /**
-     * <p> The name given to an annotation store version to distinguish it from others.
-     * </p>
-     */
-    inline GetAnnotationStoreVersionRequest& WithVersionName(const char* value) { SetVersionName(value); return *this;}
-
+    template<typename VersionNameT = Aws::String>
+    void SetVersionName(VersionNameT&& value) { m_versionNameHasBeenSet = true; m_versionName = std::forward<VersionNameT>(value); }
+    template<typename VersionNameT = Aws::String>
+    GetAnnotationStoreVersionRequest& WithVersionName(VersionNameT&& value) { SetVersionName(std::forward<VersionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

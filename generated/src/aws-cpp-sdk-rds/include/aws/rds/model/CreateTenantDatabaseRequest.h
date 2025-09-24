@@ -23,7 +23,7 @@ namespace Model
   class CreateTenantDatabaseRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API CreateTenantDatabaseRequest();
+    AWS_RDS_API CreateTenantDatabaseRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,112 +38,34 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The user-supplied DB instance identifier. RDS creates your tenant database in
      * this DB instance. This parameter isn't case-sensitive.</p>
      */
-    inline const Aws::String& GetDBInstanceIdentifier() const{ return m_dBInstanceIdentifier; }
-
-    /**
-     * <p>The user-supplied DB instance identifier. RDS creates your tenant database in
-     * this DB instance. This parameter isn't case-sensitive.</p>
-     */
+    inline const Aws::String& GetDBInstanceIdentifier() const { return m_dBInstanceIdentifier; }
     inline bool DBInstanceIdentifierHasBeenSet() const { return m_dBInstanceIdentifierHasBeenSet; }
+    template<typename DBInstanceIdentifierT = Aws::String>
+    void SetDBInstanceIdentifier(DBInstanceIdentifierT&& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = std::forward<DBInstanceIdentifierT>(value); }
+    template<typename DBInstanceIdentifierT = Aws::String>
+    CreateTenantDatabaseRequest& WithDBInstanceIdentifier(DBInstanceIdentifierT&& value) { SetDBInstanceIdentifier(std::forward<DBInstanceIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user-supplied DB instance identifier. RDS creates your tenant database in
-     * this DB instance. This parameter isn't case-sensitive.</p>
-     */
-    inline void SetDBInstanceIdentifier(const Aws::String& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = value; }
-
-    /**
-     * <p>The user-supplied DB instance identifier. RDS creates your tenant database in
-     * this DB instance. This parameter isn't case-sensitive.</p>
-     */
-    inline void SetDBInstanceIdentifier(Aws::String&& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = std::move(value); }
-
-    /**
-     * <p>The user-supplied DB instance identifier. RDS creates your tenant database in
-     * this DB instance. This parameter isn't case-sensitive.</p>
-     */
-    inline void SetDBInstanceIdentifier(const char* value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier.assign(value); }
-
-    /**
-     * <p>The user-supplied DB instance identifier. RDS creates your tenant database in
-     * this DB instance. This parameter isn't case-sensitive.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithDBInstanceIdentifier(const Aws::String& value) { SetDBInstanceIdentifier(value); return *this;}
-
-    /**
-     * <p>The user-supplied DB instance identifier. RDS creates your tenant database in
-     * this DB instance. This parameter isn't case-sensitive.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithDBInstanceIdentifier(Aws::String&& value) { SetDBInstanceIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The user-supplied DB instance identifier. RDS creates your tenant database in
-     * this DB instance. This parameter isn't case-sensitive.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithDBInstanceIdentifier(const char* value) { SetDBInstanceIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The user-supplied name of the tenant database that you want to create in your
      * DB instance. This parameter has the same constraints as <code>DBName</code> in
      * <code>CreateDBInstance</code>.</p>
      */
-    inline const Aws::String& GetTenantDBName() const{ return m_tenantDBName; }
-
-    /**
-     * <p>The user-supplied name of the tenant database that you want to create in your
-     * DB instance. This parameter has the same constraints as <code>DBName</code> in
-     * <code>CreateDBInstance</code>.</p>
-     */
+    inline const Aws::String& GetTenantDBName() const { return m_tenantDBName; }
     inline bool TenantDBNameHasBeenSet() const { return m_tenantDBNameHasBeenSet; }
+    template<typename TenantDBNameT = Aws::String>
+    void SetTenantDBName(TenantDBNameT&& value) { m_tenantDBNameHasBeenSet = true; m_tenantDBName = std::forward<TenantDBNameT>(value); }
+    template<typename TenantDBNameT = Aws::String>
+    CreateTenantDatabaseRequest& WithTenantDBName(TenantDBNameT&& value) { SetTenantDBName(std::forward<TenantDBNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user-supplied name of the tenant database that you want to create in your
-     * DB instance. This parameter has the same constraints as <code>DBName</code> in
-     * <code>CreateDBInstance</code>.</p>
-     */
-    inline void SetTenantDBName(const Aws::String& value) { m_tenantDBNameHasBeenSet = true; m_tenantDBName = value; }
-
-    /**
-     * <p>The user-supplied name of the tenant database that you want to create in your
-     * DB instance. This parameter has the same constraints as <code>DBName</code> in
-     * <code>CreateDBInstance</code>.</p>
-     */
-    inline void SetTenantDBName(Aws::String&& value) { m_tenantDBNameHasBeenSet = true; m_tenantDBName = std::move(value); }
-
-    /**
-     * <p>The user-supplied name of the tenant database that you want to create in your
-     * DB instance. This parameter has the same constraints as <code>DBName</code> in
-     * <code>CreateDBInstance</code>.</p>
-     */
-    inline void SetTenantDBName(const char* value) { m_tenantDBNameHasBeenSet = true; m_tenantDBName.assign(value); }
-
-    /**
-     * <p>The user-supplied name of the tenant database that you want to create in your
-     * DB instance. This parameter has the same constraints as <code>DBName</code> in
-     * <code>CreateDBInstance</code>.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithTenantDBName(const Aws::String& value) { SetTenantDBName(value); return *this;}
-
-    /**
-     * <p>The user-supplied name of the tenant database that you want to create in your
-     * DB instance. This parameter has the same constraints as <code>DBName</code> in
-     * <code>CreateDBInstance</code>.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithTenantDBName(Aws::String&& value) { SetTenantDBName(std::move(value)); return *this;}
-
-    /**
-     * <p>The user-supplied name of the tenant database that you want to create in your
-     * DB instance. This parameter has the same constraints as <code>DBName</code> in
-     * <code>CreateDBInstance</code>.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithTenantDBName(const char* value) { SetTenantDBName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name for the master user account in your tenant database. RDS creates
      * this user account in the tenant database and grants privileges to the master
@@ -152,274 +74,109 @@ namespace Model
      * character must be a letter.</p> </li> <li> <p>Can't be a reserved word for the
      * chosen database engine.</p> </li> </ul>
      */
-    inline const Aws::String& GetMasterUsername() const{ return m_masterUsername; }
-
-    /**
-     * <p>The name for the master user account in your tenant database. RDS creates
-     * this user account in the tenant database and grants privileges to the master
-     * user. This parameter is case-sensitive.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must be 1 to 16 letters, numbers, or underscores.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't be a reserved word for the
-     * chosen database engine.</p> </li> </ul>
-     */
+    inline const Aws::String& GetMasterUsername() const { return m_masterUsername; }
     inline bool MasterUsernameHasBeenSet() const { return m_masterUsernameHasBeenSet; }
+    template<typename MasterUsernameT = Aws::String>
+    void SetMasterUsername(MasterUsernameT&& value) { m_masterUsernameHasBeenSet = true; m_masterUsername = std::forward<MasterUsernameT>(value); }
+    template<typename MasterUsernameT = Aws::String>
+    CreateTenantDatabaseRequest& WithMasterUsername(MasterUsernameT&& value) { SetMasterUsername(std::forward<MasterUsernameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for the master user account in your tenant database. RDS creates
-     * this user account in the tenant database and grants privileges to the master
-     * user. This parameter is case-sensitive.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must be 1 to 16 letters, numbers, or underscores.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't be a reserved word for the
-     * chosen database engine.</p> </li> </ul>
-     */
-    inline void SetMasterUsername(const Aws::String& value) { m_masterUsernameHasBeenSet = true; m_masterUsername = value; }
-
-    /**
-     * <p>The name for the master user account in your tenant database. RDS creates
-     * this user account in the tenant database and grants privileges to the master
-     * user. This parameter is case-sensitive.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must be 1 to 16 letters, numbers, or underscores.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't be a reserved word for the
-     * chosen database engine.</p> </li> </ul>
-     */
-    inline void SetMasterUsername(Aws::String&& value) { m_masterUsernameHasBeenSet = true; m_masterUsername = std::move(value); }
-
-    /**
-     * <p>The name for the master user account in your tenant database. RDS creates
-     * this user account in the tenant database and grants privileges to the master
-     * user. This parameter is case-sensitive.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must be 1 to 16 letters, numbers, or underscores.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't be a reserved word for the
-     * chosen database engine.</p> </li> </ul>
-     */
-    inline void SetMasterUsername(const char* value) { m_masterUsernameHasBeenSet = true; m_masterUsername.assign(value); }
-
-    /**
-     * <p>The name for the master user account in your tenant database. RDS creates
-     * this user account in the tenant database and grants privileges to the master
-     * user. This parameter is case-sensitive.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must be 1 to 16 letters, numbers, or underscores.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't be a reserved word for the
-     * chosen database engine.</p> </li> </ul>
-     */
-    inline CreateTenantDatabaseRequest& WithMasterUsername(const Aws::String& value) { SetMasterUsername(value); return *this;}
-
-    /**
-     * <p>The name for the master user account in your tenant database. RDS creates
-     * this user account in the tenant database and grants privileges to the master
-     * user. This parameter is case-sensitive.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must be 1 to 16 letters, numbers, or underscores.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't be a reserved word for the
-     * chosen database engine.</p> </li> </ul>
-     */
-    inline CreateTenantDatabaseRequest& WithMasterUsername(Aws::String&& value) { SetMasterUsername(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the master user account in your tenant database. RDS creates
-     * this user account in the tenant database and grants privileges to the master
-     * user. This parameter is case-sensitive.</p> <p>Constraints:</p> <ul> <li>
-     * <p>Must be 1 to 16 letters, numbers, or underscores.</p> </li> <li> <p>First
-     * character must be a letter.</p> </li> <li> <p>Can't be a reserved word for the
-     * chosen database engine.</p> </li> </ul>
-     */
-    inline CreateTenantDatabaseRequest& WithMasterUsername(const char* value) { SetMasterUsername(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The password for the master user in your tenant database.</p>
      * <p>Constraints:</p> <ul> <li> <p>Must be 8 to 30 characters.</p> </li> <li>
      * <p>Can include any printable ASCII character except forward slash
      * (<code>/</code>), double quote (<code>"</code>), at symbol (<code>@</code>),
-     * ampersand (<code>&amp;</code>), or single quote (<code>'</code>).</p> </li>
-     * </ul>
+     * ampersand (<code>&amp;</code>), or single quote (<code>'</code>).</p> </li> <li>
+     * <p>Can't be specified when <code>ManageMasterUserPassword</code> is enabled.</p>
+     * </li> </ul>
      */
-    inline const Aws::String& GetMasterUserPassword() const{ return m_masterUserPassword; }
-
-    /**
-     * <p>The password for the master user in your tenant database.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be 8 to 30 characters.</p> </li> <li>
-     * <p>Can include any printable ASCII character except forward slash
-     * (<code>/</code>), double quote (<code>"</code>), at symbol (<code>@</code>),
-     * ampersand (<code>&amp;</code>), or single quote (<code>'</code>).</p> </li>
-     * </ul>
-     */
+    inline const Aws::String& GetMasterUserPassword() const { return m_masterUserPassword; }
     inline bool MasterUserPasswordHasBeenSet() const { return m_masterUserPasswordHasBeenSet; }
+    template<typename MasterUserPasswordT = Aws::String>
+    void SetMasterUserPassword(MasterUserPasswordT&& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = std::forward<MasterUserPasswordT>(value); }
+    template<typename MasterUserPasswordT = Aws::String>
+    CreateTenantDatabaseRequest& WithMasterUserPassword(MasterUserPasswordT&& value) { SetMasterUserPassword(std::forward<MasterUserPasswordT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The password for the master user in your tenant database.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be 8 to 30 characters.</p> </li> <li>
-     * <p>Can include any printable ASCII character except forward slash
-     * (<code>/</code>), double quote (<code>"</code>), at symbol (<code>@</code>),
-     * ampersand (<code>&amp;</code>), or single quote (<code>'</code>).</p> </li>
-     * </ul>
-     */
-    inline void SetMasterUserPassword(const Aws::String& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = value; }
-
-    /**
-     * <p>The password for the master user in your tenant database.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be 8 to 30 characters.</p> </li> <li>
-     * <p>Can include any printable ASCII character except forward slash
-     * (<code>/</code>), double quote (<code>"</code>), at symbol (<code>@</code>),
-     * ampersand (<code>&amp;</code>), or single quote (<code>'</code>).</p> </li>
-     * </ul>
-     */
-    inline void SetMasterUserPassword(Aws::String&& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = std::move(value); }
-
-    /**
-     * <p>The password for the master user in your tenant database.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be 8 to 30 characters.</p> </li> <li>
-     * <p>Can include any printable ASCII character except forward slash
-     * (<code>/</code>), double quote (<code>"</code>), at symbol (<code>@</code>),
-     * ampersand (<code>&amp;</code>), or single quote (<code>'</code>).</p> </li>
-     * </ul>
-     */
-    inline void SetMasterUserPassword(const char* value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword.assign(value); }
-
-    /**
-     * <p>The password for the master user in your tenant database.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be 8 to 30 characters.</p> </li> <li>
-     * <p>Can include any printable ASCII character except forward slash
-     * (<code>/</code>), double quote (<code>"</code>), at symbol (<code>@</code>),
-     * ampersand (<code>&amp;</code>), or single quote (<code>'</code>).</p> </li>
-     * </ul>
-     */
-    inline CreateTenantDatabaseRequest& WithMasterUserPassword(const Aws::String& value) { SetMasterUserPassword(value); return *this;}
-
-    /**
-     * <p>The password for the master user in your tenant database.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be 8 to 30 characters.</p> </li> <li>
-     * <p>Can include any printable ASCII character except forward slash
-     * (<code>/</code>), double quote (<code>"</code>), at symbol (<code>@</code>),
-     * ampersand (<code>&amp;</code>), or single quote (<code>'</code>).</p> </li>
-     * </ul>
-     */
-    inline CreateTenantDatabaseRequest& WithMasterUserPassword(Aws::String&& value) { SetMasterUserPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>The password for the master user in your tenant database.</p>
-     * <p>Constraints:</p> <ul> <li> <p>Must be 8 to 30 characters.</p> </li> <li>
-     * <p>Can include any printable ASCII character except forward slash
-     * (<code>/</code>), double quote (<code>"</code>), at symbol (<code>@</code>),
-     * ampersand (<code>&amp;</code>), or single quote (<code>'</code>).</p> </li>
-     * </ul>
-     */
-    inline CreateTenantDatabaseRequest& WithMasterUserPassword(const char* value) { SetMasterUserPassword(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The character set for your tenant database. If you don't specify a value, the
      * character set name defaults to <code>AL32UTF8</code>.</p>
      */
-    inline const Aws::String& GetCharacterSetName() const{ return m_characterSetName; }
-
-    /**
-     * <p>The character set for your tenant database. If you don't specify a value, the
-     * character set name defaults to <code>AL32UTF8</code>.</p>
-     */
+    inline const Aws::String& GetCharacterSetName() const { return m_characterSetName; }
     inline bool CharacterSetNameHasBeenSet() const { return m_characterSetNameHasBeenSet; }
+    template<typename CharacterSetNameT = Aws::String>
+    void SetCharacterSetName(CharacterSetNameT&& value) { m_characterSetNameHasBeenSet = true; m_characterSetName = std::forward<CharacterSetNameT>(value); }
+    template<typename CharacterSetNameT = Aws::String>
+    CreateTenantDatabaseRequest& WithCharacterSetName(CharacterSetNameT&& value) { SetCharacterSetName(std::forward<CharacterSetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The character set for your tenant database. If you don't specify a value, the
-     * character set name defaults to <code>AL32UTF8</code>.</p>
-     */
-    inline void SetCharacterSetName(const Aws::String& value) { m_characterSetNameHasBeenSet = true; m_characterSetName = value; }
-
-    /**
-     * <p>The character set for your tenant database. If you don't specify a value, the
-     * character set name defaults to <code>AL32UTF8</code>.</p>
-     */
-    inline void SetCharacterSetName(Aws::String&& value) { m_characterSetNameHasBeenSet = true; m_characterSetName = std::move(value); }
-
-    /**
-     * <p>The character set for your tenant database. If you don't specify a value, the
-     * character set name defaults to <code>AL32UTF8</code>.</p>
-     */
-    inline void SetCharacterSetName(const char* value) { m_characterSetNameHasBeenSet = true; m_characterSetName.assign(value); }
-
-    /**
-     * <p>The character set for your tenant database. If you don't specify a value, the
-     * character set name defaults to <code>AL32UTF8</code>.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithCharacterSetName(const Aws::String& value) { SetCharacterSetName(value); return *this;}
-
-    /**
-     * <p>The character set for your tenant database. If you don't specify a value, the
-     * character set name defaults to <code>AL32UTF8</code>.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithCharacterSetName(Aws::String&& value) { SetCharacterSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The character set for your tenant database. If you don't specify a value, the
-     * character set name defaults to <code>AL32UTF8</code>.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithCharacterSetName(const char* value) { SetCharacterSetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>NCHAR</code> value for the tenant database.</p>
      */
-    inline const Aws::String& GetNcharCharacterSetName() const{ return m_ncharCharacterSetName; }
-
-    /**
-     * <p>The <code>NCHAR</code> value for the tenant database.</p>
-     */
+    inline const Aws::String& GetNcharCharacterSetName() const { return m_ncharCharacterSetName; }
     inline bool NcharCharacterSetNameHasBeenSet() const { return m_ncharCharacterSetNameHasBeenSet; }
+    template<typename NcharCharacterSetNameT = Aws::String>
+    void SetNcharCharacterSetName(NcharCharacterSetNameT&& value) { m_ncharCharacterSetNameHasBeenSet = true; m_ncharCharacterSetName = std::forward<NcharCharacterSetNameT>(value); }
+    template<typename NcharCharacterSetNameT = Aws::String>
+    CreateTenantDatabaseRequest& WithNcharCharacterSetName(NcharCharacterSetNameT&& value) { SetNcharCharacterSetName(std::forward<NcharCharacterSetNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The <code>NCHAR</code> value for the tenant database.</p>
+     * <p>Specifies whether to manage the master user password with Amazon Web Services
+     * Secrets Manager.</p> <p>For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html">Password
+     * management with Amazon Web Services Secrets Manager</a> in the <i>Amazon RDS
+     * User Guide.</i> </p> <p>Constraints:</p> <ul> <li> <p>Can't manage the master
+     * user password with Amazon Web Services Secrets Manager if
+     * <code>MasterUserPassword</code> is specified.</p> </li> </ul>
      */
-    inline void SetNcharCharacterSetName(const Aws::String& value) { m_ncharCharacterSetNameHasBeenSet = true; m_ncharCharacterSetName = value; }
+    inline bool GetManageMasterUserPassword() const { return m_manageMasterUserPassword; }
+    inline bool ManageMasterUserPasswordHasBeenSet() const { return m_manageMasterUserPasswordHasBeenSet; }
+    inline void SetManageMasterUserPassword(bool value) { m_manageMasterUserPasswordHasBeenSet = true; m_manageMasterUserPassword = value; }
+    inline CreateTenantDatabaseRequest& WithManageMasterUserPassword(bool value) { SetManageMasterUserPassword(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The <code>NCHAR</code> value for the tenant database.</p>
+     * <p>The Amazon Web Services KMS key identifier to encrypt a secret that is
+     * automatically generated and managed in Amazon Web Services Secrets Manager.</p>
+     * <p>This setting is valid only if the master user password is managed by RDS in
+     * Amazon Web Services Secrets Manager for the DB instance.</p> <p>The Amazon Web
+     * Services KMS key identifier is the key ARN, key ID, alias ARN, or alias name for
+     * the KMS key. To use a KMS key in a different Amazon Web Services account,
+     * specify the key ARN or alias ARN.</p> <p>If you don't specify
+     * <code>MasterUserSecretKmsKeyId</code>, then the <code>aws/secretsmanager</code>
+     * KMS key is used to encrypt the secret. If the secret is in a different Amazon
+     * Web Services account, then you can't use the <code>aws/secretsmanager</code> KMS
+     * key to encrypt the secret, and you must use a customer managed KMS key.</p>
+     * <p>There is a default KMS key for your Amazon Web Services account. Your Amazon
+     * Web Services account has a different default KMS key for each Amazon Web
+     * Services Region.</p>
      */
-    inline void SetNcharCharacterSetName(Aws::String&& value) { m_ncharCharacterSetNameHasBeenSet = true; m_ncharCharacterSetName = std::move(value); }
+    inline const Aws::String& GetMasterUserSecretKmsKeyId() const { return m_masterUserSecretKmsKeyId; }
+    inline bool MasterUserSecretKmsKeyIdHasBeenSet() const { return m_masterUserSecretKmsKeyIdHasBeenSet; }
+    template<typename MasterUserSecretKmsKeyIdT = Aws::String>
+    void SetMasterUserSecretKmsKeyId(MasterUserSecretKmsKeyIdT&& value) { m_masterUserSecretKmsKeyIdHasBeenSet = true; m_masterUserSecretKmsKeyId = std::forward<MasterUserSecretKmsKeyIdT>(value); }
+    template<typename MasterUserSecretKmsKeyIdT = Aws::String>
+    CreateTenantDatabaseRequest& WithMasterUserSecretKmsKeyId(MasterUserSecretKmsKeyIdT&& value) { SetMasterUserSecretKmsKeyId(std::forward<MasterUserSecretKmsKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>NCHAR</code> value for the tenant database.</p>
-     */
-    inline void SetNcharCharacterSetName(const char* value) { m_ncharCharacterSetNameHasBeenSet = true; m_ncharCharacterSetName.assign(value); }
-
-    /**
-     * <p>The <code>NCHAR</code> value for the tenant database.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithNcharCharacterSetName(const Aws::String& value) { SetNcharCharacterSetName(value); return *this;}
-
-    /**
-     * <p>The <code>NCHAR</code> value for the tenant database.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithNcharCharacterSetName(Aws::String&& value) { SetNcharCharacterSetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>NCHAR</code> value for the tenant database.</p>
-     */
-    inline CreateTenantDatabaseRequest& WithNcharCharacterSetName(const char* value) { SetNcharCharacterSetName(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    
-    inline CreateTenantDatabaseRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    
-    inline CreateTenantDatabaseRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    
-    inline CreateTenantDatabaseRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    
-    inline CreateTenantDatabaseRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateTenantDatabaseRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateTenantDatabaseRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_dBInstanceIdentifier;
@@ -439,6 +196,12 @@ namespace Model
 
     Aws::String m_ncharCharacterSetName;
     bool m_ncharCharacterSetNameHasBeenSet = false;
+
+    bool m_manageMasterUserPassword{false};
+    bool m_manageMasterUserPasswordHasBeenSet = false;
+
+    Aws::String m_masterUserSecretKmsKeyId;
+    bool m_masterUserSecretKmsKeyIdHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;
     bool m_tagsHasBeenSet = false;

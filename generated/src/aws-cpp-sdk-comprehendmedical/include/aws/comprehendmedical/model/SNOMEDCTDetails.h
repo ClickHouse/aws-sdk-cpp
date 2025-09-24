@@ -33,150 +33,49 @@ namespace Model
   class SNOMEDCTDetails
   {
   public:
-    AWS_COMPREHENDMEDICAL_API SNOMEDCTDetails();
+    AWS_COMPREHENDMEDICAL_API SNOMEDCTDetails() = default;
     AWS_COMPREHENDMEDICAL_API SNOMEDCTDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHENDMEDICAL_API SNOMEDCTDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COMPREHENDMEDICAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The edition of SNOMED-CT used. The edition used for the InferSNOMEDCT
      * editions is the US edition. </p>
      */
-    inline const Aws::String& GetEdition() const{ return m_edition; }
-
-    /**
-     * <p> The edition of SNOMED-CT used. The edition used for the InferSNOMEDCT
-     * editions is the US edition. </p>
-     */
+    inline const Aws::String& GetEdition() const { return m_edition; }
     inline bool EditionHasBeenSet() const { return m_editionHasBeenSet; }
+    template<typename EditionT = Aws::String>
+    void SetEdition(EditionT&& value) { m_editionHasBeenSet = true; m_edition = std::forward<EditionT>(value); }
+    template<typename EditionT = Aws::String>
+    SNOMEDCTDetails& WithEdition(EditionT&& value) { SetEdition(std::forward<EditionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The edition of SNOMED-CT used. The edition used for the InferSNOMEDCT
-     * editions is the US edition. </p>
-     */
-    inline void SetEdition(const Aws::String& value) { m_editionHasBeenSet = true; m_edition = value; }
-
-    /**
-     * <p> The edition of SNOMED-CT used. The edition used for the InferSNOMEDCT
-     * editions is the US edition. </p>
-     */
-    inline void SetEdition(Aws::String&& value) { m_editionHasBeenSet = true; m_edition = std::move(value); }
-
-    /**
-     * <p> The edition of SNOMED-CT used. The edition used for the InferSNOMEDCT
-     * editions is the US edition. </p>
-     */
-    inline void SetEdition(const char* value) { m_editionHasBeenSet = true; m_edition.assign(value); }
-
-    /**
-     * <p> The edition of SNOMED-CT used. The edition used for the InferSNOMEDCT
-     * editions is the US edition. </p>
-     */
-    inline SNOMEDCTDetails& WithEdition(const Aws::String& value) { SetEdition(value); return *this;}
-
-    /**
-     * <p> The edition of SNOMED-CT used. The edition used for the InferSNOMEDCT
-     * editions is the US edition. </p>
-     */
-    inline SNOMEDCTDetails& WithEdition(Aws::String&& value) { SetEdition(std::move(value)); return *this;}
-
-    /**
-     * <p> The edition of SNOMED-CT used. The edition used for the InferSNOMEDCT
-     * editions is the US edition. </p>
-     */
-    inline SNOMEDCTDetails& WithEdition(const char* value) { SetEdition(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The language used in the SNOMED-CT ontology. All Amazon Comprehend Medical
      * operations are US English (en). </p>
      */
-    inline const Aws::String& GetLanguage() const{ return m_language; }
-
-    /**
-     * <p> The language used in the SNOMED-CT ontology. All Amazon Comprehend Medical
-     * operations are US English (en). </p>
-     */
+    inline const Aws::String& GetLanguage() const { return m_language; }
     inline bool LanguageHasBeenSet() const { return m_languageHasBeenSet; }
+    template<typename LanguageT = Aws::String>
+    void SetLanguage(LanguageT&& value) { m_languageHasBeenSet = true; m_language = std::forward<LanguageT>(value); }
+    template<typename LanguageT = Aws::String>
+    SNOMEDCTDetails& WithLanguage(LanguageT&& value) { SetLanguage(std::forward<LanguageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The language used in the SNOMED-CT ontology. All Amazon Comprehend Medical
-     * operations are US English (en). </p>
-     */
-    inline void SetLanguage(const Aws::String& value) { m_languageHasBeenSet = true; m_language = value; }
-
-    /**
-     * <p> The language used in the SNOMED-CT ontology. All Amazon Comprehend Medical
-     * operations are US English (en). </p>
-     */
-    inline void SetLanguage(Aws::String&& value) { m_languageHasBeenSet = true; m_language = std::move(value); }
-
-    /**
-     * <p> The language used in the SNOMED-CT ontology. All Amazon Comprehend Medical
-     * operations are US English (en). </p>
-     */
-    inline void SetLanguage(const char* value) { m_languageHasBeenSet = true; m_language.assign(value); }
-
-    /**
-     * <p> The language used in the SNOMED-CT ontology. All Amazon Comprehend Medical
-     * operations are US English (en). </p>
-     */
-    inline SNOMEDCTDetails& WithLanguage(const Aws::String& value) { SetLanguage(value); return *this;}
-
-    /**
-     * <p> The language used in the SNOMED-CT ontology. All Amazon Comprehend Medical
-     * operations are US English (en). </p>
-     */
-    inline SNOMEDCTDetails& WithLanguage(Aws::String&& value) { SetLanguage(std::move(value)); return *this;}
-
-    /**
-     * <p> The language used in the SNOMED-CT ontology. All Amazon Comprehend Medical
-     * operations are US English (en). </p>
-     */
-    inline SNOMEDCTDetails& WithLanguage(const char* value) { SetLanguage(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The version date of the SNOMED-CT ontology used. </p>
      */
-    inline const Aws::String& GetVersionDate() const{ return m_versionDate; }
-
-    /**
-     * <p> The version date of the SNOMED-CT ontology used. </p>
-     */
+    inline const Aws::String& GetVersionDate() const { return m_versionDate; }
     inline bool VersionDateHasBeenSet() const { return m_versionDateHasBeenSet; }
-
-    /**
-     * <p> The version date of the SNOMED-CT ontology used. </p>
-     */
-    inline void SetVersionDate(const Aws::String& value) { m_versionDateHasBeenSet = true; m_versionDate = value; }
-
-    /**
-     * <p> The version date of the SNOMED-CT ontology used. </p>
-     */
-    inline void SetVersionDate(Aws::String&& value) { m_versionDateHasBeenSet = true; m_versionDate = std::move(value); }
-
-    /**
-     * <p> The version date of the SNOMED-CT ontology used. </p>
-     */
-    inline void SetVersionDate(const char* value) { m_versionDateHasBeenSet = true; m_versionDate.assign(value); }
-
-    /**
-     * <p> The version date of the SNOMED-CT ontology used. </p>
-     */
-    inline SNOMEDCTDetails& WithVersionDate(const Aws::String& value) { SetVersionDate(value); return *this;}
-
-    /**
-     * <p> The version date of the SNOMED-CT ontology used. </p>
-     */
-    inline SNOMEDCTDetails& WithVersionDate(Aws::String&& value) { SetVersionDate(std::move(value)); return *this;}
-
-    /**
-     * <p> The version date of the SNOMED-CT ontology used. </p>
-     */
-    inline SNOMEDCTDetails& WithVersionDate(const char* value) { SetVersionDate(value); return *this;}
-
+    template<typename VersionDateT = Aws::String>
+    void SetVersionDate(VersionDateT&& value) { m_versionDateHasBeenSet = true; m_versionDate = std::forward<VersionDateT>(value); }
+    template<typename VersionDateT = Aws::String>
+    SNOMEDCTDetails& WithVersionDate(VersionDateT&& value) { SetVersionDate(std::forward<VersionDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_edition;

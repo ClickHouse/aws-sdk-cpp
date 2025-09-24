@@ -29,7 +29,7 @@ namespace Model
   class CreateKeysAndCertificateRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API CreateKeysAndCertificateRequest();
+    AWS_IOT_API CreateKeysAndCertificateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,29 +42,18 @@ namespace Model
     AWS_IOT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>Specifies whether the certificate is active.</p>
      */
-    inline bool GetSetAsActive() const{ return m_setAsActive; }
-
-    /**
-     * <p>Specifies whether the certificate is active.</p>
-     */
+    inline bool GetSetAsActive() const { return m_setAsActive; }
     inline bool SetAsActiveHasBeenSet() const { return m_setAsActiveHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the certificate is active.</p>
-     */
     inline void SetSetAsActive(bool value) { m_setAsActiveHasBeenSet = true; m_setAsActive = value; }
-
-    /**
-     * <p>Specifies whether the certificate is active.</p>
-     */
     inline CreateKeysAndCertificateRequest& WithSetAsActive(bool value) { SetSetAsActive(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_setAsActive;
+    bool m_setAsActive{false};
     bool m_setAsActiveHasBeenSet = false;
   };
 

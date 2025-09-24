@@ -18,21 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-KubernetesUserDetails::KubernetesUserDetails() : 
-    m_usernameHasBeenSet(false),
-    m_uidHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_sessionNameHasBeenSet(false),
-    m_impersonatedUserHasBeenSet(false)
-{
-}
-
-KubernetesUserDetails::KubernetesUserDetails(JsonView jsonValue) : 
-    m_usernameHasBeenSet(false),
-    m_uidHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_sessionNameHasBeenSet(false),
-    m_impersonatedUserHasBeenSet(false)
+KubernetesUserDetails::KubernetesUserDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ KubernetesUserDetails& KubernetesUserDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("username"))
   {
     m_username = jsonValue.GetString("username");
-
     m_usernameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("uid"))
   {
     m_uid = jsonValue.GetString("uid");
-
     m_uidHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("groups"))
   {
     Aws::Utils::Array<JsonView> groupsJsonList = jsonValue.GetArray("groups");
@@ -62,7 +44,6 @@ KubernetesUserDetails& KubernetesUserDetails::operator =(JsonView jsonValue)
     }
     m_groupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sessionName"))
   {
     Aws::Utils::Array<JsonView> sessionNameJsonList = jsonValue.GetArray("sessionName");
@@ -72,14 +53,11 @@ KubernetesUserDetails& KubernetesUserDetails::operator =(JsonView jsonValue)
     }
     m_sessionNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("impersonatedUser"))
   {
     m_impersonatedUser = jsonValue.GetObject("impersonatedUser");
-
     m_impersonatedUserHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,17 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-AggregateColumn::AggregateColumn() : 
-    m_columnNamesHasBeenSet(false),
-    m_function(AggregateFunctionName::NOT_SET),
-    m_functionHasBeenSet(false)
-{
-}
-
-AggregateColumn::AggregateColumn(JsonView jsonValue) : 
-    m_columnNamesHasBeenSet(false),
-    m_function(AggregateFunctionName::NOT_SET),
-    m_functionHasBeenSet(false)
+AggregateColumn::AggregateColumn(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ AggregateColumn& AggregateColumn::operator =(JsonView jsonValue)
     }
     m_columnNamesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("function"))
   {
     m_function = AggregateFunctionNameMapper::GetAggregateFunctionNameForName(jsonValue.GetString("function"));
-
     m_functionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -12,30 +12,13 @@ using namespace Aws::QBusiness::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateIndexRequest::CreateIndexRequest() : 
-    m_applicationIdHasBeenSet(false),
-    m_capacityConfigurationHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateIndexRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_capacityConfigurationHasBeenSet)
+  if(m_displayNameHasBeenSet)
   {
-   payload.WithObject("capacityConfiguration", m_capacityConfiguration.Jsonize());
-
-  }
-
-  if(m_clientTokenHasBeenSet)
-  {
-   payload.WithString("clientToken", m_clientToken);
+   payload.WithString("displayName", m_displayName);
 
   }
 
@@ -45,10 +28,9 @@ Aws::String CreateIndexRequest::SerializePayload() const
 
   }
 
-  if(m_displayNameHasBeenSet)
+  if(m_typeHasBeenSet)
   {
-   payload.WithString("displayName", m_displayName);
-
+   payload.WithString("type", IndexTypeMapper::GetNameForIndexType(m_type));
   }
 
   if(m_tagsHasBeenSet)
@@ -59,6 +41,18 @@ Aws::String CreateIndexRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_capacityConfigurationHasBeenSet)
+  {
+   payload.WithObject("capacityConfiguration", m_capacityConfiguration.Jsonize());
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

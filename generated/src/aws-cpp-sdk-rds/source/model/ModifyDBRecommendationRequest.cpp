@@ -10,14 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-ModifyDBRecommendationRequest::ModifyDBRecommendationRequest() : 
-    m_recommendationIdHasBeenSet(false),
-    m_localeHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_recommendedActionUpdatesHasBeenSet(false)
-{
-}
-
 Aws::String ModifyDBRecommendationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -39,11 +31,18 @@ Aws::String ModifyDBRecommendationRequest::SerializePayload() const
 
   if(m_recommendedActionUpdatesHasBeenSet)
   {
-    unsigned recommendedActionUpdatesCount = 1;
-    for(auto& item : m_recommendedActionUpdates)
+    if (m_recommendedActionUpdates.empty())
     {
-      item.OutputToStream(ss, "RecommendedActionUpdates.member.", recommendedActionUpdatesCount, "");
-      recommendedActionUpdatesCount++;
+      ss << "RecommendedActionUpdates=&";
+    }
+    else
+    {
+      unsigned recommendedActionUpdatesCount = 1;
+      for(auto& item : m_recommendedActionUpdates)
+      {
+        item.OutputToStream(ss, "RecommendedActionUpdates.member.", recommendedActionUpdatesCount, "");
+        recommendedActionUpdatesCount++;
+      }
     }
   }
 

@@ -22,7 +22,7 @@ namespace Model
   class CreateSegmentRequest : public CloudWatchEvidentlyRequest
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API CreateSegmentRequest();
+    AWS_CLOUDWATCHEVIDENTLY_API CreateSegmentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,153 +33,46 @@ namespace Model
     AWS_CLOUDWATCHEVIDENTLY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>An optional description for this segment.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>An optional description for this segment.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateSegmentRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional description for this segment.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>An optional description for this segment.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>An optional description for this segment.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>An optional description for this segment.</p>
-     */
-    inline CreateSegmentRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>An optional description for this segment.</p>
-     */
-    inline CreateSegmentRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional description for this segment.</p>
-     */
-    inline CreateSegmentRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A name for the segment.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A name for the segment.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateSegmentRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A name for the segment.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A name for the segment.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A name for the segment.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A name for the segment.</p>
-     */
-    inline CreateSegmentRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A name for the segment.</p>
-     */
-    inline CreateSegmentRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A name for the segment.</p>
-     */
-    inline CreateSegmentRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The pattern to use for the segment. For more information about pattern
      * syntax, see <a
      * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html">
      * Segment rule pattern syntax</a>.</p>
      */
-    inline const Aws::String& GetPattern() const{ return m_pattern; }
-
-    /**
-     * <p>The pattern to use for the segment. For more information about pattern
-     * syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html">
-     * Segment rule pattern syntax</a>.</p>
-     */
+    inline const Aws::String& GetPattern() const { return m_pattern; }
     inline bool PatternHasBeenSet() const { return m_patternHasBeenSet; }
+    template<typename PatternT = Aws::String>
+    void SetPattern(PatternT&& value) { m_patternHasBeenSet = true; m_pattern = std::forward<PatternT>(value); }
+    template<typename PatternT = Aws::String>
+    CreateSegmentRequest& WithPattern(PatternT&& value) { SetPattern(std::forward<PatternT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pattern to use for the segment. For more information about pattern
-     * syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html">
-     * Segment rule pattern syntax</a>.</p>
-     */
-    inline void SetPattern(const Aws::String& value) { m_patternHasBeenSet = true; m_pattern = value; }
-
-    /**
-     * <p>The pattern to use for the segment. For more information about pattern
-     * syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html">
-     * Segment rule pattern syntax</a>.</p>
-     */
-    inline void SetPattern(Aws::String&& value) { m_patternHasBeenSet = true; m_pattern = std::move(value); }
-
-    /**
-     * <p>The pattern to use for the segment. For more information about pattern
-     * syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html">
-     * Segment rule pattern syntax</a>.</p>
-     */
-    inline void SetPattern(const char* value) { m_patternHasBeenSet = true; m_pattern.assign(value); }
-
-    /**
-     * <p>The pattern to use for the segment. For more information about pattern
-     * syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html">
-     * Segment rule pattern syntax</a>.</p>
-     */
-    inline CreateSegmentRequest& WithPattern(const Aws::String& value) { SetPattern(value); return *this;}
-
-    /**
-     * <p>The pattern to use for the segment. For more information about pattern
-     * syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html">
-     * Segment rule pattern syntax</a>.</p>
-     */
-    inline CreateSegmentRequest& WithPattern(Aws::String&& value) { SetPattern(std::move(value)); return *this;}
-
-    /**
-     * <p>The pattern to use for the segment. For more information about pattern
-     * syntax, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html">
-     * Segment rule pattern syntax</a>.</p>
-     */
-    inline CreateSegmentRequest& WithPattern(const char* value) { SetPattern(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
      * help you organize and categorize your resources. You can also use them to scope
@@ -191,164 +84,17 @@ namespace Model
      * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
      * Amazon Web Services resources</a>.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline CreateSegmentRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline CreateSegmentRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline CreateSegmentRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline CreateSegmentRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline CreateSegmentRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline CreateSegmentRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline CreateSegmentRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline CreateSegmentRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Assigns one or more tags (key-value pairs) to the segment.</p> <p>Tags can
-     * help you organize and categorize your resources. You can also use them to scope
-     * user permissions by granting a user permission to access or change only
-     * resources with certain tag values.</p> <p>Tags don't have any semantic meaning
-     * to Amazon Web Services and are interpreted strictly as strings of
-     * characters.</p> <p>You can associate as many as 50 tags with a segment.</p>
-     * <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging
-     * Amazon Web Services resources</a>.</p>
-     */
-    inline CreateSegmentRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateSegmentRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateSegmentRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_description;

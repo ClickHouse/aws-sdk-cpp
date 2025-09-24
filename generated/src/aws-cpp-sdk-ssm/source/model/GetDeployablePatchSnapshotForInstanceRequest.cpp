@@ -12,13 +12,6 @@ using namespace Aws::SSM::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetDeployablePatchSnapshotForInstanceRequest::GetDeployablePatchSnapshotForInstanceRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_baselineOverrideHasBeenSet(false)
-{
-}
-
 Aws::String GetDeployablePatchSnapshotForInstanceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,12 @@ Aws::String GetDeployablePatchSnapshotForInstanceRequest::SerializePayload() con
   if(m_baselineOverrideHasBeenSet)
   {
    payload.WithObject("BaselineOverride", m_baselineOverride.Jsonize());
+
+  }
+
+  if(m_useS3DualStackEndpointHasBeenSet)
+  {
+   payload.WithBool("UseS3DualStackEndpoint", m_useS3DualStackEndpoint);
 
   }
 

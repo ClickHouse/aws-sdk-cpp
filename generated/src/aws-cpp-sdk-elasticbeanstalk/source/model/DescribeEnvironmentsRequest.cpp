@@ -10,20 +10,6 @@
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils;
 
-DescribeEnvironmentsRequest::DescribeEnvironmentsRequest() : 
-    m_applicationNameHasBeenSet(false),
-    m_versionLabelHasBeenSet(false),
-    m_environmentIdsHasBeenSet(false),
-    m_environmentNamesHasBeenSet(false),
-    m_includeDeleted(false),
-    m_includeDeletedHasBeenSet(false),
-    m_includedDeletedBackToHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String DescribeEnvironmentsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -40,23 +26,37 @@ Aws::String DescribeEnvironmentsRequest::SerializePayload() const
 
   if(m_environmentIdsHasBeenSet)
   {
-    unsigned environmentIdsCount = 1;
-    for(auto& item : m_environmentIds)
+    if (m_environmentIds.empty())
     {
-      ss << "EnvironmentIds.member." << environmentIdsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      environmentIdsCount++;
+      ss << "EnvironmentIds=&";
+    }
+    else
+    {
+      unsigned environmentIdsCount = 1;
+      for(auto& item : m_environmentIds)
+      {
+        ss << "EnvironmentIds.member." << environmentIdsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        environmentIdsCount++;
+      }
     }
   }
 
   if(m_environmentNamesHasBeenSet)
   {
-    unsigned environmentNamesCount = 1;
-    for(auto& item : m_environmentNames)
+    if (m_environmentNames.empty())
     {
-      ss << "EnvironmentNames.member." << environmentNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      environmentNamesCount++;
+      ss << "EnvironmentNames=&";
+    }
+    else
+    {
+      unsigned environmentNamesCount = 1;
+      for(auto& item : m_environmentNames)
+      {
+        ss << "EnvironmentNames.member." << environmentNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        environmentNamesCount++;
+      }
     }
   }
 

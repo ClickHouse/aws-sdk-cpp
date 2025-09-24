@@ -21,7 +21,7 @@ namespace Model
   class UpdateSnapshotRequest : public RedshiftServerlessRequest
   {
   public:
-    AWS_REDSHIFTSERVERLESS_API UpdateSnapshotRequest();
+    AWS_REDSHIFTSERVERLESS_API UpdateSnapshotRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,70 +34,30 @@ namespace Model
     AWS_REDSHIFTSERVERLESS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The new retention period of the snapshot.</p>
      */
-    inline int GetRetentionPeriod() const{ return m_retentionPeriod; }
-
-    /**
-     * <p>The new retention period of the snapshot.</p>
-     */
+    inline int GetRetentionPeriod() const { return m_retentionPeriod; }
     inline bool RetentionPeriodHasBeenSet() const { return m_retentionPeriodHasBeenSet; }
-
-    /**
-     * <p>The new retention period of the snapshot.</p>
-     */
     inline void SetRetentionPeriod(int value) { m_retentionPeriodHasBeenSet = true; m_retentionPeriod = value; }
-
-    /**
-     * <p>The new retention period of the snapshot.</p>
-     */
     inline UpdateSnapshotRequest& WithRetentionPeriod(int value) { SetRetentionPeriod(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the snapshot.</p>
      */
-    inline const Aws::String& GetSnapshotName() const{ return m_snapshotName; }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
+    inline const Aws::String& GetSnapshotName() const { return m_snapshotName; }
     inline bool SnapshotNameHasBeenSet() const { return m_snapshotNameHasBeenSet; }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline void SetSnapshotName(const Aws::String& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = value; }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline void SetSnapshotName(Aws::String&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::move(value); }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline void SetSnapshotName(const char* value) { m_snapshotNameHasBeenSet = true; m_snapshotName.assign(value); }
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline UpdateSnapshotRequest& WithSnapshotName(const Aws::String& value) { SetSnapshotName(value); return *this;}
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline UpdateSnapshotRequest& WithSnapshotName(Aws::String&& value) { SetSnapshotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the snapshot.</p>
-     */
-    inline UpdateSnapshotRequest& WithSnapshotName(const char* value) { SetSnapshotName(value); return *this;}
-
+    template<typename SnapshotNameT = Aws::String>
+    void SetSnapshotName(SnapshotNameT&& value) { m_snapshotNameHasBeenSet = true; m_snapshotName = std::forward<SnapshotNameT>(value); }
+    template<typename SnapshotNameT = Aws::String>
+    UpdateSnapshotRequest& WithSnapshotName(SnapshotNameT&& value) { SetSnapshotName(std::forward<SnapshotNameT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_retentionPeriod;
+    int m_retentionPeriod{0};
     bool m_retentionPeriodHasBeenSet = false;
 
     Aws::String m_snapshotName;

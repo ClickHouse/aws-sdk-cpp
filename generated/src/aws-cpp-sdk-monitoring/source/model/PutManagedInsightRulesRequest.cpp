@@ -10,22 +10,24 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-PutManagedInsightRulesRequest::PutManagedInsightRulesRequest() : 
-    m_managedRulesHasBeenSet(false)
-{
-}
-
 Aws::String PutManagedInsightRulesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=PutManagedInsightRules&";
   if(m_managedRulesHasBeenSet)
   {
-    unsigned managedRulesCount = 1;
-    for(auto& item : m_managedRules)
+    if (m_managedRules.empty())
     {
-      item.OutputToStream(ss, "ManagedRules.member.", managedRulesCount, "");
-      managedRulesCount++;
+      ss << "ManagedRules=&";
+    }
+    else
+    {
+      unsigned managedRulesCount = 1;
+      for(auto& item : m_managedRules)
+      {
+        item.OutputToStream(ss, "ManagedRules.member.", managedRulesCount, "");
+        managedRulesCount++;
+      }
     }
   }
 

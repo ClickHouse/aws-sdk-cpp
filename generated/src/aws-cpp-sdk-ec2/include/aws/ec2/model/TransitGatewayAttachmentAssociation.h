@@ -32,7 +32,7 @@ namespace Model
   class TransitGatewayAttachmentAssociation
   {
   public:
-    AWS_EC2_API TransitGatewayAttachmentAssociation();
+    AWS_EC2_API TransitGatewayAttachmentAssociation() = default;
     AWS_EC2_API TransitGatewayAttachmentAssociation(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API TransitGatewayAttachmentAssociation& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,83 +40,33 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the route table for the transit gateway.</p>
      */
-    inline const Aws::String& GetTransitGatewayRouteTableId() const{ return m_transitGatewayRouteTableId; }
-
-    /**
-     * <p>The ID of the route table for the transit gateway.</p>
-     */
+    inline const Aws::String& GetTransitGatewayRouteTableId() const { return m_transitGatewayRouteTableId; }
     inline bool TransitGatewayRouteTableIdHasBeenSet() const { return m_transitGatewayRouteTableIdHasBeenSet; }
+    template<typename TransitGatewayRouteTableIdT = Aws::String>
+    void SetTransitGatewayRouteTableId(TransitGatewayRouteTableIdT&& value) { m_transitGatewayRouteTableIdHasBeenSet = true; m_transitGatewayRouteTableId = std::forward<TransitGatewayRouteTableIdT>(value); }
+    template<typename TransitGatewayRouteTableIdT = Aws::String>
+    TransitGatewayAttachmentAssociation& WithTransitGatewayRouteTableId(TransitGatewayRouteTableIdT&& value) { SetTransitGatewayRouteTableId(std::forward<TransitGatewayRouteTableIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the route table for the transit gateway.</p>
-     */
-    inline void SetTransitGatewayRouteTableId(const Aws::String& value) { m_transitGatewayRouteTableIdHasBeenSet = true; m_transitGatewayRouteTableId = value; }
-
-    /**
-     * <p>The ID of the route table for the transit gateway.</p>
-     */
-    inline void SetTransitGatewayRouteTableId(Aws::String&& value) { m_transitGatewayRouteTableIdHasBeenSet = true; m_transitGatewayRouteTableId = std::move(value); }
-
-    /**
-     * <p>The ID of the route table for the transit gateway.</p>
-     */
-    inline void SetTransitGatewayRouteTableId(const char* value) { m_transitGatewayRouteTableIdHasBeenSet = true; m_transitGatewayRouteTableId.assign(value); }
-
-    /**
-     * <p>The ID of the route table for the transit gateway.</p>
-     */
-    inline TransitGatewayAttachmentAssociation& WithTransitGatewayRouteTableId(const Aws::String& value) { SetTransitGatewayRouteTableId(value); return *this;}
-
-    /**
-     * <p>The ID of the route table for the transit gateway.</p>
-     */
-    inline TransitGatewayAttachmentAssociation& WithTransitGatewayRouteTableId(Aws::String&& value) { SetTransitGatewayRouteTableId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the route table for the transit gateway.</p>
-     */
-    inline TransitGatewayAttachmentAssociation& WithTransitGatewayRouteTableId(const char* value) { SetTransitGatewayRouteTableId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the association.</p>
      */
-    inline const TransitGatewayAssociationState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the association.</p>
-     */
+    inline TransitGatewayAssociationState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The state of the association.</p>
-     */
-    inline void SetState(const TransitGatewayAssociationState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the association.</p>
-     */
-    inline void SetState(TransitGatewayAssociationState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the association.</p>
-     */
-    inline TransitGatewayAttachmentAssociation& WithState(const TransitGatewayAssociationState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the association.</p>
-     */
-    inline TransitGatewayAttachmentAssociation& WithState(TransitGatewayAssociationState&& value) { SetState(std::move(value)); return *this;}
-
+    inline void SetState(TransitGatewayAssociationState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline TransitGatewayAttachmentAssociation& WithState(TransitGatewayAssociationState value) { SetState(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_transitGatewayRouteTableId;
     bool m_transitGatewayRouteTableIdHasBeenSet = false;
 
-    TransitGatewayAssociationState m_state;
+    TransitGatewayAssociationState m_state{TransitGatewayAssociationState::NOT_SET};
     bool m_stateHasBeenSet = false;
   };
 

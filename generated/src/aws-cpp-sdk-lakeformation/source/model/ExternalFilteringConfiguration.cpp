@@ -18,17 +18,7 @@ namespace LakeFormation
 namespace Model
 {
 
-ExternalFilteringConfiguration::ExternalFilteringConfiguration() : 
-    m_status(EnableStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_authorizedTargetsHasBeenSet(false)
-{
-}
-
-ExternalFilteringConfiguration::ExternalFilteringConfiguration(JsonView jsonValue) : 
-    m_status(EnableStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_authorizedTargetsHasBeenSet(false)
+ExternalFilteringConfiguration::ExternalFilteringConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ ExternalFilteringConfiguration& ExternalFilteringConfiguration::operator =(JsonV
   if(jsonValue.ValueExists("Status"))
   {
     m_status = EnableStatusMapper::GetEnableStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AuthorizedTargets"))
   {
     Aws::Utils::Array<JsonView> authorizedTargetsJsonList = jsonValue.GetArray("AuthorizedTargets");
@@ -51,7 +39,6 @@ ExternalFilteringConfiguration& ExternalFilteringConfiguration::operator =(JsonV
     }
     m_authorizedTargetsHasBeenSet = true;
   }
-
   return *this;
 }
 

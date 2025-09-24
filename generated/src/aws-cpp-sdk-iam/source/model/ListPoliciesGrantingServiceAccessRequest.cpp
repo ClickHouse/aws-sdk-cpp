@@ -10,13 +10,6 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-ListPoliciesGrantingServiceAccessRequest::ListPoliciesGrantingServiceAccessRequest() : 
-    m_markerHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_serviceNamespacesHasBeenSet(false)
-{
-}
-
 Aws::String ListPoliciesGrantingServiceAccessRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -33,12 +26,19 @@ Aws::String ListPoliciesGrantingServiceAccessRequest::SerializePayload() const
 
   if(m_serviceNamespacesHasBeenSet)
   {
-    unsigned serviceNamespacesCount = 1;
-    for(auto& item : m_serviceNamespaces)
+    if (m_serviceNamespaces.empty())
     {
-      ss << "ServiceNamespaces.member." << serviceNamespacesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      serviceNamespacesCount++;
+      ss << "ServiceNamespaces=&";
+    }
+    else
+    {
+      unsigned serviceNamespacesCount = 1;
+      for(auto& item : m_serviceNamespaces)
+      {
+        ss << "ServiceNamespaces.member." << serviceNamespacesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        serviceNamespacesCount++;
+      }
     }
   }
 

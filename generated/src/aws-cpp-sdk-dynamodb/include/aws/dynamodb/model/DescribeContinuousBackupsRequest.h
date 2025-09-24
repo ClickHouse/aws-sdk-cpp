@@ -21,7 +21,7 @@ namespace Model
   class DescribeContinuousBackupsRequest : public DynamoDBRequest
   {
   public:
-    AWS_DYNAMODB_API DescribeContinuousBackupsRequest();
+    AWS_DYNAMODB_API DescribeContinuousBackupsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,55 +33,24 @@ namespace Model
 
     AWS_DYNAMODB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+    /**
+     * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
+     */
+    AWS_DYNAMODB_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>Name of the table for which the customer wants to check the continuous
-     * backups and point in time recovery settings.</p>
+     * backups and point in time recovery settings.</p> <p>You can also provide the
+     * Amazon Resource Name (ARN) of the table in this parameter.</p>
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
-
-    /**
-     * <p>Name of the table for which the customer wants to check the continuous
-     * backups and point in time recovery settings.</p>
-     */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
-
-    /**
-     * <p>Name of the table for which the customer wants to check the continuous
-     * backups and point in time recovery settings.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>Name of the table for which the customer wants to check the continuous
-     * backups and point in time recovery settings.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>Name of the table for which the customer wants to check the continuous
-     * backups and point in time recovery settings.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>Name of the table for which the customer wants to check the continuous
-     * backups and point in time recovery settings.</p>
-     */
-    inline DescribeContinuousBackupsRequest& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>Name of the table for which the customer wants to check the continuous
-     * backups and point in time recovery settings.</p>
-     */
-    inline DescribeContinuousBackupsRequest& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the table for which the customer wants to check the continuous
-     * backups and point in time recovery settings.</p>
-     */
-    inline DescribeContinuousBackupsRequest& WithTableName(const char* value) { SetTableName(value); return *this;}
-
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    DescribeContinuousBackupsRequest& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_tableName;

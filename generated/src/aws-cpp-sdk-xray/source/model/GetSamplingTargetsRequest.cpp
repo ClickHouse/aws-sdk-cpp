@@ -12,11 +12,6 @@ using namespace Aws::XRay::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetSamplingTargetsRequest::GetSamplingTargetsRequest() : 
-    m_samplingStatisticsDocumentsHasBeenSet(false)
-{
-}
-
 Aws::String GetSamplingTargetsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -29,6 +24,17 @@ Aws::String GetSamplingTargetsRequest::SerializePayload() const
      samplingStatisticsDocumentsJsonList[samplingStatisticsDocumentsIndex].AsObject(m_samplingStatisticsDocuments[samplingStatisticsDocumentsIndex].Jsonize());
    }
    payload.WithArray("SamplingStatisticsDocuments", std::move(samplingStatisticsDocumentsJsonList));
+
+  }
+
+  if(m_samplingBoostStatisticsDocumentsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> samplingBoostStatisticsDocumentsJsonList(m_samplingBoostStatisticsDocuments.size());
+   for(unsigned samplingBoostStatisticsDocumentsIndex = 0; samplingBoostStatisticsDocumentsIndex < samplingBoostStatisticsDocumentsJsonList.GetLength(); ++samplingBoostStatisticsDocumentsIndex)
+   {
+     samplingBoostStatisticsDocumentsJsonList[samplingBoostStatisticsDocumentsIndex].AsObject(m_samplingBoostStatisticsDocuments[samplingBoostStatisticsDocumentsIndex].Jsonize());
+   }
+   payload.WithArray("SamplingBoostStatisticsDocuments", std::move(samplingBoostStatisticsDocumentsJsonList));
 
   }
 

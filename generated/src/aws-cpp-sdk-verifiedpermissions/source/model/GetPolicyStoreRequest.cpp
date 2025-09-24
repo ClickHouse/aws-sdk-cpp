@@ -12,11 +12,6 @@ using namespace Aws::VerifiedPermissions::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetPolicyStoreRequest::GetPolicyStoreRequest() : 
-    m_policyStoreIdHasBeenSet(false)
-{
-}
-
 Aws::String GetPolicyStoreRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -24,6 +19,12 @@ Aws::String GetPolicyStoreRequest::SerializePayload() const
   if(m_policyStoreIdHasBeenSet)
   {
    payload.WithString("policyStoreId", m_policyStoreId);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   payload.WithBool("tags", m_tags);
 
   }
 

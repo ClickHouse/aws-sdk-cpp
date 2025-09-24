@@ -20,19 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-Subnet::Subnet() : 
-    m_subnetIdentifierHasBeenSet(false),
-    m_subnetAvailabilityZoneHasBeenSet(false),
-    m_subnetOutpostHasBeenSet(false),
-    m_supportedNetworkTypesHasBeenSet(false)
-{
-}
-
-Subnet::Subnet(const XmlNode& xmlNode) : 
-    m_subnetIdentifierHasBeenSet(false),
-    m_subnetAvailabilityZoneHasBeenSet(false),
-    m_subnetOutpostHasBeenSet(false),
-    m_supportedNetworkTypesHasBeenSet(false)
+Subnet::Subnet(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -65,6 +53,7 @@ Subnet& Subnet::operator =(const XmlNode& xmlNode)
     if(!supportedNetworkTypesNode.IsNull())
     {
       XmlNode supportedNetworkTypesMember = supportedNetworkTypesNode.FirstChild("member");
+      m_supportedNetworkTypesHasBeenSet = !supportedNetworkTypesMember.IsNull();
       while(!supportedNetworkTypesMember.IsNull())
       {
         m_supportedNetworkTypes.push_back(NetworkTypeMapper::GetNetworkTypeForName(StringUtils::Trim(supportedNetworkTypesMember.GetText().c_str())));
@@ -104,7 +93,7 @@ void Subnet::OutputToStream(Aws::OStream& oStream, const char* location, unsigne
       unsigned supportedNetworkTypesIdx = 1;
       for(auto& item : m_supportedNetworkTypes)
       {
-        oStream << location << index << locationValue << ".SupportedNetworkTypes.member." << supportedNetworkTypesIdx++ << "=" << NetworkTypeMapper::GetNameForNetworkType(item) << "&";
+        oStream << location << index << locationValue << ".SupportedNetworkTypes.member." << supportedNetworkTypesIdx++ << "=" << StringUtils::URLEncode(NetworkTypeMapper::GetNameForNetworkType(item)) << "&";
       }
   }
 
@@ -133,7 +122,7 @@ void Subnet::OutputToStream(Aws::OStream& oStream, const char* location) const
       unsigned supportedNetworkTypesIdx = 1;
       for(auto& item : m_supportedNetworkTypes)
       {
-        oStream << location << ".SupportedNetworkTypes.member." << supportedNetworkTypesIdx++ << "=" << NetworkTypeMapper::GetNameForNetworkType(item) << "&";
+        oStream << location << ".SupportedNetworkTypes.member." << supportedNetworkTypesIdx++ << "=" << StringUtils::URLEncode(NetworkTypeMapper::GetNameForNetworkType(item)) << "&";
       }
   }
 }

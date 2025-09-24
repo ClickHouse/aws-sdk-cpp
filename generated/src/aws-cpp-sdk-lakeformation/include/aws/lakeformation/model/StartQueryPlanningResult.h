@@ -32,94 +32,40 @@ namespace Model
   class StartQueryPlanningResult
   {
   public:
-    AWS_LAKEFORMATION_API StartQueryPlanningResult();
+    AWS_LAKEFORMATION_API StartQueryPlanningResult() = default;
     AWS_LAKEFORMATION_API StartQueryPlanningResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LAKEFORMATION_API StartQueryPlanningResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ID of the plan query operation can be used to fetch the actual work unit
      * descriptors that are produced as the result of the operation. The ID is also
      * used to get the query state and as an input to the <code>Execute</code>
      * operation.</p>
      */
-    inline const Aws::String& GetQueryId() const{ return m_queryId; }
+    inline const Aws::String& GetQueryId() const { return m_queryId; }
+    template<typename QueryIdT = Aws::String>
+    void SetQueryId(QueryIdT&& value) { m_queryIdHasBeenSet = true; m_queryId = std::forward<QueryIdT>(value); }
+    template<typename QueryIdT = Aws::String>
+    StartQueryPlanningResult& WithQueryId(QueryIdT&& value) { SetQueryId(std::forward<QueryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the plan query operation can be used to fetch the actual work unit
-     * descriptors that are produced as the result of the operation. The ID is also
-     * used to get the query state and as an input to the <code>Execute</code>
-     * operation.</p>
-     */
-    inline void SetQueryId(const Aws::String& value) { m_queryId = value; }
-
-    /**
-     * <p>The ID of the plan query operation can be used to fetch the actual work unit
-     * descriptors that are produced as the result of the operation. The ID is also
-     * used to get the query state and as an input to the <code>Execute</code>
-     * operation.</p>
-     */
-    inline void SetQueryId(Aws::String&& value) { m_queryId = std::move(value); }
-
-    /**
-     * <p>The ID of the plan query operation can be used to fetch the actual work unit
-     * descriptors that are produced as the result of the operation. The ID is also
-     * used to get the query state and as an input to the <code>Execute</code>
-     * operation.</p>
-     */
-    inline void SetQueryId(const char* value) { m_queryId.assign(value); }
-
-    /**
-     * <p>The ID of the plan query operation can be used to fetch the actual work unit
-     * descriptors that are produced as the result of the operation. The ID is also
-     * used to get the query state and as an input to the <code>Execute</code>
-     * operation.</p>
-     */
-    inline StartQueryPlanningResult& WithQueryId(const Aws::String& value) { SetQueryId(value); return *this;}
-
-    /**
-     * <p>The ID of the plan query operation can be used to fetch the actual work unit
-     * descriptors that are produced as the result of the operation. The ID is also
-     * used to get the query state and as an input to the <code>Execute</code>
-     * operation.</p>
-     */
-    inline StartQueryPlanningResult& WithQueryId(Aws::String&& value) { SetQueryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the plan query operation can be used to fetch the actual work unit
-     * descriptors that are produced as the result of the operation. The ID is also
-     * used to get the query state and as an input to the <code>Execute</code>
-     * operation.</p>
-     */
-    inline StartQueryPlanningResult& WithQueryId(const char* value) { SetQueryId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartQueryPlanningResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartQueryPlanningResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartQueryPlanningResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartQueryPlanningResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_queryId;
+    bool m_queryIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

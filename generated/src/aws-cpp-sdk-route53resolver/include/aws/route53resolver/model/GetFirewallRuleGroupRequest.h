@@ -21,7 +21,7 @@ namespace Model
   class GetFirewallRuleGroupRequest : public Route53ResolverRequest
   {
   public:
-    AWS_ROUTE53RESOLVER_API GetFirewallRuleGroupRequest();
+    AWS_ROUTE53RESOLVER_API GetFirewallRuleGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_ROUTE53RESOLVER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the firewall rule group. </p>
      */
-    inline const Aws::String& GetFirewallRuleGroupId() const{ return m_firewallRuleGroupId; }
-
-    /**
-     * <p>The unique identifier of the firewall rule group. </p>
-     */
+    inline const Aws::String& GetFirewallRuleGroupId() const { return m_firewallRuleGroupId; }
     inline bool FirewallRuleGroupIdHasBeenSet() const { return m_firewallRuleGroupIdHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the firewall rule group. </p>
-     */
-    inline void SetFirewallRuleGroupId(const Aws::String& value) { m_firewallRuleGroupIdHasBeenSet = true; m_firewallRuleGroupId = value; }
-
-    /**
-     * <p>The unique identifier of the firewall rule group. </p>
-     */
-    inline void SetFirewallRuleGroupId(Aws::String&& value) { m_firewallRuleGroupIdHasBeenSet = true; m_firewallRuleGroupId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the firewall rule group. </p>
-     */
-    inline void SetFirewallRuleGroupId(const char* value) { m_firewallRuleGroupIdHasBeenSet = true; m_firewallRuleGroupId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the firewall rule group. </p>
-     */
-    inline GetFirewallRuleGroupRequest& WithFirewallRuleGroupId(const Aws::String& value) { SetFirewallRuleGroupId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the firewall rule group. </p>
-     */
-    inline GetFirewallRuleGroupRequest& WithFirewallRuleGroupId(Aws::String&& value) { SetFirewallRuleGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the firewall rule group. </p>
-     */
-    inline GetFirewallRuleGroupRequest& WithFirewallRuleGroupId(const char* value) { SetFirewallRuleGroupId(value); return *this;}
-
+    template<typename FirewallRuleGroupIdT = Aws::String>
+    void SetFirewallRuleGroupId(FirewallRuleGroupIdT&& value) { m_firewallRuleGroupIdHasBeenSet = true; m_firewallRuleGroupId = std::forward<FirewallRuleGroupIdT>(value); }
+    template<typename FirewallRuleGroupIdT = Aws::String>
+    GetFirewallRuleGroupRequest& WithFirewallRuleGroupId(FirewallRuleGroupIdT&& value) { SetFirewallRuleGroupId(std::forward<FirewallRuleGroupIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_firewallRuleGroupId;

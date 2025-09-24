@@ -18,15 +18,7 @@ namespace FinSpaceData
 namespace Model
 {
 
-SchemaDefinition::SchemaDefinition() : 
-    m_columnsHasBeenSet(false),
-    m_primaryKeyColumnsHasBeenSet(false)
-{
-}
-
-SchemaDefinition::SchemaDefinition(JsonView jsonValue) : 
-    m_columnsHasBeenSet(false),
-    m_primaryKeyColumnsHasBeenSet(false)
+SchemaDefinition::SchemaDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ SchemaDefinition& SchemaDefinition::operator =(JsonView jsonValue)
     }
     m_columnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("primaryKeyColumns"))
   {
     Aws::Utils::Array<JsonView> primaryKeyColumnsJsonList = jsonValue.GetArray("primaryKeyColumns");
@@ -52,7 +43,6 @@ SchemaDefinition& SchemaDefinition::operator =(JsonView jsonValue)
     }
     m_primaryKeyColumnsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-UserPoolAddOnsType::UserPoolAddOnsType() : 
-    m_advancedSecurityMode(AdvancedSecurityModeType::NOT_SET),
-    m_advancedSecurityModeHasBeenSet(false)
-{
-}
-
-UserPoolAddOnsType::UserPoolAddOnsType(JsonView jsonValue) : 
-    m_advancedSecurityMode(AdvancedSecurityModeType::NOT_SET),
-    m_advancedSecurityModeHasBeenSet(false)
+UserPoolAddOnsType::UserPoolAddOnsType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,13 @@ UserPoolAddOnsType& UserPoolAddOnsType::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AdvancedSecurityMode"))
   {
     m_advancedSecurityMode = AdvancedSecurityModeTypeMapper::GetAdvancedSecurityModeTypeForName(jsonValue.GetString("AdvancedSecurityMode"));
-
     m_advancedSecurityModeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AdvancedSecurityAdditionalFlows"))
+  {
+    m_advancedSecurityAdditionalFlows = jsonValue.GetObject("AdvancedSecurityAdditionalFlows");
+    m_advancedSecurityAdditionalFlowsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -50,6 +45,12 @@ JsonValue UserPoolAddOnsType::Jsonize() const
   if(m_advancedSecurityModeHasBeenSet)
   {
    payload.WithString("AdvancedSecurityMode", AdvancedSecurityModeTypeMapper::GetNameForAdvancedSecurityModeType(m_advancedSecurityMode));
+  }
+
+  if(m_advancedSecurityAdditionalFlowsHasBeenSet)
+  {
+   payload.WithObject("AdvancedSecurityAdditionalFlows", m_advancedSecurityAdditionalFlows.Jsonize());
+
   }
 
   return payload;

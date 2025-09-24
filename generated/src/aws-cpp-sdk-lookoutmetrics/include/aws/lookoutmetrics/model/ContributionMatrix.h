@@ -33,52 +33,25 @@ namespace Model
   class ContributionMatrix
   {
   public:
-    AWS_LOOKOUTMETRICS_API ContributionMatrix();
+    AWS_LOOKOUTMETRICS_API ContributionMatrix() = default;
     AWS_LOOKOUTMETRICS_API ContributionMatrix(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API ContributionMatrix& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTMETRICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of contributing dimensions.</p>
      */
-    inline const Aws::Vector<DimensionContribution>& GetDimensionContributionList() const{ return m_dimensionContributionList; }
-
-    /**
-     * <p>A list of contributing dimensions.</p>
-     */
+    inline const Aws::Vector<DimensionContribution>& GetDimensionContributionList() const { return m_dimensionContributionList; }
     inline bool DimensionContributionListHasBeenSet() const { return m_dimensionContributionListHasBeenSet; }
-
-    /**
-     * <p>A list of contributing dimensions.</p>
-     */
-    inline void SetDimensionContributionList(const Aws::Vector<DimensionContribution>& value) { m_dimensionContributionListHasBeenSet = true; m_dimensionContributionList = value; }
-
-    /**
-     * <p>A list of contributing dimensions.</p>
-     */
-    inline void SetDimensionContributionList(Aws::Vector<DimensionContribution>&& value) { m_dimensionContributionListHasBeenSet = true; m_dimensionContributionList = std::move(value); }
-
-    /**
-     * <p>A list of contributing dimensions.</p>
-     */
-    inline ContributionMatrix& WithDimensionContributionList(const Aws::Vector<DimensionContribution>& value) { SetDimensionContributionList(value); return *this;}
-
-    /**
-     * <p>A list of contributing dimensions.</p>
-     */
-    inline ContributionMatrix& WithDimensionContributionList(Aws::Vector<DimensionContribution>&& value) { SetDimensionContributionList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of contributing dimensions.</p>
-     */
-    inline ContributionMatrix& AddDimensionContributionList(const DimensionContribution& value) { m_dimensionContributionListHasBeenSet = true; m_dimensionContributionList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of contributing dimensions.</p>
-     */
-    inline ContributionMatrix& AddDimensionContributionList(DimensionContribution&& value) { m_dimensionContributionListHasBeenSet = true; m_dimensionContributionList.push_back(std::move(value)); return *this; }
-
+    template<typename DimensionContributionListT = Aws::Vector<DimensionContribution>>
+    void SetDimensionContributionList(DimensionContributionListT&& value) { m_dimensionContributionListHasBeenSet = true; m_dimensionContributionList = std::forward<DimensionContributionListT>(value); }
+    template<typename DimensionContributionListT = Aws::Vector<DimensionContribution>>
+    ContributionMatrix& WithDimensionContributionList(DimensionContributionListT&& value) { SetDimensionContributionList(std::forward<DimensionContributionListT>(value)); return *this;}
+    template<typename DimensionContributionListT = DimensionContribution>
+    ContributionMatrix& AddDimensionContributionList(DimensionContributionListT&& value) { m_dimensionContributionListHasBeenSet = true; m_dimensionContributionList.emplace_back(std::forward<DimensionContributionListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<DimensionContribution> m_dimensionContributionList;

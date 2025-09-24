@@ -18,15 +18,7 @@ namespace Inspector2
 namespace Model
 {
 
-FreeTrialAccountInfo::FreeTrialAccountInfo() : 
-    m_accountIdHasBeenSet(false),
-    m_freeTrialInfoHasBeenSet(false)
-{
-}
-
-FreeTrialAccountInfo::FreeTrialAccountInfo(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_freeTrialInfoHasBeenSet(false)
+FreeTrialAccountInfo::FreeTrialAccountInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ FreeTrialAccountInfo& FreeTrialAccountInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("accountId"))
   {
     m_accountId = jsonValue.GetString("accountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("freeTrialInfo"))
   {
     Aws::Utils::Array<JsonView> freeTrialInfoJsonList = jsonValue.GetArray("freeTrialInfo");
@@ -49,7 +39,6 @@ FreeTrialAccountInfo& FreeTrialAccountInfo::operator =(JsonView jsonValue)
     }
     m_freeTrialInfoHasBeenSet = true;
   }
-
   return *this;
 }
 

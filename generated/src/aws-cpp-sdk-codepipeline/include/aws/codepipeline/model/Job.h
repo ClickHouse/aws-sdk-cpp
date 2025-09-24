@@ -32,181 +32,61 @@ namespace Model
   class Job
   {
   public:
-    AWS_CODEPIPELINE_API Job();
+    AWS_CODEPIPELINE_API Job() = default;
     AWS_CODEPIPELINE_API Job(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Job& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique system-generated ID of the job.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    Job& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline Job& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline Job& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline Job& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Other data about a job.</p>
      */
-    inline const JobData& GetData() const{ return m_data; }
-
-    /**
-     * <p>Other data about a job.</p>
-     */
+    inline const JobData& GetData() const { return m_data; }
     inline bool DataHasBeenSet() const { return m_dataHasBeenSet; }
+    template<typename DataT = JobData>
+    void SetData(DataT&& value) { m_dataHasBeenSet = true; m_data = std::forward<DataT>(value); }
+    template<typename DataT = JobData>
+    Job& WithData(DataT&& value) { SetData(std::forward<DataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Other data about a job.</p>
-     */
-    inline void SetData(const JobData& value) { m_dataHasBeenSet = true; m_data = value; }
-
-    /**
-     * <p>Other data about a job.</p>
-     */
-    inline void SetData(JobData&& value) { m_dataHasBeenSet = true; m_data = std::move(value); }
-
-    /**
-     * <p>Other data about a job.</p>
-     */
-    inline Job& WithData(const JobData& value) { SetData(value); return *this;}
-
-    /**
-     * <p>Other data about a job.</p>
-     */
-    inline Job& WithData(JobData&& value) { SetData(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A system-generated random number that CodePipeline uses to ensure that the
      * job is being worked on by only one job worker. Use this number in an
      * <a>AcknowledgeJob</a> request.</p>
      */
-    inline const Aws::String& GetNonce() const{ return m_nonce; }
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Use this number in an
-     * <a>AcknowledgeJob</a> request.</p>
-     */
+    inline const Aws::String& GetNonce() const { return m_nonce; }
     inline bool NonceHasBeenSet() const { return m_nonceHasBeenSet; }
+    template<typename NonceT = Aws::String>
+    void SetNonce(NonceT&& value) { m_nonceHasBeenSet = true; m_nonce = std::forward<NonceT>(value); }
+    template<typename NonceT = Aws::String>
+    Job& WithNonce(NonceT&& value) { SetNonce(std::forward<NonceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Use this number in an
-     * <a>AcknowledgeJob</a> request.</p>
-     */
-    inline void SetNonce(const Aws::String& value) { m_nonceHasBeenSet = true; m_nonce = value; }
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Use this number in an
-     * <a>AcknowledgeJob</a> request.</p>
-     */
-    inline void SetNonce(Aws::String&& value) { m_nonceHasBeenSet = true; m_nonce = std::move(value); }
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Use this number in an
-     * <a>AcknowledgeJob</a> request.</p>
-     */
-    inline void SetNonce(const char* value) { m_nonceHasBeenSet = true; m_nonce.assign(value); }
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Use this number in an
-     * <a>AcknowledgeJob</a> request.</p>
-     */
-    inline Job& WithNonce(const Aws::String& value) { SetNonce(value); return *this;}
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Use this number in an
-     * <a>AcknowledgeJob</a> request.</p>
-     */
-    inline Job& WithNonce(Aws::String&& value) { SetNonce(std::move(value)); return *this;}
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Use this number in an
-     * <a>AcknowledgeJob</a> request.</p>
-     */
-    inline Job& WithNonce(const char* value) { SetNonce(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account to use when performing the job.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account to use when performing the job.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account to use when performing the job.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account to use when performing the job.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account to use when performing the job.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account to use when performing the job.</p>
-     */
-    inline Job& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account to use when performing the job.</p>
-     */
-    inline Job& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account to use when performing the job.</p>
-     */
-    inline Job& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    Job& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

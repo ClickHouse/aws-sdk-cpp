@@ -5,9 +5,9 @@
 
 #pragma once
 #include <aws/qbusiness/QBusiness_EXPORTS.h>
-#include <aws/qbusiness/model/ErrorDetail.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/qbusiness/model/AttachmentStatus.h>
+#include <aws/qbusiness/model/ErrorDetail.h>
 #include <utility>
 
 namespace Aws
@@ -33,124 +33,85 @@ namespace Model
   class AttachmentOutput
   {
   public:
-    AWS_QBUSINESS_API AttachmentOutput();
+    AWS_QBUSINESS_API AttachmentOutput() = default;
     AWS_QBUSINESS_API AttachmentOutput(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API AttachmentOutput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>An error associated with a file uploaded during chat.</p>
-     */
-    inline const ErrorDetail& GetError() const{ return m_error; }
-
-    /**
-     * <p>An error associated with a file uploaded during chat.</p>
-     */
-    inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
-
-    /**
-     * <p>An error associated with a file uploaded during chat.</p>
-     */
-    inline void SetError(const ErrorDetail& value) { m_errorHasBeenSet = true; m_error = value; }
-
-    /**
-     * <p>An error associated with a file uploaded during chat.</p>
-     */
-    inline void SetError(ErrorDetail&& value) { m_errorHasBeenSet = true; m_error = std::move(value); }
-
-    /**
-     * <p>An error associated with a file uploaded during chat.</p>
-     */
-    inline AttachmentOutput& WithError(const ErrorDetail& value) { SetError(value); return *this;}
-
-    /**
-     * <p>An error associated with a file uploaded during chat.</p>
-     */
-    inline AttachmentOutput& WithError(ErrorDetail&& value) { SetError(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of a file uploaded during chat.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of a file uploaded during chat.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AttachmentOutput& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a file uploaded during chat.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of a file uploaded during chat.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of a file uploaded during chat.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of a file uploaded during chat.</p>
-     */
-    inline AttachmentOutput& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of a file uploaded during chat.</p>
-     */
-    inline AttachmentOutput& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a file uploaded during chat.</p>
-     */
-    inline AttachmentOutput& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of a file uploaded during chat.</p>
      */
-    inline const AttachmentStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of a file uploaded during chat.</p>
-     */
+    inline AttachmentStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(AttachmentStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline AttachmentOutput& WithStatus(AttachmentStatus value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of a file uploaded during chat.</p>
+     * <p>An error associated with a file uploaded during chat.</p>
      */
-    inline void SetStatus(const AttachmentStatus& value) { m_statusHasBeenSet = true; m_status = value; }
+    inline const ErrorDetail& GetError() const { return m_error; }
+    inline bool ErrorHasBeenSet() const { return m_errorHasBeenSet; }
+    template<typename ErrorT = ErrorDetail>
+    void SetError(ErrorT&& value) { m_errorHasBeenSet = true; m_error = std::forward<ErrorT>(value); }
+    template<typename ErrorT = ErrorDetail>
+    AttachmentOutput& WithError(ErrorT&& value) { SetError(std::forward<ErrorT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of a file uploaded during chat.</p>
+     * <p>The unique identifier of the Amazon Q Business attachment.</p>
      */
-    inline void SetStatus(AttachmentStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
+    inline const Aws::String& GetAttachmentId() const { return m_attachmentId; }
+    inline bool AttachmentIdHasBeenSet() const { return m_attachmentIdHasBeenSet; }
+    template<typename AttachmentIdT = Aws::String>
+    void SetAttachmentId(AttachmentIdT&& value) { m_attachmentIdHasBeenSet = true; m_attachmentId = std::forward<AttachmentIdT>(value); }
+    template<typename AttachmentIdT = Aws::String>
+    AttachmentOutput& WithAttachmentId(AttachmentIdT&& value) { SetAttachmentId(std::forward<AttachmentIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The status of a file uploaded during chat.</p>
+     * <p>The unique identifier of the Amazon Q Business conversation.</p>
      */
-    inline AttachmentOutput& WithStatus(const AttachmentStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of a file uploaded during chat.</p>
-     */
-    inline AttachmentOutput& WithStatus(AttachmentStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline const Aws::String& GetConversationId() const { return m_conversationId; }
+    inline bool ConversationIdHasBeenSet() const { return m_conversationIdHasBeenSet; }
+    template<typename ConversationIdT = Aws::String>
+    void SetConversationId(ConversationIdT&& value) { m_conversationIdHasBeenSet = true; m_conversationId = std::forward<ConversationIdT>(value); }
+    template<typename ConversationIdT = Aws::String>
+    AttachmentOutput& WithConversationId(ConversationIdT&& value) { SetConversationId(std::forward<ConversationIdT>(value)); return *this;}
+    ///@}
   private:
-
-    ErrorDetail m_error;
-    bool m_errorHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    AttachmentStatus m_status;
+    AttachmentStatus m_status{AttachmentStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
+
+    ErrorDetail m_error;
+    bool m_errorHasBeenSet = false;
+
+    Aws::String m_attachmentId;
+    bool m_attachmentIdHasBeenSet = false;
+
+    Aws::String m_conversationId;
+    bool m_conversationIdHasBeenSet = false;
   };
 
 } // namespace Model

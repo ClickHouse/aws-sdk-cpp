@@ -18,15 +18,7 @@ namespace MQ
 namespace Model
 {
 
-DataReplicationMetadataOutput::DataReplicationMetadataOutput() : 
-    m_dataReplicationCounterpartHasBeenSet(false),
-    m_dataReplicationRoleHasBeenSet(false)
-{
-}
-
-DataReplicationMetadataOutput::DataReplicationMetadataOutput(JsonView jsonValue) : 
-    m_dataReplicationCounterpartHasBeenSet(false),
-    m_dataReplicationRoleHasBeenSet(false)
+DataReplicationMetadataOutput::DataReplicationMetadataOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DataReplicationMetadataOutput& DataReplicationMetadataOutput::operator =(JsonVie
   if(jsonValue.ValueExists("dataReplicationCounterpart"))
   {
     m_dataReplicationCounterpart = jsonValue.GetObject("dataReplicationCounterpart");
-
     m_dataReplicationCounterpartHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("dataReplicationRole"))
   {
     m_dataReplicationRole = jsonValue.GetString("dataReplicationRole");
-
     m_dataReplicationRoleHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-DestinationInfo::DestinationInfo() : 
-    m_idHasBeenSet(false),
-    m_serviceHasBeenSet(false)
-{
-}
-
-DestinationInfo::DestinationInfo(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_serviceHasBeenSet(false)
+DestinationInfo::DestinationInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DestinationInfo& DestinationInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("service"))
   {
     m_service = jsonValue.GetString("service");
-
     m_serviceHasBeenSet = true;
   }
-
   return *this;
 }
 

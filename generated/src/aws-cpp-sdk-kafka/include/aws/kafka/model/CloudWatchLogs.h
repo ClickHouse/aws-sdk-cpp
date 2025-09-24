@@ -26,52 +26,32 @@ namespace Model
   class CloudWatchLogs
   {
   public:
-    AWS_KAFKA_API CloudWatchLogs();
+    AWS_KAFKA_API CloudWatchLogs() = default;
     AWS_KAFKA_API CloudWatchLogs(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API CloudWatchLogs& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    
     inline CloudWatchLogs& WithEnabled(bool value) { SetEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetLogGroup() const{ return m_logGroup; }
-
-    
+    inline const Aws::String& GetLogGroup() const { return m_logGroup; }
     inline bool LogGroupHasBeenSet() const { return m_logGroupHasBeenSet; }
-
-    
-    inline void SetLogGroup(const Aws::String& value) { m_logGroupHasBeenSet = true; m_logGroup = value; }
-
-    
-    inline void SetLogGroup(Aws::String&& value) { m_logGroupHasBeenSet = true; m_logGroup = std::move(value); }
-
-    
-    inline void SetLogGroup(const char* value) { m_logGroupHasBeenSet = true; m_logGroup.assign(value); }
-
-    
-    inline CloudWatchLogs& WithLogGroup(const Aws::String& value) { SetLogGroup(value); return *this;}
-
-    
-    inline CloudWatchLogs& WithLogGroup(Aws::String&& value) { SetLogGroup(std::move(value)); return *this;}
-
-    
-    inline CloudWatchLogs& WithLogGroup(const char* value) { SetLogGroup(value); return *this;}
-
+    template<typename LogGroupT = Aws::String>
+    void SetLogGroup(LogGroupT&& value) { m_logGroupHasBeenSet = true; m_logGroup = std::forward<LogGroupT>(value); }
+    template<typename LogGroupT = Aws::String>
+    CloudWatchLogs& WithLogGroup(LogGroupT&& value) { SetLogGroup(std::forward<LogGroupT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
 
     Aws::String m_logGroup;

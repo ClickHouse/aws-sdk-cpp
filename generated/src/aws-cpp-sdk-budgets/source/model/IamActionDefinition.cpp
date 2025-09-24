@@ -18,19 +18,7 @@ namespace Budgets
 namespace Model
 {
 
-IamActionDefinition::IamActionDefinition() : 
-    m_policyArnHasBeenSet(false),
-    m_rolesHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_usersHasBeenSet(false)
-{
-}
-
-IamActionDefinition::IamActionDefinition(JsonView jsonValue) : 
-    m_policyArnHasBeenSet(false),
-    m_rolesHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_usersHasBeenSet(false)
+IamActionDefinition::IamActionDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ IamActionDefinition& IamActionDefinition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PolicyArn"))
   {
     m_policyArn = jsonValue.GetString("PolicyArn");
-
     m_policyArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Roles"))
   {
     Aws::Utils::Array<JsonView> rolesJsonList = jsonValue.GetArray("Roles");
@@ -53,7 +39,6 @@ IamActionDefinition& IamActionDefinition::operator =(JsonView jsonValue)
     }
     m_rolesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Groups"))
   {
     Aws::Utils::Array<JsonView> groupsJsonList = jsonValue.GetArray("Groups");
@@ -63,7 +48,6 @@ IamActionDefinition& IamActionDefinition::operator =(JsonView jsonValue)
     }
     m_groupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Users"))
   {
     Aws::Utils::Array<JsonView> usersJsonList = jsonValue.GetArray("Users");
@@ -73,7 +57,6 @@ IamActionDefinition& IamActionDefinition::operator =(JsonView jsonValue)
     }
     m_usersHasBeenSet = true;
   }
-
   return *this;
 }
 

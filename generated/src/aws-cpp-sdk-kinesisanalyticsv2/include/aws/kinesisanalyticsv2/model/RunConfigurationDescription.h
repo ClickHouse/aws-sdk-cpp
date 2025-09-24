@@ -25,7 +25,7 @@ namespace Model
 {
 
   /**
-   * <p>Describes the starting properties for a Kinesis Data Analytics
+   * <p>Describes the starting properties for a Managed Service for Apache Flink
    * application.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/RunConfigurationDescription">AWS
    * API Reference</a></p>
@@ -33,61 +33,33 @@ namespace Model
   class RunConfigurationDescription
   {
   public:
-    AWS_KINESISANALYTICSV2_API RunConfigurationDescription();
+    AWS_KINESISANALYTICSV2_API RunConfigurationDescription() = default;
     AWS_KINESISANALYTICSV2_API RunConfigurationDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API RunConfigurationDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Describes the restore behavior of a restarting application.</p>
      */
-    inline const ApplicationRestoreConfiguration& GetApplicationRestoreConfigurationDescription() const{ return m_applicationRestoreConfigurationDescription; }
-
-    /**
-     * <p>Describes the restore behavior of a restarting application.</p>
-     */
+    inline const ApplicationRestoreConfiguration& GetApplicationRestoreConfigurationDescription() const { return m_applicationRestoreConfigurationDescription; }
     inline bool ApplicationRestoreConfigurationDescriptionHasBeenSet() const { return m_applicationRestoreConfigurationDescriptionHasBeenSet; }
+    template<typename ApplicationRestoreConfigurationDescriptionT = ApplicationRestoreConfiguration>
+    void SetApplicationRestoreConfigurationDescription(ApplicationRestoreConfigurationDescriptionT&& value) { m_applicationRestoreConfigurationDescriptionHasBeenSet = true; m_applicationRestoreConfigurationDescription = std::forward<ApplicationRestoreConfigurationDescriptionT>(value); }
+    template<typename ApplicationRestoreConfigurationDescriptionT = ApplicationRestoreConfiguration>
+    RunConfigurationDescription& WithApplicationRestoreConfigurationDescription(ApplicationRestoreConfigurationDescriptionT&& value) { SetApplicationRestoreConfigurationDescription(std::forward<ApplicationRestoreConfigurationDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Describes the restore behavior of a restarting application.</p>
-     */
-    inline void SetApplicationRestoreConfigurationDescription(const ApplicationRestoreConfiguration& value) { m_applicationRestoreConfigurationDescriptionHasBeenSet = true; m_applicationRestoreConfigurationDescription = value; }
-
-    /**
-     * <p>Describes the restore behavior of a restarting application.</p>
-     */
-    inline void SetApplicationRestoreConfigurationDescription(ApplicationRestoreConfiguration&& value) { m_applicationRestoreConfigurationDescriptionHasBeenSet = true; m_applicationRestoreConfigurationDescription = std::move(value); }
-
-    /**
-     * <p>Describes the restore behavior of a restarting application.</p>
-     */
-    inline RunConfigurationDescription& WithApplicationRestoreConfigurationDescription(const ApplicationRestoreConfiguration& value) { SetApplicationRestoreConfigurationDescription(value); return *this;}
-
-    /**
-     * <p>Describes the restore behavior of a restarting application.</p>
-     */
-    inline RunConfigurationDescription& WithApplicationRestoreConfigurationDescription(ApplicationRestoreConfiguration&& value) { SetApplicationRestoreConfigurationDescription(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const FlinkRunConfiguration& GetFlinkRunConfigurationDescription() const{ return m_flinkRunConfigurationDescription; }
-
-    
+    inline const FlinkRunConfiguration& GetFlinkRunConfigurationDescription() const { return m_flinkRunConfigurationDescription; }
     inline bool FlinkRunConfigurationDescriptionHasBeenSet() const { return m_flinkRunConfigurationDescriptionHasBeenSet; }
-
-    
-    inline void SetFlinkRunConfigurationDescription(const FlinkRunConfiguration& value) { m_flinkRunConfigurationDescriptionHasBeenSet = true; m_flinkRunConfigurationDescription = value; }
-
-    
-    inline void SetFlinkRunConfigurationDescription(FlinkRunConfiguration&& value) { m_flinkRunConfigurationDescriptionHasBeenSet = true; m_flinkRunConfigurationDescription = std::move(value); }
-
-    
-    inline RunConfigurationDescription& WithFlinkRunConfigurationDescription(const FlinkRunConfiguration& value) { SetFlinkRunConfigurationDescription(value); return *this;}
-
-    
-    inline RunConfigurationDescription& WithFlinkRunConfigurationDescription(FlinkRunConfiguration&& value) { SetFlinkRunConfigurationDescription(std::move(value)); return *this;}
-
+    template<typename FlinkRunConfigurationDescriptionT = FlinkRunConfiguration>
+    void SetFlinkRunConfigurationDescription(FlinkRunConfigurationDescriptionT&& value) { m_flinkRunConfigurationDescriptionHasBeenSet = true; m_flinkRunConfigurationDescription = std::forward<FlinkRunConfigurationDescriptionT>(value); }
+    template<typename FlinkRunConfigurationDescriptionT = FlinkRunConfiguration>
+    RunConfigurationDescription& WithFlinkRunConfigurationDescription(FlinkRunConfigurationDescriptionT&& value) { SetFlinkRunConfigurationDescription(std::forward<FlinkRunConfigurationDescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     ApplicationRestoreConfiguration m_applicationRestoreConfigurationDescription;

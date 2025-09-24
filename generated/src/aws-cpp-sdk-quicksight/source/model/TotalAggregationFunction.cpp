@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TotalAggregationFunction::TotalAggregationFunction() : 
-    m_simpleTotalAggregationFunction(SimpleTotalAggregationFunction::NOT_SET),
-    m_simpleTotalAggregationFunctionHasBeenSet(false)
-{
-}
-
-TotalAggregationFunction::TotalAggregationFunction(JsonView jsonValue) : 
-    m_simpleTotalAggregationFunction(SimpleTotalAggregationFunction::NOT_SET),
-    m_simpleTotalAggregationFunctionHasBeenSet(false)
+TotalAggregationFunction::TotalAggregationFunction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TotalAggregationFunction& TotalAggregationFunction::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("SimpleTotalAggregationFunction"))
   {
     m_simpleTotalAggregationFunction = SimpleTotalAggregationFunctionMapper::GetSimpleTotalAggregationFunctionForName(jsonValue.GetString("SimpleTotalAggregationFunction"));
-
     m_simpleTotalAggregationFunctionHasBeenSet = true;
   }
-
   return *this;
 }
 

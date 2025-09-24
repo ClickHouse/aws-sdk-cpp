@@ -18,15 +18,7 @@ namespace AmplifyBackend
 namespace Model
 {
 
-EmailSettings::EmailSettings() : 
-    m_emailMessageHasBeenSet(false),
-    m_emailSubjectHasBeenSet(false)
-{
-}
-
-EmailSettings::EmailSettings(JsonView jsonValue) : 
-    m_emailMessageHasBeenSet(false),
-    m_emailSubjectHasBeenSet(false)
+EmailSettings::EmailSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ EmailSettings& EmailSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("emailMessage"))
   {
     m_emailMessage = jsonValue.GetString("emailMessage");
-
     m_emailMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("emailSubject"))
   {
     m_emailSubject = jsonValue.GetString("emailSubject");
-
     m_emailSubjectHasBeenSet = true;
   }
-
   return *this;
 }
 

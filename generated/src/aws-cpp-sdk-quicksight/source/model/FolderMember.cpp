@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-FolderMember::FolderMember() : 
-    m_memberIdHasBeenSet(false),
-    m_memberType(MemberType::NOT_SET),
-    m_memberTypeHasBeenSet(false)
-{
-}
-
-FolderMember::FolderMember(JsonView jsonValue) : 
-    m_memberIdHasBeenSet(false),
-    m_memberType(MemberType::NOT_SET),
-    m_memberTypeHasBeenSet(false)
+FolderMember::FolderMember(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ FolderMember& FolderMember::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MemberId"))
   {
     m_memberId = jsonValue.GetString("MemberId");
-
     m_memberIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MemberType"))
   {
     m_memberType = MemberTypeMapper::GetMemberTypeForName(jsonValue.GetString("MemberType"));
-
     m_memberTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

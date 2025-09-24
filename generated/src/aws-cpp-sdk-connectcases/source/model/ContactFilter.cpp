@@ -18,15 +18,7 @@ namespace ConnectCases
 namespace Model
 {
 
-ContactFilter::ContactFilter() : 
-    m_channelHasBeenSet(false),
-    m_contactArnHasBeenSet(false)
-{
-}
-
-ContactFilter::ContactFilter(JsonView jsonValue) : 
-    m_channelHasBeenSet(false),
-    m_contactArnHasBeenSet(false)
+ContactFilter::ContactFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ ContactFilter& ContactFilter::operator =(JsonView jsonValue)
     }
     m_channelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("contactArn"))
   {
     m_contactArn = jsonValue.GetString("contactArn");
-
     m_contactArnHasBeenSet = true;
   }
-
   return *this;
 }
 

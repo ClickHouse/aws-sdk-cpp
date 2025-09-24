@@ -21,7 +21,7 @@ namespace Model
   class DeleteInputRequest : public IoTEventsRequest
   {
   public:
-    AWS_IOTEVENTS_API DeleteInputRequest();
+    AWS_IOTEVENTS_API DeleteInputRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOTEVENTS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the input to delete.</p>
      */
-    inline const Aws::String& GetInputName() const{ return m_inputName; }
-
-    /**
-     * <p>The name of the input to delete.</p>
-     */
+    inline const Aws::String& GetInputName() const { return m_inputName; }
     inline bool InputNameHasBeenSet() const { return m_inputNameHasBeenSet; }
-
-    /**
-     * <p>The name of the input to delete.</p>
-     */
-    inline void SetInputName(const Aws::String& value) { m_inputNameHasBeenSet = true; m_inputName = value; }
-
-    /**
-     * <p>The name of the input to delete.</p>
-     */
-    inline void SetInputName(Aws::String&& value) { m_inputNameHasBeenSet = true; m_inputName = std::move(value); }
-
-    /**
-     * <p>The name of the input to delete.</p>
-     */
-    inline void SetInputName(const char* value) { m_inputNameHasBeenSet = true; m_inputName.assign(value); }
-
-    /**
-     * <p>The name of the input to delete.</p>
-     */
-    inline DeleteInputRequest& WithInputName(const Aws::String& value) { SetInputName(value); return *this;}
-
-    /**
-     * <p>The name of the input to delete.</p>
-     */
-    inline DeleteInputRequest& WithInputName(Aws::String&& value) { SetInputName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the input to delete.</p>
-     */
-    inline DeleteInputRequest& WithInputName(const char* value) { SetInputName(value); return *this;}
-
+    template<typename InputNameT = Aws::String>
+    void SetInputName(InputNameT&& value) { m_inputNameHasBeenSet = true; m_inputName = std::forward<InputNameT>(value); }
+    template<typename InputNameT = Aws::String>
+    DeleteInputRequest& WithInputName(InputNameT&& value) { SetInputName(std::forward<InputNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_inputName;

@@ -33,91 +33,36 @@ namespace Model
   class EventCondition
   {
   public:
-    AWS_PINPOINT_API EventCondition();
+    AWS_PINPOINT_API EventCondition() = default;
     AWS_PINPOINT_API EventCondition(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API EventCondition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The dimensions for the event filter to use for the activity.</p>
      */
-    inline const EventDimensions& GetDimensions() const{ return m_dimensions; }
-
-    /**
-     * <p>The dimensions for the event filter to use for the activity.</p>
-     */
+    inline const EventDimensions& GetDimensions() const { return m_dimensions; }
     inline bool DimensionsHasBeenSet() const { return m_dimensionsHasBeenSet; }
+    template<typename DimensionsT = EventDimensions>
+    void SetDimensions(DimensionsT&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::forward<DimensionsT>(value); }
+    template<typename DimensionsT = EventDimensions>
+    EventCondition& WithDimensions(DimensionsT&& value) { SetDimensions(std::forward<DimensionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dimensions for the event filter to use for the activity.</p>
-     */
-    inline void SetDimensions(const EventDimensions& value) { m_dimensionsHasBeenSet = true; m_dimensions = value; }
-
-    /**
-     * <p>The dimensions for the event filter to use for the activity.</p>
-     */
-    inline void SetDimensions(EventDimensions&& value) { m_dimensionsHasBeenSet = true; m_dimensions = std::move(value); }
-
-    /**
-     * <p>The dimensions for the event filter to use for the activity.</p>
-     */
-    inline EventCondition& WithDimensions(const EventDimensions& value) { SetDimensions(value); return *this;}
-
-    /**
-     * <p>The dimensions for the event filter to use for the activity.</p>
-     */
-    inline EventCondition& WithDimensions(EventDimensions&& value) { SetDimensions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The message identifier (message_id) for the message to use when determining
      * whether message events meet the condition.</p>
      */
-    inline const Aws::String& GetMessageActivity() const{ return m_messageActivity; }
-
-    /**
-     * <p>The message identifier (message_id) for the message to use when determining
-     * whether message events meet the condition.</p>
-     */
+    inline const Aws::String& GetMessageActivity() const { return m_messageActivity; }
     inline bool MessageActivityHasBeenSet() const { return m_messageActivityHasBeenSet; }
-
-    /**
-     * <p>The message identifier (message_id) for the message to use when determining
-     * whether message events meet the condition.</p>
-     */
-    inline void SetMessageActivity(const Aws::String& value) { m_messageActivityHasBeenSet = true; m_messageActivity = value; }
-
-    /**
-     * <p>The message identifier (message_id) for the message to use when determining
-     * whether message events meet the condition.</p>
-     */
-    inline void SetMessageActivity(Aws::String&& value) { m_messageActivityHasBeenSet = true; m_messageActivity = std::move(value); }
-
-    /**
-     * <p>The message identifier (message_id) for the message to use when determining
-     * whether message events meet the condition.</p>
-     */
-    inline void SetMessageActivity(const char* value) { m_messageActivityHasBeenSet = true; m_messageActivity.assign(value); }
-
-    /**
-     * <p>The message identifier (message_id) for the message to use when determining
-     * whether message events meet the condition.</p>
-     */
-    inline EventCondition& WithMessageActivity(const Aws::String& value) { SetMessageActivity(value); return *this;}
-
-    /**
-     * <p>The message identifier (message_id) for the message to use when determining
-     * whether message events meet the condition.</p>
-     */
-    inline EventCondition& WithMessageActivity(Aws::String&& value) { SetMessageActivity(std::move(value)); return *this;}
-
-    /**
-     * <p>The message identifier (message_id) for the message to use when determining
-     * whether message events meet the condition.</p>
-     */
-    inline EventCondition& WithMessageActivity(const char* value) { SetMessageActivity(value); return *this;}
-
+    template<typename MessageActivityT = Aws::String>
+    void SetMessageActivity(MessageActivityT&& value) { m_messageActivityHasBeenSet = true; m_messageActivity = std::forward<MessageActivityT>(value); }
+    template<typename MessageActivityT = Aws::String>
+    EventCondition& WithMessageActivity(MessageActivityT&& value) { SetMessageActivity(std::forward<MessageActivityT>(value)); return *this;}
+    ///@}
   private:
 
     EventDimensions m_dimensions;

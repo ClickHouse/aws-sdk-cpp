@@ -56,6 +56,14 @@ namespace Aws
         static const int ap_southeast_4_HASH = HashingUtils::HashString("ap-southeast-4");
         static const int il_central_1_HASH = HashingUtils::HashString("il-central-1");
         static const int ca_west_1_HASH = HashingUtils::HashString("ca-west-1");
+        static const int ap_southeast_5_HASH = HashingUtils::HashString("ap-southeast-5");
+        static const int mx_central_1_HASH = HashingUtils::HashString("mx-central-1");
+        static const int us_isof_south_1_HASH = HashingUtils::HashString("us-isof-south-1");
+        static const int us_isof_east_1_HASH = HashingUtils::HashString("us-isof-east-1");
+        static const int ap_southeast_7_HASH = HashingUtils::HashString("ap-southeast-7");
+        static const int ap_east_2_HASH = HashingUtils::HashString("ap-east-2");
+        static const int eu_isoe_west_1_HASH = HashingUtils::HashString("eu-isoe-west-1");
+        static const int ap_southeast_6_HASH = HashingUtils::HashString("ap-southeast-6");
 
 
         CloudWatchRegion GetCloudWatchRegionForName(const Aws::String& name)
@@ -205,6 +213,38 @@ namespace Aws
           {
             return CloudWatchRegion::ca_west_1;
           }
+          else if (hashCode == ap_southeast_5_HASH)
+          {
+            return CloudWatchRegion::ap_southeast_5;
+          }
+          else if (hashCode == mx_central_1_HASH)
+          {
+            return CloudWatchRegion::mx_central_1;
+          }
+          else if (hashCode == us_isof_south_1_HASH)
+          {
+            return CloudWatchRegion::us_isof_south_1;
+          }
+          else if (hashCode == us_isof_east_1_HASH)
+          {
+            return CloudWatchRegion::us_isof_east_1;
+          }
+          else if (hashCode == ap_southeast_7_HASH)
+          {
+            return CloudWatchRegion::ap_southeast_7;
+          }
+          else if (hashCode == ap_east_2_HASH)
+          {
+            return CloudWatchRegion::ap_east_2;
+          }
+          else if (hashCode == eu_isoe_west_1_HASH)
+          {
+            return CloudWatchRegion::eu_isoe_west_1;
+          }
+          else if (hashCode == ap_southeast_6_HASH)
+          {
+            return CloudWatchRegion::ap_southeast_6;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -293,6 +333,22 @@ namespace Aws
             return "il-central-1";
           case CloudWatchRegion::ca_west_1:
             return "ca-west-1";
+          case CloudWatchRegion::ap_southeast_5:
+            return "ap-southeast-5";
+          case CloudWatchRegion::mx_central_1:
+            return "mx-central-1";
+          case CloudWatchRegion::us_isof_south_1:
+            return "us-isof-south-1";
+          case CloudWatchRegion::us_isof_east_1:
+            return "us-isof-east-1";
+          case CloudWatchRegion::ap_southeast_7:
+            return "ap-southeast-7";
+          case CloudWatchRegion::ap_east_2:
+            return "ap-east-2";
+          case CloudWatchRegion::eu_isoe_west_1:
+            return "eu-isoe-west-1";
+          case CloudWatchRegion::ap_southeast_6:
+            return "ap-southeast-6";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

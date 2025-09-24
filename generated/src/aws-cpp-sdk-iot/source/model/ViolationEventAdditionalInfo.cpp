@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-ViolationEventAdditionalInfo::ViolationEventAdditionalInfo() : 
-    m_confidenceLevel(ConfidenceLevel::NOT_SET),
-    m_confidenceLevelHasBeenSet(false)
-{
-}
-
-ViolationEventAdditionalInfo::ViolationEventAdditionalInfo(JsonView jsonValue) : 
-    m_confidenceLevel(ConfidenceLevel::NOT_SET),
-    m_confidenceLevelHasBeenSet(false)
+ViolationEventAdditionalInfo::ViolationEventAdditionalInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ViolationEventAdditionalInfo& ViolationEventAdditionalInfo::operator =(JsonView 
   if(jsonValue.ValueExists("confidenceLevel"))
   {
     m_confidenceLevel = ConfidenceLevelMapper::GetConfidenceLevelForName(jsonValue.GetString("confidenceLevel"));
-
     m_confidenceLevelHasBeenSet = true;
   }
-
   return *this;
 }
 

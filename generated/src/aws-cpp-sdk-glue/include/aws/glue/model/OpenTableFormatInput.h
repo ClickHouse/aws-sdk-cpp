@@ -31,48 +31,24 @@ namespace Model
   class OpenTableFormatInput
   {
   public:
-    AWS_GLUE_API OpenTableFormatInput();
+    AWS_GLUE_API OpenTableFormatInput() = default;
     AWS_GLUE_API OpenTableFormatInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API OpenTableFormatInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies an <code>IcebergInput</code> structure that defines an Apache
      * Iceberg metadata table.</p>
      */
-    inline const IcebergInput& GetIcebergInput() const{ return m_icebergInput; }
-
-    /**
-     * <p>Specifies an <code>IcebergInput</code> structure that defines an Apache
-     * Iceberg metadata table.</p>
-     */
+    inline const IcebergInput& GetIcebergInput() const { return m_icebergInput; }
     inline bool IcebergInputHasBeenSet() const { return m_icebergInputHasBeenSet; }
-
-    /**
-     * <p>Specifies an <code>IcebergInput</code> structure that defines an Apache
-     * Iceberg metadata table.</p>
-     */
-    inline void SetIcebergInput(const IcebergInput& value) { m_icebergInputHasBeenSet = true; m_icebergInput = value; }
-
-    /**
-     * <p>Specifies an <code>IcebergInput</code> structure that defines an Apache
-     * Iceberg metadata table.</p>
-     */
-    inline void SetIcebergInput(IcebergInput&& value) { m_icebergInputHasBeenSet = true; m_icebergInput = std::move(value); }
-
-    /**
-     * <p>Specifies an <code>IcebergInput</code> structure that defines an Apache
-     * Iceberg metadata table.</p>
-     */
-    inline OpenTableFormatInput& WithIcebergInput(const IcebergInput& value) { SetIcebergInput(value); return *this;}
-
-    /**
-     * <p>Specifies an <code>IcebergInput</code> structure that defines an Apache
-     * Iceberg metadata table.</p>
-     */
-    inline OpenTableFormatInput& WithIcebergInput(IcebergInput&& value) { SetIcebergInput(std::move(value)); return *this;}
-
+    template<typename IcebergInputT = IcebergInput>
+    void SetIcebergInput(IcebergInputT&& value) { m_icebergInputHasBeenSet = true; m_icebergInput = std::forward<IcebergInputT>(value); }
+    template<typename IcebergInputT = IcebergInput>
+    OpenTableFormatInput& WithIcebergInput(IcebergInputT&& value) { SetIcebergInput(std::forward<IcebergInputT>(value)); return *this;}
+    ///@}
   private:
 
     IcebergInput m_icebergInput;

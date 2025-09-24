@@ -18,33 +18,13 @@ namespace Pipes
 namespace Model
 {
 
-PipeTargetHttpParameters::PipeTargetHttpParameters() : 
-    m_headerParametersHasBeenSet(false),
-    m_pathParameterValuesHasBeenSet(false),
-    m_queryStringParametersHasBeenSet(false)
-{
-}
-
-PipeTargetHttpParameters::PipeTargetHttpParameters(JsonView jsonValue) : 
-    m_headerParametersHasBeenSet(false),
-    m_pathParameterValuesHasBeenSet(false),
-    m_queryStringParametersHasBeenSet(false)
+PipeTargetHttpParameters::PipeTargetHttpParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 PipeTargetHttpParameters& PipeTargetHttpParameters::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("HeaderParameters"))
-  {
-    Aws::Map<Aws::String, JsonView> headerParametersJsonMap = jsonValue.GetObject("HeaderParameters").GetAllObjects();
-    for(auto& headerParametersItem : headerParametersJsonMap)
-    {
-      m_headerParameters[headerParametersItem.first] = headerParametersItem.second.AsString();
-    }
-    m_headerParametersHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("PathParameterValues"))
   {
     Aws::Utils::Array<JsonView> pathParameterValuesJsonList = jsonValue.GetArray("PathParameterValues");
@@ -54,7 +34,15 @@ PipeTargetHttpParameters& PipeTargetHttpParameters::operator =(JsonView jsonValu
     }
     m_pathParameterValuesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("HeaderParameters"))
+  {
+    Aws::Map<Aws::String, JsonView> headerParametersJsonMap = jsonValue.GetObject("HeaderParameters").GetAllObjects();
+    for(auto& headerParametersItem : headerParametersJsonMap)
+    {
+      m_headerParameters[headerParametersItem.first] = headerParametersItem.second.AsString();
+    }
+    m_headerParametersHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("QueryStringParameters"))
   {
     Aws::Map<Aws::String, JsonView> queryStringParametersJsonMap = jsonValue.GetObject("QueryStringParameters").GetAllObjects();
@@ -64,24 +52,12 @@ PipeTargetHttpParameters& PipeTargetHttpParameters::operator =(JsonView jsonValu
     }
     m_queryStringParametersHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue PipeTargetHttpParameters::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_headerParametersHasBeenSet)
-  {
-   JsonValue headerParametersJsonMap;
-   for(auto& headerParametersItem : m_headerParameters)
-   {
-     headerParametersJsonMap.WithString(headerParametersItem.first, headerParametersItem.second);
-   }
-   payload.WithObject("HeaderParameters", std::move(headerParametersJsonMap));
-
-  }
 
   if(m_pathParameterValuesHasBeenSet)
   {
@@ -91,6 +67,17 @@ JsonValue PipeTargetHttpParameters::Jsonize() const
      pathParameterValuesJsonList[pathParameterValuesIndex].AsString(m_pathParameterValues[pathParameterValuesIndex]);
    }
    payload.WithArray("PathParameterValues", std::move(pathParameterValuesJsonList));
+
+  }
+
+  if(m_headerParametersHasBeenSet)
+  {
+   JsonValue headerParametersJsonMap;
+   for(auto& headerParametersItem : m_headerParameters)
+   {
+     headerParametersJsonMap.WithString(headerParametersItem.first, headerParametersItem.second);
+   }
+   payload.WithObject("HeaderParameters", std::move(headerParametersJsonMap));
 
   }
 

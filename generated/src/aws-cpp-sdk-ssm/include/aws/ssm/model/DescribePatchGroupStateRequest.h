@@ -21,7 +21,7 @@ namespace Model
   class DescribePatchGroupStateRequest : public SSMRequest
   {
   public:
-    AWS_SSM_API DescribePatchGroupStateRequest();
+    AWS_SSM_API DescribePatchGroupStateRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_SSM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the patch group whose patch snapshot should be retrieved.</p>
      */
-    inline const Aws::String& GetPatchGroup() const{ return m_patchGroup; }
-
-    /**
-     * <p>The name of the patch group whose patch snapshot should be retrieved.</p>
-     */
+    inline const Aws::String& GetPatchGroup() const { return m_patchGroup; }
     inline bool PatchGroupHasBeenSet() const { return m_patchGroupHasBeenSet; }
-
-    /**
-     * <p>The name of the patch group whose patch snapshot should be retrieved.</p>
-     */
-    inline void SetPatchGroup(const Aws::String& value) { m_patchGroupHasBeenSet = true; m_patchGroup = value; }
-
-    /**
-     * <p>The name of the patch group whose patch snapshot should be retrieved.</p>
-     */
-    inline void SetPatchGroup(Aws::String&& value) { m_patchGroupHasBeenSet = true; m_patchGroup = std::move(value); }
-
-    /**
-     * <p>The name of the patch group whose patch snapshot should be retrieved.</p>
-     */
-    inline void SetPatchGroup(const char* value) { m_patchGroupHasBeenSet = true; m_patchGroup.assign(value); }
-
-    /**
-     * <p>The name of the patch group whose patch snapshot should be retrieved.</p>
-     */
-    inline DescribePatchGroupStateRequest& WithPatchGroup(const Aws::String& value) { SetPatchGroup(value); return *this;}
-
-    /**
-     * <p>The name of the patch group whose patch snapshot should be retrieved.</p>
-     */
-    inline DescribePatchGroupStateRequest& WithPatchGroup(Aws::String&& value) { SetPatchGroup(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the patch group whose patch snapshot should be retrieved.</p>
-     */
-    inline DescribePatchGroupStateRequest& WithPatchGroup(const char* value) { SetPatchGroup(value); return *this;}
-
+    template<typename PatchGroupT = Aws::String>
+    void SetPatchGroup(PatchGroupT&& value) { m_patchGroupHasBeenSet = true; m_patchGroup = std::forward<PatchGroupT>(value); }
+    template<typename PatchGroupT = Aws::String>
+    DescribePatchGroupStateRequest& WithPatchGroup(PatchGroupT&& value) { SetPatchGroup(std::forward<PatchGroupT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_patchGroup;

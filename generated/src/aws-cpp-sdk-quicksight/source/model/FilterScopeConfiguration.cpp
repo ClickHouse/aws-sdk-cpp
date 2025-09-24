@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-FilterScopeConfiguration::FilterScopeConfiguration() : 
-    m_selectedSheetsHasBeenSet(false),
-    m_allSheetsHasBeenSet(false)
-{
-}
-
-FilterScopeConfiguration::FilterScopeConfiguration(JsonView jsonValue) : 
-    m_selectedSheetsHasBeenSet(false),
-    m_allSheetsHasBeenSet(false)
+FilterScopeConfiguration::FilterScopeConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FilterScopeConfiguration& FilterScopeConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("SelectedSheets"))
   {
     m_selectedSheets = jsonValue.GetObject("SelectedSheets");
-
     m_selectedSheetsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AllSheets"))
   {
     m_allSheets = jsonValue.GetObject("AllSheets");
-
     m_allSheetsHasBeenSet = true;
   }
-
   return *this;
 }
 

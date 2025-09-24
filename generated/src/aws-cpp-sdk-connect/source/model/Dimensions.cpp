@@ -18,21 +18,7 @@ namespace Connect
 namespace Model
 {
 
-Dimensions::Dimensions() : 
-    m_queueHasBeenSet(false),
-    m_channel(Channel::NOT_SET),
-    m_channelHasBeenSet(false),
-    m_routingProfileHasBeenSet(false),
-    m_routingStepExpressionHasBeenSet(false)
-{
-}
-
-Dimensions::Dimensions(JsonView jsonValue) : 
-    m_queueHasBeenSet(false),
-    m_channel(Channel::NOT_SET),
-    m_channelHasBeenSet(false),
-    m_routingProfileHasBeenSet(false),
-    m_routingStepExpressionHasBeenSet(false)
+Dimensions::Dimensions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,28 @@ Dimensions& Dimensions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Queue"))
   {
     m_queue = jsonValue.GetObject("Queue");
-
     m_queueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Channel"))
   {
     m_channel = ChannelMapper::GetChannelForName(jsonValue.GetString("Channel"));
-
     m_channelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoutingProfile"))
   {
     m_routingProfile = jsonValue.GetObject("RoutingProfile");
-
     m_routingProfileHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoutingStepExpression"))
   {
     m_routingStepExpression = jsonValue.GetString("RoutingStepExpression");
-
     m_routingStepExpressionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AgentStatus"))
+  {
+    m_agentStatus = jsonValue.GetObject("AgentStatus");
+    m_agentStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -94,6 +77,12 @@ JsonValue Dimensions::Jsonize() const
   if(m_routingStepExpressionHasBeenSet)
   {
    payload.WithString("RoutingStepExpression", m_routingStepExpression);
+
+  }
+
+  if(m_agentStatusHasBeenSet)
+  {
+   payload.WithObject("AgentStatus", m_agentStatus.Jsonize());
 
   }
 

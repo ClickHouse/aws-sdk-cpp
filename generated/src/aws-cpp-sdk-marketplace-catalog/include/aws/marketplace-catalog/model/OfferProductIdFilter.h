@@ -33,66 +33,26 @@ namespace Model
   class OfferProductIdFilter
   {
   public:
-    AWS_MARKETPLACECATALOG_API OfferProductIdFilter();
+    AWS_MARKETPLACECATALOG_API OfferProductIdFilter() = default;
     AWS_MARKETPLACECATALOG_API OfferProductIdFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API OfferProductIdFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACECATALOG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Allows filtering on the <code>ProductId</code> of an offer with list
      * input.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValueList() const{ return m_valueList; }
-
-    /**
-     * <p>Allows filtering on the <code>ProductId</code> of an offer with list
-     * input.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValueList() const { return m_valueList; }
     inline bool ValueListHasBeenSet() const { return m_valueListHasBeenSet; }
-
-    /**
-     * <p>Allows filtering on the <code>ProductId</code> of an offer with list
-     * input.</p>
-     */
-    inline void SetValueList(const Aws::Vector<Aws::String>& value) { m_valueListHasBeenSet = true; m_valueList = value; }
-
-    /**
-     * <p>Allows filtering on the <code>ProductId</code> of an offer with list
-     * input.</p>
-     */
-    inline void SetValueList(Aws::Vector<Aws::String>&& value) { m_valueListHasBeenSet = true; m_valueList = std::move(value); }
-
-    /**
-     * <p>Allows filtering on the <code>ProductId</code> of an offer with list
-     * input.</p>
-     */
-    inline OfferProductIdFilter& WithValueList(const Aws::Vector<Aws::String>& value) { SetValueList(value); return *this;}
-
-    /**
-     * <p>Allows filtering on the <code>ProductId</code> of an offer with list
-     * input.</p>
-     */
-    inline OfferProductIdFilter& WithValueList(Aws::Vector<Aws::String>&& value) { SetValueList(std::move(value)); return *this;}
-
-    /**
-     * <p>Allows filtering on the <code>ProductId</code> of an offer with list
-     * input.</p>
-     */
-    inline OfferProductIdFilter& AddValueList(const Aws::String& value) { m_valueListHasBeenSet = true; m_valueList.push_back(value); return *this; }
-
-    /**
-     * <p>Allows filtering on the <code>ProductId</code> of an offer with list
-     * input.</p>
-     */
-    inline OfferProductIdFilter& AddValueList(Aws::String&& value) { m_valueListHasBeenSet = true; m_valueList.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Allows filtering on the <code>ProductId</code> of an offer with list
-     * input.</p>
-     */
-    inline OfferProductIdFilter& AddValueList(const char* value) { m_valueListHasBeenSet = true; m_valueList.push_back(value); return *this; }
-
+    template<typename ValueListT = Aws::Vector<Aws::String>>
+    void SetValueList(ValueListT&& value) { m_valueListHasBeenSet = true; m_valueList = std::forward<ValueListT>(value); }
+    template<typename ValueListT = Aws::Vector<Aws::String>>
+    OfferProductIdFilter& WithValueList(ValueListT&& value) { SetValueList(std::forward<ValueListT>(value)); return *this;}
+    template<typename ValueListT = Aws::String>
+    OfferProductIdFilter& AddValueList(ValueListT&& value) { m_valueListHasBeenSet = true; m_valueList.emplace_back(std::forward<ValueListT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_valueList;

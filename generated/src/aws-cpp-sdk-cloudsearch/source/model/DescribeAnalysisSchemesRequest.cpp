@@ -10,14 +10,6 @@
 using namespace Aws::CloudSearch::Model;
 using namespace Aws::Utils;
 
-DescribeAnalysisSchemesRequest::DescribeAnalysisSchemesRequest() : 
-    m_domainNameHasBeenSet(false),
-    m_analysisSchemeNamesHasBeenSet(false),
-    m_deployed(false),
-    m_deployedHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAnalysisSchemesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -29,12 +21,19 @@ Aws::String DescribeAnalysisSchemesRequest::SerializePayload() const
 
   if(m_analysisSchemeNamesHasBeenSet)
   {
-    unsigned analysisSchemeNamesCount = 1;
-    for(auto& item : m_analysisSchemeNames)
+    if (m_analysisSchemeNames.empty())
     {
-      ss << "AnalysisSchemeNames.member." << analysisSchemeNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      analysisSchemeNamesCount++;
+      ss << "AnalysisSchemeNames=&";
+    }
+    else
+    {
+      unsigned analysisSchemeNamesCount = 1;
+      for(auto& item : m_analysisSchemeNames)
+      {
+        ss << "AnalysisSchemeNames.member." << analysisSchemeNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        analysisSchemeNamesCount++;
+      }
     }
   }
 

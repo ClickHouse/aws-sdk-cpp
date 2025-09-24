@@ -32,7 +32,7 @@ namespace Model
   class PathPatternConditionConfig
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API PathPatternConditionConfig();
+    AWS_ELASTICLOADBALANCINGV2_API PathPatternConditionConfig() = default;
     AWS_ELASTICLOADBALANCINGV2_API PathPatternConditionConfig(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICLOADBALANCINGV2_API PathPatternConditionConfig& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,6 +40,7 @@ namespace Model
     AWS_ELASTICLOADBALANCINGV2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The path patterns to compare against the request URL. The maximum size of
      * each string is 128 characters. The comparison is case sensitive. The following
@@ -47,98 +48,19 @@ namespace Model
      * (matches exactly 1 character).</p> <p>If you specify multiple strings, the
      * condition is satisfied if one of them matches the request URL. The path pattern
      * is compared only to the path of the URL, not to its query string. To compare
-     * against the query string, use <a>QueryStringConditionConfig</a>.</p>
+     * against the query string, use a <a
+     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#query-string-conditions">query
+     * string condition</a>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValues() const{ return m_values; }
-
-    /**
-     * <p>The path patterns to compare against the request URL. The maximum size of
-     * each string is 128 characters. The comparison is case sensitive. The following
-     * wildcard characters are supported: * (matches 0 or more characters) and ?
-     * (matches exactly 1 character).</p> <p>If you specify multiple strings, the
-     * condition is satisfied if one of them matches the request URL. The path pattern
-     * is compared only to the path of the URL, not to its query string. To compare
-     * against the query string, use <a>QueryStringConditionConfig</a>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValues() const { return m_values; }
     inline bool ValuesHasBeenSet() const { return m_valuesHasBeenSet; }
-
-    /**
-     * <p>The path patterns to compare against the request URL. The maximum size of
-     * each string is 128 characters. The comparison is case sensitive. The following
-     * wildcard characters are supported: * (matches 0 or more characters) and ?
-     * (matches exactly 1 character).</p> <p>If you specify multiple strings, the
-     * condition is satisfied if one of them matches the request URL. The path pattern
-     * is compared only to the path of the URL, not to its query string. To compare
-     * against the query string, use <a>QueryStringConditionConfig</a>.</p>
-     */
-    inline void SetValues(const Aws::Vector<Aws::String>& value) { m_valuesHasBeenSet = true; m_values = value; }
-
-    /**
-     * <p>The path patterns to compare against the request URL. The maximum size of
-     * each string is 128 characters. The comparison is case sensitive. The following
-     * wildcard characters are supported: * (matches 0 or more characters) and ?
-     * (matches exactly 1 character).</p> <p>If you specify multiple strings, the
-     * condition is satisfied if one of them matches the request URL. The path pattern
-     * is compared only to the path of the URL, not to its query string. To compare
-     * against the query string, use <a>QueryStringConditionConfig</a>.</p>
-     */
-    inline void SetValues(Aws::Vector<Aws::String>&& value) { m_valuesHasBeenSet = true; m_values = std::move(value); }
-
-    /**
-     * <p>The path patterns to compare against the request URL. The maximum size of
-     * each string is 128 characters. The comparison is case sensitive. The following
-     * wildcard characters are supported: * (matches 0 or more characters) and ?
-     * (matches exactly 1 character).</p> <p>If you specify multiple strings, the
-     * condition is satisfied if one of them matches the request URL. The path pattern
-     * is compared only to the path of the URL, not to its query string. To compare
-     * against the query string, use <a>QueryStringConditionConfig</a>.</p>
-     */
-    inline PathPatternConditionConfig& WithValues(const Aws::Vector<Aws::String>& value) { SetValues(value); return *this;}
-
-    /**
-     * <p>The path patterns to compare against the request URL. The maximum size of
-     * each string is 128 characters. The comparison is case sensitive. The following
-     * wildcard characters are supported: * (matches 0 or more characters) and ?
-     * (matches exactly 1 character).</p> <p>If you specify multiple strings, the
-     * condition is satisfied if one of them matches the request URL. The path pattern
-     * is compared only to the path of the URL, not to its query string. To compare
-     * against the query string, use <a>QueryStringConditionConfig</a>.</p>
-     */
-    inline PathPatternConditionConfig& WithValues(Aws::Vector<Aws::String>&& value) { SetValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The path patterns to compare against the request URL. The maximum size of
-     * each string is 128 characters. The comparison is case sensitive. The following
-     * wildcard characters are supported: * (matches 0 or more characters) and ?
-     * (matches exactly 1 character).</p> <p>If you specify multiple strings, the
-     * condition is satisfied if one of them matches the request URL. The path pattern
-     * is compared only to the path of the URL, not to its query string. To compare
-     * against the query string, use <a>QueryStringConditionConfig</a>.</p>
-     */
-    inline PathPatternConditionConfig& AddValues(const Aws::String& value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
-    /**
-     * <p>The path patterns to compare against the request URL. The maximum size of
-     * each string is 128 characters. The comparison is case sensitive. The following
-     * wildcard characters are supported: * (matches 0 or more characters) and ?
-     * (matches exactly 1 character).</p> <p>If you specify multiple strings, the
-     * condition is satisfied if one of them matches the request URL. The path pattern
-     * is compared only to the path of the URL, not to its query string. To compare
-     * against the query string, use <a>QueryStringConditionConfig</a>.</p>
-     */
-    inline PathPatternConditionConfig& AddValues(Aws::String&& value) { m_valuesHasBeenSet = true; m_values.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The path patterns to compare against the request URL. The maximum size of
-     * each string is 128 characters. The comparison is case sensitive. The following
-     * wildcard characters are supported: * (matches 0 or more characters) and ?
-     * (matches exactly 1 character).</p> <p>If you specify multiple strings, the
-     * condition is satisfied if one of them matches the request URL. The path pattern
-     * is compared only to the path of the URL, not to its query string. To compare
-     * against the query string, use <a>QueryStringConditionConfig</a>.</p>
-     */
-    inline PathPatternConditionConfig& AddValues(const char* value) { m_valuesHasBeenSet = true; m_values.push_back(value); return *this; }
-
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    void SetValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values = std::forward<ValuesT>(value); }
+    template<typename ValuesT = Aws::Vector<Aws::String>>
+    PathPatternConditionConfig& WithValues(ValuesT&& value) { SetValues(std::forward<ValuesT>(value)); return *this;}
+    template<typename ValuesT = Aws::String>
+    PathPatternConditionConfig& AddValues(ValuesT&& value) { m_valuesHasBeenSet = true; m_values.emplace_back(std::forward<ValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_values;

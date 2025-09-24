@@ -34,255 +34,91 @@ namespace Model
   class ReviewTemplateSummary
   {
   public:
-    AWS_WELLARCHITECTED_API ReviewTemplateSummary();
+    AWS_WELLARCHITECTED_API ReviewTemplateSummary() = default;
     AWS_WELLARCHITECTED_API ReviewTemplateSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_WELLARCHITECTED_API ReviewTemplateSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WELLARCHITECTED_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Description of the review template.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Description of the review template.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    ReviewTemplateSummary& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Description of the review template.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Description of the review template.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Description of the review template.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Description of the review template.</p>
-     */
-    inline ReviewTemplateSummary& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Description of the review template.</p>
-     */
-    inline ReviewTemplateSummary& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Description of the review template.</p>
-     */
-    inline ReviewTemplateSummary& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Lenses associated with the review template.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLenses() const{ return m_lenses; }
-
-    /**
-     * <p>Lenses associated with the review template.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLenses() const { return m_lenses; }
     inline bool LensesHasBeenSet() const { return m_lensesHasBeenSet; }
+    template<typename LensesT = Aws::Vector<Aws::String>>
+    void SetLenses(LensesT&& value) { m_lensesHasBeenSet = true; m_lenses = std::forward<LensesT>(value); }
+    template<typename LensesT = Aws::Vector<Aws::String>>
+    ReviewTemplateSummary& WithLenses(LensesT&& value) { SetLenses(std::forward<LensesT>(value)); return *this;}
+    template<typename LensesT = Aws::String>
+    ReviewTemplateSummary& AddLenses(LensesT&& value) { m_lensesHasBeenSet = true; m_lenses.emplace_back(std::forward<LensesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Lenses associated with the review template.</p>
-     */
-    inline void SetLenses(const Aws::Vector<Aws::String>& value) { m_lensesHasBeenSet = true; m_lenses = value; }
-
-    /**
-     * <p>Lenses associated with the review template.</p>
-     */
-    inline void SetLenses(Aws::Vector<Aws::String>&& value) { m_lensesHasBeenSet = true; m_lenses = std::move(value); }
-
-    /**
-     * <p>Lenses associated with the review template.</p>
-     */
-    inline ReviewTemplateSummary& WithLenses(const Aws::Vector<Aws::String>& value) { SetLenses(value); return *this;}
-
-    /**
-     * <p>Lenses associated with the review template.</p>
-     */
-    inline ReviewTemplateSummary& WithLenses(Aws::Vector<Aws::String>&& value) { SetLenses(std::move(value)); return *this;}
-
-    /**
-     * <p>Lenses associated with the review template.</p>
-     */
-    inline ReviewTemplateSummary& AddLenses(const Aws::String& value) { m_lensesHasBeenSet = true; m_lenses.push_back(value); return *this; }
-
-    /**
-     * <p>Lenses associated with the review template.</p>
-     */
-    inline ReviewTemplateSummary& AddLenses(Aws::String&& value) { m_lensesHasBeenSet = true; m_lenses.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Lenses associated with the review template.</p>
-     */
-    inline ReviewTemplateSummary& AddLenses(const char* value) { m_lensesHasBeenSet = true; m_lenses.push_back(value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetOwner() const{ return m_owner; }
-
-    
+    inline const Aws::String& GetOwner() const { return m_owner; }
     inline bool OwnerHasBeenSet() const { return m_ownerHasBeenSet; }
+    template<typename OwnerT = Aws::String>
+    void SetOwner(OwnerT&& value) { m_ownerHasBeenSet = true; m_owner = std::forward<OwnerT>(value); }
+    template<typename OwnerT = Aws::String>
+    ReviewTemplateSummary& WithOwner(OwnerT&& value) { SetOwner(std::forward<OwnerT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetOwner(const Aws::String& value) { m_ownerHasBeenSet = true; m_owner = value; }
-
-    
-    inline void SetOwner(Aws::String&& value) { m_ownerHasBeenSet = true; m_owner = std::move(value); }
-
-    
-    inline void SetOwner(const char* value) { m_ownerHasBeenSet = true; m_owner.assign(value); }
-
-    
-    inline ReviewTemplateSummary& WithOwner(const Aws::String& value) { SetOwner(value); return *this;}
-
-    
-    inline ReviewTemplateSummary& WithOwner(Aws::String&& value) { SetOwner(std::move(value)); return *this;}
-
-    
-    inline ReviewTemplateSummary& WithOwner(const char* value) { SetOwner(value); return *this;}
-
-
-    
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
-
-    
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
     inline bool UpdatedAtHasBeenSet() const { return m_updatedAtHasBeenSet; }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    ReviewTemplateSummary& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAtHasBeenSet = true; m_updatedAt = value; }
-
-    
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::move(value); }
-
-    
-    inline ReviewTemplateSummary& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    
-    inline ReviewTemplateSummary& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The review template ARN.</p>
      */
-    inline const Aws::String& GetTemplateArn() const{ return m_templateArn; }
-
-    /**
-     * <p>The review template ARN.</p>
-     */
+    inline const Aws::String& GetTemplateArn() const { return m_templateArn; }
     inline bool TemplateArnHasBeenSet() const { return m_templateArnHasBeenSet; }
+    template<typename TemplateArnT = Aws::String>
+    void SetTemplateArn(TemplateArnT&& value) { m_templateArnHasBeenSet = true; m_templateArn = std::forward<TemplateArnT>(value); }
+    template<typename TemplateArnT = Aws::String>
+    ReviewTemplateSummary& WithTemplateArn(TemplateArnT&& value) { SetTemplateArn(std::forward<TemplateArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline void SetTemplateArn(const Aws::String& value) { m_templateArnHasBeenSet = true; m_templateArn = value; }
-
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline void SetTemplateArn(Aws::String&& value) { m_templateArnHasBeenSet = true; m_templateArn = std::move(value); }
-
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline void SetTemplateArn(const char* value) { m_templateArnHasBeenSet = true; m_templateArn.assign(value); }
-
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline ReviewTemplateSummary& WithTemplateArn(const Aws::String& value) { SetTemplateArn(value); return *this;}
-
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline ReviewTemplateSummary& WithTemplateArn(Aws::String&& value) { SetTemplateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The review template ARN.</p>
-     */
-    inline ReviewTemplateSummary& WithTemplateArn(const char* value) { SetTemplateArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the review template.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The name of the review template.</p>
-     */
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    ReviewTemplateSummary& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the review template.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The name of the review template.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The name of the review template.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    /**
-     * <p>The name of the review template.</p>
-     */
-    inline ReviewTemplateSummary& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The name of the review template.</p>
-     */
-    inline ReviewTemplateSummary& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the review template.</p>
-     */
-    inline ReviewTemplateSummary& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The latest status of a review template.</p>
      */
-    inline const ReviewTemplateUpdateStatus& GetUpdateStatus() const{ return m_updateStatus; }
-
-    /**
-     * <p>The latest status of a review template.</p>
-     */
+    inline ReviewTemplateUpdateStatus GetUpdateStatus() const { return m_updateStatus; }
     inline bool UpdateStatusHasBeenSet() const { return m_updateStatusHasBeenSet; }
-
-    /**
-     * <p>The latest status of a review template.</p>
-     */
-    inline void SetUpdateStatus(const ReviewTemplateUpdateStatus& value) { m_updateStatusHasBeenSet = true; m_updateStatus = value; }
-
-    /**
-     * <p>The latest status of a review template.</p>
-     */
-    inline void SetUpdateStatus(ReviewTemplateUpdateStatus&& value) { m_updateStatusHasBeenSet = true; m_updateStatus = std::move(value); }
-
-    /**
-     * <p>The latest status of a review template.</p>
-     */
-    inline ReviewTemplateSummary& WithUpdateStatus(const ReviewTemplateUpdateStatus& value) { SetUpdateStatus(value); return *this;}
-
-    /**
-     * <p>The latest status of a review template.</p>
-     */
-    inline ReviewTemplateSummary& WithUpdateStatus(ReviewTemplateUpdateStatus&& value) { SetUpdateStatus(std::move(value)); return *this;}
-
+    inline void SetUpdateStatus(ReviewTemplateUpdateStatus value) { m_updateStatusHasBeenSet = true; m_updateStatus = value; }
+    inline ReviewTemplateSummary& WithUpdateStatus(ReviewTemplateUpdateStatus value) { SetUpdateStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;
@@ -294,7 +130,7 @@ namespace Model
     Aws::String m_owner;
     bool m_ownerHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
     bool m_updatedAtHasBeenSet = false;
 
     Aws::String m_templateArn;
@@ -303,7 +139,7 @@ namespace Model
     Aws::String m_templateName;
     bool m_templateNameHasBeenSet = false;
 
-    ReviewTemplateUpdateStatus m_updateStatus;
+    ReviewTemplateUpdateStatus m_updateStatus{ReviewTemplateUpdateStatus::NOT_SET};
     bool m_updateStatusHasBeenSet = false;
   };
 

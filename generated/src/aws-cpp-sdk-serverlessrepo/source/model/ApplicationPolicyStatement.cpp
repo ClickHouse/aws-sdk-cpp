@@ -18,19 +18,7 @@ namespace ServerlessApplicationRepository
 namespace Model
 {
 
-ApplicationPolicyStatement::ApplicationPolicyStatement() : 
-    m_actionsHasBeenSet(false),
-    m_principalOrgIDsHasBeenSet(false),
-    m_principalsHasBeenSet(false),
-    m_statementIdHasBeenSet(false)
-{
-}
-
-ApplicationPolicyStatement::ApplicationPolicyStatement(JsonView jsonValue) : 
-    m_actionsHasBeenSet(false),
-    m_principalOrgIDsHasBeenSet(false),
-    m_principalsHasBeenSet(false),
-    m_statementIdHasBeenSet(false)
+ApplicationPolicyStatement::ApplicationPolicyStatement(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ ApplicationPolicyStatement& ApplicationPolicyStatement::operator =(JsonView json
     }
     m_actionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("principalOrgIDs"))
   {
     Aws::Utils::Array<JsonView> principalOrgIDsJsonList = jsonValue.GetArray("principalOrgIDs");
@@ -56,7 +43,6 @@ ApplicationPolicyStatement& ApplicationPolicyStatement::operator =(JsonView json
     }
     m_principalOrgIDsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("principals"))
   {
     Aws::Utils::Array<JsonView> principalsJsonList = jsonValue.GetArray("principals");
@@ -66,14 +52,11 @@ ApplicationPolicyStatement& ApplicationPolicyStatement::operator =(JsonView json
     }
     m_principalsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("statementId"))
   {
     m_statementId = jsonValue.GetString("statementId");
-
     m_statementIdHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -31,52 +31,23 @@ namespace Model
   class ExportReadSet
   {
   public:
-    AWS_OMICS_API ExportReadSet();
+    AWS_OMICS_API ExportReadSet() = default;
     AWS_OMICS_API ExportReadSet(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API ExportReadSet& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The set's ID.</p>
      */
-    inline const Aws::String& GetReadSetId() const{ return m_readSetId; }
-
-    /**
-     * <p>The set's ID.</p>
-     */
+    inline const Aws::String& GetReadSetId() const { return m_readSetId; }
     inline bool ReadSetIdHasBeenSet() const { return m_readSetIdHasBeenSet; }
-
-    /**
-     * <p>The set's ID.</p>
-     */
-    inline void SetReadSetId(const Aws::String& value) { m_readSetIdHasBeenSet = true; m_readSetId = value; }
-
-    /**
-     * <p>The set's ID.</p>
-     */
-    inline void SetReadSetId(Aws::String&& value) { m_readSetIdHasBeenSet = true; m_readSetId = std::move(value); }
-
-    /**
-     * <p>The set's ID.</p>
-     */
-    inline void SetReadSetId(const char* value) { m_readSetIdHasBeenSet = true; m_readSetId.assign(value); }
-
-    /**
-     * <p>The set's ID.</p>
-     */
-    inline ExportReadSet& WithReadSetId(const Aws::String& value) { SetReadSetId(value); return *this;}
-
-    /**
-     * <p>The set's ID.</p>
-     */
-    inline ExportReadSet& WithReadSetId(Aws::String&& value) { SetReadSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The set's ID.</p>
-     */
-    inline ExportReadSet& WithReadSetId(const char* value) { SetReadSetId(value); return *this;}
-
+    template<typename ReadSetIdT = Aws::String>
+    void SetReadSetId(ReadSetIdT&& value) { m_readSetIdHasBeenSet = true; m_readSetId = std::forward<ReadSetIdT>(value); }
+    template<typename ReadSetIdT = Aws::String>
+    ExportReadSet& WithReadSetId(ReadSetIdT&& value) { SetReadSetId(std::forward<ReadSetIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_readSetId;

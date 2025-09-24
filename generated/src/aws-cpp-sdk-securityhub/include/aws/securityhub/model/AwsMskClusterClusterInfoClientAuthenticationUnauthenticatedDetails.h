@@ -30,35 +30,24 @@ namespace Model
   class AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails();
+    AWS_SECURITYHUB_API AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails() = default;
     AWS_SECURITYHUB_API AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Indicates whether unauthenticated is allowed or not.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p> Indicates whether unauthenticated is allowed or not.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p> Indicates whether unauthenticated is allowed or not.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p> Indicates whether unauthenticated is allowed or not.</p>
-     */
     inline AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

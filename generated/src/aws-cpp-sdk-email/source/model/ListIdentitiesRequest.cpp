@@ -10,22 +10,13 @@
 using namespace Aws::SES::Model;
 using namespace Aws::Utils;
 
-ListIdentitiesRequest::ListIdentitiesRequest() : 
-    m_identityType(IdentityType::NOT_SET),
-    m_identityTypeHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxItems(0),
-    m_maxItemsHasBeenSet(false)
-{
-}
-
 Aws::String ListIdentitiesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=ListIdentities&";
   if(m_identityTypeHasBeenSet)
   {
-    ss << "IdentityType=" << IdentityTypeMapper::GetNameForIdentityType(m_identityType) << "&";
+    ss << "IdentityType=" << StringUtils::URLEncode(IdentityTypeMapper::GetNameForIdentityType(m_identityType)) << "&";
   }
 
   if(m_nextTokenHasBeenSet)

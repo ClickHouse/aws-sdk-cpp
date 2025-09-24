@@ -33,54 +33,25 @@ namespace Model
   class ClusterOperationV2Serverless
   {
   public:
-    AWS_KAFKA_API ClusterOperationV2Serverless();
+    AWS_KAFKA_API ClusterOperationV2Serverless() = default;
     AWS_KAFKA_API ClusterOperationV2Serverless(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API ClusterOperationV2Serverless& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * 
             <p>Description of the VPC connection for CreateVpcConnection and
      * DeleteVpcConnection operations.</p>
      */
-    inline const VpcConnectionInfoServerless& GetVpcConnectionInfo() const{ return m_vpcConnectionInfo; }
-
-    /**
-     * 
-            <p>Description of the VPC connection for CreateVpcConnection and
-     * DeleteVpcConnection operations.</p>
-     */
+    inline const VpcConnectionInfoServerless& GetVpcConnectionInfo() const { return m_vpcConnectionInfo; }
     inline bool VpcConnectionInfoHasBeenSet() const { return m_vpcConnectionInfoHasBeenSet; }
-
-    /**
-     * 
-            <p>Description of the VPC connection for CreateVpcConnection and
-     * DeleteVpcConnection operations.</p>
-     */
-    inline void SetVpcConnectionInfo(const VpcConnectionInfoServerless& value) { m_vpcConnectionInfoHasBeenSet = true; m_vpcConnectionInfo = value; }
-
-    /**
-     * 
-            <p>Description of the VPC connection for CreateVpcConnection and
-     * DeleteVpcConnection operations.</p>
-     */
-    inline void SetVpcConnectionInfo(VpcConnectionInfoServerless&& value) { m_vpcConnectionInfoHasBeenSet = true; m_vpcConnectionInfo = std::move(value); }
-
-    /**
-     * 
-            <p>Description of the VPC connection for CreateVpcConnection and
-     * DeleteVpcConnection operations.</p>
-     */
-    inline ClusterOperationV2Serverless& WithVpcConnectionInfo(const VpcConnectionInfoServerless& value) { SetVpcConnectionInfo(value); return *this;}
-
-    /**
-     * 
-            <p>Description of the VPC connection for CreateVpcConnection and
-     * DeleteVpcConnection operations.</p>
-     */
-    inline ClusterOperationV2Serverless& WithVpcConnectionInfo(VpcConnectionInfoServerless&& value) { SetVpcConnectionInfo(std::move(value)); return *this;}
-
+    template<typename VpcConnectionInfoT = VpcConnectionInfoServerless>
+    void SetVpcConnectionInfo(VpcConnectionInfoT&& value) { m_vpcConnectionInfoHasBeenSet = true; m_vpcConnectionInfo = std::forward<VpcConnectionInfoT>(value); }
+    template<typename VpcConnectionInfoT = VpcConnectionInfoServerless>
+    ClusterOperationV2Serverless& WithVpcConnectionInfo(VpcConnectionInfoT&& value) { SetVpcConnectionInfo(std::forward<VpcConnectionInfoT>(value)); return *this;}
+    ///@}
   private:
 
     VpcConnectionInfoServerless m_vpcConnectionInfo;

@@ -28,63 +28,37 @@ namespace Model
   class CreateInstanceProfileResult
   {
   public:
-    AWS_DEVICEFARM_API CreateInstanceProfileResult();
+    AWS_DEVICEFARM_API CreateInstanceProfileResult() = default;
     AWS_DEVICEFARM_API CreateInstanceProfileResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DEVICEFARM_API CreateInstanceProfileResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An object that contains information about your instance profile.</p>
      */
-    inline const InstanceProfile& GetInstanceProfile() const{ return m_instanceProfile; }
+    inline const InstanceProfile& GetInstanceProfile() const { return m_instanceProfile; }
+    template<typename InstanceProfileT = InstanceProfile>
+    void SetInstanceProfile(InstanceProfileT&& value) { m_instanceProfileHasBeenSet = true; m_instanceProfile = std::forward<InstanceProfileT>(value); }
+    template<typename InstanceProfileT = InstanceProfile>
+    CreateInstanceProfileResult& WithInstanceProfile(InstanceProfileT&& value) { SetInstanceProfile(std::forward<InstanceProfileT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains information about your instance profile.</p>
-     */
-    inline void SetInstanceProfile(const InstanceProfile& value) { m_instanceProfile = value; }
-
-    /**
-     * <p>An object that contains information about your instance profile.</p>
-     */
-    inline void SetInstanceProfile(InstanceProfile&& value) { m_instanceProfile = std::move(value); }
-
-    /**
-     * <p>An object that contains information about your instance profile.</p>
-     */
-    inline CreateInstanceProfileResult& WithInstanceProfile(const InstanceProfile& value) { SetInstanceProfile(value); return *this;}
-
-    /**
-     * <p>An object that contains information about your instance profile.</p>
-     */
-    inline CreateInstanceProfileResult& WithInstanceProfile(InstanceProfile&& value) { SetInstanceProfile(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateInstanceProfileResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateInstanceProfileResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateInstanceProfileResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateInstanceProfileResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     InstanceProfile m_instanceProfile;
+    bool m_instanceProfileHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

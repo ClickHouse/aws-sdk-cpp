@@ -6,6 +6,7 @@
 #include <aws/cloudfront/model/TestFunction2020_05_31Request.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 #include <aws/core/utils/HashingUtils.h>
 
@@ -15,14 +16,6 @@ using namespace Aws::CloudFront::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-TestFunction2020_05_31Request::TestFunction2020_05_31Request() : 
-    m_nameHasBeenSet(false),
-    m_ifMatchHasBeenSet(false),
-    m_stage(FunctionStage::NOT_SET),
-    m_stageHasBeenSet(false),
-    m_eventObjectHasBeenSet(false)
-{
-}
 
 Aws::String TestFunction2020_05_31Request::SerializePayload() const
 {

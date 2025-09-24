@@ -37,254 +37,96 @@ namespace Model
   class WriteTreatmentResource
   {
   public:
-    AWS_PINPOINT_API WriteTreatmentResource();
+    AWS_PINPOINT_API WriteTreatmentResource() = default;
     AWS_PINPOINT_API WriteTreatmentResource(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API WriteTreatmentResource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The delivery configuration settings for sending the treatment through a
      * custom channel. This object is required if the MessageConfiguration object for
      * the treatment specifies a CustomMessage object.</p>
      */
-    inline const CustomDeliveryConfiguration& GetCustomDeliveryConfiguration() const{ return m_customDeliveryConfiguration; }
-
-    /**
-     * <p>The delivery configuration settings for sending the treatment through a
-     * custom channel. This object is required if the MessageConfiguration object for
-     * the treatment specifies a CustomMessage object.</p>
-     */
+    inline const CustomDeliveryConfiguration& GetCustomDeliveryConfiguration() const { return m_customDeliveryConfiguration; }
     inline bool CustomDeliveryConfigurationHasBeenSet() const { return m_customDeliveryConfigurationHasBeenSet; }
+    template<typename CustomDeliveryConfigurationT = CustomDeliveryConfiguration>
+    void SetCustomDeliveryConfiguration(CustomDeliveryConfigurationT&& value) { m_customDeliveryConfigurationHasBeenSet = true; m_customDeliveryConfiguration = std::forward<CustomDeliveryConfigurationT>(value); }
+    template<typename CustomDeliveryConfigurationT = CustomDeliveryConfiguration>
+    WriteTreatmentResource& WithCustomDeliveryConfiguration(CustomDeliveryConfigurationT&& value) { SetCustomDeliveryConfiguration(std::forward<CustomDeliveryConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The delivery configuration settings for sending the treatment through a
-     * custom channel. This object is required if the MessageConfiguration object for
-     * the treatment specifies a CustomMessage object.</p>
-     */
-    inline void SetCustomDeliveryConfiguration(const CustomDeliveryConfiguration& value) { m_customDeliveryConfigurationHasBeenSet = true; m_customDeliveryConfiguration = value; }
-
-    /**
-     * <p>The delivery configuration settings for sending the treatment through a
-     * custom channel. This object is required if the MessageConfiguration object for
-     * the treatment specifies a CustomMessage object.</p>
-     */
-    inline void SetCustomDeliveryConfiguration(CustomDeliveryConfiguration&& value) { m_customDeliveryConfigurationHasBeenSet = true; m_customDeliveryConfiguration = std::move(value); }
-
-    /**
-     * <p>The delivery configuration settings for sending the treatment through a
-     * custom channel. This object is required if the MessageConfiguration object for
-     * the treatment specifies a CustomMessage object.</p>
-     */
-    inline WriteTreatmentResource& WithCustomDeliveryConfiguration(const CustomDeliveryConfiguration& value) { SetCustomDeliveryConfiguration(value); return *this;}
-
-    /**
-     * <p>The delivery configuration settings for sending the treatment through a
-     * custom channel. This object is required if the MessageConfiguration object for
-     * the treatment specifies a CustomMessage object.</p>
-     */
-    inline WriteTreatmentResource& WithCustomDeliveryConfiguration(CustomDeliveryConfiguration&& value) { SetCustomDeliveryConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The message configuration settings for the treatment.</p>
      */
-    inline const MessageConfiguration& GetMessageConfiguration() const{ return m_messageConfiguration; }
-
-    /**
-     * <p>The message configuration settings for the treatment.</p>
-     */
+    inline const MessageConfiguration& GetMessageConfiguration() const { return m_messageConfiguration; }
     inline bool MessageConfigurationHasBeenSet() const { return m_messageConfigurationHasBeenSet; }
+    template<typename MessageConfigurationT = MessageConfiguration>
+    void SetMessageConfiguration(MessageConfigurationT&& value) { m_messageConfigurationHasBeenSet = true; m_messageConfiguration = std::forward<MessageConfigurationT>(value); }
+    template<typename MessageConfigurationT = MessageConfiguration>
+    WriteTreatmentResource& WithMessageConfiguration(MessageConfigurationT&& value) { SetMessageConfiguration(std::forward<MessageConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message configuration settings for the treatment.</p>
-     */
-    inline void SetMessageConfiguration(const MessageConfiguration& value) { m_messageConfigurationHasBeenSet = true; m_messageConfiguration = value; }
-
-    /**
-     * <p>The message configuration settings for the treatment.</p>
-     */
-    inline void SetMessageConfiguration(MessageConfiguration&& value) { m_messageConfigurationHasBeenSet = true; m_messageConfiguration = std::move(value); }
-
-    /**
-     * <p>The message configuration settings for the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithMessageConfiguration(const MessageConfiguration& value) { SetMessageConfiguration(value); return *this;}
-
-    /**
-     * <p>The message configuration settings for the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithMessageConfiguration(MessageConfiguration&& value) { SetMessageConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The schedule settings for the treatment.</p>
      */
-    inline const Schedule& GetSchedule() const{ return m_schedule; }
-
-    /**
-     * <p>The schedule settings for the treatment.</p>
-     */
+    inline const Schedule& GetSchedule() const { return m_schedule; }
     inline bool ScheduleHasBeenSet() const { return m_scheduleHasBeenSet; }
+    template<typename ScheduleT = Schedule>
+    void SetSchedule(ScheduleT&& value) { m_scheduleHasBeenSet = true; m_schedule = std::forward<ScheduleT>(value); }
+    template<typename ScheduleT = Schedule>
+    WriteTreatmentResource& WithSchedule(ScheduleT&& value) { SetSchedule(std::forward<ScheduleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The schedule settings for the treatment.</p>
-     */
-    inline void SetSchedule(const Schedule& value) { m_scheduleHasBeenSet = true; m_schedule = value; }
-
-    /**
-     * <p>The schedule settings for the treatment.</p>
-     */
-    inline void SetSchedule(Schedule&& value) { m_scheduleHasBeenSet = true; m_schedule = std::move(value); }
-
-    /**
-     * <p>The schedule settings for the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithSchedule(const Schedule& value) { SetSchedule(value); return *this;}
-
-    /**
-     * <p>The schedule settings for the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithSchedule(Schedule&& value) { SetSchedule(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The allocated percentage of users (segment members) to send the treatment
      * to.</p>
      */
-    inline int GetSizePercent() const{ return m_sizePercent; }
-
-    /**
-     * <p>The allocated percentage of users (segment members) to send the treatment
-     * to.</p>
-     */
+    inline int GetSizePercent() const { return m_sizePercent; }
     inline bool SizePercentHasBeenSet() const { return m_sizePercentHasBeenSet; }
-
-    /**
-     * <p>The allocated percentage of users (segment members) to send the treatment
-     * to.</p>
-     */
     inline void SetSizePercent(int value) { m_sizePercentHasBeenSet = true; m_sizePercent = value; }
-
-    /**
-     * <p>The allocated percentage of users (segment members) to send the treatment
-     * to.</p>
-     */
     inline WriteTreatmentResource& WithSizePercent(int value) { SetSizePercent(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The message template to use for the treatment.</p>
      */
-    inline const TemplateConfiguration& GetTemplateConfiguration() const{ return m_templateConfiguration; }
-
-    /**
-     * <p>The message template to use for the treatment.</p>
-     */
+    inline const TemplateConfiguration& GetTemplateConfiguration() const { return m_templateConfiguration; }
     inline bool TemplateConfigurationHasBeenSet() const { return m_templateConfigurationHasBeenSet; }
+    template<typename TemplateConfigurationT = TemplateConfiguration>
+    void SetTemplateConfiguration(TemplateConfigurationT&& value) { m_templateConfigurationHasBeenSet = true; m_templateConfiguration = std::forward<TemplateConfigurationT>(value); }
+    template<typename TemplateConfigurationT = TemplateConfiguration>
+    WriteTreatmentResource& WithTemplateConfiguration(TemplateConfigurationT&& value) { SetTemplateConfiguration(std::forward<TemplateConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The message template to use for the treatment.</p>
-     */
-    inline void SetTemplateConfiguration(const TemplateConfiguration& value) { m_templateConfigurationHasBeenSet = true; m_templateConfiguration = value; }
-
-    /**
-     * <p>The message template to use for the treatment.</p>
-     */
-    inline void SetTemplateConfiguration(TemplateConfiguration&& value) { m_templateConfigurationHasBeenSet = true; m_templateConfiguration = std::move(value); }
-
-    /**
-     * <p>The message template to use for the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithTemplateConfiguration(const TemplateConfiguration& value) { SetTemplateConfiguration(value); return *this;}
-
-    /**
-     * <p>The message template to use for the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithTemplateConfiguration(TemplateConfiguration&& value) { SetTemplateConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A custom description of the treatment.</p>
      */
-    inline const Aws::String& GetTreatmentDescription() const{ return m_treatmentDescription; }
-
-    /**
-     * <p>A custom description of the treatment.</p>
-     */
+    inline const Aws::String& GetTreatmentDescription() const { return m_treatmentDescription; }
     inline bool TreatmentDescriptionHasBeenSet() const { return m_treatmentDescriptionHasBeenSet; }
+    template<typename TreatmentDescriptionT = Aws::String>
+    void SetTreatmentDescription(TreatmentDescriptionT&& value) { m_treatmentDescriptionHasBeenSet = true; m_treatmentDescription = std::forward<TreatmentDescriptionT>(value); }
+    template<typename TreatmentDescriptionT = Aws::String>
+    WriteTreatmentResource& WithTreatmentDescription(TreatmentDescriptionT&& value) { SetTreatmentDescription(std::forward<TreatmentDescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A custom description of the treatment.</p>
-     */
-    inline void SetTreatmentDescription(const Aws::String& value) { m_treatmentDescriptionHasBeenSet = true; m_treatmentDescription = value; }
-
-    /**
-     * <p>A custom description of the treatment.</p>
-     */
-    inline void SetTreatmentDescription(Aws::String&& value) { m_treatmentDescriptionHasBeenSet = true; m_treatmentDescription = std::move(value); }
-
-    /**
-     * <p>A custom description of the treatment.</p>
-     */
-    inline void SetTreatmentDescription(const char* value) { m_treatmentDescriptionHasBeenSet = true; m_treatmentDescription.assign(value); }
-
-    /**
-     * <p>A custom description of the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithTreatmentDescription(const Aws::String& value) { SetTreatmentDescription(value); return *this;}
-
-    /**
-     * <p>A custom description of the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithTreatmentDescription(Aws::String&& value) { SetTreatmentDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A custom description of the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithTreatmentDescription(const char* value) { SetTreatmentDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A custom name for the treatment.</p>
      */
-    inline const Aws::String& GetTreatmentName() const{ return m_treatmentName; }
-
-    /**
-     * <p>A custom name for the treatment.</p>
-     */
+    inline const Aws::String& GetTreatmentName() const { return m_treatmentName; }
     inline bool TreatmentNameHasBeenSet() const { return m_treatmentNameHasBeenSet; }
-
-    /**
-     * <p>A custom name for the treatment.</p>
-     */
-    inline void SetTreatmentName(const Aws::String& value) { m_treatmentNameHasBeenSet = true; m_treatmentName = value; }
-
-    /**
-     * <p>A custom name for the treatment.</p>
-     */
-    inline void SetTreatmentName(Aws::String&& value) { m_treatmentNameHasBeenSet = true; m_treatmentName = std::move(value); }
-
-    /**
-     * <p>A custom name for the treatment.</p>
-     */
-    inline void SetTreatmentName(const char* value) { m_treatmentNameHasBeenSet = true; m_treatmentName.assign(value); }
-
-    /**
-     * <p>A custom name for the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithTreatmentName(const Aws::String& value) { SetTreatmentName(value); return *this;}
-
-    /**
-     * <p>A custom name for the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithTreatmentName(Aws::String&& value) { SetTreatmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>A custom name for the treatment.</p>
-     */
-    inline WriteTreatmentResource& WithTreatmentName(const char* value) { SetTreatmentName(value); return *this;}
-
+    template<typename TreatmentNameT = Aws::String>
+    void SetTreatmentName(TreatmentNameT&& value) { m_treatmentNameHasBeenSet = true; m_treatmentName = std::forward<TreatmentNameT>(value); }
+    template<typename TreatmentNameT = Aws::String>
+    WriteTreatmentResource& WithTreatmentName(TreatmentNameT&& value) { SetTreatmentName(std::forward<TreatmentNameT>(value)); return *this;}
+    ///@}
   private:
 
     CustomDeliveryConfiguration m_customDeliveryConfiguration;
@@ -296,7 +138,7 @@ namespace Model
     Schedule m_schedule;
     bool m_scheduleHasBeenSet = false;
 
-    int m_sizePercent;
+    int m_sizePercent{0};
     bool m_sizePercentHasBeenSet = false;
 
     TemplateConfiguration m_templateConfiguration;

@@ -18,21 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-RestoreSummary::RestoreSummary() : 
-    m_sourceBackupArnHasBeenSet(false),
-    m_sourceTableArnHasBeenSet(false),
-    m_restoreDateTimeHasBeenSet(false),
-    m_restoreInProgress(false),
-    m_restoreInProgressHasBeenSet(false)
-{
-}
-
-RestoreSummary::RestoreSummary(JsonView jsonValue) : 
-    m_sourceBackupArnHasBeenSet(false),
-    m_sourceTableArnHasBeenSet(false),
-    m_restoreDateTimeHasBeenSet(false),
-    m_restoreInProgress(false),
-    m_restoreInProgressHasBeenSet(false)
+RestoreSummary::RestoreSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ RestoreSummary& RestoreSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SourceBackupArn"))
   {
     m_sourceBackupArn = jsonValue.GetString("SourceBackupArn");
-
     m_sourceBackupArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceTableArn"))
   {
     m_sourceTableArn = jsonValue.GetString("SourceTableArn");
-
     m_sourceTableArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RestoreDateTime"))
   {
     m_restoreDateTime = jsonValue.GetDouble("RestoreDateTime");
-
     m_restoreDateTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RestoreInProgress"))
   {
     m_restoreInProgress = jsonValue.GetBool("RestoreInProgress");
-
     m_restoreInProgressHasBeenSet = true;
   }
-
   return *this;
 }
 

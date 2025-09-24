@@ -12,13 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateInferenceComponentRequest::UpdateInferenceComponentRequest() : 
-    m_inferenceComponentNameHasBeenSet(false),
-    m_specificationHasBeenSet(false),
-    m_runtimeConfigHasBeenSet(false)
-{
-}
-
 Aws::String UpdateInferenceComponentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,12 @@ Aws::String UpdateInferenceComponentRequest::SerializePayload() const
   if(m_runtimeConfigHasBeenSet)
   {
    payload.WithObject("RuntimeConfig", m_runtimeConfig.Jsonize());
+
+  }
+
+  if(m_deploymentConfigHasBeenSet)
+  {
+   payload.WithObject("DeploymentConfig", m_deploymentConfig.Jsonize());
 
   }
 

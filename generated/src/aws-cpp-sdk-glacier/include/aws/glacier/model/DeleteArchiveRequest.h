@@ -25,7 +25,7 @@ namespace Model
   class DeleteArchiveRequest : public GlacierRequest
   {
   public:
-    AWS_GLACIER_API DeleteArchiveRequest();
+    AWS_GLACIER_API DeleteArchiveRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,6 +36,7 @@ namespace Model
     AWS_GLACIER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The <code>AccountId</code> value is the AWS account ID of the account that
      * owns the vault. You can either specify an AWS account ID or optionally a single
@@ -43,153 +44,37 @@ namespace Model
      * ID associated with the credentials used to sign the request. If you use an
      * account ID, do not include any hyphens ('-') in the ID.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    DeleteArchiveRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID.</p>
-     */
-    inline DeleteArchiveRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID.</p>
-     */
-    inline DeleteArchiveRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>AccountId</code> value is the AWS account ID of the account that
-     * owns the vault. You can either specify an AWS account ID or optionally a single
-     * '<code>-</code>' (hyphen), in which case Amazon S3 Glacier uses the AWS account
-     * ID associated with the credentials used to sign the request. If you use an
-     * account ID, do not include any hyphens ('-') in the ID.</p>
-     */
-    inline DeleteArchiveRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the vault.</p>
      */
-    inline const Aws::String& GetVaultName() const{ return m_vaultName; }
-
-    /**
-     * <p>The name of the vault.</p>
-     */
+    inline const Aws::String& GetVaultName() const { return m_vaultName; }
     inline bool VaultNameHasBeenSet() const { return m_vaultNameHasBeenSet; }
+    template<typename VaultNameT = Aws::String>
+    void SetVaultName(VaultNameT&& value) { m_vaultNameHasBeenSet = true; m_vaultName = std::forward<VaultNameT>(value); }
+    template<typename VaultNameT = Aws::String>
+    DeleteArchiveRequest& WithVaultName(VaultNameT&& value) { SetVaultName(std::forward<VaultNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline void SetVaultName(const Aws::String& value) { m_vaultNameHasBeenSet = true; m_vaultName = value; }
-
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline void SetVaultName(Aws::String&& value) { m_vaultNameHasBeenSet = true; m_vaultName = std::move(value); }
-
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline void SetVaultName(const char* value) { m_vaultNameHasBeenSet = true; m_vaultName.assign(value); }
-
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline DeleteArchiveRequest& WithVaultName(const Aws::String& value) { SetVaultName(value); return *this;}
-
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline DeleteArchiveRequest& WithVaultName(Aws::String&& value) { SetVaultName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the vault.</p>
-     */
-    inline DeleteArchiveRequest& WithVaultName(const char* value) { SetVaultName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the archive to delete.</p>
      */
-    inline const Aws::String& GetArchiveId() const{ return m_archiveId; }
-
-    /**
-     * <p>The ID of the archive to delete.</p>
-     */
+    inline const Aws::String& GetArchiveId() const { return m_archiveId; }
     inline bool ArchiveIdHasBeenSet() const { return m_archiveIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the archive to delete.</p>
-     */
-    inline void SetArchiveId(const Aws::String& value) { m_archiveIdHasBeenSet = true; m_archiveId = value; }
-
-    /**
-     * <p>The ID of the archive to delete.</p>
-     */
-    inline void SetArchiveId(Aws::String&& value) { m_archiveIdHasBeenSet = true; m_archiveId = std::move(value); }
-
-    /**
-     * <p>The ID of the archive to delete.</p>
-     */
-    inline void SetArchiveId(const char* value) { m_archiveIdHasBeenSet = true; m_archiveId.assign(value); }
-
-    /**
-     * <p>The ID of the archive to delete.</p>
-     */
-    inline DeleteArchiveRequest& WithArchiveId(const Aws::String& value) { SetArchiveId(value); return *this;}
-
-    /**
-     * <p>The ID of the archive to delete.</p>
-     */
-    inline DeleteArchiveRequest& WithArchiveId(Aws::String&& value) { SetArchiveId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the archive to delete.</p>
-     */
-    inline DeleteArchiveRequest& WithArchiveId(const char* value) { SetArchiveId(value); return *this;}
-
+    template<typename ArchiveIdT = Aws::String>
+    void SetArchiveId(ArchiveIdT&& value) { m_archiveIdHasBeenSet = true; m_archiveId = std::forward<ArchiveIdT>(value); }
+    template<typename ArchiveIdT = Aws::String>
+    DeleteArchiveRequest& WithArchiveId(ArchiveIdT&& value) { SetArchiveId(std::forward<ArchiveIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

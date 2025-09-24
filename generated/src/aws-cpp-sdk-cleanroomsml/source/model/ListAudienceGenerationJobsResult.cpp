@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListAudienceGenerationJobsResult::ListAudienceGenerationJobsResult()
-{
-}
-
 ListAudienceGenerationJobsResult::ListAudienceGenerationJobsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,6 +25,11 @@ ListAudienceGenerationJobsResult::ListAudienceGenerationJobsResult(const Aws::Am
 ListAudienceGenerationJobsResult& ListAudienceGenerationJobsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
+  if(jsonValue.ValueExists("nextToken"))
+  {
+    m_nextToken = jsonValue.GetString("nextToken");
+    m_nextTokenHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("audienceGenerationJobs"))
   {
     Aws::Utils::Array<JsonView> audienceGenerationJobsJsonList = jsonValue.GetArray("audienceGenerationJobs");
@@ -36,20 +37,15 @@ ListAudienceGenerationJobsResult& ListAudienceGenerationJobsResult::operator =(c
     {
       m_audienceGenerationJobs.push_back(audienceGenerationJobsJsonList[audienceGenerationJobsIndex].AsObject());
     }
+    m_audienceGenerationJobsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("nextToken"))
-  {
-    m_nextToken = jsonValue.GetString("nextToken");
-
-  }
-
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

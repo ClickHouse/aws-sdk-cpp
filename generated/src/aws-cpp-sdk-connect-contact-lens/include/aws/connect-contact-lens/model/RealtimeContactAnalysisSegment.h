@@ -7,6 +7,7 @@
 #include <aws/connect-contact-lens/ConnectContactLens_EXPORTS.h>
 #include <aws/connect-contact-lens/model/Transcript.h>
 #include <aws/connect-contact-lens/model/Categories.h>
+#include <aws/connect-contact-lens/model/PostContactSummary.h>
 #include <utility>
 
 namespace Aws
@@ -33,73 +34,47 @@ namespace Model
   class RealtimeContactAnalysisSegment
   {
   public:
-    AWS_CONNECTCONTACTLENS_API RealtimeContactAnalysisSegment();
+    AWS_CONNECTCONTACTLENS_API RealtimeContactAnalysisSegment() = default;
     AWS_CONNECTCONTACTLENS_API RealtimeContactAnalysisSegment(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCONTACTLENS_API RealtimeContactAnalysisSegment& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCONTACTLENS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The analyzed transcript.</p>
      */
-    inline const Transcript& GetTranscript() const{ return m_transcript; }
-
-    /**
-     * <p>The analyzed transcript.</p>
-     */
+    inline const Transcript& GetTranscript() const { return m_transcript; }
     inline bool TranscriptHasBeenSet() const { return m_transcriptHasBeenSet; }
+    template<typename TranscriptT = Transcript>
+    void SetTranscript(TranscriptT&& value) { m_transcriptHasBeenSet = true; m_transcript = std::forward<TranscriptT>(value); }
+    template<typename TranscriptT = Transcript>
+    RealtimeContactAnalysisSegment& WithTranscript(TranscriptT&& value) { SetTranscript(std::forward<TranscriptT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The analyzed transcript.</p>
-     */
-    inline void SetTranscript(const Transcript& value) { m_transcriptHasBeenSet = true; m_transcript = value; }
-
-    /**
-     * <p>The analyzed transcript.</p>
-     */
-    inline void SetTranscript(Transcript&& value) { m_transcriptHasBeenSet = true; m_transcript = std::move(value); }
-
-    /**
-     * <p>The analyzed transcript.</p>
-     */
-    inline RealtimeContactAnalysisSegment& WithTranscript(const Transcript& value) { SetTranscript(value); return *this;}
-
-    /**
-     * <p>The analyzed transcript.</p>
-     */
-    inline RealtimeContactAnalysisSegment& WithTranscript(Transcript&& value) { SetTranscript(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The matched category rules.</p>
      */
-    inline const Categories& GetCategories() const{ return m_categories; }
-
-    /**
-     * <p>The matched category rules.</p>
-     */
+    inline const Categories& GetCategories() const { return m_categories; }
     inline bool CategoriesHasBeenSet() const { return m_categoriesHasBeenSet; }
+    template<typename CategoriesT = Categories>
+    void SetCategories(CategoriesT&& value) { m_categoriesHasBeenSet = true; m_categories = std::forward<CategoriesT>(value); }
+    template<typename CategoriesT = Categories>
+    RealtimeContactAnalysisSegment& WithCategories(CategoriesT&& value) { SetCategories(std::forward<CategoriesT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The matched category rules.</p>
+     * <p>Information about the post-contact summary.</p>
      */
-    inline void SetCategories(const Categories& value) { m_categoriesHasBeenSet = true; m_categories = value; }
-
-    /**
-     * <p>The matched category rules.</p>
-     */
-    inline void SetCategories(Categories&& value) { m_categoriesHasBeenSet = true; m_categories = std::move(value); }
-
-    /**
-     * <p>The matched category rules.</p>
-     */
-    inline RealtimeContactAnalysisSegment& WithCategories(const Categories& value) { SetCategories(value); return *this;}
-
-    /**
-     * <p>The matched category rules.</p>
-     */
-    inline RealtimeContactAnalysisSegment& WithCategories(Categories&& value) { SetCategories(std::move(value)); return *this;}
-
+    inline const PostContactSummary& GetPostContactSummary() const { return m_postContactSummary; }
+    inline bool PostContactSummaryHasBeenSet() const { return m_postContactSummaryHasBeenSet; }
+    template<typename PostContactSummaryT = PostContactSummary>
+    void SetPostContactSummary(PostContactSummaryT&& value) { m_postContactSummaryHasBeenSet = true; m_postContactSummary = std::forward<PostContactSummaryT>(value); }
+    template<typename PostContactSummaryT = PostContactSummary>
+    RealtimeContactAnalysisSegment& WithPostContactSummary(PostContactSummaryT&& value) { SetPostContactSummary(std::forward<PostContactSummaryT>(value)); return *this;}
+    ///@}
   private:
 
     Transcript m_transcript;
@@ -107,6 +82,9 @@ namespace Model
 
     Categories m_categories;
     bool m_categoriesHasBeenSet = false;
+
+    PostContactSummary m_postContactSummary;
+    bool m_postContactSummaryHasBeenSet = false;
   };
 
 } // namespace Model

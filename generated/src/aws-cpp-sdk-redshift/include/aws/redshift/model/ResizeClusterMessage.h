@@ -32,7 +32,7 @@ namespace Model
   class ResizeClusterMessage
   {
   public:
-    AWS_REDSHIFT_API ResizeClusterMessage();
+    AWS_REDSHIFT_API ResizeClusterMessage() = default;
     AWS_REDSHIFT_API ResizeClusterMessage(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API ResizeClusterMessage& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,272 +40,89 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the cluster to resize.</p>
      */
-    inline const Aws::String& GetClusterIdentifier() const{ return m_clusterIdentifier; }
-
-    /**
-     * <p>The unique identifier for the cluster to resize.</p>
-     */
+    inline const Aws::String& GetClusterIdentifier() const { return m_clusterIdentifier; }
     inline bool ClusterIdentifierHasBeenSet() const { return m_clusterIdentifierHasBeenSet; }
+    template<typename ClusterIdentifierT = Aws::String>
+    void SetClusterIdentifier(ClusterIdentifierT&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::forward<ClusterIdentifierT>(value); }
+    template<typename ClusterIdentifierT = Aws::String>
+    ResizeClusterMessage& WithClusterIdentifier(ClusterIdentifierT&& value) { SetClusterIdentifier(std::forward<ClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the cluster to resize.</p>
-     */
-    inline void SetClusterIdentifier(const Aws::String& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = value; }
-
-    /**
-     * <p>The unique identifier for the cluster to resize.</p>
-     */
-    inline void SetClusterIdentifier(Aws::String&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the cluster to resize.</p>
-     */
-    inline void SetClusterIdentifier(const char* value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier.assign(value); }
-
-    /**
-     * <p>The unique identifier for the cluster to resize.</p>
-     */
-    inline ResizeClusterMessage& WithClusterIdentifier(const Aws::String& value) { SetClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the cluster to resize.</p>
-     */
-    inline ResizeClusterMessage& WithClusterIdentifier(Aws::String&& value) { SetClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the cluster to resize.</p>
-     */
-    inline ResizeClusterMessage& WithClusterIdentifier(const char* value) { SetClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new cluster type for the specified cluster.</p>
      */
-    inline const Aws::String& GetClusterType() const{ return m_clusterType; }
-
-    /**
-     * <p>The new cluster type for the specified cluster.</p>
-     */
+    inline const Aws::String& GetClusterType() const { return m_clusterType; }
     inline bool ClusterTypeHasBeenSet() const { return m_clusterTypeHasBeenSet; }
+    template<typename ClusterTypeT = Aws::String>
+    void SetClusterType(ClusterTypeT&& value) { m_clusterTypeHasBeenSet = true; m_clusterType = std::forward<ClusterTypeT>(value); }
+    template<typename ClusterTypeT = Aws::String>
+    ResizeClusterMessage& WithClusterType(ClusterTypeT&& value) { SetClusterType(std::forward<ClusterTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The new cluster type for the specified cluster.</p>
-     */
-    inline void SetClusterType(const Aws::String& value) { m_clusterTypeHasBeenSet = true; m_clusterType = value; }
-
-    /**
-     * <p>The new cluster type for the specified cluster.</p>
-     */
-    inline void SetClusterType(Aws::String&& value) { m_clusterTypeHasBeenSet = true; m_clusterType = std::move(value); }
-
-    /**
-     * <p>The new cluster type for the specified cluster.</p>
-     */
-    inline void SetClusterType(const char* value) { m_clusterTypeHasBeenSet = true; m_clusterType.assign(value); }
-
-    /**
-     * <p>The new cluster type for the specified cluster.</p>
-     */
-    inline ResizeClusterMessage& WithClusterType(const Aws::String& value) { SetClusterType(value); return *this;}
-
-    /**
-     * <p>The new cluster type for the specified cluster.</p>
-     */
-    inline ResizeClusterMessage& WithClusterType(Aws::String&& value) { SetClusterType(std::move(value)); return *this;}
-
-    /**
-     * <p>The new cluster type for the specified cluster.</p>
-     */
-    inline ResizeClusterMessage& WithClusterType(const char* value) { SetClusterType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new node type for the nodes you are adding. If not specified, the
      * cluster's current node type is used.</p>
      */
-    inline const Aws::String& GetNodeType() const{ return m_nodeType; }
-
-    /**
-     * <p>The new node type for the nodes you are adding. If not specified, the
-     * cluster's current node type is used.</p>
-     */
+    inline const Aws::String& GetNodeType() const { return m_nodeType; }
     inline bool NodeTypeHasBeenSet() const { return m_nodeTypeHasBeenSet; }
+    template<typename NodeTypeT = Aws::String>
+    void SetNodeType(NodeTypeT&& value) { m_nodeTypeHasBeenSet = true; m_nodeType = std::forward<NodeTypeT>(value); }
+    template<typename NodeTypeT = Aws::String>
+    ResizeClusterMessage& WithNodeType(NodeTypeT&& value) { SetNodeType(std::forward<NodeTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The new node type for the nodes you are adding. If not specified, the
-     * cluster's current node type is used.</p>
-     */
-    inline void SetNodeType(const Aws::String& value) { m_nodeTypeHasBeenSet = true; m_nodeType = value; }
-
-    /**
-     * <p>The new node type for the nodes you are adding. If not specified, the
-     * cluster's current node type is used.</p>
-     */
-    inline void SetNodeType(Aws::String&& value) { m_nodeTypeHasBeenSet = true; m_nodeType = std::move(value); }
-
-    /**
-     * <p>The new node type for the nodes you are adding. If not specified, the
-     * cluster's current node type is used.</p>
-     */
-    inline void SetNodeType(const char* value) { m_nodeTypeHasBeenSet = true; m_nodeType.assign(value); }
-
-    /**
-     * <p>The new node type for the nodes you are adding. If not specified, the
-     * cluster's current node type is used.</p>
-     */
-    inline ResizeClusterMessage& WithNodeType(const Aws::String& value) { SetNodeType(value); return *this;}
-
-    /**
-     * <p>The new node type for the nodes you are adding. If not specified, the
-     * cluster's current node type is used.</p>
-     */
-    inline ResizeClusterMessage& WithNodeType(Aws::String&& value) { SetNodeType(std::move(value)); return *this;}
-
-    /**
-     * <p>The new node type for the nodes you are adding. If not specified, the
-     * cluster's current node type is used.</p>
-     */
-    inline ResizeClusterMessage& WithNodeType(const char* value) { SetNodeType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new number of nodes for the cluster. If not specified, the cluster's
      * current number of nodes is used.</p>
      */
-    inline int GetNumberOfNodes() const{ return m_numberOfNodes; }
-
-    /**
-     * <p>The new number of nodes for the cluster. If not specified, the cluster's
-     * current number of nodes is used.</p>
-     */
+    inline int GetNumberOfNodes() const { return m_numberOfNodes; }
     inline bool NumberOfNodesHasBeenSet() const { return m_numberOfNodesHasBeenSet; }
-
-    /**
-     * <p>The new number of nodes for the cluster. If not specified, the cluster's
-     * current number of nodes is used.</p>
-     */
     inline void SetNumberOfNodes(int value) { m_numberOfNodesHasBeenSet = true; m_numberOfNodes = value; }
-
-    /**
-     * <p>The new number of nodes for the cluster. If not specified, the cluster's
-     * current number of nodes is used.</p>
-     */
     inline ResizeClusterMessage& WithNumberOfNodes(int value) { SetNumberOfNodes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A boolean value indicating whether the resize operation is using the classic
      * resize process. If you don't provide this parameter or set the value to
      * <code>false</code>, the resize type is elastic. </p>
      */
-    inline bool GetClassic() const{ return m_classic; }
-
-    /**
-     * <p>A boolean value indicating whether the resize operation is using the classic
-     * resize process. If you don't provide this parameter or set the value to
-     * <code>false</code>, the resize type is elastic. </p>
-     */
+    inline bool GetClassic() const { return m_classic; }
     inline bool ClassicHasBeenSet() const { return m_classicHasBeenSet; }
-
-    /**
-     * <p>A boolean value indicating whether the resize operation is using the classic
-     * resize process. If you don't provide this parameter or set the value to
-     * <code>false</code>, the resize type is elastic. </p>
-     */
     inline void SetClassic(bool value) { m_classicHasBeenSet = true; m_classic = value; }
-
-    /**
-     * <p>A boolean value indicating whether the resize operation is using the classic
-     * resize process. If you don't provide this parameter or set the value to
-     * <code>false</code>, the resize type is elastic. </p>
-     */
     inline ResizeClusterMessage& WithClassic(bool value) { SetClassic(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The identifier of the reserved node.</p>
      */
-    inline const Aws::String& GetReservedNodeId() const{ return m_reservedNodeId; }
-
-    /**
-     * <p>The identifier of the reserved node.</p>
-     */
+    inline const Aws::String& GetReservedNodeId() const { return m_reservedNodeId; }
     inline bool ReservedNodeIdHasBeenSet() const { return m_reservedNodeIdHasBeenSet; }
+    template<typename ReservedNodeIdT = Aws::String>
+    void SetReservedNodeId(ReservedNodeIdT&& value) { m_reservedNodeIdHasBeenSet = true; m_reservedNodeId = std::forward<ReservedNodeIdT>(value); }
+    template<typename ReservedNodeIdT = Aws::String>
+    ResizeClusterMessage& WithReservedNodeId(ReservedNodeIdT&& value) { SetReservedNodeId(std::forward<ReservedNodeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the reserved node.</p>
-     */
-    inline void SetReservedNodeId(const Aws::String& value) { m_reservedNodeIdHasBeenSet = true; m_reservedNodeId = value; }
-
-    /**
-     * <p>The identifier of the reserved node.</p>
-     */
-    inline void SetReservedNodeId(Aws::String&& value) { m_reservedNodeIdHasBeenSet = true; m_reservedNodeId = std::move(value); }
-
-    /**
-     * <p>The identifier of the reserved node.</p>
-     */
-    inline void SetReservedNodeId(const char* value) { m_reservedNodeIdHasBeenSet = true; m_reservedNodeId.assign(value); }
-
-    /**
-     * <p>The identifier of the reserved node.</p>
-     */
-    inline ResizeClusterMessage& WithReservedNodeId(const Aws::String& value) { SetReservedNodeId(value); return *this;}
-
-    /**
-     * <p>The identifier of the reserved node.</p>
-     */
-    inline ResizeClusterMessage& WithReservedNodeId(Aws::String&& value) { SetReservedNodeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the reserved node.</p>
-     */
-    inline ResizeClusterMessage& WithReservedNodeId(const char* value) { SetReservedNodeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the target reserved node offering.</p>
      */
-    inline const Aws::String& GetTargetReservedNodeOfferingId() const{ return m_targetReservedNodeOfferingId; }
-
-    /**
-     * <p>The identifier of the target reserved node offering.</p>
-     */
+    inline const Aws::String& GetTargetReservedNodeOfferingId() const { return m_targetReservedNodeOfferingId; }
     inline bool TargetReservedNodeOfferingIdHasBeenSet() const { return m_targetReservedNodeOfferingIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the target reserved node offering.</p>
-     */
-    inline void SetTargetReservedNodeOfferingId(const Aws::String& value) { m_targetReservedNodeOfferingIdHasBeenSet = true; m_targetReservedNodeOfferingId = value; }
-
-    /**
-     * <p>The identifier of the target reserved node offering.</p>
-     */
-    inline void SetTargetReservedNodeOfferingId(Aws::String&& value) { m_targetReservedNodeOfferingIdHasBeenSet = true; m_targetReservedNodeOfferingId = std::move(value); }
-
-    /**
-     * <p>The identifier of the target reserved node offering.</p>
-     */
-    inline void SetTargetReservedNodeOfferingId(const char* value) { m_targetReservedNodeOfferingIdHasBeenSet = true; m_targetReservedNodeOfferingId.assign(value); }
-
-    /**
-     * <p>The identifier of the target reserved node offering.</p>
-     */
-    inline ResizeClusterMessage& WithTargetReservedNodeOfferingId(const Aws::String& value) { SetTargetReservedNodeOfferingId(value); return *this;}
-
-    /**
-     * <p>The identifier of the target reserved node offering.</p>
-     */
-    inline ResizeClusterMessage& WithTargetReservedNodeOfferingId(Aws::String&& value) { SetTargetReservedNodeOfferingId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the target reserved node offering.</p>
-     */
-    inline ResizeClusterMessage& WithTargetReservedNodeOfferingId(const char* value) { SetTargetReservedNodeOfferingId(value); return *this;}
-
+    template<typename TargetReservedNodeOfferingIdT = Aws::String>
+    void SetTargetReservedNodeOfferingId(TargetReservedNodeOfferingIdT&& value) { m_targetReservedNodeOfferingIdHasBeenSet = true; m_targetReservedNodeOfferingId = std::forward<TargetReservedNodeOfferingIdT>(value); }
+    template<typename TargetReservedNodeOfferingIdT = Aws::String>
+    ResizeClusterMessage& WithTargetReservedNodeOfferingId(TargetReservedNodeOfferingIdT&& value) { SetTargetReservedNodeOfferingId(std::forward<TargetReservedNodeOfferingIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterIdentifier;
@@ -317,10 +134,10 @@ namespace Model
     Aws::String m_nodeType;
     bool m_nodeTypeHasBeenSet = false;
 
-    int m_numberOfNodes;
+    int m_numberOfNodes{0};
     bool m_numberOfNodesHasBeenSet = false;
 
-    bool m_classic;
+    bool m_classic{false};
     bool m_classicHasBeenSet = false;
 
     Aws::String m_reservedNodeId;

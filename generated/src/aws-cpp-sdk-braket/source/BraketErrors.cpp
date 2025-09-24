@@ -6,15 +6,23 @@
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/braket/BraketErrors.h>
+#include <aws/braket/model/ValidationException.h>
 
 using namespace Aws::Client;
 using namespace Aws::Utils;
 using namespace Aws::Braket;
+using namespace Aws::Braket::Model;
 
 namespace Aws
 {
 namespace Braket
 {
+template<> AWS_BRAKET_API ValidationException BraketError::GetModeledError()
+{
+  assert(this->GetErrorType() == BraketErrors::VALIDATION);
+  return ValidationException(this->GetJsonPayload().View());
+}
+
 namespace BraketErrorMapper
 {
 
@@ -47,7 +55,7 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName)
   }
   else if (hashCode == INTERNAL_SERVICE_HASH)
   {
-    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::INTERNAL_SERVICE), RetryableType::NOT_RETRYABLE);
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(BraketErrors::INTERNAL_SERVICE), RetryableType::RETRYABLE);
   }
   return AWSError<CoreErrors>(CoreErrors::UNKNOWN, false);
 }

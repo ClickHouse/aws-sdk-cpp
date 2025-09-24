@@ -10,14 +10,6 @@
 using namespace Aws::RDS::Model;
 using namespace Aws::Utils;
 
-ResetDBClusterParameterGroupRequest::ResetDBClusterParameterGroupRequest() : 
-    m_dBClusterParameterGroupNameHasBeenSet(false),
-    m_resetAllParameters(false),
-    m_resetAllParametersHasBeenSet(false),
-    m_parametersHasBeenSet(false)
-{
-}
-
 Aws::String ResetDBClusterParameterGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,11 +26,18 @@ Aws::String ResetDBClusterParameterGroupRequest::SerializePayload() const
 
   if(m_parametersHasBeenSet)
   {
-    unsigned parametersCount = 1;
-    for(auto& item : m_parameters)
+    if (m_parameters.empty())
     {
-      item.OutputToStream(ss, "Parameters.member.", parametersCount, "");
-      parametersCount++;
+      ss << "Parameters=&";
+    }
+    else
+    {
+      unsigned parametersCount = 1;
+      for(auto& item : m_parameters)
+      {
+        item.OutputToStream(ss, "Parameters.Parameter.", parametersCount, "");
+        parametersCount++;
+      }
     }
   }
 

@@ -33,61 +33,26 @@ namespace Model
   class CaptionSource
   {
   public:
-    AWS_ELASTICTRANSCODER_API CaptionSource();
+    AWS_ELASTICTRANSCODER_API CaptionSource() = default;
     AWS_ELASTICTRANSCODER_API CaptionSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICTRANSCODER_API CaptionSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICTRANSCODER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the sidecar caption file that you want Elastic Transcoder to
      * include in the output file.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>The name of the sidecar caption file that you want Elastic Transcoder to
-     * include in the output file.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    CaptionSource& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the sidecar caption file that you want Elastic Transcoder to
-     * include in the output file.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>The name of the sidecar caption file that you want Elastic Transcoder to
-     * include in the output file.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>The name of the sidecar caption file that you want Elastic Transcoder to
-     * include in the output file.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>The name of the sidecar caption file that you want Elastic Transcoder to
-     * include in the output file.</p>
-     */
-    inline CaptionSource& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>The name of the sidecar caption file that you want Elastic Transcoder to
-     * include in the output file.</p>
-     */
-    inline CaptionSource& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the sidecar caption file that you want Elastic Transcoder to
-     * include in the output file.</p>
-     */
-    inline CaptionSource& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A string that specifies the language of the caption. If you specified
      * multiple inputs with captions, the caption language must match in order to be
@@ -96,243 +61,56 @@ namespace Model
      * more information on ISO language codes and language names, see the List of ISO
      * 639-1 codes.</p>
      */
-    inline const Aws::String& GetLanguage() const{ return m_language; }
-
-    /**
-     * <p>A string that specifies the language of the caption. If you specified
-     * multiple inputs with captions, the caption language must match in order to be
-     * included in the output. Specify this as one of:</p> <ul> <li> <p>2-character ISO
-     * 639-1 code</p> </li> <li> <p>3-character ISO 639-2 code</p> </li> </ul> <p>For
-     * more information on ISO language codes and language names, see the List of ISO
-     * 639-1 codes.</p>
-     */
+    inline const Aws::String& GetLanguage() const { return m_language; }
     inline bool LanguageHasBeenSet() const { return m_languageHasBeenSet; }
+    template<typename LanguageT = Aws::String>
+    void SetLanguage(LanguageT&& value) { m_languageHasBeenSet = true; m_language = std::forward<LanguageT>(value); }
+    template<typename LanguageT = Aws::String>
+    CaptionSource& WithLanguage(LanguageT&& value) { SetLanguage(std::forward<LanguageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A string that specifies the language of the caption. If you specified
-     * multiple inputs with captions, the caption language must match in order to be
-     * included in the output. Specify this as one of:</p> <ul> <li> <p>2-character ISO
-     * 639-1 code</p> </li> <li> <p>3-character ISO 639-2 code</p> </li> </ul> <p>For
-     * more information on ISO language codes and language names, see the List of ISO
-     * 639-1 codes.</p>
-     */
-    inline void SetLanguage(const Aws::String& value) { m_languageHasBeenSet = true; m_language = value; }
-
-    /**
-     * <p>A string that specifies the language of the caption. If you specified
-     * multiple inputs with captions, the caption language must match in order to be
-     * included in the output. Specify this as one of:</p> <ul> <li> <p>2-character ISO
-     * 639-1 code</p> </li> <li> <p>3-character ISO 639-2 code</p> </li> </ul> <p>For
-     * more information on ISO language codes and language names, see the List of ISO
-     * 639-1 codes.</p>
-     */
-    inline void SetLanguage(Aws::String&& value) { m_languageHasBeenSet = true; m_language = std::move(value); }
-
-    /**
-     * <p>A string that specifies the language of the caption. If you specified
-     * multiple inputs with captions, the caption language must match in order to be
-     * included in the output. Specify this as one of:</p> <ul> <li> <p>2-character ISO
-     * 639-1 code</p> </li> <li> <p>3-character ISO 639-2 code</p> </li> </ul> <p>For
-     * more information on ISO language codes and language names, see the List of ISO
-     * 639-1 codes.</p>
-     */
-    inline void SetLanguage(const char* value) { m_languageHasBeenSet = true; m_language.assign(value); }
-
-    /**
-     * <p>A string that specifies the language of the caption. If you specified
-     * multiple inputs with captions, the caption language must match in order to be
-     * included in the output. Specify this as one of:</p> <ul> <li> <p>2-character ISO
-     * 639-1 code</p> </li> <li> <p>3-character ISO 639-2 code</p> </li> </ul> <p>For
-     * more information on ISO language codes and language names, see the List of ISO
-     * 639-1 codes.</p>
-     */
-    inline CaptionSource& WithLanguage(const Aws::String& value) { SetLanguage(value); return *this;}
-
-    /**
-     * <p>A string that specifies the language of the caption. If you specified
-     * multiple inputs with captions, the caption language must match in order to be
-     * included in the output. Specify this as one of:</p> <ul> <li> <p>2-character ISO
-     * 639-1 code</p> </li> <li> <p>3-character ISO 639-2 code</p> </li> </ul> <p>For
-     * more information on ISO language codes and language names, see the List of ISO
-     * 639-1 codes.</p>
-     */
-    inline CaptionSource& WithLanguage(Aws::String&& value) { SetLanguage(std::move(value)); return *this;}
-
-    /**
-     * <p>A string that specifies the language of the caption. If you specified
-     * multiple inputs with captions, the caption language must match in order to be
-     * included in the output. Specify this as one of:</p> <ul> <li> <p>2-character ISO
-     * 639-1 code</p> </li> <li> <p>3-character ISO 639-2 code</p> </li> </ul> <p>For
-     * more information on ISO language codes and language names, see the List of ISO
-     * 639-1 codes.</p>
-     */
-    inline CaptionSource& WithLanguage(const char* value) { SetLanguage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>For clip generation or captions that do not start at the same time as the
      * associated video file, the <code>TimeOffset</code> tells Elastic Transcoder how
      * much of the video to encode before including captions.</p> <p>Specify the
      * TimeOffset in the form [+-]SS.sss or [+-]HH:mm:SS.ss.</p>
      */
-    inline const Aws::String& GetTimeOffset() const{ return m_timeOffset; }
-
-    /**
-     * <p>For clip generation or captions that do not start at the same time as the
-     * associated video file, the <code>TimeOffset</code> tells Elastic Transcoder how
-     * much of the video to encode before including captions.</p> <p>Specify the
-     * TimeOffset in the form [+-]SS.sss or [+-]HH:mm:SS.ss.</p>
-     */
+    inline const Aws::String& GetTimeOffset() const { return m_timeOffset; }
     inline bool TimeOffsetHasBeenSet() const { return m_timeOffsetHasBeenSet; }
+    template<typename TimeOffsetT = Aws::String>
+    void SetTimeOffset(TimeOffsetT&& value) { m_timeOffsetHasBeenSet = true; m_timeOffset = std::forward<TimeOffsetT>(value); }
+    template<typename TimeOffsetT = Aws::String>
+    CaptionSource& WithTimeOffset(TimeOffsetT&& value) { SetTimeOffset(std::forward<TimeOffsetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>For clip generation or captions that do not start at the same time as the
-     * associated video file, the <code>TimeOffset</code> tells Elastic Transcoder how
-     * much of the video to encode before including captions.</p> <p>Specify the
-     * TimeOffset in the form [+-]SS.sss or [+-]HH:mm:SS.ss.</p>
-     */
-    inline void SetTimeOffset(const Aws::String& value) { m_timeOffsetHasBeenSet = true; m_timeOffset = value; }
-
-    /**
-     * <p>For clip generation or captions that do not start at the same time as the
-     * associated video file, the <code>TimeOffset</code> tells Elastic Transcoder how
-     * much of the video to encode before including captions.</p> <p>Specify the
-     * TimeOffset in the form [+-]SS.sss or [+-]HH:mm:SS.ss.</p>
-     */
-    inline void SetTimeOffset(Aws::String&& value) { m_timeOffsetHasBeenSet = true; m_timeOffset = std::move(value); }
-
-    /**
-     * <p>For clip generation or captions that do not start at the same time as the
-     * associated video file, the <code>TimeOffset</code> tells Elastic Transcoder how
-     * much of the video to encode before including captions.</p> <p>Specify the
-     * TimeOffset in the form [+-]SS.sss or [+-]HH:mm:SS.ss.</p>
-     */
-    inline void SetTimeOffset(const char* value) { m_timeOffsetHasBeenSet = true; m_timeOffset.assign(value); }
-
-    /**
-     * <p>For clip generation or captions that do not start at the same time as the
-     * associated video file, the <code>TimeOffset</code> tells Elastic Transcoder how
-     * much of the video to encode before including captions.</p> <p>Specify the
-     * TimeOffset in the form [+-]SS.sss or [+-]HH:mm:SS.ss.</p>
-     */
-    inline CaptionSource& WithTimeOffset(const Aws::String& value) { SetTimeOffset(value); return *this;}
-
-    /**
-     * <p>For clip generation or captions that do not start at the same time as the
-     * associated video file, the <code>TimeOffset</code> tells Elastic Transcoder how
-     * much of the video to encode before including captions.</p> <p>Specify the
-     * TimeOffset in the form [+-]SS.sss or [+-]HH:mm:SS.ss.</p>
-     */
-    inline CaptionSource& WithTimeOffset(Aws::String&& value) { SetTimeOffset(std::move(value)); return *this;}
-
-    /**
-     * <p>For clip generation or captions that do not start at the same time as the
-     * associated video file, the <code>TimeOffset</code> tells Elastic Transcoder how
-     * much of the video to encode before including captions.</p> <p>Specify the
-     * TimeOffset in the form [+-]SS.sss or [+-]HH:mm:SS.ss.</p>
-     */
-    inline CaptionSource& WithTimeOffset(const char* value) { SetTimeOffset(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The label of the caption shown in the player when choosing a language. We
      * recommend that you put the caption language name here, in the language of the
      * captions.</p>
      */
-    inline const Aws::String& GetLabel() const{ return m_label; }
-
-    /**
-     * <p>The label of the caption shown in the player when choosing a language. We
-     * recommend that you put the caption language name here, in the language of the
-     * captions.</p>
-     */
+    inline const Aws::String& GetLabel() const { return m_label; }
     inline bool LabelHasBeenSet() const { return m_labelHasBeenSet; }
+    template<typename LabelT = Aws::String>
+    void SetLabel(LabelT&& value) { m_labelHasBeenSet = true; m_label = std::forward<LabelT>(value); }
+    template<typename LabelT = Aws::String>
+    CaptionSource& WithLabel(LabelT&& value) { SetLabel(std::forward<LabelT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The label of the caption shown in the player when choosing a language. We
-     * recommend that you put the caption language name here, in the language of the
-     * captions.</p>
-     */
-    inline void SetLabel(const Aws::String& value) { m_labelHasBeenSet = true; m_label = value; }
-
-    /**
-     * <p>The label of the caption shown in the player when choosing a language. We
-     * recommend that you put the caption language name here, in the language of the
-     * captions.</p>
-     */
-    inline void SetLabel(Aws::String&& value) { m_labelHasBeenSet = true; m_label = std::move(value); }
-
-    /**
-     * <p>The label of the caption shown in the player when choosing a language. We
-     * recommend that you put the caption language name here, in the language of the
-     * captions.</p>
-     */
-    inline void SetLabel(const char* value) { m_labelHasBeenSet = true; m_label.assign(value); }
-
-    /**
-     * <p>The label of the caption shown in the player when choosing a language. We
-     * recommend that you put the caption language name here, in the language of the
-     * captions.</p>
-     */
-    inline CaptionSource& WithLabel(const Aws::String& value) { SetLabel(value); return *this;}
-
-    /**
-     * <p>The label of the caption shown in the player when choosing a language. We
-     * recommend that you put the caption language name here, in the language of the
-     * captions.</p>
-     */
-    inline CaptionSource& WithLabel(Aws::String&& value) { SetLabel(std::move(value)); return *this;}
-
-    /**
-     * <p>The label of the caption shown in the player when choosing a language. We
-     * recommend that you put the caption language name here, in the language of the
-     * captions.</p>
-     */
-    inline CaptionSource& WithLabel(const char* value) { SetLabel(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The encryption settings, if any, that Elastic Transcoder needs to decyrpt
      * your caption sources, or that you want Elastic Transcoder to apply to your
      * caption sources.</p>
      */
-    inline const Encryption& GetEncryption() const{ return m_encryption; }
-
-    /**
-     * <p>The encryption settings, if any, that Elastic Transcoder needs to decyrpt
-     * your caption sources, or that you want Elastic Transcoder to apply to your
-     * caption sources.</p>
-     */
+    inline const Encryption& GetEncryption() const { return m_encryption; }
     inline bool EncryptionHasBeenSet() const { return m_encryptionHasBeenSet; }
-
-    /**
-     * <p>The encryption settings, if any, that Elastic Transcoder needs to decyrpt
-     * your caption sources, or that you want Elastic Transcoder to apply to your
-     * caption sources.</p>
-     */
-    inline void SetEncryption(const Encryption& value) { m_encryptionHasBeenSet = true; m_encryption = value; }
-
-    /**
-     * <p>The encryption settings, if any, that Elastic Transcoder needs to decyrpt
-     * your caption sources, or that you want Elastic Transcoder to apply to your
-     * caption sources.</p>
-     */
-    inline void SetEncryption(Encryption&& value) { m_encryptionHasBeenSet = true; m_encryption = std::move(value); }
-
-    /**
-     * <p>The encryption settings, if any, that Elastic Transcoder needs to decyrpt
-     * your caption sources, or that you want Elastic Transcoder to apply to your
-     * caption sources.</p>
-     */
-    inline CaptionSource& WithEncryption(const Encryption& value) { SetEncryption(value); return *this;}
-
-    /**
-     * <p>The encryption settings, if any, that Elastic Transcoder needs to decyrpt
-     * your caption sources, or that you want Elastic Transcoder to apply to your
-     * caption sources.</p>
-     */
-    inline CaptionSource& WithEncryption(Encryption&& value) { SetEncryption(std::move(value)); return *this;}
-
+    template<typename EncryptionT = Encryption>
+    void SetEncryption(EncryptionT&& value) { m_encryptionHasBeenSet = true; m_encryption = std::forward<EncryptionT>(value); }
+    template<typename EncryptionT = Encryption>
+    CaptionSource& WithEncryption(EncryptionT&& value) { SetEncryption(std::forward<EncryptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

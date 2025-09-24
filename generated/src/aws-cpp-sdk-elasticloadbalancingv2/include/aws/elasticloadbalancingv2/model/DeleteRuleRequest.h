@@ -21,7 +21,7 @@ namespace Model
   class DeleteRuleRequest : public ElasticLoadBalancingv2Request
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API DeleteRuleRequest();
+    AWS_ELASTICLOADBALANCINGV2_API DeleteRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the rule.</p>
      */
-    inline const Aws::String& GetRuleArn() const{ return m_ruleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
+    inline const Aws::String& GetRuleArn() const { return m_ruleArn; }
     inline bool RuleArnHasBeenSet() const { return m_ruleArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline void SetRuleArn(const Aws::String& value) { m_ruleArnHasBeenSet = true; m_ruleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline void SetRuleArn(Aws::String&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline void SetRuleArn(const char* value) { m_ruleArnHasBeenSet = true; m_ruleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline DeleteRuleRequest& WithRuleArn(const Aws::String& value) { SetRuleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline DeleteRuleRequest& WithRuleArn(Aws::String&& value) { SetRuleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the rule.</p>
-     */
-    inline DeleteRuleRequest& WithRuleArn(const char* value) { SetRuleArn(value); return *this;}
-
+    template<typename RuleArnT = Aws::String>
+    void SetRuleArn(RuleArnT&& value) { m_ruleArnHasBeenSet = true; m_ruleArn = std::forward<RuleArnT>(value); }
+    template<typename RuleArnT = Aws::String>
+    DeleteRuleRequest& WithRuleArn(RuleArnT&& value) { SetRuleArn(std::forward<RuleArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ruleArn;

@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-BaselineEbsBandwidthMbps::BaselineEbsBandwidthMbps() : 
-    m_min(0),
-    m_minHasBeenSet(false),
-    m_max(0),
-    m_maxHasBeenSet(false)
-{
-}
-
-BaselineEbsBandwidthMbps::BaselineEbsBandwidthMbps(const XmlNode& xmlNode) : 
-    m_min(0),
-    m_minHasBeenSet(false),
-    m_max(0),
-    m_maxHasBeenSet(false)
+BaselineEbsBandwidthMbps::BaselineEbsBandwidthMbps(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

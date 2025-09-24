@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-PivotTableConditionalFormattingScope::PivotTableConditionalFormattingScope() : 
-    m_role(PivotTableConditionalFormattingScopeRole::NOT_SET),
-    m_roleHasBeenSet(false)
-{
-}
-
-PivotTableConditionalFormattingScope::PivotTableConditionalFormattingScope(JsonView jsonValue) : 
-    m_role(PivotTableConditionalFormattingScopeRole::NOT_SET),
-    m_roleHasBeenSet(false)
+PivotTableConditionalFormattingScope::PivotTableConditionalFormattingScope(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ PivotTableConditionalFormattingScope& PivotTableConditionalFormattingScope::oper
   if(jsonValue.ValueExists("Role"))
   {
     m_role = PivotTableConditionalFormattingScopeRoleMapper::GetPivotTableConditionalFormattingScopeRoleForName(jsonValue.GetString("Role"));
-
     m_roleHasBeenSet = true;
   }
-
   return *this;
 }
 

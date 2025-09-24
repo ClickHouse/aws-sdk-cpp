@@ -20,89 +20,7 @@ namespace EC2
 namespace Model
 {
 
-InstanceTypeInfo::InstanceTypeInfo() : 
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_currentGeneration(false),
-    m_currentGenerationHasBeenSet(false),
-    m_freeTierEligible(false),
-    m_freeTierEligibleHasBeenSet(false),
-    m_supportedUsageClassesHasBeenSet(false),
-    m_supportedRootDeviceTypesHasBeenSet(false),
-    m_supportedVirtualizationTypesHasBeenSet(false),
-    m_bareMetal(false),
-    m_bareMetalHasBeenSet(false),
-    m_hypervisor(InstanceTypeHypervisor::NOT_SET),
-    m_hypervisorHasBeenSet(false),
-    m_processorInfoHasBeenSet(false),
-    m_vCpuInfoHasBeenSet(false),
-    m_memoryInfoHasBeenSet(false),
-    m_instanceStorageSupported(false),
-    m_instanceStorageSupportedHasBeenSet(false),
-    m_instanceStorageInfoHasBeenSet(false),
-    m_ebsInfoHasBeenSet(false),
-    m_networkInfoHasBeenSet(false),
-    m_gpuInfoHasBeenSet(false),
-    m_fpgaInfoHasBeenSet(false),
-    m_placementGroupInfoHasBeenSet(false),
-    m_inferenceAcceleratorInfoHasBeenSet(false),
-    m_hibernationSupported(false),
-    m_hibernationSupportedHasBeenSet(false),
-    m_burstablePerformanceSupported(false),
-    m_burstablePerformanceSupportedHasBeenSet(false),
-    m_dedicatedHostsSupported(false),
-    m_dedicatedHostsSupportedHasBeenSet(false),
-    m_autoRecoverySupported(false),
-    m_autoRecoverySupportedHasBeenSet(false),
-    m_supportedBootModesHasBeenSet(false),
-    m_nitroEnclavesSupport(NitroEnclavesSupport::NOT_SET),
-    m_nitroEnclavesSupportHasBeenSet(false),
-    m_nitroTpmSupport(NitroTpmSupport::NOT_SET),
-    m_nitroTpmSupportHasBeenSet(false),
-    m_nitroTpmInfoHasBeenSet(false)
-{
-}
-
-InstanceTypeInfo::InstanceTypeInfo(const XmlNode& xmlNode) : 
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_currentGeneration(false),
-    m_currentGenerationHasBeenSet(false),
-    m_freeTierEligible(false),
-    m_freeTierEligibleHasBeenSet(false),
-    m_supportedUsageClassesHasBeenSet(false),
-    m_supportedRootDeviceTypesHasBeenSet(false),
-    m_supportedVirtualizationTypesHasBeenSet(false),
-    m_bareMetal(false),
-    m_bareMetalHasBeenSet(false),
-    m_hypervisor(InstanceTypeHypervisor::NOT_SET),
-    m_hypervisorHasBeenSet(false),
-    m_processorInfoHasBeenSet(false),
-    m_vCpuInfoHasBeenSet(false),
-    m_memoryInfoHasBeenSet(false),
-    m_instanceStorageSupported(false),
-    m_instanceStorageSupportedHasBeenSet(false),
-    m_instanceStorageInfoHasBeenSet(false),
-    m_ebsInfoHasBeenSet(false),
-    m_networkInfoHasBeenSet(false),
-    m_gpuInfoHasBeenSet(false),
-    m_fpgaInfoHasBeenSet(false),
-    m_placementGroupInfoHasBeenSet(false),
-    m_inferenceAcceleratorInfoHasBeenSet(false),
-    m_hibernationSupported(false),
-    m_hibernationSupportedHasBeenSet(false),
-    m_burstablePerformanceSupported(false),
-    m_burstablePerformanceSupportedHasBeenSet(false),
-    m_dedicatedHostsSupported(false),
-    m_dedicatedHostsSupportedHasBeenSet(false),
-    m_autoRecoverySupported(false),
-    m_autoRecoverySupportedHasBeenSet(false),
-    m_supportedBootModesHasBeenSet(false),
-    m_nitroEnclavesSupport(NitroEnclavesSupport::NOT_SET),
-    m_nitroEnclavesSupportHasBeenSet(false),
-    m_nitroTpmSupport(NitroTpmSupport::NOT_SET),
-    m_nitroTpmSupportHasBeenSet(false),
-    m_nitroTpmInfoHasBeenSet(false)
+InstanceTypeInfo::InstanceTypeInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -116,7 +34,7 @@ InstanceTypeInfo& InstanceTypeInfo::operator =(const XmlNode& xmlNode)
     XmlNode instanceTypeNode = resultNode.FirstChild("instanceType");
     if(!instanceTypeNode.IsNull())
     {
-      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()).c_str());
+      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()));
       m_instanceTypeHasBeenSet = true;
     }
     XmlNode currentGenerationNode = resultNode.FirstChild("currentGeneration");
@@ -135,6 +53,7 @@ InstanceTypeInfo& InstanceTypeInfo::operator =(const XmlNode& xmlNode)
     if(!supportedUsageClassesNode.IsNull())
     {
       XmlNode supportedUsageClassesMember = supportedUsageClassesNode.FirstChild("item");
+      m_supportedUsageClassesHasBeenSet = !supportedUsageClassesMember.IsNull();
       while(!supportedUsageClassesMember.IsNull())
       {
         m_supportedUsageClasses.push_back(UsageClassTypeMapper::GetUsageClassTypeForName(StringUtils::Trim(supportedUsageClassesMember.GetText().c_str())));
@@ -147,6 +66,7 @@ InstanceTypeInfo& InstanceTypeInfo::operator =(const XmlNode& xmlNode)
     if(!supportedRootDeviceTypesNode.IsNull())
     {
       XmlNode supportedRootDeviceTypesMember = supportedRootDeviceTypesNode.FirstChild("item");
+      m_supportedRootDeviceTypesHasBeenSet = !supportedRootDeviceTypesMember.IsNull();
       while(!supportedRootDeviceTypesMember.IsNull())
       {
         m_supportedRootDeviceTypes.push_back(RootDeviceTypeMapper::GetRootDeviceTypeForName(StringUtils::Trim(supportedRootDeviceTypesMember.GetText().c_str())));
@@ -159,6 +79,7 @@ InstanceTypeInfo& InstanceTypeInfo::operator =(const XmlNode& xmlNode)
     if(!supportedVirtualizationTypesNode.IsNull())
     {
       XmlNode supportedVirtualizationTypesMember = supportedVirtualizationTypesNode.FirstChild("item");
+      m_supportedVirtualizationTypesHasBeenSet = !supportedVirtualizationTypesMember.IsNull();
       while(!supportedVirtualizationTypesMember.IsNull())
       {
         m_supportedVirtualizationTypes.push_back(VirtualizationTypeMapper::GetVirtualizationTypeForName(StringUtils::Trim(supportedVirtualizationTypesMember.GetText().c_str())));
@@ -176,7 +97,7 @@ InstanceTypeInfo& InstanceTypeInfo::operator =(const XmlNode& xmlNode)
     XmlNode hypervisorNode = resultNode.FirstChild("hypervisor");
     if(!hypervisorNode.IsNull())
     {
-      m_hypervisor = InstanceTypeHypervisorMapper::GetInstanceTypeHypervisorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hypervisorNode.GetText()).c_str()).c_str());
+      m_hypervisor = InstanceTypeHypervisorMapper::GetInstanceTypeHypervisorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(hypervisorNode.GetText()).c_str()));
       m_hypervisorHasBeenSet = true;
     }
     XmlNode processorInfoNode = resultNode.FirstChild("processorInfo");
@@ -273,6 +194,7 @@ InstanceTypeInfo& InstanceTypeInfo::operator =(const XmlNode& xmlNode)
     if(!supportedBootModesNode.IsNull())
     {
       XmlNode supportedBootModesMember = supportedBootModesNode.FirstChild("item");
+      m_supportedBootModesHasBeenSet = !supportedBootModesMember.IsNull();
       while(!supportedBootModesMember.IsNull())
       {
         m_supportedBootModes.push_back(BootModeTypeMapper::GetBootModeTypeForName(StringUtils::Trim(supportedBootModesMember.GetText().c_str())));
@@ -284,13 +206,13 @@ InstanceTypeInfo& InstanceTypeInfo::operator =(const XmlNode& xmlNode)
     XmlNode nitroEnclavesSupportNode = resultNode.FirstChild("nitroEnclavesSupport");
     if(!nitroEnclavesSupportNode.IsNull())
     {
-      m_nitroEnclavesSupport = NitroEnclavesSupportMapper::GetNitroEnclavesSupportForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nitroEnclavesSupportNode.GetText()).c_str()).c_str());
+      m_nitroEnclavesSupport = NitroEnclavesSupportMapper::GetNitroEnclavesSupportForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nitroEnclavesSupportNode.GetText()).c_str()));
       m_nitroEnclavesSupportHasBeenSet = true;
     }
     XmlNode nitroTpmSupportNode = resultNode.FirstChild("nitroTpmSupport");
     if(!nitroTpmSupportNode.IsNull())
     {
-      m_nitroTpmSupport = NitroTpmSupportMapper::GetNitroTpmSupportForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nitroTpmSupportNode.GetText()).c_str()).c_str());
+      m_nitroTpmSupport = NitroTpmSupportMapper::GetNitroTpmSupportForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(nitroTpmSupportNode.GetText()).c_str()));
       m_nitroTpmSupportHasBeenSet = true;
     }
     XmlNode nitroTpmInfoNode = resultNode.FirstChild("nitroTpmInfo");
@@ -298,6 +220,30 @@ InstanceTypeInfo& InstanceTypeInfo::operator =(const XmlNode& xmlNode)
     {
       m_nitroTpmInfo = nitroTpmInfoNode;
       m_nitroTpmInfoHasBeenSet = true;
+    }
+    XmlNode mediaAcceleratorInfoNode = resultNode.FirstChild("mediaAcceleratorInfo");
+    if(!mediaAcceleratorInfoNode.IsNull())
+    {
+      m_mediaAcceleratorInfo = mediaAcceleratorInfoNode;
+      m_mediaAcceleratorInfoHasBeenSet = true;
+    }
+    XmlNode neuronInfoNode = resultNode.FirstChild("neuronInfo");
+    if(!neuronInfoNode.IsNull())
+    {
+      m_neuronInfo = neuronInfoNode;
+      m_neuronInfoHasBeenSet = true;
+    }
+    XmlNode phcSupportNode = resultNode.FirstChild("phcSupport");
+    if(!phcSupportNode.IsNull())
+    {
+      m_phcSupport = PhcSupportMapper::GetPhcSupportForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(phcSupportNode.GetText()).c_str()));
+      m_phcSupportHasBeenSet = true;
+    }
+    XmlNode rebootMigrationSupportNode = resultNode.FirstChild("rebootMigrationSupport");
+    if(!rebootMigrationSupportNode.IsNull())
+    {
+      m_rebootMigrationSupport = RebootMigrationSupportMapper::GetRebootMigrationSupportForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(rebootMigrationSupportNode.GetText()).c_str()));
+      m_rebootMigrationSupportHasBeenSet = true;
     }
   }
 
@@ -308,7 +254,7 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
 {
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
 
   if(m_currentGenerationHasBeenSet)
@@ -326,7 +272,7 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned supportedUsageClassesIdx = 1;
       for(auto& item : m_supportedUsageClasses)
       {
-        oStream << location << index << locationValue << ".SupportedUsageClasses." << supportedUsageClassesIdx++ << "=" << UsageClassTypeMapper::GetNameForUsageClassType(item) << "&";
+        oStream << location << index << locationValue << ".SupportedUsageClasses." << supportedUsageClassesIdx++ << "=" << StringUtils::URLEncode(UsageClassTypeMapper::GetNameForUsageClassType(item)) << "&";
       }
   }
 
@@ -335,7 +281,7 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned supportedRootDeviceTypesIdx = 1;
       for(auto& item : m_supportedRootDeviceTypes)
       {
-        oStream << location << index << locationValue << ".SupportedRootDeviceTypes." << supportedRootDeviceTypesIdx++ << "=" << RootDeviceTypeMapper::GetNameForRootDeviceType(item) << "&";
+        oStream << location << index << locationValue << ".SupportedRootDeviceTypes." << supportedRootDeviceTypesIdx++ << "=" << StringUtils::URLEncode(RootDeviceTypeMapper::GetNameForRootDeviceType(item)) << "&";
       }
   }
 
@@ -344,7 +290,7 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned supportedVirtualizationTypesIdx = 1;
       for(auto& item : m_supportedVirtualizationTypes)
       {
-        oStream << location << index << locationValue << ".SupportedVirtualizationTypes." << supportedVirtualizationTypesIdx++ << "=" << VirtualizationTypeMapper::GetNameForVirtualizationType(item) << "&";
+        oStream << location << index << locationValue << ".SupportedVirtualizationTypes." << supportedVirtualizationTypesIdx++ << "=" << StringUtils::URLEncode(VirtualizationTypeMapper::GetNameForVirtualizationType(item)) << "&";
       }
   }
 
@@ -355,7 +301,7 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
 
   if(m_hypervisorHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Hypervisor=" << InstanceTypeHypervisorMapper::GetNameForInstanceTypeHypervisor(m_hypervisor) << "&";
+      oStream << location << index << locationValue << ".Hypervisor=" << StringUtils::URLEncode(InstanceTypeHypervisorMapper::GetNameForInstanceTypeHypervisor(m_hypervisor)) << "&";
   }
 
   if(m_processorInfoHasBeenSet)
@@ -458,18 +404,18 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned supportedBootModesIdx = 1;
       for(auto& item : m_supportedBootModes)
       {
-        oStream << location << index << locationValue << ".SupportedBootModes." << supportedBootModesIdx++ << "=" << BootModeTypeMapper::GetNameForBootModeType(item) << "&";
+        oStream << location << index << locationValue << ".SupportedBootModes." << supportedBootModesIdx++ << "=" << StringUtils::URLEncode(BootModeTypeMapper::GetNameForBootModeType(item)) << "&";
       }
   }
 
   if(m_nitroEnclavesSupportHasBeenSet)
   {
-      oStream << location << index << locationValue << ".NitroEnclavesSupport=" << NitroEnclavesSupportMapper::GetNameForNitroEnclavesSupport(m_nitroEnclavesSupport) << "&";
+      oStream << location << index << locationValue << ".NitroEnclavesSupport=" << StringUtils::URLEncode(NitroEnclavesSupportMapper::GetNameForNitroEnclavesSupport(m_nitroEnclavesSupport)) << "&";
   }
 
   if(m_nitroTpmSupportHasBeenSet)
   {
-      oStream << location << index << locationValue << ".NitroTpmSupport=" << NitroTpmSupportMapper::GetNameForNitroTpmSupport(m_nitroTpmSupport) << "&";
+      oStream << location << index << locationValue << ".NitroTpmSupport=" << StringUtils::URLEncode(NitroTpmSupportMapper::GetNameForNitroTpmSupport(m_nitroTpmSupport)) << "&";
   }
 
   if(m_nitroTpmInfoHasBeenSet)
@@ -479,13 +425,37 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       m_nitroTpmInfo.OutputToStream(oStream, nitroTpmInfoLocationAndMemberSs.str().c_str());
   }
 
+  if(m_mediaAcceleratorInfoHasBeenSet)
+  {
+      Aws::StringStream mediaAcceleratorInfoLocationAndMemberSs;
+      mediaAcceleratorInfoLocationAndMemberSs << location << index << locationValue << ".MediaAcceleratorInfo";
+      m_mediaAcceleratorInfo.OutputToStream(oStream, mediaAcceleratorInfoLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_neuronInfoHasBeenSet)
+  {
+      Aws::StringStream neuronInfoLocationAndMemberSs;
+      neuronInfoLocationAndMemberSs << location << index << locationValue << ".NeuronInfo";
+      m_neuronInfo.OutputToStream(oStream, neuronInfoLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_phcSupportHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PhcSupport=" << StringUtils::URLEncode(PhcSupportMapper::GetNameForPhcSupport(m_phcSupport)) << "&";
+  }
+
+  if(m_rebootMigrationSupportHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".RebootMigrationSupport=" << StringUtils::URLEncode(RebootMigrationSupportMapper::GetNameForRebootMigrationSupport(m_rebootMigrationSupport)) << "&";
+  }
+
 }
 
 void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* location) const
 {
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
   if(m_currentGenerationHasBeenSet)
   {
@@ -500,7 +470,7 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned supportedUsageClassesIdx = 1;
       for(auto& item : m_supportedUsageClasses)
       {
-        oStream << location << ".SupportedUsageClasses." << supportedUsageClassesIdx++ << "=" << UsageClassTypeMapper::GetNameForUsageClassType(item) << "&";
+        oStream << location << ".SupportedUsageClasses." << supportedUsageClassesIdx++ << "=" << StringUtils::URLEncode(UsageClassTypeMapper::GetNameForUsageClassType(item)) << "&";
       }
   }
   if(m_supportedRootDeviceTypesHasBeenSet)
@@ -508,7 +478,7 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned supportedRootDeviceTypesIdx = 1;
       for(auto& item : m_supportedRootDeviceTypes)
       {
-        oStream << location << ".SupportedRootDeviceTypes." << supportedRootDeviceTypesIdx++ << "=" << RootDeviceTypeMapper::GetNameForRootDeviceType(item) << "&";
+        oStream << location << ".SupportedRootDeviceTypes." << supportedRootDeviceTypesIdx++ << "=" << StringUtils::URLEncode(RootDeviceTypeMapper::GetNameForRootDeviceType(item)) << "&";
       }
   }
   if(m_supportedVirtualizationTypesHasBeenSet)
@@ -516,7 +486,7 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned supportedVirtualizationTypesIdx = 1;
       for(auto& item : m_supportedVirtualizationTypes)
       {
-        oStream << location << ".SupportedVirtualizationTypes." << supportedVirtualizationTypesIdx++ << "=" << VirtualizationTypeMapper::GetNameForVirtualizationType(item) << "&";
+        oStream << location << ".SupportedVirtualizationTypes." << supportedVirtualizationTypesIdx++ << "=" << StringUtils::URLEncode(VirtualizationTypeMapper::GetNameForVirtualizationType(item)) << "&";
       }
   }
   if(m_bareMetalHasBeenSet)
@@ -525,7 +495,7 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_hypervisorHasBeenSet)
   {
-      oStream << location << ".Hypervisor=" << InstanceTypeHypervisorMapper::GetNameForInstanceTypeHypervisor(m_hypervisor) << "&";
+      oStream << location << ".Hypervisor=" << StringUtils::URLEncode(InstanceTypeHypervisorMapper::GetNameForInstanceTypeHypervisor(m_hypervisor)) << "&";
   }
   if(m_processorInfoHasBeenSet)
   {
@@ -612,22 +582,42 @@ void InstanceTypeInfo::OutputToStream(Aws::OStream& oStream, const char* locatio
       unsigned supportedBootModesIdx = 1;
       for(auto& item : m_supportedBootModes)
       {
-        oStream << location << ".SupportedBootModes." << supportedBootModesIdx++ << "=" << BootModeTypeMapper::GetNameForBootModeType(item) << "&";
+        oStream << location << ".SupportedBootModes." << supportedBootModesIdx++ << "=" << StringUtils::URLEncode(BootModeTypeMapper::GetNameForBootModeType(item)) << "&";
       }
   }
   if(m_nitroEnclavesSupportHasBeenSet)
   {
-      oStream << location << ".NitroEnclavesSupport=" << NitroEnclavesSupportMapper::GetNameForNitroEnclavesSupport(m_nitroEnclavesSupport) << "&";
+      oStream << location << ".NitroEnclavesSupport=" << StringUtils::URLEncode(NitroEnclavesSupportMapper::GetNameForNitroEnclavesSupport(m_nitroEnclavesSupport)) << "&";
   }
   if(m_nitroTpmSupportHasBeenSet)
   {
-      oStream << location << ".NitroTpmSupport=" << NitroTpmSupportMapper::GetNameForNitroTpmSupport(m_nitroTpmSupport) << "&";
+      oStream << location << ".NitroTpmSupport=" << StringUtils::URLEncode(NitroTpmSupportMapper::GetNameForNitroTpmSupport(m_nitroTpmSupport)) << "&";
   }
   if(m_nitroTpmInfoHasBeenSet)
   {
       Aws::String nitroTpmInfoLocationAndMember(location);
       nitroTpmInfoLocationAndMember += ".NitroTpmInfo";
       m_nitroTpmInfo.OutputToStream(oStream, nitroTpmInfoLocationAndMember.c_str());
+  }
+  if(m_mediaAcceleratorInfoHasBeenSet)
+  {
+      Aws::String mediaAcceleratorInfoLocationAndMember(location);
+      mediaAcceleratorInfoLocationAndMember += ".MediaAcceleratorInfo";
+      m_mediaAcceleratorInfo.OutputToStream(oStream, mediaAcceleratorInfoLocationAndMember.c_str());
+  }
+  if(m_neuronInfoHasBeenSet)
+  {
+      Aws::String neuronInfoLocationAndMember(location);
+      neuronInfoLocationAndMember += ".NeuronInfo";
+      m_neuronInfo.OutputToStream(oStream, neuronInfoLocationAndMember.c_str());
+  }
+  if(m_phcSupportHasBeenSet)
+  {
+      oStream << location << ".PhcSupport=" << StringUtils::URLEncode(PhcSupportMapper::GetNameForPhcSupport(m_phcSupport)) << "&";
+  }
+  if(m_rebootMigrationSupportHasBeenSet)
+  {
+      oStream << location << ".RebootMigrationSupport=" << StringUtils::URLEncode(RebootMigrationSupportMapper::GetNameForRebootMigrationSupport(m_rebootMigrationSupport)) << "&";
   }
 }
 

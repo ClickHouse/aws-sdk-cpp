@@ -21,7 +21,7 @@ namespace Model
   class GetBuiltinIntentRequest : public LexModelBuildingServiceRequest
   {
   public:
-    AWS_LEXMODELBUILDINGSERVICE_API GetBuiltinIntentRequest();
+    AWS_LEXMODELBUILDINGSERVICE_API GetBuiltinIntentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,70 +32,20 @@ namespace Model
     AWS_LEXMODELBUILDINGSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for a built-in intent. To find the signature for an
      * intent, see <a
      * href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard
      * Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
      */
-    inline const Aws::String& GetSignature() const{ return m_signature; }
-
-    /**
-     * <p>The unique identifier for a built-in intent. To find the signature for an
-     * intent, see <a
-     * href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard
-     * Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
-     */
+    inline const Aws::String& GetSignature() const { return m_signature; }
     inline bool SignatureHasBeenSet() const { return m_signatureHasBeenSet; }
-
-    /**
-     * <p>The unique identifier for a built-in intent. To find the signature for an
-     * intent, see <a
-     * href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard
-     * Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
-     */
-    inline void SetSignature(const Aws::String& value) { m_signatureHasBeenSet = true; m_signature = value; }
-
-    /**
-     * <p>The unique identifier for a built-in intent. To find the signature for an
-     * intent, see <a
-     * href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard
-     * Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
-     */
-    inline void SetSignature(Aws::String&& value) { m_signatureHasBeenSet = true; m_signature = std::move(value); }
-
-    /**
-     * <p>The unique identifier for a built-in intent. To find the signature for an
-     * intent, see <a
-     * href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard
-     * Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
-     */
-    inline void SetSignature(const char* value) { m_signatureHasBeenSet = true; m_signature.assign(value); }
-
-    /**
-     * <p>The unique identifier for a built-in intent. To find the signature for an
-     * intent, see <a
-     * href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard
-     * Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
-     */
-    inline GetBuiltinIntentRequest& WithSignature(const Aws::String& value) { SetSignature(value); return *this;}
-
-    /**
-     * <p>The unique identifier for a built-in intent. To find the signature for an
-     * intent, see <a
-     * href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard
-     * Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
-     */
-    inline GetBuiltinIntentRequest& WithSignature(Aws::String&& value) { SetSignature(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for a built-in intent. To find the signature for an
-     * intent, see <a
-     * href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard
-     * Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
-     */
-    inline GetBuiltinIntentRequest& WithSignature(const char* value) { SetSignature(value); return *this;}
-
+    template<typename SignatureT = Aws::String>
+    void SetSignature(SignatureT&& value) { m_signatureHasBeenSet = true; m_signature = std::forward<SignatureT>(value); }
+    template<typename SignatureT = Aws::String>
+    GetBuiltinIntentRequest& WithSignature(SignatureT&& value) { SetSignature(std::forward<SignatureT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_signature;

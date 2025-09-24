@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-InferenceComponentContainerSpecificationSummary::InferenceComponentContainerSpecificationSummary() : 
-    m_deployedImageHasBeenSet(false),
-    m_artifactUrlHasBeenSet(false),
-    m_environmentHasBeenSet(false)
-{
-}
-
-InferenceComponentContainerSpecificationSummary::InferenceComponentContainerSpecificationSummary(JsonView jsonValue) : 
-    m_deployedImageHasBeenSet(false),
-    m_artifactUrlHasBeenSet(false),
-    m_environmentHasBeenSet(false)
+InferenceComponentContainerSpecificationSummary::InferenceComponentContainerSpecificationSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ InferenceComponentContainerSpecificationSummary& InferenceComponentContainerSpec
   if(jsonValue.ValueExists("DeployedImage"))
   {
     m_deployedImage = jsonValue.GetObject("DeployedImage");
-
     m_deployedImageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ArtifactUrl"))
   {
     m_artifactUrl = jsonValue.GetString("ArtifactUrl");
-
     m_artifactUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Environment"))
   {
     Aws::Map<Aws::String, JsonView> environmentJsonMap = jsonValue.GetObject("Environment").GetAllObjects();
@@ -58,7 +44,6 @@ InferenceComponentContainerSpecificationSummary& InferenceComponentContainerSpec
     }
     m_environmentHasBeenSet = true;
   }
-
   return *this;
 }
 

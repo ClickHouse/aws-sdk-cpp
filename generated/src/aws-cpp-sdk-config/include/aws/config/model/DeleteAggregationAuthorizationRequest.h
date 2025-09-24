@@ -21,7 +21,7 @@ namespace Model
   class DeleteAggregationAuthorizationRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API DeleteAggregationAuthorizationRequest();
+    AWS_CONFIGSERVICE_API DeleteAggregationAuthorizationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
      */
-    inline const Aws::String& GetAuthorizedAccountId() const{ return m_authorizedAccountId; }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
+    inline const Aws::String& GetAuthorizedAccountId() const { return m_authorizedAccountId; }
     inline bool AuthorizedAccountIdHasBeenSet() const { return m_authorizedAccountIdHasBeenSet; }
+    template<typename AuthorizedAccountIdT = Aws::String>
+    void SetAuthorizedAccountId(AuthorizedAccountIdT&& value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId = std::forward<AuthorizedAccountIdT>(value); }
+    template<typename AuthorizedAccountIdT = Aws::String>
+    DeleteAggregationAuthorizationRequest& WithAuthorizedAccountId(AuthorizedAccountIdT&& value) { SetAuthorizedAccountId(std::forward<AuthorizedAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline void SetAuthorizedAccountId(const Aws::String& value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId = value; }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline void SetAuthorizedAccountId(Aws::String&& value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId = std::move(value); }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline void SetAuthorizedAccountId(const char* value) { m_authorizedAccountIdHasBeenSet = true; m_authorizedAccountId.assign(value); }
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline DeleteAggregationAuthorizationRequest& WithAuthorizedAccountId(const Aws::String& value) { SetAuthorizedAccountId(value); return *this;}
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline DeleteAggregationAuthorizationRequest& WithAuthorizedAccountId(Aws::String&& value) { SetAuthorizedAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The 12-digit account ID of the account authorized to aggregate data.</p>
-     */
-    inline DeleteAggregationAuthorizationRequest& WithAuthorizedAccountId(const char* value) { SetAuthorizedAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The region authorized to collect aggregated data.</p>
      */
-    inline const Aws::String& GetAuthorizedAwsRegion() const{ return m_authorizedAwsRegion; }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
+    inline const Aws::String& GetAuthorizedAwsRegion() const { return m_authorizedAwsRegion; }
     inline bool AuthorizedAwsRegionHasBeenSet() const { return m_authorizedAwsRegionHasBeenSet; }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline void SetAuthorizedAwsRegion(const Aws::String& value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion = value; }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline void SetAuthorizedAwsRegion(Aws::String&& value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion = std::move(value); }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline void SetAuthorizedAwsRegion(const char* value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion.assign(value); }
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline DeleteAggregationAuthorizationRequest& WithAuthorizedAwsRegion(const Aws::String& value) { SetAuthorizedAwsRegion(value); return *this;}
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline DeleteAggregationAuthorizationRequest& WithAuthorizedAwsRegion(Aws::String&& value) { SetAuthorizedAwsRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The region authorized to collect aggregated data.</p>
-     */
-    inline DeleteAggregationAuthorizationRequest& WithAuthorizedAwsRegion(const char* value) { SetAuthorizedAwsRegion(value); return *this;}
-
+    template<typename AuthorizedAwsRegionT = Aws::String>
+    void SetAuthorizedAwsRegion(AuthorizedAwsRegionT&& value) { m_authorizedAwsRegionHasBeenSet = true; m_authorizedAwsRegion = std::forward<AuthorizedAwsRegionT>(value); }
+    template<typename AuthorizedAwsRegionT = Aws::String>
+    DeleteAggregationAuthorizationRequest& WithAuthorizedAwsRegion(AuthorizedAwsRegionT&& value) { SetAuthorizedAwsRegion(std::forward<AuthorizedAwsRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_authorizedAccountId;

@@ -26,7 +26,7 @@ namespace Model
   class ListSpeechSynthesisTasksRequest : public PollyRequest
   {
   public:
-    AWS_POLLY_API ListSpeechSynthesisTasksRequest();
+    AWS_POLLY_API ListSpeechSynthesisTasksRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,115 +39,47 @@ namespace Model
     AWS_POLLY_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>Maximum number of speech synthesis tasks returned in a List operation.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>Maximum number of speech synthesis tasks returned in a List operation.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>Maximum number of speech synthesis tasks returned in a List operation.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>Maximum number of speech synthesis tasks returned in a List operation.</p>
-     */
     inline ListSpeechSynthesisTasksRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The pagination token to use in the next request to continue the listing of
      * speech synthesis tasks. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token to use in the next request to continue the listing of
-     * speech synthesis tasks. </p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListSpeechSynthesisTasksRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token to use in the next request to continue the listing of
-     * speech synthesis tasks. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token to use in the next request to continue the listing of
-     * speech synthesis tasks. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token to use in the next request to continue the listing of
-     * speech synthesis tasks. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token to use in the next request to continue the listing of
-     * speech synthesis tasks. </p>
-     */
-    inline ListSpeechSynthesisTasksRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token to use in the next request to continue the listing of
-     * speech synthesis tasks. </p>
-     */
-    inline ListSpeechSynthesisTasksRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token to use in the next request to continue the listing of
-     * speech synthesis tasks. </p>
-     */
-    inline ListSpeechSynthesisTasksRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Status of the speech synthesis tasks returned in a List operation</p>
      */
-    inline const TaskStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Status of the speech synthesis tasks returned in a List operation</p>
-     */
+    inline TaskStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>Status of the speech synthesis tasks returned in a List operation</p>
-     */
-    inline void SetStatus(const TaskStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Status of the speech synthesis tasks returned in a List operation</p>
-     */
-    inline void SetStatus(TaskStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Status of the speech synthesis tasks returned in a List operation</p>
-     */
-    inline ListSpeechSynthesisTasksRequest& WithStatus(const TaskStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Status of the speech synthesis tasks returned in a List operation</p>
-     */
-    inline ListSpeechSynthesisTasksRequest& WithStatus(TaskStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(TaskStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ListSpeechSynthesisTasksRequest& WithStatus(TaskStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    TaskStatus m_status;
+    TaskStatus m_status{TaskStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

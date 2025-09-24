@@ -22,7 +22,7 @@ namespace Model
   class UpdateConnectionAliasPermissionRequest : public WorkSpacesRequest
   {
   public:
-    AWS_WORKSPACES_API UpdateConnectionAliasPermissionRequest();
+    AWS_WORKSPACES_API UpdateConnectionAliasPermissionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,91 +35,31 @@ namespace Model
     AWS_WORKSPACES_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the connection alias that you want to update permissions
      * for.</p>
      */
-    inline const Aws::String& GetAliasId() const{ return m_aliasId; }
-
-    /**
-     * <p>The identifier of the connection alias that you want to update permissions
-     * for.</p>
-     */
+    inline const Aws::String& GetAliasId() const { return m_aliasId; }
     inline bool AliasIdHasBeenSet() const { return m_aliasIdHasBeenSet; }
+    template<typename AliasIdT = Aws::String>
+    void SetAliasId(AliasIdT&& value) { m_aliasIdHasBeenSet = true; m_aliasId = std::forward<AliasIdT>(value); }
+    template<typename AliasIdT = Aws::String>
+    UpdateConnectionAliasPermissionRequest& WithAliasId(AliasIdT&& value) { SetAliasId(std::forward<AliasIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the connection alias that you want to update permissions
-     * for.</p>
-     */
-    inline void SetAliasId(const Aws::String& value) { m_aliasIdHasBeenSet = true; m_aliasId = value; }
-
-    /**
-     * <p>The identifier of the connection alias that you want to update permissions
-     * for.</p>
-     */
-    inline void SetAliasId(Aws::String&& value) { m_aliasIdHasBeenSet = true; m_aliasId = std::move(value); }
-
-    /**
-     * <p>The identifier of the connection alias that you want to update permissions
-     * for.</p>
-     */
-    inline void SetAliasId(const char* value) { m_aliasIdHasBeenSet = true; m_aliasId.assign(value); }
-
-    /**
-     * <p>The identifier of the connection alias that you want to update permissions
-     * for.</p>
-     */
-    inline UpdateConnectionAliasPermissionRequest& WithAliasId(const Aws::String& value) { SetAliasId(value); return *this;}
-
-    /**
-     * <p>The identifier of the connection alias that you want to update permissions
-     * for.</p>
-     */
-    inline UpdateConnectionAliasPermissionRequest& WithAliasId(Aws::String&& value) { SetAliasId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the connection alias that you want to update permissions
-     * for.</p>
-     */
-    inline UpdateConnectionAliasPermissionRequest& WithAliasId(const char* value) { SetAliasId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether to share or unshare the connection alias with the specified
      * Amazon Web Services account.</p>
      */
-    inline const ConnectionAliasPermission& GetConnectionAliasPermission() const{ return m_connectionAliasPermission; }
-
-    /**
-     * <p>Indicates whether to share or unshare the connection alias with the specified
-     * Amazon Web Services account.</p>
-     */
+    inline const ConnectionAliasPermission& GetConnectionAliasPermission() const { return m_connectionAliasPermission; }
     inline bool ConnectionAliasPermissionHasBeenSet() const { return m_connectionAliasPermissionHasBeenSet; }
-
-    /**
-     * <p>Indicates whether to share or unshare the connection alias with the specified
-     * Amazon Web Services account.</p>
-     */
-    inline void SetConnectionAliasPermission(const ConnectionAliasPermission& value) { m_connectionAliasPermissionHasBeenSet = true; m_connectionAliasPermission = value; }
-
-    /**
-     * <p>Indicates whether to share or unshare the connection alias with the specified
-     * Amazon Web Services account.</p>
-     */
-    inline void SetConnectionAliasPermission(ConnectionAliasPermission&& value) { m_connectionAliasPermissionHasBeenSet = true; m_connectionAliasPermission = std::move(value); }
-
-    /**
-     * <p>Indicates whether to share or unshare the connection alias with the specified
-     * Amazon Web Services account.</p>
-     */
-    inline UpdateConnectionAliasPermissionRequest& WithConnectionAliasPermission(const ConnectionAliasPermission& value) { SetConnectionAliasPermission(value); return *this;}
-
-    /**
-     * <p>Indicates whether to share or unshare the connection alias with the specified
-     * Amazon Web Services account.</p>
-     */
-    inline UpdateConnectionAliasPermissionRequest& WithConnectionAliasPermission(ConnectionAliasPermission&& value) { SetConnectionAliasPermission(std::move(value)); return *this;}
-
+    template<typename ConnectionAliasPermissionT = ConnectionAliasPermission>
+    void SetConnectionAliasPermission(ConnectionAliasPermissionT&& value) { m_connectionAliasPermissionHasBeenSet = true; m_connectionAliasPermission = std::forward<ConnectionAliasPermissionT>(value); }
+    template<typename ConnectionAliasPermissionT = ConnectionAliasPermission>
+    UpdateConnectionAliasPermissionRequest& WithConnectionAliasPermission(ConnectionAliasPermissionT&& value) { SetConnectionAliasPermission(std::forward<ConnectionAliasPermissionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_aliasId;

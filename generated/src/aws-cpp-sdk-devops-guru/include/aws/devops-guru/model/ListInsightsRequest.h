@@ -22,7 +22,7 @@ namespace Model
   class ListInsightsRequest : public DevOpsGuruRequest
   {
   public:
-    AWS_DEVOPSGURU_API ListInsightsRequest();
+    AWS_DEVOPSGURU_API ListInsightsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,126 +33,49 @@ namespace Model
     AWS_DEVOPSGURU_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> A filter used to filter the returned insights by their status. You can
      * specify one status filter. </p>
      */
-    inline const ListInsightsStatusFilter& GetStatusFilter() const{ return m_statusFilter; }
-
-    /**
-     * <p> A filter used to filter the returned insights by their status. You can
-     * specify one status filter. </p>
-     */
+    inline const ListInsightsStatusFilter& GetStatusFilter() const { return m_statusFilter; }
     inline bool StatusFilterHasBeenSet() const { return m_statusFilterHasBeenSet; }
+    template<typename StatusFilterT = ListInsightsStatusFilter>
+    void SetStatusFilter(StatusFilterT&& value) { m_statusFilterHasBeenSet = true; m_statusFilter = std::forward<StatusFilterT>(value); }
+    template<typename StatusFilterT = ListInsightsStatusFilter>
+    ListInsightsRequest& WithStatusFilter(StatusFilterT&& value) { SetStatusFilter(std::forward<StatusFilterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A filter used to filter the returned insights by their status. You can
-     * specify one status filter. </p>
-     */
-    inline void SetStatusFilter(const ListInsightsStatusFilter& value) { m_statusFilterHasBeenSet = true; m_statusFilter = value; }
-
-    /**
-     * <p> A filter used to filter the returned insights by their status. You can
-     * specify one status filter. </p>
-     */
-    inline void SetStatusFilter(ListInsightsStatusFilter&& value) { m_statusFilterHasBeenSet = true; m_statusFilter = std::move(value); }
-
-    /**
-     * <p> A filter used to filter the returned insights by their status. You can
-     * specify one status filter. </p>
-     */
-    inline ListInsightsRequest& WithStatusFilter(const ListInsightsStatusFilter& value) { SetStatusFilter(value); return *this;}
-
-    /**
-     * <p> A filter used to filter the returned insights by their status. You can
-     * specify one status filter. </p>
-     */
-    inline ListInsightsRequest& WithStatusFilter(ListInsightsStatusFilter&& value) { SetStatusFilter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return with a single call. To retrieve the
      * remaining results, make another call with the returned <code>nextToken</code>
      * value.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return with a single call. To retrieve the
-     * remaining results, make another call with the returned <code>nextToken</code>
-     * value.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return with a single call. To retrieve the
-     * remaining results, make another call with the returned <code>nextToken</code>
-     * value.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return with a single call. To retrieve the
-     * remaining results, make another call with the returned <code>nextToken</code>
-     * value.</p>
-     */
     inline ListInsightsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The pagination token to use to retrieve the next page of results for this
      * operation. If this value is null, it retrieves the first page.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline ListInsightsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline ListInsightsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token to use to retrieve the next page of results for this
-     * operation. If this value is null, it retrieves the first page.</p>
-     */
-    inline ListInsightsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListInsightsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     ListInsightsStatusFilter m_statusFilter;
     bool m_statusFilterHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

@@ -32,52 +32,23 @@ namespace Model
   class DomainConfiguration
   {
   public:
-    AWS_SWF_API DomainConfiguration();
+    AWS_SWF_API DomainConfiguration() = default;
     AWS_SWF_API DomainConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API DomainConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The retention period for workflow executions in this domain.</p>
      */
-    inline const Aws::String& GetWorkflowExecutionRetentionPeriodInDays() const{ return m_workflowExecutionRetentionPeriodInDays; }
-
-    /**
-     * <p>The retention period for workflow executions in this domain.</p>
-     */
+    inline const Aws::String& GetWorkflowExecutionRetentionPeriodInDays() const { return m_workflowExecutionRetentionPeriodInDays; }
     inline bool WorkflowExecutionRetentionPeriodInDaysHasBeenSet() const { return m_workflowExecutionRetentionPeriodInDaysHasBeenSet; }
-
-    /**
-     * <p>The retention period for workflow executions in this domain.</p>
-     */
-    inline void SetWorkflowExecutionRetentionPeriodInDays(const Aws::String& value) { m_workflowExecutionRetentionPeriodInDaysHasBeenSet = true; m_workflowExecutionRetentionPeriodInDays = value; }
-
-    /**
-     * <p>The retention period for workflow executions in this domain.</p>
-     */
-    inline void SetWorkflowExecutionRetentionPeriodInDays(Aws::String&& value) { m_workflowExecutionRetentionPeriodInDaysHasBeenSet = true; m_workflowExecutionRetentionPeriodInDays = std::move(value); }
-
-    /**
-     * <p>The retention period for workflow executions in this domain.</p>
-     */
-    inline void SetWorkflowExecutionRetentionPeriodInDays(const char* value) { m_workflowExecutionRetentionPeriodInDaysHasBeenSet = true; m_workflowExecutionRetentionPeriodInDays.assign(value); }
-
-    /**
-     * <p>The retention period for workflow executions in this domain.</p>
-     */
-    inline DomainConfiguration& WithWorkflowExecutionRetentionPeriodInDays(const Aws::String& value) { SetWorkflowExecutionRetentionPeriodInDays(value); return *this;}
-
-    /**
-     * <p>The retention period for workflow executions in this domain.</p>
-     */
-    inline DomainConfiguration& WithWorkflowExecutionRetentionPeriodInDays(Aws::String&& value) { SetWorkflowExecutionRetentionPeriodInDays(std::move(value)); return *this;}
-
-    /**
-     * <p>The retention period for workflow executions in this domain.</p>
-     */
-    inline DomainConfiguration& WithWorkflowExecutionRetentionPeriodInDays(const char* value) { SetWorkflowExecutionRetentionPeriodInDays(value); return *this;}
-
+    template<typename WorkflowExecutionRetentionPeriodInDaysT = Aws::String>
+    void SetWorkflowExecutionRetentionPeriodInDays(WorkflowExecutionRetentionPeriodInDaysT&& value) { m_workflowExecutionRetentionPeriodInDaysHasBeenSet = true; m_workflowExecutionRetentionPeriodInDays = std::forward<WorkflowExecutionRetentionPeriodInDaysT>(value); }
+    template<typename WorkflowExecutionRetentionPeriodInDaysT = Aws::String>
+    DomainConfiguration& WithWorkflowExecutionRetentionPeriodInDays(WorkflowExecutionRetentionPeriodInDaysT&& value) { SetWorkflowExecutionRetentionPeriodInDays(std::forward<WorkflowExecutionRetentionPeriodInDaysT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_workflowExecutionRetentionPeriodInDays;

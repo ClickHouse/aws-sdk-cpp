@@ -34,206 +34,71 @@ namespace Model
   class MixedMeasureMapping
   {
   public:
-    AWS_TIMESTREAMWRITE_API MixedMeasureMapping();
+    AWS_TIMESTREAMWRITE_API MixedMeasureMapping() = default;
     AWS_TIMESTREAMWRITE_API MixedMeasureMapping(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMWRITE_API MixedMeasureMapping& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TIMESTREAMWRITE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p/>
      */
-    inline const Aws::String& GetMeasureName() const{ return m_measureName; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetMeasureName() const { return m_measureName; }
     inline bool MeasureNameHasBeenSet() const { return m_measureNameHasBeenSet; }
+    template<typename MeasureNameT = Aws::String>
+    void SetMeasureName(MeasureNameT&& value) { m_measureNameHasBeenSet = true; m_measureName = std::forward<MeasureNameT>(value); }
+    template<typename MeasureNameT = Aws::String>
+    MixedMeasureMapping& WithMeasureName(MeasureNameT&& value) { SetMeasureName(std::forward<MeasureNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p/>
      */
-    inline void SetMeasureName(const Aws::String& value) { m_measureNameHasBeenSet = true; m_measureName = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetMeasureName(Aws::String&& value) { m_measureNameHasBeenSet = true; m_measureName = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetMeasureName(const char* value) { m_measureNameHasBeenSet = true; m_measureName.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithMeasureName(const Aws::String& value) { SetMeasureName(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithMeasureName(Aws::String&& value) { SetMeasureName(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithMeasureName(const char* value) { SetMeasureName(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetSourceColumn() const{ return m_sourceColumn; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetSourceColumn() const { return m_sourceColumn; }
     inline bool SourceColumnHasBeenSet() const { return m_sourceColumnHasBeenSet; }
+    template<typename SourceColumnT = Aws::String>
+    void SetSourceColumn(SourceColumnT&& value) { m_sourceColumnHasBeenSet = true; m_sourceColumn = std::forward<SourceColumnT>(value); }
+    template<typename SourceColumnT = Aws::String>
+    MixedMeasureMapping& WithSourceColumn(SourceColumnT&& value) { SetSourceColumn(std::forward<SourceColumnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p/>
      */
-    inline void SetSourceColumn(const Aws::String& value) { m_sourceColumnHasBeenSet = true; m_sourceColumn = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetSourceColumn(Aws::String&& value) { m_sourceColumnHasBeenSet = true; m_sourceColumn = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetSourceColumn(const char* value) { m_sourceColumnHasBeenSet = true; m_sourceColumn.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithSourceColumn(const Aws::String& value) { SetSourceColumn(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithSourceColumn(Aws::String&& value) { SetSourceColumn(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithSourceColumn(const char* value) { SetSourceColumn(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::String& GetTargetMeasureName() const{ return m_targetMeasureName; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::String& GetTargetMeasureName() const { return m_targetMeasureName; }
     inline bool TargetMeasureNameHasBeenSet() const { return m_targetMeasureNameHasBeenSet; }
+    template<typename TargetMeasureNameT = Aws::String>
+    void SetTargetMeasureName(TargetMeasureNameT&& value) { m_targetMeasureNameHasBeenSet = true; m_targetMeasureName = std::forward<TargetMeasureNameT>(value); }
+    template<typename TargetMeasureNameT = Aws::String>
+    MixedMeasureMapping& WithTargetMeasureName(TargetMeasureNameT&& value) { SetTargetMeasureName(std::forward<TargetMeasureNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p/>
      */
-    inline void SetTargetMeasureName(const Aws::String& value) { m_targetMeasureNameHasBeenSet = true; m_targetMeasureName = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetTargetMeasureName(Aws::String&& value) { m_targetMeasureNameHasBeenSet = true; m_targetMeasureName = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline void SetTargetMeasureName(const char* value) { m_targetMeasureNameHasBeenSet = true; m_targetMeasureName.assign(value); }
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithTargetMeasureName(const Aws::String& value) { SetTargetMeasureName(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithTargetMeasureName(Aws::String&& value) { SetTargetMeasureName(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithTargetMeasureName(const char* value) { SetTargetMeasureName(value); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const MeasureValueType& GetMeasureValueType() const{ return m_measureValueType; }
-
-    /**
-     * <p/>
-     */
+    inline MeasureValueType GetMeasureValueType() const { return m_measureValueType; }
     inline bool MeasureValueTypeHasBeenSet() const { return m_measureValueTypeHasBeenSet; }
+    inline void SetMeasureValueType(MeasureValueType value) { m_measureValueTypeHasBeenSet = true; m_measureValueType = value; }
+    inline MixedMeasureMapping& WithMeasureValueType(MeasureValueType value) { SetMeasureValueType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p/>
      */
-    inline void SetMeasureValueType(const MeasureValueType& value) { m_measureValueTypeHasBeenSet = true; m_measureValueType = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetMeasureValueType(MeasureValueType&& value) { m_measureValueTypeHasBeenSet = true; m_measureValueType = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithMeasureValueType(const MeasureValueType& value) { SetMeasureValueType(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithMeasureValueType(MeasureValueType&& value) { SetMeasureValueType(std::move(value)); return *this;}
-
-
-    /**
-     * <p/>
-     */
-    inline const Aws::Vector<MultiMeasureAttributeMapping>& GetMultiMeasureAttributeMappings() const{ return m_multiMeasureAttributeMappings; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::Vector<MultiMeasureAttributeMapping>& GetMultiMeasureAttributeMappings() const { return m_multiMeasureAttributeMappings; }
     inline bool MultiMeasureAttributeMappingsHasBeenSet() const { return m_multiMeasureAttributeMappingsHasBeenSet; }
-
-    /**
-     * <p/>
-     */
-    inline void SetMultiMeasureAttributeMappings(const Aws::Vector<MultiMeasureAttributeMapping>& value) { m_multiMeasureAttributeMappingsHasBeenSet = true; m_multiMeasureAttributeMappings = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetMultiMeasureAttributeMappings(Aws::Vector<MultiMeasureAttributeMapping>&& value) { m_multiMeasureAttributeMappingsHasBeenSet = true; m_multiMeasureAttributeMappings = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithMultiMeasureAttributeMappings(const Aws::Vector<MultiMeasureAttributeMapping>& value) { SetMultiMeasureAttributeMappings(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& WithMultiMeasureAttributeMappings(Aws::Vector<MultiMeasureAttributeMapping>&& value) { SetMultiMeasureAttributeMappings(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& AddMultiMeasureAttributeMappings(const MultiMeasureAttributeMapping& value) { m_multiMeasureAttributeMappingsHasBeenSet = true; m_multiMeasureAttributeMappings.push_back(value); return *this; }
-
-    /**
-     * <p/>
-     */
-    inline MixedMeasureMapping& AddMultiMeasureAttributeMappings(MultiMeasureAttributeMapping&& value) { m_multiMeasureAttributeMappingsHasBeenSet = true; m_multiMeasureAttributeMappings.push_back(std::move(value)); return *this; }
-
+    template<typename MultiMeasureAttributeMappingsT = Aws::Vector<MultiMeasureAttributeMapping>>
+    void SetMultiMeasureAttributeMappings(MultiMeasureAttributeMappingsT&& value) { m_multiMeasureAttributeMappingsHasBeenSet = true; m_multiMeasureAttributeMappings = std::forward<MultiMeasureAttributeMappingsT>(value); }
+    template<typename MultiMeasureAttributeMappingsT = Aws::Vector<MultiMeasureAttributeMapping>>
+    MixedMeasureMapping& WithMultiMeasureAttributeMappings(MultiMeasureAttributeMappingsT&& value) { SetMultiMeasureAttributeMappings(std::forward<MultiMeasureAttributeMappingsT>(value)); return *this;}
+    template<typename MultiMeasureAttributeMappingsT = MultiMeasureAttributeMapping>
+    MixedMeasureMapping& AddMultiMeasureAttributeMappings(MultiMeasureAttributeMappingsT&& value) { m_multiMeasureAttributeMappingsHasBeenSet = true; m_multiMeasureAttributeMappings.emplace_back(std::forward<MultiMeasureAttributeMappingsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_measureName;
@@ -245,7 +110,7 @@ namespace Model
     Aws::String m_targetMeasureName;
     bool m_targetMeasureNameHasBeenSet = false;
 
-    MeasureValueType m_measureValueType;
+    MeasureValueType m_measureValueType{MeasureValueType::NOT_SET};
     bool m_measureValueTypeHasBeenSet = false;
 
     Aws::Vector<MultiMeasureAttributeMapping> m_multiMeasureAttributeMappings;

@@ -8,6 +8,8 @@
 #include <aws/codestar-connections/CodeStarconnectionsRequest.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/codestar-connections/model/SyncConfigurationType.h>
+#include <aws/codestar-connections/model/PublishDeploymentStatus.h>
+#include <aws/codestar-connections/model/TriggerResourceUpdateOn.h>
 #include <utility>
 
 namespace Aws
@@ -22,7 +24,7 @@ namespace Model
   class UpdateSyncConfigurationRequest : public CodeStarconnectionsRequest
   {
   public:
-    AWS_CODESTARCONNECTIONS_API UpdateSyncConfigurationRequest();
+    AWS_CODESTARCONNECTIONS_API UpdateSyncConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,249 +37,97 @@ namespace Model
     AWS_CODESTARCONNECTIONS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The branch for the sync configuration to be updated.</p>
      */
-    inline const Aws::String& GetBranch() const{ return m_branch; }
-
-    /**
-     * <p>The branch for the sync configuration to be updated.</p>
-     */
+    inline const Aws::String& GetBranch() const { return m_branch; }
     inline bool BranchHasBeenSet() const { return m_branchHasBeenSet; }
+    template<typename BranchT = Aws::String>
+    void SetBranch(BranchT&& value) { m_branchHasBeenSet = true; m_branch = std::forward<BranchT>(value); }
+    template<typename BranchT = Aws::String>
+    UpdateSyncConfigurationRequest& WithBranch(BranchT&& value) { SetBranch(std::forward<BranchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The branch for the sync configuration to be updated.</p>
-     */
-    inline void SetBranch(const Aws::String& value) { m_branchHasBeenSet = true; m_branch = value; }
-
-    /**
-     * <p>The branch for the sync configuration to be updated.</p>
-     */
-    inline void SetBranch(Aws::String&& value) { m_branchHasBeenSet = true; m_branch = std::move(value); }
-
-    /**
-     * <p>The branch for the sync configuration to be updated.</p>
-     */
-    inline void SetBranch(const char* value) { m_branchHasBeenSet = true; m_branch.assign(value); }
-
-    /**
-     * <p>The branch for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithBranch(const Aws::String& value) { SetBranch(value); return *this;}
-
-    /**
-     * <p>The branch for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithBranch(Aws::String&& value) { SetBranch(std::move(value)); return *this;}
-
-    /**
-     * <p>The branch for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithBranch(const char* value) { SetBranch(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration file for the sync configuration to be updated.</p>
      */
-    inline const Aws::String& GetConfigFile() const{ return m_configFile; }
-
-    /**
-     * <p>The configuration file for the sync configuration to be updated.</p>
-     */
+    inline const Aws::String& GetConfigFile() const { return m_configFile; }
     inline bool ConfigFileHasBeenSet() const { return m_configFileHasBeenSet; }
+    template<typename ConfigFileT = Aws::String>
+    void SetConfigFile(ConfigFileT&& value) { m_configFileHasBeenSet = true; m_configFile = std::forward<ConfigFileT>(value); }
+    template<typename ConfigFileT = Aws::String>
+    UpdateSyncConfigurationRequest& WithConfigFile(ConfigFileT&& value) { SetConfigFile(std::forward<ConfigFileT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration file for the sync configuration to be updated.</p>
-     */
-    inline void SetConfigFile(const Aws::String& value) { m_configFileHasBeenSet = true; m_configFile = value; }
-
-    /**
-     * <p>The configuration file for the sync configuration to be updated.</p>
-     */
-    inline void SetConfigFile(Aws::String&& value) { m_configFileHasBeenSet = true; m_configFile = std::move(value); }
-
-    /**
-     * <p>The configuration file for the sync configuration to be updated.</p>
-     */
-    inline void SetConfigFile(const char* value) { m_configFileHasBeenSet = true; m_configFile.assign(value); }
-
-    /**
-     * <p>The configuration file for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithConfigFile(const Aws::String& value) { SetConfigFile(value); return *this;}
-
-    /**
-     * <p>The configuration file for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithConfigFile(Aws::String&& value) { SetConfigFile(std::move(value)); return *this;}
-
-    /**
-     * <p>The configuration file for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithConfigFile(const char* value) { SetConfigFile(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the repository link for the sync configuration to be updated.</p>
      */
-    inline const Aws::String& GetRepositoryLinkId() const{ return m_repositoryLinkId; }
-
-    /**
-     * <p>The ID of the repository link for the sync configuration to be updated.</p>
-     */
+    inline const Aws::String& GetRepositoryLinkId() const { return m_repositoryLinkId; }
     inline bool RepositoryLinkIdHasBeenSet() const { return m_repositoryLinkIdHasBeenSet; }
+    template<typename RepositoryLinkIdT = Aws::String>
+    void SetRepositoryLinkId(RepositoryLinkIdT&& value) { m_repositoryLinkIdHasBeenSet = true; m_repositoryLinkId = std::forward<RepositoryLinkIdT>(value); }
+    template<typename RepositoryLinkIdT = Aws::String>
+    UpdateSyncConfigurationRequest& WithRepositoryLinkId(RepositoryLinkIdT&& value) { SetRepositoryLinkId(std::forward<RepositoryLinkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the repository link for the sync configuration to be updated.</p>
-     */
-    inline void SetRepositoryLinkId(const Aws::String& value) { m_repositoryLinkIdHasBeenSet = true; m_repositoryLinkId = value; }
-
-    /**
-     * <p>The ID of the repository link for the sync configuration to be updated.</p>
-     */
-    inline void SetRepositoryLinkId(Aws::String&& value) { m_repositoryLinkIdHasBeenSet = true; m_repositoryLinkId = std::move(value); }
-
-    /**
-     * <p>The ID of the repository link for the sync configuration to be updated.</p>
-     */
-    inline void SetRepositoryLinkId(const char* value) { m_repositoryLinkIdHasBeenSet = true; m_repositoryLinkId.assign(value); }
-
-    /**
-     * <p>The ID of the repository link for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithRepositoryLinkId(const Aws::String& value) { SetRepositoryLinkId(value); return *this;}
-
-    /**
-     * <p>The ID of the repository link for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithRepositoryLinkId(Aws::String&& value) { SetRepositoryLinkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the repository link for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithRepositoryLinkId(const char* value) { SetRepositoryLinkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Amazon Web Services resource for the sync configuration to be
      * updated.</p>
      */
-    inline const Aws::String& GetResourceName() const{ return m_resourceName; }
-
-    /**
-     * <p>The name of the Amazon Web Services resource for the sync configuration to be
-     * updated.</p>
-     */
+    inline const Aws::String& GetResourceName() const { return m_resourceName; }
     inline bool ResourceNameHasBeenSet() const { return m_resourceNameHasBeenSet; }
+    template<typename ResourceNameT = Aws::String>
+    void SetResourceName(ResourceNameT&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::forward<ResourceNameT>(value); }
+    template<typename ResourceNameT = Aws::String>
+    UpdateSyncConfigurationRequest& WithResourceName(ResourceNameT&& value) { SetResourceName(std::forward<ResourceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon Web Services resource for the sync configuration to be
-     * updated.</p>
-     */
-    inline void SetResourceName(const Aws::String& value) { m_resourceNameHasBeenSet = true; m_resourceName = value; }
-
-    /**
-     * <p>The name of the Amazon Web Services resource for the sync configuration to be
-     * updated.</p>
-     */
-    inline void SetResourceName(Aws::String&& value) { m_resourceNameHasBeenSet = true; m_resourceName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon Web Services resource for the sync configuration to be
-     * updated.</p>
-     */
-    inline void SetResourceName(const char* value) { m_resourceNameHasBeenSet = true; m_resourceName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon Web Services resource for the sync configuration to be
-     * updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithResourceName(const Aws::String& value) { SetResourceName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Web Services resource for the sync configuration to be
-     * updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithResourceName(Aws::String&& value) { SetResourceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon Web Services resource for the sync configuration to be
-     * updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithResourceName(const char* value) { SetResourceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the IAM role for the sync configuration to be updated.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The ARN of the IAM role for the sync configuration to be updated.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    UpdateSyncConfigurationRequest& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the IAM role for the sync configuration to be updated.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The ARN of the IAM role for the sync configuration to be updated.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the IAM role for the sync configuration to be updated.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The ARN of the IAM role for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the IAM role for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the IAM role for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The sync type for the sync configuration to be updated.</p>
      */
-    inline const SyncConfigurationType& GetSyncType() const{ return m_syncType; }
-
-    /**
-     * <p>The sync type for the sync configuration to be updated.</p>
-     */
+    inline SyncConfigurationType GetSyncType() const { return m_syncType; }
     inline bool SyncTypeHasBeenSet() const { return m_syncTypeHasBeenSet; }
+    inline void SetSyncType(SyncConfigurationType value) { m_syncTypeHasBeenSet = true; m_syncType = value; }
+    inline UpdateSyncConfigurationRequest& WithSyncType(SyncConfigurationType value) { SetSyncType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The sync type for the sync configuration to be updated.</p>
+     * <p>Whether to enable or disable publishing of deployment status to source
+     * providers.</p>
      */
-    inline void SetSyncType(const SyncConfigurationType& value) { m_syncTypeHasBeenSet = true; m_syncType = value; }
+    inline PublishDeploymentStatus GetPublishDeploymentStatus() const { return m_publishDeploymentStatus; }
+    inline bool PublishDeploymentStatusHasBeenSet() const { return m_publishDeploymentStatusHasBeenSet; }
+    inline void SetPublishDeploymentStatus(PublishDeploymentStatus value) { m_publishDeploymentStatusHasBeenSet = true; m_publishDeploymentStatus = value; }
+    inline UpdateSyncConfigurationRequest& WithPublishDeploymentStatus(PublishDeploymentStatus value) { SetPublishDeploymentStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The sync type for the sync configuration to be updated.</p>
+     * <p>When to trigger Git sync to begin the stack update.</p>
      */
-    inline void SetSyncType(SyncConfigurationType&& value) { m_syncTypeHasBeenSet = true; m_syncType = std::move(value); }
-
-    /**
-     * <p>The sync type for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithSyncType(const SyncConfigurationType& value) { SetSyncType(value); return *this;}
-
-    /**
-     * <p>The sync type for the sync configuration to be updated.</p>
-     */
-    inline UpdateSyncConfigurationRequest& WithSyncType(SyncConfigurationType&& value) { SetSyncType(std::move(value)); return *this;}
-
+    inline TriggerResourceUpdateOn GetTriggerResourceUpdateOn() const { return m_triggerResourceUpdateOn; }
+    inline bool TriggerResourceUpdateOnHasBeenSet() const { return m_triggerResourceUpdateOnHasBeenSet; }
+    inline void SetTriggerResourceUpdateOn(TriggerResourceUpdateOn value) { m_triggerResourceUpdateOnHasBeenSet = true; m_triggerResourceUpdateOn = value; }
+    inline UpdateSyncConfigurationRequest& WithTriggerResourceUpdateOn(TriggerResourceUpdateOn value) { SetTriggerResourceUpdateOn(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_branch;
@@ -295,8 +145,14 @@ namespace Model
     Aws::String m_roleArn;
     bool m_roleArnHasBeenSet = false;
 
-    SyncConfigurationType m_syncType;
+    SyncConfigurationType m_syncType{SyncConfigurationType::NOT_SET};
     bool m_syncTypeHasBeenSet = false;
+
+    PublishDeploymentStatus m_publishDeploymentStatus{PublishDeploymentStatus::NOT_SET};
+    bool m_publishDeploymentStatusHasBeenSet = false;
+
+    TriggerResourceUpdateOn m_triggerResourceUpdateOn{TriggerResourceUpdateOn::NOT_SET};
+    bool m_triggerResourceUpdateOnHasBeenSet = false;
   };
 
 } // namespace Model

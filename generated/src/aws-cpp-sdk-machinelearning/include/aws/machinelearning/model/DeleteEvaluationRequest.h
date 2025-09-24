@@ -21,7 +21,7 @@ namespace Model
   class DeleteEvaluationRequest : public MachineLearningRequest
   {
   public:
-    AWS_MACHINELEARNING_API DeleteEvaluationRequest();
+    AWS_MACHINELEARNING_API DeleteEvaluationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,18 @@ namespace Model
     AWS_MACHINELEARNING_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code> to
      * delete.</p>
      */
-    inline const Aws::String& GetEvaluationId() const{ return m_evaluationId; }
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code> to
-     * delete.</p>
-     */
+    inline const Aws::String& GetEvaluationId() const { return m_evaluationId; }
     inline bool EvaluationIdHasBeenSet() const { return m_evaluationIdHasBeenSet; }
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code> to
-     * delete.</p>
-     */
-    inline void SetEvaluationId(const Aws::String& value) { m_evaluationIdHasBeenSet = true; m_evaluationId = value; }
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code> to
-     * delete.</p>
-     */
-    inline void SetEvaluationId(Aws::String&& value) { m_evaluationIdHasBeenSet = true; m_evaluationId = std::move(value); }
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code> to
-     * delete.</p>
-     */
-    inline void SetEvaluationId(const char* value) { m_evaluationIdHasBeenSet = true; m_evaluationId.assign(value); }
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code> to
-     * delete.</p>
-     */
-    inline DeleteEvaluationRequest& WithEvaluationId(const Aws::String& value) { SetEvaluationId(value); return *this;}
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code> to
-     * delete.</p>
-     */
-    inline DeleteEvaluationRequest& WithEvaluationId(Aws::String&& value) { SetEvaluationId(std::move(value)); return *this;}
-
-    /**
-     * <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code> to
-     * delete.</p>
-     */
-    inline DeleteEvaluationRequest& WithEvaluationId(const char* value) { SetEvaluationId(value); return *this;}
-
+    template<typename EvaluationIdT = Aws::String>
+    void SetEvaluationId(EvaluationIdT&& value) { m_evaluationIdHasBeenSet = true; m_evaluationId = std::forward<EvaluationIdT>(value); }
+    template<typename EvaluationIdT = Aws::String>
+    DeleteEvaluationRequest& WithEvaluationId(EvaluationIdT&& value) { SetEvaluationId(std::forward<EvaluationIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_evaluationId;

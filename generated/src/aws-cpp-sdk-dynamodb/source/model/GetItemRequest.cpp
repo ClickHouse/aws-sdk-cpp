@@ -12,19 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-GetItemRequest::GetItemRequest() : 
-    m_tableNameHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_attributesToGetHasBeenSet(false),
-    m_consistentRead(false),
-    m_consistentReadHasBeenSet(false),
-    m_returnConsumedCapacity(ReturnConsumedCapacity::NOT_SET),
-    m_returnConsumedCapacityHasBeenSet(false),
-    m_projectionExpressionHasBeenSet(false),
-    m_expressionAttributeNamesHasBeenSet(false)
-{
-}
-
 Aws::String GetItemRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -97,5 +84,15 @@ Aws::Http::HeaderValueCollection GetItemRequest::GetRequestSpecificHeaders() con
 }
 
 
+
+GetItemRequest::EndpointParameters GetItemRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

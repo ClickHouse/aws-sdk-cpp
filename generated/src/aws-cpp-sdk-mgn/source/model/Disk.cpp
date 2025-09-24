@@ -18,17 +18,7 @@ namespace mgn
 namespace Model
 {
 
-Disk::Disk() : 
-    m_bytes(0),
-    m_bytesHasBeenSet(false),
-    m_deviceNameHasBeenSet(false)
-{
-}
-
-Disk::Disk(JsonView jsonValue) : 
-    m_bytes(0),
-    m_bytesHasBeenSet(false),
-    m_deviceNameHasBeenSet(false)
+Disk::Disk(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Disk& Disk::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("bytes"))
   {
     m_bytes = jsonValue.GetInt64("bytes");
-
     m_bytesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deviceName"))
   {
     m_deviceName = jsonValue.GetString("deviceName");
-
     m_deviceNameHasBeenSet = true;
   }
-
   return *this;
 }
 

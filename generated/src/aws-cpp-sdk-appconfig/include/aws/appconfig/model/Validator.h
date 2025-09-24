@@ -29,108 +29,48 @@ namespace Model
    * configuration that you want to deploy functions as intended. To validate your
    * application configuration data, you provide a schema or an Amazon Web Services
    * Lambda function that runs against the configuration. The configuration
-   * deployment or update can only proceed when the configuration data is
-   * valid.</p><p><h3>See Also:</h3>   <a
+   * deployment or update can only proceed when the configuration data is valid. For
+   * more information, see <a
+   * href="https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-profile.html#appconfig-creating-configuration-and-profile-validators">About
+   * validators</a> in the <i>AppConfig User Guide</i>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/appconfig-2019-10-09/Validator">AWS
    * API Reference</a></p>
    */
   class Validator
   {
   public:
-    AWS_APPCONFIG_API Validator();
+    AWS_APPCONFIG_API Validator() = default;
     AWS_APPCONFIG_API Validator(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPCONFIG_API Validator& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPCONFIG_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>AppConfig supports validators of type <code>JSON_SCHEMA</code> and
      * <code>LAMBDA</code> </p>
      */
-    inline const ValidatorType& GetType() const{ return m_type; }
-
-    /**
-     * <p>AppConfig supports validators of type <code>JSON_SCHEMA</code> and
-     * <code>LAMBDA</code> </p>
-     */
+    inline ValidatorType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(ValidatorType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline Validator& WithType(ValidatorType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>AppConfig supports validators of type <code>JSON_SCHEMA</code> and
-     * <code>LAMBDA</code> </p>
-     */
-    inline void SetType(const ValidatorType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>AppConfig supports validators of type <code>JSON_SCHEMA</code> and
-     * <code>LAMBDA</code> </p>
-     */
-    inline void SetType(ValidatorType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>AppConfig supports validators of type <code>JSON_SCHEMA</code> and
-     * <code>LAMBDA</code> </p>
-     */
-    inline Validator& WithType(const ValidatorType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>AppConfig supports validators of type <code>JSON_SCHEMA</code> and
-     * <code>LAMBDA</code> </p>
-     */
-    inline Validator& WithType(ValidatorType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda
      * function.</p>
      */
-    inline const Aws::String& GetContent() const{ return m_content; }
-
-    /**
-     * <p>Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda
-     * function.</p>
-     */
+    inline const Aws::String& GetContent() const { return m_content; }
     inline bool ContentHasBeenSet() const { return m_contentHasBeenSet; }
-
-    /**
-     * <p>Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda
-     * function.</p>
-     */
-    inline void SetContent(const Aws::String& value) { m_contentHasBeenSet = true; m_content = value; }
-
-    /**
-     * <p>Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda
-     * function.</p>
-     */
-    inline void SetContent(Aws::String&& value) { m_contentHasBeenSet = true; m_content = std::move(value); }
-
-    /**
-     * <p>Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda
-     * function.</p>
-     */
-    inline void SetContent(const char* value) { m_contentHasBeenSet = true; m_content.assign(value); }
-
-    /**
-     * <p>Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda
-     * function.</p>
-     */
-    inline Validator& WithContent(const Aws::String& value) { SetContent(value); return *this;}
-
-    /**
-     * <p>Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda
-     * function.</p>
-     */
-    inline Validator& WithContent(Aws::String&& value) { SetContent(std::move(value)); return *this;}
-
-    /**
-     * <p>Either the JSON Schema content or the Amazon Resource Name (ARN) of an Lambda
-     * function.</p>
-     */
-    inline Validator& WithContent(const char* value) { SetContent(value); return *this;}
-
+    template<typename ContentT = Aws::String>
+    void SetContent(ContentT&& value) { m_contentHasBeenSet = true; m_content = std::forward<ContentT>(value); }
+    template<typename ContentT = Aws::String>
+    Validator& WithContent(ContentT&& value) { SetContent(std::forward<ContentT>(value)); return *this;}
+    ///@}
   private:
 
-    ValidatorType m_type;
+    ValidatorType m_type{ValidatorType::NOT_SET};
     bool m_typeHasBeenSet = false;
 
     Aws::String m_content;

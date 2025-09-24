@@ -31,101 +31,36 @@ namespace Model
   class OutputLocation
   {
   public:
-    AWS_ROBOMAKER_API OutputLocation();
+    AWS_ROBOMAKER_API OutputLocation() = default;
     AWS_ROBOMAKER_API OutputLocation(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROBOMAKER_API OutputLocation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ROBOMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The S3 bucket for output.</p>
      */
-    inline const Aws::String& GetS3Bucket() const{ return m_s3Bucket; }
-
-    /**
-     * <p>The S3 bucket for output.</p>
-     */
+    inline const Aws::String& GetS3Bucket() const { return m_s3Bucket; }
     inline bool S3BucketHasBeenSet() const { return m_s3BucketHasBeenSet; }
+    template<typename S3BucketT = Aws::String>
+    void SetS3Bucket(S3BucketT&& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = std::forward<S3BucketT>(value); }
+    template<typename S3BucketT = Aws::String>
+    OutputLocation& WithS3Bucket(S3BucketT&& value) { SetS3Bucket(std::forward<S3BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The S3 bucket for output.</p>
-     */
-    inline void SetS3Bucket(const Aws::String& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = value; }
-
-    /**
-     * <p>The S3 bucket for output.</p>
-     */
-    inline void SetS3Bucket(Aws::String&& value) { m_s3BucketHasBeenSet = true; m_s3Bucket = std::move(value); }
-
-    /**
-     * <p>The S3 bucket for output.</p>
-     */
-    inline void SetS3Bucket(const char* value) { m_s3BucketHasBeenSet = true; m_s3Bucket.assign(value); }
-
-    /**
-     * <p>The S3 bucket for output.</p>
-     */
-    inline OutputLocation& WithS3Bucket(const Aws::String& value) { SetS3Bucket(value); return *this;}
-
-    /**
-     * <p>The S3 bucket for output.</p>
-     */
-    inline OutputLocation& WithS3Bucket(Aws::String&& value) { SetS3Bucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The S3 bucket for output.</p>
-     */
-    inline OutputLocation& WithS3Bucket(const char* value) { SetS3Bucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The S3 folder in the <code>s3Bucket</code> where output files will be
      * placed.</p>
      */
-    inline const Aws::String& GetS3Prefix() const{ return m_s3Prefix; }
-
-    /**
-     * <p>The S3 folder in the <code>s3Bucket</code> where output files will be
-     * placed.</p>
-     */
+    inline const Aws::String& GetS3Prefix() const { return m_s3Prefix; }
     inline bool S3PrefixHasBeenSet() const { return m_s3PrefixHasBeenSet; }
-
-    /**
-     * <p>The S3 folder in the <code>s3Bucket</code> where output files will be
-     * placed.</p>
-     */
-    inline void SetS3Prefix(const Aws::String& value) { m_s3PrefixHasBeenSet = true; m_s3Prefix = value; }
-
-    /**
-     * <p>The S3 folder in the <code>s3Bucket</code> where output files will be
-     * placed.</p>
-     */
-    inline void SetS3Prefix(Aws::String&& value) { m_s3PrefixHasBeenSet = true; m_s3Prefix = std::move(value); }
-
-    /**
-     * <p>The S3 folder in the <code>s3Bucket</code> where output files will be
-     * placed.</p>
-     */
-    inline void SetS3Prefix(const char* value) { m_s3PrefixHasBeenSet = true; m_s3Prefix.assign(value); }
-
-    /**
-     * <p>The S3 folder in the <code>s3Bucket</code> where output files will be
-     * placed.</p>
-     */
-    inline OutputLocation& WithS3Prefix(const Aws::String& value) { SetS3Prefix(value); return *this;}
-
-    /**
-     * <p>The S3 folder in the <code>s3Bucket</code> where output files will be
-     * placed.</p>
-     */
-    inline OutputLocation& WithS3Prefix(Aws::String&& value) { SetS3Prefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The S3 folder in the <code>s3Bucket</code> where output files will be
-     * placed.</p>
-     */
-    inline OutputLocation& WithS3Prefix(const char* value) { SetS3Prefix(value); return *this;}
-
+    template<typename S3PrefixT = Aws::String>
+    void SetS3Prefix(S3PrefixT&& value) { m_s3PrefixHasBeenSet = true; m_s3Prefix = std::forward<S3PrefixT>(value); }
+    template<typename S3PrefixT = Aws::String>
+    OutputLocation& WithS3Prefix(S3PrefixT&& value) { SetS3Prefix(std::forward<S3PrefixT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_s3Bucket;

@@ -37,180 +37,72 @@ namespace Model
   class PollForDecisionTaskResult
   {
   public:
-    AWS_SWF_API PollForDecisionTaskResult();
+    AWS_SWF_API PollForDecisionTaskResult() = default;
     AWS_SWF_API PollForDecisionTaskResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SWF_API PollForDecisionTaskResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The opaque string used as a handle on the task. This token is used by workers
      * to communicate progress and response information back to the system about the
      * task.</p>
      */
-    inline const Aws::String& GetTaskToken() const{ return m_taskToken; }
+    inline const Aws::String& GetTaskToken() const { return m_taskToken; }
+    template<typename TaskTokenT = Aws::String>
+    void SetTaskToken(TaskTokenT&& value) { m_taskTokenHasBeenSet = true; m_taskToken = std::forward<TaskTokenT>(value); }
+    template<typename TaskTokenT = Aws::String>
+    PollForDecisionTaskResult& WithTaskToken(TaskTokenT&& value) { SetTaskToken(std::forward<TaskTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The opaque string used as a handle on the task. This token is used by workers
-     * to communicate progress and response information back to the system about the
-     * task.</p>
-     */
-    inline void SetTaskToken(const Aws::String& value) { m_taskToken = value; }
-
-    /**
-     * <p>The opaque string used as a handle on the task. This token is used by workers
-     * to communicate progress and response information back to the system about the
-     * task.</p>
-     */
-    inline void SetTaskToken(Aws::String&& value) { m_taskToken = std::move(value); }
-
-    /**
-     * <p>The opaque string used as a handle on the task. This token is used by workers
-     * to communicate progress and response information back to the system about the
-     * task.</p>
-     */
-    inline void SetTaskToken(const char* value) { m_taskToken.assign(value); }
-
-    /**
-     * <p>The opaque string used as a handle on the task. This token is used by workers
-     * to communicate progress and response information back to the system about the
-     * task.</p>
-     */
-    inline PollForDecisionTaskResult& WithTaskToken(const Aws::String& value) { SetTaskToken(value); return *this;}
-
-    /**
-     * <p>The opaque string used as a handle on the task. This token is used by workers
-     * to communicate progress and response information back to the system about the
-     * task.</p>
-     */
-    inline PollForDecisionTaskResult& WithTaskToken(Aws::String&& value) { SetTaskToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The opaque string used as a handle on the task. This token is used by workers
-     * to communicate progress and response information back to the system about the
-     * task.</p>
-     */
-    inline PollForDecisionTaskResult& WithTaskToken(const char* value) { SetTaskToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the <code>DecisionTaskStarted</code> event recorded in the
      * history.</p>
      */
-    inline long long GetStartedEventId() const{ return m_startedEventId; }
-
-    /**
-     * <p>The ID of the <code>DecisionTaskStarted</code> event recorded in the
-     * history.</p>
-     */
-    inline void SetStartedEventId(long long value) { m_startedEventId = value; }
-
-    /**
-     * <p>The ID of the <code>DecisionTaskStarted</code> event recorded in the
-     * history.</p>
-     */
+    inline long long GetStartedEventId() const { return m_startedEventId; }
+    inline void SetStartedEventId(long long value) { m_startedEventIdHasBeenSet = true; m_startedEventId = value; }
     inline PollForDecisionTaskResult& WithStartedEventId(long long value) { SetStartedEventId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The workflow execution for which this decision task was created.</p>
      */
-    inline const WorkflowExecution& GetWorkflowExecution() const{ return m_workflowExecution; }
+    inline const WorkflowExecution& GetWorkflowExecution() const { return m_workflowExecution; }
+    template<typename WorkflowExecutionT = WorkflowExecution>
+    void SetWorkflowExecution(WorkflowExecutionT&& value) { m_workflowExecutionHasBeenSet = true; m_workflowExecution = std::forward<WorkflowExecutionT>(value); }
+    template<typename WorkflowExecutionT = WorkflowExecution>
+    PollForDecisionTaskResult& WithWorkflowExecution(WorkflowExecutionT&& value) { SetWorkflowExecution(std::forward<WorkflowExecutionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The workflow execution for which this decision task was created.</p>
-     */
-    inline void SetWorkflowExecution(const WorkflowExecution& value) { m_workflowExecution = value; }
-
-    /**
-     * <p>The workflow execution for which this decision task was created.</p>
-     */
-    inline void SetWorkflowExecution(WorkflowExecution&& value) { m_workflowExecution = std::move(value); }
-
-    /**
-     * <p>The workflow execution for which this decision task was created.</p>
-     */
-    inline PollForDecisionTaskResult& WithWorkflowExecution(const WorkflowExecution& value) { SetWorkflowExecution(value); return *this;}
-
-    /**
-     * <p>The workflow execution for which this decision task was created.</p>
-     */
-    inline PollForDecisionTaskResult& WithWorkflowExecution(WorkflowExecution&& value) { SetWorkflowExecution(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the workflow execution for which this decision task was
      * created.</p>
      */
-    inline const WorkflowType& GetWorkflowType() const{ return m_workflowType; }
+    inline const WorkflowType& GetWorkflowType() const { return m_workflowType; }
+    template<typename WorkflowTypeT = WorkflowType>
+    void SetWorkflowType(WorkflowTypeT&& value) { m_workflowTypeHasBeenSet = true; m_workflowType = std::forward<WorkflowTypeT>(value); }
+    template<typename WorkflowTypeT = WorkflowType>
+    PollForDecisionTaskResult& WithWorkflowType(WorkflowTypeT&& value) { SetWorkflowType(std::forward<WorkflowTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the workflow execution for which this decision task was
-     * created.</p>
-     */
-    inline void SetWorkflowType(const WorkflowType& value) { m_workflowType = value; }
-
-    /**
-     * <p>The type of the workflow execution for which this decision task was
-     * created.</p>
-     */
-    inline void SetWorkflowType(WorkflowType&& value) { m_workflowType = std::move(value); }
-
-    /**
-     * <p>The type of the workflow execution for which this decision task was
-     * created.</p>
-     */
-    inline PollForDecisionTaskResult& WithWorkflowType(const WorkflowType& value) { SetWorkflowType(value); return *this;}
-
-    /**
-     * <p>The type of the workflow execution for which this decision task was
-     * created.</p>
-     */
-    inline PollForDecisionTaskResult& WithWorkflowType(WorkflowType&& value) { SetWorkflowType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A paginated list of history events of the workflow execution. The decider
      * uses this during the processing of the decision task.</p>
      */
-    inline const Aws::Vector<HistoryEvent>& GetEvents() const{ return m_events; }
+    inline const Aws::Vector<HistoryEvent>& GetEvents() const { return m_events; }
+    template<typename EventsT = Aws::Vector<HistoryEvent>>
+    void SetEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events = std::forward<EventsT>(value); }
+    template<typename EventsT = Aws::Vector<HistoryEvent>>
+    PollForDecisionTaskResult& WithEvents(EventsT&& value) { SetEvents(std::forward<EventsT>(value)); return *this;}
+    template<typename EventsT = HistoryEvent>
+    PollForDecisionTaskResult& AddEvents(EventsT&& value) { m_eventsHasBeenSet = true; m_events.emplace_back(std::forward<EventsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A paginated list of history events of the workflow execution. The decider
-     * uses this during the processing of the decision task.</p>
-     */
-    inline void SetEvents(const Aws::Vector<HistoryEvent>& value) { m_events = value; }
-
-    /**
-     * <p>A paginated list of history events of the workflow execution. The decider
-     * uses this during the processing of the decision task.</p>
-     */
-    inline void SetEvents(Aws::Vector<HistoryEvent>&& value) { m_events = std::move(value); }
-
-    /**
-     * <p>A paginated list of history events of the workflow execution. The decider
-     * uses this during the processing of the decision task.</p>
-     */
-    inline PollForDecisionTaskResult& WithEvents(const Aws::Vector<HistoryEvent>& value) { SetEvents(value); return *this;}
-
-    /**
-     * <p>A paginated list of history events of the workflow execution. The decider
-     * uses this during the processing of the decision task.</p>
-     */
-    inline PollForDecisionTaskResult& WithEvents(Aws::Vector<HistoryEvent>&& value) { SetEvents(std::move(value)); return *this;}
-
-    /**
-     * <p>A paginated list of history events of the workflow execution. The decider
-     * uses this during the processing of the decision task.</p>
-     */
-    inline PollForDecisionTaskResult& AddEvents(const HistoryEvent& value) { m_events.push_back(value); return *this; }
-
-    /**
-     * <p>A paginated list of history events of the workflow execution. The decider
-     * uses this during the processing of the decision task.</p>
-     */
-    inline PollForDecisionTaskResult& AddEvents(HistoryEvent&& value) { m_events.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
      * more results available. To retrieve the next page of results, make the call
@@ -218,126 +110,58 @@ namespace Model
      * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
      * determines how many results can be returned in a single call.</p>
      */
-    inline const Aws::String& GetNextPageToken() const{ return m_nextPageToken; }
+    inline const Aws::String& GetNextPageToken() const { return m_nextPageToken; }
+    template<typename NextPageTokenT = Aws::String>
+    void SetNextPageToken(NextPageTokenT&& value) { m_nextPageTokenHasBeenSet = true; m_nextPageToken = std::forward<NextPageTokenT>(value); }
+    template<typename NextPageTokenT = Aws::String>
+    PollForDecisionTaskResult& WithNextPageToken(NextPageTokenT&& value) { SetNextPageToken(std::forward<NextPageTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
-     * more results available. To retrieve the next page of results, make the call
-     * again using the returned token in <code>nextPageToken</code>. Keep all other
-     * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
-     * determines how many results can be returned in a single call.</p>
-     */
-    inline void SetNextPageToken(const Aws::String& value) { m_nextPageToken = value; }
-
-    /**
-     * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
-     * more results available. To retrieve the next page of results, make the call
-     * again using the returned token in <code>nextPageToken</code>. Keep all other
-     * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
-     * determines how many results can be returned in a single call.</p>
-     */
-    inline void SetNextPageToken(Aws::String&& value) { m_nextPageToken = std::move(value); }
-
-    /**
-     * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
-     * more results available. To retrieve the next page of results, make the call
-     * again using the returned token in <code>nextPageToken</code>. Keep all other
-     * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
-     * determines how many results can be returned in a single call.</p>
-     */
-    inline void SetNextPageToken(const char* value) { m_nextPageToken.assign(value); }
-
-    /**
-     * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
-     * more results available. To retrieve the next page of results, make the call
-     * again using the returned token in <code>nextPageToken</code>. Keep all other
-     * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
-     * determines how many results can be returned in a single call.</p>
-     */
-    inline PollForDecisionTaskResult& WithNextPageToken(const Aws::String& value) { SetNextPageToken(value); return *this;}
-
-    /**
-     * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
-     * more results available. To retrieve the next page of results, make the call
-     * again using the returned token in <code>nextPageToken</code>. Keep all other
-     * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
-     * determines how many results can be returned in a single call.</p>
-     */
-    inline PollForDecisionTaskResult& WithNextPageToken(Aws::String&& value) { SetNextPageToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If a <code>NextPageToken</code> was returned by a previous call, there are
-     * more results available. To retrieve the next page of results, make the call
-     * again using the returned token in <code>nextPageToken</code>. Keep all other
-     * arguments unchanged.</p> <p>The configured <code>maximumPageSize</code>
-     * determines how many results can be returned in a single call.</p>
-     */
-    inline PollForDecisionTaskResult& WithNextPageToken(const char* value) { SetNextPageToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the DecisionTaskStarted event of the previous decision task of this
      * workflow execution that was processed by the decider. This can be used to
      * determine the events in the history new since the last decision task received by
      * the decider.</p>
      */
-    inline long long GetPreviousStartedEventId() const{ return m_previousStartedEventId; }
-
-    /**
-     * <p>The ID of the DecisionTaskStarted event of the previous decision task of this
-     * workflow execution that was processed by the decider. This can be used to
-     * determine the events in the history new since the last decision task received by
-     * the decider.</p>
-     */
-    inline void SetPreviousStartedEventId(long long value) { m_previousStartedEventId = value; }
-
-    /**
-     * <p>The ID of the DecisionTaskStarted event of the previous decision task of this
-     * workflow execution that was processed by the decider. This can be used to
-     * determine the events in the history new since the last decision task received by
-     * the decider.</p>
-     */
+    inline long long GetPreviousStartedEventId() const { return m_previousStartedEventId; }
+    inline void SetPreviousStartedEventId(long long value) { m_previousStartedEventIdHasBeenSet = true; m_previousStartedEventId = value; }
     inline PollForDecisionTaskResult& WithPreviousStartedEventId(long long value) { SetPreviousStartedEventId(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline PollForDecisionTaskResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline PollForDecisionTaskResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline PollForDecisionTaskResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    PollForDecisionTaskResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskToken;
+    bool m_taskTokenHasBeenSet = false;
 
-    long long m_startedEventId;
+    long long m_startedEventId{0};
+    bool m_startedEventIdHasBeenSet = false;
 
     WorkflowExecution m_workflowExecution;
+    bool m_workflowExecutionHasBeenSet = false;
 
     WorkflowType m_workflowType;
+    bool m_workflowTypeHasBeenSet = false;
 
     Aws::Vector<HistoryEvent> m_events;
+    bool m_eventsHasBeenSet = false;
 
     Aws::String m_nextPageToken;
+    bool m_nextPageTokenHasBeenSet = false;
 
-    long long m_previousStartedEventId;
+    long long m_previousStartedEventId{0};
+    bool m_previousStartedEventIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

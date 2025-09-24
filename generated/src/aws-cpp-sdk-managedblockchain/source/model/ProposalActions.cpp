@@ -18,15 +18,7 @@ namespace ManagedBlockchain
 namespace Model
 {
 
-ProposalActions::ProposalActions() : 
-    m_invitationsHasBeenSet(false),
-    m_removalsHasBeenSet(false)
-{
-}
-
-ProposalActions::ProposalActions(JsonView jsonValue) : 
-    m_invitationsHasBeenSet(false),
-    m_removalsHasBeenSet(false)
+ProposalActions::ProposalActions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ ProposalActions& ProposalActions::operator =(JsonView jsonValue)
     }
     m_invitationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Removals"))
   {
     Aws::Utils::Array<JsonView> removalsJsonList = jsonValue.GetArray("Removals");
@@ -52,7 +43,6 @@ ProposalActions& ProposalActions::operator =(JsonView jsonValue)
     }
     m_removalsHasBeenSet = true;
   }
-
   return *this;
 }
 

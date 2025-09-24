@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ClientCertificateRevocationListStatus::ClientCertificateRevocationListStatus() : 
-    m_code(ClientCertificateRevocationListStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ClientCertificateRevocationListStatus::ClientCertificateRevocationListStatus(const XmlNode& xmlNode) : 
-    m_code(ClientCertificateRevocationListStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ClientCertificateRevocationListStatus::ClientCertificateRevocationListStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ ClientCertificateRevocationListStatus& ClientCertificateRevocationListStatus::op
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = ClientCertificateRevocationListStatusCodeMapper::GetClientCertificateRevocationListStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = ClientCertificateRevocationListStatusCodeMapper::GetClientCertificateRevocationListStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void ClientCertificateRevocationListStatus::OutputToStream(Aws::OStream& oStream
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << ClientCertificateRevocationListStatusCodeMapper::GetNameForClientCertificateRevocationListStatusCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(ClientCertificateRevocationListStatusCodeMapper::GetNameForClientCertificateRevocationListStatusCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void ClientCertificateRevocationListStatus::OutputToStream(Aws::OStream& oStream
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << ClientCertificateRevocationListStatusCodeMapper::GetNameForClientCertificateRevocationListStatusCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(ClientCertificateRevocationListStatusCodeMapper::GetNameForClientCertificateRevocationListStatusCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

@@ -29,61 +29,27 @@ namespace Model
   class ListConfigurationPolicyAssociationsResult
   {
   public:
-    AWS_SECURITYHUB_API ListConfigurationPolicyAssociationsResult();
+    AWS_SECURITYHUB_API ListConfigurationPolicyAssociationsResult() = default;
     AWS_SECURITYHUB_API ListConfigurationPolicyAssociationsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SECURITYHUB_API ListConfigurationPolicyAssociationsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p> An object that contains the details of each configuration policy association
      * that’s returned in a <code>ListConfigurationPolicyAssociations</code> request.
      * </p>
      */
-    inline const Aws::Vector<ConfigurationPolicyAssociationSummary>& GetConfigurationPolicyAssociationSummaries() const{ return m_configurationPolicyAssociationSummaries; }
+    inline const Aws::Vector<ConfigurationPolicyAssociationSummary>& GetConfigurationPolicyAssociationSummaries() const { return m_configurationPolicyAssociationSummaries; }
+    template<typename ConfigurationPolicyAssociationSummariesT = Aws::Vector<ConfigurationPolicyAssociationSummary>>
+    void SetConfigurationPolicyAssociationSummaries(ConfigurationPolicyAssociationSummariesT&& value) { m_configurationPolicyAssociationSummariesHasBeenSet = true; m_configurationPolicyAssociationSummaries = std::forward<ConfigurationPolicyAssociationSummariesT>(value); }
+    template<typename ConfigurationPolicyAssociationSummariesT = Aws::Vector<ConfigurationPolicyAssociationSummary>>
+    ListConfigurationPolicyAssociationsResult& WithConfigurationPolicyAssociationSummaries(ConfigurationPolicyAssociationSummariesT&& value) { SetConfigurationPolicyAssociationSummaries(std::forward<ConfigurationPolicyAssociationSummariesT>(value)); return *this;}
+    template<typename ConfigurationPolicyAssociationSummariesT = ConfigurationPolicyAssociationSummary>
+    ListConfigurationPolicyAssociationsResult& AddConfigurationPolicyAssociationSummaries(ConfigurationPolicyAssociationSummariesT&& value) { m_configurationPolicyAssociationSummariesHasBeenSet = true; m_configurationPolicyAssociationSummaries.emplace_back(std::forward<ConfigurationPolicyAssociationSummariesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> An object that contains the details of each configuration policy association
-     * that’s returned in a <code>ListConfigurationPolicyAssociations</code> request.
-     * </p>
-     */
-    inline void SetConfigurationPolicyAssociationSummaries(const Aws::Vector<ConfigurationPolicyAssociationSummary>& value) { m_configurationPolicyAssociationSummaries = value; }
-
-    /**
-     * <p> An object that contains the details of each configuration policy association
-     * that’s returned in a <code>ListConfigurationPolicyAssociations</code> request.
-     * </p>
-     */
-    inline void SetConfigurationPolicyAssociationSummaries(Aws::Vector<ConfigurationPolicyAssociationSummary>&& value) { m_configurationPolicyAssociationSummaries = std::move(value); }
-
-    /**
-     * <p> An object that contains the details of each configuration policy association
-     * that’s returned in a <code>ListConfigurationPolicyAssociations</code> request.
-     * </p>
-     */
-    inline ListConfigurationPolicyAssociationsResult& WithConfigurationPolicyAssociationSummaries(const Aws::Vector<ConfigurationPolicyAssociationSummary>& value) { SetConfigurationPolicyAssociationSummaries(value); return *this;}
-
-    /**
-     * <p> An object that contains the details of each configuration policy association
-     * that’s returned in a <code>ListConfigurationPolicyAssociations</code> request.
-     * </p>
-     */
-    inline ListConfigurationPolicyAssociationsResult& WithConfigurationPolicyAssociationSummaries(Aws::Vector<ConfigurationPolicyAssociationSummary>&& value) { SetConfigurationPolicyAssociationSummaries(std::move(value)); return *this;}
-
-    /**
-     * <p> An object that contains the details of each configuration policy association
-     * that’s returned in a <code>ListConfigurationPolicyAssociations</code> request.
-     * </p>
-     */
-    inline ListConfigurationPolicyAssociationsResult& AddConfigurationPolicyAssociationSummaries(const ConfigurationPolicyAssociationSummary& value) { m_configurationPolicyAssociationSummaries.push_back(value); return *this; }
-
-    /**
-     * <p> An object that contains the details of each configuration policy association
-     * that’s returned in a <code>ListConfigurationPolicyAssociations</code> request.
-     * </p>
-     */
-    inline ListConfigurationPolicyAssociationsResult& AddConfigurationPolicyAssociationSummaries(ConfigurationPolicyAssociationSummary&& value) { m_configurationPolicyAssociationSummaries.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> The <code>NextToken</code> value to include in the next
      * <code>ListConfigurationPolicyAssociations</code> request. When the results of a
@@ -92,97 +58,31 @@ namespace Model
      * results. This value is <code>null</code> when there are no more results to
      * return. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListConfigurationPolicyAssociationsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The <code>NextToken</code> value to include in the next
-     * <code>ListConfigurationPolicyAssociations</code> request. When the results of a
-     * <code>ListConfigurationPolicyAssociations</code> request exceed
-     * <code>MaxResults</code>, this value can be used to retrieve the next page of
-     * results. This value is <code>null</code> when there are no more results to
-     * return. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p> The <code>NextToken</code> value to include in the next
-     * <code>ListConfigurationPolicyAssociations</code> request. When the results of a
-     * <code>ListConfigurationPolicyAssociations</code> request exceed
-     * <code>MaxResults</code>, this value can be used to retrieve the next page of
-     * results. This value is <code>null</code> when there are no more results to
-     * return. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p> The <code>NextToken</code> value to include in the next
-     * <code>ListConfigurationPolicyAssociations</code> request. When the results of a
-     * <code>ListConfigurationPolicyAssociations</code> request exceed
-     * <code>MaxResults</code>, this value can be used to retrieve the next page of
-     * results. This value is <code>null</code> when there are no more results to
-     * return. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p> The <code>NextToken</code> value to include in the next
-     * <code>ListConfigurationPolicyAssociations</code> request. When the results of a
-     * <code>ListConfigurationPolicyAssociations</code> request exceed
-     * <code>MaxResults</code>, this value can be used to retrieve the next page of
-     * results. This value is <code>null</code> when there are no more results to
-     * return. </p>
-     */
-    inline ListConfigurationPolicyAssociationsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p> The <code>NextToken</code> value to include in the next
-     * <code>ListConfigurationPolicyAssociations</code> request. When the results of a
-     * <code>ListConfigurationPolicyAssociations</code> request exceed
-     * <code>MaxResults</code>, this value can be used to retrieve the next page of
-     * results. This value is <code>null</code> when there are no more results to
-     * return. </p>
-     */
-    inline ListConfigurationPolicyAssociationsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p> The <code>NextToken</code> value to include in the next
-     * <code>ListConfigurationPolicyAssociations</code> request. When the results of a
-     * <code>ListConfigurationPolicyAssociations</code> request exceed
-     * <code>MaxResults</code>, this value can be used to retrieve the next page of
-     * results. This value is <code>null</code> when there are no more results to
-     * return. </p>
-     */
-    inline ListConfigurationPolicyAssociationsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListConfigurationPolicyAssociationsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListConfigurationPolicyAssociationsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListConfigurationPolicyAssociationsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListConfigurationPolicyAssociationsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ConfigurationPolicyAssociationSummary> m_configurationPolicyAssociationSummaries;
+    bool m_configurationPolicyAssociationSummariesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

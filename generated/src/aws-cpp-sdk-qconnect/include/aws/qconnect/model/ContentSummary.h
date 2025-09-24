@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/qconnect/QConnect_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/qconnect/model/ContentStatus.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <utility>
 
 namespace Aws
@@ -33,549 +33,153 @@ namespace Model
   class ContentSummary
   {
   public:
-    AWS_QCONNECT_API ContentSummary();
+    AWS_QCONNECT_API ContentSummary() = default;
     AWS_QCONNECT_API ContentSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API ContentSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the content.</p>
      */
-    inline const Aws::String& GetContentArn() const{ return m_contentArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the content.</p>
-     */
+    inline const Aws::String& GetContentArn() const { return m_contentArn; }
     inline bool ContentArnHasBeenSet() const { return m_contentArnHasBeenSet; }
+    template<typename ContentArnT = Aws::String>
+    void SetContentArn(ContentArnT&& value) { m_contentArnHasBeenSet = true; m_contentArn = std::forward<ContentArnT>(value); }
+    template<typename ContentArnT = Aws::String>
+    ContentSummary& WithContentArn(ContentArnT&& value) { SetContentArn(std::forward<ContentArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the content.</p>
-     */
-    inline void SetContentArn(const Aws::String& value) { m_contentArnHasBeenSet = true; m_contentArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the content.</p>
-     */
-    inline void SetContentArn(Aws::String&& value) { m_contentArnHasBeenSet = true; m_contentArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the content.</p>
-     */
-    inline void SetContentArn(const char* value) { m_contentArnHasBeenSet = true; m_contentArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the content.</p>
-     */
-    inline ContentSummary& WithContentArn(const Aws::String& value) { SetContentArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the content.</p>
-     */
-    inline ContentSummary& WithContentArn(Aws::String&& value) { SetContentArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the content.</p>
-     */
-    inline ContentSummary& WithContentArn(const char* value) { SetContentArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the content.</p>
      */
-    inline const Aws::String& GetContentId() const{ return m_contentId; }
-
-    /**
-     * <p>The identifier of the content.</p>
-     */
+    inline const Aws::String& GetContentId() const { return m_contentId; }
     inline bool ContentIdHasBeenSet() const { return m_contentIdHasBeenSet; }
+    template<typename ContentIdT = Aws::String>
+    void SetContentId(ContentIdT&& value) { m_contentIdHasBeenSet = true; m_contentId = std::forward<ContentIdT>(value); }
+    template<typename ContentIdT = Aws::String>
+    ContentSummary& WithContentId(ContentIdT&& value) { SetContentId(std::forward<ContentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the content.</p>
-     */
-    inline void SetContentId(const Aws::String& value) { m_contentIdHasBeenSet = true; m_contentId = value; }
-
-    /**
-     * <p>The identifier of the content.</p>
-     */
-    inline void SetContentId(Aws::String&& value) { m_contentIdHasBeenSet = true; m_contentId = std::move(value); }
-
-    /**
-     * <p>The identifier of the content.</p>
-     */
-    inline void SetContentId(const char* value) { m_contentIdHasBeenSet = true; m_contentId.assign(value); }
-
-    /**
-     * <p>The identifier of the content.</p>
-     */
-    inline ContentSummary& WithContentId(const Aws::String& value) { SetContentId(value); return *this;}
-
-    /**
-     * <p>The identifier of the content.</p>
-     */
-    inline ContentSummary& WithContentId(Aws::String&& value) { SetContentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the content.</p>
-     */
-    inline ContentSummary& WithContentId(const char* value) { SetContentId(value); return *this;}
-
-
-    /**
-     * <p>The media type of the content.</p>
-     */
-    inline const Aws::String& GetContentType() const{ return m_contentType; }
-
-    /**
-     * <p>The media type of the content.</p>
-     */
-    inline bool ContentTypeHasBeenSet() const { return m_contentTypeHasBeenSet; }
-
-    /**
-     * <p>The media type of the content.</p>
-     */
-    inline void SetContentType(const Aws::String& value) { m_contentTypeHasBeenSet = true; m_contentType = value; }
-
-    /**
-     * <p>The media type of the content.</p>
-     */
-    inline void SetContentType(Aws::String&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::move(value); }
-
-    /**
-     * <p>The media type of the content.</p>
-     */
-    inline void SetContentType(const char* value) { m_contentTypeHasBeenSet = true; m_contentType.assign(value); }
-
-    /**
-     * <p>The media type of the content.</p>
-     */
-    inline ContentSummary& WithContentType(const Aws::String& value) { SetContentType(value); return *this;}
-
-    /**
-     * <p>The media type of the content.</p>
-     */
-    inline ContentSummary& WithContentType(Aws::String&& value) { SetContentType(std::move(value)); return *this;}
-
-    /**
-     * <p>The media type of the content.</p>
-     */
-    inline ContentSummary& WithContentType(const char* value) { SetContentType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
      */
-    inline const Aws::String& GetKnowledgeBaseArn() const{ return m_knowledgeBaseArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
+    inline const Aws::String& GetKnowledgeBaseArn() const { return m_knowledgeBaseArn; }
     inline bool KnowledgeBaseArnHasBeenSet() const { return m_knowledgeBaseArnHasBeenSet; }
+    template<typename KnowledgeBaseArnT = Aws::String>
+    void SetKnowledgeBaseArn(KnowledgeBaseArnT&& value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn = std::forward<KnowledgeBaseArnT>(value); }
+    template<typename KnowledgeBaseArnT = Aws::String>
+    ContentSummary& WithKnowledgeBaseArn(KnowledgeBaseArnT&& value) { SetKnowledgeBaseArn(std::forward<KnowledgeBaseArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseArn(const Aws::String& value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseArn(Aws::String&& value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline void SetKnowledgeBaseArn(const char* value) { m_knowledgeBaseArnHasBeenSet = true; m_knowledgeBaseArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline ContentSummary& WithKnowledgeBaseArn(const Aws::String& value) { SetKnowledgeBaseArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline ContentSummary& WithKnowledgeBaseArn(Aws::String&& value) { SetKnowledgeBaseArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the knowledge base.</p>
-     */
-    inline ContentSummary& WithKnowledgeBaseArn(const char* value) { SetKnowledgeBaseArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
+     * type knowledge base.</p>
      */
-    inline const Aws::String& GetKnowledgeBaseId() const{ return m_knowledgeBaseId; }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
+    inline const Aws::String& GetKnowledgeBaseId() const { return m_knowledgeBaseId; }
     inline bool KnowledgeBaseIdHasBeenSet() const { return m_knowledgeBaseIdHasBeenSet; }
+    template<typename KnowledgeBaseIdT = Aws::String>
+    void SetKnowledgeBaseId(KnowledgeBaseIdT&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::forward<KnowledgeBaseIdT>(value); }
+    template<typename KnowledgeBaseIdT = Aws::String>
+    ContentSummary& WithKnowledgeBaseId(KnowledgeBaseIdT&& value) { SetKnowledgeBaseId(std::forward<KnowledgeBaseIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(const Aws::String& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = value; }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(Aws::String&& value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId = std::move(value); }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline void SetKnowledgeBaseId(const char* value) { m_knowledgeBaseIdHasBeenSet = true; m_knowledgeBaseId.assign(value); }
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline ContentSummary& WithKnowledgeBaseId(const Aws::String& value) { SetKnowledgeBaseId(value); return *this;}
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline ContentSummary& WithKnowledgeBaseId(Aws::String&& value) { SetKnowledgeBaseId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the knowledge base. This should not be a QUICK_RESPONSES
-     * type knowledge base if you're storing Amazon Q Content resource to it.</p>
-     */
-    inline ContentSummary& WithKnowledgeBaseId(const char* value) { SetKnowledgeBaseId(value); return *this;}
-
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetMetadata() const{ return m_metadata; }
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline bool MetadataHasBeenSet() const { return m_metadataHasBeenSet; }
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline void SetMetadata(const Aws::Map<Aws::String, Aws::String>& value) { m_metadataHasBeenSet = true; m_metadata = value; }
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline void SetMetadata(Aws::Map<Aws::String, Aws::String>&& value) { m_metadataHasBeenSet = true; m_metadata = std::move(value); }
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline ContentSummary& WithMetadata(const Aws::Map<Aws::String, Aws::String>& value) { SetMetadata(value); return *this;}
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline ContentSummary& WithMetadata(Aws::Map<Aws::String, Aws::String>&& value) { SetMetadata(std::move(value)); return *this;}
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline ContentSummary& AddMetadata(const Aws::String& key, const Aws::String& value) { m_metadataHasBeenSet = true; m_metadata.emplace(key, value); return *this; }
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline ContentSummary& AddMetadata(Aws::String&& key, const Aws::String& value) { m_metadataHasBeenSet = true; m_metadata.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline ContentSummary& AddMetadata(const Aws::String& key, Aws::String&& value) { m_metadataHasBeenSet = true; m_metadata.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline ContentSummary& AddMetadata(Aws::String&& key, Aws::String&& value) { m_metadataHasBeenSet = true; m_metadata.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline ContentSummary& AddMetadata(const char* key, Aws::String&& value) { m_metadataHasBeenSet = true; m_metadata.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline ContentSummary& AddMetadata(Aws::String&& key, const char* value) { m_metadataHasBeenSet = true; m_metadata.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A key/value map to store attributes without affecting tagging or
-     * recommendations. For example, when synchronizing data between an external system
-     * and Amazon Q, you can store an external version identifier as metadata to
-     * utilize for determining drift.</p>
-     */
-    inline ContentSummary& AddMetadata(const char* key, const char* value) { m_metadataHasBeenSet = true; m_metadata.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the content.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the content.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ContentSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the content.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the content.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the content.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the content.</p>
-     */
-    inline ContentSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the content.</p>
-     */
-    inline ContentSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the content.</p>
-     */
-    inline ContentSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the revision of the content.</p>
      */
-    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
-
-    /**
-     * <p>The identifier of the revision of the content.</p>
-     */
+    inline const Aws::String& GetRevisionId() const { return m_revisionId; }
     inline bool RevisionIdHasBeenSet() const { return m_revisionIdHasBeenSet; }
+    template<typename RevisionIdT = Aws::String>
+    void SetRevisionId(RevisionIdT&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::forward<RevisionIdT>(value); }
+    template<typename RevisionIdT = Aws::String>
+    ContentSummary& WithRevisionId(RevisionIdT&& value) { SetRevisionId(std::forward<RevisionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the revision of the content.</p>
-     */
-    inline void SetRevisionId(const Aws::String& value) { m_revisionIdHasBeenSet = true; m_revisionId = value; }
-
-    /**
-     * <p>The identifier of the revision of the content.</p>
-     */
-    inline void SetRevisionId(Aws::String&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::move(value); }
-
-    /**
-     * <p>The identifier of the revision of the content.</p>
-     */
-    inline void SetRevisionId(const char* value) { m_revisionIdHasBeenSet = true; m_revisionId.assign(value); }
-
-    /**
-     * <p>The identifier of the revision of the content.</p>
-     */
-    inline ContentSummary& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
-
-    /**
-     * <p>The identifier of the revision of the content.</p>
-     */
-    inline ContentSummary& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the revision of the content.</p>
-     */
-    inline ContentSummary& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
-
-
-    /**
-     * <p>The status of the content.</p>
-     */
-    inline const ContentStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the content.</p>
-     */
-    inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the content.</p>
-     */
-    inline void SetStatus(const ContentStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the content.</p>
-     */
-    inline void SetStatus(ContentStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the content.</p>
-     */
-    inline ContentSummary& WithStatus(const ContentStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the content.</p>
-     */
-    inline ContentSummary& WithStatus(ContentStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ContentSummary& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ContentSummary& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ContentSummary& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ContentSummary& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ContentSummary& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ContentSummary& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ContentSummary& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ContentSummary& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource.</p>
-     */
-    inline ContentSummary& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The title of the content.</p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The title of the content.</p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    ContentSummary& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The title of the content.</p>
+     * <p>The media type of the content.</p>
      */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
+    inline const Aws::String& GetContentType() const { return m_contentType; }
+    inline bool ContentTypeHasBeenSet() const { return m_contentTypeHasBeenSet; }
+    template<typename ContentTypeT = Aws::String>
+    void SetContentType(ContentTypeT&& value) { m_contentTypeHasBeenSet = true; m_contentType = std::forward<ContentTypeT>(value); }
+    template<typename ContentTypeT = Aws::String>
+    ContentSummary& WithContentType(ContentTypeT&& value) { SetContentType(std::forward<ContentTypeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The title of the content.</p>
+     * <p>The status of the content.</p>
      */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
+    inline ContentStatus GetStatus() const { return m_status; }
+    inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ContentStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ContentSummary& WithStatus(ContentStatus value) { SetStatus(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The title of the content.</p>
+     * <p>A key/value map to store attributes without affecting tagging or
+     * recommendations. For example, when synchronizing data between an external system
+     * and Amazon Q in Connect, you can store an external version identifier as
+     * metadata to utilize for determining drift.</p>
      */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
+    inline const Aws::Map<Aws::String, Aws::String>& GetMetadata() const { return m_metadata; }
+    inline bool MetadataHasBeenSet() const { return m_metadataHasBeenSet; }
+    template<typename MetadataT = Aws::Map<Aws::String, Aws::String>>
+    void SetMetadata(MetadataT&& value) { m_metadataHasBeenSet = true; m_metadata = std::forward<MetadataT>(value); }
+    template<typename MetadataT = Aws::Map<Aws::String, Aws::String>>
+    ContentSummary& WithMetadata(MetadataT&& value) { SetMetadata(std::forward<MetadataT>(value)); return *this;}
+    template<typename MetadataKeyT = Aws::String, typename MetadataValueT = Aws::String>
+    ContentSummary& AddMetadata(MetadataKeyT&& key, MetadataValueT&& value) {
+      m_metadataHasBeenSet = true; m_metadata.emplace(std::forward<MetadataKeyT>(key), std::forward<MetadataValueT>(value)); return *this;
+    }
+    ///@}
 
+    ///@{
     /**
-     * <p>The title of the content.</p>
+     * <p>The tags used to organize, track, or control access for this resource.</p>
      */
-    inline ContentSummary& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The title of the content.</p>
-     */
-    inline ContentSummary& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The title of the content.</p>
-     */
-    inline ContentSummary& WithTitle(const char* value) { SetTitle(value); return *this;}
-
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    ContentSummary& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    ContentSummary& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_contentArn;
@@ -584,17 +188,11 @@ namespace Model
     Aws::String m_contentId;
     bool m_contentIdHasBeenSet = false;
 
-    Aws::String m_contentType;
-    bool m_contentTypeHasBeenSet = false;
-
     Aws::String m_knowledgeBaseArn;
     bool m_knowledgeBaseArnHasBeenSet = false;
 
     Aws::String m_knowledgeBaseId;
     bool m_knowledgeBaseIdHasBeenSet = false;
-
-    Aws::Map<Aws::String, Aws::String> m_metadata;
-    bool m_metadataHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
@@ -602,14 +200,20 @@ namespace Model
     Aws::String m_revisionId;
     bool m_revisionIdHasBeenSet = false;
 
-    ContentStatus m_status;
+    Aws::String m_title;
+    bool m_titleHasBeenSet = false;
+
+    Aws::String m_contentType;
+    bool m_contentTypeHasBeenSet = false;
+
+    ContentStatus m_status{ContentStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
+
+    Aws::Map<Aws::String, Aws::String> m_metadata;
+    bool m_metadataHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
-
-    Aws::String m_title;
-    bool m_titleHasBeenSet = false;
   };
 
 } // namespace Model

@@ -49,7 +49,9 @@ enum class VerifiedPermissionsErrors
 
   CONFLICT= static_cast<int>(Aws::Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
   INTERNAL_SERVER,
-  SERVICE_QUOTA_EXCEEDED
+  INVALID_STATE,
+  SERVICE_QUOTA_EXCEEDED,
+  TOO_MANY_TAGS
 };
 
 class AWS_VERIFIEDPERMISSIONS_API VerifiedPermissionsError : public Aws::Client::AWSError<VerifiedPermissionsErrors>

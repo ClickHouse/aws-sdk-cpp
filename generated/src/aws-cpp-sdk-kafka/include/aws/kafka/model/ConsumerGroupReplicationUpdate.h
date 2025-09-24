@@ -32,167 +32,62 @@ namespace Model
   class ConsumerGroupReplicationUpdate
   {
   public:
-    AWS_KAFKA_API ConsumerGroupReplicationUpdate();
+    AWS_KAFKA_API ConsumerGroupReplicationUpdate() = default;
     AWS_KAFKA_API ConsumerGroupReplicationUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API ConsumerGroupReplicationUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>List of regular expression patterns indicating the consumer groups that
      * should not be replicated.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetConsumerGroupsToExclude() const{ return m_consumerGroupsToExclude; }
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups that
-     * should not be replicated.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetConsumerGroupsToExclude() const { return m_consumerGroupsToExclude; }
     inline bool ConsumerGroupsToExcludeHasBeenSet() const { return m_consumerGroupsToExcludeHasBeenSet; }
+    template<typename ConsumerGroupsToExcludeT = Aws::Vector<Aws::String>>
+    void SetConsumerGroupsToExclude(ConsumerGroupsToExcludeT&& value) { m_consumerGroupsToExcludeHasBeenSet = true; m_consumerGroupsToExclude = std::forward<ConsumerGroupsToExcludeT>(value); }
+    template<typename ConsumerGroupsToExcludeT = Aws::Vector<Aws::String>>
+    ConsumerGroupReplicationUpdate& WithConsumerGroupsToExclude(ConsumerGroupsToExcludeT&& value) { SetConsumerGroupsToExclude(std::forward<ConsumerGroupsToExcludeT>(value)); return *this;}
+    template<typename ConsumerGroupsToExcludeT = Aws::String>
+    ConsumerGroupReplicationUpdate& AddConsumerGroupsToExclude(ConsumerGroupsToExcludeT&& value) { m_consumerGroupsToExcludeHasBeenSet = true; m_consumerGroupsToExclude.emplace_back(std::forward<ConsumerGroupsToExcludeT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups that
-     * should not be replicated.</p>
-     */
-    inline void SetConsumerGroupsToExclude(const Aws::Vector<Aws::String>& value) { m_consumerGroupsToExcludeHasBeenSet = true; m_consumerGroupsToExclude = value; }
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups that
-     * should not be replicated.</p>
-     */
-    inline void SetConsumerGroupsToExclude(Aws::Vector<Aws::String>&& value) { m_consumerGroupsToExcludeHasBeenSet = true; m_consumerGroupsToExclude = std::move(value); }
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups that
-     * should not be replicated.</p>
-     */
-    inline ConsumerGroupReplicationUpdate& WithConsumerGroupsToExclude(const Aws::Vector<Aws::String>& value) { SetConsumerGroupsToExclude(value); return *this;}
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups that
-     * should not be replicated.</p>
-     */
-    inline ConsumerGroupReplicationUpdate& WithConsumerGroupsToExclude(Aws::Vector<Aws::String>&& value) { SetConsumerGroupsToExclude(std::move(value)); return *this;}
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups that
-     * should not be replicated.</p>
-     */
-    inline ConsumerGroupReplicationUpdate& AddConsumerGroupsToExclude(const Aws::String& value) { m_consumerGroupsToExcludeHasBeenSet = true; m_consumerGroupsToExclude.push_back(value); return *this; }
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups that
-     * should not be replicated.</p>
-     */
-    inline ConsumerGroupReplicationUpdate& AddConsumerGroupsToExclude(Aws::String&& value) { m_consumerGroupsToExcludeHasBeenSet = true; m_consumerGroupsToExclude.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups that
-     * should not be replicated.</p>
-     */
-    inline ConsumerGroupReplicationUpdate& AddConsumerGroupsToExclude(const char* value) { m_consumerGroupsToExcludeHasBeenSet = true; m_consumerGroupsToExclude.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>List of regular expression patterns indicating the consumer groups to
      * copy.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetConsumerGroupsToReplicate() const{ return m_consumerGroupsToReplicate; }
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups to
-     * copy.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetConsumerGroupsToReplicate() const { return m_consumerGroupsToReplicate; }
     inline bool ConsumerGroupsToReplicateHasBeenSet() const { return m_consumerGroupsToReplicateHasBeenSet; }
+    template<typename ConsumerGroupsToReplicateT = Aws::Vector<Aws::String>>
+    void SetConsumerGroupsToReplicate(ConsumerGroupsToReplicateT&& value) { m_consumerGroupsToReplicateHasBeenSet = true; m_consumerGroupsToReplicate = std::forward<ConsumerGroupsToReplicateT>(value); }
+    template<typename ConsumerGroupsToReplicateT = Aws::Vector<Aws::String>>
+    ConsumerGroupReplicationUpdate& WithConsumerGroupsToReplicate(ConsumerGroupsToReplicateT&& value) { SetConsumerGroupsToReplicate(std::forward<ConsumerGroupsToReplicateT>(value)); return *this;}
+    template<typename ConsumerGroupsToReplicateT = Aws::String>
+    ConsumerGroupReplicationUpdate& AddConsumerGroupsToReplicate(ConsumerGroupsToReplicateT&& value) { m_consumerGroupsToReplicateHasBeenSet = true; m_consumerGroupsToReplicate.emplace_back(std::forward<ConsumerGroupsToReplicateT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups to
-     * copy.</p>
-     */
-    inline void SetConsumerGroupsToReplicate(const Aws::Vector<Aws::String>& value) { m_consumerGroupsToReplicateHasBeenSet = true; m_consumerGroupsToReplicate = value; }
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups to
-     * copy.</p>
-     */
-    inline void SetConsumerGroupsToReplicate(Aws::Vector<Aws::String>&& value) { m_consumerGroupsToReplicateHasBeenSet = true; m_consumerGroupsToReplicate = std::move(value); }
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups to
-     * copy.</p>
-     */
-    inline ConsumerGroupReplicationUpdate& WithConsumerGroupsToReplicate(const Aws::Vector<Aws::String>& value) { SetConsumerGroupsToReplicate(value); return *this;}
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups to
-     * copy.</p>
-     */
-    inline ConsumerGroupReplicationUpdate& WithConsumerGroupsToReplicate(Aws::Vector<Aws::String>&& value) { SetConsumerGroupsToReplicate(std::move(value)); return *this;}
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups to
-     * copy.</p>
-     */
-    inline ConsumerGroupReplicationUpdate& AddConsumerGroupsToReplicate(const Aws::String& value) { m_consumerGroupsToReplicateHasBeenSet = true; m_consumerGroupsToReplicate.push_back(value); return *this; }
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups to
-     * copy.</p>
-     */
-    inline ConsumerGroupReplicationUpdate& AddConsumerGroupsToReplicate(Aws::String&& value) { m_consumerGroupsToReplicateHasBeenSet = true; m_consumerGroupsToReplicate.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of regular expression patterns indicating the consumer groups to
-     * copy.</p>
-     */
-    inline ConsumerGroupReplicationUpdate& AddConsumerGroupsToReplicate(const char* value) { m_consumerGroupsToReplicateHasBeenSet = true; m_consumerGroupsToReplicate.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Enables synchronization of consumer groups to target cluster.</p>
      */
-    inline bool GetDetectAndCopyNewConsumerGroups() const{ return m_detectAndCopyNewConsumerGroups; }
-
-    /**
-     * <p>Enables synchronization of consumer groups to target cluster.</p>
-     */
+    inline bool GetDetectAndCopyNewConsumerGroups() const { return m_detectAndCopyNewConsumerGroups; }
     inline bool DetectAndCopyNewConsumerGroupsHasBeenSet() const { return m_detectAndCopyNewConsumerGroupsHasBeenSet; }
-
-    /**
-     * <p>Enables synchronization of consumer groups to target cluster.</p>
-     */
     inline void SetDetectAndCopyNewConsumerGroups(bool value) { m_detectAndCopyNewConsumerGroupsHasBeenSet = true; m_detectAndCopyNewConsumerGroups = value; }
-
-    /**
-     * <p>Enables synchronization of consumer groups to target cluster.</p>
-     */
     inline ConsumerGroupReplicationUpdate& WithDetectAndCopyNewConsumerGroups(bool value) { SetDetectAndCopyNewConsumerGroups(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Enables synchronization of consumer group offsets to target cluster. The
      * translated offsets will be written to topic __consumer_offsets.</p>
      */
-    inline bool GetSynchroniseConsumerGroupOffsets() const{ return m_synchroniseConsumerGroupOffsets; }
-
-    /**
-     * <p>Enables synchronization of consumer group offsets to target cluster. The
-     * translated offsets will be written to topic __consumer_offsets.</p>
-     */
+    inline bool GetSynchroniseConsumerGroupOffsets() const { return m_synchroniseConsumerGroupOffsets; }
     inline bool SynchroniseConsumerGroupOffsetsHasBeenSet() const { return m_synchroniseConsumerGroupOffsetsHasBeenSet; }
-
-    /**
-     * <p>Enables synchronization of consumer group offsets to target cluster. The
-     * translated offsets will be written to topic __consumer_offsets.</p>
-     */
     inline void SetSynchroniseConsumerGroupOffsets(bool value) { m_synchroniseConsumerGroupOffsetsHasBeenSet = true; m_synchroniseConsumerGroupOffsets = value; }
-
-    /**
-     * <p>Enables synchronization of consumer group offsets to target cluster. The
-     * translated offsets will be written to topic __consumer_offsets.</p>
-     */
     inline ConsumerGroupReplicationUpdate& WithSynchroniseConsumerGroupOffsets(bool value) { SetSynchroniseConsumerGroupOffsets(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_consumerGroupsToExclude;
@@ -201,10 +96,10 @@ namespace Model
     Aws::Vector<Aws::String> m_consumerGroupsToReplicate;
     bool m_consumerGroupsToReplicateHasBeenSet = false;
 
-    bool m_detectAndCopyNewConsumerGroups;
+    bool m_detectAndCopyNewConsumerGroups{false};
     bool m_detectAndCopyNewConsumerGroupsHasBeenSet = false;
 
-    bool m_synchroniseConsumerGroupOffsets;
+    bool m_synchroniseConsumerGroupOffsets{false};
     bool m_synchroniseConsumerGroupOffsetsHasBeenSet = false;
   };
 

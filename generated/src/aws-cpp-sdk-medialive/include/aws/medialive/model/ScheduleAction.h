@@ -33,12 +33,13 @@ namespace Model
   class ScheduleAction
   {
   public:
-    AWS_MEDIALIVE_API ScheduleAction();
+    AWS_MEDIALIVE_API ScheduleAction() = default;
     AWS_MEDIALIVE_API ScheduleAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API ScheduleAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The name of the action, must be unique within the schedule. This name provides
      * the main reference to an action once it is added to the schedule. A name is
@@ -46,133 +47,37 @@ namespace Model
      * up to remove actions with a start time of more than 1 hour ago (approximately)
      * so at that point a name can be reused.
      */
-    inline const Aws::String& GetActionName() const{ return m_actionName; }
-
-    /**
-     * The name of the action, must be unique within the schedule. This name provides
-     * the main reference to an action once it is added to the schedule. A name is
-     * unique if it is no longer in the schedule. The schedule is automatically cleaned
-     * up to remove actions with a start time of more than 1 hour ago (approximately)
-     * so at that point a name can be reused.
-     */
+    inline const Aws::String& GetActionName() const { return m_actionName; }
     inline bool ActionNameHasBeenSet() const { return m_actionNameHasBeenSet; }
+    template<typename ActionNameT = Aws::String>
+    void SetActionName(ActionNameT&& value) { m_actionNameHasBeenSet = true; m_actionName = std::forward<ActionNameT>(value); }
+    template<typename ActionNameT = Aws::String>
+    ScheduleAction& WithActionName(ActionNameT&& value) { SetActionName(std::forward<ActionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The name of the action, must be unique within the schedule. This name provides
-     * the main reference to an action once it is added to the schedule. A name is
-     * unique if it is no longer in the schedule. The schedule is automatically cleaned
-     * up to remove actions with a start time of more than 1 hour ago (approximately)
-     * so at that point a name can be reused.
-     */
-    inline void SetActionName(const Aws::String& value) { m_actionNameHasBeenSet = true; m_actionName = value; }
-
-    /**
-     * The name of the action, must be unique within the schedule. This name provides
-     * the main reference to an action once it is added to the schedule. A name is
-     * unique if it is no longer in the schedule. The schedule is automatically cleaned
-     * up to remove actions with a start time of more than 1 hour ago (approximately)
-     * so at that point a name can be reused.
-     */
-    inline void SetActionName(Aws::String&& value) { m_actionNameHasBeenSet = true; m_actionName = std::move(value); }
-
-    /**
-     * The name of the action, must be unique within the schedule. This name provides
-     * the main reference to an action once it is added to the schedule. A name is
-     * unique if it is no longer in the schedule. The schedule is automatically cleaned
-     * up to remove actions with a start time of more than 1 hour ago (approximately)
-     * so at that point a name can be reused.
-     */
-    inline void SetActionName(const char* value) { m_actionNameHasBeenSet = true; m_actionName.assign(value); }
-
-    /**
-     * The name of the action, must be unique within the schedule. This name provides
-     * the main reference to an action once it is added to the schedule. A name is
-     * unique if it is no longer in the schedule. The schedule is automatically cleaned
-     * up to remove actions with a start time of more than 1 hour ago (approximately)
-     * so at that point a name can be reused.
-     */
-    inline ScheduleAction& WithActionName(const Aws::String& value) { SetActionName(value); return *this;}
-
-    /**
-     * The name of the action, must be unique within the schedule. This name provides
-     * the main reference to an action once it is added to the schedule. A name is
-     * unique if it is no longer in the schedule. The schedule is automatically cleaned
-     * up to remove actions with a start time of more than 1 hour ago (approximately)
-     * so at that point a name can be reused.
-     */
-    inline ScheduleAction& WithActionName(Aws::String&& value) { SetActionName(std::move(value)); return *this;}
-
-    /**
-     * The name of the action, must be unique within the schedule. This name provides
-     * the main reference to an action once it is added to the schedule. A name is
-     * unique if it is no longer in the schedule. The schedule is automatically cleaned
-     * up to remove actions with a start time of more than 1 hour ago (approximately)
-     * so at that point a name can be reused.
-     */
-    inline ScheduleAction& WithActionName(const char* value) { SetActionName(value); return *this;}
-
-
+    ///@{
     /**
      * Settings for this schedule action.
      */
-    inline const ScheduleActionSettings& GetScheduleActionSettings() const{ return m_scheduleActionSettings; }
-
-    /**
-     * Settings for this schedule action.
-     */
+    inline const ScheduleActionSettings& GetScheduleActionSettings() const { return m_scheduleActionSettings; }
     inline bool ScheduleActionSettingsHasBeenSet() const { return m_scheduleActionSettingsHasBeenSet; }
+    template<typename ScheduleActionSettingsT = ScheduleActionSettings>
+    void SetScheduleActionSettings(ScheduleActionSettingsT&& value) { m_scheduleActionSettingsHasBeenSet = true; m_scheduleActionSettings = std::forward<ScheduleActionSettingsT>(value); }
+    template<typename ScheduleActionSettingsT = ScheduleActionSettings>
+    ScheduleAction& WithScheduleActionSettings(ScheduleActionSettingsT&& value) { SetScheduleActionSettings(std::forward<ScheduleActionSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings for this schedule action.
-     */
-    inline void SetScheduleActionSettings(const ScheduleActionSettings& value) { m_scheduleActionSettingsHasBeenSet = true; m_scheduleActionSettings = value; }
-
-    /**
-     * Settings for this schedule action.
-     */
-    inline void SetScheduleActionSettings(ScheduleActionSettings&& value) { m_scheduleActionSettingsHasBeenSet = true; m_scheduleActionSettings = std::move(value); }
-
-    /**
-     * Settings for this schedule action.
-     */
-    inline ScheduleAction& WithScheduleActionSettings(const ScheduleActionSettings& value) { SetScheduleActionSettings(value); return *this;}
-
-    /**
-     * Settings for this schedule action.
-     */
-    inline ScheduleAction& WithScheduleActionSettings(ScheduleActionSettings&& value) { SetScheduleActionSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * The time for the action to start in the channel.
      */
-    inline const ScheduleActionStartSettings& GetScheduleActionStartSettings() const{ return m_scheduleActionStartSettings; }
-
-    /**
-     * The time for the action to start in the channel.
-     */
+    inline const ScheduleActionStartSettings& GetScheduleActionStartSettings() const { return m_scheduleActionStartSettings; }
     inline bool ScheduleActionStartSettingsHasBeenSet() const { return m_scheduleActionStartSettingsHasBeenSet; }
-
-    /**
-     * The time for the action to start in the channel.
-     */
-    inline void SetScheduleActionStartSettings(const ScheduleActionStartSettings& value) { m_scheduleActionStartSettingsHasBeenSet = true; m_scheduleActionStartSettings = value; }
-
-    /**
-     * The time for the action to start in the channel.
-     */
-    inline void SetScheduleActionStartSettings(ScheduleActionStartSettings&& value) { m_scheduleActionStartSettingsHasBeenSet = true; m_scheduleActionStartSettings = std::move(value); }
-
-    /**
-     * The time for the action to start in the channel.
-     */
-    inline ScheduleAction& WithScheduleActionStartSettings(const ScheduleActionStartSettings& value) { SetScheduleActionStartSettings(value); return *this;}
-
-    /**
-     * The time for the action to start in the channel.
-     */
-    inline ScheduleAction& WithScheduleActionStartSettings(ScheduleActionStartSettings&& value) { SetScheduleActionStartSettings(std::move(value)); return *this;}
-
+    template<typename ScheduleActionStartSettingsT = ScheduleActionStartSettings>
+    void SetScheduleActionStartSettings(ScheduleActionStartSettingsT&& value) { m_scheduleActionStartSettingsHasBeenSet = true; m_scheduleActionStartSettings = std::forward<ScheduleActionStartSettingsT>(value); }
+    template<typename ScheduleActionStartSettingsT = ScheduleActionStartSettings>
+    ScheduleAction& WithScheduleActionStartSettings(ScheduleActionStartSettingsT&& value) { SetScheduleActionStartSettings(std::forward<ScheduleActionStartSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_actionName;

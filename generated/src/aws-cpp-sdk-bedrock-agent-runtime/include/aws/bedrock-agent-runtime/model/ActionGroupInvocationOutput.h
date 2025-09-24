@@ -5,6 +5,7 @@
 
 #pragma once
 #include <aws/bedrock-agent-runtime/BedrockAgentRuntime_EXPORTS.h>
+#include <aws/bedrock-agent-runtime/model/Metadata.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
@@ -24,44 +25,48 @@ namespace Model
 {
 
   /**
-   * <p>output from lambda used in action group</p><p><h3>See Also:</h3>   <a
+   * <p>Contains the JSON-formatted string returned by the API invoked by the action
+   * group.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/bedrock-agent-runtime-2023-07-26/ActionGroupInvocationOutput">AWS
    * API Reference</a></p>
    */
   class ActionGroupInvocationOutput
   {
   public:
-    AWS_BEDROCKAGENTRUNTIME_API ActionGroupInvocationOutput();
+    AWS_BEDROCKAGENTRUNTIME_API ActionGroupInvocationOutput() = default;
     AWS_BEDROCKAGENTRUNTIME_API ActionGroupInvocationOutput(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCKAGENTRUNTIME_API ActionGroupInvocationOutput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BEDROCKAGENTRUNTIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    
-    inline const Aws::String& GetText() const{ return m_text; }
+    ///@{
+    /**
+     * <p>Contains information about the action group output.</p>
+     */
+    inline const Metadata& GetMetadata() const { return m_metadata; }
+    inline bool MetadataHasBeenSet() const { return m_metadataHasBeenSet; }
+    template<typename MetadataT = Metadata>
+    void SetMetadata(MetadataT&& value) { m_metadataHasBeenSet = true; m_metadata = std::forward<MetadataT>(value); }
+    template<typename MetadataT = Metadata>
+    ActionGroupInvocationOutput& WithMetadata(MetadataT&& value) { SetMetadata(std::forward<MetadataT>(value)); return *this;}
+    ///@}
 
-    
+    ///@{
+    /**
+     * <p>The JSON-formatted string returned by the API invoked by the action
+     * group.</p>
+     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
-
-    
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    
-    inline ActionGroupInvocationOutput& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    
-    inline ActionGroupInvocationOutput& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    
-    inline ActionGroupInvocationOutput& WithText(const char* value) { SetText(value); return *this;}
-
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    ActionGroupInvocationOutput& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
   private:
+
+    Metadata m_metadata;
+    bool m_metadataHasBeenSet = false;
 
     Aws::String m_text;
     bool m_textHasBeenSet = false;

@@ -20,17 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-OptionSpecification::OptionSpecification() : 
-    m_resourceNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_optionNameHasBeenSet(false)
-{
-}
-
-OptionSpecification::OptionSpecification(const XmlNode& xmlNode) : 
-    m_resourceNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_optionNameHasBeenSet(false)
+OptionSpecification::OptionSpecification(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

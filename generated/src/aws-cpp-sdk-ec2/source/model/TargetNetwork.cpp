@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TargetNetwork::TargetNetwork() : 
-    m_associationIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_targetNetworkIdHasBeenSet(false),
-    m_clientVpnEndpointIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false)
-{
-}
-
-TargetNetwork::TargetNetwork(const XmlNode& xmlNode) : 
-    m_associationIdHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_targetNetworkIdHasBeenSet(false),
-    m_clientVpnEndpointIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false)
+TargetNetwork::TargetNetwork(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -81,6 +65,7 @@ TargetNetwork& TargetNetwork::operator =(const XmlNode& xmlNode)
     if(!securityGroupsNode.IsNull())
     {
       XmlNode securityGroupsMember = securityGroupsNode.FirstChild("item");
+      m_securityGroupsHasBeenSet = !securityGroupsMember.IsNull();
       while(!securityGroupsMember.IsNull())
       {
         m_securityGroups.push_back(securityGroupsMember.GetText());

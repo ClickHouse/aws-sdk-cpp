@@ -18,23 +18,7 @@ namespace AccessAnalyzer
 namespace Model
 {
 
-ExternalAccessDetails::ExternalAccessDetails() : 
-    m_actionHasBeenSet(false),
-    m_conditionHasBeenSet(false),
-    m_isPublic(false),
-    m_isPublicHasBeenSet(false),
-    m_principalHasBeenSet(false),
-    m_sourcesHasBeenSet(false)
-{
-}
-
-ExternalAccessDetails::ExternalAccessDetails(JsonView jsonValue) : 
-    m_actionHasBeenSet(false),
-    m_conditionHasBeenSet(false),
-    m_isPublic(false),
-    m_isPublicHasBeenSet(false),
-    m_principalHasBeenSet(false),
-    m_sourcesHasBeenSet(false)
+ExternalAccessDetails::ExternalAccessDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,7 +34,6 @@ ExternalAccessDetails& ExternalAccessDetails::operator =(JsonView jsonValue)
     }
     m_actionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("condition"))
   {
     Aws::Map<Aws::String, JsonView> conditionJsonMap = jsonValue.GetObject("condition").GetAllObjects();
@@ -60,14 +43,11 @@ ExternalAccessDetails& ExternalAccessDetails::operator =(JsonView jsonValue)
     }
     m_conditionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("isPublic"))
   {
     m_isPublic = jsonValue.GetBool("isPublic");
-
     m_isPublicHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("principal"))
   {
     Aws::Map<Aws::String, JsonView> principalJsonMap = jsonValue.GetObject("principal").GetAllObjects();
@@ -77,7 +57,6 @@ ExternalAccessDetails& ExternalAccessDetails::operator =(JsonView jsonValue)
     }
     m_principalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sources"))
   {
     Aws::Utils::Array<JsonView> sourcesJsonList = jsonValue.GetArray("sources");
@@ -87,7 +66,11 @@ ExternalAccessDetails& ExternalAccessDetails::operator =(JsonView jsonValue)
     }
     m_sourcesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("resourceControlPolicyRestriction"))
+  {
+    m_resourceControlPolicyRestriction = ResourceControlPolicyRestrictionMapper::GetResourceControlPolicyRestrictionForName(jsonValue.GetString("resourceControlPolicyRestriction"));
+    m_resourceControlPolicyRestrictionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -143,6 +126,11 @@ JsonValue ExternalAccessDetails::Jsonize() const
    }
    payload.WithArray("sources", std::move(sourcesJsonList));
 
+  }
+
+  if(m_resourceControlPolicyRestrictionHasBeenSet)
+  {
+   payload.WithString("resourceControlPolicyRestriction", ResourceControlPolicyRestrictionMapper::GetNameForResourceControlPolicyRestriction(m_resourceControlPolicyRestriction));
   }
 
   return payload;

@@ -18,15 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-TooManyRequestsException::TooManyRequestsException() : 
-    m_messageHasBeenSet(false),
-    m_requestIDHasBeenSet(false)
-{
-}
-
-TooManyRequestsException::TooManyRequestsException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_requestIDHasBeenSet(false)
+TooManyRequestsException::TooManyRequestsException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TooManyRequestsException& TooManyRequestsException::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RequestID"))
   {
     m_requestID = jsonValue.GetString("RequestID");
-
     m_requestIDHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace kendra
 namespace Model
 {
 
-TextWithHighlights::TextWithHighlights() : 
-    m_textHasBeenSet(false),
-    m_highlightsHasBeenSet(false)
-{
-}
-
-TextWithHighlights::TextWithHighlights(JsonView jsonValue) : 
-    m_textHasBeenSet(false),
-    m_highlightsHasBeenSet(false)
+TextWithHighlights::TextWithHighlights(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TextWithHighlights& TextWithHighlights::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Text"))
   {
     m_text = jsonValue.GetString("Text");
-
     m_textHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Highlights"))
   {
     Aws::Utils::Array<JsonView> highlightsJsonList = jsonValue.GetArray("Highlights");
@@ -49,7 +39,6 @@ TextWithHighlights& TextWithHighlights::operator =(JsonView jsonValue)
     }
     m_highlightsHasBeenSet = true;
   }
-
   return *this;
 }
 

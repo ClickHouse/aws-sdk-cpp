@@ -26,91 +26,59 @@ namespace BedrockAgent
 {
 namespace Model
 {
-  /**
-   * <p>List Agent Versions Response</p><p><h3>See Also:</h3>   <a
-   * href="http://docs.aws.amazon.com/goto/WebAPI/bedrock-agent-2023-06-05/ListAgentVersionsResponse">AWS
-   * API Reference</a></p>
-   */
   class ListAgentVersionsResult
   {
   public:
-    AWS_BEDROCKAGENT_API ListAgentVersionsResult();
+    AWS_BEDROCKAGENT_API ListAgentVersionsResult() = default;
     AWS_BEDROCKAGENT_API ListAgentVersionsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_BEDROCKAGENT_API ListAgentVersionsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
+    /**
+     * <p>A list of objects, each of which contains information about a version of the
+     * agent.</p>
+     */
+    inline const Aws::Vector<AgentVersionSummary>& GetAgentVersionSummaries() const { return m_agentVersionSummaries; }
+    template<typename AgentVersionSummariesT = Aws::Vector<AgentVersionSummary>>
+    void SetAgentVersionSummaries(AgentVersionSummariesT&& value) { m_agentVersionSummariesHasBeenSet = true; m_agentVersionSummaries = std::forward<AgentVersionSummariesT>(value); }
+    template<typename AgentVersionSummariesT = Aws::Vector<AgentVersionSummary>>
+    ListAgentVersionsResult& WithAgentVersionSummaries(AgentVersionSummariesT&& value) { SetAgentVersionSummaries(std::forward<AgentVersionSummariesT>(value)); return *this;}
+    template<typename AgentVersionSummariesT = AgentVersionSummary>
+    ListAgentVersionsResult& AddAgentVersionSummaries(AgentVersionSummariesT&& value) { m_agentVersionSummariesHasBeenSet = true; m_agentVersionSummaries.emplace_back(std::forward<AgentVersionSummariesT>(value)); return *this; }
+    ///@}
+
+    ///@{
+    /**
+     * <p>If the total number of results is greater than the <code>maxResults</code>
+     * value provided in the request, use this token when making another request in the
+     * <code>nextToken</code> field to return the next batch of results.</p>
+     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAgentVersionsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
+
+    ///@{
     
-    inline const Aws::Vector<AgentVersionSummary>& GetAgentVersionSummaries() const{ return m_agentVersionSummaries; }
-
-    
-    inline void SetAgentVersionSummaries(const Aws::Vector<AgentVersionSummary>& value) { m_agentVersionSummaries = value; }
-
-    
-    inline void SetAgentVersionSummaries(Aws::Vector<AgentVersionSummary>&& value) { m_agentVersionSummaries = std::move(value); }
-
-    
-    inline ListAgentVersionsResult& WithAgentVersionSummaries(const Aws::Vector<AgentVersionSummary>& value) { SetAgentVersionSummaries(value); return *this;}
-
-    
-    inline ListAgentVersionsResult& WithAgentVersionSummaries(Aws::Vector<AgentVersionSummary>&& value) { SetAgentVersionSummaries(std::move(value)); return *this;}
-
-    
-    inline ListAgentVersionsResult& AddAgentVersionSummaries(const AgentVersionSummary& value) { m_agentVersionSummaries.push_back(value); return *this; }
-
-    
-    inline ListAgentVersionsResult& AddAgentVersionSummaries(AgentVersionSummary&& value) { m_agentVersionSummaries.push_back(std::move(value)); return *this; }
-
-
-    
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    
-    inline ListAgentVersionsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    
-    inline ListAgentVersionsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    
-    inline ListAgentVersionsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListAgentVersionsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListAgentVersionsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListAgentVersionsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListAgentVersionsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<AgentVersionSummary> m_agentVersionSummaries;
+    bool m_agentVersionSummariesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

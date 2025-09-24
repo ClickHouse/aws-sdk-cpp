@@ -18,19 +18,7 @@ namespace DatabaseMigrationService
 namespace Model
 {
 
-DataProviderDescriptor::DataProviderDescriptor() : 
-    m_secretsManagerSecretIdHasBeenSet(false),
-    m_secretsManagerAccessRoleArnHasBeenSet(false),
-    m_dataProviderNameHasBeenSet(false),
-    m_dataProviderArnHasBeenSet(false)
-{
-}
-
-DataProviderDescriptor::DataProviderDescriptor(JsonView jsonValue) : 
-    m_secretsManagerSecretIdHasBeenSet(false),
-    m_secretsManagerAccessRoleArnHasBeenSet(false),
-    m_dataProviderNameHasBeenSet(false),
-    m_dataProviderArnHasBeenSet(false)
+DataProviderDescriptor::DataProviderDescriptor(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ DataProviderDescriptor& DataProviderDescriptor::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SecretsManagerSecretId"))
   {
     m_secretsManagerSecretId = jsonValue.GetString("SecretsManagerSecretId");
-
     m_secretsManagerSecretIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecretsManagerAccessRoleArn"))
   {
     m_secretsManagerAccessRoleArn = jsonValue.GetString("SecretsManagerAccessRoleArn");
-
     m_secretsManagerAccessRoleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataProviderName"))
   {
     m_dataProviderName = jsonValue.GetString("DataProviderName");
-
     m_dataProviderNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataProviderArn"))
   {
     m_dataProviderArn = jsonValue.GetString("DataProviderArn");
-
     m_dataProviderArnHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/qbusiness/QBusiness_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/qbusiness/model/GroupSummary.h>
 #include <utility>
 
@@ -29,125 +29,55 @@ namespace Model
   class ListGroupsResult
   {
   public:
-    AWS_QBUSINESS_API ListGroupsResult();
+    AWS_QBUSINESS_API ListGroupsResult() = default;
     AWS_QBUSINESS_API ListGroupsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QBUSINESS_API ListGroupsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
+    /**
+     * <p>If the response is truncated, Amazon Q Business returns this token that you
+     * can use in the subsequent request to retrieve the next set of groups that are
+     * mapped to users.</p>
+     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListGroupsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
+
+    ///@{
     /**
      * <p>Summary information for list of groups that are mapped to users.</p>
      */
-    inline const Aws::Vector<GroupSummary>& GetItems() const{ return m_items; }
+    inline const Aws::Vector<GroupSummary>& GetItems() const { return m_items; }
+    template<typename ItemsT = Aws::Vector<GroupSummary>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<GroupSummary>>
+    ListGroupsResult& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = GroupSummary>
+    ListGroupsResult& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Summary information for list of groups that are mapped to users.</p>
-     */
-    inline void SetItems(const Aws::Vector<GroupSummary>& value) { m_items = value; }
-
-    /**
-     * <p>Summary information for list of groups that are mapped to users.</p>
-     */
-    inline void SetItems(Aws::Vector<GroupSummary>&& value) { m_items = std::move(value); }
-
-    /**
-     * <p>Summary information for list of groups that are mapped to users.</p>
-     */
-    inline ListGroupsResult& WithItems(const Aws::Vector<GroupSummary>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>Summary information for list of groups that are mapped to users.</p>
-     */
-    inline ListGroupsResult& WithItems(Aws::Vector<GroupSummary>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>Summary information for list of groups that are mapped to users.</p>
-     */
-    inline ListGroupsResult& AddItems(const GroupSummary& value) { m_items.push_back(value); return *this; }
-
-    /**
-     * <p>Summary information for list of groups that are mapped to users.</p>
-     */
-    inline ListGroupsResult& AddItems(GroupSummary&& value) { m_items.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token that you can use in
-     * the subsequent request to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token that you can use in
-     * the subsequent request to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token that you can use in
-     * the subsequent request to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token that you can use in
-     * the subsequent request to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token that you can use in
-     * the subsequent request to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline ListGroupsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token that you can use in
-     * the subsequent request to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline ListGroupsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If the response is truncated, Amazon Q returns this token that you can use in
-     * the subsequent request to retrieve the next set of groups that are mapped to
-     * users.</p>
-     */
-    inline ListGroupsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListGroupsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListGroupsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListGroupsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListGroupsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Vector<GroupSummary> m_items;
-
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
+
+    Aws::Vector<GroupSummary> m_items;
+    bool m_itemsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

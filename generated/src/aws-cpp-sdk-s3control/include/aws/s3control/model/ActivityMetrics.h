@@ -38,36 +38,25 @@ namespace Model
   class ActivityMetrics
   {
   public:
-    AWS_S3CONTROL_API ActivityMetrics();
+    AWS_S3CONTROL_API ActivityMetrics() = default;
     AWS_S3CONTROL_API ActivityMetrics(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API ActivityMetrics& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>A container that indicates whether activity metrics are enabled.</p>
      */
-    inline bool GetIsEnabled() const{ return m_isEnabled; }
-
-    /**
-     * <p>A container that indicates whether activity metrics are enabled.</p>
-     */
+    inline bool GetIsEnabled() const { return m_isEnabled; }
     inline bool IsEnabledHasBeenSet() const { return m_isEnabledHasBeenSet; }
-
-    /**
-     * <p>A container that indicates whether activity metrics are enabled.</p>
-     */
     inline void SetIsEnabled(bool value) { m_isEnabledHasBeenSet = true; m_isEnabled = value; }
-
-    /**
-     * <p>A container that indicates whether activity metrics are enabled.</p>
-     */
     inline ActivityMetrics& WithIsEnabled(bool value) { SetIsEnabled(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_isEnabled;
+    bool m_isEnabled{false};
     bool m_isEnabledHasBeenSet = false;
   };
 

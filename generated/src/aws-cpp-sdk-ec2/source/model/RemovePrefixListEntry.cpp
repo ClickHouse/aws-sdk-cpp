@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-RemovePrefixListEntry::RemovePrefixListEntry() : 
-    m_cidrHasBeenSet(false)
-{
-}
-
-RemovePrefixListEntry::RemovePrefixListEntry(const XmlNode& xmlNode) : 
-    m_cidrHasBeenSet(false)
+RemovePrefixListEntry::RemovePrefixListEntry(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -21,7 +21,7 @@ namespace Model
   class DeleteCertificateProviderRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API DeleteCertificateProviderRequest();
+    AWS_IOT_API DeleteCertificateProviderRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the certificate provider.</p>
      */
-    inline const Aws::String& GetCertificateProviderName() const{ return m_certificateProviderName; }
-
-    /**
-     * <p>The name of the certificate provider.</p>
-     */
+    inline const Aws::String& GetCertificateProviderName() const { return m_certificateProviderName; }
     inline bool CertificateProviderNameHasBeenSet() const { return m_certificateProviderNameHasBeenSet; }
-
-    /**
-     * <p>The name of the certificate provider.</p>
-     */
-    inline void SetCertificateProviderName(const Aws::String& value) { m_certificateProviderNameHasBeenSet = true; m_certificateProviderName = value; }
-
-    /**
-     * <p>The name of the certificate provider.</p>
-     */
-    inline void SetCertificateProviderName(Aws::String&& value) { m_certificateProviderNameHasBeenSet = true; m_certificateProviderName = std::move(value); }
-
-    /**
-     * <p>The name of the certificate provider.</p>
-     */
-    inline void SetCertificateProviderName(const char* value) { m_certificateProviderNameHasBeenSet = true; m_certificateProviderName.assign(value); }
-
-    /**
-     * <p>The name of the certificate provider.</p>
-     */
-    inline DeleteCertificateProviderRequest& WithCertificateProviderName(const Aws::String& value) { SetCertificateProviderName(value); return *this;}
-
-    /**
-     * <p>The name of the certificate provider.</p>
-     */
-    inline DeleteCertificateProviderRequest& WithCertificateProviderName(Aws::String&& value) { SetCertificateProviderName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the certificate provider.</p>
-     */
-    inline DeleteCertificateProviderRequest& WithCertificateProviderName(const char* value) { SetCertificateProviderName(value); return *this;}
-
+    template<typename CertificateProviderNameT = Aws::String>
+    void SetCertificateProviderName(CertificateProviderNameT&& value) { m_certificateProviderNameHasBeenSet = true; m_certificateProviderName = std::forward<CertificateProviderNameT>(value); }
+    template<typename CertificateProviderNameT = Aws::String>
+    DeleteCertificateProviderRequest& WithCertificateProviderName(CertificateProviderNameT&& value) { SetCertificateProviderName(std::forward<CertificateProviderNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_certificateProviderName;

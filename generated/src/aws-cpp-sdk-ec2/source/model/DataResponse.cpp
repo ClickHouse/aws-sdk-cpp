@@ -20,31 +20,7 @@ namespace EC2
 namespace Model
 {
 
-DataResponse::DataResponse() : 
-    m_idHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_metric(MetricType::NOT_SET),
-    m_metricHasBeenSet(false),
-    m_statistic(StatisticType::NOT_SET),
-    m_statisticHasBeenSet(false),
-    m_period(PeriodType::NOT_SET),
-    m_periodHasBeenSet(false),
-    m_metricPointsHasBeenSet(false)
-{
-}
-
-DataResponse::DataResponse(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_metric(MetricType::NOT_SET),
-    m_metricHasBeenSet(false),
-    m_statistic(StatisticType::NOT_SET),
-    m_statisticHasBeenSet(false),
-    m_period(PeriodType::NOT_SET),
-    m_periodHasBeenSet(false),
-    m_metricPointsHasBeenSet(false)
+DataResponse::DataResponse(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -76,25 +52,26 @@ DataResponse& DataResponse::operator =(const XmlNode& xmlNode)
     XmlNode metricNode = resultNode.FirstChild("metric");
     if(!metricNode.IsNull())
     {
-      m_metric = MetricTypeMapper::GetMetricTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(metricNode.GetText()).c_str()).c_str());
+      m_metric = MetricTypeMapper::GetMetricTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(metricNode.GetText()).c_str()));
       m_metricHasBeenSet = true;
     }
     XmlNode statisticNode = resultNode.FirstChild("statistic");
     if(!statisticNode.IsNull())
     {
-      m_statistic = StatisticTypeMapper::GetStatisticTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statisticNode.GetText()).c_str()).c_str());
+      m_statistic = StatisticTypeMapper::GetStatisticTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statisticNode.GetText()).c_str()));
       m_statisticHasBeenSet = true;
     }
     XmlNode periodNode = resultNode.FirstChild("period");
     if(!periodNode.IsNull())
     {
-      m_period = PeriodTypeMapper::GetPeriodTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(periodNode.GetText()).c_str()).c_str());
+      m_period = PeriodTypeMapper::GetPeriodTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(periodNode.GetText()).c_str()));
       m_periodHasBeenSet = true;
     }
     XmlNode metricPointsNode = resultNode.FirstChild("metricPointSet");
     if(!metricPointsNode.IsNull())
     {
       XmlNode metricPointsMember = metricPointsNode.FirstChild("item");
+      m_metricPointsHasBeenSet = !metricPointsMember.IsNull();
       while(!metricPointsMember.IsNull())
       {
         m_metricPoints.push_back(metricPointsMember);
@@ -127,17 +104,17 @@ void DataResponse::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_metricHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Metric=" << MetricTypeMapper::GetNameForMetricType(m_metric) << "&";
+      oStream << location << index << locationValue << ".Metric=" << StringUtils::URLEncode(MetricTypeMapper::GetNameForMetricType(m_metric)) << "&";
   }
 
   if(m_statisticHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Statistic=" << StatisticTypeMapper::GetNameForStatisticType(m_statistic) << "&";
+      oStream << location << index << locationValue << ".Statistic=" << StringUtils::URLEncode(StatisticTypeMapper::GetNameForStatisticType(m_statistic)) << "&";
   }
 
   if(m_periodHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Period=" << PeriodTypeMapper::GetNameForPeriodType(m_period) << "&";
+      oStream << location << index << locationValue << ".Period=" << StringUtils::URLEncode(PeriodTypeMapper::GetNameForPeriodType(m_period)) << "&";
   }
 
   if(m_metricPointsHasBeenSet)
@@ -169,15 +146,15 @@ void DataResponse::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_metricHasBeenSet)
   {
-      oStream << location << ".Metric=" << MetricTypeMapper::GetNameForMetricType(m_metric) << "&";
+      oStream << location << ".Metric=" << StringUtils::URLEncode(MetricTypeMapper::GetNameForMetricType(m_metric)) << "&";
   }
   if(m_statisticHasBeenSet)
   {
-      oStream << location << ".Statistic=" << StatisticTypeMapper::GetNameForStatisticType(m_statistic) << "&";
+      oStream << location << ".Statistic=" << StringUtils::URLEncode(StatisticTypeMapper::GetNameForStatisticType(m_statistic)) << "&";
   }
   if(m_periodHasBeenSet)
   {
-      oStream << location << ".Period=" << PeriodTypeMapper::GetNameForPeriodType(m_period) << "&";
+      oStream << location << ".Period=" << StringUtils::URLEncode(PeriodTypeMapper::GetNameForPeriodType(m_period)) << "&";
   }
   if(m_metricPointsHasBeenSet)
   {
@@ -185,7 +162,7 @@ void DataResponse::OutputToStream(Aws::OStream& oStream, const char* location) c
       for(auto& item : m_metricPoints)
       {
         Aws::StringStream metricPointsSs;
-        metricPointsSs << location <<  ".MetricPointSet." << metricPointsIdx++;
+        metricPointsSs << location << ".MetricPointSet." << metricPointsIdx++;
         item.OutputToStream(oStream, metricPointsSs.str().c_str());
       }
   }

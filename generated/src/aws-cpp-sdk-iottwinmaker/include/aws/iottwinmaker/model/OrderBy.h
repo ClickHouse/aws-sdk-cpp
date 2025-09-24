@@ -33,86 +33,36 @@ namespace Model
   class OrderBy
   {
   public:
-    AWS_IOTTWINMAKER_API OrderBy();
+    AWS_IOTTWINMAKER_API OrderBy() = default;
     AWS_IOTTWINMAKER_API OrderBy(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API OrderBy& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The set order that filters results.</p>
      */
-    inline const Order& GetOrder() const{ return m_order; }
-
-    /**
-     * <p>The set order that filters results.</p>
-     */
+    inline Order GetOrder() const { return m_order; }
     inline bool OrderHasBeenSet() const { return m_orderHasBeenSet; }
+    inline void SetOrder(Order value) { m_orderHasBeenSet = true; m_order = value; }
+    inline OrderBy& WithOrder(Order value) { SetOrder(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The set order that filters results.</p>
-     */
-    inline void SetOrder(const Order& value) { m_orderHasBeenSet = true; m_order = value; }
-
-    /**
-     * <p>The set order that filters results.</p>
-     */
-    inline void SetOrder(Order&& value) { m_orderHasBeenSet = true; m_order = std::move(value); }
-
-    /**
-     * <p>The set order that filters results.</p>
-     */
-    inline OrderBy& WithOrder(const Order& value) { SetOrder(value); return *this;}
-
-    /**
-     * <p>The set order that filters results.</p>
-     */
-    inline OrderBy& WithOrder(Order&& value) { SetOrder(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The property name.</p>
      */
-    inline const Aws::String& GetPropertyName() const{ return m_propertyName; }
-
-    /**
-     * <p>The property name.</p>
-     */
+    inline const Aws::String& GetPropertyName() const { return m_propertyName; }
     inline bool PropertyNameHasBeenSet() const { return m_propertyNameHasBeenSet; }
-
-    /**
-     * <p>The property name.</p>
-     */
-    inline void SetPropertyName(const Aws::String& value) { m_propertyNameHasBeenSet = true; m_propertyName = value; }
-
-    /**
-     * <p>The property name.</p>
-     */
-    inline void SetPropertyName(Aws::String&& value) { m_propertyNameHasBeenSet = true; m_propertyName = std::move(value); }
-
-    /**
-     * <p>The property name.</p>
-     */
-    inline void SetPropertyName(const char* value) { m_propertyNameHasBeenSet = true; m_propertyName.assign(value); }
-
-    /**
-     * <p>The property name.</p>
-     */
-    inline OrderBy& WithPropertyName(const Aws::String& value) { SetPropertyName(value); return *this;}
-
-    /**
-     * <p>The property name.</p>
-     */
-    inline OrderBy& WithPropertyName(Aws::String&& value) { SetPropertyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The property name.</p>
-     */
-    inline OrderBy& WithPropertyName(const char* value) { SetPropertyName(value); return *this;}
-
+    template<typename PropertyNameT = Aws::String>
+    void SetPropertyName(PropertyNameT&& value) { m_propertyNameHasBeenSet = true; m_propertyName = std::forward<PropertyNameT>(value); }
+    template<typename PropertyNameT = Aws::String>
+    OrderBy& WithPropertyName(PropertyNameT&& value) { SetPropertyName(std::forward<PropertyNameT>(value)); return *this;}
+    ///@}
   private:
 
-    Order m_order;
+    Order m_order{Order::NOT_SET};
     bool m_orderHasBeenSet = false;
 
     Aws::String m_propertyName;

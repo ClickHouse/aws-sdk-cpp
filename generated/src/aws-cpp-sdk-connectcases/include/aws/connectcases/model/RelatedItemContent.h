@@ -7,6 +7,8 @@
 #include <aws/connectcases/ConnectCases_EXPORTS.h>
 #include <aws/connectcases/model/CommentContent.h>
 #include <aws/connectcases/model/ContactContent.h>
+#include <aws/connectcases/model/FileContent.h>
+#include <aws/connectcases/model/SlaContent.h>
 #include <utility>
 
 namespace Aws
@@ -33,73 +35,59 @@ namespace Model
   class RelatedItemContent
   {
   public:
-    AWS_CONNECTCASES_API RelatedItemContent();
+    AWS_CONNECTCASES_API RelatedItemContent() = default;
     AWS_CONNECTCASES_API RelatedItemContent(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCASES_API RelatedItemContent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECTCASES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Represents the content of a comment to be returned to agents.</p>
      */
-    inline const CommentContent& GetComment() const{ return m_comment; }
-
-    /**
-     * <p>Represents the content of a comment to be returned to agents.</p>
-     */
+    inline const CommentContent& GetComment() const { return m_comment; }
     inline bool CommentHasBeenSet() const { return m_commentHasBeenSet; }
+    template<typename CommentT = CommentContent>
+    void SetComment(CommentT&& value) { m_commentHasBeenSet = true; m_comment = std::forward<CommentT>(value); }
+    template<typename CommentT = CommentContent>
+    RelatedItemContent& WithComment(CommentT&& value) { SetComment(std::forward<CommentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents the content of a comment to be returned to agents.</p>
-     */
-    inline void SetComment(const CommentContent& value) { m_commentHasBeenSet = true; m_comment = value; }
-
-    /**
-     * <p>Represents the content of a comment to be returned to agents.</p>
-     */
-    inline void SetComment(CommentContent&& value) { m_commentHasBeenSet = true; m_comment = std::move(value); }
-
-    /**
-     * <p>Represents the content of a comment to be returned to agents.</p>
-     */
-    inline RelatedItemContent& WithComment(const CommentContent& value) { SetComment(value); return *this;}
-
-    /**
-     * <p>Represents the content of a comment to be returned to agents.</p>
-     */
-    inline RelatedItemContent& WithComment(CommentContent&& value) { SetComment(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Represents the content of a contact to be returned to agents.</p>
      */
-    inline const ContactContent& GetContact() const{ return m_contact; }
-
-    /**
-     * <p>Represents the content of a contact to be returned to agents.</p>
-     */
+    inline const ContactContent& GetContact() const { return m_contact; }
     inline bool ContactHasBeenSet() const { return m_contactHasBeenSet; }
+    template<typename ContactT = ContactContent>
+    void SetContact(ContactT&& value) { m_contactHasBeenSet = true; m_contact = std::forward<ContactT>(value); }
+    template<typename ContactT = ContactContent>
+    RelatedItemContent& WithContact(ContactT&& value) { SetContact(std::forward<ContactT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Represents the content of a contact to be returned to agents.</p>
+     * <p>Represents the content of a File to be returned to agents.</p>
      */
-    inline void SetContact(const ContactContent& value) { m_contactHasBeenSet = true; m_contact = value; }
+    inline const FileContent& GetFile() const { return m_file; }
+    inline bool FileHasBeenSet() const { return m_fileHasBeenSet; }
+    template<typename FileT = FileContent>
+    void SetFile(FileT&& value) { m_fileHasBeenSet = true; m_file = std::forward<FileT>(value); }
+    template<typename FileT = FileContent>
+    RelatedItemContent& WithFile(FileT&& value) { SetFile(std::forward<FileT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Represents the content of a contact to be returned to agents.</p>
+     * <p>Represents the content of an SLA to be returned to agents.</p>
      */
-    inline void SetContact(ContactContent&& value) { m_contactHasBeenSet = true; m_contact = std::move(value); }
-
-    /**
-     * <p>Represents the content of a contact to be returned to agents.</p>
-     */
-    inline RelatedItemContent& WithContact(const ContactContent& value) { SetContact(value); return *this;}
-
-    /**
-     * <p>Represents the content of a contact to be returned to agents.</p>
-     */
-    inline RelatedItemContent& WithContact(ContactContent&& value) { SetContact(std::move(value)); return *this;}
-
+    inline const SlaContent& GetSla() const { return m_sla; }
+    inline bool SlaHasBeenSet() const { return m_slaHasBeenSet; }
+    template<typename SlaT = SlaContent>
+    void SetSla(SlaT&& value) { m_slaHasBeenSet = true; m_sla = std::forward<SlaT>(value); }
+    template<typename SlaT = SlaContent>
+    RelatedItemContent& WithSla(SlaT&& value) { SetSla(std::forward<SlaT>(value)); return *this;}
+    ///@}
   private:
 
     CommentContent m_comment;
@@ -107,6 +95,12 @@ namespace Model
 
     ContactContent m_contact;
     bool m_contactHasBeenSet = false;
+
+    FileContent m_file;
+    bool m_fileHasBeenSet = false;
+
+    SlaContent m_sla;
+    bool m_slaHasBeenSet = false;
   };
 
 } // namespace Model

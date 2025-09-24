@@ -20,13 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-SubnetOutpost::SubnetOutpost() : 
-    m_subnetOutpostArnHasBeenSet(false)
-{
-}
-
-SubnetOutpost::SubnetOutpost(const XmlNode& xmlNode) : 
-    m_subnetOutpostArnHasBeenSet(false)
+SubnetOutpost::SubnetOutpost(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

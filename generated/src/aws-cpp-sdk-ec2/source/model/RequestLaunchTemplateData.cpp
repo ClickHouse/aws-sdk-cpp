@@ -20,83 +20,7 @@ namespace EC2
 namespace Model
 {
 
-RequestLaunchTemplateData::RequestLaunchTemplateData() : 
-    m_kernelIdHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_monitoringHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_ramDiskIdHasBeenSet(false),
-    m_disableApiTermination(false),
-    m_disableApiTerminationHasBeenSet(false),
-    m_instanceInitiatedShutdownBehavior(ShutdownBehavior::NOT_SET),
-    m_instanceInitiatedShutdownBehaviorHasBeenSet(false),
-    m_userDataHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_elasticGpuSpecificationsHasBeenSet(false),
-    m_elasticInferenceAcceleratorsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_instanceMarketOptionsHasBeenSet(false),
-    m_creditSpecificationHasBeenSet(false),
-    m_cpuOptionsHasBeenSet(false),
-    m_capacityReservationSpecificationHasBeenSet(false),
-    m_licenseSpecificationsHasBeenSet(false),
-    m_hibernationOptionsHasBeenSet(false),
-    m_metadataOptionsHasBeenSet(false),
-    m_enclaveOptionsHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false),
-    m_privateDnsNameOptionsHasBeenSet(false),
-    m_maintenanceOptionsHasBeenSet(false),
-    m_disableApiStop(false),
-    m_disableApiStopHasBeenSet(false)
-{
-}
-
-RequestLaunchTemplateData::RequestLaunchTemplateData(const XmlNode& xmlNode) : 
-    m_kernelIdHasBeenSet(false),
-    m_ebsOptimized(false),
-    m_ebsOptimizedHasBeenSet(false),
-    m_iamInstanceProfileHasBeenSet(false),
-    m_blockDeviceMappingsHasBeenSet(false),
-    m_networkInterfacesHasBeenSet(false),
-    m_imageIdHasBeenSet(false),
-    m_instanceType(InstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_keyNameHasBeenSet(false),
-    m_monitoringHasBeenSet(false),
-    m_placementHasBeenSet(false),
-    m_ramDiskIdHasBeenSet(false),
-    m_disableApiTermination(false),
-    m_disableApiTerminationHasBeenSet(false),
-    m_instanceInitiatedShutdownBehavior(ShutdownBehavior::NOT_SET),
-    m_instanceInitiatedShutdownBehaviorHasBeenSet(false),
-    m_userDataHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_elasticGpuSpecificationsHasBeenSet(false),
-    m_elasticInferenceAcceleratorsHasBeenSet(false),
-    m_securityGroupIdsHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_instanceMarketOptionsHasBeenSet(false),
-    m_creditSpecificationHasBeenSet(false),
-    m_cpuOptionsHasBeenSet(false),
-    m_capacityReservationSpecificationHasBeenSet(false),
-    m_licenseSpecificationsHasBeenSet(false),
-    m_hibernationOptionsHasBeenSet(false),
-    m_metadataOptionsHasBeenSet(false),
-    m_enclaveOptionsHasBeenSet(false),
-    m_instanceRequirementsHasBeenSet(false),
-    m_privateDnsNameOptionsHasBeenSet(false),
-    m_maintenanceOptionsHasBeenSet(false),
-    m_disableApiStop(false),
-    m_disableApiStopHasBeenSet(false)
+RequestLaunchTemplateData::RequestLaunchTemplateData(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -129,6 +53,7 @@ RequestLaunchTemplateData& RequestLaunchTemplateData::operator =(const XmlNode& 
     if(!blockDeviceMappingsNode.IsNull())
     {
       XmlNode blockDeviceMappingsMember = blockDeviceMappingsNode.FirstChild("BlockDeviceMapping");
+      m_blockDeviceMappingsHasBeenSet = !blockDeviceMappingsMember.IsNull();
       while(!blockDeviceMappingsMember.IsNull())
       {
         m_blockDeviceMappings.push_back(blockDeviceMappingsMember);
@@ -141,6 +66,7 @@ RequestLaunchTemplateData& RequestLaunchTemplateData::operator =(const XmlNode& 
     if(!networkInterfacesNode.IsNull())
     {
       XmlNode networkInterfacesMember = networkInterfacesNode.FirstChild("InstanceNetworkInterfaceSpecification");
+      m_networkInterfacesHasBeenSet = !networkInterfacesMember.IsNull();
       while(!networkInterfacesMember.IsNull())
       {
         m_networkInterfaces.push_back(networkInterfacesMember);
@@ -158,7 +84,7 @@ RequestLaunchTemplateData& RequestLaunchTemplateData::operator =(const XmlNode& 
     XmlNode instanceTypeNode = resultNode.FirstChild("InstanceType");
     if(!instanceTypeNode.IsNull())
     {
-      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()).c_str());
+      m_instanceType = InstanceTypeMapper::GetInstanceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceTypeNode.GetText()).c_str()));
       m_instanceTypeHasBeenSet = true;
     }
     XmlNode keyNameNode = resultNode.FirstChild("KeyName");
@@ -194,7 +120,7 @@ RequestLaunchTemplateData& RequestLaunchTemplateData::operator =(const XmlNode& 
     XmlNode instanceInitiatedShutdownBehaviorNode = resultNode.FirstChild("InstanceInitiatedShutdownBehavior");
     if(!instanceInitiatedShutdownBehaviorNode.IsNull())
     {
-      m_instanceInitiatedShutdownBehavior = ShutdownBehaviorMapper::GetShutdownBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceInitiatedShutdownBehaviorNode.GetText()).c_str()).c_str());
+      m_instanceInitiatedShutdownBehavior = ShutdownBehaviorMapper::GetShutdownBehaviorForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(instanceInitiatedShutdownBehaviorNode.GetText()).c_str()));
       m_instanceInitiatedShutdownBehaviorHasBeenSet = true;
     }
     XmlNode userDataNode = resultNode.FirstChild("UserData");
@@ -207,6 +133,7 @@ RequestLaunchTemplateData& RequestLaunchTemplateData::operator =(const XmlNode& 
     if(!tagSpecificationsNode.IsNull())
     {
       XmlNode tagSpecificationsMember = tagSpecificationsNode.FirstChild("LaunchTemplateTagSpecificationRequest");
+      m_tagSpecificationsHasBeenSet = !tagSpecificationsMember.IsNull();
       while(!tagSpecificationsMember.IsNull())
       {
         m_tagSpecifications.push_back(tagSpecificationsMember);
@@ -215,34 +142,11 @@ RequestLaunchTemplateData& RequestLaunchTemplateData::operator =(const XmlNode& 
 
       m_tagSpecificationsHasBeenSet = true;
     }
-    XmlNode elasticGpuSpecificationsNode = resultNode.FirstChild("ElasticGpuSpecification");
-    if(!elasticGpuSpecificationsNode.IsNull())
-    {
-      XmlNode elasticGpuSpecificationsMember = elasticGpuSpecificationsNode.FirstChild("ElasticGpuSpecification");
-      while(!elasticGpuSpecificationsMember.IsNull())
-      {
-        m_elasticGpuSpecifications.push_back(elasticGpuSpecificationsMember);
-        elasticGpuSpecificationsMember = elasticGpuSpecificationsMember.NextNode("ElasticGpuSpecification");
-      }
-
-      m_elasticGpuSpecificationsHasBeenSet = true;
-    }
-    XmlNode elasticInferenceAcceleratorsNode = resultNode.FirstChild("ElasticInferenceAccelerator");
-    if(!elasticInferenceAcceleratorsNode.IsNull())
-    {
-      XmlNode elasticInferenceAcceleratorsMember = elasticInferenceAcceleratorsNode.FirstChild("item");
-      while(!elasticInferenceAcceleratorsMember.IsNull())
-      {
-        m_elasticInferenceAccelerators.push_back(elasticInferenceAcceleratorsMember);
-        elasticInferenceAcceleratorsMember = elasticInferenceAcceleratorsMember.NextNode("item");
-      }
-
-      m_elasticInferenceAcceleratorsHasBeenSet = true;
-    }
     XmlNode securityGroupIdsNode = resultNode.FirstChild("SecurityGroupId");
     if(!securityGroupIdsNode.IsNull())
     {
       XmlNode securityGroupIdsMember = securityGroupIdsNode.FirstChild("SecurityGroupId");
+      m_securityGroupIdsHasBeenSet = !securityGroupIdsMember.IsNull();
       while(!securityGroupIdsMember.IsNull())
       {
         m_securityGroupIds.push_back(securityGroupIdsMember.GetText());
@@ -255,6 +159,7 @@ RequestLaunchTemplateData& RequestLaunchTemplateData::operator =(const XmlNode& 
     if(!securityGroupsNode.IsNull())
     {
       XmlNode securityGroupsMember = securityGroupsNode.FirstChild("SecurityGroup");
+      m_securityGroupsHasBeenSet = !securityGroupsMember.IsNull();
       while(!securityGroupsMember.IsNull())
       {
         m_securityGroups.push_back(securityGroupsMember.GetText());
@@ -291,6 +196,7 @@ RequestLaunchTemplateData& RequestLaunchTemplateData::operator =(const XmlNode& 
     if(!licenseSpecificationsNode.IsNull())
     {
       XmlNode licenseSpecificationsMember = licenseSpecificationsNode.FirstChild("item");
+      m_licenseSpecificationsHasBeenSet = !licenseSpecificationsMember.IsNull();
       while(!licenseSpecificationsMember.IsNull())
       {
         m_licenseSpecifications.push_back(licenseSpecificationsMember);
@@ -340,6 +246,18 @@ RequestLaunchTemplateData& RequestLaunchTemplateData::operator =(const XmlNode& 
     {
       m_disableApiStop = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(disableApiStopNode.GetText()).c_str()).c_str());
       m_disableApiStopHasBeenSet = true;
+    }
+    XmlNode operatorNode = resultNode.FirstChild("Operator");
+    if(!operatorNode.IsNull())
+    {
+      m_operator = operatorNode;
+      m_operatorHasBeenSet = true;
+    }
+    XmlNode networkPerformanceOptionsNode = resultNode.FirstChild("NetworkPerformanceOptions");
+    if(!networkPerformanceOptionsNode.IsNull())
+    {
+      m_networkPerformanceOptions = networkPerformanceOptionsNode;
+      m_networkPerformanceOptionsHasBeenSet = true;
     }
   }
 
@@ -394,7 +312,7 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
 
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << index << locationValue << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
 
   if(m_keyNameHasBeenSet)
@@ -428,7 +346,7 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
 
   if(m_instanceInitiatedShutdownBehaviorHasBeenSet)
   {
-      oStream << location << index << locationValue << ".InstanceInitiatedShutdownBehavior=" << ShutdownBehaviorMapper::GetNameForShutdownBehavior(m_instanceInitiatedShutdownBehavior) << "&";
+      oStream << location << index << locationValue << ".InstanceInitiatedShutdownBehavior=" << StringUtils::URLEncode(ShutdownBehaviorMapper::GetNameForShutdownBehavior(m_instanceInitiatedShutdownBehavior)) << "&";
   }
 
   if(m_userDataHasBeenSet)
@@ -444,28 +362,6 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
         Aws::StringStream tagSpecificationsSs;
         tagSpecificationsSs << location << index << locationValue << ".TagSpecification." << tagSpecificationsIdx++;
         item.OutputToStream(oStream, tagSpecificationsSs.str().c_str());
-      }
-  }
-
-  if(m_elasticGpuSpecificationsHasBeenSet)
-  {
-      unsigned elasticGpuSpecificationsIdx = 1;
-      for(auto& item : m_elasticGpuSpecifications)
-      {
-        Aws::StringStream elasticGpuSpecificationsSs;
-        elasticGpuSpecificationsSs << location << index << locationValue << ".ElasticGpuSpecification." << elasticGpuSpecificationsIdx++;
-        item.OutputToStream(oStream, elasticGpuSpecificationsSs.str().c_str());
-      }
-  }
-
-  if(m_elasticInferenceAcceleratorsHasBeenSet)
-  {
-      unsigned elasticInferenceAcceleratorsIdx = 1;
-      for(auto& item : m_elasticInferenceAccelerators)
-      {
-        Aws::StringStream elasticInferenceAcceleratorsSs;
-        elasticInferenceAcceleratorsSs << location << index << locationValue << ".ElasticInferenceAccelerator." << elasticInferenceAcceleratorsIdx++;
-        item.OutputToStream(oStream, elasticInferenceAcceleratorsSs.str().c_str());
       }
   }
 
@@ -573,6 +469,20 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
       oStream << location << index << locationValue << ".DisableApiStop=" << std::boolalpha << m_disableApiStop << "&";
   }
 
+  if(m_operatorHasBeenSet)
+  {
+      Aws::StringStream operatorLocationAndMemberSs;
+      operatorLocationAndMemberSs << location << index << locationValue << ".Operator";
+      m_operator.OutputToStream(oStream, operatorLocationAndMemberSs.str().c_str());
+  }
+
+  if(m_networkPerformanceOptionsHasBeenSet)
+  {
+      Aws::StringStream networkPerformanceOptionsLocationAndMemberSs;
+      networkPerformanceOptionsLocationAndMemberSs << location << index << locationValue << ".NetworkPerformanceOptions";
+      m_networkPerformanceOptions.OutputToStream(oStream, networkPerformanceOptionsLocationAndMemberSs.str().c_str());
+  }
+
 }
 
 void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -597,7 +507,7 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_blockDeviceMappings)
       {
         Aws::StringStream blockDeviceMappingsSs;
-        blockDeviceMappingsSs << location <<  ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
+        blockDeviceMappingsSs << location << ".BlockDeviceMapping." << blockDeviceMappingsIdx++;
         item.OutputToStream(oStream, blockDeviceMappingsSs.str().c_str());
       }
   }
@@ -607,7 +517,7 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_networkInterfaces)
       {
         Aws::StringStream networkInterfacesSs;
-        networkInterfacesSs << location <<  ".NetworkInterface." << networkInterfacesIdx++;
+        networkInterfacesSs << location << ".NetworkInterface." << networkInterfacesIdx++;
         item.OutputToStream(oStream, networkInterfacesSs.str().c_str());
       }
   }
@@ -617,7 +527,7 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
   }
   if(m_instanceTypeHasBeenSet)
   {
-      oStream << location << ".InstanceType=" << InstanceTypeMapper::GetNameForInstanceType(m_instanceType) << "&";
+      oStream << location << ".InstanceType=" << StringUtils::URLEncode(InstanceTypeMapper::GetNameForInstanceType(m_instanceType)) << "&";
   }
   if(m_keyNameHasBeenSet)
   {
@@ -645,7 +555,7 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
   }
   if(m_instanceInitiatedShutdownBehaviorHasBeenSet)
   {
-      oStream << location << ".InstanceInitiatedShutdownBehavior=" << ShutdownBehaviorMapper::GetNameForShutdownBehavior(m_instanceInitiatedShutdownBehavior) << "&";
+      oStream << location << ".InstanceInitiatedShutdownBehavior=" << StringUtils::URLEncode(ShutdownBehaviorMapper::GetNameForShutdownBehavior(m_instanceInitiatedShutdownBehavior)) << "&";
   }
   if(m_userDataHasBeenSet)
   {
@@ -657,28 +567,8 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_tagSpecifications)
       {
         Aws::StringStream tagSpecificationsSs;
-        tagSpecificationsSs << location <<  ".TagSpecification." << tagSpecificationsIdx++;
+        tagSpecificationsSs << location << ".TagSpecification." << tagSpecificationsIdx++;
         item.OutputToStream(oStream, tagSpecificationsSs.str().c_str());
-      }
-  }
-  if(m_elasticGpuSpecificationsHasBeenSet)
-  {
-      unsigned elasticGpuSpecificationsIdx = 1;
-      for(auto& item : m_elasticGpuSpecifications)
-      {
-        Aws::StringStream elasticGpuSpecificationsSs;
-        elasticGpuSpecificationsSs << location <<  ".ElasticGpuSpecification." << elasticGpuSpecificationsIdx++;
-        item.OutputToStream(oStream, elasticGpuSpecificationsSs.str().c_str());
-      }
-  }
-  if(m_elasticInferenceAcceleratorsHasBeenSet)
-  {
-      unsigned elasticInferenceAcceleratorsIdx = 1;
-      for(auto& item : m_elasticInferenceAccelerators)
-      {
-        Aws::StringStream elasticInferenceAcceleratorsSs;
-        elasticInferenceAcceleratorsSs << location <<  ".ElasticInferenceAccelerator." << elasticInferenceAcceleratorsIdx++;
-        item.OutputToStream(oStream, elasticInferenceAcceleratorsSs.str().c_str());
       }
   }
   if(m_securityGroupIdsHasBeenSet)
@@ -727,7 +617,7 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
       for(auto& item : m_licenseSpecifications)
       {
         Aws::StringStream licenseSpecificationsSs;
-        licenseSpecificationsSs << location <<  ".LicenseSpecification." << licenseSpecificationsIdx++;
+        licenseSpecificationsSs << location << ".LicenseSpecification." << licenseSpecificationsIdx++;
         item.OutputToStream(oStream, licenseSpecificationsSs.str().c_str());
       }
   }
@@ -770,6 +660,18 @@ void RequestLaunchTemplateData::OutputToStream(Aws::OStream& oStream, const char
   if(m_disableApiStopHasBeenSet)
   {
       oStream << location << ".DisableApiStop=" << std::boolalpha << m_disableApiStop << "&";
+  }
+  if(m_operatorHasBeenSet)
+  {
+      Aws::String operatorLocationAndMember(location);
+      operatorLocationAndMember += ".Operator";
+      m_operator.OutputToStream(oStream, operatorLocationAndMember.c_str());
+  }
+  if(m_networkPerformanceOptionsHasBeenSet)
+  {
+      Aws::String networkPerformanceOptionsLocationAndMember(location);
+      networkPerformanceOptionsLocationAndMember += ".NetworkPerformanceOptions";
+      m_networkPerformanceOptions.OutputToStream(oStream, networkPerformanceOptionsLocationAndMember.c_str());
   }
 }
 

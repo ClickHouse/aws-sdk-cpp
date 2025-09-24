@@ -26,7 +26,7 @@ namespace Model
   class ListSegmentReferencesRequest : public CloudWatchEvidentlyRequest
   {
   public:
-    AWS_CLOUDWATCHEVIDENTLY_API ListSegmentReferencesRequest();
+    AWS_CLOUDWATCHEVIDENTLY_API ListSegmentReferencesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,160 +39,55 @@ namespace Model
     AWS_CLOUDWATCHEVIDENTLY_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The maximum number of results to include in the response. If you omit this,
      * the default of 50 is used.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to include in the response. If you omit this,
-     * the default of 50 is used.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to include in the response. If you omit this,
-     * the default of 50 is used.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to include in the response. If you omit this,
-     * the default of 50 is used.</p>
-     */
     inline ListSegmentReferencesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The token to use when requesting the next set of results. You received this
      * token from a previous <code>ListSegmentReferences</code> operation.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token to use when requesting the next set of results. You received this
-     * token from a previous <code>ListSegmentReferences</code> operation.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListSegmentReferencesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token to use when requesting the next set of results. You received this
-     * token from a previous <code>ListSegmentReferences</code> operation.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token to use when requesting the next set of results. You received this
-     * token from a previous <code>ListSegmentReferences</code> operation.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to use when requesting the next set of results. You received this
-     * token from a previous <code>ListSegmentReferences</code> operation.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to use when requesting the next set of results. You received this
-     * token from a previous <code>ListSegmentReferences</code> operation.</p>
-     */
-    inline ListSegmentReferencesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to use when requesting the next set of results. You received this
-     * token from a previous <code>ListSegmentReferences</code> operation.</p>
-     */
-    inline ListSegmentReferencesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to use when requesting the next set of results. You received this
-     * token from a previous <code>ListSegmentReferences</code> operation.</p>
-     */
-    inline ListSegmentReferencesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the segment that you want to view information for.</p>
      */
-    inline const Aws::String& GetSegment() const{ return m_segment; }
-
-    /**
-     * <p>The ARN of the segment that you want to view information for.</p>
-     */
+    inline const Aws::String& GetSegment() const { return m_segment; }
     inline bool SegmentHasBeenSet() const { return m_segmentHasBeenSet; }
+    template<typename SegmentT = Aws::String>
+    void SetSegment(SegmentT&& value) { m_segmentHasBeenSet = true; m_segment = std::forward<SegmentT>(value); }
+    template<typename SegmentT = Aws::String>
+    ListSegmentReferencesRequest& WithSegment(SegmentT&& value) { SetSegment(std::forward<SegmentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the segment that you want to view information for.</p>
-     */
-    inline void SetSegment(const Aws::String& value) { m_segmentHasBeenSet = true; m_segment = value; }
-
-    /**
-     * <p>The ARN of the segment that you want to view information for.</p>
-     */
-    inline void SetSegment(Aws::String&& value) { m_segmentHasBeenSet = true; m_segment = std::move(value); }
-
-    /**
-     * <p>The ARN of the segment that you want to view information for.</p>
-     */
-    inline void SetSegment(const char* value) { m_segmentHasBeenSet = true; m_segment.assign(value); }
-
-    /**
-     * <p>The ARN of the segment that you want to view information for.</p>
-     */
-    inline ListSegmentReferencesRequest& WithSegment(const Aws::String& value) { SetSegment(value); return *this;}
-
-    /**
-     * <p>The ARN of the segment that you want to view information for.</p>
-     */
-    inline ListSegmentReferencesRequest& WithSegment(Aws::String&& value) { SetSegment(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the segment that you want to view information for.</p>
-     */
-    inline ListSegmentReferencesRequest& WithSegment(const char* value) { SetSegment(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether to return information about launches or experiments that
      * use this segment.</p>
      */
-    inline const SegmentReferenceResourceType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Specifies whether to return information about launches or experiments that
-     * use this segment.</p>
-     */
+    inline SegmentReferenceResourceType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to return information about launches or experiments that
-     * use this segment.</p>
-     */
-    inline void SetType(const SegmentReferenceResourceType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Specifies whether to return information about launches or experiments that
-     * use this segment.</p>
-     */
-    inline void SetType(SegmentReferenceResourceType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Specifies whether to return information about launches or experiments that
-     * use this segment.</p>
-     */
-    inline ListSegmentReferencesRequest& WithType(const SegmentReferenceResourceType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Specifies whether to return information about launches or experiments that
-     * use this segment.</p>
-     */
-    inline ListSegmentReferencesRequest& WithType(SegmentReferenceResourceType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(SegmentReferenceResourceType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline ListSegmentReferencesRequest& WithType(SegmentReferenceResourceType value) { SetType(value); return *this;}
+    ///@}
   private:
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;
@@ -201,7 +96,7 @@ namespace Model
     Aws::String m_segment;
     bool m_segmentHasBeenSet = false;
 
-    SegmentReferenceResourceType m_type;
+    SegmentReferenceResourceType m_type{SegmentReferenceResourceType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

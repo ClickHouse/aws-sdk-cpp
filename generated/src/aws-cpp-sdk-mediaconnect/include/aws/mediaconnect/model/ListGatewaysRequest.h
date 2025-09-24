@@ -25,7 +25,7 @@ namespace Model
   class ListGatewaysRequest : public MediaConnectRequest
   {
   public:
-    AWS_MEDIACONNECT_API ListGatewaysRequest();
+    AWS_MEDIACONNECT_API ListGatewaysRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,126 +38,43 @@ namespace Model
     AWS_MEDIACONNECT_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
-     * The maximum number of results to return per API request. For example, you submit
-     * a ListGateways request with MaxResults set at 5. Although 20 items match your
-     * request, the service returns no more than the first 5 items. (The service also
-     * returns a NextToken value that you can use to fetch the next batch of results.)
-     * The service might return fewer results than the MaxResults value. If MaxResults
-     * is not included in the request, the service defaults to pagination with a
-     * maximum of 10 results per page.
+     * <p> The maximum number of results to return per API request. </p> <p>For
+     * example, you submit a <code>ListGateways</code> request with
+     * <code>MaxResults</code> set at 5. Although 20 items match your request, the
+     * service returns no more than the first 5 items. (The service also returns a
+     * <code>NextToken</code> value that you can use to fetch the next batch of
+     * results.) </p> <p>The service might return fewer results than the
+     * <code>MaxResults</code> value. If <code>MaxResults</code> is not included in the
+     * request, the service defaults to pagination with a maximum of 10 results per
+     * page.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * The maximum number of results to return per API request. For example, you submit
-     * a ListGateways request with MaxResults set at 5. Although 20 items match your
-     * request, the service returns no more than the first 5 items. (The service also
-     * returns a NextToken value that you can use to fetch the next batch of results.)
-     * The service might return fewer results than the MaxResults value. If MaxResults
-     * is not included in the request, the service defaults to pagination with a
-     * maximum of 10 results per page.
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * The maximum number of results to return per API request. For example, you submit
-     * a ListGateways request with MaxResults set at 5. Although 20 items match your
-     * request, the service returns no more than the first 5 items. (The service also
-     * returns a NextToken value that you can use to fetch the next batch of results.)
-     * The service might return fewer results than the MaxResults value. If MaxResults
-     * is not included in the request, the service defaults to pagination with a
-     * maximum of 10 results per page.
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * The maximum number of results to return per API request. For example, you submit
-     * a ListGateways request with MaxResults set at 5. Although 20 items match your
-     * request, the service returns no more than the first 5 items. (The service also
-     * returns a NextToken value that you can use to fetch the next batch of results.)
-     * The service might return fewer results than the MaxResults value. If MaxResults
-     * is not included in the request, the service defaults to pagination with a
-     * maximum of 10 results per page.
-     */
     inline ListGatewaysRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListGateways request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListGateways request a second time and
-     * specify the NextToken value.
+     * <p> The token that identifies the batch of results that you want to see. </p>
+     * <p>For example, you submit a <code>ListGateways</code> request with
+     * <code>MaxResults</code> set at 5. The service returns the first batch of results
+     * (up to 5) and a <code>NextToken</code> value. To see the next batch of results,
+     * you can submit the <code>ListGateways</code> request a second time and specify
+     * the <code>NextToken</code> value.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListGateways request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListGateways request a second time and
-     * specify the NextToken value.
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListGateways request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListGateways request a second time and
-     * specify the NextToken value.
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListGateways request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListGateways request a second time and
-     * specify the NextToken value.
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListGateways request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListGateways request a second time and
-     * specify the NextToken value.
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListGateways request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListGateways request a second time and
-     * specify the NextToken value.
-     */
-    inline ListGatewaysRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListGateways request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListGateways request a second time and
-     * specify the NextToken value.
-     */
-    inline ListGatewaysRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * The token that identifies which batch of results that you want to see. For
-     * example, you submit a ListGateways request with MaxResults set at 5. The service
-     * returns the first batch of results (up to 5) and a NextToken value. To see the
-     * next batch of results, you can submit the ListGateways request a second time and
-     * specify the NextToken value.
-     */
-    inline ListGatewaysRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListGatewaysRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

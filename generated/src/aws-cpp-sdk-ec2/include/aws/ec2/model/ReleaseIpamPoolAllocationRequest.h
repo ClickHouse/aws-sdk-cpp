@@ -21,7 +21,7 @@ namespace Model
   class ReleaseIpamPoolAllocationRequest : public EC2Request
   {
   public:
-    AWS_EC2_API ReleaseIpamPoolAllocationRequest();
+    AWS_EC2_API ReleaseIpamPoolAllocationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,172 +36,58 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>A check for whether you have the required permissions for the action without
      * actually making the request and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>A check for whether you have the required permissions for the action without
-     * actually making the request and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline ReleaseIpamPoolAllocationRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The ID of the IPAM pool which contains the allocation you want to
      * release.</p>
      */
-    inline const Aws::String& GetIpamPoolId() const{ return m_ipamPoolId; }
-
-    /**
-     * <p>The ID of the IPAM pool which contains the allocation you want to
-     * release.</p>
-     */
+    inline const Aws::String& GetIpamPoolId() const { return m_ipamPoolId; }
     inline bool IpamPoolIdHasBeenSet() const { return m_ipamPoolIdHasBeenSet; }
+    template<typename IpamPoolIdT = Aws::String>
+    void SetIpamPoolId(IpamPoolIdT&& value) { m_ipamPoolIdHasBeenSet = true; m_ipamPoolId = std::forward<IpamPoolIdT>(value); }
+    template<typename IpamPoolIdT = Aws::String>
+    ReleaseIpamPoolAllocationRequest& WithIpamPoolId(IpamPoolIdT&& value) { SetIpamPoolId(std::forward<IpamPoolIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the IPAM pool which contains the allocation you want to
-     * release.</p>
-     */
-    inline void SetIpamPoolId(const Aws::String& value) { m_ipamPoolIdHasBeenSet = true; m_ipamPoolId = value; }
-
-    /**
-     * <p>The ID of the IPAM pool which contains the allocation you want to
-     * release.</p>
-     */
-    inline void SetIpamPoolId(Aws::String&& value) { m_ipamPoolIdHasBeenSet = true; m_ipamPoolId = std::move(value); }
-
-    /**
-     * <p>The ID of the IPAM pool which contains the allocation you want to
-     * release.</p>
-     */
-    inline void SetIpamPoolId(const char* value) { m_ipamPoolIdHasBeenSet = true; m_ipamPoolId.assign(value); }
-
-    /**
-     * <p>The ID of the IPAM pool which contains the allocation you want to
-     * release.</p>
-     */
-    inline ReleaseIpamPoolAllocationRequest& WithIpamPoolId(const Aws::String& value) { SetIpamPoolId(value); return *this;}
-
-    /**
-     * <p>The ID of the IPAM pool which contains the allocation you want to
-     * release.</p>
-     */
-    inline ReleaseIpamPoolAllocationRequest& WithIpamPoolId(Aws::String&& value) { SetIpamPoolId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the IPAM pool which contains the allocation you want to
-     * release.</p>
-     */
-    inline ReleaseIpamPoolAllocationRequest& WithIpamPoolId(const char* value) { SetIpamPoolId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The CIDR of the allocation you want to release.</p>
      */
-    inline const Aws::String& GetCidr() const{ return m_cidr; }
-
-    /**
-     * <p>The CIDR of the allocation you want to release.</p>
-     */
+    inline const Aws::String& GetCidr() const { return m_cidr; }
     inline bool CidrHasBeenSet() const { return m_cidrHasBeenSet; }
+    template<typename CidrT = Aws::String>
+    void SetCidr(CidrT&& value) { m_cidrHasBeenSet = true; m_cidr = std::forward<CidrT>(value); }
+    template<typename CidrT = Aws::String>
+    ReleaseIpamPoolAllocationRequest& WithCidr(CidrT&& value) { SetCidr(std::forward<CidrT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The CIDR of the allocation you want to release.</p>
-     */
-    inline void SetCidr(const Aws::String& value) { m_cidrHasBeenSet = true; m_cidr = value; }
-
-    /**
-     * <p>The CIDR of the allocation you want to release.</p>
-     */
-    inline void SetCidr(Aws::String&& value) { m_cidrHasBeenSet = true; m_cidr = std::move(value); }
-
-    /**
-     * <p>The CIDR of the allocation you want to release.</p>
-     */
-    inline void SetCidr(const char* value) { m_cidrHasBeenSet = true; m_cidr.assign(value); }
-
-    /**
-     * <p>The CIDR of the allocation you want to release.</p>
-     */
-    inline ReleaseIpamPoolAllocationRequest& WithCidr(const Aws::String& value) { SetCidr(value); return *this;}
-
-    /**
-     * <p>The CIDR of the allocation you want to release.</p>
-     */
-    inline ReleaseIpamPoolAllocationRequest& WithCidr(Aws::String&& value) { SetCidr(std::move(value)); return *this;}
-
-    /**
-     * <p>The CIDR of the allocation you want to release.</p>
-     */
-    inline ReleaseIpamPoolAllocationRequest& WithCidr(const char* value) { SetCidr(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the allocation.</p>
      */
-    inline const Aws::String& GetIpamPoolAllocationId() const{ return m_ipamPoolAllocationId; }
-
-    /**
-     * <p>The ID of the allocation.</p>
-     */
+    inline const Aws::String& GetIpamPoolAllocationId() const { return m_ipamPoolAllocationId; }
     inline bool IpamPoolAllocationIdHasBeenSet() const { return m_ipamPoolAllocationIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the allocation.</p>
-     */
-    inline void SetIpamPoolAllocationId(const Aws::String& value) { m_ipamPoolAllocationIdHasBeenSet = true; m_ipamPoolAllocationId = value; }
-
-    /**
-     * <p>The ID of the allocation.</p>
-     */
-    inline void SetIpamPoolAllocationId(Aws::String&& value) { m_ipamPoolAllocationIdHasBeenSet = true; m_ipamPoolAllocationId = std::move(value); }
-
-    /**
-     * <p>The ID of the allocation.</p>
-     */
-    inline void SetIpamPoolAllocationId(const char* value) { m_ipamPoolAllocationIdHasBeenSet = true; m_ipamPoolAllocationId.assign(value); }
-
-    /**
-     * <p>The ID of the allocation.</p>
-     */
-    inline ReleaseIpamPoolAllocationRequest& WithIpamPoolAllocationId(const Aws::String& value) { SetIpamPoolAllocationId(value); return *this;}
-
-    /**
-     * <p>The ID of the allocation.</p>
-     */
-    inline ReleaseIpamPoolAllocationRequest& WithIpamPoolAllocationId(Aws::String&& value) { SetIpamPoolAllocationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the allocation.</p>
-     */
-    inline ReleaseIpamPoolAllocationRequest& WithIpamPoolAllocationId(const char* value) { SetIpamPoolAllocationId(value); return *this;}
-
+    template<typename IpamPoolAllocationIdT = Aws::String>
+    void SetIpamPoolAllocationId(IpamPoolAllocationIdT&& value) { m_ipamPoolAllocationIdHasBeenSet = true; m_ipamPoolAllocationId = std::forward<IpamPoolAllocationIdT>(value); }
+    template<typename IpamPoolAllocationIdT = Aws::String>
+    ReleaseIpamPoolAllocationRequest& WithIpamPoolAllocationId(IpamPoolAllocationIdT&& value) { SetIpamPoolAllocationId(std::forward<IpamPoolAllocationIdT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
     Aws::String m_ipamPoolId;

@@ -18,21 +18,7 @@ namespace Synthetics
 namespace Model
 {
 
-CanaryRunStatus::CanaryRunStatus() : 
-    m_state(CanaryRunState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateReasonHasBeenSet(false),
-    m_stateReasonCode(CanaryRunStateReasonCode::NOT_SET),
-    m_stateReasonCodeHasBeenSet(false)
-{
-}
-
-CanaryRunStatus::CanaryRunStatus(JsonView jsonValue) : 
-    m_state(CanaryRunState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_stateReasonHasBeenSet(false),
-    m_stateReasonCode(CanaryRunStateReasonCode::NOT_SET),
-    m_stateReasonCodeHasBeenSet(false)
+CanaryRunStatus::CanaryRunStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,23 @@ CanaryRunStatus& CanaryRunStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("State"))
   {
     m_state = CanaryRunStateMapper::GetCanaryRunStateForName(jsonValue.GetString("State"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StateReason"))
   {
     m_stateReason = jsonValue.GetString("StateReason");
-
     m_stateReasonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StateReasonCode"))
   {
     m_stateReasonCode = CanaryRunStateReasonCodeMapper::GetCanaryRunStateReasonCodeForName(jsonValue.GetString("StateReasonCode"));
-
     m_stateReasonCodeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("TestResult"))
+  {
+    m_testResult = CanaryRunTestResultMapper::GetCanaryRunTestResultForName(jsonValue.GetString("TestResult"));
+    m_testResultHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -81,6 +66,11 @@ JsonValue CanaryRunStatus::Jsonize() const
   if(m_stateReasonCodeHasBeenSet)
   {
    payload.WithString("StateReasonCode", CanaryRunStateReasonCodeMapper::GetNameForCanaryRunStateReasonCode(m_stateReasonCode));
+  }
+
+  if(m_testResultHasBeenSet)
+  {
+   payload.WithString("TestResult", CanaryRunTestResultMapper::GetNameForCanaryRunTestResult(m_testResult));
   }
 
   return payload;

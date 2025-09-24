@@ -18,21 +18,7 @@ namespace ComputeOptimizer
 namespace Model
 {
 
-Summary::Summary() : 
-    m_name(Finding::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false),
-    m_reasonCodeSummariesHasBeenSet(false)
-{
-}
-
-Summary::Summary(JsonView jsonValue) : 
-    m_name(Finding::NOT_SET),
-    m_nameHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false),
-    m_reasonCodeSummariesHasBeenSet(false)
+Summary::Summary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ Summary& Summary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = FindingMapper::GetFindingForName(jsonValue.GetString("name"));
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetDouble("value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("reasonCodeSummaries"))
   {
     Aws::Utils::Array<JsonView> reasonCodeSummariesJsonList = jsonValue.GetArray("reasonCodeSummaries");
@@ -62,7 +44,6 @@ Summary& Summary::operator =(JsonView jsonValue)
     }
     m_reasonCodeSummariesHasBeenSet = true;
   }
-
   return *this;
 }
 

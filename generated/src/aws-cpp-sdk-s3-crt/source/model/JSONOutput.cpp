@@ -20,13 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-JSONOutput::JSONOutput() : 
-    m_recordDelimiterHasBeenSet(false)
-{
-}
-
-JSONOutput::JSONOutput(const XmlNode& xmlNode) : 
-    m_recordDelimiterHasBeenSet(false)
+JSONOutput::JSONOutput(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

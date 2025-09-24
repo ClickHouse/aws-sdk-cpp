@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-NetworkHeader::NetworkHeader() : 
-    m_protocolHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_sourceHasBeenSet(false)
-{
-}
-
-NetworkHeader::NetworkHeader(JsonView jsonValue) : 
-    m_protocolHasBeenSet(false),
-    m_destinationHasBeenSet(false),
-    m_sourceHasBeenSet(false)
+NetworkHeader::NetworkHeader(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ NetworkHeader& NetworkHeader::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Protocol"))
   {
     m_protocol = jsonValue.GetString("Protocol");
-
     m_protocolHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Destination"))
   {
     m_destination = jsonValue.GetObject("Destination");
-
     m_destinationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Source"))
   {
     m_source = jsonValue.GetObject("Source");
-
     m_sourceHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,21 +18,7 @@ namespace PI
 namespace Model
 {
 
-PerformanceInsightsMetric::PerformanceInsightsMetric() : 
-    m_metricHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false)
-{
-}
-
-PerformanceInsightsMetric::PerformanceInsightsMetric(JsonView jsonValue) : 
-    m_metricHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_value(0.0),
-    m_valueHasBeenSet(false)
+PerformanceInsightsMetric::PerformanceInsightsMetric(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ PerformanceInsightsMetric& PerformanceInsightsMetric::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("Metric"))
   {
     m_metric = jsonValue.GetString("Metric");
-
     m_metricHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisplayName"))
   {
     m_displayName = jsonValue.GetString("DisplayName");
-
     m_displayNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Dimensions"))
   {
     Aws::Map<Aws::String, JsonView> dimensionsJsonMap = jsonValue.GetObject("Dimensions").GetAllObjects();
@@ -62,14 +44,20 @@ PerformanceInsightsMetric& PerformanceInsightsMetric::operator =(JsonView jsonVa
     }
     m_dimensionsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Filter"))
+  {
+    Aws::Map<Aws::String, JsonView> filterJsonMap = jsonValue.GetObject("Filter").GetAllObjects();
+    for(auto& filterItem : filterJsonMap)
+    {
+      m_filter[filterItem.first] = filterItem.second.AsString();
+    }
+    m_filterHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetDouble("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -97,6 +85,17 @@ JsonValue PerformanceInsightsMetric::Jsonize() const
      dimensionsJsonMap.WithString(dimensionsItem.first, dimensionsItem.second);
    }
    payload.WithObject("Dimensions", std::move(dimensionsJsonMap));
+
+  }
+
+  if(m_filterHasBeenSet)
+  {
+   JsonValue filterJsonMap;
+   for(auto& filterItem : m_filter)
+   {
+     filterJsonMap.WithString(filterItem.first, filterItem.second);
+   }
+   payload.WithObject("Filter", std::move(filterJsonMap));
 
   }
 

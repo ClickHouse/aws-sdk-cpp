@@ -35,352 +35,114 @@ namespace Model
   class DynamicTransform
   {
   public:
-    AWS_GLUE_API DynamicTransform();
+    AWS_GLUE_API DynamicTransform() = default;
     AWS_GLUE_API DynamicTransform(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API DynamicTransform& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the name of the dynamic transform.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Specifies the name of the dynamic transform.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DynamicTransform& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the name of the dynamic transform.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Specifies the name of the dynamic transform.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the dynamic transform.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Specifies the name of the dynamic transform.</p>
-     */
-    inline DynamicTransform& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the dynamic transform.</p>
-     */
-    inline DynamicTransform& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the dynamic transform.</p>
-     */
-    inline DynamicTransform& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the name of the dynamic transform as it appears in the Glue Studio
      * visual editor.</p>
      */
-    inline const Aws::String& GetTransformName() const{ return m_transformName; }
-
-    /**
-     * <p>Specifies the name of the dynamic transform as it appears in the Glue Studio
-     * visual editor.</p>
-     */
+    inline const Aws::String& GetTransformName() const { return m_transformName; }
     inline bool TransformNameHasBeenSet() const { return m_transformNameHasBeenSet; }
+    template<typename TransformNameT = Aws::String>
+    void SetTransformName(TransformNameT&& value) { m_transformNameHasBeenSet = true; m_transformName = std::forward<TransformNameT>(value); }
+    template<typename TransformNameT = Aws::String>
+    DynamicTransform& WithTransformName(TransformNameT&& value) { SetTransformName(std::forward<TransformNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the name of the dynamic transform as it appears in the Glue Studio
-     * visual editor.</p>
-     */
-    inline void SetTransformName(const Aws::String& value) { m_transformNameHasBeenSet = true; m_transformName = value; }
-
-    /**
-     * <p>Specifies the name of the dynamic transform as it appears in the Glue Studio
-     * visual editor.</p>
-     */
-    inline void SetTransformName(Aws::String&& value) { m_transformNameHasBeenSet = true; m_transformName = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the dynamic transform as it appears in the Glue Studio
-     * visual editor.</p>
-     */
-    inline void SetTransformName(const char* value) { m_transformNameHasBeenSet = true; m_transformName.assign(value); }
-
-    /**
-     * <p>Specifies the name of the dynamic transform as it appears in the Glue Studio
-     * visual editor.</p>
-     */
-    inline DynamicTransform& WithTransformName(const Aws::String& value) { SetTransformName(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the dynamic transform as it appears in the Glue Studio
-     * visual editor.</p>
-     */
-    inline DynamicTransform& WithTransformName(Aws::String&& value) { SetTransformName(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the dynamic transform as it appears in the Glue Studio
-     * visual editor.</p>
-     */
-    inline DynamicTransform& WithTransformName(const char* value) { SetTransformName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the inputs for the dynamic transform that are required.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInputs() const{ return m_inputs; }
-
-    /**
-     * <p>Specifies the inputs for the dynamic transform that are required.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInputs() const { return m_inputs; }
     inline bool InputsHasBeenSet() const { return m_inputsHasBeenSet; }
+    template<typename InputsT = Aws::Vector<Aws::String>>
+    void SetInputs(InputsT&& value) { m_inputsHasBeenSet = true; m_inputs = std::forward<InputsT>(value); }
+    template<typename InputsT = Aws::Vector<Aws::String>>
+    DynamicTransform& WithInputs(InputsT&& value) { SetInputs(std::forward<InputsT>(value)); return *this;}
+    template<typename InputsT = Aws::String>
+    DynamicTransform& AddInputs(InputsT&& value) { m_inputsHasBeenSet = true; m_inputs.emplace_back(std::forward<InputsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies the inputs for the dynamic transform that are required.</p>
-     */
-    inline void SetInputs(const Aws::Vector<Aws::String>& value) { m_inputsHasBeenSet = true; m_inputs = value; }
-
-    /**
-     * <p>Specifies the inputs for the dynamic transform that are required.</p>
-     */
-    inline void SetInputs(Aws::Vector<Aws::String>&& value) { m_inputsHasBeenSet = true; m_inputs = std::move(value); }
-
-    /**
-     * <p>Specifies the inputs for the dynamic transform that are required.</p>
-     */
-    inline DynamicTransform& WithInputs(const Aws::Vector<Aws::String>& value) { SetInputs(value); return *this;}
-
-    /**
-     * <p>Specifies the inputs for the dynamic transform that are required.</p>
-     */
-    inline DynamicTransform& WithInputs(Aws::Vector<Aws::String>&& value) { SetInputs(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the inputs for the dynamic transform that are required.</p>
-     */
-    inline DynamicTransform& AddInputs(const Aws::String& value) { m_inputsHasBeenSet = true; m_inputs.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the inputs for the dynamic transform that are required.</p>
-     */
-    inline DynamicTransform& AddInputs(Aws::String&& value) { m_inputsHasBeenSet = true; m_inputs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Specifies the inputs for the dynamic transform that are required.</p>
-     */
-    inline DynamicTransform& AddInputs(const char* value) { m_inputsHasBeenSet = true; m_inputs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies the parameters of the dynamic transform.</p>
      */
-    inline const Aws::Vector<TransformConfigParameter>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>Specifies the parameters of the dynamic transform.</p>
-     */
+    inline const Aws::Vector<TransformConfigParameter>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
+    template<typename ParametersT = Aws::Vector<TransformConfigParameter>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Vector<TransformConfigParameter>>
+    DynamicTransform& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersT = TransformConfigParameter>
+    DynamicTransform& AddParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters.emplace_back(std::forward<ParametersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Specifies the parameters of the dynamic transform.</p>
-     */
-    inline void SetParameters(const Aws::Vector<TransformConfigParameter>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>Specifies the parameters of the dynamic transform.</p>
-     */
-    inline void SetParameters(Aws::Vector<TransformConfigParameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>Specifies the parameters of the dynamic transform.</p>
-     */
-    inline DynamicTransform& WithParameters(const Aws::Vector<TransformConfigParameter>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>Specifies the parameters of the dynamic transform.</p>
-     */
-    inline DynamicTransform& WithParameters(Aws::Vector<TransformConfigParameter>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the parameters of the dynamic transform.</p>
-     */
-    inline DynamicTransform& AddParameters(const TransformConfigParameter& value) { m_parametersHasBeenSet = true; m_parameters.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the parameters of the dynamic transform.</p>
-     */
-    inline DynamicTransform& AddParameters(TransformConfigParameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies the name of the function of the dynamic transform.</p>
      */
-    inline const Aws::String& GetFunctionName() const{ return m_functionName; }
-
-    /**
-     * <p>Specifies the name of the function of the dynamic transform.</p>
-     */
+    inline const Aws::String& GetFunctionName() const { return m_functionName; }
     inline bool FunctionNameHasBeenSet() const { return m_functionNameHasBeenSet; }
+    template<typename FunctionNameT = Aws::String>
+    void SetFunctionName(FunctionNameT&& value) { m_functionNameHasBeenSet = true; m_functionName = std::forward<FunctionNameT>(value); }
+    template<typename FunctionNameT = Aws::String>
+    DynamicTransform& WithFunctionName(FunctionNameT&& value) { SetFunctionName(std::forward<FunctionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the name of the function of the dynamic transform.</p>
-     */
-    inline void SetFunctionName(const Aws::String& value) { m_functionNameHasBeenSet = true; m_functionName = value; }
-
-    /**
-     * <p>Specifies the name of the function of the dynamic transform.</p>
-     */
-    inline void SetFunctionName(Aws::String&& value) { m_functionNameHasBeenSet = true; m_functionName = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the function of the dynamic transform.</p>
-     */
-    inline void SetFunctionName(const char* value) { m_functionNameHasBeenSet = true; m_functionName.assign(value); }
-
-    /**
-     * <p>Specifies the name of the function of the dynamic transform.</p>
-     */
-    inline DynamicTransform& WithFunctionName(const Aws::String& value) { SetFunctionName(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the function of the dynamic transform.</p>
-     */
-    inline DynamicTransform& WithFunctionName(Aws::String&& value) { SetFunctionName(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the function of the dynamic transform.</p>
-     */
-    inline DynamicTransform& WithFunctionName(const char* value) { SetFunctionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the path of the dynamic transform source and config files.</p>
      */
-    inline const Aws::String& GetPath() const{ return m_path; }
-
-    /**
-     * <p>Specifies the path of the dynamic transform source and config files.</p>
-     */
+    inline const Aws::String& GetPath() const { return m_path; }
     inline bool PathHasBeenSet() const { return m_pathHasBeenSet; }
+    template<typename PathT = Aws::String>
+    void SetPath(PathT&& value) { m_pathHasBeenSet = true; m_path = std::forward<PathT>(value); }
+    template<typename PathT = Aws::String>
+    DynamicTransform& WithPath(PathT&& value) { SetPath(std::forward<PathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the path of the dynamic transform source and config files.</p>
-     */
-    inline void SetPath(const Aws::String& value) { m_pathHasBeenSet = true; m_path = value; }
-
-    /**
-     * <p>Specifies the path of the dynamic transform source and config files.</p>
-     */
-    inline void SetPath(Aws::String&& value) { m_pathHasBeenSet = true; m_path = std::move(value); }
-
-    /**
-     * <p>Specifies the path of the dynamic transform source and config files.</p>
-     */
-    inline void SetPath(const char* value) { m_pathHasBeenSet = true; m_path.assign(value); }
-
-    /**
-     * <p>Specifies the path of the dynamic transform source and config files.</p>
-     */
-    inline DynamicTransform& WithPath(const Aws::String& value) { SetPath(value); return *this;}
-
-    /**
-     * <p>Specifies the path of the dynamic transform source and config files.</p>
-     */
-    inline DynamicTransform& WithPath(Aws::String&& value) { SetPath(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the path of the dynamic transform source and config files.</p>
-     */
-    inline DynamicTransform& WithPath(const char* value) { SetPath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>This field is not used and will be deprecated in future release.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>This field is not used and will be deprecated in future release.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    DynamicTransform& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>This field is not used and will be deprecated in future release.</p>
-     */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>This field is not used and will be deprecated in future release.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>This field is not used and will be deprecated in future release.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>This field is not used and will be deprecated in future release.</p>
-     */
-    inline DynamicTransform& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>This field is not used and will be deprecated in future release.</p>
-     */
-    inline DynamicTransform& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>This field is not used and will be deprecated in future release.</p>
-     */
-    inline DynamicTransform& WithVersion(const char* value) { SetVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the data schema for the dynamic transform.</p>
      */
-    inline const Aws::Vector<GlueSchema>& GetOutputSchemas() const{ return m_outputSchemas; }
-
-    /**
-     * <p>Specifies the data schema for the dynamic transform.</p>
-     */
+    inline const Aws::Vector<GlueSchema>& GetOutputSchemas() const { return m_outputSchemas; }
     inline bool OutputSchemasHasBeenSet() const { return m_outputSchemasHasBeenSet; }
-
-    /**
-     * <p>Specifies the data schema for the dynamic transform.</p>
-     */
-    inline void SetOutputSchemas(const Aws::Vector<GlueSchema>& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas = value; }
-
-    /**
-     * <p>Specifies the data schema for the dynamic transform.</p>
-     */
-    inline void SetOutputSchemas(Aws::Vector<GlueSchema>&& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas = std::move(value); }
-
-    /**
-     * <p>Specifies the data schema for the dynamic transform.</p>
-     */
-    inline DynamicTransform& WithOutputSchemas(const Aws::Vector<GlueSchema>& value) { SetOutputSchemas(value); return *this;}
-
-    /**
-     * <p>Specifies the data schema for the dynamic transform.</p>
-     */
-    inline DynamicTransform& WithOutputSchemas(Aws::Vector<GlueSchema>&& value) { SetOutputSchemas(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the data schema for the dynamic transform.</p>
-     */
-    inline DynamicTransform& AddOutputSchemas(const GlueSchema& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas.push_back(value); return *this; }
-
-    /**
-     * <p>Specifies the data schema for the dynamic transform.</p>
-     */
-    inline DynamicTransform& AddOutputSchemas(GlueSchema&& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas.push_back(std::move(value)); return *this; }
-
+    template<typename OutputSchemasT = Aws::Vector<GlueSchema>>
+    void SetOutputSchemas(OutputSchemasT&& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas = std::forward<OutputSchemasT>(value); }
+    template<typename OutputSchemasT = Aws::Vector<GlueSchema>>
+    DynamicTransform& WithOutputSchemas(OutputSchemasT&& value) { SetOutputSchemas(std::forward<OutputSchemasT>(value)); return *this;}
+    template<typename OutputSchemasT = GlueSchema>
+    DynamicTransform& AddOutputSchemas(OutputSchemasT&& value) { m_outputSchemasHasBeenSet = true; m_outputSchemas.emplace_back(std::forward<OutputSchemasT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

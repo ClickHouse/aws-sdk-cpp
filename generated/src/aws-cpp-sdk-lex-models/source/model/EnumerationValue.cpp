@@ -18,15 +18,7 @@ namespace LexModelBuildingService
 namespace Model
 {
 
-EnumerationValue::EnumerationValue() : 
-    m_valueHasBeenSet(false),
-    m_synonymsHasBeenSet(false)
-{
-}
-
-EnumerationValue::EnumerationValue(JsonView jsonValue) : 
-    m_valueHasBeenSet(false),
-    m_synonymsHasBeenSet(false)
+EnumerationValue::EnumerationValue(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ EnumerationValue& EnumerationValue::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetString("value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("synonyms"))
   {
     Aws::Utils::Array<JsonView> synonymsJsonList = jsonValue.GetArray("synonyms");
@@ -49,7 +39,6 @@ EnumerationValue& EnumerationValue::operator =(JsonView jsonValue)
     }
     m_synonymsHasBeenSet = true;
   }
-
   return *this;
 }
 

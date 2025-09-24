@@ -18,15 +18,7 @@ namespace QLDBSession
 namespace Model
 {
 
-TimingInformation::TimingInformation() : 
-    m_processingTimeMilliseconds(0),
-    m_processingTimeMillisecondsHasBeenSet(false)
-{
-}
-
-TimingInformation::TimingInformation(JsonView jsonValue) : 
-    m_processingTimeMilliseconds(0),
-    m_processingTimeMillisecondsHasBeenSet(false)
+TimingInformation::TimingInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ TimingInformation& TimingInformation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ProcessingTimeMilliseconds"))
   {
     m_processingTimeMilliseconds = jsonValue.GetInt64("ProcessingTimeMilliseconds");
-
     m_processingTimeMillisecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

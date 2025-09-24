@@ -20,33 +20,7 @@ namespace RDS
 namespace Model
 {
 
-BlueGreenDeployment::BlueGreenDeployment() : 
-    m_blueGreenDeploymentIdentifierHasBeenSet(false),
-    m_blueGreenDeploymentNameHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_targetHasBeenSet(false),
-    m_switchoverDetailsHasBeenSet(false),
-    m_tasksHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_statusDetailsHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_deleteTimeHasBeenSet(false),
-    m_tagListHasBeenSet(false)
-{
-}
-
-BlueGreenDeployment::BlueGreenDeployment(const XmlNode& xmlNode) : 
-    m_blueGreenDeploymentIdentifierHasBeenSet(false),
-    m_blueGreenDeploymentNameHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_targetHasBeenSet(false),
-    m_switchoverDetailsHasBeenSet(false),
-    m_tasksHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_statusDetailsHasBeenSet(false),
-    m_createTimeHasBeenSet(false),
-    m_deleteTimeHasBeenSet(false),
-    m_tagListHasBeenSet(false)
+BlueGreenDeployment::BlueGreenDeployment(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -85,6 +59,7 @@ BlueGreenDeployment& BlueGreenDeployment::operator =(const XmlNode& xmlNode)
     if(!switchoverDetailsNode.IsNull())
     {
       XmlNode switchoverDetailsMember = switchoverDetailsNode.FirstChild("member");
+      m_switchoverDetailsHasBeenSet = !switchoverDetailsMember.IsNull();
       while(!switchoverDetailsMember.IsNull())
       {
         m_switchoverDetails.push_back(switchoverDetailsMember);
@@ -97,6 +72,7 @@ BlueGreenDeployment& BlueGreenDeployment::operator =(const XmlNode& xmlNode)
     if(!tasksNode.IsNull())
     {
       XmlNode tasksMember = tasksNode.FirstChild("member");
+      m_tasksHasBeenSet = !tasksMember.IsNull();
       while(!tasksMember.IsNull())
       {
         m_tasks.push_back(tasksMember);
@@ -133,6 +109,7 @@ BlueGreenDeployment& BlueGreenDeployment::operator =(const XmlNode& xmlNode)
     if(!tagListNode.IsNull())
     {
       XmlNode tagListMember = tagListNode.FirstChild("Tag");
+      m_tagListHasBeenSet = !tagListMember.IsNull();
       while(!tagListMember.IsNull())
       {
         m_tagList.push_back(tagListMember);
@@ -216,7 +193,7 @@ void BlueGreenDeployment::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tagList)
       {
         Aws::StringStream tagListSs;
-        tagListSs << location << index << locationValue << ".Tag." << tagListIdx++;
+        tagListSs << location << index << locationValue << ".TagList.Tag." << tagListIdx++;
         item.OutputToStream(oStream, tagListSs.str().c_str());
       }
   }
@@ -247,7 +224,7 @@ void BlueGreenDeployment::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_switchoverDetails)
       {
         Aws::StringStream switchoverDetailsSs;
-        switchoverDetailsSs << location <<  ".SwitchoverDetails.member." << switchoverDetailsIdx++;
+        switchoverDetailsSs << location << ".SwitchoverDetails.member." << switchoverDetailsIdx++;
         item.OutputToStream(oStream, switchoverDetailsSs.str().c_str());
       }
   }
@@ -257,7 +234,7 @@ void BlueGreenDeployment::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tasks)
       {
         Aws::StringStream tasksSs;
-        tasksSs << location <<  ".Tasks.member." << tasksIdx++;
+        tasksSs << location << ".Tasks.member." << tasksIdx++;
         item.OutputToStream(oStream, tasksSs.str().c_str());
       }
   }
@@ -283,7 +260,7 @@ void BlueGreenDeployment::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tagList)
       {
         Aws::StringStream tagListSs;
-        tagListSs << location <<  ".Tag." << tagListIdx++;
+        tagListSs << location << ".TagList.Tag." << tagListIdx++;
         item.OutputToStream(oStream, tagListSs.str().c_str());
       }
   }

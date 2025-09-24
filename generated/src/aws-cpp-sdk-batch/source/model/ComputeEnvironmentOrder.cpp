@@ -18,17 +18,7 @@ namespace Batch
 namespace Model
 {
 
-ComputeEnvironmentOrder::ComputeEnvironmentOrder() : 
-    m_order(0),
-    m_orderHasBeenSet(false),
-    m_computeEnvironmentHasBeenSet(false)
-{
-}
-
-ComputeEnvironmentOrder::ComputeEnvironmentOrder(JsonView jsonValue) : 
-    m_order(0),
-    m_orderHasBeenSet(false),
-    m_computeEnvironmentHasBeenSet(false)
+ComputeEnvironmentOrder::ComputeEnvironmentOrder(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ComputeEnvironmentOrder& ComputeEnvironmentOrder::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("order"))
   {
     m_order = jsonValue.GetInteger("order");
-
     m_orderHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("computeEnvironment"))
   {
     m_computeEnvironment = jsonValue.GetString("computeEnvironment");
-
     m_computeEnvironmentHasBeenSet = true;
   }
-
   return *this;
 }
 

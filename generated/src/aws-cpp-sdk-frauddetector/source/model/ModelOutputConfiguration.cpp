@@ -18,19 +18,7 @@ namespace FraudDetector
 namespace Model
 {
 
-ModelOutputConfiguration::ModelOutputConfiguration() : 
-    m_format(ModelOutputDataFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_jsonKeyToVariableMapHasBeenSet(false),
-    m_csvIndexToVariableMapHasBeenSet(false)
-{
-}
-
-ModelOutputConfiguration::ModelOutputConfiguration(JsonView jsonValue) : 
-    m_format(ModelOutputDataFormat::NOT_SET),
-    m_formatHasBeenSet(false),
-    m_jsonKeyToVariableMapHasBeenSet(false),
-    m_csvIndexToVariableMapHasBeenSet(false)
+ModelOutputConfiguration::ModelOutputConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ ModelOutputConfiguration& ModelOutputConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("format"))
   {
     m_format = ModelOutputDataFormatMapper::GetModelOutputDataFormatForName(jsonValue.GetString("format"));
-
     m_formatHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("jsonKeyToVariableMap"))
   {
     Aws::Map<Aws::String, JsonView> jsonKeyToVariableMapJsonMap = jsonValue.GetObject("jsonKeyToVariableMap").GetAllObjects();
@@ -53,7 +39,6 @@ ModelOutputConfiguration& ModelOutputConfiguration::operator =(JsonView jsonValu
     }
     m_jsonKeyToVariableMapHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("csvIndexToVariableMap"))
   {
     Aws::Map<Aws::String, JsonView> csvIndexToVariableMapJsonMap = jsonValue.GetObject("csvIndexToVariableMap").GetAllObjects();
@@ -63,7 +48,6 @@ ModelOutputConfiguration& ModelOutputConfiguration::operator =(JsonView jsonValu
     }
     m_csvIndexToVariableMapHasBeenSet = true;
   }
-
   return *this;
 }
 

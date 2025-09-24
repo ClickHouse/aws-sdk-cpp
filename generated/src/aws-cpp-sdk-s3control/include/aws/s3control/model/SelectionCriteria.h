@@ -30,112 +30,55 @@ namespace Model
   class SelectionCriteria
   {
   public:
-    AWS_S3CONTROL_API SelectionCriteria();
+    AWS_S3CONTROL_API SelectionCriteria() = default;
     AWS_S3CONTROL_API SelectionCriteria(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API SelectionCriteria& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>A container for the delimiter of the selection criteria being used.</p>
      */
-    inline const Aws::String& GetDelimiter() const{ return m_delimiter; }
-
-    /**
-     * <p>A container for the delimiter of the selection criteria being used.</p>
-     */
+    inline const Aws::String& GetDelimiter() const { return m_delimiter; }
     inline bool DelimiterHasBeenSet() const { return m_delimiterHasBeenSet; }
+    template<typename DelimiterT = Aws::String>
+    void SetDelimiter(DelimiterT&& value) { m_delimiterHasBeenSet = true; m_delimiter = std::forward<DelimiterT>(value); }
+    template<typename DelimiterT = Aws::String>
+    SelectionCriteria& WithDelimiter(DelimiterT&& value) { SetDelimiter(std::forward<DelimiterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A container for the delimiter of the selection criteria being used.</p>
-     */
-    inline void SetDelimiter(const Aws::String& value) { m_delimiterHasBeenSet = true; m_delimiter = value; }
-
-    /**
-     * <p>A container for the delimiter of the selection criteria being used.</p>
-     */
-    inline void SetDelimiter(Aws::String&& value) { m_delimiterHasBeenSet = true; m_delimiter = std::move(value); }
-
-    /**
-     * <p>A container for the delimiter of the selection criteria being used.</p>
-     */
-    inline void SetDelimiter(const char* value) { m_delimiterHasBeenSet = true; m_delimiter.assign(value); }
-
-    /**
-     * <p>A container for the delimiter of the selection criteria being used.</p>
-     */
-    inline SelectionCriteria& WithDelimiter(const Aws::String& value) { SetDelimiter(value); return *this;}
-
-    /**
-     * <p>A container for the delimiter of the selection criteria being used.</p>
-     */
-    inline SelectionCriteria& WithDelimiter(Aws::String&& value) { SetDelimiter(std::move(value)); return *this;}
-
-    /**
-     * <p>A container for the delimiter of the selection criteria being used.</p>
-     */
-    inline SelectionCriteria& WithDelimiter(const char* value) { SetDelimiter(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The max depth of the selection criteria</p>
      */
-    inline int GetMaxDepth() const{ return m_maxDepth; }
-
-    /**
-     * <p>The max depth of the selection criteria</p>
-     */
+    inline int GetMaxDepth() const { return m_maxDepth; }
     inline bool MaxDepthHasBeenSet() const { return m_maxDepthHasBeenSet; }
-
-    /**
-     * <p>The max depth of the selection criteria</p>
-     */
     inline void SetMaxDepth(int value) { m_maxDepthHasBeenSet = true; m_maxDepth = value; }
-
-    /**
-     * <p>The max depth of the selection criteria</p>
-     */
     inline SelectionCriteria& WithMaxDepth(int value) { SetMaxDepth(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The minimum number of storage bytes percentage whose metrics will be
      * selected.</p>  <p>You must choose a value greater than or equal to
      * <code>1.0</code>.</p> 
      */
-    inline double GetMinStorageBytesPercentage() const{ return m_minStorageBytesPercentage; }
-
-    /**
-     * <p>The minimum number of storage bytes percentage whose metrics will be
-     * selected.</p>  <p>You must choose a value greater than or equal to
-     * <code>1.0</code>.</p> 
-     */
+    inline double GetMinStorageBytesPercentage() const { return m_minStorageBytesPercentage; }
     inline bool MinStorageBytesPercentageHasBeenSet() const { return m_minStorageBytesPercentageHasBeenSet; }
-
-    /**
-     * <p>The minimum number of storage bytes percentage whose metrics will be
-     * selected.</p>  <p>You must choose a value greater than or equal to
-     * <code>1.0</code>.</p> 
-     */
     inline void SetMinStorageBytesPercentage(double value) { m_minStorageBytesPercentageHasBeenSet = true; m_minStorageBytesPercentage = value; }
-
-    /**
-     * <p>The minimum number of storage bytes percentage whose metrics will be
-     * selected.</p>  <p>You must choose a value greater than or equal to
-     * <code>1.0</code>.</p> 
-     */
     inline SelectionCriteria& WithMinStorageBytesPercentage(double value) { SetMinStorageBytesPercentage(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_delimiter;
     bool m_delimiterHasBeenSet = false;
 
-    int m_maxDepth;
+    int m_maxDepth{0};
     bool m_maxDepthHasBeenSet = false;
 
-    double m_minStorageBytesPercentage;
+    double m_minStorageBytesPercentage{0.0};
     bool m_minStorageBytesPercentageHasBeenSet = false;
   };
 

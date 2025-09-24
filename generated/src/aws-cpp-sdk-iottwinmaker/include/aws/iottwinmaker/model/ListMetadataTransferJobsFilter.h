@@ -32,89 +32,39 @@ namespace Model
   class ListMetadataTransferJobsFilter
   {
   public:
-    AWS_IOTTWINMAKER_API ListMetadataTransferJobsFilter();
+    AWS_IOTTWINMAKER_API ListMetadataTransferJobsFilter() = default;
     AWS_IOTTWINMAKER_API ListMetadataTransferJobsFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API ListMetadataTransferJobsFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTTWINMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The workspace Id.</p>
      */
-    inline const Aws::String& GetWorkspaceId() const{ return m_workspaceId; }
-
-    /**
-     * <p>The workspace Id.</p>
-     */
+    inline const Aws::String& GetWorkspaceId() const { return m_workspaceId; }
     inline bool WorkspaceIdHasBeenSet() const { return m_workspaceIdHasBeenSet; }
+    template<typename WorkspaceIdT = Aws::String>
+    void SetWorkspaceId(WorkspaceIdT&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::forward<WorkspaceIdT>(value); }
+    template<typename WorkspaceIdT = Aws::String>
+    ListMetadataTransferJobsFilter& WithWorkspaceId(WorkspaceIdT&& value) { SetWorkspaceId(std::forward<WorkspaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The workspace Id.</p>
-     */
-    inline void SetWorkspaceId(const Aws::String& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = value; }
-
-    /**
-     * <p>The workspace Id.</p>
-     */
-    inline void SetWorkspaceId(Aws::String&& value) { m_workspaceIdHasBeenSet = true; m_workspaceId = std::move(value); }
-
-    /**
-     * <p>The workspace Id.</p>
-     */
-    inline void SetWorkspaceId(const char* value) { m_workspaceIdHasBeenSet = true; m_workspaceId.assign(value); }
-
-    /**
-     * <p>The workspace Id.</p>
-     */
-    inline ListMetadataTransferJobsFilter& WithWorkspaceId(const Aws::String& value) { SetWorkspaceId(value); return *this;}
-
-    /**
-     * <p>The workspace Id.</p>
-     */
-    inline ListMetadataTransferJobsFilter& WithWorkspaceId(Aws::String&& value) { SetWorkspaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The workspace Id.</p>
-     */
-    inline ListMetadataTransferJobsFilter& WithWorkspaceId(const char* value) { SetWorkspaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The filter state.</p>
      */
-    inline const MetadataTransferJobState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The filter state.</p>
-     */
+    inline MetadataTransferJobState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The filter state.</p>
-     */
-    inline void SetState(const MetadataTransferJobState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The filter state.</p>
-     */
-    inline void SetState(MetadataTransferJobState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The filter state.</p>
-     */
-    inline ListMetadataTransferJobsFilter& WithState(const MetadataTransferJobState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The filter state.</p>
-     */
-    inline ListMetadataTransferJobsFilter& WithState(MetadataTransferJobState&& value) { SetState(std::move(value)); return *this;}
-
+    inline void SetState(MetadataTransferJobState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ListMetadataTransferJobsFilter& WithState(MetadataTransferJobState value) { SetState(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_workspaceId;
     bool m_workspaceIdHasBeenSet = false;
 
-    MetadataTransferJobState m_state;
+    MetadataTransferJobState m_state{MetadataTransferJobState::NOT_SET};
     bool m_stateHasBeenSet = false;
   };
 

@@ -33,192 +33,65 @@ namespace Model
   class DestinationBackup
   {
   public:
-    AWS_CLOUDHSMV2_API DestinationBackup();
+    AWS_CLOUDHSMV2_API DestinationBackup() = default;
     AWS_CLOUDHSMV2_API DestinationBackup(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDHSMV2_API DestinationBackup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDHSMV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The date and time when both the source backup was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreateTimestamp() const{ return m_createTimestamp; }
-
-    /**
-     * <p>The date and time when both the source backup was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreateTimestamp() const { return m_createTimestamp; }
     inline bool CreateTimestampHasBeenSet() const { return m_createTimestampHasBeenSet; }
+    template<typename CreateTimestampT = Aws::Utils::DateTime>
+    void SetCreateTimestamp(CreateTimestampT&& value) { m_createTimestampHasBeenSet = true; m_createTimestamp = std::forward<CreateTimestampT>(value); }
+    template<typename CreateTimestampT = Aws::Utils::DateTime>
+    DestinationBackup& WithCreateTimestamp(CreateTimestampT&& value) { SetCreateTimestamp(std::forward<CreateTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when both the source backup was created.</p>
-     */
-    inline void SetCreateTimestamp(const Aws::Utils::DateTime& value) { m_createTimestampHasBeenSet = true; m_createTimestamp = value; }
-
-    /**
-     * <p>The date and time when both the source backup was created.</p>
-     */
-    inline void SetCreateTimestamp(Aws::Utils::DateTime&& value) { m_createTimestampHasBeenSet = true; m_createTimestamp = std::move(value); }
-
-    /**
-     * <p>The date and time when both the source backup was created.</p>
-     */
-    inline DestinationBackup& WithCreateTimestamp(const Aws::Utils::DateTime& value) { SetCreateTimestamp(value); return *this;}
-
-    /**
-     * <p>The date and time when both the source backup was created.</p>
-     */
-    inline DestinationBackup& WithCreateTimestamp(Aws::Utils::DateTime&& value) { SetCreateTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The AWS region that contains the source backup from which the new backup was
      * copied.</p>
      */
-    inline const Aws::String& GetSourceRegion() const{ return m_sourceRegion; }
-
-    /**
-     * <p>The AWS region that contains the source backup from which the new backup was
-     * copied.</p>
-     */
+    inline const Aws::String& GetSourceRegion() const { return m_sourceRegion; }
     inline bool SourceRegionHasBeenSet() const { return m_sourceRegionHasBeenSet; }
+    template<typename SourceRegionT = Aws::String>
+    void SetSourceRegion(SourceRegionT&& value) { m_sourceRegionHasBeenSet = true; m_sourceRegion = std::forward<SourceRegionT>(value); }
+    template<typename SourceRegionT = Aws::String>
+    DestinationBackup& WithSourceRegion(SourceRegionT&& value) { SetSourceRegion(std::forward<SourceRegionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The AWS region that contains the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline void SetSourceRegion(const Aws::String& value) { m_sourceRegionHasBeenSet = true; m_sourceRegion = value; }
-
-    /**
-     * <p>The AWS region that contains the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline void SetSourceRegion(Aws::String&& value) { m_sourceRegionHasBeenSet = true; m_sourceRegion = std::move(value); }
-
-    /**
-     * <p>The AWS region that contains the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline void SetSourceRegion(const char* value) { m_sourceRegionHasBeenSet = true; m_sourceRegion.assign(value); }
-
-    /**
-     * <p>The AWS region that contains the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline DestinationBackup& WithSourceRegion(const Aws::String& value) { SetSourceRegion(value); return *this;}
-
-    /**
-     * <p>The AWS region that contains the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline DestinationBackup& WithSourceRegion(Aws::String&& value) { SetSourceRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS region that contains the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline DestinationBackup& WithSourceRegion(const char* value) { SetSourceRegion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier (ID) of the source backup from which the new backup was
      * copied.</p>
      */
-    inline const Aws::String& GetSourceBackup() const{ return m_sourceBackup; }
-
-    /**
-     * <p>The identifier (ID) of the source backup from which the new backup was
-     * copied.</p>
-     */
+    inline const Aws::String& GetSourceBackup() const { return m_sourceBackup; }
     inline bool SourceBackupHasBeenSet() const { return m_sourceBackupHasBeenSet; }
+    template<typename SourceBackupT = Aws::String>
+    void SetSourceBackup(SourceBackupT&& value) { m_sourceBackupHasBeenSet = true; m_sourceBackup = std::forward<SourceBackupT>(value); }
+    template<typename SourceBackupT = Aws::String>
+    DestinationBackup& WithSourceBackup(SourceBackupT&& value) { SetSourceBackup(std::forward<SourceBackupT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier (ID) of the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline void SetSourceBackup(const Aws::String& value) { m_sourceBackupHasBeenSet = true; m_sourceBackup = value; }
-
-    /**
-     * <p>The identifier (ID) of the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline void SetSourceBackup(Aws::String&& value) { m_sourceBackupHasBeenSet = true; m_sourceBackup = std::move(value); }
-
-    /**
-     * <p>The identifier (ID) of the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline void SetSourceBackup(const char* value) { m_sourceBackupHasBeenSet = true; m_sourceBackup.assign(value); }
-
-    /**
-     * <p>The identifier (ID) of the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline DestinationBackup& WithSourceBackup(const Aws::String& value) { SetSourceBackup(value); return *this;}
-
-    /**
-     * <p>The identifier (ID) of the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline DestinationBackup& WithSourceBackup(Aws::String&& value) { SetSourceBackup(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier (ID) of the source backup from which the new backup was
-     * copied.</p>
-     */
-    inline DestinationBackup& WithSourceBackup(const char* value) { SetSourceBackup(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier (ID) of the cluster containing the source backup from which
      * the new backup was copied.</p>
      */
-    inline const Aws::String& GetSourceCluster() const{ return m_sourceCluster; }
-
-    /**
-     * <p>The identifier (ID) of the cluster containing the source backup from which
-     * the new backup was copied.</p>
-     */
+    inline const Aws::String& GetSourceCluster() const { return m_sourceCluster; }
     inline bool SourceClusterHasBeenSet() const { return m_sourceClusterHasBeenSet; }
-
-    /**
-     * <p>The identifier (ID) of the cluster containing the source backup from which
-     * the new backup was copied.</p>
-     */
-    inline void SetSourceCluster(const Aws::String& value) { m_sourceClusterHasBeenSet = true; m_sourceCluster = value; }
-
-    /**
-     * <p>The identifier (ID) of the cluster containing the source backup from which
-     * the new backup was copied.</p>
-     */
-    inline void SetSourceCluster(Aws::String&& value) { m_sourceClusterHasBeenSet = true; m_sourceCluster = std::move(value); }
-
-    /**
-     * <p>The identifier (ID) of the cluster containing the source backup from which
-     * the new backup was copied.</p>
-     */
-    inline void SetSourceCluster(const char* value) { m_sourceClusterHasBeenSet = true; m_sourceCluster.assign(value); }
-
-    /**
-     * <p>The identifier (ID) of the cluster containing the source backup from which
-     * the new backup was copied.</p>
-     */
-    inline DestinationBackup& WithSourceCluster(const Aws::String& value) { SetSourceCluster(value); return *this;}
-
-    /**
-     * <p>The identifier (ID) of the cluster containing the source backup from which
-     * the new backup was copied.</p>
-     */
-    inline DestinationBackup& WithSourceCluster(Aws::String&& value) { SetSourceCluster(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier (ID) of the cluster containing the source backup from which
-     * the new backup was copied.</p>
-     */
-    inline DestinationBackup& WithSourceCluster(const char* value) { SetSourceCluster(value); return *this;}
-
+    template<typename SourceClusterT = Aws::String>
+    void SetSourceCluster(SourceClusterT&& value) { m_sourceClusterHasBeenSet = true; m_sourceCluster = std::forward<SourceClusterT>(value); }
+    template<typename SourceClusterT = Aws::String>
+    DestinationBackup& WithSourceCluster(SourceClusterT&& value) { SetSourceCluster(std::forward<SourceClusterT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_createTimestamp;
+    Aws::Utils::DateTime m_createTimestamp{};
     bool m_createTimestampHasBeenSet = false;
 
     Aws::String m_sourceRegion;

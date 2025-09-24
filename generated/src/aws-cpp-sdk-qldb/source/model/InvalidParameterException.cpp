@@ -18,15 +18,7 @@ namespace QLDB
 namespace Model
 {
 
-InvalidParameterException::InvalidParameterException() : 
-    m_messageHasBeenSet(false),
-    m_parameterNameHasBeenSet(false)
-{
-}
-
-InvalidParameterException::InvalidParameterException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_parameterNameHasBeenSet(false)
+InvalidParameterException::InvalidParameterException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ InvalidParameterException& InvalidParameterException::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ParameterName"))
   {
     m_parameterName = jsonValue.GetString("ParameterName");
-
     m_parameterNameHasBeenSet = true;
   }
-
   return *this;
 }
 

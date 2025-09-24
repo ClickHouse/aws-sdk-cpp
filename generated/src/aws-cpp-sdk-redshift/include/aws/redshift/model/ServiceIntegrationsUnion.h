@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSStreamFwd.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/redshift/model/LakeFormationScopeUnion.h>
+#include <aws/redshift/model/S3AccessGrantsScopeUnion.h>
 #include <utility>
 
 namespace Aws
@@ -32,7 +33,7 @@ namespace Model
   class ServiceIntegrationsUnion
   {
   public:
-    AWS_REDSHIFT_API ServiceIntegrationsUnion();
+    AWS_REDSHIFT_API ServiceIntegrationsUnion() = default;
     AWS_REDSHIFT_API ServiceIntegrationsUnion(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API ServiceIntegrationsUnion& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,50 +41,40 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>A list of scopes set up for Lake Formation integration.</p>
      */
-    inline const Aws::Vector<LakeFormationScopeUnion>& GetLakeFormation() const{ return m_lakeFormation; }
-
-    /**
-     * <p>A list of scopes set up for Lake Formation integration.</p>
-     */
+    inline const Aws::Vector<LakeFormationScopeUnion>& GetLakeFormation() const { return m_lakeFormation; }
     inline bool LakeFormationHasBeenSet() const { return m_lakeFormationHasBeenSet; }
+    template<typename LakeFormationT = Aws::Vector<LakeFormationScopeUnion>>
+    void SetLakeFormation(LakeFormationT&& value) { m_lakeFormationHasBeenSet = true; m_lakeFormation = std::forward<LakeFormationT>(value); }
+    template<typename LakeFormationT = Aws::Vector<LakeFormationScopeUnion>>
+    ServiceIntegrationsUnion& WithLakeFormation(LakeFormationT&& value) { SetLakeFormation(std::forward<LakeFormationT>(value)); return *this;}
+    template<typename LakeFormationT = LakeFormationScopeUnion>
+    ServiceIntegrationsUnion& AddLakeFormation(LakeFormationT&& value) { m_lakeFormationHasBeenSet = true; m_lakeFormation.emplace_back(std::forward<LakeFormationT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of scopes set up for Lake Formation integration.</p>
+     * <p>A list of scopes set up for S3 Access Grants integration.</p>
      */
-    inline void SetLakeFormation(const Aws::Vector<LakeFormationScopeUnion>& value) { m_lakeFormationHasBeenSet = true; m_lakeFormation = value; }
-
-    /**
-     * <p>A list of scopes set up for Lake Formation integration.</p>
-     */
-    inline void SetLakeFormation(Aws::Vector<LakeFormationScopeUnion>&& value) { m_lakeFormationHasBeenSet = true; m_lakeFormation = std::move(value); }
-
-    /**
-     * <p>A list of scopes set up for Lake Formation integration.</p>
-     */
-    inline ServiceIntegrationsUnion& WithLakeFormation(const Aws::Vector<LakeFormationScopeUnion>& value) { SetLakeFormation(value); return *this;}
-
-    /**
-     * <p>A list of scopes set up for Lake Formation integration.</p>
-     */
-    inline ServiceIntegrationsUnion& WithLakeFormation(Aws::Vector<LakeFormationScopeUnion>&& value) { SetLakeFormation(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of scopes set up for Lake Formation integration.</p>
-     */
-    inline ServiceIntegrationsUnion& AddLakeFormation(const LakeFormationScopeUnion& value) { m_lakeFormationHasBeenSet = true; m_lakeFormation.push_back(value); return *this; }
-
-    /**
-     * <p>A list of scopes set up for Lake Formation integration.</p>
-     */
-    inline ServiceIntegrationsUnion& AddLakeFormation(LakeFormationScopeUnion&& value) { m_lakeFormationHasBeenSet = true; m_lakeFormation.push_back(std::move(value)); return *this; }
-
+    inline const Aws::Vector<S3AccessGrantsScopeUnion>& GetS3AccessGrants() const { return m_s3AccessGrants; }
+    inline bool S3AccessGrantsHasBeenSet() const { return m_s3AccessGrantsHasBeenSet; }
+    template<typename S3AccessGrantsT = Aws::Vector<S3AccessGrantsScopeUnion>>
+    void SetS3AccessGrants(S3AccessGrantsT&& value) { m_s3AccessGrantsHasBeenSet = true; m_s3AccessGrants = std::forward<S3AccessGrantsT>(value); }
+    template<typename S3AccessGrantsT = Aws::Vector<S3AccessGrantsScopeUnion>>
+    ServiceIntegrationsUnion& WithS3AccessGrants(S3AccessGrantsT&& value) { SetS3AccessGrants(std::forward<S3AccessGrantsT>(value)); return *this;}
+    template<typename S3AccessGrantsT = S3AccessGrantsScopeUnion>
+    ServiceIntegrationsUnion& AddS3AccessGrants(S3AccessGrantsT&& value) { m_s3AccessGrantsHasBeenSet = true; m_s3AccessGrants.emplace_back(std::forward<S3AccessGrantsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<LakeFormationScopeUnion> m_lakeFormation;
     bool m_lakeFormationHasBeenSet = false;
+
+    Aws::Vector<S3AccessGrantsScopeUnion> m_s3AccessGrants;
+    bool m_s3AccessGrantsHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,13 +18,7 @@ namespace Connect
 namespace Model
 {
 
-PredefinedAttributeValues::PredefinedAttributeValues() : 
-    m_stringListHasBeenSet(false)
-{
-}
-
-PredefinedAttributeValues::PredefinedAttributeValues(JsonView jsonValue) : 
-    m_stringListHasBeenSet(false)
+PredefinedAttributeValues::PredefinedAttributeValues(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ PredefinedAttributeValues& PredefinedAttributeValues::operator =(JsonView jsonVa
     }
     m_stringListHasBeenSet = true;
   }
-
   return *this;
 }
 

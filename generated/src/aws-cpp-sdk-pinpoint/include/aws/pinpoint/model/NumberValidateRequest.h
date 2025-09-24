@@ -32,117 +32,38 @@ namespace Model
   class NumberValidateRequest
   {
   public:
-    AWS_PINPOINT_API NumberValidateRequest();
+    AWS_PINPOINT_API NumberValidateRequest() = default;
     AWS_PINPOINT_API NumberValidateRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API NumberValidateRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The two-character code, in ISO 3166-1 alpha-2 format, for the country or
      * region where the phone number was originally registered.</p>
      */
-    inline const Aws::String& GetIsoCountryCode() const{ return m_isoCountryCode; }
-
-    /**
-     * <p>The two-character code, in ISO 3166-1 alpha-2 format, for the country or
-     * region where the phone number was originally registered.</p>
-     */
+    inline const Aws::String& GetIsoCountryCode() const { return m_isoCountryCode; }
     inline bool IsoCountryCodeHasBeenSet() const { return m_isoCountryCodeHasBeenSet; }
+    template<typename IsoCountryCodeT = Aws::String>
+    void SetIsoCountryCode(IsoCountryCodeT&& value) { m_isoCountryCodeHasBeenSet = true; m_isoCountryCode = std::forward<IsoCountryCodeT>(value); }
+    template<typename IsoCountryCodeT = Aws::String>
+    NumberValidateRequest& WithIsoCountryCode(IsoCountryCodeT&& value) { SetIsoCountryCode(std::forward<IsoCountryCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The two-character code, in ISO 3166-1 alpha-2 format, for the country or
-     * region where the phone number was originally registered.</p>
-     */
-    inline void SetIsoCountryCode(const Aws::String& value) { m_isoCountryCodeHasBeenSet = true; m_isoCountryCode = value; }
-
-    /**
-     * <p>The two-character code, in ISO 3166-1 alpha-2 format, for the country or
-     * region where the phone number was originally registered.</p>
-     */
-    inline void SetIsoCountryCode(Aws::String&& value) { m_isoCountryCodeHasBeenSet = true; m_isoCountryCode = std::move(value); }
-
-    /**
-     * <p>The two-character code, in ISO 3166-1 alpha-2 format, for the country or
-     * region where the phone number was originally registered.</p>
-     */
-    inline void SetIsoCountryCode(const char* value) { m_isoCountryCodeHasBeenSet = true; m_isoCountryCode.assign(value); }
-
-    /**
-     * <p>The two-character code, in ISO 3166-1 alpha-2 format, for the country or
-     * region where the phone number was originally registered.</p>
-     */
-    inline NumberValidateRequest& WithIsoCountryCode(const Aws::String& value) { SetIsoCountryCode(value); return *this;}
-
-    /**
-     * <p>The two-character code, in ISO 3166-1 alpha-2 format, for the country or
-     * region where the phone number was originally registered.</p>
-     */
-    inline NumberValidateRequest& WithIsoCountryCode(Aws::String&& value) { SetIsoCountryCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The two-character code, in ISO 3166-1 alpha-2 format, for the country or
-     * region where the phone number was originally registered.</p>
-     */
-    inline NumberValidateRequest& WithIsoCountryCode(const char* value) { SetIsoCountryCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The phone number to retrieve information about. The phone number that you
      * provide should include a valid numeric country code. Otherwise, the operation
      * might result in an error.</p>
      */
-    inline const Aws::String& GetPhoneNumber() const{ return m_phoneNumber; }
-
-    /**
-     * <p>The phone number to retrieve information about. The phone number that you
-     * provide should include a valid numeric country code. Otherwise, the operation
-     * might result in an error.</p>
-     */
+    inline const Aws::String& GetPhoneNumber() const { return m_phoneNumber; }
     inline bool PhoneNumberHasBeenSet() const { return m_phoneNumberHasBeenSet; }
-
-    /**
-     * <p>The phone number to retrieve information about. The phone number that you
-     * provide should include a valid numeric country code. Otherwise, the operation
-     * might result in an error.</p>
-     */
-    inline void SetPhoneNumber(const Aws::String& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
-
-    /**
-     * <p>The phone number to retrieve information about. The phone number that you
-     * provide should include a valid numeric country code. Otherwise, the operation
-     * might result in an error.</p>
-     */
-    inline void SetPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::move(value); }
-
-    /**
-     * <p>The phone number to retrieve information about. The phone number that you
-     * provide should include a valid numeric country code. Otherwise, the operation
-     * might result in an error.</p>
-     */
-    inline void SetPhoneNumber(const char* value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.assign(value); }
-
-    /**
-     * <p>The phone number to retrieve information about. The phone number that you
-     * provide should include a valid numeric country code. Otherwise, the operation
-     * might result in an error.</p>
-     */
-    inline NumberValidateRequest& WithPhoneNumber(const Aws::String& value) { SetPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The phone number to retrieve information about. The phone number that you
-     * provide should include a valid numeric country code. Otherwise, the operation
-     * might result in an error.</p>
-     */
-    inline NumberValidateRequest& WithPhoneNumber(Aws::String&& value) { SetPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The phone number to retrieve information about. The phone number that you
-     * provide should include a valid numeric country code. Otherwise, the operation
-     * might result in an error.</p>
-     */
-    inline NumberValidateRequest& WithPhoneNumber(const char* value) { SetPhoneNumber(value); return *this;}
-
+    template<typename PhoneNumberT = Aws::String>
+    void SetPhoneNumber(PhoneNumberT&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::forward<PhoneNumberT>(value); }
+    template<typename PhoneNumberT = Aws::String>
+    NumberValidateRequest& WithPhoneNumber(PhoneNumberT&& value) { SetPhoneNumber(std::forward<PhoneNumberT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_isoCountryCode;

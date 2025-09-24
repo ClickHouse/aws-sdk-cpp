@@ -28,63 +28,37 @@ namespace Model
   class DescribeAppInstanceBotResult
   {
   public:
-    AWS_CHIMESDKIDENTITY_API DescribeAppInstanceBotResult();
+    AWS_CHIMESDKIDENTITY_API DescribeAppInstanceBotResult() = default;
     AWS_CHIMESDKIDENTITY_API DescribeAppInstanceBotResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CHIMESDKIDENTITY_API DescribeAppInstanceBotResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The detials of the <code>AppInstanceBot</code>.</p>
      */
-    inline const AppInstanceBot& GetAppInstanceBot() const{ return m_appInstanceBot; }
+    inline const AppInstanceBot& GetAppInstanceBot() const { return m_appInstanceBot; }
+    template<typename AppInstanceBotT = AppInstanceBot>
+    void SetAppInstanceBot(AppInstanceBotT&& value) { m_appInstanceBotHasBeenSet = true; m_appInstanceBot = std::forward<AppInstanceBotT>(value); }
+    template<typename AppInstanceBotT = AppInstanceBot>
+    DescribeAppInstanceBotResult& WithAppInstanceBot(AppInstanceBotT&& value) { SetAppInstanceBot(std::forward<AppInstanceBotT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The detials of the <code>AppInstanceBot</code>.</p>
-     */
-    inline void SetAppInstanceBot(const AppInstanceBot& value) { m_appInstanceBot = value; }
-
-    /**
-     * <p>The detials of the <code>AppInstanceBot</code>.</p>
-     */
-    inline void SetAppInstanceBot(AppInstanceBot&& value) { m_appInstanceBot = std::move(value); }
-
-    /**
-     * <p>The detials of the <code>AppInstanceBot</code>.</p>
-     */
-    inline DescribeAppInstanceBotResult& WithAppInstanceBot(const AppInstanceBot& value) { SetAppInstanceBot(value); return *this;}
-
-    /**
-     * <p>The detials of the <code>AppInstanceBot</code>.</p>
-     */
-    inline DescribeAppInstanceBotResult& WithAppInstanceBot(AppInstanceBot&& value) { SetAppInstanceBot(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeAppInstanceBotResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeAppInstanceBotResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeAppInstanceBotResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeAppInstanceBotResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     AppInstanceBot m_appInstanceBot;
+    bool m_appInstanceBotHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

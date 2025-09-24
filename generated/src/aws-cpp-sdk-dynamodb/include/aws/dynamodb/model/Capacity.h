@@ -30,83 +30,50 @@ namespace Model
   class Capacity
   {
   public:
-    AWS_DYNAMODB_API Capacity();
+    AWS_DYNAMODB_API Capacity() = default;
     AWS_DYNAMODB_API Capacity(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Capacity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The total number of read capacity units consumed on a table or an index.</p>
      */
-    inline double GetReadCapacityUnits() const{ return m_readCapacityUnits; }
-
-    /**
-     * <p>The total number of read capacity units consumed on a table or an index.</p>
-     */
+    inline double GetReadCapacityUnits() const { return m_readCapacityUnits; }
     inline bool ReadCapacityUnitsHasBeenSet() const { return m_readCapacityUnitsHasBeenSet; }
-
-    /**
-     * <p>The total number of read capacity units consumed on a table or an index.</p>
-     */
     inline void SetReadCapacityUnits(double value) { m_readCapacityUnitsHasBeenSet = true; m_readCapacityUnits = value; }
-
-    /**
-     * <p>The total number of read capacity units consumed on a table or an index.</p>
-     */
     inline Capacity& WithReadCapacityUnits(double value) { SetReadCapacityUnits(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The total number of write capacity units consumed on a table or an index.</p>
      */
-    inline double GetWriteCapacityUnits() const{ return m_writeCapacityUnits; }
-
-    /**
-     * <p>The total number of write capacity units consumed on a table or an index.</p>
-     */
+    inline double GetWriteCapacityUnits() const { return m_writeCapacityUnits; }
     inline bool WriteCapacityUnitsHasBeenSet() const { return m_writeCapacityUnitsHasBeenSet; }
-
-    /**
-     * <p>The total number of write capacity units consumed on a table or an index.</p>
-     */
     inline void SetWriteCapacityUnits(double value) { m_writeCapacityUnitsHasBeenSet = true; m_writeCapacityUnits = value; }
-
-    /**
-     * <p>The total number of write capacity units consumed on a table or an index.</p>
-     */
     inline Capacity& WithWriteCapacityUnits(double value) { SetWriteCapacityUnits(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The total number of capacity units consumed on a table or an index.</p>
      */
-    inline double GetCapacityUnits() const{ return m_capacityUnits; }
-
-    /**
-     * <p>The total number of capacity units consumed on a table or an index.</p>
-     */
+    inline double GetCapacityUnits() const { return m_capacityUnits; }
     inline bool CapacityUnitsHasBeenSet() const { return m_capacityUnitsHasBeenSet; }
-
-    /**
-     * <p>The total number of capacity units consumed on a table or an index.</p>
-     */
     inline void SetCapacityUnits(double value) { m_capacityUnitsHasBeenSet = true; m_capacityUnits = value; }
-
-    /**
-     * <p>The total number of capacity units consumed on a table or an index.</p>
-     */
     inline Capacity& WithCapacityUnits(double value) { SetCapacityUnits(value); return *this;}
-
+    ///@}
   private:
 
-    double m_readCapacityUnits;
+    double m_readCapacityUnits{0.0};
     bool m_readCapacityUnitsHasBeenSet = false;
 
-    double m_writeCapacityUnits;
+    double m_writeCapacityUnits{0.0};
     bool m_writeCapacityUnitsHasBeenSet = false;
 
-    double m_capacityUnits;
+    double m_capacityUnits{0.0};
     bool m_capacityUnitsHasBeenSet = false;
   };
 

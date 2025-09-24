@@ -28,157 +28,75 @@ namespace Model
   class UpdateAnalysisResult
   {
   public:
-    AWS_QUICKSIGHT_API UpdateAnalysisResult();
+    AWS_QUICKSIGHT_API UpdateAnalysisResult() = default;
     AWS_QUICKSIGHT_API UpdateAnalysisResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QUICKSIGHT_API UpdateAnalysisResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the analysis that you're updating.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    UpdateAnalysisResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the analysis that you're updating.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The ARN of the analysis that you're updating.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the analysis that you're updating.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the analysis that you're updating.</p>
-     */
-    inline UpdateAnalysisResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the analysis that you're updating.</p>
-     */
-    inline UpdateAnalysisResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the analysis that you're updating.</p>
-     */
-    inline UpdateAnalysisResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the analysis.</p>
      */
-    inline const Aws::String& GetAnalysisId() const{ return m_analysisId; }
+    inline const Aws::String& GetAnalysisId() const { return m_analysisId; }
+    template<typename AnalysisIdT = Aws::String>
+    void SetAnalysisId(AnalysisIdT&& value) { m_analysisIdHasBeenSet = true; m_analysisId = std::forward<AnalysisIdT>(value); }
+    template<typename AnalysisIdT = Aws::String>
+    UpdateAnalysisResult& WithAnalysisId(AnalysisIdT&& value) { SetAnalysisId(std::forward<AnalysisIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the analysis.</p>
-     */
-    inline void SetAnalysisId(const Aws::String& value) { m_analysisId = value; }
-
-    /**
-     * <p>The ID of the analysis.</p>
-     */
-    inline void SetAnalysisId(Aws::String&& value) { m_analysisId = std::move(value); }
-
-    /**
-     * <p>The ID of the analysis.</p>
-     */
-    inline void SetAnalysisId(const char* value) { m_analysisId.assign(value); }
-
-    /**
-     * <p>The ID of the analysis.</p>
-     */
-    inline UpdateAnalysisResult& WithAnalysisId(const Aws::String& value) { SetAnalysisId(value); return *this;}
-
-    /**
-     * <p>The ID of the analysis.</p>
-     */
-    inline UpdateAnalysisResult& WithAnalysisId(Aws::String&& value) { SetAnalysisId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the analysis.</p>
-     */
-    inline UpdateAnalysisResult& WithAnalysisId(const char* value) { SetAnalysisId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The update status of the last update that was made to the analysis.</p>
      */
-    inline const ResourceStatus& GetUpdateStatus() const{ return m_updateStatus; }
+    inline ResourceStatus GetUpdateStatus() const { return m_updateStatus; }
+    inline void SetUpdateStatus(ResourceStatus value) { m_updateStatusHasBeenSet = true; m_updateStatus = value; }
+    inline UpdateAnalysisResult& WithUpdateStatus(ResourceStatus value) { SetUpdateStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The update status of the last update that was made to the analysis.</p>
-     */
-    inline void SetUpdateStatus(const ResourceStatus& value) { m_updateStatus = value; }
-
-    /**
-     * <p>The update status of the last update that was made to the analysis.</p>
-     */
-    inline void SetUpdateStatus(ResourceStatus&& value) { m_updateStatus = std::move(value); }
-
-    /**
-     * <p>The update status of the last update that was made to the analysis.</p>
-     */
-    inline UpdateAnalysisResult& WithUpdateStatus(const ResourceStatus& value) { SetUpdateStatus(value); return *this;}
-
-    /**
-     * <p>The update status of the last update that was made to the analysis.</p>
-     */
-    inline UpdateAnalysisResult& WithUpdateStatus(ResourceStatus&& value) { SetUpdateStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The HTTP status of the request.</p>
      */
-    inline int GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
-    inline void SetStatus(int value) { m_status = value; }
-
-    /**
-     * <p>The HTTP status of the request.</p>
-     */
+    inline int GetStatus() const { return m_status; }
+    inline void SetStatus(int value) { m_statusHasBeenSet = true; m_status = value; }
     inline UpdateAnalysisResult& WithStatus(int value) { SetStatus(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateAnalysisResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateAnalysisResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateAnalysisResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateAnalysisResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_analysisId;
+    bool m_analysisIdHasBeenSet = false;
 
-    ResourceStatus m_updateStatus;
+    ResourceStatus m_updateStatus{ResourceStatus::NOT_SET};
+    bool m_updateStatusHasBeenSet = false;
 
-    int m_status;
+    int m_status{0};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

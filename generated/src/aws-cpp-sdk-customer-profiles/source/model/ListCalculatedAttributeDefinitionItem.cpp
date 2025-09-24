@@ -18,23 +18,7 @@ namespace CustomerProfiles
 namespace Model
 {
 
-ListCalculatedAttributeDefinitionItem::ListCalculatedAttributeDefinitionItem() : 
-    m_calculatedAttributeNameHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_lastUpdatedAtHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-ListCalculatedAttributeDefinitionItem::ListCalculatedAttributeDefinitionItem(JsonView jsonValue) : 
-    m_calculatedAttributeNameHasBeenSet(false),
-    m_displayNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_lastUpdatedAtHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+ListCalculatedAttributeDefinitionItem::ListCalculatedAttributeDefinitionItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,38 +28,38 @@ ListCalculatedAttributeDefinitionItem& ListCalculatedAttributeDefinitionItem::op
   if(jsonValue.ValueExists("CalculatedAttributeName"))
   {
     m_calculatedAttributeName = jsonValue.GetString("CalculatedAttributeName");
-
     m_calculatedAttributeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisplayName"))
   {
     m_displayName = jsonValue.GetString("DisplayName");
-
     m_displayNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedAt"))
   {
     m_createdAt = jsonValue.GetDouble("CreatedAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdatedAt"))
   {
     m_lastUpdatedAt = jsonValue.GetDouble("LastUpdatedAt");
-
     m_lastUpdatedAtHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("UseHistoricalData"))
+  {
+    m_useHistoricalData = jsonValue.GetBool("UseHistoricalData");
+    m_useHistoricalDataHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("Status"))
+  {
+    m_status = ReadinessStatusMapper::GetReadinessStatusForName(jsonValue.GetString("Status"));
+    m_statusHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("Tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("Tags").GetAllObjects();
@@ -85,7 +69,6 @@ ListCalculatedAttributeDefinitionItem& ListCalculatedAttributeDefinitionItem::op
     }
     m_tagsHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -119,6 +102,17 @@ JsonValue ListCalculatedAttributeDefinitionItem::Jsonize() const
   if(m_lastUpdatedAtHasBeenSet)
   {
    payload.WithDouble("LastUpdatedAt", m_lastUpdatedAt.SecondsWithMSPrecision());
+  }
+
+  if(m_useHistoricalDataHasBeenSet)
+  {
+   payload.WithBool("UseHistoricalData", m_useHistoricalData);
+
+  }
+
+  if(m_statusHasBeenSet)
+  {
+   payload.WithString("Status", ReadinessStatusMapper::GetNameForReadinessStatus(m_status));
   }
 
   if(m_tagsHasBeenSet)

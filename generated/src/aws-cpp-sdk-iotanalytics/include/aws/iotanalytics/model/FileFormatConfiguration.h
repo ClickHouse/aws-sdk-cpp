@@ -36,73 +36,35 @@ namespace Model
   class FileFormatConfiguration
   {
   public:
-    AWS_IOTANALYTICS_API FileFormatConfiguration();
+    AWS_IOTANALYTICS_API FileFormatConfiguration() = default;
     AWS_IOTANALYTICS_API FileFormatConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API FileFormatConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains the configuration information of the JSON format.</p>
      */
-    inline const JsonConfiguration& GetJsonConfiguration() const{ return m_jsonConfiguration; }
-
-    /**
-     * <p>Contains the configuration information of the JSON format.</p>
-     */
+    inline const JsonConfiguration& GetJsonConfiguration() const { return m_jsonConfiguration; }
     inline bool JsonConfigurationHasBeenSet() const { return m_jsonConfigurationHasBeenSet; }
+    template<typename JsonConfigurationT = JsonConfiguration>
+    void SetJsonConfiguration(JsonConfigurationT&& value) { m_jsonConfigurationHasBeenSet = true; m_jsonConfiguration = std::forward<JsonConfigurationT>(value); }
+    template<typename JsonConfigurationT = JsonConfiguration>
+    FileFormatConfiguration& WithJsonConfiguration(JsonConfigurationT&& value) { SetJsonConfiguration(std::forward<JsonConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains the configuration information of the JSON format.</p>
-     */
-    inline void SetJsonConfiguration(const JsonConfiguration& value) { m_jsonConfigurationHasBeenSet = true; m_jsonConfiguration = value; }
-
-    /**
-     * <p>Contains the configuration information of the JSON format.</p>
-     */
-    inline void SetJsonConfiguration(JsonConfiguration&& value) { m_jsonConfigurationHasBeenSet = true; m_jsonConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains the configuration information of the JSON format.</p>
-     */
-    inline FileFormatConfiguration& WithJsonConfiguration(const JsonConfiguration& value) { SetJsonConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains the configuration information of the JSON format.</p>
-     */
-    inline FileFormatConfiguration& WithJsonConfiguration(JsonConfiguration&& value) { SetJsonConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the configuration information of the Parquet format.</p>
      */
-    inline const ParquetConfiguration& GetParquetConfiguration() const{ return m_parquetConfiguration; }
-
-    /**
-     * <p>Contains the configuration information of the Parquet format.</p>
-     */
+    inline const ParquetConfiguration& GetParquetConfiguration() const { return m_parquetConfiguration; }
     inline bool ParquetConfigurationHasBeenSet() const { return m_parquetConfigurationHasBeenSet; }
-
-    /**
-     * <p>Contains the configuration information of the Parquet format.</p>
-     */
-    inline void SetParquetConfiguration(const ParquetConfiguration& value) { m_parquetConfigurationHasBeenSet = true; m_parquetConfiguration = value; }
-
-    /**
-     * <p>Contains the configuration information of the Parquet format.</p>
-     */
-    inline void SetParquetConfiguration(ParquetConfiguration&& value) { m_parquetConfigurationHasBeenSet = true; m_parquetConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains the configuration information of the Parquet format.</p>
-     */
-    inline FileFormatConfiguration& WithParquetConfiguration(const ParquetConfiguration& value) { SetParquetConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains the configuration information of the Parquet format.</p>
-     */
-    inline FileFormatConfiguration& WithParquetConfiguration(ParquetConfiguration&& value) { SetParquetConfiguration(std::move(value)); return *this;}
-
+    template<typename ParquetConfigurationT = ParquetConfiguration>
+    void SetParquetConfiguration(ParquetConfigurationT&& value) { m_parquetConfigurationHasBeenSet = true; m_parquetConfiguration = std::forward<ParquetConfigurationT>(value); }
+    template<typename ParquetConfigurationT = ParquetConfiguration>
+    FileFormatConfiguration& WithParquetConfiguration(ParquetConfigurationT&& value) { SetParquetConfiguration(std::forward<ParquetConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     JsonConfiguration m_jsonConfiguration;

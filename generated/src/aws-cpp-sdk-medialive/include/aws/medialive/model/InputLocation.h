@@ -31,150 +31,49 @@ namespace Model
   class InputLocation
   {
   public:
-    AWS_MEDIALIVE_API InputLocation();
+    AWS_MEDIALIVE_API InputLocation() = default;
     AWS_MEDIALIVE_API InputLocation(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API InputLocation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * key used to extract the password from EC2 Parameter store
      */
-    inline const Aws::String& GetPasswordParam() const{ return m_passwordParam; }
-
-    /**
-     * key used to extract the password from EC2 Parameter store
-     */
+    inline const Aws::String& GetPasswordParam() const { return m_passwordParam; }
     inline bool PasswordParamHasBeenSet() const { return m_passwordParamHasBeenSet; }
+    template<typename PasswordParamT = Aws::String>
+    void SetPasswordParam(PasswordParamT&& value) { m_passwordParamHasBeenSet = true; m_passwordParam = std::forward<PasswordParamT>(value); }
+    template<typename PasswordParamT = Aws::String>
+    InputLocation& WithPasswordParam(PasswordParamT&& value) { SetPasswordParam(std::forward<PasswordParamT>(value)); return *this;}
+    ///@}
 
-    /**
-     * key used to extract the password from EC2 Parameter store
-     */
-    inline void SetPasswordParam(const Aws::String& value) { m_passwordParamHasBeenSet = true; m_passwordParam = value; }
-
-    /**
-     * key used to extract the password from EC2 Parameter store
-     */
-    inline void SetPasswordParam(Aws::String&& value) { m_passwordParamHasBeenSet = true; m_passwordParam = std::move(value); }
-
-    /**
-     * key used to extract the password from EC2 Parameter store
-     */
-    inline void SetPasswordParam(const char* value) { m_passwordParamHasBeenSet = true; m_passwordParam.assign(value); }
-
-    /**
-     * key used to extract the password from EC2 Parameter store
-     */
-    inline InputLocation& WithPasswordParam(const Aws::String& value) { SetPasswordParam(value); return *this;}
-
-    /**
-     * key used to extract the password from EC2 Parameter store
-     */
-    inline InputLocation& WithPasswordParam(Aws::String&& value) { SetPasswordParam(std::move(value)); return *this;}
-
-    /**
-     * key used to extract the password from EC2 Parameter store
-     */
-    inline InputLocation& WithPasswordParam(const char* value) { SetPasswordParam(value); return *this;}
-
-
+    ///@{
     /**
      * Uniform Resource Identifier - This should be a path to a file accessible to the
      * Live system (eg. a http:// URI) depending on the output type. For example, a
      * RTMP destination should have a uri simliar to: "rtmp://fmsserver/live".
      */
-    inline const Aws::String& GetUri() const{ return m_uri; }
-
-    /**
-     * Uniform Resource Identifier - This should be a path to a file accessible to the
-     * Live system (eg. a http:// URI) depending on the output type. For example, a
-     * RTMP destination should have a uri simliar to: "rtmp://fmsserver/live".
-     */
+    inline const Aws::String& GetUri() const { return m_uri; }
     inline bool UriHasBeenSet() const { return m_uriHasBeenSet; }
+    template<typename UriT = Aws::String>
+    void SetUri(UriT&& value) { m_uriHasBeenSet = true; m_uri = std::forward<UriT>(value); }
+    template<typename UriT = Aws::String>
+    InputLocation& WithUri(UriT&& value) { SetUri(std::forward<UriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Uniform Resource Identifier - This should be a path to a file accessible to the
-     * Live system (eg. a http:// URI) depending on the output type. For example, a
-     * RTMP destination should have a uri simliar to: "rtmp://fmsserver/live".
-     */
-    inline void SetUri(const Aws::String& value) { m_uriHasBeenSet = true; m_uri = value; }
-
-    /**
-     * Uniform Resource Identifier - This should be a path to a file accessible to the
-     * Live system (eg. a http:// URI) depending on the output type. For example, a
-     * RTMP destination should have a uri simliar to: "rtmp://fmsserver/live".
-     */
-    inline void SetUri(Aws::String&& value) { m_uriHasBeenSet = true; m_uri = std::move(value); }
-
-    /**
-     * Uniform Resource Identifier - This should be a path to a file accessible to the
-     * Live system (eg. a http:// URI) depending on the output type. For example, a
-     * RTMP destination should have a uri simliar to: "rtmp://fmsserver/live".
-     */
-    inline void SetUri(const char* value) { m_uriHasBeenSet = true; m_uri.assign(value); }
-
-    /**
-     * Uniform Resource Identifier - This should be a path to a file accessible to the
-     * Live system (eg. a http:// URI) depending on the output type. For example, a
-     * RTMP destination should have a uri simliar to: "rtmp://fmsserver/live".
-     */
-    inline InputLocation& WithUri(const Aws::String& value) { SetUri(value); return *this;}
-
-    /**
-     * Uniform Resource Identifier - This should be a path to a file accessible to the
-     * Live system (eg. a http:// URI) depending on the output type. For example, a
-     * RTMP destination should have a uri simliar to: "rtmp://fmsserver/live".
-     */
-    inline InputLocation& WithUri(Aws::String&& value) { SetUri(std::move(value)); return *this;}
-
-    /**
-     * Uniform Resource Identifier - This should be a path to a file accessible to the
-     * Live system (eg. a http:// URI) depending on the output type. For example, a
-     * RTMP destination should have a uri simliar to: "rtmp://fmsserver/live".
-     */
-    inline InputLocation& WithUri(const char* value) { SetUri(value); return *this;}
-
-
+    ///@{
     /**
      * Documentation update needed
      */
-    inline const Aws::String& GetUsername() const{ return m_username; }
-
-    /**
-     * Documentation update needed
-     */
+    inline const Aws::String& GetUsername() const { return m_username; }
     inline bool UsernameHasBeenSet() const { return m_usernameHasBeenSet; }
-
-    /**
-     * Documentation update needed
-     */
-    inline void SetUsername(const Aws::String& value) { m_usernameHasBeenSet = true; m_username = value; }
-
-    /**
-     * Documentation update needed
-     */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
-
-    /**
-     * Documentation update needed
-     */
-    inline void SetUsername(const char* value) { m_usernameHasBeenSet = true; m_username.assign(value); }
-
-    /**
-     * Documentation update needed
-     */
-    inline InputLocation& WithUsername(const Aws::String& value) { SetUsername(value); return *this;}
-
-    /**
-     * Documentation update needed
-     */
-    inline InputLocation& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
-
-    /**
-     * Documentation update needed
-     */
-    inline InputLocation& WithUsername(const char* value) { SetUsername(value); return *this;}
-
+    template<typename UsernameT = Aws::String>
+    void SetUsername(UsernameT&& value) { m_usernameHasBeenSet = true; m_username = std::forward<UsernameT>(value); }
+    template<typename UsernameT = Aws::String>
+    InputLocation& WithUsername(UsernameT&& value) { SetUsername(std::forward<UsernameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_passwordParam;

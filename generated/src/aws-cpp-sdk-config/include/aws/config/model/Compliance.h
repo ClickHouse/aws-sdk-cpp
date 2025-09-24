@@ -34,12 +34,13 @@ namespace Model
   class Compliance
   {
   public:
-    AWS_CONFIGSERVICE_API Compliance();
+    AWS_CONFIGSERVICE_API Compliance() = default;
     AWS_CONFIGSERVICE_API Compliance(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Compliance& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONFIGSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Indicates whether an Amazon Web Services resource or Config rule is
      * compliant.</p> <p>A resource is compliant if it complies with all of the Config
@@ -54,128 +55,27 @@ namespace Model
      * does not support the <code>NOT_APPLICABLE</code> value for the
      * <code>Compliance</code> data type.</p>
      */
-    inline const ComplianceType& GetComplianceType() const{ return m_complianceType; }
-
-    /**
-     * <p>Indicates whether an Amazon Web Services resource or Config rule is
-     * compliant.</p> <p>A resource is compliant if it complies with all of the Config
-     * rules that evaluate it. A resource is noncompliant if it does not comply with
-     * one or more of these rules.</p> <p>A rule is compliant if all of the resources
-     * that the rule evaluates comply with it. A rule is noncompliant if any of these
-     * resources do not comply.</p> <p>Config returns the
-     * <code>INSUFFICIENT_DATA</code> value when no evaluation results are available
-     * for the Amazon Web Services resource or Config rule.</p> <p>For the
-     * <code>Compliance</code> data type, Config supports only <code>COMPLIANT</code>,
-     * <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code> values. Config
-     * does not support the <code>NOT_APPLICABLE</code> value for the
-     * <code>Compliance</code> data type.</p>
-     */
+    inline ComplianceType GetComplianceType() const { return m_complianceType; }
     inline bool ComplianceTypeHasBeenSet() const { return m_complianceTypeHasBeenSet; }
+    inline void SetComplianceType(ComplianceType value) { m_complianceTypeHasBeenSet = true; m_complianceType = value; }
+    inline Compliance& WithComplianceType(ComplianceType value) { SetComplianceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates whether an Amazon Web Services resource or Config rule is
-     * compliant.</p> <p>A resource is compliant if it complies with all of the Config
-     * rules that evaluate it. A resource is noncompliant if it does not comply with
-     * one or more of these rules.</p> <p>A rule is compliant if all of the resources
-     * that the rule evaluates comply with it. A rule is noncompliant if any of these
-     * resources do not comply.</p> <p>Config returns the
-     * <code>INSUFFICIENT_DATA</code> value when no evaluation results are available
-     * for the Amazon Web Services resource or Config rule.</p> <p>For the
-     * <code>Compliance</code> data type, Config supports only <code>COMPLIANT</code>,
-     * <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code> values. Config
-     * does not support the <code>NOT_APPLICABLE</code> value for the
-     * <code>Compliance</code> data type.</p>
-     */
-    inline void SetComplianceType(const ComplianceType& value) { m_complianceTypeHasBeenSet = true; m_complianceType = value; }
-
-    /**
-     * <p>Indicates whether an Amazon Web Services resource or Config rule is
-     * compliant.</p> <p>A resource is compliant if it complies with all of the Config
-     * rules that evaluate it. A resource is noncompliant if it does not comply with
-     * one or more of these rules.</p> <p>A rule is compliant if all of the resources
-     * that the rule evaluates comply with it. A rule is noncompliant if any of these
-     * resources do not comply.</p> <p>Config returns the
-     * <code>INSUFFICIENT_DATA</code> value when no evaluation results are available
-     * for the Amazon Web Services resource or Config rule.</p> <p>For the
-     * <code>Compliance</code> data type, Config supports only <code>COMPLIANT</code>,
-     * <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code> values. Config
-     * does not support the <code>NOT_APPLICABLE</code> value for the
-     * <code>Compliance</code> data type.</p>
-     */
-    inline void SetComplianceType(ComplianceType&& value) { m_complianceTypeHasBeenSet = true; m_complianceType = std::move(value); }
-
-    /**
-     * <p>Indicates whether an Amazon Web Services resource or Config rule is
-     * compliant.</p> <p>A resource is compliant if it complies with all of the Config
-     * rules that evaluate it. A resource is noncompliant if it does not comply with
-     * one or more of these rules.</p> <p>A rule is compliant if all of the resources
-     * that the rule evaluates comply with it. A rule is noncompliant if any of these
-     * resources do not comply.</p> <p>Config returns the
-     * <code>INSUFFICIENT_DATA</code> value when no evaluation results are available
-     * for the Amazon Web Services resource or Config rule.</p> <p>For the
-     * <code>Compliance</code> data type, Config supports only <code>COMPLIANT</code>,
-     * <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code> values. Config
-     * does not support the <code>NOT_APPLICABLE</code> value for the
-     * <code>Compliance</code> data type.</p>
-     */
-    inline Compliance& WithComplianceType(const ComplianceType& value) { SetComplianceType(value); return *this;}
-
-    /**
-     * <p>Indicates whether an Amazon Web Services resource or Config rule is
-     * compliant.</p> <p>A resource is compliant if it complies with all of the Config
-     * rules that evaluate it. A resource is noncompliant if it does not comply with
-     * one or more of these rules.</p> <p>A rule is compliant if all of the resources
-     * that the rule evaluates comply with it. A rule is noncompliant if any of these
-     * resources do not comply.</p> <p>Config returns the
-     * <code>INSUFFICIENT_DATA</code> value when no evaluation results are available
-     * for the Amazon Web Services resource or Config rule.</p> <p>For the
-     * <code>Compliance</code> data type, Config supports only <code>COMPLIANT</code>,
-     * <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code> values. Config
-     * does not support the <code>NOT_APPLICABLE</code> value for the
-     * <code>Compliance</code> data type.</p>
-     */
-    inline Compliance& WithComplianceType(ComplianceType&& value) { SetComplianceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of Amazon Web Services resources or Config rules that cause a
      * result of <code>NON_COMPLIANT</code>, up to a maximum number.</p>
      */
-    inline const ComplianceContributorCount& GetComplianceContributorCount() const{ return m_complianceContributorCount; }
-
-    /**
-     * <p>The number of Amazon Web Services resources or Config rules that cause a
-     * result of <code>NON_COMPLIANT</code>, up to a maximum number.</p>
-     */
+    inline const ComplianceContributorCount& GetComplianceContributorCount() const { return m_complianceContributorCount; }
     inline bool ComplianceContributorCountHasBeenSet() const { return m_complianceContributorCountHasBeenSet; }
-
-    /**
-     * <p>The number of Amazon Web Services resources or Config rules that cause a
-     * result of <code>NON_COMPLIANT</code>, up to a maximum number.</p>
-     */
-    inline void SetComplianceContributorCount(const ComplianceContributorCount& value) { m_complianceContributorCountHasBeenSet = true; m_complianceContributorCount = value; }
-
-    /**
-     * <p>The number of Amazon Web Services resources or Config rules that cause a
-     * result of <code>NON_COMPLIANT</code>, up to a maximum number.</p>
-     */
-    inline void SetComplianceContributorCount(ComplianceContributorCount&& value) { m_complianceContributorCountHasBeenSet = true; m_complianceContributorCount = std::move(value); }
-
-    /**
-     * <p>The number of Amazon Web Services resources or Config rules that cause a
-     * result of <code>NON_COMPLIANT</code>, up to a maximum number.</p>
-     */
-    inline Compliance& WithComplianceContributorCount(const ComplianceContributorCount& value) { SetComplianceContributorCount(value); return *this;}
-
-    /**
-     * <p>The number of Amazon Web Services resources or Config rules that cause a
-     * result of <code>NON_COMPLIANT</code>, up to a maximum number.</p>
-     */
-    inline Compliance& WithComplianceContributorCount(ComplianceContributorCount&& value) { SetComplianceContributorCount(std::move(value)); return *this;}
-
+    template<typename ComplianceContributorCountT = ComplianceContributorCount>
+    void SetComplianceContributorCount(ComplianceContributorCountT&& value) { m_complianceContributorCountHasBeenSet = true; m_complianceContributorCount = std::forward<ComplianceContributorCountT>(value); }
+    template<typename ComplianceContributorCountT = ComplianceContributorCount>
+    Compliance& WithComplianceContributorCount(ComplianceContributorCountT&& value) { SetComplianceContributorCount(std::forward<ComplianceContributorCountT>(value)); return *this;}
+    ///@}
   private:
 
-    ComplianceType m_complianceType;
+    ComplianceType m_complianceType{ComplianceType::NOT_SET};
     bool m_complianceTypeHasBeenSet = false;
 
     ComplianceContributorCount m_complianceContributorCount;

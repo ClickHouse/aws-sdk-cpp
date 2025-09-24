@@ -18,23 +18,7 @@ namespace CodeCommit
 namespace Model
 {
 
-FileSizes::FileSizes() : 
-    m_source(0),
-    m_sourceHasBeenSet(false),
-    m_destination(0),
-    m_destinationHasBeenSet(false),
-    m_base(0),
-    m_baseHasBeenSet(false)
-{
-}
-
-FileSizes::FileSizes(JsonView jsonValue) : 
-    m_source(0),
-    m_sourceHasBeenSet(false),
-    m_destination(0),
-    m_destinationHasBeenSet(false),
-    m_base(0),
-    m_baseHasBeenSet(false)
+FileSizes::FileSizes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,24 +28,18 @@ FileSizes& FileSizes::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("source"))
   {
     m_source = jsonValue.GetInt64("source");
-
     m_sourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("destination"))
   {
     m_destination = jsonValue.GetInt64("destination");
-
     m_destinationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("base"))
   {
     m_base = jsonValue.GetInt64("base");
-
     m_baseHasBeenSet = true;
   }
-
   return *this;
 }
 

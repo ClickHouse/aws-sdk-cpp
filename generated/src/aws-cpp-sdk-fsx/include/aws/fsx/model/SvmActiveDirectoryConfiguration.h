@@ -35,71 +35,33 @@ namespace Model
   class SvmActiveDirectoryConfiguration
   {
   public:
-    AWS_FSX_API SvmActiveDirectoryConfiguration();
+    AWS_FSX_API SvmActiveDirectoryConfiguration() = default;
     AWS_FSX_API SvmActiveDirectoryConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API SvmActiveDirectoryConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The NetBIOS name of the AD computer object to which the SVM is joined.</p>
      */
-    inline const Aws::String& GetNetBiosName() const{ return m_netBiosName; }
-
-    /**
-     * <p>The NetBIOS name of the AD computer object to which the SVM is joined.</p>
-     */
+    inline const Aws::String& GetNetBiosName() const { return m_netBiosName; }
     inline bool NetBiosNameHasBeenSet() const { return m_netBiosNameHasBeenSet; }
+    template<typename NetBiosNameT = Aws::String>
+    void SetNetBiosName(NetBiosNameT&& value) { m_netBiosNameHasBeenSet = true; m_netBiosName = std::forward<NetBiosNameT>(value); }
+    template<typename NetBiosNameT = Aws::String>
+    SvmActiveDirectoryConfiguration& WithNetBiosName(NetBiosNameT&& value) { SetNetBiosName(std::forward<NetBiosNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The NetBIOS name of the AD computer object to which the SVM is joined.</p>
-     */
-    inline void SetNetBiosName(const Aws::String& value) { m_netBiosNameHasBeenSet = true; m_netBiosName = value; }
-
-    /**
-     * <p>The NetBIOS name of the AD computer object to which the SVM is joined.</p>
-     */
-    inline void SetNetBiosName(Aws::String&& value) { m_netBiosNameHasBeenSet = true; m_netBiosName = std::move(value); }
-
-    /**
-     * <p>The NetBIOS name of the AD computer object to which the SVM is joined.</p>
-     */
-    inline void SetNetBiosName(const char* value) { m_netBiosNameHasBeenSet = true; m_netBiosName.assign(value); }
-
-    /**
-     * <p>The NetBIOS name of the AD computer object to which the SVM is joined.</p>
-     */
-    inline SvmActiveDirectoryConfiguration& WithNetBiosName(const Aws::String& value) { SetNetBiosName(value); return *this;}
-
-    /**
-     * <p>The NetBIOS name of the AD computer object to which the SVM is joined.</p>
-     */
-    inline SvmActiveDirectoryConfiguration& WithNetBiosName(Aws::String&& value) { SetNetBiosName(std::move(value)); return *this;}
-
-    /**
-     * <p>The NetBIOS name of the AD computer object to which the SVM is joined.</p>
-     */
-    inline SvmActiveDirectoryConfiguration& WithNetBiosName(const char* value) { SetNetBiosName(value); return *this;}
-
-
+    ///@{
     
-    inline const SelfManagedActiveDirectoryAttributes& GetSelfManagedActiveDirectoryConfiguration() const{ return m_selfManagedActiveDirectoryConfiguration; }
-
-    
+    inline const SelfManagedActiveDirectoryAttributes& GetSelfManagedActiveDirectoryConfiguration() const { return m_selfManagedActiveDirectoryConfiguration; }
     inline bool SelfManagedActiveDirectoryConfigurationHasBeenSet() const { return m_selfManagedActiveDirectoryConfigurationHasBeenSet; }
-
-    
-    inline void SetSelfManagedActiveDirectoryConfiguration(const SelfManagedActiveDirectoryAttributes& value) { m_selfManagedActiveDirectoryConfigurationHasBeenSet = true; m_selfManagedActiveDirectoryConfiguration = value; }
-
-    
-    inline void SetSelfManagedActiveDirectoryConfiguration(SelfManagedActiveDirectoryAttributes&& value) { m_selfManagedActiveDirectoryConfigurationHasBeenSet = true; m_selfManagedActiveDirectoryConfiguration = std::move(value); }
-
-    
-    inline SvmActiveDirectoryConfiguration& WithSelfManagedActiveDirectoryConfiguration(const SelfManagedActiveDirectoryAttributes& value) { SetSelfManagedActiveDirectoryConfiguration(value); return *this;}
-
-    
-    inline SvmActiveDirectoryConfiguration& WithSelfManagedActiveDirectoryConfiguration(SelfManagedActiveDirectoryAttributes&& value) { SetSelfManagedActiveDirectoryConfiguration(std::move(value)); return *this;}
-
+    template<typename SelfManagedActiveDirectoryConfigurationT = SelfManagedActiveDirectoryAttributes>
+    void SetSelfManagedActiveDirectoryConfiguration(SelfManagedActiveDirectoryConfigurationT&& value) { m_selfManagedActiveDirectoryConfigurationHasBeenSet = true; m_selfManagedActiveDirectoryConfiguration = std::forward<SelfManagedActiveDirectoryConfigurationT>(value); }
+    template<typename SelfManagedActiveDirectoryConfigurationT = SelfManagedActiveDirectoryAttributes>
+    SvmActiveDirectoryConfiguration& WithSelfManagedActiveDirectoryConfiguration(SelfManagedActiveDirectoryConfigurationT&& value) { SetSelfManagedActiveDirectoryConfiguration(std::forward<SelfManagedActiveDirectoryConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_netBiosName;

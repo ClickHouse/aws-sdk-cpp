@@ -33,209 +33,71 @@ namespace Model
   class Variable
   {
   public:
-    AWS_FRAUDDETECTOR_API Variable();
+    AWS_FRAUDDETECTOR_API Variable() = default;
     AWS_FRAUDDETECTOR_API Variable(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Variable& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the variable.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the variable.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Variable& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline Variable& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline Variable& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the variable.</p>
-     */
-    inline Variable& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The data type of the variable. For more information see <a
      * href="https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types">Variable
      * types</a>.</p>
      */
-    inline const DataType& GetDataType() const{ return m_dataType; }
-
-    /**
-     * <p>The data type of the variable. For more information see <a
-     * href="https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types">Variable
-     * types</a>.</p>
-     */
+    inline DataType GetDataType() const { return m_dataType; }
     inline bool DataTypeHasBeenSet() const { return m_dataTypeHasBeenSet; }
+    inline void SetDataType(DataType value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
+    inline Variable& WithDataType(DataType value) { SetDataType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The data type of the variable. For more information see <a
-     * href="https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types">Variable
-     * types</a>.</p>
-     */
-    inline void SetDataType(const DataType& value) { m_dataTypeHasBeenSet = true; m_dataType = value; }
-
-    /**
-     * <p>The data type of the variable. For more information see <a
-     * href="https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types">Variable
-     * types</a>.</p>
-     */
-    inline void SetDataType(DataType&& value) { m_dataTypeHasBeenSet = true; m_dataType = std::move(value); }
-
-    /**
-     * <p>The data type of the variable. For more information see <a
-     * href="https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types">Variable
-     * types</a>.</p>
-     */
-    inline Variable& WithDataType(const DataType& value) { SetDataType(value); return *this;}
-
-    /**
-     * <p>The data type of the variable. For more information see <a
-     * href="https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types">Variable
-     * types</a>.</p>
-     */
-    inline Variable& WithDataType(DataType&& value) { SetDataType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The data source of the variable.</p>
      */
-    inline const DataSource& GetDataSource() const{ return m_dataSource; }
-
-    /**
-     * <p>The data source of the variable.</p>
-     */
+    inline DataSource GetDataSource() const { return m_dataSource; }
     inline bool DataSourceHasBeenSet() const { return m_dataSourceHasBeenSet; }
+    inline void SetDataSource(DataSource value) { m_dataSourceHasBeenSet = true; m_dataSource = value; }
+    inline Variable& WithDataSource(DataSource value) { SetDataSource(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The data source of the variable.</p>
-     */
-    inline void SetDataSource(const DataSource& value) { m_dataSourceHasBeenSet = true; m_dataSource = value; }
-
-    /**
-     * <p>The data source of the variable.</p>
-     */
-    inline void SetDataSource(DataSource&& value) { m_dataSourceHasBeenSet = true; m_dataSource = std::move(value); }
-
-    /**
-     * <p>The data source of the variable.</p>
-     */
-    inline Variable& WithDataSource(const DataSource& value) { SetDataSource(value); return *this;}
-
-    /**
-     * <p>The data source of the variable.</p>
-     */
-    inline Variable& WithDataSource(DataSource&& value) { SetDataSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The default value of the variable.</p>
      */
-    inline const Aws::String& GetDefaultValue() const{ return m_defaultValue; }
-
-    /**
-     * <p>The default value of the variable.</p>
-     */
+    inline const Aws::String& GetDefaultValue() const { return m_defaultValue; }
     inline bool DefaultValueHasBeenSet() const { return m_defaultValueHasBeenSet; }
+    template<typename DefaultValueT = Aws::String>
+    void SetDefaultValue(DefaultValueT&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::forward<DefaultValueT>(value); }
+    template<typename DefaultValueT = Aws::String>
+    Variable& WithDefaultValue(DefaultValueT&& value) { SetDefaultValue(std::forward<DefaultValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The default value of the variable.</p>
-     */
-    inline void SetDefaultValue(const Aws::String& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
-
-    /**
-     * <p>The default value of the variable.</p>
-     */
-    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
-
-    /**
-     * <p>The default value of the variable.</p>
-     */
-    inline void SetDefaultValue(const char* value) { m_defaultValueHasBeenSet = true; m_defaultValue.assign(value); }
-
-    /**
-     * <p>The default value of the variable.</p>
-     */
-    inline Variable& WithDefaultValue(const Aws::String& value) { SetDefaultValue(value); return *this;}
-
-    /**
-     * <p>The default value of the variable.</p>
-     */
-    inline Variable& WithDefaultValue(Aws::String&& value) { SetDefaultValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The default value of the variable.</p>
-     */
-    inline Variable& WithDefaultValue(const char* value) { SetDefaultValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the variable. </p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the variable. </p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    Variable& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the variable. </p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the variable. </p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the variable. </p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the variable. </p>
-     */
-    inline Variable& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the variable. </p>
-     */
-    inline Variable& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the variable. </p>
-     */
-    inline Variable& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The variable type of the variable.</p> <p>Valid Values: <code>AUTH_CODE | AVS
      * | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY |
@@ -246,224 +108,58 @@ namespace Model
      * SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE |
      * SHIPPING_STATE | SHIPPING_ZIP | USERAGENT </code> </p>
      */
-    inline const Aws::String& GetVariableType() const{ return m_variableType; }
-
-    /**
-     * <p>The variable type of the variable.</p> <p>Valid Values: <code>AUTH_CODE | AVS
-     * | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY |
-     * BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN |
-     * CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL |
-     * FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER |
-     * PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 |
-     * SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE |
-     * SHIPPING_STATE | SHIPPING_ZIP | USERAGENT </code> </p>
-     */
+    inline const Aws::String& GetVariableType() const { return m_variableType; }
     inline bool VariableTypeHasBeenSet() const { return m_variableTypeHasBeenSet; }
+    template<typename VariableTypeT = Aws::String>
+    void SetVariableType(VariableTypeT&& value) { m_variableTypeHasBeenSet = true; m_variableType = std::forward<VariableTypeT>(value); }
+    template<typename VariableTypeT = Aws::String>
+    Variable& WithVariableType(VariableTypeT&& value) { SetVariableType(std::forward<VariableTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The variable type of the variable.</p> <p>Valid Values: <code>AUTH_CODE | AVS
-     * | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY |
-     * BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN |
-     * CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL |
-     * FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER |
-     * PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 |
-     * SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE |
-     * SHIPPING_STATE | SHIPPING_ZIP | USERAGENT </code> </p>
-     */
-    inline void SetVariableType(const Aws::String& value) { m_variableTypeHasBeenSet = true; m_variableType = value; }
-
-    /**
-     * <p>The variable type of the variable.</p> <p>Valid Values: <code>AUTH_CODE | AVS
-     * | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY |
-     * BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN |
-     * CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL |
-     * FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER |
-     * PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 |
-     * SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE |
-     * SHIPPING_STATE | SHIPPING_ZIP | USERAGENT </code> </p>
-     */
-    inline void SetVariableType(Aws::String&& value) { m_variableTypeHasBeenSet = true; m_variableType = std::move(value); }
-
-    /**
-     * <p>The variable type of the variable.</p> <p>Valid Values: <code>AUTH_CODE | AVS
-     * | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY |
-     * BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN |
-     * CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL |
-     * FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER |
-     * PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 |
-     * SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE |
-     * SHIPPING_STATE | SHIPPING_ZIP | USERAGENT </code> </p>
-     */
-    inline void SetVariableType(const char* value) { m_variableTypeHasBeenSet = true; m_variableType.assign(value); }
-
-    /**
-     * <p>The variable type of the variable.</p> <p>Valid Values: <code>AUTH_CODE | AVS
-     * | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY |
-     * BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN |
-     * CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL |
-     * FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER |
-     * PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 |
-     * SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE |
-     * SHIPPING_STATE | SHIPPING_ZIP | USERAGENT </code> </p>
-     */
-    inline Variable& WithVariableType(const Aws::String& value) { SetVariableType(value); return *this;}
-
-    /**
-     * <p>The variable type of the variable.</p> <p>Valid Values: <code>AUTH_CODE | AVS
-     * | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY |
-     * BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN |
-     * CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL |
-     * FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER |
-     * PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 |
-     * SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE |
-     * SHIPPING_STATE | SHIPPING_ZIP | USERAGENT </code> </p>
-     */
-    inline Variable& WithVariableType(Aws::String&& value) { SetVariableType(std::move(value)); return *this;}
-
-    /**
-     * <p>The variable type of the variable.</p> <p>Valid Values: <code>AUTH_CODE | AVS
-     * | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY |
-     * BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN |
-     * CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL |
-     * FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER |
-     * PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 |
-     * SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE |
-     * SHIPPING_STATE | SHIPPING_ZIP | USERAGENT </code> </p>
-     */
-    inline Variable& WithVariableType(const char* value) { SetVariableType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when variable was last updated.</p>
      */
-    inline const Aws::String& GetLastUpdatedTime() const{ return m_lastUpdatedTime; }
-
-    /**
-     * <p>The time when variable was last updated.</p>
-     */
+    inline const Aws::String& GetLastUpdatedTime() const { return m_lastUpdatedTime; }
     inline bool LastUpdatedTimeHasBeenSet() const { return m_lastUpdatedTimeHasBeenSet; }
+    template<typename LastUpdatedTimeT = Aws::String>
+    void SetLastUpdatedTime(LastUpdatedTimeT&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::forward<LastUpdatedTimeT>(value); }
+    template<typename LastUpdatedTimeT = Aws::String>
+    Variable& WithLastUpdatedTime(LastUpdatedTimeT&& value) { SetLastUpdatedTime(std::forward<LastUpdatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when variable was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(const Aws::String& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = value; }
-
-    /**
-     * <p>The time when variable was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(Aws::String&& value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime = std::move(value); }
-
-    /**
-     * <p>The time when variable was last updated.</p>
-     */
-    inline void SetLastUpdatedTime(const char* value) { m_lastUpdatedTimeHasBeenSet = true; m_lastUpdatedTime.assign(value); }
-
-    /**
-     * <p>The time when variable was last updated.</p>
-     */
-    inline Variable& WithLastUpdatedTime(const Aws::String& value) { SetLastUpdatedTime(value); return *this;}
-
-    /**
-     * <p>The time when variable was last updated.</p>
-     */
-    inline Variable& WithLastUpdatedTime(Aws::String&& value) { SetLastUpdatedTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The time when variable was last updated.</p>
-     */
-    inline Variable& WithLastUpdatedTime(const char* value) { SetLastUpdatedTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the variable was created.</p>
      */
-    inline const Aws::String& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>The time when the variable was created.</p>
-     */
+    inline const Aws::String& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::String>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::String>
+    Variable& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the variable was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::String& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>The time when the variable was created.</p>
-     */
-    inline void SetCreatedTime(Aws::String&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>The time when the variable was created.</p>
-     */
-    inline void SetCreatedTime(const char* value) { m_createdTimeHasBeenSet = true; m_createdTime.assign(value); }
-
-    /**
-     * <p>The time when the variable was created.</p>
-     */
-    inline Variable& WithCreatedTime(const Aws::String& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The time when the variable was created.</p>
-     */
-    inline Variable& WithCreatedTime(Aws::String&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The time when the variable was created.</p>
-     */
-    inline Variable& WithCreatedTime(const char* value) { SetCreatedTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the variable.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the variable.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the variable.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the variable.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the variable.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the variable.</p>
-     */
-    inline Variable& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the variable.</p>
-     */
-    inline Variable& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the variable.</p>
-     */
-    inline Variable& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    Variable& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    DataType m_dataType;
+    DataType m_dataType{DataType::NOT_SET};
     bool m_dataTypeHasBeenSet = false;
 
-    DataSource m_dataSource;
+    DataSource m_dataSource{DataSource::NOT_SET};
     bool m_dataSourceHasBeenSet = false;
 
     Aws::String m_defaultValue;

@@ -34,128 +34,51 @@ namespace Model
   class AttackVolume
   {
   public:
-    AWS_SHIELD_API AttackVolume();
+    AWS_SHIELD_API AttackVolume() = default;
     AWS_SHIELD_API AttackVolume(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API AttackVolume& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A statistics object that uses bits per second as the unit. This is included
      * for network level attacks. </p>
      */
-    inline const AttackVolumeStatistics& GetBitsPerSecond() const{ return m_bitsPerSecond; }
-
-    /**
-     * <p>A statistics object that uses bits per second as the unit. This is included
-     * for network level attacks. </p>
-     */
+    inline const AttackVolumeStatistics& GetBitsPerSecond() const { return m_bitsPerSecond; }
     inline bool BitsPerSecondHasBeenSet() const { return m_bitsPerSecondHasBeenSet; }
+    template<typename BitsPerSecondT = AttackVolumeStatistics>
+    void SetBitsPerSecond(BitsPerSecondT&& value) { m_bitsPerSecondHasBeenSet = true; m_bitsPerSecond = std::forward<BitsPerSecondT>(value); }
+    template<typename BitsPerSecondT = AttackVolumeStatistics>
+    AttackVolume& WithBitsPerSecond(BitsPerSecondT&& value) { SetBitsPerSecond(std::forward<BitsPerSecondT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A statistics object that uses bits per second as the unit. This is included
-     * for network level attacks. </p>
-     */
-    inline void SetBitsPerSecond(const AttackVolumeStatistics& value) { m_bitsPerSecondHasBeenSet = true; m_bitsPerSecond = value; }
-
-    /**
-     * <p>A statistics object that uses bits per second as the unit. This is included
-     * for network level attacks. </p>
-     */
-    inline void SetBitsPerSecond(AttackVolumeStatistics&& value) { m_bitsPerSecondHasBeenSet = true; m_bitsPerSecond = std::move(value); }
-
-    /**
-     * <p>A statistics object that uses bits per second as the unit. This is included
-     * for network level attacks. </p>
-     */
-    inline AttackVolume& WithBitsPerSecond(const AttackVolumeStatistics& value) { SetBitsPerSecond(value); return *this;}
-
-    /**
-     * <p>A statistics object that uses bits per second as the unit. This is included
-     * for network level attacks. </p>
-     */
-    inline AttackVolume& WithBitsPerSecond(AttackVolumeStatistics&& value) { SetBitsPerSecond(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A statistics object that uses packets per second as the unit. This is
      * included for network level attacks. </p>
      */
-    inline const AttackVolumeStatistics& GetPacketsPerSecond() const{ return m_packetsPerSecond; }
-
-    /**
-     * <p>A statistics object that uses packets per second as the unit. This is
-     * included for network level attacks. </p>
-     */
+    inline const AttackVolumeStatistics& GetPacketsPerSecond() const { return m_packetsPerSecond; }
     inline bool PacketsPerSecondHasBeenSet() const { return m_packetsPerSecondHasBeenSet; }
+    template<typename PacketsPerSecondT = AttackVolumeStatistics>
+    void SetPacketsPerSecond(PacketsPerSecondT&& value) { m_packetsPerSecondHasBeenSet = true; m_packetsPerSecond = std::forward<PacketsPerSecondT>(value); }
+    template<typename PacketsPerSecondT = AttackVolumeStatistics>
+    AttackVolume& WithPacketsPerSecond(PacketsPerSecondT&& value) { SetPacketsPerSecond(std::forward<PacketsPerSecondT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A statistics object that uses packets per second as the unit. This is
-     * included for network level attacks. </p>
-     */
-    inline void SetPacketsPerSecond(const AttackVolumeStatistics& value) { m_packetsPerSecondHasBeenSet = true; m_packetsPerSecond = value; }
-
-    /**
-     * <p>A statistics object that uses packets per second as the unit. This is
-     * included for network level attacks. </p>
-     */
-    inline void SetPacketsPerSecond(AttackVolumeStatistics&& value) { m_packetsPerSecondHasBeenSet = true; m_packetsPerSecond = std::move(value); }
-
-    /**
-     * <p>A statistics object that uses packets per second as the unit. This is
-     * included for network level attacks. </p>
-     */
-    inline AttackVolume& WithPacketsPerSecond(const AttackVolumeStatistics& value) { SetPacketsPerSecond(value); return *this;}
-
-    /**
-     * <p>A statistics object that uses packets per second as the unit. This is
-     * included for network level attacks. </p>
-     */
-    inline AttackVolume& WithPacketsPerSecond(AttackVolumeStatistics&& value) { SetPacketsPerSecond(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A statistics object that uses requests per second as the unit. This is
      * included for application level attacks, and is only available for accounts that
      * are subscribed to Shield Advanced.</p>
      */
-    inline const AttackVolumeStatistics& GetRequestsPerSecond() const{ return m_requestsPerSecond; }
-
-    /**
-     * <p>A statistics object that uses requests per second as the unit. This is
-     * included for application level attacks, and is only available for accounts that
-     * are subscribed to Shield Advanced.</p>
-     */
+    inline const AttackVolumeStatistics& GetRequestsPerSecond() const { return m_requestsPerSecond; }
     inline bool RequestsPerSecondHasBeenSet() const { return m_requestsPerSecondHasBeenSet; }
-
-    /**
-     * <p>A statistics object that uses requests per second as the unit. This is
-     * included for application level attacks, and is only available for accounts that
-     * are subscribed to Shield Advanced.</p>
-     */
-    inline void SetRequestsPerSecond(const AttackVolumeStatistics& value) { m_requestsPerSecondHasBeenSet = true; m_requestsPerSecond = value; }
-
-    /**
-     * <p>A statistics object that uses requests per second as the unit. This is
-     * included for application level attacks, and is only available for accounts that
-     * are subscribed to Shield Advanced.</p>
-     */
-    inline void SetRequestsPerSecond(AttackVolumeStatistics&& value) { m_requestsPerSecondHasBeenSet = true; m_requestsPerSecond = std::move(value); }
-
-    /**
-     * <p>A statistics object that uses requests per second as the unit. This is
-     * included for application level attacks, and is only available for accounts that
-     * are subscribed to Shield Advanced.</p>
-     */
-    inline AttackVolume& WithRequestsPerSecond(const AttackVolumeStatistics& value) { SetRequestsPerSecond(value); return *this;}
-
-    /**
-     * <p>A statistics object that uses requests per second as the unit. This is
-     * included for application level attacks, and is only available for accounts that
-     * are subscribed to Shield Advanced.</p>
-     */
-    inline AttackVolume& WithRequestsPerSecond(AttackVolumeStatistics&& value) { SetRequestsPerSecond(std::move(value)); return *this;}
-
+    template<typename RequestsPerSecondT = AttackVolumeStatistics>
+    void SetRequestsPerSecond(RequestsPerSecondT&& value) { m_requestsPerSecondHasBeenSet = true; m_requestsPerSecond = std::forward<RequestsPerSecondT>(value); }
+    template<typename RequestsPerSecondT = AttackVolumeStatistics>
+    AttackVolume& WithRequestsPerSecond(RequestsPerSecondT&& value) { SetRequestsPerSecond(std::forward<RequestsPerSecondT>(value)); return *this;}
+    ///@}
   private:
 
     AttackVolumeStatistics m_bitsPerSecond;

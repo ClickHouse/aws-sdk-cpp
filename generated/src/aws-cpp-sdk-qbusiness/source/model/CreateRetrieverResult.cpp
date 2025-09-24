@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-CreateRetrieverResult::CreateRetrieverResult()
-{
-}
-
 CreateRetrieverResult::CreateRetrieverResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,24 +25,23 @@ CreateRetrieverResult::CreateRetrieverResult(const Aws::AmazonWebServiceResult<J
 CreateRetrieverResult& CreateRetrieverResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("retrieverArn"))
-  {
-    m_retrieverArn = jsonValue.GetString("retrieverArn");
-
-  }
-
   if(jsonValue.ValueExists("retrieverId"))
   {
     m_retrieverId = jsonValue.GetString("retrieverId");
-
+    m_retrieverIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("retrieverArn"))
+  {
+    m_retrieverArn = jsonValue.GetString("retrieverArn");
+    m_retrieverArnHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

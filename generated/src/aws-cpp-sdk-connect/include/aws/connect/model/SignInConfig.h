@@ -34,52 +34,25 @@ namespace Model
   class SignInConfig
   {
   public:
-    AWS_CONNECT_API SignInConfig();
+    AWS_CONNECT_API SignInConfig() = default;
     AWS_CONNECT_API SignInConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API SignInConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about traffic distributions.</p>
      */
-    inline const Aws::Vector<SignInDistribution>& GetDistributions() const{ return m_distributions; }
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
+    inline const Aws::Vector<SignInDistribution>& GetDistributions() const { return m_distributions; }
     inline bool DistributionsHasBeenSet() const { return m_distributionsHasBeenSet; }
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline void SetDistributions(const Aws::Vector<SignInDistribution>& value) { m_distributionsHasBeenSet = true; m_distributions = value; }
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline void SetDistributions(Aws::Vector<SignInDistribution>&& value) { m_distributionsHasBeenSet = true; m_distributions = std::move(value); }
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline SignInConfig& WithDistributions(const Aws::Vector<SignInDistribution>& value) { SetDistributions(value); return *this;}
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline SignInConfig& WithDistributions(Aws::Vector<SignInDistribution>&& value) { SetDistributions(std::move(value)); return *this;}
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline SignInConfig& AddDistributions(const SignInDistribution& value) { m_distributionsHasBeenSet = true; m_distributions.push_back(value); return *this; }
-
-    /**
-     * <p>Information about traffic distributions.</p>
-     */
-    inline SignInConfig& AddDistributions(SignInDistribution&& value) { m_distributionsHasBeenSet = true; m_distributions.push_back(std::move(value)); return *this; }
-
+    template<typename DistributionsT = Aws::Vector<SignInDistribution>>
+    void SetDistributions(DistributionsT&& value) { m_distributionsHasBeenSet = true; m_distributions = std::forward<DistributionsT>(value); }
+    template<typename DistributionsT = Aws::Vector<SignInDistribution>>
+    SignInConfig& WithDistributions(DistributionsT&& value) { SetDistributions(std::forward<DistributionsT>(value)); return *this;}
+    template<typename DistributionsT = SignInDistribution>
+    SignInConfig& AddDistributions(DistributionsT&& value) { m_distributionsHasBeenSet = true; m_distributions.emplace_back(std::forward<DistributionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<SignInDistribution> m_distributions;

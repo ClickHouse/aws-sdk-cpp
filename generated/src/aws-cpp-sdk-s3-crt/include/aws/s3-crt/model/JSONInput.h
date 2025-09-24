@@ -31,46 +31,25 @@ namespace Model
   class JSONInput
   {
   public:
-    AWS_S3CRT_API JSONInput();
+    AWS_S3CRT_API JSONInput() = default;
     AWS_S3CRT_API JSONInput(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API JSONInput& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The type of JSON. Valid values: Document, Lines.</p>
      */
-    inline const JSONType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of JSON. Valid values: Document, Lines.</p>
-     */
+    inline JSONType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of JSON. Valid values: Document, Lines.</p>
-     */
-    inline void SetType(const JSONType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of JSON. Valid values: Document, Lines.</p>
-     */
-    inline void SetType(JSONType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of JSON. Valid values: Document, Lines.</p>
-     */
-    inline JSONInput& WithType(const JSONType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of JSON. Valid values: Document, Lines.</p>
-     */
-    inline JSONInput& WithType(JSONType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(JSONType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline JSONInput& WithType(JSONType value) { SetType(value); return *this;}
+    ///@}
   private:
 
-    JSONType m_type;
+    JSONType m_type{JSONType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

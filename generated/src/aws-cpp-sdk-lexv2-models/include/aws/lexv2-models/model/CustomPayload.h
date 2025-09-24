@@ -32,52 +32,23 @@ namespace Model
   class CustomPayload
   {
   public:
-    AWS_LEXMODELSV2_API CustomPayload();
+    AWS_LEXMODELSV2_API CustomPayload() = default;
     AWS_LEXMODELSV2_API CustomPayload(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API CustomPayload& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The string that is sent to your application.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The string that is sent to your application.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The string that is sent to your application.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The string that is sent to your application.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The string that is sent to your application.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>The string that is sent to your application.</p>
-     */
-    inline CustomPayload& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The string that is sent to your application.</p>
-     */
-    inline CustomPayload& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The string that is sent to your application.</p>
-     */
-    inline CustomPayload& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    CustomPayload& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_value;

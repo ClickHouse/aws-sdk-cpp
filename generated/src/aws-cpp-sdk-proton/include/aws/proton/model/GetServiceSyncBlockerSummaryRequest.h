@@ -21,7 +21,7 @@ namespace Model
   class GetServiceSyncBlockerSummaryRequest : public ProtonRequest
   {
   public:
-    AWS_PROTON_API GetServiceSyncBlockerSummaryRequest();
+    AWS_PROTON_API GetServiceSyncBlockerSummaryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,111 +34,32 @@ namespace Model
     AWS_PROTON_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the service instance that you want to get the service sync
      * blocker summary for. If given bothe the instance name and the service name, only
      * the instance is blocked.</p>
      */
-    inline const Aws::String& GetServiceInstanceName() const{ return m_serviceInstanceName; }
-
-    /**
-     * <p>The name of the service instance that you want to get the service sync
-     * blocker summary for. If given bothe the instance name and the service name, only
-     * the instance is blocked.</p>
-     */
+    inline const Aws::String& GetServiceInstanceName() const { return m_serviceInstanceName; }
     inline bool ServiceInstanceNameHasBeenSet() const { return m_serviceInstanceNameHasBeenSet; }
+    template<typename ServiceInstanceNameT = Aws::String>
+    void SetServiceInstanceName(ServiceInstanceNameT&& value) { m_serviceInstanceNameHasBeenSet = true; m_serviceInstanceName = std::forward<ServiceInstanceNameT>(value); }
+    template<typename ServiceInstanceNameT = Aws::String>
+    GetServiceSyncBlockerSummaryRequest& WithServiceInstanceName(ServiceInstanceNameT&& value) { SetServiceInstanceName(std::forward<ServiceInstanceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the service instance that you want to get the service sync
-     * blocker summary for. If given bothe the instance name and the service name, only
-     * the instance is blocked.</p>
-     */
-    inline void SetServiceInstanceName(const Aws::String& value) { m_serviceInstanceNameHasBeenSet = true; m_serviceInstanceName = value; }
-
-    /**
-     * <p>The name of the service instance that you want to get the service sync
-     * blocker summary for. If given bothe the instance name and the service name, only
-     * the instance is blocked.</p>
-     */
-    inline void SetServiceInstanceName(Aws::String&& value) { m_serviceInstanceNameHasBeenSet = true; m_serviceInstanceName = std::move(value); }
-
-    /**
-     * <p>The name of the service instance that you want to get the service sync
-     * blocker summary for. If given bothe the instance name and the service name, only
-     * the instance is blocked.</p>
-     */
-    inline void SetServiceInstanceName(const char* value) { m_serviceInstanceNameHasBeenSet = true; m_serviceInstanceName.assign(value); }
-
-    /**
-     * <p>The name of the service instance that you want to get the service sync
-     * blocker summary for. If given bothe the instance name and the service name, only
-     * the instance is blocked.</p>
-     */
-    inline GetServiceSyncBlockerSummaryRequest& WithServiceInstanceName(const Aws::String& value) { SetServiceInstanceName(value); return *this;}
-
-    /**
-     * <p>The name of the service instance that you want to get the service sync
-     * blocker summary for. If given bothe the instance name and the service name, only
-     * the instance is blocked.</p>
-     */
-    inline GetServiceSyncBlockerSummaryRequest& WithServiceInstanceName(Aws::String&& value) { SetServiceInstanceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service instance that you want to get the service sync
-     * blocker summary for. If given bothe the instance name and the service name, only
-     * the instance is blocked.</p>
-     */
-    inline GetServiceSyncBlockerSummaryRequest& WithServiceInstanceName(const char* value) { SetServiceInstanceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the service that you want to get the service sync blocker summary
      * for. If given only the service name, all instances are blocked.</p>
      */
-    inline const Aws::String& GetServiceName() const{ return m_serviceName; }
-
-    /**
-     * <p>The name of the service that you want to get the service sync blocker summary
-     * for. If given only the service name, all instances are blocked.</p>
-     */
+    inline const Aws::String& GetServiceName() const { return m_serviceName; }
     inline bool ServiceNameHasBeenSet() const { return m_serviceNameHasBeenSet; }
-
-    /**
-     * <p>The name of the service that you want to get the service sync blocker summary
-     * for. If given only the service name, all instances are blocked.</p>
-     */
-    inline void SetServiceName(const Aws::String& value) { m_serviceNameHasBeenSet = true; m_serviceName = value; }
-
-    /**
-     * <p>The name of the service that you want to get the service sync blocker summary
-     * for. If given only the service name, all instances are blocked.</p>
-     */
-    inline void SetServiceName(Aws::String&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::move(value); }
-
-    /**
-     * <p>The name of the service that you want to get the service sync blocker summary
-     * for. If given only the service name, all instances are blocked.</p>
-     */
-    inline void SetServiceName(const char* value) { m_serviceNameHasBeenSet = true; m_serviceName.assign(value); }
-
-    /**
-     * <p>The name of the service that you want to get the service sync blocker summary
-     * for. If given only the service name, all instances are blocked.</p>
-     */
-    inline GetServiceSyncBlockerSummaryRequest& WithServiceName(const Aws::String& value) { SetServiceName(value); return *this;}
-
-    /**
-     * <p>The name of the service that you want to get the service sync blocker summary
-     * for. If given only the service name, all instances are blocked.</p>
-     */
-    inline GetServiceSyncBlockerSummaryRequest& WithServiceName(Aws::String&& value) { SetServiceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service that you want to get the service sync blocker summary
-     * for. If given only the service name, all instances are blocked.</p>
-     */
-    inline GetServiceSyncBlockerSummaryRequest& WithServiceName(const char* value) { SetServiceName(value); return *this;}
-
+    template<typename ServiceNameT = Aws::String>
+    void SetServiceName(ServiceNameT&& value) { m_serviceNameHasBeenSet = true; m_serviceName = std::forward<ServiceNameT>(value); }
+    template<typename ServiceNameT = Aws::String>
+    GetServiceSyncBlockerSummaryRequest& WithServiceName(ServiceNameT&& value) { SetServiceName(std::forward<ServiceNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serviceInstanceName;

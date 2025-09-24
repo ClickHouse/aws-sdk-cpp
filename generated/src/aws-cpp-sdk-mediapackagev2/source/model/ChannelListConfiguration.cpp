@@ -18,23 +18,7 @@ namespace mediapackagev2
 namespace Model
 {
 
-ChannelListConfiguration::ChannelListConfiguration() : 
-    m_arnHasBeenSet(false),
-    m_channelNameHasBeenSet(false),
-    m_channelGroupNameHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_modifiedAtHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
-ChannelListConfiguration::ChannelListConfiguration(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_channelNameHasBeenSet(false),
-    m_channelGroupNameHasBeenSet(false),
-    m_createdAtHasBeenSet(false),
-    m_modifiedAtHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
+ChannelListConfiguration::ChannelListConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,45 +28,38 @@ ChannelListConfiguration& ChannelListConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ChannelName"))
   {
     m_channelName = jsonValue.GetString("ChannelName");
-
     m_channelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ChannelGroupName"))
   {
     m_channelGroupName = jsonValue.GetString("ChannelGroupName");
-
     m_channelGroupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedAt"))
   {
     m_createdAt = jsonValue.GetDouble("CreatedAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ModifiedAt"))
   {
     m_modifiedAt = jsonValue.GetDouble("ModifiedAt");
-
     m_modifiedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("InputType"))
+  {
+    m_inputType = InputTypeMapper::GetInputTypeForName(jsonValue.GetString("InputType"));
+    m_inputTypeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -122,6 +99,11 @@ JsonValue ChannelListConfiguration::Jsonize() const
   {
    payload.WithString("Description", m_description);
 
+  }
+
+  if(m_inputTypeHasBeenSet)
+  {
+   payload.WithString("InputType", InputTypeMapper::GetNameForInputType(m_inputType));
   }
 
   return payload;

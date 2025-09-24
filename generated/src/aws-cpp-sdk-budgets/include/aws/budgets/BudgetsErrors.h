@@ -47,14 +47,16 @@ enum class BudgetsErrors
   UNKNOWN = 100,
   ///////////////////////////////////////////////////////////////////////////////////////////
 
-  CREATION_LIMIT_EXCEEDED= static_cast<int>(Aws::Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
+  BILLING_VIEW_HEALTH_STATUS= static_cast<int>(Aws::Client::CoreErrors::SERVICE_EXTENSION_START_RANGE) + 1,
+  CREATION_LIMIT_EXCEEDED,
   DUPLICATE_RECORD,
   EXPIRED_NEXT_TOKEN,
   INTERNAL_ERROR,
   INVALID_NEXT_TOKEN,
   INVALID_PARAMETER,
   NOT_FOUND,
-  RESOURCE_LOCKED
+  RESOURCE_LOCKED,
+  SERVICE_QUOTA_EXCEEDED
 };
 
 class AWS_BUDGETS_API BudgetsError : public Aws::Client::AWSError<BudgetsErrors>

@@ -20,21 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-ClusterSecurityGroup::ClusterSecurityGroup() : 
-    m_clusterSecurityGroupNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_eC2SecurityGroupsHasBeenSet(false),
-    m_iPRangesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-ClusterSecurityGroup::ClusterSecurityGroup(const XmlNode& xmlNode) : 
-    m_clusterSecurityGroupNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_eC2SecurityGroupsHasBeenSet(false),
-    m_iPRangesHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+ClusterSecurityGroup::ClusterSecurityGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -61,6 +47,7 @@ ClusterSecurityGroup& ClusterSecurityGroup::operator =(const XmlNode& xmlNode)
     if(!eC2SecurityGroupsNode.IsNull())
     {
       XmlNode eC2SecurityGroupsMember = eC2SecurityGroupsNode.FirstChild("EC2SecurityGroup");
+      m_eC2SecurityGroupsHasBeenSet = !eC2SecurityGroupsMember.IsNull();
       while(!eC2SecurityGroupsMember.IsNull())
       {
         m_eC2SecurityGroups.push_back(eC2SecurityGroupsMember);
@@ -73,6 +60,7 @@ ClusterSecurityGroup& ClusterSecurityGroup::operator =(const XmlNode& xmlNode)
     if(!iPRangesNode.IsNull())
     {
       XmlNode iPRangesMember = iPRangesNode.FirstChild("IPRange");
+      m_iPRangesHasBeenSet = !iPRangesMember.IsNull();
       while(!iPRangesMember.IsNull())
       {
         m_iPRanges.push_back(iPRangesMember);
@@ -85,6 +73,7 @@ ClusterSecurityGroup& ClusterSecurityGroup::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("Tag");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -116,7 +105,7 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_eC2SecurityGroups)
       {
         Aws::StringStream eC2SecurityGroupsSs;
-        eC2SecurityGroupsSs << location << index << locationValue << ".EC2SecurityGroup." << eC2SecurityGroupsIdx++;
+        eC2SecurityGroupsSs << location << index << locationValue << ".EC2SecurityGroups.EC2SecurityGroup." << eC2SecurityGroupsIdx++;
         item.OutputToStream(oStream, eC2SecurityGroupsSs.str().c_str());
       }
   }
@@ -127,7 +116,7 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_iPRanges)
       {
         Aws::StringStream iPRangesSs;
-        iPRangesSs << location << index << locationValue << ".IPRange." << iPRangesIdx++;
+        iPRangesSs << location << index << locationValue << ".IPRanges.IPRange." << iPRangesIdx++;
         item.OutputToStream(oStream, iPRangesSs.str().c_str());
       }
   }
@@ -138,7 +127,7 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location << index << locationValue << ".Tag." << tagsIdx++;
+        tagsSs << location << index << locationValue << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }
@@ -161,7 +150,7 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_eC2SecurityGroups)
       {
         Aws::StringStream eC2SecurityGroupsSs;
-        eC2SecurityGroupsSs << location <<  ".EC2SecurityGroup." << eC2SecurityGroupsIdx++;
+        eC2SecurityGroupsSs << location << ".EC2SecurityGroups.EC2SecurityGroup." << eC2SecurityGroupsIdx++;
         item.OutputToStream(oStream, eC2SecurityGroupsSs.str().c_str());
       }
   }
@@ -171,7 +160,7 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_iPRanges)
       {
         Aws::StringStream iPRangesSs;
-        iPRangesSs << location <<  ".IPRange." << iPRangesIdx++;
+        iPRangesSs << location << ".IPRanges.IPRange." << iPRangesIdx++;
         item.OutputToStream(oStream, iPRangesSs.str().c_str());
       }
   }
@@ -181,7 +170,7 @@ void ClusterSecurityGroup::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tag." << tagsIdx++;
+        tagsSs << location << ".Tags.Tag." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

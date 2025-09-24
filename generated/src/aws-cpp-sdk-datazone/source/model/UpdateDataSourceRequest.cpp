@@ -12,22 +12,6 @@ using namespace Aws::DataZone::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateDataSourceRequest::UpdateDataSourceRequest() : 
-    m_assetFormsInputHasBeenSet(false),
-    m_configurationHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_domainIdentifierHasBeenSet(false),
-    m_enableSetting(EnableSetting::NOT_SET),
-    m_enableSettingHasBeenSet(false),
-    m_identifierHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_publishOnImport(false),
-    m_publishOnImportHasBeenSet(false),
-    m_recommendationHasBeenSet(false),
-    m_scheduleHasBeenSet(false)
-{
-}
-
 Aws::String UpdateDataSourceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -75,6 +59,12 @@ Aws::String UpdateDataSourceRequest::SerializePayload() const
   if(m_recommendationHasBeenSet)
   {
    payload.WithObject("recommendation", m_recommendation.Jsonize());
+
+  }
+
+  if(m_retainPermissionsOnRevokeFailureHasBeenSet)
+  {
+   payload.WithBool("retainPermissionsOnRevokeFailure", m_retainPermissionsOnRevokeFailure);
 
   }
 

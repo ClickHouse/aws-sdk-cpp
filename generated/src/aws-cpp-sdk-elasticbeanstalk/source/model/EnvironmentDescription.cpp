@@ -20,61 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-EnvironmentDescription::EnvironmentDescription() : 
-    m_environmentNameHasBeenSet(false),
-    m_environmentIdHasBeenSet(false),
-    m_applicationNameHasBeenSet(false),
-    m_versionLabelHasBeenSet(false),
-    m_solutionStackNameHasBeenSet(false),
-    m_platformArnHasBeenSet(false),
-    m_templateNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_endpointURLHasBeenSet(false),
-    m_cNAMEHasBeenSet(false),
-    m_dateCreatedHasBeenSet(false),
-    m_dateUpdatedHasBeenSet(false),
-    m_status(EnvironmentStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_abortableOperationInProgress(false),
-    m_abortableOperationInProgressHasBeenSet(false),
-    m_health(EnvironmentHealth::NOT_SET),
-    m_healthHasBeenSet(false),
-    m_healthStatus(EnvironmentHealthStatus::NOT_SET),
-    m_healthStatusHasBeenSet(false),
-    m_resourcesHasBeenSet(false),
-    m_tierHasBeenSet(false),
-    m_environmentLinksHasBeenSet(false),
-    m_environmentArnHasBeenSet(false),
-    m_operationsRoleHasBeenSet(false)
-{
-}
-
-EnvironmentDescription::EnvironmentDescription(const XmlNode& xmlNode) : 
-    m_environmentNameHasBeenSet(false),
-    m_environmentIdHasBeenSet(false),
-    m_applicationNameHasBeenSet(false),
-    m_versionLabelHasBeenSet(false),
-    m_solutionStackNameHasBeenSet(false),
-    m_platformArnHasBeenSet(false),
-    m_templateNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_endpointURLHasBeenSet(false),
-    m_cNAMEHasBeenSet(false),
-    m_dateCreatedHasBeenSet(false),
-    m_dateUpdatedHasBeenSet(false),
-    m_status(EnvironmentStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_abortableOperationInProgress(false),
-    m_abortableOperationInProgressHasBeenSet(false),
-    m_health(EnvironmentHealth::NOT_SET),
-    m_healthHasBeenSet(false),
-    m_healthStatus(EnvironmentHealthStatus::NOT_SET),
-    m_healthStatusHasBeenSet(false),
-    m_resourcesHasBeenSet(false),
-    m_tierHasBeenSet(false),
-    m_environmentLinksHasBeenSet(false),
-    m_environmentArnHasBeenSet(false),
-    m_operationsRoleHasBeenSet(false)
+EnvironmentDescription::EnvironmentDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -160,7 +106,7 @@ EnvironmentDescription& EnvironmentDescription::operator =(const XmlNode& xmlNod
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = EnvironmentStatusMapper::GetEnvironmentStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = EnvironmentStatusMapper::GetEnvironmentStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode abortableOperationInProgressNode = resultNode.FirstChild("AbortableOperationInProgress");
@@ -172,13 +118,13 @@ EnvironmentDescription& EnvironmentDescription::operator =(const XmlNode& xmlNod
     XmlNode healthNode = resultNode.FirstChild("Health");
     if(!healthNode.IsNull())
     {
-      m_health = EnvironmentHealthMapper::GetEnvironmentHealthForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(healthNode.GetText()).c_str()).c_str());
+      m_health = EnvironmentHealthMapper::GetEnvironmentHealthForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(healthNode.GetText()).c_str()));
       m_healthHasBeenSet = true;
     }
     XmlNode healthStatusNode = resultNode.FirstChild("HealthStatus");
     if(!healthStatusNode.IsNull())
     {
-      m_healthStatus = EnvironmentHealthStatusMapper::GetEnvironmentHealthStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(healthStatusNode.GetText()).c_str()).c_str());
+      m_healthStatus = EnvironmentHealthStatusMapper::GetEnvironmentHealthStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(healthStatusNode.GetText()).c_str()));
       m_healthStatusHasBeenSet = true;
     }
     XmlNode resourcesNode = resultNode.FirstChild("Resources");
@@ -197,6 +143,7 @@ EnvironmentDescription& EnvironmentDescription::operator =(const XmlNode& xmlNod
     if(!environmentLinksNode.IsNull())
     {
       XmlNode environmentLinksMember = environmentLinksNode.FirstChild("member");
+      m_environmentLinksHasBeenSet = !environmentLinksMember.IsNull();
       while(!environmentLinksMember.IsNull())
       {
         m_environmentLinks.push_back(environmentLinksMember);
@@ -286,7 +233,7 @@ void EnvironmentDescription::OutputToStream(Aws::OStream& oStream, const char* l
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << EnvironmentStatusMapper::GetNameForEnvironmentStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(EnvironmentStatusMapper::GetNameForEnvironmentStatus(m_status)) << "&";
   }
 
   if(m_abortableOperationInProgressHasBeenSet)
@@ -296,12 +243,12 @@ void EnvironmentDescription::OutputToStream(Aws::OStream& oStream, const char* l
 
   if(m_healthHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Health=" << EnvironmentHealthMapper::GetNameForEnvironmentHealth(m_health) << "&";
+      oStream << location << index << locationValue << ".Health=" << StringUtils::URLEncode(EnvironmentHealthMapper::GetNameForEnvironmentHealth(m_health)) << "&";
   }
 
   if(m_healthStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HealthStatus=" << EnvironmentHealthStatusMapper::GetNameForEnvironmentHealthStatus(m_healthStatus) << "&";
+      oStream << location << index << locationValue << ".HealthStatus=" << StringUtils::URLEncode(EnvironmentHealthStatusMapper::GetNameForEnvironmentHealthStatus(m_healthStatus)) << "&";
   }
 
   if(m_resourcesHasBeenSet)
@@ -396,7 +343,7 @@ void EnvironmentDescription::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << EnvironmentStatusMapper::GetNameForEnvironmentStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(EnvironmentStatusMapper::GetNameForEnvironmentStatus(m_status)) << "&";
   }
   if(m_abortableOperationInProgressHasBeenSet)
   {
@@ -404,11 +351,11 @@ void EnvironmentDescription::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_healthHasBeenSet)
   {
-      oStream << location << ".Health=" << EnvironmentHealthMapper::GetNameForEnvironmentHealth(m_health) << "&";
+      oStream << location << ".Health=" << StringUtils::URLEncode(EnvironmentHealthMapper::GetNameForEnvironmentHealth(m_health)) << "&";
   }
   if(m_healthStatusHasBeenSet)
   {
-      oStream << location << ".HealthStatus=" << EnvironmentHealthStatusMapper::GetNameForEnvironmentHealthStatus(m_healthStatus) << "&";
+      oStream << location << ".HealthStatus=" << StringUtils::URLEncode(EnvironmentHealthStatusMapper::GetNameForEnvironmentHealthStatus(m_healthStatus)) << "&";
   }
   if(m_resourcesHasBeenSet)
   {
@@ -428,7 +375,7 @@ void EnvironmentDescription::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_environmentLinks)
       {
         Aws::StringStream environmentLinksSs;
-        environmentLinksSs << location <<  ".EnvironmentLinks.member." << environmentLinksIdx++;
+        environmentLinksSs << location << ".EnvironmentLinks.member." << environmentLinksIdx++;
         item.OutputToStream(oStream, environmentLinksSs.str().c_str());
       }
   }

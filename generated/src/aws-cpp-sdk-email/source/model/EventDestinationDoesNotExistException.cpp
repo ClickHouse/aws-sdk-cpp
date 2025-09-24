@@ -20,15 +20,7 @@ namespace SES
 namespace Model
 {
 
-EventDestinationDoesNotExistException::EventDestinationDoesNotExistException() : 
-    m_configurationSetNameHasBeenSet(false),
-    m_eventDestinationNameHasBeenSet(false)
-{
-}
-
-EventDestinationDoesNotExistException::EventDestinationDoesNotExistException(const XmlNode& xmlNode) : 
-    m_configurationSetNameHasBeenSet(false),
-    m_eventDestinationNameHasBeenSet(false)
+EventDestinationDoesNotExistException::EventDestinationDoesNotExistException(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

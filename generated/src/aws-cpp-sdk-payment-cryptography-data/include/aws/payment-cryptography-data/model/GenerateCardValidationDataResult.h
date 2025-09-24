@@ -27,198 +27,70 @@ namespace Model
   class GenerateCardValidationDataResult
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHYDATA_API GenerateCardValidationDataResult();
+    AWS_PAYMENTCRYPTOGRAPHYDATA_API GenerateCardValidationDataResult() = default;
     AWS_PAYMENTCRYPTOGRAPHYDATA_API GenerateCardValidationDataResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API GenerateCardValidationDataResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The <code>keyARN</code> of the CVK encryption key that Amazon Web Services
      * Payment Cryptography uses to generate CVV or CSC.</p>
      */
-    inline const Aws::String& GetKeyArn() const{ return m_keyArn; }
+    inline const Aws::String& GetKeyArn() const { return m_keyArn; }
+    template<typename KeyArnT = Aws::String>
+    void SetKeyArn(KeyArnT&& value) { m_keyArnHasBeenSet = true; m_keyArn = std::forward<KeyArnT>(value); }
+    template<typename KeyArnT = Aws::String>
+    GenerateCardValidationDataResult& WithKeyArn(KeyArnT&& value) { SetKeyArn(std::forward<KeyArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The <code>keyARN</code> of the CVK encryption key that Amazon Web Services
-     * Payment Cryptography uses to generate CVV or CSC.</p>
-     */
-    inline void SetKeyArn(const Aws::String& value) { m_keyArn = value; }
-
-    /**
-     * <p>The <code>keyARN</code> of the CVK encryption key that Amazon Web Services
-     * Payment Cryptography uses to generate CVV or CSC.</p>
-     */
-    inline void SetKeyArn(Aws::String&& value) { m_keyArn = std::move(value); }
-
-    /**
-     * <p>The <code>keyARN</code> of the CVK encryption key that Amazon Web Services
-     * Payment Cryptography uses to generate CVV or CSC.</p>
-     */
-    inline void SetKeyArn(const char* value) { m_keyArn.assign(value); }
-
-    /**
-     * <p>The <code>keyARN</code> of the CVK encryption key that Amazon Web Services
-     * Payment Cryptography uses to generate CVV or CSC.</p>
-     */
-    inline GenerateCardValidationDataResult& WithKeyArn(const Aws::String& value) { SetKeyArn(value); return *this;}
-
-    /**
-     * <p>The <code>keyARN</code> of the CVK encryption key that Amazon Web Services
-     * Payment Cryptography uses to generate CVV or CSC.</p>
-     */
-    inline GenerateCardValidationDataResult& WithKeyArn(Aws::String&& value) { SetKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>keyARN</code> of the CVK encryption key that Amazon Web Services
-     * Payment Cryptography uses to generate CVV or CSC.</p>
-     */
-    inline GenerateCardValidationDataResult& WithKeyArn(const char* value) { SetKeyArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
      * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
+     * changed.</p> <p>Amazon Web Services Payment Cryptography computes the KCV
+     * according to the CMAC specification.</p>
      */
-    inline const Aws::String& GetKeyCheckValue() const{ return m_keyCheckValue; }
+    inline const Aws::String& GetKeyCheckValue() const { return m_keyCheckValue; }
+    template<typename KeyCheckValueT = Aws::String>
+    void SetKeyCheckValue(KeyCheckValueT&& value) { m_keyCheckValueHasBeenSet = true; m_keyCheckValue = std::forward<KeyCheckValueT>(value); }
+    template<typename KeyCheckValueT = Aws::String>
+    GenerateCardValidationDataResult& WithKeyCheckValue(KeyCheckValueT&& value) { SetKeyCheckValue(std::forward<KeyCheckValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline void SetKeyCheckValue(const Aws::String& value) { m_keyCheckValue = value; }
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline void SetKeyCheckValue(Aws::String&& value) { m_keyCheckValue = std::move(value); }
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline void SetKeyCheckValue(const char* value) { m_keyCheckValue.assign(value); }
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline GenerateCardValidationDataResult& WithKeyCheckValue(const Aws::String& value) { SetKeyCheckValue(value); return *this;}
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline GenerateCardValidationDataResult& WithKeyCheckValue(Aws::String&& value) { SetKeyCheckValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The key check value (KCV) of the encryption key. The KCV is used to check if
-     * all parties holding a given key have the same key or to detect that a key has
-     * changed. Amazon Web Services Payment Cryptography calculates the KCV by using
-     * standard algorithms, typically by encrypting 8 or 16 bytes or "00" or "01" and
-     * then truncating the result to the first 3 bytes, or 6 hex digits, of the
-     * resulting cryptogram.</p>
-     */
-    inline GenerateCardValidationDataResult& WithKeyCheckValue(const char* value) { SetKeyCheckValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The CVV or CSC value that Amazon Web Services Payment Cryptography generates
      * for the card.</p>
      */
-    inline const Aws::String& GetValidationData() const{ return m_validationData; }
+    inline const Aws::String& GetValidationData() const { return m_validationData; }
+    template<typename ValidationDataT = Aws::String>
+    void SetValidationData(ValidationDataT&& value) { m_validationDataHasBeenSet = true; m_validationData = std::forward<ValidationDataT>(value); }
+    template<typename ValidationDataT = Aws::String>
+    GenerateCardValidationDataResult& WithValidationData(ValidationDataT&& value) { SetValidationData(std::forward<ValidationDataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The CVV or CSC value that Amazon Web Services Payment Cryptography generates
-     * for the card.</p>
-     */
-    inline void SetValidationData(const Aws::String& value) { m_validationData = value; }
-
-    /**
-     * <p>The CVV or CSC value that Amazon Web Services Payment Cryptography generates
-     * for the card.</p>
-     */
-    inline void SetValidationData(Aws::String&& value) { m_validationData = std::move(value); }
-
-    /**
-     * <p>The CVV or CSC value that Amazon Web Services Payment Cryptography generates
-     * for the card.</p>
-     */
-    inline void SetValidationData(const char* value) { m_validationData.assign(value); }
-
-    /**
-     * <p>The CVV or CSC value that Amazon Web Services Payment Cryptography generates
-     * for the card.</p>
-     */
-    inline GenerateCardValidationDataResult& WithValidationData(const Aws::String& value) { SetValidationData(value); return *this;}
-
-    /**
-     * <p>The CVV or CSC value that Amazon Web Services Payment Cryptography generates
-     * for the card.</p>
-     */
-    inline GenerateCardValidationDataResult& WithValidationData(Aws::String&& value) { SetValidationData(std::move(value)); return *this;}
-
-    /**
-     * <p>The CVV or CSC value that Amazon Web Services Payment Cryptography generates
-     * for the card.</p>
-     */
-    inline GenerateCardValidationDataResult& WithValidationData(const char* value) { SetValidationData(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GenerateCardValidationDataResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GenerateCardValidationDataResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GenerateCardValidationDataResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GenerateCardValidationDataResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_keyArn;
+    bool m_keyArnHasBeenSet = false;
 
     Aws::String m_keyCheckValue;
+    bool m_keyCheckValueHasBeenSet = false;
 
     Aws::String m_validationData;
+    bool m_validationDataHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

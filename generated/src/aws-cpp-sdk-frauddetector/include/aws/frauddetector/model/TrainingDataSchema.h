@@ -33,76 +33,35 @@ namespace Model
   class TrainingDataSchema
   {
   public:
-    AWS_FRAUDDETECTOR_API TrainingDataSchema();
+    AWS_FRAUDDETECTOR_API TrainingDataSchema() = default;
     AWS_FRAUDDETECTOR_API TrainingDataSchema(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API TrainingDataSchema& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The training data schema variables.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetModelVariables() const{ return m_modelVariables; }
-
-    /**
-     * <p>The training data schema variables.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetModelVariables() const { return m_modelVariables; }
     inline bool ModelVariablesHasBeenSet() const { return m_modelVariablesHasBeenSet; }
+    template<typename ModelVariablesT = Aws::Vector<Aws::String>>
+    void SetModelVariables(ModelVariablesT&& value) { m_modelVariablesHasBeenSet = true; m_modelVariables = std::forward<ModelVariablesT>(value); }
+    template<typename ModelVariablesT = Aws::Vector<Aws::String>>
+    TrainingDataSchema& WithModelVariables(ModelVariablesT&& value) { SetModelVariables(std::forward<ModelVariablesT>(value)); return *this;}
+    template<typename ModelVariablesT = Aws::String>
+    TrainingDataSchema& AddModelVariables(ModelVariablesT&& value) { m_modelVariablesHasBeenSet = true; m_modelVariables.emplace_back(std::forward<ModelVariablesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The training data schema variables.</p>
-     */
-    inline void SetModelVariables(const Aws::Vector<Aws::String>& value) { m_modelVariablesHasBeenSet = true; m_modelVariables = value; }
-
-    /**
-     * <p>The training data schema variables.</p>
-     */
-    inline void SetModelVariables(Aws::Vector<Aws::String>&& value) { m_modelVariablesHasBeenSet = true; m_modelVariables = std::move(value); }
-
-    /**
-     * <p>The training data schema variables.</p>
-     */
-    inline TrainingDataSchema& WithModelVariables(const Aws::Vector<Aws::String>& value) { SetModelVariables(value); return *this;}
-
-    /**
-     * <p>The training data schema variables.</p>
-     */
-    inline TrainingDataSchema& WithModelVariables(Aws::Vector<Aws::String>&& value) { SetModelVariables(std::move(value)); return *this;}
-
-    /**
-     * <p>The training data schema variables.</p>
-     */
-    inline TrainingDataSchema& AddModelVariables(const Aws::String& value) { m_modelVariablesHasBeenSet = true; m_modelVariables.push_back(value); return *this; }
-
-    /**
-     * <p>The training data schema variables.</p>
-     */
-    inline TrainingDataSchema& AddModelVariables(Aws::String&& value) { m_modelVariablesHasBeenSet = true; m_modelVariables.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The training data schema variables.</p>
-     */
-    inline TrainingDataSchema& AddModelVariables(const char* value) { m_modelVariablesHasBeenSet = true; m_modelVariables.push_back(value); return *this; }
-
-
+    ///@{
     
-    inline const LabelSchema& GetLabelSchema() const{ return m_labelSchema; }
-
-    
+    inline const LabelSchema& GetLabelSchema() const { return m_labelSchema; }
     inline bool LabelSchemaHasBeenSet() const { return m_labelSchemaHasBeenSet; }
-
-    
-    inline void SetLabelSchema(const LabelSchema& value) { m_labelSchemaHasBeenSet = true; m_labelSchema = value; }
-
-    
-    inline void SetLabelSchema(LabelSchema&& value) { m_labelSchemaHasBeenSet = true; m_labelSchema = std::move(value); }
-
-    
-    inline TrainingDataSchema& WithLabelSchema(const LabelSchema& value) { SetLabelSchema(value); return *this;}
-
-    
-    inline TrainingDataSchema& WithLabelSchema(LabelSchema&& value) { SetLabelSchema(std::move(value)); return *this;}
-
+    template<typename LabelSchemaT = LabelSchema>
+    void SetLabelSchema(LabelSchemaT&& value) { m_labelSchemaHasBeenSet = true; m_labelSchema = std::forward<LabelSchemaT>(value); }
+    template<typename LabelSchemaT = LabelSchema>
+    TrainingDataSchema& WithLabelSchema(LabelSchemaT&& value) { SetLabelSchema(std::forward<LabelSchemaT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_modelVariables;

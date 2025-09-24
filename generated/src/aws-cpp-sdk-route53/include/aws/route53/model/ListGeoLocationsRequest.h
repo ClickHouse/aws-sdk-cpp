@@ -29,7 +29,7 @@ namespace Model
   class ListGeoLocationsRequest : public Route53Request
   {
   public:
-    AWS_ROUTE53_API ListGeoLocationsRequest();
+    AWS_ROUTE53_API ListGeoLocationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,6 +42,7 @@ namespace Model
     AWS_ROUTE53_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The code for the continent with which you want to start listing locations
      * that Amazon Route 53 supports for geolocation. If Route 53 has already returned
@@ -52,93 +53,15 @@ namespace Model
      * continents. Don't include <code>startcontinentcode</code> when you're listing
      * countries or countries with their subdivisions.</p>
      */
-    inline const Aws::String& GetStartContinentCode() const{ return m_startContinentCode; }
-
-    /**
-     * <p>The code for the continent with which you want to start listing locations
-     * that Amazon Route 53 supports for geolocation. If Route 53 has already returned
-     * a page or more of results, if <code>IsTruncated</code> is true, and if
-     * <code>NextContinentCode</code> from the previous response has a value, enter
-     * that value in <code>startcontinentcode</code> to return the next page of
-     * results.</p> <p>Include <code>startcontinentcode</code> only if you want to list
-     * continents. Don't include <code>startcontinentcode</code> when you're listing
-     * countries or countries with their subdivisions.</p>
-     */
+    inline const Aws::String& GetStartContinentCode() const { return m_startContinentCode; }
     inline bool StartContinentCodeHasBeenSet() const { return m_startContinentCodeHasBeenSet; }
+    template<typename StartContinentCodeT = Aws::String>
+    void SetStartContinentCode(StartContinentCodeT&& value) { m_startContinentCodeHasBeenSet = true; m_startContinentCode = std::forward<StartContinentCodeT>(value); }
+    template<typename StartContinentCodeT = Aws::String>
+    ListGeoLocationsRequest& WithStartContinentCode(StartContinentCodeT&& value) { SetStartContinentCode(std::forward<StartContinentCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The code for the continent with which you want to start listing locations
-     * that Amazon Route 53 supports for geolocation. If Route 53 has already returned
-     * a page or more of results, if <code>IsTruncated</code> is true, and if
-     * <code>NextContinentCode</code> from the previous response has a value, enter
-     * that value in <code>startcontinentcode</code> to return the next page of
-     * results.</p> <p>Include <code>startcontinentcode</code> only if you want to list
-     * continents. Don't include <code>startcontinentcode</code> when you're listing
-     * countries or countries with their subdivisions.</p>
-     */
-    inline void SetStartContinentCode(const Aws::String& value) { m_startContinentCodeHasBeenSet = true; m_startContinentCode = value; }
-
-    /**
-     * <p>The code for the continent with which you want to start listing locations
-     * that Amazon Route 53 supports for geolocation. If Route 53 has already returned
-     * a page or more of results, if <code>IsTruncated</code> is true, and if
-     * <code>NextContinentCode</code> from the previous response has a value, enter
-     * that value in <code>startcontinentcode</code> to return the next page of
-     * results.</p> <p>Include <code>startcontinentcode</code> only if you want to list
-     * continents. Don't include <code>startcontinentcode</code> when you're listing
-     * countries or countries with their subdivisions.</p>
-     */
-    inline void SetStartContinentCode(Aws::String&& value) { m_startContinentCodeHasBeenSet = true; m_startContinentCode = std::move(value); }
-
-    /**
-     * <p>The code for the continent with which you want to start listing locations
-     * that Amazon Route 53 supports for geolocation. If Route 53 has already returned
-     * a page or more of results, if <code>IsTruncated</code> is true, and if
-     * <code>NextContinentCode</code> from the previous response has a value, enter
-     * that value in <code>startcontinentcode</code> to return the next page of
-     * results.</p> <p>Include <code>startcontinentcode</code> only if you want to list
-     * continents. Don't include <code>startcontinentcode</code> when you're listing
-     * countries or countries with their subdivisions.</p>
-     */
-    inline void SetStartContinentCode(const char* value) { m_startContinentCodeHasBeenSet = true; m_startContinentCode.assign(value); }
-
-    /**
-     * <p>The code for the continent with which you want to start listing locations
-     * that Amazon Route 53 supports for geolocation. If Route 53 has already returned
-     * a page or more of results, if <code>IsTruncated</code> is true, and if
-     * <code>NextContinentCode</code> from the previous response has a value, enter
-     * that value in <code>startcontinentcode</code> to return the next page of
-     * results.</p> <p>Include <code>startcontinentcode</code> only if you want to list
-     * continents. Don't include <code>startcontinentcode</code> when you're listing
-     * countries or countries with their subdivisions.</p>
-     */
-    inline ListGeoLocationsRequest& WithStartContinentCode(const Aws::String& value) { SetStartContinentCode(value); return *this;}
-
-    /**
-     * <p>The code for the continent with which you want to start listing locations
-     * that Amazon Route 53 supports for geolocation. If Route 53 has already returned
-     * a page or more of results, if <code>IsTruncated</code> is true, and if
-     * <code>NextContinentCode</code> from the previous response has a value, enter
-     * that value in <code>startcontinentcode</code> to return the next page of
-     * results.</p> <p>Include <code>startcontinentcode</code> only if you want to list
-     * continents. Don't include <code>startcontinentcode</code> when you're listing
-     * countries or countries with their subdivisions.</p>
-     */
-    inline ListGeoLocationsRequest& WithStartContinentCode(Aws::String&& value) { SetStartContinentCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The code for the continent with which you want to start listing locations
-     * that Amazon Route 53 supports for geolocation. If Route 53 has already returned
-     * a page or more of results, if <code>IsTruncated</code> is true, and if
-     * <code>NextContinentCode</code> from the previous response has a value, enter
-     * that value in <code>startcontinentcode</code> to return the next page of
-     * results.</p> <p>Include <code>startcontinentcode</code> only if you want to list
-     * continents. Don't include <code>startcontinentcode</code> when you're listing
-     * countries or countries with their subdivisions.</p>
-     */
-    inline ListGeoLocationsRequest& WithStartContinentCode(const char* value) { SetStartContinentCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The code for the country with which you want to start listing locations that
      * Amazon Route 53 supports for geolocation. If Route 53 has already returned a
@@ -147,79 +70,15 @@ namespace Model
      * that value in <code>startcountrycode</code> to return the next page of
      * results.</p>
      */
-    inline const Aws::String& GetStartCountryCode() const{ return m_startCountryCode; }
-
-    /**
-     * <p>The code for the country with which you want to start listing locations that
-     * Amazon Route 53 supports for geolocation. If Route 53 has already returned a
-     * page or more of results, if <code>IsTruncated</code> is <code>true</code>, and
-     * if <code>NextCountryCode</code> from the previous response has a value, enter
-     * that value in <code>startcountrycode</code> to return the next page of
-     * results.</p>
-     */
+    inline const Aws::String& GetStartCountryCode() const { return m_startCountryCode; }
     inline bool StartCountryCodeHasBeenSet() const { return m_startCountryCodeHasBeenSet; }
+    template<typename StartCountryCodeT = Aws::String>
+    void SetStartCountryCode(StartCountryCodeT&& value) { m_startCountryCodeHasBeenSet = true; m_startCountryCode = std::forward<StartCountryCodeT>(value); }
+    template<typename StartCountryCodeT = Aws::String>
+    ListGeoLocationsRequest& WithStartCountryCode(StartCountryCodeT&& value) { SetStartCountryCode(std::forward<StartCountryCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The code for the country with which you want to start listing locations that
-     * Amazon Route 53 supports for geolocation. If Route 53 has already returned a
-     * page or more of results, if <code>IsTruncated</code> is <code>true</code>, and
-     * if <code>NextCountryCode</code> from the previous response has a value, enter
-     * that value in <code>startcountrycode</code> to return the next page of
-     * results.</p>
-     */
-    inline void SetStartCountryCode(const Aws::String& value) { m_startCountryCodeHasBeenSet = true; m_startCountryCode = value; }
-
-    /**
-     * <p>The code for the country with which you want to start listing locations that
-     * Amazon Route 53 supports for geolocation. If Route 53 has already returned a
-     * page or more of results, if <code>IsTruncated</code> is <code>true</code>, and
-     * if <code>NextCountryCode</code> from the previous response has a value, enter
-     * that value in <code>startcountrycode</code> to return the next page of
-     * results.</p>
-     */
-    inline void SetStartCountryCode(Aws::String&& value) { m_startCountryCodeHasBeenSet = true; m_startCountryCode = std::move(value); }
-
-    /**
-     * <p>The code for the country with which you want to start listing locations that
-     * Amazon Route 53 supports for geolocation. If Route 53 has already returned a
-     * page or more of results, if <code>IsTruncated</code> is <code>true</code>, and
-     * if <code>NextCountryCode</code> from the previous response has a value, enter
-     * that value in <code>startcountrycode</code> to return the next page of
-     * results.</p>
-     */
-    inline void SetStartCountryCode(const char* value) { m_startCountryCodeHasBeenSet = true; m_startCountryCode.assign(value); }
-
-    /**
-     * <p>The code for the country with which you want to start listing locations that
-     * Amazon Route 53 supports for geolocation. If Route 53 has already returned a
-     * page or more of results, if <code>IsTruncated</code> is <code>true</code>, and
-     * if <code>NextCountryCode</code> from the previous response has a value, enter
-     * that value in <code>startcountrycode</code> to return the next page of
-     * results.</p>
-     */
-    inline ListGeoLocationsRequest& WithStartCountryCode(const Aws::String& value) { SetStartCountryCode(value); return *this;}
-
-    /**
-     * <p>The code for the country with which you want to start listing locations that
-     * Amazon Route 53 supports for geolocation. If Route 53 has already returned a
-     * page or more of results, if <code>IsTruncated</code> is <code>true</code>, and
-     * if <code>NextCountryCode</code> from the previous response has a value, enter
-     * that value in <code>startcountrycode</code> to return the next page of
-     * results.</p>
-     */
-    inline ListGeoLocationsRequest& WithStartCountryCode(Aws::String&& value) { SetStartCountryCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The code for the country with which you want to start listing locations that
-     * Amazon Route 53 supports for geolocation. If Route 53 has already returned a
-     * page or more of results, if <code>IsTruncated</code> is <code>true</code>, and
-     * if <code>NextCountryCode</code> from the previous response has a value, enter
-     * that value in <code>startcountrycode</code> to return the next page of
-     * results.</p>
-     */
-    inline ListGeoLocationsRequest& WithStartCountryCode(const char* value) { SetStartCountryCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The code for the state of the United States with which you want to start
      * listing locations that Amazon Route 53 supports for geolocation. If Route 53 has
@@ -230,157 +89,28 @@ namespace Model
      * must include both <code>startcountrycode</code> and
      * <code>startsubdivisioncode</code>.</p>
      */
-    inline const Aws::String& GetStartSubdivisionCode() const{ return m_startSubdivisionCode; }
-
-    /**
-     * <p>The code for the state of the United States with which you want to start
-     * listing locations that Amazon Route 53 supports for geolocation. If Route 53 has
-     * already returned a page or more of results, if <code>IsTruncated</code> is
-     * <code>true</code>, and if <code>NextSubdivisionCode</code> from the previous
-     * response has a value, enter that value in <code>startsubdivisioncode</code> to
-     * return the next page of results.</p> <p>To list subdivisions (U.S. states), you
-     * must include both <code>startcountrycode</code> and
-     * <code>startsubdivisioncode</code>.</p>
-     */
+    inline const Aws::String& GetStartSubdivisionCode() const { return m_startSubdivisionCode; }
     inline bool StartSubdivisionCodeHasBeenSet() const { return m_startSubdivisionCodeHasBeenSet; }
+    template<typename StartSubdivisionCodeT = Aws::String>
+    void SetStartSubdivisionCode(StartSubdivisionCodeT&& value) { m_startSubdivisionCodeHasBeenSet = true; m_startSubdivisionCode = std::forward<StartSubdivisionCodeT>(value); }
+    template<typename StartSubdivisionCodeT = Aws::String>
+    ListGeoLocationsRequest& WithStartSubdivisionCode(StartSubdivisionCodeT&& value) { SetStartSubdivisionCode(std::forward<StartSubdivisionCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The code for the state of the United States with which you want to start
-     * listing locations that Amazon Route 53 supports for geolocation. If Route 53 has
-     * already returned a page or more of results, if <code>IsTruncated</code> is
-     * <code>true</code>, and if <code>NextSubdivisionCode</code> from the previous
-     * response has a value, enter that value in <code>startsubdivisioncode</code> to
-     * return the next page of results.</p> <p>To list subdivisions (U.S. states), you
-     * must include both <code>startcountrycode</code> and
-     * <code>startsubdivisioncode</code>.</p>
-     */
-    inline void SetStartSubdivisionCode(const Aws::String& value) { m_startSubdivisionCodeHasBeenSet = true; m_startSubdivisionCode = value; }
-
-    /**
-     * <p>The code for the state of the United States with which you want to start
-     * listing locations that Amazon Route 53 supports for geolocation. If Route 53 has
-     * already returned a page or more of results, if <code>IsTruncated</code> is
-     * <code>true</code>, and if <code>NextSubdivisionCode</code> from the previous
-     * response has a value, enter that value in <code>startsubdivisioncode</code> to
-     * return the next page of results.</p> <p>To list subdivisions (U.S. states), you
-     * must include both <code>startcountrycode</code> and
-     * <code>startsubdivisioncode</code>.</p>
-     */
-    inline void SetStartSubdivisionCode(Aws::String&& value) { m_startSubdivisionCodeHasBeenSet = true; m_startSubdivisionCode = std::move(value); }
-
-    /**
-     * <p>The code for the state of the United States with which you want to start
-     * listing locations that Amazon Route 53 supports for geolocation. If Route 53 has
-     * already returned a page or more of results, if <code>IsTruncated</code> is
-     * <code>true</code>, and if <code>NextSubdivisionCode</code> from the previous
-     * response has a value, enter that value in <code>startsubdivisioncode</code> to
-     * return the next page of results.</p> <p>To list subdivisions (U.S. states), you
-     * must include both <code>startcountrycode</code> and
-     * <code>startsubdivisioncode</code>.</p>
-     */
-    inline void SetStartSubdivisionCode(const char* value) { m_startSubdivisionCodeHasBeenSet = true; m_startSubdivisionCode.assign(value); }
-
-    /**
-     * <p>The code for the state of the United States with which you want to start
-     * listing locations that Amazon Route 53 supports for geolocation. If Route 53 has
-     * already returned a page or more of results, if <code>IsTruncated</code> is
-     * <code>true</code>, and if <code>NextSubdivisionCode</code> from the previous
-     * response has a value, enter that value in <code>startsubdivisioncode</code> to
-     * return the next page of results.</p> <p>To list subdivisions (U.S. states), you
-     * must include both <code>startcountrycode</code> and
-     * <code>startsubdivisioncode</code>.</p>
-     */
-    inline ListGeoLocationsRequest& WithStartSubdivisionCode(const Aws::String& value) { SetStartSubdivisionCode(value); return *this;}
-
-    /**
-     * <p>The code for the state of the United States with which you want to start
-     * listing locations that Amazon Route 53 supports for geolocation. If Route 53 has
-     * already returned a page or more of results, if <code>IsTruncated</code> is
-     * <code>true</code>, and if <code>NextSubdivisionCode</code> from the previous
-     * response has a value, enter that value in <code>startsubdivisioncode</code> to
-     * return the next page of results.</p> <p>To list subdivisions (U.S. states), you
-     * must include both <code>startcountrycode</code> and
-     * <code>startsubdivisioncode</code>.</p>
-     */
-    inline ListGeoLocationsRequest& WithStartSubdivisionCode(Aws::String&& value) { SetStartSubdivisionCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The code for the state of the United States with which you want to start
-     * listing locations that Amazon Route 53 supports for geolocation. If Route 53 has
-     * already returned a page or more of results, if <code>IsTruncated</code> is
-     * <code>true</code>, and if <code>NextSubdivisionCode</code> from the previous
-     * response has a value, enter that value in <code>startsubdivisioncode</code> to
-     * return the next page of results.</p> <p>To list subdivisions (U.S. states), you
-     * must include both <code>startcountrycode</code> and
-     * <code>startsubdivisioncode</code>.</p>
-     */
-    inline ListGeoLocationsRequest& WithStartSubdivisionCode(const char* value) { SetStartSubdivisionCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>(Optional) The maximum number of geolocations to be included in the response
      * body for this request. If more than <code>maxitems</code> geolocations remain to
      * be listed, then the value of the <code>IsTruncated</code> element in the
      * response is <code>true</code>.</p>
      */
-    inline const Aws::String& GetMaxItems() const{ return m_maxItems; }
-
-    /**
-     * <p>(Optional) The maximum number of geolocations to be included in the response
-     * body for this request. If more than <code>maxitems</code> geolocations remain to
-     * be listed, then the value of the <code>IsTruncated</code> element in the
-     * response is <code>true</code>.</p>
-     */
+    inline const Aws::String& GetMaxItems() const { return m_maxItems; }
     inline bool MaxItemsHasBeenSet() const { return m_maxItemsHasBeenSet; }
-
-    /**
-     * <p>(Optional) The maximum number of geolocations to be included in the response
-     * body for this request. If more than <code>maxitems</code> geolocations remain to
-     * be listed, then the value of the <code>IsTruncated</code> element in the
-     * response is <code>true</code>.</p>
-     */
-    inline void SetMaxItems(const Aws::String& value) { m_maxItemsHasBeenSet = true; m_maxItems = value; }
-
-    /**
-     * <p>(Optional) The maximum number of geolocations to be included in the response
-     * body for this request. If more than <code>maxitems</code> geolocations remain to
-     * be listed, then the value of the <code>IsTruncated</code> element in the
-     * response is <code>true</code>.</p>
-     */
-    inline void SetMaxItems(Aws::String&& value) { m_maxItemsHasBeenSet = true; m_maxItems = std::move(value); }
-
-    /**
-     * <p>(Optional) The maximum number of geolocations to be included in the response
-     * body for this request. If more than <code>maxitems</code> geolocations remain to
-     * be listed, then the value of the <code>IsTruncated</code> element in the
-     * response is <code>true</code>.</p>
-     */
-    inline void SetMaxItems(const char* value) { m_maxItemsHasBeenSet = true; m_maxItems.assign(value); }
-
-    /**
-     * <p>(Optional) The maximum number of geolocations to be included in the response
-     * body for this request. If more than <code>maxitems</code> geolocations remain to
-     * be listed, then the value of the <code>IsTruncated</code> element in the
-     * response is <code>true</code>.</p>
-     */
-    inline ListGeoLocationsRequest& WithMaxItems(const Aws::String& value) { SetMaxItems(value); return *this;}
-
-    /**
-     * <p>(Optional) The maximum number of geolocations to be included in the response
-     * body for this request. If more than <code>maxitems</code> geolocations remain to
-     * be listed, then the value of the <code>IsTruncated</code> element in the
-     * response is <code>true</code>.</p>
-     */
-    inline ListGeoLocationsRequest& WithMaxItems(Aws::String&& value) { SetMaxItems(std::move(value)); return *this;}
-
-    /**
-     * <p>(Optional) The maximum number of geolocations to be included in the response
-     * body for this request. If more than <code>maxitems</code> geolocations remain to
-     * be listed, then the value of the <code>IsTruncated</code> element in the
-     * response is <code>true</code>.</p>
-     */
-    inline ListGeoLocationsRequest& WithMaxItems(const char* value) { SetMaxItems(value); return *this;}
-
+    template<typename MaxItemsT = Aws::String>
+    void SetMaxItems(MaxItemsT&& value) { m_maxItemsHasBeenSet = true; m_maxItems = std::forward<MaxItemsT>(value); }
+    template<typename MaxItemsT = Aws::String>
+    ListGeoLocationsRequest& WithMaxItems(MaxItemsT&& value) { SetMaxItems(std::forward<MaxItemsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_startContinentCode;

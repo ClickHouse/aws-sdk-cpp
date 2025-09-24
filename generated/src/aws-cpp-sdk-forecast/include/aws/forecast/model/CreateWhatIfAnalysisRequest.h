@@ -24,7 +24,7 @@ namespace Model
   class CreateWhatIfAnalysisRequest : public ForecastServiceRequest
   {
   public:
-    AWS_FORECASTSERVICE_API CreateWhatIfAnalysisRequest();
+    AWS_FORECASTSERVICE_API CreateWhatIfAnalysisRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,88 +37,31 @@ namespace Model
     AWS_FORECASTSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the what-if analysis. Each name must be unique.</p>
      */
-    inline const Aws::String& GetWhatIfAnalysisName() const{ return m_whatIfAnalysisName; }
-
-    /**
-     * <p>The name of the what-if analysis. Each name must be unique.</p>
-     */
+    inline const Aws::String& GetWhatIfAnalysisName() const { return m_whatIfAnalysisName; }
     inline bool WhatIfAnalysisNameHasBeenSet() const { return m_whatIfAnalysisNameHasBeenSet; }
+    template<typename WhatIfAnalysisNameT = Aws::String>
+    void SetWhatIfAnalysisName(WhatIfAnalysisNameT&& value) { m_whatIfAnalysisNameHasBeenSet = true; m_whatIfAnalysisName = std::forward<WhatIfAnalysisNameT>(value); }
+    template<typename WhatIfAnalysisNameT = Aws::String>
+    CreateWhatIfAnalysisRequest& WithWhatIfAnalysisName(WhatIfAnalysisNameT&& value) { SetWhatIfAnalysisName(std::forward<WhatIfAnalysisNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the what-if analysis. Each name must be unique.</p>
-     */
-    inline void SetWhatIfAnalysisName(const Aws::String& value) { m_whatIfAnalysisNameHasBeenSet = true; m_whatIfAnalysisName = value; }
-
-    /**
-     * <p>The name of the what-if analysis. Each name must be unique.</p>
-     */
-    inline void SetWhatIfAnalysisName(Aws::String&& value) { m_whatIfAnalysisNameHasBeenSet = true; m_whatIfAnalysisName = std::move(value); }
-
-    /**
-     * <p>The name of the what-if analysis. Each name must be unique.</p>
-     */
-    inline void SetWhatIfAnalysisName(const char* value) { m_whatIfAnalysisNameHasBeenSet = true; m_whatIfAnalysisName.assign(value); }
-
-    /**
-     * <p>The name of the what-if analysis. Each name must be unique.</p>
-     */
-    inline CreateWhatIfAnalysisRequest& WithWhatIfAnalysisName(const Aws::String& value) { SetWhatIfAnalysisName(value); return *this;}
-
-    /**
-     * <p>The name of the what-if analysis. Each name must be unique.</p>
-     */
-    inline CreateWhatIfAnalysisRequest& WithWhatIfAnalysisName(Aws::String&& value) { SetWhatIfAnalysisName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the what-if analysis. Each name must be unique.</p>
-     */
-    inline CreateWhatIfAnalysisRequest& WithWhatIfAnalysisName(const char* value) { SetWhatIfAnalysisName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the baseline forecast.</p>
      */
-    inline const Aws::String& GetForecastArn() const{ return m_forecastArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the baseline forecast.</p>
-     */
+    inline const Aws::String& GetForecastArn() const { return m_forecastArn; }
     inline bool ForecastArnHasBeenSet() const { return m_forecastArnHasBeenSet; }
+    template<typename ForecastArnT = Aws::String>
+    void SetForecastArn(ForecastArnT&& value) { m_forecastArnHasBeenSet = true; m_forecastArn = std::forward<ForecastArnT>(value); }
+    template<typename ForecastArnT = Aws::String>
+    CreateWhatIfAnalysisRequest& WithForecastArn(ForecastArnT&& value) { SetForecastArn(std::forward<ForecastArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the baseline forecast.</p>
-     */
-    inline void SetForecastArn(const Aws::String& value) { m_forecastArnHasBeenSet = true; m_forecastArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the baseline forecast.</p>
-     */
-    inline void SetForecastArn(Aws::String&& value) { m_forecastArnHasBeenSet = true; m_forecastArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the baseline forecast.</p>
-     */
-    inline void SetForecastArn(const char* value) { m_forecastArnHasBeenSet = true; m_forecastArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the baseline forecast.</p>
-     */
-    inline CreateWhatIfAnalysisRequest& WithForecastArn(const Aws::String& value) { SetForecastArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the baseline forecast.</p>
-     */
-    inline CreateWhatIfAnalysisRequest& WithForecastArn(Aws::String&& value) { SetForecastArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the baseline forecast.</p>
-     */
-    inline CreateWhatIfAnalysisRequest& WithForecastArn(const char* value) { SetForecastArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Defines the set of time series that are used in the what-if analysis with a
      * <code>TimeSeriesIdentifiers</code> object. What-if analyses are performed only
@@ -127,115 +70,29 @@ namespace Model
      * <ul> <li> <p> <code>DataSource</code> </p> </li> <li> <p> <code>Format</code>
      * </p> </li> <li> <p> <code>Schema</code> </p> </li> </ul>
      */
-    inline const TimeSeriesSelector& GetTimeSeriesSelector() const{ return m_timeSeriesSelector; }
-
-    /**
-     * <p>Defines the set of time series that are used in the what-if analysis with a
-     * <code>TimeSeriesIdentifiers</code> object. What-if analyses are performed only
-     * for the time series in this object.</p> <p>The
-     * <code>TimeSeriesIdentifiers</code> object needs the following information:</p>
-     * <ul> <li> <p> <code>DataSource</code> </p> </li> <li> <p> <code>Format</code>
-     * </p> </li> <li> <p> <code>Schema</code> </p> </li> </ul>
-     */
+    inline const TimeSeriesSelector& GetTimeSeriesSelector() const { return m_timeSeriesSelector; }
     inline bool TimeSeriesSelectorHasBeenSet() const { return m_timeSeriesSelectorHasBeenSet; }
+    template<typename TimeSeriesSelectorT = TimeSeriesSelector>
+    void SetTimeSeriesSelector(TimeSeriesSelectorT&& value) { m_timeSeriesSelectorHasBeenSet = true; m_timeSeriesSelector = std::forward<TimeSeriesSelectorT>(value); }
+    template<typename TimeSeriesSelectorT = TimeSeriesSelector>
+    CreateWhatIfAnalysisRequest& WithTimeSeriesSelector(TimeSeriesSelectorT&& value) { SetTimeSeriesSelector(std::forward<TimeSeriesSelectorT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Defines the set of time series that are used in the what-if analysis with a
-     * <code>TimeSeriesIdentifiers</code> object. What-if analyses are performed only
-     * for the time series in this object.</p> <p>The
-     * <code>TimeSeriesIdentifiers</code> object needs the following information:</p>
-     * <ul> <li> <p> <code>DataSource</code> </p> </li> <li> <p> <code>Format</code>
-     * </p> </li> <li> <p> <code>Schema</code> </p> </li> </ul>
-     */
-    inline void SetTimeSeriesSelector(const TimeSeriesSelector& value) { m_timeSeriesSelectorHasBeenSet = true; m_timeSeriesSelector = value; }
-
-    /**
-     * <p>Defines the set of time series that are used in the what-if analysis with a
-     * <code>TimeSeriesIdentifiers</code> object. What-if analyses are performed only
-     * for the time series in this object.</p> <p>The
-     * <code>TimeSeriesIdentifiers</code> object needs the following information:</p>
-     * <ul> <li> <p> <code>DataSource</code> </p> </li> <li> <p> <code>Format</code>
-     * </p> </li> <li> <p> <code>Schema</code> </p> </li> </ul>
-     */
-    inline void SetTimeSeriesSelector(TimeSeriesSelector&& value) { m_timeSeriesSelectorHasBeenSet = true; m_timeSeriesSelector = std::move(value); }
-
-    /**
-     * <p>Defines the set of time series that are used in the what-if analysis with a
-     * <code>TimeSeriesIdentifiers</code> object. What-if analyses are performed only
-     * for the time series in this object.</p> <p>The
-     * <code>TimeSeriesIdentifiers</code> object needs the following information:</p>
-     * <ul> <li> <p> <code>DataSource</code> </p> </li> <li> <p> <code>Format</code>
-     * </p> </li> <li> <p> <code>Schema</code> </p> </li> </ul>
-     */
-    inline CreateWhatIfAnalysisRequest& WithTimeSeriesSelector(const TimeSeriesSelector& value) { SetTimeSeriesSelector(value); return *this;}
-
-    /**
-     * <p>Defines the set of time series that are used in the what-if analysis with a
-     * <code>TimeSeriesIdentifiers</code> object. What-if analyses are performed only
-     * for the time series in this object.</p> <p>The
-     * <code>TimeSeriesIdentifiers</code> object needs the following information:</p>
-     * <ul> <li> <p> <code>DataSource</code> </p> </li> <li> <p> <code>Format</code>
-     * </p> </li> <li> <p> <code>Schema</code> </p> </li> </ul>
-     */
-    inline CreateWhatIfAnalysisRequest& WithTimeSeriesSelector(TimeSeriesSelector&& value) { SetTimeSeriesSelector(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of <a
      * href="https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html">tags</a>
      * to apply to the what if forecast.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html">tags</a>
-     * to apply to the what if forecast.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html">tags</a>
-     * to apply to the what if forecast.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html">tags</a>
-     * to apply to the what if forecast.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html">tags</a>
-     * to apply to the what if forecast.</p>
-     */
-    inline CreateWhatIfAnalysisRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html">tags</a>
-     * to apply to the what if forecast.</p>
-     */
-    inline CreateWhatIfAnalysisRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html">tags</a>
-     * to apply to the what if forecast.</p>
-     */
-    inline CreateWhatIfAnalysisRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html">tags</a>
-     * to apply to the what if forecast.</p>
-     */
-    inline CreateWhatIfAnalysisRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateWhatIfAnalysisRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateWhatIfAnalysisRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_whatIfAnalysisName;

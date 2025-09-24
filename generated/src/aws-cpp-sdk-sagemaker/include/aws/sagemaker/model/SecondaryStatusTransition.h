@@ -41,12 +41,13 @@ namespace Model
   class SecondaryStatusTransition
   {
   public:
-    AWS_SAGEMAKER_API SecondaryStatusTransition();
+    AWS_SAGEMAKER_API SecondaryStatusTransition() = default;
     AWS_SAGEMAKER_API SecondaryStatusTransition(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API SecondaryStatusTransition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Contains a secondary status information from a training job.</p> <p>Status
      * might be one of the following secondary statuses:</p> <dl> <dt>InProgress</dt>
@@ -70,214 +71,40 @@ namespace Model
      * <code>PreparingTrainingStack</code> </p> </li> <li> <p>
      * <code>DownloadingTrainingImage</code> </p> </li> </ul>
      */
-    inline const SecondaryStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Contains a secondary status information from a training job.</p> <p>Status
-     * might be one of the following secondary statuses:</p> <dl> <dt>InProgress</dt>
-     * <dd> <ul> <li> <p> <code>Starting</code> - Starting the training job.</p> </li>
-     * <li> <p> <code>Downloading</code> - An optional stage for algorithms that
-     * support <code>File</code> training input mode. It indicates that data is being
-     * downloaded to the ML storage volumes.</p> </li> <li> <p> <code>Training</code> -
-     * Training is in progress.</p> </li> <li> <p> <code>Uploading</code> - Training is
-     * complete and the model artifacts are being uploaded to the S3 location.</p>
-     * </li> </ul> </dd> <dt>Completed</dt> <dd> <ul> <li> <p> <code>Completed</code> -
-     * The training job has completed.</p> </li> </ul> </dd> <dt>Failed</dt> <dd> <ul>
-     * <li> <p> <code>Failed</code> - The training job has failed. The reason for the
-     * failure is returned in the <code>FailureReason</code> field of
-     * <code>DescribeTrainingJobResponse</code>.</p> </li> </ul> </dd> <dt>Stopped</dt>
-     * <dd> <ul> <li> <p> <code>MaxRuntimeExceeded</code> - The job stopped because it
-     * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
-     * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
-     * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <p>We no longer support the following secondary statuses:</p> <ul>
-     * <li> <p> <code>LaunchingMLInstances</code> </p> </li> <li> <p>
-     * <code>PreparingTrainingStack</code> </p> </li> <li> <p>
-     * <code>DownloadingTrainingImage</code> </p> </li> </ul>
-     */
+    inline SecondaryStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(SecondaryStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline SecondaryStatusTransition& WithStatus(SecondaryStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains a secondary status information from a training job.</p> <p>Status
-     * might be one of the following secondary statuses:</p> <dl> <dt>InProgress</dt>
-     * <dd> <ul> <li> <p> <code>Starting</code> - Starting the training job.</p> </li>
-     * <li> <p> <code>Downloading</code> - An optional stage for algorithms that
-     * support <code>File</code> training input mode. It indicates that data is being
-     * downloaded to the ML storage volumes.</p> </li> <li> <p> <code>Training</code> -
-     * Training is in progress.</p> </li> <li> <p> <code>Uploading</code> - Training is
-     * complete and the model artifacts are being uploaded to the S3 location.</p>
-     * </li> </ul> </dd> <dt>Completed</dt> <dd> <ul> <li> <p> <code>Completed</code> -
-     * The training job has completed.</p> </li> </ul> </dd> <dt>Failed</dt> <dd> <ul>
-     * <li> <p> <code>Failed</code> - The training job has failed. The reason for the
-     * failure is returned in the <code>FailureReason</code> field of
-     * <code>DescribeTrainingJobResponse</code>.</p> </li> </ul> </dd> <dt>Stopped</dt>
-     * <dd> <ul> <li> <p> <code>MaxRuntimeExceeded</code> - The job stopped because it
-     * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
-     * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
-     * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <p>We no longer support the following secondary statuses:</p> <ul>
-     * <li> <p> <code>LaunchingMLInstances</code> </p> </li> <li> <p>
-     * <code>PreparingTrainingStack</code> </p> </li> <li> <p>
-     * <code>DownloadingTrainingImage</code> </p> </li> </ul>
-     */
-    inline void SetStatus(const SecondaryStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Contains a secondary status information from a training job.</p> <p>Status
-     * might be one of the following secondary statuses:</p> <dl> <dt>InProgress</dt>
-     * <dd> <ul> <li> <p> <code>Starting</code> - Starting the training job.</p> </li>
-     * <li> <p> <code>Downloading</code> - An optional stage for algorithms that
-     * support <code>File</code> training input mode. It indicates that data is being
-     * downloaded to the ML storage volumes.</p> </li> <li> <p> <code>Training</code> -
-     * Training is in progress.</p> </li> <li> <p> <code>Uploading</code> - Training is
-     * complete and the model artifacts are being uploaded to the S3 location.</p>
-     * </li> </ul> </dd> <dt>Completed</dt> <dd> <ul> <li> <p> <code>Completed</code> -
-     * The training job has completed.</p> </li> </ul> </dd> <dt>Failed</dt> <dd> <ul>
-     * <li> <p> <code>Failed</code> - The training job has failed. The reason for the
-     * failure is returned in the <code>FailureReason</code> field of
-     * <code>DescribeTrainingJobResponse</code>.</p> </li> </ul> </dd> <dt>Stopped</dt>
-     * <dd> <ul> <li> <p> <code>MaxRuntimeExceeded</code> - The job stopped because it
-     * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
-     * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
-     * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <p>We no longer support the following secondary statuses:</p> <ul>
-     * <li> <p> <code>LaunchingMLInstances</code> </p> </li> <li> <p>
-     * <code>PreparingTrainingStack</code> </p> </li> <li> <p>
-     * <code>DownloadingTrainingImage</code> </p> </li> </ul>
-     */
-    inline void SetStatus(SecondaryStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Contains a secondary status information from a training job.</p> <p>Status
-     * might be one of the following secondary statuses:</p> <dl> <dt>InProgress</dt>
-     * <dd> <ul> <li> <p> <code>Starting</code> - Starting the training job.</p> </li>
-     * <li> <p> <code>Downloading</code> - An optional stage for algorithms that
-     * support <code>File</code> training input mode. It indicates that data is being
-     * downloaded to the ML storage volumes.</p> </li> <li> <p> <code>Training</code> -
-     * Training is in progress.</p> </li> <li> <p> <code>Uploading</code> - Training is
-     * complete and the model artifacts are being uploaded to the S3 location.</p>
-     * </li> </ul> </dd> <dt>Completed</dt> <dd> <ul> <li> <p> <code>Completed</code> -
-     * The training job has completed.</p> </li> </ul> </dd> <dt>Failed</dt> <dd> <ul>
-     * <li> <p> <code>Failed</code> - The training job has failed. The reason for the
-     * failure is returned in the <code>FailureReason</code> field of
-     * <code>DescribeTrainingJobResponse</code>.</p> </li> </ul> </dd> <dt>Stopped</dt>
-     * <dd> <ul> <li> <p> <code>MaxRuntimeExceeded</code> - The job stopped because it
-     * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
-     * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
-     * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <p>We no longer support the following secondary statuses:</p> <ul>
-     * <li> <p> <code>LaunchingMLInstances</code> </p> </li> <li> <p>
-     * <code>PreparingTrainingStack</code> </p> </li> <li> <p>
-     * <code>DownloadingTrainingImage</code> </p> </li> </ul>
-     */
-    inline SecondaryStatusTransition& WithStatus(const SecondaryStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Contains a secondary status information from a training job.</p> <p>Status
-     * might be one of the following secondary statuses:</p> <dl> <dt>InProgress</dt>
-     * <dd> <ul> <li> <p> <code>Starting</code> - Starting the training job.</p> </li>
-     * <li> <p> <code>Downloading</code> - An optional stage for algorithms that
-     * support <code>File</code> training input mode. It indicates that data is being
-     * downloaded to the ML storage volumes.</p> </li> <li> <p> <code>Training</code> -
-     * Training is in progress.</p> </li> <li> <p> <code>Uploading</code> - Training is
-     * complete and the model artifacts are being uploaded to the S3 location.</p>
-     * </li> </ul> </dd> <dt>Completed</dt> <dd> <ul> <li> <p> <code>Completed</code> -
-     * The training job has completed.</p> </li> </ul> </dd> <dt>Failed</dt> <dd> <ul>
-     * <li> <p> <code>Failed</code> - The training job has failed. The reason for the
-     * failure is returned in the <code>FailureReason</code> field of
-     * <code>DescribeTrainingJobResponse</code>.</p> </li> </ul> </dd> <dt>Stopped</dt>
-     * <dd> <ul> <li> <p> <code>MaxRuntimeExceeded</code> - The job stopped because it
-     * exceeded the maximum allowed runtime.</p> </li> <li> <p> <code>Stopped</code> -
-     * The training job has stopped.</p> </li> </ul> </dd> <dt>Stopping</dt> <dd> <ul>
-     * <li> <p> <code>Stopping</code> - Stopping the training job.</p> </li> </ul>
-     * </dd> </dl> <p>We no longer support the following secondary statuses:</p> <ul>
-     * <li> <p> <code>LaunchingMLInstances</code> </p> </li> <li> <p>
-     * <code>PreparingTrainingStack</code> </p> </li> <li> <p>
-     * <code>DownloadingTrainingImage</code> </p> </li> </ul>
-     */
-    inline SecondaryStatusTransition& WithStatus(SecondaryStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp that shows when the training job transitioned to the current
      * secondary status state.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>A timestamp that shows when the training job transitioned to the current
-     * secondary status state.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    SecondaryStatusTransition& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A timestamp that shows when the training job transitioned to the current
-     * secondary status state.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>A timestamp that shows when the training job transitioned to the current
-     * secondary status state.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>A timestamp that shows when the training job transitioned to the current
-     * secondary status state.</p>
-     */
-    inline SecondaryStatusTransition& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>A timestamp that shows when the training job transitioned to the current
-     * secondary status state.</p>
-     */
-    inline SecondaryStatusTransition& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A timestamp that shows when the training job transitioned out of this
      * secondary status state into another secondary status state or when the training
      * job has ended.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTime() const{ return m_endTime; }
-
-    /**
-     * <p>A timestamp that shows when the training job transitioned out of this
-     * secondary status state into another secondary status state or when the training
-     * job has ended.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTime() const { return m_endTime; }
     inline bool EndTimeHasBeenSet() const { return m_endTimeHasBeenSet; }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    void SetEndTime(EndTimeT&& value) { m_endTimeHasBeenSet = true; m_endTime = std::forward<EndTimeT>(value); }
+    template<typename EndTimeT = Aws::Utils::DateTime>
+    SecondaryStatusTransition& WithEndTime(EndTimeT&& value) { SetEndTime(std::forward<EndTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A timestamp that shows when the training job transitioned out of this
-     * secondary status state into another secondary status state or when the training
-     * job has ended.</p>
-     */
-    inline void SetEndTime(const Aws::Utils::DateTime& value) { m_endTimeHasBeenSet = true; m_endTime = value; }
-
-    /**
-     * <p>A timestamp that shows when the training job transitioned out of this
-     * secondary status state into another secondary status state or when the training
-     * job has ended.</p>
-     */
-    inline void SetEndTime(Aws::Utils::DateTime&& value) { m_endTimeHasBeenSet = true; m_endTime = std::move(value); }
-
-    /**
-     * <p>A timestamp that shows when the training job transitioned out of this
-     * secondary status state into another secondary status state or when the training
-     * job has ended.</p>
-     */
-    inline SecondaryStatusTransition& WithEndTime(const Aws::Utils::DateTime& value) { SetEndTime(value); return *this;}
-
-    /**
-     * <p>A timestamp that shows when the training job transitioned out of this
-     * secondary status state into another secondary status state or when the training
-     * job has ended.</p>
-     */
-    inline SecondaryStatusTransition& WithEndTime(Aws::Utils::DateTime&& value) { SetEndTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A detailed description of the progress within a secondary status. </p>
      * <p>SageMaker provides secondary statuses and status messages that apply to each
@@ -299,178 +126,22 @@ namespace Model
      * <code>SecondaryStatus</code> - Training</p> </li> <li> <p>
      * <code>StatusMessage</code> - Downloading the training image</p> </li> </ul>
      */
-    inline const Aws::String& GetStatusMessage() const{ return m_statusMessage; }
-
-    /**
-     * <p>A detailed description of the progress within a secondary status. </p>
-     * <p>SageMaker provides secondary statuses and status messages that apply to each
-     * of them:</p> <dl> <dt>Starting</dt> <dd> <ul> <li> <p>Starting the training
-     * job.</p> </li> <li> <p>Launching requested ML instances.</p> </li> <li>
-     * <p>Insufficient capacity error from EC2 while launching instances, retrying!</p>
-     * </li> <li> <p>Launched instance was unhealthy, replacing it!</p> </li> <li>
-     * <p>Preparing the instances for training.</p> </li> </ul> </dd> <dt>Training</dt>
-     * <dd> <ul> <li> <p>Training image download completed. Training in progress.</p>
-     * </li> </ul> </dd> </dl>  <p>Status messages are subject to change.
-     * Therefore, we recommend not including them in code that programmatically
-     * initiates actions. For examples, don't use status messages in if statements.</p>
-     *  <p>To have an overview of your training job's progress, view
-     * <code>TrainingJobStatus</code> and <code>SecondaryStatus</code> in <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html">DescribeTrainingJob</a>,
-     * and <code>StatusMessage</code> together. For example, at the start of a training
-     * job, you might see the following:</p> <ul> <li> <p>
-     * <code>TrainingJobStatus</code> - InProgress</p> </li> <li> <p>
-     * <code>SecondaryStatus</code> - Training</p> </li> <li> <p>
-     * <code>StatusMessage</code> - Downloading the training image</p> </li> </ul>
-     */
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
     inline bool StatusMessageHasBeenSet() const { return m_statusMessageHasBeenSet; }
-
-    /**
-     * <p>A detailed description of the progress within a secondary status. </p>
-     * <p>SageMaker provides secondary statuses and status messages that apply to each
-     * of them:</p> <dl> <dt>Starting</dt> <dd> <ul> <li> <p>Starting the training
-     * job.</p> </li> <li> <p>Launching requested ML instances.</p> </li> <li>
-     * <p>Insufficient capacity error from EC2 while launching instances, retrying!</p>
-     * </li> <li> <p>Launched instance was unhealthy, replacing it!</p> </li> <li>
-     * <p>Preparing the instances for training.</p> </li> </ul> </dd> <dt>Training</dt>
-     * <dd> <ul> <li> <p>Training image download completed. Training in progress.</p>
-     * </li> </ul> </dd> </dl>  <p>Status messages are subject to change.
-     * Therefore, we recommend not including them in code that programmatically
-     * initiates actions. For examples, don't use status messages in if statements.</p>
-     *  <p>To have an overview of your training job's progress, view
-     * <code>TrainingJobStatus</code> and <code>SecondaryStatus</code> in <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html">DescribeTrainingJob</a>,
-     * and <code>StatusMessage</code> together. For example, at the start of a training
-     * job, you might see the following:</p> <ul> <li> <p>
-     * <code>TrainingJobStatus</code> - InProgress</p> </li> <li> <p>
-     * <code>SecondaryStatus</code> - Training</p> </li> <li> <p>
-     * <code>StatusMessage</code> - Downloading the training image</p> </li> </ul>
-     */
-    inline void SetStatusMessage(const Aws::String& value) { m_statusMessageHasBeenSet = true; m_statusMessage = value; }
-
-    /**
-     * <p>A detailed description of the progress within a secondary status. </p>
-     * <p>SageMaker provides secondary statuses and status messages that apply to each
-     * of them:</p> <dl> <dt>Starting</dt> <dd> <ul> <li> <p>Starting the training
-     * job.</p> </li> <li> <p>Launching requested ML instances.</p> </li> <li>
-     * <p>Insufficient capacity error from EC2 while launching instances, retrying!</p>
-     * </li> <li> <p>Launched instance was unhealthy, replacing it!</p> </li> <li>
-     * <p>Preparing the instances for training.</p> </li> </ul> </dd> <dt>Training</dt>
-     * <dd> <ul> <li> <p>Training image download completed. Training in progress.</p>
-     * </li> </ul> </dd> </dl>  <p>Status messages are subject to change.
-     * Therefore, we recommend not including them in code that programmatically
-     * initiates actions. For examples, don't use status messages in if statements.</p>
-     *  <p>To have an overview of your training job's progress, view
-     * <code>TrainingJobStatus</code> and <code>SecondaryStatus</code> in <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html">DescribeTrainingJob</a>,
-     * and <code>StatusMessage</code> together. For example, at the start of a training
-     * job, you might see the following:</p> <ul> <li> <p>
-     * <code>TrainingJobStatus</code> - InProgress</p> </li> <li> <p>
-     * <code>SecondaryStatus</code> - Training</p> </li> <li> <p>
-     * <code>StatusMessage</code> - Downloading the training image</p> </li> </ul>
-     */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::move(value); }
-
-    /**
-     * <p>A detailed description of the progress within a secondary status. </p>
-     * <p>SageMaker provides secondary statuses and status messages that apply to each
-     * of them:</p> <dl> <dt>Starting</dt> <dd> <ul> <li> <p>Starting the training
-     * job.</p> </li> <li> <p>Launching requested ML instances.</p> </li> <li>
-     * <p>Insufficient capacity error from EC2 while launching instances, retrying!</p>
-     * </li> <li> <p>Launched instance was unhealthy, replacing it!</p> </li> <li>
-     * <p>Preparing the instances for training.</p> </li> </ul> </dd> <dt>Training</dt>
-     * <dd> <ul> <li> <p>Training image download completed. Training in progress.</p>
-     * </li> </ul> </dd> </dl>  <p>Status messages are subject to change.
-     * Therefore, we recommend not including them in code that programmatically
-     * initiates actions. For examples, don't use status messages in if statements.</p>
-     *  <p>To have an overview of your training job's progress, view
-     * <code>TrainingJobStatus</code> and <code>SecondaryStatus</code> in <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html">DescribeTrainingJob</a>,
-     * and <code>StatusMessage</code> together. For example, at the start of a training
-     * job, you might see the following:</p> <ul> <li> <p>
-     * <code>TrainingJobStatus</code> - InProgress</p> </li> <li> <p>
-     * <code>SecondaryStatus</code> - Training</p> </li> <li> <p>
-     * <code>StatusMessage</code> - Downloading the training image</p> </li> </ul>
-     */
-    inline void SetStatusMessage(const char* value) { m_statusMessageHasBeenSet = true; m_statusMessage.assign(value); }
-
-    /**
-     * <p>A detailed description of the progress within a secondary status. </p>
-     * <p>SageMaker provides secondary statuses and status messages that apply to each
-     * of them:</p> <dl> <dt>Starting</dt> <dd> <ul> <li> <p>Starting the training
-     * job.</p> </li> <li> <p>Launching requested ML instances.</p> </li> <li>
-     * <p>Insufficient capacity error from EC2 while launching instances, retrying!</p>
-     * </li> <li> <p>Launched instance was unhealthy, replacing it!</p> </li> <li>
-     * <p>Preparing the instances for training.</p> </li> </ul> </dd> <dt>Training</dt>
-     * <dd> <ul> <li> <p>Training image download completed. Training in progress.</p>
-     * </li> </ul> </dd> </dl>  <p>Status messages are subject to change.
-     * Therefore, we recommend not including them in code that programmatically
-     * initiates actions. For examples, don't use status messages in if statements.</p>
-     *  <p>To have an overview of your training job's progress, view
-     * <code>TrainingJobStatus</code> and <code>SecondaryStatus</code> in <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html">DescribeTrainingJob</a>,
-     * and <code>StatusMessage</code> together. For example, at the start of a training
-     * job, you might see the following:</p> <ul> <li> <p>
-     * <code>TrainingJobStatus</code> - InProgress</p> </li> <li> <p>
-     * <code>SecondaryStatus</code> - Training</p> </li> <li> <p>
-     * <code>StatusMessage</code> - Downloading the training image</p> </li> </ul>
-     */
-    inline SecondaryStatusTransition& WithStatusMessage(const Aws::String& value) { SetStatusMessage(value); return *this;}
-
-    /**
-     * <p>A detailed description of the progress within a secondary status. </p>
-     * <p>SageMaker provides secondary statuses and status messages that apply to each
-     * of them:</p> <dl> <dt>Starting</dt> <dd> <ul> <li> <p>Starting the training
-     * job.</p> </li> <li> <p>Launching requested ML instances.</p> </li> <li>
-     * <p>Insufficient capacity error from EC2 while launching instances, retrying!</p>
-     * </li> <li> <p>Launched instance was unhealthy, replacing it!</p> </li> <li>
-     * <p>Preparing the instances for training.</p> </li> </ul> </dd> <dt>Training</dt>
-     * <dd> <ul> <li> <p>Training image download completed. Training in progress.</p>
-     * </li> </ul> </dd> </dl>  <p>Status messages are subject to change.
-     * Therefore, we recommend not including them in code that programmatically
-     * initiates actions. For examples, don't use status messages in if statements.</p>
-     *  <p>To have an overview of your training job's progress, view
-     * <code>TrainingJobStatus</code> and <code>SecondaryStatus</code> in <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html">DescribeTrainingJob</a>,
-     * and <code>StatusMessage</code> together. For example, at the start of a training
-     * job, you might see the following:</p> <ul> <li> <p>
-     * <code>TrainingJobStatus</code> - InProgress</p> </li> <li> <p>
-     * <code>SecondaryStatus</code> - Training</p> </li> <li> <p>
-     * <code>StatusMessage</code> - Downloading the training image</p> </li> </ul>
-     */
-    inline SecondaryStatusTransition& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A detailed description of the progress within a secondary status. </p>
-     * <p>SageMaker provides secondary statuses and status messages that apply to each
-     * of them:</p> <dl> <dt>Starting</dt> <dd> <ul> <li> <p>Starting the training
-     * job.</p> </li> <li> <p>Launching requested ML instances.</p> </li> <li>
-     * <p>Insufficient capacity error from EC2 while launching instances, retrying!</p>
-     * </li> <li> <p>Launched instance was unhealthy, replacing it!</p> </li> <li>
-     * <p>Preparing the instances for training.</p> </li> </ul> </dd> <dt>Training</dt>
-     * <dd> <ul> <li> <p>Training image download completed. Training in progress.</p>
-     * </li> </ul> </dd> </dl>  <p>Status messages are subject to change.
-     * Therefore, we recommend not including them in code that programmatically
-     * initiates actions. For examples, don't use status messages in if statements.</p>
-     *  <p>To have an overview of your training job's progress, view
-     * <code>TrainingJobStatus</code> and <code>SecondaryStatus</code> in <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeTrainingJob.html">DescribeTrainingJob</a>,
-     * and <code>StatusMessage</code> together. For example, at the start of a training
-     * job, you might see the following:</p> <ul> <li> <p>
-     * <code>TrainingJobStatus</code> - InProgress</p> </li> <li> <p>
-     * <code>SecondaryStatus</code> - Training</p> </li> <li> <p>
-     * <code>StatusMessage</code> - Downloading the training image</p> </li> </ul>
-     */
-    inline SecondaryStatusTransition& WithStatusMessage(const char* value) { SetStatusMessage(value); return *this;}
-
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    SecondaryStatusTransition& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
   private:
 
-    SecondaryStatus m_status;
+    SecondaryStatus m_status{SecondaryStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTime;
+    Aws::Utils::DateTime m_endTime{};
     bool m_endTimeHasBeenSet = false;
 
     Aws::String m_statusMessage;

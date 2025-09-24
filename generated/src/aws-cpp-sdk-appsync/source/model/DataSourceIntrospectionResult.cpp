@@ -18,15 +18,7 @@ namespace AppSync
 namespace Model
 {
 
-DataSourceIntrospectionResult::DataSourceIntrospectionResult() : 
-    m_modelsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
-DataSourceIntrospectionResult::DataSourceIntrospectionResult(JsonView jsonValue) : 
-    m_modelsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
+DataSourceIntrospectionResult::DataSourceIntrospectionResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ DataSourceIntrospectionResult& DataSourceIntrospectionResult::operator =(JsonVie
     }
     m_modelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("nextToken"))
   {
     m_nextToken = jsonValue.GetString("nextToken");
-
     m_nextTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

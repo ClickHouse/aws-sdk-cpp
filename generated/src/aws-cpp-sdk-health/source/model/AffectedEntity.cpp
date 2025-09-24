@@ -18,29 +18,7 @@ namespace Health
 namespace Model
 {
 
-AffectedEntity::AffectedEntity() : 
-    m_entityArnHasBeenSet(false),
-    m_eventArnHasBeenSet(false),
-    m_entityValueHasBeenSet(false),
-    m_entityUrlHasBeenSet(false),
-    m_awsAccountIdHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_statusCode(EntityStatusCode::NOT_SET),
-    m_statusCodeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-AffectedEntity::AffectedEntity(JsonView jsonValue) : 
-    m_entityArnHasBeenSet(false),
-    m_eventArnHasBeenSet(false),
-    m_entityValueHasBeenSet(false),
-    m_entityUrlHasBeenSet(false),
-    m_awsAccountIdHasBeenSet(false),
-    m_lastUpdatedTimeHasBeenSet(false),
-    m_statusCode(EntityStatusCode::NOT_SET),
-    m_statusCodeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+AffectedEntity::AffectedEntity(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,52 +28,38 @@ AffectedEntity& AffectedEntity::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("entityArn"))
   {
     m_entityArn = jsonValue.GetString("entityArn");
-
     m_entityArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("eventArn"))
   {
     m_eventArn = jsonValue.GetString("eventArn");
-
     m_eventArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("entityValue"))
   {
     m_entityValue = jsonValue.GetString("entityValue");
-
     m_entityValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("entityUrl"))
   {
     m_entityUrl = jsonValue.GetString("entityUrl");
-
     m_entityUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("awsAccountId"))
   {
     m_awsAccountId = jsonValue.GetString("awsAccountId");
-
     m_awsAccountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastUpdatedTime"))
   {
     m_lastUpdatedTime = jsonValue.GetDouble("lastUpdatedTime");
-
     m_lastUpdatedTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("statusCode"))
   {
     m_statusCode = EntityStatusCodeMapper::GetEntityStatusCodeForName(jsonValue.GetString("statusCode"));
-
     m_statusCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -105,7 +69,15 @@ AffectedEntity& AffectedEntity::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("entityMetadata"))
+  {
+    Aws::Map<Aws::String, JsonView> entityMetadataJsonMap = jsonValue.GetObject("entityMetadata").GetAllObjects();
+    for(auto& entityMetadataItem : entityMetadataJsonMap)
+    {
+      m_entityMetadata[entityMetadataItem.first] = entityMetadataItem.second.AsString();
+    }
+    m_entityMetadataHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -161,6 +133,17 @@ JsonValue AffectedEntity::Jsonize() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_entityMetadataHasBeenSet)
+  {
+   JsonValue entityMetadataJsonMap;
+   for(auto& entityMetadataItem : m_entityMetadata)
+   {
+     entityMetadataJsonMap.WithString(entityMetadataItem.first, entityMetadataItem.second);
+   }
+   payload.WithObject("entityMetadata", std::move(entityMetadataJsonMap));
 
   }
 

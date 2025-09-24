@@ -18,17 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-ConversationLevelIntentClassificationResultItem::ConversationLevelIntentClassificationResultItem() : 
-    m_intentNameHasBeenSet(false),
-    m_matchResult(TestResultMatchStatus::NOT_SET),
-    m_matchResultHasBeenSet(false)
-{
-}
-
-ConversationLevelIntentClassificationResultItem::ConversationLevelIntentClassificationResultItem(JsonView jsonValue) : 
-    m_intentNameHasBeenSet(false),
-    m_matchResult(TestResultMatchStatus::NOT_SET),
-    m_matchResultHasBeenSet(false)
+ConversationLevelIntentClassificationResultItem::ConversationLevelIntentClassificationResultItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ConversationLevelIntentClassificationResultItem& ConversationLevelIntentClassifi
   if(jsonValue.ValueExists("intentName"))
   {
     m_intentName = jsonValue.GetString("intentName");
-
     m_intentNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("matchResult"))
   {
     m_matchResult = TestResultMatchStatusMapper::GetTestResultMatchStatusForName(jsonValue.GetString("matchResult"));
-
     m_matchResultHasBeenSet = true;
   }
-
   return *this;
 }
 

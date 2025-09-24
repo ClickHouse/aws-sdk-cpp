@@ -18,17 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-DiscoveryData::DiscoveryData() : 
-    m_capabilityArnsHasBeenSet(false),
-    m_privateIpAddressesHasBeenSet(false),
-    m_publicIpAddressesHasBeenSet(false)
-{
-}
-
-DiscoveryData::DiscoveryData(JsonView jsonValue) : 
-    m_capabilityArnsHasBeenSet(false),
-    m_privateIpAddressesHasBeenSet(false),
-    m_publicIpAddressesHasBeenSet(false)
+DiscoveryData::DiscoveryData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ DiscoveryData& DiscoveryData::operator =(JsonView jsonValue)
     }
     m_capabilityArnsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("privateIpAddresses"))
   {
     Aws::Utils::Array<JsonView> privateIpAddressesJsonList = jsonValue.GetArray("privateIpAddresses");
@@ -54,7 +43,6 @@ DiscoveryData& DiscoveryData::operator =(JsonView jsonValue)
     }
     m_privateIpAddressesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("publicIpAddresses"))
   {
     Aws::Utils::Array<JsonView> publicIpAddressesJsonList = jsonValue.GetArray("publicIpAddresses");
@@ -64,7 +52,6 @@ DiscoveryData& DiscoveryData::operator =(JsonView jsonValue)
     }
     m_publicIpAddressesHasBeenSet = true;
   }
-
   return *this;
 }
 

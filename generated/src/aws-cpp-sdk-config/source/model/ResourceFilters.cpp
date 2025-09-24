@@ -18,19 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-ResourceFilters::ResourceFilters() : 
-    m_accountIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_regionHasBeenSet(false)
-{
-}
-
-ResourceFilters::ResourceFilters(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_regionHasBeenSet(false)
+ResourceFilters::ResourceFilters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ ResourceFilters& ResourceFilters::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AccountId"))
   {
     m_accountId = jsonValue.GetString("AccountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceId"))
   {
     m_resourceId = jsonValue.GetString("ResourceId");
-
     m_resourceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceName"))
   {
     m_resourceName = jsonValue.GetString("ResourceName");
-
     m_resourceNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Region"))
   {
     m_region = jsonValue.GetString("Region");
-
     m_regionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,15 +20,7 @@ namespace IAM
 namespace Model
 {
 
-PolicyRole::PolicyRole() : 
-    m_roleNameHasBeenSet(false),
-    m_roleIdHasBeenSet(false)
-{
-}
-
-PolicyRole::PolicyRole(const XmlNode& xmlNode) : 
-    m_roleNameHasBeenSet(false),
-    m_roleIdHasBeenSet(false)
+PolicyRole::PolicyRole(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

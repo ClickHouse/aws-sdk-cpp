@@ -20,23 +20,7 @@ namespace DocDB
 namespace Model
 {
 
-Certificate::Certificate() : 
-    m_certificateIdentifierHasBeenSet(false),
-    m_certificateTypeHasBeenSet(false),
-    m_thumbprintHasBeenSet(false),
-    m_validFromHasBeenSet(false),
-    m_validTillHasBeenSet(false),
-    m_certificateArnHasBeenSet(false)
-{
-}
-
-Certificate::Certificate(const XmlNode& xmlNode) : 
-    m_certificateIdentifierHasBeenSet(false),
-    m_certificateTypeHasBeenSet(false),
-    m_thumbprintHasBeenSet(false),
-    m_validFromHasBeenSet(false),
-    m_validTillHasBeenSet(false),
-    m_certificateArnHasBeenSet(false)
+Certificate::Certificate(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

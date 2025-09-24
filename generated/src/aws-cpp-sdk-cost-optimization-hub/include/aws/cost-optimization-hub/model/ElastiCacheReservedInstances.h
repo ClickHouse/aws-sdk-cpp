@@ -33,79 +33,36 @@ namespace Model
   class ElastiCacheReservedInstances
   {
   public:
-    AWS_COSTOPTIMIZATIONHUB_API ElastiCacheReservedInstances();
+    AWS_COSTOPTIMIZATIONHUB_API ElastiCacheReservedInstances() = default;
     AWS_COSTOPTIMIZATIONHUB_API ElastiCacheReservedInstances(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API ElastiCacheReservedInstances& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTOPTIMIZATIONHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ElastiCache reserved instances configuration used for
      * recommendations.</p>
      */
-    inline const ElastiCacheReservedInstancesConfiguration& GetConfiguration() const{ return m_configuration; }
-
-    /**
-     * <p>The ElastiCache reserved instances configuration used for
-     * recommendations.</p>
-     */
+    inline const ElastiCacheReservedInstancesConfiguration& GetConfiguration() const { return m_configuration; }
     inline bool ConfigurationHasBeenSet() const { return m_configurationHasBeenSet; }
+    template<typename ConfigurationT = ElastiCacheReservedInstancesConfiguration>
+    void SetConfiguration(ConfigurationT&& value) { m_configurationHasBeenSet = true; m_configuration = std::forward<ConfigurationT>(value); }
+    template<typename ConfigurationT = ElastiCacheReservedInstancesConfiguration>
+    ElastiCacheReservedInstances& WithConfiguration(ConfigurationT&& value) { SetConfiguration(std::forward<ConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ElastiCache reserved instances configuration used for
-     * recommendations.</p>
-     */
-    inline void SetConfiguration(const ElastiCacheReservedInstancesConfiguration& value) { m_configurationHasBeenSet = true; m_configuration = value; }
-
-    /**
-     * <p>The ElastiCache reserved instances configuration used for
-     * recommendations.</p>
-     */
-    inline void SetConfiguration(ElastiCacheReservedInstancesConfiguration&& value) { m_configurationHasBeenSet = true; m_configuration = std::move(value); }
-
-    /**
-     * <p>The ElastiCache reserved instances configuration used for
-     * recommendations.</p>
-     */
-    inline ElastiCacheReservedInstances& WithConfiguration(const ElastiCacheReservedInstancesConfiguration& value) { SetConfiguration(value); return *this;}
-
-    /**
-     * <p>The ElastiCache reserved instances configuration used for
-     * recommendations.</p>
-     */
-    inline ElastiCacheReservedInstances& WithConfiguration(ElastiCacheReservedInstancesConfiguration&& value) { SetConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Cost impact of the purchase recommendation.</p>
      */
-    inline const ReservedInstancesCostCalculation& GetCostCalculation() const{ return m_costCalculation; }
-
-    /**
-     * <p>Cost impact of the purchase recommendation.</p>
-     */
+    inline const ReservedInstancesCostCalculation& GetCostCalculation() const { return m_costCalculation; }
     inline bool CostCalculationHasBeenSet() const { return m_costCalculationHasBeenSet; }
-
-    /**
-     * <p>Cost impact of the purchase recommendation.</p>
-     */
-    inline void SetCostCalculation(const ReservedInstancesCostCalculation& value) { m_costCalculationHasBeenSet = true; m_costCalculation = value; }
-
-    /**
-     * <p>Cost impact of the purchase recommendation.</p>
-     */
-    inline void SetCostCalculation(ReservedInstancesCostCalculation&& value) { m_costCalculationHasBeenSet = true; m_costCalculation = std::move(value); }
-
-    /**
-     * <p>Cost impact of the purchase recommendation.</p>
-     */
-    inline ElastiCacheReservedInstances& WithCostCalculation(const ReservedInstancesCostCalculation& value) { SetCostCalculation(value); return *this;}
-
-    /**
-     * <p>Cost impact of the purchase recommendation.</p>
-     */
-    inline ElastiCacheReservedInstances& WithCostCalculation(ReservedInstancesCostCalculation&& value) { SetCostCalculation(std::move(value)); return *this;}
-
+    template<typename CostCalculationT = ReservedInstancesCostCalculation>
+    void SetCostCalculation(CostCalculationT&& value) { m_costCalculationHasBeenSet = true; m_costCalculation = std::forward<CostCalculationT>(value); }
+    template<typename CostCalculationT = ReservedInstancesCostCalculation>
+    ElastiCacheReservedInstances& WithCostCalculation(CostCalculationT&& value) { SetCostCalculation(std::forward<CostCalculationT>(value)); return *this;}
+    ///@}
   private:
 
     ElastiCacheReservedInstancesConfiguration m_configuration;

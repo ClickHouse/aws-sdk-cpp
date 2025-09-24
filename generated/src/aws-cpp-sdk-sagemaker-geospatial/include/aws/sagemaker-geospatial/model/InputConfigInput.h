@@ -32,89 +32,36 @@ namespace Model
   class InputConfigInput
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API InputConfigInput();
+    AWS_SAGEMAKERGEOSPATIAL_API InputConfigInput() = default;
     AWS_SAGEMAKERGEOSPATIAL_API InputConfigInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API InputConfigInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the previous Earth Observation job.</p>
      */
-    inline const Aws::String& GetPreviousEarthObservationJobArn() const{ return m_previousEarthObservationJobArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the previous Earth Observation job.</p>
-     */
+    inline const Aws::String& GetPreviousEarthObservationJobArn() const { return m_previousEarthObservationJobArn; }
     inline bool PreviousEarthObservationJobArnHasBeenSet() const { return m_previousEarthObservationJobArnHasBeenSet; }
+    template<typename PreviousEarthObservationJobArnT = Aws::String>
+    void SetPreviousEarthObservationJobArn(PreviousEarthObservationJobArnT&& value) { m_previousEarthObservationJobArnHasBeenSet = true; m_previousEarthObservationJobArn = std::forward<PreviousEarthObservationJobArnT>(value); }
+    template<typename PreviousEarthObservationJobArnT = Aws::String>
+    InputConfigInput& WithPreviousEarthObservationJobArn(PreviousEarthObservationJobArnT&& value) { SetPreviousEarthObservationJobArn(std::forward<PreviousEarthObservationJobArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the previous Earth Observation job.</p>
-     */
-    inline void SetPreviousEarthObservationJobArn(const Aws::String& value) { m_previousEarthObservationJobArnHasBeenSet = true; m_previousEarthObservationJobArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the previous Earth Observation job.</p>
-     */
-    inline void SetPreviousEarthObservationJobArn(Aws::String&& value) { m_previousEarthObservationJobArnHasBeenSet = true; m_previousEarthObservationJobArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the previous Earth Observation job.</p>
-     */
-    inline void SetPreviousEarthObservationJobArn(const char* value) { m_previousEarthObservationJobArnHasBeenSet = true; m_previousEarthObservationJobArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the previous Earth Observation job.</p>
-     */
-    inline InputConfigInput& WithPreviousEarthObservationJobArn(const Aws::String& value) { SetPreviousEarthObservationJobArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the previous Earth Observation job.</p>
-     */
-    inline InputConfigInput& WithPreviousEarthObservationJobArn(Aws::String&& value) { SetPreviousEarthObservationJobArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the previous Earth Observation job.</p>
-     */
-    inline InputConfigInput& WithPreviousEarthObservationJobArn(const char* value) { SetPreviousEarthObservationJobArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The structure representing the RasterDataCollection Query consisting of the
      * Area of Interest, RasterDataCollectionArn,TimeRange and Property Filters.</p>
      */
-    inline const RasterDataCollectionQueryInput& GetRasterDataCollectionQuery() const{ return m_rasterDataCollectionQuery; }
-
-    /**
-     * <p>The structure representing the RasterDataCollection Query consisting of the
-     * Area of Interest, RasterDataCollectionArn,TimeRange and Property Filters.</p>
-     */
+    inline const RasterDataCollectionQueryInput& GetRasterDataCollectionQuery() const { return m_rasterDataCollectionQuery; }
     inline bool RasterDataCollectionQueryHasBeenSet() const { return m_rasterDataCollectionQueryHasBeenSet; }
-
-    /**
-     * <p>The structure representing the RasterDataCollection Query consisting of the
-     * Area of Interest, RasterDataCollectionArn,TimeRange and Property Filters.</p>
-     */
-    inline void SetRasterDataCollectionQuery(const RasterDataCollectionQueryInput& value) { m_rasterDataCollectionQueryHasBeenSet = true; m_rasterDataCollectionQuery = value; }
-
-    /**
-     * <p>The structure representing the RasterDataCollection Query consisting of the
-     * Area of Interest, RasterDataCollectionArn,TimeRange and Property Filters.</p>
-     */
-    inline void SetRasterDataCollectionQuery(RasterDataCollectionQueryInput&& value) { m_rasterDataCollectionQueryHasBeenSet = true; m_rasterDataCollectionQuery = std::move(value); }
-
-    /**
-     * <p>The structure representing the RasterDataCollection Query consisting of the
-     * Area of Interest, RasterDataCollectionArn,TimeRange and Property Filters.</p>
-     */
-    inline InputConfigInput& WithRasterDataCollectionQuery(const RasterDataCollectionQueryInput& value) { SetRasterDataCollectionQuery(value); return *this;}
-
-    /**
-     * <p>The structure representing the RasterDataCollection Query consisting of the
-     * Area of Interest, RasterDataCollectionArn,TimeRange and Property Filters.</p>
-     */
-    inline InputConfigInput& WithRasterDataCollectionQuery(RasterDataCollectionQueryInput&& value) { SetRasterDataCollectionQuery(std::move(value)); return *this;}
-
+    template<typename RasterDataCollectionQueryT = RasterDataCollectionQueryInput>
+    void SetRasterDataCollectionQuery(RasterDataCollectionQueryT&& value) { m_rasterDataCollectionQueryHasBeenSet = true; m_rasterDataCollectionQuery = std::forward<RasterDataCollectionQueryT>(value); }
+    template<typename RasterDataCollectionQueryT = RasterDataCollectionQueryInput>
+    InputConfigInput& WithRasterDataCollectionQuery(RasterDataCollectionQueryT&& value) { SetRasterDataCollectionQuery(std::forward<RasterDataCollectionQueryT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_previousEarthObservationJobArn;

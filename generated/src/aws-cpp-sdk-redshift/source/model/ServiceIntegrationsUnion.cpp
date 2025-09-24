@@ -20,13 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-ServiceIntegrationsUnion::ServiceIntegrationsUnion() : 
-    m_lakeFormationHasBeenSet(false)
-{
-}
-
-ServiceIntegrationsUnion::ServiceIntegrationsUnion(const XmlNode& xmlNode) : 
-    m_lakeFormationHasBeenSet(false)
+ServiceIntegrationsUnion::ServiceIntegrationsUnion(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ ServiceIntegrationsUnion& ServiceIntegrationsUnion::operator =(const XmlNode& xm
     if(!lakeFormationNode.IsNull())
     {
       XmlNode lakeFormationMember = lakeFormationNode.FirstChild("member");
+      m_lakeFormationHasBeenSet = !lakeFormationMember.IsNull();
       while(!lakeFormationMember.IsNull())
       {
         m_lakeFormation.push_back(lakeFormationMember);
@@ -48,6 +43,19 @@ ServiceIntegrationsUnion& ServiceIntegrationsUnion::operator =(const XmlNode& xm
       }
 
       m_lakeFormationHasBeenSet = true;
+    }
+    XmlNode s3AccessGrantsNode = resultNode.FirstChild("S3AccessGrants");
+    if(!s3AccessGrantsNode.IsNull())
+    {
+      XmlNode s3AccessGrantsMember = s3AccessGrantsNode.FirstChild("member");
+      m_s3AccessGrantsHasBeenSet = !s3AccessGrantsMember.IsNull();
+      while(!s3AccessGrantsMember.IsNull())
+      {
+        m_s3AccessGrants.push_back(s3AccessGrantsMember);
+        s3AccessGrantsMember = s3AccessGrantsMember.NextNode("member");
+      }
+
+      m_s3AccessGrantsHasBeenSet = true;
     }
   }
 
@@ -67,6 +75,17 @@ void ServiceIntegrationsUnion::OutputToStream(Aws::OStream& oStream, const char*
       }
   }
 
+  if(m_s3AccessGrantsHasBeenSet)
+  {
+      unsigned s3AccessGrantsIdx = 1;
+      for(auto& item : m_s3AccessGrants)
+      {
+        Aws::StringStream s3AccessGrantsSs;
+        s3AccessGrantsSs << location << index << locationValue << ".S3AccessGrants.member." << s3AccessGrantsIdx++;
+        item.OutputToStream(oStream, s3AccessGrantsSs.str().c_str());
+      }
+  }
+
 }
 
 void ServiceIntegrationsUnion::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -77,8 +96,18 @@ void ServiceIntegrationsUnion::OutputToStream(Aws::OStream& oStream, const char*
       for(auto& item : m_lakeFormation)
       {
         Aws::StringStream lakeFormationSs;
-        lakeFormationSs << location <<  ".LakeFormation.member." << lakeFormationIdx++;
+        lakeFormationSs << location << ".LakeFormation.member." << lakeFormationIdx++;
         item.OutputToStream(oStream, lakeFormationSs.str().c_str());
+      }
+  }
+  if(m_s3AccessGrantsHasBeenSet)
+  {
+      unsigned s3AccessGrantsIdx = 1;
+      for(auto& item : m_s3AccessGrants)
+      {
+        Aws::StringStream s3AccessGrantsSs;
+        s3AccessGrantsSs << location << ".S3AccessGrants.member." << s3AccessGrantsIdx++;
+        item.OutputToStream(oStream, s3AccessGrantsSs.str().c_str());
       }
   }
 }

@@ -32,60 +32,24 @@ namespace Model
   class AwsGuardDutyDetectorDataSourcesFlowLogsDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsGuardDutyDetectorDataSourcesFlowLogsDetails();
+    AWS_SECURITYHUB_API AwsGuardDutyDetectorDataSourcesFlowLogsDetails() = default;
     AWS_SECURITYHUB_API AwsGuardDutyDetectorDataSourcesFlowLogsDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsGuardDutyDetectorDataSourcesFlowLogsDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Describes whether VPC Flow Logs are activated as a data source for the
      * detector. </p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> Describes whether VPC Flow Logs are activated as a data source for the
-     * detector. </p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p> Describes whether VPC Flow Logs are activated as a data source for the
-     * detector. </p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> Describes whether VPC Flow Logs are activated as a data source for the
-     * detector. </p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> Describes whether VPC Flow Logs are activated as a data source for the
-     * detector. </p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p> Describes whether VPC Flow Logs are activated as a data source for the
-     * detector. </p>
-     */
-    inline AwsGuardDutyDetectorDataSourcesFlowLogsDetails& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> Describes whether VPC Flow Logs are activated as a data source for the
-     * detector. </p>
-     */
-    inline AwsGuardDutyDetectorDataSourcesFlowLogsDetails& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p> Describes whether VPC Flow Logs are activated as a data source for the
-     * detector. </p>
-     */
-    inline AwsGuardDutyDetectorDataSourcesFlowLogsDetails& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    AwsGuardDutyDetectorDataSourcesFlowLogsDetails& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_status;

@@ -20,31 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-EventDescription::EventDescription() : 
-    m_eventDateHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_applicationNameHasBeenSet(false),
-    m_versionLabelHasBeenSet(false),
-    m_templateNameHasBeenSet(false),
-    m_environmentNameHasBeenSet(false),
-    m_platformArnHasBeenSet(false),
-    m_requestIdHasBeenSet(false),
-    m_severity(EventSeverity::NOT_SET),
-    m_severityHasBeenSet(false)
-{
-}
-
-EventDescription::EventDescription(const XmlNode& xmlNode) : 
-    m_eventDateHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_applicationNameHasBeenSet(false),
-    m_versionLabelHasBeenSet(false),
-    m_templateNameHasBeenSet(false),
-    m_environmentNameHasBeenSet(false),
-    m_platformArnHasBeenSet(false),
-    m_requestIdHasBeenSet(false),
-    m_severity(EventSeverity::NOT_SET),
-    m_severityHasBeenSet(false)
+EventDescription::EventDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -106,7 +82,7 @@ EventDescription& EventDescription::operator =(const XmlNode& xmlNode)
     XmlNode severityNode = resultNode.FirstChild("Severity");
     if(!severityNode.IsNull())
     {
-      m_severity = EventSeverityMapper::GetEventSeverityForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(severityNode.GetText()).c_str()).c_str());
+      m_severity = EventSeverityMapper::GetEventSeverityForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(severityNode.GetText()).c_str()));
       m_severityHasBeenSet = true;
     }
   }
@@ -158,7 +134,7 @@ void EventDescription::OutputToStream(Aws::OStream& oStream, const char* locatio
 
   if(m_severityHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Severity=" << EventSeverityMapper::GetNameForEventSeverity(m_severity) << "&";
+      oStream << location << index << locationValue << ".Severity=" << StringUtils::URLEncode(EventSeverityMapper::GetNameForEventSeverity(m_severity)) << "&";
   }
 
 }
@@ -199,7 +175,7 @@ void EventDescription::OutputToStream(Aws::OStream& oStream, const char* locatio
   }
   if(m_severityHasBeenSet)
   {
-      oStream << location << ".Severity=" << EventSeverityMapper::GetNameForEventSeverity(m_severity) << "&";
+      oStream << location << ".Severity=" << StringUtils::URLEncode(EventSeverityMapper::GetNameForEventSeverity(m_severity)) << "&";
   }
 }
 

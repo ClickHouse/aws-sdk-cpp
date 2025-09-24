@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails::AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails() : 
-    m_optionsHasBeenSet(false),
-    m_typeHasBeenSet(false)
-{
-}
-
-AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails::AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails(JsonView jsonValue) : 
-    m_optionsHasBeenSet(false),
-    m_typeHasBeenSet(false)
+AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails::AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails& AwsEcsTask
     }
     m_optionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

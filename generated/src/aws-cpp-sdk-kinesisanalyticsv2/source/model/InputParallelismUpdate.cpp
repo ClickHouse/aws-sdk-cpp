@@ -18,15 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-InputParallelismUpdate::InputParallelismUpdate() : 
-    m_countUpdate(0),
-    m_countUpdateHasBeenSet(false)
-{
-}
-
-InputParallelismUpdate::InputParallelismUpdate(JsonView jsonValue) : 
-    m_countUpdate(0),
-    m_countUpdateHasBeenSet(false)
+InputParallelismUpdate::InputParallelismUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ InputParallelismUpdate& InputParallelismUpdate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CountUpdate"))
   {
     m_countUpdate = jsonValue.GetInteger("CountUpdate");
-
     m_countUpdateHasBeenSet = true;
   }
-
   return *this;
 }
 

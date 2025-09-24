@@ -10,13 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-EnableMetricsCollectionRequest::EnableMetricsCollectionRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_granularityHasBeenSet(false)
-{
-}
-
 Aws::String EnableMetricsCollectionRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -28,12 +21,19 @@ Aws::String EnableMetricsCollectionRequest::SerializePayload() const
 
   if(m_metricsHasBeenSet)
   {
-    unsigned metricsCount = 1;
-    for(auto& item : m_metrics)
+    if (m_metrics.empty())
     {
-      ss << "Metrics.member." << metricsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      metricsCount++;
+      ss << "Metrics=&";
+    }
+    else
+    {
+      unsigned metricsCount = 1;
+      for(auto& item : m_metrics)
+      {
+        ss << "Metrics.member." << metricsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        metricsCount++;
+      }
     }
   }
 

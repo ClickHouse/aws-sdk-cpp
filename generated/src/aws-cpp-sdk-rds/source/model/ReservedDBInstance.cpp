@@ -20,53 +20,7 @@ namespace RDS
 namespace Model
 {
 
-ReservedDBInstance::ReservedDBInstance() : 
-    m_reservedDBInstanceIdHasBeenSet(false),
-    m_reservedDBInstancesOfferingIdHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_fixedPrice(0.0),
-    m_fixedPriceHasBeenSet(false),
-    m_usagePrice(0.0),
-    m_usagePriceHasBeenSet(false),
-    m_currencyCodeHasBeenSet(false),
-    m_dBInstanceCount(0),
-    m_dBInstanceCountHasBeenSet(false),
-    m_productDescriptionHasBeenSet(false),
-    m_offeringTypeHasBeenSet(false),
-    m_multiAZ(false),
-    m_multiAZHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_recurringChargesHasBeenSet(false),
-    m_reservedDBInstanceArnHasBeenSet(false),
-    m_leaseIdHasBeenSet(false)
-{
-}
-
-ReservedDBInstance::ReservedDBInstance(const XmlNode& xmlNode) : 
-    m_reservedDBInstanceIdHasBeenSet(false),
-    m_reservedDBInstancesOfferingIdHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_startTimeHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_fixedPrice(0.0),
-    m_fixedPriceHasBeenSet(false),
-    m_usagePrice(0.0),
-    m_usagePriceHasBeenSet(false),
-    m_currencyCodeHasBeenSet(false),
-    m_dBInstanceCount(0),
-    m_dBInstanceCountHasBeenSet(false),
-    m_productDescriptionHasBeenSet(false),
-    m_offeringTypeHasBeenSet(false),
-    m_multiAZ(false),
-    m_multiAZHasBeenSet(false),
-    m_stateHasBeenSet(false),
-    m_recurringChargesHasBeenSet(false),
-    m_reservedDBInstanceArnHasBeenSet(false),
-    m_leaseIdHasBeenSet(false)
+ReservedDBInstance::ReservedDBInstance(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -159,6 +113,7 @@ ReservedDBInstance& ReservedDBInstance::operator =(const XmlNode& xmlNode)
     if(!recurringChargesNode.IsNull())
     {
       XmlNode recurringChargesMember = recurringChargesNode.FirstChild("RecurringCharge");
+      m_recurringChargesHasBeenSet = !recurringChargesMember.IsNull();
       while(!recurringChargesMember.IsNull())
       {
         m_recurringCharges.push_back(recurringChargesMember);
@@ -257,7 +212,7 @@ void ReservedDBInstance::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location << index << locationValue << ".RecurringCharge." << recurringChargesIdx++;
+        recurringChargesSs << location << index << locationValue << ".RecurringCharges.RecurringCharge." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
@@ -298,11 +253,11 @@ void ReservedDBInstance::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_fixedPriceHasBeenSet)
   {
-        oStream << location << ".FixedPrice=" << StringUtils::URLEncode(m_fixedPrice) << "&";
+      oStream << location << ".FixedPrice=" << StringUtils::URLEncode(m_fixedPrice) << "&";
   }
   if(m_usagePriceHasBeenSet)
   {
-        oStream << location << ".UsagePrice=" << StringUtils::URLEncode(m_usagePrice) << "&";
+      oStream << location << ".UsagePrice=" << StringUtils::URLEncode(m_usagePrice) << "&";
   }
   if(m_currencyCodeHasBeenSet)
   {
@@ -334,7 +289,7 @@ void ReservedDBInstance::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location <<  ".RecurringCharge." << recurringChargesIdx++;
+        recurringChargesSs << location << ".RecurringCharges.RecurringCharge." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }

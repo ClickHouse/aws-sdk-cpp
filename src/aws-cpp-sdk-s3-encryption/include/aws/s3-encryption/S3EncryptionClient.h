@@ -66,6 +66,14 @@ namespace Aws
             S3EncryptionClientBase(const std::shared_ptr<Aws::Utils::Crypto::EncryptionMaterials>& encryptionMaterials, const Aws::S3Encryption::CryptoConfiguration& cryptoConfig,
                 const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider, const Aws::Client::ClientConfiguration& clientConfiguration = Aws::Client::ClientConfiguration());
 
+            /*
+             * Initialize the S3EncryptionClientBase with encryption materials, crypto configuration, and a s3 client factory.
+             * The factory will be used to create the underlying S3 Client.
+             */
+            S3EncryptionClientBase(const std::shared_ptr<Aws::Utils::Crypto::EncryptionMaterials>& encryptionMaterials,
+              const Aws::S3Encryption::CryptoConfiguration& cryptoConfig,
+              const std::function<Aws::UniquePtr<Aws::S3::S3Client> ()>& s3ClientFactory);
+
             S3EncryptionClientBase(const S3EncryptionClientBase&) = delete;
             S3EncryptionClientBase& operator=(const S3EncryptionClientBase&) = delete;
 
@@ -84,9 +92,23 @@ namespace Aws
             */
             S3EncryptionGetObjectOutcome GetObject(const Aws::S3::Model::GetObjectRequest& request) const;
 
+            /*
+            * Function to get an object decrypted from S3. Fails if stored Materials Description does not exactly match supplied contextMap
+            *
+            * Range gets using this method are deprecated. Please see
+            * <https://docs.aws.amazon.com/general/latest/gr/aws_sdk_cryptography.html> for more information
+            */
+            S3EncryptionGetObjectOutcome GetObject(const Aws::S3::Model::GetObjectRequest& request, const Aws::Map<Aws::String, Aws::String>& contextMap) const;
+
             inline bool MultipartUploadSupported() const { return false; }
 
         protected:
+            /*
+	     * GetObject with optional contextMap.
+	     * Fail if contextMap is supplied and does not exactly match stored Materials Description
+	     */
+            S3EncryptionGetObjectOutcome GetObjectInner(const Aws::S3::Model::GetObjectRequest& request, const Aws::Map<Aws::String, Aws::String> * contextMap) const;
+
             /*
             * Function to get the instruction file object of a encrypted object from S3. This instruction file object will be used to assist decryption.
             */
@@ -176,6 +198,17 @@ namespace Aws
             S3EncryptionClientV2(const Aws::S3Encryption::CryptoConfigurationV2& cryptoConfig, const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
                 const Aws::Client::ClientConfiguration& clientConfig = Aws::Client::ClientConfiguration())
                 : S3EncryptionClientBase(cryptoConfig.GetEncryptionMaterials(), CryptoConfiguration(), credentialsProvider, clientConfig)
+            {
+                Init(cryptoConfig);
+            }
+
+            /*
+             * Initialize the S3 Encryption Client V2 with crypto configuration v2, and a s3 client factory.
+             * The factory will be used to create the underlying S3 Client.
+             */
+            S3EncryptionClientV2(const Aws::S3Encryption::CryptoConfigurationV2& cryptoConfig,
+                const std::function<Aws::UniquePtr<Aws::S3::S3Client> ()>& s3ClientFactory)
+                : S3EncryptionClientBase(cryptoConfig.GetEncryptionMaterials(), CryptoConfiguration(), s3ClientFactory)
             {
                 Init(cryptoConfig);
             }

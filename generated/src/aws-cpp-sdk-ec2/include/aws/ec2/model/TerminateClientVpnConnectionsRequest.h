@@ -21,7 +21,7 @@ namespace Model
   class TerminateClientVpnConnectionsRequest : public EC2Request
   {
   public:
-    AWS_EC2_API TerminateClientVpnConnectionsRequest();
+    AWS_EC2_API TerminateClientVpnConnectionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,177 +36,56 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the Client VPN endpoint to which the client is connected.</p>
      */
-    inline const Aws::String& GetClientVpnEndpointId() const{ return m_clientVpnEndpointId; }
-
-    /**
-     * <p>The ID of the Client VPN endpoint to which the client is connected.</p>
-     */
+    inline const Aws::String& GetClientVpnEndpointId() const { return m_clientVpnEndpointId; }
     inline bool ClientVpnEndpointIdHasBeenSet() const { return m_clientVpnEndpointIdHasBeenSet; }
+    template<typename ClientVpnEndpointIdT = Aws::String>
+    void SetClientVpnEndpointId(ClientVpnEndpointIdT&& value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId = std::forward<ClientVpnEndpointIdT>(value); }
+    template<typename ClientVpnEndpointIdT = Aws::String>
+    TerminateClientVpnConnectionsRequest& WithClientVpnEndpointId(ClientVpnEndpointIdT&& value) { SetClientVpnEndpointId(std::forward<ClientVpnEndpointIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Client VPN endpoint to which the client is connected.</p>
-     */
-    inline void SetClientVpnEndpointId(const Aws::String& value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId = value; }
-
-    /**
-     * <p>The ID of the Client VPN endpoint to which the client is connected.</p>
-     */
-    inline void SetClientVpnEndpointId(Aws::String&& value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId = std::move(value); }
-
-    /**
-     * <p>The ID of the Client VPN endpoint to which the client is connected.</p>
-     */
-    inline void SetClientVpnEndpointId(const char* value) { m_clientVpnEndpointIdHasBeenSet = true; m_clientVpnEndpointId.assign(value); }
-
-    /**
-     * <p>The ID of the Client VPN endpoint to which the client is connected.</p>
-     */
-    inline TerminateClientVpnConnectionsRequest& WithClientVpnEndpointId(const Aws::String& value) { SetClientVpnEndpointId(value); return *this;}
-
-    /**
-     * <p>The ID of the Client VPN endpoint to which the client is connected.</p>
-     */
-    inline TerminateClientVpnConnectionsRequest& WithClientVpnEndpointId(Aws::String&& value) { SetClientVpnEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Client VPN endpoint to which the client is connected.</p>
-     */
-    inline TerminateClientVpnConnectionsRequest& WithClientVpnEndpointId(const char* value) { SetClientVpnEndpointId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the client connection to be terminated.</p>
      */
-    inline const Aws::String& GetConnectionId() const{ return m_connectionId; }
-
-    /**
-     * <p>The ID of the client connection to be terminated.</p>
-     */
+    inline const Aws::String& GetConnectionId() const { return m_connectionId; }
     inline bool ConnectionIdHasBeenSet() const { return m_connectionIdHasBeenSet; }
+    template<typename ConnectionIdT = Aws::String>
+    void SetConnectionId(ConnectionIdT&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::forward<ConnectionIdT>(value); }
+    template<typename ConnectionIdT = Aws::String>
+    TerminateClientVpnConnectionsRequest& WithConnectionId(ConnectionIdT&& value) { SetConnectionId(std::forward<ConnectionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the client connection to be terminated.</p>
-     */
-    inline void SetConnectionId(const Aws::String& value) { m_connectionIdHasBeenSet = true; m_connectionId = value; }
-
-    /**
-     * <p>The ID of the client connection to be terminated.</p>
-     */
-    inline void SetConnectionId(Aws::String&& value) { m_connectionIdHasBeenSet = true; m_connectionId = std::move(value); }
-
-    /**
-     * <p>The ID of the client connection to be terminated.</p>
-     */
-    inline void SetConnectionId(const char* value) { m_connectionIdHasBeenSet = true; m_connectionId.assign(value); }
-
-    /**
-     * <p>The ID of the client connection to be terminated.</p>
-     */
-    inline TerminateClientVpnConnectionsRequest& WithConnectionId(const Aws::String& value) { SetConnectionId(value); return *this;}
-
-    /**
-     * <p>The ID of the client connection to be terminated.</p>
-     */
-    inline TerminateClientVpnConnectionsRequest& WithConnectionId(Aws::String&& value) { SetConnectionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the client connection to be terminated.</p>
-     */
-    inline TerminateClientVpnConnectionsRequest& WithConnectionId(const char* value) { SetConnectionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the user who initiated the connection. Use this option to
      * terminate all active connections for the specified user. This option can only be
      * used if the user has established up to five connections.</p>
      */
-    inline const Aws::String& GetUsername() const{ return m_username; }
-
-    /**
-     * <p>The name of the user who initiated the connection. Use this option to
-     * terminate all active connections for the specified user. This option can only be
-     * used if the user has established up to five connections.</p>
-     */
+    inline const Aws::String& GetUsername() const { return m_username; }
     inline bool UsernameHasBeenSet() const { return m_usernameHasBeenSet; }
+    template<typename UsernameT = Aws::String>
+    void SetUsername(UsernameT&& value) { m_usernameHasBeenSet = true; m_username = std::forward<UsernameT>(value); }
+    template<typename UsernameT = Aws::String>
+    TerminateClientVpnConnectionsRequest& WithUsername(UsernameT&& value) { SetUsername(std::forward<UsernameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the user who initiated the connection. Use this option to
-     * terminate all active connections for the specified user. This option can only be
-     * used if the user has established up to five connections.</p>
-     */
-    inline void SetUsername(const Aws::String& value) { m_usernameHasBeenSet = true; m_username = value; }
-
-    /**
-     * <p>The name of the user who initiated the connection. Use this option to
-     * terminate all active connections for the specified user. This option can only be
-     * used if the user has established up to five connections.</p>
-     */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
-
-    /**
-     * <p>The name of the user who initiated the connection. Use this option to
-     * terminate all active connections for the specified user. This option can only be
-     * used if the user has established up to five connections.</p>
-     */
-    inline void SetUsername(const char* value) { m_usernameHasBeenSet = true; m_username.assign(value); }
-
-    /**
-     * <p>The name of the user who initiated the connection. Use this option to
-     * terminate all active connections for the specified user. This option can only be
-     * used if the user has established up to five connections.</p>
-     */
-    inline TerminateClientVpnConnectionsRequest& WithUsername(const Aws::String& value) { SetUsername(value); return *this;}
-
-    /**
-     * <p>The name of the user who initiated the connection. Use this option to
-     * terminate all active connections for the specified user. This option can only be
-     * used if the user has established up to five connections.</p>
-     */
-    inline TerminateClientVpnConnectionsRequest& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the user who initiated the connection. Use this option to
-     * terminate all active connections for the specified user. This option can only be
-     * used if the user has established up to five connections.</p>
-     */
-    inline TerminateClientVpnConnectionsRequest& WithUsername(const char* value) { SetUsername(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline TerminateClientVpnConnectionsRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_clientVpnEndpointId;
@@ -218,7 +97,7 @@ namespace Model
     Aws::String m_username;
     bool m_usernameHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
   };
 

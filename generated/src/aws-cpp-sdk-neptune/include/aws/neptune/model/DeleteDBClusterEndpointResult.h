@@ -41,176 +41,59 @@ namespace Model
   class DeleteDBClusterEndpointResult
   {
   public:
-    AWS_NEPTUNE_API DeleteDBClusterEndpointResult();
+    AWS_NEPTUNE_API DeleteDBClusterEndpointResult() = default;
     AWS_NEPTUNE_API DeleteDBClusterEndpointResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_NEPTUNE_API DeleteDBClusterEndpointResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The identifier associated with the endpoint. This parameter is stored as a
      * lowercase string.</p>
      */
-    inline const Aws::String& GetDBClusterEndpointIdentifier() const{ return m_dBClusterEndpointIdentifier; }
+    inline const Aws::String& GetDBClusterEndpointIdentifier() const { return m_dBClusterEndpointIdentifier; }
+    template<typename DBClusterEndpointIdentifierT = Aws::String>
+    void SetDBClusterEndpointIdentifier(DBClusterEndpointIdentifierT&& value) { m_dBClusterEndpointIdentifierHasBeenSet = true; m_dBClusterEndpointIdentifier = std::forward<DBClusterEndpointIdentifierT>(value); }
+    template<typename DBClusterEndpointIdentifierT = Aws::String>
+    DeleteDBClusterEndpointResult& WithDBClusterEndpointIdentifier(DBClusterEndpointIdentifierT&& value) { SetDBClusterEndpointIdentifier(std::forward<DBClusterEndpointIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier associated with the endpoint. This parameter is stored as a
-     * lowercase string.</p>
-     */
-    inline void SetDBClusterEndpointIdentifier(const Aws::String& value) { m_dBClusterEndpointIdentifier = value; }
-
-    /**
-     * <p>The identifier associated with the endpoint. This parameter is stored as a
-     * lowercase string.</p>
-     */
-    inline void SetDBClusterEndpointIdentifier(Aws::String&& value) { m_dBClusterEndpointIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier associated with the endpoint. This parameter is stored as a
-     * lowercase string.</p>
-     */
-    inline void SetDBClusterEndpointIdentifier(const char* value) { m_dBClusterEndpointIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier associated with the endpoint. This parameter is stored as a
-     * lowercase string.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterEndpointIdentifier(const Aws::String& value) { SetDBClusterEndpointIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier associated with the endpoint. This parameter is stored as a
-     * lowercase string.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterEndpointIdentifier(Aws::String&& value) { SetDBClusterEndpointIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier associated with the endpoint. This parameter is stored as a
-     * lowercase string.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterEndpointIdentifier(const char* value) { SetDBClusterEndpointIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The DB cluster identifier of the DB cluster associated with the endpoint.
      * This parameter is stored as a lowercase string.</p>
      */
-    inline const Aws::String& GetDBClusterIdentifier() const{ return m_dBClusterIdentifier; }
+    inline const Aws::String& GetDBClusterIdentifier() const { return m_dBClusterIdentifier; }
+    template<typename DBClusterIdentifierT = Aws::String>
+    void SetDBClusterIdentifier(DBClusterIdentifierT&& value) { m_dBClusterIdentifierHasBeenSet = true; m_dBClusterIdentifier = std::forward<DBClusterIdentifierT>(value); }
+    template<typename DBClusterIdentifierT = Aws::String>
+    DeleteDBClusterEndpointResult& WithDBClusterIdentifier(DBClusterIdentifierT&& value) { SetDBClusterIdentifier(std::forward<DBClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DB cluster identifier of the DB cluster associated with the endpoint.
-     * This parameter is stored as a lowercase string.</p>
-     */
-    inline void SetDBClusterIdentifier(const Aws::String& value) { m_dBClusterIdentifier = value; }
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster associated with the endpoint.
-     * This parameter is stored as a lowercase string.</p>
-     */
-    inline void SetDBClusterIdentifier(Aws::String&& value) { m_dBClusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster associated with the endpoint.
-     * This parameter is stored as a lowercase string.</p>
-     */
-    inline void SetDBClusterIdentifier(const char* value) { m_dBClusterIdentifier.assign(value); }
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster associated with the endpoint.
-     * This parameter is stored as a lowercase string.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterIdentifier(const Aws::String& value) { SetDBClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster associated with the endpoint.
-     * This parameter is stored as a lowercase string.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterIdentifier(Aws::String&& value) { SetDBClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The DB cluster identifier of the DB cluster associated with the endpoint.
-     * This parameter is stored as a lowercase string.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterIdentifier(const char* value) { SetDBClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique system-generated identifier for an endpoint. It remains the same for
      * the whole life of the endpoint.</p>
      */
-    inline const Aws::String& GetDBClusterEndpointResourceIdentifier() const{ return m_dBClusterEndpointResourceIdentifier; }
+    inline const Aws::String& GetDBClusterEndpointResourceIdentifier() const { return m_dBClusterEndpointResourceIdentifier; }
+    template<typename DBClusterEndpointResourceIdentifierT = Aws::String>
+    void SetDBClusterEndpointResourceIdentifier(DBClusterEndpointResourceIdentifierT&& value) { m_dBClusterEndpointResourceIdentifierHasBeenSet = true; m_dBClusterEndpointResourceIdentifier = std::forward<DBClusterEndpointResourceIdentifierT>(value); }
+    template<typename DBClusterEndpointResourceIdentifierT = Aws::String>
+    DeleteDBClusterEndpointResult& WithDBClusterEndpointResourceIdentifier(DBClusterEndpointResourceIdentifierT&& value) { SetDBClusterEndpointResourceIdentifier(std::forward<DBClusterEndpointResourceIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique system-generated identifier for an endpoint. It remains the same for
-     * the whole life of the endpoint.</p>
-     */
-    inline void SetDBClusterEndpointResourceIdentifier(const Aws::String& value) { m_dBClusterEndpointResourceIdentifier = value; }
-
-    /**
-     * <p>A unique system-generated identifier for an endpoint. It remains the same for
-     * the whole life of the endpoint.</p>
-     */
-    inline void SetDBClusterEndpointResourceIdentifier(Aws::String&& value) { m_dBClusterEndpointResourceIdentifier = std::move(value); }
-
-    /**
-     * <p>A unique system-generated identifier for an endpoint. It remains the same for
-     * the whole life of the endpoint.</p>
-     */
-    inline void SetDBClusterEndpointResourceIdentifier(const char* value) { m_dBClusterEndpointResourceIdentifier.assign(value); }
-
-    /**
-     * <p>A unique system-generated identifier for an endpoint. It remains the same for
-     * the whole life of the endpoint.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterEndpointResourceIdentifier(const Aws::String& value) { SetDBClusterEndpointResourceIdentifier(value); return *this;}
-
-    /**
-     * <p>A unique system-generated identifier for an endpoint. It remains the same for
-     * the whole life of the endpoint.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterEndpointResourceIdentifier(Aws::String&& value) { SetDBClusterEndpointResourceIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique system-generated identifier for an endpoint. It remains the same for
-     * the whole life of the endpoint.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterEndpointResourceIdentifier(const char* value) { SetDBClusterEndpointResourceIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The DNS address of the endpoint.</p>
      */
-    inline const Aws::String& GetEndpoint() const{ return m_endpoint; }
+    inline const Aws::String& GetEndpoint() const { return m_endpoint; }
+    template<typename EndpointT = Aws::String>
+    void SetEndpoint(EndpointT&& value) { m_endpointHasBeenSet = true; m_endpoint = std::forward<EndpointT>(value); }
+    template<typename EndpointT = Aws::String>
+    DeleteDBClusterEndpointResult& WithEndpoint(EndpointT&& value) { SetEndpoint(std::forward<EndpointT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DNS address of the endpoint.</p>
-     */
-    inline void SetEndpoint(const Aws::String& value) { m_endpoint = value; }
-
-    /**
-     * <p>The DNS address of the endpoint.</p>
-     */
-    inline void SetEndpoint(Aws::String&& value) { m_endpoint = std::move(value); }
-
-    /**
-     * <p>The DNS address of the endpoint.</p>
-     */
-    inline void SetEndpoint(const char* value) { m_endpoint.assign(value); }
-
-    /**
-     * <p>The DNS address of the endpoint.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithEndpoint(const Aws::String& value) { SetEndpoint(value); return *this;}
-
-    /**
-     * <p>The DNS address of the endpoint.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithEndpoint(Aws::String&& value) { SetEndpoint(std::move(value)); return *this;}
-
-    /**
-     * <p>The DNS address of the endpoint.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithEndpoint(const char* value) { SetEndpoint(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the endpoint. One of: <code>creating</code>,
      * <code>available</code>, <code>deleting</code>, <code>inactive</code>,
@@ -218,329 +101,119 @@ namespace Model
      * that cannot be used for a certain kind of cluster, such as a <code>writer</code>
      * endpoint for a read-only secondary cluster in a global database.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
+    inline const Aws::String& GetStatus() const { return m_status; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    DeleteDBClusterEndpointResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the endpoint. One of: <code>creating</code>,
-     * <code>available</code>, <code>deleting</code>, <code>inactive</code>,
-     * <code>modifying</code>. The <code>inactive</code> state applies to an endpoint
-     * that cannot be used for a certain kind of cluster, such as a <code>writer</code>
-     * endpoint for a read-only secondary cluster in a global database.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_status = value; }
-
-    /**
-     * <p>The current status of the endpoint. One of: <code>creating</code>,
-     * <code>available</code>, <code>deleting</code>, <code>inactive</code>,
-     * <code>modifying</code>. The <code>inactive</code> state applies to an endpoint
-     * that cannot be used for a certain kind of cluster, such as a <code>writer</code>
-     * endpoint for a read-only secondary cluster in a global database.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The current status of the endpoint. One of: <code>creating</code>,
-     * <code>available</code>, <code>deleting</code>, <code>inactive</code>,
-     * <code>modifying</code>. The <code>inactive</code> state applies to an endpoint
-     * that cannot be used for a certain kind of cluster, such as a <code>writer</code>
-     * endpoint for a read-only secondary cluster in a global database.</p>
-     */
-    inline void SetStatus(const char* value) { m_status.assign(value); }
-
-    /**
-     * <p>The current status of the endpoint. One of: <code>creating</code>,
-     * <code>available</code>, <code>deleting</code>, <code>inactive</code>,
-     * <code>modifying</code>. The <code>inactive</code> state applies to an endpoint
-     * that cannot be used for a certain kind of cluster, such as a <code>writer</code>
-     * endpoint for a read-only secondary cluster in a global database.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the endpoint. One of: <code>creating</code>,
-     * <code>available</code>, <code>deleting</code>, <code>inactive</code>,
-     * <code>modifying</code>. The <code>inactive</code> state applies to an endpoint
-     * that cannot be used for a certain kind of cluster, such as a <code>writer</code>
-     * endpoint for a read-only secondary cluster in a global database.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The current status of the endpoint. One of: <code>creating</code>,
-     * <code>available</code>, <code>deleting</code>, <code>inactive</code>,
-     * <code>modifying</code>. The <code>inactive</code> state applies to an endpoint
-     * that cannot be used for a certain kind of cluster, such as a <code>writer</code>
-     * endpoint for a read-only secondary cluster in a global database.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the endpoint. One of: <code>READER</code>, <code>WRITER</code>,
      * <code>CUSTOM</code>.</p>
      */
-    inline const Aws::String& GetEndpointType() const{ return m_endpointType; }
+    inline const Aws::String& GetEndpointType() const { return m_endpointType; }
+    template<typename EndpointTypeT = Aws::String>
+    void SetEndpointType(EndpointTypeT&& value) { m_endpointTypeHasBeenSet = true; m_endpointType = std::forward<EndpointTypeT>(value); }
+    template<typename EndpointTypeT = Aws::String>
+    DeleteDBClusterEndpointResult& WithEndpointType(EndpointTypeT&& value) { SetEndpointType(std::forward<EndpointTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the endpoint. One of: <code>READER</code>, <code>WRITER</code>,
-     * <code>CUSTOM</code>.</p>
-     */
-    inline void SetEndpointType(const Aws::String& value) { m_endpointType = value; }
-
-    /**
-     * <p>The type of the endpoint. One of: <code>READER</code>, <code>WRITER</code>,
-     * <code>CUSTOM</code>.</p>
-     */
-    inline void SetEndpointType(Aws::String&& value) { m_endpointType = std::move(value); }
-
-    /**
-     * <p>The type of the endpoint. One of: <code>READER</code>, <code>WRITER</code>,
-     * <code>CUSTOM</code>.</p>
-     */
-    inline void SetEndpointType(const char* value) { m_endpointType.assign(value); }
-
-    /**
-     * <p>The type of the endpoint. One of: <code>READER</code>, <code>WRITER</code>,
-     * <code>CUSTOM</code>.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithEndpointType(const Aws::String& value) { SetEndpointType(value); return *this;}
-
-    /**
-     * <p>The type of the endpoint. One of: <code>READER</code>, <code>WRITER</code>,
-     * <code>CUSTOM</code>.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithEndpointType(Aws::String&& value) { SetEndpointType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the endpoint. One of: <code>READER</code>, <code>WRITER</code>,
-     * <code>CUSTOM</code>.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithEndpointType(const char* value) { SetEndpointType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type associated with a custom endpoint. One of: <code>READER</code>,
      * <code>WRITER</code>, <code>ANY</code>.</p>
      */
-    inline const Aws::String& GetCustomEndpointType() const{ return m_customEndpointType; }
+    inline const Aws::String& GetCustomEndpointType() const { return m_customEndpointType; }
+    template<typename CustomEndpointTypeT = Aws::String>
+    void SetCustomEndpointType(CustomEndpointTypeT&& value) { m_customEndpointTypeHasBeenSet = true; m_customEndpointType = std::forward<CustomEndpointTypeT>(value); }
+    template<typename CustomEndpointTypeT = Aws::String>
+    DeleteDBClusterEndpointResult& WithCustomEndpointType(CustomEndpointTypeT&& value) { SetCustomEndpointType(std::forward<CustomEndpointTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type associated with a custom endpoint. One of: <code>READER</code>,
-     * <code>WRITER</code>, <code>ANY</code>.</p>
-     */
-    inline void SetCustomEndpointType(const Aws::String& value) { m_customEndpointType = value; }
-
-    /**
-     * <p>The type associated with a custom endpoint. One of: <code>READER</code>,
-     * <code>WRITER</code>, <code>ANY</code>.</p>
-     */
-    inline void SetCustomEndpointType(Aws::String&& value) { m_customEndpointType = std::move(value); }
-
-    /**
-     * <p>The type associated with a custom endpoint. One of: <code>READER</code>,
-     * <code>WRITER</code>, <code>ANY</code>.</p>
-     */
-    inline void SetCustomEndpointType(const char* value) { m_customEndpointType.assign(value); }
-
-    /**
-     * <p>The type associated with a custom endpoint. One of: <code>READER</code>,
-     * <code>WRITER</code>, <code>ANY</code>.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithCustomEndpointType(const Aws::String& value) { SetCustomEndpointType(value); return *this;}
-
-    /**
-     * <p>The type associated with a custom endpoint. One of: <code>READER</code>,
-     * <code>WRITER</code>, <code>ANY</code>.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithCustomEndpointType(Aws::String&& value) { SetCustomEndpointType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type associated with a custom endpoint. One of: <code>READER</code>,
-     * <code>WRITER</code>, <code>ANY</code>.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithCustomEndpointType(const char* value) { SetCustomEndpointType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>List of DB instance identifiers that are part of the custom endpoint
      * group.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetStaticMembers() const{ return m_staticMembers; }
+    inline const Aws::Vector<Aws::String>& GetStaticMembers() const { return m_staticMembers; }
+    template<typename StaticMembersT = Aws::Vector<Aws::String>>
+    void SetStaticMembers(StaticMembersT&& value) { m_staticMembersHasBeenSet = true; m_staticMembers = std::forward<StaticMembersT>(value); }
+    template<typename StaticMembersT = Aws::Vector<Aws::String>>
+    DeleteDBClusterEndpointResult& WithStaticMembers(StaticMembersT&& value) { SetStaticMembers(std::forward<StaticMembersT>(value)); return *this;}
+    template<typename StaticMembersT = Aws::String>
+    DeleteDBClusterEndpointResult& AddStaticMembers(StaticMembersT&& value) { m_staticMembersHasBeenSet = true; m_staticMembers.emplace_back(std::forward<StaticMembersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of DB instance identifiers that are part of the custom endpoint
-     * group.</p>
-     */
-    inline void SetStaticMembers(const Aws::Vector<Aws::String>& value) { m_staticMembers = value; }
-
-    /**
-     * <p>List of DB instance identifiers that are part of the custom endpoint
-     * group.</p>
-     */
-    inline void SetStaticMembers(Aws::Vector<Aws::String>&& value) { m_staticMembers = std::move(value); }
-
-    /**
-     * <p>List of DB instance identifiers that are part of the custom endpoint
-     * group.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithStaticMembers(const Aws::Vector<Aws::String>& value) { SetStaticMembers(value); return *this;}
-
-    /**
-     * <p>List of DB instance identifiers that are part of the custom endpoint
-     * group.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithStaticMembers(Aws::Vector<Aws::String>&& value) { SetStaticMembers(std::move(value)); return *this;}
-
-    /**
-     * <p>List of DB instance identifiers that are part of the custom endpoint
-     * group.</p>
-     */
-    inline DeleteDBClusterEndpointResult& AddStaticMembers(const Aws::String& value) { m_staticMembers.push_back(value); return *this; }
-
-    /**
-     * <p>List of DB instance identifiers that are part of the custom endpoint
-     * group.</p>
-     */
-    inline DeleteDBClusterEndpointResult& AddStaticMembers(Aws::String&& value) { m_staticMembers.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of DB instance identifiers that are part of the custom endpoint
-     * group.</p>
-     */
-    inline DeleteDBClusterEndpointResult& AddStaticMembers(const char* value) { m_staticMembers.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>List of DB instance identifiers that aren't part of the custom endpoint
      * group. All other eligible instances are reachable through the custom endpoint.
      * Only relevant if the list of static members is empty.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetExcludedMembers() const{ return m_excludedMembers; }
+    inline const Aws::Vector<Aws::String>& GetExcludedMembers() const { return m_excludedMembers; }
+    template<typename ExcludedMembersT = Aws::Vector<Aws::String>>
+    void SetExcludedMembers(ExcludedMembersT&& value) { m_excludedMembersHasBeenSet = true; m_excludedMembers = std::forward<ExcludedMembersT>(value); }
+    template<typename ExcludedMembersT = Aws::Vector<Aws::String>>
+    DeleteDBClusterEndpointResult& WithExcludedMembers(ExcludedMembersT&& value) { SetExcludedMembers(std::forward<ExcludedMembersT>(value)); return *this;}
+    template<typename ExcludedMembersT = Aws::String>
+    DeleteDBClusterEndpointResult& AddExcludedMembers(ExcludedMembersT&& value) { m_excludedMembersHasBeenSet = true; m_excludedMembers.emplace_back(std::forward<ExcludedMembersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of DB instance identifiers that aren't part of the custom endpoint
-     * group. All other eligible instances are reachable through the custom endpoint.
-     * Only relevant if the list of static members is empty.</p>
-     */
-    inline void SetExcludedMembers(const Aws::Vector<Aws::String>& value) { m_excludedMembers = value; }
-
-    /**
-     * <p>List of DB instance identifiers that aren't part of the custom endpoint
-     * group. All other eligible instances are reachable through the custom endpoint.
-     * Only relevant if the list of static members is empty.</p>
-     */
-    inline void SetExcludedMembers(Aws::Vector<Aws::String>&& value) { m_excludedMembers = std::move(value); }
-
-    /**
-     * <p>List of DB instance identifiers that aren't part of the custom endpoint
-     * group. All other eligible instances are reachable through the custom endpoint.
-     * Only relevant if the list of static members is empty.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithExcludedMembers(const Aws::Vector<Aws::String>& value) { SetExcludedMembers(value); return *this;}
-
-    /**
-     * <p>List of DB instance identifiers that aren't part of the custom endpoint
-     * group. All other eligible instances are reachable through the custom endpoint.
-     * Only relevant if the list of static members is empty.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithExcludedMembers(Aws::Vector<Aws::String>&& value) { SetExcludedMembers(std::move(value)); return *this;}
-
-    /**
-     * <p>List of DB instance identifiers that aren't part of the custom endpoint
-     * group. All other eligible instances are reachable through the custom endpoint.
-     * Only relevant if the list of static members is empty.</p>
-     */
-    inline DeleteDBClusterEndpointResult& AddExcludedMembers(const Aws::String& value) { m_excludedMembers.push_back(value); return *this; }
-
-    /**
-     * <p>List of DB instance identifiers that aren't part of the custom endpoint
-     * group. All other eligible instances are reachable through the custom endpoint.
-     * Only relevant if the list of static members is empty.</p>
-     */
-    inline DeleteDBClusterEndpointResult& AddExcludedMembers(Aws::String&& value) { m_excludedMembers.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of DB instance identifiers that aren't part of the custom endpoint
-     * group. All other eligible instances are reachable through the custom endpoint.
-     * Only relevant if the list of static members is empty.</p>
-     */
-    inline DeleteDBClusterEndpointResult& AddExcludedMembers(const char* value) { m_excludedMembers.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the endpoint.</p>
      */
-    inline const Aws::String& GetDBClusterEndpointArn() const{ return m_dBClusterEndpointArn; }
+    inline const Aws::String& GetDBClusterEndpointArn() const { return m_dBClusterEndpointArn; }
+    template<typename DBClusterEndpointArnT = Aws::String>
+    void SetDBClusterEndpointArn(DBClusterEndpointArnT&& value) { m_dBClusterEndpointArnHasBeenSet = true; m_dBClusterEndpointArn = std::forward<DBClusterEndpointArnT>(value); }
+    template<typename DBClusterEndpointArnT = Aws::String>
+    DeleteDBClusterEndpointResult& WithDBClusterEndpointArn(DBClusterEndpointArnT&& value) { SetDBClusterEndpointArn(std::forward<DBClusterEndpointArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the endpoint.</p>
-     */
-    inline void SetDBClusterEndpointArn(const Aws::String& value) { m_dBClusterEndpointArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the endpoint.</p>
-     */
-    inline void SetDBClusterEndpointArn(Aws::String&& value) { m_dBClusterEndpointArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the endpoint.</p>
-     */
-    inline void SetDBClusterEndpointArn(const char* value) { m_dBClusterEndpointArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the endpoint.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterEndpointArn(const Aws::String& value) { SetDBClusterEndpointArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the endpoint.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterEndpointArn(Aws::String&& value) { SetDBClusterEndpointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the endpoint.</p>
-     */
-    inline DeleteDBClusterEndpointResult& WithDBClusterEndpointArn(const char* value) { SetDBClusterEndpointArn(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline DeleteDBClusterEndpointResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline DeleteDBClusterEndpointResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    DeleteDBClusterEndpointResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_dBClusterEndpointIdentifier;
+    bool m_dBClusterEndpointIdentifierHasBeenSet = false;
 
     Aws::String m_dBClusterIdentifier;
+    bool m_dBClusterIdentifierHasBeenSet = false;
 
     Aws::String m_dBClusterEndpointResourceIdentifier;
+    bool m_dBClusterEndpointResourceIdentifierHasBeenSet = false;
 
     Aws::String m_endpoint;
+    bool m_endpointHasBeenSet = false;
 
     Aws::String m_status;
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_endpointType;
+    bool m_endpointTypeHasBeenSet = false;
 
     Aws::String m_customEndpointType;
+    bool m_customEndpointTypeHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_staticMembers;
+    bool m_staticMembersHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_excludedMembers;
+    bool m_excludedMembersHasBeenSet = false;
 
     Aws::String m_dBClusterEndpointArn;
+    bool m_dBClusterEndpointArnHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

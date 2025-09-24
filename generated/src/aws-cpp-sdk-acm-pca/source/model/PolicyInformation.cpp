@@ -18,15 +18,7 @@ namespace ACMPCA
 namespace Model
 {
 
-PolicyInformation::PolicyInformation() : 
-    m_certPolicyIdHasBeenSet(false),
-    m_policyQualifiersHasBeenSet(false)
-{
-}
-
-PolicyInformation::PolicyInformation(JsonView jsonValue) : 
-    m_certPolicyIdHasBeenSet(false),
-    m_policyQualifiersHasBeenSet(false)
+PolicyInformation::PolicyInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ PolicyInformation& PolicyInformation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CertPolicyId"))
   {
     m_certPolicyId = jsonValue.GetString("CertPolicyId");
-
     m_certPolicyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PolicyQualifiers"))
   {
     Aws::Utils::Array<JsonView> policyQualifiersJsonList = jsonValue.GetArray("PolicyQualifiers");
@@ -49,7 +39,6 @@ PolicyInformation& PolicyInformation::operator =(JsonView jsonValue)
     }
     m_policyQualifiersHasBeenSet = true;
   }
-
   return *this;
 }
 

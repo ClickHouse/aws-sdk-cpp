@@ -29,220 +29,93 @@ namespace Model
   class UpdateMonitorResult
   {
   public:
-    AWS_NETWORKMONITOR_API UpdateMonitorResult();
+    AWS_NETWORKMONITOR_API UpdateMonitorResult() = default;
     AWS_NETWORKMONITOR_API UpdateMonitorResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_NETWORKMONITOR_API UpdateMonitorResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN of the monitor that was updated.</p>
      */
-    inline const Aws::String& GetMonitorArn() const{ return m_monitorArn; }
+    inline const Aws::String& GetMonitorArn() const { return m_monitorArn; }
+    template<typename MonitorArnT = Aws::String>
+    void SetMonitorArn(MonitorArnT&& value) { m_monitorArnHasBeenSet = true; m_monitorArn = std::forward<MonitorArnT>(value); }
+    template<typename MonitorArnT = Aws::String>
+    UpdateMonitorResult& WithMonitorArn(MonitorArnT&& value) { SetMonitorArn(std::forward<MonitorArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the monitor that was updated.</p>
-     */
-    inline void SetMonitorArn(const Aws::String& value) { m_monitorArn = value; }
-
-    /**
-     * <p>The ARN of the monitor that was updated.</p>
-     */
-    inline void SetMonitorArn(Aws::String&& value) { m_monitorArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the monitor that was updated.</p>
-     */
-    inline void SetMonitorArn(const char* value) { m_monitorArn.assign(value); }
-
-    /**
-     * <p>The ARN of the monitor that was updated.</p>
-     */
-    inline UpdateMonitorResult& WithMonitorArn(const Aws::String& value) { SetMonitorArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the monitor that was updated.</p>
-     */
-    inline UpdateMonitorResult& WithMonitorArn(Aws::String&& value) { SetMonitorArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the monitor that was updated.</p>
-     */
-    inline UpdateMonitorResult& WithMonitorArn(const char* value) { SetMonitorArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the monitor that was updated.</p>
      */
-    inline const Aws::String& GetMonitorName() const{ return m_monitorName; }
+    inline const Aws::String& GetMonitorName() const { return m_monitorName; }
+    template<typename MonitorNameT = Aws::String>
+    void SetMonitorName(MonitorNameT&& value) { m_monitorNameHasBeenSet = true; m_monitorName = std::forward<MonitorNameT>(value); }
+    template<typename MonitorNameT = Aws::String>
+    UpdateMonitorResult& WithMonitorName(MonitorNameT&& value) { SetMonitorName(std::forward<MonitorNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the monitor that was updated.</p>
-     */
-    inline void SetMonitorName(const Aws::String& value) { m_monitorName = value; }
-
-    /**
-     * <p>The name of the monitor that was updated.</p>
-     */
-    inline void SetMonitorName(Aws::String&& value) { m_monitorName = std::move(value); }
-
-    /**
-     * <p>The name of the monitor that was updated.</p>
-     */
-    inline void SetMonitorName(const char* value) { m_monitorName.assign(value); }
-
-    /**
-     * <p>The name of the monitor that was updated.</p>
-     */
-    inline UpdateMonitorResult& WithMonitorName(const Aws::String& value) { SetMonitorName(value); return *this;}
-
-    /**
-     * <p>The name of the monitor that was updated.</p>
-     */
-    inline UpdateMonitorResult& WithMonitorName(Aws::String&& value) { SetMonitorName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the monitor that was updated.</p>
-     */
-    inline UpdateMonitorResult& WithMonitorName(const char* value) { SetMonitorName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the updated monitor.</p>
      */
-    inline const MonitorState& GetState() const{ return m_state; }
+    inline MonitorState GetState() const { return m_state; }
+    inline void SetState(MonitorState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline UpdateMonitorResult& WithState(MonitorState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The state of the updated monitor.</p>
-     */
-    inline void SetState(const MonitorState& value) { m_state = value; }
-
-    /**
-     * <p>The state of the updated monitor.</p>
-     */
-    inline void SetState(MonitorState&& value) { m_state = std::move(value); }
-
-    /**
-     * <p>The state of the updated monitor.</p>
-     */
-    inline UpdateMonitorResult& WithState(const MonitorState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the updated monitor.</p>
-     */
-    inline UpdateMonitorResult& WithState(MonitorState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The changed aggregation period.</p>
      */
-    inline long long GetAggregationPeriod() const{ return m_aggregationPeriod; }
-
-    /**
-     * <p>The changed aggregation period.</p>
-     */
-    inline void SetAggregationPeriod(long long value) { m_aggregationPeriod = value; }
-
-    /**
-     * <p>The changed aggregation period.</p>
-     */
+    inline long long GetAggregationPeriod() const { return m_aggregationPeriod; }
+    inline void SetAggregationPeriod(long long value) { m_aggregationPeriodHasBeenSet = true; m_aggregationPeriod = value; }
     inline UpdateMonitorResult& WithAggregationPeriod(long long value) { SetAggregationPeriod(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The list of key-value pairs associated with the monitor.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    UpdateMonitorResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    UpdateMonitorResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline UpdateMonitorResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline UpdateMonitorResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline UpdateMonitorResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline UpdateMonitorResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline UpdateMonitorResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline UpdateMonitorResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline UpdateMonitorResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline UpdateMonitorResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The list of key-value pairs associated with the monitor.</p>
-     */
-    inline UpdateMonitorResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateMonitorResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateMonitorResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateMonitorResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateMonitorResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_monitorArn;
+    bool m_monitorArnHasBeenSet = false;
 
     Aws::String m_monitorName;
+    bool m_monitorNameHasBeenSet = false;
 
-    MonitorState m_state;
+    MonitorState m_state{MonitorState::NOT_SET};
+    bool m_stateHasBeenSet = false;
 
-    long long m_aggregationPeriod;
+    long long m_aggregationPeriod{0};
+    bool m_aggregationPeriodHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

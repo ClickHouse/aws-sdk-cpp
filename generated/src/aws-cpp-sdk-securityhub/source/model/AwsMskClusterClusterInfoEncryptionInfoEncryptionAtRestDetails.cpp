@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails::AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails() : 
-    m_dataVolumeKMSKeyIdHasBeenSet(false)
-{
-}
-
-AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails::AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails(JsonView jsonValue) : 
-    m_dataVolumeKMSKeyIdHasBeenSet(false)
+AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails::AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails& AwsMskClusterClus
   if(jsonValue.ValueExists("DataVolumeKMSKeyId"))
   {
     m_dataVolumeKMSKeyId = jsonValue.GetString("DataVolumeKMSKeyId");
-
     m_dataVolumeKMSKeyIdHasBeenSet = true;
   }
-
   return *this;
 }
 

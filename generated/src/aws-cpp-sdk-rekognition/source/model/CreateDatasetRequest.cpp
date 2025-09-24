@@ -12,14 +12,6 @@ using namespace Aws::Rekognition::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDatasetRequest::CreateDatasetRequest() : 
-    m_datasetSourceHasBeenSet(false),
-    m_datasetType(DatasetType::NOT_SET),
-    m_datasetTypeHasBeenSet(false),
-    m_projectArnHasBeenSet(false)
-{
-}
-
 Aws::String CreateDatasetRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +30,17 @@ Aws::String CreateDatasetRequest::SerializePayload() const
   if(m_projectArnHasBeenSet)
   {
    payload.WithString("ProjectArn", m_projectArn);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
 
   }
 

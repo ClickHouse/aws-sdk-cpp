@@ -18,15 +18,7 @@ namespace EMR
 namespace Model
 {
 
-SpotResizingSpecification::SpotResizingSpecification() : 
-    m_timeoutDurationMinutes(0),
-    m_timeoutDurationMinutesHasBeenSet(false)
-{
-}
-
-SpotResizingSpecification::SpotResizingSpecification(JsonView jsonValue) : 
-    m_timeoutDurationMinutes(0),
-    m_timeoutDurationMinutesHasBeenSet(false)
+SpotResizingSpecification::SpotResizingSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,13 @@ SpotResizingSpecification& SpotResizingSpecification::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("TimeoutDurationMinutes"))
   {
     m_timeoutDurationMinutes = jsonValue.GetInteger("TimeoutDurationMinutes");
-
     m_timeoutDurationMinutesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("AllocationStrategy"))
+  {
+    m_allocationStrategy = SpotProvisioningAllocationStrategyMapper::GetSpotProvisioningAllocationStrategyForName(jsonValue.GetString("AllocationStrategy"));
+    m_allocationStrategyHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -51,6 +46,11 @@ JsonValue SpotResizingSpecification::Jsonize() const
   {
    payload.WithInteger("TimeoutDurationMinutes", m_timeoutDurationMinutes);
 
+  }
+
+  if(m_allocationStrategyHasBeenSet)
+  {
+   payload.WithString("AllocationStrategy", SpotProvisioningAllocationStrategyMapper::GetNameForSpotProvisioningAllocationStrategy(m_allocationStrategy));
   }
 
   return payload;

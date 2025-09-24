@@ -20,35 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LockedSnapshotsInfo::LockedSnapshotsInfo() : 
-    m_ownerIdHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_lockState(LockState::NOT_SET),
-    m_lockStateHasBeenSet(false),
-    m_lockDuration(0),
-    m_lockDurationHasBeenSet(false),
-    m_coolOffPeriod(0),
-    m_coolOffPeriodHasBeenSet(false),
-    m_coolOffPeriodExpiresOnHasBeenSet(false),
-    m_lockCreatedOnHasBeenSet(false),
-    m_lockDurationStartTimeHasBeenSet(false),
-    m_lockExpiresOnHasBeenSet(false)
-{
-}
-
-LockedSnapshotsInfo::LockedSnapshotsInfo(const XmlNode& xmlNode) : 
-    m_ownerIdHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_lockState(LockState::NOT_SET),
-    m_lockStateHasBeenSet(false),
-    m_lockDuration(0),
-    m_lockDurationHasBeenSet(false),
-    m_coolOffPeriod(0),
-    m_coolOffPeriodHasBeenSet(false),
-    m_coolOffPeriodExpiresOnHasBeenSet(false),
-    m_lockCreatedOnHasBeenSet(false),
-    m_lockDurationStartTimeHasBeenSet(false),
-    m_lockExpiresOnHasBeenSet(false)
+LockedSnapshotsInfo::LockedSnapshotsInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -74,7 +46,7 @@ LockedSnapshotsInfo& LockedSnapshotsInfo::operator =(const XmlNode& xmlNode)
     XmlNode lockStateNode = resultNode.FirstChild("lockState");
     if(!lockStateNode.IsNull())
     {
-      m_lockState = LockStateMapper::GetLockStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(lockStateNode.GetText()).c_str()).c_str());
+      m_lockState = LockStateMapper::GetLockStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(lockStateNode.GetText()).c_str()));
       m_lockStateHasBeenSet = true;
     }
     XmlNode lockDurationNode = resultNode.FirstChild("lockDuration");
@@ -132,7 +104,7 @@ void LockedSnapshotsInfo::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_lockStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LockState=" << LockStateMapper::GetNameForLockState(m_lockState) << "&";
+      oStream << location << index << locationValue << ".LockState=" << StringUtils::URLEncode(LockStateMapper::GetNameForLockState(m_lockState)) << "&";
   }
 
   if(m_lockDurationHasBeenSet)
@@ -179,7 +151,7 @@ void LockedSnapshotsInfo::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_lockStateHasBeenSet)
   {
-      oStream << location << ".LockState=" << LockStateMapper::GetNameForLockState(m_lockState) << "&";
+      oStream << location << ".LockState=" << StringUtils::URLEncode(LockStateMapper::GetNameForLockState(m_lockState)) << "&";
   }
   if(m_lockDurationHasBeenSet)
   {

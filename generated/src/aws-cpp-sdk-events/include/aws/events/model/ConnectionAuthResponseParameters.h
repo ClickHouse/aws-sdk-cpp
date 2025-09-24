@@ -35,141 +35,60 @@ namespace Model
   class ConnectionAuthResponseParameters
   {
   public:
-    AWS_CLOUDWATCHEVENTS_API ConnectionAuthResponseParameters();
+    AWS_CLOUDWATCHEVENTS_API ConnectionAuthResponseParameters() = default;
     AWS_CLOUDWATCHEVENTS_API ConnectionAuthResponseParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVENTS_API ConnectionAuthResponseParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHEVENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The authorization parameters for Basic authorization.</p>
      */
-    inline const ConnectionBasicAuthResponseParameters& GetBasicAuthParameters() const{ return m_basicAuthParameters; }
-
-    /**
-     * <p>The authorization parameters for Basic authorization.</p>
-     */
+    inline const ConnectionBasicAuthResponseParameters& GetBasicAuthParameters() const { return m_basicAuthParameters; }
     inline bool BasicAuthParametersHasBeenSet() const { return m_basicAuthParametersHasBeenSet; }
+    template<typename BasicAuthParametersT = ConnectionBasicAuthResponseParameters>
+    void SetBasicAuthParameters(BasicAuthParametersT&& value) { m_basicAuthParametersHasBeenSet = true; m_basicAuthParameters = std::forward<BasicAuthParametersT>(value); }
+    template<typename BasicAuthParametersT = ConnectionBasicAuthResponseParameters>
+    ConnectionAuthResponseParameters& WithBasicAuthParameters(BasicAuthParametersT&& value) { SetBasicAuthParameters(std::forward<BasicAuthParametersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The authorization parameters for Basic authorization.</p>
-     */
-    inline void SetBasicAuthParameters(const ConnectionBasicAuthResponseParameters& value) { m_basicAuthParametersHasBeenSet = true; m_basicAuthParameters = value; }
-
-    /**
-     * <p>The authorization parameters for Basic authorization.</p>
-     */
-    inline void SetBasicAuthParameters(ConnectionBasicAuthResponseParameters&& value) { m_basicAuthParametersHasBeenSet = true; m_basicAuthParameters = std::move(value); }
-
-    /**
-     * <p>The authorization parameters for Basic authorization.</p>
-     */
-    inline ConnectionAuthResponseParameters& WithBasicAuthParameters(const ConnectionBasicAuthResponseParameters& value) { SetBasicAuthParameters(value); return *this;}
-
-    /**
-     * <p>The authorization parameters for Basic authorization.</p>
-     */
-    inline ConnectionAuthResponseParameters& WithBasicAuthParameters(ConnectionBasicAuthResponseParameters&& value) { SetBasicAuthParameters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The OAuth parameters to use for authorization.</p>
      */
-    inline const ConnectionOAuthResponseParameters& GetOAuthParameters() const{ return m_oAuthParameters; }
-
-    /**
-     * <p>The OAuth parameters to use for authorization.</p>
-     */
+    inline const ConnectionOAuthResponseParameters& GetOAuthParameters() const { return m_oAuthParameters; }
     inline bool OAuthParametersHasBeenSet() const { return m_oAuthParametersHasBeenSet; }
+    template<typename OAuthParametersT = ConnectionOAuthResponseParameters>
+    void SetOAuthParameters(OAuthParametersT&& value) { m_oAuthParametersHasBeenSet = true; m_oAuthParameters = std::forward<OAuthParametersT>(value); }
+    template<typename OAuthParametersT = ConnectionOAuthResponseParameters>
+    ConnectionAuthResponseParameters& WithOAuthParameters(OAuthParametersT&& value) { SetOAuthParameters(std::forward<OAuthParametersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The OAuth parameters to use for authorization.</p>
-     */
-    inline void SetOAuthParameters(const ConnectionOAuthResponseParameters& value) { m_oAuthParametersHasBeenSet = true; m_oAuthParameters = value; }
-
-    /**
-     * <p>The OAuth parameters to use for authorization.</p>
-     */
-    inline void SetOAuthParameters(ConnectionOAuthResponseParameters&& value) { m_oAuthParametersHasBeenSet = true; m_oAuthParameters = std::move(value); }
-
-    /**
-     * <p>The OAuth parameters to use for authorization.</p>
-     */
-    inline ConnectionAuthResponseParameters& WithOAuthParameters(const ConnectionOAuthResponseParameters& value) { SetOAuthParameters(value); return *this;}
-
-    /**
-     * <p>The OAuth parameters to use for authorization.</p>
-     */
-    inline ConnectionAuthResponseParameters& WithOAuthParameters(ConnectionOAuthResponseParameters&& value) { SetOAuthParameters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The API Key parameters to use for authorization.</p>
      */
-    inline const ConnectionApiKeyAuthResponseParameters& GetApiKeyAuthParameters() const{ return m_apiKeyAuthParameters; }
-
-    /**
-     * <p>The API Key parameters to use for authorization.</p>
-     */
+    inline const ConnectionApiKeyAuthResponseParameters& GetApiKeyAuthParameters() const { return m_apiKeyAuthParameters; }
     inline bool ApiKeyAuthParametersHasBeenSet() const { return m_apiKeyAuthParametersHasBeenSet; }
+    template<typename ApiKeyAuthParametersT = ConnectionApiKeyAuthResponseParameters>
+    void SetApiKeyAuthParameters(ApiKeyAuthParametersT&& value) { m_apiKeyAuthParametersHasBeenSet = true; m_apiKeyAuthParameters = std::forward<ApiKeyAuthParametersT>(value); }
+    template<typename ApiKeyAuthParametersT = ConnectionApiKeyAuthResponseParameters>
+    ConnectionAuthResponseParameters& WithApiKeyAuthParameters(ApiKeyAuthParametersT&& value) { SetApiKeyAuthParameters(std::forward<ApiKeyAuthParametersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The API Key parameters to use for authorization.</p>
-     */
-    inline void SetApiKeyAuthParameters(const ConnectionApiKeyAuthResponseParameters& value) { m_apiKeyAuthParametersHasBeenSet = true; m_apiKeyAuthParameters = value; }
-
-    /**
-     * <p>The API Key parameters to use for authorization.</p>
-     */
-    inline void SetApiKeyAuthParameters(ConnectionApiKeyAuthResponseParameters&& value) { m_apiKeyAuthParametersHasBeenSet = true; m_apiKeyAuthParameters = std::move(value); }
-
-    /**
-     * <p>The API Key parameters to use for authorization.</p>
-     */
-    inline ConnectionAuthResponseParameters& WithApiKeyAuthParameters(const ConnectionApiKeyAuthResponseParameters& value) { SetApiKeyAuthParameters(value); return *this;}
-
-    /**
-     * <p>The API Key parameters to use for authorization.</p>
-     */
-    inline ConnectionAuthResponseParameters& WithApiKeyAuthParameters(ConnectionApiKeyAuthResponseParameters&& value) { SetApiKeyAuthParameters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Additional parameters for the connection that are passed through with every
      * invocation to the HTTP endpoint.</p>
      */
-    inline const ConnectionHttpParameters& GetInvocationHttpParameters() const{ return m_invocationHttpParameters; }
-
-    /**
-     * <p>Additional parameters for the connection that are passed through with every
-     * invocation to the HTTP endpoint.</p>
-     */
+    inline const ConnectionHttpParameters& GetInvocationHttpParameters() const { return m_invocationHttpParameters; }
     inline bool InvocationHttpParametersHasBeenSet() const { return m_invocationHttpParametersHasBeenSet; }
-
-    /**
-     * <p>Additional parameters for the connection that are passed through with every
-     * invocation to the HTTP endpoint.</p>
-     */
-    inline void SetInvocationHttpParameters(const ConnectionHttpParameters& value) { m_invocationHttpParametersHasBeenSet = true; m_invocationHttpParameters = value; }
-
-    /**
-     * <p>Additional parameters for the connection that are passed through with every
-     * invocation to the HTTP endpoint.</p>
-     */
-    inline void SetInvocationHttpParameters(ConnectionHttpParameters&& value) { m_invocationHttpParametersHasBeenSet = true; m_invocationHttpParameters = std::move(value); }
-
-    /**
-     * <p>Additional parameters for the connection that are passed through with every
-     * invocation to the HTTP endpoint.</p>
-     */
-    inline ConnectionAuthResponseParameters& WithInvocationHttpParameters(const ConnectionHttpParameters& value) { SetInvocationHttpParameters(value); return *this;}
-
-    /**
-     * <p>Additional parameters for the connection that are passed through with every
-     * invocation to the HTTP endpoint.</p>
-     */
-    inline ConnectionAuthResponseParameters& WithInvocationHttpParameters(ConnectionHttpParameters&& value) { SetInvocationHttpParameters(std::move(value)); return *this;}
-
+    template<typename InvocationHttpParametersT = ConnectionHttpParameters>
+    void SetInvocationHttpParameters(InvocationHttpParametersT&& value) { m_invocationHttpParametersHasBeenSet = true; m_invocationHttpParameters = std::forward<InvocationHttpParametersT>(value); }
+    template<typename InvocationHttpParametersT = ConnectionHttpParameters>
+    ConnectionAuthResponseParameters& WithInvocationHttpParameters(InvocationHttpParametersT&& value) { SetInvocationHttpParameters(std::forward<InvocationHttpParametersT>(value)); return *this;}
+    ///@}
   private:
 
     ConnectionBasicAuthResponseParameters m_basicAuthParameters;

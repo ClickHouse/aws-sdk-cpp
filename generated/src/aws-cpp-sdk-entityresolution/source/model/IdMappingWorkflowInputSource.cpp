@@ -18,15 +18,7 @@ namespace EntityResolution
 namespace Model
 {
 
-IdMappingWorkflowInputSource::IdMappingWorkflowInputSource() : 
-    m_inputSourceARNHasBeenSet(false),
-    m_schemaNameHasBeenSet(false)
-{
-}
-
-IdMappingWorkflowInputSource::IdMappingWorkflowInputSource(JsonView jsonValue) : 
-    m_inputSourceARNHasBeenSet(false),
-    m_schemaNameHasBeenSet(false)
+IdMappingWorkflowInputSource::IdMappingWorkflowInputSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ IdMappingWorkflowInputSource& IdMappingWorkflowInputSource::operator =(JsonView 
   if(jsonValue.ValueExists("inputSourceARN"))
   {
     m_inputSourceARN = jsonValue.GetString("inputSourceARN");
-
     m_inputSourceARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("schemaName"))
   {
     m_schemaName = jsonValue.GetString("schemaName");
-
     m_schemaNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("type"))
+  {
+    m_type = IdNamespaceTypeMapper::GetIdNamespaceTypeForName(jsonValue.GetString("type"));
+    m_typeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -64,6 +57,11 @@ JsonValue IdMappingWorkflowInputSource::Jsonize() const
   {
    payload.WithString("schemaName", m_schemaName);
 
+  }
+
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("type", IdNamespaceTypeMapper::GetNameForIdNamespaceType(m_type));
   }
 
   return payload;

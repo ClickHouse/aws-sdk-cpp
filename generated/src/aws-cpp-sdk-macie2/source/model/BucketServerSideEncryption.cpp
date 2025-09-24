@@ -18,17 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-BucketServerSideEncryption::BucketServerSideEncryption() : 
-    m_kmsMasterKeyIdHasBeenSet(false),
-    m_type(Type::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-BucketServerSideEncryption::BucketServerSideEncryption(JsonView jsonValue) : 
-    m_kmsMasterKeyIdHasBeenSet(false),
-    m_type(Type::NOT_SET),
-    m_typeHasBeenSet(false)
+BucketServerSideEncryption::BucketServerSideEncryption(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ BucketServerSideEncryption& BucketServerSideEncryption::operator =(JsonView json
   if(jsonValue.ValueExists("kmsMasterKeyId"))
   {
     m_kmsMasterKeyId = jsonValue.GetString("kmsMasterKeyId");
-
     m_kmsMasterKeyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = TypeMapper::GetTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

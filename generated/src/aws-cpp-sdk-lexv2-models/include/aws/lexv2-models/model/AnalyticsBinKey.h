@@ -32,69 +32,37 @@ namespace Model
   class AnalyticsBinKey
   {
   public:
-    AWS_LEXMODELSV2_API AnalyticsBinKey();
+    AWS_LEXMODELSV2_API AnalyticsBinKey() = default;
     AWS_LEXMODELSV2_API AnalyticsBinKey(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API AnalyticsBinKey& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The criterion by which to bin the results.</p>
      */
-    inline const AnalyticsBinByName& GetName() const{ return m_name; }
-
-    /**
-     * <p>The criterion by which to bin the results.</p>
-     */
+    inline AnalyticsBinByName GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    inline void SetName(AnalyticsBinByName value) { m_nameHasBeenSet = true; m_name = value; }
+    inline AnalyticsBinKey& WithName(AnalyticsBinByName value) { SetName(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The criterion by which to bin the results.</p>
-     */
-    inline void SetName(const AnalyticsBinByName& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The criterion by which to bin the results.</p>
-     */
-    inline void SetName(AnalyticsBinByName&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The criterion by which to bin the results.</p>
-     */
-    inline AnalyticsBinKey& WithName(const AnalyticsBinByName& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The criterion by which to bin the results.</p>
-     */
-    inline AnalyticsBinKey& WithName(AnalyticsBinByName&& value) { SetName(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the criterion that defines the bin.</p>
      */
-    inline long long GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the criterion that defines the bin.</p>
-     */
+    inline long long GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of the criterion that defines the bin.</p>
-     */
     inline void SetValue(long long value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the criterion that defines the bin.</p>
-     */
     inline AnalyticsBinKey& WithValue(long long value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    AnalyticsBinByName m_name;
+    AnalyticsBinByName m_name{AnalyticsBinByName::NOT_SET};
     bool m_nameHasBeenSet = false;
 
-    long long m_value;
+    long long m_value{0};
     bool m_valueHasBeenSet = false;
   };
 

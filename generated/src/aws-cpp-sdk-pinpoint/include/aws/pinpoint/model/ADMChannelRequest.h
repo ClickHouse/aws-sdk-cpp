@@ -32,130 +32,47 @@ namespace Model
   class ADMChannelRequest
   {
   public:
-    AWS_PINPOINT_API ADMChannelRequest();
+    AWS_PINPOINT_API ADMChannelRequest() = default;
     AWS_PINPOINT_API ADMChannelRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API ADMChannelRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Client ID that you received from Amazon to send messages by using
      * ADM.</p>
      */
-    inline const Aws::String& GetClientId() const{ return m_clientId; }
-
-    /**
-     * <p>The Client ID that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
+    inline const Aws::String& GetClientId() const { return m_clientId; }
     inline bool ClientIdHasBeenSet() const { return m_clientIdHasBeenSet; }
+    template<typename ClientIdT = Aws::String>
+    void SetClientId(ClientIdT&& value) { m_clientIdHasBeenSet = true; m_clientId = std::forward<ClientIdT>(value); }
+    template<typename ClientIdT = Aws::String>
+    ADMChannelRequest& WithClientId(ClientIdT&& value) { SetClientId(std::forward<ClientIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Client ID that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline void SetClientId(const Aws::String& value) { m_clientIdHasBeenSet = true; m_clientId = value; }
-
-    /**
-     * <p>The Client ID that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline void SetClientId(Aws::String&& value) { m_clientIdHasBeenSet = true; m_clientId = std::move(value); }
-
-    /**
-     * <p>The Client ID that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline void SetClientId(const char* value) { m_clientIdHasBeenSet = true; m_clientId.assign(value); }
-
-    /**
-     * <p>The Client ID that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline ADMChannelRequest& WithClientId(const Aws::String& value) { SetClientId(value); return *this;}
-
-    /**
-     * <p>The Client ID that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline ADMChannelRequest& WithClientId(Aws::String&& value) { SetClientId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Client ID that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline ADMChannelRequest& WithClientId(const char* value) { SetClientId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Client Secret that you received from Amazon to send messages by using
      * ADM.</p>
      */
-    inline const Aws::String& GetClientSecret() const{ return m_clientSecret; }
-
-    /**
-     * <p>The Client Secret that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
+    inline const Aws::String& GetClientSecret() const { return m_clientSecret; }
     inline bool ClientSecretHasBeenSet() const { return m_clientSecretHasBeenSet; }
+    template<typename ClientSecretT = Aws::String>
+    void SetClientSecret(ClientSecretT&& value) { m_clientSecretHasBeenSet = true; m_clientSecret = std::forward<ClientSecretT>(value); }
+    template<typename ClientSecretT = Aws::String>
+    ADMChannelRequest& WithClientSecret(ClientSecretT&& value) { SetClientSecret(std::forward<ClientSecretT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Client Secret that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline void SetClientSecret(const Aws::String& value) { m_clientSecretHasBeenSet = true; m_clientSecret = value; }
-
-    /**
-     * <p>The Client Secret that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline void SetClientSecret(Aws::String&& value) { m_clientSecretHasBeenSet = true; m_clientSecret = std::move(value); }
-
-    /**
-     * <p>The Client Secret that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline void SetClientSecret(const char* value) { m_clientSecretHasBeenSet = true; m_clientSecret.assign(value); }
-
-    /**
-     * <p>The Client Secret that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline ADMChannelRequest& WithClientSecret(const Aws::String& value) { SetClientSecret(value); return *this;}
-
-    /**
-     * <p>The Client Secret that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline ADMChannelRequest& WithClientSecret(Aws::String&& value) { SetClientSecret(std::move(value)); return *this;}
-
-    /**
-     * <p>The Client Secret that you received from Amazon to send messages by using
-     * ADM.</p>
-     */
-    inline ADMChannelRequest& WithClientSecret(const char* value) { SetClientSecret(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether to enable the ADM channel for the application.</p>
      */
-    inline bool GetEnabled() const{ return m_enabled; }
-
-    /**
-     * <p>Specifies whether to enable the ADM channel for the application.</p>
-     */
+    inline bool GetEnabled() const { return m_enabled; }
     inline bool EnabledHasBeenSet() const { return m_enabledHasBeenSet; }
-
-    /**
-     * <p>Specifies whether to enable the ADM channel for the application.</p>
-     */
     inline void SetEnabled(bool value) { m_enabledHasBeenSet = true; m_enabled = value; }
-
-    /**
-     * <p>Specifies whether to enable the ADM channel for the application.</p>
-     */
     inline ADMChannelRequest& WithEnabled(bool value) { SetEnabled(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_clientId;
@@ -164,7 +81,7 @@ namespace Model
     Aws::String m_clientSecret;
     bool m_clientSecretHasBeenSet = false;
 
-    bool m_enabled;
+    bool m_enabled{false};
     bool m_enabledHasBeenSet = false;
   };
 

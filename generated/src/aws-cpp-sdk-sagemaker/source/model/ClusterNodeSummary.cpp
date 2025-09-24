@@ -18,23 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ClusterNodeSummary::ClusterNodeSummary() : 
-    m_instanceGroupNameHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_instanceType(ClusterInstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_launchTimeHasBeenSet(false),
-    m_instanceStatusHasBeenSet(false)
-{
-}
-
-ClusterNodeSummary::ClusterNodeSummary(JsonView jsonValue) : 
-    m_instanceGroupNameHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_instanceType(ClusterInstanceType::NOT_SET),
-    m_instanceTypeHasBeenSet(false),
-    m_launchTimeHasBeenSet(false),
-    m_instanceStatusHasBeenSet(false)
+ClusterNodeSummary::ClusterNodeSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,38 +28,43 @@ ClusterNodeSummary& ClusterNodeSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("InstanceGroupName"))
   {
     m_instanceGroupName = jsonValue.GetString("InstanceGroupName");
-
     m_instanceGroupNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InstanceId"))
   {
     m_instanceId = jsonValue.GetString("InstanceId");
-
     m_instanceIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("NodeLogicalId"))
+  {
+    m_nodeLogicalId = jsonValue.GetString("NodeLogicalId");
+    m_nodeLogicalIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("InstanceType"))
   {
     m_instanceType = ClusterInstanceTypeMapper::GetClusterInstanceTypeForName(jsonValue.GetString("InstanceType"));
-
     m_instanceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LaunchTime"))
   {
     m_launchTime = jsonValue.GetDouble("LaunchTime");
-
     m_launchTimeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("LastSoftwareUpdateTime"))
+  {
+    m_lastSoftwareUpdateTime = jsonValue.GetDouble("LastSoftwareUpdateTime");
+    m_lastSoftwareUpdateTimeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("InstanceStatus"))
   {
     m_instanceStatus = jsonValue.GetObject("InstanceStatus");
-
     m_instanceStatusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("UltraServerInfo"))
+  {
+    m_ultraServerInfo = jsonValue.GetObject("UltraServerInfo");
+    m_ultraServerInfoHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -95,6 +84,12 @@ JsonValue ClusterNodeSummary::Jsonize() const
 
   }
 
+  if(m_nodeLogicalIdHasBeenSet)
+  {
+   payload.WithString("NodeLogicalId", m_nodeLogicalId);
+
+  }
+
   if(m_instanceTypeHasBeenSet)
   {
    payload.WithString("InstanceType", ClusterInstanceTypeMapper::GetNameForClusterInstanceType(m_instanceType));
@@ -105,9 +100,20 @@ JsonValue ClusterNodeSummary::Jsonize() const
    payload.WithDouble("LaunchTime", m_launchTime.SecondsWithMSPrecision());
   }
 
+  if(m_lastSoftwareUpdateTimeHasBeenSet)
+  {
+   payload.WithDouble("LastSoftwareUpdateTime", m_lastSoftwareUpdateTime.SecondsWithMSPrecision());
+  }
+
   if(m_instanceStatusHasBeenSet)
   {
    payload.WithObject("InstanceStatus", m_instanceStatus.Jsonize());
+
+  }
+
+  if(m_ultraServerInfoHasBeenSet)
+  {
+   payload.WithObject("UltraServerInfo", m_ultraServerInfo.Jsonize());
 
   }
 

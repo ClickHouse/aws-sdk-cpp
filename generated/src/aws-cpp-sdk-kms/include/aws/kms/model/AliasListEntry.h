@@ -32,224 +32,75 @@ namespace Model
   class AliasListEntry
   {
   public:
-    AWS_KMS_API AliasListEntry();
+    AWS_KMS_API AliasListEntry() = default;
     AWS_KMS_API AliasListEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_KMS_API AliasListEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>String that contains the alias. This value begins with
      * <code>alias/</code>.</p>
      */
-    inline const Aws::String& GetAliasName() const{ return m_aliasName; }
-
-    /**
-     * <p>String that contains the alias. This value begins with
-     * <code>alias/</code>.</p>
-     */
+    inline const Aws::String& GetAliasName() const { return m_aliasName; }
     inline bool AliasNameHasBeenSet() const { return m_aliasNameHasBeenSet; }
+    template<typename AliasNameT = Aws::String>
+    void SetAliasName(AliasNameT&& value) { m_aliasNameHasBeenSet = true; m_aliasName = std::forward<AliasNameT>(value); }
+    template<typename AliasNameT = Aws::String>
+    AliasListEntry& WithAliasName(AliasNameT&& value) { SetAliasName(std::forward<AliasNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>String that contains the alias. This value begins with
-     * <code>alias/</code>.</p>
-     */
-    inline void SetAliasName(const Aws::String& value) { m_aliasNameHasBeenSet = true; m_aliasName = value; }
-
-    /**
-     * <p>String that contains the alias. This value begins with
-     * <code>alias/</code>.</p>
-     */
-    inline void SetAliasName(Aws::String&& value) { m_aliasNameHasBeenSet = true; m_aliasName = std::move(value); }
-
-    /**
-     * <p>String that contains the alias. This value begins with
-     * <code>alias/</code>.</p>
-     */
-    inline void SetAliasName(const char* value) { m_aliasNameHasBeenSet = true; m_aliasName.assign(value); }
-
-    /**
-     * <p>String that contains the alias. This value begins with
-     * <code>alias/</code>.</p>
-     */
-    inline AliasListEntry& WithAliasName(const Aws::String& value) { SetAliasName(value); return *this;}
-
-    /**
-     * <p>String that contains the alias. This value begins with
-     * <code>alias/</code>.</p>
-     */
-    inline AliasListEntry& WithAliasName(Aws::String&& value) { SetAliasName(std::move(value)); return *this;}
-
-    /**
-     * <p>String that contains the alias. This value begins with
-     * <code>alias/</code>.</p>
-     */
-    inline AliasListEntry& WithAliasName(const char* value) { SetAliasName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>String that contains the key ARN.</p>
      */
-    inline const Aws::String& GetAliasArn() const{ return m_aliasArn; }
-
-    /**
-     * <p>String that contains the key ARN.</p>
-     */
+    inline const Aws::String& GetAliasArn() const { return m_aliasArn; }
     inline bool AliasArnHasBeenSet() const { return m_aliasArnHasBeenSet; }
+    template<typename AliasArnT = Aws::String>
+    void SetAliasArn(AliasArnT&& value) { m_aliasArnHasBeenSet = true; m_aliasArn = std::forward<AliasArnT>(value); }
+    template<typename AliasArnT = Aws::String>
+    AliasListEntry& WithAliasArn(AliasArnT&& value) { SetAliasArn(std::forward<AliasArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>String that contains the key ARN.</p>
-     */
-    inline void SetAliasArn(const Aws::String& value) { m_aliasArnHasBeenSet = true; m_aliasArn = value; }
-
-    /**
-     * <p>String that contains the key ARN.</p>
-     */
-    inline void SetAliasArn(Aws::String&& value) { m_aliasArnHasBeenSet = true; m_aliasArn = std::move(value); }
-
-    /**
-     * <p>String that contains the key ARN.</p>
-     */
-    inline void SetAliasArn(const char* value) { m_aliasArnHasBeenSet = true; m_aliasArn.assign(value); }
-
-    /**
-     * <p>String that contains the key ARN.</p>
-     */
-    inline AliasListEntry& WithAliasArn(const Aws::String& value) { SetAliasArn(value); return *this;}
-
-    /**
-     * <p>String that contains the key ARN.</p>
-     */
-    inline AliasListEntry& WithAliasArn(Aws::String&& value) { SetAliasArn(std::move(value)); return *this;}
-
-    /**
-     * <p>String that contains the key ARN.</p>
-     */
-    inline AliasListEntry& WithAliasArn(const char* value) { SetAliasArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>String that contains the key identifier of the KMS key associated with the
      * alias.</p>
      */
-    inline const Aws::String& GetTargetKeyId() const{ return m_targetKeyId; }
-
-    /**
-     * <p>String that contains the key identifier of the KMS key associated with the
-     * alias.</p>
-     */
+    inline const Aws::String& GetTargetKeyId() const { return m_targetKeyId; }
     inline bool TargetKeyIdHasBeenSet() const { return m_targetKeyIdHasBeenSet; }
+    template<typename TargetKeyIdT = Aws::String>
+    void SetTargetKeyId(TargetKeyIdT&& value) { m_targetKeyIdHasBeenSet = true; m_targetKeyId = std::forward<TargetKeyIdT>(value); }
+    template<typename TargetKeyIdT = Aws::String>
+    AliasListEntry& WithTargetKeyId(TargetKeyIdT&& value) { SetTargetKeyId(std::forward<TargetKeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>String that contains the key identifier of the KMS key associated with the
-     * alias.</p>
-     */
-    inline void SetTargetKeyId(const Aws::String& value) { m_targetKeyIdHasBeenSet = true; m_targetKeyId = value; }
-
-    /**
-     * <p>String that contains the key identifier of the KMS key associated with the
-     * alias.</p>
-     */
-    inline void SetTargetKeyId(Aws::String&& value) { m_targetKeyIdHasBeenSet = true; m_targetKeyId = std::move(value); }
-
-    /**
-     * <p>String that contains the key identifier of the KMS key associated with the
-     * alias.</p>
-     */
-    inline void SetTargetKeyId(const char* value) { m_targetKeyIdHasBeenSet = true; m_targetKeyId.assign(value); }
-
-    /**
-     * <p>String that contains the key identifier of the KMS key associated with the
-     * alias.</p>
-     */
-    inline AliasListEntry& WithTargetKeyId(const Aws::String& value) { SetTargetKeyId(value); return *this;}
-
-    /**
-     * <p>String that contains the key identifier of the KMS key associated with the
-     * alias.</p>
-     */
-    inline AliasListEntry& WithTargetKeyId(Aws::String&& value) { SetTargetKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>String that contains the key identifier of the KMS key associated with the
-     * alias.</p>
-     */
-    inline AliasListEntry& WithTargetKeyId(const char* value) { SetTargetKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Date and time that the alias was most recently created in the account and
      * Region. Formatted as Unix time.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationDate() const{ return m_creationDate; }
-
-    /**
-     * <p>Date and time that the alias was most recently created in the account and
-     * Region. Formatted as Unix time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationDate() const { return m_creationDate; }
     inline bool CreationDateHasBeenSet() const { return m_creationDateHasBeenSet; }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    void SetCreationDate(CreationDateT&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::forward<CreationDateT>(value); }
+    template<typename CreationDateT = Aws::Utils::DateTime>
+    AliasListEntry& WithCreationDate(CreationDateT&& value) { SetCreationDate(std::forward<CreationDateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Date and time that the alias was most recently created in the account and
-     * Region. Formatted as Unix time.</p>
-     */
-    inline void SetCreationDate(const Aws::Utils::DateTime& value) { m_creationDateHasBeenSet = true; m_creationDate = value; }
-
-    /**
-     * <p>Date and time that the alias was most recently created in the account and
-     * Region. Formatted as Unix time.</p>
-     */
-    inline void SetCreationDate(Aws::Utils::DateTime&& value) { m_creationDateHasBeenSet = true; m_creationDate = std::move(value); }
-
-    /**
-     * <p>Date and time that the alias was most recently created in the account and
-     * Region. Formatted as Unix time.</p>
-     */
-    inline AliasListEntry& WithCreationDate(const Aws::Utils::DateTime& value) { SetCreationDate(value); return *this;}
-
-    /**
-     * <p>Date and time that the alias was most recently created in the account and
-     * Region. Formatted as Unix time.</p>
-     */
-    inline AliasListEntry& WithCreationDate(Aws::Utils::DateTime&& value) { SetCreationDate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Date and time that the alias was most recently associated with a KMS key in
      * the account and Region. Formatted as Unix time.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const{ return m_lastUpdatedDate; }
-
-    /**
-     * <p>Date and time that the alias was most recently associated with a KMS key in
-     * the account and Region. Formatted as Unix time.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedDate() const { return m_lastUpdatedDate; }
     inline bool LastUpdatedDateHasBeenSet() const { return m_lastUpdatedDateHasBeenSet; }
-
-    /**
-     * <p>Date and time that the alias was most recently associated with a KMS key in
-     * the account and Region. Formatted as Unix time.</p>
-     */
-    inline void SetLastUpdatedDate(const Aws::Utils::DateTime& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = value; }
-
-    /**
-     * <p>Date and time that the alias was most recently associated with a KMS key in
-     * the account and Region. Formatted as Unix time.</p>
-     */
-    inline void SetLastUpdatedDate(Aws::Utils::DateTime&& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = std::move(value); }
-
-    /**
-     * <p>Date and time that the alias was most recently associated with a KMS key in
-     * the account and Region. Formatted as Unix time.</p>
-     */
-    inline AliasListEntry& WithLastUpdatedDate(const Aws::Utils::DateTime& value) { SetLastUpdatedDate(value); return *this;}
-
-    /**
-     * <p>Date and time that the alias was most recently associated with a KMS key in
-     * the account and Region. Formatted as Unix time.</p>
-     */
-    inline AliasListEntry& WithLastUpdatedDate(Aws::Utils::DateTime&& value) { SetLastUpdatedDate(std::move(value)); return *this;}
-
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    void SetLastUpdatedDate(LastUpdatedDateT&& value) { m_lastUpdatedDateHasBeenSet = true; m_lastUpdatedDate = std::forward<LastUpdatedDateT>(value); }
+    template<typename LastUpdatedDateT = Aws::Utils::DateTime>
+    AliasListEntry& WithLastUpdatedDate(LastUpdatedDateT&& value) { SetLastUpdatedDate(std::forward<LastUpdatedDateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_aliasName;
@@ -261,10 +112,10 @@ namespace Model
     Aws::String m_targetKeyId;
     bool m_targetKeyIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationDate;
+    Aws::Utils::DateTime m_creationDate{};
     bool m_creationDateHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedDate;
+    Aws::Utils::DateTime m_lastUpdatedDate{};
     bool m_lastUpdatedDateHasBeenSet = false;
   };
 

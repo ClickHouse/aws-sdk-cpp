@@ -34,60 +34,24 @@ namespace Model
   class AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails();
+    AWS_SECURITYHUB_API AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails() = default;
     AWS_SECURITYHUB_API AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN (ends with <code>:*</code>) of the CloudWatch Logs log group to which
      * you want your logs emitted.</p>
      */
-    inline const Aws::String& GetLogGroupArn() const{ return m_logGroupArn; }
-
-    /**
-     * <p>The ARN (ends with <code>:*</code>) of the CloudWatch Logs log group to which
-     * you want your logs emitted.</p>
-     */
+    inline const Aws::String& GetLogGroupArn() const { return m_logGroupArn; }
     inline bool LogGroupArnHasBeenSet() const { return m_logGroupArnHasBeenSet; }
-
-    /**
-     * <p>The ARN (ends with <code>:*</code>) of the CloudWatch Logs log group to which
-     * you want your logs emitted.</p>
-     */
-    inline void SetLogGroupArn(const Aws::String& value) { m_logGroupArnHasBeenSet = true; m_logGroupArn = value; }
-
-    /**
-     * <p>The ARN (ends with <code>:*</code>) of the CloudWatch Logs log group to which
-     * you want your logs emitted.</p>
-     */
-    inline void SetLogGroupArn(Aws::String&& value) { m_logGroupArnHasBeenSet = true; m_logGroupArn = std::move(value); }
-
-    /**
-     * <p>The ARN (ends with <code>:*</code>) of the CloudWatch Logs log group to which
-     * you want your logs emitted.</p>
-     */
-    inline void SetLogGroupArn(const char* value) { m_logGroupArnHasBeenSet = true; m_logGroupArn.assign(value); }
-
-    /**
-     * <p>The ARN (ends with <code>:*</code>) of the CloudWatch Logs log group to which
-     * you want your logs emitted.</p>
-     */
-    inline AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails& WithLogGroupArn(const Aws::String& value) { SetLogGroupArn(value); return *this;}
-
-    /**
-     * <p>The ARN (ends with <code>:*</code>) of the CloudWatch Logs log group to which
-     * you want your logs emitted.</p>
-     */
-    inline AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails& WithLogGroupArn(Aws::String&& value) { SetLogGroupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN (ends with <code>:*</code>) of the CloudWatch Logs log group to which
-     * you want your logs emitted.</p>
-     */
-    inline AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails& WithLogGroupArn(const char* value) { SetLogGroupArn(value); return *this;}
-
+    template<typename LogGroupArnT = Aws::String>
+    void SetLogGroupArn(LogGroupArnT&& value) { m_logGroupArnHasBeenSet = true; m_logGroupArn = std::forward<LogGroupArnT>(value); }
+    template<typename LogGroupArnT = Aws::String>
+    AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails& WithLogGroupArn(LogGroupArnT&& value) { SetLogGroupArn(std::forward<LogGroupArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_logGroupArn;

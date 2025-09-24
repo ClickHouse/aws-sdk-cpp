@@ -13,6 +13,7 @@
 #include <aws/email/model/StopAction.h>
 #include <aws/email/model/AddHeaderAction.h>
 #include <aws/email/model/SNSAction.h>
+#include <aws/email/model/ConnectAction.h>
 #include <utility>
 
 namespace Aws
@@ -42,7 +43,7 @@ namespace Model
   class ReceiptAction
   {
   public:
-    AWS_SES_API ReceiptAction();
+    AWS_SES_API ReceiptAction() = default;
     AWS_SES_API ReceiptAction(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SES_API ReceiptAction& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -50,258 +51,108 @@ namespace Model
     AWS_SES_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Saves the received message to an Amazon Simple Storage Service (Amazon S3)
      * bucket and, optionally, publishes a notification to Amazon SNS.</p>
      */
-    inline const S3Action& GetS3Action() const{ return m_s3Action; }
-
-    /**
-     * <p>Saves the received message to an Amazon Simple Storage Service (Amazon S3)
-     * bucket and, optionally, publishes a notification to Amazon SNS.</p>
-     */
+    inline const S3Action& GetS3Action() const { return m_s3Action; }
     inline bool S3ActionHasBeenSet() const { return m_s3ActionHasBeenSet; }
+    template<typename S3ActionT = S3Action>
+    void SetS3Action(S3ActionT&& value) { m_s3ActionHasBeenSet = true; m_s3Action = std::forward<S3ActionT>(value); }
+    template<typename S3ActionT = S3Action>
+    ReceiptAction& WithS3Action(S3ActionT&& value) { SetS3Action(std::forward<S3ActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Saves the received message to an Amazon Simple Storage Service (Amazon S3)
-     * bucket and, optionally, publishes a notification to Amazon SNS.</p>
-     */
-    inline void SetS3Action(const S3Action& value) { m_s3ActionHasBeenSet = true; m_s3Action = value; }
-
-    /**
-     * <p>Saves the received message to an Amazon Simple Storage Service (Amazon S3)
-     * bucket and, optionally, publishes a notification to Amazon SNS.</p>
-     */
-    inline void SetS3Action(S3Action&& value) { m_s3ActionHasBeenSet = true; m_s3Action = std::move(value); }
-
-    /**
-     * <p>Saves the received message to an Amazon Simple Storage Service (Amazon S3)
-     * bucket and, optionally, publishes a notification to Amazon SNS.</p>
-     */
-    inline ReceiptAction& WithS3Action(const S3Action& value) { SetS3Action(value); return *this;}
-
-    /**
-     * <p>Saves the received message to an Amazon Simple Storage Service (Amazon S3)
-     * bucket and, optionally, publishes a notification to Amazon SNS.</p>
-     */
-    inline ReceiptAction& WithS3Action(S3Action&& value) { SetS3Action(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Rejects the received email by returning a bounce response to the sender and,
      * optionally, publishes a notification to Amazon Simple Notification Service
      * (Amazon SNS).</p>
      */
-    inline const BounceAction& GetBounceAction() const{ return m_bounceAction; }
-
-    /**
-     * <p>Rejects the received email by returning a bounce response to the sender and,
-     * optionally, publishes a notification to Amazon Simple Notification Service
-     * (Amazon SNS).</p>
-     */
+    inline const BounceAction& GetBounceAction() const { return m_bounceAction; }
     inline bool BounceActionHasBeenSet() const { return m_bounceActionHasBeenSet; }
+    template<typename BounceActionT = BounceAction>
+    void SetBounceAction(BounceActionT&& value) { m_bounceActionHasBeenSet = true; m_bounceAction = std::forward<BounceActionT>(value); }
+    template<typename BounceActionT = BounceAction>
+    ReceiptAction& WithBounceAction(BounceActionT&& value) { SetBounceAction(std::forward<BounceActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Rejects the received email by returning a bounce response to the sender and,
-     * optionally, publishes a notification to Amazon Simple Notification Service
-     * (Amazon SNS).</p>
-     */
-    inline void SetBounceAction(const BounceAction& value) { m_bounceActionHasBeenSet = true; m_bounceAction = value; }
-
-    /**
-     * <p>Rejects the received email by returning a bounce response to the sender and,
-     * optionally, publishes a notification to Amazon Simple Notification Service
-     * (Amazon SNS).</p>
-     */
-    inline void SetBounceAction(BounceAction&& value) { m_bounceActionHasBeenSet = true; m_bounceAction = std::move(value); }
-
-    /**
-     * <p>Rejects the received email by returning a bounce response to the sender and,
-     * optionally, publishes a notification to Amazon Simple Notification Service
-     * (Amazon SNS).</p>
-     */
-    inline ReceiptAction& WithBounceAction(const BounceAction& value) { SetBounceAction(value); return *this;}
-
-    /**
-     * <p>Rejects the received email by returning a bounce response to the sender and,
-     * optionally, publishes a notification to Amazon Simple Notification Service
-     * (Amazon SNS).</p>
-     */
-    inline ReceiptAction& WithBounceAction(BounceAction&& value) { SetBounceAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon
      * Amazon SNS.</p>
      */
-    inline const WorkmailAction& GetWorkmailAction() const{ return m_workmailAction; }
-
-    /**
-     * <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon
-     * Amazon SNS.</p>
-     */
+    inline const WorkmailAction& GetWorkmailAction() const { return m_workmailAction; }
     inline bool WorkmailActionHasBeenSet() const { return m_workmailActionHasBeenSet; }
+    template<typename WorkmailActionT = WorkmailAction>
+    void SetWorkmailAction(WorkmailActionT&& value) { m_workmailActionHasBeenSet = true; m_workmailAction = std::forward<WorkmailActionT>(value); }
+    template<typename WorkmailActionT = WorkmailAction>
+    ReceiptAction& WithWorkmailAction(WorkmailActionT&& value) { SetWorkmailAction(std::forward<WorkmailActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon
-     * Amazon SNS.</p>
-     */
-    inline void SetWorkmailAction(const WorkmailAction& value) { m_workmailActionHasBeenSet = true; m_workmailAction = value; }
-
-    /**
-     * <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon
-     * Amazon SNS.</p>
-     */
-    inline void SetWorkmailAction(WorkmailAction&& value) { m_workmailActionHasBeenSet = true; m_workmailAction = std::move(value); }
-
-    /**
-     * <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon
-     * Amazon SNS.</p>
-     */
-    inline ReceiptAction& WithWorkmailAction(const WorkmailAction& value) { SetWorkmailAction(value); return *this;}
-
-    /**
-     * <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon
-     * Amazon SNS.</p>
-     */
-    inline ReceiptAction& WithWorkmailAction(WorkmailAction&& value) { SetWorkmailAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Calls an Amazon Web Services Lambda function, and optionally, publishes a
      * notification to Amazon SNS.</p>
      */
-    inline const LambdaAction& GetLambdaAction() const{ return m_lambdaAction; }
-
-    /**
-     * <p>Calls an Amazon Web Services Lambda function, and optionally, publishes a
-     * notification to Amazon SNS.</p>
-     */
+    inline const LambdaAction& GetLambdaAction() const { return m_lambdaAction; }
     inline bool LambdaActionHasBeenSet() const { return m_lambdaActionHasBeenSet; }
+    template<typename LambdaActionT = LambdaAction>
+    void SetLambdaAction(LambdaActionT&& value) { m_lambdaActionHasBeenSet = true; m_lambdaAction = std::forward<LambdaActionT>(value); }
+    template<typename LambdaActionT = LambdaAction>
+    ReceiptAction& WithLambdaAction(LambdaActionT&& value) { SetLambdaAction(std::forward<LambdaActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Calls an Amazon Web Services Lambda function, and optionally, publishes a
-     * notification to Amazon SNS.</p>
-     */
-    inline void SetLambdaAction(const LambdaAction& value) { m_lambdaActionHasBeenSet = true; m_lambdaAction = value; }
-
-    /**
-     * <p>Calls an Amazon Web Services Lambda function, and optionally, publishes a
-     * notification to Amazon SNS.</p>
-     */
-    inline void SetLambdaAction(LambdaAction&& value) { m_lambdaActionHasBeenSet = true; m_lambdaAction = std::move(value); }
-
-    /**
-     * <p>Calls an Amazon Web Services Lambda function, and optionally, publishes a
-     * notification to Amazon SNS.</p>
-     */
-    inline ReceiptAction& WithLambdaAction(const LambdaAction& value) { SetLambdaAction(value); return *this;}
-
-    /**
-     * <p>Calls an Amazon Web Services Lambda function, and optionally, publishes a
-     * notification to Amazon SNS.</p>
-     */
-    inline ReceiptAction& WithLambdaAction(LambdaAction&& value) { SetLambdaAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Terminates the evaluation of the receipt rule set and optionally publishes a
      * notification to Amazon SNS.</p>
      */
-    inline const StopAction& GetStopAction() const{ return m_stopAction; }
-
-    /**
-     * <p>Terminates the evaluation of the receipt rule set and optionally publishes a
-     * notification to Amazon SNS.</p>
-     */
+    inline const StopAction& GetStopAction() const { return m_stopAction; }
     inline bool StopActionHasBeenSet() const { return m_stopActionHasBeenSet; }
+    template<typename StopActionT = StopAction>
+    void SetStopAction(StopActionT&& value) { m_stopActionHasBeenSet = true; m_stopAction = std::forward<StopActionT>(value); }
+    template<typename StopActionT = StopAction>
+    ReceiptAction& WithStopAction(StopActionT&& value) { SetStopAction(std::forward<StopActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Terminates the evaluation of the receipt rule set and optionally publishes a
-     * notification to Amazon SNS.</p>
-     */
-    inline void SetStopAction(const StopAction& value) { m_stopActionHasBeenSet = true; m_stopAction = value; }
-
-    /**
-     * <p>Terminates the evaluation of the receipt rule set and optionally publishes a
-     * notification to Amazon SNS.</p>
-     */
-    inline void SetStopAction(StopAction&& value) { m_stopActionHasBeenSet = true; m_stopAction = std::move(value); }
-
-    /**
-     * <p>Terminates the evaluation of the receipt rule set and optionally publishes a
-     * notification to Amazon SNS.</p>
-     */
-    inline ReceiptAction& WithStopAction(const StopAction& value) { SetStopAction(value); return *this;}
-
-    /**
-     * <p>Terminates the evaluation of the receipt rule set and optionally publishes a
-     * notification to Amazon SNS.</p>
-     */
-    inline ReceiptAction& WithStopAction(StopAction&& value) { SetStopAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Adds a header to the received email.</p>
      */
-    inline const AddHeaderAction& GetAddHeaderAction() const{ return m_addHeaderAction; }
-
-    /**
-     * <p>Adds a header to the received email.</p>
-     */
+    inline const AddHeaderAction& GetAddHeaderAction() const { return m_addHeaderAction; }
     inline bool AddHeaderActionHasBeenSet() const { return m_addHeaderActionHasBeenSet; }
+    template<typename AddHeaderActionT = AddHeaderAction>
+    void SetAddHeaderAction(AddHeaderActionT&& value) { m_addHeaderActionHasBeenSet = true; m_addHeaderAction = std::forward<AddHeaderActionT>(value); }
+    template<typename AddHeaderActionT = AddHeaderAction>
+    ReceiptAction& WithAddHeaderAction(AddHeaderActionT&& value) { SetAddHeaderAction(std::forward<AddHeaderActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Adds a header to the received email.</p>
-     */
-    inline void SetAddHeaderAction(const AddHeaderAction& value) { m_addHeaderActionHasBeenSet = true; m_addHeaderAction = value; }
-
-    /**
-     * <p>Adds a header to the received email.</p>
-     */
-    inline void SetAddHeaderAction(AddHeaderAction&& value) { m_addHeaderActionHasBeenSet = true; m_addHeaderAction = std::move(value); }
-
-    /**
-     * <p>Adds a header to the received email.</p>
-     */
-    inline ReceiptAction& WithAddHeaderAction(const AddHeaderAction& value) { SetAddHeaderAction(value); return *this;}
-
-    /**
-     * <p>Adds a header to the received email.</p>
-     */
-    inline ReceiptAction& WithAddHeaderAction(AddHeaderAction&& value) { SetAddHeaderAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Publishes the email content within a notification to Amazon SNS.</p>
      */
-    inline const SNSAction& GetSNSAction() const{ return m_sNSAction; }
-
-    /**
-     * <p>Publishes the email content within a notification to Amazon SNS.</p>
-     */
+    inline const SNSAction& GetSNSAction() const { return m_sNSAction; }
     inline bool SNSActionHasBeenSet() const { return m_sNSActionHasBeenSet; }
+    template<typename SNSActionT = SNSAction>
+    void SetSNSAction(SNSActionT&& value) { m_sNSActionHasBeenSet = true; m_sNSAction = std::forward<SNSActionT>(value); }
+    template<typename SNSActionT = SNSAction>
+    ReceiptAction& WithSNSAction(SNSActionT&& value) { SetSNSAction(std::forward<SNSActionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Publishes the email content within a notification to Amazon SNS.</p>
+     * <p>Parses the received message and starts an email contact in Amazon Connect on
+     * your behalf.</p>
      */
-    inline void SetSNSAction(const SNSAction& value) { m_sNSActionHasBeenSet = true; m_sNSAction = value; }
-
-    /**
-     * <p>Publishes the email content within a notification to Amazon SNS.</p>
-     */
-    inline void SetSNSAction(SNSAction&& value) { m_sNSActionHasBeenSet = true; m_sNSAction = std::move(value); }
-
-    /**
-     * <p>Publishes the email content within a notification to Amazon SNS.</p>
-     */
-    inline ReceiptAction& WithSNSAction(const SNSAction& value) { SetSNSAction(value); return *this;}
-
-    /**
-     * <p>Publishes the email content within a notification to Amazon SNS.</p>
-     */
-    inline ReceiptAction& WithSNSAction(SNSAction&& value) { SetSNSAction(std::move(value)); return *this;}
-
+    inline const ConnectAction& GetConnectAction() const { return m_connectAction; }
+    inline bool ConnectActionHasBeenSet() const { return m_connectActionHasBeenSet; }
+    template<typename ConnectActionT = ConnectAction>
+    void SetConnectAction(ConnectActionT&& value) { m_connectActionHasBeenSet = true; m_connectAction = std::forward<ConnectActionT>(value); }
+    template<typename ConnectActionT = ConnectAction>
+    ReceiptAction& WithConnectAction(ConnectActionT&& value) { SetConnectAction(std::forward<ConnectActionT>(value)); return *this;}
+    ///@}
   private:
 
     S3Action m_s3Action;
@@ -324,6 +175,9 @@ namespace Model
 
     SNSAction m_sNSAction;
     bool m_sNSActionHasBeenSet = false;
+
+    ConnectAction m_connectAction;
+    bool m_connectActionHasBeenSet = false;
   };
 
 } // namespace Model

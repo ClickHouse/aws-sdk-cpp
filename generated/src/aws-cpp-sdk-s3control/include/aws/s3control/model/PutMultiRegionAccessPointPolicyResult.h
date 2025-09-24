@@ -27,87 +27,55 @@ namespace Model
   class PutMultiRegionAccessPointPolicyResult
   {
   public:
-    AWS_S3CONTROL_API PutMultiRegionAccessPointPolicyResult();
+    AWS_S3CONTROL_API PutMultiRegionAccessPointPolicyResult() = default;
     AWS_S3CONTROL_API PutMultiRegionAccessPointPolicyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_S3CONTROL_API PutMultiRegionAccessPointPolicyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The request token associated with the request. You can use this token with <a
      * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
      * to determine the status of asynchronous requests.</p>
      */
-    inline const Aws::String& GetRequestTokenARN() const{ return m_requestTokenARN; }
+    inline const Aws::String& GetRequestTokenARN() const { return m_requestTokenARN; }
+    template<typename RequestTokenARNT = Aws::String>
+    void SetRequestTokenARN(RequestTokenARNT&& value) { m_requestTokenARNHasBeenSet = true; m_requestTokenARN = std::forward<RequestTokenARNT>(value); }
+    template<typename RequestTokenARNT = Aws::String>
+    PutMultiRegionAccessPointPolicyResult& WithRequestTokenARN(RequestTokenARNT&& value) { SetRequestTokenARN(std::forward<RequestTokenARNT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The request token associated with the request. You can use this token with <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
-     * to determine the status of asynchronous requests.</p>
+     * AWS Request Id value
      */
-    inline void SetRequestTokenARN(const Aws::String& value) { m_requestTokenARN = value; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    PutMultiRegionAccessPointPolicyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The request token associated with the request. You can use this token with <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
-     * to determine the status of asynchronous requests.</p>
+     * x-amz-id-2 header value, also known as Host Id
      */
-    inline void SetRequestTokenARN(Aws::String&& value) { m_requestTokenARN = std::move(value); }
-
-    /**
-     * <p>The request token associated with the request. You can use this token with <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
-     * to determine the status of asynchronous requests.</p>
-     */
-    inline void SetRequestTokenARN(const char* value) { m_requestTokenARN.assign(value); }
-
-    /**
-     * <p>The request token associated with the request. You can use this token with <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
-     * to determine the status of asynchronous requests.</p>
-     */
-    inline PutMultiRegionAccessPointPolicyResult& WithRequestTokenARN(const Aws::String& value) { SetRequestTokenARN(value); return *this;}
-
-    /**
-     * <p>The request token associated with the request. You can use this token with <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
-     * to determine the status of asynchronous requests.</p>
-     */
-    inline PutMultiRegionAccessPointPolicyResult& WithRequestTokenARN(Aws::String&& value) { SetRequestTokenARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The request token associated with the request. You can use this token with <a
-     * href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeMultiRegionAccessPointOperation.html">DescribeMultiRegionAccessPointOperation</a>
-     * to determine the status of asynchronous requests.</p>
-     */
-    inline PutMultiRegionAccessPointPolicyResult& WithRequestTokenARN(const char* value) { SetRequestTokenARN(value); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline PutMultiRegionAccessPointPolicyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline PutMultiRegionAccessPointPolicyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline PutMultiRegionAccessPointPolicyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetHostId() const { return m_hostId; }
+    template<typename HostIdT = Aws::String>
+    void SetHostId(HostIdT&& value) { m_hostIdHasBeenSet = true; m_hostId = std::forward<HostIdT>(value); }
+    template<typename HostIdT = Aws::String>
+    PutMultiRegionAccessPointPolicyResult& WithHostId(HostIdT&& value) { SetHostId(std::forward<HostIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_requestTokenARN;
+    bool m_requestTokenARNHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
+
+    Aws::String m_hostId;
+    bool m_hostIdHasBeenSet = false;
   };
 
 } // namespace Model

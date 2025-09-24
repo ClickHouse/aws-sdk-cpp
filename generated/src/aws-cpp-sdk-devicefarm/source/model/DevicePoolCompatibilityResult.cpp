@@ -18,19 +18,7 @@ namespace DeviceFarm
 namespace Model
 {
 
-DevicePoolCompatibilityResult::DevicePoolCompatibilityResult() : 
-    m_deviceHasBeenSet(false),
-    m_compatible(false),
-    m_compatibleHasBeenSet(false),
-    m_incompatibilityMessagesHasBeenSet(false)
-{
-}
-
-DevicePoolCompatibilityResult::DevicePoolCompatibilityResult(JsonView jsonValue) : 
-    m_deviceHasBeenSet(false),
-    m_compatible(false),
-    m_compatibleHasBeenSet(false),
-    m_incompatibilityMessagesHasBeenSet(false)
+DevicePoolCompatibilityResult::DevicePoolCompatibilityResult(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ DevicePoolCompatibilityResult& DevicePoolCompatibilityResult::operator =(JsonVie
   if(jsonValue.ValueExists("device"))
   {
     m_device = jsonValue.GetObject("device");
-
     m_deviceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("compatible"))
   {
     m_compatible = jsonValue.GetBool("compatible");
-
     m_compatibleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("incompatibilityMessages"))
   {
     Aws::Utils::Array<JsonView> incompatibilityMessagesJsonList = jsonValue.GetArray("incompatibilityMessages");
@@ -60,7 +44,6 @@ DevicePoolCompatibilityResult& DevicePoolCompatibilityResult::operator =(JsonVie
     }
     m_incompatibilityMessagesHasBeenSet = true;
   }
-
   return *this;
 }
 

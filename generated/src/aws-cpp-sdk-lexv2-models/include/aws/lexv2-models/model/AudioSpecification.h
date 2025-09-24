@@ -29,67 +29,39 @@ namespace Model
   class AudioSpecification
   {
   public:
-    AWS_LEXMODELSV2_API AudioSpecification();
+    AWS_LEXMODELSV2_API AudioSpecification() = default;
     AWS_LEXMODELSV2_API AudioSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API AudioSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Time for how long Amazon Lex waits before speech input is truncated and the
      * speech is returned to application.</p>
      */
-    inline int GetMaxLengthMs() const{ return m_maxLengthMs; }
-
-    /**
-     * <p>Time for how long Amazon Lex waits before speech input is truncated and the
-     * speech is returned to application.</p>
-     */
+    inline int GetMaxLengthMs() const { return m_maxLengthMs; }
     inline bool MaxLengthMsHasBeenSet() const { return m_maxLengthMsHasBeenSet; }
-
-    /**
-     * <p>Time for how long Amazon Lex waits before speech input is truncated and the
-     * speech is returned to application.</p>
-     */
     inline void SetMaxLengthMs(int value) { m_maxLengthMsHasBeenSet = true; m_maxLengthMs = value; }
-
-    /**
-     * <p>Time for how long Amazon Lex waits before speech input is truncated and the
-     * speech is returned to application.</p>
-     */
     inline AudioSpecification& WithMaxLengthMs(int value) { SetMaxLengthMs(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Time for which a bot waits after the customer stops speaking to assume the
      * utterance is finished.</p>
      */
-    inline int GetEndTimeoutMs() const{ return m_endTimeoutMs; }
-
-    /**
-     * <p>Time for which a bot waits after the customer stops speaking to assume the
-     * utterance is finished.</p>
-     */
+    inline int GetEndTimeoutMs() const { return m_endTimeoutMs; }
     inline bool EndTimeoutMsHasBeenSet() const { return m_endTimeoutMsHasBeenSet; }
-
-    /**
-     * <p>Time for which a bot waits after the customer stops speaking to assume the
-     * utterance is finished.</p>
-     */
     inline void SetEndTimeoutMs(int value) { m_endTimeoutMsHasBeenSet = true; m_endTimeoutMs = value; }
-
-    /**
-     * <p>Time for which a bot waits after the customer stops speaking to assume the
-     * utterance is finished.</p>
-     */
     inline AudioSpecification& WithEndTimeoutMs(int value) { SetEndTimeoutMs(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maxLengthMs;
+    int m_maxLengthMs{0};
     bool m_maxLengthMsHasBeenSet = false;
 
-    int m_endTimeoutMs;
+    int m_endTimeoutMs{0};
     bool m_endTimeoutMsHasBeenSet = false;
   };
 

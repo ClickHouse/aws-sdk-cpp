@@ -18,17 +18,7 @@ namespace DataPipeline
 namespace Model
 {
 
-PipelineObject::PipelineObject() : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_fieldsHasBeenSet(false)
-{
-}
-
-PipelineObject::PipelineObject(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_fieldsHasBeenSet(false)
+PipelineObject::PipelineObject(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PipelineObject& PipelineObject::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("fields"))
   {
     Aws::Utils::Array<JsonView> fieldsJsonList = jsonValue.GetArray("fields");
@@ -58,7 +44,6 @@ PipelineObject& PipelineObject::operator =(JsonView jsonValue)
     }
     m_fieldsHasBeenSet = true;
   }
-
   return *this;
 }
 

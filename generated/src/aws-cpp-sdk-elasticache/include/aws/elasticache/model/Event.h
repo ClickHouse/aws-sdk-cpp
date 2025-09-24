@@ -35,7 +35,7 @@ namespace Model
   class Event
   {
   public:
-    AWS_ELASTICACHE_API Event();
+    AWS_ELASTICACHE_API Event() = default;
     AWS_ELASTICACHE_API Event(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICACHE_API Event& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,183 +43,66 @@ namespace Model
     AWS_ELASTICACHE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The identifier for the source of the event. For example, if the event
      * occurred at the cluster level, the identifier would be the name of the
      * cluster.</p>
      */
-    inline const Aws::String& GetSourceIdentifier() const{ return m_sourceIdentifier; }
-
-    /**
-     * <p>The identifier for the source of the event. For example, if the event
-     * occurred at the cluster level, the identifier would be the name of the
-     * cluster.</p>
-     */
+    inline const Aws::String& GetSourceIdentifier() const { return m_sourceIdentifier; }
     inline bool SourceIdentifierHasBeenSet() const { return m_sourceIdentifierHasBeenSet; }
+    template<typename SourceIdentifierT = Aws::String>
+    void SetSourceIdentifier(SourceIdentifierT&& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = std::forward<SourceIdentifierT>(value); }
+    template<typename SourceIdentifierT = Aws::String>
+    Event& WithSourceIdentifier(SourceIdentifierT&& value) { SetSourceIdentifier(std::forward<SourceIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the source of the event. For example, if the event
-     * occurred at the cluster level, the identifier would be the name of the
-     * cluster.</p>
-     */
-    inline void SetSourceIdentifier(const Aws::String& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = value; }
-
-    /**
-     * <p>The identifier for the source of the event. For example, if the event
-     * occurred at the cluster level, the identifier would be the name of the
-     * cluster.</p>
-     */
-    inline void SetSourceIdentifier(Aws::String&& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier for the source of the event. For example, if the event
-     * occurred at the cluster level, the identifier would be the name of the
-     * cluster.</p>
-     */
-    inline void SetSourceIdentifier(const char* value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier for the source of the event. For example, if the event
-     * occurred at the cluster level, the identifier would be the name of the
-     * cluster.</p>
-     */
-    inline Event& WithSourceIdentifier(const Aws::String& value) { SetSourceIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier for the source of the event. For example, if the event
-     * occurred at the cluster level, the identifier would be the name of the
-     * cluster.</p>
-     */
-    inline Event& WithSourceIdentifier(Aws::String&& value) { SetSourceIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the source of the event. For example, if the event
-     * occurred at the cluster level, the identifier would be the name of the
-     * cluster.</p>
-     */
-    inline Event& WithSourceIdentifier(const char* value) { SetSourceIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the origin of this event - a cluster, a parameter group, a security
      * group, etc.</p>
      */
-    inline const SourceType& GetSourceType() const{ return m_sourceType; }
-
-    /**
-     * <p>Specifies the origin of this event - a cluster, a parameter group, a security
-     * group, etc.</p>
-     */
+    inline SourceType GetSourceType() const { return m_sourceType; }
     inline bool SourceTypeHasBeenSet() const { return m_sourceTypeHasBeenSet; }
+    inline void SetSourceType(SourceType value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
+    inline Event& WithSourceType(SourceType value) { SetSourceType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the origin of this event - a cluster, a parameter group, a security
-     * group, etc.</p>
-     */
-    inline void SetSourceType(const SourceType& value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
-
-    /**
-     * <p>Specifies the origin of this event - a cluster, a parameter group, a security
-     * group, etc.</p>
-     */
-    inline void SetSourceType(SourceType&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::move(value); }
-
-    /**
-     * <p>Specifies the origin of this event - a cluster, a parameter group, a security
-     * group, etc.</p>
-     */
-    inline Event& WithSourceType(const SourceType& value) { SetSourceType(value); return *this;}
-
-    /**
-     * <p>Specifies the origin of this event - a cluster, a parameter group, a security
-     * group, etc.</p>
-     */
-    inline Event& WithSourceType(SourceType&& value) { SetSourceType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The text of the event.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The text of the event.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    Event& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The text of the event.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The text of the event.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The text of the event.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The text of the event.</p>
-     */
-    inline Event& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The text of the event.</p>
-     */
-    inline Event& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The text of the event.</p>
-     */
-    inline Event& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the event occurred.</p>
      */
-    inline const Aws::Utils::DateTime& GetDate() const{ return m_date; }
-
-    /**
-     * <p>The date and time when the event occurred.</p>
-     */
+    inline const Aws::Utils::DateTime& GetDate() const { return m_date; }
     inline bool DateHasBeenSet() const { return m_dateHasBeenSet; }
-
-    /**
-     * <p>The date and time when the event occurred.</p>
-     */
-    inline void SetDate(const Aws::Utils::DateTime& value) { m_dateHasBeenSet = true; m_date = value; }
-
-    /**
-     * <p>The date and time when the event occurred.</p>
-     */
-    inline void SetDate(Aws::Utils::DateTime&& value) { m_dateHasBeenSet = true; m_date = std::move(value); }
-
-    /**
-     * <p>The date and time when the event occurred.</p>
-     */
-    inline Event& WithDate(const Aws::Utils::DateTime& value) { SetDate(value); return *this;}
-
-    /**
-     * <p>The date and time when the event occurred.</p>
-     */
-    inline Event& WithDate(Aws::Utils::DateTime&& value) { SetDate(std::move(value)); return *this;}
-
+    template<typename DateT = Aws::Utils::DateTime>
+    void SetDate(DateT&& value) { m_dateHasBeenSet = true; m_date = std::forward<DateT>(value); }
+    template<typename DateT = Aws::Utils::DateTime>
+    Event& WithDate(DateT&& value) { SetDate(std::forward<DateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceIdentifier;
     bool m_sourceIdentifierHasBeenSet = false;
 
-    SourceType m_sourceType;
+    SourceType m_sourceType{SourceType::NOT_SET};
     bool m_sourceTypeHasBeenSet = false;
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    Aws::Utils::DateTime m_date;
+    Aws::Utils::DateTime m_date{};
     bool m_dateHasBeenSet = false;
   };
 

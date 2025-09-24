@@ -18,17 +18,7 @@ namespace StorageGateway
 namespace Model
 {
 
-StorageGatewayError::StorageGatewayError() : 
-    m_errorCode(ErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_errorDetailsHasBeenSet(false)
-{
-}
-
-StorageGatewayError::StorageGatewayError(JsonView jsonValue) : 
-    m_errorCode(ErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_errorDetailsHasBeenSet(false)
+StorageGatewayError::StorageGatewayError(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ StorageGatewayError& StorageGatewayError::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("errorCode"))
   {
     m_errorCode = ErrorCodeMapper::GetErrorCodeForName(jsonValue.GetString("errorCode"));
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("errorDetails"))
   {
     Aws::Map<Aws::String, JsonView> errorDetailsJsonMap = jsonValue.GetObject("errorDetails").GetAllObjects();
@@ -51,7 +39,6 @@ StorageGatewayError& StorageGatewayError::operator =(JsonView jsonValue)
     }
     m_errorDetailsHasBeenSet = true;
   }
-
   return *this;
 }
 

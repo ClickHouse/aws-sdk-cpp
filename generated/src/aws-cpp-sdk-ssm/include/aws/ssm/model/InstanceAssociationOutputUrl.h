@@ -32,42 +32,23 @@ namespace Model
   class InstanceAssociationOutputUrl
   {
   public:
-    AWS_SSM_API InstanceAssociationOutputUrl();
+    AWS_SSM_API InstanceAssociationOutputUrl() = default;
     AWS_SSM_API InstanceAssociationOutputUrl(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API InstanceAssociationOutputUrl& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URL of S3 bucket where you want to store the results of this request.</p>
      */
-    inline const S3OutputUrl& GetS3OutputUrl() const{ return m_s3OutputUrl; }
-
-    /**
-     * <p>The URL of S3 bucket where you want to store the results of this request.</p>
-     */
+    inline const S3OutputUrl& GetS3OutputUrl() const { return m_s3OutputUrl; }
     inline bool S3OutputUrlHasBeenSet() const { return m_s3OutputUrlHasBeenSet; }
-
-    /**
-     * <p>The URL of S3 bucket where you want to store the results of this request.</p>
-     */
-    inline void SetS3OutputUrl(const S3OutputUrl& value) { m_s3OutputUrlHasBeenSet = true; m_s3OutputUrl = value; }
-
-    /**
-     * <p>The URL of S3 bucket where you want to store the results of this request.</p>
-     */
-    inline void SetS3OutputUrl(S3OutputUrl&& value) { m_s3OutputUrlHasBeenSet = true; m_s3OutputUrl = std::move(value); }
-
-    /**
-     * <p>The URL of S3 bucket where you want to store the results of this request.</p>
-     */
-    inline InstanceAssociationOutputUrl& WithS3OutputUrl(const S3OutputUrl& value) { SetS3OutputUrl(value); return *this;}
-
-    /**
-     * <p>The URL of S3 bucket where you want to store the results of this request.</p>
-     */
-    inline InstanceAssociationOutputUrl& WithS3OutputUrl(S3OutputUrl&& value) { SetS3OutputUrl(std::move(value)); return *this;}
-
+    template<typename S3OutputUrlT = S3OutputUrl>
+    void SetS3OutputUrl(S3OutputUrlT&& value) { m_s3OutputUrlHasBeenSet = true; m_s3OutputUrl = std::forward<S3OutputUrlT>(value); }
+    template<typename S3OutputUrlT = S3OutputUrl>
+    InstanceAssociationOutputUrl& WithS3OutputUrl(S3OutputUrlT&& value) { SetS3OutputUrl(std::forward<S3OutputUrlT>(value)); return *this;}
+    ///@}
   private:
 
     S3OutputUrl m_s3OutputUrl;

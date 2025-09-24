@@ -17,17 +17,6 @@ using namespace Aws::Utils;
 using namespace Aws::Http;
 using namespace Aws;
 
-InvokeRequest::InvokeRequest() : 
-    m_functionNameHasBeenSet(false),
-    m_invocationType(InvocationType::NOT_SET),
-    m_invocationTypeHasBeenSet(false),
-    m_logType(LogType::NOT_SET),
-    m_logTypeHasBeenSet(false),
-    m_clientContextHasBeenSet(false),
-    m_qualifierHasBeenSet(false)
-{
-}
-
 
 void InvokeRequest::AddQueryStringParameters(URI& uri) const
 {
@@ -45,12 +34,12 @@ Aws::Http::HeaderValueCollection InvokeRequest::GetRequestSpecificHeaders() cons
 {
   Aws::Http::HeaderValueCollection headers;
   Aws::StringStream ss;
-  if(m_invocationTypeHasBeenSet)
+  if(m_invocationTypeHasBeenSet && m_invocationType != InvocationType::NOT_SET)
   {
     headers.emplace("x-amz-invocation-type", InvocationTypeMapper::GetNameForInvocationType(m_invocationType));
   }
 
-  if(m_logTypeHasBeenSet)
+  if(m_logTypeHasBeenSet && m_logType != LogType::NOT_SET)
   {
     headers.emplace("x-amz-log-type", LogTypeMapper::GetNameForLogType(m_logType));
   }

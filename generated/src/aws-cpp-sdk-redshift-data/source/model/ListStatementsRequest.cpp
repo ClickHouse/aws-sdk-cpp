@@ -12,21 +12,21 @@ using namespace Aws::RedshiftDataAPIService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListStatementsRequest::ListStatementsRequest() : 
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_roleLevel(false),
-    m_roleLevelHasBeenSet(false),
-    m_statementNameHasBeenSet(false),
-    m_status(StatusString::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
 Aws::String ListStatementsRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_clusterIdentifierHasBeenSet)
+  {
+   payload.WithString("ClusterIdentifier", m_clusterIdentifier);
+
+  }
+
+  if(m_databaseHasBeenSet)
+  {
+   payload.WithString("Database", m_database);
+
+  }
 
   if(m_maxResultsHasBeenSet)
   {
@@ -55,6 +55,12 @@ Aws::String ListStatementsRequest::SerializePayload() const
   if(m_statusHasBeenSet)
   {
    payload.WithString("Status", StatusStringMapper::GetNameForStatusString(m_status));
+  }
+
+  if(m_workgroupNameHasBeenSet)
+  {
+   payload.WithString("WorkgroupName", m_workgroupName);
+
   }
 
   return payload.View().WriteReadable();

@@ -18,13 +18,7 @@ namespace ECS
 namespace Model
 {
 
-ClusterServiceConnectDefaults::ClusterServiceConnectDefaults() : 
-    m_namespaceHasBeenSet(false)
-{
-}
-
-ClusterServiceConnectDefaults::ClusterServiceConnectDefaults(JsonView jsonValue) : 
-    m_namespaceHasBeenSet(false)
+ClusterServiceConnectDefaults::ClusterServiceConnectDefaults(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ ClusterServiceConnectDefaults& ClusterServiceConnectDefaults::operator =(JsonVie
   if(jsonValue.ValueExists("namespace"))
   {
     m_namespace = jsonValue.GetString("namespace");
-
     m_namespaceHasBeenSet = true;
   }
-
   return *this;
 }
 

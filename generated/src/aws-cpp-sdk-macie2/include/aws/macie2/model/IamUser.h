@@ -32,199 +32,62 @@ namespace Model
   class IamUser
   {
   public:
-    AWS_MACIE2_API IamUser();
+    AWS_MACIE2_API IamUser() = default;
     AWS_MACIE2_API IamUser(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API IamUser& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the Amazon Web Services account that's associated
      * with the IAM user who performed the action.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that's associated
-     * with the IAM user who performed the action.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    IamUser& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that's associated
-     * with the IAM user who performed the action.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that's associated
-     * with the IAM user who performed the action.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that's associated
-     * with the IAM user who performed the action.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that's associated
-     * with the IAM user who performed the action.</p>
-     */
-    inline IamUser& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that's associated
-     * with the IAM user who performed the action.</p>
-     */
-    inline IamUser& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the Amazon Web Services account that's associated
-     * with the IAM user who performed the action.</p>
-     */
-    inline IamUser& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the principal that performed the action.
      * The last section of the ARN contains the name of the user who performed the
      * action.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the principal that performed the action.
-     * The last section of the ARN contains the name of the user who performed the
-     * action.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    IamUser& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the principal that performed the action.
-     * The last section of the ARN contains the name of the user who performed the
-     * action.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the principal that performed the action.
-     * The last section of the ARN contains the name of the user who performed the
-     * action.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the principal that performed the action.
-     * The last section of the ARN contains the name of the user who performed the
-     * action.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the principal that performed the action.
-     * The last section of the ARN contains the name of the user who performed the
-     * action.</p>
-     */
-    inline IamUser& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the principal that performed the action.
-     * The last section of the ARN contains the name of the user who performed the
-     * action.</p>
-     */
-    inline IamUser& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the principal that performed the action.
-     * The last section of the ARN contains the name of the user who performed the
-     * action.</p>
-     */
-    inline IamUser& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the IAM user who performed the action.</p>
      */
-    inline const Aws::String& GetPrincipalId() const{ return m_principalId; }
-
-    /**
-     * <p>The unique identifier for the IAM user who performed the action.</p>
-     */
+    inline const Aws::String& GetPrincipalId() const { return m_principalId; }
     inline bool PrincipalIdHasBeenSet() const { return m_principalIdHasBeenSet; }
+    template<typename PrincipalIdT = Aws::String>
+    void SetPrincipalId(PrincipalIdT&& value) { m_principalIdHasBeenSet = true; m_principalId = std::forward<PrincipalIdT>(value); }
+    template<typename PrincipalIdT = Aws::String>
+    IamUser& WithPrincipalId(PrincipalIdT&& value) { SetPrincipalId(std::forward<PrincipalIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the IAM user who performed the action.</p>
-     */
-    inline void SetPrincipalId(const Aws::String& value) { m_principalIdHasBeenSet = true; m_principalId = value; }
-
-    /**
-     * <p>The unique identifier for the IAM user who performed the action.</p>
-     */
-    inline void SetPrincipalId(Aws::String&& value) { m_principalIdHasBeenSet = true; m_principalId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the IAM user who performed the action.</p>
-     */
-    inline void SetPrincipalId(const char* value) { m_principalIdHasBeenSet = true; m_principalId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the IAM user who performed the action.</p>
-     */
-    inline IamUser& WithPrincipalId(const Aws::String& value) { SetPrincipalId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the IAM user who performed the action.</p>
-     */
-    inline IamUser& WithPrincipalId(Aws::String&& value) { SetPrincipalId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the IAM user who performed the action.</p>
-     */
-    inline IamUser& WithPrincipalId(const char* value) { SetPrincipalId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The username of the IAM user who performed the action.</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The username of the IAM user who performed the action.</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
-
-    /**
-     * <p>The username of the IAM user who performed the action.</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The username of the IAM user who performed the action.</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The username of the IAM user who performed the action.</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The username of the IAM user who performed the action.</p>
-     */
-    inline IamUser& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The username of the IAM user who performed the action.</p>
-     */
-    inline IamUser& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The username of the IAM user who performed the action.</p>
-     */
-    inline IamUser& WithUserName(const char* value) { SetUserName(value); return *this;}
-
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    IamUser& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;

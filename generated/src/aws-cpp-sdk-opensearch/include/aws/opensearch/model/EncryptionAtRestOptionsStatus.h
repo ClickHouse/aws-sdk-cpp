@@ -33,73 +33,35 @@ namespace Model
   class EncryptionAtRestOptionsStatus
   {
   public:
-    AWS_OPENSEARCHSERVICE_API EncryptionAtRestOptionsStatus();
+    AWS_OPENSEARCHSERVICE_API EncryptionAtRestOptionsStatus() = default;
     AWS_OPENSEARCHSERVICE_API EncryptionAtRestOptionsStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API EncryptionAtRestOptionsStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Encryption at rest options for the specified domain.</p>
      */
-    inline const EncryptionAtRestOptions& GetOptions() const{ return m_options; }
-
-    /**
-     * <p>Encryption at rest options for the specified domain.</p>
-     */
+    inline const EncryptionAtRestOptions& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = EncryptionAtRestOptions>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = EncryptionAtRestOptions>
+    EncryptionAtRestOptionsStatus& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Encryption at rest options for the specified domain.</p>
-     */
-    inline void SetOptions(const EncryptionAtRestOptions& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p>Encryption at rest options for the specified domain.</p>
-     */
-    inline void SetOptions(EncryptionAtRestOptions&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p>Encryption at rest options for the specified domain.</p>
-     */
-    inline EncryptionAtRestOptionsStatus& WithOptions(const EncryptionAtRestOptions& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p>Encryption at rest options for the specified domain.</p>
-     */
-    inline EncryptionAtRestOptionsStatus& WithOptions(EncryptionAtRestOptions&& value) { SetOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the encryption at rest options for the specified domain.</p>
      */
-    inline const OptionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the encryption at rest options for the specified domain.</p>
-     */
+    inline const OptionStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the encryption at rest options for the specified domain.</p>
-     */
-    inline void SetStatus(const OptionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the encryption at rest options for the specified domain.</p>
-     */
-    inline void SetStatus(OptionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the encryption at rest options for the specified domain.</p>
-     */
-    inline EncryptionAtRestOptionsStatus& WithStatus(const OptionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the encryption at rest options for the specified domain.</p>
-     */
-    inline EncryptionAtRestOptionsStatus& WithStatus(OptionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    template<typename StatusT = OptionStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = OptionStatus>
+    EncryptionAtRestOptionsStatus& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     EncryptionAtRestOptions m_options;

@@ -45,93 +45,35 @@ namespace Model
   class FailWorkflowExecutionDecisionAttributes
   {
   public:
-    AWS_SWF_API FailWorkflowExecutionDecisionAttributes();
+    AWS_SWF_API FailWorkflowExecutionDecisionAttributes() = default;
     AWS_SWF_API FailWorkflowExecutionDecisionAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API FailWorkflowExecutionDecisionAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A descriptive reason for the failure that may help in diagnostics.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>A descriptive reason for the failure that may help in diagnostics.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    FailWorkflowExecutionDecisionAttributes& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A descriptive reason for the failure that may help in diagnostics.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>A descriptive reason for the failure that may help in diagnostics.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>A descriptive reason for the failure that may help in diagnostics.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>A descriptive reason for the failure that may help in diagnostics.</p>
-     */
-    inline FailWorkflowExecutionDecisionAttributes& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>A descriptive reason for the failure that may help in diagnostics.</p>
-     */
-    inline FailWorkflowExecutionDecisionAttributes& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>A descriptive reason for the failure that may help in diagnostics.</p>
-     */
-    inline FailWorkflowExecutionDecisionAttributes& WithReason(const char* value) { SetReason(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Details of the failure.</p>
      */
-    inline const Aws::String& GetDetails() const{ return m_details; }
-
-    /**
-     * <p> Details of the failure.</p>
-     */
+    inline const Aws::String& GetDetails() const { return m_details; }
     inline bool DetailsHasBeenSet() const { return m_detailsHasBeenSet; }
-
-    /**
-     * <p> Details of the failure.</p>
-     */
-    inline void SetDetails(const Aws::String& value) { m_detailsHasBeenSet = true; m_details = value; }
-
-    /**
-     * <p> Details of the failure.</p>
-     */
-    inline void SetDetails(Aws::String&& value) { m_detailsHasBeenSet = true; m_details = std::move(value); }
-
-    /**
-     * <p> Details of the failure.</p>
-     */
-    inline void SetDetails(const char* value) { m_detailsHasBeenSet = true; m_details.assign(value); }
-
-    /**
-     * <p> Details of the failure.</p>
-     */
-    inline FailWorkflowExecutionDecisionAttributes& WithDetails(const Aws::String& value) { SetDetails(value); return *this;}
-
-    /**
-     * <p> Details of the failure.</p>
-     */
-    inline FailWorkflowExecutionDecisionAttributes& WithDetails(Aws::String&& value) { SetDetails(std::move(value)); return *this;}
-
-    /**
-     * <p> Details of the failure.</p>
-     */
-    inline FailWorkflowExecutionDecisionAttributes& WithDetails(const char* value) { SetDetails(value); return *this;}
-
+    template<typename DetailsT = Aws::String>
+    void SetDetails(DetailsT&& value) { m_detailsHasBeenSet = true; m_details = std::forward<DetailsT>(value); }
+    template<typename DetailsT = Aws::String>
+    FailWorkflowExecutionDecisionAttributes& WithDetails(DetailsT&& value) { SetDetails(std::forward<DetailsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_reason;

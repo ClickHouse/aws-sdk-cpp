@@ -18,17 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-NielsenConfiguration::NielsenConfiguration() : 
-    m_distributorIdHasBeenSet(false),
-    m_nielsenPcmToId3Tagging(NielsenPcmToId3TaggingState::NOT_SET),
-    m_nielsenPcmToId3TaggingHasBeenSet(false)
-{
-}
-
-NielsenConfiguration::NielsenConfiguration(JsonView jsonValue) : 
-    m_distributorIdHasBeenSet(false),
-    m_nielsenPcmToId3Tagging(NielsenPcmToId3TaggingState::NOT_SET),
-    m_nielsenPcmToId3TaggingHasBeenSet(false)
+NielsenConfiguration::NielsenConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ NielsenConfiguration& NielsenConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("distributorId"))
   {
     m_distributorId = jsonValue.GetString("distributorId");
-
     m_distributorIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("nielsenPcmToId3Tagging"))
   {
     m_nielsenPcmToId3Tagging = NielsenPcmToId3TaggingStateMapper::GetNielsenPcmToId3TaggingStateForName(jsonValue.GetString("nielsenPcmToId3Tagging"));
-
     m_nielsenPcmToId3TaggingHasBeenSet = true;
   }
-
   return *this;
 }
 

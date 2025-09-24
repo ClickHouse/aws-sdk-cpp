@@ -18,13 +18,7 @@ namespace SSM
 namespace Model
 {
 
-InstanceAssociationOutputUrl::InstanceAssociationOutputUrl() : 
-    m_s3OutputUrlHasBeenSet(false)
-{
-}
-
-InstanceAssociationOutputUrl::InstanceAssociationOutputUrl(JsonView jsonValue) : 
-    m_s3OutputUrlHasBeenSet(false)
+InstanceAssociationOutputUrl::InstanceAssociationOutputUrl(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ InstanceAssociationOutputUrl& InstanceAssociationOutputUrl::operator =(JsonView 
   if(jsonValue.ValueExists("S3OutputUrl"))
   {
     m_s3OutputUrl = jsonValue.GetObject("S3OutputUrl");
-
     m_s3OutputUrlHasBeenSet = true;
   }
-
   return *this;
 }
 

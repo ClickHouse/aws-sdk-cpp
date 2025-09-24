@@ -32,180 +32,61 @@ namespace Model
   class TablePropertyDescription
   {
   public:
-    AWS_BCMDATAEXPORTS_API TablePropertyDescription();
+    AWS_BCMDATAEXPORTS_API TablePropertyDescription() = default;
     AWS_BCMDATAEXPORTS_API TablePropertyDescription(Aws::Utils::Json::JsonView jsonValue);
     AWS_BCMDATAEXPORTS_API TablePropertyDescription& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BCMDATAEXPORTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The default value for the table.</p>
      */
-    inline const Aws::String& GetDefaultValue() const{ return m_defaultValue; }
-
-    /**
-     * <p>The default value for the table.</p>
-     */
+    inline const Aws::String& GetDefaultValue() const { return m_defaultValue; }
     inline bool DefaultValueHasBeenSet() const { return m_defaultValueHasBeenSet; }
+    template<typename DefaultValueT = Aws::String>
+    void SetDefaultValue(DefaultValueT&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::forward<DefaultValueT>(value); }
+    template<typename DefaultValueT = Aws::String>
+    TablePropertyDescription& WithDefaultValue(DefaultValueT&& value) { SetDefaultValue(std::forward<DefaultValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The default value for the table.</p>
-     */
-    inline void SetDefaultValue(const Aws::String& value) { m_defaultValueHasBeenSet = true; m_defaultValue = value; }
-
-    /**
-     * <p>The default value for the table.</p>
-     */
-    inline void SetDefaultValue(Aws::String&& value) { m_defaultValueHasBeenSet = true; m_defaultValue = std::move(value); }
-
-    /**
-     * <p>The default value for the table.</p>
-     */
-    inline void SetDefaultValue(const char* value) { m_defaultValueHasBeenSet = true; m_defaultValue.assign(value); }
-
-    /**
-     * <p>The default value for the table.</p>
-     */
-    inline TablePropertyDescription& WithDefaultValue(const Aws::String& value) { SetDefaultValue(value); return *this;}
-
-    /**
-     * <p>The default value for the table.</p>
-     */
-    inline TablePropertyDescription& WithDefaultValue(Aws::String&& value) { SetDefaultValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The default value for the table.</p>
-     */
-    inline TablePropertyDescription& WithDefaultValue(const char* value) { SetDefaultValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description for the table.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description for the table.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    TablePropertyDescription& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description for the table.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description for the table.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description for the table.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description for the table.</p>
-     */
-    inline TablePropertyDescription& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description for the table.</p>
-     */
-    inline TablePropertyDescription& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description for the table.</p>
-     */
-    inline TablePropertyDescription& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the table.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the table.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    TablePropertyDescription& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline TablePropertyDescription& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline TablePropertyDescription& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the table.</p>
-     */
-    inline TablePropertyDescription& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The valid values for the table.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetValidValues() const{ return m_validValues; }
-
-    /**
-     * <p>The valid values for the table.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetValidValues() const { return m_validValues; }
     inline bool ValidValuesHasBeenSet() const { return m_validValuesHasBeenSet; }
-
-    /**
-     * <p>The valid values for the table.</p>
-     */
-    inline void SetValidValues(const Aws::Vector<Aws::String>& value) { m_validValuesHasBeenSet = true; m_validValues = value; }
-
-    /**
-     * <p>The valid values for the table.</p>
-     */
-    inline void SetValidValues(Aws::Vector<Aws::String>&& value) { m_validValuesHasBeenSet = true; m_validValues = std::move(value); }
-
-    /**
-     * <p>The valid values for the table.</p>
-     */
-    inline TablePropertyDescription& WithValidValues(const Aws::Vector<Aws::String>& value) { SetValidValues(value); return *this;}
-
-    /**
-     * <p>The valid values for the table.</p>
-     */
-    inline TablePropertyDescription& WithValidValues(Aws::Vector<Aws::String>&& value) { SetValidValues(std::move(value)); return *this;}
-
-    /**
-     * <p>The valid values for the table.</p>
-     */
-    inline TablePropertyDescription& AddValidValues(const Aws::String& value) { m_validValuesHasBeenSet = true; m_validValues.push_back(value); return *this; }
-
-    /**
-     * <p>The valid values for the table.</p>
-     */
-    inline TablePropertyDescription& AddValidValues(Aws::String&& value) { m_validValuesHasBeenSet = true; m_validValues.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The valid values for the table.</p>
-     */
-    inline TablePropertyDescription& AddValidValues(const char* value) { m_validValuesHasBeenSet = true; m_validValues.push_back(value); return *this; }
-
+    template<typename ValidValuesT = Aws::Vector<Aws::String>>
+    void SetValidValues(ValidValuesT&& value) { m_validValuesHasBeenSet = true; m_validValues = std::forward<ValidValuesT>(value); }
+    template<typename ValidValuesT = Aws::Vector<Aws::String>>
+    TablePropertyDescription& WithValidValues(ValidValuesT&& value) { SetValidValues(std::forward<ValidValuesT>(value)); return *this;}
+    template<typename ValidValuesT = Aws::String>
+    TablePropertyDescription& AddValidValues(ValidValuesT&& value) { m_validValuesHasBeenSet = true; m_validValues.emplace_back(std::forward<ValidValuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_defaultValue;

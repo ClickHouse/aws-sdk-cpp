@@ -18,25 +18,7 @@ namespace FMS
 namespace Model
 {
 
-ViolationDetail::ViolationDetail() : 
-    m_policyIdHasBeenSet(false),
-    m_memberAccountHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceViolationsHasBeenSet(false),
-    m_resourceTagsHasBeenSet(false),
-    m_resourceDescriptionHasBeenSet(false)
-{
-}
-
-ViolationDetail::ViolationDetail(JsonView jsonValue) : 
-    m_policyIdHasBeenSet(false),
-    m_memberAccountHasBeenSet(false),
-    m_resourceIdHasBeenSet(false),
-    m_resourceTypeHasBeenSet(false),
-    m_resourceViolationsHasBeenSet(false),
-    m_resourceTagsHasBeenSet(false),
-    m_resourceDescriptionHasBeenSet(false)
+ViolationDetail::ViolationDetail(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,31 +28,23 @@ ViolationDetail& ViolationDetail::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PolicyId"))
   {
     m_policyId = jsonValue.GetString("PolicyId");
-
     m_policyIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MemberAccount"))
   {
     m_memberAccount = jsonValue.GetString("MemberAccount");
-
     m_memberAccountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceId"))
   {
     m_resourceId = jsonValue.GetString("ResourceId");
-
     m_resourceIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceType"))
   {
     m_resourceType = jsonValue.GetString("ResourceType");
-
     m_resourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceViolations"))
   {
     Aws::Utils::Array<JsonView> resourceViolationsJsonList = jsonValue.GetArray("ResourceViolations");
@@ -80,7 +54,6 @@ ViolationDetail& ViolationDetail::operator =(JsonView jsonValue)
     }
     m_resourceViolationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceTags"))
   {
     Aws::Utils::Array<JsonView> resourceTagsJsonList = jsonValue.GetArray("ResourceTags");
@@ -90,14 +63,11 @@ ViolationDetail& ViolationDetail::operator =(JsonView jsonValue)
     }
     m_resourceTagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceDescription"))
   {
     m_resourceDescription = jsonValue.GetString("ResourceDescription");
-
     m_resourceDescriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace SWF
 namespace Model
 {
 
-ExecutionTimeFilter::ExecutionTimeFilter() : 
-    m_oldestDateHasBeenSet(false),
-    m_latestDateHasBeenSet(false)
-{
-}
-
-ExecutionTimeFilter::ExecutionTimeFilter(JsonView jsonValue) : 
-    m_oldestDateHasBeenSet(false),
-    m_latestDateHasBeenSet(false)
+ExecutionTimeFilter::ExecutionTimeFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ExecutionTimeFilter& ExecutionTimeFilter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("oldestDate"))
   {
     m_oldestDate = jsonValue.GetDouble("oldestDate");
-
     m_oldestDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("latestDate"))
   {
     m_latestDate = jsonValue.GetDouble("latestDate");
-
     m_latestDateHasBeenSet = true;
   }
-
   return *this;
 }
 

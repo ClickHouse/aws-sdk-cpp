@@ -31,134 +31,47 @@ namespace Model
   class Hive
   {
   public:
-    AWS_EMRSERVERLESS_API Hive();
+    AWS_EMRSERVERLESS_API Hive() = default;
     AWS_EMRSERVERLESS_API Hive(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRSERVERLESS_API Hive& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRSERVERLESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The query for the Hive job run.</p>
      */
-    inline const Aws::String& GetQuery() const{ return m_query; }
-
-    /**
-     * <p>The query for the Hive job run.</p>
-     */
+    inline const Aws::String& GetQuery() const { return m_query; }
     inline bool QueryHasBeenSet() const { return m_queryHasBeenSet; }
+    template<typename QueryT = Aws::String>
+    void SetQuery(QueryT&& value) { m_queryHasBeenSet = true; m_query = std::forward<QueryT>(value); }
+    template<typename QueryT = Aws::String>
+    Hive& WithQuery(QueryT&& value) { SetQuery(std::forward<QueryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The query for the Hive job run.</p>
-     */
-    inline void SetQuery(const Aws::String& value) { m_queryHasBeenSet = true; m_query = value; }
-
-    /**
-     * <p>The query for the Hive job run.</p>
-     */
-    inline void SetQuery(Aws::String&& value) { m_queryHasBeenSet = true; m_query = std::move(value); }
-
-    /**
-     * <p>The query for the Hive job run.</p>
-     */
-    inline void SetQuery(const char* value) { m_queryHasBeenSet = true; m_query.assign(value); }
-
-    /**
-     * <p>The query for the Hive job run.</p>
-     */
-    inline Hive& WithQuery(const Aws::String& value) { SetQuery(value); return *this;}
-
-    /**
-     * <p>The query for the Hive job run.</p>
-     */
-    inline Hive& WithQuery(Aws::String&& value) { SetQuery(std::move(value)); return *this;}
-
-    /**
-     * <p>The query for the Hive job run.</p>
-     */
-    inline Hive& WithQuery(const char* value) { SetQuery(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The query file for the Hive job run.</p>
      */
-    inline const Aws::String& GetInitQueryFile() const{ return m_initQueryFile; }
-
-    /**
-     * <p>The query file for the Hive job run.</p>
-     */
+    inline const Aws::String& GetInitQueryFile() const { return m_initQueryFile; }
     inline bool InitQueryFileHasBeenSet() const { return m_initQueryFileHasBeenSet; }
+    template<typename InitQueryFileT = Aws::String>
+    void SetInitQueryFile(InitQueryFileT&& value) { m_initQueryFileHasBeenSet = true; m_initQueryFile = std::forward<InitQueryFileT>(value); }
+    template<typename InitQueryFileT = Aws::String>
+    Hive& WithInitQueryFile(InitQueryFileT&& value) { SetInitQueryFile(std::forward<InitQueryFileT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The query file for the Hive job run.</p>
-     */
-    inline void SetInitQueryFile(const Aws::String& value) { m_initQueryFileHasBeenSet = true; m_initQueryFile = value; }
-
-    /**
-     * <p>The query file for the Hive job run.</p>
-     */
-    inline void SetInitQueryFile(Aws::String&& value) { m_initQueryFileHasBeenSet = true; m_initQueryFile = std::move(value); }
-
-    /**
-     * <p>The query file for the Hive job run.</p>
-     */
-    inline void SetInitQueryFile(const char* value) { m_initQueryFileHasBeenSet = true; m_initQueryFile.assign(value); }
-
-    /**
-     * <p>The query file for the Hive job run.</p>
-     */
-    inline Hive& WithInitQueryFile(const Aws::String& value) { SetInitQueryFile(value); return *this;}
-
-    /**
-     * <p>The query file for the Hive job run.</p>
-     */
-    inline Hive& WithInitQueryFile(Aws::String&& value) { SetInitQueryFile(std::move(value)); return *this;}
-
-    /**
-     * <p>The query file for the Hive job run.</p>
-     */
-    inline Hive& WithInitQueryFile(const char* value) { SetInitQueryFile(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameters for the Hive job run.</p>
      */
-    inline const Aws::String& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>The parameters for the Hive job run.</p>
-     */
+    inline const Aws::String& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>The parameters for the Hive job run.</p>
-     */
-    inline void SetParameters(const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>The parameters for the Hive job run.</p>
-     */
-    inline void SetParameters(Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>The parameters for the Hive job run.</p>
-     */
-    inline void SetParameters(const char* value) { m_parametersHasBeenSet = true; m_parameters.assign(value); }
-
-    /**
-     * <p>The parameters for the Hive job run.</p>
-     */
-    inline Hive& WithParameters(const Aws::String& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>The parameters for the Hive job run.</p>
-     */
-    inline Hive& WithParameters(Aws::String&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The parameters for the Hive job run.</p>
-     */
-    inline Hive& WithParameters(const char* value) { SetParameters(value); return *this;}
-
+    template<typename ParametersT = Aws::String>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::String>
+    Hive& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_query;

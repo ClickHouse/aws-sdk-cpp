@@ -45,12 +45,13 @@ namespace Model
   class CaptionDestinationSettings
   {
   public:
-    AWS_MEDIACONVERT_API CaptionDestinationSettings();
+    AWS_MEDIACONVERT_API CaptionDestinationSettings() = default;
     AWS_MEDIACONVERT_API CaptionDestinationSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API CaptionDestinationSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * Burn-in is a captions delivery method, rather than a captions format. Burn-in
      * writes the captions directly on your video frames, replacing pixels of video
@@ -58,54 +59,15 @@ namespace Model
      * video. For more information, see
      * https://docs.aws.amazon.com/mediaconvert/latest/ug/burn-in-output-captions.html.
      */
-    inline const BurninDestinationSettings& GetBurninDestinationSettings() const{ return m_burninDestinationSettings; }
-
-    /**
-     * Burn-in is a captions delivery method, rather than a captions format. Burn-in
-     * writes the captions directly on your video frames, replacing pixels of video
-     * content with the captions. Set up burn-in captions in the same output as your
-     * video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/burn-in-output-captions.html.
-     */
+    inline const BurninDestinationSettings& GetBurninDestinationSettings() const { return m_burninDestinationSettings; }
     inline bool BurninDestinationSettingsHasBeenSet() const { return m_burninDestinationSettingsHasBeenSet; }
+    template<typename BurninDestinationSettingsT = BurninDestinationSettings>
+    void SetBurninDestinationSettings(BurninDestinationSettingsT&& value) { m_burninDestinationSettingsHasBeenSet = true; m_burninDestinationSettings = std::forward<BurninDestinationSettingsT>(value); }
+    template<typename BurninDestinationSettingsT = BurninDestinationSettings>
+    CaptionDestinationSettings& WithBurninDestinationSettings(BurninDestinationSettingsT&& value) { SetBurninDestinationSettings(std::forward<BurninDestinationSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Burn-in is a captions delivery method, rather than a captions format. Burn-in
-     * writes the captions directly on your video frames, replacing pixels of video
-     * content with the captions. Set up burn-in captions in the same output as your
-     * video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/burn-in-output-captions.html.
-     */
-    inline void SetBurninDestinationSettings(const BurninDestinationSettings& value) { m_burninDestinationSettingsHasBeenSet = true; m_burninDestinationSettings = value; }
-
-    /**
-     * Burn-in is a captions delivery method, rather than a captions format. Burn-in
-     * writes the captions directly on your video frames, replacing pixels of video
-     * content with the captions. Set up burn-in captions in the same output as your
-     * video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/burn-in-output-captions.html.
-     */
-    inline void SetBurninDestinationSettings(BurninDestinationSettings&& value) { m_burninDestinationSettingsHasBeenSet = true; m_burninDestinationSettings = std::move(value); }
-
-    /**
-     * Burn-in is a captions delivery method, rather than a captions format. Burn-in
-     * writes the captions directly on your video frames, replacing pixels of video
-     * content with the captions. Set up burn-in captions in the same output as your
-     * video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/burn-in-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithBurninDestinationSettings(const BurninDestinationSettings& value) { SetBurninDestinationSettings(value); return *this;}
-
-    /**
-     * Burn-in is a captions delivery method, rather than a captions format. Burn-in
-     * writes the captions directly on your video frames, replacing pixels of video
-     * content with the captions. Set up burn-in captions in the same output as your
-     * video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/burn-in-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithBurninDestinationSettings(BurninDestinationSettings&& value) { SetBurninDestinationSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Specify the format for this set of captions on this output. The default format
      * is embedded without SCTE-20. Note that your choice of video output container
@@ -115,156 +77,42 @@ namespace Model
      * SCTE-43 spec, choose SCTE-20 plus embedded. To create a non-compliant output
      * where the embedded captions come first, choose Embedded plus SCTE-20.
      */
-    inline const CaptionDestinationType& GetDestinationType() const{ return m_destinationType; }
-
-    /**
-     * Specify the format for this set of captions on this output. The default format
-     * is embedded without SCTE-20. Note that your choice of video output container
-     * constrains your choice of output captions format. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/captions-support-tables.html.
-     * If you are using SCTE-20 and you want to create an output that complies with the
-     * SCTE-43 spec, choose SCTE-20 plus embedded. To create a non-compliant output
-     * where the embedded captions come first, choose Embedded plus SCTE-20.
-     */
+    inline CaptionDestinationType GetDestinationType() const { return m_destinationType; }
     inline bool DestinationTypeHasBeenSet() const { return m_destinationTypeHasBeenSet; }
+    inline void SetDestinationType(CaptionDestinationType value) { m_destinationTypeHasBeenSet = true; m_destinationType = value; }
+    inline CaptionDestinationSettings& WithDestinationType(CaptionDestinationType value) { SetDestinationType(value); return *this;}
+    ///@}
 
-    /**
-     * Specify the format for this set of captions on this output. The default format
-     * is embedded without SCTE-20. Note that your choice of video output container
-     * constrains your choice of output captions format. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/captions-support-tables.html.
-     * If you are using SCTE-20 and you want to create an output that complies with the
-     * SCTE-43 spec, choose SCTE-20 plus embedded. To create a non-compliant output
-     * where the embedded captions come first, choose Embedded plus SCTE-20.
-     */
-    inline void SetDestinationType(const CaptionDestinationType& value) { m_destinationTypeHasBeenSet = true; m_destinationType = value; }
-
-    /**
-     * Specify the format for this set of captions on this output. The default format
-     * is embedded without SCTE-20. Note that your choice of video output container
-     * constrains your choice of output captions format. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/captions-support-tables.html.
-     * If you are using SCTE-20 and you want to create an output that complies with the
-     * SCTE-43 spec, choose SCTE-20 plus embedded. To create a non-compliant output
-     * where the embedded captions come first, choose Embedded plus SCTE-20.
-     */
-    inline void SetDestinationType(CaptionDestinationType&& value) { m_destinationTypeHasBeenSet = true; m_destinationType = std::move(value); }
-
-    /**
-     * Specify the format for this set of captions on this output. The default format
-     * is embedded without SCTE-20. Note that your choice of video output container
-     * constrains your choice of output captions format. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/captions-support-tables.html.
-     * If you are using SCTE-20 and you want to create an output that complies with the
-     * SCTE-43 spec, choose SCTE-20 plus embedded. To create a non-compliant output
-     * where the embedded captions come first, choose Embedded plus SCTE-20.
-     */
-    inline CaptionDestinationSettings& WithDestinationType(const CaptionDestinationType& value) { SetDestinationType(value); return *this;}
-
-    /**
-     * Specify the format for this set of captions on this output. The default format
-     * is embedded without SCTE-20. Note that your choice of video output container
-     * constrains your choice of output captions format. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/captions-support-tables.html.
-     * If you are using SCTE-20 and you want to create an output that complies with the
-     * SCTE-43 spec, choose SCTE-20 plus embedded. To create a non-compliant output
-     * where the embedded captions come first, choose Embedded plus SCTE-20.
-     */
-    inline CaptionDestinationSettings& WithDestinationType(CaptionDestinationType&& value) { SetDestinationType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings related to DVB-Sub captions. Set up DVB-Sub captions in the same output
      * as your video. For more information, see
      * https://docs.aws.amazon.com/mediaconvert/latest/ug/dvb-sub-output-captions.html.
      */
-    inline const DvbSubDestinationSettings& GetDvbSubDestinationSettings() const{ return m_dvbSubDestinationSettings; }
-
-    /**
-     * Settings related to DVB-Sub captions. Set up DVB-Sub captions in the same output
-     * as your video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/dvb-sub-output-captions.html.
-     */
+    inline const DvbSubDestinationSettings& GetDvbSubDestinationSettings() const { return m_dvbSubDestinationSettings; }
     inline bool DvbSubDestinationSettingsHasBeenSet() const { return m_dvbSubDestinationSettingsHasBeenSet; }
+    template<typename DvbSubDestinationSettingsT = DvbSubDestinationSettings>
+    void SetDvbSubDestinationSettings(DvbSubDestinationSettingsT&& value) { m_dvbSubDestinationSettingsHasBeenSet = true; m_dvbSubDestinationSettings = std::forward<DvbSubDestinationSettingsT>(value); }
+    template<typename DvbSubDestinationSettingsT = DvbSubDestinationSettings>
+    CaptionDestinationSettings& WithDvbSubDestinationSettings(DvbSubDestinationSettingsT&& value) { SetDvbSubDestinationSettings(std::forward<DvbSubDestinationSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings related to DVB-Sub captions. Set up DVB-Sub captions in the same output
-     * as your video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/dvb-sub-output-captions.html.
-     */
-    inline void SetDvbSubDestinationSettings(const DvbSubDestinationSettings& value) { m_dvbSubDestinationSettingsHasBeenSet = true; m_dvbSubDestinationSettings = value; }
-
-    /**
-     * Settings related to DVB-Sub captions. Set up DVB-Sub captions in the same output
-     * as your video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/dvb-sub-output-captions.html.
-     */
-    inline void SetDvbSubDestinationSettings(DvbSubDestinationSettings&& value) { m_dvbSubDestinationSettingsHasBeenSet = true; m_dvbSubDestinationSettings = std::move(value); }
-
-    /**
-     * Settings related to DVB-Sub captions. Set up DVB-Sub captions in the same output
-     * as your video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/dvb-sub-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithDvbSubDestinationSettings(const DvbSubDestinationSettings& value) { SetDvbSubDestinationSettings(value); return *this;}
-
-    /**
-     * Settings related to DVB-Sub captions. Set up DVB-Sub captions in the same output
-     * as your video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/dvb-sub-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithDvbSubDestinationSettings(DvbSubDestinationSettings&& value) { SetDvbSubDestinationSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings related to CEA/EIA-608 and CEA/EIA-708 (also called embedded or
      * ancillary) captions. Set up embedded captions in the same output as your video.
      * For more information, see
      * https://docs.aws.amazon.com/mediaconvert/latest/ug/embedded-output-captions.html.
      */
-    inline const EmbeddedDestinationSettings& GetEmbeddedDestinationSettings() const{ return m_embeddedDestinationSettings; }
-
-    /**
-     * Settings related to CEA/EIA-608 and CEA/EIA-708 (also called embedded or
-     * ancillary) captions. Set up embedded captions in the same output as your video.
-     * For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/embedded-output-captions.html.
-     */
+    inline const EmbeddedDestinationSettings& GetEmbeddedDestinationSettings() const { return m_embeddedDestinationSettings; }
     inline bool EmbeddedDestinationSettingsHasBeenSet() const { return m_embeddedDestinationSettingsHasBeenSet; }
+    template<typename EmbeddedDestinationSettingsT = EmbeddedDestinationSettings>
+    void SetEmbeddedDestinationSettings(EmbeddedDestinationSettingsT&& value) { m_embeddedDestinationSettingsHasBeenSet = true; m_embeddedDestinationSettings = std::forward<EmbeddedDestinationSettingsT>(value); }
+    template<typename EmbeddedDestinationSettingsT = EmbeddedDestinationSettings>
+    CaptionDestinationSettings& WithEmbeddedDestinationSettings(EmbeddedDestinationSettingsT&& value) { SetEmbeddedDestinationSettings(std::forward<EmbeddedDestinationSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings related to CEA/EIA-608 and CEA/EIA-708 (also called embedded or
-     * ancillary) captions. Set up embedded captions in the same output as your video.
-     * For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/embedded-output-captions.html.
-     */
-    inline void SetEmbeddedDestinationSettings(const EmbeddedDestinationSettings& value) { m_embeddedDestinationSettingsHasBeenSet = true; m_embeddedDestinationSettings = value; }
-
-    /**
-     * Settings related to CEA/EIA-608 and CEA/EIA-708 (also called embedded or
-     * ancillary) captions. Set up embedded captions in the same output as your video.
-     * For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/embedded-output-captions.html.
-     */
-    inline void SetEmbeddedDestinationSettings(EmbeddedDestinationSettings&& value) { m_embeddedDestinationSettingsHasBeenSet = true; m_embeddedDestinationSettings = std::move(value); }
-
-    /**
-     * Settings related to CEA/EIA-608 and CEA/EIA-708 (also called embedded or
-     * ancillary) captions. Set up embedded captions in the same output as your video.
-     * For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/embedded-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithEmbeddedDestinationSettings(const EmbeddedDestinationSettings& value) { SetEmbeddedDestinationSettings(value); return *this;}
-
-    /**
-     * Settings related to CEA/EIA-608 and CEA/EIA-708 (also called embedded or
-     * ancillary) captions. Set up embedded captions in the same output as your video.
-     * For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/embedded-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithEmbeddedDestinationSettings(EmbeddedDestinationSettings&& value) { SetEmbeddedDestinationSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings related to IMSC captions. IMSC is a sidecar format that holds captions
      * in a file that is separate from the video container. Set up sidecar captions in
@@ -272,54 +120,15 @@ namespace Model
      * information, see
      * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
      */
-    inline const ImscDestinationSettings& GetImscDestinationSettings() const{ return m_imscDestinationSettings; }
-
-    /**
-     * Settings related to IMSC captions. IMSC is a sidecar format that holds captions
-     * in a file that is separate from the video container. Set up sidecar captions in
-     * the same output group, but different output from your video. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
+    inline const ImscDestinationSettings& GetImscDestinationSettings() const { return m_imscDestinationSettings; }
     inline bool ImscDestinationSettingsHasBeenSet() const { return m_imscDestinationSettingsHasBeenSet; }
+    template<typename ImscDestinationSettingsT = ImscDestinationSettings>
+    void SetImscDestinationSettings(ImscDestinationSettingsT&& value) { m_imscDestinationSettingsHasBeenSet = true; m_imscDestinationSettings = std::forward<ImscDestinationSettingsT>(value); }
+    template<typename ImscDestinationSettingsT = ImscDestinationSettings>
+    CaptionDestinationSettings& WithImscDestinationSettings(ImscDestinationSettingsT&& value) { SetImscDestinationSettings(std::forward<ImscDestinationSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings related to IMSC captions. IMSC is a sidecar format that holds captions
-     * in a file that is separate from the video container. Set up sidecar captions in
-     * the same output group, but different output from your video. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline void SetImscDestinationSettings(const ImscDestinationSettings& value) { m_imscDestinationSettingsHasBeenSet = true; m_imscDestinationSettings = value; }
-
-    /**
-     * Settings related to IMSC captions. IMSC is a sidecar format that holds captions
-     * in a file that is separate from the video container. Set up sidecar captions in
-     * the same output group, but different output from your video. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline void SetImscDestinationSettings(ImscDestinationSettings&& value) { m_imscDestinationSettingsHasBeenSet = true; m_imscDestinationSettings = std::move(value); }
-
-    /**
-     * Settings related to IMSC captions. IMSC is a sidecar format that holds captions
-     * in a file that is separate from the video container. Set up sidecar captions in
-     * the same output group, but different output from your video. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithImscDestinationSettings(const ImscDestinationSettings& value) { SetImscDestinationSettings(value); return *this;}
-
-    /**
-     * Settings related to IMSC captions. IMSC is a sidecar format that holds captions
-     * in a file that is separate from the video container. Set up sidecar captions in
-     * the same output group, but different output from your video. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithImscDestinationSettings(ImscDestinationSettings&& value) { SetImscDestinationSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings related to SCC captions. SCC is a sidecar format that holds captions in
      * a file that is separate from the video container. Set up sidecar captions in the
@@ -327,140 +136,43 @@ namespace Model
      * see
      * https://docs.aws.amazon.com/mediaconvert/latest/ug/scc-srt-output-captions.html.
      */
-    inline const SccDestinationSettings& GetSccDestinationSettings() const{ return m_sccDestinationSettings; }
-
-    /**
-     * Settings related to SCC captions. SCC is a sidecar format that holds captions in
-     * a file that is separate from the video container. Set up sidecar captions in the
-     * same output group, but different output from your video. For more information,
-     * see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/scc-srt-output-captions.html.
-     */
+    inline const SccDestinationSettings& GetSccDestinationSettings() const { return m_sccDestinationSettings; }
     inline bool SccDestinationSettingsHasBeenSet() const { return m_sccDestinationSettingsHasBeenSet; }
+    template<typename SccDestinationSettingsT = SccDestinationSettings>
+    void SetSccDestinationSettings(SccDestinationSettingsT&& value) { m_sccDestinationSettingsHasBeenSet = true; m_sccDestinationSettings = std::forward<SccDestinationSettingsT>(value); }
+    template<typename SccDestinationSettingsT = SccDestinationSettings>
+    CaptionDestinationSettings& WithSccDestinationSettings(SccDestinationSettingsT&& value) { SetSccDestinationSettings(std::forward<SccDestinationSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings related to SCC captions. SCC is a sidecar format that holds captions in
-     * a file that is separate from the video container. Set up sidecar captions in the
-     * same output group, but different output from your video. For more information,
-     * see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/scc-srt-output-captions.html.
-     */
-    inline void SetSccDestinationSettings(const SccDestinationSettings& value) { m_sccDestinationSettingsHasBeenSet = true; m_sccDestinationSettings = value; }
-
-    /**
-     * Settings related to SCC captions. SCC is a sidecar format that holds captions in
-     * a file that is separate from the video container. Set up sidecar captions in the
-     * same output group, but different output from your video. For more information,
-     * see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/scc-srt-output-captions.html.
-     */
-    inline void SetSccDestinationSettings(SccDestinationSettings&& value) { m_sccDestinationSettingsHasBeenSet = true; m_sccDestinationSettings = std::move(value); }
-
-    /**
-     * Settings related to SCC captions. SCC is a sidecar format that holds captions in
-     * a file that is separate from the video container. Set up sidecar captions in the
-     * same output group, but different output from your video. For more information,
-     * see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/scc-srt-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithSccDestinationSettings(const SccDestinationSettings& value) { SetSccDestinationSettings(value); return *this;}
-
-    /**
-     * Settings related to SCC captions. SCC is a sidecar format that holds captions in
-     * a file that is separate from the video container. Set up sidecar captions in the
-     * same output group, but different output from your video. For more information,
-     * see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/scc-srt-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithSccDestinationSettings(SccDestinationSettings&& value) { SetSccDestinationSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings related to SRT captions. SRT is a sidecar format that holds captions in
      * a file that is separate from the video container. Set up sidecar captions in the
      * same output group, but different output from your video.
      */
-    inline const SrtDestinationSettings& GetSrtDestinationSettings() const{ return m_srtDestinationSettings; }
-
-    /**
-     * Settings related to SRT captions. SRT is a sidecar format that holds captions in
-     * a file that is separate from the video container. Set up sidecar captions in the
-     * same output group, but different output from your video.
-     */
+    inline const SrtDestinationSettings& GetSrtDestinationSettings() const { return m_srtDestinationSettings; }
     inline bool SrtDestinationSettingsHasBeenSet() const { return m_srtDestinationSettingsHasBeenSet; }
+    template<typename SrtDestinationSettingsT = SrtDestinationSettings>
+    void SetSrtDestinationSettings(SrtDestinationSettingsT&& value) { m_srtDestinationSettingsHasBeenSet = true; m_srtDestinationSettings = std::forward<SrtDestinationSettingsT>(value); }
+    template<typename SrtDestinationSettingsT = SrtDestinationSettings>
+    CaptionDestinationSettings& WithSrtDestinationSettings(SrtDestinationSettingsT&& value) { SetSrtDestinationSettings(std::forward<SrtDestinationSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings related to SRT captions. SRT is a sidecar format that holds captions in
-     * a file that is separate from the video container. Set up sidecar captions in the
-     * same output group, but different output from your video.
-     */
-    inline void SetSrtDestinationSettings(const SrtDestinationSettings& value) { m_srtDestinationSettingsHasBeenSet = true; m_srtDestinationSettings = value; }
-
-    /**
-     * Settings related to SRT captions. SRT is a sidecar format that holds captions in
-     * a file that is separate from the video container. Set up sidecar captions in the
-     * same output group, but different output from your video.
-     */
-    inline void SetSrtDestinationSettings(SrtDestinationSettings&& value) { m_srtDestinationSettingsHasBeenSet = true; m_srtDestinationSettings = std::move(value); }
-
-    /**
-     * Settings related to SRT captions. SRT is a sidecar format that holds captions in
-     * a file that is separate from the video container. Set up sidecar captions in the
-     * same output group, but different output from your video.
-     */
-    inline CaptionDestinationSettings& WithSrtDestinationSettings(const SrtDestinationSettings& value) { SetSrtDestinationSettings(value); return *this;}
-
-    /**
-     * Settings related to SRT captions. SRT is a sidecar format that holds captions in
-     * a file that is separate from the video container. Set up sidecar captions in the
-     * same output group, but different output from your video.
-     */
-    inline CaptionDestinationSettings& WithSrtDestinationSettings(SrtDestinationSettings&& value) { SetSrtDestinationSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings related to teletext captions. Set up teletext captions in the same
      * output as your video. For more information, see
      * https://docs.aws.amazon.com/mediaconvert/latest/ug/teletext-output-captions.html.
      */
-    inline const TeletextDestinationSettings& GetTeletextDestinationSettings() const{ return m_teletextDestinationSettings; }
-
-    /**
-     * Settings related to teletext captions. Set up teletext captions in the same
-     * output as your video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/teletext-output-captions.html.
-     */
+    inline const TeletextDestinationSettings& GetTeletextDestinationSettings() const { return m_teletextDestinationSettings; }
     inline bool TeletextDestinationSettingsHasBeenSet() const { return m_teletextDestinationSettingsHasBeenSet; }
+    template<typename TeletextDestinationSettingsT = TeletextDestinationSettings>
+    void SetTeletextDestinationSettings(TeletextDestinationSettingsT&& value) { m_teletextDestinationSettingsHasBeenSet = true; m_teletextDestinationSettings = std::forward<TeletextDestinationSettingsT>(value); }
+    template<typename TeletextDestinationSettingsT = TeletextDestinationSettings>
+    CaptionDestinationSettings& WithTeletextDestinationSettings(TeletextDestinationSettingsT&& value) { SetTeletextDestinationSettings(std::forward<TeletextDestinationSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings related to teletext captions. Set up teletext captions in the same
-     * output as your video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/teletext-output-captions.html.
-     */
-    inline void SetTeletextDestinationSettings(const TeletextDestinationSettings& value) { m_teletextDestinationSettingsHasBeenSet = true; m_teletextDestinationSettings = value; }
-
-    /**
-     * Settings related to teletext captions. Set up teletext captions in the same
-     * output as your video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/teletext-output-captions.html.
-     */
-    inline void SetTeletextDestinationSettings(TeletextDestinationSettings&& value) { m_teletextDestinationSettingsHasBeenSet = true; m_teletextDestinationSettings = std::move(value); }
-
-    /**
-     * Settings related to teletext captions. Set up teletext captions in the same
-     * output as your video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/teletext-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithTeletextDestinationSettings(const TeletextDestinationSettings& value) { SetTeletextDestinationSettings(value); return *this;}
-
-    /**
-     * Settings related to teletext captions. Set up teletext captions in the same
-     * output as your video. For more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/teletext-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithTeletextDestinationSettings(TeletextDestinationSettings&& value) { SetTeletextDestinationSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings related to TTML captions. TTML is a sidecar format that holds captions
      * in a file that is separate from the video container. Set up sidecar captions in
@@ -468,54 +180,15 @@ namespace Model
      * information, see
      * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
      */
-    inline const TtmlDestinationSettings& GetTtmlDestinationSettings() const{ return m_ttmlDestinationSettings; }
-
-    /**
-     * Settings related to TTML captions. TTML is a sidecar format that holds captions
-     * in a file that is separate from the video container. Set up sidecar captions in
-     * the same output group, but different output from your video. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
+    inline const TtmlDestinationSettings& GetTtmlDestinationSettings() const { return m_ttmlDestinationSettings; }
     inline bool TtmlDestinationSettingsHasBeenSet() const { return m_ttmlDestinationSettingsHasBeenSet; }
+    template<typename TtmlDestinationSettingsT = TtmlDestinationSettings>
+    void SetTtmlDestinationSettings(TtmlDestinationSettingsT&& value) { m_ttmlDestinationSettingsHasBeenSet = true; m_ttmlDestinationSettings = std::forward<TtmlDestinationSettingsT>(value); }
+    template<typename TtmlDestinationSettingsT = TtmlDestinationSettings>
+    CaptionDestinationSettings& WithTtmlDestinationSettings(TtmlDestinationSettingsT&& value) { SetTtmlDestinationSettings(std::forward<TtmlDestinationSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Settings related to TTML captions. TTML is a sidecar format that holds captions
-     * in a file that is separate from the video container. Set up sidecar captions in
-     * the same output group, but different output from your video. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline void SetTtmlDestinationSettings(const TtmlDestinationSettings& value) { m_ttmlDestinationSettingsHasBeenSet = true; m_ttmlDestinationSettings = value; }
-
-    /**
-     * Settings related to TTML captions. TTML is a sidecar format that holds captions
-     * in a file that is separate from the video container. Set up sidecar captions in
-     * the same output group, but different output from your video. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline void SetTtmlDestinationSettings(TtmlDestinationSettings&& value) { m_ttmlDestinationSettingsHasBeenSet = true; m_ttmlDestinationSettings = std::move(value); }
-
-    /**
-     * Settings related to TTML captions. TTML is a sidecar format that holds captions
-     * in a file that is separate from the video container. Set up sidecar captions in
-     * the same output group, but different output from your video. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithTtmlDestinationSettings(const TtmlDestinationSettings& value) { SetTtmlDestinationSettings(value); return *this;}
-
-    /**
-     * Settings related to TTML captions. TTML is a sidecar format that holds captions
-     * in a file that is separate from the video container. Set up sidecar captions in
-     * the same output group, but different output from your video. For more
-     * information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithTtmlDestinationSettings(TtmlDestinationSettings&& value) { SetTtmlDestinationSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * Settings related to WebVTT captions. WebVTT is a sidecar format that holds
      * captions in a file that is separate from the video container. Set up sidecar
@@ -523,59 +196,19 @@ namespace Model
      * more information, see
      * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
      */
-    inline const WebvttDestinationSettings& GetWebvttDestinationSettings() const{ return m_webvttDestinationSettings; }
-
-    /**
-     * Settings related to WebVTT captions. WebVTT is a sidecar format that holds
-     * captions in a file that is separate from the video container. Set up sidecar
-     * captions in the same output group, but different output from your video. For
-     * more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
+    inline const WebvttDestinationSettings& GetWebvttDestinationSettings() const { return m_webvttDestinationSettings; }
     inline bool WebvttDestinationSettingsHasBeenSet() const { return m_webvttDestinationSettingsHasBeenSet; }
-
-    /**
-     * Settings related to WebVTT captions. WebVTT is a sidecar format that holds
-     * captions in a file that is separate from the video container. Set up sidecar
-     * captions in the same output group, but different output from your video. For
-     * more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline void SetWebvttDestinationSettings(const WebvttDestinationSettings& value) { m_webvttDestinationSettingsHasBeenSet = true; m_webvttDestinationSettings = value; }
-
-    /**
-     * Settings related to WebVTT captions. WebVTT is a sidecar format that holds
-     * captions in a file that is separate from the video container. Set up sidecar
-     * captions in the same output group, but different output from your video. For
-     * more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline void SetWebvttDestinationSettings(WebvttDestinationSettings&& value) { m_webvttDestinationSettingsHasBeenSet = true; m_webvttDestinationSettings = std::move(value); }
-
-    /**
-     * Settings related to WebVTT captions. WebVTT is a sidecar format that holds
-     * captions in a file that is separate from the video container. Set up sidecar
-     * captions in the same output group, but different output from your video. For
-     * more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithWebvttDestinationSettings(const WebvttDestinationSettings& value) { SetWebvttDestinationSettings(value); return *this;}
-
-    /**
-     * Settings related to WebVTT captions. WebVTT is a sidecar format that holds
-     * captions in a file that is separate from the video container. Set up sidecar
-     * captions in the same output group, but different output from your video. For
-     * more information, see
-     * https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
-     */
-    inline CaptionDestinationSettings& WithWebvttDestinationSettings(WebvttDestinationSettings&& value) { SetWebvttDestinationSettings(std::move(value)); return *this;}
-
+    template<typename WebvttDestinationSettingsT = WebvttDestinationSettings>
+    void SetWebvttDestinationSettings(WebvttDestinationSettingsT&& value) { m_webvttDestinationSettingsHasBeenSet = true; m_webvttDestinationSettings = std::forward<WebvttDestinationSettingsT>(value); }
+    template<typename WebvttDestinationSettingsT = WebvttDestinationSettings>
+    CaptionDestinationSettings& WithWebvttDestinationSettings(WebvttDestinationSettingsT&& value) { SetWebvttDestinationSettings(std::forward<WebvttDestinationSettingsT>(value)); return *this;}
+    ///@}
   private:
 
     BurninDestinationSettings m_burninDestinationSettings;
     bool m_burninDestinationSettingsHasBeenSet = false;
 
-    CaptionDestinationType m_destinationType;
+    CaptionDestinationType m_destinationType{CaptionDestinationType::NOT_SET};
     bool m_destinationTypeHasBeenSet = false;
 
     DvbSubDestinationSettings m_dvbSubDestinationSettings;

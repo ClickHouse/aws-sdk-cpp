@@ -34,93 +34,35 @@ namespace Model
   class UserProperty
   {
   public:
-    AWS_IOT_API UserProperty();
+    AWS_IOT_API UserProperty() = default;
     AWS_IOT_API UserProperty(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API UserProperty& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A key to be specified in <code>UserProperty</code>.</p>
      */
-    inline const Aws::String& GetKey() const{ return m_key; }
-
-    /**
-     * <p>A key to be specified in <code>UserProperty</code>.</p>
-     */
+    inline const Aws::String& GetKey() const { return m_key; }
     inline bool KeyHasBeenSet() const { return m_keyHasBeenSet; }
+    template<typename KeyT = Aws::String>
+    void SetKey(KeyT&& value) { m_keyHasBeenSet = true; m_key = std::forward<KeyT>(value); }
+    template<typename KeyT = Aws::String>
+    UserProperty& WithKey(KeyT&& value) { SetKey(std::forward<KeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A key to be specified in <code>UserProperty</code>.</p>
-     */
-    inline void SetKey(const Aws::String& value) { m_keyHasBeenSet = true; m_key = value; }
-
-    /**
-     * <p>A key to be specified in <code>UserProperty</code>.</p>
-     */
-    inline void SetKey(Aws::String&& value) { m_keyHasBeenSet = true; m_key = std::move(value); }
-
-    /**
-     * <p>A key to be specified in <code>UserProperty</code>.</p>
-     */
-    inline void SetKey(const char* value) { m_keyHasBeenSet = true; m_key.assign(value); }
-
-    /**
-     * <p>A key to be specified in <code>UserProperty</code>.</p>
-     */
-    inline UserProperty& WithKey(const Aws::String& value) { SetKey(value); return *this;}
-
-    /**
-     * <p>A key to be specified in <code>UserProperty</code>.</p>
-     */
-    inline UserProperty& WithKey(Aws::String&& value) { SetKey(std::move(value)); return *this;}
-
-    /**
-     * <p>A key to be specified in <code>UserProperty</code>.</p>
-     */
-    inline UserProperty& WithKey(const char* value) { SetKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A value to be specified in <code>UserProperty</code>.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>A value to be specified in <code>UserProperty</code>.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>A value to be specified in <code>UserProperty</code>.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>A value to be specified in <code>UserProperty</code>.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>A value to be specified in <code>UserProperty</code>.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>A value to be specified in <code>UserProperty</code>.</p>
-     */
-    inline UserProperty& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>A value to be specified in <code>UserProperty</code>.</p>
-     */
-    inline UserProperty& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>A value to be specified in <code>UserProperty</code>.</p>
-     */
-    inline UserProperty& WithValue(const char* value) { SetValue(value); return *this;}
-
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    UserProperty& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_key;

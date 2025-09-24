@@ -32,48 +32,24 @@ namespace Model
   class FreeFormLayoutCanvasSizeOptions
   {
   public:
-    AWS_QUICKSIGHT_API FreeFormLayoutCanvasSizeOptions();
+    AWS_QUICKSIGHT_API FreeFormLayoutCanvasSizeOptions() = default;
     AWS_QUICKSIGHT_API FreeFormLayoutCanvasSizeOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API FreeFormLayoutCanvasSizeOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The options that determine the sizing of the canvas used in a free-form
      * layout.</p>
      */
-    inline const FreeFormLayoutScreenCanvasSizeOptions& GetScreenCanvasSizeOptions() const{ return m_screenCanvasSizeOptions; }
-
-    /**
-     * <p>The options that determine the sizing of the canvas used in a free-form
-     * layout.</p>
-     */
+    inline const FreeFormLayoutScreenCanvasSizeOptions& GetScreenCanvasSizeOptions() const { return m_screenCanvasSizeOptions; }
     inline bool ScreenCanvasSizeOptionsHasBeenSet() const { return m_screenCanvasSizeOptionsHasBeenSet; }
-
-    /**
-     * <p>The options that determine the sizing of the canvas used in a free-form
-     * layout.</p>
-     */
-    inline void SetScreenCanvasSizeOptions(const FreeFormLayoutScreenCanvasSizeOptions& value) { m_screenCanvasSizeOptionsHasBeenSet = true; m_screenCanvasSizeOptions = value; }
-
-    /**
-     * <p>The options that determine the sizing of the canvas used in a free-form
-     * layout.</p>
-     */
-    inline void SetScreenCanvasSizeOptions(FreeFormLayoutScreenCanvasSizeOptions&& value) { m_screenCanvasSizeOptionsHasBeenSet = true; m_screenCanvasSizeOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the sizing of the canvas used in a free-form
-     * layout.</p>
-     */
-    inline FreeFormLayoutCanvasSizeOptions& WithScreenCanvasSizeOptions(const FreeFormLayoutScreenCanvasSizeOptions& value) { SetScreenCanvasSizeOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the sizing of the canvas used in a free-form
-     * layout.</p>
-     */
-    inline FreeFormLayoutCanvasSizeOptions& WithScreenCanvasSizeOptions(FreeFormLayoutScreenCanvasSizeOptions&& value) { SetScreenCanvasSizeOptions(std::move(value)); return *this;}
-
+    template<typename ScreenCanvasSizeOptionsT = FreeFormLayoutScreenCanvasSizeOptions>
+    void SetScreenCanvasSizeOptions(ScreenCanvasSizeOptionsT&& value) { m_screenCanvasSizeOptionsHasBeenSet = true; m_screenCanvasSizeOptions = std::forward<ScreenCanvasSizeOptionsT>(value); }
+    template<typename ScreenCanvasSizeOptionsT = FreeFormLayoutScreenCanvasSizeOptions>
+    FreeFormLayoutCanvasSizeOptions& WithScreenCanvasSizeOptions(ScreenCanvasSizeOptionsT&& value) { SetScreenCanvasSizeOptions(std::forward<ScreenCanvasSizeOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     FreeFormLayoutScreenCanvasSizeOptions m_screenCanvasSizeOptions;

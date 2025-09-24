@@ -18,35 +18,7 @@ namespace Bedrock
 namespace Model
 {
 
-ModelCustomizationJobSummary::ModelCustomizationJobSummary() : 
-    m_jobArnHasBeenSet(false),
-    m_baseModelArnHasBeenSet(false),
-    m_jobNameHasBeenSet(false),
-    m_status(ModelCustomizationJobStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_customModelArnHasBeenSet(false),
-    m_customModelNameHasBeenSet(false),
-    m_customizationType(CustomizationType::NOT_SET),
-    m_customizationTypeHasBeenSet(false)
-{
-}
-
-ModelCustomizationJobSummary::ModelCustomizationJobSummary(JsonView jsonValue) : 
-    m_jobArnHasBeenSet(false),
-    m_baseModelArnHasBeenSet(false),
-    m_jobNameHasBeenSet(false),
-    m_status(ModelCustomizationJobStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_creationTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_customModelArnHasBeenSet(false),
-    m_customModelNameHasBeenSet(false),
-    m_customizationType(CustomizationType::NOT_SET),
-    m_customizationTypeHasBeenSet(false)
+ModelCustomizationJobSummary::ModelCustomizationJobSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -56,73 +28,58 @@ ModelCustomizationJobSummary& ModelCustomizationJobSummary::operator =(JsonView 
   if(jsonValue.ValueExists("jobArn"))
   {
     m_jobArn = jsonValue.GetString("jobArn");
-
     m_jobArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("baseModelArn"))
   {
     m_baseModelArn = jsonValue.GetString("baseModelArn");
-
     m_baseModelArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("jobName"))
   {
     m_jobName = jsonValue.GetString("jobName");
-
     m_jobNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = ModelCustomizationJobStatusMapper::GetModelCustomizationJobStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("statusDetails"))
+  {
+    m_statusDetails = jsonValue.GetObject("statusDetails");
+    m_statusDetailsHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("lastModifiedTime"))
   {
     m_lastModifiedTime = jsonValue.GetString("lastModifiedTime");
-
     m_lastModifiedTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("creationTime"))
   {
     m_creationTime = jsonValue.GetString("creationTime");
-
     m_creationTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("endTime"))
   {
     m_endTime = jsonValue.GetString("endTime");
-
     m_endTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("customModelArn"))
   {
     m_customModelArn = jsonValue.GetString("customModelArn");
-
     m_customModelArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("customModelName"))
   {
     m_customModelName = jsonValue.GetString("customModelName");
-
     m_customModelNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("customizationType"))
   {
     m_customizationType = CustomizationTypeMapper::GetCustomizationTypeForName(jsonValue.GetString("customizationType"));
-
     m_customizationTypeHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -151,6 +108,12 @@ JsonValue ModelCustomizationJobSummary::Jsonize() const
   if(m_statusHasBeenSet)
   {
    payload.WithString("status", ModelCustomizationJobStatusMapper::GetNameForModelCustomizationJobStatus(m_status));
+  }
+
+  if(m_statusDetailsHasBeenSet)
+  {
+   payload.WithObject("statusDetails", m_statusDetails.Jsonize());
+
   }
 
   if(m_lastModifiedTimeHasBeenSet)

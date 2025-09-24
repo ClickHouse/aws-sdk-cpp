@@ -10,15 +10,6 @@
 using namespace Aws::CloudFormation::Model;
 using namespace Aws::Utils;
 
-DescribeStackResourceDriftsRequest::DescribeStackResourceDriftsRequest() : 
-    m_stackNameHasBeenSet(false),
-    m_stackResourceDriftStatusFiltersHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String DescribeStackResourceDriftsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -30,12 +21,19 @@ Aws::String DescribeStackResourceDriftsRequest::SerializePayload() const
 
   if(m_stackResourceDriftStatusFiltersHasBeenSet)
   {
-    unsigned stackResourceDriftStatusFiltersCount = 1;
-    for(auto& item : m_stackResourceDriftStatusFilters)
+    if (m_stackResourceDriftStatusFilters.empty())
     {
-      ss << "StackResourceDriftStatusFilters.member." << stackResourceDriftStatusFiltersCount << "="
-          << StringUtils::URLEncode(StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(item).c_str()) << "&";
-      stackResourceDriftStatusFiltersCount++;
+      ss << "StackResourceDriftStatusFilters=&";
+    }
+    else
+    {
+      unsigned stackResourceDriftStatusFiltersCount = 1;
+      for(auto& item : m_stackResourceDriftStatusFilters)
+      {
+        ss << "StackResourceDriftStatusFilters.member." << stackResourceDriftStatusFiltersCount << "="
+            << StringUtils::URLEncode(StackResourceDriftStatusMapper::GetNameForStackResourceDriftStatus(item)) << "&";
+        stackResourceDriftStatusFiltersCount++;
+      }
     }
   }
 

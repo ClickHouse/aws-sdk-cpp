@@ -18,19 +18,7 @@ namespace EventBridge
 namespace Model
 {
 
-ConnectionAuthResponseParameters::ConnectionAuthResponseParameters() : 
-    m_basicAuthParametersHasBeenSet(false),
-    m_oAuthParametersHasBeenSet(false),
-    m_apiKeyAuthParametersHasBeenSet(false),
-    m_invocationHttpParametersHasBeenSet(false)
-{
-}
-
-ConnectionAuthResponseParameters::ConnectionAuthResponseParameters(JsonView jsonValue) : 
-    m_basicAuthParametersHasBeenSet(false),
-    m_oAuthParametersHasBeenSet(false),
-    m_apiKeyAuthParametersHasBeenSet(false),
-    m_invocationHttpParametersHasBeenSet(false)
+ConnectionAuthResponseParameters::ConnectionAuthResponseParameters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,28 @@ ConnectionAuthResponseParameters& ConnectionAuthResponseParameters::operator =(J
   if(jsonValue.ValueExists("BasicAuthParameters"))
   {
     m_basicAuthParameters = jsonValue.GetObject("BasicAuthParameters");
-
     m_basicAuthParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OAuthParameters"))
   {
     m_oAuthParameters = jsonValue.GetObject("OAuthParameters");
-
     m_oAuthParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ApiKeyAuthParameters"))
   {
     m_apiKeyAuthParameters = jsonValue.GetObject("ApiKeyAuthParameters");
-
     m_apiKeyAuthParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InvocationHttpParameters"))
   {
     m_invocationHttpParameters = jsonValue.GetObject("InvocationHttpParameters");
-
     m_invocationHttpParametersHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ConnectivityParameters"))
+  {
+    m_connectivityParameters = jsonValue.GetObject("ConnectivityParameters");
+    m_connectivityParametersHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -93,6 +78,12 @@ JsonValue ConnectionAuthResponseParameters::Jsonize() const
   if(m_invocationHttpParametersHasBeenSet)
   {
    payload.WithObject("InvocationHttpParameters", m_invocationHttpParameters.Jsonize());
+
+  }
+
+  if(m_connectivityParametersHasBeenSet)
+  {
+   payload.WithObject("ConnectivityParameters", m_connectivityParameters.Jsonize());
 
   }
 

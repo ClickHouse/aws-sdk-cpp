@@ -29,97 +29,51 @@ namespace Model
   class ListReviewTemplatesResult
   {
   public:
-    AWS_WELLARCHITECTED_API ListReviewTemplatesResult();
+    AWS_WELLARCHITECTED_API ListReviewTemplatesResult() = default;
     AWS_WELLARCHITECTED_API ListReviewTemplatesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_WELLARCHITECTED_API ListReviewTemplatesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>List of review templates.</p>
      */
-    inline const Aws::Vector<ReviewTemplateSummary>& GetReviewTemplates() const{ return m_reviewTemplates; }
+    inline const Aws::Vector<ReviewTemplateSummary>& GetReviewTemplates() const { return m_reviewTemplates; }
+    template<typename ReviewTemplatesT = Aws::Vector<ReviewTemplateSummary>>
+    void SetReviewTemplates(ReviewTemplatesT&& value) { m_reviewTemplatesHasBeenSet = true; m_reviewTemplates = std::forward<ReviewTemplatesT>(value); }
+    template<typename ReviewTemplatesT = Aws::Vector<ReviewTemplateSummary>>
+    ListReviewTemplatesResult& WithReviewTemplates(ReviewTemplatesT&& value) { SetReviewTemplates(std::forward<ReviewTemplatesT>(value)); return *this;}
+    template<typename ReviewTemplatesT = ReviewTemplateSummary>
+    ListReviewTemplatesResult& AddReviewTemplates(ReviewTemplatesT&& value) { m_reviewTemplatesHasBeenSet = true; m_reviewTemplates.emplace_back(std::forward<ReviewTemplatesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>List of review templates.</p>
-     */
-    inline void SetReviewTemplates(const Aws::Vector<ReviewTemplateSummary>& value) { m_reviewTemplates = value; }
-
-    /**
-     * <p>List of review templates.</p>
-     */
-    inline void SetReviewTemplates(Aws::Vector<ReviewTemplateSummary>&& value) { m_reviewTemplates = std::move(value); }
-
-    /**
-     * <p>List of review templates.</p>
-     */
-    inline ListReviewTemplatesResult& WithReviewTemplates(const Aws::Vector<ReviewTemplateSummary>& value) { SetReviewTemplates(value); return *this;}
-
-    /**
-     * <p>List of review templates.</p>
-     */
-    inline ListReviewTemplatesResult& WithReviewTemplates(Aws::Vector<ReviewTemplateSummary>&& value) { SetReviewTemplates(std::move(value)); return *this;}
-
-    /**
-     * <p>List of review templates.</p>
-     */
-    inline ListReviewTemplatesResult& AddReviewTemplates(const ReviewTemplateSummary& value) { m_reviewTemplates.push_back(value); return *this; }
-
-    /**
-     * <p>List of review templates.</p>
-     */
-    inline ListReviewTemplatesResult& AddReviewTemplates(ReviewTemplateSummary&& value) { m_reviewTemplates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListReviewTemplatesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    
-    inline ListReviewTemplatesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    
-    inline ListReviewTemplatesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    
-    inline ListReviewTemplatesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListReviewTemplatesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListReviewTemplatesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListReviewTemplatesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListReviewTemplatesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ReviewTemplateSummary> m_reviewTemplates;
+    bool m_reviewTemplatesHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

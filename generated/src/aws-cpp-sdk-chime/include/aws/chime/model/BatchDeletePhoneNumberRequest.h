@@ -22,7 +22,7 @@ namespace Model
   class BatchDeletePhoneNumberRequest : public ChimeRequest
   {
   public:
-    AWS_CHIME_API BatchDeletePhoneNumberRequest();
+    AWS_CHIME_API BatchDeletePhoneNumberRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,51 +33,19 @@ namespace Model
     AWS_CHIME_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>List of phone number IDs.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPhoneNumberIds() const{ return m_phoneNumberIds; }
-
-    /**
-     * <p>List of phone number IDs.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPhoneNumberIds() const { return m_phoneNumberIds; }
     inline bool PhoneNumberIdsHasBeenSet() const { return m_phoneNumberIdsHasBeenSet; }
-
-    /**
-     * <p>List of phone number IDs.</p>
-     */
-    inline void SetPhoneNumberIds(const Aws::Vector<Aws::String>& value) { m_phoneNumberIdsHasBeenSet = true; m_phoneNumberIds = value; }
-
-    /**
-     * <p>List of phone number IDs.</p>
-     */
-    inline void SetPhoneNumberIds(Aws::Vector<Aws::String>&& value) { m_phoneNumberIdsHasBeenSet = true; m_phoneNumberIds = std::move(value); }
-
-    /**
-     * <p>List of phone number IDs.</p>
-     */
-    inline BatchDeletePhoneNumberRequest& WithPhoneNumberIds(const Aws::Vector<Aws::String>& value) { SetPhoneNumberIds(value); return *this;}
-
-    /**
-     * <p>List of phone number IDs.</p>
-     */
-    inline BatchDeletePhoneNumberRequest& WithPhoneNumberIds(Aws::Vector<Aws::String>&& value) { SetPhoneNumberIds(std::move(value)); return *this;}
-
-    /**
-     * <p>List of phone number IDs.</p>
-     */
-    inline BatchDeletePhoneNumberRequest& AddPhoneNumberIds(const Aws::String& value) { m_phoneNumberIdsHasBeenSet = true; m_phoneNumberIds.push_back(value); return *this; }
-
-    /**
-     * <p>List of phone number IDs.</p>
-     */
-    inline BatchDeletePhoneNumberRequest& AddPhoneNumberIds(Aws::String&& value) { m_phoneNumberIdsHasBeenSet = true; m_phoneNumberIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of phone number IDs.</p>
-     */
-    inline BatchDeletePhoneNumberRequest& AddPhoneNumberIds(const char* value) { m_phoneNumberIdsHasBeenSet = true; m_phoneNumberIds.push_back(value); return *this; }
-
+    template<typename PhoneNumberIdsT = Aws::Vector<Aws::String>>
+    void SetPhoneNumberIds(PhoneNumberIdsT&& value) { m_phoneNumberIdsHasBeenSet = true; m_phoneNumberIds = std::forward<PhoneNumberIdsT>(value); }
+    template<typename PhoneNumberIdsT = Aws::Vector<Aws::String>>
+    BatchDeletePhoneNumberRequest& WithPhoneNumberIds(PhoneNumberIdsT&& value) { SetPhoneNumberIds(std::forward<PhoneNumberIdsT>(value)); return *this;}
+    template<typename PhoneNumberIdsT = Aws::String>
+    BatchDeletePhoneNumberRequest& AddPhoneNumberIds(PhoneNumberIdsT&& value) { m_phoneNumberIdsHasBeenSet = true; m_phoneNumberIds.emplace_back(std::forward<PhoneNumberIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_phoneNumberIds;

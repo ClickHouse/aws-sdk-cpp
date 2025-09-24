@@ -18,21 +18,7 @@ namespace Inspector
 namespace Model
 {
 
-NoSuchEntityException::NoSuchEntityException() : 
-    m_messageHasBeenSet(false),
-    m_errorCode(NoSuchEntityErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_canRetry(false),
-    m_canRetryHasBeenSet(false)
-{
-}
-
-NoSuchEntityException::NoSuchEntityException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_errorCode(NoSuchEntityErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_canRetry(false),
-    m_canRetryHasBeenSet(false)
+NoSuchEntityException::NoSuchEntityException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ NoSuchEntityException& NoSuchEntityException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("errorCode"))
   {
     m_errorCode = NoSuchEntityErrorCodeMapper::GetNoSuchEntityErrorCodeForName(jsonValue.GetString("errorCode"));
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("canRetry"))
   {
     m_canRetry = jsonValue.GetBool("canRetry");
-
     m_canRetryHasBeenSet = true;
   }
-
   return *this;
 }
 

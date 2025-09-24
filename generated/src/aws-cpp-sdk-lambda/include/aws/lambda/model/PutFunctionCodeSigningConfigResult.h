@@ -27,160 +27,58 @@ namespace Model
   class PutFunctionCodeSigningConfigResult
   {
   public:
-    AWS_LAMBDA_API PutFunctionCodeSigningConfigResult();
+    AWS_LAMBDA_API PutFunctionCodeSigningConfigResult() = default;
     AWS_LAMBDA_API PutFunctionCodeSigningConfigResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LAMBDA_API PutFunctionCodeSigningConfigResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>
      */
-    inline const Aws::String& GetCodeSigningConfigArn() const{ return m_codeSigningConfigArn; }
+    inline const Aws::String& GetCodeSigningConfigArn() const { return m_codeSigningConfigArn; }
+    template<typename CodeSigningConfigArnT = Aws::String>
+    void SetCodeSigningConfigArn(CodeSigningConfigArnT&& value) { m_codeSigningConfigArnHasBeenSet = true; m_codeSigningConfigArn = std::forward<CodeSigningConfigArnT>(value); }
+    template<typename CodeSigningConfigArnT = Aws::String>
+    PutFunctionCodeSigningConfigResult& WithCodeSigningConfigArn(CodeSigningConfigArnT&& value) { SetCodeSigningConfigArn(std::forward<CodeSigningConfigArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>
-     */
-    inline void SetCodeSigningConfigArn(const Aws::String& value) { m_codeSigningConfigArn = value; }
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>
-     */
-    inline void SetCodeSigningConfigArn(Aws::String&& value) { m_codeSigningConfigArn = std::move(value); }
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>
-     */
-    inline void SetCodeSigningConfigArn(const char* value) { m_codeSigningConfigArn.assign(value); }
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>
-     */
-    inline PutFunctionCodeSigningConfigResult& WithCodeSigningConfigArn(const Aws::String& value) { SetCodeSigningConfigArn(value); return *this;}
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>
-     */
-    inline PutFunctionCodeSigningConfigResult& WithCodeSigningConfigArn(Aws::String&& value) { SetCodeSigningConfigArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The The Amazon Resource Name (ARN) of the code signing configuration.</p>
-     */
-    inline PutFunctionCodeSigningConfigResult& WithCodeSigningConfigArn(const char* value) { SetCodeSigningConfigArn(value); return *this;}
-
-
-    /**
-     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
-     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
-     * <li> <p> <b>Function ARN</b> -
+     * <p>The name or ARN of the Lambda function.</p> <p class="title"> <b>Name
+     * formats</b> </p> <ul> <li> <p> <b>Function name</b> -
+     * <code>MyFunction</code>.</p> </li> <li> <p> <b>Function ARN</b> -
      * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
      * </li> <li> <p> <b>Partial ARN</b> -
      * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
      * constraint applies only to the full ARN. If you specify only the function name,
      * it is limited to 64 characters in length.</p>
      */
-    inline const Aws::String& GetFunctionName() const{ return m_functionName; }
+    inline const Aws::String& GetFunctionName() const { return m_functionName; }
+    template<typename FunctionNameT = Aws::String>
+    void SetFunctionName(FunctionNameT&& value) { m_functionNameHasBeenSet = true; m_functionName = std::forward<FunctionNameT>(value); }
+    template<typename FunctionNameT = Aws::String>
+    PutFunctionCodeSigningConfigResult& WithFunctionName(FunctionNameT&& value) { SetFunctionName(std::forward<FunctionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
-     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
-     * <li> <p> <b>Function ARN</b> -
-     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
-     * </li> <li> <p> <b>Partial ARN</b> -
-     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
-     * constraint applies only to the full ARN. If you specify only the function name,
-     * it is limited to 64 characters in length.</p>
-     */
-    inline void SetFunctionName(const Aws::String& value) { m_functionName = value; }
-
-    /**
-     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
-     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
-     * <li> <p> <b>Function ARN</b> -
-     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
-     * </li> <li> <p> <b>Partial ARN</b> -
-     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
-     * constraint applies only to the full ARN. If you specify only the function name,
-     * it is limited to 64 characters in length.</p>
-     */
-    inline void SetFunctionName(Aws::String&& value) { m_functionName = std::move(value); }
-
-    /**
-     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
-     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
-     * <li> <p> <b>Function ARN</b> -
-     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
-     * </li> <li> <p> <b>Partial ARN</b> -
-     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
-     * constraint applies only to the full ARN. If you specify only the function name,
-     * it is limited to 64 characters in length.</p>
-     */
-    inline void SetFunctionName(const char* value) { m_functionName.assign(value); }
-
-    /**
-     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
-     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
-     * <li> <p> <b>Function ARN</b> -
-     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
-     * </li> <li> <p> <b>Partial ARN</b> -
-     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
-     * constraint applies only to the full ARN. If you specify only the function name,
-     * it is limited to 64 characters in length.</p>
-     */
-    inline PutFunctionCodeSigningConfigResult& WithFunctionName(const Aws::String& value) { SetFunctionName(value); return *this;}
-
-    /**
-     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
-     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
-     * <li> <p> <b>Function ARN</b> -
-     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
-     * </li> <li> <p> <b>Partial ARN</b> -
-     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
-     * constraint applies only to the full ARN. If you specify only the function name,
-     * it is limited to 64 characters in length.</p>
-     */
-    inline PutFunctionCodeSigningConfigResult& WithFunctionName(Aws::String&& value) { SetFunctionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Lambda function.</p> <p class="title"> <b>Name formats</b>
-     * </p> <ul> <li> <p> <b>Function name</b> - <code>MyFunction</code>.</p> </li>
-     * <li> <p> <b>Function ARN</b> -
-     * <code>arn:aws:lambda:us-west-2:123456789012:function:MyFunction</code>.</p>
-     * </li> <li> <p> <b>Partial ARN</b> -
-     * <code>123456789012:function:MyFunction</code>.</p> </li> </ul> <p>The length
-     * constraint applies only to the full ARN. If you specify only the function name,
-     * it is limited to 64 characters in length.</p>
-     */
-    inline PutFunctionCodeSigningConfigResult& WithFunctionName(const char* value) { SetFunctionName(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline PutFunctionCodeSigningConfigResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline PutFunctionCodeSigningConfigResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline PutFunctionCodeSigningConfigResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    PutFunctionCodeSigningConfigResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_codeSigningConfigArn;
+    bool m_codeSigningConfigArnHasBeenSet = false;
 
     Aws::String m_functionName;
+    bool m_functionNameHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

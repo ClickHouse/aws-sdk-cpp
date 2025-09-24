@@ -37,7 +37,7 @@ namespace Model
   class DescribeFleetsInstances
   {
   public:
-    AWS_EC2_API DescribeFleetsInstances();
+    AWS_EC2_API DescribeFleetsInstances() = default;
     AWS_EC2_API DescribeFleetsInstances(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API DescribeFleetsInstances& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -45,214 +45,80 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The launch templates and overrides that were used for launching the
      * instances. The values that you specify in the Overrides replace the values in
      * the launch template.</p>
      */
-    inline const LaunchTemplateAndOverridesResponse& GetLaunchTemplateAndOverrides() const{ return m_launchTemplateAndOverrides; }
-
-    /**
-     * <p>The launch templates and overrides that were used for launching the
-     * instances. The values that you specify in the Overrides replace the values in
-     * the launch template.</p>
-     */
+    inline const LaunchTemplateAndOverridesResponse& GetLaunchTemplateAndOverrides() const { return m_launchTemplateAndOverrides; }
     inline bool LaunchTemplateAndOverridesHasBeenSet() const { return m_launchTemplateAndOverridesHasBeenSet; }
+    template<typename LaunchTemplateAndOverridesT = LaunchTemplateAndOverridesResponse>
+    void SetLaunchTemplateAndOverrides(LaunchTemplateAndOverridesT&& value) { m_launchTemplateAndOverridesHasBeenSet = true; m_launchTemplateAndOverrides = std::forward<LaunchTemplateAndOverridesT>(value); }
+    template<typename LaunchTemplateAndOverridesT = LaunchTemplateAndOverridesResponse>
+    DescribeFleetsInstances& WithLaunchTemplateAndOverrides(LaunchTemplateAndOverridesT&& value) { SetLaunchTemplateAndOverrides(std::forward<LaunchTemplateAndOverridesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The launch templates and overrides that were used for launching the
-     * instances. The values that you specify in the Overrides replace the values in
-     * the launch template.</p>
-     */
-    inline void SetLaunchTemplateAndOverrides(const LaunchTemplateAndOverridesResponse& value) { m_launchTemplateAndOverridesHasBeenSet = true; m_launchTemplateAndOverrides = value; }
-
-    /**
-     * <p>The launch templates and overrides that were used for launching the
-     * instances. The values that you specify in the Overrides replace the values in
-     * the launch template.</p>
-     */
-    inline void SetLaunchTemplateAndOverrides(LaunchTemplateAndOverridesResponse&& value) { m_launchTemplateAndOverridesHasBeenSet = true; m_launchTemplateAndOverrides = std::move(value); }
-
-    /**
-     * <p>The launch templates and overrides that were used for launching the
-     * instances. The values that you specify in the Overrides replace the values in
-     * the launch template.</p>
-     */
-    inline DescribeFleetsInstances& WithLaunchTemplateAndOverrides(const LaunchTemplateAndOverridesResponse& value) { SetLaunchTemplateAndOverrides(value); return *this;}
-
-    /**
-     * <p>The launch templates and overrides that were used for launching the
-     * instances. The values that you specify in the Overrides replace the values in
-     * the launch template.</p>
-     */
-    inline DescribeFleetsInstances& WithLaunchTemplateAndOverrides(LaunchTemplateAndOverridesResponse&& value) { SetLaunchTemplateAndOverrides(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates if the instance that was launched is a Spot Instance or On-Demand
      * Instance.</p>
      */
-    inline const InstanceLifecycle& GetLifecycle() const{ return m_lifecycle; }
-
-    /**
-     * <p>Indicates if the instance that was launched is a Spot Instance or On-Demand
-     * Instance.</p>
-     */
+    inline InstanceLifecycle GetLifecycle() const { return m_lifecycle; }
     inline bool LifecycleHasBeenSet() const { return m_lifecycleHasBeenSet; }
+    inline void SetLifecycle(InstanceLifecycle value) { m_lifecycleHasBeenSet = true; m_lifecycle = value; }
+    inline DescribeFleetsInstances& WithLifecycle(InstanceLifecycle value) { SetLifecycle(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates if the instance that was launched is a Spot Instance or On-Demand
-     * Instance.</p>
-     */
-    inline void SetLifecycle(const InstanceLifecycle& value) { m_lifecycleHasBeenSet = true; m_lifecycle = value; }
-
-    /**
-     * <p>Indicates if the instance that was launched is a Spot Instance or On-Demand
-     * Instance.</p>
-     */
-    inline void SetLifecycle(InstanceLifecycle&& value) { m_lifecycleHasBeenSet = true; m_lifecycle = std::move(value); }
-
-    /**
-     * <p>Indicates if the instance that was launched is a Spot Instance or On-Demand
-     * Instance.</p>
-     */
-    inline DescribeFleetsInstances& WithLifecycle(const InstanceLifecycle& value) { SetLifecycle(value); return *this;}
-
-    /**
-     * <p>Indicates if the instance that was launched is a Spot Instance or On-Demand
-     * Instance.</p>
-     */
-    inline DescribeFleetsInstances& WithLifecycle(InstanceLifecycle&& value) { SetLifecycle(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The IDs of the instances.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetInstanceIds() const{ return m_instanceIds; }
-
-    /**
-     * <p>The IDs of the instances.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetInstanceIds() const { return m_instanceIds; }
     inline bool InstanceIdsHasBeenSet() const { return m_instanceIdsHasBeenSet; }
+    template<typename InstanceIdsT = Aws::Vector<Aws::String>>
+    void SetInstanceIds(InstanceIdsT&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = std::forward<InstanceIdsT>(value); }
+    template<typename InstanceIdsT = Aws::Vector<Aws::String>>
+    DescribeFleetsInstances& WithInstanceIds(InstanceIdsT&& value) { SetInstanceIds(std::forward<InstanceIdsT>(value)); return *this;}
+    template<typename InstanceIdsT = Aws::String>
+    DescribeFleetsInstances& AddInstanceIds(InstanceIdsT&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.emplace_back(std::forward<InstanceIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The IDs of the instances.</p>
-     */
-    inline void SetInstanceIds(const Aws::Vector<Aws::String>& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = value; }
-
-    /**
-     * <p>The IDs of the instances.</p>
-     */
-    inline void SetInstanceIds(Aws::Vector<Aws::String>&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds = std::move(value); }
-
-    /**
-     * <p>The IDs of the instances.</p>
-     */
-    inline DescribeFleetsInstances& WithInstanceIds(const Aws::Vector<Aws::String>& value) { SetInstanceIds(value); return *this;}
-
-    /**
-     * <p>The IDs of the instances.</p>
-     */
-    inline DescribeFleetsInstances& WithInstanceIds(Aws::Vector<Aws::String>&& value) { SetInstanceIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the instances.</p>
-     */
-    inline DescribeFleetsInstances& AddInstanceIds(const Aws::String& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the instances.</p>
-     */
-    inline DescribeFleetsInstances& AddInstanceIds(Aws::String&& value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the instances.</p>
-     */
-    inline DescribeFleetsInstances& AddInstanceIds(const char* value) { m_instanceIdsHasBeenSet = true; m_instanceIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The instance type.</p>
      */
-    inline const InstanceType& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The instance type.</p>
-     */
+    inline InstanceType GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    inline void SetInstanceType(InstanceType value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
+    inline DescribeFleetsInstances& WithInstanceType(InstanceType value) { SetInstanceType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The instance type.</p>
+     * <p>The value is <code>windows</code> for Windows instances in an EC2 Fleet.
+     * Otherwise, the value is blank.</p>
      */
-    inline void SetInstanceType(const InstanceType& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline void SetInstanceType(InstanceType&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline DescribeFleetsInstances& WithInstanceType(const InstanceType& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The instance type.</p>
-     */
-    inline DescribeFleetsInstances& WithInstanceType(InstanceType&& value) { SetInstanceType(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
-     * is blank.</p>
-     */
-    inline const PlatformValues& GetPlatform() const{ return m_platform; }
-
-    /**
-     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
-     * is blank.</p>
-     */
+    inline PlatformValues GetPlatform() const { return m_platform; }
     inline bool PlatformHasBeenSet() const { return m_platformHasBeenSet; }
-
-    /**
-     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
-     * is blank.</p>
-     */
-    inline void SetPlatform(const PlatformValues& value) { m_platformHasBeenSet = true; m_platform = value; }
-
-    /**
-     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
-     * is blank.</p>
-     */
-    inline void SetPlatform(PlatformValues&& value) { m_platformHasBeenSet = true; m_platform = std::move(value); }
-
-    /**
-     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
-     * is blank.</p>
-     */
-    inline DescribeFleetsInstances& WithPlatform(const PlatformValues& value) { SetPlatform(value); return *this;}
-
-    /**
-     * <p>The value is <code>Windows</code> for Windows instances. Otherwise, the value
-     * is blank.</p>
-     */
-    inline DescribeFleetsInstances& WithPlatform(PlatformValues&& value) { SetPlatform(std::move(value)); return *this;}
-
+    inline void SetPlatform(PlatformValues value) { m_platformHasBeenSet = true; m_platform = value; }
+    inline DescribeFleetsInstances& WithPlatform(PlatformValues value) { SetPlatform(value); return *this;}
+    ///@}
   private:
 
     LaunchTemplateAndOverridesResponse m_launchTemplateAndOverrides;
     bool m_launchTemplateAndOverridesHasBeenSet = false;
 
-    InstanceLifecycle m_lifecycle;
+    InstanceLifecycle m_lifecycle{InstanceLifecycle::NOT_SET};
     bool m_lifecycleHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_instanceIds;
     bool m_instanceIdsHasBeenSet = false;
 
-    InstanceType m_instanceType;
+    InstanceType m_instanceType{InstanceType::NOT_SET};
     bool m_instanceTypeHasBeenSet = false;
 
-    PlatformValues m_platform;
+    PlatformValues m_platform{PlatformValues::NOT_SET};
     bool m_platformHasBeenSet = false;
   };
 

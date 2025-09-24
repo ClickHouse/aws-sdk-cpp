@@ -34,88 +34,37 @@ namespace Model
   class BatchUpdatePartitionRequestEntry
   {
   public:
-    AWS_GLUE_API BatchUpdatePartitionRequestEntry();
+    AWS_GLUE_API BatchUpdatePartitionRequestEntry() = default;
     AWS_GLUE_API BatchUpdatePartitionRequestEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API BatchUpdatePartitionRequestEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GLUE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A list of values defining the partitions.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPartitionValueList() const{ return m_partitionValueList; }
-
-    /**
-     * <p>A list of values defining the partitions.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPartitionValueList() const { return m_partitionValueList; }
     inline bool PartitionValueListHasBeenSet() const { return m_partitionValueListHasBeenSet; }
+    template<typename PartitionValueListT = Aws::Vector<Aws::String>>
+    void SetPartitionValueList(PartitionValueListT&& value) { m_partitionValueListHasBeenSet = true; m_partitionValueList = std::forward<PartitionValueListT>(value); }
+    template<typename PartitionValueListT = Aws::Vector<Aws::String>>
+    BatchUpdatePartitionRequestEntry& WithPartitionValueList(PartitionValueListT&& value) { SetPartitionValueList(std::forward<PartitionValueListT>(value)); return *this;}
+    template<typename PartitionValueListT = Aws::String>
+    BatchUpdatePartitionRequestEntry& AddPartitionValueList(PartitionValueListT&& value) { m_partitionValueListHasBeenSet = true; m_partitionValueList.emplace_back(std::forward<PartitionValueListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of values defining the partitions.</p>
-     */
-    inline void SetPartitionValueList(const Aws::Vector<Aws::String>& value) { m_partitionValueListHasBeenSet = true; m_partitionValueList = value; }
-
-    /**
-     * <p>A list of values defining the partitions.</p>
-     */
-    inline void SetPartitionValueList(Aws::Vector<Aws::String>&& value) { m_partitionValueListHasBeenSet = true; m_partitionValueList = std::move(value); }
-
-    /**
-     * <p>A list of values defining the partitions.</p>
-     */
-    inline BatchUpdatePartitionRequestEntry& WithPartitionValueList(const Aws::Vector<Aws::String>& value) { SetPartitionValueList(value); return *this;}
-
-    /**
-     * <p>A list of values defining the partitions.</p>
-     */
-    inline BatchUpdatePartitionRequestEntry& WithPartitionValueList(Aws::Vector<Aws::String>&& value) { SetPartitionValueList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of values defining the partitions.</p>
-     */
-    inline BatchUpdatePartitionRequestEntry& AddPartitionValueList(const Aws::String& value) { m_partitionValueListHasBeenSet = true; m_partitionValueList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of values defining the partitions.</p>
-     */
-    inline BatchUpdatePartitionRequestEntry& AddPartitionValueList(Aws::String&& value) { m_partitionValueListHasBeenSet = true; m_partitionValueList.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of values defining the partitions.</p>
-     */
-    inline BatchUpdatePartitionRequestEntry& AddPartitionValueList(const char* value) { m_partitionValueListHasBeenSet = true; m_partitionValueList.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The structure used to update a partition.</p>
      */
-    inline const PartitionInput& GetPartitionInput() const{ return m_partitionInput; }
-
-    /**
-     * <p>The structure used to update a partition.</p>
-     */
+    inline const PartitionInput& GetPartitionInput() const { return m_partitionInput; }
     inline bool PartitionInputHasBeenSet() const { return m_partitionInputHasBeenSet; }
-
-    /**
-     * <p>The structure used to update a partition.</p>
-     */
-    inline void SetPartitionInput(const PartitionInput& value) { m_partitionInputHasBeenSet = true; m_partitionInput = value; }
-
-    /**
-     * <p>The structure used to update a partition.</p>
-     */
-    inline void SetPartitionInput(PartitionInput&& value) { m_partitionInputHasBeenSet = true; m_partitionInput = std::move(value); }
-
-    /**
-     * <p>The structure used to update a partition.</p>
-     */
-    inline BatchUpdatePartitionRequestEntry& WithPartitionInput(const PartitionInput& value) { SetPartitionInput(value); return *this;}
-
-    /**
-     * <p>The structure used to update a partition.</p>
-     */
-    inline BatchUpdatePartitionRequestEntry& WithPartitionInput(PartitionInput&& value) { SetPartitionInput(std::move(value)); return *this;}
-
+    template<typename PartitionInputT = PartitionInput>
+    void SetPartitionInput(PartitionInputT&& value) { m_partitionInputHasBeenSet = true; m_partitionInput = std::forward<PartitionInputT>(value); }
+    template<typename PartitionInputT = PartitionInput>
+    BatchUpdatePartitionRequestEntry& WithPartitionInput(PartitionInputT&& value) { SetPartitionInput(std::forward<PartitionInputT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_partitionValueList;

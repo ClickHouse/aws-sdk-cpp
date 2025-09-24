@@ -5,10 +5,10 @@
 
 #pragma once
 #include <aws/inspector2/Inspector2_EXPORTS.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/inspector2/model/CisaData.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/inspector2/model/ExploitObserved.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/inspector2/model/Evidence.h>
 #include <utility>
 
@@ -36,406 +36,171 @@ namespace Model
   class FindingDetail
   {
   public:
-    AWS_INSPECTOR2_API FindingDetail();
+    AWS_INSPECTOR2_API FindingDetail() = default;
     AWS_INSPECTOR2_API FindingDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API FindingDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    
-    inline const CisaData& GetCisaData() const{ return m_cisaData; }
-
-    
-    inline bool CisaDataHasBeenSet() const { return m_cisaDataHasBeenSet; }
-
-    
-    inline void SetCisaData(const CisaData& value) { m_cisaDataHasBeenSet = true; m_cisaData = value; }
-
-    
-    inline void SetCisaData(CisaData&& value) { m_cisaDataHasBeenSet = true; m_cisaData = std::move(value); }
-
-    
-    inline FindingDetail& WithCisaData(const CisaData& value) { SetCisaData(value); return *this;}
-
-    
-    inline FindingDetail& WithCisaData(CisaData&& value) { SetCisaData(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The Common Weakness Enumerations (CWEs) associated with the
-     * vulnerability.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetCwes() const{ return m_cwes; }
-
-    /**
-     * <p>The Common Weakness Enumerations (CWEs) associated with the
-     * vulnerability.</p>
-     */
-    inline bool CwesHasBeenSet() const { return m_cwesHasBeenSet; }
-
-    /**
-     * <p>The Common Weakness Enumerations (CWEs) associated with the
-     * vulnerability.</p>
-     */
-    inline void SetCwes(const Aws::Vector<Aws::String>& value) { m_cwesHasBeenSet = true; m_cwes = value; }
-
-    /**
-     * <p>The Common Weakness Enumerations (CWEs) associated with the
-     * vulnerability.</p>
-     */
-    inline void SetCwes(Aws::Vector<Aws::String>&& value) { m_cwesHasBeenSet = true; m_cwes = std::move(value); }
-
-    /**
-     * <p>The Common Weakness Enumerations (CWEs) associated with the
-     * vulnerability.</p>
-     */
-    inline FindingDetail& WithCwes(const Aws::Vector<Aws::String>& value) { SetCwes(value); return *this;}
-
-    /**
-     * <p>The Common Weakness Enumerations (CWEs) associated with the
-     * vulnerability.</p>
-     */
-    inline FindingDetail& WithCwes(Aws::Vector<Aws::String>&& value) { SetCwes(std::move(value)); return *this;}
-
-    /**
-     * <p>The Common Weakness Enumerations (CWEs) associated with the
-     * vulnerability.</p>
-     */
-    inline FindingDetail& AddCwes(const Aws::String& value) { m_cwesHasBeenSet = true; m_cwes.push_back(value); return *this; }
-
-    /**
-     * <p>The Common Weakness Enumerations (CWEs) associated with the
-     * vulnerability.</p>
-     */
-    inline FindingDetail& AddCwes(Aws::String&& value) { m_cwesHasBeenSet = true; m_cwes.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Common Weakness Enumerations (CWEs) associated with the
-     * vulnerability.</p>
-     */
-    inline FindingDetail& AddCwes(const char* value) { m_cwesHasBeenSet = true; m_cwes.push_back(value); return *this; }
-
-
-    /**
-     * <p>The Exploit Prediction Scoring System (EPSS) score of the vulnerability.</p>
-     */
-    inline double GetEpssScore() const{ return m_epssScore; }
-
-    /**
-     * <p>The Exploit Prediction Scoring System (EPSS) score of the vulnerability.</p>
-     */
-    inline bool EpssScoreHasBeenSet() const { return m_epssScoreHasBeenSet; }
-
-    /**
-     * <p>The Exploit Prediction Scoring System (EPSS) score of the vulnerability.</p>
-     */
-    inline void SetEpssScore(double value) { m_epssScoreHasBeenSet = true; m_epssScore = value; }
-
-    /**
-     * <p>The Exploit Prediction Scoring System (EPSS) score of the vulnerability.</p>
-     */
-    inline FindingDetail& WithEpssScore(double value) { SetEpssScore(value); return *this;}
-
-
-    /**
-     * <p>Information on the evidence of the vulnerability.</p>
-     */
-    inline const Aws::Vector<Evidence>& GetEvidences() const{ return m_evidences; }
-
-    /**
-     * <p>Information on the evidence of the vulnerability.</p>
-     */
-    inline bool EvidencesHasBeenSet() const { return m_evidencesHasBeenSet; }
-
-    /**
-     * <p>Information on the evidence of the vulnerability.</p>
-     */
-    inline void SetEvidences(const Aws::Vector<Evidence>& value) { m_evidencesHasBeenSet = true; m_evidences = value; }
-
-    /**
-     * <p>Information on the evidence of the vulnerability.</p>
-     */
-    inline void SetEvidences(Aws::Vector<Evidence>&& value) { m_evidencesHasBeenSet = true; m_evidences = std::move(value); }
-
-    /**
-     * <p>Information on the evidence of the vulnerability.</p>
-     */
-    inline FindingDetail& WithEvidences(const Aws::Vector<Evidence>& value) { SetEvidences(value); return *this;}
-
-    /**
-     * <p>Information on the evidence of the vulnerability.</p>
-     */
-    inline FindingDetail& WithEvidences(Aws::Vector<Evidence>&& value) { SetEvidences(std::move(value)); return *this;}
-
-    /**
-     * <p>Information on the evidence of the vulnerability.</p>
-     */
-    inline FindingDetail& AddEvidences(const Evidence& value) { m_evidencesHasBeenSet = true; m_evidences.push_back(value); return *this; }
-
-    /**
-     * <p>Information on the evidence of the vulnerability.</p>
-     */
-    inline FindingDetail& AddEvidences(Evidence&& value) { m_evidencesHasBeenSet = true; m_evidences.push_back(std::move(value)); return *this; }
-
-
-    
-    inline const ExploitObserved& GetExploitObserved() const{ return m_exploitObserved; }
-
-    
-    inline bool ExploitObservedHasBeenSet() const { return m_exploitObservedHasBeenSet; }
-
-    
-    inline void SetExploitObserved(const ExploitObserved& value) { m_exploitObservedHasBeenSet = true; m_exploitObserved = value; }
-
-    
-    inline void SetExploitObserved(ExploitObserved&& value) { m_exploitObservedHasBeenSet = true; m_exploitObserved = std::move(value); }
-
-    
-    inline FindingDetail& WithExploitObserved(const ExploitObserved& value) { SetExploitObserved(value); return *this;}
-
-    
-    inline FindingDetail& WithExploitObserved(ExploitObserved&& value) { SetExploitObserved(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The finding ARN that the vulnerability details are associated with.</p>
      */
-    inline const Aws::String& GetFindingArn() const{ return m_findingArn; }
-
-    /**
-     * <p>The finding ARN that the vulnerability details are associated with.</p>
-     */
+    inline const Aws::String& GetFindingArn() const { return m_findingArn; }
     inline bool FindingArnHasBeenSet() const { return m_findingArnHasBeenSet; }
+    template<typename FindingArnT = Aws::String>
+    void SetFindingArn(FindingArnT&& value) { m_findingArnHasBeenSet = true; m_findingArn = std::forward<FindingArnT>(value); }
+    template<typename FindingArnT = Aws::String>
+    FindingDetail& WithFindingArn(FindingArnT&& value) { SetFindingArn(std::forward<FindingArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The finding ARN that the vulnerability details are associated with.</p>
+     * <p>The Cybersecurity and Infrastructure Security Agency (CISA) details for a
+     * specific vulnerability.</p>
      */
-    inline void SetFindingArn(const Aws::String& value) { m_findingArnHasBeenSet = true; m_findingArn = value; }
+    inline const CisaData& GetCisaData() const { return m_cisaData; }
+    inline bool CisaDataHasBeenSet() const { return m_cisaDataHasBeenSet; }
+    template<typename CisaDataT = CisaData>
+    void SetCisaData(CisaDataT&& value) { m_cisaDataHasBeenSet = true; m_cisaData = std::forward<CisaDataT>(value); }
+    template<typename CisaDataT = CisaData>
+    FindingDetail& WithCisaData(CisaDataT&& value) { SetCisaData(std::forward<CisaDataT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The finding ARN that the vulnerability details are associated with.</p>
-     */
-    inline void SetFindingArn(Aws::String&& value) { m_findingArnHasBeenSet = true; m_findingArn = std::move(value); }
-
-    /**
-     * <p>The finding ARN that the vulnerability details are associated with.</p>
-     */
-    inline void SetFindingArn(const char* value) { m_findingArnHasBeenSet = true; m_findingArn.assign(value); }
-
-    /**
-     * <p>The finding ARN that the vulnerability details are associated with.</p>
-     */
-    inline FindingDetail& WithFindingArn(const Aws::String& value) { SetFindingArn(value); return *this;}
-
-    /**
-     * <p>The finding ARN that the vulnerability details are associated with.</p>
-     */
-    inline FindingDetail& WithFindingArn(Aws::String&& value) { SetFindingArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The finding ARN that the vulnerability details are associated with.</p>
-     */
-    inline FindingDetail& WithFindingArn(const char* value) { SetFindingArn(value); return *this;}
-
-
-    /**
-     * <p>The reference URLs for the vulnerability data.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetReferenceUrls() const{ return m_referenceUrls; }
-
-    /**
-     * <p>The reference URLs for the vulnerability data.</p>
-     */
-    inline bool ReferenceUrlsHasBeenSet() const { return m_referenceUrlsHasBeenSet; }
-
-    /**
-     * <p>The reference URLs for the vulnerability data.</p>
-     */
-    inline void SetReferenceUrls(const Aws::Vector<Aws::String>& value) { m_referenceUrlsHasBeenSet = true; m_referenceUrls = value; }
-
-    /**
-     * <p>The reference URLs for the vulnerability data.</p>
-     */
-    inline void SetReferenceUrls(Aws::Vector<Aws::String>&& value) { m_referenceUrlsHasBeenSet = true; m_referenceUrls = std::move(value); }
-
-    /**
-     * <p>The reference URLs for the vulnerability data.</p>
-     */
-    inline FindingDetail& WithReferenceUrls(const Aws::Vector<Aws::String>& value) { SetReferenceUrls(value); return *this;}
-
-    /**
-     * <p>The reference URLs for the vulnerability data.</p>
-     */
-    inline FindingDetail& WithReferenceUrls(Aws::Vector<Aws::String>&& value) { SetReferenceUrls(std::move(value)); return *this;}
-
-    /**
-     * <p>The reference URLs for the vulnerability data.</p>
-     */
-    inline FindingDetail& AddReferenceUrls(const Aws::String& value) { m_referenceUrlsHasBeenSet = true; m_referenceUrls.push_back(value); return *this; }
-
-    /**
-     * <p>The reference URLs for the vulnerability data.</p>
-     */
-    inline FindingDetail& AddReferenceUrls(Aws::String&& value) { m_referenceUrlsHasBeenSet = true; m_referenceUrls.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The reference URLs for the vulnerability data.</p>
-     */
-    inline FindingDetail& AddReferenceUrls(const char* value) { m_referenceUrlsHasBeenSet = true; m_referenceUrls.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The risk score of the vulnerability.</p>
      */
-    inline int GetRiskScore() const{ return m_riskScore; }
-
-    /**
-     * <p>The risk score of the vulnerability.</p>
-     */
+    inline int GetRiskScore() const { return m_riskScore; }
     inline bool RiskScoreHasBeenSet() const { return m_riskScoreHasBeenSet; }
-
-    /**
-     * <p>The risk score of the vulnerability.</p>
-     */
     inline void SetRiskScore(int value) { m_riskScoreHasBeenSet = true; m_riskScore = value; }
-
-    /**
-     * <p>The risk score of the vulnerability.</p>
-     */
     inline FindingDetail& WithRiskScore(int value) { SetRiskScore(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>The known malware tools or kits that can exploit the vulnerability.</p>
+     * <p>Information on the evidence of the vulnerability.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTools() const{ return m_tools; }
+    inline const Aws::Vector<Evidence>& GetEvidences() const { return m_evidences; }
+    inline bool EvidencesHasBeenSet() const { return m_evidencesHasBeenSet; }
+    template<typename EvidencesT = Aws::Vector<Evidence>>
+    void SetEvidences(EvidencesT&& value) { m_evidencesHasBeenSet = true; m_evidences = std::forward<EvidencesT>(value); }
+    template<typename EvidencesT = Aws::Vector<Evidence>>
+    FindingDetail& WithEvidences(EvidencesT&& value) { SetEvidences(std::forward<EvidencesT>(value)); return *this;}
+    template<typename EvidencesT = Evidence>
+    FindingDetail& AddEvidences(EvidencesT&& value) { m_evidencesHasBeenSet = true; m_evidences.emplace_back(std::forward<EvidencesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The known malware tools or kits that can exploit the vulnerability.</p>
-     */
-    inline bool ToolsHasBeenSet() const { return m_toolsHasBeenSet; }
-
-    /**
-     * <p>The known malware tools or kits that can exploit the vulnerability.</p>
-     */
-    inline void SetTools(const Aws::Vector<Aws::String>& value) { m_toolsHasBeenSet = true; m_tools = value; }
-
-    /**
-     * <p>The known malware tools or kits that can exploit the vulnerability.</p>
-     */
-    inline void SetTools(Aws::Vector<Aws::String>&& value) { m_toolsHasBeenSet = true; m_tools = std::move(value); }
-
-    /**
-     * <p>The known malware tools or kits that can exploit the vulnerability.</p>
-     */
-    inline FindingDetail& WithTools(const Aws::Vector<Aws::String>& value) { SetTools(value); return *this;}
-
-    /**
-     * <p>The known malware tools or kits that can exploit the vulnerability.</p>
-     */
-    inline FindingDetail& WithTools(Aws::Vector<Aws::String>&& value) { SetTools(std::move(value)); return *this;}
-
-    /**
-     * <p>The known malware tools or kits that can exploit the vulnerability.</p>
-     */
-    inline FindingDetail& AddTools(const Aws::String& value) { m_toolsHasBeenSet = true; m_tools.push_back(value); return *this; }
-
-    /**
-     * <p>The known malware tools or kits that can exploit the vulnerability.</p>
-     */
-    inline FindingDetail& AddTools(Aws::String&& value) { m_toolsHasBeenSet = true; m_tools.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The known malware tools or kits that can exploit the vulnerability.</p>
-     */
-    inline FindingDetail& AddTools(const char* value) { m_toolsHasBeenSet = true; m_tools.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The MITRE adversary tactics, techniques, or procedures (TTPs) associated with
      * the vulnerability.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetTtps() const{ return m_ttps; }
-
-    /**
-     * <p>The MITRE adversary tactics, techniques, or procedures (TTPs) associated with
-     * the vulnerability.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTtps() const { return m_ttps; }
     inline bool TtpsHasBeenSet() const { return m_ttpsHasBeenSet; }
+    template<typename TtpsT = Aws::Vector<Aws::String>>
+    void SetTtps(TtpsT&& value) { m_ttpsHasBeenSet = true; m_ttps = std::forward<TtpsT>(value); }
+    template<typename TtpsT = Aws::Vector<Aws::String>>
+    FindingDetail& WithTtps(TtpsT&& value) { SetTtps(std::forward<TtpsT>(value)); return *this;}
+    template<typename TtpsT = Aws::String>
+    FindingDetail& AddTtps(TtpsT&& value) { m_ttpsHasBeenSet = true; m_ttps.emplace_back(std::forward<TtpsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The MITRE adversary tactics, techniques, or procedures (TTPs) associated with
-     * the vulnerability.</p>
+     * <p>The known malware tools or kits that can exploit the vulnerability.</p>
      */
-    inline void SetTtps(const Aws::Vector<Aws::String>& value) { m_ttpsHasBeenSet = true; m_ttps = value; }
+    inline const Aws::Vector<Aws::String>& GetTools() const { return m_tools; }
+    inline bool ToolsHasBeenSet() const { return m_toolsHasBeenSet; }
+    template<typename ToolsT = Aws::Vector<Aws::String>>
+    void SetTools(ToolsT&& value) { m_toolsHasBeenSet = true; m_tools = std::forward<ToolsT>(value); }
+    template<typename ToolsT = Aws::Vector<Aws::String>>
+    FindingDetail& WithTools(ToolsT&& value) { SetTools(std::forward<ToolsT>(value)); return *this;}
+    template<typename ToolsT = Aws::String>
+    FindingDetail& AddTools(ToolsT&& value) { m_toolsHasBeenSet = true; m_tools.emplace_back(std::forward<ToolsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The MITRE adversary tactics, techniques, or procedures (TTPs) associated with
-     * the vulnerability.</p>
+     * <p>Contains information on when this exploit was observed.</p>
      */
-    inline void SetTtps(Aws::Vector<Aws::String>&& value) { m_ttpsHasBeenSet = true; m_ttps = std::move(value); }
+    inline const ExploitObserved& GetExploitObserved() const { return m_exploitObserved; }
+    inline bool ExploitObservedHasBeenSet() const { return m_exploitObservedHasBeenSet; }
+    template<typename ExploitObservedT = ExploitObserved>
+    void SetExploitObserved(ExploitObservedT&& value) { m_exploitObservedHasBeenSet = true; m_exploitObserved = std::forward<ExploitObservedT>(value); }
+    template<typename ExploitObservedT = ExploitObserved>
+    FindingDetail& WithExploitObserved(ExploitObservedT&& value) { SetExploitObserved(std::forward<ExploitObservedT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The MITRE adversary tactics, techniques, or procedures (TTPs) associated with
-     * the vulnerability.</p>
+     * <p>The reference URLs for the vulnerability data.</p>
      */
-    inline FindingDetail& WithTtps(const Aws::Vector<Aws::String>& value) { SetTtps(value); return *this;}
+    inline const Aws::Vector<Aws::String>& GetReferenceUrls() const { return m_referenceUrls; }
+    inline bool ReferenceUrlsHasBeenSet() const { return m_referenceUrlsHasBeenSet; }
+    template<typename ReferenceUrlsT = Aws::Vector<Aws::String>>
+    void SetReferenceUrls(ReferenceUrlsT&& value) { m_referenceUrlsHasBeenSet = true; m_referenceUrls = std::forward<ReferenceUrlsT>(value); }
+    template<typename ReferenceUrlsT = Aws::Vector<Aws::String>>
+    FindingDetail& WithReferenceUrls(ReferenceUrlsT&& value) { SetReferenceUrls(std::forward<ReferenceUrlsT>(value)); return *this;}
+    template<typename ReferenceUrlsT = Aws::String>
+    FindingDetail& AddReferenceUrls(ReferenceUrlsT&& value) { m_referenceUrlsHasBeenSet = true; m_referenceUrls.emplace_back(std::forward<ReferenceUrlsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The MITRE adversary tactics, techniques, or procedures (TTPs) associated with
-     * the vulnerability.</p>
+     * <p>The Common Weakness Enumerations (CWEs) associated with the
+     * vulnerability.</p>
      */
-    inline FindingDetail& WithTtps(Aws::Vector<Aws::String>&& value) { SetTtps(std::move(value)); return *this;}
+    inline const Aws::Vector<Aws::String>& GetCwes() const { return m_cwes; }
+    inline bool CwesHasBeenSet() const { return m_cwesHasBeenSet; }
+    template<typename CwesT = Aws::Vector<Aws::String>>
+    void SetCwes(CwesT&& value) { m_cwesHasBeenSet = true; m_cwes = std::forward<CwesT>(value); }
+    template<typename CwesT = Aws::Vector<Aws::String>>
+    FindingDetail& WithCwes(CwesT&& value) { SetCwes(std::forward<CwesT>(value)); return *this;}
+    template<typename CwesT = Aws::String>
+    FindingDetail& AddCwes(CwesT&& value) { m_cwesHasBeenSet = true; m_cwes.emplace_back(std::forward<CwesT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The MITRE adversary tactics, techniques, or procedures (TTPs) associated with
-     * the vulnerability.</p>
+     * <p>The Exploit Prediction Scoring System (EPSS) score of the vulnerability.</p>
      */
-    inline FindingDetail& AddTtps(const Aws::String& value) { m_ttpsHasBeenSet = true; m_ttps.push_back(value); return *this; }
-
-    /**
-     * <p>The MITRE adversary tactics, techniques, or procedures (TTPs) associated with
-     * the vulnerability.</p>
-     */
-    inline FindingDetail& AddTtps(Aws::String&& value) { m_ttpsHasBeenSet = true; m_ttps.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The MITRE adversary tactics, techniques, or procedures (TTPs) associated with
-     * the vulnerability.</p>
-     */
-    inline FindingDetail& AddTtps(const char* value) { m_ttpsHasBeenSet = true; m_ttps.push_back(value); return *this; }
-
+    inline double GetEpssScore() const { return m_epssScore; }
+    inline bool EpssScoreHasBeenSet() const { return m_epssScoreHasBeenSet; }
+    inline void SetEpssScore(double value) { m_epssScoreHasBeenSet = true; m_epssScore = value; }
+    inline FindingDetail& WithEpssScore(double value) { SetEpssScore(value); return *this;}
+    ///@}
   private:
-
-    CisaData m_cisaData;
-    bool m_cisaDataHasBeenSet = false;
-
-    Aws::Vector<Aws::String> m_cwes;
-    bool m_cwesHasBeenSet = false;
-
-    double m_epssScore;
-    bool m_epssScoreHasBeenSet = false;
-
-    Aws::Vector<Evidence> m_evidences;
-    bool m_evidencesHasBeenSet = false;
-
-    ExploitObserved m_exploitObserved;
-    bool m_exploitObservedHasBeenSet = false;
 
     Aws::String m_findingArn;
     bool m_findingArnHasBeenSet = false;
 
-    Aws::Vector<Aws::String> m_referenceUrls;
-    bool m_referenceUrlsHasBeenSet = false;
+    CisaData m_cisaData;
+    bool m_cisaDataHasBeenSet = false;
 
-    int m_riskScore;
+    int m_riskScore{0};
     bool m_riskScoreHasBeenSet = false;
+
+    Aws::Vector<Evidence> m_evidences;
+    bool m_evidencesHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_ttps;
+    bool m_ttpsHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_tools;
     bool m_toolsHasBeenSet = false;
 
-    Aws::Vector<Aws::String> m_ttps;
-    bool m_ttpsHasBeenSet = false;
+    ExploitObserved m_exploitObserved;
+    bool m_exploitObservedHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_referenceUrls;
+    bool m_referenceUrlsHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_cwes;
+    bool m_cwesHasBeenSet = false;
+
+    double m_epssScore{0.0};
+    bool m_epssScoreHasBeenSet = false;
   };
 
 } // namespace Model

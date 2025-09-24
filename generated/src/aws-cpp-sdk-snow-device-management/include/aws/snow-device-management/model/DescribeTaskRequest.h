@@ -21,7 +21,7 @@ namespace Model
   class DescribeTaskRequest : public SnowDeviceManagementRequest
   {
   public:
-    AWS_SNOWDEVICEMANAGEMENT_API DescribeTaskRequest();
+    AWS_SNOWDEVICEMANAGEMENT_API DescribeTaskRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_SNOWDEVICEMANAGEMENT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the task to be described.</p>
      */
-    inline const Aws::String& GetTaskId() const{ return m_taskId; }
-
-    /**
-     * <p>The ID of the task to be described.</p>
-     */
+    inline const Aws::String& GetTaskId() const { return m_taskId; }
     inline bool TaskIdHasBeenSet() const { return m_taskIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the task to be described.</p>
-     */
-    inline void SetTaskId(const Aws::String& value) { m_taskIdHasBeenSet = true; m_taskId = value; }
-
-    /**
-     * <p>The ID of the task to be described.</p>
-     */
-    inline void SetTaskId(Aws::String&& value) { m_taskIdHasBeenSet = true; m_taskId = std::move(value); }
-
-    /**
-     * <p>The ID of the task to be described.</p>
-     */
-    inline void SetTaskId(const char* value) { m_taskIdHasBeenSet = true; m_taskId.assign(value); }
-
-    /**
-     * <p>The ID of the task to be described.</p>
-     */
-    inline DescribeTaskRequest& WithTaskId(const Aws::String& value) { SetTaskId(value); return *this;}
-
-    /**
-     * <p>The ID of the task to be described.</p>
-     */
-    inline DescribeTaskRequest& WithTaskId(Aws::String&& value) { SetTaskId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the task to be described.</p>
-     */
-    inline DescribeTaskRequest& WithTaskId(const char* value) { SetTaskId(value); return *this;}
-
+    template<typename TaskIdT = Aws::String>
+    void SetTaskId(TaskIdT&& value) { m_taskIdHasBeenSet = true; m_taskId = std::forward<TaskIdT>(value); }
+    template<typename TaskIdT = Aws::String>
+    DescribeTaskRequest& WithTaskId(TaskIdT&& value) { SetTaskId(std::forward<TaskIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskId;

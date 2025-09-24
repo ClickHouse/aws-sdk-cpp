@@ -18,19 +18,7 @@ namespace MediaPackage
 namespace Model
 {
 
-EncryptionContractConfiguration::EncryptionContractConfiguration() : 
-    m_presetSpeke20Audio(PresetSpeke20Audio::NOT_SET),
-    m_presetSpeke20AudioHasBeenSet(false),
-    m_presetSpeke20Video(PresetSpeke20Video::NOT_SET),
-    m_presetSpeke20VideoHasBeenSet(false)
-{
-}
-
-EncryptionContractConfiguration::EncryptionContractConfiguration(JsonView jsonValue) : 
-    m_presetSpeke20Audio(PresetSpeke20Audio::NOT_SET),
-    m_presetSpeke20AudioHasBeenSet(false),
-    m_presetSpeke20Video(PresetSpeke20Video::NOT_SET),
-    m_presetSpeke20VideoHasBeenSet(false)
+EncryptionContractConfiguration::EncryptionContractConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ EncryptionContractConfiguration& EncryptionContractConfiguration::operator =(Jso
   if(jsonValue.ValueExists("presetSpeke20Audio"))
   {
     m_presetSpeke20Audio = PresetSpeke20AudioMapper::GetPresetSpeke20AudioForName(jsonValue.GetString("presetSpeke20Audio"));
-
     m_presetSpeke20AudioHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("presetSpeke20Video"))
   {
     m_presetSpeke20Video = PresetSpeke20VideoMapper::GetPresetSpeke20VideoForName(jsonValue.GetString("presetSpeke20Video"));
-
     m_presetSpeke20VideoHasBeenSet = true;
   }
-
   return *this;
 }
 

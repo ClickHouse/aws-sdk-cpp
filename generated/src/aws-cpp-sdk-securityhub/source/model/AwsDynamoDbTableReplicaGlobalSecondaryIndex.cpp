@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsDynamoDbTableReplicaGlobalSecondaryIndex::AwsDynamoDbTableReplicaGlobalSecondaryIndex() : 
-    m_indexNameHasBeenSet(false),
-    m_provisionedThroughputOverrideHasBeenSet(false)
-{
-}
-
-AwsDynamoDbTableReplicaGlobalSecondaryIndex::AwsDynamoDbTableReplicaGlobalSecondaryIndex(JsonView jsonValue) : 
-    m_indexNameHasBeenSet(false),
-    m_provisionedThroughputOverrideHasBeenSet(false)
+AwsDynamoDbTableReplicaGlobalSecondaryIndex::AwsDynamoDbTableReplicaGlobalSecondaryIndex(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsDynamoDbTableReplicaGlobalSecondaryIndex& AwsDynamoDbTableReplicaGlobalSecond
   if(jsonValue.ValueExists("IndexName"))
   {
     m_indexName = jsonValue.GetString("IndexName");
-
     m_indexNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProvisionedThroughputOverride"))
   {
     m_provisionedThroughputOverride = jsonValue.GetObject("ProvisionedThroughputOverride");
-
     m_provisionedThroughputOverrideHasBeenSet = true;
   }
-
   return *this;
 }
 

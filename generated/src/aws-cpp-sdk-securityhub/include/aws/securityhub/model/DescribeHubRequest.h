@@ -25,7 +25,7 @@ namespace Model
   class DescribeHubRequest : public SecurityHubRequest
   {
   public:
-    AWS_SECURITYHUB_API DescribeHubRequest();
+    AWS_SECURITYHUB_API DescribeHubRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,46 +38,17 @@ namespace Model
     AWS_SECURITYHUB_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The ARN of the Hub resource to retrieve.</p>
      */
-    inline const Aws::String& GetHubArn() const{ return m_hubArn; }
-
-    /**
-     * <p>The ARN of the Hub resource to retrieve.</p>
-     */
+    inline const Aws::String& GetHubArn() const { return m_hubArn; }
     inline bool HubArnHasBeenSet() const { return m_hubArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the Hub resource to retrieve.</p>
-     */
-    inline void SetHubArn(const Aws::String& value) { m_hubArnHasBeenSet = true; m_hubArn = value; }
-
-    /**
-     * <p>The ARN of the Hub resource to retrieve.</p>
-     */
-    inline void SetHubArn(Aws::String&& value) { m_hubArnHasBeenSet = true; m_hubArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the Hub resource to retrieve.</p>
-     */
-    inline void SetHubArn(const char* value) { m_hubArnHasBeenSet = true; m_hubArn.assign(value); }
-
-    /**
-     * <p>The ARN of the Hub resource to retrieve.</p>
-     */
-    inline DescribeHubRequest& WithHubArn(const Aws::String& value) { SetHubArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the Hub resource to retrieve.</p>
-     */
-    inline DescribeHubRequest& WithHubArn(Aws::String&& value) { SetHubArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the Hub resource to retrieve.</p>
-     */
-    inline DescribeHubRequest& WithHubArn(const char* value) { SetHubArn(value); return *this;}
-
+    template<typename HubArnT = Aws::String>
+    void SetHubArn(HubArnT&& value) { m_hubArnHasBeenSet = true; m_hubArn = std::forward<HubArnT>(value); }
+    template<typename HubArnT = Aws::String>
+    DescribeHubRequest& WithHubArn(HubArnT&& value) { SetHubArn(std::forward<HubArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_hubArn;

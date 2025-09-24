@@ -30,209 +30,93 @@ namespace Model
   class ExportVectorEnrichmentJobResult
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API ExportVectorEnrichmentJobResult();
+    AWS_SAGEMAKERGEOSPATIAL_API ExportVectorEnrichmentJobResult() = default;
     AWS_SAGEMAKERGEOSPATIAL_API ExportVectorEnrichmentJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SAGEMAKERGEOSPATIAL_API ExportVectorEnrichmentJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job being
      * exported.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    ExportVectorEnrichmentJobResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job being
-     * exported.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job being
-     * exported.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job being
-     * exported.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job being
-     * exported.</p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job being
-     * exported.</p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Vector Enrichment job being
-     * exported.</p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The creation time.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    ExportVectorEnrichmentJobResult& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The creation time.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTime = value; }
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTime = std::move(value); }
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The creation time.</p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role with permission to upload to
      * the location in OutputConfig.</p>
      */
-    inline const Aws::String& GetExecutionRoleArn() const{ return m_executionRoleArn; }
+    inline const Aws::String& GetExecutionRoleArn() const { return m_executionRoleArn; }
+    template<typename ExecutionRoleArnT = Aws::String>
+    void SetExecutionRoleArn(ExecutionRoleArnT&& value) { m_executionRoleArnHasBeenSet = true; m_executionRoleArn = std::forward<ExecutionRoleArnT>(value); }
+    template<typename ExecutionRoleArnT = Aws::String>
+    ExportVectorEnrichmentJobResult& WithExecutionRoleArn(ExecutionRoleArnT&& value) { SetExecutionRoleArn(std::forward<ExecutionRoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role with permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline void SetExecutionRoleArn(const Aws::String& value) { m_executionRoleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role with permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline void SetExecutionRoleArn(Aws::String&& value) { m_executionRoleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role with permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline void SetExecutionRoleArn(const char* value) { m_executionRoleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role with permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithExecutionRoleArn(const Aws::String& value) { SetExecutionRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role with permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithExecutionRoleArn(Aws::String&& value) { SetExecutionRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role with permission to upload to
-     * the location in OutputConfig.</p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithExecutionRoleArn(const char* value) { SetExecutionRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the results the Vector Enrichment job being exported.</p>
      */
-    inline const VectorEnrichmentJobExportStatus& GetExportStatus() const{ return m_exportStatus; }
+    inline VectorEnrichmentJobExportStatus GetExportStatus() const { return m_exportStatus; }
+    inline void SetExportStatus(VectorEnrichmentJobExportStatus value) { m_exportStatusHasBeenSet = true; m_exportStatus = value; }
+    inline ExportVectorEnrichmentJobResult& WithExportStatus(VectorEnrichmentJobExportStatus value) { SetExportStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the results the Vector Enrichment job being exported.</p>
-     */
-    inline void SetExportStatus(const VectorEnrichmentJobExportStatus& value) { m_exportStatus = value; }
-
-    /**
-     * <p>The status of the results the Vector Enrichment job being exported.</p>
-     */
-    inline void SetExportStatus(VectorEnrichmentJobExportStatus&& value) { m_exportStatus = std::move(value); }
-
-    /**
-     * <p>The status of the results the Vector Enrichment job being exported.</p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithExportStatus(const VectorEnrichmentJobExportStatus& value) { SetExportStatus(value); return *this;}
-
-    /**
-     * <p>The status of the results the Vector Enrichment job being exported.</p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithExportStatus(VectorEnrichmentJobExportStatus&& value) { SetExportStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Output location information for exporting Vector Enrichment Job results. </p>
      */
-    inline const ExportVectorEnrichmentJobOutputConfig& GetOutputConfig() const{ return m_outputConfig; }
+    inline const ExportVectorEnrichmentJobOutputConfig& GetOutputConfig() const { return m_outputConfig; }
+    template<typename OutputConfigT = ExportVectorEnrichmentJobOutputConfig>
+    void SetOutputConfig(OutputConfigT&& value) { m_outputConfigHasBeenSet = true; m_outputConfig = std::forward<OutputConfigT>(value); }
+    template<typename OutputConfigT = ExportVectorEnrichmentJobOutputConfig>
+    ExportVectorEnrichmentJobResult& WithOutputConfig(OutputConfigT&& value) { SetOutputConfig(std::forward<OutputConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Output location information for exporting Vector Enrichment Job results. </p>
-     */
-    inline void SetOutputConfig(const ExportVectorEnrichmentJobOutputConfig& value) { m_outputConfig = value; }
-
-    /**
-     * <p>Output location information for exporting Vector Enrichment Job results. </p>
-     */
-    inline void SetOutputConfig(ExportVectorEnrichmentJobOutputConfig&& value) { m_outputConfig = std::move(value); }
-
-    /**
-     * <p>Output location information for exporting Vector Enrichment Job results. </p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithOutputConfig(const ExportVectorEnrichmentJobOutputConfig& value) { SetOutputConfig(value); return *this;}
-
-    /**
-     * <p>Output location information for exporting Vector Enrichment Job results. </p>
-     */
-    inline ExportVectorEnrichmentJobResult& WithOutputConfig(ExportVectorEnrichmentJobOutputConfig&& value) { SetOutputConfig(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ExportVectorEnrichmentJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ExportVectorEnrichmentJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ExportVectorEnrichmentJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ExportVectorEnrichmentJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
+    bool m_creationTimeHasBeenSet = false;
 
     Aws::String m_executionRoleArn;
+    bool m_executionRoleArnHasBeenSet = false;
 
-    VectorEnrichmentJobExportStatus m_exportStatus;
+    VectorEnrichmentJobExportStatus m_exportStatus{VectorEnrichmentJobExportStatus::NOT_SET};
+    bool m_exportStatusHasBeenSet = false;
 
     ExportVectorEnrichmentJobOutputConfig m_outputConfig;
+    bool m_outputConfigHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

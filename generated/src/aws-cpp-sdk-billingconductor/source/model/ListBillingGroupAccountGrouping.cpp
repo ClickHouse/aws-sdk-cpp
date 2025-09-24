@@ -18,15 +18,7 @@ namespace BillingConductor
 namespace Model
 {
 
-ListBillingGroupAccountGrouping::ListBillingGroupAccountGrouping() : 
-    m_autoAssociate(false),
-    m_autoAssociateHasBeenSet(false)
-{
-}
-
-ListBillingGroupAccountGrouping::ListBillingGroupAccountGrouping(JsonView jsonValue) : 
-    m_autoAssociate(false),
-    m_autoAssociateHasBeenSet(false)
+ListBillingGroupAccountGrouping::ListBillingGroupAccountGrouping(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ListBillingGroupAccountGrouping& ListBillingGroupAccountGrouping::operator =(Jso
   if(jsonValue.ValueExists("AutoAssociate"))
   {
     m_autoAssociate = jsonValue.GetBool("AutoAssociate");
-
     m_autoAssociateHasBeenSet = true;
   }
-
   return *this;
 }
 

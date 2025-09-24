@@ -12,13 +12,6 @@ using namespace Aws::QuickSight::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateTopicRequest::UpdateTopicRequest() : 
-    m_awsAccountIdHasBeenSet(false),
-    m_topicIdHasBeenSet(false),
-    m_topicHasBeenSet(false)
-{
-}
-
 Aws::String UpdateTopicRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -26,6 +19,12 @@ Aws::String UpdateTopicRequest::SerializePayload() const
   if(m_topicHasBeenSet)
   {
    payload.WithObject("Topic", m_topic.Jsonize());
+
+  }
+
+  if(m_customInstructionsHasBeenSet)
+  {
+   payload.WithObject("CustomInstructions", m_customInstructions.Jsonize());
 
   }
 

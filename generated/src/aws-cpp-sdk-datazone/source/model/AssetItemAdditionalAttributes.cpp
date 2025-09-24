@@ -18,15 +18,7 @@ namespace DataZone
 namespace Model
 {
 
-AssetItemAdditionalAttributes::AssetItemAdditionalAttributes() : 
-    m_formsOutputHasBeenSet(false),
-    m_readOnlyFormsOutputHasBeenSet(false)
-{
-}
-
-AssetItemAdditionalAttributes::AssetItemAdditionalAttributes(JsonView jsonValue) : 
-    m_formsOutputHasBeenSet(false),
-    m_readOnlyFormsOutputHasBeenSet(false)
+AssetItemAdditionalAttributes::AssetItemAdditionalAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,24 @@ AssetItemAdditionalAttributes& AssetItemAdditionalAttributes::operator =(JsonVie
     }
     m_formsOutputHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("latestTimeSeriesDataPointFormsOutput"))
+  {
+    Aws::Utils::Array<JsonView> latestTimeSeriesDataPointFormsOutputJsonList = jsonValue.GetArray("latestTimeSeriesDataPointFormsOutput");
+    for(unsigned latestTimeSeriesDataPointFormsOutputIndex = 0; latestTimeSeriesDataPointFormsOutputIndex < latestTimeSeriesDataPointFormsOutputJsonList.GetLength(); ++latestTimeSeriesDataPointFormsOutputIndex)
+    {
+      m_latestTimeSeriesDataPointFormsOutput.push_back(latestTimeSeriesDataPointFormsOutputJsonList[latestTimeSeriesDataPointFormsOutputIndex].AsObject());
+    }
+    m_latestTimeSeriesDataPointFormsOutputHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("matchRationale"))
+  {
+    Aws::Utils::Array<JsonView> matchRationaleJsonList = jsonValue.GetArray("matchRationale");
+    for(unsigned matchRationaleIndex = 0; matchRationaleIndex < matchRationaleJsonList.GetLength(); ++matchRationaleIndex)
+    {
+      m_matchRationale.push_back(matchRationaleJsonList[matchRationaleIndex].AsObject());
+    }
+    m_matchRationaleHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("readOnlyFormsOutput"))
   {
     Aws::Utils::Array<JsonView> readOnlyFormsOutputJsonList = jsonValue.GetArray("readOnlyFormsOutput");
@@ -52,7 +61,6 @@ AssetItemAdditionalAttributes& AssetItemAdditionalAttributes::operator =(JsonVie
     }
     m_readOnlyFormsOutputHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -68,6 +76,28 @@ JsonValue AssetItemAdditionalAttributes::Jsonize() const
      formsOutputJsonList[formsOutputIndex].AsObject(m_formsOutput[formsOutputIndex].Jsonize());
    }
    payload.WithArray("formsOutput", std::move(formsOutputJsonList));
+
+  }
+
+  if(m_latestTimeSeriesDataPointFormsOutputHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> latestTimeSeriesDataPointFormsOutputJsonList(m_latestTimeSeriesDataPointFormsOutput.size());
+   for(unsigned latestTimeSeriesDataPointFormsOutputIndex = 0; latestTimeSeriesDataPointFormsOutputIndex < latestTimeSeriesDataPointFormsOutputJsonList.GetLength(); ++latestTimeSeriesDataPointFormsOutputIndex)
+   {
+     latestTimeSeriesDataPointFormsOutputJsonList[latestTimeSeriesDataPointFormsOutputIndex].AsObject(m_latestTimeSeriesDataPointFormsOutput[latestTimeSeriesDataPointFormsOutputIndex].Jsonize());
+   }
+   payload.WithArray("latestTimeSeriesDataPointFormsOutput", std::move(latestTimeSeriesDataPointFormsOutputJsonList));
+
+  }
+
+  if(m_matchRationaleHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> matchRationaleJsonList(m_matchRationale.size());
+   for(unsigned matchRationaleIndex = 0; matchRationaleIndex < matchRationaleJsonList.GetLength(); ++matchRationaleIndex)
+   {
+     matchRationaleJsonList[matchRationaleIndex].AsObject(m_matchRationale[matchRationaleIndex].Jsonize());
+   }
+   payload.WithArray("matchRationale", std::move(matchRationaleJsonList));
 
   }
 

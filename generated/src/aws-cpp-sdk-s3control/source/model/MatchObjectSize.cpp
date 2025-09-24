@@ -20,19 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-MatchObjectSize::MatchObjectSize() : 
-    m_bytesGreaterThan(0),
-    m_bytesGreaterThanHasBeenSet(false),
-    m_bytesLessThan(0),
-    m_bytesLessThanHasBeenSet(false)
-{
-}
-
-MatchObjectSize::MatchObjectSize(const XmlNode& xmlNode) : 
-    m_bytesGreaterThan(0),
-    m_bytesGreaterThanHasBeenSet(false),
-    m_bytesLessThan(0),
-    m_bytesLessThanHasBeenSet(false)
+MatchObjectSize::MatchObjectSize(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

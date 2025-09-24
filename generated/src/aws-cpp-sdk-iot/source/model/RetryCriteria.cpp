@@ -18,19 +18,7 @@ namespace IoT
 namespace Model
 {
 
-RetryCriteria::RetryCriteria() : 
-    m_failureType(RetryableFailureType::NOT_SET),
-    m_failureTypeHasBeenSet(false),
-    m_numberOfRetries(0),
-    m_numberOfRetriesHasBeenSet(false)
-{
-}
-
-RetryCriteria::RetryCriteria(JsonView jsonValue) : 
-    m_failureType(RetryableFailureType::NOT_SET),
-    m_failureTypeHasBeenSet(false),
-    m_numberOfRetries(0),
-    m_numberOfRetriesHasBeenSet(false)
+RetryCriteria::RetryCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ RetryCriteria& RetryCriteria::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("failureType"))
   {
     m_failureType = RetryableFailureTypeMapper::GetRetryableFailureTypeForName(jsonValue.GetString("failureType"));
-
     m_failureTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("numberOfRetries"))
   {
     m_numberOfRetries = jsonValue.GetInteger("numberOfRetries");
-
     m_numberOfRetriesHasBeenSet = true;
   }
-
   return *this;
 }
 

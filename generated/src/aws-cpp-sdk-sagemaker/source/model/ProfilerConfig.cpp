@@ -18,23 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ProfilerConfig::ProfilerConfig() : 
-    m_s3OutputPathHasBeenSet(false),
-    m_profilingIntervalInMilliseconds(0),
-    m_profilingIntervalInMillisecondsHasBeenSet(false),
-    m_profilingParametersHasBeenSet(false),
-    m_disableProfiler(false),
-    m_disableProfilerHasBeenSet(false)
-{
-}
-
-ProfilerConfig::ProfilerConfig(JsonView jsonValue) : 
-    m_s3OutputPathHasBeenSet(false),
-    m_profilingIntervalInMilliseconds(0),
-    m_profilingIntervalInMillisecondsHasBeenSet(false),
-    m_profilingParametersHasBeenSet(false),
-    m_disableProfiler(false),
-    m_disableProfilerHasBeenSet(false)
+ProfilerConfig::ProfilerConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,17 +28,13 @@ ProfilerConfig& ProfilerConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("S3OutputPath"))
   {
     m_s3OutputPath = jsonValue.GetString("S3OutputPath");
-
     m_s3OutputPathHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProfilingIntervalInMilliseconds"))
   {
     m_profilingIntervalInMilliseconds = jsonValue.GetInt64("ProfilingIntervalInMilliseconds");
-
     m_profilingIntervalInMillisecondsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProfilingParameters"))
   {
     Aws::Map<Aws::String, JsonView> profilingParametersJsonMap = jsonValue.GetObject("ProfilingParameters").GetAllObjects();
@@ -64,14 +44,11 @@ ProfilerConfig& ProfilerConfig::operator =(JsonView jsonValue)
     }
     m_profilingParametersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisableProfiler"))
   {
     m_disableProfiler = jsonValue.GetBool("DisableProfiler");
-
     m_disableProfilerHasBeenSet = true;
   }
-
   return *this;
 }
 

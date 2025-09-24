@@ -21,7 +21,7 @@ namespace Model
   class ListApprovalRuleTemplatesRequest : public CodeCommitRequest
   {
   public:
-    AWS_CODECOMMIT_API ListApprovalRuleTemplatesRequest();
+    AWS_CODECOMMIT_API ListApprovalRuleTemplatesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,85 +34,35 @@ namespace Model
     AWS_CODECOMMIT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>An enumeration token that, when provided in a request, returns the next batch
      * of the results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>An enumeration token that, when provided in a request, returns the next batch
-     * of the results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListApprovalRuleTemplatesRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An enumeration token that, when provided in a request, returns the next batch
-     * of the results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>An enumeration token that, when provided in a request, returns the next batch
-     * of the results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>An enumeration token that, when provided in a request, returns the next batch
-     * of the results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>An enumeration token that, when provided in a request, returns the next batch
-     * of the results.</p>
-     */
-    inline ListApprovalRuleTemplatesRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>An enumeration token that, when provided in a request, returns the next batch
-     * of the results.</p>
-     */
-    inline ListApprovalRuleTemplatesRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>An enumeration token that, when provided in a request, returns the next batch
-     * of the results.</p>
-     */
-    inline ListApprovalRuleTemplatesRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A non-zero, non-negative integer used to limit the number of returned
      * results.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>A non-zero, non-negative integer used to limit the number of returned
-     * results.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>A non-zero, non-negative integer used to limit the number of returned
-     * results.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>A non-zero, non-negative integer used to limit the number of returned
-     * results.</p>
-     */
     inline ListApprovalRuleTemplatesRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

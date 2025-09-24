@@ -26,7 +26,7 @@ namespace Model
   class CreatePipelineRequest : public DataPipelineRequest
   {
   public:
-    AWS_DATAPIPELINE_API CreatePipelineRequest();
+    AWS_DATAPIPELINE_API CreatePipelineRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,63 +39,21 @@ namespace Model
     AWS_DATAPIPELINE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name for the pipeline. You can use the same name for multiple pipelines
      * associated with your AWS account, because AWS Data Pipeline assigns each
      * pipeline a unique pipeline identifier.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name for the pipeline. You can use the same name for multiple pipelines
-     * associated with your AWS account, because AWS Data Pipeline assigns each
-     * pipeline a unique pipeline identifier.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreatePipelineRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name for the pipeline. You can use the same name for multiple pipelines
-     * associated with your AWS account, because AWS Data Pipeline assigns each
-     * pipeline a unique pipeline identifier.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name for the pipeline. You can use the same name for multiple pipelines
-     * associated with your AWS account, because AWS Data Pipeline assigns each
-     * pipeline a unique pipeline identifier.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name for the pipeline. You can use the same name for multiple pipelines
-     * associated with your AWS account, because AWS Data Pipeline assigns each
-     * pipeline a unique pipeline identifier.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name for the pipeline. You can use the same name for multiple pipelines
-     * associated with your AWS account, because AWS Data Pipeline assigns each
-     * pipeline a unique pipeline identifier.</p>
-     */
-    inline CreatePipelineRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name for the pipeline. You can use the same name for multiple pipelines
-     * associated with your AWS account, because AWS Data Pipeline assigns each
-     * pipeline a unique pipeline identifier.</p>
-     */
-    inline CreatePipelineRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name for the pipeline. You can use the same name for multiple pipelines
-     * associated with your AWS account, because AWS Data Pipeline assigns each
-     * pipeline a unique pipeline identifier.</p>
-     */
-    inline CreatePipelineRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier. This identifier is not the same as the pipeline
      * identifier assigned by AWS Data Pipeline. You are responsible for defining the
@@ -109,155 +67,27 @@ namespace Model
      * identifier from the previous attempt. The uniqueness of the name and unique
      * identifier combination is scoped to the AWS account or IAM user credentials.</p>
      */
-    inline const Aws::String& GetUniqueId() const{ return m_uniqueId; }
-
-    /**
-     * <p>A unique identifier. This identifier is not the same as the pipeline
-     * identifier assigned by AWS Data Pipeline. You are responsible for defining the
-     * format and ensuring the uniqueness of this identifier. You use this parameter to
-     * ensure idempotency during repeated calls to <code>CreatePipeline</code>. For
-     * example, if the first call to <code>CreatePipeline</code> does not succeed, you
-     * can pass in the same unique identifier and pipeline name combination on a
-     * subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code>
-     * ensures that if a pipeline already exists with the same name and unique
-     * identifier, a new pipeline is not created. Instead, you'll receive the pipeline
-     * identifier from the previous attempt. The uniqueness of the name and unique
-     * identifier combination is scoped to the AWS account or IAM user credentials.</p>
-     */
+    inline const Aws::String& GetUniqueId() const { return m_uniqueId; }
     inline bool UniqueIdHasBeenSet() const { return m_uniqueIdHasBeenSet; }
+    template<typename UniqueIdT = Aws::String>
+    void SetUniqueId(UniqueIdT&& value) { m_uniqueIdHasBeenSet = true; m_uniqueId = std::forward<UniqueIdT>(value); }
+    template<typename UniqueIdT = Aws::String>
+    CreatePipelineRequest& WithUniqueId(UniqueIdT&& value) { SetUniqueId(std::forward<UniqueIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier. This identifier is not the same as the pipeline
-     * identifier assigned by AWS Data Pipeline. You are responsible for defining the
-     * format and ensuring the uniqueness of this identifier. You use this parameter to
-     * ensure idempotency during repeated calls to <code>CreatePipeline</code>. For
-     * example, if the first call to <code>CreatePipeline</code> does not succeed, you
-     * can pass in the same unique identifier and pipeline name combination on a
-     * subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code>
-     * ensures that if a pipeline already exists with the same name and unique
-     * identifier, a new pipeline is not created. Instead, you'll receive the pipeline
-     * identifier from the previous attempt. The uniqueness of the name and unique
-     * identifier combination is scoped to the AWS account or IAM user credentials.</p>
-     */
-    inline void SetUniqueId(const Aws::String& value) { m_uniqueIdHasBeenSet = true; m_uniqueId = value; }
-
-    /**
-     * <p>A unique identifier. This identifier is not the same as the pipeline
-     * identifier assigned by AWS Data Pipeline. You are responsible for defining the
-     * format and ensuring the uniqueness of this identifier. You use this parameter to
-     * ensure idempotency during repeated calls to <code>CreatePipeline</code>. For
-     * example, if the first call to <code>CreatePipeline</code> does not succeed, you
-     * can pass in the same unique identifier and pipeline name combination on a
-     * subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code>
-     * ensures that if a pipeline already exists with the same name and unique
-     * identifier, a new pipeline is not created. Instead, you'll receive the pipeline
-     * identifier from the previous attempt. The uniqueness of the name and unique
-     * identifier combination is scoped to the AWS account or IAM user credentials.</p>
-     */
-    inline void SetUniqueId(Aws::String&& value) { m_uniqueIdHasBeenSet = true; m_uniqueId = std::move(value); }
-
-    /**
-     * <p>A unique identifier. This identifier is not the same as the pipeline
-     * identifier assigned by AWS Data Pipeline. You are responsible for defining the
-     * format and ensuring the uniqueness of this identifier. You use this parameter to
-     * ensure idempotency during repeated calls to <code>CreatePipeline</code>. For
-     * example, if the first call to <code>CreatePipeline</code> does not succeed, you
-     * can pass in the same unique identifier and pipeline name combination on a
-     * subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code>
-     * ensures that if a pipeline already exists with the same name and unique
-     * identifier, a new pipeline is not created. Instead, you'll receive the pipeline
-     * identifier from the previous attempt. The uniqueness of the name and unique
-     * identifier combination is scoped to the AWS account or IAM user credentials.</p>
-     */
-    inline void SetUniqueId(const char* value) { m_uniqueIdHasBeenSet = true; m_uniqueId.assign(value); }
-
-    /**
-     * <p>A unique identifier. This identifier is not the same as the pipeline
-     * identifier assigned by AWS Data Pipeline. You are responsible for defining the
-     * format and ensuring the uniqueness of this identifier. You use this parameter to
-     * ensure idempotency during repeated calls to <code>CreatePipeline</code>. For
-     * example, if the first call to <code>CreatePipeline</code> does not succeed, you
-     * can pass in the same unique identifier and pipeline name combination on a
-     * subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code>
-     * ensures that if a pipeline already exists with the same name and unique
-     * identifier, a new pipeline is not created. Instead, you'll receive the pipeline
-     * identifier from the previous attempt. The uniqueness of the name and unique
-     * identifier combination is scoped to the AWS account or IAM user credentials.</p>
-     */
-    inline CreatePipelineRequest& WithUniqueId(const Aws::String& value) { SetUniqueId(value); return *this;}
-
-    /**
-     * <p>A unique identifier. This identifier is not the same as the pipeline
-     * identifier assigned by AWS Data Pipeline. You are responsible for defining the
-     * format and ensuring the uniqueness of this identifier. You use this parameter to
-     * ensure idempotency during repeated calls to <code>CreatePipeline</code>. For
-     * example, if the first call to <code>CreatePipeline</code> does not succeed, you
-     * can pass in the same unique identifier and pipeline name combination on a
-     * subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code>
-     * ensures that if a pipeline already exists with the same name and unique
-     * identifier, a new pipeline is not created. Instead, you'll receive the pipeline
-     * identifier from the previous attempt. The uniqueness of the name and unique
-     * identifier combination is scoped to the AWS account or IAM user credentials.</p>
-     */
-    inline CreatePipelineRequest& WithUniqueId(Aws::String&& value) { SetUniqueId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier. This identifier is not the same as the pipeline
-     * identifier assigned by AWS Data Pipeline. You are responsible for defining the
-     * format and ensuring the uniqueness of this identifier. You use this parameter to
-     * ensure idempotency during repeated calls to <code>CreatePipeline</code>. For
-     * example, if the first call to <code>CreatePipeline</code> does not succeed, you
-     * can pass in the same unique identifier and pipeline name combination on a
-     * subsequent call to <code>CreatePipeline</code>. <code>CreatePipeline</code>
-     * ensures that if a pipeline already exists with the same name and unique
-     * identifier, a new pipeline is not created. Instead, you'll receive the pipeline
-     * identifier from the previous attempt. The uniqueness of the name and unique
-     * identifier combination is scoped to the AWS account or IAM user credentials.</p>
-     */
-    inline CreatePipelineRequest& WithUniqueId(const char* value) { SetUniqueId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description for the pipeline.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description for the pipeline.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreatePipelineRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description for the pipeline.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description for the pipeline.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description for the pipeline.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description for the pipeline.</p>
-     */
-    inline CreatePipelineRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description for the pipeline.</p>
-     */
-    inline CreatePipelineRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description for the pipeline.</p>
-     */
-    inline CreatePipelineRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of tags to associate with the pipeline at creation. Tags let you
      * control access to pipelines. For more information, see <a
@@ -265,71 +95,15 @@ namespace Model
      * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
      * Guide</i>.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>A list of tags to associate with the pipeline at creation. Tags let you
-     * control access to pipelines. For more information, see <a
-     * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling
-     * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
-     * Guide</i>.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>A list of tags to associate with the pipeline at creation. Tags let you
-     * control access to pipelines. For more information, see <a
-     * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling
-     * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
-     * Guide</i>.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>A list of tags to associate with the pipeline at creation. Tags let you
-     * control access to pipelines. For more information, see <a
-     * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling
-     * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
-     * Guide</i>.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>A list of tags to associate with the pipeline at creation. Tags let you
-     * control access to pipelines. For more information, see <a
-     * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling
-     * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
-     * Guide</i>.</p>
-     */
-    inline CreatePipelineRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>A list of tags to associate with the pipeline at creation. Tags let you
-     * control access to pipelines. For more information, see <a
-     * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling
-     * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
-     * Guide</i>.</p>
-     */
-    inline CreatePipelineRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tags to associate with the pipeline at creation. Tags let you
-     * control access to pipelines. For more information, see <a
-     * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling
-     * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
-     * Guide</i>.</p>
-     */
-    inline CreatePipelineRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tags to associate with the pipeline at creation. Tags let you
-     * control access to pipelines. For more information, see <a
-     * href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling
-     * User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer
-     * Guide</i>.</p>
-     */
-    inline CreatePipelineRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreatePipelineRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreatePipelineRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

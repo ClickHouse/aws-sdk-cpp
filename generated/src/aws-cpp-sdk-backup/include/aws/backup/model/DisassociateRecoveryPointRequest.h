@@ -21,7 +21,7 @@ namespace Model
   class DisassociateRecoveryPointRequest : public BackupRequest
   {
   public:
-    AWS_BACKUP_API DisassociateRecoveryPointRequest();
+    AWS_BACKUP_API DisassociateRecoveryPointRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,95 +32,30 @@ namespace Model
     AWS_BACKUP_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique name of an Backup vault.</p>
      */
-    inline const Aws::String& GetBackupVaultName() const{ return m_backupVaultName; }
-
-    /**
-     * <p>The unique name of an Backup vault.</p>
-     */
+    inline const Aws::String& GetBackupVaultName() const { return m_backupVaultName; }
     inline bool BackupVaultNameHasBeenSet() const { return m_backupVaultNameHasBeenSet; }
+    template<typename BackupVaultNameT = Aws::String>
+    void SetBackupVaultName(BackupVaultNameT&& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = std::forward<BackupVaultNameT>(value); }
+    template<typename BackupVaultNameT = Aws::String>
+    DisassociateRecoveryPointRequest& WithBackupVaultName(BackupVaultNameT&& value) { SetBackupVaultName(std::forward<BackupVaultNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique name of an Backup vault.</p>
-     */
-    inline void SetBackupVaultName(const Aws::String& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = value; }
-
-    /**
-     * <p>The unique name of an Backup vault.</p>
-     */
-    inline void SetBackupVaultName(Aws::String&& value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName = std::move(value); }
-
-    /**
-     * <p>The unique name of an Backup vault.</p>
-     */
-    inline void SetBackupVaultName(const char* value) { m_backupVaultNameHasBeenSet = true; m_backupVaultName.assign(value); }
-
-    /**
-     * <p>The unique name of an Backup vault.</p>
-     */
-    inline DisassociateRecoveryPointRequest& WithBackupVaultName(const Aws::String& value) { SetBackupVaultName(value); return *this;}
-
-    /**
-     * <p>The unique name of an Backup vault.</p>
-     */
-    inline DisassociateRecoveryPointRequest& WithBackupVaultName(Aws::String&& value) { SetBackupVaultName(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique name of an Backup vault.</p>
-     */
-    inline DisassociateRecoveryPointRequest& WithBackupVaultName(const char* value) { SetBackupVaultName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An Amazon Resource Name (ARN) that uniquely identifies an Backup recovery
      * point.</p>
      */
-    inline const Aws::String& GetRecoveryPointArn() const{ return m_recoveryPointArn; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies an Backup recovery
-     * point.</p>
-     */
+    inline const Aws::String& GetRecoveryPointArn() const { return m_recoveryPointArn; }
     inline bool RecoveryPointArnHasBeenSet() const { return m_recoveryPointArnHasBeenSet; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies an Backup recovery
-     * point.</p>
-     */
-    inline void SetRecoveryPointArn(const Aws::String& value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn = value; }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies an Backup recovery
-     * point.</p>
-     */
-    inline void SetRecoveryPointArn(Aws::String&& value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn = std::move(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies an Backup recovery
-     * point.</p>
-     */
-    inline void SetRecoveryPointArn(const char* value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn.assign(value); }
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies an Backup recovery
-     * point.</p>
-     */
-    inline DisassociateRecoveryPointRequest& WithRecoveryPointArn(const Aws::String& value) { SetRecoveryPointArn(value); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies an Backup recovery
-     * point.</p>
-     */
-    inline DisassociateRecoveryPointRequest& WithRecoveryPointArn(Aws::String&& value) { SetRecoveryPointArn(std::move(value)); return *this;}
-
-    /**
-     * <p>An Amazon Resource Name (ARN) that uniquely identifies an Backup recovery
-     * point.</p>
-     */
-    inline DisassociateRecoveryPointRequest& WithRecoveryPointArn(const char* value) { SetRecoveryPointArn(value); return *this;}
-
+    template<typename RecoveryPointArnT = Aws::String>
+    void SetRecoveryPointArn(RecoveryPointArnT&& value) { m_recoveryPointArnHasBeenSet = true; m_recoveryPointArn = std::forward<RecoveryPointArnT>(value); }
+    template<typename RecoveryPointArnT = Aws::String>
+    DisassociateRecoveryPointRequest& WithRecoveryPointArn(RecoveryPointArnT&& value) { SetRecoveryPointArn(std::forward<RecoveryPointArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_backupVaultName;

@@ -7,6 +7,7 @@
 #include <aws/lexv2-models/LexModelsV2_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/lexv2-models/model/DataPrivacy.h>
+#include <aws/lexv2-models/model/ErrorLogSettings.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <utility>
 
@@ -34,121 +35,61 @@ namespace Model
   class BotImportSpecification
   {
   public:
-    AWS_LEXMODELSV2_API BotImportSpecification();
+    AWS_LEXMODELSV2_API BotImportSpecification() = default;
     AWS_LEXMODELSV2_API BotImportSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API BotImportSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name that Amazon Lex should use for the bot.</p>
      */
-    inline const Aws::String& GetBotName() const{ return m_botName; }
-
-    /**
-     * <p>The name that Amazon Lex should use for the bot.</p>
-     */
+    inline const Aws::String& GetBotName() const { return m_botName; }
     inline bool BotNameHasBeenSet() const { return m_botNameHasBeenSet; }
+    template<typename BotNameT = Aws::String>
+    void SetBotName(BotNameT&& value) { m_botNameHasBeenSet = true; m_botName = std::forward<BotNameT>(value); }
+    template<typename BotNameT = Aws::String>
+    BotImportSpecification& WithBotName(BotNameT&& value) { SetBotName(std::forward<BotNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name that Amazon Lex should use for the bot.</p>
-     */
-    inline void SetBotName(const Aws::String& value) { m_botNameHasBeenSet = true; m_botName = value; }
-
-    /**
-     * <p>The name that Amazon Lex should use for the bot.</p>
-     */
-    inline void SetBotName(Aws::String&& value) { m_botNameHasBeenSet = true; m_botName = std::move(value); }
-
-    /**
-     * <p>The name that Amazon Lex should use for the bot.</p>
-     */
-    inline void SetBotName(const char* value) { m_botNameHasBeenSet = true; m_botName.assign(value); }
-
-    /**
-     * <p>The name that Amazon Lex should use for the bot.</p>
-     */
-    inline BotImportSpecification& WithBotName(const Aws::String& value) { SetBotName(value); return *this;}
-
-    /**
-     * <p>The name that Amazon Lex should use for the bot.</p>
-     */
-    inline BotImportSpecification& WithBotName(Aws::String&& value) { SetBotName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name that Amazon Lex should use for the bot.</p>
-     */
-    inline BotImportSpecification& WithBotName(const char* value) { SetBotName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the IAM role used to build and run the
      * bot.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role used to build and run the
-     * bot.</p>
-     */
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
     inline bool RoleArnHasBeenSet() const { return m_roleArnHasBeenSet; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    BotImportSpecification& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role used to build and run the
-     * bot.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArnHasBeenSet = true; m_roleArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role used to build and run the
-     * bot.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role used to build and run the
-     * bot.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArnHasBeenSet = true; m_roleArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role used to build and run the
-     * bot.</p>
-     */
-    inline BotImportSpecification& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role used to build and run the
-     * bot.</p>
-     */
-    inline BotImportSpecification& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the IAM role used to build and run the
-     * bot.</p>
-     */
-    inline BotImportSpecification& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     
-    inline const DataPrivacy& GetDataPrivacy() const{ return m_dataPrivacy; }
-
-    
+    inline const DataPrivacy& GetDataPrivacy() const { return m_dataPrivacy; }
     inline bool DataPrivacyHasBeenSet() const { return m_dataPrivacyHasBeenSet; }
+    template<typename DataPrivacyT = DataPrivacy>
+    void SetDataPrivacy(DataPrivacyT&& value) { m_dataPrivacyHasBeenSet = true; m_dataPrivacy = std::forward<DataPrivacyT>(value); }
+    template<typename DataPrivacyT = DataPrivacy>
+    BotImportSpecification& WithDataPrivacy(DataPrivacyT&& value) { SetDataPrivacy(std::forward<DataPrivacyT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetDataPrivacy(const DataPrivacy& value) { m_dataPrivacyHasBeenSet = true; m_dataPrivacy = value; }
+    ///@{
+    /**
+     * <p>Allows you to configure destinations where error logs will be published
+     * during the bot import process.</p>
+     */
+    inline const ErrorLogSettings& GetErrorLogSettings() const { return m_errorLogSettings; }
+    inline bool ErrorLogSettingsHasBeenSet() const { return m_errorLogSettingsHasBeenSet; }
+    template<typename ErrorLogSettingsT = ErrorLogSettings>
+    void SetErrorLogSettings(ErrorLogSettingsT&& value) { m_errorLogSettingsHasBeenSet = true; m_errorLogSettings = std::forward<ErrorLogSettingsT>(value); }
+    template<typename ErrorLogSettingsT = ErrorLogSettings>
+    BotImportSpecification& WithErrorLogSettings(ErrorLogSettingsT&& value) { SetErrorLogSettings(std::forward<ErrorLogSettingsT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetDataPrivacy(DataPrivacy&& value) { m_dataPrivacyHasBeenSet = true; m_dataPrivacy = std::move(value); }
-
-    
-    inline BotImportSpecification& WithDataPrivacy(const DataPrivacy& value) { SetDataPrivacy(value); return *this;}
-
-    
-    inline BotImportSpecification& WithDataPrivacy(DataPrivacy&& value) { SetDataPrivacy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The time, in seconds, that Amazon Lex should keep information about a user's
      * conversation with the bot. </p> <p>A user interaction remains active for the
@@ -156,232 +97,48 @@ namespace Model
      * session expires and Amazon Lex deletes any data provided before the timeout.</p>
      * <p>You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.</p>
      */
-    inline int GetIdleSessionTTLInSeconds() const{ return m_idleSessionTTLInSeconds; }
-
-    /**
-     * <p>The time, in seconds, that Amazon Lex should keep information about a user's
-     * conversation with the bot. </p> <p>A user interaction remains active for the
-     * amount of time specified. If no conversation occurs during this time, the
-     * session expires and Amazon Lex deletes any data provided before the timeout.</p>
-     * <p>You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.</p>
-     */
+    inline int GetIdleSessionTTLInSeconds() const { return m_idleSessionTTLInSeconds; }
     inline bool IdleSessionTTLInSecondsHasBeenSet() const { return m_idleSessionTTLInSecondsHasBeenSet; }
-
-    /**
-     * <p>The time, in seconds, that Amazon Lex should keep information about a user's
-     * conversation with the bot. </p> <p>A user interaction remains active for the
-     * amount of time specified. If no conversation occurs during this time, the
-     * session expires and Amazon Lex deletes any data provided before the timeout.</p>
-     * <p>You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.</p>
-     */
     inline void SetIdleSessionTTLInSeconds(int value) { m_idleSessionTTLInSecondsHasBeenSet = true; m_idleSessionTTLInSeconds = value; }
-
-    /**
-     * <p>The time, in seconds, that Amazon Lex should keep information about a user's
-     * conversation with the bot. </p> <p>A user interaction remains active for the
-     * amount of time specified. If no conversation occurs during this time, the
-     * session expires and Amazon Lex deletes any data provided before the timeout.</p>
-     * <p>You can specify between 60 (1 minute) and 86,400 (24 hours) seconds.</p>
-     */
     inline BotImportSpecification& WithIdleSessionTTLInSeconds(int value) { SetIdleSessionTTLInSeconds(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A list of tags to add to the bot. You can only add tags when you import a
      * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
      * update tags, use the <code>TagResource</code> operation.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetBotTags() const{ return m_botTags; }
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetBotTags() const { return m_botTags; }
     inline bool BotTagsHasBeenSet() const { return m_botTagsHasBeenSet; }
+    template<typename BotTagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetBotTags(BotTagsT&& value) { m_botTagsHasBeenSet = true; m_botTags = std::forward<BotTagsT>(value); }
+    template<typename BotTagsT = Aws::Map<Aws::String, Aws::String>>
+    BotImportSpecification& WithBotTags(BotTagsT&& value) { SetBotTags(std::forward<BotTagsT>(value)); return *this;}
+    template<typename BotTagsKeyT = Aws::String, typename BotTagsValueT = Aws::String>
+    BotImportSpecification& AddBotTags(BotTagsKeyT&& key, BotTagsValueT&& value) {
+      m_botTagsHasBeenSet = true; m_botTags.emplace(std::forward<BotTagsKeyT>(key), std::forward<BotTagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline void SetBotTags(const Aws::Map<Aws::String, Aws::String>& value) { m_botTagsHasBeenSet = true; m_botTags = value; }
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline void SetBotTags(Aws::Map<Aws::String, Aws::String>&& value) { m_botTagsHasBeenSet = true; m_botTags = std::move(value); }
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline BotImportSpecification& WithBotTags(const Aws::Map<Aws::String, Aws::String>& value) { SetBotTags(value); return *this;}
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline BotImportSpecification& WithBotTags(Aws::Map<Aws::String, Aws::String>&& value) { SetBotTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline BotImportSpecification& AddBotTags(const Aws::String& key, const Aws::String& value) { m_botTagsHasBeenSet = true; m_botTags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline BotImportSpecification& AddBotTags(Aws::String&& key, const Aws::String& value) { m_botTagsHasBeenSet = true; m_botTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline BotImportSpecification& AddBotTags(const Aws::String& key, Aws::String&& value) { m_botTagsHasBeenSet = true; m_botTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline BotImportSpecification& AddBotTags(Aws::String&& key, Aws::String&& value) { m_botTagsHasBeenSet = true; m_botTags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline BotImportSpecification& AddBotTags(const char* key, Aws::String&& value) { m_botTagsHasBeenSet = true; m_botTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline BotImportSpecification& AddBotTags(Aws::String&& key, const char* value) { m_botTagsHasBeenSet = true; m_botTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of tags to add to the bot. You can only add tags when you import a
-     * bot. You can't use the <code>UpdateBot</code> operation to update tags. To
-     * update tags, use the <code>TagResource</code> operation.</p>
-     */
-    inline BotImportSpecification& AddBotTags(const char* key, const char* value) { m_botTagsHasBeenSet = true; m_botTags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of tags to add to the test alias for a bot. You can only add tags when
      * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
      * tags. To update tags on the test alias, use the <code>TagResource</code>
      * operation.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTestBotAliasTags() const{ return m_testBotAliasTags; }
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTestBotAliasTags() const { return m_testBotAliasTags; }
     inline bool TestBotAliasTagsHasBeenSet() const { return m_testBotAliasTagsHasBeenSet; }
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline void SetTestBotAliasTags(const Aws::Map<Aws::String, Aws::String>& value) { m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags = value; }
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline void SetTestBotAliasTags(Aws::Map<Aws::String, Aws::String>&& value) { m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags = std::move(value); }
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline BotImportSpecification& WithTestBotAliasTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTestBotAliasTags(value); return *this;}
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline BotImportSpecification& WithTestBotAliasTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTestBotAliasTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline BotImportSpecification& AddTestBotAliasTags(const Aws::String& key, const Aws::String& value) { m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags.emplace(key, value); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline BotImportSpecification& AddTestBotAliasTags(Aws::String&& key, const Aws::String& value) { m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline BotImportSpecification& AddTestBotAliasTags(const Aws::String& key, Aws::String&& value) { m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline BotImportSpecification& AddTestBotAliasTags(Aws::String&& key, Aws::String&& value) { m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline BotImportSpecification& AddTestBotAliasTags(const char* key, Aws::String&& value) { m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline BotImportSpecification& AddTestBotAliasTags(Aws::String&& key, const char* value) { m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A list of tags to add to the test alias for a bot. You can only add tags when
-     * you import a bot. You can't use the <code>UpdateAlias</code> operation to update
-     * tags. To update tags on the test alias, use the <code>TagResource</code>
-     * operation.</p>
-     */
-    inline BotImportSpecification& AddTestBotAliasTags(const char* key, const char* value) { m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags.emplace(key, value); return *this; }
-
+    template<typename TestBotAliasTagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTestBotAliasTags(TestBotAliasTagsT&& value) { m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags = std::forward<TestBotAliasTagsT>(value); }
+    template<typename TestBotAliasTagsT = Aws::Map<Aws::String, Aws::String>>
+    BotImportSpecification& WithTestBotAliasTags(TestBotAliasTagsT&& value) { SetTestBotAliasTags(std::forward<TestBotAliasTagsT>(value)); return *this;}
+    template<typename TestBotAliasTagsKeyT = Aws::String, typename TestBotAliasTagsValueT = Aws::String>
+    BotImportSpecification& AddTestBotAliasTags(TestBotAliasTagsKeyT&& key, TestBotAliasTagsValueT&& value) {
+      m_testBotAliasTagsHasBeenSet = true; m_testBotAliasTags.emplace(std::forward<TestBotAliasTagsKeyT>(key), std::forward<TestBotAliasTagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_botName;
@@ -393,7 +150,10 @@ namespace Model
     DataPrivacy m_dataPrivacy;
     bool m_dataPrivacyHasBeenSet = false;
 
-    int m_idleSessionTTLInSeconds;
+    ErrorLogSettings m_errorLogSettings;
+    bool m_errorLogSettingsHasBeenSet = false;
+
+    int m_idleSessionTTLInSeconds{0};
     bool m_idleSessionTTLInSecondsHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_botTags;

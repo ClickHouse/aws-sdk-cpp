@@ -15,14 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-GetWorkflowRequest::GetWorkflowRequest() : 
-    m_idHasBeenSet(false),
-    m_type(WorkflowType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_exportHasBeenSet(false)
-{
-}
-
 Aws::String GetWorkflowRequest::SerializePayload() const
 {
   return {};
@@ -46,6 +38,13 @@ void GetWorkflowRequest::AddQueryStringParameters(URI& uri) const
         uri.AddQueryStringParameter("export", ss.str());
         ss.str("");
       }
+    }
+
+    if(m_workflowOwnerIdHasBeenSet)
+    {
+      ss << m_workflowOwnerId;
+      uri.AddQueryStringParameter("workflowOwnerId", ss.str());
+      ss.str("");
     }
 
 }

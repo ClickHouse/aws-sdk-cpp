@@ -32,183 +32,60 @@ namespace Model
   class AwsRdsDbSecurityGroupEc2SecurityGroup
   {
   public:
-    AWS_SECURITYHUB_API AwsRdsDbSecurityGroupEc2SecurityGroup();
+    AWS_SECURITYHUB_API AwsRdsDbSecurityGroupEc2SecurityGroup() = default;
     AWS_SECURITYHUB_API AwsRdsDbSecurityGroupEc2SecurityGroup(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsRdsDbSecurityGroupEc2SecurityGroup& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the ID for the EC2 security group.</p>
      */
-    inline const Aws::String& GetEc2SecurityGroupId() const{ return m_ec2SecurityGroupId; }
-
-    /**
-     * <p>Specifies the ID for the EC2 security group.</p>
-     */
+    inline const Aws::String& GetEc2SecurityGroupId() const { return m_ec2SecurityGroupId; }
     inline bool Ec2SecurityGroupIdHasBeenSet() const { return m_ec2SecurityGroupIdHasBeenSet; }
+    template<typename Ec2SecurityGroupIdT = Aws::String>
+    void SetEc2SecurityGroupId(Ec2SecurityGroupIdT&& value) { m_ec2SecurityGroupIdHasBeenSet = true; m_ec2SecurityGroupId = std::forward<Ec2SecurityGroupIdT>(value); }
+    template<typename Ec2SecurityGroupIdT = Aws::String>
+    AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupId(Ec2SecurityGroupIdT&& value) { SetEc2SecurityGroupId(std::forward<Ec2SecurityGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the ID for the EC2 security group.</p>
-     */
-    inline void SetEc2SecurityGroupId(const Aws::String& value) { m_ec2SecurityGroupIdHasBeenSet = true; m_ec2SecurityGroupId = value; }
-
-    /**
-     * <p>Specifies the ID for the EC2 security group.</p>
-     */
-    inline void SetEc2SecurityGroupId(Aws::String&& value) { m_ec2SecurityGroupIdHasBeenSet = true; m_ec2SecurityGroupId = std::move(value); }
-
-    /**
-     * <p>Specifies the ID for the EC2 security group.</p>
-     */
-    inline void SetEc2SecurityGroupId(const char* value) { m_ec2SecurityGroupIdHasBeenSet = true; m_ec2SecurityGroupId.assign(value); }
-
-    /**
-     * <p>Specifies the ID for the EC2 security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupId(const Aws::String& value) { SetEc2SecurityGroupId(value); return *this;}
-
-    /**
-     * <p>Specifies the ID for the EC2 security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupId(Aws::String&& value) { SetEc2SecurityGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the ID for the EC2 security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupId(const char* value) { SetEc2SecurityGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the name of the EC2 security group.</p>
      */
-    inline const Aws::String& GetEc2SecurityGroupName() const{ return m_ec2SecurityGroupName; }
-
-    /**
-     * <p>Specifies the name of the EC2 security group.</p>
-     */
+    inline const Aws::String& GetEc2SecurityGroupName() const { return m_ec2SecurityGroupName; }
     inline bool Ec2SecurityGroupNameHasBeenSet() const { return m_ec2SecurityGroupNameHasBeenSet; }
+    template<typename Ec2SecurityGroupNameT = Aws::String>
+    void SetEc2SecurityGroupName(Ec2SecurityGroupNameT&& value) { m_ec2SecurityGroupNameHasBeenSet = true; m_ec2SecurityGroupName = std::forward<Ec2SecurityGroupNameT>(value); }
+    template<typename Ec2SecurityGroupNameT = Aws::String>
+    AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupName(Ec2SecurityGroupNameT&& value) { SetEc2SecurityGroupName(std::forward<Ec2SecurityGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the name of the EC2 security group.</p>
-     */
-    inline void SetEc2SecurityGroupName(const Aws::String& value) { m_ec2SecurityGroupNameHasBeenSet = true; m_ec2SecurityGroupName = value; }
-
-    /**
-     * <p>Specifies the name of the EC2 security group.</p>
-     */
-    inline void SetEc2SecurityGroupName(Aws::String&& value) { m_ec2SecurityGroupNameHasBeenSet = true; m_ec2SecurityGroupName = std::move(value); }
-
-    /**
-     * <p>Specifies the name of the EC2 security group.</p>
-     */
-    inline void SetEc2SecurityGroupName(const char* value) { m_ec2SecurityGroupNameHasBeenSet = true; m_ec2SecurityGroupName.assign(value); }
-
-    /**
-     * <p>Specifies the name of the EC2 security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupName(const Aws::String& value) { SetEc2SecurityGroupName(value); return *this;}
-
-    /**
-     * <p>Specifies the name of the EC2 security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupName(Aws::String&& value) { SetEc2SecurityGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the name of the EC2 security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupName(const char* value) { SetEc2SecurityGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides the Amazon Web Services ID of the owner of the EC2 security
      * group.</p>
      */
-    inline const Aws::String& GetEc2SecurityGroupOwnerId() const{ return m_ec2SecurityGroupOwnerId; }
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of the EC2 security
-     * group.</p>
-     */
+    inline const Aws::String& GetEc2SecurityGroupOwnerId() const { return m_ec2SecurityGroupOwnerId; }
     inline bool Ec2SecurityGroupOwnerIdHasBeenSet() const { return m_ec2SecurityGroupOwnerIdHasBeenSet; }
+    template<typename Ec2SecurityGroupOwnerIdT = Aws::String>
+    void SetEc2SecurityGroupOwnerId(Ec2SecurityGroupOwnerIdT&& value) { m_ec2SecurityGroupOwnerIdHasBeenSet = true; m_ec2SecurityGroupOwnerId = std::forward<Ec2SecurityGroupOwnerIdT>(value); }
+    template<typename Ec2SecurityGroupOwnerIdT = Aws::String>
+    AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupOwnerId(Ec2SecurityGroupOwnerIdT&& value) { SetEc2SecurityGroupOwnerId(std::forward<Ec2SecurityGroupOwnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of the EC2 security
-     * group.</p>
-     */
-    inline void SetEc2SecurityGroupOwnerId(const Aws::String& value) { m_ec2SecurityGroupOwnerIdHasBeenSet = true; m_ec2SecurityGroupOwnerId = value; }
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of the EC2 security
-     * group.</p>
-     */
-    inline void SetEc2SecurityGroupOwnerId(Aws::String&& value) { m_ec2SecurityGroupOwnerIdHasBeenSet = true; m_ec2SecurityGroupOwnerId = std::move(value); }
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of the EC2 security
-     * group.</p>
-     */
-    inline void SetEc2SecurityGroupOwnerId(const char* value) { m_ec2SecurityGroupOwnerIdHasBeenSet = true; m_ec2SecurityGroupOwnerId.assign(value); }
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of the EC2 security
-     * group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupOwnerId(const Aws::String& value) { SetEc2SecurityGroupOwnerId(value); return *this;}
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of the EC2 security
-     * group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupOwnerId(Aws::String&& value) { SetEc2SecurityGroupOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides the Amazon Web Services ID of the owner of the EC2 security
-     * group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithEc2SecurityGroupOwnerId(const char* value) { SetEc2SecurityGroupOwnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides the status of the EC2 security group.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>Provides the status of the EC2 security group.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>Provides the status of the EC2 security group.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>Provides the status of the EC2 security group.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>Provides the status of the EC2 security group.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>Provides the status of the EC2 security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Provides the status of the EC2 security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>Provides the status of the EC2 security group.</p>
-     */
-    inline AwsRdsDbSecurityGroupEc2SecurityGroup& WithStatus(const char* value) { SetStatus(value); return *this;}
-
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    AwsRdsDbSecurityGroupEc2SecurityGroup& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_ec2SecurityGroupId;

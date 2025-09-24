@@ -20,19 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-NetworkInterfaceCountRequest::NetworkInterfaceCountRequest() : 
-    m_min(0),
-    m_minHasBeenSet(false),
-    m_max(0),
-    m_maxHasBeenSet(false)
-{
-}
-
-NetworkInterfaceCountRequest::NetworkInterfaceCountRequest(const XmlNode& xmlNode) : 
-    m_min(0),
-    m_minHasBeenSet(false),
-    m_max(0),
-    m_maxHasBeenSet(false)
+NetworkInterfaceCountRequest::NetworkInterfaceCountRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

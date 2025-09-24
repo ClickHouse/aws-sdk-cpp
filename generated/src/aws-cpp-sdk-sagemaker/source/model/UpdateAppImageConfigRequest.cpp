@@ -12,13 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateAppImageConfigRequest::UpdateAppImageConfigRequest() : 
-    m_appImageConfigNameHasBeenSet(false),
-    m_kernelGatewayImageConfigHasBeenSet(false),
-    m_jupyterLabAppImageConfigHasBeenSet(false)
-{
-}
-
 Aws::String UpdateAppImageConfigRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +31,12 @@ Aws::String UpdateAppImageConfigRequest::SerializePayload() const
   if(m_jupyterLabAppImageConfigHasBeenSet)
   {
    payload.WithObject("JupyterLabAppImageConfig", m_jupyterLabAppImageConfig.Jsonize());
+
+  }
+
+  if(m_codeEditorAppImageConfigHasBeenSet)
+  {
+   payload.WithObject("CodeEditorAppImageConfig", m_codeEditorAppImageConfig.Jsonize());
 
   }
 

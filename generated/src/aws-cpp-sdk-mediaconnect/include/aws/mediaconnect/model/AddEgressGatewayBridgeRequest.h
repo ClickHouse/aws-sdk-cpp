@@ -21,38 +21,34 @@ namespace MediaConnect
 namespace Model
 {
 
+  /**
+   * <p> Create a bridge with the egress bridge type. An egress bridge is a
+   * cloud-to-ground bridge. The content comes from an existing MediaConnect flow and
+   * is delivered to your premises. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/AddEgressGatewayBridgeRequest">AWS
+   * API Reference</a></p>
+   */
   class AddEgressGatewayBridgeRequest
   {
   public:
-    AWS_MEDIACONNECT_API AddEgressGatewayBridgeRequest();
+    AWS_MEDIACONNECT_API AddEgressGatewayBridgeRequest() = default;
     AWS_MEDIACONNECT_API AddEgressGatewayBridgeRequest(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API AddEgressGatewayBridgeRequest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The maximum expected bitrate (in bps).
+     * <p> The maximum expected bitrate (in bps) of the egress bridge.</p>
      */
-    inline int GetMaxBitrate() const{ return m_maxBitrate; }
-
-    /**
-     * The maximum expected bitrate (in bps).
-     */
+    inline int GetMaxBitrate() const { return m_maxBitrate; }
     inline bool MaxBitrateHasBeenSet() const { return m_maxBitrateHasBeenSet; }
-
-    /**
-     * The maximum expected bitrate (in bps).
-     */
     inline void SetMaxBitrate(int value) { m_maxBitrateHasBeenSet = true; m_maxBitrate = value; }
-
-    /**
-     * The maximum expected bitrate (in bps).
-     */
     inline AddEgressGatewayBridgeRequest& WithMaxBitrate(int value) { SetMaxBitrate(value); return *this;}
-
+    ///@}
   private:
 
-    int m_maxBitrate;
+    int m_maxBitrate{0};
     bool m_maxBitrateHasBeenSet = false;
   };
 

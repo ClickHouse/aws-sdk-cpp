@@ -32,134 +32,47 @@ namespace Model
   class MediaInsightsPipelineConfigurationSummary
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API MediaInsightsPipelineConfigurationSummary();
+    AWS_CHIMESDKMEDIAPIPELINES_API MediaInsightsPipelineConfigurationSummary() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API MediaInsightsPipelineConfigurationSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API MediaInsightsPipelineConfigurationSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the media insights pipeline configuration.</p>
      */
-    inline const Aws::String& GetMediaInsightsPipelineConfigurationName() const{ return m_mediaInsightsPipelineConfigurationName; }
-
-    /**
-     * <p>The name of the media insights pipeline configuration.</p>
-     */
+    inline const Aws::String& GetMediaInsightsPipelineConfigurationName() const { return m_mediaInsightsPipelineConfigurationName; }
     inline bool MediaInsightsPipelineConfigurationNameHasBeenSet() const { return m_mediaInsightsPipelineConfigurationNameHasBeenSet; }
+    template<typename MediaInsightsPipelineConfigurationNameT = Aws::String>
+    void SetMediaInsightsPipelineConfigurationName(MediaInsightsPipelineConfigurationNameT&& value) { m_mediaInsightsPipelineConfigurationNameHasBeenSet = true; m_mediaInsightsPipelineConfigurationName = std::forward<MediaInsightsPipelineConfigurationNameT>(value); }
+    template<typename MediaInsightsPipelineConfigurationNameT = Aws::String>
+    MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationName(MediaInsightsPipelineConfigurationNameT&& value) { SetMediaInsightsPipelineConfigurationName(std::forward<MediaInsightsPipelineConfigurationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the media insights pipeline configuration.</p>
-     */
-    inline void SetMediaInsightsPipelineConfigurationName(const Aws::String& value) { m_mediaInsightsPipelineConfigurationNameHasBeenSet = true; m_mediaInsightsPipelineConfigurationName = value; }
-
-    /**
-     * <p>The name of the media insights pipeline configuration.</p>
-     */
-    inline void SetMediaInsightsPipelineConfigurationName(Aws::String&& value) { m_mediaInsightsPipelineConfigurationNameHasBeenSet = true; m_mediaInsightsPipelineConfigurationName = std::move(value); }
-
-    /**
-     * <p>The name of the media insights pipeline configuration.</p>
-     */
-    inline void SetMediaInsightsPipelineConfigurationName(const char* value) { m_mediaInsightsPipelineConfigurationNameHasBeenSet = true; m_mediaInsightsPipelineConfigurationName.assign(value); }
-
-    /**
-     * <p>The name of the media insights pipeline configuration.</p>
-     */
-    inline MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationName(const Aws::String& value) { SetMediaInsightsPipelineConfigurationName(value); return *this;}
-
-    /**
-     * <p>The name of the media insights pipeline configuration.</p>
-     */
-    inline MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationName(Aws::String&& value) { SetMediaInsightsPipelineConfigurationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the media insights pipeline configuration.</p>
-     */
-    inline MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationName(const char* value) { SetMediaInsightsPipelineConfigurationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the media insights pipeline configuration.</p>
      */
-    inline const Aws::String& GetMediaInsightsPipelineConfigurationId() const{ return m_mediaInsightsPipelineConfigurationId; }
-
-    /**
-     * <p>The ID of the media insights pipeline configuration.</p>
-     */
+    inline const Aws::String& GetMediaInsightsPipelineConfigurationId() const { return m_mediaInsightsPipelineConfigurationId; }
     inline bool MediaInsightsPipelineConfigurationIdHasBeenSet() const { return m_mediaInsightsPipelineConfigurationIdHasBeenSet; }
+    template<typename MediaInsightsPipelineConfigurationIdT = Aws::String>
+    void SetMediaInsightsPipelineConfigurationId(MediaInsightsPipelineConfigurationIdT&& value) { m_mediaInsightsPipelineConfigurationIdHasBeenSet = true; m_mediaInsightsPipelineConfigurationId = std::forward<MediaInsightsPipelineConfigurationIdT>(value); }
+    template<typename MediaInsightsPipelineConfigurationIdT = Aws::String>
+    MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationId(MediaInsightsPipelineConfigurationIdT&& value) { SetMediaInsightsPipelineConfigurationId(std::forward<MediaInsightsPipelineConfigurationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the media insights pipeline configuration.</p>
-     */
-    inline void SetMediaInsightsPipelineConfigurationId(const Aws::String& value) { m_mediaInsightsPipelineConfigurationIdHasBeenSet = true; m_mediaInsightsPipelineConfigurationId = value; }
-
-    /**
-     * <p>The ID of the media insights pipeline configuration.</p>
-     */
-    inline void SetMediaInsightsPipelineConfigurationId(Aws::String&& value) { m_mediaInsightsPipelineConfigurationIdHasBeenSet = true; m_mediaInsightsPipelineConfigurationId = std::move(value); }
-
-    /**
-     * <p>The ID of the media insights pipeline configuration.</p>
-     */
-    inline void SetMediaInsightsPipelineConfigurationId(const char* value) { m_mediaInsightsPipelineConfigurationIdHasBeenSet = true; m_mediaInsightsPipelineConfigurationId.assign(value); }
-
-    /**
-     * <p>The ID of the media insights pipeline configuration.</p>
-     */
-    inline MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationId(const Aws::String& value) { SetMediaInsightsPipelineConfigurationId(value); return *this;}
-
-    /**
-     * <p>The ID of the media insights pipeline configuration.</p>
-     */
-    inline MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationId(Aws::String&& value) { SetMediaInsightsPipelineConfigurationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the media insights pipeline configuration.</p>
-     */
-    inline MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationId(const char* value) { SetMediaInsightsPipelineConfigurationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the media insights pipeline configuration.</p>
      */
-    inline const Aws::String& GetMediaInsightsPipelineConfigurationArn() const{ return m_mediaInsightsPipelineConfigurationArn; }
-
-    /**
-     * <p>The ARN of the media insights pipeline configuration.</p>
-     */
+    inline const Aws::String& GetMediaInsightsPipelineConfigurationArn() const { return m_mediaInsightsPipelineConfigurationArn; }
     inline bool MediaInsightsPipelineConfigurationArnHasBeenSet() const { return m_mediaInsightsPipelineConfigurationArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the media insights pipeline configuration.</p>
-     */
-    inline void SetMediaInsightsPipelineConfigurationArn(const Aws::String& value) { m_mediaInsightsPipelineConfigurationArnHasBeenSet = true; m_mediaInsightsPipelineConfigurationArn = value; }
-
-    /**
-     * <p>The ARN of the media insights pipeline configuration.</p>
-     */
-    inline void SetMediaInsightsPipelineConfigurationArn(Aws::String&& value) { m_mediaInsightsPipelineConfigurationArnHasBeenSet = true; m_mediaInsightsPipelineConfigurationArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the media insights pipeline configuration.</p>
-     */
-    inline void SetMediaInsightsPipelineConfigurationArn(const char* value) { m_mediaInsightsPipelineConfigurationArnHasBeenSet = true; m_mediaInsightsPipelineConfigurationArn.assign(value); }
-
-    /**
-     * <p>The ARN of the media insights pipeline configuration.</p>
-     */
-    inline MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationArn(const Aws::String& value) { SetMediaInsightsPipelineConfigurationArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the media insights pipeline configuration.</p>
-     */
-    inline MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationArn(Aws::String&& value) { SetMediaInsightsPipelineConfigurationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the media insights pipeline configuration.</p>
-     */
-    inline MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationArn(const char* value) { SetMediaInsightsPipelineConfigurationArn(value); return *this;}
-
+    template<typename MediaInsightsPipelineConfigurationArnT = Aws::String>
+    void SetMediaInsightsPipelineConfigurationArn(MediaInsightsPipelineConfigurationArnT&& value) { m_mediaInsightsPipelineConfigurationArnHasBeenSet = true; m_mediaInsightsPipelineConfigurationArn = std::forward<MediaInsightsPipelineConfigurationArnT>(value); }
+    template<typename MediaInsightsPipelineConfigurationArnT = Aws::String>
+    MediaInsightsPipelineConfigurationSummary& WithMediaInsightsPipelineConfigurationArn(MediaInsightsPipelineConfigurationArnT&& value) { SetMediaInsightsPipelineConfigurationArn(std::forward<MediaInsightsPipelineConfigurationArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_mediaInsightsPipelineConfigurationName;

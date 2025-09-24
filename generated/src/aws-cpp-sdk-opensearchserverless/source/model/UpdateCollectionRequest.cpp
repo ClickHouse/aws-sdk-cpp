@@ -12,21 +12,13 @@ using namespace Aws::OpenSearchServerless::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateCollectionRequest::UpdateCollectionRequest() : 
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_descriptionHasBeenSet(false),
-    m_idHasBeenSet(false)
-{
-}
-
 Aws::String UpdateCollectionRequest::SerializePayload() const
 {
   JsonValue payload;
 
-  if(m_clientTokenHasBeenSet)
+  if(m_idHasBeenSet)
   {
-   payload.WithString("clientToken", m_clientToken);
+   payload.WithString("id", m_id);
 
   }
 
@@ -36,9 +28,9 @@ Aws::String UpdateCollectionRequest::SerializePayload() const
 
   }
 
-  if(m_idHasBeenSet)
+  if(m_clientTokenHasBeenSet)
   {
-   payload.WithString("id", m_id);
+   payload.WithString("clientToken", m_clientToken);
 
   }
 

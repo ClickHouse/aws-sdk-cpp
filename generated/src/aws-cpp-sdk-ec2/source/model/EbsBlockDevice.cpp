@@ -20,41 +20,7 @@ namespace EC2
 namespace Model
 {
 
-EbsBlockDevice::EbsBlockDevice() : 
-    m_deleteOnTermination(false),
-    m_deleteOnTerminationHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_volumeSize(0),
-    m_volumeSizeHasBeenSet(false),
-    m_volumeType(VolumeType::NOT_SET),
-    m_volumeTypeHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_throughput(0),
-    m_throughputHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false)
-{
-}
-
-EbsBlockDevice::EbsBlockDevice(const XmlNode& xmlNode) : 
-    m_deleteOnTermination(false),
-    m_deleteOnTerminationHasBeenSet(false),
-    m_iops(0),
-    m_iopsHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_volumeSize(0),
-    m_volumeSizeHasBeenSet(false),
-    m_volumeType(VolumeType::NOT_SET),
-    m_volumeTypeHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_throughput(0),
-    m_throughputHasBeenSet(false),
-    m_outpostArnHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false)
+EbsBlockDevice::EbsBlockDevice(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -92,7 +58,7 @@ EbsBlockDevice& EbsBlockDevice::operator =(const XmlNode& xmlNode)
     XmlNode volumeTypeNode = resultNode.FirstChild("volumeType");
     if(!volumeTypeNode.IsNull())
     {
-      m_volumeType = VolumeTypeMapper::GetVolumeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(volumeTypeNode.GetText()).c_str()).c_str());
+      m_volumeType = VolumeTypeMapper::GetVolumeTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(volumeTypeNode.GetText()).c_str()));
       m_volumeTypeHasBeenSet = true;
     }
     XmlNode kmsKeyIdNode = resultNode.FirstChild("kmsKeyId");
@@ -113,11 +79,29 @@ EbsBlockDevice& EbsBlockDevice::operator =(const XmlNode& xmlNode)
       m_outpostArn = Aws::Utils::Xml::DecodeEscapedXmlText(outpostArnNode.GetText());
       m_outpostArnHasBeenSet = true;
     }
+    XmlNode availabilityZoneNode = resultNode.FirstChild("availabilityZone");
+    if(!availabilityZoneNode.IsNull())
+    {
+      m_availabilityZone = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneNode.GetText());
+      m_availabilityZoneHasBeenSet = true;
+    }
     XmlNode encryptedNode = resultNode.FirstChild("encrypted");
     if(!encryptedNode.IsNull())
     {
       m_encrypted = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(encryptedNode.GetText()).c_str()).c_str());
       m_encryptedHasBeenSet = true;
+    }
+    XmlNode volumeInitializationRateNode = resultNode.FirstChild("VolumeInitializationRate");
+    if(!volumeInitializationRateNode.IsNull())
+    {
+      m_volumeInitializationRate = StringUtils::ConvertToInt32(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(volumeInitializationRateNode.GetText()).c_str()).c_str());
+      m_volumeInitializationRateHasBeenSet = true;
+    }
+    XmlNode availabilityZoneIdNode = resultNode.FirstChild("AvailabilityZoneId");
+    if(!availabilityZoneIdNode.IsNull())
+    {
+      m_availabilityZoneId = Aws::Utils::Xml::DecodeEscapedXmlText(availabilityZoneIdNode.GetText());
+      m_availabilityZoneIdHasBeenSet = true;
     }
   }
 
@@ -148,7 +132,7 @@ void EbsBlockDevice::OutputToStream(Aws::OStream& oStream, const char* location,
 
   if(m_volumeTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".VolumeType=" << VolumeTypeMapper::GetNameForVolumeType(m_volumeType) << "&";
+      oStream << location << index << locationValue << ".VolumeType=" << StringUtils::URLEncode(VolumeTypeMapper::GetNameForVolumeType(m_volumeType)) << "&";
   }
 
   if(m_kmsKeyIdHasBeenSet)
@@ -166,9 +150,24 @@ void EbsBlockDevice::OutputToStream(Aws::OStream& oStream, const char* location,
       oStream << location << index << locationValue << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
   }
 
+  if(m_availabilityZoneHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
+  }
+
   if(m_encryptedHasBeenSet)
   {
       oStream << location << index << locationValue << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
+  }
+
+  if(m_volumeInitializationRateHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".VolumeInitializationRate=" << m_volumeInitializationRate << "&";
+  }
+
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
   }
 
 }
@@ -193,7 +192,7 @@ void EbsBlockDevice::OutputToStream(Aws::OStream& oStream, const char* location)
   }
   if(m_volumeTypeHasBeenSet)
   {
-      oStream << location << ".VolumeType=" << VolumeTypeMapper::GetNameForVolumeType(m_volumeType) << "&";
+      oStream << location << ".VolumeType=" << StringUtils::URLEncode(VolumeTypeMapper::GetNameForVolumeType(m_volumeType)) << "&";
   }
   if(m_kmsKeyIdHasBeenSet)
   {
@@ -207,9 +206,21 @@ void EbsBlockDevice::OutputToStream(Aws::OStream& oStream, const char* location)
   {
       oStream << location << ".OutpostArn=" << StringUtils::URLEncode(m_outpostArn.c_str()) << "&";
   }
+  if(m_availabilityZoneHasBeenSet)
+  {
+      oStream << location << ".AvailabilityZone=" << StringUtils::URLEncode(m_availabilityZone.c_str()) << "&";
+  }
   if(m_encryptedHasBeenSet)
   {
       oStream << location << ".Encrypted=" << std::boolalpha << m_encrypted << "&";
+  }
+  if(m_volumeInitializationRateHasBeenSet)
+  {
+      oStream << location << ".VolumeInitializationRate=" << m_volumeInitializationRate << "&";
+  }
+  if(m_availabilityZoneIdHasBeenSet)
+  {
+      oStream << location << ".AvailabilityZoneId=" << StringUtils::URLEncode(m_availabilityZoneId.c_str()) << "&";
   }
 }
 

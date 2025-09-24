@@ -32,81 +32,42 @@ namespace Model
   class ExternalWorkflowExecutionSignaledEventAttributes
   {
   public:
-    AWS_SWF_API ExternalWorkflowExecutionSignaledEventAttributes();
+    AWS_SWF_API ExternalWorkflowExecutionSignaledEventAttributes() = default;
     AWS_SWF_API ExternalWorkflowExecutionSignaledEventAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API ExternalWorkflowExecutionSignaledEventAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SWF_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The external workflow execution that the signal was delivered to.</p>
      */
-    inline const WorkflowExecution& GetWorkflowExecution() const{ return m_workflowExecution; }
-
-    /**
-     * <p>The external workflow execution that the signal was delivered to.</p>
-     */
+    inline const WorkflowExecution& GetWorkflowExecution() const { return m_workflowExecution; }
     inline bool WorkflowExecutionHasBeenSet() const { return m_workflowExecutionHasBeenSet; }
+    template<typename WorkflowExecutionT = WorkflowExecution>
+    void SetWorkflowExecution(WorkflowExecutionT&& value) { m_workflowExecutionHasBeenSet = true; m_workflowExecution = std::forward<WorkflowExecutionT>(value); }
+    template<typename WorkflowExecutionT = WorkflowExecution>
+    ExternalWorkflowExecutionSignaledEventAttributes& WithWorkflowExecution(WorkflowExecutionT&& value) { SetWorkflowExecution(std::forward<WorkflowExecutionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The external workflow execution that the signal was delivered to.</p>
-     */
-    inline void SetWorkflowExecution(const WorkflowExecution& value) { m_workflowExecutionHasBeenSet = true; m_workflowExecution = value; }
-
-    /**
-     * <p>The external workflow execution that the signal was delivered to.</p>
-     */
-    inline void SetWorkflowExecution(WorkflowExecution&& value) { m_workflowExecutionHasBeenSet = true; m_workflowExecution = std::move(value); }
-
-    /**
-     * <p>The external workflow execution that the signal was delivered to.</p>
-     */
-    inline ExternalWorkflowExecutionSignaledEventAttributes& WithWorkflowExecution(const WorkflowExecution& value) { SetWorkflowExecution(value); return *this;}
-
-    /**
-     * <p>The external workflow execution that the signal was delivered to.</p>
-     */
-    inline ExternalWorkflowExecutionSignaledEventAttributes& WithWorkflowExecution(WorkflowExecution&& value) { SetWorkflowExecution(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the <code>SignalExternalWorkflowExecutionInitiated</code> event
      * corresponding to the <code>SignalExternalWorkflowExecution</code> decision to
      * request this signal. This information can be useful for diagnosing problems by
      * tracing back the chain of events leading up to this event.</p>
      */
-    inline long long GetInitiatedEventId() const{ return m_initiatedEventId; }
-
-    /**
-     * <p>The ID of the <code>SignalExternalWorkflowExecutionInitiated</code> event
-     * corresponding to the <code>SignalExternalWorkflowExecution</code> decision to
-     * request this signal. This information can be useful for diagnosing problems by
-     * tracing back the chain of events leading up to this event.</p>
-     */
+    inline long long GetInitiatedEventId() const { return m_initiatedEventId; }
     inline bool InitiatedEventIdHasBeenSet() const { return m_initiatedEventIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the <code>SignalExternalWorkflowExecutionInitiated</code> event
-     * corresponding to the <code>SignalExternalWorkflowExecution</code> decision to
-     * request this signal. This information can be useful for diagnosing problems by
-     * tracing back the chain of events leading up to this event.</p>
-     */
     inline void SetInitiatedEventId(long long value) { m_initiatedEventIdHasBeenSet = true; m_initiatedEventId = value; }
-
-    /**
-     * <p>The ID of the <code>SignalExternalWorkflowExecutionInitiated</code> event
-     * corresponding to the <code>SignalExternalWorkflowExecution</code> decision to
-     * request this signal. This information can be useful for diagnosing problems by
-     * tracing back the chain of events leading up to this event.</p>
-     */
     inline ExternalWorkflowExecutionSignaledEventAttributes& WithInitiatedEventId(long long value) { SetInitiatedEventId(value); return *this;}
-
+    ///@}
   private:
 
     WorkflowExecution m_workflowExecution;
     bool m_workflowExecutionHasBeenSet = false;
 
-    long long m_initiatedEventId;
+    long long m_initiatedEventId{0};
     bool m_initiatedEventIdHasBeenSet = false;
   };
 

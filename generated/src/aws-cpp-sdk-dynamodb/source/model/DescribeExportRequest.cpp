@@ -12,11 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeExportRequest::DescribeExportRequest() : 
-    m_exportArnHasBeenSet(false)
-{
-}
-
 Aws::String DescribeExportRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -39,5 +34,15 @@ Aws::Http::HeaderValueCollection DescribeExportRequest::GetRequestSpecificHeader
 }
 
 
+
+DescribeExportRequest::EndpointParameters DescribeExportRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (ExportArnHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetExportArn(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

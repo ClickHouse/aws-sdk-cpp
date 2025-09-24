@@ -32,7 +32,7 @@ namespace Model
   class GlobalReplicationGroupInfo
   {
   public:
-    AWS_ELASTICACHE_API GlobalReplicationGroupInfo();
+    AWS_ELASTICACHE_API GlobalReplicationGroupInfo() = default;
     AWS_ELASTICACHE_API GlobalReplicationGroupInfo(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICACHE_API GlobalReplicationGroupInfo& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,95 +40,30 @@ namespace Model
     AWS_ELASTICACHE_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the Global datastore</p>
      */
-    inline const Aws::String& GetGlobalReplicationGroupId() const{ return m_globalReplicationGroupId; }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
+    inline const Aws::String& GetGlobalReplicationGroupId() const { return m_globalReplicationGroupId; }
     inline bool GlobalReplicationGroupIdHasBeenSet() const { return m_globalReplicationGroupIdHasBeenSet; }
+    template<typename GlobalReplicationGroupIdT = Aws::String>
+    void SetGlobalReplicationGroupId(GlobalReplicationGroupIdT&& value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId = std::forward<GlobalReplicationGroupIdT>(value); }
+    template<typename GlobalReplicationGroupIdT = Aws::String>
+    GlobalReplicationGroupInfo& WithGlobalReplicationGroupId(GlobalReplicationGroupIdT&& value) { SetGlobalReplicationGroupId(std::forward<GlobalReplicationGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupId(const Aws::String& value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId = value; }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupId(Aws::String&& value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId = std::move(value); }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline void SetGlobalReplicationGroupId(const char* value) { m_globalReplicationGroupIdHasBeenSet = true; m_globalReplicationGroupId.assign(value); }
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline GlobalReplicationGroupInfo& WithGlobalReplicationGroupId(const Aws::String& value) { SetGlobalReplicationGroupId(value); return *this;}
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline GlobalReplicationGroupInfo& WithGlobalReplicationGroupId(Aws::String&& value) { SetGlobalReplicationGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Global datastore</p>
-     */
-    inline GlobalReplicationGroupInfo& WithGlobalReplicationGroupId(const char* value) { SetGlobalReplicationGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The role of the replication group in a Global datastore. Can be primary or
      * secondary.</p>
      */
-    inline const Aws::String& GetGlobalReplicationGroupMemberRole() const{ return m_globalReplicationGroupMemberRole; }
-
-    /**
-     * <p>The role of the replication group in a Global datastore. Can be primary or
-     * secondary.</p>
-     */
+    inline const Aws::String& GetGlobalReplicationGroupMemberRole() const { return m_globalReplicationGroupMemberRole; }
     inline bool GlobalReplicationGroupMemberRoleHasBeenSet() const { return m_globalReplicationGroupMemberRoleHasBeenSet; }
-
-    /**
-     * <p>The role of the replication group in a Global datastore. Can be primary or
-     * secondary.</p>
-     */
-    inline void SetGlobalReplicationGroupMemberRole(const Aws::String& value) { m_globalReplicationGroupMemberRoleHasBeenSet = true; m_globalReplicationGroupMemberRole = value; }
-
-    /**
-     * <p>The role of the replication group in a Global datastore. Can be primary or
-     * secondary.</p>
-     */
-    inline void SetGlobalReplicationGroupMemberRole(Aws::String&& value) { m_globalReplicationGroupMemberRoleHasBeenSet = true; m_globalReplicationGroupMemberRole = std::move(value); }
-
-    /**
-     * <p>The role of the replication group in a Global datastore. Can be primary or
-     * secondary.</p>
-     */
-    inline void SetGlobalReplicationGroupMemberRole(const char* value) { m_globalReplicationGroupMemberRoleHasBeenSet = true; m_globalReplicationGroupMemberRole.assign(value); }
-
-    /**
-     * <p>The role of the replication group in a Global datastore. Can be primary or
-     * secondary.</p>
-     */
-    inline GlobalReplicationGroupInfo& WithGlobalReplicationGroupMemberRole(const Aws::String& value) { SetGlobalReplicationGroupMemberRole(value); return *this;}
-
-    /**
-     * <p>The role of the replication group in a Global datastore. Can be primary or
-     * secondary.</p>
-     */
-    inline GlobalReplicationGroupInfo& WithGlobalReplicationGroupMemberRole(Aws::String&& value) { SetGlobalReplicationGroupMemberRole(std::move(value)); return *this;}
-
-    /**
-     * <p>The role of the replication group in a Global datastore. Can be primary or
-     * secondary.</p>
-     */
-    inline GlobalReplicationGroupInfo& WithGlobalReplicationGroupMemberRole(const char* value) { SetGlobalReplicationGroupMemberRole(value); return *this;}
-
+    template<typename GlobalReplicationGroupMemberRoleT = Aws::String>
+    void SetGlobalReplicationGroupMemberRole(GlobalReplicationGroupMemberRoleT&& value) { m_globalReplicationGroupMemberRoleHasBeenSet = true; m_globalReplicationGroupMemberRole = std::forward<GlobalReplicationGroupMemberRoleT>(value); }
+    template<typename GlobalReplicationGroupMemberRoleT = Aws::String>
+    GlobalReplicationGroupInfo& WithGlobalReplicationGroupMemberRole(GlobalReplicationGroupMemberRoleT&& value) { SetGlobalReplicationGroupMemberRole(std::forward<GlobalReplicationGroupMemberRoleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_globalReplicationGroupId;

@@ -32,45 +32,24 @@ namespace Model
   class AsymmetricEncryptionAttributes
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHYDATA_API AsymmetricEncryptionAttributes();
+    AWS_PAYMENTCRYPTOGRAPHYDATA_API AsymmetricEncryptionAttributes() = default;
     AWS_PAYMENTCRYPTOGRAPHYDATA_API AsymmetricEncryptionAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API AsymmetricEncryptionAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHYDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The padding to be included with the data.</p>
      */
-    inline const PaddingType& GetPaddingType() const{ return m_paddingType; }
-
-    /**
-     * <p>The padding to be included with the data.</p>
-     */
+    inline PaddingType GetPaddingType() const { return m_paddingType; }
     inline bool PaddingTypeHasBeenSet() const { return m_paddingTypeHasBeenSet; }
-
-    /**
-     * <p>The padding to be included with the data.</p>
-     */
-    inline void SetPaddingType(const PaddingType& value) { m_paddingTypeHasBeenSet = true; m_paddingType = value; }
-
-    /**
-     * <p>The padding to be included with the data.</p>
-     */
-    inline void SetPaddingType(PaddingType&& value) { m_paddingTypeHasBeenSet = true; m_paddingType = std::move(value); }
-
-    /**
-     * <p>The padding to be included with the data.</p>
-     */
-    inline AsymmetricEncryptionAttributes& WithPaddingType(const PaddingType& value) { SetPaddingType(value); return *this;}
-
-    /**
-     * <p>The padding to be included with the data.</p>
-     */
-    inline AsymmetricEncryptionAttributes& WithPaddingType(PaddingType&& value) { SetPaddingType(std::move(value)); return *this;}
-
+    inline void SetPaddingType(PaddingType value) { m_paddingTypeHasBeenSet = true; m_paddingType = value; }
+    inline AsymmetricEncryptionAttributes& WithPaddingType(PaddingType value) { SetPaddingType(value); return *this;}
+    ///@}
   private:
 
-    PaddingType m_paddingType;
+    PaddingType m_paddingType{PaddingType::NOT_SET};
     bool m_paddingTypeHasBeenSet = false;
   };
 

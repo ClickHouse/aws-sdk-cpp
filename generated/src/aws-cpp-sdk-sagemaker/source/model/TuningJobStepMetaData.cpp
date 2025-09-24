@@ -18,13 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TuningJobStepMetaData::TuningJobStepMetaData() : 
-    m_arnHasBeenSet(false)
-{
-}
-
-TuningJobStepMetaData::TuningJobStepMetaData(JsonView jsonValue) : 
-    m_arnHasBeenSet(false)
+TuningJobStepMetaData::TuningJobStepMetaData(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ TuningJobStepMetaData& TuningJobStepMetaData::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   return *this;
 }
 

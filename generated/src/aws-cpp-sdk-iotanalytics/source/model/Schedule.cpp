@@ -18,13 +18,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-Schedule::Schedule() : 
-    m_expressionHasBeenSet(false)
-{
-}
-
-Schedule::Schedule(JsonView jsonValue) : 
-    m_expressionHasBeenSet(false)
+Schedule::Schedule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ Schedule& Schedule::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("expression"))
   {
     m_expression = jsonValue.GetString("expression");
-
     m_expressionHasBeenSet = true;
   }
-
   return *this;
 }
 

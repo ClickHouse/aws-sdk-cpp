@@ -20,19 +20,7 @@ namespace CloudWatch
 namespace Model
 {
 
-InsightRuleContributor::InsightRuleContributor() : 
-    m_keysHasBeenSet(false),
-    m_approximateAggregateValue(0.0),
-    m_approximateAggregateValueHasBeenSet(false),
-    m_datapointsHasBeenSet(false)
-{
-}
-
-InsightRuleContributor::InsightRuleContributor(const XmlNode& xmlNode) : 
-    m_keysHasBeenSet(false),
-    m_approximateAggregateValue(0.0),
-    m_approximateAggregateValueHasBeenSet(false),
-    m_datapointsHasBeenSet(false)
+InsightRuleContributor::InsightRuleContributor(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -47,6 +35,7 @@ InsightRuleContributor& InsightRuleContributor::operator =(const XmlNode& xmlNod
     if(!keysNode.IsNull())
     {
       XmlNode keysMember = keysNode.FirstChild("member");
+      m_keysHasBeenSet = !keysMember.IsNull();
       while(!keysMember.IsNull())
       {
         m_keys.push_back(keysMember.GetText());
@@ -65,6 +54,7 @@ InsightRuleContributor& InsightRuleContributor::operator =(const XmlNode& xmlNod
     if(!datapointsNode.IsNull())
     {
       XmlNode datapointsMember = datapointsNode.FirstChild("member");
+      m_datapointsHasBeenSet = !datapointsMember.IsNull();
       while(!datapointsMember.IsNull())
       {
         m_datapoints.push_back(datapointsMember);
@@ -119,7 +109,7 @@ void InsightRuleContributor::OutputToStream(Aws::OStream& oStream, const char* l
   }
   if(m_approximateAggregateValueHasBeenSet)
   {
-        oStream << location << ".ApproximateAggregateValue=" << StringUtils::URLEncode(m_approximateAggregateValue) << "&";
+      oStream << location << ".ApproximateAggregateValue=" << StringUtils::URLEncode(m_approximateAggregateValue) << "&";
   }
   if(m_datapointsHasBeenSet)
   {
@@ -127,7 +117,7 @@ void InsightRuleContributor::OutputToStream(Aws::OStream& oStream, const char* l
       for(auto& item : m_datapoints)
       {
         Aws::StringStream datapointsSs;
-        datapointsSs << location <<  ".Datapoints.member." << datapointsIdx++;
+        datapointsSs << location << ".Datapoints.member." << datapointsIdx++;
         item.OutputToStream(oStream, datapointsSs.str().c_str());
       }
   }

@@ -33,83 +33,35 @@ namespace Model
   class PublicDnsNamespaceChange
   {
   public:
-    AWS_SERVICEDISCOVERY_API PublicDnsNamespaceChange();
+    AWS_SERVICEDISCOVERY_API PublicDnsNamespaceChange() = default;
     AWS_SERVICEDISCOVERY_API PublicDnsNamespaceChange(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API PublicDnsNamespaceChange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SERVICEDISCOVERY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An updated description for the public DNS namespace.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>An updated description for the public DNS namespace.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    PublicDnsNamespaceChange& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An updated description for the public DNS namespace.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>An updated description for the public DNS namespace.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>An updated description for the public DNS namespace.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>An updated description for the public DNS namespace.</p>
-     */
-    inline PublicDnsNamespaceChange& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>An updated description for the public DNS namespace.</p>
-     */
-    inline PublicDnsNamespaceChange& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>An updated description for the public DNS namespace.</p>
-     */
-    inline PublicDnsNamespaceChange& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Properties to be updated in the public DNS namespace.</p>
      */
-    inline const PublicDnsNamespacePropertiesChange& GetProperties() const{ return m_properties; }
-
-    /**
-     * <p>Properties to be updated in the public DNS namespace.</p>
-     */
+    inline const PublicDnsNamespacePropertiesChange& GetProperties() const { return m_properties; }
     inline bool PropertiesHasBeenSet() const { return m_propertiesHasBeenSet; }
-
-    /**
-     * <p>Properties to be updated in the public DNS namespace.</p>
-     */
-    inline void SetProperties(const PublicDnsNamespacePropertiesChange& value) { m_propertiesHasBeenSet = true; m_properties = value; }
-
-    /**
-     * <p>Properties to be updated in the public DNS namespace.</p>
-     */
-    inline void SetProperties(PublicDnsNamespacePropertiesChange&& value) { m_propertiesHasBeenSet = true; m_properties = std::move(value); }
-
-    /**
-     * <p>Properties to be updated in the public DNS namespace.</p>
-     */
-    inline PublicDnsNamespaceChange& WithProperties(const PublicDnsNamespacePropertiesChange& value) { SetProperties(value); return *this;}
-
-    /**
-     * <p>Properties to be updated in the public DNS namespace.</p>
-     */
-    inline PublicDnsNamespaceChange& WithProperties(PublicDnsNamespacePropertiesChange&& value) { SetProperties(std::move(value)); return *this;}
-
+    template<typename PropertiesT = PublicDnsNamespacePropertiesChange>
+    void SetProperties(PropertiesT&& value) { m_propertiesHasBeenSet = true; m_properties = std::forward<PropertiesT>(value); }
+    template<typename PropertiesT = PublicDnsNamespacePropertiesChange>
+    PublicDnsNamespaceChange& WithProperties(PropertiesT&& value) { SetProperties(std::forward<PropertiesT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

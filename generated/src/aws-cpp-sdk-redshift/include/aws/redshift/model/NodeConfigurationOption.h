@@ -32,7 +32,7 @@ namespace Model
   class NodeConfigurationOption
   {
   public:
-    AWS_REDSHIFT_API NodeConfigurationOption();
+    AWS_REDSHIFT_API NodeConfigurationOption() = default;
     AWS_REDSHIFT_API NodeConfigurationOption(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_REDSHIFT_API NodeConfigurationOption& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,131 +40,59 @@ namespace Model
     AWS_REDSHIFT_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
-     * <p>The node type, such as, "ds2.8xlarge".</p>
+     * <p>The node type, such as, "ra3.4xlarge".</p>
      */
-    inline const Aws::String& GetNodeType() const{ return m_nodeType; }
-
-    /**
-     * <p>The node type, such as, "ds2.8xlarge".</p>
-     */
+    inline const Aws::String& GetNodeType() const { return m_nodeType; }
     inline bool NodeTypeHasBeenSet() const { return m_nodeTypeHasBeenSet; }
+    template<typename NodeTypeT = Aws::String>
+    void SetNodeType(NodeTypeT&& value) { m_nodeTypeHasBeenSet = true; m_nodeType = std::forward<NodeTypeT>(value); }
+    template<typename NodeTypeT = Aws::String>
+    NodeConfigurationOption& WithNodeType(NodeTypeT&& value) { SetNodeType(std::forward<NodeTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The node type, such as, "ds2.8xlarge".</p>
-     */
-    inline void SetNodeType(const Aws::String& value) { m_nodeTypeHasBeenSet = true; m_nodeType = value; }
-
-    /**
-     * <p>The node type, such as, "ds2.8xlarge".</p>
-     */
-    inline void SetNodeType(Aws::String&& value) { m_nodeTypeHasBeenSet = true; m_nodeType = std::move(value); }
-
-    /**
-     * <p>The node type, such as, "ds2.8xlarge".</p>
-     */
-    inline void SetNodeType(const char* value) { m_nodeTypeHasBeenSet = true; m_nodeType.assign(value); }
-
-    /**
-     * <p>The node type, such as, "ds2.8xlarge".</p>
-     */
-    inline NodeConfigurationOption& WithNodeType(const Aws::String& value) { SetNodeType(value); return *this;}
-
-    /**
-     * <p>The node type, such as, "ds2.8xlarge".</p>
-     */
-    inline NodeConfigurationOption& WithNodeType(Aws::String&& value) { SetNodeType(std::move(value)); return *this;}
-
-    /**
-     * <p>The node type, such as, "ds2.8xlarge".</p>
-     */
-    inline NodeConfigurationOption& WithNodeType(const char* value) { SetNodeType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of nodes.</p>
      */
-    inline int GetNumberOfNodes() const{ return m_numberOfNodes; }
-
-    /**
-     * <p>The number of nodes.</p>
-     */
+    inline int GetNumberOfNodes() const { return m_numberOfNodes; }
     inline bool NumberOfNodesHasBeenSet() const { return m_numberOfNodesHasBeenSet; }
-
-    /**
-     * <p>The number of nodes.</p>
-     */
     inline void SetNumberOfNodes(int value) { m_numberOfNodesHasBeenSet = true; m_numberOfNodes = value; }
-
-    /**
-     * <p>The number of nodes.</p>
-     */
     inline NodeConfigurationOption& WithNumberOfNodes(int value) { SetNumberOfNodes(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The estimated disk utilizaton percentage.</p>
      */
-    inline double GetEstimatedDiskUtilizationPercent() const{ return m_estimatedDiskUtilizationPercent; }
-
-    /**
-     * <p>The estimated disk utilizaton percentage.</p>
-     */
+    inline double GetEstimatedDiskUtilizationPercent() const { return m_estimatedDiskUtilizationPercent; }
     inline bool EstimatedDiskUtilizationPercentHasBeenSet() const { return m_estimatedDiskUtilizationPercentHasBeenSet; }
-
-    /**
-     * <p>The estimated disk utilizaton percentage.</p>
-     */
     inline void SetEstimatedDiskUtilizationPercent(double value) { m_estimatedDiskUtilizationPercentHasBeenSet = true; m_estimatedDiskUtilizationPercent = value; }
-
-    /**
-     * <p>The estimated disk utilizaton percentage.</p>
-     */
     inline NodeConfigurationOption& WithEstimatedDiskUtilizationPercent(double value) { SetEstimatedDiskUtilizationPercent(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The category of the node configuration recommendation.</p>
      */
-    inline const Mode& GetMode() const{ return m_mode; }
-
-    /**
-     * <p>The category of the node configuration recommendation.</p>
-     */
+    inline Mode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * <p>The category of the node configuration recommendation.</p>
-     */
-    inline void SetMode(const Mode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * <p>The category of the node configuration recommendation.</p>
-     */
-    inline void SetMode(Mode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * <p>The category of the node configuration recommendation.</p>
-     */
-    inline NodeConfigurationOption& WithMode(const Mode& value) { SetMode(value); return *this;}
-
-    /**
-     * <p>The category of the node configuration recommendation.</p>
-     */
-    inline NodeConfigurationOption& WithMode(Mode&& value) { SetMode(std::move(value)); return *this;}
-
+    inline void SetMode(Mode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline NodeConfigurationOption& WithMode(Mode value) { SetMode(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_nodeType;
     bool m_nodeTypeHasBeenSet = false;
 
-    int m_numberOfNodes;
+    int m_numberOfNodes{0};
     bool m_numberOfNodesHasBeenSet = false;
 
-    double m_estimatedDiskUtilizationPercent;
+    double m_estimatedDiskUtilizationPercent{0.0};
     bool m_estimatedDiskUtilizationPercentHasBeenSet = false;
 
-    Mode m_mode;
+    Mode m_mode{Mode::NOT_SET};
     bool m_modeHasBeenSet = false;
   };
 

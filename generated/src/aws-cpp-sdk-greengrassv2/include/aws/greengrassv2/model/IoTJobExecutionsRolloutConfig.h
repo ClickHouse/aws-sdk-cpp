@@ -33,73 +33,40 @@ namespace Model
   class IoTJobExecutionsRolloutConfig
   {
   public:
-    AWS_GREENGRASSV2_API IoTJobExecutionsRolloutConfig();
+    AWS_GREENGRASSV2_API IoTJobExecutionsRolloutConfig() = default;
     AWS_GREENGRASSV2_API IoTJobExecutionsRolloutConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASSV2_API IoTJobExecutionsRolloutConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GREENGRASSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The exponential rate to increase the job rollout rate.</p>
      */
-    inline const IoTJobExponentialRolloutRate& GetExponentialRate() const{ return m_exponentialRate; }
-
-    /**
-     * <p>The exponential rate to increase the job rollout rate.</p>
-     */
+    inline const IoTJobExponentialRolloutRate& GetExponentialRate() const { return m_exponentialRate; }
     inline bool ExponentialRateHasBeenSet() const { return m_exponentialRateHasBeenSet; }
+    template<typename ExponentialRateT = IoTJobExponentialRolloutRate>
+    void SetExponentialRate(ExponentialRateT&& value) { m_exponentialRateHasBeenSet = true; m_exponentialRate = std::forward<ExponentialRateT>(value); }
+    template<typename ExponentialRateT = IoTJobExponentialRolloutRate>
+    IoTJobExecutionsRolloutConfig& WithExponentialRate(ExponentialRateT&& value) { SetExponentialRate(std::forward<ExponentialRateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The exponential rate to increase the job rollout rate.</p>
-     */
-    inline void SetExponentialRate(const IoTJobExponentialRolloutRate& value) { m_exponentialRateHasBeenSet = true; m_exponentialRate = value; }
-
-    /**
-     * <p>The exponential rate to increase the job rollout rate.</p>
-     */
-    inline void SetExponentialRate(IoTJobExponentialRolloutRate&& value) { m_exponentialRateHasBeenSet = true; m_exponentialRate = std::move(value); }
-
-    /**
-     * <p>The exponential rate to increase the job rollout rate.</p>
-     */
-    inline IoTJobExecutionsRolloutConfig& WithExponentialRate(const IoTJobExponentialRolloutRate& value) { SetExponentialRate(value); return *this;}
-
-    /**
-     * <p>The exponential rate to increase the job rollout rate.</p>
-     */
-    inline IoTJobExecutionsRolloutConfig& WithExponentialRate(IoTJobExponentialRolloutRate&& value) { SetExponentialRate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of devices that receive a pending job notification, per
      * minute.</p>
      */
-    inline int GetMaximumPerMinute() const{ return m_maximumPerMinute; }
-
-    /**
-     * <p>The maximum number of devices that receive a pending job notification, per
-     * minute.</p>
-     */
+    inline int GetMaximumPerMinute() const { return m_maximumPerMinute; }
     inline bool MaximumPerMinuteHasBeenSet() const { return m_maximumPerMinuteHasBeenSet; }
-
-    /**
-     * <p>The maximum number of devices that receive a pending job notification, per
-     * minute.</p>
-     */
     inline void SetMaximumPerMinute(int value) { m_maximumPerMinuteHasBeenSet = true; m_maximumPerMinute = value; }
-
-    /**
-     * <p>The maximum number of devices that receive a pending job notification, per
-     * minute.</p>
-     */
     inline IoTJobExecutionsRolloutConfig& WithMaximumPerMinute(int value) { SetMaximumPerMinute(value); return *this;}
-
+    ///@}
   private:
 
     IoTJobExponentialRolloutRate m_exponentialRate;
     bool m_exponentialRateHasBeenSet = false;
 
-    int m_maximumPerMinute;
+    int m_maximumPerMinute{0};
     bool m_maximumPerMinuteHasBeenSet = false;
   };
 

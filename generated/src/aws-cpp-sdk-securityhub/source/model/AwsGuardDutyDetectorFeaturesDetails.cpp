@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsGuardDutyDetectorFeaturesDetails::AwsGuardDutyDetectorFeaturesDetails() : 
-    m_nameHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-AwsGuardDutyDetectorFeaturesDetails::AwsGuardDutyDetectorFeaturesDetails(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_statusHasBeenSet(false)
+AwsGuardDutyDetectorFeaturesDetails::AwsGuardDutyDetectorFeaturesDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsGuardDutyDetectorFeaturesDetails& AwsGuardDutyDetectorFeaturesDetails::operat
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetString("Status");
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

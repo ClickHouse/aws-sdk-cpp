@@ -35,224 +35,88 @@ namespace Model
   class AsyncOperation
   {
   public:
-    AWS_S3CONTROL_API AsyncOperation();
+    AWS_S3CONTROL_API AsyncOperation() = default;
     AWS_S3CONTROL_API AsyncOperation(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API AsyncOperation& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The time that the request was sent to the service.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreationTime() const{ return m_creationTime; }
-
-    /**
-     * <p>The time that the request was sent to the service.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreationTime() const { return m_creationTime; }
     inline bool CreationTimeHasBeenSet() const { return m_creationTimeHasBeenSet; }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    void SetCreationTime(CreationTimeT&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::forward<CreationTimeT>(value); }
+    template<typename CreationTimeT = Aws::Utils::DateTime>
+    AsyncOperation& WithCreationTime(CreationTimeT&& value) { SetCreationTime(std::forward<CreationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time that the request was sent to the service.</p>
-     */
-    inline void SetCreationTime(const Aws::Utils::DateTime& value) { m_creationTimeHasBeenSet = true; m_creationTime = value; }
-
-    /**
-     * <p>The time that the request was sent to the service.</p>
-     */
-    inline void SetCreationTime(Aws::Utils::DateTime&& value) { m_creationTimeHasBeenSet = true; m_creationTime = std::move(value); }
-
-    /**
-     * <p>The time that the request was sent to the service.</p>
-     */
-    inline AsyncOperation& WithCreationTime(const Aws::Utils::DateTime& value) { SetCreationTime(value); return *this;}
-
-    /**
-     * <p>The time that the request was sent to the service.</p>
-     */
-    inline AsyncOperation& WithCreationTime(Aws::Utils::DateTime&& value) { SetCreationTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The specific operation for the asynchronous request.</p>
      */
-    inline const AsyncOperationName& GetOperation() const{ return m_operation; }
-
-    /**
-     * <p>The specific operation for the asynchronous request.</p>
-     */
+    inline AsyncOperationName GetOperation() const { return m_operation; }
     inline bool OperationHasBeenSet() const { return m_operationHasBeenSet; }
+    inline void SetOperation(AsyncOperationName value) { m_operationHasBeenSet = true; m_operation = value; }
+    inline AsyncOperation& WithOperation(AsyncOperationName value) { SetOperation(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The specific operation for the asynchronous request.</p>
-     */
-    inline void SetOperation(const AsyncOperationName& value) { m_operationHasBeenSet = true; m_operation = value; }
-
-    /**
-     * <p>The specific operation for the asynchronous request.</p>
-     */
-    inline void SetOperation(AsyncOperationName&& value) { m_operationHasBeenSet = true; m_operation = std::move(value); }
-
-    /**
-     * <p>The specific operation for the asynchronous request.</p>
-     */
-    inline AsyncOperation& WithOperation(const AsyncOperationName& value) { SetOperation(value); return *this;}
-
-    /**
-     * <p>The specific operation for the asynchronous request.</p>
-     */
-    inline AsyncOperation& WithOperation(AsyncOperationName&& value) { SetOperation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The request token associated with the request.</p>
      */
-    inline const Aws::String& GetRequestTokenARN() const{ return m_requestTokenARN; }
-
-    /**
-     * <p>The request token associated with the request.</p>
-     */
+    inline const Aws::String& GetRequestTokenARN() const { return m_requestTokenARN; }
     inline bool RequestTokenARNHasBeenSet() const { return m_requestTokenARNHasBeenSet; }
+    template<typename RequestTokenARNT = Aws::String>
+    void SetRequestTokenARN(RequestTokenARNT&& value) { m_requestTokenARNHasBeenSet = true; m_requestTokenARN = std::forward<RequestTokenARNT>(value); }
+    template<typename RequestTokenARNT = Aws::String>
+    AsyncOperation& WithRequestTokenARN(RequestTokenARNT&& value) { SetRequestTokenARN(std::forward<RequestTokenARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The request token associated with the request.</p>
-     */
-    inline void SetRequestTokenARN(const Aws::String& value) { m_requestTokenARNHasBeenSet = true; m_requestTokenARN = value; }
-
-    /**
-     * <p>The request token associated with the request.</p>
-     */
-    inline void SetRequestTokenARN(Aws::String&& value) { m_requestTokenARNHasBeenSet = true; m_requestTokenARN = std::move(value); }
-
-    /**
-     * <p>The request token associated with the request.</p>
-     */
-    inline void SetRequestTokenARN(const char* value) { m_requestTokenARNHasBeenSet = true; m_requestTokenARN.assign(value); }
-
-    /**
-     * <p>The request token associated with the request.</p>
-     */
-    inline AsyncOperation& WithRequestTokenARN(const Aws::String& value) { SetRequestTokenARN(value); return *this;}
-
-    /**
-     * <p>The request token associated with the request.</p>
-     */
-    inline AsyncOperation& WithRequestTokenARN(Aws::String&& value) { SetRequestTokenARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The request token associated with the request.</p>
-     */
-    inline AsyncOperation& WithRequestTokenARN(const char* value) { SetRequestTokenARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameters associated with the request.</p>
      */
-    inline const AsyncRequestParameters& GetRequestParameters() const{ return m_requestParameters; }
-
-    /**
-     * <p>The parameters associated with the request.</p>
-     */
+    inline const AsyncRequestParameters& GetRequestParameters() const { return m_requestParameters; }
     inline bool RequestParametersHasBeenSet() const { return m_requestParametersHasBeenSet; }
+    template<typename RequestParametersT = AsyncRequestParameters>
+    void SetRequestParameters(RequestParametersT&& value) { m_requestParametersHasBeenSet = true; m_requestParameters = std::forward<RequestParametersT>(value); }
+    template<typename RequestParametersT = AsyncRequestParameters>
+    AsyncOperation& WithRequestParameters(RequestParametersT&& value) { SetRequestParameters(std::forward<RequestParametersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The parameters associated with the request.</p>
-     */
-    inline void SetRequestParameters(const AsyncRequestParameters& value) { m_requestParametersHasBeenSet = true; m_requestParameters = value; }
-
-    /**
-     * <p>The parameters associated with the request.</p>
-     */
-    inline void SetRequestParameters(AsyncRequestParameters&& value) { m_requestParametersHasBeenSet = true; m_requestParameters = std::move(value); }
-
-    /**
-     * <p>The parameters associated with the request.</p>
-     */
-    inline AsyncOperation& WithRequestParameters(const AsyncRequestParameters& value) { SetRequestParameters(value); return *this;}
-
-    /**
-     * <p>The parameters associated with the request.</p>
-     */
-    inline AsyncOperation& WithRequestParameters(AsyncRequestParameters&& value) { SetRequestParameters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The current status of the request.</p>
      */
-    inline const Aws::String& GetRequestStatus() const{ return m_requestStatus; }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
+    inline const Aws::String& GetRequestStatus() const { return m_requestStatus; }
     inline bool RequestStatusHasBeenSet() const { return m_requestStatusHasBeenSet; }
+    template<typename RequestStatusT = Aws::String>
+    void SetRequestStatus(RequestStatusT&& value) { m_requestStatusHasBeenSet = true; m_requestStatus = std::forward<RequestStatusT>(value); }
+    template<typename RequestStatusT = Aws::String>
+    AsyncOperation& WithRequestStatus(RequestStatusT&& value) { SetRequestStatus(std::forward<RequestStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetRequestStatus(const Aws::String& value) { m_requestStatusHasBeenSet = true; m_requestStatus = value; }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetRequestStatus(Aws::String&& value) { m_requestStatusHasBeenSet = true; m_requestStatus = std::move(value); }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline void SetRequestStatus(const char* value) { m_requestStatusHasBeenSet = true; m_requestStatus.assign(value); }
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline AsyncOperation& WithRequestStatus(const Aws::String& value) { SetRequestStatus(value); return *this;}
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline AsyncOperation& WithRequestStatus(Aws::String&& value) { SetRequestStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The current status of the request.</p>
-     */
-    inline AsyncOperation& WithRequestStatus(const char* value) { SetRequestStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The details of the response.</p>
      */
-    inline const AsyncResponseDetails& GetResponseDetails() const{ return m_responseDetails; }
-
-    /**
-     * <p>The details of the response.</p>
-     */
+    inline const AsyncResponseDetails& GetResponseDetails() const { return m_responseDetails; }
     inline bool ResponseDetailsHasBeenSet() const { return m_responseDetailsHasBeenSet; }
-
-    /**
-     * <p>The details of the response.</p>
-     */
-    inline void SetResponseDetails(const AsyncResponseDetails& value) { m_responseDetailsHasBeenSet = true; m_responseDetails = value; }
-
-    /**
-     * <p>The details of the response.</p>
-     */
-    inline void SetResponseDetails(AsyncResponseDetails&& value) { m_responseDetailsHasBeenSet = true; m_responseDetails = std::move(value); }
-
-    /**
-     * <p>The details of the response.</p>
-     */
-    inline AsyncOperation& WithResponseDetails(const AsyncResponseDetails& value) { SetResponseDetails(value); return *this;}
-
-    /**
-     * <p>The details of the response.</p>
-     */
-    inline AsyncOperation& WithResponseDetails(AsyncResponseDetails&& value) { SetResponseDetails(std::move(value)); return *this;}
-
+    template<typename ResponseDetailsT = AsyncResponseDetails>
+    void SetResponseDetails(ResponseDetailsT&& value) { m_responseDetailsHasBeenSet = true; m_responseDetails = std::forward<ResponseDetailsT>(value); }
+    template<typename ResponseDetailsT = AsyncResponseDetails>
+    AsyncOperation& WithResponseDetails(ResponseDetailsT&& value) { SetResponseDetails(std::forward<ResponseDetailsT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_creationTime;
+    Aws::Utils::DateTime m_creationTime{};
     bool m_creationTimeHasBeenSet = false;
 
-    AsyncOperationName m_operation;
+    AsyncOperationName m_operation{AsyncOperationName::NOT_SET};
     bool m_operationHasBeenSet = false;
 
     Aws::String m_requestTokenARN;

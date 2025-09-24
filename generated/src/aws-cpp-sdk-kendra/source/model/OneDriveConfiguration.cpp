@@ -18,27 +18,7 @@ namespace kendra
 namespace Model
 {
 
-OneDriveConfiguration::OneDriveConfiguration() : 
-    m_tenantDomainHasBeenSet(false),
-    m_secretArnHasBeenSet(false),
-    m_oneDriveUsersHasBeenSet(false),
-    m_inclusionPatternsHasBeenSet(false),
-    m_exclusionPatternsHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false),
-    m_disableLocalGroups(false),
-    m_disableLocalGroupsHasBeenSet(false)
-{
-}
-
-OneDriveConfiguration::OneDriveConfiguration(JsonView jsonValue) : 
-    m_tenantDomainHasBeenSet(false),
-    m_secretArnHasBeenSet(false),
-    m_oneDriveUsersHasBeenSet(false),
-    m_inclusionPatternsHasBeenSet(false),
-    m_exclusionPatternsHasBeenSet(false),
-    m_fieldMappingsHasBeenSet(false),
-    m_disableLocalGroups(false),
-    m_disableLocalGroupsHasBeenSet(false)
+OneDriveConfiguration::OneDriveConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,24 +28,18 @@ OneDriveConfiguration& OneDriveConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TenantDomain"))
   {
     m_tenantDomain = jsonValue.GetString("TenantDomain");
-
     m_tenantDomainHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SecretArn"))
   {
     m_secretArn = jsonValue.GetString("SecretArn");
-
     m_secretArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("OneDriveUsers"))
   {
     m_oneDriveUsers = jsonValue.GetObject("OneDriveUsers");
-
     m_oneDriveUsersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("InclusionPatterns"))
   {
     Aws::Utils::Array<JsonView> inclusionPatternsJsonList = jsonValue.GetArray("InclusionPatterns");
@@ -75,7 +49,6 @@ OneDriveConfiguration& OneDriveConfiguration::operator =(JsonView jsonValue)
     }
     m_inclusionPatternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExclusionPatterns"))
   {
     Aws::Utils::Array<JsonView> exclusionPatternsJsonList = jsonValue.GetArray("ExclusionPatterns");
@@ -85,7 +58,6 @@ OneDriveConfiguration& OneDriveConfiguration::operator =(JsonView jsonValue)
     }
     m_exclusionPatternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FieldMappings"))
   {
     Aws::Utils::Array<JsonView> fieldMappingsJsonList = jsonValue.GetArray("FieldMappings");
@@ -95,14 +67,11 @@ OneDriveConfiguration& OneDriveConfiguration::operator =(JsonView jsonValue)
     }
     m_fieldMappingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DisableLocalGroups"))
   {
     m_disableLocalGroups = jsonValue.GetBool("DisableLocalGroups");
-
     m_disableLocalGroupsHasBeenSet = true;
   }
-
   return *this;
 }
 

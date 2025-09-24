@@ -20,21 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-TargetHealth::TargetHealth() : 
-    m_state(TargetHealthStateEnum::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_reason(TargetHealthReasonEnum::NOT_SET),
-    m_reasonHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
-{
-}
-
-TargetHealth::TargetHealth(const XmlNode& xmlNode) : 
-    m_state(TargetHealthStateEnum::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_reason(TargetHealthReasonEnum::NOT_SET),
-    m_reasonHasBeenSet(false),
-    m_descriptionHasBeenSet(false)
+TargetHealth::TargetHealth(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -48,13 +34,13 @@ TargetHealth& TargetHealth::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("State");
     if(!stateNode.IsNull())
     {
-      m_state = TargetHealthStateEnumMapper::GetTargetHealthStateEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TargetHealthStateEnumMapper::GetTargetHealthStateEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode reasonNode = resultNode.FirstChild("Reason");
     if(!reasonNode.IsNull())
     {
-      m_reason = TargetHealthReasonEnumMapper::GetTargetHealthReasonEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(reasonNode.GetText()).c_str()).c_str());
+      m_reason = TargetHealthReasonEnumMapper::GetTargetHealthReasonEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(reasonNode.GetText()).c_str()));
       m_reasonHasBeenSet = true;
     }
     XmlNode descriptionNode = resultNode.FirstChild("Description");
@@ -72,12 +58,12 @@ void TargetHealth::OutputToStream(Aws::OStream& oStream, const char* location, u
 {
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TargetHealthStateEnumMapper::GetNameForTargetHealthStateEnum(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TargetHealthStateEnumMapper::GetNameForTargetHealthStateEnum(m_state)) << "&";
   }
 
   if(m_reasonHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Reason=" << TargetHealthReasonEnumMapper::GetNameForTargetHealthReasonEnum(m_reason) << "&";
+      oStream << location << index << locationValue << ".Reason=" << StringUtils::URLEncode(TargetHealthReasonEnumMapper::GetNameForTargetHealthReasonEnum(m_reason)) << "&";
   }
 
   if(m_descriptionHasBeenSet)
@@ -91,11 +77,11 @@ void TargetHealth::OutputToStream(Aws::OStream& oStream, const char* location) c
 {
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TargetHealthStateEnumMapper::GetNameForTargetHealthStateEnum(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TargetHealthStateEnumMapper::GetNameForTargetHealthStateEnum(m_state)) << "&";
   }
   if(m_reasonHasBeenSet)
   {
-      oStream << location << ".Reason=" << TargetHealthReasonEnumMapper::GetNameForTargetHealthReasonEnum(m_reason) << "&";
+      oStream << location << ".Reason=" << StringUtils::URLEncode(TargetHealthReasonEnumMapper::GetNameForTargetHealthReasonEnum(m_reason)) << "&";
   }
   if(m_descriptionHasBeenSet)
   {

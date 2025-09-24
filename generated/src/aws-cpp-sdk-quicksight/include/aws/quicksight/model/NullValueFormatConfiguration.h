@@ -32,52 +32,23 @@ namespace Model
   class NullValueFormatConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API NullValueFormatConfiguration();
+    AWS_QUICKSIGHT_API NullValueFormatConfiguration() = default;
     AWS_QUICKSIGHT_API NullValueFormatConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API NullValueFormatConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines the null string of null values.</p>
      */
-    inline const Aws::String& GetNullString() const{ return m_nullString; }
-
-    /**
-     * <p>Determines the null string of null values.</p>
-     */
+    inline const Aws::String& GetNullString() const { return m_nullString; }
     inline bool NullStringHasBeenSet() const { return m_nullStringHasBeenSet; }
-
-    /**
-     * <p>Determines the null string of null values.</p>
-     */
-    inline void SetNullString(const Aws::String& value) { m_nullStringHasBeenSet = true; m_nullString = value; }
-
-    /**
-     * <p>Determines the null string of null values.</p>
-     */
-    inline void SetNullString(Aws::String&& value) { m_nullStringHasBeenSet = true; m_nullString = std::move(value); }
-
-    /**
-     * <p>Determines the null string of null values.</p>
-     */
-    inline void SetNullString(const char* value) { m_nullStringHasBeenSet = true; m_nullString.assign(value); }
-
-    /**
-     * <p>Determines the null string of null values.</p>
-     */
-    inline NullValueFormatConfiguration& WithNullString(const Aws::String& value) { SetNullString(value); return *this;}
-
-    /**
-     * <p>Determines the null string of null values.</p>
-     */
-    inline NullValueFormatConfiguration& WithNullString(Aws::String&& value) { SetNullString(std::move(value)); return *this;}
-
-    /**
-     * <p>Determines the null string of null values.</p>
-     */
-    inline NullValueFormatConfiguration& WithNullString(const char* value) { SetNullString(value); return *this;}
-
+    template<typename NullStringT = Aws::String>
+    void SetNullString(NullStringT&& value) { m_nullStringHasBeenSet = true; m_nullString = std::forward<NullStringT>(value); }
+    template<typename NullStringT = Aws::String>
+    NullValueFormatConfiguration& WithNullString(NullStringT&& value) { SetNullString(std::forward<NullStringT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nullString;

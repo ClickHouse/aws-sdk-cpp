@@ -18,13 +18,7 @@ namespace MigrationHubStrategyRecommendations
 namespace Model
 {
 
-AwsManagedResources::AwsManagedResources() : 
-    m_targetDestinationHasBeenSet(false)
-{
-}
-
-AwsManagedResources::AwsManagedResources(JsonView jsonValue) : 
-    m_targetDestinationHasBeenSet(false)
+AwsManagedResources::AwsManagedResources(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ AwsManagedResources& AwsManagedResources::operator =(JsonView jsonValue)
     }
     m_targetDestinationHasBeenSet = true;
   }
-
   return *this;
 }
 

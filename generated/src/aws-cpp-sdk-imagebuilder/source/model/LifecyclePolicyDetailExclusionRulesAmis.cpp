@@ -18,23 +18,7 @@ namespace imagebuilder
 namespace Model
 {
 
-LifecyclePolicyDetailExclusionRulesAmis::LifecyclePolicyDetailExclusionRulesAmis() : 
-    m_isPublic(false),
-    m_isPublicHasBeenSet(false),
-    m_regionsHasBeenSet(false),
-    m_sharedAccountsHasBeenSet(false),
-    m_lastLaunchedHasBeenSet(false),
-    m_tagMapHasBeenSet(false)
-{
-}
-
-LifecyclePolicyDetailExclusionRulesAmis::LifecyclePolicyDetailExclusionRulesAmis(JsonView jsonValue) : 
-    m_isPublic(false),
-    m_isPublicHasBeenSet(false),
-    m_regionsHasBeenSet(false),
-    m_sharedAccountsHasBeenSet(false),
-    m_lastLaunchedHasBeenSet(false),
-    m_tagMapHasBeenSet(false)
+LifecyclePolicyDetailExclusionRulesAmis::LifecyclePolicyDetailExclusionRulesAmis(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,10 +28,8 @@ LifecyclePolicyDetailExclusionRulesAmis& LifecyclePolicyDetailExclusionRulesAmis
   if(jsonValue.ValueExists("isPublic"))
   {
     m_isPublic = jsonValue.GetBool("isPublic");
-
     m_isPublicHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("regions"))
   {
     Aws::Utils::Array<JsonView> regionsJsonList = jsonValue.GetArray("regions");
@@ -57,7 +39,6 @@ LifecyclePolicyDetailExclusionRulesAmis& LifecyclePolicyDetailExclusionRulesAmis
     }
     m_regionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sharedAccounts"))
   {
     Aws::Utils::Array<JsonView> sharedAccountsJsonList = jsonValue.GetArray("sharedAccounts");
@@ -67,14 +48,11 @@ LifecyclePolicyDetailExclusionRulesAmis& LifecyclePolicyDetailExclusionRulesAmis
     }
     m_sharedAccountsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastLaunched"))
   {
     m_lastLaunched = jsonValue.GetObject("lastLaunched");
-
     m_lastLaunchedHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tagMap"))
   {
     Aws::Map<Aws::String, JsonView> tagMapJsonMap = jsonValue.GetObject("tagMap").GetAllObjects();
@@ -84,7 +62,6 @@ LifecyclePolicyDetailExclusionRulesAmis& LifecyclePolicyDetailExclusionRulesAmis
     }
     m_tagMapHasBeenSet = true;
   }
-
   return *this;
 }
 

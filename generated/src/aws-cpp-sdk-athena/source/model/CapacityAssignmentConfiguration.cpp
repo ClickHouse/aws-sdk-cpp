@@ -18,15 +18,7 @@ namespace Athena
 namespace Model
 {
 
-CapacityAssignmentConfiguration::CapacityAssignmentConfiguration() : 
-    m_capacityReservationNameHasBeenSet(false),
-    m_capacityAssignmentsHasBeenSet(false)
-{
-}
-
-CapacityAssignmentConfiguration::CapacityAssignmentConfiguration(JsonView jsonValue) : 
-    m_capacityReservationNameHasBeenSet(false),
-    m_capacityAssignmentsHasBeenSet(false)
+CapacityAssignmentConfiguration::CapacityAssignmentConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CapacityAssignmentConfiguration& CapacityAssignmentConfiguration::operator =(Jso
   if(jsonValue.ValueExists("CapacityReservationName"))
   {
     m_capacityReservationName = jsonValue.GetString("CapacityReservationName");
-
     m_capacityReservationNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CapacityAssignments"))
   {
     Aws::Utils::Array<JsonView> capacityAssignmentsJsonList = jsonValue.GetArray("CapacityAssignments");
@@ -49,7 +39,6 @@ CapacityAssignmentConfiguration& CapacityAssignmentConfiguration::operator =(Jso
     }
     m_capacityAssignmentsHasBeenSet = true;
   }
-
   return *this;
 }
 

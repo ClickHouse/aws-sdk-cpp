@@ -29,33 +29,23 @@ namespace Model
   class ComputeCapacity
   {
   public:
-    AWS_APPSTREAM_API ComputeCapacity();
+    AWS_APPSTREAM_API ComputeCapacity() = default;
     AWS_APPSTREAM_API ComputeCapacity(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSTREAM_API ComputeCapacity& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPSTREAM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The desired number of streaming instances.</p>
      */
-    inline int GetDesiredInstances() const{ return m_desiredInstances; }
-
-    /**
-     * <p>The desired number of streaming instances.</p>
-     */
+    inline int GetDesiredInstances() const { return m_desiredInstances; }
     inline bool DesiredInstancesHasBeenSet() const { return m_desiredInstancesHasBeenSet; }
-
-    /**
-     * <p>The desired number of streaming instances.</p>
-     */
     inline void SetDesiredInstances(int value) { m_desiredInstancesHasBeenSet = true; m_desiredInstances = value; }
-
-    /**
-     * <p>The desired number of streaming instances.</p>
-     */
     inline ComputeCapacity& WithDesiredInstances(int value) { SetDesiredInstances(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The desired number of user sessions for a multi-session fleet. This is not
      * allowed for single-session fleets.</p> <p>When you create a fleet, you must set
@@ -63,41 +53,17 @@ namespace Model
      * fleet you create. You can’t define both attributes or leave both attributes
      * blank.</p>
      */
-    inline int GetDesiredSessions() const{ return m_desiredSessions; }
-
-    /**
-     * <p>The desired number of user sessions for a multi-session fleet. This is not
-     * allowed for single-session fleets.</p> <p>When you create a fleet, you must set
-     * either the DesiredSessions or DesiredInstances attribute, based on the type of
-     * fleet you create. You can’t define both attributes or leave both attributes
-     * blank.</p>
-     */
+    inline int GetDesiredSessions() const { return m_desiredSessions; }
     inline bool DesiredSessionsHasBeenSet() const { return m_desiredSessionsHasBeenSet; }
-
-    /**
-     * <p>The desired number of user sessions for a multi-session fleet. This is not
-     * allowed for single-session fleets.</p> <p>When you create a fleet, you must set
-     * either the DesiredSessions or DesiredInstances attribute, based on the type of
-     * fleet you create. You can’t define both attributes or leave both attributes
-     * blank.</p>
-     */
     inline void SetDesiredSessions(int value) { m_desiredSessionsHasBeenSet = true; m_desiredSessions = value; }
-
-    /**
-     * <p>The desired number of user sessions for a multi-session fleet. This is not
-     * allowed for single-session fleets.</p> <p>When you create a fleet, you must set
-     * either the DesiredSessions or DesiredInstances attribute, based on the type of
-     * fleet you create. You can’t define both attributes or leave both attributes
-     * blank.</p>
-     */
     inline ComputeCapacity& WithDesiredSessions(int value) { SetDesiredSessions(value); return *this;}
-
+    ///@}
   private:
 
-    int m_desiredInstances;
+    int m_desiredInstances{0};
     bool m_desiredInstancesHasBeenSet = false;
 
-    int m_desiredSessions;
+    int m_desiredSessions{0};
     bool m_desiredSessionsHasBeenSet = false;
   };
 

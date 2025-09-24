@@ -12,26 +12,6 @@ using namespace Aws::DocDBElastic::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateClusterRequest::CreateClusterRequest() : 
-    m_adminUserNameHasBeenSet(false),
-    m_adminUserPasswordHasBeenSet(false),
-    m_authType(Auth::NOT_SET),
-    m_authTypeHasBeenSet(false),
-    m_clientToken(Aws::Utils::UUID::PseudoRandomUUID()),
-    m_clientTokenHasBeenSet(true),
-    m_clusterNameHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_shardCapacity(0),
-    m_shardCapacityHasBeenSet(false),
-    m_shardCount(0),
-    m_shardCountHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcSecurityGroupIdsHasBeenSet(false)
-{
-}
-
 Aws::String CreateClusterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -53,6 +33,12 @@ Aws::String CreateClusterRequest::SerializePayload() const
    payload.WithString("authType", AuthMapper::GetNameForAuth(m_authType));
   }
 
+  if(m_backupRetentionPeriodHasBeenSet)
+  {
+   payload.WithInteger("backupRetentionPeriod", m_backupRetentionPeriod);
+
+  }
+
   if(m_clientTokenHasBeenSet)
   {
    payload.WithString("clientToken", m_clientToken);
@@ -71,6 +57,12 @@ Aws::String CreateClusterRequest::SerializePayload() const
 
   }
 
+  if(m_preferredBackupWindowHasBeenSet)
+  {
+   payload.WithString("preferredBackupWindow", m_preferredBackupWindow);
+
+  }
+
   if(m_preferredMaintenanceWindowHasBeenSet)
   {
    payload.WithString("preferredMaintenanceWindow", m_preferredMaintenanceWindow);
@@ -86,6 +78,12 @@ Aws::String CreateClusterRequest::SerializePayload() const
   if(m_shardCountHasBeenSet)
   {
    payload.WithInteger("shardCount", m_shardCount);
+
+  }
+
+  if(m_shardInstanceCountHasBeenSet)
+  {
+   payload.WithInteger("shardInstanceCount", m_shardInstanceCount);
 
   }
 

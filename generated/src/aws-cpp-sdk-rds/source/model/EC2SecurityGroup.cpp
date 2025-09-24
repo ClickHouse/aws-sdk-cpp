@@ -20,19 +20,7 @@ namespace RDS
 namespace Model
 {
 
-EC2SecurityGroup::EC2SecurityGroup() : 
-    m_statusHasBeenSet(false),
-    m_eC2SecurityGroupNameHasBeenSet(false),
-    m_eC2SecurityGroupIdHasBeenSet(false),
-    m_eC2SecurityGroupOwnerIdHasBeenSet(false)
-{
-}
-
-EC2SecurityGroup::EC2SecurityGroup(const XmlNode& xmlNode) : 
-    m_statusHasBeenSet(false),
-    m_eC2SecurityGroupNameHasBeenSet(false),
-    m_eC2SecurityGroupIdHasBeenSet(false),
-    m_eC2SecurityGroupOwnerIdHasBeenSet(false)
+EC2SecurityGroup::EC2SecurityGroup(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

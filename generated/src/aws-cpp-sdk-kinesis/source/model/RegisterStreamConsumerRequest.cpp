@@ -12,12 +12,6 @@ using namespace Aws::Kinesis::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RegisterStreamConsumerRequest::RegisterStreamConsumerRequest() : 
-    m_streamARNHasBeenSet(false),
-    m_consumerNameHasBeenSet(false)
-{
-}
-
 Aws::String RegisterStreamConsumerRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,17 @@ Aws::String RegisterStreamConsumerRequest::SerializePayload() const
   if(m_consumerNameHasBeenSet)
   {
    payload.WithString("ConsumerName", m_consumerName);
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("Tags", std::move(tagsJsonMap));
 
   }
 

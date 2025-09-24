@@ -34,93 +34,37 @@ namespace Model
   class BatchListOutgoingTypedLinksResponse
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchListOutgoingTypedLinksResponse();
+    AWS_CLOUDDIRECTORY_API BatchListOutgoingTypedLinksResponse() = default;
     AWS_CLOUDDIRECTORY_API BatchListOutgoingTypedLinksResponse(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchListOutgoingTypedLinksResponse& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Returns a typed link specifier as output.</p>
      */
-    inline const Aws::Vector<TypedLinkSpecifier>& GetTypedLinkSpecifiers() const{ return m_typedLinkSpecifiers; }
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
+    inline const Aws::Vector<TypedLinkSpecifier>& GetTypedLinkSpecifiers() const { return m_typedLinkSpecifiers; }
     inline bool TypedLinkSpecifiersHasBeenSet() const { return m_typedLinkSpecifiersHasBeenSet; }
+    template<typename TypedLinkSpecifiersT = Aws::Vector<TypedLinkSpecifier>>
+    void SetTypedLinkSpecifiers(TypedLinkSpecifiersT&& value) { m_typedLinkSpecifiersHasBeenSet = true; m_typedLinkSpecifiers = std::forward<TypedLinkSpecifiersT>(value); }
+    template<typename TypedLinkSpecifiersT = Aws::Vector<TypedLinkSpecifier>>
+    BatchListOutgoingTypedLinksResponse& WithTypedLinkSpecifiers(TypedLinkSpecifiersT&& value) { SetTypedLinkSpecifiers(std::forward<TypedLinkSpecifiersT>(value)); return *this;}
+    template<typename TypedLinkSpecifiersT = TypedLinkSpecifier>
+    BatchListOutgoingTypedLinksResponse& AddTypedLinkSpecifiers(TypedLinkSpecifiersT&& value) { m_typedLinkSpecifiersHasBeenSet = true; m_typedLinkSpecifiers.emplace_back(std::forward<TypedLinkSpecifiersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
-    inline void SetTypedLinkSpecifiers(const Aws::Vector<TypedLinkSpecifier>& value) { m_typedLinkSpecifiersHasBeenSet = true; m_typedLinkSpecifiers = value; }
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
-    inline void SetTypedLinkSpecifiers(Aws::Vector<TypedLinkSpecifier>&& value) { m_typedLinkSpecifiersHasBeenSet = true; m_typedLinkSpecifiers = std::move(value); }
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
-    inline BatchListOutgoingTypedLinksResponse& WithTypedLinkSpecifiers(const Aws::Vector<TypedLinkSpecifier>& value) { SetTypedLinkSpecifiers(value); return *this;}
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
-    inline BatchListOutgoingTypedLinksResponse& WithTypedLinkSpecifiers(Aws::Vector<TypedLinkSpecifier>&& value) { SetTypedLinkSpecifiers(std::move(value)); return *this;}
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
-    inline BatchListOutgoingTypedLinksResponse& AddTypedLinkSpecifiers(const TypedLinkSpecifier& value) { m_typedLinkSpecifiersHasBeenSet = true; m_typedLinkSpecifiers.push_back(value); return *this; }
-
-    /**
-     * <p>Returns a typed link specifier as output.</p>
-     */
-    inline BatchListOutgoingTypedLinksResponse& AddTypedLinkSpecifiers(TypedLinkSpecifier&& value) { m_typedLinkSpecifiersHasBeenSet = true; m_typedLinkSpecifiers.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The pagination token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListOutgoingTypedLinksResponse& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListOutgoingTypedLinksResponse& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token.</p>
-     */
-    inline BatchListOutgoingTypedLinksResponse& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    BatchListOutgoingTypedLinksResponse& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<TypedLinkSpecifier> m_typedLinkSpecifiers;

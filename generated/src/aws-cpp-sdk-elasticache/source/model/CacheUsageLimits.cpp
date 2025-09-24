@@ -20,15 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-CacheUsageLimits::CacheUsageLimits() : 
-    m_dataStorageHasBeenSet(false),
-    m_eCPUPerSecondHasBeenSet(false)
-{
-}
-
-CacheUsageLimits::CacheUsageLimits(const XmlNode& xmlNode) : 
-    m_dataStorageHasBeenSet(false),
-    m_eCPUPerSecondHasBeenSet(false)
+CacheUsageLimits::CacheUsageLimits(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -32,79 +32,41 @@ namespace Model
   class ReadSetUploadPartListFilter
   {
   public:
-    AWS_OMICS_API ReadSetUploadPartListFilter();
+    AWS_OMICS_API ReadSetUploadPartListFilter() = default;
     AWS_OMICS_API ReadSetUploadPartListFilter(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API ReadSetUploadPartListFilter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Filters for read set uploads after a specified time. </p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAfter() const{ return m_createdAfter; }
-
-    /**
-     * <p> Filters for read set uploads after a specified time. </p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAfter() const { return m_createdAfter; }
     inline bool CreatedAfterHasBeenSet() const { return m_createdAfterHasBeenSet; }
+    template<typename CreatedAfterT = Aws::Utils::DateTime>
+    void SetCreatedAfter(CreatedAfterT&& value) { m_createdAfterHasBeenSet = true; m_createdAfter = std::forward<CreatedAfterT>(value); }
+    template<typename CreatedAfterT = Aws::Utils::DateTime>
+    ReadSetUploadPartListFilter& WithCreatedAfter(CreatedAfterT&& value) { SetCreatedAfter(std::forward<CreatedAfterT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Filters for read set uploads after a specified time. </p>
-     */
-    inline void SetCreatedAfter(const Aws::Utils::DateTime& value) { m_createdAfterHasBeenSet = true; m_createdAfter = value; }
-
-    /**
-     * <p> Filters for read set uploads after a specified time. </p>
-     */
-    inline void SetCreatedAfter(Aws::Utils::DateTime&& value) { m_createdAfterHasBeenSet = true; m_createdAfter = std::move(value); }
-
-    /**
-     * <p> Filters for read set uploads after a specified time. </p>
-     */
-    inline ReadSetUploadPartListFilter& WithCreatedAfter(const Aws::Utils::DateTime& value) { SetCreatedAfter(value); return *this;}
-
-    /**
-     * <p> Filters for read set uploads after a specified time. </p>
-     */
-    inline ReadSetUploadPartListFilter& WithCreatedAfter(Aws::Utils::DateTime&& value) { SetCreatedAfter(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Filters for read set part uploads before a specified time. </p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedBefore() const{ return m_createdBefore; }
-
-    /**
-     * <p> Filters for read set part uploads before a specified time. </p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedBefore() const { return m_createdBefore; }
     inline bool CreatedBeforeHasBeenSet() const { return m_createdBeforeHasBeenSet; }
-
-    /**
-     * <p> Filters for read set part uploads before a specified time. </p>
-     */
-    inline void SetCreatedBefore(const Aws::Utils::DateTime& value) { m_createdBeforeHasBeenSet = true; m_createdBefore = value; }
-
-    /**
-     * <p> Filters for read set part uploads before a specified time. </p>
-     */
-    inline void SetCreatedBefore(Aws::Utils::DateTime&& value) { m_createdBeforeHasBeenSet = true; m_createdBefore = std::move(value); }
-
-    /**
-     * <p> Filters for read set part uploads before a specified time. </p>
-     */
-    inline ReadSetUploadPartListFilter& WithCreatedBefore(const Aws::Utils::DateTime& value) { SetCreatedBefore(value); return *this;}
-
-    /**
-     * <p> Filters for read set part uploads before a specified time. </p>
-     */
-    inline ReadSetUploadPartListFilter& WithCreatedBefore(Aws::Utils::DateTime&& value) { SetCreatedBefore(std::move(value)); return *this;}
-
+    template<typename CreatedBeforeT = Aws::Utils::DateTime>
+    void SetCreatedBefore(CreatedBeforeT&& value) { m_createdBeforeHasBeenSet = true; m_createdBefore = std::forward<CreatedBeforeT>(value); }
+    template<typename CreatedBeforeT = Aws::Utils::DateTime>
+    ReadSetUploadPartListFilter& WithCreatedBefore(CreatedBeforeT&& value) { SetCreatedBefore(std::forward<CreatedBeforeT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_createdAfter;
+    Aws::Utils::DateTime m_createdAfter{};
     bool m_createdAfterHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdBefore;
+    Aws::Utils::DateTime m_createdBefore{};
     bool m_createdBeforeHasBeenSet = false;
   };
 

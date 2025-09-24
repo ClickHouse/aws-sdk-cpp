@@ -34,60 +34,24 @@ namespace Model
   class CustomerContentEncryptionConfiguration
   {
   public:
-    AWS_ATHENA_API CustomerContentEncryptionConfiguration();
+    AWS_ATHENA_API CustomerContentEncryptionConfiguration() = default;
     AWS_ATHENA_API CustomerContentEncryptionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API CustomerContentEncryptionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The customer managed KMS key that is used to encrypt the user's data stores
      * in Athena.</p>
      */
-    inline const Aws::String& GetKmsKey() const{ return m_kmsKey; }
-
-    /**
-     * <p>The customer managed KMS key that is used to encrypt the user's data stores
-     * in Athena.</p>
-     */
+    inline const Aws::String& GetKmsKey() const { return m_kmsKey; }
     inline bool KmsKeyHasBeenSet() const { return m_kmsKeyHasBeenSet; }
-
-    /**
-     * <p>The customer managed KMS key that is used to encrypt the user's data stores
-     * in Athena.</p>
-     */
-    inline void SetKmsKey(const Aws::String& value) { m_kmsKeyHasBeenSet = true; m_kmsKey = value; }
-
-    /**
-     * <p>The customer managed KMS key that is used to encrypt the user's data stores
-     * in Athena.</p>
-     */
-    inline void SetKmsKey(Aws::String&& value) { m_kmsKeyHasBeenSet = true; m_kmsKey = std::move(value); }
-
-    /**
-     * <p>The customer managed KMS key that is used to encrypt the user's data stores
-     * in Athena.</p>
-     */
-    inline void SetKmsKey(const char* value) { m_kmsKeyHasBeenSet = true; m_kmsKey.assign(value); }
-
-    /**
-     * <p>The customer managed KMS key that is used to encrypt the user's data stores
-     * in Athena.</p>
-     */
-    inline CustomerContentEncryptionConfiguration& WithKmsKey(const Aws::String& value) { SetKmsKey(value); return *this;}
-
-    /**
-     * <p>The customer managed KMS key that is used to encrypt the user's data stores
-     * in Athena.</p>
-     */
-    inline CustomerContentEncryptionConfiguration& WithKmsKey(Aws::String&& value) { SetKmsKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The customer managed KMS key that is used to encrypt the user's data stores
-     * in Athena.</p>
-     */
-    inline CustomerContentEncryptionConfiguration& WithKmsKey(const char* value) { SetKmsKey(value); return *this;}
-
+    template<typename KmsKeyT = Aws::String>
+    void SetKmsKey(KmsKeyT&& value) { m_kmsKeyHasBeenSet = true; m_kmsKey = std::forward<KmsKeyT>(value); }
+    template<typename KmsKeyT = Aws::String>
+    CustomerContentEncryptionConfiguration& WithKmsKey(KmsKeyT&& value) { SetKmsKey(std::forward<KmsKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_kmsKey;

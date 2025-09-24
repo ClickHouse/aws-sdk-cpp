@@ -10,12 +10,6 @@
 using namespace Aws::ElasticLoadBalancing::Model;
 using namespace Aws::Utils;
 
-DeregisterInstancesFromLoadBalancerRequest::DeregisterInstancesFromLoadBalancerRequest() : 
-    m_loadBalancerNameHasBeenSet(false),
-    m_instancesHasBeenSet(false)
-{
-}
-
 Aws::String DeregisterInstancesFromLoadBalancerRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String DeregisterInstancesFromLoadBalancerRequest::SerializePayload() const
 
   if(m_instancesHasBeenSet)
   {
-    unsigned instancesCount = 1;
-    for(auto& item : m_instances)
+    if (m_instances.empty())
     {
-      item.OutputToStream(ss, "Instances.member.", instancesCount, "");
-      instancesCount++;
+      ss << "Instances=&";
+    }
+    else
+    {
+      unsigned instancesCount = 1;
+      for(auto& item : m_instances)
+      {
+        item.OutputToStream(ss, "Instances.member.", instancesCount, "");
+        instancesCount++;
+      }
     }
   }
 

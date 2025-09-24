@@ -18,13 +18,7 @@ namespace SWF
 namespace Model
 {
 
-TaskList::TaskList() : 
-    m_nameHasBeenSet(false)
-{
-}
-
-TaskList::TaskList(JsonView jsonValue) : 
-    m_nameHasBeenSet(false)
+TaskList::TaskList(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ TaskList& TaskList::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

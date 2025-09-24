@@ -32,114 +32,45 @@ namespace Model
   class PendingModifiedRelationalDatabaseValues
   {
   public:
-    AWS_LIGHTSAIL_API PendingModifiedRelationalDatabaseValues();
+    AWS_LIGHTSAIL_API PendingModifiedRelationalDatabaseValues() = default;
     AWS_LIGHTSAIL_API PendingModifiedRelationalDatabaseValues(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API PendingModifiedRelationalDatabaseValues& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LIGHTSAIL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The password for the master user of the database.</p>
      */
-    inline const Aws::String& GetMasterUserPassword() const{ return m_masterUserPassword; }
-
-    /**
-     * <p>The password for the master user of the database.</p>
-     */
+    inline const Aws::String& GetMasterUserPassword() const { return m_masterUserPassword; }
     inline bool MasterUserPasswordHasBeenSet() const { return m_masterUserPasswordHasBeenSet; }
+    template<typename MasterUserPasswordT = Aws::String>
+    void SetMasterUserPassword(MasterUserPasswordT&& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = std::forward<MasterUserPasswordT>(value); }
+    template<typename MasterUserPasswordT = Aws::String>
+    PendingModifiedRelationalDatabaseValues& WithMasterUserPassword(MasterUserPasswordT&& value) { SetMasterUserPassword(std::forward<MasterUserPasswordT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The password for the master user of the database.</p>
-     */
-    inline void SetMasterUserPassword(const Aws::String& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = value; }
-
-    /**
-     * <p>The password for the master user of the database.</p>
-     */
-    inline void SetMasterUserPassword(Aws::String&& value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword = std::move(value); }
-
-    /**
-     * <p>The password for the master user of the database.</p>
-     */
-    inline void SetMasterUserPassword(const char* value) { m_masterUserPasswordHasBeenSet = true; m_masterUserPassword.assign(value); }
-
-    /**
-     * <p>The password for the master user of the database.</p>
-     */
-    inline PendingModifiedRelationalDatabaseValues& WithMasterUserPassword(const Aws::String& value) { SetMasterUserPassword(value); return *this;}
-
-    /**
-     * <p>The password for the master user of the database.</p>
-     */
-    inline PendingModifiedRelationalDatabaseValues& WithMasterUserPassword(Aws::String&& value) { SetMasterUserPassword(std::move(value)); return *this;}
-
-    /**
-     * <p>The password for the master user of the database.</p>
-     */
-    inline PendingModifiedRelationalDatabaseValues& WithMasterUserPassword(const char* value) { SetMasterUserPassword(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The database engine version.</p>
      */
-    inline const Aws::String& GetEngineVersion() const{ return m_engineVersion; }
-
-    /**
-     * <p>The database engine version.</p>
-     */
+    inline const Aws::String& GetEngineVersion() const { return m_engineVersion; }
     inline bool EngineVersionHasBeenSet() const { return m_engineVersionHasBeenSet; }
+    template<typename EngineVersionT = Aws::String>
+    void SetEngineVersion(EngineVersionT&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::forward<EngineVersionT>(value); }
+    template<typename EngineVersionT = Aws::String>
+    PendingModifiedRelationalDatabaseValues& WithEngineVersion(EngineVersionT&& value) { SetEngineVersion(std::forward<EngineVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline void SetEngineVersion(const Aws::String& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
-
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
-
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline void SetEngineVersion(const char* value) { m_engineVersionHasBeenSet = true; m_engineVersion.assign(value); }
-
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline PendingModifiedRelationalDatabaseValues& WithEngineVersion(const Aws::String& value) { SetEngineVersion(value); return *this;}
-
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline PendingModifiedRelationalDatabaseValues& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The database engine version.</p>
-     */
-    inline PendingModifiedRelationalDatabaseValues& WithEngineVersion(const char* value) { SetEngineVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A Boolean value indicating whether automated backup retention is enabled.</p>
      */
-    inline bool GetBackupRetentionEnabled() const{ return m_backupRetentionEnabled; }
-
-    /**
-     * <p>A Boolean value indicating whether automated backup retention is enabled.</p>
-     */
+    inline bool GetBackupRetentionEnabled() const { return m_backupRetentionEnabled; }
     inline bool BackupRetentionEnabledHasBeenSet() const { return m_backupRetentionEnabledHasBeenSet; }
-
-    /**
-     * <p>A Boolean value indicating whether automated backup retention is enabled.</p>
-     */
     inline void SetBackupRetentionEnabled(bool value) { m_backupRetentionEnabledHasBeenSet = true; m_backupRetentionEnabled = value; }
-
-    /**
-     * <p>A Boolean value indicating whether automated backup retention is enabled.</p>
-     */
     inline PendingModifiedRelationalDatabaseValues& WithBackupRetentionEnabled(bool value) { SetBackupRetentionEnabled(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_masterUserPassword;
@@ -148,7 +79,7 @@ namespace Model
     Aws::String m_engineVersion;
     bool m_engineVersionHasBeenSet = false;
 
-    bool m_backupRetentionEnabled;
+    bool m_backupRetentionEnabled{false};
     bool m_backupRetentionEnabledHasBeenSet = false;
   };
 

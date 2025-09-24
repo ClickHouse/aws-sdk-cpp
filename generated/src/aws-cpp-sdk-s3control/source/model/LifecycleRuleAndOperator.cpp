@@ -20,23 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-LifecycleRuleAndOperator::LifecycleRuleAndOperator() : 
-    m_prefixHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_objectSizeGreaterThan(0),
-    m_objectSizeGreaterThanHasBeenSet(false),
-    m_objectSizeLessThan(0),
-    m_objectSizeLessThanHasBeenSet(false)
-{
-}
-
-LifecycleRuleAndOperator::LifecycleRuleAndOperator(const XmlNode& xmlNode) : 
-    m_prefixHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_objectSizeGreaterThan(0),
-    m_objectSizeGreaterThanHasBeenSet(false),
-    m_objectSizeLessThan(0),
-    m_objectSizeLessThanHasBeenSet(false)
+LifecycleRuleAndOperator::LifecycleRuleAndOperator(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +41,7 @@ LifecycleRuleAndOperator& LifecycleRuleAndOperator::operator =(const XmlNode& xm
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("member");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);

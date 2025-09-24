@@ -28,11 +28,12 @@ namespace Model
   class DescribeEnvironmentStatusResult
   {
   public:
-    AWS_CLOUD9_API DescribeEnvironmentStatusResult();
+    AWS_CLOUD9_API DescribeEnvironmentStatusResult() = default;
     AWS_CLOUD9_API DescribeEnvironmentStatusResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CLOUD9_API DescribeEnvironmentStatusResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The status of the environment. Available values include:</p> <ul> <li> <p>
      * <code>connecting</code>: The environment is connecting.</p> </li> <li> <p>
@@ -43,121 +44,40 @@ namespace Model
      * <code>stopped</code>: The environment is stopped.</p> </li> <li> <p>
      * <code>stopping</code>: The environment is stopping.</p> </li> </ul>
      */
-    inline const EnvironmentStatus& GetStatus() const{ return m_status; }
+    inline EnvironmentStatus GetStatus() const { return m_status; }
+    inline void SetStatus(EnvironmentStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline DescribeEnvironmentStatusResult& WithStatus(EnvironmentStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the environment. Available values include:</p> <ul> <li> <p>
-     * <code>connecting</code>: The environment is connecting.</p> </li> <li> <p>
-     * <code>creating</code>: The environment is being created.</p> </li> <li> <p>
-     * <code>deleting</code>: The environment is being deleted.</p> </li> <li> <p>
-     * <code>error</code>: The environment is in an error state.</p> </li> <li> <p>
-     * <code>ready</code>: The environment is ready.</p> </li> <li> <p>
-     * <code>stopped</code>: The environment is stopped.</p> </li> <li> <p>
-     * <code>stopping</code>: The environment is stopping.</p> </li> </ul>
-     */
-    inline void SetStatus(const EnvironmentStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of the environment. Available values include:</p> <ul> <li> <p>
-     * <code>connecting</code>: The environment is connecting.</p> </li> <li> <p>
-     * <code>creating</code>: The environment is being created.</p> </li> <li> <p>
-     * <code>deleting</code>: The environment is being deleted.</p> </li> <li> <p>
-     * <code>error</code>: The environment is in an error state.</p> </li> <li> <p>
-     * <code>ready</code>: The environment is ready.</p> </li> <li> <p>
-     * <code>stopped</code>: The environment is stopped.</p> </li> <li> <p>
-     * <code>stopping</code>: The environment is stopping.</p> </li> </ul>
-     */
-    inline void SetStatus(EnvironmentStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the environment. Available values include:</p> <ul> <li> <p>
-     * <code>connecting</code>: The environment is connecting.</p> </li> <li> <p>
-     * <code>creating</code>: The environment is being created.</p> </li> <li> <p>
-     * <code>deleting</code>: The environment is being deleted.</p> </li> <li> <p>
-     * <code>error</code>: The environment is in an error state.</p> </li> <li> <p>
-     * <code>ready</code>: The environment is ready.</p> </li> <li> <p>
-     * <code>stopped</code>: The environment is stopped.</p> </li> <li> <p>
-     * <code>stopping</code>: The environment is stopping.</p> </li> </ul>
-     */
-    inline DescribeEnvironmentStatusResult& WithStatus(const EnvironmentStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the environment. Available values include:</p> <ul> <li> <p>
-     * <code>connecting</code>: The environment is connecting.</p> </li> <li> <p>
-     * <code>creating</code>: The environment is being created.</p> </li> <li> <p>
-     * <code>deleting</code>: The environment is being deleted.</p> </li> <li> <p>
-     * <code>error</code>: The environment is in an error state.</p> </li> <li> <p>
-     * <code>ready</code>: The environment is ready.</p> </li> <li> <p>
-     * <code>stopped</code>: The environment is stopped.</p> </li> <li> <p>
-     * <code>stopping</code>: The environment is stopping.</p> </li> </ul>
-     */
-    inline DescribeEnvironmentStatusResult& WithStatus(EnvironmentStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Any informational message about the status of the environment.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
+    inline const Aws::String& GetMessage() const { return m_message; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    DescribeEnvironmentStatusResult& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Any informational message about the status of the environment.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_message = value; }
-
-    /**
-     * <p>Any informational message about the status of the environment.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_message = std::move(value); }
-
-    /**
-     * <p>Any informational message about the status of the environment.</p>
-     */
-    inline void SetMessage(const char* value) { m_message.assign(value); }
-
-    /**
-     * <p>Any informational message about the status of the environment.</p>
-     */
-    inline DescribeEnvironmentStatusResult& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>Any informational message about the status of the environment.</p>
-     */
-    inline DescribeEnvironmentStatusResult& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Any informational message about the status of the environment.</p>
-     */
-    inline DescribeEnvironmentStatusResult& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeEnvironmentStatusResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeEnvironmentStatusResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeEnvironmentStatusResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeEnvironmentStatusResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    EnvironmentStatus m_status;
+    EnvironmentStatus m_status{EnvironmentStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     Aws::String m_message;
+    bool m_messageHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

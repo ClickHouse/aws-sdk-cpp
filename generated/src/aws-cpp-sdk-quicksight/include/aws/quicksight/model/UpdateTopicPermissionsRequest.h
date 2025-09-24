@@ -23,7 +23,7 @@ namespace Model
   class UpdateTopicPermissionsRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API UpdateTopicPermissionsRequest();
+    AWS_QUICKSIGHT_API UpdateTopicPermissionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,185 +34,59 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that contains the topic that you
      * want to update the permissions for.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the topic that you
-     * want to update the permissions for.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    UpdateTopicPermissionsRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the topic that you
-     * want to update the permissions for.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the topic that you
-     * want to update the permissions for.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the topic that you
-     * want to update the permissions for.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the topic that you
-     * want to update the permissions for.</p>
-     */
-    inline UpdateTopicPermissionsRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the topic that you
-     * want to update the permissions for.</p>
-     */
-    inline UpdateTopicPermissionsRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the topic that you
-     * want to update the permissions for.</p>
-     */
-    inline UpdateTopicPermissionsRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
      * Services Region for each Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetTopicId() const{ return m_topicId; }
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetTopicId() const { return m_topicId; }
     inline bool TopicIdHasBeenSet() const { return m_topicIdHasBeenSet; }
+    template<typename TopicIdT = Aws::String>
+    void SetTopicId(TopicIdT&& value) { m_topicIdHasBeenSet = true; m_topicId = std::forward<TopicIdT>(value); }
+    template<typename TopicIdT = Aws::String>
+    UpdateTopicPermissionsRequest& WithTopicId(TopicIdT&& value) { SetTopicId(std::forward<TopicIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(const Aws::String& value) { m_topicIdHasBeenSet = true; m_topicId = value; }
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(Aws::String&& value) { m_topicIdHasBeenSet = true; m_topicId = std::move(value); }
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(const char* value) { m_topicIdHasBeenSet = true; m_topicId.assign(value); }
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline UpdateTopicPermissionsRequest& WithTopicId(const Aws::String& value) { SetTopicId(value); return *this;}
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline UpdateTopicPermissionsRequest& WithTopicId(Aws::String&& value) { SetTopicId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline UpdateTopicPermissionsRequest& WithTopicId(const char* value) { SetTopicId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource permissions that you want to grant to the topic.</p>
      */
-    inline const Aws::Vector<ResourcePermission>& GetGrantPermissions() const{ return m_grantPermissions; }
-
-    /**
-     * <p>The resource permissions that you want to grant to the topic.</p>
-     */
+    inline const Aws::Vector<ResourcePermission>& GetGrantPermissions() const { return m_grantPermissions; }
     inline bool GrantPermissionsHasBeenSet() const { return m_grantPermissionsHasBeenSet; }
+    template<typename GrantPermissionsT = Aws::Vector<ResourcePermission>>
+    void SetGrantPermissions(GrantPermissionsT&& value) { m_grantPermissionsHasBeenSet = true; m_grantPermissions = std::forward<GrantPermissionsT>(value); }
+    template<typename GrantPermissionsT = Aws::Vector<ResourcePermission>>
+    UpdateTopicPermissionsRequest& WithGrantPermissions(GrantPermissionsT&& value) { SetGrantPermissions(std::forward<GrantPermissionsT>(value)); return *this;}
+    template<typename GrantPermissionsT = ResourcePermission>
+    UpdateTopicPermissionsRequest& AddGrantPermissions(GrantPermissionsT&& value) { m_grantPermissionsHasBeenSet = true; m_grantPermissions.emplace_back(std::forward<GrantPermissionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The resource permissions that you want to grant to the topic.</p>
-     */
-    inline void SetGrantPermissions(const Aws::Vector<ResourcePermission>& value) { m_grantPermissionsHasBeenSet = true; m_grantPermissions = value; }
-
-    /**
-     * <p>The resource permissions that you want to grant to the topic.</p>
-     */
-    inline void SetGrantPermissions(Aws::Vector<ResourcePermission>&& value) { m_grantPermissionsHasBeenSet = true; m_grantPermissions = std::move(value); }
-
-    /**
-     * <p>The resource permissions that you want to grant to the topic.</p>
-     */
-    inline UpdateTopicPermissionsRequest& WithGrantPermissions(const Aws::Vector<ResourcePermission>& value) { SetGrantPermissions(value); return *this;}
-
-    /**
-     * <p>The resource permissions that you want to grant to the topic.</p>
-     */
-    inline UpdateTopicPermissionsRequest& WithGrantPermissions(Aws::Vector<ResourcePermission>&& value) { SetGrantPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource permissions that you want to grant to the topic.</p>
-     */
-    inline UpdateTopicPermissionsRequest& AddGrantPermissions(const ResourcePermission& value) { m_grantPermissionsHasBeenSet = true; m_grantPermissions.push_back(value); return *this; }
-
-    /**
-     * <p>The resource permissions that you want to grant to the topic.</p>
-     */
-    inline UpdateTopicPermissionsRequest& AddGrantPermissions(ResourcePermission&& value) { m_grantPermissionsHasBeenSet = true; m_grantPermissions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The resource permissions that you want to revoke from the topic.</p>
      */
-    inline const Aws::Vector<ResourcePermission>& GetRevokePermissions() const{ return m_revokePermissions; }
-
-    /**
-     * <p>The resource permissions that you want to revoke from the topic.</p>
-     */
+    inline const Aws::Vector<ResourcePermission>& GetRevokePermissions() const { return m_revokePermissions; }
     inline bool RevokePermissionsHasBeenSet() const { return m_revokePermissionsHasBeenSet; }
-
-    /**
-     * <p>The resource permissions that you want to revoke from the topic.</p>
-     */
-    inline void SetRevokePermissions(const Aws::Vector<ResourcePermission>& value) { m_revokePermissionsHasBeenSet = true; m_revokePermissions = value; }
-
-    /**
-     * <p>The resource permissions that you want to revoke from the topic.</p>
-     */
-    inline void SetRevokePermissions(Aws::Vector<ResourcePermission>&& value) { m_revokePermissionsHasBeenSet = true; m_revokePermissions = std::move(value); }
-
-    /**
-     * <p>The resource permissions that you want to revoke from the topic.</p>
-     */
-    inline UpdateTopicPermissionsRequest& WithRevokePermissions(const Aws::Vector<ResourcePermission>& value) { SetRevokePermissions(value); return *this;}
-
-    /**
-     * <p>The resource permissions that you want to revoke from the topic.</p>
-     */
-    inline UpdateTopicPermissionsRequest& WithRevokePermissions(Aws::Vector<ResourcePermission>&& value) { SetRevokePermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource permissions that you want to revoke from the topic.</p>
-     */
-    inline UpdateTopicPermissionsRequest& AddRevokePermissions(const ResourcePermission& value) { m_revokePermissionsHasBeenSet = true; m_revokePermissions.push_back(value); return *this; }
-
-    /**
-     * <p>The resource permissions that you want to revoke from the topic.</p>
-     */
-    inline UpdateTopicPermissionsRequest& AddRevokePermissions(ResourcePermission&& value) { m_revokePermissionsHasBeenSet = true; m_revokePermissions.push_back(std::move(value)); return *this; }
-
+    template<typename RevokePermissionsT = Aws::Vector<ResourcePermission>>
+    void SetRevokePermissions(RevokePermissionsT&& value) { m_revokePermissionsHasBeenSet = true; m_revokePermissions = std::forward<RevokePermissionsT>(value); }
+    template<typename RevokePermissionsT = Aws::Vector<ResourcePermission>>
+    UpdateTopicPermissionsRequest& WithRevokePermissions(RevokePermissionsT&& value) { SetRevokePermissions(std::forward<RevokePermissionsT>(value)); return *this;}
+    template<typename RevokePermissionsT = ResourcePermission>
+    UpdateTopicPermissionsRequest& AddRevokePermissions(RevokePermissionsT&& value) { m_revokePermissionsHasBeenSet = true; m_revokePermissions.emplace_back(std::forward<RevokePermissionsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

@@ -18,17 +18,7 @@ namespace finspace
 namespace Model
 {
 
-CapacityConfiguration::CapacityConfiguration() : 
-    m_nodeTypeHasBeenSet(false),
-    m_nodeCount(0),
-    m_nodeCountHasBeenSet(false)
-{
-}
-
-CapacityConfiguration::CapacityConfiguration(JsonView jsonValue) : 
-    m_nodeTypeHasBeenSet(false),
-    m_nodeCount(0),
-    m_nodeCountHasBeenSet(false)
+CapacityConfiguration::CapacityConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ CapacityConfiguration& CapacityConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("nodeType"))
   {
     m_nodeType = jsonValue.GetString("nodeType");
-
     m_nodeTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("nodeCount"))
   {
     m_nodeCount = jsonValue.GetInteger("nodeCount");
-
     m_nodeCountHasBeenSet = true;
   }
-
   return *this;
 }
 

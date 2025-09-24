@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SheetTextBox::SheetTextBox() : 
-    m_sheetTextBoxIdHasBeenSet(false),
-    m_contentHasBeenSet(false)
-{
-}
-
-SheetTextBox::SheetTextBox(JsonView jsonValue) : 
-    m_sheetTextBoxIdHasBeenSet(false),
-    m_contentHasBeenSet(false)
+SheetTextBox::SheetTextBox(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ SheetTextBox& SheetTextBox::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SheetTextBoxId"))
   {
     m_sheetTextBoxId = jsonValue.GetString("SheetTextBoxId");
-
     m_sheetTextBoxIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Content"))
   {
     m_content = jsonValue.GetString("Content");
-
     m_contentHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Interactions"))
+  {
+    m_interactions = jsonValue.GetObject("Interactions");
+    m_interactionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue SheetTextBox::Jsonize() const
   if(m_contentHasBeenSet)
   {
    payload.WithString("Content", m_content);
+
+  }
+
+  if(m_interactionsHasBeenSet)
+  {
+   payload.WithObject("Interactions", m_interactions.Jsonize());
 
   }
 

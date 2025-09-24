@@ -34,175 +34,60 @@ namespace Model
   class Invitation
   {
   public:
-    AWS_MACIE2_API Invitation();
+    AWS_MACIE2_API Invitation() = default;
     AWS_MACIE2_API Invitation(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Invitation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID for the account that sent the
      * invitation.</p>
      */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID for the account that sent the
-     * invitation.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    Invitation& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID for the account that sent the
-     * invitation.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID for the account that sent the
-     * invitation.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for the account that sent the
-     * invitation.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID for the account that sent the
-     * invitation.</p>
-     */
-    inline Invitation& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for the account that sent the
-     * invitation.</p>
-     */
-    inline Invitation& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID for the account that sent the
-     * invitation.</p>
-     */
-    inline Invitation& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier for the invitation.</p>
      */
-    inline const Aws::String& GetInvitationId() const{ return m_invitationId; }
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
+    inline const Aws::String& GetInvitationId() const { return m_invitationId; }
     inline bool InvitationIdHasBeenSet() const { return m_invitationIdHasBeenSet; }
+    template<typename InvitationIdT = Aws::String>
+    void SetInvitationId(InvitationIdT&& value) { m_invitationIdHasBeenSet = true; m_invitationId = std::forward<InvitationIdT>(value); }
+    template<typename InvitationIdT = Aws::String>
+    Invitation& WithInvitationId(InvitationIdT&& value) { SetInvitationId(std::forward<InvitationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline void SetInvitationId(const Aws::String& value) { m_invitationIdHasBeenSet = true; m_invitationId = value; }
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline void SetInvitationId(Aws::String&& value) { m_invitationIdHasBeenSet = true; m_invitationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline void SetInvitationId(const char* value) { m_invitationIdHasBeenSet = true; m_invitationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline Invitation& WithInvitationId(const Aws::String& value) { SetInvitationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline Invitation& WithInvitationId(Aws::String&& value) { SetInvitationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the invitation.</p>
-     */
-    inline Invitation& WithInvitationId(const char* value) { SetInvitationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time, in UTC and extended ISO 8601 format, when the invitation
      * was sent.</p>
      */
-    inline const Aws::Utils::DateTime& GetInvitedAt() const{ return m_invitedAt; }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the invitation
-     * was sent.</p>
-     */
+    inline const Aws::Utils::DateTime& GetInvitedAt() const { return m_invitedAt; }
     inline bool InvitedAtHasBeenSet() const { return m_invitedAtHasBeenSet; }
+    template<typename InvitedAtT = Aws::Utils::DateTime>
+    void SetInvitedAt(InvitedAtT&& value) { m_invitedAtHasBeenSet = true; m_invitedAt = std::forward<InvitedAtT>(value); }
+    template<typename InvitedAtT = Aws::Utils::DateTime>
+    Invitation& WithInvitedAt(InvitedAtT&& value) { SetInvitedAt(std::forward<InvitedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the invitation
-     * was sent.</p>
-     */
-    inline void SetInvitedAt(const Aws::Utils::DateTime& value) { m_invitedAtHasBeenSet = true; m_invitedAt = value; }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the invitation
-     * was sent.</p>
-     */
-    inline void SetInvitedAt(Aws::Utils::DateTime&& value) { m_invitedAtHasBeenSet = true; m_invitedAt = std::move(value); }
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the invitation
-     * was sent.</p>
-     */
-    inline Invitation& WithInvitedAt(const Aws::Utils::DateTime& value) { SetInvitedAt(value); return *this;}
-
-    /**
-     * <p>The date and time, in UTC and extended ISO 8601 format, when the invitation
-     * was sent.</p>
-     */
-    inline Invitation& WithInvitedAt(Aws::Utils::DateTime&& value) { SetInvitedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the relationship between the account that sent the invitation
      * and the account that received the invitation.</p>
      */
-    inline const RelationshipStatus& GetRelationshipStatus() const{ return m_relationshipStatus; }
-
-    /**
-     * <p>The status of the relationship between the account that sent the invitation
-     * and the account that received the invitation.</p>
-     */
+    inline RelationshipStatus GetRelationshipStatus() const { return m_relationshipStatus; }
     inline bool RelationshipStatusHasBeenSet() const { return m_relationshipStatusHasBeenSet; }
-
-    /**
-     * <p>The status of the relationship between the account that sent the invitation
-     * and the account that received the invitation.</p>
-     */
-    inline void SetRelationshipStatus(const RelationshipStatus& value) { m_relationshipStatusHasBeenSet = true; m_relationshipStatus = value; }
-
-    /**
-     * <p>The status of the relationship between the account that sent the invitation
-     * and the account that received the invitation.</p>
-     */
-    inline void SetRelationshipStatus(RelationshipStatus&& value) { m_relationshipStatusHasBeenSet = true; m_relationshipStatus = std::move(value); }
-
-    /**
-     * <p>The status of the relationship between the account that sent the invitation
-     * and the account that received the invitation.</p>
-     */
-    inline Invitation& WithRelationshipStatus(const RelationshipStatus& value) { SetRelationshipStatus(value); return *this;}
-
-    /**
-     * <p>The status of the relationship between the account that sent the invitation
-     * and the account that received the invitation.</p>
-     */
-    inline Invitation& WithRelationshipStatus(RelationshipStatus&& value) { SetRelationshipStatus(std::move(value)); return *this;}
-
+    inline void SetRelationshipStatus(RelationshipStatus value) { m_relationshipStatusHasBeenSet = true; m_relationshipStatus = value; }
+    inline Invitation& WithRelationshipStatus(RelationshipStatus value) { SetRelationshipStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_accountId;
@@ -211,10 +96,10 @@ namespace Model
     Aws::String m_invitationId;
     bool m_invitationIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_invitedAt;
+    Aws::Utils::DateTime m_invitedAt{};
     bool m_invitedAtHasBeenSet = false;
 
-    RelationshipStatus m_relationshipStatus;
+    RelationshipStatus m_relationshipStatus{RelationshipStatus::NOT_SET};
     bool m_relationshipStatusHasBeenSet = false;
   };
 

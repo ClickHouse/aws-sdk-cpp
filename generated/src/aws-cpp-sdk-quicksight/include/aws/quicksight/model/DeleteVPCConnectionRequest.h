@@ -21,7 +21,7 @@ namespace Model
   class DeleteVPCConnectionRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API DeleteVPCConnectionRequest();
+    AWS_QUICKSIGHT_API DeleteVPCConnectionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,111 +32,32 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the account where you want to delete a
      * VPC connection.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account where you want to delete a
-     * VPC connection.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    DeleteVPCConnectionRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the account where you want to delete a
-     * VPC connection.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account where you want to delete a
-     * VPC connection.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account where you want to delete a
-     * VPC connection.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account where you want to delete a
-     * VPC connection.</p>
-     */
-    inline DeleteVPCConnectionRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the account where you want to delete a
-     * VPC connection.</p>
-     */
-    inline DeleteVPCConnectionRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the account where you want to delete a
-     * VPC connection.</p>
-     */
-    inline DeleteVPCConnectionRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the VPC connection that you're creating. This ID is a unique
      * identifier for each Amazon Web Services Region in an Amazon Web Services
      * account.</p>
      */
-    inline const Aws::String& GetVPCConnectionId() const{ return m_vPCConnectionId; }
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
+    inline const Aws::String& GetVPCConnectionId() const { return m_vPCConnectionId; }
     inline bool VPCConnectionIdHasBeenSet() const { return m_vPCConnectionIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline void SetVPCConnectionId(const Aws::String& value) { m_vPCConnectionIdHasBeenSet = true; m_vPCConnectionId = value; }
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline void SetVPCConnectionId(Aws::String&& value) { m_vPCConnectionIdHasBeenSet = true; m_vPCConnectionId = std::move(value); }
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline void SetVPCConnectionId(const char* value) { m_vPCConnectionIdHasBeenSet = true; m_vPCConnectionId.assign(value); }
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline DeleteVPCConnectionRequest& WithVPCConnectionId(const Aws::String& value) { SetVPCConnectionId(value); return *this;}
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline DeleteVPCConnectionRequest& WithVPCConnectionId(Aws::String&& value) { SetVPCConnectionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the VPC connection that you're creating. This ID is a unique
-     * identifier for each Amazon Web Services Region in an Amazon Web Services
-     * account.</p>
-     */
-    inline DeleteVPCConnectionRequest& WithVPCConnectionId(const char* value) { SetVPCConnectionId(value); return *this;}
-
+    template<typename VPCConnectionIdT = Aws::String>
+    void SetVPCConnectionId(VPCConnectionIdT&& value) { m_vPCConnectionIdHasBeenSet = true; m_vPCConnectionId = std::forward<VPCConnectionIdT>(value); }
+    template<typename VPCConnectionIdT = Aws::String>
+    DeleteVPCConnectionRequest& WithVPCConnectionId(VPCConnectionIdT&& value) { SetVPCConnectionId(std::forward<VPCConnectionIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

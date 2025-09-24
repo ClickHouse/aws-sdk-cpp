@@ -32,76 +32,26 @@ namespace Model
   class Filter
   {
   public:
-    AWS_LAMBDA_API Filter();
+    AWS_LAMBDA_API Filter() = default;
     AWS_LAMBDA_API Filter(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API Filter& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LAMBDA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> A filter pattern. For more information on the syntax of a filter pattern,
      * see <a
      * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-syntax">
      * Filter rule syntax</a>. </p>
      */
-    inline const Aws::String& GetPattern() const{ return m_pattern; }
-
-    /**
-     * <p> A filter pattern. For more information on the syntax of a filter pattern,
-     * see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-syntax">
-     * Filter rule syntax</a>. </p>
-     */
+    inline const Aws::String& GetPattern() const { return m_pattern; }
     inline bool PatternHasBeenSet() const { return m_patternHasBeenSet; }
-
-    /**
-     * <p> A filter pattern. For more information on the syntax of a filter pattern,
-     * see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-syntax">
-     * Filter rule syntax</a>. </p>
-     */
-    inline void SetPattern(const Aws::String& value) { m_patternHasBeenSet = true; m_pattern = value; }
-
-    /**
-     * <p> A filter pattern. For more information on the syntax of a filter pattern,
-     * see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-syntax">
-     * Filter rule syntax</a>. </p>
-     */
-    inline void SetPattern(Aws::String&& value) { m_patternHasBeenSet = true; m_pattern = std::move(value); }
-
-    /**
-     * <p> A filter pattern. For more information on the syntax of a filter pattern,
-     * see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-syntax">
-     * Filter rule syntax</a>. </p>
-     */
-    inline void SetPattern(const char* value) { m_patternHasBeenSet = true; m_pattern.assign(value); }
-
-    /**
-     * <p> A filter pattern. For more information on the syntax of a filter pattern,
-     * see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-syntax">
-     * Filter rule syntax</a>. </p>
-     */
-    inline Filter& WithPattern(const Aws::String& value) { SetPattern(value); return *this;}
-
-    /**
-     * <p> A filter pattern. For more information on the syntax of a filter pattern,
-     * see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-syntax">
-     * Filter rule syntax</a>. </p>
-     */
-    inline Filter& WithPattern(Aws::String&& value) { SetPattern(std::move(value)); return *this;}
-
-    /**
-     * <p> A filter pattern. For more information on the syntax of a filter pattern,
-     * see <a
-     * href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventfiltering.html#filtering-syntax">
-     * Filter rule syntax</a>. </p>
-     */
-    inline Filter& WithPattern(const char* value) { SetPattern(value); return *this;}
-
+    template<typename PatternT = Aws::String>
+    void SetPattern(PatternT&& value) { m_patternHasBeenSet = true; m_pattern = std::forward<PatternT>(value); }
+    template<typename PatternT = Aws::String>
+    Filter& WithPattern(PatternT&& value) { SetPattern(std::forward<PatternT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pattern;

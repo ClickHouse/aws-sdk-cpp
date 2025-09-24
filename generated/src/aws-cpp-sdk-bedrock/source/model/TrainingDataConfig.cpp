@@ -18,13 +18,7 @@ namespace Bedrock
 namespace Model
 {
 
-TrainingDataConfig::TrainingDataConfig() : 
-    m_s3UriHasBeenSet(false)
-{
-}
-
-TrainingDataConfig::TrainingDataConfig(JsonView jsonValue) : 
-    m_s3UriHasBeenSet(false)
+TrainingDataConfig::TrainingDataConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ TrainingDataConfig& TrainingDataConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("s3Uri"))
   {
     m_s3Uri = jsonValue.GetString("s3Uri");
-
     m_s3UriHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("invocationLogsConfig"))
+  {
+    m_invocationLogsConfig = jsonValue.GetObject("invocationLogsConfig");
+    m_invocationLogsConfigHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue TrainingDataConfig::Jsonize() const
   if(m_s3UriHasBeenSet)
   {
    payload.WithString("s3Uri", m_s3Uri);
+
+  }
+
+  if(m_invocationLogsConfigHasBeenSet)
+  {
+   payload.WithObject("invocationLogsConfig", m_invocationLogsConfig.Jsonize());
 
   }
 

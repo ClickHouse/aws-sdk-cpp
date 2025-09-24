@@ -6,13 +6,16 @@
 #include <aws/core/client/AWSError.h>
 #include <aws/core/utils/HashingUtils.h>
 #include <aws/ssm/SSMErrors.h>
+#include <aws/ssm/model/ServiceQuotaExceededException.h>
 #include <aws/ssm/model/OpsItemRelatedItemAlreadyExistsException.h>
 #include <aws/ssm/model/ResourcePolicyLimitExceededException.h>
 #include <aws/ssm/model/ResourceDataSyncNotFoundException.h>
 #include <aws/ssm/model/OpsItemAlreadyExistsException.h>
 #include <aws/ssm/model/ResourcePolicyInvalidParameterException.h>
 #include <aws/ssm/model/ItemSizeLimitExceededException.h>
+#include <aws/ssm/model/ThrottlingException.h>
 #include <aws/ssm/model/UnsupportedInventoryItemContextException.h>
+#include <aws/ssm/model/ValidationException.h>
 #include <aws/ssm/model/ResourceDataSyncAlreadyExistsException.h>
 #include <aws/ssm/model/OpsItemLimitExceededException.h>
 #include <aws/ssm/model/ItemContentMismatchException.h>
@@ -28,6 +31,12 @@ namespace Aws
 {
 namespace SSM
 {
+template<> AWS_SSM_API ServiceQuotaExceededException SSMError::GetModeledError()
+{
+  assert(this->GetErrorType() == SSMErrors::SERVICE_QUOTA_EXCEEDED);
+  return ServiceQuotaExceededException(this->GetJsonPayload().View());
+}
+
 template<> AWS_SSM_API OpsItemRelatedItemAlreadyExistsException SSMError::GetModeledError()
 {
   assert(this->GetErrorType() == SSMErrors::OPS_ITEM_RELATED_ITEM_ALREADY_EXISTS);
@@ -64,10 +73,22 @@ template<> AWS_SSM_API ItemSizeLimitExceededException SSMError::GetModeledError(
   return ItemSizeLimitExceededException(this->GetJsonPayload().View());
 }
 
+template<> AWS_SSM_API ThrottlingException SSMError::GetModeledError()
+{
+  assert(this->GetErrorType() == SSMErrors::THROTTLING);
+  return ThrottlingException(this->GetJsonPayload().View());
+}
+
 template<> AWS_SSM_API UnsupportedInventoryItemContextException SSMError::GetModeledError()
 {
   assert(this->GetErrorType() == SSMErrors::UNSUPPORTED_INVENTORY_ITEM_CONTEXT);
   return UnsupportedInventoryItemContextException(this->GetJsonPayload().View());
+}
+
+template<> AWS_SSM_API ValidationException SSMError::GetModeledError()
+{
+  assert(this->GetErrorType() == SSMErrors::VALIDATION);
+  return ValidationException(this->GetJsonPayload().View());
 }
 
 template<> AWS_SSM_API ResourceDataSyncAlreadyExistsException SSMError::GetModeledError()
@@ -115,8 +136,10 @@ static const int INVALID_TYPE_NAME_HASH = HashingUtils::HashString("InvalidTypeN
 static const int UNSUPPORTED_INVENTORY_SCHEMA_VERSION_HASH = HashingUtils::HashString("UnsupportedInventorySchemaVersionException");
 static const int OPS_ITEM_CONFLICT_HASH = HashingUtils::HashString("OpsItemConflictException");
 static const int ASSOCIATION_DOES_NOT_EXIST_HASH = HashingUtils::HashString("AssociationDoesNotExist");
+static const int SERVICE_QUOTA_EXCEEDED_HASH = HashingUtils::HashString("ServiceQuotaExceededException");
 static const int ASSOCIATION_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("AssociationLimitExceeded");
 static const int INVALID_OPTION_HASH = HashingUtils::HashString("InvalidOptionException");
+static const int INVALID_INSTANCE_PROPERTY_FILTER_VALUE_HASH = HashingUtils::HashString("InvalidInstancePropertyFilterValue");
 static const int PARAMETER_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("ParameterLimitExceeded");
 static const int SUB_TYPE_COUNT_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("SubTypeCountLimitExceededException");
 static const int ASSOCIATION_VERSION_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("AssociationVersionLimitExceeded");
@@ -134,6 +157,7 @@ static const int DOCUMENT_VERSION_LIMIT_EXCEEDED_HASH = HashingUtils::HashString
 static const int RESOURCE_DATA_SYNC_NOT_FOUND_HASH = HashingUtils::HashString("ResourceDataSyncNotFoundException");
 static const int INVALID_FILTER_VALUE_HASH = HashingUtils::HashString("InvalidFilterValue");
 static const int OPS_ITEM_ALREADY_EXISTS_HASH = HashingUtils::HashString("OpsItemAlreadyExistsException");
+static const int MALFORMED_RESOURCE_POLICY_DOCUMENT_HASH = HashingUtils::HashString("MalformedResourcePolicyDocumentException");
 static const int INVALID_DELETE_INVENTORY_PARAMETERS_HASH = HashingUtils::HashString("InvalidDeleteInventoryParametersException");
 static const int OPS_METADATA_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("OpsMetadataLimitExceededException");
 static const int FEATURE_NOT_AVAILABLE_HASH = HashingUtils::HashString("FeatureNotAvailableException");
@@ -214,9 +238,11 @@ static const int TARGET_NOT_CONNECTED_HASH = HashingUtils::HashString("TargetNot
 static const int DOCUMENT_ALREADY_EXISTS_HASH = HashingUtils::HashString("DocumentAlreadyExists");
 static const int UNSUPPORTED_CALENDAR_HASH = HashingUtils::HashString("UnsupportedCalendarException");
 static const int INVALID_DOCUMENT_VERSION_HASH = HashingUtils::HashString("InvalidDocumentVersion");
+static const int UNSUPPORTED_OPERATION_HASH = HashingUtils::HashString("UnsupportedOperationException");
 static const int INVALID_NOTIFICATION_CONFIG_HASH = HashingUtils::HashString("InvalidNotificationConfig");
 static const int INVALID_TAG_HASH = HashingUtils::HashString("InvalidTag");
 static const int INVALID_SCHEDULE_HASH = HashingUtils::HashString("InvalidSchedule");
+static const int RESOURCE_POLICY_NOT_FOUND_HASH = HashingUtils::HashString("ResourcePolicyNotFoundException");
 static const int INVALID_ACTIVATION_ID_HASH = HashingUtils::HashString("InvalidActivationId");
 static const int RESOURCE_DATA_SYNC_CONFLICT_HASH = HashingUtils::HashString("ResourceDataSyncConflictException");
 static const int OPS_METADATA_KEY_LIMIT_EXCEEDED_HASH = HashingUtils::HashString("OpsMetadataKeyLimitExceededException");
@@ -301,6 +327,11 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::ASSOCIATION_DOES_NOT_EXIST), RetryableType::NOT_RETRYABLE);
     return true;
   }
+  else if (hashCode == SERVICE_QUOTA_EXCEEDED_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::SERVICE_QUOTA_EXCEEDED), RetryableType::NOT_RETRYABLE);
+    return true;
+  }
   else if (hashCode == ASSOCIATION_LIMIT_EXCEEDED_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::ASSOCIATION_LIMIT_EXCEEDED), RetryableType::NOT_RETRYABLE);
@@ -309,6 +340,11 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
   else if (hashCode == INVALID_OPTION_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::INVALID_OPTION), RetryableType::NOT_RETRYABLE);
+    return true;
+  }
+  else if (hashCode == INVALID_INSTANCE_PROPERTY_FILTER_VALUE_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::INVALID_INSTANCE_PROPERTY_FILTER_VALUE), RetryableType::NOT_RETRYABLE);
     return true;
   }
   else if (hashCode == PARAMETER_LIMIT_EXCEEDED_HASH)
@@ -394,6 +430,11 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
   else if (hashCode == OPS_ITEM_ALREADY_EXISTS_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::OPS_ITEM_ALREADY_EXISTS), RetryableType::NOT_RETRYABLE);
+    return true;
+  }
+  else if (hashCode == MALFORMED_RESOURCE_POLICY_DOCUMENT_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::MALFORMED_RESOURCE_POLICY_DOCUMENT), RetryableType::NOT_RETRYABLE);
     return true;
   }
   else if (hashCode == INVALID_DELETE_INVENTORY_PARAMETERS_HASH)
@@ -796,6 +837,11 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::INVALID_DOCUMENT_VERSION), RetryableType::NOT_RETRYABLE);
     return true;
   }
+  else if (hashCode == UNSUPPORTED_OPERATION_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::UNSUPPORTED_OPERATION), RetryableType::NOT_RETRYABLE);
+    return true;
+  }
   else if (hashCode == INVALID_NOTIFICATION_CONFIG_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::INVALID_NOTIFICATION_CONFIG), RetryableType::NOT_RETRYABLE);
@@ -809,6 +855,11 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
   else if (hashCode == INVALID_SCHEDULE_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::INVALID_SCHEDULE), RetryableType::NOT_RETRYABLE);
+    return true;
+  }
+  else if (hashCode == RESOURCE_POLICY_NOT_FOUND_HASH)
+  {
+    error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::RESOURCE_POLICY_NOT_FOUND), RetryableType::NOT_RETRYABLE);
     return true;
   }
   else if (hashCode == INVALID_ACTIVATION_ID_HASH)
@@ -826,7 +877,12 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::OPS_METADATA_KEY_LIMIT_EXCEEDED), RetryableType::NOT_RETRYABLE);
     return true;
   }
-  else if (hashCode == INVALID_FILTER_HASH)
+  return false;
+}
+
+static bool GetErrorForNameHelper1(int hashCode, AWSError<CoreErrors>& error)
+{
+  if (hashCode == INVALID_FILTER_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::INVALID_FILTER), RetryableType::NOT_RETRYABLE);
     return true;
@@ -851,12 +907,7 @@ static bool GetErrorForNameHelper0(int hashCode, AWSError<CoreErrors>& error)
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::UNSUPPORTED_PARAMETER_TYPE), RetryableType::NOT_RETRYABLE);
     return true;
   }
-  return false;
-}
-
-static bool GetErrorForNameHelper1(int hashCode, AWSError<CoreErrors>& error)
-{
-  if (hashCode == MAX_DOCUMENT_SIZE_EXCEEDED_HASH)
+  else if (hashCode == MAX_DOCUMENT_SIZE_EXCEEDED_HASH)
   {
     error = AWSError<CoreErrors>(static_cast<CoreErrors>(SSMErrors::MAX_DOCUMENT_SIZE_EXCEEDED), RetryableType::NOT_RETRYABLE);
     return true;

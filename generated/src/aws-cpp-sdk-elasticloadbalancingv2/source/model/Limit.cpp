@@ -20,15 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-Limit::Limit() : 
-    m_nameHasBeenSet(false),
-    m_maxHasBeenSet(false)
-{
-}
-
-Limit::Limit(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_maxHasBeenSet(false)
+Limit::Limit(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

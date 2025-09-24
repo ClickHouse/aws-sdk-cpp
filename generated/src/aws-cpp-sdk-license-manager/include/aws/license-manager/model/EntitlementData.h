@@ -32,124 +32,45 @@ namespace Model
   class EntitlementData
   {
   public:
-    AWS_LICENSEMANAGER_API EntitlementData();
+    AWS_LICENSEMANAGER_API EntitlementData() = default;
     AWS_LICENSEMANAGER_API EntitlementData(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API EntitlementData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LICENSEMANAGER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Entitlement data name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Entitlement data name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    EntitlementData& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Entitlement data name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Entitlement data name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Entitlement data name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Entitlement data name.</p>
-     */
-    inline EntitlementData& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Entitlement data name.</p>
-     */
-    inline EntitlementData& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Entitlement data name.</p>
-     */
-    inline EntitlementData& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Entitlement data value.</p>
      */
-    inline const Aws::String& GetValue() const{ return m_value; }
-
-    /**
-     * <p>Entitlement data value.</p>
-     */
+    inline const Aws::String& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Aws::String>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Aws::String>
+    EntitlementData& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Entitlement data value.</p>
-     */
-    inline void SetValue(const Aws::String& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Entitlement data value.</p>
-     */
-    inline void SetValue(Aws::String&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>Entitlement data value.</p>
-     */
-    inline void SetValue(const char* value) { m_valueHasBeenSet = true; m_value.assign(value); }
-
-    /**
-     * <p>Entitlement data value.</p>
-     */
-    inline EntitlementData& WithValue(const Aws::String& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>Entitlement data value.</p>
-     */
-    inline EntitlementData& WithValue(Aws::String&& value) { SetValue(std::move(value)); return *this;}
-
-    /**
-     * <p>Entitlement data value.</p>
-     */
-    inline EntitlementData& WithValue(const char* value) { SetValue(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Entitlement data unit.</p>
      */
-    inline const EntitlementDataUnit& GetUnit() const{ return m_unit; }
-
-    /**
-     * <p>Entitlement data unit.</p>
-     */
+    inline EntitlementDataUnit GetUnit() const { return m_unit; }
     inline bool UnitHasBeenSet() const { return m_unitHasBeenSet; }
-
-    /**
-     * <p>Entitlement data unit.</p>
-     */
-    inline void SetUnit(const EntitlementDataUnit& value) { m_unitHasBeenSet = true; m_unit = value; }
-
-    /**
-     * <p>Entitlement data unit.</p>
-     */
-    inline void SetUnit(EntitlementDataUnit&& value) { m_unitHasBeenSet = true; m_unit = std::move(value); }
-
-    /**
-     * <p>Entitlement data unit.</p>
-     */
-    inline EntitlementData& WithUnit(const EntitlementDataUnit& value) { SetUnit(value); return *this;}
-
-    /**
-     * <p>Entitlement data unit.</p>
-     */
-    inline EntitlementData& WithUnit(EntitlementDataUnit&& value) { SetUnit(std::move(value)); return *this;}
-
+    inline void SetUnit(EntitlementDataUnit value) { m_unitHasBeenSet = true; m_unit = value; }
+    inline EntitlementData& WithUnit(EntitlementDataUnit value) { SetUnit(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -158,7 +79,7 @@ namespace Model
     Aws::String m_value;
     bool m_valueHasBeenSet = false;
 
-    EntitlementDataUnit m_unit;
+    EntitlementDataUnit m_unit{EntitlementDataUnit::NOT_SET};
     bool m_unitHasBeenSet = false;
   };
 

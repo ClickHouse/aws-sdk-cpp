@@ -22,7 +22,7 @@ namespace Model
   class AssociateConfigurationItemsToApplicationRequest : public ApplicationDiscoveryServiceRequest
   {
   public:
-    AWS_APPLICATIONDISCOVERYSERVICE_API AssociateConfigurationItemsToApplicationRequest();
+    AWS_APPLICATIONDISCOVERYSERVICE_API AssociateConfigurationItemsToApplicationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,100 +35,32 @@ namespace Model
     AWS_APPLICATIONDISCOVERYSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The configuration ID of an application with which items are to be
      * associated.</p>
      */
-    inline const Aws::String& GetApplicationConfigurationId() const{ return m_applicationConfigurationId; }
-
-    /**
-     * <p>The configuration ID of an application with which items are to be
-     * associated.</p>
-     */
+    inline const Aws::String& GetApplicationConfigurationId() const { return m_applicationConfigurationId; }
     inline bool ApplicationConfigurationIdHasBeenSet() const { return m_applicationConfigurationIdHasBeenSet; }
+    template<typename ApplicationConfigurationIdT = Aws::String>
+    void SetApplicationConfigurationId(ApplicationConfigurationIdT&& value) { m_applicationConfigurationIdHasBeenSet = true; m_applicationConfigurationId = std::forward<ApplicationConfigurationIdT>(value); }
+    template<typename ApplicationConfigurationIdT = Aws::String>
+    AssociateConfigurationItemsToApplicationRequest& WithApplicationConfigurationId(ApplicationConfigurationIdT&& value) { SetApplicationConfigurationId(std::forward<ApplicationConfigurationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration ID of an application with which items are to be
-     * associated.</p>
-     */
-    inline void SetApplicationConfigurationId(const Aws::String& value) { m_applicationConfigurationIdHasBeenSet = true; m_applicationConfigurationId = value; }
-
-    /**
-     * <p>The configuration ID of an application with which items are to be
-     * associated.</p>
-     */
-    inline void SetApplicationConfigurationId(Aws::String&& value) { m_applicationConfigurationIdHasBeenSet = true; m_applicationConfigurationId = std::move(value); }
-
-    /**
-     * <p>The configuration ID of an application with which items are to be
-     * associated.</p>
-     */
-    inline void SetApplicationConfigurationId(const char* value) { m_applicationConfigurationIdHasBeenSet = true; m_applicationConfigurationId.assign(value); }
-
-    /**
-     * <p>The configuration ID of an application with which items are to be
-     * associated.</p>
-     */
-    inline AssociateConfigurationItemsToApplicationRequest& WithApplicationConfigurationId(const Aws::String& value) { SetApplicationConfigurationId(value); return *this;}
-
-    /**
-     * <p>The configuration ID of an application with which items are to be
-     * associated.</p>
-     */
-    inline AssociateConfigurationItemsToApplicationRequest& WithApplicationConfigurationId(Aws::String&& value) { SetApplicationConfigurationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The configuration ID of an application with which items are to be
-     * associated.</p>
-     */
-    inline AssociateConfigurationItemsToApplicationRequest& WithApplicationConfigurationId(const char* value) { SetApplicationConfigurationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of each configuration item to be associated with an application.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetConfigurationIds() const{ return m_configurationIds; }
-
-    /**
-     * <p>The ID of each configuration item to be associated with an application.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetConfigurationIds() const { return m_configurationIds; }
     inline bool ConfigurationIdsHasBeenSet() const { return m_configurationIdsHasBeenSet; }
-
-    /**
-     * <p>The ID of each configuration item to be associated with an application.</p>
-     */
-    inline void SetConfigurationIds(const Aws::Vector<Aws::String>& value) { m_configurationIdsHasBeenSet = true; m_configurationIds = value; }
-
-    /**
-     * <p>The ID of each configuration item to be associated with an application.</p>
-     */
-    inline void SetConfigurationIds(Aws::Vector<Aws::String>&& value) { m_configurationIdsHasBeenSet = true; m_configurationIds = std::move(value); }
-
-    /**
-     * <p>The ID of each configuration item to be associated with an application.</p>
-     */
-    inline AssociateConfigurationItemsToApplicationRequest& WithConfigurationIds(const Aws::Vector<Aws::String>& value) { SetConfigurationIds(value); return *this;}
-
-    /**
-     * <p>The ID of each configuration item to be associated with an application.</p>
-     */
-    inline AssociateConfigurationItemsToApplicationRequest& WithConfigurationIds(Aws::Vector<Aws::String>&& value) { SetConfigurationIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of each configuration item to be associated with an application.</p>
-     */
-    inline AssociateConfigurationItemsToApplicationRequest& AddConfigurationIds(const Aws::String& value) { m_configurationIdsHasBeenSet = true; m_configurationIds.push_back(value); return *this; }
-
-    /**
-     * <p>The ID of each configuration item to be associated with an application.</p>
-     */
-    inline AssociateConfigurationItemsToApplicationRequest& AddConfigurationIds(Aws::String&& value) { m_configurationIdsHasBeenSet = true; m_configurationIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ID of each configuration item to be associated with an application.</p>
-     */
-    inline AssociateConfigurationItemsToApplicationRequest& AddConfigurationIds(const char* value) { m_configurationIdsHasBeenSet = true; m_configurationIds.push_back(value); return *this; }
-
+    template<typename ConfigurationIdsT = Aws::Vector<Aws::String>>
+    void SetConfigurationIds(ConfigurationIdsT&& value) { m_configurationIdsHasBeenSet = true; m_configurationIds = std::forward<ConfigurationIdsT>(value); }
+    template<typename ConfigurationIdsT = Aws::Vector<Aws::String>>
+    AssociateConfigurationItemsToApplicationRequest& WithConfigurationIds(ConfigurationIdsT&& value) { SetConfigurationIds(std::forward<ConfigurationIdsT>(value)); return *this;}
+    template<typename ConfigurationIdsT = Aws::String>
+    AssociateConfigurationItemsToApplicationRequest& AddConfigurationIds(ConfigurationIdsT&& value) { m_configurationIdsHasBeenSet = true; m_configurationIds.emplace_back(std::forward<ConfigurationIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_applicationConfigurationId;

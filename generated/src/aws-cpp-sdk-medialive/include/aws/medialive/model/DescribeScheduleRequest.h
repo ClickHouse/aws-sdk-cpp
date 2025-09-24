@@ -28,7 +28,7 @@ namespace Model
   class DescribeScheduleRequest : public MediaLiveRequest
   {
   public:
-    AWS_MEDIALIVE_API DescribeScheduleRequest();
+    AWS_MEDIALIVE_API DescribeScheduleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,90 +41,41 @@ namespace Model
     AWS_MEDIALIVE_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * Id of the channel whose schedule is being updated.
      */
-    inline const Aws::String& GetChannelId() const{ return m_channelId; }
-
-    /**
-     * Id of the channel whose schedule is being updated.
-     */
+    inline const Aws::String& GetChannelId() const { return m_channelId; }
     inline bool ChannelIdHasBeenSet() const { return m_channelIdHasBeenSet; }
+    template<typename ChannelIdT = Aws::String>
+    void SetChannelId(ChannelIdT&& value) { m_channelIdHasBeenSet = true; m_channelId = std::forward<ChannelIdT>(value); }
+    template<typename ChannelIdT = Aws::String>
+    DescribeScheduleRequest& WithChannelId(ChannelIdT&& value) { SetChannelId(std::forward<ChannelIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * Id of the channel whose schedule is being updated.
-     */
-    inline void SetChannelId(const Aws::String& value) { m_channelIdHasBeenSet = true; m_channelId = value; }
-
-    /**
-     * Id of the channel whose schedule is being updated.
-     */
-    inline void SetChannelId(Aws::String&& value) { m_channelIdHasBeenSet = true; m_channelId = std::move(value); }
-
-    /**
-     * Id of the channel whose schedule is being updated.
-     */
-    inline void SetChannelId(const char* value) { m_channelIdHasBeenSet = true; m_channelId.assign(value); }
-
-    /**
-     * Id of the channel whose schedule is being updated.
-     */
-    inline DescribeScheduleRequest& WithChannelId(const Aws::String& value) { SetChannelId(value); return *this;}
-
-    /**
-     * Id of the channel whose schedule is being updated.
-     */
-    inline DescribeScheduleRequest& WithChannelId(Aws::String&& value) { SetChannelId(std::move(value)); return *this;}
-
-    /**
-     * Id of the channel whose schedule is being updated.
-     */
-    inline DescribeScheduleRequest& WithChannelId(const char* value) { SetChannelId(value); return *this;}
-
-
+    ///@{
     
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    
     inline DescribeScheduleRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    
-    inline DescribeScheduleRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    
-    inline DescribeScheduleRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    
-    inline DescribeScheduleRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeScheduleRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelId;
     bool m_channelIdHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;

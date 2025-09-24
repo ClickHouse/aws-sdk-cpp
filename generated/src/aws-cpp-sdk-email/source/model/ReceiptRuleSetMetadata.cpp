@@ -20,15 +20,7 @@ namespace SES
 namespace Model
 {
 
-ReceiptRuleSetMetadata::ReceiptRuleSetMetadata() : 
-    m_nameHasBeenSet(false),
-    m_createdTimestampHasBeenSet(false)
-{
-}
-
-ReceiptRuleSetMetadata::ReceiptRuleSetMetadata(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_createdTimestampHasBeenSet(false)
+ReceiptRuleSetMetadata::ReceiptRuleSetMetadata(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

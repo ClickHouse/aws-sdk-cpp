@@ -18,15 +18,7 @@ namespace IoTSiteWise
 namespace Model
 {
 
-Resource::Resource() : 
-    m_portalHasBeenSet(false),
-    m_projectHasBeenSet(false)
-{
-}
-
-Resource::Resource(JsonView jsonValue) : 
-    m_portalHasBeenSet(false),
-    m_projectHasBeenSet(false)
+Resource::Resource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Resource& Resource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("portal"))
   {
     m_portal = jsonValue.GetObject("portal");
-
     m_portalHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("project"))
   {
     m_project = jsonValue.GetObject("project");
-
     m_projectHasBeenSet = true;
   }
-
   return *this;
 }
 

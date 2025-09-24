@@ -29,139 +29,57 @@ namespace Model
   class ListBackupJobsResult
   {
   public:
-    AWS_BACKUP_API ListBackupJobsResult();
+    AWS_BACKUP_API ListBackupJobsResult() = default;
     AWS_BACKUP_API ListBackupJobsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_BACKUP_API ListBackupJobsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An array of structures containing metadata about your backup jobs returned in
      * JSON format.</p>
      */
-    inline const Aws::Vector<BackupJob>& GetBackupJobs() const{ return m_backupJobs; }
+    inline const Aws::Vector<BackupJob>& GetBackupJobs() const { return m_backupJobs; }
+    template<typename BackupJobsT = Aws::Vector<BackupJob>>
+    void SetBackupJobs(BackupJobsT&& value) { m_backupJobsHasBeenSet = true; m_backupJobs = std::forward<BackupJobsT>(value); }
+    template<typename BackupJobsT = Aws::Vector<BackupJob>>
+    ListBackupJobsResult& WithBackupJobs(BackupJobsT&& value) { SetBackupJobs(std::forward<BackupJobsT>(value)); return *this;}
+    template<typename BackupJobsT = BackupJob>
+    ListBackupJobsResult& AddBackupJobs(BackupJobsT&& value) { m_backupJobsHasBeenSet = true; m_backupJobs.emplace_back(std::forward<BackupJobsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of structures containing metadata about your backup jobs returned in
-     * JSON format.</p>
-     */
-    inline void SetBackupJobs(const Aws::Vector<BackupJob>& value) { m_backupJobs = value; }
-
-    /**
-     * <p>An array of structures containing metadata about your backup jobs returned in
-     * JSON format.</p>
-     */
-    inline void SetBackupJobs(Aws::Vector<BackupJob>&& value) { m_backupJobs = std::move(value); }
-
-    /**
-     * <p>An array of structures containing metadata about your backup jobs returned in
-     * JSON format.</p>
-     */
-    inline ListBackupJobsResult& WithBackupJobs(const Aws::Vector<BackupJob>& value) { SetBackupJobs(value); return *this;}
-
-    /**
-     * <p>An array of structures containing metadata about your backup jobs returned in
-     * JSON format.</p>
-     */
-    inline ListBackupJobsResult& WithBackupJobs(Aws::Vector<BackupJob>&& value) { SetBackupJobs(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of structures containing metadata about your backup jobs returned in
-     * JSON format.</p>
-     */
-    inline ListBackupJobsResult& AddBackupJobs(const BackupJob& value) { m_backupJobs.push_back(value); return *this; }
-
-    /**
-     * <p>An array of structures containing metadata about your backup jobs returned in
-     * JSON format.</p>
-     */
-    inline ListBackupJobsResult& AddBackupJobs(BackupJob&& value) { m_backupJobs.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The next item following a partial list of returned items. For example, if a
      * request is made to return <code>MaxResults</code> number of items,
      * <code>NextToken</code> allows you to return more items in your list starting at
      * the location pointed to by the next token.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListBackupJobsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>MaxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>MaxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>MaxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>MaxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline ListBackupJobsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>MaxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline ListBackupJobsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The next item following a partial list of returned items. For example, if a
-     * request is made to return <code>MaxResults</code> number of items,
-     * <code>NextToken</code> allows you to return more items in your list starting at
-     * the location pointed to by the next token.</p>
-     */
-    inline ListBackupJobsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListBackupJobsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListBackupJobsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListBackupJobsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListBackupJobsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<BackupJob> m_backupJobs;
+    bool m_backupJobsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

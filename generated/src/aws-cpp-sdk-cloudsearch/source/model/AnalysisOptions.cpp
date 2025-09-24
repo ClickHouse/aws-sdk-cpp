@@ -20,23 +20,7 @@ namespace CloudSearch
 namespace Model
 {
 
-AnalysisOptions::AnalysisOptions() : 
-    m_synonymsHasBeenSet(false),
-    m_stopwordsHasBeenSet(false),
-    m_stemmingDictionaryHasBeenSet(false),
-    m_japaneseTokenizationDictionaryHasBeenSet(false),
-    m_algorithmicStemming(AlgorithmicStemming::NOT_SET),
-    m_algorithmicStemmingHasBeenSet(false)
-{
-}
-
-AnalysisOptions::AnalysisOptions(const XmlNode& xmlNode) : 
-    m_synonymsHasBeenSet(false),
-    m_stopwordsHasBeenSet(false),
-    m_stemmingDictionaryHasBeenSet(false),
-    m_japaneseTokenizationDictionaryHasBeenSet(false),
-    m_algorithmicStemming(AlgorithmicStemming::NOT_SET),
-    m_algorithmicStemmingHasBeenSet(false)
+AnalysisOptions::AnalysisOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -74,7 +58,7 @@ AnalysisOptions& AnalysisOptions::operator =(const XmlNode& xmlNode)
     XmlNode algorithmicStemmingNode = resultNode.FirstChild("AlgorithmicStemming");
     if(!algorithmicStemmingNode.IsNull())
     {
-      m_algorithmicStemming = AlgorithmicStemmingMapper::GetAlgorithmicStemmingForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(algorithmicStemmingNode.GetText()).c_str()).c_str());
+      m_algorithmicStemming = AlgorithmicStemmingMapper::GetAlgorithmicStemmingForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(algorithmicStemmingNode.GetText()).c_str()));
       m_algorithmicStemmingHasBeenSet = true;
     }
   }
@@ -106,7 +90,7 @@ void AnalysisOptions::OutputToStream(Aws::OStream& oStream, const char* location
 
   if(m_algorithmicStemmingHasBeenSet)
   {
-      oStream << location << index << locationValue << ".AlgorithmicStemming=" << AlgorithmicStemmingMapper::GetNameForAlgorithmicStemming(m_algorithmicStemming) << "&";
+      oStream << location << index << locationValue << ".AlgorithmicStemming=" << StringUtils::URLEncode(AlgorithmicStemmingMapper::GetNameForAlgorithmicStemming(m_algorithmicStemming)) << "&";
   }
 
 }
@@ -131,7 +115,7 @@ void AnalysisOptions::OutputToStream(Aws::OStream& oStream, const char* location
   }
   if(m_algorithmicStemmingHasBeenSet)
   {
-      oStream << location << ".AlgorithmicStemming=" << AlgorithmicStemmingMapper::GetNameForAlgorithmicStemming(m_algorithmicStemming) << "&";
+      oStream << location << ".AlgorithmicStemming=" << StringUtils::URLEncode(AlgorithmicStemmingMapper::GetNameForAlgorithmicStemming(m_algorithmicStemming)) << "&";
   }
 }
 

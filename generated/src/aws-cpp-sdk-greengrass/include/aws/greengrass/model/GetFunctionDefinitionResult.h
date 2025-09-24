@@ -28,364 +28,139 @@ namespace Model
   class GetFunctionDefinitionResult
   {
   public:
-    AWS_GREENGRASS_API GetFunctionDefinitionResult();
+    AWS_GREENGRASS_API GetFunctionDefinitionResult() = default;
     AWS_GREENGRASS_API GetFunctionDefinitionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_GREENGRASS_API GetFunctionDefinitionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * The ARN of the definition.
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetFunctionDefinitionResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ARN of the definition.
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * The ARN of the definition.
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * The ARN of the definition.
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * The ARN of the definition.
-     */
-    inline GetFunctionDefinitionResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * The ARN of the definition.
-     */
-    inline GetFunctionDefinitionResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * The ARN of the definition.
-     */
-    inline GetFunctionDefinitionResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * The time, in milliseconds since the epoch, when the definition was created.
      */
-    inline const Aws::String& GetCreationTimestamp() const{ return m_creationTimestamp; }
+    inline const Aws::String& GetCreationTimestamp() const { return m_creationTimestamp; }
+    template<typename CreationTimestampT = Aws::String>
+    void SetCreationTimestamp(CreationTimestampT&& value) { m_creationTimestampHasBeenSet = true; m_creationTimestamp = std::forward<CreationTimestampT>(value); }
+    template<typename CreationTimestampT = Aws::String>
+    GetFunctionDefinitionResult& WithCreationTimestamp(CreationTimestampT&& value) { SetCreationTimestamp(std::forward<CreationTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The time, in milliseconds since the epoch, when the definition was created.
-     */
-    inline void SetCreationTimestamp(const Aws::String& value) { m_creationTimestamp = value; }
-
-    /**
-     * The time, in milliseconds since the epoch, when the definition was created.
-     */
-    inline void SetCreationTimestamp(Aws::String&& value) { m_creationTimestamp = std::move(value); }
-
-    /**
-     * The time, in milliseconds since the epoch, when the definition was created.
-     */
-    inline void SetCreationTimestamp(const char* value) { m_creationTimestamp.assign(value); }
-
-    /**
-     * The time, in milliseconds since the epoch, when the definition was created.
-     */
-    inline GetFunctionDefinitionResult& WithCreationTimestamp(const Aws::String& value) { SetCreationTimestamp(value); return *this;}
-
-    /**
-     * The time, in milliseconds since the epoch, when the definition was created.
-     */
-    inline GetFunctionDefinitionResult& WithCreationTimestamp(Aws::String&& value) { SetCreationTimestamp(std::move(value)); return *this;}
-
-    /**
-     * The time, in milliseconds since the epoch, when the definition was created.
-     */
-    inline GetFunctionDefinitionResult& WithCreationTimestamp(const char* value) { SetCreationTimestamp(value); return *this;}
-
-
+    ///@{
     /**
      * The ID of the definition.
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetFunctionDefinitionResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the definition.
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * The ID of the definition.
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * The ID of the definition.
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * The ID of the definition.
-     */
-    inline GetFunctionDefinitionResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * The ID of the definition.
-     */
-    inline GetFunctionDefinitionResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the definition.
-     */
-    inline GetFunctionDefinitionResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * The time, in milliseconds since the epoch, when the definition was last updated.
      */
-    inline const Aws::String& GetLastUpdatedTimestamp() const{ return m_lastUpdatedTimestamp; }
+    inline const Aws::String& GetLastUpdatedTimestamp() const { return m_lastUpdatedTimestamp; }
+    template<typename LastUpdatedTimestampT = Aws::String>
+    void SetLastUpdatedTimestamp(LastUpdatedTimestampT&& value) { m_lastUpdatedTimestampHasBeenSet = true; m_lastUpdatedTimestamp = std::forward<LastUpdatedTimestampT>(value); }
+    template<typename LastUpdatedTimestampT = Aws::String>
+    GetFunctionDefinitionResult& WithLastUpdatedTimestamp(LastUpdatedTimestampT&& value) { SetLastUpdatedTimestamp(std::forward<LastUpdatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The time, in milliseconds since the epoch, when the definition was last updated.
-     */
-    inline void SetLastUpdatedTimestamp(const Aws::String& value) { m_lastUpdatedTimestamp = value; }
-
-    /**
-     * The time, in milliseconds since the epoch, when the definition was last updated.
-     */
-    inline void SetLastUpdatedTimestamp(Aws::String&& value) { m_lastUpdatedTimestamp = std::move(value); }
-
-    /**
-     * The time, in milliseconds since the epoch, when the definition was last updated.
-     */
-    inline void SetLastUpdatedTimestamp(const char* value) { m_lastUpdatedTimestamp.assign(value); }
-
-    /**
-     * The time, in milliseconds since the epoch, when the definition was last updated.
-     */
-    inline GetFunctionDefinitionResult& WithLastUpdatedTimestamp(const Aws::String& value) { SetLastUpdatedTimestamp(value); return *this;}
-
-    /**
-     * The time, in milliseconds since the epoch, when the definition was last updated.
-     */
-    inline GetFunctionDefinitionResult& WithLastUpdatedTimestamp(Aws::String&& value) { SetLastUpdatedTimestamp(std::move(value)); return *this;}
-
-    /**
-     * The time, in milliseconds since the epoch, when the definition was last updated.
-     */
-    inline GetFunctionDefinitionResult& WithLastUpdatedTimestamp(const char* value) { SetLastUpdatedTimestamp(value); return *this;}
-
-
+    ///@{
     /**
      * The ID of the latest version associated with the definition.
      */
-    inline const Aws::String& GetLatestVersion() const{ return m_latestVersion; }
+    inline const Aws::String& GetLatestVersion() const { return m_latestVersion; }
+    template<typename LatestVersionT = Aws::String>
+    void SetLatestVersion(LatestVersionT&& value) { m_latestVersionHasBeenSet = true; m_latestVersion = std::forward<LatestVersionT>(value); }
+    template<typename LatestVersionT = Aws::String>
+    GetFunctionDefinitionResult& WithLatestVersion(LatestVersionT&& value) { SetLatestVersion(std::forward<LatestVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ID of the latest version associated with the definition.
-     */
-    inline void SetLatestVersion(const Aws::String& value) { m_latestVersion = value; }
-
-    /**
-     * The ID of the latest version associated with the definition.
-     */
-    inline void SetLatestVersion(Aws::String&& value) { m_latestVersion = std::move(value); }
-
-    /**
-     * The ID of the latest version associated with the definition.
-     */
-    inline void SetLatestVersion(const char* value) { m_latestVersion.assign(value); }
-
-    /**
-     * The ID of the latest version associated with the definition.
-     */
-    inline GetFunctionDefinitionResult& WithLatestVersion(const Aws::String& value) { SetLatestVersion(value); return *this;}
-
-    /**
-     * The ID of the latest version associated with the definition.
-     */
-    inline GetFunctionDefinitionResult& WithLatestVersion(Aws::String&& value) { SetLatestVersion(std::move(value)); return *this;}
-
-    /**
-     * The ID of the latest version associated with the definition.
-     */
-    inline GetFunctionDefinitionResult& WithLatestVersion(const char* value) { SetLatestVersion(value); return *this;}
-
-
+    ///@{
     /**
      * The ARN of the latest version associated with the definition.
      */
-    inline const Aws::String& GetLatestVersionArn() const{ return m_latestVersionArn; }
+    inline const Aws::String& GetLatestVersionArn() const { return m_latestVersionArn; }
+    template<typename LatestVersionArnT = Aws::String>
+    void SetLatestVersionArn(LatestVersionArnT&& value) { m_latestVersionArnHasBeenSet = true; m_latestVersionArn = std::forward<LatestVersionArnT>(value); }
+    template<typename LatestVersionArnT = Aws::String>
+    GetFunctionDefinitionResult& WithLatestVersionArn(LatestVersionArnT&& value) { SetLatestVersionArn(std::forward<LatestVersionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The ARN of the latest version associated with the definition.
-     */
-    inline void SetLatestVersionArn(const Aws::String& value) { m_latestVersionArn = value; }
-
-    /**
-     * The ARN of the latest version associated with the definition.
-     */
-    inline void SetLatestVersionArn(Aws::String&& value) { m_latestVersionArn = std::move(value); }
-
-    /**
-     * The ARN of the latest version associated with the definition.
-     */
-    inline void SetLatestVersionArn(const char* value) { m_latestVersionArn.assign(value); }
-
-    /**
-     * The ARN of the latest version associated with the definition.
-     */
-    inline GetFunctionDefinitionResult& WithLatestVersionArn(const Aws::String& value) { SetLatestVersionArn(value); return *this;}
-
-    /**
-     * The ARN of the latest version associated with the definition.
-     */
-    inline GetFunctionDefinitionResult& WithLatestVersionArn(Aws::String&& value) { SetLatestVersionArn(std::move(value)); return *this;}
-
-    /**
-     * The ARN of the latest version associated with the definition.
-     */
-    inline GetFunctionDefinitionResult& WithLatestVersionArn(const char* value) { SetLatestVersionArn(value); return *this;}
-
-
+    ///@{
     /**
      * The name of the definition.
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetFunctionDefinitionResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * The name of the definition.
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * The name of the definition.
-     */
-    inline GetFunctionDefinitionResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * The name of the definition.
-     */
-    inline GetFunctionDefinitionResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * The name of the definition.
-     */
-    inline GetFunctionDefinitionResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * Tag(s) attached to the resource arn.
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    GetFunctionDefinitionResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    GetFunctionDefinitionResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline GetFunctionDefinitionResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline GetFunctionDefinitionResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline GetFunctionDefinitionResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline GetFunctionDefinitionResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline GetFunctionDefinitionResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline GetFunctionDefinitionResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline GetFunctionDefinitionResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline GetFunctionDefinitionResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * Tag(s) attached to the resource arn.
-     */
-    inline GetFunctionDefinitionResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetFunctionDefinitionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetFunctionDefinitionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetFunctionDefinitionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetFunctionDefinitionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_creationTimestamp;
+    bool m_creationTimestampHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_lastUpdatedTimestamp;
+    bool m_lastUpdatedTimestampHasBeenSet = false;
 
     Aws::String m_latestVersion;
+    bool m_latestVersionHasBeenSet = false;
 
     Aws::String m_latestVersionArn;
+    bool m_latestVersionArnHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

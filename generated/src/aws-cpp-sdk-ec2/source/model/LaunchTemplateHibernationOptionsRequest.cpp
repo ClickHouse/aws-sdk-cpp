@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-LaunchTemplateHibernationOptionsRequest::LaunchTemplateHibernationOptionsRequest() : 
-    m_configured(false),
-    m_configuredHasBeenSet(false)
-{
-}
-
-LaunchTemplateHibernationOptionsRequest::LaunchTemplateHibernationOptionsRequest(const XmlNode& xmlNode) : 
-    m_configured(false),
-    m_configuredHasBeenSet(false)
+LaunchTemplateHibernationOptionsRequest::LaunchTemplateHibernationOptionsRequest(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

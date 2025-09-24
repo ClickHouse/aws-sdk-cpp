@@ -18,15 +18,7 @@ namespace Lambda
 namespace Model
 {
 
-CodeSigningPolicies::CodeSigningPolicies() : 
-    m_untrustedArtifactOnDeployment(CodeSigningPolicy::NOT_SET),
-    m_untrustedArtifactOnDeploymentHasBeenSet(false)
-{
-}
-
-CodeSigningPolicies::CodeSigningPolicies(JsonView jsonValue) : 
-    m_untrustedArtifactOnDeployment(CodeSigningPolicy::NOT_SET),
-    m_untrustedArtifactOnDeploymentHasBeenSet(false)
+CodeSigningPolicies::CodeSigningPolicies(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CodeSigningPolicies& CodeSigningPolicies::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("UntrustedArtifactOnDeployment"))
   {
     m_untrustedArtifactOnDeployment = CodeSigningPolicyMapper::GetCodeSigningPolicyForName(jsonValue.GetString("UntrustedArtifactOnDeployment"));
-
     m_untrustedArtifactOnDeploymentHasBeenSet = true;
   }
-
   return *this;
 }
 

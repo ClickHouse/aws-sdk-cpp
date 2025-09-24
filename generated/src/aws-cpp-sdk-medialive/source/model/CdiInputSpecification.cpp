@@ -18,15 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-CdiInputSpecification::CdiInputSpecification() : 
-    m_resolution(CdiInputResolution::NOT_SET),
-    m_resolutionHasBeenSet(false)
-{
-}
-
-CdiInputSpecification::CdiInputSpecification(JsonView jsonValue) : 
-    m_resolution(CdiInputResolution::NOT_SET),
-    m_resolutionHasBeenSet(false)
+CdiInputSpecification::CdiInputSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CdiInputSpecification& CdiInputSpecification::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("resolution"))
   {
     m_resolution = CdiInputResolutionMapper::GetCdiInputResolutionForName(jsonValue.GetString("resolution"));
-
     m_resolutionHasBeenSet = true;
   }
-
   return *this;
 }
 

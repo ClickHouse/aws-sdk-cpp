@@ -26,7 +26,7 @@ namespace Model
   class ModifyListenerRequest : public ElasticLoadBalancingv2Request
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API ModifyListenerRequest();
+    AWS_ELASTICLOADBALANCINGV2_API ModifyListenerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,306 +41,91 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the listener.</p>
      */
-    inline const Aws::String& GetListenerArn() const{ return m_listenerArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
+    inline const Aws::String& GetListenerArn() const { return m_listenerArn; }
     inline bool ListenerArnHasBeenSet() const { return m_listenerArnHasBeenSet; }
+    template<typename ListenerArnT = Aws::String>
+    void SetListenerArn(ListenerArnT&& value) { m_listenerArnHasBeenSet = true; m_listenerArn = std::forward<ListenerArnT>(value); }
+    template<typename ListenerArnT = Aws::String>
+    ModifyListenerRequest& WithListenerArn(ListenerArnT&& value) { SetListenerArn(std::forward<ListenerArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
+     * <p>The port for connections from clients to the load balancer. You can't specify
+     * a port for a Gateway Load Balancer.</p>
      */
-    inline void SetListenerArn(const Aws::String& value) { m_listenerArnHasBeenSet = true; m_listenerArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline void SetListenerArn(Aws::String&& value) { m_listenerArnHasBeenSet = true; m_listenerArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline void SetListenerArn(const char* value) { m_listenerArnHasBeenSet = true; m_listenerArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline ModifyListenerRequest& WithListenerArn(const Aws::String& value) { SetListenerArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline ModifyListenerRequest& WithListenerArn(Aws::String&& value) { SetListenerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline ModifyListenerRequest& WithListenerArn(const char* value) { SetListenerArn(value); return *this;}
-
-
-    /**
-     * <p>The port for connections from clients to the load balancer. You cannot
-     * specify a port for a Gateway Load Balancer.</p>
-     */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The port for connections from clients to the load balancer. You cannot
-     * specify a port for a Gateway Load Balancer.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The port for connections from clients to the load balancer. You cannot
-     * specify a port for a Gateway Load Balancer.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The port for connections from clients to the load balancer. You cannot
-     * specify a port for a Gateway Load Balancer.</p>
-     */
     inline ModifyListenerRequest& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The protocol for connections from clients to the load balancer. Application
      * Load Balancers support the HTTP and HTTPS protocols. Network Load Balancers
      * support the TCP, TLS, UDP, and TCP_UDP protocols. You can’t change the protocol
-     * to UDP or TCP_UDP if dual-stack mode is enabled. You cannot specify a protocol
+     * to UDP or TCP_UDP if dual-stack mode is enabled. You can't specify a protocol
      * for a Gateway Load Balancer.</p>
      */
-    inline const ProtocolEnum& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The protocol for connections from clients to the load balancer. Application
-     * Load Balancers support the HTTP and HTTPS protocols. Network Load Balancers
-     * support the TCP, TLS, UDP, and TCP_UDP protocols. You can’t change the protocol
-     * to UDP or TCP_UDP if dual-stack mode is enabled. You cannot specify a protocol
-     * for a Gateway Load Balancer.</p>
-     */
+    inline ProtocolEnum GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
+    inline void SetProtocol(ProtocolEnum value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline ModifyListenerRequest& WithProtocol(ProtocolEnum value) { SetProtocol(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The protocol for connections from clients to the load balancer. Application
-     * Load Balancers support the HTTP and HTTPS protocols. Network Load Balancers
-     * support the TCP, TLS, UDP, and TCP_UDP protocols. You can’t change the protocol
-     * to UDP or TCP_UDP if dual-stack mode is enabled. You cannot specify a protocol
-     * for a Gateway Load Balancer.</p>
-     */
-    inline void SetProtocol(const ProtocolEnum& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The protocol for connections from clients to the load balancer. Application
-     * Load Balancers support the HTTP and HTTPS protocols. Network Load Balancers
-     * support the TCP, TLS, UDP, and TCP_UDP protocols. You can’t change the protocol
-     * to UDP or TCP_UDP if dual-stack mode is enabled. You cannot specify a protocol
-     * for a Gateway Load Balancer.</p>
-     */
-    inline void SetProtocol(ProtocolEnum&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The protocol for connections from clients to the load balancer. Application
-     * Load Balancers support the HTTP and HTTPS protocols. Network Load Balancers
-     * support the TCP, TLS, UDP, and TCP_UDP protocols. You can’t change the protocol
-     * to UDP or TCP_UDP if dual-stack mode is enabled. You cannot specify a protocol
-     * for a Gateway Load Balancer.</p>
-     */
-    inline ModifyListenerRequest& WithProtocol(const ProtocolEnum& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The protocol for connections from clients to the load balancer. Application
-     * Load Balancers support the HTTP and HTTPS protocols. Network Load Balancers
-     * support the TCP, TLS, UDP, and TCP_UDP protocols. You can’t change the protocol
-     * to UDP or TCP_UDP if dual-stack mode is enabled. You cannot specify a protocol
-     * for a Gateway Load Balancer.</p>
-     */
-    inline ModifyListenerRequest& WithProtocol(ProtocolEnum&& value) { SetProtocol(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>[HTTPS and TLS listeners] The security policy that defines which protocols
      * and ciphers are supported.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security
+     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/describe-ssl-policies.html">Security
      * policies</a> in the <i>Application Load Balancers Guide</i> or <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies">Security
+     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/describe-ssl-policies.html">Security
      * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
      */
-    inline const Aws::String& GetSslPolicy() const{ return m_sslPolicy; }
-
-    /**
-     * <p>[HTTPS and TLS listeners] The security policy that defines which protocols
-     * and ciphers are supported.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Application Load Balancers Guide</i> or <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
+    inline const Aws::String& GetSslPolicy() const { return m_sslPolicy; }
     inline bool SslPolicyHasBeenSet() const { return m_sslPolicyHasBeenSet; }
+    template<typename SslPolicyT = Aws::String>
+    void SetSslPolicy(SslPolicyT&& value) { m_sslPolicyHasBeenSet = true; m_sslPolicy = std::forward<SslPolicyT>(value); }
+    template<typename SslPolicyT = Aws::String>
+    ModifyListenerRequest& WithSslPolicy(SslPolicyT&& value) { SetSslPolicy(std::forward<SslPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>[HTTPS and TLS listeners] The security policy that defines which protocols
-     * and ciphers are supported.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Application Load Balancers Guide</i> or <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline void SetSslPolicy(const Aws::String& value) { m_sslPolicyHasBeenSet = true; m_sslPolicy = value; }
-
-    /**
-     * <p>[HTTPS and TLS listeners] The security policy that defines which protocols
-     * and ciphers are supported.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Application Load Balancers Guide</i> or <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline void SetSslPolicy(Aws::String&& value) { m_sslPolicyHasBeenSet = true; m_sslPolicy = std::move(value); }
-
-    /**
-     * <p>[HTTPS and TLS listeners] The security policy that defines which protocols
-     * and ciphers are supported.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Application Load Balancers Guide</i> or <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline void SetSslPolicy(const char* value) { m_sslPolicyHasBeenSet = true; m_sslPolicy.assign(value); }
-
-    /**
-     * <p>[HTTPS and TLS listeners] The security policy that defines which protocols
-     * and ciphers are supported.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Application Load Balancers Guide</i> or <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline ModifyListenerRequest& WithSslPolicy(const Aws::String& value) { SetSslPolicy(value); return *this;}
-
-    /**
-     * <p>[HTTPS and TLS listeners] The security policy that defines which protocols
-     * and ciphers are supported.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Application Load Balancers Guide</i> or <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline ModifyListenerRequest& WithSslPolicy(Aws::String&& value) { SetSslPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>[HTTPS and TLS listeners] The security policy that defines which protocols
-     * and ciphers are supported.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Application Load Balancers Guide</i> or <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies">Security
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline ModifyListenerRequest& WithSslPolicy(const char* value) { SetSslPolicy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>[HTTPS and TLS listeners] The default certificate for the listener. You must
      * provide exactly one certificate. Set <code>CertificateArn</code> to the
      * certificate ARN but do not set <code>IsDefault</code>.</p>
      */
-    inline const Aws::Vector<Certificate>& GetCertificates() const{ return m_certificates; }
-
-    /**
-     * <p>[HTTPS and TLS listeners] The default certificate for the listener. You must
-     * provide exactly one certificate. Set <code>CertificateArn</code> to the
-     * certificate ARN but do not set <code>IsDefault</code>.</p>
-     */
+    inline const Aws::Vector<Certificate>& GetCertificates() const { return m_certificates; }
     inline bool CertificatesHasBeenSet() const { return m_certificatesHasBeenSet; }
+    template<typename CertificatesT = Aws::Vector<Certificate>>
+    void SetCertificates(CertificatesT&& value) { m_certificatesHasBeenSet = true; m_certificates = std::forward<CertificatesT>(value); }
+    template<typename CertificatesT = Aws::Vector<Certificate>>
+    ModifyListenerRequest& WithCertificates(CertificatesT&& value) { SetCertificates(std::forward<CertificatesT>(value)); return *this;}
+    template<typename CertificatesT = Certificate>
+    ModifyListenerRequest& AddCertificates(CertificatesT&& value) { m_certificatesHasBeenSet = true; m_certificates.emplace_back(std::forward<CertificatesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>[HTTPS and TLS listeners] The default certificate for the listener. You must
-     * provide exactly one certificate. Set <code>CertificateArn</code> to the
-     * certificate ARN but do not set <code>IsDefault</code>.</p>
-     */
-    inline void SetCertificates(const Aws::Vector<Certificate>& value) { m_certificatesHasBeenSet = true; m_certificates = value; }
-
-    /**
-     * <p>[HTTPS and TLS listeners] The default certificate for the listener. You must
-     * provide exactly one certificate. Set <code>CertificateArn</code> to the
-     * certificate ARN but do not set <code>IsDefault</code>.</p>
-     */
-    inline void SetCertificates(Aws::Vector<Certificate>&& value) { m_certificatesHasBeenSet = true; m_certificates = std::move(value); }
-
-    /**
-     * <p>[HTTPS and TLS listeners] The default certificate for the listener. You must
-     * provide exactly one certificate. Set <code>CertificateArn</code> to the
-     * certificate ARN but do not set <code>IsDefault</code>.</p>
-     */
-    inline ModifyListenerRequest& WithCertificates(const Aws::Vector<Certificate>& value) { SetCertificates(value); return *this;}
-
-    /**
-     * <p>[HTTPS and TLS listeners] The default certificate for the listener. You must
-     * provide exactly one certificate. Set <code>CertificateArn</code> to the
-     * certificate ARN but do not set <code>IsDefault</code>.</p>
-     */
-    inline ModifyListenerRequest& WithCertificates(Aws::Vector<Certificate>&& value) { SetCertificates(std::move(value)); return *this;}
-
-    /**
-     * <p>[HTTPS and TLS listeners] The default certificate for the listener. You must
-     * provide exactly one certificate. Set <code>CertificateArn</code> to the
-     * certificate ARN but do not set <code>IsDefault</code>.</p>
-     */
-    inline ModifyListenerRequest& AddCertificates(const Certificate& value) { m_certificatesHasBeenSet = true; m_certificates.push_back(value); return *this; }
-
-    /**
-     * <p>[HTTPS and TLS listeners] The default certificate for the listener. You must
-     * provide exactly one certificate. Set <code>CertificateArn</code> to the
-     * certificate ARN but do not set <code>IsDefault</code>.</p>
-     */
-    inline ModifyListenerRequest& AddCertificates(Certificate&& value) { m_certificatesHasBeenSet = true; m_certificates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The actions for the default rule.</p>
      */
-    inline const Aws::Vector<Action>& GetDefaultActions() const{ return m_defaultActions; }
-
-    /**
-     * <p>The actions for the default rule.</p>
-     */
+    inline const Aws::Vector<Action>& GetDefaultActions() const { return m_defaultActions; }
     inline bool DefaultActionsHasBeenSet() const { return m_defaultActionsHasBeenSet; }
+    template<typename DefaultActionsT = Aws::Vector<Action>>
+    void SetDefaultActions(DefaultActionsT&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions = std::forward<DefaultActionsT>(value); }
+    template<typename DefaultActionsT = Aws::Vector<Action>>
+    ModifyListenerRequest& WithDefaultActions(DefaultActionsT&& value) { SetDefaultActions(std::forward<DefaultActionsT>(value)); return *this;}
+    template<typename DefaultActionsT = Action>
+    ModifyListenerRequest& AddDefaultActions(DefaultActionsT&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions.emplace_back(std::forward<DefaultActionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The actions for the default rule.</p>
-     */
-    inline void SetDefaultActions(const Aws::Vector<Action>& value) { m_defaultActionsHasBeenSet = true; m_defaultActions = value; }
-
-    /**
-     * <p>The actions for the default rule.</p>
-     */
-    inline void SetDefaultActions(Aws::Vector<Action>&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions = std::move(value); }
-
-    /**
-     * <p>The actions for the default rule.</p>
-     */
-    inline ModifyListenerRequest& WithDefaultActions(const Aws::Vector<Action>& value) { SetDefaultActions(value); return *this;}
-
-    /**
-     * <p>The actions for the default rule.</p>
-     */
-    inline ModifyListenerRequest& WithDefaultActions(Aws::Vector<Action>&& value) { SetDefaultActions(std::move(value)); return *this;}
-
-    /**
-     * <p>The actions for the default rule.</p>
-     */
-    inline ModifyListenerRequest& AddDefaultActions(const Action& value) { m_defaultActionsHasBeenSet = true; m_defaultActions.push_back(value); return *this; }
-
-    /**
-     * <p>The actions for the default rule.</p>
-     */
-    inline ModifyListenerRequest& AddDefaultActions(Action&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>[TLS listeners] The name of the Application-Layer Protocol Negotiation (ALPN)
      * policy. You can specify one policy name. The following are the possible
@@ -348,147 +133,39 @@ namespace Model
      * <code>HTTP2Only</code> </p> </li> <li> <p> <code>HTTP2Optional</code> </p> </li>
      * <li> <p> <code>HTTP2Preferred</code> </p> </li> <li> <p> <code>None</code> </p>
      * </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies">ALPN
+     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html#alpn-policies">ALPN
      * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAlpnPolicy() const{ return m_alpnPolicy; }
-
-    /**
-     * <p>[TLS listeners] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy. You can specify one policy name. The following are the possible
-     * values:</p> <ul> <li> <p> <code>HTTP1Only</code> </p> </li> <li> <p>
-     * <code>HTTP2Only</code> </p> </li> <li> <p> <code>HTTP2Optional</code> </p> </li>
-     * <li> <p> <code>HTTP2Preferred</code> </p> </li> <li> <p> <code>None</code> </p>
-     * </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies">ALPN
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAlpnPolicy() const { return m_alpnPolicy; }
     inline bool AlpnPolicyHasBeenSet() const { return m_alpnPolicyHasBeenSet; }
+    template<typename AlpnPolicyT = Aws::Vector<Aws::String>>
+    void SetAlpnPolicy(AlpnPolicyT&& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy = std::forward<AlpnPolicyT>(value); }
+    template<typename AlpnPolicyT = Aws::Vector<Aws::String>>
+    ModifyListenerRequest& WithAlpnPolicy(AlpnPolicyT&& value) { SetAlpnPolicy(std::forward<AlpnPolicyT>(value)); return *this;}
+    template<typename AlpnPolicyT = Aws::String>
+    ModifyListenerRequest& AddAlpnPolicy(AlpnPolicyT&& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy.emplace_back(std::forward<AlpnPolicyT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>[TLS listeners] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy. You can specify one policy name. The following are the possible
-     * values:</p> <ul> <li> <p> <code>HTTP1Only</code> </p> </li> <li> <p>
-     * <code>HTTP2Only</code> </p> </li> <li> <p> <code>HTTP2Optional</code> </p> </li>
-     * <li> <p> <code>HTTP2Preferred</code> </p> </li> <li> <p> <code>None</code> </p>
-     * </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies">ALPN
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline void SetAlpnPolicy(const Aws::Vector<Aws::String>& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy = value; }
-
-    /**
-     * <p>[TLS listeners] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy. You can specify one policy name. The following are the possible
-     * values:</p> <ul> <li> <p> <code>HTTP1Only</code> </p> </li> <li> <p>
-     * <code>HTTP2Only</code> </p> </li> <li> <p> <code>HTTP2Optional</code> </p> </li>
-     * <li> <p> <code>HTTP2Preferred</code> </p> </li> <li> <p> <code>None</code> </p>
-     * </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies">ALPN
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline void SetAlpnPolicy(Aws::Vector<Aws::String>&& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy = std::move(value); }
-
-    /**
-     * <p>[TLS listeners] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy. You can specify one policy name. The following are the possible
-     * values:</p> <ul> <li> <p> <code>HTTP1Only</code> </p> </li> <li> <p>
-     * <code>HTTP2Only</code> </p> </li> <li> <p> <code>HTTP2Optional</code> </p> </li>
-     * <li> <p> <code>HTTP2Preferred</code> </p> </li> <li> <p> <code>None</code> </p>
-     * </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies">ALPN
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline ModifyListenerRequest& WithAlpnPolicy(const Aws::Vector<Aws::String>& value) { SetAlpnPolicy(value); return *this;}
-
-    /**
-     * <p>[TLS listeners] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy. You can specify one policy name. The following are the possible
-     * values:</p> <ul> <li> <p> <code>HTTP1Only</code> </p> </li> <li> <p>
-     * <code>HTTP2Only</code> </p> </li> <li> <p> <code>HTTP2Optional</code> </p> </li>
-     * <li> <p> <code>HTTP2Preferred</code> </p> </li> <li> <p> <code>None</code> </p>
-     * </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies">ALPN
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline ModifyListenerRequest& WithAlpnPolicy(Aws::Vector<Aws::String>&& value) { SetAlpnPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>[TLS listeners] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy. You can specify one policy name. The following are the possible
-     * values:</p> <ul> <li> <p> <code>HTTP1Only</code> </p> </li> <li> <p>
-     * <code>HTTP2Only</code> </p> </li> <li> <p> <code>HTTP2Optional</code> </p> </li>
-     * <li> <p> <code>HTTP2Preferred</code> </p> </li> <li> <p> <code>None</code> </p>
-     * </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies">ALPN
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline ModifyListenerRequest& AddAlpnPolicy(const Aws::String& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy.push_back(value); return *this; }
-
-    /**
-     * <p>[TLS listeners] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy. You can specify one policy name. The following are the possible
-     * values:</p> <ul> <li> <p> <code>HTTP1Only</code> </p> </li> <li> <p>
-     * <code>HTTP2Only</code> </p> </li> <li> <p> <code>HTTP2Optional</code> </p> </li>
-     * <li> <p> <code>HTTP2Preferred</code> </p> </li> <li> <p> <code>None</code> </p>
-     * </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies">ALPN
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline ModifyListenerRequest& AddAlpnPolicy(Aws::String&& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>[TLS listeners] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy. You can specify one policy name. The following are the possible
-     * values:</p> <ul> <li> <p> <code>HTTP1Only</code> </p> </li> <li> <p>
-     * <code>HTTP2Only</code> </p> </li> <li> <p> <code>HTTP2Optional</code> </p> </li>
-     * <li> <p> <code>HTTP2Preferred</code> </p> </li> <li> <p> <code>None</code> </p>
-     * </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies">ALPN
-     * policies</a> in the <i>Network Load Balancers Guide</i>.</p>
-     */
-    inline ModifyListenerRequest& AddAlpnPolicy(const char* value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The mutual authentication configuration information.</p>
      */
-    inline const MutualAuthenticationAttributes& GetMutualAuthentication() const{ return m_mutualAuthentication; }
-
-    /**
-     * <p>The mutual authentication configuration information.</p>
-     */
+    inline const MutualAuthenticationAttributes& GetMutualAuthentication() const { return m_mutualAuthentication; }
     inline bool MutualAuthenticationHasBeenSet() const { return m_mutualAuthenticationHasBeenSet; }
-
-    /**
-     * <p>The mutual authentication configuration information.</p>
-     */
-    inline void SetMutualAuthentication(const MutualAuthenticationAttributes& value) { m_mutualAuthenticationHasBeenSet = true; m_mutualAuthentication = value; }
-
-    /**
-     * <p>The mutual authentication configuration information.</p>
-     */
-    inline void SetMutualAuthentication(MutualAuthenticationAttributes&& value) { m_mutualAuthenticationHasBeenSet = true; m_mutualAuthentication = std::move(value); }
-
-    /**
-     * <p>The mutual authentication configuration information.</p>
-     */
-    inline ModifyListenerRequest& WithMutualAuthentication(const MutualAuthenticationAttributes& value) { SetMutualAuthentication(value); return *this;}
-
-    /**
-     * <p>The mutual authentication configuration information.</p>
-     */
-    inline ModifyListenerRequest& WithMutualAuthentication(MutualAuthenticationAttributes&& value) { SetMutualAuthentication(std::move(value)); return *this;}
-
+    template<typename MutualAuthenticationT = MutualAuthenticationAttributes>
+    void SetMutualAuthentication(MutualAuthenticationT&& value) { m_mutualAuthenticationHasBeenSet = true; m_mutualAuthentication = std::forward<MutualAuthenticationT>(value); }
+    template<typename MutualAuthenticationT = MutualAuthenticationAttributes>
+    ModifyListenerRequest& WithMutualAuthentication(MutualAuthenticationT&& value) { SetMutualAuthentication(std::forward<MutualAuthenticationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_listenerArn;
     bool m_listenerArnHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
-    ProtocolEnum m_protocol;
+    ProtocolEnum m_protocol{ProtocolEnum::NOT_SET};
     bool m_protocolHasBeenSet = false;
 
     Aws::String m_sslPolicy;

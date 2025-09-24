@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-PrincipalIdFormat::PrincipalIdFormat() : 
-    m_arnHasBeenSet(false),
-    m_statusesHasBeenSet(false)
-{
-}
-
-PrincipalIdFormat::PrincipalIdFormat(const XmlNode& xmlNode) : 
-    m_arnHasBeenSet(false),
-    m_statusesHasBeenSet(false)
+PrincipalIdFormat::PrincipalIdFormat(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ PrincipalIdFormat& PrincipalIdFormat::operator =(const XmlNode& xmlNode)
     if(!statusesNode.IsNull())
     {
       XmlNode statusesMember = statusesNode.FirstChild("item");
+      m_statusesHasBeenSet = !statusesMember.IsNull();
       while(!statusesMember.IsNull())
       {
         m_statuses.push_back(statusesMember);
@@ -94,7 +87,7 @@ void PrincipalIdFormat::OutputToStream(Aws::OStream& oStream, const char* locati
       for(auto& item : m_statuses)
       {
         Aws::StringStream statusesSs;
-        statusesSs << location <<  ".StatusSet." << statusesIdx++;
+        statusesSs << location << ".StatusSet." << statusesIdx++;
         item.OutputToStream(oStream, statusesSs.str().c_str());
       }
   }

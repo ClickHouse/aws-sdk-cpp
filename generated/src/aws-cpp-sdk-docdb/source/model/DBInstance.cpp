@@ -20,79 +20,7 @@ namespace DocDB
 namespace Model
 {
 
-DBInstance::DBInstance() : 
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_dBInstanceStatusHasBeenSet(false),
-    m_endpointHasBeenSet(false),
-    m_instanceCreateTimeHasBeenSet(false),
-    m_preferredBackupWindowHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_vpcSecurityGroupsHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_dBSubnetGroupHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_pendingModifiedValuesHasBeenSet(false),
-    m_latestRestorableTimeHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false),
-    m_statusInfosHasBeenSet(false),
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_dbiResourceIdHasBeenSet(false),
-    m_cACertificateIdentifierHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_promotionTier(0),
-    m_promotionTierHasBeenSet(false),
-    m_dBInstanceArnHasBeenSet(false),
-    m_enabledCloudwatchLogsExportsHasBeenSet(false),
-    m_certificateDetailsHasBeenSet(false)
-{
-}
-
-DBInstance::DBInstance(const XmlNode& xmlNode) : 
-    m_dBInstanceIdentifierHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_engineHasBeenSet(false),
-    m_dBInstanceStatusHasBeenSet(false),
-    m_endpointHasBeenSet(false),
-    m_instanceCreateTimeHasBeenSet(false),
-    m_preferredBackupWindowHasBeenSet(false),
-    m_backupRetentionPeriod(0),
-    m_backupRetentionPeriodHasBeenSet(false),
-    m_vpcSecurityGroupsHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_dBSubnetGroupHasBeenSet(false),
-    m_preferredMaintenanceWindowHasBeenSet(false),
-    m_pendingModifiedValuesHasBeenSet(false),
-    m_latestRestorableTimeHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_autoMinorVersionUpgrade(false),
-    m_autoMinorVersionUpgradeHasBeenSet(false),
-    m_publiclyAccessible(false),
-    m_publiclyAccessibleHasBeenSet(false),
-    m_statusInfosHasBeenSet(false),
-    m_dBClusterIdentifierHasBeenSet(false),
-    m_storageEncrypted(false),
-    m_storageEncryptedHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_dbiResourceIdHasBeenSet(false),
-    m_cACertificateIdentifierHasBeenSet(false),
-    m_copyTagsToSnapshot(false),
-    m_copyTagsToSnapshotHasBeenSet(false),
-    m_promotionTier(0),
-    m_promotionTierHasBeenSet(false),
-    m_dBInstanceArnHasBeenSet(false),
-    m_enabledCloudwatchLogsExportsHasBeenSet(false),
-    m_certificateDetailsHasBeenSet(false)
+DBInstance::DBInstance(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -155,6 +83,7 @@ DBInstance& DBInstance::operator =(const XmlNode& xmlNode)
     if(!vpcSecurityGroupsNode.IsNull())
     {
       XmlNode vpcSecurityGroupsMember = vpcSecurityGroupsNode.FirstChild("VpcSecurityGroupMembership");
+      m_vpcSecurityGroupsHasBeenSet = !vpcSecurityGroupsMember.IsNull();
       while(!vpcSecurityGroupsMember.IsNull())
       {
         m_vpcSecurityGroups.push_back(vpcSecurityGroupsMember);
@@ -215,6 +144,7 @@ DBInstance& DBInstance::operator =(const XmlNode& xmlNode)
     if(!statusInfosNode.IsNull())
     {
       XmlNode statusInfosMember = statusInfosNode.FirstChild("DBInstanceStatusInfo");
+      m_statusInfosHasBeenSet = !statusInfosMember.IsNull();
       while(!statusInfosMember.IsNull())
       {
         m_statusInfos.push_back(statusInfosMember);
@@ -275,6 +205,7 @@ DBInstance& DBInstance::operator =(const XmlNode& xmlNode)
     if(!enabledCloudwatchLogsExportsNode.IsNull())
     {
       XmlNode enabledCloudwatchLogsExportsMember = enabledCloudwatchLogsExportsNode.FirstChild("member");
+      m_enabledCloudwatchLogsExportsHasBeenSet = !enabledCloudwatchLogsExportsMember.IsNull();
       while(!enabledCloudwatchLogsExportsMember.IsNull())
       {
         m_enabledCloudwatchLogsExports.push_back(enabledCloudwatchLogsExportsMember.GetText());
@@ -288,6 +219,18 @@ DBInstance& DBInstance::operator =(const XmlNode& xmlNode)
     {
       m_certificateDetails = certificateDetailsNode;
       m_certificateDetailsHasBeenSet = true;
+    }
+    XmlNode performanceInsightsEnabledNode = resultNode.FirstChild("PerformanceInsightsEnabled");
+    if(!performanceInsightsEnabledNode.IsNull())
+    {
+      m_performanceInsightsEnabled = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(performanceInsightsEnabledNode.GetText()).c_str()).c_str());
+      m_performanceInsightsEnabledHasBeenSet = true;
+    }
+    XmlNode performanceInsightsKMSKeyIdNode = resultNode.FirstChild("PerformanceInsightsKMSKeyId");
+    if(!performanceInsightsKMSKeyIdNode.IsNull())
+    {
+      m_performanceInsightsKMSKeyId = Aws::Utils::Xml::DecodeEscapedXmlText(performanceInsightsKMSKeyIdNode.GetText());
+      m_performanceInsightsKMSKeyIdHasBeenSet = true;
     }
   }
 
@@ -344,7 +287,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
       for(auto& item : m_vpcSecurityGroups)
       {
         Aws::StringStream vpcSecurityGroupsSs;
-        vpcSecurityGroupsSs << location << index << locationValue << ".VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
+        vpcSecurityGroupsSs << location << index << locationValue << ".VpcSecurityGroups.VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
         item.OutputToStream(oStream, vpcSecurityGroupsSs.str().c_str());
       }
   }
@@ -399,7 +342,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
       for(auto& item : m_statusInfos)
       {
         Aws::StringStream statusInfosSs;
-        statusInfosSs << location << index << locationValue << ".DBInstanceStatusInfo." << statusInfosIdx++;
+        statusInfosSs << location << index << locationValue << ".StatusInfos.DBInstanceStatusInfo." << statusInfosIdx++;
         item.OutputToStream(oStream, statusInfosSs.str().c_str());
       }
   }
@@ -460,6 +403,16 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location, uns
       m_certificateDetails.OutputToStream(oStream, certificateDetailsLocationAndMemberSs.str().c_str());
   }
 
+  if(m_performanceInsightsEnabledHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PerformanceInsightsEnabled=" << std::boolalpha << m_performanceInsightsEnabled << "&";
+  }
+
+  if(m_performanceInsightsKMSKeyIdHasBeenSet)
+  {
+      oStream << location << index << locationValue << ".PerformanceInsightsKMSKeyId=" << StringUtils::URLEncode(m_performanceInsightsKMSKeyId.c_str()) << "&";
+  }
+
 }
 
 void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) const
@@ -504,7 +457,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_vpcSecurityGroups)
       {
         Aws::StringStream vpcSecurityGroupsSs;
-        vpcSecurityGroupsSs << location <<  ".VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
+        vpcSecurityGroupsSs << location << ".VpcSecurityGroups.VpcSecurityGroupMembership." << vpcSecurityGroupsIdx++;
         item.OutputToStream(oStream, vpcSecurityGroupsSs.str().c_str());
       }
   }
@@ -550,7 +503,7 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_statusInfos)
       {
         Aws::StringStream statusInfosSs;
-        statusInfosSs << location <<  ".DBInstanceStatusInfo." << statusInfosIdx++;
+        statusInfosSs << location << ".StatusInfos.DBInstanceStatusInfo." << statusInfosIdx++;
         item.OutputToStream(oStream, statusInfosSs.str().c_str());
       }
   }
@@ -599,6 +552,14 @@ void DBInstance::OutputToStream(Aws::OStream& oStream, const char* location) con
       Aws::String certificateDetailsLocationAndMember(location);
       certificateDetailsLocationAndMember += ".CertificateDetails";
       m_certificateDetails.OutputToStream(oStream, certificateDetailsLocationAndMember.c_str());
+  }
+  if(m_performanceInsightsEnabledHasBeenSet)
+  {
+      oStream << location << ".PerformanceInsightsEnabled=" << std::boolalpha << m_performanceInsightsEnabled << "&";
+  }
+  if(m_performanceInsightsKMSKeyIdHasBeenSet)
+  {
+      oStream << location << ".PerformanceInsightsKMSKeyId=" << StringUtils::URLEncode(m_performanceInsightsKMSKeyId.c_str()) << "&";
   }
 }
 

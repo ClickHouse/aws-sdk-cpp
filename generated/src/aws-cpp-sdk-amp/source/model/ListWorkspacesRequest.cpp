@@ -15,14 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListWorkspacesRequest::ListWorkspacesRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_aliasHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false)
-{
-}
-
 Aws::String ListWorkspacesRequest::SerializePayload() const
 {
   return {};

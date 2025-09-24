@@ -5,12 +5,12 @@
 
 #pragma once
 #include <aws/inspector2/Inspector2_EXPORTS.h>
-#include <aws/inspector2/model/ReportingErrorCode.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
-#include <aws/inspector2/model/ResourceFilterCriteria.h>
 #include <aws/inspector2/model/SbomReportFormat.h>
-#include <aws/inspector2/model/Destination.h>
 #include <aws/inspector2/model/ExternalReportStatus.h>
+#include <aws/inspector2/model/ReportingErrorCode.h>
+#include <aws/inspector2/model/Destination.h>
+#include <aws/inspector2/model/ResourceFilterCriteria.h>
 #include <utility>
 
 namespace Aws
@@ -32,246 +32,117 @@ namespace Model
   class GetSbomExportResult
   {
   public:
-    AWS_INSPECTOR2_API GetSbomExportResult();
+    AWS_INSPECTOR2_API GetSbomExportResult() = default;
     AWS_INSPECTOR2_API GetSbomExportResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_INSPECTOR2_API GetSbomExportResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
+    /**
+     * <p>The report ID of the software bill of materials (SBOM) report.</p>
+     */
+    inline const Aws::String& GetReportId() const { return m_reportId; }
+    template<typename ReportIdT = Aws::String>
+    void SetReportId(ReportIdT&& value) { m_reportIdHasBeenSet = true; m_reportId = std::forward<ReportIdT>(value); }
+    template<typename ReportIdT = Aws::String>
+    GetSbomExportResult& WithReportId(ReportIdT&& value) { SetReportId(std::forward<ReportIdT>(value)); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>The format of the software bill of materials (SBOM) report.</p>
+     */
+    inline SbomReportFormat GetFormat() const { return m_format; }
+    inline void SetFormat(SbomReportFormat value) { m_formatHasBeenSet = true; m_format = value; }
+    inline GetSbomExportResult& WithFormat(SbomReportFormat value) { SetFormat(value); return *this;}
+    ///@}
+
+    ///@{
+    /**
+     * <p>The status of the software bill of materials (SBOM) report.</p>
+     */
+    inline ExternalReportStatus GetStatus() const { return m_status; }
+    inline void SetStatus(ExternalReportStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetSbomExportResult& WithStatus(ExternalReportStatus value) { SetStatus(value); return *this;}
+    ///@}
+
+    ///@{
     /**
      * <p>An error code.</p>
      */
-    inline const ReportingErrorCode& GetErrorCode() const{ return m_errorCode; }
+    inline ReportingErrorCode GetErrorCode() const { return m_errorCode; }
+    inline void SetErrorCode(ReportingErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline GetSbomExportResult& WithErrorCode(ReportingErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>An error code.</p>
-     */
-    inline void SetErrorCode(const ReportingErrorCode& value) { m_errorCode = value; }
-
-    /**
-     * <p>An error code.</p>
-     */
-    inline void SetErrorCode(ReportingErrorCode&& value) { m_errorCode = std::move(value); }
-
-    /**
-     * <p>An error code.</p>
-     */
-    inline GetSbomExportResult& WithErrorCode(const ReportingErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>An error code.</p>
-     */
-    inline GetSbomExportResult& WithErrorCode(ReportingErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An error message.</p>
      */
-    inline const Aws::String& GetErrorMessage() const{ return m_errorMessage; }
+    inline const Aws::String& GetErrorMessage() const { return m_errorMessage; }
+    template<typename ErrorMessageT = Aws::String>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = Aws::String>
+    GetSbomExportResult& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An error message.</p>
+     * <p>Contains details of the Amazon S3 bucket and KMS key used to export
+     * findings</p>
      */
-    inline void SetErrorMessage(const Aws::String& value) { m_errorMessage = value; }
+    inline const Destination& GetS3Destination() const { return m_s3Destination; }
+    template<typename S3DestinationT = Destination>
+    void SetS3Destination(S3DestinationT&& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = std::forward<S3DestinationT>(value); }
+    template<typename S3DestinationT = Destination>
+    GetSbomExportResult& WithS3Destination(S3DestinationT&& value) { SetS3Destination(std::forward<S3DestinationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An error message.</p>
-     */
-    inline void SetErrorMessage(Aws::String&& value) { m_errorMessage = std::move(value); }
-
-    /**
-     * <p>An error message.</p>
-     */
-    inline void SetErrorMessage(const char* value) { m_errorMessage.assign(value); }
-
-    /**
-     * <p>An error message.</p>
-     */
-    inline GetSbomExportResult& WithErrorMessage(const Aws::String& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>An error message.</p>
-     */
-    inline GetSbomExportResult& WithErrorMessage(Aws::String&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>An error message.</p>
-     */
-    inline GetSbomExportResult& WithErrorMessage(const char* value) { SetErrorMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains details about the resource filter criteria used for the software
      * bill of materials (SBOM) report.</p>
      */
-    inline const ResourceFilterCriteria& GetFilterCriteria() const{ return m_filterCriteria; }
+    inline const ResourceFilterCriteria& GetFilterCriteria() const { return m_filterCriteria; }
+    template<typename FilterCriteriaT = ResourceFilterCriteria>
+    void SetFilterCriteria(FilterCriteriaT&& value) { m_filterCriteriaHasBeenSet = true; m_filterCriteria = std::forward<FilterCriteriaT>(value); }
+    template<typename FilterCriteriaT = ResourceFilterCriteria>
+    GetSbomExportResult& WithFilterCriteria(FilterCriteriaT&& value) { SetFilterCriteria(std::forward<FilterCriteriaT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains details about the resource filter criteria used for the software
-     * bill of materials (SBOM) report.</p>
-     */
-    inline void SetFilterCriteria(const ResourceFilterCriteria& value) { m_filterCriteria = value; }
-
-    /**
-     * <p>Contains details about the resource filter criteria used for the software
-     * bill of materials (SBOM) report.</p>
-     */
-    inline void SetFilterCriteria(ResourceFilterCriteria&& value) { m_filterCriteria = std::move(value); }
-
-    /**
-     * <p>Contains details about the resource filter criteria used for the software
-     * bill of materials (SBOM) report.</p>
-     */
-    inline GetSbomExportResult& WithFilterCriteria(const ResourceFilterCriteria& value) { SetFilterCriteria(value); return *this;}
-
-    /**
-     * <p>Contains details about the resource filter criteria used for the software
-     * bill of materials (SBOM) report.</p>
-     */
-    inline GetSbomExportResult& WithFilterCriteria(ResourceFilterCriteria&& value) { SetFilterCriteria(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The format of the software bill of materials (SBOM) report.</p>
-     */
-    inline const SbomReportFormat& GetFormat() const{ return m_format; }
-
-    /**
-     * <p>The format of the software bill of materials (SBOM) report.</p>
-     */
-    inline void SetFormat(const SbomReportFormat& value) { m_format = value; }
-
-    /**
-     * <p>The format of the software bill of materials (SBOM) report.</p>
-     */
-    inline void SetFormat(SbomReportFormat&& value) { m_format = std::move(value); }
-
-    /**
-     * <p>The format of the software bill of materials (SBOM) report.</p>
-     */
-    inline GetSbomExportResult& WithFormat(const SbomReportFormat& value) { SetFormat(value); return *this;}
-
-    /**
-     * <p>The format of the software bill of materials (SBOM) report.</p>
-     */
-    inline GetSbomExportResult& WithFormat(SbomReportFormat&& value) { SetFormat(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The report ID of the software bill of materials (SBOM) report.</p>
-     */
-    inline const Aws::String& GetReportId() const{ return m_reportId; }
-
-    /**
-     * <p>The report ID of the software bill of materials (SBOM) report.</p>
-     */
-    inline void SetReportId(const Aws::String& value) { m_reportId = value; }
-
-    /**
-     * <p>The report ID of the software bill of materials (SBOM) report.</p>
-     */
-    inline void SetReportId(Aws::String&& value) { m_reportId = std::move(value); }
-
-    /**
-     * <p>The report ID of the software bill of materials (SBOM) report.</p>
-     */
-    inline void SetReportId(const char* value) { m_reportId.assign(value); }
-
-    /**
-     * <p>The report ID of the software bill of materials (SBOM) report.</p>
-     */
-    inline GetSbomExportResult& WithReportId(const Aws::String& value) { SetReportId(value); return *this;}
-
-    /**
-     * <p>The report ID of the software bill of materials (SBOM) report.</p>
-     */
-    inline GetSbomExportResult& WithReportId(Aws::String&& value) { SetReportId(std::move(value)); return *this;}
-
-    /**
-     * <p>The report ID of the software bill of materials (SBOM) report.</p>
-     */
-    inline GetSbomExportResult& WithReportId(const char* value) { SetReportId(value); return *this;}
-
-
+    ///@{
     
-    inline const Destination& GetS3Destination() const{ return m_s3Destination; }
-
-    
-    inline void SetS3Destination(const Destination& value) { m_s3Destination = value; }
-
-    
-    inline void SetS3Destination(Destination&& value) { m_s3Destination = std::move(value); }
-
-    
-    inline GetSbomExportResult& WithS3Destination(const Destination& value) { SetS3Destination(value); return *this;}
-
-    
-    inline GetSbomExportResult& WithS3Destination(Destination&& value) { SetS3Destination(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The status of the software bill of materials (SBOM) report.</p>
-     */
-    inline const ExternalReportStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the software bill of materials (SBOM) report.</p>
-     */
-    inline void SetStatus(const ExternalReportStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of the software bill of materials (SBOM) report.</p>
-     */
-    inline void SetStatus(ExternalReportStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the software bill of materials (SBOM) report.</p>
-     */
-    inline GetSbomExportResult& WithStatus(const ExternalReportStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the software bill of materials (SBOM) report.</p>
-     */
-    inline GetSbomExportResult& WithStatus(ExternalReportStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetSbomExportResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetSbomExportResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetSbomExportResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetSbomExportResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    ReportingErrorCode m_errorCode;
+    Aws::String m_reportId;
+    bool m_reportIdHasBeenSet = false;
+
+    SbomReportFormat m_format{SbomReportFormat::NOT_SET};
+    bool m_formatHasBeenSet = false;
+
+    ExternalReportStatus m_status{ExternalReportStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
+
+    ReportingErrorCode m_errorCode{ReportingErrorCode::NOT_SET};
+    bool m_errorCodeHasBeenSet = false;
 
     Aws::String m_errorMessage;
-
-    ResourceFilterCriteria m_filterCriteria;
-
-    SbomReportFormat m_format;
-
-    Aws::String m_reportId;
+    bool m_errorMessageHasBeenSet = false;
 
     Destination m_s3Destination;
+    bool m_s3DestinationHasBeenSet = false;
 
-    ExternalReportStatus m_status;
+    ResourceFilterCriteria m_filterCriteria;
+    bool m_filterCriteriaHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

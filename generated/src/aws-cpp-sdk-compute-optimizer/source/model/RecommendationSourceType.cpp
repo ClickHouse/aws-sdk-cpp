@@ -26,6 +26,9 @@ namespace Aws
         static const int LambdaFunction_HASH = HashingUtils::HashString("LambdaFunction");
         static const int EcsService_HASH = HashingUtils::HashString("EcsService");
         static const int License_HASH = HashingUtils::HashString("License");
+        static const int RdsDBInstance_HASH = HashingUtils::HashString("RdsDBInstance");
+        static const int RdsDBInstanceStorage_HASH = HashingUtils::HashString("RdsDBInstanceStorage");
+        static const int AuroraDBClusterStorage_HASH = HashingUtils::HashString("AuroraDBClusterStorage");
 
 
         RecommendationSourceType GetRecommendationSourceTypeForName(const Aws::String& name)
@@ -55,6 +58,18 @@ namespace Aws
           {
             return RecommendationSourceType::License;
           }
+          else if (hashCode == RdsDBInstance_HASH)
+          {
+            return RecommendationSourceType::RdsDBInstance;
+          }
+          else if (hashCode == RdsDBInstanceStorage_HASH)
+          {
+            return RecommendationSourceType::RdsDBInstanceStorage;
+          }
+          else if (hashCode == AuroraDBClusterStorage_HASH)
+          {
+            return RecommendationSourceType::AuroraDBClusterStorage;
+          }
           EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
           if(overflowContainer)
           {
@@ -83,6 +98,12 @@ namespace Aws
             return "EcsService";
           case RecommendationSourceType::License:
             return "License";
+          case RecommendationSourceType::RdsDBInstance:
+            return "RdsDBInstance";
+          case RecommendationSourceType::RdsDBInstanceStorage:
+            return "RdsDBInstanceStorage";
+          case RecommendationSourceType::AuroraDBClusterStorage:
+            return "AuroraDBClusterStorage";
           default:
             EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
             if(overflowContainer)

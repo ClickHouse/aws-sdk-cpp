@@ -29,125 +29,55 @@ namespace Model
   class ListJobRunsResult
   {
   public:
-    AWS_EMRSERVERLESS_API ListJobRunsResult();
+    AWS_EMRSERVERLESS_API ListJobRunsResult() = default;
     AWS_EMRSERVERLESS_API ListJobRunsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EMRSERVERLESS_API ListJobRunsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The output lists information about the specified job runs.</p>
      */
-    inline const Aws::Vector<JobRunSummary>& GetJobRuns() const{ return m_jobRuns; }
+    inline const Aws::Vector<JobRunSummary>& GetJobRuns() const { return m_jobRuns; }
+    template<typename JobRunsT = Aws::Vector<JobRunSummary>>
+    void SetJobRuns(JobRunsT&& value) { m_jobRunsHasBeenSet = true; m_jobRuns = std::forward<JobRunsT>(value); }
+    template<typename JobRunsT = Aws::Vector<JobRunSummary>>
+    ListJobRunsResult& WithJobRuns(JobRunsT&& value) { SetJobRuns(std::forward<JobRunsT>(value)); return *this;}
+    template<typename JobRunsT = JobRunSummary>
+    ListJobRunsResult& AddJobRuns(JobRunsT&& value) { m_jobRunsHasBeenSet = true; m_jobRuns.emplace_back(std::forward<JobRunsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The output lists information about the specified job runs.</p>
-     */
-    inline void SetJobRuns(const Aws::Vector<JobRunSummary>& value) { m_jobRuns = value; }
-
-    /**
-     * <p>The output lists information about the specified job runs.</p>
-     */
-    inline void SetJobRuns(Aws::Vector<JobRunSummary>&& value) { m_jobRuns = std::move(value); }
-
-    /**
-     * <p>The output lists information about the specified job runs.</p>
-     */
-    inline ListJobRunsResult& WithJobRuns(const Aws::Vector<JobRunSummary>& value) { SetJobRuns(value); return *this;}
-
-    /**
-     * <p>The output lists information about the specified job runs.</p>
-     */
-    inline ListJobRunsResult& WithJobRuns(Aws::Vector<JobRunSummary>&& value) { SetJobRuns(std::move(value)); return *this;}
-
-    /**
-     * <p>The output lists information about the specified job runs.</p>
-     */
-    inline ListJobRunsResult& AddJobRuns(const JobRunSummary& value) { m_jobRuns.push_back(value); return *this; }
-
-    /**
-     * <p>The output lists information about the specified job runs.</p>
-     */
-    inline ListJobRunsResult& AddJobRuns(JobRunSummary&& value) { m_jobRuns.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The output displays the token for the next set of job run results. This is
      * required for pagination and is available as a response of the previous
      * request.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListJobRunsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The output displays the token for the next set of job run results. This is
-     * required for pagination and is available as a response of the previous
-     * request.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The output displays the token for the next set of job run results. This is
-     * required for pagination and is available as a response of the previous
-     * request.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The output displays the token for the next set of job run results. This is
-     * required for pagination and is available as a response of the previous
-     * request.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The output displays the token for the next set of job run results. This is
-     * required for pagination and is available as a response of the previous
-     * request.</p>
-     */
-    inline ListJobRunsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The output displays the token for the next set of job run results. This is
-     * required for pagination and is available as a response of the previous
-     * request.</p>
-     */
-    inline ListJobRunsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The output displays the token for the next set of job run results. This is
-     * required for pagination and is available as a response of the previous
-     * request.</p>
-     */
-    inline ListJobRunsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListJobRunsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListJobRunsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListJobRunsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListJobRunsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<JobRunSummary> m_jobRuns;
+    bool m_jobRunsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

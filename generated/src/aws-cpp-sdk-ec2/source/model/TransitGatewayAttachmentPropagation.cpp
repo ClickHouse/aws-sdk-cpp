@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TransitGatewayAttachmentPropagation::TransitGatewayAttachmentPropagation() : 
-    m_transitGatewayRouteTableIdHasBeenSet(false),
-    m_state(TransitGatewayPropagationState::NOT_SET),
-    m_stateHasBeenSet(false)
-{
-}
-
-TransitGatewayAttachmentPropagation::TransitGatewayAttachmentPropagation(const XmlNode& xmlNode) : 
-    m_transitGatewayRouteTableIdHasBeenSet(false),
-    m_state(TransitGatewayPropagationState::NOT_SET),
-    m_stateHasBeenSet(false)
+TransitGatewayAttachmentPropagation::TransitGatewayAttachmentPropagation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +40,7 @@ TransitGatewayAttachmentPropagation& TransitGatewayAttachmentPropagation::operat
     XmlNode stateNode = resultNode.FirstChild("state");
     if(!stateNode.IsNull())
     {
-      m_state = TransitGatewayPropagationStateMapper::GetTransitGatewayPropagationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = TransitGatewayPropagationStateMapper::GetTransitGatewayPropagationStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
   }
@@ -67,7 +57,7 @@ void TransitGatewayAttachmentPropagation::OutputToStream(Aws::OStream& oStream, 
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << TransitGatewayPropagationStateMapper::GetNameForTransitGatewayPropagationState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(TransitGatewayPropagationStateMapper::GetNameForTransitGatewayPropagationState(m_state)) << "&";
   }
 
 }
@@ -80,7 +70,7 @@ void TransitGatewayAttachmentPropagation::OutputToStream(Aws::OStream& oStream, 
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << TransitGatewayPropagationStateMapper::GetNameForTransitGatewayPropagationState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(TransitGatewayPropagationStateMapper::GetNameForTransitGatewayPropagationState(m_state)) << "&";
   }
 }
 

@@ -27,129 +27,63 @@ namespace Model
   class StartMLModelTransformJobResult
   {
   public:
-    AWS_NEPTUNEDATA_API StartMLModelTransformJobResult();
+    AWS_NEPTUNEDATA_API StartMLModelTransformJobResult() = default;
     AWS_NEPTUNEDATA_API StartMLModelTransformJobResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_NEPTUNEDATA_API StartMLModelTransformJobResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique ID of the new model transform job.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    StartMLModelTransformJobResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the new model transform job.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>The unique ID of the new model transform job.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The unique ID of the new model transform job.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The unique ID of the new model transform job.</p>
-     */
-    inline StartMLModelTransformJobResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the new model transform job.</p>
-     */
-    inline StartMLModelTransformJobResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the new model transform job.</p>
-     */
-    inline StartMLModelTransformJobResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the model transform job.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    StartMLModelTransformJobResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the model transform job.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The ARN of the model transform job.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the model transform job.</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the model transform job.</p>
-     */
-    inline StartMLModelTransformJobResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the model transform job.</p>
-     */
-    inline StartMLModelTransformJobResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the model transform job.</p>
-     */
-    inline StartMLModelTransformJobResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The creation time of the model transform job, in milliseconds.</p>
      */
-    inline long long GetCreationTimeInMillis() const{ return m_creationTimeInMillis; }
-
-    /**
-     * <p>The creation time of the model transform job, in milliseconds.</p>
-     */
-    inline void SetCreationTimeInMillis(long long value) { m_creationTimeInMillis = value; }
-
-    /**
-     * <p>The creation time of the model transform job, in milliseconds.</p>
-     */
+    inline long long GetCreationTimeInMillis() const { return m_creationTimeInMillis; }
+    inline void SetCreationTimeInMillis(long long value) { m_creationTimeInMillisHasBeenSet = true; m_creationTimeInMillis = value; }
     inline StartMLModelTransformJobResult& WithCreationTimeInMillis(long long value) { SetCreationTimeInMillis(value); return *this;}
+    ///@}
 
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StartMLModelTransformJobResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StartMLModelTransformJobResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StartMLModelTransformJobResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StartMLModelTransformJobResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
-    long long m_creationTimeInMillis;
+    long long m_creationTimeInMillis{0};
+    bool m_creationTimeInMillisHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

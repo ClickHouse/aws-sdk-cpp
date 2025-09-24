@@ -20,27 +20,7 @@ namespace RDS
 namespace Model
 {
 
-GlobalClusterMember::GlobalClusterMember() : 
-    m_dBClusterArnHasBeenSet(false),
-    m_readersHasBeenSet(false),
-    m_isWriter(false),
-    m_isWriterHasBeenSet(false),
-    m_globalWriteForwardingStatus(WriteForwardingStatus::NOT_SET),
-    m_globalWriteForwardingStatusHasBeenSet(false),
-    m_synchronizationStatus(GlobalClusterMemberSynchronizationStatus::NOT_SET),
-    m_synchronizationStatusHasBeenSet(false)
-{
-}
-
-GlobalClusterMember::GlobalClusterMember(const XmlNode& xmlNode) : 
-    m_dBClusterArnHasBeenSet(false),
-    m_readersHasBeenSet(false),
-    m_isWriter(false),
-    m_isWriterHasBeenSet(false),
-    m_globalWriteForwardingStatus(WriteForwardingStatus::NOT_SET),
-    m_globalWriteForwardingStatusHasBeenSet(false),
-    m_synchronizationStatus(GlobalClusterMemberSynchronizationStatus::NOT_SET),
-    m_synchronizationStatusHasBeenSet(false)
+GlobalClusterMember::GlobalClusterMember(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -61,6 +41,7 @@ GlobalClusterMember& GlobalClusterMember::operator =(const XmlNode& xmlNode)
     if(!readersNode.IsNull())
     {
       XmlNode readersMember = readersNode.FirstChild("member");
+      m_readersHasBeenSet = !readersMember.IsNull();
       while(!readersMember.IsNull())
       {
         m_readers.push_back(readersMember.GetText());
@@ -78,13 +59,13 @@ GlobalClusterMember& GlobalClusterMember::operator =(const XmlNode& xmlNode)
     XmlNode globalWriteForwardingStatusNode = resultNode.FirstChild("GlobalWriteForwardingStatus");
     if(!globalWriteForwardingStatusNode.IsNull())
     {
-      m_globalWriteForwardingStatus = WriteForwardingStatusMapper::GetWriteForwardingStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(globalWriteForwardingStatusNode.GetText()).c_str()).c_str());
+      m_globalWriteForwardingStatus = WriteForwardingStatusMapper::GetWriteForwardingStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(globalWriteForwardingStatusNode.GetText()).c_str()));
       m_globalWriteForwardingStatusHasBeenSet = true;
     }
     XmlNode synchronizationStatusNode = resultNode.FirstChild("SynchronizationStatus");
     if(!synchronizationStatusNode.IsNull())
     {
-      m_synchronizationStatus = GlobalClusterMemberSynchronizationStatusMapper::GetGlobalClusterMemberSynchronizationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(synchronizationStatusNode.GetText()).c_str()).c_str());
+      m_synchronizationStatus = GlobalClusterMemberSynchronizationStatusMapper::GetGlobalClusterMemberSynchronizationStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(synchronizationStatusNode.GetText()).c_str()));
       m_synchronizationStatusHasBeenSet = true;
     }
   }
@@ -115,12 +96,12 @@ void GlobalClusterMember::OutputToStream(Aws::OStream& oStream, const char* loca
 
   if(m_globalWriteForwardingStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".GlobalWriteForwardingStatus=" << WriteForwardingStatusMapper::GetNameForWriteForwardingStatus(m_globalWriteForwardingStatus) << "&";
+      oStream << location << index << locationValue << ".GlobalWriteForwardingStatus=" << StringUtils::URLEncode(WriteForwardingStatusMapper::GetNameForWriteForwardingStatus(m_globalWriteForwardingStatus)) << "&";
   }
 
   if(m_synchronizationStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SynchronizationStatus=" << GlobalClusterMemberSynchronizationStatusMapper::GetNameForGlobalClusterMemberSynchronizationStatus(m_synchronizationStatus) << "&";
+      oStream << location << index << locationValue << ".SynchronizationStatus=" << StringUtils::URLEncode(GlobalClusterMemberSynchronizationStatusMapper::GetNameForGlobalClusterMemberSynchronizationStatus(m_synchronizationStatus)) << "&";
   }
 
 }
@@ -145,11 +126,11 @@ void GlobalClusterMember::OutputToStream(Aws::OStream& oStream, const char* loca
   }
   if(m_globalWriteForwardingStatusHasBeenSet)
   {
-      oStream << location << ".GlobalWriteForwardingStatus=" << WriteForwardingStatusMapper::GetNameForWriteForwardingStatus(m_globalWriteForwardingStatus) << "&";
+      oStream << location << ".GlobalWriteForwardingStatus=" << StringUtils::URLEncode(WriteForwardingStatusMapper::GetNameForWriteForwardingStatus(m_globalWriteForwardingStatus)) << "&";
   }
   if(m_synchronizationStatusHasBeenSet)
   {
-      oStream << location << ".SynchronizationStatus=" << GlobalClusterMemberSynchronizationStatusMapper::GetNameForGlobalClusterMemberSynchronizationStatus(m_synchronizationStatus) << "&";
+      oStream << location << ".SynchronizationStatus=" << StringUtils::URLEncode(GlobalClusterMemberSynchronizationStatusMapper::GetNameForGlobalClusterMemberSynchronizationStatus(m_synchronizationStatus)) << "&";
   }
 }
 

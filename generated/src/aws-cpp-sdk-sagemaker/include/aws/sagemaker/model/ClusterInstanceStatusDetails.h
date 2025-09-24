@@ -33,86 +33,36 @@ namespace Model
   class ClusterInstanceStatusDetails
   {
   public:
-    AWS_SAGEMAKER_API ClusterInstanceStatusDetails();
+    AWS_SAGEMAKER_API ClusterInstanceStatusDetails() = default;
     AWS_SAGEMAKER_API ClusterInstanceStatusDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ClusterInstanceStatusDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status of an instance in a SageMaker HyperPod cluster.</p>
      */
-    inline const ClusterInstanceStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of an instance in a SageMaker HyperPod cluster.</p>
-     */
+    inline ClusterInstanceStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ClusterInstanceStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ClusterInstanceStatusDetails& WithStatus(ClusterInstanceStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of an instance in a SageMaker HyperPod cluster.</p>
-     */
-    inline void SetStatus(const ClusterInstanceStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of an instance in a SageMaker HyperPod cluster.</p>
-     */
-    inline void SetStatus(ClusterInstanceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of an instance in a SageMaker HyperPod cluster.</p>
-     */
-    inline ClusterInstanceStatusDetails& WithStatus(const ClusterInstanceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of an instance in a SageMaker HyperPod cluster.</p>
-     */
-    inline ClusterInstanceStatusDetails& WithStatus(ClusterInstanceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The message from an instance in a SageMaker HyperPod cluster.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The message from an instance in a SageMaker HyperPod cluster.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The message from an instance in a SageMaker HyperPod cluster.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The message from an instance in a SageMaker HyperPod cluster.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The message from an instance in a SageMaker HyperPod cluster.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The message from an instance in a SageMaker HyperPod cluster.</p>
-     */
-    inline ClusterInstanceStatusDetails& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The message from an instance in a SageMaker HyperPod cluster.</p>
-     */
-    inline ClusterInstanceStatusDetails& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The message from an instance in a SageMaker HyperPod cluster.</p>
-     */
-    inline ClusterInstanceStatusDetails& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ClusterInstanceStatusDetails& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    ClusterInstanceStatus m_status;
+    ClusterInstanceStatus m_status{ClusterInstanceStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_message;

@@ -33,94 +33,39 @@ namespace Model
   class ModelInfrastructureConfig
   {
   public:
-    AWS_SAGEMAKER_API ModelInfrastructureConfig();
+    AWS_SAGEMAKER_API ModelInfrastructureConfig() = default;
     AWS_SAGEMAKER_API ModelInfrastructureConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ModelInfrastructureConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The inference option to which to deploy your model. Possible values are the
      * following:</p> <ul> <li> <p> <code>RealTime</code>: Deploy to real-time
      * inference.</p> </li> </ul>
      */
-    inline const ModelInfrastructureType& GetInfrastructureType() const{ return m_infrastructureType; }
-
-    /**
-     * <p>The inference option to which to deploy your model. Possible values are the
-     * following:</p> <ul> <li> <p> <code>RealTime</code>: Deploy to real-time
-     * inference.</p> </li> </ul>
-     */
+    inline ModelInfrastructureType GetInfrastructureType() const { return m_infrastructureType; }
     inline bool InfrastructureTypeHasBeenSet() const { return m_infrastructureTypeHasBeenSet; }
+    inline void SetInfrastructureType(ModelInfrastructureType value) { m_infrastructureTypeHasBeenSet = true; m_infrastructureType = value; }
+    inline ModelInfrastructureConfig& WithInfrastructureType(ModelInfrastructureType value) { SetInfrastructureType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The inference option to which to deploy your model. Possible values are the
-     * following:</p> <ul> <li> <p> <code>RealTime</code>: Deploy to real-time
-     * inference.</p> </li> </ul>
-     */
-    inline void SetInfrastructureType(const ModelInfrastructureType& value) { m_infrastructureTypeHasBeenSet = true; m_infrastructureType = value; }
-
-    /**
-     * <p>The inference option to which to deploy your model. Possible values are the
-     * following:</p> <ul> <li> <p> <code>RealTime</code>: Deploy to real-time
-     * inference.</p> </li> </ul>
-     */
-    inline void SetInfrastructureType(ModelInfrastructureType&& value) { m_infrastructureTypeHasBeenSet = true; m_infrastructureType = std::move(value); }
-
-    /**
-     * <p>The inference option to which to deploy your model. Possible values are the
-     * following:</p> <ul> <li> <p> <code>RealTime</code>: Deploy to real-time
-     * inference.</p> </li> </ul>
-     */
-    inline ModelInfrastructureConfig& WithInfrastructureType(const ModelInfrastructureType& value) { SetInfrastructureType(value); return *this;}
-
-    /**
-     * <p>The inference option to which to deploy your model. Possible values are the
-     * following:</p> <ul> <li> <p> <code>RealTime</code>: Deploy to real-time
-     * inference.</p> </li> </ul>
-     */
-    inline ModelInfrastructureConfig& WithInfrastructureType(ModelInfrastructureType&& value) { SetInfrastructureType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The infrastructure configuration for deploying the model to real-time
      * inference.</p>
      */
-    inline const RealTimeInferenceConfig& GetRealTimeInferenceConfig() const{ return m_realTimeInferenceConfig; }
-
-    /**
-     * <p>The infrastructure configuration for deploying the model to real-time
-     * inference.</p>
-     */
+    inline const RealTimeInferenceConfig& GetRealTimeInferenceConfig() const { return m_realTimeInferenceConfig; }
     inline bool RealTimeInferenceConfigHasBeenSet() const { return m_realTimeInferenceConfigHasBeenSet; }
-
-    /**
-     * <p>The infrastructure configuration for deploying the model to real-time
-     * inference.</p>
-     */
-    inline void SetRealTimeInferenceConfig(const RealTimeInferenceConfig& value) { m_realTimeInferenceConfigHasBeenSet = true; m_realTimeInferenceConfig = value; }
-
-    /**
-     * <p>The infrastructure configuration for deploying the model to real-time
-     * inference.</p>
-     */
-    inline void SetRealTimeInferenceConfig(RealTimeInferenceConfig&& value) { m_realTimeInferenceConfigHasBeenSet = true; m_realTimeInferenceConfig = std::move(value); }
-
-    /**
-     * <p>The infrastructure configuration for deploying the model to real-time
-     * inference.</p>
-     */
-    inline ModelInfrastructureConfig& WithRealTimeInferenceConfig(const RealTimeInferenceConfig& value) { SetRealTimeInferenceConfig(value); return *this;}
-
-    /**
-     * <p>The infrastructure configuration for deploying the model to real-time
-     * inference.</p>
-     */
-    inline ModelInfrastructureConfig& WithRealTimeInferenceConfig(RealTimeInferenceConfig&& value) { SetRealTimeInferenceConfig(std::move(value)); return *this;}
-
+    template<typename RealTimeInferenceConfigT = RealTimeInferenceConfig>
+    void SetRealTimeInferenceConfig(RealTimeInferenceConfigT&& value) { m_realTimeInferenceConfigHasBeenSet = true; m_realTimeInferenceConfig = std::forward<RealTimeInferenceConfigT>(value); }
+    template<typename RealTimeInferenceConfigT = RealTimeInferenceConfig>
+    ModelInfrastructureConfig& WithRealTimeInferenceConfig(RealTimeInferenceConfigT&& value) { SetRealTimeInferenceConfig(std::forward<RealTimeInferenceConfigT>(value)); return *this;}
+    ///@}
   private:
 
-    ModelInfrastructureType m_infrastructureType;
+    ModelInfrastructureType m_infrastructureType{ModelInfrastructureType::NOT_SET};
     bool m_infrastructureTypeHasBeenSet = false;
 
     RealTimeInferenceConfig m_realTimeInferenceConfig;

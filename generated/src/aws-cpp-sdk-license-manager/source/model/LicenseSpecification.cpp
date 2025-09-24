@@ -18,15 +18,7 @@ namespace LicenseManager
 namespace Model
 {
 
-LicenseSpecification::LicenseSpecification() : 
-    m_licenseConfigurationArnHasBeenSet(false),
-    m_amiAssociationScopeHasBeenSet(false)
-{
-}
-
-LicenseSpecification::LicenseSpecification(JsonView jsonValue) : 
-    m_licenseConfigurationArnHasBeenSet(false),
-    m_amiAssociationScopeHasBeenSet(false)
+LicenseSpecification::LicenseSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LicenseSpecification& LicenseSpecification::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("LicenseConfigurationArn"))
   {
     m_licenseConfigurationArn = jsonValue.GetString("LicenseConfigurationArn");
-
     m_licenseConfigurationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AmiAssociationScope"))
   {
     m_amiAssociationScope = jsonValue.GetString("AmiAssociationScope");
-
     m_amiAssociationScopeHasBeenSet = true;
   }
-
   return *this;
 }
 

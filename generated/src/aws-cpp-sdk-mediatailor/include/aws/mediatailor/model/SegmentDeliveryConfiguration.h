@@ -31,12 +31,13 @@ namespace Model
   class SegmentDeliveryConfiguration
   {
   public:
-    AWS_MEDIATAILOR_API SegmentDeliveryConfiguration();
+    AWS_MEDIATAILOR_API SegmentDeliveryConfiguration() = default;
     AWS_MEDIATAILOR_API SegmentDeliveryConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIATAILOR_API SegmentDeliveryConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIATAILOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The base URL of the host or path of the segment delivery server that you're
      * using to serve segments. This is typically a content delivery network (CDN). The
@@ -44,120 +45,26 @@ namespace Model
      * such as <code>https://example.com/some/path</code>. To use a relative URL
      * specify the relative path, such as <code>/some/path*</code>.</p>
      */
-    inline const Aws::String& GetBaseUrl() const{ return m_baseUrl; }
-
-    /**
-     * <p>The base URL of the host or path of the segment delivery server that you're
-     * using to serve segments. This is typically a content delivery network (CDN). The
-     * URL can be absolute or relative. To use an absolute URL include the protocol,
-     * such as <code>https://example.com/some/path</code>. To use a relative URL
-     * specify the relative path, such as <code>/some/path*</code>.</p>
-     */
+    inline const Aws::String& GetBaseUrl() const { return m_baseUrl; }
     inline bool BaseUrlHasBeenSet() const { return m_baseUrlHasBeenSet; }
+    template<typename BaseUrlT = Aws::String>
+    void SetBaseUrl(BaseUrlT&& value) { m_baseUrlHasBeenSet = true; m_baseUrl = std::forward<BaseUrlT>(value); }
+    template<typename BaseUrlT = Aws::String>
+    SegmentDeliveryConfiguration& WithBaseUrl(BaseUrlT&& value) { SetBaseUrl(std::forward<BaseUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The base URL of the host or path of the segment delivery server that you're
-     * using to serve segments. This is typically a content delivery network (CDN). The
-     * URL can be absolute or relative. To use an absolute URL include the protocol,
-     * such as <code>https://example.com/some/path</code>. To use a relative URL
-     * specify the relative path, such as <code>/some/path*</code>.</p>
-     */
-    inline void SetBaseUrl(const Aws::String& value) { m_baseUrlHasBeenSet = true; m_baseUrl = value; }
-
-    /**
-     * <p>The base URL of the host or path of the segment delivery server that you're
-     * using to serve segments. This is typically a content delivery network (CDN). The
-     * URL can be absolute or relative. To use an absolute URL include the protocol,
-     * such as <code>https://example.com/some/path</code>. To use a relative URL
-     * specify the relative path, such as <code>/some/path*</code>.</p>
-     */
-    inline void SetBaseUrl(Aws::String&& value) { m_baseUrlHasBeenSet = true; m_baseUrl = std::move(value); }
-
-    /**
-     * <p>The base URL of the host or path of the segment delivery server that you're
-     * using to serve segments. This is typically a content delivery network (CDN). The
-     * URL can be absolute or relative. To use an absolute URL include the protocol,
-     * such as <code>https://example.com/some/path</code>. To use a relative URL
-     * specify the relative path, such as <code>/some/path*</code>.</p>
-     */
-    inline void SetBaseUrl(const char* value) { m_baseUrlHasBeenSet = true; m_baseUrl.assign(value); }
-
-    /**
-     * <p>The base URL of the host or path of the segment delivery server that you're
-     * using to serve segments. This is typically a content delivery network (CDN). The
-     * URL can be absolute or relative. To use an absolute URL include the protocol,
-     * such as <code>https://example.com/some/path</code>. To use a relative URL
-     * specify the relative path, such as <code>/some/path*</code>.</p>
-     */
-    inline SegmentDeliveryConfiguration& WithBaseUrl(const Aws::String& value) { SetBaseUrl(value); return *this;}
-
-    /**
-     * <p>The base URL of the host or path of the segment delivery server that you're
-     * using to serve segments. This is typically a content delivery network (CDN). The
-     * URL can be absolute or relative. To use an absolute URL include the protocol,
-     * such as <code>https://example.com/some/path</code>. To use a relative URL
-     * specify the relative path, such as <code>/some/path*</code>.</p>
-     */
-    inline SegmentDeliveryConfiguration& WithBaseUrl(Aws::String&& value) { SetBaseUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The base URL of the host or path of the segment delivery server that you're
-     * using to serve segments. This is typically a content delivery network (CDN). The
-     * URL can be absolute or relative. To use an absolute URL include the protocol,
-     * such as <code>https://example.com/some/path</code>. To use a relative URL
-     * specify the relative path, such as <code>/some/path*</code>.</p>
-     */
-    inline SegmentDeliveryConfiguration& WithBaseUrl(const char* value) { SetBaseUrl(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier used to distinguish between multiple segment delivery
      * configurations in a source location.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A unique identifier used to distinguish between multiple segment delivery
-     * configurations in a source location.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>A unique identifier used to distinguish between multiple segment delivery
-     * configurations in a source location.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A unique identifier used to distinguish between multiple segment delivery
-     * configurations in a source location.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A unique identifier used to distinguish between multiple segment delivery
-     * configurations in a source location.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A unique identifier used to distinguish between multiple segment delivery
-     * configurations in a source location.</p>
-     */
-    inline SegmentDeliveryConfiguration& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A unique identifier used to distinguish between multiple segment delivery
-     * configurations in a source location.</p>
-     */
-    inline SegmentDeliveryConfiguration& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier used to distinguish between multiple segment delivery
-     * configurations in a source location.</p>
-     */
-    inline SegmentDeliveryConfiguration& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    SegmentDeliveryConfiguration& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_baseUrl;

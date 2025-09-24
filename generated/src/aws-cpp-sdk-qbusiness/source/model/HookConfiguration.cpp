@@ -18,19 +18,7 @@ namespace QBusiness
 namespace Model
 {
 
-HookConfiguration::HookConfiguration() : 
-    m_invocationConditionHasBeenSet(false),
-    m_lambdaArnHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_s3BucketNameHasBeenSet(false)
-{
-}
-
-HookConfiguration::HookConfiguration(JsonView jsonValue) : 
-    m_invocationConditionHasBeenSet(false),
-    m_lambdaArnHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_s3BucketNameHasBeenSet(false)
+HookConfiguration::HookConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ HookConfiguration& HookConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("invocationCondition"))
   {
     m_invocationCondition = jsonValue.GetObject("invocationCondition");
-
     m_invocationConditionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lambdaArn"))
   {
     m_lambdaArn = jsonValue.GetString("lambdaArn");
-
     m_lambdaArnHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("roleArn"))
-  {
-    m_roleArn = jsonValue.GetString("roleArn");
-
-    m_roleArnHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("s3BucketName"))
   {
     m_s3BucketName = jsonValue.GetString("s3BucketName");
-
     m_s3BucketNameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("roleArn"))
+  {
+    m_roleArn = jsonValue.GetString("roleArn");
+    m_roleArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -84,15 +64,15 @@ JsonValue HookConfiguration::Jsonize() const
 
   }
 
-  if(m_roleArnHasBeenSet)
-  {
-   payload.WithString("roleArn", m_roleArn);
-
-  }
-
   if(m_s3BucketNameHasBeenSet)
   {
    payload.WithString("s3BucketName", m_s3BucketName);
+
+  }
+
+  if(m_roleArnHasBeenSet)
+  {
+   payload.WithString("roleArn", m_roleArn);
 
   }
 

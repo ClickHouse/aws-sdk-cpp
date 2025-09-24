@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-DataQualityEvaluationRunAdditionalRunOptions::DataQualityEvaluationRunAdditionalRunOptions() : 
-    m_cloudWatchMetricsEnabled(false),
-    m_cloudWatchMetricsEnabledHasBeenSet(false),
-    m_resultsS3PrefixHasBeenSet(false)
-{
-}
-
-DataQualityEvaluationRunAdditionalRunOptions::DataQualityEvaluationRunAdditionalRunOptions(JsonView jsonValue) : 
-    m_cloudWatchMetricsEnabled(false),
-    m_cloudWatchMetricsEnabledHasBeenSet(false),
-    m_resultsS3PrefixHasBeenSet(false)
+DataQualityEvaluationRunAdditionalRunOptions::DataQualityEvaluationRunAdditionalRunOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ DataQualityEvaluationRunAdditionalRunOptions& DataQualityEvaluationRunAdditional
   if(jsonValue.ValueExists("CloudWatchMetricsEnabled"))
   {
     m_cloudWatchMetricsEnabled = jsonValue.GetBool("CloudWatchMetricsEnabled");
-
     m_cloudWatchMetricsEnabledHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResultsS3Prefix"))
   {
     m_resultsS3Prefix = jsonValue.GetString("ResultsS3Prefix");
-
     m_resultsS3PrefixHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CompositeRuleEvaluationMethod"))
+  {
+    m_compositeRuleEvaluationMethod = DQCompositeRuleEvaluationMethodMapper::GetDQCompositeRuleEvaluationMethodForName(jsonValue.GetString("CompositeRuleEvaluationMethod"));
+    m_compositeRuleEvaluationMethodHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -66,6 +57,11 @@ JsonValue DataQualityEvaluationRunAdditionalRunOptions::Jsonize() const
   {
    payload.WithString("ResultsS3Prefix", m_resultsS3Prefix);
 
+  }
+
+  if(m_compositeRuleEvaluationMethodHasBeenSet)
+  {
+   payload.WithString("CompositeRuleEvaluationMethod", DQCompositeRuleEvaluationMethodMapper::GetNameForDQCompositeRuleEvaluationMethod(m_compositeRuleEvaluationMethod));
   }
 
   return payload;

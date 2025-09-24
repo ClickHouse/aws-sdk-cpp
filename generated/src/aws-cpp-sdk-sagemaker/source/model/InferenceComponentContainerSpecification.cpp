@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-InferenceComponentContainerSpecification::InferenceComponentContainerSpecification() : 
-    m_imageHasBeenSet(false),
-    m_artifactUrlHasBeenSet(false),
-    m_environmentHasBeenSet(false)
-{
-}
-
-InferenceComponentContainerSpecification::InferenceComponentContainerSpecification(JsonView jsonValue) : 
-    m_imageHasBeenSet(false),
-    m_artifactUrlHasBeenSet(false),
-    m_environmentHasBeenSet(false)
+InferenceComponentContainerSpecification::InferenceComponentContainerSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ InferenceComponentContainerSpecification& InferenceComponentContainerSpecificati
   if(jsonValue.ValueExists("Image"))
   {
     m_image = jsonValue.GetString("Image");
-
     m_imageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ArtifactUrl"))
   {
     m_artifactUrl = jsonValue.GetString("ArtifactUrl");
-
     m_artifactUrlHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Environment"))
   {
     Aws::Map<Aws::String, JsonView> environmentJsonMap = jsonValue.GetObject("Environment").GetAllObjects();
@@ -58,7 +44,6 @@ InferenceComponentContainerSpecification& InferenceComponentContainerSpecificati
     }
     m_environmentHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace CloudWatchLogs
 namespace Model
 {
 
-LiveTailSessionUpdate::LiveTailSessionUpdate() : 
-    m_sessionMetadataHasBeenSet(false),
-    m_sessionResultsHasBeenSet(false)
-{
-}
-
-LiveTailSessionUpdate::LiveTailSessionUpdate(JsonView jsonValue) : 
-    m_sessionMetadataHasBeenSet(false),
-    m_sessionResultsHasBeenSet(false)
+LiveTailSessionUpdate::LiveTailSessionUpdate(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ LiveTailSessionUpdate& LiveTailSessionUpdate::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("sessionMetadata"))
   {
     m_sessionMetadata = jsonValue.GetObject("sessionMetadata");
-
     m_sessionMetadataHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sessionResults"))
   {
     Aws::Utils::Array<JsonView> sessionResultsJsonList = jsonValue.GetArray("sessionResults");
@@ -49,7 +39,6 @@ LiveTailSessionUpdate& LiveTailSessionUpdate::operator =(JsonView jsonValue)
     }
     m_sessionResultsHasBeenSet = true;
   }
-
   return *this;
 }
 

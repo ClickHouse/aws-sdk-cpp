@@ -34,188 +34,56 @@ namespace Model
   class ListUsersResult
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API ListUsersResult();
+    AWS_COGNITOIDENTITYPROVIDER_API ListUsersResult() = default;
     AWS_COGNITOIDENTITYPROVIDER_API ListUsersResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COGNITOIDENTITYPROVIDER_API ListUsersResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>A list of the user pool users, and their attributes, that match your
-     * query.</p>  <p>Amazon Cognito creates a profile in your user pool for each
-     * native user in your user pool, and each unique user ID from your third-party
-     * identity providers (IdPs). When you link users with the <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html">AdminLinkProviderForUser</a>
-     * API operation, the output of <code>ListUsers</code> displays both the IdP user
-     * and the native user that you linked. You can identify IdP users in the
-     * <code>Users</code> object of this API response by the IdP prefix that Amazon
-     * Cognito appends to <code>Username</code>.</p> 
+     * <p>An array of user pool users who match your query, and their attributes.</p>
      */
-    inline const Aws::Vector<UserType>& GetUsers() const{ return m_users; }
+    inline const Aws::Vector<UserType>& GetUsers() const { return m_users; }
+    template<typename UsersT = Aws::Vector<UserType>>
+    void SetUsers(UsersT&& value) { m_usersHasBeenSet = true; m_users = std::forward<UsersT>(value); }
+    template<typename UsersT = Aws::Vector<UserType>>
+    ListUsersResult& WithUsers(UsersT&& value) { SetUsers(std::forward<UsersT>(value)); return *this;}
+    template<typename UsersT = UserType>
+    ListUsersResult& AddUsers(UsersT&& value) { m_usersHasBeenSet = true; m_users.emplace_back(std::forward<UsersT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the user pool users, and their attributes, that match your
-     * query.</p>  <p>Amazon Cognito creates a profile in your user pool for each
-     * native user in your user pool, and each unique user ID from your third-party
-     * identity providers (IdPs). When you link users with the <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html">AdminLinkProviderForUser</a>
-     * API operation, the output of <code>ListUsers</code> displays both the IdP user
-     * and the native user that you linked. You can identify IdP users in the
-     * <code>Users</code> object of this API response by the IdP prefix that Amazon
-     * Cognito appends to <code>Username</code>.</p> 
-     */
-    inline void SetUsers(const Aws::Vector<UserType>& value) { m_users = value; }
-
-    /**
-     * <p>A list of the user pool users, and their attributes, that match your
-     * query.</p>  <p>Amazon Cognito creates a profile in your user pool for each
-     * native user in your user pool, and each unique user ID from your third-party
-     * identity providers (IdPs). When you link users with the <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html">AdminLinkProviderForUser</a>
-     * API operation, the output of <code>ListUsers</code> displays both the IdP user
-     * and the native user that you linked. You can identify IdP users in the
-     * <code>Users</code> object of this API response by the IdP prefix that Amazon
-     * Cognito appends to <code>Username</code>.</p> 
-     */
-    inline void SetUsers(Aws::Vector<UserType>&& value) { m_users = std::move(value); }
-
-    /**
-     * <p>A list of the user pool users, and their attributes, that match your
-     * query.</p>  <p>Amazon Cognito creates a profile in your user pool for each
-     * native user in your user pool, and each unique user ID from your third-party
-     * identity providers (IdPs). When you link users with the <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html">AdminLinkProviderForUser</a>
-     * API operation, the output of <code>ListUsers</code> displays both the IdP user
-     * and the native user that you linked. You can identify IdP users in the
-     * <code>Users</code> object of this API response by the IdP prefix that Amazon
-     * Cognito appends to <code>Username</code>.</p> 
-     */
-    inline ListUsersResult& WithUsers(const Aws::Vector<UserType>& value) { SetUsers(value); return *this;}
-
-    /**
-     * <p>A list of the user pool users, and their attributes, that match your
-     * query.</p>  <p>Amazon Cognito creates a profile in your user pool for each
-     * native user in your user pool, and each unique user ID from your third-party
-     * identity providers (IdPs). When you link users with the <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html">AdminLinkProviderForUser</a>
-     * API operation, the output of <code>ListUsers</code> displays both the IdP user
-     * and the native user that you linked. You can identify IdP users in the
-     * <code>Users</code> object of this API response by the IdP prefix that Amazon
-     * Cognito appends to <code>Username</code>.</p> 
-     */
-    inline ListUsersResult& WithUsers(Aws::Vector<UserType>&& value) { SetUsers(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the user pool users, and their attributes, that match your
-     * query.</p>  <p>Amazon Cognito creates a profile in your user pool for each
-     * native user in your user pool, and each unique user ID from your third-party
-     * identity providers (IdPs). When you link users with the <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html">AdminLinkProviderForUser</a>
-     * API operation, the output of <code>ListUsers</code> displays both the IdP user
-     * and the native user that you linked. You can identify IdP users in the
-     * <code>Users</code> object of this API response by the IdP prefix that Amazon
-     * Cognito appends to <code>Username</code>.</p> 
-     */
-    inline ListUsersResult& AddUsers(const UserType& value) { m_users.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the user pool users, and their attributes, that match your
-     * query.</p>  <p>Amazon Cognito creates a profile in your user pool for each
-     * native user in your user pool, and each unique user ID from your third-party
-     * identity providers (IdPs). When you link users with the <a
-     * href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html">AdminLinkProviderForUser</a>
-     * API operation, the output of <code>ListUsers</code> displays both the IdP user
-     * and the native user that you linked. You can identify IdP users in the
-     * <code>Users</code> object of this API response by the IdP prefix that Amazon
-     * Cognito appends to <code>Username</code>.</p> 
-     */
-    inline ListUsersResult& AddUsers(UserType&& value) { m_users.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The identifier that Amazon Cognito returned with the previous request to this
      * operation. When you include a pagination token in your request, Amazon Cognito
      * returns the next set of items in the list. By use of this token, you can
      * paginate through the full list of items.</p>
      */
-    inline const Aws::String& GetPaginationToken() const{ return m_paginationToken; }
+    inline const Aws::String& GetPaginationToken() const { return m_paginationToken; }
+    template<typename PaginationTokenT = Aws::String>
+    void SetPaginationToken(PaginationTokenT&& value) { m_paginationTokenHasBeenSet = true; m_paginationToken = std::forward<PaginationTokenT>(value); }
+    template<typename PaginationTokenT = Aws::String>
+    ListUsersResult& WithPaginationToken(PaginationTokenT&& value) { SetPaginationToken(std::forward<PaginationTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline void SetPaginationToken(const Aws::String& value) { m_paginationToken = value; }
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline void SetPaginationToken(Aws::String&& value) { m_paginationToken = std::move(value); }
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline void SetPaginationToken(const char* value) { m_paginationToken.assign(value); }
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline ListUsersResult& WithPaginationToken(const Aws::String& value) { SetPaginationToken(value); return *this;}
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline ListUsersResult& WithPaginationToken(Aws::String&& value) { SetPaginationToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier that Amazon Cognito returned with the previous request to this
-     * operation. When you include a pagination token in your request, Amazon Cognito
-     * returns the next set of items in the list. By use of this token, you can
-     * paginate through the full list of items.</p>
-     */
-    inline ListUsersResult& WithPaginationToken(const char* value) { SetPaginationToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListUsersResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListUsersResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListUsersResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListUsersResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<UserType> m_users;
+    bool m_usersHasBeenSet = false;
 
     Aws::String m_paginationToken;
+    bool m_paginationTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

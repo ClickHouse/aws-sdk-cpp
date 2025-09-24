@@ -17,7 +17,7 @@ namespace MarketplaceCatalog
 {
   /**
    * <p>Catalog API actions allow you to manage your entities through list, describe,
-   * and update capabilities. An entity can be a product or an offer on AWS
+   * and update capabilities. An <i>entity</i> can be a product or an offer on AWS
    * Marketplace. </p> <p>You can automate your entity update process by integrating
    * the AWS Marketplace Catalog API with your AWS Marketplace product build or
    * deployment pipelines. You can also create your own applications on top of the
@@ -27,8 +27,8 @@ namespace MarketplaceCatalog
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef MarketplaceCatalogClientConfiguration ClientConfigurationType;
       typedef MarketplaceCatalogEndpointProvider EndpointProviderType;
@@ -38,14 +38,14 @@ namespace MarketplaceCatalog
         * is not specified, it will be initialized to default values.
         */
         MarketplaceCatalogClient(const Aws::MarketplaceCatalog::MarketplaceCatalogClientConfiguration& clientConfiguration = Aws::MarketplaceCatalog::MarketplaceCatalogClientConfiguration(),
-                                 std::shared_ptr<MarketplaceCatalogEndpointProviderBase> endpointProvider = Aws::MakeShared<MarketplaceCatalogEndpointProvider>(ALLOCATION_TAG));
+                                 std::shared_ptr<MarketplaceCatalogEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         MarketplaceCatalogClient(const Aws::Auth::AWSCredentials& credentials,
-                                 std::shared_ptr<MarketplaceCatalogEndpointProviderBase> endpointProvider = Aws::MakeShared<MarketplaceCatalogEndpointProvider>(ALLOCATION_TAG),
+                                 std::shared_ptr<MarketplaceCatalogEndpointProviderBase> endpointProvider = nullptr,
                                  const Aws::MarketplaceCatalog::MarketplaceCatalogClientConfiguration& clientConfiguration = Aws::MarketplaceCatalog::MarketplaceCatalogClientConfiguration());
 
        /**
@@ -53,7 +53,7 @@ namespace MarketplaceCatalog
         * the default http client factory will be used
         */
         MarketplaceCatalogClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                                 std::shared_ptr<MarketplaceCatalogEndpointProviderBase> endpointProvider = Aws::MakeShared<MarketplaceCatalogEndpointProvider>(ALLOCATION_TAG),
+                                 std::shared_ptr<MarketplaceCatalogEndpointProviderBase> endpointProvider = nullptr,
                                  const Aws::MarketplaceCatalog::MarketplaceCatalogClientConfiguration& clientConfiguration = Aws::MarketplaceCatalog::MarketplaceCatalogClientConfiguration());
 
 
@@ -82,8 +82,9 @@ namespace MarketplaceCatalog
         virtual ~MarketplaceCatalogClient();
 
         /**
-         * <p>Returns metadata and content for multiple entities.</p><p><h3>See Also:</h3> 
-         * <a
+         * <p>Returns metadata and content for multiple entities. This is the Batch version
+         * of the <code>DescribeEntity</code> API and uses the same IAM permission action
+         * as <code>DescribeEntity</code> API.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/marketplace-catalog-2018-09-17/BatchDescribeEntities">AWS
          * API Reference</a></p>
          */
@@ -369,7 +370,11 @@ namespace MarketplaceCatalog
          * with single-AMI products</a>. Also, for more information about change types
          * available for container-based products, see <a
          * href="https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/container-products.html#working-with-container-products">Working
-         * with container products</a>.</p><p><h3>See Also:</h3>   <a
+         * with container products</a>.</p> <p>To download "DetailsDocument" shapes, see <a
+         * href="https://github.com/awslabs/aws-marketplace-catalog-api-shapes-for-python">Python</a>
+         * and <a
+         * href="https://github.com/awslabs/aws-marketplace-catalog-api-shapes-for-java/tree/main">Java</a>
+         * shapes on GitHub.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/marketplace-catalog-2018-09-17/StartChangeSet">AWS
          * API Reference</a></p>
          */
@@ -459,7 +464,6 @@ namespace MarketplaceCatalog
       void init(const MarketplaceCatalogClientConfiguration& clientConfiguration);
 
       MarketplaceCatalogClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<MarketplaceCatalogEndpointProviderBase> m_endpointProvider;
   };
 

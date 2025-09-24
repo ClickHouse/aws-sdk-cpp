@@ -21,7 +21,7 @@ namespace Model
   class GetUserPolicyRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API GetUserPolicyRequest();
+    AWS_IAM_API GetUserPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,6 +36,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the user who the policy is associated with.</p> <p>This parameter
      * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
@@ -43,136 +44,28 @@ namespace Model
      * with no spaces. You can also include any of the following characters:
      * _+=,.@-</p>
      */
-    inline const Aws::String& GetUserName() const{ return m_userName; }
-
-    /**
-     * <p>The name of the user who the policy is associated with.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
+    inline const Aws::String& GetUserName() const { return m_userName; }
     inline bool UserNameHasBeenSet() const { return m_userNameHasBeenSet; }
+    template<typename UserNameT = Aws::String>
+    void SetUserName(UserNameT&& value) { m_userNameHasBeenSet = true; m_userName = std::forward<UserNameT>(value); }
+    template<typename UserNameT = Aws::String>
+    GetUserPolicyRequest& WithUserName(UserNameT&& value) { SetUserName(std::forward<UserNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the user who the policy is associated with.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline void SetUserName(const Aws::String& value) { m_userNameHasBeenSet = true; m_userName = value; }
-
-    /**
-     * <p>The name of the user who the policy is associated with.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline void SetUserName(Aws::String&& value) { m_userNameHasBeenSet = true; m_userName = std::move(value); }
-
-    /**
-     * <p>The name of the user who the policy is associated with.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline void SetUserName(const char* value) { m_userNameHasBeenSet = true; m_userName.assign(value); }
-
-    /**
-     * <p>The name of the user who the policy is associated with.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline GetUserPolicyRequest& WithUserName(const Aws::String& value) { SetUserName(value); return *this;}
-
-    /**
-     * <p>The name of the user who the policy is associated with.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline GetUserPolicyRequest& WithUserName(Aws::String&& value) { SetUserName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the user who the policy is associated with.</p> <p>This parameter
-     * allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>)
-     * a string of characters consisting of upper and lowercase alphanumeric characters
-     * with no spaces. You can also include any of the following characters:
-     * _+=,.@-</p>
-     */
-    inline GetUserPolicyRequest& WithUserName(const char* value) { SetUserName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the policy document to get.</p> <p>This parameter allows (through
      * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
      * characters consisting of upper and lowercase alphanumeric characters with no
      * spaces. You can also include any of the following characters: _+=,.@-</p>
      */
-    inline const Aws::String& GetPolicyName() const{ return m_policyName; }
-
-    /**
-     * <p>The name of the policy document to get.</p> <p>This parameter allows (through
-     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     * characters consisting of upper and lowercase alphanumeric characters with no
-     * spaces. You can also include any of the following characters: _+=,.@-</p>
-     */
+    inline const Aws::String& GetPolicyName() const { return m_policyName; }
     inline bool PolicyNameHasBeenSet() const { return m_policyNameHasBeenSet; }
-
-    /**
-     * <p>The name of the policy document to get.</p> <p>This parameter allows (through
-     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     * characters consisting of upper and lowercase alphanumeric characters with no
-     * spaces. You can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetPolicyName(const Aws::String& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
-
-    /**
-     * <p>The name of the policy document to get.</p> <p>This parameter allows (through
-     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     * characters consisting of upper and lowercase alphanumeric characters with no
-     * spaces. You can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
-
-    /**
-     * <p>The name of the policy document to get.</p> <p>This parameter allows (through
-     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     * characters consisting of upper and lowercase alphanumeric characters with no
-     * spaces. You can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetPolicyName(const char* value) { m_policyNameHasBeenSet = true; m_policyName.assign(value); }
-
-    /**
-     * <p>The name of the policy document to get.</p> <p>This parameter allows (through
-     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     * characters consisting of upper and lowercase alphanumeric characters with no
-     * spaces. You can also include any of the following characters: _+=,.@-</p>
-     */
-    inline GetUserPolicyRequest& WithPolicyName(const Aws::String& value) { SetPolicyName(value); return *this;}
-
-    /**
-     * <p>The name of the policy document to get.</p> <p>This parameter allows (through
-     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     * characters consisting of upper and lowercase alphanumeric characters with no
-     * spaces. You can also include any of the following characters: _+=,.@-</p>
-     */
-    inline GetUserPolicyRequest& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the policy document to get.</p> <p>This parameter allows (through
-     * its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of
-     * characters consisting of upper and lowercase alphanumeric characters with no
-     * spaces. You can also include any of the following characters: _+=,.@-</p>
-     */
-    inline GetUserPolicyRequest& WithPolicyName(const char* value) { SetPolicyName(value); return *this;}
-
+    template<typename PolicyNameT = Aws::String>
+    void SetPolicyName(PolicyNameT&& value) { m_policyNameHasBeenSet = true; m_policyName = std::forward<PolicyNameT>(value); }
+    template<typename PolicyNameT = Aws::String>
+    GetUserPolicyRequest& WithPolicyName(PolicyNameT&& value) { SetPolicyName(std::forward<PolicyNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_userName;

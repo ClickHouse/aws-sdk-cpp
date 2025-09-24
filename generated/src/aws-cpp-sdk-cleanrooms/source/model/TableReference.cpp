@@ -18,13 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-TableReference::TableReference() : 
-    m_glueHasBeenSet(false)
-{
-}
-
-TableReference::TableReference(JsonView jsonValue) : 
-    m_glueHasBeenSet(false)
+TableReference::TableReference(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,18 @@ TableReference& TableReference::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("glue"))
   {
     m_glue = jsonValue.GetObject("glue");
-
     m_glueHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("snowflake"))
+  {
+    m_snowflake = jsonValue.GetObject("snowflake");
+    m_snowflakeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("athena"))
+  {
+    m_athena = jsonValue.GetObject("athena");
+    m_athenaHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +50,18 @@ JsonValue TableReference::Jsonize() const
   if(m_glueHasBeenSet)
   {
    payload.WithObject("glue", m_glue.Jsonize());
+
+  }
+
+  if(m_snowflakeHasBeenSet)
+  {
+   payload.WithObject("snowflake", m_snowflake.Jsonize());
+
+  }
+
+  if(m_athenaHasBeenSet)
+  {
+   payload.WithObject("athena", m_athena.Jsonize());
 
   }
 

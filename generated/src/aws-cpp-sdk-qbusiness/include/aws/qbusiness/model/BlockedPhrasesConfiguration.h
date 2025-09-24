@@ -33,106 +33,40 @@ namespace Model
   class BlockedPhrasesConfiguration
   {
   public:
-    AWS_QBUSINESS_API BlockedPhrasesConfiguration();
+    AWS_QBUSINESS_API BlockedPhrasesConfiguration() = default;
     AWS_QBUSINESS_API BlockedPhrasesConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API BlockedPhrasesConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>A list of phrases blocked from a Amazon Q web experience chat.</p>
+     * <p>A list of phrases blocked from a Amazon Q Business web experience chat.</p>
+     *  <p>Each phrase can contain a maximum of 36 characters. The list can
+     * contain a maximum of 20 phrases.</p> 
      */
-    inline const Aws::Vector<Aws::String>& GetBlockedPhrases() const{ return m_blockedPhrases; }
-
-    /**
-     * <p>A list of phrases blocked from a Amazon Q web experience chat.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetBlockedPhrases() const { return m_blockedPhrases; }
     inline bool BlockedPhrasesHasBeenSet() const { return m_blockedPhrasesHasBeenSet; }
+    template<typename BlockedPhrasesT = Aws::Vector<Aws::String>>
+    void SetBlockedPhrases(BlockedPhrasesT&& value) { m_blockedPhrasesHasBeenSet = true; m_blockedPhrases = std::forward<BlockedPhrasesT>(value); }
+    template<typename BlockedPhrasesT = Aws::Vector<Aws::String>>
+    BlockedPhrasesConfiguration& WithBlockedPhrases(BlockedPhrasesT&& value) { SetBlockedPhrases(std::forward<BlockedPhrasesT>(value)); return *this;}
+    template<typename BlockedPhrasesT = Aws::String>
+    BlockedPhrasesConfiguration& AddBlockedPhrases(BlockedPhrasesT&& value) { m_blockedPhrasesHasBeenSet = true; m_blockedPhrases.emplace_back(std::forward<BlockedPhrasesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of phrases blocked from a Amazon Q web experience chat.</p>
-     */
-    inline void SetBlockedPhrases(const Aws::Vector<Aws::String>& value) { m_blockedPhrasesHasBeenSet = true; m_blockedPhrases = value; }
-
-    /**
-     * <p>A list of phrases blocked from a Amazon Q web experience chat.</p>
-     */
-    inline void SetBlockedPhrases(Aws::Vector<Aws::String>&& value) { m_blockedPhrasesHasBeenSet = true; m_blockedPhrases = std::move(value); }
-
-    /**
-     * <p>A list of phrases blocked from a Amazon Q web experience chat.</p>
-     */
-    inline BlockedPhrasesConfiguration& WithBlockedPhrases(const Aws::Vector<Aws::String>& value) { SetBlockedPhrases(value); return *this;}
-
-    /**
-     * <p>A list of phrases blocked from a Amazon Q web experience chat.</p>
-     */
-    inline BlockedPhrasesConfiguration& WithBlockedPhrases(Aws::Vector<Aws::String>&& value) { SetBlockedPhrases(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of phrases blocked from a Amazon Q web experience chat.</p>
-     */
-    inline BlockedPhrasesConfiguration& AddBlockedPhrases(const Aws::String& value) { m_blockedPhrasesHasBeenSet = true; m_blockedPhrases.push_back(value); return *this; }
-
-    /**
-     * <p>A list of phrases blocked from a Amazon Q web experience chat.</p>
-     */
-    inline BlockedPhrasesConfiguration& AddBlockedPhrases(Aws::String&& value) { m_blockedPhrasesHasBeenSet = true; m_blockedPhrases.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of phrases blocked from a Amazon Q web experience chat.</p>
-     */
-    inline BlockedPhrasesConfiguration& AddBlockedPhrases(const char* value) { m_blockedPhrasesHasBeenSet = true; m_blockedPhrases.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The configured custom message displayed to an end user informing them that
      * they've used a blocked phrase during chat.</p>
      */
-    inline const Aws::String& GetSystemMessageOverride() const{ return m_systemMessageOverride; }
-
-    /**
-     * <p>The configured custom message displayed to an end user informing them that
-     * they've used a blocked phrase during chat.</p>
-     */
+    inline const Aws::String& GetSystemMessageOverride() const { return m_systemMessageOverride; }
     inline bool SystemMessageOverrideHasBeenSet() const { return m_systemMessageOverrideHasBeenSet; }
-
-    /**
-     * <p>The configured custom message displayed to an end user informing them that
-     * they've used a blocked phrase during chat.</p>
-     */
-    inline void SetSystemMessageOverride(const Aws::String& value) { m_systemMessageOverrideHasBeenSet = true; m_systemMessageOverride = value; }
-
-    /**
-     * <p>The configured custom message displayed to an end user informing them that
-     * they've used a blocked phrase during chat.</p>
-     */
-    inline void SetSystemMessageOverride(Aws::String&& value) { m_systemMessageOverrideHasBeenSet = true; m_systemMessageOverride = std::move(value); }
-
-    /**
-     * <p>The configured custom message displayed to an end user informing them that
-     * they've used a blocked phrase during chat.</p>
-     */
-    inline void SetSystemMessageOverride(const char* value) { m_systemMessageOverrideHasBeenSet = true; m_systemMessageOverride.assign(value); }
-
-    /**
-     * <p>The configured custom message displayed to an end user informing them that
-     * they've used a blocked phrase during chat.</p>
-     */
-    inline BlockedPhrasesConfiguration& WithSystemMessageOverride(const Aws::String& value) { SetSystemMessageOverride(value); return *this;}
-
-    /**
-     * <p>The configured custom message displayed to an end user informing them that
-     * they've used a blocked phrase during chat.</p>
-     */
-    inline BlockedPhrasesConfiguration& WithSystemMessageOverride(Aws::String&& value) { SetSystemMessageOverride(std::move(value)); return *this;}
-
-    /**
-     * <p>The configured custom message displayed to an end user informing them that
-     * they've used a blocked phrase during chat.</p>
-     */
-    inline BlockedPhrasesConfiguration& WithSystemMessageOverride(const char* value) { SetSystemMessageOverride(value); return *this;}
-
+    template<typename SystemMessageOverrideT = Aws::String>
+    void SetSystemMessageOverride(SystemMessageOverrideT&& value) { m_systemMessageOverrideHasBeenSet = true; m_systemMessageOverride = std::forward<SystemMessageOverrideT>(value); }
+    template<typename SystemMessageOverrideT = Aws::String>
+    BlockedPhrasesConfiguration& WithSystemMessageOverride(SystemMessageOverrideT&& value) { SetSystemMessageOverride(std::forward<SystemMessageOverrideT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_blockedPhrases;

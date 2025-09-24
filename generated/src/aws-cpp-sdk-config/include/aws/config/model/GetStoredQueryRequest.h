@@ -21,7 +21,7 @@ namespace Model
   class GetStoredQueryRequest : public ConfigServiceRequest
   {
   public:
-    AWS_CONFIGSERVICE_API GetStoredQueryRequest();
+    AWS_CONFIGSERVICE_API GetStoredQueryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_CONFIGSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the query.</p>
      */
-    inline const Aws::String& GetQueryName() const{ return m_queryName; }
-
-    /**
-     * <p>The name of the query.</p>
-     */
+    inline const Aws::String& GetQueryName() const { return m_queryName; }
     inline bool QueryNameHasBeenSet() const { return m_queryNameHasBeenSet; }
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline void SetQueryName(const Aws::String& value) { m_queryNameHasBeenSet = true; m_queryName = value; }
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline void SetQueryName(Aws::String&& value) { m_queryNameHasBeenSet = true; m_queryName = std::move(value); }
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline void SetQueryName(const char* value) { m_queryNameHasBeenSet = true; m_queryName.assign(value); }
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline GetStoredQueryRequest& WithQueryName(const Aws::String& value) { SetQueryName(value); return *this;}
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline GetStoredQueryRequest& WithQueryName(Aws::String&& value) { SetQueryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the query.</p>
-     */
-    inline GetStoredQueryRequest& WithQueryName(const char* value) { SetQueryName(value); return *this;}
-
+    template<typename QueryNameT = Aws::String>
+    void SetQueryName(QueryNameT&& value) { m_queryNameHasBeenSet = true; m_queryName = std::forward<QueryNameT>(value); }
+    template<typename QueryNameT = Aws::String>
+    GetStoredQueryRequest& WithQueryName(QueryNameT&& value) { SetQueryName(std::forward<QueryNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_queryName;

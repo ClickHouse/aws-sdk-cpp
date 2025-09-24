@@ -31,45 +31,24 @@ namespace Model
   class ConditionStepMetadata
   {
   public:
-    AWS_SAGEMAKER_API ConditionStepMetadata();
+    AWS_SAGEMAKER_API ConditionStepMetadata() = default;
     AWS_SAGEMAKER_API ConditionStepMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ConditionStepMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The outcome of the Condition step evaluation.</p>
      */
-    inline const ConditionOutcome& GetOutcome() const{ return m_outcome; }
-
-    /**
-     * <p>The outcome of the Condition step evaluation.</p>
-     */
+    inline ConditionOutcome GetOutcome() const { return m_outcome; }
     inline bool OutcomeHasBeenSet() const { return m_outcomeHasBeenSet; }
-
-    /**
-     * <p>The outcome of the Condition step evaluation.</p>
-     */
-    inline void SetOutcome(const ConditionOutcome& value) { m_outcomeHasBeenSet = true; m_outcome = value; }
-
-    /**
-     * <p>The outcome of the Condition step evaluation.</p>
-     */
-    inline void SetOutcome(ConditionOutcome&& value) { m_outcomeHasBeenSet = true; m_outcome = std::move(value); }
-
-    /**
-     * <p>The outcome of the Condition step evaluation.</p>
-     */
-    inline ConditionStepMetadata& WithOutcome(const ConditionOutcome& value) { SetOutcome(value); return *this;}
-
-    /**
-     * <p>The outcome of the Condition step evaluation.</p>
-     */
-    inline ConditionStepMetadata& WithOutcome(ConditionOutcome&& value) { SetOutcome(std::move(value)); return *this;}
-
+    inline void SetOutcome(ConditionOutcome value) { m_outcomeHasBeenSet = true; m_outcome = value; }
+    inline ConditionStepMetadata& WithOutcome(ConditionOutcome value) { SetOutcome(value); return *this;}
+    ///@}
   private:
 
-    ConditionOutcome m_outcome;
+    ConditionOutcome m_outcome{ConditionOutcome::NOT_SET};
     bool m_outcomeHasBeenSet = false;
   };
 

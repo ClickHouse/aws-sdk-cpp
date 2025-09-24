@@ -18,25 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-GeospatialMapConfiguration::GeospatialMapConfiguration() : 
-    m_fieldWellsHasBeenSet(false),
-    m_legendHasBeenSet(false),
-    m_tooltipHasBeenSet(false),
-    m_windowOptionsHasBeenSet(false),
-    m_mapStyleOptionsHasBeenSet(false),
-    m_pointStyleOptionsHasBeenSet(false),
-    m_visualPaletteHasBeenSet(false)
-{
-}
-
-GeospatialMapConfiguration::GeospatialMapConfiguration(JsonView jsonValue) : 
-    m_fieldWellsHasBeenSet(false),
-    m_legendHasBeenSet(false),
-    m_tooltipHasBeenSet(false),
-    m_windowOptionsHasBeenSet(false),
-    m_mapStyleOptionsHasBeenSet(false),
-    m_pointStyleOptionsHasBeenSet(false),
-    m_visualPaletteHasBeenSet(false)
+GeospatialMapConfiguration::GeospatialMapConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,52 +28,43 @@ GeospatialMapConfiguration& GeospatialMapConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("FieldWells"))
   {
     m_fieldWells = jsonValue.GetObject("FieldWells");
-
     m_fieldWellsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Legend"))
   {
     m_legend = jsonValue.GetObject("Legend");
-
     m_legendHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Tooltip"))
   {
     m_tooltip = jsonValue.GetObject("Tooltip");
-
     m_tooltipHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WindowOptions"))
   {
     m_windowOptions = jsonValue.GetObject("WindowOptions");
-
     m_windowOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MapStyleOptions"))
   {
     m_mapStyleOptions = jsonValue.GetObject("MapStyleOptions");
-
     m_mapStyleOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PointStyleOptions"))
   {
     m_pointStyleOptions = jsonValue.GetObject("PointStyleOptions");
-
     m_pointStyleOptionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VisualPalette"))
   {
     m_visualPalette = jsonValue.GetObject("VisualPalette");
-
     m_visualPaletteHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Interactions"))
+  {
+    m_interactions = jsonValue.GetObject("Interactions");
+    m_interactionsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -138,6 +111,12 @@ JsonValue GeospatialMapConfiguration::Jsonize() const
   if(m_visualPaletteHasBeenSet)
   {
    payload.WithObject("VisualPalette", m_visualPalette.Jsonize());
+
+  }
+
+  if(m_interactionsHasBeenSet)
+  {
+   payload.WithObject("Interactions", m_interactions.Jsonize());
 
   }
 

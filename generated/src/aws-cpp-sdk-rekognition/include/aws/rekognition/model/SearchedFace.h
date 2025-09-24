@@ -32,52 +32,23 @@ namespace Model
   class SearchedFace
   {
   public:
-    AWS_REKOGNITION_API SearchedFace();
+    AWS_REKOGNITION_API SearchedFace() = default;
     AWS_REKOGNITION_API SearchedFace(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API SearchedFace& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Unique identifier assigned to the face.</p>
      */
-    inline const Aws::String& GetFaceId() const{ return m_faceId; }
-
-    /**
-     * <p> Unique identifier assigned to the face.</p>
-     */
+    inline const Aws::String& GetFaceId() const { return m_faceId; }
     inline bool FaceIdHasBeenSet() const { return m_faceIdHasBeenSet; }
-
-    /**
-     * <p> Unique identifier assigned to the face.</p>
-     */
-    inline void SetFaceId(const Aws::String& value) { m_faceIdHasBeenSet = true; m_faceId = value; }
-
-    /**
-     * <p> Unique identifier assigned to the face.</p>
-     */
-    inline void SetFaceId(Aws::String&& value) { m_faceIdHasBeenSet = true; m_faceId = std::move(value); }
-
-    /**
-     * <p> Unique identifier assigned to the face.</p>
-     */
-    inline void SetFaceId(const char* value) { m_faceIdHasBeenSet = true; m_faceId.assign(value); }
-
-    /**
-     * <p> Unique identifier assigned to the face.</p>
-     */
-    inline SearchedFace& WithFaceId(const Aws::String& value) { SetFaceId(value); return *this;}
-
-    /**
-     * <p> Unique identifier assigned to the face.</p>
-     */
-    inline SearchedFace& WithFaceId(Aws::String&& value) { SetFaceId(std::move(value)); return *this;}
-
-    /**
-     * <p> Unique identifier assigned to the face.</p>
-     */
-    inline SearchedFace& WithFaceId(const char* value) { SetFaceId(value); return *this;}
-
+    template<typename FaceIdT = Aws::String>
+    void SetFaceId(FaceIdT&& value) { m_faceIdHasBeenSet = true; m_faceId = std::forward<FaceIdT>(value); }
+    template<typename FaceIdT = Aws::String>
+    SearchedFace& WithFaceId(FaceIdT&& value) { SetFaceId(std::forward<FaceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_faceId;

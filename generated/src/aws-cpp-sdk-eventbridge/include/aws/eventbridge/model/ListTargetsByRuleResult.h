@@ -29,118 +29,58 @@ namespace Model
   class ListTargetsByRuleResult
   {
   public:
-    AWS_EVENTBRIDGE_API ListTargetsByRuleResult();
+    AWS_EVENTBRIDGE_API ListTargetsByRuleResult() = default;
     AWS_EVENTBRIDGE_API ListTargetsByRuleResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_EVENTBRIDGE_API ListTargetsByRuleResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The targets assigned to the rule.</p>
      */
-    inline const Aws::Vector<Target>& GetTargets() const{ return m_targets; }
+    inline const Aws::Vector<Target>& GetTargets() const { return m_targets; }
+    template<typename TargetsT = Aws::Vector<Target>>
+    void SetTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets = std::forward<TargetsT>(value); }
+    template<typename TargetsT = Aws::Vector<Target>>
+    ListTargetsByRuleResult& WithTargets(TargetsT&& value) { SetTargets(std::forward<TargetsT>(value)); return *this;}
+    template<typename TargetsT = Target>
+    ListTargetsByRuleResult& AddTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets.emplace_back(std::forward<TargetsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The targets assigned to the rule.</p>
+     * <p>A token indicating there are more results available. If there are no more
+     * results, no token is included in the response.</p> <p>The value of
+     * <code>nextToken</code> is a unique pagination token for each page. To retrieve
+     * the next page of results, make the call again using the returned token. Keep all
+     * other arguments unchanged.</p> <p> Using an expired pagination token results in
+     * an <code>HTTP 400 InvalidToken</code> error.</p>
      */
-    inline void SetTargets(const Aws::Vector<Target>& value) { m_targets = value; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListTargetsByRuleResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The targets assigned to the rule.</p>
-     */
-    inline void SetTargets(Aws::Vector<Target>&& value) { m_targets = std::move(value); }
-
-    /**
-     * <p>The targets assigned to the rule.</p>
-     */
-    inline ListTargetsByRuleResult& WithTargets(const Aws::Vector<Target>& value) { SetTargets(value); return *this;}
-
-    /**
-     * <p>The targets assigned to the rule.</p>
-     */
-    inline ListTargetsByRuleResult& WithTargets(Aws::Vector<Target>&& value) { SetTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>The targets assigned to the rule.</p>
-     */
-    inline ListTargetsByRuleResult& AddTargets(const Target& value) { m_targets.push_back(value); return *this; }
-
-    /**
-     * <p>The targets assigned to the rule.</p>
-     */
-    inline ListTargetsByRuleResult& AddTargets(Target&& value) { m_targets.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>Indicates whether there are additional results to retrieve. If there are no
-     * more results, the value is null.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>Indicates whether there are additional results to retrieve. If there are no
-     * more results, the value is null.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>Indicates whether there are additional results to retrieve. If there are no
-     * more results, the value is null.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>Indicates whether there are additional results to retrieve. If there are no
-     * more results, the value is null.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>Indicates whether there are additional results to retrieve. If there are no
-     * more results, the value is null.</p>
-     */
-    inline ListTargetsByRuleResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>Indicates whether there are additional results to retrieve. If there are no
-     * more results, the value is null.</p>
-     */
-    inline ListTargetsByRuleResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates whether there are additional results to retrieve. If there are no
-     * more results, the value is null.</p>
-     */
-    inline ListTargetsByRuleResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListTargetsByRuleResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListTargetsByRuleResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListTargetsByRuleResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListTargetsByRuleResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<Target> m_targets;
+    bool m_targetsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

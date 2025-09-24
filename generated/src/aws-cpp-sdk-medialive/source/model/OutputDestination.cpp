@@ -18,19 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-OutputDestination::OutputDestination() : 
-    m_idHasBeenSet(false),
-    m_mediaPackageSettingsHasBeenSet(false),
-    m_multiplexSettingsHasBeenSet(false),
-    m_settingsHasBeenSet(false)
-{
-}
-
-OutputDestination::OutputDestination(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_mediaPackageSettingsHasBeenSet(false),
-    m_multiplexSettingsHasBeenSet(false),
-    m_settingsHasBeenSet(false)
+OutputDestination::OutputDestination(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ OutputDestination& OutputDestination::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("mediaPackageSettings"))
   {
     Aws::Utils::Array<JsonView> mediaPackageSettingsJsonList = jsonValue.GetArray("mediaPackageSettings");
@@ -53,14 +39,11 @@ OutputDestination& OutputDestination::operator =(JsonView jsonValue)
     }
     m_mediaPackageSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("multiplexSettings"))
   {
     m_multiplexSettings = jsonValue.GetObject("multiplexSettings");
-
     m_multiplexSettingsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("settings"))
   {
     Aws::Utils::Array<JsonView> settingsJsonList = jsonValue.GetArray("settings");
@@ -70,7 +53,24 @@ OutputDestination& OutputDestination::operator =(JsonView jsonValue)
     }
     m_settingsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("srtSettings"))
+  {
+    Aws::Utils::Array<JsonView> srtSettingsJsonList = jsonValue.GetArray("srtSettings");
+    for(unsigned srtSettingsIndex = 0; srtSettingsIndex < srtSettingsJsonList.GetLength(); ++srtSettingsIndex)
+    {
+      m_srtSettings.push_back(srtSettingsJsonList[srtSettingsIndex].AsObject());
+    }
+    m_srtSettingsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("logicalInterfaceNames"))
+  {
+    Aws::Utils::Array<JsonView> logicalInterfaceNamesJsonList = jsonValue.GetArray("logicalInterfaceNames");
+    for(unsigned logicalInterfaceNamesIndex = 0; logicalInterfaceNamesIndex < logicalInterfaceNamesJsonList.GetLength(); ++logicalInterfaceNamesIndex)
+    {
+      m_logicalInterfaceNames.push_back(logicalInterfaceNamesJsonList[logicalInterfaceNamesIndex].AsString());
+    }
+    m_logicalInterfaceNamesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -109,6 +109,28 @@ JsonValue OutputDestination::Jsonize() const
      settingsJsonList[settingsIndex].AsObject(m_settings[settingsIndex].Jsonize());
    }
    payload.WithArray("settings", std::move(settingsJsonList));
+
+  }
+
+  if(m_srtSettingsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> srtSettingsJsonList(m_srtSettings.size());
+   for(unsigned srtSettingsIndex = 0; srtSettingsIndex < srtSettingsJsonList.GetLength(); ++srtSettingsIndex)
+   {
+     srtSettingsJsonList[srtSettingsIndex].AsObject(m_srtSettings[srtSettingsIndex].Jsonize());
+   }
+   payload.WithArray("srtSettings", std::move(srtSettingsJsonList));
+
+  }
+
+  if(m_logicalInterfaceNamesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> logicalInterfaceNamesJsonList(m_logicalInterfaceNames.size());
+   for(unsigned logicalInterfaceNamesIndex = 0; logicalInterfaceNamesIndex < logicalInterfaceNamesJsonList.GetLength(); ++logicalInterfaceNamesIndex)
+   {
+     logicalInterfaceNamesJsonList[logicalInterfaceNamesIndex].AsString(m_logicalInterfaceNames[logicalInterfaceNamesIndex]);
+   }
+   payload.WithArray("logicalInterfaceNames", std::move(logicalInterfaceNamesJsonList));
 
   }
 

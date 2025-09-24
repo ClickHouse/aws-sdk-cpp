@@ -12,14 +12,6 @@ using namespace Aws::Connect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateInstanceAttributeRequest::UpdateInstanceAttributeRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_attributeType(InstanceAttributeType::NOT_SET),
-    m_attributeTypeHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
 Aws::String UpdateInstanceAttributeRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -27,6 +19,12 @@ Aws::String UpdateInstanceAttributeRequest::SerializePayload() const
   if(m_valueHasBeenSet)
   {
    payload.WithString("Value", m_value);
+
+  }
+
+  if(m_clientTokenHasBeenSet)
+  {
+   payload.WithString("ClientToken", m_clientToken);
 
   }
 

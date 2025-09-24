@@ -18,15 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-AggregateConformancePackComplianceSummary::AggregateConformancePackComplianceSummary() : 
-    m_complianceSummaryHasBeenSet(false),
-    m_groupNameHasBeenSet(false)
-{
-}
-
-AggregateConformancePackComplianceSummary::AggregateConformancePackComplianceSummary(JsonView jsonValue) : 
-    m_complianceSummaryHasBeenSet(false),
-    m_groupNameHasBeenSet(false)
+AggregateConformancePackComplianceSummary::AggregateConformancePackComplianceSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AggregateConformancePackComplianceSummary& AggregateConformancePackComplianceSum
   if(jsonValue.ValueExists("ComplianceSummary"))
   {
     m_complianceSummary = jsonValue.GetObject("ComplianceSummary");
-
     m_complianceSummaryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("GroupName"))
   {
     m_groupName = jsonValue.GetString("GroupName");
-
     m_groupNameHasBeenSet = true;
   }
-
   return *this;
 }
 

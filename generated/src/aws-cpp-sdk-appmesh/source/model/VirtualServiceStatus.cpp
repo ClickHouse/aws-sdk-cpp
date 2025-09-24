@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-VirtualServiceStatus::VirtualServiceStatus() : 
-    m_status(VirtualServiceStatusCode::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-VirtualServiceStatus::VirtualServiceStatus(JsonView jsonValue) : 
-    m_status(VirtualServiceStatusCode::NOT_SET),
-    m_statusHasBeenSet(false)
+VirtualServiceStatus::VirtualServiceStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ VirtualServiceStatus& VirtualServiceStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("status"))
   {
     m_status = VirtualServiceStatusCodeMapper::GetVirtualServiceStatusCodeForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
   return *this;
 }
 

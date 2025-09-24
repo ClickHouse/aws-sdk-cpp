@@ -21,7 +21,7 @@ namespace Model
   class CreateApplicationRequest : public ApplicationDiscoveryServiceRequest
   {
   public:
-    AWS_APPLICATIONDISCOVERYSERVICE_API CreateApplicationRequest();
+    AWS_APPLICATIONDISCOVERYSERVICE_API CreateApplicationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,41 @@ namespace Model
     AWS_APPLICATIONDISCOVERYSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>Name of the application to be created.</p>
+     * <p>The name of the application to be created.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>Name of the application to be created.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateApplicationRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Name of the application to be created.</p>
+     * <p>The description of the application to be created.</p>
      */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>Name of the application to be created.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>Name of the application to be created.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>Name of the application to be created.</p>
-     */
-    inline CreateApplicationRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>Name of the application to be created.</p>
-     */
-    inline CreateApplicationRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the application to be created.</p>
-     */
-    inline CreateApplicationRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
-    /**
-     * <p>Description of the application to be created.</p>
-     */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>Description of the application to be created.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateApplicationRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Description of the application to be created.</p>
+     * <p>The name of the migration wave of the application to be created.</p>
      */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>Description of the application to be created.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>Description of the application to be created.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>Description of the application to be created.</p>
-     */
-    inline CreateApplicationRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>Description of the application to be created.</p>
-     */
-    inline CreateApplicationRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>Description of the application to be created.</p>
-     */
-    inline CreateApplicationRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    inline const Aws::String& GetWave() const { return m_wave; }
+    inline bool WaveHasBeenSet() const { return m_waveHasBeenSet; }
+    template<typename WaveT = Aws::String>
+    void SetWave(WaveT&& value) { m_waveHasBeenSet = true; m_wave = std::forward<WaveT>(value); }
+    template<typename WaveT = Aws::String>
+    CreateApplicationRequest& WithWave(WaveT&& value) { SetWave(std::forward<WaveT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;
@@ -122,6 +76,9 @@ namespace Model
 
     Aws::String m_description;
     bool m_descriptionHasBeenSet = false;
+
+    Aws::String m_wave;
+    bool m_waveHasBeenSet = false;
   };
 
 } // namespace Model

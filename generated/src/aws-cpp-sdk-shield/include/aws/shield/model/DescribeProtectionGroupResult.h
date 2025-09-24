@@ -28,73 +28,39 @@ namespace Model
   class DescribeProtectionGroupResult
   {
   public:
-    AWS_SHIELD_API DescribeProtectionGroupResult();
+    AWS_SHIELD_API DescribeProtectionGroupResult() = default;
     AWS_SHIELD_API DescribeProtectionGroupResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SHIELD_API DescribeProtectionGroupResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A grouping of protected resources that you and Shield Advanced can monitor as
      * a collective. This resource grouping improves the accuracy of detection and
      * reduces false positives. </p>
      */
-    inline const ProtectionGroup& GetProtectionGroup() const{ return m_protectionGroup; }
+    inline const ProtectionGroup& GetProtectionGroup() const { return m_protectionGroup; }
+    template<typename ProtectionGroupT = ProtectionGroup>
+    void SetProtectionGroup(ProtectionGroupT&& value) { m_protectionGroupHasBeenSet = true; m_protectionGroup = std::forward<ProtectionGroupT>(value); }
+    template<typename ProtectionGroupT = ProtectionGroup>
+    DescribeProtectionGroupResult& WithProtectionGroup(ProtectionGroupT&& value) { SetProtectionGroup(std::forward<ProtectionGroupT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A grouping of protected resources that you and Shield Advanced can monitor as
-     * a collective. This resource grouping improves the accuracy of detection and
-     * reduces false positives. </p>
-     */
-    inline void SetProtectionGroup(const ProtectionGroup& value) { m_protectionGroup = value; }
-
-    /**
-     * <p>A grouping of protected resources that you and Shield Advanced can monitor as
-     * a collective. This resource grouping improves the accuracy of detection and
-     * reduces false positives. </p>
-     */
-    inline void SetProtectionGroup(ProtectionGroup&& value) { m_protectionGroup = std::move(value); }
-
-    /**
-     * <p>A grouping of protected resources that you and Shield Advanced can monitor as
-     * a collective. This resource grouping improves the accuracy of detection and
-     * reduces false positives. </p>
-     */
-    inline DescribeProtectionGroupResult& WithProtectionGroup(const ProtectionGroup& value) { SetProtectionGroup(value); return *this;}
-
-    /**
-     * <p>A grouping of protected resources that you and Shield Advanced can monitor as
-     * a collective. This resource grouping improves the accuracy of detection and
-     * reduces false positives. </p>
-     */
-    inline DescribeProtectionGroupResult& WithProtectionGroup(ProtectionGroup&& value) { SetProtectionGroup(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeProtectionGroupResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeProtectionGroupResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeProtectionGroupResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeProtectionGroupResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ProtectionGroup m_protectionGroup;
+    bool m_protectionGroupHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

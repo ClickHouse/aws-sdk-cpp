@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-GeneratorDetails::GeneratorDetails() : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_labelsHasBeenSet(false)
-{
-}
-
-GeneratorDetails::GeneratorDetails(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_labelsHasBeenSet(false)
+GeneratorDetails::GeneratorDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ GeneratorDetails& GeneratorDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Description"))
   {
     m_description = jsonValue.GetString("Description");
-
     m_descriptionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Labels"))
   {
     Aws::Utils::Array<JsonView> labelsJsonList = jsonValue.GetArray("Labels");
@@ -58,7 +44,6 @@ GeneratorDetails& GeneratorDetails::operator =(JsonView jsonValue)
     }
     m_labelsHasBeenSet = true;
   }
-
   return *this;
 }
 

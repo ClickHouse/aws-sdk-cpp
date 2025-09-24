@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-QuickConnectSearchCriteria::QuickConnectSearchCriteria() : 
-    m_orConditionsHasBeenSet(false),
-    m_andConditionsHasBeenSet(false),
-    m_stringConditionHasBeenSet(false)
-{
-}
-
-QuickConnectSearchCriteria::QuickConnectSearchCriteria(JsonView jsonValue) : 
-    m_orConditionsHasBeenSet(false),
-    m_andConditionsHasBeenSet(false),
-    m_stringConditionHasBeenSet(false)
+QuickConnectSearchCriteria::QuickConnectSearchCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ QuickConnectSearchCriteria& QuickConnectSearchCriteria::operator =(JsonView json
     }
     m_orConditionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AndConditions"))
   {
     Aws::Utils::Array<JsonView> andConditionsJsonList = jsonValue.GetArray("AndConditions");
@@ -54,14 +43,11 @@ QuickConnectSearchCriteria& QuickConnectSearchCriteria::operator =(JsonView json
     }
     m_andConditionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StringCondition"))
   {
     m_stringCondition = jsonValue.GetObject("StringCondition");
-
     m_stringConditionHasBeenSet = true;
   }
-
   return *this;
 }
 

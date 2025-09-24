@@ -18,15 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-AccountHealth::AccountHealth() : 
-    m_accountIdHasBeenSet(false),
-    m_insightHasBeenSet(false)
-{
-}
-
-AccountHealth::AccountHealth(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_insightHasBeenSet(false)
+AccountHealth::AccountHealth(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AccountHealth& AccountHealth::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AccountId"))
   {
     m_accountId = jsonValue.GetString("AccountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Insight"))
   {
     m_insight = jsonValue.GetObject("Insight");
-
     m_insightHasBeenSet = true;
   }
-
   return *this;
 }
 

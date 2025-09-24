@@ -32,7 +32,7 @@ namespace Model
   class PrivateDnsDetails
   {
   public:
-    AWS_EC2_API PrivateDnsDetails();
+    AWS_EC2_API PrivateDnsDetails() = default;
     AWS_EC2_API PrivateDnsDetails(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API PrivateDnsDetails& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,46 +40,17 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The private DNS name assigned to the VPC endpoint service.</p>
      */
-    inline const Aws::String& GetPrivateDnsName() const{ return m_privateDnsName; }
-
-    /**
-     * <p>The private DNS name assigned to the VPC endpoint service.</p>
-     */
+    inline const Aws::String& GetPrivateDnsName() const { return m_privateDnsName; }
     inline bool PrivateDnsNameHasBeenSet() const { return m_privateDnsNameHasBeenSet; }
-
-    /**
-     * <p>The private DNS name assigned to the VPC endpoint service.</p>
-     */
-    inline void SetPrivateDnsName(const Aws::String& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = value; }
-
-    /**
-     * <p>The private DNS name assigned to the VPC endpoint service.</p>
-     */
-    inline void SetPrivateDnsName(Aws::String&& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = std::move(value); }
-
-    /**
-     * <p>The private DNS name assigned to the VPC endpoint service.</p>
-     */
-    inline void SetPrivateDnsName(const char* value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName.assign(value); }
-
-    /**
-     * <p>The private DNS name assigned to the VPC endpoint service.</p>
-     */
-    inline PrivateDnsDetails& WithPrivateDnsName(const Aws::String& value) { SetPrivateDnsName(value); return *this;}
-
-    /**
-     * <p>The private DNS name assigned to the VPC endpoint service.</p>
-     */
-    inline PrivateDnsDetails& WithPrivateDnsName(Aws::String&& value) { SetPrivateDnsName(std::move(value)); return *this;}
-
-    /**
-     * <p>The private DNS name assigned to the VPC endpoint service.</p>
-     */
-    inline PrivateDnsDetails& WithPrivateDnsName(const char* value) { SetPrivateDnsName(value); return *this;}
-
+    template<typename PrivateDnsNameT = Aws::String>
+    void SetPrivateDnsName(PrivateDnsNameT&& value) { m_privateDnsNameHasBeenSet = true; m_privateDnsName = std::forward<PrivateDnsNameT>(value); }
+    template<typename PrivateDnsNameT = Aws::String>
+    PrivateDnsDetails& WithPrivateDnsName(PrivateDnsNameT&& value) { SetPrivateDnsName(std::forward<PrivateDnsNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_privateDnsName;

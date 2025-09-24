@@ -28,63 +28,37 @@ namespace Model
   class DescribePermissionSetProvisioningStatusResult
   {
   public:
-    AWS_SSOADMIN_API DescribePermissionSetProvisioningStatusResult();
+    AWS_SSOADMIN_API DescribePermissionSetProvisioningStatusResult() = default;
     AWS_SSOADMIN_API DescribePermissionSetProvisioningStatusResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SSOADMIN_API DescribePermissionSetProvisioningStatusResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The status object for the permission set provisioning operation.</p>
      */
-    inline const PermissionSetProvisioningStatus& GetPermissionSetProvisioningStatus() const{ return m_permissionSetProvisioningStatus; }
+    inline const PermissionSetProvisioningStatus& GetPermissionSetProvisioningStatus() const { return m_permissionSetProvisioningStatus; }
+    template<typename PermissionSetProvisioningStatusT = PermissionSetProvisioningStatus>
+    void SetPermissionSetProvisioningStatus(PermissionSetProvisioningStatusT&& value) { m_permissionSetProvisioningStatusHasBeenSet = true; m_permissionSetProvisioningStatus = std::forward<PermissionSetProvisioningStatusT>(value); }
+    template<typename PermissionSetProvisioningStatusT = PermissionSetProvisioningStatus>
+    DescribePermissionSetProvisioningStatusResult& WithPermissionSetProvisioningStatus(PermissionSetProvisioningStatusT&& value) { SetPermissionSetProvisioningStatus(std::forward<PermissionSetProvisioningStatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status object for the permission set provisioning operation.</p>
-     */
-    inline void SetPermissionSetProvisioningStatus(const PermissionSetProvisioningStatus& value) { m_permissionSetProvisioningStatus = value; }
-
-    /**
-     * <p>The status object for the permission set provisioning operation.</p>
-     */
-    inline void SetPermissionSetProvisioningStatus(PermissionSetProvisioningStatus&& value) { m_permissionSetProvisioningStatus = std::move(value); }
-
-    /**
-     * <p>The status object for the permission set provisioning operation.</p>
-     */
-    inline DescribePermissionSetProvisioningStatusResult& WithPermissionSetProvisioningStatus(const PermissionSetProvisioningStatus& value) { SetPermissionSetProvisioningStatus(value); return *this;}
-
-    /**
-     * <p>The status object for the permission set provisioning operation.</p>
-     */
-    inline DescribePermissionSetProvisioningStatusResult& WithPermissionSetProvisioningStatus(PermissionSetProvisioningStatus&& value) { SetPermissionSetProvisioningStatus(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribePermissionSetProvisioningStatusResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribePermissionSetProvisioningStatusResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribePermissionSetProvisioningStatusResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribePermissionSetProvisioningStatusResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     PermissionSetProvisioningStatus m_permissionSetProvisioningStatus;
+    bool m_permissionSetProvisioningStatusHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

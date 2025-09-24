@@ -18,15 +18,7 @@ namespace Backup
 namespace Model
 {
 
-ConditionParameter::ConditionParameter() : 
-    m_conditionKeyHasBeenSet(false),
-    m_conditionValueHasBeenSet(false)
-{
-}
-
-ConditionParameter::ConditionParameter(JsonView jsonValue) : 
-    m_conditionKeyHasBeenSet(false),
-    m_conditionValueHasBeenSet(false)
+ConditionParameter::ConditionParameter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ConditionParameter& ConditionParameter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ConditionKey"))
   {
     m_conditionKey = jsonValue.GetString("ConditionKey");
-
     m_conditionKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConditionValue"))
   {
     m_conditionValue = jsonValue.GetString("ConditionValue");
-
     m_conditionValueHasBeenSet = true;
   }
-
   return *this;
 }
 

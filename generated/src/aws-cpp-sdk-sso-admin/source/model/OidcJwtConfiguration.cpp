@@ -18,61 +18,45 @@ namespace SSOAdmin
 namespace Model
 {
 
-OidcJwtConfiguration::OidcJwtConfiguration() : 
-    m_claimAttributePathHasBeenSet(false),
-    m_identityStoreAttributePathHasBeenSet(false),
-    m_issuerUrlHasBeenSet(false),
-    m_jwksRetrievalOption(JwksRetrievalOption::NOT_SET),
-    m_jwksRetrievalOptionHasBeenSet(false)
-{
-}
-
-OidcJwtConfiguration::OidcJwtConfiguration(JsonView jsonValue) : 
-    m_claimAttributePathHasBeenSet(false),
-    m_identityStoreAttributePathHasBeenSet(false),
-    m_issuerUrlHasBeenSet(false),
-    m_jwksRetrievalOption(JwksRetrievalOption::NOT_SET),
-    m_jwksRetrievalOptionHasBeenSet(false)
+OidcJwtConfiguration::OidcJwtConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 OidcJwtConfiguration& OidcJwtConfiguration::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("ClaimAttributePath"))
-  {
-    m_claimAttributePath = jsonValue.GetString("ClaimAttributePath");
-
-    m_claimAttributePathHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("IdentityStoreAttributePath"))
-  {
-    m_identityStoreAttributePath = jsonValue.GetString("IdentityStoreAttributePath");
-
-    m_identityStoreAttributePathHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("IssuerUrl"))
   {
     m_issuerUrl = jsonValue.GetString("IssuerUrl");
-
     m_issuerUrlHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ClaimAttributePath"))
+  {
+    m_claimAttributePath = jsonValue.GetString("ClaimAttributePath");
+    m_claimAttributePathHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("IdentityStoreAttributePath"))
+  {
+    m_identityStoreAttributePath = jsonValue.GetString("IdentityStoreAttributePath");
+    m_identityStoreAttributePathHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("JwksRetrievalOption"))
   {
     m_jwksRetrievalOption = JwksRetrievalOptionMapper::GetJwksRetrievalOptionForName(jsonValue.GetString("JwksRetrievalOption"));
-
     m_jwksRetrievalOptionHasBeenSet = true;
   }
-
   return *this;
 }
 
 JsonValue OidcJwtConfiguration::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_issuerUrlHasBeenSet)
+  {
+   payload.WithString("IssuerUrl", m_issuerUrl);
+
+  }
 
   if(m_claimAttributePathHasBeenSet)
   {
@@ -83,12 +67,6 @@ JsonValue OidcJwtConfiguration::Jsonize() const
   if(m_identityStoreAttributePathHasBeenSet)
   {
    payload.WithString("IdentityStoreAttributePath", m_identityStoreAttributePath);
-
-  }
-
-  if(m_issuerUrlHasBeenSet)
-  {
-   payload.WithString("IssuerUrl", m_issuerUrl);
 
   }
 

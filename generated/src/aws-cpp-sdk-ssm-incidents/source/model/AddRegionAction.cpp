@@ -18,15 +18,7 @@ namespace SSMIncidents
 namespace Model
 {
 
-AddRegionAction::AddRegionAction() : 
-    m_regionNameHasBeenSet(false),
-    m_sseKmsKeyIdHasBeenSet(false)
-{
-}
-
-AddRegionAction::AddRegionAction(JsonView jsonValue) : 
-    m_regionNameHasBeenSet(false),
-    m_sseKmsKeyIdHasBeenSet(false)
+AddRegionAction::AddRegionAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AddRegionAction& AddRegionAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("regionName"))
   {
     m_regionName = jsonValue.GetString("regionName");
-
     m_regionNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sseKmsKeyId"))
   {
     m_sseKmsKeyId = jsonValue.GetString("sseKmsKeyId");
-
     m_sseKmsKeyIdHasBeenSet = true;
   }
-
   return *this;
 }
 

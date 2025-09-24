@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/qconnect/QConnect_EXPORTS.h>
-#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/qconnect/model/Highlight.h>
 #include <utility>
 
@@ -33,100 +33,44 @@ namespace Model
   class DocumentText
   {
   public:
-    AWS_QCONNECT_API DocumentText();
+    AWS_QCONNECT_API DocumentText() = default;
     AWS_QCONNECT_API DocumentText(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API DocumentText& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>Highlights in the document text.</p>
-     */
-    inline const Aws::Vector<Highlight>& GetHighlights() const{ return m_highlights; }
-
-    /**
-     * <p>Highlights in the document text.</p>
-     */
-    inline bool HighlightsHasBeenSet() const { return m_highlightsHasBeenSet; }
-
-    /**
-     * <p>Highlights in the document text.</p>
-     */
-    inline void SetHighlights(const Aws::Vector<Highlight>& value) { m_highlightsHasBeenSet = true; m_highlights = value; }
-
-    /**
-     * <p>Highlights in the document text.</p>
-     */
-    inline void SetHighlights(Aws::Vector<Highlight>&& value) { m_highlightsHasBeenSet = true; m_highlights = std::move(value); }
-
-    /**
-     * <p>Highlights in the document text.</p>
-     */
-    inline DocumentText& WithHighlights(const Aws::Vector<Highlight>& value) { SetHighlights(value); return *this;}
-
-    /**
-     * <p>Highlights in the document text.</p>
-     */
-    inline DocumentText& WithHighlights(Aws::Vector<Highlight>&& value) { SetHighlights(std::move(value)); return *this;}
-
-    /**
-     * <p>Highlights in the document text.</p>
-     */
-    inline DocumentText& AddHighlights(const Highlight& value) { m_highlightsHasBeenSet = true; m_highlights.push_back(value); return *this; }
-
-    /**
-     * <p>Highlights in the document text.</p>
-     */
-    inline DocumentText& AddHighlights(Highlight&& value) { m_highlightsHasBeenSet = true; m_highlights.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Text in the document.</p>
      */
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    /**
-     * <p>Text in the document.</p>
-     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    DocumentText& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Text in the document.</p>
+     * <p>Highlights in the document text.</p>
      */
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p>Text in the document.</p>
-     */
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p>Text in the document.</p>
-     */
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    /**
-     * <p>Text in the document.</p>
-     */
-    inline DocumentText& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    /**
-     * <p>Text in the document.</p>
-     */
-    inline DocumentText& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    /**
-     * <p>Text in the document.</p>
-     */
-    inline DocumentText& WithText(const char* value) { SetText(value); return *this;}
-
+    inline const Aws::Vector<Highlight>& GetHighlights() const { return m_highlights; }
+    inline bool HighlightsHasBeenSet() const { return m_highlightsHasBeenSet; }
+    template<typename HighlightsT = Aws::Vector<Highlight>>
+    void SetHighlights(HighlightsT&& value) { m_highlightsHasBeenSet = true; m_highlights = std::forward<HighlightsT>(value); }
+    template<typename HighlightsT = Aws::Vector<Highlight>>
+    DocumentText& WithHighlights(HighlightsT&& value) { SetHighlights(std::forward<HighlightsT>(value)); return *this;}
+    template<typename HighlightsT = Highlight>
+    DocumentText& AddHighlights(HighlightsT&& value) { m_highlightsHasBeenSet = true; m_highlights.emplace_back(std::forward<HighlightsT>(value)); return *this; }
+    ///@}
   private:
-
-    Aws::Vector<Highlight> m_highlights;
-    bool m_highlightsHasBeenSet = false;
 
     Aws::String m_text;
     bool m_textHasBeenSet = false;
+
+    Aws::Vector<Highlight> m_highlights;
+    bool m_highlightsHasBeenSet = false;
   };
 
 } // namespace Model

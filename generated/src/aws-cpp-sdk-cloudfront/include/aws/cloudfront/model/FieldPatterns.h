@@ -32,82 +32,39 @@ namespace Model
   class FieldPatterns
   {
   public:
-    AWS_CLOUDFRONT_API FieldPatterns();
+    AWS_CLOUDFRONT_API FieldPatterns() = default;
     AWS_CLOUDFRONT_API FieldPatterns(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API FieldPatterns& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The number of field-level encryption field patterns.</p>
      */
-    inline int GetQuantity() const{ return m_quantity; }
-
-    /**
-     * <p>The number of field-level encryption field patterns.</p>
-     */
+    inline int GetQuantity() const { return m_quantity; }
     inline bool QuantityHasBeenSet() const { return m_quantityHasBeenSet; }
-
-    /**
-     * <p>The number of field-level encryption field patterns.</p>
-     */
     inline void SetQuantity(int value) { m_quantityHasBeenSet = true; m_quantity = value; }
-
-    /**
-     * <p>The number of field-level encryption field patterns.</p>
-     */
     inline FieldPatterns& WithQuantity(int value) { SetQuantity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An array of the field-level encryption field patterns.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetItems() const{ return m_items; }
-
-    /**
-     * <p>An array of the field-level encryption field patterns.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetItems() const { return m_items; }
     inline bool ItemsHasBeenSet() const { return m_itemsHasBeenSet; }
-
-    /**
-     * <p>An array of the field-level encryption field patterns.</p>
-     */
-    inline void SetItems(const Aws::Vector<Aws::String>& value) { m_itemsHasBeenSet = true; m_items = value; }
-
-    /**
-     * <p>An array of the field-level encryption field patterns.</p>
-     */
-    inline void SetItems(Aws::Vector<Aws::String>&& value) { m_itemsHasBeenSet = true; m_items = std::move(value); }
-
-    /**
-     * <p>An array of the field-level encryption field patterns.</p>
-     */
-    inline FieldPatterns& WithItems(const Aws::Vector<Aws::String>& value) { SetItems(value); return *this;}
-
-    /**
-     * <p>An array of the field-level encryption field patterns.</p>
-     */
-    inline FieldPatterns& WithItems(Aws::Vector<Aws::String>&& value) { SetItems(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of the field-level encryption field patterns.</p>
-     */
-    inline FieldPatterns& AddItems(const Aws::String& value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
-    /**
-     * <p>An array of the field-level encryption field patterns.</p>
-     */
-    inline FieldPatterns& AddItems(Aws::String&& value) { m_itemsHasBeenSet = true; m_items.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>An array of the field-level encryption field patterns.</p>
-     */
-    inline FieldPatterns& AddItems(const char* value) { m_itemsHasBeenSet = true; m_items.push_back(value); return *this; }
-
+    template<typename ItemsT = Aws::Vector<Aws::String>>
+    void SetItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items = std::forward<ItemsT>(value); }
+    template<typename ItemsT = Aws::Vector<Aws::String>>
+    FieldPatterns& WithItems(ItemsT&& value) { SetItems(std::forward<ItemsT>(value)); return *this;}
+    template<typename ItemsT = Aws::String>
+    FieldPatterns& AddItems(ItemsT&& value) { m_itemsHasBeenSet = true; m_items.emplace_back(std::forward<ItemsT>(value)); return *this; }
+    ///@}
   private:
 
-    int m_quantity;
+    int m_quantity{0};
     bool m_quantityHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_items;

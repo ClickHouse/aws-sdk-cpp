@@ -12,13 +12,6 @@ using namespace Aws::EventBridge::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateEventBusRequest::CreateEventBusRequest() : 
-    m_nameHasBeenSet(false),
-    m_eventSourceNameHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateEventBusRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -32,6 +25,30 @@ Aws::String CreateEventBusRequest::SerializePayload() const
   if(m_eventSourceNameHasBeenSet)
   {
    payload.WithString("EventSourceName", m_eventSourceName);
+
+  }
+
+  if(m_descriptionHasBeenSet)
+  {
+   payload.WithString("Description", m_description);
+
+  }
+
+  if(m_kmsKeyIdentifierHasBeenSet)
+  {
+   payload.WithString("KmsKeyIdentifier", m_kmsKeyIdentifier);
+
+  }
+
+  if(m_deadLetterConfigHasBeenSet)
+  {
+   payload.WithObject("DeadLetterConfig", m_deadLetterConfig.Jsonize());
+
+  }
+
+  if(m_logConfigHasBeenSet)
+  {
+   payload.WithObject("LogConfig", m_logConfig.Jsonize());
 
   }
 

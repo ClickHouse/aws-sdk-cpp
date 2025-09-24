@@ -26,7 +26,7 @@ namespace Model
   class ListBucketMetricsConfigurationsRequest : public S3CrtRequest
   {
   public:
-    AWS_S3CRT_API ListBucketMetricsConfigurationsRequest();
+    AWS_S3CRT_API ListBucketMetricsConfigurationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,213 +40,66 @@ namespace Model
 
     AWS_S3CRT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+    AWS_S3CRT_API bool HasEmbeddedError(IOStream &body, const Http::HeaderValueCollection &header) const override;
     /**
      * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
      */
     AWS_S3CRT_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The name of the bucket containing the metrics configurations to retrieve.</p>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p>The name of the bucket containing the metrics configurations to retrieve.</p>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    ListBucketMetricsConfigurationsRequest& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the bucket containing the metrics configurations to retrieve.</p>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p>The name of the bucket containing the metrics configurations to retrieve.</p>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p>The name of the bucket containing the metrics configurations to retrieve.</p>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p>The name of the bucket containing the metrics configurations to retrieve.</p>
-     */
-    inline ListBucketMetricsConfigurationsRequest& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p>The name of the bucket containing the metrics configurations to retrieve.</p>
-     */
-    inline ListBucketMetricsConfigurationsRequest& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the bucket containing the metrics configurations to retrieve.</p>
-     */
-    inline ListBucketMetricsConfigurationsRequest& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The marker that is used to continue a metrics configuration listing that has
      * been truncated. Use the <code>NextContinuationToken</code> from a previously
      * truncated list response to continue the listing. The continuation token is an
      * opaque value that Amazon S3 understands.</p>
      */
-    inline const Aws::String& GetContinuationToken() const{ return m_continuationToken; }
-
-    /**
-     * <p>The marker that is used to continue a metrics configuration listing that has
-     * been truncated. Use the <code>NextContinuationToken</code> from a previously
-     * truncated list response to continue the listing. The continuation token is an
-     * opaque value that Amazon S3 understands.</p>
-     */
+    inline const Aws::String& GetContinuationToken() const { return m_continuationToken; }
     inline bool ContinuationTokenHasBeenSet() const { return m_continuationTokenHasBeenSet; }
+    template<typename ContinuationTokenT = Aws::String>
+    void SetContinuationToken(ContinuationTokenT&& value) { m_continuationTokenHasBeenSet = true; m_continuationToken = std::forward<ContinuationTokenT>(value); }
+    template<typename ContinuationTokenT = Aws::String>
+    ListBucketMetricsConfigurationsRequest& WithContinuationToken(ContinuationTokenT&& value) { SetContinuationToken(std::forward<ContinuationTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The marker that is used to continue a metrics configuration listing that has
-     * been truncated. Use the <code>NextContinuationToken</code> from a previously
-     * truncated list response to continue the listing. The continuation token is an
-     * opaque value that Amazon S3 understands.</p>
-     */
-    inline void SetContinuationToken(const Aws::String& value) { m_continuationTokenHasBeenSet = true; m_continuationToken = value; }
-
-    /**
-     * <p>The marker that is used to continue a metrics configuration listing that has
-     * been truncated. Use the <code>NextContinuationToken</code> from a previously
-     * truncated list response to continue the listing. The continuation token is an
-     * opaque value that Amazon S3 understands.</p>
-     */
-    inline void SetContinuationToken(Aws::String&& value) { m_continuationTokenHasBeenSet = true; m_continuationToken = std::move(value); }
-
-    /**
-     * <p>The marker that is used to continue a metrics configuration listing that has
-     * been truncated. Use the <code>NextContinuationToken</code> from a previously
-     * truncated list response to continue the listing. The continuation token is an
-     * opaque value that Amazon S3 understands.</p>
-     */
-    inline void SetContinuationToken(const char* value) { m_continuationTokenHasBeenSet = true; m_continuationToken.assign(value); }
-
-    /**
-     * <p>The marker that is used to continue a metrics configuration listing that has
-     * been truncated. Use the <code>NextContinuationToken</code> from a previously
-     * truncated list response to continue the listing. The continuation token is an
-     * opaque value that Amazon S3 understands.</p>
-     */
-    inline ListBucketMetricsConfigurationsRequest& WithContinuationToken(const Aws::String& value) { SetContinuationToken(value); return *this;}
-
-    /**
-     * <p>The marker that is used to continue a metrics configuration listing that has
-     * been truncated. Use the <code>NextContinuationToken</code> from a previously
-     * truncated list response to continue the listing. The continuation token is an
-     * opaque value that Amazon S3 understands.</p>
-     */
-    inline ListBucketMetricsConfigurationsRequest& WithContinuationToken(Aws::String&& value) { SetContinuationToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The marker that is used to continue a metrics configuration listing that has
-     * been truncated. Use the <code>NextContinuationToken</code> from a previously
-     * truncated list response to continue the listing. The continuation token is an
-     * opaque value that Amazon S3 understands.</p>
-     */
-    inline ListBucketMetricsConfigurationsRequest& WithContinuationToken(const char* value) { SetContinuationToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The account ID of the expected bucket owner. If the account ID that you
      * provide does not match the actual owner of the bucket, the request fails with
      * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
      */
-    inline const Aws::String& GetExpectedBucketOwner() const{ return m_expectedBucketOwner; }
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
+    inline const Aws::String& GetExpectedBucketOwner() const { return m_expectedBucketOwner; }
     inline bool ExpectedBucketOwnerHasBeenSet() const { return m_expectedBucketOwnerHasBeenSet; }
+    template<typename ExpectedBucketOwnerT = Aws::String>
+    void SetExpectedBucketOwner(ExpectedBucketOwnerT&& value) { m_expectedBucketOwnerHasBeenSet = true; m_expectedBucketOwner = std::forward<ExpectedBucketOwnerT>(value); }
+    template<typename ExpectedBucketOwnerT = Aws::String>
+    ListBucketMetricsConfigurationsRequest& WithExpectedBucketOwner(ExpectedBucketOwnerT&& value) { SetExpectedBucketOwner(std::forward<ExpectedBucketOwnerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline void SetExpectedBucketOwner(const Aws::String& value) { m_expectedBucketOwnerHasBeenSet = true; m_expectedBucketOwner = value; }
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline void SetExpectedBucketOwner(Aws::String&& value) { m_expectedBucketOwnerHasBeenSet = true; m_expectedBucketOwner = std::move(value); }
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline void SetExpectedBucketOwner(const char* value) { m_expectedBucketOwnerHasBeenSet = true; m_expectedBucketOwner.assign(value); }
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline ListBucketMetricsConfigurationsRequest& WithExpectedBucketOwner(const Aws::String& value) { SetExpectedBucketOwner(value); return *this;}
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline ListBucketMetricsConfigurationsRequest& WithExpectedBucketOwner(Aws::String&& value) { SetExpectedBucketOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The account ID of the expected bucket owner. If the account ID that you
-     * provide does not match the actual owner of the bucket, the request fails with
-     * the HTTP status code <code>403 Forbidden</code> (access denied).</p>
-     */
-    inline ListBucketMetricsConfigurationsRequest& WithExpectedBucketOwner(const char* value) { SetExpectedBucketOwner(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::Map<Aws::String, Aws::String>& GetCustomizedAccessLogTag() const{ return m_customizedAccessLogTag; }
-
-    
+    inline const Aws::Map<Aws::String, Aws::String>& GetCustomizedAccessLogTag() const { return m_customizedAccessLogTag; }
     inline bool CustomizedAccessLogTagHasBeenSet() const { return m_customizedAccessLogTagHasBeenSet; }
-
-    
-    inline void SetCustomizedAccessLogTag(const Aws::Map<Aws::String, Aws::String>& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag = value; }
-
-    
-    inline void SetCustomizedAccessLogTag(Aws::Map<Aws::String, Aws::String>&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag = std::move(value); }
-
-    
-    inline ListBucketMetricsConfigurationsRequest& WithCustomizedAccessLogTag(const Aws::Map<Aws::String, Aws::String>& value) { SetCustomizedAccessLogTag(value); return *this;}
-
-    
-    inline ListBucketMetricsConfigurationsRequest& WithCustomizedAccessLogTag(Aws::Map<Aws::String, Aws::String>&& value) { SetCustomizedAccessLogTag(std::move(value)); return *this;}
-
-    
-    inline ListBucketMetricsConfigurationsRequest& AddCustomizedAccessLogTag(const Aws::String& key, const Aws::String& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, value); return *this; }
-
-    
-    inline ListBucketMetricsConfigurationsRequest& AddCustomizedAccessLogTag(Aws::String&& key, const Aws::String& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::move(key), value); return *this; }
-
-    
-    inline ListBucketMetricsConfigurationsRequest& AddCustomizedAccessLogTag(const Aws::String& key, Aws::String&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, std::move(value)); return *this; }
-
-    
-    inline ListBucketMetricsConfigurationsRequest& AddCustomizedAccessLogTag(Aws::String&& key, Aws::String&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::move(key), std::move(value)); return *this; }
-
-    
-    inline ListBucketMetricsConfigurationsRequest& AddCustomizedAccessLogTag(const char* key, Aws::String&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, std::move(value)); return *this; }
-
-    
-    inline ListBucketMetricsConfigurationsRequest& AddCustomizedAccessLogTag(Aws::String&& key, const char* value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::move(key), value); return *this; }
-
-    
-    inline ListBucketMetricsConfigurationsRequest& AddCustomizedAccessLogTag(const char* key, const char* value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(key, value); return *this; }
-
+    template<typename CustomizedAccessLogTagT = Aws::Map<Aws::String, Aws::String>>
+    void SetCustomizedAccessLogTag(CustomizedAccessLogTagT&& value) { m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag = std::forward<CustomizedAccessLogTagT>(value); }
+    template<typename CustomizedAccessLogTagT = Aws::Map<Aws::String, Aws::String>>
+    ListBucketMetricsConfigurationsRequest& WithCustomizedAccessLogTag(CustomizedAccessLogTagT&& value) { SetCustomizedAccessLogTag(std::forward<CustomizedAccessLogTagT>(value)); return *this;}
+    template<typename CustomizedAccessLogTagKeyT = Aws::String, typename CustomizedAccessLogTagValueT = Aws::String>
+    ListBucketMetricsConfigurationsRequest& AddCustomizedAccessLogTag(CustomizedAccessLogTagKeyT&& key, CustomizedAccessLogTagValueT&& value) {
+      m_customizedAccessLogTagHasBeenSet = true; m_customizedAccessLogTag.emplace(std::forward<CustomizedAccessLogTagKeyT>(key), std::forward<CustomizedAccessLogTagValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     Aws::String m_bucket;

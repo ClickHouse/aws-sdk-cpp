@@ -23,7 +23,7 @@ namespace Model
   class UpdateSettingsRequest : public DirectoryServiceRequest
   {
   public:
-    AWS_DIRECTORYSERVICE_API UpdateSettingsRequest();
+    AWS_DIRECTORYSERVICE_API UpdateSettingsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,87 +36,31 @@ namespace Model
     AWS_DIRECTORYSERVICE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the directory for which to update settings.</p>
      */
-    inline const Aws::String& GetDirectoryId() const{ return m_directoryId; }
-
-    /**
-     * <p>The identifier of the directory for which to update settings.</p>
-     */
+    inline const Aws::String& GetDirectoryId() const { return m_directoryId; }
     inline bool DirectoryIdHasBeenSet() const { return m_directoryIdHasBeenSet; }
+    template<typename DirectoryIdT = Aws::String>
+    void SetDirectoryId(DirectoryIdT&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::forward<DirectoryIdT>(value); }
+    template<typename DirectoryIdT = Aws::String>
+    UpdateSettingsRequest& WithDirectoryId(DirectoryIdT&& value) { SetDirectoryId(std::forward<DirectoryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the directory for which to update settings.</p>
-     */
-    inline void SetDirectoryId(const Aws::String& value) { m_directoryIdHasBeenSet = true; m_directoryId = value; }
-
-    /**
-     * <p>The identifier of the directory for which to update settings.</p>
-     */
-    inline void SetDirectoryId(Aws::String&& value) { m_directoryIdHasBeenSet = true; m_directoryId = std::move(value); }
-
-    /**
-     * <p>The identifier of the directory for which to update settings.</p>
-     */
-    inline void SetDirectoryId(const char* value) { m_directoryIdHasBeenSet = true; m_directoryId.assign(value); }
-
-    /**
-     * <p>The identifier of the directory for which to update settings.</p>
-     */
-    inline UpdateSettingsRequest& WithDirectoryId(const Aws::String& value) { SetDirectoryId(value); return *this;}
-
-    /**
-     * <p>The identifier of the directory for which to update settings.</p>
-     */
-    inline UpdateSettingsRequest& WithDirectoryId(Aws::String&& value) { SetDirectoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the directory for which to update settings.</p>
-     */
-    inline UpdateSettingsRequest& WithDirectoryId(const char* value) { SetDirectoryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of <a>Setting</a> objects.</p>
      */
-    inline const Aws::Vector<Setting>& GetSettings() const{ return m_settings; }
-
-    /**
-     * <p>The list of <a>Setting</a> objects.</p>
-     */
+    inline const Aws::Vector<Setting>& GetSettings() const { return m_settings; }
     inline bool SettingsHasBeenSet() const { return m_settingsHasBeenSet; }
-
-    /**
-     * <p>The list of <a>Setting</a> objects.</p>
-     */
-    inline void SetSettings(const Aws::Vector<Setting>& value) { m_settingsHasBeenSet = true; m_settings = value; }
-
-    /**
-     * <p>The list of <a>Setting</a> objects.</p>
-     */
-    inline void SetSettings(Aws::Vector<Setting>&& value) { m_settingsHasBeenSet = true; m_settings = std::move(value); }
-
-    /**
-     * <p>The list of <a>Setting</a> objects.</p>
-     */
-    inline UpdateSettingsRequest& WithSettings(const Aws::Vector<Setting>& value) { SetSettings(value); return *this;}
-
-    /**
-     * <p>The list of <a>Setting</a> objects.</p>
-     */
-    inline UpdateSettingsRequest& WithSettings(Aws::Vector<Setting>&& value) { SetSettings(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of <a>Setting</a> objects.</p>
-     */
-    inline UpdateSettingsRequest& AddSettings(const Setting& value) { m_settingsHasBeenSet = true; m_settings.push_back(value); return *this; }
-
-    /**
-     * <p>The list of <a>Setting</a> objects.</p>
-     */
-    inline UpdateSettingsRequest& AddSettings(Setting&& value) { m_settingsHasBeenSet = true; m_settings.push_back(std::move(value)); return *this; }
-
+    template<typename SettingsT = Aws::Vector<Setting>>
+    void SetSettings(SettingsT&& value) { m_settingsHasBeenSet = true; m_settings = std::forward<SettingsT>(value); }
+    template<typename SettingsT = Aws::Vector<Setting>>
+    UpdateSettingsRequest& WithSettings(SettingsT&& value) { SetSettings(std::forward<SettingsT>(value)); return *this;}
+    template<typename SettingsT = Setting>
+    UpdateSettingsRequest& AddSettings(SettingsT&& value) { m_settingsHasBeenSet = true; m_settings.emplace_back(std::forward<SettingsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_directoryId;

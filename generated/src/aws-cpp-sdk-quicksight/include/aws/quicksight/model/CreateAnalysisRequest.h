@@ -28,7 +28,7 @@ namespace Model
   class CreateAnalysisRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API CreateAnalysisRequest();
+    AWS_QUICKSIGHT_API CreateAnalysisRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,190 +39,59 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account where you are creating an
      * analysis.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you are creating an
-     * analysis.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    CreateAnalysisRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account where you are creating an
-     * analysis.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you are creating an
-     * analysis.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you are creating an
-     * analysis.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you are creating an
-     * analysis.</p>
-     */
-    inline CreateAnalysisRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you are creating an
-     * analysis.</p>
-     */
-    inline CreateAnalysisRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account where you are creating an
-     * analysis.</p>
-     */
-    inline CreateAnalysisRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID for the analysis that you're creating. This ID displays in the URL of
      * the analysis.</p>
      */
-    inline const Aws::String& GetAnalysisId() const{ return m_analysisId; }
-
-    /**
-     * <p>The ID for the analysis that you're creating. This ID displays in the URL of
-     * the analysis.</p>
-     */
+    inline const Aws::String& GetAnalysisId() const { return m_analysisId; }
     inline bool AnalysisIdHasBeenSet() const { return m_analysisIdHasBeenSet; }
+    template<typename AnalysisIdT = Aws::String>
+    void SetAnalysisId(AnalysisIdT&& value) { m_analysisIdHasBeenSet = true; m_analysisId = std::forward<AnalysisIdT>(value); }
+    template<typename AnalysisIdT = Aws::String>
+    CreateAnalysisRequest& WithAnalysisId(AnalysisIdT&& value) { SetAnalysisId(std::forward<AnalysisIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the analysis that you're creating. This ID displays in the URL of
-     * the analysis.</p>
-     */
-    inline void SetAnalysisId(const Aws::String& value) { m_analysisIdHasBeenSet = true; m_analysisId = value; }
-
-    /**
-     * <p>The ID for the analysis that you're creating. This ID displays in the URL of
-     * the analysis.</p>
-     */
-    inline void SetAnalysisId(Aws::String&& value) { m_analysisIdHasBeenSet = true; m_analysisId = std::move(value); }
-
-    /**
-     * <p>The ID for the analysis that you're creating. This ID displays in the URL of
-     * the analysis.</p>
-     */
-    inline void SetAnalysisId(const char* value) { m_analysisIdHasBeenSet = true; m_analysisId.assign(value); }
-
-    /**
-     * <p>The ID for the analysis that you're creating. This ID displays in the URL of
-     * the analysis.</p>
-     */
-    inline CreateAnalysisRequest& WithAnalysisId(const Aws::String& value) { SetAnalysisId(value); return *this;}
-
-    /**
-     * <p>The ID for the analysis that you're creating. This ID displays in the URL of
-     * the analysis.</p>
-     */
-    inline CreateAnalysisRequest& WithAnalysisId(Aws::String&& value) { SetAnalysisId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the analysis that you're creating. This ID displays in the URL of
-     * the analysis.</p>
-     */
-    inline CreateAnalysisRequest& WithAnalysisId(const char* value) { SetAnalysisId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A descriptive name for the analysis that you're creating. This name displays
-     * for the analysis in the Amazon QuickSight console. </p>
+     * for the analysis in the QuickSight console. </p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>A descriptive name for the analysis that you're creating. This name displays
-     * for the analysis in the Amazon QuickSight console. </p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateAnalysisRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A descriptive name for the analysis that you're creating. This name displays
-     * for the analysis in the Amazon QuickSight console. </p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>A descriptive name for the analysis that you're creating. This name displays
-     * for the analysis in the Amazon QuickSight console. </p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>A descriptive name for the analysis that you're creating. This name displays
-     * for the analysis in the Amazon QuickSight console. </p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>A descriptive name for the analysis that you're creating. This name displays
-     * for the analysis in the Amazon QuickSight console. </p>
-     */
-    inline CreateAnalysisRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>A descriptive name for the analysis that you're creating. This name displays
-     * for the analysis in the Amazon QuickSight console. </p>
-     */
-    inline CreateAnalysisRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>A descriptive name for the analysis that you're creating. This name displays
-     * for the analysis in the Amazon QuickSight console. </p>
-     */
-    inline CreateAnalysisRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameter names and override values that you want to use. An analysis can
      * have any parameter type, and some parameters might accept multiple values. </p>
      */
-    inline const Parameters& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>The parameter names and override values that you want to use. An analysis can
-     * have any parameter type, and some parameters might accept multiple values. </p>
-     */
+    inline const Parameters& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
+    template<typename ParametersT = Parameters>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Parameters>
+    CreateAnalysisRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The parameter names and override values that you want to use. An analysis can
-     * have any parameter type, and some parameters might accept multiple values. </p>
-     */
-    inline void SetParameters(const Parameters& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>The parameter names and override values that you want to use. An analysis can
-     * have any parameter type, and some parameters might accept multiple values. </p>
-     */
-    inline void SetParameters(Parameters&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>The parameter names and override values that you want to use. An analysis can
-     * have any parameter type, and some parameters might accept multiple values. </p>
-     */
-    inline CreateAnalysisRequest& WithParameters(const Parameters& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>The parameter names and override values that you want to use. An analysis can
-     * have any parameter type, and some parameters might accept multiple values. </p>
-     */
-    inline CreateAnalysisRequest& WithParameters(Parameters&& value) { SetParameters(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A structure that describes the principals and the resource-level permissions
      * on an analysis. You can use the <code>Permissions</code> structure to grant
@@ -230,367 +99,101 @@ namespace Model
      * information for each principal listed by Amazon Resource Name (ARN). </p> <p>To
      * specify no permissions, omit <code>Permissions</code>.</p>
      */
-    inline const Aws::Vector<ResourcePermission>& GetPermissions() const{ return m_permissions; }
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis. You can use the <code>Permissions</code> structure to grant
-     * permissions by providing a list of Identity and Access Management (IAM) action
-     * information for each principal listed by Amazon Resource Name (ARN). </p> <p>To
-     * specify no permissions, omit <code>Permissions</code>.</p>
-     */
+    inline const Aws::Vector<ResourcePermission>& GetPermissions() const { return m_permissions; }
     inline bool PermissionsHasBeenSet() const { return m_permissionsHasBeenSet; }
+    template<typename PermissionsT = Aws::Vector<ResourcePermission>>
+    void SetPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions = std::forward<PermissionsT>(value); }
+    template<typename PermissionsT = Aws::Vector<ResourcePermission>>
+    CreateAnalysisRequest& WithPermissions(PermissionsT&& value) { SetPermissions(std::forward<PermissionsT>(value)); return *this;}
+    template<typename PermissionsT = ResourcePermission>
+    CreateAnalysisRequest& AddPermissions(PermissionsT&& value) { m_permissionsHasBeenSet = true; m_permissions.emplace_back(std::forward<PermissionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis. You can use the <code>Permissions</code> structure to grant
-     * permissions by providing a list of Identity and Access Management (IAM) action
-     * information for each principal listed by Amazon Resource Name (ARN). </p> <p>To
-     * specify no permissions, omit <code>Permissions</code>.</p>
-     */
-    inline void SetPermissions(const Aws::Vector<ResourcePermission>& value) { m_permissionsHasBeenSet = true; m_permissions = value; }
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis. You can use the <code>Permissions</code> structure to grant
-     * permissions by providing a list of Identity and Access Management (IAM) action
-     * information for each principal listed by Amazon Resource Name (ARN). </p> <p>To
-     * specify no permissions, omit <code>Permissions</code>.</p>
-     */
-    inline void SetPermissions(Aws::Vector<ResourcePermission>&& value) { m_permissionsHasBeenSet = true; m_permissions = std::move(value); }
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis. You can use the <code>Permissions</code> structure to grant
-     * permissions by providing a list of Identity and Access Management (IAM) action
-     * information for each principal listed by Amazon Resource Name (ARN). </p> <p>To
-     * specify no permissions, omit <code>Permissions</code>.</p>
-     */
-    inline CreateAnalysisRequest& WithPermissions(const Aws::Vector<ResourcePermission>& value) { SetPermissions(value); return *this;}
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis. You can use the <code>Permissions</code> structure to grant
-     * permissions by providing a list of Identity and Access Management (IAM) action
-     * information for each principal listed by Amazon Resource Name (ARN). </p> <p>To
-     * specify no permissions, omit <code>Permissions</code>.</p>
-     */
-    inline CreateAnalysisRequest& WithPermissions(Aws::Vector<ResourcePermission>&& value) { SetPermissions(std::move(value)); return *this;}
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis. You can use the <code>Permissions</code> structure to grant
-     * permissions by providing a list of Identity and Access Management (IAM) action
-     * information for each principal listed by Amazon Resource Name (ARN). </p> <p>To
-     * specify no permissions, omit <code>Permissions</code>.</p>
-     */
-    inline CreateAnalysisRequest& AddPermissions(const ResourcePermission& value) { m_permissionsHasBeenSet = true; m_permissions.push_back(value); return *this; }
-
-    /**
-     * <p>A structure that describes the principals and the resource-level permissions
-     * on an analysis. You can use the <code>Permissions</code> structure to grant
-     * permissions by providing a list of Identity and Access Management (IAM) action
-     * information for each principal listed by Amazon Resource Name (ARN). </p> <p>To
-     * specify no permissions, omit <code>Permissions</code>.</p>
-     */
-    inline CreateAnalysisRequest& AddPermissions(ResourcePermission&& value) { m_permissionsHasBeenSet = true; m_permissions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A source entity to use for the analysis that you're creating. This metadata
      * structure contains details that describe a source template and one or more
      * datasets.</p> <p>Either a <code>SourceEntity</code> or a <code>Definition</code>
      * must be provided in order for the request to be valid.</p>
      */
-    inline const AnalysisSourceEntity& GetSourceEntity() const{ return m_sourceEntity; }
-
-    /**
-     * <p>A source entity to use for the analysis that you're creating. This metadata
-     * structure contains details that describe a source template and one or more
-     * datasets.</p> <p>Either a <code>SourceEntity</code> or a <code>Definition</code>
-     * must be provided in order for the request to be valid.</p>
-     */
+    inline const AnalysisSourceEntity& GetSourceEntity() const { return m_sourceEntity; }
     inline bool SourceEntityHasBeenSet() const { return m_sourceEntityHasBeenSet; }
+    template<typename SourceEntityT = AnalysisSourceEntity>
+    void SetSourceEntity(SourceEntityT&& value) { m_sourceEntityHasBeenSet = true; m_sourceEntity = std::forward<SourceEntityT>(value); }
+    template<typename SourceEntityT = AnalysisSourceEntity>
+    CreateAnalysisRequest& WithSourceEntity(SourceEntityT&& value) { SetSourceEntity(std::forward<SourceEntityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A source entity to use for the analysis that you're creating. This metadata
-     * structure contains details that describe a source template and one or more
-     * datasets.</p> <p>Either a <code>SourceEntity</code> or a <code>Definition</code>
-     * must be provided in order for the request to be valid.</p>
-     */
-    inline void SetSourceEntity(const AnalysisSourceEntity& value) { m_sourceEntityHasBeenSet = true; m_sourceEntity = value; }
-
-    /**
-     * <p>A source entity to use for the analysis that you're creating. This metadata
-     * structure contains details that describe a source template and one or more
-     * datasets.</p> <p>Either a <code>SourceEntity</code> or a <code>Definition</code>
-     * must be provided in order for the request to be valid.</p>
-     */
-    inline void SetSourceEntity(AnalysisSourceEntity&& value) { m_sourceEntityHasBeenSet = true; m_sourceEntity = std::move(value); }
-
-    /**
-     * <p>A source entity to use for the analysis that you're creating. This metadata
-     * structure contains details that describe a source template and one or more
-     * datasets.</p> <p>Either a <code>SourceEntity</code> or a <code>Definition</code>
-     * must be provided in order for the request to be valid.</p>
-     */
-    inline CreateAnalysisRequest& WithSourceEntity(const AnalysisSourceEntity& value) { SetSourceEntity(value); return *this;}
-
-    /**
-     * <p>A source entity to use for the analysis that you're creating. This metadata
-     * structure contains details that describe a source template and one or more
-     * datasets.</p> <p>Either a <code>SourceEntity</code> or a <code>Definition</code>
-     * must be provided in order for the request to be valid.</p>
-     */
-    inline CreateAnalysisRequest& WithSourceEntity(AnalysisSourceEntity&& value) { SetSourceEntity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN for the theme to apply to the analysis that you're creating. To see
-     * the theme in the Amazon QuickSight console, make sure that you have access to
-     * it.</p>
+     * the theme in the QuickSight console, make sure that you have access to it.</p>
      */
-    inline const Aws::String& GetThemeArn() const{ return m_themeArn; }
-
-    /**
-     * <p>The ARN for the theme to apply to the analysis that you're creating. To see
-     * the theme in the Amazon QuickSight console, make sure that you have access to
-     * it.</p>
-     */
+    inline const Aws::String& GetThemeArn() const { return m_themeArn; }
     inline bool ThemeArnHasBeenSet() const { return m_themeArnHasBeenSet; }
+    template<typename ThemeArnT = Aws::String>
+    void SetThemeArn(ThemeArnT&& value) { m_themeArnHasBeenSet = true; m_themeArn = std::forward<ThemeArnT>(value); }
+    template<typename ThemeArnT = Aws::String>
+    CreateAnalysisRequest& WithThemeArn(ThemeArnT&& value) { SetThemeArn(std::forward<ThemeArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN for the theme to apply to the analysis that you're creating. To see
-     * the theme in the Amazon QuickSight console, make sure that you have access to
-     * it.</p>
-     */
-    inline void SetThemeArn(const Aws::String& value) { m_themeArnHasBeenSet = true; m_themeArn = value; }
-
-    /**
-     * <p>The ARN for the theme to apply to the analysis that you're creating. To see
-     * the theme in the Amazon QuickSight console, make sure that you have access to
-     * it.</p>
-     */
-    inline void SetThemeArn(Aws::String&& value) { m_themeArnHasBeenSet = true; m_themeArn = std::move(value); }
-
-    /**
-     * <p>The ARN for the theme to apply to the analysis that you're creating. To see
-     * the theme in the Amazon QuickSight console, make sure that you have access to
-     * it.</p>
-     */
-    inline void SetThemeArn(const char* value) { m_themeArnHasBeenSet = true; m_themeArn.assign(value); }
-
-    /**
-     * <p>The ARN for the theme to apply to the analysis that you're creating. To see
-     * the theme in the Amazon QuickSight console, make sure that you have access to
-     * it.</p>
-     */
-    inline CreateAnalysisRequest& WithThemeArn(const Aws::String& value) { SetThemeArn(value); return *this;}
-
-    /**
-     * <p>The ARN for the theme to apply to the analysis that you're creating. To see
-     * the theme in the Amazon QuickSight console, make sure that you have access to
-     * it.</p>
-     */
-    inline CreateAnalysisRequest& WithThemeArn(Aws::String&& value) { SetThemeArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN for the theme to apply to the analysis that you're creating. To see
-     * the theme in the Amazon QuickSight console, make sure that you have access to
-     * it.</p>
-     */
-    inline CreateAnalysisRequest& WithThemeArn(const char* value) { SetThemeArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains a map of the key-value pairs for the resource tag or tags assigned
      * to the analysis.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags assigned
-     * to the analysis.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateAnalysisRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateAnalysisRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags assigned
-     * to the analysis.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags assigned
-     * to the analysis.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags assigned
-     * to the analysis.</p>
-     */
-    inline CreateAnalysisRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags assigned
-     * to the analysis.</p>
-     */
-    inline CreateAnalysisRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags assigned
-     * to the analysis.</p>
-     */
-    inline CreateAnalysisRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Contains a map of the key-value pairs for the resource tag or tags assigned
-     * to the analysis.</p>
-     */
-    inline CreateAnalysisRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The definition of an analysis.</p> <p>A definition is the data model of all
      * features in a Dashboard, Template, or Analysis.</p> <p>Either a
      * <code>SourceEntity</code> or a <code>Definition</code> must be provided in order
      * for the request to be valid.</p>
      */
-    inline const AnalysisDefinition& GetDefinition() const{ return m_definition; }
-
-    /**
-     * <p>The definition of an analysis.</p> <p>A definition is the data model of all
-     * features in a Dashboard, Template, or Analysis.</p> <p>Either a
-     * <code>SourceEntity</code> or a <code>Definition</code> must be provided in order
-     * for the request to be valid.</p>
-     */
+    inline const AnalysisDefinition& GetDefinition() const { return m_definition; }
     inline bool DefinitionHasBeenSet() const { return m_definitionHasBeenSet; }
+    template<typename DefinitionT = AnalysisDefinition>
+    void SetDefinition(DefinitionT&& value) { m_definitionHasBeenSet = true; m_definition = std::forward<DefinitionT>(value); }
+    template<typename DefinitionT = AnalysisDefinition>
+    CreateAnalysisRequest& WithDefinition(DefinitionT&& value) { SetDefinition(std::forward<DefinitionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The definition of an analysis.</p> <p>A definition is the data model of all
-     * features in a Dashboard, Template, or Analysis.</p> <p>Either a
-     * <code>SourceEntity</code> or a <code>Definition</code> must be provided in order
-     * for the request to be valid.</p>
-     */
-    inline void SetDefinition(const AnalysisDefinition& value) { m_definitionHasBeenSet = true; m_definition = value; }
-
-    /**
-     * <p>The definition of an analysis.</p> <p>A definition is the data model of all
-     * features in a Dashboard, Template, or Analysis.</p> <p>Either a
-     * <code>SourceEntity</code> or a <code>Definition</code> must be provided in order
-     * for the request to be valid.</p>
-     */
-    inline void SetDefinition(AnalysisDefinition&& value) { m_definitionHasBeenSet = true; m_definition = std::move(value); }
-
-    /**
-     * <p>The definition of an analysis.</p> <p>A definition is the data model of all
-     * features in a Dashboard, Template, or Analysis.</p> <p>Either a
-     * <code>SourceEntity</code> or a <code>Definition</code> must be provided in order
-     * for the request to be valid.</p>
-     */
-    inline CreateAnalysisRequest& WithDefinition(const AnalysisDefinition& value) { SetDefinition(value); return *this;}
-
-    /**
-     * <p>The definition of an analysis.</p> <p>A definition is the data model of all
-     * features in a Dashboard, Template, or Analysis.</p> <p>Either a
-     * <code>SourceEntity</code> or a <code>Definition</code> must be provided in order
-     * for the request to be valid.</p>
-     */
-    inline CreateAnalysisRequest& WithDefinition(AnalysisDefinition&& value) { SetDefinition(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The option to relax the validation needed to create an analysis with
      * definition objects. This skips the validation step for specific errors.</p>
      */
-    inline const ValidationStrategy& GetValidationStrategy() const{ return m_validationStrategy; }
-
-    /**
-     * <p>The option to relax the validation needed to create an analysis with
-     * definition objects. This skips the validation step for specific errors.</p>
-     */
+    inline const ValidationStrategy& GetValidationStrategy() const { return m_validationStrategy; }
     inline bool ValidationStrategyHasBeenSet() const { return m_validationStrategyHasBeenSet; }
+    template<typename ValidationStrategyT = ValidationStrategy>
+    void SetValidationStrategy(ValidationStrategyT&& value) { m_validationStrategyHasBeenSet = true; m_validationStrategy = std::forward<ValidationStrategyT>(value); }
+    template<typename ValidationStrategyT = ValidationStrategy>
+    CreateAnalysisRequest& WithValidationStrategy(ValidationStrategyT&& value) { SetValidationStrategy(std::forward<ValidationStrategyT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The option to relax the validation needed to create an analysis with
-     * definition objects. This skips the validation step for specific errors.</p>
-     */
-    inline void SetValidationStrategy(const ValidationStrategy& value) { m_validationStrategyHasBeenSet = true; m_validationStrategy = value; }
-
-    /**
-     * <p>The option to relax the validation needed to create an analysis with
-     * definition objects. This skips the validation step for specific errors.</p>
-     */
-    inline void SetValidationStrategy(ValidationStrategy&& value) { m_validationStrategyHasBeenSet = true; m_validationStrategy = std::move(value); }
-
-    /**
-     * <p>The option to relax the validation needed to create an analysis with
-     * definition objects. This skips the validation step for specific errors.</p>
-     */
-    inline CreateAnalysisRequest& WithValidationStrategy(const ValidationStrategy& value) { SetValidationStrategy(value); return *this;}
-
-    /**
-     * <p>The option to relax the validation needed to create an analysis with
-     * definition objects. This skips the validation step for specific errors.</p>
-     */
-    inline CreateAnalysisRequest& WithValidationStrategy(ValidationStrategy&& value) { SetValidationStrategy(std::move(value)); return *this;}
-
-
-    /**
-     * <p>When you create the analysis, Amazon QuickSight adds the analysis to these
+     * <p>When you create the analysis, QuickSight adds the analysis to these
      * folders.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetFolderArns() const{ return m_folderArns; }
-
-    /**
-     * <p>When you create the analysis, Amazon QuickSight adds the analysis to these
-     * folders.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetFolderArns() const { return m_folderArns; }
     inline bool FolderArnsHasBeenSet() const { return m_folderArnsHasBeenSet; }
-
-    /**
-     * <p>When you create the analysis, Amazon QuickSight adds the analysis to these
-     * folders.</p>
-     */
-    inline void SetFolderArns(const Aws::Vector<Aws::String>& value) { m_folderArnsHasBeenSet = true; m_folderArns = value; }
-
-    /**
-     * <p>When you create the analysis, Amazon QuickSight adds the analysis to these
-     * folders.</p>
-     */
-    inline void SetFolderArns(Aws::Vector<Aws::String>&& value) { m_folderArnsHasBeenSet = true; m_folderArns = std::move(value); }
-
-    /**
-     * <p>When you create the analysis, Amazon QuickSight adds the analysis to these
-     * folders.</p>
-     */
-    inline CreateAnalysisRequest& WithFolderArns(const Aws::Vector<Aws::String>& value) { SetFolderArns(value); return *this;}
-
-    /**
-     * <p>When you create the analysis, Amazon QuickSight adds the analysis to these
-     * folders.</p>
-     */
-    inline CreateAnalysisRequest& WithFolderArns(Aws::Vector<Aws::String>&& value) { SetFolderArns(std::move(value)); return *this;}
-
-    /**
-     * <p>When you create the analysis, Amazon QuickSight adds the analysis to these
-     * folders.</p>
-     */
-    inline CreateAnalysisRequest& AddFolderArns(const Aws::String& value) { m_folderArnsHasBeenSet = true; m_folderArns.push_back(value); return *this; }
-
-    /**
-     * <p>When you create the analysis, Amazon QuickSight adds the analysis to these
-     * folders.</p>
-     */
-    inline CreateAnalysisRequest& AddFolderArns(Aws::String&& value) { m_folderArnsHasBeenSet = true; m_folderArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>When you create the analysis, Amazon QuickSight adds the analysis to these
-     * folders.</p>
-     */
-    inline CreateAnalysisRequest& AddFolderArns(const char* value) { m_folderArnsHasBeenSet = true; m_folderArns.push_back(value); return *this; }
-
+    template<typename FolderArnsT = Aws::Vector<Aws::String>>
+    void SetFolderArns(FolderArnsT&& value) { m_folderArnsHasBeenSet = true; m_folderArns = std::forward<FolderArnsT>(value); }
+    template<typename FolderArnsT = Aws::Vector<Aws::String>>
+    CreateAnalysisRequest& WithFolderArns(FolderArnsT&& value) { SetFolderArns(std::forward<FolderArnsT>(value)); return *this;}
+    template<typename FolderArnsT = Aws::String>
+    CreateAnalysisRequest& AddFolderArns(FolderArnsT&& value) { m_folderArnsHasBeenSet = true; m_folderArns.emplace_back(std::forward<FolderArnsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

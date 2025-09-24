@@ -12,34 +12,6 @@ using namespace Aws::ECS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateServiceRequest::UpdateServiceRequest() : 
-    m_clusterHasBeenSet(false),
-    m_serviceHasBeenSet(false),
-    m_desiredCount(0),
-    m_desiredCountHasBeenSet(false),
-    m_taskDefinitionHasBeenSet(false),
-    m_capacityProviderStrategyHasBeenSet(false),
-    m_deploymentConfigurationHasBeenSet(false),
-    m_networkConfigurationHasBeenSet(false),
-    m_placementConstraintsHasBeenSet(false),
-    m_placementStrategyHasBeenSet(false),
-    m_platformVersionHasBeenSet(false),
-    m_forceNewDeployment(false),
-    m_forceNewDeploymentHasBeenSet(false),
-    m_healthCheckGracePeriodSeconds(0),
-    m_healthCheckGracePeriodSecondsHasBeenSet(false),
-    m_enableExecuteCommand(false),
-    m_enableExecuteCommandHasBeenSet(false),
-    m_enableECSManagedTags(false),
-    m_enableECSManagedTagsHasBeenSet(false),
-    m_loadBalancersHasBeenSet(false),
-    m_propagateTags(PropagateTags::NOT_SET),
-    m_propagateTagsHasBeenSet(false),
-    m_serviceRegistriesHasBeenSet(false),
-    m_serviceConnectConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String UpdateServiceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -83,6 +55,11 @@ Aws::String UpdateServiceRequest::SerializePayload() const
   {
    payload.WithObject("deploymentConfiguration", m_deploymentConfiguration.Jsonize());
 
+  }
+
+  if(m_availabilityZoneRebalancingHasBeenSet)
+  {
+   payload.WithString("availabilityZoneRebalancing", AvailabilityZoneRebalancingMapper::GetNameForAvailabilityZoneRebalancing(m_availabilityZoneRebalancing));
   }
 
   if(m_networkConfigurationHasBeenSet)
@@ -131,6 +108,12 @@ Aws::String UpdateServiceRequest::SerializePayload() const
 
   }
 
+  if(m_deploymentControllerHasBeenSet)
+  {
+   payload.WithObject("deploymentController", m_deploymentController.Jsonize());
+
+  }
+
   if(m_enableExecuteCommandHasBeenSet)
   {
    payload.WithBool("enableExecuteCommand", m_enableExecuteCommand);
@@ -173,6 +156,28 @@ Aws::String UpdateServiceRequest::SerializePayload() const
   if(m_serviceConnectConfigurationHasBeenSet)
   {
    payload.WithObject("serviceConnectConfiguration", m_serviceConnectConfiguration.Jsonize());
+
+  }
+
+  if(m_volumeConfigurationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> volumeConfigurationsJsonList(m_volumeConfigurations.size());
+   for(unsigned volumeConfigurationsIndex = 0; volumeConfigurationsIndex < volumeConfigurationsJsonList.GetLength(); ++volumeConfigurationsIndex)
+   {
+     volumeConfigurationsJsonList[volumeConfigurationsIndex].AsObject(m_volumeConfigurations[volumeConfigurationsIndex].Jsonize());
+   }
+   payload.WithArray("volumeConfigurations", std::move(volumeConfigurationsJsonList));
+
+  }
+
+  if(m_vpcLatticeConfigurationsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> vpcLatticeConfigurationsJsonList(m_vpcLatticeConfigurations.size());
+   for(unsigned vpcLatticeConfigurationsIndex = 0; vpcLatticeConfigurationsIndex < vpcLatticeConfigurationsJsonList.GetLength(); ++vpcLatticeConfigurationsIndex)
+   {
+     vpcLatticeConfigurationsJsonList[vpcLatticeConfigurationsIndex].AsObject(m_vpcLatticeConfigurations[vpcLatticeConfigurationsIndex].Jsonize());
+   }
+   payload.WithArray("vpcLatticeConfigurations", std::move(vpcLatticeConfigurationsJsonList));
 
   }
 

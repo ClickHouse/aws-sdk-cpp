@@ -8,6 +8,7 @@
 #include <aws/inspector2/model/AwsEc2InstanceDetails.h>
 #include <aws/inspector2/model/AwsEcrContainerImageDetails.h>
 #include <aws/inspector2/model/AwsLambdaFunctionDetails.h>
+#include <aws/inspector2/model/CodeRepositoryDetails.h>
 #include <utility>
 
 namespace Aws
@@ -34,122 +35,63 @@ namespace Model
   class ResourceDetails
   {
   public:
-    AWS_INSPECTOR2_API ResourceDetails();
+    AWS_INSPECTOR2_API ResourceDetails() = default;
     AWS_INSPECTOR2_API ResourceDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API ResourceDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An object that contains details about the Amazon EC2 instance involved in the
      * finding.</p>
      */
-    inline const AwsEc2InstanceDetails& GetAwsEc2Instance() const{ return m_awsEc2Instance; }
-
-    /**
-     * <p>An object that contains details about the Amazon EC2 instance involved in the
-     * finding.</p>
-     */
+    inline const AwsEc2InstanceDetails& GetAwsEc2Instance() const { return m_awsEc2Instance; }
     inline bool AwsEc2InstanceHasBeenSet() const { return m_awsEc2InstanceHasBeenSet; }
+    template<typename AwsEc2InstanceT = AwsEc2InstanceDetails>
+    void SetAwsEc2Instance(AwsEc2InstanceT&& value) { m_awsEc2InstanceHasBeenSet = true; m_awsEc2Instance = std::forward<AwsEc2InstanceT>(value); }
+    template<typename AwsEc2InstanceT = AwsEc2InstanceDetails>
+    ResourceDetails& WithAwsEc2Instance(AwsEc2InstanceT&& value) { SetAwsEc2Instance(std::forward<AwsEc2InstanceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains details about the Amazon EC2 instance involved in the
-     * finding.</p>
-     */
-    inline void SetAwsEc2Instance(const AwsEc2InstanceDetails& value) { m_awsEc2InstanceHasBeenSet = true; m_awsEc2Instance = value; }
-
-    /**
-     * <p>An object that contains details about the Amazon EC2 instance involved in the
-     * finding.</p>
-     */
-    inline void SetAwsEc2Instance(AwsEc2InstanceDetails&& value) { m_awsEc2InstanceHasBeenSet = true; m_awsEc2Instance = std::move(value); }
-
-    /**
-     * <p>An object that contains details about the Amazon EC2 instance involved in the
-     * finding.</p>
-     */
-    inline ResourceDetails& WithAwsEc2Instance(const AwsEc2InstanceDetails& value) { SetAwsEc2Instance(value); return *this;}
-
-    /**
-     * <p>An object that contains details about the Amazon EC2 instance involved in the
-     * finding.</p>
-     */
-    inline ResourceDetails& WithAwsEc2Instance(AwsEc2InstanceDetails&& value) { SetAwsEc2Instance(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that contains details about the Amazon ECR container image involved
      * in the finding.</p>
      */
-    inline const AwsEcrContainerImageDetails& GetAwsEcrContainerImage() const{ return m_awsEcrContainerImage; }
-
-    /**
-     * <p>An object that contains details about the Amazon ECR container image involved
-     * in the finding.</p>
-     */
+    inline const AwsEcrContainerImageDetails& GetAwsEcrContainerImage() const { return m_awsEcrContainerImage; }
     inline bool AwsEcrContainerImageHasBeenSet() const { return m_awsEcrContainerImageHasBeenSet; }
+    template<typename AwsEcrContainerImageT = AwsEcrContainerImageDetails>
+    void SetAwsEcrContainerImage(AwsEcrContainerImageT&& value) { m_awsEcrContainerImageHasBeenSet = true; m_awsEcrContainerImage = std::forward<AwsEcrContainerImageT>(value); }
+    template<typename AwsEcrContainerImageT = AwsEcrContainerImageDetails>
+    ResourceDetails& WithAwsEcrContainerImage(AwsEcrContainerImageT&& value) { SetAwsEcrContainerImage(std::forward<AwsEcrContainerImageT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>An object that contains details about the Amazon ECR container image involved
-     * in the finding.</p>
+     * <p>A summary of the information about an Amazon Web Services Lambda function
+     * affected by a finding.</p>
      */
-    inline void SetAwsEcrContainerImage(const AwsEcrContainerImageDetails& value) { m_awsEcrContainerImageHasBeenSet = true; m_awsEcrContainerImage = value; }
-
-    /**
-     * <p>An object that contains details about the Amazon ECR container image involved
-     * in the finding.</p>
-     */
-    inline void SetAwsEcrContainerImage(AwsEcrContainerImageDetails&& value) { m_awsEcrContainerImageHasBeenSet = true; m_awsEcrContainerImage = std::move(value); }
-
-    /**
-     * <p>An object that contains details about the Amazon ECR container image involved
-     * in the finding.</p>
-     */
-    inline ResourceDetails& WithAwsEcrContainerImage(const AwsEcrContainerImageDetails& value) { SetAwsEcrContainerImage(value); return *this;}
-
-    /**
-     * <p>An object that contains details about the Amazon ECR container image involved
-     * in the finding.</p>
-     */
-    inline ResourceDetails& WithAwsEcrContainerImage(AwsEcrContainerImageDetails&& value) { SetAwsEcrContainerImage(std::move(value)); return *this;}
-
-
-    /**
-     * <p>A summary of the information about an AWS Lambda function affected by a
-     * finding.</p>
-     */
-    inline const AwsLambdaFunctionDetails& GetAwsLambdaFunction() const{ return m_awsLambdaFunction; }
-
-    /**
-     * <p>A summary of the information about an AWS Lambda function affected by a
-     * finding.</p>
-     */
+    inline const AwsLambdaFunctionDetails& GetAwsLambdaFunction() const { return m_awsLambdaFunction; }
     inline bool AwsLambdaFunctionHasBeenSet() const { return m_awsLambdaFunctionHasBeenSet; }
+    template<typename AwsLambdaFunctionT = AwsLambdaFunctionDetails>
+    void SetAwsLambdaFunction(AwsLambdaFunctionT&& value) { m_awsLambdaFunctionHasBeenSet = true; m_awsLambdaFunction = std::forward<AwsLambdaFunctionT>(value); }
+    template<typename AwsLambdaFunctionT = AwsLambdaFunctionDetails>
+    ResourceDetails& WithAwsLambdaFunction(AwsLambdaFunctionT&& value) { SetAwsLambdaFunction(std::forward<AwsLambdaFunctionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A summary of the information about an AWS Lambda function affected by a
+     * <p>Contains details about a code repository resource associated with a
      * finding.</p>
      */
-    inline void SetAwsLambdaFunction(const AwsLambdaFunctionDetails& value) { m_awsLambdaFunctionHasBeenSet = true; m_awsLambdaFunction = value; }
-
-    /**
-     * <p>A summary of the information about an AWS Lambda function affected by a
-     * finding.</p>
-     */
-    inline void SetAwsLambdaFunction(AwsLambdaFunctionDetails&& value) { m_awsLambdaFunctionHasBeenSet = true; m_awsLambdaFunction = std::move(value); }
-
-    /**
-     * <p>A summary of the information about an AWS Lambda function affected by a
-     * finding.</p>
-     */
-    inline ResourceDetails& WithAwsLambdaFunction(const AwsLambdaFunctionDetails& value) { SetAwsLambdaFunction(value); return *this;}
-
-    /**
-     * <p>A summary of the information about an AWS Lambda function affected by a
-     * finding.</p>
-     */
-    inline ResourceDetails& WithAwsLambdaFunction(AwsLambdaFunctionDetails&& value) { SetAwsLambdaFunction(std::move(value)); return *this;}
-
+    inline const CodeRepositoryDetails& GetCodeRepository() const { return m_codeRepository; }
+    inline bool CodeRepositoryHasBeenSet() const { return m_codeRepositoryHasBeenSet; }
+    template<typename CodeRepositoryT = CodeRepositoryDetails>
+    void SetCodeRepository(CodeRepositoryT&& value) { m_codeRepositoryHasBeenSet = true; m_codeRepository = std::forward<CodeRepositoryT>(value); }
+    template<typename CodeRepositoryT = CodeRepositoryDetails>
+    ResourceDetails& WithCodeRepository(CodeRepositoryT&& value) { SetCodeRepository(std::forward<CodeRepositoryT>(value)); return *this;}
+    ///@}
   private:
 
     AwsEc2InstanceDetails m_awsEc2Instance;
@@ -160,6 +102,9 @@ namespace Model
 
     AwsLambdaFunctionDetails m_awsLambdaFunction;
     bool m_awsLambdaFunctionHasBeenSet = false;
+
+    CodeRepositoryDetails m_codeRepository;
+    bool m_codeRepositoryHasBeenSet = false;
   };
 
 } // namespace Model

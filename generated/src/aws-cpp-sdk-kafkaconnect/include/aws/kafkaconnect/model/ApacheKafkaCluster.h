@@ -33,89 +33,36 @@ namespace Model
   class ApacheKafkaCluster
   {
   public:
-    AWS_KAFKACONNECT_API ApacheKafkaCluster();
+    AWS_KAFKACONNECT_API ApacheKafkaCluster() = default;
     AWS_KAFKACONNECT_API ApacheKafkaCluster(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API ApacheKafkaCluster& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KAFKACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The bootstrap servers of the cluster.</p>
      */
-    inline const Aws::String& GetBootstrapServers() const{ return m_bootstrapServers; }
-
-    /**
-     * <p>The bootstrap servers of the cluster.</p>
-     */
+    inline const Aws::String& GetBootstrapServers() const { return m_bootstrapServers; }
     inline bool BootstrapServersHasBeenSet() const { return m_bootstrapServersHasBeenSet; }
+    template<typename BootstrapServersT = Aws::String>
+    void SetBootstrapServers(BootstrapServersT&& value) { m_bootstrapServersHasBeenSet = true; m_bootstrapServers = std::forward<BootstrapServersT>(value); }
+    template<typename BootstrapServersT = Aws::String>
+    ApacheKafkaCluster& WithBootstrapServers(BootstrapServersT&& value) { SetBootstrapServers(std::forward<BootstrapServersT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The bootstrap servers of the cluster.</p>
-     */
-    inline void SetBootstrapServers(const Aws::String& value) { m_bootstrapServersHasBeenSet = true; m_bootstrapServers = value; }
-
-    /**
-     * <p>The bootstrap servers of the cluster.</p>
-     */
-    inline void SetBootstrapServers(Aws::String&& value) { m_bootstrapServersHasBeenSet = true; m_bootstrapServers = std::move(value); }
-
-    /**
-     * <p>The bootstrap servers of the cluster.</p>
-     */
-    inline void SetBootstrapServers(const char* value) { m_bootstrapServersHasBeenSet = true; m_bootstrapServers.assign(value); }
-
-    /**
-     * <p>The bootstrap servers of the cluster.</p>
-     */
-    inline ApacheKafkaCluster& WithBootstrapServers(const Aws::String& value) { SetBootstrapServers(value); return *this;}
-
-    /**
-     * <p>The bootstrap servers of the cluster.</p>
-     */
-    inline ApacheKafkaCluster& WithBootstrapServers(Aws::String&& value) { SetBootstrapServers(std::move(value)); return *this;}
-
-    /**
-     * <p>The bootstrap servers of the cluster.</p>
-     */
-    inline ApacheKafkaCluster& WithBootstrapServers(const char* value) { SetBootstrapServers(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Details of an Amazon VPC which has network connectivity to the Apache Kafka
      * cluster.</p>
      */
-    inline const Vpc& GetVpc() const{ return m_vpc; }
-
-    /**
-     * <p>Details of an Amazon VPC which has network connectivity to the Apache Kafka
-     * cluster.</p>
-     */
+    inline const Vpc& GetVpc() const { return m_vpc; }
     inline bool VpcHasBeenSet() const { return m_vpcHasBeenSet; }
-
-    /**
-     * <p>Details of an Amazon VPC which has network connectivity to the Apache Kafka
-     * cluster.</p>
-     */
-    inline void SetVpc(const Vpc& value) { m_vpcHasBeenSet = true; m_vpc = value; }
-
-    /**
-     * <p>Details of an Amazon VPC which has network connectivity to the Apache Kafka
-     * cluster.</p>
-     */
-    inline void SetVpc(Vpc&& value) { m_vpcHasBeenSet = true; m_vpc = std::move(value); }
-
-    /**
-     * <p>Details of an Amazon VPC which has network connectivity to the Apache Kafka
-     * cluster.</p>
-     */
-    inline ApacheKafkaCluster& WithVpc(const Vpc& value) { SetVpc(value); return *this;}
-
-    /**
-     * <p>Details of an Amazon VPC which has network connectivity to the Apache Kafka
-     * cluster.</p>
-     */
-    inline ApacheKafkaCluster& WithVpc(Vpc&& value) { SetVpc(std::move(value)); return *this;}
-
+    template<typename VpcT = Vpc>
+    void SetVpc(VpcT&& value) { m_vpcHasBeenSet = true; m_vpc = std::forward<VpcT>(value); }
+    template<typename VpcT = Vpc>
+    ApacheKafkaCluster& WithVpc(VpcT&& value) { SetVpc(std::forward<VpcT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bootstrapServers;

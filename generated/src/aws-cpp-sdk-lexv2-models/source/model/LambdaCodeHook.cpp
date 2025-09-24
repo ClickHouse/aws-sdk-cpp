@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-LambdaCodeHook::LambdaCodeHook() : 
-    m_lambdaARNHasBeenSet(false),
-    m_codeHookInterfaceVersionHasBeenSet(false)
-{
-}
-
-LambdaCodeHook::LambdaCodeHook(JsonView jsonValue) : 
-    m_lambdaARNHasBeenSet(false),
-    m_codeHookInterfaceVersionHasBeenSet(false)
+LambdaCodeHook::LambdaCodeHook(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LambdaCodeHook& LambdaCodeHook::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("lambdaARN"))
   {
     m_lambdaARN = jsonValue.GetString("lambdaARN");
-
     m_lambdaARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("codeHookInterfaceVersion"))
   {
     m_codeHookInterfaceVersion = jsonValue.GetString("codeHookInterfaceVersion");
-
     m_codeHookInterfaceVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

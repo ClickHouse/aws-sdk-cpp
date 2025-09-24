@@ -34,129 +34,53 @@ namespace Model
   class Destination
   {
   public:
-    AWS_GUARDDUTY_API Destination();
+    AWS_GUARDDUTY_API Destination() = default;
     AWS_GUARDDUTY_API Destination(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Destination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique ID of the publishing destination.</p>
      */
-    inline const Aws::String& GetDestinationId() const{ return m_destinationId; }
-
-    /**
-     * <p>The unique ID of the publishing destination.</p>
-     */
+    inline const Aws::String& GetDestinationId() const { return m_destinationId; }
     inline bool DestinationIdHasBeenSet() const { return m_destinationIdHasBeenSet; }
+    template<typename DestinationIdT = Aws::String>
+    void SetDestinationId(DestinationIdT&& value) { m_destinationIdHasBeenSet = true; m_destinationId = std::forward<DestinationIdT>(value); }
+    template<typename DestinationIdT = Aws::String>
+    Destination& WithDestinationId(DestinationIdT&& value) { SetDestinationId(std::forward<DestinationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the publishing destination.</p>
-     */
-    inline void SetDestinationId(const Aws::String& value) { m_destinationIdHasBeenSet = true; m_destinationId = value; }
-
-    /**
-     * <p>The unique ID of the publishing destination.</p>
-     */
-    inline void SetDestinationId(Aws::String&& value) { m_destinationIdHasBeenSet = true; m_destinationId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the publishing destination.</p>
-     */
-    inline void SetDestinationId(const char* value) { m_destinationIdHasBeenSet = true; m_destinationId.assign(value); }
-
-    /**
-     * <p>The unique ID of the publishing destination.</p>
-     */
-    inline Destination& WithDestinationId(const Aws::String& value) { SetDestinationId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the publishing destination.</p>
-     */
-    inline Destination& WithDestinationId(Aws::String&& value) { SetDestinationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the publishing destination.</p>
-     */
-    inline Destination& WithDestinationId(const char* value) { SetDestinationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of resource used for the publishing destination. Currently, only
      * Amazon S3 buckets are supported.</p>
      */
-    inline const DestinationType& GetDestinationType() const{ return m_destinationType; }
-
-    /**
-     * <p>The type of resource used for the publishing destination. Currently, only
-     * Amazon S3 buckets are supported.</p>
-     */
+    inline DestinationType GetDestinationType() const { return m_destinationType; }
     inline bool DestinationTypeHasBeenSet() const { return m_destinationTypeHasBeenSet; }
+    inline void SetDestinationType(DestinationType value) { m_destinationTypeHasBeenSet = true; m_destinationType = value; }
+    inline Destination& WithDestinationType(DestinationType value) { SetDestinationType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of resource used for the publishing destination. Currently, only
-     * Amazon S3 buckets are supported.</p>
-     */
-    inline void SetDestinationType(const DestinationType& value) { m_destinationTypeHasBeenSet = true; m_destinationType = value; }
-
-    /**
-     * <p>The type of resource used for the publishing destination. Currently, only
-     * Amazon S3 buckets are supported.</p>
-     */
-    inline void SetDestinationType(DestinationType&& value) { m_destinationTypeHasBeenSet = true; m_destinationType = std::move(value); }
-
-    /**
-     * <p>The type of resource used for the publishing destination. Currently, only
-     * Amazon S3 buckets are supported.</p>
-     */
-    inline Destination& WithDestinationType(const DestinationType& value) { SetDestinationType(value); return *this;}
-
-    /**
-     * <p>The type of resource used for the publishing destination. Currently, only
-     * Amazon S3 buckets are supported.</p>
-     */
-    inline Destination& WithDestinationType(DestinationType&& value) { SetDestinationType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the publishing destination.</p>
      */
-    inline const PublishingStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the publishing destination.</p>
-     */
+    inline PublishingStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The status of the publishing destination.</p>
-     */
-    inline void SetStatus(const PublishingStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the publishing destination.</p>
-     */
-    inline void SetStatus(PublishingStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the publishing destination.</p>
-     */
-    inline Destination& WithStatus(const PublishingStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the publishing destination.</p>
-     */
-    inline Destination& WithStatus(PublishingStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(PublishingStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline Destination& WithStatus(PublishingStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_destinationId;
     bool m_destinationIdHasBeenSet = false;
 
-    DestinationType m_destinationType;
+    DestinationType m_destinationType{DestinationType::NOT_SET};
     bool m_destinationTypeHasBeenSet = false;
 
-    PublishingStatus m_status;
+    PublishingStatus m_status{PublishingStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

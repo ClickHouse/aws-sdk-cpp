@@ -12,21 +12,6 @@ using namespace Aws::Backup::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartBackupJobRequest::StartBackupJobRequest() : 
-    m_backupVaultNameHasBeenSet(false),
-    m_resourceArnHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false),
-    m_idempotencyTokenHasBeenSet(false),
-    m_startWindowMinutes(0),
-    m_startWindowMinutesHasBeenSet(false),
-    m_completeWindowMinutes(0),
-    m_completeWindowMinutesHasBeenSet(false),
-    m_lifecycleHasBeenSet(false),
-    m_recoveryPointTagsHasBeenSet(false),
-    m_backupOptionsHasBeenSet(false)
-{
-}
-
 Aws::String StartBackupJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -93,6 +78,11 @@ Aws::String StartBackupJobRequest::SerializePayload() const
    }
    payload.WithObject("BackupOptions", std::move(backupOptionsJsonMap));
 
+  }
+
+  if(m_indexHasBeenSet)
+  {
+   payload.WithString("Index", IndexMapper::GetNameForIndex(m_index));
   }
 
   return payload.View().WriteReadable();

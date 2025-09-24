@@ -34,7 +34,7 @@ namespace Model
   class ManagedPrefixList
   {
   public:
-    AWS_EC2_API ManagedPrefixList();
+    AWS_EC2_API ManagedPrefixList() = default;
     AWS_EC2_API ManagedPrefixList(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API ManagedPrefixList& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -42,365 +42,121 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the prefix list.</p>
      */
-    inline const Aws::String& GetPrefixListId() const{ return m_prefixListId; }
-
-    /**
-     * <p>The ID of the prefix list.</p>
-     */
+    inline const Aws::String& GetPrefixListId() const { return m_prefixListId; }
     inline bool PrefixListIdHasBeenSet() const { return m_prefixListIdHasBeenSet; }
+    template<typename PrefixListIdT = Aws::String>
+    void SetPrefixListId(PrefixListIdT&& value) { m_prefixListIdHasBeenSet = true; m_prefixListId = std::forward<PrefixListIdT>(value); }
+    template<typename PrefixListIdT = Aws::String>
+    ManagedPrefixList& WithPrefixListId(PrefixListIdT&& value) { SetPrefixListId(std::forward<PrefixListIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the prefix list.</p>
-     */
-    inline void SetPrefixListId(const Aws::String& value) { m_prefixListIdHasBeenSet = true; m_prefixListId = value; }
-
-    /**
-     * <p>The ID of the prefix list.</p>
-     */
-    inline void SetPrefixListId(Aws::String&& value) { m_prefixListIdHasBeenSet = true; m_prefixListId = std::move(value); }
-
-    /**
-     * <p>The ID of the prefix list.</p>
-     */
-    inline void SetPrefixListId(const char* value) { m_prefixListIdHasBeenSet = true; m_prefixListId.assign(value); }
-
-    /**
-     * <p>The ID of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithPrefixListId(const Aws::String& value) { SetPrefixListId(value); return *this;}
-
-    /**
-     * <p>The ID of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithPrefixListId(Aws::String&& value) { SetPrefixListId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithPrefixListId(const char* value) { SetPrefixListId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IP address version.</p>
      */
-    inline const Aws::String& GetAddressFamily() const{ return m_addressFamily; }
-
-    /**
-     * <p>The IP address version.</p>
-     */
+    inline const Aws::String& GetAddressFamily() const { return m_addressFamily; }
     inline bool AddressFamilyHasBeenSet() const { return m_addressFamilyHasBeenSet; }
+    template<typename AddressFamilyT = Aws::String>
+    void SetAddressFamily(AddressFamilyT&& value) { m_addressFamilyHasBeenSet = true; m_addressFamily = std::forward<AddressFamilyT>(value); }
+    template<typename AddressFamilyT = Aws::String>
+    ManagedPrefixList& WithAddressFamily(AddressFamilyT&& value) { SetAddressFamily(std::forward<AddressFamilyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IP address version.</p>
-     */
-    inline void SetAddressFamily(const Aws::String& value) { m_addressFamilyHasBeenSet = true; m_addressFamily = value; }
-
-    /**
-     * <p>The IP address version.</p>
-     */
-    inline void SetAddressFamily(Aws::String&& value) { m_addressFamilyHasBeenSet = true; m_addressFamily = std::move(value); }
-
-    /**
-     * <p>The IP address version.</p>
-     */
-    inline void SetAddressFamily(const char* value) { m_addressFamilyHasBeenSet = true; m_addressFamily.assign(value); }
-
-    /**
-     * <p>The IP address version.</p>
-     */
-    inline ManagedPrefixList& WithAddressFamily(const Aws::String& value) { SetAddressFamily(value); return *this;}
-
-    /**
-     * <p>The IP address version.</p>
-     */
-    inline ManagedPrefixList& WithAddressFamily(Aws::String&& value) { SetAddressFamily(std::move(value)); return *this;}
-
-    /**
-     * <p>The IP address version.</p>
-     */
-    inline ManagedPrefixList& WithAddressFamily(const char* value) { SetAddressFamily(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current state of the prefix list.</p>
      */
-    inline const PrefixListState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The current state of the prefix list.</p>
-     */
+    inline PrefixListState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
+    inline void SetState(PrefixListState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline ManagedPrefixList& WithState(PrefixListState value) { SetState(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the prefix list.</p>
-     */
-    inline void SetState(const PrefixListState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The current state of the prefix list.</p>
-     */
-    inline void SetState(PrefixListState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The current state of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithState(const PrefixListState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The current state of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithState(PrefixListState&& value) { SetState(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The state message.</p>
      */
-    inline const Aws::String& GetStateMessage() const{ return m_stateMessage; }
-
-    /**
-     * <p>The state message.</p>
-     */
+    inline const Aws::String& GetStateMessage() const { return m_stateMessage; }
     inline bool StateMessageHasBeenSet() const { return m_stateMessageHasBeenSet; }
+    template<typename StateMessageT = Aws::String>
+    void SetStateMessage(StateMessageT&& value) { m_stateMessageHasBeenSet = true; m_stateMessage = std::forward<StateMessageT>(value); }
+    template<typename StateMessageT = Aws::String>
+    ManagedPrefixList& WithStateMessage(StateMessageT&& value) { SetStateMessage(std::forward<StateMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The state message.</p>
-     */
-    inline void SetStateMessage(const Aws::String& value) { m_stateMessageHasBeenSet = true; m_stateMessage = value; }
-
-    /**
-     * <p>The state message.</p>
-     */
-    inline void SetStateMessage(Aws::String&& value) { m_stateMessageHasBeenSet = true; m_stateMessage = std::move(value); }
-
-    /**
-     * <p>The state message.</p>
-     */
-    inline void SetStateMessage(const char* value) { m_stateMessageHasBeenSet = true; m_stateMessage.assign(value); }
-
-    /**
-     * <p>The state message.</p>
-     */
-    inline ManagedPrefixList& WithStateMessage(const Aws::String& value) { SetStateMessage(value); return *this;}
-
-    /**
-     * <p>The state message.</p>
-     */
-    inline ManagedPrefixList& WithStateMessage(Aws::String&& value) { SetStateMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The state message.</p>
-     */
-    inline ManagedPrefixList& WithStateMessage(const char* value) { SetStateMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for the prefix list.</p>
      */
-    inline const Aws::String& GetPrefixListArn() const{ return m_prefixListArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the prefix list.</p>
-     */
+    inline const Aws::String& GetPrefixListArn() const { return m_prefixListArn; }
     inline bool PrefixListArnHasBeenSet() const { return m_prefixListArnHasBeenSet; }
+    template<typename PrefixListArnT = Aws::String>
+    void SetPrefixListArn(PrefixListArnT&& value) { m_prefixListArnHasBeenSet = true; m_prefixListArn = std::forward<PrefixListArnT>(value); }
+    template<typename PrefixListArnT = Aws::String>
+    ManagedPrefixList& WithPrefixListArn(PrefixListArnT&& value) { SetPrefixListArn(std::forward<PrefixListArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) for the prefix list.</p>
-     */
-    inline void SetPrefixListArn(const Aws::String& value) { m_prefixListArnHasBeenSet = true; m_prefixListArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the prefix list.</p>
-     */
-    inline void SetPrefixListArn(Aws::String&& value) { m_prefixListArnHasBeenSet = true; m_prefixListArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the prefix list.</p>
-     */
-    inline void SetPrefixListArn(const char* value) { m_prefixListArnHasBeenSet = true; m_prefixListArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithPrefixListArn(const Aws::String& value) { SetPrefixListArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithPrefixListArn(Aws::String&& value) { SetPrefixListArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithPrefixListArn(const char* value) { SetPrefixListArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the prefix list.</p>
      */
-    inline const Aws::String& GetPrefixListName() const{ return m_prefixListName; }
-
-    /**
-     * <p>The name of the prefix list.</p>
-     */
+    inline const Aws::String& GetPrefixListName() const { return m_prefixListName; }
     inline bool PrefixListNameHasBeenSet() const { return m_prefixListNameHasBeenSet; }
+    template<typename PrefixListNameT = Aws::String>
+    void SetPrefixListName(PrefixListNameT&& value) { m_prefixListNameHasBeenSet = true; m_prefixListName = std::forward<PrefixListNameT>(value); }
+    template<typename PrefixListNameT = Aws::String>
+    ManagedPrefixList& WithPrefixListName(PrefixListNameT&& value) { SetPrefixListName(std::forward<PrefixListNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the prefix list.</p>
-     */
-    inline void SetPrefixListName(const Aws::String& value) { m_prefixListNameHasBeenSet = true; m_prefixListName = value; }
-
-    /**
-     * <p>The name of the prefix list.</p>
-     */
-    inline void SetPrefixListName(Aws::String&& value) { m_prefixListNameHasBeenSet = true; m_prefixListName = std::move(value); }
-
-    /**
-     * <p>The name of the prefix list.</p>
-     */
-    inline void SetPrefixListName(const char* value) { m_prefixListNameHasBeenSet = true; m_prefixListName.assign(value); }
-
-    /**
-     * <p>The name of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithPrefixListName(const Aws::String& value) { SetPrefixListName(value); return *this;}
-
-    /**
-     * <p>The name of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithPrefixListName(Aws::String&& value) { SetPrefixListName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithPrefixListName(const char* value) { SetPrefixListName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of entries for the prefix list.</p>
      */
-    inline int GetMaxEntries() const{ return m_maxEntries; }
-
-    /**
-     * <p>The maximum number of entries for the prefix list.</p>
-     */
+    inline int GetMaxEntries() const { return m_maxEntries; }
     inline bool MaxEntriesHasBeenSet() const { return m_maxEntriesHasBeenSet; }
-
-    /**
-     * <p>The maximum number of entries for the prefix list.</p>
-     */
     inline void SetMaxEntries(int value) { m_maxEntriesHasBeenSet = true; m_maxEntries = value; }
-
-    /**
-     * <p>The maximum number of entries for the prefix list.</p>
-     */
     inline ManagedPrefixList& WithMaxEntries(int value) { SetMaxEntries(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The version of the prefix list.</p>
      */
-    inline long long GetVersion() const{ return m_version; }
-
-    /**
-     * <p>The version of the prefix list.</p>
-     */
+    inline long long GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
-
-    /**
-     * <p>The version of the prefix list.</p>
-     */
     inline void SetVersion(long long value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>The version of the prefix list.</p>
-     */
     inline ManagedPrefixList& WithVersion(long long value) { SetVersion(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The tags for the prefix list.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags for the prefix list.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    ManagedPrefixList& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    ManagedPrefixList& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The tags for the prefix list.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags for the prefix list.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags for the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags for the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags for the prefix list.</p>
-     */
-    inline ManagedPrefixList& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags for the prefix list.</p>
-     */
-    inline ManagedPrefixList& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The ID of the owner of the prefix list.</p>
      */
-    inline const Aws::String& GetOwnerId() const{ return m_ownerId; }
-
-    /**
-     * <p>The ID of the owner of the prefix list.</p>
-     */
+    inline const Aws::String& GetOwnerId() const { return m_ownerId; }
     inline bool OwnerIdHasBeenSet() const { return m_ownerIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the owner of the prefix list.</p>
-     */
-    inline void SetOwnerId(const Aws::String& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
-
-    /**
-     * <p>The ID of the owner of the prefix list.</p>
-     */
-    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
-
-    /**
-     * <p>The ID of the owner of the prefix list.</p>
-     */
-    inline void SetOwnerId(const char* value) { m_ownerIdHasBeenSet = true; m_ownerId.assign(value); }
-
-    /**
-     * <p>The ID of the owner of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithOwnerId(const Aws::String& value) { SetOwnerId(value); return *this;}
-
-    /**
-     * <p>The ID of the owner of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the owner of the prefix list.</p>
-     */
-    inline ManagedPrefixList& WithOwnerId(const char* value) { SetOwnerId(value); return *this;}
-
+    template<typename OwnerIdT = Aws::String>
+    void SetOwnerId(OwnerIdT&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::forward<OwnerIdT>(value); }
+    template<typename OwnerIdT = Aws::String>
+    ManagedPrefixList& WithOwnerId(OwnerIdT&& value) { SetOwnerId(std::forward<OwnerIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_prefixListId;
@@ -409,7 +165,7 @@ namespace Model
     Aws::String m_addressFamily;
     bool m_addressFamilyHasBeenSet = false;
 
-    PrefixListState m_state;
+    PrefixListState m_state{PrefixListState::NOT_SET};
     bool m_stateHasBeenSet = false;
 
     Aws::String m_stateMessage;
@@ -421,10 +177,10 @@ namespace Model
     Aws::String m_prefixListName;
     bool m_prefixListNameHasBeenSet = false;
 
-    int m_maxEntries;
+    int m_maxEntries{0};
     bool m_maxEntriesHasBeenSet = false;
 
-    long long m_version;
+    long long m_version{0};
     bool m_versionHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;

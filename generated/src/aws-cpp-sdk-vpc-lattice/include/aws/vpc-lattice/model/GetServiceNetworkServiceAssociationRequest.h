@@ -21,7 +21,7 @@ namespace Model
   class GetServiceNetworkServiceAssociationRequest : public VPCLatticeRequest
   {
   public:
-    AWS_VPCLATTICE_API GetServiceNetworkServiceAssociationRequest();
+    AWS_VPCLATTICE_API GetServiceNetworkServiceAssociationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_VPCLATTICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The ID or Amazon Resource Name (ARN) of the association.</p>
+     * <p>The ID or ARN of the association.</p>
      */
-    inline const Aws::String& GetServiceNetworkServiceAssociationIdentifier() const{ return m_serviceNetworkServiceAssociationIdentifier; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the association.</p>
-     */
+    inline const Aws::String& GetServiceNetworkServiceAssociationIdentifier() const { return m_serviceNetworkServiceAssociationIdentifier; }
     inline bool ServiceNetworkServiceAssociationIdentifierHasBeenSet() const { return m_serviceNetworkServiceAssociationIdentifierHasBeenSet; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline void SetServiceNetworkServiceAssociationIdentifier(const Aws::String& value) { m_serviceNetworkServiceAssociationIdentifierHasBeenSet = true; m_serviceNetworkServiceAssociationIdentifier = value; }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline void SetServiceNetworkServiceAssociationIdentifier(Aws::String&& value) { m_serviceNetworkServiceAssociationIdentifierHasBeenSet = true; m_serviceNetworkServiceAssociationIdentifier = std::move(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline void SetServiceNetworkServiceAssociationIdentifier(const char* value) { m_serviceNetworkServiceAssociationIdentifierHasBeenSet = true; m_serviceNetworkServiceAssociationIdentifier.assign(value); }
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline GetServiceNetworkServiceAssociationRequest& WithServiceNetworkServiceAssociationIdentifier(const Aws::String& value) { SetServiceNetworkServiceAssociationIdentifier(value); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline GetServiceNetworkServiceAssociationRequest& WithServiceNetworkServiceAssociationIdentifier(Aws::String&& value) { SetServiceNetworkServiceAssociationIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID or Amazon Resource Name (ARN) of the association.</p>
-     */
-    inline GetServiceNetworkServiceAssociationRequest& WithServiceNetworkServiceAssociationIdentifier(const char* value) { SetServiceNetworkServiceAssociationIdentifier(value); return *this;}
-
+    template<typename ServiceNetworkServiceAssociationIdentifierT = Aws::String>
+    void SetServiceNetworkServiceAssociationIdentifier(ServiceNetworkServiceAssociationIdentifierT&& value) { m_serviceNetworkServiceAssociationIdentifierHasBeenSet = true; m_serviceNetworkServiceAssociationIdentifier = std::forward<ServiceNetworkServiceAssociationIdentifierT>(value); }
+    template<typename ServiceNetworkServiceAssociationIdentifierT = Aws::String>
+    GetServiceNetworkServiceAssociationRequest& WithServiceNetworkServiceAssociationIdentifier(ServiceNetworkServiceAssociationIdentifierT&& value) { SetServiceNetworkServiceAssociationIdentifier(std::forward<ServiceNetworkServiceAssociationIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_serviceNetworkServiceAssociationIdentifier;

@@ -18,17 +18,7 @@ namespace TimestreamQuery
 namespace Model
 {
 
-DimensionMapping::DimensionMapping() : 
-    m_nameHasBeenSet(false),
-    m_dimensionValueType(DimensionValueType::NOT_SET),
-    m_dimensionValueTypeHasBeenSet(false)
-{
-}
-
-DimensionMapping::DimensionMapping(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_dimensionValueType(DimensionValueType::NOT_SET),
-    m_dimensionValueTypeHasBeenSet(false)
+DimensionMapping::DimensionMapping(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DimensionMapping& DimensionMapping::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DimensionValueType"))
   {
     m_dimensionValueType = DimensionValueTypeMapper::GetDimensionValueTypeForName(jsonValue.GetString("DimensionValueType"));
-
     m_dimensionValueTypeHasBeenSet = true;
   }
-
   return *this;
 }
 

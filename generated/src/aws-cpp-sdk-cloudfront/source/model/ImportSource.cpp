@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-ImportSource::ImportSource() : 
-    m_sourceType(ImportSourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false),
-    m_sourceARNHasBeenSet(false)
-{
-}
-
-ImportSource::ImportSource(const XmlNode& xmlNode) : 
-    m_sourceType(ImportSourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false),
-    m_sourceARNHasBeenSet(false)
+ImportSource::ImportSource(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ ImportSource& ImportSource::operator =(const XmlNode& xmlNode)
     XmlNode sourceTypeNode = resultNode.FirstChild("SourceType");
     if(!sourceTypeNode.IsNull())
     {
-      m_sourceType = ImportSourceTypeMapper::GetImportSourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceTypeNode.GetText()).c_str()).c_str());
+      m_sourceType = ImportSourceTypeMapper::GetImportSourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceTypeNode.GetText()).c_str()));
       m_sourceTypeHasBeenSet = true;
     }
     XmlNode sourceARNNode = resultNode.FirstChild("SourceARN");

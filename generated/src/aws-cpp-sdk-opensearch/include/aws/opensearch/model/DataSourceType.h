@@ -31,42 +31,23 @@ namespace Model
   class DataSourceType
   {
   public:
-    AWS_OPENSEARCHSERVICE_API DataSourceType();
+    AWS_OPENSEARCHSERVICE_API DataSourceType() = default;
     AWS_OPENSEARCHSERVICE_API DataSourceType(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API DataSourceType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An Amazon S3 data source.</p>
      */
-    inline const S3GlueDataCatalog& GetS3GlueDataCatalog() const{ return m_s3GlueDataCatalog; }
-
-    /**
-     * <p>An Amazon S3 data source.</p>
-     */
+    inline const S3GlueDataCatalog& GetS3GlueDataCatalog() const { return m_s3GlueDataCatalog; }
     inline bool S3GlueDataCatalogHasBeenSet() const { return m_s3GlueDataCatalogHasBeenSet; }
-
-    /**
-     * <p>An Amazon S3 data source.</p>
-     */
-    inline void SetS3GlueDataCatalog(const S3GlueDataCatalog& value) { m_s3GlueDataCatalogHasBeenSet = true; m_s3GlueDataCatalog = value; }
-
-    /**
-     * <p>An Amazon S3 data source.</p>
-     */
-    inline void SetS3GlueDataCatalog(S3GlueDataCatalog&& value) { m_s3GlueDataCatalogHasBeenSet = true; m_s3GlueDataCatalog = std::move(value); }
-
-    /**
-     * <p>An Amazon S3 data source.</p>
-     */
-    inline DataSourceType& WithS3GlueDataCatalog(const S3GlueDataCatalog& value) { SetS3GlueDataCatalog(value); return *this;}
-
-    /**
-     * <p>An Amazon S3 data source.</p>
-     */
-    inline DataSourceType& WithS3GlueDataCatalog(S3GlueDataCatalog&& value) { SetS3GlueDataCatalog(std::move(value)); return *this;}
-
+    template<typename S3GlueDataCatalogT = S3GlueDataCatalog>
+    void SetS3GlueDataCatalog(S3GlueDataCatalogT&& value) { m_s3GlueDataCatalogHasBeenSet = true; m_s3GlueDataCatalog = std::forward<S3GlueDataCatalogT>(value); }
+    template<typename S3GlueDataCatalogT = S3GlueDataCatalog>
+    DataSourceType& WithS3GlueDataCatalog(S3GlueDataCatalogT&& value) { SetS3GlueDataCatalog(std::forward<S3GlueDataCatalogT>(value)); return *this;}
+    ///@}
   private:
 
     S3GlueDataCatalog m_s3GlueDataCatalog;

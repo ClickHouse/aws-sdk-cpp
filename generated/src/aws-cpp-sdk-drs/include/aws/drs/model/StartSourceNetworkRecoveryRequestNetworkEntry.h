@@ -32,93 +32,35 @@ namespace Model
   class StartSourceNetworkRecoveryRequestNetworkEntry
   {
   public:
-    AWS_DRS_API StartSourceNetworkRecoveryRequestNetworkEntry();
+    AWS_DRS_API StartSourceNetworkRecoveryRequestNetworkEntry() = default;
     AWS_DRS_API StartSourceNetworkRecoveryRequestNetworkEntry(Aws::Utils::Json::JsonView jsonValue);
     AWS_DRS_API StartSourceNetworkRecoveryRequestNetworkEntry& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DRS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>CloudFormation stack name to be used for recovering the network.</p>
      */
-    inline const Aws::String& GetCfnStackName() const{ return m_cfnStackName; }
-
-    /**
-     * <p>CloudFormation stack name to be used for recovering the network.</p>
-     */
+    inline const Aws::String& GetCfnStackName() const { return m_cfnStackName; }
     inline bool CfnStackNameHasBeenSet() const { return m_cfnStackNameHasBeenSet; }
+    template<typename CfnStackNameT = Aws::String>
+    void SetCfnStackName(CfnStackNameT&& value) { m_cfnStackNameHasBeenSet = true; m_cfnStackName = std::forward<CfnStackNameT>(value); }
+    template<typename CfnStackNameT = Aws::String>
+    StartSourceNetworkRecoveryRequestNetworkEntry& WithCfnStackName(CfnStackNameT&& value) { SetCfnStackName(std::forward<CfnStackNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>CloudFormation stack name to be used for recovering the network.</p>
-     */
-    inline void SetCfnStackName(const Aws::String& value) { m_cfnStackNameHasBeenSet = true; m_cfnStackName = value; }
-
-    /**
-     * <p>CloudFormation stack name to be used for recovering the network.</p>
-     */
-    inline void SetCfnStackName(Aws::String&& value) { m_cfnStackNameHasBeenSet = true; m_cfnStackName = std::move(value); }
-
-    /**
-     * <p>CloudFormation stack name to be used for recovering the network.</p>
-     */
-    inline void SetCfnStackName(const char* value) { m_cfnStackNameHasBeenSet = true; m_cfnStackName.assign(value); }
-
-    /**
-     * <p>CloudFormation stack name to be used for recovering the network.</p>
-     */
-    inline StartSourceNetworkRecoveryRequestNetworkEntry& WithCfnStackName(const Aws::String& value) { SetCfnStackName(value); return *this;}
-
-    /**
-     * <p>CloudFormation stack name to be used for recovering the network.</p>
-     */
-    inline StartSourceNetworkRecoveryRequestNetworkEntry& WithCfnStackName(Aws::String&& value) { SetCfnStackName(std::move(value)); return *this;}
-
-    /**
-     * <p>CloudFormation stack name to be used for recovering the network.</p>
-     */
-    inline StartSourceNetworkRecoveryRequestNetworkEntry& WithCfnStackName(const char* value) { SetCfnStackName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the Source Network you want to recover.</p>
      */
-    inline const Aws::String& GetSourceNetworkID() const{ return m_sourceNetworkID; }
-
-    /**
-     * <p>The ID of the Source Network you want to recover.</p>
-     */
+    inline const Aws::String& GetSourceNetworkID() const { return m_sourceNetworkID; }
     inline bool SourceNetworkIDHasBeenSet() const { return m_sourceNetworkIDHasBeenSet; }
-
-    /**
-     * <p>The ID of the Source Network you want to recover.</p>
-     */
-    inline void SetSourceNetworkID(const Aws::String& value) { m_sourceNetworkIDHasBeenSet = true; m_sourceNetworkID = value; }
-
-    /**
-     * <p>The ID of the Source Network you want to recover.</p>
-     */
-    inline void SetSourceNetworkID(Aws::String&& value) { m_sourceNetworkIDHasBeenSet = true; m_sourceNetworkID = std::move(value); }
-
-    /**
-     * <p>The ID of the Source Network you want to recover.</p>
-     */
-    inline void SetSourceNetworkID(const char* value) { m_sourceNetworkIDHasBeenSet = true; m_sourceNetworkID.assign(value); }
-
-    /**
-     * <p>The ID of the Source Network you want to recover.</p>
-     */
-    inline StartSourceNetworkRecoveryRequestNetworkEntry& WithSourceNetworkID(const Aws::String& value) { SetSourceNetworkID(value); return *this;}
-
-    /**
-     * <p>The ID of the Source Network you want to recover.</p>
-     */
-    inline StartSourceNetworkRecoveryRequestNetworkEntry& WithSourceNetworkID(Aws::String&& value) { SetSourceNetworkID(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Source Network you want to recover.</p>
-     */
-    inline StartSourceNetworkRecoveryRequestNetworkEntry& WithSourceNetworkID(const char* value) { SetSourceNetworkID(value); return *this;}
-
+    template<typename SourceNetworkIDT = Aws::String>
+    void SetSourceNetworkID(SourceNetworkIDT&& value) { m_sourceNetworkIDHasBeenSet = true; m_sourceNetworkID = std::forward<SourceNetworkIDT>(value); }
+    template<typename SourceNetworkIDT = Aws::String>
+    StartSourceNetworkRecoveryRequestNetworkEntry& WithSourceNetworkID(SourceNetworkIDT&& value) { SetSourceNetworkID(std::forward<SourceNetworkIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cfnStackName;

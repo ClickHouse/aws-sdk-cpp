@@ -18,13 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-DeployAsApplicationConfigurationDescription::DeployAsApplicationConfigurationDescription() : 
-    m_s3ContentLocationDescriptionHasBeenSet(false)
-{
-}
-
-DeployAsApplicationConfigurationDescription::DeployAsApplicationConfigurationDescription(JsonView jsonValue) : 
-    m_s3ContentLocationDescriptionHasBeenSet(false)
+DeployAsApplicationConfigurationDescription::DeployAsApplicationConfigurationDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ DeployAsApplicationConfigurationDescription& DeployAsApplicationConfigurationDes
   if(jsonValue.ValueExists("S3ContentLocationDescription"))
   {
     m_s3ContentLocationDescription = jsonValue.GetObject("S3ContentLocationDescription");
-
     m_s3ContentLocationDescriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

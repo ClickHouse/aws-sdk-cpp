@@ -24,7 +24,7 @@ namespace Model
   class GetRequestValidatorRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API GetRequestValidatorRequest();
+    AWS_APIGATEWAY_API GetRequestValidatorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,87 +35,29 @@ namespace Model
     AWS_APIGATEWAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The string identifier of the associated RestApi.</p>
      */
-    inline const Aws::String& GetRestApiId() const{ return m_restApiId; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
+    inline const Aws::String& GetRestApiId() const { return m_restApiId; }
     inline bool RestApiIdHasBeenSet() const { return m_restApiIdHasBeenSet; }
+    template<typename RestApiIdT = Aws::String>
+    void SetRestApiId(RestApiIdT&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::forward<RestApiIdT>(value); }
+    template<typename RestApiIdT = Aws::String>
+    GetRequestValidatorRequest& WithRestApiId(RestApiIdT&& value) { SetRestApiId(std::forward<RestApiIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const Aws::String& value) { m_restApiIdHasBeenSet = true; m_restApiId = value; }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(Aws::String&& value) { m_restApiIdHasBeenSet = true; m_restApiId = std::move(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline void SetRestApiId(const char* value) { m_restApiIdHasBeenSet = true; m_restApiId.assign(value); }
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline GetRequestValidatorRequest& WithRestApiId(const Aws::String& value) { SetRestApiId(value); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline GetRequestValidatorRequest& WithRestApiId(Aws::String&& value) { SetRestApiId(std::move(value)); return *this;}
-
-    /**
-     * <p>The string identifier of the associated RestApi.</p>
-     */
-    inline GetRequestValidatorRequest& WithRestApiId(const char* value) { SetRestApiId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the RequestValidator to be retrieved.</p>
      */
-    inline const Aws::String& GetRequestValidatorId() const{ return m_requestValidatorId; }
-
-    /**
-     * <p>The identifier of the RequestValidator to be retrieved.</p>
-     */
+    inline const Aws::String& GetRequestValidatorId() const { return m_requestValidatorId; }
     inline bool RequestValidatorIdHasBeenSet() const { return m_requestValidatorIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the RequestValidator to be retrieved.</p>
-     */
-    inline void SetRequestValidatorId(const Aws::String& value) { m_requestValidatorIdHasBeenSet = true; m_requestValidatorId = value; }
-
-    /**
-     * <p>The identifier of the RequestValidator to be retrieved.</p>
-     */
-    inline void SetRequestValidatorId(Aws::String&& value) { m_requestValidatorIdHasBeenSet = true; m_requestValidatorId = std::move(value); }
-
-    /**
-     * <p>The identifier of the RequestValidator to be retrieved.</p>
-     */
-    inline void SetRequestValidatorId(const char* value) { m_requestValidatorIdHasBeenSet = true; m_requestValidatorId.assign(value); }
-
-    /**
-     * <p>The identifier of the RequestValidator to be retrieved.</p>
-     */
-    inline GetRequestValidatorRequest& WithRequestValidatorId(const Aws::String& value) { SetRequestValidatorId(value); return *this;}
-
-    /**
-     * <p>The identifier of the RequestValidator to be retrieved.</p>
-     */
-    inline GetRequestValidatorRequest& WithRequestValidatorId(Aws::String&& value) { SetRequestValidatorId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the RequestValidator to be retrieved.</p>
-     */
-    inline GetRequestValidatorRequest& WithRequestValidatorId(const char* value) { SetRequestValidatorId(value); return *this;}
-
+    template<typename RequestValidatorIdT = Aws::String>
+    void SetRequestValidatorId(RequestValidatorIdT&& value) { m_requestValidatorIdHasBeenSet = true; m_requestValidatorId = std::forward<RequestValidatorIdT>(value); }
+    template<typename RequestValidatorIdT = Aws::String>
+    GetRequestValidatorRequest& WithRequestValidatorId(RequestValidatorIdT&& value) { SetRequestValidatorId(std::forward<RequestValidatorIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_restApiId;

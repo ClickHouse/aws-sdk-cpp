@@ -18,15 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-S3InputFileLocation::S3InputFileLocation() : 
-    m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false)
-{
-}
-
-S3InputFileLocation::S3InputFileLocation(JsonView jsonValue) : 
-    m_bucketHasBeenSet(false),
-    m_keyHasBeenSet(false)
+S3InputFileLocation::S3InputFileLocation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ S3InputFileLocation& S3InputFileLocation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Bucket"))
   {
     m_bucket = jsonValue.GetString("Bucket");
-
     m_bucketHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Key"))
   {
     m_key = jsonValue.GetString("Key");
-
     m_keyHasBeenSet = true;
   }
-
   return *this;
 }
 

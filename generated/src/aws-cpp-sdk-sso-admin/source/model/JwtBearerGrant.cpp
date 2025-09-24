@@ -18,13 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-JwtBearerGrant::JwtBearerGrant() : 
-    m_authorizedTokenIssuersHasBeenSet(false)
-{
-}
-
-JwtBearerGrant::JwtBearerGrant(JsonView jsonValue) : 
-    m_authorizedTokenIssuersHasBeenSet(false)
+JwtBearerGrant::JwtBearerGrant(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ JwtBearerGrant& JwtBearerGrant::operator =(JsonView jsonValue)
     }
     m_authorizedTokenIssuersHasBeenSet = true;
   }
-
   return *this;
 }
 

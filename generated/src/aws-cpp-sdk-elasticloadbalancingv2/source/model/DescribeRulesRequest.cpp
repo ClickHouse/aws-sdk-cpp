@@ -10,15 +10,6 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-DescribeRulesRequest::DescribeRulesRequest() : 
-    m_listenerArnHasBeenSet(false),
-    m_ruleArnsHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_pageSize(0),
-    m_pageSizeHasBeenSet(false)
-{
-}
-
 Aws::String DescribeRulesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -30,12 +21,19 @@ Aws::String DescribeRulesRequest::SerializePayload() const
 
   if(m_ruleArnsHasBeenSet)
   {
-    unsigned ruleArnsCount = 1;
-    for(auto& item : m_ruleArns)
+    if (m_ruleArns.empty())
     {
-      ss << "RuleArns.member." << ruleArnsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      ruleArnsCount++;
+      ss << "RuleArns=&";
+    }
+    else
+    {
+      unsigned ruleArnsCount = 1;
+      for(auto& item : m_ruleArns)
+      {
+        ss << "RuleArns.member." << ruleArnsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        ruleArnsCount++;
+      }
     }
   }
 

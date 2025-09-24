@@ -32,42 +32,23 @@ namespace Model
   class StatelessCustomActionDefinition
   {
   public:
-    AWS_SECURITYHUB_API StatelessCustomActionDefinition();
+    AWS_SECURITYHUB_API StatelessCustomActionDefinition() = default;
     AWS_SECURITYHUB_API StatelessCustomActionDefinition(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API StatelessCustomActionDefinition& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Information about metrics to publish to CloudWatch.</p>
      */
-    inline const StatelessCustomPublishMetricAction& GetPublishMetricAction() const{ return m_publishMetricAction; }
-
-    /**
-     * <p>Information about metrics to publish to CloudWatch.</p>
-     */
+    inline const StatelessCustomPublishMetricAction& GetPublishMetricAction() const { return m_publishMetricAction; }
     inline bool PublishMetricActionHasBeenSet() const { return m_publishMetricActionHasBeenSet; }
-
-    /**
-     * <p>Information about metrics to publish to CloudWatch.</p>
-     */
-    inline void SetPublishMetricAction(const StatelessCustomPublishMetricAction& value) { m_publishMetricActionHasBeenSet = true; m_publishMetricAction = value; }
-
-    /**
-     * <p>Information about metrics to publish to CloudWatch.</p>
-     */
-    inline void SetPublishMetricAction(StatelessCustomPublishMetricAction&& value) { m_publishMetricActionHasBeenSet = true; m_publishMetricAction = std::move(value); }
-
-    /**
-     * <p>Information about metrics to publish to CloudWatch.</p>
-     */
-    inline StatelessCustomActionDefinition& WithPublishMetricAction(const StatelessCustomPublishMetricAction& value) { SetPublishMetricAction(value); return *this;}
-
-    /**
-     * <p>Information about metrics to publish to CloudWatch.</p>
-     */
-    inline StatelessCustomActionDefinition& WithPublishMetricAction(StatelessCustomPublishMetricAction&& value) { SetPublishMetricAction(std::move(value)); return *this;}
-
+    template<typename PublishMetricActionT = StatelessCustomPublishMetricAction>
+    void SetPublishMetricAction(PublishMetricActionT&& value) { m_publishMetricActionHasBeenSet = true; m_publishMetricAction = std::forward<PublishMetricActionT>(value); }
+    template<typename PublishMetricActionT = StatelessCustomPublishMetricAction>
+    StatelessCustomActionDefinition& WithPublishMetricAction(PublishMetricActionT&& value) { SetPublishMetricAction(std::forward<PublishMetricActionT>(value)); return *this;}
+    ///@}
   private:
 
     StatelessCustomPublishMetricAction m_publishMetricAction;

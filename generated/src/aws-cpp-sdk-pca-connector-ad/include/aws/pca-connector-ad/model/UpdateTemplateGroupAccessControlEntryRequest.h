@@ -22,7 +22,7 @@ namespace Model
   class UpdateTemplateGroupAccessControlEntryRequest : public PcaConnectorAdRequest
   {
   public:
-    AWS_PCACONNECTORAD_API UpdateTemplateGroupAccessControlEntryRequest();
+    AWS_PCACONNECTORAD_API UpdateTemplateGroupAccessControlEntryRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,189 +33,57 @@ namespace Model
     AWS_PCACONNECTORAD_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Allow or deny permissions for an Active Directory group to enroll or
      * autoenroll certificates for a template.</p>
      */
-    inline const AccessRights& GetAccessRights() const{ return m_accessRights; }
-
-    /**
-     * <p>Allow or deny permissions for an Active Directory group to enroll or
-     * autoenroll certificates for a template.</p>
-     */
+    inline const AccessRights& GetAccessRights() const { return m_accessRights; }
     inline bool AccessRightsHasBeenSet() const { return m_accessRightsHasBeenSet; }
+    template<typename AccessRightsT = AccessRights>
+    void SetAccessRights(AccessRightsT&& value) { m_accessRightsHasBeenSet = true; m_accessRights = std::forward<AccessRightsT>(value); }
+    template<typename AccessRightsT = AccessRights>
+    UpdateTemplateGroupAccessControlEntryRequest& WithAccessRights(AccessRightsT&& value) { SetAccessRights(std::forward<AccessRightsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Allow or deny permissions for an Active Directory group to enroll or
-     * autoenroll certificates for a template.</p>
-     */
-    inline void SetAccessRights(const AccessRights& value) { m_accessRightsHasBeenSet = true; m_accessRights = value; }
-
-    /**
-     * <p>Allow or deny permissions for an Active Directory group to enroll or
-     * autoenroll certificates for a template.</p>
-     */
-    inline void SetAccessRights(AccessRights&& value) { m_accessRightsHasBeenSet = true; m_accessRights = std::move(value); }
-
-    /**
-     * <p>Allow or deny permissions for an Active Directory group to enroll or
-     * autoenroll certificates for a template.</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithAccessRights(const AccessRights& value) { SetAccessRights(value); return *this;}
-
-    /**
-     * <p>Allow or deny permissions for an Active Directory group to enroll or
-     * autoenroll certificates for a template.</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithAccessRights(AccessRights&& value) { SetAccessRights(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Name of the Active Directory group. This name does not need to match the
      * group name in Active Directory.</p>
      */
-    inline const Aws::String& GetGroupDisplayName() const{ return m_groupDisplayName; }
-
-    /**
-     * <p>Name of the Active Directory group. This name does not need to match the
-     * group name in Active Directory.</p>
-     */
+    inline const Aws::String& GetGroupDisplayName() const { return m_groupDisplayName; }
     inline bool GroupDisplayNameHasBeenSet() const { return m_groupDisplayNameHasBeenSet; }
+    template<typename GroupDisplayNameT = Aws::String>
+    void SetGroupDisplayName(GroupDisplayNameT&& value) { m_groupDisplayNameHasBeenSet = true; m_groupDisplayName = std::forward<GroupDisplayNameT>(value); }
+    template<typename GroupDisplayNameT = Aws::String>
+    UpdateTemplateGroupAccessControlEntryRequest& WithGroupDisplayName(GroupDisplayNameT&& value) { SetGroupDisplayName(std::forward<GroupDisplayNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the Active Directory group. This name does not need to match the
-     * group name in Active Directory.</p>
-     */
-    inline void SetGroupDisplayName(const Aws::String& value) { m_groupDisplayNameHasBeenSet = true; m_groupDisplayName = value; }
-
-    /**
-     * <p>Name of the Active Directory group. This name does not need to match the
-     * group name in Active Directory.</p>
-     */
-    inline void SetGroupDisplayName(Aws::String&& value) { m_groupDisplayNameHasBeenSet = true; m_groupDisplayName = std::move(value); }
-
-    /**
-     * <p>Name of the Active Directory group. This name does not need to match the
-     * group name in Active Directory.</p>
-     */
-    inline void SetGroupDisplayName(const char* value) { m_groupDisplayNameHasBeenSet = true; m_groupDisplayName.assign(value); }
-
-    /**
-     * <p>Name of the Active Directory group. This name does not need to match the
-     * group name in Active Directory.</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithGroupDisplayName(const Aws::String& value) { SetGroupDisplayName(value); return *this;}
-
-    /**
-     * <p>Name of the Active Directory group. This name does not need to match the
-     * group name in Active Directory.</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithGroupDisplayName(Aws::String&& value) { SetGroupDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the Active Directory group. This name does not need to match the
-     * group name in Active Directory.</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithGroupDisplayName(const char* value) { SetGroupDisplayName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Security identifier (SID) of the group object from Active Directory. The SID
      * starts with "S-".</p>
      */
-    inline const Aws::String& GetGroupSecurityIdentifier() const{ return m_groupSecurityIdentifier; }
-
-    /**
-     * <p>Security identifier (SID) of the group object from Active Directory. The SID
-     * starts with "S-".</p>
-     */
+    inline const Aws::String& GetGroupSecurityIdentifier() const { return m_groupSecurityIdentifier; }
     inline bool GroupSecurityIdentifierHasBeenSet() const { return m_groupSecurityIdentifierHasBeenSet; }
+    template<typename GroupSecurityIdentifierT = Aws::String>
+    void SetGroupSecurityIdentifier(GroupSecurityIdentifierT&& value) { m_groupSecurityIdentifierHasBeenSet = true; m_groupSecurityIdentifier = std::forward<GroupSecurityIdentifierT>(value); }
+    template<typename GroupSecurityIdentifierT = Aws::String>
+    UpdateTemplateGroupAccessControlEntryRequest& WithGroupSecurityIdentifier(GroupSecurityIdentifierT&& value) { SetGroupSecurityIdentifier(std::forward<GroupSecurityIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Security identifier (SID) of the group object from Active Directory. The SID
-     * starts with "S-".</p>
-     */
-    inline void SetGroupSecurityIdentifier(const Aws::String& value) { m_groupSecurityIdentifierHasBeenSet = true; m_groupSecurityIdentifier = value; }
-
-    /**
-     * <p>Security identifier (SID) of the group object from Active Directory. The SID
-     * starts with "S-".</p>
-     */
-    inline void SetGroupSecurityIdentifier(Aws::String&& value) { m_groupSecurityIdentifierHasBeenSet = true; m_groupSecurityIdentifier = std::move(value); }
-
-    /**
-     * <p>Security identifier (SID) of the group object from Active Directory. The SID
-     * starts with "S-".</p>
-     */
-    inline void SetGroupSecurityIdentifier(const char* value) { m_groupSecurityIdentifierHasBeenSet = true; m_groupSecurityIdentifier.assign(value); }
-
-    /**
-     * <p>Security identifier (SID) of the group object from Active Directory. The SID
-     * starts with "S-".</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithGroupSecurityIdentifier(const Aws::String& value) { SetGroupSecurityIdentifier(value); return *this;}
-
-    /**
-     * <p>Security identifier (SID) of the group object from Active Directory. The SID
-     * starts with "S-".</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithGroupSecurityIdentifier(Aws::String&& value) { SetGroupSecurityIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>Security identifier (SID) of the group object from Active Directory. The SID
-     * starts with "S-".</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithGroupSecurityIdentifier(const char* value) { SetGroupSecurityIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) that was returned when you called <a
      * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateTemplate.html">CreateTemplate</a>.</p>
      */
-    inline const Aws::String& GetTemplateArn() const{ return m_templateArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateTemplate.html">CreateTemplate</a>.</p>
-     */
+    inline const Aws::String& GetTemplateArn() const { return m_templateArn; }
     inline bool TemplateArnHasBeenSet() const { return m_templateArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateTemplate.html">CreateTemplate</a>.</p>
-     */
-    inline void SetTemplateArn(const Aws::String& value) { m_templateArnHasBeenSet = true; m_templateArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateTemplate.html">CreateTemplate</a>.</p>
-     */
-    inline void SetTemplateArn(Aws::String&& value) { m_templateArnHasBeenSet = true; m_templateArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateTemplate.html">CreateTemplate</a>.</p>
-     */
-    inline void SetTemplateArn(const char* value) { m_templateArnHasBeenSet = true; m_templateArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateTemplate.html">CreateTemplate</a>.</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithTemplateArn(const Aws::String& value) { SetTemplateArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateTemplate.html">CreateTemplate</a>.</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithTemplateArn(Aws::String&& value) { SetTemplateArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateTemplate.html">CreateTemplate</a>.</p>
-     */
-    inline UpdateTemplateGroupAccessControlEntryRequest& WithTemplateArn(const char* value) { SetTemplateArn(value); return *this;}
-
+    template<typename TemplateArnT = Aws::String>
+    void SetTemplateArn(TemplateArnT&& value) { m_templateArnHasBeenSet = true; m_templateArn = std::forward<TemplateArnT>(value); }
+    template<typename TemplateArnT = Aws::String>
+    UpdateTemplateGroupAccessControlEntryRequest& WithTemplateArn(TemplateArnT&& value) { SetTemplateArn(std::forward<TemplateArnT>(value)); return *this;}
+    ///@}
   private:
 
     AccessRights m_accessRights;

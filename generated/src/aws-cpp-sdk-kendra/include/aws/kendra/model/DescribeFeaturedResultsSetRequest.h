@@ -21,7 +21,7 @@ namespace Model
   class DescribeFeaturedResultsSetRequest : public KendraRequest
   {
   public:
-    AWS_KENDRA_API DescribeFeaturedResultsSetRequest();
+    AWS_KENDRA_API DescribeFeaturedResultsSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,30 @@ namespace Model
     AWS_KENDRA_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the index used for featuring results.</p>
      */
-    inline const Aws::String& GetIndexId() const{ return m_indexId; }
-
-    /**
-     * <p>The identifier of the index used for featuring results.</p>
-     */
+    inline const Aws::String& GetIndexId() const { return m_indexId; }
     inline bool IndexIdHasBeenSet() const { return m_indexIdHasBeenSet; }
+    template<typename IndexIdT = Aws::String>
+    void SetIndexId(IndexIdT&& value) { m_indexIdHasBeenSet = true; m_indexId = std::forward<IndexIdT>(value); }
+    template<typename IndexIdT = Aws::String>
+    DescribeFeaturedResultsSetRequest& WithIndexId(IndexIdT&& value) { SetIndexId(std::forward<IndexIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the index used for featuring results.</p>
-     */
-    inline void SetIndexId(const Aws::String& value) { m_indexIdHasBeenSet = true; m_indexId = value; }
-
-    /**
-     * <p>The identifier of the index used for featuring results.</p>
-     */
-    inline void SetIndexId(Aws::String&& value) { m_indexIdHasBeenSet = true; m_indexId = std::move(value); }
-
-    /**
-     * <p>The identifier of the index used for featuring results.</p>
-     */
-    inline void SetIndexId(const char* value) { m_indexIdHasBeenSet = true; m_indexId.assign(value); }
-
-    /**
-     * <p>The identifier of the index used for featuring results.</p>
-     */
-    inline DescribeFeaturedResultsSetRequest& WithIndexId(const Aws::String& value) { SetIndexId(value); return *this;}
-
-    /**
-     * <p>The identifier of the index used for featuring results.</p>
-     */
-    inline DescribeFeaturedResultsSetRequest& WithIndexId(Aws::String&& value) { SetIndexId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the index used for featuring results.</p>
-     */
-    inline DescribeFeaturedResultsSetRequest& WithIndexId(const char* value) { SetIndexId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the set of featured results that you want to get
      * information on.</p>
      */
-    inline const Aws::String& GetFeaturedResultsSetId() const{ return m_featuredResultsSetId; }
-
-    /**
-     * <p>The identifier of the set of featured results that you want to get
-     * information on.</p>
-     */
+    inline const Aws::String& GetFeaturedResultsSetId() const { return m_featuredResultsSetId; }
     inline bool FeaturedResultsSetIdHasBeenSet() const { return m_featuredResultsSetIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the set of featured results that you want to get
-     * information on.</p>
-     */
-    inline void SetFeaturedResultsSetId(const Aws::String& value) { m_featuredResultsSetIdHasBeenSet = true; m_featuredResultsSetId = value; }
-
-    /**
-     * <p>The identifier of the set of featured results that you want to get
-     * information on.</p>
-     */
-    inline void SetFeaturedResultsSetId(Aws::String&& value) { m_featuredResultsSetIdHasBeenSet = true; m_featuredResultsSetId = std::move(value); }
-
-    /**
-     * <p>The identifier of the set of featured results that you want to get
-     * information on.</p>
-     */
-    inline void SetFeaturedResultsSetId(const char* value) { m_featuredResultsSetIdHasBeenSet = true; m_featuredResultsSetId.assign(value); }
-
-    /**
-     * <p>The identifier of the set of featured results that you want to get
-     * information on.</p>
-     */
-    inline DescribeFeaturedResultsSetRequest& WithFeaturedResultsSetId(const Aws::String& value) { SetFeaturedResultsSetId(value); return *this;}
-
-    /**
-     * <p>The identifier of the set of featured results that you want to get
-     * information on.</p>
-     */
-    inline DescribeFeaturedResultsSetRequest& WithFeaturedResultsSetId(Aws::String&& value) { SetFeaturedResultsSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the set of featured results that you want to get
-     * information on.</p>
-     */
-    inline DescribeFeaturedResultsSetRequest& WithFeaturedResultsSetId(const char* value) { SetFeaturedResultsSetId(value); return *this;}
-
+    template<typename FeaturedResultsSetIdT = Aws::String>
+    void SetFeaturedResultsSetId(FeaturedResultsSetIdT&& value) { m_featuredResultsSetIdHasBeenSet = true; m_featuredResultsSetId = std::forward<FeaturedResultsSetIdT>(value); }
+    template<typename FeaturedResultsSetIdT = Aws::String>
+    DescribeFeaturedResultsSetRequest& WithFeaturedResultsSetId(FeaturedResultsSetIdT&& value) { SetFeaturedResultsSetId(std::forward<FeaturedResultsSetIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_indexId;

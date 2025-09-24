@@ -18,15 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-RedshiftConnectorProfileCredentials::RedshiftConnectorProfileCredentials() : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
-{
-}
-
-RedshiftConnectorProfileCredentials::RedshiftConnectorProfileCredentials(JsonView jsonValue) : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
+RedshiftConnectorProfileCredentials::RedshiftConnectorProfileCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RedshiftConnectorProfileCredentials& RedshiftConnectorProfileCredentials::operat
   if(jsonValue.ValueExists("username"))
   {
     m_username = jsonValue.GetString("username");
-
     m_usernameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("password"))
   {
     m_password = jsonValue.GetString("password");
-
     m_passwordHasBeenSet = true;
   }
-
   return *this;
 }
 

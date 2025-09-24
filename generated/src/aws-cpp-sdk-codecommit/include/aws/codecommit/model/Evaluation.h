@@ -33,155 +33,66 @@ namespace Model
   class Evaluation
   {
   public:
-    AWS_CODECOMMIT_API Evaluation();
+    AWS_CODECOMMIT_API Evaluation() = default;
     AWS_CODECOMMIT_API Evaluation(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Evaluation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECOMMIT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Whether the state of the pull request is approved.</p>
      */
-    inline bool GetApproved() const{ return m_approved; }
-
-    /**
-     * <p>Whether the state of the pull request is approved.</p>
-     */
+    inline bool GetApproved() const { return m_approved; }
     inline bool ApprovedHasBeenSet() const { return m_approvedHasBeenSet; }
-
-    /**
-     * <p>Whether the state of the pull request is approved.</p>
-     */
     inline void SetApproved(bool value) { m_approvedHasBeenSet = true; m_approved = value; }
-
-    /**
-     * <p>Whether the state of the pull request is approved.</p>
-     */
     inline Evaluation& WithApproved(bool value) { SetApproved(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Whether the approval rule requirements for the pull request have been
      * overridden and no longer need to be met.</p>
      */
-    inline bool GetOverridden() const{ return m_overridden; }
-
-    /**
-     * <p>Whether the approval rule requirements for the pull request have been
-     * overridden and no longer need to be met.</p>
-     */
+    inline bool GetOverridden() const { return m_overridden; }
     inline bool OverriddenHasBeenSet() const { return m_overriddenHasBeenSet; }
-
-    /**
-     * <p>Whether the approval rule requirements for the pull request have been
-     * overridden and no longer need to be met.</p>
-     */
     inline void SetOverridden(bool value) { m_overriddenHasBeenSet = true; m_overridden = value; }
-
-    /**
-     * <p>Whether the approval rule requirements for the pull request have been
-     * overridden and no longer need to be met.</p>
-     */
     inline Evaluation& WithOverridden(bool value) { SetOverridden(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The names of the approval rules that have had their conditions met.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetApprovalRulesSatisfied() const{ return m_approvalRulesSatisfied; }
-
-    /**
-     * <p>The names of the approval rules that have had their conditions met.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetApprovalRulesSatisfied() const { return m_approvalRulesSatisfied; }
     inline bool ApprovalRulesSatisfiedHasBeenSet() const { return m_approvalRulesSatisfiedHasBeenSet; }
+    template<typename ApprovalRulesSatisfiedT = Aws::Vector<Aws::String>>
+    void SetApprovalRulesSatisfied(ApprovalRulesSatisfiedT&& value) { m_approvalRulesSatisfiedHasBeenSet = true; m_approvalRulesSatisfied = std::forward<ApprovalRulesSatisfiedT>(value); }
+    template<typename ApprovalRulesSatisfiedT = Aws::Vector<Aws::String>>
+    Evaluation& WithApprovalRulesSatisfied(ApprovalRulesSatisfiedT&& value) { SetApprovalRulesSatisfied(std::forward<ApprovalRulesSatisfiedT>(value)); return *this;}
+    template<typename ApprovalRulesSatisfiedT = Aws::String>
+    Evaluation& AddApprovalRulesSatisfied(ApprovalRulesSatisfiedT&& value) { m_approvalRulesSatisfiedHasBeenSet = true; m_approvalRulesSatisfied.emplace_back(std::forward<ApprovalRulesSatisfiedT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The names of the approval rules that have had their conditions met.</p>
-     */
-    inline void SetApprovalRulesSatisfied(const Aws::Vector<Aws::String>& value) { m_approvalRulesSatisfiedHasBeenSet = true; m_approvalRulesSatisfied = value; }
-
-    /**
-     * <p>The names of the approval rules that have had their conditions met.</p>
-     */
-    inline void SetApprovalRulesSatisfied(Aws::Vector<Aws::String>&& value) { m_approvalRulesSatisfiedHasBeenSet = true; m_approvalRulesSatisfied = std::move(value); }
-
-    /**
-     * <p>The names of the approval rules that have had their conditions met.</p>
-     */
-    inline Evaluation& WithApprovalRulesSatisfied(const Aws::Vector<Aws::String>& value) { SetApprovalRulesSatisfied(value); return *this;}
-
-    /**
-     * <p>The names of the approval rules that have had their conditions met.</p>
-     */
-    inline Evaluation& WithApprovalRulesSatisfied(Aws::Vector<Aws::String>&& value) { SetApprovalRulesSatisfied(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the approval rules that have had their conditions met.</p>
-     */
-    inline Evaluation& AddApprovalRulesSatisfied(const Aws::String& value) { m_approvalRulesSatisfiedHasBeenSet = true; m_approvalRulesSatisfied.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the approval rules that have had their conditions met.</p>
-     */
-    inline Evaluation& AddApprovalRulesSatisfied(Aws::String&& value) { m_approvalRulesSatisfiedHasBeenSet = true; m_approvalRulesSatisfied.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of the approval rules that have had their conditions met.</p>
-     */
-    inline Evaluation& AddApprovalRulesSatisfied(const char* value) { m_approvalRulesSatisfiedHasBeenSet = true; m_approvalRulesSatisfied.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The names of the approval rules that have not had their conditions met.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetApprovalRulesNotSatisfied() const{ return m_approvalRulesNotSatisfied; }
-
-    /**
-     * <p>The names of the approval rules that have not had their conditions met.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetApprovalRulesNotSatisfied() const { return m_approvalRulesNotSatisfied; }
     inline bool ApprovalRulesNotSatisfiedHasBeenSet() const { return m_approvalRulesNotSatisfiedHasBeenSet; }
-
-    /**
-     * <p>The names of the approval rules that have not had their conditions met.</p>
-     */
-    inline void SetApprovalRulesNotSatisfied(const Aws::Vector<Aws::String>& value) { m_approvalRulesNotSatisfiedHasBeenSet = true; m_approvalRulesNotSatisfied = value; }
-
-    /**
-     * <p>The names of the approval rules that have not had their conditions met.</p>
-     */
-    inline void SetApprovalRulesNotSatisfied(Aws::Vector<Aws::String>&& value) { m_approvalRulesNotSatisfiedHasBeenSet = true; m_approvalRulesNotSatisfied = std::move(value); }
-
-    /**
-     * <p>The names of the approval rules that have not had their conditions met.</p>
-     */
-    inline Evaluation& WithApprovalRulesNotSatisfied(const Aws::Vector<Aws::String>& value) { SetApprovalRulesNotSatisfied(value); return *this;}
-
-    /**
-     * <p>The names of the approval rules that have not had their conditions met.</p>
-     */
-    inline Evaluation& WithApprovalRulesNotSatisfied(Aws::Vector<Aws::String>&& value) { SetApprovalRulesNotSatisfied(std::move(value)); return *this;}
-
-    /**
-     * <p>The names of the approval rules that have not had their conditions met.</p>
-     */
-    inline Evaluation& AddApprovalRulesNotSatisfied(const Aws::String& value) { m_approvalRulesNotSatisfiedHasBeenSet = true; m_approvalRulesNotSatisfied.push_back(value); return *this; }
-
-    /**
-     * <p>The names of the approval rules that have not had their conditions met.</p>
-     */
-    inline Evaluation& AddApprovalRulesNotSatisfied(Aws::String&& value) { m_approvalRulesNotSatisfiedHasBeenSet = true; m_approvalRulesNotSatisfied.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The names of the approval rules that have not had their conditions met.</p>
-     */
-    inline Evaluation& AddApprovalRulesNotSatisfied(const char* value) { m_approvalRulesNotSatisfiedHasBeenSet = true; m_approvalRulesNotSatisfied.push_back(value); return *this; }
-
+    template<typename ApprovalRulesNotSatisfiedT = Aws::Vector<Aws::String>>
+    void SetApprovalRulesNotSatisfied(ApprovalRulesNotSatisfiedT&& value) { m_approvalRulesNotSatisfiedHasBeenSet = true; m_approvalRulesNotSatisfied = std::forward<ApprovalRulesNotSatisfiedT>(value); }
+    template<typename ApprovalRulesNotSatisfiedT = Aws::Vector<Aws::String>>
+    Evaluation& WithApprovalRulesNotSatisfied(ApprovalRulesNotSatisfiedT&& value) { SetApprovalRulesNotSatisfied(std::forward<ApprovalRulesNotSatisfiedT>(value)); return *this;}
+    template<typename ApprovalRulesNotSatisfiedT = Aws::String>
+    Evaluation& AddApprovalRulesNotSatisfied(ApprovalRulesNotSatisfiedT&& value) { m_approvalRulesNotSatisfiedHasBeenSet = true; m_approvalRulesNotSatisfied.emplace_back(std::forward<ApprovalRulesNotSatisfiedT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_approved;
+    bool m_approved{false};
     bool m_approvedHasBeenSet = false;
 
-    bool m_overridden;
+    bool m_overridden{false};
     bool m_overriddenHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_approvalRulesSatisfied;

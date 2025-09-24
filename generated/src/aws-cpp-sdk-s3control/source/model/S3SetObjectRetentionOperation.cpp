@@ -20,17 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-S3SetObjectRetentionOperation::S3SetObjectRetentionOperation() : 
-    m_bypassGovernanceRetention(false),
-    m_bypassGovernanceRetentionHasBeenSet(false),
-    m_retentionHasBeenSet(false)
-{
-}
-
-S3SetObjectRetentionOperation::S3SetObjectRetentionOperation(const XmlNode& xmlNode) : 
-    m_bypassGovernanceRetention(false),
-    m_bypassGovernanceRetentionHasBeenSet(false),
-    m_retentionHasBeenSet(false)
+S3SetObjectRetentionOperation::S3SetObjectRetentionOperation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

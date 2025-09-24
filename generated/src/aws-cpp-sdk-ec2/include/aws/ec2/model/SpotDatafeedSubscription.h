@@ -33,7 +33,7 @@ namespace Model
   class SpotDatafeedSubscription
   {
   public:
-    AWS_EC2_API SpotDatafeedSubscription();
+    AWS_EC2_API SpotDatafeedSubscription() = default;
     AWS_EC2_API SpotDatafeedSubscription(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API SpotDatafeedSubscription& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,198 +41,64 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The name of the Amazon S3 bucket where the Spot Instance data feed is
      * located.</p>
      */
-    inline const Aws::String& GetBucket() const{ return m_bucket; }
-
-    /**
-     * <p>The name of the Amazon S3 bucket where the Spot Instance data feed is
-     * located.</p>
-     */
+    inline const Aws::String& GetBucket() const { return m_bucket; }
     inline bool BucketHasBeenSet() const { return m_bucketHasBeenSet; }
+    template<typename BucketT = Aws::String>
+    void SetBucket(BucketT&& value) { m_bucketHasBeenSet = true; m_bucket = std::forward<BucketT>(value); }
+    template<typename BucketT = Aws::String>
+    SpotDatafeedSubscription& WithBucket(BucketT&& value) { SetBucket(std::forward<BucketT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Amazon S3 bucket where the Spot Instance data feed is
-     * located.</p>
-     */
-    inline void SetBucket(const Aws::String& value) { m_bucketHasBeenSet = true; m_bucket = value; }
-
-    /**
-     * <p>The name of the Amazon S3 bucket where the Spot Instance data feed is
-     * located.</p>
-     */
-    inline void SetBucket(Aws::String&& value) { m_bucketHasBeenSet = true; m_bucket = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon S3 bucket where the Spot Instance data feed is
-     * located.</p>
-     */
-    inline void SetBucket(const char* value) { m_bucketHasBeenSet = true; m_bucket.assign(value); }
-
-    /**
-     * <p>The name of the Amazon S3 bucket where the Spot Instance data feed is
-     * located.</p>
-     */
-    inline SpotDatafeedSubscription& WithBucket(const Aws::String& value) { SetBucket(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon S3 bucket where the Spot Instance data feed is
-     * located.</p>
-     */
-    inline SpotDatafeedSubscription& WithBucket(Aws::String&& value) { SetBucket(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon S3 bucket where the Spot Instance data feed is
-     * located.</p>
-     */
-    inline SpotDatafeedSubscription& WithBucket(const char* value) { SetBucket(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The fault codes for the Spot Instance request, if any.</p>
      */
-    inline const SpotInstanceStateFault& GetFault() const{ return m_fault; }
-
-    /**
-     * <p>The fault codes for the Spot Instance request, if any.</p>
-     */
+    inline const SpotInstanceStateFault& GetFault() const { return m_fault; }
     inline bool FaultHasBeenSet() const { return m_faultHasBeenSet; }
+    template<typename FaultT = SpotInstanceStateFault>
+    void SetFault(FaultT&& value) { m_faultHasBeenSet = true; m_fault = std::forward<FaultT>(value); }
+    template<typename FaultT = SpotInstanceStateFault>
+    SpotDatafeedSubscription& WithFault(FaultT&& value) { SetFault(std::forward<FaultT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The fault codes for the Spot Instance request, if any.</p>
-     */
-    inline void SetFault(const SpotInstanceStateFault& value) { m_faultHasBeenSet = true; m_fault = value; }
-
-    /**
-     * <p>The fault codes for the Spot Instance request, if any.</p>
-     */
-    inline void SetFault(SpotInstanceStateFault&& value) { m_faultHasBeenSet = true; m_fault = std::move(value); }
-
-    /**
-     * <p>The fault codes for the Spot Instance request, if any.</p>
-     */
-    inline SpotDatafeedSubscription& WithFault(const SpotInstanceStateFault& value) { SetFault(value); return *this;}
-
-    /**
-     * <p>The fault codes for the Spot Instance request, if any.</p>
-     */
-    inline SpotDatafeedSubscription& WithFault(SpotInstanceStateFault&& value) { SetFault(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the account.</p>
      */
-    inline const Aws::String& GetOwnerId() const{ return m_ownerId; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account.</p>
-     */
+    inline const Aws::String& GetOwnerId() const { return m_ownerId; }
     inline bool OwnerIdHasBeenSet() const { return m_ownerIdHasBeenSet; }
+    template<typename OwnerIdT = Aws::String>
+    void SetOwnerId(OwnerIdT&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::forward<OwnerIdT>(value); }
+    template<typename OwnerIdT = Aws::String>
+    SpotDatafeedSubscription& WithOwnerId(OwnerIdT&& value) { SetOwnerId(std::forward<OwnerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the account.</p>
-     */
-    inline void SetOwnerId(const Aws::String& value) { m_ownerIdHasBeenSet = true; m_ownerId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account.</p>
-     */
-    inline void SetOwnerId(Aws::String&& value) { m_ownerIdHasBeenSet = true; m_ownerId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account.</p>
-     */
-    inline void SetOwnerId(const char* value) { m_ownerIdHasBeenSet = true; m_ownerId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the account.</p>
-     */
-    inline SpotDatafeedSubscription& WithOwnerId(const Aws::String& value) { SetOwnerId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the account.</p>
-     */
-    inline SpotDatafeedSubscription& WithOwnerId(Aws::String&& value) { SetOwnerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the account.</p>
-     */
-    inline SpotDatafeedSubscription& WithOwnerId(const char* value) { SetOwnerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The prefix for the data feed files.</p>
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>The prefix for the data feed files.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    SpotDatafeedSubscription& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The prefix for the data feed files.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>The prefix for the data feed files.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>The prefix for the data feed files.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>The prefix for the data feed files.</p>
-     */
-    inline SpotDatafeedSubscription& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>The prefix for the data feed files.</p>
-     */
-    inline SpotDatafeedSubscription& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The prefix for the data feed files.</p>
-     */
-    inline SpotDatafeedSubscription& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the Spot Instance data feed subscription.</p>
      */
-    inline const DatafeedSubscriptionState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the Spot Instance data feed subscription.</p>
-     */
+    inline DatafeedSubscriptionState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The state of the Spot Instance data feed subscription.</p>
-     */
-    inline void SetState(const DatafeedSubscriptionState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the Spot Instance data feed subscription.</p>
-     */
-    inline void SetState(DatafeedSubscriptionState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the Spot Instance data feed subscription.</p>
-     */
-    inline SpotDatafeedSubscription& WithState(const DatafeedSubscriptionState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the Spot Instance data feed subscription.</p>
-     */
-    inline SpotDatafeedSubscription& WithState(DatafeedSubscriptionState&& value) { SetState(std::move(value)); return *this;}
-
+    inline void SetState(DatafeedSubscriptionState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline SpotDatafeedSubscription& WithState(DatafeedSubscriptionState value) { SetState(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucket;
@@ -247,7 +113,7 @@ namespace Model
     Aws::String m_prefix;
     bool m_prefixHasBeenSet = false;
 
-    DatafeedSubscriptionState m_state;
+    DatafeedSubscriptionState m_state{DatafeedSubscriptionState::NOT_SET};
     bool m_stateHasBeenSet = false;
   };
 

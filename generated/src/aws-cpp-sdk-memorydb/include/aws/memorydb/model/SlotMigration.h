@@ -30,35 +30,24 @@ namespace Model
   class SlotMigration
   {
   public:
-    AWS_MEMORYDB_API SlotMigration();
+    AWS_MEMORYDB_API SlotMigration() = default;
     AWS_MEMORYDB_API SlotMigration(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API SlotMigration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEMORYDB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The percentage of the slot migration that is complete.</p>
      */
-    inline double GetProgressPercentage() const{ return m_progressPercentage; }
-
-    /**
-     * <p>The percentage of the slot migration that is complete.</p>
-     */
+    inline double GetProgressPercentage() const { return m_progressPercentage; }
     inline bool ProgressPercentageHasBeenSet() const { return m_progressPercentageHasBeenSet; }
-
-    /**
-     * <p>The percentage of the slot migration that is complete.</p>
-     */
     inline void SetProgressPercentage(double value) { m_progressPercentageHasBeenSet = true; m_progressPercentage = value; }
-
-    /**
-     * <p>The percentage of the slot migration that is complete.</p>
-     */
     inline SlotMigration& WithProgressPercentage(double value) { SetProgressPercentage(value); return *this;}
-
+    ///@}
   private:
 
-    double m_progressPercentage;
+    double m_progressPercentage{0.0};
     bool m_progressPercentageHasBeenSet = false;
   };
 

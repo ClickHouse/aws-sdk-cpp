@@ -18,27 +18,7 @@ namespace Kafka
 namespace Model
 {
 
-TopicReplication::TopicReplication() : 
-    m_copyAccessControlListsForTopics(false),
-    m_copyAccessControlListsForTopicsHasBeenSet(false),
-    m_copyTopicConfigurations(false),
-    m_copyTopicConfigurationsHasBeenSet(false),
-    m_detectAndCopyNewTopics(false),
-    m_detectAndCopyNewTopicsHasBeenSet(false),
-    m_topicsToExcludeHasBeenSet(false),
-    m_topicsToReplicateHasBeenSet(false)
-{
-}
-
-TopicReplication::TopicReplication(JsonView jsonValue) : 
-    m_copyAccessControlListsForTopics(false),
-    m_copyAccessControlListsForTopicsHasBeenSet(false),
-    m_copyTopicConfigurations(false),
-    m_copyTopicConfigurationsHasBeenSet(false),
-    m_detectAndCopyNewTopics(false),
-    m_detectAndCopyNewTopicsHasBeenSet(false),
-    m_topicsToExcludeHasBeenSet(false),
-    m_topicsToReplicateHasBeenSet(false)
+TopicReplication::TopicReplication(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,24 +28,28 @@ TopicReplication& TopicReplication::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("copyAccessControlListsForTopics"))
   {
     m_copyAccessControlListsForTopics = jsonValue.GetBool("copyAccessControlListsForTopics");
-
     m_copyAccessControlListsForTopicsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("copyTopicConfigurations"))
   {
     m_copyTopicConfigurations = jsonValue.GetBool("copyTopicConfigurations");
-
     m_copyTopicConfigurationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("detectAndCopyNewTopics"))
   {
     m_detectAndCopyNewTopics = jsonValue.GetBool("detectAndCopyNewTopics");
-
     m_detectAndCopyNewTopicsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("startingPosition"))
+  {
+    m_startingPosition = jsonValue.GetObject("startingPosition");
+    m_startingPositionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("topicNameConfiguration"))
+  {
+    m_topicNameConfiguration = jsonValue.GetObject("topicNameConfiguration");
+    m_topicNameConfigurationHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("topicsToExclude"))
   {
     Aws::Utils::Array<JsonView> topicsToExcludeJsonList = jsonValue.GetArray("topicsToExclude");
@@ -75,7 +59,6 @@ TopicReplication& TopicReplication::operator =(JsonView jsonValue)
     }
     m_topicsToExcludeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("topicsToReplicate"))
   {
     Aws::Utils::Array<JsonView> topicsToReplicateJsonList = jsonValue.GetArray("topicsToReplicate");
@@ -85,7 +68,6 @@ TopicReplication& TopicReplication::operator =(JsonView jsonValue)
     }
     m_topicsToReplicateHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -108,6 +90,18 @@ JsonValue TopicReplication::Jsonize() const
   if(m_detectAndCopyNewTopicsHasBeenSet)
   {
    payload.WithBool("detectAndCopyNewTopics", m_detectAndCopyNewTopics);
+
+  }
+
+  if(m_startingPositionHasBeenSet)
+  {
+   payload.WithObject("startingPosition", m_startingPosition.Jsonize());
+
+  }
+
+  if(m_topicNameConfigurationHasBeenSet)
+  {
+   payload.WithObject("topicNameConfiguration", m_topicNameConfiguration.Jsonize());
 
   }
 

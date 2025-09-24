@@ -18,15 +18,7 @@ namespace AgreementService
 namespace Model
 {
 
-RateCardItem::RateCardItem() : 
-    m_dimensionKeyHasBeenSet(false),
-    m_priceHasBeenSet(false)
-{
-}
-
-RateCardItem::RateCardItem(JsonView jsonValue) : 
-    m_dimensionKeyHasBeenSet(false),
-    m_priceHasBeenSet(false)
+RateCardItem::RateCardItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RateCardItem& RateCardItem::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("dimensionKey"))
   {
     m_dimensionKey = jsonValue.GetString("dimensionKey");
-
     m_dimensionKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("price"))
   {
     m_price = jsonValue.GetString("price");
-
     m_priceHasBeenSet = true;
   }
-
   return *this;
 }
 

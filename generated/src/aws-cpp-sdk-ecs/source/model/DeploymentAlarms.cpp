@@ -18,21 +18,7 @@ namespace ECS
 namespace Model
 {
 
-DeploymentAlarms::DeploymentAlarms() : 
-    m_alarmNamesHasBeenSet(false),
-    m_enable(false),
-    m_enableHasBeenSet(false),
-    m_rollback(false),
-    m_rollbackHasBeenSet(false)
-{
-}
-
-DeploymentAlarms::DeploymentAlarms(JsonView jsonValue) : 
-    m_alarmNamesHasBeenSet(false),
-    m_enable(false),
-    m_enableHasBeenSet(false),
-    m_rollback(false),
-    m_rollbackHasBeenSet(false)
+DeploymentAlarms::DeploymentAlarms(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,21 +34,16 @@ DeploymentAlarms& DeploymentAlarms::operator =(JsonView jsonValue)
     }
     m_alarmNamesHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("enable"))
-  {
-    m_enable = jsonValue.GetBool("enable");
-
-    m_enableHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("rollback"))
   {
     m_rollback = jsonValue.GetBool("rollback");
-
     m_rollbackHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("enable"))
+  {
+    m_enable = jsonValue.GetBool("enable");
+    m_enableHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -81,15 +62,15 @@ JsonValue DeploymentAlarms::Jsonize() const
 
   }
 
-  if(m_enableHasBeenSet)
-  {
-   payload.WithBool("enable", m_enable);
-
-  }
-
   if(m_rollbackHasBeenSet)
   {
    payload.WithBool("rollback", m_rollback);
+
+  }
+
+  if(m_enableHasBeenSet)
+  {
+   payload.WithBool("enable", m_enable);
 
   }
 

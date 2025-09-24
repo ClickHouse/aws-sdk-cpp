@@ -22,7 +22,7 @@ namespace Model
   class DisassociateUserRequest : public LicenseManagerUserSubscriptionsRequest
   {
   public:
-    AWS_LICENSEMANAGERUSERSUBSCRIPTIONS_API DisassociateUserRequest();
+    AWS_LICENSEMANAGERUSERSUBSCRIPTIONS_API DisassociateUserRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,172 +33,84 @@ namespace Model
     AWS_LICENSEMANAGERUSERSUBSCRIPTIONS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The domain name of the user.</p>
+     * <p>The user name from the Active Directory identity provider for the user.</p>
      */
-    inline const Aws::String& GetDomain() const{ return m_domain; }
-
-    /**
-     * <p>The domain name of the user.</p>
-     */
-    inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
-
-    /**
-     * <p>The domain name of the user.</p>
-     */
-    inline void SetDomain(const Aws::String& value) { m_domainHasBeenSet = true; m_domain = value; }
-
-    /**
-     * <p>The domain name of the user.</p>
-     */
-    inline void SetDomain(Aws::String&& value) { m_domainHasBeenSet = true; m_domain = std::move(value); }
-
-    /**
-     * <p>The domain name of the user.</p>
-     */
-    inline void SetDomain(const char* value) { m_domainHasBeenSet = true; m_domain.assign(value); }
-
-    /**
-     * <p>The domain name of the user.</p>
-     */
-    inline DisassociateUserRequest& WithDomain(const Aws::String& value) { SetDomain(value); return *this;}
-
-    /**
-     * <p>The domain name of the user.</p>
-     */
-    inline DisassociateUserRequest& WithDomain(Aws::String&& value) { SetDomain(std::move(value)); return *this;}
-
-    /**
-     * <p>The domain name of the user.</p>
-     */
-    inline DisassociateUserRequest& WithDomain(const char* value) { SetDomain(value); return *this;}
-
-
-    /**
-     * <p>An object that specifies details for the identity provider.</p>
-     */
-    inline const IdentityProvider& GetIdentityProvider() const{ return m_identityProvider; }
-
-    /**
-     * <p>An object that specifies details for the identity provider.</p>
-     */
-    inline bool IdentityProviderHasBeenSet() const { return m_identityProviderHasBeenSet; }
-
-    /**
-     * <p>An object that specifies details for the identity provider.</p>
-     */
-    inline void SetIdentityProvider(const IdentityProvider& value) { m_identityProviderHasBeenSet = true; m_identityProvider = value; }
-
-    /**
-     * <p>An object that specifies details for the identity provider.</p>
-     */
-    inline void SetIdentityProvider(IdentityProvider&& value) { m_identityProviderHasBeenSet = true; m_identityProvider = std::move(value); }
-
-    /**
-     * <p>An object that specifies details for the identity provider.</p>
-     */
-    inline DisassociateUserRequest& WithIdentityProvider(const IdentityProvider& value) { SetIdentityProvider(value); return *this;}
-
-    /**
-     * <p>An object that specifies details for the identity provider.</p>
-     */
-    inline DisassociateUserRequest& WithIdentityProvider(IdentityProvider&& value) { SetIdentityProvider(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The ID of the EC2 instance, which provides user-based subscriptions.</p>
-     */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the EC2 instance, which provides user-based subscriptions.</p>
-     */
-    inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the EC2 instance, which provides user-based subscriptions.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the EC2 instance, which provides user-based subscriptions.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the EC2 instance, which provides user-based subscriptions.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the EC2 instance, which provides user-based subscriptions.</p>
-     */
-    inline DisassociateUserRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the EC2 instance, which provides user-based subscriptions.</p>
-     */
-    inline DisassociateUserRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the EC2 instance, which provides user-based subscriptions.</p>
-     */
-    inline DisassociateUserRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
-    /**
-     * <p>The user name from the identity provider for the user.</p>
-     */
-    inline const Aws::String& GetUsername() const{ return m_username; }
-
-    /**
-     * <p>The user name from the identity provider for the user.</p>
-     */
+    inline const Aws::String& GetUsername() const { return m_username; }
     inline bool UsernameHasBeenSet() const { return m_usernameHasBeenSet; }
+    template<typename UsernameT = Aws::String>
+    void SetUsername(UsernameT&& value) { m_usernameHasBeenSet = true; m_username = std::forward<UsernameT>(value); }
+    template<typename UsernameT = Aws::String>
+    DisassociateUserRequest& WithUsername(UsernameT&& value) { SetUsername(std::forward<UsernameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user name from the identity provider for the user.</p>
+     * <p>The ID of the EC2 instance which provides user-based subscriptions.</p>
      */
-    inline void SetUsername(const Aws::String& value) { m_usernameHasBeenSet = true; m_username = value; }
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
+    inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    DisassociateUserRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user name from the identity provider for the user.</p>
+     * <p>An object that specifies details for the Active Directory identity
+     * provider.</p>
      */
-    inline void SetUsername(Aws::String&& value) { m_usernameHasBeenSet = true; m_username = std::move(value); }
+    inline const IdentityProvider& GetIdentityProvider() const { return m_identityProvider; }
+    inline bool IdentityProviderHasBeenSet() const { return m_identityProviderHasBeenSet; }
+    template<typename IdentityProviderT = IdentityProvider>
+    void SetIdentityProvider(IdentityProviderT&& value) { m_identityProviderHasBeenSet = true; m_identityProvider = std::forward<IdentityProviderT>(value); }
+    template<typename IdentityProviderT = IdentityProvider>
+    DisassociateUserRequest& WithIdentityProvider(IdentityProviderT&& value) { SetIdentityProvider(std::forward<IdentityProviderT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user name from the identity provider for the user.</p>
+     * <p>The Amazon Resource Name (ARN) of the user to disassociate from the EC2
+     * instance.</p>
      */
-    inline void SetUsername(const char* value) { m_usernameHasBeenSet = true; m_username.assign(value); }
+    inline const Aws::String& GetInstanceUserArn() const { return m_instanceUserArn; }
+    inline bool InstanceUserArnHasBeenSet() const { return m_instanceUserArnHasBeenSet; }
+    template<typename InstanceUserArnT = Aws::String>
+    void SetInstanceUserArn(InstanceUserArnT&& value) { m_instanceUserArnHasBeenSet = true; m_instanceUserArn = std::forward<InstanceUserArnT>(value); }
+    template<typename InstanceUserArnT = Aws::String>
+    DisassociateUserRequest& WithInstanceUserArn(InstanceUserArnT&& value) { SetInstanceUserArn(std::forward<InstanceUserArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The user name from the identity provider for the user.</p>
+     * <p>The domain name of the Active Directory that contains information for the
+     * user to disassociate.</p>
      */
-    inline DisassociateUserRequest& WithUsername(const Aws::String& value) { SetUsername(value); return *this;}
-
-    /**
-     * <p>The user name from the identity provider for the user.</p>
-     */
-    inline DisassociateUserRequest& WithUsername(Aws::String&& value) { SetUsername(std::move(value)); return *this;}
-
-    /**
-     * <p>The user name from the identity provider for the user.</p>
-     */
-    inline DisassociateUserRequest& WithUsername(const char* value) { SetUsername(value); return *this;}
-
+    inline const Aws::String& GetDomain() const { return m_domain; }
+    inline bool DomainHasBeenSet() const { return m_domainHasBeenSet; }
+    template<typename DomainT = Aws::String>
+    void SetDomain(DomainT&& value) { m_domainHasBeenSet = true; m_domain = std::forward<DomainT>(value); }
+    template<typename DomainT = Aws::String>
+    DisassociateUserRequest& WithDomain(DomainT&& value) { SetDomain(std::forward<DomainT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_domain;
-    bool m_domainHasBeenSet = false;
-
-    IdentityProvider m_identityProvider;
-    bool m_identityProviderHasBeenSet = false;
+    Aws::String m_username;
+    bool m_usernameHasBeenSet = false;
 
     Aws::String m_instanceId;
     bool m_instanceIdHasBeenSet = false;
 
-    Aws::String m_username;
-    bool m_usernameHasBeenSet = false;
+    IdentityProvider m_identityProvider;
+    bool m_identityProviderHasBeenSet = false;
+
+    Aws::String m_instanceUserArn;
+    bool m_instanceUserArnHasBeenSet = false;
+
+    Aws::String m_domain;
+    bool m_domainHasBeenSet = false;
   };
 
 } // namespace Model

@@ -30,35 +30,24 @@ namespace Model
   class VectorSearchConfiguration
   {
   public:
-    AWS_NEPTUNEGRAPH_API VectorSearchConfiguration();
+    AWS_NEPTUNEGRAPH_API VectorSearchConfiguration() = default;
     AWS_NEPTUNEGRAPH_API VectorSearchConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEGRAPH_API VectorSearchConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_NEPTUNEGRAPH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The number of dimensions.</p>
      */
-    inline int GetDimension() const{ return m_dimension; }
-
-    /**
-     * <p>The number of dimensions.</p>
-     */
+    inline int GetDimension() const { return m_dimension; }
     inline bool DimensionHasBeenSet() const { return m_dimensionHasBeenSet; }
-
-    /**
-     * <p>The number of dimensions.</p>
-     */
     inline void SetDimension(int value) { m_dimensionHasBeenSet = true; m_dimension = value; }
-
-    /**
-     * <p>The number of dimensions.</p>
-     */
     inline VectorSearchConfiguration& WithDimension(int value) { SetDimension(value); return *this;}
-
+    ///@}
   private:
 
-    int m_dimension;
+    int m_dimension{0};
     bool m_dimensionHasBeenSet = false;
   };
 

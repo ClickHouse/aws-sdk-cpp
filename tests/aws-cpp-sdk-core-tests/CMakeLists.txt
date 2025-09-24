@@ -24,6 +24,10 @@ file(GLOB UTILS_MEMORY_SRC "${CMAKE_CURRENT_SOURCE_DIR}/utils/memory/*.cpp")
 file(GLOB UTILS_COMPONENT_REGISTRY_SRC "${CMAKE_CURRENT_SOURCE_DIR}/utils/component-registry/*.cpp")
 file(GLOB MONITORING_SRC "${CMAKE_CURRENT_SOURCE_DIR}/monitoring/*.cpp")
 file(GLOB SMITHY_TRACING_SRC "${CMAKE_CURRENT_SOURCE_DIR}/smithy/tracing/*.cpp")
+file(GLOB SMITHY_CLIENT_SRC "${CMAKE_CURRENT_SOURCE_DIR}/smithy/client/*.cpp")
+file(GLOB SMITHY_CLIENT_SERIALIZER_SRC "${CMAKE_CURRENT_SOURCE_DIR}/smithy/client/serializer/*.cpp")
+file(GLOB SMITHY_CLIENT_FEATURE_SRC "${CMAKE_CURRENT_SOURCE_DIR}/smithy/client/feature/*.cpp")
+file(GLOB ENDPOINT_SRC "${CMAKE_CURRENT_SOURCE_DIR}/endpoint/*.cpp")
 
 
 file(GLOB AWS_CPP_SDK_CORE_TESTS_SRC
@@ -48,6 +52,11 @@ file(GLOB AWS_CPP_SDK_CORE_TESTS_SRC
   ${UTILS_LOGGING_SRC}
   ${UTILS_RATE_LIMITER_SRC}
   ${SMITHY_TRACING_SRC}
+  ${SMITHY_CLIENT_SRC}
+  ${SMITHY_CLIENT_SERIALIZER_SRC}
+  ${SMITHY_CLIENT_FEATURE_SRC}
+  ${ENDPOINT_SRC}
+  ${SMITHY_INTERCEPTOR_SRC}
 )
 
 if(PLATFORM_WINDOWS)
@@ -71,6 +80,9 @@ if(PLATFORM_WINDOWS)
     source_group("Source Files\\utils\\component-registry" FILES ${UTILS_COMPONENT_REGISTRY_SRC})
     source_group("Source Files\\utils\\threading" FILES ${UTILS_THREADING_SRC})
     source_group("Source Files\\smithy\\tracing" FILES ${SMITHY_TRACING_SRC})
+    source_group("Source Files\\smithy\\client" FILES ${SMITHY_CLIENT_SRC})
+    source_group("Source Files\\smithy\\client\\serializer" FILES ${SMITHY_CLIENT_SERIALIZER_SRC})
+    source_group("Source Files\\smithy\\client\\feature" FILES ${SMITHY_CLIENT_FEATURE_SRC})
   endif()
 endif()
 
@@ -106,10 +118,6 @@ if (NO_HTTP_CLIENT)
 endif()
 
 target_link_libraries(${PROJECT_NAME} ${PROJECT_LIBS} ${CLIENT_LIBS})
-
-if(ENABLE_FUNCTIONAL_TESTING)
-    target_link_libraries(${PROJECT_NAME} aws-cpp-sdk-document-test)
-endif()
 
 add_custom_command(TARGET aws-cpp-sdk-core-tests PRE_BUILD
                    COMMAND ${CMAKE_COMMAND} -E copy_directory

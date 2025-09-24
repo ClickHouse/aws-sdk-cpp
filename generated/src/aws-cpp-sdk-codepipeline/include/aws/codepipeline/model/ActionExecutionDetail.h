@@ -37,369 +37,142 @@ namespace Model
   class ActionExecutionDetail
   {
   public:
-    AWS_CODEPIPELINE_API ActionExecutionDetail();
+    AWS_CODEPIPELINE_API ActionExecutionDetail() = default;
     AWS_CODEPIPELINE_API ActionExecutionDetail(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API ActionExecutionDetail& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The pipeline execution ID for the action execution.</p>
      */
-    inline const Aws::String& GetPipelineExecutionId() const{ return m_pipelineExecutionId; }
-
-    /**
-     * <p>The pipeline execution ID for the action execution.</p>
-     */
+    inline const Aws::String& GetPipelineExecutionId() const { return m_pipelineExecutionId; }
     inline bool PipelineExecutionIdHasBeenSet() const { return m_pipelineExecutionIdHasBeenSet; }
+    template<typename PipelineExecutionIdT = Aws::String>
+    void SetPipelineExecutionId(PipelineExecutionIdT&& value) { m_pipelineExecutionIdHasBeenSet = true; m_pipelineExecutionId = std::forward<PipelineExecutionIdT>(value); }
+    template<typename PipelineExecutionIdT = Aws::String>
+    ActionExecutionDetail& WithPipelineExecutionId(PipelineExecutionIdT&& value) { SetPipelineExecutionId(std::forward<PipelineExecutionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pipeline execution ID for the action execution.</p>
-     */
-    inline void SetPipelineExecutionId(const Aws::String& value) { m_pipelineExecutionIdHasBeenSet = true; m_pipelineExecutionId = value; }
-
-    /**
-     * <p>The pipeline execution ID for the action execution.</p>
-     */
-    inline void SetPipelineExecutionId(Aws::String&& value) { m_pipelineExecutionIdHasBeenSet = true; m_pipelineExecutionId = std::move(value); }
-
-    /**
-     * <p>The pipeline execution ID for the action execution.</p>
-     */
-    inline void SetPipelineExecutionId(const char* value) { m_pipelineExecutionIdHasBeenSet = true; m_pipelineExecutionId.assign(value); }
-
-    /**
-     * <p>The pipeline execution ID for the action execution.</p>
-     */
-    inline ActionExecutionDetail& WithPipelineExecutionId(const Aws::String& value) { SetPipelineExecutionId(value); return *this;}
-
-    /**
-     * <p>The pipeline execution ID for the action execution.</p>
-     */
-    inline ActionExecutionDetail& WithPipelineExecutionId(Aws::String&& value) { SetPipelineExecutionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The pipeline execution ID for the action execution.</p>
-     */
-    inline ActionExecutionDetail& WithPipelineExecutionId(const char* value) { SetPipelineExecutionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The action execution ID.</p>
      */
-    inline const Aws::String& GetActionExecutionId() const{ return m_actionExecutionId; }
-
-    /**
-     * <p>The action execution ID.</p>
-     */
+    inline const Aws::String& GetActionExecutionId() const { return m_actionExecutionId; }
     inline bool ActionExecutionIdHasBeenSet() const { return m_actionExecutionIdHasBeenSet; }
+    template<typename ActionExecutionIdT = Aws::String>
+    void SetActionExecutionId(ActionExecutionIdT&& value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId = std::forward<ActionExecutionIdT>(value); }
+    template<typename ActionExecutionIdT = Aws::String>
+    ActionExecutionDetail& WithActionExecutionId(ActionExecutionIdT&& value) { SetActionExecutionId(std::forward<ActionExecutionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The action execution ID.</p>
-     */
-    inline void SetActionExecutionId(const Aws::String& value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId = value; }
-
-    /**
-     * <p>The action execution ID.</p>
-     */
-    inline void SetActionExecutionId(Aws::String&& value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId = std::move(value); }
-
-    /**
-     * <p>The action execution ID.</p>
-     */
-    inline void SetActionExecutionId(const char* value) { m_actionExecutionIdHasBeenSet = true; m_actionExecutionId.assign(value); }
-
-    /**
-     * <p>The action execution ID.</p>
-     */
-    inline ActionExecutionDetail& WithActionExecutionId(const Aws::String& value) { SetActionExecutionId(value); return *this;}
-
-    /**
-     * <p>The action execution ID.</p>
-     */
-    inline ActionExecutionDetail& WithActionExecutionId(Aws::String&& value) { SetActionExecutionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The action execution ID.</p>
-     */
-    inline ActionExecutionDetail& WithActionExecutionId(const char* value) { SetActionExecutionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the pipeline where the action was run.</p>
      */
-    inline int GetPipelineVersion() const{ return m_pipelineVersion; }
-
-    /**
-     * <p>The version of the pipeline where the action was run.</p>
-     */
+    inline int GetPipelineVersion() const { return m_pipelineVersion; }
     inline bool PipelineVersionHasBeenSet() const { return m_pipelineVersionHasBeenSet; }
-
-    /**
-     * <p>The version of the pipeline where the action was run.</p>
-     */
     inline void SetPipelineVersion(int value) { m_pipelineVersionHasBeenSet = true; m_pipelineVersion = value; }
-
-    /**
-     * <p>The version of the pipeline where the action was run.</p>
-     */
     inline ActionExecutionDetail& WithPipelineVersion(int value) { SetPipelineVersion(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the stage that contains the action.</p>
      */
-    inline const Aws::String& GetStageName() const{ return m_stageName; }
-
-    /**
-     * <p>The name of the stage that contains the action.</p>
-     */
+    inline const Aws::String& GetStageName() const { return m_stageName; }
     inline bool StageNameHasBeenSet() const { return m_stageNameHasBeenSet; }
+    template<typename StageNameT = Aws::String>
+    void SetStageName(StageNameT&& value) { m_stageNameHasBeenSet = true; m_stageName = std::forward<StageNameT>(value); }
+    template<typename StageNameT = Aws::String>
+    ActionExecutionDetail& WithStageName(StageNameT&& value) { SetStageName(std::forward<StageNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the stage that contains the action.</p>
-     */
-    inline void SetStageName(const Aws::String& value) { m_stageNameHasBeenSet = true; m_stageName = value; }
-
-    /**
-     * <p>The name of the stage that contains the action.</p>
-     */
-    inline void SetStageName(Aws::String&& value) { m_stageNameHasBeenSet = true; m_stageName = std::move(value); }
-
-    /**
-     * <p>The name of the stage that contains the action.</p>
-     */
-    inline void SetStageName(const char* value) { m_stageNameHasBeenSet = true; m_stageName.assign(value); }
-
-    /**
-     * <p>The name of the stage that contains the action.</p>
-     */
-    inline ActionExecutionDetail& WithStageName(const Aws::String& value) { SetStageName(value); return *this;}
-
-    /**
-     * <p>The name of the stage that contains the action.</p>
-     */
-    inline ActionExecutionDetail& WithStageName(Aws::String&& value) { SetStageName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the stage that contains the action.</p>
-     */
-    inline ActionExecutionDetail& WithStageName(const char* value) { SetStageName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the action.</p>
      */
-    inline const Aws::String& GetActionName() const{ return m_actionName; }
-
-    /**
-     * <p>The name of the action.</p>
-     */
+    inline const Aws::String& GetActionName() const { return m_actionName; }
     inline bool ActionNameHasBeenSet() const { return m_actionNameHasBeenSet; }
+    template<typename ActionNameT = Aws::String>
+    void SetActionName(ActionNameT&& value) { m_actionNameHasBeenSet = true; m_actionName = std::forward<ActionNameT>(value); }
+    template<typename ActionNameT = Aws::String>
+    ActionExecutionDetail& WithActionName(ActionNameT&& value) { SetActionName(std::forward<ActionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the action.</p>
-     */
-    inline void SetActionName(const Aws::String& value) { m_actionNameHasBeenSet = true; m_actionName = value; }
-
-    /**
-     * <p>The name of the action.</p>
-     */
-    inline void SetActionName(Aws::String&& value) { m_actionNameHasBeenSet = true; m_actionName = std::move(value); }
-
-    /**
-     * <p>The name of the action.</p>
-     */
-    inline void SetActionName(const char* value) { m_actionNameHasBeenSet = true; m_actionName.assign(value); }
-
-    /**
-     * <p>The name of the action.</p>
-     */
-    inline ActionExecutionDetail& WithActionName(const Aws::String& value) { SetActionName(value); return *this;}
-
-    /**
-     * <p>The name of the action.</p>
-     */
-    inline ActionExecutionDetail& WithActionName(Aws::String&& value) { SetActionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the action.</p>
-     */
-    inline ActionExecutionDetail& WithActionName(const char* value) { SetActionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The start time of the action execution.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTime() const{ return m_startTime; }
-
-    /**
-     * <p>The start time of the action execution.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTime() const { return m_startTime; }
     inline bool StartTimeHasBeenSet() const { return m_startTimeHasBeenSet; }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    void SetStartTime(StartTimeT&& value) { m_startTimeHasBeenSet = true; m_startTime = std::forward<StartTimeT>(value); }
+    template<typename StartTimeT = Aws::Utils::DateTime>
+    ActionExecutionDetail& WithStartTime(StartTimeT&& value) { SetStartTime(std::forward<StartTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The start time of the action execution.</p>
-     */
-    inline void SetStartTime(const Aws::Utils::DateTime& value) { m_startTimeHasBeenSet = true; m_startTime = value; }
-
-    /**
-     * <p>The start time of the action execution.</p>
-     */
-    inline void SetStartTime(Aws::Utils::DateTime&& value) { m_startTimeHasBeenSet = true; m_startTime = std::move(value); }
-
-    /**
-     * <p>The start time of the action execution.</p>
-     */
-    inline ActionExecutionDetail& WithStartTime(const Aws::Utils::DateTime& value) { SetStartTime(value); return *this;}
-
-    /**
-     * <p>The start time of the action execution.</p>
-     */
-    inline ActionExecutionDetail& WithStartTime(Aws::Utils::DateTime&& value) { SetStartTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The last update time of the action execution.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdateTime() const{ return m_lastUpdateTime; }
-
-    /**
-     * <p>The last update time of the action execution.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdateTime() const { return m_lastUpdateTime; }
     inline bool LastUpdateTimeHasBeenSet() const { return m_lastUpdateTimeHasBeenSet; }
+    template<typename LastUpdateTimeT = Aws::Utils::DateTime>
+    void SetLastUpdateTime(LastUpdateTimeT&& value) { m_lastUpdateTimeHasBeenSet = true; m_lastUpdateTime = std::forward<LastUpdateTimeT>(value); }
+    template<typename LastUpdateTimeT = Aws::Utils::DateTime>
+    ActionExecutionDetail& WithLastUpdateTime(LastUpdateTimeT&& value) { SetLastUpdateTime(std::forward<LastUpdateTimeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The last update time of the action execution.</p>
+     * <p>The ARN of the user who changed the pipeline execution details.</p>
      */
-    inline void SetLastUpdateTime(const Aws::Utils::DateTime& value) { m_lastUpdateTimeHasBeenSet = true; m_lastUpdateTime = value; }
+    inline const Aws::String& GetUpdatedBy() const { return m_updatedBy; }
+    inline bool UpdatedByHasBeenSet() const { return m_updatedByHasBeenSet; }
+    template<typename UpdatedByT = Aws::String>
+    void SetUpdatedBy(UpdatedByT&& value) { m_updatedByHasBeenSet = true; m_updatedBy = std::forward<UpdatedByT>(value); }
+    template<typename UpdatedByT = Aws::String>
+    ActionExecutionDetail& WithUpdatedBy(UpdatedByT&& value) { SetUpdatedBy(std::forward<UpdatedByT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The last update time of the action execution.</p>
-     */
-    inline void SetLastUpdateTime(Aws::Utils::DateTime&& value) { m_lastUpdateTimeHasBeenSet = true; m_lastUpdateTime = std::move(value); }
-
-    /**
-     * <p>The last update time of the action execution.</p>
-     */
-    inline ActionExecutionDetail& WithLastUpdateTime(const Aws::Utils::DateTime& value) { SetLastUpdateTime(value); return *this;}
-
-    /**
-     * <p>The last update time of the action execution.</p>
-     */
-    inline ActionExecutionDetail& WithLastUpdateTime(Aws::Utils::DateTime&& value) { SetLastUpdateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The status of the action execution. Status categories are
      * <code>InProgress</code>, <code>Succeeded</code>, and <code>Failed</code>.</p>
      */
-    inline const ActionExecutionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> The status of the action execution. Status categories are
-     * <code>InProgress</code>, <code>Succeeded</code>, and <code>Failed</code>.</p>
-     */
+    inline ActionExecutionStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ActionExecutionStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ActionExecutionDetail& WithStatus(ActionExecutionStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The status of the action execution. Status categories are
-     * <code>InProgress</code>, <code>Succeeded</code>, and <code>Failed</code>.</p>
-     */
-    inline void SetStatus(const ActionExecutionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> The status of the action execution. Status categories are
-     * <code>InProgress</code>, <code>Succeeded</code>, and <code>Failed</code>.</p>
-     */
-    inline void SetStatus(ActionExecutionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> The status of the action execution. Status categories are
-     * <code>InProgress</code>, <code>Succeeded</code>, and <code>Failed</code>.</p>
-     */
-    inline ActionExecutionDetail& WithStatus(const ActionExecutionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> The status of the action execution. Status categories are
-     * <code>InProgress</code>, <code>Succeeded</code>, and <code>Failed</code>.</p>
-     */
-    inline ActionExecutionDetail& WithStatus(ActionExecutionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Input details for the action execution, such as role ARN, Region, and input
      * artifacts.</p>
      */
-    inline const ActionExecutionInput& GetInput() const{ return m_input; }
-
-    /**
-     * <p>Input details for the action execution, such as role ARN, Region, and input
-     * artifacts.</p>
-     */
+    inline const ActionExecutionInput& GetInput() const { return m_input; }
     inline bool InputHasBeenSet() const { return m_inputHasBeenSet; }
+    template<typename InputT = ActionExecutionInput>
+    void SetInput(InputT&& value) { m_inputHasBeenSet = true; m_input = std::forward<InputT>(value); }
+    template<typename InputT = ActionExecutionInput>
+    ActionExecutionDetail& WithInput(InputT&& value) { SetInput(std::forward<InputT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Input details for the action execution, such as role ARN, Region, and input
-     * artifacts.</p>
-     */
-    inline void SetInput(const ActionExecutionInput& value) { m_inputHasBeenSet = true; m_input = value; }
-
-    /**
-     * <p>Input details for the action execution, such as role ARN, Region, and input
-     * artifacts.</p>
-     */
-    inline void SetInput(ActionExecutionInput&& value) { m_inputHasBeenSet = true; m_input = std::move(value); }
-
-    /**
-     * <p>Input details for the action execution, such as role ARN, Region, and input
-     * artifacts.</p>
-     */
-    inline ActionExecutionDetail& WithInput(const ActionExecutionInput& value) { SetInput(value); return *this;}
-
-    /**
-     * <p>Input details for the action execution, such as role ARN, Region, and input
-     * artifacts.</p>
-     */
-    inline ActionExecutionDetail& WithInput(ActionExecutionInput&& value) { SetInput(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Output details for the action execution, such as the action execution
      * result.</p>
      */
-    inline const ActionExecutionOutput& GetOutput() const{ return m_output; }
-
-    /**
-     * <p>Output details for the action execution, such as the action execution
-     * result.</p>
-     */
+    inline const ActionExecutionOutput& GetOutput() const { return m_output; }
     inline bool OutputHasBeenSet() const { return m_outputHasBeenSet; }
-
-    /**
-     * <p>Output details for the action execution, such as the action execution
-     * result.</p>
-     */
-    inline void SetOutput(const ActionExecutionOutput& value) { m_outputHasBeenSet = true; m_output = value; }
-
-    /**
-     * <p>Output details for the action execution, such as the action execution
-     * result.</p>
-     */
-    inline void SetOutput(ActionExecutionOutput&& value) { m_outputHasBeenSet = true; m_output = std::move(value); }
-
-    /**
-     * <p>Output details for the action execution, such as the action execution
-     * result.</p>
-     */
-    inline ActionExecutionDetail& WithOutput(const ActionExecutionOutput& value) { SetOutput(value); return *this;}
-
-    /**
-     * <p>Output details for the action execution, such as the action execution
-     * result.</p>
-     */
-    inline ActionExecutionDetail& WithOutput(ActionExecutionOutput&& value) { SetOutput(std::move(value)); return *this;}
-
+    template<typename OutputT = ActionExecutionOutput>
+    void SetOutput(OutputT&& value) { m_outputHasBeenSet = true; m_output = std::forward<OutputT>(value); }
+    template<typename OutputT = ActionExecutionOutput>
+    ActionExecutionDetail& WithOutput(OutputT&& value) { SetOutput(std::forward<OutputT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_pipelineExecutionId;
@@ -408,7 +181,7 @@ namespace Model
     Aws::String m_actionExecutionId;
     bool m_actionExecutionIdHasBeenSet = false;
 
-    int m_pipelineVersion;
+    int m_pipelineVersion{0};
     bool m_pipelineVersionHasBeenSet = false;
 
     Aws::String m_stageName;
@@ -417,13 +190,16 @@ namespace Model
     Aws::String m_actionName;
     bool m_actionNameHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startTime;
+    Aws::Utils::DateTime m_startTime{};
     bool m_startTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdateTime;
+    Aws::Utils::DateTime m_lastUpdateTime{};
     bool m_lastUpdateTimeHasBeenSet = false;
 
-    ActionExecutionStatus m_status;
+    Aws::String m_updatedBy;
+    bool m_updatedByHasBeenSet = false;
+
+    ActionExecutionStatus m_status{ActionExecutionStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     ActionExecutionInput m_input;

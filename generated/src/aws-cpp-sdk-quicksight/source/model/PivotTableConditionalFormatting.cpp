@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-PivotTableConditionalFormatting::PivotTableConditionalFormatting() : 
-    m_conditionalFormattingOptionsHasBeenSet(false)
-{
-}
-
-PivotTableConditionalFormatting::PivotTableConditionalFormatting(JsonView jsonValue) : 
-    m_conditionalFormattingOptionsHasBeenSet(false)
+PivotTableConditionalFormatting::PivotTableConditionalFormatting(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ PivotTableConditionalFormatting& PivotTableConditionalFormatting::operator =(Jso
     }
     m_conditionalFormattingOptionsHasBeenSet = true;
   }
-
   return *this;
 }
 

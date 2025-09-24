@@ -21,7 +21,7 @@ namespace Model
   class DescribeFolderRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API DescribeFolderRequest();
+    AWS_QUICKSIGHT_API DescribeFolderRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID for the Amazon Web Services account that contains the folder.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    DescribeFolderRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline DescribeFolderRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline DescribeFolderRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the Amazon Web Services account that contains the folder.</p>
-     */
-    inline DescribeFolderRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the folder.</p>
      */
-    inline const Aws::String& GetFolderId() const{ return m_folderId; }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
+    inline const Aws::String& GetFolderId() const { return m_folderId; }
     inline bool FolderIdHasBeenSet() const { return m_folderIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline void SetFolderId(const Aws::String& value) { m_folderIdHasBeenSet = true; m_folderId = value; }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline void SetFolderId(Aws::String&& value) { m_folderIdHasBeenSet = true; m_folderId = std::move(value); }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline void SetFolderId(const char* value) { m_folderIdHasBeenSet = true; m_folderId.assign(value); }
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline DescribeFolderRequest& WithFolderId(const Aws::String& value) { SetFolderId(value); return *this;}
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline DescribeFolderRequest& WithFolderId(Aws::String&& value) { SetFolderId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the folder.</p>
-     */
-    inline DescribeFolderRequest& WithFolderId(const char* value) { SetFolderId(value); return *this;}
-
+    template<typename FolderIdT = Aws::String>
+    void SetFolderId(FolderIdT&& value) { m_folderIdHasBeenSet = true; m_folderId = std::forward<FolderIdT>(value); }
+    template<typename FolderIdT = Aws::String>
+    DescribeFolderRequest& WithFolderId(FolderIdT&& value) { SetFolderId(std::forward<FolderIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

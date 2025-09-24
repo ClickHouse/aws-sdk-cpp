@@ -26,7 +26,7 @@ namespace Model
   class ListPrivacyBudgetsRequest : public CleanRoomsRequest
   {
   public:
-    AWS_CLEANROOMS_API ListPrivacyBudgetsRequest();
+    AWS_CLEANROOMS_API ListPrivacyBudgetsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,183 +39,65 @@ namespace Model
     AWS_CLEANROOMS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>A unique identifier for one of your memberships for a collaboration. The
      * privacy budget is retrieved from the collaboration that this membership belongs
      * to. Accepts a membership ID.</p>
      */
-    inline const Aws::String& GetMembershipIdentifier() const{ return m_membershipIdentifier; }
-
-    /**
-     * <p>A unique identifier for one of your memberships for a collaboration. The
-     * privacy budget is retrieved from the collaboration that this membership belongs
-     * to. Accepts a membership ID.</p>
-     */
+    inline const Aws::String& GetMembershipIdentifier() const { return m_membershipIdentifier; }
     inline bool MembershipIdentifierHasBeenSet() const { return m_membershipIdentifierHasBeenSet; }
+    template<typename MembershipIdentifierT = Aws::String>
+    void SetMembershipIdentifier(MembershipIdentifierT&& value) { m_membershipIdentifierHasBeenSet = true; m_membershipIdentifier = std::forward<MembershipIdentifierT>(value); }
+    template<typename MembershipIdentifierT = Aws::String>
+    ListPrivacyBudgetsRequest& WithMembershipIdentifier(MembershipIdentifierT&& value) { SetMembershipIdentifier(std::forward<MembershipIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for one of your memberships for a collaboration. The
-     * privacy budget is retrieved from the collaboration that this membership belongs
-     * to. Accepts a membership ID.</p>
-     */
-    inline void SetMembershipIdentifier(const Aws::String& value) { m_membershipIdentifierHasBeenSet = true; m_membershipIdentifier = value; }
-
-    /**
-     * <p>A unique identifier for one of your memberships for a collaboration. The
-     * privacy budget is retrieved from the collaboration that this membership belongs
-     * to. Accepts a membership ID.</p>
-     */
-    inline void SetMembershipIdentifier(Aws::String&& value) { m_membershipIdentifierHasBeenSet = true; m_membershipIdentifier = std::move(value); }
-
-    /**
-     * <p>A unique identifier for one of your memberships for a collaboration. The
-     * privacy budget is retrieved from the collaboration that this membership belongs
-     * to. Accepts a membership ID.</p>
-     */
-    inline void SetMembershipIdentifier(const char* value) { m_membershipIdentifierHasBeenSet = true; m_membershipIdentifier.assign(value); }
-
-    /**
-     * <p>A unique identifier for one of your memberships for a collaboration. The
-     * privacy budget is retrieved from the collaboration that this membership belongs
-     * to. Accepts a membership ID.</p>
-     */
-    inline ListPrivacyBudgetsRequest& WithMembershipIdentifier(const Aws::String& value) { SetMembershipIdentifier(value); return *this;}
-
-    /**
-     * <p>A unique identifier for one of your memberships for a collaboration. The
-     * privacy budget is retrieved from the collaboration that this membership belongs
-     * to. Accepts a membership ID.</p>
-     */
-    inline ListPrivacyBudgetsRequest& WithMembershipIdentifier(Aws::String&& value) { SetMembershipIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for one of your memberships for a collaboration. The
-     * privacy budget is retrieved from the collaboration that this membership belongs
-     * to. Accepts a membership ID.</p>
-     */
-    inline ListPrivacyBudgetsRequest& WithMembershipIdentifier(const char* value) { SetMembershipIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The privacy budget type.</p>
      */
-    inline const PrivacyBudgetType& GetPrivacyBudgetType() const{ return m_privacyBudgetType; }
-
-    /**
-     * <p>The privacy budget type.</p>
-     */
+    inline PrivacyBudgetType GetPrivacyBudgetType() const { return m_privacyBudgetType; }
     inline bool PrivacyBudgetTypeHasBeenSet() const { return m_privacyBudgetTypeHasBeenSet; }
+    inline void SetPrivacyBudgetType(PrivacyBudgetType value) { m_privacyBudgetTypeHasBeenSet = true; m_privacyBudgetType = value; }
+    inline ListPrivacyBudgetsRequest& WithPrivacyBudgetType(PrivacyBudgetType value) { SetPrivacyBudgetType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The privacy budget type.</p>
+     * <p>The pagination token that's used to fetch the next set of results.</p>
      */
-    inline void SetPrivacyBudgetType(const PrivacyBudgetType& value) { m_privacyBudgetTypeHasBeenSet = true; m_privacyBudgetType = value; }
-
-    /**
-     * <p>The privacy budget type.</p>
-     */
-    inline void SetPrivacyBudgetType(PrivacyBudgetType&& value) { m_privacyBudgetTypeHasBeenSet = true; m_privacyBudgetType = std::move(value); }
-
-    /**
-     * <p>The privacy budget type.</p>
-     */
-    inline ListPrivacyBudgetsRequest& WithPrivacyBudgetType(const PrivacyBudgetType& value) { SetPrivacyBudgetType(value); return *this;}
-
-    /**
-     * <p>The privacy budget type.</p>
-     */
-    inline ListPrivacyBudgetsRequest& WithPrivacyBudgetType(PrivacyBudgetType&& value) { SetPrivacyBudgetType(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListPrivacyBudgetsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
+     * <p>The maximum number of results that are returned for an API request call. The
+     * service chooses a default number if you don't set one. The service might return
+     * a `nextToken` even if the `maxResults` value has not been met.</p>
      */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline ListPrivacyBudgetsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline ListPrivacyBudgetsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token value retrieved from a previous call to access the next page of
-     * results.</p>
-     */
-    inline ListPrivacyBudgetsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
-    /**
-     * <p>The maximum size of the results that is returned per call. Service chooses a
-     * default if it has not been set. Service may return a nextToken even if the
-     * maximum results has not been met.</p>
-     */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum size of the results that is returned per call. Service chooses a
-     * default if it has not been set. Service may return a nextToken even if the
-     * maximum results has not been met.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum size of the results that is returned per call. Service chooses a
-     * default if it has not been set. Service may return a nextToken even if the
-     * maximum results has not been met.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum size of the results that is returned per call. Service chooses a
-     * default if it has not been set. Service may return a nextToken even if the
-     * maximum results has not been met.</p>
-     */
     inline ListPrivacyBudgetsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_membershipIdentifier;
     bool m_membershipIdentifierHasBeenSet = false;
 
-    PrivacyBudgetType m_privacyBudgetType;
+    PrivacyBudgetType m_privacyBudgetType{PrivacyBudgetType::NOT_SET};
     bool m_privacyBudgetTypeHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

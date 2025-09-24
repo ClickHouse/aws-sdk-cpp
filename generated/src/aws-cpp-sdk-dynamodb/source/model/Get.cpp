@@ -18,19 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-Get::Get() : 
-    m_keyHasBeenSet(false),
-    m_tableNameHasBeenSet(false),
-    m_projectionExpressionHasBeenSet(false),
-    m_expressionAttributeNamesHasBeenSet(false)
-{
-}
-
-Get::Get(JsonView jsonValue) : 
-    m_keyHasBeenSet(false),
-    m_tableNameHasBeenSet(false),
-    m_projectionExpressionHasBeenSet(false),
-    m_expressionAttributeNamesHasBeenSet(false)
+Get::Get(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,21 +34,16 @@ Get& Get::operator =(JsonView jsonValue)
     }
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TableName"))
   {
     m_tableName = jsonValue.GetString("TableName");
-
     m_tableNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProjectionExpression"))
   {
     m_projectionExpression = jsonValue.GetString("ProjectionExpression");
-
     m_projectionExpressionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExpressionAttributeNames"))
   {
     Aws::Map<Aws::String, JsonView> expressionAttributeNamesJsonMap = jsonValue.GetObject("ExpressionAttributeNames").GetAllObjects();
@@ -70,7 +53,6 @@ Get& Get::operator =(JsonView jsonValue)
     }
     m_expressionAttributeNamesHasBeenSet = true;
   }
-
   return *this;
 }
 

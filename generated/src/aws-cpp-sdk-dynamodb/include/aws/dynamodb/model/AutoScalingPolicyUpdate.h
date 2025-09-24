@@ -33,83 +33,35 @@ namespace Model
   class AutoScalingPolicyUpdate
   {
   public:
-    AWS_DYNAMODB_API AutoScalingPolicyUpdate();
+    AWS_DYNAMODB_API AutoScalingPolicyUpdate() = default;
     AWS_DYNAMODB_API AutoScalingPolicyUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API AutoScalingPolicyUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DYNAMODB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the scaling policy.</p>
      */
-    inline const Aws::String& GetPolicyName() const{ return m_policyName; }
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
+    inline const Aws::String& GetPolicyName() const { return m_policyName; }
     inline bool PolicyNameHasBeenSet() const { return m_policyNameHasBeenSet; }
+    template<typename PolicyNameT = Aws::String>
+    void SetPolicyName(PolicyNameT&& value) { m_policyNameHasBeenSet = true; m_policyName = std::forward<PolicyNameT>(value); }
+    template<typename PolicyNameT = Aws::String>
+    AutoScalingPolicyUpdate& WithPolicyName(PolicyNameT&& value) { SetPolicyName(std::forward<PolicyNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline void SetPolicyName(const Aws::String& value) { m_policyNameHasBeenSet = true; m_policyName = value; }
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline void SetPolicyName(Aws::String&& value) { m_policyNameHasBeenSet = true; m_policyName = std::move(value); }
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline void SetPolicyName(const char* value) { m_policyNameHasBeenSet = true; m_policyName.assign(value); }
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline AutoScalingPolicyUpdate& WithPolicyName(const Aws::String& value) { SetPolicyName(value); return *this;}
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline AutoScalingPolicyUpdate& WithPolicyName(Aws::String&& value) { SetPolicyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the scaling policy.</p>
-     */
-    inline AutoScalingPolicyUpdate& WithPolicyName(const char* value) { SetPolicyName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Represents a target tracking scaling policy configuration.</p>
      */
-    inline const AutoScalingTargetTrackingScalingPolicyConfigurationUpdate& GetTargetTrackingScalingPolicyConfiguration() const{ return m_targetTrackingScalingPolicyConfiguration; }
-
-    /**
-     * <p>Represents a target tracking scaling policy configuration.</p>
-     */
+    inline const AutoScalingTargetTrackingScalingPolicyConfigurationUpdate& GetTargetTrackingScalingPolicyConfiguration() const { return m_targetTrackingScalingPolicyConfiguration; }
     inline bool TargetTrackingScalingPolicyConfigurationHasBeenSet() const { return m_targetTrackingScalingPolicyConfigurationHasBeenSet; }
-
-    /**
-     * <p>Represents a target tracking scaling policy configuration.</p>
-     */
-    inline void SetTargetTrackingScalingPolicyConfiguration(const AutoScalingTargetTrackingScalingPolicyConfigurationUpdate& value) { m_targetTrackingScalingPolicyConfigurationHasBeenSet = true; m_targetTrackingScalingPolicyConfiguration = value; }
-
-    /**
-     * <p>Represents a target tracking scaling policy configuration.</p>
-     */
-    inline void SetTargetTrackingScalingPolicyConfiguration(AutoScalingTargetTrackingScalingPolicyConfigurationUpdate&& value) { m_targetTrackingScalingPolicyConfigurationHasBeenSet = true; m_targetTrackingScalingPolicyConfiguration = std::move(value); }
-
-    /**
-     * <p>Represents a target tracking scaling policy configuration.</p>
-     */
-    inline AutoScalingPolicyUpdate& WithTargetTrackingScalingPolicyConfiguration(const AutoScalingTargetTrackingScalingPolicyConfigurationUpdate& value) { SetTargetTrackingScalingPolicyConfiguration(value); return *this;}
-
-    /**
-     * <p>Represents a target tracking scaling policy configuration.</p>
-     */
-    inline AutoScalingPolicyUpdate& WithTargetTrackingScalingPolicyConfiguration(AutoScalingTargetTrackingScalingPolicyConfigurationUpdate&& value) { SetTargetTrackingScalingPolicyConfiguration(std::move(value)); return *this;}
-
+    template<typename TargetTrackingScalingPolicyConfigurationT = AutoScalingTargetTrackingScalingPolicyConfigurationUpdate>
+    void SetTargetTrackingScalingPolicyConfiguration(TargetTrackingScalingPolicyConfigurationT&& value) { m_targetTrackingScalingPolicyConfigurationHasBeenSet = true; m_targetTrackingScalingPolicyConfiguration = std::forward<TargetTrackingScalingPolicyConfigurationT>(value); }
+    template<typename TargetTrackingScalingPolicyConfigurationT = AutoScalingTargetTrackingScalingPolicyConfigurationUpdate>
+    AutoScalingPolicyUpdate& WithTargetTrackingScalingPolicyConfiguration(TargetTrackingScalingPolicyConfigurationT&& value) { SetTargetTrackingScalingPolicyConfiguration(std::forward<TargetTrackingScalingPolicyConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_policyName;

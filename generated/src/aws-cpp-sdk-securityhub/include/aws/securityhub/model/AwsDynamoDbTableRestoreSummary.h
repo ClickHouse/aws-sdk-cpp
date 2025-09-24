@@ -31,195 +31,60 @@ namespace Model
   class AwsDynamoDbTableRestoreSummary
   {
   public:
-    AWS_SECURITYHUB_API AwsDynamoDbTableRestoreSummary();
+    AWS_SECURITYHUB_API AwsDynamoDbTableRestoreSummary() = default;
     AWS_SECURITYHUB_API AwsDynamoDbTableRestoreSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsDynamoDbTableRestoreSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ARN of the source backup from which the table was restored.</p>
      */
-    inline const Aws::String& GetSourceBackupArn() const{ return m_sourceBackupArn; }
-
-    /**
-     * <p>The ARN of the source backup from which the table was restored.</p>
-     */
+    inline const Aws::String& GetSourceBackupArn() const { return m_sourceBackupArn; }
     inline bool SourceBackupArnHasBeenSet() const { return m_sourceBackupArnHasBeenSet; }
+    template<typename SourceBackupArnT = Aws::String>
+    void SetSourceBackupArn(SourceBackupArnT&& value) { m_sourceBackupArnHasBeenSet = true; m_sourceBackupArn = std::forward<SourceBackupArnT>(value); }
+    template<typename SourceBackupArnT = Aws::String>
+    AwsDynamoDbTableRestoreSummary& WithSourceBackupArn(SourceBackupArnT&& value) { SetSourceBackupArn(std::forward<SourceBackupArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the source backup from which the table was restored.</p>
-     */
-    inline void SetSourceBackupArn(const Aws::String& value) { m_sourceBackupArnHasBeenSet = true; m_sourceBackupArn = value; }
-
-    /**
-     * <p>The ARN of the source backup from which the table was restored.</p>
-     */
-    inline void SetSourceBackupArn(Aws::String&& value) { m_sourceBackupArnHasBeenSet = true; m_sourceBackupArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the source backup from which the table was restored.</p>
-     */
-    inline void SetSourceBackupArn(const char* value) { m_sourceBackupArnHasBeenSet = true; m_sourceBackupArn.assign(value); }
-
-    /**
-     * <p>The ARN of the source backup from which the table was restored.</p>
-     */
-    inline AwsDynamoDbTableRestoreSummary& WithSourceBackupArn(const Aws::String& value) { SetSourceBackupArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the source backup from which the table was restored.</p>
-     */
-    inline AwsDynamoDbTableRestoreSummary& WithSourceBackupArn(Aws::String&& value) { SetSourceBackupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the source backup from which the table was restored.</p>
-     */
-    inline AwsDynamoDbTableRestoreSummary& WithSourceBackupArn(const char* value) { SetSourceBackupArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the source table for the backup.</p>
      */
-    inline const Aws::String& GetSourceTableArn() const{ return m_sourceTableArn; }
-
-    /**
-     * <p>The ARN of the source table for the backup.</p>
-     */
+    inline const Aws::String& GetSourceTableArn() const { return m_sourceTableArn; }
     inline bool SourceTableArnHasBeenSet() const { return m_sourceTableArnHasBeenSet; }
+    template<typename SourceTableArnT = Aws::String>
+    void SetSourceTableArn(SourceTableArnT&& value) { m_sourceTableArnHasBeenSet = true; m_sourceTableArn = std::forward<SourceTableArnT>(value); }
+    template<typename SourceTableArnT = Aws::String>
+    AwsDynamoDbTableRestoreSummary& WithSourceTableArn(SourceTableArnT&& value) { SetSourceTableArn(std::forward<SourceTableArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ARN of the source table for the backup.</p>
+     * <p>Indicates the point in time that the table was restored to.</p> <p>For more
+     * information about the validation and formatting of timestamp fields in Security
+     * Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline void SetSourceTableArn(const Aws::String& value) { m_sourceTableArnHasBeenSet = true; m_sourceTableArn = value; }
-
-    /**
-     * <p>The ARN of the source table for the backup.</p>
-     */
-    inline void SetSourceTableArn(Aws::String&& value) { m_sourceTableArnHasBeenSet = true; m_sourceTableArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the source table for the backup.</p>
-     */
-    inline void SetSourceTableArn(const char* value) { m_sourceTableArnHasBeenSet = true; m_sourceTableArn.assign(value); }
-
-    /**
-     * <p>The ARN of the source table for the backup.</p>
-     */
-    inline AwsDynamoDbTableRestoreSummary& WithSourceTableArn(const Aws::String& value) { SetSourceTableArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the source table for the backup.</p>
-     */
-    inline AwsDynamoDbTableRestoreSummary& WithSourceTableArn(Aws::String&& value) { SetSourceTableArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the source table for the backup.</p>
-     */
-    inline AwsDynamoDbTableRestoreSummary& WithSourceTableArn(const char* value) { SetSourceTableArn(value); return *this;}
-
-
-    /**
-     * <p>Indicates the point in time that the table was restored to.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline const Aws::String& GetRestoreDateTime() const{ return m_restoreDateTime; }
-
-    /**
-     * <p>Indicates the point in time that the table was restored to.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetRestoreDateTime() const { return m_restoreDateTime; }
     inline bool RestoreDateTimeHasBeenSet() const { return m_restoreDateTimeHasBeenSet; }
+    template<typename RestoreDateTimeT = Aws::String>
+    void SetRestoreDateTime(RestoreDateTimeT&& value) { m_restoreDateTimeHasBeenSet = true; m_restoreDateTime = std::forward<RestoreDateTimeT>(value); }
+    template<typename RestoreDateTimeT = Aws::String>
+    AwsDynamoDbTableRestoreSummary& WithRestoreDateTime(RestoreDateTimeT&& value) { SetRestoreDateTime(std::forward<RestoreDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates the point in time that the table was restored to.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetRestoreDateTime(const Aws::String& value) { m_restoreDateTimeHasBeenSet = true; m_restoreDateTime = value; }
-
-    /**
-     * <p>Indicates the point in time that the table was restored to.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetRestoreDateTime(Aws::String&& value) { m_restoreDateTimeHasBeenSet = true; m_restoreDateTime = std::move(value); }
-
-    /**
-     * <p>Indicates the point in time that the table was restored to.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetRestoreDateTime(const char* value) { m_restoreDateTimeHasBeenSet = true; m_restoreDateTime.assign(value); }
-
-    /**
-     * <p>Indicates the point in time that the table was restored to.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsDynamoDbTableRestoreSummary& WithRestoreDateTime(const Aws::String& value) { SetRestoreDateTime(value); return *this;}
-
-    /**
-     * <p>Indicates the point in time that the table was restored to.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsDynamoDbTableRestoreSummary& WithRestoreDateTime(Aws::String&& value) { SetRestoreDateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates the point in time that the table was restored to.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsDynamoDbTableRestoreSummary& WithRestoreDateTime(const char* value) { SetRestoreDateTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether a restore is currently in progress.</p>
      */
-    inline bool GetRestoreInProgress() const{ return m_restoreInProgress; }
-
-    /**
-     * <p>Whether a restore is currently in progress.</p>
-     */
+    inline bool GetRestoreInProgress() const { return m_restoreInProgress; }
     inline bool RestoreInProgressHasBeenSet() const { return m_restoreInProgressHasBeenSet; }
-
-    /**
-     * <p>Whether a restore is currently in progress.</p>
-     */
     inline void SetRestoreInProgress(bool value) { m_restoreInProgressHasBeenSet = true; m_restoreInProgress = value; }
-
-    /**
-     * <p>Whether a restore is currently in progress.</p>
-     */
     inline AwsDynamoDbTableRestoreSummary& WithRestoreInProgress(bool value) { SetRestoreInProgress(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_sourceBackupArn;
@@ -231,7 +96,7 @@ namespace Model
     Aws::String m_restoreDateTime;
     bool m_restoreDateTimeHasBeenSet = false;
 
-    bool m_restoreInProgress;
+    bool m_restoreInProgress{false};
     bool m_restoreInProgressHasBeenSet = false;
   };
 

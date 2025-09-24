@@ -18,19 +18,7 @@ namespace GuardDuty
 namespace Model
 {
 
-CoverageSortCriteria::CoverageSortCriteria() : 
-    m_attributeName(CoverageSortKey::NOT_SET),
-    m_attributeNameHasBeenSet(false),
-    m_orderBy(OrderBy::NOT_SET),
-    m_orderByHasBeenSet(false)
-{
-}
-
-CoverageSortCriteria::CoverageSortCriteria(JsonView jsonValue) : 
-    m_attributeName(CoverageSortKey::NOT_SET),
-    m_attributeNameHasBeenSet(false),
-    m_orderBy(OrderBy::NOT_SET),
-    m_orderByHasBeenSet(false)
+CoverageSortCriteria::CoverageSortCriteria(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ CoverageSortCriteria& CoverageSortCriteria::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("attributeName"))
   {
     m_attributeName = CoverageSortKeyMapper::GetCoverageSortKeyForName(jsonValue.GetString("attributeName"));
-
     m_attributeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("orderBy"))
   {
     m_orderBy = OrderByMapper::GetOrderByForName(jsonValue.GetString("orderBy"));
-
     m_orderByHasBeenSet = true;
   }
-
   return *this;
 }
 

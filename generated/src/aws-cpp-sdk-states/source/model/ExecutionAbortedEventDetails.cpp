@@ -18,15 +18,7 @@ namespace SFN
 namespace Model
 {
 
-ExecutionAbortedEventDetails::ExecutionAbortedEventDetails() : 
-    m_errorHasBeenSet(false),
-    m_causeHasBeenSet(false)
-{
-}
-
-ExecutionAbortedEventDetails::ExecutionAbortedEventDetails(JsonView jsonValue) : 
-    m_errorHasBeenSet(false),
-    m_causeHasBeenSet(false)
+ExecutionAbortedEventDetails::ExecutionAbortedEventDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ExecutionAbortedEventDetails& ExecutionAbortedEventDetails::operator =(JsonView 
   if(jsonValue.ValueExists("error"))
   {
     m_error = jsonValue.GetString("error");
-
     m_errorHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("cause"))
   {
     m_cause = jsonValue.GetString("cause");
-
     m_causeHasBeenSet = true;
   }
-
   return *this;
 }
 

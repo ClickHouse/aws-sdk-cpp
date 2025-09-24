@@ -33,104 +33,45 @@ namespace Model
   class AssetPropertyValue
   {
   public:
-    AWS_IOTSITEWISE_API AssetPropertyValue();
+    AWS_IOTSITEWISE_API AssetPropertyValue() = default;
     AWS_IOTSITEWISE_API AssetPropertyValue(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API AssetPropertyValue& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value of the asset property (see <code>Variant</code>).</p>
      */
-    inline const Variant& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the asset property (see <code>Variant</code>).</p>
-     */
+    inline const Variant& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
+    template<typename ValueT = Variant>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = Variant>
+    AssetPropertyValue& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The value of the asset property (see <code>Variant</code>).</p>
-     */
-    inline void SetValue(const Variant& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the asset property (see <code>Variant</code>).</p>
-     */
-    inline void SetValue(Variant&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the asset property (see <code>Variant</code>).</p>
-     */
-    inline AssetPropertyValue& WithValue(const Variant& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the asset property (see <code>Variant</code>).</p>
-     */
-    inline AssetPropertyValue& WithValue(Variant&& value) { SetValue(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of the asset property value.</p>
      */
-    inline const TimeInNanos& GetTimestamp() const{ return m_timestamp; }
-
-    /**
-     * <p>The timestamp of the asset property value.</p>
-     */
+    inline const TimeInNanos& GetTimestamp() const { return m_timestamp; }
     inline bool TimestampHasBeenSet() const { return m_timestampHasBeenSet; }
+    template<typename TimestampT = TimeInNanos>
+    void SetTimestamp(TimestampT&& value) { m_timestampHasBeenSet = true; m_timestamp = std::forward<TimestampT>(value); }
+    template<typename TimestampT = TimeInNanos>
+    AssetPropertyValue& WithTimestamp(TimestampT&& value) { SetTimestamp(std::forward<TimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of the asset property value.</p>
-     */
-    inline void SetTimestamp(const TimeInNanos& value) { m_timestampHasBeenSet = true; m_timestamp = value; }
-
-    /**
-     * <p>The timestamp of the asset property value.</p>
-     */
-    inline void SetTimestamp(TimeInNanos&& value) { m_timestampHasBeenSet = true; m_timestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp of the asset property value.</p>
-     */
-    inline AssetPropertyValue& WithTimestamp(const TimeInNanos& value) { SetTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp of the asset property value.</p>
-     */
-    inline AssetPropertyValue& WithTimestamp(TimeInNanos&& value) { SetTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The quality of the asset property value.</p>
      */
-    inline const Quality& GetQuality() const{ return m_quality; }
-
-    /**
-     * <p>The quality of the asset property value.</p>
-     */
+    inline Quality GetQuality() const { return m_quality; }
     inline bool QualityHasBeenSet() const { return m_qualityHasBeenSet; }
-
-    /**
-     * <p>The quality of the asset property value.</p>
-     */
-    inline void SetQuality(const Quality& value) { m_qualityHasBeenSet = true; m_quality = value; }
-
-    /**
-     * <p>The quality of the asset property value.</p>
-     */
-    inline void SetQuality(Quality&& value) { m_qualityHasBeenSet = true; m_quality = std::move(value); }
-
-    /**
-     * <p>The quality of the asset property value.</p>
-     */
-    inline AssetPropertyValue& WithQuality(const Quality& value) { SetQuality(value); return *this;}
-
-    /**
-     * <p>The quality of the asset property value.</p>
-     */
-    inline AssetPropertyValue& WithQuality(Quality&& value) { SetQuality(std::move(value)); return *this;}
-
+    inline void SetQuality(Quality value) { m_qualityHasBeenSet = true; m_quality = value; }
+    inline AssetPropertyValue& WithQuality(Quality value) { SetQuality(value); return *this;}
+    ///@}
   private:
 
     Variant m_value;
@@ -139,7 +80,7 @@ namespace Model
     TimeInNanos m_timestamp;
     bool m_timestampHasBeenSet = false;
 
-    Quality m_quality;
+    Quality m_quality{Quality::NOT_SET};
     bool m_qualityHasBeenSet = false;
   };
 

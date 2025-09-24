@@ -24,7 +24,7 @@ namespace Model
   class GetXssMatchSetRequest : public WAFRegionalRequest
   {
   public:
-    AWS_WAFREGIONAL_API GetXssMatchSetRequest();
+    AWS_WAFREGIONAL_API GetXssMatchSetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,62 +37,19 @@ namespace Model
     AWS_WAFREGIONAL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to
      * get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by
      * <a>ListXssMatchSets</a>.</p>
      */
-    inline const Aws::String& GetXssMatchSetId() const{ return m_xssMatchSetId; }
-
-    /**
-     * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to
-     * get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by
-     * <a>ListXssMatchSets</a>.</p>
-     */
+    inline const Aws::String& GetXssMatchSetId() const { return m_xssMatchSetId; }
     inline bool XssMatchSetIdHasBeenSet() const { return m_xssMatchSetIdHasBeenSet; }
-
-    /**
-     * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to
-     * get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by
-     * <a>ListXssMatchSets</a>.</p>
-     */
-    inline void SetXssMatchSetId(const Aws::String& value) { m_xssMatchSetIdHasBeenSet = true; m_xssMatchSetId = value; }
-
-    /**
-     * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to
-     * get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by
-     * <a>ListXssMatchSets</a>.</p>
-     */
-    inline void SetXssMatchSetId(Aws::String&& value) { m_xssMatchSetIdHasBeenSet = true; m_xssMatchSetId = std::move(value); }
-
-    /**
-     * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to
-     * get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by
-     * <a>ListXssMatchSets</a>.</p>
-     */
-    inline void SetXssMatchSetId(const char* value) { m_xssMatchSetIdHasBeenSet = true; m_xssMatchSetId.assign(value); }
-
-    /**
-     * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to
-     * get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by
-     * <a>ListXssMatchSets</a>.</p>
-     */
-    inline GetXssMatchSetRequest& WithXssMatchSetId(const Aws::String& value) { SetXssMatchSetId(value); return *this;}
-
-    /**
-     * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to
-     * get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by
-     * <a>ListXssMatchSets</a>.</p>
-     */
-    inline GetXssMatchSetRequest& WithXssMatchSetId(Aws::String&& value) { SetXssMatchSetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>XssMatchSetId</code> of the <a>XssMatchSet</a> that you want to
-     * get. <code>XssMatchSetId</code> is returned by <a>CreateXssMatchSet</a> and by
-     * <a>ListXssMatchSets</a>.</p>
-     */
-    inline GetXssMatchSetRequest& WithXssMatchSetId(const char* value) { SetXssMatchSetId(value); return *this;}
-
+    template<typename XssMatchSetIdT = Aws::String>
+    void SetXssMatchSetId(XssMatchSetIdT&& value) { m_xssMatchSetIdHasBeenSet = true; m_xssMatchSetId = std::forward<XssMatchSetIdT>(value); }
+    template<typename XssMatchSetIdT = Aws::String>
+    GetXssMatchSetRequest& WithXssMatchSetId(XssMatchSetIdT&& value) { SetXssMatchSetId(std::forward<XssMatchSetIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_xssMatchSetId;

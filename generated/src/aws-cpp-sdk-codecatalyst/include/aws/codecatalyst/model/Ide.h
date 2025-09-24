@@ -32,93 +32,35 @@ namespace Model
   class Ide
   {
   public:
-    AWS_CODECATALYST_API Ide();
+    AWS_CODECATALYST_API Ide() = default;
     AWS_CODECATALYST_API Ide(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API Ide& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A link to the IDE runtime image.</p>
      */
-    inline const Aws::String& GetRuntime() const{ return m_runtime; }
-
-    /**
-     * <p>A link to the IDE runtime image.</p>
-     */
+    inline const Aws::String& GetRuntime() const { return m_runtime; }
     inline bool RuntimeHasBeenSet() const { return m_runtimeHasBeenSet; }
+    template<typename RuntimeT = Aws::String>
+    void SetRuntime(RuntimeT&& value) { m_runtimeHasBeenSet = true; m_runtime = std::forward<RuntimeT>(value); }
+    template<typename RuntimeT = Aws::String>
+    Ide& WithRuntime(RuntimeT&& value) { SetRuntime(std::forward<RuntimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A link to the IDE runtime image.</p>
-     */
-    inline void SetRuntime(const Aws::String& value) { m_runtimeHasBeenSet = true; m_runtime = value; }
-
-    /**
-     * <p>A link to the IDE runtime image.</p>
-     */
-    inline void SetRuntime(Aws::String&& value) { m_runtimeHasBeenSet = true; m_runtime = std::move(value); }
-
-    /**
-     * <p>A link to the IDE runtime image.</p>
-     */
-    inline void SetRuntime(const char* value) { m_runtimeHasBeenSet = true; m_runtime.assign(value); }
-
-    /**
-     * <p>A link to the IDE runtime image.</p>
-     */
-    inline Ide& WithRuntime(const Aws::String& value) { SetRuntime(value); return *this;}
-
-    /**
-     * <p>A link to the IDE runtime image.</p>
-     */
-    inline Ide& WithRuntime(Aws::String&& value) { SetRuntime(std::move(value)); return *this;}
-
-    /**
-     * <p>A link to the IDE runtime image.</p>
-     */
-    inline Ide& WithRuntime(const char* value) { SetRuntime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the IDE.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the IDE.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the IDE.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the IDE.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the IDE.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the IDE.</p>
-     */
-    inline Ide& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the IDE.</p>
-     */
-    inline Ide& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the IDE.</p>
-     */
-    inline Ide& WithName(const char* value) { SetName(value); return *this;}
-
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    Ide& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_runtime;

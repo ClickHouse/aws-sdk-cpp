@@ -18,17 +18,7 @@ namespace NetworkFirewall
 namespace Model
 {
 
-PerObjectStatus::PerObjectStatus() : 
-    m_syncStatus(PerObjectSyncStatus::NOT_SET),
-    m_syncStatusHasBeenSet(false),
-    m_updateTokenHasBeenSet(false)
-{
-}
-
-PerObjectStatus::PerObjectStatus(JsonView jsonValue) : 
-    m_syncStatus(PerObjectSyncStatus::NOT_SET),
-    m_syncStatusHasBeenSet(false),
-    m_updateTokenHasBeenSet(false)
+PerObjectStatus::PerObjectStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PerObjectStatus& PerObjectStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("SyncStatus"))
   {
     m_syncStatus = PerObjectSyncStatusMapper::GetPerObjectSyncStatusForName(jsonValue.GetString("SyncStatus"));
-
     m_syncStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UpdateToken"))
   {
     m_updateToken = jsonValue.GetString("UpdateToken");
-
     m_updateTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -32,325 +32,123 @@ namespace Model
   class VulnerablePackage
   {
   public:
-    AWS_ECR_API VulnerablePackage();
+    AWS_ECR_API VulnerablePackage() = default;
     AWS_ECR_API VulnerablePackage(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECR_API VulnerablePackage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The architecture of the vulnerable package.</p>
      */
-    inline const Aws::String& GetArch() const{ return m_arch; }
-
-    /**
-     * <p>The architecture of the vulnerable package.</p>
-     */
+    inline const Aws::String& GetArch() const { return m_arch; }
     inline bool ArchHasBeenSet() const { return m_archHasBeenSet; }
+    template<typename ArchT = Aws::String>
+    void SetArch(ArchT&& value) { m_archHasBeenSet = true; m_arch = std::forward<ArchT>(value); }
+    template<typename ArchT = Aws::String>
+    VulnerablePackage& WithArch(ArchT&& value) { SetArch(std::forward<ArchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The architecture of the vulnerable package.</p>
-     */
-    inline void SetArch(const Aws::String& value) { m_archHasBeenSet = true; m_arch = value; }
-
-    /**
-     * <p>The architecture of the vulnerable package.</p>
-     */
-    inline void SetArch(Aws::String&& value) { m_archHasBeenSet = true; m_arch = std::move(value); }
-
-    /**
-     * <p>The architecture of the vulnerable package.</p>
-     */
-    inline void SetArch(const char* value) { m_archHasBeenSet = true; m_arch.assign(value); }
-
-    /**
-     * <p>The architecture of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithArch(const Aws::String& value) { SetArch(value); return *this;}
-
-    /**
-     * <p>The architecture of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithArch(Aws::String&& value) { SetArch(std::move(value)); return *this;}
-
-    /**
-     * <p>The architecture of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithArch(const char* value) { SetArch(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The epoch of the vulnerable package.</p>
      */
-    inline int GetEpoch() const{ return m_epoch; }
-
-    /**
-     * <p>The epoch of the vulnerable package.</p>
-     */
+    inline int GetEpoch() const { return m_epoch; }
     inline bool EpochHasBeenSet() const { return m_epochHasBeenSet; }
-
-    /**
-     * <p>The epoch of the vulnerable package.</p>
-     */
     inline void SetEpoch(int value) { m_epochHasBeenSet = true; m_epoch = value; }
-
-    /**
-     * <p>The epoch of the vulnerable package.</p>
-     */
     inline VulnerablePackage& WithEpoch(int value) { SetEpoch(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The file path of the vulnerable package.</p>
      */
-    inline const Aws::String& GetFilePath() const{ return m_filePath; }
-
-    /**
-     * <p>The file path of the vulnerable package.</p>
-     */
+    inline const Aws::String& GetFilePath() const { return m_filePath; }
     inline bool FilePathHasBeenSet() const { return m_filePathHasBeenSet; }
+    template<typename FilePathT = Aws::String>
+    void SetFilePath(FilePathT&& value) { m_filePathHasBeenSet = true; m_filePath = std::forward<FilePathT>(value); }
+    template<typename FilePathT = Aws::String>
+    VulnerablePackage& WithFilePath(FilePathT&& value) { SetFilePath(std::forward<FilePathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The file path of the vulnerable package.</p>
-     */
-    inline void SetFilePath(const Aws::String& value) { m_filePathHasBeenSet = true; m_filePath = value; }
-
-    /**
-     * <p>The file path of the vulnerable package.</p>
-     */
-    inline void SetFilePath(Aws::String&& value) { m_filePathHasBeenSet = true; m_filePath = std::move(value); }
-
-    /**
-     * <p>The file path of the vulnerable package.</p>
-     */
-    inline void SetFilePath(const char* value) { m_filePathHasBeenSet = true; m_filePath.assign(value); }
-
-    /**
-     * <p>The file path of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithFilePath(const Aws::String& value) { SetFilePath(value); return *this;}
-
-    /**
-     * <p>The file path of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithFilePath(Aws::String&& value) { SetFilePath(std::move(value)); return *this;}
-
-    /**
-     * <p>The file path of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithFilePath(const char* value) { SetFilePath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the vulnerable package.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the vulnerable package.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    VulnerablePackage& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the vulnerable package.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the vulnerable package.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the vulnerable package.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The package manager of the vulnerable package.</p>
      */
-    inline const Aws::String& GetPackageManager() const{ return m_packageManager; }
-
-    /**
-     * <p>The package manager of the vulnerable package.</p>
-     */
+    inline const Aws::String& GetPackageManager() const { return m_packageManager; }
     inline bool PackageManagerHasBeenSet() const { return m_packageManagerHasBeenSet; }
+    template<typename PackageManagerT = Aws::String>
+    void SetPackageManager(PackageManagerT&& value) { m_packageManagerHasBeenSet = true; m_packageManager = std::forward<PackageManagerT>(value); }
+    template<typename PackageManagerT = Aws::String>
+    VulnerablePackage& WithPackageManager(PackageManagerT&& value) { SetPackageManager(std::forward<PackageManagerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The package manager of the vulnerable package.</p>
-     */
-    inline void SetPackageManager(const Aws::String& value) { m_packageManagerHasBeenSet = true; m_packageManager = value; }
-
-    /**
-     * <p>The package manager of the vulnerable package.</p>
-     */
-    inline void SetPackageManager(Aws::String&& value) { m_packageManagerHasBeenSet = true; m_packageManager = std::move(value); }
-
-    /**
-     * <p>The package manager of the vulnerable package.</p>
-     */
-    inline void SetPackageManager(const char* value) { m_packageManagerHasBeenSet = true; m_packageManager.assign(value); }
-
-    /**
-     * <p>The package manager of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithPackageManager(const Aws::String& value) { SetPackageManager(value); return *this;}
-
-    /**
-     * <p>The package manager of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithPackageManager(Aws::String&& value) { SetPackageManager(std::move(value)); return *this;}
-
-    /**
-     * <p>The package manager of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithPackageManager(const char* value) { SetPackageManager(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The release of the vulnerable package.</p>
      */
-    inline const Aws::String& GetRelease() const{ return m_release; }
-
-    /**
-     * <p>The release of the vulnerable package.</p>
-     */
+    inline const Aws::String& GetRelease() const { return m_release; }
     inline bool ReleaseHasBeenSet() const { return m_releaseHasBeenSet; }
+    template<typename ReleaseT = Aws::String>
+    void SetRelease(ReleaseT&& value) { m_releaseHasBeenSet = true; m_release = std::forward<ReleaseT>(value); }
+    template<typename ReleaseT = Aws::String>
+    VulnerablePackage& WithRelease(ReleaseT&& value) { SetRelease(std::forward<ReleaseT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The release of the vulnerable package.</p>
-     */
-    inline void SetRelease(const Aws::String& value) { m_releaseHasBeenSet = true; m_release = value; }
-
-    /**
-     * <p>The release of the vulnerable package.</p>
-     */
-    inline void SetRelease(Aws::String&& value) { m_releaseHasBeenSet = true; m_release = std::move(value); }
-
-    /**
-     * <p>The release of the vulnerable package.</p>
-     */
-    inline void SetRelease(const char* value) { m_releaseHasBeenSet = true; m_release.assign(value); }
-
-    /**
-     * <p>The release of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithRelease(const Aws::String& value) { SetRelease(value); return *this;}
-
-    /**
-     * <p>The release of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithRelease(Aws::String&& value) { SetRelease(std::move(value)); return *this;}
-
-    /**
-     * <p>The release of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithRelease(const char* value) { SetRelease(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The source layer hash of the vulnerable package.</p>
      */
-    inline const Aws::String& GetSourceLayerHash() const{ return m_sourceLayerHash; }
-
-    /**
-     * <p>The source layer hash of the vulnerable package.</p>
-     */
+    inline const Aws::String& GetSourceLayerHash() const { return m_sourceLayerHash; }
     inline bool SourceLayerHashHasBeenSet() const { return m_sourceLayerHashHasBeenSet; }
+    template<typename SourceLayerHashT = Aws::String>
+    void SetSourceLayerHash(SourceLayerHashT&& value) { m_sourceLayerHashHasBeenSet = true; m_sourceLayerHash = std::forward<SourceLayerHashT>(value); }
+    template<typename SourceLayerHashT = Aws::String>
+    VulnerablePackage& WithSourceLayerHash(SourceLayerHashT&& value) { SetSourceLayerHash(std::forward<SourceLayerHashT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source layer hash of the vulnerable package.</p>
-     */
-    inline void SetSourceLayerHash(const Aws::String& value) { m_sourceLayerHashHasBeenSet = true; m_sourceLayerHash = value; }
-
-    /**
-     * <p>The source layer hash of the vulnerable package.</p>
-     */
-    inline void SetSourceLayerHash(Aws::String&& value) { m_sourceLayerHashHasBeenSet = true; m_sourceLayerHash = std::move(value); }
-
-    /**
-     * <p>The source layer hash of the vulnerable package.</p>
-     */
-    inline void SetSourceLayerHash(const char* value) { m_sourceLayerHashHasBeenSet = true; m_sourceLayerHash.assign(value); }
-
-    /**
-     * <p>The source layer hash of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithSourceLayerHash(const Aws::String& value) { SetSourceLayerHash(value); return *this;}
-
-    /**
-     * <p>The source layer hash of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithSourceLayerHash(Aws::String&& value) { SetSourceLayerHash(std::move(value)); return *this;}
-
-    /**
-     * <p>The source layer hash of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithSourceLayerHash(const char* value) { SetSourceLayerHash(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the vulnerable package.</p>
      */
-    inline const Aws::String& GetVersion() const{ return m_version; }
-
-    /**
-     * <p>The version of the vulnerable package.</p>
-     */
+    inline const Aws::String& GetVersion() const { return m_version; }
     inline bool VersionHasBeenSet() const { return m_versionHasBeenSet; }
+    template<typename VersionT = Aws::String>
+    void SetVersion(VersionT&& value) { m_versionHasBeenSet = true; m_version = std::forward<VersionT>(value); }
+    template<typename VersionT = Aws::String>
+    VulnerablePackage& WithVersion(VersionT&& value) { SetVersion(std::forward<VersionT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The version of the vulnerable package.</p>
+     * <p>The version of the package that contains the vulnerability fix.</p>
      */
-    inline void SetVersion(const Aws::String& value) { m_versionHasBeenSet = true; m_version = value; }
-
-    /**
-     * <p>The version of the vulnerable package.</p>
-     */
-    inline void SetVersion(Aws::String&& value) { m_versionHasBeenSet = true; m_version = std::move(value); }
-
-    /**
-     * <p>The version of the vulnerable package.</p>
-     */
-    inline void SetVersion(const char* value) { m_versionHasBeenSet = true; m_version.assign(value); }
-
-    /**
-     * <p>The version of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithVersion(const Aws::String& value) { SetVersion(value); return *this;}
-
-    /**
-     * <p>The version of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithVersion(Aws::String&& value) { SetVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the vulnerable package.</p>
-     */
-    inline VulnerablePackage& WithVersion(const char* value) { SetVersion(value); return *this;}
-
+    inline const Aws::String& GetFixedInVersion() const { return m_fixedInVersion; }
+    inline bool FixedInVersionHasBeenSet() const { return m_fixedInVersionHasBeenSet; }
+    template<typename FixedInVersionT = Aws::String>
+    void SetFixedInVersion(FixedInVersionT&& value) { m_fixedInVersionHasBeenSet = true; m_fixedInVersion = std::forward<FixedInVersionT>(value); }
+    template<typename FixedInVersionT = Aws::String>
+    VulnerablePackage& WithFixedInVersion(FixedInVersionT&& value) { SetFixedInVersion(std::forward<FixedInVersionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arch;
     bool m_archHasBeenSet = false;
 
-    int m_epoch;
+    int m_epoch{0};
     bool m_epochHasBeenSet = false;
 
     Aws::String m_filePath;
@@ -370,6 +168,9 @@ namespace Model
 
     Aws::String m_version;
     bool m_versionHasBeenSet = false;
+
+    Aws::String m_fixedInVersion;
+    bool m_fixedInVersionHasBeenSet = false;
   };
 
 } // namespace Model

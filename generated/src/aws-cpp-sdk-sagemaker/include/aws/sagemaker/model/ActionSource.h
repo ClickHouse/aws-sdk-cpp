@@ -31,134 +31,47 @@ namespace Model
   class ActionSource
   {
   public:
-    AWS_SAGEMAKER_API ActionSource();
+    AWS_SAGEMAKER_API ActionSource() = default;
     AWS_SAGEMAKER_API ActionSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ActionSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URI of the source.</p>
      */
-    inline const Aws::String& GetSourceUri() const{ return m_sourceUri; }
-
-    /**
-     * <p>The URI of the source.</p>
-     */
+    inline const Aws::String& GetSourceUri() const { return m_sourceUri; }
     inline bool SourceUriHasBeenSet() const { return m_sourceUriHasBeenSet; }
+    template<typename SourceUriT = Aws::String>
+    void SetSourceUri(SourceUriT&& value) { m_sourceUriHasBeenSet = true; m_sourceUri = std::forward<SourceUriT>(value); }
+    template<typename SourceUriT = Aws::String>
+    ActionSource& WithSourceUri(SourceUriT&& value) { SetSourceUri(std::forward<SourceUriT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The URI of the source.</p>
-     */
-    inline void SetSourceUri(const Aws::String& value) { m_sourceUriHasBeenSet = true; m_sourceUri = value; }
-
-    /**
-     * <p>The URI of the source.</p>
-     */
-    inline void SetSourceUri(Aws::String&& value) { m_sourceUriHasBeenSet = true; m_sourceUri = std::move(value); }
-
-    /**
-     * <p>The URI of the source.</p>
-     */
-    inline void SetSourceUri(const char* value) { m_sourceUriHasBeenSet = true; m_sourceUri.assign(value); }
-
-    /**
-     * <p>The URI of the source.</p>
-     */
-    inline ActionSource& WithSourceUri(const Aws::String& value) { SetSourceUri(value); return *this;}
-
-    /**
-     * <p>The URI of the source.</p>
-     */
-    inline ActionSource& WithSourceUri(Aws::String&& value) { SetSourceUri(std::move(value)); return *this;}
-
-    /**
-     * <p>The URI of the source.</p>
-     */
-    inline ActionSource& WithSourceUri(const char* value) { SetSourceUri(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the source.</p>
      */
-    inline const Aws::String& GetSourceType() const{ return m_sourceType; }
-
-    /**
-     * <p>The type of the source.</p>
-     */
+    inline const Aws::String& GetSourceType() const { return m_sourceType; }
     inline bool SourceTypeHasBeenSet() const { return m_sourceTypeHasBeenSet; }
+    template<typename SourceTypeT = Aws::String>
+    void SetSourceType(SourceTypeT&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::forward<SourceTypeT>(value); }
+    template<typename SourceTypeT = Aws::String>
+    ActionSource& WithSourceType(SourceTypeT&& value) { SetSourceType(std::forward<SourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the source.</p>
-     */
-    inline void SetSourceType(const Aws::String& value) { m_sourceTypeHasBeenSet = true; m_sourceType = value; }
-
-    /**
-     * <p>The type of the source.</p>
-     */
-    inline void SetSourceType(Aws::String&& value) { m_sourceTypeHasBeenSet = true; m_sourceType = std::move(value); }
-
-    /**
-     * <p>The type of the source.</p>
-     */
-    inline void SetSourceType(const char* value) { m_sourceTypeHasBeenSet = true; m_sourceType.assign(value); }
-
-    /**
-     * <p>The type of the source.</p>
-     */
-    inline ActionSource& WithSourceType(const Aws::String& value) { SetSourceType(value); return *this;}
-
-    /**
-     * <p>The type of the source.</p>
-     */
-    inline ActionSource& WithSourceType(Aws::String&& value) { SetSourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the source.</p>
-     */
-    inline ActionSource& WithSourceType(const char* value) { SetSourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the source.</p>
      */
-    inline const Aws::String& GetSourceId() const{ return m_sourceId; }
-
-    /**
-     * <p>The ID of the source.</p>
-     */
+    inline const Aws::String& GetSourceId() const { return m_sourceId; }
     inline bool SourceIdHasBeenSet() const { return m_sourceIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the source.</p>
-     */
-    inline void SetSourceId(const Aws::String& value) { m_sourceIdHasBeenSet = true; m_sourceId = value; }
-
-    /**
-     * <p>The ID of the source.</p>
-     */
-    inline void SetSourceId(Aws::String&& value) { m_sourceIdHasBeenSet = true; m_sourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the source.</p>
-     */
-    inline void SetSourceId(const char* value) { m_sourceIdHasBeenSet = true; m_sourceId.assign(value); }
-
-    /**
-     * <p>The ID of the source.</p>
-     */
-    inline ActionSource& WithSourceId(const Aws::String& value) { SetSourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the source.</p>
-     */
-    inline ActionSource& WithSourceId(Aws::String&& value) { SetSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the source.</p>
-     */
-    inline ActionSource& WithSourceId(const char* value) { SetSourceId(value); return *this;}
-
+    template<typename SourceIdT = Aws::String>
+    void SetSourceId(SourceIdT&& value) { m_sourceIdHasBeenSet = true; m_sourceId = std::forward<SourceIdT>(value); }
+    template<typename SourceIdT = Aws::String>
+    ActionSource& WithSourceId(SourceIdT&& value) { SetSourceId(std::forward<SourceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_sourceUri;

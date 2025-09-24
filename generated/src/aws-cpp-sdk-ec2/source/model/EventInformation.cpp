@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-EventInformation::EventInformation() : 
-    m_eventDescriptionHasBeenSet(false),
-    m_eventSubTypeHasBeenSet(false),
-    m_instanceIdHasBeenSet(false)
-{
-}
-
-EventInformation::EventInformation(const XmlNode& xmlNode) : 
-    m_eventDescriptionHasBeenSet(false),
-    m_eventSubTypeHasBeenSet(false),
-    m_instanceIdHasBeenSet(false)
+EventInformation::EventInformation(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

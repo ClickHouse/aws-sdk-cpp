@@ -31,125 +31,39 @@ namespace Model
   class Complaint
   {
   public:
-    AWS_SESV2_API Complaint();
+    AWS_SESV2_API Complaint() = default;
     AWS_SESV2_API Complaint(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Complaint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Can either be <code>null</code> or <code>OnAccountSuppressionList</code>. If
      * the value is <code>OnAccountSuppressionList</code>, SES accepted the message,
      * but didn't attempt to send it because it was on the account-level suppression
      * list. </p>
      */
-    inline const Aws::String& GetComplaintSubType() const{ return m_complaintSubType; }
-
-    /**
-     * <p> Can either be <code>null</code> or <code>OnAccountSuppressionList</code>. If
-     * the value is <code>OnAccountSuppressionList</code>, SES accepted the message,
-     * but didn't attempt to send it because it was on the account-level suppression
-     * list. </p>
-     */
+    inline const Aws::String& GetComplaintSubType() const { return m_complaintSubType; }
     inline bool ComplaintSubTypeHasBeenSet() const { return m_complaintSubTypeHasBeenSet; }
+    template<typename ComplaintSubTypeT = Aws::String>
+    void SetComplaintSubType(ComplaintSubTypeT&& value) { m_complaintSubTypeHasBeenSet = true; m_complaintSubType = std::forward<ComplaintSubTypeT>(value); }
+    template<typename ComplaintSubTypeT = Aws::String>
+    Complaint& WithComplaintSubType(ComplaintSubTypeT&& value) { SetComplaintSubType(std::forward<ComplaintSubTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Can either be <code>null</code> or <code>OnAccountSuppressionList</code>. If
-     * the value is <code>OnAccountSuppressionList</code>, SES accepted the message,
-     * but didn't attempt to send it because it was on the account-level suppression
-     * list. </p>
-     */
-    inline void SetComplaintSubType(const Aws::String& value) { m_complaintSubTypeHasBeenSet = true; m_complaintSubType = value; }
-
-    /**
-     * <p> Can either be <code>null</code> or <code>OnAccountSuppressionList</code>. If
-     * the value is <code>OnAccountSuppressionList</code>, SES accepted the message,
-     * but didn't attempt to send it because it was on the account-level suppression
-     * list. </p>
-     */
-    inline void SetComplaintSubType(Aws::String&& value) { m_complaintSubTypeHasBeenSet = true; m_complaintSubType = std::move(value); }
-
-    /**
-     * <p> Can either be <code>null</code> or <code>OnAccountSuppressionList</code>. If
-     * the value is <code>OnAccountSuppressionList</code>, SES accepted the message,
-     * but didn't attempt to send it because it was on the account-level suppression
-     * list. </p>
-     */
-    inline void SetComplaintSubType(const char* value) { m_complaintSubTypeHasBeenSet = true; m_complaintSubType.assign(value); }
-
-    /**
-     * <p> Can either be <code>null</code> or <code>OnAccountSuppressionList</code>. If
-     * the value is <code>OnAccountSuppressionList</code>, SES accepted the message,
-     * but didn't attempt to send it because it was on the account-level suppression
-     * list. </p>
-     */
-    inline Complaint& WithComplaintSubType(const Aws::String& value) { SetComplaintSubType(value); return *this;}
-
-    /**
-     * <p> Can either be <code>null</code> or <code>OnAccountSuppressionList</code>. If
-     * the value is <code>OnAccountSuppressionList</code>, SES accepted the message,
-     * but didn't attempt to send it because it was on the account-level suppression
-     * list. </p>
-     */
-    inline Complaint& WithComplaintSubType(Aws::String&& value) { SetComplaintSubType(std::move(value)); return *this;}
-
-    /**
-     * <p> Can either be <code>null</code> or <code>OnAccountSuppressionList</code>. If
-     * the value is <code>OnAccountSuppressionList</code>, SES accepted the message,
-     * but didn't attempt to send it because it was on the account-level suppression
-     * list. </p>
-     */
-    inline Complaint& WithComplaintSubType(const char* value) { SetComplaintSubType(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The value of the <code>Feedback-Type</code> field from the feedback report
      * received from the ISP. </p>
      */
-    inline const Aws::String& GetComplaintFeedbackType() const{ return m_complaintFeedbackType; }
-
-    /**
-     * <p> The value of the <code>Feedback-Type</code> field from the feedback report
-     * received from the ISP. </p>
-     */
+    inline const Aws::String& GetComplaintFeedbackType() const { return m_complaintFeedbackType; }
     inline bool ComplaintFeedbackTypeHasBeenSet() const { return m_complaintFeedbackTypeHasBeenSet; }
-
-    /**
-     * <p> The value of the <code>Feedback-Type</code> field from the feedback report
-     * received from the ISP. </p>
-     */
-    inline void SetComplaintFeedbackType(const Aws::String& value) { m_complaintFeedbackTypeHasBeenSet = true; m_complaintFeedbackType = value; }
-
-    /**
-     * <p> The value of the <code>Feedback-Type</code> field from the feedback report
-     * received from the ISP. </p>
-     */
-    inline void SetComplaintFeedbackType(Aws::String&& value) { m_complaintFeedbackTypeHasBeenSet = true; m_complaintFeedbackType = std::move(value); }
-
-    /**
-     * <p> The value of the <code>Feedback-Type</code> field from the feedback report
-     * received from the ISP. </p>
-     */
-    inline void SetComplaintFeedbackType(const char* value) { m_complaintFeedbackTypeHasBeenSet = true; m_complaintFeedbackType.assign(value); }
-
-    /**
-     * <p> The value of the <code>Feedback-Type</code> field from the feedback report
-     * received from the ISP. </p>
-     */
-    inline Complaint& WithComplaintFeedbackType(const Aws::String& value) { SetComplaintFeedbackType(value); return *this;}
-
-    /**
-     * <p> The value of the <code>Feedback-Type</code> field from the feedback report
-     * received from the ISP. </p>
-     */
-    inline Complaint& WithComplaintFeedbackType(Aws::String&& value) { SetComplaintFeedbackType(std::move(value)); return *this;}
-
-    /**
-     * <p> The value of the <code>Feedback-Type</code> field from the feedback report
-     * received from the ISP. </p>
-     */
-    inline Complaint& WithComplaintFeedbackType(const char* value) { SetComplaintFeedbackType(value); return *this;}
-
+    template<typename ComplaintFeedbackTypeT = Aws::String>
+    void SetComplaintFeedbackType(ComplaintFeedbackTypeT&& value) { m_complaintFeedbackTypeHasBeenSet = true; m_complaintFeedbackType = std::forward<ComplaintFeedbackTypeT>(value); }
+    template<typename ComplaintFeedbackTypeT = Aws::String>
+    Complaint& WithComplaintFeedbackType(ComplaintFeedbackTypeT&& value) { SetComplaintFeedbackType(std::forward<ComplaintFeedbackTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_complaintSubType;

@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-AssociateNetworkSettingsResult::AssociateNetworkSettingsResult()
-{
-}
-
 AssociateNetworkSettingsResult::AssociateNetworkSettingsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,24 +25,23 @@ AssociateNetworkSettingsResult::AssociateNetworkSettingsResult(const Aws::Amazon
 AssociateNetworkSettingsResult& AssociateNetworkSettingsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("networkSettingsArn"))
-  {
-    m_networkSettingsArn = jsonValue.GetString("networkSettingsArn");
-
-  }
-
   if(jsonValue.ValueExists("portalArn"))
   {
     m_portalArn = jsonValue.GetString("portalArn");
-
+    m_portalArnHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("networkSettingsArn"))
+  {
+    m_networkSettingsArn = jsonValue.GetString("networkSettingsArn");
+    m_networkSettingsArnHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

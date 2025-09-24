@@ -18,37 +18,23 @@ namespace EntityResolution
 namespace Model
 {
 
-OutputAttribute::OutputAttribute() : 
-    m_hashed(false),
-    m_hashedHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-OutputAttribute::OutputAttribute(JsonView jsonValue) : 
-    m_hashed(false),
-    m_hashedHasBeenSet(false),
-    m_nameHasBeenSet(false)
+OutputAttribute::OutputAttribute(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 OutputAttribute& OutputAttribute::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("hashed"))
-  {
-    m_hashed = jsonValue.GetBool("hashed");
-
-    m_hashedHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("hashed"))
+  {
+    m_hashed = jsonValue.GetBool("hashed");
+    m_hashedHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -56,15 +42,15 @@ JsonValue OutputAttribute::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_hashedHasBeenSet)
-  {
-   payload.WithBool("hashed", m_hashed);
-
-  }
-
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_hashedHasBeenSet)
+  {
+   payload.WithBool("hashed", m_hashed);
 
   }
 

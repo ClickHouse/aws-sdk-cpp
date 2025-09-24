@@ -21,7 +21,7 @@ namespace Model
   class DeleteTopicRefreshScheduleRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API DeleteTopicRefreshScheduleRequest();
+    AWS_QUICKSIGHT_API DeleteTopicRefreshScheduleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,136 +32,42 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    DeleteTopicRefreshScheduleRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline DeleteTopicRefreshScheduleRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline DeleteTopicRefreshScheduleRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID.</p>
-     */
-    inline DeleteTopicRefreshScheduleRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
      * Services Region for each Amazon Web Services account.</p>
      */
-    inline const Aws::String& GetTopicId() const{ return m_topicId; }
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
+    inline const Aws::String& GetTopicId() const { return m_topicId; }
     inline bool TopicIdHasBeenSet() const { return m_topicIdHasBeenSet; }
+    template<typename TopicIdT = Aws::String>
+    void SetTopicId(TopicIdT&& value) { m_topicIdHasBeenSet = true; m_topicId = std::forward<TopicIdT>(value); }
+    template<typename TopicIdT = Aws::String>
+    DeleteTopicRefreshScheduleRequest& WithTopicId(TopicIdT&& value) { SetTopicId(std::forward<TopicIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(const Aws::String& value) { m_topicIdHasBeenSet = true; m_topicId = value; }
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(Aws::String&& value) { m_topicIdHasBeenSet = true; m_topicId = std::move(value); }
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline void SetTopicId(const char* value) { m_topicIdHasBeenSet = true; m_topicId.assign(value); }
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline DeleteTopicRefreshScheduleRequest& WithTopicId(const Aws::String& value) { SetTopicId(value); return *this;}
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline DeleteTopicRefreshScheduleRequest& WithTopicId(Aws::String&& value) { SetTopicId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the topic that you want to modify. This ID is unique per Amazon Web
-     * Services Region for each Amazon Web Services account.</p>
-     */
-    inline DeleteTopicRefreshScheduleRequest& WithTopicId(const char* value) { SetTopicId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the dataset.</p>
      */
-    inline const Aws::String& GetDatasetId() const{ return m_datasetId; }
-
-    /**
-     * <p>The ID of the dataset.</p>
-     */
+    inline const Aws::String& GetDatasetId() const { return m_datasetId; }
     inline bool DatasetIdHasBeenSet() const { return m_datasetIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the dataset.</p>
-     */
-    inline void SetDatasetId(const Aws::String& value) { m_datasetIdHasBeenSet = true; m_datasetId = value; }
-
-    /**
-     * <p>The ID of the dataset.</p>
-     */
-    inline void SetDatasetId(Aws::String&& value) { m_datasetIdHasBeenSet = true; m_datasetId = std::move(value); }
-
-    /**
-     * <p>The ID of the dataset.</p>
-     */
-    inline void SetDatasetId(const char* value) { m_datasetIdHasBeenSet = true; m_datasetId.assign(value); }
-
-    /**
-     * <p>The ID of the dataset.</p>
-     */
-    inline DeleteTopicRefreshScheduleRequest& WithDatasetId(const Aws::String& value) { SetDatasetId(value); return *this;}
-
-    /**
-     * <p>The ID of the dataset.</p>
-     */
-    inline DeleteTopicRefreshScheduleRequest& WithDatasetId(Aws::String&& value) { SetDatasetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the dataset.</p>
-     */
-    inline DeleteTopicRefreshScheduleRequest& WithDatasetId(const char* value) { SetDatasetId(value); return *this;}
-
+    template<typename DatasetIdT = Aws::String>
+    void SetDatasetId(DatasetIdT&& value) { m_datasetIdHasBeenSet = true; m_datasetId = std::forward<DatasetIdT>(value); }
+    template<typename DatasetIdT = Aws::String>
+    DeleteTopicRefreshScheduleRequest& WithDatasetId(DatasetIdT&& value) { SetDatasetId(std::forward<DatasetIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

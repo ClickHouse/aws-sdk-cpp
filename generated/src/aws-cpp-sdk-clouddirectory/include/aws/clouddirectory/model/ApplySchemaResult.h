@@ -27,132 +27,54 @@ namespace Model
   class ApplySchemaResult
   {
   public:
-    AWS_CLOUDDIRECTORY_API ApplySchemaResult();
+    AWS_CLOUDDIRECTORY_API ApplySchemaResult() = default;
     AWS_CLOUDDIRECTORY_API ApplySchemaResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CLOUDDIRECTORY_API ApplySchemaResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The applied schema ARN that is associated with the copied schema in the
      * <a>Directory</a>. You can use this ARN to describe the schema information
      * applied on this directory. For more information, see <a>arns</a>.</p>
      */
-    inline const Aws::String& GetAppliedSchemaArn() const{ return m_appliedSchemaArn; }
+    inline const Aws::String& GetAppliedSchemaArn() const { return m_appliedSchemaArn; }
+    template<typename AppliedSchemaArnT = Aws::String>
+    void SetAppliedSchemaArn(AppliedSchemaArnT&& value) { m_appliedSchemaArnHasBeenSet = true; m_appliedSchemaArn = std::forward<AppliedSchemaArnT>(value); }
+    template<typename AppliedSchemaArnT = Aws::String>
+    ApplySchemaResult& WithAppliedSchemaArn(AppliedSchemaArnT&& value) { SetAppliedSchemaArn(std::forward<AppliedSchemaArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The applied schema ARN that is associated with the copied schema in the
-     * <a>Directory</a>. You can use this ARN to describe the schema information
-     * applied on this directory. For more information, see <a>arns</a>.</p>
-     */
-    inline void SetAppliedSchemaArn(const Aws::String& value) { m_appliedSchemaArn = value; }
-
-    /**
-     * <p>The applied schema ARN that is associated with the copied schema in the
-     * <a>Directory</a>. You can use this ARN to describe the schema information
-     * applied on this directory. For more information, see <a>arns</a>.</p>
-     */
-    inline void SetAppliedSchemaArn(Aws::String&& value) { m_appliedSchemaArn = std::move(value); }
-
-    /**
-     * <p>The applied schema ARN that is associated with the copied schema in the
-     * <a>Directory</a>. You can use this ARN to describe the schema information
-     * applied on this directory. For more information, see <a>arns</a>.</p>
-     */
-    inline void SetAppliedSchemaArn(const char* value) { m_appliedSchemaArn.assign(value); }
-
-    /**
-     * <p>The applied schema ARN that is associated with the copied schema in the
-     * <a>Directory</a>. You can use this ARN to describe the schema information
-     * applied on this directory. For more information, see <a>arns</a>.</p>
-     */
-    inline ApplySchemaResult& WithAppliedSchemaArn(const Aws::String& value) { SetAppliedSchemaArn(value); return *this;}
-
-    /**
-     * <p>The applied schema ARN that is associated with the copied schema in the
-     * <a>Directory</a>. You can use this ARN to describe the schema information
-     * applied on this directory. For more information, see <a>arns</a>.</p>
-     */
-    inline ApplySchemaResult& WithAppliedSchemaArn(Aws::String&& value) { SetAppliedSchemaArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The applied schema ARN that is associated with the copied schema in the
-     * <a>Directory</a>. You can use this ARN to describe the schema information
-     * applied on this directory. For more information, see <a>arns</a>.</p>
-     */
-    inline ApplySchemaResult& WithAppliedSchemaArn(const char* value) { SetAppliedSchemaArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN that is associated with the <a>Directory</a>. For more information,
      * see <a>arns</a>.</p>
      */
-    inline const Aws::String& GetDirectoryArn() const{ return m_directoryArn; }
+    inline const Aws::String& GetDirectoryArn() const { return m_directoryArn; }
+    template<typename DirectoryArnT = Aws::String>
+    void SetDirectoryArn(DirectoryArnT&& value) { m_directoryArnHasBeenSet = true; m_directoryArn = std::forward<DirectoryArnT>(value); }
+    template<typename DirectoryArnT = Aws::String>
+    ApplySchemaResult& WithDirectoryArn(DirectoryArnT&& value) { SetDirectoryArn(std::forward<DirectoryArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN that is associated with the <a>Directory</a>. For more information,
-     * see <a>arns</a>.</p>
-     */
-    inline void SetDirectoryArn(const Aws::String& value) { m_directoryArn = value; }
-
-    /**
-     * <p>The ARN that is associated with the <a>Directory</a>. For more information,
-     * see <a>arns</a>.</p>
-     */
-    inline void SetDirectoryArn(Aws::String&& value) { m_directoryArn = std::move(value); }
-
-    /**
-     * <p>The ARN that is associated with the <a>Directory</a>. For more information,
-     * see <a>arns</a>.</p>
-     */
-    inline void SetDirectoryArn(const char* value) { m_directoryArn.assign(value); }
-
-    /**
-     * <p>The ARN that is associated with the <a>Directory</a>. For more information,
-     * see <a>arns</a>.</p>
-     */
-    inline ApplySchemaResult& WithDirectoryArn(const Aws::String& value) { SetDirectoryArn(value); return *this;}
-
-    /**
-     * <p>The ARN that is associated with the <a>Directory</a>. For more information,
-     * see <a>arns</a>.</p>
-     */
-    inline ApplySchemaResult& WithDirectoryArn(Aws::String&& value) { SetDirectoryArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN that is associated with the <a>Directory</a>. For more information,
-     * see <a>arns</a>.</p>
-     */
-    inline ApplySchemaResult& WithDirectoryArn(const char* value) { SetDirectoryArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ApplySchemaResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ApplySchemaResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ApplySchemaResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ApplySchemaResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_appliedSchemaArn;
+    bool m_appliedSchemaArnHasBeenSet = false;
 
     Aws::String m_directoryArn;
+    bool m_directoryArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -20,19 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-MultiRegionAccessPointRoute::MultiRegionAccessPointRoute() : 
-    m_bucketHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_trafficDialPercentage(0),
-    m_trafficDialPercentageHasBeenSet(false)
-{
-}
-
-MultiRegionAccessPointRoute::MultiRegionAccessPointRoute(const XmlNode& xmlNode) : 
-    m_bucketHasBeenSet(false),
-    m_regionHasBeenSet(false),
-    m_trafficDialPercentage(0),
-    m_trafficDialPercentageHasBeenSet(false)
+MultiRegionAccessPointRoute::MultiRegionAccessPointRoute(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

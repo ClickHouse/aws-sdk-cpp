@@ -32,42 +32,23 @@ namespace Model
   class DatasetGroundTruthManifest
   {
   public:
-    AWS_LOOKOUTFORVISION_API DatasetGroundTruthManifest();
+    AWS_LOOKOUTFORVISION_API DatasetGroundTruthManifest() = default;
     AWS_LOOKOUTFORVISION_API DatasetGroundTruthManifest(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTFORVISION_API DatasetGroundTruthManifest& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LOOKOUTFORVISION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The S3 bucket location for the manifest file.</p>
      */
-    inline const InputS3Object& GetS3Object() const{ return m_s3Object; }
-
-    /**
-     * <p>The S3 bucket location for the manifest file.</p>
-     */
+    inline const InputS3Object& GetS3Object() const { return m_s3Object; }
     inline bool S3ObjectHasBeenSet() const { return m_s3ObjectHasBeenSet; }
-
-    /**
-     * <p>The S3 bucket location for the manifest file.</p>
-     */
-    inline void SetS3Object(const InputS3Object& value) { m_s3ObjectHasBeenSet = true; m_s3Object = value; }
-
-    /**
-     * <p>The S3 bucket location for the manifest file.</p>
-     */
-    inline void SetS3Object(InputS3Object&& value) { m_s3ObjectHasBeenSet = true; m_s3Object = std::move(value); }
-
-    /**
-     * <p>The S3 bucket location for the manifest file.</p>
-     */
-    inline DatasetGroundTruthManifest& WithS3Object(const InputS3Object& value) { SetS3Object(value); return *this;}
-
-    /**
-     * <p>The S3 bucket location for the manifest file.</p>
-     */
-    inline DatasetGroundTruthManifest& WithS3Object(InputS3Object&& value) { SetS3Object(std::move(value)); return *this;}
-
+    template<typename S3ObjectT = InputS3Object>
+    void SetS3Object(S3ObjectT&& value) { m_s3ObjectHasBeenSet = true; m_s3Object = std::forward<S3ObjectT>(value); }
+    template<typename S3ObjectT = InputS3Object>
+    DatasetGroundTruthManifest& WithS3Object(S3ObjectT&& value) { SetS3Object(std::forward<S3ObjectT>(value)); return *this;}
+    ///@}
   private:
 
     InputS3Object m_s3Object;

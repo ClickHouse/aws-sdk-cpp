@@ -22,7 +22,7 @@ namespace Model
   class UntagResourceRequest : public KendraRequest
   {
   public:
-    AWS_KENDRA_API UntagResourceRequest();
+    AWS_KENDRA_API UntagResourceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,109 +35,38 @@ namespace Model
     AWS_KENDRA_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to remove
-     * the tag from.</p>
+     * <p>The Amazon Resource Name (ARN) of the index, FAQ, data source, or other
+     * resource to remove a tag. For example, the ARN of an index is constructed as
+     * follows: <i>arn:aws:kendra:your-region:your-account-id:index/index-id</i> For
+     * information on how to construct an ARN for all types of Amazon Kendra resources,
+     * see <a
+     * href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonkendra.html#amazonkendra-resources-for-iam-policies">Resource
+     * types</a>.</p>
      */
-    inline const Aws::String& GetResourceARN() const{ return m_resourceARN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to remove
-     * the tag from.</p>
-     */
+    inline const Aws::String& GetResourceARN() const { return m_resourceARN; }
     inline bool ResourceARNHasBeenSet() const { return m_resourceARNHasBeenSet; }
+    template<typename ResourceARNT = Aws::String>
+    void SetResourceARN(ResourceARNT&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = std::forward<ResourceARNT>(value); }
+    template<typename ResourceARNT = Aws::String>
+    UntagResourceRequest& WithResourceARN(ResourceARNT&& value) { SetResourceARN(std::forward<ResourceARNT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to remove
-     * the tag from.</p>
+     * <p>A list of tag keys to remove from the index, FAQ, data source, or other
+     * resource. If a tag key doesn't exist for the resource, it is ignored.</p>
      */
-    inline void SetResourceARN(const Aws::String& value) { m_resourceARNHasBeenSet = true; m_resourceARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to remove
-     * the tag from.</p>
-     */
-    inline void SetResourceARN(Aws::String&& value) { m_resourceARNHasBeenSet = true; m_resourceARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to remove
-     * the tag from.</p>
-     */
-    inline void SetResourceARN(const char* value) { m_resourceARNHasBeenSet = true; m_resourceARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to remove
-     * the tag from.</p>
-     */
-    inline UntagResourceRequest& WithResourceARN(const Aws::String& value) { SetResourceARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to remove
-     * the tag from.</p>
-     */
-    inline UntagResourceRequest& WithResourceARN(Aws::String&& value) { SetResourceARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to remove
-     * the tag from.</p>
-     */
-    inline UntagResourceRequest& WithResourceARN(const char* value) { SetResourceARN(value); return *this;}
-
-
-    /**
-     * <p>A list of tag keys to remove from the index, FAQ, or data source. If a tag
-     * key does not exist on the resource, it is ignored.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetTagKeys() const{ return m_tagKeys; }
-
-    /**
-     * <p>A list of tag keys to remove from the index, FAQ, or data source. If a tag
-     * key does not exist on the resource, it is ignored.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetTagKeys() const { return m_tagKeys; }
     inline bool TagKeysHasBeenSet() const { return m_tagKeysHasBeenSet; }
-
-    /**
-     * <p>A list of tag keys to remove from the index, FAQ, or data source. If a tag
-     * key does not exist on the resource, it is ignored.</p>
-     */
-    inline void SetTagKeys(const Aws::Vector<Aws::String>& value) { m_tagKeysHasBeenSet = true; m_tagKeys = value; }
-
-    /**
-     * <p>A list of tag keys to remove from the index, FAQ, or data source. If a tag
-     * key does not exist on the resource, it is ignored.</p>
-     */
-    inline void SetTagKeys(Aws::Vector<Aws::String>&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = std::move(value); }
-
-    /**
-     * <p>A list of tag keys to remove from the index, FAQ, or data source. If a tag
-     * key does not exist on the resource, it is ignored.</p>
-     */
-    inline UntagResourceRequest& WithTagKeys(const Aws::Vector<Aws::String>& value) { SetTagKeys(value); return *this;}
-
-    /**
-     * <p>A list of tag keys to remove from the index, FAQ, or data source. If a tag
-     * key does not exist on the resource, it is ignored.</p>
-     */
-    inline UntagResourceRequest& WithTagKeys(Aws::Vector<Aws::String>&& value) { SetTagKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of tag keys to remove from the index, FAQ, or data source. If a tag
-     * key does not exist on the resource, it is ignored.</p>
-     */
-    inline UntagResourceRequest& AddTagKeys(const Aws::String& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(value); return *this; }
-
-    /**
-     * <p>A list of tag keys to remove from the index, FAQ, or data source. If a tag
-     * key does not exist on the resource, it is ignored.</p>
-     */
-    inline UntagResourceRequest& AddTagKeys(Aws::String&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>A list of tag keys to remove from the index, FAQ, or data source. If a tag
-     * key does not exist on the resource, it is ignored.</p>
-     */
-    inline UntagResourceRequest& AddTagKeys(const char* value) { m_tagKeysHasBeenSet = true; m_tagKeys.push_back(value); return *this; }
-
+    template<typename TagKeysT = Aws::Vector<Aws::String>>
+    void SetTagKeys(TagKeysT&& value) { m_tagKeysHasBeenSet = true; m_tagKeys = std::forward<TagKeysT>(value); }
+    template<typename TagKeysT = Aws::Vector<Aws::String>>
+    UntagResourceRequest& WithTagKeys(TagKeysT&& value) { SetTagKeys(std::forward<TagKeysT>(value)); return *this;}
+    template<typename TagKeysT = Aws::String>
+    UntagResourceRequest& AddTagKeys(TagKeysT&& value) { m_tagKeysHasBeenSet = true; m_tagKeys.emplace_back(std::forward<TagKeysT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_resourceARN;

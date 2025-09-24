@@ -28,129 +28,65 @@ namespace Model
   class DescribeCrossAccountAccessRoleResult
   {
   public:
-    AWS_INSPECTOR_API DescribeCrossAccountAccessRoleResult();
+    AWS_INSPECTOR_API DescribeCrossAccountAccessRoleResult() = default;
     AWS_INSPECTOR_API DescribeCrossAccountAccessRoleResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_INSPECTOR_API DescribeCrossAccountAccessRoleResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your
      * AWS account.</p>
      */
-    inline const Aws::String& GetRoleArn() const{ return m_roleArn; }
+    inline const Aws::String& GetRoleArn() const { return m_roleArn; }
+    template<typename RoleArnT = Aws::String>
+    void SetRoleArn(RoleArnT&& value) { m_roleArnHasBeenSet = true; m_roleArn = std::forward<RoleArnT>(value); }
+    template<typename RoleArnT = Aws::String>
+    DescribeCrossAccountAccessRoleResult& WithRoleArn(RoleArnT&& value) { SetRoleArn(std::forward<RoleArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your
-     * AWS account.</p>
-     */
-    inline void SetRoleArn(const Aws::String& value) { m_roleArn = value; }
-
-    /**
-     * <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your
-     * AWS account.</p>
-     */
-    inline void SetRoleArn(Aws::String&& value) { m_roleArn = std::move(value); }
-
-    /**
-     * <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your
-     * AWS account.</p>
-     */
-    inline void SetRoleArn(const char* value) { m_roleArn.assign(value); }
-
-    /**
-     * <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your
-     * AWS account.</p>
-     */
-    inline DescribeCrossAccountAccessRoleResult& WithRoleArn(const Aws::String& value) { SetRoleArn(value); return *this;}
-
-    /**
-     * <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your
-     * AWS account.</p>
-     */
-    inline DescribeCrossAccountAccessRoleResult& WithRoleArn(Aws::String&& value) { SetRoleArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN that specifies the IAM role that Amazon Inspector uses to access your
-     * AWS account.</p>
-     */
-    inline DescribeCrossAccountAccessRoleResult& WithRoleArn(const char* value) { SetRoleArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A Boolean value that specifies whether the IAM role has the necessary
      * policies attached to enable Amazon Inspector to access your AWS account.</p>
      */
-    inline bool GetValid() const{ return m_valid; }
-
-    /**
-     * <p>A Boolean value that specifies whether the IAM role has the necessary
-     * policies attached to enable Amazon Inspector to access your AWS account.</p>
-     */
-    inline void SetValid(bool value) { m_valid = value; }
-
-    /**
-     * <p>A Boolean value that specifies whether the IAM role has the necessary
-     * policies attached to enable Amazon Inspector to access your AWS account.</p>
-     */
+    inline bool GetValid() const { return m_valid; }
+    inline void SetValid(bool value) { m_validHasBeenSet = true; m_valid = value; }
     inline DescribeCrossAccountAccessRoleResult& WithValid(bool value) { SetValid(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The date when the cross-account access role was registered.</p>
      */
-    inline const Aws::Utils::DateTime& GetRegisteredAt() const{ return m_registeredAt; }
+    inline const Aws::Utils::DateTime& GetRegisteredAt() const { return m_registeredAt; }
+    template<typename RegisteredAtT = Aws::Utils::DateTime>
+    void SetRegisteredAt(RegisteredAtT&& value) { m_registeredAtHasBeenSet = true; m_registeredAt = std::forward<RegisteredAtT>(value); }
+    template<typename RegisteredAtT = Aws::Utils::DateTime>
+    DescribeCrossAccountAccessRoleResult& WithRegisteredAt(RegisteredAtT&& value) { SetRegisteredAt(std::forward<RegisteredAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date when the cross-account access role was registered.</p>
-     */
-    inline void SetRegisteredAt(const Aws::Utils::DateTime& value) { m_registeredAt = value; }
-
-    /**
-     * <p>The date when the cross-account access role was registered.</p>
-     */
-    inline void SetRegisteredAt(Aws::Utils::DateTime&& value) { m_registeredAt = std::move(value); }
-
-    /**
-     * <p>The date when the cross-account access role was registered.</p>
-     */
-    inline DescribeCrossAccountAccessRoleResult& WithRegisteredAt(const Aws::Utils::DateTime& value) { SetRegisteredAt(value); return *this;}
-
-    /**
-     * <p>The date when the cross-account access role was registered.</p>
-     */
-    inline DescribeCrossAccountAccessRoleResult& WithRegisteredAt(Aws::Utils::DateTime&& value) { SetRegisteredAt(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeCrossAccountAccessRoleResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeCrossAccountAccessRoleResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeCrossAccountAccessRoleResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeCrossAccountAccessRoleResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_roleArn;
+    bool m_roleArnHasBeenSet = false;
 
-    bool m_valid;
+    bool m_valid{false};
+    bool m_validHasBeenSet = false;
 
-    Aws::Utils::DateTime m_registeredAt;
+    Aws::Utils::DateTime m_registeredAt{};
+    bool m_registeredAtHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

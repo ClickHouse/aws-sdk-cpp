@@ -8,6 +8,7 @@
 #include <aws/quicksight/model/KPIFieldWells.h>
 #include <aws/quicksight/model/KPISortConfiguration.h>
 #include <aws/quicksight/model/KPIOptions.h>
+#include <aws/quicksight/model/VisualInteractionOptions.h>
 #include <utility>
 
 namespace Aws
@@ -33,104 +34,59 @@ namespace Model
   class KPIConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API KPIConfiguration();
+    AWS_QUICKSIGHT_API KPIConfiguration() = default;
     AWS_QUICKSIGHT_API KPIConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API KPIConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field well configuration of a KPI visual.</p>
      */
-    inline const KPIFieldWells& GetFieldWells() const{ return m_fieldWells; }
-
-    /**
-     * <p>The field well configuration of a KPI visual.</p>
-     */
+    inline const KPIFieldWells& GetFieldWells() const { return m_fieldWells; }
     inline bool FieldWellsHasBeenSet() const { return m_fieldWellsHasBeenSet; }
+    template<typename FieldWellsT = KPIFieldWells>
+    void SetFieldWells(FieldWellsT&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::forward<FieldWellsT>(value); }
+    template<typename FieldWellsT = KPIFieldWells>
+    KPIConfiguration& WithFieldWells(FieldWellsT&& value) { SetFieldWells(std::forward<FieldWellsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field well configuration of a KPI visual.</p>
-     */
-    inline void SetFieldWells(const KPIFieldWells& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = value; }
-
-    /**
-     * <p>The field well configuration of a KPI visual.</p>
-     */
-    inline void SetFieldWells(KPIFieldWells&& value) { m_fieldWellsHasBeenSet = true; m_fieldWells = std::move(value); }
-
-    /**
-     * <p>The field well configuration of a KPI visual.</p>
-     */
-    inline KPIConfiguration& WithFieldWells(const KPIFieldWells& value) { SetFieldWells(value); return *this;}
-
-    /**
-     * <p>The field well configuration of a KPI visual.</p>
-     */
-    inline KPIConfiguration& WithFieldWells(KPIFieldWells&& value) { SetFieldWells(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The sort configuration of a KPI visual.</p>
      */
-    inline const KPISortConfiguration& GetSortConfiguration() const{ return m_sortConfiguration; }
-
-    /**
-     * <p>The sort configuration of a KPI visual.</p>
-     */
+    inline const KPISortConfiguration& GetSortConfiguration() const { return m_sortConfiguration; }
     inline bool SortConfigurationHasBeenSet() const { return m_sortConfigurationHasBeenSet; }
+    template<typename SortConfigurationT = KPISortConfiguration>
+    void SetSortConfiguration(SortConfigurationT&& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = std::forward<SortConfigurationT>(value); }
+    template<typename SortConfigurationT = KPISortConfiguration>
+    KPIConfiguration& WithSortConfiguration(SortConfigurationT&& value) { SetSortConfiguration(std::forward<SortConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The sort configuration of a KPI visual.</p>
-     */
-    inline void SetSortConfiguration(const KPISortConfiguration& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = value; }
-
-    /**
-     * <p>The sort configuration of a KPI visual.</p>
-     */
-    inline void SetSortConfiguration(KPISortConfiguration&& value) { m_sortConfigurationHasBeenSet = true; m_sortConfiguration = std::move(value); }
-
-    /**
-     * <p>The sort configuration of a KPI visual.</p>
-     */
-    inline KPIConfiguration& WithSortConfiguration(const KPISortConfiguration& value) { SetSortConfiguration(value); return *this;}
-
-    /**
-     * <p>The sort configuration of a KPI visual.</p>
-     */
-    inline KPIConfiguration& WithSortConfiguration(KPISortConfiguration&& value) { SetSortConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the presentation of a KPI visual.</p>
      */
-    inline const KPIOptions& GetKPIOptions() const{ return m_kPIOptions; }
-
-    /**
-     * <p>The options that determine the presentation of a KPI visual.</p>
-     */
+    inline const KPIOptions& GetKPIOptions() const { return m_kPIOptions; }
     inline bool KPIOptionsHasBeenSet() const { return m_kPIOptionsHasBeenSet; }
+    template<typename KPIOptionsT = KPIOptions>
+    void SetKPIOptions(KPIOptionsT&& value) { m_kPIOptionsHasBeenSet = true; m_kPIOptions = std::forward<KPIOptionsT>(value); }
+    template<typename KPIOptionsT = KPIOptions>
+    KPIConfiguration& WithKPIOptions(KPIOptionsT&& value) { SetKPIOptions(std::forward<KPIOptionsT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The options that determine the presentation of a KPI visual.</p>
+     * <p>The general visual interactions setup for a visual.</p>
      */
-    inline void SetKPIOptions(const KPIOptions& value) { m_kPIOptionsHasBeenSet = true; m_kPIOptions = value; }
-
-    /**
-     * <p>The options that determine the presentation of a KPI visual.</p>
-     */
-    inline void SetKPIOptions(KPIOptions&& value) { m_kPIOptionsHasBeenSet = true; m_kPIOptions = std::move(value); }
-
-    /**
-     * <p>The options that determine the presentation of a KPI visual.</p>
-     */
-    inline KPIConfiguration& WithKPIOptions(const KPIOptions& value) { SetKPIOptions(value); return *this;}
-
-    /**
-     * <p>The options that determine the presentation of a KPI visual.</p>
-     */
-    inline KPIConfiguration& WithKPIOptions(KPIOptions&& value) { SetKPIOptions(std::move(value)); return *this;}
-
+    inline const VisualInteractionOptions& GetInteractions() const { return m_interactions; }
+    inline bool InteractionsHasBeenSet() const { return m_interactionsHasBeenSet; }
+    template<typename InteractionsT = VisualInteractionOptions>
+    void SetInteractions(InteractionsT&& value) { m_interactionsHasBeenSet = true; m_interactions = std::forward<InteractionsT>(value); }
+    template<typename InteractionsT = VisualInteractionOptions>
+    KPIConfiguration& WithInteractions(InteractionsT&& value) { SetInteractions(std::forward<InteractionsT>(value)); return *this;}
+    ///@}
   private:
 
     KPIFieldWells m_fieldWells;
@@ -141,6 +97,9 @@ namespace Model
 
     KPIOptions m_kPIOptions;
     bool m_kPIOptionsHasBeenSet = false;
+
+    VisualInteractionOptions m_interactions;
+    bool m_interactionsHasBeenSet = false;
   };
 
 } // namespace Model

@@ -32,86 +32,36 @@ namespace Model
   class MonitorErrorDetails
   {
   public:
-    AWS_IOTSITEWISE_API MonitorErrorDetails();
+    AWS_IOTSITEWISE_API MonitorErrorDetails() = default;
     AWS_IOTSITEWISE_API MonitorErrorDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API MonitorErrorDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTSITEWISE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The error code.</p>
      */
-    inline const MonitorErrorCode& GetCode() const{ return m_code; }
-
-    /**
-     * <p>The error code.</p>
-     */
+    inline MonitorErrorCode GetCode() const { return m_code; }
     inline bool CodeHasBeenSet() const { return m_codeHasBeenSet; }
+    inline void SetCode(MonitorErrorCode value) { m_codeHasBeenSet = true; m_code = value; }
+    inline MonitorErrorDetails& WithCode(MonitorErrorCode value) { SetCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetCode(const MonitorErrorCode& value) { m_codeHasBeenSet = true; m_code = value; }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline void SetCode(MonitorErrorCode&& value) { m_codeHasBeenSet = true; m_code = std::move(value); }
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline MonitorErrorDetails& WithCode(const MonitorErrorCode& value) { SetCode(value); return *this;}
-
-    /**
-     * <p>The error code.</p>
-     */
-    inline MonitorErrorDetails& WithCode(MonitorErrorCode&& value) { SetCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The error message.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>The error message.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline MonitorErrorDetails& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline MonitorErrorDetails& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>The error message.</p>
-     */
-    inline MonitorErrorDetails& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    MonitorErrorDetails& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
-    MonitorErrorCode m_code;
+    MonitorErrorCode m_code{MonitorErrorCode::NOT_SET};
     bool m_codeHasBeenSet = false;
 
     Aws::String m_message;

@@ -33,93 +33,37 @@ namespace Model
   class AwsEc2InstanceViolation
   {
   public:
-    AWS_FMS_API AwsEc2InstanceViolation();
+    AWS_FMS_API AwsEc2InstanceViolation() = default;
     AWS_FMS_API AwsEc2InstanceViolation(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API AwsEc2InstanceViolation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The resource ID of the EC2 instance.</p>
      */
-    inline const Aws::String& GetViolationTarget() const{ return m_violationTarget; }
-
-    /**
-     * <p>The resource ID of the EC2 instance.</p>
-     */
+    inline const Aws::String& GetViolationTarget() const { return m_violationTarget; }
     inline bool ViolationTargetHasBeenSet() const { return m_violationTargetHasBeenSet; }
+    template<typename ViolationTargetT = Aws::String>
+    void SetViolationTarget(ViolationTargetT&& value) { m_violationTargetHasBeenSet = true; m_violationTarget = std::forward<ViolationTargetT>(value); }
+    template<typename ViolationTargetT = Aws::String>
+    AwsEc2InstanceViolation& WithViolationTarget(ViolationTargetT&& value) { SetViolationTarget(std::forward<ViolationTargetT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource ID of the EC2 instance.</p>
-     */
-    inline void SetViolationTarget(const Aws::String& value) { m_violationTargetHasBeenSet = true; m_violationTarget = value; }
-
-    /**
-     * <p>The resource ID of the EC2 instance.</p>
-     */
-    inline void SetViolationTarget(Aws::String&& value) { m_violationTargetHasBeenSet = true; m_violationTarget = std::move(value); }
-
-    /**
-     * <p>The resource ID of the EC2 instance.</p>
-     */
-    inline void SetViolationTarget(const char* value) { m_violationTargetHasBeenSet = true; m_violationTarget.assign(value); }
-
-    /**
-     * <p>The resource ID of the EC2 instance.</p>
-     */
-    inline AwsEc2InstanceViolation& WithViolationTarget(const Aws::String& value) { SetViolationTarget(value); return *this;}
-
-    /**
-     * <p>The resource ID of the EC2 instance.</p>
-     */
-    inline AwsEc2InstanceViolation& WithViolationTarget(Aws::String&& value) { SetViolationTarget(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource ID of the EC2 instance.</p>
-     */
-    inline AwsEc2InstanceViolation& WithViolationTarget(const char* value) { SetViolationTarget(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Violation detail for network interfaces associated with the EC2 instance.</p>
      */
-    inline const Aws::Vector<AwsEc2NetworkInterfaceViolation>& GetAwsEc2NetworkInterfaceViolations() const{ return m_awsEc2NetworkInterfaceViolations; }
-
-    /**
-     * <p>Violation detail for network interfaces associated with the EC2 instance.</p>
-     */
+    inline const Aws::Vector<AwsEc2NetworkInterfaceViolation>& GetAwsEc2NetworkInterfaceViolations() const { return m_awsEc2NetworkInterfaceViolations; }
     inline bool AwsEc2NetworkInterfaceViolationsHasBeenSet() const { return m_awsEc2NetworkInterfaceViolationsHasBeenSet; }
-
-    /**
-     * <p>Violation detail for network interfaces associated with the EC2 instance.</p>
-     */
-    inline void SetAwsEc2NetworkInterfaceViolations(const Aws::Vector<AwsEc2NetworkInterfaceViolation>& value) { m_awsEc2NetworkInterfaceViolationsHasBeenSet = true; m_awsEc2NetworkInterfaceViolations = value; }
-
-    /**
-     * <p>Violation detail for network interfaces associated with the EC2 instance.</p>
-     */
-    inline void SetAwsEc2NetworkInterfaceViolations(Aws::Vector<AwsEc2NetworkInterfaceViolation>&& value) { m_awsEc2NetworkInterfaceViolationsHasBeenSet = true; m_awsEc2NetworkInterfaceViolations = std::move(value); }
-
-    /**
-     * <p>Violation detail for network interfaces associated with the EC2 instance.</p>
-     */
-    inline AwsEc2InstanceViolation& WithAwsEc2NetworkInterfaceViolations(const Aws::Vector<AwsEc2NetworkInterfaceViolation>& value) { SetAwsEc2NetworkInterfaceViolations(value); return *this;}
-
-    /**
-     * <p>Violation detail for network interfaces associated with the EC2 instance.</p>
-     */
-    inline AwsEc2InstanceViolation& WithAwsEc2NetworkInterfaceViolations(Aws::Vector<AwsEc2NetworkInterfaceViolation>&& value) { SetAwsEc2NetworkInterfaceViolations(std::move(value)); return *this;}
-
-    /**
-     * <p>Violation detail for network interfaces associated with the EC2 instance.</p>
-     */
-    inline AwsEc2InstanceViolation& AddAwsEc2NetworkInterfaceViolations(const AwsEc2NetworkInterfaceViolation& value) { m_awsEc2NetworkInterfaceViolationsHasBeenSet = true; m_awsEc2NetworkInterfaceViolations.push_back(value); return *this; }
-
-    /**
-     * <p>Violation detail for network interfaces associated with the EC2 instance.</p>
-     */
-    inline AwsEc2InstanceViolation& AddAwsEc2NetworkInterfaceViolations(AwsEc2NetworkInterfaceViolation&& value) { m_awsEc2NetworkInterfaceViolationsHasBeenSet = true; m_awsEc2NetworkInterfaceViolations.push_back(std::move(value)); return *this; }
-
+    template<typename AwsEc2NetworkInterfaceViolationsT = Aws::Vector<AwsEc2NetworkInterfaceViolation>>
+    void SetAwsEc2NetworkInterfaceViolations(AwsEc2NetworkInterfaceViolationsT&& value) { m_awsEc2NetworkInterfaceViolationsHasBeenSet = true; m_awsEc2NetworkInterfaceViolations = std::forward<AwsEc2NetworkInterfaceViolationsT>(value); }
+    template<typename AwsEc2NetworkInterfaceViolationsT = Aws::Vector<AwsEc2NetworkInterfaceViolation>>
+    AwsEc2InstanceViolation& WithAwsEc2NetworkInterfaceViolations(AwsEc2NetworkInterfaceViolationsT&& value) { SetAwsEc2NetworkInterfaceViolations(std::forward<AwsEc2NetworkInterfaceViolationsT>(value)); return *this;}
+    template<typename AwsEc2NetworkInterfaceViolationsT = AwsEc2NetworkInterfaceViolation>
+    AwsEc2InstanceViolation& AddAwsEc2NetworkInterfaceViolations(AwsEc2NetworkInterfaceViolationsT&& value) { m_awsEc2NetworkInterfaceViolationsHasBeenSet = true; m_awsEc2NetworkInterfaceViolations.emplace_back(std::forward<AwsEc2NetworkInterfaceViolationsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_violationTarget;

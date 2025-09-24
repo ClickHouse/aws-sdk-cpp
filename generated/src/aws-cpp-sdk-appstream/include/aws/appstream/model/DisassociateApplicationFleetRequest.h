@@ -21,7 +21,7 @@ namespace Model
   class DisassociateApplicationFleetRequest : public AppStreamRequest
   {
   public:
-    AWS_APPSTREAM_API DisassociateApplicationFleetRequest();
+    AWS_APPSTREAM_API DisassociateApplicationFleetRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_APPSTREAM_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the fleet.</p>
      */
-    inline const Aws::String& GetFleetName() const{ return m_fleetName; }
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
+    inline const Aws::String& GetFleetName() const { return m_fleetName; }
     inline bool FleetNameHasBeenSet() const { return m_fleetNameHasBeenSet; }
+    template<typename FleetNameT = Aws::String>
+    void SetFleetName(FleetNameT&& value) { m_fleetNameHasBeenSet = true; m_fleetName = std::forward<FleetNameT>(value); }
+    template<typename FleetNameT = Aws::String>
+    DisassociateApplicationFleetRequest& WithFleetName(FleetNameT&& value) { SetFleetName(std::forward<FleetNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline void SetFleetName(const Aws::String& value) { m_fleetNameHasBeenSet = true; m_fleetName = value; }
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline void SetFleetName(Aws::String&& value) { m_fleetNameHasBeenSet = true; m_fleetName = std::move(value); }
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline void SetFleetName(const char* value) { m_fleetNameHasBeenSet = true; m_fleetName.assign(value); }
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline DisassociateApplicationFleetRequest& WithFleetName(const Aws::String& value) { SetFleetName(value); return *this;}
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline DisassociateApplicationFleetRequest& WithFleetName(Aws::String&& value) { SetFleetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the fleet.</p>
-     */
-    inline DisassociateApplicationFleetRequest& WithFleetName(const char* value) { SetFleetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the application.</p>
      */
-    inline const Aws::String& GetApplicationArn() const{ return m_applicationArn; }
-
-    /**
-     * <p>The ARN of the application.</p>
-     */
+    inline const Aws::String& GetApplicationArn() const { return m_applicationArn; }
     inline bool ApplicationArnHasBeenSet() const { return m_applicationArnHasBeenSet; }
-
-    /**
-     * <p>The ARN of the application.</p>
-     */
-    inline void SetApplicationArn(const Aws::String& value) { m_applicationArnHasBeenSet = true; m_applicationArn = value; }
-
-    /**
-     * <p>The ARN of the application.</p>
-     */
-    inline void SetApplicationArn(Aws::String&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the application.</p>
-     */
-    inline void SetApplicationArn(const char* value) { m_applicationArnHasBeenSet = true; m_applicationArn.assign(value); }
-
-    /**
-     * <p>The ARN of the application.</p>
-     */
-    inline DisassociateApplicationFleetRequest& WithApplicationArn(const Aws::String& value) { SetApplicationArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the application.</p>
-     */
-    inline DisassociateApplicationFleetRequest& WithApplicationArn(Aws::String&& value) { SetApplicationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the application.</p>
-     */
-    inline DisassociateApplicationFleetRequest& WithApplicationArn(const char* value) { SetApplicationArn(value); return *this;}
-
+    template<typename ApplicationArnT = Aws::String>
+    void SetApplicationArn(ApplicationArnT&& value) { m_applicationArnHasBeenSet = true; m_applicationArn = std::forward<ApplicationArnT>(value); }
+    template<typename ApplicationArnT = Aws::String>
+    DisassociateApplicationFleetRequest& WithApplicationArn(ApplicationArnT&& value) { SetApplicationArn(std::forward<ApplicationArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_fleetName;

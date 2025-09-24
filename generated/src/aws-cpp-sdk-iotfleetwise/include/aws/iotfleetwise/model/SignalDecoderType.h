@@ -19,7 +19,7 @@ namespace Model
     CAN_SIGNAL,
     OBD_SIGNAL,
     MESSAGE_SIGNAL,
-    CUSTOMER_DECODED_SIGNAL
+    CUSTOM_DECODING_SIGNAL
   };
 
 namespace SignalDecoderTypeMapper

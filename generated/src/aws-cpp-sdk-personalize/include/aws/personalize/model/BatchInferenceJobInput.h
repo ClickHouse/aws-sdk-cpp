@@ -32,48 +32,24 @@ namespace Model
   class BatchInferenceJobInput
   {
   public:
-    AWS_PERSONALIZE_API BatchInferenceJobInput();
+    AWS_PERSONALIZE_API BatchInferenceJobInput() = default;
     AWS_PERSONALIZE_API BatchInferenceJobInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API BatchInferenceJobInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The URI of the Amazon S3 location that contains your input data. The Amazon
      * S3 bucket must be in the same region as the API endpoint you are calling.</p>
      */
-    inline const S3DataConfig& GetS3DataSource() const{ return m_s3DataSource; }
-
-    /**
-     * <p>The URI of the Amazon S3 location that contains your input data. The Amazon
-     * S3 bucket must be in the same region as the API endpoint you are calling.</p>
-     */
+    inline const S3DataConfig& GetS3DataSource() const { return m_s3DataSource; }
     inline bool S3DataSourceHasBeenSet() const { return m_s3DataSourceHasBeenSet; }
-
-    /**
-     * <p>The URI of the Amazon S3 location that contains your input data. The Amazon
-     * S3 bucket must be in the same region as the API endpoint you are calling.</p>
-     */
-    inline void SetS3DataSource(const S3DataConfig& value) { m_s3DataSourceHasBeenSet = true; m_s3DataSource = value; }
-
-    /**
-     * <p>The URI of the Amazon S3 location that contains your input data. The Amazon
-     * S3 bucket must be in the same region as the API endpoint you are calling.</p>
-     */
-    inline void SetS3DataSource(S3DataConfig&& value) { m_s3DataSourceHasBeenSet = true; m_s3DataSource = std::move(value); }
-
-    /**
-     * <p>The URI of the Amazon S3 location that contains your input data. The Amazon
-     * S3 bucket must be in the same region as the API endpoint you are calling.</p>
-     */
-    inline BatchInferenceJobInput& WithS3DataSource(const S3DataConfig& value) { SetS3DataSource(value); return *this;}
-
-    /**
-     * <p>The URI of the Amazon S3 location that contains your input data. The Amazon
-     * S3 bucket must be in the same region as the API endpoint you are calling.</p>
-     */
-    inline BatchInferenceJobInput& WithS3DataSource(S3DataConfig&& value) { SetS3DataSource(std::move(value)); return *this;}
-
+    template<typename S3DataSourceT = S3DataConfig>
+    void SetS3DataSource(S3DataSourceT&& value) { m_s3DataSourceHasBeenSet = true; m_s3DataSource = std::forward<S3DataSourceT>(value); }
+    template<typename S3DataSourceT = S3DataConfig>
+    BatchInferenceJobInput& WithS3DataSource(S3DataSourceT&& value) { SetS3DataSource(std::forward<S3DataSourceT>(value)); return *this;}
+    ///@}
   private:
 
     S3DataConfig m_s3DataSource;

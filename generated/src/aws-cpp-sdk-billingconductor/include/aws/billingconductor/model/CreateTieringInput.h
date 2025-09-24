@@ -32,42 +32,23 @@ namespace Model
   class CreateTieringInput
   {
   public:
-    AWS_BILLINGCONDUCTOR_API CreateTieringInput();
+    AWS_BILLINGCONDUCTOR_API CreateTieringInput() = default;
     AWS_BILLINGCONDUCTOR_API CreateTieringInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_BILLINGCONDUCTOR_API CreateTieringInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BILLINGCONDUCTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The possible Amazon Web Services Free Tier configurations. </p>
      */
-    inline const CreateFreeTierConfig& GetFreeTier() const{ return m_freeTier; }
-
-    /**
-     * <p> The possible Amazon Web Services Free Tier configurations. </p>
-     */
+    inline const CreateFreeTierConfig& GetFreeTier() const { return m_freeTier; }
     inline bool FreeTierHasBeenSet() const { return m_freeTierHasBeenSet; }
-
-    /**
-     * <p> The possible Amazon Web Services Free Tier configurations. </p>
-     */
-    inline void SetFreeTier(const CreateFreeTierConfig& value) { m_freeTierHasBeenSet = true; m_freeTier = value; }
-
-    /**
-     * <p> The possible Amazon Web Services Free Tier configurations. </p>
-     */
-    inline void SetFreeTier(CreateFreeTierConfig&& value) { m_freeTierHasBeenSet = true; m_freeTier = std::move(value); }
-
-    /**
-     * <p> The possible Amazon Web Services Free Tier configurations. </p>
-     */
-    inline CreateTieringInput& WithFreeTier(const CreateFreeTierConfig& value) { SetFreeTier(value); return *this;}
-
-    /**
-     * <p> The possible Amazon Web Services Free Tier configurations. </p>
-     */
-    inline CreateTieringInput& WithFreeTier(CreateFreeTierConfig&& value) { SetFreeTier(std::move(value)); return *this;}
-
+    template<typename FreeTierT = CreateFreeTierConfig>
+    void SetFreeTier(FreeTierT&& value) { m_freeTierHasBeenSet = true; m_freeTier = std::forward<FreeTierT>(value); }
+    template<typename FreeTierT = CreateFreeTierConfig>
+    CreateTieringInput& WithFreeTier(FreeTierT&& value) { SetFreeTier(std::forward<FreeTierT>(value)); return *this;}
+    ///@}
   private:
 
     CreateFreeTierConfig m_freeTier;

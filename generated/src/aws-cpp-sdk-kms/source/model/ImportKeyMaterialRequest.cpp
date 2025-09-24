@@ -13,16 +13,6 @@ using namespace Aws::KMS::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ImportKeyMaterialRequest::ImportKeyMaterialRequest() : 
-    m_keyIdHasBeenSet(false),
-    m_importTokenHasBeenSet(false),
-    m_encryptedKeyMaterialHasBeenSet(false),
-    m_validToHasBeenSet(false),
-    m_expirationModel(ExpirationModelType::NOT_SET),
-    m_expirationModelHasBeenSet(false)
-{
-}
-
 Aws::String ImportKeyMaterialRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -51,6 +41,23 @@ Aws::String ImportKeyMaterialRequest::SerializePayload() const
   if(m_expirationModelHasBeenSet)
   {
    payload.WithString("ExpirationModel", ExpirationModelTypeMapper::GetNameForExpirationModelType(m_expirationModel));
+  }
+
+  if(m_importTypeHasBeenSet)
+  {
+   payload.WithString("ImportType", ImportTypeMapper::GetNameForImportType(m_importType));
+  }
+
+  if(m_keyMaterialDescriptionHasBeenSet)
+  {
+   payload.WithString("KeyMaterialDescription", m_keyMaterialDescription);
+
+  }
+
+  if(m_keyMaterialIdHasBeenSet)
+  {
+   payload.WithString("KeyMaterialId", m_keyMaterialId);
+
   }
 
   return payload.View().WriteReadable();

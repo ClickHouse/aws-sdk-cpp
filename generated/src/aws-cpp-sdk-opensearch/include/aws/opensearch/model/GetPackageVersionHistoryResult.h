@@ -35,170 +35,70 @@ namespace Model
   class GetPackageVersionHistoryResult
   {
   public:
-    AWS_OPENSEARCHSERVICE_API GetPackageVersionHistoryResult();
+    AWS_OPENSEARCHSERVICE_API GetPackageVersionHistoryResult() = default;
     AWS_OPENSEARCHSERVICE_API GetPackageVersionHistoryResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OPENSEARCHSERVICE_API GetPackageVersionHistoryResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique identifier of the package.</p>
      */
-    inline const Aws::String& GetPackageID() const{ return m_packageID; }
+    inline const Aws::String& GetPackageID() const { return m_packageID; }
+    template<typename PackageIDT = Aws::String>
+    void SetPackageID(PackageIDT&& value) { m_packageIDHasBeenSet = true; m_packageID = std::forward<PackageIDT>(value); }
+    template<typename PackageIDT = Aws::String>
+    GetPackageVersionHistoryResult& WithPackageID(PackageIDT&& value) { SetPackageID(std::forward<PackageIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the package.</p>
-     */
-    inline void SetPackageID(const Aws::String& value) { m_packageID = value; }
-
-    /**
-     * <p>The unique identifier of the package.</p>
-     */
-    inline void SetPackageID(Aws::String&& value) { m_packageID = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the package.</p>
-     */
-    inline void SetPackageID(const char* value) { m_packageID.assign(value); }
-
-    /**
-     * <p>The unique identifier of the package.</p>
-     */
-    inline GetPackageVersionHistoryResult& WithPackageID(const Aws::String& value) { SetPackageID(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the package.</p>
-     */
-    inline GetPackageVersionHistoryResult& WithPackageID(Aws::String&& value) { SetPackageID(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the package.</p>
-     */
-    inline GetPackageVersionHistoryResult& WithPackageID(const char* value) { SetPackageID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of package versions, along with their creation time and commit
      * message.</p>
      */
-    inline const Aws::Vector<PackageVersionHistory>& GetPackageVersionHistoryList() const{ return m_packageVersionHistoryList; }
+    inline const Aws::Vector<PackageVersionHistory>& GetPackageVersionHistoryList() const { return m_packageVersionHistoryList; }
+    template<typename PackageVersionHistoryListT = Aws::Vector<PackageVersionHistory>>
+    void SetPackageVersionHistoryList(PackageVersionHistoryListT&& value) { m_packageVersionHistoryListHasBeenSet = true; m_packageVersionHistoryList = std::forward<PackageVersionHistoryListT>(value); }
+    template<typename PackageVersionHistoryListT = Aws::Vector<PackageVersionHistory>>
+    GetPackageVersionHistoryResult& WithPackageVersionHistoryList(PackageVersionHistoryListT&& value) { SetPackageVersionHistoryList(std::forward<PackageVersionHistoryListT>(value)); return *this;}
+    template<typename PackageVersionHistoryListT = PackageVersionHistory>
+    GetPackageVersionHistoryResult& AddPackageVersionHistoryList(PackageVersionHistoryListT&& value) { m_packageVersionHistoryListHasBeenSet = true; m_packageVersionHistoryList.emplace_back(std::forward<PackageVersionHistoryListT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of package versions, along with their creation time and commit
-     * message.</p>
-     */
-    inline void SetPackageVersionHistoryList(const Aws::Vector<PackageVersionHistory>& value) { m_packageVersionHistoryList = value; }
-
-    /**
-     * <p>A list of package versions, along with their creation time and commit
-     * message.</p>
-     */
-    inline void SetPackageVersionHistoryList(Aws::Vector<PackageVersionHistory>&& value) { m_packageVersionHistoryList = std::move(value); }
-
-    /**
-     * <p>A list of package versions, along with their creation time and commit
-     * message.</p>
-     */
-    inline GetPackageVersionHistoryResult& WithPackageVersionHistoryList(const Aws::Vector<PackageVersionHistory>& value) { SetPackageVersionHistoryList(value); return *this;}
-
-    /**
-     * <p>A list of package versions, along with their creation time and commit
-     * message.</p>
-     */
-    inline GetPackageVersionHistoryResult& WithPackageVersionHistoryList(Aws::Vector<PackageVersionHistory>&& value) { SetPackageVersionHistoryList(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of package versions, along with their creation time and commit
-     * message.</p>
-     */
-    inline GetPackageVersionHistoryResult& AddPackageVersionHistoryList(const PackageVersionHistory& value) { m_packageVersionHistoryList.push_back(value); return *this; }
-
-    /**
-     * <p>A list of package versions, along with their creation time and commit
-     * message.</p>
-     */
-    inline GetPackageVersionHistoryResult& AddPackageVersionHistoryList(PackageVersionHistory&& value) { m_packageVersionHistoryList.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>When <code>nextToken</code> is returned, there are more results available.
      * The value of <code>nextToken</code> is a unique pagination token for each page.
-     * Make the call again using the returned token to retrieve the next page.</p>
+     * Send the request again using the returned token to retrieve the next page.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetPackageVersionHistoryResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>When <code>nextToken</code> is returned, there are more results available.
-     * The value of <code>nextToken</code> is a unique pagination token for each page.
-     * Make the call again using the returned token to retrieve the next page.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>When <code>nextToken</code> is returned, there are more results available.
-     * The value of <code>nextToken</code> is a unique pagination token for each page.
-     * Make the call again using the returned token to retrieve the next page.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>When <code>nextToken</code> is returned, there are more results available.
-     * The value of <code>nextToken</code> is a unique pagination token for each page.
-     * Make the call again using the returned token to retrieve the next page.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>When <code>nextToken</code> is returned, there are more results available.
-     * The value of <code>nextToken</code> is a unique pagination token for each page.
-     * Make the call again using the returned token to retrieve the next page.</p>
-     */
-    inline GetPackageVersionHistoryResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>When <code>nextToken</code> is returned, there are more results available.
-     * The value of <code>nextToken</code> is a unique pagination token for each page.
-     * Make the call again using the returned token to retrieve the next page.</p>
-     */
-    inline GetPackageVersionHistoryResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>When <code>nextToken</code> is returned, there are more results available.
-     * The value of <code>nextToken</code> is a unique pagination token for each page.
-     * Make the call again using the returned token to retrieve the next page.</p>
-     */
-    inline GetPackageVersionHistoryResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetPackageVersionHistoryResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetPackageVersionHistoryResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetPackageVersionHistoryResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetPackageVersionHistoryResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_packageID;
+    bool m_packageIDHasBeenSet = false;
 
     Aws::Vector<PackageVersionHistory> m_packageVersionHistoryList;
+    bool m_packageVersionHistoryListHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

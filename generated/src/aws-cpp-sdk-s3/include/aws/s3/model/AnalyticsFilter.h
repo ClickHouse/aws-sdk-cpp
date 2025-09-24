@@ -35,121 +35,49 @@ namespace Model
   class AnalyticsFilter
   {
   public:
-    AWS_S3_API AnalyticsFilter();
+    AWS_S3_API AnalyticsFilter() = default;
     AWS_S3_API AnalyticsFilter(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3_API AnalyticsFilter& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>The prefix to use when evaluating an analytics filter.</p>
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>The prefix to use when evaluating an analytics filter.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    AnalyticsFilter& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The prefix to use when evaluating an analytics filter.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>The prefix to use when evaluating an analytics filter.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>The prefix to use when evaluating an analytics filter.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>The prefix to use when evaluating an analytics filter.</p>
-     */
-    inline AnalyticsFilter& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>The prefix to use when evaluating an analytics filter.</p>
-     */
-    inline AnalyticsFilter& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The prefix to use when evaluating an analytics filter.</p>
-     */
-    inline AnalyticsFilter& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tag to use when evaluating an analytics filter.</p>
      */
-    inline const Tag& GetTag() const{ return m_tag; }
-
-    /**
-     * <p>The tag to use when evaluating an analytics filter.</p>
-     */
+    inline const Tag& GetTag() const { return m_tag; }
     inline bool TagHasBeenSet() const { return m_tagHasBeenSet; }
+    template<typename TagT = Tag>
+    void SetTag(TagT&& value) { m_tagHasBeenSet = true; m_tag = std::forward<TagT>(value); }
+    template<typename TagT = Tag>
+    AnalyticsFilter& WithTag(TagT&& value) { SetTag(std::forward<TagT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The tag to use when evaluating an analytics filter.</p>
-     */
-    inline void SetTag(const Tag& value) { m_tagHasBeenSet = true; m_tag = value; }
-
-    /**
-     * <p>The tag to use when evaluating an analytics filter.</p>
-     */
-    inline void SetTag(Tag&& value) { m_tagHasBeenSet = true; m_tag = std::move(value); }
-
-    /**
-     * <p>The tag to use when evaluating an analytics filter.</p>
-     */
-    inline AnalyticsFilter& WithTag(const Tag& value) { SetTag(value); return *this;}
-
-    /**
-     * <p>The tag to use when evaluating an analytics filter.</p>
-     */
-    inline AnalyticsFilter& WithTag(Tag&& value) { SetTag(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A conjunction (logical AND) of predicates, which is used in evaluating an
      * analytics filter. The operator must have at least two predicates.</p>
      */
-    inline const AnalyticsAndOperator& GetAnd() const{ return m_and; }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating an
-     * analytics filter. The operator must have at least two predicates.</p>
-     */
+    inline const AnalyticsAndOperator& GetAnd() const { return m_and; }
     inline bool AndHasBeenSet() const { return m_andHasBeenSet; }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating an
-     * analytics filter. The operator must have at least two predicates.</p>
-     */
-    inline void SetAnd(const AnalyticsAndOperator& value) { m_andHasBeenSet = true; m_and = value; }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating an
-     * analytics filter. The operator must have at least two predicates.</p>
-     */
-    inline void SetAnd(AnalyticsAndOperator&& value) { m_andHasBeenSet = true; m_and = std::move(value); }
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating an
-     * analytics filter. The operator must have at least two predicates.</p>
-     */
-    inline AnalyticsFilter& WithAnd(const AnalyticsAndOperator& value) { SetAnd(value); return *this;}
-
-    /**
-     * <p>A conjunction (logical AND) of predicates, which is used in evaluating an
-     * analytics filter. The operator must have at least two predicates.</p>
-     */
-    inline AnalyticsFilter& WithAnd(AnalyticsAndOperator&& value) { SetAnd(std::move(value)); return *this;}
-
+    template<typename AndT = AnalyticsAndOperator>
+    void SetAnd(AndT&& value) { m_andHasBeenSet = true; m_and = std::forward<AndT>(value); }
+    template<typename AndT = AnalyticsAndOperator>
+    AnalyticsFilter& WithAnd(AndT&& value) { SetAnd(std::forward<AndT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_prefix;

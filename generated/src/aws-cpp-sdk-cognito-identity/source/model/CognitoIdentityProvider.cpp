@@ -18,19 +18,7 @@ namespace CognitoIdentity
 namespace Model
 {
 
-CognitoIdentityProvider::CognitoIdentityProvider() : 
-    m_providerNameHasBeenSet(false),
-    m_clientIdHasBeenSet(false),
-    m_serverSideTokenCheck(false),
-    m_serverSideTokenCheckHasBeenSet(false)
-{
-}
-
-CognitoIdentityProvider::CognitoIdentityProvider(JsonView jsonValue) : 
-    m_providerNameHasBeenSet(false),
-    m_clientIdHasBeenSet(false),
-    m_serverSideTokenCheck(false),
-    m_serverSideTokenCheckHasBeenSet(false)
+CognitoIdentityProvider::CognitoIdentityProvider(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ CognitoIdentityProvider& CognitoIdentityProvider::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ProviderName"))
   {
     m_providerName = jsonValue.GetString("ProviderName");
-
     m_providerNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ClientId"))
   {
     m_clientId = jsonValue.GetString("ClientId");
-
     m_clientIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ServerSideTokenCheck"))
   {
     m_serverSideTokenCheck = jsonValue.GetBool("ServerSideTokenCheck");
-
     m_serverSideTokenCheckHasBeenSet = true;
   }
-
   return *this;
 }
 

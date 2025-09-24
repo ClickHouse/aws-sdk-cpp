@@ -18,17 +18,7 @@ namespace WorkSpaces
 namespace Model
 {
 
-DataReplicationSettings::DataReplicationSettings() : 
-    m_dataReplication(DataReplication::NOT_SET),
-    m_dataReplicationHasBeenSet(false),
-    m_recoverySnapshotTimeHasBeenSet(false)
-{
-}
-
-DataReplicationSettings::DataReplicationSettings(JsonView jsonValue) : 
-    m_dataReplication(DataReplication::NOT_SET),
-    m_dataReplicationHasBeenSet(false),
-    m_recoverySnapshotTimeHasBeenSet(false)
+DataReplicationSettings::DataReplicationSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ DataReplicationSettings& DataReplicationSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DataReplication"))
   {
     m_dataReplication = DataReplicationMapper::GetDataReplicationForName(jsonValue.GetString("DataReplication"));
-
     m_dataReplicationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RecoverySnapshotTime"))
   {
     m_recoverySnapshotTime = jsonValue.GetDouble("RecoverySnapshotTime");
-
     m_recoverySnapshotTimeHasBeenSet = true;
   }
-
   return *this;
 }
 

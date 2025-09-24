@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-AnalysisDefaults::AnalysisDefaults() : 
-    m_defaultNewSheetConfigurationHasBeenSet(false)
-{
-}
-
-AnalysisDefaults::AnalysisDefaults(JsonView jsonValue) : 
-    m_defaultNewSheetConfigurationHasBeenSet(false)
+AnalysisDefaults::AnalysisDefaults(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AnalysisDefaults& AnalysisDefaults::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DefaultNewSheetConfiguration"))
   {
     m_defaultNewSheetConfiguration = jsonValue.GetObject("DefaultNewSheetConfiguration");
-
     m_defaultNewSheetConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

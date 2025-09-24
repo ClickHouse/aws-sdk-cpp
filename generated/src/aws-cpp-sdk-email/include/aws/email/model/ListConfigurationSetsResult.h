@@ -39,119 +39,55 @@ namespace Model
   class ListConfigurationSetsResult
   {
   public:
-    AWS_SES_API ListConfigurationSetsResult();
+    AWS_SES_API ListConfigurationSetsResult() = default;
     AWS_SES_API ListConfigurationSetsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_SES_API ListConfigurationSetsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>A list of configuration sets.</p>
      */
-    inline const Aws::Vector<ConfigurationSet>& GetConfigurationSets() const{ return m_configurationSets; }
+    inline const Aws::Vector<ConfigurationSet>& GetConfigurationSets() const { return m_configurationSets; }
+    template<typename ConfigurationSetsT = Aws::Vector<ConfigurationSet>>
+    void SetConfigurationSets(ConfigurationSetsT&& value) { m_configurationSetsHasBeenSet = true; m_configurationSets = std::forward<ConfigurationSetsT>(value); }
+    template<typename ConfigurationSetsT = Aws::Vector<ConfigurationSet>>
+    ListConfigurationSetsResult& WithConfigurationSets(ConfigurationSetsT&& value) { SetConfigurationSets(std::forward<ConfigurationSetsT>(value)); return *this;}
+    template<typename ConfigurationSetsT = ConfigurationSet>
+    ListConfigurationSetsResult& AddConfigurationSets(ConfigurationSetsT&& value) { m_configurationSetsHasBeenSet = true; m_configurationSets.emplace_back(std::forward<ConfigurationSetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of configuration sets.</p>
-     */
-    inline void SetConfigurationSets(const Aws::Vector<ConfigurationSet>& value) { m_configurationSets = value; }
-
-    /**
-     * <p>A list of configuration sets.</p>
-     */
-    inline void SetConfigurationSets(Aws::Vector<ConfigurationSet>&& value) { m_configurationSets = std::move(value); }
-
-    /**
-     * <p>A list of configuration sets.</p>
-     */
-    inline ListConfigurationSetsResult& WithConfigurationSets(const Aws::Vector<ConfigurationSet>& value) { SetConfigurationSets(value); return *this;}
-
-    /**
-     * <p>A list of configuration sets.</p>
-     */
-    inline ListConfigurationSetsResult& WithConfigurationSets(Aws::Vector<ConfigurationSet>&& value) { SetConfigurationSets(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of configuration sets.</p>
-     */
-    inline ListConfigurationSetsResult& AddConfigurationSets(const ConfigurationSet& value) { m_configurationSets.push_back(value); return *this; }
-
-    /**
-     * <p>A list of configuration sets.</p>
-     */
-    inline ListConfigurationSetsResult& AddConfigurationSets(ConfigurationSet&& value) { m_configurationSets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A token indicating that there are additional configuration sets available to
      * be listed. Pass this token to successive calls of
      * <code>ListConfigurationSets</code>. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListConfigurationSetsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A token indicating that there are additional configuration sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListConfigurationSets</code>. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A token indicating that there are additional configuration sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListConfigurationSets</code>. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token indicating that there are additional configuration sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListConfigurationSets</code>. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A token indicating that there are additional configuration sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListConfigurationSets</code>. </p>
-     */
-    inline ListConfigurationSetsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token indicating that there are additional configuration sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListConfigurationSets</code>. </p>
-     */
-    inline ListConfigurationSetsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token indicating that there are additional configuration sets available to
-     * be listed. Pass this token to successive calls of
-     * <code>ListConfigurationSets</code>. </p>
-     */
-    inline ListConfigurationSetsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline ListConfigurationSetsResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline ListConfigurationSetsResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    ListConfigurationSetsResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<ConfigurationSet> m_configurationSets;
+    bool m_configurationSetsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ModelExplainabilityBaselineConfig::ModelExplainabilityBaselineConfig() : 
-    m_baseliningJobNameHasBeenSet(false),
-    m_constraintsResourceHasBeenSet(false)
-{
-}
-
-ModelExplainabilityBaselineConfig::ModelExplainabilityBaselineConfig(JsonView jsonValue) : 
-    m_baseliningJobNameHasBeenSet(false),
-    m_constraintsResourceHasBeenSet(false)
+ModelExplainabilityBaselineConfig::ModelExplainabilityBaselineConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ModelExplainabilityBaselineConfig& ModelExplainabilityBaselineConfig::operator =
   if(jsonValue.ValueExists("BaseliningJobName"))
   {
     m_baseliningJobName = jsonValue.GetString("BaseliningJobName");
-
     m_baseliningJobNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ConstraintsResource"))
   {
     m_constraintsResource = jsonValue.GetObject("ConstraintsResource");
-
     m_constraintsResourceHasBeenSet = true;
   }
-
   return *this;
 }
 

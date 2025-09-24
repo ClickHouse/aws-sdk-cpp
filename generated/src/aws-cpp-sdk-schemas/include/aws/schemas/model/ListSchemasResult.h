@@ -29,125 +29,55 @@ namespace Model
   class ListSchemasResult
   {
   public:
-    AWS_SCHEMAS_API ListSchemasResult();
+    AWS_SCHEMAS_API ListSchemasResult() = default;
     AWS_SCHEMAS_API ListSchemasResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_SCHEMAS_API ListSchemasResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The token that specifies the next page of results to return. To request the
      * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
      * be shared with other accounts.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListSchemasResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline ListSchemasResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline ListSchemasResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token that specifies the next page of results to return. To request the
-     * first page, leave NextToken empty. The token will expire in 24 hours, and cannot
-     * be shared with other accounts.</p>
-     */
-    inline ListSchemasResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of schema summaries.</p>
      */
-    inline const Aws::Vector<SchemaSummary>& GetSchemas() const{ return m_schemas; }
+    inline const Aws::Vector<SchemaSummary>& GetSchemas() const { return m_schemas; }
+    template<typename SchemasT = Aws::Vector<SchemaSummary>>
+    void SetSchemas(SchemasT&& value) { m_schemasHasBeenSet = true; m_schemas = std::forward<SchemasT>(value); }
+    template<typename SchemasT = Aws::Vector<SchemaSummary>>
+    ListSchemasResult& WithSchemas(SchemasT&& value) { SetSchemas(std::forward<SchemasT>(value)); return *this;}
+    template<typename SchemasT = SchemaSummary>
+    ListSchemasResult& AddSchemas(SchemasT&& value) { m_schemasHasBeenSet = true; m_schemas.emplace_back(std::forward<SchemasT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of schema summaries.</p>
-     */
-    inline void SetSchemas(const Aws::Vector<SchemaSummary>& value) { m_schemas = value; }
-
-    /**
-     * <p>An array of schema summaries.</p>
-     */
-    inline void SetSchemas(Aws::Vector<SchemaSummary>&& value) { m_schemas = std::move(value); }
-
-    /**
-     * <p>An array of schema summaries.</p>
-     */
-    inline ListSchemasResult& WithSchemas(const Aws::Vector<SchemaSummary>& value) { SetSchemas(value); return *this;}
-
-    /**
-     * <p>An array of schema summaries.</p>
-     */
-    inline ListSchemasResult& WithSchemas(Aws::Vector<SchemaSummary>&& value) { SetSchemas(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of schema summaries.</p>
-     */
-    inline ListSchemasResult& AddSchemas(const SchemaSummary& value) { m_schemas.push_back(value); return *this; }
-
-    /**
-     * <p>An array of schema summaries.</p>
-     */
-    inline ListSchemasResult& AddSchemas(SchemaSummary&& value) { m_schemas.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListSchemasResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListSchemasResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListSchemasResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListSchemasResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<SchemaSummary> m_schemas;
+    bool m_schemasHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

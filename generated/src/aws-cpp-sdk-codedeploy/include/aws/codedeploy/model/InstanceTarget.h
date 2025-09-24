@@ -37,282 +37,95 @@ namespace Model
   class InstanceTarget
   {
   public:
-    AWS_CODEDEPLOY_API InstanceTarget();
+    AWS_CODEDEPLOY_API InstanceTarget() = default;
     AWS_CODEDEPLOY_API InstanceTarget(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API InstanceTarget& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEDEPLOY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The unique ID of a deployment. </p>
      */
-    inline const Aws::String& GetDeploymentId() const{ return m_deploymentId; }
-
-    /**
-     * <p> The unique ID of a deployment. </p>
-     */
+    inline const Aws::String& GetDeploymentId() const { return m_deploymentId; }
     inline bool DeploymentIdHasBeenSet() const { return m_deploymentIdHasBeenSet; }
+    template<typename DeploymentIdT = Aws::String>
+    void SetDeploymentId(DeploymentIdT&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = std::forward<DeploymentIdT>(value); }
+    template<typename DeploymentIdT = Aws::String>
+    InstanceTarget& WithDeploymentId(DeploymentIdT&& value) { SetDeploymentId(std::forward<DeploymentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The unique ID of a deployment. </p>
-     */
-    inline void SetDeploymentId(const Aws::String& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = value; }
-
-    /**
-     * <p> The unique ID of a deployment. </p>
-     */
-    inline void SetDeploymentId(Aws::String&& value) { m_deploymentIdHasBeenSet = true; m_deploymentId = std::move(value); }
-
-    /**
-     * <p> The unique ID of a deployment. </p>
-     */
-    inline void SetDeploymentId(const char* value) { m_deploymentIdHasBeenSet = true; m_deploymentId.assign(value); }
-
-    /**
-     * <p> The unique ID of a deployment. </p>
-     */
-    inline InstanceTarget& WithDeploymentId(const Aws::String& value) { SetDeploymentId(value); return *this;}
-
-    /**
-     * <p> The unique ID of a deployment. </p>
-     */
-    inline InstanceTarget& WithDeploymentId(Aws::String&& value) { SetDeploymentId(std::move(value)); return *this;}
-
-    /**
-     * <p> The unique ID of a deployment. </p>
-     */
-    inline InstanceTarget& WithDeploymentId(const char* value) { SetDeploymentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The unique ID of a deployment target that has a type of
      * <code>instanceTarget</code>. </p>
      */
-    inline const Aws::String& GetTargetId() const{ return m_targetId; }
-
-    /**
-     * <p> The unique ID of a deployment target that has a type of
-     * <code>instanceTarget</code>. </p>
-     */
+    inline const Aws::String& GetTargetId() const { return m_targetId; }
     inline bool TargetIdHasBeenSet() const { return m_targetIdHasBeenSet; }
+    template<typename TargetIdT = Aws::String>
+    void SetTargetId(TargetIdT&& value) { m_targetIdHasBeenSet = true; m_targetId = std::forward<TargetIdT>(value); }
+    template<typename TargetIdT = Aws::String>
+    InstanceTarget& WithTargetId(TargetIdT&& value) { SetTargetId(std::forward<TargetIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The unique ID of a deployment target that has a type of
-     * <code>instanceTarget</code>. </p>
-     */
-    inline void SetTargetId(const Aws::String& value) { m_targetIdHasBeenSet = true; m_targetId = value; }
-
-    /**
-     * <p> The unique ID of a deployment target that has a type of
-     * <code>instanceTarget</code>. </p>
-     */
-    inline void SetTargetId(Aws::String&& value) { m_targetIdHasBeenSet = true; m_targetId = std::move(value); }
-
-    /**
-     * <p> The unique ID of a deployment target that has a type of
-     * <code>instanceTarget</code>. </p>
-     */
-    inline void SetTargetId(const char* value) { m_targetIdHasBeenSet = true; m_targetId.assign(value); }
-
-    /**
-     * <p> The unique ID of a deployment target that has a type of
-     * <code>instanceTarget</code>. </p>
-     */
-    inline InstanceTarget& WithTargetId(const Aws::String& value) { SetTargetId(value); return *this;}
-
-    /**
-     * <p> The unique ID of a deployment target that has a type of
-     * <code>instanceTarget</code>. </p>
-     */
-    inline InstanceTarget& WithTargetId(Aws::String&& value) { SetTargetId(std::move(value)); return *this;}
-
-    /**
-     * <p> The unique ID of a deployment target that has a type of
-     * <code>instanceTarget</code>. </p>
-     */
-    inline InstanceTarget& WithTargetId(const char* value) { SetTargetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the target. </p>
      */
-    inline const Aws::String& GetTargetArn() const{ return m_targetArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the target. </p>
-     */
+    inline const Aws::String& GetTargetArn() const { return m_targetArn; }
     inline bool TargetArnHasBeenSet() const { return m_targetArnHasBeenSet; }
+    template<typename TargetArnT = Aws::String>
+    void SetTargetArn(TargetArnT&& value) { m_targetArnHasBeenSet = true; m_targetArn = std::forward<TargetArnT>(value); }
+    template<typename TargetArnT = Aws::String>
+    InstanceTarget& WithTargetArn(TargetArnT&& value) { SetTargetArn(std::forward<TargetArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The Amazon Resource Name (ARN) of the target. </p>
-     */
-    inline void SetTargetArn(const Aws::String& value) { m_targetArnHasBeenSet = true; m_targetArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the target. </p>
-     */
-    inline void SetTargetArn(Aws::String&& value) { m_targetArnHasBeenSet = true; m_targetArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the target. </p>
-     */
-    inline void SetTargetArn(const char* value) { m_targetArnHasBeenSet = true; m_targetArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the target. </p>
-     */
-    inline InstanceTarget& WithTargetArn(const Aws::String& value) { SetTargetArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the target. </p>
-     */
-    inline InstanceTarget& WithTargetArn(Aws::String&& value) { SetTargetArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the target. </p>
-     */
-    inline InstanceTarget& WithTargetArn(const char* value) { SetTargetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The status an EC2/On-premises deployment's target instance. </p>
      */
-    inline const TargetStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> The status an EC2/On-premises deployment's target instance. </p>
-     */
+    inline TargetStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(TargetStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline InstanceTarget& WithStatus(TargetStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p> The status an EC2/On-premises deployment's target instance. </p>
-     */
-    inline void SetStatus(const TargetStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> The status an EC2/On-premises deployment's target instance. </p>
-     */
-    inline void SetStatus(TargetStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> The status an EC2/On-premises deployment's target instance. </p>
-     */
-    inline InstanceTarget& WithStatus(const TargetStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> The status an EC2/On-premises deployment's target instance. </p>
-     */
-    inline InstanceTarget& WithStatus(TargetStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The date and time when the target instance was updated by a deployment. </p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const{ return m_lastUpdatedAt; }
-
-    /**
-     * <p> The date and time when the target instance was updated by a deployment. </p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedAt() const { return m_lastUpdatedAt; }
     inline bool LastUpdatedAtHasBeenSet() const { return m_lastUpdatedAtHasBeenSet; }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    void SetLastUpdatedAt(LastUpdatedAtT&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::forward<LastUpdatedAtT>(value); }
+    template<typename LastUpdatedAtT = Aws::Utils::DateTime>
+    InstanceTarget& WithLastUpdatedAt(LastUpdatedAtT&& value) { SetLastUpdatedAt(std::forward<LastUpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The date and time when the target instance was updated by a deployment. </p>
-     */
-    inline void SetLastUpdatedAt(const Aws::Utils::DateTime& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = value; }
-
-    /**
-     * <p> The date and time when the target instance was updated by a deployment. </p>
-     */
-    inline void SetLastUpdatedAt(Aws::Utils::DateTime&& value) { m_lastUpdatedAtHasBeenSet = true; m_lastUpdatedAt = std::move(value); }
-
-    /**
-     * <p> The date and time when the target instance was updated by a deployment. </p>
-     */
-    inline InstanceTarget& WithLastUpdatedAt(const Aws::Utils::DateTime& value) { SetLastUpdatedAt(value); return *this;}
-
-    /**
-     * <p> The date and time when the target instance was updated by a deployment. </p>
-     */
-    inline InstanceTarget& WithLastUpdatedAt(Aws::Utils::DateTime&& value) { SetLastUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The lifecycle events of the deployment to this target instance. </p>
      */
-    inline const Aws::Vector<LifecycleEvent>& GetLifecycleEvents() const{ return m_lifecycleEvents; }
-
-    /**
-     * <p> The lifecycle events of the deployment to this target instance. </p>
-     */
+    inline const Aws::Vector<LifecycleEvent>& GetLifecycleEvents() const { return m_lifecycleEvents; }
     inline bool LifecycleEventsHasBeenSet() const { return m_lifecycleEventsHasBeenSet; }
+    template<typename LifecycleEventsT = Aws::Vector<LifecycleEvent>>
+    void SetLifecycleEvents(LifecycleEventsT&& value) { m_lifecycleEventsHasBeenSet = true; m_lifecycleEvents = std::forward<LifecycleEventsT>(value); }
+    template<typename LifecycleEventsT = Aws::Vector<LifecycleEvent>>
+    InstanceTarget& WithLifecycleEvents(LifecycleEventsT&& value) { SetLifecycleEvents(std::forward<LifecycleEventsT>(value)); return *this;}
+    template<typename LifecycleEventsT = LifecycleEvent>
+    InstanceTarget& AddLifecycleEvents(LifecycleEventsT&& value) { m_lifecycleEventsHasBeenSet = true; m_lifecycleEvents.emplace_back(std::forward<LifecycleEventsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> The lifecycle events of the deployment to this target instance. </p>
-     */
-    inline void SetLifecycleEvents(const Aws::Vector<LifecycleEvent>& value) { m_lifecycleEventsHasBeenSet = true; m_lifecycleEvents = value; }
-
-    /**
-     * <p> The lifecycle events of the deployment to this target instance. </p>
-     */
-    inline void SetLifecycleEvents(Aws::Vector<LifecycleEvent>&& value) { m_lifecycleEventsHasBeenSet = true; m_lifecycleEvents = std::move(value); }
-
-    /**
-     * <p> The lifecycle events of the deployment to this target instance. </p>
-     */
-    inline InstanceTarget& WithLifecycleEvents(const Aws::Vector<LifecycleEvent>& value) { SetLifecycleEvents(value); return *this;}
-
-    /**
-     * <p> The lifecycle events of the deployment to this target instance. </p>
-     */
-    inline InstanceTarget& WithLifecycleEvents(Aws::Vector<LifecycleEvent>&& value) { SetLifecycleEvents(std::move(value)); return *this;}
-
-    /**
-     * <p> The lifecycle events of the deployment to this target instance. </p>
-     */
-    inline InstanceTarget& AddLifecycleEvents(const LifecycleEvent& value) { m_lifecycleEventsHasBeenSet = true; m_lifecycleEvents.push_back(value); return *this; }
-
-    /**
-     * <p> The lifecycle events of the deployment to this target instance. </p>
-     */
-    inline InstanceTarget& AddLifecycleEvents(LifecycleEvent&& value) { m_lifecycleEventsHasBeenSet = true; m_lifecycleEvents.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> A label that identifies whether the instance is an original target
      * (<code>BLUE</code>) or a replacement target (<code>GREEN</code>). </p>
      */
-    inline const TargetLabel& GetInstanceLabel() const{ return m_instanceLabel; }
-
-    /**
-     * <p> A label that identifies whether the instance is an original target
-     * (<code>BLUE</code>) or a replacement target (<code>GREEN</code>). </p>
-     */
+    inline TargetLabel GetInstanceLabel() const { return m_instanceLabel; }
     inline bool InstanceLabelHasBeenSet() const { return m_instanceLabelHasBeenSet; }
-
-    /**
-     * <p> A label that identifies whether the instance is an original target
-     * (<code>BLUE</code>) or a replacement target (<code>GREEN</code>). </p>
-     */
-    inline void SetInstanceLabel(const TargetLabel& value) { m_instanceLabelHasBeenSet = true; m_instanceLabel = value; }
-
-    /**
-     * <p> A label that identifies whether the instance is an original target
-     * (<code>BLUE</code>) or a replacement target (<code>GREEN</code>). </p>
-     */
-    inline void SetInstanceLabel(TargetLabel&& value) { m_instanceLabelHasBeenSet = true; m_instanceLabel = std::move(value); }
-
-    /**
-     * <p> A label that identifies whether the instance is an original target
-     * (<code>BLUE</code>) or a replacement target (<code>GREEN</code>). </p>
-     */
-    inline InstanceTarget& WithInstanceLabel(const TargetLabel& value) { SetInstanceLabel(value); return *this;}
-
-    /**
-     * <p> A label that identifies whether the instance is an original target
-     * (<code>BLUE</code>) or a replacement target (<code>GREEN</code>). </p>
-     */
-    inline InstanceTarget& WithInstanceLabel(TargetLabel&& value) { SetInstanceLabel(std::move(value)); return *this;}
-
+    inline void SetInstanceLabel(TargetLabel value) { m_instanceLabelHasBeenSet = true; m_instanceLabel = value; }
+    inline InstanceTarget& WithInstanceLabel(TargetLabel value) { SetInstanceLabel(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_deploymentId;
@@ -324,16 +137,16 @@ namespace Model
     Aws::String m_targetArn;
     bool m_targetArnHasBeenSet = false;
 
-    TargetStatus m_status;
+    TargetStatus m_status{TargetStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedAt;
+    Aws::Utils::DateTime m_lastUpdatedAt{};
     bool m_lastUpdatedAtHasBeenSet = false;
 
     Aws::Vector<LifecycleEvent> m_lifecycleEvents;
     bool m_lifecycleEventsHasBeenSet = false;
 
-    TargetLabel m_instanceLabel;
+    TargetLabel m_instanceLabel{TargetLabel::NOT_SET};
     bool m_instanceLabelHasBeenSet = false;
   };
 

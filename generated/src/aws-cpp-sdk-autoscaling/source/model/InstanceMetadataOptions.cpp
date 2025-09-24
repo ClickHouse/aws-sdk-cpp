@@ -20,23 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-InstanceMetadataOptions::InstanceMetadataOptions() : 
-    m_httpTokens(InstanceMetadataHttpTokensState::NOT_SET),
-    m_httpTokensHasBeenSet(false),
-    m_httpPutResponseHopLimit(0),
-    m_httpPutResponseHopLimitHasBeenSet(false),
-    m_httpEndpoint(InstanceMetadataEndpointState::NOT_SET),
-    m_httpEndpointHasBeenSet(false)
-{
-}
-
-InstanceMetadataOptions::InstanceMetadataOptions(const XmlNode& xmlNode) : 
-    m_httpTokens(InstanceMetadataHttpTokensState::NOT_SET),
-    m_httpTokensHasBeenSet(false),
-    m_httpPutResponseHopLimit(0),
-    m_httpPutResponseHopLimitHasBeenSet(false),
-    m_httpEndpoint(InstanceMetadataEndpointState::NOT_SET),
-    m_httpEndpointHasBeenSet(false)
+InstanceMetadataOptions::InstanceMetadataOptions(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -50,7 +34,7 @@ InstanceMetadataOptions& InstanceMetadataOptions::operator =(const XmlNode& xmlN
     XmlNode httpTokensNode = resultNode.FirstChild("HttpTokens");
     if(!httpTokensNode.IsNull())
     {
-      m_httpTokens = InstanceMetadataHttpTokensStateMapper::GetInstanceMetadataHttpTokensStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpTokensNode.GetText()).c_str()).c_str());
+      m_httpTokens = InstanceMetadataHttpTokensStateMapper::GetInstanceMetadataHttpTokensStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpTokensNode.GetText()).c_str()));
       m_httpTokensHasBeenSet = true;
     }
     XmlNode httpPutResponseHopLimitNode = resultNode.FirstChild("HttpPutResponseHopLimit");
@@ -62,7 +46,7 @@ InstanceMetadataOptions& InstanceMetadataOptions::operator =(const XmlNode& xmlN
     XmlNode httpEndpointNode = resultNode.FirstChild("HttpEndpoint");
     if(!httpEndpointNode.IsNull())
     {
-      m_httpEndpoint = InstanceMetadataEndpointStateMapper::GetInstanceMetadataEndpointStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpEndpointNode.GetText()).c_str()).c_str());
+      m_httpEndpoint = InstanceMetadataEndpointStateMapper::GetInstanceMetadataEndpointStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpEndpointNode.GetText()).c_str()));
       m_httpEndpointHasBeenSet = true;
     }
   }
@@ -74,7 +58,7 @@ void InstanceMetadataOptions::OutputToStream(Aws::OStream& oStream, const char* 
 {
   if(m_httpTokensHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HttpTokens=" << InstanceMetadataHttpTokensStateMapper::GetNameForInstanceMetadataHttpTokensState(m_httpTokens) << "&";
+      oStream << location << index << locationValue << ".HttpTokens=" << StringUtils::URLEncode(InstanceMetadataHttpTokensStateMapper::GetNameForInstanceMetadataHttpTokensState(m_httpTokens)) << "&";
   }
 
   if(m_httpPutResponseHopLimitHasBeenSet)
@@ -84,7 +68,7 @@ void InstanceMetadataOptions::OutputToStream(Aws::OStream& oStream, const char* 
 
   if(m_httpEndpointHasBeenSet)
   {
-      oStream << location << index << locationValue << ".HttpEndpoint=" << InstanceMetadataEndpointStateMapper::GetNameForInstanceMetadataEndpointState(m_httpEndpoint) << "&";
+      oStream << location << index << locationValue << ".HttpEndpoint=" << StringUtils::URLEncode(InstanceMetadataEndpointStateMapper::GetNameForInstanceMetadataEndpointState(m_httpEndpoint)) << "&";
   }
 
 }
@@ -93,7 +77,7 @@ void InstanceMetadataOptions::OutputToStream(Aws::OStream& oStream, const char* 
 {
   if(m_httpTokensHasBeenSet)
   {
-      oStream << location << ".HttpTokens=" << InstanceMetadataHttpTokensStateMapper::GetNameForInstanceMetadataHttpTokensState(m_httpTokens) << "&";
+      oStream << location << ".HttpTokens=" << StringUtils::URLEncode(InstanceMetadataHttpTokensStateMapper::GetNameForInstanceMetadataHttpTokensState(m_httpTokens)) << "&";
   }
   if(m_httpPutResponseHopLimitHasBeenSet)
   {
@@ -101,7 +85,7 @@ void InstanceMetadataOptions::OutputToStream(Aws::OStream& oStream, const char* 
   }
   if(m_httpEndpointHasBeenSet)
   {
-      oStream << location << ".HttpEndpoint=" << InstanceMetadataEndpointStateMapper::GetNameForInstanceMetadataEndpointState(m_httpEndpoint) << "&";
+      oStream << location << ".HttpEndpoint=" << StringUtils::URLEncode(InstanceMetadataEndpointStateMapper::GetNameForInstanceMetadataEndpointState(m_httpEndpoint)) << "&";
   }
 }
 

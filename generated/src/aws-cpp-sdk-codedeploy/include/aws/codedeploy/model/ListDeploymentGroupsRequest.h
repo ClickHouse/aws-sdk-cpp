@@ -25,7 +25,7 @@ namespace Model
   class ListDeploymentGroupsRequest : public CodeDeployRequest
   {
   public:
-    AWS_CODEDEPLOY_API ListDeploymentGroupsRequest();
+    AWS_CODEDEPLOY_API ListDeploymentGroupsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,103 +38,31 @@ namespace Model
     AWS_CODEDEPLOY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of an CodeDeploy application associated with the user or Amazon Web
      * Services account.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the user or Amazon Web
-     * Services account.</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    ListDeploymentGroupsRequest& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an CodeDeploy application associated with the user or Amazon Web
-     * Services account.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the user or Amazon Web
-     * Services account.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the user or Amazon Web
-     * Services account.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the user or Amazon Web
-     * Services account.</p>
-     */
-    inline ListDeploymentGroupsRequest& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the user or Amazon Web
-     * Services account.</p>
-     */
-    inline ListDeploymentGroupsRequest& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an CodeDeploy application associated with the user or Amazon Web
-     * Services account.</p>
-     */
-    inline ListDeploymentGroupsRequest& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An identifier returned from the previous list deployment groups call. It can
      * be used to return the next set of deployment groups in the list.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>An identifier returned from the previous list deployment groups call. It can
-     * be used to return the next set of deployment groups in the list.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>An identifier returned from the previous list deployment groups call. It can
-     * be used to return the next set of deployment groups in the list.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>An identifier returned from the previous list deployment groups call. It can
-     * be used to return the next set of deployment groups in the list.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>An identifier returned from the previous list deployment groups call. It can
-     * be used to return the next set of deployment groups in the list.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>An identifier returned from the previous list deployment groups call. It can
-     * be used to return the next set of deployment groups in the list.</p>
-     */
-    inline ListDeploymentGroupsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>An identifier returned from the previous list deployment groups call. It can
-     * be used to return the next set of deployment groups in the list.</p>
-     */
-    inline ListDeploymentGroupsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>An identifier returned from the previous list deployment groups call. It can
-     * be used to return the next set of deployment groups in the list.</p>
-     */
-    inline ListDeploymentGroupsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListDeploymentGroupsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationName;

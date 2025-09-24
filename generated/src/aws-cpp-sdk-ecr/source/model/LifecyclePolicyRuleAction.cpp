@@ -18,15 +18,7 @@ namespace ECR
 namespace Model
 {
 
-LifecyclePolicyRuleAction::LifecyclePolicyRuleAction() : 
-    m_type(ImageActionType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-LifecyclePolicyRuleAction::LifecyclePolicyRuleAction(JsonView jsonValue) : 
-    m_type(ImageActionType::NOT_SET),
-    m_typeHasBeenSet(false)
+LifecyclePolicyRuleAction::LifecyclePolicyRuleAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ LifecyclePolicyRuleAction& LifecyclePolicyRuleAction::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("type"))
   {
     m_type = ImageActionTypeMapper::GetImageActionTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
   return *this;
 }
 

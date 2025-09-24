@@ -20,15 +20,7 @@ namespace S3
 namespace Model
 {
 
-InventorySchedule::InventorySchedule() : 
-    m_frequency(InventoryFrequency::NOT_SET),
-    m_frequencyHasBeenSet(false)
-{
-}
-
-InventorySchedule::InventorySchedule(const XmlNode& xmlNode) : 
-    m_frequency(InventoryFrequency::NOT_SET),
-    m_frequencyHasBeenSet(false)
+InventorySchedule::InventorySchedule(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ InventorySchedule& InventorySchedule::operator =(const XmlNode& xmlNode)
     XmlNode frequencyNode = resultNode.FirstChild("Frequency");
     if(!frequencyNode.IsNull())
     {
-      m_frequency = InventoryFrequencyMapper::GetInventoryFrequencyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(frequencyNode.GetText()).c_str()).c_str());
+      m_frequency = InventoryFrequencyMapper::GetInventoryFrequencyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(frequencyNode.GetText()).c_str()));
       m_frequencyHasBeenSet = true;
     }
   }

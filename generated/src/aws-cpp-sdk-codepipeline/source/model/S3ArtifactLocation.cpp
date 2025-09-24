@@ -18,15 +18,7 @@ namespace CodePipeline
 namespace Model
 {
 
-S3ArtifactLocation::S3ArtifactLocation() : 
-    m_bucketNameHasBeenSet(false),
-    m_objectKeyHasBeenSet(false)
-{
-}
-
-S3ArtifactLocation::S3ArtifactLocation(JsonView jsonValue) : 
-    m_bucketNameHasBeenSet(false),
-    m_objectKeyHasBeenSet(false)
+S3ArtifactLocation::S3ArtifactLocation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ S3ArtifactLocation& S3ArtifactLocation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("bucketName"))
   {
     m_bucketName = jsonValue.GetString("bucketName");
-
     m_bucketNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("objectKey"))
   {
     m_objectKey = jsonValue.GetString("objectKey");
-
     m_objectKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

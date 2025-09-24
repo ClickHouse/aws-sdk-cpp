@@ -25,7 +25,7 @@ namespace Model
   class CreateUsagePlanKeyRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API CreateUsagePlanKeyRequest();
+    AWS_APIGATEWAY_API CreateUsagePlanKeyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,136 +36,42 @@ namespace Model
     AWS_APIGATEWAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Id of the UsagePlan resource representing the usage plan containing the
      * to-be-created UsagePlanKey resource representing a plan customer.</p>
      */
-    inline const Aws::String& GetUsagePlanId() const{ return m_usagePlanId; }
-
-    /**
-     * <p>The Id of the UsagePlan resource representing the usage plan containing the
-     * to-be-created UsagePlanKey resource representing a plan customer.</p>
-     */
+    inline const Aws::String& GetUsagePlanId() const { return m_usagePlanId; }
     inline bool UsagePlanIdHasBeenSet() const { return m_usagePlanIdHasBeenSet; }
+    template<typename UsagePlanIdT = Aws::String>
+    void SetUsagePlanId(UsagePlanIdT&& value) { m_usagePlanIdHasBeenSet = true; m_usagePlanId = std::forward<UsagePlanIdT>(value); }
+    template<typename UsagePlanIdT = Aws::String>
+    CreateUsagePlanKeyRequest& WithUsagePlanId(UsagePlanIdT&& value) { SetUsagePlanId(std::forward<UsagePlanIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Id of the UsagePlan resource representing the usage plan containing the
-     * to-be-created UsagePlanKey resource representing a plan customer.</p>
-     */
-    inline void SetUsagePlanId(const Aws::String& value) { m_usagePlanIdHasBeenSet = true; m_usagePlanId = value; }
-
-    /**
-     * <p>The Id of the UsagePlan resource representing the usage plan containing the
-     * to-be-created UsagePlanKey resource representing a plan customer.</p>
-     */
-    inline void SetUsagePlanId(Aws::String&& value) { m_usagePlanIdHasBeenSet = true; m_usagePlanId = std::move(value); }
-
-    /**
-     * <p>The Id of the UsagePlan resource representing the usage plan containing the
-     * to-be-created UsagePlanKey resource representing a plan customer.</p>
-     */
-    inline void SetUsagePlanId(const char* value) { m_usagePlanIdHasBeenSet = true; m_usagePlanId.assign(value); }
-
-    /**
-     * <p>The Id of the UsagePlan resource representing the usage plan containing the
-     * to-be-created UsagePlanKey resource representing a plan customer.</p>
-     */
-    inline CreateUsagePlanKeyRequest& WithUsagePlanId(const Aws::String& value) { SetUsagePlanId(value); return *this;}
-
-    /**
-     * <p>The Id of the UsagePlan resource representing the usage plan containing the
-     * to-be-created UsagePlanKey resource representing a plan customer.</p>
-     */
-    inline CreateUsagePlanKeyRequest& WithUsagePlanId(Aws::String&& value) { SetUsagePlanId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Id of the UsagePlan resource representing the usage plan containing the
-     * to-be-created UsagePlanKey resource representing a plan customer.</p>
-     */
-    inline CreateUsagePlanKeyRequest& WithUsagePlanId(const char* value) { SetUsagePlanId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of a UsagePlanKey resource for a plan customer.</p>
      */
-    inline const Aws::String& GetKeyId() const{ return m_keyId; }
-
-    /**
-     * <p>The identifier of a UsagePlanKey resource for a plan customer.</p>
-     */
+    inline const Aws::String& GetKeyId() const { return m_keyId; }
     inline bool KeyIdHasBeenSet() const { return m_keyIdHasBeenSet; }
+    template<typename KeyIdT = Aws::String>
+    void SetKeyId(KeyIdT&& value) { m_keyIdHasBeenSet = true; m_keyId = std::forward<KeyIdT>(value); }
+    template<typename KeyIdT = Aws::String>
+    CreateUsagePlanKeyRequest& WithKeyId(KeyIdT&& value) { SetKeyId(std::forward<KeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline void SetKeyId(const Aws::String& value) { m_keyIdHasBeenSet = true; m_keyId = value; }
-
-    /**
-     * <p>The identifier of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline void SetKeyId(Aws::String&& value) { m_keyIdHasBeenSet = true; m_keyId = std::move(value); }
-
-    /**
-     * <p>The identifier of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline void SetKeyId(const char* value) { m_keyIdHasBeenSet = true; m_keyId.assign(value); }
-
-    /**
-     * <p>The identifier of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline CreateUsagePlanKeyRequest& WithKeyId(const Aws::String& value) { SetKeyId(value); return *this;}
-
-    /**
-     * <p>The identifier of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline CreateUsagePlanKeyRequest& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline CreateUsagePlanKeyRequest& WithKeyId(const char* value) { SetKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of a UsagePlanKey resource for a plan customer.</p>
      */
-    inline const Aws::String& GetKeyType() const{ return m_keyType; }
-
-    /**
-     * <p>The type of a UsagePlanKey resource for a plan customer.</p>
-     */
+    inline const Aws::String& GetKeyType() const { return m_keyType; }
     inline bool KeyTypeHasBeenSet() const { return m_keyTypeHasBeenSet; }
-
-    /**
-     * <p>The type of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline void SetKeyType(const Aws::String& value) { m_keyTypeHasBeenSet = true; m_keyType = value; }
-
-    /**
-     * <p>The type of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline void SetKeyType(Aws::String&& value) { m_keyTypeHasBeenSet = true; m_keyType = std::move(value); }
-
-    /**
-     * <p>The type of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline void SetKeyType(const char* value) { m_keyTypeHasBeenSet = true; m_keyType.assign(value); }
-
-    /**
-     * <p>The type of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline CreateUsagePlanKeyRequest& WithKeyType(const Aws::String& value) { SetKeyType(value); return *this;}
-
-    /**
-     * <p>The type of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline CreateUsagePlanKeyRequest& WithKeyType(Aws::String&& value) { SetKeyType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of a UsagePlanKey resource for a plan customer.</p>
-     */
-    inline CreateUsagePlanKeyRequest& WithKeyType(const char* value) { SetKeyType(value); return *this;}
-
+    template<typename KeyTypeT = Aws::String>
+    void SetKeyType(KeyTypeT&& value) { m_keyTypeHasBeenSet = true; m_keyType = std::forward<KeyTypeT>(value); }
+    template<typename KeyTypeT = Aws::String>
+    CreateUsagePlanKeyRequest& WithKeyType(KeyTypeT&& value) { SetKeyType(std::forward<KeyTypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_usagePlanId;

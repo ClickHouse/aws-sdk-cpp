@@ -32,52 +32,25 @@ namespace Model
   class AddonHealth
   {
   public:
-    AWS_EKS_API AddonHealth();
+    AWS_EKS_API AddonHealth() = default;
     AWS_EKS_API AddonHealth(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API AddonHealth& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EKS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An object representing the health issues for an add-on.</p>
      */
-    inline const Aws::Vector<AddonIssue>& GetIssues() const{ return m_issues; }
-
-    /**
-     * <p>An object representing the health issues for an add-on.</p>
-     */
+    inline const Aws::Vector<AddonIssue>& GetIssues() const { return m_issues; }
     inline bool IssuesHasBeenSet() const { return m_issuesHasBeenSet; }
-
-    /**
-     * <p>An object representing the health issues for an add-on.</p>
-     */
-    inline void SetIssues(const Aws::Vector<AddonIssue>& value) { m_issuesHasBeenSet = true; m_issues = value; }
-
-    /**
-     * <p>An object representing the health issues for an add-on.</p>
-     */
-    inline void SetIssues(Aws::Vector<AddonIssue>&& value) { m_issuesHasBeenSet = true; m_issues = std::move(value); }
-
-    /**
-     * <p>An object representing the health issues for an add-on.</p>
-     */
-    inline AddonHealth& WithIssues(const Aws::Vector<AddonIssue>& value) { SetIssues(value); return *this;}
-
-    /**
-     * <p>An object representing the health issues for an add-on.</p>
-     */
-    inline AddonHealth& WithIssues(Aws::Vector<AddonIssue>&& value) { SetIssues(std::move(value)); return *this;}
-
-    /**
-     * <p>An object representing the health issues for an add-on.</p>
-     */
-    inline AddonHealth& AddIssues(const AddonIssue& value) { m_issuesHasBeenSet = true; m_issues.push_back(value); return *this; }
-
-    /**
-     * <p>An object representing the health issues for an add-on.</p>
-     */
-    inline AddonHealth& AddIssues(AddonIssue&& value) { m_issuesHasBeenSet = true; m_issues.push_back(std::move(value)); return *this; }
-
+    template<typename IssuesT = Aws::Vector<AddonIssue>>
+    void SetIssues(IssuesT&& value) { m_issuesHasBeenSet = true; m_issues = std::forward<IssuesT>(value); }
+    template<typename IssuesT = Aws::Vector<AddonIssue>>
+    AddonHealth& WithIssues(IssuesT&& value) { SetIssues(std::forward<IssuesT>(value)); return *this;}
+    template<typename IssuesT = AddonIssue>
+    AddonHealth& AddIssues(IssuesT&& value) { m_issuesHasBeenSet = true; m_issues.emplace_back(std::forward<IssuesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<AddonIssue> m_issues;

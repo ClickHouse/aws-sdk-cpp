@@ -33,275 +33,82 @@ namespace Model
   class TestResult
   {
   public:
-    AWS_CLOUDFRONT_API TestResult();
+    AWS_CLOUDFRONT_API TestResult() = default;
     AWS_CLOUDFRONT_API TestResult(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_CLOUDFRONT_API TestResult& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_CLOUDFRONT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Contains configuration information and metadata about the CloudFront function
      * that was tested.</p>
      */
-    inline const FunctionSummary& GetFunctionSummary() const{ return m_functionSummary; }
-
-    /**
-     * <p>Contains configuration information and metadata about the CloudFront function
-     * that was tested.</p>
-     */
+    inline const FunctionSummary& GetFunctionSummary() const { return m_functionSummary; }
     inline bool FunctionSummaryHasBeenSet() const { return m_functionSummaryHasBeenSet; }
+    template<typename FunctionSummaryT = FunctionSummary>
+    void SetFunctionSummary(FunctionSummaryT&& value) { m_functionSummaryHasBeenSet = true; m_functionSummary = std::forward<FunctionSummaryT>(value); }
+    template<typename FunctionSummaryT = FunctionSummary>
+    TestResult& WithFunctionSummary(FunctionSummaryT&& value) { SetFunctionSummary(std::forward<FunctionSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains configuration information and metadata about the CloudFront function
-     * that was tested.</p>
-     */
-    inline void SetFunctionSummary(const FunctionSummary& value) { m_functionSummaryHasBeenSet = true; m_functionSummary = value; }
-
-    /**
-     * <p>Contains configuration information and metadata about the CloudFront function
-     * that was tested.</p>
-     */
-    inline void SetFunctionSummary(FunctionSummary&& value) { m_functionSummaryHasBeenSet = true; m_functionSummary = std::move(value); }
-
-    /**
-     * <p>Contains configuration information and metadata about the CloudFront function
-     * that was tested.</p>
-     */
-    inline TestResult& WithFunctionSummary(const FunctionSummary& value) { SetFunctionSummary(value); return *this;}
-
-    /**
-     * <p>Contains configuration information and metadata about the CloudFront function
-     * that was tested.</p>
-     */
-    inline TestResult& WithFunctionSummary(FunctionSummary&& value) { SetFunctionSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The amount of time that the function took to run as a percentage of the
      * maximum allowed time. For example, a compute utilization of 35 means that the
      * function completed in 35% of the maximum allowed time.</p>
      */
-    inline const Aws::String& GetComputeUtilization() const{ return m_computeUtilization; }
-
-    /**
-     * <p>The amount of time that the function took to run as a percentage of the
-     * maximum allowed time. For example, a compute utilization of 35 means that the
-     * function completed in 35% of the maximum allowed time.</p>
-     */
+    inline const Aws::String& GetComputeUtilization() const { return m_computeUtilization; }
     inline bool ComputeUtilizationHasBeenSet() const { return m_computeUtilizationHasBeenSet; }
+    template<typename ComputeUtilizationT = Aws::String>
+    void SetComputeUtilization(ComputeUtilizationT&& value) { m_computeUtilizationHasBeenSet = true; m_computeUtilization = std::forward<ComputeUtilizationT>(value); }
+    template<typename ComputeUtilizationT = Aws::String>
+    TestResult& WithComputeUtilization(ComputeUtilizationT&& value) { SetComputeUtilization(std::forward<ComputeUtilizationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The amount of time that the function took to run as a percentage of the
-     * maximum allowed time. For example, a compute utilization of 35 means that the
-     * function completed in 35% of the maximum allowed time.</p>
-     */
-    inline void SetComputeUtilization(const Aws::String& value) { m_computeUtilizationHasBeenSet = true; m_computeUtilization = value; }
-
-    /**
-     * <p>The amount of time that the function took to run as a percentage of the
-     * maximum allowed time. For example, a compute utilization of 35 means that the
-     * function completed in 35% of the maximum allowed time.</p>
-     */
-    inline void SetComputeUtilization(Aws::String&& value) { m_computeUtilizationHasBeenSet = true; m_computeUtilization = std::move(value); }
-
-    /**
-     * <p>The amount of time that the function took to run as a percentage of the
-     * maximum allowed time. For example, a compute utilization of 35 means that the
-     * function completed in 35% of the maximum allowed time.</p>
-     */
-    inline void SetComputeUtilization(const char* value) { m_computeUtilizationHasBeenSet = true; m_computeUtilization.assign(value); }
-
-    /**
-     * <p>The amount of time that the function took to run as a percentage of the
-     * maximum allowed time. For example, a compute utilization of 35 means that the
-     * function completed in 35% of the maximum allowed time.</p>
-     */
-    inline TestResult& WithComputeUtilization(const Aws::String& value) { SetComputeUtilization(value); return *this;}
-
-    /**
-     * <p>The amount of time that the function took to run as a percentage of the
-     * maximum allowed time. For example, a compute utilization of 35 means that the
-     * function completed in 35% of the maximum allowed time.</p>
-     */
-    inline TestResult& WithComputeUtilization(Aws::String&& value) { SetComputeUtilization(std::move(value)); return *this;}
-
-    /**
-     * <p>The amount of time that the function took to run as a percentage of the
-     * maximum allowed time. For example, a compute utilization of 35 means that the
-     * function completed in 35% of the maximum allowed time.</p>
-     */
-    inline TestResult& WithComputeUtilization(const char* value) { SetComputeUtilization(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains the log lines that the function wrote (if any) when running the
      * test.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetFunctionExecutionLogs() const{ return m_functionExecutionLogs; }
-
-    /**
-     * <p>Contains the log lines that the function wrote (if any) when running the
-     * test.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetFunctionExecutionLogs() const { return m_functionExecutionLogs; }
     inline bool FunctionExecutionLogsHasBeenSet() const { return m_functionExecutionLogsHasBeenSet; }
+    template<typename FunctionExecutionLogsT = Aws::Vector<Aws::String>>
+    void SetFunctionExecutionLogs(FunctionExecutionLogsT&& value) { m_functionExecutionLogsHasBeenSet = true; m_functionExecutionLogs = std::forward<FunctionExecutionLogsT>(value); }
+    template<typename FunctionExecutionLogsT = Aws::Vector<Aws::String>>
+    TestResult& WithFunctionExecutionLogs(FunctionExecutionLogsT&& value) { SetFunctionExecutionLogs(std::forward<FunctionExecutionLogsT>(value)); return *this;}
+    template<typename FunctionExecutionLogsT = Aws::String>
+    TestResult& AddFunctionExecutionLogs(FunctionExecutionLogsT&& value) { m_functionExecutionLogsHasBeenSet = true; m_functionExecutionLogs.emplace_back(std::forward<FunctionExecutionLogsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contains the log lines that the function wrote (if any) when running the
-     * test.</p>
-     */
-    inline void SetFunctionExecutionLogs(const Aws::Vector<Aws::String>& value) { m_functionExecutionLogsHasBeenSet = true; m_functionExecutionLogs = value; }
-
-    /**
-     * <p>Contains the log lines that the function wrote (if any) when running the
-     * test.</p>
-     */
-    inline void SetFunctionExecutionLogs(Aws::Vector<Aws::String>&& value) { m_functionExecutionLogsHasBeenSet = true; m_functionExecutionLogs = std::move(value); }
-
-    /**
-     * <p>Contains the log lines that the function wrote (if any) when running the
-     * test.</p>
-     */
-    inline TestResult& WithFunctionExecutionLogs(const Aws::Vector<Aws::String>& value) { SetFunctionExecutionLogs(value); return *this;}
-
-    /**
-     * <p>Contains the log lines that the function wrote (if any) when running the
-     * test.</p>
-     */
-    inline TestResult& WithFunctionExecutionLogs(Aws::Vector<Aws::String>&& value) { SetFunctionExecutionLogs(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains the log lines that the function wrote (if any) when running the
-     * test.</p>
-     */
-    inline TestResult& AddFunctionExecutionLogs(const Aws::String& value) { m_functionExecutionLogsHasBeenSet = true; m_functionExecutionLogs.push_back(value); return *this; }
-
-    /**
-     * <p>Contains the log lines that the function wrote (if any) when running the
-     * test.</p>
-     */
-    inline TestResult& AddFunctionExecutionLogs(Aws::String&& value) { m_functionExecutionLogsHasBeenSet = true; m_functionExecutionLogs.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Contains the log lines that the function wrote (if any) when running the
-     * test.</p>
-     */
-    inline TestResult& AddFunctionExecutionLogs(const char* value) { m_functionExecutionLogsHasBeenSet = true; m_functionExecutionLogs.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>If the result of testing the function was an error, this field contains the
      * error message.</p>
      */
-    inline const Aws::String& GetFunctionErrorMessage() const{ return m_functionErrorMessage; }
-
-    /**
-     * <p>If the result of testing the function was an error, this field contains the
-     * error message.</p>
-     */
+    inline const Aws::String& GetFunctionErrorMessage() const { return m_functionErrorMessage; }
     inline bool FunctionErrorMessageHasBeenSet() const { return m_functionErrorMessageHasBeenSet; }
+    template<typename FunctionErrorMessageT = Aws::String>
+    void SetFunctionErrorMessage(FunctionErrorMessageT&& value) { m_functionErrorMessageHasBeenSet = true; m_functionErrorMessage = std::forward<FunctionErrorMessageT>(value); }
+    template<typename FunctionErrorMessageT = Aws::String>
+    TestResult& WithFunctionErrorMessage(FunctionErrorMessageT&& value) { SetFunctionErrorMessage(std::forward<FunctionErrorMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the result of testing the function was an error, this field contains the
-     * error message.</p>
-     */
-    inline void SetFunctionErrorMessage(const Aws::String& value) { m_functionErrorMessageHasBeenSet = true; m_functionErrorMessage = value; }
-
-    /**
-     * <p>If the result of testing the function was an error, this field contains the
-     * error message.</p>
-     */
-    inline void SetFunctionErrorMessage(Aws::String&& value) { m_functionErrorMessageHasBeenSet = true; m_functionErrorMessage = std::move(value); }
-
-    /**
-     * <p>If the result of testing the function was an error, this field contains the
-     * error message.</p>
-     */
-    inline void SetFunctionErrorMessage(const char* value) { m_functionErrorMessageHasBeenSet = true; m_functionErrorMessage.assign(value); }
-
-    /**
-     * <p>If the result of testing the function was an error, this field contains the
-     * error message.</p>
-     */
-    inline TestResult& WithFunctionErrorMessage(const Aws::String& value) { SetFunctionErrorMessage(value); return *this;}
-
-    /**
-     * <p>If the result of testing the function was an error, this field contains the
-     * error message.</p>
-     */
-    inline TestResult& WithFunctionErrorMessage(Aws::String&& value) { SetFunctionErrorMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>If the result of testing the function was an error, this field contains the
-     * error message.</p>
-     */
-    inline TestResult& WithFunctionErrorMessage(const char* value) { SetFunctionErrorMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The event object returned by the function. For more information about the
      * structure of the event object, see <a
      * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-event-structure.html">Event
      * object structure</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
      */
-    inline const Aws::String& GetFunctionOutput() const{ return m_functionOutput; }
-
-    /**
-     * <p>The event object returned by the function. For more information about the
-     * structure of the event object, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-event-structure.html">Event
-     * object structure</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
-     */
+    inline const Aws::String& GetFunctionOutput() const { return m_functionOutput; }
     inline bool FunctionOutputHasBeenSet() const { return m_functionOutputHasBeenSet; }
-
-    /**
-     * <p>The event object returned by the function. For more information about the
-     * structure of the event object, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-event-structure.html">Event
-     * object structure</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
-     */
-    inline void SetFunctionOutput(const Aws::String& value) { m_functionOutputHasBeenSet = true; m_functionOutput = value; }
-
-    /**
-     * <p>The event object returned by the function. For more information about the
-     * structure of the event object, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-event-structure.html">Event
-     * object structure</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
-     */
-    inline void SetFunctionOutput(Aws::String&& value) { m_functionOutputHasBeenSet = true; m_functionOutput = std::move(value); }
-
-    /**
-     * <p>The event object returned by the function. For more information about the
-     * structure of the event object, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-event-structure.html">Event
-     * object structure</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
-     */
-    inline void SetFunctionOutput(const char* value) { m_functionOutputHasBeenSet = true; m_functionOutput.assign(value); }
-
-    /**
-     * <p>The event object returned by the function. For more information about the
-     * structure of the event object, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-event-structure.html">Event
-     * object structure</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
-     */
-    inline TestResult& WithFunctionOutput(const Aws::String& value) { SetFunctionOutput(value); return *this;}
-
-    /**
-     * <p>The event object returned by the function. For more information about the
-     * structure of the event object, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-event-structure.html">Event
-     * object structure</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
-     */
-    inline TestResult& WithFunctionOutput(Aws::String&& value) { SetFunctionOutput(std::move(value)); return *this;}
-
-    /**
-     * <p>The event object returned by the function. For more information about the
-     * structure of the event object, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/functions-event-structure.html">Event
-     * object structure</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
-     */
-    inline TestResult& WithFunctionOutput(const char* value) { SetFunctionOutput(value); return *this;}
-
+    template<typename FunctionOutputT = Aws::String>
+    void SetFunctionOutput(FunctionOutputT&& value) { m_functionOutputHasBeenSet = true; m_functionOutput = std::forward<FunctionOutputT>(value); }
+    template<typename FunctionOutputT = Aws::String>
+    TestResult& WithFunctionOutput(FunctionOutputT&& value) { SetFunctionOutput(std::forward<FunctionOutputT>(value)); return *this;}
+    ///@}
   private:
 
     FunctionSummary m_functionSummary;

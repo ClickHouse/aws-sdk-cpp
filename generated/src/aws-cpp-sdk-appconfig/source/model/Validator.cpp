@@ -18,17 +18,7 @@ namespace AppConfig
 namespace Model
 {
 
-Validator::Validator() : 
-    m_type(ValidatorType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_contentHasBeenSet(false)
-{
-}
-
-Validator::Validator(JsonView jsonValue) : 
-    m_type(ValidatorType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_contentHasBeenSet(false)
+Validator::Validator(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Validator& Validator::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = ValidatorTypeMapper::GetValidatorTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Content"))
   {
     m_content = jsonValue.GetString("Content");
-
     m_contentHasBeenSet = true;
   }
-
   return *this;
 }
 

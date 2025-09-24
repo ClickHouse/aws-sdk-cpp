@@ -34,63 +34,37 @@ namespace Model
   class GetPipelineExecutionResult
   {
   public:
-    AWS_CODEPIPELINE_API GetPipelineExecutionResult();
+    AWS_CODEPIPELINE_API GetPipelineExecutionResult() = default;
     AWS_CODEPIPELINE_API GetPipelineExecutionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CODEPIPELINE_API GetPipelineExecutionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Represents information about the execution of a pipeline.</p>
      */
-    inline const PipelineExecution& GetPipelineExecution() const{ return m_pipelineExecution; }
+    inline const PipelineExecution& GetPipelineExecution() const { return m_pipelineExecution; }
+    template<typename PipelineExecutionT = PipelineExecution>
+    void SetPipelineExecution(PipelineExecutionT&& value) { m_pipelineExecutionHasBeenSet = true; m_pipelineExecution = std::forward<PipelineExecutionT>(value); }
+    template<typename PipelineExecutionT = PipelineExecution>
+    GetPipelineExecutionResult& WithPipelineExecution(PipelineExecutionT&& value) { SetPipelineExecution(std::forward<PipelineExecutionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents information about the execution of a pipeline.</p>
-     */
-    inline void SetPipelineExecution(const PipelineExecution& value) { m_pipelineExecution = value; }
-
-    /**
-     * <p>Represents information about the execution of a pipeline.</p>
-     */
-    inline void SetPipelineExecution(PipelineExecution&& value) { m_pipelineExecution = std::move(value); }
-
-    /**
-     * <p>Represents information about the execution of a pipeline.</p>
-     */
-    inline GetPipelineExecutionResult& WithPipelineExecution(const PipelineExecution& value) { SetPipelineExecution(value); return *this;}
-
-    /**
-     * <p>Represents information about the execution of a pipeline.</p>
-     */
-    inline GetPipelineExecutionResult& WithPipelineExecution(PipelineExecution&& value) { SetPipelineExecution(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetPipelineExecutionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetPipelineExecutionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetPipelineExecutionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetPipelineExecutionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     PipelineExecution m_pipelineExecution;
+    bool m_pipelineExecutionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -33,114 +33,48 @@ namespace Model
   class NetworkHeader
   {
   public:
-    AWS_SECURITYHUB_API NetworkHeader();
+    AWS_SECURITYHUB_API NetworkHeader() = default;
     AWS_SECURITYHUB_API NetworkHeader(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API NetworkHeader& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The protocol used for the component.</p>
+     * <p>The protocol used for the component.</p> <p>Length Constraints: Minimum of 1.
+     * Maximum of 16.</p>
      */
-    inline const Aws::String& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The protocol used for the component.</p>
-     */
+    inline const Aws::String& GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
+    template<typename ProtocolT = Aws::String>
+    void SetProtocol(ProtocolT&& value) { m_protocolHasBeenSet = true; m_protocol = std::forward<ProtocolT>(value); }
+    template<typename ProtocolT = Aws::String>
+    NetworkHeader& WithProtocol(ProtocolT&& value) { SetProtocol(std::forward<ProtocolT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The protocol used for the component.</p>
-     */
-    inline void SetProtocol(const Aws::String& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The protocol used for the component.</p>
-     */
-    inline void SetProtocol(Aws::String&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The protocol used for the component.</p>
-     */
-    inline void SetProtocol(const char* value) { m_protocolHasBeenSet = true; m_protocol.assign(value); }
-
-    /**
-     * <p>The protocol used for the component.</p>
-     */
-    inline NetworkHeader& WithProtocol(const Aws::String& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The protocol used for the component.</p>
-     */
-    inline NetworkHeader& WithProtocol(Aws::String&& value) { SetProtocol(std::move(value)); return *this;}
-
-    /**
-     * <p>The protocol used for the component.</p>
-     */
-    inline NetworkHeader& WithProtocol(const char* value) { SetProtocol(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the destination of the component.</p>
      */
-    inline const NetworkPathComponentDetails& GetDestination() const{ return m_destination; }
-
-    /**
-     * <p>Information about the destination of the component.</p>
-     */
+    inline const NetworkPathComponentDetails& GetDestination() const { return m_destination; }
     inline bool DestinationHasBeenSet() const { return m_destinationHasBeenSet; }
+    template<typename DestinationT = NetworkPathComponentDetails>
+    void SetDestination(DestinationT&& value) { m_destinationHasBeenSet = true; m_destination = std::forward<DestinationT>(value); }
+    template<typename DestinationT = NetworkPathComponentDetails>
+    NetworkHeader& WithDestination(DestinationT&& value) { SetDestination(std::forward<DestinationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the destination of the component.</p>
-     */
-    inline void SetDestination(const NetworkPathComponentDetails& value) { m_destinationHasBeenSet = true; m_destination = value; }
-
-    /**
-     * <p>Information about the destination of the component.</p>
-     */
-    inline void SetDestination(NetworkPathComponentDetails&& value) { m_destinationHasBeenSet = true; m_destination = std::move(value); }
-
-    /**
-     * <p>Information about the destination of the component.</p>
-     */
-    inline NetworkHeader& WithDestination(const NetworkPathComponentDetails& value) { SetDestination(value); return *this;}
-
-    /**
-     * <p>Information about the destination of the component.</p>
-     */
-    inline NetworkHeader& WithDestination(NetworkPathComponentDetails&& value) { SetDestination(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the origin of the component.</p>
      */
-    inline const NetworkPathComponentDetails& GetSource() const{ return m_source; }
-
-    /**
-     * <p>Information about the origin of the component.</p>
-     */
+    inline const NetworkPathComponentDetails& GetSource() const { return m_source; }
     inline bool SourceHasBeenSet() const { return m_sourceHasBeenSet; }
-
-    /**
-     * <p>Information about the origin of the component.</p>
-     */
-    inline void SetSource(const NetworkPathComponentDetails& value) { m_sourceHasBeenSet = true; m_source = value; }
-
-    /**
-     * <p>Information about the origin of the component.</p>
-     */
-    inline void SetSource(NetworkPathComponentDetails&& value) { m_sourceHasBeenSet = true; m_source = std::move(value); }
-
-    /**
-     * <p>Information about the origin of the component.</p>
-     */
-    inline NetworkHeader& WithSource(const NetworkPathComponentDetails& value) { SetSource(value); return *this;}
-
-    /**
-     * <p>Information about the origin of the component.</p>
-     */
-    inline NetworkHeader& WithSource(NetworkPathComponentDetails&& value) { SetSource(std::move(value)); return *this;}
-
+    template<typename SourceT = NetworkPathComponentDetails>
+    void SetSource(SourceT&& value) { m_sourceHasBeenSet = true; m_source = std::forward<SourceT>(value); }
+    template<typename SourceT = NetworkPathComponentDetails>
+    NetworkHeader& WithSource(SourceT&& value) { SetSource(std::forward<SourceT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_protocol;

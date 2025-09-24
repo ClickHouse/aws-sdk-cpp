@@ -22,7 +22,7 @@ namespace Model
   class UpdateInstanceCustomHealthStatusRequest : public ServiceDiscoveryRequest
   {
   public:
-    AWS_SERVICEDISCOVERY_API UpdateInstanceCustomHealthStatusRequest();
+    AWS_SERVICEDISCOVERY_API UpdateInstanceCustomHealthStatusRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,132 +35,45 @@ namespace Model
     AWS_SERVICEDISCOVERY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The ID of the service that includes the configuration for the custom health
-     * check that you want to change the status for.</p>
+     * <p>The ID or Amazon Resource Name (ARN) of the service that includes the
+     * configuration for the custom health check that you want to change the status
+     * for. For services created in a shared namespace, specify the service ARN. For
+     * more information about shared namespaces, see <a
+     * href="https://docs.aws.amazon.com/cloud-map/latest/dg/sharing-namespaces.html">Cross-account
+     * Cloud Map namespace sharing</a> in the <i>Cloud Map Developer Guide</i>.</p>
      */
-    inline const Aws::String& GetServiceId() const{ return m_serviceId; }
-
-    /**
-     * <p>The ID of the service that includes the configuration for the custom health
-     * check that you want to change the status for.</p>
-     */
+    inline const Aws::String& GetServiceId() const { return m_serviceId; }
     inline bool ServiceIdHasBeenSet() const { return m_serviceIdHasBeenSet; }
+    template<typename ServiceIdT = Aws::String>
+    void SetServiceId(ServiceIdT&& value) { m_serviceIdHasBeenSet = true; m_serviceId = std::forward<ServiceIdT>(value); }
+    template<typename ServiceIdT = Aws::String>
+    UpdateInstanceCustomHealthStatusRequest& WithServiceId(ServiceIdT&& value) { SetServiceId(std::forward<ServiceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the service that includes the configuration for the custom health
-     * check that you want to change the status for.</p>
-     */
-    inline void SetServiceId(const Aws::String& value) { m_serviceIdHasBeenSet = true; m_serviceId = value; }
-
-    /**
-     * <p>The ID of the service that includes the configuration for the custom health
-     * check that you want to change the status for.</p>
-     */
-    inline void SetServiceId(Aws::String&& value) { m_serviceIdHasBeenSet = true; m_serviceId = std::move(value); }
-
-    /**
-     * <p>The ID of the service that includes the configuration for the custom health
-     * check that you want to change the status for.</p>
-     */
-    inline void SetServiceId(const char* value) { m_serviceIdHasBeenSet = true; m_serviceId.assign(value); }
-
-    /**
-     * <p>The ID of the service that includes the configuration for the custom health
-     * check that you want to change the status for.</p>
-     */
-    inline UpdateInstanceCustomHealthStatusRequest& WithServiceId(const Aws::String& value) { SetServiceId(value); return *this;}
-
-    /**
-     * <p>The ID of the service that includes the configuration for the custom health
-     * check that you want to change the status for.</p>
-     */
-    inline UpdateInstanceCustomHealthStatusRequest& WithServiceId(Aws::String&& value) { SetServiceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the service that includes the configuration for the custom health
-     * check that you want to change the status for.</p>
-     */
-    inline UpdateInstanceCustomHealthStatusRequest& WithServiceId(const char* value) { SetServiceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the instance that you want to change the health status for.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the instance that you want to change the health status for.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    UpdateInstanceCustomHealthStatusRequest& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the instance that you want to change the health status for.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the instance that you want to change the health status for.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the instance that you want to change the health status for.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the instance that you want to change the health status for.</p>
-     */
-    inline UpdateInstanceCustomHealthStatusRequest& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the instance that you want to change the health status for.</p>
-     */
-    inline UpdateInstanceCustomHealthStatusRequest& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the instance that you want to change the health status for.</p>
-     */
-    inline UpdateInstanceCustomHealthStatusRequest& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new status of the instance, <code>HEALTHY</code> or
      * <code>UNHEALTHY</code>.</p>
      */
-    inline const CustomHealthStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The new status of the instance, <code>HEALTHY</code> or
-     * <code>UNHEALTHY</code>.</p>
-     */
+    inline CustomHealthStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p>The new status of the instance, <code>HEALTHY</code> or
-     * <code>UNHEALTHY</code>.</p>
-     */
-    inline void SetStatus(const CustomHealthStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The new status of the instance, <code>HEALTHY</code> or
-     * <code>UNHEALTHY</code>.</p>
-     */
-    inline void SetStatus(CustomHealthStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The new status of the instance, <code>HEALTHY</code> or
-     * <code>UNHEALTHY</code>.</p>
-     */
-    inline UpdateInstanceCustomHealthStatusRequest& WithStatus(const CustomHealthStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The new status of the instance, <code>HEALTHY</code> or
-     * <code>UNHEALTHY</code>.</p>
-     */
-    inline UpdateInstanceCustomHealthStatusRequest& WithStatus(CustomHealthStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    inline void SetStatus(CustomHealthStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline UpdateInstanceCustomHealthStatusRequest& WithStatus(CustomHealthStatus value) { SetStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_serviceId;
@@ -169,7 +82,7 @@ namespace Model
     Aws::String m_instanceId;
     bool m_instanceIdHasBeenSet = false;
 
-    CustomHealthStatus m_status;
+    CustomHealthStatus m_status{CustomHealthStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
   };
 

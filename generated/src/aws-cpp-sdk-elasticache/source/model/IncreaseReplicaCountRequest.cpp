@@ -10,16 +10,6 @@
 using namespace Aws::ElastiCache::Model;
 using namespace Aws::Utils;
 
-IncreaseReplicaCountRequest::IncreaseReplicaCountRequest() : 
-    m_replicationGroupIdHasBeenSet(false),
-    m_newReplicaCount(0),
-    m_newReplicaCountHasBeenSet(false),
-    m_replicaConfigurationHasBeenSet(false),
-    m_applyImmediately(false),
-    m_applyImmediatelyHasBeenSet(false)
-{
-}
-
 Aws::String IncreaseReplicaCountRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -36,11 +26,18 @@ Aws::String IncreaseReplicaCountRequest::SerializePayload() const
 
   if(m_replicaConfigurationHasBeenSet)
   {
-    unsigned replicaConfigurationCount = 1;
-    for(auto& item : m_replicaConfiguration)
+    if (m_replicaConfiguration.empty())
     {
-      item.OutputToStream(ss, "ReplicaConfiguration.member.", replicaConfigurationCount, "");
-      replicaConfigurationCount++;
+      ss << "ReplicaConfiguration=&";
+    }
+    else
+    {
+      unsigned replicaConfigurationCount = 1;
+      for(auto& item : m_replicaConfiguration)
+      {
+        item.OutputToStream(ss, "ReplicaConfiguration.ConfigureShard.", replicaConfigurationCount, "");
+        replicaConfigurationCount++;
+      }
     }
   }
 

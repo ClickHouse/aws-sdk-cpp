@@ -23,7 +23,7 @@ namespace Model
   class WriteRecordsRequest : public TimestreamWriteRequest
   {
   public:
-    AWS_TIMESTREAMWRITE_API WriteRecordsRequest();
+    AWS_TIMESTREAMWRITE_API WriteRecordsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,88 +36,31 @@ namespace Model
     AWS_TIMESTREAMWRITE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the Timestream database.</p>
      */
-    inline const Aws::String& GetDatabaseName() const{ return m_databaseName; }
-
-    /**
-     * <p>The name of the Timestream database.</p>
-     */
+    inline const Aws::String& GetDatabaseName() const { return m_databaseName; }
     inline bool DatabaseNameHasBeenSet() const { return m_databaseNameHasBeenSet; }
+    template<typename DatabaseNameT = Aws::String>
+    void SetDatabaseName(DatabaseNameT&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::forward<DatabaseNameT>(value); }
+    template<typename DatabaseNameT = Aws::String>
+    WriteRecordsRequest& WithDatabaseName(DatabaseNameT&& value) { SetDatabaseName(std::forward<DatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Timestream database.</p>
-     */
-    inline void SetDatabaseName(const Aws::String& value) { m_databaseNameHasBeenSet = true; m_databaseName = value; }
-
-    /**
-     * <p>The name of the Timestream database.</p>
-     */
-    inline void SetDatabaseName(Aws::String&& value) { m_databaseNameHasBeenSet = true; m_databaseName = std::move(value); }
-
-    /**
-     * <p>The name of the Timestream database.</p>
-     */
-    inline void SetDatabaseName(const char* value) { m_databaseNameHasBeenSet = true; m_databaseName.assign(value); }
-
-    /**
-     * <p>The name of the Timestream database.</p>
-     */
-    inline WriteRecordsRequest& WithDatabaseName(const Aws::String& value) { SetDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name of the Timestream database.</p>
-     */
-    inline WriteRecordsRequest& WithDatabaseName(Aws::String&& value) { SetDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Timestream database.</p>
-     */
-    inline WriteRecordsRequest& WithDatabaseName(const char* value) { SetDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Timestream table.</p>
      */
-    inline const Aws::String& GetTableName() const{ return m_tableName; }
-
-    /**
-     * <p>The name of the Timestream table.</p>
-     */
+    inline const Aws::String& GetTableName() const { return m_tableName; }
     inline bool TableNameHasBeenSet() const { return m_tableNameHasBeenSet; }
+    template<typename TableNameT = Aws::String>
+    void SetTableName(TableNameT&& value) { m_tableNameHasBeenSet = true; m_tableName = std::forward<TableNameT>(value); }
+    template<typename TableNameT = Aws::String>
+    WriteRecordsRequest& WithTableName(TableNameT&& value) { SetTableName(std::forward<TableNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the Timestream table.</p>
-     */
-    inline void SetTableName(const Aws::String& value) { m_tableNameHasBeenSet = true; m_tableName = value; }
-
-    /**
-     * <p>The name of the Timestream table.</p>
-     */
-    inline void SetTableName(Aws::String&& value) { m_tableNameHasBeenSet = true; m_tableName = std::move(value); }
-
-    /**
-     * <p>The name of the Timestream table.</p>
-     */
-    inline void SetTableName(const char* value) { m_tableNameHasBeenSet = true; m_tableName.assign(value); }
-
-    /**
-     * <p>The name of the Timestream table.</p>
-     */
-    inline WriteRecordsRequest& WithTableName(const Aws::String& value) { SetTableName(value); return *this;}
-
-    /**
-     * <p>The name of the Timestream table.</p>
-     */
-    inline WriteRecordsRequest& WithTableName(Aws::String&& value) { SetTableName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Timestream table.</p>
-     */
-    inline WriteRecordsRequest& WithTableName(const char* value) { SetTableName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A record that contains the common measure, dimension, time, and version
      * attributes shared across all the records in the request. The measure and
@@ -126,107 +69,28 @@ namespace Model
      * Dimensions may not overlap, or a <code>ValidationException</code> will be
      * thrown. In other words, a record must contain dimensions with unique names. </p>
      */
-    inline const Record& GetCommonAttributes() const{ return m_commonAttributes; }
-
-    /**
-     * <p>A record that contains the common measure, dimension, time, and version
-     * attributes shared across all the records in the request. The measure and
-     * dimension attributes specified will be merged with the measure and dimension
-     * attributes in the records object when the data is written into Timestream.
-     * Dimensions may not overlap, or a <code>ValidationException</code> will be
-     * thrown. In other words, a record must contain dimensions with unique names. </p>
-     */
+    inline const Record& GetCommonAttributes() const { return m_commonAttributes; }
     inline bool CommonAttributesHasBeenSet() const { return m_commonAttributesHasBeenSet; }
+    template<typename CommonAttributesT = Record>
+    void SetCommonAttributes(CommonAttributesT&& value) { m_commonAttributesHasBeenSet = true; m_commonAttributes = std::forward<CommonAttributesT>(value); }
+    template<typename CommonAttributesT = Record>
+    WriteRecordsRequest& WithCommonAttributes(CommonAttributesT&& value) { SetCommonAttributes(std::forward<CommonAttributesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A record that contains the common measure, dimension, time, and version
-     * attributes shared across all the records in the request. The measure and
-     * dimension attributes specified will be merged with the measure and dimension
-     * attributes in the records object when the data is written into Timestream.
-     * Dimensions may not overlap, or a <code>ValidationException</code> will be
-     * thrown. In other words, a record must contain dimensions with unique names. </p>
-     */
-    inline void SetCommonAttributes(const Record& value) { m_commonAttributesHasBeenSet = true; m_commonAttributes = value; }
-
-    /**
-     * <p>A record that contains the common measure, dimension, time, and version
-     * attributes shared across all the records in the request. The measure and
-     * dimension attributes specified will be merged with the measure and dimension
-     * attributes in the records object when the data is written into Timestream.
-     * Dimensions may not overlap, or a <code>ValidationException</code> will be
-     * thrown. In other words, a record must contain dimensions with unique names. </p>
-     */
-    inline void SetCommonAttributes(Record&& value) { m_commonAttributesHasBeenSet = true; m_commonAttributes = std::move(value); }
-
-    /**
-     * <p>A record that contains the common measure, dimension, time, and version
-     * attributes shared across all the records in the request. The measure and
-     * dimension attributes specified will be merged with the measure and dimension
-     * attributes in the records object when the data is written into Timestream.
-     * Dimensions may not overlap, or a <code>ValidationException</code> will be
-     * thrown. In other words, a record must contain dimensions with unique names. </p>
-     */
-    inline WriteRecordsRequest& WithCommonAttributes(const Record& value) { SetCommonAttributes(value); return *this;}
-
-    /**
-     * <p>A record that contains the common measure, dimension, time, and version
-     * attributes shared across all the records in the request. The measure and
-     * dimension attributes specified will be merged with the measure and dimension
-     * attributes in the records object when the data is written into Timestream.
-     * Dimensions may not overlap, or a <code>ValidationException</code> will be
-     * thrown. In other words, a record must contain dimensions with unique names. </p>
-     */
-    inline WriteRecordsRequest& WithCommonAttributes(Record&& value) { SetCommonAttributes(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of records that contain the unique measure, dimension, time, and
      * version attributes for each time-series data point. </p>
      */
-    inline const Aws::Vector<Record>& GetRecords() const{ return m_records; }
-
-    /**
-     * <p>An array of records that contain the unique measure, dimension, time, and
-     * version attributes for each time-series data point. </p>
-     */
+    inline const Aws::Vector<Record>& GetRecords() const { return m_records; }
     inline bool RecordsHasBeenSet() const { return m_recordsHasBeenSet; }
-
-    /**
-     * <p>An array of records that contain the unique measure, dimension, time, and
-     * version attributes for each time-series data point. </p>
-     */
-    inline void SetRecords(const Aws::Vector<Record>& value) { m_recordsHasBeenSet = true; m_records = value; }
-
-    /**
-     * <p>An array of records that contain the unique measure, dimension, time, and
-     * version attributes for each time-series data point. </p>
-     */
-    inline void SetRecords(Aws::Vector<Record>&& value) { m_recordsHasBeenSet = true; m_records = std::move(value); }
-
-    /**
-     * <p>An array of records that contain the unique measure, dimension, time, and
-     * version attributes for each time-series data point. </p>
-     */
-    inline WriteRecordsRequest& WithRecords(const Aws::Vector<Record>& value) { SetRecords(value); return *this;}
-
-    /**
-     * <p>An array of records that contain the unique measure, dimension, time, and
-     * version attributes for each time-series data point. </p>
-     */
-    inline WriteRecordsRequest& WithRecords(Aws::Vector<Record>&& value) { SetRecords(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of records that contain the unique measure, dimension, time, and
-     * version attributes for each time-series data point. </p>
-     */
-    inline WriteRecordsRequest& AddRecords(const Record& value) { m_recordsHasBeenSet = true; m_records.push_back(value); return *this; }
-
-    /**
-     * <p>An array of records that contain the unique measure, dimension, time, and
-     * version attributes for each time-series data point. </p>
-     */
-    inline WriteRecordsRequest& AddRecords(Record&& value) { m_recordsHasBeenSet = true; m_records.push_back(std::move(value)); return *this; }
-
+    template<typename RecordsT = Aws::Vector<Record>>
+    void SetRecords(RecordsT&& value) { m_recordsHasBeenSet = true; m_records = std::forward<RecordsT>(value); }
+    template<typename RecordsT = Aws::Vector<Record>>
+    WriteRecordsRequest& WithRecords(RecordsT&& value) { SetRecords(std::forward<RecordsT>(value)); return *this;}
+    template<typename RecordsT = Record>
+    WriteRecordsRequest& AddRecords(RecordsT&& value) { m_recordsHasBeenSet = true; m_records.emplace_back(std::forward<RecordsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_databaseName;

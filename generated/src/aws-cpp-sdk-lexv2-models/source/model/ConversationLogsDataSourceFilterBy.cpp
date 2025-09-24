@@ -18,19 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-ConversationLogsDataSourceFilterBy::ConversationLogsDataSourceFilterBy() : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_inputMode(ConversationLogsInputModeFilter::NOT_SET),
-    m_inputModeHasBeenSet(false)
-{
-}
-
-ConversationLogsDataSourceFilterBy::ConversationLogsDataSourceFilterBy(JsonView jsonValue) : 
-    m_startTimeHasBeenSet(false),
-    m_endTimeHasBeenSet(false),
-    m_inputMode(ConversationLogsInputModeFilter::NOT_SET),
-    m_inputModeHasBeenSet(false)
+ConversationLogsDataSourceFilterBy::ConversationLogsDataSourceFilterBy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ConversationLogsDataSourceFilterBy& ConversationLogsDataSourceFilterBy::operator
   if(jsonValue.ValueExists("startTime"))
   {
     m_startTime = jsonValue.GetDouble("startTime");
-
     m_startTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("endTime"))
   {
     m_endTime = jsonValue.GetDouble("endTime");
-
     m_endTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputMode"))
   {
     m_inputMode = ConversationLogsInputModeFilterMapper::GetConversationLogsInputModeFilterForName(jsonValue.GetString("inputMode"));
-
     m_inputModeHasBeenSet = true;
   }
-
   return *this;
 }
 

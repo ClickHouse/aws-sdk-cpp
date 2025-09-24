@@ -18,15 +18,7 @@ namespace KinesisAnalyticsV2
 namespace Model
 {
 
-KinesisStreamsOutputDescription::KinesisStreamsOutputDescription() : 
-    m_resourceARNHasBeenSet(false),
-    m_roleARNHasBeenSet(false)
-{
-}
-
-KinesisStreamsOutputDescription::KinesisStreamsOutputDescription(JsonView jsonValue) : 
-    m_resourceARNHasBeenSet(false),
-    m_roleARNHasBeenSet(false)
+KinesisStreamsOutputDescription::KinesisStreamsOutputDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ KinesisStreamsOutputDescription& KinesisStreamsOutputDescription::operator =(Jso
   if(jsonValue.ValueExists("ResourceARN"))
   {
     m_resourceARN = jsonValue.GetString("ResourceARN");
-
     m_resourceARNHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RoleARN"))
   {
     m_roleARN = jsonValue.GetString("RoleARN");
-
     m_roleARNHasBeenSet = true;
   }
-
   return *this;
 }
 

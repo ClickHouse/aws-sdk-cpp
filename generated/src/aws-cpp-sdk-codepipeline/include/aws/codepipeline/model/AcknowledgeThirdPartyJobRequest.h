@@ -25,7 +25,7 @@ namespace Model
   class AcknowledgeThirdPartyJobRequest : public CodePipelineRequest
   {
   public:
-    AWS_CODEPIPELINE_API AcknowledgeThirdPartyJobRequest();
+    AWS_CODEPIPELINE_API AcknowledgeThirdPartyJobRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,152 +38,44 @@ namespace Model
     AWS_CODEPIPELINE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The unique system-generated ID of the job.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
+    inline const Aws::String& GetJobId() const { return m_jobId; }
     inline bool JobIdHasBeenSet() const { return m_jobIdHasBeenSet; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    AcknowledgeThirdPartyJobRequest& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobIdHasBeenSet = true; m_jobId = value; }
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobIdHasBeenSet = true; m_jobId = std::move(value); }
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobIdHasBeenSet = true; m_jobId.assign(value); }
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline AcknowledgeThirdPartyJobRequest& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline AcknowledgeThirdPartyJobRequest& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique system-generated ID of the job.</p>
-     */
-    inline AcknowledgeThirdPartyJobRequest& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A system-generated random number that CodePipeline uses to ensure that the
      * job is being worked on by only one job worker. Get this number from the response
      * to a <a>GetThirdPartyJobDetails</a> request.</p>
      */
-    inline const Aws::String& GetNonce() const{ return m_nonce; }
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Get this number from the response
-     * to a <a>GetThirdPartyJobDetails</a> request.</p>
-     */
+    inline const Aws::String& GetNonce() const { return m_nonce; }
     inline bool NonceHasBeenSet() const { return m_nonceHasBeenSet; }
+    template<typename NonceT = Aws::String>
+    void SetNonce(NonceT&& value) { m_nonceHasBeenSet = true; m_nonce = std::forward<NonceT>(value); }
+    template<typename NonceT = Aws::String>
+    AcknowledgeThirdPartyJobRequest& WithNonce(NonceT&& value) { SetNonce(std::forward<NonceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Get this number from the response
-     * to a <a>GetThirdPartyJobDetails</a> request.</p>
-     */
-    inline void SetNonce(const Aws::String& value) { m_nonceHasBeenSet = true; m_nonce = value; }
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Get this number from the response
-     * to a <a>GetThirdPartyJobDetails</a> request.</p>
-     */
-    inline void SetNonce(Aws::String&& value) { m_nonceHasBeenSet = true; m_nonce = std::move(value); }
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Get this number from the response
-     * to a <a>GetThirdPartyJobDetails</a> request.</p>
-     */
-    inline void SetNonce(const char* value) { m_nonceHasBeenSet = true; m_nonce.assign(value); }
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Get this number from the response
-     * to a <a>GetThirdPartyJobDetails</a> request.</p>
-     */
-    inline AcknowledgeThirdPartyJobRequest& WithNonce(const Aws::String& value) { SetNonce(value); return *this;}
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Get this number from the response
-     * to a <a>GetThirdPartyJobDetails</a> request.</p>
-     */
-    inline AcknowledgeThirdPartyJobRequest& WithNonce(Aws::String&& value) { SetNonce(std::move(value)); return *this;}
-
-    /**
-     * <p>A system-generated random number that CodePipeline uses to ensure that the
-     * job is being worked on by only one job worker. Get this number from the response
-     * to a <a>GetThirdPartyJobDetails</a> request.</p>
-     */
-    inline AcknowledgeThirdPartyJobRequest& WithNonce(const char* value) { SetNonce(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The clientToken portion of the clientId and clientToken pair used to verify
      * that the calling entity is allowed access to the job and its details.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>The clientToken portion of the clientId and clientToken pair used to verify
-     * that the calling entity is allowed access to the job and its details.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
-
-    /**
-     * <p>The clientToken portion of the clientId and clientToken pair used to verify
-     * that the calling entity is allowed access to the job and its details.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>The clientToken portion of the clientId and clientToken pair used to verify
-     * that the calling entity is allowed access to the job and its details.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>The clientToken portion of the clientId and clientToken pair used to verify
-     * that the calling entity is allowed access to the job and its details.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>The clientToken portion of the clientId and clientToken pair used to verify
-     * that the calling entity is allowed access to the job and its details.</p>
-     */
-    inline AcknowledgeThirdPartyJobRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>The clientToken portion of the clientId and clientToken pair used to verify
-     * that the calling entity is allowed access to the job and its details.</p>
-     */
-    inline AcknowledgeThirdPartyJobRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The clientToken portion of the clientId and clientToken pair used to verify
-     * that the calling entity is allowed access to the job and its details.</p>
-     */
-    inline AcknowledgeThirdPartyJobRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    AcknowledgeThirdPartyJobRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_jobId;

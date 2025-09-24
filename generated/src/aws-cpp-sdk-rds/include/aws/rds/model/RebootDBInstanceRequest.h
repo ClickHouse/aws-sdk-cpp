@@ -24,7 +24,7 @@ namespace Model
   class RebootDBInstanceRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API RebootDBInstanceRequest();
+    AWS_RDS_API RebootDBInstanceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,97 +39,37 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The DB instance identifier. This parameter is stored as a lowercase
      * string.</p> <p>Constraints:</p> <ul> <li> <p>Must match the identifier of an
      * existing DBInstance.</p> </li> </ul>
      */
-    inline const Aws::String& GetDBInstanceIdentifier() const{ return m_dBInstanceIdentifier; }
-
-    /**
-     * <p>The DB instance identifier. This parameter is stored as a lowercase
-     * string.</p> <p>Constraints:</p> <ul> <li> <p>Must match the identifier of an
-     * existing DBInstance.</p> </li> </ul>
-     */
+    inline const Aws::String& GetDBInstanceIdentifier() const { return m_dBInstanceIdentifier; }
     inline bool DBInstanceIdentifierHasBeenSet() const { return m_dBInstanceIdentifierHasBeenSet; }
+    template<typename DBInstanceIdentifierT = Aws::String>
+    void SetDBInstanceIdentifier(DBInstanceIdentifierT&& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = std::forward<DBInstanceIdentifierT>(value); }
+    template<typename DBInstanceIdentifierT = Aws::String>
+    RebootDBInstanceRequest& WithDBInstanceIdentifier(DBInstanceIdentifierT&& value) { SetDBInstanceIdentifier(std::forward<DBInstanceIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The DB instance identifier. This parameter is stored as a lowercase
-     * string.</p> <p>Constraints:</p> <ul> <li> <p>Must match the identifier of an
-     * existing DBInstance.</p> </li> </ul>
-     */
-    inline void SetDBInstanceIdentifier(const Aws::String& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = value; }
-
-    /**
-     * <p>The DB instance identifier. This parameter is stored as a lowercase
-     * string.</p> <p>Constraints:</p> <ul> <li> <p>Must match the identifier of an
-     * existing DBInstance.</p> </li> </ul>
-     */
-    inline void SetDBInstanceIdentifier(Aws::String&& value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier = std::move(value); }
-
-    /**
-     * <p>The DB instance identifier. This parameter is stored as a lowercase
-     * string.</p> <p>Constraints:</p> <ul> <li> <p>Must match the identifier of an
-     * existing DBInstance.</p> </li> </ul>
-     */
-    inline void SetDBInstanceIdentifier(const char* value) { m_dBInstanceIdentifierHasBeenSet = true; m_dBInstanceIdentifier.assign(value); }
-
-    /**
-     * <p>The DB instance identifier. This parameter is stored as a lowercase
-     * string.</p> <p>Constraints:</p> <ul> <li> <p>Must match the identifier of an
-     * existing DBInstance.</p> </li> </ul>
-     */
-    inline RebootDBInstanceRequest& WithDBInstanceIdentifier(const Aws::String& value) { SetDBInstanceIdentifier(value); return *this;}
-
-    /**
-     * <p>The DB instance identifier. This parameter is stored as a lowercase
-     * string.</p> <p>Constraints:</p> <ul> <li> <p>Must match the identifier of an
-     * existing DBInstance.</p> </li> </ul>
-     */
-    inline RebootDBInstanceRequest& WithDBInstanceIdentifier(Aws::String&& value) { SetDBInstanceIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The DB instance identifier. This parameter is stored as a lowercase
-     * string.</p> <p>Constraints:</p> <ul> <li> <p>Must match the identifier of an
-     * existing DBInstance.</p> </li> </ul>
-     */
-    inline RebootDBInstanceRequest& WithDBInstanceIdentifier(const char* value) { SetDBInstanceIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies whether the reboot is conducted through a Multi-AZ failover.</p>
      * <p>Constraint: You can't enable force failover if the instance isn't configured
      * for Multi-AZ.</p>
      */
-    inline bool GetForceFailover() const{ return m_forceFailover; }
-
-    /**
-     * <p>Specifies whether the reboot is conducted through a Multi-AZ failover.</p>
-     * <p>Constraint: You can't enable force failover if the instance isn't configured
-     * for Multi-AZ.</p>
-     */
+    inline bool GetForceFailover() const { return m_forceFailover; }
     inline bool ForceFailoverHasBeenSet() const { return m_forceFailoverHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the reboot is conducted through a Multi-AZ failover.</p>
-     * <p>Constraint: You can't enable force failover if the instance isn't configured
-     * for Multi-AZ.</p>
-     */
     inline void SetForceFailover(bool value) { m_forceFailoverHasBeenSet = true; m_forceFailover = value; }
-
-    /**
-     * <p>Specifies whether the reboot is conducted through a Multi-AZ failover.</p>
-     * <p>Constraint: You can't enable force failover if the instance isn't configured
-     * for Multi-AZ.</p>
-     */
     inline RebootDBInstanceRequest& WithForceFailover(bool value) { SetForceFailover(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_dBInstanceIdentifier;
     bool m_dBInstanceIdentifierHasBeenSet = false;
 
-    bool m_forceFailover;
+    bool m_forceFailover{false};
     bool m_forceFailoverHasBeenSet = false;
   };
 

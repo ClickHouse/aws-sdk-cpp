@@ -17,18 +17,6 @@ using namespace Aws::Utils;
 using namespace Aws::Http;
 using namespace Aws;
 
-InvokeWithResponseStreamRequest::InvokeWithResponseStreamRequest() : 
-    m_functionNameHasBeenSet(false),
-    m_invocationType(ResponseStreamingInvocationType::NOT_SET),
-    m_invocationTypeHasBeenSet(false),
-    m_logType(LogType::NOT_SET),
-    m_logTypeHasBeenSet(false),
-    m_clientContextHasBeenSet(false),
-    m_qualifierHasBeenSet(false),
-    m_handler(), m_decoder(Aws::Utils::Event::EventStreamDecoder(&m_handler))
-{
-}
-
 
 void InvokeWithResponseStreamRequest::AddQueryStringParameters(URI& uri) const
 {
@@ -46,12 +34,12 @@ Aws::Http::HeaderValueCollection InvokeWithResponseStreamRequest::GetRequestSpec
 {
   Aws::Http::HeaderValueCollection headers;
   Aws::StringStream ss;
-  if(m_invocationTypeHasBeenSet)
+  if(m_invocationTypeHasBeenSet && m_invocationType != ResponseStreamingInvocationType::NOT_SET)
   {
     headers.emplace("x-amz-invocation-type", ResponseStreamingInvocationTypeMapper::GetNameForResponseStreamingInvocationType(m_invocationType));
   }
 
-  if(m_logTypeHasBeenSet)
+  if(m_logTypeHasBeenSet && m_logType != LogType::NOT_SET)
   {
     headers.emplace("x-amz-log-type", LogTypeMapper::GetNameForLogType(m_logType));
   }

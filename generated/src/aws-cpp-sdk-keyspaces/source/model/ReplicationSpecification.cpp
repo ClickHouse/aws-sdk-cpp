@@ -18,17 +18,7 @@ namespace Keyspaces
 namespace Model
 {
 
-ReplicationSpecification::ReplicationSpecification() : 
-    m_replicationStrategy(Rs::NOT_SET),
-    m_replicationStrategyHasBeenSet(false),
-    m_regionListHasBeenSet(false)
-{
-}
-
-ReplicationSpecification::ReplicationSpecification(JsonView jsonValue) : 
-    m_replicationStrategy(Rs::NOT_SET),
-    m_replicationStrategyHasBeenSet(false),
-    m_regionListHasBeenSet(false)
+ReplicationSpecification::ReplicationSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ ReplicationSpecification& ReplicationSpecification::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("replicationStrategy"))
   {
     m_replicationStrategy = RsMapper::GetRsForName(jsonValue.GetString("replicationStrategy"));
-
     m_replicationStrategyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("regionList"))
   {
     Aws::Utils::Array<JsonView> regionListJsonList = jsonValue.GetArray("regionList");
@@ -51,7 +39,6 @@ ReplicationSpecification& ReplicationSpecification::operator =(JsonView jsonValu
     }
     m_regionListHasBeenSet = true;
   }
-
   return *this;
 }
 

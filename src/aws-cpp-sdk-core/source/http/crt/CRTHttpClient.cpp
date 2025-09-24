@@ -4,14 +4,12 @@
  */
 
 #include <aws/core/http/crt/CRTHttpClient.h>
-#include <aws/core/http/standard/StandardHttpResponse.h>
 #include <aws/core/http/standard/StandardHttpRequest.h>
-#include <aws/core/utils/ratelimiter/RateLimiterInterface.h>
-#include <aws/core/utils/HashingUtils.h>
+#include <aws/core/http/standard/StandardHttpResponse.h>
 #include <aws/core/utils/crypto/Hash.h>
-#include <aws/core/utils/Outcome.h>
 #include <aws/core/utils/logging/LogMacros.h>
-
+#include <aws/core/utils/ratelimiter/RateLimiterInterface.h>
+#include <aws/core/utils/stream/AwsChunkedStream.h>
 #include <aws/crt/http/HttpConnectionManager.h>
 #include <aws/crt/http/HttpRequestResponse.h>
 
@@ -20,13 +18,20 @@ static const char *const CRT_HTTP_CLIENT_TAG = "CRTHttpClient";
 // Adapts AWS SDK input streams and rate limiters to the CRT input stream reading model.
 class SDKAdaptingInputStream : public Aws::Crt::Io::StdIOStreamInputStream {
 public:
-    SDKAdaptingInputStream(const std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface>& rateLimiter, std::shared_ptr<Aws::Crt::Io::IStream> stream,
-        const Aws::Http::HttpClient& client, const Aws::Http::HttpRequest& request, bool isStreaming,
-        Aws::Crt::Allocator *allocator = Aws::Crt::ApiAllocator()) noexcept :
-        Aws::Crt::Io::StdIOStreamInputStream(std::move(stream), allocator), m_rateLimiter(rateLimiter),
-        m_client(client), m_currentRequest(request), m_isStreaming(isStreaming), m_chunkEnd(false) 
+    SDKAdaptingInputStream(const std::shared_ptr<Aws::Utils::RateLimits::RateLimiterInterface>& rateLimiter,
+                           std::shared_ptr<Aws::Crt::Io::IStream> stream,
+                           const Aws::Http::HttpClient& client,
+                           const Aws::Http::HttpRequest& request,
+                           bool isStreaming,
+                           Aws::Crt::Allocator* allocator = Aws::Crt::ApiAllocator()) noexcept :
+        Aws::Crt::Io::StdIOStreamInputStream(std::move(stream), allocator),
+        m_rateLimiter(rateLimiter),
+        m_client(client),
+        m_currentRequest(request),
+        m_isStreaming(isStreaming)
     {
     }
+
 protected:
 
     bool ReadImpl(Aws::Crt::ByteBuf &buffer) noexcept override
@@ -36,27 +41,24 @@ protected:
             return false;
         }
 
-        bool isAwsChunked = m_currentRequest.HasHeader(Aws::Http::CONTENT_ENCODING_HEADER) &&
-            m_currentRequest.GetHeaderValue(Aws::Http::CONTENT_ENCODING_HEADER) == Aws::Http::AWS_CHUNKED_VALUE;
-
-        size_t amountToRead = buffer.capacity - buffer.len;
-        uint8_t* originalBufferPos = buffer.buffer;
-
-        // aws-chunk = hex(chunk-size) + CRLF + chunk-data + CRLF
-        // Needs to reserve bytes of sizeof(hex(chunk-size)) + sizeof(CRLF) + sizeof(CRLF)
-        if (isAwsChunked)
-        {
-            Aws::String amountToReadHexString = Aws::Utils::StringUtils::ToHexString(amountToRead);
-            amountToRead -= (amountToReadHexString.size() + 4);
-        }        
-
         // initial check to see if we should avoid reading for the moment.
         if (!m_rateLimiter || (m_rateLimiter && m_rateLimiter->ApplyCost(0) == std::chrono::milliseconds(0))) {
             size_t currentPos = buffer.len;
 
             // now do the read. We may over read by an IO buffer size, but it's fine. The throttle will still
             // kick-in in plenty of time.
-            bool retValue = Aws::Crt::Io::StdIOStreamInputStream::ReadImpl(buffer);
+            bool retValue = false;
+            if (!m_isStreaming)
+            {
+                retValue = Aws::Crt::Io::StdIOStreamInputStream::ReadImpl(buffer);
+            }
+            else
+            {
+                if (StdIOStreamInputStream::GetStatusImpl().is_valid && StdIOStreamInputStream::PeekImpl() != std::char_traits<char>::eof())
+                {
+                    retValue = Aws::Crt::Io::StdIOStreamInputStream::ReadSomeImpl(buffer);
+                }
+            }
             size_t newPos = buffer.len;
             AWS_ASSERT(newPos >= currentPos && "the buffer length should not have decreased in value.");
 
@@ -70,47 +72,8 @@ protected:
                     return true;
                 }
             }
-            
+
             size_t amountRead = newPos - currentPos;
-
-            if (isAwsChunked)
-            {
-                // if we have a chunk to wrap, wrap it, be sure to update the running checksum.
-                if (amountRead > 0)
-                {
-                    if (m_currentRequest.GetRequestHash().second != nullptr)
-                    {
-                        m_currentRequest.GetRequestHash().second->Update(reinterpret_cast<unsigned char*>(originalBufferPos), amountRead);
-                    }
-
-                    Aws::String hex = Aws::Utils::StringUtils::ToHexString(amountRead);
-                    // this is safe because of the isAwsChunked branch above.
-                    // I don't see a aws_byte_buf equivalent of memmove. This is lifted from the curl implementation.
-                    memmove(originalBufferPos + hex.size() + 2, originalBufferPos, amountRead);
-                    memmove(originalBufferPos + hex.size() + 2 + amountRead, "\r\n", 2);
-                    memmove(originalBufferPos, hex.c_str(), hex.size());
-                    memmove(originalBufferPos + hex.size(), "\r\n", 2);
-                    amountRead += hex.size() + 4;
-                }
-                else if (!m_chunkEnd)
-                {
-                    // if we didn't read anything, then lets finish up the chunk and send it.
-                    // the reference implementation seems to assume only one chunk is allowed, because the chunkEnd bit is never updated.
-                    // keep that same behavior here.
-                    Aws::StringStream chunkedTrailer;
-                    chunkedTrailer << "0\r\n";
-                    if (m_currentRequest.GetRequestHash().second != nullptr)
-                    {
-                        chunkedTrailer << "x-amz-checksum-" << m_currentRequest.GetRequestHash().first << ":"
-                            << Aws::Utils::HashingUtils::Base64Encode(m_currentRequest.GetRequestHash().second->GetHash().GetResult()) << "\r\n";
-                    }
-                    chunkedTrailer << "\r\n";
-                    amountRead = chunkedTrailer.str().size();
-                    memcpy(originalBufferPos, chunkedTrailer.str().c_str(), amountRead);
-                    m_chunkEnd = true;
-                }
-                buffer.len += amountRead;
-            }
 
             auto& sentHandler = m_currentRequest.GetDataSentEventHandler();
             if (sentHandler)
@@ -134,7 +97,6 @@ private:
     const Aws::Http::HttpClient& m_client;
     const Aws::Http::HttpRequest& m_currentRequest;
     bool m_isStreaming;
-    bool m_chunkEnd;
 };
 
 // Just a wrapper around a Condition Variable and a mutex, which handles wait and timed waits while protecting
@@ -161,10 +123,10 @@ public:
         m_cvar.wait(uniqueLocker, [this](){return m_wakeupIntentional;});
     }
 
-    bool WaitOnCompletionUntil(std::chrono::time_point<std::chrono::high_resolution_clock> until)
+    bool WaitOnCompletionFor(const size_t ms)
     {
         std::unique_lock<std::mutex> uniqueLocker(m_lock);
-        return m_cvar.wait_until(uniqueLocker, until, [this](){return m_wakeupIntentional;});
+        return m_cvar.wait_for(uniqueLocker, std::chrono::milliseconds(ms), [this](){return m_wakeupIntentional;});
     }
 
 private:
@@ -284,13 +246,19 @@ namespace Aws
             }
 
             //TODO: handle the read rate limiter here, once back pressure is setup.
+            assert(response);
             for (const auto& hashIterator : request->GetResponseValidationHashes())
             {
+              std::stringstream headerStr;
+              headerStr<<"x-amz-checksum-"<<hashIterator.first;
+              if(response->HasHeader(headerStr.str().c_str()))
+              {
                 hashIterator.second->Update(reinterpret_cast<unsigned char*>(body.ptr), body.len);
+                break;
+              }
             }
 
             // When data is received from the content body of the incoming response, just copy it to the output stream.
-            assert(response);
             response->GetResponseBody().write((const char*)body.ptr, static_cast<long>(body.len));
             if (response->GetResponseBody().fail()) {
                 const auto& ref = response->GetResponseBody();
@@ -411,7 +379,11 @@ namespace Aws
             if (request->GetContentBody())
             {
                 bool isStreaming = request->IsEventStreamRequest();
-                crtRequest->SetBody(Aws::MakeShared<SDKAdaptingInputStream>(CRT_HTTP_CLIENT_TAG, m_configuration.writeRateLimiter, request->GetContentBody(), *this, *request, isStreaming));
+                if (request->HasHeader(Aws::Http::CONTENT_ENCODING_HEADER) && request->GetHeaderValue(Aws::Http::CONTENT_ENCODING_HEADER) == Aws::Http::AWS_CHUNKED_VALUE) {
+                  crtRequest->SetBody(Aws::MakeShared<Aws::Utils::Stream::AwsChunkedStream<>>(CRT_HTTP_CLIENT_TAG, request.get(), request->GetContentBody()));
+                } else {
+                  crtRequest->SetBody(Aws::MakeShared<SDKAdaptingInputStream>(CRT_HTTP_CLIENT_TAG, m_configuration.writeRateLimiter, request->GetContentBody(), *this, *request, isStreaming));
+                }
             }
 
             Crt::Http::HttpRequestOptions requestOptions;
@@ -431,9 +403,14 @@ namespace Aws
 
             // This will arrive at or around the same time as the headers. Use it to set the response code on the response
             requestOptions.onIncomingHeadersBlockDone =
-                [response](Crt::Http::HttpStream& stream, enum aws_http_header_block block)
+                [request, response](Crt::Http::HttpStream& stream, enum aws_http_header_block block)
             {
                 OnIncomingHeadersBlockDone(stream, block, response);
+                auto& headersHandler = request->GetHeadersReceivedEventHandler();
+                if (headersHandler)
+                {
+                    headersHandler(request.get(), response.get());
+                }
             };
 
             // CRT client is async only so we'll need to do the synchronous part ourselves.
@@ -467,9 +444,7 @@ namespace Aws
             // all that effort if that's the worst thing that can happen?
             if (m_configuration.requestTimeoutMs > 0 )
             {
-                auto requestExpiryTime = std::chrono::high_resolution_clock::now() +
-                                         std::chrono::milliseconds(m_configuration.requestTimeoutMs);
-                waiterTimedOut = !waiter.WaitOnCompletionUntil(requestExpiryTime);
+                waiterTimedOut = !waiter.WaitOnCompletionFor(m_configuration.requestTimeoutMs);
 
                 // if this is true, the waiter timed out without a terminal condition being woken up.
                 if (waiterTimedOut)
@@ -628,7 +603,13 @@ namespace Aws
                         contextOptions = Crt::Io::TlsContextOptions::InitClientWithMtlsPkcs12(pkcs12CertFile, pkcs12Pwd);
                     }
 
-                    if (!m_configuration.caFile.empty() || !m_configuration.caPath.empty())
+                    if (!m_configuration.proxyCaFile.empty() || !m_configuration.proxyCaPath.empty()) 
+                    {
+                        const char* caPath = clientConfig.proxyCaPath.empty() ? nullptr : clientConfig.proxyCaPath.c_str();
+                        const char* caFile = clientConfig.proxyCaFile.empty() ? nullptr : clientConfig.proxyCaFile.c_str();
+                        contextOptions.OverrideDefaultTrustStore(caPath, caFile);
+                    } 
+                    else if (!m_configuration.caFile.empty() || !m_configuration.caPath.empty())
                     {
                         const char* caPath = clientConfig.caPath.empty() ? nullptr : clientConfig.caPath.c_str();
                         const char* caFile = clientConfig.caFile.empty() ? nullptr : clientConfig.caFile.c_str();

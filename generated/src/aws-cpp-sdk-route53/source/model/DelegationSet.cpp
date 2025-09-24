@@ -20,17 +20,7 @@ namespace Route53
 namespace Model
 {
 
-DelegationSet::DelegationSet() : 
-    m_idHasBeenSet(false),
-    m_callerReferenceHasBeenSet(false),
-    m_nameServersHasBeenSet(false)
-{
-}
-
-DelegationSet::DelegationSet(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_callerReferenceHasBeenSet(false),
-    m_nameServersHasBeenSet(false)
+DelegationSet::DelegationSet(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +47,7 @@ DelegationSet& DelegationSet::operator =(const XmlNode& xmlNode)
     if(!nameServersNode.IsNull())
     {
       XmlNode nameServersMember = nameServersNode.FirstChild("NameServer");
+      m_nameServersHasBeenSet = !nameServersMember.IsNull();
       while(!nameServersMember.IsNull())
       {
         m_nameServers.push_back(nameServersMember.GetText());

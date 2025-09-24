@@ -23,7 +23,7 @@ namespace Model
   class CreateServiceRequest : public ProtonRequest
   {
   public:
-    AWS_PROTON_API CreateServiceRequest();
+    AWS_PROTON_API CreateServiceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,145 +36,45 @@ namespace Model
     AWS_PROTON_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the code repository branch that holds the code that's deployed in
      * Proton. <i>Don't</i> include this parameter if your service template
      * <i>doesn't</i> include a service pipeline.</p>
      */
-    inline const Aws::String& GetBranchName() const{ return m_branchName; }
-
-    /**
-     * <p>The name of the code repository branch that holds the code that's deployed in
-     * Proton. <i>Don't</i> include this parameter if your service template
-     * <i>doesn't</i> include a service pipeline.</p>
-     */
+    inline const Aws::String& GetBranchName() const { return m_branchName; }
     inline bool BranchNameHasBeenSet() const { return m_branchNameHasBeenSet; }
+    template<typename BranchNameT = Aws::String>
+    void SetBranchName(BranchNameT&& value) { m_branchNameHasBeenSet = true; m_branchName = std::forward<BranchNameT>(value); }
+    template<typename BranchNameT = Aws::String>
+    CreateServiceRequest& WithBranchName(BranchNameT&& value) { SetBranchName(std::forward<BranchNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the code repository branch that holds the code that's deployed in
-     * Proton. <i>Don't</i> include this parameter if your service template
-     * <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline void SetBranchName(const Aws::String& value) { m_branchNameHasBeenSet = true; m_branchName = value; }
-
-    /**
-     * <p>The name of the code repository branch that holds the code that's deployed in
-     * Proton. <i>Don't</i> include this parameter if your service template
-     * <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline void SetBranchName(Aws::String&& value) { m_branchNameHasBeenSet = true; m_branchName = std::move(value); }
-
-    /**
-     * <p>The name of the code repository branch that holds the code that's deployed in
-     * Proton. <i>Don't</i> include this parameter if your service template
-     * <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline void SetBranchName(const char* value) { m_branchNameHasBeenSet = true; m_branchName.assign(value); }
-
-    /**
-     * <p>The name of the code repository branch that holds the code that's deployed in
-     * Proton. <i>Don't</i> include this parameter if your service template
-     * <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline CreateServiceRequest& WithBranchName(const Aws::String& value) { SetBranchName(value); return *this;}
-
-    /**
-     * <p>The name of the code repository branch that holds the code that's deployed in
-     * Proton. <i>Don't</i> include this parameter if your service template
-     * <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline CreateServiceRequest& WithBranchName(Aws::String&& value) { SetBranchName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the code repository branch that holds the code that's deployed in
-     * Proton. <i>Don't</i> include this parameter if your service template
-     * <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline CreateServiceRequest& WithBranchName(const char* value) { SetBranchName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the Proton service.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the Proton service.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateServiceRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description of the Proton service.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the Proton service.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the Proton service.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the Proton service.</p>
-     */
-    inline CreateServiceRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the Proton service.</p>
-     */
-    inline CreateServiceRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the Proton service.</p>
-     */
-    inline CreateServiceRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The service name.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The service name.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateServiceRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The service name.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline CreateServiceRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline CreateServiceRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The service name.</p>
-     */
-    inline CreateServiceRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the repository connection. For more
      * information, see <a
@@ -183,128 +83,28 @@ namespace Model
      * include this parameter if your service template <i>doesn't</i> include a service
      * pipeline.</p>
      */
-    inline const Aws::String& GetRepositoryConnectionArn() const{ return m_repositoryConnectionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the repository connection. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setting-up-vcontrol">Setting
-     * up an AWS CodeStar connection</a> in the <i>Proton User Guide</i>. <i>Don't</i>
-     * include this parameter if your service template <i>doesn't</i> include a service
-     * pipeline.</p>
-     */
+    inline const Aws::String& GetRepositoryConnectionArn() const { return m_repositoryConnectionArn; }
     inline bool RepositoryConnectionArnHasBeenSet() const { return m_repositoryConnectionArnHasBeenSet; }
+    template<typename RepositoryConnectionArnT = Aws::String>
+    void SetRepositoryConnectionArn(RepositoryConnectionArnT&& value) { m_repositoryConnectionArnHasBeenSet = true; m_repositoryConnectionArn = std::forward<RepositoryConnectionArnT>(value); }
+    template<typename RepositoryConnectionArnT = Aws::String>
+    CreateServiceRequest& WithRepositoryConnectionArn(RepositoryConnectionArnT&& value) { SetRepositoryConnectionArn(std::forward<RepositoryConnectionArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the repository connection. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setting-up-vcontrol">Setting
-     * up an AWS CodeStar connection</a> in the <i>Proton User Guide</i>. <i>Don't</i>
-     * include this parameter if your service template <i>doesn't</i> include a service
-     * pipeline.</p>
-     */
-    inline void SetRepositoryConnectionArn(const Aws::String& value) { m_repositoryConnectionArnHasBeenSet = true; m_repositoryConnectionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the repository connection. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setting-up-vcontrol">Setting
-     * up an AWS CodeStar connection</a> in the <i>Proton User Guide</i>. <i>Don't</i>
-     * include this parameter if your service template <i>doesn't</i> include a service
-     * pipeline.</p>
-     */
-    inline void SetRepositoryConnectionArn(Aws::String&& value) { m_repositoryConnectionArnHasBeenSet = true; m_repositoryConnectionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the repository connection. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setting-up-vcontrol">Setting
-     * up an AWS CodeStar connection</a> in the <i>Proton User Guide</i>. <i>Don't</i>
-     * include this parameter if your service template <i>doesn't</i> include a service
-     * pipeline.</p>
-     */
-    inline void SetRepositoryConnectionArn(const char* value) { m_repositoryConnectionArnHasBeenSet = true; m_repositoryConnectionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the repository connection. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setting-up-vcontrol">Setting
-     * up an AWS CodeStar connection</a> in the <i>Proton User Guide</i>. <i>Don't</i>
-     * include this parameter if your service template <i>doesn't</i> include a service
-     * pipeline.</p>
-     */
-    inline CreateServiceRequest& WithRepositoryConnectionArn(const Aws::String& value) { SetRepositoryConnectionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the repository connection. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setting-up-vcontrol">Setting
-     * up an AWS CodeStar connection</a> in the <i>Proton User Guide</i>. <i>Don't</i>
-     * include this parameter if your service template <i>doesn't</i> include a service
-     * pipeline.</p>
-     */
-    inline CreateServiceRequest& WithRepositoryConnectionArn(Aws::String&& value) { SetRepositoryConnectionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the repository connection. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/setting-up-for-service.html#setting-up-vcontrol">Setting
-     * up an AWS CodeStar connection</a> in the <i>Proton User Guide</i>. <i>Don't</i>
-     * include this parameter if your service template <i>doesn't</i> include a service
-     * pipeline.</p>
-     */
-    inline CreateServiceRequest& WithRepositoryConnectionArn(const char* value) { SetRepositoryConnectionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the code repository. <i>Don't</i> include this parameter if your
      * service template <i>doesn't</i> include a service pipeline.</p>
      */
-    inline const Aws::String& GetRepositoryId() const{ return m_repositoryId; }
-
-    /**
-     * <p>The ID of the code repository. <i>Don't</i> include this parameter if your
-     * service template <i>doesn't</i> include a service pipeline.</p>
-     */
+    inline const Aws::String& GetRepositoryId() const { return m_repositoryId; }
     inline bool RepositoryIdHasBeenSet() const { return m_repositoryIdHasBeenSet; }
+    template<typename RepositoryIdT = Aws::String>
+    void SetRepositoryId(RepositoryIdT&& value) { m_repositoryIdHasBeenSet = true; m_repositoryId = std::forward<RepositoryIdT>(value); }
+    template<typename RepositoryIdT = Aws::String>
+    CreateServiceRequest& WithRepositoryId(RepositoryIdT&& value) { SetRepositoryId(std::forward<RepositoryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the code repository. <i>Don't</i> include this parameter if your
-     * service template <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline void SetRepositoryId(const Aws::String& value) { m_repositoryIdHasBeenSet = true; m_repositoryId = value; }
-
-    /**
-     * <p>The ID of the code repository. <i>Don't</i> include this parameter if your
-     * service template <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline void SetRepositoryId(Aws::String&& value) { m_repositoryIdHasBeenSet = true; m_repositoryId = std::move(value); }
-
-    /**
-     * <p>The ID of the code repository. <i>Don't</i> include this parameter if your
-     * service template <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline void SetRepositoryId(const char* value) { m_repositoryIdHasBeenSet = true; m_repositoryId.assign(value); }
-
-    /**
-     * <p>The ID of the code repository. <i>Don't</i> include this parameter if your
-     * service template <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline CreateServiceRequest& WithRepositoryId(const Aws::String& value) { SetRepositoryId(value); return *this;}
-
-    /**
-     * <p>The ID of the code repository. <i>Don't</i> include this parameter if your
-     * service template <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline CreateServiceRequest& WithRepositoryId(Aws::String&& value) { SetRepositoryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the code repository. <i>Don't</i> include this parameter if your
-     * service template <i>doesn't</i> include a service pipeline.</p>
-     */
-    inline CreateServiceRequest& WithRepositoryId(const char* value) { SetRepositoryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A link to a spec file that provides inputs as defined in the service template
      * bundle schema file. The spec file is in YAML format. <i>Don’t</i> include
@@ -313,282 +113,68 @@ namespace Model
      * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html">Create
      * a service</a> in the <i>Proton User Guide</i>.</p>
      */
-    inline const Aws::String& GetSpec() const{ return m_spec; }
-
-    /**
-     * <p>A link to a spec file that provides inputs as defined in the service template
-     * bundle schema file. The spec file is in YAML format. <i>Don’t</i> include
-     * pipeline inputs in the spec if your service template <i>doesn’t</i> include a
-     * service pipeline. For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html">Create
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
+    inline const Aws::String& GetSpec() const { return m_spec; }
     inline bool SpecHasBeenSet() const { return m_specHasBeenSet; }
+    template<typename SpecT = Aws::String>
+    void SetSpec(SpecT&& value) { m_specHasBeenSet = true; m_spec = std::forward<SpecT>(value); }
+    template<typename SpecT = Aws::String>
+    CreateServiceRequest& WithSpec(SpecT&& value) { SetSpec(std::forward<SpecT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A link to a spec file that provides inputs as defined in the service template
-     * bundle schema file. The spec file is in YAML format. <i>Don’t</i> include
-     * pipeline inputs in the spec if your service template <i>doesn’t</i> include a
-     * service pipeline. For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html">Create
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline void SetSpec(const Aws::String& value) { m_specHasBeenSet = true; m_spec = value; }
-
-    /**
-     * <p>A link to a spec file that provides inputs as defined in the service template
-     * bundle schema file. The spec file is in YAML format. <i>Don’t</i> include
-     * pipeline inputs in the spec if your service template <i>doesn’t</i> include a
-     * service pipeline. For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html">Create
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline void SetSpec(Aws::String&& value) { m_specHasBeenSet = true; m_spec = std::move(value); }
-
-    /**
-     * <p>A link to a spec file that provides inputs as defined in the service template
-     * bundle schema file. The spec file is in YAML format. <i>Don’t</i> include
-     * pipeline inputs in the spec if your service template <i>doesn’t</i> include a
-     * service pipeline. For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html">Create
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline void SetSpec(const char* value) { m_specHasBeenSet = true; m_spec.assign(value); }
-
-    /**
-     * <p>A link to a spec file that provides inputs as defined in the service template
-     * bundle schema file. The spec file is in YAML format. <i>Don’t</i> include
-     * pipeline inputs in the spec if your service template <i>doesn’t</i> include a
-     * service pipeline. For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html">Create
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline CreateServiceRequest& WithSpec(const Aws::String& value) { SetSpec(value); return *this;}
-
-    /**
-     * <p>A link to a spec file that provides inputs as defined in the service template
-     * bundle schema file. The spec file is in YAML format. <i>Don’t</i> include
-     * pipeline inputs in the spec if your service template <i>doesn’t</i> include a
-     * service pipeline. For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html">Create
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline CreateServiceRequest& WithSpec(Aws::String&& value) { SetSpec(std::move(value)); return *this;}
-
-    /**
-     * <p>A link to a spec file that provides inputs as defined in the service template
-     * bundle schema file. The spec file is in YAML format. <i>Don’t</i> include
-     * pipeline inputs in the spec if your service template <i>doesn’t</i> include a
-     * service pipeline. For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/ag-create-svc.html">Create
-     * a service</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline CreateServiceRequest& WithSpec(const char* value) { SetSpec(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An optional list of metadata items that you can associate with the Proton
      * service. A tag is a key-value pair.</p> <p>For more information, see <a
      * href="https://docs.aws.amazon.com/proton/latest/userguide/resources.html">Proton
      * resources and tagging</a> in the <i>Proton User Guide</i>.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the Proton
-     * service. A tag is a key-value pair.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/resources.html">Proton
-     * resources and tagging</a> in the <i>Proton User Guide</i>.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateServiceRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateServiceRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An optional list of metadata items that you can associate with the Proton
-     * service. A tag is a key-value pair.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/resources.html">Proton
-     * resources and tagging</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the Proton
-     * service. A tag is a key-value pair.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/resources.html">Proton
-     * resources and tagging</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the Proton
-     * service. A tag is a key-value pair.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/resources.html">Proton
-     * resources and tagging</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline CreateServiceRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the Proton
-     * service. A tag is a key-value pair.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/resources.html">Proton
-     * resources and tagging</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline CreateServiceRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the Proton
-     * service. A tag is a key-value pair.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/resources.html">Proton
-     * resources and tagging</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline CreateServiceRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>An optional list of metadata items that you can associate with the Proton
-     * service. A tag is a key-value pair.</p> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/proton/latest/userguide/resources.html">Proton
-     * resources and tagging</a> in the <i>Proton User Guide</i>.</p>
-     */
-    inline CreateServiceRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The major version of the service template that was used to create the
      * service.</p>
      */
-    inline const Aws::String& GetTemplateMajorVersion() const{ return m_templateMajorVersion; }
-
-    /**
-     * <p>The major version of the service template that was used to create the
-     * service.</p>
-     */
+    inline const Aws::String& GetTemplateMajorVersion() const { return m_templateMajorVersion; }
     inline bool TemplateMajorVersionHasBeenSet() const { return m_templateMajorVersionHasBeenSet; }
+    template<typename TemplateMajorVersionT = Aws::String>
+    void SetTemplateMajorVersion(TemplateMajorVersionT&& value) { m_templateMajorVersionHasBeenSet = true; m_templateMajorVersion = std::forward<TemplateMajorVersionT>(value); }
+    template<typename TemplateMajorVersionT = Aws::String>
+    CreateServiceRequest& WithTemplateMajorVersion(TemplateMajorVersionT&& value) { SetTemplateMajorVersion(std::forward<TemplateMajorVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The major version of the service template that was used to create the
-     * service.</p>
-     */
-    inline void SetTemplateMajorVersion(const Aws::String& value) { m_templateMajorVersionHasBeenSet = true; m_templateMajorVersion = value; }
-
-    /**
-     * <p>The major version of the service template that was used to create the
-     * service.</p>
-     */
-    inline void SetTemplateMajorVersion(Aws::String&& value) { m_templateMajorVersionHasBeenSet = true; m_templateMajorVersion = std::move(value); }
-
-    /**
-     * <p>The major version of the service template that was used to create the
-     * service.</p>
-     */
-    inline void SetTemplateMajorVersion(const char* value) { m_templateMajorVersionHasBeenSet = true; m_templateMajorVersion.assign(value); }
-
-    /**
-     * <p>The major version of the service template that was used to create the
-     * service.</p>
-     */
-    inline CreateServiceRequest& WithTemplateMajorVersion(const Aws::String& value) { SetTemplateMajorVersion(value); return *this;}
-
-    /**
-     * <p>The major version of the service template that was used to create the
-     * service.</p>
-     */
-    inline CreateServiceRequest& WithTemplateMajorVersion(Aws::String&& value) { SetTemplateMajorVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The major version of the service template that was used to create the
-     * service.</p>
-     */
-    inline CreateServiceRequest& WithTemplateMajorVersion(const char* value) { SetTemplateMajorVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The minor version of the service template that was used to create the
      * service.</p>
      */
-    inline const Aws::String& GetTemplateMinorVersion() const{ return m_templateMinorVersion; }
-
-    /**
-     * <p>The minor version of the service template that was used to create the
-     * service.</p>
-     */
+    inline const Aws::String& GetTemplateMinorVersion() const { return m_templateMinorVersion; }
     inline bool TemplateMinorVersionHasBeenSet() const { return m_templateMinorVersionHasBeenSet; }
+    template<typename TemplateMinorVersionT = Aws::String>
+    void SetTemplateMinorVersion(TemplateMinorVersionT&& value) { m_templateMinorVersionHasBeenSet = true; m_templateMinorVersion = std::forward<TemplateMinorVersionT>(value); }
+    template<typename TemplateMinorVersionT = Aws::String>
+    CreateServiceRequest& WithTemplateMinorVersion(TemplateMinorVersionT&& value) { SetTemplateMinorVersion(std::forward<TemplateMinorVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The minor version of the service template that was used to create the
-     * service.</p>
-     */
-    inline void SetTemplateMinorVersion(const Aws::String& value) { m_templateMinorVersionHasBeenSet = true; m_templateMinorVersion = value; }
-
-    /**
-     * <p>The minor version of the service template that was used to create the
-     * service.</p>
-     */
-    inline void SetTemplateMinorVersion(Aws::String&& value) { m_templateMinorVersionHasBeenSet = true; m_templateMinorVersion = std::move(value); }
-
-    /**
-     * <p>The minor version of the service template that was used to create the
-     * service.</p>
-     */
-    inline void SetTemplateMinorVersion(const char* value) { m_templateMinorVersionHasBeenSet = true; m_templateMinorVersion.assign(value); }
-
-    /**
-     * <p>The minor version of the service template that was used to create the
-     * service.</p>
-     */
-    inline CreateServiceRequest& WithTemplateMinorVersion(const Aws::String& value) { SetTemplateMinorVersion(value); return *this;}
-
-    /**
-     * <p>The minor version of the service template that was used to create the
-     * service.</p>
-     */
-    inline CreateServiceRequest& WithTemplateMinorVersion(Aws::String&& value) { SetTemplateMinorVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The minor version of the service template that was used to create the
-     * service.</p>
-     */
-    inline CreateServiceRequest& WithTemplateMinorVersion(const char* value) { SetTemplateMinorVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the service template that's used to create the service.</p>
      */
-    inline const Aws::String& GetTemplateName() const{ return m_templateName; }
-
-    /**
-     * <p>The name of the service template that's used to create the service.</p>
-     */
+    inline const Aws::String& GetTemplateName() const { return m_templateName; }
     inline bool TemplateNameHasBeenSet() const { return m_templateNameHasBeenSet; }
-
-    /**
-     * <p>The name of the service template that's used to create the service.</p>
-     */
-    inline void SetTemplateName(const Aws::String& value) { m_templateNameHasBeenSet = true; m_templateName = value; }
-
-    /**
-     * <p>The name of the service template that's used to create the service.</p>
-     */
-    inline void SetTemplateName(Aws::String&& value) { m_templateNameHasBeenSet = true; m_templateName = std::move(value); }
-
-    /**
-     * <p>The name of the service template that's used to create the service.</p>
-     */
-    inline void SetTemplateName(const char* value) { m_templateNameHasBeenSet = true; m_templateName.assign(value); }
-
-    /**
-     * <p>The name of the service template that's used to create the service.</p>
-     */
-    inline CreateServiceRequest& WithTemplateName(const Aws::String& value) { SetTemplateName(value); return *this;}
-
-    /**
-     * <p>The name of the service template that's used to create the service.</p>
-     */
-    inline CreateServiceRequest& WithTemplateName(Aws::String&& value) { SetTemplateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the service template that's used to create the service.</p>
-     */
-    inline CreateServiceRequest& WithTemplateName(const char* value) { SetTemplateName(value); return *this;}
-
+    template<typename TemplateNameT = Aws::String>
+    void SetTemplateName(TemplateNameT&& value) { m_templateNameHasBeenSet = true; m_templateName = std::forward<TemplateNameT>(value); }
+    template<typename TemplateNameT = Aws::String>
+    CreateServiceRequest& WithTemplateName(TemplateNameT&& value) { SetTemplateName(std::forward<TemplateNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_branchName;

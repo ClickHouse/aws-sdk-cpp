@@ -18,13 +18,7 @@ namespace SecurityLake
 namespace Model
 {
 
-CustomLogSourceCrawlerConfiguration::CustomLogSourceCrawlerConfiguration() : 
-    m_roleArnHasBeenSet(false)
-{
-}
-
-CustomLogSourceCrawlerConfiguration::CustomLogSourceCrawlerConfiguration(JsonView jsonValue) : 
-    m_roleArnHasBeenSet(false)
+CustomLogSourceCrawlerConfiguration::CustomLogSourceCrawlerConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ CustomLogSourceCrawlerConfiguration& CustomLogSourceCrawlerConfiguration::operat
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

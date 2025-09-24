@@ -32,142 +32,48 @@ namespace Model
   class S3ContentLocationUpdate
   {
   public:
-    AWS_KINESISANALYTICSV2_API S3ContentLocationUpdate();
+    AWS_KINESISANALYTICSV2_API S3ContentLocationUpdate() = default;
     AWS_KINESISANALYTICSV2_API S3ContentLocationUpdate(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API S3ContentLocationUpdate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The new Amazon Resource Name (ARN) for the S3 bucket containing the
      * application code.</p>
      */
-    inline const Aws::String& GetBucketARNUpdate() const{ return m_bucketARNUpdate; }
-
-    /**
-     * <p>The new Amazon Resource Name (ARN) for the S3 bucket containing the
-     * application code.</p>
-     */
+    inline const Aws::String& GetBucketARNUpdate() const { return m_bucketARNUpdate; }
     inline bool BucketARNUpdateHasBeenSet() const { return m_bucketARNUpdateHasBeenSet; }
+    template<typename BucketARNUpdateT = Aws::String>
+    void SetBucketARNUpdate(BucketARNUpdateT&& value) { m_bucketARNUpdateHasBeenSet = true; m_bucketARNUpdate = std::forward<BucketARNUpdateT>(value); }
+    template<typename BucketARNUpdateT = Aws::String>
+    S3ContentLocationUpdate& WithBucketARNUpdate(BucketARNUpdateT&& value) { SetBucketARNUpdate(std::forward<BucketARNUpdateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The new Amazon Resource Name (ARN) for the S3 bucket containing the
-     * application code.</p>
-     */
-    inline void SetBucketARNUpdate(const Aws::String& value) { m_bucketARNUpdateHasBeenSet = true; m_bucketARNUpdate = value; }
-
-    /**
-     * <p>The new Amazon Resource Name (ARN) for the S3 bucket containing the
-     * application code.</p>
-     */
-    inline void SetBucketARNUpdate(Aws::String&& value) { m_bucketARNUpdateHasBeenSet = true; m_bucketARNUpdate = std::move(value); }
-
-    /**
-     * <p>The new Amazon Resource Name (ARN) for the S3 bucket containing the
-     * application code.</p>
-     */
-    inline void SetBucketARNUpdate(const char* value) { m_bucketARNUpdateHasBeenSet = true; m_bucketARNUpdate.assign(value); }
-
-    /**
-     * <p>The new Amazon Resource Name (ARN) for the S3 bucket containing the
-     * application code.</p>
-     */
-    inline S3ContentLocationUpdate& WithBucketARNUpdate(const Aws::String& value) { SetBucketARNUpdate(value); return *this;}
-
-    /**
-     * <p>The new Amazon Resource Name (ARN) for the S3 bucket containing the
-     * application code.</p>
-     */
-    inline S3ContentLocationUpdate& WithBucketARNUpdate(Aws::String&& value) { SetBucketARNUpdate(std::move(value)); return *this;}
-
-    /**
-     * <p>The new Amazon Resource Name (ARN) for the S3 bucket containing the
-     * application code.</p>
-     */
-    inline S3ContentLocationUpdate& WithBucketARNUpdate(const char* value) { SetBucketARNUpdate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new file key for the object containing the application code.</p>
      */
-    inline const Aws::String& GetFileKeyUpdate() const{ return m_fileKeyUpdate; }
-
-    /**
-     * <p>The new file key for the object containing the application code.</p>
-     */
+    inline const Aws::String& GetFileKeyUpdate() const { return m_fileKeyUpdate; }
     inline bool FileKeyUpdateHasBeenSet() const { return m_fileKeyUpdateHasBeenSet; }
+    template<typename FileKeyUpdateT = Aws::String>
+    void SetFileKeyUpdate(FileKeyUpdateT&& value) { m_fileKeyUpdateHasBeenSet = true; m_fileKeyUpdate = std::forward<FileKeyUpdateT>(value); }
+    template<typename FileKeyUpdateT = Aws::String>
+    S3ContentLocationUpdate& WithFileKeyUpdate(FileKeyUpdateT&& value) { SetFileKeyUpdate(std::forward<FileKeyUpdateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The new file key for the object containing the application code.</p>
-     */
-    inline void SetFileKeyUpdate(const Aws::String& value) { m_fileKeyUpdateHasBeenSet = true; m_fileKeyUpdate = value; }
-
-    /**
-     * <p>The new file key for the object containing the application code.</p>
-     */
-    inline void SetFileKeyUpdate(Aws::String&& value) { m_fileKeyUpdateHasBeenSet = true; m_fileKeyUpdate = std::move(value); }
-
-    /**
-     * <p>The new file key for the object containing the application code.</p>
-     */
-    inline void SetFileKeyUpdate(const char* value) { m_fileKeyUpdateHasBeenSet = true; m_fileKeyUpdate.assign(value); }
-
-    /**
-     * <p>The new file key for the object containing the application code.</p>
-     */
-    inline S3ContentLocationUpdate& WithFileKeyUpdate(const Aws::String& value) { SetFileKeyUpdate(value); return *this;}
-
-    /**
-     * <p>The new file key for the object containing the application code.</p>
-     */
-    inline S3ContentLocationUpdate& WithFileKeyUpdate(Aws::String&& value) { SetFileKeyUpdate(std::move(value)); return *this;}
-
-    /**
-     * <p>The new file key for the object containing the application code.</p>
-     */
-    inline S3ContentLocationUpdate& WithFileKeyUpdate(const char* value) { SetFileKeyUpdate(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The new version of the object containing the application code.</p>
      */
-    inline const Aws::String& GetObjectVersionUpdate() const{ return m_objectVersionUpdate; }
-
-    /**
-     * <p>The new version of the object containing the application code.</p>
-     */
+    inline const Aws::String& GetObjectVersionUpdate() const { return m_objectVersionUpdate; }
     inline bool ObjectVersionUpdateHasBeenSet() const { return m_objectVersionUpdateHasBeenSet; }
-
-    /**
-     * <p>The new version of the object containing the application code.</p>
-     */
-    inline void SetObjectVersionUpdate(const Aws::String& value) { m_objectVersionUpdateHasBeenSet = true; m_objectVersionUpdate = value; }
-
-    /**
-     * <p>The new version of the object containing the application code.</p>
-     */
-    inline void SetObjectVersionUpdate(Aws::String&& value) { m_objectVersionUpdateHasBeenSet = true; m_objectVersionUpdate = std::move(value); }
-
-    /**
-     * <p>The new version of the object containing the application code.</p>
-     */
-    inline void SetObjectVersionUpdate(const char* value) { m_objectVersionUpdateHasBeenSet = true; m_objectVersionUpdate.assign(value); }
-
-    /**
-     * <p>The new version of the object containing the application code.</p>
-     */
-    inline S3ContentLocationUpdate& WithObjectVersionUpdate(const Aws::String& value) { SetObjectVersionUpdate(value); return *this;}
-
-    /**
-     * <p>The new version of the object containing the application code.</p>
-     */
-    inline S3ContentLocationUpdate& WithObjectVersionUpdate(Aws::String&& value) { SetObjectVersionUpdate(std::move(value)); return *this;}
-
-    /**
-     * <p>The new version of the object containing the application code.</p>
-     */
-    inline S3ContentLocationUpdate& WithObjectVersionUpdate(const char* value) { SetObjectVersionUpdate(value); return *this;}
-
+    template<typename ObjectVersionUpdateT = Aws::String>
+    void SetObjectVersionUpdate(ObjectVersionUpdateT&& value) { m_objectVersionUpdateHasBeenSet = true; m_objectVersionUpdate = std::forward<ObjectVersionUpdateT>(value); }
+    template<typename ObjectVersionUpdateT = Aws::String>
+    S3ContentLocationUpdate& WithObjectVersionUpdate(ObjectVersionUpdateT&& value) { SetObjectVersionUpdate(std::forward<ObjectVersionUpdateT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketARNUpdate;

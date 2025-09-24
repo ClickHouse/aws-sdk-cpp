@@ -23,7 +23,7 @@ namespace Model
   class UpdateEnabledControlRequest : public ControlTowerRequest
   {
   public:
-    AWS_CONTROLTOWER_API UpdateEnabledControlRequest();
+    AWS_CONTROLTOWER_API UpdateEnabledControlRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,32 @@ namespace Model
     AWS_CONTROLTOWER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The ARN of the enabled control that will be updated. </p>
      */
-    inline const Aws::String& GetEnabledControlIdentifier() const{ return m_enabledControlIdentifier; }
-
-    /**
-     * <p> The ARN of the enabled control that will be updated. </p>
-     */
+    inline const Aws::String& GetEnabledControlIdentifier() const { return m_enabledControlIdentifier; }
     inline bool EnabledControlIdentifierHasBeenSet() const { return m_enabledControlIdentifierHasBeenSet; }
+    template<typename EnabledControlIdentifierT = Aws::String>
+    void SetEnabledControlIdentifier(EnabledControlIdentifierT&& value) { m_enabledControlIdentifierHasBeenSet = true; m_enabledControlIdentifier = std::forward<EnabledControlIdentifierT>(value); }
+    template<typename EnabledControlIdentifierT = Aws::String>
+    UpdateEnabledControlRequest& WithEnabledControlIdentifier(EnabledControlIdentifierT&& value) { SetEnabledControlIdentifier(std::forward<EnabledControlIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The ARN of the enabled control that will be updated. </p>
-     */
-    inline void SetEnabledControlIdentifier(const Aws::String& value) { m_enabledControlIdentifierHasBeenSet = true; m_enabledControlIdentifier = value; }
-
-    /**
-     * <p> The ARN of the enabled control that will be updated. </p>
-     */
-    inline void SetEnabledControlIdentifier(Aws::String&& value) { m_enabledControlIdentifierHasBeenSet = true; m_enabledControlIdentifier = std::move(value); }
-
-    /**
-     * <p> The ARN of the enabled control that will be updated. </p>
-     */
-    inline void SetEnabledControlIdentifier(const char* value) { m_enabledControlIdentifierHasBeenSet = true; m_enabledControlIdentifier.assign(value); }
-
-    /**
-     * <p> The ARN of the enabled control that will be updated. </p>
-     */
-    inline UpdateEnabledControlRequest& WithEnabledControlIdentifier(const Aws::String& value) { SetEnabledControlIdentifier(value); return *this;}
-
-    /**
-     * <p> The ARN of the enabled control that will be updated. </p>
-     */
-    inline UpdateEnabledControlRequest& WithEnabledControlIdentifier(Aws::String&& value) { SetEnabledControlIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p> The ARN of the enabled control that will be updated. </p>
-     */
-    inline UpdateEnabledControlRequest& WithEnabledControlIdentifier(const char* value) { SetEnabledControlIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A key/value pair, where <code>Key</code> is of type <code>String</code> and
      * <code>Value</code> is of type <code>Document</code>.</p>
      */
-    inline const Aws::Vector<EnabledControlParameter>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>A key/value pair, where <code>Key</code> is of type <code>String</code> and
-     * <code>Value</code> is of type <code>Document</code>.</p>
-     */
+    inline const Aws::Vector<EnabledControlParameter>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>A key/value pair, where <code>Key</code> is of type <code>String</code> and
-     * <code>Value</code> is of type <code>Document</code>.</p>
-     */
-    inline void SetParameters(const Aws::Vector<EnabledControlParameter>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>A key/value pair, where <code>Key</code> is of type <code>String</code> and
-     * <code>Value</code> is of type <code>Document</code>.</p>
-     */
-    inline void SetParameters(Aws::Vector<EnabledControlParameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>A key/value pair, where <code>Key</code> is of type <code>String</code> and
-     * <code>Value</code> is of type <code>Document</code>.</p>
-     */
-    inline UpdateEnabledControlRequest& WithParameters(const Aws::Vector<EnabledControlParameter>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>A key/value pair, where <code>Key</code> is of type <code>String</code> and
-     * <code>Value</code> is of type <code>Document</code>.</p>
-     */
-    inline UpdateEnabledControlRequest& WithParameters(Aws::Vector<EnabledControlParameter>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>A key/value pair, where <code>Key</code> is of type <code>String</code> and
-     * <code>Value</code> is of type <code>Document</code>.</p>
-     */
-    inline UpdateEnabledControlRequest& AddParameters(const EnabledControlParameter& value) { m_parametersHasBeenSet = true; m_parameters.push_back(value); return *this; }
-
-    /**
-     * <p>A key/value pair, where <code>Key</code> is of type <code>String</code> and
-     * <code>Value</code> is of type <code>Document</code>.</p>
-     */
-    inline UpdateEnabledControlRequest& AddParameters(EnabledControlParameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(std::move(value)); return *this; }
-
+    template<typename ParametersT = Aws::Vector<EnabledControlParameter>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Vector<EnabledControlParameter>>
+    UpdateEnabledControlRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersT = EnabledControlParameter>
+    UpdateEnabledControlRequest& AddParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters.emplace_back(std::forward<ParametersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_enabledControlIdentifier;

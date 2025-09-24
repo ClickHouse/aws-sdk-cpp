@@ -10,26 +10,18 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CancelConversionTaskRequest::CancelConversionTaskRequest() : 
-    m_conversionTaskIdHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_reasonMessageHasBeenSet(false)
-{
-}
-
 Aws::String CancelConversionTaskRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=CancelConversionTask&";
-  if(m_conversionTaskIdHasBeenSet)
-  {
-    ss << "ConversionTaskId=" << StringUtils::URLEncode(m_conversionTaskId.c_str()) << "&";
-  }
-
   if(m_dryRunHasBeenSet)
   {
     ss << "DryRun=" << std::boolalpha << m_dryRun << "&";
+  }
+
+  if(m_conversionTaskIdHasBeenSet)
+  {
+    ss << "ConversionTaskId=" << StringUtils::URLEncode(m_conversionTaskId.c_str()) << "&";
   }
 
   if(m_reasonMessageHasBeenSet)

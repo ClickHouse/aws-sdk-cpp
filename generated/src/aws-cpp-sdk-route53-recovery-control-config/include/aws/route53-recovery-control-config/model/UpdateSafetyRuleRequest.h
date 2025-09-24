@@ -27,7 +27,7 @@ namespace Model
   class UpdateSafetyRuleRequest : public Route53RecoveryControlConfigRequest
   {
   public:
-    AWS_ROUTE53RECOVERYCONTROLCONFIG_API UpdateSafetyRuleRequest();
+    AWS_ROUTE53RECOVERYCONTROLCONFIG_API UpdateSafetyRuleRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,67 +38,29 @@ namespace Model
     AWS_ROUTE53RECOVERYCONTROLCONFIG_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The assertion rule to update.</p>
      */
-    inline const AssertionRuleUpdate& GetAssertionRuleUpdate() const{ return m_assertionRuleUpdate; }
-
-    /**
-     * <p>The assertion rule to update.</p>
-     */
+    inline const AssertionRuleUpdate& GetAssertionRuleUpdate() const { return m_assertionRuleUpdate; }
     inline bool AssertionRuleUpdateHasBeenSet() const { return m_assertionRuleUpdateHasBeenSet; }
+    template<typename AssertionRuleUpdateT = AssertionRuleUpdate>
+    void SetAssertionRuleUpdate(AssertionRuleUpdateT&& value) { m_assertionRuleUpdateHasBeenSet = true; m_assertionRuleUpdate = std::forward<AssertionRuleUpdateT>(value); }
+    template<typename AssertionRuleUpdateT = AssertionRuleUpdate>
+    UpdateSafetyRuleRequest& WithAssertionRuleUpdate(AssertionRuleUpdateT&& value) { SetAssertionRuleUpdate(std::forward<AssertionRuleUpdateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The assertion rule to update.</p>
-     */
-    inline void SetAssertionRuleUpdate(const AssertionRuleUpdate& value) { m_assertionRuleUpdateHasBeenSet = true; m_assertionRuleUpdate = value; }
-
-    /**
-     * <p>The assertion rule to update.</p>
-     */
-    inline void SetAssertionRuleUpdate(AssertionRuleUpdate&& value) { m_assertionRuleUpdateHasBeenSet = true; m_assertionRuleUpdate = std::move(value); }
-
-    /**
-     * <p>The assertion rule to update.</p>
-     */
-    inline UpdateSafetyRuleRequest& WithAssertionRuleUpdate(const AssertionRuleUpdate& value) { SetAssertionRuleUpdate(value); return *this;}
-
-    /**
-     * <p>The assertion rule to update.</p>
-     */
-    inline UpdateSafetyRuleRequest& WithAssertionRuleUpdate(AssertionRuleUpdate&& value) { SetAssertionRuleUpdate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The gating rule to update.</p>
      */
-    inline const GatingRuleUpdate& GetGatingRuleUpdate() const{ return m_gatingRuleUpdate; }
-
-    /**
-     * <p>The gating rule to update.</p>
-     */
+    inline const GatingRuleUpdate& GetGatingRuleUpdate() const { return m_gatingRuleUpdate; }
     inline bool GatingRuleUpdateHasBeenSet() const { return m_gatingRuleUpdateHasBeenSet; }
-
-    /**
-     * <p>The gating rule to update.</p>
-     */
-    inline void SetGatingRuleUpdate(const GatingRuleUpdate& value) { m_gatingRuleUpdateHasBeenSet = true; m_gatingRuleUpdate = value; }
-
-    /**
-     * <p>The gating rule to update.</p>
-     */
-    inline void SetGatingRuleUpdate(GatingRuleUpdate&& value) { m_gatingRuleUpdateHasBeenSet = true; m_gatingRuleUpdate = std::move(value); }
-
-    /**
-     * <p>The gating rule to update.</p>
-     */
-    inline UpdateSafetyRuleRequest& WithGatingRuleUpdate(const GatingRuleUpdate& value) { SetGatingRuleUpdate(value); return *this;}
-
-    /**
-     * <p>The gating rule to update.</p>
-     */
-    inline UpdateSafetyRuleRequest& WithGatingRuleUpdate(GatingRuleUpdate&& value) { SetGatingRuleUpdate(std::move(value)); return *this;}
-
+    template<typename GatingRuleUpdateT = GatingRuleUpdate>
+    void SetGatingRuleUpdate(GatingRuleUpdateT&& value) { m_gatingRuleUpdateHasBeenSet = true; m_gatingRuleUpdate = std::forward<GatingRuleUpdateT>(value); }
+    template<typename GatingRuleUpdateT = GatingRuleUpdate>
+    UpdateSafetyRuleRequest& WithGatingRuleUpdate(GatingRuleUpdateT&& value) { SetGatingRuleUpdate(std::forward<GatingRuleUpdateT>(value)); return *this;}
+    ///@}
   private:
 
     AssertionRuleUpdate m_assertionRuleUpdate;

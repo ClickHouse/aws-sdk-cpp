@@ -18,15 +18,7 @@ namespace Transfer
 namespace Model
 {
 
-DeleteStepDetails::DeleteStepDetails() : 
-    m_nameHasBeenSet(false),
-    m_sourceFileLocationHasBeenSet(false)
-{
-}
-
-DeleteStepDetails::DeleteStepDetails(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_sourceFileLocationHasBeenSet(false)
+DeleteStepDetails::DeleteStepDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DeleteStepDetails& DeleteStepDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceFileLocation"))
   {
     m_sourceFileLocation = jsonValue.GetString("SourceFileLocation");
-
     m_sourceFileLocationHasBeenSet = true;
   }
-
   return *this;
 }
 

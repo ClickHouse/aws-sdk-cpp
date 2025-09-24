@@ -31,42 +31,23 @@ namespace Model
   class Destination
   {
   public:
-    AWS_IOT_API Destination();
+    AWS_IOT_API Destination() = default;
     AWS_IOT_API Destination(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Destination& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Describes the location in S3 of the updated firmware.</p>
      */
-    inline const S3Destination& GetS3Destination() const{ return m_s3Destination; }
-
-    /**
-     * <p>Describes the location in S3 of the updated firmware.</p>
-     */
+    inline const S3Destination& GetS3Destination() const { return m_s3Destination; }
     inline bool S3DestinationHasBeenSet() const { return m_s3DestinationHasBeenSet; }
-
-    /**
-     * <p>Describes the location in S3 of the updated firmware.</p>
-     */
-    inline void SetS3Destination(const S3Destination& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = value; }
-
-    /**
-     * <p>Describes the location in S3 of the updated firmware.</p>
-     */
-    inline void SetS3Destination(S3Destination&& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = std::move(value); }
-
-    /**
-     * <p>Describes the location in S3 of the updated firmware.</p>
-     */
-    inline Destination& WithS3Destination(const S3Destination& value) { SetS3Destination(value); return *this;}
-
-    /**
-     * <p>Describes the location in S3 of the updated firmware.</p>
-     */
-    inline Destination& WithS3Destination(S3Destination&& value) { SetS3Destination(std::move(value)); return *this;}
-
+    template<typename S3DestinationT = S3Destination>
+    void SetS3Destination(S3DestinationT&& value) { m_s3DestinationHasBeenSet = true; m_s3Destination = std::forward<S3DestinationT>(value); }
+    template<typename S3DestinationT = S3Destination>
+    Destination& WithS3Destination(S3DestinationT&& value) { SetS3Destination(std::forward<S3DestinationT>(value)); return *this;}
+    ///@}
   private:
 
     S3Destination m_s3Destination;

@@ -18,15 +18,7 @@ namespace WellArchitected
 namespace Model
 {
 
-WorkloadProfile::WorkloadProfile() : 
-    m_profileArnHasBeenSet(false),
-    m_profileVersionHasBeenSet(false)
-{
-}
-
-WorkloadProfile::WorkloadProfile(JsonView jsonValue) : 
-    m_profileArnHasBeenSet(false),
-    m_profileVersionHasBeenSet(false)
+WorkloadProfile::WorkloadProfile(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ WorkloadProfile& WorkloadProfile::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ProfileArn"))
   {
     m_profileArn = jsonValue.GetString("ProfileArn");
-
     m_profileArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProfileVersion"))
   {
     m_profileVersion = jsonValue.GetString("ProfileVersion");
-
     m_profileVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

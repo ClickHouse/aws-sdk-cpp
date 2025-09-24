@@ -31,42 +31,23 @@ namespace Model
   class TsvOptions
   {
   public:
-    AWS_OMICS_API TsvOptions();
+    AWS_OMICS_API TsvOptions() = default;
     AWS_OMICS_API TsvOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API TsvOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OMICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The file's read options.</p>
      */
-    inline const ReadOptions& GetReadOptions() const{ return m_readOptions; }
-
-    /**
-     * <p>The file's read options.</p>
-     */
+    inline const ReadOptions& GetReadOptions() const { return m_readOptions; }
     inline bool ReadOptionsHasBeenSet() const { return m_readOptionsHasBeenSet; }
-
-    /**
-     * <p>The file's read options.</p>
-     */
-    inline void SetReadOptions(const ReadOptions& value) { m_readOptionsHasBeenSet = true; m_readOptions = value; }
-
-    /**
-     * <p>The file's read options.</p>
-     */
-    inline void SetReadOptions(ReadOptions&& value) { m_readOptionsHasBeenSet = true; m_readOptions = std::move(value); }
-
-    /**
-     * <p>The file's read options.</p>
-     */
-    inline TsvOptions& WithReadOptions(const ReadOptions& value) { SetReadOptions(value); return *this;}
-
-    /**
-     * <p>The file's read options.</p>
-     */
-    inline TsvOptions& WithReadOptions(ReadOptions&& value) { SetReadOptions(std::move(value)); return *this;}
-
+    template<typename ReadOptionsT = ReadOptions>
+    void SetReadOptions(ReadOptionsT&& value) { m_readOptionsHasBeenSet = true; m_readOptions = std::forward<ReadOptionsT>(value); }
+    template<typename ReadOptionsT = ReadOptions>
+    TsvOptions& WithReadOptions(ReadOptionsT&& value) { SetReadOptions(std::forward<ReadOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     ReadOptions m_readOptions;

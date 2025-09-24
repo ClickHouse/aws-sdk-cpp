@@ -32,130 +32,48 @@ namespace Model
   class MountPoint
   {
   public:
-    AWS_ECS_API MountPoint();
+    AWS_ECS_API MountPoint() = default;
     AWS_ECS_API MountPoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API MountPoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the volume to mount. Must be a volume name referenced in the
      * <code>name</code> parameter of task definition <code>volume</code>.</p>
      */
-    inline const Aws::String& GetSourceVolume() const{ return m_sourceVolume; }
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>.</p>
-     */
+    inline const Aws::String& GetSourceVolume() const { return m_sourceVolume; }
     inline bool SourceVolumeHasBeenSet() const { return m_sourceVolumeHasBeenSet; }
+    template<typename SourceVolumeT = Aws::String>
+    void SetSourceVolume(SourceVolumeT&& value) { m_sourceVolumeHasBeenSet = true; m_sourceVolume = std::forward<SourceVolumeT>(value); }
+    template<typename SourceVolumeT = Aws::String>
+    MountPoint& WithSourceVolume(SourceVolumeT&& value) { SetSourceVolume(std::forward<SourceVolumeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>.</p>
-     */
-    inline void SetSourceVolume(const Aws::String& value) { m_sourceVolumeHasBeenSet = true; m_sourceVolume = value; }
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>.</p>
-     */
-    inline void SetSourceVolume(Aws::String&& value) { m_sourceVolumeHasBeenSet = true; m_sourceVolume = std::move(value); }
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>.</p>
-     */
-    inline void SetSourceVolume(const char* value) { m_sourceVolumeHasBeenSet = true; m_sourceVolume.assign(value); }
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>.</p>
-     */
-    inline MountPoint& WithSourceVolume(const Aws::String& value) { SetSourceVolume(value); return *this;}
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>.</p>
-     */
-    inline MountPoint& WithSourceVolume(Aws::String&& value) { SetSourceVolume(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the volume to mount. Must be a volume name referenced in the
-     * <code>name</code> parameter of task definition <code>volume</code>.</p>
-     */
-    inline MountPoint& WithSourceVolume(const char* value) { SetSourceVolume(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The path on the container to mount the host volume at.</p>
      */
-    inline const Aws::String& GetContainerPath() const{ return m_containerPath; }
-
-    /**
-     * <p>The path on the container to mount the host volume at.</p>
-     */
+    inline const Aws::String& GetContainerPath() const { return m_containerPath; }
     inline bool ContainerPathHasBeenSet() const { return m_containerPathHasBeenSet; }
+    template<typename ContainerPathT = Aws::String>
+    void SetContainerPath(ContainerPathT&& value) { m_containerPathHasBeenSet = true; m_containerPath = std::forward<ContainerPathT>(value); }
+    template<typename ContainerPathT = Aws::String>
+    MountPoint& WithContainerPath(ContainerPathT&& value) { SetContainerPath(std::forward<ContainerPathT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The path on the container to mount the host volume at.</p>
-     */
-    inline void SetContainerPath(const Aws::String& value) { m_containerPathHasBeenSet = true; m_containerPath = value; }
-
-    /**
-     * <p>The path on the container to mount the host volume at.</p>
-     */
-    inline void SetContainerPath(Aws::String&& value) { m_containerPathHasBeenSet = true; m_containerPath = std::move(value); }
-
-    /**
-     * <p>The path on the container to mount the host volume at.</p>
-     */
-    inline void SetContainerPath(const char* value) { m_containerPathHasBeenSet = true; m_containerPath.assign(value); }
-
-    /**
-     * <p>The path on the container to mount the host volume at.</p>
-     */
-    inline MountPoint& WithContainerPath(const Aws::String& value) { SetContainerPath(value); return *this;}
-
-    /**
-     * <p>The path on the container to mount the host volume at.</p>
-     */
-    inline MountPoint& WithContainerPath(Aws::String&& value) { SetContainerPath(std::move(value)); return *this;}
-
-    /**
-     * <p>The path on the container to mount the host volume at.</p>
-     */
-    inline MountPoint& WithContainerPath(const char* value) { SetContainerPath(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If this value is <code>true</code>, the container has read-only access to the
      * volume. If this value is <code>false</code>, then the container can write to the
      * volume. The default value is <code>false</code>.</p>
      */
-    inline bool GetReadOnly() const{ return m_readOnly; }
-
-    /**
-     * <p>If this value is <code>true</code>, the container has read-only access to the
-     * volume. If this value is <code>false</code>, then the container can write to the
-     * volume. The default value is <code>false</code>.</p>
-     */
+    inline bool GetReadOnly() const { return m_readOnly; }
     inline bool ReadOnlyHasBeenSet() const { return m_readOnlyHasBeenSet; }
-
-    /**
-     * <p>If this value is <code>true</code>, the container has read-only access to the
-     * volume. If this value is <code>false</code>, then the container can write to the
-     * volume. The default value is <code>false</code>.</p>
-     */
     inline void SetReadOnly(bool value) { m_readOnlyHasBeenSet = true; m_readOnly = value; }
-
-    /**
-     * <p>If this value is <code>true</code>, the container has read-only access to the
-     * volume. If this value is <code>false</code>, then the container can write to the
-     * volume. The default value is <code>false</code>.</p>
-     */
     inline MountPoint& WithReadOnly(bool value) { SetReadOnly(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_sourceVolume;
@@ -164,7 +82,7 @@ namespace Model
     Aws::String m_containerPath;
     bool m_containerPathHasBeenSet = false;
 
-    bool m_readOnly;
+    bool m_readOnly{false};
     bool m_readOnlyHasBeenSet = false;
   };
 

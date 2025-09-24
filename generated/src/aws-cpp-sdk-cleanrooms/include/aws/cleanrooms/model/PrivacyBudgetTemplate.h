@@ -36,367 +36,121 @@ namespace Model
   class PrivacyBudgetTemplate
   {
   public:
-    AWS_CLEANROOMS_API PrivacyBudgetTemplate();
+    AWS_CLEANROOMS_API PrivacyBudgetTemplate() = default;
     AWS_CLEANROOMS_API PrivacyBudgetTemplate(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API PrivacyBudgetTemplate& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The unique identifier of the privacy budget template.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The unique identifier of the privacy budget template.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    PrivacyBudgetTemplate& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the privacy budget template.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The unique identifier of the privacy budget template.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the privacy budget template.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The unique identifier of the privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the privacy budget template.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the privacy budget template.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    PrivacyBudgetTemplate& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the privacy budget template.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the privacy budget template.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the privacy budget template.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier for a membership resource.</p>
      */
-    inline const Aws::String& GetMembershipId() const{ return m_membershipId; }
-
-    /**
-     * <p>The identifier for a membership resource.</p>
-     */
+    inline const Aws::String& GetMembershipId() const { return m_membershipId; }
     inline bool MembershipIdHasBeenSet() const { return m_membershipIdHasBeenSet; }
+    template<typename MembershipIdT = Aws::String>
+    void SetMembershipId(MembershipIdT&& value) { m_membershipIdHasBeenSet = true; m_membershipId = std::forward<MembershipIdT>(value); }
+    template<typename MembershipIdT = Aws::String>
+    PrivacyBudgetTemplate& WithMembershipId(MembershipIdT&& value) { SetMembershipId(std::forward<MembershipIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for a membership resource.</p>
-     */
-    inline void SetMembershipId(const Aws::String& value) { m_membershipIdHasBeenSet = true; m_membershipId = value; }
-
-    /**
-     * <p>The identifier for a membership resource.</p>
-     */
-    inline void SetMembershipId(Aws::String&& value) { m_membershipIdHasBeenSet = true; m_membershipId = std::move(value); }
-
-    /**
-     * <p>The identifier for a membership resource.</p>
-     */
-    inline void SetMembershipId(const char* value) { m_membershipIdHasBeenSet = true; m_membershipId.assign(value); }
-
-    /**
-     * <p>The identifier for a membership resource.</p>
-     */
-    inline PrivacyBudgetTemplate& WithMembershipId(const Aws::String& value) { SetMembershipId(value); return *this;}
-
-    /**
-     * <p>The identifier for a membership resource.</p>
-     */
-    inline PrivacyBudgetTemplate& WithMembershipId(Aws::String&& value) { SetMembershipId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for a membership resource.</p>
-     */
-    inline PrivacyBudgetTemplate& WithMembershipId(const char* value) { SetMembershipId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the member who created the privacy budget
      * template.</p>
      */
-    inline const Aws::String& GetMembershipArn() const{ return m_membershipArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the member who created the privacy budget
-     * template.</p>
-     */
+    inline const Aws::String& GetMembershipArn() const { return m_membershipArn; }
     inline bool MembershipArnHasBeenSet() const { return m_membershipArnHasBeenSet; }
+    template<typename MembershipArnT = Aws::String>
+    void SetMembershipArn(MembershipArnT&& value) { m_membershipArnHasBeenSet = true; m_membershipArn = std::forward<MembershipArnT>(value); }
+    template<typename MembershipArnT = Aws::String>
+    PrivacyBudgetTemplate& WithMembershipArn(MembershipArnT&& value) { SetMembershipArn(std::forward<MembershipArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the member who created the privacy budget
-     * template.</p>
-     */
-    inline void SetMembershipArn(const Aws::String& value) { m_membershipArnHasBeenSet = true; m_membershipArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the member who created the privacy budget
-     * template.</p>
-     */
-    inline void SetMembershipArn(Aws::String&& value) { m_membershipArnHasBeenSet = true; m_membershipArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the member who created the privacy budget
-     * template.</p>
-     */
-    inline void SetMembershipArn(const char* value) { m_membershipArnHasBeenSet = true; m_membershipArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the member who created the privacy budget
-     * template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithMembershipArn(const Aws::String& value) { SetMembershipArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the member who created the privacy budget
-     * template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithMembershipArn(Aws::String&& value) { SetMembershipArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the member who created the privacy budget
-     * template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithMembershipArn(const char* value) { SetMembershipArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique ID of the collaboration that contains this privacy budget
      * template.</p>
      */
-    inline const Aws::String& GetCollaborationId() const{ return m_collaborationId; }
-
-    /**
-     * <p>The unique ID of the collaboration that contains this privacy budget
-     * template.</p>
-     */
+    inline const Aws::String& GetCollaborationId() const { return m_collaborationId; }
     inline bool CollaborationIdHasBeenSet() const { return m_collaborationIdHasBeenSet; }
+    template<typename CollaborationIdT = Aws::String>
+    void SetCollaborationId(CollaborationIdT&& value) { m_collaborationIdHasBeenSet = true; m_collaborationId = std::forward<CollaborationIdT>(value); }
+    template<typename CollaborationIdT = Aws::String>
+    PrivacyBudgetTemplate& WithCollaborationId(CollaborationIdT&& value) { SetCollaborationId(std::forward<CollaborationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID of the collaboration that contains this privacy budget
-     * template.</p>
-     */
-    inline void SetCollaborationId(const Aws::String& value) { m_collaborationIdHasBeenSet = true; m_collaborationId = value; }
-
-    /**
-     * <p>The unique ID of the collaboration that contains this privacy budget
-     * template.</p>
-     */
-    inline void SetCollaborationId(Aws::String&& value) { m_collaborationIdHasBeenSet = true; m_collaborationId = std::move(value); }
-
-    /**
-     * <p>The unique ID of the collaboration that contains this privacy budget
-     * template.</p>
-     */
-    inline void SetCollaborationId(const char* value) { m_collaborationIdHasBeenSet = true; m_collaborationId.assign(value); }
-
-    /**
-     * <p>The unique ID of the collaboration that contains this privacy budget
-     * template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithCollaborationId(const Aws::String& value) { SetCollaborationId(value); return *this;}
-
-    /**
-     * <p>The unique ID of the collaboration that contains this privacy budget
-     * template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithCollaborationId(Aws::String&& value) { SetCollaborationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID of the collaboration that contains this privacy budget
-     * template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithCollaborationId(const char* value) { SetCollaborationId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the collaboration that contains this privacy budget template.</p>
      */
-    inline const Aws::String& GetCollaborationArn() const{ return m_collaborationArn; }
-
-    /**
-     * <p>The ARN of the collaboration that contains this privacy budget template.</p>
-     */
+    inline const Aws::String& GetCollaborationArn() const { return m_collaborationArn; }
     inline bool CollaborationArnHasBeenSet() const { return m_collaborationArnHasBeenSet; }
+    template<typename CollaborationArnT = Aws::String>
+    void SetCollaborationArn(CollaborationArnT&& value) { m_collaborationArnHasBeenSet = true; m_collaborationArn = std::forward<CollaborationArnT>(value); }
+    template<typename CollaborationArnT = Aws::String>
+    PrivacyBudgetTemplate& WithCollaborationArn(CollaborationArnT&& value) { SetCollaborationArn(std::forward<CollaborationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the collaboration that contains this privacy budget template.</p>
-     */
-    inline void SetCollaborationArn(const Aws::String& value) { m_collaborationArnHasBeenSet = true; m_collaborationArn = value; }
-
-    /**
-     * <p>The ARN of the collaboration that contains this privacy budget template.</p>
-     */
-    inline void SetCollaborationArn(Aws::String&& value) { m_collaborationArnHasBeenSet = true; m_collaborationArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the collaboration that contains this privacy budget template.</p>
-     */
-    inline void SetCollaborationArn(const char* value) { m_collaborationArnHasBeenSet = true; m_collaborationArn.assign(value); }
-
-    /**
-     * <p>The ARN of the collaboration that contains this privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithCollaborationArn(const Aws::String& value) { SetCollaborationArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the collaboration that contains this privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithCollaborationArn(Aws::String&& value) { SetCollaborationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the collaboration that contains this privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithCollaborationArn(const char* value) { SetCollaborationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the privacy budget template was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreateTime() const{ return m_createTime; }
-
-    /**
-     * <p>The time at which the privacy budget template was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreateTime() const { return m_createTime; }
     inline bool CreateTimeHasBeenSet() const { return m_createTimeHasBeenSet; }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    void SetCreateTime(CreateTimeT&& value) { m_createTimeHasBeenSet = true; m_createTime = std::forward<CreateTimeT>(value); }
+    template<typename CreateTimeT = Aws::Utils::DateTime>
+    PrivacyBudgetTemplate& WithCreateTime(CreateTimeT&& value) { SetCreateTime(std::forward<CreateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time at which the privacy budget template was created.</p>
-     */
-    inline void SetCreateTime(const Aws::Utils::DateTime& value) { m_createTimeHasBeenSet = true; m_createTime = value; }
-
-    /**
-     * <p>The time at which the privacy budget template was created.</p>
-     */
-    inline void SetCreateTime(Aws::Utils::DateTime&& value) { m_createTimeHasBeenSet = true; m_createTime = std::move(value); }
-
-    /**
-     * <p>The time at which the privacy budget template was created.</p>
-     */
-    inline PrivacyBudgetTemplate& WithCreateTime(const Aws::Utils::DateTime& value) { SetCreateTime(value); return *this;}
-
-    /**
-     * <p>The time at which the privacy budget template was created.</p>
-     */
-    inline PrivacyBudgetTemplate& WithCreateTime(Aws::Utils::DateTime&& value) { SetCreateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The most recent time at which the privacy budget template was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdateTime() const{ return m_updateTime; }
-
-    /**
-     * <p>The most recent time at which the privacy budget template was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetUpdateTime() const { return m_updateTime; }
     inline bool UpdateTimeHasBeenSet() const { return m_updateTimeHasBeenSet; }
+    template<typename UpdateTimeT = Aws::Utils::DateTime>
+    void SetUpdateTime(UpdateTimeT&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::forward<UpdateTimeT>(value); }
+    template<typename UpdateTimeT = Aws::Utils::DateTime>
+    PrivacyBudgetTemplate& WithUpdateTime(UpdateTimeT&& value) { SetUpdateTime(std::forward<UpdateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The most recent time at which the privacy budget template was updated.</p>
-     */
-    inline void SetUpdateTime(const Aws::Utils::DateTime& value) { m_updateTimeHasBeenSet = true; m_updateTime = value; }
-
-    /**
-     * <p>The most recent time at which the privacy budget template was updated.</p>
-     */
-    inline void SetUpdateTime(Aws::Utils::DateTime&& value) { m_updateTimeHasBeenSet = true; m_updateTime = std::move(value); }
-
-    /**
-     * <p>The most recent time at which the privacy budget template was updated.</p>
-     */
-    inline PrivacyBudgetTemplate& WithUpdateTime(const Aws::Utils::DateTime& value) { SetUpdateTime(value); return *this;}
-
-    /**
-     * <p>The most recent time at which the privacy budget template was updated.</p>
-     */
-    inline PrivacyBudgetTemplate& WithUpdateTime(Aws::Utils::DateTime&& value) { SetUpdateTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the type of the privacy budget template.</p>
      */
-    inline const PrivacyBudgetType& GetPrivacyBudgetType() const{ return m_privacyBudgetType; }
-
-    /**
-     * <p>Specifies the type of the privacy budget template.</p>
-     */
+    inline PrivacyBudgetType GetPrivacyBudgetType() const { return m_privacyBudgetType; }
     inline bool PrivacyBudgetTypeHasBeenSet() const { return m_privacyBudgetTypeHasBeenSet; }
+    inline void SetPrivacyBudgetType(PrivacyBudgetType value) { m_privacyBudgetTypeHasBeenSet = true; m_privacyBudgetType = value; }
+    inline PrivacyBudgetTemplate& WithPrivacyBudgetType(PrivacyBudgetType value) { SetPrivacyBudgetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the type of the privacy budget template.</p>
-     */
-    inline void SetPrivacyBudgetType(const PrivacyBudgetType& value) { m_privacyBudgetTypeHasBeenSet = true; m_privacyBudgetType = value; }
-
-    /**
-     * <p>Specifies the type of the privacy budget template.</p>
-     */
-    inline void SetPrivacyBudgetType(PrivacyBudgetType&& value) { m_privacyBudgetTypeHasBeenSet = true; m_privacyBudgetType = std::move(value); }
-
-    /**
-     * <p>Specifies the type of the privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithPrivacyBudgetType(const PrivacyBudgetType& value) { SetPrivacyBudgetType(value); return *this;}
-
-    /**
-     * <p>Specifies the type of the privacy budget template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithPrivacyBudgetType(PrivacyBudgetType&& value) { SetPrivacyBudgetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>How often the privacy budget refreshes.</p>  <p>If you plan to
      * regularly bring new data into the collaboration, use <code>CALENDAR_MONTH</code>
@@ -406,100 +160,24 @@ namespace Model
      * choosing this if the same rows will be repeatedly queried between privacy budget
      * refreshes.</p> 
      */
-    inline const PrivacyBudgetTemplateAutoRefresh& GetAutoRefresh() const{ return m_autoRefresh; }
-
-    /**
-     * <p>How often the privacy budget refreshes.</p>  <p>If you plan to
-     * regularly bring new data into the collaboration, use <code>CALENDAR_MONTH</code>
-     * to automatically get a new privacy budget for the collaboration every calendar
-     * month. Choosing this option allows arbitrary amounts of information to be
-     * revealed about rows of the data when repeatedly queried across refreshes. Avoid
-     * choosing this if the same rows will be repeatedly queried between privacy budget
-     * refreshes.</p> 
-     */
+    inline PrivacyBudgetTemplateAutoRefresh GetAutoRefresh() const { return m_autoRefresh; }
     inline bool AutoRefreshHasBeenSet() const { return m_autoRefreshHasBeenSet; }
+    inline void SetAutoRefresh(PrivacyBudgetTemplateAutoRefresh value) { m_autoRefreshHasBeenSet = true; m_autoRefresh = value; }
+    inline PrivacyBudgetTemplate& WithAutoRefresh(PrivacyBudgetTemplateAutoRefresh value) { SetAutoRefresh(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>How often the privacy budget refreshes.</p>  <p>If you plan to
-     * regularly bring new data into the collaboration, use <code>CALENDAR_MONTH</code>
-     * to automatically get a new privacy budget for the collaboration every calendar
-     * month. Choosing this option allows arbitrary amounts of information to be
-     * revealed about rows of the data when repeatedly queried across refreshes. Avoid
-     * choosing this if the same rows will be repeatedly queried between privacy budget
-     * refreshes.</p> 
-     */
-    inline void SetAutoRefresh(const PrivacyBudgetTemplateAutoRefresh& value) { m_autoRefreshHasBeenSet = true; m_autoRefresh = value; }
-
-    /**
-     * <p>How often the privacy budget refreshes.</p>  <p>If you plan to
-     * regularly bring new data into the collaboration, use <code>CALENDAR_MONTH</code>
-     * to automatically get a new privacy budget for the collaboration every calendar
-     * month. Choosing this option allows arbitrary amounts of information to be
-     * revealed about rows of the data when repeatedly queried across refreshes. Avoid
-     * choosing this if the same rows will be repeatedly queried between privacy budget
-     * refreshes.</p> 
-     */
-    inline void SetAutoRefresh(PrivacyBudgetTemplateAutoRefresh&& value) { m_autoRefreshHasBeenSet = true; m_autoRefresh = std::move(value); }
-
-    /**
-     * <p>How often the privacy budget refreshes.</p>  <p>If you plan to
-     * regularly bring new data into the collaboration, use <code>CALENDAR_MONTH</code>
-     * to automatically get a new privacy budget for the collaboration every calendar
-     * month. Choosing this option allows arbitrary amounts of information to be
-     * revealed about rows of the data when repeatedly queried across refreshes. Avoid
-     * choosing this if the same rows will be repeatedly queried between privacy budget
-     * refreshes.</p> 
-     */
-    inline PrivacyBudgetTemplate& WithAutoRefresh(const PrivacyBudgetTemplateAutoRefresh& value) { SetAutoRefresh(value); return *this;}
-
-    /**
-     * <p>How often the privacy budget refreshes.</p>  <p>If you plan to
-     * regularly bring new data into the collaboration, use <code>CALENDAR_MONTH</code>
-     * to automatically get a new privacy budget for the collaboration every calendar
-     * month. Choosing this option allows arbitrary amounts of information to be
-     * revealed about rows of the data when repeatedly queried across refreshes. Avoid
-     * choosing this if the same rows will be repeatedly queried between privacy budget
-     * refreshes.</p> 
-     */
-    inline PrivacyBudgetTemplate& WithAutoRefresh(PrivacyBudgetTemplateAutoRefresh&& value) { SetAutoRefresh(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Specifies the epislon and noise parameters for the privacy budget
+     * <p>Specifies the epsilon and noise parameters for the privacy budget
      * template.</p>
      */
-    inline const PrivacyBudgetTemplateParametersOutput& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>Specifies the epislon and noise parameters for the privacy budget
-     * template.</p>
-     */
+    inline const PrivacyBudgetTemplateParametersOutput& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>Specifies the epislon and noise parameters for the privacy budget
-     * template.</p>
-     */
-    inline void SetParameters(const PrivacyBudgetTemplateParametersOutput& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>Specifies the epislon and noise parameters for the privacy budget
-     * template.</p>
-     */
-    inline void SetParameters(PrivacyBudgetTemplateParametersOutput&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>Specifies the epislon and noise parameters for the privacy budget
-     * template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithParameters(const PrivacyBudgetTemplateParametersOutput& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>Specifies the epislon and noise parameters for the privacy budget
-     * template.</p>
-     */
-    inline PrivacyBudgetTemplate& WithParameters(PrivacyBudgetTemplateParametersOutput&& value) { SetParameters(std::move(value)); return *this;}
-
+    template<typename ParametersT = PrivacyBudgetTemplateParametersOutput>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = PrivacyBudgetTemplateParametersOutput>
+    PrivacyBudgetTemplate& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
@@ -520,16 +198,16 @@ namespace Model
     Aws::String m_collaborationArn;
     bool m_collaborationArnHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createTime;
+    Aws::Utils::DateTime m_createTime{};
     bool m_createTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updateTime;
+    Aws::Utils::DateTime m_updateTime{};
     bool m_updateTimeHasBeenSet = false;
 
-    PrivacyBudgetType m_privacyBudgetType;
+    PrivacyBudgetType m_privacyBudgetType{PrivacyBudgetType::NOT_SET};
     bool m_privacyBudgetTypeHasBeenSet = false;
 
-    PrivacyBudgetTemplateAutoRefresh m_autoRefresh;
+    PrivacyBudgetTemplateAutoRefresh m_autoRefresh{PrivacyBudgetTemplateAutoRefresh::NOT_SET};
     bool m_autoRefreshHasBeenSet = false;
 
     PrivacyBudgetTemplateParametersOutput m_parameters;

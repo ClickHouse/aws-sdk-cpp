@@ -40,57 +40,26 @@ namespace Model
   class WafOverrideAction
   {
   public:
-    AWS_WAFREGIONAL_API WafOverrideAction();
+    AWS_WAFREGIONAL_API WafOverrideAction() = default;
     AWS_WAFREGIONAL_API WafOverrideAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFREGIONAL_API WafOverrideAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_WAFREGIONAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> <code>COUNT</code> overrides the action specified by the individual rule
      * within a <code>RuleGroup</code> . If set to <code>NONE</code>, the rule's action
      * will take place.</p>
      */
-    inline const WafOverrideActionType& GetType() const{ return m_type; }
-
-    /**
-     * <p> <code>COUNT</code> overrides the action specified by the individual rule
-     * within a <code>RuleGroup</code> . If set to <code>NONE</code>, the rule's action
-     * will take place.</p>
-     */
+    inline WafOverrideActionType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p> <code>COUNT</code> overrides the action specified by the individual rule
-     * within a <code>RuleGroup</code> . If set to <code>NONE</code>, the rule's action
-     * will take place.</p>
-     */
-    inline void SetType(const WafOverrideActionType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p> <code>COUNT</code> overrides the action specified by the individual rule
-     * within a <code>RuleGroup</code> . If set to <code>NONE</code>, the rule's action
-     * will take place.</p>
-     */
-    inline void SetType(WafOverrideActionType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p> <code>COUNT</code> overrides the action specified by the individual rule
-     * within a <code>RuleGroup</code> . If set to <code>NONE</code>, the rule's action
-     * will take place.</p>
-     */
-    inline WafOverrideAction& WithType(const WafOverrideActionType& value) { SetType(value); return *this;}
-
-    /**
-     * <p> <code>COUNT</code> overrides the action specified by the individual rule
-     * within a <code>RuleGroup</code> . If set to <code>NONE</code>, the rule's action
-     * will take place.</p>
-     */
-    inline WafOverrideAction& WithType(WafOverrideActionType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(WafOverrideActionType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline WafOverrideAction& WithType(WafOverrideActionType value) { SetType(value); return *this;}
+    ///@}
   private:
 
-    WafOverrideActionType m_type;
+    WafOverrideActionType m_type{WafOverrideActionType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

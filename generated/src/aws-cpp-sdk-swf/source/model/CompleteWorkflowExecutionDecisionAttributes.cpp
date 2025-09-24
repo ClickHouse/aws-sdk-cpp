@@ -18,13 +18,7 @@ namespace SWF
 namespace Model
 {
 
-CompleteWorkflowExecutionDecisionAttributes::CompleteWorkflowExecutionDecisionAttributes() : 
-    m_resultHasBeenSet(false)
-{
-}
-
-CompleteWorkflowExecutionDecisionAttributes::CompleteWorkflowExecutionDecisionAttributes(JsonView jsonValue) : 
-    m_resultHasBeenSet(false)
+CompleteWorkflowExecutionDecisionAttributes::CompleteWorkflowExecutionDecisionAttributes(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ CompleteWorkflowExecutionDecisionAttributes& CompleteWorkflowExecutionDecisionAt
   if(jsonValue.ValueExists("result"))
   {
     m_result = jsonValue.GetString("result");
-
     m_resultHasBeenSet = true;
   }
-
   return *this;
 }
 

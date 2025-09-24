@@ -20,15 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VolumeDetail::VolumeDetail() : 
-    m_size(0),
-    m_sizeHasBeenSet(false)
-{
-}
-
-VolumeDetail::VolumeDetail(const XmlNode& xmlNode) : 
-    m_size(0),
-    m_sizeHasBeenSet(false)
+VolumeDetail::VolumeDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

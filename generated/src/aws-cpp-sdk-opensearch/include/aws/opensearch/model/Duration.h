@@ -33,69 +33,37 @@ namespace Model
   class Duration
   {
   public:
-    AWS_OPENSEARCHSERVICE_API Duration();
+    AWS_OPENSEARCHSERVICE_API Duration() = default;
     AWS_OPENSEARCHSERVICE_API Duration(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Duration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OPENSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Integer to specify the value of a maintenance schedule duration.</p>
      */
-    inline long long GetValue() const{ return m_value; }
-
-    /**
-     * <p>Integer to specify the value of a maintenance schedule duration.</p>
-     */
+    inline long long GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>Integer to specify the value of a maintenance schedule duration.</p>
-     */
     inline void SetValue(long long value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>Integer to specify the value of a maintenance schedule duration.</p>
-     */
     inline Duration& WithValue(long long value) { SetValue(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The unit of measurement for the duration of a maintenance schedule.</p>
      */
-    inline const TimeUnit& GetUnit() const{ return m_unit; }
-
-    /**
-     * <p>The unit of measurement for the duration of a maintenance schedule.</p>
-     */
+    inline TimeUnit GetUnit() const { return m_unit; }
     inline bool UnitHasBeenSet() const { return m_unitHasBeenSet; }
-
-    /**
-     * <p>The unit of measurement for the duration of a maintenance schedule.</p>
-     */
-    inline void SetUnit(const TimeUnit& value) { m_unitHasBeenSet = true; m_unit = value; }
-
-    /**
-     * <p>The unit of measurement for the duration of a maintenance schedule.</p>
-     */
-    inline void SetUnit(TimeUnit&& value) { m_unitHasBeenSet = true; m_unit = std::move(value); }
-
-    /**
-     * <p>The unit of measurement for the duration of a maintenance schedule.</p>
-     */
-    inline Duration& WithUnit(const TimeUnit& value) { SetUnit(value); return *this;}
-
-    /**
-     * <p>The unit of measurement for the duration of a maintenance schedule.</p>
-     */
-    inline Duration& WithUnit(TimeUnit&& value) { SetUnit(std::move(value)); return *this;}
-
+    inline void SetUnit(TimeUnit value) { m_unitHasBeenSet = true; m_unit = value; }
+    inline Duration& WithUnit(TimeUnit value) { SetUnit(value); return *this;}
+    ///@}
   private:
 
-    long long m_value;
+    long long m_value{0};
     bool m_valueHasBeenSet = false;
 
-    TimeUnit m_unit;
+    TimeUnit m_unit{TimeUnit::NOT_SET};
     bool m_unitHasBeenSet = false;
   };
 

@@ -20,15 +20,7 @@ namespace Route53
 namespace Model
 {
 
-CidrBlockSummary::CidrBlockSummary() : 
-    m_cidrBlockHasBeenSet(false),
-    m_locationNameHasBeenSet(false)
-{
-}
-
-CidrBlockSummary::CidrBlockSummary(const XmlNode& xmlNode) : 
-    m_cidrBlockHasBeenSet(false),
-    m_locationNameHasBeenSet(false)
+CidrBlockSummary::CidrBlockSummary(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -47,12 +47,13 @@ namespace Model
   class AvailMatchingCriteria
   {
   public:
-    AWS_MEDIATAILOR_API AvailMatchingCriteria();
+    AWS_MEDIATAILOR_API AvailMatchingCriteria() = default;
     AWS_MEDIATAILOR_API AvailMatchingCriteria(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIATAILOR_API AvailMatchingCriteria& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIATAILOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The dynamic variable(s) that MediaTailor should use as avail matching
      * criteria. MediaTailor only places the prefetched ads into the avail if the avail
@@ -62,134 +63,31 @@ namespace Model
      * dynamic ad variables</a> in the <i>MediaTailor User Guide</i>.</p> <p>You can
      * include up to 100 dynamic variables.</p>
      */
-    inline const Aws::String& GetDynamicVariable() const{ return m_dynamicVariable; }
-
-    /**
-     * <p>The dynamic variable(s) that MediaTailor should use as avail matching
-     * criteria. MediaTailor only places the prefetched ads into the avail if the avail
-     * matches the criteria defined by the dynamic variable. For information about
-     * dynamic variables, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/variables.html">Using
-     * dynamic ad variables</a> in the <i>MediaTailor User Guide</i>.</p> <p>You can
-     * include up to 100 dynamic variables.</p>
-     */
+    inline const Aws::String& GetDynamicVariable() const { return m_dynamicVariable; }
     inline bool DynamicVariableHasBeenSet() const { return m_dynamicVariableHasBeenSet; }
+    template<typename DynamicVariableT = Aws::String>
+    void SetDynamicVariable(DynamicVariableT&& value) { m_dynamicVariableHasBeenSet = true; m_dynamicVariable = std::forward<DynamicVariableT>(value); }
+    template<typename DynamicVariableT = Aws::String>
+    AvailMatchingCriteria& WithDynamicVariable(DynamicVariableT&& value) { SetDynamicVariable(std::forward<DynamicVariableT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The dynamic variable(s) that MediaTailor should use as avail matching
-     * criteria. MediaTailor only places the prefetched ads into the avail if the avail
-     * matches the criteria defined by the dynamic variable. For information about
-     * dynamic variables, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/variables.html">Using
-     * dynamic ad variables</a> in the <i>MediaTailor User Guide</i>.</p> <p>You can
-     * include up to 100 dynamic variables.</p>
-     */
-    inline void SetDynamicVariable(const Aws::String& value) { m_dynamicVariableHasBeenSet = true; m_dynamicVariable = value; }
-
-    /**
-     * <p>The dynamic variable(s) that MediaTailor should use as avail matching
-     * criteria. MediaTailor only places the prefetched ads into the avail if the avail
-     * matches the criteria defined by the dynamic variable. For information about
-     * dynamic variables, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/variables.html">Using
-     * dynamic ad variables</a> in the <i>MediaTailor User Guide</i>.</p> <p>You can
-     * include up to 100 dynamic variables.</p>
-     */
-    inline void SetDynamicVariable(Aws::String&& value) { m_dynamicVariableHasBeenSet = true; m_dynamicVariable = std::move(value); }
-
-    /**
-     * <p>The dynamic variable(s) that MediaTailor should use as avail matching
-     * criteria. MediaTailor only places the prefetched ads into the avail if the avail
-     * matches the criteria defined by the dynamic variable. For information about
-     * dynamic variables, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/variables.html">Using
-     * dynamic ad variables</a> in the <i>MediaTailor User Guide</i>.</p> <p>You can
-     * include up to 100 dynamic variables.</p>
-     */
-    inline void SetDynamicVariable(const char* value) { m_dynamicVariableHasBeenSet = true; m_dynamicVariable.assign(value); }
-
-    /**
-     * <p>The dynamic variable(s) that MediaTailor should use as avail matching
-     * criteria. MediaTailor only places the prefetched ads into the avail if the avail
-     * matches the criteria defined by the dynamic variable. For information about
-     * dynamic variables, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/variables.html">Using
-     * dynamic ad variables</a> in the <i>MediaTailor User Guide</i>.</p> <p>You can
-     * include up to 100 dynamic variables.</p>
-     */
-    inline AvailMatchingCriteria& WithDynamicVariable(const Aws::String& value) { SetDynamicVariable(value); return *this;}
-
-    /**
-     * <p>The dynamic variable(s) that MediaTailor should use as avail matching
-     * criteria. MediaTailor only places the prefetched ads into the avail if the avail
-     * matches the criteria defined by the dynamic variable. For information about
-     * dynamic variables, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/variables.html">Using
-     * dynamic ad variables</a> in the <i>MediaTailor User Guide</i>.</p> <p>You can
-     * include up to 100 dynamic variables.</p>
-     */
-    inline AvailMatchingCriteria& WithDynamicVariable(Aws::String&& value) { SetDynamicVariable(std::move(value)); return *this;}
-
-    /**
-     * <p>The dynamic variable(s) that MediaTailor should use as avail matching
-     * criteria. MediaTailor only places the prefetched ads into the avail if the avail
-     * matches the criteria defined by the dynamic variable. For information about
-     * dynamic variables, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/variables.html">Using
-     * dynamic ad variables</a> in the <i>MediaTailor User Guide</i>.</p> <p>You can
-     * include up to 100 dynamic variables.</p>
-     */
-    inline AvailMatchingCriteria& WithDynamicVariable(const char* value) { SetDynamicVariable(value); return *this;}
-
-
+    ///@{
     /**
      * <p>For the <code>DynamicVariable</code> specified in
      * <code>AvailMatchingCriteria</code>, the Operator that is used for the
      * comparison.</p>
      */
-    inline const Operator& GetOperator() const{ return m_operator; }
-
-    /**
-     * <p>For the <code>DynamicVariable</code> specified in
-     * <code>AvailMatchingCriteria</code>, the Operator that is used for the
-     * comparison.</p>
-     */
+    inline Operator GetOperator() const { return m_operator; }
     inline bool OperatorHasBeenSet() const { return m_operatorHasBeenSet; }
-
-    /**
-     * <p>For the <code>DynamicVariable</code> specified in
-     * <code>AvailMatchingCriteria</code>, the Operator that is used for the
-     * comparison.</p>
-     */
-    inline void SetOperator(const Operator& value) { m_operatorHasBeenSet = true; m_operator = value; }
-
-    /**
-     * <p>For the <code>DynamicVariable</code> specified in
-     * <code>AvailMatchingCriteria</code>, the Operator that is used for the
-     * comparison.</p>
-     */
-    inline void SetOperator(Operator&& value) { m_operatorHasBeenSet = true; m_operator = std::move(value); }
-
-    /**
-     * <p>For the <code>DynamicVariable</code> specified in
-     * <code>AvailMatchingCriteria</code>, the Operator that is used for the
-     * comparison.</p>
-     */
-    inline AvailMatchingCriteria& WithOperator(const Operator& value) { SetOperator(value); return *this;}
-
-    /**
-     * <p>For the <code>DynamicVariable</code> specified in
-     * <code>AvailMatchingCriteria</code>, the Operator that is used for the
-     * comparison.</p>
-     */
-    inline AvailMatchingCriteria& WithOperator(Operator&& value) { SetOperator(std::move(value)); return *this;}
-
+    inline void SetOperator(Operator value) { m_operatorHasBeenSet = true; m_operator = value; }
+    inline AvailMatchingCriteria& WithOperator(Operator value) { SetOperator(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_dynamicVariable;
     bool m_dynamicVariableHasBeenSet = false;
 
-    Operator m_operator;
+    Operator m_operator{Operator::NOT_SET};
     bool m_operatorHasBeenSet = false;
   };
 

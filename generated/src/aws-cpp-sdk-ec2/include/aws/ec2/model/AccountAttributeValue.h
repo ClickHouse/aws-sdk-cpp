@@ -31,7 +31,7 @@ namespace Model
   class AccountAttributeValue
   {
   public:
-    AWS_EC2_API AccountAttributeValue();
+    AWS_EC2_API AccountAttributeValue() = default;
     AWS_EC2_API AccountAttributeValue(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API AccountAttributeValue& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,46 +39,17 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The value of the attribute.</p>
      */
-    inline const Aws::String& GetAttributeValue() const{ return m_attributeValue; }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
+    inline const Aws::String& GetAttributeValue() const { return m_attributeValue; }
     inline bool AttributeValueHasBeenSet() const { return m_attributeValueHasBeenSet; }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline void SetAttributeValue(const Aws::String& value) { m_attributeValueHasBeenSet = true; m_attributeValue = value; }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline void SetAttributeValue(Aws::String&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = std::move(value); }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline void SetAttributeValue(const char* value) { m_attributeValueHasBeenSet = true; m_attributeValue.assign(value); }
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline AccountAttributeValue& WithAttributeValue(const Aws::String& value) { SetAttributeValue(value); return *this;}
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline AccountAttributeValue& WithAttributeValue(Aws::String&& value) { SetAttributeValue(std::move(value)); return *this;}
-
-    /**
-     * <p>The value of the attribute.</p>
-     */
-    inline AccountAttributeValue& WithAttributeValue(const char* value) { SetAttributeValue(value); return *this;}
-
+    template<typename AttributeValueT = Aws::String>
+    void SetAttributeValue(AttributeValueT&& value) { m_attributeValueHasBeenSet = true; m_attributeValue = std::forward<AttributeValueT>(value); }
+    template<typename AttributeValueT = Aws::String>
+    AccountAttributeValue& WithAttributeValue(AttributeValueT&& value) { SetAttributeValue(std::forward<AttributeValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_attributeValue;

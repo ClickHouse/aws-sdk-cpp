@@ -33,73 +33,37 @@ namespace Model
   class ConflictException
   {
   public:
-    AWS_MEDIAPACKAGEV2_API ConflictException();
+    AWS_MEDIAPACKAGEV2_API ConflictException() = default;
     AWS_MEDIAPACKAGEV2_API ConflictException(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGEV2_API ConflictException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIAPACKAGEV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ConflictException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline ConflictException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline ConflictException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline ConflictException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of ConflictException.</p>
      */
-    inline const ConflictExceptionType& GetConflictExceptionType() const{ return m_conflictExceptionType; }
-
-    /**
-     * <p>The type of ConflictException.</p>
-     */
+    inline ConflictExceptionType GetConflictExceptionType() const { return m_conflictExceptionType; }
     inline bool ConflictExceptionTypeHasBeenSet() const { return m_conflictExceptionTypeHasBeenSet; }
-
-    /**
-     * <p>The type of ConflictException.</p>
-     */
-    inline void SetConflictExceptionType(const ConflictExceptionType& value) { m_conflictExceptionTypeHasBeenSet = true; m_conflictExceptionType = value; }
-
-    /**
-     * <p>The type of ConflictException.</p>
-     */
-    inline void SetConflictExceptionType(ConflictExceptionType&& value) { m_conflictExceptionTypeHasBeenSet = true; m_conflictExceptionType = std::move(value); }
-
-    /**
-     * <p>The type of ConflictException.</p>
-     */
-    inline ConflictException& WithConflictExceptionType(const ConflictExceptionType& value) { SetConflictExceptionType(value); return *this;}
-
-    /**
-     * <p>The type of ConflictException.</p>
-     */
-    inline ConflictException& WithConflictExceptionType(ConflictExceptionType&& value) { SetConflictExceptionType(std::move(value)); return *this;}
-
+    inline void SetConflictExceptionType(ConflictExceptionType value) { m_conflictExceptionTypeHasBeenSet = true; m_conflictExceptionType = value; }
+    inline ConflictException& WithConflictExceptionType(ConflictExceptionType value) { SetConflictExceptionType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    ConflictExceptionType m_conflictExceptionType;
+    ConflictExceptionType m_conflictExceptionType{ConflictExceptionType::NOT_SET};
     bool m_conflictExceptionTypeHasBeenSet = false;
   };
 

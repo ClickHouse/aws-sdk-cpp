@@ -26,7 +26,7 @@ namespace Model
   class ApplySecurityGroupsToLoadBalancerRequest : public ElasticLoadBalancingRequest
   {
   public:
-    AWS_ELASTICLOADBALANCING_API ApplySecurityGroupsToLoadBalancerRequest();
+    AWS_ELASTICLOADBALANCING_API ApplySecurityGroupsToLoadBalancerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,101 +41,32 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the load balancer.</p>
      */
-    inline const Aws::String& GetLoadBalancerName() const{ return m_loadBalancerName; }
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
+    inline const Aws::String& GetLoadBalancerName() const { return m_loadBalancerName; }
     inline bool LoadBalancerNameHasBeenSet() const { return m_loadBalancerNameHasBeenSet; }
+    template<typename LoadBalancerNameT = Aws::String>
+    void SetLoadBalancerName(LoadBalancerNameT&& value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName = std::forward<LoadBalancerNameT>(value); }
+    template<typename LoadBalancerNameT = Aws::String>
+    ApplySecurityGroupsToLoadBalancerRequest& WithLoadBalancerName(LoadBalancerNameT&& value) { SetLoadBalancerName(std::forward<LoadBalancerNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline void SetLoadBalancerName(const Aws::String& value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName = value; }
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline void SetLoadBalancerName(Aws::String&& value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName = std::move(value); }
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline void SetLoadBalancerName(const char* value) { m_loadBalancerNameHasBeenSet = true; m_loadBalancerName.assign(value); }
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline ApplySecurityGroupsToLoadBalancerRequest& WithLoadBalancerName(const Aws::String& value) { SetLoadBalancerName(value); return *this;}
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline ApplySecurityGroupsToLoadBalancerRequest& WithLoadBalancerName(Aws::String&& value) { SetLoadBalancerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the load balancer.</p>
-     */
-    inline ApplySecurityGroupsToLoadBalancerRequest& WithLoadBalancerName(const char* value) { SetLoadBalancerName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The IDs of the security groups to associate with the load balancer. Note that
      * you cannot specify the name of the security group.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSecurityGroups() const{ return m_securityGroups; }
-
-    /**
-     * <p>The IDs of the security groups to associate with the load balancer. Note that
-     * you cannot specify the name of the security group.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSecurityGroups() const { return m_securityGroups; }
     inline bool SecurityGroupsHasBeenSet() const { return m_securityGroupsHasBeenSet; }
-
-    /**
-     * <p>The IDs of the security groups to associate with the load balancer. Note that
-     * you cannot specify the name of the security group.</p>
-     */
-    inline void SetSecurityGroups(const Aws::Vector<Aws::String>& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = value; }
-
-    /**
-     * <p>The IDs of the security groups to associate with the load balancer. Note that
-     * you cannot specify the name of the security group.</p>
-     */
-    inline void SetSecurityGroups(Aws::Vector<Aws::String>&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::move(value); }
-
-    /**
-     * <p>The IDs of the security groups to associate with the load balancer. Note that
-     * you cannot specify the name of the security group.</p>
-     */
-    inline ApplySecurityGroupsToLoadBalancerRequest& WithSecurityGroups(const Aws::Vector<Aws::String>& value) { SetSecurityGroups(value); return *this;}
-
-    /**
-     * <p>The IDs of the security groups to associate with the load balancer. Note that
-     * you cannot specify the name of the security group.</p>
-     */
-    inline ApplySecurityGroupsToLoadBalancerRequest& WithSecurityGroups(Aws::Vector<Aws::String>&& value) { SetSecurityGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>The IDs of the security groups to associate with the load balancer. Note that
-     * you cannot specify the name of the security group.</p>
-     */
-    inline ApplySecurityGroupsToLoadBalancerRequest& AddSecurityGroups(const Aws::String& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
-
-    /**
-     * <p>The IDs of the security groups to associate with the load balancer. Note that
-     * you cannot specify the name of the security group.</p>
-     */
-    inline ApplySecurityGroupsToLoadBalancerRequest& AddSecurityGroups(Aws::String&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The IDs of the security groups to associate with the load balancer. Note that
-     * you cannot specify the name of the security group.</p>
-     */
-    inline ApplySecurityGroupsToLoadBalancerRequest& AddSecurityGroups(const char* value) { m_securityGroupsHasBeenSet = true; m_securityGroups.push_back(value); return *this; }
-
+    template<typename SecurityGroupsT = Aws::Vector<Aws::String>>
+    void SetSecurityGroups(SecurityGroupsT&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups = std::forward<SecurityGroupsT>(value); }
+    template<typename SecurityGroupsT = Aws::Vector<Aws::String>>
+    ApplySecurityGroupsToLoadBalancerRequest& WithSecurityGroups(SecurityGroupsT&& value) { SetSecurityGroups(std::forward<SecurityGroupsT>(value)); return *this;}
+    template<typename SecurityGroupsT = Aws::String>
+    ApplySecurityGroupsToLoadBalancerRequest& AddSecurityGroups(SecurityGroupsT&& value) { m_securityGroupsHasBeenSet = true; m_securityGroups.emplace_back(std::forward<SecurityGroupsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_loadBalancerName;

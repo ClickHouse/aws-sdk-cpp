@@ -10,17 +10,21 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-UnassignPrivateIpAddressesRequest::UnassignPrivateIpAddressesRequest() : 
-    m_networkInterfaceIdHasBeenSet(false),
-    m_privateIpAddressesHasBeenSet(false),
-    m_ipv4PrefixesHasBeenSet(false)
-{
-}
-
 Aws::String UnassignPrivateIpAddressesRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=UnassignPrivateIpAddresses&";
+  if(m_ipv4PrefixesHasBeenSet)
+  {
+    unsigned ipv4PrefixesCount = 1;
+    for(auto& item : m_ipv4Prefixes)
+    {
+      ss << "Ipv4Prefix." << ipv4PrefixesCount << "="
+          << StringUtils::URLEncode(item.c_str()) << "&";
+      ipv4PrefixesCount++;
+    }
+  }
+
   if(m_networkInterfaceIdHasBeenSet)
   {
     ss << "NetworkInterfaceId=" << StringUtils::URLEncode(m_networkInterfaceId.c_str()) << "&";
@@ -34,17 +38,6 @@ Aws::String UnassignPrivateIpAddressesRequest::SerializePayload() const
       ss << "PrivateIpAddress." << privateIpAddressesCount << "="
           << StringUtils::URLEncode(item.c_str()) << "&";
       privateIpAddressesCount++;
-    }
-  }
-
-  if(m_ipv4PrefixesHasBeenSet)
-  {
-    unsigned ipv4PrefixesCount = 1;
-    for(auto& item : m_ipv4Prefixes)
-    {
-      ss << "Ipv4Prefix." << ipv4PrefixesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      ipv4PrefixesCount++;
     }
   }
 

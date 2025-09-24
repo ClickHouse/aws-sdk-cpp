@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-IcebergInput::IcebergInput() : 
-    m_metadataOperation(MetadataOperation::NOT_SET),
-    m_metadataOperationHasBeenSet(false),
-    m_versionHasBeenSet(false)
-{
-}
-
-IcebergInput::IcebergInput(JsonView jsonValue) : 
-    m_metadataOperation(MetadataOperation::NOT_SET),
-    m_metadataOperationHasBeenSet(false),
-    m_versionHasBeenSet(false)
+IcebergInput::IcebergInput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ IcebergInput& IcebergInput::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MetadataOperation"))
   {
     m_metadataOperation = MetadataOperationMapper::GetMetadataOperationForName(jsonValue.GetString("MetadataOperation"));
-
     m_metadataOperationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Version"))
   {
     m_version = jsonValue.GetString("Version");
-
     m_versionHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("CreateIcebergTableInput"))
+  {
+    m_createIcebergTableInput = jsonValue.GetObject("CreateIcebergTableInput");
+    m_createIcebergTableInputHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -64,6 +55,12 @@ JsonValue IcebergInput::Jsonize() const
   if(m_versionHasBeenSet)
   {
    payload.WithString("Version", m_version);
+
+  }
+
+  if(m_createIcebergTableInputHasBeenSet)
+  {
+   payload.WithObject("CreateIcebergTableInput", m_createIcebergTableInput.Jsonize());
 
   }
 

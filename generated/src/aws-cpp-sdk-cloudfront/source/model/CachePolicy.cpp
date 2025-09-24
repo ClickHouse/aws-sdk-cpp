@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-CachePolicy::CachePolicy() : 
-    m_idHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_cachePolicyConfigHasBeenSet(false)
-{
-}
-
-CachePolicy::CachePolicy(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_cachePolicyConfigHasBeenSet(false)
+CachePolicy::CachePolicy(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -34,80 +34,33 @@ namespace Model
   class GetSegmentDetectionResult
   {
   public:
-    AWS_REKOGNITION_API GetSegmentDetectionResult();
+    AWS_REKOGNITION_API GetSegmentDetectionResult() = default;
     AWS_REKOGNITION_API GetSegmentDetectionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_REKOGNITION_API GetSegmentDetectionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Current status of the segment detection job.</p>
      */
-    inline const VideoJobStatus& GetJobStatus() const{ return m_jobStatus; }
+    inline VideoJobStatus GetJobStatus() const { return m_jobStatus; }
+    inline void SetJobStatus(VideoJobStatus value) { m_jobStatusHasBeenSet = true; m_jobStatus = value; }
+    inline GetSegmentDetectionResult& WithJobStatus(VideoJobStatus value) { SetJobStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Current status of the segment detection job.</p>
-     */
-    inline void SetJobStatus(const VideoJobStatus& value) { m_jobStatus = value; }
-
-    /**
-     * <p>Current status of the segment detection job.</p>
-     */
-    inline void SetJobStatus(VideoJobStatus&& value) { m_jobStatus = std::move(value); }
-
-    /**
-     * <p>Current status of the segment detection job.</p>
-     */
-    inline GetSegmentDetectionResult& WithJobStatus(const VideoJobStatus& value) { SetJobStatus(value); return *this;}
-
-    /**
-     * <p>Current status of the segment detection job.</p>
-     */
-    inline GetSegmentDetectionResult& WithJobStatus(VideoJobStatus&& value) { SetJobStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>If the job fails, <code>StatusMessage</code> provides a descriptive error
      * message.</p>
      */
-    inline const Aws::String& GetStatusMessage() const{ return m_statusMessage; }
+    inline const Aws::String& GetStatusMessage() const { return m_statusMessage; }
+    template<typename StatusMessageT = Aws::String>
+    void SetStatusMessage(StatusMessageT&& value) { m_statusMessageHasBeenSet = true; m_statusMessage = std::forward<StatusMessageT>(value); }
+    template<typename StatusMessageT = Aws::String>
+    GetSegmentDetectionResult& WithStatusMessage(StatusMessageT&& value) { SetStatusMessage(std::forward<StatusMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the job fails, <code>StatusMessage</code> provides a descriptive error
-     * message.</p>
-     */
-    inline void SetStatusMessage(const Aws::String& value) { m_statusMessage = value; }
-
-    /**
-     * <p>If the job fails, <code>StatusMessage</code> provides a descriptive error
-     * message.</p>
-     */
-    inline void SetStatusMessage(Aws::String&& value) { m_statusMessage = std::move(value); }
-
-    /**
-     * <p>If the job fails, <code>StatusMessage</code> provides a descriptive error
-     * message.</p>
-     */
-    inline void SetStatusMessage(const char* value) { m_statusMessage.assign(value); }
-
-    /**
-     * <p>If the job fails, <code>StatusMessage</code> provides a descriptive error
-     * message.</p>
-     */
-    inline GetSegmentDetectionResult& WithStatusMessage(const Aws::String& value) { SetStatusMessage(value); return *this;}
-
-    /**
-     * <p>If the job fails, <code>StatusMessage</code> provides a descriptive error
-     * message.</p>
-     */
-    inline GetSegmentDetectionResult& WithStatusMessage(Aws::String&& value) { SetStatusMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>If the job fails, <code>StatusMessage</code> provides a descriptive error
-     * message.</p>
-     */
-    inline GetSegmentDetectionResult& WithStatusMessage(const char* value) { SetStatusMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Currently, Amazon Rekognition Video returns a single object in the
      * <code>VideoMetadata</code> array. The object contains information about the
@@ -116,69 +69,16 @@ namespace Model
      * other information. Video metadata is returned in each page of information
      * returned by <code>GetSegmentDetection</code>.</p>
      */
-    inline const Aws::Vector<VideoMetadata>& GetVideoMetadata() const{ return m_videoMetadata; }
+    inline const Aws::Vector<VideoMetadata>& GetVideoMetadata() const { return m_videoMetadata; }
+    template<typename VideoMetadataT = Aws::Vector<VideoMetadata>>
+    void SetVideoMetadata(VideoMetadataT&& value) { m_videoMetadataHasBeenSet = true; m_videoMetadata = std::forward<VideoMetadataT>(value); }
+    template<typename VideoMetadataT = Aws::Vector<VideoMetadata>>
+    GetSegmentDetectionResult& WithVideoMetadata(VideoMetadataT&& value) { SetVideoMetadata(std::forward<VideoMetadataT>(value)); return *this;}
+    template<typename VideoMetadataT = VideoMetadata>
+    GetSegmentDetectionResult& AddVideoMetadata(VideoMetadataT&& value) { m_videoMetadataHasBeenSet = true; m_videoMetadata.emplace_back(std::forward<VideoMetadataT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Currently, Amazon Rekognition Video returns a single object in the
-     * <code>VideoMetadata</code> array. The object contains information about the
-     * video stream in the input file that Amazon Rekognition Video chose to analyze.
-     * The <code>VideoMetadata</code> object includes the video codec, video format and
-     * other information. Video metadata is returned in each page of information
-     * returned by <code>GetSegmentDetection</code>.</p>
-     */
-    inline void SetVideoMetadata(const Aws::Vector<VideoMetadata>& value) { m_videoMetadata = value; }
-
-    /**
-     * <p>Currently, Amazon Rekognition Video returns a single object in the
-     * <code>VideoMetadata</code> array. The object contains information about the
-     * video stream in the input file that Amazon Rekognition Video chose to analyze.
-     * The <code>VideoMetadata</code> object includes the video codec, video format and
-     * other information. Video metadata is returned in each page of information
-     * returned by <code>GetSegmentDetection</code>.</p>
-     */
-    inline void SetVideoMetadata(Aws::Vector<VideoMetadata>&& value) { m_videoMetadata = std::move(value); }
-
-    /**
-     * <p>Currently, Amazon Rekognition Video returns a single object in the
-     * <code>VideoMetadata</code> array. The object contains information about the
-     * video stream in the input file that Amazon Rekognition Video chose to analyze.
-     * The <code>VideoMetadata</code> object includes the video codec, video format and
-     * other information. Video metadata is returned in each page of information
-     * returned by <code>GetSegmentDetection</code>.</p>
-     */
-    inline GetSegmentDetectionResult& WithVideoMetadata(const Aws::Vector<VideoMetadata>& value) { SetVideoMetadata(value); return *this;}
-
-    /**
-     * <p>Currently, Amazon Rekognition Video returns a single object in the
-     * <code>VideoMetadata</code> array. The object contains information about the
-     * video stream in the input file that Amazon Rekognition Video chose to analyze.
-     * The <code>VideoMetadata</code> object includes the video codec, video format and
-     * other information. Video metadata is returned in each page of information
-     * returned by <code>GetSegmentDetection</code>.</p>
-     */
-    inline GetSegmentDetectionResult& WithVideoMetadata(Aws::Vector<VideoMetadata>&& value) { SetVideoMetadata(std::move(value)); return *this;}
-
-    /**
-     * <p>Currently, Amazon Rekognition Video returns a single object in the
-     * <code>VideoMetadata</code> array. The object contains information about the
-     * video stream in the input file that Amazon Rekognition Video chose to analyze.
-     * The <code>VideoMetadata</code> object includes the video codec, video format and
-     * other information. Video metadata is returned in each page of information
-     * returned by <code>GetSegmentDetection</code>.</p>
-     */
-    inline GetSegmentDetectionResult& AddVideoMetadata(const VideoMetadata& value) { m_videoMetadata.push_back(value); return *this; }
-
-    /**
-     * <p>Currently, Amazon Rekognition Video returns a single object in the
-     * <code>VideoMetadata</code> array. The object contains information about the
-     * video stream in the input file that Amazon Rekognition Video chose to analyze.
-     * The <code>VideoMetadata</code> object includes the video codec, video format and
-     * other information. Video metadata is returned in each page of information
-     * returned by <code>GetSegmentDetection</code>.</p>
-     */
-    inline GetSegmentDetectionResult& AddVideoMetadata(VideoMetadata&& value) { m_videoMetadata.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An array of objects. There can be multiple audio streams. Each
      * <code>AudioMetadata</code> object contains metadata for a single audio stream.
@@ -187,379 +87,135 @@ namespace Model
      * sample rate. Audio metadata is returned in each page of information returned by
      * <code>GetSegmentDetection</code>.</p>
      */
-    inline const Aws::Vector<AudioMetadata>& GetAudioMetadata() const{ return m_audioMetadata; }
+    inline const Aws::Vector<AudioMetadata>& GetAudioMetadata() const { return m_audioMetadata; }
+    template<typename AudioMetadataT = Aws::Vector<AudioMetadata>>
+    void SetAudioMetadata(AudioMetadataT&& value) { m_audioMetadataHasBeenSet = true; m_audioMetadata = std::forward<AudioMetadataT>(value); }
+    template<typename AudioMetadataT = Aws::Vector<AudioMetadata>>
+    GetSegmentDetectionResult& WithAudioMetadata(AudioMetadataT&& value) { SetAudioMetadata(std::forward<AudioMetadataT>(value)); return *this;}
+    template<typename AudioMetadataT = AudioMetadata>
+    GetSegmentDetectionResult& AddAudioMetadata(AudioMetadataT&& value) { m_audioMetadataHasBeenSet = true; m_audioMetadata.emplace_back(std::forward<AudioMetadataT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of objects. There can be multiple audio streams. Each
-     * <code>AudioMetadata</code> object contains metadata for a single audio stream.
-     * Audio information in an <code>AudioMetadata</code> objects includes the audio
-     * codec, the number of audio channels, the duration of the audio stream, and the
-     * sample rate. Audio metadata is returned in each page of information returned by
-     * <code>GetSegmentDetection</code>.</p>
-     */
-    inline void SetAudioMetadata(const Aws::Vector<AudioMetadata>& value) { m_audioMetadata = value; }
-
-    /**
-     * <p>An array of objects. There can be multiple audio streams. Each
-     * <code>AudioMetadata</code> object contains metadata for a single audio stream.
-     * Audio information in an <code>AudioMetadata</code> objects includes the audio
-     * codec, the number of audio channels, the duration of the audio stream, and the
-     * sample rate. Audio metadata is returned in each page of information returned by
-     * <code>GetSegmentDetection</code>.</p>
-     */
-    inline void SetAudioMetadata(Aws::Vector<AudioMetadata>&& value) { m_audioMetadata = std::move(value); }
-
-    /**
-     * <p>An array of objects. There can be multiple audio streams. Each
-     * <code>AudioMetadata</code> object contains metadata for a single audio stream.
-     * Audio information in an <code>AudioMetadata</code> objects includes the audio
-     * codec, the number of audio channels, the duration of the audio stream, and the
-     * sample rate. Audio metadata is returned in each page of information returned by
-     * <code>GetSegmentDetection</code>.</p>
-     */
-    inline GetSegmentDetectionResult& WithAudioMetadata(const Aws::Vector<AudioMetadata>& value) { SetAudioMetadata(value); return *this;}
-
-    /**
-     * <p>An array of objects. There can be multiple audio streams. Each
-     * <code>AudioMetadata</code> object contains metadata for a single audio stream.
-     * Audio information in an <code>AudioMetadata</code> objects includes the audio
-     * codec, the number of audio channels, the duration of the audio stream, and the
-     * sample rate. Audio metadata is returned in each page of information returned by
-     * <code>GetSegmentDetection</code>.</p>
-     */
-    inline GetSegmentDetectionResult& WithAudioMetadata(Aws::Vector<AudioMetadata>&& value) { SetAudioMetadata(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of objects. There can be multiple audio streams. Each
-     * <code>AudioMetadata</code> object contains metadata for a single audio stream.
-     * Audio information in an <code>AudioMetadata</code> objects includes the audio
-     * codec, the number of audio channels, the duration of the audio stream, and the
-     * sample rate. Audio metadata is returned in each page of information returned by
-     * <code>GetSegmentDetection</code>.</p>
-     */
-    inline GetSegmentDetectionResult& AddAudioMetadata(const AudioMetadata& value) { m_audioMetadata.push_back(value); return *this; }
-
-    /**
-     * <p>An array of objects. There can be multiple audio streams. Each
-     * <code>AudioMetadata</code> object contains metadata for a single audio stream.
-     * Audio information in an <code>AudioMetadata</code> objects includes the audio
-     * codec, the number of audio channels, the duration of the audio stream, and the
-     * sample rate. Audio metadata is returned in each page of information returned by
-     * <code>GetSegmentDetection</code>.</p>
-     */
-    inline GetSegmentDetectionResult& AddAudioMetadata(AudioMetadata&& value) { m_audioMetadata.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>If the previous response was incomplete (because there are more labels to
      * retrieve), Amazon Rekognition Video returns a pagination token in the response.
      * You can use this pagination token to retrieve the next set of text.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    GetSegmentDetectionResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If the previous response was incomplete (because there are more labels to
-     * retrieve), Amazon Rekognition Video returns a pagination token in the response.
-     * You can use this pagination token to retrieve the next set of text.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>If the previous response was incomplete (because there are more labels to
-     * retrieve), Amazon Rekognition Video returns a pagination token in the response.
-     * You can use this pagination token to retrieve the next set of text.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>If the previous response was incomplete (because there are more labels to
-     * retrieve), Amazon Rekognition Video returns a pagination token in the response.
-     * You can use this pagination token to retrieve the next set of text.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>If the previous response was incomplete (because there are more labels to
-     * retrieve), Amazon Rekognition Video returns a pagination token in the response.
-     * You can use this pagination token to retrieve the next set of text.</p>
-     */
-    inline GetSegmentDetectionResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If the previous response was incomplete (because there are more labels to
-     * retrieve), Amazon Rekognition Video returns a pagination token in the response.
-     * You can use this pagination token to retrieve the next set of text.</p>
-     */
-    inline GetSegmentDetectionResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If the previous response was incomplete (because there are more labels to
-     * retrieve), Amazon Rekognition Video returns a pagination token in the response.
-     * You can use this pagination token to retrieve the next set of text.</p>
-     */
-    inline GetSegmentDetectionResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of segments detected in a video. The array is sorted by the segment
      * types (TECHNICAL_CUE or SHOT) specified in the <code>SegmentTypes</code> input
      * parameter of <code>StartSegmentDetection</code>. Within each segment type the
      * array is sorted by timestamp values.</p>
      */
-    inline const Aws::Vector<SegmentDetection>& GetSegments() const{ return m_segments; }
+    inline const Aws::Vector<SegmentDetection>& GetSegments() const { return m_segments; }
+    template<typename SegmentsT = Aws::Vector<SegmentDetection>>
+    void SetSegments(SegmentsT&& value) { m_segmentsHasBeenSet = true; m_segments = std::forward<SegmentsT>(value); }
+    template<typename SegmentsT = Aws::Vector<SegmentDetection>>
+    GetSegmentDetectionResult& WithSegments(SegmentsT&& value) { SetSegments(std::forward<SegmentsT>(value)); return *this;}
+    template<typename SegmentsT = SegmentDetection>
+    GetSegmentDetectionResult& AddSegments(SegmentsT&& value) { m_segmentsHasBeenSet = true; m_segments.emplace_back(std::forward<SegmentsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of segments detected in a video. The array is sorted by the segment
-     * types (TECHNICAL_CUE or SHOT) specified in the <code>SegmentTypes</code> input
-     * parameter of <code>StartSegmentDetection</code>. Within each segment type the
-     * array is sorted by timestamp values.</p>
-     */
-    inline void SetSegments(const Aws::Vector<SegmentDetection>& value) { m_segments = value; }
-
-    /**
-     * <p>An array of segments detected in a video. The array is sorted by the segment
-     * types (TECHNICAL_CUE or SHOT) specified in the <code>SegmentTypes</code> input
-     * parameter of <code>StartSegmentDetection</code>. Within each segment type the
-     * array is sorted by timestamp values.</p>
-     */
-    inline void SetSegments(Aws::Vector<SegmentDetection>&& value) { m_segments = std::move(value); }
-
-    /**
-     * <p>An array of segments detected in a video. The array is sorted by the segment
-     * types (TECHNICAL_CUE or SHOT) specified in the <code>SegmentTypes</code> input
-     * parameter of <code>StartSegmentDetection</code>. Within each segment type the
-     * array is sorted by timestamp values.</p>
-     */
-    inline GetSegmentDetectionResult& WithSegments(const Aws::Vector<SegmentDetection>& value) { SetSegments(value); return *this;}
-
-    /**
-     * <p>An array of segments detected in a video. The array is sorted by the segment
-     * types (TECHNICAL_CUE or SHOT) specified in the <code>SegmentTypes</code> input
-     * parameter of <code>StartSegmentDetection</code>. Within each segment type the
-     * array is sorted by timestamp values.</p>
-     */
-    inline GetSegmentDetectionResult& WithSegments(Aws::Vector<SegmentDetection>&& value) { SetSegments(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of segments detected in a video. The array is sorted by the segment
-     * types (TECHNICAL_CUE or SHOT) specified in the <code>SegmentTypes</code> input
-     * parameter of <code>StartSegmentDetection</code>. Within each segment type the
-     * array is sorted by timestamp values.</p>
-     */
-    inline GetSegmentDetectionResult& AddSegments(const SegmentDetection& value) { m_segments.push_back(value); return *this; }
-
-    /**
-     * <p>An array of segments detected in a video. The array is sorted by the segment
-     * types (TECHNICAL_CUE or SHOT) specified in the <code>SegmentTypes</code> input
-     * parameter of <code>StartSegmentDetection</code>. Within each segment type the
-     * array is sorted by timestamp values.</p>
-     */
-    inline GetSegmentDetectionResult& AddSegments(SegmentDetection&& value) { m_segments.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>An array containing the segment types requested in the call to
      * <code>StartSegmentDetection</code>. </p>
      */
-    inline const Aws::Vector<SegmentTypeInfo>& GetSelectedSegmentTypes() const{ return m_selectedSegmentTypes; }
+    inline const Aws::Vector<SegmentTypeInfo>& GetSelectedSegmentTypes() const { return m_selectedSegmentTypes; }
+    template<typename SelectedSegmentTypesT = Aws::Vector<SegmentTypeInfo>>
+    void SetSelectedSegmentTypes(SelectedSegmentTypesT&& value) { m_selectedSegmentTypesHasBeenSet = true; m_selectedSegmentTypes = std::forward<SelectedSegmentTypesT>(value); }
+    template<typename SelectedSegmentTypesT = Aws::Vector<SegmentTypeInfo>>
+    GetSegmentDetectionResult& WithSelectedSegmentTypes(SelectedSegmentTypesT&& value) { SetSelectedSegmentTypes(std::forward<SelectedSegmentTypesT>(value)); return *this;}
+    template<typename SelectedSegmentTypesT = SegmentTypeInfo>
+    GetSegmentDetectionResult& AddSelectedSegmentTypes(SelectedSegmentTypesT&& value) { m_selectedSegmentTypesHasBeenSet = true; m_selectedSegmentTypes.emplace_back(std::forward<SelectedSegmentTypesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array containing the segment types requested in the call to
-     * <code>StartSegmentDetection</code>. </p>
-     */
-    inline void SetSelectedSegmentTypes(const Aws::Vector<SegmentTypeInfo>& value) { m_selectedSegmentTypes = value; }
-
-    /**
-     * <p>An array containing the segment types requested in the call to
-     * <code>StartSegmentDetection</code>. </p>
-     */
-    inline void SetSelectedSegmentTypes(Aws::Vector<SegmentTypeInfo>&& value) { m_selectedSegmentTypes = std::move(value); }
-
-    /**
-     * <p>An array containing the segment types requested in the call to
-     * <code>StartSegmentDetection</code>. </p>
-     */
-    inline GetSegmentDetectionResult& WithSelectedSegmentTypes(const Aws::Vector<SegmentTypeInfo>& value) { SetSelectedSegmentTypes(value); return *this;}
-
-    /**
-     * <p>An array containing the segment types requested in the call to
-     * <code>StartSegmentDetection</code>. </p>
-     */
-    inline GetSegmentDetectionResult& WithSelectedSegmentTypes(Aws::Vector<SegmentTypeInfo>&& value) { SetSelectedSegmentTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>An array containing the segment types requested in the call to
-     * <code>StartSegmentDetection</code>. </p>
-     */
-    inline GetSegmentDetectionResult& AddSelectedSegmentTypes(const SegmentTypeInfo& value) { m_selectedSegmentTypes.push_back(value); return *this; }
-
-    /**
-     * <p>An array containing the segment types requested in the call to
-     * <code>StartSegmentDetection</code>. </p>
-     */
-    inline GetSegmentDetectionResult& AddSelectedSegmentTypes(SegmentTypeInfo&& value) { m_selectedSegmentTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Job identifier for the segment detection operation for which you want to
      * obtain results. The job identifer is returned by an initial call to
      * StartSegmentDetection.</p>
      */
-    inline const Aws::String& GetJobId() const{ return m_jobId; }
+    inline const Aws::String& GetJobId() const { return m_jobId; }
+    template<typename JobIdT = Aws::String>
+    void SetJobId(JobIdT&& value) { m_jobIdHasBeenSet = true; m_jobId = std::forward<JobIdT>(value); }
+    template<typename JobIdT = Aws::String>
+    GetSegmentDetectionResult& WithJobId(JobIdT&& value) { SetJobId(std::forward<JobIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Job identifier for the segment detection operation for which you want to
-     * obtain results. The job identifer is returned by an initial call to
-     * StartSegmentDetection.</p>
-     */
-    inline void SetJobId(const Aws::String& value) { m_jobId = value; }
-
-    /**
-     * <p>Job identifier for the segment detection operation for which you want to
-     * obtain results. The job identifer is returned by an initial call to
-     * StartSegmentDetection.</p>
-     */
-    inline void SetJobId(Aws::String&& value) { m_jobId = std::move(value); }
-
-    /**
-     * <p>Job identifier for the segment detection operation for which you want to
-     * obtain results. The job identifer is returned by an initial call to
-     * StartSegmentDetection.</p>
-     */
-    inline void SetJobId(const char* value) { m_jobId.assign(value); }
-
-    /**
-     * <p>Job identifier for the segment detection operation for which you want to
-     * obtain results. The job identifer is returned by an initial call to
-     * StartSegmentDetection.</p>
-     */
-    inline GetSegmentDetectionResult& WithJobId(const Aws::String& value) { SetJobId(value); return *this;}
-
-    /**
-     * <p>Job identifier for the segment detection operation for which you want to
-     * obtain results. The job identifer is returned by an initial call to
-     * StartSegmentDetection.</p>
-     */
-    inline GetSegmentDetectionResult& WithJobId(Aws::String&& value) { SetJobId(std::move(value)); return *this;}
-
-    /**
-     * <p>Job identifier for the segment detection operation for which you want to
-     * obtain results. The job identifer is returned by an initial call to
-     * StartSegmentDetection.</p>
-     */
-    inline GetSegmentDetectionResult& WithJobId(const char* value) { SetJobId(value); return *this;}
-
-
+    ///@{
     
-    inline const Video& GetVideo() const{ return m_video; }
+    inline const Video& GetVideo() const { return m_video; }
+    template<typename VideoT = Video>
+    void SetVideo(VideoT&& value) { m_videoHasBeenSet = true; m_video = std::forward<VideoT>(value); }
+    template<typename VideoT = Video>
+    GetSegmentDetectionResult& WithVideo(VideoT&& value) { SetVideo(std::forward<VideoT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetVideo(const Video& value) { m_video = value; }
-
-    
-    inline void SetVideo(Video&& value) { m_video = std::move(value); }
-
-    
-    inline GetSegmentDetectionResult& WithVideo(const Video& value) { SetVideo(value); return *this;}
-
-    
-    inline GetSegmentDetectionResult& WithVideo(Video&& value) { SetVideo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A job identifier specified in the call to StartSegmentDetection and returned
      * in the job completion notification sent to your Amazon Simple Notification
      * Service topic.</p>
      */
-    inline const Aws::String& GetJobTag() const{ return m_jobTag; }
+    inline const Aws::String& GetJobTag() const { return m_jobTag; }
+    template<typename JobTagT = Aws::String>
+    void SetJobTag(JobTagT&& value) { m_jobTagHasBeenSet = true; m_jobTag = std::forward<JobTagT>(value); }
+    template<typename JobTagT = Aws::String>
+    GetSegmentDetectionResult& WithJobTag(JobTagT&& value) { SetJobTag(std::forward<JobTagT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A job identifier specified in the call to StartSegmentDetection and returned
-     * in the job completion notification sent to your Amazon Simple Notification
-     * Service topic.</p>
-     */
-    inline void SetJobTag(const Aws::String& value) { m_jobTag = value; }
-
-    /**
-     * <p>A job identifier specified in the call to StartSegmentDetection and returned
-     * in the job completion notification sent to your Amazon Simple Notification
-     * Service topic.</p>
-     */
-    inline void SetJobTag(Aws::String&& value) { m_jobTag = std::move(value); }
-
-    /**
-     * <p>A job identifier specified in the call to StartSegmentDetection and returned
-     * in the job completion notification sent to your Amazon Simple Notification
-     * Service topic.</p>
-     */
-    inline void SetJobTag(const char* value) { m_jobTag.assign(value); }
-
-    /**
-     * <p>A job identifier specified in the call to StartSegmentDetection and returned
-     * in the job completion notification sent to your Amazon Simple Notification
-     * Service topic.</p>
-     */
-    inline GetSegmentDetectionResult& WithJobTag(const Aws::String& value) { SetJobTag(value); return *this;}
-
-    /**
-     * <p>A job identifier specified in the call to StartSegmentDetection and returned
-     * in the job completion notification sent to your Amazon Simple Notification
-     * Service topic.</p>
-     */
-    inline GetSegmentDetectionResult& WithJobTag(Aws::String&& value) { SetJobTag(std::move(value)); return *this;}
-
-    /**
-     * <p>A job identifier specified in the call to StartSegmentDetection and returned
-     * in the job completion notification sent to your Amazon Simple Notification
-     * Service topic.</p>
-     */
-    inline GetSegmentDetectionResult& WithJobTag(const char* value) { SetJobTag(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetSegmentDetectionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetSegmentDetectionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetSegmentDetectionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetSegmentDetectionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    VideoJobStatus m_jobStatus;
+    VideoJobStatus m_jobStatus{VideoJobStatus::NOT_SET};
+    bool m_jobStatusHasBeenSet = false;
 
     Aws::String m_statusMessage;
+    bool m_statusMessageHasBeenSet = false;
 
     Aws::Vector<VideoMetadata> m_videoMetadata;
+    bool m_videoMetadataHasBeenSet = false;
 
     Aws::Vector<AudioMetadata> m_audioMetadata;
+    bool m_audioMetadataHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<SegmentDetection> m_segments;
+    bool m_segmentsHasBeenSet = false;
 
     Aws::Vector<SegmentTypeInfo> m_selectedSegmentTypes;
+    bool m_selectedSegmentTypesHasBeenSet = false;
 
     Aws::String m_jobId;
+    bool m_jobIdHasBeenSet = false;
 
     Video m_video;
+    bool m_videoHasBeenSet = false;
 
     Aws::String m_jobTag;
+    bool m_jobTagHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

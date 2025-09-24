@@ -20,33 +20,7 @@ namespace AutoScaling
 namespace Model
 {
 
-Instance::Instance() : 
-    m_instanceIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_lifecycleState(LifecycleState::NOT_SET),
-    m_lifecycleStateHasBeenSet(false),
-    m_healthStatusHasBeenSet(false),
-    m_launchConfigurationNameHasBeenSet(false),
-    m_launchTemplateHasBeenSet(false),
-    m_protectedFromScaleIn(false),
-    m_protectedFromScaleInHasBeenSet(false),
-    m_weightedCapacityHasBeenSet(false)
-{
-}
-
-Instance::Instance(const XmlNode& xmlNode) : 
-    m_instanceIdHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_availabilityZoneHasBeenSet(false),
-    m_lifecycleState(LifecycleState::NOT_SET),
-    m_lifecycleStateHasBeenSet(false),
-    m_healthStatusHasBeenSet(false),
-    m_launchConfigurationNameHasBeenSet(false),
-    m_launchTemplateHasBeenSet(false),
-    m_protectedFromScaleIn(false),
-    m_protectedFromScaleInHasBeenSet(false),
-    m_weightedCapacityHasBeenSet(false)
+Instance::Instance(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -78,7 +52,7 @@ Instance& Instance::operator =(const XmlNode& xmlNode)
     XmlNode lifecycleStateNode = resultNode.FirstChild("LifecycleState");
     if(!lifecycleStateNode.IsNull())
     {
-      m_lifecycleState = LifecycleStateMapper::GetLifecycleStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(lifecycleStateNode.GetText()).c_str()).c_str());
+      m_lifecycleState = LifecycleStateMapper::GetLifecycleStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(lifecycleStateNode.GetText()).c_str()));
       m_lifecycleStateHasBeenSet = true;
     }
     XmlNode healthStatusNode = resultNode.FirstChild("HealthStatus");
@@ -135,7 +109,7 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location, unsig
 
   if(m_lifecycleStateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".LifecycleState=" << LifecycleStateMapper::GetNameForLifecycleState(m_lifecycleState) << "&";
+      oStream << location << index << locationValue << ".LifecycleState=" << StringUtils::URLEncode(LifecycleStateMapper::GetNameForLifecycleState(m_lifecycleState)) << "&";
   }
 
   if(m_healthStatusHasBeenSet)
@@ -183,7 +157,7 @@ void Instance::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_lifecycleStateHasBeenSet)
   {
-      oStream << location << ".LifecycleState=" << LifecycleStateMapper::GetNameForLifecycleState(m_lifecycleState) << "&";
+      oStream << location << ".LifecycleState=" << StringUtils::URLEncode(LifecycleStateMapper::GetNameForLifecycleState(m_lifecycleState)) << "&";
   }
   if(m_healthStatusHasBeenSet)
   {

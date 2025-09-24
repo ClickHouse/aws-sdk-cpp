@@ -18,23 +18,7 @@ namespace Glue
 namespace Model
 {
 
-TableOptimizerRun::TableOptimizerRun() : 
-    m_eventType(TableOptimizerEventType::NOT_SET),
-    m_eventTypeHasBeenSet(false),
-    m_startTimestampHasBeenSet(false),
-    m_endTimestampHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_errorHasBeenSet(false)
-{
-}
-
-TableOptimizerRun::TableOptimizerRun(JsonView jsonValue) : 
-    m_eventType(TableOptimizerEventType::NOT_SET),
-    m_eventTypeHasBeenSet(false),
-    m_startTimestampHasBeenSet(false),
-    m_endTimestampHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_errorHasBeenSet(false)
+TableOptimizerRun::TableOptimizerRun(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,38 +28,43 @@ TableOptimizerRun& TableOptimizerRun::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("eventType"))
   {
     m_eventType = TableOptimizerEventTypeMapper::GetTableOptimizerEventTypeForName(jsonValue.GetString("eventType"));
-
     m_eventTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("startTimestamp"))
   {
     m_startTimestamp = jsonValue.GetDouble("startTimestamp");
-
     m_startTimestampHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("endTimestamp"))
   {
     m_endTimestamp = jsonValue.GetDouble("endTimestamp");
-
     m_endTimestampHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("metrics"))
-  {
-    m_metrics = jsonValue.GetObject("metrics");
-
-    m_metricsHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("error"))
   {
     m_error = jsonValue.GetString("error");
-
     m_errorHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("compactionMetrics"))
+  {
+    m_compactionMetrics = jsonValue.GetObject("compactionMetrics");
+    m_compactionMetricsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("compactionStrategy"))
+  {
+    m_compactionStrategy = CompactionStrategyMapper::GetCompactionStrategyForName(jsonValue.GetString("compactionStrategy"));
+    m_compactionStrategyHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("retentionMetrics"))
+  {
+    m_retentionMetrics = jsonValue.GetObject("retentionMetrics");
+    m_retentionMetricsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("orphanFileDeletionMetrics"))
+  {
+    m_orphanFileDeletionMetrics = jsonValue.GetObject("orphanFileDeletionMetrics");
+    m_orphanFileDeletionMetricsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -98,15 +87,32 @@ JsonValue TableOptimizerRun::Jsonize() const
    payload.WithDouble("endTimestamp", m_endTimestamp.SecondsWithMSPrecision());
   }
 
-  if(m_metricsHasBeenSet)
-  {
-   payload.WithObject("metrics", m_metrics.Jsonize());
-
-  }
-
   if(m_errorHasBeenSet)
   {
    payload.WithString("error", m_error);
+
+  }
+
+  if(m_compactionMetricsHasBeenSet)
+  {
+   payload.WithObject("compactionMetrics", m_compactionMetrics.Jsonize());
+
+  }
+
+  if(m_compactionStrategyHasBeenSet)
+  {
+   payload.WithString("compactionStrategy", CompactionStrategyMapper::GetNameForCompactionStrategy(m_compactionStrategy));
+  }
+
+  if(m_retentionMetricsHasBeenSet)
+  {
+   payload.WithObject("retentionMetrics", m_retentionMetrics.Jsonize());
+
+  }
+
+  if(m_orphanFileDeletionMetricsHasBeenSet)
+  {
+   payload.WithObject("orphanFileDeletionMetrics", m_orphanFileDeletionMetrics.Jsonize());
 
   }
 

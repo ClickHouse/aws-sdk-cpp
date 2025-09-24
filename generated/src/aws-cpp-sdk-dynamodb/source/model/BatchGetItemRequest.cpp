@@ -12,13 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-BatchGetItemRequest::BatchGetItemRequest() : 
-    m_requestItemsHasBeenSet(false),
-    m_returnConsumedCapacity(ReturnConsumedCapacity::NOT_SET),
-    m_returnConsumedCapacityHasBeenSet(false)
-{
-}
-
 Aws::String BatchGetItemRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -51,5 +44,23 @@ Aws::Http::HeaderValueCollection BatchGetItemRequest::GetRequestSpecificHeaders(
 }
 
 
+
+BatchGetItemRequest::EndpointParameters BatchGetItemRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    //operation context params go here
+    parameters.emplace_back(Aws::String{"ResourceArnList"}, this->GetOperationContextParams(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    return parameters;
+}
+//Accessor for dynamic context endpoint params
+Aws::Vector<Aws::String> BatchGetItemRequest::GetOperationContextParams() const{
+  Aws::Vector<Aws::String> result;
+  auto& RequestItemsElems = (*this).GetRequestItems();
+  for (auto& keysElem : RequestItemsElems)
+  {
+  	result.emplace_back(keysElem.first);
+  }
+  return result;
+}
 
 

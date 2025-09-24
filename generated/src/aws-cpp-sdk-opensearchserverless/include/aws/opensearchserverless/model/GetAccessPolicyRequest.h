@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/opensearchserverless/OpenSearchServerless_EXPORTS.h>
 #include <aws/opensearchserverless/OpenSearchServerlessRequest.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/opensearchserverless/model/AccessPolicyType.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
 namespace Aws
@@ -22,7 +22,7 @@ namespace Model
   class GetAccessPolicyRequest : public OpenSearchServerlessRequest
   {
   public:
-    AWS_OPENSEARCHSERVERLESS_API GetAccessPolicyRequest();
+    AWS_OPENSEARCHSERVERLESS_API GetAccessPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,90 +35,35 @@ namespace Model
     AWS_OPENSEARCHSERVERLESS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
-    /**
-     * <p>The name of the access policy.</p>
-     */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the access policy.</p>
-     */
-    inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
-
-    /**
-     * <p>The name of the access policy.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the access policy.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the access policy.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the access policy.</p>
-     */
-    inline GetAccessPolicyRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the access policy.</p>
-     */
-    inline GetAccessPolicyRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the access policy.</p>
-     */
-    inline GetAccessPolicyRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Tye type of policy. Currently, the only supported value is
      * <code>data</code>.</p>
      */
-    inline const AccessPolicyType& GetType() const{ return m_type; }
-
-    /**
-     * <p>Tye type of policy. Currently, the only supported value is
-     * <code>data</code>.</p>
-     */
+    inline AccessPolicyType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
+    inline void SetType(AccessPolicyType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline GetAccessPolicyRequest& WithType(AccessPolicyType value) { SetType(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Tye type of policy. Currently, the only supported value is
-     * <code>data</code>.</p>
+     * <p>The name of the access policy.</p>
      */
-    inline void SetType(const AccessPolicyType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>Tye type of policy. Currently, the only supported value is
-     * <code>data</code>.</p>
-     */
-    inline void SetType(AccessPolicyType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>Tye type of policy. Currently, the only supported value is
-     * <code>data</code>.</p>
-     */
-    inline GetAccessPolicyRequest& WithType(const AccessPolicyType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>Tye type of policy. Currently, the only supported value is
-     * <code>data</code>.</p>
-     */
-    inline GetAccessPolicyRequest& WithType(AccessPolicyType&& value) { SetType(std::move(value)); return *this;}
-
+    inline const Aws::String& GetName() const { return m_name; }
+    inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetAccessPolicyRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
   private:
+
+    AccessPolicyType m_type{AccessPolicyType::NOT_SET};
+    bool m_typeHasBeenSet = false;
 
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
-
-    AccessPolicyType m_type;
-    bool m_typeHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-MonitoringDatasetFormat::MonitoringDatasetFormat() : 
-    m_csvHasBeenSet(false),
-    m_jsonHasBeenSet(false),
-    m_parquetHasBeenSet(false)
-{
-}
-
-MonitoringDatasetFormat::MonitoringDatasetFormat(JsonView jsonValue) : 
-    m_csvHasBeenSet(false),
-    m_jsonHasBeenSet(false),
-    m_parquetHasBeenSet(false)
+MonitoringDatasetFormat::MonitoringDatasetFormat(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ MonitoringDatasetFormat& MonitoringDatasetFormat::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Csv"))
   {
     m_csv = jsonValue.GetObject("Csv");
-
     m_csvHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Json"))
   {
     m_json = jsonValue.GetObject("Json");
-
     m_jsonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Parquet"))
   {
     m_parquet = jsonValue.GetObject("Parquet");
-
     m_parquetHasBeenSet = true;
   }
-
   return *this;
 }
 

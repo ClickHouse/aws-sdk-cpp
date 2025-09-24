@@ -22,7 +22,7 @@ namespace Model
   class BatchEnableAlarmRequest : public IoTEventsDataRequest
   {
   public:
-    AWS_IOTEVENTSDATA_API BatchEnableAlarmRequest();
+    AWS_IOTEVENTSDATA_API BatchEnableAlarmRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,54 +33,20 @@ namespace Model
     AWS_IOTEVENTSDATA_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The list of enable action requests. You can specify up to 10 requests per
      * operation.</p>
      */
-    inline const Aws::Vector<EnableAlarmActionRequest>& GetEnableActionRequests() const{ return m_enableActionRequests; }
-
-    /**
-     * <p>The list of enable action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
+    inline const Aws::Vector<EnableAlarmActionRequest>& GetEnableActionRequests() const { return m_enableActionRequests; }
     inline bool EnableActionRequestsHasBeenSet() const { return m_enableActionRequestsHasBeenSet; }
-
-    /**
-     * <p>The list of enable action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline void SetEnableActionRequests(const Aws::Vector<EnableAlarmActionRequest>& value) { m_enableActionRequestsHasBeenSet = true; m_enableActionRequests = value; }
-
-    /**
-     * <p>The list of enable action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline void SetEnableActionRequests(Aws::Vector<EnableAlarmActionRequest>&& value) { m_enableActionRequestsHasBeenSet = true; m_enableActionRequests = std::move(value); }
-
-    /**
-     * <p>The list of enable action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline BatchEnableAlarmRequest& WithEnableActionRequests(const Aws::Vector<EnableAlarmActionRequest>& value) { SetEnableActionRequests(value); return *this;}
-
-    /**
-     * <p>The list of enable action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline BatchEnableAlarmRequest& WithEnableActionRequests(Aws::Vector<EnableAlarmActionRequest>&& value) { SetEnableActionRequests(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of enable action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline BatchEnableAlarmRequest& AddEnableActionRequests(const EnableAlarmActionRequest& value) { m_enableActionRequestsHasBeenSet = true; m_enableActionRequests.push_back(value); return *this; }
-
-    /**
-     * <p>The list of enable action requests. You can specify up to 10 requests per
-     * operation.</p>
-     */
-    inline BatchEnableAlarmRequest& AddEnableActionRequests(EnableAlarmActionRequest&& value) { m_enableActionRequestsHasBeenSet = true; m_enableActionRequests.push_back(std::move(value)); return *this; }
-
+    template<typename EnableActionRequestsT = Aws::Vector<EnableAlarmActionRequest>>
+    void SetEnableActionRequests(EnableActionRequestsT&& value) { m_enableActionRequestsHasBeenSet = true; m_enableActionRequests = std::forward<EnableActionRequestsT>(value); }
+    template<typename EnableActionRequestsT = Aws::Vector<EnableAlarmActionRequest>>
+    BatchEnableAlarmRequest& WithEnableActionRequests(EnableActionRequestsT&& value) { SetEnableActionRequests(std::forward<EnableActionRequestsT>(value)); return *this;}
+    template<typename EnableActionRequestsT = EnableAlarmActionRequest>
+    BatchEnableAlarmRequest& AddEnableActionRequests(EnableActionRequestsT&& value) { m_enableActionRequestsHasBeenSet = true; m_enableActionRequests.emplace_back(std::forward<EnableActionRequestsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<EnableAlarmActionRequest> m_enableActionRequests;

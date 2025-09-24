@@ -35,73 +35,40 @@ namespace Model
   class TargetTrackingScalingPolicyConfiguration
   {
   public:
-    AWS_SAGEMAKER_API TargetTrackingScalingPolicyConfiguration();
+    AWS_SAGEMAKER_API TargetTrackingScalingPolicyConfiguration() = default;
     AWS_SAGEMAKER_API TargetTrackingScalingPolicyConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API TargetTrackingScalingPolicyConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An object containing information about a metric.</p>
      */
-    inline const MetricSpecification& GetMetricSpecification() const{ return m_metricSpecification; }
-
-    /**
-     * <p>An object containing information about a metric.</p>
-     */
+    inline const MetricSpecification& GetMetricSpecification() const { return m_metricSpecification; }
     inline bool MetricSpecificationHasBeenSet() const { return m_metricSpecificationHasBeenSet; }
+    template<typename MetricSpecificationT = MetricSpecification>
+    void SetMetricSpecification(MetricSpecificationT&& value) { m_metricSpecificationHasBeenSet = true; m_metricSpecification = std::forward<MetricSpecificationT>(value); }
+    template<typename MetricSpecificationT = MetricSpecification>
+    TargetTrackingScalingPolicyConfiguration& WithMetricSpecification(MetricSpecificationT&& value) { SetMetricSpecification(std::forward<MetricSpecificationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object containing information about a metric.</p>
-     */
-    inline void SetMetricSpecification(const MetricSpecification& value) { m_metricSpecificationHasBeenSet = true; m_metricSpecification = value; }
-
-    /**
-     * <p>An object containing information about a metric.</p>
-     */
-    inline void SetMetricSpecification(MetricSpecification&& value) { m_metricSpecificationHasBeenSet = true; m_metricSpecification = std::move(value); }
-
-    /**
-     * <p>An object containing information about a metric.</p>
-     */
-    inline TargetTrackingScalingPolicyConfiguration& WithMetricSpecification(const MetricSpecification& value) { SetMetricSpecification(value); return *this;}
-
-    /**
-     * <p>An object containing information about a metric.</p>
-     */
-    inline TargetTrackingScalingPolicyConfiguration& WithMetricSpecification(MetricSpecification&& value) { SetMetricSpecification(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The recommended target value to specify for the metric when creating a
      * scaling policy.</p>
      */
-    inline double GetTargetValue() const{ return m_targetValue; }
-
-    /**
-     * <p>The recommended target value to specify for the metric when creating a
-     * scaling policy.</p>
-     */
+    inline double GetTargetValue() const { return m_targetValue; }
     inline bool TargetValueHasBeenSet() const { return m_targetValueHasBeenSet; }
-
-    /**
-     * <p>The recommended target value to specify for the metric when creating a
-     * scaling policy.</p>
-     */
     inline void SetTargetValue(double value) { m_targetValueHasBeenSet = true; m_targetValue = value; }
-
-    /**
-     * <p>The recommended target value to specify for the metric when creating a
-     * scaling policy.</p>
-     */
     inline TargetTrackingScalingPolicyConfiguration& WithTargetValue(double value) { SetTargetValue(value); return *this;}
-
+    ///@}
   private:
 
     MetricSpecification m_metricSpecification;
     bool m_metricSpecificationHasBeenSet = false;
 
-    double m_targetValue;
+    double m_targetValue{0.0};
     bool m_targetValueHasBeenSet = false;
   };
 

@@ -20,27 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-NodeGroupConfiguration::NodeGroupConfiguration() : 
-    m_nodeGroupIdHasBeenSet(false),
-    m_slotsHasBeenSet(false),
-    m_replicaCount(0),
-    m_replicaCountHasBeenSet(false),
-    m_primaryAvailabilityZoneHasBeenSet(false),
-    m_replicaAvailabilityZonesHasBeenSet(false),
-    m_primaryOutpostArnHasBeenSet(false),
-    m_replicaOutpostArnsHasBeenSet(false)
-{
-}
-
-NodeGroupConfiguration::NodeGroupConfiguration(const XmlNode& xmlNode) : 
-    m_nodeGroupIdHasBeenSet(false),
-    m_slotsHasBeenSet(false),
-    m_replicaCount(0),
-    m_replicaCountHasBeenSet(false),
-    m_primaryAvailabilityZoneHasBeenSet(false),
-    m_replicaAvailabilityZonesHasBeenSet(false),
-    m_primaryOutpostArnHasBeenSet(false),
-    m_replicaOutpostArnsHasBeenSet(false)
+NodeGroupConfiguration::NodeGroupConfiguration(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -79,6 +59,7 @@ NodeGroupConfiguration& NodeGroupConfiguration::operator =(const XmlNode& xmlNod
     if(!replicaAvailabilityZonesNode.IsNull())
     {
       XmlNode replicaAvailabilityZonesMember = replicaAvailabilityZonesNode.FirstChild("AvailabilityZone");
+      m_replicaAvailabilityZonesHasBeenSet = !replicaAvailabilityZonesMember.IsNull();
       while(!replicaAvailabilityZonesMember.IsNull())
       {
         m_replicaAvailabilityZones.push_back(replicaAvailabilityZonesMember.GetText());
@@ -97,6 +78,7 @@ NodeGroupConfiguration& NodeGroupConfiguration::operator =(const XmlNode& xmlNod
     if(!replicaOutpostArnsNode.IsNull())
     {
       XmlNode replicaOutpostArnsMember = replicaOutpostArnsNode.FirstChild("OutpostArn");
+      m_replicaOutpostArnsHasBeenSet = !replicaOutpostArnsMember.IsNull();
       while(!replicaOutpostArnsMember.IsNull())
       {
         m_replicaOutpostArns.push_back(replicaOutpostArnsMember.GetText());
@@ -137,7 +119,7 @@ void NodeGroupConfiguration::OutputToStream(Aws::OStream& oStream, const char* l
       unsigned replicaAvailabilityZonesIdx = 1;
       for(auto& item : m_replicaAvailabilityZones)
       {
-        oStream << location << index << locationValue << ".AvailabilityZone." << replicaAvailabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".ReplicaAvailabilityZones.AvailabilityZone." << replicaAvailabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -151,7 +133,7 @@ void NodeGroupConfiguration::OutputToStream(Aws::OStream& oStream, const char* l
       unsigned replicaOutpostArnsIdx = 1;
       for(auto& item : m_replicaOutpostArns)
       {
-        oStream << location << index << locationValue << ".OutpostArn." << replicaOutpostArnsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << index << locationValue << ".ReplicaOutpostArns.OutpostArn." << replicaOutpostArnsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 
@@ -180,7 +162,7 @@ void NodeGroupConfiguration::OutputToStream(Aws::OStream& oStream, const char* l
       unsigned replicaAvailabilityZonesIdx = 1;
       for(auto& item : m_replicaAvailabilityZones)
       {
-        oStream << location << ".AvailabilityZone." << replicaAvailabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".ReplicaAvailabilityZones.AvailabilityZone." << replicaAvailabilityZonesIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
   if(m_primaryOutpostArnHasBeenSet)
@@ -192,7 +174,7 @@ void NodeGroupConfiguration::OutputToStream(Aws::OStream& oStream, const char* l
       unsigned replicaOutpostArnsIdx = 1;
       for(auto& item : m_replicaOutpostArns)
       {
-        oStream << location << ".OutpostArn." << replicaOutpostArnsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
+        oStream << location << ".ReplicaOutpostArns.OutpostArn." << replicaOutpostArnsIdx++ << "=" << StringUtils::URLEncode(item.c_str()) << "&";
       }
   }
 }

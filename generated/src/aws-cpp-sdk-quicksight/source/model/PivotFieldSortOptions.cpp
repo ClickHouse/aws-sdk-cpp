@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-PivotFieldSortOptions::PivotFieldSortOptions() : 
-    m_fieldIdHasBeenSet(false),
-    m_sortByHasBeenSet(false)
-{
-}
-
-PivotFieldSortOptions::PivotFieldSortOptions(JsonView jsonValue) : 
-    m_fieldIdHasBeenSet(false),
-    m_sortByHasBeenSet(false)
+PivotFieldSortOptions::PivotFieldSortOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ PivotFieldSortOptions& PivotFieldSortOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FieldId"))
   {
     m_fieldId = jsonValue.GetString("FieldId");
-
     m_fieldIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SortBy"))
   {
     m_sortBy = jsonValue.GetObject("SortBy");
-
     m_sortByHasBeenSet = true;
   }
-
   return *this;
 }
 

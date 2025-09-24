@@ -20,37 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TrafficMirrorSession::TrafficMirrorSession() : 
-    m_trafficMirrorSessionIdHasBeenSet(false),
-    m_trafficMirrorTargetIdHasBeenSet(false),
-    m_trafficMirrorFilterIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_packetLength(0),
-    m_packetLengthHasBeenSet(false),
-    m_sessionNumber(0),
-    m_sessionNumberHasBeenSet(false),
-    m_virtualNetworkId(0),
-    m_virtualNetworkIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-TrafficMirrorSession::TrafficMirrorSession(const XmlNode& xmlNode) : 
-    m_trafficMirrorSessionIdHasBeenSet(false),
-    m_trafficMirrorTargetIdHasBeenSet(false),
-    m_trafficMirrorFilterIdHasBeenSet(false),
-    m_networkInterfaceIdHasBeenSet(false),
-    m_ownerIdHasBeenSet(false),
-    m_packetLength(0),
-    m_packetLengthHasBeenSet(false),
-    m_sessionNumber(0),
-    m_sessionNumberHasBeenSet(false),
-    m_virtualNetworkId(0),
-    m_virtualNetworkIdHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+TrafficMirrorSession::TrafficMirrorSession(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -119,6 +89,7 @@ TrafficMirrorSession& TrafficMirrorSession::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -236,7 +207,7 @@ void TrafficMirrorSession::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

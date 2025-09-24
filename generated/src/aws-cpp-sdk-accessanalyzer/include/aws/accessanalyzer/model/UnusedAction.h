@@ -36,89 +36,41 @@ namespace Model
   class UnusedAction
   {
   public:
-    AWS_ACCESSANALYZER_API UnusedAction();
+    AWS_ACCESSANALYZER_API UnusedAction() = default;
     AWS_ACCESSANALYZER_API UnusedAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API UnusedAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The action for which the unused access finding was generated.</p>
      */
-    inline const Aws::String& GetAction() const{ return m_action; }
-
-    /**
-     * <p>The action for which the unused access finding was generated.</p>
-     */
+    inline const Aws::String& GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    template<typename ActionT = Aws::String>
+    void SetAction(ActionT&& value) { m_actionHasBeenSet = true; m_action = std::forward<ActionT>(value); }
+    template<typename ActionT = Aws::String>
+    UnusedAction& WithAction(ActionT&& value) { SetAction(std::forward<ActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The action for which the unused access finding was generated.</p>
-     */
-    inline void SetAction(const Aws::String& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>The action for which the unused access finding was generated.</p>
-     */
-    inline void SetAction(Aws::String&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>The action for which the unused access finding was generated.</p>
-     */
-    inline void SetAction(const char* value) { m_actionHasBeenSet = true; m_action.assign(value); }
-
-    /**
-     * <p>The action for which the unused access finding was generated.</p>
-     */
-    inline UnusedAction& WithAction(const Aws::String& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>The action for which the unused access finding was generated.</p>
-     */
-    inline UnusedAction& WithAction(Aws::String&& value) { SetAction(std::move(value)); return *this;}
-
-    /**
-     * <p>The action for which the unused access finding was generated.</p>
-     */
-    inline UnusedAction& WithAction(const char* value) { SetAction(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time at which the action was last accessed.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastAccessed() const{ return m_lastAccessed; }
-
-    /**
-     * <p>The time at which the action was last accessed.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastAccessed() const { return m_lastAccessed; }
     inline bool LastAccessedHasBeenSet() const { return m_lastAccessedHasBeenSet; }
-
-    /**
-     * <p>The time at which the action was last accessed.</p>
-     */
-    inline void SetLastAccessed(const Aws::Utils::DateTime& value) { m_lastAccessedHasBeenSet = true; m_lastAccessed = value; }
-
-    /**
-     * <p>The time at which the action was last accessed.</p>
-     */
-    inline void SetLastAccessed(Aws::Utils::DateTime&& value) { m_lastAccessedHasBeenSet = true; m_lastAccessed = std::move(value); }
-
-    /**
-     * <p>The time at which the action was last accessed.</p>
-     */
-    inline UnusedAction& WithLastAccessed(const Aws::Utils::DateTime& value) { SetLastAccessed(value); return *this;}
-
-    /**
-     * <p>The time at which the action was last accessed.</p>
-     */
-    inline UnusedAction& WithLastAccessed(Aws::Utils::DateTime&& value) { SetLastAccessed(std::move(value)); return *this;}
-
+    template<typename LastAccessedT = Aws::Utils::DateTime>
+    void SetLastAccessed(LastAccessedT&& value) { m_lastAccessedHasBeenSet = true; m_lastAccessed = std::forward<LastAccessedT>(value); }
+    template<typename LastAccessedT = Aws::Utils::DateTime>
+    UnusedAction& WithLastAccessed(LastAccessedT&& value) { SetLastAccessed(std::forward<LastAccessedT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_action;
     bool m_actionHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastAccessed;
+    Aws::Utils::DateTime m_lastAccessed{};
     bool m_lastAccessedHasBeenSet = false;
   };
 

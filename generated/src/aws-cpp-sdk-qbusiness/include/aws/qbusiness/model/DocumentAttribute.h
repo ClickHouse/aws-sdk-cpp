@@ -32,83 +32,35 @@ namespace Model
   class DocumentAttribute
   {
   public:
-    AWS_QBUSINESS_API DocumentAttribute();
+    AWS_QBUSINESS_API DocumentAttribute() = default;
     AWS_QBUSINESS_API DocumentAttribute(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API DocumentAttribute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QBUSINESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier for the attribute.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The identifier for the attribute.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    DocumentAttribute& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier for the attribute.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The identifier for the attribute.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The identifier for the attribute.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The identifier for the attribute.</p>
-     */
-    inline DocumentAttribute& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The identifier for the attribute.</p>
-     */
-    inline DocumentAttribute& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier for the attribute.</p>
-     */
-    inline DocumentAttribute& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The value of the attribute. </p>
      */
-    inline const DocumentAttributeValue& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value of the attribute. </p>
-     */
+    inline const DocumentAttributeValue& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value of the attribute. </p>
-     */
-    inline void SetValue(const DocumentAttributeValue& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value of the attribute. </p>
-     */
-    inline void SetValue(DocumentAttributeValue&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value of the attribute. </p>
-     */
-    inline DocumentAttribute& WithValue(const DocumentAttributeValue& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value of the attribute. </p>
-     */
-    inline DocumentAttribute& WithValue(DocumentAttributeValue&& value) { SetValue(std::move(value)); return *this;}
-
+    template<typename ValueT = DocumentAttributeValue>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = DocumentAttributeValue>
+    DocumentAttribute& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -23,82 +23,49 @@ namespace MediaConnect
 namespace Model
 {
 
+  /**
+   * <p> Create a bridge with the egress bridge type. An egress bridge is a
+   * cloud-to-ground bridge. The content comes from an existing MediaConnect flow and
+   * is delivered to your premises. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/EgressGatewayBridge">AWS
+   * API Reference</a></p>
+   */
   class EgressGatewayBridge
   {
   public:
-    AWS_MEDIACONNECT_API EgressGatewayBridge();
+    AWS_MEDIACONNECT_API EgressGatewayBridge() = default;
     AWS_MEDIACONNECT_API EgressGatewayBridge(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API EgressGatewayBridge& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The ID of the instance running this bridge.
+     * <p> The ID of the instance running this bridge.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * The ID of the instance running this bridge.
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    EgressGatewayBridge& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The ID of the instance running this bridge.
+     * <p> The maximum expected bitrate (in bps) of the egress bridge.</p>
      */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * The ID of the instance running this bridge.
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * The ID of the instance running this bridge.
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * The ID of the instance running this bridge.
-     */
-    inline EgressGatewayBridge& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * The ID of the instance running this bridge.
-     */
-    inline EgressGatewayBridge& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the instance running this bridge.
-     */
-    inline EgressGatewayBridge& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
-    /**
-     * The maximum expected bitrate (in bps) of the egress bridge.
-     */
-    inline int GetMaxBitrate() const{ return m_maxBitrate; }
-
-    /**
-     * The maximum expected bitrate (in bps) of the egress bridge.
-     */
+    inline int GetMaxBitrate() const { return m_maxBitrate; }
     inline bool MaxBitrateHasBeenSet() const { return m_maxBitrateHasBeenSet; }
-
-    /**
-     * The maximum expected bitrate (in bps) of the egress bridge.
-     */
     inline void SetMaxBitrate(int value) { m_maxBitrateHasBeenSet = true; m_maxBitrate = value; }
-
-    /**
-     * The maximum expected bitrate (in bps) of the egress bridge.
-     */
     inline EgressGatewayBridge& WithMaxBitrate(int value) { SetMaxBitrate(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_instanceId;
     bool m_instanceIdHasBeenSet = false;
 
-    int m_maxBitrate;
+    int m_maxBitrate{0};
     bool m_maxBitrateHasBeenSet = false;
   };
 

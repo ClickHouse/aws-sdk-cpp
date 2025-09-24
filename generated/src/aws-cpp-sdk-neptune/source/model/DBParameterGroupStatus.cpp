@@ -20,15 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-DBParameterGroupStatus::DBParameterGroupStatus() : 
-    m_dBParameterGroupNameHasBeenSet(false),
-    m_parameterApplyStatusHasBeenSet(false)
-{
-}
-
-DBParameterGroupStatus::DBParameterGroupStatus(const XmlNode& xmlNode) : 
-    m_dBParameterGroupNameHasBeenSet(false),
-    m_parameterApplyStatusHasBeenSet(false)
+DBParameterGroupStatus::DBParameterGroupStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

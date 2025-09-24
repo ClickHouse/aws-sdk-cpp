@@ -21,7 +21,7 @@ namespace Model
   class DeleteOutpostResolverRequest : public Route53ResolverRequest
   {
   public:
-    AWS_ROUTE53RESOLVER_API DeleteOutpostResolverRequest();
+    AWS_ROUTE53RESOLVER_API DeleteOutpostResolverRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,46 +34,17 @@ namespace Model
     AWS_ROUTE53RESOLVER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>A unique string that identifies the Resolver on the Outpost.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>A unique string that identifies the Resolver on the Outpost.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
-
-    /**
-     * <p>A unique string that identifies the Resolver on the Outpost.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>A unique string that identifies the Resolver on the Outpost.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>A unique string that identifies the Resolver on the Outpost.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>A unique string that identifies the Resolver on the Outpost.</p>
-     */
-    inline DeleteOutpostResolverRequest& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>A unique string that identifies the Resolver on the Outpost.</p>
-     */
-    inline DeleteOutpostResolverRequest& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique string that identifies the Resolver on the Outpost.</p>
-     */
-    inline DeleteOutpostResolverRequest& WithId(const char* value) { SetId(value); return *this;}
-
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    DeleteOutpostResolverRequest& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;

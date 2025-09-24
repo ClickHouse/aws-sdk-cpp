@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-ListSecurityConfigsResult::ListSecurityConfigsResult()
-{
-}
-
 ListSecurityConfigsResult::ListSecurityConfigsResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,12 +25,6 @@ ListSecurityConfigsResult::ListSecurityConfigsResult(const Aws::AmazonWebService
 ListSecurityConfigsResult& ListSecurityConfigsResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("nextToken"))
-  {
-    m_nextToken = jsonValue.GetString("nextToken");
-
-  }
-
   if(jsonValue.ValueExists("securityConfigSummaries"))
   {
     Aws::Utils::Array<JsonView> securityConfigSummariesJsonList = jsonValue.GetArray("securityConfigSummaries");
@@ -42,14 +32,20 @@ ListSecurityConfigsResult& ListSecurityConfigsResult::operator =(const Aws::Amaz
     {
       m_securityConfigSummaries.push_back(securityConfigSummariesJsonList[securityConfigSummariesIndex].AsObject());
     }
+    m_securityConfigSummariesHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("nextToken"))
+  {
+    m_nextToken = jsonValue.GetString("nextToken");
+    m_nextTokenHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

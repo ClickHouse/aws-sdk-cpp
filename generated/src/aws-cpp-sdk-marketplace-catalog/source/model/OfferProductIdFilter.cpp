@@ -18,13 +18,7 @@ namespace MarketplaceCatalog
 namespace Model
 {
 
-OfferProductIdFilter::OfferProductIdFilter() : 
-    m_valueListHasBeenSet(false)
-{
-}
-
-OfferProductIdFilter::OfferProductIdFilter(JsonView jsonValue) : 
-    m_valueListHasBeenSet(false)
+OfferProductIdFilter::OfferProductIdFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ OfferProductIdFilter& OfferProductIdFilter::operator =(JsonView jsonValue)
     }
     m_valueListHasBeenSet = true;
   }
-
   return *this;
 }
 

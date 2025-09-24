@@ -10,14 +10,6 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-PutInsightRuleRequest::PutInsightRuleRequest() : 
-    m_ruleNameHasBeenSet(false),
-    m_ruleStateHasBeenSet(false),
-    m_ruleDefinitionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String PutInsightRuleRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -39,12 +31,24 @@ Aws::String PutInsightRuleRequest::SerializePayload() const
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
     }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
+    }
+  }
+
+  if(m_applyOnTransformedLogsHasBeenSet)
+  {
+    ss << "ApplyOnTransformedLogs=" << std::boolalpha << m_applyOnTransformedLogs << "&";
   }
 
   ss << "Version=2010-08-01";

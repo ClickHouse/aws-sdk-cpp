@@ -18,23 +18,18 @@ namespace CleanRoomsML
 namespace Model
 {
 
-AudienceSizeConfig::AudienceSizeConfig() : 
-    m_audienceSizeBinsHasBeenSet(false),
-    m_audienceSizeType(AudienceSizeType::NOT_SET),
-    m_audienceSizeTypeHasBeenSet(false)
-{
-}
-
-AudienceSizeConfig::AudienceSizeConfig(JsonView jsonValue) : 
-    m_audienceSizeBinsHasBeenSet(false),
-    m_audienceSizeType(AudienceSizeType::NOT_SET),
-    m_audienceSizeTypeHasBeenSet(false)
+AudienceSizeConfig::AudienceSizeConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 AudienceSizeConfig& AudienceSizeConfig::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("audienceSizeType"))
+  {
+    m_audienceSizeType = AudienceSizeTypeMapper::GetAudienceSizeTypeForName(jsonValue.GetString("audienceSizeType"));
+    m_audienceSizeTypeHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("audienceSizeBins"))
   {
     Aws::Utils::Array<JsonView> audienceSizeBinsJsonList = jsonValue.GetArray("audienceSizeBins");
@@ -44,20 +39,17 @@ AudienceSizeConfig& AudienceSizeConfig::operator =(JsonView jsonValue)
     }
     m_audienceSizeBinsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("audienceSizeType"))
-  {
-    m_audienceSizeType = AudienceSizeTypeMapper::GetAudienceSizeTypeForName(jsonValue.GetString("audienceSizeType"));
-
-    m_audienceSizeTypeHasBeenSet = true;
-  }
-
   return *this;
 }
 
 JsonValue AudienceSizeConfig::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_audienceSizeTypeHasBeenSet)
+  {
+   payload.WithString("audienceSizeType", AudienceSizeTypeMapper::GetNameForAudienceSizeType(m_audienceSizeType));
+  }
 
   if(m_audienceSizeBinsHasBeenSet)
   {
@@ -68,11 +60,6 @@ JsonValue AudienceSizeConfig::Jsonize() const
    }
    payload.WithArray("audienceSizeBins", std::move(audienceSizeBinsJsonList));
 
-  }
-
-  if(m_audienceSizeTypeHasBeenSet)
-  {
-   payload.WithString("audienceSizeType", AudienceSizeTypeMapper::GetNameForAudienceSizeType(m_audienceSizeType));
   }
 
   return payload;

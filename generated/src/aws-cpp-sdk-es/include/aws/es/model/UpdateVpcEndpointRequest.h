@@ -26,7 +26,7 @@ namespace Model
   class UpdateVpcEndpointRequest : public ElasticsearchServiceRequest
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API UpdateVpcEndpointRequest();
+    AWS_ELASTICSEARCHSERVICE_API UpdateVpcEndpointRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,77 +37,29 @@ namespace Model
     AWS_ELASTICSEARCHSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Unique identifier of the VPC endpoint to be updated.</p>
      */
-    inline const Aws::String& GetVpcEndpointId() const{ return m_vpcEndpointId; }
-
-    /**
-     * <p>Unique identifier of the VPC endpoint to be updated.</p>
-     */
+    inline const Aws::String& GetVpcEndpointId() const { return m_vpcEndpointId; }
     inline bool VpcEndpointIdHasBeenSet() const { return m_vpcEndpointIdHasBeenSet; }
+    template<typename VpcEndpointIdT = Aws::String>
+    void SetVpcEndpointId(VpcEndpointIdT&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::forward<VpcEndpointIdT>(value); }
+    template<typename VpcEndpointIdT = Aws::String>
+    UpdateVpcEndpointRequest& WithVpcEndpointId(VpcEndpointIdT&& value) { SetVpcEndpointId(std::forward<VpcEndpointIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique identifier of the VPC endpoint to be updated.</p>
-     */
-    inline void SetVpcEndpointId(const Aws::String& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = value; }
-
-    /**
-     * <p>Unique identifier of the VPC endpoint to be updated.</p>
-     */
-    inline void SetVpcEndpointId(Aws::String&& value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId = std::move(value); }
-
-    /**
-     * <p>Unique identifier of the VPC endpoint to be updated.</p>
-     */
-    inline void SetVpcEndpointId(const char* value) { m_vpcEndpointIdHasBeenSet = true; m_vpcEndpointId.assign(value); }
-
-    /**
-     * <p>Unique identifier of the VPC endpoint to be updated.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithVpcEndpointId(const Aws::String& value) { SetVpcEndpointId(value); return *this;}
-
-    /**
-     * <p>Unique identifier of the VPC endpoint to be updated.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithVpcEndpointId(Aws::String&& value) { SetVpcEndpointId(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique identifier of the VPC endpoint to be updated.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithVpcEndpointId(const char* value) { SetVpcEndpointId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The security groups and/or subnets to add, remove, or modify.</p>
      */
-    inline const VPCOptions& GetVpcOptions() const{ return m_vpcOptions; }
-
-    /**
-     * <p>The security groups and/or subnets to add, remove, or modify.</p>
-     */
+    inline const VPCOptions& GetVpcOptions() const { return m_vpcOptions; }
     inline bool VpcOptionsHasBeenSet() const { return m_vpcOptionsHasBeenSet; }
-
-    /**
-     * <p>The security groups and/or subnets to add, remove, or modify.</p>
-     */
-    inline void SetVpcOptions(const VPCOptions& value) { m_vpcOptionsHasBeenSet = true; m_vpcOptions = value; }
-
-    /**
-     * <p>The security groups and/or subnets to add, remove, or modify.</p>
-     */
-    inline void SetVpcOptions(VPCOptions&& value) { m_vpcOptionsHasBeenSet = true; m_vpcOptions = std::move(value); }
-
-    /**
-     * <p>The security groups and/or subnets to add, remove, or modify.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithVpcOptions(const VPCOptions& value) { SetVpcOptions(value); return *this;}
-
-    /**
-     * <p>The security groups and/or subnets to add, remove, or modify.</p>
-     */
-    inline UpdateVpcEndpointRequest& WithVpcOptions(VPCOptions&& value) { SetVpcOptions(std::move(value)); return *this;}
-
+    template<typename VpcOptionsT = VPCOptions>
+    void SetVpcOptions(VpcOptionsT&& value) { m_vpcOptionsHasBeenSet = true; m_vpcOptions = std::forward<VpcOptionsT>(value); }
+    template<typename VpcOptionsT = VPCOptions>
+    UpdateVpcEndpointRequest& WithVpcOptions(VpcOptionsT&& value) { SetVpcOptions(std::forward<VpcOptionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcEndpointId;

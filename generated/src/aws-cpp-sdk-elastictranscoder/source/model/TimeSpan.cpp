@@ -18,15 +18,7 @@ namespace ElasticTranscoder
 namespace Model
 {
 
-TimeSpan::TimeSpan() : 
-    m_startTimeHasBeenSet(false),
-    m_durationHasBeenSet(false)
-{
-}
-
-TimeSpan::TimeSpan(JsonView jsonValue) : 
-    m_startTimeHasBeenSet(false),
-    m_durationHasBeenSet(false)
+TimeSpan::TimeSpan(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TimeSpan& TimeSpan::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("StartTime"))
   {
     m_startTime = jsonValue.GetString("StartTime");
-
     m_startTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Duration"))
   {
     m_duration = jsonValue.GetString("Duration");
-
     m_durationHasBeenSet = true;
   }
-
   return *this;
 }
 

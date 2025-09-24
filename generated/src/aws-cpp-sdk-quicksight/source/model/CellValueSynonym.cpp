@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-CellValueSynonym::CellValueSynonym() : 
-    m_cellValueHasBeenSet(false),
-    m_synonymsHasBeenSet(false)
-{
-}
-
-CellValueSynonym::CellValueSynonym(JsonView jsonValue) : 
-    m_cellValueHasBeenSet(false),
-    m_synonymsHasBeenSet(false)
+CellValueSynonym::CellValueSynonym(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CellValueSynonym& CellValueSynonym::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("CellValue"))
   {
     m_cellValue = jsonValue.GetString("CellValue");
-
     m_cellValueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Synonyms"))
   {
     Aws::Utils::Array<JsonView> synonymsJsonList = jsonValue.GetArray("Synonyms");
@@ -49,7 +39,6 @@ CellValueSynonym& CellValueSynonym::operator =(JsonView jsonValue)
     }
     m_synonymsHasBeenSet = true;
   }
-
   return *this;
 }
 

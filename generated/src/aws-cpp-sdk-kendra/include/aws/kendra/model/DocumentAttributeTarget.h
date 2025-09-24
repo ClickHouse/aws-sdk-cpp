@@ -45,158 +45,59 @@ namespace Model
   class DocumentAttributeTarget
   {
   public:
-    AWS_KENDRA_API DocumentAttributeTarget();
+    AWS_KENDRA_API DocumentAttributeTarget() = default;
     AWS_KENDRA_API DocumentAttributeTarget(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API DocumentAttributeTarget& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier of the target document attribute or metadata field.</p> <p>For
      * example, 'Department' could be an identifier for the target attribute or
      * metadata field that includes the department names associated with the
      * documents.</p>
      */
-    inline const Aws::String& GetTargetDocumentAttributeKey() const{ return m_targetDocumentAttributeKey; }
-
-    /**
-     * <p>The identifier of the target document attribute or metadata field.</p> <p>For
-     * example, 'Department' could be an identifier for the target attribute or
-     * metadata field that includes the department names associated with the
-     * documents.</p>
-     */
+    inline const Aws::String& GetTargetDocumentAttributeKey() const { return m_targetDocumentAttributeKey; }
     inline bool TargetDocumentAttributeKeyHasBeenSet() const { return m_targetDocumentAttributeKeyHasBeenSet; }
+    template<typename TargetDocumentAttributeKeyT = Aws::String>
+    void SetTargetDocumentAttributeKey(TargetDocumentAttributeKeyT&& value) { m_targetDocumentAttributeKeyHasBeenSet = true; m_targetDocumentAttributeKey = std::forward<TargetDocumentAttributeKeyT>(value); }
+    template<typename TargetDocumentAttributeKeyT = Aws::String>
+    DocumentAttributeTarget& WithTargetDocumentAttributeKey(TargetDocumentAttributeKeyT&& value) { SetTargetDocumentAttributeKey(std::forward<TargetDocumentAttributeKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the target document attribute or metadata field.</p> <p>For
-     * example, 'Department' could be an identifier for the target attribute or
-     * metadata field that includes the department names associated with the
-     * documents.</p>
-     */
-    inline void SetTargetDocumentAttributeKey(const Aws::String& value) { m_targetDocumentAttributeKeyHasBeenSet = true; m_targetDocumentAttributeKey = value; }
-
-    /**
-     * <p>The identifier of the target document attribute or metadata field.</p> <p>For
-     * example, 'Department' could be an identifier for the target attribute or
-     * metadata field that includes the department names associated with the
-     * documents.</p>
-     */
-    inline void SetTargetDocumentAttributeKey(Aws::String&& value) { m_targetDocumentAttributeKeyHasBeenSet = true; m_targetDocumentAttributeKey = std::move(value); }
-
-    /**
-     * <p>The identifier of the target document attribute or metadata field.</p> <p>For
-     * example, 'Department' could be an identifier for the target attribute or
-     * metadata field that includes the department names associated with the
-     * documents.</p>
-     */
-    inline void SetTargetDocumentAttributeKey(const char* value) { m_targetDocumentAttributeKeyHasBeenSet = true; m_targetDocumentAttributeKey.assign(value); }
-
-    /**
-     * <p>The identifier of the target document attribute or metadata field.</p> <p>For
-     * example, 'Department' could be an identifier for the target attribute or
-     * metadata field that includes the department names associated with the
-     * documents.</p>
-     */
-    inline DocumentAttributeTarget& WithTargetDocumentAttributeKey(const Aws::String& value) { SetTargetDocumentAttributeKey(value); return *this;}
-
-    /**
-     * <p>The identifier of the target document attribute or metadata field.</p> <p>For
-     * example, 'Department' could be an identifier for the target attribute or
-     * metadata field that includes the department names associated with the
-     * documents.</p>
-     */
-    inline DocumentAttributeTarget& WithTargetDocumentAttributeKey(Aws::String&& value) { SetTargetDocumentAttributeKey(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the target document attribute or metadata field.</p> <p>For
-     * example, 'Department' could be an identifier for the target attribute or
-     * metadata field that includes the department names associated with the
-     * documents.</p>
-     */
-    inline DocumentAttributeTarget& WithTargetDocumentAttributeKey(const char* value) { SetTargetDocumentAttributeKey(value); return *this;}
-
-
+    ///@{
     /**
      * <p> <code>TRUE</code> to delete the existing target value for your specified
      * target attribute key. You cannot create a target value and set this to
      * <code>TRUE</code>. To create a target value
      * (<code>TargetDocumentAttributeValue</code>), set this to <code>FALSE</code>.</p>
      */
-    inline bool GetTargetDocumentAttributeValueDeletion() const{ return m_targetDocumentAttributeValueDeletion; }
-
-    /**
-     * <p> <code>TRUE</code> to delete the existing target value for your specified
-     * target attribute key. You cannot create a target value and set this to
-     * <code>TRUE</code>. To create a target value
-     * (<code>TargetDocumentAttributeValue</code>), set this to <code>FALSE</code>.</p>
-     */
+    inline bool GetTargetDocumentAttributeValueDeletion() const { return m_targetDocumentAttributeValueDeletion; }
     inline bool TargetDocumentAttributeValueDeletionHasBeenSet() const { return m_targetDocumentAttributeValueDeletionHasBeenSet; }
-
-    /**
-     * <p> <code>TRUE</code> to delete the existing target value for your specified
-     * target attribute key. You cannot create a target value and set this to
-     * <code>TRUE</code>. To create a target value
-     * (<code>TargetDocumentAttributeValue</code>), set this to <code>FALSE</code>.</p>
-     */
     inline void SetTargetDocumentAttributeValueDeletion(bool value) { m_targetDocumentAttributeValueDeletionHasBeenSet = true; m_targetDocumentAttributeValueDeletion = value; }
-
-    /**
-     * <p> <code>TRUE</code> to delete the existing target value for your specified
-     * target attribute key. You cannot create a target value and set this to
-     * <code>TRUE</code>. To create a target value
-     * (<code>TargetDocumentAttributeValue</code>), set this to <code>FALSE</code>.</p>
-     */
     inline DocumentAttributeTarget& WithTargetDocumentAttributeValueDeletion(bool value) { SetTargetDocumentAttributeValueDeletion(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The target value you want to create for the target attribute.</p> <p>For
      * example, 'Finance' could be the target value for the target attribute key
      * 'Department'.</p>
      */
-    inline const DocumentAttributeValue& GetTargetDocumentAttributeValue() const{ return m_targetDocumentAttributeValue; }
-
-    /**
-     * <p>The target value you want to create for the target attribute.</p> <p>For
-     * example, 'Finance' could be the target value for the target attribute key
-     * 'Department'.</p>
-     */
+    inline const DocumentAttributeValue& GetTargetDocumentAttributeValue() const { return m_targetDocumentAttributeValue; }
     inline bool TargetDocumentAttributeValueHasBeenSet() const { return m_targetDocumentAttributeValueHasBeenSet; }
-
-    /**
-     * <p>The target value you want to create for the target attribute.</p> <p>For
-     * example, 'Finance' could be the target value for the target attribute key
-     * 'Department'.</p>
-     */
-    inline void SetTargetDocumentAttributeValue(const DocumentAttributeValue& value) { m_targetDocumentAttributeValueHasBeenSet = true; m_targetDocumentAttributeValue = value; }
-
-    /**
-     * <p>The target value you want to create for the target attribute.</p> <p>For
-     * example, 'Finance' could be the target value for the target attribute key
-     * 'Department'.</p>
-     */
-    inline void SetTargetDocumentAttributeValue(DocumentAttributeValue&& value) { m_targetDocumentAttributeValueHasBeenSet = true; m_targetDocumentAttributeValue = std::move(value); }
-
-    /**
-     * <p>The target value you want to create for the target attribute.</p> <p>For
-     * example, 'Finance' could be the target value for the target attribute key
-     * 'Department'.</p>
-     */
-    inline DocumentAttributeTarget& WithTargetDocumentAttributeValue(const DocumentAttributeValue& value) { SetTargetDocumentAttributeValue(value); return *this;}
-
-    /**
-     * <p>The target value you want to create for the target attribute.</p> <p>For
-     * example, 'Finance' could be the target value for the target attribute key
-     * 'Department'.</p>
-     */
-    inline DocumentAttributeTarget& WithTargetDocumentAttributeValue(DocumentAttributeValue&& value) { SetTargetDocumentAttributeValue(std::move(value)); return *this;}
-
+    template<typename TargetDocumentAttributeValueT = DocumentAttributeValue>
+    void SetTargetDocumentAttributeValue(TargetDocumentAttributeValueT&& value) { m_targetDocumentAttributeValueHasBeenSet = true; m_targetDocumentAttributeValue = std::forward<TargetDocumentAttributeValueT>(value); }
+    template<typename TargetDocumentAttributeValueT = DocumentAttributeValue>
+    DocumentAttributeTarget& WithTargetDocumentAttributeValue(TargetDocumentAttributeValueT&& value) { SetTargetDocumentAttributeValue(std::forward<TargetDocumentAttributeValueT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_targetDocumentAttributeKey;
     bool m_targetDocumentAttributeKeyHasBeenSet = false;
 
-    bool m_targetDocumentAttributeValueDeletion;
+    bool m_targetDocumentAttributeValueDeletion{false};
     bool m_targetDocumentAttributeValueDeletionHasBeenSet = false;
 
     DocumentAttributeValue m_targetDocumentAttributeValue;

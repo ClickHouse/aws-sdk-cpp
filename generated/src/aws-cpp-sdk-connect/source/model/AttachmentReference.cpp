@@ -18,19 +18,7 @@ namespace Connect
 namespace Model
 {
 
-AttachmentReference::AttachmentReference() : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_status(ReferenceStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-AttachmentReference::AttachmentReference(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_status(ReferenceStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+AttachmentReference::AttachmentReference(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ AttachmentReference& AttachmentReference::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = ReferenceStatusMapper::GetReferenceStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("Arn"))
+  {
+    m_arn = jsonValue.GetString("Arn");
+    m_arnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -80,6 +67,12 @@ JsonValue AttachmentReference::Jsonize() const
   if(m_statusHasBeenSet)
   {
    payload.WithString("Status", ReferenceStatusMapper::GetNameForReferenceStatus(m_status));
+  }
+
+  if(m_arnHasBeenSet)
+  {
+   payload.WithString("Arn", m_arn);
+
   }
 
   return payload;

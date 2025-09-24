@@ -12,17 +12,6 @@ using namespace Aws::TranscribeService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-StartCallAnalyticsJobRequest::StartCallAnalyticsJobRequest() : 
-    m_callAnalyticsJobNameHasBeenSet(false),
-    m_mediaHasBeenSet(false),
-    m_outputLocationHasBeenSet(false),
-    m_outputEncryptionKMSKeyIdHasBeenSet(false),
-    m_dataAccessRoleArnHasBeenSet(false),
-    m_settingsHasBeenSet(false),
-    m_channelDefinitionsHasBeenSet(false)
-{
-}
-
 Aws::String StartCallAnalyticsJobRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -60,6 +49,17 @@ Aws::String StartCallAnalyticsJobRequest::SerializePayload() const
   if(m_settingsHasBeenSet)
   {
    payload.WithObject("Settings", m_settings.Jsonize());
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> tagsJsonList(m_tags.size());
+   for(unsigned tagsIndex = 0; tagsIndex < tagsJsonList.GetLength(); ++tagsIndex)
+   {
+     tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
+   }
+   payload.WithArray("Tags", std::move(tagsJsonList));
 
   }
 

@@ -32,83 +32,40 @@ namespace Model
   class ElicitSubSlot
   {
   public:
-    AWS_LEXRUNTIMEV2_API ElicitSubSlot();
+    AWS_LEXRUNTIMEV2_API ElicitSubSlot() = default;
     AWS_LEXRUNTIMEV2_API ElicitSubSlot(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXRUNTIMEV2_API ElicitSubSlot& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXRUNTIMEV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the slot that should be elicited from the user.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the slot that should be elicited from the user.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    ElicitSubSlot& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the slot that should be elicited from the user.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the slot that should be elicited from the user.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the slot that should be elicited from the user.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the slot that should be elicited from the user.</p>
-     */
-    inline ElicitSubSlot& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the slot that should be elicited from the user.</p>
-     */
-    inline ElicitSubSlot& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the slot that should be elicited from the user.</p>
-     */
-    inline ElicitSubSlot& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The field is not supported.</p>
      */
-    AWS_LEXRUNTIMEV2_API const ElicitSubSlot& GetSubSlotToElicit() const;
-
-    /**
-     * <p>The field is not supported.</p>
-     */
-    AWS_LEXRUNTIMEV2_API bool SubSlotToElicitHasBeenSet() const;
-
-    /**
-     * <p>The field is not supported.</p>
-     */
-    AWS_LEXRUNTIMEV2_API void SetSubSlotToElicit(const ElicitSubSlot& value);
-
-    /**
-     * <p>The field is not supported.</p>
-     */
-    AWS_LEXRUNTIMEV2_API void SetSubSlotToElicit(ElicitSubSlot&& value);
-
-    /**
-     * <p>The field is not supported.</p>
-     */
-    AWS_LEXRUNTIMEV2_API ElicitSubSlot& WithSubSlotToElicit(const ElicitSubSlot& value);
-
-    /**
-     * <p>The field is not supported.</p>
-     */
-    AWS_LEXRUNTIMEV2_API ElicitSubSlot& WithSubSlotToElicit(ElicitSubSlot&& value);
-
+    inline const ElicitSubSlot& GetSubSlotToElicit() const{
+      return *m_subSlotToElicit;
+    }
+    inline bool SubSlotToElicitHasBeenSet() const { return m_subSlotToElicitHasBeenSet; }
+    template<typename SubSlotToElicitT = ElicitSubSlot>
+    void SetSubSlotToElicit(SubSlotToElicitT&& value) {
+      m_subSlotToElicitHasBeenSet = true; 
+      m_subSlotToElicit = Aws::MakeShared<ElicitSubSlot>("ElicitSubSlot", std::forward<SubSlotToElicitT>(value));
+    }
+    template<typename SubSlotToElicitT = ElicitSubSlot>
+    ElicitSubSlot& WithSubSlotToElicit(SubSlotToElicitT&& value) { SetSubSlotToElicit(std::forward<SubSlotToElicitT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_name;

@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-MonitoringStoppingCondition::MonitoringStoppingCondition() : 
-    m_maxRuntimeInSeconds(0),
-    m_maxRuntimeInSecondsHasBeenSet(false)
-{
-}
-
-MonitoringStoppingCondition::MonitoringStoppingCondition(JsonView jsonValue) : 
-    m_maxRuntimeInSeconds(0),
-    m_maxRuntimeInSecondsHasBeenSet(false)
+MonitoringStoppingCondition::MonitoringStoppingCondition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ MonitoringStoppingCondition& MonitoringStoppingCondition::operator =(JsonView js
   if(jsonValue.ValueExists("MaxRuntimeInSeconds"))
   {
     m_maxRuntimeInSeconds = jsonValue.GetInteger("MaxRuntimeInSeconds");
-
     m_maxRuntimeInSecondsHasBeenSet = true;
   }
-
   return *this;
 }
 

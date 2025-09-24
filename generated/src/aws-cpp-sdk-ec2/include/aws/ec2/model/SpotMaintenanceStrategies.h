@@ -32,7 +32,7 @@ namespace Model
   class SpotMaintenanceStrategies
   {
   public:
-    AWS_EC2_API SpotMaintenanceStrategies();
+    AWS_EC2_API SpotMaintenanceStrategies() = default;
     AWS_EC2_API SpotMaintenanceStrategies(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API SpotMaintenanceStrategies& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,60 +40,21 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The Spot Instance replacement strategy to use when Amazon EC2 emits a signal
      * that your Spot Instance is at an elevated risk of being interrupted. For more
      * information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-capacity-rebalance.html">Capacity
-     * rebalancing</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
+     * rebalancing</a> in the <i>Amazon EC2 User Guide</i>.</p>
      */
-    inline const SpotCapacityRebalance& GetCapacityRebalance() const{ return m_capacityRebalance; }
-
-    /**
-     * <p>The Spot Instance replacement strategy to use when Amazon EC2 emits a signal
-     * that your Spot Instance is at an elevated risk of being interrupted. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-capacity-rebalance.html">Capacity
-     * rebalancing</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
-     */
+    inline const SpotCapacityRebalance& GetCapacityRebalance() const { return m_capacityRebalance; }
     inline bool CapacityRebalanceHasBeenSet() const { return m_capacityRebalanceHasBeenSet; }
-
-    /**
-     * <p>The Spot Instance replacement strategy to use when Amazon EC2 emits a signal
-     * that your Spot Instance is at an elevated risk of being interrupted. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-capacity-rebalance.html">Capacity
-     * rebalancing</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
-     */
-    inline void SetCapacityRebalance(const SpotCapacityRebalance& value) { m_capacityRebalanceHasBeenSet = true; m_capacityRebalance = value; }
-
-    /**
-     * <p>The Spot Instance replacement strategy to use when Amazon EC2 emits a signal
-     * that your Spot Instance is at an elevated risk of being interrupted. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-capacity-rebalance.html">Capacity
-     * rebalancing</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
-     */
-    inline void SetCapacityRebalance(SpotCapacityRebalance&& value) { m_capacityRebalanceHasBeenSet = true; m_capacityRebalance = std::move(value); }
-
-    /**
-     * <p>The Spot Instance replacement strategy to use when Amazon EC2 emits a signal
-     * that your Spot Instance is at an elevated risk of being interrupted. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-capacity-rebalance.html">Capacity
-     * rebalancing</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
-     */
-    inline SpotMaintenanceStrategies& WithCapacityRebalance(const SpotCapacityRebalance& value) { SetCapacityRebalance(value); return *this;}
-
-    /**
-     * <p>The Spot Instance replacement strategy to use when Amazon EC2 emits a signal
-     * that your Spot Instance is at an elevated risk of being interrupted. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-capacity-rebalance.html">Capacity
-     * rebalancing</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
-     */
-    inline SpotMaintenanceStrategies& WithCapacityRebalance(SpotCapacityRebalance&& value) { SetCapacityRebalance(std::move(value)); return *this;}
-
+    template<typename CapacityRebalanceT = SpotCapacityRebalance>
+    void SetCapacityRebalance(CapacityRebalanceT&& value) { m_capacityRebalanceHasBeenSet = true; m_capacityRebalance = std::forward<CapacityRebalanceT>(value); }
+    template<typename CapacityRebalanceT = SpotCapacityRebalance>
+    SpotMaintenanceStrategies& WithCapacityRebalance(CapacityRebalanceT&& value) { SetCapacityRebalance(std::forward<CapacityRebalanceT>(value)); return *this;}
+    ///@}
   private:
 
     SpotCapacityRebalance m_capacityRebalance;

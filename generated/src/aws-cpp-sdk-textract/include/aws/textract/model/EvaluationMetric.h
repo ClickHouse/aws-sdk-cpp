@@ -30,83 +30,50 @@ namespace Model
   class EvaluationMetric
   {
   public:
-    AWS_TEXTRACT_API EvaluationMetric();
+    AWS_TEXTRACT_API EvaluationMetric() = default;
     AWS_TEXTRACT_API EvaluationMetric(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API EvaluationMetric& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The F1 score for an adapter version.</p>
      */
-    inline double GetF1Score() const{ return m_f1Score; }
-
-    /**
-     * <p>The F1 score for an adapter version.</p>
-     */
+    inline double GetF1Score() const { return m_f1Score; }
     inline bool F1ScoreHasBeenSet() const { return m_f1ScoreHasBeenSet; }
-
-    /**
-     * <p>The F1 score for an adapter version.</p>
-     */
     inline void SetF1Score(double value) { m_f1ScoreHasBeenSet = true; m_f1Score = value; }
-
-    /**
-     * <p>The F1 score for an adapter version.</p>
-     */
     inline EvaluationMetric& WithF1Score(double value) { SetF1Score(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Precision score for an adapter version.</p>
      */
-    inline double GetPrecision() const{ return m_precision; }
-
-    /**
-     * <p>The Precision score for an adapter version.</p>
-     */
+    inline double GetPrecision() const { return m_precision; }
     inline bool PrecisionHasBeenSet() const { return m_precisionHasBeenSet; }
-
-    /**
-     * <p>The Precision score for an adapter version.</p>
-     */
     inline void SetPrecision(double value) { m_precisionHasBeenSet = true; m_precision = value; }
-
-    /**
-     * <p>The Precision score for an adapter version.</p>
-     */
     inline EvaluationMetric& WithPrecision(double value) { SetPrecision(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The Recall score for an adapter version.</p>
      */
-    inline double GetRecall() const{ return m_recall; }
-
-    /**
-     * <p>The Recall score for an adapter version.</p>
-     */
+    inline double GetRecall() const { return m_recall; }
     inline bool RecallHasBeenSet() const { return m_recallHasBeenSet; }
-
-    /**
-     * <p>The Recall score for an adapter version.</p>
-     */
     inline void SetRecall(double value) { m_recallHasBeenSet = true; m_recall = value; }
-
-    /**
-     * <p>The Recall score for an adapter version.</p>
-     */
     inline EvaluationMetric& WithRecall(double value) { SetRecall(value); return *this;}
-
+    ///@}
   private:
 
-    double m_f1Score;
+    double m_f1Score{0.0};
     bool m_f1ScoreHasBeenSet = false;
 
-    double m_precision;
+    double m_precision{0.0};
     bool m_precisionHasBeenSet = false;
 
-    double m_recall;
+    double m_recall{0.0};
     bool m_recallHasBeenSet = false;
   };
 

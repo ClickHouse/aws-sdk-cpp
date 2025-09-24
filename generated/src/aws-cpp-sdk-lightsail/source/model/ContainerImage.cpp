@@ -18,17 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-ContainerImage::ContainerImage() : 
-    m_imageHasBeenSet(false),
-    m_digestHasBeenSet(false),
-    m_createdAtHasBeenSet(false)
-{
-}
-
-ContainerImage::ContainerImage(JsonView jsonValue) : 
-    m_imageHasBeenSet(false),
-    m_digestHasBeenSet(false),
-    m_createdAtHasBeenSet(false)
+ContainerImage::ContainerImage(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ ContainerImage& ContainerImage::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("image"))
   {
     m_image = jsonValue.GetString("image");
-
     m_imageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("digest"))
   {
     m_digest = jsonValue.GetString("digest");
-
     m_digestHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("createdAt"))
   {
     m_createdAt = jsonValue.GetDouble("createdAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   return *this;
 }
 

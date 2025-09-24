@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-GeospatialMapStyleOptions::GeospatialMapStyleOptions() : 
-    m_baseMapStyle(BaseMapStyleType::NOT_SET),
-    m_baseMapStyleHasBeenSet(false)
-{
-}
-
-GeospatialMapStyleOptions::GeospatialMapStyleOptions(JsonView jsonValue) : 
-    m_baseMapStyle(BaseMapStyleType::NOT_SET),
-    m_baseMapStyleHasBeenSet(false)
+GeospatialMapStyleOptions::GeospatialMapStyleOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ GeospatialMapStyleOptions& GeospatialMapStyleOptions::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("BaseMapStyle"))
   {
     m_baseMapStyle = BaseMapStyleTypeMapper::GetBaseMapStyleTypeForName(jsonValue.GetString("BaseMapStyle"));
-
     m_baseMapStyleHasBeenSet = true;
   }
-
   return *this;
 }
 

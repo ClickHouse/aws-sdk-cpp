@@ -22,7 +22,7 @@ namespace Model
   class CancelFlowExecutionsRequest : public AppflowRequest
   {
   public:
-    AWS_APPFLOW_API CancelFlowExecutionsRequest();
+    AWS_APPFLOW_API CancelFlowExecutionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,110 +33,33 @@ namespace Model
     AWS_APPFLOW_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of a flow with active runs that you want to cancel.</p>
      */
-    inline const Aws::String& GetFlowName() const{ return m_flowName; }
-
-    /**
-     * <p>The name of a flow with active runs that you want to cancel.</p>
-     */
+    inline const Aws::String& GetFlowName() const { return m_flowName; }
     inline bool FlowNameHasBeenSet() const { return m_flowNameHasBeenSet; }
+    template<typename FlowNameT = Aws::String>
+    void SetFlowName(FlowNameT&& value) { m_flowNameHasBeenSet = true; m_flowName = std::forward<FlowNameT>(value); }
+    template<typename FlowNameT = Aws::String>
+    CancelFlowExecutionsRequest& WithFlowName(FlowNameT&& value) { SetFlowName(std::forward<FlowNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of a flow with active runs that you want to cancel.</p>
-     */
-    inline void SetFlowName(const Aws::String& value) { m_flowNameHasBeenSet = true; m_flowName = value; }
-
-    /**
-     * <p>The name of a flow with active runs that you want to cancel.</p>
-     */
-    inline void SetFlowName(Aws::String&& value) { m_flowNameHasBeenSet = true; m_flowName = std::move(value); }
-
-    /**
-     * <p>The name of a flow with active runs that you want to cancel.</p>
-     */
-    inline void SetFlowName(const char* value) { m_flowNameHasBeenSet = true; m_flowName.assign(value); }
-
-    /**
-     * <p>The name of a flow with active runs that you want to cancel.</p>
-     */
-    inline CancelFlowExecutionsRequest& WithFlowName(const Aws::String& value) { SetFlowName(value); return *this;}
-
-    /**
-     * <p>The name of a flow with active runs that you want to cancel.</p>
-     */
-    inline CancelFlowExecutionsRequest& WithFlowName(Aws::String&& value) { SetFlowName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of a flow with active runs that you want to cancel.</p>
-     */
-    inline CancelFlowExecutionsRequest& WithFlowName(const char* value) { SetFlowName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of each active run to cancel. These runs must belong to the flow you
      * specify in your request.</p> <p>If you omit this parameter, your request ends
      * all active runs that belong to the flow.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetExecutionIds() const{ return m_executionIds; }
-
-    /**
-     * <p>The ID of each active run to cancel. These runs must belong to the flow you
-     * specify in your request.</p> <p>If you omit this parameter, your request ends
-     * all active runs that belong to the flow.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetExecutionIds() const { return m_executionIds; }
     inline bool ExecutionIdsHasBeenSet() const { return m_executionIdsHasBeenSet; }
-
-    /**
-     * <p>The ID of each active run to cancel. These runs must belong to the flow you
-     * specify in your request.</p> <p>If you omit this parameter, your request ends
-     * all active runs that belong to the flow.</p>
-     */
-    inline void SetExecutionIds(const Aws::Vector<Aws::String>& value) { m_executionIdsHasBeenSet = true; m_executionIds = value; }
-
-    /**
-     * <p>The ID of each active run to cancel. These runs must belong to the flow you
-     * specify in your request.</p> <p>If you omit this parameter, your request ends
-     * all active runs that belong to the flow.</p>
-     */
-    inline void SetExecutionIds(Aws::Vector<Aws::String>&& value) { m_executionIdsHasBeenSet = true; m_executionIds = std::move(value); }
-
-    /**
-     * <p>The ID of each active run to cancel. These runs must belong to the flow you
-     * specify in your request.</p> <p>If you omit this parameter, your request ends
-     * all active runs that belong to the flow.</p>
-     */
-    inline CancelFlowExecutionsRequest& WithExecutionIds(const Aws::Vector<Aws::String>& value) { SetExecutionIds(value); return *this;}
-
-    /**
-     * <p>The ID of each active run to cancel. These runs must belong to the flow you
-     * specify in your request.</p> <p>If you omit this parameter, your request ends
-     * all active runs that belong to the flow.</p>
-     */
-    inline CancelFlowExecutionsRequest& WithExecutionIds(Aws::Vector<Aws::String>&& value) { SetExecutionIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of each active run to cancel. These runs must belong to the flow you
-     * specify in your request.</p> <p>If you omit this parameter, your request ends
-     * all active runs that belong to the flow.</p>
-     */
-    inline CancelFlowExecutionsRequest& AddExecutionIds(const Aws::String& value) { m_executionIdsHasBeenSet = true; m_executionIds.push_back(value); return *this; }
-
-    /**
-     * <p>The ID of each active run to cancel. These runs must belong to the flow you
-     * specify in your request.</p> <p>If you omit this parameter, your request ends
-     * all active runs that belong to the flow.</p>
-     */
-    inline CancelFlowExecutionsRequest& AddExecutionIds(Aws::String&& value) { m_executionIdsHasBeenSet = true; m_executionIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ID of each active run to cancel. These runs must belong to the flow you
-     * specify in your request.</p> <p>If you omit this parameter, your request ends
-     * all active runs that belong to the flow.</p>
-     */
-    inline CancelFlowExecutionsRequest& AddExecutionIds(const char* value) { m_executionIdsHasBeenSet = true; m_executionIds.push_back(value); return *this; }
-
+    template<typename ExecutionIdsT = Aws::Vector<Aws::String>>
+    void SetExecutionIds(ExecutionIdsT&& value) { m_executionIdsHasBeenSet = true; m_executionIds = std::forward<ExecutionIdsT>(value); }
+    template<typename ExecutionIdsT = Aws::Vector<Aws::String>>
+    CancelFlowExecutionsRequest& WithExecutionIds(ExecutionIdsT&& value) { SetExecutionIds(std::forward<ExecutionIdsT>(value)); return *this;}
+    template<typename ExecutionIdsT = Aws::String>
+    CancelFlowExecutionsRequest& AddExecutionIds(ExecutionIdsT&& value) { m_executionIdsHasBeenSet = true; m_executionIds.emplace_back(std::forward<ExecutionIdsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_flowName;

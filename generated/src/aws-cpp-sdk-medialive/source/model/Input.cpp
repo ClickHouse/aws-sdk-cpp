@@ -18,51 +18,7 @@ namespace MediaLive
 namespace Model
 {
 
-Input::Input() : 
-    m_arnHasBeenSet(false),
-    m_attachedChannelsHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_inputClass(InputClass::NOT_SET),
-    m_inputClassHasBeenSet(false),
-    m_inputDevicesHasBeenSet(false),
-    m_inputPartnerIdsHasBeenSet(false),
-    m_inputSourceType(InputSourceType::NOT_SET),
-    m_inputSourceTypeHasBeenSet(false),
-    m_mediaConnectFlowsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_sourcesHasBeenSet(false),
-    m_state(InputState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_type(InputType::NOT_SET),
-    m_typeHasBeenSet(false)
-{
-}
-
-Input::Input(JsonView jsonValue) : 
-    m_arnHasBeenSet(false),
-    m_attachedChannelsHasBeenSet(false),
-    m_destinationsHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_inputClass(InputClass::NOT_SET),
-    m_inputClassHasBeenSet(false),
-    m_inputDevicesHasBeenSet(false),
-    m_inputPartnerIdsHasBeenSet(false),
-    m_inputSourceType(InputSourceType::NOT_SET),
-    m_inputSourceTypeHasBeenSet(false),
-    m_mediaConnectFlowsHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_securityGroupsHasBeenSet(false),
-    m_sourcesHasBeenSet(false),
-    m_state(InputState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_type(InputType::NOT_SET),
-    m_typeHasBeenSet(false)
+Input::Input(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -72,10 +28,8 @@ Input& Input::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("arn"))
   {
     m_arn = jsonValue.GetString("arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("attachedChannels"))
   {
     Aws::Utils::Array<JsonView> attachedChannelsJsonList = jsonValue.GetArray("attachedChannels");
@@ -85,7 +39,6 @@ Input& Input::operator =(JsonView jsonValue)
     }
     m_attachedChannelsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("destinations"))
   {
     Aws::Utils::Array<JsonView> destinationsJsonList = jsonValue.GetArray("destinations");
@@ -95,21 +48,16 @@ Input& Input::operator =(JsonView jsonValue)
     }
     m_destinationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("id"))
   {
     m_id = jsonValue.GetString("id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputClass"))
   {
     m_inputClass = InputClassMapper::GetInputClassForName(jsonValue.GetString("inputClass"));
-
     m_inputClassHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputDevices"))
   {
     Aws::Utils::Array<JsonView> inputDevicesJsonList = jsonValue.GetArray("inputDevices");
@@ -119,7 +67,6 @@ Input& Input::operator =(JsonView jsonValue)
     }
     m_inputDevicesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputPartnerIds"))
   {
     Aws::Utils::Array<JsonView> inputPartnerIdsJsonList = jsonValue.GetArray("inputPartnerIds");
@@ -129,14 +76,11 @@ Input& Input::operator =(JsonView jsonValue)
     }
     m_inputPartnerIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inputSourceType"))
   {
     m_inputSourceType = InputSourceTypeMapper::GetInputSourceTypeForName(jsonValue.GetString("inputSourceType"));
-
     m_inputSourceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("mediaConnectFlows"))
   {
     Aws::Utils::Array<JsonView> mediaConnectFlowsJsonList = jsonValue.GetArray("mediaConnectFlows");
@@ -146,21 +90,16 @@ Input& Input::operator =(JsonView jsonValue)
     }
     m_mediaConnectFlowsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("securityGroups"))
   {
     Aws::Utils::Array<JsonView> securityGroupsJsonList = jsonValue.GetArray("securityGroups");
@@ -170,7 +109,6 @@ Input& Input::operator =(JsonView jsonValue)
     }
     m_securityGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sources"))
   {
     Aws::Utils::Array<JsonView> sourcesJsonList = jsonValue.GetArray("sources");
@@ -180,14 +118,11 @@ Input& Input::operator =(JsonView jsonValue)
     }
     m_sourcesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("state"))
   {
     m_state = InputStateMapper::GetInputStateForName(jsonValue.GetString("state"));
-
     m_stateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("tags"))
   {
     Aws::Map<Aws::String, JsonView> tagsJsonMap = jsonValue.GetObject("tags").GetAllObjects();
@@ -197,14 +132,40 @@ Input& Input::operator =(JsonView jsonValue)
     }
     m_tagsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("type"))
   {
     m_type = InputTypeMapper::GetInputTypeForName(jsonValue.GetString("type"));
-
     m_typeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("srtSettings"))
+  {
+    m_srtSettings = jsonValue.GetObject("srtSettings");
+    m_srtSettingsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("inputNetworkLocation"))
+  {
+    m_inputNetworkLocation = InputNetworkLocationMapper::GetInputNetworkLocationForName(jsonValue.GetString("inputNetworkLocation"));
+    m_inputNetworkLocationHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("multicastSettings"))
+  {
+    m_multicastSettings = jsonValue.GetObject("multicastSettings");
+    m_multicastSettingsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("smpte2110ReceiverGroupSettings"))
+  {
+    m_smpte2110ReceiverGroupSettings = jsonValue.GetObject("smpte2110ReceiverGroupSettings");
+    m_smpte2110ReceiverGroupSettingsHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("sdiSources"))
+  {
+    Aws::Utils::Array<JsonView> sdiSourcesJsonList = jsonValue.GetArray("sdiSources");
+    for(unsigned sdiSourcesIndex = 0; sdiSourcesIndex < sdiSourcesJsonList.GetLength(); ++sdiSourcesIndex)
+    {
+      m_sdiSources.push_back(sdiSourcesJsonList[sdiSourcesIndex].AsString());
+    }
+    m_sdiSourcesHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -342,6 +303,40 @@ JsonValue Input::Jsonize() const
   if(m_typeHasBeenSet)
   {
    payload.WithString("type", InputTypeMapper::GetNameForInputType(m_type));
+  }
+
+  if(m_srtSettingsHasBeenSet)
+  {
+   payload.WithObject("srtSettings", m_srtSettings.Jsonize());
+
+  }
+
+  if(m_inputNetworkLocationHasBeenSet)
+  {
+   payload.WithString("inputNetworkLocation", InputNetworkLocationMapper::GetNameForInputNetworkLocation(m_inputNetworkLocation));
+  }
+
+  if(m_multicastSettingsHasBeenSet)
+  {
+   payload.WithObject("multicastSettings", m_multicastSettings.Jsonize());
+
+  }
+
+  if(m_smpte2110ReceiverGroupSettingsHasBeenSet)
+  {
+   payload.WithObject("smpte2110ReceiverGroupSettings", m_smpte2110ReceiverGroupSettings.Jsonize());
+
+  }
+
+  if(m_sdiSourcesHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> sdiSourcesJsonList(m_sdiSources.size());
+   for(unsigned sdiSourcesIndex = 0; sdiSourcesIndex < sdiSourcesJsonList.GetLength(); ++sdiSourcesIndex)
+   {
+     sdiSourcesJsonList[sdiSourcesIndex].AsString(m_sdiSources[sdiSourcesIndex]);
+   }
+   payload.WithArray("sdiSources", std::move(sdiSourcesJsonList));
+
   }
 
   return payload;

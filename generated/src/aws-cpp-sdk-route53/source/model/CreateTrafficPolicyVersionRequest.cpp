@@ -6,6 +6,7 @@
 #include <aws/route53/model/CreateTrafficPolicyVersionRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 
 #include <utility>
 
@@ -13,12 +14,6 @@ using namespace Aws::Route53::Model;
 using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 
-CreateTrafficPolicyVersionRequest::CreateTrafficPolicyVersionRequest() : 
-    m_idHasBeenSet(false),
-    m_documentHasBeenSet(false),
-    m_commentHasBeenSet(false)
-{
-}
 
 Aws::String CreateTrafficPolicyVersionRequest::SerializePayload() const
 {

@@ -24,7 +24,7 @@ namespace Model
   class GetStackPolicyRequest : public CloudFormationRequest
   {
   public:
-    AWS_CLOUDFORMATION_API GetStackPolicyRequest();
+    AWS_CLOUDFORMATION_API GetStackPolicyRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,54 +39,18 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name or unique stack ID that's associated with the stack whose policy you
      * want to get.</p>
      */
-    inline const Aws::String& GetStackName() const{ return m_stackName; }
-
-    /**
-     * <p>The name or unique stack ID that's associated with the stack whose policy you
-     * want to get.</p>
-     */
+    inline const Aws::String& GetStackName() const { return m_stackName; }
     inline bool StackNameHasBeenSet() const { return m_stackNameHasBeenSet; }
-
-    /**
-     * <p>The name or unique stack ID that's associated with the stack whose policy you
-     * want to get.</p>
-     */
-    inline void SetStackName(const Aws::String& value) { m_stackNameHasBeenSet = true; m_stackName = value; }
-
-    /**
-     * <p>The name or unique stack ID that's associated with the stack whose policy you
-     * want to get.</p>
-     */
-    inline void SetStackName(Aws::String&& value) { m_stackNameHasBeenSet = true; m_stackName = std::move(value); }
-
-    /**
-     * <p>The name or unique stack ID that's associated with the stack whose policy you
-     * want to get.</p>
-     */
-    inline void SetStackName(const char* value) { m_stackNameHasBeenSet = true; m_stackName.assign(value); }
-
-    /**
-     * <p>The name or unique stack ID that's associated with the stack whose policy you
-     * want to get.</p>
-     */
-    inline GetStackPolicyRequest& WithStackName(const Aws::String& value) { SetStackName(value); return *this;}
-
-    /**
-     * <p>The name or unique stack ID that's associated with the stack whose policy you
-     * want to get.</p>
-     */
-    inline GetStackPolicyRequest& WithStackName(Aws::String&& value) { SetStackName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or unique stack ID that's associated with the stack whose policy you
-     * want to get.</p>
-     */
-    inline GetStackPolicyRequest& WithStackName(const char* value) { SetStackName(value); return *this;}
-
+    template<typename StackNameT = Aws::String>
+    void SetStackName(StackNameT&& value) { m_stackNameHasBeenSet = true; m_stackName = std::forward<StackNameT>(value); }
+    template<typename StackNameT = Aws::String>
+    GetStackPolicyRequest& WithStackName(StackNameT&& value) { SetStackName(std::forward<StackNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_stackName;

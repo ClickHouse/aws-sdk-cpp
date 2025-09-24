@@ -18,13 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsCloudFrontDistributionCacheBehaviors::AwsCloudFrontDistributionCacheBehaviors() : 
-    m_itemsHasBeenSet(false)
-{
-}
-
-AwsCloudFrontDistributionCacheBehaviors::AwsCloudFrontDistributionCacheBehaviors(JsonView jsonValue) : 
-    m_itemsHasBeenSet(false)
+AwsCloudFrontDistributionCacheBehaviors::AwsCloudFrontDistributionCacheBehaviors(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ AwsCloudFrontDistributionCacheBehaviors& AwsCloudFrontDistributionCacheBehaviors
     }
     m_itemsHasBeenSet = true;
   }
-
   return *this;
 }
 

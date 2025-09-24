@@ -33,146 +33,50 @@ namespace Model
   class ActionRevision
   {
   public:
-    AWS_CODEPIPELINE_API ActionRevision();
+    AWS_CODEPIPELINE_API ActionRevision() = default;
     AWS_CODEPIPELINE_API ActionRevision(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API ActionRevision& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The system-generated unique ID that identifies the revision number of the
      * action.</p>
      */
-    inline const Aws::String& GetRevisionId() const{ return m_revisionId; }
-
-    /**
-     * <p>The system-generated unique ID that identifies the revision number of the
-     * action.</p>
-     */
+    inline const Aws::String& GetRevisionId() const { return m_revisionId; }
     inline bool RevisionIdHasBeenSet() const { return m_revisionIdHasBeenSet; }
+    template<typename RevisionIdT = Aws::String>
+    void SetRevisionId(RevisionIdT&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::forward<RevisionIdT>(value); }
+    template<typename RevisionIdT = Aws::String>
+    ActionRevision& WithRevisionId(RevisionIdT&& value) { SetRevisionId(std::forward<RevisionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The system-generated unique ID that identifies the revision number of the
-     * action.</p>
-     */
-    inline void SetRevisionId(const Aws::String& value) { m_revisionIdHasBeenSet = true; m_revisionId = value; }
-
-    /**
-     * <p>The system-generated unique ID that identifies the revision number of the
-     * action.</p>
-     */
-    inline void SetRevisionId(Aws::String&& value) { m_revisionIdHasBeenSet = true; m_revisionId = std::move(value); }
-
-    /**
-     * <p>The system-generated unique ID that identifies the revision number of the
-     * action.</p>
-     */
-    inline void SetRevisionId(const char* value) { m_revisionIdHasBeenSet = true; m_revisionId.assign(value); }
-
-    /**
-     * <p>The system-generated unique ID that identifies the revision number of the
-     * action.</p>
-     */
-    inline ActionRevision& WithRevisionId(const Aws::String& value) { SetRevisionId(value); return *this;}
-
-    /**
-     * <p>The system-generated unique ID that identifies the revision number of the
-     * action.</p>
-     */
-    inline ActionRevision& WithRevisionId(Aws::String&& value) { SetRevisionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The system-generated unique ID that identifies the revision number of the
-     * action.</p>
-     */
-    inline ActionRevision& WithRevisionId(const char* value) { SetRevisionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The unique identifier of the change that set the state to this revision (for
      * example, a deployment ID or timestamp).</p>
      */
-    inline const Aws::String& GetRevisionChangeId() const{ return m_revisionChangeId; }
-
-    /**
-     * <p>The unique identifier of the change that set the state to this revision (for
-     * example, a deployment ID or timestamp).</p>
-     */
+    inline const Aws::String& GetRevisionChangeId() const { return m_revisionChangeId; }
     inline bool RevisionChangeIdHasBeenSet() const { return m_revisionChangeIdHasBeenSet; }
+    template<typename RevisionChangeIdT = Aws::String>
+    void SetRevisionChangeId(RevisionChangeIdT&& value) { m_revisionChangeIdHasBeenSet = true; m_revisionChangeId = std::forward<RevisionChangeIdT>(value); }
+    template<typename RevisionChangeIdT = Aws::String>
+    ActionRevision& WithRevisionChangeId(RevisionChangeIdT&& value) { SetRevisionChangeId(std::forward<RevisionChangeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the change that set the state to this revision (for
-     * example, a deployment ID or timestamp).</p>
-     */
-    inline void SetRevisionChangeId(const Aws::String& value) { m_revisionChangeIdHasBeenSet = true; m_revisionChangeId = value; }
-
-    /**
-     * <p>The unique identifier of the change that set the state to this revision (for
-     * example, a deployment ID or timestamp).</p>
-     */
-    inline void SetRevisionChangeId(Aws::String&& value) { m_revisionChangeIdHasBeenSet = true; m_revisionChangeId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the change that set the state to this revision (for
-     * example, a deployment ID or timestamp).</p>
-     */
-    inline void SetRevisionChangeId(const char* value) { m_revisionChangeIdHasBeenSet = true; m_revisionChangeId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the change that set the state to this revision (for
-     * example, a deployment ID or timestamp).</p>
-     */
-    inline ActionRevision& WithRevisionChangeId(const Aws::String& value) { SetRevisionChangeId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the change that set the state to this revision (for
-     * example, a deployment ID or timestamp).</p>
-     */
-    inline ActionRevision& WithRevisionChangeId(Aws::String&& value) { SetRevisionChangeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the change that set the state to this revision (for
-     * example, a deployment ID or timestamp).</p>
-     */
-    inline ActionRevision& WithRevisionChangeId(const char* value) { SetRevisionChangeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the most recent version of the action was created, in
      * timestamp format.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreated() const{ return m_created; }
-
-    /**
-     * <p>The date and time when the most recent version of the action was created, in
-     * timestamp format.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreated() const { return m_created; }
     inline bool CreatedHasBeenSet() const { return m_createdHasBeenSet; }
-
-    /**
-     * <p>The date and time when the most recent version of the action was created, in
-     * timestamp format.</p>
-     */
-    inline void SetCreated(const Aws::Utils::DateTime& value) { m_createdHasBeenSet = true; m_created = value; }
-
-    /**
-     * <p>The date and time when the most recent version of the action was created, in
-     * timestamp format.</p>
-     */
-    inline void SetCreated(Aws::Utils::DateTime&& value) { m_createdHasBeenSet = true; m_created = std::move(value); }
-
-    /**
-     * <p>The date and time when the most recent version of the action was created, in
-     * timestamp format.</p>
-     */
-    inline ActionRevision& WithCreated(const Aws::Utils::DateTime& value) { SetCreated(value); return *this;}
-
-    /**
-     * <p>The date and time when the most recent version of the action was created, in
-     * timestamp format.</p>
-     */
-    inline ActionRevision& WithCreated(Aws::Utils::DateTime&& value) { SetCreated(std::move(value)); return *this;}
-
+    template<typename CreatedT = Aws::Utils::DateTime>
+    void SetCreated(CreatedT&& value) { m_createdHasBeenSet = true; m_created = std::forward<CreatedT>(value); }
+    template<typename CreatedT = Aws::Utils::DateTime>
+    ActionRevision& WithCreated(CreatedT&& value) { SetCreated(std::forward<CreatedT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_revisionId;
@@ -181,7 +85,7 @@ namespace Model
     Aws::String m_revisionChangeId;
     bool m_revisionChangeIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_created;
+    Aws::Utils::DateTime m_created{};
     bool m_createdHasBeenSet = false;
   };
 

@@ -33,82 +33,37 @@ namespace Model
   class DevEnvironmentSessionConfiguration
   {
   public:
-    AWS_CODECATALYST_API DevEnvironmentSessionConfiguration();
+    AWS_CODECATALYST_API DevEnvironmentSessionConfiguration() = default;
     AWS_CODECATALYST_API DevEnvironmentSessionConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API DevEnvironmentSessionConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODECATALYST_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The type of the session.</p>
      */
-    inline const DevEnvironmentSessionType& GetSessionType() const{ return m_sessionType; }
-
-    /**
-     * <p>The type of the session.</p>
-     */
+    inline DevEnvironmentSessionType GetSessionType() const { return m_sessionType; }
     inline bool SessionTypeHasBeenSet() const { return m_sessionTypeHasBeenSet; }
+    inline void SetSessionType(DevEnvironmentSessionType value) { m_sessionTypeHasBeenSet = true; m_sessionType = value; }
+    inline DevEnvironmentSessionConfiguration& WithSessionType(DevEnvironmentSessionType value) { SetSessionType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the session.</p>
-     */
-    inline void SetSessionType(const DevEnvironmentSessionType& value) { m_sessionTypeHasBeenSet = true; m_sessionType = value; }
-
-    /**
-     * <p>The type of the session.</p>
-     */
-    inline void SetSessionType(DevEnvironmentSessionType&& value) { m_sessionTypeHasBeenSet = true; m_sessionType = std::move(value); }
-
-    /**
-     * <p>The type of the session.</p>
-     */
-    inline DevEnvironmentSessionConfiguration& WithSessionType(const DevEnvironmentSessionType& value) { SetSessionType(value); return *this;}
-
-    /**
-     * <p>The type of the session.</p>
-     */
-    inline DevEnvironmentSessionConfiguration& WithSessionType(DevEnvironmentSessionType&& value) { SetSessionType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about optional commands that will be run on the Dev Environment
      * when the SSH session begins.</p>
      */
-    inline const ExecuteCommandSessionConfiguration& GetExecuteCommandSessionConfiguration() const{ return m_executeCommandSessionConfiguration; }
-
-    /**
-     * <p>Information about optional commands that will be run on the Dev Environment
-     * when the SSH session begins.</p>
-     */
+    inline const ExecuteCommandSessionConfiguration& GetExecuteCommandSessionConfiguration() const { return m_executeCommandSessionConfiguration; }
     inline bool ExecuteCommandSessionConfigurationHasBeenSet() const { return m_executeCommandSessionConfigurationHasBeenSet; }
-
-    /**
-     * <p>Information about optional commands that will be run on the Dev Environment
-     * when the SSH session begins.</p>
-     */
-    inline void SetExecuteCommandSessionConfiguration(const ExecuteCommandSessionConfiguration& value) { m_executeCommandSessionConfigurationHasBeenSet = true; m_executeCommandSessionConfiguration = value; }
-
-    /**
-     * <p>Information about optional commands that will be run on the Dev Environment
-     * when the SSH session begins.</p>
-     */
-    inline void SetExecuteCommandSessionConfiguration(ExecuteCommandSessionConfiguration&& value) { m_executeCommandSessionConfigurationHasBeenSet = true; m_executeCommandSessionConfiguration = std::move(value); }
-
-    /**
-     * <p>Information about optional commands that will be run on the Dev Environment
-     * when the SSH session begins.</p>
-     */
-    inline DevEnvironmentSessionConfiguration& WithExecuteCommandSessionConfiguration(const ExecuteCommandSessionConfiguration& value) { SetExecuteCommandSessionConfiguration(value); return *this;}
-
-    /**
-     * <p>Information about optional commands that will be run on the Dev Environment
-     * when the SSH session begins.</p>
-     */
-    inline DevEnvironmentSessionConfiguration& WithExecuteCommandSessionConfiguration(ExecuteCommandSessionConfiguration&& value) { SetExecuteCommandSessionConfiguration(std::move(value)); return *this;}
-
+    template<typename ExecuteCommandSessionConfigurationT = ExecuteCommandSessionConfiguration>
+    void SetExecuteCommandSessionConfiguration(ExecuteCommandSessionConfigurationT&& value) { m_executeCommandSessionConfigurationHasBeenSet = true; m_executeCommandSessionConfiguration = std::forward<ExecuteCommandSessionConfigurationT>(value); }
+    template<typename ExecuteCommandSessionConfigurationT = ExecuteCommandSessionConfiguration>
+    DevEnvironmentSessionConfiguration& WithExecuteCommandSessionConfiguration(ExecuteCommandSessionConfigurationT&& value) { SetExecuteCommandSessionConfiguration(std::forward<ExecuteCommandSessionConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
-    DevEnvironmentSessionType m_sessionType;
+    DevEnvironmentSessionType m_sessionType{DevEnvironmentSessionType::NOT_SET};
     bool m_sessionTypeHasBeenSet = false;
 
     ExecuteCommandSessionConfiguration m_executeCommandSessionConfiguration;

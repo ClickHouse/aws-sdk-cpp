@@ -30,39 +30,25 @@ namespace Model
   class DvbTdtSettings
   {
   public:
-    AWS_MEDIACONVERT_API DvbTdtSettings();
+    AWS_MEDIACONVERT_API DvbTdtSettings() = default;
     AWS_MEDIACONVERT_API DvbTdtSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API DvbTdtSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONVERT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The number of milliseconds between instances of this table in the output
      * transport stream.
      */
-    inline int GetTdtInterval() const{ return m_tdtInterval; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
+    inline int GetTdtInterval() const { return m_tdtInterval; }
     inline bool TdtIntervalHasBeenSet() const { return m_tdtIntervalHasBeenSet; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
     inline void SetTdtInterval(int value) { m_tdtIntervalHasBeenSet = true; m_tdtInterval = value; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
     inline DvbTdtSettings& WithTdtInterval(int value) { SetTdtInterval(value); return *this;}
-
+    ///@}
   private:
 
-    int m_tdtInterval;
+    int m_tdtInterval{0};
     bool m_tdtIntervalHasBeenSet = false;
   };
 

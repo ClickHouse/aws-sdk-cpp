@@ -12,34 +12,6 @@ using namespace Aws::Lambda::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateEventSourceMappingRequest::UpdateEventSourceMappingRequest() : 
-    m_uUIDHasBeenSet(false),
-    m_functionNameHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_batchSize(0),
-    m_batchSizeHasBeenSet(false),
-    m_filterCriteriaHasBeenSet(false),
-    m_maximumBatchingWindowInSeconds(0),
-    m_maximumBatchingWindowInSecondsHasBeenSet(false),
-    m_destinationConfigHasBeenSet(false),
-    m_maximumRecordAgeInSeconds(0),
-    m_maximumRecordAgeInSecondsHasBeenSet(false),
-    m_bisectBatchOnFunctionError(false),
-    m_bisectBatchOnFunctionErrorHasBeenSet(false),
-    m_maximumRetryAttempts(0),
-    m_maximumRetryAttemptsHasBeenSet(false),
-    m_parallelizationFactor(0),
-    m_parallelizationFactorHasBeenSet(false),
-    m_sourceAccessConfigurationsHasBeenSet(false),
-    m_tumblingWindowInSeconds(0),
-    m_tumblingWindowInSecondsHasBeenSet(false),
-    m_functionResponseTypesHasBeenSet(false),
-    m_scalingConfigHasBeenSet(false),
-    m_documentDBEventSourceConfigHasBeenSet(false)
-{
-}
-
 Aws::String UpdateEventSourceMappingRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -138,9 +110,39 @@ Aws::String UpdateEventSourceMappingRequest::SerializePayload() const
 
   }
 
+  if(m_amazonManagedKafkaEventSourceConfigHasBeenSet)
+  {
+   payload.WithObject("AmazonManagedKafkaEventSourceConfig", m_amazonManagedKafkaEventSourceConfig.Jsonize());
+
+  }
+
+  if(m_selfManagedKafkaEventSourceConfigHasBeenSet)
+  {
+   payload.WithObject("SelfManagedKafkaEventSourceConfig", m_selfManagedKafkaEventSourceConfig.Jsonize());
+
+  }
+
   if(m_documentDBEventSourceConfigHasBeenSet)
   {
    payload.WithObject("DocumentDBEventSourceConfig", m_documentDBEventSourceConfig.Jsonize());
+
+  }
+
+  if(m_kMSKeyArnHasBeenSet)
+  {
+   payload.WithString("KMSKeyArn", m_kMSKeyArn);
+
+  }
+
+  if(m_metricsConfigHasBeenSet)
+  {
+   payload.WithObject("MetricsConfig", m_metricsConfig.Jsonize());
+
+  }
+
+  if(m_provisionedPollerConfigHasBeenSet)
+  {
+   payload.WithObject("ProvisionedPollerConfig", m_provisionedPollerConfig.Jsonize());
 
   }
 

@@ -10,20 +10,6 @@
 using namespace Aws::DocDB::Model;
 using namespace Aws::Utils;
 
-DescribeOrderableDBInstanceOptionsRequest::DescribeOrderableDBInstanceOptionsRequest() : 
-    m_engineHasBeenSet(false),
-    m_engineVersionHasBeenSet(false),
-    m_dBInstanceClassHasBeenSet(false),
-    m_licenseModelHasBeenSet(false),
-    m_vpc(false),
-    m_vpcHasBeenSet(false),
-    m_filtersHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_markerHasBeenSet(false)
-{
-}
-
 Aws::String DescribeOrderableDBInstanceOptionsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -55,11 +41,18 @@ Aws::String DescribeOrderableDBInstanceOptionsRequest::SerializePayload() const
 
   if(m_filtersHasBeenSet)
   {
-    unsigned filtersCount = 1;
-    for(auto& item : m_filters)
+    if (m_filters.empty())
     {
-      item.OutputToStream(ss, "Filters.member.", filtersCount, "");
-      filtersCount++;
+      ss << "Filters=&";
+    }
+    else
+    {
+      unsigned filtersCount = 1;
+      for(auto& item : m_filters)
+      {
+        item.OutputToStream(ss, "Filters.Filter.", filtersCount, "");
+        filtersCount++;
+      }
     }
   }
 

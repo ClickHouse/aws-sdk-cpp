@@ -23,7 +23,7 @@ namespace Model
   class TagMFADeviceRequest : public IAMRequest
   {
   public:
-    AWS_IAM_API TagMFADeviceRequest();
+    AWS_IAM_API TagMFADeviceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,6 +38,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The unique identifier for the IAM virtual MFA device to which you want to add
      * tags. For virtual MFA devices, the serial number is the same as the ARN.</p>
@@ -46,127 +47,28 @@ namespace Model
      * consisting of upper and lowercase alphanumeric characters with no spaces. You
      * can also include any of the following characters: _+=,.@-</p>
      */
-    inline const Aws::String& GetSerialNumber() const{ return m_serialNumber; }
-
-    /**
-     * <p>The unique identifier for the IAM virtual MFA device to which you want to add
-     * tags. For virtual MFA devices, the serial number is the same as the ARN.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
+    inline const Aws::String& GetSerialNumber() const { return m_serialNumber; }
     inline bool SerialNumberHasBeenSet() const { return m_serialNumberHasBeenSet; }
+    template<typename SerialNumberT = Aws::String>
+    void SetSerialNumber(SerialNumberT&& value) { m_serialNumberHasBeenSet = true; m_serialNumber = std::forward<SerialNumberT>(value); }
+    template<typename SerialNumberT = Aws::String>
+    TagMFADeviceRequest& WithSerialNumber(SerialNumberT&& value) { SetSerialNumber(std::forward<SerialNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the IAM virtual MFA device to which you want to add
-     * tags. For virtual MFA devices, the serial number is the same as the ARN.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetSerialNumber(const Aws::String& value) { m_serialNumberHasBeenSet = true; m_serialNumber = value; }
-
-    /**
-     * <p>The unique identifier for the IAM virtual MFA device to which you want to add
-     * tags. For virtual MFA devices, the serial number is the same as the ARN.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetSerialNumber(Aws::String&& value) { m_serialNumberHasBeenSet = true; m_serialNumber = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the IAM virtual MFA device to which you want to add
-     * tags. For virtual MFA devices, the serial number is the same as the ARN.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline void SetSerialNumber(const char* value) { m_serialNumberHasBeenSet = true; m_serialNumber.assign(value); }
-
-    /**
-     * <p>The unique identifier for the IAM virtual MFA device to which you want to add
-     * tags. For virtual MFA devices, the serial number is the same as the ARN.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline TagMFADeviceRequest& WithSerialNumber(const Aws::String& value) { SetSerialNumber(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the IAM virtual MFA device to which you want to add
-     * tags. For virtual MFA devices, the serial number is the same as the ARN.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline TagMFADeviceRequest& WithSerialNumber(Aws::String&& value) { SetSerialNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the IAM virtual MFA device to which you want to add
-     * tags. For virtual MFA devices, the serial number is the same as the ARN.</p>
-     * <p>This parameter allows (through its <a
-     * href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters
-     * consisting of upper and lowercase alphanumeric characters with no spaces. You
-     * can also include any of the following characters: _+=,.@-</p>
-     */
-    inline TagMFADeviceRequest& WithSerialNumber(const char* value) { SetSerialNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of tags that you want to attach to the IAM virtual MFA device. Each
      * tag consists of a key name and an associated value.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM virtual MFA device. Each
-     * tag consists of a key name and an associated value.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM virtual MFA device. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM virtual MFA device. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM virtual MFA device. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline TagMFADeviceRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM virtual MFA device. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline TagMFADeviceRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM virtual MFA device. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline TagMFADeviceRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The list of tags that you want to attach to the IAM virtual MFA device. Each
-     * tag consists of a key name and an associated value.</p>
-     */
-    inline TagMFADeviceRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    TagMFADeviceRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    TagMFADeviceRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_serialNumber;

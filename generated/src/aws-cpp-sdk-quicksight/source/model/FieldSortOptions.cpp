@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-FieldSortOptions::FieldSortOptions() : 
-    m_fieldSortHasBeenSet(false),
-    m_columnSortHasBeenSet(false)
-{
-}
-
-FieldSortOptions::FieldSortOptions(JsonView jsonValue) : 
-    m_fieldSortHasBeenSet(false),
-    m_columnSortHasBeenSet(false)
+FieldSortOptions::FieldSortOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ FieldSortOptions& FieldSortOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FieldSort"))
   {
     m_fieldSort = jsonValue.GetObject("FieldSort");
-
     m_fieldSortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ColumnSort"))
   {
     m_columnSort = jsonValue.GetObject("ColumnSort");
-
     m_columnSortHasBeenSet = true;
   }
-
   return *this;
 }
 

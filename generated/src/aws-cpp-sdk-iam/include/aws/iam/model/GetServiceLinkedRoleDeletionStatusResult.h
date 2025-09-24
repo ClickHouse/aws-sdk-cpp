@@ -29,85 +29,49 @@ namespace Model
   class GetServiceLinkedRoleDeletionStatusResult
   {
   public:
-    AWS_IAM_API GetServiceLinkedRoleDeletionStatusResult();
+    AWS_IAM_API GetServiceLinkedRoleDeletionStatusResult() = default;
     AWS_IAM_API GetServiceLinkedRoleDeletionStatusResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_IAM_API GetServiceLinkedRoleDeletionStatusResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>The status of the deletion.</p>
      */
-    inline const DeletionTaskStatusType& GetStatus() const{ return m_status; }
+    inline DeletionTaskStatusType GetStatus() const { return m_status; }
+    inline void SetStatus(DeletionTaskStatusType value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetServiceLinkedRoleDeletionStatusResult& WithStatus(DeletionTaskStatusType value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the deletion.</p>
-     */
-    inline void SetStatus(const DeletionTaskStatusType& value) { m_status = value; }
-
-    /**
-     * <p>The status of the deletion.</p>
-     */
-    inline void SetStatus(DeletionTaskStatusType&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the deletion.</p>
-     */
-    inline GetServiceLinkedRoleDeletionStatusResult& WithStatus(const DeletionTaskStatusType& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the deletion.</p>
-     */
-    inline GetServiceLinkedRoleDeletionStatusResult& WithStatus(DeletionTaskStatusType&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that contains details about the reason the deletion failed.</p>
      */
-    inline const DeletionTaskFailureReasonType& GetReason() const{ return m_reason; }
+    inline const DeletionTaskFailureReasonType& GetReason() const { return m_reason; }
+    template<typename ReasonT = DeletionTaskFailureReasonType>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = DeletionTaskFailureReasonType>
+    GetServiceLinkedRoleDeletionStatusResult& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that contains details about the reason the deletion failed.</p>
-     */
-    inline void SetReason(const DeletionTaskFailureReasonType& value) { m_reason = value; }
-
-    /**
-     * <p>An object that contains details about the reason the deletion failed.</p>
-     */
-    inline void SetReason(DeletionTaskFailureReasonType&& value) { m_reason = std::move(value); }
-
-    /**
-     * <p>An object that contains details about the reason the deletion failed.</p>
-     */
-    inline GetServiceLinkedRoleDeletionStatusResult& WithReason(const DeletionTaskFailureReasonType& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>An object that contains details about the reason the deletion failed.</p>
-     */
-    inline GetServiceLinkedRoleDeletionStatusResult& WithReason(DeletionTaskFailureReasonType&& value) { SetReason(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const ResponseMetadata& GetResponseMetadata() const{ return m_responseMetadata; }
-
-    
-    inline void SetResponseMetadata(const ResponseMetadata& value) { m_responseMetadata = value; }
-
-    
-    inline void SetResponseMetadata(ResponseMetadata&& value) { m_responseMetadata = std::move(value); }
-
-    
-    inline GetServiceLinkedRoleDeletionStatusResult& WithResponseMetadata(const ResponseMetadata& value) { SetResponseMetadata(value); return *this;}
-
-    
-    inline GetServiceLinkedRoleDeletionStatusResult& WithResponseMetadata(ResponseMetadata&& value) { SetResponseMetadata(std::move(value)); return *this;}
-
+    inline const ResponseMetadata& GetResponseMetadata() const { return m_responseMetadata; }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    void SetResponseMetadata(ResponseMetadataT&& value) { m_responseMetadataHasBeenSet = true; m_responseMetadata = std::forward<ResponseMetadataT>(value); }
+    template<typename ResponseMetadataT = ResponseMetadata>
+    GetServiceLinkedRoleDeletionStatusResult& WithResponseMetadata(ResponseMetadataT&& value) { SetResponseMetadata(std::forward<ResponseMetadataT>(value)); return *this;}
+    ///@}
   private:
 
-    DeletionTaskStatusType m_status;
+    DeletionTaskStatusType m_status{DeletionTaskStatusType::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
     DeletionTaskFailureReasonType m_reason;
+    bool m_reasonHasBeenSet = false;
 
     ResponseMetadata m_responseMetadata;
+    bool m_responseMetadataHasBeenSet = false;
   };
 
 } // namespace Model

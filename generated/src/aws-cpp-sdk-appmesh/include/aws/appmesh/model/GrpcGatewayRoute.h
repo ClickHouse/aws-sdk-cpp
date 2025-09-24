@@ -32,73 +32,35 @@ namespace Model
   class GrpcGatewayRoute
   {
   public:
-    AWS_APPMESH_API GrpcGatewayRoute();
+    AWS_APPMESH_API GrpcGatewayRoute() = default;
     AWS_APPMESH_API GrpcGatewayRoute(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API GrpcGatewayRoute& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_APPMESH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An object that represents the action to take if a match is determined.</p>
      */
-    inline const GrpcGatewayRouteAction& GetAction() const{ return m_action; }
-
-    /**
-     * <p>An object that represents the action to take if a match is determined.</p>
-     */
+    inline const GrpcGatewayRouteAction& GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    template<typename ActionT = GrpcGatewayRouteAction>
+    void SetAction(ActionT&& value) { m_actionHasBeenSet = true; m_action = std::forward<ActionT>(value); }
+    template<typename ActionT = GrpcGatewayRouteAction>
+    GrpcGatewayRoute& WithAction(ActionT&& value) { SetAction(std::forward<ActionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An object that represents the action to take if a match is determined.</p>
-     */
-    inline void SetAction(const GrpcGatewayRouteAction& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>An object that represents the action to take if a match is determined.</p>
-     */
-    inline void SetAction(GrpcGatewayRouteAction&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>An object that represents the action to take if a match is determined.</p>
-     */
-    inline GrpcGatewayRoute& WithAction(const GrpcGatewayRouteAction& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>An object that represents the action to take if a match is determined.</p>
-     */
-    inline GrpcGatewayRoute& WithAction(GrpcGatewayRouteAction&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>An object that represents the criteria for determining a request match.</p>
      */
-    inline const GrpcGatewayRouteMatch& GetMatch() const{ return m_match; }
-
-    /**
-     * <p>An object that represents the criteria for determining a request match.</p>
-     */
+    inline const GrpcGatewayRouteMatch& GetMatch() const { return m_match; }
     inline bool MatchHasBeenSet() const { return m_matchHasBeenSet; }
-
-    /**
-     * <p>An object that represents the criteria for determining a request match.</p>
-     */
-    inline void SetMatch(const GrpcGatewayRouteMatch& value) { m_matchHasBeenSet = true; m_match = value; }
-
-    /**
-     * <p>An object that represents the criteria for determining a request match.</p>
-     */
-    inline void SetMatch(GrpcGatewayRouteMatch&& value) { m_matchHasBeenSet = true; m_match = std::move(value); }
-
-    /**
-     * <p>An object that represents the criteria for determining a request match.</p>
-     */
-    inline GrpcGatewayRoute& WithMatch(const GrpcGatewayRouteMatch& value) { SetMatch(value); return *this;}
-
-    /**
-     * <p>An object that represents the criteria for determining a request match.</p>
-     */
-    inline GrpcGatewayRoute& WithMatch(GrpcGatewayRouteMatch&& value) { SetMatch(std::move(value)); return *this;}
-
+    template<typename MatchT = GrpcGatewayRouteMatch>
+    void SetMatch(MatchT&& value) { m_matchHasBeenSet = true; m_match = std::forward<MatchT>(value); }
+    template<typename MatchT = GrpcGatewayRouteMatch>
+    GrpcGatewayRoute& WithMatch(MatchT&& value) { SetMatch(std::forward<MatchT>(value)); return *this;}
+    ///@}
   private:
 
     GrpcGatewayRouteAction m_action;

@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ClassicLinkInstance::ClassicLinkInstance() : 
-    m_groupsHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
-{
-}
-
-ClassicLinkInstance::ClassicLinkInstance(const XmlNode& xmlNode) : 
-    m_groupsHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_vpcIdHasBeenSet(false)
+ClassicLinkInstance::ClassicLinkInstance(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -47,6 +35,7 @@ ClassicLinkInstance& ClassicLinkInstance::operator =(const XmlNode& xmlNode)
     if(!groupsNode.IsNull())
     {
       XmlNode groupsMember = groupsNode.FirstChild("item");
+      m_groupsHasBeenSet = !groupsMember.IsNull();
       while(!groupsMember.IsNull())
       {
         m_groups.push_back(groupsMember);
@@ -65,6 +54,7 @@ ClassicLinkInstance& ClassicLinkInstance::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -128,7 +118,7 @@ void ClassicLinkInstance::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_groups)
       {
         Aws::StringStream groupsSs;
-        groupsSs << location <<  ".GroupSet." << groupsIdx++;
+        groupsSs << location << ".GroupSet." << groupsIdx++;
         item.OutputToStream(oStream, groupsSs.str().c_str());
       }
   }
@@ -142,7 +132,7 @@ void ClassicLinkInstance::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

@@ -20,31 +20,7 @@ namespace IAM
 namespace Model
 {
 
-UserDetail::UserDetail() : 
-    m_pathHasBeenSet(false),
-    m_userNameHasBeenSet(false),
-    m_userIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_userPolicyListHasBeenSet(false),
-    m_groupListHasBeenSet(false),
-    m_attachedManagedPoliciesHasBeenSet(false),
-    m_permissionsBoundaryHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-UserDetail::UserDetail(const XmlNode& xmlNode) : 
-    m_pathHasBeenSet(false),
-    m_userNameHasBeenSet(false),
-    m_userIdHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_userPolicyListHasBeenSet(false),
-    m_groupListHasBeenSet(false),
-    m_attachedManagedPoliciesHasBeenSet(false),
-    m_permissionsBoundaryHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+UserDetail::UserDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -89,6 +65,7 @@ UserDetail& UserDetail::operator =(const XmlNode& xmlNode)
     if(!userPolicyListNode.IsNull())
     {
       XmlNode userPolicyListMember = userPolicyListNode.FirstChild("member");
+      m_userPolicyListHasBeenSet = !userPolicyListMember.IsNull();
       while(!userPolicyListMember.IsNull())
       {
         m_userPolicyList.push_back(userPolicyListMember);
@@ -101,6 +78,7 @@ UserDetail& UserDetail::operator =(const XmlNode& xmlNode)
     if(!groupListNode.IsNull())
     {
       XmlNode groupListMember = groupListNode.FirstChild("member");
+      m_groupListHasBeenSet = !groupListMember.IsNull();
       while(!groupListMember.IsNull())
       {
         m_groupList.push_back(groupListMember.GetText());
@@ -113,6 +91,7 @@ UserDetail& UserDetail::operator =(const XmlNode& xmlNode)
     if(!attachedManagedPoliciesNode.IsNull())
     {
       XmlNode attachedManagedPoliciesMember = attachedManagedPoliciesNode.FirstChild("member");
+      m_attachedManagedPoliciesHasBeenSet = !attachedManagedPoliciesMember.IsNull();
       while(!attachedManagedPoliciesMember.IsNull())
       {
         m_attachedManagedPolicies.push_back(attachedManagedPoliciesMember);
@@ -131,6 +110,7 @@ UserDetail& UserDetail::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("member");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -250,7 +230,7 @@ void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_userPolicyList)
       {
         Aws::StringStream userPolicyListSs;
-        userPolicyListSs << location <<  ".UserPolicyList.member." << userPolicyListIdx++;
+        userPolicyListSs << location << ".UserPolicyList.member." << userPolicyListIdx++;
         item.OutputToStream(oStream, userPolicyListSs.str().c_str());
       }
   }
@@ -268,7 +248,7 @@ void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_attachedManagedPolicies)
       {
         Aws::StringStream attachedManagedPoliciesSs;
-        attachedManagedPoliciesSs << location <<  ".AttachedManagedPolicies.member." << attachedManagedPoliciesIdx++;
+        attachedManagedPoliciesSs << location << ".AttachedManagedPolicies.member." << attachedManagedPoliciesIdx++;
         item.OutputToStream(oStream, attachedManagedPoliciesSs.str().c_str());
       }
   }
@@ -284,7 +264,7 @@ void UserDetail::OutputToStream(Aws::OStream& oStream, const char* location) con
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".Tags.member." << tagsIdx++;
+        tagsSs << location << ".Tags.member." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

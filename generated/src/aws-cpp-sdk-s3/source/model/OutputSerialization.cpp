@@ -20,15 +20,7 @@ namespace S3
 namespace Model
 {
 
-OutputSerialization::OutputSerialization() : 
-    m_cSVHasBeenSet(false),
-    m_jSONHasBeenSet(false)
-{
-}
-
-OutputSerialization::OutputSerialization(const XmlNode& xmlNode) : 
-    m_cSVHasBeenSet(false),
-    m_jSONHasBeenSet(false)
+OutputSerialization::OutputSerialization(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

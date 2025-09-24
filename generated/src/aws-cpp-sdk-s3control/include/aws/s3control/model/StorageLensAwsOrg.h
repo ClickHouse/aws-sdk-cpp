@@ -31,13 +31,14 @@ namespace Model
   class StorageLensAwsOrg
   {
   public:
-    AWS_S3CONTROL_API StorageLensAwsOrg();
+    AWS_S3CONTROL_API StorageLensAwsOrg() = default;
     AWS_S3CONTROL_API StorageLensAwsOrg(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API StorageLensAwsOrg& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>A container for the Amazon Resource Name (ARN) of the Amazon Web Services
      * organization. This property is read-only and follows the following format:
@@ -45,71 +46,13 @@ namespace Model
      * arn:aws:organizations:<i>us-east-1</i>:<i>example-account-id</i>:organization/<i>o-ex2l495dck</i>
      * </code> </p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>A container for the Amazon Resource Name (ARN) of the Amazon Web Services
-     * organization. This property is read-only and follows the following format:
-     * <code>
-     * arn:aws:organizations:<i>us-east-1</i>:<i>example-account-id</i>:organization/<i>o-ex2l495dck</i>
-     * </code> </p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
-
-    /**
-     * <p>A container for the Amazon Resource Name (ARN) of the Amazon Web Services
-     * organization. This property is read-only and follows the following format:
-     * <code>
-     * arn:aws:organizations:<i>us-east-1</i>:<i>example-account-id</i>:organization/<i>o-ex2l495dck</i>
-     * </code> </p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>A container for the Amazon Resource Name (ARN) of the Amazon Web Services
-     * organization. This property is read-only and follows the following format:
-     * <code>
-     * arn:aws:organizations:<i>us-east-1</i>:<i>example-account-id</i>:organization/<i>o-ex2l495dck</i>
-     * </code> </p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>A container for the Amazon Resource Name (ARN) of the Amazon Web Services
-     * organization. This property is read-only and follows the following format:
-     * <code>
-     * arn:aws:organizations:<i>us-east-1</i>:<i>example-account-id</i>:organization/<i>o-ex2l495dck</i>
-     * </code> </p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>A container for the Amazon Resource Name (ARN) of the Amazon Web Services
-     * organization. This property is read-only and follows the following format:
-     * <code>
-     * arn:aws:organizations:<i>us-east-1</i>:<i>example-account-id</i>:organization/<i>o-ex2l495dck</i>
-     * </code> </p>
-     */
-    inline StorageLensAwsOrg& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>A container for the Amazon Resource Name (ARN) of the Amazon Web Services
-     * organization. This property is read-only and follows the following format:
-     * <code>
-     * arn:aws:organizations:<i>us-east-1</i>:<i>example-account-id</i>:organization/<i>o-ex2l495dck</i>
-     * </code> </p>
-     */
-    inline StorageLensAwsOrg& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>A container for the Amazon Resource Name (ARN) of the Amazon Web Services
-     * organization. This property is read-only and follows the following format:
-     * <code>
-     * arn:aws:organizations:<i>us-east-1</i>:<i>example-account-id</i>:organization/<i>o-ex2l495dck</i>
-     * </code> </p>
-     */
-    inline StorageLensAwsOrg& WithArn(const char* value) { SetArn(value); return *this;}
-
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    StorageLensAwsOrg& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

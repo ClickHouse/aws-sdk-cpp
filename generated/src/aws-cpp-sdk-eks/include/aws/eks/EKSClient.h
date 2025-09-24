@@ -32,8 +32,8 @@ namespace EKS
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef EKSClientConfiguration ClientConfigurationType;
       typedef EKSEndpointProvider EndpointProviderType;
@@ -43,14 +43,14 @@ namespace EKS
         * is not specified, it will be initialized to default values.
         */
         EKSClient(const Aws::EKS::EKSClientConfiguration& clientConfiguration = Aws::EKS::EKSClientConfiguration(),
-                  std::shared_ptr<EKSEndpointProviderBase> endpointProvider = Aws::MakeShared<EKSEndpointProvider>(ALLOCATION_TAG));
+                  std::shared_ptr<EKSEndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         EKSClient(const Aws::Auth::AWSCredentials& credentials,
-                  std::shared_ptr<EKSEndpointProviderBase> endpointProvider = Aws::MakeShared<EKSEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<EKSEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::EKS::EKSClientConfiguration& clientConfiguration = Aws::EKS::EKSClientConfiguration());
 
        /**
@@ -58,7 +58,7 @@ namespace EKS
         * the default http client factory will be used
         */
         EKSClient(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                  std::shared_ptr<EKSEndpointProviderBase> endpointProvider = Aws::MakeShared<EKSEndpointProvider>(ALLOCATION_TAG),
+                  std::shared_ptr<EKSEndpointProviderBase> endpointProvider = nullptr,
                   const Aws::EKS::EKSClientConfiguration& clientConfiguration = Aws::EKS::EKSClientConfiguration());
 
 
@@ -264,7 +264,9 @@ namespace EKS
          * <code>endpointPublicAccess</code> and <code>endpointPrivateAccess</code>
          * parameters to enable or disable public and private access to your cluster's
          * Kubernetes API server endpoint. By default, public access is enabled, and
-         * private access is disabled. For more information, see <a
+         * private access is disabled. The endpoint domain name and IP address family
+         * depends on the value of the <code>ipFamily</code> for the cluster. For more
+         * information, see <a
          * href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon
          * EKS Cluster Endpoint Access Control</a> in the <i> <i>Amazon EKS User Guide</i>
          * </i>. </p> <p>You can use the <code>logging</code> parameter to enable or
@@ -280,8 +282,8 @@ namespace EKS
          * you create an Amazon EKS cluster, you must configure your Kubernetes tooling to
          * communicate with the API server and launch nodes into your cluster. For more
          * information, see <a
-         * href="https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html">Managing
-         * Cluster Authentication</a> and <a
+         * href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-auth.html">Allowing
+         * users to access your cluster</a> and <a
          * href="https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html">Launching
          * Amazon EKS nodes</a> in the <i>Amazon EKS User Guide</i>.</p><p><h3>See
          * Also:</h3>   <a
@@ -342,7 +344,7 @@ namespace EKS
          * least one Fargate profile in a cluster to be able to run pods on Fargate.</p>
          * <p>The Fargate profile allows an administrator to declare which pods run on
          * Fargate and specify which pods run on which Fargate profile. This declaration is
-         * done through the profile’s selectors. Each profile can have up to five selectors
+         * done through the profile's selectors. Each profile can have up to five selectors
          * that contain a namespace and labels. A namespace is required for every selector.
          * The label field consists of multiple optional key-value pairs. Pods that match
          * the selectors are scheduled on Fargate. If a to-be-scheduled pod matches any of
@@ -394,12 +396,17 @@ namespace EKS
          * create a node group for your cluster that is equal to the current Kubernetes
          * version for the cluster. All node groups are created with the latest AMI release
          * version for the respective minor Kubernetes version of the cluster, unless you
-         * deploy a custom AMI using a launch template. For more information about using
-         * launch templates, see <a
-         * href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html">Launch
-         * template support</a>.</p> <p>An Amazon EKS managed node group is an Amazon EC2
-         * Auto Scaling group and associated Amazon EC2 instances that are managed by
-         * Amazon Web Services for an Amazon EKS cluster. For more information, see <a
+         * deploy a custom AMI using a launch template.</p> <p>For later updates, you will
+         * only be able to update a node group using a launch template only if it was
+         * originally deployed with a launch template. Additionally, the launch template ID
+         * or name must match what was used when the node group was created. You can update
+         * the launch template version with necessary changes. For more information about
+         * using launch templates, see <a
+         * href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html">Customizing
+         * managed nodes with launch templates</a>.</p> <p>An Amazon EKS managed node group
+         * is an Amazon EC2 Auto Scaling group and associated Amazon EC2 instances that are
+         * managed by Amazon Web Services for an Amazon EKS cluster. For more information,
+         * see <a
          * href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">Managed
          * node groups</a> in the <i>Amazon EKS User Guide</i>.</p>  <p>Windows AMI
          * types are only supported for commercial Amazon Web Services Regions that support
@@ -430,17 +437,31 @@ namespace EKS
         /**
          * <p>Creates an EKS Pod Identity association between a service account in an
          * Amazon EKS cluster and an IAM role with <i>EKS Pod Identity</i>. Use EKS Pod
-         * Identity to give temporary IAM credentials to pods and the credentials are
+         * Identity to give temporary IAM credentials to Pods and the credentials are
          * rotated automatically.</p> <p>Amazon EKS Pod Identity associations provide the
          * ability to manage credentials for your applications, similar to the way that
          * Amazon EC2 instance profiles provide credentials to Amazon EC2 instances.</p>
-         * <p>If a pod uses a service account that has an association, Amazon EKS sets
-         * environment variables in the containers of the pod. The environment variables
+         * <p>If a Pod uses a service account that has an association, Amazon EKS sets
+         * environment variables in the containers of the Pod. The environment variables
          * configure the Amazon Web Services SDKs, including the Command Line Interface, to
-         * use the EKS Pod Identity credentials.</p> <p>Pod Identity is a simpler method
-         * than <i>IAM roles for service accounts</i>, as this method doesn't use OIDC
-         * identity providers. Additionally, you can configure a role for Pod Identity
-         * once, and reuse it across clusters.</p><p><h3>See Also:</h3>   <a
+         * use the EKS Pod Identity credentials.</p> <p>EKS Pod Identity is a simpler
+         * method than <i>IAM roles for service accounts</i>, as this method doesn't use
+         * OIDC identity providers. Additionally, you can configure a role for EKS Pod
+         * Identity once, and reuse it across clusters.</p> <p>Similar to Amazon Web
+         * Services IAM behavior, EKS Pod Identity associations are eventually consistent,
+         * and may take several seconds to be effective after the initial API call returns
+         * successfully. You must design your applications to account for these potential
+         * delays. We recommend that you don’t include association create/updates in the
+         * critical, high-availability code paths of your application. Instead, make
+         * changes in a separate initialization or setup routine that you run less
+         * frequently.</p> <p>You can set a <i>target IAM role</i> in the same or a
+         * different account for advanced scenarios. With a target role, EKS Pod Identity
+         * automatically performs two role assumptions in sequence: first assuming the role
+         * in the association that is in this account, then using those credentials to
+         * assume the target IAM role. This process provides your Pod with temporary
+         * credentials that have the permissions defined in the target role, allowing
+         * secure access to resources in another Amazon Web Services account.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/CreatePodIdentityAssociation">AWS
          * API Reference</a></p>
          */
@@ -781,13 +802,13 @@ namespace EKS
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeAddonVersions">AWS
          * API Reference</a></p>
          */
-        virtual Model::DescribeAddonVersionsOutcome DescribeAddonVersions(const Model::DescribeAddonVersionsRequest& request) const;
+        virtual Model::DescribeAddonVersionsOutcome DescribeAddonVersions(const Model::DescribeAddonVersionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for DescribeAddonVersions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename DescribeAddonVersionsRequestT = Model::DescribeAddonVersionsRequest>
-        Model::DescribeAddonVersionsOutcomeCallable DescribeAddonVersionsCallable(const DescribeAddonVersionsRequestT& request) const
+        Model::DescribeAddonVersionsOutcomeCallable DescribeAddonVersionsCallable(const DescribeAddonVersionsRequestT& request = {}) const
         {
             return SubmitCallable(&EKSClient::DescribeAddonVersions, request);
         }
@@ -796,7 +817,7 @@ namespace EKS
          * An Async wrapper for DescribeAddonVersions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename DescribeAddonVersionsRequestT = Model::DescribeAddonVersionsRequest>
-        void DescribeAddonVersionsAsync(const DescribeAddonVersionsRequestT& request, const DescribeAddonVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void DescribeAddonVersionsAsync(const DescribeAddonVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeAddonVersionsRequestT& request = {}) const
         {
             return SubmitAsync(&EKSClient::DescribeAddonVersions, request, handler, context);
         }
@@ -832,6 +853,32 @@ namespace EKS
         void DescribeClusterAsync(const DescribeClusterRequestT& request, const DescribeClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EKSClient::DescribeCluster, request, handler, context);
+        }
+
+        /**
+         * <p>Lists available Kubernetes versions for Amazon EKS clusters.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeClusterVersions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeClusterVersionsOutcome DescribeClusterVersions(const Model::DescribeClusterVersionsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for DescribeClusterVersions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeClusterVersionsRequestT = Model::DescribeClusterVersionsRequest>
+        Model::DescribeClusterVersionsOutcomeCallable DescribeClusterVersionsCallable(const DescribeClusterVersionsRequestT& request = {}) const
+        {
+            return SubmitCallable(&EKSClient::DescribeClusterVersions, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeClusterVersions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeClusterVersionsRequestT = Model::DescribeClusterVersionsRequest>
+        void DescribeClusterVersionsAsync(const DescribeClusterVersionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const DescribeClusterVersionsRequestT& request = {}) const
+        {
+            return SubmitAsync(&EKSClient::DescribeClusterVersions, request, handler, context);
         }
 
         /**
@@ -937,6 +984,32 @@ namespace EKS
         }
 
         /**
+         * <p>Returns the status of the latest on-demand cluster insights refresh
+         * operation.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeInsightsRefresh">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DescribeInsightsRefreshOutcome DescribeInsightsRefresh(const Model::DescribeInsightsRefreshRequest& request) const;
+
+        /**
+         * A Callable wrapper for DescribeInsightsRefresh that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DescribeInsightsRefreshRequestT = Model::DescribeInsightsRefreshRequest>
+        Model::DescribeInsightsRefreshOutcomeCallable DescribeInsightsRefreshCallable(const DescribeInsightsRefreshRequestT& request) const
+        {
+            return SubmitCallable(&EKSClient::DescribeInsightsRefresh, request);
+        }
+
+        /**
+         * An Async wrapper for DescribeInsightsRefresh that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DescribeInsightsRefreshRequestT = Model::DescribeInsightsRefreshRequest>
+        void DescribeInsightsRefreshAsync(const DescribeInsightsRefreshRequestT& request, const DescribeInsightsRefreshResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EKSClient::DescribeInsightsRefresh, request, handler, context);
+        }
+
+        /**
          * <p>Describes a managed node group.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeNodegroup">AWS
          * API Reference</a></p>
@@ -993,7 +1066,7 @@ namespace EKS
 
         /**
          * <p>Describes an update to an Amazon EKS resource.</p> <p>When the status of the
-         * update is <code>Succeeded</code>, the update is complete. If an update fails,
+         * update is <code>Successful</code>, the update is complete. If an update fails,
          * the status is <code>Failed</code>, and an error detail explains the reason for
          * the failure.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeUpdate">AWS
@@ -1103,13 +1176,13 @@ namespace EKS
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListAccessPolicies">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListAccessPoliciesOutcome ListAccessPolicies(const Model::ListAccessPoliciesRequest& request) const;
+        virtual Model::ListAccessPoliciesOutcome ListAccessPolicies(const Model::ListAccessPoliciesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListAccessPolicies that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListAccessPoliciesRequestT = Model::ListAccessPoliciesRequest>
-        Model::ListAccessPoliciesOutcomeCallable ListAccessPoliciesCallable(const ListAccessPoliciesRequestT& request) const
+        Model::ListAccessPoliciesOutcomeCallable ListAccessPoliciesCallable(const ListAccessPoliciesRequestT& request = {}) const
         {
             return SubmitCallable(&EKSClient::ListAccessPolicies, request);
         }
@@ -1118,7 +1191,7 @@ namespace EKS
          * An Async wrapper for ListAccessPolicies that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListAccessPoliciesRequestT = Model::ListAccessPoliciesRequest>
-        void ListAccessPoliciesAsync(const ListAccessPoliciesRequestT& request, const ListAccessPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListAccessPoliciesAsync(const ListAccessPoliciesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListAccessPoliciesRequestT& request = {}) const
         {
             return SubmitAsync(&EKSClient::ListAccessPolicies, request, handler, context);
         }
@@ -1180,13 +1253,13 @@ namespace EKS
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListClusters">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListClustersOutcome ListClusters(const Model::ListClustersRequest& request) const;
+        virtual Model::ListClustersOutcome ListClusters(const Model::ListClustersRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListClusters that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListClustersRequestT = Model::ListClustersRequest>
-        Model::ListClustersOutcomeCallable ListClustersCallable(const ListClustersRequestT& request) const
+        Model::ListClustersOutcomeCallable ListClustersCallable(const ListClustersRequestT& request = {}) const
         {
             return SubmitCallable(&EKSClient::ListClusters, request);
         }
@@ -1195,7 +1268,7 @@ namespace EKS
          * An Async wrapper for ListClusters that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListClustersRequestT = Model::ListClustersRequest>
-        void ListClustersAsync(const ListClustersRequestT& request, const ListClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListClustersAsync(const ListClustersResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListClustersRequestT& request = {}) const
         {
             return SubmitAsync(&EKSClient::ListClusters, request, handler, context);
         }
@@ -1206,13 +1279,13 @@ namespace EKS
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListEksAnywhereSubscriptions">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListEksAnywhereSubscriptionsOutcome ListEksAnywhereSubscriptions(const Model::ListEksAnywhereSubscriptionsRequest& request) const;
+        virtual Model::ListEksAnywhereSubscriptionsOutcome ListEksAnywhereSubscriptions(const Model::ListEksAnywhereSubscriptionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListEksAnywhereSubscriptions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListEksAnywhereSubscriptionsRequestT = Model::ListEksAnywhereSubscriptionsRequest>
-        Model::ListEksAnywhereSubscriptionsOutcomeCallable ListEksAnywhereSubscriptionsCallable(const ListEksAnywhereSubscriptionsRequestT& request) const
+        Model::ListEksAnywhereSubscriptionsOutcomeCallable ListEksAnywhereSubscriptionsCallable(const ListEksAnywhereSubscriptionsRequestT& request = {}) const
         {
             return SubmitCallable(&EKSClient::ListEksAnywhereSubscriptions, request);
         }
@@ -1221,7 +1294,7 @@ namespace EKS
          * An Async wrapper for ListEksAnywhereSubscriptions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListEksAnywhereSubscriptionsRequestT = Model::ListEksAnywhereSubscriptionsRequest>
-        void ListEksAnywhereSubscriptionsAsync(const ListEksAnywhereSubscriptionsRequestT& request, const ListEksAnywhereSubscriptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListEksAnywhereSubscriptionsAsync(const ListEksAnywhereSubscriptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListEksAnywhereSubscriptionsRequestT& request = {}) const
         {
             return SubmitAsync(&EKSClient::ListEksAnywhereSubscriptions, request, handler, context);
         }
@@ -1282,7 +1355,14 @@ namespace EKS
         /**
          * <p>Returns a list of all insights checked for against the specified cluster. You
          * can filter which insights are returned by category, associated Kubernetes
-         * version, and status.</p><p><h3>See Also:</h3>   <a
+         * version, and status. The default filter lists all categories and every
+         * status.</p> <p>The following lists the available categories:</p> <ul> <li> <p>
+         * <code>UPGRADE_READINESS</code>: Amazon EKS identifies issues that could impact
+         * your ability to upgrade to new versions of Kubernetes. These are called upgrade
+         * insights.</p> </li> <li> <p> <code>MISCONFIGURATION</code>: Amazon EKS
+         * identifies misconfiguration in your EKS Hybrid Nodes setup that could impair
+         * functionality of your cluster or workloads. These are called configuration
+         * insights.</p> </li> </ul><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListInsights">AWS
          * API Reference</a></p>
          */
@@ -1416,8 +1496,10 @@ namespace EKS
          * <p>Connects a Kubernetes cluster to the Amazon EKS control plane. </p> <p>Any
          * Kubernetes cluster can be connected to the Amazon EKS control plane to view
          * current information about the cluster and its nodes. </p> <p>Cluster connection
-         * requires two steps. First, send a <code> <a>RegisterClusterRequest</a> </code>
-         * to add it to the Amazon EKS control plane.</p> <p>Second, a <a
+         * requires two steps. First, send a <a
+         * href="https://docs.aws.amazon.com/eks/latest/APIReference/API_RegisterClusterRequest.html">
+         * <code>RegisterClusterRequest</code> </a> to add it to the Amazon EKS control
+         * plane.</p> <p>Second, a <a
          * href="https://amazon-eks.s3.us-west-2.amazonaws.com/eks-connector/manifests/eks-connector/latest/eks-connector.yaml">Manifest</a>
          * containing the <code>activationID</code> and <code>activationCode</code> must be
          * applied to the Kubernetes cluster through it's native provider to provide
@@ -1447,6 +1529,33 @@ namespace EKS
         void RegisterClusterAsync(const RegisterClusterRequestT& request, const RegisterClusterResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&EKSClient::RegisterCluster, request, handler, context);
+        }
+
+        /**
+         * <p>Initiates an on-demand refresh operation for cluster insights, getting the
+         * latest analysis outside of the standard refresh schedule.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/StartInsightsRefresh">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::StartInsightsRefreshOutcome StartInsightsRefresh(const Model::StartInsightsRefreshRequest& request) const;
+
+        /**
+         * A Callable wrapper for StartInsightsRefresh that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename StartInsightsRefreshRequestT = Model::StartInsightsRefreshRequest>
+        Model::StartInsightsRefreshOutcomeCallable StartInsightsRefreshCallable(const StartInsightsRefreshRequestT& request) const
+        {
+            return SubmitCallable(&EKSClient::StartInsightsRefresh, request);
+        }
+
+        /**
+         * An Async wrapper for StartInsightsRefresh that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename StartInsightsRefreshRequestT = Model::StartInsightsRefreshRequest>
+        void StartInsightsRefreshAsync(const StartInsightsRefreshRequestT& request, const StartInsightsRefreshResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&EKSClient::StartInsightsRefresh, request, handler, context);
         }
 
         /**
@@ -1561,33 +1670,42 @@ namespace EKS
          * <p>Updates an Amazon EKS cluster configuration. Your cluster continues to
          * function during the update. The response output includes an update ID that you
          * can use to track the status of your cluster update with
-         * <code>DescribeUpdate</code>"/&gt;.</p> <p>You can use this API operation to
-         * enable or disable exporting the Kubernetes control plane logs for your cluster
-         * to CloudWatch Logs. By default, cluster control plane logs aren't exported to
+         * <code>DescribeUpdate</code>.</p> <p>You can use this operation to do the
+         * following actions:</p> <ul> <li> <p>You can use this API operation to enable or
+         * disable exporting the Kubernetes control plane logs for your cluster to
+         * CloudWatch Logs. By default, cluster control plane logs aren't exported to
          * CloudWatch Logs. For more information, see <a
          * href="https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html">Amazon
          * EKS Cluster control plane logs</a> in the <i> <i>Amazon EKS User Guide</i>
          * </i>.</p>  <p>CloudWatch Logs ingestion, archive storage, and data
          * scanning rates apply to exported control plane logs. For more information, see
          * <a href="http://aws.amazon.com/cloudwatch/pricing/">CloudWatch Pricing</a>.</p>
-         *  <p>You can also use this API operation to enable or disable public and
-         * private access to your cluster's Kubernetes API server endpoint. By default,
-         * public access is enabled, and private access is disabled. For more information,
-         * see <a
-         * href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon
-         * EKS cluster endpoint access control</a> in the <i> <i>Amazon EKS User Guide</i>
-         * </i>.</p> <p>You can also use this API operation to choose different subnets and
-         * security groups for the cluster. You must specify at least two subnets that are
-         * in different Availability Zones. You can't change which VPC the subnets are
-         * from, the subnets must be in the same VPC as the subnets that the cluster was
-         * created with. For more information about the VPC requirements, see <a
+         *  </li> <li> <p>You can also use this API operation to enable or disable
+         * public and private access to your cluster's Kubernetes API server endpoint. By
+         * default, public access is enabled, and private access is disabled. For more
+         * information, see <a
+         * href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">
+         * Cluster API server endpoint</a> in the <i> <i>Amazon EKS User Guide</i>
+         * </i>.</p> </li> <li> <p>You can also use this API operation to choose different
+         * subnets and security groups for the cluster. You must specify at least two
+         * subnets that are in different Availability Zones. You can't change which VPC the
+         * subnets are from, the subnets must be in the same VPC as the subnets that the
+         * cluster was created with. For more information about the VPC requirements, see
+         * <a
          * href="https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html">https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html</a>
-         * in the <i> <i>Amazon EKS User Guide</i> </i>.</p> <p>Cluster updates are
-         * asynchronous, and they should finish within a few minutes. During an update, the
-         * cluster status moves to <code>UPDATING</code> (this status transition is
-         * eventually consistent). When the update is complete (either <code>Failed</code>
-         * or <code>Successful</code>), the cluster status moves to
-         * <code>Active</code>.</p><p><h3>See Also:</h3>   <a
+         * in the <i> <i>Amazon EKS User Guide</i> </i>.</p> </li> <li> <p>You can also use
+         * this API operation to enable or disable ARC zonal shift. If zonal shift is
+         * enabled, Amazon Web Services configures zonal autoshift for the cluster.</p>
+         * </li> <li> <p>You can also use this API operation to add, change, or remove the
+         * configuration in the cluster for EKS Hybrid Nodes. To remove the configuration,
+         * use the <code>remoteNetworkConfig</code> key with an object containing both
+         * subkeys with empty arrays for each. Here is an inline example:
+         * <code>"remoteNetworkConfig": { "remoteNodeNetworks": [], "remotePodNetworks": []
+         * }</code>.</p> </li> </ul> <p>Cluster updates are asynchronous, and they should
+         * finish within a few minutes. During an update, the cluster status moves to
+         * <code>UPDATING</code> (this status transition is eventually consistent). When
+         * the update is complete (either <code>Failed</code> or <code>Successful</code>),
+         * the cluster status moves to <code>Active</code>.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateClusterConfig">AWS
          * API Reference</a></p>
          */
@@ -1615,14 +1733,17 @@ namespace EKS
          * <p>Updates an Amazon EKS cluster to the specified Kubernetes version. Your
          * cluster continues to function during the update. The response output includes an
          * update ID that you can use to track the status of your cluster update with the
-         * <a>DescribeUpdate</a> API operation.</p> <p>Cluster updates are asynchronous,
-         * and they should finish within a few minutes. During an update, the cluster
-         * status moves to <code>UPDATING</code> (this status transition is eventually
-         * consistent). When the update is complete (either <code>Failed</code> or
-         * <code>Successful</code>), the cluster status moves to <code>Active</code>.</p>
-         * <p>If your cluster has managed node groups attached to it, all of your node
-         * groups’ Kubernetes versions must match the cluster’s Kubernetes version in order
-         * to update the cluster to a new Kubernetes version.</p><p><h3>See Also:</h3>   <a
+         * <a
+         * href="https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeUpdate.html">
+         * <code>DescribeUpdate</code> </a> API operation.</p> <p>Cluster updates are
+         * asynchronous, and they should finish within a few minutes. During an update, the
+         * cluster status moves to <code>UPDATING</code> (this status transition is
+         * eventually consistent). When the update is complete (either <code>Failed</code>
+         * or <code>Successful</code>), the cluster status moves to
+         * <code>Active</code>.</p> <p>If your cluster has managed node groups attached to
+         * it, all of your node groups' Kubernetes versions must match the cluster's
+         * Kubernetes version in order to update the cluster to a new Kubernetes
+         * version.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateClusterVersion">AWS
          * API Reference</a></p>
          */
@@ -1675,10 +1796,11 @@ namespace EKS
         /**
          * <p>Updates an Amazon EKS managed node group configuration. Your node group
          * continues to function during the update. The response output includes an update
-         * ID that you can use to track the status of your node group update with the
-         * <a>DescribeUpdate</a> API operation. Currently you can update the Kubernetes
-         * labels for a node group or the scaling configuration.</p><p><h3>See Also:</h3>  
-         * <a
+         * ID that you can use to track the status of your node group update with the <a
+         * href="https://docs.aws.amazon.com/eks/latest/APIReference/API_DescribeUpdate.html">
+         * <code>DescribeUpdate</code> </a> API operation. You can update the Kubernetes
+         * labels and taints for a node group and the scaling and version update
+         * configuration.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateNodegroupConfig">AWS
          * API Reference</a></p>
          */
@@ -1705,16 +1827,18 @@ namespace EKS
         /**
          * <p>Updates the Kubernetes version or AMI version of an Amazon EKS managed node
          * group.</p> <p>You can update a node group using a launch template only if the
-         * node group was originally deployed with a launch template. If you need to update
-         * a custom AMI in a node group that was deployed with a launch template, then
-         * update your custom AMI, specify the new ID in a new version of the launch
-         * template, and then update the node group to the new version of the launch
-         * template.</p> <p>If you update without a launch template, then you can update to
-         * the latest available AMI version of a node group's current Kubernetes version by
-         * not specifying a Kubernetes version in the request. You can update to the latest
-         * AMI version of your cluster's current Kubernetes version by specifying your
-         * cluster's Kubernetes version in the request. For information about Linux
-         * versions, see <a
+         * node group was originally deployed with a launch template. Additionally, the
+         * launch template ID or name must match what was used when the node group was
+         * created. You can update the launch template version with necessary changes.</p>
+         * <p>If you need to update a custom AMI in a node group that was deployed with a
+         * launch template, then update your custom AMI, specify the new ID in a new
+         * version of the launch template, and then update the node group to the new
+         * version of the launch template.</p> <p>If you update without a launch template,
+         * then you can update to the latest available AMI version of a node group's
+         * current Kubernetes version by not specifying a Kubernetes version in the
+         * request. You can update to the latest AMI version of your cluster's current
+         * Kubernetes version by specifying your cluster's Kubernetes version in the
+         * request. For information about Linux versions, see <a
          * href="https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html">Amazon
          * EKS optimized Amazon Linux AMI versions</a> in the <i>Amazon EKS User Guide</i>.
          * For information about Windows versions, see <a
@@ -1751,11 +1875,26 @@ namespace EKS
         }
 
         /**
-         * <p>Updates a EKS Pod Identity association. Only the IAM role can be changed; an
-         * association can't be moved between clusters, namespaces, or service accounts. If
-         * you need to edit the namespace or service account, you need to delete the
-         * association and then create a new association with your desired
-         * settings.</p><p><h3>See Also:</h3>   <a
+         * <p>Updates a EKS Pod Identity association. In an update, you can change the IAM
+         * role, the target IAM role, or <code>disableSessionTags</code>. You must change
+         * at least one of these in an update. An association can't be moved between
+         * clusters, namespaces, or service accounts. If you need to edit the namespace or
+         * service account, you need to delete the association and then create a new
+         * association with your desired settings.</p> <p>Similar to Amazon Web Services
+         * IAM behavior, EKS Pod Identity associations are eventually consistent, and may
+         * take several seconds to be effective after the initial API call returns
+         * successfully. You must design your applications to account for these potential
+         * delays. We recommend that you don’t include association create/updates in the
+         * critical, high-availability code paths of your application. Instead, make
+         * changes in a separate initialization or setup routine that you run less
+         * frequently.</p> <p>You can set a <i>target IAM role</i> in the same or a
+         * different account for advanced scenarios. With a target role, EKS Pod Identity
+         * automatically performs two role assumptions in sequence: first assuming the role
+         * in the association that is in this account, then using those credentials to
+         * assume the target IAM role. This process provides your Pod with temporary
+         * credentials that have the permissions defined in the target role, allowing
+         * secure access to resources in another Amazon Web Services account.</p><p><h3>See
+         * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdatePodIdentityAssociation">AWS
          * API Reference</a></p>
          */
@@ -1787,7 +1926,6 @@ namespace EKS
       void init(const EKSClientConfiguration& clientConfiguration);
 
       EKSClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<EKSEndpointProviderBase> m_endpointProvider;
   };
 

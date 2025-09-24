@@ -10,40 +10,6 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-PutMetricAlarmRequest::PutMetricAlarmRequest() : 
-    m_alarmNameHasBeenSet(false),
-    m_alarmDescriptionHasBeenSet(false),
-    m_actionsEnabled(false),
-    m_actionsEnabledHasBeenSet(false),
-    m_oKActionsHasBeenSet(false),
-    m_alarmActionsHasBeenSet(false),
-    m_insufficientDataActionsHasBeenSet(false),
-    m_metricNameHasBeenSet(false),
-    m_namespaceHasBeenSet(false),
-    m_statistic(Statistic::NOT_SET),
-    m_statisticHasBeenSet(false),
-    m_extendedStatisticHasBeenSet(false),
-    m_dimensionsHasBeenSet(false),
-    m_period(0),
-    m_periodHasBeenSet(false),
-    m_unit(StandardUnit::NOT_SET),
-    m_unitHasBeenSet(false),
-    m_evaluationPeriods(0),
-    m_evaluationPeriodsHasBeenSet(false),
-    m_datapointsToAlarm(0),
-    m_datapointsToAlarmHasBeenSet(false),
-    m_threshold(0.0),
-    m_thresholdHasBeenSet(false),
-    m_comparisonOperator(ComparisonOperator::NOT_SET),
-    m_comparisonOperatorHasBeenSet(false),
-    m_treatMissingDataHasBeenSet(false),
-    m_evaluateLowSampleCountPercentileHasBeenSet(false),
-    m_metricsHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_thresholdMetricIdHasBeenSet(false)
-{
-}
-
 Aws::String PutMetricAlarmRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -65,34 +31,55 @@ Aws::String PutMetricAlarmRequest::SerializePayload() const
 
   if(m_oKActionsHasBeenSet)
   {
-    unsigned oKActionsCount = 1;
-    for(auto& item : m_oKActions)
+    if (m_oKActions.empty())
     {
-      ss << "OKActions.member." << oKActionsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      oKActionsCount++;
+      ss << "OKActions=&";
+    }
+    else
+    {
+      unsigned oKActionsCount = 1;
+      for(auto& item : m_oKActions)
+      {
+        ss << "OKActions.member." << oKActionsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        oKActionsCount++;
+      }
     }
   }
 
   if(m_alarmActionsHasBeenSet)
   {
-    unsigned alarmActionsCount = 1;
-    for(auto& item : m_alarmActions)
+    if (m_alarmActions.empty())
     {
-      ss << "AlarmActions.member." << alarmActionsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      alarmActionsCount++;
+      ss << "AlarmActions=&";
+    }
+    else
+    {
+      unsigned alarmActionsCount = 1;
+      for(auto& item : m_alarmActions)
+      {
+        ss << "AlarmActions.member." << alarmActionsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        alarmActionsCount++;
+      }
     }
   }
 
   if(m_insufficientDataActionsHasBeenSet)
   {
-    unsigned insufficientDataActionsCount = 1;
-    for(auto& item : m_insufficientDataActions)
+    if (m_insufficientDataActions.empty())
     {
-      ss << "InsufficientDataActions.member." << insufficientDataActionsCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      insufficientDataActionsCount++;
+      ss << "InsufficientDataActions=&";
+    }
+    else
+    {
+      unsigned insufficientDataActionsCount = 1;
+      for(auto& item : m_insufficientDataActions)
+      {
+        ss << "InsufficientDataActions.member." << insufficientDataActionsCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        insufficientDataActionsCount++;
+      }
     }
   }
 
@@ -108,7 +95,7 @@ Aws::String PutMetricAlarmRequest::SerializePayload() const
 
   if(m_statisticHasBeenSet)
   {
-    ss << "Statistic=" << StatisticMapper::GetNameForStatistic(m_statistic) << "&";
+    ss << "Statistic=" << StringUtils::URLEncode(StatisticMapper::GetNameForStatistic(m_statistic)) << "&";
   }
 
   if(m_extendedStatisticHasBeenSet)
@@ -118,11 +105,18 @@ Aws::String PutMetricAlarmRequest::SerializePayload() const
 
   if(m_dimensionsHasBeenSet)
   {
-    unsigned dimensionsCount = 1;
-    for(auto& item : m_dimensions)
+    if (m_dimensions.empty())
     {
-      item.OutputToStream(ss, "Dimensions.member.", dimensionsCount, "");
-      dimensionsCount++;
+      ss << "Dimensions=&";
+    }
+    else
+    {
+      unsigned dimensionsCount = 1;
+      for(auto& item : m_dimensions)
+      {
+        item.OutputToStream(ss, "Dimensions.member.", dimensionsCount, "");
+        dimensionsCount++;
+      }
     }
   }
 
@@ -133,7 +127,7 @@ Aws::String PutMetricAlarmRequest::SerializePayload() const
 
   if(m_unitHasBeenSet)
   {
-    ss << "Unit=" << StandardUnitMapper::GetNameForStandardUnit(m_unit) << "&";
+    ss << "Unit=" << StringUtils::URLEncode(StandardUnitMapper::GetNameForStandardUnit(m_unit)) << "&";
   }
 
   if(m_evaluationPeriodsHasBeenSet)
@@ -153,7 +147,7 @@ Aws::String PutMetricAlarmRequest::SerializePayload() const
 
   if(m_comparisonOperatorHasBeenSet)
   {
-    ss << "ComparisonOperator=" << ComparisonOperatorMapper::GetNameForComparisonOperator(m_comparisonOperator) << "&";
+    ss << "ComparisonOperator=" << StringUtils::URLEncode(ComparisonOperatorMapper::GetNameForComparisonOperator(m_comparisonOperator)) << "&";
   }
 
   if(m_treatMissingDataHasBeenSet)
@@ -168,21 +162,35 @@ Aws::String PutMetricAlarmRequest::SerializePayload() const
 
   if(m_metricsHasBeenSet)
   {
-    unsigned metricsCount = 1;
-    for(auto& item : m_metrics)
+    if (m_metrics.empty())
     {
-      item.OutputToStream(ss, "Metrics.member.", metricsCount, "");
-      metricsCount++;
+      ss << "Metrics=&";
+    }
+    else
+    {
+      unsigned metricsCount = 1;
+      for(auto& item : m_metrics)
+      {
+        item.OutputToStream(ss, "Metrics.member.", metricsCount, "");
+        metricsCount++;
+      }
     }
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 

@@ -26,7 +26,7 @@ namespace Model
   class CreateSpaceRequest : public SageMakerRequest
   {
   public:
-    AWS_SAGEMAKER_API CreateSpaceRequest();
+    AWS_SAGEMAKER_API CreateSpaceRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,278 +39,93 @@ namespace Model
     AWS_SAGEMAKER_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
-     * <p>The ID of the associated Domain.</p>
+     * <p>The ID of the associated domain.</p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
     inline bool DomainIdHasBeenSet() const { return m_domainIdHasBeenSet; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    CreateSpaceRequest& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainIdHasBeenSet = true; m_domainId = value; }
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainIdHasBeenSet = true; m_domainId = std::move(value); }
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline void SetDomainId(const char* value) { m_domainIdHasBeenSet = true; m_domainId.assign(value); }
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline CreateSpaceRequest& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline CreateSpaceRequest& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the associated Domain.</p>
-     */
-    inline CreateSpaceRequest& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the space.</p>
      */
-    inline const Aws::String& GetSpaceName() const{ return m_spaceName; }
-
-    /**
-     * <p>The name of the space.</p>
-     */
+    inline const Aws::String& GetSpaceName() const { return m_spaceName; }
     inline bool SpaceNameHasBeenSet() const { return m_spaceNameHasBeenSet; }
+    template<typename SpaceNameT = Aws::String>
+    void SetSpaceName(SpaceNameT&& value) { m_spaceNameHasBeenSet = true; m_spaceName = std::forward<SpaceNameT>(value); }
+    template<typename SpaceNameT = Aws::String>
+    CreateSpaceRequest& WithSpaceName(SpaceNameT&& value) { SetSpaceName(std::forward<SpaceNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(const Aws::String& value) { m_spaceNameHasBeenSet = true; m_spaceName = value; }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(Aws::String&& value) { m_spaceNameHasBeenSet = true; m_spaceName = std::move(value); }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline void SetSpaceName(const char* value) { m_spaceNameHasBeenSet = true; m_spaceName.assign(value); }
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline CreateSpaceRequest& WithSpaceName(const Aws::String& value) { SetSpaceName(value); return *this;}
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline CreateSpaceRequest& WithSpaceName(Aws::String&& value) { SetSpaceName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the space.</p>
-     */
-    inline CreateSpaceRequest& WithSpaceName(const char* value) { SetSpaceName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Tags to associated with the space. Each tag consists of a key and an optional
      * value. Tag keys must be unique for each resource. Tags are searchable using the
      * <code>Search</code> API.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Tags to associated with the space. Each tag consists of a key and an optional
-     * value. Tag keys must be unique for each resource. Tags are searchable using the
-     * <code>Search</code> API.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateSpaceRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateSpaceRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Tags to associated with the space. Each tag consists of a key and an optional
-     * value. Tag keys must be unique for each resource. Tags are searchable using the
-     * <code>Search</code> API.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Tags to associated with the space. Each tag consists of a key and an optional
-     * value. Tag keys must be unique for each resource. Tags are searchable using the
-     * <code>Search</code> API.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Tags to associated with the space. Each tag consists of a key and an optional
-     * value. Tag keys must be unique for each resource. Tags are searchable using the
-     * <code>Search</code> API.</p>
-     */
-    inline CreateSpaceRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Tags to associated with the space. Each tag consists of a key and an optional
-     * value. Tag keys must be unique for each resource. Tags are searchable using the
-     * <code>Search</code> API.</p>
-     */
-    inline CreateSpaceRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Tags to associated with the space. Each tag consists of a key and an optional
-     * value. Tag keys must be unique for each resource. Tags are searchable using the
-     * <code>Search</code> API.</p>
-     */
-    inline CreateSpaceRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Tags to associated with the space. Each tag consists of a key and an optional
-     * value. Tag keys must be unique for each resource. Tags are searchable using the
-     * <code>Search</code> API.</p>
-     */
-    inline CreateSpaceRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A collection of space settings.</p>
      */
-    inline const SpaceSettings& GetSpaceSettings() const{ return m_spaceSettings; }
-
-    /**
-     * <p>A collection of space settings.</p>
-     */
+    inline const SpaceSettings& GetSpaceSettings() const { return m_spaceSettings; }
     inline bool SpaceSettingsHasBeenSet() const { return m_spaceSettingsHasBeenSet; }
+    template<typename SpaceSettingsT = SpaceSettings>
+    void SetSpaceSettings(SpaceSettingsT&& value) { m_spaceSettingsHasBeenSet = true; m_spaceSettings = std::forward<SpaceSettingsT>(value); }
+    template<typename SpaceSettingsT = SpaceSettings>
+    CreateSpaceRequest& WithSpaceSettings(SpaceSettingsT&& value) { SetSpaceSettings(std::forward<SpaceSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A collection of space settings.</p>
-     */
-    inline void SetSpaceSettings(const SpaceSettings& value) { m_spaceSettingsHasBeenSet = true; m_spaceSettings = value; }
-
-    /**
-     * <p>A collection of space settings.</p>
-     */
-    inline void SetSpaceSettings(SpaceSettings&& value) { m_spaceSettingsHasBeenSet = true; m_spaceSettings = std::move(value); }
-
-    /**
-     * <p>A collection of space settings.</p>
-     */
-    inline CreateSpaceRequest& WithSpaceSettings(const SpaceSettings& value) { SetSpaceSettings(value); return *this;}
-
-    /**
-     * <p>A collection of space settings.</p>
-     */
-    inline CreateSpaceRequest& WithSpaceSettings(SpaceSettings&& value) { SetSpaceSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A collection of ownership settings.</p>
      */
-    inline const OwnershipSettings& GetOwnershipSettings() const{ return m_ownershipSettings; }
-
-    /**
-     * <p>A collection of ownership settings.</p>
-     */
+    inline const OwnershipSettings& GetOwnershipSettings() const { return m_ownershipSettings; }
     inline bool OwnershipSettingsHasBeenSet() const { return m_ownershipSettingsHasBeenSet; }
+    template<typename OwnershipSettingsT = OwnershipSettings>
+    void SetOwnershipSettings(OwnershipSettingsT&& value) { m_ownershipSettingsHasBeenSet = true; m_ownershipSettings = std::forward<OwnershipSettingsT>(value); }
+    template<typename OwnershipSettingsT = OwnershipSettings>
+    CreateSpaceRequest& WithOwnershipSettings(OwnershipSettingsT&& value) { SetOwnershipSettings(std::forward<OwnershipSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A collection of ownership settings.</p>
-     */
-    inline void SetOwnershipSettings(const OwnershipSettings& value) { m_ownershipSettingsHasBeenSet = true; m_ownershipSettings = value; }
-
-    /**
-     * <p>A collection of ownership settings.</p>
-     */
-    inline void SetOwnershipSettings(OwnershipSettings&& value) { m_ownershipSettingsHasBeenSet = true; m_ownershipSettings = std::move(value); }
-
-    /**
-     * <p>A collection of ownership settings.</p>
-     */
-    inline CreateSpaceRequest& WithOwnershipSettings(const OwnershipSettings& value) { SetOwnershipSettings(value); return *this;}
-
-    /**
-     * <p>A collection of ownership settings.</p>
-     */
-    inline CreateSpaceRequest& WithOwnershipSettings(OwnershipSettings&& value) { SetOwnershipSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A collection of space sharing settings.</p>
      */
-    inline const SpaceSharingSettings& GetSpaceSharingSettings() const{ return m_spaceSharingSettings; }
-
-    /**
-     * <p>A collection of space sharing settings.</p>
-     */
+    inline const SpaceSharingSettings& GetSpaceSharingSettings() const { return m_spaceSharingSettings; }
     inline bool SpaceSharingSettingsHasBeenSet() const { return m_spaceSharingSettingsHasBeenSet; }
+    template<typename SpaceSharingSettingsT = SpaceSharingSettings>
+    void SetSpaceSharingSettings(SpaceSharingSettingsT&& value) { m_spaceSharingSettingsHasBeenSet = true; m_spaceSharingSettings = std::forward<SpaceSharingSettingsT>(value); }
+    template<typename SpaceSharingSettingsT = SpaceSharingSettings>
+    CreateSpaceRequest& WithSpaceSharingSettings(SpaceSharingSettingsT&& value) { SetSpaceSharingSettings(std::forward<SpaceSharingSettingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A collection of space sharing settings.</p>
-     */
-    inline void SetSpaceSharingSettings(const SpaceSharingSettings& value) { m_spaceSharingSettingsHasBeenSet = true; m_spaceSharingSettings = value; }
-
-    /**
-     * <p>A collection of space sharing settings.</p>
-     */
-    inline void SetSpaceSharingSettings(SpaceSharingSettings&& value) { m_spaceSharingSettingsHasBeenSet = true; m_spaceSharingSettings = std::move(value); }
-
-    /**
-     * <p>A collection of space sharing settings.</p>
-     */
-    inline CreateSpaceRequest& WithSpaceSharingSettings(const SpaceSharingSettings& value) { SetSpaceSharingSettings(value); return *this;}
-
-    /**
-     * <p>A collection of space sharing settings.</p>
-     */
-    inline CreateSpaceRequest& WithSpaceSharingSettings(SpaceSharingSettings&& value) { SetSpaceSharingSettings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the space that appears in the SageMaker Studio UI.</p>
      */
-    inline const Aws::String& GetSpaceDisplayName() const{ return m_spaceDisplayName; }
-
-    /**
-     * <p>The name of the space that appears in the SageMaker Studio UI.</p>
-     */
+    inline const Aws::String& GetSpaceDisplayName() const { return m_spaceDisplayName; }
     inline bool SpaceDisplayNameHasBeenSet() const { return m_spaceDisplayNameHasBeenSet; }
-
-    /**
-     * <p>The name of the space that appears in the SageMaker Studio UI.</p>
-     */
-    inline void SetSpaceDisplayName(const Aws::String& value) { m_spaceDisplayNameHasBeenSet = true; m_spaceDisplayName = value; }
-
-    /**
-     * <p>The name of the space that appears in the SageMaker Studio UI.</p>
-     */
-    inline void SetSpaceDisplayName(Aws::String&& value) { m_spaceDisplayNameHasBeenSet = true; m_spaceDisplayName = std::move(value); }
-
-    /**
-     * <p>The name of the space that appears in the SageMaker Studio UI.</p>
-     */
-    inline void SetSpaceDisplayName(const char* value) { m_spaceDisplayNameHasBeenSet = true; m_spaceDisplayName.assign(value); }
-
-    /**
-     * <p>The name of the space that appears in the SageMaker Studio UI.</p>
-     */
-    inline CreateSpaceRequest& WithSpaceDisplayName(const Aws::String& value) { SetSpaceDisplayName(value); return *this;}
-
-    /**
-     * <p>The name of the space that appears in the SageMaker Studio UI.</p>
-     */
-    inline CreateSpaceRequest& WithSpaceDisplayName(Aws::String&& value) { SetSpaceDisplayName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the space that appears in the SageMaker Studio UI.</p>
-     */
-    inline CreateSpaceRequest& WithSpaceDisplayName(const char* value) { SetSpaceDisplayName(value); return *this;}
-
+    template<typename SpaceDisplayNameT = Aws::String>
+    void SetSpaceDisplayName(SpaceDisplayNameT&& value) { m_spaceDisplayNameHasBeenSet = true; m_spaceDisplayName = std::forward<SpaceDisplayNameT>(value); }
+    template<typename SpaceDisplayNameT = Aws::String>
+    CreateSpaceRequest& WithSpaceDisplayName(SpaceDisplayNameT&& value) { SetSpaceDisplayName(std::forward<SpaceDisplayNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_domainId;

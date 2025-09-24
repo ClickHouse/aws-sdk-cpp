@@ -12,23 +12,6 @@ using namespace Aws::AppSync::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDataSourceRequest::CreateDataSourceRequest() : 
-    m_apiIdHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_type(DataSourceType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_serviceRoleArnHasBeenSet(false),
-    m_dynamodbConfigHasBeenSet(false),
-    m_lambdaConfigHasBeenSet(false),
-    m_elasticsearchConfigHasBeenSet(false),
-    m_openSearchServiceConfigHasBeenSet(false),
-    m_httpConfigHasBeenSet(false),
-    m_relationalDatabaseConfigHasBeenSet(false),
-    m_eventBridgeConfigHasBeenSet(false)
-{
-}
-
 Aws::String CreateDataSourceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -96,6 +79,11 @@ Aws::String CreateDataSourceRequest::SerializePayload() const
   {
    payload.WithObject("eventBridgeConfig", m_eventBridgeConfig.Jsonize());
 
+  }
+
+  if(m_metricsConfigHasBeenSet)
+  {
+   payload.WithString("metricsConfig", DataSourceLevelMetricsConfigMapper::GetNameForDataSourceLevelMetricsConfig(m_metricsConfig));
   }
 
   return payload.View().WriteReadable();

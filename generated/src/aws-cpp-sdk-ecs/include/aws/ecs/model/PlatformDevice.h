@@ -33,111 +33,42 @@ namespace Model
   class PlatformDevice
   {
   public:
-    AWS_ECS_API PlatformDevice();
+    AWS_ECS_API PlatformDevice() = default;
     AWS_ECS_API PlatformDevice(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API PlatformDevice& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ECS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID for the GPUs on the container instance. The available GPU IDs can also
      * be obtained on the container instance in the
      * <code>/var/lib/ecs/gpu/nvidia_gpu_info.json</code> file.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID for the GPUs on the container instance. The available GPU IDs can also
-     * be obtained on the container instance in the
-     * <code>/var/lib/ecs/gpu/nvidia_gpu_info.json</code> file.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    PlatformDevice& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID for the GPUs on the container instance. The available GPU IDs can also
-     * be obtained on the container instance in the
-     * <code>/var/lib/ecs/gpu/nvidia_gpu_info.json</code> file.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID for the GPUs on the container instance. The available GPU IDs can also
-     * be obtained on the container instance in the
-     * <code>/var/lib/ecs/gpu/nvidia_gpu_info.json</code> file.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID for the GPUs on the container instance. The available GPU IDs can also
-     * be obtained on the container instance in the
-     * <code>/var/lib/ecs/gpu/nvidia_gpu_info.json</code> file.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID for the GPUs on the container instance. The available GPU IDs can also
-     * be obtained on the container instance in the
-     * <code>/var/lib/ecs/gpu/nvidia_gpu_info.json</code> file.</p>
-     */
-    inline PlatformDevice& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID for the GPUs on the container instance. The available GPU IDs can also
-     * be obtained on the container instance in the
-     * <code>/var/lib/ecs/gpu/nvidia_gpu_info.json</code> file.</p>
-     */
-    inline PlatformDevice& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for the GPUs on the container instance. The available GPU IDs can also
-     * be obtained on the container instance in the
-     * <code>/var/lib/ecs/gpu/nvidia_gpu_info.json</code> file.</p>
-     */
-    inline PlatformDevice& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of device that's available on the container instance. The only
      * supported value is <code>GPU</code>.</p>
      */
-    inline const PlatformDeviceType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of device that's available on the container instance. The only
-     * supported value is <code>GPU</code>.</p>
-     */
+    inline PlatformDeviceType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of device that's available on the container instance. The only
-     * supported value is <code>GPU</code>.</p>
-     */
-    inline void SetType(const PlatformDeviceType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of device that's available on the container instance. The only
-     * supported value is <code>GPU</code>.</p>
-     */
-    inline void SetType(PlatformDeviceType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of device that's available on the container instance. The only
-     * supported value is <code>GPU</code>.</p>
-     */
-    inline PlatformDevice& WithType(const PlatformDeviceType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of device that's available on the container instance. The only
-     * supported value is <code>GPU</code>.</p>
-     */
-    inline PlatformDevice& WithType(PlatformDeviceType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(PlatformDeviceType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline PlatformDevice& WithType(PlatformDeviceType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_id;
     bool m_idHasBeenSet = false;
 
-    PlatformDeviceType m_type;
+    PlatformDeviceType m_type{PlatformDeviceType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

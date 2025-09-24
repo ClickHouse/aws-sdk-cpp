@@ -22,7 +22,7 @@ namespace Model
   class GetRelationalDatabaseMasterUserPasswordRequest : public LightsailRequest
   {
   public:
-    AWS_LIGHTSAIL_API GetRelationalDatabaseMasterUserPasswordRequest();
+    AWS_LIGHTSAIL_API GetRelationalDatabaseMasterUserPasswordRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,47 +35,19 @@ namespace Model
     AWS_LIGHTSAIL_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of your database for which to get the master user password.</p>
      */
-    inline const Aws::String& GetRelationalDatabaseName() const{ return m_relationalDatabaseName; }
-
-    /**
-     * <p>The name of your database for which to get the master user password.</p>
-     */
+    inline const Aws::String& GetRelationalDatabaseName() const { return m_relationalDatabaseName; }
     inline bool RelationalDatabaseNameHasBeenSet() const { return m_relationalDatabaseNameHasBeenSet; }
+    template<typename RelationalDatabaseNameT = Aws::String>
+    void SetRelationalDatabaseName(RelationalDatabaseNameT&& value) { m_relationalDatabaseNameHasBeenSet = true; m_relationalDatabaseName = std::forward<RelationalDatabaseNameT>(value); }
+    template<typename RelationalDatabaseNameT = Aws::String>
+    GetRelationalDatabaseMasterUserPasswordRequest& WithRelationalDatabaseName(RelationalDatabaseNameT&& value) { SetRelationalDatabaseName(std::forward<RelationalDatabaseNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of your database for which to get the master user password.</p>
-     */
-    inline void SetRelationalDatabaseName(const Aws::String& value) { m_relationalDatabaseNameHasBeenSet = true; m_relationalDatabaseName = value; }
-
-    /**
-     * <p>The name of your database for which to get the master user password.</p>
-     */
-    inline void SetRelationalDatabaseName(Aws::String&& value) { m_relationalDatabaseNameHasBeenSet = true; m_relationalDatabaseName = std::move(value); }
-
-    /**
-     * <p>The name of your database for which to get the master user password.</p>
-     */
-    inline void SetRelationalDatabaseName(const char* value) { m_relationalDatabaseNameHasBeenSet = true; m_relationalDatabaseName.assign(value); }
-
-    /**
-     * <p>The name of your database for which to get the master user password.</p>
-     */
-    inline GetRelationalDatabaseMasterUserPasswordRequest& WithRelationalDatabaseName(const Aws::String& value) { SetRelationalDatabaseName(value); return *this;}
-
-    /**
-     * <p>The name of your database for which to get the master user password.</p>
-     */
-    inline GetRelationalDatabaseMasterUserPasswordRequest& WithRelationalDatabaseName(Aws::String&& value) { SetRelationalDatabaseName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of your database for which to get the master user password.</p>
-     */
-    inline GetRelationalDatabaseMasterUserPasswordRequest& WithRelationalDatabaseName(const char* value) { SetRelationalDatabaseName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The password version to return.</p> <p>Specifying <code>CURRENT</code> or
      * <code>PREVIOUS</code> returns the current or previous passwords respectively.
@@ -84,64 +56,17 @@ namespace Model
      * rotates to <code>CURRENT</code>, the <code>PENDING</code> password is no longer
      * available.</p> <p>Default: <code>CURRENT</code> </p>
      */
-    inline const RelationalDatabasePasswordVersion& GetPasswordVersion() const{ return m_passwordVersion; }
-
-    /**
-     * <p>The password version to return.</p> <p>Specifying <code>CURRENT</code> or
-     * <code>PREVIOUS</code> returns the current or previous passwords respectively.
-     * Specifying <code>PENDING</code> returns the newest version of the password that
-     * will rotate to <code>CURRENT</code>. After the <code>PENDING</code> password
-     * rotates to <code>CURRENT</code>, the <code>PENDING</code> password is no longer
-     * available.</p> <p>Default: <code>CURRENT</code> </p>
-     */
+    inline RelationalDatabasePasswordVersion GetPasswordVersion() const { return m_passwordVersion; }
     inline bool PasswordVersionHasBeenSet() const { return m_passwordVersionHasBeenSet; }
-
-    /**
-     * <p>The password version to return.</p> <p>Specifying <code>CURRENT</code> or
-     * <code>PREVIOUS</code> returns the current or previous passwords respectively.
-     * Specifying <code>PENDING</code> returns the newest version of the password that
-     * will rotate to <code>CURRENT</code>. After the <code>PENDING</code> password
-     * rotates to <code>CURRENT</code>, the <code>PENDING</code> password is no longer
-     * available.</p> <p>Default: <code>CURRENT</code> </p>
-     */
-    inline void SetPasswordVersion(const RelationalDatabasePasswordVersion& value) { m_passwordVersionHasBeenSet = true; m_passwordVersion = value; }
-
-    /**
-     * <p>The password version to return.</p> <p>Specifying <code>CURRENT</code> or
-     * <code>PREVIOUS</code> returns the current or previous passwords respectively.
-     * Specifying <code>PENDING</code> returns the newest version of the password that
-     * will rotate to <code>CURRENT</code>. After the <code>PENDING</code> password
-     * rotates to <code>CURRENT</code>, the <code>PENDING</code> password is no longer
-     * available.</p> <p>Default: <code>CURRENT</code> </p>
-     */
-    inline void SetPasswordVersion(RelationalDatabasePasswordVersion&& value) { m_passwordVersionHasBeenSet = true; m_passwordVersion = std::move(value); }
-
-    /**
-     * <p>The password version to return.</p> <p>Specifying <code>CURRENT</code> or
-     * <code>PREVIOUS</code> returns the current or previous passwords respectively.
-     * Specifying <code>PENDING</code> returns the newest version of the password that
-     * will rotate to <code>CURRENT</code>. After the <code>PENDING</code> password
-     * rotates to <code>CURRENT</code>, the <code>PENDING</code> password is no longer
-     * available.</p> <p>Default: <code>CURRENT</code> </p>
-     */
-    inline GetRelationalDatabaseMasterUserPasswordRequest& WithPasswordVersion(const RelationalDatabasePasswordVersion& value) { SetPasswordVersion(value); return *this;}
-
-    /**
-     * <p>The password version to return.</p> <p>Specifying <code>CURRENT</code> or
-     * <code>PREVIOUS</code> returns the current or previous passwords respectively.
-     * Specifying <code>PENDING</code> returns the newest version of the password that
-     * will rotate to <code>CURRENT</code>. After the <code>PENDING</code> password
-     * rotates to <code>CURRENT</code>, the <code>PENDING</code> password is no longer
-     * available.</p> <p>Default: <code>CURRENT</code> </p>
-     */
-    inline GetRelationalDatabaseMasterUserPasswordRequest& WithPasswordVersion(RelationalDatabasePasswordVersion&& value) { SetPasswordVersion(std::move(value)); return *this;}
-
+    inline void SetPasswordVersion(RelationalDatabasePasswordVersion value) { m_passwordVersionHasBeenSet = true; m_passwordVersion = value; }
+    inline GetRelationalDatabaseMasterUserPasswordRequest& WithPasswordVersion(RelationalDatabasePasswordVersion value) { SetPasswordVersion(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_relationalDatabaseName;
     bool m_relationalDatabaseNameHasBeenSet = false;
 
-    RelationalDatabasePasswordVersion m_passwordVersion;
+    RelationalDatabasePasswordVersion m_passwordVersion{RelationalDatabasePasswordVersion::NOT_SET};
     bool m_passwordVersionHasBeenSet = false;
   };
 

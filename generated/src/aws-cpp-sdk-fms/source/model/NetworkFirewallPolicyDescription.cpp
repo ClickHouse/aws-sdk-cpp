@@ -18,25 +18,7 @@ namespace FMS
 namespace Model
 {
 
-NetworkFirewallPolicyDescription::NetworkFirewallPolicyDescription() : 
-    m_statelessRuleGroupsHasBeenSet(false),
-    m_statelessDefaultActionsHasBeenSet(false),
-    m_statelessFragmentDefaultActionsHasBeenSet(false),
-    m_statelessCustomActionsHasBeenSet(false),
-    m_statefulRuleGroupsHasBeenSet(false),
-    m_statefulDefaultActionsHasBeenSet(false),
-    m_statefulEngineOptionsHasBeenSet(false)
-{
-}
-
-NetworkFirewallPolicyDescription::NetworkFirewallPolicyDescription(JsonView jsonValue) : 
-    m_statelessRuleGroupsHasBeenSet(false),
-    m_statelessDefaultActionsHasBeenSet(false),
-    m_statelessFragmentDefaultActionsHasBeenSet(false),
-    m_statelessCustomActionsHasBeenSet(false),
-    m_statefulRuleGroupsHasBeenSet(false),
-    m_statefulDefaultActionsHasBeenSet(false),
-    m_statefulEngineOptionsHasBeenSet(false)
+NetworkFirewallPolicyDescription::NetworkFirewallPolicyDescription(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -52,7 +34,6 @@ NetworkFirewallPolicyDescription& NetworkFirewallPolicyDescription::operator =(J
     }
     m_statelessRuleGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessDefaultActions"))
   {
     Aws::Utils::Array<JsonView> statelessDefaultActionsJsonList = jsonValue.GetArray("StatelessDefaultActions");
@@ -62,7 +43,6 @@ NetworkFirewallPolicyDescription& NetworkFirewallPolicyDescription::operator =(J
     }
     m_statelessDefaultActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessFragmentDefaultActions"))
   {
     Aws::Utils::Array<JsonView> statelessFragmentDefaultActionsJsonList = jsonValue.GetArray("StatelessFragmentDefaultActions");
@@ -72,7 +52,6 @@ NetworkFirewallPolicyDescription& NetworkFirewallPolicyDescription::operator =(J
     }
     m_statelessFragmentDefaultActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatelessCustomActions"))
   {
     Aws::Utils::Array<JsonView> statelessCustomActionsJsonList = jsonValue.GetArray("StatelessCustomActions");
@@ -82,7 +61,6 @@ NetworkFirewallPolicyDescription& NetworkFirewallPolicyDescription::operator =(J
     }
     m_statelessCustomActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatefulRuleGroups"))
   {
     Aws::Utils::Array<JsonView> statefulRuleGroupsJsonList = jsonValue.GetArray("StatefulRuleGroups");
@@ -92,7 +70,6 @@ NetworkFirewallPolicyDescription& NetworkFirewallPolicyDescription::operator =(J
     }
     m_statefulRuleGroupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatefulDefaultActions"))
   {
     Aws::Utils::Array<JsonView> statefulDefaultActionsJsonList = jsonValue.GetArray("StatefulDefaultActions");
@@ -102,14 +79,11 @@ NetworkFirewallPolicyDescription& NetworkFirewallPolicyDescription::operator =(J
     }
     m_statefulDefaultActionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("StatefulEngineOptions"))
   {
     m_statefulEngineOptions = jsonValue.GetObject("StatefulEngineOptions");
-
     m_statefulEngineOptionsHasBeenSet = true;
   }
-
   return *this;
 }
 

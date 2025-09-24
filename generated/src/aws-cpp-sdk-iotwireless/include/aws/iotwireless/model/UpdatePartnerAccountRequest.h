@@ -27,7 +27,7 @@ namespace Model
   class UpdatePartnerAccountRequest : public IoTWirelessRequest
   {
   public:
-    AWS_IOTWIRELESS_API UpdatePartnerAccountRequest();
+    AWS_IOTWIRELESS_API UpdatePartnerAccountRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,108 +40,39 @@ namespace Model
     AWS_IOTWIRELESS_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The Sidewalk account credentials.</p>
      */
-    inline const SidewalkUpdateAccount& GetSidewalk() const{ return m_sidewalk; }
-
-    /**
-     * <p>The Sidewalk account credentials.</p>
-     */
+    inline const SidewalkUpdateAccount& GetSidewalk() const { return m_sidewalk; }
     inline bool SidewalkHasBeenSet() const { return m_sidewalkHasBeenSet; }
+    template<typename SidewalkT = SidewalkUpdateAccount>
+    void SetSidewalk(SidewalkT&& value) { m_sidewalkHasBeenSet = true; m_sidewalk = std::forward<SidewalkT>(value); }
+    template<typename SidewalkT = SidewalkUpdateAccount>
+    UpdatePartnerAccountRequest& WithSidewalk(SidewalkT&& value) { SetSidewalk(std::forward<SidewalkT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Sidewalk account credentials.</p>
-     */
-    inline void SetSidewalk(const SidewalkUpdateAccount& value) { m_sidewalkHasBeenSet = true; m_sidewalk = value; }
-
-    /**
-     * <p>The Sidewalk account credentials.</p>
-     */
-    inline void SetSidewalk(SidewalkUpdateAccount&& value) { m_sidewalkHasBeenSet = true; m_sidewalk = std::move(value); }
-
-    /**
-     * <p>The Sidewalk account credentials.</p>
-     */
-    inline UpdatePartnerAccountRequest& WithSidewalk(const SidewalkUpdateAccount& value) { SetSidewalk(value); return *this;}
-
-    /**
-     * <p>The Sidewalk account credentials.</p>
-     */
-    inline UpdatePartnerAccountRequest& WithSidewalk(SidewalkUpdateAccount&& value) { SetSidewalk(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the partner account to update.</p>
      */
-    inline const Aws::String& GetPartnerAccountId() const{ return m_partnerAccountId; }
-
-    /**
-     * <p>The ID of the partner account to update.</p>
-     */
+    inline const Aws::String& GetPartnerAccountId() const { return m_partnerAccountId; }
     inline bool PartnerAccountIdHasBeenSet() const { return m_partnerAccountIdHasBeenSet; }
+    template<typename PartnerAccountIdT = Aws::String>
+    void SetPartnerAccountId(PartnerAccountIdT&& value) { m_partnerAccountIdHasBeenSet = true; m_partnerAccountId = std::forward<PartnerAccountIdT>(value); }
+    template<typename PartnerAccountIdT = Aws::String>
+    UpdatePartnerAccountRequest& WithPartnerAccountId(PartnerAccountIdT&& value) { SetPartnerAccountId(std::forward<PartnerAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the partner account to update.</p>
-     */
-    inline void SetPartnerAccountId(const Aws::String& value) { m_partnerAccountIdHasBeenSet = true; m_partnerAccountId = value; }
-
-    /**
-     * <p>The ID of the partner account to update.</p>
-     */
-    inline void SetPartnerAccountId(Aws::String&& value) { m_partnerAccountIdHasBeenSet = true; m_partnerAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the partner account to update.</p>
-     */
-    inline void SetPartnerAccountId(const char* value) { m_partnerAccountIdHasBeenSet = true; m_partnerAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the partner account to update.</p>
-     */
-    inline UpdatePartnerAccountRequest& WithPartnerAccountId(const Aws::String& value) { SetPartnerAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the partner account to update.</p>
-     */
-    inline UpdatePartnerAccountRequest& WithPartnerAccountId(Aws::String&& value) { SetPartnerAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the partner account to update.</p>
-     */
-    inline UpdatePartnerAccountRequest& WithPartnerAccountId(const char* value) { SetPartnerAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The partner type.</p>
      */
-    inline const PartnerType& GetPartnerType() const{ return m_partnerType; }
-
-    /**
-     * <p>The partner type.</p>
-     */
+    inline PartnerType GetPartnerType() const { return m_partnerType; }
     inline bool PartnerTypeHasBeenSet() const { return m_partnerTypeHasBeenSet; }
-
-    /**
-     * <p>The partner type.</p>
-     */
-    inline void SetPartnerType(const PartnerType& value) { m_partnerTypeHasBeenSet = true; m_partnerType = value; }
-
-    /**
-     * <p>The partner type.</p>
-     */
-    inline void SetPartnerType(PartnerType&& value) { m_partnerTypeHasBeenSet = true; m_partnerType = std::move(value); }
-
-    /**
-     * <p>The partner type.</p>
-     */
-    inline UpdatePartnerAccountRequest& WithPartnerType(const PartnerType& value) { SetPartnerType(value); return *this;}
-
-    /**
-     * <p>The partner type.</p>
-     */
-    inline UpdatePartnerAccountRequest& WithPartnerType(PartnerType&& value) { SetPartnerType(std::move(value)); return *this;}
-
+    inline void SetPartnerType(PartnerType value) { m_partnerTypeHasBeenSet = true; m_partnerType = value; }
+    inline UpdatePartnerAccountRequest& WithPartnerType(PartnerType value) { SetPartnerType(value); return *this;}
+    ///@}
   private:
 
     SidewalkUpdateAccount m_sidewalk;
@@ -150,7 +81,7 @@ namespace Model
     Aws::String m_partnerAccountId;
     bool m_partnerAccountIdHasBeenSet = false;
 
-    PartnerType m_partnerType;
+    PartnerType m_partnerType{PartnerType::NOT_SET};
     bool m_partnerTypeHasBeenSet = false;
   };
 

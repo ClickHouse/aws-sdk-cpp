@@ -18,13 +18,7 @@ namespace MediaConvert
 namespace Model
 {
 
-OutputSettings::OutputSettings() : 
-    m_hlsSettingsHasBeenSet(false)
-{
-}
-
-OutputSettings::OutputSettings(JsonView jsonValue) : 
-    m_hlsSettingsHasBeenSet(false)
+OutputSettings::OutputSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ OutputSettings& OutputSettings::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("hlsSettings"))
   {
     m_hlsSettings = jsonValue.GetObject("hlsSettings");
-
     m_hlsSettingsHasBeenSet = true;
   }
-
   return *this;
 }
 

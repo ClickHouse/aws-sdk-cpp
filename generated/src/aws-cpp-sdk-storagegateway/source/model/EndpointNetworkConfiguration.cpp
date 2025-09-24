@@ -18,13 +18,7 @@ namespace StorageGateway
 namespace Model
 {
 
-EndpointNetworkConfiguration::EndpointNetworkConfiguration() : 
-    m_ipAddressesHasBeenSet(false)
-{
-}
-
-EndpointNetworkConfiguration::EndpointNetworkConfiguration(JsonView jsonValue) : 
-    m_ipAddressesHasBeenSet(false)
+EndpointNetworkConfiguration::EndpointNetworkConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ EndpointNetworkConfiguration& EndpointNetworkConfiguration::operator =(JsonView 
     }
     m_ipAddressesHasBeenSet = true;
   }
-
   return *this;
 }
 

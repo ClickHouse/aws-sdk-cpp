@@ -32,57 +32,26 @@ namespace Model
   class StateChangeConfiguration
   {
   public:
-    AWS_IOTEVENTSDATA_API StateChangeConfiguration();
+    AWS_IOTEVENTSDATA_API StateChangeConfiguration() = default;
     AWS_IOTEVENTSDATA_API StateChangeConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API StateChangeConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The trigger type. If the value is <code>SNOOZE_TIMEOUT</code>, the snooze
      * duration ends and the alarm automatically changes to the <code>NORMAL</code>
      * state.</p>
      */
-    inline const TriggerType& GetTriggerType() const{ return m_triggerType; }
-
-    /**
-     * <p>The trigger type. If the value is <code>SNOOZE_TIMEOUT</code>, the snooze
-     * duration ends and the alarm automatically changes to the <code>NORMAL</code>
-     * state.</p>
-     */
+    inline TriggerType GetTriggerType() const { return m_triggerType; }
     inline bool TriggerTypeHasBeenSet() const { return m_triggerTypeHasBeenSet; }
-
-    /**
-     * <p>The trigger type. If the value is <code>SNOOZE_TIMEOUT</code>, the snooze
-     * duration ends and the alarm automatically changes to the <code>NORMAL</code>
-     * state.</p>
-     */
-    inline void SetTriggerType(const TriggerType& value) { m_triggerTypeHasBeenSet = true; m_triggerType = value; }
-
-    /**
-     * <p>The trigger type. If the value is <code>SNOOZE_TIMEOUT</code>, the snooze
-     * duration ends and the alarm automatically changes to the <code>NORMAL</code>
-     * state.</p>
-     */
-    inline void SetTriggerType(TriggerType&& value) { m_triggerTypeHasBeenSet = true; m_triggerType = std::move(value); }
-
-    /**
-     * <p>The trigger type. If the value is <code>SNOOZE_TIMEOUT</code>, the snooze
-     * duration ends and the alarm automatically changes to the <code>NORMAL</code>
-     * state.</p>
-     */
-    inline StateChangeConfiguration& WithTriggerType(const TriggerType& value) { SetTriggerType(value); return *this;}
-
-    /**
-     * <p>The trigger type. If the value is <code>SNOOZE_TIMEOUT</code>, the snooze
-     * duration ends and the alarm automatically changes to the <code>NORMAL</code>
-     * state.</p>
-     */
-    inline StateChangeConfiguration& WithTriggerType(TriggerType&& value) { SetTriggerType(std::move(value)); return *this;}
-
+    inline void SetTriggerType(TriggerType value) { m_triggerTypeHasBeenSet = true; m_triggerType = value; }
+    inline StateChangeConfiguration& WithTriggerType(TriggerType value) { SetTriggerType(value); return *this;}
+    ///@}
   private:
 
-    TriggerType m_triggerType;
+    TriggerType m_triggerType{TriggerType::NOT_SET};
     bool m_triggerTypeHasBeenSet = false;
   };
 

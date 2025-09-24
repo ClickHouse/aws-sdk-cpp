@@ -33,73 +33,35 @@ namespace Model
   class UserProfileDetails
   {
   public:
-    AWS_DATAZONE_API UserProfileDetails();
+    AWS_DATAZONE_API UserProfileDetails() = default;
     AWS_DATAZONE_API UserProfileDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API UserProfileDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The IAM details included in the user profile details.</p>
      */
-    inline const IamUserProfileDetails& GetIam() const{ return m_iam; }
-
-    /**
-     * <p>The IAM details included in the user profile details.</p>
-     */
+    inline const IamUserProfileDetails& GetIam() const { return m_iam; }
     inline bool IamHasBeenSet() const { return m_iamHasBeenSet; }
+    template<typename IamT = IamUserProfileDetails>
+    void SetIam(IamT&& value) { m_iamHasBeenSet = true; m_iam = std::forward<IamT>(value); }
+    template<typename IamT = IamUserProfileDetails>
+    UserProfileDetails& WithIam(IamT&& value) { SetIam(std::forward<IamT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The IAM details included in the user profile details.</p>
-     */
-    inline void SetIam(const IamUserProfileDetails& value) { m_iamHasBeenSet = true; m_iam = value; }
-
-    /**
-     * <p>The IAM details included in the user profile details.</p>
-     */
-    inline void SetIam(IamUserProfileDetails&& value) { m_iamHasBeenSet = true; m_iam = std::move(value); }
-
-    /**
-     * <p>The IAM details included in the user profile details.</p>
-     */
-    inline UserProfileDetails& WithIam(const IamUserProfileDetails& value) { SetIam(value); return *this;}
-
-    /**
-     * <p>The IAM details included in the user profile details.</p>
-     */
-    inline UserProfileDetails& WithIam(IamUserProfileDetails&& value) { SetIam(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The single sign-on details included in the user profile details.</p>
      */
-    inline const SsoUserProfileDetails& GetSso() const{ return m_sso; }
-
-    /**
-     * <p>The single sign-on details included in the user profile details.</p>
-     */
+    inline const SsoUserProfileDetails& GetSso() const { return m_sso; }
     inline bool SsoHasBeenSet() const { return m_ssoHasBeenSet; }
-
-    /**
-     * <p>The single sign-on details included in the user profile details.</p>
-     */
-    inline void SetSso(const SsoUserProfileDetails& value) { m_ssoHasBeenSet = true; m_sso = value; }
-
-    /**
-     * <p>The single sign-on details included in the user profile details.</p>
-     */
-    inline void SetSso(SsoUserProfileDetails&& value) { m_ssoHasBeenSet = true; m_sso = std::move(value); }
-
-    /**
-     * <p>The single sign-on details included in the user profile details.</p>
-     */
-    inline UserProfileDetails& WithSso(const SsoUserProfileDetails& value) { SetSso(value); return *this;}
-
-    /**
-     * <p>The single sign-on details included in the user profile details.</p>
-     */
-    inline UserProfileDetails& WithSso(SsoUserProfileDetails&& value) { SetSso(std::move(value)); return *this;}
-
+    template<typename SsoT = SsoUserProfileDetails>
+    void SetSso(SsoT&& value) { m_ssoHasBeenSet = true; m_sso = std::forward<SsoT>(value); }
+    template<typename SsoT = SsoUserProfileDetails>
+    UserProfileDetails& WithSso(SsoT&& value) { SetSso(std::forward<SsoT>(value)); return *this;}
+    ///@}
   private:
 
     IamUserProfileDetails m_iam;

@@ -35,12 +35,13 @@ namespace Model
   class DefaultPushNotificationMessage
   {
   public:
-    AWS_PINPOINT_API DefaultPushNotificationMessage();
+    AWS_PINPOINT_API DefaultPushNotificationMessage() = default;
     AWS_PINPOINT_API DefaultPushNotificationMessage(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API DefaultPushNotificationMessage& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The default action to occur if a recipient taps the push notification. Valid
      * values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the
@@ -51,416 +52,101 @@ namespace Model
      * the recipient's device opens and loads the web page at a URL that you
      * specify.</p></li></ul>
      */
-    inline const Action& GetAction() const{ return m_action; }
-
-    /**
-     * <p>The default action to occur if a recipient taps the push notification. Valid
-     * values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the
-     * foreground app if it was sent to the background. This is the default
-     * action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated
-     * user interface in the app. This setting uses the deep-linking features of the
-     * iOS and Android platforms.</p></li> <li><p>URL - The default mobile browser on
-     * the recipient's device opens and loads the web page at a URL that you
-     * specify.</p></li></ul>
-     */
+    inline Action GetAction() const { return m_action; }
     inline bool ActionHasBeenSet() const { return m_actionHasBeenSet; }
+    inline void SetAction(Action value) { m_actionHasBeenSet = true; m_action = value; }
+    inline DefaultPushNotificationMessage& WithAction(Action value) { SetAction(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The default action to occur if a recipient taps the push notification. Valid
-     * values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the
-     * foreground app if it was sent to the background. This is the default
-     * action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated
-     * user interface in the app. This setting uses the deep-linking features of the
-     * iOS and Android platforms.</p></li> <li><p>URL - The default mobile browser on
-     * the recipient's device opens and loads the web page at a URL that you
-     * specify.</p></li></ul>
-     */
-    inline void SetAction(const Action& value) { m_actionHasBeenSet = true; m_action = value; }
-
-    /**
-     * <p>The default action to occur if a recipient taps the push notification. Valid
-     * values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the
-     * foreground app if it was sent to the background. This is the default
-     * action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated
-     * user interface in the app. This setting uses the deep-linking features of the
-     * iOS and Android platforms.</p></li> <li><p>URL - The default mobile browser on
-     * the recipient's device opens and loads the web page at a URL that you
-     * specify.</p></li></ul>
-     */
-    inline void SetAction(Action&& value) { m_actionHasBeenSet = true; m_action = std::move(value); }
-
-    /**
-     * <p>The default action to occur if a recipient taps the push notification. Valid
-     * values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the
-     * foreground app if it was sent to the background. This is the default
-     * action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated
-     * user interface in the app. This setting uses the deep-linking features of the
-     * iOS and Android platforms.</p></li> <li><p>URL - The default mobile browser on
-     * the recipient's device opens and loads the web page at a URL that you
-     * specify.</p></li></ul>
-     */
-    inline DefaultPushNotificationMessage& WithAction(const Action& value) { SetAction(value); return *this;}
-
-    /**
-     * <p>The default action to occur if a recipient taps the push notification. Valid
-     * values are:</p> <ul><li><p>OPEN_APP - Your app opens or it becomes the
-     * foreground app if it was sent to the background. This is the default
-     * action.</p></li> <li><p>DEEP_LINK - Your app opens and displays a designated
-     * user interface in the app. This setting uses the deep-linking features of the
-     * iOS and Android platforms.</p></li> <li><p>URL - The default mobile browser on
-     * the recipient's device opens and loads the web page at a URL that you
-     * specify.</p></li></ul>
-     */
-    inline DefaultPushNotificationMessage& WithAction(Action&& value) { SetAction(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The default body of the notification message.</p>
      */
-    inline const Aws::String& GetBody() const{ return m_body; }
-
-    /**
-     * <p>The default body of the notification message.</p>
-     */
+    inline const Aws::String& GetBody() const { return m_body; }
     inline bool BodyHasBeenSet() const { return m_bodyHasBeenSet; }
+    template<typename BodyT = Aws::String>
+    void SetBody(BodyT&& value) { m_bodyHasBeenSet = true; m_body = std::forward<BodyT>(value); }
+    template<typename BodyT = Aws::String>
+    DefaultPushNotificationMessage& WithBody(BodyT&& value) { SetBody(std::forward<BodyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The default body of the notification message.</p>
-     */
-    inline void SetBody(const Aws::String& value) { m_bodyHasBeenSet = true; m_body = value; }
-
-    /**
-     * <p>The default body of the notification message.</p>
-     */
-    inline void SetBody(Aws::String&& value) { m_bodyHasBeenSet = true; m_body = std::move(value); }
-
-    /**
-     * <p>The default body of the notification message.</p>
-     */
-    inline void SetBody(const char* value) { m_bodyHasBeenSet = true; m_body.assign(value); }
-
-    /**
-     * <p>The default body of the notification message.</p>
-     */
-    inline DefaultPushNotificationMessage& WithBody(const Aws::String& value) { SetBody(value); return *this;}
-
-    /**
-     * <p>The default body of the notification message.</p>
-     */
-    inline DefaultPushNotificationMessage& WithBody(Aws::String&& value) { SetBody(std::move(value)); return *this;}
-
-    /**
-     * <p>The default body of the notification message.</p>
-     */
-    inline DefaultPushNotificationMessage& WithBody(const char* value) { SetBody(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The JSON data payload to use for the default push notification, if the
      * notification is a silent push notification. This payload is added to the
      * data.pinpoint.jsonBody object of the notification.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetData() const{ return m_data; }
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetData() const { return m_data; }
     inline bool DataHasBeenSet() const { return m_dataHasBeenSet; }
+    template<typename DataT = Aws::Map<Aws::String, Aws::String>>
+    void SetData(DataT&& value) { m_dataHasBeenSet = true; m_data = std::forward<DataT>(value); }
+    template<typename DataT = Aws::Map<Aws::String, Aws::String>>
+    DefaultPushNotificationMessage& WithData(DataT&& value) { SetData(std::forward<DataT>(value)); return *this;}
+    template<typename DataKeyT = Aws::String, typename DataValueT = Aws::String>
+    DefaultPushNotificationMessage& AddData(DataKeyT&& key, DataValueT&& value) {
+      m_dataHasBeenSet = true; m_data.emplace(std::forward<DataKeyT>(key), std::forward<DataValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline void SetData(const Aws::Map<Aws::String, Aws::String>& value) { m_dataHasBeenSet = true; m_data = value; }
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline void SetData(Aws::Map<Aws::String, Aws::String>&& value) { m_dataHasBeenSet = true; m_data = std::move(value); }
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline DefaultPushNotificationMessage& WithData(const Aws::Map<Aws::String, Aws::String>& value) { SetData(value); return *this;}
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline DefaultPushNotificationMessage& WithData(Aws::Map<Aws::String, Aws::String>&& value) { SetData(std::move(value)); return *this;}
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline DefaultPushNotificationMessage& AddData(const Aws::String& key, const Aws::String& value) { m_dataHasBeenSet = true; m_data.emplace(key, value); return *this; }
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline DefaultPushNotificationMessage& AddData(Aws::String&& key, const Aws::String& value) { m_dataHasBeenSet = true; m_data.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline DefaultPushNotificationMessage& AddData(const Aws::String& key, Aws::String&& value) { m_dataHasBeenSet = true; m_data.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline DefaultPushNotificationMessage& AddData(Aws::String&& key, Aws::String&& value) { m_dataHasBeenSet = true; m_data.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline DefaultPushNotificationMessage& AddData(const char* key, Aws::String&& value) { m_dataHasBeenSet = true; m_data.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline DefaultPushNotificationMessage& AddData(Aws::String&& key, const char* value) { m_dataHasBeenSet = true; m_data.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The JSON data payload to use for the default push notification, if the
-     * notification is a silent push notification. This payload is added to the
-     * data.pinpoint.jsonBody object of the notification.</p>
-     */
-    inline DefaultPushNotificationMessage& AddData(const char* key, const char* value) { m_dataHasBeenSet = true; m_data.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Specifies whether the default notification is a silent push notification,
      * which is a push notification that doesn't display on a recipient's device.
      * Silent push notifications can be used for cases such as updating an app's
      * configuration or delivering messages to an in-app notification center.</p>
      */
-    inline bool GetSilentPush() const{ return m_silentPush; }
-
-    /**
-     * <p>Specifies whether the default notification is a silent push notification,
-     * which is a push notification that doesn't display on a recipient's device.
-     * Silent push notifications can be used for cases such as updating an app's
-     * configuration or delivering messages to an in-app notification center.</p>
-     */
+    inline bool GetSilentPush() const { return m_silentPush; }
     inline bool SilentPushHasBeenSet() const { return m_silentPushHasBeenSet; }
-
-    /**
-     * <p>Specifies whether the default notification is a silent push notification,
-     * which is a push notification that doesn't display on a recipient's device.
-     * Silent push notifications can be used for cases such as updating an app's
-     * configuration or delivering messages to an in-app notification center.</p>
-     */
     inline void SetSilentPush(bool value) { m_silentPushHasBeenSet = true; m_silentPush = value; }
-
-    /**
-     * <p>Specifies whether the default notification is a silent push notification,
-     * which is a push notification that doesn't display on a recipient's device.
-     * Silent push notifications can be used for cases such as updating an app's
-     * configuration or delivering messages to an in-app notification center.</p>
-     */
     inline DefaultPushNotificationMessage& WithSilentPush(bool value) { SetSilentPush(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The default message variables to use in the notification message. You can
      * override the default variables with individual address variables.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& GetSubstitutions() const{ return m_substitutions; }
-
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& GetSubstitutions() const { return m_substitutions; }
     inline bool SubstitutionsHasBeenSet() const { return m_substitutionsHasBeenSet; }
+    template<typename SubstitutionsT = Aws::Map<Aws::String, Aws::Vector<Aws::String>>>
+    void SetSubstitutions(SubstitutionsT&& value) { m_substitutionsHasBeenSet = true; m_substitutions = std::forward<SubstitutionsT>(value); }
+    template<typename SubstitutionsT = Aws::Map<Aws::String, Aws::Vector<Aws::String>>>
+    DefaultPushNotificationMessage& WithSubstitutions(SubstitutionsT&& value) { SetSubstitutions(std::forward<SubstitutionsT>(value)); return *this;}
+    template<typename SubstitutionsKeyT = Aws::String, typename SubstitutionsValueT = Aws::Vector<Aws::String>>
+    DefaultPushNotificationMessage& AddSubstitutions(SubstitutionsKeyT&& key, SubstitutionsValueT&& value) {
+      m_substitutionsHasBeenSet = true; m_substitutions.emplace(std::forward<SubstitutionsKeyT>(key), std::forward<SubstitutionsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
-    inline void SetSubstitutions(const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& value) { m_substitutionsHasBeenSet = true; m_substitutions = value; }
-
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
-    inline void SetSubstitutions(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { m_substitutionsHasBeenSet = true; m_substitutions = std::move(value); }
-
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
-    inline DefaultPushNotificationMessage& WithSubstitutions(const Aws::Map<Aws::String, Aws::Vector<Aws::String>>& value) { SetSubstitutions(value); return *this;}
-
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
-    inline DefaultPushNotificationMessage& WithSubstitutions(Aws::Map<Aws::String, Aws::Vector<Aws::String>>&& value) { SetSubstitutions(std::move(value)); return *this;}
-
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
-    inline DefaultPushNotificationMessage& AddSubstitutions(const Aws::String& key, const Aws::Vector<Aws::String>& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(key, value); return *this; }
-
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
-    inline DefaultPushNotificationMessage& AddSubstitutions(Aws::String&& key, const Aws::Vector<Aws::String>& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
-    inline DefaultPushNotificationMessage& AddSubstitutions(const Aws::String& key, Aws::Vector<Aws::String>&& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
-    inline DefaultPushNotificationMessage& AddSubstitutions(Aws::String&& key, Aws::Vector<Aws::String>&& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
-    inline DefaultPushNotificationMessage& AddSubstitutions(const char* key, Aws::Vector<Aws::String>&& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The default message variables to use in the notification message. You can
-     * override the default variables with individual address variables.</p>
-     */
-    inline DefaultPushNotificationMessage& AddSubstitutions(const char* key, const Aws::Vector<Aws::String>& value) { m_substitutionsHasBeenSet = true; m_substitutions.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The default title to display above the notification message on a recipient's
      * device.</p>
      */
-    inline const Aws::String& GetTitle() const{ return m_title; }
-
-    /**
-     * <p>The default title to display above the notification message on a recipient's
-     * device.</p>
-     */
+    inline const Aws::String& GetTitle() const { return m_title; }
     inline bool TitleHasBeenSet() const { return m_titleHasBeenSet; }
+    template<typename TitleT = Aws::String>
+    void SetTitle(TitleT&& value) { m_titleHasBeenSet = true; m_title = std::forward<TitleT>(value); }
+    template<typename TitleT = Aws::String>
+    DefaultPushNotificationMessage& WithTitle(TitleT&& value) { SetTitle(std::forward<TitleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The default title to display above the notification message on a recipient's
-     * device.</p>
-     */
-    inline void SetTitle(const Aws::String& value) { m_titleHasBeenSet = true; m_title = value; }
-
-    /**
-     * <p>The default title to display above the notification message on a recipient's
-     * device.</p>
-     */
-    inline void SetTitle(Aws::String&& value) { m_titleHasBeenSet = true; m_title = std::move(value); }
-
-    /**
-     * <p>The default title to display above the notification message on a recipient's
-     * device.</p>
-     */
-    inline void SetTitle(const char* value) { m_titleHasBeenSet = true; m_title.assign(value); }
-
-    /**
-     * <p>The default title to display above the notification message on a recipient's
-     * device.</p>
-     */
-    inline DefaultPushNotificationMessage& WithTitle(const Aws::String& value) { SetTitle(value); return *this;}
-
-    /**
-     * <p>The default title to display above the notification message on a recipient's
-     * device.</p>
-     */
-    inline DefaultPushNotificationMessage& WithTitle(Aws::String&& value) { SetTitle(std::move(value)); return *this;}
-
-    /**
-     * <p>The default title to display above the notification message on a recipient's
-     * device.</p>
-     */
-    inline DefaultPushNotificationMessage& WithTitle(const char* value) { SetTitle(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The default URL to open in a recipient's default mobile browser, if a
      * recipient taps the push notification and the value of the Action property is
      * URL.</p>
      */
-    inline const Aws::String& GetUrl() const{ return m_url; }
-
-    /**
-     * <p>The default URL to open in a recipient's default mobile browser, if a
-     * recipient taps the push notification and the value of the Action property is
-     * URL.</p>
-     */
+    inline const Aws::String& GetUrl() const { return m_url; }
     inline bool UrlHasBeenSet() const { return m_urlHasBeenSet; }
-
-    /**
-     * <p>The default URL to open in a recipient's default mobile browser, if a
-     * recipient taps the push notification and the value of the Action property is
-     * URL.</p>
-     */
-    inline void SetUrl(const Aws::String& value) { m_urlHasBeenSet = true; m_url = value; }
-
-    /**
-     * <p>The default URL to open in a recipient's default mobile browser, if a
-     * recipient taps the push notification and the value of the Action property is
-     * URL.</p>
-     */
-    inline void SetUrl(Aws::String&& value) { m_urlHasBeenSet = true; m_url = std::move(value); }
-
-    /**
-     * <p>The default URL to open in a recipient's default mobile browser, if a
-     * recipient taps the push notification and the value of the Action property is
-     * URL.</p>
-     */
-    inline void SetUrl(const char* value) { m_urlHasBeenSet = true; m_url.assign(value); }
-
-    /**
-     * <p>The default URL to open in a recipient's default mobile browser, if a
-     * recipient taps the push notification and the value of the Action property is
-     * URL.</p>
-     */
-    inline DefaultPushNotificationMessage& WithUrl(const Aws::String& value) { SetUrl(value); return *this;}
-
-    /**
-     * <p>The default URL to open in a recipient's default mobile browser, if a
-     * recipient taps the push notification and the value of the Action property is
-     * URL.</p>
-     */
-    inline DefaultPushNotificationMessage& WithUrl(Aws::String&& value) { SetUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The default URL to open in a recipient's default mobile browser, if a
-     * recipient taps the push notification and the value of the Action property is
-     * URL.</p>
-     */
-    inline DefaultPushNotificationMessage& WithUrl(const char* value) { SetUrl(value); return *this;}
-
+    template<typename UrlT = Aws::String>
+    void SetUrl(UrlT&& value) { m_urlHasBeenSet = true; m_url = std::forward<UrlT>(value); }
+    template<typename UrlT = Aws::String>
+    DefaultPushNotificationMessage& WithUrl(UrlT&& value) { SetUrl(std::forward<UrlT>(value)); return *this;}
+    ///@}
   private:
 
-    Action m_action;
+    Action m_action{Action::NOT_SET};
     bool m_actionHasBeenSet = false;
 
     Aws::String m_body;
@@ -469,7 +155,7 @@ namespace Model
     Aws::Map<Aws::String, Aws::String> m_data;
     bool m_dataHasBeenSet = false;
 
-    bool m_silentPush;
+    bool m_silentPush{false};
     bool m_silentPushHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::Vector<Aws::String>> m_substitutions;

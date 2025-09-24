@@ -33,289 +33,83 @@ namespace Model
   class UpdateExperimentTemplateActionInputItem
   {
   public:
-    AWS_FIS_API UpdateExperimentTemplateActionInputItem();
+    AWS_FIS_API UpdateExperimentTemplateActionInputItem() = default;
     AWS_FIS_API UpdateExperimentTemplateActionInputItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API UpdateExperimentTemplateActionInputItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the action.</p>
      */
-    inline const Aws::String& GetActionId() const{ return m_actionId; }
-
-    /**
-     * <p>The ID of the action.</p>
-     */
+    inline const Aws::String& GetActionId() const { return m_actionId; }
     inline bool ActionIdHasBeenSet() const { return m_actionIdHasBeenSet; }
+    template<typename ActionIdT = Aws::String>
+    void SetActionId(ActionIdT&& value) { m_actionIdHasBeenSet = true; m_actionId = std::forward<ActionIdT>(value); }
+    template<typename ActionIdT = Aws::String>
+    UpdateExperimentTemplateActionInputItem& WithActionId(ActionIdT&& value) { SetActionId(std::forward<ActionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline void SetActionId(const Aws::String& value) { m_actionIdHasBeenSet = true; m_actionId = value; }
-
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline void SetActionId(Aws::String&& value) { m_actionIdHasBeenSet = true; m_actionId = std::move(value); }
-
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline void SetActionId(const char* value) { m_actionIdHasBeenSet = true; m_actionId.assign(value); }
-
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithActionId(const Aws::String& value) { SetActionId(value); return *this;}
-
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithActionId(Aws::String&& value) { SetActionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithActionId(const char* value) { SetActionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description for the action.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description for the action.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateExperimentTemplateActionInputItem& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A description for the action.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description for the action.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description for the action.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The parameters for the action, if applicable.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Map<Aws::String, Aws::String>>
+    UpdateExperimentTemplateActionInputItem& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersKeyT = Aws::String, typename ParametersValueT = Aws::String>
+    UpdateExperimentTemplateActionInputItem& AddParameters(ParametersKeyT&& key, ParametersValueT&& value) {
+      m_parametersHasBeenSet = true; m_parameters.emplace(std::forward<ParametersKeyT>(key), std::forward<ParametersValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline void SetParameters(const Aws::Map<Aws::String, Aws::String>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline void SetParameters(Aws::Map<Aws::String, Aws::String>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithParameters(const Aws::Map<Aws::String, Aws::String>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithParameters(Aws::Map<Aws::String, Aws::String>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddParameters(const Aws::String& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddParameters(Aws::String&& key, const Aws::String& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddParameters(const Aws::String& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddParameters(Aws::String&& key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddParameters(const char* key, Aws::String&& value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddParameters(Aws::String&& key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The parameters for the action, if applicable.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddParameters(const char* key, const char* value) { m_parametersHasBeenSet = true; m_parameters.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The targets for the action.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTargets() const{ return m_targets; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTargets() const { return m_targets; }
     inline bool TargetsHasBeenSet() const { return m_targetsHasBeenSet; }
+    template<typename TargetsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTargets(TargetsT&& value) { m_targetsHasBeenSet = true; m_targets = std::forward<TargetsT>(value); }
+    template<typename TargetsT = Aws::Map<Aws::String, Aws::String>>
+    UpdateExperimentTemplateActionInputItem& WithTargets(TargetsT&& value) { SetTargets(std::forward<TargetsT>(value)); return *this;}
+    template<typename TargetsKeyT = Aws::String, typename TargetsValueT = Aws::String>
+    UpdateExperimentTemplateActionInputItem& AddTargets(TargetsKeyT&& key, TargetsValueT&& value) {
+      m_targetsHasBeenSet = true; m_targets.emplace(std::forward<TargetsKeyT>(key), std::forward<TargetsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline void SetTargets(const Aws::Map<Aws::String, Aws::String>& value) { m_targetsHasBeenSet = true; m_targets = value; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline void SetTargets(Aws::Map<Aws::String, Aws::String>&& value) { m_targetsHasBeenSet = true; m_targets = std::move(value); }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithTargets(const Aws::Map<Aws::String, Aws::String>& value) { SetTargets(value); return *this;}
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithTargets(Aws::Map<Aws::String, Aws::String>&& value) { SetTargets(std::move(value)); return *this;}
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddTargets(const Aws::String& key, const Aws::String& value) { m_targetsHasBeenSet = true; m_targets.emplace(key, value); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddTargets(Aws::String&& key, const Aws::String& value) { m_targetsHasBeenSet = true; m_targets.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddTargets(const Aws::String& key, Aws::String&& value) { m_targetsHasBeenSet = true; m_targets.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddTargets(Aws::String&& key, Aws::String&& value) { m_targetsHasBeenSet = true; m_targets.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddTargets(const char* key, Aws::String&& value) { m_targetsHasBeenSet = true; m_targets.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddTargets(Aws::String&& key, const char* value) { m_targetsHasBeenSet = true; m_targets.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The targets for the action.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddTargets(const char* key, const char* value) { m_targetsHasBeenSet = true; m_targets.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>The name of the action that must be completed before the current action
      * starts. Omit this parameter to run the action at the start of the
      * experiment.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetStartAfter() const{ return m_startAfter; }
-
-    /**
-     * <p>The name of the action that must be completed before the current action
-     * starts. Omit this parameter to run the action at the start of the
-     * experiment.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetStartAfter() const { return m_startAfter; }
     inline bool StartAfterHasBeenSet() const { return m_startAfterHasBeenSet; }
-
-    /**
-     * <p>The name of the action that must be completed before the current action
-     * starts. Omit this parameter to run the action at the start of the
-     * experiment.</p>
-     */
-    inline void SetStartAfter(const Aws::Vector<Aws::String>& value) { m_startAfterHasBeenSet = true; m_startAfter = value; }
-
-    /**
-     * <p>The name of the action that must be completed before the current action
-     * starts. Omit this parameter to run the action at the start of the
-     * experiment.</p>
-     */
-    inline void SetStartAfter(Aws::Vector<Aws::String>&& value) { m_startAfterHasBeenSet = true; m_startAfter = std::move(value); }
-
-    /**
-     * <p>The name of the action that must be completed before the current action
-     * starts. Omit this parameter to run the action at the start of the
-     * experiment.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithStartAfter(const Aws::Vector<Aws::String>& value) { SetStartAfter(value); return *this;}
-
-    /**
-     * <p>The name of the action that must be completed before the current action
-     * starts. Omit this parameter to run the action at the start of the
-     * experiment.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& WithStartAfter(Aws::Vector<Aws::String>&& value) { SetStartAfter(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the action that must be completed before the current action
-     * starts. Omit this parameter to run the action at the start of the
-     * experiment.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddStartAfter(const Aws::String& value) { m_startAfterHasBeenSet = true; m_startAfter.push_back(value); return *this; }
-
-    /**
-     * <p>The name of the action that must be completed before the current action
-     * starts. Omit this parameter to run the action at the start of the
-     * experiment.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddStartAfter(Aws::String&& value) { m_startAfterHasBeenSet = true; m_startAfter.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The name of the action that must be completed before the current action
-     * starts. Omit this parameter to run the action at the start of the
-     * experiment.</p>
-     */
-    inline UpdateExperimentTemplateActionInputItem& AddStartAfter(const char* value) { m_startAfterHasBeenSet = true; m_startAfter.push_back(value); return *this; }
-
+    template<typename StartAfterT = Aws::Vector<Aws::String>>
+    void SetStartAfter(StartAfterT&& value) { m_startAfterHasBeenSet = true; m_startAfter = std::forward<StartAfterT>(value); }
+    template<typename StartAfterT = Aws::Vector<Aws::String>>
+    UpdateExperimentTemplateActionInputItem& WithStartAfter(StartAfterT&& value) { SetStartAfter(std::forward<StartAfterT>(value)); return *this;}
+    template<typename StartAfterT = Aws::String>
+    UpdateExperimentTemplateActionInputItem& AddStartAfter(StartAfterT&& value) { m_startAfterHasBeenSet = true; m_startAfter.emplace_back(std::forward<StartAfterT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_actionId;

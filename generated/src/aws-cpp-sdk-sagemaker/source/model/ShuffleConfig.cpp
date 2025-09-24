@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ShuffleConfig::ShuffleConfig() : 
-    m_seed(0),
-    m_seedHasBeenSet(false)
-{
-}
-
-ShuffleConfig::ShuffleConfig(JsonView jsonValue) : 
-    m_seed(0),
-    m_seedHasBeenSet(false)
+ShuffleConfig::ShuffleConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ShuffleConfig& ShuffleConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Seed"))
   {
     m_seed = jsonValue.GetInt64("Seed");
-
     m_seedHasBeenSet = true;
   }
-
   return *this;
 }
 

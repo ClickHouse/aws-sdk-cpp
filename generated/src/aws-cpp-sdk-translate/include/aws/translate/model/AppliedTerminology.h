@@ -37,125 +37,41 @@ namespace Model
   class AppliedTerminology
   {
   public:
-    AWS_TRANSLATE_API AppliedTerminology();
+    AWS_TRANSLATE_API AppliedTerminology() = default;
     AWS_TRANSLATE_API AppliedTerminology(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API AppliedTerminology& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TRANSLATE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the custom terminology applied to the input text by Amazon
      * Translate for the translated text response.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the custom terminology applied to the input text by Amazon
-     * Translate for the translated text response.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    AppliedTerminology& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the custom terminology applied to the input text by Amazon
-     * Translate for the translated text response.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the custom terminology applied to the input text by Amazon
-     * Translate for the translated text response.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the custom terminology applied to the input text by Amazon
-     * Translate for the translated text response.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the custom terminology applied to the input text by Amazon
-     * Translate for the translated text response.</p>
-     */
-    inline AppliedTerminology& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the custom terminology applied to the input text by Amazon
-     * Translate for the translated text response.</p>
-     */
-    inline AppliedTerminology& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the custom terminology applied to the input text by Amazon
-     * Translate for the translated text response.</p>
-     */
-    inline AppliedTerminology& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The specific terms of the custom terminology applied to the input text by
      * Amazon Translate for the translated text response. A maximum of 250 terms will
      * be returned, and the specific terms applied will be the first 250 terms in the
      * source text. </p>
      */
-    inline const Aws::Vector<Term>& GetTerms() const{ return m_terms; }
-
-    /**
-     * <p>The specific terms of the custom terminology applied to the input text by
-     * Amazon Translate for the translated text response. A maximum of 250 terms will
-     * be returned, and the specific terms applied will be the first 250 terms in the
-     * source text. </p>
-     */
+    inline const Aws::Vector<Term>& GetTerms() const { return m_terms; }
     inline bool TermsHasBeenSet() const { return m_termsHasBeenSet; }
-
-    /**
-     * <p>The specific terms of the custom terminology applied to the input text by
-     * Amazon Translate for the translated text response. A maximum of 250 terms will
-     * be returned, and the specific terms applied will be the first 250 terms in the
-     * source text. </p>
-     */
-    inline void SetTerms(const Aws::Vector<Term>& value) { m_termsHasBeenSet = true; m_terms = value; }
-
-    /**
-     * <p>The specific terms of the custom terminology applied to the input text by
-     * Amazon Translate for the translated text response. A maximum of 250 terms will
-     * be returned, and the specific terms applied will be the first 250 terms in the
-     * source text. </p>
-     */
-    inline void SetTerms(Aws::Vector<Term>&& value) { m_termsHasBeenSet = true; m_terms = std::move(value); }
-
-    /**
-     * <p>The specific terms of the custom terminology applied to the input text by
-     * Amazon Translate for the translated text response. A maximum of 250 terms will
-     * be returned, and the specific terms applied will be the first 250 terms in the
-     * source text. </p>
-     */
-    inline AppliedTerminology& WithTerms(const Aws::Vector<Term>& value) { SetTerms(value); return *this;}
-
-    /**
-     * <p>The specific terms of the custom terminology applied to the input text by
-     * Amazon Translate for the translated text response. A maximum of 250 terms will
-     * be returned, and the specific terms applied will be the first 250 terms in the
-     * source text. </p>
-     */
-    inline AppliedTerminology& WithTerms(Aws::Vector<Term>&& value) { SetTerms(std::move(value)); return *this;}
-
-    /**
-     * <p>The specific terms of the custom terminology applied to the input text by
-     * Amazon Translate for the translated text response. A maximum of 250 terms will
-     * be returned, and the specific terms applied will be the first 250 terms in the
-     * source text. </p>
-     */
-    inline AppliedTerminology& AddTerms(const Term& value) { m_termsHasBeenSet = true; m_terms.push_back(value); return *this; }
-
-    /**
-     * <p>The specific terms of the custom terminology applied to the input text by
-     * Amazon Translate for the translated text response. A maximum of 250 terms will
-     * be returned, and the specific terms applied will be the first 250 terms in the
-     * source text. </p>
-     */
-    inline AppliedTerminology& AddTerms(Term&& value) { m_termsHasBeenSet = true; m_terms.push_back(std::move(value)); return *this; }
-
+    template<typename TermsT = Aws::Vector<Term>>
+    void SetTerms(TermsT&& value) { m_termsHasBeenSet = true; m_terms = std::forward<TermsT>(value); }
+    template<typename TermsT = Aws::Vector<Term>>
+    AppliedTerminology& WithTerms(TermsT&& value) { SetTerms(std::forward<TermsT>(value)); return *this;}
+    template<typename TermsT = Term>
+    AppliedTerminology& AddTerms(TermsT&& value) { m_termsHasBeenSet = true; m_terms.emplace_back(std::forward<TermsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_name;

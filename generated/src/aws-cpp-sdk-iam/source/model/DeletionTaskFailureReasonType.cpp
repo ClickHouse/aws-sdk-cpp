@@ -20,15 +20,7 @@ namespace IAM
 namespace Model
 {
 
-DeletionTaskFailureReasonType::DeletionTaskFailureReasonType() : 
-    m_reasonHasBeenSet(false),
-    m_roleUsageListHasBeenSet(false)
-{
-}
-
-DeletionTaskFailureReasonType::DeletionTaskFailureReasonType(const XmlNode& xmlNode) : 
-    m_reasonHasBeenSet(false),
-    m_roleUsageListHasBeenSet(false)
+DeletionTaskFailureReasonType::DeletionTaskFailureReasonType(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ DeletionTaskFailureReasonType& DeletionTaskFailureReasonType::operator =(const X
     if(!roleUsageListNode.IsNull())
     {
       XmlNode roleUsageListMember = roleUsageListNode.FirstChild("member");
+      m_roleUsageListHasBeenSet = !roleUsageListMember.IsNull();
       while(!roleUsageListMember.IsNull())
       {
         m_roleUsageList.push_back(roleUsageListMember);
@@ -94,7 +87,7 @@ void DeletionTaskFailureReasonType::OutputToStream(Aws::OStream& oStream, const 
       for(auto& item : m_roleUsageList)
       {
         Aws::StringStream roleUsageListSs;
-        roleUsageListSs << location <<  ".RoleUsageList.member." << roleUsageListIdx++;
+        roleUsageListSs << location << ".RoleUsageList.member." << roleUsageListIdx++;
         item.OutputToStream(oStream, roleUsageListSs.str().c_str());
       }
   }

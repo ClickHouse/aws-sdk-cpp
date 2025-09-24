@@ -18,35 +18,37 @@ namespace DataZone
 namespace Model
 {
 
-DataProductItem::DataProductItem() : 
-    m_domainIdHasBeenSet(false),
-    m_itemIdHasBeenSet(false)
-{
-}
-
-DataProductItem::DataProductItem(JsonView jsonValue) : 
-    m_domainIdHasBeenSet(false),
-    m_itemIdHasBeenSet(false)
+DataProductItem::DataProductItem(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 DataProductItem& DataProductItem::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("domainId"))
+  if(jsonValue.ValueExists("glossaryTerms"))
   {
-    m_domainId = jsonValue.GetString("domainId");
-
-    m_domainIdHasBeenSet = true;
+    Aws::Utils::Array<JsonView> glossaryTermsJsonList = jsonValue.GetArray("glossaryTerms");
+    for(unsigned glossaryTermsIndex = 0; glossaryTermsIndex < glossaryTermsJsonList.GetLength(); ++glossaryTermsIndex)
+    {
+      m_glossaryTerms.push_back(glossaryTermsJsonList[glossaryTermsIndex].AsString());
+    }
+    m_glossaryTermsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("itemId"))
+  if(jsonValue.ValueExists("identifier"))
   {
-    m_itemId = jsonValue.GetString("itemId");
-
-    m_itemIdHasBeenSet = true;
+    m_identifier = jsonValue.GetString("identifier");
+    m_identifierHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("itemType"))
+  {
+    m_itemType = DataProductItemTypeMapper::GetDataProductItemTypeForName(jsonValue.GetString("itemType"));
+    m_itemTypeHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("revision"))
+  {
+    m_revision = jsonValue.GetString("revision");
+    m_revisionHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +56,31 @@ JsonValue DataProductItem::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_domainIdHasBeenSet)
+  if(m_glossaryTermsHasBeenSet)
   {
-   payload.WithString("domainId", m_domainId);
+   Aws::Utils::Array<JsonValue> glossaryTermsJsonList(m_glossaryTerms.size());
+   for(unsigned glossaryTermsIndex = 0; glossaryTermsIndex < glossaryTermsJsonList.GetLength(); ++glossaryTermsIndex)
+   {
+     glossaryTermsJsonList[glossaryTermsIndex].AsString(m_glossaryTerms[glossaryTermsIndex]);
+   }
+   payload.WithArray("glossaryTerms", std::move(glossaryTermsJsonList));
 
   }
 
-  if(m_itemIdHasBeenSet)
+  if(m_identifierHasBeenSet)
   {
-   payload.WithString("itemId", m_itemId);
+   payload.WithString("identifier", m_identifier);
+
+  }
+
+  if(m_itemTypeHasBeenSet)
+  {
+   payload.WithString("itemType", DataProductItemTypeMapper::GetNameForDataProductItemType(m_itemType));
+  }
+
+  if(m_revisionHasBeenSet)
+  {
+   payload.WithString("revision", m_revision);
 
   }
 

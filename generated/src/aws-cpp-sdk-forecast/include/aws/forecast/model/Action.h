@@ -39,61 +39,26 @@ namespace Model
   class Action
   {
   public:
-    AWS_FORECASTSERVICE_API Action();
+    AWS_FORECASTSERVICE_API Action() = default;
     AWS_FORECASTSERVICE_API Action(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Action& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The related time series that you are modifying. This value is case
      * insensitive.</p>
      */
-    inline const Aws::String& GetAttributeName() const{ return m_attributeName; }
-
-    /**
-     * <p>The related time series that you are modifying. This value is case
-     * insensitive.</p>
-     */
+    inline const Aws::String& GetAttributeName() const { return m_attributeName; }
     inline bool AttributeNameHasBeenSet() const { return m_attributeNameHasBeenSet; }
+    template<typename AttributeNameT = Aws::String>
+    void SetAttributeName(AttributeNameT&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::forward<AttributeNameT>(value); }
+    template<typename AttributeNameT = Aws::String>
+    Action& WithAttributeName(AttributeNameT&& value) { SetAttributeName(std::forward<AttributeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The related time series that you are modifying. This value is case
-     * insensitive.</p>
-     */
-    inline void SetAttributeName(const Aws::String& value) { m_attributeNameHasBeenSet = true; m_attributeName = value; }
-
-    /**
-     * <p>The related time series that you are modifying. This value is case
-     * insensitive.</p>
-     */
-    inline void SetAttributeName(Aws::String&& value) { m_attributeNameHasBeenSet = true; m_attributeName = std::move(value); }
-
-    /**
-     * <p>The related time series that you are modifying. This value is case
-     * insensitive.</p>
-     */
-    inline void SetAttributeName(const char* value) { m_attributeNameHasBeenSet = true; m_attributeName.assign(value); }
-
-    /**
-     * <p>The related time series that you are modifying. This value is case
-     * insensitive.</p>
-     */
-    inline Action& WithAttributeName(const Aws::String& value) { SetAttributeName(value); return *this;}
-
-    /**
-     * <p>The related time series that you are modifying. This value is case
-     * insensitive.</p>
-     */
-    inline Action& WithAttributeName(Aws::String&& value) { SetAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The related time series that you are modifying. This value is case
-     * insensitive.</p>
-     */
-    inline Action& WithAttributeName(const char* value) { SetAttributeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The operation that is applied to the provided attribute. Operations
      * include:</p> <ul> <li> <p> <code>ADD</code> - adds <code>Value</code> to all
@@ -104,98 +69,30 @@ namespace Model
      * <code>DIVIDE</code> - divides all rows of <code>AttributeName</code> by
      * <code>Value</code>.</p> </li> </ul>
      */
-    inline const Operation& GetOperation() const{ return m_operation; }
-
-    /**
-     * <p>The operation that is applied to the provided attribute. Operations
-     * include:</p> <ul> <li> <p> <code>ADD</code> - adds <code>Value</code> to all
-     * rows of <code>AttributeName</code>.</p> </li> <li> <p> <code>SUBTRACT</code> -
-     * subtracts <code>Value</code> from all rows of <code>AttributeName</code>.</p>
-     * </li> <li> <p> <code>MULTIPLY</code> - multiplies all rows of
-     * <code>AttributeName</code> by <code>Value</code>.</p> </li> <li> <p>
-     * <code>DIVIDE</code> - divides all rows of <code>AttributeName</code> by
-     * <code>Value</code>.</p> </li> </ul>
-     */
+    inline Operation GetOperation() const { return m_operation; }
     inline bool OperationHasBeenSet() const { return m_operationHasBeenSet; }
+    inline void SetOperation(Operation value) { m_operationHasBeenSet = true; m_operation = value; }
+    inline Action& WithOperation(Operation value) { SetOperation(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The operation that is applied to the provided attribute. Operations
-     * include:</p> <ul> <li> <p> <code>ADD</code> - adds <code>Value</code> to all
-     * rows of <code>AttributeName</code>.</p> </li> <li> <p> <code>SUBTRACT</code> -
-     * subtracts <code>Value</code> from all rows of <code>AttributeName</code>.</p>
-     * </li> <li> <p> <code>MULTIPLY</code> - multiplies all rows of
-     * <code>AttributeName</code> by <code>Value</code>.</p> </li> <li> <p>
-     * <code>DIVIDE</code> - divides all rows of <code>AttributeName</code> by
-     * <code>Value</code>.</p> </li> </ul>
-     */
-    inline void SetOperation(const Operation& value) { m_operationHasBeenSet = true; m_operation = value; }
-
-    /**
-     * <p>The operation that is applied to the provided attribute. Operations
-     * include:</p> <ul> <li> <p> <code>ADD</code> - adds <code>Value</code> to all
-     * rows of <code>AttributeName</code>.</p> </li> <li> <p> <code>SUBTRACT</code> -
-     * subtracts <code>Value</code> from all rows of <code>AttributeName</code>.</p>
-     * </li> <li> <p> <code>MULTIPLY</code> - multiplies all rows of
-     * <code>AttributeName</code> by <code>Value</code>.</p> </li> <li> <p>
-     * <code>DIVIDE</code> - divides all rows of <code>AttributeName</code> by
-     * <code>Value</code>.</p> </li> </ul>
-     */
-    inline void SetOperation(Operation&& value) { m_operationHasBeenSet = true; m_operation = std::move(value); }
-
-    /**
-     * <p>The operation that is applied to the provided attribute. Operations
-     * include:</p> <ul> <li> <p> <code>ADD</code> - adds <code>Value</code> to all
-     * rows of <code>AttributeName</code>.</p> </li> <li> <p> <code>SUBTRACT</code> -
-     * subtracts <code>Value</code> from all rows of <code>AttributeName</code>.</p>
-     * </li> <li> <p> <code>MULTIPLY</code> - multiplies all rows of
-     * <code>AttributeName</code> by <code>Value</code>.</p> </li> <li> <p>
-     * <code>DIVIDE</code> - divides all rows of <code>AttributeName</code> by
-     * <code>Value</code>.</p> </li> </ul>
-     */
-    inline Action& WithOperation(const Operation& value) { SetOperation(value); return *this;}
-
-    /**
-     * <p>The operation that is applied to the provided attribute. Operations
-     * include:</p> <ul> <li> <p> <code>ADD</code> - adds <code>Value</code> to all
-     * rows of <code>AttributeName</code>.</p> </li> <li> <p> <code>SUBTRACT</code> -
-     * subtracts <code>Value</code> from all rows of <code>AttributeName</code>.</p>
-     * </li> <li> <p> <code>MULTIPLY</code> - multiplies all rows of
-     * <code>AttributeName</code> by <code>Value</code>.</p> </li> <li> <p>
-     * <code>DIVIDE</code> - divides all rows of <code>AttributeName</code> by
-     * <code>Value</code>.</p> </li> </ul>
-     */
-    inline Action& WithOperation(Operation&& value) { SetOperation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The value that is applied for the chosen <code>Operation</code>.</p>
      */
-    inline double GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value that is applied for the chosen <code>Operation</code>.</p>
-     */
+    inline double GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value that is applied for the chosen <code>Operation</code>.</p>
-     */
     inline void SetValue(double value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value that is applied for the chosen <code>Operation</code>.</p>
-     */
     inline Action& WithValue(double value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_attributeName;
     bool m_attributeNameHasBeenSet = false;
 
-    Operation m_operation;
+    Operation m_operation{Operation::NOT_SET};
     bool m_operationHasBeenSet = false;
 
-    double m_value;
+    double m_value{0.0};
     bool m_valueHasBeenSet = false;
   };
 

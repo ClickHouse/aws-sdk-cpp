@@ -31,52 +31,23 @@ namespace Model
   class PipelineStatusReason
   {
   public:
-    AWS_OSIS_API PipelineStatusReason();
+    AWS_OSIS_API PipelineStatusReason() = default;
     AWS_OSIS_API PipelineStatusReason(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API PipelineStatusReason& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_OSIS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A description of why a pipeline has a certain status.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of why a pipeline has a certain status.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>A description of why a pipeline has a certain status.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of why a pipeline has a certain status.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of why a pipeline has a certain status.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of why a pipeline has a certain status.</p>
-     */
-    inline PipelineStatusReason& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of why a pipeline has a certain status.</p>
-     */
-    inline PipelineStatusReason& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of why a pipeline has a certain status.</p>
-     */
-    inline PipelineStatusReason& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    PipelineStatusReason& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;

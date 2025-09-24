@@ -35,366 +35,118 @@ namespace Model
   class TemplateStepSummary
   {
   public:
-    AWS_MIGRATIONHUBORCHESTRATOR_API TemplateStepSummary();
+    AWS_MIGRATIONHUBORCHESTRATOR_API TemplateStepSummary() = default;
     AWS_MIGRATIONHUBORCHESTRATOR_API TemplateStepSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBORCHESTRATOR_API TemplateStepSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MIGRATIONHUBORCHESTRATOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the step.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the step.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    TemplateStepSummary& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the step.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the step.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the step.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the step.</p>
-     */
-    inline TemplateStepSummary& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the step.</p>
-     */
-    inline TemplateStepSummary& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the step.</p>
-     */
-    inline TemplateStepSummary& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the step group.</p>
      */
-    inline const Aws::String& GetStepGroupId() const{ return m_stepGroupId; }
-
-    /**
-     * <p>The ID of the step group.</p>
-     */
+    inline const Aws::String& GetStepGroupId() const { return m_stepGroupId; }
     inline bool StepGroupIdHasBeenSet() const { return m_stepGroupIdHasBeenSet; }
+    template<typename StepGroupIdT = Aws::String>
+    void SetStepGroupId(StepGroupIdT&& value) { m_stepGroupIdHasBeenSet = true; m_stepGroupId = std::forward<StepGroupIdT>(value); }
+    template<typename StepGroupIdT = Aws::String>
+    TemplateStepSummary& WithStepGroupId(StepGroupIdT&& value) { SetStepGroupId(std::forward<StepGroupIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the step group.</p>
-     */
-    inline void SetStepGroupId(const Aws::String& value) { m_stepGroupIdHasBeenSet = true; m_stepGroupId = value; }
-
-    /**
-     * <p>The ID of the step group.</p>
-     */
-    inline void SetStepGroupId(Aws::String&& value) { m_stepGroupIdHasBeenSet = true; m_stepGroupId = std::move(value); }
-
-    /**
-     * <p>The ID of the step group.</p>
-     */
-    inline void SetStepGroupId(const char* value) { m_stepGroupIdHasBeenSet = true; m_stepGroupId.assign(value); }
-
-    /**
-     * <p>The ID of the step group.</p>
-     */
-    inline TemplateStepSummary& WithStepGroupId(const Aws::String& value) { SetStepGroupId(value); return *this;}
-
-    /**
-     * <p>The ID of the step group.</p>
-     */
-    inline TemplateStepSummary& WithStepGroupId(Aws::String&& value) { SetStepGroupId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the step group.</p>
-     */
-    inline TemplateStepSummary& WithStepGroupId(const char* value) { SetStepGroupId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the template.</p>
      */
-    inline const Aws::String& GetTemplateId() const{ return m_templateId; }
-
-    /**
-     * <p>The ID of the template.</p>
-     */
+    inline const Aws::String& GetTemplateId() const { return m_templateId; }
     inline bool TemplateIdHasBeenSet() const { return m_templateIdHasBeenSet; }
+    template<typename TemplateIdT = Aws::String>
+    void SetTemplateId(TemplateIdT&& value) { m_templateIdHasBeenSet = true; m_templateId = std::forward<TemplateIdT>(value); }
+    template<typename TemplateIdT = Aws::String>
+    TemplateStepSummary& WithTemplateId(TemplateIdT&& value) { SetTemplateId(std::forward<TemplateIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the template.</p>
-     */
-    inline void SetTemplateId(const Aws::String& value) { m_templateIdHasBeenSet = true; m_templateId = value; }
-
-    /**
-     * <p>The ID of the template.</p>
-     */
-    inline void SetTemplateId(Aws::String&& value) { m_templateIdHasBeenSet = true; m_templateId = std::move(value); }
-
-    /**
-     * <p>The ID of the template.</p>
-     */
-    inline void SetTemplateId(const char* value) { m_templateIdHasBeenSet = true; m_templateId.assign(value); }
-
-    /**
-     * <p>The ID of the template.</p>
-     */
-    inline TemplateStepSummary& WithTemplateId(const Aws::String& value) { SetTemplateId(value); return *this;}
-
-    /**
-     * <p>The ID of the template.</p>
-     */
-    inline TemplateStepSummary& WithTemplateId(Aws::String&& value) { SetTemplateId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the template.</p>
-     */
-    inline TemplateStepSummary& WithTemplateId(const char* value) { SetTemplateId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the step.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the step.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    TemplateStepSummary& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the step.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the step.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the step.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the step.</p>
-     */
-    inline TemplateStepSummary& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the step.</p>
-     */
-    inline TemplateStepSummary& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the step.</p>
-     */
-    inline TemplateStepSummary& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The action type of the step. You must run and update the status of a manual
      * step for the workflow to continue after the completion of the step.</p>
      */
-    inline const StepActionType& GetStepActionType() const{ return m_stepActionType; }
-
-    /**
-     * <p>The action type of the step. You must run and update the status of a manual
-     * step for the workflow to continue after the completion of the step.</p>
-     */
+    inline StepActionType GetStepActionType() const { return m_stepActionType; }
     inline bool StepActionTypeHasBeenSet() const { return m_stepActionTypeHasBeenSet; }
+    inline void SetStepActionType(StepActionType value) { m_stepActionTypeHasBeenSet = true; m_stepActionType = value; }
+    inline TemplateStepSummary& WithStepActionType(StepActionType value) { SetStepActionType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The action type of the step. You must run and update the status of a manual
-     * step for the workflow to continue after the completion of the step.</p>
-     */
-    inline void SetStepActionType(const StepActionType& value) { m_stepActionTypeHasBeenSet = true; m_stepActionType = value; }
-
-    /**
-     * <p>The action type of the step. You must run and update the status of a manual
-     * step for the workflow to continue after the completion of the step.</p>
-     */
-    inline void SetStepActionType(StepActionType&& value) { m_stepActionTypeHasBeenSet = true; m_stepActionType = std::move(value); }
-
-    /**
-     * <p>The action type of the step. You must run and update the status of a manual
-     * step for the workflow to continue after the completion of the step.</p>
-     */
-    inline TemplateStepSummary& WithStepActionType(const StepActionType& value) { SetStepActionType(value); return *this;}
-
-    /**
-     * <p>The action type of the step. You must run and update the status of a manual
-     * step for the workflow to continue after the completion of the step.</p>
-     */
-    inline TemplateStepSummary& WithStepActionType(StepActionType&& value) { SetStepActionType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The servers on which to run the script.</p>
      */
-    inline const TargetType& GetTargetType() const{ return m_targetType; }
-
-    /**
-     * <p>The servers on which to run the script.</p>
-     */
+    inline TargetType GetTargetType() const { return m_targetType; }
     inline bool TargetTypeHasBeenSet() const { return m_targetTypeHasBeenSet; }
+    inline void SetTargetType(TargetType value) { m_targetTypeHasBeenSet = true; m_targetType = value; }
+    inline TemplateStepSummary& WithTargetType(TargetType value) { SetTargetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The servers on which to run the script.</p>
-     */
-    inline void SetTargetType(const TargetType& value) { m_targetTypeHasBeenSet = true; m_targetType = value; }
-
-    /**
-     * <p>The servers on which to run the script.</p>
-     */
-    inline void SetTargetType(TargetType&& value) { m_targetTypeHasBeenSet = true; m_targetType = std::move(value); }
-
-    /**
-     * <p>The servers on which to run the script.</p>
-     */
-    inline TemplateStepSummary& WithTargetType(const TargetType& value) { SetTargetType(value); return *this;}
-
-    /**
-     * <p>The servers on which to run the script.</p>
-     */
-    inline TemplateStepSummary& WithTargetType(TargetType&& value) { SetTargetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The owner of the step.</p>
      */
-    inline const Owner& GetOwner() const{ return m_owner; }
-
-    /**
-     * <p>The owner of the step.</p>
-     */
+    inline Owner GetOwner() const { return m_owner; }
     inline bool OwnerHasBeenSet() const { return m_ownerHasBeenSet; }
+    inline void SetOwner(Owner value) { m_ownerHasBeenSet = true; m_owner = value; }
+    inline TemplateStepSummary& WithOwner(Owner value) { SetOwner(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The owner of the step.</p>
-     */
-    inline void SetOwner(const Owner& value) { m_ownerHasBeenSet = true; m_owner = value; }
-
-    /**
-     * <p>The owner of the step.</p>
-     */
-    inline void SetOwner(Owner&& value) { m_ownerHasBeenSet = true; m_owner = std::move(value); }
-
-    /**
-     * <p>The owner of the step.</p>
-     */
-    inline TemplateStepSummary& WithOwner(const Owner& value) { SetOwner(value); return *this;}
-
-    /**
-     * <p>The owner of the step.</p>
-     */
-    inline TemplateStepSummary& WithOwner(Owner&& value) { SetOwner(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The previous step.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetPrevious() const{ return m_previous; }
-
-    /**
-     * <p>The previous step.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetPrevious() const { return m_previous; }
     inline bool PreviousHasBeenSet() const { return m_previousHasBeenSet; }
+    template<typename PreviousT = Aws::Vector<Aws::String>>
+    void SetPrevious(PreviousT&& value) { m_previousHasBeenSet = true; m_previous = std::forward<PreviousT>(value); }
+    template<typename PreviousT = Aws::Vector<Aws::String>>
+    TemplateStepSummary& WithPrevious(PreviousT&& value) { SetPrevious(std::forward<PreviousT>(value)); return *this;}
+    template<typename PreviousT = Aws::String>
+    TemplateStepSummary& AddPrevious(PreviousT&& value) { m_previousHasBeenSet = true; m_previous.emplace_back(std::forward<PreviousT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The previous step.</p>
-     */
-    inline void SetPrevious(const Aws::Vector<Aws::String>& value) { m_previousHasBeenSet = true; m_previous = value; }
-
-    /**
-     * <p>The previous step.</p>
-     */
-    inline void SetPrevious(Aws::Vector<Aws::String>&& value) { m_previousHasBeenSet = true; m_previous = std::move(value); }
-
-    /**
-     * <p>The previous step.</p>
-     */
-    inline TemplateStepSummary& WithPrevious(const Aws::Vector<Aws::String>& value) { SetPrevious(value); return *this;}
-
-    /**
-     * <p>The previous step.</p>
-     */
-    inline TemplateStepSummary& WithPrevious(Aws::Vector<Aws::String>&& value) { SetPrevious(std::move(value)); return *this;}
-
-    /**
-     * <p>The previous step.</p>
-     */
-    inline TemplateStepSummary& AddPrevious(const Aws::String& value) { m_previousHasBeenSet = true; m_previous.push_back(value); return *this; }
-
-    /**
-     * <p>The previous step.</p>
-     */
-    inline TemplateStepSummary& AddPrevious(Aws::String&& value) { m_previousHasBeenSet = true; m_previous.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The previous step.</p>
-     */
-    inline TemplateStepSummary& AddPrevious(const char* value) { m_previousHasBeenSet = true; m_previous.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The next step.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetNext() const{ return m_next; }
-
-    /**
-     * <p>The next step.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetNext() const { return m_next; }
     inline bool NextHasBeenSet() const { return m_nextHasBeenSet; }
-
-    /**
-     * <p>The next step.</p>
-     */
-    inline void SetNext(const Aws::Vector<Aws::String>& value) { m_nextHasBeenSet = true; m_next = value; }
-
-    /**
-     * <p>The next step.</p>
-     */
-    inline void SetNext(Aws::Vector<Aws::String>&& value) { m_nextHasBeenSet = true; m_next = std::move(value); }
-
-    /**
-     * <p>The next step.</p>
-     */
-    inline TemplateStepSummary& WithNext(const Aws::Vector<Aws::String>& value) { SetNext(value); return *this;}
-
-    /**
-     * <p>The next step.</p>
-     */
-    inline TemplateStepSummary& WithNext(Aws::Vector<Aws::String>&& value) { SetNext(std::move(value)); return *this;}
-
-    /**
-     * <p>The next step.</p>
-     */
-    inline TemplateStepSummary& AddNext(const Aws::String& value) { m_nextHasBeenSet = true; m_next.push_back(value); return *this; }
-
-    /**
-     * <p>The next step.</p>
-     */
-    inline TemplateStepSummary& AddNext(Aws::String&& value) { m_nextHasBeenSet = true; m_next.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The next step.</p>
-     */
-    inline TemplateStepSummary& AddNext(const char* value) { m_nextHasBeenSet = true; m_next.push_back(value); return *this; }
-
+    template<typename NextT = Aws::Vector<Aws::String>>
+    void SetNext(NextT&& value) { m_nextHasBeenSet = true; m_next = std::forward<NextT>(value); }
+    template<typename NextT = Aws::Vector<Aws::String>>
+    TemplateStepSummary& WithNext(NextT&& value) { SetNext(std::forward<NextT>(value)); return *this;}
+    template<typename NextT = Aws::String>
+    TemplateStepSummary& AddNext(NextT&& value) { m_nextHasBeenSet = true; m_next.emplace_back(std::forward<NextT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_id;
@@ -409,13 +161,13 @@ namespace Model
     Aws::String m_name;
     bool m_nameHasBeenSet = false;
 
-    StepActionType m_stepActionType;
+    StepActionType m_stepActionType{StepActionType::NOT_SET};
     bool m_stepActionTypeHasBeenSet = false;
 
-    TargetType m_targetType;
+    TargetType m_targetType{TargetType::NOT_SET};
     bool m_targetTypeHasBeenSet = false;
 
-    Owner m_owner;
+    Owner m_owner{Owner::NOT_SET};
     bool m_ownerHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_previous;

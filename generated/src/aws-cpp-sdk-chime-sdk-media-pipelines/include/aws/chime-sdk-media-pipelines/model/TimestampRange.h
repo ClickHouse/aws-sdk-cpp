@@ -31,79 +31,41 @@ namespace Model
   class TimestampRange
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API TimestampRange();
+    AWS_CHIMESDKMEDIAPIPELINES_API TimestampRange() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API TimestampRange(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API TimestampRange& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEDIAPIPELINES_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The starting timestamp for the specified range.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartTimestamp() const{ return m_startTimestamp; }
-
-    /**
-     * <p>The starting timestamp for the specified range.</p>
-     */
+    inline const Aws::Utils::DateTime& GetStartTimestamp() const { return m_startTimestamp; }
     inline bool StartTimestampHasBeenSet() const { return m_startTimestampHasBeenSet; }
+    template<typename StartTimestampT = Aws::Utils::DateTime>
+    void SetStartTimestamp(StartTimestampT&& value) { m_startTimestampHasBeenSet = true; m_startTimestamp = std::forward<StartTimestampT>(value); }
+    template<typename StartTimestampT = Aws::Utils::DateTime>
+    TimestampRange& WithStartTimestamp(StartTimestampT&& value) { SetStartTimestamp(std::forward<StartTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The starting timestamp for the specified range.</p>
-     */
-    inline void SetStartTimestamp(const Aws::Utils::DateTime& value) { m_startTimestampHasBeenSet = true; m_startTimestamp = value; }
-
-    /**
-     * <p>The starting timestamp for the specified range.</p>
-     */
-    inline void SetStartTimestamp(Aws::Utils::DateTime&& value) { m_startTimestampHasBeenSet = true; m_startTimestamp = std::move(value); }
-
-    /**
-     * <p>The starting timestamp for the specified range.</p>
-     */
-    inline TimestampRange& WithStartTimestamp(const Aws::Utils::DateTime& value) { SetStartTimestamp(value); return *this;}
-
-    /**
-     * <p>The starting timestamp for the specified range.</p>
-     */
-    inline TimestampRange& WithStartTimestamp(Aws::Utils::DateTime&& value) { SetStartTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ending timestamp for the specified range.</p>
      */
-    inline const Aws::Utils::DateTime& GetEndTimestamp() const{ return m_endTimestamp; }
-
-    /**
-     * <p>The ending timestamp for the specified range.</p>
-     */
+    inline const Aws::Utils::DateTime& GetEndTimestamp() const { return m_endTimestamp; }
     inline bool EndTimestampHasBeenSet() const { return m_endTimestampHasBeenSet; }
-
-    /**
-     * <p>The ending timestamp for the specified range.</p>
-     */
-    inline void SetEndTimestamp(const Aws::Utils::DateTime& value) { m_endTimestampHasBeenSet = true; m_endTimestamp = value; }
-
-    /**
-     * <p>The ending timestamp for the specified range.</p>
-     */
-    inline void SetEndTimestamp(Aws::Utils::DateTime&& value) { m_endTimestampHasBeenSet = true; m_endTimestamp = std::move(value); }
-
-    /**
-     * <p>The ending timestamp for the specified range.</p>
-     */
-    inline TimestampRange& WithEndTimestamp(const Aws::Utils::DateTime& value) { SetEndTimestamp(value); return *this;}
-
-    /**
-     * <p>The ending timestamp for the specified range.</p>
-     */
-    inline TimestampRange& WithEndTimestamp(Aws::Utils::DateTime&& value) { SetEndTimestamp(std::move(value)); return *this;}
-
+    template<typename EndTimestampT = Aws::Utils::DateTime>
+    void SetEndTimestamp(EndTimestampT&& value) { m_endTimestampHasBeenSet = true; m_endTimestamp = std::forward<EndTimestampT>(value); }
+    template<typename EndTimestampT = Aws::Utils::DateTime>
+    TimestampRange& WithEndTimestamp(EndTimestampT&& value) { SetEndTimestamp(std::forward<EndTimestampT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_startTimestamp;
+    Aws::Utils::DateTime m_startTimestamp{};
     bool m_startTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_endTimestamp;
+    Aws::Utils::DateTime m_endTimestamp{};
     bool m_endTimestampHasBeenSet = false;
   };
 

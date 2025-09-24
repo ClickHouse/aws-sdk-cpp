@@ -30,35 +30,24 @@ namespace Model
   class BinCountOptions
   {
   public:
-    AWS_QUICKSIGHT_API BinCountOptions();
+    AWS_QUICKSIGHT_API BinCountOptions() = default;
     AWS_QUICKSIGHT_API BinCountOptions(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API BinCountOptions& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The options that determine the bin count value.</p>
      */
-    inline int GetValue() const{ return m_value; }
-
-    /**
-     * <p>The options that determine the bin count value.</p>
-     */
+    inline int GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The options that determine the bin count value.</p>
-     */
     inline void SetValue(int value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The options that determine the bin count value.</p>
-     */
     inline BinCountOptions& WithValue(int value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    int m_value;
+    int m_value{0};
     bool m_valueHasBeenSet = false;
   };
 

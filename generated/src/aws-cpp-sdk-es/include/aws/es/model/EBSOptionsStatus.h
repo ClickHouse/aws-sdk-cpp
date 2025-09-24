@@ -33,79 +33,36 @@ namespace Model
   class EBSOptionsStatus
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API EBSOptionsStatus();
+    AWS_ELASTICSEARCHSERVICE_API EBSOptionsStatus() = default;
     AWS_ELASTICSEARCHSERVICE_API EBSOptionsStatus(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API EBSOptionsStatus& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ELASTICSEARCHSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> Specifies the EBS options for the specified Elasticsearch domain.</p>
      */
-    inline const EBSOptions& GetOptions() const{ return m_options; }
-
-    /**
-     * <p> Specifies the EBS options for the specified Elasticsearch domain.</p>
-     */
+    inline const EBSOptions& GetOptions() const { return m_options; }
     inline bool OptionsHasBeenSet() const { return m_optionsHasBeenSet; }
+    template<typename OptionsT = EBSOptions>
+    void SetOptions(OptionsT&& value) { m_optionsHasBeenSet = true; m_options = std::forward<OptionsT>(value); }
+    template<typename OptionsT = EBSOptions>
+    EBSOptionsStatus& WithOptions(OptionsT&& value) { SetOptions(std::forward<OptionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Specifies the EBS options for the specified Elasticsearch domain.</p>
-     */
-    inline void SetOptions(const EBSOptions& value) { m_optionsHasBeenSet = true; m_options = value; }
-
-    /**
-     * <p> Specifies the EBS options for the specified Elasticsearch domain.</p>
-     */
-    inline void SetOptions(EBSOptions&& value) { m_optionsHasBeenSet = true; m_options = std::move(value); }
-
-    /**
-     * <p> Specifies the EBS options for the specified Elasticsearch domain.</p>
-     */
-    inline EBSOptionsStatus& WithOptions(const EBSOptions& value) { SetOptions(value); return *this;}
-
-    /**
-     * <p> Specifies the EBS options for the specified Elasticsearch domain.</p>
-     */
-    inline EBSOptionsStatus& WithOptions(EBSOptions&& value) { SetOptions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> Specifies the status of the EBS options for the specified Elasticsearch
      * domain.</p>
      */
-    inline const OptionStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p> Specifies the status of the EBS options for the specified Elasticsearch
-     * domain.</p>
-     */
+    inline const OptionStatus& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
-
-    /**
-     * <p> Specifies the status of the EBS options for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline void SetStatus(const OptionStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p> Specifies the status of the EBS options for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline void SetStatus(OptionStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p> Specifies the status of the EBS options for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline EBSOptionsStatus& WithStatus(const OptionStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p> Specifies the status of the EBS options for the specified Elasticsearch
-     * domain.</p>
-     */
-    inline EBSOptionsStatus& WithStatus(OptionStatus&& value) { SetStatus(std::move(value)); return *this;}
-
+    template<typename StatusT = OptionStatus>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = OptionStatus>
+    EBSOptionsStatus& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
   private:
 
     EBSOptions m_options;

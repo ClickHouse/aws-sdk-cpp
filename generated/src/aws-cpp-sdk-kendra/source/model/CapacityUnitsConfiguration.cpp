@@ -18,19 +18,7 @@ namespace kendra
 namespace Model
 {
 
-CapacityUnitsConfiguration::CapacityUnitsConfiguration() : 
-    m_storageCapacityUnits(0),
-    m_storageCapacityUnitsHasBeenSet(false),
-    m_queryCapacityUnits(0),
-    m_queryCapacityUnitsHasBeenSet(false)
-{
-}
-
-CapacityUnitsConfiguration::CapacityUnitsConfiguration(JsonView jsonValue) : 
-    m_storageCapacityUnits(0),
-    m_storageCapacityUnitsHasBeenSet(false),
-    m_queryCapacityUnits(0),
-    m_queryCapacityUnitsHasBeenSet(false)
+CapacityUnitsConfiguration::CapacityUnitsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ CapacityUnitsConfiguration& CapacityUnitsConfiguration::operator =(JsonView json
   if(jsonValue.ValueExists("StorageCapacityUnits"))
   {
     m_storageCapacityUnits = jsonValue.GetInteger("StorageCapacityUnits");
-
     m_storageCapacityUnitsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("QueryCapacityUnits"))
   {
     m_queryCapacityUnits = jsonValue.GetInteger("QueryCapacityUnits");
-
     m_queryCapacityUnitsHasBeenSet = true;
   }
-
   return *this;
 }
 

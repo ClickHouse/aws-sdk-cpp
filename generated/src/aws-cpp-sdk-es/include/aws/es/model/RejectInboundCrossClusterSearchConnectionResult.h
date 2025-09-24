@@ -35,68 +35,38 @@ namespace Model
   class RejectInboundCrossClusterSearchConnectionResult
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API RejectInboundCrossClusterSearchConnectionResult();
+    AWS_ELASTICSEARCHSERVICE_API RejectInboundCrossClusterSearchConnectionResult() = default;
     AWS_ELASTICSEARCHSERVICE_API RejectInboundCrossClusterSearchConnectionResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ELASTICSEARCHSERVICE_API RejectInboundCrossClusterSearchConnectionResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of
      * rejected inbound connection. </p>
      */
-    inline const InboundCrossClusterSearchConnection& GetCrossClusterSearchConnection() const{ return m_crossClusterSearchConnection; }
+    inline const InboundCrossClusterSearchConnection& GetCrossClusterSearchConnection() const { return m_crossClusterSearchConnection; }
+    template<typename CrossClusterSearchConnectionT = InboundCrossClusterSearchConnection>
+    void SetCrossClusterSearchConnection(CrossClusterSearchConnectionT&& value) { m_crossClusterSearchConnectionHasBeenSet = true; m_crossClusterSearchConnection = std::forward<CrossClusterSearchConnectionT>(value); }
+    template<typename CrossClusterSearchConnectionT = InboundCrossClusterSearchConnection>
+    RejectInboundCrossClusterSearchConnectionResult& WithCrossClusterSearchConnection(CrossClusterSearchConnectionT&& value) { SetCrossClusterSearchConnection(std::forward<CrossClusterSearchConnectionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of
-     * rejected inbound connection. </p>
-     */
-    inline void SetCrossClusterSearchConnection(const InboundCrossClusterSearchConnection& value) { m_crossClusterSearchConnection = value; }
-
-    /**
-     * <p>Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of
-     * rejected inbound connection. </p>
-     */
-    inline void SetCrossClusterSearchConnection(InboundCrossClusterSearchConnection&& value) { m_crossClusterSearchConnection = std::move(value); }
-
-    /**
-     * <p>Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of
-     * rejected inbound connection. </p>
-     */
-    inline RejectInboundCrossClusterSearchConnectionResult& WithCrossClusterSearchConnection(const InboundCrossClusterSearchConnection& value) { SetCrossClusterSearchConnection(value); return *this;}
-
-    /**
-     * <p>Specifies the <code><a>InboundCrossClusterSearchConnection</a></code> of
-     * rejected inbound connection. </p>
-     */
-    inline RejectInboundCrossClusterSearchConnectionResult& WithCrossClusterSearchConnection(InboundCrossClusterSearchConnection&& value) { SetCrossClusterSearchConnection(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline RejectInboundCrossClusterSearchConnectionResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline RejectInboundCrossClusterSearchConnectionResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline RejectInboundCrossClusterSearchConnectionResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    RejectInboundCrossClusterSearchConnectionResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     InboundCrossClusterSearchConnection m_crossClusterSearchConnection;
+    bool m_crossClusterSearchConnectionHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

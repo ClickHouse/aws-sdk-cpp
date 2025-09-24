@@ -30,67 +30,39 @@ namespace Model
   class DataSetUsageConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API DataSetUsageConfiguration();
+    AWS_QUICKSIGHT_API DataSetUsageConfiguration() = default;
     AWS_QUICKSIGHT_API DataSetUsageConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DataSetUsageConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An option that controls whether a child dataset of a direct query can use
      * this dataset as a source.</p>
      */
-    inline bool GetDisableUseAsDirectQuerySource() const{ return m_disableUseAsDirectQuerySource; }
-
-    /**
-     * <p>An option that controls whether a child dataset of a direct query can use
-     * this dataset as a source.</p>
-     */
+    inline bool GetDisableUseAsDirectQuerySource() const { return m_disableUseAsDirectQuerySource; }
     inline bool DisableUseAsDirectQuerySourceHasBeenSet() const { return m_disableUseAsDirectQuerySourceHasBeenSet; }
-
-    /**
-     * <p>An option that controls whether a child dataset of a direct query can use
-     * this dataset as a source.</p>
-     */
     inline void SetDisableUseAsDirectQuerySource(bool value) { m_disableUseAsDirectQuerySourceHasBeenSet = true; m_disableUseAsDirectQuerySource = value; }
-
-    /**
-     * <p>An option that controls whether a child dataset of a direct query can use
-     * this dataset as a source.</p>
-     */
     inline DataSetUsageConfiguration& WithDisableUseAsDirectQuerySource(bool value) { SetDisableUseAsDirectQuerySource(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An option that controls whether a child dataset that's stored in QuickSight
      * can use this dataset as a source.</p>
      */
-    inline bool GetDisableUseAsImportedSource() const{ return m_disableUseAsImportedSource; }
-
-    /**
-     * <p>An option that controls whether a child dataset that's stored in QuickSight
-     * can use this dataset as a source.</p>
-     */
+    inline bool GetDisableUseAsImportedSource() const { return m_disableUseAsImportedSource; }
     inline bool DisableUseAsImportedSourceHasBeenSet() const { return m_disableUseAsImportedSourceHasBeenSet; }
-
-    /**
-     * <p>An option that controls whether a child dataset that's stored in QuickSight
-     * can use this dataset as a source.</p>
-     */
     inline void SetDisableUseAsImportedSource(bool value) { m_disableUseAsImportedSourceHasBeenSet = true; m_disableUseAsImportedSource = value; }
-
-    /**
-     * <p>An option that controls whether a child dataset that's stored in QuickSight
-     * can use this dataset as a source.</p>
-     */
     inline DataSetUsageConfiguration& WithDisableUseAsImportedSource(bool value) { SetDisableUseAsImportedSource(value); return *this;}
-
+    ///@}
   private:
 
-    bool m_disableUseAsDirectQuerySource;
+    bool m_disableUseAsDirectQuerySource{false};
     bool m_disableUseAsDirectQuerySourceHasBeenSet = false;
 
-    bool m_disableUseAsImportedSource;
+    bool m_disableUseAsImportedSource{false};
     bool m_disableUseAsImportedSourceHasBeenSet = false;
   };
 

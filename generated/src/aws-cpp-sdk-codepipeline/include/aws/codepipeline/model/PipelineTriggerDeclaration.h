@@ -30,101 +30,45 @@ namespace Model
    * trigger.</p>  <p>This is only supported for the
    * <code>CodeStarSourceConnection</code> action type.</p>   <p>When a
    * trigger configuration is specified, default change detection for repository and
-   * branch commits is disabled.</p>   <p>V2 type pipelines, along with
-   * triggers on Git tags and pipeline-level variables, are not currently supported
-   * for CloudFormation and CDK resources in CodePipeline. For more information about
-   * V2 type pipelines, see <a
-   * href="https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-types.html">Pipeline
-   * types</a> in the <i>CodePipeline User Guide</i>.</p> <p><h3>See
-   * Also:</h3>   <a
+   * branch commits is disabled.</p> <p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PipelineTriggerDeclaration">AWS
    * API Reference</a></p>
    */
   class PipelineTriggerDeclaration
   {
   public:
-    AWS_CODEPIPELINE_API PipelineTriggerDeclaration();
+    AWS_CODEPIPELINE_API PipelineTriggerDeclaration() = default;
     AWS_CODEPIPELINE_API PipelineTriggerDeclaration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API PipelineTriggerDeclaration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CODEPIPELINE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The source provider for the event, such as connections configured for a
      * repository with Git tags, for the specified trigger configuration.</p>
      */
-    inline const PipelineTriggerProviderType& GetProviderType() const{ return m_providerType; }
-
-    /**
-     * <p>The source provider for the event, such as connections configured for a
-     * repository with Git tags, for the specified trigger configuration.</p>
-     */
+    inline PipelineTriggerProviderType GetProviderType() const { return m_providerType; }
     inline bool ProviderTypeHasBeenSet() const { return m_providerTypeHasBeenSet; }
+    inline void SetProviderType(PipelineTriggerProviderType value) { m_providerTypeHasBeenSet = true; m_providerType = value; }
+    inline PipelineTriggerDeclaration& WithProviderType(PipelineTriggerProviderType value) { SetProviderType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The source provider for the event, such as connections configured for a
-     * repository with Git tags, for the specified trigger configuration.</p>
-     */
-    inline void SetProviderType(const PipelineTriggerProviderType& value) { m_providerTypeHasBeenSet = true; m_providerType = value; }
-
-    /**
-     * <p>The source provider for the event, such as connections configured for a
-     * repository with Git tags, for the specified trigger configuration.</p>
-     */
-    inline void SetProviderType(PipelineTriggerProviderType&& value) { m_providerTypeHasBeenSet = true; m_providerType = std::move(value); }
-
-    /**
-     * <p>The source provider for the event, such as connections configured for a
-     * repository with Git tags, for the specified trigger configuration.</p>
-     */
-    inline PipelineTriggerDeclaration& WithProviderType(const PipelineTriggerProviderType& value) { SetProviderType(value); return *this;}
-
-    /**
-     * <p>The source provider for the event, such as connections configured for a
-     * repository with Git tags, for the specified trigger configuration.</p>
-     */
-    inline PipelineTriggerDeclaration& WithProviderType(PipelineTriggerProviderType&& value) { SetProviderType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Provides the filter criteria and the source stage for the repository event
      * that starts the pipeline, such as Git tags.</p>
      */
-    inline const GitConfiguration& GetGitConfiguration() const{ return m_gitConfiguration; }
-
-    /**
-     * <p>Provides the filter criteria and the source stage for the repository event
-     * that starts the pipeline, such as Git tags.</p>
-     */
+    inline const GitConfiguration& GetGitConfiguration() const { return m_gitConfiguration; }
     inline bool GitConfigurationHasBeenSet() const { return m_gitConfigurationHasBeenSet; }
-
-    /**
-     * <p>Provides the filter criteria and the source stage for the repository event
-     * that starts the pipeline, such as Git tags.</p>
-     */
-    inline void SetGitConfiguration(const GitConfiguration& value) { m_gitConfigurationHasBeenSet = true; m_gitConfiguration = value; }
-
-    /**
-     * <p>Provides the filter criteria and the source stage for the repository event
-     * that starts the pipeline, such as Git tags.</p>
-     */
-    inline void SetGitConfiguration(GitConfiguration&& value) { m_gitConfigurationHasBeenSet = true; m_gitConfiguration = std::move(value); }
-
-    /**
-     * <p>Provides the filter criteria and the source stage for the repository event
-     * that starts the pipeline, such as Git tags.</p>
-     */
-    inline PipelineTriggerDeclaration& WithGitConfiguration(const GitConfiguration& value) { SetGitConfiguration(value); return *this;}
-
-    /**
-     * <p>Provides the filter criteria and the source stage for the repository event
-     * that starts the pipeline, such as Git tags.</p>
-     */
-    inline PipelineTriggerDeclaration& WithGitConfiguration(GitConfiguration&& value) { SetGitConfiguration(std::move(value)); return *this;}
-
+    template<typename GitConfigurationT = GitConfiguration>
+    void SetGitConfiguration(GitConfigurationT&& value) { m_gitConfigurationHasBeenSet = true; m_gitConfiguration = std::forward<GitConfigurationT>(value); }
+    template<typename GitConfigurationT = GitConfiguration>
+    PipelineTriggerDeclaration& WithGitConfiguration(GitConfigurationT&& value) { SetGitConfiguration(std::forward<GitConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
-    PipelineTriggerProviderType m_providerType;
+    PipelineTriggerProviderType m_providerType{PipelineTriggerProviderType::NOT_SET};
     bool m_providerTypeHasBeenSet = false;
 
     GitConfiguration m_gitConfiguration;

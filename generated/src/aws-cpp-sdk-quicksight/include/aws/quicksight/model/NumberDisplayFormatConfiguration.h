@@ -37,248 +37,93 @@ namespace Model
   class NumberDisplayFormatConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API NumberDisplayFormatConfiguration();
+    AWS_QUICKSIGHT_API NumberDisplayFormatConfiguration() = default;
     AWS_QUICKSIGHT_API NumberDisplayFormatConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API NumberDisplayFormatConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Determines the prefix value of the number format.</p>
      */
-    inline const Aws::String& GetPrefix() const{ return m_prefix; }
-
-    /**
-     * <p>Determines the prefix value of the number format.</p>
-     */
+    inline const Aws::String& GetPrefix() const { return m_prefix; }
     inline bool PrefixHasBeenSet() const { return m_prefixHasBeenSet; }
+    template<typename PrefixT = Aws::String>
+    void SetPrefix(PrefixT&& value) { m_prefixHasBeenSet = true; m_prefix = std::forward<PrefixT>(value); }
+    template<typename PrefixT = Aws::String>
+    NumberDisplayFormatConfiguration& WithPrefix(PrefixT&& value) { SetPrefix(std::forward<PrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines the prefix value of the number format.</p>
-     */
-    inline void SetPrefix(const Aws::String& value) { m_prefixHasBeenSet = true; m_prefix = value; }
-
-    /**
-     * <p>Determines the prefix value of the number format.</p>
-     */
-    inline void SetPrefix(Aws::String&& value) { m_prefixHasBeenSet = true; m_prefix = std::move(value); }
-
-    /**
-     * <p>Determines the prefix value of the number format.</p>
-     */
-    inline void SetPrefix(const char* value) { m_prefixHasBeenSet = true; m_prefix.assign(value); }
-
-    /**
-     * <p>Determines the prefix value of the number format.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithPrefix(const Aws::String& value) { SetPrefix(value); return *this;}
-
-    /**
-     * <p>Determines the prefix value of the number format.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithPrefix(Aws::String&& value) { SetPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>Determines the prefix value of the number format.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithPrefix(const char* value) { SetPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines the suffix value of the number format.</p>
      */
-    inline const Aws::String& GetSuffix() const{ return m_suffix; }
-
-    /**
-     * <p>Determines the suffix value of the number format.</p>
-     */
+    inline const Aws::String& GetSuffix() const { return m_suffix; }
     inline bool SuffixHasBeenSet() const { return m_suffixHasBeenSet; }
+    template<typename SuffixT = Aws::String>
+    void SetSuffix(SuffixT&& value) { m_suffixHasBeenSet = true; m_suffix = std::forward<SuffixT>(value); }
+    template<typename SuffixT = Aws::String>
+    NumberDisplayFormatConfiguration& WithSuffix(SuffixT&& value) { SetSuffix(std::forward<SuffixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines the suffix value of the number format.</p>
-     */
-    inline void SetSuffix(const Aws::String& value) { m_suffixHasBeenSet = true; m_suffix = value; }
-
-    /**
-     * <p>Determines the suffix value of the number format.</p>
-     */
-    inline void SetSuffix(Aws::String&& value) { m_suffixHasBeenSet = true; m_suffix = std::move(value); }
-
-    /**
-     * <p>Determines the suffix value of the number format.</p>
-     */
-    inline void SetSuffix(const char* value) { m_suffixHasBeenSet = true; m_suffix.assign(value); }
-
-    /**
-     * <p>Determines the suffix value of the number format.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithSuffix(const Aws::String& value) { SetSuffix(value); return *this;}
-
-    /**
-     * <p>Determines the suffix value of the number format.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithSuffix(Aws::String&& value) { SetSuffix(std::move(value)); return *this;}
-
-    /**
-     * <p>Determines the suffix value of the number format.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithSuffix(const char* value) { SetSuffix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the numeric separator configuration.</p>
      */
-    inline const NumericSeparatorConfiguration& GetSeparatorConfiguration() const{ return m_separatorConfiguration; }
-
-    /**
-     * <p>The options that determine the numeric separator configuration.</p>
-     */
+    inline const NumericSeparatorConfiguration& GetSeparatorConfiguration() const { return m_separatorConfiguration; }
     inline bool SeparatorConfigurationHasBeenSet() const { return m_separatorConfigurationHasBeenSet; }
+    template<typename SeparatorConfigurationT = NumericSeparatorConfiguration>
+    void SetSeparatorConfiguration(SeparatorConfigurationT&& value) { m_separatorConfigurationHasBeenSet = true; m_separatorConfiguration = std::forward<SeparatorConfigurationT>(value); }
+    template<typename SeparatorConfigurationT = NumericSeparatorConfiguration>
+    NumberDisplayFormatConfiguration& WithSeparatorConfiguration(SeparatorConfigurationT&& value) { SetSeparatorConfiguration(std::forward<SeparatorConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the numeric separator configuration.</p>
-     */
-    inline void SetSeparatorConfiguration(const NumericSeparatorConfiguration& value) { m_separatorConfigurationHasBeenSet = true; m_separatorConfiguration = value; }
-
-    /**
-     * <p>The options that determine the numeric separator configuration.</p>
-     */
-    inline void SetSeparatorConfiguration(NumericSeparatorConfiguration&& value) { m_separatorConfigurationHasBeenSet = true; m_separatorConfiguration = std::move(value); }
-
-    /**
-     * <p>The options that determine the numeric separator configuration.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithSeparatorConfiguration(const NumericSeparatorConfiguration& value) { SetSeparatorConfiguration(value); return *this;}
-
-    /**
-     * <p>The options that determine the numeric separator configuration.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithSeparatorConfiguration(NumericSeparatorConfiguration&& value) { SetSeparatorConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The option that determines the decimal places configuration.</p>
      */
-    inline const DecimalPlacesConfiguration& GetDecimalPlacesConfiguration() const{ return m_decimalPlacesConfiguration; }
-
-    /**
-     * <p>The option that determines the decimal places configuration.</p>
-     */
+    inline const DecimalPlacesConfiguration& GetDecimalPlacesConfiguration() const { return m_decimalPlacesConfiguration; }
     inline bool DecimalPlacesConfigurationHasBeenSet() const { return m_decimalPlacesConfigurationHasBeenSet; }
+    template<typename DecimalPlacesConfigurationT = DecimalPlacesConfiguration>
+    void SetDecimalPlacesConfiguration(DecimalPlacesConfigurationT&& value) { m_decimalPlacesConfigurationHasBeenSet = true; m_decimalPlacesConfiguration = std::forward<DecimalPlacesConfigurationT>(value); }
+    template<typename DecimalPlacesConfigurationT = DecimalPlacesConfiguration>
+    NumberDisplayFormatConfiguration& WithDecimalPlacesConfiguration(DecimalPlacesConfigurationT&& value) { SetDecimalPlacesConfiguration(std::forward<DecimalPlacesConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The option that determines the decimal places configuration.</p>
-     */
-    inline void SetDecimalPlacesConfiguration(const DecimalPlacesConfiguration& value) { m_decimalPlacesConfigurationHasBeenSet = true; m_decimalPlacesConfiguration = value; }
-
-    /**
-     * <p>The option that determines the decimal places configuration.</p>
-     */
-    inline void SetDecimalPlacesConfiguration(DecimalPlacesConfiguration&& value) { m_decimalPlacesConfigurationHasBeenSet = true; m_decimalPlacesConfiguration = std::move(value); }
-
-    /**
-     * <p>The option that determines the decimal places configuration.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithDecimalPlacesConfiguration(const DecimalPlacesConfiguration& value) { SetDecimalPlacesConfiguration(value); return *this;}
-
-    /**
-     * <p>The option that determines the decimal places configuration.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithDecimalPlacesConfiguration(DecimalPlacesConfiguration&& value) { SetDecimalPlacesConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Determines the number scale value of the number format.</p>
      */
-    inline const NumberScale& GetNumberScale() const{ return m_numberScale; }
-
-    /**
-     * <p>Determines the number scale value of the number format.</p>
-     */
+    inline NumberScale GetNumberScale() const { return m_numberScale; }
     inline bool NumberScaleHasBeenSet() const { return m_numberScaleHasBeenSet; }
+    inline void SetNumberScale(NumberScale value) { m_numberScaleHasBeenSet = true; m_numberScale = value; }
+    inline NumberDisplayFormatConfiguration& WithNumberScale(NumberScale value) { SetNumberScale(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Determines the number scale value of the number format.</p>
-     */
-    inline void SetNumberScale(const NumberScale& value) { m_numberScaleHasBeenSet = true; m_numberScale = value; }
-
-    /**
-     * <p>Determines the number scale value of the number format.</p>
-     */
-    inline void SetNumberScale(NumberScale&& value) { m_numberScaleHasBeenSet = true; m_numberScale = std::move(value); }
-
-    /**
-     * <p>Determines the number scale value of the number format.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithNumberScale(const NumberScale& value) { SetNumberScale(value); return *this;}
-
-    /**
-     * <p>Determines the number scale value of the number format.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithNumberScale(NumberScale&& value) { SetNumberScale(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the negative value configuration.</p>
      */
-    inline const NegativeValueConfiguration& GetNegativeValueConfiguration() const{ return m_negativeValueConfiguration; }
-
-    /**
-     * <p>The options that determine the negative value configuration.</p>
-     */
+    inline const NegativeValueConfiguration& GetNegativeValueConfiguration() const { return m_negativeValueConfiguration; }
     inline bool NegativeValueConfigurationHasBeenSet() const { return m_negativeValueConfigurationHasBeenSet; }
+    template<typename NegativeValueConfigurationT = NegativeValueConfiguration>
+    void SetNegativeValueConfiguration(NegativeValueConfigurationT&& value) { m_negativeValueConfigurationHasBeenSet = true; m_negativeValueConfiguration = std::forward<NegativeValueConfigurationT>(value); }
+    template<typename NegativeValueConfigurationT = NegativeValueConfiguration>
+    NumberDisplayFormatConfiguration& WithNegativeValueConfiguration(NegativeValueConfigurationT&& value) { SetNegativeValueConfiguration(std::forward<NegativeValueConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The options that determine the negative value configuration.</p>
-     */
-    inline void SetNegativeValueConfiguration(const NegativeValueConfiguration& value) { m_negativeValueConfigurationHasBeenSet = true; m_negativeValueConfiguration = value; }
-
-    /**
-     * <p>The options that determine the negative value configuration.</p>
-     */
-    inline void SetNegativeValueConfiguration(NegativeValueConfiguration&& value) { m_negativeValueConfigurationHasBeenSet = true; m_negativeValueConfiguration = std::move(value); }
-
-    /**
-     * <p>The options that determine the negative value configuration.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithNegativeValueConfiguration(const NegativeValueConfiguration& value) { SetNegativeValueConfiguration(value); return *this;}
-
-    /**
-     * <p>The options that determine the negative value configuration.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithNegativeValueConfiguration(NegativeValueConfiguration&& value) { SetNegativeValueConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options that determine the null value format configuration.</p>
      */
-    inline const NullValueFormatConfiguration& GetNullValueFormatConfiguration() const{ return m_nullValueFormatConfiguration; }
-
-    /**
-     * <p>The options that determine the null value format configuration.</p>
-     */
+    inline const NullValueFormatConfiguration& GetNullValueFormatConfiguration() const { return m_nullValueFormatConfiguration; }
     inline bool NullValueFormatConfigurationHasBeenSet() const { return m_nullValueFormatConfigurationHasBeenSet; }
-
-    /**
-     * <p>The options that determine the null value format configuration.</p>
-     */
-    inline void SetNullValueFormatConfiguration(const NullValueFormatConfiguration& value) { m_nullValueFormatConfigurationHasBeenSet = true; m_nullValueFormatConfiguration = value; }
-
-    /**
-     * <p>The options that determine the null value format configuration.</p>
-     */
-    inline void SetNullValueFormatConfiguration(NullValueFormatConfiguration&& value) { m_nullValueFormatConfigurationHasBeenSet = true; m_nullValueFormatConfiguration = std::move(value); }
-
-    /**
-     * <p>The options that determine the null value format configuration.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithNullValueFormatConfiguration(const NullValueFormatConfiguration& value) { SetNullValueFormatConfiguration(value); return *this;}
-
-    /**
-     * <p>The options that determine the null value format configuration.</p>
-     */
-    inline NumberDisplayFormatConfiguration& WithNullValueFormatConfiguration(NullValueFormatConfiguration&& value) { SetNullValueFormatConfiguration(std::move(value)); return *this;}
-
+    template<typename NullValueFormatConfigurationT = NullValueFormatConfiguration>
+    void SetNullValueFormatConfiguration(NullValueFormatConfigurationT&& value) { m_nullValueFormatConfigurationHasBeenSet = true; m_nullValueFormatConfiguration = std::forward<NullValueFormatConfigurationT>(value); }
+    template<typename NullValueFormatConfigurationT = NullValueFormatConfiguration>
+    NumberDisplayFormatConfiguration& WithNullValueFormatConfiguration(NullValueFormatConfigurationT&& value) { SetNullValueFormatConfiguration(std::forward<NullValueFormatConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_prefix;
@@ -293,7 +138,7 @@ namespace Model
     DecimalPlacesConfiguration m_decimalPlacesConfiguration;
     bool m_decimalPlacesConfigurationHasBeenSet = false;
 
-    NumberScale m_numberScale;
+    NumberScale m_numberScale{NumberScale::NOT_SET};
     bool m_numberScaleHasBeenSet = false;
 
     NegativeValueConfiguration m_negativeValueConfiguration;

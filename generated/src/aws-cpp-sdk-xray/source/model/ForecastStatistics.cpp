@@ -18,19 +18,7 @@ namespace XRay
 namespace Model
 {
 
-ForecastStatistics::ForecastStatistics() : 
-    m_faultCountHigh(0),
-    m_faultCountHighHasBeenSet(false),
-    m_faultCountLow(0),
-    m_faultCountLowHasBeenSet(false)
-{
-}
-
-ForecastStatistics::ForecastStatistics(JsonView jsonValue) : 
-    m_faultCountHigh(0),
-    m_faultCountHighHasBeenSet(false),
-    m_faultCountLow(0),
-    m_faultCountLowHasBeenSet(false)
+ForecastStatistics::ForecastStatistics(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ ForecastStatistics& ForecastStatistics::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FaultCountHigh"))
   {
     m_faultCountHigh = jsonValue.GetInt64("FaultCountHigh");
-
     m_faultCountHighHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FaultCountLow"))
   {
     m_faultCountLow = jsonValue.GetInt64("FaultCountLow");
-
     m_faultCountLowHasBeenSet = true;
   }
-
   return *this;
 }
 

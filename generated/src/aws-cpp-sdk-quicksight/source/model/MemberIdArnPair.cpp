@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-MemberIdArnPair::MemberIdArnPair() : 
-    m_memberIdHasBeenSet(false),
-    m_memberArnHasBeenSet(false)
-{
-}
-
-MemberIdArnPair::MemberIdArnPair(JsonView jsonValue) : 
-    m_memberIdHasBeenSet(false),
-    m_memberArnHasBeenSet(false)
+MemberIdArnPair::MemberIdArnPair(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ MemberIdArnPair& MemberIdArnPair::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("MemberId"))
   {
     m_memberId = jsonValue.GetString("MemberId");
-
     m_memberIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MemberArn"))
   {
     m_memberArn = jsonValue.GetString("MemberArn");
-
     m_memberArnHasBeenSet = true;
   }
-
   return *this;
 }
 

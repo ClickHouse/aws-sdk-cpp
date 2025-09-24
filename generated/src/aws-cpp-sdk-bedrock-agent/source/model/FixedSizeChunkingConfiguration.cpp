@@ -18,19 +18,7 @@ namespace BedrockAgent
 namespace Model
 {
 
-FixedSizeChunkingConfiguration::FixedSizeChunkingConfiguration() : 
-    m_maxTokens(0),
-    m_maxTokensHasBeenSet(false),
-    m_overlapPercentage(0),
-    m_overlapPercentageHasBeenSet(false)
-{
-}
-
-FixedSizeChunkingConfiguration::FixedSizeChunkingConfiguration(JsonView jsonValue) : 
-    m_maxTokens(0),
-    m_maxTokensHasBeenSet(false),
-    m_overlapPercentage(0),
-    m_overlapPercentageHasBeenSet(false)
+FixedSizeChunkingConfiguration::FixedSizeChunkingConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ FixedSizeChunkingConfiguration& FixedSizeChunkingConfiguration::operator =(JsonV
   if(jsonValue.ValueExists("maxTokens"))
   {
     m_maxTokens = jsonValue.GetInteger("maxTokens");
-
     m_maxTokensHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("overlapPercentage"))
   {
     m_overlapPercentage = jsonValue.GetInteger("overlapPercentage");
-
     m_overlapPercentageHasBeenSet = true;
   }
-
   return *this;
 }
 

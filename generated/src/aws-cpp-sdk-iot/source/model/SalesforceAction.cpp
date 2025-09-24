@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-SalesforceAction::SalesforceAction() : 
-    m_tokenHasBeenSet(false),
-    m_urlHasBeenSet(false)
-{
-}
-
-SalesforceAction::SalesforceAction(JsonView jsonValue) : 
-    m_tokenHasBeenSet(false),
-    m_urlHasBeenSet(false)
+SalesforceAction::SalesforceAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ SalesforceAction& SalesforceAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("token"))
   {
     m_token = jsonValue.GetString("token");
-
     m_tokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("url"))
   {
     m_url = jsonValue.GetString("url");
-
     m_urlHasBeenSet = true;
   }
-
   return *this;
 }
 

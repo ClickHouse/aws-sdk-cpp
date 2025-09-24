@@ -35,147 +35,61 @@ namespace Model
   class MeetingFeaturesConfiguration
   {
   public:
-    AWS_CHIMESDKMEETINGS_API MeetingFeaturesConfiguration();
+    AWS_CHIMESDKMEETINGS_API MeetingFeaturesConfiguration() = default;
     AWS_CHIMESDKMEETINGS_API MeetingFeaturesConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEETINGS_API MeetingFeaturesConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CHIMESDKMEETINGS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The configuration settings for the audio features available to a meeting.</p>
      */
-    inline const AudioFeatures& GetAudio() const{ return m_audio; }
-
-    /**
-     * <p>The configuration settings for the audio features available to a meeting.</p>
-     */
+    inline const AudioFeatures& GetAudio() const { return m_audio; }
     inline bool AudioHasBeenSet() const { return m_audioHasBeenSet; }
+    template<typename AudioT = AudioFeatures>
+    void SetAudio(AudioT&& value) { m_audioHasBeenSet = true; m_audio = std::forward<AudioT>(value); }
+    template<typename AudioT = AudioFeatures>
+    MeetingFeaturesConfiguration& WithAudio(AudioT&& value) { SetAudio(std::forward<AudioT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration settings for the audio features available to a meeting.</p>
-     */
-    inline void SetAudio(const AudioFeatures& value) { m_audioHasBeenSet = true; m_audio = value; }
-
-    /**
-     * <p>The configuration settings for the audio features available to a meeting.</p>
-     */
-    inline void SetAudio(AudioFeatures&& value) { m_audioHasBeenSet = true; m_audio = std::move(value); }
-
-    /**
-     * <p>The configuration settings for the audio features available to a meeting.</p>
-     */
-    inline MeetingFeaturesConfiguration& WithAudio(const AudioFeatures& value) { SetAudio(value); return *this;}
-
-    /**
-     * <p>The configuration settings for the audio features available to a meeting.</p>
-     */
-    inline MeetingFeaturesConfiguration& WithAudio(AudioFeatures&& value) { SetAudio(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration settings for the video features available to a meeting.</p>
      */
-    inline const VideoFeatures& GetVideo() const{ return m_video; }
-
-    /**
-     * <p>The configuration settings for the video features available to a meeting.</p>
-     */
+    inline const VideoFeatures& GetVideo() const { return m_video; }
     inline bool VideoHasBeenSet() const { return m_videoHasBeenSet; }
+    template<typename VideoT = VideoFeatures>
+    void SetVideo(VideoT&& value) { m_videoHasBeenSet = true; m_video = std::forward<VideoT>(value); }
+    template<typename VideoT = VideoFeatures>
+    MeetingFeaturesConfiguration& WithVideo(VideoT&& value) { SetVideo(std::forward<VideoT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration settings for the video features available to a meeting.</p>
-     */
-    inline void SetVideo(const VideoFeatures& value) { m_videoHasBeenSet = true; m_video = value; }
-
-    /**
-     * <p>The configuration settings for the video features available to a meeting.</p>
-     */
-    inline void SetVideo(VideoFeatures&& value) { m_videoHasBeenSet = true; m_video = std::move(value); }
-
-    /**
-     * <p>The configuration settings for the video features available to a meeting.</p>
-     */
-    inline MeetingFeaturesConfiguration& WithVideo(const VideoFeatures& value) { SetVideo(value); return *this;}
-
-    /**
-     * <p>The configuration settings for the video features available to a meeting.</p>
-     */
-    inline MeetingFeaturesConfiguration& WithVideo(VideoFeatures&& value) { SetVideo(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration settings for the content features available to a
      * meeting.</p>
      */
-    inline const ContentFeatures& GetContent() const{ return m_content; }
-
-    /**
-     * <p>The configuration settings for the content features available to a
-     * meeting.</p>
-     */
+    inline const ContentFeatures& GetContent() const { return m_content; }
     inline bool ContentHasBeenSet() const { return m_contentHasBeenSet; }
+    template<typename ContentT = ContentFeatures>
+    void SetContent(ContentT&& value) { m_contentHasBeenSet = true; m_content = std::forward<ContentT>(value); }
+    template<typename ContentT = ContentFeatures>
+    MeetingFeaturesConfiguration& WithContent(ContentT&& value) { SetContent(std::forward<ContentT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration settings for the content features available to a
-     * meeting.</p>
-     */
-    inline void SetContent(const ContentFeatures& value) { m_contentHasBeenSet = true; m_content = value; }
-
-    /**
-     * <p>The configuration settings for the content features available to a
-     * meeting.</p>
-     */
-    inline void SetContent(ContentFeatures&& value) { m_contentHasBeenSet = true; m_content = std::move(value); }
-
-    /**
-     * <p>The configuration settings for the content features available to a
-     * meeting.</p>
-     */
-    inline MeetingFeaturesConfiguration& WithContent(const ContentFeatures& value) { SetContent(value); return *this;}
-
-    /**
-     * <p>The configuration settings for the content features available to a
-     * meeting.</p>
-     */
-    inline MeetingFeaturesConfiguration& WithContent(ContentFeatures&& value) { SetContent(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration settings for the attendee features available to a
      * meeting.</p>
      */
-    inline const AttendeeFeatures& GetAttendee() const{ return m_attendee; }
-
-    /**
-     * <p>The configuration settings for the attendee features available to a
-     * meeting.</p>
-     */
+    inline const AttendeeFeatures& GetAttendee() const { return m_attendee; }
     inline bool AttendeeHasBeenSet() const { return m_attendeeHasBeenSet; }
-
-    /**
-     * <p>The configuration settings for the attendee features available to a
-     * meeting.</p>
-     */
-    inline void SetAttendee(const AttendeeFeatures& value) { m_attendeeHasBeenSet = true; m_attendee = value; }
-
-    /**
-     * <p>The configuration settings for the attendee features available to a
-     * meeting.</p>
-     */
-    inline void SetAttendee(AttendeeFeatures&& value) { m_attendeeHasBeenSet = true; m_attendee = std::move(value); }
-
-    /**
-     * <p>The configuration settings for the attendee features available to a
-     * meeting.</p>
-     */
-    inline MeetingFeaturesConfiguration& WithAttendee(const AttendeeFeatures& value) { SetAttendee(value); return *this;}
-
-    /**
-     * <p>The configuration settings for the attendee features available to a
-     * meeting.</p>
-     */
-    inline MeetingFeaturesConfiguration& WithAttendee(AttendeeFeatures&& value) { SetAttendee(std::move(value)); return *this;}
-
+    template<typename AttendeeT = AttendeeFeatures>
+    void SetAttendee(AttendeeT&& value) { m_attendeeHasBeenSet = true; m_attendee = std::forward<AttendeeT>(value); }
+    template<typename AttendeeT = AttendeeFeatures>
+    MeetingFeaturesConfiguration& WithAttendee(AttendeeT&& value) { SetAttendee(std::forward<AttendeeT>(value)); return *this;}
+    ///@}
   private:
 
     AudioFeatures m_audio;

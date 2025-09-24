@@ -31,115 +31,54 @@ namespace Model
   class DvbNitSettings
   {
   public:
-    AWS_MEDIALIVE_API DvbNitSettings();
+    AWS_MEDIALIVE_API DvbNitSettings() = default;
     AWS_MEDIALIVE_API DvbNitSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API DvbNitSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The numeric value placed in the Network Information Table (NIT).
      */
-    inline int GetNetworkId() const{ return m_networkId; }
-
-    /**
-     * The numeric value placed in the Network Information Table (NIT).
-     */
+    inline int GetNetworkId() const { return m_networkId; }
     inline bool NetworkIdHasBeenSet() const { return m_networkIdHasBeenSet; }
-
-    /**
-     * The numeric value placed in the Network Information Table (NIT).
-     */
     inline void SetNetworkId(int value) { m_networkIdHasBeenSet = true; m_networkId = value; }
-
-    /**
-     * The numeric value placed in the Network Information Table (NIT).
-     */
     inline DvbNitSettings& WithNetworkId(int value) { SetNetworkId(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * The network name text placed in the networkNameDescriptor inside the Network
      * Information Table. Maximum length is 256 characters.
      */
-    inline const Aws::String& GetNetworkName() const{ return m_networkName; }
-
-    /**
-     * The network name text placed in the networkNameDescriptor inside the Network
-     * Information Table. Maximum length is 256 characters.
-     */
+    inline const Aws::String& GetNetworkName() const { return m_networkName; }
     inline bool NetworkNameHasBeenSet() const { return m_networkNameHasBeenSet; }
+    template<typename NetworkNameT = Aws::String>
+    void SetNetworkName(NetworkNameT&& value) { m_networkNameHasBeenSet = true; m_networkName = std::forward<NetworkNameT>(value); }
+    template<typename NetworkNameT = Aws::String>
+    DvbNitSettings& WithNetworkName(NetworkNameT&& value) { SetNetworkName(std::forward<NetworkNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The network name text placed in the networkNameDescriptor inside the Network
-     * Information Table. Maximum length is 256 characters.
-     */
-    inline void SetNetworkName(const Aws::String& value) { m_networkNameHasBeenSet = true; m_networkName = value; }
-
-    /**
-     * The network name text placed in the networkNameDescriptor inside the Network
-     * Information Table. Maximum length is 256 characters.
-     */
-    inline void SetNetworkName(Aws::String&& value) { m_networkNameHasBeenSet = true; m_networkName = std::move(value); }
-
-    /**
-     * The network name text placed in the networkNameDescriptor inside the Network
-     * Information Table. Maximum length is 256 characters.
-     */
-    inline void SetNetworkName(const char* value) { m_networkNameHasBeenSet = true; m_networkName.assign(value); }
-
-    /**
-     * The network name text placed in the networkNameDescriptor inside the Network
-     * Information Table. Maximum length is 256 characters.
-     */
-    inline DvbNitSettings& WithNetworkName(const Aws::String& value) { SetNetworkName(value); return *this;}
-
-    /**
-     * The network name text placed in the networkNameDescriptor inside the Network
-     * Information Table. Maximum length is 256 characters.
-     */
-    inline DvbNitSettings& WithNetworkName(Aws::String&& value) { SetNetworkName(std::move(value)); return *this;}
-
-    /**
-     * The network name text placed in the networkNameDescriptor inside the Network
-     * Information Table. Maximum length is 256 characters.
-     */
-    inline DvbNitSettings& WithNetworkName(const char* value) { SetNetworkName(value); return *this;}
-
-
+    ///@{
     /**
      * The number of milliseconds between instances of this table in the output
      * transport stream.
      */
-    inline int GetRepInterval() const{ return m_repInterval; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
+    inline int GetRepInterval() const { return m_repInterval; }
     inline bool RepIntervalHasBeenSet() const { return m_repIntervalHasBeenSet; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
     inline void SetRepInterval(int value) { m_repIntervalHasBeenSet = true; m_repInterval = value; }
-
-    /**
-     * The number of milliseconds between instances of this table in the output
-     * transport stream.
-     */
     inline DvbNitSettings& WithRepInterval(int value) { SetRepInterval(value); return *this;}
-
+    ///@}
   private:
 
-    int m_networkId;
+    int m_networkId{0};
     bool m_networkIdHasBeenSet = false;
 
     Aws::String m_networkName;
     bool m_networkNameHasBeenSet = false;
 
-    int m_repInterval;
+    int m_repInterval{0};
     bool m_repIntervalHasBeenSet = false;
   };
 

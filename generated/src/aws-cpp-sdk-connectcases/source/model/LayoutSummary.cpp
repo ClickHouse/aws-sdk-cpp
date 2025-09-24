@@ -18,17 +18,7 @@ namespace ConnectCases
 namespace Model
 {
 
-LayoutSummary::LayoutSummary() : 
-    m_layoutArnHasBeenSet(false),
-    m_layoutIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
-{
-}
-
-LayoutSummary::LayoutSummary(JsonView jsonValue) : 
-    m_layoutArnHasBeenSet(false),
-    m_layoutIdHasBeenSet(false),
-    m_nameHasBeenSet(false)
+LayoutSummary::LayoutSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ LayoutSummary& LayoutSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("layoutArn"))
   {
     m_layoutArn = jsonValue.GetString("layoutArn");
-
     m_layoutArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("layoutId"))
   {
     m_layoutId = jsonValue.GetString("layoutId");
-
     m_layoutIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

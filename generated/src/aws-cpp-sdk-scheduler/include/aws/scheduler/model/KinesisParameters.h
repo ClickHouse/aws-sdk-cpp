@@ -33,12 +33,13 @@ namespace Model
   class KinesisParameters
   {
   public:
-    AWS_SCHEDULER_API KinesisParameters();
+    AWS_SCHEDULER_API KinesisParameters() = default;
     AWS_SCHEDULER_API KinesisParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API KinesisParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SCHEDULER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the shard to which EventBridge Scheduler sends the event. For more
      * information, see <a
@@ -46,71 +47,13 @@ namespace Model
      * Kinesis Data Streams terminology and concepts</a> in the <i>Amazon Kinesis
      * Streams Developer Guide</i>.</p>
      */
-    inline const Aws::String& GetPartitionKey() const{ return m_partitionKey; }
-
-    /**
-     * <p>Specifies the shard to which EventBridge Scheduler sends the event. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html">Amazon
-     * Kinesis Data Streams terminology and concepts</a> in the <i>Amazon Kinesis
-     * Streams Developer Guide</i>.</p>
-     */
+    inline const Aws::String& GetPartitionKey() const { return m_partitionKey; }
     inline bool PartitionKeyHasBeenSet() const { return m_partitionKeyHasBeenSet; }
-
-    /**
-     * <p>Specifies the shard to which EventBridge Scheduler sends the event. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html">Amazon
-     * Kinesis Data Streams terminology and concepts</a> in the <i>Amazon Kinesis
-     * Streams Developer Guide</i>.</p>
-     */
-    inline void SetPartitionKey(const Aws::String& value) { m_partitionKeyHasBeenSet = true; m_partitionKey = value; }
-
-    /**
-     * <p>Specifies the shard to which EventBridge Scheduler sends the event. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html">Amazon
-     * Kinesis Data Streams terminology and concepts</a> in the <i>Amazon Kinesis
-     * Streams Developer Guide</i>.</p>
-     */
-    inline void SetPartitionKey(Aws::String&& value) { m_partitionKeyHasBeenSet = true; m_partitionKey = std::move(value); }
-
-    /**
-     * <p>Specifies the shard to which EventBridge Scheduler sends the event. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html">Amazon
-     * Kinesis Data Streams terminology and concepts</a> in the <i>Amazon Kinesis
-     * Streams Developer Guide</i>.</p>
-     */
-    inline void SetPartitionKey(const char* value) { m_partitionKeyHasBeenSet = true; m_partitionKey.assign(value); }
-
-    /**
-     * <p>Specifies the shard to which EventBridge Scheduler sends the event. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html">Amazon
-     * Kinesis Data Streams terminology and concepts</a> in the <i>Amazon Kinesis
-     * Streams Developer Guide</i>.</p>
-     */
-    inline KinesisParameters& WithPartitionKey(const Aws::String& value) { SetPartitionKey(value); return *this;}
-
-    /**
-     * <p>Specifies the shard to which EventBridge Scheduler sends the event. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html">Amazon
-     * Kinesis Data Streams terminology and concepts</a> in the <i>Amazon Kinesis
-     * Streams Developer Guide</i>.</p>
-     */
-    inline KinesisParameters& WithPartitionKey(Aws::String&& value) { SetPartitionKey(std::move(value)); return *this;}
-
-    /**
-     * <p>Specifies the shard to which EventBridge Scheduler sends the event. For more
-     * information, see <a
-     * href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html">Amazon
-     * Kinesis Data Streams terminology and concepts</a> in the <i>Amazon Kinesis
-     * Streams Developer Guide</i>.</p>
-     */
-    inline KinesisParameters& WithPartitionKey(const char* value) { SetPartitionKey(value); return *this;}
-
+    template<typename PartitionKeyT = Aws::String>
+    void SetPartitionKey(PartitionKeyT&& value) { m_partitionKeyHasBeenSet = true; m_partitionKey = std::forward<PartitionKeyT>(value); }
+    template<typename PartitionKeyT = Aws::String>
+    KinesisParameters& WithPartitionKey(PartitionKeyT&& value) { SetPartitionKey(std::forward<PartitionKeyT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_partitionKey;

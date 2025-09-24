@@ -18,13 +18,7 @@ namespace Connect
 namespace Model
 {
 
-EventBridgeActionDefinition::EventBridgeActionDefinition() : 
-    m_nameHasBeenSet(false)
-{
-}
-
-EventBridgeActionDefinition::EventBridgeActionDefinition(JsonView jsonValue) : 
-    m_nameHasBeenSet(false)
+EventBridgeActionDefinition::EventBridgeActionDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ EventBridgeActionDefinition& EventBridgeActionDefinition::operator =(JsonView js
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace LicenseManager
 namespace Model
 {
 
-ProvisionalConfiguration::ProvisionalConfiguration() : 
-    m_maxTimeToLiveInMinutes(0),
-    m_maxTimeToLiveInMinutesHasBeenSet(false)
-{
-}
-
-ProvisionalConfiguration::ProvisionalConfiguration(JsonView jsonValue) : 
-    m_maxTimeToLiveInMinutes(0),
-    m_maxTimeToLiveInMinutesHasBeenSet(false)
+ProvisionalConfiguration::ProvisionalConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ProvisionalConfiguration& ProvisionalConfiguration::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("MaxTimeToLiveInMinutes"))
   {
     m_maxTimeToLiveInMinutes = jsonValue.GetInteger("MaxTimeToLiveInMinutes");
-
     m_maxTimeToLiveInMinutesHasBeenSet = true;
   }
-
   return *this;
 }
 

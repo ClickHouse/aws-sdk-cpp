@@ -38,109 +38,39 @@ namespace Model
   class CapacityAssignmentConfiguration
   {
   public:
-    AWS_ATHENA_API CapacityAssignmentConfiguration();
+    AWS_ATHENA_API CapacityAssignmentConfiguration() = default;
     AWS_ATHENA_API CapacityAssignmentConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API CapacityAssignmentConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ATHENA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the reservation that the capacity assignment configuration is
      * for.</p>
      */
-    inline const Aws::String& GetCapacityReservationName() const{ return m_capacityReservationName; }
-
-    /**
-     * <p>The name of the reservation that the capacity assignment configuration is
-     * for.</p>
-     */
+    inline const Aws::String& GetCapacityReservationName() const { return m_capacityReservationName; }
     inline bool CapacityReservationNameHasBeenSet() const { return m_capacityReservationNameHasBeenSet; }
+    template<typename CapacityReservationNameT = Aws::String>
+    void SetCapacityReservationName(CapacityReservationNameT&& value) { m_capacityReservationNameHasBeenSet = true; m_capacityReservationName = std::forward<CapacityReservationNameT>(value); }
+    template<typename CapacityReservationNameT = Aws::String>
+    CapacityAssignmentConfiguration& WithCapacityReservationName(CapacityReservationNameT&& value) { SetCapacityReservationName(std::forward<CapacityReservationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the reservation that the capacity assignment configuration is
-     * for.</p>
-     */
-    inline void SetCapacityReservationName(const Aws::String& value) { m_capacityReservationNameHasBeenSet = true; m_capacityReservationName = value; }
-
-    /**
-     * <p>The name of the reservation that the capacity assignment configuration is
-     * for.</p>
-     */
-    inline void SetCapacityReservationName(Aws::String&& value) { m_capacityReservationNameHasBeenSet = true; m_capacityReservationName = std::move(value); }
-
-    /**
-     * <p>The name of the reservation that the capacity assignment configuration is
-     * for.</p>
-     */
-    inline void SetCapacityReservationName(const char* value) { m_capacityReservationNameHasBeenSet = true; m_capacityReservationName.assign(value); }
-
-    /**
-     * <p>The name of the reservation that the capacity assignment configuration is
-     * for.</p>
-     */
-    inline CapacityAssignmentConfiguration& WithCapacityReservationName(const Aws::String& value) { SetCapacityReservationName(value); return *this;}
-
-    /**
-     * <p>The name of the reservation that the capacity assignment configuration is
-     * for.</p>
-     */
-    inline CapacityAssignmentConfiguration& WithCapacityReservationName(Aws::String&& value) { SetCapacityReservationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the reservation that the capacity assignment configuration is
-     * for.</p>
-     */
-    inline CapacityAssignmentConfiguration& WithCapacityReservationName(const char* value) { SetCapacityReservationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of assignments that make up the capacity assignment
      * configuration.</p>
      */
-    inline const Aws::Vector<CapacityAssignment>& GetCapacityAssignments() const{ return m_capacityAssignments; }
-
-    /**
-     * <p>The list of assignments that make up the capacity assignment
-     * configuration.</p>
-     */
+    inline const Aws::Vector<CapacityAssignment>& GetCapacityAssignments() const { return m_capacityAssignments; }
     inline bool CapacityAssignmentsHasBeenSet() const { return m_capacityAssignmentsHasBeenSet; }
-
-    /**
-     * <p>The list of assignments that make up the capacity assignment
-     * configuration.</p>
-     */
-    inline void SetCapacityAssignments(const Aws::Vector<CapacityAssignment>& value) { m_capacityAssignmentsHasBeenSet = true; m_capacityAssignments = value; }
-
-    /**
-     * <p>The list of assignments that make up the capacity assignment
-     * configuration.</p>
-     */
-    inline void SetCapacityAssignments(Aws::Vector<CapacityAssignment>&& value) { m_capacityAssignmentsHasBeenSet = true; m_capacityAssignments = std::move(value); }
-
-    /**
-     * <p>The list of assignments that make up the capacity assignment
-     * configuration.</p>
-     */
-    inline CapacityAssignmentConfiguration& WithCapacityAssignments(const Aws::Vector<CapacityAssignment>& value) { SetCapacityAssignments(value); return *this;}
-
-    /**
-     * <p>The list of assignments that make up the capacity assignment
-     * configuration.</p>
-     */
-    inline CapacityAssignmentConfiguration& WithCapacityAssignments(Aws::Vector<CapacityAssignment>&& value) { SetCapacityAssignments(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of assignments that make up the capacity assignment
-     * configuration.</p>
-     */
-    inline CapacityAssignmentConfiguration& AddCapacityAssignments(const CapacityAssignment& value) { m_capacityAssignmentsHasBeenSet = true; m_capacityAssignments.push_back(value); return *this; }
-
-    /**
-     * <p>The list of assignments that make up the capacity assignment
-     * configuration.</p>
-     */
-    inline CapacityAssignmentConfiguration& AddCapacityAssignments(CapacityAssignment&& value) { m_capacityAssignmentsHasBeenSet = true; m_capacityAssignments.push_back(std::move(value)); return *this; }
-
+    template<typename CapacityAssignmentsT = Aws::Vector<CapacityAssignment>>
+    void SetCapacityAssignments(CapacityAssignmentsT&& value) { m_capacityAssignmentsHasBeenSet = true; m_capacityAssignments = std::forward<CapacityAssignmentsT>(value); }
+    template<typename CapacityAssignmentsT = Aws::Vector<CapacityAssignment>>
+    CapacityAssignmentConfiguration& WithCapacityAssignments(CapacityAssignmentsT&& value) { SetCapacityAssignments(std::forward<CapacityAssignmentsT>(value)); return *this;}
+    template<typename CapacityAssignmentsT = CapacityAssignment>
+    CapacityAssignmentConfiguration& AddCapacityAssignments(CapacityAssignmentsT&& value) { m_capacityAssignmentsHasBeenSet = true; m_capacityAssignments.emplace_back(std::forward<CapacityAssignmentsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_capacityReservationName;

@@ -20,21 +20,7 @@ namespace ElastiCache
 namespace Model
 {
 
-Event::Event() : 
-    m_sourceIdentifierHasBeenSet(false),
-    m_sourceType(SourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_dateHasBeenSet(false)
-{
-}
-
-Event::Event(const XmlNode& xmlNode) : 
-    m_sourceIdentifierHasBeenSet(false),
-    m_sourceType(SourceType::NOT_SET),
-    m_sourceTypeHasBeenSet(false),
-    m_messageHasBeenSet(false),
-    m_dateHasBeenSet(false)
+Event::Event(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -54,7 +40,7 @@ Event& Event::operator =(const XmlNode& xmlNode)
     XmlNode sourceTypeNode = resultNode.FirstChild("SourceType");
     if(!sourceTypeNode.IsNull())
     {
-      m_sourceType = SourceTypeMapper::GetSourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceTypeNode.GetText()).c_str()).c_str());
+      m_sourceType = SourceTypeMapper::GetSourceTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(sourceTypeNode.GetText()).c_str()));
       m_sourceTypeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("Message");
@@ -83,7 +69,7 @@ void Event::OutputToStream(Aws::OStream& oStream, const char* location, unsigned
 
   if(m_sourceTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".SourceType=" << SourceTypeMapper::GetNameForSourceType(m_sourceType) << "&";
+      oStream << location << index << locationValue << ".SourceType=" << StringUtils::URLEncode(SourceTypeMapper::GetNameForSourceType(m_sourceType)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -106,7 +92,7 @@ void Event::OutputToStream(Aws::OStream& oStream, const char* location) const
   }
   if(m_sourceTypeHasBeenSet)
   {
-      oStream << location << ".SourceType=" << SourceTypeMapper::GetNameForSourceType(m_sourceType) << "&";
+      oStream << location << ".SourceType=" << StringUtils::URLEncode(SourceTypeMapper::GetNameForSourceType(m_sourceType)) << "&";
   }
   if(m_messageHasBeenSet)
   {

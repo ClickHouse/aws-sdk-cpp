@@ -18,13 +18,7 @@ namespace Snowball
 namespace Model
 {
 
-EventTriggerDefinition::EventTriggerDefinition() : 
-    m_eventResourceARNHasBeenSet(false)
-{
-}
-
-EventTriggerDefinition::EventTriggerDefinition(JsonView jsonValue) : 
-    m_eventResourceARNHasBeenSet(false)
+EventTriggerDefinition::EventTriggerDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ EventTriggerDefinition& EventTriggerDefinition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EventResourceARN"))
   {
     m_eventResourceARN = jsonValue.GetString("EventResourceARN");
-
     m_eventResourceARNHasBeenSet = true;
   }
-
   return *this;
 }
 

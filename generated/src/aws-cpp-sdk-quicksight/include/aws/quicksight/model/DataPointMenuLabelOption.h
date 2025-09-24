@@ -31,45 +31,24 @@ namespace Model
   class DataPointMenuLabelOption
   {
   public:
-    AWS_QUICKSIGHT_API DataPointMenuLabelOption();
+    AWS_QUICKSIGHT_API DataPointMenuLabelOption() = default;
     AWS_QUICKSIGHT_API DataPointMenuLabelOption(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DataPointMenuLabelOption& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The status of the data point menu options.</p>
      */
-    inline const DashboardBehavior& GetAvailabilityStatus() const{ return m_availabilityStatus; }
-
-    /**
-     * <p>The status of the data point menu options.</p>
-     */
+    inline DashboardBehavior GetAvailabilityStatus() const { return m_availabilityStatus; }
     inline bool AvailabilityStatusHasBeenSet() const { return m_availabilityStatusHasBeenSet; }
-
-    /**
-     * <p>The status of the data point menu options.</p>
-     */
-    inline void SetAvailabilityStatus(const DashboardBehavior& value) { m_availabilityStatusHasBeenSet = true; m_availabilityStatus = value; }
-
-    /**
-     * <p>The status of the data point menu options.</p>
-     */
-    inline void SetAvailabilityStatus(DashboardBehavior&& value) { m_availabilityStatusHasBeenSet = true; m_availabilityStatus = std::move(value); }
-
-    /**
-     * <p>The status of the data point menu options.</p>
-     */
-    inline DataPointMenuLabelOption& WithAvailabilityStatus(const DashboardBehavior& value) { SetAvailabilityStatus(value); return *this;}
-
-    /**
-     * <p>The status of the data point menu options.</p>
-     */
-    inline DataPointMenuLabelOption& WithAvailabilityStatus(DashboardBehavior&& value) { SetAvailabilityStatus(std::move(value)); return *this;}
-
+    inline void SetAvailabilityStatus(DashboardBehavior value) { m_availabilityStatusHasBeenSet = true; m_availabilityStatus = value; }
+    inline DataPointMenuLabelOption& WithAvailabilityStatus(DashboardBehavior value) { SetAvailabilityStatus(value); return *this;}
+    ///@}
   private:
 
-    DashboardBehavior m_availabilityStatus;
+    DashboardBehavior m_availabilityStatus{DashboardBehavior::NOT_SET};
     bool m_availabilityStatusHasBeenSet = false;
   };
 

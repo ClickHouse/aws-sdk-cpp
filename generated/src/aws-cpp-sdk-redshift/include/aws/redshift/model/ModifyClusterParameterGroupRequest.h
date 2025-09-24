@@ -27,7 +27,7 @@ namespace Model
   class ModifyClusterParameterGroupRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API ModifyClusterParameterGroupRequest();
+    AWS_REDSHIFT_API ModifyClusterParameterGroupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -42,47 +42,19 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the parameter group to be modified.</p>
      */
-    inline const Aws::String& GetParameterGroupName() const{ return m_parameterGroupName; }
-
-    /**
-     * <p>The name of the parameter group to be modified.</p>
-     */
+    inline const Aws::String& GetParameterGroupName() const { return m_parameterGroupName; }
     inline bool ParameterGroupNameHasBeenSet() const { return m_parameterGroupNameHasBeenSet; }
+    template<typename ParameterGroupNameT = Aws::String>
+    void SetParameterGroupName(ParameterGroupNameT&& value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName = std::forward<ParameterGroupNameT>(value); }
+    template<typename ParameterGroupNameT = Aws::String>
+    ModifyClusterParameterGroupRequest& WithParameterGroupName(ParameterGroupNameT&& value) { SetParameterGroupName(std::forward<ParameterGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the parameter group to be modified.</p>
-     */
-    inline void SetParameterGroupName(const Aws::String& value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName = value; }
-
-    /**
-     * <p>The name of the parameter group to be modified.</p>
-     */
-    inline void SetParameterGroupName(Aws::String&& value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName = std::move(value); }
-
-    /**
-     * <p>The name of the parameter group to be modified.</p>
-     */
-    inline void SetParameterGroupName(const char* value) { m_parameterGroupNameHasBeenSet = true; m_parameterGroupName.assign(value); }
-
-    /**
-     * <p>The name of the parameter group to be modified.</p>
-     */
-    inline ModifyClusterParameterGroupRequest& WithParameterGroupName(const Aws::String& value) { SetParameterGroupName(value); return *this;}
-
-    /**
-     * <p>The name of the parameter group to be modified.</p>
-     */
-    inline ModifyClusterParameterGroupRequest& WithParameterGroupName(Aws::String&& value) { SetParameterGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the parameter group to be modified.</p>
-     */
-    inline ModifyClusterParameterGroupRequest& WithParameterGroupName(const char* value) { SetParameterGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of parameters to be modified. A maximum of 20 parameters can be
      * modified in a single request.</p> <p>For each parameter to be modified, you must
@@ -91,78 +63,15 @@ namespace Model
      * configuration, you must supply all the name-value pairs in the
      * wlm_json_configuration parameter.</p>
      */
-    inline const Aws::Vector<Parameter>& GetParameters() const{ return m_parameters; }
-
-    /**
-     * <p>An array of parameters to be modified. A maximum of 20 parameters can be
-     * modified in a single request.</p> <p>For each parameter to be modified, you must
-     * supply at least the parameter name and parameter value; other name-value pairs
-     * of the parameter are optional.</p> <p>For the workload management (WLM)
-     * configuration, you must supply all the name-value pairs in the
-     * wlm_json_configuration parameter.</p>
-     */
+    inline const Aws::Vector<Parameter>& GetParameters() const { return m_parameters; }
     inline bool ParametersHasBeenSet() const { return m_parametersHasBeenSet; }
-
-    /**
-     * <p>An array of parameters to be modified. A maximum of 20 parameters can be
-     * modified in a single request.</p> <p>For each parameter to be modified, you must
-     * supply at least the parameter name and parameter value; other name-value pairs
-     * of the parameter are optional.</p> <p>For the workload management (WLM)
-     * configuration, you must supply all the name-value pairs in the
-     * wlm_json_configuration parameter.</p>
-     */
-    inline void SetParameters(const Aws::Vector<Parameter>& value) { m_parametersHasBeenSet = true; m_parameters = value; }
-
-    /**
-     * <p>An array of parameters to be modified. A maximum of 20 parameters can be
-     * modified in a single request.</p> <p>For each parameter to be modified, you must
-     * supply at least the parameter name and parameter value; other name-value pairs
-     * of the parameter are optional.</p> <p>For the workload management (WLM)
-     * configuration, you must supply all the name-value pairs in the
-     * wlm_json_configuration parameter.</p>
-     */
-    inline void SetParameters(Aws::Vector<Parameter>&& value) { m_parametersHasBeenSet = true; m_parameters = std::move(value); }
-
-    /**
-     * <p>An array of parameters to be modified. A maximum of 20 parameters can be
-     * modified in a single request.</p> <p>For each parameter to be modified, you must
-     * supply at least the parameter name and parameter value; other name-value pairs
-     * of the parameter are optional.</p> <p>For the workload management (WLM)
-     * configuration, you must supply all the name-value pairs in the
-     * wlm_json_configuration parameter.</p>
-     */
-    inline ModifyClusterParameterGroupRequest& WithParameters(const Aws::Vector<Parameter>& value) { SetParameters(value); return *this;}
-
-    /**
-     * <p>An array of parameters to be modified. A maximum of 20 parameters can be
-     * modified in a single request.</p> <p>For each parameter to be modified, you must
-     * supply at least the parameter name and parameter value; other name-value pairs
-     * of the parameter are optional.</p> <p>For the workload management (WLM)
-     * configuration, you must supply all the name-value pairs in the
-     * wlm_json_configuration parameter.</p>
-     */
-    inline ModifyClusterParameterGroupRequest& WithParameters(Aws::Vector<Parameter>&& value) { SetParameters(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of parameters to be modified. A maximum of 20 parameters can be
-     * modified in a single request.</p> <p>For each parameter to be modified, you must
-     * supply at least the parameter name and parameter value; other name-value pairs
-     * of the parameter are optional.</p> <p>For the workload management (WLM)
-     * configuration, you must supply all the name-value pairs in the
-     * wlm_json_configuration parameter.</p>
-     */
-    inline ModifyClusterParameterGroupRequest& AddParameters(const Parameter& value) { m_parametersHasBeenSet = true; m_parameters.push_back(value); return *this; }
-
-    /**
-     * <p>An array of parameters to be modified. A maximum of 20 parameters can be
-     * modified in a single request.</p> <p>For each parameter to be modified, you must
-     * supply at least the parameter name and parameter value; other name-value pairs
-     * of the parameter are optional.</p> <p>For the workload management (WLM)
-     * configuration, you must supply all the name-value pairs in the
-     * wlm_json_configuration parameter.</p>
-     */
-    inline ModifyClusterParameterGroupRequest& AddParameters(Parameter&& value) { m_parametersHasBeenSet = true; m_parameters.push_back(std::move(value)); return *this; }
-
+    template<typename ParametersT = Aws::Vector<Parameter>>
+    void SetParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters = std::forward<ParametersT>(value); }
+    template<typename ParametersT = Aws::Vector<Parameter>>
+    ModifyClusterParameterGroupRequest& WithParameters(ParametersT&& value) { SetParameters(std::forward<ParametersT>(value)); return *this;}
+    template<typename ParametersT = Parameter>
+    ModifyClusterParameterGroupRequest& AddParameters(ParametersT&& value) { m_parametersHasBeenSet = true; m_parameters.emplace_back(std::forward<ParametersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_parameterGroupName;

@@ -10,21 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateCustomerGatewayRequest::CreateCustomerGatewayRequest() : 
-    m_bgpAsn(0),
-    m_bgpAsnHasBeenSet(false),
-    m_publicIpHasBeenSet(false),
-    m_certificateArnHasBeenSet(false),
-    m_type(GatewayType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_deviceNameHasBeenSet(false),
-    m_ipAddressHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String CreateCustomerGatewayRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -46,7 +31,7 @@ Aws::String CreateCustomerGatewayRequest::SerializePayload() const
 
   if(m_typeHasBeenSet)
   {
-    ss << "Type=" << GatewayTypeMapper::GetNameForGatewayType(m_type) << "&";
+    ss << "Type=" << StringUtils::URLEncode(GatewayTypeMapper::GetNameForGatewayType(m_type)) << "&";
   }
 
   if(m_tagSpecificationsHasBeenSet)
@@ -67,6 +52,11 @@ Aws::String CreateCustomerGatewayRequest::SerializePayload() const
   if(m_ipAddressHasBeenSet)
   {
     ss << "IpAddress=" << StringUtils::URLEncode(m_ipAddress.c_str()) << "&";
+  }
+
+  if(m_bgpAsnExtendedHasBeenSet)
+  {
+    ss << "BgpAsnExtended=" << m_bgpAsnExtended << "&";
   }
 
   if(m_dryRunHasBeenSet)

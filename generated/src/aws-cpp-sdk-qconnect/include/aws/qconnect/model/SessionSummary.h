@@ -31,188 +31,72 @@ namespace Model
   class SessionSummary
   {
   public:
-    AWS_QCONNECT_API SessionSummary();
+    AWS_QCONNECT_API SessionSummary() = default;
     AWS_QCONNECT_API SessionSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API SessionSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Q assistant.</p>
-     */
-    inline const Aws::String& GetAssistantArn() const{ return m_assistantArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Q assistant.</p>
-     */
-    inline bool AssistantArnHasBeenSet() const { return m_assistantArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Q assistant.</p>
-     */
-    inline void SetAssistantArn(const Aws::String& value) { m_assistantArnHasBeenSet = true; m_assistantArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Q assistant.</p>
-     */
-    inline void SetAssistantArn(Aws::String&& value) { m_assistantArnHasBeenSet = true; m_assistantArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Q assistant.</p>
-     */
-    inline void SetAssistantArn(const char* value) { m_assistantArnHasBeenSet = true; m_assistantArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Q assistant.</p>
-     */
-    inline SessionSummary& WithAssistantArn(const Aws::String& value) { SetAssistantArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Q assistant.</p>
-     */
-    inline SessionSummary& WithAssistantArn(Aws::String&& value) { SetAssistantArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Amazon Q assistant.</p>
-     */
-    inline SessionSummary& WithAssistantArn(const char* value) { SetAssistantArn(value); return *this;}
-
-
-    /**
-     * <p>The identifier of the Amazon Q assistant.</p>
-     */
-    inline const Aws::String& GetAssistantId() const{ return m_assistantId; }
-
-    /**
-     * <p>The identifier of the Amazon Q assistant.</p>
-     */
-    inline bool AssistantIdHasBeenSet() const { return m_assistantIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the Amazon Q assistant.</p>
-     */
-    inline void SetAssistantId(const Aws::String& value) { m_assistantIdHasBeenSet = true; m_assistantId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Q assistant.</p>
-     */
-    inline void SetAssistantId(Aws::String&& value) { m_assistantIdHasBeenSet = true; m_assistantId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Q assistant.</p>
-     */
-    inline void SetAssistantId(const char* value) { m_assistantIdHasBeenSet = true; m_assistantId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Q assistant.</p>
-     */
-    inline SessionSummary& WithAssistantId(const Aws::String& value) { SetAssistantId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q assistant.</p>
-     */
-    inline SessionSummary& WithAssistantId(Aws::String&& value) { SetAssistantId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Q assistant.</p>
-     */
-    inline SessionSummary& WithAssistantId(const char* value) { SetAssistantId(value); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the session.</p>
-     */
-    inline const Aws::String& GetSessionArn() const{ return m_sessionArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the session.</p>
-     */
-    inline bool SessionArnHasBeenSet() const { return m_sessionArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the session.</p>
-     */
-    inline void SetSessionArn(const Aws::String& value) { m_sessionArnHasBeenSet = true; m_sessionArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the session.</p>
-     */
-    inline void SetSessionArn(Aws::String&& value) { m_sessionArnHasBeenSet = true; m_sessionArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the session.</p>
-     */
-    inline void SetSessionArn(const char* value) { m_sessionArnHasBeenSet = true; m_sessionArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the session.</p>
-     */
-    inline SessionSummary& WithSessionArn(const Aws::String& value) { SetSessionArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the session.</p>
-     */
-    inline SessionSummary& WithSessionArn(Aws::String&& value) { SetSessionArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the session.</p>
-     */
-    inline SessionSummary& WithSessionArn(const char* value) { SetSessionArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the session.</p>
      */
-    inline const Aws::String& GetSessionId() const{ return m_sessionId; }
-
-    /**
-     * <p>The identifier of the session.</p>
-     */
+    inline const Aws::String& GetSessionId() const { return m_sessionId; }
     inline bool SessionIdHasBeenSet() const { return m_sessionIdHasBeenSet; }
+    template<typename SessionIdT = Aws::String>
+    void SetSessionId(SessionIdT&& value) { m_sessionIdHasBeenSet = true; m_sessionId = std::forward<SessionIdT>(value); }
+    template<typename SessionIdT = Aws::String>
+    SessionSummary& WithSessionId(SessionIdT&& value) { SetSessionId(std::forward<SessionIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the session.</p>
+     * <p>The Amazon Resource Name (ARN) of the session.</p>
      */
-    inline void SetSessionId(const Aws::String& value) { m_sessionIdHasBeenSet = true; m_sessionId = value; }
+    inline const Aws::String& GetSessionArn() const { return m_sessionArn; }
+    inline bool SessionArnHasBeenSet() const { return m_sessionArnHasBeenSet; }
+    template<typename SessionArnT = Aws::String>
+    void SetSessionArn(SessionArnT&& value) { m_sessionArnHasBeenSet = true; m_sessionArn = std::forward<SessionArnT>(value); }
+    template<typename SessionArnT = Aws::String>
+    SessionSummary& WithSessionArn(SessionArnT&& value) { SetSessionArn(std::forward<SessionArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the session.</p>
+     * <p>The identifier of the Amazon Q in Connect assistant.</p>
      */
-    inline void SetSessionId(Aws::String&& value) { m_sessionIdHasBeenSet = true; m_sessionId = std::move(value); }
+    inline const Aws::String& GetAssistantId() const { return m_assistantId; }
+    inline bool AssistantIdHasBeenSet() const { return m_assistantIdHasBeenSet; }
+    template<typename AssistantIdT = Aws::String>
+    void SetAssistantId(AssistantIdT&& value) { m_assistantIdHasBeenSet = true; m_assistantId = std::forward<AssistantIdT>(value); }
+    template<typename AssistantIdT = Aws::String>
+    SessionSummary& WithAssistantId(AssistantIdT&& value) { SetAssistantId(std::forward<AssistantIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the session.</p>
+     * <p>The Amazon Resource Name (ARN) of the Amazon Q in Connect assistant.</p>
      */
-    inline void SetSessionId(const char* value) { m_sessionIdHasBeenSet = true; m_sessionId.assign(value); }
-
-    /**
-     * <p>The identifier of the session.</p>
-     */
-    inline SessionSummary& WithSessionId(const Aws::String& value) { SetSessionId(value); return *this;}
-
-    /**
-     * <p>The identifier of the session.</p>
-     */
-    inline SessionSummary& WithSessionId(Aws::String&& value) { SetSessionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the session.</p>
-     */
-    inline SessionSummary& WithSessionId(const char* value) { SetSessionId(value); return *this;}
-
+    inline const Aws::String& GetAssistantArn() const { return m_assistantArn; }
+    inline bool AssistantArnHasBeenSet() const { return m_assistantArnHasBeenSet; }
+    template<typename AssistantArnT = Aws::String>
+    void SetAssistantArn(AssistantArnT&& value) { m_assistantArnHasBeenSet = true; m_assistantArn = std::forward<AssistantArnT>(value); }
+    template<typename AssistantArnT = Aws::String>
+    SessionSummary& WithAssistantArn(AssistantArnT&& value) { SetAssistantArn(std::forward<AssistantArnT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_assistantArn;
-    bool m_assistantArnHasBeenSet = false;
-
-    Aws::String m_assistantId;
-    bool m_assistantIdHasBeenSet = false;
+    Aws::String m_sessionId;
+    bool m_sessionIdHasBeenSet = false;
 
     Aws::String m_sessionArn;
     bool m_sessionArnHasBeenSet = false;
 
-    Aws::String m_sessionId;
-    bool m_sessionIdHasBeenSet = false;
+    Aws::String m_assistantId;
+    bool m_assistantIdHasBeenSet = false;
+
+    Aws::String m_assistantArn;
+    bool m_assistantArnHasBeenSet = false;
   };
 
 } // namespace Model

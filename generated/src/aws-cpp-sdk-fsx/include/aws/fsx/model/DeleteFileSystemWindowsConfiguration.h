@@ -33,88 +33,41 @@ namespace Model
   class DeleteFileSystemWindowsConfiguration
   {
   public:
-    AWS_FSX_API DeleteFileSystemWindowsConfiguration();
+    AWS_FSX_API DeleteFileSystemWindowsConfiguration() = default;
     AWS_FSX_API DeleteFileSystemWindowsConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API DeleteFileSystemWindowsConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>By default, Amazon FSx for Windows takes a final backup on your behalf when
      * the <code>DeleteFileSystem</code> operation is invoked. Doing this helps protect
      * you from data loss, and we highly recommend taking the final backup. If you want
      * to skip this backup, use this flag to do so.</p>
      */
-    inline bool GetSkipFinalBackup() const{ return m_skipFinalBackup; }
-
-    /**
-     * <p>By default, Amazon FSx for Windows takes a final backup on your behalf when
-     * the <code>DeleteFileSystem</code> operation is invoked. Doing this helps protect
-     * you from data loss, and we highly recommend taking the final backup. If you want
-     * to skip this backup, use this flag to do so.</p>
-     */
+    inline bool GetSkipFinalBackup() const { return m_skipFinalBackup; }
     inline bool SkipFinalBackupHasBeenSet() const { return m_skipFinalBackupHasBeenSet; }
-
-    /**
-     * <p>By default, Amazon FSx for Windows takes a final backup on your behalf when
-     * the <code>DeleteFileSystem</code> operation is invoked. Doing this helps protect
-     * you from data loss, and we highly recommend taking the final backup. If you want
-     * to skip this backup, use this flag to do so.</p>
-     */
     inline void SetSkipFinalBackup(bool value) { m_skipFinalBackupHasBeenSet = true; m_skipFinalBackup = value; }
-
-    /**
-     * <p>By default, Amazon FSx for Windows takes a final backup on your behalf when
-     * the <code>DeleteFileSystem</code> operation is invoked. Doing this helps protect
-     * you from data loss, and we highly recommend taking the final backup. If you want
-     * to skip this backup, use this flag to do so.</p>
-     */
     inline DeleteFileSystemWindowsConfiguration& WithSkipFinalBackup(bool value) { SetSkipFinalBackup(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A set of tags for your final backup.</p>
      */
-    inline const Aws::Vector<Tag>& GetFinalBackupTags() const{ return m_finalBackupTags; }
-
-    /**
-     * <p>A set of tags for your final backup.</p>
-     */
+    inline const Aws::Vector<Tag>& GetFinalBackupTags() const { return m_finalBackupTags; }
     inline bool FinalBackupTagsHasBeenSet() const { return m_finalBackupTagsHasBeenSet; }
-
-    /**
-     * <p>A set of tags for your final backup.</p>
-     */
-    inline void SetFinalBackupTags(const Aws::Vector<Tag>& value) { m_finalBackupTagsHasBeenSet = true; m_finalBackupTags = value; }
-
-    /**
-     * <p>A set of tags for your final backup.</p>
-     */
-    inline void SetFinalBackupTags(Aws::Vector<Tag>&& value) { m_finalBackupTagsHasBeenSet = true; m_finalBackupTags = std::move(value); }
-
-    /**
-     * <p>A set of tags for your final backup.</p>
-     */
-    inline DeleteFileSystemWindowsConfiguration& WithFinalBackupTags(const Aws::Vector<Tag>& value) { SetFinalBackupTags(value); return *this;}
-
-    /**
-     * <p>A set of tags for your final backup.</p>
-     */
-    inline DeleteFileSystemWindowsConfiguration& WithFinalBackupTags(Aws::Vector<Tag>&& value) { SetFinalBackupTags(std::move(value)); return *this;}
-
-    /**
-     * <p>A set of tags for your final backup.</p>
-     */
-    inline DeleteFileSystemWindowsConfiguration& AddFinalBackupTags(const Tag& value) { m_finalBackupTagsHasBeenSet = true; m_finalBackupTags.push_back(value); return *this; }
-
-    /**
-     * <p>A set of tags for your final backup.</p>
-     */
-    inline DeleteFileSystemWindowsConfiguration& AddFinalBackupTags(Tag&& value) { m_finalBackupTagsHasBeenSet = true; m_finalBackupTags.push_back(std::move(value)); return *this; }
-
+    template<typename FinalBackupTagsT = Aws::Vector<Tag>>
+    void SetFinalBackupTags(FinalBackupTagsT&& value) { m_finalBackupTagsHasBeenSet = true; m_finalBackupTags = std::forward<FinalBackupTagsT>(value); }
+    template<typename FinalBackupTagsT = Aws::Vector<Tag>>
+    DeleteFileSystemWindowsConfiguration& WithFinalBackupTags(FinalBackupTagsT&& value) { SetFinalBackupTags(std::forward<FinalBackupTagsT>(value)); return *this;}
+    template<typename FinalBackupTagsT = Tag>
+    DeleteFileSystemWindowsConfiguration& AddFinalBackupTags(FinalBackupTagsT&& value) { m_finalBackupTagsHasBeenSet = true; m_finalBackupTags.emplace_back(std::forward<FinalBackupTagsT>(value)); return *this; }
+    ///@}
   private:
 
-    bool m_skipFinalBackup;
+    bool m_skipFinalBackup{false};
     bool m_skipFinalBackupHasBeenSet = false;
 
     Aws::Vector<Tag> m_finalBackupTags;

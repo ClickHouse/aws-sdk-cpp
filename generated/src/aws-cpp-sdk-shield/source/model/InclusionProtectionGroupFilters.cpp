@@ -18,19 +18,7 @@ namespace Shield
 namespace Model
 {
 
-InclusionProtectionGroupFilters::InclusionProtectionGroupFilters() : 
-    m_protectionGroupIdsHasBeenSet(false),
-    m_patternsHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false),
-    m_aggregationsHasBeenSet(false)
-{
-}
-
-InclusionProtectionGroupFilters::InclusionProtectionGroupFilters(JsonView jsonValue) : 
-    m_protectionGroupIdsHasBeenSet(false),
-    m_patternsHasBeenSet(false),
-    m_resourceTypesHasBeenSet(false),
-    m_aggregationsHasBeenSet(false)
+InclusionProtectionGroupFilters::InclusionProtectionGroupFilters(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ InclusionProtectionGroupFilters& InclusionProtectionGroupFilters::operator =(Jso
     }
     m_protectionGroupIdsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Patterns"))
   {
     Aws::Utils::Array<JsonView> patternsJsonList = jsonValue.GetArray("Patterns");
@@ -56,7 +43,6 @@ InclusionProtectionGroupFilters& InclusionProtectionGroupFilters::operator =(Jso
     }
     m_patternsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ResourceTypes"))
   {
     Aws::Utils::Array<JsonView> resourceTypesJsonList = jsonValue.GetArray("ResourceTypes");
@@ -66,7 +52,6 @@ InclusionProtectionGroupFilters& InclusionProtectionGroupFilters::operator =(Jso
     }
     m_resourceTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Aggregations"))
   {
     Aws::Utils::Array<JsonView> aggregationsJsonList = jsonValue.GetArray("Aggregations");
@@ -76,7 +61,6 @@ InclusionProtectionGroupFilters& InclusionProtectionGroupFilters::operator =(Jso
     }
     m_aggregationsHasBeenSet = true;
   }
-
   return *this;
 }
 

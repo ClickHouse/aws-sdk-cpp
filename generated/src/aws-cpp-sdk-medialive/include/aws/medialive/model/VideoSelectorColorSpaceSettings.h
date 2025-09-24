@@ -31,30 +31,21 @@ namespace Model
   class VideoSelectorColorSpaceSettings
   {
   public:
-    AWS_MEDIALIVE_API VideoSelectorColorSpaceSettings();
+    AWS_MEDIALIVE_API VideoSelectorColorSpaceSettings() = default;
     AWS_MEDIALIVE_API VideoSelectorColorSpaceSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API VideoSelectorColorSpaceSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Hdr10Settings& GetHdr10Settings() const{ return m_hdr10Settings; }
-
-    
+    inline const Hdr10Settings& GetHdr10Settings() const { return m_hdr10Settings; }
     inline bool Hdr10SettingsHasBeenSet() const { return m_hdr10SettingsHasBeenSet; }
-
-    
-    inline void SetHdr10Settings(const Hdr10Settings& value) { m_hdr10SettingsHasBeenSet = true; m_hdr10Settings = value; }
-
-    
-    inline void SetHdr10Settings(Hdr10Settings&& value) { m_hdr10SettingsHasBeenSet = true; m_hdr10Settings = std::move(value); }
-
-    
-    inline VideoSelectorColorSpaceSettings& WithHdr10Settings(const Hdr10Settings& value) { SetHdr10Settings(value); return *this;}
-
-    
-    inline VideoSelectorColorSpaceSettings& WithHdr10Settings(Hdr10Settings&& value) { SetHdr10Settings(std::move(value)); return *this;}
-
+    template<typename Hdr10SettingsT = Hdr10Settings>
+    void SetHdr10Settings(Hdr10SettingsT&& value) { m_hdr10SettingsHasBeenSet = true; m_hdr10Settings = std::forward<Hdr10SettingsT>(value); }
+    template<typename Hdr10SettingsT = Hdr10Settings>
+    VideoSelectorColorSpaceSettings& WithHdr10Settings(Hdr10SettingsT&& value) { SetHdr10Settings(std::forward<Hdr10SettingsT>(value)); return *this;}
+    ///@}
   private:
 
     Hdr10Settings m_hdr10Settings;

@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-IpamDiscoveryFailureReason::IpamDiscoveryFailureReason() : 
-    m_code(IpamDiscoveryFailureCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-IpamDiscoveryFailureReason::IpamDiscoveryFailureReason(const XmlNode& xmlNode) : 
-    m_code(IpamDiscoveryFailureCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+IpamDiscoveryFailureReason::IpamDiscoveryFailureReason(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ IpamDiscoveryFailureReason& IpamDiscoveryFailureReason::operator =(const XmlNode
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = IpamDiscoveryFailureCodeMapper::GetIpamDiscoveryFailureCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = IpamDiscoveryFailureCodeMapper::GetIpamDiscoveryFailureCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void IpamDiscoveryFailureReason::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << IpamDiscoveryFailureCodeMapper::GetNameForIpamDiscoveryFailureCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(IpamDiscoveryFailureCodeMapper::GetNameForIpamDiscoveryFailureCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void IpamDiscoveryFailureReason::OutputToStream(Aws::OStream& oStream, const cha
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << IpamDiscoveryFailureCodeMapper::GetNameForIpamDiscoveryFailureCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(IpamDiscoveryFailureCodeMapper::GetNameForIpamDiscoveryFailureCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

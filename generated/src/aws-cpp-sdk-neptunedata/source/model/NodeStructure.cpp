@@ -18,19 +18,7 @@ namespace neptunedata
 namespace Model
 {
 
-NodeStructure::NodeStructure() : 
-    m_count(0),
-    m_countHasBeenSet(false),
-    m_nodePropertiesHasBeenSet(false),
-    m_distinctOutgoingEdgeLabelsHasBeenSet(false)
-{
-}
-
-NodeStructure::NodeStructure(JsonView jsonValue) : 
-    m_count(0),
-    m_countHasBeenSet(false),
-    m_nodePropertiesHasBeenSet(false),
-    m_distinctOutgoingEdgeLabelsHasBeenSet(false)
+NodeStructure::NodeStructure(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,10 +28,8 @@ NodeStructure& NodeStructure::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("count"))
   {
     m_count = jsonValue.GetInt64("count");
-
     m_countHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("nodeProperties"))
   {
     Aws::Utils::Array<JsonView> nodePropertiesJsonList = jsonValue.GetArray("nodeProperties");
@@ -53,7 +39,6 @@ NodeStructure& NodeStructure::operator =(JsonView jsonValue)
     }
     m_nodePropertiesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("distinctOutgoingEdgeLabels"))
   {
     Aws::Utils::Array<JsonView> distinctOutgoingEdgeLabelsJsonList = jsonValue.GetArray("distinctOutgoingEdgeLabels");
@@ -63,7 +48,6 @@ NodeStructure& NodeStructure::operator =(JsonView jsonValue)
     }
     m_distinctOutgoingEdgeLabelsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,13 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-AnalysisSource::AnalysisSource() : 
-    m_textHasBeenSet(false)
-{
-}
-
-AnalysisSource::AnalysisSource(JsonView jsonValue) : 
-    m_textHasBeenSet(false)
+AnalysisSource::AnalysisSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,13 @@ AnalysisSource& AnalysisSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("text"))
   {
     m_text = jsonValue.GetString("text");
-
     m_textHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("artifacts"))
+  {
+    m_artifacts = jsonValue.GetObject("artifacts");
+    m_artifactsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -48,6 +45,12 @@ JsonValue AnalysisSource::Jsonize() const
   if(m_textHasBeenSet)
   {
    payload.WithString("text", m_text);
+
+  }
+
+  if(m_artifactsHasBeenSet)
+  {
+   payload.WithObject("artifacts", m_artifacts.Jsonize());
 
   }
 

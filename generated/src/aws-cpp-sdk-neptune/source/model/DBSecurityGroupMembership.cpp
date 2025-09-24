@@ -20,15 +20,7 @@ namespace Neptune
 namespace Model
 {
 
-DBSecurityGroupMembership::DBSecurityGroupMembership() : 
-    m_dBSecurityGroupNameHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-DBSecurityGroupMembership::DBSecurityGroupMembership(const XmlNode& xmlNode) : 
-    m_dBSecurityGroupNameHasBeenSet(false),
-    m_statusHasBeenSet(false)
+DBSecurityGroupMembership::DBSecurityGroupMembership(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

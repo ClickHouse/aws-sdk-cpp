@@ -18,15 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-CsvOptions::CsvOptions() : 
-    m_delimiterHasBeenSet(false),
-    m_headerListHasBeenSet(false)
-{
-}
-
-CsvOptions::CsvOptions(JsonView jsonValue) : 
-    m_delimiterHasBeenSet(false),
-    m_headerListHasBeenSet(false)
+CsvOptions::CsvOptions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ CsvOptions& CsvOptions::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Delimiter"))
   {
     m_delimiter = jsonValue.GetString("Delimiter");
-
     m_delimiterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("HeaderList"))
   {
     Aws::Utils::Array<JsonView> headerListJsonList = jsonValue.GetArray("HeaderList");
@@ -49,7 +39,6 @@ CsvOptions& CsvOptions::operator =(JsonView jsonValue)
     }
     m_headerListHasBeenSet = true;
   }
-
   return *this;
 }
 

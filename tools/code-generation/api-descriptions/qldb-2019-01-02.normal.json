@@ -5,12 +5,14 @@
     "endpointPrefix":"qldb",
     "jsonVersion":"1.0",
     "protocol":"rest-json",
+    "protocols":["rest-json"],
     "serviceAbbreviation":"QLDB",
     "serviceFullName":"Amazon QLDB",
     "serviceId":"QLDB",
     "signatureVersion":"v4",
     "signingName":"qldb",
-    "uid":"qldb-2019-01-02"
+    "uid":"qldb-2019-01-02",
+    "auth":["aws.auth#sigv4"]
   },
   "operations":{
     "CancelJournalKinesisStream":{
@@ -505,7 +507,7 @@
         },
         "EncryptionDescription":{
           "shape":"LedgerEncryptionDescription",
-          "documentation":"<p>Information about the encryption of data at rest in the ledger. This includes the current status, the KMS key, and when the key became inaccessible (in the case of an error).</p>"
+          "documentation":"<p>Information about the encryption of data at rest in the ledger. This includes the current status, the KMS key, and when the key became inaccessible (in the case of an error). If this parameter is undefined, the ledger uses an Amazon Web Services owned KMS key for encryption.</p>"
         }
       }
     },
@@ -856,7 +858,7 @@
       "members":{
         "KmsKeyArn":{
           "shape":"Arn",
-          "documentation":"<p>The Amazon Resource Name (ARN) of the customer managed KMS key that the ledger uses for encryption at rest. If this parameter is undefined, the ledger uses an Amazon Web Services owned KMS key for encryption.</p>"
+          "documentation":"<p>The Amazon Resource Name (ARN) of the customer managed KMS key that the ledger uses for encryption at rest. If this parameter is undefined, the ledger uses an Amazon Web Services owned KMS key for encryption. It will display <code>AWS_OWNED_KMS_KEY</code> when updating the ledger's encryption configuration to the Amazon Web Services owned KMS key.</p>"
         },
         "EncryptionStatus":{
           "shape":"EncryptionStatus",
@@ -1327,8 +1329,7 @@
     },
     "TagResourceResponse":{
       "type":"structure",
-      "members":{
-      }
+      "members":{}
     },
     "TagValue":{
       "type":"string",
@@ -1372,8 +1373,7 @@
     },
     "UntagResourceResponse":{
       "type":"structure",
-      "members":{
-      }
+      "members":{}
     },
     "UpdateLedgerPermissionsModeRequest":{
       "type":"structure",

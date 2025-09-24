@@ -10,11 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-CancelInstanceRefreshRequest::CancelInstanceRefreshRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false)
-{
-}
-
 Aws::String CancelInstanceRefreshRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -22,6 +17,11 @@ Aws::String CancelInstanceRefreshRequest::SerializePayload() const
   if(m_autoScalingGroupNameHasBeenSet)
   {
     ss << "AutoScalingGroupName=" << StringUtils::URLEncode(m_autoScalingGroupName.c_str()) << "&";
+  }
+
+  if(m_waitForTransitioningInstancesHasBeenSet)
+  {
+    ss << "WaitForTransitioningInstances=" << std::boolalpha << m_waitForTransitioningInstances << "&";
   }
 
   ss << "Version=2011-01-01";

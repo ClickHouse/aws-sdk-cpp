@@ -12,14 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutLogEventsRequest::PutLogEventsRequest() : 
-    m_logGroupNameHasBeenSet(false),
-    m_logStreamNameHasBeenSet(false),
-    m_logEventsHasBeenSet(false),
-    m_sequenceTokenHasBeenSet(false)
-{
-}
-
 Aws::String PutLogEventsRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -50,6 +42,12 @@ Aws::String PutLogEventsRequest::SerializePayload() const
   if(m_sequenceTokenHasBeenSet)
   {
    payload.WithString("sequenceToken", m_sequenceToken);
+
+  }
+
+  if(m_entityHasBeenSet)
+  {
+   payload.WithObject("entity", m_entity.Jsonize());
 
   }
 

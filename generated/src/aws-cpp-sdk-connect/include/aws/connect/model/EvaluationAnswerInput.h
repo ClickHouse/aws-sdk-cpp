@@ -32,42 +32,23 @@ namespace Model
   class EvaluationAnswerInput
   {
   public:
-    AWS_CONNECT_API EvaluationAnswerInput();
+    AWS_CONNECT_API EvaluationAnswerInput() = default;
     AWS_CONNECT_API EvaluationAnswerInput(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API EvaluationAnswerInput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The value for an answer in a contact evaluation.</p>
      */
-    inline const EvaluationAnswerData& GetValue() const{ return m_value; }
-
-    /**
-     * <p>The value for an answer in a contact evaluation.</p>
-     */
+    inline const EvaluationAnswerData& GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The value for an answer in a contact evaluation.</p>
-     */
-    inline void SetValue(const EvaluationAnswerData& value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The value for an answer in a contact evaluation.</p>
-     */
-    inline void SetValue(EvaluationAnswerData&& value) { m_valueHasBeenSet = true; m_value = std::move(value); }
-
-    /**
-     * <p>The value for an answer in a contact evaluation.</p>
-     */
-    inline EvaluationAnswerInput& WithValue(const EvaluationAnswerData& value) { SetValue(value); return *this;}
-
-    /**
-     * <p>The value for an answer in a contact evaluation.</p>
-     */
-    inline EvaluationAnswerInput& WithValue(EvaluationAnswerData&& value) { SetValue(std::move(value)); return *this;}
-
+    template<typename ValueT = EvaluationAnswerData>
+    void SetValue(ValueT&& value) { m_valueHasBeenSet = true; m_value = std::forward<ValueT>(value); }
+    template<typename ValueT = EvaluationAnswerData>
+    EvaluationAnswerInput& WithValue(ValueT&& value) { SetValue(std::forward<ValueT>(value)); return *this;}
+    ///@}
   private:
 
     EvaluationAnswerData m_value;

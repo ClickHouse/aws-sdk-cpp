@@ -20,19 +20,7 @@ namespace IAM
 namespace Model
 {
 
-ContextEntry::ContextEntry() : 
-    m_contextKeyNameHasBeenSet(false),
-    m_contextKeyValuesHasBeenSet(false),
-    m_contextKeyType(ContextKeyTypeEnum::NOT_SET),
-    m_contextKeyTypeHasBeenSet(false)
-{
-}
-
-ContextEntry::ContextEntry(const XmlNode& xmlNode) : 
-    m_contextKeyNameHasBeenSet(false),
-    m_contextKeyValuesHasBeenSet(false),
-    m_contextKeyType(ContextKeyTypeEnum::NOT_SET),
-    m_contextKeyTypeHasBeenSet(false)
+ContextEntry::ContextEntry(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -53,6 +41,7 @@ ContextEntry& ContextEntry::operator =(const XmlNode& xmlNode)
     if(!contextKeyValuesNode.IsNull())
     {
       XmlNode contextKeyValuesMember = contextKeyValuesNode.FirstChild("member");
+      m_contextKeyValuesHasBeenSet = !contextKeyValuesMember.IsNull();
       while(!contextKeyValuesMember.IsNull())
       {
         m_contextKeyValues.push_back(contextKeyValuesMember.GetText());
@@ -64,7 +53,7 @@ ContextEntry& ContextEntry::operator =(const XmlNode& xmlNode)
     XmlNode contextKeyTypeNode = resultNode.FirstChild("ContextKeyType");
     if(!contextKeyTypeNode.IsNull())
     {
-      m_contextKeyType = ContextKeyTypeEnumMapper::GetContextKeyTypeEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(contextKeyTypeNode.GetText()).c_str()).c_str());
+      m_contextKeyType = ContextKeyTypeEnumMapper::GetContextKeyTypeEnumForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(contextKeyTypeNode.GetText()).c_str()));
       m_contextKeyTypeHasBeenSet = true;
     }
   }
@@ -90,7 +79,7 @@ void ContextEntry::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_contextKeyTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ContextKeyType=" << ContextKeyTypeEnumMapper::GetNameForContextKeyTypeEnum(m_contextKeyType) << "&";
+      oStream << location << index << locationValue << ".ContextKeyType=" << StringUtils::URLEncode(ContextKeyTypeEnumMapper::GetNameForContextKeyTypeEnum(m_contextKeyType)) << "&";
   }
 
 }
@@ -111,7 +100,7 @@ void ContextEntry::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_contextKeyTypeHasBeenSet)
   {
-      oStream << location << ".ContextKeyType=" << ContextKeyTypeEnumMapper::GetNameForContextKeyTypeEnum(m_contextKeyType) << "&";
+      oStream << location << ".ContextKeyType=" << StringUtils::URLEncode(ContextKeyTypeEnumMapper::GetNameForContextKeyTypeEnum(m_contextKeyType)) << "&";
   }
 }
 

@@ -23,7 +23,7 @@ namespace Model
   class CreateCapacityReservationRequest : public AthenaRequest
   {
   public:
-    AWS_ATHENA_API CreateCapacityReservationRequest();
+    AWS_ATHENA_API CreateCapacityReservationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,111 +36,44 @@ namespace Model
     AWS_ATHENA_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The number of requested data processing units.</p>
      */
-    inline int GetTargetDpus() const{ return m_targetDpus; }
-
-    /**
-     * <p>The number of requested data processing units.</p>
-     */
+    inline int GetTargetDpus() const { return m_targetDpus; }
     inline bool TargetDpusHasBeenSet() const { return m_targetDpusHasBeenSet; }
-
-    /**
-     * <p>The number of requested data processing units.</p>
-     */
     inline void SetTargetDpus(int value) { m_targetDpusHasBeenSet = true; m_targetDpus = value; }
-
-    /**
-     * <p>The number of requested data processing units.</p>
-     */
     inline CreateCapacityReservationRequest& WithTargetDpus(int value) { SetTargetDpus(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The name of the capacity reservation to create.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the capacity reservation to create.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    CreateCapacityReservationRequest& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the capacity reservation to create.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the capacity reservation to create.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the capacity reservation to create.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the capacity reservation to create.</p>
-     */
-    inline CreateCapacityReservationRequest& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the capacity reservation to create.</p>
-     */
-    inline CreateCapacityReservationRequest& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the capacity reservation to create.</p>
-     */
-    inline CreateCapacityReservationRequest& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags for the capacity reservation.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags for the capacity reservation.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags for the capacity reservation.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags for the capacity reservation.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags for the capacity reservation.</p>
-     */
-    inline CreateCapacityReservationRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags for the capacity reservation.</p>
-     */
-    inline CreateCapacityReservationRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags for the capacity reservation.</p>
-     */
-    inline CreateCapacityReservationRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags for the capacity reservation.</p>
-     */
-    inline CreateCapacityReservationRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreateCapacityReservationRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreateCapacityReservationRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
-    int m_targetDpus;
+    int m_targetDpus{0};
     bool m_targetDpusHasBeenSet = false;
 
     Aws::String m_name;

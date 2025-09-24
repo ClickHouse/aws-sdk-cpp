@@ -32,109 +32,37 @@ namespace Model
   class AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails();
+    AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails() = default;
     AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The instance type. For example, <code>m3.xlarge</code>.</p>
      */
-    inline const Aws::String& GetInstanceType() const{ return m_instanceType; }
-
-    /**
-     * <p>The instance type. For example, <code>m3.xlarge</code>.</p>
-     */
+    inline const Aws::String& GetInstanceType() const { return m_instanceType; }
     inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+    template<typename InstanceTypeT = Aws::String>
+    void SetInstanceType(InstanceTypeT&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::forward<InstanceTypeT>(value); }
+    template<typename InstanceTypeT = Aws::String>
+    AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails& WithInstanceType(InstanceTypeT&& value) { SetInstanceType(std::forward<InstanceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The instance type. For example, <code>m3.xlarge</code>.</p>
-     */
-    inline void SetInstanceType(const Aws::String& value) { m_instanceTypeHasBeenSet = true; m_instanceType = value; }
-
-    /**
-     * <p>The instance type. For example, <code>m3.xlarge</code>.</p>
-     */
-    inline void SetInstanceType(Aws::String&& value) { m_instanceTypeHasBeenSet = true; m_instanceType = std::move(value); }
-
-    /**
-     * <p>The instance type. For example, <code>m3.xlarge</code>.</p>
-     */
-    inline void SetInstanceType(const char* value) { m_instanceTypeHasBeenSet = true; m_instanceType.assign(value); }
-
-    /**
-     * <p>The instance type. For example, <code>m3.xlarge</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails& WithInstanceType(const Aws::String& value) { SetInstanceType(value); return *this;}
-
-    /**
-     * <p>The instance type. For example, <code>m3.xlarge</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails& WithInstanceType(Aws::String&& value) { SetInstanceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The instance type. For example, <code>m3.xlarge</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails& WithInstanceType(const char* value) { SetInstanceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The number of capacity units provided by the specified instance type in terms
      * of virtual CPUs, memory, storage, throughput, or other relative performance
      * characteristic.</p>
      */
-    inline const Aws::String& GetWeightedCapacity() const{ return m_weightedCapacity; }
-
-    /**
-     * <p>The number of capacity units provided by the specified instance type in terms
-     * of virtual CPUs, memory, storage, throughput, or other relative performance
-     * characteristic.</p>
-     */
+    inline const Aws::String& GetWeightedCapacity() const { return m_weightedCapacity; }
     inline bool WeightedCapacityHasBeenSet() const { return m_weightedCapacityHasBeenSet; }
-
-    /**
-     * <p>The number of capacity units provided by the specified instance type in terms
-     * of virtual CPUs, memory, storage, throughput, or other relative performance
-     * characteristic.</p>
-     */
-    inline void SetWeightedCapacity(const Aws::String& value) { m_weightedCapacityHasBeenSet = true; m_weightedCapacity = value; }
-
-    /**
-     * <p>The number of capacity units provided by the specified instance type in terms
-     * of virtual CPUs, memory, storage, throughput, or other relative performance
-     * characteristic.</p>
-     */
-    inline void SetWeightedCapacity(Aws::String&& value) { m_weightedCapacityHasBeenSet = true; m_weightedCapacity = std::move(value); }
-
-    /**
-     * <p>The number of capacity units provided by the specified instance type in terms
-     * of virtual CPUs, memory, storage, throughput, or other relative performance
-     * characteristic.</p>
-     */
-    inline void SetWeightedCapacity(const char* value) { m_weightedCapacityHasBeenSet = true; m_weightedCapacity.assign(value); }
-
-    /**
-     * <p>The number of capacity units provided by the specified instance type in terms
-     * of virtual CPUs, memory, storage, throughput, or other relative performance
-     * characteristic.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails& WithWeightedCapacity(const Aws::String& value) { SetWeightedCapacity(value); return *this;}
-
-    /**
-     * <p>The number of capacity units provided by the specified instance type in terms
-     * of virtual CPUs, memory, storage, throughput, or other relative performance
-     * characteristic.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails& WithWeightedCapacity(Aws::String&& value) { SetWeightedCapacity(std::move(value)); return *this;}
-
-    /**
-     * <p>The number of capacity units provided by the specified instance type in terms
-     * of virtual CPUs, memory, storage, throughput, or other relative performance
-     * characteristic.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails& WithWeightedCapacity(const char* value) { SetWeightedCapacity(value); return *this;}
-
+    template<typename WeightedCapacityT = Aws::String>
+    void SetWeightedCapacity(WeightedCapacityT&& value) { m_weightedCapacityHasBeenSet = true; m_weightedCapacity = std::forward<WeightedCapacityT>(value); }
+    template<typename WeightedCapacityT = Aws::String>
+    AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails& WithWeightedCapacity(WeightedCapacityT&& value) { SetWeightedCapacity(std::forward<WeightedCapacityT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceType;

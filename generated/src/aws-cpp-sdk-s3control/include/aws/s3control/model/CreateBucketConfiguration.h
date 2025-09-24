@@ -32,64 +32,28 @@ namespace Model
   class CreateBucketConfiguration
   {
   public:
-    AWS_S3CONTROL_API CreateBucketConfiguration();
+    AWS_S3CONTROL_API CreateBucketConfiguration() = default;
     AWS_S3CONTROL_API CreateBucketConfiguration(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API CreateBucketConfiguration& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p>Specifies the Region where the bucket will be created. If you are creating a
      * bucket on the US East (N. Virginia) Region (us-east-1), you do not need to
      * specify the location. </p>  <p>This is not supported by Amazon S3 on
      * Outposts buckets.</p> 
      */
-    inline const BucketLocationConstraint& GetLocationConstraint() const{ return m_locationConstraint; }
-
-    /**
-     * <p>Specifies the Region where the bucket will be created. If you are creating a
-     * bucket on the US East (N. Virginia) Region (us-east-1), you do not need to
-     * specify the location. </p>  <p>This is not supported by Amazon S3 on
-     * Outposts buckets.</p> 
-     */
+    inline BucketLocationConstraint GetLocationConstraint() const { return m_locationConstraint; }
     inline bool LocationConstraintHasBeenSet() const { return m_locationConstraintHasBeenSet; }
-
-    /**
-     * <p>Specifies the Region where the bucket will be created. If you are creating a
-     * bucket on the US East (N. Virginia) Region (us-east-1), you do not need to
-     * specify the location. </p>  <p>This is not supported by Amazon S3 on
-     * Outposts buckets.</p> 
-     */
-    inline void SetLocationConstraint(const BucketLocationConstraint& value) { m_locationConstraintHasBeenSet = true; m_locationConstraint = value; }
-
-    /**
-     * <p>Specifies the Region where the bucket will be created. If you are creating a
-     * bucket on the US East (N. Virginia) Region (us-east-1), you do not need to
-     * specify the location. </p>  <p>This is not supported by Amazon S3 on
-     * Outposts buckets.</p> 
-     */
-    inline void SetLocationConstraint(BucketLocationConstraint&& value) { m_locationConstraintHasBeenSet = true; m_locationConstraint = std::move(value); }
-
-    /**
-     * <p>Specifies the Region where the bucket will be created. If you are creating a
-     * bucket on the US East (N. Virginia) Region (us-east-1), you do not need to
-     * specify the location. </p>  <p>This is not supported by Amazon S3 on
-     * Outposts buckets.</p> 
-     */
-    inline CreateBucketConfiguration& WithLocationConstraint(const BucketLocationConstraint& value) { SetLocationConstraint(value); return *this;}
-
-    /**
-     * <p>Specifies the Region where the bucket will be created. If you are creating a
-     * bucket on the US East (N. Virginia) Region (us-east-1), you do not need to
-     * specify the location. </p>  <p>This is not supported by Amazon S3 on
-     * Outposts buckets.</p> 
-     */
-    inline CreateBucketConfiguration& WithLocationConstraint(BucketLocationConstraint&& value) { SetLocationConstraint(std::move(value)); return *this;}
-
+    inline void SetLocationConstraint(BucketLocationConstraint value) { m_locationConstraintHasBeenSet = true; m_locationConstraint = value; }
+    inline CreateBucketConfiguration& WithLocationConstraint(BucketLocationConstraint value) { SetLocationConstraint(value); return *this;}
+    ///@}
   private:
 
-    BucketLocationConstraint m_locationConstraint;
+    BucketLocationConstraint m_locationConstraint{BucketLocationConstraint::NOT_SET};
     bool m_locationConstraintHasBeenSet = false;
   };
 

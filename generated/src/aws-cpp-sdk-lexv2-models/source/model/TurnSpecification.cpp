@@ -18,15 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-TurnSpecification::TurnSpecification() : 
-    m_agentTurnHasBeenSet(false),
-    m_userTurnHasBeenSet(false)
-{
-}
-
-TurnSpecification::TurnSpecification(JsonView jsonValue) : 
-    m_agentTurnHasBeenSet(false),
-    m_userTurnHasBeenSet(false)
+TurnSpecification::TurnSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TurnSpecification& TurnSpecification::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("agentTurn"))
   {
     m_agentTurn = jsonValue.GetObject("agentTurn");
-
     m_agentTurnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("userTurn"))
   {
     m_userTurn = jsonValue.GetObject("userTurn");
-
     m_userTurnHasBeenSet = true;
   }
-
   return *this;
 }
 

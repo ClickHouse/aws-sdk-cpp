@@ -29,208 +29,84 @@ namespace Model
   class DescribeKeywordsResult
   {
   public:
-    AWS_PINPOINTSMSVOICEV2_API DescribeKeywordsResult();
+    AWS_PINPOINTSMSVOICEV2_API DescribeKeywordsResult() = default;
     AWS_PINPOINTSMSVOICEV2_API DescribeKeywordsResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_PINPOINTSMSVOICEV2_API DescribeKeywordsResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The PhoneNumberArn or PoolArn that is associated with the
      * OriginationIdentity. </p>
      */
-    inline const Aws::String& GetOriginationIdentityArn() const{ return m_originationIdentityArn; }
+    inline const Aws::String& GetOriginationIdentityArn() const { return m_originationIdentityArn; }
+    template<typename OriginationIdentityArnT = Aws::String>
+    void SetOriginationIdentityArn(OriginationIdentityArnT&& value) { m_originationIdentityArnHasBeenSet = true; m_originationIdentityArn = std::forward<OriginationIdentityArnT>(value); }
+    template<typename OriginationIdentityArnT = Aws::String>
+    DescribeKeywordsResult& WithOriginationIdentityArn(OriginationIdentityArnT&& value) { SetOriginationIdentityArn(std::forward<OriginationIdentityArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The PhoneNumberArn or PoolArn that is associated with the
-     * OriginationIdentity. </p>
-     */
-    inline void SetOriginationIdentityArn(const Aws::String& value) { m_originationIdentityArn = value; }
-
-    /**
-     * <p>The PhoneNumberArn or PoolArn that is associated with the
-     * OriginationIdentity. </p>
-     */
-    inline void SetOriginationIdentityArn(Aws::String&& value) { m_originationIdentityArn = std::move(value); }
-
-    /**
-     * <p>The PhoneNumberArn or PoolArn that is associated with the
-     * OriginationIdentity. </p>
-     */
-    inline void SetOriginationIdentityArn(const char* value) { m_originationIdentityArn.assign(value); }
-
-    /**
-     * <p>The PhoneNumberArn or PoolArn that is associated with the
-     * OriginationIdentity. </p>
-     */
-    inline DescribeKeywordsResult& WithOriginationIdentityArn(const Aws::String& value) { SetOriginationIdentityArn(value); return *this;}
-
-    /**
-     * <p>The PhoneNumberArn or PoolArn that is associated with the
-     * OriginationIdentity. </p>
-     */
-    inline DescribeKeywordsResult& WithOriginationIdentityArn(Aws::String&& value) { SetOriginationIdentityArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The PhoneNumberArn or PoolArn that is associated with the
-     * OriginationIdentity. </p>
-     */
-    inline DescribeKeywordsResult& WithOriginationIdentityArn(const char* value) { SetOriginationIdentityArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The PhoneNumberId or PoolId that is associated with the
      * OriginationIdentity.</p>
      */
-    inline const Aws::String& GetOriginationIdentity() const{ return m_originationIdentity; }
+    inline const Aws::String& GetOriginationIdentity() const { return m_originationIdentity; }
+    template<typename OriginationIdentityT = Aws::String>
+    void SetOriginationIdentity(OriginationIdentityT&& value) { m_originationIdentityHasBeenSet = true; m_originationIdentity = std::forward<OriginationIdentityT>(value); }
+    template<typename OriginationIdentityT = Aws::String>
+    DescribeKeywordsResult& WithOriginationIdentity(OriginationIdentityT&& value) { SetOriginationIdentity(std::forward<OriginationIdentityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The PhoneNumberId or PoolId that is associated with the
-     * OriginationIdentity.</p>
-     */
-    inline void SetOriginationIdentity(const Aws::String& value) { m_originationIdentity = value; }
-
-    /**
-     * <p>The PhoneNumberId or PoolId that is associated with the
-     * OriginationIdentity.</p>
-     */
-    inline void SetOriginationIdentity(Aws::String&& value) { m_originationIdentity = std::move(value); }
-
-    /**
-     * <p>The PhoneNumberId or PoolId that is associated with the
-     * OriginationIdentity.</p>
-     */
-    inline void SetOriginationIdentity(const char* value) { m_originationIdentity.assign(value); }
-
-    /**
-     * <p>The PhoneNumberId or PoolId that is associated with the
-     * OriginationIdentity.</p>
-     */
-    inline DescribeKeywordsResult& WithOriginationIdentity(const Aws::String& value) { SetOriginationIdentity(value); return *this;}
-
-    /**
-     * <p>The PhoneNumberId or PoolId that is associated with the
-     * OriginationIdentity.</p>
-     */
-    inline DescribeKeywordsResult& WithOriginationIdentity(Aws::String&& value) { SetOriginationIdentity(std::move(value)); return *this;}
-
-    /**
-     * <p>The PhoneNumberId or PoolId that is associated with the
-     * OriginationIdentity.</p>
-     */
-    inline DescribeKeywordsResult& WithOriginationIdentity(const char* value) { SetOriginationIdentity(value); return *this;}
-
-
+    ///@{
     /**
      * <p>An array of KeywordInformation objects that contain the results.</p>
      */
-    inline const Aws::Vector<KeywordInformation>& GetKeywords() const{ return m_keywords; }
+    inline const Aws::Vector<KeywordInformation>& GetKeywords() const { return m_keywords; }
+    template<typename KeywordsT = Aws::Vector<KeywordInformation>>
+    void SetKeywords(KeywordsT&& value) { m_keywordsHasBeenSet = true; m_keywords = std::forward<KeywordsT>(value); }
+    template<typename KeywordsT = Aws::Vector<KeywordInformation>>
+    DescribeKeywordsResult& WithKeywords(KeywordsT&& value) { SetKeywords(std::forward<KeywordsT>(value)); return *this;}
+    template<typename KeywordsT = KeywordInformation>
+    DescribeKeywordsResult& AddKeywords(KeywordsT&& value) { m_keywordsHasBeenSet = true; m_keywords.emplace_back(std::forward<KeywordsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>An array of KeywordInformation objects that contain the results.</p>
-     */
-    inline void SetKeywords(const Aws::Vector<KeywordInformation>& value) { m_keywords = value; }
-
-    /**
-     * <p>An array of KeywordInformation objects that contain the results.</p>
-     */
-    inline void SetKeywords(Aws::Vector<KeywordInformation>&& value) { m_keywords = std::move(value); }
-
-    /**
-     * <p>An array of KeywordInformation objects that contain the results.</p>
-     */
-    inline DescribeKeywordsResult& WithKeywords(const Aws::Vector<KeywordInformation>& value) { SetKeywords(value); return *this;}
-
-    /**
-     * <p>An array of KeywordInformation objects that contain the results.</p>
-     */
-    inline DescribeKeywordsResult& WithKeywords(Aws::Vector<KeywordInformation>&& value) { SetKeywords(std::move(value)); return *this;}
-
-    /**
-     * <p>An array of KeywordInformation objects that contain the results.</p>
-     */
-    inline DescribeKeywordsResult& AddKeywords(const KeywordInformation& value) { m_keywords.push_back(value); return *this; }
-
-    /**
-     * <p>An array of KeywordInformation objects that contain the results.</p>
-     */
-    inline DescribeKeywordsResult& AddKeywords(KeywordInformation&& value) { m_keywords.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The token to be used for the next set of paginated results. If this field is
      * empty then there are no more results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeKeywordsResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The token to be used for the next set of paginated results. If this field is
-     * empty then there are no more results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>The token to be used for the next set of paginated results. If this field is
-     * empty then there are no more results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>The token to be used for the next set of paginated results. If this field is
-     * empty then there are no more results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>The token to be used for the next set of paginated results. If this field is
-     * empty then there are no more results.</p>
-     */
-    inline DescribeKeywordsResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The token to be used for the next set of paginated results. If this field is
-     * empty then there are no more results.</p>
-     */
-    inline DescribeKeywordsResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The token to be used for the next set of paginated results. If this field is
-     * empty then there are no more results.</p>
-     */
-    inline DescribeKeywordsResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeKeywordsResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeKeywordsResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeKeywordsResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeKeywordsResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_originationIdentityArn;
+    bool m_originationIdentityArnHasBeenSet = false;
 
     Aws::String m_originationIdentity;
+    bool m_originationIdentityHasBeenSet = false;
 
     Aws::Vector<KeywordInformation> m_keywords;
+    bool m_keywordsHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

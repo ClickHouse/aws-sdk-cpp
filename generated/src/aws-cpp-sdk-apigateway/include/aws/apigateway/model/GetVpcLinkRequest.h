@@ -25,7 +25,7 @@ namespace Model
   class GetVpcLinkRequest : public APIGatewayRequest
   {
   public:
-    AWS_APIGATEWAY_API GetVpcLinkRequest();
+    AWS_APIGATEWAY_API GetVpcLinkRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,54 +36,18 @@ namespace Model
     AWS_APIGATEWAY_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the VpcLink. It is used in an Integration to reference this
      * VpcLink.</p>
      */
-    inline const Aws::String& GetVpcLinkId() const{ return m_vpcLinkId; }
-
-    /**
-     * <p>The identifier of the VpcLink. It is used in an Integration to reference this
-     * VpcLink.</p>
-     */
+    inline const Aws::String& GetVpcLinkId() const { return m_vpcLinkId; }
     inline bool VpcLinkIdHasBeenSet() const { return m_vpcLinkIdHasBeenSet; }
-
-    /**
-     * <p>The identifier of the VpcLink. It is used in an Integration to reference this
-     * VpcLink.</p>
-     */
-    inline void SetVpcLinkId(const Aws::String& value) { m_vpcLinkIdHasBeenSet = true; m_vpcLinkId = value; }
-
-    /**
-     * <p>The identifier of the VpcLink. It is used in an Integration to reference this
-     * VpcLink.</p>
-     */
-    inline void SetVpcLinkId(Aws::String&& value) { m_vpcLinkIdHasBeenSet = true; m_vpcLinkId = std::move(value); }
-
-    /**
-     * <p>The identifier of the VpcLink. It is used in an Integration to reference this
-     * VpcLink.</p>
-     */
-    inline void SetVpcLinkId(const char* value) { m_vpcLinkIdHasBeenSet = true; m_vpcLinkId.assign(value); }
-
-    /**
-     * <p>The identifier of the VpcLink. It is used in an Integration to reference this
-     * VpcLink.</p>
-     */
-    inline GetVpcLinkRequest& WithVpcLinkId(const Aws::String& value) { SetVpcLinkId(value); return *this;}
-
-    /**
-     * <p>The identifier of the VpcLink. It is used in an Integration to reference this
-     * VpcLink.</p>
-     */
-    inline GetVpcLinkRequest& WithVpcLinkId(Aws::String&& value) { SetVpcLinkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the VpcLink. It is used in an Integration to reference this
-     * VpcLink.</p>
-     */
-    inline GetVpcLinkRequest& WithVpcLinkId(const char* value) { SetVpcLinkId(value); return *this;}
-
+    template<typename VpcLinkIdT = Aws::String>
+    void SetVpcLinkId(VpcLinkIdT&& value) { m_vpcLinkIdHasBeenSet = true; m_vpcLinkId = std::forward<VpcLinkIdT>(value); }
+    template<typename VpcLinkIdT = Aws::String>
+    GetVpcLinkRequest& WithVpcLinkId(VpcLinkIdT&& value) { SetVpcLinkId(std::forward<VpcLinkIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_vpcLinkId;

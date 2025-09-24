@@ -33,91 +33,38 @@ namespace Model
   class FsxProtocol
   {
   public:
-    AWS_DATASYNC_API FsxProtocol();
+    AWS_DATASYNC_API FsxProtocol() = default;
     AWS_DATASYNC_API FsxProtocol(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATASYNC_API FsxProtocol& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATASYNC_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the Network File System (NFS) protocol configuration that DataSync
      * uses to access your FSx for OpenZFS file system or FSx for ONTAP file system's
      * storage virtual machine (SVM).</p>
      */
-    inline const FsxProtocolNfs& GetNFS() const{ return m_nFS; }
-
-    /**
-     * <p>Specifies the Network File System (NFS) protocol configuration that DataSync
-     * uses to access your FSx for OpenZFS file system or FSx for ONTAP file system's
-     * storage virtual machine (SVM).</p>
-     */
+    inline const FsxProtocolNfs& GetNFS() const { return m_nFS; }
     inline bool NFSHasBeenSet() const { return m_nFSHasBeenSet; }
+    template<typename NFST = FsxProtocolNfs>
+    void SetNFS(NFST&& value) { m_nFSHasBeenSet = true; m_nFS = std::forward<NFST>(value); }
+    template<typename NFST = FsxProtocolNfs>
+    FsxProtocol& WithNFS(NFST&& value) { SetNFS(std::forward<NFST>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the Network File System (NFS) protocol configuration that DataSync
-     * uses to access your FSx for OpenZFS file system or FSx for ONTAP file system's
-     * storage virtual machine (SVM).</p>
-     */
-    inline void SetNFS(const FsxProtocolNfs& value) { m_nFSHasBeenSet = true; m_nFS = value; }
-
-    /**
-     * <p>Specifies the Network File System (NFS) protocol configuration that DataSync
-     * uses to access your FSx for OpenZFS file system or FSx for ONTAP file system's
-     * storage virtual machine (SVM).</p>
-     */
-    inline void SetNFS(FsxProtocolNfs&& value) { m_nFSHasBeenSet = true; m_nFS = std::move(value); }
-
-    /**
-     * <p>Specifies the Network File System (NFS) protocol configuration that DataSync
-     * uses to access your FSx for OpenZFS file system or FSx for ONTAP file system's
-     * storage virtual machine (SVM).</p>
-     */
-    inline FsxProtocol& WithNFS(const FsxProtocolNfs& value) { SetNFS(value); return *this;}
-
-    /**
-     * <p>Specifies the Network File System (NFS) protocol configuration that DataSync
-     * uses to access your FSx for OpenZFS file system or FSx for ONTAP file system's
-     * storage virtual machine (SVM).</p>
-     */
-    inline FsxProtocol& WithNFS(FsxProtocolNfs&& value) { SetNFS(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the Server Message Block (SMB) protocol configuration that DataSync
      * uses to access your FSx for ONTAP file system's SVM.</p>
      */
-    inline const FsxProtocolSmb& GetSMB() const{ return m_sMB; }
-
-    /**
-     * <p>Specifies the Server Message Block (SMB) protocol configuration that DataSync
-     * uses to access your FSx for ONTAP file system's SVM.</p>
-     */
+    inline const FsxProtocolSmb& GetSMB() const { return m_sMB; }
     inline bool SMBHasBeenSet() const { return m_sMBHasBeenSet; }
-
-    /**
-     * <p>Specifies the Server Message Block (SMB) protocol configuration that DataSync
-     * uses to access your FSx for ONTAP file system's SVM.</p>
-     */
-    inline void SetSMB(const FsxProtocolSmb& value) { m_sMBHasBeenSet = true; m_sMB = value; }
-
-    /**
-     * <p>Specifies the Server Message Block (SMB) protocol configuration that DataSync
-     * uses to access your FSx for ONTAP file system's SVM.</p>
-     */
-    inline void SetSMB(FsxProtocolSmb&& value) { m_sMBHasBeenSet = true; m_sMB = std::move(value); }
-
-    /**
-     * <p>Specifies the Server Message Block (SMB) protocol configuration that DataSync
-     * uses to access your FSx for ONTAP file system's SVM.</p>
-     */
-    inline FsxProtocol& WithSMB(const FsxProtocolSmb& value) { SetSMB(value); return *this;}
-
-    /**
-     * <p>Specifies the Server Message Block (SMB) protocol configuration that DataSync
-     * uses to access your FSx for ONTAP file system's SVM.</p>
-     */
-    inline FsxProtocol& WithSMB(FsxProtocolSmb&& value) { SetSMB(std::move(value)); return *this;}
-
+    template<typename SMBT = FsxProtocolSmb>
+    void SetSMB(SMBT&& value) { m_sMBHasBeenSet = true; m_sMB = std::forward<SMBT>(value); }
+    template<typename SMBT = FsxProtocolSmb>
+    FsxProtocol& WithSMB(SMBT&& value) { SetSMB(std::forward<SMBT>(value)); return *this;}
+    ///@}
   private:
 
     FsxProtocolNfs m_nFS;

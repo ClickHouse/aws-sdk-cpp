@@ -15,15 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-ListAudienceGenerationJobsRequest::ListAudienceGenerationJobsRequest() : 
-    m_collaborationIdHasBeenSet(false),
-    m_configuredAudienceModelArnHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListAudienceGenerationJobsRequest::SerializePayload() const
 {
   return {};
@@ -32,17 +23,10 @@ Aws::String ListAudienceGenerationJobsRequest::SerializePayload() const
 void ListAudienceGenerationJobsRequest::AddQueryStringParameters(URI& uri) const
 {
     Aws::StringStream ss;
-    if(m_collaborationIdHasBeenSet)
+    if(m_nextTokenHasBeenSet)
     {
-      ss << m_collaborationId;
-      uri.AddQueryStringParameter("collaborationId", ss.str());
-      ss.str("");
-    }
-
-    if(m_configuredAudienceModelArnHasBeenSet)
-    {
-      ss << m_configuredAudienceModelArn;
-      uri.AddQueryStringParameter("configuredAudienceModelArn", ss.str());
+      ss << m_nextToken;
+      uri.AddQueryStringParameter("nextToken", ss.str());
       ss.str("");
     }
 
@@ -53,10 +37,17 @@ void ListAudienceGenerationJobsRequest::AddQueryStringParameters(URI& uri) const
       ss.str("");
     }
 
-    if(m_nextTokenHasBeenSet)
+    if(m_configuredAudienceModelArnHasBeenSet)
     {
-      ss << m_nextToken;
-      uri.AddQueryStringParameter("nextToken", ss.str());
+      ss << m_configuredAudienceModelArn;
+      uri.AddQueryStringParameter("configuredAudienceModelArn", ss.str());
+      ss.str("");
+    }
+
+    if(m_collaborationIdHasBeenSet)
+    {
+      ss << m_collaborationId;
+      uri.AddQueryStringParameter("collaborationId", ss.str());
       ss.str("");
     }
 

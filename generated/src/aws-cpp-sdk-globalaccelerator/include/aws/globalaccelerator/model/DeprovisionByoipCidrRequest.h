@@ -21,7 +21,7 @@ namespace Model
   class DeprovisionByoipCidrRequest : public GlobalAcceleratorRequest
   {
   public:
-    AWS_GLOBALACCELERATOR_API DeprovisionByoipCidrRequest();
+    AWS_GLOBALACCELERATOR_API DeprovisionByoipCidrRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,54 +34,21 @@ namespace Model
     AWS_GLOBALACCELERATOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The address range, in CIDR notation. The prefix must be the same prefix that
-     * you specified when you provisioned the address range.</p>
+     * you specified when you provisioned the address range.</p> <p> For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html">Bring
+     * your own IP addresses (BYOIP)</a> in the Global Accelerator Developer Guide.</p>
      */
-    inline const Aws::String& GetCidr() const{ return m_cidr; }
-
-    /**
-     * <p>The address range, in CIDR notation. The prefix must be the same prefix that
-     * you specified when you provisioned the address range.</p>
-     */
+    inline const Aws::String& GetCidr() const { return m_cidr; }
     inline bool CidrHasBeenSet() const { return m_cidrHasBeenSet; }
-
-    /**
-     * <p>The address range, in CIDR notation. The prefix must be the same prefix that
-     * you specified when you provisioned the address range.</p>
-     */
-    inline void SetCidr(const Aws::String& value) { m_cidrHasBeenSet = true; m_cidr = value; }
-
-    /**
-     * <p>The address range, in CIDR notation. The prefix must be the same prefix that
-     * you specified when you provisioned the address range.</p>
-     */
-    inline void SetCidr(Aws::String&& value) { m_cidrHasBeenSet = true; m_cidr = std::move(value); }
-
-    /**
-     * <p>The address range, in CIDR notation. The prefix must be the same prefix that
-     * you specified when you provisioned the address range.</p>
-     */
-    inline void SetCidr(const char* value) { m_cidrHasBeenSet = true; m_cidr.assign(value); }
-
-    /**
-     * <p>The address range, in CIDR notation. The prefix must be the same prefix that
-     * you specified when you provisioned the address range.</p>
-     */
-    inline DeprovisionByoipCidrRequest& WithCidr(const Aws::String& value) { SetCidr(value); return *this;}
-
-    /**
-     * <p>The address range, in CIDR notation. The prefix must be the same prefix that
-     * you specified when you provisioned the address range.</p>
-     */
-    inline DeprovisionByoipCidrRequest& WithCidr(Aws::String&& value) { SetCidr(std::move(value)); return *this;}
-
-    /**
-     * <p>The address range, in CIDR notation. The prefix must be the same prefix that
-     * you specified when you provisioned the address range.</p>
-     */
-    inline DeprovisionByoipCidrRequest& WithCidr(const char* value) { SetCidr(value); return *this;}
-
+    template<typename CidrT = Aws::String>
+    void SetCidr(CidrT&& value) { m_cidrHasBeenSet = true; m_cidr = std::forward<CidrT>(value); }
+    template<typename CidrT = Aws::String>
+    DeprovisionByoipCidrRequest& WithCidr(CidrT&& value) { SetCidr(std::forward<CidrT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_cidr;

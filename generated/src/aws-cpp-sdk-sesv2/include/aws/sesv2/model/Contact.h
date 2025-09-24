@@ -35,190 +35,74 @@ namespace Model
   class Contact
   {
   public:
-    AWS_SESV2_API Contact();
+    AWS_SESV2_API Contact() = default;
     AWS_SESV2_API Contact(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Contact& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SESV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The contact's email address.</p>
      */
-    inline const Aws::String& GetEmailAddress() const{ return m_emailAddress; }
-
-    /**
-     * <p>The contact's email address.</p>
-     */
+    inline const Aws::String& GetEmailAddress() const { return m_emailAddress; }
     inline bool EmailAddressHasBeenSet() const { return m_emailAddressHasBeenSet; }
+    template<typename EmailAddressT = Aws::String>
+    void SetEmailAddress(EmailAddressT&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::forward<EmailAddressT>(value); }
+    template<typename EmailAddressT = Aws::String>
+    Contact& WithEmailAddress(EmailAddressT&& value) { SetEmailAddress(std::forward<EmailAddressT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The contact's email address.</p>
-     */
-    inline void SetEmailAddress(const Aws::String& value) { m_emailAddressHasBeenSet = true; m_emailAddress = value; }
-
-    /**
-     * <p>The contact's email address.</p>
-     */
-    inline void SetEmailAddress(Aws::String&& value) { m_emailAddressHasBeenSet = true; m_emailAddress = std::move(value); }
-
-    /**
-     * <p>The contact's email address.</p>
-     */
-    inline void SetEmailAddress(const char* value) { m_emailAddressHasBeenSet = true; m_emailAddress.assign(value); }
-
-    /**
-     * <p>The contact's email address.</p>
-     */
-    inline Contact& WithEmailAddress(const Aws::String& value) { SetEmailAddress(value); return *this;}
-
-    /**
-     * <p>The contact's email address.</p>
-     */
-    inline Contact& WithEmailAddress(Aws::String&& value) { SetEmailAddress(std::move(value)); return *this;}
-
-    /**
-     * <p>The contact's email address.</p>
-     */
-    inline Contact& WithEmailAddress(const char* value) { SetEmailAddress(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The contact's preference for being opted-in to or opted-out of a topic.</p>
      */
-    inline const Aws::Vector<TopicPreference>& GetTopicPreferences() const{ return m_topicPreferences; }
-
-    /**
-     * <p>The contact's preference for being opted-in to or opted-out of a topic.</p>
-     */
+    inline const Aws::Vector<TopicPreference>& GetTopicPreferences() const { return m_topicPreferences; }
     inline bool TopicPreferencesHasBeenSet() const { return m_topicPreferencesHasBeenSet; }
+    template<typename TopicPreferencesT = Aws::Vector<TopicPreference>>
+    void SetTopicPreferences(TopicPreferencesT&& value) { m_topicPreferencesHasBeenSet = true; m_topicPreferences = std::forward<TopicPreferencesT>(value); }
+    template<typename TopicPreferencesT = Aws::Vector<TopicPreference>>
+    Contact& WithTopicPreferences(TopicPreferencesT&& value) { SetTopicPreferences(std::forward<TopicPreferencesT>(value)); return *this;}
+    template<typename TopicPreferencesT = TopicPreference>
+    Contact& AddTopicPreferences(TopicPreferencesT&& value) { m_topicPreferencesHasBeenSet = true; m_topicPreferences.emplace_back(std::forward<TopicPreferencesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The contact's preference for being opted-in to or opted-out of a topic.</p>
-     */
-    inline void SetTopicPreferences(const Aws::Vector<TopicPreference>& value) { m_topicPreferencesHasBeenSet = true; m_topicPreferences = value; }
-
-    /**
-     * <p>The contact's preference for being opted-in to or opted-out of a topic.</p>
-     */
-    inline void SetTopicPreferences(Aws::Vector<TopicPreference>&& value) { m_topicPreferencesHasBeenSet = true; m_topicPreferences = std::move(value); }
-
-    /**
-     * <p>The contact's preference for being opted-in to or opted-out of a topic.</p>
-     */
-    inline Contact& WithTopicPreferences(const Aws::Vector<TopicPreference>& value) { SetTopicPreferences(value); return *this;}
-
-    /**
-     * <p>The contact's preference for being opted-in to or opted-out of a topic.</p>
-     */
-    inline Contact& WithTopicPreferences(Aws::Vector<TopicPreference>&& value) { SetTopicPreferences(std::move(value)); return *this;}
-
-    /**
-     * <p>The contact's preference for being opted-in to or opted-out of a topic.</p>
-     */
-    inline Contact& AddTopicPreferences(const TopicPreference& value) { m_topicPreferencesHasBeenSet = true; m_topicPreferences.push_back(value); return *this; }
-
-    /**
-     * <p>The contact's preference for being opted-in to or opted-out of a topic.</p>
-     */
-    inline Contact& AddTopicPreferences(TopicPreference&& value) { m_topicPreferencesHasBeenSet = true; m_topicPreferences.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The default topic preferences applied to the contact.</p>
      */
-    inline const Aws::Vector<TopicPreference>& GetTopicDefaultPreferences() const{ return m_topicDefaultPreferences; }
-
-    /**
-     * <p>The default topic preferences applied to the contact.</p>
-     */
+    inline const Aws::Vector<TopicPreference>& GetTopicDefaultPreferences() const { return m_topicDefaultPreferences; }
     inline bool TopicDefaultPreferencesHasBeenSet() const { return m_topicDefaultPreferencesHasBeenSet; }
+    template<typename TopicDefaultPreferencesT = Aws::Vector<TopicPreference>>
+    void SetTopicDefaultPreferences(TopicDefaultPreferencesT&& value) { m_topicDefaultPreferencesHasBeenSet = true; m_topicDefaultPreferences = std::forward<TopicDefaultPreferencesT>(value); }
+    template<typename TopicDefaultPreferencesT = Aws::Vector<TopicPreference>>
+    Contact& WithTopicDefaultPreferences(TopicDefaultPreferencesT&& value) { SetTopicDefaultPreferences(std::forward<TopicDefaultPreferencesT>(value)); return *this;}
+    template<typename TopicDefaultPreferencesT = TopicPreference>
+    Contact& AddTopicDefaultPreferences(TopicDefaultPreferencesT&& value) { m_topicDefaultPreferencesHasBeenSet = true; m_topicDefaultPreferences.emplace_back(std::forward<TopicDefaultPreferencesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The default topic preferences applied to the contact.</p>
-     */
-    inline void SetTopicDefaultPreferences(const Aws::Vector<TopicPreference>& value) { m_topicDefaultPreferencesHasBeenSet = true; m_topicDefaultPreferences = value; }
-
-    /**
-     * <p>The default topic preferences applied to the contact.</p>
-     */
-    inline void SetTopicDefaultPreferences(Aws::Vector<TopicPreference>&& value) { m_topicDefaultPreferencesHasBeenSet = true; m_topicDefaultPreferences = std::move(value); }
-
-    /**
-     * <p>The default topic preferences applied to the contact.</p>
-     */
-    inline Contact& WithTopicDefaultPreferences(const Aws::Vector<TopicPreference>& value) { SetTopicDefaultPreferences(value); return *this;}
-
-    /**
-     * <p>The default topic preferences applied to the contact.</p>
-     */
-    inline Contact& WithTopicDefaultPreferences(Aws::Vector<TopicPreference>&& value) { SetTopicDefaultPreferences(std::move(value)); return *this;}
-
-    /**
-     * <p>The default topic preferences applied to the contact.</p>
-     */
-    inline Contact& AddTopicDefaultPreferences(const TopicPreference& value) { m_topicDefaultPreferencesHasBeenSet = true; m_topicDefaultPreferences.push_back(value); return *this; }
-
-    /**
-     * <p>The default topic preferences applied to the contact.</p>
-     */
-    inline Contact& AddTopicDefaultPreferences(TopicPreference&& value) { m_topicDefaultPreferencesHasBeenSet = true; m_topicDefaultPreferences.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A boolean value status noting if the contact is unsubscribed from all contact
      * list topics.</p>
      */
-    inline bool GetUnsubscribeAll() const{ return m_unsubscribeAll; }
-
-    /**
-     * <p>A boolean value status noting if the contact is unsubscribed from all contact
-     * list topics.</p>
-     */
+    inline bool GetUnsubscribeAll() const { return m_unsubscribeAll; }
     inline bool UnsubscribeAllHasBeenSet() const { return m_unsubscribeAllHasBeenSet; }
-
-    /**
-     * <p>A boolean value status noting if the contact is unsubscribed from all contact
-     * list topics.</p>
-     */
     inline void SetUnsubscribeAll(bool value) { m_unsubscribeAllHasBeenSet = true; m_unsubscribeAll = value; }
-
-    /**
-     * <p>A boolean value status noting if the contact is unsubscribed from all contact
-     * list topics.</p>
-     */
     inline Contact& WithUnsubscribeAll(bool value) { SetUnsubscribeAll(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>A timestamp noting the last time the contact's information was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastUpdatedTimestamp() const{ return m_lastUpdatedTimestamp; }
-
-    /**
-     * <p>A timestamp noting the last time the contact's information was updated.</p>
-     */
+    inline const Aws::Utils::DateTime& GetLastUpdatedTimestamp() const { return m_lastUpdatedTimestamp; }
     inline bool LastUpdatedTimestampHasBeenSet() const { return m_lastUpdatedTimestampHasBeenSet; }
-
-    /**
-     * <p>A timestamp noting the last time the contact's information was updated.</p>
-     */
-    inline void SetLastUpdatedTimestamp(const Aws::Utils::DateTime& value) { m_lastUpdatedTimestampHasBeenSet = true; m_lastUpdatedTimestamp = value; }
-
-    /**
-     * <p>A timestamp noting the last time the contact's information was updated.</p>
-     */
-    inline void SetLastUpdatedTimestamp(Aws::Utils::DateTime&& value) { m_lastUpdatedTimestampHasBeenSet = true; m_lastUpdatedTimestamp = std::move(value); }
-
-    /**
-     * <p>A timestamp noting the last time the contact's information was updated.</p>
-     */
-    inline Contact& WithLastUpdatedTimestamp(const Aws::Utils::DateTime& value) { SetLastUpdatedTimestamp(value); return *this;}
-
-    /**
-     * <p>A timestamp noting the last time the contact's information was updated.</p>
-     */
-    inline Contact& WithLastUpdatedTimestamp(Aws::Utils::DateTime&& value) { SetLastUpdatedTimestamp(std::move(value)); return *this;}
-
+    template<typename LastUpdatedTimestampT = Aws::Utils::DateTime>
+    void SetLastUpdatedTimestamp(LastUpdatedTimestampT&& value) { m_lastUpdatedTimestampHasBeenSet = true; m_lastUpdatedTimestamp = std::forward<LastUpdatedTimestampT>(value); }
+    template<typename LastUpdatedTimestampT = Aws::Utils::DateTime>
+    Contact& WithLastUpdatedTimestamp(LastUpdatedTimestampT&& value) { SetLastUpdatedTimestamp(std::forward<LastUpdatedTimestampT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_emailAddress;
@@ -230,10 +114,10 @@ namespace Model
     Aws::Vector<TopicPreference> m_topicDefaultPreferences;
     bool m_topicDefaultPreferencesHasBeenSet = false;
 
-    bool m_unsubscribeAll;
+    bool m_unsubscribeAll{false};
     bool m_unsubscribeAllHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastUpdatedTimestamp;
+    Aws::Utils::DateTime m_lastUpdatedTimestamp{};
     bool m_lastUpdatedTimestampHasBeenSet = false;
   };
 

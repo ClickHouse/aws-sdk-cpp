@@ -18,17 +18,7 @@ namespace FMS
 namespace Model
 {
 
-PolicyTypeScope::PolicyTypeScope() : 
-    m_policyTypesHasBeenSet(false),
-    m_allPolicyTypesEnabled(false),
-    m_allPolicyTypesEnabledHasBeenSet(false)
-{
-}
-
-PolicyTypeScope::PolicyTypeScope(JsonView jsonValue) : 
-    m_policyTypesHasBeenSet(false),
-    m_allPolicyTypesEnabled(false),
-    m_allPolicyTypesEnabledHasBeenSet(false)
+PolicyTypeScope::PolicyTypeScope(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,14 +34,11 @@ PolicyTypeScope& PolicyTypeScope::operator =(JsonView jsonValue)
     }
     m_policyTypesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AllPolicyTypesEnabled"))
   {
     m_allPolicyTypesEnabled = jsonValue.GetBool("AllPolicyTypesEnabled");
-
     m_allPolicyTypesEnabledHasBeenSet = true;
   }
-
   return *this;
 }
 

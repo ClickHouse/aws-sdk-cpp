@@ -18,17 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-LogicalTableSource::LogicalTableSource() : 
-    m_joinInstructionHasBeenSet(false),
-    m_physicalTableIdHasBeenSet(false),
-    m_dataSetArnHasBeenSet(false)
-{
-}
-
-LogicalTableSource::LogicalTableSource(JsonView jsonValue) : 
-    m_joinInstructionHasBeenSet(false),
-    m_physicalTableIdHasBeenSet(false),
-    m_dataSetArnHasBeenSet(false)
+LogicalTableSource::LogicalTableSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ LogicalTableSource& LogicalTableSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("JoinInstruction"))
   {
     m_joinInstruction = jsonValue.GetObject("JoinInstruction");
-
     m_joinInstructionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PhysicalTableId"))
   {
     m_physicalTableId = jsonValue.GetString("PhysicalTableId");
-
     m_physicalTableIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataSetArn"))
   {
     m_dataSetArn = jsonValue.GetString("DataSetArn");
-
     m_dataSetArnHasBeenSet = true;
   }
-
   return *this;
 }
 

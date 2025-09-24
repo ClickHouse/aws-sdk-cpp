@@ -18,21 +18,7 @@ namespace SSOAdmin
 namespace Model
 {
 
-AccountAssignment::AccountAssignment() : 
-    m_accountIdHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false),
-    m_principalIdHasBeenSet(false),
-    m_principalType(PrincipalType::NOT_SET),
-    m_principalTypeHasBeenSet(false)
-{
-}
-
-AccountAssignment::AccountAssignment(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_permissionSetArnHasBeenSet(false),
-    m_principalIdHasBeenSet(false),
-    m_principalType(PrincipalType::NOT_SET),
-    m_principalTypeHasBeenSet(false)
+AccountAssignment::AccountAssignment(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ AccountAssignment& AccountAssignment::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AccountId"))
   {
     m_accountId = jsonValue.GetString("AccountId");
-
     m_accountIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PermissionSetArn"))
   {
     m_permissionSetArn = jsonValue.GetString("PermissionSetArn");
-
     m_permissionSetArnHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("PrincipalId"))
-  {
-    m_principalId = jsonValue.GetString("PrincipalId");
-
-    m_principalIdHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("PrincipalType"))
   {
     m_principalType = PrincipalTypeMapper::GetPrincipalTypeForName(jsonValue.GetString("PrincipalType"));
-
     m_principalTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PrincipalId"))
+  {
+    m_principalId = jsonValue.GetString("PrincipalId");
+    m_principalIdHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -86,15 +64,15 @@ JsonValue AccountAssignment::Jsonize() const
 
   }
 
+  if(m_principalTypeHasBeenSet)
+  {
+   payload.WithString("PrincipalType", PrincipalTypeMapper::GetNameForPrincipalType(m_principalType));
+  }
+
   if(m_principalIdHasBeenSet)
   {
    payload.WithString("PrincipalId", m_principalId);
 
-  }
-
-  if(m_principalTypeHasBeenSet)
-  {
-   payload.WithString("PrincipalType", PrincipalTypeMapper::GetNameForPrincipalType(m_principalType));
   }
 
   return payload;

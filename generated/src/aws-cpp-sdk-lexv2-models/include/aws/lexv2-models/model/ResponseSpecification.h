@@ -33,91 +33,43 @@ namespace Model
   class ResponseSpecification
   {
   public:
-    AWS_LEXMODELSV2_API ResponseSpecification();
+    AWS_LEXMODELSV2_API ResponseSpecification() = default;
     AWS_LEXMODELSV2_API ResponseSpecification(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API ResponseSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_LEXMODELSV2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A collection of responses that Amazon Lex can send to the user. Amazon Lex
      * chooses the actual response to send at runtime.</p>
      */
-    inline const Aws::Vector<MessageGroup>& GetMessageGroups() const{ return m_messageGroups; }
-
-    /**
-     * <p>A collection of responses that Amazon Lex can send to the user. Amazon Lex
-     * chooses the actual response to send at runtime.</p>
-     */
+    inline const Aws::Vector<MessageGroup>& GetMessageGroups() const { return m_messageGroups; }
     inline bool MessageGroupsHasBeenSet() const { return m_messageGroupsHasBeenSet; }
+    template<typename MessageGroupsT = Aws::Vector<MessageGroup>>
+    void SetMessageGroups(MessageGroupsT&& value) { m_messageGroupsHasBeenSet = true; m_messageGroups = std::forward<MessageGroupsT>(value); }
+    template<typename MessageGroupsT = Aws::Vector<MessageGroup>>
+    ResponseSpecification& WithMessageGroups(MessageGroupsT&& value) { SetMessageGroups(std::forward<MessageGroupsT>(value)); return *this;}
+    template<typename MessageGroupsT = MessageGroup>
+    ResponseSpecification& AddMessageGroups(MessageGroupsT&& value) { m_messageGroupsHasBeenSet = true; m_messageGroups.emplace_back(std::forward<MessageGroupsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A collection of responses that Amazon Lex can send to the user. Amazon Lex
-     * chooses the actual response to send at runtime.</p>
-     */
-    inline void SetMessageGroups(const Aws::Vector<MessageGroup>& value) { m_messageGroupsHasBeenSet = true; m_messageGroups = value; }
-
-    /**
-     * <p>A collection of responses that Amazon Lex can send to the user. Amazon Lex
-     * chooses the actual response to send at runtime.</p>
-     */
-    inline void SetMessageGroups(Aws::Vector<MessageGroup>&& value) { m_messageGroupsHasBeenSet = true; m_messageGroups = std::move(value); }
-
-    /**
-     * <p>A collection of responses that Amazon Lex can send to the user. Amazon Lex
-     * chooses the actual response to send at runtime.</p>
-     */
-    inline ResponseSpecification& WithMessageGroups(const Aws::Vector<MessageGroup>& value) { SetMessageGroups(value); return *this;}
-
-    /**
-     * <p>A collection of responses that Amazon Lex can send to the user. Amazon Lex
-     * chooses the actual response to send at runtime.</p>
-     */
-    inline ResponseSpecification& WithMessageGroups(Aws::Vector<MessageGroup>&& value) { SetMessageGroups(std::move(value)); return *this;}
-
-    /**
-     * <p>A collection of responses that Amazon Lex can send to the user. Amazon Lex
-     * chooses the actual response to send at runtime.</p>
-     */
-    inline ResponseSpecification& AddMessageGroups(const MessageGroup& value) { m_messageGroupsHasBeenSet = true; m_messageGroups.push_back(value); return *this; }
-
-    /**
-     * <p>A collection of responses that Amazon Lex can send to the user. Amazon Lex
-     * chooses the actual response to send at runtime.</p>
-     */
-    inline ResponseSpecification& AddMessageGroups(MessageGroup&& value) { m_messageGroupsHasBeenSet = true; m_messageGroups.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Indicates whether the user can interrupt a speech response from Amazon
      * Lex.</p>
      */
-    inline bool GetAllowInterrupt() const{ return m_allowInterrupt; }
-
-    /**
-     * <p>Indicates whether the user can interrupt a speech response from Amazon
-     * Lex.</p>
-     */
+    inline bool GetAllowInterrupt() const { return m_allowInterrupt; }
     inline bool AllowInterruptHasBeenSet() const { return m_allowInterruptHasBeenSet; }
-
-    /**
-     * <p>Indicates whether the user can interrupt a speech response from Amazon
-     * Lex.</p>
-     */
     inline void SetAllowInterrupt(bool value) { m_allowInterruptHasBeenSet = true; m_allowInterrupt = value; }
-
-    /**
-     * <p>Indicates whether the user can interrupt a speech response from Amazon
-     * Lex.</p>
-     */
     inline ResponseSpecification& WithAllowInterrupt(bool value) { SetAllowInterrupt(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<MessageGroup> m_messageGroups;
     bool m_messageGroupsHasBeenSet = false;
 
-    bool m_allowInterrupt;
+    bool m_allowInterrupt{false};
     bool m_allowInterruptHasBeenSet = false;
   };
 

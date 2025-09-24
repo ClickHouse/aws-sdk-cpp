@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-SnapshotJobResultFileGroup::SnapshotJobResultFileGroup() : 
-    m_filesHasBeenSet(false),
-    m_s3ResultsHasBeenSet(false)
-{
-}
-
-SnapshotJobResultFileGroup::SnapshotJobResultFileGroup(JsonView jsonValue) : 
-    m_filesHasBeenSet(false),
-    m_s3ResultsHasBeenSet(false)
+SnapshotJobResultFileGroup::SnapshotJobResultFileGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ SnapshotJobResultFileGroup& SnapshotJobResultFileGroup::operator =(JsonView json
     }
     m_filesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("S3Results"))
   {
     Aws::Utils::Array<JsonView> s3ResultsJsonList = jsonValue.GetArray("S3Results");
@@ -52,7 +43,6 @@ SnapshotJobResultFileGroup& SnapshotJobResultFileGroup::operator =(JsonView json
     }
     m_s3ResultsHasBeenSet = true;
   }
-
   return *this;
 }
 

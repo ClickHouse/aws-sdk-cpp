@@ -37,295 +37,104 @@ namespace Model
   class ResourceComplianceSummaryItem
   {
   public:
-    AWS_SSM_API ResourceComplianceSummaryItem();
+    AWS_SSM_API ResourceComplianceSummaryItem() = default;
     AWS_SSM_API ResourceComplianceSummaryItem(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API ResourceComplianceSummaryItem& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The compliance type.</p>
      */
-    inline const Aws::String& GetComplianceType() const{ return m_complianceType; }
-
-    /**
-     * <p>The compliance type.</p>
-     */
+    inline const Aws::String& GetComplianceType() const { return m_complianceType; }
     inline bool ComplianceTypeHasBeenSet() const { return m_complianceTypeHasBeenSet; }
+    template<typename ComplianceTypeT = Aws::String>
+    void SetComplianceType(ComplianceTypeT&& value) { m_complianceTypeHasBeenSet = true; m_complianceType = std::forward<ComplianceTypeT>(value); }
+    template<typename ComplianceTypeT = Aws::String>
+    ResourceComplianceSummaryItem& WithComplianceType(ComplianceTypeT&& value) { SetComplianceType(std::forward<ComplianceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The compliance type.</p>
-     */
-    inline void SetComplianceType(const Aws::String& value) { m_complianceTypeHasBeenSet = true; m_complianceType = value; }
-
-    /**
-     * <p>The compliance type.</p>
-     */
-    inline void SetComplianceType(Aws::String&& value) { m_complianceTypeHasBeenSet = true; m_complianceType = std::move(value); }
-
-    /**
-     * <p>The compliance type.</p>
-     */
-    inline void SetComplianceType(const char* value) { m_complianceTypeHasBeenSet = true; m_complianceType.assign(value); }
-
-    /**
-     * <p>The compliance type.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithComplianceType(const Aws::String& value) { SetComplianceType(value); return *this;}
-
-    /**
-     * <p>The compliance type.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithComplianceType(Aws::String&& value) { SetComplianceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The compliance type.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithComplianceType(const char* value) { SetComplianceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource type.</p>
      */
-    inline const Aws::String& GetResourceType() const{ return m_resourceType; }
-
-    /**
-     * <p>The resource type.</p>
-     */
+    inline const Aws::String& GetResourceType() const { return m_resourceType; }
     inline bool ResourceTypeHasBeenSet() const { return m_resourceTypeHasBeenSet; }
+    template<typename ResourceTypeT = Aws::String>
+    void SetResourceType(ResourceTypeT&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::forward<ResourceTypeT>(value); }
+    template<typename ResourceTypeT = Aws::String>
+    ResourceComplianceSummaryItem& WithResourceType(ResourceTypeT&& value) { SetResourceType(std::forward<ResourceTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource type.</p>
-     */
-    inline void SetResourceType(const Aws::String& value) { m_resourceTypeHasBeenSet = true; m_resourceType = value; }
-
-    /**
-     * <p>The resource type.</p>
-     */
-    inline void SetResourceType(Aws::String&& value) { m_resourceTypeHasBeenSet = true; m_resourceType = std::move(value); }
-
-    /**
-     * <p>The resource type.</p>
-     */
-    inline void SetResourceType(const char* value) { m_resourceTypeHasBeenSet = true; m_resourceType.assign(value); }
-
-    /**
-     * <p>The resource type.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithResourceType(const Aws::String& value) { SetResourceType(value); return *this;}
-
-    /**
-     * <p>The resource type.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithResourceType(Aws::String&& value) { SetResourceType(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource type.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithResourceType(const char* value) { SetResourceType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The resource ID.</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * <p>The resource ID.</p>
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    ResourceComplianceSummaryItem& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The resource ID.</p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * <p>The resource ID.</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * <p>The resource ID.</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * <p>The resource ID.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The resource ID.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource ID.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The compliance status for the resource.</p>
      */
-    inline const ComplianceStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The compliance status for the resource.</p>
-     */
+    inline ComplianceStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ComplianceStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ResourceComplianceSummaryItem& WithStatus(ComplianceStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The compliance status for the resource.</p>
-     */
-    inline void SetStatus(const ComplianceStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The compliance status for the resource.</p>
-     */
-    inline void SetStatus(ComplianceStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The compliance status for the resource.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithStatus(const ComplianceStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The compliance status for the resource.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithStatus(ComplianceStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The highest severity item found for the resource. The resource is compliant
      * for this item.</p>
      */
-    inline const ComplianceSeverity& GetOverallSeverity() const{ return m_overallSeverity; }
-
-    /**
-     * <p>The highest severity item found for the resource. The resource is compliant
-     * for this item.</p>
-     */
+    inline ComplianceSeverity GetOverallSeverity() const { return m_overallSeverity; }
     inline bool OverallSeverityHasBeenSet() const { return m_overallSeverityHasBeenSet; }
+    inline void SetOverallSeverity(ComplianceSeverity value) { m_overallSeverityHasBeenSet = true; m_overallSeverity = value; }
+    inline ResourceComplianceSummaryItem& WithOverallSeverity(ComplianceSeverity value) { SetOverallSeverity(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The highest severity item found for the resource. The resource is compliant
-     * for this item.</p>
-     */
-    inline void SetOverallSeverity(const ComplianceSeverity& value) { m_overallSeverityHasBeenSet = true; m_overallSeverity = value; }
-
-    /**
-     * <p>The highest severity item found for the resource. The resource is compliant
-     * for this item.</p>
-     */
-    inline void SetOverallSeverity(ComplianceSeverity&& value) { m_overallSeverityHasBeenSet = true; m_overallSeverity = std::move(value); }
-
-    /**
-     * <p>The highest severity item found for the resource. The resource is compliant
-     * for this item.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithOverallSeverity(const ComplianceSeverity& value) { SetOverallSeverity(value); return *this;}
-
-    /**
-     * <p>The highest severity item found for the resource. The resource is compliant
-     * for this item.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithOverallSeverity(ComplianceSeverity&& value) { SetOverallSeverity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Information about the execution.</p>
      */
-    inline const ComplianceExecutionSummary& GetExecutionSummary() const{ return m_executionSummary; }
-
-    /**
-     * <p>Information about the execution.</p>
-     */
+    inline const ComplianceExecutionSummary& GetExecutionSummary() const { return m_executionSummary; }
     inline bool ExecutionSummaryHasBeenSet() const { return m_executionSummaryHasBeenSet; }
+    template<typename ExecutionSummaryT = ComplianceExecutionSummary>
+    void SetExecutionSummary(ExecutionSummaryT&& value) { m_executionSummaryHasBeenSet = true; m_executionSummary = std::forward<ExecutionSummaryT>(value); }
+    template<typename ExecutionSummaryT = ComplianceExecutionSummary>
+    ResourceComplianceSummaryItem& WithExecutionSummary(ExecutionSummaryT&& value) { SetExecutionSummary(std::forward<ExecutionSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Information about the execution.</p>
-     */
-    inline void SetExecutionSummary(const ComplianceExecutionSummary& value) { m_executionSummaryHasBeenSet = true; m_executionSummary = value; }
-
-    /**
-     * <p>Information about the execution.</p>
-     */
-    inline void SetExecutionSummary(ComplianceExecutionSummary&& value) { m_executionSummaryHasBeenSet = true; m_executionSummary = std::move(value); }
-
-    /**
-     * <p>Information about the execution.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithExecutionSummary(const ComplianceExecutionSummary& value) { SetExecutionSummary(value); return *this;}
-
-    /**
-     * <p>Information about the execution.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithExecutionSummary(ComplianceExecutionSummary&& value) { SetExecutionSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of items that are compliant for the resource.</p>
      */
-    inline const CompliantSummary& GetCompliantSummary() const{ return m_compliantSummary; }
-
-    /**
-     * <p>A list of items that are compliant for the resource.</p>
-     */
+    inline const CompliantSummary& GetCompliantSummary() const { return m_compliantSummary; }
     inline bool CompliantSummaryHasBeenSet() const { return m_compliantSummaryHasBeenSet; }
+    template<typename CompliantSummaryT = CompliantSummary>
+    void SetCompliantSummary(CompliantSummaryT&& value) { m_compliantSummaryHasBeenSet = true; m_compliantSummary = std::forward<CompliantSummaryT>(value); }
+    template<typename CompliantSummaryT = CompliantSummary>
+    ResourceComplianceSummaryItem& WithCompliantSummary(CompliantSummaryT&& value) { SetCompliantSummary(std::forward<CompliantSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A list of items that are compliant for the resource.</p>
-     */
-    inline void SetCompliantSummary(const CompliantSummary& value) { m_compliantSummaryHasBeenSet = true; m_compliantSummary = value; }
-
-    /**
-     * <p>A list of items that are compliant for the resource.</p>
-     */
-    inline void SetCompliantSummary(CompliantSummary&& value) { m_compliantSummaryHasBeenSet = true; m_compliantSummary = std::move(value); }
-
-    /**
-     * <p>A list of items that are compliant for the resource.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithCompliantSummary(const CompliantSummary& value) { SetCompliantSummary(value); return *this;}
-
-    /**
-     * <p>A list of items that are compliant for the resource.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithCompliantSummary(CompliantSummary&& value) { SetCompliantSummary(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of items that aren't compliant for the resource.</p>
      */
-    inline const NonCompliantSummary& GetNonCompliantSummary() const{ return m_nonCompliantSummary; }
-
-    /**
-     * <p>A list of items that aren't compliant for the resource.</p>
-     */
+    inline const NonCompliantSummary& GetNonCompliantSummary() const { return m_nonCompliantSummary; }
     inline bool NonCompliantSummaryHasBeenSet() const { return m_nonCompliantSummaryHasBeenSet; }
-
-    /**
-     * <p>A list of items that aren't compliant for the resource.</p>
-     */
-    inline void SetNonCompliantSummary(const NonCompliantSummary& value) { m_nonCompliantSummaryHasBeenSet = true; m_nonCompliantSummary = value; }
-
-    /**
-     * <p>A list of items that aren't compliant for the resource.</p>
-     */
-    inline void SetNonCompliantSummary(NonCompliantSummary&& value) { m_nonCompliantSummaryHasBeenSet = true; m_nonCompliantSummary = std::move(value); }
-
-    /**
-     * <p>A list of items that aren't compliant for the resource.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithNonCompliantSummary(const NonCompliantSummary& value) { SetNonCompliantSummary(value); return *this;}
-
-    /**
-     * <p>A list of items that aren't compliant for the resource.</p>
-     */
-    inline ResourceComplianceSummaryItem& WithNonCompliantSummary(NonCompliantSummary&& value) { SetNonCompliantSummary(std::move(value)); return *this;}
-
+    template<typename NonCompliantSummaryT = NonCompliantSummary>
+    void SetNonCompliantSummary(NonCompliantSummaryT&& value) { m_nonCompliantSummaryHasBeenSet = true; m_nonCompliantSummary = std::forward<NonCompliantSummaryT>(value); }
+    template<typename NonCompliantSummaryT = NonCompliantSummary>
+    ResourceComplianceSummaryItem& WithNonCompliantSummary(NonCompliantSummaryT&& value) { SetNonCompliantSummary(std::forward<NonCompliantSummaryT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_complianceType;
@@ -337,10 +146,10 @@ namespace Model
     Aws::String m_resourceId;
     bool m_resourceIdHasBeenSet = false;
 
-    ComplianceStatus m_status;
+    ComplianceStatus m_status{ComplianceStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
-    ComplianceSeverity m_overallSeverity;
+    ComplianceSeverity m_overallSeverity{ComplianceSeverity::NOT_SET};
     bool m_overallSeverityHasBeenSet = false;
 
     ComplianceExecutionSummary m_executionSummary;

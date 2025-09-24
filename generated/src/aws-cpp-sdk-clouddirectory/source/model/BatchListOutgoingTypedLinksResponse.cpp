@@ -18,15 +18,7 @@ namespace CloudDirectory
 namespace Model
 {
 
-BatchListOutgoingTypedLinksResponse::BatchListOutgoingTypedLinksResponse() : 
-    m_typedLinkSpecifiersHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
-BatchListOutgoingTypedLinksResponse::BatchListOutgoingTypedLinksResponse(JsonView jsonValue) : 
-    m_typedLinkSpecifiersHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
+BatchListOutgoingTypedLinksResponse::BatchListOutgoingTypedLinksResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ BatchListOutgoingTypedLinksResponse& BatchListOutgoingTypedLinksResponse::operat
     }
     m_typedLinkSpecifiersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NextToken"))
   {
     m_nextToken = jsonValue.GetString("NextToken");
-
     m_nextTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

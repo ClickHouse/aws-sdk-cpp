@@ -27,132 +27,54 @@ namespace Model
   class CreateUploadUrlResult
   {
   public:
-    AWS_LEXMODELSV2_API CreateUploadUrlResult();
+    AWS_LEXMODELSV2_API CreateUploadUrlResult() = default;
     AWS_LEXMODELSV2_API CreateUploadUrlResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LEXMODELSV2_API CreateUploadUrlResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>An identifier for a unique import job. Use it when you call the <a
      * href="https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartImport.html">StartImport</a>
      * operation.</p>
      */
-    inline const Aws::String& GetImportId() const{ return m_importId; }
+    inline const Aws::String& GetImportId() const { return m_importId; }
+    template<typename ImportIdT = Aws::String>
+    void SetImportId(ImportIdT&& value) { m_importIdHasBeenSet = true; m_importId = std::forward<ImportIdT>(value); }
+    template<typename ImportIdT = Aws::String>
+    CreateUploadUrlResult& WithImportId(ImportIdT&& value) { SetImportId(std::forward<ImportIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An identifier for a unique import job. Use it when you call the <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartImport.html">StartImport</a>
-     * operation.</p>
-     */
-    inline void SetImportId(const Aws::String& value) { m_importId = value; }
-
-    /**
-     * <p>An identifier for a unique import job. Use it when you call the <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartImport.html">StartImport</a>
-     * operation.</p>
-     */
-    inline void SetImportId(Aws::String&& value) { m_importId = std::move(value); }
-
-    /**
-     * <p>An identifier for a unique import job. Use it when you call the <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartImport.html">StartImport</a>
-     * operation.</p>
-     */
-    inline void SetImportId(const char* value) { m_importId.assign(value); }
-
-    /**
-     * <p>An identifier for a unique import job. Use it when you call the <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartImport.html">StartImport</a>
-     * operation.</p>
-     */
-    inline CreateUploadUrlResult& WithImportId(const Aws::String& value) { SetImportId(value); return *this;}
-
-    /**
-     * <p>An identifier for a unique import job. Use it when you call the <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartImport.html">StartImport</a>
-     * operation.</p>
-     */
-    inline CreateUploadUrlResult& WithImportId(Aws::String&& value) { SetImportId(std::move(value)); return *this;}
-
-    /**
-     * <p>An identifier for a unique import job. Use it when you call the <a
-     * href="https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartImport.html">StartImport</a>
-     * operation.</p>
-     */
-    inline CreateUploadUrlResult& WithImportId(const char* value) { SetImportId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A pre-signed S3 write URL. Upload the zip archive file that contains the
      * definition of your bot or bot locale.</p>
      */
-    inline const Aws::String& GetUploadUrl() const{ return m_uploadUrl; }
+    inline const Aws::String& GetUploadUrl() const { return m_uploadUrl; }
+    template<typename UploadUrlT = Aws::String>
+    void SetUploadUrl(UploadUrlT&& value) { m_uploadUrlHasBeenSet = true; m_uploadUrl = std::forward<UploadUrlT>(value); }
+    template<typename UploadUrlT = Aws::String>
+    CreateUploadUrlResult& WithUploadUrl(UploadUrlT&& value) { SetUploadUrl(std::forward<UploadUrlT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A pre-signed S3 write URL. Upload the zip archive file that contains the
-     * definition of your bot or bot locale.</p>
-     */
-    inline void SetUploadUrl(const Aws::String& value) { m_uploadUrl = value; }
-
-    /**
-     * <p>A pre-signed S3 write URL. Upload the zip archive file that contains the
-     * definition of your bot or bot locale.</p>
-     */
-    inline void SetUploadUrl(Aws::String&& value) { m_uploadUrl = std::move(value); }
-
-    /**
-     * <p>A pre-signed S3 write URL. Upload the zip archive file that contains the
-     * definition of your bot or bot locale.</p>
-     */
-    inline void SetUploadUrl(const char* value) { m_uploadUrl.assign(value); }
-
-    /**
-     * <p>A pre-signed S3 write URL. Upload the zip archive file that contains the
-     * definition of your bot or bot locale.</p>
-     */
-    inline CreateUploadUrlResult& WithUploadUrl(const Aws::String& value) { SetUploadUrl(value); return *this;}
-
-    /**
-     * <p>A pre-signed S3 write URL. Upload the zip archive file that contains the
-     * definition of your bot or bot locale.</p>
-     */
-    inline CreateUploadUrlResult& WithUploadUrl(Aws::String&& value) { SetUploadUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>A pre-signed S3 write URL. Upload the zip archive file that contains the
-     * definition of your bot or bot locale.</p>
-     */
-    inline CreateUploadUrlResult& WithUploadUrl(const char* value) { SetUploadUrl(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateUploadUrlResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateUploadUrlResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateUploadUrlResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateUploadUrlResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_importId;
+    bool m_importIdHasBeenSet = false;
 
     Aws::String m_uploadUrl;
+    bool m_uploadUrlHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

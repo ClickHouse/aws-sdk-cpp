@@ -10,12 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-BatchDeleteScheduledActionRequest::BatchDeleteScheduledActionRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_scheduledActionNamesHasBeenSet(false)
-{
-}
-
 Aws::String BatchDeleteScheduledActionRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,12 +21,19 @@ Aws::String BatchDeleteScheduledActionRequest::SerializePayload() const
 
   if(m_scheduledActionNamesHasBeenSet)
   {
-    unsigned scheduledActionNamesCount = 1;
-    for(auto& item : m_scheduledActionNames)
+    if (m_scheduledActionNames.empty())
     {
-      ss << "ScheduledActionNames.member." << scheduledActionNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      scheduledActionNamesCount++;
+      ss << "ScheduledActionNames=&";
+    }
+    else
+    {
+      unsigned scheduledActionNamesCount = 1;
+      for(auto& item : m_scheduledActionNames)
+      {
+        ss << "ScheduledActionNames.member." << scheduledActionNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        scheduledActionNamesCount++;
+      }
     }
   }
 

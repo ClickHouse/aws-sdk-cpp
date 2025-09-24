@@ -21,7 +21,7 @@ namespace Model
   class UpdateAliasRequest : public PaymentCryptographyRequest
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHY_API UpdateAliasRequest();
+    AWS_PAYMENTCRYPTOGRAPHY_API UpdateAliasRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,95 +34,30 @@ namespace Model
     AWS_PAYMENTCRYPTOGRAPHY_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The alias whose associated key is changing.</p>
      */
-    inline const Aws::String& GetAliasName() const{ return m_aliasName; }
-
-    /**
-     * <p>The alias whose associated key is changing.</p>
-     */
+    inline const Aws::String& GetAliasName() const { return m_aliasName; }
     inline bool AliasNameHasBeenSet() const { return m_aliasNameHasBeenSet; }
+    template<typename AliasNameT = Aws::String>
+    void SetAliasName(AliasNameT&& value) { m_aliasNameHasBeenSet = true; m_aliasName = std::forward<AliasNameT>(value); }
+    template<typename AliasNameT = Aws::String>
+    UpdateAliasRequest& WithAliasName(AliasNameT&& value) { SetAliasName(std::forward<AliasNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The alias whose associated key is changing.</p>
-     */
-    inline void SetAliasName(const Aws::String& value) { m_aliasNameHasBeenSet = true; m_aliasName = value; }
-
-    /**
-     * <p>The alias whose associated key is changing.</p>
-     */
-    inline void SetAliasName(Aws::String&& value) { m_aliasNameHasBeenSet = true; m_aliasName = std::move(value); }
-
-    /**
-     * <p>The alias whose associated key is changing.</p>
-     */
-    inline void SetAliasName(const char* value) { m_aliasNameHasBeenSet = true; m_aliasName.assign(value); }
-
-    /**
-     * <p>The alias whose associated key is changing.</p>
-     */
-    inline UpdateAliasRequest& WithAliasName(const Aws::String& value) { SetAliasName(value); return *this;}
-
-    /**
-     * <p>The alias whose associated key is changing.</p>
-     */
-    inline UpdateAliasRequest& WithAliasName(Aws::String&& value) { SetAliasName(std::move(value)); return *this;}
-
-    /**
-     * <p>The alias whose associated key is changing.</p>
-     */
-    inline UpdateAliasRequest& WithAliasName(const char* value) { SetAliasName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The <code>KeyARN</code> for the key that you are updating or removing from
      * the alias.</p>
      */
-    inline const Aws::String& GetKeyArn() const{ return m_keyArn; }
-
-    /**
-     * <p>The <code>KeyARN</code> for the key that you are updating or removing from
-     * the alias.</p>
-     */
+    inline const Aws::String& GetKeyArn() const { return m_keyArn; }
     inline bool KeyArnHasBeenSet() const { return m_keyArnHasBeenSet; }
-
-    /**
-     * <p>The <code>KeyARN</code> for the key that you are updating or removing from
-     * the alias.</p>
-     */
-    inline void SetKeyArn(const Aws::String& value) { m_keyArnHasBeenSet = true; m_keyArn = value; }
-
-    /**
-     * <p>The <code>KeyARN</code> for the key that you are updating or removing from
-     * the alias.</p>
-     */
-    inline void SetKeyArn(Aws::String&& value) { m_keyArnHasBeenSet = true; m_keyArn = std::move(value); }
-
-    /**
-     * <p>The <code>KeyARN</code> for the key that you are updating or removing from
-     * the alias.</p>
-     */
-    inline void SetKeyArn(const char* value) { m_keyArnHasBeenSet = true; m_keyArn.assign(value); }
-
-    /**
-     * <p>The <code>KeyARN</code> for the key that you are updating or removing from
-     * the alias.</p>
-     */
-    inline UpdateAliasRequest& WithKeyArn(const Aws::String& value) { SetKeyArn(value); return *this;}
-
-    /**
-     * <p>The <code>KeyARN</code> for the key that you are updating or removing from
-     * the alias.</p>
-     */
-    inline UpdateAliasRequest& WithKeyArn(Aws::String&& value) { SetKeyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The <code>KeyARN</code> for the key that you are updating or removing from
-     * the alias.</p>
-     */
-    inline UpdateAliasRequest& WithKeyArn(const char* value) { SetKeyArn(value); return *this;}
-
+    template<typename KeyArnT = Aws::String>
+    void SetKeyArn(KeyArnT&& value) { m_keyArnHasBeenSet = true; m_keyArn = std::forward<KeyArnT>(value); }
+    template<typename KeyArnT = Aws::String>
+    UpdateAliasRequest& WithKeyArn(KeyArnT&& value) { SetKeyArn(std::forward<KeyArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_aliasName;

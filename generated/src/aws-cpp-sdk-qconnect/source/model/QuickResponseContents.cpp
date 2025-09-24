@@ -18,35 +18,23 @@ namespace QConnect
 namespace Model
 {
 
-QuickResponseContents::QuickResponseContents() : 
-    m_markdownHasBeenSet(false),
-    m_plainTextHasBeenSet(false)
-{
-}
-
-QuickResponseContents::QuickResponseContents(JsonView jsonValue) : 
-    m_markdownHasBeenSet(false),
-    m_plainTextHasBeenSet(false)
+QuickResponseContents::QuickResponseContents(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 QuickResponseContents& QuickResponseContents::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("markdown"))
-  {
-    m_markdown = jsonValue.GetObject("markdown");
-
-    m_markdownHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("plainText"))
   {
     m_plainText = jsonValue.GetObject("plainText");
-
     m_plainTextHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("markdown"))
+  {
+    m_markdown = jsonValue.GetObject("markdown");
+    m_markdownHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +42,15 @@ JsonValue QuickResponseContents::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_markdownHasBeenSet)
-  {
-   payload.WithObject("markdown", m_markdown.Jsonize());
-
-  }
-
   if(m_plainTextHasBeenSet)
   {
    payload.WithObject("plainText", m_plainText.Jsonize());
+
+  }
+
+  if(m_markdownHasBeenSet)
+  {
+   payload.WithObject("markdown", m_markdown.Jsonize());
 
   }
 

@@ -18,17 +18,7 @@ namespace BedrockAgent
 namespace Model
 {
 
-AgentAliasHistoryEvent::AgentAliasHistoryEvent() : 
-    m_routingConfigurationHasBeenSet(false),
-    m_endDateHasBeenSet(false),
-    m_startDateHasBeenSet(false)
-{
-}
-
-AgentAliasHistoryEvent::AgentAliasHistoryEvent(JsonView jsonValue) : 
-    m_routingConfigurationHasBeenSet(false),
-    m_endDateHasBeenSet(false),
-    m_startDateHasBeenSet(false)
+AgentAliasHistoryEvent::AgentAliasHistoryEvent(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,21 +34,16 @@ AgentAliasHistoryEvent& AgentAliasHistoryEvent::operator =(JsonView jsonValue)
     }
     m_routingConfigurationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("endDate"))
   {
     m_endDate = jsonValue.GetString("endDate");
-
     m_endDateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("startDate"))
   {
     m_startDate = jsonValue.GetString("startDate");
-
     m_startDateHasBeenSet = true;
   }
-
   return *this;
 }
 

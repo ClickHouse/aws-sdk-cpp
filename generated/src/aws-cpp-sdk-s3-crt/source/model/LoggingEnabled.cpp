@@ -20,19 +20,7 @@ namespace S3Crt
 namespace Model
 {
 
-LoggingEnabled::LoggingEnabled() : 
-    m_targetBucketHasBeenSet(false),
-    m_targetGrantsHasBeenSet(false),
-    m_targetPrefixHasBeenSet(false),
-    m_targetObjectKeyFormatHasBeenSet(false)
-{
-}
-
-LoggingEnabled::LoggingEnabled(const XmlNode& xmlNode) : 
-    m_targetBucketHasBeenSet(false),
-    m_targetGrantsHasBeenSet(false),
-    m_targetPrefixHasBeenSet(false),
-    m_targetObjectKeyFormatHasBeenSet(false)
+LoggingEnabled::LoggingEnabled(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -53,6 +41,7 @@ LoggingEnabled& LoggingEnabled::operator =(const XmlNode& xmlNode)
     if(!targetGrantsNode.IsNull())
     {
       XmlNode targetGrantsMember = targetGrantsNode.FirstChild("Grant");
+      m_targetGrantsHasBeenSet = !targetGrantsMember.IsNull();
       while(!targetGrantsMember.IsNull())
       {
         m_targetGrants.push_back(targetGrantsMember);

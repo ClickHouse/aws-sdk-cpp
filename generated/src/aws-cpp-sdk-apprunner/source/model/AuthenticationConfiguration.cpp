@@ -18,15 +18,7 @@ namespace AppRunner
 namespace Model
 {
 
-AuthenticationConfiguration::AuthenticationConfiguration() : 
-    m_connectionArnHasBeenSet(false),
-    m_accessRoleArnHasBeenSet(false)
-{
-}
-
-AuthenticationConfiguration::AuthenticationConfiguration(JsonView jsonValue) : 
-    m_connectionArnHasBeenSet(false),
-    m_accessRoleArnHasBeenSet(false)
+AuthenticationConfiguration::AuthenticationConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AuthenticationConfiguration& AuthenticationConfiguration::operator =(JsonView js
   if(jsonValue.ValueExists("ConnectionArn"))
   {
     m_connectionArn = jsonValue.GetString("ConnectionArn");
-
     m_connectionArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("AccessRoleArn"))
   {
     m_accessRoleArn = jsonValue.GetString("AccessRoleArn");
-
     m_accessRoleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

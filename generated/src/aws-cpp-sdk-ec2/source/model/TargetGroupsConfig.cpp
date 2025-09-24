@@ -20,13 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TargetGroupsConfig::TargetGroupsConfig() : 
-    m_targetGroupsHasBeenSet(false)
-{
-}
-
-TargetGroupsConfig::TargetGroupsConfig(const XmlNode& xmlNode) : 
-    m_targetGroupsHasBeenSet(false)
+TargetGroupsConfig::TargetGroupsConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -41,6 +35,7 @@ TargetGroupsConfig& TargetGroupsConfig::operator =(const XmlNode& xmlNode)
     if(!targetGroupsNode.IsNull())
     {
       XmlNode targetGroupsMember = targetGroupsNode.FirstChild("item");
+      m_targetGroupsHasBeenSet = !targetGroupsMember.IsNull();
       while(!targetGroupsMember.IsNull())
       {
         m_targetGroups.push_back(targetGroupsMember);
@@ -77,7 +72,7 @@ void TargetGroupsConfig::OutputToStream(Aws::OStream& oStream, const char* locat
       for(auto& item : m_targetGroups)
       {
         Aws::StringStream targetGroupsSs;
-        targetGroupsSs << location <<  ".TargetGroups." << targetGroupsIdx++;
+        targetGroupsSs << location << ".TargetGroups." << targetGroupsIdx++;
         item.OutputToStream(oStream, targetGroupsSs.str().c_str());
       }
   }

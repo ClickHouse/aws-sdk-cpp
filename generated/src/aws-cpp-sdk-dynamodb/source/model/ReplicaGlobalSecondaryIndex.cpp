@@ -18,15 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-ReplicaGlobalSecondaryIndex::ReplicaGlobalSecondaryIndex() : 
-    m_indexNameHasBeenSet(false),
-    m_provisionedThroughputOverrideHasBeenSet(false)
-{
-}
-
-ReplicaGlobalSecondaryIndex::ReplicaGlobalSecondaryIndex(JsonView jsonValue) : 
-    m_indexNameHasBeenSet(false),
-    m_provisionedThroughputOverrideHasBeenSet(false)
+ReplicaGlobalSecondaryIndex::ReplicaGlobalSecondaryIndex(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,18 @@ ReplicaGlobalSecondaryIndex& ReplicaGlobalSecondaryIndex::operator =(JsonView js
   if(jsonValue.ValueExists("IndexName"))
   {
     m_indexName = jsonValue.GetString("IndexName");
-
     m_indexNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ProvisionedThroughputOverride"))
   {
     m_provisionedThroughputOverride = jsonValue.GetObject("ProvisionedThroughputOverride");
-
     m_provisionedThroughputOverrideHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("OnDemandThroughputOverride"))
+  {
+    m_onDemandThroughputOverride = jsonValue.GetObject("OnDemandThroughputOverride");
+    m_onDemandThroughputOverrideHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +56,12 @@ JsonValue ReplicaGlobalSecondaryIndex::Jsonize() const
   if(m_provisionedThroughputOverrideHasBeenSet)
   {
    payload.WithObject("ProvisionedThroughputOverride", m_provisionedThroughputOverride.Jsonize());
+
+  }
+
+  if(m_onDemandThroughputOverrideHasBeenSet)
+  {
+   payload.WithObject("OnDemandThroughputOverride", m_onDemandThroughputOverride.Jsonize());
 
   }
 

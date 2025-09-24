@@ -18,13 +18,7 @@ namespace TranscribeService
 namespace Model
 {
 
-ToxicityDetectionSettings::ToxicityDetectionSettings() : 
-    m_toxicityCategoriesHasBeenSet(false)
-{
-}
-
-ToxicityDetectionSettings::ToxicityDetectionSettings(JsonView jsonValue) : 
-    m_toxicityCategoriesHasBeenSet(false)
+ToxicityDetectionSettings::ToxicityDetectionSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ToxicityDetectionSettings& ToxicityDetectionSettings::operator =(JsonView jsonVa
     }
     m_toxicityCategoriesHasBeenSet = true;
   }
-
   return *this;
 }
 

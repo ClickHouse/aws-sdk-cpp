@@ -20,59 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-DistributionConfig::DistributionConfig() : 
-    m_callerReferenceHasBeenSet(false),
-    m_aliasesHasBeenSet(false),
-    m_defaultRootObjectHasBeenSet(false),
-    m_originsHasBeenSet(false),
-    m_originGroupsHasBeenSet(false),
-    m_defaultCacheBehaviorHasBeenSet(false),
-    m_cacheBehaviorsHasBeenSet(false),
-    m_customErrorResponsesHasBeenSet(false),
-    m_commentHasBeenSet(false),
-    m_loggingHasBeenSet(false),
-    m_priceClass(PriceClass::NOT_SET),
-    m_priceClassHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_viewerCertificateHasBeenSet(false),
-    m_restrictionsHasBeenSet(false),
-    m_webACLIdHasBeenSet(false),
-    m_httpVersion(HttpVersion::NOT_SET),
-    m_httpVersionHasBeenSet(false),
-    m_isIPV6Enabled(false),
-    m_isIPV6EnabledHasBeenSet(false),
-    m_continuousDeploymentPolicyIdHasBeenSet(false),
-    m_staging(false),
-    m_stagingHasBeenSet(false)
-{
-}
-
-DistributionConfig::DistributionConfig(const XmlNode& xmlNode) : 
-    m_callerReferenceHasBeenSet(false),
-    m_aliasesHasBeenSet(false),
-    m_defaultRootObjectHasBeenSet(false),
-    m_originsHasBeenSet(false),
-    m_originGroupsHasBeenSet(false),
-    m_defaultCacheBehaviorHasBeenSet(false),
-    m_cacheBehaviorsHasBeenSet(false),
-    m_customErrorResponsesHasBeenSet(false),
-    m_commentHasBeenSet(false),
-    m_loggingHasBeenSet(false),
-    m_priceClass(PriceClass::NOT_SET),
-    m_priceClassHasBeenSet(false),
-    m_enabled(false),
-    m_enabledHasBeenSet(false),
-    m_viewerCertificateHasBeenSet(false),
-    m_restrictionsHasBeenSet(false),
-    m_webACLIdHasBeenSet(false),
-    m_httpVersion(HttpVersion::NOT_SET),
-    m_httpVersionHasBeenSet(false),
-    m_isIPV6Enabled(false),
-    m_isIPV6EnabledHasBeenSet(false),
-    m_continuousDeploymentPolicyIdHasBeenSet(false),
-    m_staging(false),
-    m_stagingHasBeenSet(false)
+DistributionConfig::DistributionConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -146,7 +94,7 @@ DistributionConfig& DistributionConfig::operator =(const XmlNode& xmlNode)
     XmlNode priceClassNode = resultNode.FirstChild("PriceClass");
     if(!priceClassNode.IsNull())
     {
-      m_priceClass = PriceClassMapper::GetPriceClassForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(priceClassNode.GetText()).c_str()).c_str());
+      m_priceClass = PriceClassMapper::GetPriceClassForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(priceClassNode.GetText()).c_str()));
       m_priceClassHasBeenSet = true;
     }
     XmlNode enabledNode = resultNode.FirstChild("Enabled");
@@ -176,7 +124,7 @@ DistributionConfig& DistributionConfig::operator =(const XmlNode& xmlNode)
     XmlNode httpVersionNode = resultNode.FirstChild("HttpVersion");
     if(!httpVersionNode.IsNull())
     {
-      m_httpVersion = HttpVersionMapper::GetHttpVersionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpVersionNode.GetText()).c_str()).c_str());
+      m_httpVersion = HttpVersionMapper::GetHttpVersionForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(httpVersionNode.GetText()).c_str()));
       m_httpVersionHasBeenSet = true;
     }
     XmlNode isIPV6EnabledNode = resultNode.FirstChild("IsIPV6Enabled");
@@ -196,6 +144,24 @@ DistributionConfig& DistributionConfig::operator =(const XmlNode& xmlNode)
     {
       m_staging = StringUtils::ConvertToBool(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stagingNode.GetText()).c_str()).c_str());
       m_stagingHasBeenSet = true;
+    }
+    XmlNode anycastIpListIdNode = resultNode.FirstChild("AnycastIpListId");
+    if(!anycastIpListIdNode.IsNull())
+    {
+      m_anycastIpListId = Aws::Utils::Xml::DecodeEscapedXmlText(anycastIpListIdNode.GetText());
+      m_anycastIpListIdHasBeenSet = true;
+    }
+    XmlNode tenantConfigNode = resultNode.FirstChild("TenantConfig");
+    if(!tenantConfigNode.IsNull())
+    {
+      m_tenantConfig = tenantConfigNode;
+      m_tenantConfigHasBeenSet = true;
+    }
+    XmlNode connectionModeNode = resultNode.FirstChild("ConnectionMode");
+    if(!connectionModeNode.IsNull())
+    {
+      m_connectionMode = ConnectionModeMapper::GetConnectionModeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(connectionModeNode.GetText()).c_str()));
+      m_connectionModeHasBeenSet = true;
     }
   }
 
@@ -323,6 +289,24 @@ void DistributionConfig::AddToNode(XmlNode& parentNode) const
    ss << std::boolalpha << m_staging;
    stagingNode.SetText(ss.str());
    ss.str("");
+  }
+
+  if(m_anycastIpListIdHasBeenSet)
+  {
+   XmlNode anycastIpListIdNode = parentNode.CreateChildElement("AnycastIpListId");
+   anycastIpListIdNode.SetText(m_anycastIpListId);
+  }
+
+  if(m_tenantConfigHasBeenSet)
+  {
+   XmlNode tenantConfigNode = parentNode.CreateChildElement("TenantConfig");
+   m_tenantConfig.AddToNode(tenantConfigNode);
+  }
+
+  if(m_connectionModeHasBeenSet)
+  {
+   XmlNode connectionModeNode = parentNode.CreateChildElement("ConnectionMode");
+   connectionModeNode.SetText(ConnectionModeMapper::GetNameForConnectionMode(m_connectionMode));
   }
 
 }

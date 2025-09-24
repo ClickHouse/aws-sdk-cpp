@@ -21,7 +21,7 @@ namespace Model
   class GetExperimentTargetAccountConfigurationRequest : public FISRequest
   {
   public:
-    AWS_FIS_API GetExperimentTargetAccountConfigurationRequest();
+    AWS_FIS_API GetExperimentTargetAccountConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_FIS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the experiment.</p>
      */
-    inline const Aws::String& GetExperimentId() const{ return m_experimentId; }
-
-    /**
-     * <p>The ID of the experiment.</p>
-     */
+    inline const Aws::String& GetExperimentId() const { return m_experimentId; }
     inline bool ExperimentIdHasBeenSet() const { return m_experimentIdHasBeenSet; }
+    template<typename ExperimentIdT = Aws::String>
+    void SetExperimentId(ExperimentIdT&& value) { m_experimentIdHasBeenSet = true; m_experimentId = std::forward<ExperimentIdT>(value); }
+    template<typename ExperimentIdT = Aws::String>
+    GetExperimentTargetAccountConfigurationRequest& WithExperimentId(ExperimentIdT&& value) { SetExperimentId(std::forward<ExperimentIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the experiment.</p>
+     * <p>The Amazon Web Services account ID of the target account.</p>
      */
-    inline void SetExperimentId(const Aws::String& value) { m_experimentIdHasBeenSet = true; m_experimentId = value; }
-
-    /**
-     * <p>The ID of the experiment.</p>
-     */
-    inline void SetExperimentId(Aws::String&& value) { m_experimentIdHasBeenSet = true; m_experimentId = std::move(value); }
-
-    /**
-     * <p>The ID of the experiment.</p>
-     */
-    inline void SetExperimentId(const char* value) { m_experimentIdHasBeenSet = true; m_experimentId.assign(value); }
-
-    /**
-     * <p>The ID of the experiment.</p>
-     */
-    inline GetExperimentTargetAccountConfigurationRequest& WithExperimentId(const Aws::String& value) { SetExperimentId(value); return *this;}
-
-    /**
-     * <p>The ID of the experiment.</p>
-     */
-    inline GetExperimentTargetAccountConfigurationRequest& WithExperimentId(Aws::String&& value) { SetExperimentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the experiment.</p>
-     */
-    inline GetExperimentTargetAccountConfigurationRequest& WithExperimentId(const char* value) { SetExperimentId(value); return *this;}
-
-
-    /**
-     * <p>The AWS account ID of the target account.</p>
-     */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The AWS account ID of the target account.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
-
-    /**
-     * <p>The AWS account ID of the target account.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The AWS account ID of the target account.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The AWS account ID of the target account.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The AWS account ID of the target account.</p>
-     */
-    inline GetExperimentTargetAccountConfigurationRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The AWS account ID of the target account.</p>
-     */
-    inline GetExperimentTargetAccountConfigurationRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS account ID of the target account.</p>
-     */
-    inline GetExperimentTargetAccountConfigurationRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    GetExperimentTargetAccountConfigurationRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_experimentId;

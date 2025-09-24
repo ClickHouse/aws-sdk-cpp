@@ -14,6 +14,7 @@
 #include <aws/quicksight/model/AssetBundleImportJobThemeOverrideParameters.h>
 #include <aws/quicksight/model/AssetBundleImportJobAnalysisOverrideParameters.h>
 #include <aws/quicksight/model/AssetBundleImportJobDashboardOverrideParameters.h>
+#include <aws/quicksight/model/AssetBundleImportJobFolderOverrideParameters.h>
 #include <utility>
 
 namespace Aws
@@ -40,391 +41,144 @@ namespace Model
   class AssetBundleImportJobOverrideParameters
   {
   public:
-    AWS_QUICKSIGHT_API AssetBundleImportJobOverrideParameters();
+    AWS_QUICKSIGHT_API AssetBundleImportJobOverrideParameters() = default;
     AWS_QUICKSIGHT_API AssetBundleImportJobOverrideParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API AssetBundleImportJobOverrideParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>An optional structure that configures resource ID overrides to be applied
      * within the import job.</p>
      */
-    inline const AssetBundleImportJobResourceIdOverrideConfiguration& GetResourceIdOverrideConfiguration() const{ return m_resourceIdOverrideConfiguration; }
-
-    /**
-     * <p>An optional structure that configures resource ID overrides to be applied
-     * within the import job.</p>
-     */
+    inline const AssetBundleImportJobResourceIdOverrideConfiguration& GetResourceIdOverrideConfiguration() const { return m_resourceIdOverrideConfiguration; }
     inline bool ResourceIdOverrideConfigurationHasBeenSet() const { return m_resourceIdOverrideConfigurationHasBeenSet; }
+    template<typename ResourceIdOverrideConfigurationT = AssetBundleImportJobResourceIdOverrideConfiguration>
+    void SetResourceIdOverrideConfiguration(ResourceIdOverrideConfigurationT&& value) { m_resourceIdOverrideConfigurationHasBeenSet = true; m_resourceIdOverrideConfiguration = std::forward<ResourceIdOverrideConfigurationT>(value); }
+    template<typename ResourceIdOverrideConfigurationT = AssetBundleImportJobResourceIdOverrideConfiguration>
+    AssetBundleImportJobOverrideParameters& WithResourceIdOverrideConfiguration(ResourceIdOverrideConfigurationT&& value) { SetResourceIdOverrideConfiguration(std::forward<ResourceIdOverrideConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>An optional structure that configures resource ID overrides to be applied
-     * within the import job.</p>
-     */
-    inline void SetResourceIdOverrideConfiguration(const AssetBundleImportJobResourceIdOverrideConfiguration& value) { m_resourceIdOverrideConfigurationHasBeenSet = true; m_resourceIdOverrideConfiguration = value; }
-
-    /**
-     * <p>An optional structure that configures resource ID overrides to be applied
-     * within the import job.</p>
-     */
-    inline void SetResourceIdOverrideConfiguration(AssetBundleImportJobResourceIdOverrideConfiguration&& value) { m_resourceIdOverrideConfigurationHasBeenSet = true; m_resourceIdOverrideConfiguration = std::move(value); }
-
-    /**
-     * <p>An optional structure that configures resource ID overrides to be applied
-     * within the import job.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithResourceIdOverrideConfiguration(const AssetBundleImportJobResourceIdOverrideConfiguration& value) { SetResourceIdOverrideConfiguration(value); return *this;}
-
-    /**
-     * <p>An optional structure that configures resource ID overrides to be applied
-     * within the import job.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithResourceIdOverrideConfiguration(AssetBundleImportJobResourceIdOverrideConfiguration&& value) { SetResourceIdOverrideConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of overrides for any <code>VPCConnection</code> resources that are
      * present in the asset bundle that is imported.</p>
      */
-    inline const Aws::Vector<AssetBundleImportJobVPCConnectionOverrideParameters>& GetVPCConnections() const{ return m_vPCConnections; }
-
-    /**
-     * <p>A list of overrides for any <code>VPCConnection</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
+    inline const Aws::Vector<AssetBundleImportJobVPCConnectionOverrideParameters>& GetVPCConnections() const { return m_vPCConnections; }
     inline bool VPCConnectionsHasBeenSet() const { return m_vPCConnectionsHasBeenSet; }
+    template<typename VPCConnectionsT = Aws::Vector<AssetBundleImportJobVPCConnectionOverrideParameters>>
+    void SetVPCConnections(VPCConnectionsT&& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections = std::forward<VPCConnectionsT>(value); }
+    template<typename VPCConnectionsT = Aws::Vector<AssetBundleImportJobVPCConnectionOverrideParameters>>
+    AssetBundleImportJobOverrideParameters& WithVPCConnections(VPCConnectionsT&& value) { SetVPCConnections(std::forward<VPCConnectionsT>(value)); return *this;}
+    template<typename VPCConnectionsT = AssetBundleImportJobVPCConnectionOverrideParameters>
+    AssetBundleImportJobOverrideParameters& AddVPCConnections(VPCConnectionsT&& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections.emplace_back(std::forward<VPCConnectionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of overrides for any <code>VPCConnection</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline void SetVPCConnections(const Aws::Vector<AssetBundleImportJobVPCConnectionOverrideParameters>& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections = value; }
-
-    /**
-     * <p>A list of overrides for any <code>VPCConnection</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline void SetVPCConnections(Aws::Vector<AssetBundleImportJobVPCConnectionOverrideParameters>&& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections = std::move(value); }
-
-    /**
-     * <p>A list of overrides for any <code>VPCConnection</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithVPCConnections(const Aws::Vector<AssetBundleImportJobVPCConnectionOverrideParameters>& value) { SetVPCConnections(value); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>VPCConnection</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithVPCConnections(Aws::Vector<AssetBundleImportJobVPCConnectionOverrideParameters>&& value) { SetVPCConnections(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>VPCConnection</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddVPCConnections(const AssetBundleImportJobVPCConnectionOverrideParameters& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections.push_back(value); return *this; }
-
-    /**
-     * <p>A list of overrides for any <code>VPCConnection</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddVPCConnections(AssetBundleImportJobVPCConnectionOverrideParameters&& value) { m_vPCConnectionsHasBeenSet = true; m_vPCConnections.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of overrides for any <code>RefreshSchedule</code> resources that are
      * present in the asset bundle that is imported.</p>
      */
-    inline const Aws::Vector<AssetBundleImportJobRefreshScheduleOverrideParameters>& GetRefreshSchedules() const{ return m_refreshSchedules; }
-
-    /**
-     * <p>A list of overrides for any <code>RefreshSchedule</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
+    inline const Aws::Vector<AssetBundleImportJobRefreshScheduleOverrideParameters>& GetRefreshSchedules() const { return m_refreshSchedules; }
     inline bool RefreshSchedulesHasBeenSet() const { return m_refreshSchedulesHasBeenSet; }
+    template<typename RefreshSchedulesT = Aws::Vector<AssetBundleImportJobRefreshScheduleOverrideParameters>>
+    void SetRefreshSchedules(RefreshSchedulesT&& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules = std::forward<RefreshSchedulesT>(value); }
+    template<typename RefreshSchedulesT = Aws::Vector<AssetBundleImportJobRefreshScheduleOverrideParameters>>
+    AssetBundleImportJobOverrideParameters& WithRefreshSchedules(RefreshSchedulesT&& value) { SetRefreshSchedules(std::forward<RefreshSchedulesT>(value)); return *this;}
+    template<typename RefreshSchedulesT = AssetBundleImportJobRefreshScheduleOverrideParameters>
+    AssetBundleImportJobOverrideParameters& AddRefreshSchedules(RefreshSchedulesT&& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules.emplace_back(std::forward<RefreshSchedulesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of overrides for any <code>RefreshSchedule</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline void SetRefreshSchedules(const Aws::Vector<AssetBundleImportJobRefreshScheduleOverrideParameters>& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules = value; }
-
-    /**
-     * <p>A list of overrides for any <code>RefreshSchedule</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline void SetRefreshSchedules(Aws::Vector<AssetBundleImportJobRefreshScheduleOverrideParameters>&& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules = std::move(value); }
-
-    /**
-     * <p>A list of overrides for any <code>RefreshSchedule</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithRefreshSchedules(const Aws::Vector<AssetBundleImportJobRefreshScheduleOverrideParameters>& value) { SetRefreshSchedules(value); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>RefreshSchedule</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithRefreshSchedules(Aws::Vector<AssetBundleImportJobRefreshScheduleOverrideParameters>&& value) { SetRefreshSchedules(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>RefreshSchedule</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddRefreshSchedules(const AssetBundleImportJobRefreshScheduleOverrideParameters& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules.push_back(value); return *this; }
-
-    /**
-     * <p>A list of overrides for any <code>RefreshSchedule</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddRefreshSchedules(AssetBundleImportJobRefreshScheduleOverrideParameters&& value) { m_refreshSchedulesHasBeenSet = true; m_refreshSchedules.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p> A list of overrides for any <code>DataSource</code> resources that are
      * present in the asset bundle that is imported.</p>
      */
-    inline const Aws::Vector<AssetBundleImportJobDataSourceOverrideParameters>& GetDataSources() const{ return m_dataSources; }
-
-    /**
-     * <p> A list of overrides for any <code>DataSource</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
+    inline const Aws::Vector<AssetBundleImportJobDataSourceOverrideParameters>& GetDataSources() const { return m_dataSources; }
     inline bool DataSourcesHasBeenSet() const { return m_dataSourcesHasBeenSet; }
+    template<typename DataSourcesT = Aws::Vector<AssetBundleImportJobDataSourceOverrideParameters>>
+    void SetDataSources(DataSourcesT&& value) { m_dataSourcesHasBeenSet = true; m_dataSources = std::forward<DataSourcesT>(value); }
+    template<typename DataSourcesT = Aws::Vector<AssetBundleImportJobDataSourceOverrideParameters>>
+    AssetBundleImportJobOverrideParameters& WithDataSources(DataSourcesT&& value) { SetDataSources(std::forward<DataSourcesT>(value)); return *this;}
+    template<typename DataSourcesT = AssetBundleImportJobDataSourceOverrideParameters>
+    AssetBundleImportJobOverrideParameters& AddDataSources(DataSourcesT&& value) { m_dataSourcesHasBeenSet = true; m_dataSources.emplace_back(std::forward<DataSourcesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p> A list of overrides for any <code>DataSource</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline void SetDataSources(const Aws::Vector<AssetBundleImportJobDataSourceOverrideParameters>& value) { m_dataSourcesHasBeenSet = true; m_dataSources = value; }
-
-    /**
-     * <p> A list of overrides for any <code>DataSource</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline void SetDataSources(Aws::Vector<AssetBundleImportJobDataSourceOverrideParameters>&& value) { m_dataSourcesHasBeenSet = true; m_dataSources = std::move(value); }
-
-    /**
-     * <p> A list of overrides for any <code>DataSource</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithDataSources(const Aws::Vector<AssetBundleImportJobDataSourceOverrideParameters>& value) { SetDataSources(value); return *this;}
-
-    /**
-     * <p> A list of overrides for any <code>DataSource</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithDataSources(Aws::Vector<AssetBundleImportJobDataSourceOverrideParameters>&& value) { SetDataSources(std::move(value)); return *this;}
-
-    /**
-     * <p> A list of overrides for any <code>DataSource</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddDataSources(const AssetBundleImportJobDataSourceOverrideParameters& value) { m_dataSourcesHasBeenSet = true; m_dataSources.push_back(value); return *this; }
-
-    /**
-     * <p> A list of overrides for any <code>DataSource</code> resources that are
-     * present in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddDataSources(AssetBundleImportJobDataSourceOverrideParameters&& value) { m_dataSourcesHasBeenSet = true; m_dataSources.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of overrides for any <code>DataSet</code> resources that are present
      * in the asset bundle that is imported.</p>
      */
-    inline const Aws::Vector<AssetBundleImportJobDataSetOverrideParameters>& GetDataSets() const{ return m_dataSets; }
-
-    /**
-     * <p>A list of overrides for any <code>DataSet</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
+    inline const Aws::Vector<AssetBundleImportJobDataSetOverrideParameters>& GetDataSets() const { return m_dataSets; }
     inline bool DataSetsHasBeenSet() const { return m_dataSetsHasBeenSet; }
+    template<typename DataSetsT = Aws::Vector<AssetBundleImportJobDataSetOverrideParameters>>
+    void SetDataSets(DataSetsT&& value) { m_dataSetsHasBeenSet = true; m_dataSets = std::forward<DataSetsT>(value); }
+    template<typename DataSetsT = Aws::Vector<AssetBundleImportJobDataSetOverrideParameters>>
+    AssetBundleImportJobOverrideParameters& WithDataSets(DataSetsT&& value) { SetDataSets(std::forward<DataSetsT>(value)); return *this;}
+    template<typename DataSetsT = AssetBundleImportJobDataSetOverrideParameters>
+    AssetBundleImportJobOverrideParameters& AddDataSets(DataSetsT&& value) { m_dataSetsHasBeenSet = true; m_dataSets.emplace_back(std::forward<DataSetsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of overrides for any <code>DataSet</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline void SetDataSets(const Aws::Vector<AssetBundleImportJobDataSetOverrideParameters>& value) { m_dataSetsHasBeenSet = true; m_dataSets = value; }
-
-    /**
-     * <p>A list of overrides for any <code>DataSet</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline void SetDataSets(Aws::Vector<AssetBundleImportJobDataSetOverrideParameters>&& value) { m_dataSetsHasBeenSet = true; m_dataSets = std::move(value); }
-
-    /**
-     * <p>A list of overrides for any <code>DataSet</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithDataSets(const Aws::Vector<AssetBundleImportJobDataSetOverrideParameters>& value) { SetDataSets(value); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>DataSet</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithDataSets(Aws::Vector<AssetBundleImportJobDataSetOverrideParameters>&& value) { SetDataSets(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>DataSet</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddDataSets(const AssetBundleImportJobDataSetOverrideParameters& value) { m_dataSetsHasBeenSet = true; m_dataSets.push_back(value); return *this; }
-
-    /**
-     * <p>A list of overrides for any <code>DataSet</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddDataSets(AssetBundleImportJobDataSetOverrideParameters&& value) { m_dataSetsHasBeenSet = true; m_dataSets.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of overrides for any <code>Theme</code> resources that are present in
      * the asset bundle that is imported.</p>
      */
-    inline const Aws::Vector<AssetBundleImportJobThemeOverrideParameters>& GetThemes() const{ return m_themes; }
-
-    /**
-     * <p>A list of overrides for any <code>Theme</code> resources that are present in
-     * the asset bundle that is imported.</p>
-     */
+    inline const Aws::Vector<AssetBundleImportJobThemeOverrideParameters>& GetThemes() const { return m_themes; }
     inline bool ThemesHasBeenSet() const { return m_themesHasBeenSet; }
+    template<typename ThemesT = Aws::Vector<AssetBundleImportJobThemeOverrideParameters>>
+    void SetThemes(ThemesT&& value) { m_themesHasBeenSet = true; m_themes = std::forward<ThemesT>(value); }
+    template<typename ThemesT = Aws::Vector<AssetBundleImportJobThemeOverrideParameters>>
+    AssetBundleImportJobOverrideParameters& WithThemes(ThemesT&& value) { SetThemes(std::forward<ThemesT>(value)); return *this;}
+    template<typename ThemesT = AssetBundleImportJobThemeOverrideParameters>
+    AssetBundleImportJobOverrideParameters& AddThemes(ThemesT&& value) { m_themesHasBeenSet = true; m_themes.emplace_back(std::forward<ThemesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of overrides for any <code>Theme</code> resources that are present in
-     * the asset bundle that is imported.</p>
-     */
-    inline void SetThemes(const Aws::Vector<AssetBundleImportJobThemeOverrideParameters>& value) { m_themesHasBeenSet = true; m_themes = value; }
-
-    /**
-     * <p>A list of overrides for any <code>Theme</code> resources that are present in
-     * the asset bundle that is imported.</p>
-     */
-    inline void SetThemes(Aws::Vector<AssetBundleImportJobThemeOverrideParameters>&& value) { m_themesHasBeenSet = true; m_themes = std::move(value); }
-
-    /**
-     * <p>A list of overrides for any <code>Theme</code> resources that are present in
-     * the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithThemes(const Aws::Vector<AssetBundleImportJobThemeOverrideParameters>& value) { SetThemes(value); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>Theme</code> resources that are present in
-     * the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithThemes(Aws::Vector<AssetBundleImportJobThemeOverrideParameters>&& value) { SetThemes(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>Theme</code> resources that are present in
-     * the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddThemes(const AssetBundleImportJobThemeOverrideParameters& value) { m_themesHasBeenSet = true; m_themes.push_back(value); return *this; }
-
-    /**
-     * <p>A list of overrides for any <code>Theme</code> resources that are present in
-     * the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddThemes(AssetBundleImportJobThemeOverrideParameters&& value) { m_themesHasBeenSet = true; m_themes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of overrides for any <code>Analysis</code> resources that are present
      * in the asset bundle that is imported.</p>
      */
-    inline const Aws::Vector<AssetBundleImportJobAnalysisOverrideParameters>& GetAnalyses() const{ return m_analyses; }
-
-    /**
-     * <p>A list of overrides for any <code>Analysis</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
+    inline const Aws::Vector<AssetBundleImportJobAnalysisOverrideParameters>& GetAnalyses() const { return m_analyses; }
     inline bool AnalysesHasBeenSet() const { return m_analysesHasBeenSet; }
+    template<typename AnalysesT = Aws::Vector<AssetBundleImportJobAnalysisOverrideParameters>>
+    void SetAnalyses(AnalysesT&& value) { m_analysesHasBeenSet = true; m_analyses = std::forward<AnalysesT>(value); }
+    template<typename AnalysesT = Aws::Vector<AssetBundleImportJobAnalysisOverrideParameters>>
+    AssetBundleImportJobOverrideParameters& WithAnalyses(AnalysesT&& value) { SetAnalyses(std::forward<AnalysesT>(value)); return *this;}
+    template<typename AnalysesT = AssetBundleImportJobAnalysisOverrideParameters>
+    AssetBundleImportJobOverrideParameters& AddAnalyses(AnalysesT&& value) { m_analysesHasBeenSet = true; m_analyses.emplace_back(std::forward<AnalysesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of overrides for any <code>Analysis</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline void SetAnalyses(const Aws::Vector<AssetBundleImportJobAnalysisOverrideParameters>& value) { m_analysesHasBeenSet = true; m_analyses = value; }
-
-    /**
-     * <p>A list of overrides for any <code>Analysis</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline void SetAnalyses(Aws::Vector<AssetBundleImportJobAnalysisOverrideParameters>&& value) { m_analysesHasBeenSet = true; m_analyses = std::move(value); }
-
-    /**
-     * <p>A list of overrides for any <code>Analysis</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithAnalyses(const Aws::Vector<AssetBundleImportJobAnalysisOverrideParameters>& value) { SetAnalyses(value); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>Analysis</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithAnalyses(Aws::Vector<AssetBundleImportJobAnalysisOverrideParameters>&& value) { SetAnalyses(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>Analysis</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddAnalyses(const AssetBundleImportJobAnalysisOverrideParameters& value) { m_analysesHasBeenSet = true; m_analyses.push_back(value); return *this; }
-
-    /**
-     * <p>A list of overrides for any <code>Analysis</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddAnalyses(AssetBundleImportJobAnalysisOverrideParameters&& value) { m_analysesHasBeenSet = true; m_analyses.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A list of overrides for any <code>Dashboard</code> resources that are present
      * in the asset bundle that is imported.</p>
      */
-    inline const Aws::Vector<AssetBundleImportJobDashboardOverrideParameters>& GetDashboards() const{ return m_dashboards; }
-
-    /**
-     * <p>A list of overrides for any <code>Dashboard</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
+    inline const Aws::Vector<AssetBundleImportJobDashboardOverrideParameters>& GetDashboards() const { return m_dashboards; }
     inline bool DashboardsHasBeenSet() const { return m_dashboardsHasBeenSet; }
+    template<typename DashboardsT = Aws::Vector<AssetBundleImportJobDashboardOverrideParameters>>
+    void SetDashboards(DashboardsT&& value) { m_dashboardsHasBeenSet = true; m_dashboards = std::forward<DashboardsT>(value); }
+    template<typename DashboardsT = Aws::Vector<AssetBundleImportJobDashboardOverrideParameters>>
+    AssetBundleImportJobOverrideParameters& WithDashboards(DashboardsT&& value) { SetDashboards(std::forward<DashboardsT>(value)); return *this;}
+    template<typename DashboardsT = AssetBundleImportJobDashboardOverrideParameters>
+    AssetBundleImportJobOverrideParameters& AddDashboards(DashboardsT&& value) { m_dashboardsHasBeenSet = true; m_dashboards.emplace_back(std::forward<DashboardsT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A list of overrides for any <code>Dashboard</code> resources that are present
-     * in the asset bundle that is imported.</p>
+     * <p>A list of overrides for any <code>Folder</code> resources that are present in
+     * the asset bundle that is imported.</p>
      */
-    inline void SetDashboards(const Aws::Vector<AssetBundleImportJobDashboardOverrideParameters>& value) { m_dashboardsHasBeenSet = true; m_dashboards = value; }
-
-    /**
-     * <p>A list of overrides for any <code>Dashboard</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline void SetDashboards(Aws::Vector<AssetBundleImportJobDashboardOverrideParameters>&& value) { m_dashboardsHasBeenSet = true; m_dashboards = std::move(value); }
-
-    /**
-     * <p>A list of overrides for any <code>Dashboard</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithDashboards(const Aws::Vector<AssetBundleImportJobDashboardOverrideParameters>& value) { SetDashboards(value); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>Dashboard</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& WithDashboards(Aws::Vector<AssetBundleImportJobDashboardOverrideParameters>&& value) { SetDashboards(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of overrides for any <code>Dashboard</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddDashboards(const AssetBundleImportJobDashboardOverrideParameters& value) { m_dashboardsHasBeenSet = true; m_dashboards.push_back(value); return *this; }
-
-    /**
-     * <p>A list of overrides for any <code>Dashboard</code> resources that are present
-     * in the asset bundle that is imported.</p>
-     */
-    inline AssetBundleImportJobOverrideParameters& AddDashboards(AssetBundleImportJobDashboardOverrideParameters&& value) { m_dashboardsHasBeenSet = true; m_dashboards.push_back(std::move(value)); return *this; }
-
+    inline const Aws::Vector<AssetBundleImportJobFolderOverrideParameters>& GetFolders() const { return m_folders; }
+    inline bool FoldersHasBeenSet() const { return m_foldersHasBeenSet; }
+    template<typename FoldersT = Aws::Vector<AssetBundleImportJobFolderOverrideParameters>>
+    void SetFolders(FoldersT&& value) { m_foldersHasBeenSet = true; m_folders = std::forward<FoldersT>(value); }
+    template<typename FoldersT = Aws::Vector<AssetBundleImportJobFolderOverrideParameters>>
+    AssetBundleImportJobOverrideParameters& WithFolders(FoldersT&& value) { SetFolders(std::forward<FoldersT>(value)); return *this;}
+    template<typename FoldersT = AssetBundleImportJobFolderOverrideParameters>
+    AssetBundleImportJobOverrideParameters& AddFolders(FoldersT&& value) { m_foldersHasBeenSet = true; m_folders.emplace_back(std::forward<FoldersT>(value)); return *this; }
+    ///@}
   private:
 
     AssetBundleImportJobResourceIdOverrideConfiguration m_resourceIdOverrideConfiguration;
@@ -450,6 +204,9 @@ namespace Model
 
     Aws::Vector<AssetBundleImportJobDashboardOverrideParameters> m_dashboards;
     bool m_dashboardsHasBeenSet = false;
+
+    Aws::Vector<AssetBundleImportJobFolderOverrideParameters> m_folders;
+    bool m_foldersHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-KernelGatewayImageConfig::KernelGatewayImageConfig() : 
-    m_kernelSpecsHasBeenSet(false),
-    m_fileSystemConfigHasBeenSet(false)
-{
-}
-
-KernelGatewayImageConfig::KernelGatewayImageConfig(JsonView jsonValue) : 
-    m_kernelSpecsHasBeenSet(false),
-    m_fileSystemConfigHasBeenSet(false)
+KernelGatewayImageConfig::KernelGatewayImageConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ KernelGatewayImageConfig& KernelGatewayImageConfig::operator =(JsonView jsonValu
     }
     m_kernelSpecsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FileSystemConfig"))
   {
     m_fileSystemConfig = jsonValue.GetObject("FileSystemConfig");
-
     m_fileSystemConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

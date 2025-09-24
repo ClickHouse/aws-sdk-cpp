@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ClientVpnRouteStatus::ClientVpnRouteStatus() : 
-    m_code(ClientVpnRouteStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-ClientVpnRouteStatus::ClientVpnRouteStatus(const XmlNode& xmlNode) : 
-    m_code(ClientVpnRouteStatusCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+ClientVpnRouteStatus::ClientVpnRouteStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -44,7 +34,7 @@ ClientVpnRouteStatus& ClientVpnRouteStatus::operator =(const XmlNode& xmlNode)
     XmlNode codeNode = resultNode.FirstChild("code");
     if(!codeNode.IsNull())
     {
-      m_code = ClientVpnRouteStatusCodeMapper::GetClientVpnRouteStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()).c_str());
+      m_code = ClientVpnRouteStatusCodeMapper::GetClientVpnRouteStatusCodeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(codeNode.GetText()).c_str()));
       m_codeHasBeenSet = true;
     }
     XmlNode messageNode = resultNode.FirstChild("message");
@@ -62,7 +52,7 @@ void ClientVpnRouteStatus::OutputToStream(Aws::OStream& oStream, const char* loc
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Code=" << ClientVpnRouteStatusCodeMapper::GetNameForClientVpnRouteStatusCode(m_code) << "&";
+      oStream << location << index << locationValue << ".Code=" << StringUtils::URLEncode(ClientVpnRouteStatusCodeMapper::GetNameForClientVpnRouteStatusCode(m_code)) << "&";
   }
 
   if(m_messageHasBeenSet)
@@ -76,7 +66,7 @@ void ClientVpnRouteStatus::OutputToStream(Aws::OStream& oStream, const char* loc
 {
   if(m_codeHasBeenSet)
   {
-      oStream << location << ".Code=" << ClientVpnRouteStatusCodeMapper::GetNameForClientVpnRouteStatusCode(m_code) << "&";
+      oStream << location << ".Code=" << StringUtils::URLEncode(ClientVpnRouteStatusCodeMapper::GetNameForClientVpnRouteStatusCode(m_code)) << "&";
   }
   if(m_messageHasBeenSet)
   {

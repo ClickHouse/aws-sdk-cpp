@@ -31,7 +31,7 @@ namespace Model
   class TransitGatewayConnectOptions
   {
   public:
-    AWS_EC2_API TransitGatewayConnectOptions();
+    AWS_EC2_API TransitGatewayConnectOptions() = default;
     AWS_EC2_API TransitGatewayConnectOptions(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API TransitGatewayConnectOptions& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -39,39 +39,18 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The tunnel protocol.</p>
      */
-    inline const ProtocolValue& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The tunnel protocol.</p>
-     */
+    inline ProtocolValue GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
-
-    /**
-     * <p>The tunnel protocol.</p>
-     */
-    inline void SetProtocol(const ProtocolValue& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The tunnel protocol.</p>
-     */
-    inline void SetProtocol(ProtocolValue&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The tunnel protocol.</p>
-     */
-    inline TransitGatewayConnectOptions& WithProtocol(const ProtocolValue& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The tunnel protocol.</p>
-     */
-    inline TransitGatewayConnectOptions& WithProtocol(ProtocolValue&& value) { SetProtocol(std::move(value)); return *this;}
-
+    inline void SetProtocol(ProtocolValue value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline TransitGatewayConnectOptions& WithProtocol(ProtocolValue value) { SetProtocol(value); return *this;}
+    ///@}
   private:
 
-    ProtocolValue m_protocol;
+    ProtocolValue m_protocol{ProtocolValue::NOT_SET};
     bool m_protocolHasBeenSet = false;
   };
 

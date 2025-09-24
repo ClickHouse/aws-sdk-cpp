@@ -31,59 +31,37 @@ namespace Model
   class ForecastStatistics
   {
   public:
-    AWS_XRAY_API ForecastStatistics();
+    AWS_XRAY_API ForecastStatistics() = default;
     AWS_XRAY_API ForecastStatistics(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API ForecastStatistics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_XRAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The upper limit of fault counts for a service.</p>
      */
-    inline long long GetFaultCountHigh() const{ return m_faultCountHigh; }
-
-    /**
-     * <p>The upper limit of fault counts for a service.</p>
-     */
+    inline long long GetFaultCountHigh() const { return m_faultCountHigh; }
     inline bool FaultCountHighHasBeenSet() const { return m_faultCountHighHasBeenSet; }
-
-    /**
-     * <p>The upper limit of fault counts for a service.</p>
-     */
     inline void SetFaultCountHigh(long long value) { m_faultCountHighHasBeenSet = true; m_faultCountHigh = value; }
-
-    /**
-     * <p>The upper limit of fault counts for a service.</p>
-     */
     inline ForecastStatistics& WithFaultCountHigh(long long value) { SetFaultCountHigh(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The lower limit of fault counts for a service.</p>
      */
-    inline long long GetFaultCountLow() const{ return m_faultCountLow; }
-
-    /**
-     * <p>The lower limit of fault counts for a service.</p>
-     */
+    inline long long GetFaultCountLow() const { return m_faultCountLow; }
     inline bool FaultCountLowHasBeenSet() const { return m_faultCountLowHasBeenSet; }
-
-    /**
-     * <p>The lower limit of fault counts for a service.</p>
-     */
     inline void SetFaultCountLow(long long value) { m_faultCountLowHasBeenSet = true; m_faultCountLow = value; }
-
-    /**
-     * <p>The lower limit of fault counts for a service.</p>
-     */
     inline ForecastStatistics& WithFaultCountLow(long long value) { SetFaultCountLow(value); return *this;}
-
+    ///@}
   private:
 
-    long long m_faultCountHigh;
+    long long m_faultCountHigh{0};
     bool m_faultCountHighHasBeenSet = false;
 
-    long long m_faultCountLow;
+    long long m_faultCountLow{0};
     bool m_faultCountLowHasBeenSet = false;
   };
 

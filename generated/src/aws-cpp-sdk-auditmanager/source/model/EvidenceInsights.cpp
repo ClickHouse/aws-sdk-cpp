@@ -18,23 +18,7 @@ namespace AuditManager
 namespace Model
 {
 
-EvidenceInsights::EvidenceInsights() : 
-    m_noncompliantEvidenceCount(0),
-    m_noncompliantEvidenceCountHasBeenSet(false),
-    m_compliantEvidenceCount(0),
-    m_compliantEvidenceCountHasBeenSet(false),
-    m_inconclusiveEvidenceCount(0),
-    m_inconclusiveEvidenceCountHasBeenSet(false)
-{
-}
-
-EvidenceInsights::EvidenceInsights(JsonView jsonValue) : 
-    m_noncompliantEvidenceCount(0),
-    m_noncompliantEvidenceCountHasBeenSet(false),
-    m_compliantEvidenceCount(0),
-    m_compliantEvidenceCountHasBeenSet(false),
-    m_inconclusiveEvidenceCount(0),
-    m_inconclusiveEvidenceCountHasBeenSet(false)
+EvidenceInsights::EvidenceInsights(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,24 +28,18 @@ EvidenceInsights& EvidenceInsights::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("noncompliantEvidenceCount"))
   {
     m_noncompliantEvidenceCount = jsonValue.GetInteger("noncompliantEvidenceCount");
-
     m_noncompliantEvidenceCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("compliantEvidenceCount"))
   {
     m_compliantEvidenceCount = jsonValue.GetInteger("compliantEvidenceCount");
-
     m_compliantEvidenceCountHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("inconclusiveEvidenceCount"))
   {
     m_inconclusiveEvidenceCount = jsonValue.GetInteger("inconclusiveEvidenceCount");
-
     m_inconclusiveEvidenceCountHasBeenSet = true;
   }
-
   return *this;
 }
 

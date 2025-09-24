@@ -12,14 +12,6 @@ using namespace Aws::ConfigService::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-PutConfigurationAggregatorRequest::PutConfigurationAggregatorRequest() : 
-    m_configurationAggregatorNameHasBeenSet(false),
-    m_accountAggregationSourcesHasBeenSet(false),
-    m_organizationAggregationSourceHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String PutConfigurationAggregatorRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -55,6 +47,12 @@ Aws::String PutConfigurationAggregatorRequest::SerializePayload() const
      tagsJsonList[tagsIndex].AsObject(m_tags[tagsIndex].Jsonize());
    }
    payload.WithArray("Tags", std::move(tagsJsonList));
+
+  }
+
+  if(m_aggregatorFiltersHasBeenSet)
+  {
+   payload.WithObject("AggregatorFilters", m_aggregatorFilters.Jsonize());
 
   }
 

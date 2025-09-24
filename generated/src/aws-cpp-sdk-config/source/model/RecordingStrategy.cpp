@@ -18,15 +18,7 @@ namespace ConfigService
 namespace Model
 {
 
-RecordingStrategy::RecordingStrategy() : 
-    m_useOnly(RecordingStrategyType::NOT_SET),
-    m_useOnlyHasBeenSet(false)
-{
-}
-
-RecordingStrategy::RecordingStrategy(JsonView jsonValue) : 
-    m_useOnly(RecordingStrategyType::NOT_SET),
-    m_useOnlyHasBeenSet(false)
+RecordingStrategy::RecordingStrategy(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ RecordingStrategy& RecordingStrategy::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("useOnly"))
   {
     m_useOnly = RecordingStrategyTypeMapper::GetRecordingStrategyTypeForName(jsonValue.GetString("useOnly"));
-
     m_useOnlyHasBeenSet = true;
   }
-
   return *this;
 }
 

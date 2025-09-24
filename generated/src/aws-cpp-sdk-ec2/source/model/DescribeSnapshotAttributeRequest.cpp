@@ -10,22 +10,13 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-DescribeSnapshotAttributeRequest::DescribeSnapshotAttributeRequest() : 
-    m_attribute(SnapshotAttributeName::NOT_SET),
-    m_attributeHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false)
-{
-}
-
 Aws::String DescribeSnapshotAttributeRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeSnapshotAttribute&";
   if(m_attributeHasBeenSet)
   {
-    ss << "Attribute=" << SnapshotAttributeNameMapper::GetNameForSnapshotAttributeName(m_attribute) << "&";
+    ss << "Attribute=" << StringUtils::URLEncode(SnapshotAttributeNameMapper::GetNameForSnapshotAttributeName(m_attribute)) << "&";
   }
 
   if(m_snapshotIdHasBeenSet)

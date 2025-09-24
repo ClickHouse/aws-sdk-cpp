@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/quicksight/QuickSight_EXPORTS.h>
 #include <aws/quicksight/model/RefreshConfiguration.h>
+#include <aws/quicksight/model/RefreshFailureConfiguration.h>
 #include <utility>
 
 namespace Aws
@@ -31,46 +32,42 @@ namespace Model
   class DataSetRefreshProperties
   {
   public:
-    AWS_QUICKSIGHT_API DataSetRefreshProperties();
+    AWS_QUICKSIGHT_API DataSetRefreshProperties() = default;
     AWS_QUICKSIGHT_API DataSetRefreshProperties(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API DataSetRefreshProperties& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The refresh configuration for a dataset.</p>
      */
-    inline const RefreshConfiguration& GetRefreshConfiguration() const{ return m_refreshConfiguration; }
-
-    /**
-     * <p>The refresh configuration for a dataset.</p>
-     */
+    inline const RefreshConfiguration& GetRefreshConfiguration() const { return m_refreshConfiguration; }
     inline bool RefreshConfigurationHasBeenSet() const { return m_refreshConfigurationHasBeenSet; }
+    template<typename RefreshConfigurationT = RefreshConfiguration>
+    void SetRefreshConfiguration(RefreshConfigurationT&& value) { m_refreshConfigurationHasBeenSet = true; m_refreshConfiguration = std::forward<RefreshConfigurationT>(value); }
+    template<typename RefreshConfigurationT = RefreshConfiguration>
+    DataSetRefreshProperties& WithRefreshConfiguration(RefreshConfigurationT&& value) { SetRefreshConfiguration(std::forward<RefreshConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The refresh configuration for a dataset.</p>
+     * <p>The failure configuration for a dataset.</p>
      */
-    inline void SetRefreshConfiguration(const RefreshConfiguration& value) { m_refreshConfigurationHasBeenSet = true; m_refreshConfiguration = value; }
-
-    /**
-     * <p>The refresh configuration for a dataset.</p>
-     */
-    inline void SetRefreshConfiguration(RefreshConfiguration&& value) { m_refreshConfigurationHasBeenSet = true; m_refreshConfiguration = std::move(value); }
-
-    /**
-     * <p>The refresh configuration for a dataset.</p>
-     */
-    inline DataSetRefreshProperties& WithRefreshConfiguration(const RefreshConfiguration& value) { SetRefreshConfiguration(value); return *this;}
-
-    /**
-     * <p>The refresh configuration for a dataset.</p>
-     */
-    inline DataSetRefreshProperties& WithRefreshConfiguration(RefreshConfiguration&& value) { SetRefreshConfiguration(std::move(value)); return *this;}
-
+    inline const RefreshFailureConfiguration& GetFailureConfiguration() const { return m_failureConfiguration; }
+    inline bool FailureConfigurationHasBeenSet() const { return m_failureConfigurationHasBeenSet; }
+    template<typename FailureConfigurationT = RefreshFailureConfiguration>
+    void SetFailureConfiguration(FailureConfigurationT&& value) { m_failureConfigurationHasBeenSet = true; m_failureConfiguration = std::forward<FailureConfigurationT>(value); }
+    template<typename FailureConfigurationT = RefreshFailureConfiguration>
+    DataSetRefreshProperties& WithFailureConfiguration(FailureConfigurationT&& value) { SetFailureConfiguration(std::forward<FailureConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
     RefreshConfiguration m_refreshConfiguration;
     bool m_refreshConfigurationHasBeenSet = false;
+
+    RefreshFailureConfiguration m_failureConfiguration;
+    bool m_failureConfigurationHasBeenSet = false;
   };
 
 } // namespace Model

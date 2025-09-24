@@ -34,281 +34,88 @@ namespace Model
   class RdsDbInstanceDetails
   {
   public:
-    AWS_GUARDDUTY_API RdsDbInstanceDetails();
+    AWS_GUARDDUTY_API RdsDbInstanceDetails() = default;
     AWS_GUARDDUTY_API RdsDbInstanceDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API RdsDbInstanceDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The identifier associated to the database instance that was involved in the
      * finding.</p>
      */
-    inline const Aws::String& GetDbInstanceIdentifier() const{ return m_dbInstanceIdentifier; }
-
-    /**
-     * <p>The identifier associated to the database instance that was involved in the
-     * finding.</p>
-     */
+    inline const Aws::String& GetDbInstanceIdentifier() const { return m_dbInstanceIdentifier; }
     inline bool DbInstanceIdentifierHasBeenSet() const { return m_dbInstanceIdentifierHasBeenSet; }
+    template<typename DbInstanceIdentifierT = Aws::String>
+    void SetDbInstanceIdentifier(DbInstanceIdentifierT&& value) { m_dbInstanceIdentifierHasBeenSet = true; m_dbInstanceIdentifier = std::forward<DbInstanceIdentifierT>(value); }
+    template<typename DbInstanceIdentifierT = Aws::String>
+    RdsDbInstanceDetails& WithDbInstanceIdentifier(DbInstanceIdentifierT&& value) { SetDbInstanceIdentifier(std::forward<DbInstanceIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier associated to the database instance that was involved in the
-     * finding.</p>
-     */
-    inline void SetDbInstanceIdentifier(const Aws::String& value) { m_dbInstanceIdentifierHasBeenSet = true; m_dbInstanceIdentifier = value; }
-
-    /**
-     * <p>The identifier associated to the database instance that was involved in the
-     * finding.</p>
-     */
-    inline void SetDbInstanceIdentifier(Aws::String&& value) { m_dbInstanceIdentifierHasBeenSet = true; m_dbInstanceIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier associated to the database instance that was involved in the
-     * finding.</p>
-     */
-    inline void SetDbInstanceIdentifier(const char* value) { m_dbInstanceIdentifierHasBeenSet = true; m_dbInstanceIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier associated to the database instance that was involved in the
-     * finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithDbInstanceIdentifier(const Aws::String& value) { SetDbInstanceIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier associated to the database instance that was involved in the
-     * finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithDbInstanceIdentifier(Aws::String&& value) { SetDbInstanceIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier associated to the database instance that was involved in the
-     * finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithDbInstanceIdentifier(const char* value) { SetDbInstanceIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The database engine of the database instance involved in the finding.</p>
      */
-    inline const Aws::String& GetEngine() const{ return m_engine; }
-
-    /**
-     * <p>The database engine of the database instance involved in the finding.</p>
-     */
+    inline const Aws::String& GetEngine() const { return m_engine; }
     inline bool EngineHasBeenSet() const { return m_engineHasBeenSet; }
+    template<typename EngineT = Aws::String>
+    void SetEngine(EngineT&& value) { m_engineHasBeenSet = true; m_engine = std::forward<EngineT>(value); }
+    template<typename EngineT = Aws::String>
+    RdsDbInstanceDetails& WithEngine(EngineT&& value) { SetEngine(std::forward<EngineT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The database engine of the database instance involved in the finding.</p>
-     */
-    inline void SetEngine(const Aws::String& value) { m_engineHasBeenSet = true; m_engine = value; }
-
-    /**
-     * <p>The database engine of the database instance involved in the finding.</p>
-     */
-    inline void SetEngine(Aws::String&& value) { m_engineHasBeenSet = true; m_engine = std::move(value); }
-
-    /**
-     * <p>The database engine of the database instance involved in the finding.</p>
-     */
-    inline void SetEngine(const char* value) { m_engineHasBeenSet = true; m_engine.assign(value); }
-
-    /**
-     * <p>The database engine of the database instance involved in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithEngine(const Aws::String& value) { SetEngine(value); return *this;}
-
-    /**
-     * <p>The database engine of the database instance involved in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithEngine(Aws::String&& value) { SetEngine(std::move(value)); return *this;}
-
-    /**
-     * <p>The database engine of the database instance involved in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithEngine(const char* value) { SetEngine(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The version of the database engine that was involved in the finding.</p>
      */
-    inline const Aws::String& GetEngineVersion() const{ return m_engineVersion; }
-
-    /**
-     * <p>The version of the database engine that was involved in the finding.</p>
-     */
+    inline const Aws::String& GetEngineVersion() const { return m_engineVersion; }
     inline bool EngineVersionHasBeenSet() const { return m_engineVersionHasBeenSet; }
+    template<typename EngineVersionT = Aws::String>
+    void SetEngineVersion(EngineVersionT&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::forward<EngineVersionT>(value); }
+    template<typename EngineVersionT = Aws::String>
+    RdsDbInstanceDetails& WithEngineVersion(EngineVersionT&& value) { SetEngineVersion(std::forward<EngineVersionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The version of the database engine that was involved in the finding.</p>
-     */
-    inline void SetEngineVersion(const Aws::String& value) { m_engineVersionHasBeenSet = true; m_engineVersion = value; }
-
-    /**
-     * <p>The version of the database engine that was involved in the finding.</p>
-     */
-    inline void SetEngineVersion(Aws::String&& value) { m_engineVersionHasBeenSet = true; m_engineVersion = std::move(value); }
-
-    /**
-     * <p>The version of the database engine that was involved in the finding.</p>
-     */
-    inline void SetEngineVersion(const char* value) { m_engineVersionHasBeenSet = true; m_engineVersion.assign(value); }
-
-    /**
-     * <p>The version of the database engine that was involved in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithEngineVersion(const Aws::String& value) { SetEngineVersion(value); return *this;}
-
-    /**
-     * <p>The version of the database engine that was involved in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithEngineVersion(Aws::String&& value) { SetEngineVersion(std::move(value)); return *this;}
-
-    /**
-     * <p>The version of the database engine that was involved in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithEngineVersion(const char* value) { SetEngineVersion(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the database cluster that contains the database instance ID
      * involved in the finding.</p>
      */
-    inline const Aws::String& GetDbClusterIdentifier() const{ return m_dbClusterIdentifier; }
-
-    /**
-     * <p>The identifier of the database cluster that contains the database instance ID
-     * involved in the finding.</p>
-     */
+    inline const Aws::String& GetDbClusterIdentifier() const { return m_dbClusterIdentifier; }
     inline bool DbClusterIdentifierHasBeenSet() const { return m_dbClusterIdentifierHasBeenSet; }
+    template<typename DbClusterIdentifierT = Aws::String>
+    void SetDbClusterIdentifier(DbClusterIdentifierT&& value) { m_dbClusterIdentifierHasBeenSet = true; m_dbClusterIdentifier = std::forward<DbClusterIdentifierT>(value); }
+    template<typename DbClusterIdentifierT = Aws::String>
+    RdsDbInstanceDetails& WithDbClusterIdentifier(DbClusterIdentifierT&& value) { SetDbClusterIdentifier(std::forward<DbClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the database cluster that contains the database instance ID
-     * involved in the finding.</p>
-     */
-    inline void SetDbClusterIdentifier(const Aws::String& value) { m_dbClusterIdentifierHasBeenSet = true; m_dbClusterIdentifier = value; }
-
-    /**
-     * <p>The identifier of the database cluster that contains the database instance ID
-     * involved in the finding.</p>
-     */
-    inline void SetDbClusterIdentifier(Aws::String&& value) { m_dbClusterIdentifierHasBeenSet = true; m_dbClusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the database cluster that contains the database instance ID
-     * involved in the finding.</p>
-     */
-    inline void SetDbClusterIdentifier(const char* value) { m_dbClusterIdentifierHasBeenSet = true; m_dbClusterIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of the database cluster that contains the database instance ID
-     * involved in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithDbClusterIdentifier(const Aws::String& value) { SetDbClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the database cluster that contains the database instance ID
-     * involved in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithDbClusterIdentifier(Aws::String&& value) { SetDbClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the database cluster that contains the database instance ID
-     * involved in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithDbClusterIdentifier(const char* value) { SetDbClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) that identifies the database instance involved
      * in the finding.</p>
      */
-    inline const Aws::String& GetDbInstanceArn() const{ return m_dbInstanceArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the database instance involved
-     * in the finding.</p>
-     */
+    inline const Aws::String& GetDbInstanceArn() const { return m_dbInstanceArn; }
     inline bool DbInstanceArnHasBeenSet() const { return m_dbInstanceArnHasBeenSet; }
+    template<typename DbInstanceArnT = Aws::String>
+    void SetDbInstanceArn(DbInstanceArnT&& value) { m_dbInstanceArnHasBeenSet = true; m_dbInstanceArn = std::forward<DbInstanceArnT>(value); }
+    template<typename DbInstanceArnT = Aws::String>
+    RdsDbInstanceDetails& WithDbInstanceArn(DbInstanceArnT&& value) { SetDbInstanceArn(std::forward<DbInstanceArnT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The Amazon Resource Name (ARN) that identifies the database instance involved
-     * in the finding.</p>
+     * <p>Information about the tag key-value pairs.</p>
      */
-    inline void SetDbInstanceArn(const Aws::String& value) { m_dbInstanceArnHasBeenSet = true; m_dbInstanceArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the database instance involved
-     * in the finding.</p>
-     */
-    inline void SetDbInstanceArn(Aws::String&& value) { m_dbInstanceArnHasBeenSet = true; m_dbInstanceArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the database instance involved
-     * in the finding.</p>
-     */
-    inline void SetDbInstanceArn(const char* value) { m_dbInstanceArnHasBeenSet = true; m_dbInstanceArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the database instance involved
-     * in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithDbInstanceArn(const Aws::String& value) { SetDbInstanceArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the database instance involved
-     * in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithDbInstanceArn(Aws::String&& value) { SetDbInstanceArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) that identifies the database instance involved
-     * in the finding.</p>
-     */
-    inline RdsDbInstanceDetails& WithDbInstanceArn(const char* value) { SetDbInstanceArn(value); return *this;}
-
-
-    /**
-     * <p>Instance tag key-value pairs associated with the database instance ID.</p>
-     */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>Instance tag key-value pairs associated with the database instance ID.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>Instance tag key-value pairs associated with the database instance ID.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>Instance tag key-value pairs associated with the database instance ID.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>Instance tag key-value pairs associated with the database instance ID.</p>
-     */
-    inline RdsDbInstanceDetails& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Instance tag key-value pairs associated with the database instance ID.</p>
-     */
-    inline RdsDbInstanceDetails& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Instance tag key-value pairs associated with the database instance ID.</p>
-     */
-    inline RdsDbInstanceDetails& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>Instance tag key-value pairs associated with the database instance ID.</p>
-     */
-    inline RdsDbInstanceDetails& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    RdsDbInstanceDetails& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    RdsDbInstanceDetails& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_dbInstanceIdentifier;

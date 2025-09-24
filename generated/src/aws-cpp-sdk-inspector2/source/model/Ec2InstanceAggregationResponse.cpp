@@ -18,54 +18,28 @@ namespace Inspector2
 namespace Model
 {
 
-Ec2InstanceAggregationResponse::Ec2InstanceAggregationResponse() : 
-    m_accountIdHasBeenSet(false),
-    m_amiHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_instanceTagsHasBeenSet(false),
-    m_networkFindings(0),
-    m_networkFindingsHasBeenSet(false),
-    m_operatingSystemHasBeenSet(false),
-    m_severityCountsHasBeenSet(false)
-{
-}
-
-Ec2InstanceAggregationResponse::Ec2InstanceAggregationResponse(JsonView jsonValue) : 
-    m_accountIdHasBeenSet(false),
-    m_amiHasBeenSet(false),
-    m_instanceIdHasBeenSet(false),
-    m_instanceTagsHasBeenSet(false),
-    m_networkFindings(0),
-    m_networkFindingsHasBeenSet(false),
-    m_operatingSystemHasBeenSet(false),
-    m_severityCountsHasBeenSet(false)
+Ec2InstanceAggregationResponse::Ec2InstanceAggregationResponse(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 Ec2InstanceAggregationResponse& Ec2InstanceAggregationResponse::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("accountId"))
-  {
-    m_accountId = jsonValue.GetString("accountId");
-
-    m_accountIdHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("ami"))
-  {
-    m_ami = jsonValue.GetString("ami");
-
-    m_amiHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("instanceId"))
   {
     m_instanceId = jsonValue.GetString("instanceId");
-
     m_instanceIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ami"))
+  {
+    m_ami = jsonValue.GetString("ami");
+    m_amiHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("operatingSystem"))
+  {
+    m_operatingSystem = jsonValue.GetString("operatingSystem");
+    m_operatingSystemHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("instanceTags"))
   {
     Aws::Map<Aws::String, JsonView> instanceTagsJsonMap = jsonValue.GetObject("instanceTags").GetAllObjects();
@@ -75,28 +49,21 @@ Ec2InstanceAggregationResponse& Ec2InstanceAggregationResponse::operator =(JsonV
     }
     m_instanceTagsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("networkFindings"))
+  if(jsonValue.ValueExists("accountId"))
   {
-    m_networkFindings = jsonValue.GetInt64("networkFindings");
-
-    m_networkFindingsHasBeenSet = true;
+    m_accountId = jsonValue.GetString("accountId");
+    m_accountIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("operatingSystem"))
-  {
-    m_operatingSystem = jsonValue.GetString("operatingSystem");
-
-    m_operatingSystemHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("severityCounts"))
   {
     m_severityCounts = jsonValue.GetObject("severityCounts");
-
     m_severityCountsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("networkFindings"))
+  {
+    m_networkFindings = jsonValue.GetInt64("networkFindings");
+    m_networkFindingsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -104,9 +71,9 @@ JsonValue Ec2InstanceAggregationResponse::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_accountIdHasBeenSet)
+  if(m_instanceIdHasBeenSet)
   {
-   payload.WithString("accountId", m_accountId);
+   payload.WithString("instanceId", m_instanceId);
 
   }
 
@@ -116,9 +83,9 @@ JsonValue Ec2InstanceAggregationResponse::Jsonize() const
 
   }
 
-  if(m_instanceIdHasBeenSet)
+  if(m_operatingSystemHasBeenSet)
   {
-   payload.WithString("instanceId", m_instanceId);
+   payload.WithString("operatingSystem", m_operatingSystem);
 
   }
 
@@ -133,21 +100,21 @@ JsonValue Ec2InstanceAggregationResponse::Jsonize() const
 
   }
 
-  if(m_networkFindingsHasBeenSet)
+  if(m_accountIdHasBeenSet)
   {
-   payload.WithInt64("networkFindings", m_networkFindings);
-
-  }
-
-  if(m_operatingSystemHasBeenSet)
-  {
-   payload.WithString("operatingSystem", m_operatingSystem);
+   payload.WithString("accountId", m_accountId);
 
   }
 
   if(m_severityCountsHasBeenSet)
   {
    payload.WithObject("severityCounts", m_severityCounts.Jsonize());
+
+  }
+
+  if(m_networkFindingsHasBeenSet)
+  {
+   payload.WithInt64("networkFindings", m_networkFindings);
 
   }
 

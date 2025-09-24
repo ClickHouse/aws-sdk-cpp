@@ -12,22 +12,6 @@ using namespace Aws::KafkaConnect::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateConnectorRequest::CreateConnectorRequest() : 
-    m_capacityHasBeenSet(false),
-    m_connectorConfigurationHasBeenSet(false),
-    m_connectorDescriptionHasBeenSet(false),
-    m_connectorNameHasBeenSet(false),
-    m_kafkaClusterHasBeenSet(false),
-    m_kafkaClusterClientAuthenticationHasBeenSet(false),
-    m_kafkaClusterEncryptionInTransitHasBeenSet(false),
-    m_kafkaConnectVersionHasBeenSet(false),
-    m_logDeliveryHasBeenSet(false),
-    m_pluginsHasBeenSet(false),
-    m_serviceExecutionRoleArnHasBeenSet(false),
-    m_workerConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String CreateConnectorRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -111,6 +95,17 @@ Aws::String CreateConnectorRequest::SerializePayload() const
   if(m_workerConfigurationHasBeenSet)
   {
    payload.WithObject("workerConfiguration", m_workerConfiguration.Jsonize());
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("tags", std::move(tagsJsonMap));
 
   }
 

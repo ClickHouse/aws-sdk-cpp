@@ -29,169 +29,58 @@ namespace Model
   class CreateKxScalingGroupResult
   {
   public:
-    AWS_FINSPACE_API CreateKxScalingGroupResult();
+    AWS_FINSPACE_API CreateKxScalingGroupResult() = default;
     AWS_FINSPACE_API CreateKxScalingGroupResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_FINSPACE_API CreateKxScalingGroupResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A unique identifier for the kdb environment, where you create the scaling
      * group. </p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    CreateKxScalingGroupResult& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the kdb environment, where you create the scaling
-     * group. </p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentId = value; }
-
-    /**
-     * <p>A unique identifier for the kdb environment, where you create the scaling
-     * group. </p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentId = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the kdb environment, where you create the scaling
-     * group. </p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentId.assign(value); }
-
-    /**
-     * <p>A unique identifier for the kdb environment, where you create the scaling
-     * group. </p>
-     */
-    inline CreateKxScalingGroupResult& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the kdb environment, where you create the scaling
-     * group. </p>
-     */
-    inline CreateKxScalingGroupResult& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the kdb environment, where you create the scaling
-     * group. </p>
-     */
-    inline CreateKxScalingGroupResult& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the kdb scaling group. </p>
      */
-    inline const Aws::String& GetScalingGroupName() const{ return m_scalingGroupName; }
+    inline const Aws::String& GetScalingGroupName() const { return m_scalingGroupName; }
+    template<typename ScalingGroupNameT = Aws::String>
+    void SetScalingGroupName(ScalingGroupNameT&& value) { m_scalingGroupNameHasBeenSet = true; m_scalingGroupName = std::forward<ScalingGroupNameT>(value); }
+    template<typename ScalingGroupNameT = Aws::String>
+    CreateKxScalingGroupResult& WithScalingGroupName(ScalingGroupNameT&& value) { SetScalingGroupName(std::forward<ScalingGroupNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the kdb scaling group. </p>
-     */
-    inline void SetScalingGroupName(const Aws::String& value) { m_scalingGroupName = value; }
-
-    /**
-     * <p>A unique identifier for the kdb scaling group. </p>
-     */
-    inline void SetScalingGroupName(Aws::String&& value) { m_scalingGroupName = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the kdb scaling group. </p>
-     */
-    inline void SetScalingGroupName(const char* value) { m_scalingGroupName.assign(value); }
-
-    /**
-     * <p>A unique identifier for the kdb scaling group. </p>
-     */
-    inline CreateKxScalingGroupResult& WithScalingGroupName(const Aws::String& value) { SetScalingGroupName(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the kdb scaling group. </p>
-     */
-    inline CreateKxScalingGroupResult& WithScalingGroupName(Aws::String&& value) { SetScalingGroupName(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the kdb scaling group. </p>
-     */
-    inline CreateKxScalingGroupResult& WithScalingGroupName(const char* value) { SetScalingGroupName(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The memory and CPU capabilities of the scaling group host on which FinSpace
      * Managed kdb clusters will be placed. </p>
      */
-    inline const Aws::String& GetHostType() const{ return m_hostType; }
+    inline const Aws::String& GetHostType() const { return m_hostType; }
+    template<typename HostTypeT = Aws::String>
+    void SetHostType(HostTypeT&& value) { m_hostTypeHasBeenSet = true; m_hostType = std::forward<HostTypeT>(value); }
+    template<typename HostTypeT = Aws::String>
+    CreateKxScalingGroupResult& WithHostType(HostTypeT&& value) { SetHostType(std::forward<HostTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The memory and CPU capabilities of the scaling group host on which FinSpace
-     * Managed kdb clusters will be placed. </p>
-     */
-    inline void SetHostType(const Aws::String& value) { m_hostType = value; }
-
-    /**
-     * <p> The memory and CPU capabilities of the scaling group host on which FinSpace
-     * Managed kdb clusters will be placed. </p>
-     */
-    inline void SetHostType(Aws::String&& value) { m_hostType = std::move(value); }
-
-    /**
-     * <p> The memory and CPU capabilities of the scaling group host on which FinSpace
-     * Managed kdb clusters will be placed. </p>
-     */
-    inline void SetHostType(const char* value) { m_hostType.assign(value); }
-
-    /**
-     * <p> The memory and CPU capabilities of the scaling group host on which FinSpace
-     * Managed kdb clusters will be placed. </p>
-     */
-    inline CreateKxScalingGroupResult& WithHostType(const Aws::String& value) { SetHostType(value); return *this;}
-
-    /**
-     * <p> The memory and CPU capabilities of the scaling group host on which FinSpace
-     * Managed kdb clusters will be placed. </p>
-     */
-    inline CreateKxScalingGroupResult& WithHostType(Aws::String&& value) { SetHostType(std::move(value)); return *this;}
-
-    /**
-     * <p> The memory and CPU capabilities of the scaling group host on which FinSpace
-     * Managed kdb clusters will be placed. </p>
-     */
-    inline CreateKxScalingGroupResult& WithHostType(const char* value) { SetHostType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the availability zones.</p>
      */
-    inline const Aws::String& GetAvailabilityZoneId() const{ return m_availabilityZoneId; }
+    inline const Aws::String& GetAvailabilityZoneId() const { return m_availabilityZoneId; }
+    template<typename AvailabilityZoneIdT = Aws::String>
+    void SetAvailabilityZoneId(AvailabilityZoneIdT&& value) { m_availabilityZoneIdHasBeenSet = true; m_availabilityZoneId = std::forward<AvailabilityZoneIdT>(value); }
+    template<typename AvailabilityZoneIdT = Aws::String>
+    CreateKxScalingGroupResult& WithAvailabilityZoneId(AvailabilityZoneIdT&& value) { SetAvailabilityZoneId(std::forward<AvailabilityZoneIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the availability zones.</p>
-     */
-    inline void SetAvailabilityZoneId(const Aws::String& value) { m_availabilityZoneId = value; }
-
-    /**
-     * <p>The identifier of the availability zones.</p>
-     */
-    inline void SetAvailabilityZoneId(Aws::String&& value) { m_availabilityZoneId = std::move(value); }
-
-    /**
-     * <p>The identifier of the availability zones.</p>
-     */
-    inline void SetAvailabilityZoneId(const char* value) { m_availabilityZoneId.assign(value); }
-
-    /**
-     * <p>The identifier of the availability zones.</p>
-     */
-    inline CreateKxScalingGroupResult& WithAvailabilityZoneId(const Aws::String& value) { SetAvailabilityZoneId(value); return *this;}
-
-    /**
-     * <p>The identifier of the availability zones.</p>
-     */
-    inline CreateKxScalingGroupResult& WithAvailabilityZoneId(Aws::String&& value) { SetAvailabilityZoneId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the availability zones.</p>
-     */
-    inline CreateKxScalingGroupResult& WithAvailabilityZoneId(const char* value) { SetAvailabilityZoneId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of scaling group.</p> <ul> <li> <p>CREATING – The scaling group
      * creation is in progress.</p> </li> <li> <p>CREATE_FAILED – The scaling group
@@ -203,171 +92,70 @@ namespace Model
      * </li> <li> <p>DELETED – The scaling group is successfully deleted.</p> </li>
      * </ul>
      */
-    inline const KxScalingGroupStatus& GetStatus() const{ return m_status; }
+    inline KxScalingGroupStatus GetStatus() const { return m_status; }
+    inline void SetStatus(KxScalingGroupStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline CreateKxScalingGroupResult& WithStatus(KxScalingGroupStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of scaling group.</p> <ul> <li> <p>CREATING – The scaling group
-     * creation is in progress.</p> </li> <li> <p>CREATE_FAILED – The scaling group
-     * creation has failed.</p> </li> <li> <p>ACTIVE – The scaling group is active.</p>
-     * </li> <li> <p>UPDATING – The scaling group is in the process of being
-     * updated.</p> </li> <li> <p>UPDATE_FAILED – The update action failed.</p> </li>
-     * <li> <p>DELETING – The scaling group is in the process of being deleted.</p>
-     * </li> <li> <p>DELETE_FAILED – The system failed to delete the scaling group.</p>
-     * </li> <li> <p>DELETED – The scaling group is successfully deleted.</p> </li>
-     * </ul>
-     */
-    inline void SetStatus(const KxScalingGroupStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of scaling group.</p> <ul> <li> <p>CREATING – The scaling group
-     * creation is in progress.</p> </li> <li> <p>CREATE_FAILED – The scaling group
-     * creation has failed.</p> </li> <li> <p>ACTIVE – The scaling group is active.</p>
-     * </li> <li> <p>UPDATING – The scaling group is in the process of being
-     * updated.</p> </li> <li> <p>UPDATE_FAILED – The update action failed.</p> </li>
-     * <li> <p>DELETING – The scaling group is in the process of being deleted.</p>
-     * </li> <li> <p>DELETE_FAILED – The system failed to delete the scaling group.</p>
-     * </li> <li> <p>DELETED – The scaling group is successfully deleted.</p> </li>
-     * </ul>
-     */
-    inline void SetStatus(KxScalingGroupStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of scaling group.</p> <ul> <li> <p>CREATING – The scaling group
-     * creation is in progress.</p> </li> <li> <p>CREATE_FAILED – The scaling group
-     * creation has failed.</p> </li> <li> <p>ACTIVE – The scaling group is active.</p>
-     * </li> <li> <p>UPDATING – The scaling group is in the process of being
-     * updated.</p> </li> <li> <p>UPDATE_FAILED – The update action failed.</p> </li>
-     * <li> <p>DELETING – The scaling group is in the process of being deleted.</p>
-     * </li> <li> <p>DELETE_FAILED – The system failed to delete the scaling group.</p>
-     * </li> <li> <p>DELETED – The scaling group is successfully deleted.</p> </li>
-     * </ul>
-     */
-    inline CreateKxScalingGroupResult& WithStatus(const KxScalingGroupStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of scaling group.</p> <ul> <li> <p>CREATING – The scaling group
-     * creation is in progress.</p> </li> <li> <p>CREATE_FAILED – The scaling group
-     * creation has failed.</p> </li> <li> <p>ACTIVE – The scaling group is active.</p>
-     * </li> <li> <p>UPDATING – The scaling group is in the process of being
-     * updated.</p> </li> <li> <p>UPDATE_FAILED – The update action failed.</p> </li>
-     * <li> <p>DELETING – The scaling group is in the process of being deleted.</p>
-     * </li> <li> <p>DELETE_FAILED – The system failed to delete the scaling group.</p>
-     * </li> <li> <p>DELETED – The scaling group is successfully deleted.</p> </li>
-     * </ul>
-     */
-    inline CreateKxScalingGroupResult& WithStatus(KxScalingGroupStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The last time that the scaling group was updated in FinSpace. The value is
      * determined as epoch time in milliseconds. For example, the value for Monday,
      * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000. </p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTimestamp() const{ return m_lastModifiedTimestamp; }
+    inline const Aws::Utils::DateTime& GetLastModifiedTimestamp() const { return m_lastModifiedTimestamp; }
+    template<typename LastModifiedTimestampT = Aws::Utils::DateTime>
+    void SetLastModifiedTimestamp(LastModifiedTimestampT&& value) { m_lastModifiedTimestampHasBeenSet = true; m_lastModifiedTimestamp = std::forward<LastModifiedTimestampT>(value); }
+    template<typename LastModifiedTimestampT = Aws::Utils::DateTime>
+    CreateKxScalingGroupResult& WithLastModifiedTimestamp(LastModifiedTimestampT&& value) { SetLastModifiedTimestamp(std::forward<LastModifiedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The last time that the scaling group was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000. </p>
-     */
-    inline void SetLastModifiedTimestamp(const Aws::Utils::DateTime& value) { m_lastModifiedTimestamp = value; }
-
-    /**
-     * <p> The last time that the scaling group was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000. </p>
-     */
-    inline void SetLastModifiedTimestamp(Aws::Utils::DateTime&& value) { m_lastModifiedTimestamp = std::move(value); }
-
-    /**
-     * <p> The last time that the scaling group was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000. </p>
-     */
-    inline CreateKxScalingGroupResult& WithLastModifiedTimestamp(const Aws::Utils::DateTime& value) { SetLastModifiedTimestamp(value); return *this;}
-
-    /**
-     * <p> The last time that the scaling group was updated in FinSpace. The value is
-     * determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000. </p>
-     */
-    inline CreateKxScalingGroupResult& WithLastModifiedTimestamp(Aws::Utils::DateTime&& value) { SetLastModifiedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p> The timestamp at which the scaling group was created in FinSpace. The value
      * is determined as epoch time in milliseconds. For example, the value for Monday,
      * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const{ return m_createdTimestamp; }
+    inline const Aws::Utils::DateTime& GetCreatedTimestamp() const { return m_createdTimestamp; }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    void SetCreatedTimestamp(CreatedTimestampT&& value) { m_createdTimestampHasBeenSet = true; m_createdTimestamp = std::forward<CreatedTimestampT>(value); }
+    template<typename CreatedTimestampT = Aws::Utils::DateTime>
+    CreateKxScalingGroupResult& WithCreatedTimestamp(CreatedTimestampT&& value) { SetCreatedTimestamp(std::forward<CreatedTimestampT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> The timestamp at which the scaling group was created in FinSpace. The value
-     * is determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetCreatedTimestamp(const Aws::Utils::DateTime& value) { m_createdTimestamp = value; }
-
-    /**
-     * <p> The timestamp at which the scaling group was created in FinSpace. The value
-     * is determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline void SetCreatedTimestamp(Aws::Utils::DateTime&& value) { m_createdTimestamp = std::move(value); }
-
-    /**
-     * <p> The timestamp at which the scaling group was created in FinSpace. The value
-     * is determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline CreateKxScalingGroupResult& WithCreatedTimestamp(const Aws::Utils::DateTime& value) { SetCreatedTimestamp(value); return *this;}
-
-    /**
-     * <p> The timestamp at which the scaling group was created in FinSpace. The value
-     * is determined as epoch time in milliseconds. For example, the value for Monday,
-     * November 1, 2021 12:00:00 PM UTC is specified as 1635768000000.</p>
-     */
-    inline CreateKxScalingGroupResult& WithCreatedTimestamp(Aws::Utils::DateTime&& value) { SetCreatedTimestamp(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateKxScalingGroupResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateKxScalingGroupResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateKxScalingGroupResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateKxScalingGroupResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_environmentId;
+    bool m_environmentIdHasBeenSet = false;
 
     Aws::String m_scalingGroupName;
+    bool m_scalingGroupNameHasBeenSet = false;
 
     Aws::String m_hostType;
+    bool m_hostTypeHasBeenSet = false;
 
     Aws::String m_availabilityZoneId;
+    bool m_availabilityZoneIdHasBeenSet = false;
 
-    KxScalingGroupStatus m_status;
+    KxScalingGroupStatus m_status{KxScalingGroupStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTimestamp;
+    Aws::Utils::DateTime m_lastModifiedTimestamp{};
+    bool m_lastModifiedTimestampHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTimestamp;
+    Aws::Utils::DateTime m_createdTimestamp{};
+    bool m_createdTimestampHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

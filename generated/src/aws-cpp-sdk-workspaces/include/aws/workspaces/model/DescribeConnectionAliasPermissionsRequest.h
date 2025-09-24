@@ -21,7 +21,7 @@ namespace Model
   class DescribeConnectionAliasPermissionsRequest : public WorkSpacesRequest
   {
   public:
-    AWS_WORKSPACES_API DescribeConnectionAliasPermissionsRequest();
+    AWS_WORKSPACES_API DescribeConnectionAliasPermissionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,116 +34,40 @@ namespace Model
     AWS_WORKSPACES_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The identifier of the connection alias.</p>
      */
-    inline const Aws::String& GetAliasId() const{ return m_aliasId; }
-
-    /**
-     * <p>The identifier of the connection alias.</p>
-     */
+    inline const Aws::String& GetAliasId() const { return m_aliasId; }
     inline bool AliasIdHasBeenSet() const { return m_aliasIdHasBeenSet; }
+    template<typename AliasIdT = Aws::String>
+    void SetAliasId(AliasIdT&& value) { m_aliasIdHasBeenSet = true; m_aliasId = std::forward<AliasIdT>(value); }
+    template<typename AliasIdT = Aws::String>
+    DescribeConnectionAliasPermissionsRequest& WithAliasId(AliasIdT&& value) { SetAliasId(std::forward<AliasIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the connection alias.</p>
-     */
-    inline void SetAliasId(const Aws::String& value) { m_aliasIdHasBeenSet = true; m_aliasId = value; }
-
-    /**
-     * <p>The identifier of the connection alias.</p>
-     */
-    inline void SetAliasId(Aws::String&& value) { m_aliasIdHasBeenSet = true; m_aliasId = std::move(value); }
-
-    /**
-     * <p>The identifier of the connection alias.</p>
-     */
-    inline void SetAliasId(const char* value) { m_aliasIdHasBeenSet = true; m_aliasId.assign(value); }
-
-    /**
-     * <p>The identifier of the connection alias.</p>
-     */
-    inline DescribeConnectionAliasPermissionsRequest& WithAliasId(const Aws::String& value) { SetAliasId(value); return *this;}
-
-    /**
-     * <p>The identifier of the connection alias.</p>
-     */
-    inline DescribeConnectionAliasPermissionsRequest& WithAliasId(Aws::String&& value) { SetAliasId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the connection alias.</p>
-     */
-    inline DescribeConnectionAliasPermissionsRequest& WithAliasId(const char* value) { SetAliasId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>If you received a <code>NextToken</code> from a previous call that was
      * paginated, provide this token to receive the next set of results. </p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>If you received a <code>NextToken</code> from a previous call that was
-     * paginated, provide this token to receive the next set of results. </p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    DescribeConnectionAliasPermissionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>If you received a <code>NextToken</code> from a previous call that was
-     * paginated, provide this token to receive the next set of results. </p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>If you received a <code>NextToken</code> from a previous call that was
-     * paginated, provide this token to receive the next set of results. </p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>If you received a <code>NextToken</code> from a previous call that was
-     * paginated, provide this token to receive the next set of results. </p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>If you received a <code>NextToken</code> from a previous call that was
-     * paginated, provide this token to receive the next set of results. </p>
-     */
-    inline DescribeConnectionAliasPermissionsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>If you received a <code>NextToken</code> from a previous call that was
-     * paginated, provide this token to receive the next set of results. </p>
-     */
-    inline DescribeConnectionAliasPermissionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>If you received a <code>NextToken</code> from a previous call that was
-     * paginated, provide this token to receive the next set of results. </p>
-     */
-    inline DescribeConnectionAliasPermissionsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of results to return.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results to return.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results to return.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results to return.</p>
-     */
     inline DescribeConnectionAliasPermissionsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_aliasId;
@@ -152,7 +76,7 @@ namespace Model
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

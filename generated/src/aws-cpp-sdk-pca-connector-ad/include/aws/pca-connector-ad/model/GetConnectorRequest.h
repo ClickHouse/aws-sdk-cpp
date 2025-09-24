@@ -21,7 +21,7 @@ namespace Model
   class GetConnectorRequest : public PcaConnectorAdRequest
   {
   public:
-    AWS_PCACONNECTORAD_API GetConnectorRequest();
+    AWS_PCACONNECTORAD_API GetConnectorRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,54 +32,18 @@ namespace Model
     AWS_PCACONNECTORAD_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) that was returned when you called <a
      * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
      */
-    inline const Aws::String& GetConnectorArn() const{ return m_connectorArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
+    inline const Aws::String& GetConnectorArn() const { return m_connectorArn; }
     inline bool ConnectorArnHasBeenSet() const { return m_connectorArnHasBeenSet; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline void SetConnectorArn(const Aws::String& value) { m_connectorArnHasBeenSet = true; m_connectorArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline void SetConnectorArn(Aws::String&& value) { m_connectorArnHasBeenSet = true; m_connectorArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline void SetConnectorArn(const char* value) { m_connectorArnHasBeenSet = true; m_connectorArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline GetConnectorRequest& WithConnectorArn(const Aws::String& value) { SetConnectorArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline GetConnectorRequest& WithConnectorArn(Aws::String&& value) { SetConnectorArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) that was returned when you called <a
-     * href="https://docs.aws.amazon.com/pca-connector-ad/latest/APIReference/API_CreateConnector.html">CreateConnector</a>.</p>
-     */
-    inline GetConnectorRequest& WithConnectorArn(const char* value) { SetConnectorArn(value); return *this;}
-
+    template<typename ConnectorArnT = Aws::String>
+    void SetConnectorArn(ConnectorArnT&& value) { m_connectorArnHasBeenSet = true; m_connectorArn = std::forward<ConnectorArnT>(value); }
+    template<typename ConnectorArnT = Aws::String>
+    GetConnectorRequest& WithConnectorArn(ConnectorArnT&& value) { SetConnectorArn(std::forward<ConnectorArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_connectorArn;

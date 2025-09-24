@@ -21,7 +21,7 @@ namespace Model
   class DeleteSiteRequest : public NetworkManagerRequest
   {
   public:
-    AWS_NETWORKMANAGER_API DeleteSiteRequest();
+    AWS_NETWORKMANAGER_API DeleteSiteRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,87 +32,29 @@ namespace Model
     AWS_NETWORKMANAGER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the global network.</p>
      */
-    inline const Aws::String& GetGlobalNetworkId() const{ return m_globalNetworkId; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
+    inline const Aws::String& GetGlobalNetworkId() const { return m_globalNetworkId; }
     inline bool GlobalNetworkIdHasBeenSet() const { return m_globalNetworkIdHasBeenSet; }
+    template<typename GlobalNetworkIdT = Aws::String>
+    void SetGlobalNetworkId(GlobalNetworkIdT&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::forward<GlobalNetworkIdT>(value); }
+    template<typename GlobalNetworkIdT = Aws::String>
+    DeleteSiteRequest& WithGlobalNetworkId(GlobalNetworkIdT&& value) { SetGlobalNetworkId(std::forward<GlobalNetworkIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const Aws::String& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = value; }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(Aws::String&& value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId = std::move(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline void SetGlobalNetworkId(const char* value) { m_globalNetworkIdHasBeenSet = true; m_globalNetworkId.assign(value); }
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline DeleteSiteRequest& WithGlobalNetworkId(const Aws::String& value) { SetGlobalNetworkId(value); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline DeleteSiteRequest& WithGlobalNetworkId(Aws::String&& value) { SetGlobalNetworkId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the global network.</p>
-     */
-    inline DeleteSiteRequest& WithGlobalNetworkId(const char* value) { SetGlobalNetworkId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the site.</p>
      */
-    inline const Aws::String& GetSiteId() const{ return m_siteId; }
-
-    /**
-     * <p>The ID of the site.</p>
-     */
+    inline const Aws::String& GetSiteId() const { return m_siteId; }
     inline bool SiteIdHasBeenSet() const { return m_siteIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the site.</p>
-     */
-    inline void SetSiteId(const Aws::String& value) { m_siteIdHasBeenSet = true; m_siteId = value; }
-
-    /**
-     * <p>The ID of the site.</p>
-     */
-    inline void SetSiteId(Aws::String&& value) { m_siteIdHasBeenSet = true; m_siteId = std::move(value); }
-
-    /**
-     * <p>The ID of the site.</p>
-     */
-    inline void SetSiteId(const char* value) { m_siteIdHasBeenSet = true; m_siteId.assign(value); }
-
-    /**
-     * <p>The ID of the site.</p>
-     */
-    inline DeleteSiteRequest& WithSiteId(const Aws::String& value) { SetSiteId(value); return *this;}
-
-    /**
-     * <p>The ID of the site.</p>
-     */
-    inline DeleteSiteRequest& WithSiteId(Aws::String&& value) { SetSiteId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the site.</p>
-     */
-    inline DeleteSiteRequest& WithSiteId(const char* value) { SetSiteId(value); return *this;}
-
+    template<typename SiteIdT = Aws::String>
+    void SetSiteId(SiteIdT&& value) { m_siteIdHasBeenSet = true; m_siteId = std::forward<SiteIdT>(value); }
+    template<typename SiteIdT = Aws::String>
+    DeleteSiteRequest& WithSiteId(SiteIdT&& value) { SetSiteId(std::forward<SiteIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_globalNetworkId;

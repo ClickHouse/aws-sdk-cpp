@@ -18,17 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-FindingActor::FindingActor() : 
-    m_domainDetailsHasBeenSet(false),
-    m_ipAddressDetailsHasBeenSet(false),
-    m_userIdentityHasBeenSet(false)
-{
-}
-
-FindingActor::FindingActor(JsonView jsonValue) : 
-    m_domainDetailsHasBeenSet(false),
-    m_ipAddressDetailsHasBeenSet(false),
-    m_userIdentityHasBeenSet(false)
+FindingActor::FindingActor(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ FindingActor& FindingActor::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("domainDetails"))
   {
     m_domainDetails = jsonValue.GetObject("domainDetails");
-
     m_domainDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ipAddressDetails"))
   {
     m_ipAddressDetails = jsonValue.GetObject("ipAddressDetails");
-
     m_ipAddressDetailsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("userIdentity"))
   {
     m_userIdentity = jsonValue.GetObject("userIdentity");
-
     m_userIdentityHasBeenSet = true;
   }
-
   return *this;
 }
 

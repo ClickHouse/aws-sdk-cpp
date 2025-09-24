@@ -29,133 +29,67 @@ namespace Model
   class ExecuteGremlinQueryResult
   {
   public:
-    AWS_NEPTUNEDATA_API ExecuteGremlinQueryResult();
+    AWS_NEPTUNEDATA_API ExecuteGremlinQueryResult() = default;
     AWS_NEPTUNEDATA_API ExecuteGremlinQueryResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_NEPTUNEDATA_API ExecuteGremlinQueryResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The unique identifier of the Gremlin query.</p>
      */
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ExecuteGremlinQueryResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier of the Gremlin query.</p>
-     */
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    /**
-     * <p>The unique identifier of the Gremlin query.</p>
-     */
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the Gremlin query.</p>
-     */
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    /**
-     * <p>The unique identifier of the Gremlin query.</p>
-     */
-    inline ExecuteGremlinQueryResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the Gremlin query.</p>
-     */
-    inline ExecuteGremlinQueryResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the Gremlin query.</p>
-     */
-    inline ExecuteGremlinQueryResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the Gremlin query.</p>
      */
-    inline const GremlinQueryStatusAttributes& GetStatus() const{ return m_status; }
+    inline const GremlinQueryStatusAttributes& GetStatus() const { return m_status; }
+    template<typename StatusT = GremlinQueryStatusAttributes>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = GremlinQueryStatusAttributes>
+    ExecuteGremlinQueryResult& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the Gremlin query.</p>
-     */
-    inline void SetStatus(const GremlinQueryStatusAttributes& value) { m_status = value; }
-
-    /**
-     * <p>The status of the Gremlin query.</p>
-     */
-    inline void SetStatus(GremlinQueryStatusAttributes&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of the Gremlin query.</p>
-     */
-    inline ExecuteGremlinQueryResult& WithStatus(const GremlinQueryStatusAttributes& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the Gremlin query.</p>
-     */
-    inline ExecuteGremlinQueryResult& WithStatus(GremlinQueryStatusAttributes&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Gremlin query output from the server.</p>
      */
-    inline Aws::Utils::DocumentView GetResult() const{ return m_result; }
+    inline Aws::Utils::DocumentView GetResult() const { return m_result; }
+    template<typename ResultT = Aws::Utils::Document>
+    void SetResult(ResultT&& value) { m_resultHasBeenSet = true; m_result = std::forward<ResultT>(value); }
+    template<typename ResultT = Aws::Utils::Document>
+    ExecuteGremlinQueryResult& WithResult(ResultT&& value) { SetResult(std::forward<ResultT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Gremlin query output from the server.</p>
-     */
-    inline void SetResult(const Aws::Utils::Document& value) { m_result = value; }
-
-    /**
-     * <p>The Gremlin query output from the server.</p>
-     */
-    inline void SetResult(Aws::Utils::Document&& value) { m_result = std::move(value); }
-
-    /**
-     * <p>The Gremlin query output from the server.</p>
-     */
-    inline ExecuteGremlinQueryResult& WithResult(const Aws::Utils::Document& value) { SetResult(value); return *this;}
-
-    /**
-     * <p>The Gremlin query output from the server.</p>
-     */
-    inline ExecuteGremlinQueryResult& WithResult(Aws::Utils::Document&& value) { SetResult(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Metadata about the Gremlin query.</p>
      */
-    inline Aws::Utils::DocumentView GetMeta() const{ return m_meta; }
-
-    /**
-     * <p>Metadata about the Gremlin query.</p>
-     */
-    inline void SetMeta(const Aws::Utils::Document& value) { m_meta = value; }
-
-    /**
-     * <p>Metadata about the Gremlin query.</p>
-     */
-    inline void SetMeta(Aws::Utils::Document&& value) { m_meta = std::move(value); }
-
-    /**
-     * <p>Metadata about the Gremlin query.</p>
-     */
-    inline ExecuteGremlinQueryResult& WithMeta(const Aws::Utils::Document& value) { SetMeta(value); return *this;}
-
-    /**
-     * <p>Metadata about the Gremlin query.</p>
-     */
-    inline ExecuteGremlinQueryResult& WithMeta(Aws::Utils::Document&& value) { SetMeta(std::move(value)); return *this;}
-
+    inline Aws::Utils::DocumentView GetMeta() const { return m_meta; }
+    template<typename MetaT = Aws::Utils::Document>
+    void SetMeta(MetaT&& value) { m_metaHasBeenSet = true; m_meta = std::forward<MetaT>(value); }
+    template<typename MetaT = Aws::Utils::Document>
+    ExecuteGremlinQueryResult& WithMeta(MetaT&& value) { SetMeta(std::forward<MetaT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
 
     GremlinQueryStatusAttributes m_status;
+    bool m_statusHasBeenSet = false;
 
     Aws::Utils::Document m_result;
+    bool m_resultHasBeenSet = false;
 
     Aws::Utils::Document m_meta;
+    bool m_metaHasBeenSet = false;
   };
 
 } // namespace Model

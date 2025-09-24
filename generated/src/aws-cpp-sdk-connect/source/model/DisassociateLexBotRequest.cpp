@@ -15,13 +15,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-DisassociateLexBotRequest::DisassociateLexBotRequest() : 
-    m_instanceIdHasBeenSet(false),
-    m_botNameHasBeenSet(false),
-    m_lexRegionHasBeenSet(false)
-{
-}
-
 Aws::String DisassociateLexBotRequest::SerializePayload() const
 {
   return {};
@@ -41,6 +34,13 @@ void DisassociateLexBotRequest::AddQueryStringParameters(URI& uri) const
     {
       ss << m_lexRegion;
       uri.AddQueryStringParameter("lexRegion", ss.str());
+      ss.str("");
+    }
+
+    if(m_clientTokenHasBeenSet)
+    {
+      ss << m_clientToken;
+      uri.AddQueryStringParameter("clientToken", ss.str());
       ss.str("");
     }
 

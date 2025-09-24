@@ -23,106 +23,62 @@ namespace MediaConnect
 namespace Model
 {
 
+  /**
+   * <p>Create a bridge with the ingress bridge type. An ingress bridge is a
+   * ground-to-cloud bridge. The content originates at your premises and is delivered
+   * to the cloud. </p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/IngressGatewayBridge">AWS
+   * API Reference</a></p>
+   */
   class IngressGatewayBridge
   {
   public:
-    AWS_MEDIACONNECT_API IngressGatewayBridge();
+    AWS_MEDIACONNECT_API IngressGatewayBridge() = default;
     AWS_MEDIACONNECT_API IngressGatewayBridge(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API IngressGatewayBridge& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIACONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * The ID of the instance running this bridge.
+     * <p>The ID of the instance running this bridge. </p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * The ID of the instance running this bridge.
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    IngressGatewayBridge& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * The ID of the instance running this bridge.
+     * <p>The maximum expected bitrate (in bps) of the ingress bridge. </p>
      */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * The ID of the instance running this bridge.
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * The ID of the instance running this bridge.
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * The ID of the instance running this bridge.
-     */
-    inline IngressGatewayBridge& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * The ID of the instance running this bridge.
-     */
-    inline IngressGatewayBridge& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * The ID of the instance running this bridge.
-     */
-    inline IngressGatewayBridge& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
-    /**
-     * The maximum expected bitrate (in bps) of the ingress bridge.
-     */
-    inline int GetMaxBitrate() const{ return m_maxBitrate; }
-
-    /**
-     * The maximum expected bitrate (in bps) of the ingress bridge.
-     */
+    inline int GetMaxBitrate() const { return m_maxBitrate; }
     inline bool MaxBitrateHasBeenSet() const { return m_maxBitrateHasBeenSet; }
-
-    /**
-     * The maximum expected bitrate (in bps) of the ingress bridge.
-     */
     inline void SetMaxBitrate(int value) { m_maxBitrateHasBeenSet = true; m_maxBitrate = value; }
-
-    /**
-     * The maximum expected bitrate (in bps) of the ingress bridge.
-     */
     inline IngressGatewayBridge& WithMaxBitrate(int value) { SetMaxBitrate(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * The maximum number of outputs on the ingress bridge.
+     * <p>The maximum number of outputs on the ingress bridge. </p>
      */
-    inline int GetMaxOutputs() const{ return m_maxOutputs; }
-
-    /**
-     * The maximum number of outputs on the ingress bridge.
-     */
+    inline int GetMaxOutputs() const { return m_maxOutputs; }
     inline bool MaxOutputsHasBeenSet() const { return m_maxOutputsHasBeenSet; }
-
-    /**
-     * The maximum number of outputs on the ingress bridge.
-     */
     inline void SetMaxOutputs(int value) { m_maxOutputsHasBeenSet = true; m_maxOutputs = value; }
-
-    /**
-     * The maximum number of outputs on the ingress bridge.
-     */
     inline IngressGatewayBridge& WithMaxOutputs(int value) { SetMaxOutputs(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_instanceId;
     bool m_instanceIdHasBeenSet = false;
 
-    int m_maxBitrate;
+    int m_maxBitrate{0};
     bool m_maxBitrateHasBeenSet = false;
 
-    int m_maxOutputs;
+    int m_maxOutputs{0};
     bool m_maxOutputsHasBeenSet = false;
   };
 

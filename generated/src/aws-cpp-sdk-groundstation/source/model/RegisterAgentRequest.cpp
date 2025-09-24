@@ -12,12 +12,6 @@ using namespace Aws::GroundStation::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-RegisterAgentRequest::RegisterAgentRequest() : 
-    m_agentDetailsHasBeenSet(false),
-    m_discoveryDataHasBeenSet(false)
-{
-}
-
 Aws::String RegisterAgentRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,6 +25,17 @@ Aws::String RegisterAgentRequest::SerializePayload() const
   if(m_discoveryDataHasBeenSet)
   {
    payload.WithObject("discoveryData", m_discoveryData.Jsonize());
+
+  }
+
+  if(m_tagsHasBeenSet)
+  {
+   JsonValue tagsJsonMap;
+   for(auto& tagsItem : m_tags)
+   {
+     tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
+   }
+   payload.WithObject("tags", std::move(tagsJsonMap));
 
   }
 

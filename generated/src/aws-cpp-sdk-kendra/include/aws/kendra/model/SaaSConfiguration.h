@@ -32,125 +32,39 @@ namespace Model
   class SaaSConfiguration
   {
   public:
-    AWS_KENDRA_API SaaSConfiguration();
+    AWS_KENDRA_API SaaSConfiguration() = default;
     AWS_KENDRA_API SaaSConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API SaaSConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the organization of the GitHub Enterprise Cloud (SaaS) account
      * you want to connect to. You can find your organization name by logging into
      * GitHub desktop and selecting <b>Your organizations</b> under your profile
      * picture dropdown.</p>
      */
-    inline const Aws::String& GetOrganizationName() const{ return m_organizationName; }
-
-    /**
-     * <p>The name of the organization of the GitHub Enterprise Cloud (SaaS) account
-     * you want to connect to. You can find your organization name by logging into
-     * GitHub desktop and selecting <b>Your organizations</b> under your profile
-     * picture dropdown.</p>
-     */
+    inline const Aws::String& GetOrganizationName() const { return m_organizationName; }
     inline bool OrganizationNameHasBeenSet() const { return m_organizationNameHasBeenSet; }
+    template<typename OrganizationNameT = Aws::String>
+    void SetOrganizationName(OrganizationNameT&& value) { m_organizationNameHasBeenSet = true; m_organizationName = std::forward<OrganizationNameT>(value); }
+    template<typename OrganizationNameT = Aws::String>
+    SaaSConfiguration& WithOrganizationName(OrganizationNameT&& value) { SetOrganizationName(std::forward<OrganizationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the organization of the GitHub Enterprise Cloud (SaaS) account
-     * you want to connect to. You can find your organization name by logging into
-     * GitHub desktop and selecting <b>Your organizations</b> under your profile
-     * picture dropdown.</p>
-     */
-    inline void SetOrganizationName(const Aws::String& value) { m_organizationNameHasBeenSet = true; m_organizationName = value; }
-
-    /**
-     * <p>The name of the organization of the GitHub Enterprise Cloud (SaaS) account
-     * you want to connect to. You can find your organization name by logging into
-     * GitHub desktop and selecting <b>Your organizations</b> under your profile
-     * picture dropdown.</p>
-     */
-    inline void SetOrganizationName(Aws::String&& value) { m_organizationNameHasBeenSet = true; m_organizationName = std::move(value); }
-
-    /**
-     * <p>The name of the organization of the GitHub Enterprise Cloud (SaaS) account
-     * you want to connect to. You can find your organization name by logging into
-     * GitHub desktop and selecting <b>Your organizations</b> under your profile
-     * picture dropdown.</p>
-     */
-    inline void SetOrganizationName(const char* value) { m_organizationNameHasBeenSet = true; m_organizationName.assign(value); }
-
-    /**
-     * <p>The name of the organization of the GitHub Enterprise Cloud (SaaS) account
-     * you want to connect to. You can find your organization name by logging into
-     * GitHub desktop and selecting <b>Your organizations</b> under your profile
-     * picture dropdown.</p>
-     */
-    inline SaaSConfiguration& WithOrganizationName(const Aws::String& value) { SetOrganizationName(value); return *this;}
-
-    /**
-     * <p>The name of the organization of the GitHub Enterprise Cloud (SaaS) account
-     * you want to connect to. You can find your organization name by logging into
-     * GitHub desktop and selecting <b>Your organizations</b> under your profile
-     * picture dropdown.</p>
-     */
-    inline SaaSConfiguration& WithOrganizationName(Aws::String&& value) { SetOrganizationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the organization of the GitHub Enterprise Cloud (SaaS) account
-     * you want to connect to. You can find your organization name by logging into
-     * GitHub desktop and selecting <b>Your organizations</b> under your profile
-     * picture dropdown.</p>
-     */
-    inline SaaSConfiguration& WithOrganizationName(const char* value) { SetOrganizationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The GitHub host URL or API endpoint URL. For example,
      * <i>https://api.github.com</i>.</p>
      */
-    inline const Aws::String& GetHostUrl() const{ return m_hostUrl; }
-
-    /**
-     * <p>The GitHub host URL or API endpoint URL. For example,
-     * <i>https://api.github.com</i>.</p>
-     */
+    inline const Aws::String& GetHostUrl() const { return m_hostUrl; }
     inline bool HostUrlHasBeenSet() const { return m_hostUrlHasBeenSet; }
-
-    /**
-     * <p>The GitHub host URL or API endpoint URL. For example,
-     * <i>https://api.github.com</i>.</p>
-     */
-    inline void SetHostUrl(const Aws::String& value) { m_hostUrlHasBeenSet = true; m_hostUrl = value; }
-
-    /**
-     * <p>The GitHub host URL or API endpoint URL. For example,
-     * <i>https://api.github.com</i>.</p>
-     */
-    inline void SetHostUrl(Aws::String&& value) { m_hostUrlHasBeenSet = true; m_hostUrl = std::move(value); }
-
-    /**
-     * <p>The GitHub host URL or API endpoint URL. For example,
-     * <i>https://api.github.com</i>.</p>
-     */
-    inline void SetHostUrl(const char* value) { m_hostUrlHasBeenSet = true; m_hostUrl.assign(value); }
-
-    /**
-     * <p>The GitHub host URL or API endpoint URL. For example,
-     * <i>https://api.github.com</i>.</p>
-     */
-    inline SaaSConfiguration& WithHostUrl(const Aws::String& value) { SetHostUrl(value); return *this;}
-
-    /**
-     * <p>The GitHub host URL or API endpoint URL. For example,
-     * <i>https://api.github.com</i>.</p>
-     */
-    inline SaaSConfiguration& WithHostUrl(Aws::String&& value) { SetHostUrl(std::move(value)); return *this;}
-
-    /**
-     * <p>The GitHub host URL or API endpoint URL. For example,
-     * <i>https://api.github.com</i>.</p>
-     */
-    inline SaaSConfiguration& WithHostUrl(const char* value) { SetHostUrl(value); return *this;}
-
+    template<typename HostUrlT = Aws::String>
+    void SetHostUrl(HostUrlT&& value) { m_hostUrlHasBeenSet = true; m_hostUrl = std::forward<HostUrlT>(value); }
+    template<typename HostUrlT = Aws::String>
+    SaaSConfiguration& WithHostUrl(HostUrlT&& value) { SetHostUrl(std::forward<HostUrlT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_organizationName;

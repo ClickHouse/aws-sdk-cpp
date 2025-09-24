@@ -20,15 +20,7 @@ namespace CloudFormation
 namespace Model
 {
 
-StackInstanceComprehensiveStatus::StackInstanceComprehensiveStatus() : 
-    m_detailedStatus(StackInstanceDetailedStatus::NOT_SET),
-    m_detailedStatusHasBeenSet(false)
-{
-}
-
-StackInstanceComprehensiveStatus::StackInstanceComprehensiveStatus(const XmlNode& xmlNode) : 
-    m_detailedStatus(StackInstanceDetailedStatus::NOT_SET),
-    m_detailedStatusHasBeenSet(false)
+StackInstanceComprehensiveStatus::StackInstanceComprehensiveStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -42,7 +34,7 @@ StackInstanceComprehensiveStatus& StackInstanceComprehensiveStatus::operator =(c
     XmlNode detailedStatusNode = resultNode.FirstChild("DetailedStatus");
     if(!detailedStatusNode.IsNull())
     {
-      m_detailedStatus = StackInstanceDetailedStatusMapper::GetStackInstanceDetailedStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(detailedStatusNode.GetText()).c_str()).c_str());
+      m_detailedStatus = StackInstanceDetailedStatusMapper::GetStackInstanceDetailedStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(detailedStatusNode.GetText()).c_str()));
       m_detailedStatusHasBeenSet = true;
     }
   }
@@ -54,7 +46,7 @@ void StackInstanceComprehensiveStatus::OutputToStream(Aws::OStream& oStream, con
 {
   if(m_detailedStatusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".DetailedStatus=" << StackInstanceDetailedStatusMapper::GetNameForStackInstanceDetailedStatus(m_detailedStatus) << "&";
+      oStream << location << index << locationValue << ".DetailedStatus=" << StringUtils::URLEncode(StackInstanceDetailedStatusMapper::GetNameForStackInstanceDetailedStatus(m_detailedStatus)) << "&";
   }
 
 }
@@ -63,7 +55,7 @@ void StackInstanceComprehensiveStatus::OutputToStream(Aws::OStream& oStream, con
 {
   if(m_detailedStatusHasBeenSet)
   {
-      oStream << location << ".DetailedStatus=" << StackInstanceDetailedStatusMapper::GetNameForStackInstanceDetailedStatus(m_detailedStatus) << "&";
+      oStream << location << ".DetailedStatus=" << StringUtils::URLEncode(StackInstanceDetailedStatusMapper::GetNameForStackInstanceDetailedStatus(m_detailedStatus)) << "&";
   }
 }
 

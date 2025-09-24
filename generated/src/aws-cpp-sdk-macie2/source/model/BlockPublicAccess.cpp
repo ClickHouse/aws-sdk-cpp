@@ -18,27 +18,7 @@ namespace Macie2
 namespace Model
 {
 
-BlockPublicAccess::BlockPublicAccess() : 
-    m_blockPublicAcls(false),
-    m_blockPublicAclsHasBeenSet(false),
-    m_blockPublicPolicy(false),
-    m_blockPublicPolicyHasBeenSet(false),
-    m_ignorePublicAcls(false),
-    m_ignorePublicAclsHasBeenSet(false),
-    m_restrictPublicBuckets(false),
-    m_restrictPublicBucketsHasBeenSet(false)
-{
-}
-
-BlockPublicAccess::BlockPublicAccess(JsonView jsonValue) : 
-    m_blockPublicAcls(false),
-    m_blockPublicAclsHasBeenSet(false),
-    m_blockPublicPolicy(false),
-    m_blockPublicPolicyHasBeenSet(false),
-    m_ignorePublicAcls(false),
-    m_ignorePublicAclsHasBeenSet(false),
-    m_restrictPublicBuckets(false),
-    m_restrictPublicBucketsHasBeenSet(false)
+BlockPublicAccess::BlockPublicAccess(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,31 +28,23 @@ BlockPublicAccess& BlockPublicAccess::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("blockPublicAcls"))
   {
     m_blockPublicAcls = jsonValue.GetBool("blockPublicAcls");
-
     m_blockPublicAclsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("blockPublicPolicy"))
   {
     m_blockPublicPolicy = jsonValue.GetBool("blockPublicPolicy");
-
     m_blockPublicPolicyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ignorePublicAcls"))
   {
     m_ignorePublicAcls = jsonValue.GetBool("ignorePublicAcls");
-
     m_ignorePublicAclsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("restrictPublicBuckets"))
   {
     m_restrictPublicBuckets = jsonValue.GetBool("restrictPublicBuckets");
-
     m_restrictPublicBucketsHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -27,73 +27,37 @@ namespace Model
   class CreateAudienceModelResult
   {
   public:
-    AWS_CLEANROOMSML_API CreateAudienceModelResult();
+    AWS_CLEANROOMSML_API CreateAudienceModelResult() = default;
     AWS_CLEANROOMSML_API CreateAudienceModelResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CLEANROOMSML_API CreateAudienceModelResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the audience model.</p>
      */
-    inline const Aws::String& GetAudienceModelArn() const{ return m_audienceModelArn; }
+    inline const Aws::String& GetAudienceModelArn() const { return m_audienceModelArn; }
+    template<typename AudienceModelArnT = Aws::String>
+    void SetAudienceModelArn(AudienceModelArnT&& value) { m_audienceModelArnHasBeenSet = true; m_audienceModelArn = std::forward<AudienceModelArnT>(value); }
+    template<typename AudienceModelArnT = Aws::String>
+    CreateAudienceModelResult& WithAudienceModelArn(AudienceModelArnT&& value) { SetAudienceModelArn(std::forward<AudienceModelArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the audience model.</p>
-     */
-    inline void SetAudienceModelArn(const Aws::String& value) { m_audienceModelArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the audience model.</p>
-     */
-    inline void SetAudienceModelArn(Aws::String&& value) { m_audienceModelArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the audience model.</p>
-     */
-    inline void SetAudienceModelArn(const char* value) { m_audienceModelArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the audience model.</p>
-     */
-    inline CreateAudienceModelResult& WithAudienceModelArn(const Aws::String& value) { SetAudienceModelArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the audience model.</p>
-     */
-    inline CreateAudienceModelResult& WithAudienceModelArn(Aws::String&& value) { SetAudienceModelArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the audience model.</p>
-     */
-    inline CreateAudienceModelResult& WithAudienceModelArn(const char* value) { SetAudienceModelArn(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline CreateAudienceModelResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline CreateAudienceModelResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline CreateAudienceModelResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    CreateAudienceModelResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_audienceModelArn;
+    bool m_audienceModelArnHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

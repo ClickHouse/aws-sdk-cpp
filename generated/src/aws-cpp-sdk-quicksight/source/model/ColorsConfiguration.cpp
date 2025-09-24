@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-ColorsConfiguration::ColorsConfiguration() : 
-    m_customColorsHasBeenSet(false)
-{
-}
-
-ColorsConfiguration::ColorsConfiguration(JsonView jsonValue) : 
-    m_customColorsHasBeenSet(false)
+ColorsConfiguration::ColorsConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ ColorsConfiguration& ColorsConfiguration::operator =(JsonView jsonValue)
     }
     m_customColorsHasBeenSet = true;
   }
-
   return *this;
 }
 

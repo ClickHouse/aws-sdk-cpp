@@ -13,22 +13,6 @@ using namespace Aws::Lambda::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateFunctionCodeRequest::UpdateFunctionCodeRequest() : 
-    m_functionNameHasBeenSet(false),
-    m_zipFileHasBeenSet(false),
-    m_s3BucketHasBeenSet(false),
-    m_s3KeyHasBeenSet(false),
-    m_s3ObjectVersionHasBeenSet(false),
-    m_imageUriHasBeenSet(false),
-    m_publish(false),
-    m_publishHasBeenSet(false),
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_revisionIdHasBeenSet(false),
-    m_architecturesHasBeenSet(false)
-{
-}
-
 Aws::String UpdateFunctionCodeRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -88,6 +72,12 @@ Aws::String UpdateFunctionCodeRequest::SerializePayload() const
      architecturesJsonList[architecturesIndex].AsString(ArchitectureMapper::GetNameForArchitecture(m_architectures[architecturesIndex]));
    }
    payload.WithArray("Architectures", std::move(architecturesJsonList));
+
+  }
+
+  if(m_sourceKMSKeyArnHasBeenSet)
+  {
+   payload.WithString("SourceKMSKeyArn", m_sourceKMSKeyArn);
 
   }
 

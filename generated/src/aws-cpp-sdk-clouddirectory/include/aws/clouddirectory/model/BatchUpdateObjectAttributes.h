@@ -34,83 +34,37 @@ namespace Model
   class BatchUpdateObjectAttributes
   {
   public:
-    AWS_CLOUDDIRECTORY_API BatchUpdateObjectAttributes();
+    AWS_CLOUDDIRECTORY_API BatchUpdateObjectAttributes() = default;
     AWS_CLOUDDIRECTORY_API BatchUpdateObjectAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API BatchUpdateObjectAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDDIRECTORY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Reference that identifies the object.</p>
      */
-    inline const ObjectReference& GetObjectReference() const{ return m_objectReference; }
-
-    /**
-     * <p>Reference that identifies the object.</p>
-     */
+    inline const ObjectReference& GetObjectReference() const { return m_objectReference; }
     inline bool ObjectReferenceHasBeenSet() const { return m_objectReferenceHasBeenSet; }
+    template<typename ObjectReferenceT = ObjectReference>
+    void SetObjectReference(ObjectReferenceT&& value) { m_objectReferenceHasBeenSet = true; m_objectReference = std::forward<ObjectReferenceT>(value); }
+    template<typename ObjectReferenceT = ObjectReference>
+    BatchUpdateObjectAttributes& WithObjectReference(ObjectReferenceT&& value) { SetObjectReference(std::forward<ObjectReferenceT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Reference that identifies the object.</p>
-     */
-    inline void SetObjectReference(const ObjectReference& value) { m_objectReferenceHasBeenSet = true; m_objectReference = value; }
-
-    /**
-     * <p>Reference that identifies the object.</p>
-     */
-    inline void SetObjectReference(ObjectReference&& value) { m_objectReferenceHasBeenSet = true; m_objectReference = std::move(value); }
-
-    /**
-     * <p>Reference that identifies the object.</p>
-     */
-    inline BatchUpdateObjectAttributes& WithObjectReference(const ObjectReference& value) { SetObjectReference(value); return *this;}
-
-    /**
-     * <p>Reference that identifies the object.</p>
-     */
-    inline BatchUpdateObjectAttributes& WithObjectReference(ObjectReference&& value) { SetObjectReference(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Attributes update structure.</p>
      */
-    inline const Aws::Vector<ObjectAttributeUpdate>& GetAttributeUpdates() const{ return m_attributeUpdates; }
-
-    /**
-     * <p>Attributes update structure.</p>
-     */
+    inline const Aws::Vector<ObjectAttributeUpdate>& GetAttributeUpdates() const { return m_attributeUpdates; }
     inline bool AttributeUpdatesHasBeenSet() const { return m_attributeUpdatesHasBeenSet; }
-
-    /**
-     * <p>Attributes update structure.</p>
-     */
-    inline void SetAttributeUpdates(const Aws::Vector<ObjectAttributeUpdate>& value) { m_attributeUpdatesHasBeenSet = true; m_attributeUpdates = value; }
-
-    /**
-     * <p>Attributes update structure.</p>
-     */
-    inline void SetAttributeUpdates(Aws::Vector<ObjectAttributeUpdate>&& value) { m_attributeUpdatesHasBeenSet = true; m_attributeUpdates = std::move(value); }
-
-    /**
-     * <p>Attributes update structure.</p>
-     */
-    inline BatchUpdateObjectAttributes& WithAttributeUpdates(const Aws::Vector<ObjectAttributeUpdate>& value) { SetAttributeUpdates(value); return *this;}
-
-    /**
-     * <p>Attributes update structure.</p>
-     */
-    inline BatchUpdateObjectAttributes& WithAttributeUpdates(Aws::Vector<ObjectAttributeUpdate>&& value) { SetAttributeUpdates(std::move(value)); return *this;}
-
-    /**
-     * <p>Attributes update structure.</p>
-     */
-    inline BatchUpdateObjectAttributes& AddAttributeUpdates(const ObjectAttributeUpdate& value) { m_attributeUpdatesHasBeenSet = true; m_attributeUpdates.push_back(value); return *this; }
-
-    /**
-     * <p>Attributes update structure.</p>
-     */
-    inline BatchUpdateObjectAttributes& AddAttributeUpdates(ObjectAttributeUpdate&& value) { m_attributeUpdatesHasBeenSet = true; m_attributeUpdates.push_back(std::move(value)); return *this; }
-
+    template<typename AttributeUpdatesT = Aws::Vector<ObjectAttributeUpdate>>
+    void SetAttributeUpdates(AttributeUpdatesT&& value) { m_attributeUpdatesHasBeenSet = true; m_attributeUpdates = std::forward<AttributeUpdatesT>(value); }
+    template<typename AttributeUpdatesT = Aws::Vector<ObjectAttributeUpdate>>
+    BatchUpdateObjectAttributes& WithAttributeUpdates(AttributeUpdatesT&& value) { SetAttributeUpdates(std::forward<AttributeUpdatesT>(value)); return *this;}
+    template<typename AttributeUpdatesT = ObjectAttributeUpdate>
+    BatchUpdateObjectAttributes& AddAttributeUpdates(AttributeUpdatesT&& value) { m_attributeUpdatesHasBeenSet = true; m_attributeUpdates.emplace_back(std::forward<AttributeUpdatesT>(value)); return *this; }
+    ///@}
   private:
 
     ObjectReference m_objectReference;

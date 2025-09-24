@@ -18,85 +18,64 @@ namespace MediaConvert
 namespace Model
 {
 
-FileSourceSettings::FileSourceSettings() : 
-    m_convert608To708(FileSourceConvert608To708::NOT_SET),
-    m_convert608To708HasBeenSet(false),
-    m_convertPaintToPop(CaptionSourceConvertPaintOnToPopOn::NOT_SET),
-    m_convertPaintToPopHasBeenSet(false),
-    m_framerateHasBeenSet(false),
-    m_sourceFileHasBeenSet(false),
-    m_timeDelta(0),
-    m_timeDeltaHasBeenSet(false),
-    m_timeDeltaUnits(FileSourceTimeDeltaUnits::NOT_SET),
-    m_timeDeltaUnitsHasBeenSet(false)
-{
-}
-
-FileSourceSettings::FileSourceSettings(JsonView jsonValue) : 
-    m_convert608To708(FileSourceConvert608To708::NOT_SET),
-    m_convert608To708HasBeenSet(false),
-    m_convertPaintToPop(CaptionSourceConvertPaintOnToPopOn::NOT_SET),
-    m_convertPaintToPopHasBeenSet(false),
-    m_framerateHasBeenSet(false),
-    m_sourceFileHasBeenSet(false),
-    m_timeDelta(0),
-    m_timeDeltaHasBeenSet(false),
-    m_timeDeltaUnits(FileSourceTimeDeltaUnits::NOT_SET),
-    m_timeDeltaUnitsHasBeenSet(false)
+FileSourceSettings::FileSourceSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 FileSourceSettings& FileSourceSettings::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("byteRateLimit"))
+  {
+    m_byteRateLimit = CaptionSourceByteRateLimitMapper::GetCaptionSourceByteRateLimitForName(jsonValue.GetString("byteRateLimit"));
+    m_byteRateLimitHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("convert608To708"))
   {
     m_convert608To708 = FileSourceConvert608To708Mapper::GetFileSourceConvert608To708ForName(jsonValue.GetString("convert608To708"));
-
     m_convert608To708HasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("convertPaintToPop"))
   {
     m_convertPaintToPop = CaptionSourceConvertPaintOnToPopOnMapper::GetCaptionSourceConvertPaintOnToPopOnForName(jsonValue.GetString("convertPaintToPop"));
-
     m_convertPaintToPopHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("framerate"))
   {
     m_framerate = jsonValue.GetObject("framerate");
-
     m_framerateHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("sourceFile"))
   {
     m_sourceFile = jsonValue.GetString("sourceFile");
-
     m_sourceFileHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("timeDelta"))
   {
     m_timeDelta = jsonValue.GetInteger("timeDelta");
-
     m_timeDeltaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("timeDeltaUnits"))
   {
     m_timeDeltaUnits = FileSourceTimeDeltaUnitsMapper::GetFileSourceTimeDeltaUnitsForName(jsonValue.GetString("timeDeltaUnits"));
-
     m_timeDeltaUnitsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("upconvertSTLToTeletext"))
+  {
+    m_upconvertSTLToTeletext = CaptionSourceUpconvertSTLToTeletextMapper::GetCaptionSourceUpconvertSTLToTeletextForName(jsonValue.GetString("upconvertSTLToTeletext"));
+    m_upconvertSTLToTeletextHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue FileSourceSettings::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_byteRateLimitHasBeenSet)
+  {
+   payload.WithString("byteRateLimit", CaptionSourceByteRateLimitMapper::GetNameForCaptionSourceByteRateLimit(m_byteRateLimit));
+  }
 
   if(m_convert608To708HasBeenSet)
   {
@@ -129,6 +108,11 @@ JsonValue FileSourceSettings::Jsonize() const
   if(m_timeDeltaUnitsHasBeenSet)
   {
    payload.WithString("timeDeltaUnits", FileSourceTimeDeltaUnitsMapper::GetNameForFileSourceTimeDeltaUnits(m_timeDeltaUnits));
+  }
+
+  if(m_upconvertSTLToTeletextHasBeenSet)
+  {
+   payload.WithString("upconvertSTLToTeletext", CaptionSourceUpconvertSTLToTeletextMapper::GetNameForCaptionSourceUpconvertSTLToTeletext(m_upconvertSTLToTeletext));
   }
 
   return payload;

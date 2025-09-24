@@ -21,7 +21,7 @@ namespace Model
   class DescribeProblemObservationsRequest : public ApplicationInsightsRequest
   {
   public:
-    AWS_APPLICATIONINSIGHTS_API DescribeProblemObservationsRequest();
+    AWS_APPLICATIONINSIGHTS_API DescribeProblemObservationsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,87 +34,29 @@ namespace Model
     AWS_APPLICATIONINSIGHTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the problem.</p>
      */
-    inline const Aws::String& GetProblemId() const{ return m_problemId; }
-
-    /**
-     * <p>The ID of the problem.</p>
-     */
+    inline const Aws::String& GetProblemId() const { return m_problemId; }
     inline bool ProblemIdHasBeenSet() const { return m_problemIdHasBeenSet; }
+    template<typename ProblemIdT = Aws::String>
+    void SetProblemId(ProblemIdT&& value) { m_problemIdHasBeenSet = true; m_problemId = std::forward<ProblemIdT>(value); }
+    template<typename ProblemIdT = Aws::String>
+    DescribeProblemObservationsRequest& WithProblemId(ProblemIdT&& value) { SetProblemId(std::forward<ProblemIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the problem.</p>
+     * <p>The Amazon Web Services account ID for the resource group owner.</p>
      */
-    inline void SetProblemId(const Aws::String& value) { m_problemIdHasBeenSet = true; m_problemId = value; }
-
-    /**
-     * <p>The ID of the problem.</p>
-     */
-    inline void SetProblemId(Aws::String&& value) { m_problemIdHasBeenSet = true; m_problemId = std::move(value); }
-
-    /**
-     * <p>The ID of the problem.</p>
-     */
-    inline void SetProblemId(const char* value) { m_problemIdHasBeenSet = true; m_problemId.assign(value); }
-
-    /**
-     * <p>The ID of the problem.</p>
-     */
-    inline DescribeProblemObservationsRequest& WithProblemId(const Aws::String& value) { SetProblemId(value); return *this;}
-
-    /**
-     * <p>The ID of the problem.</p>
-     */
-    inline DescribeProblemObservationsRequest& WithProblemId(Aws::String&& value) { SetProblemId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the problem.</p>
-     */
-    inline DescribeProblemObservationsRequest& WithProblemId(const char* value) { SetProblemId(value); return *this;}
-
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline const Aws::String& GetAccountId() const{ return m_accountId; }
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
+    inline const Aws::String& GetAccountId() const { return m_accountId; }
     inline bool AccountIdHasBeenSet() const { return m_accountIdHasBeenSet; }
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline void SetAccountId(const Aws::String& value) { m_accountIdHasBeenSet = true; m_accountId = value; }
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline void SetAccountId(Aws::String&& value) { m_accountIdHasBeenSet = true; m_accountId = std::move(value); }
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline void SetAccountId(const char* value) { m_accountIdHasBeenSet = true; m_accountId.assign(value); }
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline DescribeProblemObservationsRequest& WithAccountId(const Aws::String& value) { SetAccountId(value); return *this;}
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline DescribeProblemObservationsRequest& WithAccountId(Aws::String&& value) { SetAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The AWS account ID for the resource group owner.</p>
-     */
-    inline DescribeProblemObservationsRequest& WithAccountId(const char* value) { SetAccountId(value); return *this;}
-
+    template<typename AccountIdT = Aws::String>
+    void SetAccountId(AccountIdT&& value) { m_accountIdHasBeenSet = true; m_accountId = std::forward<AccountIdT>(value); }
+    template<typename AccountIdT = Aws::String>
+    DescribeProblemObservationsRequest& WithAccountId(AccountIdT&& value) { SetAccountId(std::forward<AccountIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_problemId;

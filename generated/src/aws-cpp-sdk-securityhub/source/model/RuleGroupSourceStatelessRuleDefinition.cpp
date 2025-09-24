@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-RuleGroupSourceStatelessRuleDefinition::RuleGroupSourceStatelessRuleDefinition() : 
-    m_actionsHasBeenSet(false),
-    m_matchAttributesHasBeenSet(false)
-{
-}
-
-RuleGroupSourceStatelessRuleDefinition::RuleGroupSourceStatelessRuleDefinition(JsonView jsonValue) : 
-    m_actionsHasBeenSet(false),
-    m_matchAttributesHasBeenSet(false)
+RuleGroupSourceStatelessRuleDefinition::RuleGroupSourceStatelessRuleDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ RuleGroupSourceStatelessRuleDefinition& RuleGroupSourceStatelessRuleDefinition::
     }
     m_actionsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("MatchAttributes"))
   {
     m_matchAttributes = jsonValue.GetObject("MatchAttributes");
-
     m_matchAttributesHasBeenSet = true;
   }
-
   return *this;
 }
 

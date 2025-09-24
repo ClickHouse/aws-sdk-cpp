@@ -18,13 +18,7 @@ namespace GroundStation
 namespace Model
 {
 
-AntennaDownlinkConfig::AntennaDownlinkConfig() : 
-    m_spectrumConfigHasBeenSet(false)
-{
-}
-
-AntennaDownlinkConfig::AntennaDownlinkConfig(JsonView jsonValue) : 
-    m_spectrumConfigHasBeenSet(false)
+AntennaDownlinkConfig::AntennaDownlinkConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ AntennaDownlinkConfig& AntennaDownlinkConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("spectrumConfig"))
   {
     m_spectrumConfig = jsonValue.GetObject("spectrumConfig");
-
     m_spectrumConfigHasBeenSet = true;
   }
-
   return *this;
 }
 

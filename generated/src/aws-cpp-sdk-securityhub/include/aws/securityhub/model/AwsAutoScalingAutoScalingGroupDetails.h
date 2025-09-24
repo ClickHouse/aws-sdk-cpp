@@ -35,377 +35,124 @@ namespace Model
   class AwsAutoScalingAutoScalingGroupDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupDetails();
+    AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupDetails() = default;
     AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsAutoScalingAutoScalingGroupDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the launch configuration.</p>
      */
-    inline const Aws::String& GetLaunchConfigurationName() const{ return m_launchConfigurationName; }
-
-    /**
-     * <p>The name of the launch configuration.</p>
-     */
+    inline const Aws::String& GetLaunchConfigurationName() const { return m_launchConfigurationName; }
     inline bool LaunchConfigurationNameHasBeenSet() const { return m_launchConfigurationNameHasBeenSet; }
+    template<typename LaunchConfigurationNameT = Aws::String>
+    void SetLaunchConfigurationName(LaunchConfigurationNameT&& value) { m_launchConfigurationNameHasBeenSet = true; m_launchConfigurationName = std::forward<LaunchConfigurationNameT>(value); }
+    template<typename LaunchConfigurationNameT = Aws::String>
+    AwsAutoScalingAutoScalingGroupDetails& WithLaunchConfigurationName(LaunchConfigurationNameT&& value) { SetLaunchConfigurationName(std::forward<LaunchConfigurationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the launch configuration.</p>
-     */
-    inline void SetLaunchConfigurationName(const Aws::String& value) { m_launchConfigurationNameHasBeenSet = true; m_launchConfigurationName = value; }
-
-    /**
-     * <p>The name of the launch configuration.</p>
-     */
-    inline void SetLaunchConfigurationName(Aws::String&& value) { m_launchConfigurationNameHasBeenSet = true; m_launchConfigurationName = std::move(value); }
-
-    /**
-     * <p>The name of the launch configuration.</p>
-     */
-    inline void SetLaunchConfigurationName(const char* value) { m_launchConfigurationNameHasBeenSet = true; m_launchConfigurationName.assign(value); }
-
-    /**
-     * <p>The name of the launch configuration.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithLaunchConfigurationName(const Aws::String& value) { SetLaunchConfigurationName(value); return *this;}
-
-    /**
-     * <p>The name of the launch configuration.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithLaunchConfigurationName(Aws::String&& value) { SetLaunchConfigurationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the launch configuration.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithLaunchConfigurationName(const char* value) { SetLaunchConfigurationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of load balancers associated with the group.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetLoadBalancerNames() const{ return m_loadBalancerNames; }
-
-    /**
-     * <p>The list of load balancers associated with the group.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetLoadBalancerNames() const { return m_loadBalancerNames; }
     inline bool LoadBalancerNamesHasBeenSet() const { return m_loadBalancerNamesHasBeenSet; }
+    template<typename LoadBalancerNamesT = Aws::Vector<Aws::String>>
+    void SetLoadBalancerNames(LoadBalancerNamesT&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames = std::forward<LoadBalancerNamesT>(value); }
+    template<typename LoadBalancerNamesT = Aws::Vector<Aws::String>>
+    AwsAutoScalingAutoScalingGroupDetails& WithLoadBalancerNames(LoadBalancerNamesT&& value) { SetLoadBalancerNames(std::forward<LoadBalancerNamesT>(value)); return *this;}
+    template<typename LoadBalancerNamesT = Aws::String>
+    AwsAutoScalingAutoScalingGroupDetails& AddLoadBalancerNames(LoadBalancerNamesT&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.emplace_back(std::forward<LoadBalancerNamesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of load balancers associated with the group.</p>
-     */
-    inline void SetLoadBalancerNames(const Aws::Vector<Aws::String>& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames = value; }
-
-    /**
-     * <p>The list of load balancers associated with the group.</p>
-     */
-    inline void SetLoadBalancerNames(Aws::Vector<Aws::String>&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames = std::move(value); }
-
-    /**
-     * <p>The list of load balancers associated with the group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithLoadBalancerNames(const Aws::Vector<Aws::String>& value) { SetLoadBalancerNames(value); return *this;}
-
-    /**
-     * <p>The list of load balancers associated with the group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithLoadBalancerNames(Aws::Vector<Aws::String>&& value) { SetLoadBalancerNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of load balancers associated with the group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& AddLoadBalancerNames(const Aws::String& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(value); return *this; }
-
-    /**
-     * <p>The list of load balancers associated with the group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& AddLoadBalancerNames(Aws::String&& value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of load balancers associated with the group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& AddLoadBalancerNames(const char* value) { m_loadBalancerNamesHasBeenSet = true; m_loadBalancerNames.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The service to use for the health checks. Valid values are <code>EC2</code>
      * or <code>ELB</code>.</p>
      */
-    inline const Aws::String& GetHealthCheckType() const{ return m_healthCheckType; }
-
-    /**
-     * <p>The service to use for the health checks. Valid values are <code>EC2</code>
-     * or <code>ELB</code>.</p>
-     */
+    inline const Aws::String& GetHealthCheckType() const { return m_healthCheckType; }
     inline bool HealthCheckTypeHasBeenSet() const { return m_healthCheckTypeHasBeenSet; }
+    template<typename HealthCheckTypeT = Aws::String>
+    void SetHealthCheckType(HealthCheckTypeT&& value) { m_healthCheckTypeHasBeenSet = true; m_healthCheckType = std::forward<HealthCheckTypeT>(value); }
+    template<typename HealthCheckTypeT = Aws::String>
+    AwsAutoScalingAutoScalingGroupDetails& WithHealthCheckType(HealthCheckTypeT&& value) { SetHealthCheckType(std::forward<HealthCheckTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The service to use for the health checks. Valid values are <code>EC2</code>
-     * or <code>ELB</code>.</p>
-     */
-    inline void SetHealthCheckType(const Aws::String& value) { m_healthCheckTypeHasBeenSet = true; m_healthCheckType = value; }
-
-    /**
-     * <p>The service to use for the health checks. Valid values are <code>EC2</code>
-     * or <code>ELB</code>.</p>
-     */
-    inline void SetHealthCheckType(Aws::String&& value) { m_healthCheckTypeHasBeenSet = true; m_healthCheckType = std::move(value); }
-
-    /**
-     * <p>The service to use for the health checks. Valid values are <code>EC2</code>
-     * or <code>ELB</code>.</p>
-     */
-    inline void SetHealthCheckType(const char* value) { m_healthCheckTypeHasBeenSet = true; m_healthCheckType.assign(value); }
-
-    /**
-     * <p>The service to use for the health checks. Valid values are <code>EC2</code>
-     * or <code>ELB</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithHealthCheckType(const Aws::String& value) { SetHealthCheckType(value); return *this;}
-
-    /**
-     * <p>The service to use for the health checks. Valid values are <code>EC2</code>
-     * or <code>ELB</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithHealthCheckType(Aws::String&& value) { SetHealthCheckType(std::move(value)); return *this;}
-
-    /**
-     * <p>The service to use for the health checks. Valid values are <code>EC2</code>
-     * or <code>ELB</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithHealthCheckType(const char* value) { SetHealthCheckType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before it
      * checks the health status of an EC2 instance that has come into service.</p>
      */
-    inline int GetHealthCheckGracePeriod() const{ return m_healthCheckGracePeriod; }
-
-    /**
-     * <p>The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before it
-     * checks the health status of an EC2 instance that has come into service.</p>
-     */
+    inline int GetHealthCheckGracePeriod() const { return m_healthCheckGracePeriod; }
     inline bool HealthCheckGracePeriodHasBeenSet() const { return m_healthCheckGracePeriodHasBeenSet; }
-
-    /**
-     * <p>The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before it
-     * checks the health status of an EC2 instance that has come into service.</p>
-     */
     inline void SetHealthCheckGracePeriod(int value) { m_healthCheckGracePeriodHasBeenSet = true; m_healthCheckGracePeriod = value; }
-
-    /**
-     * <p>The amount of time, in seconds, that Amazon EC2 Auto Scaling waits before it
-     * checks the health status of an EC2 instance that has come into service.</p>
-     */
     inline AwsAutoScalingAutoScalingGroupDetails& WithHealthCheckGracePeriod(int value) { SetHealthCheckGracePeriod(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
-     * <p>Indicates when the auto scaling group was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
+     * <p>Indicates when the auto scaling group was created.</p> <p>For more
+     * information about the validation and formatting of timestamp fields in Security
+     * Hub, see <a
+     * href="https://docs.aws.amazon.com/securityhub/1.0/APIReference/Welcome.html#timestamps">Timestamps</a>.</p>
      */
-    inline const Aws::String& GetCreatedTime() const{ return m_createdTime; }
-
-    /**
-     * <p>Indicates when the auto scaling group was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
+    inline const Aws::String& GetCreatedTime() const { return m_createdTime; }
     inline bool CreatedTimeHasBeenSet() const { return m_createdTimeHasBeenSet; }
+    template<typename CreatedTimeT = Aws::String>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::String>
+    AwsAutoScalingAutoScalingGroupDetails& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Indicates when the auto scaling group was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedTime(const Aws::String& value) { m_createdTimeHasBeenSet = true; m_createdTime = value; }
-
-    /**
-     * <p>Indicates when the auto scaling group was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedTime(Aws::String&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::move(value); }
-
-    /**
-     * <p>Indicates when the auto scaling group was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline void SetCreatedTime(const char* value) { m_createdTimeHasBeenSet = true; m_createdTime.assign(value); }
-
-    /**
-     * <p>Indicates when the auto scaling group was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithCreatedTime(const Aws::String& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>Indicates when the auto scaling group was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithCreatedTime(Aws::String&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-    /**
-     * <p>Indicates when the auto scaling group was created.</p> <p>Uses the
-     * <code>date-time</code> format specified in <a
-     * href="https://tools.ietf.org/html/rfc3339#section-5.6">RFC 3339 section 5.6,
-     * Internet Date/Time Format</a>. The value cannot contain spaces, and date and
-     * time should be separated by <code>T</code>. For example,
-     * <code>2020-03-22T13:22:13.933Z</code>.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithCreatedTime(const char* value) { SetCreatedTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The mixed instances policy for the automatic scaling group.</p>
      */
-    inline const AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails& GetMixedInstancesPolicy() const{ return m_mixedInstancesPolicy; }
-
-    /**
-     * <p>The mixed instances policy for the automatic scaling group.</p>
-     */
+    inline const AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails& GetMixedInstancesPolicy() const { return m_mixedInstancesPolicy; }
     inline bool MixedInstancesPolicyHasBeenSet() const { return m_mixedInstancesPolicyHasBeenSet; }
+    template<typename MixedInstancesPolicyT = AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails>
+    void SetMixedInstancesPolicy(MixedInstancesPolicyT&& value) { m_mixedInstancesPolicyHasBeenSet = true; m_mixedInstancesPolicy = std::forward<MixedInstancesPolicyT>(value); }
+    template<typename MixedInstancesPolicyT = AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails>
+    AwsAutoScalingAutoScalingGroupDetails& WithMixedInstancesPolicy(MixedInstancesPolicyT&& value) { SetMixedInstancesPolicy(std::forward<MixedInstancesPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The mixed instances policy for the automatic scaling group.</p>
-     */
-    inline void SetMixedInstancesPolicy(const AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails& value) { m_mixedInstancesPolicyHasBeenSet = true; m_mixedInstancesPolicy = value; }
-
-    /**
-     * <p>The mixed instances policy for the automatic scaling group.</p>
-     */
-    inline void SetMixedInstancesPolicy(AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails&& value) { m_mixedInstancesPolicyHasBeenSet = true; m_mixedInstancesPolicy = std::move(value); }
-
-    /**
-     * <p>The mixed instances policy for the automatic scaling group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithMixedInstancesPolicy(const AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails& value) { SetMixedInstancesPolicy(value); return *this;}
-
-    /**
-     * <p>The mixed instances policy for the automatic scaling group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithMixedInstancesPolicy(AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails&& value) { SetMixedInstancesPolicy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of Availability Zones for the automatic scaling group.</p>
      */
-    inline const Aws::Vector<AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails>& GetAvailabilityZones() const{ return m_availabilityZones; }
-
-    /**
-     * <p>The list of Availability Zones for the automatic scaling group.</p>
-     */
+    inline const Aws::Vector<AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails>& GetAvailabilityZones() const { return m_availabilityZones; }
     inline bool AvailabilityZonesHasBeenSet() const { return m_availabilityZonesHasBeenSet; }
+    template<typename AvailabilityZonesT = Aws::Vector<AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails>>
+    void SetAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::forward<AvailabilityZonesT>(value); }
+    template<typename AvailabilityZonesT = Aws::Vector<AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails>>
+    AwsAutoScalingAutoScalingGroupDetails& WithAvailabilityZones(AvailabilityZonesT&& value) { SetAvailabilityZones(std::forward<AvailabilityZonesT>(value)); return *this;}
+    template<typename AvailabilityZonesT = AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails>
+    AwsAutoScalingAutoScalingGroupDetails& AddAvailabilityZones(AvailabilityZonesT&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.emplace_back(std::forward<AvailabilityZonesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The list of Availability Zones for the automatic scaling group.</p>
-     */
-    inline void SetAvailabilityZones(const Aws::Vector<AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails>& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = value; }
-
-    /**
-     * <p>The list of Availability Zones for the automatic scaling group.</p>
-     */
-    inline void SetAvailabilityZones(Aws::Vector<AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails>&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones = std::move(value); }
-
-    /**
-     * <p>The list of Availability Zones for the automatic scaling group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithAvailabilityZones(const Aws::Vector<AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails>& value) { SetAvailabilityZones(value); return *this;}
-
-    /**
-     * <p>The list of Availability Zones for the automatic scaling group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithAvailabilityZones(Aws::Vector<AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails>&& value) { SetAvailabilityZones(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of Availability Zones for the automatic scaling group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& AddAvailabilityZones(const AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(value); return *this; }
-
-    /**
-     * <p>The list of Availability Zones for the automatic scaling group.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& AddAvailabilityZones(AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails&& value) { m_availabilityZonesHasBeenSet = true; m_availabilityZones.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The launch template to use.</p>
      */
-    inline const AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification& GetLaunchTemplate() const{ return m_launchTemplate; }
-
-    /**
-     * <p>The launch template to use.</p>
-     */
+    inline const AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification& GetLaunchTemplate() const { return m_launchTemplate; }
     inline bool LaunchTemplateHasBeenSet() const { return m_launchTemplateHasBeenSet; }
+    template<typename LaunchTemplateT = AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification>
+    void SetLaunchTemplate(LaunchTemplateT&& value) { m_launchTemplateHasBeenSet = true; m_launchTemplate = std::forward<LaunchTemplateT>(value); }
+    template<typename LaunchTemplateT = AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification>
+    AwsAutoScalingAutoScalingGroupDetails& WithLaunchTemplate(LaunchTemplateT&& value) { SetLaunchTemplate(std::forward<LaunchTemplateT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The launch template to use.</p>
-     */
-    inline void SetLaunchTemplate(const AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification& value) { m_launchTemplateHasBeenSet = true; m_launchTemplate = value; }
-
-    /**
-     * <p>The launch template to use.</p>
-     */
-    inline void SetLaunchTemplate(AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification&& value) { m_launchTemplateHasBeenSet = true; m_launchTemplate = std::move(value); }
-
-    /**
-     * <p>The launch template to use.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithLaunchTemplate(const AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification& value) { SetLaunchTemplate(value); return *this;}
-
-    /**
-     * <p>The launch template to use.</p>
-     */
-    inline AwsAutoScalingAutoScalingGroupDetails& WithLaunchTemplate(AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification&& value) { SetLaunchTemplate(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Indicates whether capacity rebalancing is enabled. </p>
      */
-    inline bool GetCapacityRebalance() const{ return m_capacityRebalance; }
-
-    /**
-     * <p>Indicates whether capacity rebalancing is enabled. </p>
-     */
+    inline bool GetCapacityRebalance() const { return m_capacityRebalance; }
     inline bool CapacityRebalanceHasBeenSet() const { return m_capacityRebalanceHasBeenSet; }
-
-    /**
-     * <p>Indicates whether capacity rebalancing is enabled. </p>
-     */
     inline void SetCapacityRebalance(bool value) { m_capacityRebalanceHasBeenSet = true; m_capacityRebalance = value; }
-
-    /**
-     * <p>Indicates whether capacity rebalancing is enabled. </p>
-     */
     inline AwsAutoScalingAutoScalingGroupDetails& WithCapacityRebalance(bool value) { SetCapacityRebalance(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_launchConfigurationName;
@@ -417,7 +164,7 @@ namespace Model
     Aws::String m_healthCheckType;
     bool m_healthCheckTypeHasBeenSet = false;
 
-    int m_healthCheckGracePeriod;
+    int m_healthCheckGracePeriod{0};
     bool m_healthCheckGracePeriodHasBeenSet = false;
 
     Aws::String m_createdTime;
@@ -432,7 +179,7 @@ namespace Model
     AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification m_launchTemplate;
     bool m_launchTemplateHasBeenSet = false;
 
-    bool m_capacityRebalance;
+    bool m_capacityRebalance{false};
     bool m_capacityRebalanceHasBeenSet = false;
   };
 

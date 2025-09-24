@@ -18,17 +18,7 @@ namespace IoT
 namespace Model
 {
 
-RegistrationConfig::RegistrationConfig() : 
-    m_templateBodyHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_templateNameHasBeenSet(false)
-{
-}
-
-RegistrationConfig::RegistrationConfig(JsonView jsonValue) : 
-    m_templateBodyHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_templateNameHasBeenSet(false)
+RegistrationConfig::RegistrationConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ RegistrationConfig& RegistrationConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("templateBody"))
   {
     m_templateBody = jsonValue.GetString("templateBody");
-
     m_templateBodyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("templateName"))
   {
     m_templateName = jsonValue.GetString("templateName");
-
     m_templateNameHasBeenSet = true;
   }
-
   return *this;
 }
 

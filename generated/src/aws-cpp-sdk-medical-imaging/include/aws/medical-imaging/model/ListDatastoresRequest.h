@@ -26,7 +26,7 @@ namespace Model
   class ListDatastoresRequest : public MedicalImagingRequest
   {
   public:
-    AWS_MEDICALIMAGING_API ListDatastoresRequest();
+    AWS_MEDICALIMAGING_API ListDatastoresRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,115 +39,47 @@ namespace Model
     AWS_MEDICALIMAGING_API void AddQueryStringParameters(Aws::Http::URI& uri) const override;
 
 
+    ///@{
     /**
      * <p>The data store status.</p>
      */
-    inline const DatastoreStatus& GetDatastoreStatus() const{ return m_datastoreStatus; }
-
-    /**
-     * <p>The data store status.</p>
-     */
+    inline DatastoreStatus GetDatastoreStatus() const { return m_datastoreStatus; }
     inline bool DatastoreStatusHasBeenSet() const { return m_datastoreStatusHasBeenSet; }
+    inline void SetDatastoreStatus(DatastoreStatus value) { m_datastoreStatusHasBeenSet = true; m_datastoreStatus = value; }
+    inline ListDatastoresRequest& WithDatastoreStatus(DatastoreStatus value) { SetDatastoreStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The data store status.</p>
-     */
-    inline void SetDatastoreStatus(const DatastoreStatus& value) { m_datastoreStatusHasBeenSet = true; m_datastoreStatus = value; }
-
-    /**
-     * <p>The data store status.</p>
-     */
-    inline void SetDatastoreStatus(DatastoreStatus&& value) { m_datastoreStatusHasBeenSet = true; m_datastoreStatus = std::move(value); }
-
-    /**
-     * <p>The data store status.</p>
-     */
-    inline ListDatastoresRequest& WithDatastoreStatus(const DatastoreStatus& value) { SetDatastoreStatus(value); return *this;}
-
-    /**
-     * <p>The data store status.</p>
-     */
-    inline ListDatastoresRequest& WithDatastoreStatus(DatastoreStatus&& value) { SetDatastoreStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The pagination token used to request the list of data stores on the next
      * page.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>The pagination token used to request the list of data stores on the next
-     * page.</p>
-     */
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
     inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListDatastoresRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The pagination token used to request the list of data stores on the next
-     * page.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>The pagination token used to request the list of data stores on the next
-     * page.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>The pagination token used to request the list of data stores on the next
-     * page.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>The pagination token used to request the list of data stores on the next
-     * page.</p>
-     */
-    inline ListDatastoresRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>The pagination token used to request the list of data stores on the next
-     * page.</p>
-     */
-    inline ListDatastoresRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The pagination token used to request the list of data stores on the next
-     * page.</p>
-     */
-    inline ListDatastoresRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Valid Range: Minimum value of 1. Maximum value of 50.</p>
      */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>Valid Range: Minimum value of 1. Maximum value of 50.</p>
-     */
+    inline int GetMaxResults() const { return m_maxResults; }
     inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>Valid Range: Minimum value of 1. Maximum value of 50.</p>
-     */
     inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>Valid Range: Minimum value of 1. Maximum value of 50.</p>
-     */
     inline ListDatastoresRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
+    ///@}
   private:
 
-    DatastoreStatus m_datastoreStatus;
+    DatastoreStatus m_datastoreStatus{DatastoreStatus::NOT_SET};
     bool m_datastoreStatusHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
 
-    int m_maxResults;
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
   };
 

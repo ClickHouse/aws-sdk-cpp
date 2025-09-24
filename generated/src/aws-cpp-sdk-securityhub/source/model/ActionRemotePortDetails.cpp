@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-ActionRemotePortDetails::ActionRemotePortDetails() : 
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_portNameHasBeenSet(false)
-{
-}
-
-ActionRemotePortDetails::ActionRemotePortDetails(JsonView jsonValue) : 
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_portNameHasBeenSet(false)
+ActionRemotePortDetails::ActionRemotePortDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ActionRemotePortDetails& ActionRemotePortDetails::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Port"))
   {
     m_port = jsonValue.GetInteger("Port");
-
     m_portHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PortName"))
   {
     m_portName = jsonValue.GetString("PortName");
-
     m_portNameHasBeenSet = true;
   }
-
   return *this;
 }
 

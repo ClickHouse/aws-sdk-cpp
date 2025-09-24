@@ -18,17 +18,7 @@ namespace Inspector
 namespace Model
 {
 
-InternalException::InternalException() : 
-    m_messageHasBeenSet(false),
-    m_canRetry(false),
-    m_canRetryHasBeenSet(false)
-{
-}
-
-InternalException::InternalException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_canRetry(false),
-    m_canRetryHasBeenSet(false)
+InternalException::InternalException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ InternalException& InternalException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("canRetry"))
   {
     m_canRetry = jsonValue.GetBool("canRetry");
-
     m_canRetryHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -34,415 +34,130 @@ namespace Model
   class RecoveryInstanceFailback
   {
   public:
-    AWS_DRS_API RecoveryInstanceFailback();
+    AWS_DRS_API RecoveryInstanceFailback() = default;
     AWS_DRS_API RecoveryInstanceFailback(Aws::Utils::Json::JsonView jsonValue);
     AWS_DRS_API RecoveryInstanceFailback& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DRS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The date and time the agent on the Recovery Instance was last seen by the
      * service.</p>
      */
-    inline const Aws::String& GetAgentLastSeenByServiceDateTime() const{ return m_agentLastSeenByServiceDateTime; }
-
-    /**
-     * <p>The date and time the agent on the Recovery Instance was last seen by the
-     * service.</p>
-     */
+    inline const Aws::String& GetAgentLastSeenByServiceDateTime() const { return m_agentLastSeenByServiceDateTime; }
     inline bool AgentLastSeenByServiceDateTimeHasBeenSet() const { return m_agentLastSeenByServiceDateTimeHasBeenSet; }
+    template<typename AgentLastSeenByServiceDateTimeT = Aws::String>
+    void SetAgentLastSeenByServiceDateTime(AgentLastSeenByServiceDateTimeT&& value) { m_agentLastSeenByServiceDateTimeHasBeenSet = true; m_agentLastSeenByServiceDateTime = std::forward<AgentLastSeenByServiceDateTimeT>(value); }
+    template<typename AgentLastSeenByServiceDateTimeT = Aws::String>
+    RecoveryInstanceFailback& WithAgentLastSeenByServiceDateTime(AgentLastSeenByServiceDateTimeT&& value) { SetAgentLastSeenByServiceDateTime(std::forward<AgentLastSeenByServiceDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time the agent on the Recovery Instance was last seen by the
-     * service.</p>
-     */
-    inline void SetAgentLastSeenByServiceDateTime(const Aws::String& value) { m_agentLastSeenByServiceDateTimeHasBeenSet = true; m_agentLastSeenByServiceDateTime = value; }
-
-    /**
-     * <p>The date and time the agent on the Recovery Instance was last seen by the
-     * service.</p>
-     */
-    inline void SetAgentLastSeenByServiceDateTime(Aws::String&& value) { m_agentLastSeenByServiceDateTimeHasBeenSet = true; m_agentLastSeenByServiceDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time the agent on the Recovery Instance was last seen by the
-     * service.</p>
-     */
-    inline void SetAgentLastSeenByServiceDateTime(const char* value) { m_agentLastSeenByServiceDateTimeHasBeenSet = true; m_agentLastSeenByServiceDateTime.assign(value); }
-
-    /**
-     * <p>The date and time the agent on the Recovery Instance was last seen by the
-     * service.</p>
-     */
-    inline RecoveryInstanceFailback& WithAgentLastSeenByServiceDateTime(const Aws::String& value) { SetAgentLastSeenByServiceDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time the agent on the Recovery Instance was last seen by the
-     * service.</p>
-     */
-    inline RecoveryInstanceFailback& WithAgentLastSeenByServiceDateTime(Aws::String&& value) { SetAgentLastSeenByServiceDateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time the agent on the Recovery Instance was last seen by the
-     * service.</p>
-     */
-    inline RecoveryInstanceFailback& WithAgentLastSeenByServiceDateTime(const char* value) { SetAgentLastSeenByServiceDateTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The amount of time that the Recovery Instance has been replicating for.</p>
      */
-    inline const Aws::String& GetElapsedReplicationDuration() const{ return m_elapsedReplicationDuration; }
-
-    /**
-     * <p>The amount of time that the Recovery Instance has been replicating for.</p>
-     */
+    inline const Aws::String& GetElapsedReplicationDuration() const { return m_elapsedReplicationDuration; }
     inline bool ElapsedReplicationDurationHasBeenSet() const { return m_elapsedReplicationDurationHasBeenSet; }
+    template<typename ElapsedReplicationDurationT = Aws::String>
+    void SetElapsedReplicationDuration(ElapsedReplicationDurationT&& value) { m_elapsedReplicationDurationHasBeenSet = true; m_elapsedReplicationDuration = std::forward<ElapsedReplicationDurationT>(value); }
+    template<typename ElapsedReplicationDurationT = Aws::String>
+    RecoveryInstanceFailback& WithElapsedReplicationDuration(ElapsedReplicationDurationT&& value) { SetElapsedReplicationDuration(std::forward<ElapsedReplicationDurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The amount of time that the Recovery Instance has been replicating for.</p>
-     */
-    inline void SetElapsedReplicationDuration(const Aws::String& value) { m_elapsedReplicationDurationHasBeenSet = true; m_elapsedReplicationDuration = value; }
-
-    /**
-     * <p>The amount of time that the Recovery Instance has been replicating for.</p>
-     */
-    inline void SetElapsedReplicationDuration(Aws::String&& value) { m_elapsedReplicationDurationHasBeenSet = true; m_elapsedReplicationDuration = std::move(value); }
-
-    /**
-     * <p>The amount of time that the Recovery Instance has been replicating for.</p>
-     */
-    inline void SetElapsedReplicationDuration(const char* value) { m_elapsedReplicationDurationHasBeenSet = true; m_elapsedReplicationDuration.assign(value); }
-
-    /**
-     * <p>The amount of time that the Recovery Instance has been replicating for.</p>
-     */
-    inline RecoveryInstanceFailback& WithElapsedReplicationDuration(const Aws::String& value) { SetElapsedReplicationDuration(value); return *this;}
-
-    /**
-     * <p>The amount of time that the Recovery Instance has been replicating for.</p>
-     */
-    inline RecoveryInstanceFailback& WithElapsedReplicationDuration(Aws::String&& value) { SetElapsedReplicationDuration(std::move(value)); return *this;}
-
-    /**
-     * <p>The amount of time that the Recovery Instance has been replicating for.</p>
-     */
-    inline RecoveryInstanceFailback& WithElapsedReplicationDuration(const char* value) { SetElapsedReplicationDuration(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the failback client that this Recovery Instance is associated
      * with.</p>
      */
-    inline const Aws::String& GetFailbackClientID() const{ return m_failbackClientID; }
-
-    /**
-     * <p>The ID of the failback client that this Recovery Instance is associated
-     * with.</p>
-     */
+    inline const Aws::String& GetFailbackClientID() const { return m_failbackClientID; }
     inline bool FailbackClientIDHasBeenSet() const { return m_failbackClientIDHasBeenSet; }
+    template<typename FailbackClientIDT = Aws::String>
+    void SetFailbackClientID(FailbackClientIDT&& value) { m_failbackClientIDHasBeenSet = true; m_failbackClientID = std::forward<FailbackClientIDT>(value); }
+    template<typename FailbackClientIDT = Aws::String>
+    RecoveryInstanceFailback& WithFailbackClientID(FailbackClientIDT&& value) { SetFailbackClientID(std::forward<FailbackClientIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the failback client that this Recovery Instance is associated
-     * with.</p>
-     */
-    inline void SetFailbackClientID(const Aws::String& value) { m_failbackClientIDHasBeenSet = true; m_failbackClientID = value; }
-
-    /**
-     * <p>The ID of the failback client that this Recovery Instance is associated
-     * with.</p>
-     */
-    inline void SetFailbackClientID(Aws::String&& value) { m_failbackClientIDHasBeenSet = true; m_failbackClientID = std::move(value); }
-
-    /**
-     * <p>The ID of the failback client that this Recovery Instance is associated
-     * with.</p>
-     */
-    inline void SetFailbackClientID(const char* value) { m_failbackClientIDHasBeenSet = true; m_failbackClientID.assign(value); }
-
-    /**
-     * <p>The ID of the failback client that this Recovery Instance is associated
-     * with.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackClientID(const Aws::String& value) { SetFailbackClientID(value); return *this;}
-
-    /**
-     * <p>The ID of the failback client that this Recovery Instance is associated
-     * with.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackClientID(Aws::String&& value) { SetFailbackClientID(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the failback client that this Recovery Instance is associated
-     * with.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackClientID(const char* value) { SetFailbackClientID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the failback client was last seen by the service.</p>
      */
-    inline const Aws::String& GetFailbackClientLastSeenByServiceDateTime() const{ return m_failbackClientLastSeenByServiceDateTime; }
-
-    /**
-     * <p>The date and time that the failback client was last seen by the service.</p>
-     */
+    inline const Aws::String& GetFailbackClientLastSeenByServiceDateTime() const { return m_failbackClientLastSeenByServiceDateTime; }
     inline bool FailbackClientLastSeenByServiceDateTimeHasBeenSet() const { return m_failbackClientLastSeenByServiceDateTimeHasBeenSet; }
+    template<typename FailbackClientLastSeenByServiceDateTimeT = Aws::String>
+    void SetFailbackClientLastSeenByServiceDateTime(FailbackClientLastSeenByServiceDateTimeT&& value) { m_failbackClientLastSeenByServiceDateTimeHasBeenSet = true; m_failbackClientLastSeenByServiceDateTime = std::forward<FailbackClientLastSeenByServiceDateTimeT>(value); }
+    template<typename FailbackClientLastSeenByServiceDateTimeT = Aws::String>
+    RecoveryInstanceFailback& WithFailbackClientLastSeenByServiceDateTime(FailbackClientLastSeenByServiceDateTimeT&& value) { SetFailbackClientLastSeenByServiceDateTime(std::forward<FailbackClientLastSeenByServiceDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the failback client was last seen by the service.</p>
-     */
-    inline void SetFailbackClientLastSeenByServiceDateTime(const Aws::String& value) { m_failbackClientLastSeenByServiceDateTimeHasBeenSet = true; m_failbackClientLastSeenByServiceDateTime = value; }
-
-    /**
-     * <p>The date and time that the failback client was last seen by the service.</p>
-     */
-    inline void SetFailbackClientLastSeenByServiceDateTime(Aws::String&& value) { m_failbackClientLastSeenByServiceDateTimeHasBeenSet = true; m_failbackClientLastSeenByServiceDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the failback client was last seen by the service.</p>
-     */
-    inline void SetFailbackClientLastSeenByServiceDateTime(const char* value) { m_failbackClientLastSeenByServiceDateTimeHasBeenSet = true; m_failbackClientLastSeenByServiceDateTime.assign(value); }
-
-    /**
-     * <p>The date and time that the failback client was last seen by the service.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackClientLastSeenByServiceDateTime(const Aws::String& value) { SetFailbackClientLastSeenByServiceDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the failback client was last seen by the service.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackClientLastSeenByServiceDateTime(Aws::String&& value) { SetFailbackClientLastSeenByServiceDateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time that the failback client was last seen by the service.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackClientLastSeenByServiceDateTime(const char* value) { SetFailbackClientLastSeenByServiceDateTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time that the failback initiation started.</p>
      */
-    inline const Aws::String& GetFailbackInitiationTime() const{ return m_failbackInitiationTime; }
-
-    /**
-     * <p>The date and time that the failback initiation started.</p>
-     */
+    inline const Aws::String& GetFailbackInitiationTime() const { return m_failbackInitiationTime; }
     inline bool FailbackInitiationTimeHasBeenSet() const { return m_failbackInitiationTimeHasBeenSet; }
+    template<typename FailbackInitiationTimeT = Aws::String>
+    void SetFailbackInitiationTime(FailbackInitiationTimeT&& value) { m_failbackInitiationTimeHasBeenSet = true; m_failbackInitiationTime = std::forward<FailbackInitiationTimeT>(value); }
+    template<typename FailbackInitiationTimeT = Aws::String>
+    RecoveryInstanceFailback& WithFailbackInitiationTime(FailbackInitiationTimeT&& value) { SetFailbackInitiationTime(std::forward<FailbackInitiationTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time that the failback initiation started.</p>
-     */
-    inline void SetFailbackInitiationTime(const Aws::String& value) { m_failbackInitiationTimeHasBeenSet = true; m_failbackInitiationTime = value; }
-
-    /**
-     * <p>The date and time that the failback initiation started.</p>
-     */
-    inline void SetFailbackInitiationTime(Aws::String&& value) { m_failbackInitiationTimeHasBeenSet = true; m_failbackInitiationTime = std::move(value); }
-
-    /**
-     * <p>The date and time that the failback initiation started.</p>
-     */
-    inline void SetFailbackInitiationTime(const char* value) { m_failbackInitiationTimeHasBeenSet = true; m_failbackInitiationTime.assign(value); }
-
-    /**
-     * <p>The date and time that the failback initiation started.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackInitiationTime(const Aws::String& value) { SetFailbackInitiationTime(value); return *this;}
-
-    /**
-     * <p>The date and time that the failback initiation started.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackInitiationTime(Aws::String&& value) { SetFailbackInitiationTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time that the failback initiation started.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackInitiationTime(const char* value) { SetFailbackInitiationTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Job ID of the last failback log for this Recovery Instance.</p>
      */
-    inline const Aws::String& GetFailbackJobID() const{ return m_failbackJobID; }
-
-    /**
-     * <p>The Job ID of the last failback log for this Recovery Instance.</p>
-     */
+    inline const Aws::String& GetFailbackJobID() const { return m_failbackJobID; }
     inline bool FailbackJobIDHasBeenSet() const { return m_failbackJobIDHasBeenSet; }
+    template<typename FailbackJobIDT = Aws::String>
+    void SetFailbackJobID(FailbackJobIDT&& value) { m_failbackJobIDHasBeenSet = true; m_failbackJobID = std::forward<FailbackJobIDT>(value); }
+    template<typename FailbackJobIDT = Aws::String>
+    RecoveryInstanceFailback& WithFailbackJobID(FailbackJobIDT&& value) { SetFailbackJobID(std::forward<FailbackJobIDT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Job ID of the last failback log for this Recovery Instance.</p>
-     */
-    inline void SetFailbackJobID(const Aws::String& value) { m_failbackJobIDHasBeenSet = true; m_failbackJobID = value; }
-
-    /**
-     * <p>The Job ID of the last failback log for this Recovery Instance.</p>
-     */
-    inline void SetFailbackJobID(Aws::String&& value) { m_failbackJobIDHasBeenSet = true; m_failbackJobID = std::move(value); }
-
-    /**
-     * <p>The Job ID of the last failback log for this Recovery Instance.</p>
-     */
-    inline void SetFailbackJobID(const char* value) { m_failbackJobIDHasBeenSet = true; m_failbackJobID.assign(value); }
-
-    /**
-     * <p>The Job ID of the last failback log for this Recovery Instance.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackJobID(const Aws::String& value) { SetFailbackJobID(value); return *this;}
-
-    /**
-     * <p>The Job ID of the last failback log for this Recovery Instance.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackJobID(Aws::String&& value) { SetFailbackJobID(std::move(value)); return *this;}
-
-    /**
-     * <p>The Job ID of the last failback log for this Recovery Instance.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackJobID(const char* value) { SetFailbackJobID(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The launch type (Recovery / Drill) of the last launch for the failback
      * replication of this recovery instance.</p>
      */
-    inline const FailbackLaunchType& GetFailbackLaunchType() const{ return m_failbackLaunchType; }
-
-    /**
-     * <p>The launch type (Recovery / Drill) of the last launch for the failback
-     * replication of this recovery instance.</p>
-     */
+    inline FailbackLaunchType GetFailbackLaunchType() const { return m_failbackLaunchType; }
     inline bool FailbackLaunchTypeHasBeenSet() const { return m_failbackLaunchTypeHasBeenSet; }
+    inline void SetFailbackLaunchType(FailbackLaunchType value) { m_failbackLaunchTypeHasBeenSet = true; m_failbackLaunchType = value; }
+    inline RecoveryInstanceFailback& WithFailbackLaunchType(FailbackLaunchType value) { SetFailbackLaunchType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The launch type (Recovery / Drill) of the last launch for the failback
-     * replication of this recovery instance.</p>
-     */
-    inline void SetFailbackLaunchType(const FailbackLaunchType& value) { m_failbackLaunchTypeHasBeenSet = true; m_failbackLaunchType = value; }
-
-    /**
-     * <p>The launch type (Recovery / Drill) of the last launch for the failback
-     * replication of this recovery instance.</p>
-     */
-    inline void SetFailbackLaunchType(FailbackLaunchType&& value) { m_failbackLaunchTypeHasBeenSet = true; m_failbackLaunchType = std::move(value); }
-
-    /**
-     * <p>The launch type (Recovery / Drill) of the last launch for the failback
-     * replication of this recovery instance.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackLaunchType(const FailbackLaunchType& value) { SetFailbackLaunchType(value); return *this;}
-
-    /**
-     * <p>The launch type (Recovery / Drill) of the last launch for the failback
-     * replication of this recovery instance.</p>
-     */
-    inline RecoveryInstanceFailback& WithFailbackLaunchType(FailbackLaunchType&& value) { SetFailbackLaunchType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Whether we are failing back to the original Source Server for this Recovery
      * Instance.</p>
      */
-    inline bool GetFailbackToOriginalServer() const{ return m_failbackToOriginalServer; }
-
-    /**
-     * <p>Whether we are failing back to the original Source Server for this Recovery
-     * Instance.</p>
-     */
+    inline bool GetFailbackToOriginalServer() const { return m_failbackToOriginalServer; }
     inline bool FailbackToOriginalServerHasBeenSet() const { return m_failbackToOriginalServerHasBeenSet; }
-
-    /**
-     * <p>Whether we are failing back to the original Source Server for this Recovery
-     * Instance.</p>
-     */
     inline void SetFailbackToOriginalServer(bool value) { m_failbackToOriginalServerHasBeenSet = true; m_failbackToOriginalServer = value; }
-
-    /**
-     * <p>Whether we are failing back to the original Source Server for this Recovery
-     * Instance.</p>
-     */
     inline RecoveryInstanceFailback& WithFailbackToOriginalServer(bool value) { SetFailbackToOriginalServer(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The date and time of the first byte that was replicated from the Recovery
      * Instance.</p>
      */
-    inline const Aws::String& GetFirstByteDateTime() const{ return m_firstByteDateTime; }
-
-    /**
-     * <p>The date and time of the first byte that was replicated from the Recovery
-     * Instance.</p>
-     */
+    inline const Aws::String& GetFirstByteDateTime() const { return m_firstByteDateTime; }
     inline bool FirstByteDateTimeHasBeenSet() const { return m_firstByteDateTimeHasBeenSet; }
+    template<typename FirstByteDateTimeT = Aws::String>
+    void SetFirstByteDateTime(FirstByteDateTimeT&& value) { m_firstByteDateTimeHasBeenSet = true; m_firstByteDateTime = std::forward<FirstByteDateTimeT>(value); }
+    template<typename FirstByteDateTimeT = Aws::String>
+    RecoveryInstanceFailback& WithFirstByteDateTime(FirstByteDateTimeT&& value) { SetFirstByteDateTime(std::forward<FirstByteDateTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time of the first byte that was replicated from the Recovery
-     * Instance.</p>
-     */
-    inline void SetFirstByteDateTime(const Aws::String& value) { m_firstByteDateTimeHasBeenSet = true; m_firstByteDateTime = value; }
-
-    /**
-     * <p>The date and time of the first byte that was replicated from the Recovery
-     * Instance.</p>
-     */
-    inline void SetFirstByteDateTime(Aws::String&& value) { m_firstByteDateTimeHasBeenSet = true; m_firstByteDateTime = std::move(value); }
-
-    /**
-     * <p>The date and time of the first byte that was replicated from the Recovery
-     * Instance.</p>
-     */
-    inline void SetFirstByteDateTime(const char* value) { m_firstByteDateTimeHasBeenSet = true; m_firstByteDateTime.assign(value); }
-
-    /**
-     * <p>The date and time of the first byte that was replicated from the Recovery
-     * Instance.</p>
-     */
-    inline RecoveryInstanceFailback& WithFirstByteDateTime(const Aws::String& value) { SetFirstByteDateTime(value); return *this;}
-
-    /**
-     * <p>The date and time of the first byte that was replicated from the Recovery
-     * Instance.</p>
-     */
-    inline RecoveryInstanceFailback& WithFirstByteDateTime(Aws::String&& value) { SetFirstByteDateTime(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time of the first byte that was replicated from the Recovery
-     * Instance.</p>
-     */
-    inline RecoveryInstanceFailback& WithFirstByteDateTime(const char* value) { SetFirstByteDateTime(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The state of the failback process that this Recovery Instance is in.</p>
      */
-    inline const FailbackState& GetState() const{ return m_state; }
-
-    /**
-     * <p>The state of the failback process that this Recovery Instance is in.</p>
-     */
+    inline FailbackState GetState() const { return m_state; }
     inline bool StateHasBeenSet() const { return m_stateHasBeenSet; }
-
-    /**
-     * <p>The state of the failback process that this Recovery Instance is in.</p>
-     */
-    inline void SetState(const FailbackState& value) { m_stateHasBeenSet = true; m_state = value; }
-
-    /**
-     * <p>The state of the failback process that this Recovery Instance is in.</p>
-     */
-    inline void SetState(FailbackState&& value) { m_stateHasBeenSet = true; m_state = std::move(value); }
-
-    /**
-     * <p>The state of the failback process that this Recovery Instance is in.</p>
-     */
-    inline RecoveryInstanceFailback& WithState(const FailbackState& value) { SetState(value); return *this;}
-
-    /**
-     * <p>The state of the failback process that this Recovery Instance is in.</p>
-     */
-    inline RecoveryInstanceFailback& WithState(FailbackState&& value) { SetState(std::move(value)); return *this;}
-
+    inline void SetState(FailbackState value) { m_stateHasBeenSet = true; m_state = value; }
+    inline RecoveryInstanceFailback& WithState(FailbackState value) { SetState(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_agentLastSeenByServiceDateTime;
@@ -463,16 +178,16 @@ namespace Model
     Aws::String m_failbackJobID;
     bool m_failbackJobIDHasBeenSet = false;
 
-    FailbackLaunchType m_failbackLaunchType;
+    FailbackLaunchType m_failbackLaunchType{FailbackLaunchType::NOT_SET};
     bool m_failbackLaunchTypeHasBeenSet = false;
 
-    bool m_failbackToOriginalServer;
+    bool m_failbackToOriginalServer{false};
     bool m_failbackToOriginalServerHasBeenSet = false;
 
     Aws::String m_firstByteDateTime;
     bool m_firstByteDateTimeHasBeenSet = false;
 
-    FailbackState m_state;
+    FailbackState m_state{FailbackState::NOT_SET};
     bool m_stateHasBeenSet = false;
   };
 

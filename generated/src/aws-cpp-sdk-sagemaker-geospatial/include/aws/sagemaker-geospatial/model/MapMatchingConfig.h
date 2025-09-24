@@ -32,183 +32,60 @@ namespace Model
   class MapMatchingConfig
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API MapMatchingConfig();
+    AWS_SAGEMAKERGEOSPATIAL_API MapMatchingConfig() = default;
     AWS_SAGEMAKERGEOSPATIAL_API MapMatchingConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API MapMatchingConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The field name for the data that describes the identifier representing a
      * collection of GPS points belonging to an individual trace.</p>
      */
-    inline const Aws::String& GetIdAttributeName() const{ return m_idAttributeName; }
-
-    /**
-     * <p>The field name for the data that describes the identifier representing a
-     * collection of GPS points belonging to an individual trace.</p>
-     */
+    inline const Aws::String& GetIdAttributeName() const { return m_idAttributeName; }
     inline bool IdAttributeNameHasBeenSet() const { return m_idAttributeNameHasBeenSet; }
+    template<typename IdAttributeNameT = Aws::String>
+    void SetIdAttributeName(IdAttributeNameT&& value) { m_idAttributeNameHasBeenSet = true; m_idAttributeName = std::forward<IdAttributeNameT>(value); }
+    template<typename IdAttributeNameT = Aws::String>
+    MapMatchingConfig& WithIdAttributeName(IdAttributeNameT&& value) { SetIdAttributeName(std::forward<IdAttributeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The field name for the data that describes the identifier representing a
-     * collection of GPS points belonging to an individual trace.</p>
-     */
-    inline void SetIdAttributeName(const Aws::String& value) { m_idAttributeNameHasBeenSet = true; m_idAttributeName = value; }
-
-    /**
-     * <p>The field name for the data that describes the identifier representing a
-     * collection of GPS points belonging to an individual trace.</p>
-     */
-    inline void SetIdAttributeName(Aws::String&& value) { m_idAttributeNameHasBeenSet = true; m_idAttributeName = std::move(value); }
-
-    /**
-     * <p>The field name for the data that describes the identifier representing a
-     * collection of GPS points belonging to an individual trace.</p>
-     */
-    inline void SetIdAttributeName(const char* value) { m_idAttributeNameHasBeenSet = true; m_idAttributeName.assign(value); }
-
-    /**
-     * <p>The field name for the data that describes the identifier representing a
-     * collection of GPS points belonging to an individual trace.</p>
-     */
-    inline MapMatchingConfig& WithIdAttributeName(const Aws::String& value) { SetIdAttributeName(value); return *this;}
-
-    /**
-     * <p>The field name for the data that describes the identifier representing a
-     * collection of GPS points belonging to an individual trace.</p>
-     */
-    inline MapMatchingConfig& WithIdAttributeName(Aws::String&& value) { SetIdAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The field name for the data that describes the identifier representing a
-     * collection of GPS points belonging to an individual trace.</p>
-     */
-    inline MapMatchingConfig& WithIdAttributeName(const char* value) { SetIdAttributeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the timestamp attribute.</p>
      */
-    inline const Aws::String& GetTimestampAttributeName() const{ return m_timestampAttributeName; }
-
-    /**
-     * <p>The name of the timestamp attribute.</p>
-     */
+    inline const Aws::String& GetTimestampAttributeName() const { return m_timestampAttributeName; }
     inline bool TimestampAttributeNameHasBeenSet() const { return m_timestampAttributeNameHasBeenSet; }
+    template<typename TimestampAttributeNameT = Aws::String>
+    void SetTimestampAttributeName(TimestampAttributeNameT&& value) { m_timestampAttributeNameHasBeenSet = true; m_timestampAttributeName = std::forward<TimestampAttributeNameT>(value); }
+    template<typename TimestampAttributeNameT = Aws::String>
+    MapMatchingConfig& WithTimestampAttributeName(TimestampAttributeNameT&& value) { SetTimestampAttributeName(std::forward<TimestampAttributeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the timestamp attribute.</p>
-     */
-    inline void SetTimestampAttributeName(const Aws::String& value) { m_timestampAttributeNameHasBeenSet = true; m_timestampAttributeName = value; }
-
-    /**
-     * <p>The name of the timestamp attribute.</p>
-     */
-    inline void SetTimestampAttributeName(Aws::String&& value) { m_timestampAttributeNameHasBeenSet = true; m_timestampAttributeName = std::move(value); }
-
-    /**
-     * <p>The name of the timestamp attribute.</p>
-     */
-    inline void SetTimestampAttributeName(const char* value) { m_timestampAttributeNameHasBeenSet = true; m_timestampAttributeName.assign(value); }
-
-    /**
-     * <p>The name of the timestamp attribute.</p>
-     */
-    inline MapMatchingConfig& WithTimestampAttributeName(const Aws::String& value) { SetTimestampAttributeName(value); return *this;}
-
-    /**
-     * <p>The name of the timestamp attribute.</p>
-     */
-    inline MapMatchingConfig& WithTimestampAttributeName(Aws::String&& value) { SetTimestampAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the timestamp attribute.</p>
-     */
-    inline MapMatchingConfig& WithTimestampAttributeName(const char* value) { SetTimestampAttributeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the X-attribute</p>
      */
-    inline const Aws::String& GetXAttributeName() const{ return m_xAttributeName; }
-
-    /**
-     * <p>The name of the X-attribute</p>
-     */
+    inline const Aws::String& GetXAttributeName() const { return m_xAttributeName; }
     inline bool XAttributeNameHasBeenSet() const { return m_xAttributeNameHasBeenSet; }
+    template<typename XAttributeNameT = Aws::String>
+    void SetXAttributeName(XAttributeNameT&& value) { m_xAttributeNameHasBeenSet = true; m_xAttributeName = std::forward<XAttributeNameT>(value); }
+    template<typename XAttributeNameT = Aws::String>
+    MapMatchingConfig& WithXAttributeName(XAttributeNameT&& value) { SetXAttributeName(std::forward<XAttributeNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the X-attribute</p>
-     */
-    inline void SetXAttributeName(const Aws::String& value) { m_xAttributeNameHasBeenSet = true; m_xAttributeName = value; }
-
-    /**
-     * <p>The name of the X-attribute</p>
-     */
-    inline void SetXAttributeName(Aws::String&& value) { m_xAttributeNameHasBeenSet = true; m_xAttributeName = std::move(value); }
-
-    /**
-     * <p>The name of the X-attribute</p>
-     */
-    inline void SetXAttributeName(const char* value) { m_xAttributeNameHasBeenSet = true; m_xAttributeName.assign(value); }
-
-    /**
-     * <p>The name of the X-attribute</p>
-     */
-    inline MapMatchingConfig& WithXAttributeName(const Aws::String& value) { SetXAttributeName(value); return *this;}
-
-    /**
-     * <p>The name of the X-attribute</p>
-     */
-    inline MapMatchingConfig& WithXAttributeName(Aws::String&& value) { SetXAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the X-attribute</p>
-     */
-    inline MapMatchingConfig& WithXAttributeName(const char* value) { SetXAttributeName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the Y-attribute</p>
      */
-    inline const Aws::String& GetYAttributeName() const{ return m_yAttributeName; }
-
-    /**
-     * <p>The name of the Y-attribute</p>
-     */
+    inline const Aws::String& GetYAttributeName() const { return m_yAttributeName; }
     inline bool YAttributeNameHasBeenSet() const { return m_yAttributeNameHasBeenSet; }
-
-    /**
-     * <p>The name of the Y-attribute</p>
-     */
-    inline void SetYAttributeName(const Aws::String& value) { m_yAttributeNameHasBeenSet = true; m_yAttributeName = value; }
-
-    /**
-     * <p>The name of the Y-attribute</p>
-     */
-    inline void SetYAttributeName(Aws::String&& value) { m_yAttributeNameHasBeenSet = true; m_yAttributeName = std::move(value); }
-
-    /**
-     * <p>The name of the Y-attribute</p>
-     */
-    inline void SetYAttributeName(const char* value) { m_yAttributeNameHasBeenSet = true; m_yAttributeName.assign(value); }
-
-    /**
-     * <p>The name of the Y-attribute</p>
-     */
-    inline MapMatchingConfig& WithYAttributeName(const Aws::String& value) { SetYAttributeName(value); return *this;}
-
-    /**
-     * <p>The name of the Y-attribute</p>
-     */
-    inline MapMatchingConfig& WithYAttributeName(Aws::String&& value) { SetYAttributeName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Y-attribute</p>
-     */
-    inline MapMatchingConfig& WithYAttributeName(const char* value) { SetYAttributeName(value); return *this;}
-
+    template<typename YAttributeNameT = Aws::String>
+    void SetYAttributeName(YAttributeNameT&& value) { m_yAttributeNameHasBeenSet = true; m_yAttributeName = std::forward<YAttributeNameT>(value); }
+    template<typename YAttributeNameT = Aws::String>
+    MapMatchingConfig& WithYAttributeName(YAttributeNameT&& value) { SetYAttributeName(std::forward<YAttributeNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_idAttributeName;

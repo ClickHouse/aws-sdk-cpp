@@ -33,291 +33,96 @@ namespace Model
   class JwtTokenTypeConfiguration
   {
   public:
-    AWS_KENDRA_API JwtTokenTypeConfiguration();
+    AWS_KENDRA_API JwtTokenTypeConfiguration() = default;
     AWS_KENDRA_API JwtTokenTypeConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API JwtTokenTypeConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KENDRA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The location of the key.</p>
      */
-    inline const KeyLocation& GetKeyLocation() const{ return m_keyLocation; }
-
-    /**
-     * <p>The location of the key.</p>
-     */
+    inline KeyLocation GetKeyLocation() const { return m_keyLocation; }
     inline bool KeyLocationHasBeenSet() const { return m_keyLocationHasBeenSet; }
+    inline void SetKeyLocation(KeyLocation value) { m_keyLocationHasBeenSet = true; m_keyLocation = value; }
+    inline JwtTokenTypeConfiguration& WithKeyLocation(KeyLocation value) { SetKeyLocation(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of the key.</p>
-     */
-    inline void SetKeyLocation(const KeyLocation& value) { m_keyLocationHasBeenSet = true; m_keyLocation = value; }
-
-    /**
-     * <p>The location of the key.</p>
-     */
-    inline void SetKeyLocation(KeyLocation&& value) { m_keyLocationHasBeenSet = true; m_keyLocation = std::move(value); }
-
-    /**
-     * <p>The location of the key.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithKeyLocation(const KeyLocation& value) { SetKeyLocation(value); return *this;}
-
-    /**
-     * <p>The location of the key.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithKeyLocation(KeyLocation&& value) { SetKeyLocation(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The signing key URL.</p>
      */
-    inline const Aws::String& GetURL() const{ return m_uRL; }
-
-    /**
-     * <p>The signing key URL.</p>
-     */
+    inline const Aws::String& GetURL() const { return m_uRL; }
     inline bool URLHasBeenSet() const { return m_uRLHasBeenSet; }
+    template<typename URLT = Aws::String>
+    void SetURL(URLT&& value) { m_uRLHasBeenSet = true; m_uRL = std::forward<URLT>(value); }
+    template<typename URLT = Aws::String>
+    JwtTokenTypeConfiguration& WithURL(URLT&& value) { SetURL(std::forward<URLT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The signing key URL.</p>
-     */
-    inline void SetURL(const Aws::String& value) { m_uRLHasBeenSet = true; m_uRL = value; }
-
-    /**
-     * <p>The signing key URL.</p>
-     */
-    inline void SetURL(Aws::String&& value) { m_uRLHasBeenSet = true; m_uRL = std::move(value); }
-
-    /**
-     * <p>The signing key URL.</p>
-     */
-    inline void SetURL(const char* value) { m_uRLHasBeenSet = true; m_uRL.assign(value); }
-
-    /**
-     * <p>The signing key URL.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithURL(const Aws::String& value) { SetURL(value); return *this;}
-
-    /**
-     * <p>The signing key URL.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithURL(Aws::String&& value) { SetURL(std::move(value)); return *this;}
-
-    /**
-     * <p>The signing key URL.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithURL(const char* value) { SetURL(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (arn) of the secret.</p>
      */
-    inline const Aws::String& GetSecretManagerArn() const{ return m_secretManagerArn; }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the secret.</p>
-     */
+    inline const Aws::String& GetSecretManagerArn() const { return m_secretManagerArn; }
     inline bool SecretManagerArnHasBeenSet() const { return m_secretManagerArnHasBeenSet; }
+    template<typename SecretManagerArnT = Aws::String>
+    void SetSecretManagerArn(SecretManagerArnT&& value) { m_secretManagerArnHasBeenSet = true; m_secretManagerArn = std::forward<SecretManagerArnT>(value); }
+    template<typename SecretManagerArnT = Aws::String>
+    JwtTokenTypeConfiguration& WithSecretManagerArn(SecretManagerArnT&& value) { SetSecretManagerArn(std::forward<SecretManagerArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (arn) of the secret.</p>
-     */
-    inline void SetSecretManagerArn(const Aws::String& value) { m_secretManagerArnHasBeenSet = true; m_secretManagerArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the secret.</p>
-     */
-    inline void SetSecretManagerArn(Aws::String&& value) { m_secretManagerArnHasBeenSet = true; m_secretManagerArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the secret.</p>
-     */
-    inline void SetSecretManagerArn(const char* value) { m_secretManagerArnHasBeenSet = true; m_secretManagerArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the secret.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithSecretManagerArn(const Aws::String& value) { SetSecretManagerArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the secret.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithSecretManagerArn(Aws::String&& value) { SetSecretManagerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (arn) of the secret.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithSecretManagerArn(const char* value) { SetSecretManagerArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The user name attribute field.</p>
      */
-    inline const Aws::String& GetUserNameAttributeField() const{ return m_userNameAttributeField; }
-
-    /**
-     * <p>The user name attribute field.</p>
-     */
+    inline const Aws::String& GetUserNameAttributeField() const { return m_userNameAttributeField; }
     inline bool UserNameAttributeFieldHasBeenSet() const { return m_userNameAttributeFieldHasBeenSet; }
+    template<typename UserNameAttributeFieldT = Aws::String>
+    void SetUserNameAttributeField(UserNameAttributeFieldT&& value) { m_userNameAttributeFieldHasBeenSet = true; m_userNameAttributeField = std::forward<UserNameAttributeFieldT>(value); }
+    template<typename UserNameAttributeFieldT = Aws::String>
+    JwtTokenTypeConfiguration& WithUserNameAttributeField(UserNameAttributeFieldT&& value) { SetUserNameAttributeField(std::forward<UserNameAttributeFieldT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The user name attribute field.</p>
-     */
-    inline void SetUserNameAttributeField(const Aws::String& value) { m_userNameAttributeFieldHasBeenSet = true; m_userNameAttributeField = value; }
-
-    /**
-     * <p>The user name attribute field.</p>
-     */
-    inline void SetUserNameAttributeField(Aws::String&& value) { m_userNameAttributeFieldHasBeenSet = true; m_userNameAttributeField = std::move(value); }
-
-    /**
-     * <p>The user name attribute field.</p>
-     */
-    inline void SetUserNameAttributeField(const char* value) { m_userNameAttributeFieldHasBeenSet = true; m_userNameAttributeField.assign(value); }
-
-    /**
-     * <p>The user name attribute field.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithUserNameAttributeField(const Aws::String& value) { SetUserNameAttributeField(value); return *this;}
-
-    /**
-     * <p>The user name attribute field.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithUserNameAttributeField(Aws::String&& value) { SetUserNameAttributeField(std::move(value)); return *this;}
-
-    /**
-     * <p>The user name attribute field.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithUserNameAttributeField(const char* value) { SetUserNameAttributeField(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The group attribute field.</p>
      */
-    inline const Aws::String& GetGroupAttributeField() const{ return m_groupAttributeField; }
-
-    /**
-     * <p>The group attribute field.</p>
-     */
+    inline const Aws::String& GetGroupAttributeField() const { return m_groupAttributeField; }
     inline bool GroupAttributeFieldHasBeenSet() const { return m_groupAttributeFieldHasBeenSet; }
+    template<typename GroupAttributeFieldT = Aws::String>
+    void SetGroupAttributeField(GroupAttributeFieldT&& value) { m_groupAttributeFieldHasBeenSet = true; m_groupAttributeField = std::forward<GroupAttributeFieldT>(value); }
+    template<typename GroupAttributeFieldT = Aws::String>
+    JwtTokenTypeConfiguration& WithGroupAttributeField(GroupAttributeFieldT&& value) { SetGroupAttributeField(std::forward<GroupAttributeFieldT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The group attribute field.</p>
-     */
-    inline void SetGroupAttributeField(const Aws::String& value) { m_groupAttributeFieldHasBeenSet = true; m_groupAttributeField = value; }
-
-    /**
-     * <p>The group attribute field.</p>
-     */
-    inline void SetGroupAttributeField(Aws::String&& value) { m_groupAttributeFieldHasBeenSet = true; m_groupAttributeField = std::move(value); }
-
-    /**
-     * <p>The group attribute field.</p>
-     */
-    inline void SetGroupAttributeField(const char* value) { m_groupAttributeFieldHasBeenSet = true; m_groupAttributeField.assign(value); }
-
-    /**
-     * <p>The group attribute field.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithGroupAttributeField(const Aws::String& value) { SetGroupAttributeField(value); return *this;}
-
-    /**
-     * <p>The group attribute field.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithGroupAttributeField(Aws::String&& value) { SetGroupAttributeField(std::move(value)); return *this;}
-
-    /**
-     * <p>The group attribute field.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithGroupAttributeField(const char* value) { SetGroupAttributeField(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The issuer of the token.</p>
      */
-    inline const Aws::String& GetIssuer() const{ return m_issuer; }
-
-    /**
-     * <p>The issuer of the token.</p>
-     */
+    inline const Aws::String& GetIssuer() const { return m_issuer; }
     inline bool IssuerHasBeenSet() const { return m_issuerHasBeenSet; }
+    template<typename IssuerT = Aws::String>
+    void SetIssuer(IssuerT&& value) { m_issuerHasBeenSet = true; m_issuer = std::forward<IssuerT>(value); }
+    template<typename IssuerT = Aws::String>
+    JwtTokenTypeConfiguration& WithIssuer(IssuerT&& value) { SetIssuer(std::forward<IssuerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The issuer of the token.</p>
-     */
-    inline void SetIssuer(const Aws::String& value) { m_issuerHasBeenSet = true; m_issuer = value; }
-
-    /**
-     * <p>The issuer of the token.</p>
-     */
-    inline void SetIssuer(Aws::String&& value) { m_issuerHasBeenSet = true; m_issuer = std::move(value); }
-
-    /**
-     * <p>The issuer of the token.</p>
-     */
-    inline void SetIssuer(const char* value) { m_issuerHasBeenSet = true; m_issuer.assign(value); }
-
-    /**
-     * <p>The issuer of the token.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithIssuer(const Aws::String& value) { SetIssuer(value); return *this;}
-
-    /**
-     * <p>The issuer of the token.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithIssuer(Aws::String&& value) { SetIssuer(std::move(value)); return *this;}
-
-    /**
-     * <p>The issuer of the token.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithIssuer(const char* value) { SetIssuer(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The regular expression that identifies the claim.</p>
      */
-    inline const Aws::String& GetClaimRegex() const{ return m_claimRegex; }
-
-    /**
-     * <p>The regular expression that identifies the claim.</p>
-     */
+    inline const Aws::String& GetClaimRegex() const { return m_claimRegex; }
     inline bool ClaimRegexHasBeenSet() const { return m_claimRegexHasBeenSet; }
-
-    /**
-     * <p>The regular expression that identifies the claim.</p>
-     */
-    inline void SetClaimRegex(const Aws::String& value) { m_claimRegexHasBeenSet = true; m_claimRegex = value; }
-
-    /**
-     * <p>The regular expression that identifies the claim.</p>
-     */
-    inline void SetClaimRegex(Aws::String&& value) { m_claimRegexHasBeenSet = true; m_claimRegex = std::move(value); }
-
-    /**
-     * <p>The regular expression that identifies the claim.</p>
-     */
-    inline void SetClaimRegex(const char* value) { m_claimRegexHasBeenSet = true; m_claimRegex.assign(value); }
-
-    /**
-     * <p>The regular expression that identifies the claim.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithClaimRegex(const Aws::String& value) { SetClaimRegex(value); return *this;}
-
-    /**
-     * <p>The regular expression that identifies the claim.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithClaimRegex(Aws::String&& value) { SetClaimRegex(std::move(value)); return *this;}
-
-    /**
-     * <p>The regular expression that identifies the claim.</p>
-     */
-    inline JwtTokenTypeConfiguration& WithClaimRegex(const char* value) { SetClaimRegex(value); return *this;}
-
+    template<typename ClaimRegexT = Aws::String>
+    void SetClaimRegex(ClaimRegexT&& value) { m_claimRegexHasBeenSet = true; m_claimRegex = std::forward<ClaimRegexT>(value); }
+    template<typename ClaimRegexT = Aws::String>
+    JwtTokenTypeConfiguration& WithClaimRegex(ClaimRegexT&& value) { SetClaimRegex(std::forward<ClaimRegexT>(value)); return *this;}
+    ///@}
   private:
 
-    KeyLocation m_keyLocation;
+    KeyLocation m_keyLocation{KeyLocation::NOT_SET};
     bool m_keyLocationHasBeenSet = false;
 
     Aws::String m_uRL;

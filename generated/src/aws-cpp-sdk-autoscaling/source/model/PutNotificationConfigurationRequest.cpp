@@ -10,13 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-PutNotificationConfigurationRequest::PutNotificationConfigurationRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_topicARNHasBeenSet(false),
-    m_notificationTypesHasBeenSet(false)
-{
-}
-
 Aws::String PutNotificationConfigurationRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -33,12 +26,19 @@ Aws::String PutNotificationConfigurationRequest::SerializePayload() const
 
   if(m_notificationTypesHasBeenSet)
   {
-    unsigned notificationTypesCount = 1;
-    for(auto& item : m_notificationTypes)
+    if (m_notificationTypes.empty())
     {
-      ss << "NotificationTypes.member." << notificationTypesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      notificationTypesCount++;
+      ss << "NotificationTypes=&";
+    }
+    else
+    {
+      unsigned notificationTypesCount = 1;
+      for(auto& item : m_notificationTypes)
+      {
+        ss << "NotificationTypes.member." << notificationTypesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        notificationTypesCount++;
+      }
     }
   }
 

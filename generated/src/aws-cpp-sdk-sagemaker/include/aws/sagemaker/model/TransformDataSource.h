@@ -31,42 +31,23 @@ namespace Model
   class TransformDataSource
   {
   public:
-    AWS_SAGEMAKER_API TransformDataSource();
+    AWS_SAGEMAKER_API TransformDataSource() = default;
     AWS_SAGEMAKER_API TransformDataSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API TransformDataSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The S3 location of the data source that is associated with a channel.</p>
      */
-    inline const TransformS3DataSource& GetS3DataSource() const{ return m_s3DataSource; }
-
-    /**
-     * <p>The S3 location of the data source that is associated with a channel.</p>
-     */
+    inline const TransformS3DataSource& GetS3DataSource() const { return m_s3DataSource; }
     inline bool S3DataSourceHasBeenSet() const { return m_s3DataSourceHasBeenSet; }
-
-    /**
-     * <p>The S3 location of the data source that is associated with a channel.</p>
-     */
-    inline void SetS3DataSource(const TransformS3DataSource& value) { m_s3DataSourceHasBeenSet = true; m_s3DataSource = value; }
-
-    /**
-     * <p>The S3 location of the data source that is associated with a channel.</p>
-     */
-    inline void SetS3DataSource(TransformS3DataSource&& value) { m_s3DataSourceHasBeenSet = true; m_s3DataSource = std::move(value); }
-
-    /**
-     * <p>The S3 location of the data source that is associated with a channel.</p>
-     */
-    inline TransformDataSource& WithS3DataSource(const TransformS3DataSource& value) { SetS3DataSource(value); return *this;}
-
-    /**
-     * <p>The S3 location of the data source that is associated with a channel.</p>
-     */
-    inline TransformDataSource& WithS3DataSource(TransformS3DataSource&& value) { SetS3DataSource(std::move(value)); return *this;}
-
+    template<typename S3DataSourceT = TransformS3DataSource>
+    void SetS3DataSource(S3DataSourceT&& value) { m_s3DataSourceHasBeenSet = true; m_s3DataSource = std::forward<S3DataSourceT>(value); }
+    template<typename S3DataSourceT = TransformS3DataSource>
+    TransformDataSource& WithS3DataSource(S3DataSourceT&& value) { SetS3DataSource(std::forward<S3DataSourceT>(value)); return *this;}
+    ///@}
   private:
 
     TransformS3DataSource m_s3DataSource;

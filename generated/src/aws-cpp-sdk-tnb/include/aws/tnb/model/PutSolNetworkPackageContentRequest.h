@@ -22,7 +22,7 @@ namespace Model
   class PutSolNetworkPackageContentRequest : public StreamingTnbRequest
   {
   public:
-    AWS_TNB_API PutSolNetworkPackageContentRequest();
+    AWS_TNB_API PutSolNetworkPackageContentRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -31,46 +31,17 @@ namespace Model
     inline virtual const char* GetServiceRequestName() const override { return "PutSolNetworkPackageContent"; }
 
 
+    ///@{
     /**
      * <p>Network service descriptor info ID.</p>
      */
-    inline const Aws::String& GetNsdInfoId() const{ return m_nsdInfoId; }
-
-    /**
-     * <p>Network service descriptor info ID.</p>
-     */
+    inline const Aws::String& GetNsdInfoId() const { return m_nsdInfoId; }
     inline bool NsdInfoIdHasBeenSet() const { return m_nsdInfoIdHasBeenSet; }
-
-    /**
-     * <p>Network service descriptor info ID.</p>
-     */
-    inline void SetNsdInfoId(const Aws::String& value) { m_nsdInfoIdHasBeenSet = true; m_nsdInfoId = value; }
-
-    /**
-     * <p>Network service descriptor info ID.</p>
-     */
-    inline void SetNsdInfoId(Aws::String&& value) { m_nsdInfoIdHasBeenSet = true; m_nsdInfoId = std::move(value); }
-
-    /**
-     * <p>Network service descriptor info ID.</p>
-     */
-    inline void SetNsdInfoId(const char* value) { m_nsdInfoIdHasBeenSet = true; m_nsdInfoId.assign(value); }
-
-    /**
-     * <p>Network service descriptor info ID.</p>
-     */
-    inline PutSolNetworkPackageContentRequest& WithNsdInfoId(const Aws::String& value) { SetNsdInfoId(value); return *this;}
-
-    /**
-     * <p>Network service descriptor info ID.</p>
-     */
-    inline PutSolNetworkPackageContentRequest& WithNsdInfoId(Aws::String&& value) { SetNsdInfoId(std::move(value)); return *this;}
-
-    /**
-     * <p>Network service descriptor info ID.</p>
-     */
-    inline PutSolNetworkPackageContentRequest& WithNsdInfoId(const char* value) { SetNsdInfoId(value); return *this;}
-
+    template<typename NsdInfoIdT = Aws::String>
+    void SetNsdInfoId(NsdInfoIdT&& value) { m_nsdInfoIdHasBeenSet = true; m_nsdInfoId = std::forward<NsdInfoIdT>(value); }
+    template<typename NsdInfoIdT = Aws::String>
+    PutSolNetworkPackageContentRequest& WithNsdInfoId(NsdInfoIdT&& value) { SetNsdInfoId(std::forward<NsdInfoIdT>(value)); return *this;}
+    ///@}
   private:
 
 

@@ -18,17 +18,7 @@ namespace Lambda
 namespace Model
 {
 
-ImageConfig::ImageConfig() : 
-    m_entryPointHasBeenSet(false),
-    m_commandHasBeenSet(false),
-    m_workingDirectoryHasBeenSet(false)
-{
-}
-
-ImageConfig::ImageConfig(JsonView jsonValue) : 
-    m_entryPointHasBeenSet(false),
-    m_commandHasBeenSet(false),
-    m_workingDirectoryHasBeenSet(false)
+ImageConfig::ImageConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -44,7 +34,6 @@ ImageConfig& ImageConfig::operator =(JsonView jsonValue)
     }
     m_entryPointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Command"))
   {
     Aws::Utils::Array<JsonView> commandJsonList = jsonValue.GetArray("Command");
@@ -54,14 +43,11 @@ ImageConfig& ImageConfig::operator =(JsonView jsonValue)
     }
     m_commandHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("WorkingDirectory"))
   {
     m_workingDirectory = jsonValue.GetString("WorkingDirectory");
-
     m_workingDirectoryHasBeenSet = true;
   }
-
   return *this;
 }
 

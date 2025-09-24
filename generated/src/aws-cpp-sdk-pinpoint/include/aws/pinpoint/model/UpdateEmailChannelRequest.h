@@ -22,7 +22,7 @@ namespace Model
   class UpdateEmailChannelRequest : public PinpointRequest
   {
   public:
-    AWS_PINPOINT_API UpdateEmailChannelRequest();
+    AWS_PINPOINT_API UpdateEmailChannelRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,73 +33,28 @@ namespace Model
     AWS_PINPOINT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique identifier for the application. This identifier is displayed as
      * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
      */
-    inline const Aws::String& GetApplicationId() const{ return m_applicationId; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
+    inline const Aws::String& GetApplicationId() const { return m_applicationId; }
     inline bool ApplicationIdHasBeenSet() const { return m_applicationIdHasBeenSet; }
+    template<typename ApplicationIdT = Aws::String>
+    void SetApplicationId(ApplicationIdT&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::forward<ApplicationIdT>(value); }
+    template<typename ApplicationIdT = Aws::String>
+    UpdateEmailChannelRequest& WithApplicationId(ApplicationIdT&& value) { SetApplicationId(std::forward<ApplicationIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const Aws::String& value) { m_applicationIdHasBeenSet = true; m_applicationId = value; }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(Aws::String&& value) { m_applicationIdHasBeenSet = true; m_applicationId = std::move(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline void SetApplicationId(const char* value) { m_applicationIdHasBeenSet = true; m_applicationId.assign(value); }
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline UpdateEmailChannelRequest& WithApplicationId(const Aws::String& value) { SetApplicationId(value); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline UpdateEmailChannelRequest& WithApplicationId(Aws::String&& value) { SetApplicationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier for the application. This identifier is displayed as
-     * the <b>Project ID</b> on the Amazon Pinpoint console.</p>
-     */
-    inline UpdateEmailChannelRequest& WithApplicationId(const char* value) { SetApplicationId(value); return *this;}
-
-
+    ///@{
     
-    inline const EmailChannelRequest& GetEmailChannelRequest() const{ return m_emailChannelRequest; }
-
-    
+    inline const EmailChannelRequest& GetEmailChannelRequest() const { return m_emailChannelRequest; }
     inline bool EmailChannelRequestHasBeenSet() const { return m_emailChannelRequestHasBeenSet; }
-
-    
-    inline void SetEmailChannelRequest(const EmailChannelRequest& value) { m_emailChannelRequestHasBeenSet = true; m_emailChannelRequest = value; }
-
-    
-    inline void SetEmailChannelRequest(EmailChannelRequest&& value) { m_emailChannelRequestHasBeenSet = true; m_emailChannelRequest = std::move(value); }
-
-    
-    inline UpdateEmailChannelRequest& WithEmailChannelRequest(const EmailChannelRequest& value) { SetEmailChannelRequest(value); return *this;}
-
-    
-    inline UpdateEmailChannelRequest& WithEmailChannelRequest(EmailChannelRequest&& value) { SetEmailChannelRequest(std::move(value)); return *this;}
-
+    template<typename EmailChannelRequestT = EmailChannelRequest>
+    void SetEmailChannelRequest(EmailChannelRequestT&& value) { m_emailChannelRequestHasBeenSet = true; m_emailChannelRequest = std::forward<EmailChannelRequestT>(value); }
+    template<typename EmailChannelRequestT = EmailChannelRequest>
+    UpdateEmailChannelRequest& WithEmailChannelRequest(EmailChannelRequestT&& value) { SetEmailChannelRequest(std::forward<EmailChannelRequestT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationId;

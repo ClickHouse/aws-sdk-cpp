@@ -18,15 +18,7 @@ namespace CodeStarNotifications
 namespace Model
 {
 
-NotificationRuleSummary::NotificationRuleSummary() : 
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false)
-{
-}
-
-NotificationRuleSummary::NotificationRuleSummary(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_arnHasBeenSet(false)
+NotificationRuleSummary::NotificationRuleSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ NotificationRuleSummary& NotificationRuleSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   return *this;
 }
 

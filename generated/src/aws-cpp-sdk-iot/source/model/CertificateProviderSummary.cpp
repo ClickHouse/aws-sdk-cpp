@@ -18,15 +18,7 @@ namespace IoT
 namespace Model
 {
 
-CertificateProviderSummary::CertificateProviderSummary() : 
-    m_certificateProviderNameHasBeenSet(false),
-    m_certificateProviderArnHasBeenSet(false)
-{
-}
-
-CertificateProviderSummary::CertificateProviderSummary(JsonView jsonValue) : 
-    m_certificateProviderNameHasBeenSet(false),
-    m_certificateProviderArnHasBeenSet(false)
+CertificateProviderSummary::CertificateProviderSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CertificateProviderSummary& CertificateProviderSummary::operator =(JsonView json
   if(jsonValue.ValueExists("certificateProviderName"))
   {
     m_certificateProviderName = jsonValue.GetString("certificateProviderName");
-
     m_certificateProviderNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("certificateProviderArn"))
   {
     m_certificateProviderArn = jsonValue.GetString("certificateProviderArn");
-
     m_certificateProviderArnHasBeenSet = true;
   }
-
   return *this;
 }
 

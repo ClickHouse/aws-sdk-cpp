@@ -18,39 +18,7 @@ namespace SsmSap
 namespace Model
 {
 
-Database::Database() : 
-    m_applicationIdHasBeenSet(false),
-    m_componentIdHasBeenSet(false),
-    m_credentialsHasBeenSet(false),
-    m_databaseIdHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_databaseType(DatabaseType::NOT_SET),
-    m_databaseTypeHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_status(DatabaseStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_primaryHostHasBeenSet(false),
-    m_sQLPort(0),
-    m_sQLPortHasBeenSet(false),
-    m_lastUpdatedHasBeenSet(false)
-{
-}
-
-Database::Database(JsonView jsonValue) : 
-    m_applicationIdHasBeenSet(false),
-    m_componentIdHasBeenSet(false),
-    m_credentialsHasBeenSet(false),
-    m_databaseIdHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_databaseType(DatabaseType::NOT_SET),
-    m_databaseTypeHasBeenSet(false),
-    m_arnHasBeenSet(false),
-    m_status(DatabaseStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_primaryHostHasBeenSet(false),
-    m_sQLPort(0),
-    m_sQLPortHasBeenSet(false),
-    m_lastUpdatedHasBeenSet(false)
+Database::Database(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -60,17 +28,13 @@ Database& Database::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ApplicationId"))
   {
     m_applicationId = jsonValue.GetString("ApplicationId");
-
     m_applicationIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ComponentId"))
   {
     m_componentId = jsonValue.GetString("ComponentId");
-
     m_componentIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Credentials"))
   {
     Aws::Utils::Array<JsonView> credentialsJsonList = jsonValue.GetArray("Credentials");
@@ -80,63 +44,55 @@ Database& Database::operator =(JsonView jsonValue)
     }
     m_credentialsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DatabaseId"))
   {
     m_databaseId = jsonValue.GetString("DatabaseId");
-
     m_databaseIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DatabaseName"))
   {
     m_databaseName = jsonValue.GetString("DatabaseName");
-
     m_databaseNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DatabaseType"))
   {
     m_databaseType = DatabaseTypeMapper::GetDatabaseTypeForName(jsonValue.GetString("DatabaseType"));
-
     m_databaseTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Arn"))
   {
     m_arn = jsonValue.GetString("Arn");
-
     m_arnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = DatabaseStatusMapper::GetDatabaseStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PrimaryHost"))
   {
     m_primaryHost = jsonValue.GetString("PrimaryHost");
-
     m_primaryHostHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SQLPort"))
   {
     m_sQLPort = jsonValue.GetInteger("SQLPort");
-
     m_sQLPortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastUpdated"))
   {
     m_lastUpdated = jsonValue.GetDouble("LastUpdated");
-
     m_lastUpdatedHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ConnectedComponentArns"))
+  {
+    Aws::Utils::Array<JsonView> connectedComponentArnsJsonList = jsonValue.GetArray("ConnectedComponentArns");
+    for(unsigned connectedComponentArnsIndex = 0; connectedComponentArnsIndex < connectedComponentArnsJsonList.GetLength(); ++connectedComponentArnsIndex)
+    {
+      m_connectedComponentArns.push_back(connectedComponentArnsJsonList[connectedComponentArnsIndex].AsString());
+    }
+    m_connectedComponentArnsHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -210,6 +166,17 @@ JsonValue Database::Jsonize() const
   if(m_lastUpdatedHasBeenSet)
   {
    payload.WithDouble("LastUpdated", m_lastUpdated.SecondsWithMSPrecision());
+  }
+
+  if(m_connectedComponentArnsHasBeenSet)
+  {
+   Aws::Utils::Array<JsonValue> connectedComponentArnsJsonList(m_connectedComponentArns.size());
+   for(unsigned connectedComponentArnsIndex = 0; connectedComponentArnsIndex < connectedComponentArnsJsonList.GetLength(); ++connectedComponentArnsIndex)
+   {
+     connectedComponentArnsJsonList[connectedComponentArnsIndex].AsString(m_connectedComponentArns[connectedComponentArnsIndex]);
+   }
+   payload.WithArray("ConnectedComponentArns", std::move(connectedComponentArnsJsonList));
+
   }
 
   return payload;

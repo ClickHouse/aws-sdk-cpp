@@ -10,14 +10,6 @@
 using namespace Aws::ElasticBeanstalk::Model;
 using namespace Aws::Utils;
 
-ValidateConfigurationSettingsRequest::ValidateConfigurationSettingsRequest() : 
-    m_applicationNameHasBeenSet(false),
-    m_templateNameHasBeenSet(false),
-    m_environmentNameHasBeenSet(false),
-    m_optionSettingsHasBeenSet(false)
-{
-}
-
 Aws::String ValidateConfigurationSettingsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -39,11 +31,18 @@ Aws::String ValidateConfigurationSettingsRequest::SerializePayload() const
 
   if(m_optionSettingsHasBeenSet)
   {
-    unsigned optionSettingsCount = 1;
-    for(auto& item : m_optionSettings)
+    if (m_optionSettings.empty())
     {
-      item.OutputToStream(ss, "OptionSettings.member.", optionSettingsCount, "");
-      optionSettingsCount++;
+      ss << "OptionSettings=&";
+    }
+    else
+    {
+      unsigned optionSettingsCount = 1;
+      for(auto& item : m_optionSettings)
+      {
+        item.OutputToStream(ss, "OptionSettings.member.", optionSettingsCount, "");
+        optionSettingsCount++;
+      }
     }
   }
 

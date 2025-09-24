@@ -18,99 +18,75 @@ namespace ConfigService
 namespace Model
 {
 
-ConfigurationRecorderStatus::ConfigurationRecorderStatus() : 
-    m_nameHasBeenSet(false),
-    m_lastStartTimeHasBeenSet(false),
-    m_lastStopTimeHasBeenSet(false),
-    m_recording(false),
-    m_recordingHasBeenSet(false),
-    m_lastStatus(RecorderStatus::NOT_SET),
-    m_lastStatusHasBeenSet(false),
-    m_lastErrorCodeHasBeenSet(false),
-    m_lastErrorMessageHasBeenSet(false),
-    m_lastStatusChangeTimeHasBeenSet(false)
-{
-}
-
-ConfigurationRecorderStatus::ConfigurationRecorderStatus(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_lastStartTimeHasBeenSet(false),
-    m_lastStopTimeHasBeenSet(false),
-    m_recording(false),
-    m_recordingHasBeenSet(false),
-    m_lastStatus(RecorderStatus::NOT_SET),
-    m_lastStatusHasBeenSet(false),
-    m_lastErrorCodeHasBeenSet(false),
-    m_lastErrorMessageHasBeenSet(false),
-    m_lastStatusChangeTimeHasBeenSet(false)
+ConfigurationRecorderStatus::ConfigurationRecorderStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 ConfigurationRecorderStatus& ConfigurationRecorderStatus::operator =(JsonView jsonValue)
 {
+  if(jsonValue.ValueExists("arn"))
+  {
+    m_arn = jsonValue.GetString("arn");
+    m_arnHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastStartTime"))
   {
     m_lastStartTime = jsonValue.GetDouble("lastStartTime");
-
     m_lastStartTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastStopTime"))
   {
     m_lastStopTime = jsonValue.GetDouble("lastStopTime");
-
     m_lastStopTimeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("recording"))
   {
     m_recording = jsonValue.GetBool("recording");
-
     m_recordingHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastStatus"))
   {
     m_lastStatus = RecorderStatusMapper::GetRecorderStatusForName(jsonValue.GetString("lastStatus"));
-
     m_lastStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastErrorCode"))
   {
     m_lastErrorCode = jsonValue.GetString("lastErrorCode");
-
     m_lastErrorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastErrorMessage"))
   {
     m_lastErrorMessage = jsonValue.GetString("lastErrorMessage");
-
     m_lastErrorMessageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("lastStatusChangeTime"))
   {
     m_lastStatusChangeTime = jsonValue.GetDouble("lastStatusChangeTime");
-
     m_lastStatusChangeTimeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("servicePrincipal"))
+  {
+    m_servicePrincipal = jsonValue.GetString("servicePrincipal");
+    m_servicePrincipalHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue ConfigurationRecorderStatus::Jsonize() const
 {
   JsonValue payload;
+
+  if(m_arnHasBeenSet)
+  {
+   payload.WithString("arn", m_arn);
+
+  }
 
   if(m_nameHasBeenSet)
   {
@@ -154,6 +130,12 @@ JsonValue ConfigurationRecorderStatus::Jsonize() const
   if(m_lastStatusChangeTimeHasBeenSet)
   {
    payload.WithDouble("lastStatusChangeTime", m_lastStatusChangeTime.SecondsWithMSPrecision());
+  }
+
+  if(m_servicePrincipalHasBeenSet)
+  {
+   payload.WithString("servicePrincipal", m_servicePrincipal);
+
   }
 
   return payload;

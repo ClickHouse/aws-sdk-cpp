@@ -27,80 +27,38 @@ namespace Model
   class StreamJournalToKinesisResult
   {
   public:
-    AWS_QLDB_API StreamJournalToKinesisResult();
+    AWS_QLDB_API StreamJournalToKinesisResult() = default;
     AWS_QLDB_API StreamJournalToKinesisResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_QLDB_API StreamJournalToKinesisResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The UUID (represented in Base62-encoded text) that QLDB assigns to each QLDB
      * journal stream.</p>
      */
-    inline const Aws::String& GetStreamId() const{ return m_streamId; }
+    inline const Aws::String& GetStreamId() const { return m_streamId; }
+    template<typename StreamIdT = Aws::String>
+    void SetStreamId(StreamIdT&& value) { m_streamIdHasBeenSet = true; m_streamId = std::forward<StreamIdT>(value); }
+    template<typename StreamIdT = Aws::String>
+    StreamJournalToKinesisResult& WithStreamId(StreamIdT&& value) { SetStreamId(std::forward<StreamIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The UUID (represented in Base62-encoded text) that QLDB assigns to each QLDB
-     * journal stream.</p>
-     */
-    inline void SetStreamId(const Aws::String& value) { m_streamId = value; }
-
-    /**
-     * <p>The UUID (represented in Base62-encoded text) that QLDB assigns to each QLDB
-     * journal stream.</p>
-     */
-    inline void SetStreamId(Aws::String&& value) { m_streamId = std::move(value); }
-
-    /**
-     * <p>The UUID (represented in Base62-encoded text) that QLDB assigns to each QLDB
-     * journal stream.</p>
-     */
-    inline void SetStreamId(const char* value) { m_streamId.assign(value); }
-
-    /**
-     * <p>The UUID (represented in Base62-encoded text) that QLDB assigns to each QLDB
-     * journal stream.</p>
-     */
-    inline StreamJournalToKinesisResult& WithStreamId(const Aws::String& value) { SetStreamId(value); return *this;}
-
-    /**
-     * <p>The UUID (represented in Base62-encoded text) that QLDB assigns to each QLDB
-     * journal stream.</p>
-     */
-    inline StreamJournalToKinesisResult& WithStreamId(Aws::String&& value) { SetStreamId(std::move(value)); return *this;}
-
-    /**
-     * <p>The UUID (represented in Base62-encoded text) that QLDB assigns to each QLDB
-     * journal stream.</p>
-     */
-    inline StreamJournalToKinesisResult& WithStreamId(const char* value) { SetStreamId(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline StreamJournalToKinesisResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline StreamJournalToKinesisResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline StreamJournalToKinesisResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    StreamJournalToKinesisResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_streamId;
+    bool m_streamIdHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

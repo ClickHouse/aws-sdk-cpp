@@ -24,7 +24,7 @@ namespace Model
   class AddSourceIdentifierToSubscriptionRequest : public RDSRequest
   {
   public:
-    AWS_RDS_API AddSourceIdentifierToSubscriptionRequest();
+    AWS_RDS_API AddSourceIdentifierToSubscriptionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -39,55 +39,20 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The name of the RDS event notification subscription you want to add a source
      * identifier to.</p>
      */
-    inline const Aws::String& GetSubscriptionName() const{ return m_subscriptionName; }
-
-    /**
-     * <p>The name of the RDS event notification subscription you want to add a source
-     * identifier to.</p>
-     */
+    inline const Aws::String& GetSubscriptionName() const { return m_subscriptionName; }
     inline bool SubscriptionNameHasBeenSet() const { return m_subscriptionNameHasBeenSet; }
+    template<typename SubscriptionNameT = Aws::String>
+    void SetSubscriptionName(SubscriptionNameT&& value) { m_subscriptionNameHasBeenSet = true; m_subscriptionName = std::forward<SubscriptionNameT>(value); }
+    template<typename SubscriptionNameT = Aws::String>
+    AddSourceIdentifierToSubscriptionRequest& WithSubscriptionName(SubscriptionNameT&& value) { SetSubscriptionName(std::forward<SubscriptionNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the RDS event notification subscription you want to add a source
-     * identifier to.</p>
-     */
-    inline void SetSubscriptionName(const Aws::String& value) { m_subscriptionNameHasBeenSet = true; m_subscriptionName = value; }
-
-    /**
-     * <p>The name of the RDS event notification subscription you want to add a source
-     * identifier to.</p>
-     */
-    inline void SetSubscriptionName(Aws::String&& value) { m_subscriptionNameHasBeenSet = true; m_subscriptionName = std::move(value); }
-
-    /**
-     * <p>The name of the RDS event notification subscription you want to add a source
-     * identifier to.</p>
-     */
-    inline void SetSubscriptionName(const char* value) { m_subscriptionNameHasBeenSet = true; m_subscriptionName.assign(value); }
-
-    /**
-     * <p>The name of the RDS event notification subscription you want to add a source
-     * identifier to.</p>
-     */
-    inline AddSourceIdentifierToSubscriptionRequest& WithSubscriptionName(const Aws::String& value) { SetSubscriptionName(value); return *this;}
-
-    /**
-     * <p>The name of the RDS event notification subscription you want to add a source
-     * identifier to.</p>
-     */
-    inline AddSourceIdentifierToSubscriptionRequest& WithSubscriptionName(Aws::String&& value) { SetSubscriptionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the RDS event notification subscription you want to add a source
-     * identifier to.</p>
-     */
-    inline AddSourceIdentifierToSubscriptionRequest& WithSubscriptionName(const char* value) { SetSubscriptionName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the event source to be added.</p> <p>Constraints:</p> <ul>
      * <li> <p>If the source type is a DB instance, a <code>DBInstanceIdentifier</code>
@@ -102,120 +67,13 @@ namespace Model
      * </li> <li> <p>If the source type is an RDS Proxy, a <code>DBProxyName</code>
      * value must be supplied.</p> </li> </ul>
      */
-    inline const Aws::String& GetSourceIdentifier() const{ return m_sourceIdentifier; }
-
-    /**
-     * <p>The identifier of the event source to be added.</p> <p>Constraints:</p> <ul>
-     * <li> <p>If the source type is a DB instance, a <code>DBInstanceIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster, a
-     * <code>DBClusterIdentifier</code> value must be supplied.</p> </li> <li> <p>If
-     * the source type is a DB parameter group, a <code>DBParameterGroupName</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB security
-     * group, a <code>DBSecurityGroupName</code> value must be supplied.</p> </li> <li>
-     * <p>If the source type is a DB snapshot, a <code>DBSnapshotIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster
-     * snapshot, a <code>DBClusterSnapshotIdentifier</code> value must be supplied.</p>
-     * </li> <li> <p>If the source type is an RDS Proxy, a <code>DBProxyName</code>
-     * value must be supplied.</p> </li> </ul>
-     */
+    inline const Aws::String& GetSourceIdentifier() const { return m_sourceIdentifier; }
     inline bool SourceIdentifierHasBeenSet() const { return m_sourceIdentifierHasBeenSet; }
-
-    /**
-     * <p>The identifier of the event source to be added.</p> <p>Constraints:</p> <ul>
-     * <li> <p>If the source type is a DB instance, a <code>DBInstanceIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster, a
-     * <code>DBClusterIdentifier</code> value must be supplied.</p> </li> <li> <p>If
-     * the source type is a DB parameter group, a <code>DBParameterGroupName</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB security
-     * group, a <code>DBSecurityGroupName</code> value must be supplied.</p> </li> <li>
-     * <p>If the source type is a DB snapshot, a <code>DBSnapshotIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster
-     * snapshot, a <code>DBClusterSnapshotIdentifier</code> value must be supplied.</p>
-     * </li> <li> <p>If the source type is an RDS Proxy, a <code>DBProxyName</code>
-     * value must be supplied.</p> </li> </ul>
-     */
-    inline void SetSourceIdentifier(const Aws::String& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = value; }
-
-    /**
-     * <p>The identifier of the event source to be added.</p> <p>Constraints:</p> <ul>
-     * <li> <p>If the source type is a DB instance, a <code>DBInstanceIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster, a
-     * <code>DBClusterIdentifier</code> value must be supplied.</p> </li> <li> <p>If
-     * the source type is a DB parameter group, a <code>DBParameterGroupName</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB security
-     * group, a <code>DBSecurityGroupName</code> value must be supplied.</p> </li> <li>
-     * <p>If the source type is a DB snapshot, a <code>DBSnapshotIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster
-     * snapshot, a <code>DBClusterSnapshotIdentifier</code> value must be supplied.</p>
-     * </li> <li> <p>If the source type is an RDS Proxy, a <code>DBProxyName</code>
-     * value must be supplied.</p> </li> </ul>
-     */
-    inline void SetSourceIdentifier(Aws::String&& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = std::move(value); }
-
-    /**
-     * <p>The identifier of the event source to be added.</p> <p>Constraints:</p> <ul>
-     * <li> <p>If the source type is a DB instance, a <code>DBInstanceIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster, a
-     * <code>DBClusterIdentifier</code> value must be supplied.</p> </li> <li> <p>If
-     * the source type is a DB parameter group, a <code>DBParameterGroupName</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB security
-     * group, a <code>DBSecurityGroupName</code> value must be supplied.</p> </li> <li>
-     * <p>If the source type is a DB snapshot, a <code>DBSnapshotIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster
-     * snapshot, a <code>DBClusterSnapshotIdentifier</code> value must be supplied.</p>
-     * </li> <li> <p>If the source type is an RDS Proxy, a <code>DBProxyName</code>
-     * value must be supplied.</p> </li> </ul>
-     */
-    inline void SetSourceIdentifier(const char* value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier.assign(value); }
-
-    /**
-     * <p>The identifier of the event source to be added.</p> <p>Constraints:</p> <ul>
-     * <li> <p>If the source type is a DB instance, a <code>DBInstanceIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster, a
-     * <code>DBClusterIdentifier</code> value must be supplied.</p> </li> <li> <p>If
-     * the source type is a DB parameter group, a <code>DBParameterGroupName</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB security
-     * group, a <code>DBSecurityGroupName</code> value must be supplied.</p> </li> <li>
-     * <p>If the source type is a DB snapshot, a <code>DBSnapshotIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster
-     * snapshot, a <code>DBClusterSnapshotIdentifier</code> value must be supplied.</p>
-     * </li> <li> <p>If the source type is an RDS Proxy, a <code>DBProxyName</code>
-     * value must be supplied.</p> </li> </ul>
-     */
-    inline AddSourceIdentifierToSubscriptionRequest& WithSourceIdentifier(const Aws::String& value) { SetSourceIdentifier(value); return *this;}
-
-    /**
-     * <p>The identifier of the event source to be added.</p> <p>Constraints:</p> <ul>
-     * <li> <p>If the source type is a DB instance, a <code>DBInstanceIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster, a
-     * <code>DBClusterIdentifier</code> value must be supplied.</p> </li> <li> <p>If
-     * the source type is a DB parameter group, a <code>DBParameterGroupName</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB security
-     * group, a <code>DBSecurityGroupName</code> value must be supplied.</p> </li> <li>
-     * <p>If the source type is a DB snapshot, a <code>DBSnapshotIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster
-     * snapshot, a <code>DBClusterSnapshotIdentifier</code> value must be supplied.</p>
-     * </li> <li> <p>If the source type is an RDS Proxy, a <code>DBProxyName</code>
-     * value must be supplied.</p> </li> </ul>
-     */
-    inline AddSourceIdentifierToSubscriptionRequest& WithSourceIdentifier(Aws::String&& value) { SetSourceIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the event source to be added.</p> <p>Constraints:</p> <ul>
-     * <li> <p>If the source type is a DB instance, a <code>DBInstanceIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster, a
-     * <code>DBClusterIdentifier</code> value must be supplied.</p> </li> <li> <p>If
-     * the source type is a DB parameter group, a <code>DBParameterGroupName</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB security
-     * group, a <code>DBSecurityGroupName</code> value must be supplied.</p> </li> <li>
-     * <p>If the source type is a DB snapshot, a <code>DBSnapshotIdentifier</code>
-     * value must be supplied.</p> </li> <li> <p>If the source type is a DB cluster
-     * snapshot, a <code>DBClusterSnapshotIdentifier</code> value must be supplied.</p>
-     * </li> <li> <p>If the source type is an RDS Proxy, a <code>DBProxyName</code>
-     * value must be supplied.</p> </li> </ul>
-     */
-    inline AddSourceIdentifierToSubscriptionRequest& WithSourceIdentifier(const char* value) { SetSourceIdentifier(value); return *this;}
-
+    template<typename SourceIdentifierT = Aws::String>
+    void SetSourceIdentifier(SourceIdentifierT&& value) { m_sourceIdentifierHasBeenSet = true; m_sourceIdentifier = std::forward<SourceIdentifierT>(value); }
+    template<typename SourceIdentifierT = Aws::String>
+    AddSourceIdentifierToSubscriptionRequest& WithSourceIdentifier(SourceIdentifierT&& value) { SetSourceIdentifier(std::forward<SourceIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_subscriptionName;

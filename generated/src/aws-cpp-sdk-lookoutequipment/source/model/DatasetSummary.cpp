@@ -18,21 +18,7 @@ namespace LookoutEquipment
 namespace Model
 {
 
-DatasetSummary::DatasetSummary() : 
-    m_datasetNameHasBeenSet(false),
-    m_datasetArnHasBeenSet(false),
-    m_status(DatasetStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_createdAtHasBeenSet(false)
-{
-}
-
-DatasetSummary::DatasetSummary(JsonView jsonValue) : 
-    m_datasetNameHasBeenSet(false),
-    m_datasetArnHasBeenSet(false),
-    m_status(DatasetStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_createdAtHasBeenSet(false)
+DatasetSummary::DatasetSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ DatasetSummary& DatasetSummary::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DatasetName"))
   {
     m_datasetName = jsonValue.GetString("DatasetName");
-
     m_datasetNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DatasetArn"))
   {
     m_datasetArn = jsonValue.GetString("DatasetArn");
-
     m_datasetArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Status"))
   {
     m_status = DatasetStatusMapper::GetDatasetStatusForName(jsonValue.GetString("Status"));
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatedAt"))
   {
     m_createdAt = jsonValue.GetDouble("CreatedAt");
-
     m_createdAtHasBeenSet = true;
   }
-
   return *this;
 }
 

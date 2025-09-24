@@ -24,102 +24,55 @@ namespace Model
 {
 
   /**
-   * <p>Information about this specific recommendation, such as the timestamp for
-   * when Amazon Web Services made a specific recommendation.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>Information about a recommendation, such as the timestamp for when Amazon Web
+   * Services made a specific recommendation.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/ce-2017-10-25/ReservationPurchaseRecommendationMetadata">AWS
    * API Reference</a></p>
    */
   class ReservationPurchaseRecommendationMetadata
   {
   public:
-    AWS_COSTEXPLORER_API ReservationPurchaseRecommendationMetadata();
+    AWS_COSTEXPLORER_API ReservationPurchaseRecommendationMetadata() = default;
     AWS_COSTEXPLORER_API ReservationPurchaseRecommendationMetadata(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API ReservationPurchaseRecommendationMetadata& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The ID for this specific recommendation.</p>
+     * <p>The ID for the recommendation.</p>
      */
-    inline const Aws::String& GetRecommendationId() const{ return m_recommendationId; }
-
-    /**
-     * <p>The ID for this specific recommendation.</p>
-     */
+    inline const Aws::String& GetRecommendationId() const { return m_recommendationId; }
     inline bool RecommendationIdHasBeenSet() const { return m_recommendationIdHasBeenSet; }
+    template<typename RecommendationIdT = Aws::String>
+    void SetRecommendationId(RecommendationIdT&& value) { m_recommendationIdHasBeenSet = true; m_recommendationId = std::forward<RecommendationIdT>(value); }
+    template<typename RecommendationIdT = Aws::String>
+    ReservationPurchaseRecommendationMetadata& WithRecommendationId(RecommendationIdT&& value) { SetRecommendationId(std::forward<RecommendationIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID for this specific recommendation.</p>
+     * <p>The timestamp for when Amazon Web Services made the recommendation.</p>
      */
-    inline void SetRecommendationId(const Aws::String& value) { m_recommendationIdHasBeenSet = true; m_recommendationId = value; }
-
-    /**
-     * <p>The ID for this specific recommendation.</p>
-     */
-    inline void SetRecommendationId(Aws::String&& value) { m_recommendationIdHasBeenSet = true; m_recommendationId = std::move(value); }
-
-    /**
-     * <p>The ID for this specific recommendation.</p>
-     */
-    inline void SetRecommendationId(const char* value) { m_recommendationIdHasBeenSet = true; m_recommendationId.assign(value); }
-
-    /**
-     * <p>The ID for this specific recommendation.</p>
-     */
-    inline ReservationPurchaseRecommendationMetadata& WithRecommendationId(const Aws::String& value) { SetRecommendationId(value); return *this;}
-
-    /**
-     * <p>The ID for this specific recommendation.</p>
-     */
-    inline ReservationPurchaseRecommendationMetadata& WithRecommendationId(Aws::String&& value) { SetRecommendationId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID for this specific recommendation.</p>
-     */
-    inline ReservationPurchaseRecommendationMetadata& WithRecommendationId(const char* value) { SetRecommendationId(value); return *this;}
-
-
-    /**
-     * <p>The timestamp for when Amazon Web Services made this recommendation.</p>
-     */
-    inline const Aws::String& GetGenerationTimestamp() const{ return m_generationTimestamp; }
-
-    /**
-     * <p>The timestamp for when Amazon Web Services made this recommendation.</p>
-     */
+    inline const Aws::String& GetGenerationTimestamp() const { return m_generationTimestamp; }
     inline bool GenerationTimestampHasBeenSet() const { return m_generationTimestampHasBeenSet; }
+    template<typename GenerationTimestampT = Aws::String>
+    void SetGenerationTimestamp(GenerationTimestampT&& value) { m_generationTimestampHasBeenSet = true; m_generationTimestamp = std::forward<GenerationTimestampT>(value); }
+    template<typename GenerationTimestampT = Aws::String>
+    ReservationPurchaseRecommendationMetadata& WithGenerationTimestamp(GenerationTimestampT&& value) { SetGenerationTimestamp(std::forward<GenerationTimestampT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The timestamp for when Amazon Web Services made this recommendation.</p>
+     * <p>Additional metadata that might be applicable to the recommendation.</p>
      */
-    inline void SetGenerationTimestamp(const Aws::String& value) { m_generationTimestampHasBeenSet = true; m_generationTimestamp = value; }
-
-    /**
-     * <p>The timestamp for when Amazon Web Services made this recommendation.</p>
-     */
-    inline void SetGenerationTimestamp(Aws::String&& value) { m_generationTimestampHasBeenSet = true; m_generationTimestamp = std::move(value); }
-
-    /**
-     * <p>The timestamp for when Amazon Web Services made this recommendation.</p>
-     */
-    inline void SetGenerationTimestamp(const char* value) { m_generationTimestampHasBeenSet = true; m_generationTimestamp.assign(value); }
-
-    /**
-     * <p>The timestamp for when Amazon Web Services made this recommendation.</p>
-     */
-    inline ReservationPurchaseRecommendationMetadata& WithGenerationTimestamp(const Aws::String& value) { SetGenerationTimestamp(value); return *this;}
-
-    /**
-     * <p>The timestamp for when Amazon Web Services made this recommendation.</p>
-     */
-    inline ReservationPurchaseRecommendationMetadata& WithGenerationTimestamp(Aws::String&& value) { SetGenerationTimestamp(std::move(value)); return *this;}
-
-    /**
-     * <p>The timestamp for when Amazon Web Services made this recommendation.</p>
-     */
-    inline ReservationPurchaseRecommendationMetadata& WithGenerationTimestamp(const char* value) { SetGenerationTimestamp(value); return *this;}
-
+    inline const Aws::String& GetAdditionalMetadata() const { return m_additionalMetadata; }
+    inline bool AdditionalMetadataHasBeenSet() const { return m_additionalMetadataHasBeenSet; }
+    template<typename AdditionalMetadataT = Aws::String>
+    void SetAdditionalMetadata(AdditionalMetadataT&& value) { m_additionalMetadataHasBeenSet = true; m_additionalMetadata = std::forward<AdditionalMetadataT>(value); }
+    template<typename AdditionalMetadataT = Aws::String>
+    ReservationPurchaseRecommendationMetadata& WithAdditionalMetadata(AdditionalMetadataT&& value) { SetAdditionalMetadata(std::forward<AdditionalMetadataT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_recommendationId;
@@ -127,6 +80,9 @@ namespace Model
 
     Aws::String m_generationTimestamp;
     bool m_generationTimestampHasBeenSet = false;
+
+    Aws::String m_additionalMetadata;
+    bool m_additionalMetadataHasBeenSet = false;
   };
 
 } // namespace Model

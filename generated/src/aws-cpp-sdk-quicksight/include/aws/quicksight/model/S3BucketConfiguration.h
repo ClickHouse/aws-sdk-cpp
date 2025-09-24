@@ -26,174 +26,59 @@ namespace Model
   /**
    * <p>An optional structure that contains the Amazon S3 bucket configuration that
    * the generated snapshots are stored in. If you don't provide this information,
-   * generated snapshots are stored in the default Amazon QuickSight
-   * bucket.</p><p><h3>See Also:</h3>   <a
+   * generated snapshots are stored in the default QuickSight bucket.</p><p><h3>See
+   * Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/S3BucketConfiguration">AWS
    * API Reference</a></p>
    */
   class S3BucketConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API S3BucketConfiguration();
+    AWS_QUICKSIGHT_API S3BucketConfiguration() = default;
     AWS_QUICKSIGHT_API S3BucketConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API S3BucketConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of an existing Amazon S3 bucket where the generated snapshot
      * artifacts are sent.</p>
      */
-    inline const Aws::String& GetBucketName() const{ return m_bucketName; }
-
-    /**
-     * <p>The name of an existing Amazon S3 bucket where the generated snapshot
-     * artifacts are sent.</p>
-     */
+    inline const Aws::String& GetBucketName() const { return m_bucketName; }
     inline bool BucketNameHasBeenSet() const { return m_bucketNameHasBeenSet; }
+    template<typename BucketNameT = Aws::String>
+    void SetBucketName(BucketNameT&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::forward<BucketNameT>(value); }
+    template<typename BucketNameT = Aws::String>
+    S3BucketConfiguration& WithBucketName(BucketNameT&& value) { SetBucketName(std::forward<BucketNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of an existing Amazon S3 bucket where the generated snapshot
-     * artifacts are sent.</p>
-     */
-    inline void SetBucketName(const Aws::String& value) { m_bucketNameHasBeenSet = true; m_bucketName = value; }
-
-    /**
-     * <p>The name of an existing Amazon S3 bucket where the generated snapshot
-     * artifacts are sent.</p>
-     */
-    inline void SetBucketName(Aws::String&& value) { m_bucketNameHasBeenSet = true; m_bucketName = std::move(value); }
-
-    /**
-     * <p>The name of an existing Amazon S3 bucket where the generated snapshot
-     * artifacts are sent.</p>
-     */
-    inline void SetBucketName(const char* value) { m_bucketNameHasBeenSet = true; m_bucketName.assign(value); }
-
-    /**
-     * <p>The name of an existing Amazon S3 bucket where the generated snapshot
-     * artifacts are sent.</p>
-     */
-    inline S3BucketConfiguration& WithBucketName(const Aws::String& value) { SetBucketName(value); return *this;}
-
-    /**
-     * <p>The name of an existing Amazon S3 bucket where the generated snapshot
-     * artifacts are sent.</p>
-     */
-    inline S3BucketConfiguration& WithBucketName(Aws::String&& value) { SetBucketName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of an existing Amazon S3 bucket where the generated snapshot
-     * artifacts are sent.</p>
-     */
-    inline S3BucketConfiguration& WithBucketName(const char* value) { SetBucketName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The prefix of the Amazon S3 bucket that the generated snapshots are stored
      * in.</p>
      */
-    inline const Aws::String& GetBucketPrefix() const{ return m_bucketPrefix; }
-
-    /**
-     * <p>The prefix of the Amazon S3 bucket that the generated snapshots are stored
-     * in.</p>
-     */
+    inline const Aws::String& GetBucketPrefix() const { return m_bucketPrefix; }
     inline bool BucketPrefixHasBeenSet() const { return m_bucketPrefixHasBeenSet; }
+    template<typename BucketPrefixT = Aws::String>
+    void SetBucketPrefix(BucketPrefixT&& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = std::forward<BucketPrefixT>(value); }
+    template<typename BucketPrefixT = Aws::String>
+    S3BucketConfiguration& WithBucketPrefix(BucketPrefixT&& value) { SetBucketPrefix(std::forward<BucketPrefixT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The prefix of the Amazon S3 bucket that the generated snapshots are stored
-     * in.</p>
-     */
-    inline void SetBucketPrefix(const Aws::String& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = value; }
-
-    /**
-     * <p>The prefix of the Amazon S3 bucket that the generated snapshots are stored
-     * in.</p>
-     */
-    inline void SetBucketPrefix(Aws::String&& value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix = std::move(value); }
-
-    /**
-     * <p>The prefix of the Amazon S3 bucket that the generated snapshots are stored
-     * in.</p>
-     */
-    inline void SetBucketPrefix(const char* value) { m_bucketPrefixHasBeenSet = true; m_bucketPrefix.assign(value); }
-
-    /**
-     * <p>The prefix of the Amazon S3 bucket that the generated snapshots are stored
-     * in.</p>
-     */
-    inline S3BucketConfiguration& WithBucketPrefix(const Aws::String& value) { SetBucketPrefix(value); return *this;}
-
-    /**
-     * <p>The prefix of the Amazon S3 bucket that the generated snapshots are stored
-     * in.</p>
-     */
-    inline S3BucketConfiguration& WithBucketPrefix(Aws::String&& value) { SetBucketPrefix(std::move(value)); return *this;}
-
-    /**
-     * <p>The prefix of the Amazon S3 bucket that the generated snapshots are stored
-     * in.</p>
-     */
-    inline S3BucketConfiguration& WithBucketPrefix(const char* value) { SetBucketPrefix(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The region that the Amazon S3 bucket is located in. The bucket must be
      * located in the same region that the <code>StartDashboardSnapshotJob</code> API
      * call is made.</p>
      */
-    inline const Aws::String& GetBucketRegion() const{ return m_bucketRegion; }
-
-    /**
-     * <p>The region that the Amazon S3 bucket is located in. The bucket must be
-     * located in the same region that the <code>StartDashboardSnapshotJob</code> API
-     * call is made.</p>
-     */
+    inline const Aws::String& GetBucketRegion() const { return m_bucketRegion; }
     inline bool BucketRegionHasBeenSet() const { return m_bucketRegionHasBeenSet; }
-
-    /**
-     * <p>The region that the Amazon S3 bucket is located in. The bucket must be
-     * located in the same region that the <code>StartDashboardSnapshotJob</code> API
-     * call is made.</p>
-     */
-    inline void SetBucketRegion(const Aws::String& value) { m_bucketRegionHasBeenSet = true; m_bucketRegion = value; }
-
-    /**
-     * <p>The region that the Amazon S3 bucket is located in. The bucket must be
-     * located in the same region that the <code>StartDashboardSnapshotJob</code> API
-     * call is made.</p>
-     */
-    inline void SetBucketRegion(Aws::String&& value) { m_bucketRegionHasBeenSet = true; m_bucketRegion = std::move(value); }
-
-    /**
-     * <p>The region that the Amazon S3 bucket is located in. The bucket must be
-     * located in the same region that the <code>StartDashboardSnapshotJob</code> API
-     * call is made.</p>
-     */
-    inline void SetBucketRegion(const char* value) { m_bucketRegionHasBeenSet = true; m_bucketRegion.assign(value); }
-
-    /**
-     * <p>The region that the Amazon S3 bucket is located in. The bucket must be
-     * located in the same region that the <code>StartDashboardSnapshotJob</code> API
-     * call is made.</p>
-     */
-    inline S3BucketConfiguration& WithBucketRegion(const Aws::String& value) { SetBucketRegion(value); return *this;}
-
-    /**
-     * <p>The region that the Amazon S3 bucket is located in. The bucket must be
-     * located in the same region that the <code>StartDashboardSnapshotJob</code> API
-     * call is made.</p>
-     */
-    inline S3BucketConfiguration& WithBucketRegion(Aws::String&& value) { SetBucketRegion(std::move(value)); return *this;}
-
-    /**
-     * <p>The region that the Amazon S3 bucket is located in. The bucket must be
-     * located in the same region that the <code>StartDashboardSnapshotJob</code> API
-     * call is made.</p>
-     */
-    inline S3BucketConfiguration& WithBucketRegion(const char* value) { SetBucketRegion(value); return *this;}
-
+    template<typename BucketRegionT = Aws::String>
+    void SetBucketRegion(BucketRegionT&& value) { m_bucketRegionHasBeenSet = true; m_bucketRegion = std::forward<BucketRegionT>(value); }
+    template<typename BucketRegionT = Aws::String>
+    S3BucketConfiguration& WithBucketRegion(BucketRegionT&& value) { SetBucketRegion(std::forward<BucketRegionT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_bucketName;

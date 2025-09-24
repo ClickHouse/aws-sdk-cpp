@@ -18,19 +18,7 @@ namespace CloudWatchRUM
 namespace Model
 {
 
-TimeRange::TimeRange() : 
-    m_after(0),
-    m_afterHasBeenSet(false),
-    m_before(0),
-    m_beforeHasBeenSet(false)
-{
-}
-
-TimeRange::TimeRange(JsonView jsonValue) : 
-    m_after(0),
-    m_afterHasBeenSet(false),
-    m_before(0),
-    m_beforeHasBeenSet(false)
+TimeRange::TimeRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ TimeRange& TimeRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("After"))
   {
     m_after = jsonValue.GetInt64("After");
-
     m_afterHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Before"))
   {
     m_before = jsonValue.GetInt64("Before");
-
     m_beforeHasBeenSet = true;
   }
-
   return *this;
 }
 

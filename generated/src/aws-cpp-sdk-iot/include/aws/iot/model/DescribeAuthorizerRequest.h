@@ -21,7 +21,7 @@ namespace Model
   class DescribeAuthorizerRequest : public IoTRequest
   {
   public:
-    AWS_IOT_API DescribeAuthorizerRequest();
+    AWS_IOT_API DescribeAuthorizerRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_IOT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The name of the authorizer to describe.</p>
      */
-    inline const Aws::String& GetAuthorizerName() const{ return m_authorizerName; }
-
-    /**
-     * <p>The name of the authorizer to describe.</p>
-     */
+    inline const Aws::String& GetAuthorizerName() const { return m_authorizerName; }
     inline bool AuthorizerNameHasBeenSet() const { return m_authorizerNameHasBeenSet; }
-
-    /**
-     * <p>The name of the authorizer to describe.</p>
-     */
-    inline void SetAuthorizerName(const Aws::String& value) { m_authorizerNameHasBeenSet = true; m_authorizerName = value; }
-
-    /**
-     * <p>The name of the authorizer to describe.</p>
-     */
-    inline void SetAuthorizerName(Aws::String&& value) { m_authorizerNameHasBeenSet = true; m_authorizerName = std::move(value); }
-
-    /**
-     * <p>The name of the authorizer to describe.</p>
-     */
-    inline void SetAuthorizerName(const char* value) { m_authorizerNameHasBeenSet = true; m_authorizerName.assign(value); }
-
-    /**
-     * <p>The name of the authorizer to describe.</p>
-     */
-    inline DescribeAuthorizerRequest& WithAuthorizerName(const Aws::String& value) { SetAuthorizerName(value); return *this;}
-
-    /**
-     * <p>The name of the authorizer to describe.</p>
-     */
-    inline DescribeAuthorizerRequest& WithAuthorizerName(Aws::String&& value) { SetAuthorizerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the authorizer to describe.</p>
-     */
-    inline DescribeAuthorizerRequest& WithAuthorizerName(const char* value) { SetAuthorizerName(value); return *this;}
-
+    template<typename AuthorizerNameT = Aws::String>
+    void SetAuthorizerName(AuthorizerNameT&& value) { m_authorizerNameHasBeenSet = true; m_authorizerName = std::forward<AuthorizerNameT>(value); }
+    template<typename AuthorizerNameT = Aws::String>
+    DescribeAuthorizerRequest& WithAuthorizerName(AuthorizerNameT&& value) { SetAuthorizerName(std::forward<AuthorizerNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_authorizerName;

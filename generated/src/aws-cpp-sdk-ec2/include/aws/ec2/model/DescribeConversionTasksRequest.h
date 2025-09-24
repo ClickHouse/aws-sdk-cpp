@@ -22,7 +22,7 @@ namespace Model
   class DescribeConversionTasksRequest : public EC2Request
   {
   public:
-    AWS_EC2_API DescribeConversionTasksRequest();
+    AWS_EC2_API DescribeConversionTasksRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,91 +37,39 @@ namespace Model
 
   public:
 
-    /**
-     * <p>The conversion task IDs.</p>
-     */
-    inline const Aws::Vector<Aws::String>& GetConversionTaskIds() const{ return m_conversionTaskIds; }
-
-    /**
-     * <p>The conversion task IDs.</p>
-     */
-    inline bool ConversionTaskIdsHasBeenSet() const { return m_conversionTaskIdsHasBeenSet; }
-
-    /**
-     * <p>The conversion task IDs.</p>
-     */
-    inline void SetConversionTaskIds(const Aws::Vector<Aws::String>& value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds = value; }
-
-    /**
-     * <p>The conversion task IDs.</p>
-     */
-    inline void SetConversionTaskIds(Aws::Vector<Aws::String>&& value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds = std::move(value); }
-
-    /**
-     * <p>The conversion task IDs.</p>
-     */
-    inline DescribeConversionTasksRequest& WithConversionTaskIds(const Aws::Vector<Aws::String>& value) { SetConversionTaskIds(value); return *this;}
-
-    /**
-     * <p>The conversion task IDs.</p>
-     */
-    inline DescribeConversionTasksRequest& WithConversionTaskIds(Aws::Vector<Aws::String>&& value) { SetConversionTaskIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The conversion task IDs.</p>
-     */
-    inline DescribeConversionTasksRequest& AddConversionTaskIds(const Aws::String& value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds.push_back(value); return *this; }
-
-    /**
-     * <p>The conversion task IDs.</p>
-     */
-    inline DescribeConversionTasksRequest& AddConversionTaskIds(Aws::String&& value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The conversion task IDs.</p>
-     */
-    inline DescribeConversionTasksRequest& AddConversionTaskIds(const char* value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline DescribeConversionTasksRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The conversion task IDs.</p>
+     */
+    inline const Aws::Vector<Aws::String>& GetConversionTaskIds() const { return m_conversionTaskIds; }
+    inline bool ConversionTaskIdsHasBeenSet() const { return m_conversionTaskIdsHasBeenSet; }
+    template<typename ConversionTaskIdsT = Aws::Vector<Aws::String>>
+    void SetConversionTaskIds(ConversionTaskIdsT&& value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds = std::forward<ConversionTaskIdsT>(value); }
+    template<typename ConversionTaskIdsT = Aws::Vector<Aws::String>>
+    DescribeConversionTasksRequest& WithConversionTaskIds(ConversionTaskIdsT&& value) { SetConversionTaskIds(std::forward<ConversionTaskIdsT>(value)); return *this;}
+    template<typename ConversionTaskIdsT = Aws::String>
+    DescribeConversionTasksRequest& AddConversionTaskIds(ConversionTaskIdsT&& value) { m_conversionTaskIdsHasBeenSet = true; m_conversionTaskIds.emplace_back(std::forward<ConversionTaskIdsT>(value)); return *this; }
+    ///@}
   private:
+
+    bool m_dryRun{false};
+    bool m_dryRunHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_conversionTaskIds;
     bool m_conversionTaskIdsHasBeenSet = false;
-
-    bool m_dryRun;
-    bool m_dryRunHasBeenSet = false;
   };
 
 } // namespace Model

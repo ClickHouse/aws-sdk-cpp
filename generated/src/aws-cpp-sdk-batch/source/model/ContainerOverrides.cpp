@@ -18,19 +18,7 @@ namespace Batch
 namespace Model
 {
 
-ContainerOverrides::ContainerOverrides() : 
-    m_commandHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_resourceRequirementsHasBeenSet(false)
-{
-}
-
-ContainerOverrides::ContainerOverrides(JsonView jsonValue) : 
-    m_commandHasBeenSet(false),
-    m_instanceTypeHasBeenSet(false),
-    m_environmentHasBeenSet(false),
-    m_resourceRequirementsHasBeenSet(false)
+ContainerOverrides::ContainerOverrides(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,14 +34,11 @@ ContainerOverrides& ContainerOverrides::operator =(JsonView jsonValue)
     }
     m_commandHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("instanceType"))
   {
     m_instanceType = jsonValue.GetString("instanceType");
-
     m_instanceTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("environment"))
   {
     Aws::Utils::Array<JsonView> environmentJsonList = jsonValue.GetArray("environment");
@@ -63,7 +48,6 @@ ContainerOverrides& ContainerOverrides::operator =(JsonView jsonValue)
     }
     m_environmentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("resourceRequirements"))
   {
     Aws::Utils::Array<JsonView> resourceRequirementsJsonList = jsonValue.GetArray("resourceRequirements");
@@ -73,7 +57,6 @@ ContainerOverrides& ContainerOverrides::operator =(JsonView jsonValue)
     }
     m_resourceRequirementsHasBeenSet = true;
   }
-
   return *this;
 }
 

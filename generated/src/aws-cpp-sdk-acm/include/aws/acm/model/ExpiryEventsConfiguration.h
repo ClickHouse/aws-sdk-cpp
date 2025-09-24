@@ -30,47 +30,27 @@ namespace Model
   class ExpiryEventsConfiguration
   {
   public:
-    AWS_ACM_API ExpiryEventsConfiguration();
+    AWS_ACM_API ExpiryEventsConfiguration() = default;
     AWS_ACM_API ExpiryEventsConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACM_API ExpiryEventsConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACM_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Specifies the number of days prior to certificate expiration when ACM starts
      * generating <code>EventBridge</code> events. ACM sends one event per day per
      * certificate until the certificate expires. By default, accounts receive events
      * starting 45 days before certificate expiration.</p>
      */
-    inline int GetDaysBeforeExpiry() const{ return m_daysBeforeExpiry; }
-
-    /**
-     * <p>Specifies the number of days prior to certificate expiration when ACM starts
-     * generating <code>EventBridge</code> events. ACM sends one event per day per
-     * certificate until the certificate expires. By default, accounts receive events
-     * starting 45 days before certificate expiration.</p>
-     */
+    inline int GetDaysBeforeExpiry() const { return m_daysBeforeExpiry; }
     inline bool DaysBeforeExpiryHasBeenSet() const { return m_daysBeforeExpiryHasBeenSet; }
-
-    /**
-     * <p>Specifies the number of days prior to certificate expiration when ACM starts
-     * generating <code>EventBridge</code> events. ACM sends one event per day per
-     * certificate until the certificate expires. By default, accounts receive events
-     * starting 45 days before certificate expiration.</p>
-     */
     inline void SetDaysBeforeExpiry(int value) { m_daysBeforeExpiryHasBeenSet = true; m_daysBeforeExpiry = value; }
-
-    /**
-     * <p>Specifies the number of days prior to certificate expiration when ACM starts
-     * generating <code>EventBridge</code> events. ACM sends one event per day per
-     * certificate until the certificate expires. By default, accounts receive events
-     * starting 45 days before certificate expiration.</p>
-     */
     inline ExpiryEventsConfiguration& WithDaysBeforeExpiry(int value) { SetDaysBeforeExpiry(value); return *this;}
-
+    ///@}
   private:
 
-    int m_daysBeforeExpiry;
+    int m_daysBeforeExpiry{0};
     bool m_daysBeforeExpiryHasBeenSet = false;
   };
 

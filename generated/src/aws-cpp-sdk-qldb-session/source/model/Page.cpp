@@ -18,15 +18,7 @@ namespace QLDBSession
 namespace Model
 {
 
-Page::Page() : 
-    m_valuesHasBeenSet(false),
-    m_nextPageTokenHasBeenSet(false)
-{
-}
-
-Page::Page(JsonView jsonValue) : 
-    m_valuesHasBeenSet(false),
-    m_nextPageTokenHasBeenSet(false)
+Page::Page(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ Page& Page::operator =(JsonView jsonValue)
     }
     m_valuesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("NextPageToken"))
   {
     m_nextPageToken = jsonValue.GetString("NextPageToken");
-
     m_nextPageTokenHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace Appflow
 namespace Model
 {
 
-ApiKeyCredentials::ApiKeyCredentials() : 
-    m_apiKeyHasBeenSet(false),
-    m_apiSecretKeyHasBeenSet(false)
-{
-}
-
-ApiKeyCredentials::ApiKeyCredentials(JsonView jsonValue) : 
-    m_apiKeyHasBeenSet(false),
-    m_apiSecretKeyHasBeenSet(false)
+ApiKeyCredentials::ApiKeyCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ ApiKeyCredentials& ApiKeyCredentials::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("apiKey"))
   {
     m_apiKey = jsonValue.GetString("apiKey");
-
     m_apiKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("apiSecretKey"))
   {
     m_apiSecretKey = jsonValue.GetString("apiSecretKey");
-
     m_apiSecretKeyHasBeenSet = true;
   }
-
   return *this;
 }
 

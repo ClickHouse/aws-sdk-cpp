@@ -32,7 +32,7 @@ namespace Model
   class FleetSpotCapacityRebalance
   {
   public:
-    AWS_EC2_API FleetSpotCapacityRebalance();
+    AWS_EC2_API FleetSpotCapacityRebalance() = default;
     AWS_EC2_API FleetSpotCapacityRebalance(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API FleetSpotCapacityRebalance& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,6 +40,7 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The replacement strategy to use. Only available for fleets of type
      * <code>maintain</code>.</p> <p> <code>launch</code> - EC2 Fleet launches a new
@@ -53,84 +54,13 @@ namespace Model
      * (in <code>TerminationDelay</code>), terminates the instances that received a
      * rebalance notification.</p>
      */
-    inline const FleetReplacementStrategy& GetReplacementStrategy() const{ return m_replacementStrategy; }
-
-    /**
-     * <p>The replacement strategy to use. Only available for fleets of type
-     * <code>maintain</code>.</p> <p> <code>launch</code> - EC2 Fleet launches a new
-     * replacement Spot Instance when a rebalance notification is emitted for an
-     * existing Spot Instance in the fleet. EC2 Fleet does not terminate the instances
-     * that receive a rebalance notification. You can terminate the old instances, or
-     * you can leave them running. You are charged for all instances while they are
-     * running. </p> <p> <code>launch-before-terminate</code> - EC2 Fleet launches a
-     * new replacement Spot Instance when a rebalance notification is emitted for an
-     * existing Spot Instance in the fleet, and then, after a delay that you specify
-     * (in <code>TerminationDelay</code>), terminates the instances that received a
-     * rebalance notification.</p>
-     */
+    inline FleetReplacementStrategy GetReplacementStrategy() const { return m_replacementStrategy; }
     inline bool ReplacementStrategyHasBeenSet() const { return m_replacementStrategyHasBeenSet; }
+    inline void SetReplacementStrategy(FleetReplacementStrategy value) { m_replacementStrategyHasBeenSet = true; m_replacementStrategy = value; }
+    inline FleetSpotCapacityRebalance& WithReplacementStrategy(FleetReplacementStrategy value) { SetReplacementStrategy(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The replacement strategy to use. Only available for fleets of type
-     * <code>maintain</code>.</p> <p> <code>launch</code> - EC2 Fleet launches a new
-     * replacement Spot Instance when a rebalance notification is emitted for an
-     * existing Spot Instance in the fleet. EC2 Fleet does not terminate the instances
-     * that receive a rebalance notification. You can terminate the old instances, or
-     * you can leave them running. You are charged for all instances while they are
-     * running. </p> <p> <code>launch-before-terminate</code> - EC2 Fleet launches a
-     * new replacement Spot Instance when a rebalance notification is emitted for an
-     * existing Spot Instance in the fleet, and then, after a delay that you specify
-     * (in <code>TerminationDelay</code>), terminates the instances that received a
-     * rebalance notification.</p>
-     */
-    inline void SetReplacementStrategy(const FleetReplacementStrategy& value) { m_replacementStrategyHasBeenSet = true; m_replacementStrategy = value; }
-
-    /**
-     * <p>The replacement strategy to use. Only available for fleets of type
-     * <code>maintain</code>.</p> <p> <code>launch</code> - EC2 Fleet launches a new
-     * replacement Spot Instance when a rebalance notification is emitted for an
-     * existing Spot Instance in the fleet. EC2 Fleet does not terminate the instances
-     * that receive a rebalance notification. You can terminate the old instances, or
-     * you can leave them running. You are charged for all instances while they are
-     * running. </p> <p> <code>launch-before-terminate</code> - EC2 Fleet launches a
-     * new replacement Spot Instance when a rebalance notification is emitted for an
-     * existing Spot Instance in the fleet, and then, after a delay that you specify
-     * (in <code>TerminationDelay</code>), terminates the instances that received a
-     * rebalance notification.</p>
-     */
-    inline void SetReplacementStrategy(FleetReplacementStrategy&& value) { m_replacementStrategyHasBeenSet = true; m_replacementStrategy = std::move(value); }
-
-    /**
-     * <p>The replacement strategy to use. Only available for fleets of type
-     * <code>maintain</code>.</p> <p> <code>launch</code> - EC2 Fleet launches a new
-     * replacement Spot Instance when a rebalance notification is emitted for an
-     * existing Spot Instance in the fleet. EC2 Fleet does not terminate the instances
-     * that receive a rebalance notification. You can terminate the old instances, or
-     * you can leave them running. You are charged for all instances while they are
-     * running. </p> <p> <code>launch-before-terminate</code> - EC2 Fleet launches a
-     * new replacement Spot Instance when a rebalance notification is emitted for an
-     * existing Spot Instance in the fleet, and then, after a delay that you specify
-     * (in <code>TerminationDelay</code>), terminates the instances that received a
-     * rebalance notification.</p>
-     */
-    inline FleetSpotCapacityRebalance& WithReplacementStrategy(const FleetReplacementStrategy& value) { SetReplacementStrategy(value); return *this;}
-
-    /**
-     * <p>The replacement strategy to use. Only available for fleets of type
-     * <code>maintain</code>.</p> <p> <code>launch</code> - EC2 Fleet launches a new
-     * replacement Spot Instance when a rebalance notification is emitted for an
-     * existing Spot Instance in the fleet. EC2 Fleet does not terminate the instances
-     * that receive a rebalance notification. You can terminate the old instances, or
-     * you can leave them running. You are charged for all instances while they are
-     * running. </p> <p> <code>launch-before-terminate</code> - EC2 Fleet launches a
-     * new replacement Spot Instance when a rebalance notification is emitted for an
-     * existing Spot Instance in the fleet, and then, after a delay that you specify
-     * (in <code>TerminationDelay</code>), terminates the instances that received a
-     * rebalance notification.</p>
-     */
-    inline FleetSpotCapacityRebalance& WithReplacementStrategy(FleetReplacementStrategy&& value) { SetReplacementStrategy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The amount of time (in seconds) that Amazon EC2 waits before terminating the
      * old Spot Instance after launching a new replacement Spot Instance.</p>
@@ -140,47 +70,17 @@ namespace Model
      * values: Minimum value of <code>120</code> seconds. Maximum value of
      * <code>7200</code> seconds.</p>
      */
-    inline int GetTerminationDelay() const{ return m_terminationDelay; }
-
-    /**
-     * <p>The amount of time (in seconds) that Amazon EC2 waits before terminating the
-     * old Spot Instance after launching a new replacement Spot Instance.</p>
-     * <p>Required when <code>ReplacementStrategy</code> is set to
-     * <code>launch-before-terminate</code>.</p> <p>Not valid when
-     * <code>ReplacementStrategy</code> is set to <code>launch</code>.</p> <p>Valid
-     * values: Minimum value of <code>120</code> seconds. Maximum value of
-     * <code>7200</code> seconds.</p>
-     */
+    inline int GetTerminationDelay() const { return m_terminationDelay; }
     inline bool TerminationDelayHasBeenSet() const { return m_terminationDelayHasBeenSet; }
-
-    /**
-     * <p>The amount of time (in seconds) that Amazon EC2 waits before terminating the
-     * old Spot Instance after launching a new replacement Spot Instance.</p>
-     * <p>Required when <code>ReplacementStrategy</code> is set to
-     * <code>launch-before-terminate</code>.</p> <p>Not valid when
-     * <code>ReplacementStrategy</code> is set to <code>launch</code>.</p> <p>Valid
-     * values: Minimum value of <code>120</code> seconds. Maximum value of
-     * <code>7200</code> seconds.</p>
-     */
     inline void SetTerminationDelay(int value) { m_terminationDelayHasBeenSet = true; m_terminationDelay = value; }
-
-    /**
-     * <p>The amount of time (in seconds) that Amazon EC2 waits before terminating the
-     * old Spot Instance after launching a new replacement Spot Instance.</p>
-     * <p>Required when <code>ReplacementStrategy</code> is set to
-     * <code>launch-before-terminate</code>.</p> <p>Not valid when
-     * <code>ReplacementStrategy</code> is set to <code>launch</code>.</p> <p>Valid
-     * values: Minimum value of <code>120</code> seconds. Maximum value of
-     * <code>7200</code> seconds.</p>
-     */
     inline FleetSpotCapacityRebalance& WithTerminationDelay(int value) { SetTerminationDelay(value); return *this;}
-
+    ///@}
   private:
 
-    FleetReplacementStrategy m_replacementStrategy;
+    FleetReplacementStrategy m_replacementStrategy{FleetReplacementStrategy::NOT_SET};
     bool m_replacementStrategyHasBeenSet = false;
 
-    int m_terminationDelay;
+    int m_terminationDelay{0};
     bool m_terminationDelayHasBeenSet = false;
   };
 

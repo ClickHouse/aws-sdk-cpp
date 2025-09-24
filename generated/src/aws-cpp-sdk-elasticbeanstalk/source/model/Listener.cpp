@@ -20,17 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-Listener::Listener() : 
-    m_protocolHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false)
-{
-}
-
-Listener::Listener(const XmlNode& xmlNode) : 
-    m_protocolHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false)
+Listener::Listener(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -32,52 +32,23 @@ namespace Model
   class Credentials
   {
   public:
-    AWS_EMRCONTAINERS_API Credentials();
+    AWS_EMRCONTAINERS_API Credentials() = default;
     AWS_EMRCONTAINERS_API Credentials(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRCONTAINERS_API Credentials& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_EMRCONTAINERS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The actual session token being returned.</p>
      */
-    inline const Aws::String& GetToken() const{ return m_token; }
-
-    /**
-     * <p>The actual session token being returned.</p>
-     */
+    inline const Aws::String& GetToken() const { return m_token; }
     inline bool TokenHasBeenSet() const { return m_tokenHasBeenSet; }
-
-    /**
-     * <p>The actual session token being returned.</p>
-     */
-    inline void SetToken(const Aws::String& value) { m_tokenHasBeenSet = true; m_token = value; }
-
-    /**
-     * <p>The actual session token being returned.</p>
-     */
-    inline void SetToken(Aws::String&& value) { m_tokenHasBeenSet = true; m_token = std::move(value); }
-
-    /**
-     * <p>The actual session token being returned.</p>
-     */
-    inline void SetToken(const char* value) { m_tokenHasBeenSet = true; m_token.assign(value); }
-
-    /**
-     * <p>The actual session token being returned.</p>
-     */
-    inline Credentials& WithToken(const Aws::String& value) { SetToken(value); return *this;}
-
-    /**
-     * <p>The actual session token being returned.</p>
-     */
-    inline Credentials& WithToken(Aws::String&& value) { SetToken(std::move(value)); return *this;}
-
-    /**
-     * <p>The actual session token being returned.</p>
-     */
-    inline Credentials& WithToken(const char* value) { SetToken(value); return *this;}
-
+    template<typename TokenT = Aws::String>
+    void SetToken(TokenT&& value) { m_tokenHasBeenSet = true; m_token = std::forward<TokenT>(value); }
+    template<typename TokenT = Aws::String>
+    Credentials& WithToken(TokenT&& value) { SetToken(std::forward<TokenT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_token;

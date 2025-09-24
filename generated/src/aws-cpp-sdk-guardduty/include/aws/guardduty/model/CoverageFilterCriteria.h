@@ -32,60 +32,26 @@ namespace Model
   class CoverageFilterCriteria
   {
   public:
-    AWS_GUARDDUTY_API CoverageFilterCriteria();
+    AWS_GUARDDUTY_API CoverageFilterCriteria() = default;
     AWS_GUARDDUTY_API CoverageFilterCriteria(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API CoverageFilterCriteria& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_GUARDDUTY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Represents a condition that when matched will be added to the response of the
      * operation.</p>
      */
-    inline const Aws::Vector<CoverageFilterCriterion>& GetFilterCriterion() const{ return m_filterCriterion; }
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
+    inline const Aws::Vector<CoverageFilterCriterion>& GetFilterCriterion() const { return m_filterCriterion; }
     inline bool FilterCriterionHasBeenSet() const { return m_filterCriterionHasBeenSet; }
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline void SetFilterCriterion(const Aws::Vector<CoverageFilterCriterion>& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion = value; }
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline void SetFilterCriterion(Aws::Vector<CoverageFilterCriterion>&& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion = std::move(value); }
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline CoverageFilterCriteria& WithFilterCriterion(const Aws::Vector<CoverageFilterCriterion>& value) { SetFilterCriterion(value); return *this;}
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline CoverageFilterCriteria& WithFilterCriterion(Aws::Vector<CoverageFilterCriterion>&& value) { SetFilterCriterion(std::move(value)); return *this;}
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline CoverageFilterCriteria& AddFilterCriterion(const CoverageFilterCriterion& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion.push_back(value); return *this; }
-
-    /**
-     * <p>Represents a condition that when matched will be added to the response of the
-     * operation.</p>
-     */
-    inline CoverageFilterCriteria& AddFilterCriterion(CoverageFilterCriterion&& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion.push_back(std::move(value)); return *this; }
-
+    template<typename FilterCriterionT = Aws::Vector<CoverageFilterCriterion>>
+    void SetFilterCriterion(FilterCriterionT&& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion = std::forward<FilterCriterionT>(value); }
+    template<typename FilterCriterionT = Aws::Vector<CoverageFilterCriterion>>
+    CoverageFilterCriteria& WithFilterCriterion(FilterCriterionT&& value) { SetFilterCriterion(std::forward<FilterCriterionT>(value)); return *this;}
+    template<typename FilterCriterionT = CoverageFilterCriterion>
+    CoverageFilterCriteria& AddFilterCriterion(FilterCriterionT&& value) { m_filterCriterionHasBeenSet = true; m_filterCriterion.emplace_back(std::forward<FilterCriterionT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<CoverageFilterCriterion> m_filterCriterion;

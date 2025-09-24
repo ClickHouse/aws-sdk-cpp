@@ -10,21 +10,6 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-DescribeAlarmHistoryRequest::DescribeAlarmHistoryRequest() : 
-    m_alarmNameHasBeenSet(false),
-    m_alarmTypesHasBeenSet(false),
-    m_historyItemType(HistoryItemType::NOT_SET),
-    m_historyItemTypeHasBeenSet(false),
-    m_startDateHasBeenSet(false),
-    m_endDateHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false),
-    m_scanBy(ScanBy::NOT_SET),
-    m_scanByHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAlarmHistoryRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,20 +19,32 @@ Aws::String DescribeAlarmHistoryRequest::SerializePayload() const
     ss << "AlarmName=" << StringUtils::URLEncode(m_alarmName.c_str()) << "&";
   }
 
+  if(m_alarmContributorIdHasBeenSet)
+  {
+    ss << "AlarmContributorId=" << StringUtils::URLEncode(m_alarmContributorId.c_str()) << "&";
+  }
+
   if(m_alarmTypesHasBeenSet)
   {
-    unsigned alarmTypesCount = 1;
-    for(auto& item : m_alarmTypes)
+    if (m_alarmTypes.empty())
     {
-      ss << "AlarmTypes.member." << alarmTypesCount << "="
-          << StringUtils::URLEncode(AlarmTypeMapper::GetNameForAlarmType(item).c_str()) << "&";
-      alarmTypesCount++;
+      ss << "AlarmTypes=&";
+    }
+    else
+    {
+      unsigned alarmTypesCount = 1;
+      for(auto& item : m_alarmTypes)
+      {
+        ss << "AlarmTypes.member." << alarmTypesCount << "="
+            << StringUtils::URLEncode(AlarmTypeMapper::GetNameForAlarmType(item)) << "&";
+        alarmTypesCount++;
+      }
     }
   }
 
   if(m_historyItemTypeHasBeenSet)
   {
-    ss << "HistoryItemType=" << HistoryItemTypeMapper::GetNameForHistoryItemType(m_historyItemType) << "&";
+    ss << "HistoryItemType=" << StringUtils::URLEncode(HistoryItemTypeMapper::GetNameForHistoryItemType(m_historyItemType)) << "&";
   }
 
   if(m_startDateHasBeenSet)
@@ -72,7 +69,7 @@ Aws::String DescribeAlarmHistoryRequest::SerializePayload() const
 
   if(m_scanByHasBeenSet)
   {
-    ss << "ScanBy=" << ScanByMapper::GetNameForScanBy(m_scanBy) << "&";
+    ss << "ScanBy=" << StringUtils::URLEncode(ScanByMapper::GetNameForScanBy(m_scanBy)) << "&";
   }
 
   ss << "Version=2010-08-01";

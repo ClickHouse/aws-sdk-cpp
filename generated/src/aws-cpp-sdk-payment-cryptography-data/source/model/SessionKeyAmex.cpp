@@ -18,35 +18,23 @@ namespace PaymentCryptographyData
 namespace Model
 {
 
-SessionKeyAmex::SessionKeyAmex() : 
-    m_panSequenceNumberHasBeenSet(false),
-    m_primaryAccountNumberHasBeenSet(false)
-{
-}
-
-SessionKeyAmex::SessionKeyAmex(JsonView jsonValue) : 
-    m_panSequenceNumberHasBeenSet(false),
-    m_primaryAccountNumberHasBeenSet(false)
+SessionKeyAmex::SessionKeyAmex(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 SessionKeyAmex& SessionKeyAmex::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("PanSequenceNumber"))
-  {
-    m_panSequenceNumber = jsonValue.GetString("PanSequenceNumber");
-
-    m_panSequenceNumberHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("PrimaryAccountNumber"))
   {
     m_primaryAccountNumber = jsonValue.GetString("PrimaryAccountNumber");
-
     m_primaryAccountNumberHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PanSequenceNumber"))
+  {
+    m_panSequenceNumber = jsonValue.GetString("PanSequenceNumber");
+    m_panSequenceNumberHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -54,15 +42,15 @@ JsonValue SessionKeyAmex::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_panSequenceNumberHasBeenSet)
-  {
-   payload.WithString("PanSequenceNumber", m_panSequenceNumber);
-
-  }
-
   if(m_primaryAccountNumberHasBeenSet)
   {
    payload.WithString("PrimaryAccountNumber", m_primaryAccountNumber);
+
+  }
+
+  if(m_panSequenceNumberHasBeenSet)
+  {
+   payload.WithString("PanSequenceNumber", m_panSequenceNumber);
 
   }
 

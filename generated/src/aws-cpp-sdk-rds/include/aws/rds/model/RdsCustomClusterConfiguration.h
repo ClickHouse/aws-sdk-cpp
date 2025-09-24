@@ -32,7 +32,7 @@ namespace Model
   class RdsCustomClusterConfiguration
   {
   public:
-    AWS_RDS_API RdsCustomClusterConfiguration();
+    AWS_RDS_API RdsCustomClusterConfiguration() = default;
     AWS_RDS_API RdsCustomClusterConfiguration(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_RDS_API RdsCustomClusterConfiguration& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,118 +40,39 @@ namespace Model
     AWS_RDS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Reserved for future use.</p>
      */
-    inline const Aws::String& GetInterconnectSubnetId() const{ return m_interconnectSubnetId; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
+    inline const Aws::String& GetInterconnectSubnetId() const { return m_interconnectSubnetId; }
     inline bool InterconnectSubnetIdHasBeenSet() const { return m_interconnectSubnetIdHasBeenSet; }
+    template<typename InterconnectSubnetIdT = Aws::String>
+    void SetInterconnectSubnetId(InterconnectSubnetIdT&& value) { m_interconnectSubnetIdHasBeenSet = true; m_interconnectSubnetId = std::forward<InterconnectSubnetIdT>(value); }
+    template<typename InterconnectSubnetIdT = Aws::String>
+    RdsCustomClusterConfiguration& WithInterconnectSubnetId(InterconnectSubnetIdT&& value) { SetInterconnectSubnetId(std::forward<InterconnectSubnetIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Reserved for future use.</p>
      */
-    inline void SetInterconnectSubnetId(const Aws::String& value) { m_interconnectSubnetIdHasBeenSet = true; m_interconnectSubnetId = value; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetInterconnectSubnetId(Aws::String&& value) { m_interconnectSubnetIdHasBeenSet = true; m_interconnectSubnetId = std::move(value); }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetInterconnectSubnetId(const char* value) { m_interconnectSubnetIdHasBeenSet = true; m_interconnectSubnetId.assign(value); }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline RdsCustomClusterConfiguration& WithInterconnectSubnetId(const Aws::String& value) { SetInterconnectSubnetId(value); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline RdsCustomClusterConfiguration& WithInterconnectSubnetId(Aws::String&& value) { SetInterconnectSubnetId(std::move(value)); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline RdsCustomClusterConfiguration& WithInterconnectSubnetId(const char* value) { SetInterconnectSubnetId(value); return *this;}
-
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline const Aws::String& GetTransitGatewayMulticastDomainId() const{ return m_transitGatewayMulticastDomainId; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
+    inline const Aws::String& GetTransitGatewayMulticastDomainId() const { return m_transitGatewayMulticastDomainId; }
     inline bool TransitGatewayMulticastDomainIdHasBeenSet() const { return m_transitGatewayMulticastDomainIdHasBeenSet; }
+    template<typename TransitGatewayMulticastDomainIdT = Aws::String>
+    void SetTransitGatewayMulticastDomainId(TransitGatewayMulticastDomainIdT&& value) { m_transitGatewayMulticastDomainIdHasBeenSet = true; m_transitGatewayMulticastDomainId = std::forward<TransitGatewayMulticastDomainIdT>(value); }
+    template<typename TransitGatewayMulticastDomainIdT = Aws::String>
+    RdsCustomClusterConfiguration& WithTransitGatewayMulticastDomainId(TransitGatewayMulticastDomainIdT&& value) { SetTransitGatewayMulticastDomainId(std::forward<TransitGatewayMulticastDomainIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Reserved for future use.</p>
      */
-    inline void SetTransitGatewayMulticastDomainId(const Aws::String& value) { m_transitGatewayMulticastDomainIdHasBeenSet = true; m_transitGatewayMulticastDomainId = value; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetTransitGatewayMulticastDomainId(Aws::String&& value) { m_transitGatewayMulticastDomainIdHasBeenSet = true; m_transitGatewayMulticastDomainId = std::move(value); }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetTransitGatewayMulticastDomainId(const char* value) { m_transitGatewayMulticastDomainIdHasBeenSet = true; m_transitGatewayMulticastDomainId.assign(value); }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline RdsCustomClusterConfiguration& WithTransitGatewayMulticastDomainId(const Aws::String& value) { SetTransitGatewayMulticastDomainId(value); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline RdsCustomClusterConfiguration& WithTransitGatewayMulticastDomainId(Aws::String&& value) { SetTransitGatewayMulticastDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline RdsCustomClusterConfiguration& WithTransitGatewayMulticastDomainId(const char* value) { SetTransitGatewayMulticastDomainId(value); return *this;}
-
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline const ReplicaMode& GetReplicaMode() const{ return m_replicaMode; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
+    inline ReplicaMode GetReplicaMode() const { return m_replicaMode; }
     inline bool ReplicaModeHasBeenSet() const { return m_replicaModeHasBeenSet; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetReplicaMode(const ReplicaMode& value) { m_replicaModeHasBeenSet = true; m_replicaMode = value; }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline void SetReplicaMode(ReplicaMode&& value) { m_replicaModeHasBeenSet = true; m_replicaMode = std::move(value); }
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline RdsCustomClusterConfiguration& WithReplicaMode(const ReplicaMode& value) { SetReplicaMode(value); return *this;}
-
-    /**
-     * <p>Reserved for future use.</p>
-     */
-    inline RdsCustomClusterConfiguration& WithReplicaMode(ReplicaMode&& value) { SetReplicaMode(std::move(value)); return *this;}
-
+    inline void SetReplicaMode(ReplicaMode value) { m_replicaModeHasBeenSet = true; m_replicaMode = value; }
+    inline RdsCustomClusterConfiguration& WithReplicaMode(ReplicaMode value) { SetReplicaMode(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_interconnectSubnetId;
@@ -160,7 +81,7 @@ namespace Model
     Aws::String m_transitGatewayMulticastDomainId;
     bool m_transitGatewayMulticastDomainIdHasBeenSet = false;
 
-    ReplicaMode m_replicaMode;
+    ReplicaMode m_replicaMode{ReplicaMode::NOT_SET};
     bool m_replicaModeHasBeenSet = false;
   };
 

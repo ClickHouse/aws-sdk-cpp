@@ -20,17 +20,7 @@ namespace CloudFront
 namespace Model
 {
 
-OriginRequestPolicy::OriginRequestPolicy() : 
-    m_idHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_originRequestPolicyConfigHasBeenSet(false)
-{
-}
-
-OriginRequestPolicy::OriginRequestPolicy(const XmlNode& xmlNode) : 
-    m_idHasBeenSet(false),
-    m_lastModifiedTimeHasBeenSet(false),
-    m_originRequestPolicyConfigHasBeenSet(false)
+OriginRequestPolicy::OriginRequestPolicy(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

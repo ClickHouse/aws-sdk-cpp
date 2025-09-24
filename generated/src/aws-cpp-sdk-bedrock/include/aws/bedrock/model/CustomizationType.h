@@ -17,7 +17,9 @@ namespace Model
   {
     NOT_SET,
     FINE_TUNING,
-    CONTINUED_PRE_TRAINING
+    CONTINUED_PRE_TRAINING,
+    DISTILLATION,
+    IMPORTED
   };
 
 namespace CustomizationTypeMapper

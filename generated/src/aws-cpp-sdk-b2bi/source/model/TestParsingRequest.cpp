@@ -12,14 +12,6 @@ using namespace Aws::B2BI::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-TestParsingRequest::TestParsingRequest() : 
-    m_inputFileHasBeenSet(false),
-    m_fileFormat(FileFormat::NOT_SET),
-    m_fileFormatHasBeenSet(false),
-    m_ediTypeHasBeenSet(false)
-{
-}
-
 Aws::String TestParsingRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,6 +30,12 @@ Aws::String TestParsingRequest::SerializePayload() const
   if(m_ediTypeHasBeenSet)
   {
    payload.WithObject("ediType", m_ediType.Jsonize());
+
+  }
+
+  if(m_advancedOptionsHasBeenSet)
+  {
+   payload.WithObject("advancedOptions", m_advancedOptions.Jsonize());
 
   }
 

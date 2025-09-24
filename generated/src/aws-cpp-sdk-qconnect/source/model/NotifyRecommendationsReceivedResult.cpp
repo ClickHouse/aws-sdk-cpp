@@ -17,10 +17,6 @@ using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 using namespace Aws;
 
-NotifyRecommendationsReceivedResult::NotifyRecommendationsReceivedResult()
-{
-}
-
 NotifyRecommendationsReceivedResult::NotifyRecommendationsReceivedResult(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   *this = result;
@@ -29,15 +25,6 @@ NotifyRecommendationsReceivedResult::NotifyRecommendationsReceivedResult(const A
 NotifyRecommendationsReceivedResult& NotifyRecommendationsReceivedResult::operator =(const Aws::AmazonWebServiceResult<JsonValue>& result)
 {
   JsonView jsonValue = result.GetPayload().View();
-  if(jsonValue.ValueExists("errors"))
-  {
-    Aws::Utils::Array<JsonView> errorsJsonList = jsonValue.GetArray("errors");
-    for(unsigned errorsIndex = 0; errorsIndex < errorsJsonList.GetLength(); ++errorsIndex)
-    {
-      m_errors.push_back(errorsJsonList[errorsIndex].AsObject());
-    }
-  }
-
   if(jsonValue.ValueExists("recommendationIds"))
   {
     Aws::Utils::Array<JsonView> recommendationIdsJsonList = jsonValue.GetArray("recommendationIds");
@@ -45,14 +32,24 @@ NotifyRecommendationsReceivedResult& NotifyRecommendationsReceivedResult::operat
     {
       m_recommendationIds.push_back(recommendationIdsJsonList[recommendationIdsIndex].AsString());
     }
+    m_recommendationIdsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("errors"))
+  {
+    Aws::Utils::Array<JsonView> errorsJsonList = jsonValue.GetArray("errors");
+    for(unsigned errorsIndex = 0; errorsIndex < errorsJsonList.GetLength(); ++errorsIndex)
+    {
+      m_errors.push_back(errorsJsonList[errorsIndex].AsObject());
+    }
+    m_errorsHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");
   if(requestIdIter != headers.end())
   {
     m_requestId = requestIdIter->second;
+    m_requestIdHasBeenSet = true;
   }
 
 

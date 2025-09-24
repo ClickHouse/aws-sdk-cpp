@@ -33,86 +33,36 @@ namespace Model
   class ComponentState
   {
   public:
-    AWS_IMAGEBUILDER_API ComponentState();
+    AWS_IMAGEBUILDER_API ComponentState() = default;
     AWS_IMAGEBUILDER_API ComponentState(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API ComponentState& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IMAGEBUILDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The current state of the component.</p>
      */
-    inline const ComponentStatus& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The current state of the component.</p>
-     */
+    inline ComponentStatus GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    inline void SetStatus(ComponentStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline ComponentState& WithStatus(ComponentStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The current state of the component.</p>
-     */
-    inline void SetStatus(const ComponentStatus& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The current state of the component.</p>
-     */
-    inline void SetStatus(ComponentStatus&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The current state of the component.</p>
-     */
-    inline ComponentState& WithStatus(const ComponentStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The current state of the component.</p>
-     */
-    inline ComponentState& WithStatus(ComponentStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Describes how or why the component changed state.</p>
      */
-    inline const Aws::String& GetReason() const{ return m_reason; }
-
-    /**
-     * <p>Describes how or why the component changed state.</p>
-     */
+    inline const Aws::String& GetReason() const { return m_reason; }
     inline bool ReasonHasBeenSet() const { return m_reasonHasBeenSet; }
-
-    /**
-     * <p>Describes how or why the component changed state.</p>
-     */
-    inline void SetReason(const Aws::String& value) { m_reasonHasBeenSet = true; m_reason = value; }
-
-    /**
-     * <p>Describes how or why the component changed state.</p>
-     */
-    inline void SetReason(Aws::String&& value) { m_reasonHasBeenSet = true; m_reason = std::move(value); }
-
-    /**
-     * <p>Describes how or why the component changed state.</p>
-     */
-    inline void SetReason(const char* value) { m_reasonHasBeenSet = true; m_reason.assign(value); }
-
-    /**
-     * <p>Describes how or why the component changed state.</p>
-     */
-    inline ComponentState& WithReason(const Aws::String& value) { SetReason(value); return *this;}
-
-    /**
-     * <p>Describes how or why the component changed state.</p>
-     */
-    inline ComponentState& WithReason(Aws::String&& value) { SetReason(std::move(value)); return *this;}
-
-    /**
-     * <p>Describes how or why the component changed state.</p>
-     */
-    inline ComponentState& WithReason(const char* value) { SetReason(value); return *this;}
-
+    template<typename ReasonT = Aws::String>
+    void SetReason(ReasonT&& value) { m_reasonHasBeenSet = true; m_reason = std::forward<ReasonT>(value); }
+    template<typename ReasonT = Aws::String>
+    ComponentState& WithReason(ReasonT&& value) { SetReason(std::forward<ReasonT>(value)); return *this;}
+    ///@}
   private:
 
-    ComponentStatus m_status;
+    ComponentStatus m_status{ComponentStatus::NOT_SET};
     bool m_statusHasBeenSet = false;
 
     Aws::String m_reason;

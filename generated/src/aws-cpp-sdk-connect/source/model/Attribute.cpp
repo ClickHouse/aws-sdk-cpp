@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-Attribute::Attribute() : 
-    m_attributeType(InstanceAttributeType::NOT_SET),
-    m_attributeTypeHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-Attribute::Attribute(JsonView jsonValue) : 
-    m_attributeType(InstanceAttributeType::NOT_SET),
-    m_attributeTypeHasBeenSet(false),
-    m_valueHasBeenSet(false)
+Attribute::Attribute(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ Attribute& Attribute::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AttributeType"))
   {
     m_attributeType = InstanceAttributeTypeMapper::GetInstanceAttributeTypeForName(jsonValue.GetString("AttributeType"));
-
     m_attributeTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   return *this;
 }
 

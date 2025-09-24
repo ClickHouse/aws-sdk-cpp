@@ -18,15 +18,7 @@ namespace MachineLearning
 namespace Model
 {
 
-RedshiftDatabaseCredentials::RedshiftDatabaseCredentials() : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
-{
-}
-
-RedshiftDatabaseCredentials::RedshiftDatabaseCredentials(JsonView jsonValue) : 
-    m_usernameHasBeenSet(false),
-    m_passwordHasBeenSet(false)
+RedshiftDatabaseCredentials::RedshiftDatabaseCredentials(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RedshiftDatabaseCredentials& RedshiftDatabaseCredentials::operator =(JsonView js
   if(jsonValue.ValueExists("Username"))
   {
     m_username = jsonValue.GetString("Username");
-
     m_usernameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Password"))
   {
     m_password = jsonValue.GetString("Password");
-
     m_passwordHasBeenSet = true;
   }
-
   return *this;
 }
 

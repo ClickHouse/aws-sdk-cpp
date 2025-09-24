@@ -10,6 +10,7 @@
 #include <aws/ec2/model/InstanceSpecification.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/ec2/model/CopyTagsFromSource.h>
+#include <aws/ec2/model/SnapshotLocationEnum.h>
 #include <aws/ec2/model/TagSpecification.h>
 #include <utility>
 
@@ -25,7 +26,7 @@ namespace Model
   class CreateSnapshotsRequest : public EC2Request
   {
   public:
-    AWS_EC2_API CreateSnapshotsRequest();
+    AWS_EC2_API CreateSnapshotsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,317 +41,102 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p> A description propagated to every snapshot specified by the instance.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p> A description propagated to every snapshot specified by the instance.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    CreateSnapshotsRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> A description propagated to every snapshot specified by the instance.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p> A description propagated to every snapshot specified by the instance.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p> A description propagated to every snapshot specified by the instance.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p> A description propagated to every snapshot specified by the instance.</p>
-     */
-    inline CreateSnapshotsRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p> A description propagated to every snapshot specified by the instance.</p>
-     */
-    inline CreateSnapshotsRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p> A description propagated to every snapshot specified by the instance.</p>
-     */
-    inline CreateSnapshotsRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The instance to specify which volumes should be included in the
      * snapshots.</p>
      */
-    inline const InstanceSpecification& GetInstanceSpecification() const{ return m_instanceSpecification; }
-
-    /**
-     * <p>The instance to specify which volumes should be included in the
-     * snapshots.</p>
-     */
+    inline const InstanceSpecification& GetInstanceSpecification() const { return m_instanceSpecification; }
     inline bool InstanceSpecificationHasBeenSet() const { return m_instanceSpecificationHasBeenSet; }
+    template<typename InstanceSpecificationT = InstanceSpecification>
+    void SetInstanceSpecification(InstanceSpecificationT&& value) { m_instanceSpecificationHasBeenSet = true; m_instanceSpecification = std::forward<InstanceSpecificationT>(value); }
+    template<typename InstanceSpecificationT = InstanceSpecification>
+    CreateSnapshotsRequest& WithInstanceSpecification(InstanceSpecificationT&& value) { SetInstanceSpecification(std::forward<InstanceSpecificationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The instance to specify which volumes should be included in the
-     * snapshots.</p>
+     *  <p>Only supported for instances on Outposts. If the source instance is
+     * not on an Outpost, omit this parameter.</p>  <ul> <li> <p>To create the
+     * snapshots on the same Outpost as the source instance, specify the ARN of that
+     * Outpost. The snapshots must be created on the same Outpost as the instance.</p>
+     * </li> <li> <p>To create the snapshots in the parent Region of the Outpost, omit
+     * this parameter.</p> </li> </ul> <p>For more information, see <a
+     * href="https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#create-snapshot">
+     * Create local snapshots from volumes on an Outpost</a> in the <i>Amazon EBS User
+     * Guide</i>.</p>
      */
-    inline void SetInstanceSpecification(const InstanceSpecification& value) { m_instanceSpecificationHasBeenSet = true; m_instanceSpecification = value; }
-
-    /**
-     * <p>The instance to specify which volumes should be included in the
-     * snapshots.</p>
-     */
-    inline void SetInstanceSpecification(InstanceSpecification&& value) { m_instanceSpecificationHasBeenSet = true; m_instanceSpecification = std::move(value); }
-
-    /**
-     * <p>The instance to specify which volumes should be included in the
-     * snapshots.</p>
-     */
-    inline CreateSnapshotsRequest& WithInstanceSpecification(const InstanceSpecification& value) { SetInstanceSpecification(value); return *this;}
-
-    /**
-     * <p>The instance to specify which volumes should be included in the
-     * snapshots.</p>
-     */
-    inline CreateSnapshotsRequest& WithInstanceSpecification(InstanceSpecification&& value) { SetInstanceSpecification(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which to create the local
-     * snapshots.</p> <ul> <li> <p>To create snapshots from an instance in a Region,
-     * omit this parameter. The snapshots are created in the same Region as the
-     * instance.</p> </li> <li> <p>To create snapshots from an instance on an Outpost
-     * and store the snapshots in the Region, omit this parameter. The snapshots are
-     * created in the Region for the Outpost.</p> </li> <li> <p>To create snapshots
-     * from an instance on an Outpost and store the snapshots on an Outpost, specify
-     * the ARN of the destination Outpost. The snapshots must be created on the same
-     * Outpost as the instance.</p> </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-multivol-snapshot">
-     * Create multi-volume local snapshots from instances on an Outpost</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline const Aws::String& GetOutpostArn() const{ return m_outpostArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which to create the local
-     * snapshots.</p> <ul> <li> <p>To create snapshots from an instance in a Region,
-     * omit this parameter. The snapshots are created in the same Region as the
-     * instance.</p> </li> <li> <p>To create snapshots from an instance on an Outpost
-     * and store the snapshots in the Region, omit this parameter. The snapshots are
-     * created in the Region for the Outpost.</p> </li> <li> <p>To create snapshots
-     * from an instance on an Outpost and store the snapshots on an Outpost, specify
-     * the ARN of the destination Outpost. The snapshots must be created on the same
-     * Outpost as the instance.</p> </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-multivol-snapshot">
-     * Create multi-volume local snapshots from instances on an Outpost</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
+    inline const Aws::String& GetOutpostArn() const { return m_outpostArn; }
     inline bool OutpostArnHasBeenSet() const { return m_outpostArnHasBeenSet; }
+    template<typename OutpostArnT = Aws::String>
+    void SetOutpostArn(OutpostArnT&& value) { m_outpostArnHasBeenSet = true; m_outpostArn = std::forward<OutpostArnT>(value); }
+    template<typename OutpostArnT = Aws::String>
+    CreateSnapshotsRequest& WithOutpostArn(OutpostArnT&& value) { SetOutpostArn(std::forward<OutpostArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which to create the local
-     * snapshots.</p> <ul> <li> <p>To create snapshots from an instance in a Region,
-     * omit this parameter. The snapshots are created in the same Region as the
-     * instance.</p> </li> <li> <p>To create snapshots from an instance on an Outpost
-     * and store the snapshots in the Region, omit this parameter. The snapshots are
-     * created in the Region for the Outpost.</p> </li> <li> <p>To create snapshots
-     * from an instance on an Outpost and store the snapshots on an Outpost, specify
-     * the ARN of the destination Outpost. The snapshots must be created on the same
-     * Outpost as the instance.</p> </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-multivol-snapshot">
-     * Create multi-volume local snapshots from instances on an Outpost</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline void SetOutpostArn(const Aws::String& value) { m_outpostArnHasBeenSet = true; m_outpostArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which to create the local
-     * snapshots.</p> <ul> <li> <p>To create snapshots from an instance in a Region,
-     * omit this parameter. The snapshots are created in the same Region as the
-     * instance.</p> </li> <li> <p>To create snapshots from an instance on an Outpost
-     * and store the snapshots in the Region, omit this parameter. The snapshots are
-     * created in the Region for the Outpost.</p> </li> <li> <p>To create snapshots
-     * from an instance on an Outpost and store the snapshots on an Outpost, specify
-     * the ARN of the destination Outpost. The snapshots must be created on the same
-     * Outpost as the instance.</p> </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-multivol-snapshot">
-     * Create multi-volume local snapshots from instances on an Outpost</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline void SetOutpostArn(Aws::String&& value) { m_outpostArnHasBeenSet = true; m_outpostArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which to create the local
-     * snapshots.</p> <ul> <li> <p>To create snapshots from an instance in a Region,
-     * omit this parameter. The snapshots are created in the same Region as the
-     * instance.</p> </li> <li> <p>To create snapshots from an instance on an Outpost
-     * and store the snapshots in the Region, omit this parameter. The snapshots are
-     * created in the Region for the Outpost.</p> </li> <li> <p>To create snapshots
-     * from an instance on an Outpost and store the snapshots on an Outpost, specify
-     * the ARN of the destination Outpost. The snapshots must be created on the same
-     * Outpost as the instance.</p> </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-multivol-snapshot">
-     * Create multi-volume local snapshots from instances on an Outpost</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline void SetOutpostArn(const char* value) { m_outpostArnHasBeenSet = true; m_outpostArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which to create the local
-     * snapshots.</p> <ul> <li> <p>To create snapshots from an instance in a Region,
-     * omit this parameter. The snapshots are created in the same Region as the
-     * instance.</p> </li> <li> <p>To create snapshots from an instance on an Outpost
-     * and store the snapshots in the Region, omit this parameter. The snapshots are
-     * created in the Region for the Outpost.</p> </li> <li> <p>To create snapshots
-     * from an instance on an Outpost and store the snapshots on an Outpost, specify
-     * the ARN of the destination Outpost. The snapshots must be created on the same
-     * Outpost as the instance.</p> </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-multivol-snapshot">
-     * Create multi-volume local snapshots from instances on an Outpost</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline CreateSnapshotsRequest& WithOutpostArn(const Aws::String& value) { SetOutpostArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which to create the local
-     * snapshots.</p> <ul> <li> <p>To create snapshots from an instance in a Region,
-     * omit this parameter. The snapshots are created in the same Region as the
-     * instance.</p> </li> <li> <p>To create snapshots from an instance on an Outpost
-     * and store the snapshots in the Region, omit this parameter. The snapshots are
-     * created in the Region for the Outpost.</p> </li> <li> <p>To create snapshots
-     * from an instance on an Outpost and store the snapshots on an Outpost, specify
-     * the ARN of the destination Outpost. The snapshots must be created on the same
-     * Outpost as the instance.</p> </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-multivol-snapshot">
-     * Create multi-volume local snapshots from instances on an Outpost</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline CreateSnapshotsRequest& WithOutpostArn(Aws::String&& value) { SetOutpostArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the Outpost on which to create the local
-     * snapshots.</p> <ul> <li> <p>To create snapshots from an instance in a Region,
-     * omit this parameter. The snapshots are created in the same Region as the
-     * instance.</p> </li> <li> <p>To create snapshots from an instance on an Outpost
-     * and store the snapshots in the Region, omit this parameter. The snapshots are
-     * created in the Region for the Outpost.</p> </li> <li> <p>To create snapshots
-     * from an instance on an Outpost and store the snapshots on an Outpost, specify
-     * the ARN of the destination Outpost. The snapshots must be created on the same
-     * Outpost as the instance.</p> </li> </ul> <p>For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-multivol-snapshot">
-     * Create multi-volume local snapshots from instances on an Outpost</a> in the
-     * <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
-     */
-    inline CreateSnapshotsRequest& WithOutpostArn(const char* value) { SetOutpostArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Tags to apply to every snapshot specified by the instance.</p>
      */
-    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const{ return m_tagSpecifications; }
-
-    /**
-     * <p>Tags to apply to every snapshot specified by the instance.</p>
-     */
+    inline const Aws::Vector<TagSpecification>& GetTagSpecifications() const { return m_tagSpecifications; }
     inline bool TagSpecificationsHasBeenSet() const { return m_tagSpecificationsHasBeenSet; }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    void SetTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::forward<TagSpecificationsT>(value); }
+    template<typename TagSpecificationsT = Aws::Vector<TagSpecification>>
+    CreateSnapshotsRequest& WithTagSpecifications(TagSpecificationsT&& value) { SetTagSpecifications(std::forward<TagSpecificationsT>(value)); return *this;}
+    template<typename TagSpecificationsT = TagSpecification>
+    CreateSnapshotsRequest& AddTagSpecifications(TagSpecificationsT&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.emplace_back(std::forward<TagSpecificationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Tags to apply to every snapshot specified by the instance.</p>
-     */
-    inline void SetTagSpecifications(const Aws::Vector<TagSpecification>& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = value; }
-
-    /**
-     * <p>Tags to apply to every snapshot specified by the instance.</p>
-     */
-    inline void SetTagSpecifications(Aws::Vector<TagSpecification>&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications = std::move(value); }
-
-    /**
-     * <p>Tags to apply to every snapshot specified by the instance.</p>
-     */
-    inline CreateSnapshotsRequest& WithTagSpecifications(const Aws::Vector<TagSpecification>& value) { SetTagSpecifications(value); return *this;}
-
-    /**
-     * <p>Tags to apply to every snapshot specified by the instance.</p>
-     */
-    inline CreateSnapshotsRequest& WithTagSpecifications(Aws::Vector<TagSpecification>&& value) { SetTagSpecifications(std::move(value)); return *this;}
-
-    /**
-     * <p>Tags to apply to every snapshot specified by the instance.</p>
-     */
-    inline CreateSnapshotsRequest& AddTagSpecifications(const TagSpecification& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(value); return *this; }
-
-    /**
-     * <p>Tags to apply to every snapshot specified by the instance.</p>
-     */
-    inline CreateSnapshotsRequest& AddTagSpecifications(TagSpecification&& value) { m_tagSpecificationsHasBeenSet = true; m_tagSpecifications.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Checks whether you have the required permissions for the action, without
      * actually making the request, and provides an error response. If you have the
      * required permissions, the error response is <code>DryRunOperation</code>.
      * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
      */
-    inline bool GetDryRun() const{ return m_dryRun; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
+    inline bool GetDryRun() const { return m_dryRun; }
     inline bool DryRunHasBeenSet() const { return m_dryRunHasBeenSet; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline void SetDryRun(bool value) { m_dryRunHasBeenSet = true; m_dryRun = value; }
-
-    /**
-     * <p>Checks whether you have the required permissions for the action, without
-     * actually making the request, and provides an error response. If you have the
-     * required permissions, the error response is <code>DryRunOperation</code>.
-     * Otherwise, it is <code>UnauthorizedOperation</code>.</p>
-     */
     inline CreateSnapshotsRequest& WithDryRun(bool value) { SetDryRun(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Copies the tags from the specified volume to corresponding snapshot.</p>
      */
-    inline const CopyTagsFromSource& GetCopyTagsFromSource() const{ return m_copyTagsFromSource; }
-
-    /**
-     * <p>Copies the tags from the specified volume to corresponding snapshot.</p>
-     */
+    inline CopyTagsFromSource GetCopyTagsFromSource() const { return m_copyTagsFromSource; }
     inline bool CopyTagsFromSourceHasBeenSet() const { return m_copyTagsFromSourceHasBeenSet; }
+    inline void SetCopyTagsFromSource(CopyTagsFromSource value) { m_copyTagsFromSourceHasBeenSet = true; m_copyTagsFromSource = value; }
+    inline CreateSnapshotsRequest& WithCopyTagsFromSource(CopyTagsFromSource value) { SetCopyTagsFromSource(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>Copies the tags from the specified volume to corresponding snapshot.</p>
+     *  <p>Only supported for instances in Local Zones. If the source instance is
+     * not in a Local Zone, omit this parameter.</p>  <ul> <li> <p>To create
+     * local snapshots in the same Local Zone as the source instance, specify
+     * <code>local</code>.</p> </li> <li> <p>To create regional snapshots in the parent
+     * Region of the Local Zone, specify <code>regional</code> or omit this
+     * parameter.</p> </li> </ul> <p>Default value: <code>regional</code> </p>
      */
-    inline void SetCopyTagsFromSource(const CopyTagsFromSource& value) { m_copyTagsFromSourceHasBeenSet = true; m_copyTagsFromSource = value; }
-
-    /**
-     * <p>Copies the tags from the specified volume to corresponding snapshot.</p>
-     */
-    inline void SetCopyTagsFromSource(CopyTagsFromSource&& value) { m_copyTagsFromSourceHasBeenSet = true; m_copyTagsFromSource = std::move(value); }
-
-    /**
-     * <p>Copies the tags from the specified volume to corresponding snapshot.</p>
-     */
-    inline CreateSnapshotsRequest& WithCopyTagsFromSource(const CopyTagsFromSource& value) { SetCopyTagsFromSource(value); return *this;}
-
-    /**
-     * <p>Copies the tags from the specified volume to corresponding snapshot.</p>
-     */
-    inline CreateSnapshotsRequest& WithCopyTagsFromSource(CopyTagsFromSource&& value) { SetCopyTagsFromSource(std::move(value)); return *this;}
-
+    inline SnapshotLocationEnum GetLocation() const { return m_location; }
+    inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
+    inline void SetLocation(SnapshotLocationEnum value) { m_locationHasBeenSet = true; m_location = value; }
+    inline CreateSnapshotsRequest& WithLocation(SnapshotLocationEnum value) { SetLocation(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_description;
@@ -365,11 +151,14 @@ namespace Model
     Aws::Vector<TagSpecification> m_tagSpecifications;
     bool m_tagSpecificationsHasBeenSet = false;
 
-    bool m_dryRun;
+    bool m_dryRun{false};
     bool m_dryRunHasBeenSet = false;
 
-    CopyTagsFromSource m_copyTagsFromSource;
+    CopyTagsFromSource m_copyTagsFromSource{CopyTagsFromSource::NOT_SET};
     bool m_copyTagsFromSourceHasBeenSet = false;
+
+    SnapshotLocationEnum m_location{SnapshotLocationEnum::NOT_SET};
+    bool m_locationHasBeenSet = false;
   };
 
 } // namespace Model

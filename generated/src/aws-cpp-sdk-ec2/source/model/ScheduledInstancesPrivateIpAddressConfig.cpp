@@ -20,17 +20,7 @@ namespace EC2
 namespace Model
 {
 
-ScheduledInstancesPrivateIpAddressConfig::ScheduledInstancesPrivateIpAddressConfig() : 
-    m_primary(false),
-    m_primaryHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false)
-{
-}
-
-ScheduledInstancesPrivateIpAddressConfig::ScheduledInstancesPrivateIpAddressConfig(const XmlNode& xmlNode) : 
-    m_primary(false),
-    m_primaryHasBeenSet(false),
-    m_privateIpAddressHasBeenSet(false)
+ScheduledInstancesPrivateIpAddressConfig::ScheduledInstancesPrivateIpAddressConfig(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

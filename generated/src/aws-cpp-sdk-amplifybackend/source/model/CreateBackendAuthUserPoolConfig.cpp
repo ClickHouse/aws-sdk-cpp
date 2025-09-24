@@ -18,29 +18,7 @@ namespace AmplifyBackend
 namespace Model
 {
 
-CreateBackendAuthUserPoolConfig::CreateBackendAuthUserPoolConfig() : 
-    m_forgotPasswordHasBeenSet(false),
-    m_mfaHasBeenSet(false),
-    m_oAuthHasBeenSet(false),
-    m_passwordPolicyHasBeenSet(false),
-    m_requiredSignUpAttributesHasBeenSet(false),
-    m_signInMethod(SignInMethod::NOT_SET),
-    m_signInMethodHasBeenSet(false),
-    m_userPoolNameHasBeenSet(false),
-    m_verificationMessageHasBeenSet(false)
-{
-}
-
-CreateBackendAuthUserPoolConfig::CreateBackendAuthUserPoolConfig(JsonView jsonValue) : 
-    m_forgotPasswordHasBeenSet(false),
-    m_mfaHasBeenSet(false),
-    m_oAuthHasBeenSet(false),
-    m_passwordPolicyHasBeenSet(false),
-    m_requiredSignUpAttributesHasBeenSet(false),
-    m_signInMethod(SignInMethod::NOT_SET),
-    m_signInMethodHasBeenSet(false),
-    m_userPoolNameHasBeenSet(false),
-    m_verificationMessageHasBeenSet(false)
+CreateBackendAuthUserPoolConfig::CreateBackendAuthUserPoolConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -50,31 +28,23 @@ CreateBackendAuthUserPoolConfig& CreateBackendAuthUserPoolConfig::operator =(Jso
   if(jsonValue.ValueExists("forgotPassword"))
   {
     m_forgotPassword = jsonValue.GetObject("forgotPassword");
-
     m_forgotPasswordHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("mfa"))
   {
     m_mfa = jsonValue.GetObject("mfa");
-
     m_mfaHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("oAuth"))
   {
     m_oAuth = jsonValue.GetObject("oAuth");
-
     m_oAuthHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("passwordPolicy"))
   {
     m_passwordPolicy = jsonValue.GetObject("passwordPolicy");
-
     m_passwordPolicyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("requiredSignUpAttributes"))
   {
     Aws::Utils::Array<JsonView> requiredSignUpAttributesJsonList = jsonValue.GetArray("requiredSignUpAttributes");
@@ -84,28 +54,21 @@ CreateBackendAuthUserPoolConfig& CreateBackendAuthUserPoolConfig::operator =(Jso
     }
     m_requiredSignUpAttributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("signInMethod"))
   {
     m_signInMethod = SignInMethodMapper::GetSignInMethodForName(jsonValue.GetString("signInMethod"));
-
     m_signInMethodHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("userPoolName"))
   {
     m_userPoolName = jsonValue.GetString("userPoolName");
-
     m_userPoolNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("verificationMessage"))
   {
     m_verificationMessage = jsonValue.GetObject("verificationMessage");
-
     m_verificationMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

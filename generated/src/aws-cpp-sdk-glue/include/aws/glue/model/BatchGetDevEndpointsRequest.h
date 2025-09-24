@@ -22,7 +22,7 @@ namespace Model
   class BatchGetDevEndpointsRequest : public GlueRequest
   {
   public:
-    AWS_GLUE_API BatchGetDevEndpointsRequest();
+    AWS_GLUE_API BatchGetDevEndpointsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,60 +35,20 @@ namespace Model
     AWS_GLUE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The list of <code>DevEndpoint</code> names, which might be the names returned
      * from the <code>ListDevEndpoint</code> operation.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetDevEndpointNames() const{ return m_devEndpointNames; }
-
-    /**
-     * <p>The list of <code>DevEndpoint</code> names, which might be the names returned
-     * from the <code>ListDevEndpoint</code> operation.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetDevEndpointNames() const { return m_devEndpointNames; }
     inline bool DevEndpointNamesHasBeenSet() const { return m_devEndpointNamesHasBeenSet; }
-
-    /**
-     * <p>The list of <code>DevEndpoint</code> names, which might be the names returned
-     * from the <code>ListDevEndpoint</code> operation.</p>
-     */
-    inline void SetDevEndpointNames(const Aws::Vector<Aws::String>& value) { m_devEndpointNamesHasBeenSet = true; m_devEndpointNames = value; }
-
-    /**
-     * <p>The list of <code>DevEndpoint</code> names, which might be the names returned
-     * from the <code>ListDevEndpoint</code> operation.</p>
-     */
-    inline void SetDevEndpointNames(Aws::Vector<Aws::String>&& value) { m_devEndpointNamesHasBeenSet = true; m_devEndpointNames = std::move(value); }
-
-    /**
-     * <p>The list of <code>DevEndpoint</code> names, which might be the names returned
-     * from the <code>ListDevEndpoint</code> operation.</p>
-     */
-    inline BatchGetDevEndpointsRequest& WithDevEndpointNames(const Aws::Vector<Aws::String>& value) { SetDevEndpointNames(value); return *this;}
-
-    /**
-     * <p>The list of <code>DevEndpoint</code> names, which might be the names returned
-     * from the <code>ListDevEndpoint</code> operation.</p>
-     */
-    inline BatchGetDevEndpointsRequest& WithDevEndpointNames(Aws::Vector<Aws::String>&& value) { SetDevEndpointNames(std::move(value)); return *this;}
-
-    /**
-     * <p>The list of <code>DevEndpoint</code> names, which might be the names returned
-     * from the <code>ListDevEndpoint</code> operation.</p>
-     */
-    inline BatchGetDevEndpointsRequest& AddDevEndpointNames(const Aws::String& value) { m_devEndpointNamesHasBeenSet = true; m_devEndpointNames.push_back(value); return *this; }
-
-    /**
-     * <p>The list of <code>DevEndpoint</code> names, which might be the names returned
-     * from the <code>ListDevEndpoint</code> operation.</p>
-     */
-    inline BatchGetDevEndpointsRequest& AddDevEndpointNames(Aws::String&& value) { m_devEndpointNamesHasBeenSet = true; m_devEndpointNames.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The list of <code>DevEndpoint</code> names, which might be the names returned
-     * from the <code>ListDevEndpoint</code> operation.</p>
-     */
-    inline BatchGetDevEndpointsRequest& AddDevEndpointNames(const char* value) { m_devEndpointNamesHasBeenSet = true; m_devEndpointNames.push_back(value); return *this; }
-
+    template<typename DevEndpointNamesT = Aws::Vector<Aws::String>>
+    void SetDevEndpointNames(DevEndpointNamesT&& value) { m_devEndpointNamesHasBeenSet = true; m_devEndpointNames = std::forward<DevEndpointNamesT>(value); }
+    template<typename DevEndpointNamesT = Aws::Vector<Aws::String>>
+    BatchGetDevEndpointsRequest& WithDevEndpointNames(DevEndpointNamesT&& value) { SetDevEndpointNames(std::forward<DevEndpointNamesT>(value)); return *this;}
+    template<typename DevEndpointNamesT = Aws::String>
+    BatchGetDevEndpointsRequest& AddDevEndpointNames(DevEndpointNamesT&& value) { m_devEndpointNamesHasBeenSet = true; m_devEndpointNames.emplace_back(std::forward<DevEndpointNamesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_devEndpointNames;

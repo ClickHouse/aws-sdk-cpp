@@ -12,15 +12,6 @@ using namespace Aws::BedrockAgent::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateAgentAliasRequest::UpdateAgentAliasRequest() : 
-    m_agentIdHasBeenSet(false),
-    m_agentAliasIdHasBeenSet(false),
-    m_agentAliasNameHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_routingConfigurationHasBeenSet(false)
-{
-}
-
 Aws::String UpdateAgentAliasRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -46,6 +37,11 @@ Aws::String UpdateAgentAliasRequest::SerializePayload() const
    }
    payload.WithArray("routingConfiguration", std::move(routingConfigurationJsonList));
 
+  }
+
+  if(m_aliasInvocationStateHasBeenSet)
+  {
+   payload.WithString("aliasInvocationState", AliasInvocationStateMapper::GetNameForAliasInvocationState(m_aliasInvocationState));
   }
 
   return payload.View().WriteReadable();

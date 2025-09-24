@@ -12,19 +12,6 @@ using namespace Aws::Lightsail::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateDistributionRequest::CreateDistributionRequest() : 
-    m_distributionNameHasBeenSet(false),
-    m_originHasBeenSet(false),
-    m_defaultCacheBehaviorHasBeenSet(false),
-    m_cacheBehaviorSettingsHasBeenSet(false),
-    m_cacheBehaviorsHasBeenSet(false),
-    m_bundleIdHasBeenSet(false),
-    m_ipAddressType(IpAddressType::NOT_SET),
-    m_ipAddressTypeHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateDistributionRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -84,6 +71,17 @@ Aws::String CreateDistributionRequest::SerializePayload() const
    }
    payload.WithArray("tags", std::move(tagsJsonList));
 
+  }
+
+  if(m_certificateNameHasBeenSet)
+  {
+   payload.WithString("certificateName", m_certificateName);
+
+  }
+
+  if(m_viewerMinimumTlsProtocolVersionHasBeenSet)
+  {
+   payload.WithString("viewerMinimumTlsProtocolVersion", ViewerMinimumTlsProtocolVersionEnumMapper::GetNameForViewerMinimumTlsProtocolVersionEnum(m_viewerMinimumTlsProtocolVersion));
   }
 
   return payload.View().WriteReadable();

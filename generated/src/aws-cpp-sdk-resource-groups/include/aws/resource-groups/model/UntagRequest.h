@@ -22,7 +22,7 @@ namespace Model
   class UntagRequest : public ResourceGroupsRequest
   {
   public:
-    AWS_RESOURCEGROUPS_API UntagRequest();
+    AWS_RESOURCEGROUPS_API UntagRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,100 +33,33 @@ namespace Model
     AWS_RESOURCEGROUPS_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
-     * <p>The ARN of the resource group from which to remove tags. The command removed
-     * both the specified keys and any values associated with those keys.</p>
+     * <p>The Amazon resource name (ARN) of the resource group from which to remove
+     * tags. The command removed both the specified keys and any values associated with
+     * those keys.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The ARN of the resource group from which to remove tags. The command removed
-     * both the specified keys and any values associated with those keys.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    UntagRequest& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the resource group from which to remove tags. The command removed
-     * both the specified keys and any values associated with those keys.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The ARN of the resource group from which to remove tags. The command removed
-     * both the specified keys and any values associated with those keys.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The ARN of the resource group from which to remove tags. The command removed
-     * both the specified keys and any values associated with those keys.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The ARN of the resource group from which to remove tags. The command removed
-     * both the specified keys and any values associated with those keys.</p>
-     */
-    inline UntagRequest& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the resource group from which to remove tags. The command removed
-     * both the specified keys and any values associated with those keys.</p>
-     */
-    inline UntagRequest& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the resource group from which to remove tags. The command removed
-     * both the specified keys and any values associated with those keys.</p>
-     */
-    inline UntagRequest& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The keys of the tags to be removed.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetKeys() const{ return m_keys; }
-
-    /**
-     * <p>The keys of the tags to be removed.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetKeys() const { return m_keys; }
     inline bool KeysHasBeenSet() const { return m_keysHasBeenSet; }
-
-    /**
-     * <p>The keys of the tags to be removed.</p>
-     */
-    inline void SetKeys(const Aws::Vector<Aws::String>& value) { m_keysHasBeenSet = true; m_keys = value; }
-
-    /**
-     * <p>The keys of the tags to be removed.</p>
-     */
-    inline void SetKeys(Aws::Vector<Aws::String>&& value) { m_keysHasBeenSet = true; m_keys = std::move(value); }
-
-    /**
-     * <p>The keys of the tags to be removed.</p>
-     */
-    inline UntagRequest& WithKeys(const Aws::Vector<Aws::String>& value) { SetKeys(value); return *this;}
-
-    /**
-     * <p>The keys of the tags to be removed.</p>
-     */
-    inline UntagRequest& WithKeys(Aws::Vector<Aws::String>&& value) { SetKeys(std::move(value)); return *this;}
-
-    /**
-     * <p>The keys of the tags to be removed.</p>
-     */
-    inline UntagRequest& AddKeys(const Aws::String& value) { m_keysHasBeenSet = true; m_keys.push_back(value); return *this; }
-
-    /**
-     * <p>The keys of the tags to be removed.</p>
-     */
-    inline UntagRequest& AddKeys(Aws::String&& value) { m_keysHasBeenSet = true; m_keys.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The keys of the tags to be removed.</p>
-     */
-    inline UntagRequest& AddKeys(const char* value) { m_keysHasBeenSet = true; m_keys.push_back(value); return *this; }
-
+    template<typename KeysT = Aws::Vector<Aws::String>>
+    void SetKeys(KeysT&& value) { m_keysHasBeenSet = true; m_keys = std::forward<KeysT>(value); }
+    template<typename KeysT = Aws::Vector<Aws::String>>
+    UntagRequest& WithKeys(KeysT&& value) { SetKeys(std::forward<KeysT>(value)); return *this;}
+    template<typename KeysT = Aws::String>
+    UntagRequest& AddKeys(KeysT&& value) { m_keysHasBeenSet = true; m_keys.emplace_back(std::forward<KeysT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_arn;

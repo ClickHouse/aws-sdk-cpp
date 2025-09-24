@@ -33,97 +33,40 @@ namespace Model
   class ExportErrorDetailsOutput
   {
   public:
-    AWS_SAGEMAKERGEOSPATIAL_API ExportErrorDetailsOutput();
+    AWS_SAGEMAKERGEOSPATIAL_API ExportErrorDetailsOutput() = default;
     AWS_SAGEMAKERGEOSPATIAL_API ExportErrorDetailsOutput(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API ExportErrorDetailsOutput& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERGEOSPATIAL_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A detailed message describing the error in an export EarthObservationJob
      * operation.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>A detailed message describing the error in an export EarthObservationJob
-     * operation.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ExportErrorDetailsOutput& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A detailed message describing the error in an export EarthObservationJob
-     * operation.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>A detailed message describing the error in an export EarthObservationJob
-     * operation.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>A detailed message describing the error in an export EarthObservationJob
-     * operation.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>A detailed message describing the error in an export EarthObservationJob
-     * operation.</p>
-     */
-    inline ExportErrorDetailsOutput& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>A detailed message describing the error in an export EarthObservationJob
-     * operation.</p>
-     */
-    inline ExportErrorDetailsOutput& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>A detailed message describing the error in an export EarthObservationJob
-     * operation.</p>
-     */
-    inline ExportErrorDetailsOutput& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of error in an export EarthObservationJob operation.</p>
      */
-    inline const ExportErrorType& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of error in an export EarthObservationJob operation.</p>
-     */
+    inline ExportErrorType GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of error in an export EarthObservationJob operation.</p>
-     */
-    inline void SetType(const ExportErrorType& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of error in an export EarthObservationJob operation.</p>
-     */
-    inline void SetType(ExportErrorType&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of error in an export EarthObservationJob operation.</p>
-     */
-    inline ExportErrorDetailsOutput& WithType(const ExportErrorType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of error in an export EarthObservationJob operation.</p>
-     */
-    inline ExportErrorDetailsOutput& WithType(ExportErrorType&& value) { SetType(std::move(value)); return *this;}
-
+    inline void SetType(ExportErrorType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline ExportErrorDetailsOutput& WithType(ExportErrorType value) { SetType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    ExportErrorType m_type;
+    ExportErrorType m_type{ExportErrorType::NOT_SET};
     bool m_typeHasBeenSet = false;
   };
 

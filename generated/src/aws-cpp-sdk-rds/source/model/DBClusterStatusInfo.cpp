@@ -20,21 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBClusterStatusInfo::DBClusterStatusInfo() : 
-    m_statusTypeHasBeenSet(false),
-    m_normal(false),
-    m_normalHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-DBClusterStatusInfo::DBClusterStatusInfo(const XmlNode& xmlNode) : 
-    m_statusTypeHasBeenSet(false),
-    m_normal(false),
-    m_normalHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_messageHasBeenSet(false)
+DBClusterStatusInfo::DBClusterStatusInfo(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

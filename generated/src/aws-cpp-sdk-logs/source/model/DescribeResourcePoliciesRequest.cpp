@@ -12,13 +12,6 @@ using namespace Aws::CloudWatchLogs::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-DescribeResourcePoliciesRequest::DescribeResourcePoliciesRequest() : 
-    m_nextTokenHasBeenSet(false),
-    m_limit(0),
-    m_limitHasBeenSet(false)
-{
-}
-
 Aws::String DescribeResourcePoliciesRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -33,6 +26,17 @@ Aws::String DescribeResourcePoliciesRequest::SerializePayload() const
   {
    payload.WithInteger("limit", m_limit);
 
+  }
+
+  if(m_resourceArnHasBeenSet)
+  {
+   payload.WithString("resourceArn", m_resourceArn);
+
+  }
+
+  if(m_policyScopeHasBeenSet)
+  {
+   payload.WithString("policyScope", PolicyScopeMapper::GetNameForPolicyScope(m_policyScope));
   }
 
   return payload.View().WriteReadable();

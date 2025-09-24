@@ -20,6 +20,7 @@
 /* Service model headers required in MainframeModernizationClient header */
 #include <aws/m2/model/CancelBatchJobExecutionResult.h>
 #include <aws/m2/model/CreateApplicationResult.h>
+#include <aws/m2/model/CreateDataSetExportTaskResult.h>
 #include <aws/m2/model/CreateDataSetImportTaskResult.h>
 #include <aws/m2/model/CreateDeploymentResult.h>
 #include <aws/m2/model/CreateEnvironmentResult.h>
@@ -30,6 +31,7 @@
 #include <aws/m2/model/GetApplicationVersionResult.h>
 #include <aws/m2/model/GetBatchJobExecutionResult.h>
 #include <aws/m2/model/GetDataSetDetailsResult.h>
+#include <aws/m2/model/GetDataSetExportTaskResult.h>
 #include <aws/m2/model/GetDataSetImportTaskResult.h>
 #include <aws/m2/model/GetDeploymentResult.h>
 #include <aws/m2/model/GetEnvironmentResult.h>
@@ -38,6 +40,8 @@
 #include <aws/m2/model/ListApplicationsResult.h>
 #include <aws/m2/model/ListBatchJobDefinitionsResult.h>
 #include <aws/m2/model/ListBatchJobExecutionsResult.h>
+#include <aws/m2/model/ListBatchJobRestartPointsResult.h>
+#include <aws/m2/model/ListDataSetExportHistoryResult.h>
 #include <aws/m2/model/ListDataSetImportHistoryResult.h>
 #include <aws/m2/model/ListDataSetsResult.h>
 #include <aws/m2/model/ListDeploymentsResult.h>
@@ -51,6 +55,10 @@
 #include <aws/m2/model/UntagResourceResult.h>
 #include <aws/m2/model/UpdateApplicationResult.h>
 #include <aws/m2/model/UpdateEnvironmentResult.h>
+#include <aws/m2/model/GetSignedBluinsightsUrlRequest.h>
+#include <aws/m2/model/ListEnvironmentsRequest.h>
+#include <aws/m2/model/ListApplicationsRequest.h>
+#include <aws/m2/model/ListEngineVersionsRequest.h>
 /* End of service model headers required in MainframeModernizationClient header */
 
 namespace Aws
@@ -84,7 +92,7 @@ namespace Aws
 
   namespace MainframeModernization
   {
-    using MainframeModernizationClientConfiguration = Aws::Client::GenericClientConfiguration<false>;
+    using MainframeModernizationClientConfiguration = Aws::Client::GenericClientConfiguration;
     using MainframeModernizationEndpointProviderBase = Aws::MainframeModernization::Endpoint::MainframeModernizationEndpointProviderBase;
     using MainframeModernizationEndpointProvider = Aws::MainframeModernization::Endpoint::MainframeModernizationEndpointProvider;
 
@@ -93,6 +101,7 @@ namespace Aws
       /* Service model forward declarations required in MainframeModernizationClient header */
       class CancelBatchJobExecutionRequest;
       class CreateApplicationRequest;
+      class CreateDataSetExportTaskRequest;
       class CreateDataSetImportTaskRequest;
       class CreateDeploymentRequest;
       class CreateEnvironmentRequest;
@@ -103,6 +112,7 @@ namespace Aws
       class GetApplicationVersionRequest;
       class GetBatchJobExecutionRequest;
       class GetDataSetDetailsRequest;
+      class GetDataSetExportTaskRequest;
       class GetDataSetImportTaskRequest;
       class GetDeploymentRequest;
       class GetEnvironmentRequest;
@@ -111,6 +121,8 @@ namespace Aws
       class ListApplicationsRequest;
       class ListBatchJobDefinitionsRequest;
       class ListBatchJobExecutionsRequest;
+      class ListBatchJobRestartPointsRequest;
+      class ListDataSetExportHistoryRequest;
       class ListDataSetImportHistoryRequest;
       class ListDataSetsRequest;
       class ListDeploymentsRequest;
@@ -129,6 +141,7 @@ namespace Aws
       /* Service model Outcome class definitions */
       typedef Aws::Utils::Outcome<CancelBatchJobExecutionResult, MainframeModernizationError> CancelBatchJobExecutionOutcome;
       typedef Aws::Utils::Outcome<CreateApplicationResult, MainframeModernizationError> CreateApplicationOutcome;
+      typedef Aws::Utils::Outcome<CreateDataSetExportTaskResult, MainframeModernizationError> CreateDataSetExportTaskOutcome;
       typedef Aws::Utils::Outcome<CreateDataSetImportTaskResult, MainframeModernizationError> CreateDataSetImportTaskOutcome;
       typedef Aws::Utils::Outcome<CreateDeploymentResult, MainframeModernizationError> CreateDeploymentOutcome;
       typedef Aws::Utils::Outcome<CreateEnvironmentResult, MainframeModernizationError> CreateEnvironmentOutcome;
@@ -139,6 +152,7 @@ namespace Aws
       typedef Aws::Utils::Outcome<GetApplicationVersionResult, MainframeModernizationError> GetApplicationVersionOutcome;
       typedef Aws::Utils::Outcome<GetBatchJobExecutionResult, MainframeModernizationError> GetBatchJobExecutionOutcome;
       typedef Aws::Utils::Outcome<GetDataSetDetailsResult, MainframeModernizationError> GetDataSetDetailsOutcome;
+      typedef Aws::Utils::Outcome<GetDataSetExportTaskResult, MainframeModernizationError> GetDataSetExportTaskOutcome;
       typedef Aws::Utils::Outcome<GetDataSetImportTaskResult, MainframeModernizationError> GetDataSetImportTaskOutcome;
       typedef Aws::Utils::Outcome<GetDeploymentResult, MainframeModernizationError> GetDeploymentOutcome;
       typedef Aws::Utils::Outcome<GetEnvironmentResult, MainframeModernizationError> GetEnvironmentOutcome;
@@ -147,6 +161,8 @@ namespace Aws
       typedef Aws::Utils::Outcome<ListApplicationsResult, MainframeModernizationError> ListApplicationsOutcome;
       typedef Aws::Utils::Outcome<ListBatchJobDefinitionsResult, MainframeModernizationError> ListBatchJobDefinitionsOutcome;
       typedef Aws::Utils::Outcome<ListBatchJobExecutionsResult, MainframeModernizationError> ListBatchJobExecutionsOutcome;
+      typedef Aws::Utils::Outcome<ListBatchJobRestartPointsResult, MainframeModernizationError> ListBatchJobRestartPointsOutcome;
+      typedef Aws::Utils::Outcome<ListDataSetExportHistoryResult, MainframeModernizationError> ListDataSetExportHistoryOutcome;
       typedef Aws::Utils::Outcome<ListDataSetImportHistoryResult, MainframeModernizationError> ListDataSetImportHistoryOutcome;
       typedef Aws::Utils::Outcome<ListDataSetsResult, MainframeModernizationError> ListDataSetsOutcome;
       typedef Aws::Utils::Outcome<ListDeploymentsResult, MainframeModernizationError> ListDeploymentsOutcome;
@@ -165,6 +181,7 @@ namespace Aws
       /* Service model Outcome callable definitions */
       typedef std::future<CancelBatchJobExecutionOutcome> CancelBatchJobExecutionOutcomeCallable;
       typedef std::future<CreateApplicationOutcome> CreateApplicationOutcomeCallable;
+      typedef std::future<CreateDataSetExportTaskOutcome> CreateDataSetExportTaskOutcomeCallable;
       typedef std::future<CreateDataSetImportTaskOutcome> CreateDataSetImportTaskOutcomeCallable;
       typedef std::future<CreateDeploymentOutcome> CreateDeploymentOutcomeCallable;
       typedef std::future<CreateEnvironmentOutcome> CreateEnvironmentOutcomeCallable;
@@ -175,6 +192,7 @@ namespace Aws
       typedef std::future<GetApplicationVersionOutcome> GetApplicationVersionOutcomeCallable;
       typedef std::future<GetBatchJobExecutionOutcome> GetBatchJobExecutionOutcomeCallable;
       typedef std::future<GetDataSetDetailsOutcome> GetDataSetDetailsOutcomeCallable;
+      typedef std::future<GetDataSetExportTaskOutcome> GetDataSetExportTaskOutcomeCallable;
       typedef std::future<GetDataSetImportTaskOutcome> GetDataSetImportTaskOutcomeCallable;
       typedef std::future<GetDeploymentOutcome> GetDeploymentOutcomeCallable;
       typedef std::future<GetEnvironmentOutcome> GetEnvironmentOutcomeCallable;
@@ -183,6 +201,8 @@ namespace Aws
       typedef std::future<ListApplicationsOutcome> ListApplicationsOutcomeCallable;
       typedef std::future<ListBatchJobDefinitionsOutcome> ListBatchJobDefinitionsOutcomeCallable;
       typedef std::future<ListBatchJobExecutionsOutcome> ListBatchJobExecutionsOutcomeCallable;
+      typedef std::future<ListBatchJobRestartPointsOutcome> ListBatchJobRestartPointsOutcomeCallable;
+      typedef std::future<ListDataSetExportHistoryOutcome> ListDataSetExportHistoryOutcomeCallable;
       typedef std::future<ListDataSetImportHistoryOutcome> ListDataSetImportHistoryOutcomeCallable;
       typedef std::future<ListDataSetsOutcome> ListDataSetsOutcomeCallable;
       typedef std::future<ListDeploymentsOutcome> ListDeploymentsOutcomeCallable;
@@ -204,6 +224,7 @@ namespace Aws
     /* Service model async handlers definitions */
     typedef std::function<void(const MainframeModernizationClient*, const Model::CancelBatchJobExecutionRequest&, const Model::CancelBatchJobExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CancelBatchJobExecutionResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::CreateApplicationRequest&, const Model::CreateApplicationOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateApplicationResponseReceivedHandler;
+    typedef std::function<void(const MainframeModernizationClient*, const Model::CreateDataSetExportTaskRequest&, const Model::CreateDataSetExportTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateDataSetExportTaskResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::CreateDataSetImportTaskRequest&, const Model::CreateDataSetImportTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateDataSetImportTaskResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::CreateDeploymentRequest&, const Model::CreateDeploymentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateDeploymentResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::CreateEnvironmentRequest&, const Model::CreateEnvironmentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > CreateEnvironmentResponseReceivedHandler;
@@ -214,6 +235,7 @@ namespace Aws
     typedef std::function<void(const MainframeModernizationClient*, const Model::GetApplicationVersionRequest&, const Model::GetApplicationVersionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetApplicationVersionResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::GetBatchJobExecutionRequest&, const Model::GetBatchJobExecutionOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetBatchJobExecutionResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::GetDataSetDetailsRequest&, const Model::GetDataSetDetailsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetDataSetDetailsResponseReceivedHandler;
+    typedef std::function<void(const MainframeModernizationClient*, const Model::GetDataSetExportTaskRequest&, const Model::GetDataSetExportTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetDataSetExportTaskResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::GetDataSetImportTaskRequest&, const Model::GetDataSetImportTaskOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetDataSetImportTaskResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::GetDeploymentRequest&, const Model::GetDeploymentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetDeploymentResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::GetEnvironmentRequest&, const Model::GetEnvironmentOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > GetEnvironmentResponseReceivedHandler;
@@ -222,6 +244,8 @@ namespace Aws
     typedef std::function<void(const MainframeModernizationClient*, const Model::ListApplicationsRequest&, const Model::ListApplicationsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListApplicationsResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::ListBatchJobDefinitionsRequest&, const Model::ListBatchJobDefinitionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListBatchJobDefinitionsResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::ListBatchJobExecutionsRequest&, const Model::ListBatchJobExecutionsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListBatchJobExecutionsResponseReceivedHandler;
+    typedef std::function<void(const MainframeModernizationClient*, const Model::ListBatchJobRestartPointsRequest&, const Model::ListBatchJobRestartPointsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListBatchJobRestartPointsResponseReceivedHandler;
+    typedef std::function<void(const MainframeModernizationClient*, const Model::ListDataSetExportHistoryRequest&, const Model::ListDataSetExportHistoryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListDataSetExportHistoryResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::ListDataSetImportHistoryRequest&, const Model::ListDataSetImportHistoryOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListDataSetImportHistoryResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::ListDataSetsRequest&, const Model::ListDataSetsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListDataSetsResponseReceivedHandler;
     typedef std::function<void(const MainframeModernizationClient*, const Model::ListDeploymentsRequest&, const Model::ListDeploymentsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&) > ListDeploymentsResponseReceivedHandler;

@@ -18,15 +18,7 @@ namespace DynamoDB
 namespace Model
 {
 
-PointInTimeRecoverySpecification::PointInTimeRecoverySpecification() : 
-    m_pointInTimeRecoveryEnabled(false),
-    m_pointInTimeRecoveryEnabledHasBeenSet(false)
-{
-}
-
-PointInTimeRecoverySpecification::PointInTimeRecoverySpecification(JsonView jsonValue) : 
-    m_pointInTimeRecoveryEnabled(false),
-    m_pointInTimeRecoveryEnabledHasBeenSet(false)
+PointInTimeRecoverySpecification::PointInTimeRecoverySpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,13 @@ PointInTimeRecoverySpecification& PointInTimeRecoverySpecification::operator =(J
   if(jsonValue.ValueExists("PointInTimeRecoveryEnabled"))
   {
     m_pointInTimeRecoveryEnabled = jsonValue.GetBool("PointInTimeRecoveryEnabled");
-
     m_pointInTimeRecoveryEnabledHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("RecoveryPeriodInDays"))
+  {
+    m_recoveryPeriodInDays = jsonValue.GetInteger("RecoveryPeriodInDays");
+    m_recoveryPeriodInDaysHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -50,6 +45,12 @@ JsonValue PointInTimeRecoverySpecification::Jsonize() const
   if(m_pointInTimeRecoveryEnabledHasBeenSet)
   {
    payload.WithBool("PointInTimeRecoveryEnabled", m_pointInTimeRecoveryEnabled);
+
+  }
+
+  if(m_recoveryPeriodInDaysHasBeenSet)
+  {
+   payload.WithInteger("RecoveryPeriodInDays", m_recoveryPeriodInDays);
 
   }
 

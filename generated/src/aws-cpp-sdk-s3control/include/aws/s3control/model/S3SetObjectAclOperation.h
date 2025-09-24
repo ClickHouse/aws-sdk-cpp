@@ -35,43 +35,24 @@ namespace Model
   class S3SetObjectAclOperation
   {
   public:
-    AWS_S3CONTROL_API S3SetObjectAclOperation();
+    AWS_S3CONTROL_API S3SetObjectAclOperation() = default;
     AWS_S3CONTROL_API S3SetObjectAclOperation(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CONTROL_API S3SetObjectAclOperation& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CONTROL_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p/>
      */
-    inline const S3AccessControlPolicy& GetAccessControlPolicy() const{ return m_accessControlPolicy; }
-
-    /**
-     * <p/>
-     */
+    inline const S3AccessControlPolicy& GetAccessControlPolicy() const { return m_accessControlPolicy; }
     inline bool AccessControlPolicyHasBeenSet() const { return m_accessControlPolicyHasBeenSet; }
-
-    /**
-     * <p/>
-     */
-    inline void SetAccessControlPolicy(const S3AccessControlPolicy& value) { m_accessControlPolicyHasBeenSet = true; m_accessControlPolicy = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetAccessControlPolicy(S3AccessControlPolicy&& value) { m_accessControlPolicyHasBeenSet = true; m_accessControlPolicy = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline S3SetObjectAclOperation& WithAccessControlPolicy(const S3AccessControlPolicy& value) { SetAccessControlPolicy(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline S3SetObjectAclOperation& WithAccessControlPolicy(S3AccessControlPolicy&& value) { SetAccessControlPolicy(std::move(value)); return *this;}
-
+    template<typename AccessControlPolicyT = S3AccessControlPolicy>
+    void SetAccessControlPolicy(AccessControlPolicyT&& value) { m_accessControlPolicyHasBeenSet = true; m_accessControlPolicy = std::forward<AccessControlPolicyT>(value); }
+    template<typename AccessControlPolicyT = S3AccessControlPolicy>
+    S3SetObjectAclOperation& WithAccessControlPolicy(AccessControlPolicyT&& value) { SetAccessControlPolicy(std::forward<AccessControlPolicyT>(value)); return *this;}
+    ///@}
   private:
 
     S3AccessControlPolicy m_accessControlPolicy;

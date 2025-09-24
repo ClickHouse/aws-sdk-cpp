@@ -28,63 +28,37 @@ namespace Model
   class DescribeMigrationTaskResult
   {
   public:
-    AWS_MIGRATIONHUB_API DescribeMigrationTaskResult();
+    AWS_MIGRATIONHUB_API DescribeMigrationTaskResult() = default;
     AWS_MIGRATIONHUB_API DescribeMigrationTaskResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_MIGRATIONHUB_API DescribeMigrationTaskResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Object encapsulating information about the migration task.</p>
      */
-    inline const MigrationTask& GetMigrationTask() const{ return m_migrationTask; }
+    inline const MigrationTask& GetMigrationTask() const { return m_migrationTask; }
+    template<typename MigrationTaskT = MigrationTask>
+    void SetMigrationTask(MigrationTaskT&& value) { m_migrationTaskHasBeenSet = true; m_migrationTask = std::forward<MigrationTaskT>(value); }
+    template<typename MigrationTaskT = MigrationTask>
+    DescribeMigrationTaskResult& WithMigrationTask(MigrationTaskT&& value) { SetMigrationTask(std::forward<MigrationTaskT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Object encapsulating information about the migration task.</p>
-     */
-    inline void SetMigrationTask(const MigrationTask& value) { m_migrationTask = value; }
-
-    /**
-     * <p>Object encapsulating information about the migration task.</p>
-     */
-    inline void SetMigrationTask(MigrationTask&& value) { m_migrationTask = std::move(value); }
-
-    /**
-     * <p>Object encapsulating information about the migration task.</p>
-     */
-    inline DescribeMigrationTaskResult& WithMigrationTask(const MigrationTask& value) { SetMigrationTask(value); return *this;}
-
-    /**
-     * <p>Object encapsulating information about the migration task.</p>
-     */
-    inline DescribeMigrationTaskResult& WithMigrationTask(MigrationTask&& value) { SetMigrationTask(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline DescribeMigrationTaskResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline DescribeMigrationTaskResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline DescribeMigrationTaskResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    DescribeMigrationTaskResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     MigrationTask m_migrationTask;
+    bool m_migrationTaskHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

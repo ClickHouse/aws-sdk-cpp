@@ -22,7 +22,7 @@ namespace Model
   class UpdateExportRequest : public BCMDataExportsRequest
   {
   public:
-    AWS_BCMDATAEXPORTS_API UpdateExportRequest();
+    AWS_BCMDATAEXPORTS_API UpdateExportRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,77 +35,29 @@ namespace Model
     AWS_BCMDATAEXPORTS_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name and query details for the export.</p>
      */
-    inline const Export& GetExport() const{ return m_export; }
-
-    /**
-     * <p>The name and query details for the export.</p>
-     */
+    inline const Export& GetExport() const { return m_export; }
     inline bool ExportHasBeenSet() const { return m_exportHasBeenSet; }
+    template<typename ExportT = Export>
+    void SetExport(ExportT&& value) { m_exportHasBeenSet = true; m_export = std::forward<ExportT>(value); }
+    template<typename ExportT = Export>
+    UpdateExportRequest& WithExport(ExportT&& value) { SetExport(std::forward<ExportT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name and query details for the export.</p>
-     */
-    inline void SetExport(const Export& value) { m_exportHasBeenSet = true; m_export = value; }
-
-    /**
-     * <p>The name and query details for the export.</p>
-     */
-    inline void SetExport(Export&& value) { m_exportHasBeenSet = true; m_export = std::move(value); }
-
-    /**
-     * <p>The name and query details for the export.</p>
-     */
-    inline UpdateExportRequest& WithExport(const Export& value) { SetExport(value); return *this;}
-
-    /**
-     * <p>The name and query details for the export.</p>
-     */
-    inline UpdateExportRequest& WithExport(Export&& value) { SetExport(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) for this export.</p>
      */
-    inline const Aws::String& GetExportArn() const{ return m_exportArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this export.</p>
-     */
+    inline const Aws::String& GetExportArn() const { return m_exportArn; }
     inline bool ExportArnHasBeenSet() const { return m_exportArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this export.</p>
-     */
-    inline void SetExportArn(const Aws::String& value) { m_exportArnHasBeenSet = true; m_exportArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this export.</p>
-     */
-    inline void SetExportArn(Aws::String&& value) { m_exportArnHasBeenSet = true; m_exportArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this export.</p>
-     */
-    inline void SetExportArn(const char* value) { m_exportArnHasBeenSet = true; m_exportArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this export.</p>
-     */
-    inline UpdateExportRequest& WithExportArn(const Aws::String& value) { SetExportArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this export.</p>
-     */
-    inline UpdateExportRequest& WithExportArn(Aws::String&& value) { SetExportArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) for this export.</p>
-     */
-    inline UpdateExportRequest& WithExportArn(const char* value) { SetExportArn(value); return *this;}
-
+    template<typename ExportArnT = Aws::String>
+    void SetExportArn(ExportArnT&& value) { m_exportArnHasBeenSet = true; m_exportArn = std::forward<ExportArnT>(value); }
+    template<typename ExportArnT = Aws::String>
+    UpdateExportRequest& WithExportArn(ExportArnT&& value) { SetExportArn(std::forward<ExportArnT>(value)); return *this;}
+    ///@}
   private:
 
     Export m_export;

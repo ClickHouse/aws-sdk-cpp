@@ -18,15 +18,7 @@ namespace MTurk
 namespace Model
 {
 
-Locale::Locale() : 
-    m_countryHasBeenSet(false),
-    m_subdivisionHasBeenSet(false)
-{
-}
-
-Locale::Locale(JsonView jsonValue) : 
-    m_countryHasBeenSet(false),
-    m_subdivisionHasBeenSet(false)
+Locale::Locale(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Locale& Locale::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Country"))
   {
     m_country = jsonValue.GetString("Country");
-
     m_countryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Subdivision"))
   {
     m_subdivision = jsonValue.GetString("Subdivision");
-
     m_subdivisionHasBeenSet = true;
   }
-
   return *this;
 }
 

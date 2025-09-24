@@ -21,7 +21,7 @@ namespace Model
   class UpdateOrganizationConfigurationRequest : public Inspector2Request
   {
   public:
-    AWS_INSPECTOR2_API UpdateOrganizationConfigurationRequest();
+    AWS_INSPECTOR2_API UpdateOrganizationConfigurationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,42 +32,18 @@ namespace Model
     AWS_INSPECTOR2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Defines which scan types are enabled automatically for new members of your
      * Amazon Inspector organization.</p>
      */
-    inline const AutoEnable& GetAutoEnable() const{ return m_autoEnable; }
-
-    /**
-     * <p>Defines which scan types are enabled automatically for new members of your
-     * Amazon Inspector organization.</p>
-     */
+    inline const AutoEnable& GetAutoEnable() const { return m_autoEnable; }
     inline bool AutoEnableHasBeenSet() const { return m_autoEnableHasBeenSet; }
-
-    /**
-     * <p>Defines which scan types are enabled automatically for new members of your
-     * Amazon Inspector organization.</p>
-     */
-    inline void SetAutoEnable(const AutoEnable& value) { m_autoEnableHasBeenSet = true; m_autoEnable = value; }
-
-    /**
-     * <p>Defines which scan types are enabled automatically for new members of your
-     * Amazon Inspector organization.</p>
-     */
-    inline void SetAutoEnable(AutoEnable&& value) { m_autoEnableHasBeenSet = true; m_autoEnable = std::move(value); }
-
-    /**
-     * <p>Defines which scan types are enabled automatically for new members of your
-     * Amazon Inspector organization.</p>
-     */
-    inline UpdateOrganizationConfigurationRequest& WithAutoEnable(const AutoEnable& value) { SetAutoEnable(value); return *this;}
-
-    /**
-     * <p>Defines which scan types are enabled automatically for new members of your
-     * Amazon Inspector organization.</p>
-     */
-    inline UpdateOrganizationConfigurationRequest& WithAutoEnable(AutoEnable&& value) { SetAutoEnable(std::move(value)); return *this;}
-
+    template<typename AutoEnableT = AutoEnable>
+    void SetAutoEnable(AutoEnableT&& value) { m_autoEnableHasBeenSet = true; m_autoEnable = std::forward<AutoEnableT>(value); }
+    template<typename AutoEnableT = AutoEnable>
+    UpdateOrganizationConfigurationRequest& WithAutoEnable(AutoEnableT&& value) { SetAutoEnable(std::forward<AutoEnableT>(value)); return *this;}
+    ///@}
   private:
 
     AutoEnable m_autoEnable;

@@ -34,131 +34,52 @@ namespace Model
   class DefaultDetection
   {
   public:
-    AWS_MACIE2_API DefaultDetection();
+    AWS_MACIE2_API DefaultDetection() = default;
     AWS_MACIE2_API DefaultDetection(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API DefaultDetection& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The total number of occurrences of the type of sensitive data that was
      * detected.</p>
      */
-    inline long long GetCount() const{ return m_count; }
-
-    /**
-     * <p>The total number of occurrences of the type of sensitive data that was
-     * detected.</p>
-     */
+    inline long long GetCount() const { return m_count; }
     inline bool CountHasBeenSet() const { return m_countHasBeenSet; }
-
-    /**
-     * <p>The total number of occurrences of the type of sensitive data that was
-     * detected.</p>
-     */
     inline void SetCount(long long value) { m_countHasBeenSet = true; m_count = value; }
-
-    /**
-     * <p>The total number of occurrences of the type of sensitive data that was
-     * detected.</p>
-     */
     inline DefaultDetection& WithCount(long long value) { SetCount(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The location of 1-15 occurrences of the sensitive data that was detected. A
      * finding includes location data for a maximum of 15 occurrences of sensitive
      * data.</p>
      */
-    inline const Occurrences& GetOccurrences() const{ return m_occurrences; }
-
-    /**
-     * <p>The location of 1-15 occurrences of the sensitive data that was detected. A
-     * finding includes location data for a maximum of 15 occurrences of sensitive
-     * data.</p>
-     */
+    inline const Occurrences& GetOccurrences() const { return m_occurrences; }
     inline bool OccurrencesHasBeenSet() const { return m_occurrencesHasBeenSet; }
+    template<typename OccurrencesT = Occurrences>
+    void SetOccurrences(OccurrencesT&& value) { m_occurrencesHasBeenSet = true; m_occurrences = std::forward<OccurrencesT>(value); }
+    template<typename OccurrencesT = Occurrences>
+    DefaultDetection& WithOccurrences(OccurrencesT&& value) { SetOccurrences(std::forward<OccurrencesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The location of 1-15 occurrences of the sensitive data that was detected. A
-     * finding includes location data for a maximum of 15 occurrences of sensitive
-     * data.</p>
-     */
-    inline void SetOccurrences(const Occurrences& value) { m_occurrencesHasBeenSet = true; m_occurrences = value; }
-
-    /**
-     * <p>The location of 1-15 occurrences of the sensitive data that was detected. A
-     * finding includes location data for a maximum of 15 occurrences of sensitive
-     * data.</p>
-     */
-    inline void SetOccurrences(Occurrences&& value) { m_occurrencesHasBeenSet = true; m_occurrences = std::move(value); }
-
-    /**
-     * <p>The location of 1-15 occurrences of the sensitive data that was detected. A
-     * finding includes location data for a maximum of 15 occurrences of sensitive
-     * data.</p>
-     */
-    inline DefaultDetection& WithOccurrences(const Occurrences& value) { SetOccurrences(value); return *this;}
-
-    /**
-     * <p>The location of 1-15 occurrences of the sensitive data that was detected. A
-     * finding includes location data for a maximum of 15 occurrences of sensitive
-     * data.</p>
-     */
-    inline DefaultDetection& WithOccurrences(Occurrences&& value) { SetOccurrences(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of sensitive data that was detected. For example, AWS_CREDENTIALS,
      * PHONE_NUMBER, or ADDRESS.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, AWS_CREDENTIALS,
-     * PHONE_NUMBER, or ADDRESS.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, AWS_CREDENTIALS,
-     * PHONE_NUMBER, or ADDRESS.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, AWS_CREDENTIALS,
-     * PHONE_NUMBER, or ADDRESS.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, AWS_CREDENTIALS,
-     * PHONE_NUMBER, or ADDRESS.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, AWS_CREDENTIALS,
-     * PHONE_NUMBER, or ADDRESS.</p>
-     */
-    inline DefaultDetection& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, AWS_CREDENTIALS,
-     * PHONE_NUMBER, or ADDRESS.</p>
-     */
-    inline DefaultDetection& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of sensitive data that was detected. For example, AWS_CREDENTIALS,
-     * PHONE_NUMBER, or ADDRESS.</p>
-     */
-    inline DefaultDetection& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    DefaultDetection& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
-    long long m_count;
+    long long m_count{0};
     bool m_countHasBeenSet = false;
 
     Occurrences m_occurrences;

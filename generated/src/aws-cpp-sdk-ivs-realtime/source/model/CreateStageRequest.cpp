@@ -12,13 +12,6 @@ using namespace Aws::ivsrealtime::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-CreateStageRequest::CreateStageRequest() : 
-    m_nameHasBeenSet(false),
-    m_participantTokenConfigurationsHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
 Aws::String CreateStageRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -48,6 +41,12 @@ Aws::String CreateStageRequest::SerializePayload() const
      tagsJsonMap.WithString(tagsItem.first, tagsItem.second);
    }
    payload.WithObject("tags", std::move(tagsJsonMap));
+
+  }
+
+  if(m_autoParticipantRecordingConfigurationHasBeenSet)
+  {
+   payload.WithObject("autoParticipantRecordingConfiguration", m_autoParticipantRecordingConfiguration.Jsonize());
 
   }
 

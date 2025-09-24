@@ -18,19 +18,7 @@ namespace FinSpaceData
 namespace Model
 {
 
-ColumnDefinition::ColumnDefinition() : 
-    m_dataType(ColumnDataType::NOT_SET),
-    m_dataTypeHasBeenSet(false),
-    m_columnNameHasBeenSet(false),
-    m_columnDescriptionHasBeenSet(false)
-{
-}
-
-ColumnDefinition::ColumnDefinition(JsonView jsonValue) : 
-    m_dataType(ColumnDataType::NOT_SET),
-    m_dataTypeHasBeenSet(false),
-    m_columnNameHasBeenSet(false),
-    m_columnDescriptionHasBeenSet(false)
+ColumnDefinition::ColumnDefinition(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ ColumnDefinition& ColumnDefinition::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("dataType"))
   {
     m_dataType = ColumnDataTypeMapper::GetColumnDataTypeForName(jsonValue.GetString("dataType"));
-
     m_dataTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("columnName"))
   {
     m_columnName = jsonValue.GetString("columnName");
-
     m_columnNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("columnDescription"))
   {
     m_columnDescription = jsonValue.GetString("columnDescription");
-
     m_columnDescriptionHasBeenSet = true;
   }
-
   return *this;
 }
 

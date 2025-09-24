@@ -18,15 +18,7 @@ namespace IoTAnalytics
 namespace Model
 {
 
-LateDataRule::LateDataRule() : 
-    m_ruleNameHasBeenSet(false),
-    m_ruleConfigurationHasBeenSet(false)
-{
-}
-
-LateDataRule::LateDataRule(JsonView jsonValue) : 
-    m_ruleNameHasBeenSet(false),
-    m_ruleConfigurationHasBeenSet(false)
+LateDataRule::LateDataRule(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ LateDataRule& LateDataRule::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("ruleName"))
   {
     m_ruleName = jsonValue.GetString("ruleName");
-
     m_ruleNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ruleConfiguration"))
   {
     m_ruleConfiguration = jsonValue.GetObject("ruleConfiguration");
-
     m_ruleConfigurationHasBeenSet = true;
   }
-
   return *this;
 }
 

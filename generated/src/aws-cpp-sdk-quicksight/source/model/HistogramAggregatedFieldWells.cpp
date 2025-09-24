@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-HistogramAggregatedFieldWells::HistogramAggregatedFieldWells() : 
-    m_valuesHasBeenSet(false)
-{
-}
-
-HistogramAggregatedFieldWells::HistogramAggregatedFieldWells(JsonView jsonValue) : 
-    m_valuesHasBeenSet(false)
+HistogramAggregatedFieldWells::HistogramAggregatedFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ HistogramAggregatedFieldWells& HistogramAggregatedFieldWells::operator =(JsonVie
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

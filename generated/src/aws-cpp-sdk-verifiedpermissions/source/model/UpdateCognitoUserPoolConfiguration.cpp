@@ -18,15 +18,7 @@ namespace VerifiedPermissions
 namespace Model
 {
 
-UpdateCognitoUserPoolConfiguration::UpdateCognitoUserPoolConfiguration() : 
-    m_userPoolArnHasBeenSet(false),
-    m_clientIdsHasBeenSet(false)
-{
-}
-
-UpdateCognitoUserPoolConfiguration::UpdateCognitoUserPoolConfiguration(JsonView jsonValue) : 
-    m_userPoolArnHasBeenSet(false),
-    m_clientIdsHasBeenSet(false)
+UpdateCognitoUserPoolConfiguration::UpdateCognitoUserPoolConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ UpdateCognitoUserPoolConfiguration& UpdateCognitoUserPoolConfiguration::operator
   if(jsonValue.ValueExists("userPoolArn"))
   {
     m_userPoolArn = jsonValue.GetString("userPoolArn");
-
     m_userPoolArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("clientIds"))
   {
     Aws::Utils::Array<JsonView> clientIdsJsonList = jsonValue.GetArray("clientIds");
@@ -49,7 +39,11 @@ UpdateCognitoUserPoolConfiguration& UpdateCognitoUserPoolConfiguration::operator
     }
     m_clientIdsHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("groupConfiguration"))
+  {
+    m_groupConfiguration = jsonValue.GetObject("groupConfiguration");
+    m_groupConfigurationHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -71,6 +65,12 @@ JsonValue UpdateCognitoUserPoolConfiguration::Jsonize() const
      clientIdsJsonList[clientIdsIndex].AsString(m_clientIds[clientIdsIndex]);
    }
    payload.WithArray("clientIds", std::move(clientIdsJsonList));
+
+  }
+
+  if(m_groupConfigurationHasBeenSet)
+  {
+   payload.WithObject("groupConfiguration", m_groupConfiguration.Jsonize());
 
   }
 

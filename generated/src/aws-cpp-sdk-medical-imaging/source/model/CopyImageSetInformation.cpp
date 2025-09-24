@@ -18,15 +18,7 @@ namespace MedicalImaging
 namespace Model
 {
 
-CopyImageSetInformation::CopyImageSetInformation() : 
-    m_sourceImageSetHasBeenSet(false),
-    m_destinationImageSetHasBeenSet(false)
-{
-}
-
-CopyImageSetInformation::CopyImageSetInformation(JsonView jsonValue) : 
-    m_sourceImageSetHasBeenSet(false),
-    m_destinationImageSetHasBeenSet(false)
+CopyImageSetInformation::CopyImageSetInformation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CopyImageSetInformation& CopyImageSetInformation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("sourceImageSet"))
   {
     m_sourceImageSet = jsonValue.GetObject("sourceImageSet");
-
     m_sourceImageSetHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("destinationImageSet"))
   {
     m_destinationImageSet = jsonValue.GetObject("destinationImageSet");
-
     m_destinationImageSetHasBeenSet = true;
   }
-
   return *this;
 }
 

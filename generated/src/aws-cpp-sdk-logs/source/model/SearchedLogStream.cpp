@@ -18,17 +18,7 @@ namespace CloudWatchLogs
 namespace Model
 {
 
-SearchedLogStream::SearchedLogStream() : 
-    m_logStreamNameHasBeenSet(false),
-    m_searchedCompletely(false),
-    m_searchedCompletelyHasBeenSet(false)
-{
-}
-
-SearchedLogStream::SearchedLogStream(JsonView jsonValue) : 
-    m_logStreamNameHasBeenSet(false),
-    m_searchedCompletely(false),
-    m_searchedCompletelyHasBeenSet(false)
+SearchedLogStream::SearchedLogStream(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SearchedLogStream& SearchedLogStream::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("logStreamName"))
   {
     m_logStreamName = jsonValue.GetString("logStreamName");
-
     m_logStreamNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("searchedCompletely"))
   {
     m_searchedCompletely = jsonValue.GetBool("searchedCompletely");
-
     m_searchedCompletelyHasBeenSet = true;
   }
-
   return *this;
 }
 

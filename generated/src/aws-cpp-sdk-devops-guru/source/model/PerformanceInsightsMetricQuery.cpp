@@ -18,17 +18,7 @@ namespace DevOpsGuru
 namespace Model
 {
 
-PerformanceInsightsMetricQuery::PerformanceInsightsMetricQuery() : 
-    m_metricHasBeenSet(false),
-    m_groupByHasBeenSet(false),
-    m_filterHasBeenSet(false)
-{
-}
-
-PerformanceInsightsMetricQuery::PerformanceInsightsMetricQuery(JsonView jsonValue) : 
-    m_metricHasBeenSet(false),
-    m_groupByHasBeenSet(false),
-    m_filterHasBeenSet(false)
+PerformanceInsightsMetricQuery::PerformanceInsightsMetricQuery(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ PerformanceInsightsMetricQuery& PerformanceInsightsMetricQuery::operator =(JsonV
   if(jsonValue.ValueExists("Metric"))
   {
     m_metric = jsonValue.GetString("Metric");
-
     m_metricHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("GroupBy"))
   {
     m_groupBy = jsonValue.GetObject("GroupBy");
-
     m_groupByHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Filter"))
   {
     Aws::Map<Aws::String, JsonView> filterJsonMap = jsonValue.GetObject("Filter").GetAllObjects();
@@ -58,7 +44,6 @@ PerformanceInsightsMetricQuery& PerformanceInsightsMetricQuery::operator =(JsonV
     }
     m_filterHasBeenSet = true;
   }
-
   return *this;
 }
 

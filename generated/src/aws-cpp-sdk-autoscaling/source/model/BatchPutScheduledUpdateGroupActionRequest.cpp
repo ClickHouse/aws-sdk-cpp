@@ -10,12 +10,6 @@
 using namespace Aws::AutoScaling::Model;
 using namespace Aws::Utils;
 
-BatchPutScheduledUpdateGroupActionRequest::BatchPutScheduledUpdateGroupActionRequest() : 
-    m_autoScalingGroupNameHasBeenSet(false),
-    m_scheduledUpdateGroupActionsHasBeenSet(false)
-{
-}
-
 Aws::String BatchPutScheduledUpdateGroupActionRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -27,11 +21,18 @@ Aws::String BatchPutScheduledUpdateGroupActionRequest::SerializePayload() const
 
   if(m_scheduledUpdateGroupActionsHasBeenSet)
   {
-    unsigned scheduledUpdateGroupActionsCount = 1;
-    for(auto& item : m_scheduledUpdateGroupActions)
+    if (m_scheduledUpdateGroupActions.empty())
     {
-      item.OutputToStream(ss, "ScheduledUpdateGroupActions.member.", scheduledUpdateGroupActionsCount, "");
-      scheduledUpdateGroupActionsCount++;
+      ss << "ScheduledUpdateGroupActions=&";
+    }
+    else
+    {
+      unsigned scheduledUpdateGroupActionsCount = 1;
+      for(auto& item : m_scheduledUpdateGroupActions)
+      {
+        item.OutputToStream(ss, "ScheduledUpdateGroupActions.member.", scheduledUpdateGroupActionsCount, "");
+        scheduledUpdateGroupActionsCount++;
+      }
     }
   }
 

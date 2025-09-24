@@ -18,17 +18,7 @@ namespace ChimeSDKMessaging
 namespace Model
 {
 
-UnauthorizedClientException::UnauthorizedClientException() : 
-    m_code(ErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-UnauthorizedClientException::UnauthorizedClientException(JsonView jsonValue) : 
-    m_code(ErrorCode::NOT_SET),
-    m_codeHasBeenSet(false),
-    m_messageHasBeenSet(false)
+UnauthorizedClientException::UnauthorizedClientException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ UnauthorizedClientException& UnauthorizedClientException::operator =(JsonView js
   if(jsonValue.ValueExists("Code"))
   {
     m_code = ErrorCodeMapper::GetErrorCodeForName(jsonValue.GetString("Code"));
-
     m_codeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

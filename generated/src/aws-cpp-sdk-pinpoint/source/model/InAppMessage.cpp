@@ -18,19 +18,7 @@ namespace Pinpoint
 namespace Model
 {
 
-InAppMessage::InAppMessage() : 
-    m_contentHasBeenSet(false),
-    m_customConfigHasBeenSet(false),
-    m_layout(Layout::NOT_SET),
-    m_layoutHasBeenSet(false)
-{
-}
-
-InAppMessage::InAppMessage(JsonView jsonValue) : 
-    m_contentHasBeenSet(false),
-    m_customConfigHasBeenSet(false),
-    m_layout(Layout::NOT_SET),
-    m_layoutHasBeenSet(false)
+InAppMessage::InAppMessage(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ InAppMessage& InAppMessage::operator =(JsonView jsonValue)
     }
     m_contentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CustomConfig"))
   {
     Aws::Map<Aws::String, JsonView> customConfigJsonMap = jsonValue.GetObject("CustomConfig").GetAllObjects();
@@ -56,14 +43,11 @@ InAppMessage& InAppMessage::operator =(JsonView jsonValue)
     }
     m_customConfigHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Layout"))
   {
     m_layout = LayoutMapper::GetLayoutForName(jsonValue.GetString("Layout"));
-
     m_layoutHasBeenSet = true;
   }
-
   return *this;
 }
 

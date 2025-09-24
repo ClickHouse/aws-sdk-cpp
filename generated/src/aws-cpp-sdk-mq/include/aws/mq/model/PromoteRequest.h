@@ -26,7 +26,7 @@ namespace Model
   class PromoteRequest : public MQRequest
   {
   public:
-    AWS_MQ_API PromoteRequest();
+    AWS_MQ_API PromoteRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,89 +37,34 @@ namespace Model
     AWS_MQ_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The unique ID that Amazon MQ generates for the broker.</p>
      */
-    inline const Aws::String& GetBrokerId() const{ return m_brokerId; }
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
+    inline const Aws::String& GetBrokerId() const { return m_brokerId; }
     inline bool BrokerIdHasBeenSet() const { return m_brokerIdHasBeenSet; }
+    template<typename BrokerIdT = Aws::String>
+    void SetBrokerId(BrokerIdT&& value) { m_brokerIdHasBeenSet = true; m_brokerId = std::forward<BrokerIdT>(value); }
+    template<typename BrokerIdT = Aws::String>
+    PromoteRequest& WithBrokerId(BrokerIdT&& value) { SetBrokerId(std::forward<BrokerIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline void SetBrokerId(const Aws::String& value) { m_brokerIdHasBeenSet = true; m_brokerId = value; }
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline void SetBrokerId(Aws::String&& value) { m_brokerIdHasBeenSet = true; m_brokerId = std::move(value); }
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline void SetBrokerId(const char* value) { m_brokerIdHasBeenSet = true; m_brokerId.assign(value); }
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline PromoteRequest& WithBrokerId(const Aws::String& value) { SetBrokerId(value); return *this;}
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline PromoteRequest& WithBrokerId(Aws::String&& value) { SetBrokerId(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique ID that Amazon MQ generates for the broker.</p>
-     */
-    inline PromoteRequest& WithBrokerId(const char* value) { SetBrokerId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Promote mode requested. Note: Valid values for the parameter are
      * SWITCHOVER, FAILOVER.</p>
      */
-    inline const PromoteMode& GetMode() const{ return m_mode; }
-
-    /**
-     * <p>The Promote mode requested. Note: Valid values for the parameter are
-     * SWITCHOVER, FAILOVER.</p>
-     */
+    inline PromoteMode GetMode() const { return m_mode; }
     inline bool ModeHasBeenSet() const { return m_modeHasBeenSet; }
-
-    /**
-     * <p>The Promote mode requested. Note: Valid values for the parameter are
-     * SWITCHOVER, FAILOVER.</p>
-     */
-    inline void SetMode(const PromoteMode& value) { m_modeHasBeenSet = true; m_mode = value; }
-
-    /**
-     * <p>The Promote mode requested. Note: Valid values for the parameter are
-     * SWITCHOVER, FAILOVER.</p>
-     */
-    inline void SetMode(PromoteMode&& value) { m_modeHasBeenSet = true; m_mode = std::move(value); }
-
-    /**
-     * <p>The Promote mode requested. Note: Valid values for the parameter are
-     * SWITCHOVER, FAILOVER.</p>
-     */
-    inline PromoteRequest& WithMode(const PromoteMode& value) { SetMode(value); return *this;}
-
-    /**
-     * <p>The Promote mode requested. Note: Valid values for the parameter are
-     * SWITCHOVER, FAILOVER.</p>
-     */
-    inline PromoteRequest& WithMode(PromoteMode&& value) { SetMode(std::move(value)); return *this;}
-
+    inline void SetMode(PromoteMode value) { m_modeHasBeenSet = true; m_mode = value; }
+    inline PromoteRequest& WithMode(PromoteMode value) { SetMode(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_brokerId;
     bool m_brokerIdHasBeenSet = false;
 
-    PromoteMode m_mode;
+    PromoteMode m_mode{PromoteMode::NOT_SET};
     bool m_modeHasBeenSet = false;
   };
 

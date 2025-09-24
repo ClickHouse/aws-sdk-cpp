@@ -20,19 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SpotCapacityRebalance::SpotCapacityRebalance() : 
-    m_replacementStrategy(ReplacementStrategy::NOT_SET),
-    m_replacementStrategyHasBeenSet(false),
-    m_terminationDelay(0),
-    m_terminationDelayHasBeenSet(false)
-{
-}
-
-SpotCapacityRebalance::SpotCapacityRebalance(const XmlNode& xmlNode) : 
-    m_replacementStrategy(ReplacementStrategy::NOT_SET),
-    m_replacementStrategyHasBeenSet(false),
-    m_terminationDelay(0),
-    m_terminationDelayHasBeenSet(false)
+SpotCapacityRebalance::SpotCapacityRebalance(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -46,7 +34,7 @@ SpotCapacityRebalance& SpotCapacityRebalance::operator =(const XmlNode& xmlNode)
     XmlNode replacementStrategyNode = resultNode.FirstChild("replacementStrategy");
     if(!replacementStrategyNode.IsNull())
     {
-      m_replacementStrategy = ReplacementStrategyMapper::GetReplacementStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(replacementStrategyNode.GetText()).c_str()).c_str());
+      m_replacementStrategy = ReplacementStrategyMapper::GetReplacementStrategyForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(replacementStrategyNode.GetText()).c_str()));
       m_replacementStrategyHasBeenSet = true;
     }
     XmlNode terminationDelayNode = resultNode.FirstChild("terminationDelay");
@@ -64,7 +52,7 @@ void SpotCapacityRebalance::OutputToStream(Aws::OStream& oStream, const char* lo
 {
   if(m_replacementStrategyHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ReplacementStrategy=" << ReplacementStrategyMapper::GetNameForReplacementStrategy(m_replacementStrategy) << "&";
+      oStream << location << index << locationValue << ".ReplacementStrategy=" << StringUtils::URLEncode(ReplacementStrategyMapper::GetNameForReplacementStrategy(m_replacementStrategy)) << "&";
   }
 
   if(m_terminationDelayHasBeenSet)
@@ -78,7 +66,7 @@ void SpotCapacityRebalance::OutputToStream(Aws::OStream& oStream, const char* lo
 {
   if(m_replacementStrategyHasBeenSet)
   {
-      oStream << location << ".ReplacementStrategy=" << ReplacementStrategyMapper::GetNameForReplacementStrategy(m_replacementStrategy) << "&";
+      oStream << location << ".ReplacementStrategy=" << StringUtils::URLEncode(ReplacementStrategyMapper::GetNameForReplacementStrategy(m_replacementStrategy)) << "&";
   }
   if(m_terminationDelayHasBeenSet)
   {

@@ -34,557 +34,232 @@ namespace Model
   class GetTaskTemplateResult
   {
   public:
-    AWS_CONNECT_API GetTaskTemplateResult();
+    AWS_CONNECT_API GetTaskTemplateResult() = default;
     AWS_CONNECT_API GetTaskTemplateResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CONNECT_API GetTaskTemplateResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The identifier of the Amazon Connect instance. You can <a
      * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
      * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    GetTaskTemplateResult& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceId = value; }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceId = std::move(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceId.assign(value); }
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline GetTaskTemplateResult& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline GetTaskTemplateResult& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the Amazon Connect instance. You can <a
-     * href="https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html">find
-     * the instance ID</a> in the Amazon Resource Name (ARN) of the instance.</p>
-     */
-    inline GetTaskTemplateResult& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A unique identifier for the task template.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetTaskTemplateResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A unique identifier for the task template.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_id = value; }
-
-    /**
-     * <p>A unique identifier for the task template.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>A unique identifier for the task template.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>A unique identifier for the task template.</p>
-     */
-    inline GetTaskTemplateResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>A unique identifier for the task template.</p>
-     */
-    inline GetTaskTemplateResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>A unique identifier for the task template.</p>
-     */
-    inline GetTaskTemplateResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN).</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
+    inline const Aws::String& GetArn() const { return m_arn; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    GetTaskTemplateResult& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN).</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN).</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN).</p>
-     */
-    inline void SetArn(const char* value) { m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN).</p>
-     */
-    inline GetTaskTemplateResult& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN).</p>
-     */
-    inline GetTaskTemplateResult& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN).</p>
-     */
-    inline GetTaskTemplateResult& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the task template.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
+    inline const Aws::String& GetName() const { return m_name; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    GetTaskTemplateResult& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the task template.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_name = value; }
-
-    /**
-     * <p>The name of the task template.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_name = std::move(value); }
-
-    /**
-     * <p>The name of the task template.</p>
-     */
-    inline void SetName(const char* value) { m_name.assign(value); }
-
-    /**
-     * <p>The name of the task template.</p>
-     */
-    inline GetTaskTemplateResult& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the task template.</p>
-     */
-    inline GetTaskTemplateResult& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the task template.</p>
-     */
-    inline GetTaskTemplateResult& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the task template.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
+    inline const Aws::String& GetDescription() const { return m_description; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    GetTaskTemplateResult& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the task template.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_description = value; }
-
-    /**
-     * <p>The description of the task template.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_description = std::move(value); }
-
-    /**
-     * <p>The description of the task template.</p>
-     */
-    inline void SetDescription(const char* value) { m_description.assign(value); }
-
-    /**
-     * <p>The description of the task template.</p>
-     */
-    inline GetTaskTemplateResult& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the task template.</p>
-     */
-    inline GetTaskTemplateResult& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the task template.</p>
-     */
-    inline GetTaskTemplateResult& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the flow that runs by default when a task is created by
      * referencing this template.</p>
      */
-    inline const Aws::String& GetContactFlowId() const{ return m_contactFlowId; }
+    inline const Aws::String& GetContactFlowId() const { return m_contactFlowId; }
+    template<typename ContactFlowIdT = Aws::String>
+    void SetContactFlowId(ContactFlowIdT&& value) { m_contactFlowIdHasBeenSet = true; m_contactFlowId = std::forward<ContactFlowIdT>(value); }
+    template<typename ContactFlowIdT = Aws::String>
+    GetTaskTemplateResult& WithContactFlowId(ContactFlowIdT&& value) { SetContactFlowId(std::forward<ContactFlowIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The identifier of the flow that runs by default when a task is created by
-     * referencing this template.</p>
+     * <p>The ContactFlowId for the flow that will be run if this template is used to
+     * create a self-assigned task.</p>
      */
-    inline void SetContactFlowId(const Aws::String& value) { m_contactFlowId = value; }
+    inline const Aws::String& GetSelfAssignFlowId() const { return m_selfAssignFlowId; }
+    template<typename SelfAssignFlowIdT = Aws::String>
+    void SetSelfAssignFlowId(SelfAssignFlowIdT&& value) { m_selfAssignFlowIdHasBeenSet = true; m_selfAssignFlowId = std::forward<SelfAssignFlowIdT>(value); }
+    template<typename SelfAssignFlowIdT = Aws::String>
+    GetTaskTemplateResult& WithSelfAssignFlowId(SelfAssignFlowIdT&& value) { SetSelfAssignFlowId(std::forward<SelfAssignFlowIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the flow that runs by default when a task is created by
-     * referencing this template.</p>
-     */
-    inline void SetContactFlowId(Aws::String&& value) { m_contactFlowId = std::move(value); }
-
-    /**
-     * <p>The identifier of the flow that runs by default when a task is created by
-     * referencing this template.</p>
-     */
-    inline void SetContactFlowId(const char* value) { m_contactFlowId.assign(value); }
-
-    /**
-     * <p>The identifier of the flow that runs by default when a task is created by
-     * referencing this template.</p>
-     */
-    inline GetTaskTemplateResult& WithContactFlowId(const Aws::String& value) { SetContactFlowId(value); return *this;}
-
-    /**
-     * <p>The identifier of the flow that runs by default when a task is created by
-     * referencing this template.</p>
-     */
-    inline GetTaskTemplateResult& WithContactFlowId(Aws::String&& value) { SetContactFlowId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the flow that runs by default when a task is created by
-     * referencing this template.</p>
-     */
-    inline GetTaskTemplateResult& WithContactFlowId(const char* value) { SetContactFlowId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Constraints that are applicable to the fields listed.</p>
      */
-    inline const TaskTemplateConstraints& GetConstraints() const{ return m_constraints; }
+    inline const TaskTemplateConstraints& GetConstraints() const { return m_constraints; }
+    template<typename ConstraintsT = TaskTemplateConstraints>
+    void SetConstraints(ConstraintsT&& value) { m_constraintsHasBeenSet = true; m_constraints = std::forward<ConstraintsT>(value); }
+    template<typename ConstraintsT = TaskTemplateConstraints>
+    GetTaskTemplateResult& WithConstraints(ConstraintsT&& value) { SetConstraints(std::forward<ConstraintsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Constraints that are applicable to the fields listed.</p>
-     */
-    inline void SetConstraints(const TaskTemplateConstraints& value) { m_constraints = value; }
-
-    /**
-     * <p>Constraints that are applicable to the fields listed.</p>
-     */
-    inline void SetConstraints(TaskTemplateConstraints&& value) { m_constraints = std::move(value); }
-
-    /**
-     * <p>Constraints that are applicable to the fields listed.</p>
-     */
-    inline GetTaskTemplateResult& WithConstraints(const TaskTemplateConstraints& value) { SetConstraints(value); return *this;}
-
-    /**
-     * <p>Constraints that are applicable to the fields listed.</p>
-     */
-    inline GetTaskTemplateResult& WithConstraints(TaskTemplateConstraints&& value) { SetConstraints(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The default values for fields when a task is created by referencing this
      * template.</p>
      */
-    inline const TaskTemplateDefaults& GetDefaults() const{ return m_defaults; }
+    inline const TaskTemplateDefaults& GetDefaults() const { return m_defaults; }
+    template<typename DefaultsT = TaskTemplateDefaults>
+    void SetDefaults(DefaultsT&& value) { m_defaultsHasBeenSet = true; m_defaults = std::forward<DefaultsT>(value); }
+    template<typename DefaultsT = TaskTemplateDefaults>
+    GetTaskTemplateResult& WithDefaults(DefaultsT&& value) { SetDefaults(std::forward<DefaultsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The default values for fields when a task is created by referencing this
-     * template.</p>
-     */
-    inline void SetDefaults(const TaskTemplateDefaults& value) { m_defaults = value; }
-
-    /**
-     * <p>The default values for fields when a task is created by referencing this
-     * template.</p>
-     */
-    inline void SetDefaults(TaskTemplateDefaults&& value) { m_defaults = std::move(value); }
-
-    /**
-     * <p>The default values for fields when a task is created by referencing this
-     * template.</p>
-     */
-    inline GetTaskTemplateResult& WithDefaults(const TaskTemplateDefaults& value) { SetDefaults(value); return *this;}
-
-    /**
-     * <p>The default values for fields when a task is created by referencing this
-     * template.</p>
-     */
-    inline GetTaskTemplateResult& WithDefaults(TaskTemplateDefaults&& value) { SetDefaults(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Fields that are part of the template.</p>
      */
-    inline const Aws::Vector<TaskTemplateField>& GetFields() const{ return m_fields; }
+    inline const Aws::Vector<TaskTemplateField>& GetFields() const { return m_fields; }
+    template<typename FieldsT = Aws::Vector<TaskTemplateField>>
+    void SetFields(FieldsT&& value) { m_fieldsHasBeenSet = true; m_fields = std::forward<FieldsT>(value); }
+    template<typename FieldsT = Aws::Vector<TaskTemplateField>>
+    GetTaskTemplateResult& WithFields(FieldsT&& value) { SetFields(std::forward<FieldsT>(value)); return *this;}
+    template<typename FieldsT = TaskTemplateField>
+    GetTaskTemplateResult& AddFields(FieldsT&& value) { m_fieldsHasBeenSet = true; m_fields.emplace_back(std::forward<FieldsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Fields that are part of the template.</p>
-     */
-    inline void SetFields(const Aws::Vector<TaskTemplateField>& value) { m_fields = value; }
-
-    /**
-     * <p>Fields that are part of the template.</p>
-     */
-    inline void SetFields(Aws::Vector<TaskTemplateField>&& value) { m_fields = std::move(value); }
-
-    /**
-     * <p>Fields that are part of the template.</p>
-     */
-    inline GetTaskTemplateResult& WithFields(const Aws::Vector<TaskTemplateField>& value) { SetFields(value); return *this;}
-
-    /**
-     * <p>Fields that are part of the template.</p>
-     */
-    inline GetTaskTemplateResult& WithFields(Aws::Vector<TaskTemplateField>&& value) { SetFields(std::move(value)); return *this;}
-
-    /**
-     * <p>Fields that are part of the template.</p>
-     */
-    inline GetTaskTemplateResult& AddFields(const TaskTemplateField& value) { m_fields.push_back(value); return *this; }
-
-    /**
-     * <p>Fields that are part of the template.</p>
-     */
-    inline GetTaskTemplateResult& AddFields(TaskTemplateField&& value) { m_fields.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>Marks a template as <code>ACTIVE</code> or <code>INACTIVE</code> for a task
      * to refer to it. Tasks can only be created from <code>ACTIVE</code> templates. If
      * a template is marked as <code>INACTIVE</code>, then a task that refers to this
      * template cannot be created.</p>
      */
-    inline const TaskTemplateStatus& GetStatus() const{ return m_status; }
+    inline TaskTemplateStatus GetStatus() const { return m_status; }
+    inline void SetStatus(TaskTemplateStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetTaskTemplateResult& WithStatus(TaskTemplateStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Marks a template as <code>ACTIVE</code> or <code>INACTIVE</code> for a task
-     * to refer to it. Tasks can only be created from <code>ACTIVE</code> templates. If
-     * a template is marked as <code>INACTIVE</code>, then a task that refers to this
-     * template cannot be created.</p>
-     */
-    inline void SetStatus(const TaskTemplateStatus& value) { m_status = value; }
-
-    /**
-     * <p>Marks a template as <code>ACTIVE</code> or <code>INACTIVE</code> for a task
-     * to refer to it. Tasks can only be created from <code>ACTIVE</code> templates. If
-     * a template is marked as <code>INACTIVE</code>, then a task that refers to this
-     * template cannot be created.</p>
-     */
-    inline void SetStatus(TaskTemplateStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>Marks a template as <code>ACTIVE</code> or <code>INACTIVE</code> for a task
-     * to refer to it. Tasks can only be created from <code>ACTIVE</code> templates. If
-     * a template is marked as <code>INACTIVE</code>, then a task that refers to this
-     * template cannot be created.</p>
-     */
-    inline GetTaskTemplateResult& WithStatus(const TaskTemplateStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>Marks a template as <code>ACTIVE</code> or <code>INACTIVE</code> for a task
-     * to refer to it. Tasks can only be created from <code>ACTIVE</code> templates. If
-     * a template is marked as <code>INACTIVE</code>, then a task that refers to this
-     * template cannot be created.</p>
-     */
-    inline GetTaskTemplateResult& WithStatus(TaskTemplateStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the task template was last modified.</p>
      */
-    inline const Aws::Utils::DateTime& GetLastModifiedTime() const{ return m_lastModifiedTime; }
+    inline const Aws::Utils::DateTime& GetLastModifiedTime() const { return m_lastModifiedTime; }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    void SetLastModifiedTime(LastModifiedTimeT&& value) { m_lastModifiedTimeHasBeenSet = true; m_lastModifiedTime = std::forward<LastModifiedTimeT>(value); }
+    template<typename LastModifiedTimeT = Aws::Utils::DateTime>
+    GetTaskTemplateResult& WithLastModifiedTime(LastModifiedTimeT&& value) { SetLastModifiedTime(std::forward<LastModifiedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the task template was last modified.</p>
-     */
-    inline void SetLastModifiedTime(const Aws::Utils::DateTime& value) { m_lastModifiedTime = value; }
-
-    /**
-     * <p>The timestamp when the task template was last modified.</p>
-     */
-    inline void SetLastModifiedTime(Aws::Utils::DateTime&& value) { m_lastModifiedTime = std::move(value); }
-
-    /**
-     * <p>The timestamp when the task template was last modified.</p>
-     */
-    inline GetTaskTemplateResult& WithLastModifiedTime(const Aws::Utils::DateTime& value) { SetLastModifiedTime(value); return *this;}
-
-    /**
-     * <p>The timestamp when the task template was last modified.</p>
-     */
-    inline GetTaskTemplateResult& WithLastModifiedTime(Aws::Utils::DateTime&& value) { SetLastModifiedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp when the task template was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedTime() const{ return m_createdTime; }
+    inline const Aws::Utils::DateTime& GetCreatedTime() const { return m_createdTime; }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    void SetCreatedTime(CreatedTimeT&& value) { m_createdTimeHasBeenSet = true; m_createdTime = std::forward<CreatedTimeT>(value); }
+    template<typename CreatedTimeT = Aws::Utils::DateTime>
+    GetTaskTemplateResult& WithCreatedTime(CreatedTimeT&& value) { SetCreatedTime(std::forward<CreatedTimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp when the task template was created.</p>
-     */
-    inline void SetCreatedTime(const Aws::Utils::DateTime& value) { m_createdTime = value; }
-
-    /**
-     * <p>The timestamp when the task template was created.</p>
-     */
-    inline void SetCreatedTime(Aws::Utils::DateTime&& value) { m_createdTime = std::move(value); }
-
-    /**
-     * <p>The timestamp when the task template was created.</p>
-     */
-    inline GetTaskTemplateResult& WithCreatedTime(const Aws::Utils::DateTime& value) { SetCreatedTime(value); return *this;}
-
-    /**
-     * <p>The timestamp when the task template was created.</p>
-     */
-    inline GetTaskTemplateResult& WithCreatedTime(Aws::Utils::DateTime&& value) { SetCreatedTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags used to organize, track, or control access for this resource. For
      * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    GetTaskTemplateResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    GetTaskTemplateResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetTaskTemplateResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetTaskTemplateResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetTaskTemplateResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetTaskTemplateResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetTaskTemplateResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetTaskTemplateResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetTaskTemplateResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetTaskTemplateResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags used to organize, track, or control access for this resource. For
-     * example, { "Tags": {"key1":"value1", "key2":"value2"} }.</p>
-     */
-    inline GetTaskTemplateResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetTaskTemplateResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetTaskTemplateResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetTaskTemplateResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetTaskTemplateResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceId;
+    bool m_instanceIdHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
 
     Aws::String m_arn;
+    bool m_arnHasBeenSet = false;
 
     Aws::String m_name;
+    bool m_nameHasBeenSet = false;
 
     Aws::String m_description;
+    bool m_descriptionHasBeenSet = false;
 
     Aws::String m_contactFlowId;
+    bool m_contactFlowIdHasBeenSet = false;
+
+    Aws::String m_selfAssignFlowId;
+    bool m_selfAssignFlowIdHasBeenSet = false;
 
     TaskTemplateConstraints m_constraints;
+    bool m_constraintsHasBeenSet = false;
 
     TaskTemplateDefaults m_defaults;
+    bool m_defaultsHasBeenSet = false;
 
     Aws::Vector<TaskTemplateField> m_fields;
+    bool m_fieldsHasBeenSet = false;
 
-    TaskTemplateStatus m_status;
+    TaskTemplateStatus m_status{TaskTemplateStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_lastModifiedTime;
+    Aws::Utils::DateTime m_lastModifiedTime{};
+    bool m_lastModifiedTimeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_createdTime;
+    Aws::Utils::DateTime m_createdTime{};
+    bool m_createdTimeHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

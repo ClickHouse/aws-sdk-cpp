@@ -29,111 +29,53 @@ namespace Model
   class ListVariantStoresResult
   {
   public:
-    AWS_OMICS_API ListVariantStoresResult();
+    AWS_OMICS_API ListVariantStoresResult() = default;
     AWS_OMICS_API ListVariantStoresResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_OMICS_API ListVariantStoresResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>A list of variant stores.</p>
      */
-    inline const Aws::Vector<VariantStoreItem>& GetVariantStores() const{ return m_variantStores; }
+    inline const Aws::Vector<VariantStoreItem>& GetVariantStores() const { return m_variantStores; }
+    template<typename VariantStoresT = Aws::Vector<VariantStoreItem>>
+    void SetVariantStores(VariantStoresT&& value) { m_variantStoresHasBeenSet = true; m_variantStores = std::forward<VariantStoresT>(value); }
+    template<typename VariantStoresT = Aws::Vector<VariantStoreItem>>
+    ListVariantStoresResult& WithVariantStores(VariantStoresT&& value) { SetVariantStores(std::forward<VariantStoresT>(value)); return *this;}
+    template<typename VariantStoresT = VariantStoreItem>
+    ListVariantStoresResult& AddVariantStores(VariantStoresT&& value) { m_variantStoresHasBeenSet = true; m_variantStores.emplace_back(std::forward<VariantStoresT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of variant stores.</p>
-     */
-    inline void SetVariantStores(const Aws::Vector<VariantStoreItem>& value) { m_variantStores = value; }
-
-    /**
-     * <p>A list of variant stores.</p>
-     */
-    inline void SetVariantStores(Aws::Vector<VariantStoreItem>&& value) { m_variantStores = std::move(value); }
-
-    /**
-     * <p>A list of variant stores.</p>
-     */
-    inline ListVariantStoresResult& WithVariantStores(const Aws::Vector<VariantStoreItem>& value) { SetVariantStores(value); return *this;}
-
-    /**
-     * <p>A list of variant stores.</p>
-     */
-    inline ListVariantStoresResult& WithVariantStores(Aws::Vector<VariantStoreItem>&& value) { SetVariantStores(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of variant stores.</p>
-     */
-    inline ListVariantStoresResult& AddVariantStores(const VariantStoreItem& value) { m_variantStores.push_back(value); return *this; }
-
-    /**
-     * <p>A list of variant stores.</p>
-     */
-    inline ListVariantStoresResult& AddVariantStores(VariantStoreItem&& value) { m_variantStores.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>A pagination token that's included if more results are available.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListVariantStoresResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline ListVariantStoresResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline ListVariantStoresResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A pagination token that's included if more results are available.</p>
-     */
-    inline ListVariantStoresResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListVariantStoresResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListVariantStoresResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListVariantStoresResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListVariantStoresResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<VariantStoreItem> m_variantStores;
+    bool m_variantStoresHasBeenSet = false;
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

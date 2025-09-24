@@ -21,7 +21,7 @@ namespace Model
   class GetImportTaskRequest : public NeptuneGraphRequest
   {
   public:
-    AWS_NEPTUNEGRAPH_API GetImportTaskRequest();
+    AWS_NEPTUNEGRAPH_API GetImportTaskRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,46 +36,17 @@ namespace Model
      */
     AWS_NEPTUNEGRAPH_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The unique identifier of the import task.</p>
      */
-    inline const Aws::String& GetTaskIdentifier() const{ return m_taskIdentifier; }
-
-    /**
-     * <p>The unique identifier of the import task.</p>
-     */
+    inline const Aws::String& GetTaskIdentifier() const { return m_taskIdentifier; }
     inline bool TaskIdentifierHasBeenSet() const { return m_taskIdentifierHasBeenSet; }
-
-    /**
-     * <p>The unique identifier of the import task.</p>
-     */
-    inline void SetTaskIdentifier(const Aws::String& value) { m_taskIdentifierHasBeenSet = true; m_taskIdentifier = value; }
-
-    /**
-     * <p>The unique identifier of the import task.</p>
-     */
-    inline void SetTaskIdentifier(Aws::String&& value) { m_taskIdentifierHasBeenSet = true; m_taskIdentifier = std::move(value); }
-
-    /**
-     * <p>The unique identifier of the import task.</p>
-     */
-    inline void SetTaskIdentifier(const char* value) { m_taskIdentifierHasBeenSet = true; m_taskIdentifier.assign(value); }
-
-    /**
-     * <p>The unique identifier of the import task.</p>
-     */
-    inline GetImportTaskRequest& WithTaskIdentifier(const Aws::String& value) { SetTaskIdentifier(value); return *this;}
-
-    /**
-     * <p>The unique identifier of the import task.</p>
-     */
-    inline GetImportTaskRequest& WithTaskIdentifier(Aws::String&& value) { SetTaskIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The unique identifier of the import task.</p>
-     */
-    inline GetImportTaskRequest& WithTaskIdentifier(const char* value) { SetTaskIdentifier(value); return *this;}
-
+    template<typename TaskIdentifierT = Aws::String>
+    void SetTaskIdentifier(TaskIdentifierT&& value) { m_taskIdentifierHasBeenSet = true; m_taskIdentifier = std::forward<TaskIdentifierT>(value); }
+    template<typename TaskIdentifierT = Aws::String>
+    GetImportTaskRequest& WithTaskIdentifier(TaskIdentifierT&& value) { SetTaskIdentifier(std::forward<TaskIdentifierT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_taskIdentifier;

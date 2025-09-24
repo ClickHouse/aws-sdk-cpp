@@ -18,19 +18,7 @@ namespace DeviceFarm
 namespace Model
 {
 
-Location::Location() : 
-    m_latitude(0.0),
-    m_latitudeHasBeenSet(false),
-    m_longitude(0.0),
-    m_longitudeHasBeenSet(false)
-{
-}
-
-Location::Location(JsonView jsonValue) : 
-    m_latitude(0.0),
-    m_latitudeHasBeenSet(false),
-    m_longitude(0.0),
-    m_longitudeHasBeenSet(false)
+Location::Location(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ Location& Location::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("latitude"))
   {
     m_latitude = jsonValue.GetDouble("latitude");
-
     m_latitudeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("longitude"))
   {
     m_longitude = jsonValue.GetDouble("longitude");
-
     m_longitudeHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -26,99 +26,47 @@ namespace Model
 {
 
   /**
-   * <p>The compromised credentials risk configuration type.</p><p><h3>See Also:</h3>
-   * <a
+   * <p>Settings for compromised-credentials actions and authentication-event sources
+   * with threat protection in full-function <code>ENFORCED</code>
+   * mode.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/CompromisedCredentialsRiskConfigurationType">AWS
    * API Reference</a></p>
    */
   class CompromisedCredentialsRiskConfigurationType
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API CompromisedCredentialsRiskConfigurationType();
+    AWS_COGNITOIDENTITYPROVIDER_API CompromisedCredentialsRiskConfigurationType() = default;
     AWS_COGNITOIDENTITYPROVIDER_API CompromisedCredentialsRiskConfigurationType(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API CompromisedCredentialsRiskConfigurationType& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COGNITOIDENTITYPROVIDER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>Perform the action for these events. The default is to perform all events if
-     * no event filter is specified.</p>
+     * <p>Settings for the sign-in activity where you want to configure
+     * compromised-credentials actions. Defaults to all events.</p>
      */
-    inline const Aws::Vector<EventFilterType>& GetEventFilter() const{ return m_eventFilter; }
-
-    /**
-     * <p>Perform the action for these events. The default is to perform all events if
-     * no event filter is specified.</p>
-     */
+    inline const Aws::Vector<EventFilterType>& GetEventFilter() const { return m_eventFilter; }
     inline bool EventFilterHasBeenSet() const { return m_eventFilterHasBeenSet; }
+    template<typename EventFilterT = Aws::Vector<EventFilterType>>
+    void SetEventFilter(EventFilterT&& value) { m_eventFilterHasBeenSet = true; m_eventFilter = std::forward<EventFilterT>(value); }
+    template<typename EventFilterT = Aws::Vector<EventFilterType>>
+    CompromisedCredentialsRiskConfigurationType& WithEventFilter(EventFilterT&& value) { SetEventFilter(std::forward<EventFilterT>(value)); return *this;}
+    inline CompromisedCredentialsRiskConfigurationType& AddEventFilter(EventFilterType value) { m_eventFilterHasBeenSet = true; m_eventFilter.push_back(value); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>Perform the action for these events. The default is to perform all events if
-     * no event filter is specified.</p>
+     * <p>Settings for the actions that you want your user pool to take when Amazon
+     * Cognito detects compromised credentials.</p>
      */
-    inline void SetEventFilter(const Aws::Vector<EventFilterType>& value) { m_eventFilterHasBeenSet = true; m_eventFilter = value; }
-
-    /**
-     * <p>Perform the action for these events. The default is to perform all events if
-     * no event filter is specified.</p>
-     */
-    inline void SetEventFilter(Aws::Vector<EventFilterType>&& value) { m_eventFilterHasBeenSet = true; m_eventFilter = std::move(value); }
-
-    /**
-     * <p>Perform the action for these events. The default is to perform all events if
-     * no event filter is specified.</p>
-     */
-    inline CompromisedCredentialsRiskConfigurationType& WithEventFilter(const Aws::Vector<EventFilterType>& value) { SetEventFilter(value); return *this;}
-
-    /**
-     * <p>Perform the action for these events. The default is to perform all events if
-     * no event filter is specified.</p>
-     */
-    inline CompromisedCredentialsRiskConfigurationType& WithEventFilter(Aws::Vector<EventFilterType>&& value) { SetEventFilter(std::move(value)); return *this;}
-
-    /**
-     * <p>Perform the action for these events. The default is to perform all events if
-     * no event filter is specified.</p>
-     */
-    inline CompromisedCredentialsRiskConfigurationType& AddEventFilter(const EventFilterType& value) { m_eventFilterHasBeenSet = true; m_eventFilter.push_back(value); return *this; }
-
-    /**
-     * <p>Perform the action for these events. The default is to perform all events if
-     * no event filter is specified.</p>
-     */
-    inline CompromisedCredentialsRiskConfigurationType& AddEventFilter(EventFilterType&& value) { m_eventFilterHasBeenSet = true; m_eventFilter.push_back(std::move(value)); return *this; }
-
-
-    /**
-     * <p>The compromised credentials risk configuration actions.</p>
-     */
-    inline const CompromisedCredentialsActionsType& GetActions() const{ return m_actions; }
-
-    /**
-     * <p>The compromised credentials risk configuration actions.</p>
-     */
+    inline const CompromisedCredentialsActionsType& GetActions() const { return m_actions; }
     inline bool ActionsHasBeenSet() const { return m_actionsHasBeenSet; }
-
-    /**
-     * <p>The compromised credentials risk configuration actions.</p>
-     */
-    inline void SetActions(const CompromisedCredentialsActionsType& value) { m_actionsHasBeenSet = true; m_actions = value; }
-
-    /**
-     * <p>The compromised credentials risk configuration actions.</p>
-     */
-    inline void SetActions(CompromisedCredentialsActionsType&& value) { m_actionsHasBeenSet = true; m_actions = std::move(value); }
-
-    /**
-     * <p>The compromised credentials risk configuration actions.</p>
-     */
-    inline CompromisedCredentialsRiskConfigurationType& WithActions(const CompromisedCredentialsActionsType& value) { SetActions(value); return *this;}
-
-    /**
-     * <p>The compromised credentials risk configuration actions.</p>
-     */
-    inline CompromisedCredentialsRiskConfigurationType& WithActions(CompromisedCredentialsActionsType&& value) { SetActions(std::move(value)); return *this;}
-
+    template<typename ActionsT = CompromisedCredentialsActionsType>
+    void SetActions(ActionsT&& value) { m_actionsHasBeenSet = true; m_actions = std::forward<ActionsT>(value); }
+    template<typename ActionsT = CompromisedCredentialsActionsType>
+    CompromisedCredentialsRiskConfigurationType& WithActions(ActionsT&& value) { SetActions(std::forward<ActionsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Vector<EventFilterType> m_eventFilter;

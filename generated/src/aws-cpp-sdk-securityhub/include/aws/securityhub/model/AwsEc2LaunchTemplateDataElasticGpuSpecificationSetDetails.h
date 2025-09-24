@@ -32,52 +32,23 @@ namespace Model
   class AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails();
+    AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails() = default;
     AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p> The type of Elastic Graphics accelerator. </p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p> The type of Elastic Graphics accelerator. </p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p> The type of Elastic Graphics accelerator. </p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p> The type of Elastic Graphics accelerator. </p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p> The type of Elastic Graphics accelerator. </p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p> The type of Elastic Graphics accelerator. </p>
-     */
-    inline AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p> The type of Elastic Graphics accelerator. </p>
-     */
-    inline AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p> The type of Elastic Graphics accelerator. </p>
-     */
-    inline AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_type;

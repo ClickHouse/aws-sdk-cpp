@@ -20,27 +20,7 @@ namespace CloudSearch
 namespace Model
 {
 
-OptionStatus::OptionStatus() : 
-    m_creationDateHasBeenSet(false),
-    m_updateDateHasBeenSet(false),
-    m_updateVersion(0),
-    m_updateVersionHasBeenSet(false),
-    m_state(OptionState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_pendingDeletion(false),
-    m_pendingDeletionHasBeenSet(false)
-{
-}
-
-OptionStatus::OptionStatus(const XmlNode& xmlNode) : 
-    m_creationDateHasBeenSet(false),
-    m_updateDateHasBeenSet(false),
-    m_updateVersion(0),
-    m_updateVersionHasBeenSet(false),
-    m_state(OptionState::NOT_SET),
-    m_stateHasBeenSet(false),
-    m_pendingDeletion(false),
-    m_pendingDeletionHasBeenSet(false)
+OptionStatus::OptionStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -72,7 +52,7 @@ OptionStatus& OptionStatus::operator =(const XmlNode& xmlNode)
     XmlNode stateNode = resultNode.FirstChild("State");
     if(!stateNode.IsNull())
     {
-      m_state = OptionStateMapper::GetOptionStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()).c_str());
+      m_state = OptionStateMapper::GetOptionStateForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(stateNode.GetText()).c_str()));
       m_stateHasBeenSet = true;
     }
     XmlNode pendingDeletionNode = resultNode.FirstChild("PendingDeletion");
@@ -105,7 +85,7 @@ void OptionStatus::OutputToStream(Aws::OStream& oStream, const char* location, u
 
   if(m_stateHasBeenSet)
   {
-      oStream << location << index << locationValue << ".State=" << OptionStateMapper::GetNameForOptionState(m_state) << "&";
+      oStream << location << index << locationValue << ".State=" << StringUtils::URLEncode(OptionStateMapper::GetNameForOptionState(m_state)) << "&";
   }
 
   if(m_pendingDeletionHasBeenSet)
@@ -131,7 +111,7 @@ void OptionStatus::OutputToStream(Aws::OStream& oStream, const char* location) c
   }
   if(m_stateHasBeenSet)
   {
-      oStream << location << ".State=" << OptionStateMapper::GetNameForOptionState(m_state) << "&";
+      oStream << location << ".State=" << StringUtils::URLEncode(OptionStateMapper::GetNameForOptionState(m_state)) << "&";
   }
   if(m_pendingDeletionHasBeenSet)
   {

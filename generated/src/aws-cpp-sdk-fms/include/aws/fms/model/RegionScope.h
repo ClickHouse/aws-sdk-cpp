@@ -33,97 +33,43 @@ namespace Model
   class RegionScope
   {
   public:
-    AWS_FMS_API RegionScope();
+    AWS_FMS_API RegionScope() = default;
     AWS_FMS_API RegionScope(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API RegionScope& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services Regions that the specified Firewall Manager
      * administrator can perform actions in.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetRegions() const{ return m_regions; }
-
-    /**
-     * <p>The Amazon Web Services Regions that the specified Firewall Manager
-     * administrator can perform actions in.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetRegions() const { return m_regions; }
     inline bool RegionsHasBeenSet() const { return m_regionsHasBeenSet; }
+    template<typename RegionsT = Aws::Vector<Aws::String>>
+    void SetRegions(RegionsT&& value) { m_regionsHasBeenSet = true; m_regions = std::forward<RegionsT>(value); }
+    template<typename RegionsT = Aws::Vector<Aws::String>>
+    RegionScope& WithRegions(RegionsT&& value) { SetRegions(std::forward<RegionsT>(value)); return *this;}
+    template<typename RegionsT = Aws::String>
+    RegionScope& AddRegions(RegionsT&& value) { m_regionsHasBeenSet = true; m_regions.emplace_back(std::forward<RegionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services Regions that the specified Firewall Manager
-     * administrator can perform actions in.</p>
-     */
-    inline void SetRegions(const Aws::Vector<Aws::String>& value) { m_regionsHasBeenSet = true; m_regions = value; }
-
-    /**
-     * <p>The Amazon Web Services Regions that the specified Firewall Manager
-     * administrator can perform actions in.</p>
-     */
-    inline void SetRegions(Aws::Vector<Aws::String>&& value) { m_regionsHasBeenSet = true; m_regions = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services Regions that the specified Firewall Manager
-     * administrator can perform actions in.</p>
-     */
-    inline RegionScope& WithRegions(const Aws::Vector<Aws::String>& value) { SetRegions(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Regions that the specified Firewall Manager
-     * administrator can perform actions in.</p>
-     */
-    inline RegionScope& WithRegions(Aws::Vector<Aws::String>&& value) { SetRegions(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services Regions that the specified Firewall Manager
-     * administrator can perform actions in.</p>
-     */
-    inline RegionScope& AddRegions(const Aws::String& value) { m_regionsHasBeenSet = true; m_regions.push_back(value); return *this; }
-
-    /**
-     * <p>The Amazon Web Services Regions that the specified Firewall Manager
-     * administrator can perform actions in.</p>
-     */
-    inline RegionScope& AddRegions(Aws::String&& value) { m_regionsHasBeenSet = true; m_regions.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The Amazon Web Services Regions that the specified Firewall Manager
-     * administrator can perform actions in.</p>
-     */
-    inline RegionScope& AddRegions(const char* value) { m_regionsHasBeenSet = true; m_regions.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>Allows the specified Firewall Manager administrator to manage all Amazon Web
      * Services Regions.</p>
      */
-    inline bool GetAllRegionsEnabled() const{ return m_allRegionsEnabled; }
-
-    /**
-     * <p>Allows the specified Firewall Manager administrator to manage all Amazon Web
-     * Services Regions.</p>
-     */
+    inline bool GetAllRegionsEnabled() const { return m_allRegionsEnabled; }
     inline bool AllRegionsEnabledHasBeenSet() const { return m_allRegionsEnabledHasBeenSet; }
-
-    /**
-     * <p>Allows the specified Firewall Manager administrator to manage all Amazon Web
-     * Services Regions.</p>
-     */
     inline void SetAllRegionsEnabled(bool value) { m_allRegionsEnabledHasBeenSet = true; m_allRegionsEnabled = value; }
-
-    /**
-     * <p>Allows the specified Firewall Manager administrator to manage all Amazon Web
-     * Services Regions.</p>
-     */
     inline RegionScope& WithAllRegionsEnabled(bool value) { SetAllRegionsEnabled(value); return *this;}
-
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_regions;
     bool m_regionsHasBeenSet = false;
 
-    bool m_allRegionsEnabled;
+    bool m_allRegionsEnabled{false};
     bool m_allRegionsEnabledHasBeenSet = false;
   };
 

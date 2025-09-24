@@ -35,82 +35,35 @@ namespace Model
   class FileSystemEndpoint
   {
   public:
-    AWS_FSX_API FileSystemEndpoint();
+    AWS_FSX_API FileSystemEndpoint() = default;
     AWS_FSX_API FileSystemEndpoint(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API FileSystemEndpoint& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FSX_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetDNSName() const{ return m_dNSName; }
-
-    
+    inline const Aws::String& GetDNSName() const { return m_dNSName; }
     inline bool DNSNameHasBeenSet() const { return m_dNSNameHasBeenSet; }
+    template<typename DNSNameT = Aws::String>
+    void SetDNSName(DNSNameT&& value) { m_dNSNameHasBeenSet = true; m_dNSName = std::forward<DNSNameT>(value); }
+    template<typename DNSNameT = Aws::String>
+    FileSystemEndpoint& WithDNSName(DNSNameT&& value) { SetDNSName(std::forward<DNSNameT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetDNSName(const Aws::String& value) { m_dNSNameHasBeenSet = true; m_dNSName = value; }
-
-    
-    inline void SetDNSName(Aws::String&& value) { m_dNSNameHasBeenSet = true; m_dNSName = std::move(value); }
-
-    
-    inline void SetDNSName(const char* value) { m_dNSNameHasBeenSet = true; m_dNSName.assign(value); }
-
-    
-    inline FileSystemEndpoint& WithDNSName(const Aws::String& value) { SetDNSName(value); return *this;}
-
-    
-    inline FileSystemEndpoint& WithDNSName(Aws::String&& value) { SetDNSName(std::move(value)); return *this;}
-
-    
-    inline FileSystemEndpoint& WithDNSName(const char* value) { SetDNSName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>IP addresses of the file system endpoint.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetIpAddresses() const{ return m_ipAddresses; }
-
-    /**
-     * <p>IP addresses of the file system endpoint.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetIpAddresses() const { return m_ipAddresses; }
     inline bool IpAddressesHasBeenSet() const { return m_ipAddressesHasBeenSet; }
-
-    /**
-     * <p>IP addresses of the file system endpoint.</p>
-     */
-    inline void SetIpAddresses(const Aws::Vector<Aws::String>& value) { m_ipAddressesHasBeenSet = true; m_ipAddresses = value; }
-
-    /**
-     * <p>IP addresses of the file system endpoint.</p>
-     */
-    inline void SetIpAddresses(Aws::Vector<Aws::String>&& value) { m_ipAddressesHasBeenSet = true; m_ipAddresses = std::move(value); }
-
-    /**
-     * <p>IP addresses of the file system endpoint.</p>
-     */
-    inline FileSystemEndpoint& WithIpAddresses(const Aws::Vector<Aws::String>& value) { SetIpAddresses(value); return *this;}
-
-    /**
-     * <p>IP addresses of the file system endpoint.</p>
-     */
-    inline FileSystemEndpoint& WithIpAddresses(Aws::Vector<Aws::String>&& value) { SetIpAddresses(std::move(value)); return *this;}
-
-    /**
-     * <p>IP addresses of the file system endpoint.</p>
-     */
-    inline FileSystemEndpoint& AddIpAddresses(const Aws::String& value) { m_ipAddressesHasBeenSet = true; m_ipAddresses.push_back(value); return *this; }
-
-    /**
-     * <p>IP addresses of the file system endpoint.</p>
-     */
-    inline FileSystemEndpoint& AddIpAddresses(Aws::String&& value) { m_ipAddressesHasBeenSet = true; m_ipAddresses.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>IP addresses of the file system endpoint.</p>
-     */
-    inline FileSystemEndpoint& AddIpAddresses(const char* value) { m_ipAddressesHasBeenSet = true; m_ipAddresses.push_back(value); return *this; }
-
+    template<typename IpAddressesT = Aws::Vector<Aws::String>>
+    void SetIpAddresses(IpAddressesT&& value) { m_ipAddressesHasBeenSet = true; m_ipAddresses = std::forward<IpAddressesT>(value); }
+    template<typename IpAddressesT = Aws::Vector<Aws::String>>
+    FileSystemEndpoint& WithIpAddresses(IpAddressesT&& value) { SetIpAddresses(std::forward<IpAddressesT>(value)); return *this;}
+    template<typename IpAddressesT = Aws::String>
+    FileSystemEndpoint& AddIpAddresses(IpAddressesT&& value) { m_ipAddressesHasBeenSet = true; m_ipAddresses.emplace_back(std::forward<IpAddressesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_dNSName;

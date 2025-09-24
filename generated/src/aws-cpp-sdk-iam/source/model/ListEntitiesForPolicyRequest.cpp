@@ -10,19 +10,6 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-ListEntitiesForPolicyRequest::ListEntitiesForPolicyRequest() : 
-    m_policyArnHasBeenSet(false),
-    m_entityFilter(EntityType::NOT_SET),
-    m_entityFilterHasBeenSet(false),
-    m_pathPrefixHasBeenSet(false),
-    m_policyUsageFilter(PolicyUsageType::NOT_SET),
-    m_policyUsageFilterHasBeenSet(false),
-    m_markerHasBeenSet(false),
-    m_maxItems(0),
-    m_maxItemsHasBeenSet(false)
-{
-}
-
 Aws::String ListEntitiesForPolicyRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -34,7 +21,7 @@ Aws::String ListEntitiesForPolicyRequest::SerializePayload() const
 
   if(m_entityFilterHasBeenSet)
   {
-    ss << "EntityFilter=" << EntityTypeMapper::GetNameForEntityType(m_entityFilter) << "&";
+    ss << "EntityFilter=" << StringUtils::URLEncode(EntityTypeMapper::GetNameForEntityType(m_entityFilter)) << "&";
   }
 
   if(m_pathPrefixHasBeenSet)
@@ -44,7 +31,7 @@ Aws::String ListEntitiesForPolicyRequest::SerializePayload() const
 
   if(m_policyUsageFilterHasBeenSet)
   {
-    ss << "PolicyUsageFilter=" << PolicyUsageTypeMapper::GetNameForPolicyUsageType(m_policyUsageFilter) << "&";
+    ss << "PolicyUsageFilter=" << StringUtils::URLEncode(PolicyUsageTypeMapper::GetNameForPolicyUsageType(m_policyUsageFilter)) << "&";
   }
 
   if(m_markerHasBeenSet)

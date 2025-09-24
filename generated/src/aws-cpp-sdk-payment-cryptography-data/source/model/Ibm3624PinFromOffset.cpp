@@ -18,19 +18,7 @@ namespace PaymentCryptographyData
 namespace Model
 {
 
-Ibm3624PinFromOffset::Ibm3624PinFromOffset() : 
-    m_decimalizationTableHasBeenSet(false),
-    m_pinOffsetHasBeenSet(false),
-    m_pinValidationDataHasBeenSet(false),
-    m_pinValidationDataPadCharacterHasBeenSet(false)
-{
-}
-
-Ibm3624PinFromOffset::Ibm3624PinFromOffset(JsonView jsonValue) : 
-    m_decimalizationTableHasBeenSet(false),
-    m_pinOffsetHasBeenSet(false),
-    m_pinValidationDataHasBeenSet(false),
-    m_pinValidationDataPadCharacterHasBeenSet(false)
+Ibm3624PinFromOffset::Ibm3624PinFromOffset(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ Ibm3624PinFromOffset& Ibm3624PinFromOffset::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("DecimalizationTable"))
   {
     m_decimalizationTable = jsonValue.GetString("DecimalizationTable");
-
     m_decimalizationTableHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("PinOffset"))
-  {
-    m_pinOffset = jsonValue.GetString("PinOffset");
-
-    m_pinOffsetHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("PinValidationData"))
-  {
-    m_pinValidationData = jsonValue.GetString("PinValidationData");
-
-    m_pinValidationDataHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("PinValidationDataPadCharacter"))
   {
     m_pinValidationDataPadCharacter = jsonValue.GetString("PinValidationDataPadCharacter");
-
     m_pinValidationDataPadCharacterHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("PinValidationData"))
+  {
+    m_pinValidationData = jsonValue.GetString("PinValidationData");
+    m_pinValidationDataHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("PinOffset"))
+  {
+    m_pinOffset = jsonValue.GetString("PinOffset");
+    m_pinOffsetHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,9 +58,9 @@ JsonValue Ibm3624PinFromOffset::Jsonize() const
 
   }
 
-  if(m_pinOffsetHasBeenSet)
+  if(m_pinValidationDataPadCharacterHasBeenSet)
   {
-   payload.WithString("PinOffset", m_pinOffset);
+   payload.WithString("PinValidationDataPadCharacter", m_pinValidationDataPadCharacter);
 
   }
 
@@ -90,9 +70,9 @@ JsonValue Ibm3624PinFromOffset::Jsonize() const
 
   }
 
-  if(m_pinValidationDataPadCharacterHasBeenSet)
+  if(m_pinOffsetHasBeenSet)
   {
-   payload.WithString("PinValidationDataPadCharacter", m_pinValidationDataPadCharacter);
+   payload.WithString("PinOffset", m_pinOffset);
 
   }
 

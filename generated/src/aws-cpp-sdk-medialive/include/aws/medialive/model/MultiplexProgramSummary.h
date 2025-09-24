@@ -31,93 +31,35 @@ namespace Model
   class MultiplexProgramSummary
   {
   public:
-    AWS_MEDIALIVE_API MultiplexProgramSummary();
+    AWS_MEDIALIVE_API MultiplexProgramSummary() = default;
     AWS_MEDIALIVE_API MultiplexProgramSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API MultiplexProgramSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MEDIALIVE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * The MediaLive Channel associated with the program.
      */
-    inline const Aws::String& GetChannelId() const{ return m_channelId; }
-
-    /**
-     * The MediaLive Channel associated with the program.
-     */
+    inline const Aws::String& GetChannelId() const { return m_channelId; }
     inline bool ChannelIdHasBeenSet() const { return m_channelIdHasBeenSet; }
+    template<typename ChannelIdT = Aws::String>
+    void SetChannelId(ChannelIdT&& value) { m_channelIdHasBeenSet = true; m_channelId = std::forward<ChannelIdT>(value); }
+    template<typename ChannelIdT = Aws::String>
+    MultiplexProgramSummary& WithChannelId(ChannelIdT&& value) { SetChannelId(std::forward<ChannelIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * The MediaLive Channel associated with the program.
-     */
-    inline void SetChannelId(const Aws::String& value) { m_channelIdHasBeenSet = true; m_channelId = value; }
-
-    /**
-     * The MediaLive Channel associated with the program.
-     */
-    inline void SetChannelId(Aws::String&& value) { m_channelIdHasBeenSet = true; m_channelId = std::move(value); }
-
-    /**
-     * The MediaLive Channel associated with the program.
-     */
-    inline void SetChannelId(const char* value) { m_channelIdHasBeenSet = true; m_channelId.assign(value); }
-
-    /**
-     * The MediaLive Channel associated with the program.
-     */
-    inline MultiplexProgramSummary& WithChannelId(const Aws::String& value) { SetChannelId(value); return *this;}
-
-    /**
-     * The MediaLive Channel associated with the program.
-     */
-    inline MultiplexProgramSummary& WithChannelId(Aws::String&& value) { SetChannelId(std::move(value)); return *this;}
-
-    /**
-     * The MediaLive Channel associated with the program.
-     */
-    inline MultiplexProgramSummary& WithChannelId(const char* value) { SetChannelId(value); return *this;}
-
-
+    ///@{
     /**
      * The name of the multiplex program.
      */
-    inline const Aws::String& GetProgramName() const{ return m_programName; }
-
-    /**
-     * The name of the multiplex program.
-     */
+    inline const Aws::String& GetProgramName() const { return m_programName; }
     inline bool ProgramNameHasBeenSet() const { return m_programNameHasBeenSet; }
-
-    /**
-     * The name of the multiplex program.
-     */
-    inline void SetProgramName(const Aws::String& value) { m_programNameHasBeenSet = true; m_programName = value; }
-
-    /**
-     * The name of the multiplex program.
-     */
-    inline void SetProgramName(Aws::String&& value) { m_programNameHasBeenSet = true; m_programName = std::move(value); }
-
-    /**
-     * The name of the multiplex program.
-     */
-    inline void SetProgramName(const char* value) { m_programNameHasBeenSet = true; m_programName.assign(value); }
-
-    /**
-     * The name of the multiplex program.
-     */
-    inline MultiplexProgramSummary& WithProgramName(const Aws::String& value) { SetProgramName(value); return *this;}
-
-    /**
-     * The name of the multiplex program.
-     */
-    inline MultiplexProgramSummary& WithProgramName(Aws::String&& value) { SetProgramName(std::move(value)); return *this;}
-
-    /**
-     * The name of the multiplex program.
-     */
-    inline MultiplexProgramSummary& WithProgramName(const char* value) { SetProgramName(value); return *this;}
-
+    template<typename ProgramNameT = Aws::String>
+    void SetProgramName(ProgramNameT&& value) { m_programNameHasBeenSet = true; m_programName = std::forward<ProgramNameT>(value); }
+    template<typename ProgramNameT = Aws::String>
+    MultiplexProgramSummary& WithProgramName(ProgramNameT&& value) { SetProgramName(std::forward<ProgramNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_channelId;

@@ -18,15 +18,7 @@ namespace MediaTailor
 namespace Model
 {
 
-CdnConfiguration::CdnConfiguration() : 
-    m_adSegmentUrlPrefixHasBeenSet(false),
-    m_contentSegmentUrlPrefixHasBeenSet(false)
-{
-}
-
-CdnConfiguration::CdnConfiguration(JsonView jsonValue) : 
-    m_adSegmentUrlPrefixHasBeenSet(false),
-    m_contentSegmentUrlPrefixHasBeenSet(false)
+CdnConfiguration::CdnConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ CdnConfiguration& CdnConfiguration::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AdSegmentUrlPrefix"))
   {
     m_adSegmentUrlPrefix = jsonValue.GetString("AdSegmentUrlPrefix");
-
     m_adSegmentUrlPrefixHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ContentSegmentUrlPrefix"))
   {
     m_contentSegmentUrlPrefix = jsonValue.GetString("ContentSegmentUrlPrefix");
-
     m_contentSegmentUrlPrefixHasBeenSet = true;
   }
-
   return *this;
 }
 

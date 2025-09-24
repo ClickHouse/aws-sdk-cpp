@@ -18,17 +18,7 @@ namespace CleanRooms
 namespace Model
 {
 
-AnalysisRulePolicyV1::AnalysisRulePolicyV1() : 
-    m_listHasBeenSet(false),
-    m_aggregationHasBeenSet(false),
-    m_customHasBeenSet(false)
-{
-}
-
-AnalysisRulePolicyV1::AnalysisRulePolicyV1(JsonView jsonValue) : 
-    m_listHasBeenSet(false),
-    m_aggregationHasBeenSet(false),
-    m_customHasBeenSet(false)
+AnalysisRulePolicyV1::AnalysisRulePolicyV1(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,23 @@ AnalysisRulePolicyV1& AnalysisRulePolicyV1::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("list"))
   {
     m_list = jsonValue.GetObject("list");
-
     m_listHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("aggregation"))
   {
     m_aggregation = jsonValue.GetObject("aggregation");
-
     m_aggregationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("custom"))
   {
     m_custom = jsonValue.GetObject("custom");
-
     m_customHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("idMappingTable"))
+  {
+    m_idMappingTable = jsonValue.GetObject("idMappingTable");
+    m_idMappingTableHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +67,12 @@ JsonValue AnalysisRulePolicyV1::Jsonize() const
   if(m_customHasBeenSet)
   {
    payload.WithObject("custom", m_custom.Jsonize());
+
+  }
+
+  if(m_idMappingTableHasBeenSet)
+  {
+   payload.WithObject("idMappingTable", m_idMappingTable.Jsonize());
 
   }
 

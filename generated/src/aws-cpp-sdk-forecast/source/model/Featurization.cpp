@@ -18,15 +18,7 @@ namespace ForecastService
 namespace Model
 {
 
-Featurization::Featurization() : 
-    m_attributeNameHasBeenSet(false),
-    m_featurizationPipelineHasBeenSet(false)
-{
-}
-
-Featurization::Featurization(JsonView jsonValue) : 
-    m_attributeNameHasBeenSet(false),
-    m_featurizationPipelineHasBeenSet(false)
+Featurization::Featurization(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ Featurization& Featurization::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AttributeName"))
   {
     m_attributeName = jsonValue.GetString("AttributeName");
-
     m_attributeNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("FeaturizationPipeline"))
   {
     Aws::Utils::Array<JsonView> featurizationPipelineJsonList = jsonValue.GetArray("FeaturizationPipeline");
@@ -49,7 +39,6 @@ Featurization& Featurization::operator =(JsonView jsonValue)
     }
     m_featurizationPipelineHasBeenSet = true;
   }
-
   return *this;
 }
 

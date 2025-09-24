@@ -18,17 +18,7 @@ namespace ServiceDiscovery
 namespace Model
 {
 
-ServiceAlreadyExists::ServiceAlreadyExists() : 
-    m_messageHasBeenSet(false),
-    m_creatorRequestIdHasBeenSet(false),
-    m_serviceIdHasBeenSet(false)
-{
-}
-
-ServiceAlreadyExists::ServiceAlreadyExists(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_creatorRequestIdHasBeenSet(false),
-    m_serviceIdHasBeenSet(false)
+ServiceAlreadyExists::ServiceAlreadyExists(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,23 @@ ServiceAlreadyExists& ServiceAlreadyExists::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CreatorRequestId"))
   {
     m_creatorRequestId = jsonValue.GetString("CreatorRequestId");
-
     m_creatorRequestIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ServiceId"))
   {
     m_serviceId = jsonValue.GetString("ServiceId");
-
     m_serviceIdHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ServiceArn"))
+  {
+    m_serviceArn = jsonValue.GetString("ServiceArn");
+    m_serviceArnHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,6 +67,12 @@ JsonValue ServiceAlreadyExists::Jsonize() const
   if(m_serviceIdHasBeenSet)
   {
    payload.WithString("ServiceId", m_serviceId);
+
+  }
+
+  if(m_serviceArnHasBeenSet)
+  {
+   payload.WithString("ServiceArn", m_serviceArn);
 
   }
 

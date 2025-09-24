@@ -18,45 +18,38 @@ namespace QBusiness
 namespace Model
 {
 
-SourceAttribution::SourceAttribution() : 
-    m_citationNumber(0),
-    m_citationNumberHasBeenSet(false),
-    m_snippetHasBeenSet(false),
-    m_textMessageSegmentsHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_updatedAtHasBeenSet(false),
-    m_urlHasBeenSet(false)
-{
-}
-
-SourceAttribution::SourceAttribution(JsonView jsonValue) : 
-    m_citationNumber(0),
-    m_citationNumberHasBeenSet(false),
-    m_snippetHasBeenSet(false),
-    m_textMessageSegmentsHasBeenSet(false),
-    m_titleHasBeenSet(false),
-    m_updatedAtHasBeenSet(false),
-    m_urlHasBeenSet(false)
+SourceAttribution::SourceAttribution(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 SourceAttribution& SourceAttribution::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("citationNumber"))
+  if(jsonValue.ValueExists("title"))
   {
-    m_citationNumber = jsonValue.GetInteger("citationNumber");
-
-    m_citationNumberHasBeenSet = true;
+    m_title = jsonValue.GetString("title");
+    m_titleHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("snippet"))
   {
     m_snippet = jsonValue.GetString("snippet");
-
     m_snippetHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("url"))
+  {
+    m_url = jsonValue.GetString("url");
+    m_urlHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("citationNumber"))
+  {
+    m_citationNumber = jsonValue.GetInteger("citationNumber");
+    m_citationNumberHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("updatedAt"))
+  {
+    m_updatedAt = jsonValue.GetDouble("updatedAt");
+    m_updatedAtHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("textMessageSegments"))
   {
     Aws::Utils::Array<JsonView> textMessageSegmentsJsonList = jsonValue.GetArray("textMessageSegments");
@@ -66,28 +59,21 @@ SourceAttribution& SourceAttribution::operator =(JsonView jsonValue)
     }
     m_textMessageSegmentsHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("title"))
+  if(jsonValue.ValueExists("documentId"))
   {
-    m_title = jsonValue.GetString("title");
-
-    m_titleHasBeenSet = true;
+    m_documentId = jsonValue.GetString("documentId");
+    m_documentIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("updatedAt"))
+  if(jsonValue.ValueExists("indexId"))
   {
-    m_updatedAt = jsonValue.GetDouble("updatedAt");
-
-    m_updatedAtHasBeenSet = true;
+    m_indexId = jsonValue.GetString("indexId");
+    m_indexIdHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("url"))
+  if(jsonValue.ValueExists("datasourceId"))
   {
-    m_url = jsonValue.GetString("url");
-
-    m_urlHasBeenSet = true;
+    m_datasourceId = jsonValue.GetString("datasourceId");
+    m_datasourceIdHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -95,9 +81,9 @@ JsonValue SourceAttribution::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_citationNumberHasBeenSet)
+  if(m_titleHasBeenSet)
   {
-   payload.WithInteger("citationNumber", m_citationNumber);
+   payload.WithString("title", m_title);
 
   }
 
@@ -105,6 +91,23 @@ JsonValue SourceAttribution::Jsonize() const
   {
    payload.WithString("snippet", m_snippet);
 
+  }
+
+  if(m_urlHasBeenSet)
+  {
+   payload.WithString("url", m_url);
+
+  }
+
+  if(m_citationNumberHasBeenSet)
+  {
+   payload.WithInteger("citationNumber", m_citationNumber);
+
+  }
+
+  if(m_updatedAtHasBeenSet)
+  {
+   payload.WithDouble("updatedAt", m_updatedAt.SecondsWithMSPrecision());
   }
 
   if(m_textMessageSegmentsHasBeenSet)
@@ -118,20 +121,21 @@ JsonValue SourceAttribution::Jsonize() const
 
   }
 
-  if(m_titleHasBeenSet)
+  if(m_documentIdHasBeenSet)
   {
-   payload.WithString("title", m_title);
+   payload.WithString("documentId", m_documentId);
 
   }
 
-  if(m_updatedAtHasBeenSet)
+  if(m_indexIdHasBeenSet)
   {
-   payload.WithDouble("updatedAt", m_updatedAt.SecondsWithMSPrecision());
+   payload.WithString("indexId", m_indexId);
+
   }
 
-  if(m_urlHasBeenSet)
+  if(m_datasourceIdHasBeenSet)
   {
-   payload.WithString("url", m_url);
+   payload.WithString("datasourceId", m_datasourceId);
 
   }
 

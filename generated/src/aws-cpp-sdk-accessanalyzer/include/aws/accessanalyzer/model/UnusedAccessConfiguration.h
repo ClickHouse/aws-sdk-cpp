@@ -5,6 +5,8 @@
 
 #pragma once
 #include <aws/accessanalyzer/AccessAnalyzer_EXPORTS.h>
+#include <aws/accessanalyzer/model/AnalysisRule.h>
+#include <utility>
 
 namespace Aws
 {
@@ -30,52 +32,42 @@ namespace Model
   class UnusedAccessConfiguration
   {
   public:
-    AWS_ACCESSANALYZER_API UnusedAccessConfiguration();
+    AWS_ACCESSANALYZER_API UnusedAccessConfiguration() = default;
     AWS_ACCESSANALYZER_API UnusedAccessConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API UnusedAccessConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_ACCESSANALYZER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The specified access age in days for which to generate findings for unused
      * access. For example, if you specify 90 days, the analyzer will generate findings
      * for IAM entities within the accounts of the selected organization for any access
      * that hasn't been used in 90 or more days since the analyzer's last scan. You can
-     * choose a value between 1 and 180 days.</p>
+     * choose a value between 1 and 365 days.</p>
      */
-    inline int GetUnusedAccessAge() const{ return m_unusedAccessAge; }
-
-    /**
-     * <p>The specified access age in days for which to generate findings for unused
-     * access. For example, if you specify 90 days, the analyzer will generate findings
-     * for IAM entities within the accounts of the selected organization for any access
-     * that hasn't been used in 90 or more days since the analyzer's last scan. You can
-     * choose a value between 1 and 180 days.</p>
-     */
+    inline int GetUnusedAccessAge() const { return m_unusedAccessAge; }
     inline bool UnusedAccessAgeHasBeenSet() const { return m_unusedAccessAgeHasBeenSet; }
-
-    /**
-     * <p>The specified access age in days for which to generate findings for unused
-     * access. For example, if you specify 90 days, the analyzer will generate findings
-     * for IAM entities within the accounts of the selected organization for any access
-     * that hasn't been used in 90 or more days since the analyzer's last scan. You can
-     * choose a value between 1 and 180 days.</p>
-     */
     inline void SetUnusedAccessAge(int value) { m_unusedAccessAgeHasBeenSet = true; m_unusedAccessAge = value; }
-
-    /**
-     * <p>The specified access age in days for which to generate findings for unused
-     * access. For example, if you specify 90 days, the analyzer will generate findings
-     * for IAM entities within the accounts of the selected organization for any access
-     * that hasn't been used in 90 or more days since the analyzer's last scan. You can
-     * choose a value between 1 and 180 days.</p>
-     */
     inline UnusedAccessConfiguration& WithUnusedAccessAge(int value) { SetUnusedAccessAge(value); return *this;}
+    ///@}
 
+    ///@{
+    
+    inline const AnalysisRule& GetAnalysisRule() const { return m_analysisRule; }
+    inline bool AnalysisRuleHasBeenSet() const { return m_analysisRuleHasBeenSet; }
+    template<typename AnalysisRuleT = AnalysisRule>
+    void SetAnalysisRule(AnalysisRuleT&& value) { m_analysisRuleHasBeenSet = true; m_analysisRule = std::forward<AnalysisRuleT>(value); }
+    template<typename AnalysisRuleT = AnalysisRule>
+    UnusedAccessConfiguration& WithAnalysisRule(AnalysisRuleT&& value) { SetAnalysisRule(std::forward<AnalysisRuleT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_unusedAccessAge;
+    int m_unusedAccessAge{0};
     bool m_unusedAccessAgeHasBeenSet = false;
+
+    AnalysisRule m_analysisRule;
+    bool m_analysisRuleHasBeenSet = false;
   };
 
 } // namespace Model

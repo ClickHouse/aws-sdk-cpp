@@ -18,19 +18,7 @@ namespace CloudWatchRUM
 namespace Model
 {
 
-MetricDestinationSummary::MetricDestinationSummary() : 
-    m_destination(MetricDestination::NOT_SET),
-    m_destinationHasBeenSet(false),
-    m_destinationArnHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false)
-{
-}
-
-MetricDestinationSummary::MetricDestinationSummary(JsonView jsonValue) : 
-    m_destination(MetricDestination::NOT_SET),
-    m_destinationHasBeenSet(false),
-    m_destinationArnHasBeenSet(false),
-    m_iamRoleArnHasBeenSet(false)
+MetricDestinationSummary::MetricDestinationSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ MetricDestinationSummary& MetricDestinationSummary::operator =(JsonView jsonValu
   if(jsonValue.ValueExists("Destination"))
   {
     m_destination = MetricDestinationMapper::GetMetricDestinationForName(jsonValue.GetString("Destination"));
-
     m_destinationHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DestinationArn"))
   {
     m_destinationArn = jsonValue.GetString("DestinationArn");
-
     m_destinationArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IamRoleArn"))
   {
     m_iamRoleArn = jsonValue.GetString("IamRoleArn");
-
     m_iamRoleArnHasBeenSet = true;
   }
-
   return *this;
 }
 

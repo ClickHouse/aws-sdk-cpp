@@ -20,43 +20,7 @@ namespace ElasticBeanstalk
 namespace Model
 {
 
-Latency::Latency() : 
-    m_p999(0.0),
-    m_p999HasBeenSet(false),
-    m_p99(0.0),
-    m_p99HasBeenSet(false),
-    m_p95(0.0),
-    m_p95HasBeenSet(false),
-    m_p90(0.0),
-    m_p90HasBeenSet(false),
-    m_p85(0.0),
-    m_p85HasBeenSet(false),
-    m_p75(0.0),
-    m_p75HasBeenSet(false),
-    m_p50(0.0),
-    m_p50HasBeenSet(false),
-    m_p10(0.0),
-    m_p10HasBeenSet(false)
-{
-}
-
-Latency::Latency(const XmlNode& xmlNode) : 
-    m_p999(0.0),
-    m_p999HasBeenSet(false),
-    m_p99(0.0),
-    m_p99HasBeenSet(false),
-    m_p95(0.0),
-    m_p95HasBeenSet(false),
-    m_p90(0.0),
-    m_p90HasBeenSet(false),
-    m_p85(0.0),
-    m_p85HasBeenSet(false),
-    m_p75(0.0),
-    m_p75HasBeenSet(false),
-    m_p50(0.0),
-    m_p50HasBeenSet(false),
-    m_p10(0.0),
-    m_p10HasBeenSet(false)
+Latency::Latency(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -168,35 +132,35 @@ void Latency::OutputToStream(Aws::OStream& oStream, const char* location) const
 {
   if(m_p999HasBeenSet)
   {
-        oStream << location << ".P999=" << StringUtils::URLEncode(m_p999) << "&";
+      oStream << location << ".P999=" << StringUtils::URLEncode(m_p999) << "&";
   }
   if(m_p99HasBeenSet)
   {
-        oStream << location << ".P99=" << StringUtils::URLEncode(m_p99) << "&";
+      oStream << location << ".P99=" << StringUtils::URLEncode(m_p99) << "&";
   }
   if(m_p95HasBeenSet)
   {
-        oStream << location << ".P95=" << StringUtils::URLEncode(m_p95) << "&";
+      oStream << location << ".P95=" << StringUtils::URLEncode(m_p95) << "&";
   }
   if(m_p90HasBeenSet)
   {
-        oStream << location << ".P90=" << StringUtils::URLEncode(m_p90) << "&";
+      oStream << location << ".P90=" << StringUtils::URLEncode(m_p90) << "&";
   }
   if(m_p85HasBeenSet)
   {
-        oStream << location << ".P85=" << StringUtils::URLEncode(m_p85) << "&";
+      oStream << location << ".P85=" << StringUtils::URLEncode(m_p85) << "&";
   }
   if(m_p75HasBeenSet)
   {
-        oStream << location << ".P75=" << StringUtils::URLEncode(m_p75) << "&";
+      oStream << location << ".P75=" << StringUtils::URLEncode(m_p75) << "&";
   }
   if(m_p50HasBeenSet)
   {
-        oStream << location << ".P50=" << StringUtils::URLEncode(m_p50) << "&";
+      oStream << location << ".P50=" << StringUtils::URLEncode(m_p50) << "&";
   }
   if(m_p10HasBeenSet)
   {
-        oStream << location << ".P10=" << StringUtils::URLEncode(m_p10) << "&";
+      oStream << location << ".P10=" << StringUtils::URLEncode(m_p10) << "&";
   }
 }
 

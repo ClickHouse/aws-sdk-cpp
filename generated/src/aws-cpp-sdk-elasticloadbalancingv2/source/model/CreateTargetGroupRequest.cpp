@@ -10,37 +10,6 @@
 using namespace Aws::ElasticLoadBalancingv2::Model;
 using namespace Aws::Utils;
 
-CreateTargetGroupRequest::CreateTargetGroupRequest() : 
-    m_nameHasBeenSet(false),
-    m_protocol(ProtocolEnum::NOT_SET),
-    m_protocolHasBeenSet(false),
-    m_protocolVersionHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_vpcIdHasBeenSet(false),
-    m_healthCheckProtocol(ProtocolEnum::NOT_SET),
-    m_healthCheckProtocolHasBeenSet(false),
-    m_healthCheckPortHasBeenSet(false),
-    m_healthCheckEnabled(false),
-    m_healthCheckEnabledHasBeenSet(false),
-    m_healthCheckPathHasBeenSet(false),
-    m_healthCheckIntervalSeconds(0),
-    m_healthCheckIntervalSecondsHasBeenSet(false),
-    m_healthCheckTimeoutSeconds(0),
-    m_healthCheckTimeoutSecondsHasBeenSet(false),
-    m_healthyThresholdCount(0),
-    m_healthyThresholdCountHasBeenSet(false),
-    m_unhealthyThresholdCount(0),
-    m_unhealthyThresholdCountHasBeenSet(false),
-    m_matcherHasBeenSet(false),
-    m_targetType(TargetTypeEnum::NOT_SET),
-    m_targetTypeHasBeenSet(false),
-    m_tagsHasBeenSet(false),
-    m_ipAddressType(TargetGroupIpAddressTypeEnum::NOT_SET),
-    m_ipAddressTypeHasBeenSet(false)
-{
-}
-
 Aws::String CreateTargetGroupRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -52,7 +21,7 @@ Aws::String CreateTargetGroupRequest::SerializePayload() const
 
   if(m_protocolHasBeenSet)
   {
-    ss << "Protocol=" << ProtocolEnumMapper::GetNameForProtocolEnum(m_protocol) << "&";
+    ss << "Protocol=" << StringUtils::URLEncode(ProtocolEnumMapper::GetNameForProtocolEnum(m_protocol)) << "&";
   }
 
   if(m_protocolVersionHasBeenSet)
@@ -72,7 +41,7 @@ Aws::String CreateTargetGroupRequest::SerializePayload() const
 
   if(m_healthCheckProtocolHasBeenSet)
   {
-    ss << "HealthCheckProtocol=" << ProtocolEnumMapper::GetNameForProtocolEnum(m_healthCheckProtocol) << "&";
+    ss << "HealthCheckProtocol=" << StringUtils::URLEncode(ProtocolEnumMapper::GetNameForProtocolEnum(m_healthCheckProtocol)) << "&";
   }
 
   if(m_healthCheckPortHasBeenSet)
@@ -117,22 +86,29 @@ Aws::String CreateTargetGroupRequest::SerializePayload() const
 
   if(m_targetTypeHasBeenSet)
   {
-    ss << "TargetType=" << TargetTypeEnumMapper::GetNameForTargetTypeEnum(m_targetType) << "&";
+    ss << "TargetType=" << StringUtils::URLEncode(TargetTypeEnumMapper::GetNameForTargetTypeEnum(m_targetType)) << "&";
   }
 
   if(m_tagsHasBeenSet)
   {
-    unsigned tagsCount = 1;
-    for(auto& item : m_tags)
+    if (m_tags.empty())
     {
-      item.OutputToStream(ss, "Tags.member.", tagsCount, "");
-      tagsCount++;
+      ss << "Tags=&";
+    }
+    else
+    {
+      unsigned tagsCount = 1;
+      for(auto& item : m_tags)
+      {
+        item.OutputToStream(ss, "Tags.member.", tagsCount, "");
+        tagsCount++;
+      }
     }
   }
 
   if(m_ipAddressTypeHasBeenSet)
   {
-    ss << "IpAddressType=" << TargetGroupIpAddressTypeEnumMapper::GetNameForTargetGroupIpAddressTypeEnum(m_ipAddressType) << "&";
+    ss << "IpAddressType=" << StringUtils::URLEncode(TargetGroupIpAddressTypeEnumMapper::GetNameForTargetGroupIpAddressTypeEnum(m_ipAddressType)) << "&";
   }
 
   ss << "Version=2015-12-01";

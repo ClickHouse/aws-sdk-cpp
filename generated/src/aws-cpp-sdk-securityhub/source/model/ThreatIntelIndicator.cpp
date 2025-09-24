@@ -18,27 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-ThreatIntelIndicator::ThreatIntelIndicator() : 
-    m_type(ThreatIntelIndicatorType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_category(ThreatIntelIndicatorCategory::NOT_SET),
-    m_categoryHasBeenSet(false),
-    m_lastObservedAtHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_sourceUrlHasBeenSet(false)
-{
-}
-
-ThreatIntelIndicator::ThreatIntelIndicator(JsonView jsonValue) : 
-    m_type(ThreatIntelIndicatorType::NOT_SET),
-    m_typeHasBeenSet(false),
-    m_valueHasBeenSet(false),
-    m_category(ThreatIntelIndicatorCategory::NOT_SET),
-    m_categoryHasBeenSet(false),
-    m_lastObservedAtHasBeenSet(false),
-    m_sourceHasBeenSet(false),
-    m_sourceUrlHasBeenSet(false)
+ThreatIntelIndicator::ThreatIntelIndicator(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -48,45 +28,33 @@ ThreatIntelIndicator& ThreatIntelIndicator::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Type"))
   {
     m_type = ThreatIntelIndicatorTypeMapper::GetThreatIntelIndicatorTypeForName(jsonValue.GetString("Type"));
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Value"))
   {
     m_value = jsonValue.GetString("Value");
-
     m_valueHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Category"))
   {
     m_category = ThreatIntelIndicatorCategoryMapper::GetThreatIntelIndicatorCategoryForName(jsonValue.GetString("Category"));
-
     m_categoryHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LastObservedAt"))
   {
     m_lastObservedAt = jsonValue.GetString("LastObservedAt");
-
     m_lastObservedAtHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Source"))
   {
     m_source = jsonValue.GetString("Source");
-
     m_sourceHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SourceUrl"))
   {
     m_sourceUrl = jsonValue.GetString("SourceUrl");
-
     m_sourceUrlHasBeenSet = true;
   }
-
   return *this;
 }
 

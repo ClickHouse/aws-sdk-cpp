@@ -34,203 +34,58 @@ namespace Model
   class ModelOutputConfiguration
   {
   public:
-    AWS_FRAUDDETECTOR_API ModelOutputConfiguration();
+    AWS_FRAUDDETECTOR_API ModelOutputConfiguration() = default;
     AWS_FRAUDDETECTOR_API ModelOutputConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API ModelOutputConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FRAUDDETECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The format of the model output configuration.</p>
      */
-    inline const ModelOutputDataFormat& GetFormat() const{ return m_format; }
-
-    /**
-     * <p>The format of the model output configuration.</p>
-     */
+    inline ModelOutputDataFormat GetFormat() const { return m_format; }
     inline bool FormatHasBeenSet() const { return m_formatHasBeenSet; }
+    inline void SetFormat(ModelOutputDataFormat value) { m_formatHasBeenSet = true; m_format = value; }
+    inline ModelOutputConfiguration& WithFormat(ModelOutputDataFormat value) { SetFormat(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The format of the model output configuration.</p>
-     */
-    inline void SetFormat(const ModelOutputDataFormat& value) { m_formatHasBeenSet = true; m_format = value; }
-
-    /**
-     * <p>The format of the model output configuration.</p>
-     */
-    inline void SetFormat(ModelOutputDataFormat&& value) { m_formatHasBeenSet = true; m_format = std::move(value); }
-
-    /**
-     * <p>The format of the model output configuration.</p>
-     */
-    inline ModelOutputConfiguration& WithFormat(const ModelOutputDataFormat& value) { SetFormat(value); return *this;}
-
-    /**
-     * <p>The format of the model output configuration.</p>
-     */
-    inline ModelOutputConfiguration& WithFormat(ModelOutputDataFormat&& value) { SetFormat(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
      * variables. </p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetJsonKeyToVariableMap() const{ return m_jsonKeyToVariableMap; }
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetJsonKeyToVariableMap() const { return m_jsonKeyToVariableMap; }
     inline bool JsonKeyToVariableMapHasBeenSet() const { return m_jsonKeyToVariableMapHasBeenSet; }
+    template<typename JsonKeyToVariableMapT = Aws::Map<Aws::String, Aws::String>>
+    void SetJsonKeyToVariableMap(JsonKeyToVariableMapT&& value) { m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap = std::forward<JsonKeyToVariableMapT>(value); }
+    template<typename JsonKeyToVariableMapT = Aws::Map<Aws::String, Aws::String>>
+    ModelOutputConfiguration& WithJsonKeyToVariableMap(JsonKeyToVariableMapT&& value) { SetJsonKeyToVariableMap(std::forward<JsonKeyToVariableMapT>(value)); return *this;}
+    template<typename JsonKeyToVariableMapKeyT = Aws::String, typename JsonKeyToVariableMapValueT = Aws::String>
+    ModelOutputConfiguration& AddJsonKeyToVariableMap(JsonKeyToVariableMapKeyT&& key, JsonKeyToVariableMapValueT&& value) {
+      m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap.emplace(std::forward<JsonKeyToVariableMapKeyT>(key), std::forward<JsonKeyToVariableMapValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline void SetJsonKeyToVariableMap(const Aws::Map<Aws::String, Aws::String>& value) { m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap = value; }
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline void SetJsonKeyToVariableMap(Aws::Map<Aws::String, Aws::String>&& value) { m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap = std::move(value); }
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline ModelOutputConfiguration& WithJsonKeyToVariableMap(const Aws::Map<Aws::String, Aws::String>& value) { SetJsonKeyToVariableMap(value); return *this;}
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline ModelOutputConfiguration& WithJsonKeyToVariableMap(Aws::Map<Aws::String, Aws::String>&& value) { SetJsonKeyToVariableMap(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline ModelOutputConfiguration& AddJsonKeyToVariableMap(const Aws::String& key, const Aws::String& value) { m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline ModelOutputConfiguration& AddJsonKeyToVariableMap(Aws::String&& key, const Aws::String& value) { m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline ModelOutputConfiguration& AddJsonKeyToVariableMap(const Aws::String& key, Aws::String&& value) { m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline ModelOutputConfiguration& AddJsonKeyToVariableMap(Aws::String&& key, Aws::String&& value) { m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline ModelOutputConfiguration& AddJsonKeyToVariableMap(const char* key, Aws::String&& value) { m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline ModelOutputConfiguration& AddJsonKeyToVariableMap(Aws::String&& key, const char* value) { m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of JSON keys in response from SageMaker to the Amazon Fraud Detector
-     * variables. </p>
-     */
-    inline ModelOutputConfiguration& AddJsonKeyToVariableMap(const char* key, const char* value) { m_jsonKeyToVariableMapHasBeenSet = true; m_jsonKeyToVariableMap.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
      * Detector variables. </p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetCsvIndexToVariableMap() const{ return m_csvIndexToVariableMap; }
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetCsvIndexToVariableMap() const { return m_csvIndexToVariableMap; }
     inline bool CsvIndexToVariableMapHasBeenSet() const { return m_csvIndexToVariableMapHasBeenSet; }
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline void SetCsvIndexToVariableMap(const Aws::Map<Aws::String, Aws::String>& value) { m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap = value; }
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline void SetCsvIndexToVariableMap(Aws::Map<Aws::String, Aws::String>&& value) { m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap = std::move(value); }
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline ModelOutputConfiguration& WithCsvIndexToVariableMap(const Aws::Map<Aws::String, Aws::String>& value) { SetCsvIndexToVariableMap(value); return *this;}
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline ModelOutputConfiguration& WithCsvIndexToVariableMap(Aws::Map<Aws::String, Aws::String>&& value) { SetCsvIndexToVariableMap(std::move(value)); return *this;}
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline ModelOutputConfiguration& AddCsvIndexToVariableMap(const Aws::String& key, const Aws::String& value) { m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap.emplace(key, value); return *this; }
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline ModelOutputConfiguration& AddCsvIndexToVariableMap(Aws::String&& key, const Aws::String& value) { m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline ModelOutputConfiguration& AddCsvIndexToVariableMap(const Aws::String& key, Aws::String&& value) { m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline ModelOutputConfiguration& AddCsvIndexToVariableMap(Aws::String&& key, Aws::String&& value) { m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline ModelOutputConfiguration& AddCsvIndexToVariableMap(const char* key, Aws::String&& value) { m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline ModelOutputConfiguration& AddCsvIndexToVariableMap(Aws::String&& key, const char* value) { m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>A map of CSV index values in the SageMaker response to the Amazon Fraud
-     * Detector variables. </p>
-     */
-    inline ModelOutputConfiguration& AddCsvIndexToVariableMap(const char* key, const char* value) { m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap.emplace(key, value); return *this; }
-
+    template<typename CsvIndexToVariableMapT = Aws::Map<Aws::String, Aws::String>>
+    void SetCsvIndexToVariableMap(CsvIndexToVariableMapT&& value) { m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap = std::forward<CsvIndexToVariableMapT>(value); }
+    template<typename CsvIndexToVariableMapT = Aws::Map<Aws::String, Aws::String>>
+    ModelOutputConfiguration& WithCsvIndexToVariableMap(CsvIndexToVariableMapT&& value) { SetCsvIndexToVariableMap(std::forward<CsvIndexToVariableMapT>(value)); return *this;}
+    template<typename CsvIndexToVariableMapKeyT = Aws::String, typename CsvIndexToVariableMapValueT = Aws::String>
+    ModelOutputConfiguration& AddCsvIndexToVariableMap(CsvIndexToVariableMapKeyT&& key, CsvIndexToVariableMapValueT&& value) {
+      m_csvIndexToVariableMapHasBeenSet = true; m_csvIndexToVariableMap.emplace(std::forward<CsvIndexToVariableMapKeyT>(key), std::forward<CsvIndexToVariableMapValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
-    ModelOutputDataFormat m_format;
+    ModelOutputDataFormat m_format{ModelOutputDataFormat::NOT_SET};
     bool m_formatHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_jsonKeyToVariableMap;

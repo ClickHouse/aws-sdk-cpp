@@ -18,19 +18,7 @@ namespace GlobalAccelerator
 namespace Model
 {
 
-PortRange::PortRange() : 
-    m_fromPort(0),
-    m_fromPortHasBeenSet(false),
-    m_toPort(0),
-    m_toPortHasBeenSet(false)
-{
-}
-
-PortRange::PortRange(JsonView jsonValue) : 
-    m_fromPort(0),
-    m_fromPortHasBeenSet(false),
-    m_toPort(0),
-    m_toPortHasBeenSet(false)
+PortRange::PortRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ PortRange& PortRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("FromPort"))
   {
     m_fromPort = jsonValue.GetInteger("FromPort");
-
     m_fromPortHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ToPort"))
   {
     m_toPort = jsonValue.GetInteger("ToPort");
-
     m_toPortHasBeenSet = true;
   }
-
   return *this;
 }
 

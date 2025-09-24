@@ -20,19 +20,7 @@ namespace IAM
 namespace Model
 {
 
-LoginProfile::LoginProfile() : 
-    m_userNameHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_passwordResetRequired(false),
-    m_passwordResetRequiredHasBeenSet(false)
-{
-}
-
-LoginProfile::LoginProfile(const XmlNode& xmlNode) : 
-    m_userNameHasBeenSet(false),
-    m_createDateHasBeenSet(false),
-    m_passwordResetRequired(false),
-    m_passwordResetRequiredHasBeenSet(false)
+LoginProfile::LoginProfile(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

@@ -20,15 +20,7 @@ namespace Route53
 namespace Model
 {
 
-HostedZoneOwner::HostedZoneOwner() : 
-    m_owningAccountHasBeenSet(false),
-    m_owningServiceHasBeenSet(false)
-{
-}
-
-HostedZoneOwner::HostedZoneOwner(const XmlNode& xmlNode) : 
-    m_owningAccountHasBeenSet(false),
-    m_owningServiceHasBeenSet(false)
+HostedZoneOwner::HostedZoneOwner(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

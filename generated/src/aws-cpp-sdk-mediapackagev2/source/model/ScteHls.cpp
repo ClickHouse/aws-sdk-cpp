@@ -18,15 +18,7 @@ namespace mediapackagev2
 namespace Model
 {
 
-ScteHls::ScteHls() : 
-    m_adMarkerHls(AdMarkerHls::NOT_SET),
-    m_adMarkerHlsHasBeenSet(false)
-{
-}
-
-ScteHls::ScteHls(JsonView jsonValue) : 
-    m_adMarkerHls(AdMarkerHls::NOT_SET),
-    m_adMarkerHlsHasBeenSet(false)
+ScteHls::ScteHls(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ScteHls& ScteHls::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AdMarkerHls"))
   {
     m_adMarkerHls = AdMarkerHlsMapper::GetAdMarkerHlsForName(jsonValue.GetString("AdMarkerHls"));
-
     m_adMarkerHlsHasBeenSet = true;
   }
-
   return *this;
 }
 

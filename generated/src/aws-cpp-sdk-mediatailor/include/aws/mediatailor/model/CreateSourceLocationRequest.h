@@ -27,7 +27,7 @@ namespace Model
   class CreateSourceLocationRequest : public MediaTailorRequest
   {
   public:
-    AWS_MEDIATAILOR_API CreateSourceLocationRequest();
+    AWS_MEDIATAILOR_API CreateSourceLocationRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,195 +38,71 @@ namespace Model
     AWS_MEDIATAILOR_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Access configuration parameters. Configures the type of authentication used
      * to access content from your source location.</p>
      */
-    inline const AccessConfiguration& GetAccessConfiguration() const{ return m_accessConfiguration; }
-
-    /**
-     * <p>Access configuration parameters. Configures the type of authentication used
-     * to access content from your source location.</p>
-     */
+    inline const AccessConfiguration& GetAccessConfiguration() const { return m_accessConfiguration; }
     inline bool AccessConfigurationHasBeenSet() const { return m_accessConfigurationHasBeenSet; }
+    template<typename AccessConfigurationT = AccessConfiguration>
+    void SetAccessConfiguration(AccessConfigurationT&& value) { m_accessConfigurationHasBeenSet = true; m_accessConfiguration = std::forward<AccessConfigurationT>(value); }
+    template<typename AccessConfigurationT = AccessConfiguration>
+    CreateSourceLocationRequest& WithAccessConfiguration(AccessConfigurationT&& value) { SetAccessConfiguration(std::forward<AccessConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Access configuration parameters. Configures the type of authentication used
-     * to access content from your source location.</p>
-     */
-    inline void SetAccessConfiguration(const AccessConfiguration& value) { m_accessConfigurationHasBeenSet = true; m_accessConfiguration = value; }
-
-    /**
-     * <p>Access configuration parameters. Configures the type of authentication used
-     * to access content from your source location.</p>
-     */
-    inline void SetAccessConfiguration(AccessConfiguration&& value) { m_accessConfigurationHasBeenSet = true; m_accessConfiguration = std::move(value); }
-
-    /**
-     * <p>Access configuration parameters. Configures the type of authentication used
-     * to access content from your source location.</p>
-     */
-    inline CreateSourceLocationRequest& WithAccessConfiguration(const AccessConfiguration& value) { SetAccessConfiguration(value); return *this;}
-
-    /**
-     * <p>Access configuration parameters. Configures the type of authentication used
-     * to access content from your source location.</p>
-     */
-    inline CreateSourceLocationRequest& WithAccessConfiguration(AccessConfiguration&& value) { SetAccessConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The optional configuration for the server that serves segments.</p>
      */
-    inline const DefaultSegmentDeliveryConfiguration& GetDefaultSegmentDeliveryConfiguration() const{ return m_defaultSegmentDeliveryConfiguration; }
-
-    /**
-     * <p>The optional configuration for the server that serves segments.</p>
-     */
+    inline const DefaultSegmentDeliveryConfiguration& GetDefaultSegmentDeliveryConfiguration() const { return m_defaultSegmentDeliveryConfiguration; }
     inline bool DefaultSegmentDeliveryConfigurationHasBeenSet() const { return m_defaultSegmentDeliveryConfigurationHasBeenSet; }
+    template<typename DefaultSegmentDeliveryConfigurationT = DefaultSegmentDeliveryConfiguration>
+    void SetDefaultSegmentDeliveryConfiguration(DefaultSegmentDeliveryConfigurationT&& value) { m_defaultSegmentDeliveryConfigurationHasBeenSet = true; m_defaultSegmentDeliveryConfiguration = std::forward<DefaultSegmentDeliveryConfigurationT>(value); }
+    template<typename DefaultSegmentDeliveryConfigurationT = DefaultSegmentDeliveryConfiguration>
+    CreateSourceLocationRequest& WithDefaultSegmentDeliveryConfiguration(DefaultSegmentDeliveryConfigurationT&& value) { SetDefaultSegmentDeliveryConfiguration(std::forward<DefaultSegmentDeliveryConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The optional configuration for the server that serves segments.</p>
-     */
-    inline void SetDefaultSegmentDeliveryConfiguration(const DefaultSegmentDeliveryConfiguration& value) { m_defaultSegmentDeliveryConfigurationHasBeenSet = true; m_defaultSegmentDeliveryConfiguration = value; }
-
-    /**
-     * <p>The optional configuration for the server that serves segments.</p>
-     */
-    inline void SetDefaultSegmentDeliveryConfiguration(DefaultSegmentDeliveryConfiguration&& value) { m_defaultSegmentDeliveryConfigurationHasBeenSet = true; m_defaultSegmentDeliveryConfiguration = std::move(value); }
-
-    /**
-     * <p>The optional configuration for the server that serves segments.</p>
-     */
-    inline CreateSourceLocationRequest& WithDefaultSegmentDeliveryConfiguration(const DefaultSegmentDeliveryConfiguration& value) { SetDefaultSegmentDeliveryConfiguration(value); return *this;}
-
-    /**
-     * <p>The optional configuration for the server that serves segments.</p>
-     */
-    inline CreateSourceLocationRequest& WithDefaultSegmentDeliveryConfiguration(DefaultSegmentDeliveryConfiguration&& value) { SetDefaultSegmentDeliveryConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The source's HTTP package configurations.</p>
      */
-    inline const HttpConfiguration& GetHttpConfiguration() const{ return m_httpConfiguration; }
-
-    /**
-     * <p>The source's HTTP package configurations.</p>
-     */
+    inline const HttpConfiguration& GetHttpConfiguration() const { return m_httpConfiguration; }
     inline bool HttpConfigurationHasBeenSet() const { return m_httpConfigurationHasBeenSet; }
+    template<typename HttpConfigurationT = HttpConfiguration>
+    void SetHttpConfiguration(HttpConfigurationT&& value) { m_httpConfigurationHasBeenSet = true; m_httpConfiguration = std::forward<HttpConfigurationT>(value); }
+    template<typename HttpConfigurationT = HttpConfiguration>
+    CreateSourceLocationRequest& WithHttpConfiguration(HttpConfigurationT&& value) { SetHttpConfiguration(std::forward<HttpConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The source's HTTP package configurations.</p>
-     */
-    inline void SetHttpConfiguration(const HttpConfiguration& value) { m_httpConfigurationHasBeenSet = true; m_httpConfiguration = value; }
-
-    /**
-     * <p>The source's HTTP package configurations.</p>
-     */
-    inline void SetHttpConfiguration(HttpConfiguration&& value) { m_httpConfigurationHasBeenSet = true; m_httpConfiguration = std::move(value); }
-
-    /**
-     * <p>The source's HTTP package configurations.</p>
-     */
-    inline CreateSourceLocationRequest& WithHttpConfiguration(const HttpConfiguration& value) { SetHttpConfiguration(value); return *this;}
-
-    /**
-     * <p>The source's HTTP package configurations.</p>
-     */
-    inline CreateSourceLocationRequest& WithHttpConfiguration(HttpConfiguration&& value) { SetHttpConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A list of the segment delivery configurations associated with this
      * resource.</p>
      */
-    inline const Aws::Vector<SegmentDeliveryConfiguration>& GetSegmentDeliveryConfigurations() const{ return m_segmentDeliveryConfigurations; }
-
-    /**
-     * <p>A list of the segment delivery configurations associated with this
-     * resource.</p>
-     */
+    inline const Aws::Vector<SegmentDeliveryConfiguration>& GetSegmentDeliveryConfigurations() const { return m_segmentDeliveryConfigurations; }
     inline bool SegmentDeliveryConfigurationsHasBeenSet() const { return m_segmentDeliveryConfigurationsHasBeenSet; }
+    template<typename SegmentDeliveryConfigurationsT = Aws::Vector<SegmentDeliveryConfiguration>>
+    void SetSegmentDeliveryConfigurations(SegmentDeliveryConfigurationsT&& value) { m_segmentDeliveryConfigurationsHasBeenSet = true; m_segmentDeliveryConfigurations = std::forward<SegmentDeliveryConfigurationsT>(value); }
+    template<typename SegmentDeliveryConfigurationsT = Aws::Vector<SegmentDeliveryConfiguration>>
+    CreateSourceLocationRequest& WithSegmentDeliveryConfigurations(SegmentDeliveryConfigurationsT&& value) { SetSegmentDeliveryConfigurations(std::forward<SegmentDeliveryConfigurationsT>(value)); return *this;}
+    template<typename SegmentDeliveryConfigurationsT = SegmentDeliveryConfiguration>
+    CreateSourceLocationRequest& AddSegmentDeliveryConfigurations(SegmentDeliveryConfigurationsT&& value) { m_segmentDeliveryConfigurationsHasBeenSet = true; m_segmentDeliveryConfigurations.emplace_back(std::forward<SegmentDeliveryConfigurationsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>A list of the segment delivery configurations associated with this
-     * resource.</p>
-     */
-    inline void SetSegmentDeliveryConfigurations(const Aws::Vector<SegmentDeliveryConfiguration>& value) { m_segmentDeliveryConfigurationsHasBeenSet = true; m_segmentDeliveryConfigurations = value; }
-
-    /**
-     * <p>A list of the segment delivery configurations associated with this
-     * resource.</p>
-     */
-    inline void SetSegmentDeliveryConfigurations(Aws::Vector<SegmentDeliveryConfiguration>&& value) { m_segmentDeliveryConfigurationsHasBeenSet = true; m_segmentDeliveryConfigurations = std::move(value); }
-
-    /**
-     * <p>A list of the segment delivery configurations associated with this
-     * resource.</p>
-     */
-    inline CreateSourceLocationRequest& WithSegmentDeliveryConfigurations(const Aws::Vector<SegmentDeliveryConfiguration>& value) { SetSegmentDeliveryConfigurations(value); return *this;}
-
-    /**
-     * <p>A list of the segment delivery configurations associated with this
-     * resource.</p>
-     */
-    inline CreateSourceLocationRequest& WithSegmentDeliveryConfigurations(Aws::Vector<SegmentDeliveryConfiguration>&& value) { SetSegmentDeliveryConfigurations(std::move(value)); return *this;}
-
-    /**
-     * <p>A list of the segment delivery configurations associated with this
-     * resource.</p>
-     */
-    inline CreateSourceLocationRequest& AddSegmentDeliveryConfigurations(const SegmentDeliveryConfiguration& value) { m_segmentDeliveryConfigurationsHasBeenSet = true; m_segmentDeliveryConfigurations.push_back(value); return *this; }
-
-    /**
-     * <p>A list of the segment delivery configurations associated with this
-     * resource.</p>
-     */
-    inline CreateSourceLocationRequest& AddSegmentDeliveryConfigurations(SegmentDeliveryConfiguration&& value) { m_segmentDeliveryConfigurationsHasBeenSet = true; m_segmentDeliveryConfigurations.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The name associated with the source location.</p>
      */
-    inline const Aws::String& GetSourceLocationName() const{ return m_sourceLocationName; }
-
-    /**
-     * <p>The name associated with the source location.</p>
-     */
+    inline const Aws::String& GetSourceLocationName() const { return m_sourceLocationName; }
     inline bool SourceLocationNameHasBeenSet() const { return m_sourceLocationNameHasBeenSet; }
+    template<typename SourceLocationNameT = Aws::String>
+    void SetSourceLocationName(SourceLocationNameT&& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = std::forward<SourceLocationNameT>(value); }
+    template<typename SourceLocationNameT = Aws::String>
+    CreateSourceLocationRequest& WithSourceLocationName(SourceLocationNameT&& value) { SetSourceLocationName(std::forward<SourceLocationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name associated with the source location.</p>
-     */
-    inline void SetSourceLocationName(const Aws::String& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = value; }
-
-    /**
-     * <p>The name associated with the source location.</p>
-     */
-    inline void SetSourceLocationName(Aws::String&& value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName = std::move(value); }
-
-    /**
-     * <p>The name associated with the source location.</p>
-     */
-    inline void SetSourceLocationName(const char* value) { m_sourceLocationNameHasBeenSet = true; m_sourceLocationName.assign(value); }
-
-    /**
-     * <p>The name associated with the source location.</p>
-     */
-    inline CreateSourceLocationRequest& WithSourceLocationName(const Aws::String& value) { SetSourceLocationName(value); return *this;}
-
-    /**
-     * <p>The name associated with the source location.</p>
-     */
-    inline CreateSourceLocationRequest& WithSourceLocationName(Aws::String&& value) { SetSourceLocationName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name associated with the source location.</p>
-     */
-    inline CreateSourceLocationRequest& WithSourceLocationName(const char* value) { SetSourceLocationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags to assign to the source location. Tags are key-value pairs that you
      * can associate with Amazon resources to help with organization, access control,
@@ -234,116 +110,17 @@ namespace Model
      * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
      * AWS Elemental MediaTailor Resources</a>.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline CreateSourceLocationRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline CreateSourceLocationRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline CreateSourceLocationRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline CreateSourceLocationRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline CreateSourceLocationRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline CreateSourceLocationRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline CreateSourceLocationRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline CreateSourceLocationRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags to assign to the source location. Tags are key-value pairs that you
-     * can associate with Amazon resources to help with organization, access control,
-     * and cost tracking. For more information, see <a
-     * href="https://docs.aws.amazon.com/mediatailor/latest/ug/tagging.html">Tagging
-     * AWS Elemental MediaTailor Resources</a>.</p>
-     */
-    inline CreateSourceLocationRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateSourceLocationRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateSourceLocationRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
   private:
 
     AccessConfiguration m_accessConfiguration;

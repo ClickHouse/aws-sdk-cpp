@@ -18,17 +18,7 @@ namespace Glue
 namespace Model
 {
 
-MicrosoftSQLServerCatalogSource::MicrosoftSQLServerCatalogSource() : 
-    m_nameHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_tableHasBeenSet(false)
-{
-}
-
-MicrosoftSQLServerCatalogSource::MicrosoftSQLServerCatalogSource(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_databaseHasBeenSet(false),
-    m_tableHasBeenSet(false)
+MicrosoftSQLServerCatalogSource::MicrosoftSQLServerCatalogSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,24 +28,18 @@ MicrosoftSQLServerCatalogSource& MicrosoftSQLServerCatalogSource::operator =(Jso
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Database"))
   {
     m_database = jsonValue.GetString("Database");
-
     m_databaseHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Table"))
   {
     m_table = jsonValue.GetString("Table");
-
     m_tableHasBeenSet = true;
   }
-
   return *this;
 }
 

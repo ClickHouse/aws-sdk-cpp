@@ -18,25 +18,7 @@ namespace DatabaseMigrationService
 namespace Model
 {
 
-DocDbDataProviderSettings::DocDbDataProviderSettings() : 
-    m_serverNameHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_sslMode(DmsSslModeValue::NOT_SET),
-    m_sslModeHasBeenSet(false),
-    m_certificateArnHasBeenSet(false)
-{
-}
-
-DocDbDataProviderSettings::DocDbDataProviderSettings(JsonView jsonValue) : 
-    m_serverNameHasBeenSet(false),
-    m_port(0),
-    m_portHasBeenSet(false),
-    m_databaseNameHasBeenSet(false),
-    m_sslMode(DmsSslModeValue::NOT_SET),
-    m_sslModeHasBeenSet(false),
-    m_certificateArnHasBeenSet(false)
+DocDbDataProviderSettings::DocDbDataProviderSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,38 +28,28 @@ DocDbDataProviderSettings& DocDbDataProviderSettings::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("ServerName"))
   {
     m_serverName = jsonValue.GetString("ServerName");
-
     m_serverNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Port"))
   {
     m_port = jsonValue.GetInteger("Port");
-
     m_portHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DatabaseName"))
   {
     m_databaseName = jsonValue.GetString("DatabaseName");
-
     m_databaseNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SslMode"))
   {
     m_sslMode = DmsSslModeValueMapper::GetDmsSslModeValueForName(jsonValue.GetString("SslMode"));
-
     m_sslModeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("CertificateArn"))
   {
     m_certificateArn = jsonValue.GetString("CertificateArn");
-
     m_certificateArnHasBeenSet = true;
   }
-
   return *this;
 }
 

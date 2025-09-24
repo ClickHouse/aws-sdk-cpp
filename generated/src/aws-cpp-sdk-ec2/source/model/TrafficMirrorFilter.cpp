@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-TrafficMirrorFilter::TrafficMirrorFilter() : 
-    m_trafficMirrorFilterIdHasBeenSet(false),
-    m_ingressFilterRulesHasBeenSet(false),
-    m_egressFilterRulesHasBeenSet(false),
-    m_networkServicesHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
-{
-}
-
-TrafficMirrorFilter::TrafficMirrorFilter(const XmlNode& xmlNode) : 
-    m_trafficMirrorFilterIdHasBeenSet(false),
-    m_ingressFilterRulesHasBeenSet(false),
-    m_egressFilterRulesHasBeenSet(false),
-    m_networkServicesHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_tagsHasBeenSet(false)
+TrafficMirrorFilter::TrafficMirrorFilter(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -57,6 +41,7 @@ TrafficMirrorFilter& TrafficMirrorFilter::operator =(const XmlNode& xmlNode)
     if(!ingressFilterRulesNode.IsNull())
     {
       XmlNode ingressFilterRulesMember = ingressFilterRulesNode.FirstChild("item");
+      m_ingressFilterRulesHasBeenSet = !ingressFilterRulesMember.IsNull();
       while(!ingressFilterRulesMember.IsNull())
       {
         m_ingressFilterRules.push_back(ingressFilterRulesMember);
@@ -69,6 +54,7 @@ TrafficMirrorFilter& TrafficMirrorFilter::operator =(const XmlNode& xmlNode)
     if(!egressFilterRulesNode.IsNull())
     {
       XmlNode egressFilterRulesMember = egressFilterRulesNode.FirstChild("item");
+      m_egressFilterRulesHasBeenSet = !egressFilterRulesMember.IsNull();
       while(!egressFilterRulesMember.IsNull())
       {
         m_egressFilterRules.push_back(egressFilterRulesMember);
@@ -81,6 +67,7 @@ TrafficMirrorFilter& TrafficMirrorFilter::operator =(const XmlNode& xmlNode)
     if(!networkServicesNode.IsNull())
     {
       XmlNode networkServicesMember = networkServicesNode.FirstChild("item");
+      m_networkServicesHasBeenSet = !networkServicesMember.IsNull();
       while(!networkServicesMember.IsNull())
       {
         m_networkServices.push_back(TrafficMirrorNetworkServiceMapper::GetTrafficMirrorNetworkServiceForName(StringUtils::Trim(networkServicesMember.GetText().c_str())));
@@ -99,6 +86,7 @@ TrafficMirrorFilter& TrafficMirrorFilter::operator =(const XmlNode& xmlNode)
     if(!tagsNode.IsNull())
     {
       XmlNode tagsMember = tagsNode.FirstChild("item");
+      m_tagsHasBeenSet = !tagsMember.IsNull();
       while(!tagsMember.IsNull())
       {
         m_tags.push_back(tagsMember);
@@ -146,7 +134,7 @@ void TrafficMirrorFilter::OutputToStream(Aws::OStream& oStream, const char* loca
       unsigned networkServicesIdx = 1;
       for(auto& item : m_networkServices)
       {
-        oStream << location << index << locationValue << ".NetworkServiceSet." << networkServicesIdx++ << "=" << TrafficMirrorNetworkServiceMapper::GetNameForTrafficMirrorNetworkService(item) << "&";
+        oStream << location << index << locationValue << ".NetworkServiceSet." << networkServicesIdx++ << "=" << StringUtils::URLEncode(TrafficMirrorNetworkServiceMapper::GetNameForTrafficMirrorNetworkService(item)) << "&";
       }
   }
 
@@ -180,7 +168,7 @@ void TrafficMirrorFilter::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_ingressFilterRules)
       {
         Aws::StringStream ingressFilterRulesSs;
-        ingressFilterRulesSs << location <<  ".IngressFilterRuleSet." << ingressFilterRulesIdx++;
+        ingressFilterRulesSs << location << ".IngressFilterRuleSet." << ingressFilterRulesIdx++;
         item.OutputToStream(oStream, ingressFilterRulesSs.str().c_str());
       }
   }
@@ -190,7 +178,7 @@ void TrafficMirrorFilter::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_egressFilterRules)
       {
         Aws::StringStream egressFilterRulesSs;
-        egressFilterRulesSs << location <<  ".EgressFilterRuleSet." << egressFilterRulesIdx++;
+        egressFilterRulesSs << location << ".EgressFilterRuleSet." << egressFilterRulesIdx++;
         item.OutputToStream(oStream, egressFilterRulesSs.str().c_str());
       }
   }
@@ -199,7 +187,7 @@ void TrafficMirrorFilter::OutputToStream(Aws::OStream& oStream, const char* loca
       unsigned networkServicesIdx = 1;
       for(auto& item : m_networkServices)
       {
-        oStream << location << ".NetworkServiceSet." << networkServicesIdx++ << "=" << TrafficMirrorNetworkServiceMapper::GetNameForTrafficMirrorNetworkService(item) << "&";
+        oStream << location << ".NetworkServiceSet." << networkServicesIdx++ << "=" << StringUtils::URLEncode(TrafficMirrorNetworkServiceMapper::GetNameForTrafficMirrorNetworkService(item)) << "&";
       }
   }
   if(m_descriptionHasBeenSet)
@@ -212,7 +200,7 @@ void TrafficMirrorFilter::OutputToStream(Aws::OStream& oStream, const char* loca
       for(auto& item : m_tags)
       {
         Aws::StringStream tagsSs;
-        tagsSs << location <<  ".TagSet." << tagsIdx++;
+        tagsSs << location << ".TagSet." << tagsIdx++;
         item.OutputToStream(oStream, tagsSs.str().c_str());
       }
   }

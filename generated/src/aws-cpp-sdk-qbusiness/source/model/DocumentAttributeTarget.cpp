@@ -18,57 +18,34 @@ namespace QBusiness
 namespace Model
 {
 
-DocumentAttributeTarget::DocumentAttributeTarget() : 
-    m_attributeValueOperator(AttributeValueOperator::NOT_SET),
-    m_attributeValueOperatorHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
-{
-}
-
-DocumentAttributeTarget::DocumentAttributeTarget(JsonView jsonValue) : 
-    m_attributeValueOperator(AttributeValueOperator::NOT_SET),
-    m_attributeValueOperatorHasBeenSet(false),
-    m_keyHasBeenSet(false),
-    m_valueHasBeenSet(false)
+DocumentAttributeTarget::DocumentAttributeTarget(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 DocumentAttributeTarget& DocumentAttributeTarget::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("attributeValueOperator"))
-  {
-    m_attributeValueOperator = AttributeValueOperatorMapper::GetAttributeValueOperatorForName(jsonValue.GetString("attributeValueOperator"));
-
-    m_attributeValueOperatorHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("key"))
   {
     m_key = jsonValue.GetString("key");
-
     m_keyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("value"))
   {
     m_value = jsonValue.GetObject("value");
-
     m_valueHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("attributeValueOperator"))
+  {
+    m_attributeValueOperator = AttributeValueOperatorMapper::GetAttributeValueOperatorForName(jsonValue.GetString("attributeValueOperator"));
+    m_attributeValueOperatorHasBeenSet = true;
+  }
   return *this;
 }
 
 JsonValue DocumentAttributeTarget::Jsonize() const
 {
   JsonValue payload;
-
-  if(m_attributeValueOperatorHasBeenSet)
-  {
-   payload.WithString("attributeValueOperator", AttributeValueOperatorMapper::GetNameForAttributeValueOperator(m_attributeValueOperator));
-  }
 
   if(m_keyHasBeenSet)
   {
@@ -80,6 +57,11 @@ JsonValue DocumentAttributeTarget::Jsonize() const
   {
    payload.WithObject("value", m_value.Jsonize());
 
+  }
+
+  if(m_attributeValueOperatorHasBeenSet)
+  {
+   payload.WithString("attributeValueOperator", AttributeValueOperatorMapper::GetNameForAttributeValueOperator(m_attributeValueOperator));
   }
 
   return payload;

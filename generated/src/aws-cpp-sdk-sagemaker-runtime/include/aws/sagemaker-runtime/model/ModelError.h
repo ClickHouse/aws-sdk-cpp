@@ -32,145 +32,61 @@ namespace Model
   class ModelError
   {
   public:
-    AWS_SAGEMAKERRUNTIME_API ModelError();
+    AWS_SAGEMAKERRUNTIME_API ModelError() = default;
     AWS_SAGEMAKERRUNTIME_API ModelError(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERRUNTIME_API ModelError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKERRUNTIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    ModelError& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    
-    inline ModelError& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    
-    inline ModelError& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    
-    inline ModelError& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p> Original status code. </p>
      */
-    inline int GetOriginalStatusCode() const{ return m_originalStatusCode; }
-
-    /**
-     * <p> Original status code. </p>
-     */
+    inline int GetOriginalStatusCode() const { return m_originalStatusCode; }
     inline bool OriginalStatusCodeHasBeenSet() const { return m_originalStatusCodeHasBeenSet; }
-
-    /**
-     * <p> Original status code. </p>
-     */
     inline void SetOriginalStatusCode(int value) { m_originalStatusCodeHasBeenSet = true; m_originalStatusCode = value; }
-
-    /**
-     * <p> Original status code. </p>
-     */
     inline ModelError& WithOriginalStatusCode(int value) { SetOriginalStatusCode(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p> Original message. </p>
      */
-    inline const Aws::String& GetOriginalMessage() const{ return m_originalMessage; }
-
-    /**
-     * <p> Original message. </p>
-     */
+    inline const Aws::String& GetOriginalMessage() const { return m_originalMessage; }
     inline bool OriginalMessageHasBeenSet() const { return m_originalMessageHasBeenSet; }
+    template<typename OriginalMessageT = Aws::String>
+    void SetOriginalMessage(OriginalMessageT&& value) { m_originalMessageHasBeenSet = true; m_originalMessage = std::forward<OriginalMessageT>(value); }
+    template<typename OriginalMessageT = Aws::String>
+    ModelError& WithOriginalMessage(OriginalMessageT&& value) { SetOriginalMessage(std::forward<OriginalMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p> Original message. </p>
-     */
-    inline void SetOriginalMessage(const Aws::String& value) { m_originalMessageHasBeenSet = true; m_originalMessage = value; }
-
-    /**
-     * <p> Original message. </p>
-     */
-    inline void SetOriginalMessage(Aws::String&& value) { m_originalMessageHasBeenSet = true; m_originalMessage = std::move(value); }
-
-    /**
-     * <p> Original message. </p>
-     */
-    inline void SetOriginalMessage(const char* value) { m_originalMessageHasBeenSet = true; m_originalMessage.assign(value); }
-
-    /**
-     * <p> Original message. </p>
-     */
-    inline ModelError& WithOriginalMessage(const Aws::String& value) { SetOriginalMessage(value); return *this;}
-
-    /**
-     * <p> Original message. </p>
-     */
-    inline ModelError& WithOriginalMessage(Aws::String&& value) { SetOriginalMessage(std::move(value)); return *this;}
-
-    /**
-     * <p> Original message. </p>
-     */
-    inline ModelError& WithOriginalMessage(const char* value) { SetOriginalMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p> The Amazon Resource Name (ARN) of the log stream. </p>
      */
-    inline const Aws::String& GetLogStreamArn() const{ return m_logStreamArn; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the log stream. </p>
-     */
+    inline const Aws::String& GetLogStreamArn() const { return m_logStreamArn; }
     inline bool LogStreamArnHasBeenSet() const { return m_logStreamArnHasBeenSet; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the log stream. </p>
-     */
-    inline void SetLogStreamArn(const Aws::String& value) { m_logStreamArnHasBeenSet = true; m_logStreamArn = value; }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the log stream. </p>
-     */
-    inline void SetLogStreamArn(Aws::String&& value) { m_logStreamArnHasBeenSet = true; m_logStreamArn = std::move(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the log stream. </p>
-     */
-    inline void SetLogStreamArn(const char* value) { m_logStreamArnHasBeenSet = true; m_logStreamArn.assign(value); }
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the log stream. </p>
-     */
-    inline ModelError& WithLogStreamArn(const Aws::String& value) { SetLogStreamArn(value); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the log stream. </p>
-     */
-    inline ModelError& WithLogStreamArn(Aws::String&& value) { SetLogStreamArn(std::move(value)); return *this;}
-
-    /**
-     * <p> The Amazon Resource Name (ARN) of the log stream. </p>
-     */
-    inline ModelError& WithLogStreamArn(const char* value) { SetLogStreamArn(value); return *this;}
-
+    template<typename LogStreamArnT = Aws::String>
+    void SetLogStreamArn(LogStreamArnT&& value) { m_logStreamArnHasBeenSet = true; m_logStreamArn = std::forward<LogStreamArnT>(value); }
+    template<typename LogStreamArnT = Aws::String>
+    ModelError& WithLogStreamArn(LogStreamArnT&& value) { SetLogStreamArn(std::forward<LogStreamArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    int m_originalStatusCode;
+    int m_originalStatusCode{0};
     bool m_originalStatusCodeHasBeenSet = false;
 
     Aws::String m_originalMessage;

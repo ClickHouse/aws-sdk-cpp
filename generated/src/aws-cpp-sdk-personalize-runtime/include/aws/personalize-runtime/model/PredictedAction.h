@@ -32,91 +32,42 @@ namespace Model
   class PredictedAction
   {
   public:
-    AWS_PERSONALIZERUNTIME_API PredictedAction();
+    AWS_PERSONALIZERUNTIME_API PredictedAction() = default;
     AWS_PERSONALIZERUNTIME_API PredictedAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZERUNTIME_API PredictedAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PERSONALIZERUNTIME_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the recommended action.</p>
      */
-    inline const Aws::String& GetActionId() const{ return m_actionId; }
-
-    /**
-     * <p>The ID of the recommended action.</p>
-     */
+    inline const Aws::String& GetActionId() const { return m_actionId; }
     inline bool ActionIdHasBeenSet() const { return m_actionIdHasBeenSet; }
+    template<typename ActionIdT = Aws::String>
+    void SetActionId(ActionIdT&& value) { m_actionIdHasBeenSet = true; m_actionId = std::forward<ActionIdT>(value); }
+    template<typename ActionIdT = Aws::String>
+    PredictedAction& WithActionId(ActionIdT&& value) { SetActionId(std::forward<ActionIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the recommended action.</p>
-     */
-    inline void SetActionId(const Aws::String& value) { m_actionIdHasBeenSet = true; m_actionId = value; }
-
-    /**
-     * <p>The ID of the recommended action.</p>
-     */
-    inline void SetActionId(Aws::String&& value) { m_actionIdHasBeenSet = true; m_actionId = std::move(value); }
-
-    /**
-     * <p>The ID of the recommended action.</p>
-     */
-    inline void SetActionId(const char* value) { m_actionIdHasBeenSet = true; m_actionId.assign(value); }
-
-    /**
-     * <p>The ID of the recommended action.</p>
-     */
-    inline PredictedAction& WithActionId(const Aws::String& value) { SetActionId(value); return *this;}
-
-    /**
-     * <p>The ID of the recommended action.</p>
-     */
-    inline PredictedAction& WithActionId(Aws::String&& value) { SetActionId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the recommended action.</p>
-     */
-    inline PredictedAction& WithActionId(const char* value) { SetActionId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The score of the recommended action. For information about action scores, see
      * <a
      * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
      * action recommendation scoring works</a>.</p>
      */
-    inline double GetScore() const{ return m_score; }
-
-    /**
-     * <p>The score of the recommended action. For information about action scores, see
-     * <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
-     * action recommendation scoring works</a>.</p>
-     */
+    inline double GetScore() const { return m_score; }
     inline bool ScoreHasBeenSet() const { return m_scoreHasBeenSet; }
-
-    /**
-     * <p>The score of the recommended action. For information about action scores, see
-     * <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
-     * action recommendation scoring works</a>.</p>
-     */
     inline void SetScore(double value) { m_scoreHasBeenSet = true; m_score = value; }
-
-    /**
-     * <p>The score of the recommended action. For information about action scores, see
-     * <a
-     * href="https://docs.aws.amazon.com/personalize/latest/dg/how-action-recommendation-scoring-works.html">How
-     * action recommendation scoring works</a>.</p>
-     */
     inline PredictedAction& WithScore(double value) { SetScore(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_actionId;
     bool m_actionIdHasBeenSet = false;
 
-    double m_score;
+    double m_score{0.0};
     bool m_scoreHasBeenSet = false;
   };
 

@@ -18,17 +18,7 @@ namespace ServiceCatalog
 namespace Model
 {
 
-ExecutionParameter::ExecutionParameter() : 
-    m_nameHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_defaultValuesHasBeenSet(false)
-{
-}
-
-ExecutionParameter::ExecutionParameter(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_typeHasBeenSet(false),
-    m_defaultValuesHasBeenSet(false)
+ExecutionParameter::ExecutionParameter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ ExecutionParameter& ExecutionParameter::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Name"))
   {
     m_name = jsonValue.GetString("Name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Type"))
   {
     m_type = jsonValue.GetString("Type");
-
     m_typeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DefaultValues"))
   {
     Aws::Utils::Array<JsonView> defaultValuesJsonList = jsonValue.GetArray("DefaultValues");
@@ -58,7 +44,6 @@ ExecutionParameter& ExecutionParameter::operator =(JsonView jsonValue)
     }
     m_defaultValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

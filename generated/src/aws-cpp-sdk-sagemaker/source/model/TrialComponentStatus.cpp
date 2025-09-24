@@ -18,17 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-TrialComponentStatus::TrialComponentStatus() : 
-    m_primaryStatus(TrialComponentPrimaryStatus::NOT_SET),
-    m_primaryStatusHasBeenSet(false),
-    m_messageHasBeenSet(false)
-{
-}
-
-TrialComponentStatus::TrialComponentStatus(JsonView jsonValue) : 
-    m_primaryStatus(TrialComponentPrimaryStatus::NOT_SET),
-    m_primaryStatusHasBeenSet(false),
-    m_messageHasBeenSet(false)
+TrialComponentStatus::TrialComponentStatus(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ TrialComponentStatus& TrialComponentStatus::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PrimaryStatus"))
   {
     m_primaryStatus = TrialComponentPrimaryStatusMapper::GetTrialComponentPrimaryStatusForName(jsonValue.GetString("PrimaryStatus"));
-
     m_primaryStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   return *this;
 }
 

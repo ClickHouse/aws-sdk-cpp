@@ -18,15 +18,7 @@ namespace WorkMail
 namespace Model
 {
 
-RedactedEwsAvailabilityProvider::RedactedEwsAvailabilityProvider() : 
-    m_ewsEndpointHasBeenSet(false),
-    m_ewsUsernameHasBeenSet(false)
-{
-}
-
-RedactedEwsAvailabilityProvider::RedactedEwsAvailabilityProvider(JsonView jsonValue) : 
-    m_ewsEndpointHasBeenSet(false),
-    m_ewsUsernameHasBeenSet(false)
+RedactedEwsAvailabilityProvider::RedactedEwsAvailabilityProvider(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ RedactedEwsAvailabilityProvider& RedactedEwsAvailabilityProvider::operator =(Jso
   if(jsonValue.ValueExists("EwsEndpoint"))
   {
     m_ewsEndpoint = jsonValue.GetString("EwsEndpoint");
-
     m_ewsEndpointHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EwsUsername"))
   {
     m_ewsUsername = jsonValue.GetString("EwsUsername");
-
     m_ewsUsernameHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -31,70 +31,38 @@ namespace Model
   class RankingData
   {
   public:
-    AWS_QCONNECT_API RankingData();
+    AWS_QCONNECT_API RankingData() = default;
     AWS_QCONNECT_API RankingData(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API RankingData& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QCONNECT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>The relevance score of the content.</p>
-     */
-    inline const RelevanceLevel& GetRelevanceLevel() const{ return m_relevanceLevel; }
-
-    /**
-     * <p>The relevance score of the content.</p>
-     */
-    inline bool RelevanceLevelHasBeenSet() const { return m_relevanceLevelHasBeenSet; }
-
-    /**
-     * <p>The relevance score of the content.</p>
-     */
-    inline void SetRelevanceLevel(const RelevanceLevel& value) { m_relevanceLevelHasBeenSet = true; m_relevanceLevel = value; }
-
-    /**
-     * <p>The relevance score of the content.</p>
-     */
-    inline void SetRelevanceLevel(RelevanceLevel&& value) { m_relevanceLevelHasBeenSet = true; m_relevanceLevel = std::move(value); }
-
-    /**
-     * <p>The relevance score of the content.</p>
-     */
-    inline RankingData& WithRelevanceLevel(const RelevanceLevel& value) { SetRelevanceLevel(value); return *this;}
-
-    /**
-     * <p>The relevance score of the content.</p>
-     */
-    inline RankingData& WithRelevanceLevel(RelevanceLevel&& value) { SetRelevanceLevel(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The relevance level of the recommendation.</p>
      */
-    inline double GetRelevanceScore() const{ return m_relevanceScore; }
-
-    /**
-     * <p>The relevance level of the recommendation.</p>
-     */
+    inline double GetRelevanceScore() const { return m_relevanceScore; }
     inline bool RelevanceScoreHasBeenSet() const { return m_relevanceScoreHasBeenSet; }
-
-    /**
-     * <p>The relevance level of the recommendation.</p>
-     */
     inline void SetRelevanceScore(double value) { m_relevanceScoreHasBeenSet = true; m_relevanceScore = value; }
-
-    /**
-     * <p>The relevance level of the recommendation.</p>
-     */
     inline RankingData& WithRelevanceScore(double value) { SetRelevanceScore(value); return *this;}
+    ///@}
 
+    ///@{
+    /**
+     * <p>The relevance score of the content.</p>
+     */
+    inline RelevanceLevel GetRelevanceLevel() const { return m_relevanceLevel; }
+    inline bool RelevanceLevelHasBeenSet() const { return m_relevanceLevelHasBeenSet; }
+    inline void SetRelevanceLevel(RelevanceLevel value) { m_relevanceLevelHasBeenSet = true; m_relevanceLevel = value; }
+    inline RankingData& WithRelevanceLevel(RelevanceLevel value) { SetRelevanceLevel(value); return *this;}
+    ///@}
   private:
 
-    RelevanceLevel m_relevanceLevel;
-    bool m_relevanceLevelHasBeenSet = false;
-
-    double m_relevanceScore;
+    double m_relevanceScore{0.0};
     bool m_relevanceScoreHasBeenSet = false;
+
+    RelevanceLevel m_relevanceLevel{RelevanceLevel::NOT_SET};
+    bool m_relevanceLevelHasBeenSet = false;
   };
 
 } // namespace Model

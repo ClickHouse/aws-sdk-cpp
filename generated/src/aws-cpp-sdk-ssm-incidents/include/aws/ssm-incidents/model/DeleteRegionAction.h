@@ -32,60 +32,24 @@ namespace Model
   class DeleteRegionAction
   {
   public:
-    AWS_SSMINCIDENTS_API DeleteRegionAction();
+    AWS_SSMINCIDENTS_API DeleteRegionAction() = default;
     AWS_SSMINCIDENTS_API DeleteRegionAction(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API DeleteRegionAction& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SSMINCIDENTS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the Amazon Web Services Region you're deleting from the
      * replication set.</p>
      */
-    inline const Aws::String& GetRegionName() const{ return m_regionName; }
-
-    /**
-     * <p>The name of the Amazon Web Services Region you're deleting from the
-     * replication set.</p>
-     */
+    inline const Aws::String& GetRegionName() const { return m_regionName; }
     inline bool RegionNameHasBeenSet() const { return m_regionNameHasBeenSet; }
-
-    /**
-     * <p>The name of the Amazon Web Services Region you're deleting from the
-     * replication set.</p>
-     */
-    inline void SetRegionName(const Aws::String& value) { m_regionNameHasBeenSet = true; m_regionName = value; }
-
-    /**
-     * <p>The name of the Amazon Web Services Region you're deleting from the
-     * replication set.</p>
-     */
-    inline void SetRegionName(Aws::String&& value) { m_regionNameHasBeenSet = true; m_regionName = std::move(value); }
-
-    /**
-     * <p>The name of the Amazon Web Services Region you're deleting from the
-     * replication set.</p>
-     */
-    inline void SetRegionName(const char* value) { m_regionNameHasBeenSet = true; m_regionName.assign(value); }
-
-    /**
-     * <p>The name of the Amazon Web Services Region you're deleting from the
-     * replication set.</p>
-     */
-    inline DeleteRegionAction& WithRegionName(const Aws::String& value) { SetRegionName(value); return *this;}
-
-    /**
-     * <p>The name of the Amazon Web Services Region you're deleting from the
-     * replication set.</p>
-     */
-    inline DeleteRegionAction& WithRegionName(Aws::String&& value) { SetRegionName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the Amazon Web Services Region you're deleting from the
-     * replication set.</p>
-     */
-    inline DeleteRegionAction& WithRegionName(const char* value) { SetRegionName(value); return *this;}
-
+    template<typename RegionNameT = Aws::String>
+    void SetRegionName(RegionNameT&& value) { m_regionNameHasBeenSet = true; m_regionName = std::forward<RegionNameT>(value); }
+    template<typename RegionNameT = Aws::String>
+    DeleteRegionAction& WithRegionName(RegionNameT&& value) { SetRegionName(std::forward<RegionNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_regionName;

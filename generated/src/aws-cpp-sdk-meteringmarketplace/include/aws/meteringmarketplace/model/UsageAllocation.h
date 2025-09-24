@@ -34,84 +34,39 @@ namespace Model
   class UsageAllocation
   {
   public:
-    AWS_MARKETPLACEMETERING_API UsageAllocation();
+    AWS_MARKETPLACEMETERING_API UsageAllocation() = default;
     AWS_MARKETPLACEMETERING_API UsageAllocation(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACEMETERING_API UsageAllocation& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MARKETPLACEMETERING_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The total quantity allocated to this bucket of usage.</p>
      */
-    inline int GetAllocatedUsageQuantity() const{ return m_allocatedUsageQuantity; }
-
-    /**
-     * <p>The total quantity allocated to this bucket of usage.</p>
-     */
+    inline int GetAllocatedUsageQuantity() const { return m_allocatedUsageQuantity; }
     inline bool AllocatedUsageQuantityHasBeenSet() const { return m_allocatedUsageQuantityHasBeenSet; }
-
-    /**
-     * <p>The total quantity allocated to this bucket of usage.</p>
-     */
     inline void SetAllocatedUsageQuantity(int value) { m_allocatedUsageQuantityHasBeenSet = true; m_allocatedUsageQuantity = value; }
-
-    /**
-     * <p>The total quantity allocated to this bucket of usage.</p>
-     */
     inline UsageAllocation& WithAllocatedUsageQuantity(int value) { SetAllocatedUsageQuantity(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The set of tags that define the bucket of usage. For the bucket of items with
      * no tags, this parameter can be left out.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The set of tags that define the bucket of usage. For the bucket of items with
-     * no tags, this parameter can be left out.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The set of tags that define the bucket of usage. For the bucket of items with
-     * no tags, this parameter can be left out.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The set of tags that define the bucket of usage. For the bucket of items with
-     * no tags, this parameter can be left out.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The set of tags that define the bucket of usage. For the bucket of items with
-     * no tags, this parameter can be left out.</p>
-     */
-    inline UsageAllocation& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The set of tags that define the bucket of usage. For the bucket of items with
-     * no tags, this parameter can be left out.</p>
-     */
-    inline UsageAllocation& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The set of tags that define the bucket of usage. For the bucket of items with
-     * no tags, this parameter can be left out.</p>
-     */
-    inline UsageAllocation& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The set of tags that define the bucket of usage. For the bucket of items with
-     * no tags, this parameter can be left out.</p>
-     */
-    inline UsageAllocation& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    UsageAllocation& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    UsageAllocation& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
-    int m_allocatedUsageQuantity;
+    int m_allocatedUsageQuantity{0};
     bool m_allocatedUsageQuantityHasBeenSet = false;
 
     Aws::Vector<Tag> m_tags;

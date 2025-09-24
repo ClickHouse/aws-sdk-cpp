@@ -20,15 +20,7 @@ namespace RDS
 namespace Model
 {
 
-DBSnapshotAttributesResult::DBSnapshotAttributesResult() : 
-    m_dBSnapshotIdentifierHasBeenSet(false),
-    m_dBSnapshotAttributesHasBeenSet(false)
-{
-}
-
-DBSnapshotAttributesResult::DBSnapshotAttributesResult(const XmlNode& xmlNode) : 
-    m_dBSnapshotIdentifierHasBeenSet(false),
-    m_dBSnapshotAttributesHasBeenSet(false)
+DBSnapshotAttributesResult::DBSnapshotAttributesResult(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -49,6 +41,7 @@ DBSnapshotAttributesResult& DBSnapshotAttributesResult::operator =(const XmlNode
     if(!dBSnapshotAttributesNode.IsNull())
     {
       XmlNode dBSnapshotAttributesMember = dBSnapshotAttributesNode.FirstChild("DBSnapshotAttribute");
+      m_dBSnapshotAttributesHasBeenSet = !dBSnapshotAttributesMember.IsNull();
       while(!dBSnapshotAttributesMember.IsNull())
       {
         m_dBSnapshotAttributes.push_back(dBSnapshotAttributesMember);
@@ -75,7 +68,7 @@ void DBSnapshotAttributesResult::OutputToStream(Aws::OStream& oStream, const cha
       for(auto& item : m_dBSnapshotAttributes)
       {
         Aws::StringStream dBSnapshotAttributesSs;
-        dBSnapshotAttributesSs << location << index << locationValue << ".DBSnapshotAttribute." << dBSnapshotAttributesIdx++;
+        dBSnapshotAttributesSs << location << index << locationValue << ".DBSnapshotAttributes.DBSnapshotAttribute." << dBSnapshotAttributesIdx++;
         item.OutputToStream(oStream, dBSnapshotAttributesSs.str().c_str());
       }
   }
@@ -94,7 +87,7 @@ void DBSnapshotAttributesResult::OutputToStream(Aws::OStream& oStream, const cha
       for(auto& item : m_dBSnapshotAttributes)
       {
         Aws::StringStream dBSnapshotAttributesSs;
-        dBSnapshotAttributesSs << location <<  ".DBSnapshotAttribute." << dBSnapshotAttributesIdx++;
+        dBSnapshotAttributesSs << location << ".DBSnapshotAttributes.DBSnapshotAttribute." << dBSnapshotAttributesIdx++;
         item.OutputToStream(oStream, dBSnapshotAttributesSs.str().c_str());
       }
   }

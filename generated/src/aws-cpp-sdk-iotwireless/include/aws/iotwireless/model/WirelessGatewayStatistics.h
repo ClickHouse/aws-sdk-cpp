@@ -33,255 +33,84 @@ namespace Model
   class WirelessGatewayStatistics
   {
   public:
-    AWS_IOTWIRELESS_API WirelessGatewayStatistics();
+    AWS_IOTWIRELESS_API WirelessGatewayStatistics() = default;
     AWS_IOTWIRELESS_API WirelessGatewayStatistics(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API WirelessGatewayStatistics& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTWIRELESS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name of the resource.</p>
      */
-    inline const Aws::String& GetArn() const{ return m_arn; }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
+    inline const Aws::String& GetArn() const { return m_arn; }
     inline bool ArnHasBeenSet() const { return m_arnHasBeenSet; }
+    template<typename ArnT = Aws::String>
+    void SetArn(ArnT&& value) { m_arnHasBeenSet = true; m_arn = std::forward<ArnT>(value); }
+    template<typename ArnT = Aws::String>
+    WirelessGatewayStatistics& WithArn(ArnT&& value) { SetArn(std::forward<ArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline void SetArn(const Aws::String& value) { m_arnHasBeenSet = true; m_arn = value; }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline void SetArn(Aws::String&& value) { m_arnHasBeenSet = true; m_arn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline void SetArn(const char* value) { m_arnHasBeenSet = true; m_arn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline WirelessGatewayStatistics& WithArn(const Aws::String& value) { SetArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline WirelessGatewayStatistics& WithArn(Aws::String&& value) { SetArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name of the resource.</p>
-     */
-    inline WirelessGatewayStatistics& WithArn(const char* value) { SetArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the wireless gateway reporting the data.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
-
-    /**
-     * <p>The ID of the wireless gateway reporting the data.</p>
-     */
+    inline const Aws::String& GetId() const { return m_id; }
     inline bool IdHasBeenSet() const { return m_idHasBeenSet; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    WirelessGatewayStatistics& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the wireless gateway reporting the data.</p>
-     */
-    inline void SetId(const Aws::String& value) { m_idHasBeenSet = true; m_id = value; }
-
-    /**
-     * <p>The ID of the wireless gateway reporting the data.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_idHasBeenSet = true; m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the wireless gateway reporting the data.</p>
-     */
-    inline void SetId(const char* value) { m_idHasBeenSet = true; m_id.assign(value); }
-
-    /**
-     * <p>The ID of the wireless gateway reporting the data.</p>
-     */
-    inline WirelessGatewayStatistics& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the wireless gateway reporting the data.</p>
-     */
-    inline WirelessGatewayStatistics& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the wireless gateway reporting the data.</p>
-     */
-    inline WirelessGatewayStatistics& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the resource.</p>
      */
-    inline const Aws::String& GetName() const{ return m_name; }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
+    inline const Aws::String& GetName() const { return m_name; }
     inline bool NameHasBeenSet() const { return m_nameHasBeenSet; }
+    template<typename NameT = Aws::String>
+    void SetName(NameT&& value) { m_nameHasBeenSet = true; m_name = std::forward<NameT>(value); }
+    template<typename NameT = Aws::String>
+    WirelessGatewayStatistics& WithName(NameT&& value) { SetName(std::forward<NameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(const Aws::String& value) { m_nameHasBeenSet = true; m_name = value; }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(Aws::String&& value) { m_nameHasBeenSet = true; m_name = std::move(value); }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline void SetName(const char* value) { m_nameHasBeenSet = true; m_name.assign(value); }
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline WirelessGatewayStatistics& WithName(const Aws::String& value) { SetName(value); return *this;}
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline WirelessGatewayStatistics& WithName(Aws::String&& value) { SetName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the resource.</p>
-     */
-    inline WirelessGatewayStatistics& WithName(const char* value) { SetName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The description of the resource.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description of the resource.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    WirelessGatewayStatistics& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline WirelessGatewayStatistics& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline WirelessGatewayStatistics& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description of the resource.</p>
-     */
-    inline WirelessGatewayStatistics& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>LoRaWAN gateway info.</p>
      */
-    inline const LoRaWANGateway& GetLoRaWAN() const{ return m_loRaWAN; }
-
-    /**
-     * <p>LoRaWAN gateway info.</p>
-     */
+    inline const LoRaWANGateway& GetLoRaWAN() const { return m_loRaWAN; }
     inline bool LoRaWANHasBeenSet() const { return m_loRaWANHasBeenSet; }
+    template<typename LoRaWANT = LoRaWANGateway>
+    void SetLoRaWAN(LoRaWANT&& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = std::forward<LoRaWANT>(value); }
+    template<typename LoRaWANT = LoRaWANGateway>
+    WirelessGatewayStatistics& WithLoRaWAN(LoRaWANT&& value) { SetLoRaWAN(std::forward<LoRaWANT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>LoRaWAN gateway info.</p>
-     */
-    inline void SetLoRaWAN(const LoRaWANGateway& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = value; }
-
-    /**
-     * <p>LoRaWAN gateway info.</p>
-     */
-    inline void SetLoRaWAN(LoRaWANGateway&& value) { m_loRaWANHasBeenSet = true; m_loRaWAN = std::move(value); }
-
-    /**
-     * <p>LoRaWAN gateway info.</p>
-     */
-    inline WirelessGatewayStatistics& WithLoRaWAN(const LoRaWANGateway& value) { SetLoRaWAN(value); return *this;}
-
-    /**
-     * <p>LoRaWAN gateway info.</p>
-     */
-    inline WirelessGatewayStatistics& WithLoRaWAN(LoRaWANGateway&& value) { SetLoRaWAN(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time when the most recent uplink was received.</p> 
      * <p>This value is only valid for 3 months.</p> 
      */
-    inline const Aws::String& GetLastUplinkReceivedAt() const{ return m_lastUplinkReceivedAt; }
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p> 
-     * <p>This value is only valid for 3 months.</p> 
-     */
+    inline const Aws::String& GetLastUplinkReceivedAt() const { return m_lastUplinkReceivedAt; }
     inline bool LastUplinkReceivedAtHasBeenSet() const { return m_lastUplinkReceivedAtHasBeenSet; }
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p> 
-     * <p>This value is only valid for 3 months.</p> 
-     */
-    inline void SetLastUplinkReceivedAt(const Aws::String& value) { m_lastUplinkReceivedAtHasBeenSet = true; m_lastUplinkReceivedAt = value; }
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p> 
-     * <p>This value is only valid for 3 months.</p> 
-     */
-    inline void SetLastUplinkReceivedAt(Aws::String&& value) { m_lastUplinkReceivedAtHasBeenSet = true; m_lastUplinkReceivedAt = std::move(value); }
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p> 
-     * <p>This value is only valid for 3 months.</p> 
-     */
-    inline void SetLastUplinkReceivedAt(const char* value) { m_lastUplinkReceivedAtHasBeenSet = true; m_lastUplinkReceivedAt.assign(value); }
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p> 
-     * <p>This value is only valid for 3 months.</p> 
-     */
-    inline WirelessGatewayStatistics& WithLastUplinkReceivedAt(const Aws::String& value) { SetLastUplinkReceivedAt(value); return *this;}
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p> 
-     * <p>This value is only valid for 3 months.</p> 
-     */
-    inline WirelessGatewayStatistics& WithLastUplinkReceivedAt(Aws::String&& value) { SetLastUplinkReceivedAt(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time when the most recent uplink was received.</p> 
-     * <p>This value is only valid for 3 months.</p> 
-     */
-    inline WirelessGatewayStatistics& WithLastUplinkReceivedAt(const char* value) { SetLastUplinkReceivedAt(value); return *this;}
-
+    template<typename LastUplinkReceivedAtT = Aws::String>
+    void SetLastUplinkReceivedAt(LastUplinkReceivedAtT&& value) { m_lastUplinkReceivedAtHasBeenSet = true; m_lastUplinkReceivedAt = std::forward<LastUplinkReceivedAtT>(value); }
+    template<typename LastUplinkReceivedAtT = Aws::String>
+    WirelessGatewayStatistics& WithLastUplinkReceivedAt(LastUplinkReceivedAtT&& value) { SetLastUplinkReceivedAt(std::forward<LastUplinkReceivedAtT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_arn;

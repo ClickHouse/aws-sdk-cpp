@@ -35,91 +35,51 @@ namespace Model
   class UpdateElasticsearchDomainConfigResult
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API UpdateElasticsearchDomainConfigResult();
+    AWS_ELASTICSEARCHSERVICE_API UpdateElasticsearchDomainConfigResult() = default;
     AWS_ELASTICSEARCHSERVICE_API UpdateElasticsearchDomainConfigResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_ELASTICSEARCHSERVICE_API UpdateElasticsearchDomainConfigResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The status of the updated Elasticsearch domain. </p>
      */
-    inline const ElasticsearchDomainConfig& GetDomainConfig() const{ return m_domainConfig; }
+    inline const ElasticsearchDomainConfig& GetDomainConfig() const { return m_domainConfig; }
+    template<typename DomainConfigT = ElasticsearchDomainConfig>
+    void SetDomainConfig(DomainConfigT&& value) { m_domainConfigHasBeenSet = true; m_domainConfig = std::forward<DomainConfigT>(value); }
+    template<typename DomainConfigT = ElasticsearchDomainConfig>
+    UpdateElasticsearchDomainConfigResult& WithDomainConfig(DomainConfigT&& value) { SetDomainConfig(std::forward<DomainConfigT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the updated Elasticsearch domain. </p>
-     */
-    inline void SetDomainConfig(const ElasticsearchDomainConfig& value) { m_domainConfig = value; }
-
-    /**
-     * <p>The status of the updated Elasticsearch domain. </p>
-     */
-    inline void SetDomainConfig(ElasticsearchDomainConfig&& value) { m_domainConfig = std::move(value); }
-
-    /**
-     * <p>The status of the updated Elasticsearch domain. </p>
-     */
-    inline UpdateElasticsearchDomainConfigResult& WithDomainConfig(const ElasticsearchDomainConfig& value) { SetDomainConfig(value); return *this;}
-
-    /**
-     * <p>The status of the updated Elasticsearch domain. </p>
-     */
-    inline UpdateElasticsearchDomainConfigResult& WithDomainConfig(ElasticsearchDomainConfig&& value) { SetDomainConfig(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains result of DryRun. </p>
      */
-    inline const DryRunResults& GetDryRunResults() const{ return m_dryRunResults; }
+    inline const DryRunResults& GetDryRunResults() const { return m_dryRunResults; }
+    template<typename DryRunResultsT = DryRunResults>
+    void SetDryRunResults(DryRunResultsT&& value) { m_dryRunResultsHasBeenSet = true; m_dryRunResults = std::forward<DryRunResultsT>(value); }
+    template<typename DryRunResultsT = DryRunResults>
+    UpdateElasticsearchDomainConfigResult& WithDryRunResults(DryRunResultsT&& value) { SetDryRunResults(std::forward<DryRunResultsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains result of DryRun. </p>
-     */
-    inline void SetDryRunResults(const DryRunResults& value) { m_dryRunResults = value; }
-
-    /**
-     * <p>Contains result of DryRun. </p>
-     */
-    inline void SetDryRunResults(DryRunResults&& value) { m_dryRunResults = std::move(value); }
-
-    /**
-     * <p>Contains result of DryRun. </p>
-     */
-    inline UpdateElasticsearchDomainConfigResult& WithDryRunResults(const DryRunResults& value) { SetDryRunResults(value); return *this;}
-
-    /**
-     * <p>Contains result of DryRun. </p>
-     */
-    inline UpdateElasticsearchDomainConfigResult& WithDryRunResults(DryRunResults&& value) { SetDryRunResults(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateElasticsearchDomainConfigResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateElasticsearchDomainConfigResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateElasticsearchDomainConfigResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateElasticsearchDomainConfigResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     ElasticsearchDomainConfig m_domainConfig;
+    bool m_domainConfigHasBeenSet = false;
 
     DryRunResults m_dryRunResults;
+    bool m_dryRunResultsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

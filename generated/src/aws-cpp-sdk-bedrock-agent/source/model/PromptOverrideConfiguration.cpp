@@ -18,15 +18,7 @@ namespace BedrockAgent
 namespace Model
 {
 
-PromptOverrideConfiguration::PromptOverrideConfiguration() : 
-    m_promptConfigurationsHasBeenSet(false),
-    m_overrideLambdaHasBeenSet(false)
-{
-}
-
-PromptOverrideConfiguration::PromptOverrideConfiguration(JsonView jsonValue) : 
-    m_promptConfigurationsHasBeenSet(false),
-    m_overrideLambdaHasBeenSet(false)
+PromptOverrideConfiguration::PromptOverrideConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ PromptOverrideConfiguration& PromptOverrideConfiguration::operator =(JsonView js
     }
     m_promptConfigurationsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("overrideLambda"))
   {
     m_overrideLambda = jsonValue.GetString("overrideLambda");
-
     m_overrideLambdaHasBeenSet = true;
   }
-
   return *this;
 }
 

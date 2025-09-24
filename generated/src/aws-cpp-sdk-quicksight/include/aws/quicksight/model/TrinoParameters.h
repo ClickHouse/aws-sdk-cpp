@@ -32,120 +32,51 @@ namespace Model
   class TrinoParameters
   {
   public:
-    AWS_QUICKSIGHT_API TrinoParameters();
+    AWS_QUICKSIGHT_API TrinoParameters() = default;
     AWS_QUICKSIGHT_API TrinoParameters(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API TrinoParameters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The host name of the Trino data source.</p>
      */
-    inline const Aws::String& GetHost() const{ return m_host; }
-
-    /**
-     * <p>The host name of the Trino data source.</p>
-     */
+    inline const Aws::String& GetHost() const { return m_host; }
     inline bool HostHasBeenSet() const { return m_hostHasBeenSet; }
+    template<typename HostT = Aws::String>
+    void SetHost(HostT&& value) { m_hostHasBeenSet = true; m_host = std::forward<HostT>(value); }
+    template<typename HostT = Aws::String>
+    TrinoParameters& WithHost(HostT&& value) { SetHost(std::forward<HostT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The host name of the Trino data source.</p>
-     */
-    inline void SetHost(const Aws::String& value) { m_hostHasBeenSet = true; m_host = value; }
-
-    /**
-     * <p>The host name of the Trino data source.</p>
-     */
-    inline void SetHost(Aws::String&& value) { m_hostHasBeenSet = true; m_host = std::move(value); }
-
-    /**
-     * <p>The host name of the Trino data source.</p>
-     */
-    inline void SetHost(const char* value) { m_hostHasBeenSet = true; m_host.assign(value); }
-
-    /**
-     * <p>The host name of the Trino data source.</p>
-     */
-    inline TrinoParameters& WithHost(const Aws::String& value) { SetHost(value); return *this;}
-
-    /**
-     * <p>The host name of the Trino data source.</p>
-     */
-    inline TrinoParameters& WithHost(Aws::String&& value) { SetHost(std::move(value)); return *this;}
-
-    /**
-     * <p>The host name of the Trino data source.</p>
-     */
-    inline TrinoParameters& WithHost(const char* value) { SetHost(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The port for the Trino data source.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The port for the Trino data source.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The port for the Trino data source.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The port for the Trino data source.</p>
-     */
     inline TrinoParameters& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The catalog name for the Trino data source.</p>
      */
-    inline const Aws::String& GetCatalog() const{ return m_catalog; }
-
-    /**
-     * <p>The catalog name for the Trino data source.</p>
-     */
+    inline const Aws::String& GetCatalog() const { return m_catalog; }
     inline bool CatalogHasBeenSet() const { return m_catalogHasBeenSet; }
-
-    /**
-     * <p>The catalog name for the Trino data source.</p>
-     */
-    inline void SetCatalog(const Aws::String& value) { m_catalogHasBeenSet = true; m_catalog = value; }
-
-    /**
-     * <p>The catalog name for the Trino data source.</p>
-     */
-    inline void SetCatalog(Aws::String&& value) { m_catalogHasBeenSet = true; m_catalog = std::move(value); }
-
-    /**
-     * <p>The catalog name for the Trino data source.</p>
-     */
-    inline void SetCatalog(const char* value) { m_catalogHasBeenSet = true; m_catalog.assign(value); }
-
-    /**
-     * <p>The catalog name for the Trino data source.</p>
-     */
-    inline TrinoParameters& WithCatalog(const Aws::String& value) { SetCatalog(value); return *this;}
-
-    /**
-     * <p>The catalog name for the Trino data source.</p>
-     */
-    inline TrinoParameters& WithCatalog(Aws::String&& value) { SetCatalog(std::move(value)); return *this;}
-
-    /**
-     * <p>The catalog name for the Trino data source.</p>
-     */
-    inline TrinoParameters& WithCatalog(const char* value) { SetCatalog(value); return *this;}
-
+    template<typename CatalogT = Aws::String>
+    void SetCatalog(CatalogT&& value) { m_catalogHasBeenSet = true; m_catalog = std::forward<CatalogT>(value); }
+    template<typename CatalogT = Aws::String>
+    TrinoParameters& WithCatalog(CatalogT&& value) { SetCatalog(std::forward<CatalogT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_host;
     bool m_hostHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
     Aws::String m_catalog;

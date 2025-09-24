@@ -20,37 +20,7 @@ namespace EC2
 namespace Model
 {
 
-SnapshotTaskDetail::SnapshotTaskDetail() : 
-    m_descriptionHasBeenSet(false),
-    m_diskImageSize(0.0),
-    m_diskImageSizeHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_formatHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_progressHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_urlHasBeenSet(false),
-    m_userBucketHasBeenSet(false)
-{
-}
-
-SnapshotTaskDetail::SnapshotTaskDetail(const XmlNode& xmlNode) : 
-    m_descriptionHasBeenSet(false),
-    m_diskImageSize(0.0),
-    m_diskImageSizeHasBeenSet(false),
-    m_encrypted(false),
-    m_encryptedHasBeenSet(false),
-    m_formatHasBeenSet(false),
-    m_kmsKeyIdHasBeenSet(false),
-    m_progressHasBeenSet(false),
-    m_snapshotIdHasBeenSet(false),
-    m_statusHasBeenSet(false),
-    m_statusMessageHasBeenSet(false),
-    m_urlHasBeenSet(false),
-    m_userBucketHasBeenSet(false)
+SnapshotTaskDetail::SnapshotTaskDetail(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -201,7 +171,7 @@ void SnapshotTaskDetail::OutputToStream(Aws::OStream& oStream, const char* locat
   }
   if(m_diskImageSizeHasBeenSet)
   {
-        oStream << location << ".DiskImageSize=" << StringUtils::URLEncode(m_diskImageSize) << "&";
+      oStream << location << ".DiskImageSize=" << StringUtils::URLEncode(m_diskImageSize) << "&";
   }
   if(m_encryptedHasBeenSet)
   {

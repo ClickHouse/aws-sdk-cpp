@@ -21,7 +21,7 @@ namespace Model
   class DescribeEndpointAccessRequest : public RedshiftRequest
   {
   public:
-    AWS_REDSHIFT_API DescribeEndpointAccessRequest();
+    AWS_REDSHIFT_API DescribeEndpointAccessRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,267 +36,81 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The cluster identifier associated with the described endpoint.</p>
      */
-    inline const Aws::String& GetClusterIdentifier() const{ return m_clusterIdentifier; }
-
-    /**
-     * <p>The cluster identifier associated with the described endpoint.</p>
-     */
+    inline const Aws::String& GetClusterIdentifier() const { return m_clusterIdentifier; }
     inline bool ClusterIdentifierHasBeenSet() const { return m_clusterIdentifierHasBeenSet; }
+    template<typename ClusterIdentifierT = Aws::String>
+    void SetClusterIdentifier(ClusterIdentifierT&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::forward<ClusterIdentifierT>(value); }
+    template<typename ClusterIdentifierT = Aws::String>
+    DescribeEndpointAccessRequest& WithClusterIdentifier(ClusterIdentifierT&& value) { SetClusterIdentifier(std::forward<ClusterIdentifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The cluster identifier associated with the described endpoint.</p>
-     */
-    inline void SetClusterIdentifier(const Aws::String& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = value; }
-
-    /**
-     * <p>The cluster identifier associated with the described endpoint.</p>
-     */
-    inline void SetClusterIdentifier(Aws::String&& value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier = std::move(value); }
-
-    /**
-     * <p>The cluster identifier associated with the described endpoint.</p>
-     */
-    inline void SetClusterIdentifier(const char* value) { m_clusterIdentifierHasBeenSet = true; m_clusterIdentifier.assign(value); }
-
-    /**
-     * <p>The cluster identifier associated with the described endpoint.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithClusterIdentifier(const Aws::String& value) { SetClusterIdentifier(value); return *this;}
-
-    /**
-     * <p>The cluster identifier associated with the described endpoint.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithClusterIdentifier(Aws::String&& value) { SetClusterIdentifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The cluster identifier associated with the described endpoint.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithClusterIdentifier(const char* value) { SetClusterIdentifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account ID of the owner of the cluster.</p>
      */
-    inline const Aws::String& GetResourceOwner() const{ return m_resourceOwner; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the cluster.</p>
-     */
+    inline const Aws::String& GetResourceOwner() const { return m_resourceOwner; }
     inline bool ResourceOwnerHasBeenSet() const { return m_resourceOwnerHasBeenSet; }
+    template<typename ResourceOwnerT = Aws::String>
+    void SetResourceOwner(ResourceOwnerT&& value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = std::forward<ResourceOwnerT>(value); }
+    template<typename ResourceOwnerT = Aws::String>
+    DescribeEndpointAccessRequest& WithResourceOwner(ResourceOwnerT&& value) { SetResourceOwner(std::forward<ResourceOwnerT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the cluster.</p>
-     */
-    inline void SetResourceOwner(const Aws::String& value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the cluster.</p>
-     */
-    inline void SetResourceOwner(Aws::String&& value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the cluster.</p>
-     */
-    inline void SetResourceOwner(const char* value) { m_resourceOwnerHasBeenSet = true; m_resourceOwner.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the cluster.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithResourceOwner(const Aws::String& value) { SetResourceOwner(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the cluster.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithResourceOwner(Aws::String&& value) { SetResourceOwner(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID of the owner of the cluster.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithResourceOwner(const char* value) { SetResourceOwner(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the endpoint to be described.</p>
      */
-    inline const Aws::String& GetEndpointName() const{ return m_endpointName; }
-
-    /**
-     * <p>The name of the endpoint to be described.</p>
-     */
+    inline const Aws::String& GetEndpointName() const { return m_endpointName; }
     inline bool EndpointNameHasBeenSet() const { return m_endpointNameHasBeenSet; }
+    template<typename EndpointNameT = Aws::String>
+    void SetEndpointName(EndpointNameT&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::forward<EndpointNameT>(value); }
+    template<typename EndpointNameT = Aws::String>
+    DescribeEndpointAccessRequest& WithEndpointName(EndpointNameT&& value) { SetEndpointName(std::forward<EndpointNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the endpoint to be described.</p>
-     */
-    inline void SetEndpointName(const Aws::String& value) { m_endpointNameHasBeenSet = true; m_endpointName = value; }
-
-    /**
-     * <p>The name of the endpoint to be described.</p>
-     */
-    inline void SetEndpointName(Aws::String&& value) { m_endpointNameHasBeenSet = true; m_endpointName = std::move(value); }
-
-    /**
-     * <p>The name of the endpoint to be described.</p>
-     */
-    inline void SetEndpointName(const char* value) { m_endpointNameHasBeenSet = true; m_endpointName.assign(value); }
-
-    /**
-     * <p>The name of the endpoint to be described.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithEndpointName(const Aws::String& value) { SetEndpointName(value); return *this;}
-
-    /**
-     * <p>The name of the endpoint to be described.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithEndpointName(Aws::String&& value) { SetEndpointName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the endpoint to be described.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithEndpointName(const char* value) { SetEndpointName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The virtual private cloud (VPC) identifier with access to the cluster.</p>
      */
-    inline const Aws::String& GetVpcId() const{ return m_vpcId; }
-
-    /**
-     * <p>The virtual private cloud (VPC) identifier with access to the cluster.</p>
-     */
+    inline const Aws::String& GetVpcId() const { return m_vpcId; }
     inline bool VpcIdHasBeenSet() const { return m_vpcIdHasBeenSet; }
+    template<typename VpcIdT = Aws::String>
+    void SetVpcId(VpcIdT&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::forward<VpcIdT>(value); }
+    template<typename VpcIdT = Aws::String>
+    DescribeEndpointAccessRequest& WithVpcId(VpcIdT&& value) { SetVpcId(std::forward<VpcIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The virtual private cloud (VPC) identifier with access to the cluster.</p>
-     */
-    inline void SetVpcId(const Aws::String& value) { m_vpcIdHasBeenSet = true; m_vpcId = value; }
-
-    /**
-     * <p>The virtual private cloud (VPC) identifier with access to the cluster.</p>
-     */
-    inline void SetVpcId(Aws::String&& value) { m_vpcIdHasBeenSet = true; m_vpcId = std::move(value); }
-
-    /**
-     * <p>The virtual private cloud (VPC) identifier with access to the cluster.</p>
-     */
-    inline void SetVpcId(const char* value) { m_vpcIdHasBeenSet = true; m_vpcId.assign(value); }
-
-    /**
-     * <p>The virtual private cloud (VPC) identifier with access to the cluster.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithVpcId(const Aws::String& value) { SetVpcId(value); return *this;}
-
-    /**
-     * <p>The virtual private cloud (VPC) identifier with access to the cluster.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithVpcId(Aws::String&& value) { SetVpcId(std::move(value)); return *this;}
-
-    /**
-     * <p>The virtual private cloud (VPC) identifier with access to the cluster.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithVpcId(const char* value) { SetVpcId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The maximum number of records to include in the response. If more records
      * exist than the specified <code>MaxRecords</code> value, a pagination token
      * called a <code>Marker</code> is included in the response so that the remaining
      * results can be retrieved.</p>
      */
-    inline int GetMaxRecords() const{ return m_maxRecords; }
-
-    /**
-     * <p>The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a <code>Marker</code> is included in the response so that the remaining
-     * results can be retrieved.</p>
-     */
+    inline int GetMaxRecords() const { return m_maxRecords; }
     inline bool MaxRecordsHasBeenSet() const { return m_maxRecordsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a <code>Marker</code> is included in the response so that the remaining
-     * results can be retrieved.</p>
-     */
     inline void SetMaxRecords(int value) { m_maxRecordsHasBeenSet = true; m_maxRecords = value; }
-
-    /**
-     * <p>The maximum number of records to include in the response. If more records
-     * exist than the specified <code>MaxRecords</code> value, a pagination token
-     * called a <code>Marker</code> is included in the response so that the remaining
-     * results can be retrieved.</p>
-     */
     inline DescribeEndpointAccessRequest& WithMaxRecords(int value) { SetMaxRecords(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>An optional pagination token provided by a previous
      * <code>DescribeEndpointAccess</code> request. If this parameter is specified, the
      * response includes only records beyond the marker, up to the value specified by
      * the <code>MaxRecords</code> parameter.</p>
      */
-    inline const Aws::String& GetMarker() const{ return m_marker; }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeEndpointAccess</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * the <code>MaxRecords</code> parameter.</p>
-     */
+    inline const Aws::String& GetMarker() const { return m_marker; }
     inline bool MarkerHasBeenSet() const { return m_markerHasBeenSet; }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeEndpointAccess</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * the <code>MaxRecords</code> parameter.</p>
-     */
-    inline void SetMarker(const Aws::String& value) { m_markerHasBeenSet = true; m_marker = value; }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeEndpointAccess</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * the <code>MaxRecords</code> parameter.</p>
-     */
-    inline void SetMarker(Aws::String&& value) { m_markerHasBeenSet = true; m_marker = std::move(value); }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeEndpointAccess</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * the <code>MaxRecords</code> parameter.</p>
-     */
-    inline void SetMarker(const char* value) { m_markerHasBeenSet = true; m_marker.assign(value); }
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeEndpointAccess</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * the <code>MaxRecords</code> parameter.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithMarker(const Aws::String& value) { SetMarker(value); return *this;}
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeEndpointAccess</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * the <code>MaxRecords</code> parameter.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithMarker(Aws::String&& value) { SetMarker(std::move(value)); return *this;}
-
-    /**
-     * <p>An optional pagination token provided by a previous
-     * <code>DescribeEndpointAccess</code> request. If this parameter is specified, the
-     * response includes only records beyond the marker, up to the value specified by
-     * the <code>MaxRecords</code> parameter.</p>
-     */
-    inline DescribeEndpointAccessRequest& WithMarker(const char* value) { SetMarker(value); return *this;}
-
+    template<typename MarkerT = Aws::String>
+    void SetMarker(MarkerT&& value) { m_markerHasBeenSet = true; m_marker = std::forward<MarkerT>(value); }
+    template<typename MarkerT = Aws::String>
+    DescribeEndpointAccessRequest& WithMarker(MarkerT&& value) { SetMarker(std::forward<MarkerT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_clusterIdentifier;
@@ -311,7 +125,7 @@ namespace Model
     Aws::String m_vpcId;
     bool m_vpcIdHasBeenSet = false;
 
-    int m_maxRecords;
+    int m_maxRecords{0};
     bool m_maxRecordsHasBeenSet = false;
 
     Aws::String m_marker;

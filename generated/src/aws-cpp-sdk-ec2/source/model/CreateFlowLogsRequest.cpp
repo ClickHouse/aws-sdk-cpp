@@ -10,29 +10,6 @@
 using namespace Aws::EC2::Model;
 using namespace Aws::Utils;
 
-CreateFlowLogsRequest::CreateFlowLogsRequest() : 
-    m_dryRun(false),
-    m_dryRunHasBeenSet(false),
-    m_clientTokenHasBeenSet(false),
-    m_deliverLogsPermissionArnHasBeenSet(false),
-    m_deliverCrossAccountRoleHasBeenSet(false),
-    m_logGroupNameHasBeenSet(false),
-    m_resourceIdsHasBeenSet(false),
-    m_resourceType(FlowLogsResourceType::NOT_SET),
-    m_resourceTypeHasBeenSet(false),
-    m_trafficType(TrafficType::NOT_SET),
-    m_trafficTypeHasBeenSet(false),
-    m_logDestinationType(LogDestinationType::NOT_SET),
-    m_logDestinationTypeHasBeenSet(false),
-    m_logDestinationHasBeenSet(false),
-    m_logFormatHasBeenSet(false),
-    m_tagSpecificationsHasBeenSet(false),
-    m_maxAggregationInterval(0),
-    m_maxAggregationIntervalHasBeenSet(false),
-    m_destinationOptionsHasBeenSet(false)
-{
-}
-
 Aws::String CreateFlowLogsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -75,17 +52,17 @@ Aws::String CreateFlowLogsRequest::SerializePayload() const
 
   if(m_resourceTypeHasBeenSet)
   {
-    ss << "ResourceType=" << FlowLogsResourceTypeMapper::GetNameForFlowLogsResourceType(m_resourceType) << "&";
+    ss << "ResourceType=" << StringUtils::URLEncode(FlowLogsResourceTypeMapper::GetNameForFlowLogsResourceType(m_resourceType)) << "&";
   }
 
   if(m_trafficTypeHasBeenSet)
   {
-    ss << "TrafficType=" << TrafficTypeMapper::GetNameForTrafficType(m_trafficType) << "&";
+    ss << "TrafficType=" << StringUtils::URLEncode(TrafficTypeMapper::GetNameForTrafficType(m_trafficType)) << "&";
   }
 
   if(m_logDestinationTypeHasBeenSet)
   {
-    ss << "LogDestinationType=" << LogDestinationTypeMapper::GetNameForLogDestinationType(m_logDestinationType) << "&";
+    ss << "LogDestinationType=" << StringUtils::URLEncode(LogDestinationTypeMapper::GetNameForLogDestinationType(m_logDestinationType)) << "&";
   }
 
   if(m_logDestinationHasBeenSet)

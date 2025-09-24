@@ -32,42 +32,23 @@ namespace Model
   class EksPropertiesOverride
   {
   public:
-    AWS_BATCH_API EksPropertiesOverride();
+    AWS_BATCH_API EksPropertiesOverride() = default;
     AWS_BATCH_API EksPropertiesOverride(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API EksPropertiesOverride& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_BATCH_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The overrides for the Kubernetes pod resources of a job.</p>
      */
-    inline const EksPodPropertiesOverride& GetPodProperties() const{ return m_podProperties; }
-
-    /**
-     * <p>The overrides for the Kubernetes pod resources of a job.</p>
-     */
+    inline const EksPodPropertiesOverride& GetPodProperties() const { return m_podProperties; }
     inline bool PodPropertiesHasBeenSet() const { return m_podPropertiesHasBeenSet; }
-
-    /**
-     * <p>The overrides for the Kubernetes pod resources of a job.</p>
-     */
-    inline void SetPodProperties(const EksPodPropertiesOverride& value) { m_podPropertiesHasBeenSet = true; m_podProperties = value; }
-
-    /**
-     * <p>The overrides for the Kubernetes pod resources of a job.</p>
-     */
-    inline void SetPodProperties(EksPodPropertiesOverride&& value) { m_podPropertiesHasBeenSet = true; m_podProperties = std::move(value); }
-
-    /**
-     * <p>The overrides for the Kubernetes pod resources of a job.</p>
-     */
-    inline EksPropertiesOverride& WithPodProperties(const EksPodPropertiesOverride& value) { SetPodProperties(value); return *this;}
-
-    /**
-     * <p>The overrides for the Kubernetes pod resources of a job.</p>
-     */
-    inline EksPropertiesOverride& WithPodProperties(EksPodPropertiesOverride&& value) { SetPodProperties(std::move(value)); return *this;}
-
+    template<typename PodPropertiesT = EksPodPropertiesOverride>
+    void SetPodProperties(PodPropertiesT&& value) { m_podPropertiesHasBeenSet = true; m_podProperties = std::forward<PodPropertiesT>(value); }
+    template<typename PodPropertiesT = EksPodPropertiesOverride>
+    EksPropertiesOverride& WithPodProperties(PodPropertiesT&& value) { SetPodProperties(std::forward<PodPropertiesT>(value)); return *this;}
+    ///@}
   private:
 
     EksPodPropertiesOverride m_podProperties;

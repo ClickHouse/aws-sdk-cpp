@@ -18,19 +18,7 @@ namespace Rekognition
 namespace Model
 {
 
-GeneralLabelsSettings::GeneralLabelsSettings() : 
-    m_labelInclusionFiltersHasBeenSet(false),
-    m_labelExclusionFiltersHasBeenSet(false),
-    m_labelCategoryInclusionFiltersHasBeenSet(false),
-    m_labelCategoryExclusionFiltersHasBeenSet(false)
-{
-}
-
-GeneralLabelsSettings::GeneralLabelsSettings(JsonView jsonValue) : 
-    m_labelInclusionFiltersHasBeenSet(false),
-    m_labelExclusionFiltersHasBeenSet(false),
-    m_labelCategoryInclusionFiltersHasBeenSet(false),
-    m_labelCategoryExclusionFiltersHasBeenSet(false)
+GeneralLabelsSettings::GeneralLabelsSettings(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -46,7 +34,6 @@ GeneralLabelsSettings& GeneralLabelsSettings::operator =(JsonView jsonValue)
     }
     m_labelInclusionFiltersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LabelExclusionFilters"))
   {
     Aws::Utils::Array<JsonView> labelExclusionFiltersJsonList = jsonValue.GetArray("LabelExclusionFilters");
@@ -56,7 +43,6 @@ GeneralLabelsSettings& GeneralLabelsSettings::operator =(JsonView jsonValue)
     }
     m_labelExclusionFiltersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LabelCategoryInclusionFilters"))
   {
     Aws::Utils::Array<JsonView> labelCategoryInclusionFiltersJsonList = jsonValue.GetArray("LabelCategoryInclusionFilters");
@@ -66,7 +52,6 @@ GeneralLabelsSettings& GeneralLabelsSettings::operator =(JsonView jsonValue)
     }
     m_labelCategoryInclusionFiltersHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("LabelCategoryExclusionFilters"))
   {
     Aws::Utils::Array<JsonView> labelCategoryExclusionFiltersJsonList = jsonValue.GetArray("LabelCategoryExclusionFilters");
@@ -76,7 +61,6 @@ GeneralLabelsSettings& GeneralLabelsSettings::operator =(JsonView jsonValue)
     }
     m_labelCategoryExclusionFiltersHasBeenSet = true;
   }
-
   return *this;
 }
 

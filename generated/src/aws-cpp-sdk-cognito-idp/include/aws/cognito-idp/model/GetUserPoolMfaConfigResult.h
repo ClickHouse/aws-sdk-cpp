@@ -7,7 +7,9 @@
 #include <aws/cognito-idp/CognitoIdentityProvider_EXPORTS.h>
 #include <aws/cognito-idp/model/SmsMfaConfigType.h>
 #include <aws/cognito-idp/model/SoftwareTokenMfaConfigType.h>
+#include <aws/cognito-idp/model/EmailMfaConfigType.h>
 #include <aws/cognito-idp/model/UserPoolMfaType.h>
+#include <aws/cognito-idp/model/WebAuthnConfigurationType.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
@@ -30,139 +32,110 @@ namespace Model
   class GetUserPoolMfaConfigResult
   {
   public:
-    AWS_COGNITOIDENTITYPROVIDER_API GetUserPoolMfaConfigResult();
+    AWS_COGNITOIDENTITYPROVIDER_API GetUserPoolMfaConfigResult() = default;
     AWS_COGNITOIDENTITYPROVIDER_API GetUserPoolMfaConfigResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_COGNITOIDENTITYPROVIDER_API GetUserPoolMfaConfigResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
-     * <p>The SMS text message multi-factor authentication (MFA) configuration.</p>
+     * <p>Shows user pool configuration for SMS message MFA. Includes the message
+     * template and the SMS message sending configuration for Amazon SNS.</p>
      */
-    inline const SmsMfaConfigType& GetSmsMfaConfiguration() const{ return m_smsMfaConfiguration; }
+    inline const SmsMfaConfigType& GetSmsMfaConfiguration() const { return m_smsMfaConfiguration; }
+    template<typename SmsMfaConfigurationT = SmsMfaConfigType>
+    void SetSmsMfaConfiguration(SmsMfaConfigurationT&& value) { m_smsMfaConfigurationHasBeenSet = true; m_smsMfaConfiguration = std::forward<SmsMfaConfigurationT>(value); }
+    template<typename SmsMfaConfigurationT = SmsMfaConfigType>
+    GetUserPoolMfaConfigResult& WithSmsMfaConfiguration(SmsMfaConfigurationT&& value) { SetSmsMfaConfiguration(std::forward<SmsMfaConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The SMS text message multi-factor authentication (MFA) configuration.</p>
+     * <p>Shows user pool configuration for time-based one-time password (TOTP) MFA.
+     * Includes TOTP enabled or disabled state.</p>
      */
-    inline void SetSmsMfaConfiguration(const SmsMfaConfigType& value) { m_smsMfaConfiguration = value; }
+    inline const SoftwareTokenMfaConfigType& GetSoftwareTokenMfaConfiguration() const { return m_softwareTokenMfaConfiguration; }
+    template<typename SoftwareTokenMfaConfigurationT = SoftwareTokenMfaConfigType>
+    void SetSoftwareTokenMfaConfiguration(SoftwareTokenMfaConfigurationT&& value) { m_softwareTokenMfaConfigurationHasBeenSet = true; m_softwareTokenMfaConfiguration = std::forward<SoftwareTokenMfaConfigurationT>(value); }
+    template<typename SoftwareTokenMfaConfigurationT = SoftwareTokenMfaConfigType>
+    GetUserPoolMfaConfigResult& WithSoftwareTokenMfaConfiguration(SoftwareTokenMfaConfigurationT&& value) { SetSoftwareTokenMfaConfiguration(std::forward<SoftwareTokenMfaConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The SMS text message multi-factor authentication (MFA) configuration.</p>
+     * <p>Shows configuration for user pool email message MFA and sign-in with one-time
+     * passwords (OTPs). Includes the subject and body of the email message template
+     * for sign-in and MFA messages. To activate this setting, your user pool must be
+     * in the <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-essentials.html">
+     * Essentials tier</a> or higher.</p>
      */
-    inline void SetSmsMfaConfiguration(SmsMfaConfigType&& value) { m_smsMfaConfiguration = std::move(value); }
+    inline const EmailMfaConfigType& GetEmailMfaConfiguration() const { return m_emailMfaConfiguration; }
+    template<typename EmailMfaConfigurationT = EmailMfaConfigType>
+    void SetEmailMfaConfiguration(EmailMfaConfigurationT&& value) { m_emailMfaConfigurationHasBeenSet = true; m_emailMfaConfiguration = std::forward<EmailMfaConfigurationT>(value); }
+    template<typename EmailMfaConfigurationT = EmailMfaConfigType>
+    GetUserPoolMfaConfigResult& WithEmailMfaConfiguration(EmailMfaConfigurationT&& value) { SetEmailMfaConfiguration(std::forward<EmailMfaConfigurationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The SMS text message multi-factor authentication (MFA) configuration.</p>
+     * <p>Displays the state of multi-factor authentication (MFA) as on, off, or
+     * optional. When <code>ON</code>, all users must set up MFA before they can sign
+     * in. When <code>OPTIONAL</code>, your application must make a client-side
+     * determination of whether a user wants to register an MFA device. For user pools
+     * with adaptive authentication with threat protection, choose
+     * <code>OPTIONAL</code>.</p> <p>When <code>MfaConfiguration</code> is
+     * <code>OPTIONAL</code>, managed login doesn't automatically prompt users to set
+     * up MFA. Amazon Cognito generates MFA prompts in API responses and in managed
+     * login for users who have chosen and configured a preferred MFA factor.</p>
      */
-    inline GetUserPoolMfaConfigResult& WithSmsMfaConfiguration(const SmsMfaConfigType& value) { SetSmsMfaConfiguration(value); return *this;}
+    inline UserPoolMfaType GetMfaConfiguration() const { return m_mfaConfiguration; }
+    inline void SetMfaConfiguration(UserPoolMfaType value) { m_mfaConfigurationHasBeenSet = true; m_mfaConfiguration = value; }
+    inline GetUserPoolMfaConfigResult& WithMfaConfiguration(UserPoolMfaType value) { SetMfaConfiguration(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The SMS text message multi-factor authentication (MFA) configuration.</p>
+     * <p>Shows user pool configuration for sign-in with passkey authenticators like
+     * biometric devices and security keys. Passkeys are not eligible MFA factors. They
+     * are instead an eligible primary sign-in factor for <a
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-selection-sdk.html#authentication-flows-selection-choice">choice-based
+     * authentication</a>, or the <code>USER_AUTH</code> flow.</p>
      */
-    inline GetUserPoolMfaConfigResult& WithSmsMfaConfiguration(SmsMfaConfigType&& value) { SetSmsMfaConfiguration(std::move(value)); return *this;}
+    inline const WebAuthnConfigurationType& GetWebAuthnConfiguration() const { return m_webAuthnConfiguration; }
+    template<typename WebAuthnConfigurationT = WebAuthnConfigurationType>
+    void SetWebAuthnConfiguration(WebAuthnConfigurationT&& value) { m_webAuthnConfigurationHasBeenSet = true; m_webAuthnConfiguration = std::forward<WebAuthnConfigurationT>(value); }
+    template<typename WebAuthnConfigurationT = WebAuthnConfigurationType>
+    GetUserPoolMfaConfigResult& WithWebAuthnConfiguration(WebAuthnConfigurationT&& value) { SetWebAuthnConfiguration(std::forward<WebAuthnConfigurationT>(value)); return *this;}
+    ///@}
 
-
-    /**
-     * <p>The software token multi-factor authentication (MFA) configuration.</p>
-     */
-    inline const SoftwareTokenMfaConfigType& GetSoftwareTokenMfaConfiguration() const{ return m_softwareTokenMfaConfiguration; }
-
-    /**
-     * <p>The software token multi-factor authentication (MFA) configuration.</p>
-     */
-    inline void SetSoftwareTokenMfaConfiguration(const SoftwareTokenMfaConfigType& value) { m_softwareTokenMfaConfiguration = value; }
-
-    /**
-     * <p>The software token multi-factor authentication (MFA) configuration.</p>
-     */
-    inline void SetSoftwareTokenMfaConfiguration(SoftwareTokenMfaConfigType&& value) { m_softwareTokenMfaConfiguration = std::move(value); }
-
-    /**
-     * <p>The software token multi-factor authentication (MFA) configuration.</p>
-     */
-    inline GetUserPoolMfaConfigResult& WithSoftwareTokenMfaConfiguration(const SoftwareTokenMfaConfigType& value) { SetSoftwareTokenMfaConfiguration(value); return *this;}
-
-    /**
-     * <p>The software token multi-factor authentication (MFA) configuration.</p>
-     */
-    inline GetUserPoolMfaConfigResult& WithSoftwareTokenMfaConfiguration(SoftwareTokenMfaConfigType&& value) { SetSoftwareTokenMfaConfiguration(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The multi-factor authentication (MFA) configuration. Valid values
-     * include:</p> <ul> <li> <p> <code>OFF</code> MFA won't be used for any users.</p>
-     * </li> <li> <p> <code>ON</code> MFA is required for all users to sign in.</p>
-     * </li> <li> <p> <code>OPTIONAL</code> MFA will be required only for individual
-     * users who have an MFA factor activated.</p> </li> </ul>
-     */
-    inline const UserPoolMfaType& GetMfaConfiguration() const{ return m_mfaConfiguration; }
-
-    /**
-     * <p>The multi-factor authentication (MFA) configuration. Valid values
-     * include:</p> <ul> <li> <p> <code>OFF</code> MFA won't be used for any users.</p>
-     * </li> <li> <p> <code>ON</code> MFA is required for all users to sign in.</p>
-     * </li> <li> <p> <code>OPTIONAL</code> MFA will be required only for individual
-     * users who have an MFA factor activated.</p> </li> </ul>
-     */
-    inline void SetMfaConfiguration(const UserPoolMfaType& value) { m_mfaConfiguration = value; }
-
-    /**
-     * <p>The multi-factor authentication (MFA) configuration. Valid values
-     * include:</p> <ul> <li> <p> <code>OFF</code> MFA won't be used for any users.</p>
-     * </li> <li> <p> <code>ON</code> MFA is required for all users to sign in.</p>
-     * </li> <li> <p> <code>OPTIONAL</code> MFA will be required only for individual
-     * users who have an MFA factor activated.</p> </li> </ul>
-     */
-    inline void SetMfaConfiguration(UserPoolMfaType&& value) { m_mfaConfiguration = std::move(value); }
-
-    /**
-     * <p>The multi-factor authentication (MFA) configuration. Valid values
-     * include:</p> <ul> <li> <p> <code>OFF</code> MFA won't be used for any users.</p>
-     * </li> <li> <p> <code>ON</code> MFA is required for all users to sign in.</p>
-     * </li> <li> <p> <code>OPTIONAL</code> MFA will be required only for individual
-     * users who have an MFA factor activated.</p> </li> </ul>
-     */
-    inline GetUserPoolMfaConfigResult& WithMfaConfiguration(const UserPoolMfaType& value) { SetMfaConfiguration(value); return *this;}
-
-    /**
-     * <p>The multi-factor authentication (MFA) configuration. Valid values
-     * include:</p> <ul> <li> <p> <code>OFF</code> MFA won't be used for any users.</p>
-     * </li> <li> <p> <code>ON</code> MFA is required for all users to sign in.</p>
-     * </li> <li> <p> <code>OPTIONAL</code> MFA will be required only for individual
-     * users who have an MFA factor activated.</p> </li> </ul>
-     */
-    inline GetUserPoolMfaConfigResult& WithMfaConfiguration(UserPoolMfaType&& value) { SetMfaConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetUserPoolMfaConfigResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetUserPoolMfaConfigResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetUserPoolMfaConfigResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetUserPoolMfaConfigResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     SmsMfaConfigType m_smsMfaConfiguration;
+    bool m_smsMfaConfigurationHasBeenSet = false;
 
     SoftwareTokenMfaConfigType m_softwareTokenMfaConfiguration;
+    bool m_softwareTokenMfaConfigurationHasBeenSet = false;
 
-    UserPoolMfaType m_mfaConfiguration;
+    EmailMfaConfigType m_emailMfaConfiguration;
+    bool m_emailMfaConfigurationHasBeenSet = false;
+
+    UserPoolMfaType m_mfaConfiguration{UserPoolMfaType::NOT_SET};
+    bool m_mfaConfigurationHasBeenSet = false;
+
+    WebAuthnConfigurationType m_webAuthnConfiguration;
+    bool m_webAuthnConfigurationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

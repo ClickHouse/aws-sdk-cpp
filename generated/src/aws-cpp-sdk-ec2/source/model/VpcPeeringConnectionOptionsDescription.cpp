@@ -20,23 +20,7 @@ namespace EC2
 namespace Model
 {
 
-VpcPeeringConnectionOptionsDescription::VpcPeeringConnectionOptionsDescription() : 
-    m_allowDnsResolutionFromRemoteVpc(false),
-    m_allowDnsResolutionFromRemoteVpcHasBeenSet(false),
-    m_allowEgressFromLocalClassicLinkToRemoteVpc(false),
-    m_allowEgressFromLocalClassicLinkToRemoteVpcHasBeenSet(false),
-    m_allowEgressFromLocalVpcToRemoteClassicLink(false),
-    m_allowEgressFromLocalVpcToRemoteClassicLinkHasBeenSet(false)
-{
-}
-
-VpcPeeringConnectionOptionsDescription::VpcPeeringConnectionOptionsDescription(const XmlNode& xmlNode) : 
-    m_allowDnsResolutionFromRemoteVpc(false),
-    m_allowDnsResolutionFromRemoteVpcHasBeenSet(false),
-    m_allowEgressFromLocalClassicLinkToRemoteVpc(false),
-    m_allowEgressFromLocalClassicLinkToRemoteVpcHasBeenSet(false),
-    m_allowEgressFromLocalVpcToRemoteClassicLink(false),
-    m_allowEgressFromLocalVpcToRemoteClassicLinkHasBeenSet(false)
+VpcPeeringConnectionOptionsDescription::VpcPeeringConnectionOptionsDescription(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

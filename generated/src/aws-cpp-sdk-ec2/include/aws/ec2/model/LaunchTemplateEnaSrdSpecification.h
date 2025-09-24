@@ -41,7 +41,7 @@ namespace Model
   class LaunchTemplateEnaSrdSpecification
   {
   public:
-    AWS_EC2_API LaunchTemplateEnaSrdSpecification();
+    AWS_EC2_API LaunchTemplateEnaSrdSpecification() = default;
     AWS_EC2_API LaunchTemplateEnaSrdSpecification(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API LaunchTemplateEnaSrdSpecification& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -49,60 +49,30 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>Indicates whether ENA Express is enabled for the network interface.</p>
      */
-    inline bool GetEnaSrdEnabled() const{ return m_enaSrdEnabled; }
-
-    /**
-     * <p>Indicates whether ENA Express is enabled for the network interface.</p>
-     */
+    inline bool GetEnaSrdEnabled() const { return m_enaSrdEnabled; }
     inline bool EnaSrdEnabledHasBeenSet() const { return m_enaSrdEnabledHasBeenSet; }
-
-    /**
-     * <p>Indicates whether ENA Express is enabled for the network interface.</p>
-     */
     inline void SetEnaSrdEnabled(bool value) { m_enaSrdEnabledHasBeenSet = true; m_enaSrdEnabled = value; }
-
-    /**
-     * <p>Indicates whether ENA Express is enabled for the network interface.</p>
-     */
     inline LaunchTemplateEnaSrdSpecification& WithEnaSrdEnabled(bool value) { SetEnaSrdEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Configures ENA Express for UDP network traffic.</p>
      */
-    inline const LaunchTemplateEnaSrdUdpSpecification& GetEnaSrdUdpSpecification() const{ return m_enaSrdUdpSpecification; }
-
-    /**
-     * <p>Configures ENA Express for UDP network traffic.</p>
-     */
+    inline const LaunchTemplateEnaSrdUdpSpecification& GetEnaSrdUdpSpecification() const { return m_enaSrdUdpSpecification; }
     inline bool EnaSrdUdpSpecificationHasBeenSet() const { return m_enaSrdUdpSpecificationHasBeenSet; }
-
-    /**
-     * <p>Configures ENA Express for UDP network traffic.</p>
-     */
-    inline void SetEnaSrdUdpSpecification(const LaunchTemplateEnaSrdUdpSpecification& value) { m_enaSrdUdpSpecificationHasBeenSet = true; m_enaSrdUdpSpecification = value; }
-
-    /**
-     * <p>Configures ENA Express for UDP network traffic.</p>
-     */
-    inline void SetEnaSrdUdpSpecification(LaunchTemplateEnaSrdUdpSpecification&& value) { m_enaSrdUdpSpecificationHasBeenSet = true; m_enaSrdUdpSpecification = std::move(value); }
-
-    /**
-     * <p>Configures ENA Express for UDP network traffic.</p>
-     */
-    inline LaunchTemplateEnaSrdSpecification& WithEnaSrdUdpSpecification(const LaunchTemplateEnaSrdUdpSpecification& value) { SetEnaSrdUdpSpecification(value); return *this;}
-
-    /**
-     * <p>Configures ENA Express for UDP network traffic.</p>
-     */
-    inline LaunchTemplateEnaSrdSpecification& WithEnaSrdUdpSpecification(LaunchTemplateEnaSrdUdpSpecification&& value) { SetEnaSrdUdpSpecification(std::move(value)); return *this;}
-
+    template<typename EnaSrdUdpSpecificationT = LaunchTemplateEnaSrdUdpSpecification>
+    void SetEnaSrdUdpSpecification(EnaSrdUdpSpecificationT&& value) { m_enaSrdUdpSpecificationHasBeenSet = true; m_enaSrdUdpSpecification = std::forward<EnaSrdUdpSpecificationT>(value); }
+    template<typename EnaSrdUdpSpecificationT = LaunchTemplateEnaSrdUdpSpecification>
+    LaunchTemplateEnaSrdSpecification& WithEnaSrdUdpSpecification(EnaSrdUdpSpecificationT&& value) { SetEnaSrdUdpSpecification(std::forward<EnaSrdUdpSpecificationT>(value)); return *this;}
+    ///@}
   private:
 
-    bool m_enaSrdEnabled;
+    bool m_enaSrdEnabled{false};
     bool m_enaSrdEnabledHasBeenSet = false;
 
     LaunchTemplateEnaSrdUdpSpecification m_enaSrdUdpSpecification;

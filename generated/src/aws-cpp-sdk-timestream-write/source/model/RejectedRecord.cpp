@@ -18,21 +18,7 @@ namespace TimestreamWrite
 namespace Model
 {
 
-RejectedRecord::RejectedRecord() : 
-    m_recordIndex(0),
-    m_recordIndexHasBeenSet(false),
-    m_reasonHasBeenSet(false),
-    m_existingVersion(0),
-    m_existingVersionHasBeenSet(false)
-{
-}
-
-RejectedRecord::RejectedRecord(JsonView jsonValue) : 
-    m_recordIndex(0),
-    m_recordIndexHasBeenSet(false),
-    m_reasonHasBeenSet(false),
-    m_existingVersion(0),
-    m_existingVersionHasBeenSet(false)
+RejectedRecord::RejectedRecord(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ RejectedRecord& RejectedRecord::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RecordIndex"))
   {
     m_recordIndex = jsonValue.GetInteger("RecordIndex");
-
     m_recordIndexHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Reason"))
   {
     m_reason = jsonValue.GetString("Reason");
-
     m_reasonHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ExistingVersion"))
   {
     m_existingVersion = jsonValue.GetInt64("ExistingVersion");
-
     m_existingVersionHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -18,15 +18,7 @@ namespace DirectoryService
 namespace Model
 {
 
-DirectoryInDesiredStateException::DirectoryInDesiredStateException() : 
-    m_messageHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
-{
-}
-
-DirectoryInDesiredStateException::DirectoryInDesiredStateException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_requestIdHasBeenSet(false)
+DirectoryInDesiredStateException::DirectoryInDesiredStateException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ DirectoryInDesiredStateException& DirectoryInDesiredStateException::operator =(J
   if(jsonValue.ValueExists("Message"))
   {
     m_message = jsonValue.GetString("Message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("RequestId"))
   {
     m_requestId = jsonValue.GetString("RequestId");
-
     m_requestIdHasBeenSet = true;
   }
-
   return *this;
 }
 

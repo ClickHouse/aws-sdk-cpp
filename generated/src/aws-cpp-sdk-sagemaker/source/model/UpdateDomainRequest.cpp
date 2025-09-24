@@ -12,19 +12,6 @@ using namespace Aws::SageMaker::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateDomainRequest::UpdateDomainRequest() : 
-    m_domainIdHasBeenSet(false),
-    m_defaultUserSettingsHasBeenSet(false),
-    m_domainSettingsForUpdateHasBeenSet(false),
-    m_appSecurityGroupManagement(AppSecurityGroupManagement::NOT_SET),
-    m_appSecurityGroupManagementHasBeenSet(false),
-    m_defaultSpaceSettingsHasBeenSet(false),
-    m_subnetIdsHasBeenSet(false),
-    m_appNetworkAccessType(AppNetworkAccessType::NOT_SET),
-    m_appNetworkAccessTypeHasBeenSet(false)
-{
-}
-
 Aws::String UpdateDomainRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -72,6 +59,11 @@ Aws::String UpdateDomainRequest::SerializePayload() const
   if(m_appNetworkAccessTypeHasBeenSet)
   {
    payload.WithString("AppNetworkAccessType", AppNetworkAccessTypeMapper::GetNameForAppNetworkAccessType(m_appNetworkAccessType));
+  }
+
+  if(m_tagPropagationHasBeenSet)
+  {
+   payload.WithString("TagPropagation", TagPropagationMapper::GetNameForTagPropagation(m_tagPropagation));
   }
 
   return payload.View().WriteReadable();

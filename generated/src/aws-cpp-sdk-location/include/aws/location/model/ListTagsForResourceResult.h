@@ -28,134 +28,44 @@ namespace Model
   class ListTagsForResourceResult
   {
   public:
-    AWS_LOCATIONSERVICE_API ListTagsForResourceResult();
+    AWS_LOCATIONSERVICE_API ListTagsForResourceResult() = default;
     AWS_LOCATIONSERVICE_API ListTagsForResourceResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_LOCATIONSERVICE_API ListTagsForResourceResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>Tags that have been applied to the specified resource. Tags are mapped from
      * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
      * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
      * </li> </ul>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    ListTagsForResourceResult& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    ListTagsForResourceResult& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tags = value; }
-
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tags = std::move(value); }
-
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline ListTagsForResourceResult& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline ListTagsForResourceResult& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline ListTagsForResourceResult& AddTags(const Aws::String& key, const Aws::String& value) { m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline ListTagsForResourceResult& AddTags(Aws::String&& key, const Aws::String& value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline ListTagsForResourceResult& AddTags(const Aws::String& key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline ListTagsForResourceResult& AddTags(Aws::String&& key, Aws::String&& value) { m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline ListTagsForResourceResult& AddTags(const char* key, Aws::String&& value) { m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline ListTagsForResourceResult& AddTags(Aws::String&& key, const char* value) { m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>Tags that have been applied to the specified resource. Tags are mapped from
-     * the tag key to the tag value: <code>"TagKey" : "TagValue"</code>.</p> <ul> <li>
-     * <p>Format example: <code>{"tag1" : "value1", "tag2" : "value2"} </code> </p>
-     * </li> </ul>
-     */
-    inline ListTagsForResourceResult& AddTags(const char* key, const char* value) { m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListTagsForResourceResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListTagsForResourceResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListTagsForResourceResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListTagsForResourceResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::Map<Aws::String, Aws::String> m_tags;
+    bool m_tagsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -18,15 +18,7 @@ namespace ECR
 namespace Model
 {
 
-LifecyclePolicyPreviewSummary::LifecyclePolicyPreviewSummary() : 
-    m_expiringImageTotalCount(0),
-    m_expiringImageTotalCountHasBeenSet(false)
-{
-}
-
-LifecyclePolicyPreviewSummary::LifecyclePolicyPreviewSummary(JsonView jsonValue) : 
-    m_expiringImageTotalCount(0),
-    m_expiringImageTotalCountHasBeenSet(false)
+LifecyclePolicyPreviewSummary::LifecyclePolicyPreviewSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ LifecyclePolicyPreviewSummary& LifecyclePolicyPreviewSummary::operator =(JsonVie
   if(jsonValue.ValueExists("expiringImageTotalCount"))
   {
     m_expiringImageTotalCount = jsonValue.GetInteger("expiringImageTotalCount");
-
     m_expiringImageTotalCountHasBeenSet = true;
   }
-
   return *this;
 }
 

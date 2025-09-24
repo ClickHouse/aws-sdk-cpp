@@ -33,7 +33,7 @@ namespace Model
   class LaunchTemplateInstanceMarketOptions
   {
   public:
-    AWS_EC2_API LaunchTemplateInstanceMarketOptions();
+    AWS_EC2_API LaunchTemplateInstanceMarketOptions() = default;
     AWS_EC2_API LaunchTemplateInstanceMarketOptions(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API LaunchTemplateInstanceMarketOptions& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -41,70 +41,30 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The market type.</p>
      */
-    inline const MarketType& GetMarketType() const{ return m_marketType; }
-
-    /**
-     * <p>The market type.</p>
-     */
+    inline MarketType GetMarketType() const { return m_marketType; }
     inline bool MarketTypeHasBeenSet() const { return m_marketTypeHasBeenSet; }
+    inline void SetMarketType(MarketType value) { m_marketTypeHasBeenSet = true; m_marketType = value; }
+    inline LaunchTemplateInstanceMarketOptions& WithMarketType(MarketType value) { SetMarketType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The market type.</p>
-     */
-    inline void SetMarketType(const MarketType& value) { m_marketTypeHasBeenSet = true; m_marketType = value; }
-
-    /**
-     * <p>The market type.</p>
-     */
-    inline void SetMarketType(MarketType&& value) { m_marketTypeHasBeenSet = true; m_marketType = std::move(value); }
-
-    /**
-     * <p>The market type.</p>
-     */
-    inline LaunchTemplateInstanceMarketOptions& WithMarketType(const MarketType& value) { SetMarketType(value); return *this;}
-
-    /**
-     * <p>The market type.</p>
-     */
-    inline LaunchTemplateInstanceMarketOptions& WithMarketType(MarketType&& value) { SetMarketType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The options for Spot Instances.</p>
      */
-    inline const LaunchTemplateSpotMarketOptions& GetSpotOptions() const{ return m_spotOptions; }
-
-    /**
-     * <p>The options for Spot Instances.</p>
-     */
+    inline const LaunchTemplateSpotMarketOptions& GetSpotOptions() const { return m_spotOptions; }
     inline bool SpotOptionsHasBeenSet() const { return m_spotOptionsHasBeenSet; }
-
-    /**
-     * <p>The options for Spot Instances.</p>
-     */
-    inline void SetSpotOptions(const LaunchTemplateSpotMarketOptions& value) { m_spotOptionsHasBeenSet = true; m_spotOptions = value; }
-
-    /**
-     * <p>The options for Spot Instances.</p>
-     */
-    inline void SetSpotOptions(LaunchTemplateSpotMarketOptions&& value) { m_spotOptionsHasBeenSet = true; m_spotOptions = std::move(value); }
-
-    /**
-     * <p>The options for Spot Instances.</p>
-     */
-    inline LaunchTemplateInstanceMarketOptions& WithSpotOptions(const LaunchTemplateSpotMarketOptions& value) { SetSpotOptions(value); return *this;}
-
-    /**
-     * <p>The options for Spot Instances.</p>
-     */
-    inline LaunchTemplateInstanceMarketOptions& WithSpotOptions(LaunchTemplateSpotMarketOptions&& value) { SetSpotOptions(std::move(value)); return *this;}
-
+    template<typename SpotOptionsT = LaunchTemplateSpotMarketOptions>
+    void SetSpotOptions(SpotOptionsT&& value) { m_spotOptionsHasBeenSet = true; m_spotOptions = std::forward<SpotOptionsT>(value); }
+    template<typename SpotOptionsT = LaunchTemplateSpotMarketOptions>
+    LaunchTemplateInstanceMarketOptions& WithSpotOptions(SpotOptionsT&& value) { SetSpotOptions(std::forward<SpotOptionsT>(value)); return *this;}
+    ///@}
   private:
 
-    MarketType m_marketType;
+    MarketType m_marketType{MarketType::NOT_SET};
     bool m_marketTypeHasBeenSet = false;
 
     LaunchTemplateSpotMarketOptions m_spotOptions;

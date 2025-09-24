@@ -18,15 +18,7 @@ namespace Connect
 namespace Model
 {
 
-QueueInfo::QueueInfo() : 
-    m_idHasBeenSet(false),
-    m_enqueueTimestampHasBeenSet(false)
-{
-}
-
-QueueInfo::QueueInfo(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_enqueueTimestampHasBeenSet(false)
+QueueInfo::QueueInfo(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ QueueInfo& QueueInfo::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("EnqueueTimestamp"))
   {
     m_enqueueTimestamp = jsonValue.GetDouble("EnqueueTimestamp");
-
     m_enqueueTimestampHasBeenSet = true;
   }
-
   return *this;
 }
 

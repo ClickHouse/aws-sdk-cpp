@@ -24,60 +24,35 @@ namespace Model
 {
 
   /**
-   * <p>The request was denied due to an invalid resource error.</p><p><h3>See
-   * Also:</h3>   <a
+   * <p>The request was denied due to resource not found.</p> <p>The specified key,
+   * alias, or other resource does not exist in your account or region. Verify that
+   * the resource identifier is correct and that the resource exists in the expected
+   * region.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/payment-cryptography-2021-09-14/ResourceNotFoundException">AWS
    * API Reference</a></p>
    */
   class ResourceNotFoundException
   {
   public:
-    AWS_PAYMENTCRYPTOGRAPHY_API ResourceNotFoundException();
+    AWS_PAYMENTCRYPTOGRAPHY_API ResourceNotFoundException() = default;
     AWS_PAYMENTCRYPTOGRAPHY_API ResourceNotFoundException(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHY_API ResourceNotFoundException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PAYMENTCRYPTOGRAPHY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The string for the exception.</p>
+     * <p>The identifier of the resource that was not found.</p> <p>This field contains
+     * the specific resource identifier (such as a key ARN or alias name) that could
+     * not be located.</p>
      */
-    inline const Aws::String& GetResourceId() const{ return m_resourceId; }
-
-    /**
-     * <p>The string for the exception.</p>
-     */
+    inline const Aws::String& GetResourceId() const { return m_resourceId; }
     inline bool ResourceIdHasBeenSet() const { return m_resourceIdHasBeenSet; }
-
-    /**
-     * <p>The string for the exception.</p>
-     */
-    inline void SetResourceId(const Aws::String& value) { m_resourceIdHasBeenSet = true; m_resourceId = value; }
-
-    /**
-     * <p>The string for the exception.</p>
-     */
-    inline void SetResourceId(Aws::String&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::move(value); }
-
-    /**
-     * <p>The string for the exception.</p>
-     */
-    inline void SetResourceId(const char* value) { m_resourceIdHasBeenSet = true; m_resourceId.assign(value); }
-
-    /**
-     * <p>The string for the exception.</p>
-     */
-    inline ResourceNotFoundException& WithResourceId(const Aws::String& value) { SetResourceId(value); return *this;}
-
-    /**
-     * <p>The string for the exception.</p>
-     */
-    inline ResourceNotFoundException& WithResourceId(Aws::String&& value) { SetResourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The string for the exception.</p>
-     */
-    inline ResourceNotFoundException& WithResourceId(const char* value) { SetResourceId(value); return *this;}
-
+    template<typename ResourceIdT = Aws::String>
+    void SetResourceId(ResourceIdT&& value) { m_resourceIdHasBeenSet = true; m_resourceId = std::forward<ResourceIdT>(value); }
+    template<typename ResourceIdT = Aws::String>
+    ResourceNotFoundException& WithResourceId(ResourceIdT&& value) { SetResourceId(std::forward<ResourceIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_resourceId;

@@ -18,21 +18,7 @@ namespace Inspector
 namespace Model
 {
 
-LimitExceededException::LimitExceededException() : 
-    m_messageHasBeenSet(false),
-    m_errorCode(LimitExceededErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_canRetry(false),
-    m_canRetryHasBeenSet(false)
-{
-}
-
-LimitExceededException::LimitExceededException(JsonView jsonValue) : 
-    m_messageHasBeenSet(false),
-    m_errorCode(LimitExceededErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_canRetry(false),
-    m_canRetryHasBeenSet(false)
+LimitExceededException::LimitExceededException(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,24 +28,18 @@ LimitExceededException& LimitExceededException::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("message"))
   {
     m_message = jsonValue.GetString("message");
-
     m_messageHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("errorCode"))
   {
     m_errorCode = LimitExceededErrorCodeMapper::GetLimitExceededErrorCodeForName(jsonValue.GetString("errorCode"));
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("canRetry"))
   {
     m_canRetry = jsonValue.GetBool("canRetry");
-
     m_canRetryHasBeenSet = true;
   }
-
   return *this;
 }
 

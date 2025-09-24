@@ -18,17 +18,7 @@ namespace LexModelsV2
 namespace Model
 {
 
-UserTurnOutputSpecification::UserTurnOutputSpecification() : 
-    m_intentHasBeenSet(false),
-    m_activeContextsHasBeenSet(false),
-    m_transcriptHasBeenSet(false)
-{
-}
-
-UserTurnOutputSpecification::UserTurnOutputSpecification(JsonView jsonValue) : 
-    m_intentHasBeenSet(false),
-    m_activeContextsHasBeenSet(false),
-    m_transcriptHasBeenSet(false)
+UserTurnOutputSpecification::UserTurnOutputSpecification(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ UserTurnOutputSpecification& UserTurnOutputSpecification::operator =(JsonView js
   if(jsonValue.ValueExists("intent"))
   {
     m_intent = jsonValue.GetObject("intent");
-
     m_intentHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("activeContexts"))
   {
     Aws::Utils::Array<JsonView> activeContextsJsonList = jsonValue.GetArray("activeContexts");
@@ -51,14 +39,11 @@ UserTurnOutputSpecification& UserTurnOutputSpecification::operator =(JsonView js
     }
     m_activeContextsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("transcript"))
   {
     m_transcript = jsonValue.GetString("transcript");
-
     m_transcriptHasBeenSet = true;
   }
-
   return *this;
 }
 

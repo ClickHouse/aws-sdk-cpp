@@ -12,20 +12,26 @@ using namespace Aws::Inspector2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ListFindingAggregationsRequest::ListFindingAggregationsRequest() : 
-    m_accountIdsHasBeenSet(false),
-    m_aggregationRequestHasBeenSet(false),
-    m_aggregationType(AggregationType::NOT_SET),
-    m_aggregationTypeHasBeenSet(false),
-    m_maxResults(0),
-    m_maxResultsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String ListFindingAggregationsRequest::SerializePayload() const
 {
   JsonValue payload;
+
+  if(m_aggregationTypeHasBeenSet)
+  {
+   payload.WithString("aggregationType", AggregationTypeMapper::GetNameForAggregationType(m_aggregationType));
+  }
+
+  if(m_nextTokenHasBeenSet)
+  {
+   payload.WithString("nextToken", m_nextToken);
+
+  }
+
+  if(m_maxResultsHasBeenSet)
+  {
+   payload.WithInteger("maxResults", m_maxResults);
+
+  }
 
   if(m_accountIdsHasBeenSet)
   {
@@ -41,23 +47,6 @@ Aws::String ListFindingAggregationsRequest::SerializePayload() const
   if(m_aggregationRequestHasBeenSet)
   {
    payload.WithObject("aggregationRequest", m_aggregationRequest.Jsonize());
-
-  }
-
-  if(m_aggregationTypeHasBeenSet)
-  {
-   payload.WithString("aggregationType", AggregationTypeMapper::GetNameForAggregationType(m_aggregationType));
-  }
-
-  if(m_maxResultsHasBeenSet)
-  {
-   payload.WithInteger("maxResults", m_maxResults);
-
-  }
-
-  if(m_nextTokenHasBeenSet)
-  {
-   payload.WithString("nextToken", m_nextToken);
 
   }
 

@@ -18,17 +18,7 @@ namespace Lightsail
 namespace Model
 {
 
-LoadBalancerTlsCertificateSummary::LoadBalancerTlsCertificateSummary() : 
-    m_nameHasBeenSet(false),
-    m_isAttached(false),
-    m_isAttachedHasBeenSet(false)
-{
-}
-
-LoadBalancerTlsCertificateSummary::LoadBalancerTlsCertificateSummary(JsonView jsonValue) : 
-    m_nameHasBeenSet(false),
-    m_isAttached(false),
-    m_isAttachedHasBeenSet(false)
+LoadBalancerTlsCertificateSummary::LoadBalancerTlsCertificateSummary(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ LoadBalancerTlsCertificateSummary& LoadBalancerTlsCertificateSummary::operator =
   if(jsonValue.ValueExists("name"))
   {
     m_name = jsonValue.GetString("name");
-
     m_nameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("isAttached"))
   {
     m_isAttached = jsonValue.GetBool("isAttached");
-
     m_isAttachedHasBeenSet = true;
   }
-
   return *this;
 }
 

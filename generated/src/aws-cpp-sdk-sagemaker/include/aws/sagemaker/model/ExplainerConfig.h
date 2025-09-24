@@ -31,48 +31,24 @@ namespace Model
   class ExplainerConfig
   {
   public:
-    AWS_SAGEMAKER_API ExplainerConfig();
+    AWS_SAGEMAKER_API ExplainerConfig() = default;
     AWS_SAGEMAKER_API ExplainerConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API ExplainerConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A member of <code>ExplainerConfig</code> that contains configuration
      * parameters for the SageMaker Clarify explainer.</p>
      */
-    inline const ClarifyExplainerConfig& GetClarifyExplainerConfig() const{ return m_clarifyExplainerConfig; }
-
-    /**
-     * <p>A member of <code>ExplainerConfig</code> that contains configuration
-     * parameters for the SageMaker Clarify explainer.</p>
-     */
+    inline const ClarifyExplainerConfig& GetClarifyExplainerConfig() const { return m_clarifyExplainerConfig; }
     inline bool ClarifyExplainerConfigHasBeenSet() const { return m_clarifyExplainerConfigHasBeenSet; }
-
-    /**
-     * <p>A member of <code>ExplainerConfig</code> that contains configuration
-     * parameters for the SageMaker Clarify explainer.</p>
-     */
-    inline void SetClarifyExplainerConfig(const ClarifyExplainerConfig& value) { m_clarifyExplainerConfigHasBeenSet = true; m_clarifyExplainerConfig = value; }
-
-    /**
-     * <p>A member of <code>ExplainerConfig</code> that contains configuration
-     * parameters for the SageMaker Clarify explainer.</p>
-     */
-    inline void SetClarifyExplainerConfig(ClarifyExplainerConfig&& value) { m_clarifyExplainerConfigHasBeenSet = true; m_clarifyExplainerConfig = std::move(value); }
-
-    /**
-     * <p>A member of <code>ExplainerConfig</code> that contains configuration
-     * parameters for the SageMaker Clarify explainer.</p>
-     */
-    inline ExplainerConfig& WithClarifyExplainerConfig(const ClarifyExplainerConfig& value) { SetClarifyExplainerConfig(value); return *this;}
-
-    /**
-     * <p>A member of <code>ExplainerConfig</code> that contains configuration
-     * parameters for the SageMaker Clarify explainer.</p>
-     */
-    inline ExplainerConfig& WithClarifyExplainerConfig(ClarifyExplainerConfig&& value) { SetClarifyExplainerConfig(std::move(value)); return *this;}
-
+    template<typename ClarifyExplainerConfigT = ClarifyExplainerConfig>
+    void SetClarifyExplainerConfig(ClarifyExplainerConfigT&& value) { m_clarifyExplainerConfigHasBeenSet = true; m_clarifyExplainerConfig = std::forward<ClarifyExplainerConfigT>(value); }
+    template<typename ClarifyExplainerConfigT = ClarifyExplainerConfig>
+    ExplainerConfig& WithClarifyExplainerConfig(ClarifyExplainerConfigT&& value) { SetClarifyExplainerConfig(std::forward<ClarifyExplainerConfigT>(value)); return *this;}
+    ///@}
   private:
 
     ClarifyExplainerConfig m_clarifyExplainerConfig;

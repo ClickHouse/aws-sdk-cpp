@@ -35,147 +35,61 @@ namespace Model
   class SavingsPlansUtilizationByTime
   {
   public:
-    AWS_COSTEXPLORER_API SavingsPlansUtilizationByTime();
+    AWS_COSTEXPLORER_API SavingsPlansUtilizationByTime() = default;
     AWS_COSTEXPLORER_API SavingsPlansUtilizationByTime(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API SavingsPlansUtilizationByTime& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_COSTEXPLORER_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     
-    inline const DateInterval& GetTimePeriod() const{ return m_timePeriod; }
-
-    
+    inline const DateInterval& GetTimePeriod() const { return m_timePeriod; }
     inline bool TimePeriodHasBeenSet() const { return m_timePeriodHasBeenSet; }
+    template<typename TimePeriodT = DateInterval>
+    void SetTimePeriod(TimePeriodT&& value) { m_timePeriodHasBeenSet = true; m_timePeriod = std::forward<TimePeriodT>(value); }
+    template<typename TimePeriodT = DateInterval>
+    SavingsPlansUtilizationByTime& WithTimePeriod(TimePeriodT&& value) { SetTimePeriod(std::forward<TimePeriodT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetTimePeriod(const DateInterval& value) { m_timePeriodHasBeenSet = true; m_timePeriod = value; }
-
-    
-    inline void SetTimePeriod(DateInterval&& value) { m_timePeriodHasBeenSet = true; m_timePeriod = std::move(value); }
-
-    
-    inline SavingsPlansUtilizationByTime& WithTimePeriod(const DateInterval& value) { SetTimePeriod(value); return *this;}
-
-    
-    inline SavingsPlansUtilizationByTime& WithTimePeriod(DateInterval&& value) { SetTimePeriod(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>A ratio of your effectiveness of using existing Savings Plans to apply to
      * workloads that are Savings Plans eligible.</p>
      */
-    inline const SavingsPlansUtilization& GetUtilization() const{ return m_utilization; }
-
-    /**
-     * <p>A ratio of your effectiveness of using existing Savings Plans to apply to
-     * workloads that are Savings Plans eligible.</p>
-     */
+    inline const SavingsPlansUtilization& GetUtilization() const { return m_utilization; }
     inline bool UtilizationHasBeenSet() const { return m_utilizationHasBeenSet; }
+    template<typename UtilizationT = SavingsPlansUtilization>
+    void SetUtilization(UtilizationT&& value) { m_utilizationHasBeenSet = true; m_utilization = std::forward<UtilizationT>(value); }
+    template<typename UtilizationT = SavingsPlansUtilization>
+    SavingsPlansUtilizationByTime& WithUtilization(UtilizationT&& value) { SetUtilization(std::forward<UtilizationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A ratio of your effectiveness of using existing Savings Plans to apply to
-     * workloads that are Savings Plans eligible.</p>
-     */
-    inline void SetUtilization(const SavingsPlansUtilization& value) { m_utilizationHasBeenSet = true; m_utilization = value; }
-
-    /**
-     * <p>A ratio of your effectiveness of using existing Savings Plans to apply to
-     * workloads that are Savings Plans eligible.</p>
-     */
-    inline void SetUtilization(SavingsPlansUtilization&& value) { m_utilizationHasBeenSet = true; m_utilization = std::move(value); }
-
-    /**
-     * <p>A ratio of your effectiveness of using existing Savings Plans to apply to
-     * workloads that are Savings Plans eligible.</p>
-     */
-    inline SavingsPlansUtilizationByTime& WithUtilization(const SavingsPlansUtilization& value) { SetUtilization(value); return *this;}
-
-    /**
-     * <p>A ratio of your effectiveness of using existing Savings Plans to apply to
-     * workloads that are Savings Plans eligible.</p>
-     */
-    inline SavingsPlansUtilizationByTime& WithUtilization(SavingsPlansUtilization&& value) { SetUtilization(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The amount that's saved by using existing Savings Plans. Savings returns both
      * net savings from Savings Plans and also the <code>onDemandCostEquivalent</code>
      * of the Savings Plans when considering the utilization rate.</p>
      */
-    inline const SavingsPlansSavings& GetSavings() const{ return m_savings; }
-
-    /**
-     * <p>The amount that's saved by using existing Savings Plans. Savings returns both
-     * net savings from Savings Plans and also the <code>onDemandCostEquivalent</code>
-     * of the Savings Plans when considering the utilization rate.</p>
-     */
+    inline const SavingsPlansSavings& GetSavings() const { return m_savings; }
     inline bool SavingsHasBeenSet() const { return m_savingsHasBeenSet; }
+    template<typename SavingsT = SavingsPlansSavings>
+    void SetSavings(SavingsT&& value) { m_savingsHasBeenSet = true; m_savings = std::forward<SavingsT>(value); }
+    template<typename SavingsT = SavingsPlansSavings>
+    SavingsPlansUtilizationByTime& WithSavings(SavingsT&& value) { SetSavings(std::forward<SavingsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The amount that's saved by using existing Savings Plans. Savings returns both
-     * net savings from Savings Plans and also the <code>onDemandCostEquivalent</code>
-     * of the Savings Plans when considering the utilization rate.</p>
-     */
-    inline void SetSavings(const SavingsPlansSavings& value) { m_savingsHasBeenSet = true; m_savings = value; }
-
-    /**
-     * <p>The amount that's saved by using existing Savings Plans. Savings returns both
-     * net savings from Savings Plans and also the <code>onDemandCostEquivalent</code>
-     * of the Savings Plans when considering the utilization rate.</p>
-     */
-    inline void SetSavings(SavingsPlansSavings&& value) { m_savingsHasBeenSet = true; m_savings = std::move(value); }
-
-    /**
-     * <p>The amount that's saved by using existing Savings Plans. Savings returns both
-     * net savings from Savings Plans and also the <code>onDemandCostEquivalent</code>
-     * of the Savings Plans when considering the utilization rate.</p>
-     */
-    inline SavingsPlansUtilizationByTime& WithSavings(const SavingsPlansSavings& value) { SetSavings(value); return *this;}
-
-    /**
-     * <p>The amount that's saved by using existing Savings Plans. Savings returns both
-     * net savings from Savings Plans and also the <code>onDemandCostEquivalent</code>
-     * of the Savings Plans when considering the utilization rate.</p>
-     */
-    inline SavingsPlansUtilizationByTime& WithSavings(SavingsPlansSavings&& value) { SetSavings(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The total amortized commitment for a Savings Plans. This includes the sum of
      * the upfront and recurring Savings Plans fees.</p>
      */
-    inline const SavingsPlansAmortizedCommitment& GetAmortizedCommitment() const{ return m_amortizedCommitment; }
-
-    /**
-     * <p>The total amortized commitment for a Savings Plans. This includes the sum of
-     * the upfront and recurring Savings Plans fees.</p>
-     */
+    inline const SavingsPlansAmortizedCommitment& GetAmortizedCommitment() const { return m_amortizedCommitment; }
     inline bool AmortizedCommitmentHasBeenSet() const { return m_amortizedCommitmentHasBeenSet; }
-
-    /**
-     * <p>The total amortized commitment for a Savings Plans. This includes the sum of
-     * the upfront and recurring Savings Plans fees.</p>
-     */
-    inline void SetAmortizedCommitment(const SavingsPlansAmortizedCommitment& value) { m_amortizedCommitmentHasBeenSet = true; m_amortizedCommitment = value; }
-
-    /**
-     * <p>The total amortized commitment for a Savings Plans. This includes the sum of
-     * the upfront and recurring Savings Plans fees.</p>
-     */
-    inline void SetAmortizedCommitment(SavingsPlansAmortizedCommitment&& value) { m_amortizedCommitmentHasBeenSet = true; m_amortizedCommitment = std::move(value); }
-
-    /**
-     * <p>The total amortized commitment for a Savings Plans. This includes the sum of
-     * the upfront and recurring Savings Plans fees.</p>
-     */
-    inline SavingsPlansUtilizationByTime& WithAmortizedCommitment(const SavingsPlansAmortizedCommitment& value) { SetAmortizedCommitment(value); return *this;}
-
-    /**
-     * <p>The total amortized commitment for a Savings Plans. This includes the sum of
-     * the upfront and recurring Savings Plans fees.</p>
-     */
-    inline SavingsPlansUtilizationByTime& WithAmortizedCommitment(SavingsPlansAmortizedCommitment&& value) { SetAmortizedCommitment(std::move(value)); return *this;}
-
+    template<typename AmortizedCommitmentT = SavingsPlansAmortizedCommitment>
+    void SetAmortizedCommitment(AmortizedCommitmentT&& value) { m_amortizedCommitmentHasBeenSet = true; m_amortizedCommitment = std::forward<AmortizedCommitmentT>(value); }
+    template<typename AmortizedCommitmentT = SavingsPlansAmortizedCommitment>
+    SavingsPlansUtilizationByTime& WithAmortizedCommitment(AmortizedCommitmentT&& value) { SetAmortizedCommitment(std::forward<AmortizedCommitmentT>(value)); return *this;}
+    ///@}
   private:
 
     DateInterval m_timePeriod;

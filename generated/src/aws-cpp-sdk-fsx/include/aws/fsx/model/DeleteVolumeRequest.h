@@ -24,7 +24,7 @@ namespace Model
   class DeleteVolumeRequest : public FSxRequest
   {
   public:
-    AWS_FSX_API DeleteVolumeRequest();
+    AWS_FSX_API DeleteVolumeRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -37,155 +37,58 @@ namespace Model
     AWS_FSX_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     
-    inline const Aws::String& GetClientRequestToken() const{ return m_clientRequestToken; }
-
-    
+    inline const Aws::String& GetClientRequestToken() const { return m_clientRequestToken; }
     inline bool ClientRequestTokenHasBeenSet() const { return m_clientRequestTokenHasBeenSet; }
+    template<typename ClientRequestTokenT = Aws::String>
+    void SetClientRequestToken(ClientRequestTokenT&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::forward<ClientRequestTokenT>(value); }
+    template<typename ClientRequestTokenT = Aws::String>
+    DeleteVolumeRequest& WithClientRequestToken(ClientRequestTokenT&& value) { SetClientRequestToken(std::forward<ClientRequestTokenT>(value)); return *this;}
+    ///@}
 
-    
-    inline void SetClientRequestToken(const Aws::String& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = value; }
-
-    
-    inline void SetClientRequestToken(Aws::String&& value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken = std::move(value); }
-
-    
-    inline void SetClientRequestToken(const char* value) { m_clientRequestTokenHasBeenSet = true; m_clientRequestToken.assign(value); }
-
-    
-    inline DeleteVolumeRequest& WithClientRequestToken(const Aws::String& value) { SetClientRequestToken(value); return *this;}
-
-    
-    inline DeleteVolumeRequest& WithClientRequestToken(Aws::String&& value) { SetClientRequestToken(std::move(value)); return *this;}
-
-    
-    inline DeleteVolumeRequest& WithClientRequestToken(const char* value) { SetClientRequestToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the volume that you are deleting.</p>
      */
-    inline const Aws::String& GetVolumeId() const{ return m_volumeId; }
-
-    /**
-     * <p>The ID of the volume that you are deleting.</p>
-     */
+    inline const Aws::String& GetVolumeId() const { return m_volumeId; }
     inline bool VolumeIdHasBeenSet() const { return m_volumeIdHasBeenSet; }
+    template<typename VolumeIdT = Aws::String>
+    void SetVolumeId(VolumeIdT&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::forward<VolumeIdT>(value); }
+    template<typename VolumeIdT = Aws::String>
+    DeleteVolumeRequest& WithVolumeId(VolumeIdT&& value) { SetVolumeId(std::forward<VolumeIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the volume that you are deleting.</p>
-     */
-    inline void SetVolumeId(const Aws::String& value) { m_volumeIdHasBeenSet = true; m_volumeId = value; }
-
-    /**
-     * <p>The ID of the volume that you are deleting.</p>
-     */
-    inline void SetVolumeId(Aws::String&& value) { m_volumeIdHasBeenSet = true; m_volumeId = std::move(value); }
-
-    /**
-     * <p>The ID of the volume that you are deleting.</p>
-     */
-    inline void SetVolumeId(const char* value) { m_volumeIdHasBeenSet = true; m_volumeId.assign(value); }
-
-    /**
-     * <p>The ID of the volume that you are deleting.</p>
-     */
-    inline DeleteVolumeRequest& WithVolumeId(const Aws::String& value) { SetVolumeId(value); return *this;}
-
-    /**
-     * <p>The ID of the volume that you are deleting.</p>
-     */
-    inline DeleteVolumeRequest& WithVolumeId(Aws::String&& value) { SetVolumeId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the volume that you are deleting.</p>
-     */
-    inline DeleteVolumeRequest& WithVolumeId(const char* value) { SetVolumeId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>For Amazon FSx for ONTAP volumes, specify whether to take a final backup of
      * the volume and apply tags to the backup. To apply tags to the backup, you must
      * have the <code>fsx:TagResource</code> permission.</p>
      */
-    inline const DeleteVolumeOntapConfiguration& GetOntapConfiguration() const{ return m_ontapConfiguration; }
-
-    /**
-     * <p>For Amazon FSx for ONTAP volumes, specify whether to take a final backup of
-     * the volume and apply tags to the backup. To apply tags to the backup, you must
-     * have the <code>fsx:TagResource</code> permission.</p>
-     */
+    inline const DeleteVolumeOntapConfiguration& GetOntapConfiguration() const { return m_ontapConfiguration; }
     inline bool OntapConfigurationHasBeenSet() const { return m_ontapConfigurationHasBeenSet; }
+    template<typename OntapConfigurationT = DeleteVolumeOntapConfiguration>
+    void SetOntapConfiguration(OntapConfigurationT&& value) { m_ontapConfigurationHasBeenSet = true; m_ontapConfiguration = std::forward<OntapConfigurationT>(value); }
+    template<typename OntapConfigurationT = DeleteVolumeOntapConfiguration>
+    DeleteVolumeRequest& WithOntapConfiguration(OntapConfigurationT&& value) { SetOntapConfiguration(std::forward<OntapConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>For Amazon FSx for ONTAP volumes, specify whether to take a final backup of
-     * the volume and apply tags to the backup. To apply tags to the backup, you must
-     * have the <code>fsx:TagResource</code> permission.</p>
-     */
-    inline void SetOntapConfiguration(const DeleteVolumeOntapConfiguration& value) { m_ontapConfigurationHasBeenSet = true; m_ontapConfiguration = value; }
-
-    /**
-     * <p>For Amazon FSx for ONTAP volumes, specify whether to take a final backup of
-     * the volume and apply tags to the backup. To apply tags to the backup, you must
-     * have the <code>fsx:TagResource</code> permission.</p>
-     */
-    inline void SetOntapConfiguration(DeleteVolumeOntapConfiguration&& value) { m_ontapConfigurationHasBeenSet = true; m_ontapConfiguration = std::move(value); }
-
-    /**
-     * <p>For Amazon FSx for ONTAP volumes, specify whether to take a final backup of
-     * the volume and apply tags to the backup. To apply tags to the backup, you must
-     * have the <code>fsx:TagResource</code> permission.</p>
-     */
-    inline DeleteVolumeRequest& WithOntapConfiguration(const DeleteVolumeOntapConfiguration& value) { SetOntapConfiguration(value); return *this;}
-
-    /**
-     * <p>For Amazon FSx for ONTAP volumes, specify whether to take a final backup of
-     * the volume and apply tags to the backup. To apply tags to the backup, you must
-     * have the <code>fsx:TagResource</code> permission.</p>
-     */
-    inline DeleteVolumeRequest& WithOntapConfiguration(DeleteVolumeOntapConfiguration&& value) { SetOntapConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>For Amazon FSx for OpenZFS volumes, specify whether to delete all child
      * volumes and snapshots.</p>
      */
-    inline const DeleteVolumeOpenZFSConfiguration& GetOpenZFSConfiguration() const{ return m_openZFSConfiguration; }
-
-    /**
-     * <p>For Amazon FSx for OpenZFS volumes, specify whether to delete all child
-     * volumes and snapshots.</p>
-     */
+    inline const DeleteVolumeOpenZFSConfiguration& GetOpenZFSConfiguration() const { return m_openZFSConfiguration; }
     inline bool OpenZFSConfigurationHasBeenSet() const { return m_openZFSConfigurationHasBeenSet; }
-
-    /**
-     * <p>For Amazon FSx for OpenZFS volumes, specify whether to delete all child
-     * volumes and snapshots.</p>
-     */
-    inline void SetOpenZFSConfiguration(const DeleteVolumeOpenZFSConfiguration& value) { m_openZFSConfigurationHasBeenSet = true; m_openZFSConfiguration = value; }
-
-    /**
-     * <p>For Amazon FSx for OpenZFS volumes, specify whether to delete all child
-     * volumes and snapshots.</p>
-     */
-    inline void SetOpenZFSConfiguration(DeleteVolumeOpenZFSConfiguration&& value) { m_openZFSConfigurationHasBeenSet = true; m_openZFSConfiguration = std::move(value); }
-
-    /**
-     * <p>For Amazon FSx for OpenZFS volumes, specify whether to delete all child
-     * volumes and snapshots.</p>
-     */
-    inline DeleteVolumeRequest& WithOpenZFSConfiguration(const DeleteVolumeOpenZFSConfiguration& value) { SetOpenZFSConfiguration(value); return *this;}
-
-    /**
-     * <p>For Amazon FSx for OpenZFS volumes, specify whether to delete all child
-     * volumes and snapshots.</p>
-     */
-    inline DeleteVolumeRequest& WithOpenZFSConfiguration(DeleteVolumeOpenZFSConfiguration&& value) { SetOpenZFSConfiguration(std::move(value)); return *this;}
-
+    template<typename OpenZFSConfigurationT = DeleteVolumeOpenZFSConfiguration>
+    void SetOpenZFSConfiguration(OpenZFSConfigurationT&& value) { m_openZFSConfigurationHasBeenSet = true; m_openZFSConfiguration = std::forward<OpenZFSConfigurationT>(value); }
+    template<typename OpenZFSConfigurationT = DeleteVolumeOpenZFSConfiguration>
+    DeleteVolumeRequest& WithOpenZFSConfiguration(OpenZFSConfigurationT&& value) { SetOpenZFSConfiguration(std::forward<OpenZFSConfigurationT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::String m_clientRequestToken;
-    bool m_clientRequestTokenHasBeenSet = false;
+    Aws::String m_clientRequestToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientRequestTokenHasBeenSet = true;
 
     Aws::String m_volumeId;
     bool m_volumeIdHasBeenSet = false;

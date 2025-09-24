@@ -21,7 +21,7 @@ namespace Model
   class MergeBranchesByFastForwardRequest : public CodeCommitRequest
   {
   public:
-    AWS_CODECOMMIT_API MergeBranchesByFastForwardRequest();
+    AWS_CODECOMMIT_API MergeBranchesByFastForwardRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,185 +34,55 @@ namespace Model
     AWS_CODECOMMIT_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The name of the repository where you want to merge two branches.</p>
      */
-    inline const Aws::String& GetRepositoryName() const{ return m_repositoryName; }
-
-    /**
-     * <p>The name of the repository where you want to merge two branches.</p>
-     */
+    inline const Aws::String& GetRepositoryName() const { return m_repositoryName; }
     inline bool RepositoryNameHasBeenSet() const { return m_repositoryNameHasBeenSet; }
+    template<typename RepositoryNameT = Aws::String>
+    void SetRepositoryName(RepositoryNameT&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::forward<RepositoryNameT>(value); }
+    template<typename RepositoryNameT = Aws::String>
+    MergeBranchesByFastForwardRequest& WithRepositoryName(RepositoryNameT&& value) { SetRepositoryName(std::forward<RepositoryNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the repository where you want to merge two branches.</p>
-     */
-    inline void SetRepositoryName(const Aws::String& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
-
-    /**
-     * <p>The name of the repository where you want to merge two branches.</p>
-     */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
-
-    /**
-     * <p>The name of the repository where you want to merge two branches.</p>
-     */
-    inline void SetRepositoryName(const char* value) { m_repositoryNameHasBeenSet = true; m_repositoryName.assign(value); }
-
-    /**
-     * <p>The name of the repository where you want to merge two branches.</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithRepositoryName(const Aws::String& value) { SetRepositoryName(value); return *this;}
-
-    /**
-     * <p>The name of the repository where you want to merge two branches.</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the repository where you want to merge two branches.</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithRepositoryName(const char* value) { SetRepositoryName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
      * commit (for example, a branch name or a full commit ID).</p>
      */
-    inline const Aws::String& GetSourceCommitSpecifier() const{ return m_sourceCommitSpecifier; }
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
+    inline const Aws::String& GetSourceCommitSpecifier() const { return m_sourceCommitSpecifier; }
     inline bool SourceCommitSpecifierHasBeenSet() const { return m_sourceCommitSpecifierHasBeenSet; }
+    template<typename SourceCommitSpecifierT = Aws::String>
+    void SetSourceCommitSpecifier(SourceCommitSpecifierT&& value) { m_sourceCommitSpecifierHasBeenSet = true; m_sourceCommitSpecifier = std::forward<SourceCommitSpecifierT>(value); }
+    template<typename SourceCommitSpecifierT = Aws::String>
+    MergeBranchesByFastForwardRequest& WithSourceCommitSpecifier(SourceCommitSpecifierT&& value) { SetSourceCommitSpecifier(std::forward<SourceCommitSpecifierT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
      * commit (for example, a branch name or a full commit ID).</p>
      */
-    inline void SetSourceCommitSpecifier(const Aws::String& value) { m_sourceCommitSpecifierHasBeenSet = true; m_sourceCommitSpecifier = value; }
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline void SetSourceCommitSpecifier(Aws::String&& value) { m_sourceCommitSpecifierHasBeenSet = true; m_sourceCommitSpecifier = std::move(value); }
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline void SetSourceCommitSpecifier(const char* value) { m_sourceCommitSpecifierHasBeenSet = true; m_sourceCommitSpecifier.assign(value); }
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithSourceCommitSpecifier(const Aws::String& value) { SetSourceCommitSpecifier(value); return *this;}
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithSourceCommitSpecifier(Aws::String&& value) { SetSourceCommitSpecifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithSourceCommitSpecifier(const char* value) { SetSourceCommitSpecifier(value); return *this;}
-
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline const Aws::String& GetDestinationCommitSpecifier() const{ return m_destinationCommitSpecifier; }
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
+    inline const Aws::String& GetDestinationCommitSpecifier() const { return m_destinationCommitSpecifier; }
     inline bool DestinationCommitSpecifierHasBeenSet() const { return m_destinationCommitSpecifierHasBeenSet; }
+    template<typename DestinationCommitSpecifierT = Aws::String>
+    void SetDestinationCommitSpecifier(DestinationCommitSpecifierT&& value) { m_destinationCommitSpecifierHasBeenSet = true; m_destinationCommitSpecifier = std::forward<DestinationCommitSpecifierT>(value); }
+    template<typename DestinationCommitSpecifierT = Aws::String>
+    MergeBranchesByFastForwardRequest& WithDestinationCommitSpecifier(DestinationCommitSpecifierT&& value) { SetDestinationCommitSpecifier(std::forward<DestinationCommitSpecifierT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline void SetDestinationCommitSpecifier(const Aws::String& value) { m_destinationCommitSpecifierHasBeenSet = true; m_destinationCommitSpecifier = value; }
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline void SetDestinationCommitSpecifier(Aws::String&& value) { m_destinationCommitSpecifierHasBeenSet = true; m_destinationCommitSpecifier = std::move(value); }
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline void SetDestinationCommitSpecifier(const char* value) { m_destinationCommitSpecifierHasBeenSet = true; m_destinationCommitSpecifier.assign(value); }
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithDestinationCommitSpecifier(const Aws::String& value) { SetDestinationCommitSpecifier(value); return *this;}
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithDestinationCommitSpecifier(Aws::String&& value) { SetDestinationCommitSpecifier(std::move(value)); return *this;}
-
-    /**
-     * <p>The branch, tag, HEAD, or other fully qualified reference used to identify a
-     * commit (for example, a branch name or a full commit ID).</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithDestinationCommitSpecifier(const char* value) { SetDestinationCommitSpecifier(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The branch where the merge is applied.</p>
      */
-    inline const Aws::String& GetTargetBranch() const{ return m_targetBranch; }
-
-    /**
-     * <p>The branch where the merge is applied.</p>
-     */
+    inline const Aws::String& GetTargetBranch() const { return m_targetBranch; }
     inline bool TargetBranchHasBeenSet() const { return m_targetBranchHasBeenSet; }
-
-    /**
-     * <p>The branch where the merge is applied.</p>
-     */
-    inline void SetTargetBranch(const Aws::String& value) { m_targetBranchHasBeenSet = true; m_targetBranch = value; }
-
-    /**
-     * <p>The branch where the merge is applied.</p>
-     */
-    inline void SetTargetBranch(Aws::String&& value) { m_targetBranchHasBeenSet = true; m_targetBranch = std::move(value); }
-
-    /**
-     * <p>The branch where the merge is applied.</p>
-     */
-    inline void SetTargetBranch(const char* value) { m_targetBranchHasBeenSet = true; m_targetBranch.assign(value); }
-
-    /**
-     * <p>The branch where the merge is applied.</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithTargetBranch(const Aws::String& value) { SetTargetBranch(value); return *this;}
-
-    /**
-     * <p>The branch where the merge is applied.</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithTargetBranch(Aws::String&& value) { SetTargetBranch(std::move(value)); return *this;}
-
-    /**
-     * <p>The branch where the merge is applied.</p>
-     */
-    inline MergeBranchesByFastForwardRequest& WithTargetBranch(const char* value) { SetTargetBranch(value); return *this;}
-
+    template<typename TargetBranchT = Aws::String>
+    void SetTargetBranch(TargetBranchT&& value) { m_targetBranchHasBeenSet = true; m_targetBranch = std::forward<TargetBranchT>(value); }
+    template<typename TargetBranchT = Aws::String>
+    MergeBranchesByFastForwardRequest& WithTargetBranch(TargetBranchT&& value) { SetTargetBranch(std::forward<TargetBranchT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_repositoryName;

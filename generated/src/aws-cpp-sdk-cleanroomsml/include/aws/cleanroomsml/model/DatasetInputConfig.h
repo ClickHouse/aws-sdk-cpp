@@ -5,8 +5,8 @@
 
 #pragma once
 #include <aws/cleanroomsml/CleanRoomsML_EXPORTS.h>
-#include <aws/cleanroomsml/model/DataSource.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
+#include <aws/cleanroomsml/model/DataSource.h>
 #include <aws/cleanroomsml/model/ColumnSchema.h>
 #include <utility>
 
@@ -34,96 +34,45 @@ namespace Model
   class DatasetInputConfig
   {
   public:
-    AWS_CLEANROOMSML_API DatasetInputConfig();
+    AWS_CLEANROOMSML_API DatasetInputConfig() = default;
     AWS_CLEANROOMSML_API DatasetInputConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMSML_API DatasetInputConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMSML_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
-    /**
-     * <p>A DataSource object that specifies the Glue data source for the training
-     * data.</p>
-     */
-    inline const DataSource& GetDataSource() const{ return m_dataSource; }
-
-    /**
-     * <p>A DataSource object that specifies the Glue data source for the training
-     * data.</p>
-     */
-    inline bool DataSourceHasBeenSet() const { return m_dataSourceHasBeenSet; }
-
-    /**
-     * <p>A DataSource object that specifies the Glue data source for the training
-     * data.</p>
-     */
-    inline void SetDataSource(const DataSource& value) { m_dataSourceHasBeenSet = true; m_dataSource = value; }
-
-    /**
-     * <p>A DataSource object that specifies the Glue data source for the training
-     * data.</p>
-     */
-    inline void SetDataSource(DataSource&& value) { m_dataSourceHasBeenSet = true; m_dataSource = std::move(value); }
-
-    /**
-     * <p>A DataSource object that specifies the Glue data source for the training
-     * data.</p>
-     */
-    inline DatasetInputConfig& WithDataSource(const DataSource& value) { SetDataSource(value); return *this;}
-
-    /**
-     * <p>A DataSource object that specifies the Glue data source for the training
-     * data.</p>
-     */
-    inline DatasetInputConfig& WithDataSource(DataSource&& value) { SetDataSource(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The schema information for the training data.</p>
      */
-    inline const Aws::Vector<ColumnSchema>& GetSchema() const{ return m_schema; }
-
-    /**
-     * <p>The schema information for the training data.</p>
-     */
+    inline const Aws::Vector<ColumnSchema>& GetSchema() const { return m_schema; }
     inline bool SchemaHasBeenSet() const { return m_schemaHasBeenSet; }
+    template<typename SchemaT = Aws::Vector<ColumnSchema>>
+    void SetSchema(SchemaT&& value) { m_schemaHasBeenSet = true; m_schema = std::forward<SchemaT>(value); }
+    template<typename SchemaT = Aws::Vector<ColumnSchema>>
+    DatasetInputConfig& WithSchema(SchemaT&& value) { SetSchema(std::forward<SchemaT>(value)); return *this;}
+    template<typename SchemaT = ColumnSchema>
+    DatasetInputConfig& AddSchema(SchemaT&& value) { m_schemaHasBeenSet = true; m_schema.emplace_back(std::forward<SchemaT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The schema information for the training data.</p>
+     * <p>A DataSource object that specifies the Glue data source for the training
+     * data.</p>
      */
-    inline void SetSchema(const Aws::Vector<ColumnSchema>& value) { m_schemaHasBeenSet = true; m_schema = value; }
-
-    /**
-     * <p>The schema information for the training data.</p>
-     */
-    inline void SetSchema(Aws::Vector<ColumnSchema>&& value) { m_schemaHasBeenSet = true; m_schema = std::move(value); }
-
-    /**
-     * <p>The schema information for the training data.</p>
-     */
-    inline DatasetInputConfig& WithSchema(const Aws::Vector<ColumnSchema>& value) { SetSchema(value); return *this;}
-
-    /**
-     * <p>The schema information for the training data.</p>
-     */
-    inline DatasetInputConfig& WithSchema(Aws::Vector<ColumnSchema>&& value) { SetSchema(std::move(value)); return *this;}
-
-    /**
-     * <p>The schema information for the training data.</p>
-     */
-    inline DatasetInputConfig& AddSchema(const ColumnSchema& value) { m_schemaHasBeenSet = true; m_schema.push_back(value); return *this; }
-
-    /**
-     * <p>The schema information for the training data.</p>
-     */
-    inline DatasetInputConfig& AddSchema(ColumnSchema&& value) { m_schemaHasBeenSet = true; m_schema.push_back(std::move(value)); return *this; }
-
+    inline const DataSource& GetDataSource() const { return m_dataSource; }
+    inline bool DataSourceHasBeenSet() const { return m_dataSourceHasBeenSet; }
+    template<typename DataSourceT = DataSource>
+    void SetDataSource(DataSourceT&& value) { m_dataSourceHasBeenSet = true; m_dataSource = std::forward<DataSourceT>(value); }
+    template<typename DataSourceT = DataSource>
+    DatasetInputConfig& WithDataSource(DataSourceT&& value) { SetDataSource(std::forward<DataSourceT>(value)); return *this;}
+    ///@}
   private:
-
-    DataSource m_dataSource;
-    bool m_dataSourceHasBeenSet = false;
 
     Aws::Vector<ColumnSchema> m_schema;
     bool m_schemaHasBeenSet = false;
+
+    DataSource m_dataSource;
+    bool m_dataSourceHasBeenSet = false;
   };
 
 } // namespace Model

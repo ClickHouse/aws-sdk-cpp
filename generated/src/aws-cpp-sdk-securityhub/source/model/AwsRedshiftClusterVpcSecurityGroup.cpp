@@ -18,15 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-AwsRedshiftClusterVpcSecurityGroup::AwsRedshiftClusterVpcSecurityGroup() : 
-    m_statusHasBeenSet(false),
-    m_vpcSecurityGroupIdHasBeenSet(false)
-{
-}
-
-AwsRedshiftClusterVpcSecurityGroup::AwsRedshiftClusterVpcSecurityGroup(JsonView jsonValue) : 
-    m_statusHasBeenSet(false),
-    m_vpcSecurityGroupIdHasBeenSet(false)
+AwsRedshiftClusterVpcSecurityGroup::AwsRedshiftClusterVpcSecurityGroup(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ AwsRedshiftClusterVpcSecurityGroup& AwsRedshiftClusterVpcSecurityGroup::operator
   if(jsonValue.ValueExists("Status"))
   {
     m_status = jsonValue.GetString("Status");
-
     m_statusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("VpcSecurityGroupId"))
   {
     m_vpcSecurityGroupId = jsonValue.GetString("VpcSecurityGroupId");
-
     m_vpcSecurityGroupIdHasBeenSet = true;
   }
-
   return *this;
 }
 

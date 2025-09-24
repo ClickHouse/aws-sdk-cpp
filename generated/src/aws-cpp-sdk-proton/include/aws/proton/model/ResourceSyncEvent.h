@@ -32,165 +32,59 @@ namespace Model
   class ResourceSyncEvent
   {
   public:
-    AWS_PROTON_API ResourceSyncEvent();
+    AWS_PROTON_API ResourceSyncEvent() = default;
     AWS_PROTON_API ResourceSyncEvent(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROTON_API ResourceSyncEvent& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PROTON_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>A resource sync event.</p>
      */
-    inline const Aws::String& GetEvent() const{ return m_event; }
-
-    /**
-     * <p>A resource sync event.</p>
-     */
+    inline const Aws::String& GetEvent() const { return m_event; }
     inline bool EventHasBeenSet() const { return m_eventHasBeenSet; }
+    template<typename EventT = Aws::String>
+    void SetEvent(EventT&& value) { m_eventHasBeenSet = true; m_event = std::forward<EventT>(value); }
+    template<typename EventT = Aws::String>
+    ResourceSyncEvent& WithEvent(EventT&& value) { SetEvent(std::forward<EventT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A resource sync event.</p>
-     */
-    inline void SetEvent(const Aws::String& value) { m_eventHasBeenSet = true; m_event = value; }
-
-    /**
-     * <p>A resource sync event.</p>
-     */
-    inline void SetEvent(Aws::String&& value) { m_eventHasBeenSet = true; m_event = std::move(value); }
-
-    /**
-     * <p>A resource sync event.</p>
-     */
-    inline void SetEvent(const char* value) { m_eventHasBeenSet = true; m_event.assign(value); }
-
-    /**
-     * <p>A resource sync event.</p>
-     */
-    inline ResourceSyncEvent& WithEvent(const Aws::String& value) { SetEvent(value); return *this;}
-
-    /**
-     * <p>A resource sync event.</p>
-     */
-    inline ResourceSyncEvent& WithEvent(Aws::String&& value) { SetEvent(std::move(value)); return *this;}
-
-    /**
-     * <p>A resource sync event.</p>
-     */
-    inline ResourceSyncEvent& WithEvent(const char* value) { SetEvent(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The external ID for the event.</p>
      */
-    inline const Aws::String& GetExternalId() const{ return m_externalId; }
-
-    /**
-     * <p>The external ID for the event.</p>
-     */
+    inline const Aws::String& GetExternalId() const { return m_externalId; }
     inline bool ExternalIdHasBeenSet() const { return m_externalIdHasBeenSet; }
+    template<typename ExternalIdT = Aws::String>
+    void SetExternalId(ExternalIdT&& value) { m_externalIdHasBeenSet = true; m_externalId = std::forward<ExternalIdT>(value); }
+    template<typename ExternalIdT = Aws::String>
+    ResourceSyncEvent& WithExternalId(ExternalIdT&& value) { SetExternalId(std::forward<ExternalIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The external ID for the event.</p>
-     */
-    inline void SetExternalId(const Aws::String& value) { m_externalIdHasBeenSet = true; m_externalId = value; }
-
-    /**
-     * <p>The external ID for the event.</p>
-     */
-    inline void SetExternalId(Aws::String&& value) { m_externalIdHasBeenSet = true; m_externalId = std::move(value); }
-
-    /**
-     * <p>The external ID for the event.</p>
-     */
-    inline void SetExternalId(const char* value) { m_externalIdHasBeenSet = true; m_externalId.assign(value); }
-
-    /**
-     * <p>The external ID for the event.</p>
-     */
-    inline ResourceSyncEvent& WithExternalId(const Aws::String& value) { SetExternalId(value); return *this;}
-
-    /**
-     * <p>The external ID for the event.</p>
-     */
-    inline ResourceSyncEvent& WithExternalId(Aws::String&& value) { SetExternalId(std::move(value)); return *this;}
-
-    /**
-     * <p>The external ID for the event.</p>
-     */
-    inline ResourceSyncEvent& WithExternalId(const char* value) { SetExternalId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The time when the event occurred.</p>
      */
-    inline const Aws::Utils::DateTime& GetTime() const{ return m_time; }
-
-    /**
-     * <p>The time when the event occurred.</p>
-     */
+    inline const Aws::Utils::DateTime& GetTime() const { return m_time; }
     inline bool TimeHasBeenSet() const { return m_timeHasBeenSet; }
+    template<typename TimeT = Aws::Utils::DateTime>
+    void SetTime(TimeT&& value) { m_timeHasBeenSet = true; m_time = std::forward<TimeT>(value); }
+    template<typename TimeT = Aws::Utils::DateTime>
+    ResourceSyncEvent& WithTime(TimeT&& value) { SetTime(std::forward<TimeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The time when the event occurred.</p>
-     */
-    inline void SetTime(const Aws::Utils::DateTime& value) { m_timeHasBeenSet = true; m_time = value; }
-
-    /**
-     * <p>The time when the event occurred.</p>
-     */
-    inline void SetTime(Aws::Utils::DateTime&& value) { m_timeHasBeenSet = true; m_time = std::move(value); }
-
-    /**
-     * <p>The time when the event occurred.</p>
-     */
-    inline ResourceSyncEvent& WithTime(const Aws::Utils::DateTime& value) { SetTime(value); return *this;}
-
-    /**
-     * <p>The time when the event occurred.</p>
-     */
-    inline ResourceSyncEvent& WithTime(Aws::Utils::DateTime&& value) { SetTime(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of event.</p>
      */
-    inline const Aws::String& GetType() const{ return m_type; }
-
-    /**
-     * <p>The type of event.</p>
-     */
+    inline const Aws::String& GetType() const { return m_type; }
     inline bool TypeHasBeenSet() const { return m_typeHasBeenSet; }
-
-    /**
-     * <p>The type of event.</p>
-     */
-    inline void SetType(const Aws::String& value) { m_typeHasBeenSet = true; m_type = value; }
-
-    /**
-     * <p>The type of event.</p>
-     */
-    inline void SetType(Aws::String&& value) { m_typeHasBeenSet = true; m_type = std::move(value); }
-
-    /**
-     * <p>The type of event.</p>
-     */
-    inline void SetType(const char* value) { m_typeHasBeenSet = true; m_type.assign(value); }
-
-    /**
-     * <p>The type of event.</p>
-     */
-    inline ResourceSyncEvent& WithType(const Aws::String& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of event.</p>
-     */
-    inline ResourceSyncEvent& WithType(Aws::String&& value) { SetType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of event.</p>
-     */
-    inline ResourceSyncEvent& WithType(const char* value) { SetType(value); return *this;}
-
+    template<typename TypeT = Aws::String>
+    void SetType(TypeT&& value) { m_typeHasBeenSet = true; m_type = std::forward<TypeT>(value); }
+    template<typename TypeT = Aws::String>
+    ResourceSyncEvent& WithType(TypeT&& value) { SetType(std::forward<TypeT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_event;
@@ -199,7 +93,7 @@ namespace Model
     Aws::String m_externalId;
     bool m_externalIdHasBeenSet = false;
 
-    Aws::Utils::DateTime m_time;
+    Aws::Utils::DateTime m_time{};
     bool m_timeHasBeenSet = false;
 
     Aws::String m_type;

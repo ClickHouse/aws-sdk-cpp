@@ -21,7 +21,7 @@ namespace Model
   class InitiateLayerUploadRequest : public ECRRequest
   {
   public:
-    AWS_ECR_API InitiateLayerUploadRequest();
+    AWS_ECR_API InitiateLayerUploadRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -34,103 +34,31 @@ namespace Model
     AWS_ECR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Web Services account ID associated with the registry to which you
      * intend to upload layers. If you do not specify a registry, the default registry
      * is assumed.</p>
      */
-    inline const Aws::String& GetRegistryId() const{ return m_registryId; }
-
-    /**
-     * <p>The Amazon Web Services account ID associated with the registry to which you
-     * intend to upload layers. If you do not specify a registry, the default registry
-     * is assumed.</p>
-     */
+    inline const Aws::String& GetRegistryId() const { return m_registryId; }
     inline bool RegistryIdHasBeenSet() const { return m_registryIdHasBeenSet; }
+    template<typename RegistryIdT = Aws::String>
+    void SetRegistryId(RegistryIdT&& value) { m_registryIdHasBeenSet = true; m_registryId = std::forward<RegistryIdT>(value); }
+    template<typename RegistryIdT = Aws::String>
+    InitiateLayerUploadRequest& WithRegistryId(RegistryIdT&& value) { SetRegistryId(std::forward<RegistryIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Web Services account ID associated with the registry to which you
-     * intend to upload layers. If you do not specify a registry, the default registry
-     * is assumed.</p>
-     */
-    inline void SetRegistryId(const Aws::String& value) { m_registryIdHasBeenSet = true; m_registryId = value; }
-
-    /**
-     * <p>The Amazon Web Services account ID associated with the registry to which you
-     * intend to upload layers. If you do not specify a registry, the default registry
-     * is assumed.</p>
-     */
-    inline void SetRegistryId(Aws::String&& value) { m_registryIdHasBeenSet = true; m_registryId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID associated with the registry to which you
-     * intend to upload layers. If you do not specify a registry, the default registry
-     * is assumed.</p>
-     */
-    inline void SetRegistryId(const char* value) { m_registryIdHasBeenSet = true; m_registryId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account ID associated with the registry to which you
-     * intend to upload layers. If you do not specify a registry, the default registry
-     * is assumed.</p>
-     */
-    inline InitiateLayerUploadRequest& WithRegistryId(const Aws::String& value) { SetRegistryId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID associated with the registry to which you
-     * intend to upload layers. If you do not specify a registry, the default registry
-     * is assumed.</p>
-     */
-    inline InitiateLayerUploadRequest& WithRegistryId(Aws::String&& value) { SetRegistryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account ID associated with the registry to which you
-     * intend to upload layers. If you do not specify a registry, the default registry
-     * is assumed.</p>
-     */
-    inline InitiateLayerUploadRequest& WithRegistryId(const char* value) { SetRegistryId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the repository to which you intend to upload layers.</p>
      */
-    inline const Aws::String& GetRepositoryName() const{ return m_repositoryName; }
-
-    /**
-     * <p>The name of the repository to which you intend to upload layers.</p>
-     */
+    inline const Aws::String& GetRepositoryName() const { return m_repositoryName; }
     inline bool RepositoryNameHasBeenSet() const { return m_repositoryNameHasBeenSet; }
-
-    /**
-     * <p>The name of the repository to which you intend to upload layers.</p>
-     */
-    inline void SetRepositoryName(const Aws::String& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = value; }
-
-    /**
-     * <p>The name of the repository to which you intend to upload layers.</p>
-     */
-    inline void SetRepositoryName(Aws::String&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::move(value); }
-
-    /**
-     * <p>The name of the repository to which you intend to upload layers.</p>
-     */
-    inline void SetRepositoryName(const char* value) { m_repositoryNameHasBeenSet = true; m_repositoryName.assign(value); }
-
-    /**
-     * <p>The name of the repository to which you intend to upload layers.</p>
-     */
-    inline InitiateLayerUploadRequest& WithRepositoryName(const Aws::String& value) { SetRepositoryName(value); return *this;}
-
-    /**
-     * <p>The name of the repository to which you intend to upload layers.</p>
-     */
-    inline InitiateLayerUploadRequest& WithRepositoryName(Aws::String&& value) { SetRepositoryName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the repository to which you intend to upload layers.</p>
-     */
-    inline InitiateLayerUploadRequest& WithRepositoryName(const char* value) { SetRepositoryName(value); return *this;}
-
+    template<typename RepositoryNameT = Aws::String>
+    void SetRepositoryName(RepositoryNameT&& value) { m_repositoryNameHasBeenSet = true; m_repositoryName = std::forward<RepositoryNameT>(value); }
+    template<typename RepositoryNameT = Aws::String>
+    InitiateLayerUploadRequest& WithRepositoryName(RepositoryNameT&& value) { SetRepositoryName(std::forward<RepositoryNameT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_registryId;

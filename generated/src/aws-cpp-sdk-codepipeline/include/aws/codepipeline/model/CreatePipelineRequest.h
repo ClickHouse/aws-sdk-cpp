@@ -27,7 +27,7 @@ namespace Model
   class CreatePipelineRequest : public CodePipelineRequest
   {
   public:
-    AWS_CODEPIPELINE_API CreatePipelineRequest();
+    AWS_CODEPIPELINE_API CreatePipelineRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -40,83 +40,32 @@ namespace Model
     AWS_CODEPIPELINE_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>Represents the structure of actions and stages to be performed in the
      * pipeline. </p>
      */
-    inline const PipelineDeclaration& GetPipeline() const{ return m_pipeline; }
-
-    /**
-     * <p>Represents the structure of actions and stages to be performed in the
-     * pipeline. </p>
-     */
+    inline const PipelineDeclaration& GetPipeline() const { return m_pipeline; }
     inline bool PipelineHasBeenSet() const { return m_pipelineHasBeenSet; }
+    template<typename PipelineT = PipelineDeclaration>
+    void SetPipeline(PipelineT&& value) { m_pipelineHasBeenSet = true; m_pipeline = std::forward<PipelineT>(value); }
+    template<typename PipelineT = PipelineDeclaration>
+    CreatePipelineRequest& WithPipeline(PipelineT&& value) { SetPipeline(std::forward<PipelineT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Represents the structure of actions and stages to be performed in the
-     * pipeline. </p>
-     */
-    inline void SetPipeline(const PipelineDeclaration& value) { m_pipelineHasBeenSet = true; m_pipeline = value; }
-
-    /**
-     * <p>Represents the structure of actions and stages to be performed in the
-     * pipeline. </p>
-     */
-    inline void SetPipeline(PipelineDeclaration&& value) { m_pipelineHasBeenSet = true; m_pipeline = std::move(value); }
-
-    /**
-     * <p>Represents the structure of actions and stages to be performed in the
-     * pipeline. </p>
-     */
-    inline CreatePipelineRequest& WithPipeline(const PipelineDeclaration& value) { SetPipeline(value); return *this;}
-
-    /**
-     * <p>Represents the structure of actions and stages to be performed in the
-     * pipeline. </p>
-     */
-    inline CreatePipelineRequest& WithPipeline(PipelineDeclaration&& value) { SetPipeline(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The tags for the pipeline.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags for the pipeline.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags for the pipeline.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags for the pipeline.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags for the pipeline.</p>
-     */
-    inline CreatePipelineRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags for the pipeline.</p>
-     */
-    inline CreatePipelineRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags for the pipeline.</p>
-     */
-    inline CreatePipelineRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags for the pipeline.</p>
-     */
-    inline CreatePipelineRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    CreatePipelineRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    CreatePipelineRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     PipelineDeclaration m_pipeline;

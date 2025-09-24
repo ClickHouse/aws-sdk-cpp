@@ -18,13 +18,7 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-RetrieveAndGenerateOutput::RetrieveAndGenerateOutput() : 
-    m_textHasBeenSet(false)
-{
-}
-
-RetrieveAndGenerateOutput::RetrieveAndGenerateOutput(JsonView jsonValue) : 
-    m_textHasBeenSet(false)
+RetrieveAndGenerateOutput::RetrieveAndGenerateOutput(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ RetrieveAndGenerateOutput& RetrieveAndGenerateOutput::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("text"))
   {
     m_text = jsonValue.GetString("text");
-
     m_textHasBeenSet = true;
   }
-
   return *this;
 }
 

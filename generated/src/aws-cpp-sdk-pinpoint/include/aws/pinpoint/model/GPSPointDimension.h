@@ -32,69 +32,39 @@ namespace Model
   class GPSPointDimension
   {
   public:
-    AWS_PINPOINT_API GPSPointDimension();
+    AWS_PINPOINT_API GPSPointDimension() = default;
     AWS_PINPOINT_API GPSPointDimension(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API GPSPointDimension& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The GPS coordinates to measure distance from.</p>
      */
-    inline const GPSCoordinates& GetCoordinates() const{ return m_coordinates; }
-
-    /**
-     * <p>The GPS coordinates to measure distance from.</p>
-     */
+    inline const GPSCoordinates& GetCoordinates() const { return m_coordinates; }
     inline bool CoordinatesHasBeenSet() const { return m_coordinatesHasBeenSet; }
+    template<typename CoordinatesT = GPSCoordinates>
+    void SetCoordinates(CoordinatesT&& value) { m_coordinatesHasBeenSet = true; m_coordinates = std::forward<CoordinatesT>(value); }
+    template<typename CoordinatesT = GPSCoordinates>
+    GPSPointDimension& WithCoordinates(CoordinatesT&& value) { SetCoordinates(std::forward<CoordinatesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The GPS coordinates to measure distance from.</p>
-     */
-    inline void SetCoordinates(const GPSCoordinates& value) { m_coordinatesHasBeenSet = true; m_coordinates = value; }
-
-    /**
-     * <p>The GPS coordinates to measure distance from.</p>
-     */
-    inline void SetCoordinates(GPSCoordinates&& value) { m_coordinatesHasBeenSet = true; m_coordinates = std::move(value); }
-
-    /**
-     * <p>The GPS coordinates to measure distance from.</p>
-     */
-    inline GPSPointDimension& WithCoordinates(const GPSCoordinates& value) { SetCoordinates(value); return *this;}
-
-    /**
-     * <p>The GPS coordinates to measure distance from.</p>
-     */
-    inline GPSPointDimension& WithCoordinates(GPSCoordinates&& value) { SetCoordinates(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The range, in kilometers, from the GPS coordinates.</p>
      */
-    inline double GetRangeInKilometers() const{ return m_rangeInKilometers; }
-
-    /**
-     * <p>The range, in kilometers, from the GPS coordinates.</p>
-     */
+    inline double GetRangeInKilometers() const { return m_rangeInKilometers; }
     inline bool RangeInKilometersHasBeenSet() const { return m_rangeInKilometersHasBeenSet; }
-
-    /**
-     * <p>The range, in kilometers, from the GPS coordinates.</p>
-     */
     inline void SetRangeInKilometers(double value) { m_rangeInKilometersHasBeenSet = true; m_rangeInKilometers = value; }
-
-    /**
-     * <p>The range, in kilometers, from the GPS coordinates.</p>
-     */
     inline GPSPointDimension& WithRangeInKilometers(double value) { SetRangeInKilometers(value); return *this;}
-
+    ///@}
   private:
 
     GPSCoordinates m_coordinates;
     bool m_coordinatesHasBeenSet = false;
 
-    double m_rangeInKilometers;
+    double m_rangeInKilometers{0.0};
     bool m_rangeInKilometersHasBeenSet = false;
   };
 

@@ -20,37 +20,7 @@ namespace Redshift
 namespace Model
 {
 
-ReservedNodeOffering::ReservedNodeOffering() : 
-    m_reservedNodeOfferingIdHasBeenSet(false),
-    m_nodeTypeHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_fixedPrice(0.0),
-    m_fixedPriceHasBeenSet(false),
-    m_usagePrice(0.0),
-    m_usagePriceHasBeenSet(false),
-    m_currencyCodeHasBeenSet(false),
-    m_offeringTypeHasBeenSet(false),
-    m_recurringChargesHasBeenSet(false),
-    m_reservedNodeOfferingType(ReservedNodeOfferingType::NOT_SET),
-    m_reservedNodeOfferingTypeHasBeenSet(false)
-{
-}
-
-ReservedNodeOffering::ReservedNodeOffering(const XmlNode& xmlNode) : 
-    m_reservedNodeOfferingIdHasBeenSet(false),
-    m_nodeTypeHasBeenSet(false),
-    m_duration(0),
-    m_durationHasBeenSet(false),
-    m_fixedPrice(0.0),
-    m_fixedPriceHasBeenSet(false),
-    m_usagePrice(0.0),
-    m_usagePriceHasBeenSet(false),
-    m_currencyCodeHasBeenSet(false),
-    m_offeringTypeHasBeenSet(false),
-    m_recurringChargesHasBeenSet(false),
-    m_reservedNodeOfferingType(ReservedNodeOfferingType::NOT_SET),
-    m_reservedNodeOfferingTypeHasBeenSet(false)
+ReservedNodeOffering::ReservedNodeOffering(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -107,6 +77,7 @@ ReservedNodeOffering& ReservedNodeOffering::operator =(const XmlNode& xmlNode)
     if(!recurringChargesNode.IsNull())
     {
       XmlNode recurringChargesMember = recurringChargesNode.FirstChild("RecurringCharge");
+      m_recurringChargesHasBeenSet = !recurringChargesMember.IsNull();
       while(!recurringChargesMember.IsNull())
       {
         m_recurringCharges.push_back(recurringChargesMember);
@@ -118,7 +89,7 @@ ReservedNodeOffering& ReservedNodeOffering::operator =(const XmlNode& xmlNode)
     XmlNode reservedNodeOfferingTypeNode = resultNode.FirstChild("ReservedNodeOfferingType");
     if(!reservedNodeOfferingTypeNode.IsNull())
     {
-      m_reservedNodeOfferingType = ReservedNodeOfferingTypeMapper::GetReservedNodeOfferingTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(reservedNodeOfferingTypeNode.GetText()).c_str()).c_str());
+      m_reservedNodeOfferingType = ReservedNodeOfferingTypeMapper::GetReservedNodeOfferingTypeForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(reservedNodeOfferingTypeNode.GetText()).c_str()));
       m_reservedNodeOfferingTypeHasBeenSet = true;
     }
   }
@@ -169,14 +140,14 @@ void ReservedNodeOffering::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location << index << locationValue << ".RecurringCharge." << recurringChargesIdx++;
+        recurringChargesSs << location << index << locationValue << ".RecurringCharges.RecurringCharge." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
 
   if(m_reservedNodeOfferingTypeHasBeenSet)
   {
-      oStream << location << index << locationValue << ".ReservedNodeOfferingType=" << ReservedNodeOfferingTypeMapper::GetNameForReservedNodeOfferingType(m_reservedNodeOfferingType) << "&";
+      oStream << location << index << locationValue << ".ReservedNodeOfferingType=" << StringUtils::URLEncode(ReservedNodeOfferingTypeMapper::GetNameForReservedNodeOfferingType(m_reservedNodeOfferingType)) << "&";
   }
 
 }
@@ -197,11 +168,11 @@ void ReservedNodeOffering::OutputToStream(Aws::OStream& oStream, const char* loc
   }
   if(m_fixedPriceHasBeenSet)
   {
-        oStream << location << ".FixedPrice=" << StringUtils::URLEncode(m_fixedPrice) << "&";
+      oStream << location << ".FixedPrice=" << StringUtils::URLEncode(m_fixedPrice) << "&";
   }
   if(m_usagePriceHasBeenSet)
   {
-        oStream << location << ".UsagePrice=" << StringUtils::URLEncode(m_usagePrice) << "&";
+      oStream << location << ".UsagePrice=" << StringUtils::URLEncode(m_usagePrice) << "&";
   }
   if(m_currencyCodeHasBeenSet)
   {
@@ -217,13 +188,13 @@ void ReservedNodeOffering::OutputToStream(Aws::OStream& oStream, const char* loc
       for(auto& item : m_recurringCharges)
       {
         Aws::StringStream recurringChargesSs;
-        recurringChargesSs << location <<  ".RecurringCharge." << recurringChargesIdx++;
+        recurringChargesSs << location << ".RecurringCharges.RecurringCharge." << recurringChargesIdx++;
         item.OutputToStream(oStream, recurringChargesSs.str().c_str());
       }
   }
   if(m_reservedNodeOfferingTypeHasBeenSet)
   {
-      oStream << location << ".ReservedNodeOfferingType=" << ReservedNodeOfferingTypeMapper::GetNameForReservedNodeOfferingType(m_reservedNodeOfferingType) << "&";
+      oStream << location << ".ReservedNodeOfferingType=" << StringUtils::URLEncode(ReservedNodeOfferingTypeMapper::GetNameForReservedNodeOfferingType(m_reservedNodeOfferingType)) << "&";
   }
 }
 

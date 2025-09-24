@@ -18,19 +18,7 @@ namespace kendra
 namespace Model
 {
 
-UserContext::UserContext() : 
-    m_tokenHasBeenSet(false),
-    m_userIdHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_dataSourceGroupsHasBeenSet(false)
-{
-}
-
-UserContext::UserContext(JsonView jsonValue) : 
-    m_tokenHasBeenSet(false),
-    m_userIdHasBeenSet(false),
-    m_groupsHasBeenSet(false),
-    m_dataSourceGroupsHasBeenSet(false)
+UserContext::UserContext(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,17 +28,13 @@ UserContext& UserContext::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Token"))
   {
     m_token = jsonValue.GetString("Token");
-
     m_tokenHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("UserId"))
   {
     m_userId = jsonValue.GetString("UserId");
-
     m_userIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Groups"))
   {
     Aws::Utils::Array<JsonView> groupsJsonList = jsonValue.GetArray("Groups");
@@ -60,7 +44,6 @@ UserContext& UserContext::operator =(JsonView jsonValue)
     }
     m_groupsHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("DataSourceGroups"))
   {
     Aws::Utils::Array<JsonView> dataSourceGroupsJsonList = jsonValue.GetArray("DataSourceGroups");
@@ -70,7 +53,6 @@ UserContext& UserContext::operator =(JsonView jsonValue)
     }
     m_dataSourceGroupsHasBeenSet = true;
   }
-
   return *this;
 }
 

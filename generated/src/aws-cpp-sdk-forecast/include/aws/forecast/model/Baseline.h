@@ -33,12 +33,13 @@ namespace Model
   class Baseline
   {
   public:
-    AWS_FORECASTSERVICE_API Baseline();
+    AWS_FORECASTSERVICE_API Baseline() = default;
     AWS_FORECASTSERVICE_API Baseline(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Baseline& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_FORECASTSERVICE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The initial <a
      * href="https://docs.aws.amazon.com/forecast/latest/dg/metrics.html">accuracy
@@ -46,53 +47,13 @@ namespace Model
      * baseline for comparison purposes as you use your predictor and the metrics
      * change.</p>
      */
-    inline const PredictorBaseline& GetPredictorBaseline() const{ return m_predictorBaseline; }
-
-    /**
-     * <p>The initial <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/metrics.html">accuracy
-     * metrics</a> for the predictor you are monitoring. Use these metrics as a
-     * baseline for comparison purposes as you use your predictor and the metrics
-     * change.</p>
-     */
+    inline const PredictorBaseline& GetPredictorBaseline() const { return m_predictorBaseline; }
     inline bool PredictorBaselineHasBeenSet() const { return m_predictorBaselineHasBeenSet; }
-
-    /**
-     * <p>The initial <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/metrics.html">accuracy
-     * metrics</a> for the predictor you are monitoring. Use these metrics as a
-     * baseline for comparison purposes as you use your predictor and the metrics
-     * change.</p>
-     */
-    inline void SetPredictorBaseline(const PredictorBaseline& value) { m_predictorBaselineHasBeenSet = true; m_predictorBaseline = value; }
-
-    /**
-     * <p>The initial <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/metrics.html">accuracy
-     * metrics</a> for the predictor you are monitoring. Use these metrics as a
-     * baseline for comparison purposes as you use your predictor and the metrics
-     * change.</p>
-     */
-    inline void SetPredictorBaseline(PredictorBaseline&& value) { m_predictorBaselineHasBeenSet = true; m_predictorBaseline = std::move(value); }
-
-    /**
-     * <p>The initial <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/metrics.html">accuracy
-     * metrics</a> for the predictor you are monitoring. Use these metrics as a
-     * baseline for comparison purposes as you use your predictor and the metrics
-     * change.</p>
-     */
-    inline Baseline& WithPredictorBaseline(const PredictorBaseline& value) { SetPredictorBaseline(value); return *this;}
-
-    /**
-     * <p>The initial <a
-     * href="https://docs.aws.amazon.com/forecast/latest/dg/metrics.html">accuracy
-     * metrics</a> for the predictor you are monitoring. Use these metrics as a
-     * baseline for comparison purposes as you use your predictor and the metrics
-     * change.</p>
-     */
-    inline Baseline& WithPredictorBaseline(PredictorBaseline&& value) { SetPredictorBaseline(std::move(value)); return *this;}
-
+    template<typename PredictorBaselineT = PredictorBaseline>
+    void SetPredictorBaseline(PredictorBaselineT&& value) { m_predictorBaselineHasBeenSet = true; m_predictorBaseline = std::forward<PredictorBaselineT>(value); }
+    template<typename PredictorBaselineT = PredictorBaseline>
+    Baseline& WithPredictorBaseline(PredictorBaselineT&& value) { SetPredictorBaseline(std::forward<PredictorBaselineT>(value)); return *this;}
+    ///@}
   private:
 
     PredictorBaseline m_predictorBaseline;

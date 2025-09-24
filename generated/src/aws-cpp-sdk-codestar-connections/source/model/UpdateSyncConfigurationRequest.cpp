@@ -12,17 +12,6 @@ using namespace Aws::CodeStarconnections::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateSyncConfigurationRequest::UpdateSyncConfigurationRequest() : 
-    m_branchHasBeenSet(false),
-    m_configFileHasBeenSet(false),
-    m_repositoryLinkIdHasBeenSet(false),
-    m_resourceNameHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_syncType(SyncConfigurationType::NOT_SET),
-    m_syncTypeHasBeenSet(false)
-{
-}
-
 Aws::String UpdateSyncConfigurationRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -60,6 +49,16 @@ Aws::String UpdateSyncConfigurationRequest::SerializePayload() const
   if(m_syncTypeHasBeenSet)
   {
    payload.WithString("SyncType", SyncConfigurationTypeMapper::GetNameForSyncConfigurationType(m_syncType));
+  }
+
+  if(m_publishDeploymentStatusHasBeenSet)
+  {
+   payload.WithString("PublishDeploymentStatus", PublishDeploymentStatusMapper::GetNameForPublishDeploymentStatus(m_publishDeploymentStatus));
+  }
+
+  if(m_triggerResourceUpdateOnHasBeenSet)
+  {
+   payload.WithString("TriggerResourceUpdateOn", TriggerResourceUpdateOnMapper::GetNameForTriggerResourceUpdateOn(m_triggerResourceUpdateOn));
   }
 
   return payload.View().WriteReadable();

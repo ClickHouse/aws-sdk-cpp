@@ -18,15 +18,7 @@ namespace Outposts
 namespace Model
 {
 
-AssetLocation::AssetLocation() : 
-    m_rackElevation(0.0),
-    m_rackElevationHasBeenSet(false)
-{
-}
-
-AssetLocation::AssetLocation(JsonView jsonValue) : 
-    m_rackElevation(0.0),
-    m_rackElevationHasBeenSet(false)
+AssetLocation::AssetLocation(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ AssetLocation& AssetLocation::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("RackElevation"))
   {
     m_rackElevation = jsonValue.GetDouble("RackElevation");
-
     m_rackElevationHasBeenSet = true;
   }
-
   return *this;
 }
 

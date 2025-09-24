@@ -18,17 +18,7 @@ namespace ECR
 namespace Model
 {
 
-RegistryScanningConfiguration::RegistryScanningConfiguration() : 
-    m_scanType(ScanType::NOT_SET),
-    m_scanTypeHasBeenSet(false),
-    m_rulesHasBeenSet(false)
-{
-}
-
-RegistryScanningConfiguration::RegistryScanningConfiguration(JsonView jsonValue) : 
-    m_scanType(ScanType::NOT_SET),
-    m_scanTypeHasBeenSet(false),
-    m_rulesHasBeenSet(false)
+RegistryScanningConfiguration::RegistryScanningConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,10 +28,8 @@ RegistryScanningConfiguration& RegistryScanningConfiguration::operator =(JsonVie
   if(jsonValue.ValueExists("scanType"))
   {
     m_scanType = ScanTypeMapper::GetScanTypeForName(jsonValue.GetString("scanType"));
-
     m_scanTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("rules"))
   {
     Aws::Utils::Array<JsonView> rulesJsonList = jsonValue.GetArray("rules");
@@ -51,7 +39,6 @@ RegistryScanningConfiguration& RegistryScanningConfiguration::operator =(JsonVie
     }
     m_rulesHasBeenSet = true;
   }
-
   return *this;
 }
 

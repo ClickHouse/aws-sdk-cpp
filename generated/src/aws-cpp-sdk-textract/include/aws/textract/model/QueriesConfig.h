@@ -32,52 +32,25 @@ namespace Model
   class QueriesConfig
   {
   public:
-    AWS_TEXTRACT_API QueriesConfig();
+    AWS_TEXTRACT_API QueriesConfig() = default;
     AWS_TEXTRACT_API QueriesConfig(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API QueriesConfig& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_TEXTRACT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p/>
      */
-    inline const Aws::Vector<Query>& GetQueries() const{ return m_queries; }
-
-    /**
-     * <p/>
-     */
+    inline const Aws::Vector<Query>& GetQueries() const { return m_queries; }
     inline bool QueriesHasBeenSet() const { return m_queriesHasBeenSet; }
-
-    /**
-     * <p/>
-     */
-    inline void SetQueries(const Aws::Vector<Query>& value) { m_queriesHasBeenSet = true; m_queries = value; }
-
-    /**
-     * <p/>
-     */
-    inline void SetQueries(Aws::Vector<Query>&& value) { m_queriesHasBeenSet = true; m_queries = std::move(value); }
-
-    /**
-     * <p/>
-     */
-    inline QueriesConfig& WithQueries(const Aws::Vector<Query>& value) { SetQueries(value); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline QueriesConfig& WithQueries(Aws::Vector<Query>&& value) { SetQueries(std::move(value)); return *this;}
-
-    /**
-     * <p/>
-     */
-    inline QueriesConfig& AddQueries(const Query& value) { m_queriesHasBeenSet = true; m_queries.push_back(value); return *this; }
-
-    /**
-     * <p/>
-     */
-    inline QueriesConfig& AddQueries(Query&& value) { m_queriesHasBeenSet = true; m_queries.push_back(std::move(value)); return *this; }
-
+    template<typename QueriesT = Aws::Vector<Query>>
+    void SetQueries(QueriesT&& value) { m_queriesHasBeenSet = true; m_queries = std::forward<QueriesT>(value); }
+    template<typename QueriesT = Aws::Vector<Query>>
+    QueriesConfig& WithQueries(QueriesT&& value) { SetQueries(std::forward<QueriesT>(value)); return *this;}
+    template<typename QueriesT = Query>
+    QueriesConfig& AddQueries(QueriesT&& value) { m_queriesHasBeenSet = true; m_queries.emplace_back(std::forward<QueriesT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Query> m_queries;

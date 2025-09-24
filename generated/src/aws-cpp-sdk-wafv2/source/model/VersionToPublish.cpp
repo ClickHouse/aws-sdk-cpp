@@ -18,17 +18,7 @@ namespace WAFV2
 namespace Model
 {
 
-VersionToPublish::VersionToPublish() : 
-    m_associatedRuleGroupArnHasBeenSet(false),
-    m_forecastedLifetime(0),
-    m_forecastedLifetimeHasBeenSet(false)
-{
-}
-
-VersionToPublish::VersionToPublish(JsonView jsonValue) : 
-    m_associatedRuleGroupArnHasBeenSet(false),
-    m_forecastedLifetime(0),
-    m_forecastedLifetimeHasBeenSet(false)
+VersionToPublish::VersionToPublish(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ VersionToPublish& VersionToPublish::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AssociatedRuleGroupArn"))
   {
     m_associatedRuleGroupArn = jsonValue.GetString("AssociatedRuleGroupArn");
-
     m_associatedRuleGroupArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ForecastedLifetime"))
   {
     m_forecastedLifetime = jsonValue.GetInteger("ForecastedLifetime");
-
     m_forecastedLifetimeHasBeenSet = true;
   }
-
   return *this;
 }
 

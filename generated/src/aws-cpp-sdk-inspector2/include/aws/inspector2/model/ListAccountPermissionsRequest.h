@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/inspector2/Inspector2_EXPORTS.h>
 #include <aws/inspector2/Inspector2Request.h>
-#include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/inspector2/model/Service.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
 #include <utility>
 
 namespace Aws
@@ -22,7 +22,7 @@ namespace Model
   class ListAccountPermissionsRequest : public Inspector2Request
   {
   public:
-    AWS_INSPECTOR2_API ListAccountPermissionsRequest();
+    AWS_INSPECTOR2_API ListAccountPermissionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,160 +33,55 @@ namespace Model
     AWS_INSPECTOR2_API Aws::String SerializePayload() const override;
 
 
-    /**
-     * <p>The maximum number of results the response can return. If your request would
-     * return more than the maximum the response will return a <code>nextToken</code>
-     * value, use this value when you call the action again to get the remaining
-     * results.</p>
-     */
-    inline int GetMaxResults() const{ return m_maxResults; }
-
-    /**
-     * <p>The maximum number of results the response can return. If your request would
-     * return more than the maximum the response will return a <code>nextToken</code>
-     * value, use this value when you call the action again to get the remaining
-     * results.</p>
-     */
-    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
-
-    /**
-     * <p>The maximum number of results the response can return. If your request would
-     * return more than the maximum the response will return a <code>nextToken</code>
-     * value, use this value when you call the action again to get the remaining
-     * results.</p>
-     */
-    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
-
-    /**
-     * <p>The maximum number of results the response can return. If your request would
-     * return more than the maximum the response will return a <code>nextToken</code>
-     * value, use this value when you call the action again to get the remaining
-     * results.</p>
-     */
-    inline ListAccountPermissionsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
-
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * NextToken value returned from the previous request to continue listing results
-     * after the first page.</p>
-     */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * NextToken value returned from the previous request to continue listing results
-     * after the first page.</p>
-     */
-    inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * NextToken value returned from the previous request to continue listing results
-     * after the first page.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextTokenHasBeenSet = true; m_nextToken = value; }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * NextToken value returned from the previous request to continue listing results
-     * after the first page.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::move(value); }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * NextToken value returned from the previous request to continue listing results
-     * after the first page.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextTokenHasBeenSet = true; m_nextToken.assign(value); }
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * NextToken value returned from the previous request to continue listing results
-     * after the first page.</p>
-     */
-    inline ListAccountPermissionsRequest& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * NextToken value returned from the previous request to continue listing results
-     * after the first page.</p>
-     */
-    inline ListAccountPermissionsRequest& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A token to use for paginating results that are returned in the response. Set
-     * the value of this parameter to null for the first request to a list action. If
-     * your response returns more than the <code>maxResults</code> maximum value it
-     * will also return a <code>nextToken</code> value. For subsequent calls, use the
-     * NextToken value returned from the previous request to continue listing results
-     * after the first page.</p>
-     */
-    inline ListAccountPermissionsRequest& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The service scan type to check permissions for.</p>
      */
-    inline const Service& GetService() const{ return m_service; }
-
-    /**
-     * <p>The service scan type to check permissions for.</p>
-     */
+    inline Service GetService() const { return m_service; }
     inline bool ServiceHasBeenSet() const { return m_serviceHasBeenSet; }
+    inline void SetService(Service value) { m_serviceHasBeenSet = true; m_service = value; }
+    inline ListAccountPermissionsRequest& WithService(Service value) { SetService(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The service scan type to check permissions for.</p>
+     * <p>The maximum number of results the response can return. If your request would
+     * return more than the maximum the response will return a <code>nextToken</code>
+     * value, use this value when you call the action again to get the remaining
+     * results.</p>
      */
-    inline void SetService(const Service& value) { m_serviceHasBeenSet = true; m_service = value; }
+    inline int GetMaxResults() const { return m_maxResults; }
+    inline bool MaxResultsHasBeenSet() const { return m_maxResultsHasBeenSet; }
+    inline void SetMaxResults(int value) { m_maxResultsHasBeenSet = true; m_maxResults = value; }
+    inline ListAccountPermissionsRequest& WithMaxResults(int value) { SetMaxResults(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The service scan type to check permissions for.</p>
+     * <p>A token to use for paginating results that are returned in the response. Set
+     * the value of this parameter to null for the first request to a list action. If
+     * your response returns more than the <code>maxResults</code> maximum value it
+     * will also return a <code>nextToken</code> value. For subsequent calls, use the
+     * NextToken value returned from the previous request to continue listing results
+     * after the first page.</p>
      */
-    inline void SetService(Service&& value) { m_serviceHasBeenSet = true; m_service = std::move(value); }
-
-    /**
-     * <p>The service scan type to check permissions for.</p>
-     */
-    inline ListAccountPermissionsRequest& WithService(const Service& value) { SetService(value); return *this;}
-
-    /**
-     * <p>The service scan type to check permissions for.</p>
-     */
-    inline ListAccountPermissionsRequest& WithService(Service&& value) { SetService(std::move(value)); return *this;}
-
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    inline bool NextTokenHasBeenSet() const { return m_nextTokenHasBeenSet; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAccountPermissionsRequest& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
   private:
 
-    int m_maxResults;
+    Service m_service{Service::NOT_SET};
+    bool m_serviceHasBeenSet = false;
+
+    int m_maxResults{0};
     bool m_maxResultsHasBeenSet = false;
 
     Aws::String m_nextToken;
     bool m_nextTokenHasBeenSet = false;
-
-    Service m_service;
-    bool m_serviceHasBeenSet = false;
   };
 
 } // namespace Model

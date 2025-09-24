@@ -10,33 +10,25 @@
 using namespace Aws::CloudWatch::Model;
 using namespace Aws::Utils;
 
-DescribeAlarmsRequest::DescribeAlarmsRequest() : 
-    m_alarmNamesHasBeenSet(false),
-    m_alarmNamePrefixHasBeenSet(false),
-    m_alarmTypesHasBeenSet(false),
-    m_childrenOfAlarmNameHasBeenSet(false),
-    m_parentsOfAlarmNameHasBeenSet(false),
-    m_stateValue(StateValue::NOT_SET),
-    m_stateValueHasBeenSet(false),
-    m_actionPrefixHasBeenSet(false),
-    m_maxRecords(0),
-    m_maxRecordsHasBeenSet(false),
-    m_nextTokenHasBeenSet(false)
-{
-}
-
 Aws::String DescribeAlarmsRequest::SerializePayload() const
 {
   Aws::StringStream ss;
   ss << "Action=DescribeAlarms&";
   if(m_alarmNamesHasBeenSet)
   {
-    unsigned alarmNamesCount = 1;
-    for(auto& item : m_alarmNames)
+    if (m_alarmNames.empty())
     {
-      ss << "AlarmNames.member." << alarmNamesCount << "="
-          << StringUtils::URLEncode(item.c_str()) << "&";
-      alarmNamesCount++;
+      ss << "AlarmNames=&";
+    }
+    else
+    {
+      unsigned alarmNamesCount = 1;
+      for(auto& item : m_alarmNames)
+      {
+        ss << "AlarmNames.member." << alarmNamesCount << "="
+            << StringUtils::URLEncode(item.c_str()) << "&";
+        alarmNamesCount++;
+      }
     }
   }
 
@@ -47,12 +39,19 @@ Aws::String DescribeAlarmsRequest::SerializePayload() const
 
   if(m_alarmTypesHasBeenSet)
   {
-    unsigned alarmTypesCount = 1;
-    for(auto& item : m_alarmTypes)
+    if (m_alarmTypes.empty())
     {
-      ss << "AlarmTypes.member." << alarmTypesCount << "="
-          << StringUtils::URLEncode(AlarmTypeMapper::GetNameForAlarmType(item).c_str()) << "&";
-      alarmTypesCount++;
+      ss << "AlarmTypes=&";
+    }
+    else
+    {
+      unsigned alarmTypesCount = 1;
+      for(auto& item : m_alarmTypes)
+      {
+        ss << "AlarmTypes.member." << alarmTypesCount << "="
+            << StringUtils::URLEncode(AlarmTypeMapper::GetNameForAlarmType(item)) << "&";
+        alarmTypesCount++;
+      }
     }
   }
 
@@ -68,7 +67,7 @@ Aws::String DescribeAlarmsRequest::SerializePayload() const
 
   if(m_stateValueHasBeenSet)
   {
-    ss << "StateValue=" << StateValueMapper::GetNameForStateValue(m_stateValue) << "&";
+    ss << "StateValue=" << StringUtils::URLEncode(StateValueMapper::GetNameForStateValue(m_stateValue)) << "&";
   }
 
   if(m_actionPrefixHasBeenSet)

@@ -18,17 +18,7 @@ namespace CodePipeline
 namespace Model
 {
 
-StageExecution::StageExecution() : 
-    m_pipelineExecutionIdHasBeenSet(false),
-    m_status(StageExecutionStatus::NOT_SET),
-    m_statusHasBeenSet(false)
-{
-}
-
-StageExecution::StageExecution(JsonView jsonValue) : 
-    m_pipelineExecutionIdHasBeenSet(false),
-    m_status(StageExecutionStatus::NOT_SET),
-    m_statusHasBeenSet(false)
+StageExecution::StageExecution(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ StageExecution& StageExecution::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("pipelineExecutionId"))
   {
     m_pipelineExecutionId = jsonValue.GetString("pipelineExecutionId");
-
     m_pipelineExecutionIdHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("status"))
   {
     m_status = StageExecutionStatusMapper::GetStageExecutionStatusForName(jsonValue.GetString("status"));
-
     m_statusHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("type"))
+  {
+    m_type = ExecutionTypeMapper::GetExecutionTypeForName(jsonValue.GetString("type"));
+    m_typeHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -65,6 +56,11 @@ JsonValue StageExecution::Jsonize() const
   if(m_statusHasBeenSet)
   {
    payload.WithString("status", StageExecutionStatusMapper::GetNameForStageExecutionStatus(m_status));
+  }
+
+  if(m_typeHasBeenSet)
+  {
+   payload.WithString("type", ExecutionTypeMapper::GetNameForExecutionType(m_type));
   }
 
   return payload;

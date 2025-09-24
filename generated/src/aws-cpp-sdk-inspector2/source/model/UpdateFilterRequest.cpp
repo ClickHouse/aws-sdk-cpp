@@ -12,17 +12,6 @@ using namespace Aws::Inspector2::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateFilterRequest::UpdateFilterRequest() : 
-    m_action(FilterAction::NOT_SET),
-    m_actionHasBeenSet(false),
-    m_descriptionHasBeenSet(false),
-    m_filterArnHasBeenSet(false),
-    m_filterCriteriaHasBeenSet(false),
-    m_nameHasBeenSet(false),
-    m_reasonHasBeenSet(false)
-{
-}
-
 Aws::String UpdateFilterRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -38,12 +27,6 @@ Aws::String UpdateFilterRequest::SerializePayload() const
 
   }
 
-  if(m_filterArnHasBeenSet)
-  {
-   payload.WithString("filterArn", m_filterArn);
-
-  }
-
   if(m_filterCriteriaHasBeenSet)
   {
    payload.WithObject("filterCriteria", m_filterCriteria.Jsonize());
@@ -53,6 +36,12 @@ Aws::String UpdateFilterRequest::SerializePayload() const
   if(m_nameHasBeenSet)
   {
    payload.WithString("name", m_name);
+
+  }
+
+  if(m_filterArnHasBeenSet)
+  {
+   payload.WithString("filterArn", m_filterArn);
 
   }
 

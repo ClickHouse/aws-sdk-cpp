@@ -32,7 +32,7 @@ namespace Model
   class InstanceExportDetails
   {
   public:
-    AWS_EC2_API InstanceExportDetails();
+    AWS_EC2_API InstanceExportDetails() = default;
     AWS_EC2_API InstanceExportDetails(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_EC2_API InstanceExportDetails& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -40,83 +40,33 @@ namespace Model
     AWS_EC2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The ID of the resource being exported.</p>
      */
-    inline const Aws::String& GetInstanceId() const{ return m_instanceId; }
-
-    /**
-     * <p>The ID of the resource being exported.</p>
-     */
+    inline const Aws::String& GetInstanceId() const { return m_instanceId; }
     inline bool InstanceIdHasBeenSet() const { return m_instanceIdHasBeenSet; }
+    template<typename InstanceIdT = Aws::String>
+    void SetInstanceId(InstanceIdT&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::forward<InstanceIdT>(value); }
+    template<typename InstanceIdT = Aws::String>
+    InstanceExportDetails& WithInstanceId(InstanceIdT&& value) { SetInstanceId(std::forward<InstanceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the resource being exported.</p>
-     */
-    inline void SetInstanceId(const Aws::String& value) { m_instanceIdHasBeenSet = true; m_instanceId = value; }
-
-    /**
-     * <p>The ID of the resource being exported.</p>
-     */
-    inline void SetInstanceId(Aws::String&& value) { m_instanceIdHasBeenSet = true; m_instanceId = std::move(value); }
-
-    /**
-     * <p>The ID of the resource being exported.</p>
-     */
-    inline void SetInstanceId(const char* value) { m_instanceIdHasBeenSet = true; m_instanceId.assign(value); }
-
-    /**
-     * <p>The ID of the resource being exported.</p>
-     */
-    inline InstanceExportDetails& WithInstanceId(const Aws::String& value) { SetInstanceId(value); return *this;}
-
-    /**
-     * <p>The ID of the resource being exported.</p>
-     */
-    inline InstanceExportDetails& WithInstanceId(Aws::String&& value) { SetInstanceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the resource being exported.</p>
-     */
-    inline InstanceExportDetails& WithInstanceId(const char* value) { SetInstanceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The target virtualization environment.</p>
      */
-    inline const ExportEnvironment& GetTargetEnvironment() const{ return m_targetEnvironment; }
-
-    /**
-     * <p>The target virtualization environment.</p>
-     */
+    inline ExportEnvironment GetTargetEnvironment() const { return m_targetEnvironment; }
     inline bool TargetEnvironmentHasBeenSet() const { return m_targetEnvironmentHasBeenSet; }
-
-    /**
-     * <p>The target virtualization environment.</p>
-     */
-    inline void SetTargetEnvironment(const ExportEnvironment& value) { m_targetEnvironmentHasBeenSet = true; m_targetEnvironment = value; }
-
-    /**
-     * <p>The target virtualization environment.</p>
-     */
-    inline void SetTargetEnvironment(ExportEnvironment&& value) { m_targetEnvironmentHasBeenSet = true; m_targetEnvironment = std::move(value); }
-
-    /**
-     * <p>The target virtualization environment.</p>
-     */
-    inline InstanceExportDetails& WithTargetEnvironment(const ExportEnvironment& value) { SetTargetEnvironment(value); return *this;}
-
-    /**
-     * <p>The target virtualization environment.</p>
-     */
-    inline InstanceExportDetails& WithTargetEnvironment(ExportEnvironment&& value) { SetTargetEnvironment(std::move(value)); return *this;}
-
+    inline void SetTargetEnvironment(ExportEnvironment value) { m_targetEnvironmentHasBeenSet = true; m_targetEnvironment = value; }
+    inline InstanceExportDetails& WithTargetEnvironment(ExportEnvironment value) { SetTargetEnvironment(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_instanceId;
     bool m_instanceIdHasBeenSet = false;
 
-    ExportEnvironment m_targetEnvironment;
+    ExportEnvironment m_targetEnvironment{ExportEnvironment::NOT_SET};
     bool m_targetEnvironmentHasBeenSet = false;
   };
 

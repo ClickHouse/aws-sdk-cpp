@@ -40,220 +40,69 @@ namespace Model
   class InclusionProtectionGroupFilters
   {
   public:
-    AWS_SHIELD_API InclusionProtectionGroupFilters();
+    AWS_SHIELD_API InclusionProtectionGroupFilters() = default;
     AWS_SHIELD_API InclusionProtectionGroupFilters(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API InclusionProtectionGroupFilters& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SHIELD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The ID of the protection group that you want to retrieve. </p>
      */
-    inline const Aws::Vector<Aws::String>& GetProtectionGroupIds() const{ return m_protectionGroupIds; }
-
-    /**
-     * <p>The ID of the protection group that you want to retrieve. </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetProtectionGroupIds() const { return m_protectionGroupIds; }
     inline bool ProtectionGroupIdsHasBeenSet() const { return m_protectionGroupIdsHasBeenSet; }
+    template<typename ProtectionGroupIdsT = Aws::Vector<Aws::String>>
+    void SetProtectionGroupIds(ProtectionGroupIdsT&& value) { m_protectionGroupIdsHasBeenSet = true; m_protectionGroupIds = std::forward<ProtectionGroupIdsT>(value); }
+    template<typename ProtectionGroupIdsT = Aws::Vector<Aws::String>>
+    InclusionProtectionGroupFilters& WithProtectionGroupIds(ProtectionGroupIdsT&& value) { SetProtectionGroupIds(std::forward<ProtectionGroupIdsT>(value)); return *this;}
+    template<typename ProtectionGroupIdsT = Aws::String>
+    InclusionProtectionGroupFilters& AddProtectionGroupIds(ProtectionGroupIdsT&& value) { m_protectionGroupIdsHasBeenSet = true; m_protectionGroupIds.emplace_back(std::forward<ProtectionGroupIdsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The ID of the protection group that you want to retrieve. </p>
-     */
-    inline void SetProtectionGroupIds(const Aws::Vector<Aws::String>& value) { m_protectionGroupIdsHasBeenSet = true; m_protectionGroupIds = value; }
-
-    /**
-     * <p>The ID of the protection group that you want to retrieve. </p>
-     */
-    inline void SetProtectionGroupIds(Aws::Vector<Aws::String>&& value) { m_protectionGroupIdsHasBeenSet = true; m_protectionGroupIds = std::move(value); }
-
-    /**
-     * <p>The ID of the protection group that you want to retrieve. </p>
-     */
-    inline InclusionProtectionGroupFilters& WithProtectionGroupIds(const Aws::Vector<Aws::String>& value) { SetProtectionGroupIds(value); return *this;}
-
-    /**
-     * <p>The ID of the protection group that you want to retrieve. </p>
-     */
-    inline InclusionProtectionGroupFilters& WithProtectionGroupIds(Aws::Vector<Aws::String>&& value) { SetProtectionGroupIds(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the protection group that you want to retrieve. </p>
-     */
-    inline InclusionProtectionGroupFilters& AddProtectionGroupIds(const Aws::String& value) { m_protectionGroupIdsHasBeenSet = true; m_protectionGroupIds.push_back(value); return *this; }
-
-    /**
-     * <p>The ID of the protection group that you want to retrieve. </p>
-     */
-    inline InclusionProtectionGroupFilters& AddProtectionGroupIds(Aws::String&& value) { m_protectionGroupIdsHasBeenSet = true; m_protectionGroupIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The ID of the protection group that you want to retrieve. </p>
-     */
-    inline InclusionProtectionGroupFilters& AddProtectionGroupIds(const char* value) { m_protectionGroupIdsHasBeenSet = true; m_protectionGroupIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The pattern specification of the protection groups that you want to retrieve.
      * </p>
      */
-    inline const Aws::Vector<ProtectionGroupPattern>& GetPatterns() const{ return m_patterns; }
-
-    /**
-     * <p>The pattern specification of the protection groups that you want to retrieve.
-     * </p>
-     */
+    inline const Aws::Vector<ProtectionGroupPattern>& GetPatterns() const { return m_patterns; }
     inline bool PatternsHasBeenSet() const { return m_patternsHasBeenSet; }
+    template<typename PatternsT = Aws::Vector<ProtectionGroupPattern>>
+    void SetPatterns(PatternsT&& value) { m_patternsHasBeenSet = true; m_patterns = std::forward<PatternsT>(value); }
+    template<typename PatternsT = Aws::Vector<ProtectionGroupPattern>>
+    InclusionProtectionGroupFilters& WithPatterns(PatternsT&& value) { SetPatterns(std::forward<PatternsT>(value)); return *this;}
+    inline InclusionProtectionGroupFilters& AddPatterns(ProtectionGroupPattern value) { m_patternsHasBeenSet = true; m_patterns.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The pattern specification of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline void SetPatterns(const Aws::Vector<ProtectionGroupPattern>& value) { m_patternsHasBeenSet = true; m_patterns = value; }
-
-    /**
-     * <p>The pattern specification of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline void SetPatterns(Aws::Vector<ProtectionGroupPattern>&& value) { m_patternsHasBeenSet = true; m_patterns = std::move(value); }
-
-    /**
-     * <p>The pattern specification of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& WithPatterns(const Aws::Vector<ProtectionGroupPattern>& value) { SetPatterns(value); return *this;}
-
-    /**
-     * <p>The pattern specification of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& WithPatterns(Aws::Vector<ProtectionGroupPattern>&& value) { SetPatterns(std::move(value)); return *this;}
-
-    /**
-     * <p>The pattern specification of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& AddPatterns(const ProtectionGroupPattern& value) { m_patternsHasBeenSet = true; m_patterns.push_back(value); return *this; }
-
-    /**
-     * <p>The pattern specification of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& AddPatterns(ProtectionGroupPattern&& value) { m_patternsHasBeenSet = true; m_patterns.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The resource type configuration of the protection groups that you want to
      * retrieve. In the protection group configuration, you specify the resource type
      * when you set the group's <code>Pattern</code> to <code>BY_RESOURCE_TYPE</code>.
      * </p>
      */
-    inline const Aws::Vector<ProtectedResourceType>& GetResourceTypes() const{ return m_resourceTypes; }
-
-    /**
-     * <p>The resource type configuration of the protection groups that you want to
-     * retrieve. In the protection group configuration, you specify the resource type
-     * when you set the group's <code>Pattern</code> to <code>BY_RESOURCE_TYPE</code>.
-     * </p>
-     */
+    inline const Aws::Vector<ProtectedResourceType>& GetResourceTypes() const { return m_resourceTypes; }
     inline bool ResourceTypesHasBeenSet() const { return m_resourceTypesHasBeenSet; }
+    template<typename ResourceTypesT = Aws::Vector<ProtectedResourceType>>
+    void SetResourceTypes(ResourceTypesT&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes = std::forward<ResourceTypesT>(value); }
+    template<typename ResourceTypesT = Aws::Vector<ProtectedResourceType>>
+    InclusionProtectionGroupFilters& WithResourceTypes(ResourceTypesT&& value) { SetResourceTypes(std::forward<ResourceTypesT>(value)); return *this;}
+    inline InclusionProtectionGroupFilters& AddResourceTypes(ProtectedResourceType value) { m_resourceTypesHasBeenSet = true; m_resourceTypes.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The resource type configuration of the protection groups that you want to
-     * retrieve. In the protection group configuration, you specify the resource type
-     * when you set the group's <code>Pattern</code> to <code>BY_RESOURCE_TYPE</code>.
-     * </p>
-     */
-    inline void SetResourceTypes(const Aws::Vector<ProtectedResourceType>& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes = value; }
-
-    /**
-     * <p>The resource type configuration of the protection groups that you want to
-     * retrieve. In the protection group configuration, you specify the resource type
-     * when you set the group's <code>Pattern</code> to <code>BY_RESOURCE_TYPE</code>.
-     * </p>
-     */
-    inline void SetResourceTypes(Aws::Vector<ProtectedResourceType>&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes = std::move(value); }
-
-    /**
-     * <p>The resource type configuration of the protection groups that you want to
-     * retrieve. In the protection group configuration, you specify the resource type
-     * when you set the group's <code>Pattern</code> to <code>BY_RESOURCE_TYPE</code>.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& WithResourceTypes(const Aws::Vector<ProtectedResourceType>& value) { SetResourceTypes(value); return *this;}
-
-    /**
-     * <p>The resource type configuration of the protection groups that you want to
-     * retrieve. In the protection group configuration, you specify the resource type
-     * when you set the group's <code>Pattern</code> to <code>BY_RESOURCE_TYPE</code>.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& WithResourceTypes(Aws::Vector<ProtectedResourceType>&& value) { SetResourceTypes(std::move(value)); return *this;}
-
-    /**
-     * <p>The resource type configuration of the protection groups that you want to
-     * retrieve. In the protection group configuration, you specify the resource type
-     * when you set the group's <code>Pattern</code> to <code>BY_RESOURCE_TYPE</code>.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& AddResourceTypes(const ProtectedResourceType& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes.push_back(value); return *this; }
-
-    /**
-     * <p>The resource type configuration of the protection groups that you want to
-     * retrieve. In the protection group configuration, you specify the resource type
-     * when you set the group's <code>Pattern</code> to <code>BY_RESOURCE_TYPE</code>.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& AddResourceTypes(ProtectedResourceType&& value) { m_resourceTypesHasBeenSet = true; m_resourceTypes.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The aggregation setting of the protection groups that you want to retrieve.
      * </p>
      */
-    inline const Aws::Vector<ProtectionGroupAggregation>& GetAggregations() const{ return m_aggregations; }
-
-    /**
-     * <p>The aggregation setting of the protection groups that you want to retrieve.
-     * </p>
-     */
+    inline const Aws::Vector<ProtectionGroupAggregation>& GetAggregations() const { return m_aggregations; }
     inline bool AggregationsHasBeenSet() const { return m_aggregationsHasBeenSet; }
-
-    /**
-     * <p>The aggregation setting of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline void SetAggregations(const Aws::Vector<ProtectionGroupAggregation>& value) { m_aggregationsHasBeenSet = true; m_aggregations = value; }
-
-    /**
-     * <p>The aggregation setting of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline void SetAggregations(Aws::Vector<ProtectionGroupAggregation>&& value) { m_aggregationsHasBeenSet = true; m_aggregations = std::move(value); }
-
-    /**
-     * <p>The aggregation setting of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& WithAggregations(const Aws::Vector<ProtectionGroupAggregation>& value) { SetAggregations(value); return *this;}
-
-    /**
-     * <p>The aggregation setting of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& WithAggregations(Aws::Vector<ProtectionGroupAggregation>&& value) { SetAggregations(std::move(value)); return *this;}
-
-    /**
-     * <p>The aggregation setting of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& AddAggregations(const ProtectionGroupAggregation& value) { m_aggregationsHasBeenSet = true; m_aggregations.push_back(value); return *this; }
-
-    /**
-     * <p>The aggregation setting of the protection groups that you want to retrieve.
-     * </p>
-     */
-    inline InclusionProtectionGroupFilters& AddAggregations(ProtectionGroupAggregation&& value) { m_aggregationsHasBeenSet = true; m_aggregations.push_back(std::move(value)); return *this; }
-
+    template<typename AggregationsT = Aws::Vector<ProtectionGroupAggregation>>
+    void SetAggregations(AggregationsT&& value) { m_aggregationsHasBeenSet = true; m_aggregations = std::forward<AggregationsT>(value); }
+    template<typename AggregationsT = Aws::Vector<ProtectionGroupAggregation>>
+    InclusionProtectionGroupFilters& WithAggregations(AggregationsT&& value) { SetAggregations(std::forward<AggregationsT>(value)); return *this;}
+    inline InclusionProtectionGroupFilters& AddAggregations(ProtectionGroupAggregation value) { m_aggregationsHasBeenSet = true; m_aggregations.push_back(value); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_protectionGroupIds;

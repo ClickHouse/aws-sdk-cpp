@@ -18,19 +18,7 @@ namespace kendra
 namespace Model
 {
 
-BatchPutDocumentResponseFailedDocument::BatchPutDocumentResponseFailedDocument() : 
-    m_idHasBeenSet(false),
-    m_errorCode(ErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
-{
-}
-
-BatchPutDocumentResponseFailedDocument::BatchPutDocumentResponseFailedDocument(JsonView jsonValue) : 
-    m_idHasBeenSet(false),
-    m_errorCode(ErrorCode::NOT_SET),
-    m_errorCodeHasBeenSet(false),
-    m_errorMessageHasBeenSet(false)
+BatchPutDocumentResponseFailedDocument::BatchPutDocumentResponseFailedDocument(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,23 @@ BatchPutDocumentResponseFailedDocument& BatchPutDocumentResponseFailedDocument::
   if(jsonValue.ValueExists("Id"))
   {
     m_id = jsonValue.GetString("Id");
-
     m_idHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("DataSourceId"))
+  {
+    m_dataSourceId = jsonValue.GetString("DataSourceId");
+    m_dataSourceIdHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("ErrorCode"))
   {
     m_errorCode = ErrorCodeMapper::GetErrorCodeForName(jsonValue.GetString("ErrorCode"));
-
     m_errorCodeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("ErrorMessage"))
   {
     m_errorMessage = jsonValue.GetString("ErrorMessage");
-
     m_errorMessageHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -68,6 +55,12 @@ JsonValue BatchPutDocumentResponseFailedDocument::Jsonize() const
   if(m_idHasBeenSet)
   {
    payload.WithString("Id", m_id);
+
+  }
+
+  if(m_dataSourceIdHasBeenSet)
+  {
+   payload.WithString("DataSourceId", m_dataSourceId);
 
   }
 

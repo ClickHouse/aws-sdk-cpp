@@ -6,8 +6,8 @@
 #pragma once
 #include <aws/location/LocationService_EXPORTS.h>
 #include <aws/location/LocationServiceRequest.h>
-#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <utility>
 
 namespace Aws
@@ -22,7 +22,7 @@ namespace Model
   class BatchGetDevicePositionRequest : public LocationServiceRequest
   {
   public:
-    AWS_LOCATIONSERVICE_API BatchGetDevicePositionRequest();
+    AWS_LOCATIONSERVICE_API BatchGetDevicePositionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,117 +33,40 @@ namespace Model
     AWS_LOCATIONSERVICE_API Aws::String SerializePayload() const override;
 
 
-    /**
-     * <p>Devices whose position you want to retrieve.</p> <ul> <li> <p>For example,
-     * for two devices: <code>device-ids=DeviceId1&amp;device-ids=DeviceId2</code> </p>
-     * </li> </ul>
-     */
-    inline const Aws::Vector<Aws::String>& GetDeviceIds() const{ return m_deviceIds; }
-
-    /**
-     * <p>Devices whose position you want to retrieve.</p> <ul> <li> <p>For example,
-     * for two devices: <code>device-ids=DeviceId1&amp;device-ids=DeviceId2</code> </p>
-     * </li> </ul>
-     */
-    inline bool DeviceIdsHasBeenSet() const { return m_deviceIdsHasBeenSet; }
-
-    /**
-     * <p>Devices whose position you want to retrieve.</p> <ul> <li> <p>For example,
-     * for two devices: <code>device-ids=DeviceId1&amp;device-ids=DeviceId2</code> </p>
-     * </li> </ul>
-     */
-    inline void SetDeviceIds(const Aws::Vector<Aws::String>& value) { m_deviceIdsHasBeenSet = true; m_deviceIds = value; }
-
-    /**
-     * <p>Devices whose position you want to retrieve.</p> <ul> <li> <p>For example,
-     * for two devices: <code>device-ids=DeviceId1&amp;device-ids=DeviceId2</code> </p>
-     * </li> </ul>
-     */
-    inline void SetDeviceIds(Aws::Vector<Aws::String>&& value) { m_deviceIdsHasBeenSet = true; m_deviceIds = std::move(value); }
-
-    /**
-     * <p>Devices whose position you want to retrieve.</p> <ul> <li> <p>For example,
-     * for two devices: <code>device-ids=DeviceId1&amp;device-ids=DeviceId2</code> </p>
-     * </li> </ul>
-     */
-    inline BatchGetDevicePositionRequest& WithDeviceIds(const Aws::Vector<Aws::String>& value) { SetDeviceIds(value); return *this;}
-
-    /**
-     * <p>Devices whose position you want to retrieve.</p> <ul> <li> <p>For example,
-     * for two devices: <code>device-ids=DeviceId1&amp;device-ids=DeviceId2</code> </p>
-     * </li> </ul>
-     */
-    inline BatchGetDevicePositionRequest& WithDeviceIds(Aws::Vector<Aws::String>&& value) { SetDeviceIds(std::move(value)); return *this;}
-
-    /**
-     * <p>Devices whose position you want to retrieve.</p> <ul> <li> <p>For example,
-     * for two devices: <code>device-ids=DeviceId1&amp;device-ids=DeviceId2</code> </p>
-     * </li> </ul>
-     */
-    inline BatchGetDevicePositionRequest& AddDeviceIds(const Aws::String& value) { m_deviceIdsHasBeenSet = true; m_deviceIds.push_back(value); return *this; }
-
-    /**
-     * <p>Devices whose position you want to retrieve.</p> <ul> <li> <p>For example,
-     * for two devices: <code>device-ids=DeviceId1&amp;device-ids=DeviceId2</code> </p>
-     * </li> </ul>
-     */
-    inline BatchGetDevicePositionRequest& AddDeviceIds(Aws::String&& value) { m_deviceIdsHasBeenSet = true; m_deviceIds.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>Devices whose position you want to retrieve.</p> <ul> <li> <p>For example,
-     * for two devices: <code>device-ids=DeviceId1&amp;device-ids=DeviceId2</code> </p>
-     * </li> </ul>
-     */
-    inline BatchGetDevicePositionRequest& AddDeviceIds(const char* value) { m_deviceIdsHasBeenSet = true; m_deviceIds.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The tracker resource retrieving the device position.</p>
      */
-    inline const Aws::String& GetTrackerName() const{ return m_trackerName; }
-
-    /**
-     * <p>The tracker resource retrieving the device position.</p>
-     */
+    inline const Aws::String& GetTrackerName() const { return m_trackerName; }
     inline bool TrackerNameHasBeenSet() const { return m_trackerNameHasBeenSet; }
+    template<typename TrackerNameT = Aws::String>
+    void SetTrackerName(TrackerNameT&& value) { m_trackerNameHasBeenSet = true; m_trackerName = std::forward<TrackerNameT>(value); }
+    template<typename TrackerNameT = Aws::String>
+    BatchGetDevicePositionRequest& WithTrackerName(TrackerNameT&& value) { SetTrackerName(std::forward<TrackerNameT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The tracker resource retrieving the device position.</p>
+     * <p>Devices whose position you want to retrieve.</p> <ul> <li> <p>For example,
+     * for two devices: <code>device-ids=DeviceId1&amp;device-ids=DeviceId2</code> </p>
+     * </li> </ul>
      */
-    inline void SetTrackerName(const Aws::String& value) { m_trackerNameHasBeenSet = true; m_trackerName = value; }
-
-    /**
-     * <p>The tracker resource retrieving the device position.</p>
-     */
-    inline void SetTrackerName(Aws::String&& value) { m_trackerNameHasBeenSet = true; m_trackerName = std::move(value); }
-
-    /**
-     * <p>The tracker resource retrieving the device position.</p>
-     */
-    inline void SetTrackerName(const char* value) { m_trackerNameHasBeenSet = true; m_trackerName.assign(value); }
-
-    /**
-     * <p>The tracker resource retrieving the device position.</p>
-     */
-    inline BatchGetDevicePositionRequest& WithTrackerName(const Aws::String& value) { SetTrackerName(value); return *this;}
-
-    /**
-     * <p>The tracker resource retrieving the device position.</p>
-     */
-    inline BatchGetDevicePositionRequest& WithTrackerName(Aws::String&& value) { SetTrackerName(std::move(value)); return *this;}
-
-    /**
-     * <p>The tracker resource retrieving the device position.</p>
-     */
-    inline BatchGetDevicePositionRequest& WithTrackerName(const char* value) { SetTrackerName(value); return *this;}
-
+    inline const Aws::Vector<Aws::String>& GetDeviceIds() const { return m_deviceIds; }
+    inline bool DeviceIdsHasBeenSet() const { return m_deviceIdsHasBeenSet; }
+    template<typename DeviceIdsT = Aws::Vector<Aws::String>>
+    void SetDeviceIds(DeviceIdsT&& value) { m_deviceIdsHasBeenSet = true; m_deviceIds = std::forward<DeviceIdsT>(value); }
+    template<typename DeviceIdsT = Aws::Vector<Aws::String>>
+    BatchGetDevicePositionRequest& WithDeviceIds(DeviceIdsT&& value) { SetDeviceIds(std::forward<DeviceIdsT>(value)); return *this;}
+    template<typename DeviceIdsT = Aws::String>
+    BatchGetDevicePositionRequest& AddDeviceIds(DeviceIdsT&& value) { m_deviceIdsHasBeenSet = true; m_deviceIds.emplace_back(std::forward<DeviceIdsT>(value)); return *this; }
+    ///@}
   private:
-
-    Aws::Vector<Aws::String> m_deviceIds;
-    bool m_deviceIdsHasBeenSet = false;
 
     Aws::String m_trackerName;
     bool m_trackerNameHasBeenSet = false;
+
+    Aws::Vector<Aws::String> m_deviceIds;
+    bool m_deviceIdsHasBeenSet = false;
   };
 
 } // namespace Model

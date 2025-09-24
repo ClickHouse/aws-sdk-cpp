@@ -21,7 +21,7 @@ namespace Model
   class GetSbomExportRequest : public Inspector2Request
   {
   public:
-    AWS_INSPECTOR2_API GetSbomExportRequest();
+    AWS_INSPECTOR2_API GetSbomExportRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_INSPECTOR2_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The report ID of the SBOM export to get details for.</p>
      */
-    inline const Aws::String& GetReportId() const{ return m_reportId; }
-
-    /**
-     * <p>The report ID of the SBOM export to get details for.</p>
-     */
+    inline const Aws::String& GetReportId() const { return m_reportId; }
     inline bool ReportIdHasBeenSet() const { return m_reportIdHasBeenSet; }
-
-    /**
-     * <p>The report ID of the SBOM export to get details for.</p>
-     */
-    inline void SetReportId(const Aws::String& value) { m_reportIdHasBeenSet = true; m_reportId = value; }
-
-    /**
-     * <p>The report ID of the SBOM export to get details for.</p>
-     */
-    inline void SetReportId(Aws::String&& value) { m_reportIdHasBeenSet = true; m_reportId = std::move(value); }
-
-    /**
-     * <p>The report ID of the SBOM export to get details for.</p>
-     */
-    inline void SetReportId(const char* value) { m_reportIdHasBeenSet = true; m_reportId.assign(value); }
-
-    /**
-     * <p>The report ID of the SBOM export to get details for.</p>
-     */
-    inline GetSbomExportRequest& WithReportId(const Aws::String& value) { SetReportId(value); return *this;}
-
-    /**
-     * <p>The report ID of the SBOM export to get details for.</p>
-     */
-    inline GetSbomExportRequest& WithReportId(Aws::String&& value) { SetReportId(std::move(value)); return *this;}
-
-    /**
-     * <p>The report ID of the SBOM export to get details for.</p>
-     */
-    inline GetSbomExportRequest& WithReportId(const char* value) { SetReportId(value); return *this;}
-
+    template<typename ReportIdT = Aws::String>
+    void SetReportId(ReportIdT&& value) { m_reportIdHasBeenSet = true; m_reportId = std::forward<ReportIdT>(value); }
+    template<typename ReportIdT = Aws::String>
+    GetSbomExportRequest& WithReportId(ReportIdT&& value) { SetReportId(std::forward<ReportIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_reportId;

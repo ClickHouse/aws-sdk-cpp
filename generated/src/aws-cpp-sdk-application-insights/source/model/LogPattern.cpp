@@ -18,21 +18,7 @@ namespace ApplicationInsights
 namespace Model
 {
 
-LogPattern::LogPattern() : 
-    m_patternSetNameHasBeenSet(false),
-    m_patternNameHasBeenSet(false),
-    m_patternHasBeenSet(false),
-    m_rank(0),
-    m_rankHasBeenSet(false)
-{
-}
-
-LogPattern::LogPattern(JsonView jsonValue) : 
-    m_patternSetNameHasBeenSet(false),
-    m_patternNameHasBeenSet(false),
-    m_patternHasBeenSet(false),
-    m_rank(0),
-    m_rankHasBeenSet(false)
+LogPattern::LogPattern(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,31 +28,23 @@ LogPattern& LogPattern::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("PatternSetName"))
   {
     m_patternSetName = jsonValue.GetString("PatternSetName");
-
     m_patternSetNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("PatternName"))
   {
     m_patternName = jsonValue.GetString("PatternName");
-
     m_patternNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Pattern"))
   {
     m_pattern = jsonValue.GetString("Pattern");
-
     m_patternHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Rank"))
   {
     m_rank = jsonValue.GetInteger("Rank");
-
     m_rankHasBeenSet = true;
   }
-
   return *this;
 }
 

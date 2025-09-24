@@ -40,343 +40,120 @@ namespace Model
   class TemplateV2
   {
   public:
-    AWS_PCACONNECTORAD_API TemplateV2();
+    AWS_PCACONNECTORAD_API TemplateV2() = default;
     AWS_PCACONNECTORAD_API TemplateV2(Aws::Utils::Json::JsonView jsonValue);
     AWS_PCACONNECTORAD_API TemplateV2& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PCACONNECTORAD_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Certificate validity describes the validity and renewal periods of a
      * certificate.</p>
      */
-    inline const CertificateValidity& GetCertificateValidity() const{ return m_certificateValidity; }
-
-    /**
-     * <p>Certificate validity describes the validity and renewal periods of a
-     * certificate.</p>
-     */
+    inline const CertificateValidity& GetCertificateValidity() const { return m_certificateValidity; }
     inline bool CertificateValidityHasBeenSet() const { return m_certificateValidityHasBeenSet; }
+    template<typename CertificateValidityT = CertificateValidity>
+    void SetCertificateValidity(CertificateValidityT&& value) { m_certificateValidityHasBeenSet = true; m_certificateValidity = std::forward<CertificateValidityT>(value); }
+    template<typename CertificateValidityT = CertificateValidity>
+    TemplateV2& WithCertificateValidity(CertificateValidityT&& value) { SetCertificateValidity(std::forward<CertificateValidityT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Certificate validity describes the validity and renewal periods of a
-     * certificate.</p>
-     */
-    inline void SetCertificateValidity(const CertificateValidity& value) { m_certificateValidityHasBeenSet = true; m_certificateValidity = value; }
-
-    /**
-     * <p>Certificate validity describes the validity and renewal periods of a
-     * certificate.</p>
-     */
-    inline void SetCertificateValidity(CertificateValidity&& value) { m_certificateValidityHasBeenSet = true; m_certificateValidity = std::move(value); }
-
-    /**
-     * <p>Certificate validity describes the validity and renewal periods of a
-     * certificate.</p>
-     */
-    inline TemplateV2& WithCertificateValidity(const CertificateValidity& value) { SetCertificateValidity(value); return *this;}
-
-    /**
-     * <p>Certificate validity describes the validity and renewal periods of a
-     * certificate.</p>
-     */
-    inline TemplateV2& WithCertificateValidity(CertificateValidity&& value) { SetCertificateValidity(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Enrollment flags describe the enrollment settings for certificates such as
      * using the existing private key and deleting expired or revoked certificates.</p>
      */
-    inline const EnrollmentFlagsV2& GetEnrollmentFlags() const{ return m_enrollmentFlags; }
-
-    /**
-     * <p>Enrollment flags describe the enrollment settings for certificates such as
-     * using the existing private key and deleting expired or revoked certificates.</p>
-     */
+    inline const EnrollmentFlagsV2& GetEnrollmentFlags() const { return m_enrollmentFlags; }
     inline bool EnrollmentFlagsHasBeenSet() const { return m_enrollmentFlagsHasBeenSet; }
+    template<typename EnrollmentFlagsT = EnrollmentFlagsV2>
+    void SetEnrollmentFlags(EnrollmentFlagsT&& value) { m_enrollmentFlagsHasBeenSet = true; m_enrollmentFlags = std::forward<EnrollmentFlagsT>(value); }
+    template<typename EnrollmentFlagsT = EnrollmentFlagsV2>
+    TemplateV2& WithEnrollmentFlags(EnrollmentFlagsT&& value) { SetEnrollmentFlags(std::forward<EnrollmentFlagsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Enrollment flags describe the enrollment settings for certificates such as
-     * using the existing private key and deleting expired or revoked certificates.</p>
-     */
-    inline void SetEnrollmentFlags(const EnrollmentFlagsV2& value) { m_enrollmentFlagsHasBeenSet = true; m_enrollmentFlags = value; }
-
-    /**
-     * <p>Enrollment flags describe the enrollment settings for certificates such as
-     * using the existing private key and deleting expired or revoked certificates.</p>
-     */
-    inline void SetEnrollmentFlags(EnrollmentFlagsV2&& value) { m_enrollmentFlagsHasBeenSet = true; m_enrollmentFlags = std::move(value); }
-
-    /**
-     * <p>Enrollment flags describe the enrollment settings for certificates such as
-     * using the existing private key and deleting expired or revoked certificates.</p>
-     */
-    inline TemplateV2& WithEnrollmentFlags(const EnrollmentFlagsV2& value) { SetEnrollmentFlags(value); return *this;}
-
-    /**
-     * <p>Enrollment flags describe the enrollment settings for certificates such as
-     * using the existing private key and deleting expired or revoked certificates.</p>
-     */
-    inline TemplateV2& WithEnrollmentFlags(EnrollmentFlagsV2&& value) { SetEnrollmentFlags(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Extensions describe the key usage extensions and application policies for a
      * template.</p>
      */
-    inline const ExtensionsV2& GetExtensions() const{ return m_extensions; }
-
-    /**
-     * <p>Extensions describe the key usage extensions and application policies for a
-     * template.</p>
-     */
+    inline const ExtensionsV2& GetExtensions() const { return m_extensions; }
     inline bool ExtensionsHasBeenSet() const { return m_extensionsHasBeenSet; }
+    template<typename ExtensionsT = ExtensionsV2>
+    void SetExtensions(ExtensionsT&& value) { m_extensionsHasBeenSet = true; m_extensions = std::forward<ExtensionsT>(value); }
+    template<typename ExtensionsT = ExtensionsV2>
+    TemplateV2& WithExtensions(ExtensionsT&& value) { SetExtensions(std::forward<ExtensionsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Extensions describe the key usage extensions and application policies for a
-     * template.</p>
-     */
-    inline void SetExtensions(const ExtensionsV2& value) { m_extensionsHasBeenSet = true; m_extensions = value; }
-
-    /**
-     * <p>Extensions describe the key usage extensions and application policies for a
-     * template.</p>
-     */
-    inline void SetExtensions(ExtensionsV2&& value) { m_extensionsHasBeenSet = true; m_extensions = std::move(value); }
-
-    /**
-     * <p>Extensions describe the key usage extensions and application policies for a
-     * template.</p>
-     */
-    inline TemplateV2& WithExtensions(const ExtensionsV2& value) { SetExtensions(value); return *this;}
-
-    /**
-     * <p>Extensions describe the key usage extensions and application policies for a
-     * template.</p>
-     */
-    inline TemplateV2& WithExtensions(ExtensionsV2&& value) { SetExtensions(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>General flags describe whether the template is used for computers or users
      * and if the template can be used with autoenrollment.</p>
      */
-    inline const GeneralFlagsV2& GetGeneralFlags() const{ return m_generalFlags; }
-
-    /**
-     * <p>General flags describe whether the template is used for computers or users
-     * and if the template can be used with autoenrollment.</p>
-     */
+    inline const GeneralFlagsV2& GetGeneralFlags() const { return m_generalFlags; }
     inline bool GeneralFlagsHasBeenSet() const { return m_generalFlagsHasBeenSet; }
+    template<typename GeneralFlagsT = GeneralFlagsV2>
+    void SetGeneralFlags(GeneralFlagsT&& value) { m_generalFlagsHasBeenSet = true; m_generalFlags = std::forward<GeneralFlagsT>(value); }
+    template<typename GeneralFlagsT = GeneralFlagsV2>
+    TemplateV2& WithGeneralFlags(GeneralFlagsT&& value) { SetGeneralFlags(std::forward<GeneralFlagsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>General flags describe whether the template is used for computers or users
-     * and if the template can be used with autoenrollment.</p>
-     */
-    inline void SetGeneralFlags(const GeneralFlagsV2& value) { m_generalFlagsHasBeenSet = true; m_generalFlags = value; }
-
-    /**
-     * <p>General flags describe whether the template is used for computers or users
-     * and if the template can be used with autoenrollment.</p>
-     */
-    inline void SetGeneralFlags(GeneralFlagsV2&& value) { m_generalFlagsHasBeenSet = true; m_generalFlags = std::move(value); }
-
-    /**
-     * <p>General flags describe whether the template is used for computers or users
-     * and if the template can be used with autoenrollment.</p>
-     */
-    inline TemplateV2& WithGeneralFlags(const GeneralFlagsV2& value) { SetGeneralFlags(value); return *this;}
-
-    /**
-     * <p>General flags describe whether the template is used for computers or users
-     * and if the template can be used with autoenrollment.</p>
-     */
-    inline TemplateV2& WithGeneralFlags(GeneralFlagsV2&& value) { SetGeneralFlags(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Private key attributes allow you to specify the minimal key length, key spec,
      * and cryptographic providers for the private key of a certificate for v2
      * templates. V2 templates allow you to use Legacy Cryptographic Service
      * Providers.</p>
      */
-    inline const PrivateKeyAttributesV2& GetPrivateKeyAttributes() const{ return m_privateKeyAttributes; }
-
-    /**
-     * <p>Private key attributes allow you to specify the minimal key length, key spec,
-     * and cryptographic providers for the private key of a certificate for v2
-     * templates. V2 templates allow you to use Legacy Cryptographic Service
-     * Providers.</p>
-     */
+    inline const PrivateKeyAttributesV2& GetPrivateKeyAttributes() const { return m_privateKeyAttributes; }
     inline bool PrivateKeyAttributesHasBeenSet() const { return m_privateKeyAttributesHasBeenSet; }
+    template<typename PrivateKeyAttributesT = PrivateKeyAttributesV2>
+    void SetPrivateKeyAttributes(PrivateKeyAttributesT&& value) { m_privateKeyAttributesHasBeenSet = true; m_privateKeyAttributes = std::forward<PrivateKeyAttributesT>(value); }
+    template<typename PrivateKeyAttributesT = PrivateKeyAttributesV2>
+    TemplateV2& WithPrivateKeyAttributes(PrivateKeyAttributesT&& value) { SetPrivateKeyAttributes(std::forward<PrivateKeyAttributesT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Private key attributes allow you to specify the minimal key length, key spec,
-     * and cryptographic providers for the private key of a certificate for v2
-     * templates. V2 templates allow you to use Legacy Cryptographic Service
-     * Providers.</p>
-     */
-    inline void SetPrivateKeyAttributes(const PrivateKeyAttributesV2& value) { m_privateKeyAttributesHasBeenSet = true; m_privateKeyAttributes = value; }
-
-    /**
-     * <p>Private key attributes allow you to specify the minimal key length, key spec,
-     * and cryptographic providers for the private key of a certificate for v2
-     * templates. V2 templates allow you to use Legacy Cryptographic Service
-     * Providers.</p>
-     */
-    inline void SetPrivateKeyAttributes(PrivateKeyAttributesV2&& value) { m_privateKeyAttributesHasBeenSet = true; m_privateKeyAttributes = std::move(value); }
-
-    /**
-     * <p>Private key attributes allow you to specify the minimal key length, key spec,
-     * and cryptographic providers for the private key of a certificate for v2
-     * templates. V2 templates allow you to use Legacy Cryptographic Service
-     * Providers.</p>
-     */
-    inline TemplateV2& WithPrivateKeyAttributes(const PrivateKeyAttributesV2& value) { SetPrivateKeyAttributes(value); return *this;}
-
-    /**
-     * <p>Private key attributes allow you to specify the minimal key length, key spec,
-     * and cryptographic providers for the private key of a certificate for v2
-     * templates. V2 templates allow you to use Legacy Cryptographic Service
-     * Providers.</p>
-     */
-    inline TemplateV2& WithPrivateKeyAttributes(PrivateKeyAttributesV2&& value) { SetPrivateKeyAttributes(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Private key flags for v2 templates specify the client compatibility, if the
      * private key can be exported, and if user input is required when using a private
      * key. </p>
      */
-    inline const PrivateKeyFlagsV2& GetPrivateKeyFlags() const{ return m_privateKeyFlags; }
-
-    /**
-     * <p>Private key flags for v2 templates specify the client compatibility, if the
-     * private key can be exported, and if user input is required when using a private
-     * key. </p>
-     */
+    inline const PrivateKeyFlagsV2& GetPrivateKeyFlags() const { return m_privateKeyFlags; }
     inline bool PrivateKeyFlagsHasBeenSet() const { return m_privateKeyFlagsHasBeenSet; }
+    template<typename PrivateKeyFlagsT = PrivateKeyFlagsV2>
+    void SetPrivateKeyFlags(PrivateKeyFlagsT&& value) { m_privateKeyFlagsHasBeenSet = true; m_privateKeyFlags = std::forward<PrivateKeyFlagsT>(value); }
+    template<typename PrivateKeyFlagsT = PrivateKeyFlagsV2>
+    TemplateV2& WithPrivateKeyFlags(PrivateKeyFlagsT&& value) { SetPrivateKeyFlags(std::forward<PrivateKeyFlagsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Private key flags for v2 templates specify the client compatibility, if the
-     * private key can be exported, and if user input is required when using a private
-     * key. </p>
-     */
-    inline void SetPrivateKeyFlags(const PrivateKeyFlagsV2& value) { m_privateKeyFlagsHasBeenSet = true; m_privateKeyFlags = value; }
-
-    /**
-     * <p>Private key flags for v2 templates specify the client compatibility, if the
-     * private key can be exported, and if user input is required when using a private
-     * key. </p>
-     */
-    inline void SetPrivateKeyFlags(PrivateKeyFlagsV2&& value) { m_privateKeyFlagsHasBeenSet = true; m_privateKeyFlags = std::move(value); }
-
-    /**
-     * <p>Private key flags for v2 templates specify the client compatibility, if the
-     * private key can be exported, and if user input is required when using a private
-     * key. </p>
-     */
-    inline TemplateV2& WithPrivateKeyFlags(const PrivateKeyFlagsV2& value) { SetPrivateKeyFlags(value); return *this;}
-
-    /**
-     * <p>Private key flags for v2 templates specify the client compatibility, if the
-     * private key can be exported, and if user input is required when using a private
-     * key. </p>
-     */
-    inline TemplateV2& WithPrivateKeyFlags(PrivateKeyFlagsV2&& value) { SetPrivateKeyFlags(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Subject name flags describe the subject name and subject alternate name that
      * is included in a certificate.</p>
      */
-    inline const SubjectNameFlagsV2& GetSubjectNameFlags() const{ return m_subjectNameFlags; }
-
-    /**
-     * <p>Subject name flags describe the subject name and subject alternate name that
-     * is included in a certificate.</p>
-     */
+    inline const SubjectNameFlagsV2& GetSubjectNameFlags() const { return m_subjectNameFlags; }
     inline bool SubjectNameFlagsHasBeenSet() const { return m_subjectNameFlagsHasBeenSet; }
+    template<typename SubjectNameFlagsT = SubjectNameFlagsV2>
+    void SetSubjectNameFlags(SubjectNameFlagsT&& value) { m_subjectNameFlagsHasBeenSet = true; m_subjectNameFlags = std::forward<SubjectNameFlagsT>(value); }
+    template<typename SubjectNameFlagsT = SubjectNameFlagsV2>
+    TemplateV2& WithSubjectNameFlags(SubjectNameFlagsT&& value) { SetSubjectNameFlags(std::forward<SubjectNameFlagsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Subject name flags describe the subject name and subject alternate name that
-     * is included in a certificate.</p>
-     */
-    inline void SetSubjectNameFlags(const SubjectNameFlagsV2& value) { m_subjectNameFlagsHasBeenSet = true; m_subjectNameFlags = value; }
-
-    /**
-     * <p>Subject name flags describe the subject name and subject alternate name that
-     * is included in a certificate.</p>
-     */
-    inline void SetSubjectNameFlags(SubjectNameFlagsV2&& value) { m_subjectNameFlagsHasBeenSet = true; m_subjectNameFlags = std::move(value); }
-
-    /**
-     * <p>Subject name flags describe the subject name and subject alternate name that
-     * is included in a certificate.</p>
-     */
-    inline TemplateV2& WithSubjectNameFlags(const SubjectNameFlagsV2& value) { SetSubjectNameFlags(value); return *this;}
-
-    /**
-     * <p>Subject name flags describe the subject name and subject alternate name that
-     * is included in a certificate.</p>
-     */
-    inline TemplateV2& WithSubjectNameFlags(SubjectNameFlagsV2&& value) { SetSubjectNameFlags(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>List of templates in Active Directory that are superseded by this
      * template.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetSupersededTemplates() const{ return m_supersededTemplates; }
-
-    /**
-     * <p>List of templates in Active Directory that are superseded by this
-     * template.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetSupersededTemplates() const { return m_supersededTemplates; }
     inline bool SupersededTemplatesHasBeenSet() const { return m_supersededTemplatesHasBeenSet; }
-
-    /**
-     * <p>List of templates in Active Directory that are superseded by this
-     * template.</p>
-     */
-    inline void SetSupersededTemplates(const Aws::Vector<Aws::String>& value) { m_supersededTemplatesHasBeenSet = true; m_supersededTemplates = value; }
-
-    /**
-     * <p>List of templates in Active Directory that are superseded by this
-     * template.</p>
-     */
-    inline void SetSupersededTemplates(Aws::Vector<Aws::String>&& value) { m_supersededTemplatesHasBeenSet = true; m_supersededTemplates = std::move(value); }
-
-    /**
-     * <p>List of templates in Active Directory that are superseded by this
-     * template.</p>
-     */
-    inline TemplateV2& WithSupersededTemplates(const Aws::Vector<Aws::String>& value) { SetSupersededTemplates(value); return *this;}
-
-    /**
-     * <p>List of templates in Active Directory that are superseded by this
-     * template.</p>
-     */
-    inline TemplateV2& WithSupersededTemplates(Aws::Vector<Aws::String>&& value) { SetSupersededTemplates(std::move(value)); return *this;}
-
-    /**
-     * <p>List of templates in Active Directory that are superseded by this
-     * template.</p>
-     */
-    inline TemplateV2& AddSupersededTemplates(const Aws::String& value) { m_supersededTemplatesHasBeenSet = true; m_supersededTemplates.push_back(value); return *this; }
-
-    /**
-     * <p>List of templates in Active Directory that are superseded by this
-     * template.</p>
-     */
-    inline TemplateV2& AddSupersededTemplates(Aws::String&& value) { m_supersededTemplatesHasBeenSet = true; m_supersededTemplates.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>List of templates in Active Directory that are superseded by this
-     * template.</p>
-     */
-    inline TemplateV2& AddSupersededTemplates(const char* value) { m_supersededTemplatesHasBeenSet = true; m_supersededTemplates.push_back(value); return *this; }
-
+    template<typename SupersededTemplatesT = Aws::Vector<Aws::String>>
+    void SetSupersededTemplates(SupersededTemplatesT&& value) { m_supersededTemplatesHasBeenSet = true; m_supersededTemplates = std::forward<SupersededTemplatesT>(value); }
+    template<typename SupersededTemplatesT = Aws::Vector<Aws::String>>
+    TemplateV2& WithSupersededTemplates(SupersededTemplatesT&& value) { SetSupersededTemplates(std::forward<SupersededTemplatesT>(value)); return *this;}
+    template<typename SupersededTemplatesT = Aws::String>
+    TemplateV2& AddSupersededTemplates(SupersededTemplatesT&& value) { m_supersededTemplatesHasBeenSet = true; m_supersededTemplates.emplace_back(std::forward<SupersededTemplatesT>(value)); return *this; }
+    ///@}
   private:
 
     CertificateValidity m_certificateValidity;

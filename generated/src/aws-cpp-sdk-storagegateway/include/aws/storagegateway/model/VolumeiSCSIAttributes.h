@@ -31,156 +31,65 @@ namespace Model
   class VolumeiSCSIAttributes
   {
   public:
-    AWS_STORAGEGATEWAY_API VolumeiSCSIAttributes();
+    AWS_STORAGEGATEWAY_API VolumeiSCSIAttributes() = default;
     AWS_STORAGEGATEWAY_API VolumeiSCSIAttributes(Aws::Utils::Json::JsonView jsonValue);
     AWS_STORAGEGATEWAY_API VolumeiSCSIAttributes& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_STORAGEGATEWAY_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the volume target.</p>
      */
-    inline const Aws::String& GetTargetARN() const{ return m_targetARN; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the volume target.</p>
-     */
+    inline const Aws::String& GetTargetARN() const { return m_targetARN; }
     inline bool TargetARNHasBeenSet() const { return m_targetARNHasBeenSet; }
+    template<typename TargetARNT = Aws::String>
+    void SetTargetARN(TargetARNT&& value) { m_targetARNHasBeenSet = true; m_targetARN = std::forward<TargetARNT>(value); }
+    template<typename TargetARNT = Aws::String>
+    VolumeiSCSIAttributes& WithTargetARN(TargetARNT&& value) { SetTargetARN(std::forward<TargetARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the volume target.</p>
-     */
-    inline void SetTargetARN(const Aws::String& value) { m_targetARNHasBeenSet = true; m_targetARN = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the volume target.</p>
-     */
-    inline void SetTargetARN(Aws::String&& value) { m_targetARNHasBeenSet = true; m_targetARN = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the volume target.</p>
-     */
-    inline void SetTargetARN(const char* value) { m_targetARNHasBeenSet = true; m_targetARN.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the volume target.</p>
-     */
-    inline VolumeiSCSIAttributes& WithTargetARN(const Aws::String& value) { SetTargetARN(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the volume target.</p>
-     */
-    inline VolumeiSCSIAttributes& WithTargetARN(Aws::String&& value) { SetTargetARN(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the volume target.</p>
-     */
-    inline VolumeiSCSIAttributes& WithTargetARN(const char* value) { SetTargetARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The network interface identifier.</p>
      */
-    inline const Aws::String& GetNetworkInterfaceId() const{ return m_networkInterfaceId; }
-
-    /**
-     * <p>The network interface identifier.</p>
-     */
+    inline const Aws::String& GetNetworkInterfaceId() const { return m_networkInterfaceId; }
     inline bool NetworkInterfaceIdHasBeenSet() const { return m_networkInterfaceIdHasBeenSet; }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    void SetNetworkInterfaceId(NetworkInterfaceIdT&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::forward<NetworkInterfaceIdT>(value); }
+    template<typename NetworkInterfaceIdT = Aws::String>
+    VolumeiSCSIAttributes& WithNetworkInterfaceId(NetworkInterfaceIdT&& value) { SetNetworkInterfaceId(std::forward<NetworkInterfaceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The network interface identifier.</p>
-     */
-    inline void SetNetworkInterfaceId(const Aws::String& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = value; }
-
-    /**
-     * <p>The network interface identifier.</p>
-     */
-    inline void SetNetworkInterfaceId(Aws::String&& value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId = std::move(value); }
-
-    /**
-     * <p>The network interface identifier.</p>
-     */
-    inline void SetNetworkInterfaceId(const char* value) { m_networkInterfaceIdHasBeenSet = true; m_networkInterfaceId.assign(value); }
-
-    /**
-     * <p>The network interface identifier.</p>
-     */
-    inline VolumeiSCSIAttributes& WithNetworkInterfaceId(const Aws::String& value) { SetNetworkInterfaceId(value); return *this;}
-
-    /**
-     * <p>The network interface identifier.</p>
-     */
-    inline VolumeiSCSIAttributes& WithNetworkInterfaceId(Aws::String&& value) { SetNetworkInterfaceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The network interface identifier.</p>
-     */
-    inline VolumeiSCSIAttributes& WithNetworkInterfaceId(const char* value) { SetNetworkInterfaceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The port used to communicate with iSCSI targets.</p>
      */
-    inline int GetNetworkInterfacePort() const{ return m_networkInterfacePort; }
-
-    /**
-     * <p>The port used to communicate with iSCSI targets.</p>
-     */
+    inline int GetNetworkInterfacePort() const { return m_networkInterfacePort; }
     inline bool NetworkInterfacePortHasBeenSet() const { return m_networkInterfacePortHasBeenSet; }
-
-    /**
-     * <p>The port used to communicate with iSCSI targets.</p>
-     */
     inline void SetNetworkInterfacePort(int value) { m_networkInterfacePortHasBeenSet = true; m_networkInterfacePort = value; }
-
-    /**
-     * <p>The port used to communicate with iSCSI targets.</p>
-     */
     inline VolumeiSCSIAttributes& WithNetworkInterfacePort(int value) { SetNetworkInterfacePort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The logical disk number.</p>
      */
-    inline int GetLunNumber() const{ return m_lunNumber; }
-
-    /**
-     * <p>The logical disk number.</p>
-     */
+    inline int GetLunNumber() const { return m_lunNumber; }
     inline bool LunNumberHasBeenSet() const { return m_lunNumberHasBeenSet; }
-
-    /**
-     * <p>The logical disk number.</p>
-     */
     inline void SetLunNumber(int value) { m_lunNumberHasBeenSet = true; m_lunNumber = value; }
-
-    /**
-     * <p>The logical disk number.</p>
-     */
     inline VolumeiSCSIAttributes& WithLunNumber(int value) { SetLunNumber(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
      */
-    inline bool GetChapEnabled() const{ return m_chapEnabled; }
-
-    /**
-     * <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
-     */
+    inline bool GetChapEnabled() const { return m_chapEnabled; }
     inline bool ChapEnabledHasBeenSet() const { return m_chapEnabledHasBeenSet; }
-
-    /**
-     * <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
-     */
     inline void SetChapEnabled(bool value) { m_chapEnabledHasBeenSet = true; m_chapEnabled = value; }
-
-    /**
-     * <p>Indicates whether mutual CHAP is enabled for the iSCSI target.</p>
-     */
     inline VolumeiSCSIAttributes& WithChapEnabled(bool value) { SetChapEnabled(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_targetARN;
@@ -189,13 +98,13 @@ namespace Model
     Aws::String m_networkInterfaceId;
     bool m_networkInterfaceIdHasBeenSet = false;
 
-    int m_networkInterfacePort;
+    int m_networkInterfacePort{0};
     bool m_networkInterfacePortHasBeenSet = false;
 
-    int m_lunNumber;
+    int m_lunNumber{0};
     bool m_lunNumberHasBeenSet = false;
 
-    bool m_chapEnabled;
+    bool m_chapEnabled{false};
     bool m_chapEnabledHasBeenSet = false;
   };
 

@@ -34,41 +34,25 @@ namespace Model
   class SeverityLevel
   {
   public:
-    AWS_MACIE2_API SeverityLevel();
+    AWS_MACIE2_API SeverityLevel() = default;
     AWS_MACIE2_API SeverityLevel(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API SeverityLevel& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_MACIE2_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The minimum number of occurrences of text that must match the custom data
      * identifier's detection criteria in order to produce a finding with the specified
      * severity (severity).</p>
      */
-    inline long long GetOccurrencesThreshold() const{ return m_occurrencesThreshold; }
-
-    /**
-     * <p>The minimum number of occurrences of text that must match the custom data
-     * identifier's detection criteria in order to produce a finding with the specified
-     * severity (severity).</p>
-     */
+    inline long long GetOccurrencesThreshold() const { return m_occurrencesThreshold; }
     inline bool OccurrencesThresholdHasBeenSet() const { return m_occurrencesThresholdHasBeenSet; }
-
-    /**
-     * <p>The minimum number of occurrences of text that must match the custom data
-     * identifier's detection criteria in order to produce a finding with the specified
-     * severity (severity).</p>
-     */
     inline void SetOccurrencesThreshold(long long value) { m_occurrencesThresholdHasBeenSet = true; m_occurrencesThreshold = value; }
-
-    /**
-     * <p>The minimum number of occurrences of text that must match the custom data
-     * identifier's detection criteria in order to produce a finding with the specified
-     * severity (severity).</p>
-     */
     inline SeverityLevel& WithOccurrencesThreshold(long long value) { SetOccurrencesThreshold(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The severity to assign to a finding: if the number of occurrences is greater
      * than or equal to the specified threshold (occurrencesThreshold); and, if
@@ -76,59 +60,17 @@ namespace Model
      * consecutive severity level for the custom data identifier, moving from LOW to
      * HIGH.</p>
      */
-    inline const DataIdentifierSeverity& GetSeverity() const{ return m_severity; }
-
-    /**
-     * <p>The severity to assign to a finding: if the number of occurrences is greater
-     * than or equal to the specified threshold (occurrencesThreshold); and, if
-     * applicable, the number of occurrences is less than the threshold for the next
-     * consecutive severity level for the custom data identifier, moving from LOW to
-     * HIGH.</p>
-     */
+    inline DataIdentifierSeverity GetSeverity() const { return m_severity; }
     inline bool SeverityHasBeenSet() const { return m_severityHasBeenSet; }
-
-    /**
-     * <p>The severity to assign to a finding: if the number of occurrences is greater
-     * than or equal to the specified threshold (occurrencesThreshold); and, if
-     * applicable, the number of occurrences is less than the threshold for the next
-     * consecutive severity level for the custom data identifier, moving from LOW to
-     * HIGH.</p>
-     */
-    inline void SetSeverity(const DataIdentifierSeverity& value) { m_severityHasBeenSet = true; m_severity = value; }
-
-    /**
-     * <p>The severity to assign to a finding: if the number of occurrences is greater
-     * than or equal to the specified threshold (occurrencesThreshold); and, if
-     * applicable, the number of occurrences is less than the threshold for the next
-     * consecutive severity level for the custom data identifier, moving from LOW to
-     * HIGH.</p>
-     */
-    inline void SetSeverity(DataIdentifierSeverity&& value) { m_severityHasBeenSet = true; m_severity = std::move(value); }
-
-    /**
-     * <p>The severity to assign to a finding: if the number of occurrences is greater
-     * than or equal to the specified threshold (occurrencesThreshold); and, if
-     * applicable, the number of occurrences is less than the threshold for the next
-     * consecutive severity level for the custom data identifier, moving from LOW to
-     * HIGH.</p>
-     */
-    inline SeverityLevel& WithSeverity(const DataIdentifierSeverity& value) { SetSeverity(value); return *this;}
-
-    /**
-     * <p>The severity to assign to a finding: if the number of occurrences is greater
-     * than or equal to the specified threshold (occurrencesThreshold); and, if
-     * applicable, the number of occurrences is less than the threshold for the next
-     * consecutive severity level for the custom data identifier, moving from LOW to
-     * HIGH.</p>
-     */
-    inline SeverityLevel& WithSeverity(DataIdentifierSeverity&& value) { SetSeverity(std::move(value)); return *this;}
-
+    inline void SetSeverity(DataIdentifierSeverity value) { m_severityHasBeenSet = true; m_severity = value; }
+    inline SeverityLevel& WithSeverity(DataIdentifierSeverity value) { SetSeverity(value); return *this;}
+    ///@}
   private:
 
-    long long m_occurrencesThreshold;
+    long long m_occurrencesThreshold{0};
     bool m_occurrencesThresholdHasBeenSet = false;
 
-    DataIdentifierSeverity m_severity;
+    DataIdentifierSeverity m_severity{DataIdentifierSeverity::NOT_SET};
     bool m_severityHasBeenSet = false;
   };
 

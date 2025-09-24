@@ -29,125 +29,71 @@ namespace Model
   class ListAccessGrantsInstancesResult
   {
   public:
-    AWS_S3CONTROL_API ListAccessGrantsInstancesResult();
+    AWS_S3CONTROL_API ListAccessGrantsInstancesResult() = default;
     AWS_S3CONTROL_API ListAccessGrantsInstancesResult(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
     AWS_S3CONTROL_API ListAccessGrantsInstancesResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Xml::XmlDocument>& result);
 
 
+    ///@{
     /**
      * <p>A pagination token to request the next page of results. Pass this value into
      * a subsequent <code>List Access Grants Instances</code> request in order to
      * retrieve the next page of results.</p>
      */
-    inline const Aws::String& GetNextToken() const{ return m_nextToken; }
+    inline const Aws::String& GetNextToken() const { return m_nextToken; }
+    template<typename NextTokenT = Aws::String>
+    void SetNextToken(NextTokenT&& value) { m_nextTokenHasBeenSet = true; m_nextToken = std::forward<NextTokenT>(value); }
+    template<typename NextTokenT = Aws::String>
+    ListAccessGrantsInstancesResult& WithNextToken(NextTokenT&& value) { SetNextToken(std::forward<NextTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>A pagination token to request the next page of results. Pass this value into
-     * a subsequent <code>List Access Grants Instances</code> request in order to
-     * retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(const Aws::String& value) { m_nextToken = value; }
-
-    /**
-     * <p>A pagination token to request the next page of results. Pass this value into
-     * a subsequent <code>List Access Grants Instances</code> request in order to
-     * retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(Aws::String&& value) { m_nextToken = std::move(value); }
-
-    /**
-     * <p>A pagination token to request the next page of results. Pass this value into
-     * a subsequent <code>List Access Grants Instances</code> request in order to
-     * retrieve the next page of results.</p>
-     */
-    inline void SetNextToken(const char* value) { m_nextToken.assign(value); }
-
-    /**
-     * <p>A pagination token to request the next page of results. Pass this value into
-     * a subsequent <code>List Access Grants Instances</code> request in order to
-     * retrieve the next page of results.</p>
-     */
-    inline ListAccessGrantsInstancesResult& WithNextToken(const Aws::String& value) { SetNextToken(value); return *this;}
-
-    /**
-     * <p>A pagination token to request the next page of results. Pass this value into
-     * a subsequent <code>List Access Grants Instances</code> request in order to
-     * retrieve the next page of results.</p>
-     */
-    inline ListAccessGrantsInstancesResult& WithNextToken(Aws::String&& value) { SetNextToken(std::move(value)); return *this;}
-
-    /**
-     * <p>A pagination token to request the next page of results. Pass this value into
-     * a subsequent <code>List Access Grants Instances</code> request in order to
-     * retrieve the next page of results.</p>
-     */
-    inline ListAccessGrantsInstancesResult& WithNextToken(const char* value) { SetNextToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A container for a list of S3 Access Grants instances.</p>
      */
-    inline const Aws::Vector<ListAccessGrantsInstanceEntry>& GetAccessGrantsInstancesList() const{ return m_accessGrantsInstancesList; }
+    inline const Aws::Vector<ListAccessGrantsInstanceEntry>& GetAccessGrantsInstancesList() const { return m_accessGrantsInstancesList; }
+    template<typename AccessGrantsInstancesListT = Aws::Vector<ListAccessGrantsInstanceEntry>>
+    void SetAccessGrantsInstancesList(AccessGrantsInstancesListT&& value) { m_accessGrantsInstancesListHasBeenSet = true; m_accessGrantsInstancesList = std::forward<AccessGrantsInstancesListT>(value); }
+    template<typename AccessGrantsInstancesListT = Aws::Vector<ListAccessGrantsInstanceEntry>>
+    ListAccessGrantsInstancesResult& WithAccessGrantsInstancesList(AccessGrantsInstancesListT&& value) { SetAccessGrantsInstancesList(std::forward<AccessGrantsInstancesListT>(value)); return *this;}
+    template<typename AccessGrantsInstancesListT = ListAccessGrantsInstanceEntry>
+    ListAccessGrantsInstancesResult& AddAccessGrantsInstancesList(AccessGrantsInstancesListT&& value) { m_accessGrantsInstancesListHasBeenSet = true; m_accessGrantsInstancesList.emplace_back(std::forward<AccessGrantsInstancesListT>(value)); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>A container for a list of S3 Access Grants instances.</p>
+     * AWS Request Id value
      */
-    inline void SetAccessGrantsInstancesList(const Aws::Vector<ListAccessGrantsInstanceEntry>& value) { m_accessGrantsInstancesList = value; }
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    ListAccessGrantsInstancesResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>A container for a list of S3 Access Grants instances.</p>
+     * x-amz-id-2 header value, also known as Host Id
      */
-    inline void SetAccessGrantsInstancesList(Aws::Vector<ListAccessGrantsInstanceEntry>&& value) { m_accessGrantsInstancesList = std::move(value); }
-
-    /**
-     * <p>A container for a list of S3 Access Grants instances.</p>
-     */
-    inline ListAccessGrantsInstancesResult& WithAccessGrantsInstancesList(const Aws::Vector<ListAccessGrantsInstanceEntry>& value) { SetAccessGrantsInstancesList(value); return *this;}
-
-    /**
-     * <p>A container for a list of S3 Access Grants instances.</p>
-     */
-    inline ListAccessGrantsInstancesResult& WithAccessGrantsInstancesList(Aws::Vector<ListAccessGrantsInstanceEntry>&& value) { SetAccessGrantsInstancesList(std::move(value)); return *this;}
-
-    /**
-     * <p>A container for a list of S3 Access Grants instances.</p>
-     */
-    inline ListAccessGrantsInstancesResult& AddAccessGrantsInstancesList(const ListAccessGrantsInstanceEntry& value) { m_accessGrantsInstancesList.push_back(value); return *this; }
-
-    /**
-     * <p>A container for a list of S3 Access Grants instances.</p>
-     */
-    inline ListAccessGrantsInstancesResult& AddAccessGrantsInstancesList(ListAccessGrantsInstanceEntry&& value) { m_accessGrantsInstancesList.push_back(std::move(value)); return *this; }
-
-
-    
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline ListAccessGrantsInstancesResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline ListAccessGrantsInstancesResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline ListAccessGrantsInstancesResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetHostId() const { return m_hostId; }
+    template<typename HostIdT = Aws::String>
+    void SetHostId(HostIdT&& value) { m_hostIdHasBeenSet = true; m_hostId = std::forward<HostIdT>(value); }
+    template<typename HostIdT = Aws::String>
+    ListAccessGrantsInstancesResult& WithHostId(HostIdT&& value) { SetHostId(std::forward<HostIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_nextToken;
+    bool m_nextTokenHasBeenSet = false;
 
     Aws::Vector<ListAccessGrantsInstanceEntry> m_accessGrantsInstancesList;
+    bool m_accessGrantsInstancesListHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
+
+    Aws::String m_hostId;
+    bool m_hostIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -34,113 +34,52 @@ namespace Model
   class LimitExceededException
   {
   public:
-    AWS_INSPECTOR_API LimitExceededException();
+    AWS_INSPECTOR_API LimitExceededException() = default;
     AWS_INSPECTOR_API LimitExceededException(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR_API LimitExceededException& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_INSPECTOR_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Details of the exception error.</p>
      */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>Details of the exception error.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    LimitExceededException& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Details of the exception error.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>Details of the exception error.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>Details of the exception error.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>Details of the exception error.</p>
-     */
-    inline LimitExceededException& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>Details of the exception error.</p>
-     */
-    inline LimitExceededException& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Details of the exception error.</p>
-     */
-    inline LimitExceededException& WithMessage(const char* value) { SetMessage(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Code that indicates the type of error that is generated.</p>
      */
-    inline const LimitExceededErrorCode& GetErrorCode() const{ return m_errorCode; }
-
-    /**
-     * <p>Code that indicates the type of error that is generated.</p>
-     */
+    inline LimitExceededErrorCode GetErrorCode() const { return m_errorCode; }
     inline bool ErrorCodeHasBeenSet() const { return m_errorCodeHasBeenSet; }
+    inline void SetErrorCode(LimitExceededErrorCode value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
+    inline LimitExceededException& WithErrorCode(LimitExceededErrorCode value) { SetErrorCode(value); return *this;}
+    ///@}
 
-    /**
-     * <p>Code that indicates the type of error that is generated.</p>
-     */
-    inline void SetErrorCode(const LimitExceededErrorCode& value) { m_errorCodeHasBeenSet = true; m_errorCode = value; }
-
-    /**
-     * <p>Code that indicates the type of error that is generated.</p>
-     */
-    inline void SetErrorCode(LimitExceededErrorCode&& value) { m_errorCodeHasBeenSet = true; m_errorCode = std::move(value); }
-
-    /**
-     * <p>Code that indicates the type of error that is generated.</p>
-     */
-    inline LimitExceededException& WithErrorCode(const LimitExceededErrorCode& value) { SetErrorCode(value); return *this;}
-
-    /**
-     * <p>Code that indicates the type of error that is generated.</p>
-     */
-    inline LimitExceededException& WithErrorCode(LimitExceededErrorCode&& value) { SetErrorCode(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>You can immediately retry your request.</p>
      */
-    inline bool GetCanRetry() const{ return m_canRetry; }
-
-    /**
-     * <p>You can immediately retry your request.</p>
-     */
+    inline bool GetCanRetry() const { return m_canRetry; }
     inline bool CanRetryHasBeenSet() const { return m_canRetryHasBeenSet; }
-
-    /**
-     * <p>You can immediately retry your request.</p>
-     */
     inline void SetCanRetry(bool value) { m_canRetryHasBeenSet = true; m_canRetry = value; }
-
-    /**
-     * <p>You can immediately retry your request.</p>
-     */
     inline LimitExceededException& WithCanRetry(bool value) { SetCanRetry(value); return *this;}
-
+    ///@}
   private:
 
     Aws::String m_message;
     bool m_messageHasBeenSet = false;
 
-    LimitExceededErrorCode m_errorCode;
+    LimitExceededErrorCode m_errorCode{LimitExceededErrorCode::NOT_SET};
     bool m_errorCodeHasBeenSet = false;
 
-    bool m_canRetry;
+    bool m_canRetry{false};
     bool m_canRetryHasBeenSet = false;
   };
 

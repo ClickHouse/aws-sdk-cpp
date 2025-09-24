@@ -30,35 +30,24 @@ namespace Model
   class ReferenceLineStaticDataConfiguration
   {
   public:
-    AWS_QUICKSIGHT_API ReferenceLineStaticDataConfiguration();
+    AWS_QUICKSIGHT_API ReferenceLineStaticDataConfiguration() = default;
     AWS_QUICKSIGHT_API ReferenceLineStaticDataConfiguration(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API ReferenceLineStaticDataConfiguration& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_QUICKSIGHT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The double input of the static data.</p>
      */
-    inline double GetValue() const{ return m_value; }
-
-    /**
-     * <p>The double input of the static data.</p>
-     */
+    inline double GetValue() const { return m_value; }
     inline bool ValueHasBeenSet() const { return m_valueHasBeenSet; }
-
-    /**
-     * <p>The double input of the static data.</p>
-     */
     inline void SetValue(double value) { m_valueHasBeenSet = true; m_value = value; }
-
-    /**
-     * <p>The double input of the static data.</p>
-     */
     inline ReferenceLineStaticDataConfiguration& WithValue(double value) { SetValue(value); return *this;}
-
+    ///@}
   private:
 
-    double m_value;
+    double m_value{0.0};
     bool m_valueHasBeenSet = false;
   };
 

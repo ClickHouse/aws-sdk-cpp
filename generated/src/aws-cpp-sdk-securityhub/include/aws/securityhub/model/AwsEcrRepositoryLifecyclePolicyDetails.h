@@ -32,101 +32,36 @@ namespace Model
   class AwsEcrRepositoryLifecyclePolicyDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsEcrRepositoryLifecyclePolicyDetails();
+    AWS_SECURITYHUB_API AwsEcrRepositoryLifecyclePolicyDetails() = default;
     AWS_SECURITYHUB_API AwsEcrRepositoryLifecyclePolicyDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsEcrRepositoryLifecyclePolicyDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The text of the lifecycle policy.</p>
      */
-    inline const Aws::String& GetLifecyclePolicyText() const{ return m_lifecyclePolicyText; }
-
-    /**
-     * <p>The text of the lifecycle policy.</p>
-     */
+    inline const Aws::String& GetLifecyclePolicyText() const { return m_lifecyclePolicyText; }
     inline bool LifecyclePolicyTextHasBeenSet() const { return m_lifecyclePolicyTextHasBeenSet; }
+    template<typename LifecyclePolicyTextT = Aws::String>
+    void SetLifecyclePolicyText(LifecyclePolicyTextT&& value) { m_lifecyclePolicyTextHasBeenSet = true; m_lifecyclePolicyText = std::forward<LifecyclePolicyTextT>(value); }
+    template<typename LifecyclePolicyTextT = Aws::String>
+    AwsEcrRepositoryLifecyclePolicyDetails& WithLifecyclePolicyText(LifecyclePolicyTextT&& value) { SetLifecyclePolicyText(std::forward<LifecyclePolicyTextT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The text of the lifecycle policy.</p>
-     */
-    inline void SetLifecyclePolicyText(const Aws::String& value) { m_lifecyclePolicyTextHasBeenSet = true; m_lifecyclePolicyText = value; }
-
-    /**
-     * <p>The text of the lifecycle policy.</p>
-     */
-    inline void SetLifecyclePolicyText(Aws::String&& value) { m_lifecyclePolicyTextHasBeenSet = true; m_lifecyclePolicyText = std::move(value); }
-
-    /**
-     * <p>The text of the lifecycle policy.</p>
-     */
-    inline void SetLifecyclePolicyText(const char* value) { m_lifecyclePolicyTextHasBeenSet = true; m_lifecyclePolicyText.assign(value); }
-
-    /**
-     * <p>The text of the lifecycle policy.</p>
-     */
-    inline AwsEcrRepositoryLifecyclePolicyDetails& WithLifecyclePolicyText(const Aws::String& value) { SetLifecyclePolicyText(value); return *this;}
-
-    /**
-     * <p>The text of the lifecycle policy.</p>
-     */
-    inline AwsEcrRepositoryLifecyclePolicyDetails& WithLifecyclePolicyText(Aws::String&& value) { SetLifecyclePolicyText(std::move(value)); return *this;}
-
-    /**
-     * <p>The text of the lifecycle policy.</p>
-     */
-    inline AwsEcrRepositoryLifecyclePolicyDetails& WithLifecyclePolicyText(const char* value) { SetLifecyclePolicyText(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Web Services account identifier that is associated with the
      * registry that contains the repository.</p>
      */
-    inline const Aws::String& GetRegistryId() const{ return m_registryId; }
-
-    /**
-     * <p>The Amazon Web Services account identifier that is associated with the
-     * registry that contains the repository.</p>
-     */
+    inline const Aws::String& GetRegistryId() const { return m_registryId; }
     inline bool RegistryIdHasBeenSet() const { return m_registryIdHasBeenSet; }
-
-    /**
-     * <p>The Amazon Web Services account identifier that is associated with the
-     * registry that contains the repository.</p>
-     */
-    inline void SetRegistryId(const Aws::String& value) { m_registryIdHasBeenSet = true; m_registryId = value; }
-
-    /**
-     * <p>The Amazon Web Services account identifier that is associated with the
-     * registry that contains the repository.</p>
-     */
-    inline void SetRegistryId(Aws::String&& value) { m_registryIdHasBeenSet = true; m_registryId = std::move(value); }
-
-    /**
-     * <p>The Amazon Web Services account identifier that is associated with the
-     * registry that contains the repository.</p>
-     */
-    inline void SetRegistryId(const char* value) { m_registryIdHasBeenSet = true; m_registryId.assign(value); }
-
-    /**
-     * <p>The Amazon Web Services account identifier that is associated with the
-     * registry that contains the repository.</p>
-     */
-    inline AwsEcrRepositoryLifecyclePolicyDetails& WithRegistryId(const Aws::String& value) { SetRegistryId(value); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account identifier that is associated with the
-     * registry that contains the repository.</p>
-     */
-    inline AwsEcrRepositoryLifecyclePolicyDetails& WithRegistryId(Aws::String&& value) { SetRegistryId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Web Services account identifier that is associated with the
-     * registry that contains the repository.</p>
-     */
-    inline AwsEcrRepositoryLifecyclePolicyDetails& WithRegistryId(const char* value) { SetRegistryId(value); return *this;}
-
+    template<typename RegistryIdT = Aws::String>
+    void SetRegistryId(RegistryIdT&& value) { m_registryIdHasBeenSet = true; m_registryId = std::forward<RegistryIdT>(value); }
+    template<typename RegistryIdT = Aws::String>
+    AwsEcrRepositoryLifecyclePolicyDetails& WithRegistryId(RegistryIdT&& value) { SetRegistryId(std::forward<RegistryIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_lifecyclePolicyText;

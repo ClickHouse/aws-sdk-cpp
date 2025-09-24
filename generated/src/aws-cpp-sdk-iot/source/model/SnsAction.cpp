@@ -18,19 +18,7 @@ namespace IoT
 namespace Model
 {
 
-SnsAction::SnsAction() : 
-    m_targetArnHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_messageFormat(MessageFormat::NOT_SET),
-    m_messageFormatHasBeenSet(false)
-{
-}
-
-SnsAction::SnsAction(JsonView jsonValue) : 
-    m_targetArnHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_messageFormat(MessageFormat::NOT_SET),
-    m_messageFormatHasBeenSet(false)
+SnsAction::SnsAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,24 +28,18 @@ SnsAction& SnsAction::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("targetArn"))
   {
     m_targetArn = jsonValue.GetString("targetArn");
-
     m_targetArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("roleArn"))
   {
     m_roleArn = jsonValue.GetString("roleArn");
-
     m_roleArnHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("messageFormat"))
   {
     m_messageFormat = MessageFormatMapper::GetMessageFormatForName(jsonValue.GetString("messageFormat"));
-
     m_messageFormatHasBeenSet = true;
   }
-
   return *this;
 }
 

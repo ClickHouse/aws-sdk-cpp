@@ -38,124 +38,45 @@ namespace Model
   class ApplicationSummary
   {
   public:
-    AWS_KINESISANALYTICS_API ApplicationSummary();
+    AWS_KINESISANALYTICS_API ApplicationSummary() = default;
     AWS_KINESISANALYTICS_API ApplicationSummary(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API ApplicationSummary& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_KINESISANALYTICS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Name of the application.</p>
      */
-    inline const Aws::String& GetApplicationName() const{ return m_applicationName; }
-
-    /**
-     * <p>Name of the application.</p>
-     */
+    inline const Aws::String& GetApplicationName() const { return m_applicationName; }
     inline bool ApplicationNameHasBeenSet() const { return m_applicationNameHasBeenSet; }
+    template<typename ApplicationNameT = Aws::String>
+    void SetApplicationName(ApplicationNameT&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::forward<ApplicationNameT>(value); }
+    template<typename ApplicationNameT = Aws::String>
+    ApplicationSummary& WithApplicationName(ApplicationNameT&& value) { SetApplicationName(std::forward<ApplicationNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Name of the application.</p>
-     */
-    inline void SetApplicationName(const Aws::String& value) { m_applicationNameHasBeenSet = true; m_applicationName = value; }
-
-    /**
-     * <p>Name of the application.</p>
-     */
-    inline void SetApplicationName(Aws::String&& value) { m_applicationNameHasBeenSet = true; m_applicationName = std::move(value); }
-
-    /**
-     * <p>Name of the application.</p>
-     */
-    inline void SetApplicationName(const char* value) { m_applicationNameHasBeenSet = true; m_applicationName.assign(value); }
-
-    /**
-     * <p>Name of the application.</p>
-     */
-    inline ApplicationSummary& WithApplicationName(const Aws::String& value) { SetApplicationName(value); return *this;}
-
-    /**
-     * <p>Name of the application.</p>
-     */
-    inline ApplicationSummary& WithApplicationName(Aws::String&& value) { SetApplicationName(std::move(value)); return *this;}
-
-    /**
-     * <p>Name of the application.</p>
-     */
-    inline ApplicationSummary& WithApplicationName(const char* value) { SetApplicationName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>ARN of the application.</p>
      */
-    inline const Aws::String& GetApplicationARN() const{ return m_applicationARN; }
-
-    /**
-     * <p>ARN of the application.</p>
-     */
+    inline const Aws::String& GetApplicationARN() const { return m_applicationARN; }
     inline bool ApplicationARNHasBeenSet() const { return m_applicationARNHasBeenSet; }
+    template<typename ApplicationARNT = Aws::String>
+    void SetApplicationARN(ApplicationARNT&& value) { m_applicationARNHasBeenSet = true; m_applicationARN = std::forward<ApplicationARNT>(value); }
+    template<typename ApplicationARNT = Aws::String>
+    ApplicationSummary& WithApplicationARN(ApplicationARNT&& value) { SetApplicationARN(std::forward<ApplicationARNT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>ARN of the application.</p>
-     */
-    inline void SetApplicationARN(const Aws::String& value) { m_applicationARNHasBeenSet = true; m_applicationARN = value; }
-
-    /**
-     * <p>ARN of the application.</p>
-     */
-    inline void SetApplicationARN(Aws::String&& value) { m_applicationARNHasBeenSet = true; m_applicationARN = std::move(value); }
-
-    /**
-     * <p>ARN of the application.</p>
-     */
-    inline void SetApplicationARN(const char* value) { m_applicationARNHasBeenSet = true; m_applicationARN.assign(value); }
-
-    /**
-     * <p>ARN of the application.</p>
-     */
-    inline ApplicationSummary& WithApplicationARN(const Aws::String& value) { SetApplicationARN(value); return *this;}
-
-    /**
-     * <p>ARN of the application.</p>
-     */
-    inline ApplicationSummary& WithApplicationARN(Aws::String&& value) { SetApplicationARN(std::move(value)); return *this;}
-
-    /**
-     * <p>ARN of the application.</p>
-     */
-    inline ApplicationSummary& WithApplicationARN(const char* value) { SetApplicationARN(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Status of the application.</p>
      */
-    inline const ApplicationStatus& GetApplicationStatus() const{ return m_applicationStatus; }
-
-    /**
-     * <p>Status of the application.</p>
-     */
+    inline ApplicationStatus GetApplicationStatus() const { return m_applicationStatus; }
     inline bool ApplicationStatusHasBeenSet() const { return m_applicationStatusHasBeenSet; }
-
-    /**
-     * <p>Status of the application.</p>
-     */
-    inline void SetApplicationStatus(const ApplicationStatus& value) { m_applicationStatusHasBeenSet = true; m_applicationStatus = value; }
-
-    /**
-     * <p>Status of the application.</p>
-     */
-    inline void SetApplicationStatus(ApplicationStatus&& value) { m_applicationStatusHasBeenSet = true; m_applicationStatus = std::move(value); }
-
-    /**
-     * <p>Status of the application.</p>
-     */
-    inline ApplicationSummary& WithApplicationStatus(const ApplicationStatus& value) { SetApplicationStatus(value); return *this;}
-
-    /**
-     * <p>Status of the application.</p>
-     */
-    inline ApplicationSummary& WithApplicationStatus(ApplicationStatus&& value) { SetApplicationStatus(std::move(value)); return *this;}
-
+    inline void SetApplicationStatus(ApplicationStatus value) { m_applicationStatusHasBeenSet = true; m_applicationStatus = value; }
+    inline ApplicationSummary& WithApplicationStatus(ApplicationStatus value) { SetApplicationStatus(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_applicationName;
@@ -164,7 +85,7 @@ namespace Model
     Aws::String m_applicationARN;
     bool m_applicationARNHasBeenSet = false;
 
-    ApplicationStatus m_applicationStatus;
+    ApplicationStatus m_applicationStatus{ApplicationStatus::NOT_SET};
     bool m_applicationStatusHasBeenSet = false;
   };
 

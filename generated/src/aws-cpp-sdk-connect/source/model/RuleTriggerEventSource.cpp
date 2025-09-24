@@ -18,17 +18,7 @@ namespace Connect
 namespace Model
 {
 
-RuleTriggerEventSource::RuleTriggerEventSource() : 
-    m_eventSourceName(EventSourceName::NOT_SET),
-    m_eventSourceNameHasBeenSet(false),
-    m_integrationAssociationIdHasBeenSet(false)
-{
-}
-
-RuleTriggerEventSource::RuleTriggerEventSource(JsonView jsonValue) : 
-    m_eventSourceName(EventSourceName::NOT_SET),
-    m_eventSourceNameHasBeenSet(false),
-    m_integrationAssociationIdHasBeenSet(false)
+RuleTriggerEventSource::RuleTriggerEventSource(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ RuleTriggerEventSource& RuleTriggerEventSource::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("EventSourceName"))
   {
     m_eventSourceName = EventSourceNameMapper::GetEventSourceNameForName(jsonValue.GetString("EventSourceName"));
-
     m_eventSourceNameHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("IntegrationAssociationId"))
   {
     m_integrationAssociationId = jsonValue.GetString("IntegrationAssociationId");
-
     m_integrationAssociationIdHasBeenSet = true;
   }
-
   return *this;
 }
 

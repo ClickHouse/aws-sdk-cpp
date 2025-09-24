@@ -35,7 +35,7 @@ namespace Model
   class PhoneNumberInformation
   {
   public:
-    AWS_SNS_API PhoneNumberInformation();
+    AWS_SNS_API PhoneNumberInformation() = default;
     AWS_SNS_API PhoneNumberInformation(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_SNS_API PhoneNumberInformation& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -43,242 +43,80 @@ namespace Model
     AWS_SNS_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The date and time when the phone number was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
-
-    /**
-     * <p>The date and time when the phone number was created.</p>
-     */
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
     inline bool CreatedAtHasBeenSet() const { return m_createdAtHasBeenSet; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    PhoneNumberInformation& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The date and time when the phone number was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAtHasBeenSet = true; m_createdAt = value; }
-
-    /**
-     * <p>The date and time when the phone number was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::move(value); }
-
-    /**
-     * <p>The date and time when the phone number was created.</p>
-     */
-    inline PhoneNumberInformation& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The date and time when the phone number was created.</p>
-     */
-    inline PhoneNumberInformation& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The phone number.</p>
      */
-    inline const Aws::String& GetPhoneNumber() const{ return m_phoneNumber; }
-
-    /**
-     * <p>The phone number.</p>
-     */
+    inline const Aws::String& GetPhoneNumber() const { return m_phoneNumber; }
     inline bool PhoneNumberHasBeenSet() const { return m_phoneNumberHasBeenSet; }
+    template<typename PhoneNumberT = Aws::String>
+    void SetPhoneNumber(PhoneNumberT&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::forward<PhoneNumberT>(value); }
+    template<typename PhoneNumberT = Aws::String>
+    PhoneNumberInformation& WithPhoneNumber(PhoneNumberT&& value) { SetPhoneNumber(std::forward<PhoneNumberT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The phone number.</p>
-     */
-    inline void SetPhoneNumber(const Aws::String& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = value; }
-
-    /**
-     * <p>The phone number.</p>
-     */
-    inline void SetPhoneNumber(Aws::String&& value) { m_phoneNumberHasBeenSet = true; m_phoneNumber = std::move(value); }
-
-    /**
-     * <p>The phone number.</p>
-     */
-    inline void SetPhoneNumber(const char* value) { m_phoneNumberHasBeenSet = true; m_phoneNumber.assign(value); }
-
-    /**
-     * <p>The phone number.</p>
-     */
-    inline PhoneNumberInformation& WithPhoneNumber(const Aws::String& value) { SetPhoneNumber(value); return *this;}
-
-    /**
-     * <p>The phone number.</p>
-     */
-    inline PhoneNumberInformation& WithPhoneNumber(Aws::String&& value) { SetPhoneNumber(std::move(value)); return *this;}
-
-    /**
-     * <p>The phone number.</p>
-     */
-    inline PhoneNumberInformation& WithPhoneNumber(const char* value) { SetPhoneNumber(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of the phone number.</p>
      */
-    inline const Aws::String& GetStatus() const{ return m_status; }
-
-    /**
-     * <p>The status of the phone number.</p>
-     */
+    inline const Aws::String& GetStatus() const { return m_status; }
     inline bool StatusHasBeenSet() const { return m_statusHasBeenSet; }
+    template<typename StatusT = Aws::String>
+    void SetStatus(StatusT&& value) { m_statusHasBeenSet = true; m_status = std::forward<StatusT>(value); }
+    template<typename StatusT = Aws::String>
+    PhoneNumberInformation& WithStatus(StatusT&& value) { SetStatus(std::forward<StatusT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of the phone number.</p>
-     */
-    inline void SetStatus(const Aws::String& value) { m_statusHasBeenSet = true; m_status = value; }
-
-    /**
-     * <p>The status of the phone number.</p>
-     */
-    inline void SetStatus(Aws::String&& value) { m_statusHasBeenSet = true; m_status = std::move(value); }
-
-    /**
-     * <p>The status of the phone number.</p>
-     */
-    inline void SetStatus(const char* value) { m_statusHasBeenSet = true; m_status.assign(value); }
-
-    /**
-     * <p>The status of the phone number.</p>
-     */
-    inline PhoneNumberInformation& WithStatus(const Aws::String& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of the phone number.</p>
-     */
-    inline PhoneNumberInformation& WithStatus(Aws::String&& value) { SetStatus(std::move(value)); return *this;}
-
-    /**
-     * <p>The status of the phone number.</p>
-     */
-    inline PhoneNumberInformation& WithStatus(const char* value) { SetStatus(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The two-character code for the country or region, in ISO 3166-1 alpha-2
      * format.</p>
      */
-    inline const Aws::String& GetIso2CountryCode() const{ return m_iso2CountryCode; }
-
-    /**
-     * <p>The two-character code for the country or region, in ISO 3166-1 alpha-2
-     * format.</p>
-     */
+    inline const Aws::String& GetIso2CountryCode() const { return m_iso2CountryCode; }
     inline bool Iso2CountryCodeHasBeenSet() const { return m_iso2CountryCodeHasBeenSet; }
+    template<typename Iso2CountryCodeT = Aws::String>
+    void SetIso2CountryCode(Iso2CountryCodeT&& value) { m_iso2CountryCodeHasBeenSet = true; m_iso2CountryCode = std::forward<Iso2CountryCodeT>(value); }
+    template<typename Iso2CountryCodeT = Aws::String>
+    PhoneNumberInformation& WithIso2CountryCode(Iso2CountryCodeT&& value) { SetIso2CountryCode(std::forward<Iso2CountryCodeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The two-character code for the country or region, in ISO 3166-1 alpha-2
-     * format.</p>
-     */
-    inline void SetIso2CountryCode(const Aws::String& value) { m_iso2CountryCodeHasBeenSet = true; m_iso2CountryCode = value; }
-
-    /**
-     * <p>The two-character code for the country or region, in ISO 3166-1 alpha-2
-     * format.</p>
-     */
-    inline void SetIso2CountryCode(Aws::String&& value) { m_iso2CountryCodeHasBeenSet = true; m_iso2CountryCode = std::move(value); }
-
-    /**
-     * <p>The two-character code for the country or region, in ISO 3166-1 alpha-2
-     * format.</p>
-     */
-    inline void SetIso2CountryCode(const char* value) { m_iso2CountryCodeHasBeenSet = true; m_iso2CountryCode.assign(value); }
-
-    /**
-     * <p>The two-character code for the country or region, in ISO 3166-1 alpha-2
-     * format.</p>
-     */
-    inline PhoneNumberInformation& WithIso2CountryCode(const Aws::String& value) { SetIso2CountryCode(value); return *this;}
-
-    /**
-     * <p>The two-character code for the country or region, in ISO 3166-1 alpha-2
-     * format.</p>
-     */
-    inline PhoneNumberInformation& WithIso2CountryCode(Aws::String&& value) { SetIso2CountryCode(std::move(value)); return *this;}
-
-    /**
-     * <p>The two-character code for the country or region, in ISO 3166-1 alpha-2
-     * format.</p>
-     */
-    inline PhoneNumberInformation& WithIso2CountryCode(const char* value) { SetIso2CountryCode(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The list of supported routes.</p>
      */
-    inline const RouteType& GetRouteType() const{ return m_routeType; }
-
-    /**
-     * <p>The list of supported routes.</p>
-     */
+    inline RouteType GetRouteType() const { return m_routeType; }
     inline bool RouteTypeHasBeenSet() const { return m_routeTypeHasBeenSet; }
+    inline void SetRouteType(RouteType value) { m_routeTypeHasBeenSet = true; m_routeType = value; }
+    inline PhoneNumberInformation& WithRouteType(RouteType value) { SetRouteType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The list of supported routes.</p>
-     */
-    inline void SetRouteType(const RouteType& value) { m_routeTypeHasBeenSet = true; m_routeType = value; }
-
-    /**
-     * <p>The list of supported routes.</p>
-     */
-    inline void SetRouteType(RouteType&& value) { m_routeTypeHasBeenSet = true; m_routeType = std::move(value); }
-
-    /**
-     * <p>The list of supported routes.</p>
-     */
-    inline PhoneNumberInformation& WithRouteType(const RouteType& value) { SetRouteType(value); return *this;}
-
-    /**
-     * <p>The list of supported routes.</p>
-     */
-    inline PhoneNumberInformation& WithRouteType(RouteType&& value) { SetRouteType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The capabilities of each phone number.</p>
      */
-    inline const Aws::Vector<NumberCapability>& GetNumberCapabilities() const{ return m_numberCapabilities; }
-
-    /**
-     * <p>The capabilities of each phone number.</p>
-     */
+    inline const Aws::Vector<NumberCapability>& GetNumberCapabilities() const { return m_numberCapabilities; }
     inline bool NumberCapabilitiesHasBeenSet() const { return m_numberCapabilitiesHasBeenSet; }
-
-    /**
-     * <p>The capabilities of each phone number.</p>
-     */
-    inline void SetNumberCapabilities(const Aws::Vector<NumberCapability>& value) { m_numberCapabilitiesHasBeenSet = true; m_numberCapabilities = value; }
-
-    /**
-     * <p>The capabilities of each phone number.</p>
-     */
-    inline void SetNumberCapabilities(Aws::Vector<NumberCapability>&& value) { m_numberCapabilitiesHasBeenSet = true; m_numberCapabilities = std::move(value); }
-
-    /**
-     * <p>The capabilities of each phone number.</p>
-     */
-    inline PhoneNumberInformation& WithNumberCapabilities(const Aws::Vector<NumberCapability>& value) { SetNumberCapabilities(value); return *this;}
-
-    /**
-     * <p>The capabilities of each phone number.</p>
-     */
-    inline PhoneNumberInformation& WithNumberCapabilities(Aws::Vector<NumberCapability>&& value) { SetNumberCapabilities(std::move(value)); return *this;}
-
-    /**
-     * <p>The capabilities of each phone number.</p>
-     */
-    inline PhoneNumberInformation& AddNumberCapabilities(const NumberCapability& value) { m_numberCapabilitiesHasBeenSet = true; m_numberCapabilities.push_back(value); return *this; }
-
-    /**
-     * <p>The capabilities of each phone number.</p>
-     */
-    inline PhoneNumberInformation& AddNumberCapabilities(NumberCapability&& value) { m_numberCapabilitiesHasBeenSet = true; m_numberCapabilities.push_back(std::move(value)); return *this; }
-
+    template<typename NumberCapabilitiesT = Aws::Vector<NumberCapability>>
+    void SetNumberCapabilities(NumberCapabilitiesT&& value) { m_numberCapabilitiesHasBeenSet = true; m_numberCapabilities = std::forward<NumberCapabilitiesT>(value); }
+    template<typename NumberCapabilitiesT = Aws::Vector<NumberCapability>>
+    PhoneNumberInformation& WithNumberCapabilities(NumberCapabilitiesT&& value) { SetNumberCapabilities(std::forward<NumberCapabilitiesT>(value)); return *this;}
+    inline PhoneNumberInformation& AddNumberCapabilities(NumberCapability value) { m_numberCapabilitiesHasBeenSet = true; m_numberCapabilities.push_back(value); return *this; }
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
     bool m_createdAtHasBeenSet = false;
 
     Aws::String m_phoneNumber;
@@ -290,7 +128,7 @@ namespace Model
     Aws::String m_iso2CountryCode;
     bool m_iso2CountryCodeHasBeenSet = false;
 
-    RouteType m_routeType;
+    RouteType m_routeType{RouteType::NOT_SET};
     bool m_routeTypeHasBeenSet = false;
 
     Aws::Vector<NumberCapability> m_numberCapabilities;

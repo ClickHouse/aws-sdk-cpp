@@ -18,15 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-IotSiteWiseSourceConfigurationFilter::IotSiteWiseSourceConfigurationFilter() : 
-    m_filterByAssetModelHasBeenSet(false),
-    m_filterByAssetHasBeenSet(false)
-{
-}
-
-IotSiteWiseSourceConfigurationFilter::IotSiteWiseSourceConfigurationFilter(JsonView jsonValue) : 
-    m_filterByAssetModelHasBeenSet(false),
-    m_filterByAssetHasBeenSet(false)
+IotSiteWiseSourceConfigurationFilter::IotSiteWiseSourceConfigurationFilter(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ IotSiteWiseSourceConfigurationFilter& IotSiteWiseSourceConfigurationFilter::oper
   if(jsonValue.ValueExists("filterByAssetModel"))
   {
     m_filterByAssetModel = jsonValue.GetObject("filterByAssetModel");
-
     m_filterByAssetModelHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("filterByAsset"))
   {
     m_filterByAsset = jsonValue.GetObject("filterByAsset");
-
     m_filterByAssetHasBeenSet = true;
   }
-
   return *this;
 }
 

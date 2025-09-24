@@ -18,15 +18,7 @@ namespace DataExchange
 namespace Model
 {
 
-LFTag::LFTag() : 
-    m_tagKeyHasBeenSet(false),
-    m_tagValuesHasBeenSet(false)
-{
-}
-
-LFTag::LFTag(JsonView jsonValue) : 
-    m_tagKeyHasBeenSet(false),
-    m_tagValuesHasBeenSet(false)
+LFTag::LFTag(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ LFTag& LFTag::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TagKey"))
   {
     m_tagKey = jsonValue.GetString("TagKey");
-
     m_tagKeyHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TagValues"))
   {
     Aws::Utils::Array<JsonView> tagValuesJsonList = jsonValue.GetArray("TagValues");
@@ -49,7 +39,6 @@ LFTag& LFTag::operator =(JsonView jsonValue)
     }
     m_tagValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -20,19 +20,7 @@ namespace S3
 namespace Model
 {
 
-InvalidObjectState::InvalidObjectState() : 
-    m_storageClass(StorageClass::NOT_SET),
-    m_storageClassHasBeenSet(false),
-    m_accessTier(IntelligentTieringAccessTier::NOT_SET),
-    m_accessTierHasBeenSet(false)
-{
-}
-
-InvalidObjectState::InvalidObjectState(const XmlNode& xmlNode) : 
-    m_storageClass(StorageClass::NOT_SET),
-    m_storageClassHasBeenSet(false),
-    m_accessTier(IntelligentTieringAccessTier::NOT_SET),
-    m_accessTierHasBeenSet(false)
+InvalidObjectState::InvalidObjectState(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -46,13 +34,13 @@ InvalidObjectState& InvalidObjectState::operator =(const XmlNode& xmlNode)
     XmlNode storageClassNode = resultNode.FirstChild("StorageClass");
     if(!storageClassNode.IsNull())
     {
-      m_storageClass = StorageClassMapper::GetStorageClassForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(storageClassNode.GetText()).c_str()).c_str());
+      m_storageClass = StorageClassMapper::GetStorageClassForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(storageClassNode.GetText()).c_str()));
       m_storageClassHasBeenSet = true;
     }
     XmlNode accessTierNode = resultNode.FirstChild("AccessTier");
     if(!accessTierNode.IsNull())
     {
-      m_accessTier = IntelligentTieringAccessTierMapper::GetIntelligentTieringAccessTierForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(accessTierNode.GetText()).c_str()).c_str());
+      m_accessTier = IntelligentTieringAccessTierMapper::GetIntelligentTieringAccessTierForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(accessTierNode.GetText()).c_str()));
       m_accessTierHasBeenSet = true;
     }
   }

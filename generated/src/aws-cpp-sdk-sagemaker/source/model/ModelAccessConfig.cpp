@@ -18,15 +18,7 @@ namespace SageMaker
 namespace Model
 {
 
-ModelAccessConfig::ModelAccessConfig() : 
-    m_acceptEula(false),
-    m_acceptEulaHasBeenSet(false)
-{
-}
-
-ModelAccessConfig::ModelAccessConfig(JsonView jsonValue) : 
-    m_acceptEula(false),
-    m_acceptEulaHasBeenSet(false)
+ModelAccessConfig::ModelAccessConfig(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ ModelAccessConfig& ModelAccessConfig::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("AcceptEula"))
   {
     m_acceptEula = jsonValue.GetBool("AcceptEula");
-
     m_acceptEulaHasBeenSet = true;
   }
-
   return *this;
 }
 

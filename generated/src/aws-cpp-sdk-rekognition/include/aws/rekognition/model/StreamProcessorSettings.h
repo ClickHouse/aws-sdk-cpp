@@ -35,61 +35,33 @@ namespace Model
   class StreamProcessorSettings
   {
   public:
-    AWS_REKOGNITION_API StreamProcessorSettings();
+    AWS_REKOGNITION_API StreamProcessorSettings() = default;
     AWS_REKOGNITION_API StreamProcessorSettings(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API StreamProcessorSettings& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_REKOGNITION_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Face search settings to use on a streaming video. </p>
      */
-    inline const FaceSearchSettings& GetFaceSearch() const{ return m_faceSearch; }
-
-    /**
-     * <p>Face search settings to use on a streaming video. </p>
-     */
+    inline const FaceSearchSettings& GetFaceSearch() const { return m_faceSearch; }
     inline bool FaceSearchHasBeenSet() const { return m_faceSearchHasBeenSet; }
+    template<typename FaceSearchT = FaceSearchSettings>
+    void SetFaceSearch(FaceSearchT&& value) { m_faceSearchHasBeenSet = true; m_faceSearch = std::forward<FaceSearchT>(value); }
+    template<typename FaceSearchT = FaceSearchSettings>
+    StreamProcessorSettings& WithFaceSearch(FaceSearchT&& value) { SetFaceSearch(std::forward<FaceSearchT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Face search settings to use on a streaming video. </p>
-     */
-    inline void SetFaceSearch(const FaceSearchSettings& value) { m_faceSearchHasBeenSet = true; m_faceSearch = value; }
-
-    /**
-     * <p>Face search settings to use on a streaming video. </p>
-     */
-    inline void SetFaceSearch(FaceSearchSettings&& value) { m_faceSearchHasBeenSet = true; m_faceSearch = std::move(value); }
-
-    /**
-     * <p>Face search settings to use on a streaming video. </p>
-     */
-    inline StreamProcessorSettings& WithFaceSearch(const FaceSearchSettings& value) { SetFaceSearch(value); return *this;}
-
-    /**
-     * <p>Face search settings to use on a streaming video. </p>
-     */
-    inline StreamProcessorSettings& WithFaceSearch(FaceSearchSettings&& value) { SetFaceSearch(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const ConnectedHomeSettings& GetConnectedHome() const{ return m_connectedHome; }
-
-    
+    inline const ConnectedHomeSettings& GetConnectedHome() const { return m_connectedHome; }
     inline bool ConnectedHomeHasBeenSet() const { return m_connectedHomeHasBeenSet; }
-
-    
-    inline void SetConnectedHome(const ConnectedHomeSettings& value) { m_connectedHomeHasBeenSet = true; m_connectedHome = value; }
-
-    
-    inline void SetConnectedHome(ConnectedHomeSettings&& value) { m_connectedHomeHasBeenSet = true; m_connectedHome = std::move(value); }
-
-    
-    inline StreamProcessorSettings& WithConnectedHome(const ConnectedHomeSettings& value) { SetConnectedHome(value); return *this;}
-
-    
-    inline StreamProcessorSettings& WithConnectedHome(ConnectedHomeSettings&& value) { SetConnectedHome(std::move(value)); return *this;}
-
+    template<typename ConnectedHomeT = ConnectedHomeSettings>
+    void SetConnectedHome(ConnectedHomeT&& value) { m_connectedHomeHasBeenSet = true; m_connectedHome = std::forward<ConnectedHomeT>(value); }
+    template<typename ConnectedHomeT = ConnectedHomeSettings>
+    StreamProcessorSettings& WithConnectedHome(ConnectedHomeT&& value) { SetConnectedHome(std::forward<ConnectedHomeT>(value)); return *this;}
+    ///@}
   private:
 
     FaceSearchSettings m_faceSearch;

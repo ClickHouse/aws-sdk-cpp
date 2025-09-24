@@ -18,39 +18,23 @@ namespace BedrockAgentRuntime
 namespace Model
 {
 
-Span::Span() : 
-    m_start(0),
-    m_startHasBeenSet(false),
-    m_end(0),
-    m_endHasBeenSet(false)
-{
-}
-
-Span::Span(JsonView jsonValue) : 
-    m_start(0),
-    m_startHasBeenSet(false),
-    m_end(0),
-    m_endHasBeenSet(false)
+Span::Span(JsonView jsonValue)
 {
   *this = jsonValue;
 }
 
 Span& Span::operator =(JsonView jsonValue)
 {
-  if(jsonValue.ValueExists("start"))
-  {
-    m_start = jsonValue.GetInteger("start");
-
-    m_startHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("end"))
   {
     m_end = jsonValue.GetInteger("end");
-
     m_endHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("start"))
+  {
+    m_start = jsonValue.GetInteger("start");
+    m_startHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -58,15 +42,15 @@ JsonValue Span::Jsonize() const
 {
   JsonValue payload;
 
-  if(m_startHasBeenSet)
-  {
-   payload.WithInteger("start", m_start);
-
-  }
-
   if(m_endHasBeenSet)
   {
    payload.WithInteger("end", m_end);
+
+  }
+
+  if(m_startHasBeenSet)
+  {
+   payload.WithInteger("start", m_start);
 
   }
 

@@ -5,6 +5,7 @@
 
 #pragma once
 #include <aws/datazone/DataZone_EXPORTS.h>
+#include <aws/datazone/model/AssetScope.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/datazone/model/DetailedGlossaryTerm.h>
@@ -34,257 +35,94 @@ namespace Model
   class SubscribedAssetListing
   {
   public:
-    AWS_DATAZONE_API SubscribedAssetListing();
+    AWS_DATAZONE_API SubscribedAssetListing() = default;
     AWS_DATAZONE_API SubscribedAssetListing(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API SubscribedAssetListing& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_DATAZONE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
-     * <p>The identifier of the published asset for which the subscription grant is
-     * created.</p>
+     * <p>The asset scope of the subscribed asset listing.</p>
      */
-    inline const Aws::String& GetEntityId() const{ return m_entityId; }
+    inline const AssetScope& GetAssetScope() const { return m_assetScope; }
+    inline bool AssetScopeHasBeenSet() const { return m_assetScopeHasBeenSet; }
+    template<typename AssetScopeT = AssetScope>
+    void SetAssetScope(AssetScopeT&& value) { m_assetScopeHasBeenSet = true; m_assetScope = std::forward<AssetScopeT>(value); }
+    template<typename AssetScopeT = AssetScope>
+    SubscribedAssetListing& WithAssetScope(AssetScopeT&& value) { SetAssetScope(std::forward<AssetScopeT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>The identifier of the published asset for which the subscription grant is
      * created.</p>
      */
+    inline const Aws::String& GetEntityId() const { return m_entityId; }
     inline bool EntityIdHasBeenSet() const { return m_entityIdHasBeenSet; }
+    template<typename EntityIdT = Aws::String>
+    void SetEntityId(EntityIdT&& value) { m_entityIdHasBeenSet = true; m_entityId = std::forward<EntityIdT>(value); }
+    template<typename EntityIdT = Aws::String>
+    SubscribedAssetListing& WithEntityId(EntityIdT&& value) { SetEntityId(std::forward<EntityIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetEntityId(const Aws::String& value) { m_entityIdHasBeenSet = true; m_entityId = value; }
-
-    /**
-     * <p>The identifier of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetEntityId(Aws::String&& value) { m_entityIdHasBeenSet = true; m_entityId = std::move(value); }
-
-    /**
-     * <p>The identifier of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetEntityId(const char* value) { m_entityIdHasBeenSet = true; m_entityId.assign(value); }
-
-    /**
-     * <p>The identifier of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithEntityId(const Aws::String& value) { SetEntityId(value); return *this;}
-
-    /**
-     * <p>The identifier of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithEntityId(Aws::String&& value) { SetEntityId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithEntityId(const char* value) { SetEntityId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The revision of the published asset for which the subscription grant is
      * created.</p>
      */
-    inline const Aws::String& GetEntityRevision() const{ return m_entityRevision; }
-
-    /**
-     * <p>The revision of the published asset for which the subscription grant is
-     * created.</p>
-     */
+    inline const Aws::String& GetEntityRevision() const { return m_entityRevision; }
     inline bool EntityRevisionHasBeenSet() const { return m_entityRevisionHasBeenSet; }
+    template<typename EntityRevisionT = Aws::String>
+    void SetEntityRevision(EntityRevisionT&& value) { m_entityRevisionHasBeenSet = true; m_entityRevision = std::forward<EntityRevisionT>(value); }
+    template<typename EntityRevisionT = Aws::String>
+    SubscribedAssetListing& WithEntityRevision(EntityRevisionT&& value) { SetEntityRevision(std::forward<EntityRevisionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The revision of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetEntityRevision(const Aws::String& value) { m_entityRevisionHasBeenSet = true; m_entityRevision = value; }
-
-    /**
-     * <p>The revision of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetEntityRevision(Aws::String&& value) { m_entityRevisionHasBeenSet = true; m_entityRevision = std::move(value); }
-
-    /**
-     * <p>The revision of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetEntityRevision(const char* value) { m_entityRevisionHasBeenSet = true; m_entityRevision.assign(value); }
-
-    /**
-     * <p>The revision of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithEntityRevision(const Aws::String& value) { SetEntityRevision(value); return *this;}
-
-    /**
-     * <p>The revision of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithEntityRevision(Aws::String&& value) { SetEntityRevision(std::move(value)); return *this;}
-
-    /**
-     * <p>The revision of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithEntityRevision(const char* value) { SetEntityRevision(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the published asset for which the subscription grant is
      * created.</p>
      */
-    inline const Aws::String& GetEntityType() const{ return m_entityType; }
-
-    /**
-     * <p>The type of the published asset for which the subscription grant is
-     * created.</p>
-     */
+    inline const Aws::String& GetEntityType() const { return m_entityType; }
     inline bool EntityTypeHasBeenSet() const { return m_entityTypeHasBeenSet; }
+    template<typename EntityTypeT = Aws::String>
+    void SetEntityType(EntityTypeT&& value) { m_entityTypeHasBeenSet = true; m_entityType = std::forward<EntityTypeT>(value); }
+    template<typename EntityTypeT = Aws::String>
+    SubscribedAssetListing& WithEntityType(EntityTypeT&& value) { SetEntityType(std::forward<EntityTypeT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetEntityType(const Aws::String& value) { m_entityTypeHasBeenSet = true; m_entityType = value; }
-
-    /**
-     * <p>The type of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetEntityType(Aws::String&& value) { m_entityTypeHasBeenSet = true; m_entityType = std::move(value); }
-
-    /**
-     * <p>The type of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetEntityType(const char* value) { m_entityTypeHasBeenSet = true; m_entityType.assign(value); }
-
-    /**
-     * <p>The type of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithEntityType(const Aws::String& value) { SetEntityType(value); return *this;}
-
-    /**
-     * <p>The type of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithEntityType(Aws::String&& value) { SetEntityType(std::move(value)); return *this;}
-
-    /**
-     * <p>The type of the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithEntityType(const char* value) { SetEntityType(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The forms attached to the published asset for which the subscription grant is
      * created.</p>
      */
-    inline const Aws::String& GetForms() const{ return m_forms; }
-
-    /**
-     * <p>The forms attached to the published asset for which the subscription grant is
-     * created.</p>
-     */
+    inline const Aws::String& GetForms() const { return m_forms; }
     inline bool FormsHasBeenSet() const { return m_formsHasBeenSet; }
+    template<typename FormsT = Aws::String>
+    void SetForms(FormsT&& value) { m_formsHasBeenSet = true; m_forms = std::forward<FormsT>(value); }
+    template<typename FormsT = Aws::String>
+    SubscribedAssetListing& WithForms(FormsT&& value) { SetForms(std::forward<FormsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The forms attached to the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetForms(const Aws::String& value) { m_formsHasBeenSet = true; m_forms = value; }
-
-    /**
-     * <p>The forms attached to the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetForms(Aws::String&& value) { m_formsHasBeenSet = true; m_forms = std::move(value); }
-
-    /**
-     * <p>The forms attached to the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline void SetForms(const char* value) { m_formsHasBeenSet = true; m_forms.assign(value); }
-
-    /**
-     * <p>The forms attached to the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithForms(const Aws::String& value) { SetForms(value); return *this;}
-
-    /**
-     * <p>The forms attached to the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithForms(Aws::String&& value) { SetForms(std::move(value)); return *this;}
-
-    /**
-     * <p>The forms attached to the published asset for which the subscription grant is
-     * created.</p>
-     */
-    inline SubscribedAssetListing& WithForms(const char* value) { SetForms(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The glossary terms attached to the published asset for which the subscription
      * grant is created.</p>
      */
-    inline const Aws::Vector<DetailedGlossaryTerm>& GetGlossaryTerms() const{ return m_glossaryTerms; }
-
-    /**
-     * <p>The glossary terms attached to the published asset for which the subscription
-     * grant is created.</p>
-     */
+    inline const Aws::Vector<DetailedGlossaryTerm>& GetGlossaryTerms() const { return m_glossaryTerms; }
     inline bool GlossaryTermsHasBeenSet() const { return m_glossaryTermsHasBeenSet; }
-
-    /**
-     * <p>The glossary terms attached to the published asset for which the subscription
-     * grant is created.</p>
-     */
-    inline void SetGlossaryTerms(const Aws::Vector<DetailedGlossaryTerm>& value) { m_glossaryTermsHasBeenSet = true; m_glossaryTerms = value; }
-
-    /**
-     * <p>The glossary terms attached to the published asset for which the subscription
-     * grant is created.</p>
-     */
-    inline void SetGlossaryTerms(Aws::Vector<DetailedGlossaryTerm>&& value) { m_glossaryTermsHasBeenSet = true; m_glossaryTerms = std::move(value); }
-
-    /**
-     * <p>The glossary terms attached to the published asset for which the subscription
-     * grant is created.</p>
-     */
-    inline SubscribedAssetListing& WithGlossaryTerms(const Aws::Vector<DetailedGlossaryTerm>& value) { SetGlossaryTerms(value); return *this;}
-
-    /**
-     * <p>The glossary terms attached to the published asset for which the subscription
-     * grant is created.</p>
-     */
-    inline SubscribedAssetListing& WithGlossaryTerms(Aws::Vector<DetailedGlossaryTerm>&& value) { SetGlossaryTerms(std::move(value)); return *this;}
-
-    /**
-     * <p>The glossary terms attached to the published asset for which the subscription
-     * grant is created.</p>
-     */
-    inline SubscribedAssetListing& AddGlossaryTerms(const DetailedGlossaryTerm& value) { m_glossaryTermsHasBeenSet = true; m_glossaryTerms.push_back(value); return *this; }
-
-    /**
-     * <p>The glossary terms attached to the published asset for which the subscription
-     * grant is created.</p>
-     */
-    inline SubscribedAssetListing& AddGlossaryTerms(DetailedGlossaryTerm&& value) { m_glossaryTermsHasBeenSet = true; m_glossaryTerms.push_back(std::move(value)); return *this; }
-
+    template<typename GlossaryTermsT = Aws::Vector<DetailedGlossaryTerm>>
+    void SetGlossaryTerms(GlossaryTermsT&& value) { m_glossaryTermsHasBeenSet = true; m_glossaryTerms = std::forward<GlossaryTermsT>(value); }
+    template<typename GlossaryTermsT = Aws::Vector<DetailedGlossaryTerm>>
+    SubscribedAssetListing& WithGlossaryTerms(GlossaryTermsT&& value) { SetGlossaryTerms(std::forward<GlossaryTermsT>(value)); return *this;}
+    template<typename GlossaryTermsT = DetailedGlossaryTerm>
+    SubscribedAssetListing& AddGlossaryTerms(GlossaryTermsT&& value) { m_glossaryTermsHasBeenSet = true; m_glossaryTerms.emplace_back(std::forward<GlossaryTermsT>(value)); return *this; }
+    ///@}
   private:
+
+    AssetScope m_assetScope;
+    bool m_assetScopeHasBeenSet = false;
 
     Aws::String m_entityId;
     bool m_entityIdHasBeenSet = false;

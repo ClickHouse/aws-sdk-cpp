@@ -27,7 +27,7 @@ namespace Model
   class CreateImageRequest : public ImagebuilderRequest
   {
   public:
-    AWS_IMAGEBUILDER_API CreateImageRequest();
+    AWS_IMAGEBUILDER_API CreateImageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,517 +38,152 @@ namespace Model
     AWS_IMAGEBUILDER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the image recipe that defines how images
      * are configured, tested, and assessed.</p>
      */
-    inline const Aws::String& GetImageRecipeArn() const{ return m_imageRecipeArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that defines how images
-     * are configured, tested, and assessed.</p>
-     */
+    inline const Aws::String& GetImageRecipeArn() const { return m_imageRecipeArn; }
     inline bool ImageRecipeArnHasBeenSet() const { return m_imageRecipeArnHasBeenSet; }
+    template<typename ImageRecipeArnT = Aws::String>
+    void SetImageRecipeArn(ImageRecipeArnT&& value) { m_imageRecipeArnHasBeenSet = true; m_imageRecipeArn = std::forward<ImageRecipeArnT>(value); }
+    template<typename ImageRecipeArnT = Aws::String>
+    CreateImageRequest& WithImageRecipeArn(ImageRecipeArnT&& value) { SetImageRecipeArn(std::forward<ImageRecipeArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that defines how images
-     * are configured, tested, and assessed.</p>
-     */
-    inline void SetImageRecipeArn(const Aws::String& value) { m_imageRecipeArnHasBeenSet = true; m_imageRecipeArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that defines how images
-     * are configured, tested, and assessed.</p>
-     */
-    inline void SetImageRecipeArn(Aws::String&& value) { m_imageRecipeArnHasBeenSet = true; m_imageRecipeArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that defines how images
-     * are configured, tested, and assessed.</p>
-     */
-    inline void SetImageRecipeArn(const char* value) { m_imageRecipeArnHasBeenSet = true; m_imageRecipeArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that defines how images
-     * are configured, tested, and assessed.</p>
-     */
-    inline CreateImageRequest& WithImageRecipeArn(const Aws::String& value) { SetImageRecipeArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that defines how images
-     * are configured, tested, and assessed.</p>
-     */
-    inline CreateImageRequest& WithImageRecipeArn(Aws::String&& value) { SetImageRecipeArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the image recipe that defines how images
-     * are configured, tested, and assessed.</p>
-     */
-    inline CreateImageRequest& WithImageRecipeArn(const char* value) { SetImageRecipeArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the container recipe that defines how
      * images are configured and tested.</p>
      */
-    inline const Aws::String& GetContainerRecipeArn() const{ return m_containerRecipeArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe that defines how
-     * images are configured and tested.</p>
-     */
+    inline const Aws::String& GetContainerRecipeArn() const { return m_containerRecipeArn; }
     inline bool ContainerRecipeArnHasBeenSet() const { return m_containerRecipeArnHasBeenSet; }
+    template<typename ContainerRecipeArnT = Aws::String>
+    void SetContainerRecipeArn(ContainerRecipeArnT&& value) { m_containerRecipeArnHasBeenSet = true; m_containerRecipeArn = std::forward<ContainerRecipeArnT>(value); }
+    template<typename ContainerRecipeArnT = Aws::String>
+    CreateImageRequest& WithContainerRecipeArn(ContainerRecipeArnT&& value) { SetContainerRecipeArn(std::forward<ContainerRecipeArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe that defines how
-     * images are configured and tested.</p>
-     */
-    inline void SetContainerRecipeArn(const Aws::String& value) { m_containerRecipeArnHasBeenSet = true; m_containerRecipeArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe that defines how
-     * images are configured and tested.</p>
-     */
-    inline void SetContainerRecipeArn(Aws::String&& value) { m_containerRecipeArnHasBeenSet = true; m_containerRecipeArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe that defines how
-     * images are configured and tested.</p>
-     */
-    inline void SetContainerRecipeArn(const char* value) { m_containerRecipeArnHasBeenSet = true; m_containerRecipeArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe that defines how
-     * images are configured and tested.</p>
-     */
-    inline CreateImageRequest& WithContainerRecipeArn(const Aws::String& value) { SetContainerRecipeArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe that defines how
-     * images are configured and tested.</p>
-     */
-    inline CreateImageRequest& WithContainerRecipeArn(Aws::String&& value) { SetContainerRecipeArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the container recipe that defines how
-     * images are configured and tested.</p>
-     */
-    inline CreateImageRequest& WithContainerRecipeArn(const char* value) { SetContainerRecipeArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the distribution configuration that defines
      * and configures the outputs of your pipeline.</p>
      */
-    inline const Aws::String& GetDistributionConfigurationArn() const{ return m_distributionConfigurationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the distribution configuration that defines
-     * and configures the outputs of your pipeline.</p>
-     */
+    inline const Aws::String& GetDistributionConfigurationArn() const { return m_distributionConfigurationArn; }
     inline bool DistributionConfigurationArnHasBeenSet() const { return m_distributionConfigurationArnHasBeenSet; }
+    template<typename DistributionConfigurationArnT = Aws::String>
+    void SetDistributionConfigurationArn(DistributionConfigurationArnT&& value) { m_distributionConfigurationArnHasBeenSet = true; m_distributionConfigurationArn = std::forward<DistributionConfigurationArnT>(value); }
+    template<typename DistributionConfigurationArnT = Aws::String>
+    CreateImageRequest& WithDistributionConfigurationArn(DistributionConfigurationArnT&& value) { SetDistributionConfigurationArn(std::forward<DistributionConfigurationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the distribution configuration that defines
-     * and configures the outputs of your pipeline.</p>
-     */
-    inline void SetDistributionConfigurationArn(const Aws::String& value) { m_distributionConfigurationArnHasBeenSet = true; m_distributionConfigurationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the distribution configuration that defines
-     * and configures the outputs of your pipeline.</p>
-     */
-    inline void SetDistributionConfigurationArn(Aws::String&& value) { m_distributionConfigurationArnHasBeenSet = true; m_distributionConfigurationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the distribution configuration that defines
-     * and configures the outputs of your pipeline.</p>
-     */
-    inline void SetDistributionConfigurationArn(const char* value) { m_distributionConfigurationArnHasBeenSet = true; m_distributionConfigurationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the distribution configuration that defines
-     * and configures the outputs of your pipeline.</p>
-     */
-    inline CreateImageRequest& WithDistributionConfigurationArn(const Aws::String& value) { SetDistributionConfigurationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the distribution configuration that defines
-     * and configures the outputs of your pipeline.</p>
-     */
-    inline CreateImageRequest& WithDistributionConfigurationArn(Aws::String&& value) { SetDistributionConfigurationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the distribution configuration that defines
-     * and configures the outputs of your pipeline.</p>
-     */
-    inline CreateImageRequest& WithDistributionConfigurationArn(const char* value) { SetDistributionConfigurationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the infrastructure configuration that
      * defines the environment in which your image will be built and tested.</p>
      */
-    inline const Aws::String& GetInfrastructureConfigurationArn() const{ return m_infrastructureConfigurationArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the infrastructure configuration that
-     * defines the environment in which your image will be built and tested.</p>
-     */
+    inline const Aws::String& GetInfrastructureConfigurationArn() const { return m_infrastructureConfigurationArn; }
     inline bool InfrastructureConfigurationArnHasBeenSet() const { return m_infrastructureConfigurationArnHasBeenSet; }
+    template<typename InfrastructureConfigurationArnT = Aws::String>
+    void SetInfrastructureConfigurationArn(InfrastructureConfigurationArnT&& value) { m_infrastructureConfigurationArnHasBeenSet = true; m_infrastructureConfigurationArn = std::forward<InfrastructureConfigurationArnT>(value); }
+    template<typename InfrastructureConfigurationArnT = Aws::String>
+    CreateImageRequest& WithInfrastructureConfigurationArn(InfrastructureConfigurationArnT&& value) { SetInfrastructureConfigurationArn(std::forward<InfrastructureConfigurationArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the infrastructure configuration that
-     * defines the environment in which your image will be built and tested.</p>
-     */
-    inline void SetInfrastructureConfigurationArn(const Aws::String& value) { m_infrastructureConfigurationArnHasBeenSet = true; m_infrastructureConfigurationArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the infrastructure configuration that
-     * defines the environment in which your image will be built and tested.</p>
-     */
-    inline void SetInfrastructureConfigurationArn(Aws::String&& value) { m_infrastructureConfigurationArnHasBeenSet = true; m_infrastructureConfigurationArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the infrastructure configuration that
-     * defines the environment in which your image will be built and tested.</p>
-     */
-    inline void SetInfrastructureConfigurationArn(const char* value) { m_infrastructureConfigurationArnHasBeenSet = true; m_infrastructureConfigurationArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the infrastructure configuration that
-     * defines the environment in which your image will be built and tested.</p>
-     */
-    inline CreateImageRequest& WithInfrastructureConfigurationArn(const Aws::String& value) { SetInfrastructureConfigurationArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the infrastructure configuration that
-     * defines the environment in which your image will be built and tested.</p>
-     */
-    inline CreateImageRequest& WithInfrastructureConfigurationArn(Aws::String&& value) { SetInfrastructureConfigurationArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the infrastructure configuration that
-     * defines the environment in which your image will be built and tested.</p>
-     */
-    inline CreateImageRequest& WithInfrastructureConfigurationArn(const char* value) { SetInfrastructureConfigurationArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The image tests configuration of the image.</p>
      */
-    inline const ImageTestsConfiguration& GetImageTestsConfiguration() const{ return m_imageTestsConfiguration; }
-
-    /**
-     * <p>The image tests configuration of the image.</p>
-     */
+    inline const ImageTestsConfiguration& GetImageTestsConfiguration() const { return m_imageTestsConfiguration; }
     inline bool ImageTestsConfigurationHasBeenSet() const { return m_imageTestsConfigurationHasBeenSet; }
+    template<typename ImageTestsConfigurationT = ImageTestsConfiguration>
+    void SetImageTestsConfiguration(ImageTestsConfigurationT&& value) { m_imageTestsConfigurationHasBeenSet = true; m_imageTestsConfiguration = std::forward<ImageTestsConfigurationT>(value); }
+    template<typename ImageTestsConfigurationT = ImageTestsConfiguration>
+    CreateImageRequest& WithImageTestsConfiguration(ImageTestsConfigurationT&& value) { SetImageTestsConfiguration(std::forward<ImageTestsConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The image tests configuration of the image.</p>
-     */
-    inline void SetImageTestsConfiguration(const ImageTestsConfiguration& value) { m_imageTestsConfigurationHasBeenSet = true; m_imageTestsConfiguration = value; }
-
-    /**
-     * <p>The image tests configuration of the image.</p>
-     */
-    inline void SetImageTestsConfiguration(ImageTestsConfiguration&& value) { m_imageTestsConfigurationHasBeenSet = true; m_imageTestsConfiguration = std::move(value); }
-
-    /**
-     * <p>The image tests configuration of the image.</p>
-     */
-    inline CreateImageRequest& WithImageTestsConfiguration(const ImageTestsConfiguration& value) { SetImageTestsConfiguration(value); return *this;}
-
-    /**
-     * <p>The image tests configuration of the image.</p>
-     */
-    inline CreateImageRequest& WithImageTestsConfiguration(ImageTestsConfiguration&& value) { SetImageTestsConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Collects additional information about the image being created, including the
      * operating system (OS) version and package list. This information is used to
      * enhance the overall experience of using EC2 Image Builder. Enabled by
      * default.</p>
      */
-    inline bool GetEnhancedImageMetadataEnabled() const{ return m_enhancedImageMetadataEnabled; }
-
-    /**
-     * <p>Collects additional information about the image being created, including the
-     * operating system (OS) version and package list. This information is used to
-     * enhance the overall experience of using EC2 Image Builder. Enabled by
-     * default.</p>
-     */
+    inline bool GetEnhancedImageMetadataEnabled() const { return m_enhancedImageMetadataEnabled; }
     inline bool EnhancedImageMetadataEnabledHasBeenSet() const { return m_enhancedImageMetadataEnabledHasBeenSet; }
-
-    /**
-     * <p>Collects additional information about the image being created, including the
-     * operating system (OS) version and package list. This information is used to
-     * enhance the overall experience of using EC2 Image Builder. Enabled by
-     * default.</p>
-     */
     inline void SetEnhancedImageMetadataEnabled(bool value) { m_enhancedImageMetadataEnabledHasBeenSet = true; m_enhancedImageMetadataEnabled = value; }
-
-    /**
-     * <p>Collects additional information about the image being created, including the
-     * operating system (OS) version and package list. This information is used to
-     * enhance the overall experience of using EC2 Image Builder. Enabled by
-     * default.</p>
-     */
     inline CreateImageRequest& WithEnhancedImageMetadataEnabled(bool value) { SetEnhancedImageMetadataEnabled(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The tags of the image.</p>
      */
-    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags of the image.</p>
-     */
+    inline const Aws::Map<Aws::String, Aws::String>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Map<Aws::String, Aws::String>>
+    CreateImageRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsKeyT = Aws::String, typename TagsValueT = Aws::String>
+    CreateImageRequest& AddTags(TagsKeyT&& key, TagsValueT&& value) {
+      m_tagsHasBeenSet = true; m_tags.emplace(std::forward<TagsKeyT>(key), std::forward<TagsValueT>(value)); return *this;
+    }
+    ///@}
 
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline void SetTags(const Aws::Map<Aws::String, Aws::String>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline void SetTags(Aws::Map<Aws::String, Aws::String>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline CreateImageRequest& WithTags(const Aws::Map<Aws::String, Aws::String>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline CreateImageRequest& WithTags(Aws::Map<Aws::String, Aws::String>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline CreateImageRequest& AddTags(const Aws::String& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline CreateImageRequest& AddTags(Aws::String&& key, const Aws::String& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline CreateImageRequest& AddTags(const Aws::String& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline CreateImageRequest& AddTags(Aws::String&& key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline CreateImageRequest& AddTags(const char* key, Aws::String&& value) { m_tagsHasBeenSet = true; m_tags.emplace(key, std::move(value)); return *this; }
-
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline CreateImageRequest& AddTags(Aws::String&& key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(std::move(key), value); return *this; }
-
-    /**
-     * <p>The tags of the image.</p>
-     */
-    inline CreateImageRequest& AddTags(const char* key, const char* value) { m_tagsHasBeenSet = true; m_tags.emplace(key, value); return *this; }
-
-
+    ///@{
     /**
      * <p>Unique, case-sensitive identifier you provide to ensure idempotency of the
      * request. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
      * idempotency</a> in the <i>Amazon EC2 API Reference</i>.</p>
      */
-    inline const Aws::String& GetClientToken() const{ return m_clientToken; }
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure idempotency of the
-     * request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a> in the <i>Amazon EC2 API Reference</i>.</p>
-     */
+    inline const Aws::String& GetClientToken() const { return m_clientToken; }
     inline bool ClientTokenHasBeenSet() const { return m_clientTokenHasBeenSet; }
+    template<typename ClientTokenT = Aws::String>
+    void SetClientToken(ClientTokenT&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::forward<ClientTokenT>(value); }
+    template<typename ClientTokenT = Aws::String>
+    CreateImageRequest& WithClientToken(ClientTokenT&& value) { SetClientToken(std::forward<ClientTokenT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure idempotency of the
-     * request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a> in the <i>Amazon EC2 API Reference</i>.</p>
-     */
-    inline void SetClientToken(const Aws::String& value) { m_clientTokenHasBeenSet = true; m_clientToken = value; }
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure idempotency of the
-     * request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a> in the <i>Amazon EC2 API Reference</i>.</p>
-     */
-    inline void SetClientToken(Aws::String&& value) { m_clientTokenHasBeenSet = true; m_clientToken = std::move(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure idempotency of the
-     * request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a> in the <i>Amazon EC2 API Reference</i>.</p>
-     */
-    inline void SetClientToken(const char* value) { m_clientTokenHasBeenSet = true; m_clientToken.assign(value); }
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure idempotency of the
-     * request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a> in the <i>Amazon EC2 API Reference</i>.</p>
-     */
-    inline CreateImageRequest& WithClientToken(const Aws::String& value) { SetClientToken(value); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure idempotency of the
-     * request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a> in the <i>Amazon EC2 API Reference</i>.</p>
-     */
-    inline CreateImageRequest& WithClientToken(Aws::String&& value) { SetClientToken(std::move(value)); return *this;}
-
-    /**
-     * <p>Unique, case-sensitive identifier you provide to ensure idempotency of the
-     * request. For more information, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html">Ensuring
-     * idempotency</a> in the <i>Amazon EC2 API Reference</i>.</p>
-     */
-    inline CreateImageRequest& WithClientToken(const char* value) { SetClientToken(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains settings for vulnerability scans.</p>
      */
-    inline const ImageScanningConfiguration& GetImageScanningConfiguration() const{ return m_imageScanningConfiguration; }
-
-    /**
-     * <p>Contains settings for vulnerability scans.</p>
-     */
+    inline const ImageScanningConfiguration& GetImageScanningConfiguration() const { return m_imageScanningConfiguration; }
     inline bool ImageScanningConfigurationHasBeenSet() const { return m_imageScanningConfigurationHasBeenSet; }
+    template<typename ImageScanningConfigurationT = ImageScanningConfiguration>
+    void SetImageScanningConfiguration(ImageScanningConfigurationT&& value) { m_imageScanningConfigurationHasBeenSet = true; m_imageScanningConfiguration = std::forward<ImageScanningConfigurationT>(value); }
+    template<typename ImageScanningConfigurationT = ImageScanningConfiguration>
+    CreateImageRequest& WithImageScanningConfiguration(ImageScanningConfigurationT&& value) { SetImageScanningConfiguration(std::forward<ImageScanningConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Contains settings for vulnerability scans.</p>
-     */
-    inline void SetImageScanningConfiguration(const ImageScanningConfiguration& value) { m_imageScanningConfigurationHasBeenSet = true; m_imageScanningConfiguration = value; }
-
-    /**
-     * <p>Contains settings for vulnerability scans.</p>
-     */
-    inline void SetImageScanningConfiguration(ImageScanningConfiguration&& value) { m_imageScanningConfigurationHasBeenSet = true; m_imageScanningConfiguration = std::move(value); }
-
-    /**
-     * <p>Contains settings for vulnerability scans.</p>
-     */
-    inline CreateImageRequest& WithImageScanningConfiguration(const ImageScanningConfiguration& value) { SetImageScanningConfiguration(value); return *this;}
-
-    /**
-     * <p>Contains settings for vulnerability scans.</p>
-     */
-    inline CreateImageRequest& WithImageScanningConfiguration(ImageScanningConfiguration&& value) { SetImageScanningConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>Contains an array of workflow configuration objects.</p>
      */
-    inline const Aws::Vector<WorkflowConfiguration>& GetWorkflows() const{ return m_workflows; }
-
-    /**
-     * <p>Contains an array of workflow configuration objects.</p>
-     */
+    inline const Aws::Vector<WorkflowConfiguration>& GetWorkflows() const { return m_workflows; }
     inline bool WorkflowsHasBeenSet() const { return m_workflowsHasBeenSet; }
+    template<typename WorkflowsT = Aws::Vector<WorkflowConfiguration>>
+    void SetWorkflows(WorkflowsT&& value) { m_workflowsHasBeenSet = true; m_workflows = std::forward<WorkflowsT>(value); }
+    template<typename WorkflowsT = Aws::Vector<WorkflowConfiguration>>
+    CreateImageRequest& WithWorkflows(WorkflowsT&& value) { SetWorkflows(std::forward<WorkflowsT>(value)); return *this;}
+    template<typename WorkflowsT = WorkflowConfiguration>
+    CreateImageRequest& AddWorkflows(WorkflowsT&& value) { m_workflowsHasBeenSet = true; m_workflows.emplace_back(std::forward<WorkflowsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>Contains an array of workflow configuration objects.</p>
-     */
-    inline void SetWorkflows(const Aws::Vector<WorkflowConfiguration>& value) { m_workflowsHasBeenSet = true; m_workflows = value; }
-
-    /**
-     * <p>Contains an array of workflow configuration objects.</p>
-     */
-    inline void SetWorkflows(Aws::Vector<WorkflowConfiguration>&& value) { m_workflowsHasBeenSet = true; m_workflows = std::move(value); }
-
-    /**
-     * <p>Contains an array of workflow configuration objects.</p>
-     */
-    inline CreateImageRequest& WithWorkflows(const Aws::Vector<WorkflowConfiguration>& value) { SetWorkflows(value); return *this;}
-
-    /**
-     * <p>Contains an array of workflow configuration objects.</p>
-     */
-    inline CreateImageRequest& WithWorkflows(Aws::Vector<WorkflowConfiguration>&& value) { SetWorkflows(std::move(value)); return *this;}
-
-    /**
-     * <p>Contains an array of workflow configuration objects.</p>
-     */
-    inline CreateImageRequest& AddWorkflows(const WorkflowConfiguration& value) { m_workflowsHasBeenSet = true; m_workflows.push_back(value); return *this; }
-
-    /**
-     * <p>Contains an array of workflow configuration objects.</p>
-     */
-    inline CreateImageRequest& AddWorkflows(WorkflowConfiguration&& value) { m_workflowsHasBeenSet = true; m_workflows.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The name or Amazon Resource Name (ARN) for the IAM role you create that
      * grants Image Builder access to perform workflow actions.</p>
      */
-    inline const Aws::String& GetExecutionRole() const{ return m_executionRole; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) for the IAM role you create that
-     * grants Image Builder access to perform workflow actions.</p>
-     */
+    inline const Aws::String& GetExecutionRole() const { return m_executionRole; }
     inline bool ExecutionRoleHasBeenSet() const { return m_executionRoleHasBeenSet; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) for the IAM role you create that
-     * grants Image Builder access to perform workflow actions.</p>
-     */
-    inline void SetExecutionRole(const Aws::String& value) { m_executionRoleHasBeenSet = true; m_executionRole = value; }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) for the IAM role you create that
-     * grants Image Builder access to perform workflow actions.</p>
-     */
-    inline void SetExecutionRole(Aws::String&& value) { m_executionRoleHasBeenSet = true; m_executionRole = std::move(value); }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) for the IAM role you create that
-     * grants Image Builder access to perform workflow actions.</p>
-     */
-    inline void SetExecutionRole(const char* value) { m_executionRoleHasBeenSet = true; m_executionRole.assign(value); }
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) for the IAM role you create that
-     * grants Image Builder access to perform workflow actions.</p>
-     */
-    inline CreateImageRequest& WithExecutionRole(const Aws::String& value) { SetExecutionRole(value); return *this;}
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) for the IAM role you create that
-     * grants Image Builder access to perform workflow actions.</p>
-     */
-    inline CreateImageRequest& WithExecutionRole(Aws::String&& value) { SetExecutionRole(std::move(value)); return *this;}
-
-    /**
-     * <p>The name or Amazon Resource Name (ARN) for the IAM role you create that
-     * grants Image Builder access to perform workflow actions.</p>
-     */
-    inline CreateImageRequest& WithExecutionRole(const char* value) { SetExecutionRole(value); return *this;}
-
+    template<typename ExecutionRoleT = Aws::String>
+    void SetExecutionRole(ExecutionRoleT&& value) { m_executionRoleHasBeenSet = true; m_executionRole = std::forward<ExecutionRoleT>(value); }
+    template<typename ExecutionRoleT = Aws::String>
+    CreateImageRequest& WithExecutionRole(ExecutionRoleT&& value) { SetExecutionRole(std::forward<ExecutionRoleT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_imageRecipeArn;
@@ -566,14 +201,14 @@ namespace Model
     ImageTestsConfiguration m_imageTestsConfiguration;
     bool m_imageTestsConfigurationHasBeenSet = false;
 
-    bool m_enhancedImageMetadataEnabled;
+    bool m_enhancedImageMetadataEnabled{false};
     bool m_enhancedImageMetadataEnabledHasBeenSet = false;
 
     Aws::Map<Aws::String, Aws::String> m_tags;
     bool m_tagsHasBeenSet = false;
 
-    Aws::String m_clientToken;
-    bool m_clientTokenHasBeenSet = false;
+    Aws::String m_clientToken{Aws::Utils::UUID::PseudoRandomUUID()};
+    bool m_clientTokenHasBeenSet = true;
 
     ImageScanningConfiguration m_imageScanningConfiguration;
     bool m_imageScanningConfigurationHasBeenSet = false;

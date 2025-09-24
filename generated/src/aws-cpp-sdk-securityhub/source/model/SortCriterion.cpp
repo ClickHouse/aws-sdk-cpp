@@ -18,17 +18,7 @@ namespace SecurityHub
 namespace Model
 {
 
-SortCriterion::SortCriterion() : 
-    m_fieldHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
-{
-}
-
-SortCriterion::SortCriterion(JsonView jsonValue) : 
-    m_fieldHasBeenSet(false),
-    m_sortOrder(SortOrder::NOT_SET),
-    m_sortOrderHasBeenSet(false)
+SortCriterion::SortCriterion(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,13 @@ SortCriterion& SortCriterion::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("Field"))
   {
     m_field = jsonValue.GetString("Field");
-
     m_fieldHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("SortOrder"))
   {
     m_sortOrder = SortOrderMapper::GetSortOrderForName(jsonValue.GetString("SortOrder"));
-
     m_sortOrderHasBeenSet = true;
   }
-
   return *this;
 }
 

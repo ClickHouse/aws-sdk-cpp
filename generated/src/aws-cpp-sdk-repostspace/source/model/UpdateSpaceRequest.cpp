@@ -12,15 +12,6 @@ using namespace Aws::repostspace::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-UpdateSpaceRequest::UpdateSpaceRequest() : 
-    m_descriptionHasBeenSet(false),
-    m_roleArnHasBeenSet(false),
-    m_spaceIdHasBeenSet(false),
-    m_tier(TierLevel::NOT_SET),
-    m_tierHasBeenSet(false)
-{
-}
-
 Aws::String UpdateSpaceRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -31,15 +22,21 @@ Aws::String UpdateSpaceRequest::SerializePayload() const
 
   }
 
+  if(m_tierHasBeenSet)
+  {
+   payload.WithString("tier", TierLevelMapper::GetNameForTierLevel(m_tier));
+  }
+
   if(m_roleArnHasBeenSet)
   {
    payload.WithString("roleArn", m_roleArn);
 
   }
 
-  if(m_tierHasBeenSet)
+  if(m_supportedEmailDomainsHasBeenSet)
   {
-   payload.WithString("tier", TierLevelMapper::GetNameForTierLevel(m_tier));
+   payload.WithObject("supportedEmailDomains", m_supportedEmailDomains.Jsonize());
+
   }
 
   return payload.View().WriteReadable();

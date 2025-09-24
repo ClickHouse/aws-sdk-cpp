@@ -36,7 +36,7 @@ namespace Model
   class Listener
   {
   public:
-    AWS_ELASTICLOADBALANCINGV2_API Listener();
+    AWS_ELASTICLOADBALANCINGV2_API Listener() = default;
     AWS_ELASTICLOADBALANCINGV2_API Listener(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_ELASTICLOADBALANCINGV2_API Listener& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
@@ -44,356 +44,117 @@ namespace Model
     AWS_ELASTICLOADBALANCINGV2_API void OutputToStream(Aws::OStream& oStream, const char* location) const;
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the listener.</p>
      */
-    inline const Aws::String& GetListenerArn() const{ return m_listenerArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
+    inline const Aws::String& GetListenerArn() const { return m_listenerArn; }
     inline bool ListenerArnHasBeenSet() const { return m_listenerArnHasBeenSet; }
+    template<typename ListenerArnT = Aws::String>
+    void SetListenerArn(ListenerArnT&& value) { m_listenerArnHasBeenSet = true; m_listenerArn = std::forward<ListenerArnT>(value); }
+    template<typename ListenerArnT = Aws::String>
+    Listener& WithListenerArn(ListenerArnT&& value) { SetListenerArn(std::forward<ListenerArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline void SetListenerArn(const Aws::String& value) { m_listenerArnHasBeenSet = true; m_listenerArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline void SetListenerArn(Aws::String&& value) { m_listenerArnHasBeenSet = true; m_listenerArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline void SetListenerArn(const char* value) { m_listenerArnHasBeenSet = true; m_listenerArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline Listener& WithListenerArn(const Aws::String& value) { SetListenerArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline Listener& WithListenerArn(Aws::String&& value) { SetListenerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the listener.</p>
-     */
-    inline Listener& WithListenerArn(const char* value) { SetListenerArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
      */
-    inline const Aws::String& GetLoadBalancerArn() const{ return m_loadBalancerArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
+    inline const Aws::String& GetLoadBalancerArn() const { return m_loadBalancerArn; }
     inline bool LoadBalancerArnHasBeenSet() const { return m_loadBalancerArnHasBeenSet; }
+    template<typename LoadBalancerArnT = Aws::String>
+    void SetLoadBalancerArn(LoadBalancerArnT&& value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn = std::forward<LoadBalancerArnT>(value); }
+    template<typename LoadBalancerArnT = Aws::String>
+    Listener& WithLoadBalancerArn(LoadBalancerArnT&& value) { SetLoadBalancerArn(std::forward<LoadBalancerArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline void SetLoadBalancerArn(const Aws::String& value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline void SetLoadBalancerArn(Aws::String&& value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline void SetLoadBalancerArn(const char* value) { m_loadBalancerArnHasBeenSet = true; m_loadBalancerArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline Listener& WithLoadBalancerArn(const Aws::String& value) { SetLoadBalancerArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline Listener& WithLoadBalancerArn(Aws::String&& value) { SetLoadBalancerArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) of the load balancer.</p>
-     */
-    inline Listener& WithLoadBalancerArn(const char* value) { SetLoadBalancerArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The port on which the load balancer is listening.</p>
      */
-    inline int GetPort() const{ return m_port; }
-
-    /**
-     * <p>The port on which the load balancer is listening.</p>
-     */
+    inline int GetPort() const { return m_port; }
     inline bool PortHasBeenSet() const { return m_portHasBeenSet; }
-
-    /**
-     * <p>The port on which the load balancer is listening.</p>
-     */
     inline void SetPort(int value) { m_portHasBeenSet = true; m_port = value; }
-
-    /**
-     * <p>The port on which the load balancer is listening.</p>
-     */
     inline Listener& WithPort(int value) { SetPort(value); return *this;}
+    ///@}
 
-
+    ///@{
     /**
      * <p>The protocol for connections from clients to the load balancer.</p>
      */
-    inline const ProtocolEnum& GetProtocol() const{ return m_protocol; }
-
-    /**
-     * <p>The protocol for connections from clients to the load balancer.</p>
-     */
+    inline ProtocolEnum GetProtocol() const { return m_protocol; }
     inline bool ProtocolHasBeenSet() const { return m_protocolHasBeenSet; }
+    inline void SetProtocol(ProtocolEnum value) { m_protocolHasBeenSet = true; m_protocol = value; }
+    inline Listener& WithProtocol(ProtocolEnum value) { SetProtocol(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The protocol for connections from clients to the load balancer.</p>
-     */
-    inline void SetProtocol(const ProtocolEnum& value) { m_protocolHasBeenSet = true; m_protocol = value; }
-
-    /**
-     * <p>The protocol for connections from clients to the load balancer.</p>
-     */
-    inline void SetProtocol(ProtocolEnum&& value) { m_protocolHasBeenSet = true; m_protocol = std::move(value); }
-
-    /**
-     * <p>The protocol for connections from clients to the load balancer.</p>
-     */
-    inline Listener& WithProtocol(const ProtocolEnum& value) { SetProtocol(value); return *this;}
-
-    /**
-     * <p>The protocol for connections from clients to the load balancer.</p>
-     */
-    inline Listener& WithProtocol(ProtocolEnum&& value) { SetProtocol(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>[HTTPS or TLS listener] The default certificate for the listener.</p>
      */
-    inline const Aws::Vector<Certificate>& GetCertificates() const{ return m_certificates; }
-
-    /**
-     * <p>[HTTPS or TLS listener] The default certificate for the listener.</p>
-     */
+    inline const Aws::Vector<Certificate>& GetCertificates() const { return m_certificates; }
     inline bool CertificatesHasBeenSet() const { return m_certificatesHasBeenSet; }
+    template<typename CertificatesT = Aws::Vector<Certificate>>
+    void SetCertificates(CertificatesT&& value) { m_certificatesHasBeenSet = true; m_certificates = std::forward<CertificatesT>(value); }
+    template<typename CertificatesT = Aws::Vector<Certificate>>
+    Listener& WithCertificates(CertificatesT&& value) { SetCertificates(std::forward<CertificatesT>(value)); return *this;}
+    template<typename CertificatesT = Certificate>
+    Listener& AddCertificates(CertificatesT&& value) { m_certificatesHasBeenSet = true; m_certificates.emplace_back(std::forward<CertificatesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>[HTTPS or TLS listener] The default certificate for the listener.</p>
-     */
-    inline void SetCertificates(const Aws::Vector<Certificate>& value) { m_certificatesHasBeenSet = true; m_certificates = value; }
-
-    /**
-     * <p>[HTTPS or TLS listener] The default certificate for the listener.</p>
-     */
-    inline void SetCertificates(Aws::Vector<Certificate>&& value) { m_certificatesHasBeenSet = true; m_certificates = std::move(value); }
-
-    /**
-     * <p>[HTTPS or TLS listener] The default certificate for the listener.</p>
-     */
-    inline Listener& WithCertificates(const Aws::Vector<Certificate>& value) { SetCertificates(value); return *this;}
-
-    /**
-     * <p>[HTTPS or TLS listener] The default certificate for the listener.</p>
-     */
-    inline Listener& WithCertificates(Aws::Vector<Certificate>&& value) { SetCertificates(std::move(value)); return *this;}
-
-    /**
-     * <p>[HTTPS or TLS listener] The default certificate for the listener.</p>
-     */
-    inline Listener& AddCertificates(const Certificate& value) { m_certificatesHasBeenSet = true; m_certificates.push_back(value); return *this; }
-
-    /**
-     * <p>[HTTPS or TLS listener] The default certificate for the listener.</p>
-     */
-    inline Listener& AddCertificates(Certificate&& value) { m_certificatesHasBeenSet = true; m_certificates.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>[HTTPS or TLS listener] The security policy that defines which protocols and
      * ciphers are supported.</p>
      */
-    inline const Aws::String& GetSslPolicy() const{ return m_sslPolicy; }
-
-    /**
-     * <p>[HTTPS or TLS listener] The security policy that defines which protocols and
-     * ciphers are supported.</p>
-     */
+    inline const Aws::String& GetSslPolicy() const { return m_sslPolicy; }
     inline bool SslPolicyHasBeenSet() const { return m_sslPolicyHasBeenSet; }
+    template<typename SslPolicyT = Aws::String>
+    void SetSslPolicy(SslPolicyT&& value) { m_sslPolicyHasBeenSet = true; m_sslPolicy = std::forward<SslPolicyT>(value); }
+    template<typename SslPolicyT = Aws::String>
+    Listener& WithSslPolicy(SslPolicyT&& value) { SetSslPolicy(std::forward<SslPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>[HTTPS or TLS listener] The security policy that defines which protocols and
-     * ciphers are supported.</p>
-     */
-    inline void SetSslPolicy(const Aws::String& value) { m_sslPolicyHasBeenSet = true; m_sslPolicy = value; }
-
-    /**
-     * <p>[HTTPS or TLS listener] The security policy that defines which protocols and
-     * ciphers are supported.</p>
-     */
-    inline void SetSslPolicy(Aws::String&& value) { m_sslPolicyHasBeenSet = true; m_sslPolicy = std::move(value); }
-
-    /**
-     * <p>[HTTPS or TLS listener] The security policy that defines which protocols and
-     * ciphers are supported.</p>
-     */
-    inline void SetSslPolicy(const char* value) { m_sslPolicyHasBeenSet = true; m_sslPolicy.assign(value); }
-
-    /**
-     * <p>[HTTPS or TLS listener] The security policy that defines which protocols and
-     * ciphers are supported.</p>
-     */
-    inline Listener& WithSslPolicy(const Aws::String& value) { SetSslPolicy(value); return *this;}
-
-    /**
-     * <p>[HTTPS or TLS listener] The security policy that defines which protocols and
-     * ciphers are supported.</p>
-     */
-    inline Listener& WithSslPolicy(Aws::String&& value) { SetSslPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>[HTTPS or TLS listener] The security policy that defines which protocols and
-     * ciphers are supported.</p>
-     */
-    inline Listener& WithSslPolicy(const char* value) { SetSslPolicy(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The default actions for the listener.</p>
      */
-    inline const Aws::Vector<Action>& GetDefaultActions() const{ return m_defaultActions; }
-
-    /**
-     * <p>The default actions for the listener.</p>
-     */
+    inline const Aws::Vector<Action>& GetDefaultActions() const { return m_defaultActions; }
     inline bool DefaultActionsHasBeenSet() const { return m_defaultActionsHasBeenSet; }
+    template<typename DefaultActionsT = Aws::Vector<Action>>
+    void SetDefaultActions(DefaultActionsT&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions = std::forward<DefaultActionsT>(value); }
+    template<typename DefaultActionsT = Aws::Vector<Action>>
+    Listener& WithDefaultActions(DefaultActionsT&& value) { SetDefaultActions(std::forward<DefaultActionsT>(value)); return *this;}
+    template<typename DefaultActionsT = Action>
+    Listener& AddDefaultActions(DefaultActionsT&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions.emplace_back(std::forward<DefaultActionsT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The default actions for the listener.</p>
-     */
-    inline void SetDefaultActions(const Aws::Vector<Action>& value) { m_defaultActionsHasBeenSet = true; m_defaultActions = value; }
-
-    /**
-     * <p>The default actions for the listener.</p>
-     */
-    inline void SetDefaultActions(Aws::Vector<Action>&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions = std::move(value); }
-
-    /**
-     * <p>The default actions for the listener.</p>
-     */
-    inline Listener& WithDefaultActions(const Aws::Vector<Action>& value) { SetDefaultActions(value); return *this;}
-
-    /**
-     * <p>The default actions for the listener.</p>
-     */
-    inline Listener& WithDefaultActions(Aws::Vector<Action>&& value) { SetDefaultActions(std::move(value)); return *this;}
-
-    /**
-     * <p>The default actions for the listener.</p>
-     */
-    inline Listener& AddDefaultActions(const Action& value) { m_defaultActionsHasBeenSet = true; m_defaultActions.push_back(value); return *this; }
-
-    /**
-     * <p>The default actions for the listener.</p>
-     */
-    inline Listener& AddDefaultActions(Action&& value) { m_defaultActionsHasBeenSet = true; m_defaultActions.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>[TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)
      * policy.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetAlpnPolicy() const{ return m_alpnPolicy; }
-
-    /**
-     * <p>[TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetAlpnPolicy() const { return m_alpnPolicy; }
     inline bool AlpnPolicyHasBeenSet() const { return m_alpnPolicyHasBeenSet; }
+    template<typename AlpnPolicyT = Aws::Vector<Aws::String>>
+    void SetAlpnPolicy(AlpnPolicyT&& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy = std::forward<AlpnPolicyT>(value); }
+    template<typename AlpnPolicyT = Aws::Vector<Aws::String>>
+    Listener& WithAlpnPolicy(AlpnPolicyT&& value) { SetAlpnPolicy(std::forward<AlpnPolicyT>(value)); return *this;}
+    template<typename AlpnPolicyT = Aws::String>
+    Listener& AddAlpnPolicy(AlpnPolicyT&& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy.emplace_back(std::forward<AlpnPolicyT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>[TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy.</p>
-     */
-    inline void SetAlpnPolicy(const Aws::Vector<Aws::String>& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy = value; }
-
-    /**
-     * <p>[TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy.</p>
-     */
-    inline void SetAlpnPolicy(Aws::Vector<Aws::String>&& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy = std::move(value); }
-
-    /**
-     * <p>[TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy.</p>
-     */
-    inline Listener& WithAlpnPolicy(const Aws::Vector<Aws::String>& value) { SetAlpnPolicy(value); return *this;}
-
-    /**
-     * <p>[TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy.</p>
-     */
-    inline Listener& WithAlpnPolicy(Aws::Vector<Aws::String>&& value) { SetAlpnPolicy(std::move(value)); return *this;}
-
-    /**
-     * <p>[TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy.</p>
-     */
-    inline Listener& AddAlpnPolicy(const Aws::String& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy.push_back(value); return *this; }
-
-    /**
-     * <p>[TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy.</p>
-     */
-    inline Listener& AddAlpnPolicy(Aws::String&& value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>[TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN)
-     * policy.</p>
-     */
-    inline Listener& AddAlpnPolicy(const char* value) { m_alpnPolicyHasBeenSet = true; m_alpnPolicy.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The mutual authentication configuration information.</p>
      */
-    inline const MutualAuthenticationAttributes& GetMutualAuthentication() const{ return m_mutualAuthentication; }
-
-    /**
-     * <p>The mutual authentication configuration information.</p>
-     */
+    inline const MutualAuthenticationAttributes& GetMutualAuthentication() const { return m_mutualAuthentication; }
     inline bool MutualAuthenticationHasBeenSet() const { return m_mutualAuthenticationHasBeenSet; }
-
-    /**
-     * <p>The mutual authentication configuration information.</p>
-     */
-    inline void SetMutualAuthentication(const MutualAuthenticationAttributes& value) { m_mutualAuthenticationHasBeenSet = true; m_mutualAuthentication = value; }
-
-    /**
-     * <p>The mutual authentication configuration information.</p>
-     */
-    inline void SetMutualAuthentication(MutualAuthenticationAttributes&& value) { m_mutualAuthenticationHasBeenSet = true; m_mutualAuthentication = std::move(value); }
-
-    /**
-     * <p>The mutual authentication configuration information.</p>
-     */
-    inline Listener& WithMutualAuthentication(const MutualAuthenticationAttributes& value) { SetMutualAuthentication(value); return *this;}
-
-    /**
-     * <p>The mutual authentication configuration information.</p>
-     */
-    inline Listener& WithMutualAuthentication(MutualAuthenticationAttributes&& value) { SetMutualAuthentication(std::move(value)); return *this;}
-
+    template<typename MutualAuthenticationT = MutualAuthenticationAttributes>
+    void SetMutualAuthentication(MutualAuthenticationT&& value) { m_mutualAuthenticationHasBeenSet = true; m_mutualAuthentication = std::forward<MutualAuthenticationT>(value); }
+    template<typename MutualAuthenticationT = MutualAuthenticationAttributes>
+    Listener& WithMutualAuthentication(MutualAuthenticationT&& value) { SetMutualAuthentication(std::forward<MutualAuthenticationT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_listenerArn;
@@ -402,10 +163,10 @@ namespace Model
     Aws::String m_loadBalancerArn;
     bool m_loadBalancerArnHasBeenSet = false;
 
-    int m_port;
+    int m_port{0};
     bool m_portHasBeenSet = false;
 
-    ProtocolEnum m_protocol;
+    ProtocolEnum m_protocol{ProtocolEnum::NOT_SET};
     bool m_protocolHasBeenSet = false;
 
     Aws::Vector<Certificate> m_certificates;

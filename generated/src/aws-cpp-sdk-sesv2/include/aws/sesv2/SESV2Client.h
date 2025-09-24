@@ -29,8 +29,8 @@ namespace SESV2
   {
     public:
       typedef Aws::Client::AWSJsonClient BASECLASS;
-      static const char* SERVICE_NAME;
-      static const char* ALLOCATION_TAG;
+      static const char* GetServiceName();
+      static const char* GetAllocationTag();
 
       typedef SESV2ClientConfiguration ClientConfigurationType;
       typedef SESV2EndpointProvider EndpointProviderType;
@@ -40,14 +40,14 @@ namespace SESV2
         * is not specified, it will be initialized to default values.
         */
         SESV2Client(const Aws::SESV2::SESV2ClientConfiguration& clientConfiguration = Aws::SESV2::SESV2ClientConfiguration(),
-                    std::shared_ptr<SESV2EndpointProviderBase> endpointProvider = Aws::MakeShared<SESV2EndpointProvider>(ALLOCATION_TAG));
+                    std::shared_ptr<SESV2EndpointProviderBase> endpointProvider = nullptr);
 
        /**
         * Initializes client to use SimpleAWSCredentialsProvider, with default http client factory, and optional client config. If client config
         * is not specified, it will be initialized to default values.
         */
         SESV2Client(const Aws::Auth::AWSCredentials& credentials,
-                    std::shared_ptr<SESV2EndpointProviderBase> endpointProvider = Aws::MakeShared<SESV2EndpointProvider>(ALLOCATION_TAG),
+                    std::shared_ptr<SESV2EndpointProviderBase> endpointProvider = nullptr,
                     const Aws::SESV2::SESV2ClientConfiguration& clientConfiguration = Aws::SESV2::SESV2ClientConfiguration());
 
        /**
@@ -55,7 +55,7 @@ namespace SESV2
         * the default http client factory will be used
         */
         SESV2Client(const std::shared_ptr<Aws::Auth::AWSCredentialsProvider>& credentialsProvider,
-                    std::shared_ptr<SESV2EndpointProviderBase> endpointProvider = Aws::MakeShared<SESV2EndpointProvider>(ALLOCATION_TAG),
+                    std::shared_ptr<SESV2EndpointProviderBase> endpointProvider = nullptr,
                     const Aws::SESV2::SESV2ClientConfiguration& clientConfiguration = Aws::SESV2::SESV2ClientConfiguration());
 
 
@@ -170,10 +170,9 @@ namespace SESV2
          * <p>Create an event destination. <i>Events</i> include message sends, deliveries,
          * opens, clicks, bounces, and complaints. <i>Event destinations</i> are places
          * that you can send information about these events to. For example, you can send
-         * event data to Amazon SNS to receive notifications when you receive bounces or
-         * complaints, or you can use Amazon Kinesis Data Firehose to stream data to Amazon
-         * S3 for long-term storage.</p> <p>A single configuration set can include more
-         * than one event destination.</p><p><h3>See Also:</h3>   <a
+         * event data to Amazon EventBridge and associate a rule to send the event to the
+         * specified target.</p> <p>A single configuration set can include more than one
+         * event destination.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/CreateConfigurationSetEventDestination">AWS
          * API Reference</a></p>
          */
@@ -507,6 +506,97 @@ namespace SESV2
         }
 
         /**
+         * <p>Creates a multi-region endpoint (global-endpoint).</p> <p>The primary region
+         * is going to be the AWS-Region where the operation is executed. The secondary
+         * region has to be provided in request's parameters. From the data flow standpoint
+         * there is no difference between primary and secondary regions - sending traffic
+         * will be split equally between the two. The primary region is the region where
+         * the resource has been created and where it can be managed. </p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/CreateMultiRegionEndpoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateMultiRegionEndpointOutcome CreateMultiRegionEndpoint(const Model::CreateMultiRegionEndpointRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateMultiRegionEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateMultiRegionEndpointRequestT = Model::CreateMultiRegionEndpointRequest>
+        Model::CreateMultiRegionEndpointOutcomeCallable CreateMultiRegionEndpointCallable(const CreateMultiRegionEndpointRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::CreateMultiRegionEndpoint, request);
+        }
+
+        /**
+         * An Async wrapper for CreateMultiRegionEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateMultiRegionEndpointRequestT = Model::CreateMultiRegionEndpointRequest>
+        void CreateMultiRegionEndpointAsync(const CreateMultiRegionEndpointRequestT& request, const CreateMultiRegionEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::CreateMultiRegionEndpoint, request, handler, context);
+        }
+
+        /**
+         * <p>Create a tenant.</p> <p> <i>Tenants</i> are logical containers that group
+         * related SES resources together. Each tenant can have its own set of resources
+         * like email identities, configuration sets, and templates, along with reputation
+         * metrics and sending status. This helps isolate and manage email sending for
+         * different customers or business units within your Amazon SES API v2
+         * account.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/CreateTenant">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateTenantOutcome CreateTenant(const Model::CreateTenantRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateTenant that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateTenantRequestT = Model::CreateTenantRequest>
+        Model::CreateTenantOutcomeCallable CreateTenantCallable(const CreateTenantRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::CreateTenant, request);
+        }
+
+        /**
+         * An Async wrapper for CreateTenant that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateTenantRequestT = Model::CreateTenantRequest>
+        void CreateTenantAsync(const CreateTenantRequestT& request, const CreateTenantResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::CreateTenant, request, handler, context);
+        }
+
+        /**
+         * <p>Associate a resource with a tenant.</p> <p> <i>Resources</i> can be email
+         * identities, configuration sets, or email templates. When you associate a
+         * resource with a tenant, you can use that resource when sending emails on behalf
+         * of that tenant.</p> <p>A single resource can be associated with multiple
+         * tenants, allowing for resource sharing across different tenants while
+         * maintaining isolation in email sending operations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/CreateTenantResourceAssociation">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::CreateTenantResourceAssociationOutcome CreateTenantResourceAssociation(const Model::CreateTenantResourceAssociationRequest& request) const;
+
+        /**
+         * A Callable wrapper for CreateTenantResourceAssociation that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename CreateTenantResourceAssociationRequestT = Model::CreateTenantResourceAssociationRequest>
+        Model::CreateTenantResourceAssociationOutcomeCallable CreateTenantResourceAssociationCallable(const CreateTenantResourceAssociationRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::CreateTenantResourceAssociation, request);
+        }
+
+        /**
+         * An Async wrapper for CreateTenantResourceAssociation that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename CreateTenantResourceAssociationRequestT = Model::CreateTenantResourceAssociationRequest>
+        void CreateTenantResourceAssociationAsync(const CreateTenantResourceAssociationRequestT& request, const CreateTenantResourceAssociationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::CreateTenantResourceAssociation, request, handler, context);
+        }
+
+        /**
          * <p>Delete an existing configuration set.</p> <p> <i>Configuration sets</i> are
          * groups of rules that you can apply to the emails you send. You apply a
          * configuration set to an email by including a reference to the configuration set
@@ -540,9 +630,8 @@ namespace SESV2
          * <p>Delete an event destination.</p> <p> <i>Events</i> include message sends,
          * deliveries, opens, clicks, bounces, and complaints. <i>Event destinations</i>
          * are places that you can send information about these events to. For example, you
-         * can send event data to Amazon SNS to receive notifications when you receive
-         * bounces or complaints, or you can use Amazon Kinesis Data Firehose to stream
-         * data to Amazon S3 for long-term storage.</p><p><h3>See Also:</h3>   <a
+         * can send event data to Amazon EventBridge and associate a rule to send the event
+         * to the specified target.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/DeleteConfigurationSetEventDestination">AWS
          * API Reference</a></p>
          */
@@ -759,6 +848,33 @@ namespace SESV2
         }
 
         /**
+         * <p>Deletes a multi-region endpoint (global-endpoint).</p> <p>Only multi-region
+         * endpoints (global-endpoints) whose primary region is the AWS-Region where
+         * operation is executed can be deleted.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/DeleteMultiRegionEndpoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteMultiRegionEndpointOutcome DeleteMultiRegionEndpoint(const Model::DeleteMultiRegionEndpointRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteMultiRegionEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteMultiRegionEndpointRequestT = Model::DeleteMultiRegionEndpointRequest>
+        Model::DeleteMultiRegionEndpointOutcomeCallable DeleteMultiRegionEndpointCallable(const DeleteMultiRegionEndpointRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::DeleteMultiRegionEndpoint, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteMultiRegionEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteMultiRegionEndpointRequestT = Model::DeleteMultiRegionEndpointRequest>
+        void DeleteMultiRegionEndpointAsync(const DeleteMultiRegionEndpointRequestT& request, const DeleteMultiRegionEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::DeleteMultiRegionEndpoint, request, handler, context);
+        }
+
+        /**
          * <p>Removes an email address from the suppression list for your
          * account.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/DeleteSuppressedDestination">AWS
@@ -785,19 +901,75 @@ namespace SESV2
         }
 
         /**
+         * <p>Delete an existing tenant.</p> <p>When you delete a tenant, its associations
+         * with resources are removed, but the resources themselves are not
+         * deleted.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/DeleteTenant">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteTenantOutcome DeleteTenant(const Model::DeleteTenantRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteTenant that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteTenantRequestT = Model::DeleteTenantRequest>
+        Model::DeleteTenantOutcomeCallable DeleteTenantCallable(const DeleteTenantRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::DeleteTenant, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteTenant that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteTenantRequestT = Model::DeleteTenantRequest>
+        void DeleteTenantAsync(const DeleteTenantRequestT& request, const DeleteTenantResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::DeleteTenant, request, handler, context);
+        }
+
+        /**
+         * <p>Delete an association between a tenant and a resource.</p> <p>When you delete
+         * a tenant-resource association, the resource itself is not deleted, only its
+         * association with the specific tenant is removed. After removal, the resource
+         * will no longer be available for use with that tenant's email sending
+         * operations.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/DeleteTenantResourceAssociation">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::DeleteTenantResourceAssociationOutcome DeleteTenantResourceAssociation(const Model::DeleteTenantResourceAssociationRequest& request) const;
+
+        /**
+         * A Callable wrapper for DeleteTenantResourceAssociation that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename DeleteTenantResourceAssociationRequestT = Model::DeleteTenantResourceAssociationRequest>
+        Model::DeleteTenantResourceAssociationOutcomeCallable DeleteTenantResourceAssociationCallable(const DeleteTenantResourceAssociationRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::DeleteTenantResourceAssociation, request);
+        }
+
+        /**
+         * An Async wrapper for DeleteTenantResourceAssociation that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename DeleteTenantResourceAssociationRequestT = Model::DeleteTenantResourceAssociationRequest>
+        void DeleteTenantResourceAssociationAsync(const DeleteTenantResourceAssociationRequestT& request, const DeleteTenantResourceAssociationResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::DeleteTenantResourceAssociation, request, handler, context);
+        }
+
+        /**
          * <p>Obtain information about the email-sending status and capabilities of your
          * Amazon SES account in the current Amazon Web Services Region.</p><p><h3>See
          * Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/GetAccount">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetAccountOutcome GetAccount(const Model::GetAccountRequest& request) const;
+        virtual Model::GetAccountOutcome GetAccount(const Model::GetAccountRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetAccount that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetAccountRequestT = Model::GetAccountRequest>
-        Model::GetAccountOutcomeCallable GetAccountCallable(const GetAccountRequestT& request) const
+        Model::GetAccountOutcomeCallable GetAccountCallable(const GetAccountRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::GetAccount, request);
         }
@@ -806,7 +978,7 @@ namespace SESV2
          * An Async wrapper for GetAccount that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetAccountRequestT = Model::GetAccountRequest>
-        void GetAccountAsync(const GetAccountRequestT& request, const GetAccountResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetAccountAsync(const GetAccountResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetAccountRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::GetAccount, request, handler, context);
         }
@@ -873,9 +1045,8 @@ namespace SESV2
          * configuration set.</p> <p> <i>Events</i> include message sends, deliveries,
          * opens, clicks, bounces, and complaints. <i>Event destinations</i> are places
          * that you can send information about these events to. For example, you can send
-         * event data to Amazon SNS to receive notifications when you receive bounces or
-         * complaints, or you can use Amazon Kinesis Data Firehose to stream data to Amazon
-         * S3 for long-term storage.</p><p><h3>See Also:</h3>   <a
+         * event data to Amazon EventBridge and associate a rule to send the event to the
+         * specified target.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/GetConfigurationSetEventDestinations">AWS
          * API Reference</a></p>
          */
@@ -1039,13 +1210,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/GetDedicatedIps">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetDedicatedIpsOutcome GetDedicatedIps(const Model::GetDedicatedIpsRequest& request) const;
+        virtual Model::GetDedicatedIpsOutcome GetDedicatedIps(const Model::GetDedicatedIpsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetDedicatedIps that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetDedicatedIpsRequestT = Model::GetDedicatedIpsRequest>
-        Model::GetDedicatedIpsOutcomeCallable GetDedicatedIpsCallable(const GetDedicatedIpsRequestT& request) const
+        Model::GetDedicatedIpsOutcomeCallable GetDedicatedIpsCallable(const GetDedicatedIpsRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::GetDedicatedIps, request);
         }
@@ -1054,7 +1225,7 @@ namespace SESV2
          * An Async wrapper for GetDedicatedIps that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetDedicatedIpsRequestT = Model::GetDedicatedIpsRequest>
-        void GetDedicatedIpsAsync(const GetDedicatedIpsRequestT& request, const GetDedicatedIpsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetDedicatedIpsAsync(const GetDedicatedIpsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetDedicatedIpsRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::GetDedicatedIps, request, handler, context);
         }
@@ -1073,13 +1244,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/GetDeliverabilityDashboardOptions">AWS
          * API Reference</a></p>
          */
-        virtual Model::GetDeliverabilityDashboardOptionsOutcome GetDeliverabilityDashboardOptions(const Model::GetDeliverabilityDashboardOptionsRequest& request) const;
+        virtual Model::GetDeliverabilityDashboardOptionsOutcome GetDeliverabilityDashboardOptions(const Model::GetDeliverabilityDashboardOptionsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for GetDeliverabilityDashboardOptions that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename GetDeliverabilityDashboardOptionsRequestT = Model::GetDeliverabilityDashboardOptionsRequest>
-        Model::GetDeliverabilityDashboardOptionsOutcomeCallable GetDeliverabilityDashboardOptionsCallable(const GetDeliverabilityDashboardOptionsRequestT& request) const
+        Model::GetDeliverabilityDashboardOptionsOutcomeCallable GetDeliverabilityDashboardOptionsCallable(const GetDeliverabilityDashboardOptionsRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::GetDeliverabilityDashboardOptions, request);
         }
@@ -1088,7 +1259,7 @@ namespace SESV2
          * An Async wrapper for GetDeliverabilityDashboardOptions that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename GetDeliverabilityDashboardOptionsRequestT = Model::GetDeliverabilityDashboardOptionsRequest>
-        void GetDeliverabilityDashboardOptionsAsync(const GetDeliverabilityDashboardOptionsRequestT& request, const GetDeliverabilityDashboardOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void GetDeliverabilityDashboardOptionsAsync(const GetDeliverabilityDashboardOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const GetDeliverabilityDashboardOptionsRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::GetDeliverabilityDashboardOptions, request, handler, context);
         }
@@ -1340,6 +1511,66 @@ namespace SESV2
         }
 
         /**
+         * <p>Displays the multi-region endpoint (global-endpoint) configuration.</p>
+         * <p>Only multi-region endpoints (global-endpoints) whose primary region is the
+         * AWS-Region where operation is executed can be displayed.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/GetMultiRegionEndpoint">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetMultiRegionEndpointOutcome GetMultiRegionEndpoint(const Model::GetMultiRegionEndpointRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetMultiRegionEndpoint that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetMultiRegionEndpointRequestT = Model::GetMultiRegionEndpointRequest>
+        Model::GetMultiRegionEndpointOutcomeCallable GetMultiRegionEndpointCallable(const GetMultiRegionEndpointRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::GetMultiRegionEndpoint, request);
+        }
+
+        /**
+         * An Async wrapper for GetMultiRegionEndpoint that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetMultiRegionEndpointRequestT = Model::GetMultiRegionEndpointRequest>
+        void GetMultiRegionEndpointAsync(const GetMultiRegionEndpointRequestT& request, const GetMultiRegionEndpointResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::GetMultiRegionEndpoint, request, handler, context);
+        }
+
+        /**
+         * <p>Retrieve information about a specific reputation entity, including its
+         * reputation management policy, customer-managed status, Amazon Web Services
+         * Amazon SES-managed status, and aggregate sending status.</p> <p> <i>Reputation
+         * entities</i> represent resources in your Amazon SES account that have reputation
+         * tracking and management capabilities. The reputation impact reflects the highest
+         * impact reputation finding for the entity. Reputation findings can be retrieved
+         * using the <code>ListRecommendations</code> operation.</p><p><h3>See Also:</h3>  
+         * <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/GetReputationEntity">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::GetReputationEntityOutcome GetReputationEntity(const Model::GetReputationEntityRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetReputationEntity that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetReputationEntityRequestT = Model::GetReputationEntityRequest>
+        Model::GetReputationEntityOutcomeCallable GetReputationEntityCallable(const GetReputationEntityRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::GetReputationEntity, request);
+        }
+
+        /**
+         * An Async wrapper for GetReputationEntity that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetReputationEntityRequestT = Model::GetReputationEntityRequest>
+        void GetReputationEntityAsync(const GetReputationEntityRequestT& request, const GetReputationEntityResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::GetReputationEntity, request, handler, context);
+        }
+
+        /**
          * <p>Retrieves information about a specific email address that's on the
          * suppression list for your account.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/GetSuppressedDestination">AWS
@@ -1366,6 +1597,32 @@ namespace SESV2
         }
 
         /**
+         * <p>Get information about a specific tenant, including the tenant's name, ID,
+         * ARN, creation timestamp, tags, and sending status.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/GetTenant">AWS API
+         * Reference</a></p>
+         */
+        virtual Model::GetTenantOutcome GetTenant(const Model::GetTenantRequest& request) const;
+
+        /**
+         * A Callable wrapper for GetTenant that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename GetTenantRequestT = Model::GetTenantRequest>
+        Model::GetTenantOutcomeCallable GetTenantCallable(const GetTenantRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::GetTenant, request);
+        }
+
+        /**
+         * An Async wrapper for GetTenant that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename GetTenantRequestT = Model::GetTenantRequest>
+        void GetTenantAsync(const GetTenantRequestT& request, const GetTenantResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::GetTenant, request, handler, context);
+        }
+
+        /**
          * <p>List all of the configuration sets associated with your account in the
          * current region.</p> <p> <i>Configuration sets</i> are groups of rules that you
          * can apply to the emails you send. You apply a configuration set to an email by
@@ -1375,13 +1632,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListConfigurationSets">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListConfigurationSetsOutcome ListConfigurationSets(const Model::ListConfigurationSetsRequest& request) const;
+        virtual Model::ListConfigurationSetsOutcome ListConfigurationSets(const Model::ListConfigurationSetsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListConfigurationSets that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListConfigurationSetsRequestT = Model::ListConfigurationSetsRequest>
-        Model::ListConfigurationSetsOutcomeCallable ListConfigurationSetsCallable(const ListConfigurationSetsRequestT& request) const
+        Model::ListConfigurationSetsOutcomeCallable ListConfigurationSetsCallable(const ListConfigurationSetsRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListConfigurationSets, request);
         }
@@ -1390,23 +1647,26 @@ namespace SESV2
          * An Async wrapper for ListConfigurationSets that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListConfigurationSetsRequestT = Model::ListConfigurationSetsRequest>
-        void ListConfigurationSetsAsync(const ListConfigurationSetsRequestT& request, const ListConfigurationSetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListConfigurationSetsAsync(const ListConfigurationSetsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListConfigurationSetsRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListConfigurationSets, request, handler, context);
         }
 
         /**
-         * <p>Lists all of the contact lists available.</p><p><h3>See Also:</h3>   <a
+         * <p>Lists all of the contact lists available.</p> <p>If your output includes a
+         * "NextToken" field with a string value, this indicates there may be additional
+         * contacts on the filtered list - regardless of the number of contacts
+         * returned.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListContactLists">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListContactListsOutcome ListContactLists(const Model::ListContactListsRequest& request) const;
+        virtual Model::ListContactListsOutcome ListContactLists(const Model::ListContactListsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListContactLists that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListContactListsRequestT = Model::ListContactListsRequest>
-        Model::ListContactListsOutcomeCallable ListContactListsCallable(const ListContactListsRequestT& request) const
+        Model::ListContactListsOutcomeCallable ListContactListsCallable(const ListContactListsRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListContactLists, request);
         }
@@ -1415,7 +1675,7 @@ namespace SESV2
          * An Async wrapper for ListContactLists that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListContactListsRequestT = Model::ListContactListsRequest>
-        void ListContactListsAsync(const ListContactListsRequestT& request, const ListContactListsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListContactListsAsync(const ListContactListsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListContactListsRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListContactLists, request, handler, context);
         }
@@ -1457,13 +1717,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListCustomVerificationEmailTemplates">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListCustomVerificationEmailTemplatesOutcome ListCustomVerificationEmailTemplates(const Model::ListCustomVerificationEmailTemplatesRequest& request) const;
+        virtual Model::ListCustomVerificationEmailTemplatesOutcome ListCustomVerificationEmailTemplates(const Model::ListCustomVerificationEmailTemplatesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListCustomVerificationEmailTemplates that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListCustomVerificationEmailTemplatesRequestT = Model::ListCustomVerificationEmailTemplatesRequest>
-        Model::ListCustomVerificationEmailTemplatesOutcomeCallable ListCustomVerificationEmailTemplatesCallable(const ListCustomVerificationEmailTemplatesRequestT& request) const
+        Model::ListCustomVerificationEmailTemplatesOutcomeCallable ListCustomVerificationEmailTemplatesCallable(const ListCustomVerificationEmailTemplatesRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListCustomVerificationEmailTemplates, request);
         }
@@ -1472,7 +1732,7 @@ namespace SESV2
          * An Async wrapper for ListCustomVerificationEmailTemplates that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListCustomVerificationEmailTemplatesRequestT = Model::ListCustomVerificationEmailTemplatesRequest>
-        void ListCustomVerificationEmailTemplatesAsync(const ListCustomVerificationEmailTemplatesRequestT& request, const ListCustomVerificationEmailTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListCustomVerificationEmailTemplatesAsync(const ListCustomVerificationEmailTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListCustomVerificationEmailTemplatesRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListCustomVerificationEmailTemplates, request, handler, context);
         }
@@ -1483,13 +1743,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListDedicatedIpPools">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListDedicatedIpPoolsOutcome ListDedicatedIpPools(const Model::ListDedicatedIpPoolsRequest& request) const;
+        virtual Model::ListDedicatedIpPoolsOutcome ListDedicatedIpPools(const Model::ListDedicatedIpPoolsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListDedicatedIpPools that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListDedicatedIpPoolsRequestT = Model::ListDedicatedIpPoolsRequest>
-        Model::ListDedicatedIpPoolsOutcomeCallable ListDedicatedIpPoolsCallable(const ListDedicatedIpPoolsRequestT& request) const
+        Model::ListDedicatedIpPoolsOutcomeCallable ListDedicatedIpPoolsCallable(const ListDedicatedIpPoolsRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListDedicatedIpPools, request);
         }
@@ -1498,7 +1758,7 @@ namespace SESV2
          * An Async wrapper for ListDedicatedIpPools that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListDedicatedIpPoolsRequestT = Model::ListDedicatedIpPoolsRequest>
-        void ListDedicatedIpPoolsAsync(const ListDedicatedIpPoolsRequestT& request, const ListDedicatedIpPoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListDedicatedIpPoolsAsync(const ListDedicatedIpPoolsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListDedicatedIpPoolsRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListDedicatedIpPools, request, handler, context);
         }
@@ -1511,13 +1771,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListDeliverabilityTestReports">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListDeliverabilityTestReportsOutcome ListDeliverabilityTestReports(const Model::ListDeliverabilityTestReportsRequest& request) const;
+        virtual Model::ListDeliverabilityTestReportsOutcome ListDeliverabilityTestReports(const Model::ListDeliverabilityTestReportsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListDeliverabilityTestReports that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListDeliverabilityTestReportsRequestT = Model::ListDeliverabilityTestReportsRequest>
-        Model::ListDeliverabilityTestReportsOutcomeCallable ListDeliverabilityTestReportsCallable(const ListDeliverabilityTestReportsRequestT& request) const
+        Model::ListDeliverabilityTestReportsOutcomeCallable ListDeliverabilityTestReportsCallable(const ListDeliverabilityTestReportsRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListDeliverabilityTestReports, request);
         }
@@ -1526,7 +1786,7 @@ namespace SESV2
          * An Async wrapper for ListDeliverabilityTestReports that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListDeliverabilityTestReportsRequestT = Model::ListDeliverabilityTestReportsRequest>
-        void ListDeliverabilityTestReportsAsync(const ListDeliverabilityTestReportsRequestT& request, const ListDeliverabilityTestReportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListDeliverabilityTestReportsAsync(const ListDeliverabilityTestReportsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListDeliverabilityTestReportsRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListDeliverabilityTestReports, request, handler, context);
         }
@@ -1568,13 +1828,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListEmailIdentities">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListEmailIdentitiesOutcome ListEmailIdentities(const Model::ListEmailIdentitiesRequest& request) const;
+        virtual Model::ListEmailIdentitiesOutcome ListEmailIdentities(const Model::ListEmailIdentitiesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListEmailIdentities that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListEmailIdentitiesRequestT = Model::ListEmailIdentitiesRequest>
-        Model::ListEmailIdentitiesOutcomeCallable ListEmailIdentitiesCallable(const ListEmailIdentitiesRequestT& request) const
+        Model::ListEmailIdentitiesOutcomeCallable ListEmailIdentitiesCallable(const ListEmailIdentitiesRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListEmailIdentities, request);
         }
@@ -1583,7 +1843,7 @@ namespace SESV2
          * An Async wrapper for ListEmailIdentities that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListEmailIdentitiesRequestT = Model::ListEmailIdentitiesRequest>
-        void ListEmailIdentitiesAsync(const ListEmailIdentitiesRequestT& request, const ListEmailIdentitiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListEmailIdentitiesAsync(const ListEmailIdentitiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListEmailIdentitiesRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListEmailIdentities, request, handler, context);
         }
@@ -1595,13 +1855,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListEmailTemplates">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListEmailTemplatesOutcome ListEmailTemplates(const Model::ListEmailTemplatesRequest& request) const;
+        virtual Model::ListEmailTemplatesOutcome ListEmailTemplates(const Model::ListEmailTemplatesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListEmailTemplates that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListEmailTemplatesRequestT = Model::ListEmailTemplatesRequest>
-        Model::ListEmailTemplatesOutcomeCallable ListEmailTemplatesCallable(const ListEmailTemplatesRequestT& request) const
+        Model::ListEmailTemplatesOutcomeCallable ListEmailTemplatesCallable(const ListEmailTemplatesRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListEmailTemplates, request);
         }
@@ -1610,7 +1870,7 @@ namespace SESV2
          * An Async wrapper for ListEmailTemplates that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListEmailTemplatesRequestT = Model::ListEmailTemplatesRequest>
-        void ListEmailTemplatesAsync(const ListEmailTemplatesRequestT& request, const ListEmailTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListEmailTemplatesAsync(const ListEmailTemplatesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListEmailTemplatesRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListEmailTemplates, request, handler, context);
         }
@@ -1620,13 +1880,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListExportJobs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListExportJobsOutcome ListExportJobs(const Model::ListExportJobsRequest& request) const;
+        virtual Model::ListExportJobsOutcome ListExportJobs(const Model::ListExportJobsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListExportJobs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListExportJobsRequestT = Model::ListExportJobsRequest>
-        Model::ListExportJobsOutcomeCallable ListExportJobsCallable(const ListExportJobsRequestT& request) const
+        Model::ListExportJobsOutcomeCallable ListExportJobsCallable(const ListExportJobsRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListExportJobs, request);
         }
@@ -1635,7 +1895,7 @@ namespace SESV2
          * An Async wrapper for ListExportJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListExportJobsRequestT = Model::ListExportJobsRequest>
-        void ListExportJobsAsync(const ListExportJobsRequestT& request, const ListExportJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListExportJobsAsync(const ListExportJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListExportJobsRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListExportJobs, request, handler, context);
         }
@@ -1645,13 +1905,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListImportJobs">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListImportJobsOutcome ListImportJobs(const Model::ListImportJobsRequest& request) const;
+        virtual Model::ListImportJobsOutcome ListImportJobs(const Model::ListImportJobsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListImportJobs that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListImportJobsRequestT = Model::ListImportJobsRequest>
-        Model::ListImportJobsOutcomeCallable ListImportJobsCallable(const ListImportJobsRequestT& request) const
+        Model::ListImportJobsOutcomeCallable ListImportJobsCallable(const ListImportJobsRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListImportJobs, request);
         }
@@ -1660,9 +1920,36 @@ namespace SESV2
          * An Async wrapper for ListImportJobs that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListImportJobsRequestT = Model::ListImportJobsRequest>
-        void ListImportJobsAsync(const ListImportJobsRequestT& request, const ListImportJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListImportJobsAsync(const ListImportJobsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListImportJobsRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListImportJobs, request, handler, context);
+        }
+
+        /**
+         * <p>List the multi-region endpoints (global-endpoints).</p> <p>Only multi-region
+         * endpoints (global-endpoints) whose primary region is the AWS-Region where
+         * operation is executed will be listed.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListMultiRegionEndpoints">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListMultiRegionEndpointsOutcome ListMultiRegionEndpoints(const Model::ListMultiRegionEndpointsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListMultiRegionEndpoints that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListMultiRegionEndpointsRequestT = Model::ListMultiRegionEndpointsRequest>
+        Model::ListMultiRegionEndpointsOutcomeCallable ListMultiRegionEndpointsCallable(const ListMultiRegionEndpointsRequestT& request = {}) const
+        {
+            return SubmitCallable(&SESV2Client::ListMultiRegionEndpoints, request);
+        }
+
+        /**
+         * An Async wrapper for ListMultiRegionEndpoints that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListMultiRegionEndpointsRequestT = Model::ListMultiRegionEndpointsRequest>
+        void ListMultiRegionEndpointsAsync(const ListMultiRegionEndpointsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListMultiRegionEndpointsRequestT& request = {}) const
+        {
+            return SubmitAsync(&SESV2Client::ListMultiRegionEndpoints, request, handler, context);
         }
 
         /**
@@ -1672,13 +1959,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListRecommendations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListRecommendationsOutcome ListRecommendations(const Model::ListRecommendationsRequest& request) const;
+        virtual Model::ListRecommendationsOutcome ListRecommendations(const Model::ListRecommendationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListRecommendations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListRecommendationsRequestT = Model::ListRecommendationsRequest>
-        Model::ListRecommendationsOutcomeCallable ListRecommendationsCallable(const ListRecommendationsRequestT& request) const
+        Model::ListRecommendationsOutcomeCallable ListRecommendationsCallable(const ListRecommendationsRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListRecommendations, request);
         }
@@ -1687,9 +1974,68 @@ namespace SESV2
          * An Async wrapper for ListRecommendations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListRecommendationsRequestT = Model::ListRecommendationsRequest>
-        void ListRecommendationsAsync(const ListRecommendationsRequestT& request, const ListRecommendationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListRecommendationsAsync(const ListRecommendationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListRecommendationsRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListRecommendations, request, handler, context);
+        }
+
+        /**
+         * <p>List reputation entities in your Amazon SES account in the current Amazon Web
+         * Services Region. You can filter the results by entity type, reputation impact,
+         * sending status, or entity reference prefix.</p> <p> <i>Reputation entities</i>
+         * represent resources in your account that have reputation tracking and management
+         * capabilities. Use this operation to get an overview of all entities and their
+         * current reputation status.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListReputationEntities">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListReputationEntitiesOutcome ListReputationEntities(const Model::ListReputationEntitiesRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListReputationEntities that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListReputationEntitiesRequestT = Model::ListReputationEntitiesRequest>
+        Model::ListReputationEntitiesOutcomeCallable ListReputationEntitiesCallable(const ListReputationEntitiesRequestT& request = {}) const
+        {
+            return SubmitCallable(&SESV2Client::ListReputationEntities, request);
+        }
+
+        /**
+         * An Async wrapper for ListReputationEntities that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListReputationEntitiesRequestT = Model::ListReputationEntitiesRequest>
+        void ListReputationEntitiesAsync(const ListReputationEntitiesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListReputationEntitiesRequestT& request = {}) const
+        {
+            return SubmitAsync(&SESV2Client::ListReputationEntities, request, handler, context);
+        }
+
+        /**
+         * <p>List all tenants associated with a specific resource.</p> <p>This operation
+         * returns a list of tenants that are associated with the specified resource. This
+         * is useful for understanding which tenants are currently using a particular
+         * resource such as an email identity, configuration set, or email
+         * template.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListResourceTenants">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListResourceTenantsOutcome ListResourceTenants(const Model::ListResourceTenantsRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListResourceTenants that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListResourceTenantsRequestT = Model::ListResourceTenantsRequest>
+        Model::ListResourceTenantsOutcomeCallable ListResourceTenantsCallable(const ListResourceTenantsRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::ListResourceTenants, request);
+        }
+
+        /**
+         * An Async wrapper for ListResourceTenants that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListResourceTenantsRequestT = Model::ListResourceTenantsRequest>
+        void ListResourceTenantsAsync(const ListResourceTenantsRequestT& request, const ListResourceTenantsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::ListResourceTenants, request, handler, context);
         }
 
         /**
@@ -1698,13 +2044,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListSuppressedDestinations">AWS
          * API Reference</a></p>
          */
-        virtual Model::ListSuppressedDestinationsOutcome ListSuppressedDestinations(const Model::ListSuppressedDestinationsRequest& request) const;
+        virtual Model::ListSuppressedDestinationsOutcome ListSuppressedDestinations(const Model::ListSuppressedDestinationsRequest& request = {}) const;
 
         /**
          * A Callable wrapper for ListSuppressedDestinations that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename ListSuppressedDestinationsRequestT = Model::ListSuppressedDestinationsRequest>
-        Model::ListSuppressedDestinationsOutcomeCallable ListSuppressedDestinationsCallable(const ListSuppressedDestinationsRequestT& request) const
+        Model::ListSuppressedDestinationsOutcomeCallable ListSuppressedDestinationsCallable(const ListSuppressedDestinationsRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::ListSuppressedDestinations, request);
         }
@@ -1713,7 +2059,7 @@ namespace SESV2
          * An Async wrapper for ListSuppressedDestinations that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename ListSuppressedDestinationsRequestT = Model::ListSuppressedDestinationsRequest>
-        void ListSuppressedDestinationsAsync(const ListSuppressedDestinationsRequestT& request, const ListSuppressedDestinationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void ListSuppressedDestinationsAsync(const ListSuppressedDestinationsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListSuppressedDestinationsRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::ListSuppressedDestinations, request, handler, context);
         }
@@ -1749,18 +2095,74 @@ namespace SESV2
         }
 
         /**
+         * <p>List all resources associated with a specific tenant.</p> <p>This operation
+         * returns a list of resources (email identities, configuration sets, or email
+         * templates) that are associated with the specified tenant. You can optionally
+         * filter the results by resource type.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListTenantResources">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListTenantResourcesOutcome ListTenantResources(const Model::ListTenantResourcesRequest& request) const;
+
+        /**
+         * A Callable wrapper for ListTenantResources that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListTenantResourcesRequestT = Model::ListTenantResourcesRequest>
+        Model::ListTenantResourcesOutcomeCallable ListTenantResourcesCallable(const ListTenantResourcesRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::ListTenantResources, request);
+        }
+
+        /**
+         * An Async wrapper for ListTenantResources that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListTenantResourcesRequestT = Model::ListTenantResourcesRequest>
+        void ListTenantResourcesAsync(const ListTenantResourcesRequestT& request, const ListTenantResourcesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::ListTenantResources, request, handler, context);
+        }
+
+        /**
+         * <p>List all tenants associated with your account in the current Amazon Web
+         * Services Region.</p> <p>This operation returns basic information about each
+         * tenant, such as tenant name, ID, ARN, and creation timestamp.</p><p><h3>See
+         * Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/ListTenants">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::ListTenantsOutcome ListTenants(const Model::ListTenantsRequest& request = {}) const;
+
+        /**
+         * A Callable wrapper for ListTenants that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename ListTenantsRequestT = Model::ListTenantsRequest>
+        Model::ListTenantsOutcomeCallable ListTenantsCallable(const ListTenantsRequestT& request = {}) const
+        {
+            return SubmitCallable(&SESV2Client::ListTenants, request);
+        }
+
+        /**
+         * An Async wrapper for ListTenants that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename ListTenantsRequestT = Model::ListTenantsRequest>
+        void ListTenantsAsync(const ListTenantsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const ListTenantsRequestT& request = {}) const
+        {
+            return SubmitAsync(&SESV2Client::ListTenants, request, handler, context);
+        }
+
+        /**
          * <p>Enable or disable the automatic warm-up feature for dedicated IP
          * addresses.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/PutAccountDedicatedIpWarmupAttributes">AWS
          * API Reference</a></p>
          */
-        virtual Model::PutAccountDedicatedIpWarmupAttributesOutcome PutAccountDedicatedIpWarmupAttributes(const Model::PutAccountDedicatedIpWarmupAttributesRequest& request) const;
+        virtual Model::PutAccountDedicatedIpWarmupAttributesOutcome PutAccountDedicatedIpWarmupAttributes(const Model::PutAccountDedicatedIpWarmupAttributesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for PutAccountDedicatedIpWarmupAttributes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename PutAccountDedicatedIpWarmupAttributesRequestT = Model::PutAccountDedicatedIpWarmupAttributesRequest>
-        Model::PutAccountDedicatedIpWarmupAttributesOutcomeCallable PutAccountDedicatedIpWarmupAttributesCallable(const PutAccountDedicatedIpWarmupAttributesRequestT& request) const
+        Model::PutAccountDedicatedIpWarmupAttributesOutcomeCallable PutAccountDedicatedIpWarmupAttributesCallable(const PutAccountDedicatedIpWarmupAttributesRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::PutAccountDedicatedIpWarmupAttributes, request);
         }
@@ -1769,7 +2171,7 @@ namespace SESV2
          * An Async wrapper for PutAccountDedicatedIpWarmupAttributes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename PutAccountDedicatedIpWarmupAttributesRequestT = Model::PutAccountDedicatedIpWarmupAttributesRequest>
-        void PutAccountDedicatedIpWarmupAttributesAsync(const PutAccountDedicatedIpWarmupAttributesRequestT& request, const PutAccountDedicatedIpWarmupAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void PutAccountDedicatedIpWarmupAttributesAsync(const PutAccountDedicatedIpWarmupAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const PutAccountDedicatedIpWarmupAttributesRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::PutAccountDedicatedIpWarmupAttributes, request, handler, context);
         }
@@ -1805,13 +2207,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/PutAccountSendingAttributes">AWS
          * API Reference</a></p>
          */
-        virtual Model::PutAccountSendingAttributesOutcome PutAccountSendingAttributes(const Model::PutAccountSendingAttributesRequest& request) const;
+        virtual Model::PutAccountSendingAttributesOutcome PutAccountSendingAttributes(const Model::PutAccountSendingAttributesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for PutAccountSendingAttributes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename PutAccountSendingAttributesRequestT = Model::PutAccountSendingAttributesRequest>
-        Model::PutAccountSendingAttributesOutcomeCallable PutAccountSendingAttributesCallable(const PutAccountSendingAttributesRequestT& request) const
+        Model::PutAccountSendingAttributesOutcomeCallable PutAccountSendingAttributesCallable(const PutAccountSendingAttributesRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::PutAccountSendingAttributes, request);
         }
@@ -1820,7 +2222,7 @@ namespace SESV2
          * An Async wrapper for PutAccountSendingAttributes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename PutAccountSendingAttributesRequestT = Model::PutAccountSendingAttributesRequest>
-        void PutAccountSendingAttributesAsync(const PutAccountSendingAttributesRequestT& request, const PutAccountSendingAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void PutAccountSendingAttributesAsync(const PutAccountSendingAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const PutAccountSendingAttributesRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::PutAccountSendingAttributes, request, handler, context);
         }
@@ -1831,13 +2233,13 @@ namespace SESV2
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/PutAccountSuppressionAttributes">AWS
          * API Reference</a></p>
          */
-        virtual Model::PutAccountSuppressionAttributesOutcome PutAccountSuppressionAttributes(const Model::PutAccountSuppressionAttributesRequest& request) const;
+        virtual Model::PutAccountSuppressionAttributesOutcome PutAccountSuppressionAttributes(const Model::PutAccountSuppressionAttributesRequest& request = {}) const;
 
         /**
          * A Callable wrapper for PutAccountSuppressionAttributes that returns a future to the operation so that it can be executed in parallel to other requests.
          */
         template<typename PutAccountSuppressionAttributesRequestT = Model::PutAccountSuppressionAttributesRequest>
-        Model::PutAccountSuppressionAttributesOutcomeCallable PutAccountSuppressionAttributesCallable(const PutAccountSuppressionAttributesRequestT& request) const
+        Model::PutAccountSuppressionAttributesOutcomeCallable PutAccountSuppressionAttributesCallable(const PutAccountSuppressionAttributesRequestT& request = {}) const
         {
             return SubmitCallable(&SESV2Client::PutAccountSuppressionAttributes, request);
         }
@@ -1846,7 +2248,7 @@ namespace SESV2
          * An Async wrapper for PutAccountSuppressionAttributes that queues the request into a thread executor and triggers associated callback when operation has finished.
          */
         template<typename PutAccountSuppressionAttributesRequestT = Model::PutAccountSuppressionAttributesRequest>
-        void PutAccountSuppressionAttributesAsync(const PutAccountSuppressionAttributesRequestT& request, const PutAccountSuppressionAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        void PutAccountSuppressionAttributesAsync(const PutAccountSuppressionAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr, const PutAccountSuppressionAttributesRequestT& request = {}) const
         {
             return SubmitAsync(&SESV2Client::PutAccountSuppressionAttributes, request, handler, context);
         }
@@ -1875,6 +2277,34 @@ namespace SESV2
         void PutAccountVdmAttributesAsync(const PutAccountVdmAttributesRequestT& request, const PutAccountVdmAttributesResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
         {
             return SubmitAsync(&SESV2Client::PutAccountVdmAttributes, request, handler, context);
+        }
+
+        /**
+         * <p>Associate the configuration set with a MailManager archive. When you send
+         * email using the <code>SendEmail</code> or <code>SendBulkEmail</code> operations
+         * the message as it will be given to the receiving SMTP server will be archived,
+         * along with the recipient information.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/PutConfigurationSetArchivingOptions">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::PutConfigurationSetArchivingOptionsOutcome PutConfigurationSetArchivingOptions(const Model::PutConfigurationSetArchivingOptionsRequest& request) const;
+
+        /**
+         * A Callable wrapper for PutConfigurationSetArchivingOptions that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename PutConfigurationSetArchivingOptionsRequestT = Model::PutConfigurationSetArchivingOptionsRequest>
+        Model::PutConfigurationSetArchivingOptionsOutcomeCallable PutConfigurationSetArchivingOptionsCallable(const PutConfigurationSetArchivingOptionsRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::PutConfigurationSetArchivingOptions, request);
+        }
+
+        /**
+         * An Async wrapper for PutConfigurationSetArchivingOptions that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename PutConfigurationSetArchivingOptionsRequestT = Model::PutConfigurationSetArchivingOptionsRequest>
+        void PutConfigurationSetArchivingOptionsAsync(const PutConfigurationSetArchivingOptionsRequestT& request, const PutConfigurationSetArchivingOptionsResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::PutConfigurationSetArchivingOptions, request, handler, context);
         }
 
         /**
@@ -2508,10 +2938,9 @@ namespace SESV2
          * <p>Update the configuration of an event destination for a configuration set.</p>
          * <p> <i>Events</i> include message sends, deliveries, opens, clicks, bounces, and
          * complaints. <i>Event destinations</i> are places that you can send information
-         * about these events to. For example, you can send event data to Amazon SNS to
-         * receive notifications when you receive bounces or complaints, or you can use
-         * Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term
-         * storage.</p><p><h3>See Also:</h3>   <a
+         * about these events to. For example, you can send event data to Amazon
+         * EventBridge and associate a rule to send the event to the specified
+         * target.</p><p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/UpdateConfigurationSetEventDestination">AWS
          * API Reference</a></p>
          */
@@ -2536,9 +2965,10 @@ namespace SESV2
         }
 
         /**
-         * <p>Updates a contact's preferences for a list. It is not necessary to specify
-         * all existing topic preferences in the TopicPreferences object, just the ones
-         * that need updating.</p><p><h3>See Also:</h3>   <a
+         * <p>Updates a contact's preferences for a list.</p>  <p>You must specify
+         * all existing topic preferences in the <code>TopicPreferences</code> object, not
+         * just the ones that need updating; otherwise, all your existing preferences will
+         * be removed.</p> <p><h3>See Also:</h3>   <a
          * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/UpdateContact">AWS
          * API Reference</a></p>
          */
@@ -2682,6 +3112,71 @@ namespace SESV2
             return SubmitAsync(&SESV2Client::UpdateEmailTemplate, request, handler, context);
         }
 
+        /**
+         * <p>Update the customer-managed sending status for a reputation entity. This
+         * allows you to enable, disable, or reinstate sending for the entity.</p> <p>The
+         * customer-managed status works in conjunction with the Amazon Web Services Amazon
+         * SES-managed status to determine the overall sending capability. When you update
+         * the customer-managed status, the Amazon Web Services Amazon SES-managed status
+         * remains unchanged. If Amazon Web Services Amazon SES has disabled the entity, it
+         * will not be allowed to send regardless of the customer-managed status setting.
+         * When you reinstate an entity through the customer-managed status, it can
+         * continue sending only if the Amazon Web Services Amazon SES-managed status also
+         * permits sending, even if there are active reputation findings, until the
+         * findings are resolved or new violations occur.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/UpdateReputationEntityCustomerManagedStatus">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateReputationEntityCustomerManagedStatusOutcome UpdateReputationEntityCustomerManagedStatus(const Model::UpdateReputationEntityCustomerManagedStatusRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateReputationEntityCustomerManagedStatus that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateReputationEntityCustomerManagedStatusRequestT = Model::UpdateReputationEntityCustomerManagedStatusRequest>
+        Model::UpdateReputationEntityCustomerManagedStatusOutcomeCallable UpdateReputationEntityCustomerManagedStatusCallable(const UpdateReputationEntityCustomerManagedStatusRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::UpdateReputationEntityCustomerManagedStatus, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateReputationEntityCustomerManagedStatus that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateReputationEntityCustomerManagedStatusRequestT = Model::UpdateReputationEntityCustomerManagedStatusRequest>
+        void UpdateReputationEntityCustomerManagedStatusAsync(const UpdateReputationEntityCustomerManagedStatusRequestT& request, const UpdateReputationEntityCustomerManagedStatusResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::UpdateReputationEntityCustomerManagedStatus, request, handler, context);
+        }
+
+        /**
+         * <p>Update the reputation management policy for a reputation entity. The policy
+         * determines how the entity responds to reputation findings, such as automatically
+         * pausing sending when certain thresholds are exceeded.</p> <p>Reputation
+         * management policies are Amazon Web Services Amazon SES-managed (predefined
+         * policies). You can select from none, standard, and strict
+         * policies.</p><p><h3>See Also:</h3>   <a
+         * href="http://docs.aws.amazon.com/goto/WebAPI/sesv2-2019-09-27/UpdateReputationEntityPolicy">AWS
+         * API Reference</a></p>
+         */
+        virtual Model::UpdateReputationEntityPolicyOutcome UpdateReputationEntityPolicy(const Model::UpdateReputationEntityPolicyRequest& request) const;
+
+        /**
+         * A Callable wrapper for UpdateReputationEntityPolicy that returns a future to the operation so that it can be executed in parallel to other requests.
+         */
+        template<typename UpdateReputationEntityPolicyRequestT = Model::UpdateReputationEntityPolicyRequest>
+        Model::UpdateReputationEntityPolicyOutcomeCallable UpdateReputationEntityPolicyCallable(const UpdateReputationEntityPolicyRequestT& request) const
+        {
+            return SubmitCallable(&SESV2Client::UpdateReputationEntityPolicy, request);
+        }
+
+        /**
+         * An Async wrapper for UpdateReputationEntityPolicy that queues the request into a thread executor and triggers associated callback when operation has finished.
+         */
+        template<typename UpdateReputationEntityPolicyRequestT = Model::UpdateReputationEntityPolicyRequest>
+        void UpdateReputationEntityPolicyAsync(const UpdateReputationEntityPolicyRequestT& request, const UpdateReputationEntityPolicyResponseReceivedHandler& handler, const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const
+        {
+            return SubmitAsync(&SESV2Client::UpdateReputationEntityPolicy, request, handler, context);
+        }
+
 
       void OverrideEndpoint(const Aws::String& endpoint);
       std::shared_ptr<SESV2EndpointProviderBase>& accessEndpointProvider();
@@ -2690,7 +3185,6 @@ namespace SESV2
       void init(const SESV2ClientConfiguration& clientConfiguration);
 
       SESV2ClientConfiguration m_clientConfiguration;
-      std::shared_ptr<Aws::Utils::Threading::Executor> m_executor;
       std::shared_ptr<SESV2EndpointProviderBase> m_endpointProvider;
   };
 

@@ -18,15 +18,7 @@ namespace SSMIncidents
 namespace Model
 {
 
-UpdateReplicationSetAction::UpdateReplicationSetAction() : 
-    m_addRegionActionHasBeenSet(false),
-    m_deleteRegionActionHasBeenSet(false)
-{
-}
-
-UpdateReplicationSetAction::UpdateReplicationSetAction(JsonView jsonValue) : 
-    m_addRegionActionHasBeenSet(false),
-    m_deleteRegionActionHasBeenSet(false)
+UpdateReplicationSetAction::UpdateReplicationSetAction(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ UpdateReplicationSetAction& UpdateReplicationSetAction::operator =(JsonView json
   if(jsonValue.ValueExists("addRegionAction"))
   {
     m_addRegionAction = jsonValue.GetObject("addRegionAction");
-
     m_addRegionActionHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("deleteRegionAction"))
   {
     m_deleteRegionAction = jsonValue.GetObject("deleteRegionAction");
-
     m_deleteRegionActionHasBeenSet = true;
   }
-
   return *this;
 }
 

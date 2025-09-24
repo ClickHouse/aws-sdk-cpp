@@ -35,134 +35,51 @@ namespace Model
   class DetectorState
   {
   public:
-    AWS_IOTEVENTSDATA_API DetectorState();
+    AWS_IOTEVENTSDATA_API DetectorState() = default;
     AWS_IOTEVENTSDATA_API DetectorState(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API DetectorState& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_IOTEVENTSDATA_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The name of the state.</p>
      */
-    inline const Aws::String& GetStateName() const{ return m_stateName; }
-
-    /**
-     * <p>The name of the state.</p>
-     */
+    inline const Aws::String& GetStateName() const { return m_stateName; }
     inline bool StateNameHasBeenSet() const { return m_stateNameHasBeenSet; }
+    template<typename StateNameT = Aws::String>
+    void SetStateName(StateNameT&& value) { m_stateNameHasBeenSet = true; m_stateName = std::forward<StateNameT>(value); }
+    template<typename StateNameT = Aws::String>
+    DetectorState& WithStateName(StateNameT&& value) { SetStateName(std::forward<StateNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline void SetStateName(const Aws::String& value) { m_stateNameHasBeenSet = true; m_stateName = value; }
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline void SetStateName(Aws::String&& value) { m_stateNameHasBeenSet = true; m_stateName = std::move(value); }
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline void SetStateName(const char* value) { m_stateNameHasBeenSet = true; m_stateName.assign(value); }
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline DetectorState& WithStateName(const Aws::String& value) { SetStateName(value); return *this;}
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline DetectorState& WithStateName(Aws::String&& value) { SetStateName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the state.</p>
-     */
-    inline DetectorState& WithStateName(const char* value) { SetStateName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The current values of the detector's variables.</p>
      */
-    inline const Aws::Vector<Variable>& GetVariables() const{ return m_variables; }
-
-    /**
-     * <p>The current values of the detector's variables.</p>
-     */
+    inline const Aws::Vector<Variable>& GetVariables() const { return m_variables; }
     inline bool VariablesHasBeenSet() const { return m_variablesHasBeenSet; }
+    template<typename VariablesT = Aws::Vector<Variable>>
+    void SetVariables(VariablesT&& value) { m_variablesHasBeenSet = true; m_variables = std::forward<VariablesT>(value); }
+    template<typename VariablesT = Aws::Vector<Variable>>
+    DetectorState& WithVariables(VariablesT&& value) { SetVariables(std::forward<VariablesT>(value)); return *this;}
+    template<typename VariablesT = Variable>
+    DetectorState& AddVariables(VariablesT&& value) { m_variablesHasBeenSet = true; m_variables.emplace_back(std::forward<VariablesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The current values of the detector's variables.</p>
-     */
-    inline void SetVariables(const Aws::Vector<Variable>& value) { m_variablesHasBeenSet = true; m_variables = value; }
-
-    /**
-     * <p>The current values of the detector's variables.</p>
-     */
-    inline void SetVariables(Aws::Vector<Variable>&& value) { m_variablesHasBeenSet = true; m_variables = std::move(value); }
-
-    /**
-     * <p>The current values of the detector's variables.</p>
-     */
-    inline DetectorState& WithVariables(const Aws::Vector<Variable>& value) { SetVariables(value); return *this;}
-
-    /**
-     * <p>The current values of the detector's variables.</p>
-     */
-    inline DetectorState& WithVariables(Aws::Vector<Variable>&& value) { SetVariables(std::move(value)); return *this;}
-
-    /**
-     * <p>The current values of the detector's variables.</p>
-     */
-    inline DetectorState& AddVariables(const Variable& value) { m_variablesHasBeenSet = true; m_variables.push_back(value); return *this; }
-
-    /**
-     * <p>The current values of the detector's variables.</p>
-     */
-    inline DetectorState& AddVariables(Variable&& value) { m_variablesHasBeenSet = true; m_variables.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The current state of the detector's timers.</p>
      */
-    inline const Aws::Vector<Timer>& GetTimers() const{ return m_timers; }
-
-    /**
-     * <p>The current state of the detector's timers.</p>
-     */
+    inline const Aws::Vector<Timer>& GetTimers() const { return m_timers; }
     inline bool TimersHasBeenSet() const { return m_timersHasBeenSet; }
-
-    /**
-     * <p>The current state of the detector's timers.</p>
-     */
-    inline void SetTimers(const Aws::Vector<Timer>& value) { m_timersHasBeenSet = true; m_timers = value; }
-
-    /**
-     * <p>The current state of the detector's timers.</p>
-     */
-    inline void SetTimers(Aws::Vector<Timer>&& value) { m_timersHasBeenSet = true; m_timers = std::move(value); }
-
-    /**
-     * <p>The current state of the detector's timers.</p>
-     */
-    inline DetectorState& WithTimers(const Aws::Vector<Timer>& value) { SetTimers(value); return *this;}
-
-    /**
-     * <p>The current state of the detector's timers.</p>
-     */
-    inline DetectorState& WithTimers(Aws::Vector<Timer>&& value) { SetTimers(std::move(value)); return *this;}
-
-    /**
-     * <p>The current state of the detector's timers.</p>
-     */
-    inline DetectorState& AddTimers(const Timer& value) { m_timersHasBeenSet = true; m_timers.push_back(value); return *this; }
-
-    /**
-     * <p>The current state of the detector's timers.</p>
-     */
-    inline DetectorState& AddTimers(Timer&& value) { m_timersHasBeenSet = true; m_timers.push_back(std::move(value)); return *this; }
-
+    template<typename TimersT = Aws::Vector<Timer>>
+    void SetTimers(TimersT&& value) { m_timersHasBeenSet = true; m_timers = std::forward<TimersT>(value); }
+    template<typename TimersT = Aws::Vector<Timer>>
+    DetectorState& WithTimers(TimersT&& value) { SetTimers(std::forward<TimersT>(value)); return *this;}
+    template<typename TimersT = Timer>
+    DetectorState& AddTimers(TimersT&& value) { m_timersHasBeenSet = true; m_timers.emplace_back(std::forward<TimersT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::String m_stateName;

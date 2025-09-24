@@ -8,6 +8,7 @@
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/datazone/model/DataSourceErrorMessage.h>
+#include <aws/datazone/model/DataSourceRunLineageSummary.h>
 #include <aws/datazone/model/RunStatisticsForAssets.h>
 #include <aws/datazone/model/DataSourceRunStatus.h>
 #include <aws/datazone/model/DataSourceRunType.h>
@@ -32,454 +33,216 @@ namespace Model
   class GetDataSourceRunResult
   {
   public:
-    AWS_DATAZONE_API GetDataSourceRunResult();
+    AWS_DATAZONE_API GetDataSourceRunResult() = default;
     AWS_DATAZONE_API GetDataSourceRunResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_DATAZONE_API GetDataSourceRunResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The timestamp of when the data source run was created.</p>
      */
-    inline const Aws::Utils::DateTime& GetCreatedAt() const{ return m_createdAt; }
+    inline const Aws::Utils::DateTime& GetCreatedAt() const { return m_createdAt; }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    void SetCreatedAt(CreatedAtT&& value) { m_createdAtHasBeenSet = true; m_createdAt = std::forward<CreatedAtT>(value); }
+    template<typename CreatedAtT = Aws::Utils::DateTime>
+    GetDataSourceRunResult& WithCreatedAt(CreatedAtT&& value) { SetCreatedAt(std::forward<CreatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when the data source run was created.</p>
-     */
-    inline void SetCreatedAt(const Aws::Utils::DateTime& value) { m_createdAt = value; }
-
-    /**
-     * <p>The timestamp of when the data source run was created.</p>
-     */
-    inline void SetCreatedAt(Aws::Utils::DateTime&& value) { m_createdAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when the data source run was created.</p>
-     */
-    inline GetDataSourceRunResult& WithCreatedAt(const Aws::Utils::DateTime& value) { SetCreatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when the data source run was created.</p>
-     */
-    inline GetDataSourceRunResult& WithCreatedAt(Aws::Utils::DateTime&& value) { SetCreatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The configuration snapshot of the data source run.</p>
      */
-    inline const Aws::String& GetDataSourceConfigurationSnapshot() const{ return m_dataSourceConfigurationSnapshot; }
+    inline const Aws::String& GetDataSourceConfigurationSnapshot() const { return m_dataSourceConfigurationSnapshot; }
+    template<typename DataSourceConfigurationSnapshotT = Aws::String>
+    void SetDataSourceConfigurationSnapshot(DataSourceConfigurationSnapshotT&& value) { m_dataSourceConfigurationSnapshotHasBeenSet = true; m_dataSourceConfigurationSnapshot = std::forward<DataSourceConfigurationSnapshotT>(value); }
+    template<typename DataSourceConfigurationSnapshotT = Aws::String>
+    GetDataSourceRunResult& WithDataSourceConfigurationSnapshot(DataSourceConfigurationSnapshotT&& value) { SetDataSourceConfigurationSnapshot(std::forward<DataSourceConfigurationSnapshotT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The configuration snapshot of the data source run.</p>
-     */
-    inline void SetDataSourceConfigurationSnapshot(const Aws::String& value) { m_dataSourceConfigurationSnapshot = value; }
-
-    /**
-     * <p>The configuration snapshot of the data source run.</p>
-     */
-    inline void SetDataSourceConfigurationSnapshot(Aws::String&& value) { m_dataSourceConfigurationSnapshot = std::move(value); }
-
-    /**
-     * <p>The configuration snapshot of the data source run.</p>
-     */
-    inline void SetDataSourceConfigurationSnapshot(const char* value) { m_dataSourceConfigurationSnapshot.assign(value); }
-
-    /**
-     * <p>The configuration snapshot of the data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithDataSourceConfigurationSnapshot(const Aws::String& value) { SetDataSourceConfigurationSnapshot(value); return *this;}
-
-    /**
-     * <p>The configuration snapshot of the data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithDataSourceConfigurationSnapshot(Aws::String&& value) { SetDataSourceConfigurationSnapshot(std::move(value)); return *this;}
-
-    /**
-     * <p>The configuration snapshot of the data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithDataSourceConfigurationSnapshot(const char* value) { SetDataSourceConfigurationSnapshot(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the data source for this data source run.</p>
      */
-    inline const Aws::String& GetDataSourceId() const{ return m_dataSourceId; }
+    inline const Aws::String& GetDataSourceId() const { return m_dataSourceId; }
+    template<typename DataSourceIdT = Aws::String>
+    void SetDataSourceId(DataSourceIdT&& value) { m_dataSourceIdHasBeenSet = true; m_dataSourceId = std::forward<DataSourceIdT>(value); }
+    template<typename DataSourceIdT = Aws::String>
+    GetDataSourceRunResult& WithDataSourceId(DataSourceIdT&& value) { SetDataSourceId(std::forward<DataSourceIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the data source for this data source run.</p>
-     */
-    inline void SetDataSourceId(const Aws::String& value) { m_dataSourceId = value; }
-
-    /**
-     * <p>The ID of the data source for this data source run.</p>
-     */
-    inline void SetDataSourceId(Aws::String&& value) { m_dataSourceId = std::move(value); }
-
-    /**
-     * <p>The ID of the data source for this data source run.</p>
-     */
-    inline void SetDataSourceId(const char* value) { m_dataSourceId.assign(value); }
-
-    /**
-     * <p>The ID of the data source for this data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithDataSourceId(const Aws::String& value) { SetDataSourceId(value); return *this;}
-
-    /**
-     * <p>The ID of the data source for this data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithDataSourceId(Aws::String&& value) { SetDataSourceId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the data source for this data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithDataSourceId(const char* value) { SetDataSourceId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the domain in which this data source run was performed.</p>
      */
-    inline const Aws::String& GetDomainId() const{ return m_domainId; }
+    inline const Aws::String& GetDomainId() const { return m_domainId; }
+    template<typename DomainIdT = Aws::String>
+    void SetDomainId(DomainIdT&& value) { m_domainIdHasBeenSet = true; m_domainId = std::forward<DomainIdT>(value); }
+    template<typename DomainIdT = Aws::String>
+    GetDataSourceRunResult& WithDomainId(DomainIdT&& value) { SetDomainId(std::forward<DomainIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the domain in which this data source run was performed.</p>
-     */
-    inline void SetDomainId(const Aws::String& value) { m_domainId = value; }
-
-    /**
-     * <p>The ID of the domain in which this data source run was performed.</p>
-     */
-    inline void SetDomainId(Aws::String&& value) { m_domainId = std::move(value); }
-
-    /**
-     * <p>The ID of the domain in which this data source run was performed.</p>
-     */
-    inline void SetDomainId(const char* value) { m_domainId.assign(value); }
-
-    /**
-     * <p>The ID of the domain in which this data source run was performed.</p>
-     */
-    inline GetDataSourceRunResult& WithDomainId(const Aws::String& value) { SetDomainId(value); return *this;}
-
-    /**
-     * <p>The ID of the domain in which this data source run was performed.</p>
-     */
-    inline GetDataSourceRunResult& WithDomainId(Aws::String&& value) { SetDomainId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the domain in which this data source run was performed.</p>
-     */
-    inline GetDataSourceRunResult& WithDomainId(const char* value) { SetDomainId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>Specifies the error message that is returned if the operation cannot be
      * successfully completed.</p>
      */
-    inline const DataSourceErrorMessage& GetErrorMessage() const{ return m_errorMessage; }
+    inline const DataSourceErrorMessage& GetErrorMessage() const { return m_errorMessage; }
+    template<typename ErrorMessageT = DataSourceErrorMessage>
+    void SetErrorMessage(ErrorMessageT&& value) { m_errorMessageHasBeenSet = true; m_errorMessage = std::forward<ErrorMessageT>(value); }
+    template<typename ErrorMessageT = DataSourceErrorMessage>
+    GetDataSourceRunResult& WithErrorMessage(ErrorMessageT&& value) { SetErrorMessage(std::forward<ErrorMessageT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>Specifies the error message that is returned if the operation cannot be
-     * successfully completed.</p>
-     */
-    inline void SetErrorMessage(const DataSourceErrorMessage& value) { m_errorMessage = value; }
-
-    /**
-     * <p>Specifies the error message that is returned if the operation cannot be
-     * successfully completed.</p>
-     */
-    inline void SetErrorMessage(DataSourceErrorMessage&& value) { m_errorMessage = std::move(value); }
-
-    /**
-     * <p>Specifies the error message that is returned if the operation cannot be
-     * successfully completed.</p>
-     */
-    inline GetDataSourceRunResult& WithErrorMessage(const DataSourceErrorMessage& value) { SetErrorMessage(value); return *this;}
-
-    /**
-     * <p>Specifies the error message that is returned if the operation cannot be
-     * successfully completed.</p>
-     */
-    inline GetDataSourceRunResult& WithErrorMessage(DataSourceErrorMessage&& value) { SetErrorMessage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the data source run.</p>
      */
-    inline const Aws::String& GetId() const{ return m_id; }
+    inline const Aws::String& GetId() const { return m_id; }
+    template<typename IdT = Aws::String>
+    void SetId(IdT&& value) { m_idHasBeenSet = true; m_id = std::forward<IdT>(value); }
+    template<typename IdT = Aws::String>
+    GetDataSourceRunResult& WithId(IdT&& value) { SetId(std::forward<IdT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The ID of the data source run.</p>
+     * <p>The summary of the data lineage.</p>
      */
-    inline void SetId(const Aws::String& value) { m_id = value; }
+    inline const DataSourceRunLineageSummary& GetLineageSummary() const { return m_lineageSummary; }
+    template<typename LineageSummaryT = DataSourceRunLineageSummary>
+    void SetLineageSummary(LineageSummaryT&& value) { m_lineageSummaryHasBeenSet = true; m_lineageSummary = std::forward<LineageSummaryT>(value); }
+    template<typename LineageSummaryT = DataSourceRunLineageSummary>
+    GetDataSourceRunResult& WithLineageSummary(LineageSummaryT&& value) { SetLineageSummary(std::forward<LineageSummaryT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the data source run.</p>
-     */
-    inline void SetId(Aws::String&& value) { m_id = std::move(value); }
-
-    /**
-     * <p>The ID of the data source run.</p>
-     */
-    inline void SetId(const char* value) { m_id.assign(value); }
-
-    /**
-     * <p>The ID of the data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithId(const Aws::String& value) { SetId(value); return *this;}
-
-    /**
-     * <p>The ID of the data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithId(Aws::String&& value) { SetId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithId(const char* value) { SetId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the project in which this data source run occured.</p>
      */
-    inline const Aws::String& GetProjectId() const{ return m_projectId; }
+    inline const Aws::String& GetProjectId() const { return m_projectId; }
+    template<typename ProjectIdT = Aws::String>
+    void SetProjectId(ProjectIdT&& value) { m_projectIdHasBeenSet = true; m_projectId = std::forward<ProjectIdT>(value); }
+    template<typename ProjectIdT = Aws::String>
+    GetDataSourceRunResult& WithProjectId(ProjectIdT&& value) { SetProjectId(std::forward<ProjectIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the project in which this data source run occured.</p>
-     */
-    inline void SetProjectId(const Aws::String& value) { m_projectId = value; }
-
-    /**
-     * <p>The ID of the project in which this data source run occured.</p>
-     */
-    inline void SetProjectId(Aws::String&& value) { m_projectId = std::move(value); }
-
-    /**
-     * <p>The ID of the project in which this data source run occured.</p>
-     */
-    inline void SetProjectId(const char* value) { m_projectId.assign(value); }
-
-    /**
-     * <p>The ID of the project in which this data source run occured.</p>
-     */
-    inline GetDataSourceRunResult& WithProjectId(const Aws::String& value) { SetProjectId(value); return *this;}
-
-    /**
-     * <p>The ID of the project in which this data source run occured.</p>
-     */
-    inline GetDataSourceRunResult& WithProjectId(Aws::String&& value) { SetProjectId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the project in which this data source run occured.</p>
-     */
-    inline GetDataSourceRunResult& WithProjectId(const char* value) { SetProjectId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The asset statistics from this data source run.</p>
      */
-    inline const RunStatisticsForAssets& GetRunStatisticsForAssets() const{ return m_runStatisticsForAssets; }
+    inline const RunStatisticsForAssets& GetRunStatisticsForAssets() const { return m_runStatisticsForAssets; }
+    template<typename RunStatisticsForAssetsT = RunStatisticsForAssets>
+    void SetRunStatisticsForAssets(RunStatisticsForAssetsT&& value) { m_runStatisticsForAssetsHasBeenSet = true; m_runStatisticsForAssets = std::forward<RunStatisticsForAssetsT>(value); }
+    template<typename RunStatisticsForAssetsT = RunStatisticsForAssets>
+    GetDataSourceRunResult& WithRunStatisticsForAssets(RunStatisticsForAssetsT&& value) { SetRunStatisticsForAssets(std::forward<RunStatisticsForAssetsT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The asset statistics from this data source run.</p>
-     */
-    inline void SetRunStatisticsForAssets(const RunStatisticsForAssets& value) { m_runStatisticsForAssets = value; }
-
-    /**
-     * <p>The asset statistics from this data source run.</p>
-     */
-    inline void SetRunStatisticsForAssets(RunStatisticsForAssets&& value) { m_runStatisticsForAssets = std::move(value); }
-
-    /**
-     * <p>The asset statistics from this data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithRunStatisticsForAssets(const RunStatisticsForAssets& value) { SetRunStatisticsForAssets(value); return *this;}
-
-    /**
-     * <p>The asset statistics from this data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithRunStatisticsForAssets(RunStatisticsForAssets&& value) { SetRunStatisticsForAssets(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when this data source run started.</p>
      */
-    inline const Aws::Utils::DateTime& GetStartedAt() const{ return m_startedAt; }
+    inline const Aws::Utils::DateTime& GetStartedAt() const { return m_startedAt; }
+    template<typename StartedAtT = Aws::Utils::DateTime>
+    void SetStartedAt(StartedAtT&& value) { m_startedAtHasBeenSet = true; m_startedAt = std::forward<StartedAtT>(value); }
+    template<typename StartedAtT = Aws::Utils::DateTime>
+    GetDataSourceRunResult& WithStartedAt(StartedAtT&& value) { SetStartedAt(std::forward<StartedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when this data source run started.</p>
-     */
-    inline void SetStartedAt(const Aws::Utils::DateTime& value) { m_startedAt = value; }
-
-    /**
-     * <p>The timestamp of when this data source run started.</p>
-     */
-    inline void SetStartedAt(Aws::Utils::DateTime&& value) { m_startedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when this data source run started.</p>
-     */
-    inline GetDataSourceRunResult& WithStartedAt(const Aws::Utils::DateTime& value) { SetStartedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when this data source run started.</p>
-     */
-    inline GetDataSourceRunResult& WithStartedAt(Aws::Utils::DateTime&& value) { SetStartedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The status of this data source run.</p>
      */
-    inline const DataSourceRunStatus& GetStatus() const{ return m_status; }
+    inline DataSourceRunStatus GetStatus() const { return m_status; }
+    inline void SetStatus(DataSourceRunStatus value) { m_statusHasBeenSet = true; m_status = value; }
+    inline GetDataSourceRunResult& WithStatus(DataSourceRunStatus value) { SetStatus(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The status of this data source run.</p>
-     */
-    inline void SetStatus(const DataSourceRunStatus& value) { m_status = value; }
-
-    /**
-     * <p>The status of this data source run.</p>
-     */
-    inline void SetStatus(DataSourceRunStatus&& value) { m_status = std::move(value); }
-
-    /**
-     * <p>The status of this data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithStatus(const DataSourceRunStatus& value) { SetStatus(value); return *this;}
-
-    /**
-     * <p>The status of this data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithStatus(DataSourceRunStatus&& value) { SetStatus(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when this data source run stopped.</p>
      */
-    inline const Aws::Utils::DateTime& GetStoppedAt() const{ return m_stoppedAt; }
+    inline const Aws::Utils::DateTime& GetStoppedAt() const { return m_stoppedAt; }
+    template<typename StoppedAtT = Aws::Utils::DateTime>
+    void SetStoppedAt(StoppedAtT&& value) { m_stoppedAtHasBeenSet = true; m_stoppedAt = std::forward<StoppedAtT>(value); }
+    template<typename StoppedAtT = Aws::Utils::DateTime>
+    GetDataSourceRunResult& WithStoppedAt(StoppedAtT&& value) { SetStoppedAt(std::forward<StoppedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when this data source run stopped.</p>
-     */
-    inline void SetStoppedAt(const Aws::Utils::DateTime& value) { m_stoppedAt = value; }
-
-    /**
-     * <p>The timestamp of when this data source run stopped.</p>
-     */
-    inline void SetStoppedAt(Aws::Utils::DateTime&& value) { m_stoppedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when this data source run stopped.</p>
-     */
-    inline GetDataSourceRunResult& WithStoppedAt(const Aws::Utils::DateTime& value) { SetStoppedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when this data source run stopped.</p>
-     */
-    inline GetDataSourceRunResult& WithStoppedAt(Aws::Utils::DateTime&& value) { SetStoppedAt(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of this data source run.</p>
      */
-    inline const DataSourceRunType& GetType() const{ return m_type; }
+    inline DataSourceRunType GetType() const { return m_type; }
+    inline void SetType(DataSourceRunType value) { m_typeHasBeenSet = true; m_type = value; }
+    inline GetDataSourceRunResult& WithType(DataSourceRunType value) { SetType(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of this data source run.</p>
-     */
-    inline void SetType(const DataSourceRunType& value) { m_type = value; }
-
-    /**
-     * <p>The type of this data source run.</p>
-     */
-    inline void SetType(DataSourceRunType&& value) { m_type = std::move(value); }
-
-    /**
-     * <p>The type of this data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithType(const DataSourceRunType& value) { SetType(value); return *this;}
-
-    /**
-     * <p>The type of this data source run.</p>
-     */
-    inline GetDataSourceRunResult& WithType(DataSourceRunType&& value) { SetType(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The timestamp of when this data source run was updated.</p>
      */
-    inline const Aws::Utils::DateTime& GetUpdatedAt() const{ return m_updatedAt; }
+    inline const Aws::Utils::DateTime& GetUpdatedAt() const { return m_updatedAt; }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    void SetUpdatedAt(UpdatedAtT&& value) { m_updatedAtHasBeenSet = true; m_updatedAt = std::forward<UpdatedAtT>(value); }
+    template<typename UpdatedAtT = Aws::Utils::DateTime>
+    GetDataSourceRunResult& WithUpdatedAt(UpdatedAtT&& value) { SetUpdatedAt(std::forward<UpdatedAtT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The timestamp of when this data source run was updated.</p>
-     */
-    inline void SetUpdatedAt(const Aws::Utils::DateTime& value) { m_updatedAt = value; }
-
-    /**
-     * <p>The timestamp of when this data source run was updated.</p>
-     */
-    inline void SetUpdatedAt(Aws::Utils::DateTime&& value) { m_updatedAt = std::move(value); }
-
-    /**
-     * <p>The timestamp of when this data source run was updated.</p>
-     */
-    inline GetDataSourceRunResult& WithUpdatedAt(const Aws::Utils::DateTime& value) { SetUpdatedAt(value); return *this;}
-
-    /**
-     * <p>The timestamp of when this data source run was updated.</p>
-     */
-    inline GetDataSourceRunResult& WithUpdatedAt(Aws::Utils::DateTime&& value) { SetUpdatedAt(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetDataSourceRunResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetDataSourceRunResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetDataSourceRunResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetDataSourceRunResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
-    Aws::Utils::DateTime m_createdAt;
+    Aws::Utils::DateTime m_createdAt{};
+    bool m_createdAtHasBeenSet = false;
 
     Aws::String m_dataSourceConfigurationSnapshot;
+    bool m_dataSourceConfigurationSnapshotHasBeenSet = false;
 
     Aws::String m_dataSourceId;
+    bool m_dataSourceIdHasBeenSet = false;
 
     Aws::String m_domainId;
+    bool m_domainIdHasBeenSet = false;
 
     DataSourceErrorMessage m_errorMessage;
+    bool m_errorMessageHasBeenSet = false;
 
     Aws::String m_id;
+    bool m_idHasBeenSet = false;
+
+    DataSourceRunLineageSummary m_lineageSummary;
+    bool m_lineageSummaryHasBeenSet = false;
 
     Aws::String m_projectId;
+    bool m_projectIdHasBeenSet = false;
 
     RunStatisticsForAssets m_runStatisticsForAssets;
+    bool m_runStatisticsForAssetsHasBeenSet = false;
 
-    Aws::Utils::DateTime m_startedAt;
+    Aws::Utils::DateTime m_startedAt{};
+    bool m_startedAtHasBeenSet = false;
 
-    DataSourceRunStatus m_status;
+    DataSourceRunStatus m_status{DataSourceRunStatus::NOT_SET};
+    bool m_statusHasBeenSet = false;
 
-    Aws::Utils::DateTime m_stoppedAt;
+    Aws::Utils::DateTime m_stoppedAt{};
+    bool m_stoppedAtHasBeenSet = false;
 
-    DataSourceRunType m_type;
+    DataSourceRunType m_type{DataSourceRunType::NOT_SET};
+    bool m_typeHasBeenSet = false;
 
-    Aws::Utils::DateTime m_updatedAt;
+    Aws::Utils::DateTime m_updatedAt{};
+    bool m_updatedAtHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

@@ -22,7 +22,7 @@ namespace Model
   class RebootWorkspacesRequest : public WorkSpacesRequest
   {
   public:
-    AWS_WORKSPACES_API RebootWorkspacesRequest();
+    AWS_WORKSPACES_API RebootWorkspacesRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,46 +35,19 @@ namespace Model
     AWS_WORKSPACES_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.</p>
      */
-    inline const Aws::Vector<RebootRequest>& GetRebootWorkspaceRequests() const{ return m_rebootWorkspaceRequests; }
-
-    /**
-     * <p>The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.</p>
-     */
+    inline const Aws::Vector<RebootRequest>& GetRebootWorkspaceRequests() const { return m_rebootWorkspaceRequests; }
     inline bool RebootWorkspaceRequestsHasBeenSet() const { return m_rebootWorkspaceRequestsHasBeenSet; }
-
-    /**
-     * <p>The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.</p>
-     */
-    inline void SetRebootWorkspaceRequests(const Aws::Vector<RebootRequest>& value) { m_rebootWorkspaceRequestsHasBeenSet = true; m_rebootWorkspaceRequests = value; }
-
-    /**
-     * <p>The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.</p>
-     */
-    inline void SetRebootWorkspaceRequests(Aws::Vector<RebootRequest>&& value) { m_rebootWorkspaceRequestsHasBeenSet = true; m_rebootWorkspaceRequests = std::move(value); }
-
-    /**
-     * <p>The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.</p>
-     */
-    inline RebootWorkspacesRequest& WithRebootWorkspaceRequests(const Aws::Vector<RebootRequest>& value) { SetRebootWorkspaceRequests(value); return *this;}
-
-    /**
-     * <p>The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.</p>
-     */
-    inline RebootWorkspacesRequest& WithRebootWorkspaceRequests(Aws::Vector<RebootRequest>&& value) { SetRebootWorkspaceRequests(std::move(value)); return *this;}
-
-    /**
-     * <p>The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.</p>
-     */
-    inline RebootWorkspacesRequest& AddRebootWorkspaceRequests(const RebootRequest& value) { m_rebootWorkspaceRequestsHasBeenSet = true; m_rebootWorkspaceRequests.push_back(value); return *this; }
-
-    /**
-     * <p>The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.</p>
-     */
-    inline RebootWorkspacesRequest& AddRebootWorkspaceRequests(RebootRequest&& value) { m_rebootWorkspaceRequestsHasBeenSet = true; m_rebootWorkspaceRequests.push_back(std::move(value)); return *this; }
-
+    template<typename RebootWorkspaceRequestsT = Aws::Vector<RebootRequest>>
+    void SetRebootWorkspaceRequests(RebootWorkspaceRequestsT&& value) { m_rebootWorkspaceRequestsHasBeenSet = true; m_rebootWorkspaceRequests = std::forward<RebootWorkspaceRequestsT>(value); }
+    template<typename RebootWorkspaceRequestsT = Aws::Vector<RebootRequest>>
+    RebootWorkspacesRequest& WithRebootWorkspaceRequests(RebootWorkspaceRequestsT&& value) { SetRebootWorkspaceRequests(std::forward<RebootWorkspaceRequestsT>(value)); return *this;}
+    template<typename RebootWorkspaceRequestsT = RebootRequest>
+    RebootWorkspacesRequest& AddRebootWorkspaceRequests(RebootWorkspaceRequestsT&& value) { m_rebootWorkspaceRequestsHasBeenSet = true; m_rebootWorkspaceRequests.emplace_back(std::forward<RebootWorkspaceRequestsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<RebootRequest> m_rebootWorkspaceRequests;

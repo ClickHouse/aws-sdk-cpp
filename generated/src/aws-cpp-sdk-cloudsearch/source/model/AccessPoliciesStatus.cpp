@@ -20,15 +20,7 @@ namespace CloudSearch
 namespace Model
 {
 
-AccessPoliciesStatus::AccessPoliciesStatus() : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
-{
-}
-
-AccessPoliciesStatus::AccessPoliciesStatus(const XmlNode& xmlNode) : 
-    m_optionsHasBeenSet(false),
-    m_statusHasBeenSet(false)
+AccessPoliciesStatus::AccessPoliciesStatus(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

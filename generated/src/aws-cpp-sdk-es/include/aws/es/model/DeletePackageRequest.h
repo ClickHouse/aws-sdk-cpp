@@ -25,7 +25,7 @@ namespace Model
   class DeletePackageRequest : public ElasticsearchServiceRequest
   {
   public:
-    AWS_ELASTICSEARCHSERVICE_API DeletePackageRequest();
+    AWS_ELASTICSEARCHSERVICE_API DeletePackageRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -36,54 +36,18 @@ namespace Model
     AWS_ELASTICSEARCHSERVICE_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>Internal ID of the package that you want to delete. Use
      * <code>DescribePackages</code> to find this value.</p>
      */
-    inline const Aws::String& GetPackageID() const{ return m_packageID; }
-
-    /**
-     * <p>Internal ID of the package that you want to delete. Use
-     * <code>DescribePackages</code> to find this value.</p>
-     */
+    inline const Aws::String& GetPackageID() const { return m_packageID; }
     inline bool PackageIDHasBeenSet() const { return m_packageIDHasBeenSet; }
-
-    /**
-     * <p>Internal ID of the package that you want to delete. Use
-     * <code>DescribePackages</code> to find this value.</p>
-     */
-    inline void SetPackageID(const Aws::String& value) { m_packageIDHasBeenSet = true; m_packageID = value; }
-
-    /**
-     * <p>Internal ID of the package that you want to delete. Use
-     * <code>DescribePackages</code> to find this value.</p>
-     */
-    inline void SetPackageID(Aws::String&& value) { m_packageIDHasBeenSet = true; m_packageID = std::move(value); }
-
-    /**
-     * <p>Internal ID of the package that you want to delete. Use
-     * <code>DescribePackages</code> to find this value.</p>
-     */
-    inline void SetPackageID(const char* value) { m_packageIDHasBeenSet = true; m_packageID.assign(value); }
-
-    /**
-     * <p>Internal ID of the package that you want to delete. Use
-     * <code>DescribePackages</code> to find this value.</p>
-     */
-    inline DeletePackageRequest& WithPackageID(const Aws::String& value) { SetPackageID(value); return *this;}
-
-    /**
-     * <p>Internal ID of the package that you want to delete. Use
-     * <code>DescribePackages</code> to find this value.</p>
-     */
-    inline DeletePackageRequest& WithPackageID(Aws::String&& value) { SetPackageID(std::move(value)); return *this;}
-
-    /**
-     * <p>Internal ID of the package that you want to delete. Use
-     * <code>DescribePackages</code> to find this value.</p>
-     */
-    inline DeletePackageRequest& WithPackageID(const char* value) { SetPackageID(value); return *this;}
-
+    template<typename PackageIDT = Aws::String>
+    void SetPackageID(PackageIDT&& value) { m_packageIDHasBeenSet = true; m_packageID = std::forward<PackageIDT>(value); }
+    template<typename PackageIDT = Aws::String>
+    DeletePackageRequest& WithPackageID(PackageIDT&& value) { SetPackageID(std::forward<PackageIDT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_packageID;

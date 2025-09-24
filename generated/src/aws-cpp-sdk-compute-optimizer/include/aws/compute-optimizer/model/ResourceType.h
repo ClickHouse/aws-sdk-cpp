@@ -22,7 +22,10 @@ namespace Model
     LambdaFunction,
     NotApplicable,
     EcsService,
-    License
+    License,
+    RdsDBInstance,
+    AuroraDBClusterStorage,
+    Idle
   };
 
 namespace ResourceTypeMapper

@@ -18,15 +18,7 @@ namespace CustomerProfiles
 namespace Model
 {
 
-AttributeDetails::AttributeDetails() : 
-    m_attributesHasBeenSet(false),
-    m_expressionHasBeenSet(false)
-{
-}
-
-AttributeDetails::AttributeDetails(JsonView jsonValue) : 
-    m_attributesHasBeenSet(false),
-    m_expressionHasBeenSet(false)
+AttributeDetails::AttributeDetails(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,14 +34,11 @@ AttributeDetails& AttributeDetails::operator =(JsonView jsonValue)
     }
     m_attributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Expression"))
   {
     m_expression = jsonValue.GetString("Expression");
-
     m_expressionHasBeenSet = true;
   }
-
   return *this;
 }
 

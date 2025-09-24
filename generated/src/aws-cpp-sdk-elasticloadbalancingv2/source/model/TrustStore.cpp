@@ -20,27 +20,7 @@ namespace ElasticLoadBalancingv2
 namespace Model
 {
 
-TrustStore::TrustStore() : 
-    m_nameHasBeenSet(false),
-    m_trustStoreArnHasBeenSet(false),
-    m_status(TrustStoreStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_numberOfCaCertificates(0),
-    m_numberOfCaCertificatesHasBeenSet(false),
-    m_totalRevokedEntries(0),
-    m_totalRevokedEntriesHasBeenSet(false)
-{
-}
-
-TrustStore::TrustStore(const XmlNode& xmlNode) : 
-    m_nameHasBeenSet(false),
-    m_trustStoreArnHasBeenSet(false),
-    m_status(TrustStoreStatus::NOT_SET),
-    m_statusHasBeenSet(false),
-    m_numberOfCaCertificates(0),
-    m_numberOfCaCertificatesHasBeenSet(false),
-    m_totalRevokedEntries(0),
-    m_totalRevokedEntriesHasBeenSet(false)
+TrustStore::TrustStore(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }
@@ -66,7 +46,7 @@ TrustStore& TrustStore::operator =(const XmlNode& xmlNode)
     XmlNode statusNode = resultNode.FirstChild("Status");
     if(!statusNode.IsNull())
     {
-      m_status = TrustStoreStatusMapper::GetTrustStoreStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()).c_str());
+      m_status = TrustStoreStatusMapper::GetTrustStoreStatusForName(StringUtils::Trim(Aws::Utils::Xml::DecodeEscapedXmlText(statusNode.GetText()).c_str()));
       m_statusHasBeenSet = true;
     }
     XmlNode numberOfCaCertificatesNode = resultNode.FirstChild("NumberOfCaCertificates");
@@ -100,7 +80,7 @@ void TrustStore::OutputToStream(Aws::OStream& oStream, const char* location, uns
 
   if(m_statusHasBeenSet)
   {
-      oStream << location << index << locationValue << ".Status=" << TrustStoreStatusMapper::GetNameForTrustStoreStatus(m_status) << "&";
+      oStream << location << index << locationValue << ".Status=" << StringUtils::URLEncode(TrustStoreStatusMapper::GetNameForTrustStoreStatus(m_status)) << "&";
   }
 
   if(m_numberOfCaCertificatesHasBeenSet)
@@ -127,7 +107,7 @@ void TrustStore::OutputToStream(Aws::OStream& oStream, const char* location) con
   }
   if(m_statusHasBeenSet)
   {
-      oStream << location << ".Status=" << TrustStoreStatusMapper::GetNameForTrustStoreStatus(m_status) << "&";
+      oStream << location << ".Status=" << StringUtils::URLEncode(TrustStoreStatusMapper::GetNameForTrustStoreStatus(m_status)) << "&";
   }
   if(m_numberOfCaCertificatesHasBeenSet)
   {

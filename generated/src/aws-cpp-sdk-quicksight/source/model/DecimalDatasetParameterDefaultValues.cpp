@@ -18,13 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-DecimalDatasetParameterDefaultValues::DecimalDatasetParameterDefaultValues() : 
-    m_staticValuesHasBeenSet(false)
-{
-}
-
-DecimalDatasetParameterDefaultValues::DecimalDatasetParameterDefaultValues(JsonView jsonValue) : 
-    m_staticValuesHasBeenSet(false)
+DecimalDatasetParameterDefaultValues::DecimalDatasetParameterDefaultValues(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,7 +34,6 @@ DecimalDatasetParameterDefaultValues& DecimalDatasetParameterDefaultValues::oper
     }
     m_staticValuesHasBeenSet = true;
   }
-
   return *this;
 }
 

@@ -25,7 +25,7 @@ namespace Model
   class UpdateRuleVersionRequest : public FraudDetectorRequest
   {
   public:
-    AWS_FRAUDDETECTOR_API UpdateRuleVersionRequest();
+    AWS_FRAUDDETECTOR_API UpdateRuleVersionRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -38,236 +38,79 @@ namespace Model
     AWS_FRAUDDETECTOR_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p>The rule to update.</p>
      */
-    inline const Rule& GetRule() const{ return m_rule; }
-
-    /**
-     * <p>The rule to update.</p>
-     */
+    inline const Rule& GetRule() const { return m_rule; }
     inline bool RuleHasBeenSet() const { return m_ruleHasBeenSet; }
+    template<typename RuleT = Rule>
+    void SetRule(RuleT&& value) { m_ruleHasBeenSet = true; m_rule = std::forward<RuleT>(value); }
+    template<typename RuleT = Rule>
+    UpdateRuleVersionRequest& WithRule(RuleT&& value) { SetRule(std::forward<RuleT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The rule to update.</p>
-     */
-    inline void SetRule(const Rule& value) { m_ruleHasBeenSet = true; m_rule = value; }
-
-    /**
-     * <p>The rule to update.</p>
-     */
-    inline void SetRule(Rule&& value) { m_ruleHasBeenSet = true; m_rule = std::move(value); }
-
-    /**
-     * <p>The rule to update.</p>
-     */
-    inline UpdateRuleVersionRequest& WithRule(const Rule& value) { SetRule(value); return *this;}
-
-    /**
-     * <p>The rule to update.</p>
-     */
-    inline UpdateRuleVersionRequest& WithRule(Rule&& value) { SetRule(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The description.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>The description.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    UpdateRuleVersionRequest& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>The description.</p>
-     */
-    inline UpdateRuleVersionRequest& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>The description.</p>
-     */
-    inline UpdateRuleVersionRequest& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>The description.</p>
-     */
-    inline UpdateRuleVersionRequest& WithDescription(const char* value) { SetDescription(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The rule expression.</p>
      */
-    inline const Aws::String& GetExpression() const{ return m_expression; }
-
-    /**
-     * <p>The rule expression.</p>
-     */
+    inline const Aws::String& GetExpression() const { return m_expression; }
     inline bool ExpressionHasBeenSet() const { return m_expressionHasBeenSet; }
+    template<typename ExpressionT = Aws::String>
+    void SetExpression(ExpressionT&& value) { m_expressionHasBeenSet = true; m_expression = std::forward<ExpressionT>(value); }
+    template<typename ExpressionT = Aws::String>
+    UpdateRuleVersionRequest& WithExpression(ExpressionT&& value) { SetExpression(std::forward<ExpressionT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The rule expression.</p>
-     */
-    inline void SetExpression(const Aws::String& value) { m_expressionHasBeenSet = true; m_expression = value; }
-
-    /**
-     * <p>The rule expression.</p>
-     */
-    inline void SetExpression(Aws::String&& value) { m_expressionHasBeenSet = true; m_expression = std::move(value); }
-
-    /**
-     * <p>The rule expression.</p>
-     */
-    inline void SetExpression(const char* value) { m_expressionHasBeenSet = true; m_expression.assign(value); }
-
-    /**
-     * <p>The rule expression.</p>
-     */
-    inline UpdateRuleVersionRequest& WithExpression(const Aws::String& value) { SetExpression(value); return *this;}
-
-    /**
-     * <p>The rule expression.</p>
-     */
-    inline UpdateRuleVersionRequest& WithExpression(Aws::String&& value) { SetExpression(std::move(value)); return *this;}
-
-    /**
-     * <p>The rule expression.</p>
-     */
-    inline UpdateRuleVersionRequest& WithExpression(const char* value) { SetExpression(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The language.</p>
      */
-    inline const Language& GetLanguage() const{ return m_language; }
-
-    /**
-     * <p>The language.</p>
-     */
+    inline Language GetLanguage() const { return m_language; }
     inline bool LanguageHasBeenSet() const { return m_languageHasBeenSet; }
+    inline void SetLanguage(Language value) { m_languageHasBeenSet = true; m_language = value; }
+    inline UpdateRuleVersionRequest& WithLanguage(Language value) { SetLanguage(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The language.</p>
-     */
-    inline void SetLanguage(const Language& value) { m_languageHasBeenSet = true; m_language = value; }
-
-    /**
-     * <p>The language.</p>
-     */
-    inline void SetLanguage(Language&& value) { m_languageHasBeenSet = true; m_language = std::move(value); }
-
-    /**
-     * <p>The language.</p>
-     */
-    inline UpdateRuleVersionRequest& WithLanguage(const Language& value) { SetLanguage(value); return *this;}
-
-    /**
-     * <p>The language.</p>
-     */
-    inline UpdateRuleVersionRequest& WithLanguage(Language&& value) { SetLanguage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The outcomes.</p>
      */
-    inline const Aws::Vector<Aws::String>& GetOutcomes() const{ return m_outcomes; }
-
-    /**
-     * <p>The outcomes.</p>
-     */
+    inline const Aws::Vector<Aws::String>& GetOutcomes() const { return m_outcomes; }
     inline bool OutcomesHasBeenSet() const { return m_outcomesHasBeenSet; }
+    template<typename OutcomesT = Aws::Vector<Aws::String>>
+    void SetOutcomes(OutcomesT&& value) { m_outcomesHasBeenSet = true; m_outcomes = std::forward<OutcomesT>(value); }
+    template<typename OutcomesT = Aws::Vector<Aws::String>>
+    UpdateRuleVersionRequest& WithOutcomes(OutcomesT&& value) { SetOutcomes(std::forward<OutcomesT>(value)); return *this;}
+    template<typename OutcomesT = Aws::String>
+    UpdateRuleVersionRequest& AddOutcomes(OutcomesT&& value) { m_outcomesHasBeenSet = true; m_outcomes.emplace_back(std::forward<OutcomesT>(value)); return *this; }
+    ///@}
 
-    /**
-     * <p>The outcomes.</p>
-     */
-    inline void SetOutcomes(const Aws::Vector<Aws::String>& value) { m_outcomesHasBeenSet = true; m_outcomes = value; }
-
-    /**
-     * <p>The outcomes.</p>
-     */
-    inline void SetOutcomes(Aws::Vector<Aws::String>&& value) { m_outcomesHasBeenSet = true; m_outcomes = std::move(value); }
-
-    /**
-     * <p>The outcomes.</p>
-     */
-    inline UpdateRuleVersionRequest& WithOutcomes(const Aws::Vector<Aws::String>& value) { SetOutcomes(value); return *this;}
-
-    /**
-     * <p>The outcomes.</p>
-     */
-    inline UpdateRuleVersionRequest& WithOutcomes(Aws::Vector<Aws::String>&& value) { SetOutcomes(std::move(value)); return *this;}
-
-    /**
-     * <p>The outcomes.</p>
-     */
-    inline UpdateRuleVersionRequest& AddOutcomes(const Aws::String& value) { m_outcomesHasBeenSet = true; m_outcomes.push_back(value); return *this; }
-
-    /**
-     * <p>The outcomes.</p>
-     */
-    inline UpdateRuleVersionRequest& AddOutcomes(Aws::String&& value) { m_outcomesHasBeenSet = true; m_outcomes.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p>The outcomes.</p>
-     */
-    inline UpdateRuleVersionRequest& AddOutcomes(const char* value) { m_outcomesHasBeenSet = true; m_outcomes.push_back(value); return *this; }
-
-
+    ///@{
     /**
      * <p>The tags to assign to the rule version.</p>
      */
-    inline const Aws::Vector<Tag>& GetTags() const{ return m_tags; }
-
-    /**
-     * <p>The tags to assign to the rule version.</p>
-     */
+    inline const Aws::Vector<Tag>& GetTags() const { return m_tags; }
     inline bool TagsHasBeenSet() const { return m_tagsHasBeenSet; }
-
-    /**
-     * <p>The tags to assign to the rule version.</p>
-     */
-    inline void SetTags(const Aws::Vector<Tag>& value) { m_tagsHasBeenSet = true; m_tags = value; }
-
-    /**
-     * <p>The tags to assign to the rule version.</p>
-     */
-    inline void SetTags(Aws::Vector<Tag>&& value) { m_tagsHasBeenSet = true; m_tags = std::move(value); }
-
-    /**
-     * <p>The tags to assign to the rule version.</p>
-     */
-    inline UpdateRuleVersionRequest& WithTags(const Aws::Vector<Tag>& value) { SetTags(value); return *this;}
-
-    /**
-     * <p>The tags to assign to the rule version.</p>
-     */
-    inline UpdateRuleVersionRequest& WithTags(Aws::Vector<Tag>&& value) { SetTags(std::move(value)); return *this;}
-
-    /**
-     * <p>The tags to assign to the rule version.</p>
-     */
-    inline UpdateRuleVersionRequest& AddTags(const Tag& value) { m_tagsHasBeenSet = true; m_tags.push_back(value); return *this; }
-
-    /**
-     * <p>The tags to assign to the rule version.</p>
-     */
-    inline UpdateRuleVersionRequest& AddTags(Tag&& value) { m_tagsHasBeenSet = true; m_tags.push_back(std::move(value)); return *this; }
-
+    template<typename TagsT = Aws::Vector<Tag>>
+    void SetTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags = std::forward<TagsT>(value); }
+    template<typename TagsT = Aws::Vector<Tag>>
+    UpdateRuleVersionRequest& WithTags(TagsT&& value) { SetTags(std::forward<TagsT>(value)); return *this;}
+    template<typename TagsT = Tag>
+    UpdateRuleVersionRequest& AddTags(TagsT&& value) { m_tagsHasBeenSet = true; m_tags.emplace_back(std::forward<TagsT>(value)); return *this; }
+    ///@}
   private:
 
     Rule m_rule;
@@ -279,7 +122,7 @@ namespace Model
     Aws::String m_expression;
     bool m_expressionHasBeenSet = false;
 
-    Language m_language;
+    Language m_language{Language::NOT_SET};
     bool m_languageHasBeenSet = false;
 
     Aws::Vector<Aws::String> m_outcomes;

@@ -18,15 +18,7 @@ namespace AppMesh
 namespace Model
 {
 
-VirtualGatewayFileAccessLog::VirtualGatewayFileAccessLog() : 
-    m_formatHasBeenSet(false),
-    m_pathHasBeenSet(false)
-{
-}
-
-VirtualGatewayFileAccessLog::VirtualGatewayFileAccessLog(JsonView jsonValue) : 
-    m_formatHasBeenSet(false),
-    m_pathHasBeenSet(false)
+VirtualGatewayFileAccessLog::VirtualGatewayFileAccessLog(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ VirtualGatewayFileAccessLog& VirtualGatewayFileAccessLog::operator =(JsonView js
   if(jsonValue.ValueExists("format"))
   {
     m_format = jsonValue.GetObject("format");
-
     m_formatHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("path"))
   {
     m_path = jsonValue.GetString("path");
-
     m_pathHasBeenSet = true;
   }
-
   return *this;
 }
 

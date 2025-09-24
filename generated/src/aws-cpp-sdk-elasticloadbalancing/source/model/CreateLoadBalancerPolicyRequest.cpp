@@ -10,14 +10,6 @@
 using namespace Aws::ElasticLoadBalancing::Model;
 using namespace Aws::Utils;
 
-CreateLoadBalancerPolicyRequest::CreateLoadBalancerPolicyRequest() : 
-    m_loadBalancerNameHasBeenSet(false),
-    m_policyNameHasBeenSet(false),
-    m_policyTypeNameHasBeenSet(false),
-    m_policyAttributesHasBeenSet(false)
-{
-}
-
 Aws::String CreateLoadBalancerPolicyRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -39,11 +31,18 @@ Aws::String CreateLoadBalancerPolicyRequest::SerializePayload() const
 
   if(m_policyAttributesHasBeenSet)
   {
-    unsigned policyAttributesCount = 1;
-    for(auto& item : m_policyAttributes)
+    if (m_policyAttributes.empty())
     {
-      item.OutputToStream(ss, "PolicyAttributes.member.", policyAttributesCount, "");
-      policyAttributesCount++;
+      ss << "PolicyAttributes=&";
+    }
+    else
+    {
+      unsigned policyAttributesCount = 1;
+      for(auto& item : m_policyAttributes)
+      {
+        item.OutputToStream(ss, "PolicyAttributes.member.", policyAttributesCount, "");
+        policyAttributesCount++;
+      }
     }
   }
 

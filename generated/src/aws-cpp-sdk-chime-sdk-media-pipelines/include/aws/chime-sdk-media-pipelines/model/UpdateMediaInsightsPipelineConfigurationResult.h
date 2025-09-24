@@ -28,63 +28,37 @@ namespace Model
   class UpdateMediaInsightsPipelineConfigurationResult
   {
   public:
-    AWS_CHIMESDKMEDIAPIPELINES_API UpdateMediaInsightsPipelineConfigurationResult();
+    AWS_CHIMESDKMEDIAPIPELINES_API UpdateMediaInsightsPipelineConfigurationResult() = default;
     AWS_CHIMESDKMEDIAPIPELINES_API UpdateMediaInsightsPipelineConfigurationResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_CHIMESDKMEDIAPIPELINES_API UpdateMediaInsightsPipelineConfigurationResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The updated configuration settings.</p>
      */
-    inline const MediaInsightsPipelineConfiguration& GetMediaInsightsPipelineConfiguration() const{ return m_mediaInsightsPipelineConfiguration; }
+    inline const MediaInsightsPipelineConfiguration& GetMediaInsightsPipelineConfiguration() const { return m_mediaInsightsPipelineConfiguration; }
+    template<typename MediaInsightsPipelineConfigurationT = MediaInsightsPipelineConfiguration>
+    void SetMediaInsightsPipelineConfiguration(MediaInsightsPipelineConfigurationT&& value) { m_mediaInsightsPipelineConfigurationHasBeenSet = true; m_mediaInsightsPipelineConfiguration = std::forward<MediaInsightsPipelineConfigurationT>(value); }
+    template<typename MediaInsightsPipelineConfigurationT = MediaInsightsPipelineConfiguration>
+    UpdateMediaInsightsPipelineConfigurationResult& WithMediaInsightsPipelineConfiguration(MediaInsightsPipelineConfigurationT&& value) { SetMediaInsightsPipelineConfiguration(std::forward<MediaInsightsPipelineConfigurationT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The updated configuration settings.</p>
-     */
-    inline void SetMediaInsightsPipelineConfiguration(const MediaInsightsPipelineConfiguration& value) { m_mediaInsightsPipelineConfiguration = value; }
-
-    /**
-     * <p>The updated configuration settings.</p>
-     */
-    inline void SetMediaInsightsPipelineConfiguration(MediaInsightsPipelineConfiguration&& value) { m_mediaInsightsPipelineConfiguration = std::move(value); }
-
-    /**
-     * <p>The updated configuration settings.</p>
-     */
-    inline UpdateMediaInsightsPipelineConfigurationResult& WithMediaInsightsPipelineConfiguration(const MediaInsightsPipelineConfiguration& value) { SetMediaInsightsPipelineConfiguration(value); return *this;}
-
-    /**
-     * <p>The updated configuration settings.</p>
-     */
-    inline UpdateMediaInsightsPipelineConfigurationResult& WithMediaInsightsPipelineConfiguration(MediaInsightsPipelineConfiguration&& value) { SetMediaInsightsPipelineConfiguration(std::move(value)); return *this;}
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline UpdateMediaInsightsPipelineConfigurationResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline UpdateMediaInsightsPipelineConfigurationResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline UpdateMediaInsightsPipelineConfigurationResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    UpdateMediaInsightsPipelineConfigurationResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     MediaInsightsPipelineConfiguration m_mediaInsightsPipelineConfiguration;
+    bool m_mediaInsightsPipelineConfigurationHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

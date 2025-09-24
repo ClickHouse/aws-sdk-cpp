@@ -30,36 +30,25 @@ namespace Model
   class ReplicationTimeValue
   {
   public:
-    AWS_S3CRT_API ReplicationTimeValue();
+    AWS_S3CRT_API ReplicationTimeValue() = default;
     AWS_S3CRT_API ReplicationTimeValue(const Aws::Utils::Xml::XmlNode& xmlNode);
     AWS_S3CRT_API ReplicationTimeValue& operator=(const Aws::Utils::Xml::XmlNode& xmlNode);
 
     AWS_S3CRT_API void AddToNode(Aws::Utils::Xml::XmlNode& parentNode) const;
 
 
+    ///@{
     /**
      * <p> Contains an integer specifying time in minutes. </p> <p> Valid value: 15</p>
      */
-    inline int GetMinutes() const{ return m_minutes; }
-
-    /**
-     * <p> Contains an integer specifying time in minutes. </p> <p> Valid value: 15</p>
-     */
+    inline int GetMinutes() const { return m_minutes; }
     inline bool MinutesHasBeenSet() const { return m_minutesHasBeenSet; }
-
-    /**
-     * <p> Contains an integer specifying time in minutes. </p> <p> Valid value: 15</p>
-     */
     inline void SetMinutes(int value) { m_minutesHasBeenSet = true; m_minutes = value; }
-
-    /**
-     * <p> Contains an integer specifying time in minutes. </p> <p> Valid value: 15</p>
-     */
     inline ReplicationTimeValue& WithMinutes(int value) { SetMinutes(value); return *this;}
-
+    ///@}
   private:
 
-    int m_minutes;
+    int m_minutes{0};
     bool m_minutesHasBeenSet = false;
   };
 

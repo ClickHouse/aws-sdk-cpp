@@ -32,83 +32,35 @@ namespace Model
   class QueryCompileError
   {
   public:
-    AWS_CLOUDWATCHLOGS_API QueryCompileError();
+    AWS_CLOUDWATCHLOGS_API QueryCompileError() = default;
     AWS_CLOUDWATCHLOGS_API QueryCompileError(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHLOGS_API QueryCompileError& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLOUDWATCHLOGS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>Reserved.</p>
      */
-    inline const QueryCompileErrorLocation& GetLocation() const{ return m_location; }
-
-    /**
-     * <p>Reserved.</p>
-     */
+    inline const QueryCompileErrorLocation& GetLocation() const { return m_location; }
     inline bool LocationHasBeenSet() const { return m_locationHasBeenSet; }
+    template<typename LocationT = QueryCompileErrorLocation>
+    void SetLocation(LocationT&& value) { m_locationHasBeenSet = true; m_location = std::forward<LocationT>(value); }
+    template<typename LocationT = QueryCompileErrorLocation>
+    QueryCompileError& WithLocation(LocationT&& value) { SetLocation(std::forward<LocationT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
      * <p>Reserved.</p>
      */
-    inline void SetLocation(const QueryCompileErrorLocation& value) { m_locationHasBeenSet = true; m_location = value; }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline void SetLocation(QueryCompileErrorLocation&& value) { m_locationHasBeenSet = true; m_location = std::move(value); }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline QueryCompileError& WithLocation(const QueryCompileErrorLocation& value) { SetLocation(value); return *this;}
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline QueryCompileError& WithLocation(QueryCompileErrorLocation&& value) { SetLocation(std::move(value)); return *this;}
-
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline const Aws::String& GetMessage() const{ return m_message; }
-
-    /**
-     * <p>Reserved.</p>
-     */
+    inline const Aws::String& GetMessage() const { return m_message; }
     inline bool MessageHasBeenSet() const { return m_messageHasBeenSet; }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline void SetMessage(const Aws::String& value) { m_messageHasBeenSet = true; m_message = value; }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline void SetMessage(Aws::String&& value) { m_messageHasBeenSet = true; m_message = std::move(value); }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline void SetMessage(const char* value) { m_messageHasBeenSet = true; m_message.assign(value); }
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline QueryCompileError& WithMessage(const Aws::String& value) { SetMessage(value); return *this;}
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline QueryCompileError& WithMessage(Aws::String&& value) { SetMessage(std::move(value)); return *this;}
-
-    /**
-     * <p>Reserved.</p>
-     */
-    inline QueryCompileError& WithMessage(const char* value) { SetMessage(value); return *this;}
-
+    template<typename MessageT = Aws::String>
+    void SetMessage(MessageT&& value) { m_messageHasBeenSet = true; m_message = std::forward<MessageT>(value); }
+    template<typename MessageT = Aws::String>
+    QueryCompileError& WithMessage(MessageT&& value) { SetMessage(std::forward<MessageT>(value)); return *this;}
+    ///@}
   private:
 
     QueryCompileErrorLocation m_location;

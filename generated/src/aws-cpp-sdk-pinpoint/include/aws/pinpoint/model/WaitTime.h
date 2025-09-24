@@ -33,125 +33,39 @@ namespace Model
   class WaitTime
   {
   public:
-    AWS_PINPOINT_API WaitTime();
+    AWS_PINPOINT_API WaitTime() = default;
     AWS_PINPOINT_API WaitTime(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API WaitTime& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_PINPOINT_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The amount of time to wait, as a duration in ISO 8601 format, before
      * determining whether the activity's conditions have been met or moving
      * participants to the next activity in the journey.</p>
      */
-    inline const Aws::String& GetWaitFor() const{ return m_waitFor; }
-
-    /**
-     * <p>The amount of time to wait, as a duration in ISO 8601 format, before
-     * determining whether the activity's conditions have been met or moving
-     * participants to the next activity in the journey.</p>
-     */
+    inline const Aws::String& GetWaitFor() const { return m_waitFor; }
     inline bool WaitForHasBeenSet() const { return m_waitForHasBeenSet; }
+    template<typename WaitForT = Aws::String>
+    void SetWaitFor(WaitForT&& value) { m_waitForHasBeenSet = true; m_waitFor = std::forward<WaitForT>(value); }
+    template<typename WaitForT = Aws::String>
+    WaitTime& WithWaitFor(WaitForT&& value) { SetWaitFor(std::forward<WaitForT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The amount of time to wait, as a duration in ISO 8601 format, before
-     * determining whether the activity's conditions have been met or moving
-     * participants to the next activity in the journey.</p>
-     */
-    inline void SetWaitFor(const Aws::String& value) { m_waitForHasBeenSet = true; m_waitFor = value; }
-
-    /**
-     * <p>The amount of time to wait, as a duration in ISO 8601 format, before
-     * determining whether the activity's conditions have been met or moving
-     * participants to the next activity in the journey.</p>
-     */
-    inline void SetWaitFor(Aws::String&& value) { m_waitForHasBeenSet = true; m_waitFor = std::move(value); }
-
-    /**
-     * <p>The amount of time to wait, as a duration in ISO 8601 format, before
-     * determining whether the activity's conditions have been met or moving
-     * participants to the next activity in the journey.</p>
-     */
-    inline void SetWaitFor(const char* value) { m_waitForHasBeenSet = true; m_waitFor.assign(value); }
-
-    /**
-     * <p>The amount of time to wait, as a duration in ISO 8601 format, before
-     * determining whether the activity's conditions have been met or moving
-     * participants to the next activity in the journey.</p>
-     */
-    inline WaitTime& WithWaitFor(const Aws::String& value) { SetWaitFor(value); return *this;}
-
-    /**
-     * <p>The amount of time to wait, as a duration in ISO 8601 format, before
-     * determining whether the activity's conditions have been met or moving
-     * participants to the next activity in the journey.</p>
-     */
-    inline WaitTime& WithWaitFor(Aws::String&& value) { SetWaitFor(std::move(value)); return *this;}
-
-    /**
-     * <p>The amount of time to wait, as a duration in ISO 8601 format, before
-     * determining whether the activity's conditions have been met or moving
-     * participants to the next activity in the journey.</p>
-     */
-    inline WaitTime& WithWaitFor(const char* value) { SetWaitFor(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The date and time, in ISO 8601 format, when Amazon Pinpoint determines
      * whether the activity's conditions have been met or the activity moves
      * participants to the next activity in the journey.</p>
      */
-    inline const Aws::String& GetWaitUntil() const{ return m_waitUntil; }
-
-    /**
-     * <p>The date and time, in ISO 8601 format, when Amazon Pinpoint determines
-     * whether the activity's conditions have been met or the activity moves
-     * participants to the next activity in the journey.</p>
-     */
+    inline const Aws::String& GetWaitUntil() const { return m_waitUntil; }
     inline bool WaitUntilHasBeenSet() const { return m_waitUntilHasBeenSet; }
-
-    /**
-     * <p>The date and time, in ISO 8601 format, when Amazon Pinpoint determines
-     * whether the activity's conditions have been met or the activity moves
-     * participants to the next activity in the journey.</p>
-     */
-    inline void SetWaitUntil(const Aws::String& value) { m_waitUntilHasBeenSet = true; m_waitUntil = value; }
-
-    /**
-     * <p>The date and time, in ISO 8601 format, when Amazon Pinpoint determines
-     * whether the activity's conditions have been met or the activity moves
-     * participants to the next activity in the journey.</p>
-     */
-    inline void SetWaitUntil(Aws::String&& value) { m_waitUntilHasBeenSet = true; m_waitUntil = std::move(value); }
-
-    /**
-     * <p>The date and time, in ISO 8601 format, when Amazon Pinpoint determines
-     * whether the activity's conditions have been met or the activity moves
-     * participants to the next activity in the journey.</p>
-     */
-    inline void SetWaitUntil(const char* value) { m_waitUntilHasBeenSet = true; m_waitUntil.assign(value); }
-
-    /**
-     * <p>The date and time, in ISO 8601 format, when Amazon Pinpoint determines
-     * whether the activity's conditions have been met or the activity moves
-     * participants to the next activity in the journey.</p>
-     */
-    inline WaitTime& WithWaitUntil(const Aws::String& value) { SetWaitUntil(value); return *this;}
-
-    /**
-     * <p>The date and time, in ISO 8601 format, when Amazon Pinpoint determines
-     * whether the activity's conditions have been met or the activity moves
-     * participants to the next activity in the journey.</p>
-     */
-    inline WaitTime& WithWaitUntil(Aws::String&& value) { SetWaitUntil(std::move(value)); return *this;}
-
-    /**
-     * <p>The date and time, in ISO 8601 format, when Amazon Pinpoint determines
-     * whether the activity's conditions have been met or the activity moves
-     * participants to the next activity in the journey.</p>
-     */
-    inline WaitTime& WithWaitUntil(const char* value) { SetWaitUntil(value); return *this;}
-
+    template<typename WaitUntilT = Aws::String>
+    void SetWaitUntil(WaitUntilT&& value) { m_waitUntilHasBeenSet = true; m_waitUntil = std::forward<WaitUntilT>(value); }
+    template<typename WaitUntilT = Aws::String>
+    WaitTime& WithWaitUntil(WaitUntilT&& value) { SetWaitUntil(std::forward<WaitUntilT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_waitFor;

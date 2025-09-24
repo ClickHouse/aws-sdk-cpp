@@ -21,7 +21,7 @@ namespace Model
   class GetSigningPlatformRequest : public SignerRequest
   {
   public:
-    AWS_SIGNER_API GetSigningPlatformRequest();
+    AWS_SIGNER_API GetSigningPlatformRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,46 +32,17 @@ namespace Model
     AWS_SIGNER_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the target signing platform.</p>
      */
-    inline const Aws::String& GetPlatformId() const{ return m_platformId; }
-
-    /**
-     * <p>The ID of the target signing platform.</p>
-     */
+    inline const Aws::String& GetPlatformId() const { return m_platformId; }
     inline bool PlatformIdHasBeenSet() const { return m_platformIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the target signing platform.</p>
-     */
-    inline void SetPlatformId(const Aws::String& value) { m_platformIdHasBeenSet = true; m_platformId = value; }
-
-    /**
-     * <p>The ID of the target signing platform.</p>
-     */
-    inline void SetPlatformId(Aws::String&& value) { m_platformIdHasBeenSet = true; m_platformId = std::move(value); }
-
-    /**
-     * <p>The ID of the target signing platform.</p>
-     */
-    inline void SetPlatformId(const char* value) { m_platformIdHasBeenSet = true; m_platformId.assign(value); }
-
-    /**
-     * <p>The ID of the target signing platform.</p>
-     */
-    inline GetSigningPlatformRequest& WithPlatformId(const Aws::String& value) { SetPlatformId(value); return *this;}
-
-    /**
-     * <p>The ID of the target signing platform.</p>
-     */
-    inline GetSigningPlatformRequest& WithPlatformId(Aws::String&& value) { SetPlatformId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the target signing platform.</p>
-     */
-    inline GetSigningPlatformRequest& WithPlatformId(const char* value) { SetPlatformId(value); return *this;}
-
+    template<typename PlatformIdT = Aws::String>
+    void SetPlatformId(PlatformIdT&& value) { m_platformIdHasBeenSet = true; m_platformId = std::forward<PlatformIdT>(value); }
+    template<typename PlatformIdT = Aws::String>
+    GetSigningPlatformRequest& WithPlatformId(PlatformIdT&& value) { SetPlatformId(std::forward<PlatformIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_platformId;

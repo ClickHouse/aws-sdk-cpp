@@ -33,206 +33,71 @@ namespace Model
   class AwsNetworkFirewallFirewallPolicyDetails
   {
   public:
-    AWS_SECURITYHUB_API AwsNetworkFirewallFirewallPolicyDetails();
+    AWS_SECURITYHUB_API AwsNetworkFirewallFirewallPolicyDetails() = default;
     AWS_SECURITYHUB_API AwsNetworkFirewallFirewallPolicyDetails(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API AwsNetworkFirewallFirewallPolicyDetails& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_SECURITYHUB_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The firewall policy configuration.</p>
      */
-    inline const FirewallPolicyDetails& GetFirewallPolicy() const{ return m_firewallPolicy; }
-
-    /**
-     * <p>The firewall policy configuration.</p>
-     */
+    inline const FirewallPolicyDetails& GetFirewallPolicy() const { return m_firewallPolicy; }
     inline bool FirewallPolicyHasBeenSet() const { return m_firewallPolicyHasBeenSet; }
+    template<typename FirewallPolicyT = FirewallPolicyDetails>
+    void SetFirewallPolicy(FirewallPolicyT&& value) { m_firewallPolicyHasBeenSet = true; m_firewallPolicy = std::forward<FirewallPolicyT>(value); }
+    template<typename FirewallPolicyT = FirewallPolicyDetails>
+    AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicy(FirewallPolicyT&& value) { SetFirewallPolicy(std::forward<FirewallPolicyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The firewall policy configuration.</p>
-     */
-    inline void SetFirewallPolicy(const FirewallPolicyDetails& value) { m_firewallPolicyHasBeenSet = true; m_firewallPolicy = value; }
-
-    /**
-     * <p>The firewall policy configuration.</p>
-     */
-    inline void SetFirewallPolicy(FirewallPolicyDetails&& value) { m_firewallPolicyHasBeenSet = true; m_firewallPolicy = std::move(value); }
-
-    /**
-     * <p>The firewall policy configuration.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicy(const FirewallPolicyDetails& value) { SetFirewallPolicy(value); return *this;}
-
-    /**
-     * <p>The firewall policy configuration.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicy(FirewallPolicyDetails&& value) { SetFirewallPolicy(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The ARN of the firewall policy.</p>
      */
-    inline const Aws::String& GetFirewallPolicyArn() const{ return m_firewallPolicyArn; }
-
-    /**
-     * <p>The ARN of the firewall policy.</p>
-     */
+    inline const Aws::String& GetFirewallPolicyArn() const { return m_firewallPolicyArn; }
     inline bool FirewallPolicyArnHasBeenSet() const { return m_firewallPolicyArnHasBeenSet; }
+    template<typename FirewallPolicyArnT = Aws::String>
+    void SetFirewallPolicyArn(FirewallPolicyArnT&& value) { m_firewallPolicyArnHasBeenSet = true; m_firewallPolicyArn = std::forward<FirewallPolicyArnT>(value); }
+    template<typename FirewallPolicyArnT = Aws::String>
+    AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyArn(FirewallPolicyArnT&& value) { SetFirewallPolicyArn(std::forward<FirewallPolicyArnT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ARN of the firewall policy.</p>
-     */
-    inline void SetFirewallPolicyArn(const Aws::String& value) { m_firewallPolicyArnHasBeenSet = true; m_firewallPolicyArn = value; }
-
-    /**
-     * <p>The ARN of the firewall policy.</p>
-     */
-    inline void SetFirewallPolicyArn(Aws::String&& value) { m_firewallPolicyArnHasBeenSet = true; m_firewallPolicyArn = std::move(value); }
-
-    /**
-     * <p>The ARN of the firewall policy.</p>
-     */
-    inline void SetFirewallPolicyArn(const char* value) { m_firewallPolicyArnHasBeenSet = true; m_firewallPolicyArn.assign(value); }
-
-    /**
-     * <p>The ARN of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyArn(const Aws::String& value) { SetFirewallPolicyArn(value); return *this;}
-
-    /**
-     * <p>The ARN of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyArn(Aws::String&& value) { SetFirewallPolicyArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The ARN of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyArn(const char* value) { SetFirewallPolicyArn(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The identifier of the firewall policy.</p>
      */
-    inline const Aws::String& GetFirewallPolicyId() const{ return m_firewallPolicyId; }
-
-    /**
-     * <p>The identifier of the firewall policy.</p>
-     */
+    inline const Aws::String& GetFirewallPolicyId() const { return m_firewallPolicyId; }
     inline bool FirewallPolicyIdHasBeenSet() const { return m_firewallPolicyIdHasBeenSet; }
+    template<typename FirewallPolicyIdT = Aws::String>
+    void SetFirewallPolicyId(FirewallPolicyIdT&& value) { m_firewallPolicyIdHasBeenSet = true; m_firewallPolicyId = std::forward<FirewallPolicyIdT>(value); }
+    template<typename FirewallPolicyIdT = Aws::String>
+    AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyId(FirewallPolicyIdT&& value) { SetFirewallPolicyId(std::forward<FirewallPolicyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The identifier of the firewall policy.</p>
-     */
-    inline void SetFirewallPolicyId(const Aws::String& value) { m_firewallPolicyIdHasBeenSet = true; m_firewallPolicyId = value; }
-
-    /**
-     * <p>The identifier of the firewall policy.</p>
-     */
-    inline void SetFirewallPolicyId(Aws::String&& value) { m_firewallPolicyIdHasBeenSet = true; m_firewallPolicyId = std::move(value); }
-
-    /**
-     * <p>The identifier of the firewall policy.</p>
-     */
-    inline void SetFirewallPolicyId(const char* value) { m_firewallPolicyIdHasBeenSet = true; m_firewallPolicyId.assign(value); }
-
-    /**
-     * <p>The identifier of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyId(const Aws::String& value) { SetFirewallPolicyId(value); return *this;}
-
-    /**
-     * <p>The identifier of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyId(Aws::String&& value) { SetFirewallPolicyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The identifier of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyId(const char* value) { SetFirewallPolicyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the firewall policy.</p>
      */
-    inline const Aws::String& GetFirewallPolicyName() const{ return m_firewallPolicyName; }
-
-    /**
-     * <p>The name of the firewall policy.</p>
-     */
+    inline const Aws::String& GetFirewallPolicyName() const { return m_firewallPolicyName; }
     inline bool FirewallPolicyNameHasBeenSet() const { return m_firewallPolicyNameHasBeenSet; }
+    template<typename FirewallPolicyNameT = Aws::String>
+    void SetFirewallPolicyName(FirewallPolicyNameT&& value) { m_firewallPolicyNameHasBeenSet = true; m_firewallPolicyName = std::forward<FirewallPolicyNameT>(value); }
+    template<typename FirewallPolicyNameT = Aws::String>
+    AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyName(FirewallPolicyNameT&& value) { SetFirewallPolicyName(std::forward<FirewallPolicyNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the firewall policy.</p>
-     */
-    inline void SetFirewallPolicyName(const Aws::String& value) { m_firewallPolicyNameHasBeenSet = true; m_firewallPolicyName = value; }
-
-    /**
-     * <p>The name of the firewall policy.</p>
-     */
-    inline void SetFirewallPolicyName(Aws::String&& value) { m_firewallPolicyNameHasBeenSet = true; m_firewallPolicyName = std::move(value); }
-
-    /**
-     * <p>The name of the firewall policy.</p>
-     */
-    inline void SetFirewallPolicyName(const char* value) { m_firewallPolicyNameHasBeenSet = true; m_firewallPolicyName.assign(value); }
-
-    /**
-     * <p>The name of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyName(const Aws::String& value) { SetFirewallPolicyName(value); return *this;}
-
-    /**
-     * <p>The name of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyName(Aws::String&& value) { SetFirewallPolicyName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithFirewallPolicyName(const char* value) { SetFirewallPolicyName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>A description of the firewall policy.</p>
      */
-    inline const Aws::String& GetDescription() const{ return m_description; }
-
-    /**
-     * <p>A description of the firewall policy.</p>
-     */
+    inline const Aws::String& GetDescription() const { return m_description; }
     inline bool DescriptionHasBeenSet() const { return m_descriptionHasBeenSet; }
-
-    /**
-     * <p>A description of the firewall policy.</p>
-     */
-    inline void SetDescription(const Aws::String& value) { m_descriptionHasBeenSet = true; m_description = value; }
-
-    /**
-     * <p>A description of the firewall policy.</p>
-     */
-    inline void SetDescription(Aws::String&& value) { m_descriptionHasBeenSet = true; m_description = std::move(value); }
-
-    /**
-     * <p>A description of the firewall policy.</p>
-     */
-    inline void SetDescription(const char* value) { m_descriptionHasBeenSet = true; m_description.assign(value); }
-
-    /**
-     * <p>A description of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithDescription(const Aws::String& value) { SetDescription(value); return *this;}
-
-    /**
-     * <p>A description of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithDescription(Aws::String&& value) { SetDescription(std::move(value)); return *this;}
-
-    /**
-     * <p>A description of the firewall policy.</p>
-     */
-    inline AwsNetworkFirewallFirewallPolicyDetails& WithDescription(const char* value) { SetDescription(value); return *this;}
-
+    template<typename DescriptionT = Aws::String>
+    void SetDescription(DescriptionT&& value) { m_descriptionHasBeenSet = true; m_description = std::forward<DescriptionT>(value); }
+    template<typename DescriptionT = Aws::String>
+    AwsNetworkFirewallFirewallPolicyDetails& WithDescription(DescriptionT&& value) { SetDescription(std::forward<DescriptionT>(value)); return *this;}
+    ///@}
   private:
 
     FirewallPolicyDetails m_firewallPolicy;

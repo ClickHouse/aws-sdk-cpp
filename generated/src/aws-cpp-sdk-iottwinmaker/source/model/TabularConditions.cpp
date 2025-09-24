@@ -18,15 +18,7 @@ namespace IoTTwinMaker
 namespace Model
 {
 
-TabularConditions::TabularConditions() : 
-    m_orderByHasBeenSet(false),
-    m_propertyFiltersHasBeenSet(false)
-{
-}
-
-TabularConditions::TabularConditions(JsonView jsonValue) : 
-    m_orderByHasBeenSet(false),
-    m_propertyFiltersHasBeenSet(false)
+TabularConditions::TabularConditions(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ TabularConditions& TabularConditions::operator =(JsonView jsonValue)
     }
     m_orderByHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("propertyFilters"))
   {
     Aws::Utils::Array<JsonView> propertyFiltersJsonList = jsonValue.GetArray("propertyFilters");
@@ -52,7 +43,6 @@ TabularConditions& TabularConditions::operator =(JsonView jsonValue)
     }
     m_propertyFiltersHasBeenSet = true;
   }
-
   return *this;
 }
 

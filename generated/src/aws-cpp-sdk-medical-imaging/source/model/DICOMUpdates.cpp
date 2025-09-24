@@ -19,15 +19,7 @@ namespace MedicalImaging
 namespace Model
 {
 
-DICOMUpdates::DICOMUpdates() : 
-    m_removableAttributesHasBeenSet(false),
-    m_updatableAttributesHasBeenSet(false)
-{
-}
-
-DICOMUpdates::DICOMUpdates(JsonView jsonValue) : 
-    m_removableAttributesHasBeenSet(false),
-    m_updatableAttributesHasBeenSet(false)
+DICOMUpdates::DICOMUpdates(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -39,13 +31,11 @@ DICOMUpdates& DICOMUpdates::operator =(JsonView jsonValue)
     m_removableAttributes = HashingUtils::Base64Decode(jsonValue.GetString("removableAttributes"));
     m_removableAttributesHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("updatableAttributes"))
   {
     m_updatableAttributes = HashingUtils::Base64Decode(jsonValue.GetString("updatableAttributes"));
     m_updatableAttributesHasBeenSet = true;
   }
-
   return *this;
 }
 

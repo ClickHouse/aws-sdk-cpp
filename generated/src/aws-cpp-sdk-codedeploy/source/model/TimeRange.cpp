@@ -18,15 +18,7 @@ namespace CodeDeploy
 namespace Model
 {
 
-TimeRange::TimeRange() : 
-    m_startHasBeenSet(false),
-    m_endHasBeenSet(false)
-{
-}
-
-TimeRange::TimeRange(JsonView jsonValue) : 
-    m_startHasBeenSet(false),
-    m_endHasBeenSet(false)
+TimeRange::TimeRange(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ TimeRange& TimeRange::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("start"))
   {
     m_start = jsonValue.GetDouble("start");
-
     m_startHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("end"))
   {
     m_end = jsonValue.GetDouble("end");
-
     m_endHasBeenSet = true;
   }
-
   return *this;
 }
 

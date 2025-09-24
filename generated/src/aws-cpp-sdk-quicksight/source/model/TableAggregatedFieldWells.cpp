@@ -18,15 +18,7 @@ namespace QuickSight
 namespace Model
 {
 
-TableAggregatedFieldWells::TableAggregatedFieldWells() : 
-    m_groupByHasBeenSet(false),
-    m_valuesHasBeenSet(false)
-{
-}
-
-TableAggregatedFieldWells::TableAggregatedFieldWells(JsonView jsonValue) : 
-    m_groupByHasBeenSet(false),
-    m_valuesHasBeenSet(false)
+TableAggregatedFieldWells::TableAggregatedFieldWells(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,7 +34,6 @@ TableAggregatedFieldWells& TableAggregatedFieldWells::operator =(JsonView jsonVa
     }
     m_groupByHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("Values"))
   {
     Aws::Utils::Array<JsonView> valuesJsonList = jsonValue.GetArray("Values");
@@ -52,7 +43,6 @@ TableAggregatedFieldWells& TableAggregatedFieldWells::operator =(JsonView jsonVa
     }
     m_valuesHasBeenSet = true;
   }
-
   return *this;
 }
 

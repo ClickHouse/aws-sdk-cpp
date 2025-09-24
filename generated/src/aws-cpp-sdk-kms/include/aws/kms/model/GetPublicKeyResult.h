@@ -12,6 +12,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/kms/model/EncryptionAlgorithmSpec.h>
 #include <aws/kms/model/SigningAlgorithmSpec.h>
+#include <aws/kms/model/KeyAgreementAlgorithmSpec.h>
 #include <utility>
 
 namespace Aws
@@ -33,61 +34,25 @@ namespace Model
   class GetPublicKeyResult
   {
   public:
-    AWS_KMS_API GetPublicKeyResult();
+    AWS_KMS_API GetPublicKeyResult() = default;
     AWS_KMS_API GetPublicKeyResult(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
     AWS_KMS_API GetPublicKeyResult& operator=(const Aws::AmazonWebServiceResult<Aws::Utils::Json::JsonValue>& result);
 
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (<a
      * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
      * ARN</a>) of the asymmetric KMS key from which the public key was downloaded.</p>
      */
-    inline const Aws::String& GetKeyId() const{ return m_keyId; }
+    inline const Aws::String& GetKeyId() const { return m_keyId; }
+    template<typename KeyIdT = Aws::String>
+    void SetKeyId(KeyIdT&& value) { m_keyIdHasBeenSet = true; m_keyId = std::forward<KeyIdT>(value); }
+    template<typename KeyIdT = Aws::String>
+    GetPublicKeyResult& WithKeyId(KeyIdT&& value) { SetKeyId(std::forward<KeyIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the asymmetric KMS key from which the public key was downloaded.</p>
-     */
-    inline void SetKeyId(const Aws::String& value) { m_keyId = value; }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the asymmetric KMS key from which the public key was downloaded.</p>
-     */
-    inline void SetKeyId(Aws::String&& value) { m_keyId = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the asymmetric KMS key from which the public key was downloaded.</p>
-     */
-    inline void SetKeyId(const char* value) { m_keyId.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the asymmetric KMS key from which the public key was downloaded.</p>
-     */
-    inline GetPublicKeyResult& WithKeyId(const Aws::String& value) { SetKeyId(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the asymmetric KMS key from which the public key was downloaded.</p>
-     */
-    inline GetPublicKeyResult& WithKeyId(Aws::String&& value) { SetKeyId(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (<a
-     * href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN">key
-     * ARN</a>) of the asymmetric KMS key from which the public key was downloaded.</p>
-     */
-    inline GetPublicKeyResult& WithKeyId(const char* value) { SetKeyId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The exported public key. </p> <p>The value is a DER-encoded X.509 public key,
      * also known as <code>SubjectPublicKeyInfo</code> (SPKI), as defined in <a
@@ -95,112 +60,36 @@ namespace Model
      * API or the Amazon Web Services CLI, the value is Base64-encoded. Otherwise, it
      * is not Base64-encoded.</p> <p/>
      */
-    inline const Aws::Utils::ByteBuffer& GetPublicKey() const{ return m_publicKey; }
+    inline const Aws::Utils::ByteBuffer& GetPublicKey() const { return m_publicKey; }
+    template<typename PublicKeyT = Aws::Utils::ByteBuffer>
+    void SetPublicKey(PublicKeyT&& value) { m_publicKeyHasBeenSet = true; m_publicKey = std::forward<PublicKeyT>(value); }
+    template<typename PublicKeyT = Aws::Utils::ByteBuffer>
+    GetPublicKeyResult& WithPublicKey(PublicKeyT&& value) { SetPublicKey(std::forward<PublicKeyT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The exported public key. </p> <p>The value is a DER-encoded X.509 public key,
-     * also known as <code>SubjectPublicKeyInfo</code> (SPKI), as defined in <a
-     * href="https://tools.ietf.org/html/rfc5280">RFC 5280</a>. When you use the HTTP
-     * API or the Amazon Web Services CLI, the value is Base64-encoded. Otherwise, it
-     * is not Base64-encoded.</p> <p/>
-     */
-    inline void SetPublicKey(const Aws::Utils::ByteBuffer& value) { m_publicKey = value; }
-
-    /**
-     * <p>The exported public key. </p> <p>The value is a DER-encoded X.509 public key,
-     * also known as <code>SubjectPublicKeyInfo</code> (SPKI), as defined in <a
-     * href="https://tools.ietf.org/html/rfc5280">RFC 5280</a>. When you use the HTTP
-     * API or the Amazon Web Services CLI, the value is Base64-encoded. Otherwise, it
-     * is not Base64-encoded.</p> <p/>
-     */
-    inline void SetPublicKey(Aws::Utils::ByteBuffer&& value) { m_publicKey = std::move(value); }
-
-    /**
-     * <p>The exported public key. </p> <p>The value is a DER-encoded X.509 public key,
-     * also known as <code>SubjectPublicKeyInfo</code> (SPKI), as defined in <a
-     * href="https://tools.ietf.org/html/rfc5280">RFC 5280</a>. When you use the HTTP
-     * API or the Amazon Web Services CLI, the value is Base64-encoded. Otherwise, it
-     * is not Base64-encoded.</p> <p/>
-     */
-    inline GetPublicKeyResult& WithPublicKey(const Aws::Utils::ByteBuffer& value) { SetPublicKey(value); return *this;}
-
-    /**
-     * <p>The exported public key. </p> <p>The value is a DER-encoded X.509 public key,
-     * also known as <code>SubjectPublicKeyInfo</code> (SPKI), as defined in <a
-     * href="https://tools.ietf.org/html/rfc5280">RFC 5280</a>. When you use the HTTP
-     * API or the Amazon Web Services CLI, the value is Base64-encoded. Otherwise, it
-     * is not Base64-encoded.</p> <p/>
-     */
-    inline GetPublicKeyResult& WithPublicKey(Aws::Utils::ByteBuffer&& value) { SetPublicKey(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of the of the public key that was downloaded.</p>
      */
-    inline const KeySpec& GetKeySpec() const{ return m_keySpec; }
+    inline KeySpec GetKeySpec() const { return m_keySpec; }
+    inline void SetKeySpec(KeySpec value) { m_keySpecHasBeenSet = true; m_keySpec = value; }
+    inline GetPublicKeyResult& WithKeySpec(KeySpec value) { SetKeySpec(value); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The type of the of the public key that was downloaded.</p>
+     * <p>The permitted use of the public key. Valid values for asymmetric key pairs
+     * are <code>ENCRYPT_DECRYPT</code>, <code>SIGN_VERIFY</code>, and
+     * <code>KEY_AGREEMENT</code>. </p> <p>This information is critical. For example,
+     * if a public key with <code>SIGN_VERIFY</code> key usage encrypts data outside of
+     * KMS, the ciphertext cannot be decrypted. </p>
      */
-    inline void SetKeySpec(const KeySpec& value) { m_keySpec = value; }
+    inline KeyUsageType GetKeyUsage() const { return m_keyUsage; }
+    inline void SetKeyUsage(KeyUsageType value) { m_keyUsageHasBeenSet = true; m_keyUsage = value; }
+    inline GetPublicKeyResult& WithKeyUsage(KeyUsageType value) { SetKeyUsage(value); return *this;}
+    ///@}
 
-    /**
-     * <p>The type of the of the public key that was downloaded.</p>
-     */
-    inline void SetKeySpec(KeySpec&& value) { m_keySpec = std::move(value); }
-
-    /**
-     * <p>The type of the of the public key that was downloaded.</p>
-     */
-    inline GetPublicKeyResult& WithKeySpec(const KeySpec& value) { SetKeySpec(value); return *this;}
-
-    /**
-     * <p>The type of the of the public key that was downloaded.</p>
-     */
-    inline GetPublicKeyResult& WithKeySpec(KeySpec&& value) { SetKeySpec(std::move(value)); return *this;}
-
-
-    /**
-     * <p>The permitted use of the public key. Valid values are
-     * <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>. </p> <p>This
-     * information is critical. If a public key with <code>SIGN_VERIFY</code> key usage
-     * encrypts data outside of KMS, the ciphertext cannot be decrypted. </p>
-     */
-    inline const KeyUsageType& GetKeyUsage() const{ return m_keyUsage; }
-
-    /**
-     * <p>The permitted use of the public key. Valid values are
-     * <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>. </p> <p>This
-     * information is critical. If a public key with <code>SIGN_VERIFY</code> key usage
-     * encrypts data outside of KMS, the ciphertext cannot be decrypted. </p>
-     */
-    inline void SetKeyUsage(const KeyUsageType& value) { m_keyUsage = value; }
-
-    /**
-     * <p>The permitted use of the public key. Valid values are
-     * <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>. </p> <p>This
-     * information is critical. If a public key with <code>SIGN_VERIFY</code> key usage
-     * encrypts data outside of KMS, the ciphertext cannot be decrypted. </p>
-     */
-    inline void SetKeyUsage(KeyUsageType&& value) { m_keyUsage = std::move(value); }
-
-    /**
-     * <p>The permitted use of the public key. Valid values are
-     * <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>. </p> <p>This
-     * information is critical. If a public key with <code>SIGN_VERIFY</code> key usage
-     * encrypts data outside of KMS, the ciphertext cannot be decrypted. </p>
-     */
-    inline GetPublicKeyResult& WithKeyUsage(const KeyUsageType& value) { SetKeyUsage(value); return *this;}
-
-    /**
-     * <p>The permitted use of the public key. Valid values are
-     * <code>ENCRYPT_DECRYPT</code> or <code>SIGN_VERIFY</code>. </p> <p>This
-     * information is critical. If a public key with <code>SIGN_VERIFY</code> key usage
-     * encrypts data outside of KMS, the ciphertext cannot be decrypted. </p>
-     */
-    inline GetPublicKeyResult& WithKeyUsage(KeyUsageType&& value) { SetKeyUsage(std::move(value)); return *this;}
-
-
+    ///@{
     /**
      * <p>The encryption algorithms that KMS supports for this key. </p> <p>This
      * information is critical. If a public key encrypts data outside of KMS by using
@@ -208,149 +97,75 @@ namespace Model
      * <p>This field appears in the response only when the <code>KeyUsage</code> of the
      * public key is <code>ENCRYPT_DECRYPT</code>.</p>
      */
-    inline const Aws::Vector<EncryptionAlgorithmSpec>& GetEncryptionAlgorithms() const{ return m_encryptionAlgorithms; }
+    inline const Aws::Vector<EncryptionAlgorithmSpec>& GetEncryptionAlgorithms() const { return m_encryptionAlgorithms; }
+    template<typename EncryptionAlgorithmsT = Aws::Vector<EncryptionAlgorithmSpec>>
+    void SetEncryptionAlgorithms(EncryptionAlgorithmsT&& value) { m_encryptionAlgorithmsHasBeenSet = true; m_encryptionAlgorithms = std::forward<EncryptionAlgorithmsT>(value); }
+    template<typename EncryptionAlgorithmsT = Aws::Vector<EncryptionAlgorithmSpec>>
+    GetPublicKeyResult& WithEncryptionAlgorithms(EncryptionAlgorithmsT&& value) { SetEncryptionAlgorithms(std::forward<EncryptionAlgorithmsT>(value)); return *this;}
+    inline GetPublicKeyResult& AddEncryptionAlgorithms(EncryptionAlgorithmSpec value) { m_encryptionAlgorithmsHasBeenSet = true; m_encryptionAlgorithms.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The encryption algorithms that KMS supports for this key. </p> <p>This
-     * information is critical. If a public key encrypts data outside of KMS by using
-     * an unsupported encryption algorithm, the ciphertext cannot be decrypted. </p>
-     * <p>This field appears in the response only when the <code>KeyUsage</code> of the
-     * public key is <code>ENCRYPT_DECRYPT</code>.</p>
-     */
-    inline void SetEncryptionAlgorithms(const Aws::Vector<EncryptionAlgorithmSpec>& value) { m_encryptionAlgorithms = value; }
-
-    /**
-     * <p>The encryption algorithms that KMS supports for this key. </p> <p>This
-     * information is critical. If a public key encrypts data outside of KMS by using
-     * an unsupported encryption algorithm, the ciphertext cannot be decrypted. </p>
-     * <p>This field appears in the response only when the <code>KeyUsage</code> of the
-     * public key is <code>ENCRYPT_DECRYPT</code>.</p>
-     */
-    inline void SetEncryptionAlgorithms(Aws::Vector<EncryptionAlgorithmSpec>&& value) { m_encryptionAlgorithms = std::move(value); }
-
-    /**
-     * <p>The encryption algorithms that KMS supports for this key. </p> <p>This
-     * information is critical. If a public key encrypts data outside of KMS by using
-     * an unsupported encryption algorithm, the ciphertext cannot be decrypted. </p>
-     * <p>This field appears in the response only when the <code>KeyUsage</code> of the
-     * public key is <code>ENCRYPT_DECRYPT</code>.</p>
-     */
-    inline GetPublicKeyResult& WithEncryptionAlgorithms(const Aws::Vector<EncryptionAlgorithmSpec>& value) { SetEncryptionAlgorithms(value); return *this;}
-
-    /**
-     * <p>The encryption algorithms that KMS supports for this key. </p> <p>This
-     * information is critical. If a public key encrypts data outside of KMS by using
-     * an unsupported encryption algorithm, the ciphertext cannot be decrypted. </p>
-     * <p>This field appears in the response only when the <code>KeyUsage</code> of the
-     * public key is <code>ENCRYPT_DECRYPT</code>.</p>
-     */
-    inline GetPublicKeyResult& WithEncryptionAlgorithms(Aws::Vector<EncryptionAlgorithmSpec>&& value) { SetEncryptionAlgorithms(std::move(value)); return *this;}
-
-    /**
-     * <p>The encryption algorithms that KMS supports for this key. </p> <p>This
-     * information is critical. If a public key encrypts data outside of KMS by using
-     * an unsupported encryption algorithm, the ciphertext cannot be decrypted. </p>
-     * <p>This field appears in the response only when the <code>KeyUsage</code> of the
-     * public key is <code>ENCRYPT_DECRYPT</code>.</p>
-     */
-    inline GetPublicKeyResult& AddEncryptionAlgorithms(const EncryptionAlgorithmSpec& value) { m_encryptionAlgorithms.push_back(value); return *this; }
-
-    /**
-     * <p>The encryption algorithms that KMS supports for this key. </p> <p>This
-     * information is critical. If a public key encrypts data outside of KMS by using
-     * an unsupported encryption algorithm, the ciphertext cannot be decrypted. </p>
-     * <p>This field appears in the response only when the <code>KeyUsage</code> of the
-     * public key is <code>ENCRYPT_DECRYPT</code>.</p>
-     */
-    inline GetPublicKeyResult& AddEncryptionAlgorithms(EncryptionAlgorithmSpec&& value) { m_encryptionAlgorithms.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     /**
      * <p>The signing algorithms that KMS supports for this key.</p> <p>This field
      * appears in the response only when the <code>KeyUsage</code> of the public key is
      * <code>SIGN_VERIFY</code>.</p>
      */
-    inline const Aws::Vector<SigningAlgorithmSpec>& GetSigningAlgorithms() const{ return m_signingAlgorithms; }
+    inline const Aws::Vector<SigningAlgorithmSpec>& GetSigningAlgorithms() const { return m_signingAlgorithms; }
+    template<typename SigningAlgorithmsT = Aws::Vector<SigningAlgorithmSpec>>
+    void SetSigningAlgorithms(SigningAlgorithmsT&& value) { m_signingAlgorithmsHasBeenSet = true; m_signingAlgorithms = std::forward<SigningAlgorithmsT>(value); }
+    template<typename SigningAlgorithmsT = Aws::Vector<SigningAlgorithmSpec>>
+    GetPublicKeyResult& WithSigningAlgorithms(SigningAlgorithmsT&& value) { SetSigningAlgorithms(std::forward<SigningAlgorithmsT>(value)); return *this;}
+    inline GetPublicKeyResult& AddSigningAlgorithms(SigningAlgorithmSpec value) { m_signingAlgorithmsHasBeenSet = true; m_signingAlgorithms.push_back(value); return *this; }
+    ///@}
 
+    ///@{
     /**
-     * <p>The signing algorithms that KMS supports for this key.</p> <p>This field
-     * appears in the response only when the <code>KeyUsage</code> of the public key is
-     * <code>SIGN_VERIFY</code>.</p>
+     * <p>The key agreement algorithm used to derive a shared secret. This field is
+     * present only when the KMS key has a <code>KeyUsage</code> value of
+     * <code>KEY_AGREEMENT</code>.</p>
      */
-    inline void SetSigningAlgorithms(const Aws::Vector<SigningAlgorithmSpec>& value) { m_signingAlgorithms = value; }
+    inline const Aws::Vector<KeyAgreementAlgorithmSpec>& GetKeyAgreementAlgorithms() const { return m_keyAgreementAlgorithms; }
+    template<typename KeyAgreementAlgorithmsT = Aws::Vector<KeyAgreementAlgorithmSpec>>
+    void SetKeyAgreementAlgorithms(KeyAgreementAlgorithmsT&& value) { m_keyAgreementAlgorithmsHasBeenSet = true; m_keyAgreementAlgorithms = std::forward<KeyAgreementAlgorithmsT>(value); }
+    template<typename KeyAgreementAlgorithmsT = Aws::Vector<KeyAgreementAlgorithmSpec>>
+    GetPublicKeyResult& WithKeyAgreementAlgorithms(KeyAgreementAlgorithmsT&& value) { SetKeyAgreementAlgorithms(std::forward<KeyAgreementAlgorithmsT>(value)); return *this;}
+    inline GetPublicKeyResult& AddKeyAgreementAlgorithms(KeyAgreementAlgorithmSpec value) { m_keyAgreementAlgorithmsHasBeenSet = true; m_keyAgreementAlgorithms.push_back(value); return *this; }
+    ///@}
 
-    /**
-     * <p>The signing algorithms that KMS supports for this key.</p> <p>This field
-     * appears in the response only when the <code>KeyUsage</code> of the public key is
-     * <code>SIGN_VERIFY</code>.</p>
-     */
-    inline void SetSigningAlgorithms(Aws::Vector<SigningAlgorithmSpec>&& value) { m_signingAlgorithms = std::move(value); }
-
-    /**
-     * <p>The signing algorithms that KMS supports for this key.</p> <p>This field
-     * appears in the response only when the <code>KeyUsage</code> of the public key is
-     * <code>SIGN_VERIFY</code>.</p>
-     */
-    inline GetPublicKeyResult& WithSigningAlgorithms(const Aws::Vector<SigningAlgorithmSpec>& value) { SetSigningAlgorithms(value); return *this;}
-
-    /**
-     * <p>The signing algorithms that KMS supports for this key.</p> <p>This field
-     * appears in the response only when the <code>KeyUsage</code> of the public key is
-     * <code>SIGN_VERIFY</code>.</p>
-     */
-    inline GetPublicKeyResult& WithSigningAlgorithms(Aws::Vector<SigningAlgorithmSpec>&& value) { SetSigningAlgorithms(std::move(value)); return *this;}
-
-    /**
-     * <p>The signing algorithms that KMS supports for this key.</p> <p>This field
-     * appears in the response only when the <code>KeyUsage</code> of the public key is
-     * <code>SIGN_VERIFY</code>.</p>
-     */
-    inline GetPublicKeyResult& AddSigningAlgorithms(const SigningAlgorithmSpec& value) { m_signingAlgorithms.push_back(value); return *this; }
-
-    /**
-     * <p>The signing algorithms that KMS supports for this key.</p> <p>This field
-     * appears in the response only when the <code>KeyUsage</code> of the public key is
-     * <code>SIGN_VERIFY</code>.</p>
-     */
-    inline GetPublicKeyResult& AddSigningAlgorithms(SigningAlgorithmSpec&& value) { m_signingAlgorithms.push_back(std::move(value)); return *this; }
-
-
+    ///@{
     
-    inline const Aws::String& GetRequestId() const{ return m_requestId; }
-
-    
-    inline void SetRequestId(const Aws::String& value) { m_requestId = value; }
-
-    
-    inline void SetRequestId(Aws::String&& value) { m_requestId = std::move(value); }
-
-    
-    inline void SetRequestId(const char* value) { m_requestId.assign(value); }
-
-    
-    inline GetPublicKeyResult& WithRequestId(const Aws::String& value) { SetRequestId(value); return *this;}
-
-    
-    inline GetPublicKeyResult& WithRequestId(Aws::String&& value) { SetRequestId(std::move(value)); return *this;}
-
-    
-    inline GetPublicKeyResult& WithRequestId(const char* value) { SetRequestId(value); return *this;}
-
+    inline const Aws::String& GetRequestId() const { return m_requestId; }
+    template<typename RequestIdT = Aws::String>
+    void SetRequestId(RequestIdT&& value) { m_requestIdHasBeenSet = true; m_requestId = std::forward<RequestIdT>(value); }
+    template<typename RequestIdT = Aws::String>
+    GetPublicKeyResult& WithRequestId(RequestIdT&& value) { SetRequestId(std::forward<RequestIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_keyId;
+    bool m_keyIdHasBeenSet = false;
 
-    Aws::Utils::ByteBuffer m_publicKey;
+    Aws::Utils::ByteBuffer m_publicKey{};
+    bool m_publicKeyHasBeenSet = false;
 
-    KeySpec m_keySpec;
+    KeySpec m_keySpec{KeySpec::NOT_SET};
+    bool m_keySpecHasBeenSet = false;
 
-    KeyUsageType m_keyUsage;
+    KeyUsageType m_keyUsage{KeyUsageType::NOT_SET};
+    bool m_keyUsageHasBeenSet = false;
 
     Aws::Vector<EncryptionAlgorithmSpec> m_encryptionAlgorithms;
+    bool m_encryptionAlgorithmsHasBeenSet = false;
 
     Aws::Vector<SigningAlgorithmSpec> m_signingAlgorithms;
+    bool m_signingAlgorithmsHasBeenSet = false;
+
+    Aws::Vector<KeyAgreementAlgorithmSpec> m_keyAgreementAlgorithms;
+    bool m_keyAgreementAlgorithmsHasBeenSet = false;
 
     Aws::String m_requestId;
+    bool m_requestIdHasBeenSet = false;
   };
 
 } // namespace Model

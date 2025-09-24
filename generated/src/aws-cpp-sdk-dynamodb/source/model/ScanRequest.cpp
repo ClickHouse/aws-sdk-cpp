@@ -12,33 +12,6 @@ using namespace Aws::DynamoDB::Model;
 using namespace Aws::Utils::Json;
 using namespace Aws::Utils;
 
-ScanRequest::ScanRequest() : 
-    m_tableNameHasBeenSet(false),
-    m_indexNameHasBeenSet(false),
-    m_attributesToGetHasBeenSet(false),
-    m_limit(0),
-    m_limitHasBeenSet(false),
-    m_select(Select::NOT_SET),
-    m_selectHasBeenSet(false),
-    m_scanFilterHasBeenSet(false),
-    m_conditionalOperator(ConditionalOperator::NOT_SET),
-    m_conditionalOperatorHasBeenSet(false),
-    m_exclusiveStartKeyHasBeenSet(false),
-    m_returnConsumedCapacity(ReturnConsumedCapacity::NOT_SET),
-    m_returnConsumedCapacityHasBeenSet(false),
-    m_totalSegments(0),
-    m_totalSegmentsHasBeenSet(false),
-    m_segment(0),
-    m_segmentHasBeenSet(false),
-    m_projectionExpressionHasBeenSet(false),
-    m_filterExpressionHasBeenSet(false),
-    m_expressionAttributeNamesHasBeenSet(false),
-    m_expressionAttributeValuesHasBeenSet(false),
-    m_consistentRead(false),
-    m_consistentReadHasBeenSet(false)
-{
-}
-
 Aws::String ScanRequest::SerializePayload() const
 {
   JsonValue payload;
@@ -173,5 +146,15 @@ Aws::Http::HeaderValueCollection ScanRequest::GetRequestSpecificHeaders() const
 }
 
 
+
+ScanRequest::EndpointParameters ScanRequest::GetEndpointContextParams() const
+{
+    EndpointParameters parameters;
+    // Operation context parameters
+    if (TableNameHasBeenSet()) {
+        parameters.emplace_back(Aws::String("ResourceArn"), this->GetTableName(), Aws::Endpoint::EndpointParameter::ParameterOrigin::OPERATION_CONTEXT);
+    }
+    return parameters;
+}
 
 

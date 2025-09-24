@@ -18,21 +18,7 @@ namespace MigrationHubStrategyRecommendations
 namespace Model
 {
 
-Result::Result() : 
-    m_analysisStatusHasBeenSet(false),
-    m_analysisType(AnalysisType::NOT_SET),
-    m_analysisTypeHasBeenSet(false),
-    m_antipatternReportResultListHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
-{
-}
-
-Result::Result(JsonView jsonValue) : 
-    m_analysisStatusHasBeenSet(false),
-    m_analysisType(AnalysisType::NOT_SET),
-    m_analysisTypeHasBeenSet(false),
-    m_antipatternReportResultListHasBeenSet(false),
-    m_statusMessageHasBeenSet(false)
+Result::Result(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -42,17 +28,13 @@ Result& Result::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("analysisStatus"))
   {
     m_analysisStatus = jsonValue.GetObject("analysisStatus");
-
     m_analysisStatusHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("analysisType"))
   {
     m_analysisType = AnalysisTypeMapper::GetAnalysisTypeForName(jsonValue.GetString("analysisType"));
-
     m_analysisTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("antipatternReportResultList"))
   {
     Aws::Utils::Array<JsonView> antipatternReportResultListJsonList = jsonValue.GetArray("antipatternReportResultList");
@@ -62,14 +44,11 @@ Result& Result::operator =(JsonView jsonValue)
     }
     m_antipatternReportResultListHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("statusMessage"))
   {
     m_statusMessage = jsonValue.GetString("statusMessage");
-
     m_statusMessageHasBeenSet = true;
   }
-
   return *this;
 }
 

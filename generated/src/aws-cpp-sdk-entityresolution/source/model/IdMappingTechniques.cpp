@@ -18,17 +18,7 @@ namespace EntityResolution
 namespace Model
 {
 
-IdMappingTechniques::IdMappingTechniques() : 
-    m_idMappingType(IdMappingType::NOT_SET),
-    m_idMappingTypeHasBeenSet(false),
-    m_providerPropertiesHasBeenSet(false)
-{
-}
-
-IdMappingTechniques::IdMappingTechniques(JsonView jsonValue) : 
-    m_idMappingType(IdMappingType::NOT_SET),
-    m_idMappingTypeHasBeenSet(false),
-    m_providerPropertiesHasBeenSet(false)
+IdMappingTechniques::IdMappingTechniques(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -38,17 +28,18 @@ IdMappingTechniques& IdMappingTechniques::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("idMappingType"))
   {
     m_idMappingType = IdMappingTypeMapper::GetIdMappingTypeForName(jsonValue.GetString("idMappingType"));
-
     m_idMappingTypeHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("ruleBasedProperties"))
+  {
+    m_ruleBasedProperties = jsonValue.GetObject("ruleBasedProperties");
+    m_ruleBasedPropertiesHasBeenSet = true;
+  }
   if(jsonValue.ValueExists("providerProperties"))
   {
     m_providerProperties = jsonValue.GetObject("providerProperties");
-
     m_providerPropertiesHasBeenSet = true;
   }
-
   return *this;
 }
 
@@ -59,6 +50,12 @@ JsonValue IdMappingTechniques::Jsonize() const
   if(m_idMappingTypeHasBeenSet)
   {
    payload.WithString("idMappingType", IdMappingTypeMapper::GetNameForIdMappingType(m_idMappingType));
+  }
+
+  if(m_ruleBasedPropertiesHasBeenSet)
+  {
+   payload.WithObject("ruleBasedProperties", m_ruleBasedProperties.Jsonize());
+
   }
 
   if(m_providerPropertiesHasBeenSet)

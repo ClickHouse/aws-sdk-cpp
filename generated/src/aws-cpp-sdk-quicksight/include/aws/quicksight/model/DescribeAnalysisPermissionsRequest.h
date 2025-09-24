@@ -21,7 +21,7 @@ namespace Model
   class DescribeAnalysisPermissionsRequest : public QuickSightRequest
   {
   public:
-    AWS_QUICKSIGHT_API DescribeAnalysisPermissionsRequest();
+    AWS_QUICKSIGHT_API DescribeAnalysisPermissionsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -32,111 +32,32 @@ namespace Model
     AWS_QUICKSIGHT_API Aws::String SerializePayload() const override;
 
 
+    ///@{
     /**
      * <p>The ID of the Amazon Web Services account that contains the analysis whose
      * permissions you're describing. You must be using the Amazon Web Services account
      * that the analysis is in.</p>
      */
-    inline const Aws::String& GetAwsAccountId() const{ return m_awsAccountId; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the analysis whose
-     * permissions you're describing. You must be using the Amazon Web Services account
-     * that the analysis is in.</p>
-     */
+    inline const Aws::String& GetAwsAccountId() const { return m_awsAccountId; }
     inline bool AwsAccountIdHasBeenSet() const { return m_awsAccountIdHasBeenSet; }
+    template<typename AwsAccountIdT = Aws::String>
+    void SetAwsAccountId(AwsAccountIdT&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::forward<AwsAccountIdT>(value); }
+    template<typename AwsAccountIdT = Aws::String>
+    DescribeAnalysisPermissionsRequest& WithAwsAccountId(AwsAccountIdT&& value) { SetAwsAccountId(std::forward<AwsAccountIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the analysis whose
-     * permissions you're describing. You must be using the Amazon Web Services account
-     * that the analysis is in.</p>
-     */
-    inline void SetAwsAccountId(const Aws::String& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = value; }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the analysis whose
-     * permissions you're describing. You must be using the Amazon Web Services account
-     * that the analysis is in.</p>
-     */
-    inline void SetAwsAccountId(Aws::String&& value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId = std::move(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the analysis whose
-     * permissions you're describing. You must be using the Amazon Web Services account
-     * that the analysis is in.</p>
-     */
-    inline void SetAwsAccountId(const char* value) { m_awsAccountIdHasBeenSet = true; m_awsAccountId.assign(value); }
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the analysis whose
-     * permissions you're describing. You must be using the Amazon Web Services account
-     * that the analysis is in.</p>
-     */
-    inline DescribeAnalysisPermissionsRequest& WithAwsAccountId(const Aws::String& value) { SetAwsAccountId(value); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the analysis whose
-     * permissions you're describing. You must be using the Amazon Web Services account
-     * that the analysis is in.</p>
-     */
-    inline DescribeAnalysisPermissionsRequest& WithAwsAccountId(Aws::String&& value) { SetAwsAccountId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the Amazon Web Services account that contains the analysis whose
-     * permissions you're describing. You must be using the Amazon Web Services account
-     * that the analysis is in.</p>
-     */
-    inline DescribeAnalysisPermissionsRequest& WithAwsAccountId(const char* value) { SetAwsAccountId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The ID of the analysis whose permissions you're describing. The ID is part of
      * the analysis URL.</p>
      */
-    inline const Aws::String& GetAnalysisId() const{ return m_analysisId; }
-
-    /**
-     * <p>The ID of the analysis whose permissions you're describing. The ID is part of
-     * the analysis URL.</p>
-     */
+    inline const Aws::String& GetAnalysisId() const { return m_analysisId; }
     inline bool AnalysisIdHasBeenSet() const { return m_analysisIdHasBeenSet; }
-
-    /**
-     * <p>The ID of the analysis whose permissions you're describing. The ID is part of
-     * the analysis URL.</p>
-     */
-    inline void SetAnalysisId(const Aws::String& value) { m_analysisIdHasBeenSet = true; m_analysisId = value; }
-
-    /**
-     * <p>The ID of the analysis whose permissions you're describing. The ID is part of
-     * the analysis URL.</p>
-     */
-    inline void SetAnalysisId(Aws::String&& value) { m_analysisIdHasBeenSet = true; m_analysisId = std::move(value); }
-
-    /**
-     * <p>The ID of the analysis whose permissions you're describing. The ID is part of
-     * the analysis URL.</p>
-     */
-    inline void SetAnalysisId(const char* value) { m_analysisIdHasBeenSet = true; m_analysisId.assign(value); }
-
-    /**
-     * <p>The ID of the analysis whose permissions you're describing. The ID is part of
-     * the analysis URL.</p>
-     */
-    inline DescribeAnalysisPermissionsRequest& WithAnalysisId(const Aws::String& value) { SetAnalysisId(value); return *this;}
-
-    /**
-     * <p>The ID of the analysis whose permissions you're describing. The ID is part of
-     * the analysis URL.</p>
-     */
-    inline DescribeAnalysisPermissionsRequest& WithAnalysisId(Aws::String&& value) { SetAnalysisId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the analysis whose permissions you're describing. The ID is part of
-     * the analysis URL.</p>
-     */
-    inline DescribeAnalysisPermissionsRequest& WithAnalysisId(const char* value) { SetAnalysisId(value); return *this;}
-
+    template<typename AnalysisIdT = Aws::String>
+    void SetAnalysisId(AnalysisIdT&& value) { m_analysisIdHasBeenSet = true; m_analysisId = std::forward<AnalysisIdT>(value); }
+    template<typename AnalysisIdT = Aws::String>
+    DescribeAnalysisPermissionsRequest& WithAnalysisId(AnalysisIdT&& value) { SetAnalysisId(std::forward<AnalysisIdT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_awsAccountId;

@@ -18,15 +18,7 @@ namespace CodeStarNotifications
 namespace Model
 {
 
-Target::Target() : 
-    m_targetTypeHasBeenSet(false),
-    m_targetAddressHasBeenSet(false)
-{
-}
-
-Target::Target(JsonView jsonValue) : 
-    m_targetTypeHasBeenSet(false),
-    m_targetAddressHasBeenSet(false)
+Target::Target(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,17 +28,13 @@ Target& Target::operator =(JsonView jsonValue)
   if(jsonValue.ValueExists("TargetType"))
   {
     m_targetType = jsonValue.GetString("TargetType");
-
     m_targetTypeHasBeenSet = true;
   }
-
   if(jsonValue.ValueExists("TargetAddress"))
   {
     m_targetAddress = jsonValue.GetString("TargetAddress");
-
     m_targetAddressHasBeenSet = true;
   }
-
   return *this;
 }
 

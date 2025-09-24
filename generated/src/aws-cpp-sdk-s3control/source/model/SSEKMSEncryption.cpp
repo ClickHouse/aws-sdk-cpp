@@ -20,13 +20,7 @@ namespace S3Control
 namespace Model
 {
 
-SSEKMSEncryption::SSEKMSEncryption() : 
-    m_keyIdHasBeenSet(false)
-{
-}
-
-SSEKMSEncryption::SSEKMSEncryption(const XmlNode& xmlNode) : 
-    m_keyIdHasBeenSet(false)
+SSEKMSEncryption::SSEKMSEncryption(const XmlNode& xmlNode)
 {
   *this = xmlNode;
 }

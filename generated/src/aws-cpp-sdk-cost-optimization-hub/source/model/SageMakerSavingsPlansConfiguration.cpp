@@ -18,19 +18,7 @@ namespace CostOptimizationHub
 namespace Model
 {
 
-SageMakerSavingsPlansConfiguration::SageMakerSavingsPlansConfiguration() : 
-    m_accountScopeHasBeenSet(false),
-    m_hourlyCommitmentHasBeenSet(false),
-    m_paymentOptionHasBeenSet(false),
-    m_termHasBeenSet(false)
-{
-}
-
-SageMakerSavingsPlansConfiguration::SageMakerSavingsPlansConfiguration(JsonView jsonValue) : 
-    m_accountScopeHasBeenSet(false),
-    m_hourlyCommitmentHasBeenSet(false),
-    m_paymentOptionHasBeenSet(false),
-    m_termHasBeenSet(false)
+SageMakerSavingsPlansConfiguration::SageMakerSavingsPlansConfiguration(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -40,31 +28,23 @@ SageMakerSavingsPlansConfiguration& SageMakerSavingsPlansConfiguration::operator
   if(jsonValue.ValueExists("accountScope"))
   {
     m_accountScope = jsonValue.GetString("accountScope");
-
     m_accountScopeHasBeenSet = true;
   }
-
-  if(jsonValue.ValueExists("hourlyCommitment"))
-  {
-    m_hourlyCommitment = jsonValue.GetString("hourlyCommitment");
-
-    m_hourlyCommitmentHasBeenSet = true;
-  }
-
-  if(jsonValue.ValueExists("paymentOption"))
-  {
-    m_paymentOption = jsonValue.GetString("paymentOption");
-
-    m_paymentOptionHasBeenSet = true;
-  }
-
   if(jsonValue.ValueExists("term"))
   {
     m_term = jsonValue.GetString("term");
-
     m_termHasBeenSet = true;
   }
-
+  if(jsonValue.ValueExists("paymentOption"))
+  {
+    m_paymentOption = jsonValue.GetString("paymentOption");
+    m_paymentOptionHasBeenSet = true;
+  }
+  if(jsonValue.ValueExists("hourlyCommitment"))
+  {
+    m_hourlyCommitment = jsonValue.GetString("hourlyCommitment");
+    m_hourlyCommitmentHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -78,9 +58,9 @@ JsonValue SageMakerSavingsPlansConfiguration::Jsonize() const
 
   }
 
-  if(m_hourlyCommitmentHasBeenSet)
+  if(m_termHasBeenSet)
   {
-   payload.WithString("hourlyCommitment", m_hourlyCommitment);
+   payload.WithString("term", m_term);
 
   }
 
@@ -90,9 +70,9 @@ JsonValue SageMakerSavingsPlansConfiguration::Jsonize() const
 
   }
 
-  if(m_termHasBeenSet)
+  if(m_hourlyCommitmentHasBeenSet)
   {
-   payload.WithString("term", m_term);
+   payload.WithString("hourlyCommitment", m_hourlyCommitment);
 
   }
 

@@ -21,7 +21,7 @@ namespace Model
   class DescribeBackupRequest : public DynamoDBRequest
   {
   public:
-    AWS_DYNAMODB_API DescribeBackupRequest();
+    AWS_DYNAMODB_API DescribeBackupRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -33,47 +33,22 @@ namespace Model
 
     AWS_DYNAMODB_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
+    /**
+     * Helper function to collect parameters (configurable and static hardcoded) required for endpoint computation.
+     */
+    AWS_DYNAMODB_API EndpointParameters GetEndpointContextParams() const override;
 
+    ///@{
     /**
      * <p>The Amazon Resource Name (ARN) associated with the backup.</p>
      */
-    inline const Aws::String& GetBackupArn() const{ return m_backupArn; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-     */
+    inline const Aws::String& GetBackupArn() const { return m_backupArn; }
     inline bool BackupArnHasBeenSet() const { return m_backupArnHasBeenSet; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-     */
-    inline void SetBackupArn(const Aws::String& value) { m_backupArnHasBeenSet = true; m_backupArn = value; }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-     */
-    inline void SetBackupArn(Aws::String&& value) { m_backupArnHasBeenSet = true; m_backupArn = std::move(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-     */
-    inline void SetBackupArn(const char* value) { m_backupArnHasBeenSet = true; m_backupArn.assign(value); }
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-     */
-    inline DescribeBackupRequest& WithBackupArn(const Aws::String& value) { SetBackupArn(value); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-     */
-    inline DescribeBackupRequest& WithBackupArn(Aws::String&& value) { SetBackupArn(std::move(value)); return *this;}
-
-    /**
-     * <p>The Amazon Resource Name (ARN) associated with the backup.</p>
-     */
-    inline DescribeBackupRequest& WithBackupArn(const char* value) { SetBackupArn(value); return *this;}
-
+    template<typename BackupArnT = Aws::String>
+    void SetBackupArn(BackupArnT&& value) { m_backupArnHasBeenSet = true; m_backupArn = std::forward<BackupArnT>(value); }
+    template<typename BackupArnT = Aws::String>
+    DescribeBackupRequest& WithBackupArn(BackupArnT&& value) { SetBackupArn(std::forward<BackupArnT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_backupArn;

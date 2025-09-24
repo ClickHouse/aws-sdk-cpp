@@ -10,12 +10,6 @@
 using namespace Aws::IAM::Model;
 using namespace Aws::Utils;
 
-UpdateSAMLProviderRequest::UpdateSAMLProviderRequest() : 
-    m_sAMLMetadataDocumentHasBeenSet(false),
-    m_sAMLProviderArnHasBeenSet(false)
-{
-}
-
 Aws::String UpdateSAMLProviderRequest::SerializePayload() const
 {
   Aws::StringStream ss;
@@ -28,6 +22,21 @@ Aws::String UpdateSAMLProviderRequest::SerializePayload() const
   if(m_sAMLProviderArnHasBeenSet)
   {
     ss << "SAMLProviderArn=" << StringUtils::URLEncode(m_sAMLProviderArn.c_str()) << "&";
+  }
+
+  if(m_assertionEncryptionModeHasBeenSet)
+  {
+    ss << "AssertionEncryptionMode=" << StringUtils::URLEncode(AssertionEncryptionModeTypeMapper::GetNameForAssertionEncryptionModeType(m_assertionEncryptionMode)) << "&";
+  }
+
+  if(m_addPrivateKeyHasBeenSet)
+  {
+    ss << "AddPrivateKey=" << StringUtils::URLEncode(m_addPrivateKey.c_str()) << "&";
+  }
+
+  if(m_removePrivateKeyHasBeenSet)
+  {
+    ss << "RemovePrivateKey=" << StringUtils::URLEncode(m_removePrivateKey.c_str()) << "&";
   }
 
   ss << "Version=2010-05-08";

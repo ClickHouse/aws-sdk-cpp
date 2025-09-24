@@ -22,7 +22,7 @@ namespace Model
   class BatchGetReportGroupsRequest : public CodeBuildRequest
   {
   public:
-    AWS_CODEBUILD_API BatchGetReportGroupsRequest();
+    AWS_CODEBUILD_API BatchGetReportGroupsRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -35,60 +35,20 @@ namespace Model
     AWS_CODEBUILD_API Aws::Http::HeaderValueCollection GetRequestSpecificHeaders() const override;
 
 
+    ///@{
     /**
      * <p> An array of report group ARNs that identify the report groups to return.
      * </p>
      */
-    inline const Aws::Vector<Aws::String>& GetReportGroupArns() const{ return m_reportGroupArns; }
-
-    /**
-     * <p> An array of report group ARNs that identify the report groups to return.
-     * </p>
-     */
+    inline const Aws::Vector<Aws::String>& GetReportGroupArns() const { return m_reportGroupArns; }
     inline bool ReportGroupArnsHasBeenSet() const { return m_reportGroupArnsHasBeenSet; }
-
-    /**
-     * <p> An array of report group ARNs that identify the report groups to return.
-     * </p>
-     */
-    inline void SetReportGroupArns(const Aws::Vector<Aws::String>& value) { m_reportGroupArnsHasBeenSet = true; m_reportGroupArns = value; }
-
-    /**
-     * <p> An array of report group ARNs that identify the report groups to return.
-     * </p>
-     */
-    inline void SetReportGroupArns(Aws::Vector<Aws::String>&& value) { m_reportGroupArnsHasBeenSet = true; m_reportGroupArns = std::move(value); }
-
-    /**
-     * <p> An array of report group ARNs that identify the report groups to return.
-     * </p>
-     */
-    inline BatchGetReportGroupsRequest& WithReportGroupArns(const Aws::Vector<Aws::String>& value) { SetReportGroupArns(value); return *this;}
-
-    /**
-     * <p> An array of report group ARNs that identify the report groups to return.
-     * </p>
-     */
-    inline BatchGetReportGroupsRequest& WithReportGroupArns(Aws::Vector<Aws::String>&& value) { SetReportGroupArns(std::move(value)); return *this;}
-
-    /**
-     * <p> An array of report group ARNs that identify the report groups to return.
-     * </p>
-     */
-    inline BatchGetReportGroupsRequest& AddReportGroupArns(const Aws::String& value) { m_reportGroupArnsHasBeenSet = true; m_reportGroupArns.push_back(value); return *this; }
-
-    /**
-     * <p> An array of report group ARNs that identify the report groups to return.
-     * </p>
-     */
-    inline BatchGetReportGroupsRequest& AddReportGroupArns(Aws::String&& value) { m_reportGroupArnsHasBeenSet = true; m_reportGroupArns.push_back(std::move(value)); return *this; }
-
-    /**
-     * <p> An array of report group ARNs that identify the report groups to return.
-     * </p>
-     */
-    inline BatchGetReportGroupsRequest& AddReportGroupArns(const char* value) { m_reportGroupArnsHasBeenSet = true; m_reportGroupArns.push_back(value); return *this; }
-
+    template<typename ReportGroupArnsT = Aws::Vector<Aws::String>>
+    void SetReportGroupArns(ReportGroupArnsT&& value) { m_reportGroupArnsHasBeenSet = true; m_reportGroupArns = std::forward<ReportGroupArnsT>(value); }
+    template<typename ReportGroupArnsT = Aws::Vector<Aws::String>>
+    BatchGetReportGroupsRequest& WithReportGroupArns(ReportGroupArnsT&& value) { SetReportGroupArns(std::forward<ReportGroupArnsT>(value)); return *this;}
+    template<typename ReportGroupArnsT = Aws::String>
+    BatchGetReportGroupsRequest& AddReportGroupArns(ReportGroupArnsT&& value) { m_reportGroupArnsHasBeenSet = true; m_reportGroupArns.emplace_back(std::forward<ReportGroupArnsT>(value)); return *this; }
+    ///@}
   private:
 
     Aws::Vector<Aws::String> m_reportGroupArns;

@@ -26,7 +26,7 @@ namespace Model
   class RequestEnvironmentInfoRequest : public ElasticBeanstalkRequest
   {
   public:
-    AWS_ELASTICBEANSTALK_API RequestEnvironmentInfoRequest();
+    AWS_ELASTICBEANSTALK_API RequestEnvironmentInfoRequest() = default;
 
     // Service request name is the Operation name which will send this request out,
     // each operation should has unique request name, so that we can get operation's name from this request.
@@ -41,6 +41,7 @@ namespace Model
 
   public:
 
+    ///@{
     /**
      * <p>The ID of the environment of the requested data.</p> <p>If no such
      * environment is found, <code>RequestEnvironmentInfo</code> returns an
@@ -48,72 +49,15 @@ namespace Model
      * either this or an EnvironmentName, or both. If you do not specify either, AWS
      * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
      */
-    inline const Aws::String& GetEnvironmentId() const{ return m_environmentId; }
-
-    /**
-     * <p>The ID of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentName, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
+    inline const Aws::String& GetEnvironmentId() const { return m_environmentId; }
     inline bool EnvironmentIdHasBeenSet() const { return m_environmentIdHasBeenSet; }
+    template<typename EnvironmentIdT = Aws::String>
+    void SetEnvironmentId(EnvironmentIdT&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::forward<EnvironmentIdT>(value); }
+    template<typename EnvironmentIdT = Aws::String>
+    RequestEnvironmentInfoRequest& WithEnvironmentId(EnvironmentIdT&& value) { SetEnvironmentId(std::forward<EnvironmentIdT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The ID of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentName, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentId(const Aws::String& value) { m_environmentIdHasBeenSet = true; m_environmentId = value; }
-
-    /**
-     * <p>The ID of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentName, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentId(Aws::String&& value) { m_environmentIdHasBeenSet = true; m_environmentId = std::move(value); }
-
-    /**
-     * <p>The ID of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentName, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentId(const char* value) { m_environmentIdHasBeenSet = true; m_environmentId.assign(value); }
-
-    /**
-     * <p>The ID of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentName, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline RequestEnvironmentInfoRequest& WithEnvironmentId(const Aws::String& value) { SetEnvironmentId(value); return *this;}
-
-    /**
-     * <p>The ID of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentName, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline RequestEnvironmentInfoRequest& WithEnvironmentId(Aws::String&& value) { SetEnvironmentId(std::move(value)); return *this;}
-
-    /**
-     * <p>The ID of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentName, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline RequestEnvironmentInfoRequest& WithEnvironmentId(const char* value) { SetEnvironmentId(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The name of the environment of the requested data.</p> <p>If no such
      * environment is found, <code>RequestEnvironmentInfo</code> returns an
@@ -121,102 +65,23 @@ namespace Model
      * either this or an EnvironmentId, or both. If you do not specify either, AWS
      * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
      */
-    inline const Aws::String& GetEnvironmentName() const{ return m_environmentName; }
-
-    /**
-     * <p>The name of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentId, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
+    inline const Aws::String& GetEnvironmentName() const { return m_environmentName; }
     inline bool EnvironmentNameHasBeenSet() const { return m_environmentNameHasBeenSet; }
+    template<typename EnvironmentNameT = Aws::String>
+    void SetEnvironmentName(EnvironmentNameT&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::forward<EnvironmentNameT>(value); }
+    template<typename EnvironmentNameT = Aws::String>
+    RequestEnvironmentInfoRequest& WithEnvironmentName(EnvironmentNameT&& value) { SetEnvironmentName(std::forward<EnvironmentNameT>(value)); return *this;}
+    ///@}
 
-    /**
-     * <p>The name of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentId, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentName(const Aws::String& value) { m_environmentNameHasBeenSet = true; m_environmentName = value; }
-
-    /**
-     * <p>The name of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentId, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentName(Aws::String&& value) { m_environmentNameHasBeenSet = true; m_environmentName = std::move(value); }
-
-    /**
-     * <p>The name of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentId, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline void SetEnvironmentName(const char* value) { m_environmentNameHasBeenSet = true; m_environmentName.assign(value); }
-
-    /**
-     * <p>The name of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentId, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline RequestEnvironmentInfoRequest& WithEnvironmentName(const Aws::String& value) { SetEnvironmentName(value); return *this;}
-
-    /**
-     * <p>The name of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentId, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline RequestEnvironmentInfoRequest& WithEnvironmentName(Aws::String&& value) { SetEnvironmentName(std::move(value)); return *this;}
-
-    /**
-     * <p>The name of the environment of the requested data.</p> <p>If no such
-     * environment is found, <code>RequestEnvironmentInfo</code> returns an
-     * <code>InvalidParameterValue</code> error. </p> <p>Condition: You must specify
-     * either this or an EnvironmentId, or both. If you do not specify either, AWS
-     * Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
-     */
-    inline RequestEnvironmentInfoRequest& WithEnvironmentName(const char* value) { SetEnvironmentName(value); return *this;}
-
-
+    ///@{
     /**
      * <p>The type of information to request.</p>
      */
-    inline const EnvironmentInfoType& GetInfoType() const{ return m_infoType; }
-
-    /**
-     * <p>The type of information to request.</p>
-     */
+    inline EnvironmentInfoType GetInfoType() const { return m_infoType; }
     inline bool InfoTypeHasBeenSet() const { return m_infoTypeHasBeenSet; }
-
-    /**
-     * <p>The type of information to request.</p>
-     */
-    inline void SetInfoType(const EnvironmentInfoType& value) { m_infoTypeHasBeenSet = true; m_infoType = value; }
-
-    /**
-     * <p>The type of information to request.</p>
-     */
-    inline void SetInfoType(EnvironmentInfoType&& value) { m_infoTypeHasBeenSet = true; m_infoType = std::move(value); }
-
-    /**
-     * <p>The type of information to request.</p>
-     */
-    inline RequestEnvironmentInfoRequest& WithInfoType(const EnvironmentInfoType& value) { SetInfoType(value); return *this;}
-
-    /**
-     * <p>The type of information to request.</p>
-     */
-    inline RequestEnvironmentInfoRequest& WithInfoType(EnvironmentInfoType&& value) { SetInfoType(std::move(value)); return *this;}
-
+    inline void SetInfoType(EnvironmentInfoType value) { m_infoTypeHasBeenSet = true; m_infoType = value; }
+    inline RequestEnvironmentInfoRequest& WithInfoType(EnvironmentInfoType value) { SetInfoType(value); return *this;}
+    ///@}
   private:
 
     Aws::String m_environmentId;
@@ -225,7 +90,7 @@ namespace Model
     Aws::String m_environmentName;
     bool m_environmentNameHasBeenSet = false;
 
-    EnvironmentInfoType m_infoType;
+    EnvironmentInfoType m_infoType{EnvironmentInfoType::NOT_SET};
     bool m_infoTypeHasBeenSet = false;
   };
 

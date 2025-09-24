@@ -18,15 +18,7 @@ namespace CognitoIdentityProvider
 namespace Model
 {
 
-UsernameConfigurationType::UsernameConfigurationType() : 
-    m_caseSensitive(false),
-    m_caseSensitiveHasBeenSet(false)
-{
-}
-
-UsernameConfigurationType::UsernameConfigurationType(JsonView jsonValue) : 
-    m_caseSensitive(false),
-    m_caseSensitiveHasBeenSet(false)
+UsernameConfigurationType::UsernameConfigurationType(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -36,10 +28,8 @@ UsernameConfigurationType& UsernameConfigurationType::operator =(JsonView jsonVa
   if(jsonValue.ValueExists("CaseSensitive"))
   {
     m_caseSensitive = jsonValue.GetBool("CaseSensitive");
-
     m_caseSensitiveHasBeenSet = true;
   }
-
   return *this;
 }
 

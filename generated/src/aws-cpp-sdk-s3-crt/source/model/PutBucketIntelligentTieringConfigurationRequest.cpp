@@ -6,6 +6,7 @@
 #include <aws/s3-crt/model/PutBucketIntelligentTieringConfigurationRequest.h>
 #include <aws/core/utils/xml/XmlSerializer.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
+#include <aws/core/utils/UnreferencedParam.h>
 #include <aws/core/http/URI.h>
 #include <aws/core/utils/memory/stl/AWSStringStream.h>
 
@@ -16,12 +17,24 @@ using namespace Aws::Utils::Xml;
 using namespace Aws::Utils;
 using namespace Aws::Http;
 
-PutBucketIntelligentTieringConfigurationRequest::PutBucketIntelligentTieringConfigurationRequest() : 
-    m_bucketHasBeenSet(false),
-    m_idHasBeenSet(false),
-    m_intelligentTieringConfigurationHasBeenSet(false),
-    m_customizedAccessLogTagHasBeenSet(false)
+
+bool PutBucketIntelligentTieringConfigurationRequest::HasEmbeddedError(Aws::IOStream &body,
+  const Aws::Http::HeaderValueCollection &header) const
 {
+  // Header is unused
+  AWS_UNREFERENCED_PARAM(header);
+
+  auto readPointer = body.tellg();
+  Utils::Xml::XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
+  body.seekg(readPointer);
+  if (!doc.WasParseSuccessful()) {
+    return false;
+  }
+
+  if (!doc.GetRootElement().IsNull() && doc.GetRootElement().GetName() == Aws::String("Error")) {
+    return true;
+  }
+  return false;
 }
 
 Aws::String PutBucketIntelligentTieringConfigurationRequest::SerializePayload() const
@@ -69,6 +82,19 @@ void PutBucketIntelligentTieringConfigurationRequest::AddQueryStringParameters(U
     }
 }
 
+Aws::Http::HeaderValueCollection PutBucketIntelligentTieringConfigurationRequest::GetRequestSpecificHeaders() const
+{
+  Aws::Http::HeaderValueCollection headers;
+  Aws::StringStream ss;
+  if(m_expectedBucketOwnerHasBeenSet)
+  {
+    ss << m_expectedBucketOwner;
+    headers.emplace("x-amz-expected-bucket-owner",  ss.str());
+    ss.str("");
+  }
+
+  return headers;
+}
 
 PutBucketIntelligentTieringConfigurationRequest::EndpointParameters PutBucketIntelligentTieringConfigurationRequest::GetEndpointContextParams() const
 {

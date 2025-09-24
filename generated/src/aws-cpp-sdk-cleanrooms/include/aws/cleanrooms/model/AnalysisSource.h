@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/cleanrooms/CleanRooms_EXPORTS.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/cleanrooms/model/AnalysisTemplateArtifacts.h>
 #include <utility>
 
 namespace Aws
@@ -32,56 +33,42 @@ namespace Model
   class AnalysisSource
   {
   public:
-    AWS_CLEANROOMS_API AnalysisSource();
+    AWS_CLEANROOMS_API AnalysisSource() = default;
     AWS_CLEANROOMS_API AnalysisSource(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API AnalysisSource& operator=(Aws::Utils::Json::JsonView jsonValue);
     AWS_CLEANROOMS_API Aws::Utils::Json::JsonValue Jsonize() const;
 
 
+    ///@{
     /**
      * <p>The query text.</p>
      */
-    inline const Aws::String& GetText() const{ return m_text; }
-
-    /**
-     * <p>The query text.</p>
-     */
+    inline const Aws::String& GetText() const { return m_text; }
     inline bool TextHasBeenSet() const { return m_textHasBeenSet; }
+    template<typename TextT = Aws::String>
+    void SetText(TextT&& value) { m_textHasBeenSet = true; m_text = std::forward<TextT>(value); }
+    template<typename TextT = Aws::String>
+    AnalysisSource& WithText(TextT&& value) { SetText(std::forward<TextT>(value)); return *this;}
+    ///@}
 
+    ///@{
     /**
-     * <p>The query text.</p>
+     * <p> The artifacts of the analysis source.</p>
      */
-    inline void SetText(const Aws::String& value) { m_textHasBeenSet = true; m_text = value; }
-
-    /**
-     * <p>The query text.</p>
-     */
-    inline void SetText(Aws::String&& value) { m_textHasBeenSet = true; m_text = std::move(value); }
-
-    /**
-     * <p>The query text.</p>
-     */
-    inline void SetText(const char* value) { m_textHasBeenSet = true; m_text.assign(value); }
-
-    /**
-     * <p>The query text.</p>
-     */
-    inline AnalysisSource& WithText(const Aws::String& value) { SetText(value); return *this;}
-
-    /**
-     * <p>The query text.</p>
-     */
-    inline AnalysisSource& WithText(Aws::String&& value) { SetText(std::move(value)); return *this;}
-
-    /**
-     * <p>The query text.</p>
-     */
-    inline AnalysisSource& WithText(const char* value) { SetText(value); return *this;}
-
+    inline const AnalysisTemplateArtifacts& GetArtifacts() const { return m_artifacts; }
+    inline bool ArtifactsHasBeenSet() const { return m_artifactsHasBeenSet; }
+    template<typename ArtifactsT = AnalysisTemplateArtifacts>
+    void SetArtifacts(ArtifactsT&& value) { m_artifactsHasBeenSet = true; m_artifacts = std::forward<ArtifactsT>(value); }
+    template<typename ArtifactsT = AnalysisTemplateArtifacts>
+    AnalysisSource& WithArtifacts(ArtifactsT&& value) { SetArtifacts(std::forward<ArtifactsT>(value)); return *this;}
+    ///@}
   private:
 
     Aws::String m_text;
     bool m_textHasBeenSet = false;
+
+    AnalysisTemplateArtifacts m_artifacts;
+    bool m_artifactsHasBeenSet = false;
   };
 
 } // namespace Model

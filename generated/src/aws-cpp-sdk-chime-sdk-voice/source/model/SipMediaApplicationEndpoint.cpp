@@ -18,13 +18,7 @@ namespace ChimeSDKVoice
 namespace Model
 {
 
-SipMediaApplicationEndpoint::SipMediaApplicationEndpoint() : 
-    m_lambdaArnHasBeenSet(false)
-{
-}
-
-SipMediaApplicationEndpoint::SipMediaApplicationEndpoint(JsonView jsonValue) : 
-    m_lambdaArnHasBeenSet(false)
+SipMediaApplicationEndpoint::SipMediaApplicationEndpoint(JsonView jsonValue)
 {
   *this = jsonValue;
 }
@@ -34,10 +28,8 @@ SipMediaApplicationEndpoint& SipMediaApplicationEndpoint::operator =(JsonView js
   if(jsonValue.ValueExists("LambdaArn"))
   {
     m_lambdaArn = jsonValue.GetString("LambdaArn");
-
     m_lambdaArnHasBeenSet = true;
   }
-
   return *this;
 }
 

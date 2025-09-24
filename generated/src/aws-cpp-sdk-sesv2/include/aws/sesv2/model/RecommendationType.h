@@ -19,7 +19,11 @@ namespace Model
     DKIM,
     DMARC,
     SPF,
-    BIMI
+    BIMI,
+    COMPLAINT,
+    BOUNCE,
+    FEEDBACK_3P,
+    IP_LISTING
   };
 
 namespace RecommendationTypeMapper
