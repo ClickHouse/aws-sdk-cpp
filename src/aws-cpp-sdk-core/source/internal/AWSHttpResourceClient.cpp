@@ -477,14 +477,6 @@ namespace Aws
             return ec2MetadataServiceEndpoint;
         }
 
-        #ifdef _MSC_VER
-            // VS2015 compiler's bug, warning s_ec2metadataClient: symbol will be dynamically initialized (implementation limitation)
-            AWS_SUPPRESS_WARNING(4592,
-                static std::shared_ptr<EC2MetadataClient> s_ec2metadataClient(nullptr);
-            )
-        #else
-            static std::shared_ptr<EC2MetadataClient> s_ec2metadataClient(nullptr);
-        #endif
 
         void InitEC2MetadataClient(const Aws::Client::ClientConfiguration::CredentialProviderConfiguration& credentialConfig)
         {
@@ -508,6 +500,15 @@ namespace Aws
             s_ec2metadataClient = Aws::MakeShared<EC2MetadataClient>(EC2_METADATA_CLIENT_LOG_TAG, ec2MetadataServiceEndpoint.c_str());
             #endif
         }
+
+        #ifdef _MSC_VER
+            // VS2015 compiler's bug, warning s_ec2metadataClient: symbol will be dynamically initialized (implementation limitation)
+            AWS_SUPPRESS_WARNING(4592,
+                static std::shared_ptr<EC2MetadataClient> s_ec2metadataClient(nullptr);
+            )
+        #else
+            static std::shared_ptr<EC2MetadataClient> s_ec2metadataClient(nullptr);
+        #endif
 
         void CleanupEC2MetadataClient()
         {
