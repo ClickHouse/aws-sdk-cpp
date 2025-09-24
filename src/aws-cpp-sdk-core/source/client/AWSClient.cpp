@@ -123,13 +123,10 @@ AWSClient::AWSClient(const Aws::Client::ClientConfiguration& configuration,
     m_region(configuration.region),
     m_telemetryProvider(configuration.telemetryProvider ? configuration.telemetryProvider : configuration.configFactories.telemetryProviderCreateFn()),
     m_signerProvider(Aws::MakeUnique<Aws::Auth::DefaultAuthSignerProvider>(AWS_CLIENT_LOG_TAG, signer)),
-    m_httpClient(CreateHttpClient(
-        [&configuration, this]()
-        {
-            ClientConfiguration tempConfig(configuration);
-            tempConfig.telemetryProvider = m_telemetryProvider;
-            return tempConfig;
-        }())),
+    /// NOTE ClickHouse Patch: we use PocoHTTPClientFactory which rely on PocoHTTPClientConfiguration.
+    /// In upstream they wrap passed configuration in some other configuration, so cast to PocoHTTPClientConfiguration
+    /// doesn't work. The reason is related to some telemetry which we don't use.
+    m_httpClient(CreateHttpClient(configuration)),
     m_errorMarshaller(errorMarshaller),
     m_retryStrategy(configuration.retryStrategy ? configuration.retryStrategy : configuration.configFactories.retryStrategyCreateFn()),
     m_writeRateLimiter(configuration.writeRateLimiter ? configuration.writeRateLimiter : configuration.configFactories.writeRateLimiterCreateFn()),
@@ -149,13 +146,10 @@ AWSClient::AWSClient(const Aws::Client::ClientConfiguration& configuration,
     m_region(configuration.region),
     m_telemetryProvider(configuration.telemetryProvider ? configuration.telemetryProvider : configuration.configFactories.telemetryProviderCreateFn()),
     m_signerProvider(signerProvider),
-    m_httpClient(CreateHttpClient(
-        [&configuration, this]()
-        {
-            ClientConfiguration tempConfig(configuration);
-            tempConfig.telemetryProvider = m_telemetryProvider;
-            return tempConfig;
-        }())),
+    /// NOTE ClickHouse Patch: we use PocoHTTPClientFactory which rely on PocoHTTPClientConfiguration
+    /// In upstream they wrap passed configuration in some other configuration, so cast to PocoHTTPClientConfiguration
+    /// doesn't work. The reason is related to some telemetry which we don't use.
+    m_httpClient(CreateHttpClient(configuration)),
     m_errorMarshaller(errorMarshaller),
     m_retryStrategy(configuration.retryStrategy ? configuration.retryStrategy : configuration.configFactories.retryStrategyCreateFn()),
     m_writeRateLimiter(configuration.writeRateLimiter ? configuration.writeRateLimiter : configuration.configFactories.writeRateLimiterCreateFn()),
