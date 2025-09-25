@@ -567,6 +567,11 @@ ClientConfiguration::ClientConfiguration()
     }
     region = Aws::String(Aws::Region::US_EAST_1);
     this->credentialProviderConfig.region = region;
+    if (!this->retryStrategy)
+    {
+        this->retryStrategy = InitRetryStrategy();
+    }
+
 }
 
 ClientConfiguration::ClientConfiguration(const ClientConfigurationInitValues &configuration)
@@ -594,6 +599,10 @@ ClientConfiguration::ClientConfiguration(const ClientConfigurationInitValues &co
     }
     region = Aws::String(Aws::Region::US_EAST_1);
     this->credentialProviderConfig.region = region;
+    if (!this->retryStrategy)
+    {
+        this->retryStrategy = InitRetryStrategy();
+    }
 }
 
 ClientConfiguration::ClientConfiguration(const char* profile, bool shouldDisableIMDS)
@@ -649,6 +658,11 @@ ClientConfiguration::ClientConfiguration(const char* profile, bool shouldDisable
         return;
     }
 
+    if (!this->retryStrategy)
+    {
+        this->retryStrategy = InitRetryStrategy();
+    }
+
     AWS_LOGSTREAM_WARN(CLIENT_CONFIG_TAG, "User specified profile: [" << profile << "] is not found, will use the SDK resolved one.");
 }
 
@@ -683,6 +697,10 @@ ClientConfiguration::ClientConfiguration(bool /*useSmartDefaults*/, const char* 
     }
 
     Aws::Config::Defaults::SetSmartDefaultsConfigurationParameters(*this, defaultMode, hasEc2MetadataRegion, ec2MetadataRegion);
+    if (!this->retryStrategy)
+    {
+        this->retryStrategy = InitRetryStrategy();
+    }
 }
 
 std::shared_ptr<RetryStrategy> InitRetryStrategy(int maxAttempts, Aws::String retryMode) {
