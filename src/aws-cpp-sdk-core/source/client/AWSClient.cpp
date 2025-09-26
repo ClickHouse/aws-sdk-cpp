@@ -870,7 +870,20 @@ void AWSClient::AddContentBodyToRequest(const std::shared_ptr<Aws::Http::HttpReq
         //change as far as constness goes for this class. Due to the platform specificness
         //of hash computations, we can't control the fact that computing a hash mutates
         //state on some platforms such as windows (but that isn't a concern of this class.
-        auto md5HashResult = const_cast<AWSClient*>(this)->m_hash->Calculate(*body);
+
+        /// HACK: ClickHouse Patch
+        /// I have no idea how to explain this... But m_hash object is one-time use object.
+        /// After you call Calculate(xxx) it turns internal structure state into good = false,
+        /// and after first use it always return result with result.IsSuccess=false....
+        /// check:
+        /// 1) contrib/aws/src/aws-cpp-sdk-core/source/utils/crypto/crt/CRTHash.cpp:Calculate (m_hash.Digest calls finalize)
+        /// 2) contrib/aws-c-cal/source/unix/opensslcrypto_hash.c:s_finalize -- C-style OOP, check top of the file
+        ///
+        /// I have no idea what authors of the library wanted to say with this
+        /// per client m_hash->Calculate(*body). It works for the first request only.
+        ///
+        // auto md5HashResult = const_cast<AWSClient*>(this)->m_hash->Calculate(*body);
+        auto md5HashResult = Aws::Utils::Crypto::CreateMD5Implementation()->Calculate(*body);
         body->clear();
         if (md5HashResult.IsSuccess())
         {
