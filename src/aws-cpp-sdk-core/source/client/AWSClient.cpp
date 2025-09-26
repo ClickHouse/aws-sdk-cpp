@@ -613,15 +613,50 @@ HttpResponseOutcome AWSClient::AttemptOneRequest(const std::shared_ptr<Aws::Http
         auto error = BuildAWSError(httpResponse);
         return HttpResponseOutcome(std::move(error));
     }
-    else if(request.HasEmbeddedError(httpResponse->GetResponseBody(), httpResponse->GetHeaders()))
-    {
-        AWS_LOGSTREAM_DEBUG(AWS_CLIENT_LOG_TAG, "Response has embedded errors");
+    /// HACK: ClickHouse Patch: We commented the code because (1) we check embedded errors in our own HTTP Client.
+    /// This commented check here is broken in multple ways. It reads responce body stream -> parses it to XML -> look for <Error>.
+    /// It's not only (1) inefficient to parse data twise (second time will be in response processing), but also in
+    /// Poco HTTP Client implementation Buffer for response body is not (3!!!) seekable. It's very reasonable solution,
+    /// because seekable stream from network is non sense. However in this library guys not only try to read stream and
+    /// call seekg(0) to return it back to zero, but also they don't check (4) if (stream.fail()).
+    ///
+    /// For example, check method HasEmbeddedError in ListObjectsV2Request.cpp:
+    ///
+    /// bool ListObjectsV2Request::HasEmbeddedError(Aws::IOStream &body,
+    ///        const Aws::Http::HeaderValueCollection &header) const
+    ///  {
+    ///      // Header is unused
+    ///      AWS_UNREFERENCED_PARAM(header);
 
-        auto error = GetErrorMarshaller()->Marshall(*httpResponse);
-        return HttpResponseOutcome(std::move(error) );
-    }
+    ///      auto readPointer = body.tellg();
+    ///      Utils::Xml::XmlDocument doc = XmlDocument::CreateFromXmlStream(body);
+    ///      body.seekg(readPointer); <-- NOTE this may set failbit and do nothing, your possition will be at the end of the stream!
+    ///
+    ///      If you add here `if (body.fail()) { std::cerr << "TERRIBLE ERROR\n"; std::terminate(); }` -- it will fail with Poco HTTP Client.
+    ///
+    ///      if (!doc.WasParseSuccessful()) {
+    ///        return false;
+    ///      }
+
+    ///      if (!doc.GetRootElement().IsNull() && doc.GetRootElement().GetName() == Aws::String("Error")) {
+    ///        return true;
+    ///      }
+    ///      return false;
+    ///  }
+    ///  After such "check" your stream will be at "eof" position and all next attempts to read it will fail or even worse --
+    ///  for example for ListObjectsV2Request you will get empty result with no error (happy debugging)!
+
+    /// NOTE: Commented code starts here
+    /// else if(request.HasEmbeddedError(httpResponse->GetResponseBody(), httpResponse->GetHeaders()))
+    /// {
+    ///     AWS_LOGSTREAM_DEBUG(AWS_CLIENT_LOG_TAG, "Response has embedded errors");
+
+    ///     auto error = GetErrorMarshaller()->Marshall(*httpResponse);
+    ///     return HttpResponseOutcome(std::move(error) );
+    /// }
 
     AWS_LOGSTREAM_DEBUG(AWS_CLIENT_LOG_TAG, "Request returned successful response.");
+
 
     return HttpResponseOutcome(std::move(httpResponse));
 }
