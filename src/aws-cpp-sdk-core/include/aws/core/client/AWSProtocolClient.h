@@ -118,7 +118,19 @@ namespace Aws
                 AWS_LOGSTREAM_DEBUG(GetClientLogTag(), "Request returned successful response.");
 
                 HttpResponseOutcome httpOutcome(std::move(httpResponse));
-                if (httpOutcome.GetResult()->GetResponseBody().tellp() > 0) {
+                /// HACK ClickHouse Patch
+                ///
+                /// We replace HTTP Client with our own PocoHTTPClient. It returns some Poco implementations
+                /// for std::istream and std::ostream. For example for GetResponseBody(). std::istream and std::ostream
+                /// have very weird semantics. For custom implementations, without additional efforts, most of the methods
+                /// will not work siltently and only change internal failbits state.
+                ///
+                /// AWS developers use many std::i/ostream methods without any checks for internal failbits states.
+                /// For example in upstream code here they use tellp() method, which is not implemented for Poco streams.
+                /// In poco they have implementation for peek() method, that is why we use it here. What is especially strange
+                /// that in AWSXMLClient they use peek() in upstream, that is why S3 interactions work for us without
+                /// any additional patches.
+                if (httpOutcome.GetResult()->GetResponseBody().peek() != std::char_traits<char>::eof()) {
                     auto response = ResponseType(httpOutcome.GetResult()->GetResponseBody());
                     if (!response.WasParseSuccessful()) {
                         return OutcomeType(CreateParseError());
@@ -142,7 +154,19 @@ namespace Aws
                   bool retryable = httpResponse->GetClientErrorType() == CoreErrors::NETWORK_CONNECTION ? true : false;
                   error = AWSError<CoreErrors>(httpResponse->GetClientErrorType(), "", httpResponse->GetClientErrorMessage(), retryable);
                 }
-                else if (!httpResponse->GetResponseBody() || httpResponse->GetResponseBody().tellp() < 1)
+                /// HACK ClickHouse Patch
+                ///
+                /// We replace HTTP Client with our own PocoHTTPClient. It returns some Poco implementations
+                /// for std::istream and std::ostream. For example for GetResponseBody(). std::istream and std::ostream
+                /// have very weird semantics. For custom implementations, without additional efforts, most of the methods
+                /// will not work siltently and only change internal failbits state.
+                ///
+                /// AWS developers use many std::i/ostream methods without any checks for internal failbits states.
+                /// For example in upstream code here they use tellp() method, which is not implemented for Poco streams.
+                /// In poco they have implementation for peek() method, that is why we use it here. What is especially strange
+                /// that in AWSXMLClient they use peek() in upstream, that is why S3 interactions work for us without
+                /// any additional patches.
+                else if (!httpResponse->GetResponseBody() || httpResponse->GetResponseBody().peek() == std::char_traits<char>::eof())
                 {
                   auto responseCode = httpResponse->GetResponseCode();
                   auto errorCode = AWSClient::GuessBodylessErrorType(responseCode);
@@ -196,7 +220,21 @@ namespace Aws
                          {smithy::components::tracing::TracingUtils::SMITHY_SERVICE_DIMENSION, this->GetServiceClientName()}});
                 }
 
-                if (httpOutcome.GetResult()->GetResponseBody().tellp() > 0) {
+                auto httpResponse = httpOutcome.GetResult();
+
+                /// HACK ClickHouse Patch
+                ///
+                /// We replace HTTP Client with our own PocoHTTPClient. It returns some Poco implementations
+                /// for std::istream and std::ostream. For example for GetResponseBody(). std::istream and std::ostream
+                /// have very weird semantics. For custom implementations, without additional efforts, most of the methods
+                /// will not work siltently and only change internal failbits state.
+                ///
+                /// AWS developers use many std::i/ostream methods without any checks for internal failbits states.
+                /// For example in upstream code here they use tellp() method, which is not implemented for Poco streams.
+                /// In poco they have implementation for peek() method, that is why we use it here. What is especially strange
+                /// that in AWSXMLClient they use peek() in upstream, that is why S3 interactions work for us without
+                /// any additional patches.
+                if (httpOutcome.GetResult()->GetResponseBody().peek() != std::char_traits<char>::eof()) {
                     return smithy::components::tracing::TracingUtils::MakeCallWithTiming<OutcomeType>(
                         [&]() -> OutcomeType {
                             auto response = ResponseType(httpOutcome.GetResult()->GetResponseBody());
